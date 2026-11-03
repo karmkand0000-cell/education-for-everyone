@@ -1,0 +1,1326 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "7",
+ "id": "ch3",
+ "intro": {
+  "en": "Sorting things into groups is one of the most common jobs AI does: spam or not spam, ripe or unripe, healthy or sick, safe or risky. In Class 6 you met a simple decision tree that sorted animals with yes/no questions. In this chapter we go much deeper. You will learn the exact parts of a decision tree, how to read, draw and write one, how to turn it into IF-THEN rules and a Python program, and, most importantly, how a computer can build a decision tree by itself from a table of data by choosing the best question at each step. You will also see where decision trees are used in real life and what their limits are.",
+  "hi": "चीज़ों को समूहों में छाँटना AI के सबसे आम कामों में से एक है: स्पैम या नहीं, पका या कच्चा, स्वस्थ या बीमार, सुरक्षित या जोखिम भरा। कक्षा 6 में आपने एक सरल डिसीज़न ट्री देखा था जिसने हाँ/नहीं प्रश्नों से जानवरों को छाँटा। इस अध्याय में हम बहुत गहराई में जाएँगे। आप डिसीज़न ट्री के ठीक-ठीक भाग सीखेंगे, उसे पढ़ना, बनाना और लिखना, उसे IF-THEN नियमों और Python प्रोग्राम में बदलना, और सबसे ज़रूरी, कंप्यूटर डेटा की तालिका से हर कदम पर सबसे अच्छा प्रश्न चुनकर खुद डिसीज़न ट्री कैसे बना सकता है। आप यह भी देखेंगे कि डिसीज़न ट्री असल जीवन में कहाँ उपयोग होते हैं और उनकी सीमाएँ क्या हैं।"
+ },
+ "learn": {
+  "en": [
+   "Sorting and classifying: features, classes and rules",
+   "Binary (two-group) and multi-class classification",
+   "Parts of a decision tree: root node, decision nodes, branches, leaf nodes, path, depth",
+   "How to read a decision tree and follow a path to a decision",
+   "How to draw your own decision tree, step by step",
+   "Turning a decision tree into IF-THEN-ELSE rules and a Python program",
+   "How a computer builds a tree from data by choosing the best (purest) question",
+   "Questions on numbers (thresholds) and on categories",
+   "Testing a tree, accuracy, and the danger of a tree that is too deep (overfitting)",
+   "Real-life uses, advantages and limits of decision trees"
+  ],
+  "hi": [
+   "छाँटना और वर्गीकरण: फ़ीचर, क्लास और नियम",
+   "बाइनरी (दो-समूह) और मल्टी-क्लास वर्गीकरण",
+   "डिसीज़न ट्री के भाग: रूट नोड, डिसीज़न नोड, शाखाएँ, लीफ़ नोड, पथ, गहराई",
+   "डिसीज़न ट्री को पढ़ना और पथ पर चलकर निर्णय तक पहुँचना",
+   "कदम-दर-कदम अपना डिसीज़न ट्री बनाना",
+   "डिसीज़न ट्री को IF-THEN-ELSE नियमों और Python प्रोग्राम में बदलना",
+   "कंप्यूटर डेटा से सबसे अच्छा (सबसे शुद्ध) प्रश्न चुनकर ट्री कैसे बनाता है",
+   "संख्याओं (सीमा) और श्रेणियों पर प्रश्न",
+   "ट्री को टेस्ट करना, एक्यूरेसी, और बहुत गहरे ट्री का खतरा (ओवरफ़िटिंग)",
+   "डिसीज़न ट्री के असल जीवन के उपयोग, फ़ायदे और सीमाएँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "3.1 Sorting and classifying",
+    "hi": "3.1 छाँटना और वर्गीकरण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every day you sort things without noticing. Your mother sorts clothes into 'wash', 'iron' and 'fold'. A shopkeeper puts vegetables in separate baskets. At school, notebooks go into subject piles. In each case you look at some properties of the item and decide its group.",
+      "hi": "हर दिन आप बिना ध्यान दिए चीज़ें छाँटते हैं। आपकी माँ कपड़ों को 'धोना', 'इस्त्री' और 'तह करना' में छाँटती हैं। दुकानदार सब्ज़ियों को अलग टोकरियों में रखता है। स्कूल में नोटबुक विषय के अनुसार ढेरों में जाती हैं। हर बार आप चीज़ के कुछ गुण देखते हैं और उसका समूह तय करते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Classification",
+       "hi": "क्लासिफ़िकेशन (वर्गीकरण)"
+      },
+      "text": {
+       "en": "Classification means putting an item into one of a fixed set of groups (called classes) by looking at its features.",
+       "hi": "क्लासिफ़िकेशन का अर्थ है किसी चीज़ के फ़ीचर देखकर उसे तय समूहों (जिन्हें क्लास कहते हैं) में से किसी एक में रखना।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Feature: a property we can observe or measure (colour, size, number of legs, price, temperature).",
+       "Class: a group name, the final answer (fruit / vegetable; spam / not spam).",
+       "Rule: a way of using features to decide the class (IF it has feathers THEN bird).",
+       "Binary classification: only two classes (yes/no, pass/fail, fraud/genuine).",
+       "Multi-class classification: three or more classes (apple / banana / mango / grapes; which of 22 languages)."
+      ],
+      "hi": [
+       "फ़ीचर: वह गुण जिसे हम देख या माप सकें (रंग, माप, पैरों की संख्या, कीमत, तापमान)।",
+       "क्लास: समूह का नाम, अंतिम उत्तर (फल / सब्ज़ी; स्पैम / स्पैम नहीं)।",
+       "नियम: फ़ीचरों से क्लास तय करने का तरीका (IF इसके पंख हैं THEN पक्षी)।",
+       "बाइनरी क्लासिफ़िकेशन: केवल दो क्लास (हाँ/नहीं, पास/फ़ेल, धोखाधड़ी/असली)।",
+       "मल्टी-क्लास क्लासिफ़िकेशन: तीन या अधिक क्लास (सेब / केला / आम / अंगूर; 22 में से कौन-सी भाषा)।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Some features are categories (words): colour = red, yellow, green. Others are numbers: weight = 150 g, temperature = 38 °C. Both kinds can be used for sorting. For numbers we usually ask a 'threshold' question such as 'Is the temperature more than 37.5 °C?'",
+      "hi": "कुछ फ़ीचर श्रेणियाँ (शब्द) होते हैं: रंग = लाल, पीला, हरा। कुछ संख्याएँ होते हैं: वज़न = 150 g, तापमान = 38 °C। दोनों तरह से छाँटा जा सकता है। संख्याओं के लिए हम आमतौर पर 'सीमा' (थ्रेशोल्ड) वाला प्रश्न पूछते हैं, जैसे 'क्या तापमान 37.5 °C से अधिक है?'"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember from Chapter 1: classification is a supervised learning task. The computer learns it from examples that already have the correct class written on them (labels).",
+      "hi": "अध्याय 1 से याद रखिए: क्लासिफ़िकेशन सुपरवाइज़्ड लर्निंग का काम है। कंप्यूटर इसे ऐसे उदाहरणों से सीखता है जिन पर सही क्लास पहले से लिखी हो (लेबल)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Is each a binary or multi-class problem? (a) Is this email spam? (b) Which vegetable is in this photo? (c) Will it rain tomorrow? (d) Which state's folk dance is in this video?",
+       "hi": "हर एक बाइनरी है या मल्टी-क्लास? (a) क्या यह ईमेल स्पैम है? (b) इस फ़ोटो में कौन-सी सब्ज़ी है? (c) क्या कल बारिश होगी? (d) इस वीडियो में किस राज्य का लोकनृत्य है?"
+      },
+      "a": {
+       "en": "(a) Binary: spam / not spam.\n(b) Multi-class: many vegetables possible.\n(c) Binary: rain / no rain.\n(d) Multi-class: many states and dances.",
+       "hi": "(a) बाइनरी: स्पैम / स्पैम नहीं।\n(b) मल्टी-क्लास: कई सब्ज़ियाँ संभव।\n(c) बाइनरी: बारिश / बारिश नहीं।\n(d) मल्टी-क्लास: कई राज्य और नृत्य।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.2 What is a decision tree?",
+    "hi": "3.2 डिसीज़न ट्री क्या है?"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Decision tree",
+       "hi": "डिसीज़न ट्री (निर्णय वृक्ष)"
+      },
+      "text": {
+       "en": "A decision tree is a diagram of questions arranged like an upside-down tree. You start at the top, answer a question, follow the branch for your answer to the next question, and keep going until you reach an end point that gives the final decision or class.",
+       "hi": "डिसीज़न ट्री प्रश्नों का एक चित्र है जो उल्टे पेड़ की तरह जमा होता है। आप ऊपर से शुरू करते हैं, एक प्रश्न का उत्तर देते हैं, अपने उत्तर वाली शाखा पकड़कर अगले प्रश्न तक जाते हैं, और तब तक चलते रहते हैं जब तक अंतिम निर्णय या क्लास बताने वाले अंत-बिंदु तक न पहुँचें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "It is called a tree because it branches out, but it is drawn upside down: the 'root' is at the top and the 'leaves' are at the bottom. Decision trees are one of the oldest and most understandable tools in machine learning, because anyone can follow the questions and see exactly why a decision was made.",
+      "hi": "इसे ट्री (पेड़) इसलिए कहते हैं क्योंकि यह शाखाओं में फैलता है, पर इसे उल्टा बनाया जाता है: 'जड़' (रूट) ऊपर होती है और 'पत्तियाँ' (लीफ़) नीचे। डिसीज़न ट्री मशीन लर्निंग के सबसे पुराने और सबसे समझने योग्य औज़ारों में से हैं, क्योंकि कोई भी प्रश्नों पर चलकर ठीक-ठीक देख सकता है कि निर्णय क्यों लिया गया।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Part",
+        "What it is",
+        "Drawn as"
+       ],
+       "hi": [
+        "भाग",
+        "यह क्या है",
+        "कैसे बनाया जाता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Root node",
+         "The first question at the very top; every path starts here",
+         "A box at the top"
+        ],
+        [
+         "Decision node (internal node)",
+         "Any question in the middle of the tree",
+         "A box (often a diamond in flowcharts)"
+        ],
+        [
+         "Branch (edge)",
+         "A line from a question to the next step, labelled with an answer (Yes / No, or a value)",
+         "A line or arrow"
+        ],
+        [
+         "Leaf node (terminal node)",
+         "An end point that gives the final answer (the class); no more questions after it",
+         "An oval or coloured box at the bottom"
+        ],
+        [
+         "Path",
+         "The route from the root to one leaf; it is one complete rule",
+         "The chain of boxes and lines followed"
+        ],
+        [
+         "Depth",
+         "The number of questions on the longest path from root to leaf",
+         "Counted by levels"
+        ]
+       ],
+       "hi": [
+        [
+         "रूट नोड",
+         "सबसे ऊपर का पहला प्रश्न; हर पथ यहीं से शुरू होता है",
+         "सबसे ऊपर एक डिब्बा"
+        ],
+        [
+         "डिसीज़न नोड (आंतरिक नोड)",
+         "ट्री के बीच का कोई भी प्रश्न",
+         "एक डिब्बा (फ़्लोचार्ट में अक्सर हीरे का आकार)"
+        ],
+        [
+         "शाखा (एज)",
+         "प्रश्न से अगले चरण तक की रेखा, जिस पर उत्तर लिखा होता है (हाँ / नहीं, या कोई मान)",
+         "एक रेखा या तीर"
+        ],
+        [
+         "लीफ़ नोड (अंतिम नोड)",
+         "अंत-बिंदु जो अंतिम उत्तर (क्लास) देता है; उसके बाद कोई प्रश्न नहीं",
+         "नीचे एक अंडाकार या रंगीन डिब्बा"
+        ],
+        [
+         "पथ",
+         "रूट से किसी एक लीफ़ तक का रास्ता; यह एक पूरा नियम है",
+         "जिन डिब्बों और रेखाओं पर चले उनकी कड़ी"
+        ],
+        [
+         "गहराई (डेप्थ)",
+         "रूट से लीफ़ तक के सबसे लंबे पथ पर प्रश्नों की संख्या",
+         "स्तरों से गिनी जाती है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture this tree for deciding what to wear to school in the morning. At the top (root) is the box 'Is it raining?'. A 'Yes' branch goes down-left to a leaf 'Raincoat'. A 'No' branch goes down-right to a second question 'Is it colder than 15 °C?'. From it, 'Yes' leads to the leaf 'Sweater' and 'No' leads to the leaf 'Normal uniform'. This tree has 1 root, 1 more decision node, 4 branches, 3 leaves and a depth of 2.",
+      "hi": "सुबह स्कूल के लिए क्या पहनें, यह तय करने वाले इस ट्री की कल्पना कीजिए। सबसे ऊपर (रूट) डिब्बा है 'क्या बारिश हो रही है?'। 'हाँ' शाखा नीचे-बाएँ एक लीफ़ 'रेनकोट' तक जाती है। 'नहीं' शाखा नीचे-दाएँ दूसरे प्रश्न 'क्या 15 °C से ठंड है?' तक जाती है। उससे 'हाँ' लीफ़ 'स्वेटर' तक और 'नहीं' लीफ़ 'सामान्य वर्दी' तक जाती है। इस ट्री में 1 रूट, 1 और डिसीज़न नोड, 4 शाखाएँ, 3 लीफ़ और गहराई 2 है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "               [Is it raining?]            ← root node\n                /            \\\n             Yes              No           ← branches\n             /                  \\\n       (Raincoat)       [Colder than 15 °C?] ← decision node\n         leaf             /            \\\n                        Yes             No\n                        /                 \\\n                  (Sweater)        (Normal uniform)  ← leaves",
+      "hi": "               [क्या बारिश हो रही है?]      ← रूट नोड\n                /            \\\n             हाँ              नहीं          ← शाखाएँ\n             /                  \\\n        (रेनकोट)        [15 °C से ठंड?]     ← डिसीज़न नोड\n         लीफ़              /          \\\n                        हाँ          नहीं\n                        /               \\\n                  (स्वेटर)        (सामान्य वर्दी)   ← लीफ़"
+     }
+    },
+    {
+     "note": {
+      "en": "A leaf never has a question; a decision node always has a question. If you are asked to count leaves, count only the final answers at the bottom.",
+      "hi": "लीफ़ में कभी प्रश्न नहीं होता; डिसीज़न नोड में हमेशा प्रश्न होता है। अगर लीफ़ गिनने को कहा जाए तो केवल नीचे के अंतिम उत्तर गिनिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.3 Reading a decision tree",
+    "hi": "3.3 डिसीज़न ट्री पढ़ना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To use a tree, start at the root, answer each question truthfully for the item you have, and follow only one branch at each step. When you reach a leaf, stop: that is the answer. Each item follows exactly one path.",
+      "hi": "ट्री का उपयोग करने के लिए रूट से शुरू कीजिए, अपनी चीज़ के लिए हर प्रश्न का सच्चा उत्तर दीजिए, और हर कदम पर केवल एक शाखा पकड़िए। लीफ़ पर पहुँचकर रुकिए: वही उत्तर है। हर चीज़ ठीक एक पथ पर चलती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a tree used by a careful student to decide whether an SMS is a scam. Root: 'Does it ask for an OTP, PIN or password?' Yes → leaf 'Scam – do not reply, tell an adult'. No → 'Does it have a link from an unknown sender?' Yes → leaf 'Suspicious – do not click'. No → 'Does it say you won a prize or must pay urgently?' Yes → leaf 'Suspicious – check with an adult'. No → leaf 'Probably safe'.",
+      "hi": "यहाँ एक सावधान विद्यार्थी का ट्री है जो तय करता है कि कोई SMS धोखा है या नहीं। रूट: 'क्या यह OTP, PIN या पासवर्ड माँगता है?' हाँ → लीफ़ 'धोखा – जवाब न दें, किसी बड़े को बताएँ'। नहीं → 'क्या इसमें अनजान भेजने वाले का लिंक है?' हाँ → लीफ़ 'संदिग्ध – क्लिक न करें'। नहीं → 'क्या यह कहता है कि आपने इनाम जीता है या तुरंत भुगतान करना है?' हाँ → लीफ़ 'संदिग्ध – किसी बड़े से जाँचें'। नहीं → लीफ़ 'शायद सुरक्षित'।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Use the SMS tree for: 'Dear customer, your KYC will expire today. Click bit.ly/xyz to update.' from an unknown number.",
+       "hi": "अनजान नंबर से आए इस संदेश पर SMS ट्री लगाइए: 'प्रिय ग्राहक, आपका KYC आज समाप्त हो जाएगा। अपडेट करने के लिए bit.ly/xyz पर क्लिक करें।'"
+      },
+      "a": {
+       "en": "Root: Does it ask for OTP, PIN or password? Not directly → No.\nNext: Does it have a link from an unknown sender? Yes.\nLeaf reached: 'Suspicious – do not click'.\nPath = No → Yes. The decision came after 2 questions. (Real banks do not ask you to update KYC through random short links.)",
+       "hi": "रूट: क्या यह OTP, PIN या पासवर्ड माँगता है? सीधे नहीं → नहीं।\nअगला: क्या इसमें अनजान भेजने वाले का लिंक है? हाँ।\nलीफ़ मिला: 'संदिग्ध – क्लिक न करें'।\nपथ = नहीं → हाँ। निर्णय 2 प्रश्नों के बाद आया। (असली बैंक किसी अनजान छोटे लिंक से KYC अपडेट करने को नहीं कहते।)"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "How many leaves, decision nodes and what depth does the SMS tree have?",
+       "hi": "SMS ट्री में कितने लीफ़, कितने डिसीज़न नोड और कितनी गहराई है?"
+      },
+      "a": {
+       "en": "Decision nodes (questions): OTP? link? prize/urgent? = 3 (the first is the root).\nLeaves (answers): Scam, Suspicious (link), Suspicious (prize), Probably safe = 4.\nDepth: the longest path asks 3 questions, so depth = 3.\nCheck: in a yes/no tree, leaves = decision nodes + 1 → 3 + 1 = 4. ✓",
+       "hi": "डिसीज़न नोड (प्रश्न): OTP? लिंक? इनाम/जल्दी? = 3 (पहला रूट है)।\nलीफ़ (उत्तर): धोखा, संदिग्ध (लिंक), संदिग्ध (इनाम), शायद सुरक्षित = 4।\nगहराई: सबसे लंबा पथ 3 प्रश्न पूछता है, इसलिए गहराई = 3।\nजाँच: हाँ/नहीं वाले ट्री में लीफ़ = डिसीज़न नोड + 1 → 3 + 1 = 4। ✓"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "In a tree where every question has exactly two answers (yes/no), the number of leaves is always one more than the number of questions. This is a quick way to check your drawing.",
+      "hi": "जिस ट्री में हर प्रश्न के ठीक दो उत्तर (हाँ/नहीं) हों, उसमें लीफ़ की संख्या हमेशा प्रश्नों की संख्या से एक अधिक होती है। यह अपने चित्र को जाँचने का तेज़ तरीका है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.4 Drawing your own decision tree",
+    "hi": "3.4 अपना डिसीज़न ट्री बनाना"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Step 1: Decide the goal and list the classes (the final answers you need).",
+       "Step 2: List the items and their features in a table.",
+       "Step 3: Choose the first (root) question: one that splits the items into groups as cleanly as possible.",
+       "Step 4: For each branch, check the group. If all items in it have the same class, make a leaf. If not, ask another question for that group.",
+       "Step 5: Repeat until every branch ends in a leaf.",
+       "Step 6: Test the tree with every item (and some new ones) to check each reaches the correct leaf."
+      ],
+      "hi": [
+       "चरण 1: लक्ष्य तय कीजिए और क्लास (जिन अंतिम उत्तरों की ज़रूरत है) की सूची बनाइए।",
+       "चरण 2: चीज़ों और उनके फ़ीचरों को तालिका में लिखिए।",
+       "चरण 3: पहला (रूट) प्रश्न चुनिए: ऐसा जो चीज़ों को जितना हो सके साफ़-साफ़ समूहों में बाँटे।",
+       "चरण 4: हर शाखा का समूह देखिए। अगर उसकी सभी चीज़ों की क्लास एक है तो लीफ़ बनाइए। नहीं तो उस समूह के लिए एक और प्रश्न पूछिए।",
+       "चरण 5: तब तक दोहराइए जब तक हर शाखा लीफ़ पर खत्म न हो।",
+       "चरण 6: हर चीज़ (और कुछ नई) से ट्री जाँचिए कि हर एक सही लीफ़ तक पहुँचती है।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Fruit",
+        "Colour",
+        "Shape",
+        "Size"
+       ],
+       "hi": [
+        "फल",
+        "रंग",
+        "आकार",
+        "माप"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Banana",
+         "yellow",
+         "long",
+         "medium"
+        ],
+        [
+         "Mango",
+         "yellow",
+         "round",
+         "medium"
+        ],
+        [
+         "Apple",
+         "red",
+         "round",
+         "medium"
+        ],
+        [
+         "Grapes",
+         "green",
+         "round",
+         "small"
+        ]
+       ],
+       "hi": [
+        [
+         "केला",
+         "पीला",
+         "लंबा",
+         "मध्यम"
+        ],
+        [
+         "आम",
+         "पीला",
+         "गोल",
+         "मध्यम"
+        ],
+        [
+         "सेब",
+         "लाल",
+         "गोल",
+         "मध्यम"
+        ],
+        [
+         "अंगूर",
+         "हरा",
+         "गोल",
+         "छोटा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Draw a decision tree to sort the four fruits in the table.",
+       "hi": "तालिका के चार फलों को छाँटने के लिए डिसीज़न ट्री बनाइए।"
+      },
+      "a": {
+       "en": "Step 1: Classes = banana, mango, apple, grapes.\nStep 2: Features = colour, shape, size (see table).\nStep 3: Root question: 'Is it yellow?' This splits {banana, mango} from {apple, grapes}.\nStep 4 (Yes branch): banana and mango differ in shape. Ask 'Is it long?' Yes → Banana; No → Mango.\nStep 4 (No branch): apple and grapes differ in colour. Ask 'Is it red?' Yes → Apple; No → Grapes.\nStep 5: All branches end in leaves. Questions = 3, leaves = 4, depth = 2.\nStep 6: Test: a mango is yellow (Yes) and not long (No) → Mango ✓.",
+       "hi": "चरण 1: क्लास = केला, आम, सेब, अंगूर।\nचरण 2: फ़ीचर = रंग, आकार, माप (तालिका देखें)।\nचरण 3: रूट प्रश्न: 'क्या यह पीला है?' यह {केला, आम} को {सेब, अंगूर} से अलग करता है।\nचरण 4 (हाँ शाखा): केला और आम आकार में अलग हैं। पूछिए 'क्या यह लंबा है?' हाँ → केला; नहीं → आम।\nचरण 4 (नहीं शाखा): सेब और अंगूर रंग में अलग हैं। पूछिए 'क्या यह लाल है?' हाँ → सेब; नहीं → अंगूर।\nचरण 5: सभी शाखाएँ लीफ़ पर खत्म। प्रश्न = 3, लीफ़ = 4, गहराई = 2।\nचरण 6: जाँच: आम पीला है (हाँ) और लंबा नहीं (नहीं) → आम ✓।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "There can be more than one correct tree for the same items. You could start with 'Is it small?' (only grapes), then 'Is it red?' (apple), then 'Is it long?' (banana or mango). That tree has depth 3. Both trees sort correctly, but the first is shorter and balanced, so on average it needs fewer questions. Good trees ask the most useful question first.",
+      "hi": "एक ही चीज़ों के लिए एक से अधिक सही ट्री हो सकते हैं। आप 'क्या यह छोटा है?' (केवल अंगूर) से शुरू कर सकते थे, फिर 'क्या यह लाल है?' (सेब), फिर 'क्या यह लंबा है?' (केला या आम)। उस ट्री की गहराई 3 है। दोनों ट्री सही छाँटते हैं, पर पहला छोटा और संतुलित है, इसलिए औसतन उसे कम प्रश्न चाहिए। अच्छे ट्री सबसे उपयोगी प्रश्न पहले पूछते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Questions do not always have only two answers. A question like 'What is the sky like?' can have three branches: sunny, cloudy, rainy. Trees with only yes/no questions are called binary trees and are the most common in computers, but multi-way branches are also allowed.",
+      "hi": "प्रश्नों के हमेशा केवल दो उत्तर नहीं होते। 'आसमान कैसा है?' जैसे प्रश्न की तीन शाखाएँ हो सकती हैं: धूप, बादल, बारिश। केवल हाँ/नहीं प्रश्नों वाले ट्री बाइनरी ट्री कहलाते हैं और कंप्यूटरों में सबसे आम हैं, पर कई-शाखा वाले प्रश्न भी चल सकते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.5 From tree to IF-THEN rules to Python",
+    "hi": "3.5 ट्री से IF-THEN नियम और Python तक"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every path from the root to a leaf is one rule. Join the questions on the path with AND, and the leaf is the THEN part. So the fruit tree gives four rules:",
+      "hi": "रूट से लीफ़ तक का हर पथ एक नियम है। पथ के प्रश्नों को AND से जोड़िए, और लीफ़ THEN भाग है। इस तरह फल ट्री से चार नियम बनते हैं:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Rule 1: IF colour is yellow AND shape is long THEN banana\nRule 2: IF colour is yellow AND shape is NOT long THEN mango\nRule 3: IF colour is NOT yellow AND colour is red THEN apple\nRule 4: IF colour is NOT yellow AND colour is NOT red THEN grapes",
+      "hi": "नियम 1: IF रंग पीला है AND आकार लंबा है THEN केला\nनियम 2: IF रंग पीला है AND आकार लंबा नहीं है THEN आम\nनियम 3: IF रंग पीला नहीं है AND रंग लाल है THEN सेब\nनियम 4: IF रंग पीला नहीं है AND रंग लाल नहीं है THEN अंगूर"
+     }
+    },
+    {
+     "p": {
+      "en": "Number of rules = number of leaves. In a program, a tree becomes nested if-else statements: an 'if' inside another 'if'. Here is the fruit tree in Python. Notice the indentation (spaces at the start of lines): it shows which question belongs inside which branch, just like the levels of the tree.",
+      "hi": "नियमों की संख्या = लीफ़ की संख्या। प्रोग्राम में ट्री नेस्टेड (एक के अंदर एक) if-else कथन बन जाता है: एक 'if' दूसरे 'if' के अंदर। यहाँ Python में फल ट्री है। इंडेंटेशन (पंक्तियों की शुरुआत में खाली जगह) देखिए: यह दिखाता है कि कौन-सा प्रश्न किस शाखा के अंदर है, बिल्कुल ट्री के स्तरों की तरह।"
+     }
+    },
+    {
+     "formula": {
+      "en": "def fruit_tree(colour, shape):\n    if colour == \"yellow\":\n        if shape == \"long\":\n            return \"banana\"\n        else:\n            return \"mango\"\n    else:\n        if colour == \"red\":\n            return \"apple\"\n        else:\n            return \"grapes\"\n\nprint(fruit_tree(\"yellow\", \"long\"))\nprint(fruit_tree(\"yellow\", \"round\"))\nprint(fruit_tree(\"red\", \"round\"))\nprint(fruit_tree(\"green\", \"small\"))",
+      "hi": "def fruit_tree(colour, shape):\n    if colour == \"yellow\":\n        if shape == \"long\":\n            return \"banana\"\n        else:\n            return \"mango\"\n    else:\n        if colour == \"red\":\n            return \"apple\"\n        else:\n            return \"grapes\"\n\nprint(fruit_tree(\"yellow\", \"long\"))\nprint(fruit_tree(\"yellow\", \"round\"))\nprint(fruit_tree(\"red\", \"round\"))\nprint(fruit_tree(\"green\", \"small\"))"
+     }
+    },
+    {
+     "p": {
+      "en": "Output:",
+      "hi": "आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "banana\nmango\napple\ngrapes",
+      "hi": "banana\nmango\napple\ngrapes"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "'def fruit_tree(colour, shape):' creates a function; colour and shape are the features given as input.",
+       "The first 'if colour == \"yellow\"' is the root node.",
+       "The inner 'if shape == \"long\"' and 'if colour == \"red\"' are the next decision nodes.",
+       "Each 'return' is a leaf: it gives back the class and stops.",
+       "The four print lines test the tree with four different fruits."
+      ],
+      "hi": [
+       "'def fruit_tree(colour, shape):' एक फ़ंक्शन बनाता है; colour और shape इनपुट के रूप में दिए गए फ़ीचर हैं।",
+       "पहला 'if colour == \"yellow\"' रूट नोड है।",
+       "अंदर वाले 'if shape == \"long\"' और 'if colour == \"red\"' अगले डिसीज़न नोड हैं।",
+       "हर 'return' एक लीफ़ है: यह क्लास लौटाता है और रुक जाता है।",
+       "चार print पंक्तियाँ चार अलग फलों से ट्री को टेस्ट करती हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "A decision tree is also closely related to a flowchart. A flowchart can show any algorithm with loops and steps; a decision tree only asks questions and never goes back up. Every decision tree can be drawn as a flowchart, but not every flowchart is a decision tree.",
+      "hi": "डिसीज़न ट्री का फ़्लोचार्ट से गहरा संबंध है। फ़्लोचार्ट लूप और चरणों वाला कोई भी एल्गोरिद्म दिखा सकता है; डिसीज़न ट्री केवल प्रश्न पूछता है और कभी वापस ऊपर नहीं जाता। हर डिसीज़न ट्री को फ़्लोचार्ट के रूप में बनाया जा सकता है, पर हर फ़्लोचार्ट डिसीज़न ट्री नहीं है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.6 How a computer builds a tree from data",
+    "hi": "3.6 कंप्यूटर डेटा से ट्री कैसे बनाता है"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "So far, we drew the trees ourselves. In machine learning, the computer builds the tree from a table of labelled examples. It does this by asking, again and again: 'Which question splits these examples into the purest groups?'",
+      "hi": "अब तक ट्री हमने खुद बनाए। मशीन लर्निंग में कंप्यूटर लेबल वाले उदाहरणों की तालिका से ट्री बनाता है। यह बार-बार यह पूछकर करता है: 'कौन-सा प्रश्न इन उदाहरणों को सबसे शुद्ध समूहों में बाँटता है?'"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Pure group",
+       "hi": "शुद्ध समूह (Pure group)"
+      },
+      "text": {
+       "en": "A group in which every example has the same class. A pure group can become a leaf. A mixed group needs more questions.",
+       "hi": "ऐसा समूह जिसमें हर उदाहरण की क्लास एक हो। शुद्ध समूह लीफ़ बन सकता है। मिले-जुले समूह को और प्रश्न चाहिए।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Day",
+        "Sky",
+        "Wind",
+        "Play cricket outside?"
+       ],
+       "hi": [
+        "दिन",
+        "आसमान",
+        "हवा",
+        "बाहर क्रिकेट खेलें?"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1",
+         "sunny",
+         "weak",
+         "yes"
+        ],
+        [
+         "2",
+         "sunny",
+         "strong",
+         "yes"
+        ],
+        [
+         "3",
+         "cloudy",
+         "weak",
+         "yes"
+        ],
+        [
+         "4",
+         "rainy",
+         "weak",
+         "no"
+        ],
+        [
+         "5",
+         "rainy",
+         "strong",
+         "no"
+        ],
+        [
+         "6",
+         "cloudy",
+         "strong",
+         "no"
+        ]
+       ],
+       "hi": [
+        [
+         "1",
+         "धूप",
+         "कमज़ोर",
+         "हाँ"
+        ],
+        [
+         "2",
+         "धूप",
+         "तेज़",
+         "हाँ"
+        ],
+        [
+         "3",
+         "बादल",
+         "कमज़ोर",
+         "हाँ"
+        ],
+        [
+         "4",
+         "बारिश",
+         "कमज़ोर",
+         "नहीं"
+        ],
+        [
+         "5",
+         "बारिश",
+         "तेज़",
+         "नहीं"
+        ],
+        [
+         "6",
+         "बादल",
+         "तेज़",
+         "नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The computer tries each feature as the root question and looks at the groups it makes. The program below does exactly this and counts how many days end up in pure groups.",
+      "hi": "कंप्यूटर हर फ़ीचर को रूट प्रश्न के रूप में आज़माता है और बने समूहों को देखता है। नीचे का प्रोग्राम ठीक यही करता है और गिनता है कि कितने दिन शुद्ध समूहों में आए।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Data: should we play cricket outside today?\ndays = [\n    {\"sky\": \"sunny\",  \"wind\": \"weak\",   \"play\": \"yes\"},\n    {\"sky\": \"sunny\",  \"wind\": \"strong\", \"play\": \"yes\"},\n    {\"sky\": \"cloudy\", \"wind\": \"weak\",   \"play\": \"yes\"},\n    {\"sky\": \"rainy\",  \"wind\": \"weak\",   \"play\": \"no\"},\n    {\"sky\": \"rainy\",  \"wind\": \"strong\", \"play\": \"no\"},\n    {\"sky\": \"cloudy\", \"wind\": \"strong\", \"play\": \"no\"},\n]\n\nfor feature in [\"sky\", \"wind\"]:\n    print(\"Splitting on\", feature)\n    groups = {}\n    for d in days:\n        groups.setdefault(d[feature], []).append(d[\"play\"])\n    pure = 0\n    for value, answers in groups.items():\n        print(\"  \", value, \"->\", answers)\n        if len(set(answers)) == 1:\n            pure += len(answers)\n    print(\"   days in pure groups:\", pure, \"of\", len(days))",
+      "hi": "# डेटा: क्या आज बाहर क्रिकेट खेलें?\ndays = [\n    {\"sky\": \"sunny\",  \"wind\": \"weak\",   \"play\": \"yes\"},\n    {\"sky\": \"sunny\",  \"wind\": \"strong\", \"play\": \"yes\"},\n    {\"sky\": \"cloudy\", \"wind\": \"weak\",   \"play\": \"yes\"},\n    {\"sky\": \"rainy\",  \"wind\": \"weak\",   \"play\": \"no\"},\n    {\"sky\": \"rainy\",  \"wind\": \"strong\", \"play\": \"no\"},\n    {\"sky\": \"cloudy\", \"wind\": \"strong\", \"play\": \"no\"},\n]\n\nfor feature in [\"sky\", \"wind\"]:\n    print(\"Splitting on\", feature)\n    groups = {}\n    for d in days:\n        groups.setdefault(d[feature], []).append(d[\"play\"])\n    pure = 0\n    for value, answers in groups.items():\n        print(\"  \", value, \"->\", answers)\n        if len(set(answers)) == 1:\n            pure += len(answers)\n    print(\"   days in pure groups:\", pure, \"of\", len(days))"
+     }
+    },
+    {
+     "p": {
+      "en": "Output:",
+      "hi": "आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Splitting on sky\n   sunny -> ['yes', 'yes']\n   cloudy -> ['yes', 'no']\n   rainy -> ['no', 'no']\n   days in pure groups: 4 of 6\nSplitting on wind\n   weak -> ['yes', 'yes', 'no']\n   strong -> ['yes', 'no', 'no']\n   days in pure groups: 0 of 6",
+      "hi": "Splitting on sky\n   sunny -> ['yes', 'yes']\n   cloudy -> ['yes', 'no']\n   rainy -> ['no', 'no']\n   days in pure groups: 4 of 6\nSplitting on wind\n   weak -> ['yes', 'yes', 'no']\n   strong -> ['yes', 'no', 'no']\n   days in pure groups: 0 of 6"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Use the output to build the full tree. Which feature should be the root, and what comes next?",
+       "hi": "आउटपुट से पूरा ट्री बनाइए। कौन-सा फ़ीचर रूट होना चाहिए, और उसके बाद क्या?"
+      },
+      "a": {
+       "en": "Step 1: Splitting on 'sky' puts 4 of 6 days in pure groups (sunny = all yes, rainy = all no). Splitting on 'wind' gives 0 pure days. So 'sky' is the better root question.\nStep 2: Sunny → leaf 'Yes'. Rainy → leaf 'No'.\nStep 3: Cloudy is mixed (day 3 yes, day 6 no). Ask the next question for this group only: 'Is the wind strong?' Day 6 (strong) → No; day 3 (weak) → Yes. Both are now pure.\nFinal tree: Sky? sunny → Play; rainy → Don't play; cloudy → Wind strong? yes → Don't play, no → Play.\nIt has 2 questions, 4 leaves and depth 2, and it classifies all 6 days correctly.",
+       "hi": "चरण 1: 'आसमान' पर बाँटने से 6 में से 4 दिन शुद्ध समूहों में आते हैं (धूप = सब हाँ, बारिश = सब नहीं)। 'हवा' पर बाँटने से 0 शुद्ध दिन। इसलिए 'आसमान' बेहतर रूट प्रश्न है।\nचरण 2: धूप → लीफ़ 'हाँ'। बारिश → लीफ़ 'नहीं'।\nचरण 3: बादल मिला-जुला है (दिन 3 हाँ, दिन 6 नहीं)। केवल इस समूह के लिए अगला प्रश्न पूछिए: 'क्या हवा तेज़ है?' दिन 6 (तेज़) → नहीं; दिन 3 (कमज़ोर) → हाँ। अब दोनों शुद्ध हैं।\nअंतिम ट्री: आसमान? धूप → खेलें; बारिश → न खेलें; बादल → हवा तेज़? हाँ → न खेलें, नहीं → खेलें।\nइसमें 2 प्रश्न, 4 लीफ़ और गहराई 2 है, और यह सभी 6 दिनों को सही वर्गीकृत करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Real decision-tree programs work the same way but on thousands of rows and dozens of features. They use a mathematical score of 'impurity' (names you will meet in higher classes are Gini impurity and entropy / information gain) to measure how mixed each group is. The question that reduces mixing the most is chosen. This is repeated for every branch until groups are pure or a stopping rule is reached (for example, a maximum depth).",
+      "hi": "असली डिसीज़न-ट्री प्रोग्राम इसी तरह काम करते हैं पर हज़ारों पंक्तियों और दर्जनों फ़ीचरों पर। वे 'अशुद्धता' (इम्प्योरिटी) का एक गणितीय स्कोर उपयोग करते हैं (ऊँची कक्षाओं में आप इनके नाम पढ़ेंगे: Gini impurity और entropy / information gain) ताकि नापा जा सके कि हर समूह कितना मिला-जुला है। जो प्रश्न मिलावट सबसे ज़्यादा घटाए, वह चुना जाता है। यह हर शाखा के लिए दोहराया जाता है जब तक समूह शुद्ध न हों या रुकने का नियम न आ जाए (जैसे अधिकतम गहराई)।"
+     }
+    },
+    {
+     "p": {
+      "en": "For number features, the computer tries different thresholds. For example, with student heights 120, 128, 135, 142 and 150 cm, it may test 'height < 130?', 'height < 140?' and so on, and keep the threshold that gives the purest groups, just as the Python program in Chapter 1 tried different cut-offs for practice hours.",
+      "hi": "संख्या वाले फ़ीचरों के लिए कंप्यूटर अलग-अलग सीमाएँ आज़माता है। जैसे विद्यार्थियों की ऊँचाई 120, 128, 135, 142 और 150 cm हो तो वह 'ऊँचाई < 130?', 'ऊँचाई < 140?' इत्यादि जाँच सकता है, और सबसे शुद्ध समूह देने वाली सीमा रख लेता है, ठीक वैसे ही जैसे अध्याय 1 के Python प्रोग्राम ने अभ्यास के घंटों के लिए अलग-अलग सीमाएँ आज़माई थीं।"
+     }
+    },
+    {
+     "note": {
+      "en": "The best first question is the one that removes the most confusion. Think of the game '20 Questions': a good player asks 'Is it a living thing?' first, not 'Is it my neighbour's cat?'. A question that splits the possibilities roughly in half is usually the most useful.",
+      "hi": "सबसे अच्छा पहला प्रश्न वह है जो सबसे ज़्यादा उलझन दूर करे। '20 प्रश्न' खेल सोचिए: अच्छा खिलाड़ी पहले पूछता है 'क्या यह कोई जीवित चीज़ है?', न कि 'क्या यह मेरे पड़ोसी की बिल्ली है?'। जो प्रश्न संभावनाओं को लगभग आधा-आधा बाँटे, वह आमतौर पर सबसे उपयोगी होता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.7 Testing a tree and the problem of overfitting",
+    "hi": "3.7 ट्री को टेस्ट करना और ओवरफ़िटिंग की समस्या"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A tree built from training data must be tested on new examples, just like any model. We count how many test examples reach the correct leaf and find the accuracy.",
+      "hi": "ट्रेनिंग डेटा से बने ट्री को किसी भी मॉडल की तरह नए उदाहरणों पर टेस्ट करना चाहिए। हम गिनते हैं कि कितने टेस्ट उदाहरण सही लीफ़ तक पहुँचे और एक्यूरेसी निकालते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A tree for 'ripe / unripe mango' was tested on 40 mangoes. It sorted 34 correctly. What is its accuracy, and how many mistakes did it make?",
+       "hi": "'पका / कच्चा आम' ट्री को 40 आमों पर टेस्ट किया गया। इसने 34 सही छाँटे। इसकी एक्यूरेसी क्या है, और इसने कितनी गलतियाँ कीं?"
+      },
+      "a": {
+       "en": "Accuracy = (34 ÷ 40) × 100 = 0.85 × 100 = 85%.\nMistakes = 40 − 34 = 6 mangoes.",
+       "hi": "एक्यूरेसी = (34 ÷ 40) × 100 = 0.85 × 100 = 85%।\nगलतियाँ = 40 − 34 = 6 आम।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Overfitting",
+       "hi": "ओवरफ़िटिंग"
+      },
+      "text": {
+       "en": "Overfitting happens when a model learns the training examples too exactly, including their accidental details, so it does very well on training data but badly on new data.",
+       "hi": "ओवरफ़िटिंग तब होती है जब मॉडल ट्रेनिंग उदाहरणों को बहुत ज़्यादा ठीक-ठीक सीख लेता है, उनकी संयोग वाली बारीकियों समेत, जिससे वह ट्रेनिंग डेटा पर बहुत अच्छा पर नए डेटा पर खराब करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Decision trees can easily overfit. If you keep adding questions until every single training example has its own leaf, you might end with silly questions such as 'Was the mango bought on a Tuesday?' just because one mango in the data happened to be. Such a tree is like a student who memorised every answer in the guide book but cannot solve a new question. To avoid this, we keep the tree reasonably small (limit the depth), stop splitting very small groups, and always check accuracy on test data.",
+      "hi": "डिसीज़न ट्री आसानी से ओवरफ़िट हो सकते हैं। अगर आप तब तक प्रश्न जोड़ते रहें जब तक हर ट्रेनिंग उदाहरण का अपना लीफ़ न हो, तो आपको 'क्या आम मंगलवार को खरीदा गया?' जैसे बेतुके प्रश्न मिल सकते हैं, सिर्फ़ इसलिए कि डेटा में एक आम संयोग से मंगलवार का था। ऐसा ट्री उस विद्यार्थी जैसा है जिसने गाइड बुक का हर उत्तर रट लिया पर नया प्रश्न हल नहीं कर सकता। इससे बचने के लिए हम ट्री को ठीक-ठाक छोटा रखते हैं (गहराई सीमित करते हैं), बहुत छोटे समूहों को आगे नहीं बाँटते, और हमेशा टेस्ट डेटा पर एक्यूरेसी जाँचते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "A slightly simpler tree that is right on most new examples is better than a huge tree that is perfect only on the training data.",
+      "hi": "थोड़ा सरल ट्री जो ज़्यादातर नए उदाहरणों पर सही हो, उस विशाल ट्री से बेहतर है जो केवल ट्रेनिंग डेटा पर पूरी तरह सही हो।"
+     }
+    },
+    {
+     "p": {
+      "en": "Scientists also found that combining many different decision trees, each built from a slightly different part of the data, and letting them vote, gives more reliable answers. This group of trees is called a random forest. You will study it in higher classes; for now remember the idea: many trees together are usually wiser than one.",
+      "hi": "वैज्ञानिकों ने यह भी पाया कि कई अलग-अलग डिसीज़न ट्री मिलाकर, जिनमें से हर एक डेटा के थोड़े अलग भाग से बना हो, और उन्हें वोट करने देकर ज़्यादा भरोसेमंद उत्तर मिलते हैं। पेड़ों के इस समूह को रैंडम फ़ॉरेस्ट कहते हैं। इसे आप ऊँची कक्षाओं में पढ़ेंगे; अभी विचार याद रखिए: कई पेड़ मिलकर आमतौर पर एक से ज़्यादा समझदार होते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.8 Where are decision trees used?",
+    "hi": "3.8 डिसीज़न ट्री कहाँ उपयोग होते हैं?"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Health check-ups: a health worker may follow a question chart: fever? for how many days? rash? breathing trouble? → 'rest at home', 'visit clinic' or 'go to hospital now'. The doctor still decides.",
+       "Banking: deciding whether a loan application is low or high risk using income, existing loans and repayment history; flagging a UPI payment as unusual.",
+       "Customer-care chatbots and phone menus: 'Press 1 for balance, 2 for card block…' each choice leads to the next question.",
+       "Agriculture: choosing a suitable crop or fertiliser using soil type, rainfall and season; checking a plant's symptoms.",
+       "Games and sports: deciding a bowling change or field placement using pitch, batter and over; game characters choosing actions.",
+       "Schools: deciding which students may need extra help using attendance and test scores (used only to support, never to label a child).",
+       "Identification keys in biology: a 'dichotomous key' to identify plants and animals is a decision tree with two choices at each step."
+      ],
+      "hi": [
+       "स्वास्थ्य जाँच: स्वास्थ्य कार्यकर्ता एक प्रश्न-चार्ट पर चल सकते हैं: बुखार? कितने दिन से? दाने? साँस में तकलीफ़? → 'घर पर आराम', 'क्लिनिक जाएँ' या 'अभी अस्पताल जाएँ'। निर्णय फिर भी डॉक्टर लेते हैं।",
+       "बैंकिंग: आय, मौजूदा कर्ज़ और भुगतान इतिहास से तय करना कि ऋण आवेदन कम जोखिम का है या ज़्यादा; किसी UPI भुगतान को असामान्य चिह्नित करना।",
+       "ग्राहक-सेवा चैटबॉट और फ़ोन मेन्यू: 'बैलेंस के लिए 1 दबाएँ, कार्ड ब्लॉक के लिए 2…' हर चुनाव अगले प्रश्न तक ले जाता है।",
+       "कृषि: मिट्टी के प्रकार, वर्षा और मौसम से उपयुक्त फसल या खाद चुनना; पौधे के लक्षण जाँचना।",
+       "खेल: पिच, बल्लेबाज़ और ओवर के आधार पर गेंदबाज़ी बदलना या फ़ील्ड लगाना; खेल के पात्रों का काम चुनना।",
+       "स्कूल: उपस्थिति और टेस्ट अंकों से तय करना कि किन विद्यार्थियों को अतिरिक्त मदद चाहिए (केवल मदद के लिए, कभी बच्चे पर ठप्पा लगाने के लिए नहीं)।",
+       "जीव विज्ञान में पहचान कुंजी: पौधों और जानवरों को पहचानने की 'द्विभाजी कुंजी' (डाइकोटोमस की) हर कदम पर दो विकल्पों वाला डिसीज़न ट्री है।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Advantages",
+        "Limitations"
+       ],
+       "hi": [
+        "फ़ायदे",
+        "सीमाएँ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Easy to understand and explain: you can see every question",
+         "Can overfit if allowed to grow too deep"
+        ],
+        [
+         "Works with both numbers and categories",
+         "A small change in data can change the tree a lot"
+        ],
+        [
+         "Fast to use once built",
+         "Only as fair and correct as the data it learned from"
+        ],
+        [
+         "Can be drawn on paper and checked by people",
+         "Not good for very complex data like raw images or speech; neural networks do better there"
+        ]
+       ],
+       "hi": [
+        [
+         "समझना और समझाना आसान: हर प्रश्न देख सकते हैं",
+         "बहुत गहरा बढ़ने दिया जाए तो ओवरफ़िट हो सकता है"
+        ],
+        [
+         "संख्याओं और श्रेणियों दोनों से काम करता है",
+         "डेटा में छोटा बदलाव ट्री को बहुत बदल सकता है"
+        ],
+        [
+         "बन जाने के बाद उपयोग में तेज़",
+         "उतना ही निष्पक्ष और सही जितना वह डेटा जिससे सीखा"
+        ],
+        [
+         "कागज़ पर बनाया और लोगों द्वारा जाँचा जा सकता है",
+         "कच्चे चित्र या बोली जैसे बहुत जटिल डेटा के लिए अच्छा नहीं; वहाँ न्यूरल नेटवर्क बेहतर हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Fairness: a tree should never use features that unfairly decide a person's chances, such as religion, caste or gender, for things like a loan or an admission. If the data used to build the tree was unfair, the tree will repeat that unfairness. You will study this in Chapter 6.",
+      "hi": "निष्पक्षता: ट्री को कभी ऐसे फ़ीचर उपयोग नहीं करने चाहिए जो किसी व्यक्ति के अवसरों को अनुचित ढंग से तय करें, जैसे ऋण या प्रवेश के लिए धर्म, जाति या लिंग। अगर ट्री बनाने वाला डेटा अनुचित था, तो ट्री वही अन्याय दोहराएगा। यह आप अध्याय 6 में पढ़ेंगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.9 Activities",
+    "hi": "3.9 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (unplugged): Twenty Questions",
+       "hi": "गतिविधि 1 (बिना कंप्यूटर): बीस प्रश्न"
+      },
+      "a": {
+       "en": "Aim: to discover that good first questions shorten the tree.\nYou need: a partner, paper.\nWhat to do: One student thinks of an animal from a list of 16 on the board. The other may ask only yes/no questions. Write down each question. Play three rounds and count the questions needed.\nWhat you observe: questions that split the list in half ('Does it live in water?') find the answer in about 4 questions (16 → 8 → 4 → 2 → 1). Very specific questions ('Is it a tiger?') may take up to 15.\nWhat it teaches: decision trees work best when early questions split groups evenly.",
+       "hi": "उद्देश्य: खोजना कि अच्छे पहले प्रश्न ट्री को छोटा करते हैं।\nक्या चाहिए: एक साथी, कागज़।\nक्या करें: एक विद्यार्थी बोर्ड पर लिखे 16 जानवरों में से एक सोचता है। दूसरा केवल हाँ/नहीं प्रश्न पूछ सकता है। हर प्रश्न लिखिए। तीन राउंड खेलिए और ज़रूरी प्रश्न गिनिए।\nक्या देखेंगे: सूची को आधा बाँटने वाले प्रश्न ('क्या यह पानी में रहता है?') लगभग 4 प्रश्नों में उत्तर ढूँढ लेते हैं (16 → 8 → 4 → 2 → 1)। बहुत खास प्रश्नों ('क्या यह बाघ है?') में 15 तक लग सकते हैं।\nक्या सिखाती है: डिसीज़न ट्री तब सबसे अच्छा काम करते हैं जब शुरुआती प्रश्न समूहों को बराबर बाँटें।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (unplugged): Build a tree from your class data",
+       "hi": "गतिविधि 2 (बिना कंप्यूटर): अपनी कक्षा के डेटा से ट्री बनाइए"
+      },
+      "a": {
+       "en": "Aim: to build a decision tree from a table, like a computer does.\nYou need: chart paper, sticky notes.\nWhat to do: Collect data from 12 classmates: 'Do you like spicy food? Do you play outdoor sports? Do you prefer tea or milk?' and the label 'Favourite snack: samosa or fruit chaat'. For each question, sort the sticky notes into Yes/No piles and count how pure each pile is. Choose the purest question as the root. Repeat for mixed piles. Draw the final tree.\nWhat you observe: some questions separate the groups well; others hardly help.\nWhat it teaches: choosing the best split, pure and mixed groups, and the idea of training data.",
+       "hi": "उद्देश्य: कंप्यूटर की तरह तालिका से डिसीज़न ट्री बनाना।\nक्या चाहिए: चार्ट पेपर, स्टिकी नोट।\nक्या करें: 12 सहपाठियों से डेटा लीजिए: 'क्या आपको तीखा खाना पसंद है? क्या आप बाहर के खेल खेलते हैं? चाय पसंद है या दूध?' और लेबल 'पसंदीदा नाश्ता: समोसा या फ्रूट चाट'। हर प्रश्न के लिए स्टिकी नोट हाँ/नहीं ढेरों में छाँटिए और गिनिए कि हर ढेर कितना शुद्ध है। सबसे शुद्ध प्रश्न को रूट चुनिए। मिले-जुले ढेरों के लिए दोहराइए। अंतिम ट्री बनाइए।\nक्या देखेंगे: कुछ प्रश्न समूहों को अच्छे से अलग करते हैं; कुछ मुश्किल से मदद करते हैं।\nक्या सिखाती है: सबसे अच्छा बँटवारा चुनना, शुद्ध और मिले-जुले समूह, और ट्रेनिंग डेटा का विचार।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (unplugged): A dichotomous key for leaves",
+       "hi": "गतिविधि 3 (बिना कंप्यूटर): पत्तियों के लिए द्विभाजी कुंजी"
+      },
+      "a": {
+       "en": "Aim: to connect decision trees with science.\nYou need: 6 different fallen leaves from the school garden (for example neem, peepal, mango, tulsi, banana, a grass blade).\nWhat to do: Look at features: simple or compound leaf? smooth or toothed edge? broad or narrow? Make a key where each step has two choices and leads to a name.\nWhat you observe: every leaf reaches its own name; your friends can use your key to name leaves they do not know.\nWhat it teaches: a dichotomous key is a binary decision tree; features must be clear and observable.",
+       "hi": "उद्देश्य: डिसीज़न ट्री को विज्ञान से जोड़ना।\nक्या चाहिए: स्कूल बगीचे से गिरी 6 अलग पत्तियाँ (जैसे नीम, पीपल, आम, तुलसी, केला, घास की पत्ती)।\nक्या करें: फ़ीचर देखिए: सरल या संयुक्त पत्ती? चिकना या दाँतेदार किनारा? चौड़ी या पतली? ऐसी कुंजी बनाइए जिसके हर कदम पर दो विकल्प हों और जो नाम तक ले जाए।\nक्या देखेंगे: हर पत्ती अपने नाम तक पहुँचती है; आपके दोस्त आपकी कुंजी से वे पत्तियाँ पहचान सकते हैं जिन्हें वे नहीं जानते।\nक्या सिखाती है: द्विभाजी कुंजी बाइनरी डिसीज़न ट्री है; फ़ीचर साफ़ और देखने योग्य होने चाहिए।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4 (screen): Run and change the tree program",
+       "hi": "गतिविधि 4 (स्क्रीन): ट्री प्रोग्राम चलाइए और बदलिए"
+      },
+      "a": {
+       "en": "Aim: to see a tree as code.\nYou need: a free online Python editor (ask an adult to help choose one).\nWhat to do: Type the fruit_tree program from section 3.5 and run it. Then add a fifth fruit, orange (orange colour, round), by adding one more question in the 'else' part. Test it with print(fruit_tree(\"orange\", \"round\")).\nWhat you observe: adding a class means adding a question and a leaf; the indentation must match the tree's levels.\nWhat it teaches: trees become nested if-else code; leaves = rules.",
+       "hi": "उद्देश्य: ट्री को कोड के रूप में देखना।\nक्या चाहिए: एक मुफ़्त ऑनलाइन Python एडिटर (चुनने में किसी बड़े की मदद लीजिए)।\nक्या करें: खंड 3.5 का fruit_tree प्रोग्राम टाइप करके चलाइए। फिर 'else' भाग में एक और प्रश्न जोड़कर पाँचवाँ फल संतरा (नारंगी रंग, गोल) जोड़िए। इसे print(fruit_tree(\"orange\", \"round\")) से टेस्ट कीजिए।\nक्या देखेंगे: एक क्लास जोड़ने का अर्थ है एक प्रश्न और एक लीफ़ जोड़ना; इंडेंटेशन ट्री के स्तरों से मेल खाना चाहिए।\nक्या सिखाती है: ट्री नेस्टेड if-else कोड बनते हैं; लीफ़ = नियम।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Drawing the root at the bottom like a real tree. Fix: decision trees are drawn upside down: root at the top, leaves at the bottom.",
+   "Writing a question inside a leaf. Fix: a leaf holds only the final answer (class).",
+   "Forgetting to label branches. Fix: write the answer (Yes/No or a value) on every branch.",
+   "Using vague questions like 'Is it nice?'. Fix: use clear, observable features: colour, size, number, yes/no facts.",
+   "Letting one item reach two leaves. Fix: questions must be clear so every item follows exactly one path.",
+   "Thinking a bigger tree is always better. Fix: very deep trees overfit; test on new data and keep trees simple.",
+   "Choosing the root question randomly. Fix: choose the question that makes the purest groups.",
+   "Counting depth as number of leaves. Fix: depth is the number of questions on the longest root-to-leaf path."
+  ],
+  "hi": [
+   "असली पेड़ की तरह रूट को नीचे बनाना। सुधार: डिसीज़न ट्री उल्टे बनाए जाते हैं: रूट ऊपर, लीफ़ नीचे।",
+   "लीफ़ के अंदर प्रश्न लिखना। सुधार: लीफ़ में केवल अंतिम उत्तर (क्लास) होता है।",
+   "शाखाओं पर लेबल लिखना भूलना। सुधार: हर शाखा पर उत्तर (हाँ/नहीं या मान) लिखिए।",
+   "'क्या यह अच्छा है?' जैसे धुंधले प्रश्न उपयोग करना। सुधार: साफ़, देखने योग्य फ़ीचर उपयोग कीजिए: रंग, माप, संख्या, हाँ/नहीं तथ्य।",
+   "एक चीज़ को दो लीफ़ तक पहुँचने देना। सुधार: प्रश्न साफ़ हों ताकि हर चीज़ ठीक एक पथ पर चले।",
+   "यह सोचना कि बड़ा ट्री हमेशा बेहतर है। सुधार: बहुत गहरे ट्री ओवरफ़िट होते हैं; नए डेटा पर टेस्ट करें और ट्री सरल रखें।",
+   "रूट प्रश्न बिना सोचे चुनना। सुधार: वह प्रश्न चुनिए जो सबसे शुद्ध समूह बनाए।",
+   "गहराई को लीफ़ की संख्या गिनना। सुधार: गहराई रूट से लीफ़ तक के सबसे लंबे पथ पर प्रश्नों की संख्या है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Classification",
+    "hi": "क्लासिफ़िकेशन"
+   },
+   "d": {
+    "en": "Putting an item into one of a fixed set of classes using its features.",
+    "hi": "फ़ीचरों से किसी चीज़ को तय क्लासों में से एक में रखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Class",
+    "hi": "क्लास"
+   },
+   "d": {
+    "en": "A group name that is the final answer of classification.",
+    "hi": "समूह का नाम जो वर्गीकरण का अंतिम उत्तर है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature",
+    "hi": "फ़ीचर"
+   },
+   "d": {
+    "en": "An observable or measurable property used to decide.",
+    "hi": "निर्णय के लिए उपयोग होने वाला देखने या मापने योग्य गुण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Binary classification",
+    "hi": "बाइनरी क्लासिफ़िकेशन"
+   },
+   "d": {
+    "en": "Classification with only two classes.",
+    "hi": "केवल दो क्लास वाला वर्गीकरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Multi-class classification",
+    "hi": "मल्टी-क्लास क्लासिफ़िकेशन"
+   },
+   "d": {
+    "en": "Classification with three or more classes.",
+    "hi": "तीन या अधिक क्लास वाला वर्गीकरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Decision tree",
+    "hi": "डिसीज़न ट्री"
+   },
+   "d": {
+    "en": "An upside-down tree of questions leading to decisions.",
+    "hi": "निर्णय तक ले जाने वाले प्रश्नों का उल्टा पेड़।"
+   }
+  },
+  {
+   "t": {
+    "en": "Root node",
+    "hi": "रूट नोड"
+   },
+   "d": {
+    "en": "The first question at the top of a tree.",
+    "hi": "ट्री के सबसे ऊपर का पहला प्रश्न।"
+   }
+  },
+  {
+   "t": {
+    "en": "Decision node",
+    "hi": "डिसीज़न नोड"
+   },
+   "d": {
+    "en": "Any node that asks a question.",
+    "hi": "कोई भी नोड जो प्रश्न पूछता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Branch",
+    "hi": "शाखा"
+   },
+   "d": {
+    "en": "A line from a node, labelled with an answer.",
+    "hi": "नोड से निकली रेखा, जिस पर उत्तर लिखा होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Leaf node",
+    "hi": "लीफ़ नोड"
+   },
+   "d": {
+    "en": "An end node that gives the final class.",
+    "hi": "अंतिम नोड जो अंतिम क्लास देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Path",
+    "hi": "पथ"
+   },
+   "d": {
+    "en": "The route from root to a leaf; it equals one rule.",
+    "hi": "रूट से लीफ़ तक का रास्ता; यह एक नियम के बराबर है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Depth",
+    "hi": "गहराई"
+   },
+   "d": {
+    "en": "Number of questions on the longest path.",
+    "hi": "सबसे लंबे पथ पर प्रश्नों की संख्या।"
+   }
+  },
+  {
+   "t": {
+    "en": "Threshold",
+    "hi": "थ्रेशोल्ड (सीमा)"
+   },
+   "d": {
+    "en": "A cut-off value used in a number question, e.g. 'height < 140 cm?'.",
+    "hi": "संख्या वाले प्रश्न में उपयोग होने वाला कट-ऑफ़ मान, जैसे 'ऊँचाई < 140 cm?'।"
+   }
+  },
+  {
+   "t": {
+    "en": "Split",
+    "hi": "स्प्लिट (बँटवारा)"
+   },
+   "d": {
+    "en": "Dividing a group of examples using a question.",
+    "hi": "किसी प्रश्न से उदाहरणों के समूह को बाँटना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pure group",
+    "hi": "शुद्ध समूह"
+   },
+   "d": {
+    "en": "A group where all examples have the same class.",
+    "hi": "ऐसा समूह जिसके सभी उदाहरणों की क्लास एक हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Impurity",
+    "hi": "अशुद्धता (इम्प्योरिटी)"
+   },
+   "d": {
+    "en": "A measure of how mixed a group is; trees choose splits that reduce it.",
+    "hi": "समूह कितना मिला-जुला है इसका माप; ट्री ऐसे बँटवारे चुनते हैं जो इसे घटाएँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Nested if-else",
+    "hi": "नेस्टेड if-else"
+   },
+   "d": {
+    "en": "An if-else statement placed inside another; how trees are written in code.",
+    "hi": "एक if-else कथन के अंदर दूसरा; कोड में ट्री ऐसे लिखे जाते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Overfitting",
+    "hi": "ओवरफ़िटिंग"
+   },
+   "d": {
+    "en": "Learning training data too exactly so that new data is handled badly.",
+    "hi": "ट्रेनिंग डेटा को इतना ठीक-ठीक सीखना कि नया डेटा खराब संभले।"
+   }
+  },
+  {
+   "t": {
+    "en": "Random forest",
+    "hi": "रैंडम फ़ॉरेस्ट"
+   },
+   "d": {
+    "en": "Many decision trees that vote together for a more reliable answer.",
+    "hi": "कई डिसीज़न ट्री जो मिलकर वोट करते हैं ताकि उत्तर ज़्यादा भरोसेमंद हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dichotomous key",
+    "hi": "द्विभाजी कुंजी"
+   },
+   "d": {
+    "en": "An identification key with two choices at each step; a binary decision tree.",
+    "hi": "हर कदम पर दो विकल्पों वाली पहचान कुंजी; एक बाइनरी डिसीज़न ट्री।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The first question at the top of a decision tree is the: (a) leaf (b) branch (c) root node (d) path",
+    "hi": "MCQ: डिसीज़न ट्री के सबसे ऊपर का पहला प्रश्न है: (a) लीफ़ (b) शाखा (c) रूट नोड (d) पथ"
+   },
+   "a": {
+    "en": "(c) root node.",
+    "hi": "(c) रूट नोड।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which part gives the final answer? (a) root (b) decision node (c) branch (d) leaf node",
+    "hi": "MCQ: कौन-सा भाग अंतिम उत्तर देता है? (a) रूट (b) डिसीज़न नोड (c) शाखा (d) लीफ़ नोड"
+   },
+   "a": {
+    "en": "(d) leaf node.",
+    "hi": "(d) लीफ़ नोड।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Classification with only two classes is called ______ classification.",
+    "hi": "रिक्त स्थान भरिए: केवल दो क्लास वाला वर्गीकरण ______ वर्गीकरण कहलाता है।"
+   },
+   "a": {
+    "en": "binary.",
+    "hi": "बाइनरी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A group in which all examples have the same class is called a ______ group.",
+    "hi": "रिक्त स्थान भरिए: जिस समूह के सभी उदाहरणों की क्लास एक हो उसे ______ समूह कहते हैं।"
+   },
+   "a": {
+    "en": "pure.",
+    "hi": "शुद्ध।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: Decision trees are drawn with the root at the top.",
+    "hi": "सही या गलत: डिसीज़न ट्री में रूट ऊपर बनाया जाता है।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: A deeper tree is always more accurate on new data.",
+    "hi": "सही या गलत: गहरा ट्री नए डेटा पर हमेशा ज़्यादा सटीक होता है।"
+   },
+   "a": {
+    "en": "False. Very deep trees can overfit and do worse on new data.",
+    "hi": "गलत। बहुत गहरे ट्री ओवरफ़िट हो सकते हैं और नए डेटा पर खराब कर सकते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the parts of a decision tree.",
+    "hi": "डिसीज़न ट्री के भागों के नाम बताइए।"
+   },
+   "a": {
+    "en": "Root node, decision (internal) nodes, branches, leaf (terminal) nodes. A route from root to leaf is a path, and the longest path's number of questions is the depth.",
+    "hi": "रूट नोड, डिसीज़न (आंतरिक) नोड, शाखाएँ, लीफ़ (अंतिम) नोड। रूट से लीफ़ तक का रास्ता पथ है, और सबसे लंबे पथ के प्रश्नों की संख्या गहराई है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A yes/no tree has 5 questions. How many leaves does it have?",
+    "hi": "एक हाँ/नहीं ट्री में 5 प्रश्न हैं। इसमें कितने लीफ़ हैं?"
+   },
+   "a": {
+    "en": "In a yes/no tree, leaves = questions + 1 = 5 + 1 = 6 leaves.",
+    "hi": "हाँ/नहीं ट्री में लीफ़ = प्रश्न + 1 = 5 + 1 = 6 लीफ़।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Draw (in words) a decision tree to sort: pen, pencil, eraser, scale. Use features like 'Does it write?' and 'Does it need ink?'.",
+    "hi": "शब्दों में एक डिसीज़न ट्री बनाइए जो छाँटे: पेन, पेंसिल, रबर, स्केल। 'क्या यह लिखता है?' और 'क्या इसमें स्याही चाहिए?' जैसे फ़ीचर उपयोग कीजिए।"
+   },
+   "a": {
+    "en": "Root: Does it write?\n  Yes → Does it need ink? Yes → Pen; No → Pencil.\n  No → Is it long and straight? Yes → Scale; No → Eraser.\nQuestions = 3, leaves = 4, depth = 2.",
+    "hi": "रूट: क्या यह लिखता है?\n  हाँ → क्या इसमें स्याही चाहिए? हाँ → पेन; नहीं → पेंसिल।\n  नहीं → क्या यह लंबा और सीधा है? हाँ → स्केल; नहीं → रबर।\nप्रश्न = 3, लीफ़ = 4, गहराई = 2।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write the IF-THEN rules for the 'what to wear' tree in section 3.2.",
+    "hi": "खंड 3.2 के 'क्या पहनें' ट्री के IF-THEN नियम लिखिए।"
+   },
+   "a": {
+    "en": "Rule 1: IF raining THEN raincoat.\nRule 2: IF NOT raining AND colder than 15 °C THEN sweater.\nRule 3: IF NOT raining AND NOT colder than 15 °C THEN normal uniform.\nThree leaves give three rules.",
+    "hi": "नियम 1: IF बारिश हो रही है THEN रेनकोट।\nनियम 2: IF बारिश नहीं AND 15 °C से ठंड THEN स्वेटर।\nनियम 3: IF बारिश नहीं AND 15 °C से ठंड नहीं THEN सामान्य वर्दी।\nतीन लीफ़ से तीन नियम।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is 'sky' a better root question than 'wind' for the cricket data in section 3.6?",
+    "hi": "खंड 3.6 के क्रिकेट डेटा के लिए 'आसमान' 'हवा' से बेहतर रूट प्रश्न क्यों है?"
+   },
+   "a": {
+    "en": "Splitting on sky makes two pure groups (sunny = all yes, rainy = all no) covering 4 of 6 days. Splitting on wind leaves both groups mixed (0 pure days). The question that makes purer groups removes more confusion, so sky is better.",
+    "hi": "आसमान पर बाँटने से दो शुद्ध समूह बनते हैं (धूप = सब हाँ, बारिश = सब नहीं) जो 6 में से 4 दिन ढकते हैं। हवा पर बाँटने से दोनों समूह मिले-जुले रहते हैं (0 शुद्ध दिन)। जो प्रश्न ज़्यादा शुद्ध समूह बनाए वह ज़्यादा उलझन दूर करता है, इसलिए आसमान बेहतर है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What will fruit_tree(\"green\", \"round\") return? Trace the path.",
+    "hi": "fruit_tree(\"green\", \"round\") क्या लौटाएगा? पथ बताइए।"
+   },
+   "a": {
+    "en": "Root: colour == 'yellow'? No → go to else.\nNext: colour == 'red'? No → else.\nLeaf: return 'grapes'.\nSo it returns grapes.",
+    "hi": "रूट: colour == 'yellow'? नहीं → else पर जाइए।\nअगला: colour == 'red'? नहीं → else।\nलीफ़: return 'grapes'।\nतो यह grapes लौटाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A tree was tested on 60 examples and got 51 right. Find the accuracy.",
+    "hi": "एक ट्री को 60 उदाहरणों पर टेस्ट किया गया और 51 सही रहे। एक्यूरेसी निकालिए।"
+   },
+   "a": {
+    "en": "Accuracy = (51 ÷ 60) × 100 = 0.85 × 100 = 85%.",
+    "hi": "एक्यूरेसी = (51 ÷ 60) × 100 = 0.85 × 100 = 85%।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give three real-life uses of decision trees in India.",
+    "hi": "भारत में डिसीज़न ट्री के तीन असल जीवन उपयोग बताइए।"
+   },
+   "a": {
+    "en": "1. Bank phone menus and chatbots that guide you with choices.\n2. Banks checking loan risk or unusual UPI payments.\n3. Agriculture apps suggesting a crop or fertiliser from soil, rainfall and season.\n(Also: health-worker symptom charts, identification keys in biology.)",
+    "hi": "1. बैंक के फ़ोन मेन्यू और चैटबॉट जो विकल्पों से मार्गदर्शन करते हैं।\n2. बैंक जो ऋण जोखिम या असामान्य UPI भुगतान जाँचते हैं।\n3. कृषि ऐप जो मिट्टी, वर्षा और मौसम से फसल या खाद सुझाते हैं।\n(साथ ही: स्वास्थ्य कार्यकर्ताओं के लक्षण चार्ट, जीव विज्ञान की पहचान कुंजियाँ।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Build a decision tree from this data: (Temp > 37.5 °C?, Cough?) → Advice. Rows: (yes, yes) → see doctor; (yes, no) → see doctor; (no, yes) → rest and warm water; (no, no) → go to school.",
+    "hi": "इस डेटा से डिसीज़न ट्री बनाइए: (तापमान > 37.5 °C?, खाँसी?) → सलाह। पंक्तियाँ: (हाँ, हाँ) → डॉक्टर को दिखाएँ; (हाँ, नहीं) → डॉक्टर को दिखाएँ; (नहीं, हाँ) → आराम और गरम पानी; (नहीं, नहीं) → स्कूल जाएँ।"
+   },
+   "a": {
+    "en": "Step 1: Try 'Temp > 37.5?' as root: Yes group = {see doctor, see doctor} → pure. No group = {rest, school} → mixed.\nStep 2: Try 'Cough?' as root: Yes = {doctor, rest} mixed; No = {doctor, school} mixed. So temperature is the better root.\nStep 3: For the No-fever group ask 'Cough?': Yes → rest and warm water; No → go to school.\nFinal tree: Fever? Yes → see doctor; No → Cough? Yes → rest; No → school. 2 questions, 3 leaves.\n(Note: this is a school exercise; real health decisions are made by doctors and parents.)",
+    "hi": "चरण 1: 'तापमान > 37.5?' को रूट आज़माइए: हाँ समूह = {डॉक्टर, डॉक्टर} → शुद्ध। नहीं समूह = {आराम, स्कूल} → मिला-जुला।\nचरण 2: 'खाँसी?' को रूट आज़माइए: हाँ = {डॉक्टर, आराम} मिला; नहीं = {डॉक्टर, स्कूल} मिला। इसलिए तापमान बेहतर रूट है।\nचरण 3: बिना बुखार वाले समूह के लिए पूछिए 'खाँसी?': हाँ → आराम और गरम पानी; नहीं → स्कूल जाएँ।\nअंतिम ट्री: बुखार? हाँ → डॉक्टर; नहीं → खाँसी? हाँ → आराम; नहीं → स्कूल। 2 प्रश्न, 3 लीफ़।\n(ध्यान दें: यह स्कूल का अभ्यास है; असली स्वास्थ्य निर्णय डॉक्टर और माता-पिता लेते हैं।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain overfitting in a decision tree with an example, and give two ways to prevent it.",
+    "hi": "डिसीज़न ट्री में ओवरफ़िटिंग को उदाहरण सहित समझाइए, और इसे रोकने के दो तरीके बताइए।"
+   },
+   "a": {
+    "en": "Overfitting: the tree learns the training examples too exactly, including accidents. Example: a mango-ripeness tree adds the question 'Was it bought on Tuesday?' because one ripe mango in the data was, so it fails on new mangoes.\nPrevention: (1) limit the depth of the tree; (2) do not split very small groups; and always test accuracy on separate test data (a random forest of many trees also helps).",
+    "hi": "ओवरफ़िटिंग: ट्री ट्रेनिंग उदाहरणों को संयोगों समेत बहुत ज़्यादा ठीक-ठीक सीख लेता है। उदाहरण: आम पकने वाला ट्री 'क्या मंगलवार को खरीदा?' प्रश्न जोड़ देता है क्योंकि डेटा में एक पका आम मंगलवार का था, इसलिए नए आमों पर विफल होता है।\nरोकथाम: (1) ट्री की गहराई सीमित करें; (2) बहुत छोटे समूहों को न बाँटें; और हमेशा अलग टेस्ट डेटा पर एक्यूरेसी जाँचें (कई ट्री वाला रैंडम फ़ॉरेस्ट भी मदद करता है)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe how a computer builds a decision tree from a table of labelled data.",
+    "hi": "दीर्घ उत्तर: बताइए कि कंप्यूटर लेबल वाले डेटा की तालिका से डिसीज़न ट्री कैसे बनाता है।"
+   },
+   "a": {
+    "en": "1. Start with all training examples at the root.\n2. For every feature (and, for numbers, every useful threshold), split the examples and measure how pure the groups are.\n3. Choose the question that gives the purest groups (lowest impurity) as the root.\n4. For each branch: if the group is pure, make a leaf with that class; if mixed, repeat steps 2–3 using only that group.\n5. Stop when groups are pure, too small, or a maximum depth is reached; a mixed leaf takes the majority class.\n6. Test the tree on unseen data and calculate accuracy; simplify if it overfits.",
+    "hi": "1. सभी ट्रेनिंग उदाहरणों के साथ रूट से शुरू करें।\n2. हर फ़ीचर (और संख्याओं के लिए हर उपयोगी सीमा) से उदाहरण बाँटें और नापें कि समूह कितने शुद्ध हैं।\n3. सबसे शुद्ध समूह (सबसे कम अशुद्धता) देने वाले प्रश्न को रूट चुनें।\n4. हर शाखा के लिए: समूह शुद्ध हो तो उस क्लास का लीफ़ बनाएँ; मिला हो तो केवल उस समूह से चरण 2–3 दोहराएँ।\n5. रुकें जब समूह शुद्ध हों, बहुत छोटे हों, या अधिकतम गहराई आ जाए; मिले-जुले लीफ़ को बहुमत वाली क्लास मिलती है।\n6. बिना देखे डेटा पर ट्री टेस्ट करके एक्यूरेसी निकालें; ओवरफ़िट हो तो सरल करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: A bank's loan tree uses 'area where the person lives' as the root question. Why might this be unfair? What should the bank do?",
+    "hi": "सोचने वाला प्रश्न: एक बैंक का ऋण ट्री 'व्यक्ति किस इलाके में रहता है' को रूट प्रश्न के रूप में उपयोग करता है। यह अनुचित क्यों हो सकता है? बैंक को क्या करना चाहिए?"
+   },
+   "a": {
+    "en": "It may judge people by where they live instead of their own ability to repay, so honest people from poorer areas may be rejected, repeating old unfairness in the data.\nThe bank should use fair, relevant features (income, repayment history), check results for different groups, explain decisions, and let a human review rejected cases.",
+    "hi": "यह लोगों को उनकी चुकाने की अपनी क्षमता के बजाय उनके रहने की जगह से आँक सकता है, जिससे गरीब इलाकों के ईमानदार लोग अस्वीकार हो सकते हैं और डेटा का पुराना अन्याय दोहराया जा सकता है।\nबैंक को निष्पक्ष, प्रासंगिक फ़ीचर (आय, भुगतान इतिहास) उपयोग करने चाहिए, अलग समूहों के लिए परिणाम जाँचने चाहिए, निर्णय समझाने चाहिए, और अस्वीकार मामलों की किसी इंसान से समीक्षा करवानी चाहिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: In Twenty Questions with 32 possible animals, what is the smallest number of yes/no questions that is always enough if each question splits the group exactly in half?",
+    "hi": "गतिविधि प्रश्न: 32 संभावित जानवरों वाले बीस प्रश्न खेल में, अगर हर प्रश्न समूह को ठीक आधा बाँटे तो कम से कम कितने हाँ/नहीं प्रश्न हमेशा काफ़ी होंगे?"
+   },
+   "a": {
+    "en": "32 → 16 → 8 → 4 → 2 → 1. That is 5 halvings, so 5 questions are always enough (2 × 2 × 2 × 2 × 2 = 32).",
+    "hi": "32 → 16 → 8 → 4 → 2 → 1। यानी 5 बार आधा, इसलिए 5 प्रश्न हमेशा काफ़ी हैं (2 × 2 × 2 × 2 × 2 = 32)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Is a phone menu ('Press 1 for Hindi, 2 for English…') a decision tree? Explain.",
+    "hi": "क्या फ़ोन मेन्यू ('हिंदी के लिए 1, अंग्रेज़ी के लिए 2 दबाएँ…') डिसीज़न ट्री है? समझाइए।"
+   },
+   "a": {
+    "en": "Yes. The first menu is the root; each key press is a branch; later menus are decision nodes; the final service (talk to an agent, hear balance) is a leaf. It is a multi-way tree because a question can have more than two answers.",
+    "hi": "हाँ। पहला मेन्यू रूट है; हर बटन दबाना एक शाखा है; बाद के मेन्यू डिसीज़न नोड हैं; अंतिम सेवा (एजेंट से बात, बैलेंस सुनना) लीफ़ है। यह कई-शाखा वाला ट्री है क्योंकि एक प्रश्न के दो से अधिक उत्तर हो सकते हैं।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Classification puts an item into one of a fixed set of classes using its features; it is a supervised learning task.",
+   "Binary classification has two classes; multi-class has three or more.",
+   "A decision tree is an upside-down tree of questions: root at the top, leaves at the bottom.",
+   "Parts: root node, decision nodes, labelled branches, leaf nodes; a path is one rule; depth is the longest chain of questions.",
+   "In a yes/no tree, leaves = questions + 1.",
+   "To read a tree, start at the root and follow one branch at a time until a leaf.",
+   "Each root-to-leaf path becomes an IF ... AND ... THEN rule; in code, a tree is nested if-else.",
+   "Computers build trees from labelled data by choosing, at each step, the question that makes the purest groups.",
+   "Number features use threshold questions such as 'height < 140 cm?'.",
+   "Trees must be tested on new data; very deep trees overfit. Many trees voting together form a random forest.",
+   "Decision trees are easy to explain and are used in banking, health charts, phone menus, farming and biology keys.",
+   "A tree is only as fair as its data and features; unfair features must not decide people's chances."
+  ],
+  "hi": [
+   "वर्गीकरण फ़ीचरों से किसी चीज़ को तय क्लासों में से एक में रखता है; यह सुपरवाइज़्ड लर्निंग का काम है।",
+   "बाइनरी वर्गीकरण में दो क्लास होती हैं; मल्टी-क्लास में तीन या अधिक।",
+   "डिसीज़न ट्री प्रश्नों का उल्टा पेड़ है: रूट ऊपर, लीफ़ नीचे।",
+   "भाग: रूट नोड, डिसीज़न नोड, लेबल वाली शाखाएँ, लीफ़ नोड; पथ एक नियम है; गहराई प्रश्नों की सबसे लंबी कड़ी है।",
+   "हाँ/नहीं ट्री में लीफ़ = प्रश्न + 1।",
+   "ट्री पढ़ने के लिए रूट से शुरू करके एक-एक शाखा पकड़ते हुए लीफ़ तक जाइए।",
+   "रूट से लीफ़ का हर पथ एक IF ... AND ... THEN नियम बनता है; कोड में ट्री नेस्टेड if-else है।",
+   "कंप्यूटर लेबल वाले डेटा से हर कदम पर सबसे शुद्ध समूह बनाने वाला प्रश्न चुनकर ट्री बनाते हैं।",
+   "संख्या वाले फ़ीचर 'ऊँचाई < 140 cm?' जैसे सीमा वाले प्रश्न उपयोग करते हैं।",
+   "ट्री को नए डेटा पर टेस्ट करना चाहिए; बहुत गहरे ट्री ओवरफ़िट होते हैं। कई ट्री मिलकर वोट करें तो रैंडम फ़ॉरेस्ट बनता है।",
+   "डिसीज़न ट्री समझाने में आसान हैं और बैंकिंग, स्वास्थ्य चार्ट, फ़ोन मेन्यू, खेती और जीव विज्ञान की कुंजियों में उपयोग होते हैं।",
+   "ट्री उतना ही निष्पक्ष है जितना उसका डेटा और फ़ीचर; अनुचित फ़ीचरों से लोगों के अवसर तय नहीं होने चाहिए।"
+  ]
+ }
+}

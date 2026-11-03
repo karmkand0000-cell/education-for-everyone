@@ -1,0 +1,1647 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "10",
+ "id": "ch1",
+ "intro": {
+  "en": "Every AI solution, from a crop-disease app to a traffic predictor, is built by following the same six-stage AI Project Cycle. In this chapter you quickly revisit those stages and the three domains of AI that you met in Class 9. Then you go one step further: you learn why an AI system that works can still be unfair, and how ethical frameworks, including the bioethics framework used in healthcare, help us build AI that is right as well as smart.",
+  "hi": "फ़सल-रोग पहचानने वाले ऐप से लेकर ट्रैफ़िक का अनुमान लगाने वाले सिस्टम तक, हर AI समाधान एक ही छह-चरणीय AI प्रोजेक्ट चक्र का पालन करके बनता है। इस अध्याय में आप उन चरणों और AI के तीन डोमेन को जल्दी से दोहराएँगे, जिनसे आप कक्षा 9 में मिले थे। फिर एक कदम आगे बढ़कर सीखेंगे कि काम करने वाला AI सिस्टम भी अन्यायपूर्ण क्यों हो सकता है, और नैतिक ढाँचे, जिनमें स्वास्थ्य सेवा में उपयोग होने वाला बायोएथिक्स ढाँचा भी है, हमें ऐसा AI बनाने में कैसे मदद करते हैं जो समझदार होने के साथ-साथ सही भी हो।"
+ },
+ "learn": {
+  "en": [
+   "The six stages of the AI Project Cycle and what happens in each",
+   "How to use the 4Ws Problem Canvas and write a problem statement",
+   "Sources and qualities of good data, and why we explore data with graphs",
+   "The three domains of AI (Statistical Data, Computer Vision, NLP) with examples",
+   "The meaning of ethics, framework and ethical framework",
+   "Why AI needs ethical frameworks, with real examples of bias",
+   "Factors that influence human decision-making (the My Goodness activity)",
+   "Sector-based and value-based (rights, utility, virtue) frameworks",
+   "The four principles of bioethics and a healthcare case study",
+   "How to answer MCQ, assertion-reason and case-based questions on this unit"
+  ],
+  "hi": [
+   "AI प्रोजेक्ट चक्र के छह चरण और हर चरण में क्या होता है",
+   "4Ws प्रॉब्लम कैनवास का उपयोग और समस्या कथन लिखना",
+   "अच्छे डेटा के स्रोत और गुण, और ग्राफ़ से डेटा का अन्वेषण क्यों करते हैं",
+   "AI के तीन डोमेन (सांख्यिकीय डेटा, कंप्यूटर विज़न, NLP) उदाहरणों के साथ",
+   "नैतिकता, ढाँचा और नैतिक ढाँचा का अर्थ",
+   "AI को नैतिक ढाँचों की ज़रूरत क्यों है, पूर्वाग्रह के असली उदाहरणों के साथ",
+   "मानव निर्णयों को प्रभावित करने वाले कारक (My Goodness गतिविधि)",
+   "क्षेत्र-आधारित और मूल्य-आधारित (अधिकार, उपयोगिता, सद्गुण) ढाँचे",
+   "बायोएथिक्स के चार सिद्धांत और स्वास्थ्य सेवा का एक केस स्टडी",
+   "इस इकाई पर MCQ, अभिकथन-कारण और केस-आधारित प्रश्नों के उत्तर कैसे दें"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "1.1 Why revisit the AI Project Cycle?",
+    "hi": "1.1 AI प्रोजेक्ट चक्र को दोबारा क्यों पढ़ें?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Class 9 you learnt that an AI project is not built in one jump. It is built step by step, in a fixed order, and the steps repeat until the solution works well. This step-by-step plan is called the AI Project Cycle. In Class 10 we revisit it quickly, because every later chapter (modelling, evaluation, computer vision, NLP) fits into one of its stages. Then we go further and ask a deeper question: even if an AI system works, is it right and fair? That is the job of ethical frameworks.",
+      "hi": "कक्षा 9 में आपने सीखा था कि कोई AI प्रोजेक्ट एक ही छलांग में नहीं बनता। वह एक तय क्रम में, कदम-दर-कदम बनता है, और ये कदम तब तक दोहराए जाते हैं जब तक समाधान अच्छी तरह काम न करने लगे। इसी योजना को AI प्रोजेक्ट चक्र (AI Project Cycle) कहते हैं। कक्षा 10 में हम इसे जल्दी से दोहराएँगे, क्योंकि आगे का हर अध्याय (मॉडलिंग, मूल्यांकन, कंप्यूटर विज़न, NLP) इसी चक्र के किसी न किसी चरण से जुड़ा है। फिर हम एक गहरा सवाल पूछेंगे: अगर कोई AI सिस्टम काम कर भी रहा है, तो क्या वह सही और न्यायपूर्ण है? इस सवाल का उत्तर ढूँढने में नैतिक ढाँचे (ethical frameworks) मदद करते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "AI Project Cycle",
+       "hi": "AI प्रोजेक्ट चक्र (AI Project Cycle)"
+      },
+      "text": {
+       "en": "The AI Project Cycle is the cyclical (repeating) process followed to complete an AI project. It gives a framework, a planned path, that leads us from a real-life problem to a working AI solution.",
+       "hi": "AI प्रोजेक्ट चक्र वह चक्रीय (बार-बार दोहराई जाने वाली) प्रक्रिया है जिसका पालन किसी AI प्रोजेक्ट को पूरा करने के लिए किया जाता है। यह एक ढाँचा, यानी एक योजनाबद्ध रास्ता देता है, जो हमें एक वास्तविक समस्या से काम करने वाले AI समाधान तक ले जाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Think of how you prepare a dish for a family function. First you decide what to cook and for whom (the problem). You buy the ingredients (data). You check them, sort them, and see what you have (exploration). You choose a recipe and cook (modelling). You taste it and fix the salt (evaluation). Finally you serve it to the guests (deployment). If the guests say it is too spicy, you go back and change the recipe next time. The AI Project Cycle works the same way.",
+      "hi": "सोचिए, किसी पारिवारिक समारोह के लिए आप कोई व्यंजन कैसे बनाते हैं। पहले तय करते हैं कि क्या बनाना है और किसके लिए (समस्या)। फिर सामग्री खरीदते हैं (डेटा)। उसे जाँचते, छाँटते और देखते हैं कि आपके पास क्या-क्या है (अन्वेषण)। कोई विधि चुनकर पकाते हैं (मॉडलिंग)। चखकर नमक ठीक करते हैं (मूल्यांकन)। अंत में मेहमानों को परोसते हैं (डिप्लॉयमेंट)। अगर मेहमान कहें कि खाना बहुत तीखा है, तो अगली बार आप लौटकर विधि बदलते हैं। AI प्रोजेक्ट चक्र भी ठीक इसी तरह काम करता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "Main question",
+        "What happens"
+       ],
+       "hi": [
+        "चरण",
+        "मुख्य प्रश्न",
+        "क्या होता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Problem Scoping",
+         "What exactly is the problem?",
+         "Understand the problem, who it affects, where and why; write a clear problem statement and goal"
+        ],
+        [
+         "2. Data Acquisition",
+         "What data do we need and where will we get it?",
+         "Collect accurate, reliable, relevant data from authentic sources"
+        ],
+        [
+         "3. Data Exploration",
+         "What does the data tell us?",
+         "Clean and arrange the data; draw graphs and charts to find patterns"
+        ],
+        [
+         "4. Modelling",
+         "Which model can learn this pattern?",
+         "Choose, build and train one or more AI models; pick the most suitable"
+        ],
+        [
+         "5. Evaluation",
+         "How well does the model work?",
+         "Test the model on new (testing) data and measure how good it is"
+        ],
+        [
+         "6. Deployment",
+         "How will people use it?",
+         "Put the solution into real use (an app, a website, a machine) and keep watching it"
+        ]
+       ],
+       "hi": [
+        [
+         "1. समस्या निर्धारण (Problem Scoping)",
+         "समस्या ठीक-ठीक क्या है?",
+         "समस्या को समझना, वह किसे, कहाँ और क्यों प्रभावित करती है; स्पष्ट समस्या कथन और लक्ष्य लिखना"
+        ],
+        [
+         "2. डेटा अधिग्रहण (Data Acquisition)",
+         "कौन-सा डेटा चाहिए और कहाँ से मिलेगा?",
+         "विश्वसनीय स्रोतों से सटीक, भरोसेमंद और प्रासंगिक डेटा इकट्ठा करना"
+        ],
+        [
+         "3. डेटा अन्वेषण (Data Exploration)",
+         "डेटा हमें क्या बताता है?",
+         "डेटा को साफ़ और व्यवस्थित करना; पैटर्न ढूँढने के लिए ग्राफ़ और चार्ट बनाना"
+        ],
+        [
+         "4. मॉडलिंग (Modelling)",
+         "कौन-सा मॉडल यह पैटर्न सीख सकता है?",
+         "एक या अधिक AI मॉडल चुनना, बनाना और प्रशिक्षित करना; सबसे उपयुक्त चुनना"
+        ],
+        [
+         "5. मूल्यांकन (Evaluation)",
+         "मॉडल कितना अच्छा काम करता है?",
+         "मॉडल को नए (टेस्टिंग) डेटा पर जाँचना और उसकी गुणवत्ता मापना"
+        ],
+        [
+         "6. डिप्लॉयमेंट (Deployment)",
+         "लोग इसे कैसे इस्तेमाल करेंगे?",
+         "समाधान को असली उपयोग में लाना (ऐप, वेबसाइट, मशीन) और उस पर नज़र रखते रहना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture the cycle as six boxes arranged in a circle, with arrows going from Problem Scoping to Data Acquisition, to Data Exploration, to Modelling, to Evaluation, to Deployment, and then back again to Problem Scoping. The circle shows that an AI project is never truly 'finished'; feedback from real users starts a new round of improvement.",
+      "hi": "इस चक्र की कल्पना एक घेरे में रखे छह डिब्बों के रूप में कीजिए, जिनमें तीर समस्या निर्धारण से डेटा अधिग्रहण, फिर डेटा अन्वेषण, फिर मॉडलिंग, फिर मूल्यांकन, फिर डिप्लॉयमेंट और वहाँ से वापस समस्या निर्धारण की ओर जाते हैं। यह घेरा दिखाता है कि कोई AI प्रोजेक्ट कभी पूरी तरह 'ख़त्म' नहीं होता; असली उपयोगकर्ताओं की प्रतिक्रिया (feedback) से सुधार का नया दौर शुरू हो जाता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the order with the phrase 'Please Do Explore Many Exciting Destinations': Problem scoping, Data acquisition, Exploration, Modelling, Evaluation, Deployment.",
+      "hi": "क्रम याद रखने के लिए अंग्रेज़ी वाक्य 'Please Do Explore Many Exciting Destinations' याद रखिए: Problem scoping, Data acquisition, Exploration, Modelling, Evaluation, Deployment।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.2 Stage 1: Problem Scoping and the 4Ws Problem Canvas",
+    "hi": "1.2 चरण 1: समस्या निर्धारण और 4Ws प्रॉब्लम कैनवास"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Problem scoping means setting the goal of the project by clearly stating the problem you want to solve. Many projects fail not because the AI is weak, but because the problem was never understood properly. So we study the parameters (factors) that affect the problem until the picture becomes clear. A popular tool for this is the 4Ws Problem Canvas, which asks four questions: Who, What, Where and Why.",
+      "hi": "समस्या निर्धारण का अर्थ है उस समस्या को स्पष्ट रूप से लिखकर प्रोजेक्ट का लक्ष्य तय करना जिसे आप हल करना चाहते हैं। बहुत-से प्रोजेक्ट इसलिए असफल नहीं होते कि AI कमज़ोर था, बल्कि इसलिए कि समस्या ठीक से समझी ही नहीं गई। इसलिए हम समस्या को प्रभावित करने वाले मापदंडों (कारकों) का अध्ययन तब तक करते हैं जब तक तस्वीर साफ़ न हो जाए। इसके लिए एक लोकप्रिय उपकरण है 4Ws प्रॉब्लम कैनवास, जो चार प्रश्न पूछता है: कौन (Who), क्या (What), कहाँ (Where) और क्यों (Why)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Block",
+        "Question it answers",
+        "What you write"
+       ],
+       "hi": [
+        "खंड",
+        "यह किस प्रश्न का उत्तर देता है",
+        "आप क्या लिखते हैं"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who",
+         "Who are the stakeholders?",
+         "The people who face the problem or would benefit from the solution, and what you know about them"
+        ],
+        [
+         "What",
+         "What is the problem?",
+         "The nature of the problem and the evidence that it really exists (news, surveys, data)"
+        ],
+        [
+         "Where",
+         "Where does it arise?",
+         "The situation, context or location in which the problem happens"
+        ],
+        [
+         "Why",
+         "Why should it be solved?",
+         "The benefit to stakeholders and to society once the problem is solved"
+        ]
+       ],
+       "hi": [
+        [
+         "कौन (Who)",
+         "हितधारक (stakeholders) कौन हैं?",
+         "वे लोग जो समस्या झेलते हैं या समाधान से लाभ पाएँगे, और उनके बारे में आप क्या जानते हैं"
+        ],
+        [
+         "क्या (What)",
+         "समस्या क्या है?",
+         "समस्या का स्वरूप और यह प्रमाण कि समस्या सचमुच है (समाचार, सर्वे, डेटा)"
+        ],
+        [
+         "कहाँ (Where)",
+         "समस्या कहाँ उत्पन्न होती है?",
+         "वह स्थिति, संदर्भ या स्थान जहाँ समस्या होती है"
+        ],
+        [
+         "क्यों (Why)",
+         "इसे क्यों हल किया जाए?",
+         "समस्या हल होने पर हितधारकों और समाज को मिलने वाला लाभ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Stakeholders",
+       "hi": "हितधारक (Stakeholders)"
+      },
+      "text": {
+       "en": "Stakeholders are the people who are affected by a problem or who will use or be affected by its solution.",
+       "hi": "हितधारक वे लोग हैं जो किसी समस्या से प्रभावित होते हैं या जो उसके समाधान का उपयोग करेंगे या उससे प्रभावित होंगे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "After filling the canvas, all the information is summarised in a single sentence called the problem statement template. It keeps everyone in the team focused on the same goal.",
+      "hi": "कैनवास भरने के बाद सारी जानकारी एक वाक्य में संक्षेप में लिखी जाती है, जिसे प्रॉब्लम स्टेटमेंट टेम्पलेट (समस्या कथन का साँचा) कहते हैं। इससे पूरी टीम एक ही लक्ष्य पर केंद्रित रहती है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Our [stakeholders]  (Who)\nhave a problem that [issue / problem]  (What)\nwhen / while [context / situation]  (Where)\nAn ideal solution would [benefit of solution for them]  (Why)",
+      "hi": "हमारे [हितधारक]  (कौन)\nको यह समस्या है कि [समस्या]  (क्या)\nजब / जहाँ [संदर्भ / स्थिति]  (कहाँ)\nएक आदर्श समाधान [उनके लिए समाधान का लाभ] होगा  (क्यों)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Fill the 4Ws canvas and write a problem statement for this situation: small farmers in a village lose a large part of their tomato crop because they recognise leaf diseases too late.",
+       "hi": "इस स्थिति के लिए 4Ws कैनवास भरिए और समस्या कथन लिखिए: एक गाँव के छोटे किसान अपनी टमाटर की फ़सल का बड़ा हिस्सा खो देते हैं क्योंकि वे पत्तियों की बीमारी बहुत देर से पहचान पाते हैं।"
+      },
+      "a": {
+       "en": "Who: small tomato farmers of the village (they often lack quick access to a crop expert).\nWhat: leaf diseases are noticed too late, so the crop is damaged and income falls.\nWhere: in the fields, during the growing season, especially in humid weeks.\nWhy: early detection would save the crop, reduce wasted pesticide and protect income.\nProblem statement: Our small tomato farmers have a problem that leaf diseases are detected too late when the crop is growing in the field. An ideal solution would identify the disease early from a photo of the leaf and suggest what to do.",
+       "hi": "कौन: गाँव के छोटे टमाटर किसान (उन्हें अक्सर फ़सल विशेषज्ञ तक जल्दी पहुँच नहीं मिलती)।\nक्या: पत्तियों की बीमारी बहुत देर से पता चलती है, जिससे फ़सल ख़राब होती है और आय घटती है।\nकहाँ: खेतों में, फ़सल बढ़ने के मौसम में, ख़ासकर नमी वाले हफ़्तों में।\nक्यों: जल्दी पहचान से फ़सल बचेगी, कीटनाशक की बर्बादी घटेगी और आय सुरक्षित रहेगी।\nसमस्या कथन: हमारे छोटे टमाटर किसानों को यह समस्या है कि खेत में फ़सल बढ़ते समय पत्तियों की बीमारी बहुत देर से पता चलती है। एक आदर्श समाधान पत्ती की फ़ोटो से बीमारी जल्दी पहचानेगा और उपाय सुझाएगा।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Problem scoping is about the problem, not the technology. Do not write 'we will build an app' in the What block; write what is going wrong for people.",
+      "hi": "समस्या निर्धारण समस्या के बारे में है, तकनीक के बारे में नहीं। 'क्या' खंड में 'हम एक ऐप बनाएँगे' मत लिखिए; यह लिखिए कि लोगों के साथ क्या ग़लत हो रहा है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.3 Stage 2: Data Acquisition",
+    "hi": "1.3 चरण 2: डेटा अधिग्रहण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data acquisition means collecting the data that the project needs. Data is the base of every AI project: an AI model can only learn what its data shows. For the tomato project, the data would be thousands of photos of healthy and diseased tomato leaves, each correctly marked with the disease name.",
+      "hi": "डेटा अधिग्रहण का अर्थ है प्रोजेक्ट के लिए आवश्यक डेटा इकट्ठा करना। डेटा हर AI प्रोजेक्ट की नींव है: AI मॉडल वही सीख सकता है जो उसका डेटा दिखाता है। टमाटर वाले प्रोजेक्ट के लिए डेटा होगा स्वस्थ और बीमार टमाटर की पत्तियों की हज़ारों फ़ोटो, जिनमें हर फ़ोटो पर बीमारी का सही नाम लिखा हो।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Surveys and questionnaires (for example, a Google Form filled by farmers)",
+       "Web scraping and open data portals (for example, India's open government data platform data.gov.in)",
+       "Sensors and cameras (for example, a soil-moisture sensor or a phone camera)",
+       "APIs, which let one program fetch data from another service (for example, weather data)",
+       "Observation and interviews",
+       "Existing records, such as school attendance registers or hospital records (used only with permission)"
+      ],
+      "hi": [
+       "सर्वे और प्रश्नावली (जैसे किसानों द्वारा भरा गया Google Form)",
+       "वेब स्क्रैपिंग और ओपन डेटा पोर्टल (जैसे भारत सरकार का खुला डेटा मंच data.gov.in)",
+       "सेंसर और कैमरे (जैसे मिट्टी की नमी का सेंसर या फ़ोन का कैमरा)",
+       "API, जिनसे एक प्रोग्राम किसी दूसरी सेवा से डेटा ले सकता है (जैसे मौसम का डेटा)",
+       "अवलोकन और साक्षात्कार",
+       "मौजूदा रिकॉर्ड, जैसे स्कूल का उपस्थिति रजिस्टर या अस्पताल के रिकॉर्ड (केवल अनुमति के साथ)"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Good data must be relevant (about the problem), accurate (no wrong entries), reliable and from authentic sources, large enough, and representative, meaning it includes all the kinds of people or cases the AI will meet. If the tomato photos come only from one district, the model may fail on leaves from another region. Data must also be collected ethically: with consent, respecting privacy and following the law. Collected data is later divided into training data (to teach the model) and testing data (to check it); you will study this split in Chapter 3.",
+      "hi": "अच्छा डेटा प्रासंगिक (समस्या से जुड़ा), सटीक (बिना ग़लत प्रविष्टियों के), भरोसेमंद और प्रामाणिक स्रोतों से, पर्याप्त मात्रा में और प्रतिनिधिक (representative) होना चाहिए, यानी उसमें वे सभी तरह के लोग या स्थितियाँ शामिल हों जिनसे AI का सामना होगा। अगर टमाटर की सारी फ़ोटो एक ही ज़िले से हों, तो मॉडल किसी दूसरे इलाके की पत्तियों पर असफल हो सकता है। डेटा नैतिक तरीके से भी इकट्ठा होना चाहिए: सहमति लेकर, निजता का सम्मान करते हुए और क़ानून का पालन करते हुए। इकट्ठा किए गए डेटा को बाद में ट्रेनिंग डेटा (मॉडल को सिखाने के लिए) और टेस्टिंग डेटा (उसे जाँचने के लिए) में बाँटा जाता है; यह विभाजन आप अध्याय 3 में पढ़ेंगे।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data features",
+       "hi": "डेटा फ़ीचर्स (Data features)"
+      },
+      "text": {
+       "en": "Data features are the types of data (the properties) you need to collect for your problem, for example temperature, humidity and leaf colour for a crop-disease project.",
+       "hi": "डेटा फ़ीचर्स वे प्रकार (गुण) हैं जिनका डेटा आपको अपनी समस्या के लिए इकट्ठा करना होता है, जैसे फ़सल-रोग प्रोजेक्ट के लिए तापमान, नमी और पत्ती का रंग।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.4 Stage 3: Data Exploration",
+    "hi": "1.4 चरण 3: डेटा अन्वेषण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Collected data is usually large and messy, so we cannot understand it just by reading rows of numbers. In data exploration we clean the data (remove duplicates, fill or remove missing values, correct errors) and then give it a visual form: bar graphs, line graphs, pie charts, histograms, scatter plots, maps, flowcharts and tables. Pictures make patterns easy to see. For example, a line graph of tomato disease cases against weekly humidity may show that cases rise sharply after rainy weeks.",
+      "hi": "इकट्ठा किया गया डेटा आमतौर पर बहुत बड़ा और अव्यवस्थित होता है, इसलिए केवल संख्याओं की पंक्तियाँ पढ़कर उसे नहीं समझा जा सकता। डेटा अन्वेषण में हम डेटा को साफ़ करते हैं (दोहराव हटाना, छूटे मान भरना या हटाना, ग़लतियाँ सुधारना) और फिर उसे दृश्य रूप देते हैं: बार ग्राफ़, लाइन ग्राफ़, पाई चार्ट, हिस्टोग्राम, स्कैटर प्लॉट, नक्शे, फ़्लोचार्ट और तालिकाएँ। चित्रों से पैटर्न आसानी से दिखते हैं। जैसे, साप्ताहिक नमी के सामने टमाटर रोग के मामलों का लाइन ग्राफ़ दिखा सकता है कि बारिश वाले हफ़्तों के बाद मामले तेज़ी से बढ़ते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Quickly get a sense of the trends, relationships and patterns in the data",
+       "Spot errors and unusual values (outliers) before they mislead the model",
+       "Decide which model may suit the data in the next stage",
+       "Communicate findings clearly to others, such as farmers or officials"
+      ],
+      "hi": [
+       "डेटा के रुझान, संबंध और पैटर्न जल्दी समझना",
+       "ग़लतियों और असामान्य मानों (outliers) को पहचानना, इससे पहले कि वे मॉडल को भटका दें",
+       "अगले चरण में कौन-सा मॉडल उपयुक्त होगा, यह तय करना",
+       "निष्कर्ष दूसरों (जैसे किसानों या अधिकारियों) तक साफ़-साफ़ पहुँचाना"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "In Unit 4 (Statistical Data) you will explore real datasets with a no-code tool. Here, just remember: explore first, model later.",
+      "hi": "इकाई 4 (सांख्यिकीय डेटा) में आप एक नो-कोड टूल से असली डेटासेट का अन्वेषण करेंगे। यहाँ बस इतना याद रखिए: पहले अन्वेषण, फिर मॉडलिंग।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.5 Stages 4, 5 and 6: Modelling, Evaluation and Deployment",
+    "hi": "1.5 चरण 4, 5 और 6: मॉडलिंग, मूल्यांकन और डिप्लॉयमेंट"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Modelling: after exploring the patterns, we decide which type of AI model to build. We can research and try several models, test them, and choose the most efficient one as the base of the project. Models can be rule-based (the developer writes the rules) or learning-based (the machine finds the rules from data). Chapter 2 explains this in detail.",
+      "hi": "मॉडलिंग: पैटर्न समझने के बाद हम तय करते हैं कि किस प्रकार का AI मॉडल बनाया जाए। हम खोजबीन करके कई मॉडल आज़मा सकते हैं, उन्हें जाँच सकते हैं, और सबसे कुशल मॉडल को प्रोजेक्ट का आधार बना सकते हैं। मॉडल नियम-आधारित (rule-based, जहाँ नियम डेवलपर लिखता है) या सीखने-आधारित (learning-based, जहाँ मशीन डेटा से नियम ढूँढती है) हो सकते हैं। अध्याय 2 में इसे विस्तार से समझाया गया है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Evaluation: the chosen model is tested on testing data that it has never seen. Its predictions are compared with the true answers to see how reliable it is, using measures such as accuracy, precision, recall and F1 score (Chapter 3). If the results are poor, we go back, collect better data or try another model.",
+      "hi": "मूल्यांकन: चुने गए मॉडल को ऐसे टेस्टिंग डेटा पर जाँचा जाता है जिसे उसने पहले कभी नहीं देखा। उसकी भविष्यवाणियों की तुलना सही उत्तरों से करके देखा जाता है कि वह कितना भरोसेमंद है, इसके लिए accuracy, precision, recall और F1 score जैसे माप उपयोग होते हैं (अध्याय 3)। परिणाम कमज़ोर हों तो हम पीछे लौटकर बेहतर डेटा जुटाते हैं या कोई दूसरा मॉडल आज़माते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Deployment: the tested model is integrated into a real product, such as a phone app in which a farmer takes a photo of a leaf and gets an answer in Hindi. Deployment also includes training users, collecting feedback, monitoring performance (for example, does accuracy drop when a new disease appears?) and updating the model. This feedback takes us back to the start of the cycle.",
+      "hi": "डिप्लॉयमेंट: जाँचे हुए मॉडल को किसी असली उत्पाद में जोड़ा जाता है, जैसे एक फ़ोन ऐप जिसमें किसान पत्ती की फ़ोटो लेता है और उसे हिंदी में उत्तर मिलता है। डिप्लॉयमेंट में उपयोगकर्ताओं को प्रशिक्षित करना, उनकी प्रतिक्रिया लेना, प्रदर्शन पर नज़र रखना (जैसे, कोई नई बीमारी आने पर accuracy गिरती है क्या?) और मॉडल को अपडेट करना भी शामिल है। यही प्रतिक्रिया हमें चक्र की शुरुआत पर वापस ले जाती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A city traffic team wants to predict which junctions will be jammed at 6 pm. Write one line for each stage of the AI Project Cycle.",
+       "hi": "एक शहर की ट्रैफ़िक टीम यह अनुमान लगाना चाहती है कि शाम 6 बजे कौन-से चौराहे जाम होंगे। AI प्रोजेक्ट चक्र के हर चरण के लिए एक पंक्ति लिखिए।"
+      },
+      "a": {
+       "en": "1. Problem scoping: commuters and traffic police (Who) face long jams (What) at busy junctions in the evening rush (Where); predicting jams helps send police early and suggest other routes (Why).\n2. Data acquisition: collect past traffic counts, camera feeds, weather, day of the week, festival and match days.\n3. Data exploration: plot jams by hour and day; notice that rain and Friday evenings raise jams.\n4. Modelling: train a learning-based model to predict 'jam' or 'no jam' for each junction.\n5. Evaluation: test it on weeks it has not seen and check how often it is right.\n6. Deployment: show predictions on a dashboard for police and send alerts; collect feedback and retrain.",
+       "hi": "1. समस्या निर्धारण: यात्री और ट्रैफ़िक पुलिस (कौन) को लंबे जाम (क्या) का सामना शाम की भीड़ के समय व्यस्त चौराहों पर (कहाँ) करना पड़ता है; जाम का अनुमान लगने से पुलिस पहले भेजी जा सकेगी और दूसरे रास्ते सुझाए जा सकेंगे (क्यों)।\n2. डेटा अधिग्रहण: पिछली ट्रैफ़िक गिनती, कैमरा फ़ीड, मौसम, सप्ताह का दिन, त्योहार और मैच वाले दिन का डेटा इकट्ठा करना।\n3. डेटा अन्वेषण: घंटे और दिन के अनुसार जाम का ग्राफ़ बनाना; देखना कि बारिश और शुक्रवार की शाम को जाम बढ़ता है।\n4. मॉडलिंग: हर चौराहे के लिए 'जाम' या 'जाम नहीं' का अनुमान लगाने वाला learning-based मॉडल प्रशिक्षित करना।\n5. मूल्यांकन: उन हफ़्तों पर जाँचना जो मॉडल ने नहीं देखे, और देखना कि वह कितनी बार सही है।\n6. डिप्लॉयमेंट: पुलिस के लिए डैशबोर्ड पर अनुमान दिखाना और अलर्ट भेजना; प्रतिक्रिया लेकर मॉडल को दोबारा प्रशिक्षित करना।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.6 Introduction to AI Domains",
+    "hi": "1.6 AI के डोमेन (क्षेत्र) का परिचय"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "An AI system becomes intelligent through the training it receives, and for training it is fed with datasets. The kind of data changes with the application. Based on the type of data fed into the AI model, AI is broadly divided into three domains.",
+      "hi": "कोई AI सिस्टम उसे मिले प्रशिक्षण से बुद्धिमान बनता है, और प्रशिक्षण के लिए उसे डेटासेट दिए जाते हैं। डेटा का प्रकार उपयोग (application) के साथ बदलता है। AI मॉडल को दिए जाने वाले डेटा के प्रकार के आधार पर AI को मोटे तौर पर तीन डोमेन में बाँटा जाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Domain",
+        "Type of data",
+        "What the system does",
+        "Everyday examples"
+       ],
+       "hi": [
+        "डोमेन",
+        "डेटा का प्रकार",
+        "सिस्टम क्या करता है",
+        "रोज़मर्रा के उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Statistical Data (Data Science)",
+         "Numbers and tables (numeric/tabular data)",
+         "Collects large amounts of data, maintains datasets and derives meaning from them to make decisions and predictions",
+         "Price prediction, UPI fraud alerts, cricket score and win-probability predictions, train ticket demand forecasting"
+        ],
+        [
+         "Computer Vision (CV)",
+         "Images and videos",
+         "Acquires, screens and analyses visual information, extracts information from pixels and makes decisions",
+         "Face unlock on phones, number-plate reading at toll plazas, crop-disease detection from leaf photos, self-driving cars"
+        ],
+        [
+         "Natural Language Processing (NLP)",
+         "Text and speech in human languages",
+         "Reads, understands and makes sense of human language, and can reply in it",
+         "Voice assistants, translation between Indian languages (for example Bhashini), chatbots, email spam filters, autocorrect"
+        ]
+       ],
+       "hi": [
+        [
+         "सांख्यिकीय डेटा (डेटा साइंस)",
+         "संख्याएँ और तालिकाएँ (numeric/tabular डेटा)",
+         "बहुत-सा डेटा इकट्ठा करता है, डेटासेट रखता है और उनसे अर्थ निकालकर निर्णय व भविष्यवाणी करता है",
+         "दाम का अनुमान, UPI धोखाधड़ी अलर्ट, क्रिकेट स्कोर और जीत की संभावना, रेल टिकट की माँग का पूर्वानुमान"
+        ],
+        [
+         "कंप्यूटर विज़न (CV)",
+         "चित्र और वीडियो",
+         "दृश्य जानकारी लेता, छाँटता और विश्लेषित करता है, पिक्सेल से जानकारी निकालता है और निर्णय लेता है",
+         "फ़ोन में फ़ेस अनलॉक, टोल प्लाज़ा पर नंबर प्लेट पढ़ना, पत्ती की फ़ोटो से फ़सल-रोग पहचान, स्वचालित कारें"
+        ],
+        [
+         "प्राकृतिक भाषा प्रसंस्करण (NLP)",
+         "मानव भाषाओं में टेक्स्ट और आवाज़",
+         "मानव भाषा को पढ़ता, समझता और उसका अर्थ निकालता है, और उसी में उत्तर दे सकता है",
+         "वॉइस असिस्टेंट, भारतीय भाषाओं के बीच अनुवाद (जैसे भाषिणी), चैटबॉट, ईमेल स्पैम फ़िल्टर, ऑटोकरेक्ट"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Computer Vision projects turn digital visual data into descriptions and then into computer-readable form to aid decisions; their main aim is to teach machines to collect information from pixels. The aim of NLP is to read, decipher, understand and make sense of human languages in a useful way. Many real products combine domains: a voice-based crop app may use NLP to understand the farmer's Hindi question, CV to read the leaf photo, and statistical data to predict the best spraying day from weather records.",
+      "hi": "कंप्यूटर विज़न प्रोजेक्ट डिजिटल दृश्य डेटा को विवरण में और फिर कंप्यूटर के पढ़ने योग्य रूप में बदलते हैं ताकि निर्णय लेने में मदद हो; इनका मुख्य उद्देश्य मशीनों को पिक्सेल से जानकारी निकालना सिखाना है। NLP का उद्देश्य मानव भाषाओं को उपयोगी तरीके से पढ़ना, समझना और उनका अर्थ निकालना है। कई असली उत्पाद एक से अधिक डोमेन जोड़ते हैं: आवाज़ से चलने वाला कोई फ़सल-ऐप किसान का हिंदी प्रश्न समझने के लिए NLP, पत्ती की फ़ोटो पढ़ने के लिए CV, और मौसम के रिकॉर्ड से छिड़काव का सबसे अच्छा दिन बताने के लिए सांख्यिकीय डेटा का उपयोग कर सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Name the AI domain: (a) an app that reads a printed Hindi signboard aloud; (b) predicting next month's electricity bill from past bills; (c) a camera that counts people entering a metro station; (d) a chatbot that answers questions about railway PNR status.",
+       "hi": "AI डोमेन बताइए: (क) छपे हुए हिंदी साइनबोर्ड को पढ़कर सुनाने वाला ऐप; (ख) पिछले बिलों से अगले महीने का बिजली बिल अनुमानित करना; (ग) मेट्रो स्टेशन में घुसने वाले लोगों को गिनने वाला कैमरा; (घ) रेलवे PNR स्थिति के प्रश्नों का उत्तर देने वाला चैटबॉट।"
+      },
+      "a": {
+       "en": "(a) Both CV (to read the letters from the image) and NLP (to understand and speak the text).\n(b) Statistical Data: it works on numbers in a table.\n(c) Computer Vision: it analyses video frames.\n(d) NLP: it understands and replies in human language (it may fetch the PNR data from a database).",
+       "hi": "(क) CV (चित्र से अक्षर पढ़ने के लिए) और NLP (टेक्स्ट समझकर बोलने के लिए) दोनों।\n(ख) सांख्यिकीय डेटा: यह तालिका की संख्याओं पर काम करता है।\n(ग) कंप्यूटर विज़न: यह वीडियो के फ़्रेम का विश्लेषण करता है।\n(घ) NLP: यह मानव भाषा समझकर उसी में उत्तर देता है (PNR का डेटा यह किसी डेटाबेस से ला सकता है)।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Chapters 5 and 6 of this book cover Computer Vision and NLP in depth; Unit 4 covers Statistical Data. Here you only need to recognise the three domains and their data types.",
+      "hi": "इस पुस्तक के अध्याय 5 और 6 में कंप्यूटर विज़न और NLP विस्तार से हैं; इकाई 4 में सांख्यिकीय डेटा है। यहाँ आपको केवल तीनों डोमेन और उनके डेटा प्रकार पहचानने हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.7 Ethics, frameworks and ethical frameworks",
+    "hi": "1.7 नैतिकता, ढाँचे और नैतिक ढाँचे"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "An AI system can be fast and accurate and still cause harm. It may treat some people unfairly, reveal private information, or make a decision that nobody can explain. To avoid such problems we need a careful way of thinking about right and wrong while building AI. Let us first understand three words.",
+      "hi": "कोई AI सिस्टम तेज़ और सटीक होकर भी नुकसान पहुँचा सकता है। वह कुछ लोगों के साथ अन्याय कर सकता है, निजी जानकारी उजागर कर सकता है, या ऐसा निर्णय ले सकता है जिसे कोई समझा न सके। ऐसी समस्याओं से बचने के लिए AI बनाते समय सही-ग़लत के बारे में सावधानी से सोचने का तरीका चाहिए। पहले तीन शब्द समझते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Ethics",
+       "hi": "नैतिकता (Ethics)"
+      },
+      "text": {
+       "en": "Ethics are a set of values or morals that help us separate right from wrong.",
+       "hi": "नैतिकता मूल्यों या नैतिक सिद्धांतों का वह समूह है जो हमें सही और ग़लत में अंतर करने में मदद करता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Framework",
+       "hi": "ढाँचा (Framework)"
+      },
+      "text": {
+       "en": "A framework is a set of steps or a structure that gives step-by-step guidance for solving a problem. The AI Project Cycle itself is a framework.",
+       "hi": "ढाँचा चरणों या संरचना का ऐसा समूह है जो किसी समस्या को हल करने के लिए कदम-दर-कदम मार्गदर्शन देता है। AI प्रोजेक्ट चक्र स्वयं एक ढाँचा है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Ethical framework",
+       "hi": "नैतिक ढाँचा (Ethical framework)"
+      },
+      "text": {
+       "en": "An ethical framework is a framework that helps us make sure the choices we make do not cause unintended harm. It gives a systematic way of handling difficult moral dilemmas by looking at a situation through different ethical principles and points of view.",
+       "hi": "नैतिक ढाँचा ऐसा ढाँचा है जो यह सुनिश्चित करने में मदद करता है कि हमारे निर्णयों से अनचाहा नुकसान न हो। यह किसी स्थिति को अलग-अलग नैतिक सिद्धांतों और दृष्टिकोणों से देखकर कठिन नैतिक दुविधाओं को व्यवस्थित तरीके से सुलझाने का रास्ता देता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "By using ethical frameworks, people and organisations can make well-informed decisions that match their values and lead to good outcomes for all stakeholders. A moral dilemma is a situation where every option has some good and some bad side, for example: should a school app share students' marks with a coaching centre that offers free scholarships? Sharing may help some students, but it breaks privacy. An ethical framework helps us reason through such cases instead of deciding on impulse.",
+      "hi": "नैतिक ढाँचों के उपयोग से लोग और संगठन ऐसे सोचे-समझे निर्णय ले सकते हैं जो उनके मूल्यों से मेल खाएँ और सभी हितधारकों के लिए अच्छे परिणाम दें। नैतिक दुविधा (moral dilemma) वह स्थिति है जिसमें हर विकल्प का कुछ अच्छा और कुछ बुरा पक्ष होता है, जैसे: क्या स्कूल का ऐप छात्रों के अंक किसी कोचिंग सेंटर को दे, जो मुफ़्त छात्रवृत्ति दे रहा है? इससे कुछ छात्रों को मदद मिल सकती है, पर निजता टूटती है। नैतिक ढाँचा हमें ऐसे मामलों में आवेग में फ़ैसला लेने के बजाय तर्क से सोचने में मदद करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.8 Why do we need ethical frameworks for AI?",
+    "hi": "1.8 AI के लिए नैतिक ढाँचों की ज़रूरत क्यों है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI is a decision-making and decision-influencing tool. It decides which loan application is approved, which video you see next, which job applicant is shortlisted and which patient gets extra care. So we must make sure AI makes morally acceptable recommendations. A well-known warning example: a large technology company built an experimental hiring algorithm that learnt from about ten years of past CVs. Because most past hires in that field were men, the system learnt to prefer men's CVs and to mark down CVs that mentioned women's activities. The company stopped using it (this was widely reported in 2018). Nobody had told the AI to be unfair; it copied the bias hidden in its data.",
+      "hi": "AI निर्णय लेने और निर्णयों को प्रभावित करने वाला उपकरण है। यह तय करता है कि कौन-सा ऋण आवेदन स्वीकृत होगा, आपको अगला कौन-सा वीडियो दिखेगा, किस उम्मीदवार को नौकरी के लिए चुना जाएगा और किस मरीज़ को अतिरिक्त देखभाल मिलेगी। इसलिए हमें सुनिश्चित करना होगा कि AI नैतिक रूप से स्वीकार्य सुझाव दे। एक जाना-माना चेतावनी उदाहरण: एक बड़ी टेक कंपनी ने भर्ती के लिए एक प्रायोगिक एल्गोरिद्म बनाया, जिसने लगभग दस साल के पुराने बायोडाटा से सीखा। उस क्षेत्र में पहले ज़्यादातर पुरुष ही भर्ती हुए थे, इसलिए सिस्टम ने पुरुषों के बायोडाटा को प्राथमिकता देना और महिलाओं की गतिविधियों वाले बायोडाटा को कम अंक देना सीख लिया। कंपनी ने इसका उपयोग बंद कर दिया (यह 2018 में व्यापक रूप से प्रकाशित हुआ)। किसी ने AI को अन्याय करने को नहीं कहा था; उसने अपने डेटा में छिपे पूर्वाग्रह (bias) की नक़ल कर ली।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Bias",
+       "hi": "पूर्वाग्रह (Bias)"
+      },
+      "text": {
+       "en": "Bias in AI is an unfair leaning for or against a person or group, which usually enters through unbalanced data or through the assumptions of the people who build the system.",
+       "hi": "AI में पूर्वाग्रह किसी व्यक्ति या समूह के पक्ष या विपक्ष में अनुचित झुकाव है, जो आमतौर पर असंतुलित डेटा से या सिस्टम बनाने वालों की मान्यताओं से आता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "To avoid unintended harm, even before it happens, by thinking about effects at the design stage",
+       "To reduce bias and discrimination against any gender, caste, religion, region, language or income group",
+       "To protect privacy and the security of personal data",
+       "To make AI decisions transparent and explainable, so people can question them",
+       "To fix accountability: who is responsible when an AI system makes a mistake",
+       "To build public trust, so that useful AI is actually accepted and used"
+      ],
+      "hi": [
+       "अनचाहे नुकसान से बचना, उसके होने से पहले ही, डिज़ाइन के चरण में प्रभावों के बारे में सोचकर",
+       "किसी भी लिंग, जाति, धर्म, क्षेत्र, भाषा या आय-वर्ग के साथ पूर्वाग्रह और भेदभाव कम करना",
+       "निजता और व्यक्तिगत डेटा की सुरक्षा करना",
+       "AI के निर्णयों को पारदर्शी और समझाने योग्य बनाना, ताकि लोग उन पर सवाल उठा सकें",
+       "जवाबदेही तय करना: AI सिस्टम ग़लती करे तो ज़िम्मेदार कौन है",
+       "लोगों का भरोसा बनाना, ताकि उपयोगी AI को सचमुच अपनाया और इस्तेमाल किया जाए"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "If we use ethical frameworks while building AI solutions, we can prevent many bad outcomes before they take place. Fixing harm after deployment is much harder.",
+      "hi": "अगर AI समाधान बनाते समय नैतिक ढाँचों का उपयोग करें, तो कई बुरे परिणामों को होने से पहले ही रोका जा सकता है। डिप्लॉयमेंट के बाद नुकसान ठीक करना कहीं ज़्यादा कठिन होता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.9 Factors that influence our decision-making",
+    "hi": "1.9 हमारे निर्णयों को प्रभावित करने वाले कारक"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before judging AI, notice how we humans decide. Many factors influence our choices, knowingly or unknowingly. Developers carry these same factors into the AI they build, so it helps to know them.",
+      "hi": "AI को परखने से पहले देखिए कि हम मनुष्य कैसे निर्णय लेते हैं। कई कारक जाने-अनजाने हमारे विकल्पों को प्रभावित करते हैं। डेवलपर इन्हीं कारकों को अपने बनाए AI में ले आते हैं, इसलिए इन्हें जानना उपयोगी है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Factor",
+        "The question it raises in our mind"
+       ],
+       "hi": [
+        "कारक",
+        "यह हमारे मन में कौन-सा प्रश्न उठाता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Culture",
+         "What does my community or family usually consider right?"
+        ],
+        [
+         "Religion",
+         "Is the decision I am taking in line with my religious beliefs?"
+        ],
+        [
+         "Intuition",
+         "Does what I am thinking simply feel correct?"
+        ],
+        [
+         "Values",
+         "Does it match what I personally believe is important, such as honesty?"
+        ],
+        [
+         "Value of humans",
+         "How much weight do I give to the people affected, and to which people?"
+        ],
+        [
+         "Value of non-humans",
+         "Do I also think about animals, plants and the environment?"
+        ],
+        [
+         "Experience and emotions",
+         "What happened last time? Am I angry, scared or happy right now?"
+        ]
+       ],
+       "hi": [
+        [
+         "संस्कृति",
+         "मेरा समुदाय या परिवार आमतौर पर किसे सही मानता है?"
+        ],
+        [
+         "धर्म",
+         "क्या मेरा निर्णय मेरी धार्मिक मान्यताओं के अनुरूप है?"
+        ],
+        [
+         "अंतर्ज्ञान (Intuition)",
+         "क्या मेरी सोच मुझे बस सही 'लगती' है?"
+        ],
+        [
+         "मूल्य (Values)",
+         "क्या यह उससे मेल खाता है जिसे मैं महत्वपूर्ण मानता/मानती हूँ, जैसे ईमानदारी?"
+        ],
+        [
+         "मनुष्यों का मूल्य",
+         "प्रभावित लोगों को मैं कितना महत्व देता/देती हूँ, और किन लोगों को?"
+        ],
+        [
+         "गैर-मनुष्यों का मूल्य",
+         "क्या मैं जानवरों, पेड़-पौधों और पर्यावरण के बारे में भी सोचता/सोचती हूँ?"
+        ],
+        [
+         "अनुभव और भावनाएँ",
+         "पिछली बार क्या हुआ था? क्या मैं अभी गुस्से में, डरा हुआ या ख़ुश हूँ?"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Because different people weigh these factors differently, two honest people can reach different decisions on the same problem. This is exactly why a shared, written ethical framework is useful: it gives a team a common set of principles to check every decision against, instead of each person relying only on personal feelings. Making decisions purely on emotion is not a good basis for building AI.",
+      "hi": "क्योंकि अलग-अलग लोग इन कारकों को अलग महत्व देते हैं, इसलिए दो ईमानदार लोग एक ही समस्या पर अलग निर्णय ले सकते हैं। इसीलिए एक साझा, लिखित नैतिक ढाँचा उपयोगी है: यह टीम को सिद्धांतों का एक साझा समूह देता है जिससे हर निर्णय को जाँचा जा सके, बजाय इसके कि हर व्यक्ति केवल अपनी भावनाओं पर निर्भर रहे। केवल भावनाओं के आधार पर निर्णय लेना AI बनाने का अच्छा आधार नहीं है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity: My Goodness (online, about 15 minutes; free, works in a phone browser; an adult should supervise under-13s and no sign-up or personal data is needed).",
+       "hi": "गतिविधि: My Goodness (ऑनलाइन, लगभग 15 मिनट; मुफ़्त, फ़ोन ब्राउज़र में चलता है; 13 वर्ष से कम आयु वालों के लिए किसी बड़े की निगरानी हो, और किसी साइन-अप या निजी डेटा की ज़रूरत नहीं)।"
+      },
+      "a": {
+       "en": "Aim: to notice which factors guide your own decisions.\nWhat you need: a phone or computer with the website my-goodness.net, which is listed in the CBSE curriculum for this unit.\nWhat to do: the site shows you pairs of charity cases (for example, help for people in your own country or abroad, for children or for animals) and asks you to choose where an amount of money should go. Sometimes it hides details, such as where the people live. Make about 10 choices honestly, then read the summary of your choices.\nWhat you observe: your choices change when you learn who the receivers are or where they live; you may favour people near you, or people who look like you.\nWhat it teaches: even kind, fair-minded people carry hidden preferences. If such preferences enter the data or the rules of an AI system, the AI will repeat them at large scale. Discuss in class: which factor from the table above influenced you most?",
+       "hi": "उद्देश्य: यह देखना कि आपके अपने निर्णय किन कारकों से चलते हैं।\nक्या चाहिए: फ़ोन या कंप्यूटर और वेबसाइट my-goodness.net, जो इस इकाई के CBSE पाठ्यक्रम में दी गई है।\nक्या करें: साइट आपको दान के दो-दो मामले दिखाती है (जैसे अपने देश या विदेश के लोगों की मदद, बच्चों या जानवरों की मदद) और पूछती है कि एक राशि किसे दी जाए। कभी-कभी यह कुछ जानकारी छिपा देती है, जैसे लोग कहाँ रहते हैं। लगभग 10 विकल्प ईमानदारी से चुनिए, फिर अपने विकल्पों का सारांश पढ़िए।\nक्या दिखता है: जब पता चलता है कि पाने वाले कौन हैं या कहाँ रहते हैं, तो आपके विकल्प बदल जाते हैं; आप अपने पास के या अपने जैसे दिखने वाले लोगों को प्राथमिकता दे सकते हैं।\nयह क्या सिखाता है: दयालु और निष्पक्ष सोच वाले लोग भी छिपी पसंद रखते हैं। अगर ऐसी पसंद किसी AI सिस्टम के डेटा या नियमों में आ जाए, तो AI उसे बहुत बड़े पैमाने पर दोहराएगा। कक्षा में चर्चा कीजिए: ऊपर की तालिका का कौन-सा कारक आप पर सबसे ज़्यादा असर डाल रहा था?"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.10 Types of ethical frameworks",
+    "hi": "1.10 नैतिक ढाँचों के प्रकार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Ethical frameworks for AI are classified into two main types: sector-based frameworks and value-based frameworks. Value-based frameworks are further divided into three: rights-based, utility-based and virtue-based. Picture a tree diagram: 'Ethical Frameworks' at the top splits into two branches, 'Sector-based' (with an example leaf 'Bioethics') and 'Value-based' (with three leaves 'Rights-based', 'Utility-based' and 'Virtue-based').",
+      "hi": "AI के नैतिक ढाँचों को दो मुख्य प्रकारों में बाँटा जाता है: क्षेत्र-आधारित (sector-based) ढाँचे और मूल्य-आधारित (value-based) ढाँचे। मूल्य-आधारित ढाँचे आगे तीन में बँटते हैं: अधिकार-आधारित (rights-based), उपयोगिता-आधारित (utility-based) और सद्गुण-आधारित (virtue-based)। एक वृक्ष-आरेख की कल्पना कीजिए: सबसे ऊपर 'नैतिक ढाँचे', जो दो शाखाओं में बँटता है, 'क्षेत्र-आधारित' (उदाहरण के पत्ते 'बायोएथिक्स' के साथ) और 'मूल्य-आधारित' (तीन पत्तों 'अधिकार-आधारित', 'उपयोगिता-आधारित' और 'सद्गुण-आधारित' के साथ)।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Sector-based framework",
+       "hi": "क्षेत्र-आधारित ढाँचा (Sector-based framework)"
+      },
+      "text": {
+       "en": "A sector-based framework is tailored to the needs of one particular sector or industry, such as healthcare, finance, education, transport, agriculture, governance or law enforcement.",
+       "hi": "क्षेत्र-आधारित ढाँचा किसी एक विशेष क्षेत्र या उद्योग की ज़रूरतों के अनुसार बनाया जाता है, जैसे स्वास्थ्य, वित्त, शिक्षा, परिवहन, कृषि, शासन या क़ानून-व्यवस्था।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The most common sector-based framework in AI is Bioethics, used in healthcare. It deals with patient privacy, data security and the ethical use of AI in medical decisions. Other sectors have their own concerns: in finance, fairness in loan approval and protecting account data; in education, fair evaluation and not labelling students; in agriculture, advice that suits small farmers and not only big ones; in law enforcement, avoiding wrongful suspicion through face recognition.",
+      "hi": "AI में सबसे आम क्षेत्र-आधारित ढाँचा बायोएथिक्स (Bioethics) है, जो स्वास्थ्य सेवा में उपयोग होता है। यह मरीज़ की निजता, डेटा सुरक्षा और चिकित्सा निर्णयों में AI के नैतिक उपयोग से जुड़ा है। दूसरे क्षेत्रों की अपनी चिंताएँ हैं: वित्त में ऋण स्वीकृति में निष्पक्षता और खाते के डेटा की सुरक्षा; शिक्षा में निष्पक्ष मूल्यांकन और छात्रों पर ठप्पा न लगाना; कृषि में ऐसी सलाह जो केवल बड़े नहीं, छोटे किसानों के लिए भी उपयुक्त हो; क़ानून-व्यवस्था में फ़ेस रिकग्निशन के कारण ग़लत संदेह से बचना।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Value-based framework",
+       "hi": "मूल्य-आधारित ढाँचा (Value-based framework)"
+      },
+      "text": {
+       "en": "A value-based framework focuses on basic ethical principles and values that guide decision-making. It reflects different moral philosophies and is used to judge the moral worth of actions and to guide ethical behaviour.",
+       "hi": "मूल्य-आधारित ढाँचा निर्णय लेने का मार्गदर्शन करने वाले मूल नैतिक सिद्धांतों और मूल्यों पर केंद्रित होता है। यह अलग-अलग नैतिक दर्शनों को दर्शाता है और कार्यों के नैतिक मूल्य को परखने तथा नैतिक व्यवहार का मार्गदर्शन करने के लिए उपयोग होता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Value-based type",
+        "Central idea",
+        "Key question",
+        "In AI, this means"
+       ],
+       "hi": [
+        "मूल्य-आधारित प्रकार",
+        "मूल विचार",
+        "मुख्य प्रश्न",
+        "AI में इसका अर्थ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Rights-based",
+         "Protect human rights and dignity; value human life above other considerations; respect each person's autonomy and freedoms",
+         "Does this action respect every person's rights?",
+         "AI must not violate human rights or discriminate against any group, even if doing so is cheaper or faster"
+        ],
+        [
+         "Utility-based",
+         "Choose actions that give the greatest benefit and the least harm to the greatest number of people (maximise overall good)",
+         "Which option produces the most total good?",
+         "Weigh the benefits of an AI system against its risks to society, such as job losses or privacy concerns"
+        ],
+        [
+         "Virtue-based",
+         "Focus on the character and intentions of the people making decisions; act with honesty, compassion and integrity",
+         "What would a good, honest person do here?",
+         "Check whether developers, users and regulators keep good values throughout the AI life cycle"
+        ]
+       ],
+       "hi": [
+        [
+         "अधिकार-आधारित",
+         "मानव अधिकारों और गरिमा की रक्षा; मानव जीवन को अन्य बातों से ऊपर रखना; हर व्यक्ति की स्वायत्तता और स्वतंत्रता का सम्मान",
+         "क्या यह कार्य हर व्यक्ति के अधिकारों का सम्मान करता है?",
+         "AI किसी के मानव अधिकारों का उल्लंघन या किसी समूह से भेदभाव न करे, भले ही ऐसा करना सस्ता या तेज़ हो"
+        ],
+        [
+         "उपयोगिता-आधारित",
+         "ऐसे कार्य चुनना जो सबसे अधिक लोगों को सबसे अधिक लाभ और सबसे कम नुकसान दें (कुल भलाई अधिकतम)",
+         "कौन-सा विकल्प सबसे ज़्यादा कुल भलाई देता है?",
+         "AI सिस्टम के लाभों को समाज पर उसके जोखिमों (जैसे नौकरियाँ जाना या निजता की चिंता) के सामने तौलना"
+        ],
+        [
+         "सद्गुण-आधारित",
+         "निर्णय लेने वालों के चरित्र और इरादों पर ध्यान; ईमानदारी, करुणा और सत्यनिष्ठा से काम करना",
+         "एक अच्छा, ईमानदार व्यक्ति यहाँ क्या करेगा?",
+         "देखना कि डेवलपर, उपयोगकर्ता और नियामक पूरे AI जीवन-चक्र में अच्छे मूल्य बनाए रखते हैं या नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A city wants to install AI face-recognition cameras at every crossing to catch traffic offenders quickly. Analyse the plan using all three value-based frameworks.",
+       "hi": "एक शहर ट्रैफ़िक नियम तोड़ने वालों को जल्दी पकड़ने के लिए हर चौराहे पर AI फ़ेस-रिकग्निशन कैमरे लगाना चाहता है। तीनों मूल्य-आधारित ढाँचों से इस योजना का विश्लेषण कीजिए।"
+      },
+      "a": {
+       "en": "Rights-based: constant face tracking of every citizen may violate the right to privacy; people who did nothing wrong are also recorded. Wrong matches could wrongly accuse innocent people. So the plan needs strict limits, consent rules and a way to appeal.\nUtility-based: benefits (fewer accidents, faster challans, safer roads for many people) must be weighed against harms (loss of privacy for everyone, risk of data leaks, wrong fines). If the same safety can be achieved by number-plate cameras that do not identify faces, that option gives more good with less harm.\nVirtue-based: are the officials and the company honest about what data is stored and for how long? Will they use it only for traffic and not for spying? A virtuous approach means openness and integrity.\nConclusion: the frameworks together suggest a narrower, transparent design, for example number-plate reading with clear data-deletion rules.",
+       "hi": "अधिकार-आधारित: हर नागरिक के चेहरे की लगातार निगरानी निजता के अधिकार का उल्लंघन कर सकती है; जिन्होंने कोई ग़लती नहीं की, वे भी रिकॉर्ड होते हैं। ग़लत मिलान से निर्दोष लोगों पर ग़लत आरोप लग सकता है। इसलिए योजना में सख़्त सीमाएँ, सहमति के नियम और अपील का रास्ता होना चाहिए।\nउपयोगिता-आधारित: लाभ (कम दुर्घटनाएँ, जल्दी चालान, बहुत-से लोगों के लिए सुरक्षित सड़कें) को नुकसान (सबकी निजता का नुकसान, डेटा लीक का ख़तरा, ग़लत जुर्माने) के सामने तौलना होगा। अगर यही सुरक्षा उन नंबर-प्लेट कैमरों से मिल जाए जो चेहरा नहीं पहचानते, तो वह विकल्प कम नुकसान में ज़्यादा भलाई देता है।\nसद्गुण-आधारित: क्या अधिकारी और कंपनी ईमानदारी से बताते हैं कि कौन-सा डेटा कितने समय तक रखा जाएगा? क्या वे इसका उपयोग केवल ट्रैफ़िक के लिए करेंगे, जासूसी के लिए नहीं? सद्गुण-आधारित तरीका खुलेपन और सत्यनिष्ठा की माँग करता है।\nनिष्कर्ष: तीनों ढाँचे मिलकर एक सीमित, पारदर्शी डिज़ाइन सुझाते हैं, जैसे साफ़ डेटा-मिटाने के नियमों के साथ नंबर-प्लेट पढ़ना।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Rights-based = 'protect every person'; Utility-based = 'greatest good for the greatest number'; Virtue-based = 'be a person of good character'.",
+      "hi": "याद रखिए: अधिकार-आधारित = 'हर व्यक्ति की रक्षा'; उपयोगिता-आधारित = 'अधिकतम लोगों की अधिकतम भलाई'; सद्गुण-आधारित = 'अच्छे चरित्र वाला व्यक्ति बनो'।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.11 Bioethics and its four principles",
+    "hi": "1.11 बायोएथिक्स और इसके चार सिद्धांत"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Bioethics",
+       "hi": "बायोएथिक्स (Bioethics)"
+      },
+      "text": {
+       "en": "Bioethics is an ethical framework used in healthcare and the life sciences. It deals with ethical issues related to health, medicine and biology, and makes sure AI applications in healthcare follow ethical standards.",
+       "hi": "बायोएथिक्स स्वास्थ्य सेवा और जीव विज्ञान में उपयोग होने वाला नैतिक ढाँचा है। यह स्वास्थ्य, चिकित्सा और जीव विज्ञान से जुड़े नैतिक मुद्दों से संबंधित है, और सुनिश्चित करता है कि स्वास्थ्य सेवा में AI के उपयोग नैतिक मानकों का पालन करें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Healthcare is a sector where mistakes can cost lives, and where data (reports, scans, illnesses) is very private. That is why AI tools for hospitals, such as systems that read X-rays, predict which patients are at high risk, or suggest medicine doses, are checked against four principles of bioethics.",
+      "hi": "स्वास्थ्य सेवा ऐसा क्षेत्र है जहाँ ग़लतियों से जान जा सकती है, और जहाँ डेटा (रिपोर्ट, स्कैन, बीमारियाँ) बहुत निजी होता है। इसीलिए अस्पतालों के AI उपकरण, जैसे X-ray पढ़ने वाले सिस्टम, यह बताने वाले सिस्टम कि कौन-से मरीज़ अधिक जोखिम में हैं, या दवा की मात्रा सुझाने वाले सिस्टम, बायोएथिक्स के चार सिद्धांतों पर परखे जाते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Principle",
+        "Meaning",
+        "What it asks of an AI system"
+       ],
+       "hi": [
+        "सिद्धांत",
+        "अर्थ",
+        "यह AI सिस्टम से क्या माँगता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Respect for autonomy",
+         "People have the right to make informed decisions about their own body and care",
+         "Users and patients should be fully aware of how the AI works and how it reaches decisions; the data it was trained on should be reproducible and accessible; if there are performance concerns, model predictions and data labels should be released"
+        ],
+        [
+         "2. Do not harm (non-maleficence)",
+         "Avoid causing harm to anyone",
+         "The AI should not harm patients or any group, for example by misclassifying them or overlooking critical cases; it must be accurate and safe before use"
+        ],
+        [
+         "3. Ensure maximum benefit for all (beneficence)",
+         "Actively do good for everyone",
+         "The AI should improve care for all patients, not just some; it should be tested for usefulness across all groups"
+        ],
+        [
+         "4. Give justice",
+         "Treat everyone fairly and equally",
+         "Benefits and risks should be shared fairly; the AI should not discriminate by income, region, gender, caste, religion or language"
+        ]
+       ],
+       "hi": [
+        [
+         "1. स्वायत्तता का सम्मान (Respect for autonomy)",
+         "लोगों को अपने शरीर और इलाज के बारे में सोच-समझकर निर्णय लेने का अधिकार है",
+         "उपयोगकर्ता और मरीज़ पूरी तरह जानें कि AI कैसे काम करता है और निर्णय तक कैसे पहुँचता है; जिस डेटा पर इसे प्रशिक्षित किया गया वह दोहराने योग्य और उपलब्ध हो; प्रदर्शन पर चिंता होने पर मॉडल की भविष्यवाणियाँ और डेटा लेबल सार्वजनिक किए जाएँ"
+        ],
+        [
+         "2. नुकसान न करें (Do not harm)",
+         "किसी को भी नुकसान पहुँचाने से बचना",
+         "AI मरीज़ों या किसी समूह को नुकसान न पहुँचाए, जैसे उन्हें ग़लत वर्ग में डालकर या गंभीर मामलों को नज़रअंदाज़ करके; उपयोग से पहले यह सटीक और सुरक्षित हो"
+        ],
+        [
+         "3. सबके लिए अधिकतम लाभ सुनिश्चित करें (Ensure maximum benefit for all)",
+         "सबकी सक्रिय भलाई करना",
+         "AI केवल कुछ नहीं, सभी मरीज़ों की देखभाल बेहतर करे; इसकी उपयोगिता हर समूह पर जाँची जाए"
+        ],
+        [
+         "4. न्याय दें (Give justice)",
+         "सबके साथ निष्पक्ष और समान व्यवहार",
+         "लाभ और जोखिम निष्पक्ष रूप से बँटें; AI आय, क्षेत्र, लिंग, जाति, धर्म या भाषा के आधार पर भेदभाव न करे"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Memory trick for the four principles: A-H-B-J = Autonomy, Harm (do not), Benefit (maximum), Justice.",
+      "hi": "चार सिद्धांत याद रखने की तरकीब: A-H-B-J = Autonomy (स्वायत्तता), Harm (नुकसान न करें), Benefit (अधिकतम लाभ), Justice (न्याय)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.12 A case study in bioethics: the high-risk patient algorithm",
+    "hi": "1.12 बायोएथिक्स का एक केस स्टडी: अधिक-जोखिम मरीज़ एल्गोरिद्म"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The situation: a company wanted to help hospitals give better care to patients who need it most. It built an AI algorithm to identify high-risk patients, people likely to become seriously ill, so that they could be enrolled in an extra-care programme with more check-ups and nurse visits.",
+      "hi": "स्थिति: एक कंपनी अस्पतालों की मदद करना चाहती थी ताकि सबसे ज़रूरतमंद मरीज़ों को बेहतर देखभाल मिले। उसने अधिक-जोखिम वाले मरीज़ों, यानी जिनके गंभीर रूप से बीमार होने की संभावना है, को पहचानने वाला एक AI एल्गोरिद्म बनाया, ताकि उन्हें अधिक जाँच और नर्स के दौरों वाले एक अतिरिक्त-देखभाल कार्यक्रम में शामिल किया जा सके।"
+     }
+    },
+    {
+     "p": {
+      "en": "What went wrong: to measure 'how sick' a person was, the algorithm used how much money had been spent on that person's healthcare in the past. This seemed sensible: sicker people usually need more treatment. But in the country where it was built (the United States), much less money had historically been spent on patients from some groups, often because they had less access to hospitals or insurance, not because they were healthier. So the algorithm gave these patients lower risk scores than equally sick patients from other groups. As a result, many patients who truly needed extra care were left out. A research study published in 2019 brought this kind of problem to public attention. The developers had not intended to be unfair; the bias came from using an unfair measure (past spending) as a stand-in for real need, and from data that reflected existing inequality.",
+      "hi": "क्या ग़लत हुआ: किसी व्यक्ति के 'कितना बीमार' होने को मापने के लिए एल्गोरिद्म ने यह देखा कि अतीत में उसके इलाज पर कितना पैसा ख़र्च हुआ था। यह समझदारी भरा लगता था: ज़्यादा बीमार लोगों को आमतौर पर ज़्यादा इलाज चाहिए। पर जिस देश (संयुक्त राज्य अमेरिका) में यह बना, वहाँ कुछ समूहों के मरीज़ों पर ऐतिहासिक रूप से बहुत कम पैसा ख़र्च हुआ था, अक्सर इसलिए कि उनकी अस्पताल या बीमा तक पहुँच कम थी, इसलिए नहीं कि वे ज़्यादा स्वस्थ थे। इसलिए एल्गोरिद्म ने इन मरीज़ों को दूसरे समूहों के उतने ही बीमार मरीज़ों से कम जोखिम अंक दिए। परिणामस्वरूप, अतिरिक्त देखभाल के सचमुच ज़रूरतमंद कई मरीज़ छूट गए। 2019 में प्रकाशित एक शोध अध्ययन ने इस तरह की समस्या को लोगों के सामने रखा। डेवलपर्स का इरादा अन्याय करने का नहीं था; पूर्वाग्रह इस बात से आया कि असली ज़रूरत की जगह एक अनुचित माप (पिछला ख़र्च) का उपयोग किया गया, और ऐसे डेटा से जो मौजूदा असमानता को दर्शाता था।"
+     }
+    },
+    {
+     "p": {
+      "en": "Such unintended consequences show how an algorithm can make existing biases or data errors worse, leading to misclassification of patients or overlooking critical cases. Any flaw in design or training data can harm patient care. Now let us apply the four principles of bioethics to fix it.",
+      "hi": "ऐसे अनचाहे परिणाम दिखाते हैं कि कोई एल्गोरिद्म मौजूदा पूर्वाग्रहों या डेटा की ग़लतियों को कैसे और बढ़ा सकता है, जिससे मरीज़ ग़लत वर्ग में चले जाते हैं या गंभीर मामले नज़रअंदाज़ हो जाते हैं। डिज़ाइन या ट्रेनिंग डेटा की कोई भी कमी मरीज़ों की देखभाल को नुकसान पहुँचा सकती है। अब इसे ठीक करने के लिए बायोएथिक्स के चार सिद्धांत लागू करते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Principle",
+        "How it applies to this case"
+       ],
+       "hi": [
+        "सिद्धांत",
+        "इस मामले में यह कैसे लागू होता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Respect for autonomy",
+         "Doctors and patients should be told how the risk score is calculated (that it is based on past spending). The training data should be open to checking, and if there are doubts about performance, predictions and labels should be released so outsiders can find the bias."
+        ],
+        [
+         "Do not harm",
+         "The algorithm harmed under-served patients by keeping them out of the care programme. Before deployment it should be tested separately for each group to make sure no group is put at risk."
+        ],
+        [
+         "Ensure maximum benefit for all",
+         "Replace the spending measure with real health measures, such as number of chronic illnesses, blood pressure, sugar levels and test results, so that the programme helps every patient who is truly sick."
+        ],
+        [
+         "Give justice",
+         "Patients with the same health need should get the same score, whatever their income or group. The team should include diverse data and keep monitoring outcomes for fairness after deployment."
+        ]
+       ],
+       "hi": [
+        [
+         "स्वायत्तता का सम्मान",
+         "डॉक्टरों और मरीज़ों को बताया जाए कि जोखिम अंक कैसे निकाला जाता है (कि यह पिछले ख़र्च पर आधारित है)। ट्रेनिंग डेटा जाँच के लिए उपलब्ध हो, और प्रदर्शन पर संदेह हो तो भविष्यवाणियाँ और लेबल सार्वजनिक किए जाएँ ताकि बाहरी लोग पूर्वाग्रह ढूँढ सकें।"
+        ],
+        [
+         "नुकसान न करें",
+         "एल्गोरिद्म ने कम सुविधा पाने वाले मरीज़ों को देखभाल कार्यक्रम से बाहर रखकर नुकसान पहुँचाया। डिप्लॉयमेंट से पहले इसे हर समूह के लिए अलग से जाँचा जाए ताकि कोई समूह ख़तरे में न पड़े।"
+        ],
+        [
+         "सबके लिए अधिकतम लाभ",
+         "ख़र्च वाले माप की जगह असली स्वास्थ्य माप रखे जाएँ, जैसे पुरानी बीमारियों की संख्या, रक्तचाप, शुगर का स्तर और जाँच के परिणाम, ताकि कार्यक्रम हर सचमुच बीमार मरीज़ की मदद करे।"
+        ],
+        [
+         "न्याय दें",
+         "एक जैसी स्वास्थ्य ज़रूरत वाले मरीज़ों को एक जैसा अंक मिले, चाहे उनकी आय या समूह कुछ भी हो। टीम विविध डेटा शामिल करे और डिप्लॉयमेंट के बाद भी निष्पक्षता के लिए परिणामों पर नज़र रखे।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Case-based question: A school uses an AI system to shortlist students for a science scholarship. It gives high scores to students who write long, fluent English answers in an online test. Students from rural Hindi-medium schools and those with poor internet are rarely selected. (a) Give two reasons why the results are biased. (b) Suggest two bioethics principles and how each would fix the problem.",
+       "hi": "केस-आधारित प्रश्न: एक स्कूल विज्ञान छात्रवृत्ति के लिए छात्रों को चुनने में AI सिस्टम का उपयोग करता है। यह ऑनलाइन टेस्ट में लंबे, धाराप्रवाह अंग्रेज़ी उत्तर लिखने वालों को ऊँचे अंक देता है। ग्रामीण हिंदी-माध्यम स्कूलों और कमज़ोर इंटरनेट वाले छात्रों का चयन शायद ही होता है। (क) परिणाम पक्षपाती होने के दो कारण बताइए। (ख) दो बायोएथिक्स सिद्धांत सुझाइए और बताइए कि हर एक समस्या कैसे सुलझाएगा।"
+      },
+      "a": {
+       "en": "(a) Reason 1: the system judges English fluency, not science ability, so it unfairly penalises Hindi-medium students.\nReason 2: it depends on internet access, so students with poor connections cannot perform well; the training data probably came mostly from urban English-medium students.\n(b) Do not harm: the system is reducing the chances of less-privileged students, so it must be redesigned (for example, allow answers in Hindi and other languages, and judge scientific reasoning) before it is used again.\nGive justice: every student should have an equal chance; add diverse data from rural and Hindi-medium students, allow offline or low-bandwidth tests, and check selection rates for each group.",
+       "hi": "(क) कारण 1: सिस्टम विज्ञान की योग्यता नहीं, अंग्रेज़ी की धाराप्रवाहता परखता है, इसलिए हिंदी-माध्यम के छात्रों के साथ अन्याय करता है।\nकारण 2: यह इंटरनेट पर निर्भर है, इसलिए कमज़ोर कनेक्शन वाले छात्र अच्छा प्रदर्शन नहीं कर पाते; ट्रेनिंग डेटा शायद ज़्यादातर शहरी अंग्रेज़ी-माध्यम छात्रों का था।\n(ख) नुकसान न करें: सिस्टम कम सुविधा वाले छात्रों के अवसर घटा रहा है, इसलिए दोबारा उपयोग से पहले इसे नए सिरे से बनाया जाए (जैसे हिंदी और दूसरी भाषाओं में उत्तर की अनुमति हो, और वैज्ञानिक तर्क को परखा जाए)।\nन्याय दें: हर छात्र को बराबर अवसर मिले; ग्रामीण और हिंदी-माध्यम छात्रों का विविध डेटा जोड़ा जाए, ऑफ़लाइन या कम-बैंडविड्थ टेस्ट की सुविधा हो, और हर समूह की चयन दर जाँची जाए।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.13 Activities and safe use",
+    "hi": "1.13 गतिविधियाँ और सुरक्षित उपयोग"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Unplugged activity: Ethics court (whole class, 30 minutes, no devices).",
+       "hi": "बिना-डिवाइस गतिविधि: नैतिकता अदालत (पूरी कक्षा, 30 मिनट, कोई डिवाइस नहीं)।"
+      },
+      "a": {
+       "en": "Aim: practise applying different ethical frameworks to one AI decision.\nWhat you need: chits with three scenarios: (1) an AI that decides which villages get a new water tanker first; (2) a loan app that rejects people who have no smartphone payment history; (3) a hospital chatbot that gives medicine advice at night.\nWhat to do: form four groups: Rights, Utility, Virtue and Bioethics. Each group studies a scenario only from its own framework and presents a 2-minute argument. The class 'judge' (a student) then decides what changes are needed.\nWhat you observe: groups may reach different conclusions; Utility may favour the option that helps most people, while Rights may object if even one group is treated unfairly.\nWhat it teaches: no single framework answers everything; using several gives a fuller, fairer decision.",
+       "hi": "उद्देश्य: एक ही AI निर्णय पर अलग-अलग नैतिक ढाँचे लागू करने का अभ्यास।\nक्या चाहिए: तीन स्थितियों वाली पर्चियाँ: (1) एक AI जो तय करता है कि नया पानी का टैंकर पहले किन गाँवों में जाए; (2) एक लोन ऐप जो उन लोगों को अस्वीकार कर देता है जिनका स्मार्टफ़ोन भुगतान इतिहास नहीं है; (3) एक अस्पताल चैटबॉट जो रात में दवा की सलाह देता है।\nक्या करें: चार समूह बनाइए: अधिकार, उपयोगिता, सद्गुण और बायोएथिक्स। हर समूह किसी स्थिति को केवल अपने ढाँचे से देखकर 2 मिनट का तर्क रखता है। फिर कक्षा का 'न्यायाधीश' (एक छात्र) तय करता है कि क्या बदलाव ज़रूरी हैं।\nक्या दिखता है: समूह अलग निष्कर्षों पर पहुँच सकते हैं; उपयोगिता समूह सबसे अधिक लोगों की मदद वाले विकल्प को चुन सकता है, जबकि अधिकार समूह आपत्ति कर सकता है अगर एक भी समूह के साथ अन्याय हो।\nयह क्या सिखाता है: कोई एक ढाँचा हर बात का उत्तर नहीं देता; कई ढाँचों का उपयोग अधिक पूर्ण और न्यायपूर्ण निर्णय देता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Project-cycle activity: Plan an AI for your school (groups of 4, one period).",
+       "hi": "प्रोजेक्ट-चक्र गतिविधि: अपने स्कूल के लिए AI की योजना बनाइए (4 के समूह, एक पीरियड)।"
+      },
+      "a": {
+       "en": "Aim: walk through all six stages and add an ethics check.\nWhat to do: choose a real school problem (for example, long canteen queues, students missing the school bus, wasted food in the mid-day meal). Fill a 4Ws canvas and write a problem statement. List the data you would collect and its source. Sketch one graph you would draw in exploration. Say whether a rule-based or learning-based model fits. Write how you would evaluate it and how it would be deployed. Finally, write one line for each bioethics-style principle: how will you keep autonomy (people know how it works), avoid harm, give benefit to all and be just?\nWhat it teaches: ethics is not an extra step at the end; it should be thought about at every stage of the cycle.",
+       "hi": "उद्देश्य: सभी छह चरणों से गुज़रना और एक नैतिकता-जाँच जोड़ना।\nक्या करें: स्कूल की कोई असली समस्या चुनिए (जैसे कैंटीन की लंबी कतारें, छात्रों की स्कूल बस छूटना, मिड-डे मील में भोजन की बर्बादी)। 4Ws कैनवास भरकर समस्या कथन लिखिए। आप कौन-सा डेटा कहाँ से इकट्ठा करेंगे, लिखिए। अन्वेषण में बनाया जाने वाला एक ग्राफ़ बनाइए। बताइए कि rule-based या learning-based में कौन-सा मॉडल उपयुक्त है। लिखिए कि आप इसका मूल्यांकन और डिप्लॉयमेंट कैसे करेंगे। अंत में बायोएथिक्स जैसे हर सिद्धांत के लिए एक पंक्ति लिखिए: आप स्वायत्तता (लोग जानें कि यह कैसे काम करता है) कैसे रखेंगे, नुकसान से कैसे बचेंगे, सबको लाभ कैसे देंगे और न्याय कैसे करेंगे?\nयह क्या सिखाता है: नैतिकता अंत में जोड़ा जाने वाला अतिरिक्त कदम नहीं है; चक्र के हर चरण पर इसके बारे में सोचना चाहिए।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Being an ethical AI user yourself: do not type your full name, address, Aadhaar number, phone number, passwords or OTPs into chatbots or unknown apps; double-check AI answers, especially for health and money; do not create or forward deepfakes or edited photos of real people; and if something online worries you, tell a parent or teacher.",
+      "hi": "स्वयं एक नैतिक AI उपयोगकर्ता बनिए: चैटबॉट या अनजान ऐप में अपना पूरा नाम, पता, आधार नंबर, फ़ोन नंबर, पासवर्ड या OTP मत डालिए; AI के उत्तरों को, ख़ासकर स्वास्थ्य और पैसे के मामले में, दोबारा जाँचिए; असली लोगों के डीपफ़ेक या एडिट की हुई फ़ोटो न बनाइए, न आगे भेजिए; और अगर ऑनलाइन कुछ परेशान करे तो माता-पिता या शिक्षक को बताइए।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Mixing up the order of stages, for example putting Data Exploration before Data Acquisition. Fix: you cannot explore data you have not collected; remember the order P-D-E-M-E-D.",
+   "Thinking Deployment is the end of the project. Fix: after deployment you keep monitoring and collecting feedback, and the cycle starts again.",
+   "Writing the solution in the 'What' block of the 4Ws canvas. Fix: 'What' describes the problem and its evidence; the solution's benefit belongs in 'Why'.",
+   "Saying there are four or five AI domains. Fix: based on the type of data, there are three: Statistical Data, Computer Vision and NLP.",
+   "Believing a machine cannot be biased because it 'has no feelings'. Fix: AI learns bias from biased data or from the choices of its developers.",
+   "Confusing utility-based with rights-based. Fix: utility looks at the total good for the most people; rights protects every individual, even if fewer people benefit.",
+   "Calling bioethics a value-based framework. Fix: bioethics is a sector-based framework (for healthcare); value-based ones are rights, utility and virtue.",
+   "Listing only three bioethics principles or naming them wrongly. Fix: the four are respect for autonomy, do not harm, ensure maximum benefit for all, and give justice.",
+   "In case-based answers, naming a principle without explaining how it fixes the problem. Fix: always link each principle to a specific change in the AI system."
+  ],
+  "hi": [
+   "चरणों का क्रम गड़बड़ाना, जैसे डेटा अन्वेषण को डेटा अधिग्रहण से पहले रखना। सुधार: जो डेटा इकट्ठा ही नहीं किया, उसका अन्वेषण नहीं हो सकता; क्रम P-D-E-M-E-D याद रखिए।",
+   "यह मानना कि डिप्लॉयमेंट प्रोजेक्ट का अंत है। सुधार: डिप्लॉयमेंट के बाद भी निगरानी और प्रतिक्रिया जारी रहती है, और चक्र फिर शुरू होता है।",
+   "4Ws कैनवास के 'क्या' खंड में समाधान लिख देना। सुधार: 'क्या' समस्या और उसके प्रमाण बताता है; समाधान का लाभ 'क्यों' में लिखा जाता है।",
+   "यह कहना कि AI के चार या पाँच डोमेन हैं। सुधार: डेटा के प्रकार के आधार पर तीन हैं: सांख्यिकीय डेटा, कंप्यूटर विज़न और NLP।",
+   "यह मानना कि मशीन पक्षपाती नहीं हो सकती क्योंकि उसकी 'भावनाएँ नहीं होतीं'। सुधार: AI पक्षपाती डेटा से या डेवलपर्स के निर्णयों से पूर्वाग्रह सीखता है।",
+   "उपयोगिता-आधारित और अधिकार-आधारित में भ्रम। सुधार: उपयोगिता सबसे अधिक लोगों की कुल भलाई देखती है; अधिकार हर व्यक्ति की रक्षा करता है, भले कम लोगों को लाभ हो।",
+   "बायोएथिक्स को मूल्य-आधारित ढाँचा कहना। सुधार: बायोएथिक्स क्षेत्र-आधारित ढाँचा है (स्वास्थ्य सेवा के लिए); मूल्य-आधारित ढाँचे अधिकार, उपयोगिता और सद्गुण हैं।",
+   "बायोएथिक्स के केवल तीन सिद्धांत लिखना या ग़लत नाम देना। सुधार: चार सिद्धांत हैं स्वायत्तता का सम्मान, नुकसान न करें, सबके लिए अधिकतम लाभ, और न्याय दें।",
+   "केस-आधारित उत्तरों में सिद्धांत का नाम लिखकर यह न बताना कि वह समस्या कैसे सुलझाता है। सुधार: हर सिद्धांत को AI सिस्टम के किसी ठोस बदलाव से जोड़िए।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "AI Project Cycle",
+    "hi": "AI प्रोजेक्ट चक्र"
+   },
+   "d": {
+    "en": "The six-stage repeating process used to build an AI project: problem scoping, data acquisition, data exploration, modelling, evaluation, deployment.",
+    "hi": "AI प्रोजेक्ट बनाने की छह-चरणीय दोहराई जाने वाली प्रक्रिया: समस्या निर्धारण, डेटा अधिग्रहण, डेटा अन्वेषण, मॉडलिंग, मूल्यांकन, डिप्लॉयमेंट।"
+   }
+  },
+  {
+   "t": {
+    "en": "Problem scoping",
+    "hi": "समस्या निर्धारण"
+   },
+   "d": {
+    "en": "Understanding a problem and setting the project's goal by stating it clearly.",
+    "hi": "किसी समस्या को समझना और उसे स्पष्ट लिखकर प्रोजेक्ट का लक्ष्य तय करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "4Ws Problem Canvas",
+    "hi": "4Ws प्रॉब्लम कैनवास"
+   },
+   "d": {
+    "en": "A tool with Who, What, Where and Why blocks used to understand a problem.",
+    "hi": "कौन, क्या, कहाँ और क्यों खंडों वाला उपकरण जिससे समस्या समझी जाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Problem statement template",
+    "hi": "प्रॉब्लम स्टेटमेंट टेम्पलेट"
+   },
+   "d": {
+    "en": "A one-sentence summary of the 4Ws: our [who] have a problem that [what] when [where]; an ideal solution would [why].",
+    "hi": "4Ws का एक वाक्य में सारांश: हमारे [कौन] को यह समस्या है कि [क्या] जब [कहाँ]; एक आदर्श समाधान [क्यों] होगा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stakeholders",
+    "hi": "हितधारक"
+   },
+   "d": {
+    "en": "People affected by a problem or by its solution.",
+    "hi": "किसी समस्या या उसके समाधान से प्रभावित लोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data acquisition",
+    "hi": "डेटा अधिग्रहण"
+   },
+   "d": {
+    "en": "Collecting relevant, reliable data from authentic sources.",
+    "hi": "प्रामाणिक स्रोतों से प्रासंगिक, भरोसेमंद डेटा इकट्ठा करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data exploration",
+    "hi": "डेटा अन्वेषण"
+   },
+   "d": {
+    "en": "Cleaning data and visualising it with graphs and charts to find patterns.",
+    "hi": "डेटा को साफ़ करना और पैटर्न ढूँढने के लिए ग्राफ़ व चार्ट से दिखाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Modelling",
+    "hi": "मॉडलिंग"
+   },
+   "d": {
+    "en": "Choosing, building and training an AI model that can learn the patterns in data.",
+    "hi": "ऐसा AI मॉडल चुनना, बनाना और प्रशिक्षित करना जो डेटा के पैटर्न सीख सके।"
+   }
+  },
+  {
+   "t": {
+    "en": "Evaluation",
+    "hi": "मूल्यांकन"
+   },
+   "d": {
+    "en": "Testing a model on unseen data to check how reliable it is.",
+    "hi": "मॉडल को अनदेखे डेटा पर जाँचकर देखना कि वह कितना भरोसेमंद है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deployment",
+    "hi": "डिप्लॉयमेंट"
+   },
+   "d": {
+    "en": "Putting the tested AI solution into real use and monitoring it.",
+    "hi": "जाँचे हुए AI समाधान को असली उपयोग में लाना और उस पर नज़र रखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI domains",
+    "hi": "AI डोमेन"
+   },
+   "d": {
+    "en": "The three areas of AI based on the type of data: Statistical Data, Computer Vision and NLP.",
+    "hi": "डेटा के प्रकार पर आधारित AI के तीन क्षेत्र: सांख्यिकीय डेटा, कंप्यूटर विज़न और NLP।"
+   }
+  },
+  {
+   "t": {
+    "en": "Statistical Data (Data Science)",
+    "hi": "सांख्यिकीय डेटा (डेटा साइंस)"
+   },
+   "d": {
+    "en": "The AI domain that works with numbers and tables to find meaning and make predictions.",
+    "hi": "वह AI डोमेन जो संख्याओं और तालिकाओं से अर्थ निकालता और भविष्यवाणी करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Computer Vision (CV)",
+    "hi": "कंप्यूटर विज़न (CV)"
+   },
+   "d": {
+    "en": "The AI domain in which machines get and analyse images and videos to make decisions.",
+    "hi": "वह AI डोमेन जिसमें मशीनें चित्र और वीडियो लेकर उनका विश्लेषण करती और निर्णय लेती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Natural Language Processing (NLP)",
+    "hi": "प्राकृतिक भाषा प्रसंस्करण (NLP)"
+   },
+   "d": {
+    "en": "The AI domain that helps computers read, understand and use human languages.",
+    "hi": "वह AI डोमेन जो कंप्यूटर को मानव भाषाएँ पढ़ने, समझने और उपयोग करने में मदद करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ethics",
+    "hi": "नैतिकता"
+   },
+   "d": {
+    "en": "A set of values or morals that help us tell right from wrong.",
+    "hi": "मूल्यों या नैतिक सिद्धांतों का समूह जो सही-ग़लत में अंतर करने में मदद करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Framework",
+    "hi": "ढाँचा"
+   },
+   "d": {
+    "en": "A structure that gives step-by-step guidance for solving a problem.",
+    "hi": "ऐसी संरचना जो समस्या हल करने के लिए कदम-दर-कदम मार्गदर्शन देती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ethical framework",
+    "hi": "नैतिक ढाँचा"
+   },
+   "d": {
+    "en": "A framework that helps make sure our choices do not cause unintended harm.",
+    "hi": "ऐसा ढाँचा जो सुनिश्चित करता है कि हमारे निर्णयों से अनचाहा नुकसान न हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Moral dilemma",
+    "hi": "नैतिक दुविधा"
+   },
+   "d": {
+    "en": "A situation in which every available choice has some right and some wrong side.",
+    "hi": "ऐसी स्थिति जिसमें हर विकल्प का कुछ सही और कुछ ग़लत पक्ष हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias",
+    "hi": "पूर्वाग्रह"
+   },
+   "d": {
+    "en": "An unfair leaning for or against a person or group, often learnt from data.",
+    "hi": "किसी व्यक्ति या समूह के पक्ष या विपक्ष में अनुचित झुकाव, जो अक्सर डेटा से सीखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sector-based framework",
+    "hi": "क्षेत्र-आधारित ढाँचा"
+   },
+   "d": {
+    "en": "An ethical framework made for one sector, such as healthcare or finance.",
+    "hi": "किसी एक क्षेत्र, जैसे स्वास्थ्य या वित्त, के लिए बनाया गया नैतिक ढाँचा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Value-based framework",
+    "hi": "मूल्य-आधारित ढाँचा"
+   },
+   "d": {
+    "en": "An ethical framework based on basic moral values; its types are rights-based, utility-based and virtue-based.",
+    "hi": "मूल नैतिक मूल्यों पर आधारित ढाँचा; इसके प्रकार अधिकार-आधारित, उपयोगिता-आधारित और सद्गुण-आधारित हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rights-based framework",
+    "hi": "अधिकार-आधारित ढाँचा"
+   },
+   "d": {
+    "en": "Puts protection of human rights, dignity and freedom first.",
+    "hi": "मानव अधिकारों, गरिमा और स्वतंत्रता की रक्षा को सबसे ऊपर रखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Utility-based framework",
+    "hi": "उपयोगिता-आधारित ढाँचा"
+   },
+   "d": {
+    "en": "Chooses the action that gives the greatest good and least harm to the most people.",
+    "hi": "वह कार्य चुनता है जो सबसे अधिक लोगों को सबसे अधिक भलाई और सबसे कम नुकसान दे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Virtue-based framework",
+    "hi": "सद्गुण-आधारित ढाँचा"
+   },
+   "d": {
+    "en": "Focuses on the character and intentions of decision-makers, such as honesty, compassion and integrity.",
+    "hi": "निर्णय लेने वालों के चरित्र और इरादों, जैसे ईमानदारी, करुणा और सत्यनिष्ठा, पर ध्यान देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bioethics",
+    "hi": "बायोएथिक्स"
+   },
+   "d": {
+    "en": "A sector-based ethical framework for healthcare and the life sciences.",
+    "hi": "स्वास्थ्य सेवा और जीव विज्ञान के लिए क्षेत्र-आधारित नैतिक ढाँचा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Respect for autonomy",
+    "hi": "स्वायत्तता का सम्मान"
+   },
+   "d": {
+    "en": "Bioethics principle: people should understand and control decisions about themselves; AI must be transparent.",
+    "hi": "बायोएथिक्स सिद्धांत: लोग अपने बारे में निर्णयों को समझें और नियंत्रित करें; AI पारदर्शी हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Do not harm",
+    "hi": "नुकसान न करें"
+   },
+   "d": {
+    "en": "Bioethics principle: the AI system must not cause harm to anyone.",
+    "hi": "बायोएथिक्स सिद्धांत: AI सिस्टम किसी को नुकसान न पहुँचाए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ensure maximum benefit for all",
+    "hi": "सबके लिए अधिकतम लाभ"
+   },
+   "d": {
+    "en": "Bioethics principle: the AI system should do good for every patient or user.",
+    "hi": "बायोएथिक्स सिद्धांत: AI सिस्टम हर मरीज़ या उपयोगकर्ता की भलाई करे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Give justice",
+    "hi": "न्याय दें"
+   },
+   "d": {
+    "en": "Bioethics principle: benefits and risks must be shared fairly, without discrimination.",
+    "hi": "बायोएथिक्स सिद्धांत: लाभ और जोखिम बिना भेदभाव के निष्पक्ष रूप से बँटें।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The purpose of writing a problem statement in Problem Scoping is to: (a) collect data (b) understand the aim and objective of the project (c) train the model (d) deploy the app",
+    "hi": "MCQ: समस्या निर्धारण में समस्या कथन लिखने का उद्देश्य है: (a) डेटा इकट्ठा करना (b) प्रोजेक्ट का उद्देश्य और लक्ष्य समझना (c) मॉडल प्रशिक्षित करना (d) ऐप डिप्लॉय करना"
+   },
+   "a": {
+    "en": "(b) To understand the aim and objective of the project.",
+    "hi": "(b) प्रोजेक्ट का उद्देश्य और लक्ष्य समझना।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: With respect to the type of data fed into the AI model, AI can be broadly classified into ____ domains.",
+    "hi": "रिक्त स्थान भरिए: AI मॉडल को दिए जाने वाले डेटा के प्रकार के आधार पर AI को मोटे तौर पर ____ डोमेन में बाँटा जाता है।"
+   },
+   "a": {
+    "en": "Three (Statistical Data, Computer Vision and Natural Language Processing).",
+    "hi": "तीन (सांख्यिकीय डेटा, कंप्यूटर विज़न और प्राकृतिक भाषा प्रसंस्करण)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Ethical frameworks for AI are mainly categorised into: (a) legal and illegal (b) sector-based and value-based (c) historical and modern (d) theory and practice",
+    "hi": "MCQ: AI के नैतिक ढाँचों को मुख्य रूप से इनमें बाँटा जाता है: (a) क़ानूनी और ग़ैर-क़ानूनी (b) क्षेत्र-आधारित और मूल्य-आधारित (c) ऐतिहासिक और आधुनिक (d) सिद्धांत और व्यवहार"
+   },
+   "a": {
+    "en": "(b) Sector-based and value-based.",
+    "hi": "(b) क्षेत्र-आधारित और मूल्य-आधारित।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The primary area of application of bioethics is: (a) agriculture (b) healthcare and life sciences (c) information technology (d) sports",
+    "hi": "MCQ: बायोएथिक्स का मुख्य उपयोग-क्षेत्र है: (a) कृषि (b) स्वास्थ्य सेवा और जीव विज्ञान (c) सूचना प्रौद्योगिकी (d) खेल"
+   },
+   "a": {
+    "en": "(b) Healthcare and life sciences.",
+    "hi": "(b) स्वास्थ्य सेवा और जीव विज्ञान।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: Deployment is the last stage, after which the AI project never needs to be changed.",
+    "hi": "सही या ग़लत: डिप्लॉयमेंट अंतिम चरण है, जिसके बाद AI प्रोजेक्ट को कभी बदलना नहीं पड़ता।"
+   },
+   "a": {
+    "en": "False. After deployment the system is monitored and feedback is collected; the cycle repeats to improve it.",
+    "hi": "ग़लत। डिप्लॉयमेंट के बाद सिस्टम की निगरानी होती है और प्रतिक्रिया ली जाती है; सुधार के लिए चक्र दोहराया जाता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the AI domain for each: (a) Google Maps estimating travel time from past traffic numbers (b) reading a car number plate at a toll plaza (c) converting a spoken Hindi sentence into Tamil text.",
+    "hi": "हर एक का AI डोमेन बताइए: (क) पिछली ट्रैफ़िक संख्याओं से Google Maps का यात्रा समय अनुमानित करना (ख) टोल प्लाज़ा पर कार की नंबर प्लेट पढ़ना (ग) बोले गए हिंदी वाक्य को तमिल टेक्स्ट में बदलना।"
+   },
+   "a": {
+    "en": "(a) Statistical Data (b) Computer Vision (c) Natural Language Processing.",
+    "hi": "(क) सांख्यिकीय डेटा (ख) कंप्यूटर विज़न (ग) प्राकृतिक भाषा प्रसंस्करण।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: ____ are a set of values or morals that help us separate right from wrong, and ____ give step-by-step guidance on solving problems.",
+    "hi": "रिक्त स्थान भरिए: ____ मूल्यों या नैतिक सिद्धांतों का समूह है जो सही-ग़लत में अंतर करने में मदद करता है, और ____ समस्याएँ हल करने के लिए कदम-दर-कदम मार्गदर्शन देते हैं।"
+   },
+   "a": {
+    "en": "Ethics; frameworks.",
+    "hi": "नैतिकता; ढाँचे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Virtue-based framework focuses on the character and intentions of individuals involved in decision-making.\nReason (R): Virtue-based framework evaluates whether actions align with principles such as honesty, compassion and integrity.\n(a) Both A and R are true and R is the correct explanation of A (b) Both true but R is not the explanation (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): सद्गुण-आधारित ढाँचा निर्णय लेने वाले व्यक्तियों के चरित्र और इरादों पर ध्यान देता है।\nकारण (R): सद्गुण-आधारित ढाँचा यह परखता है कि कार्य ईमानदारी, करुणा और सत्यनिष्ठा जैसे सिद्धांतों के अनुरूप हैं या नहीं।\n(a) A और R दोनों सही हैं और R, A की सही व्याख्या है (b) दोनों सही, पर R व्याख्या नहीं (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(a) Both A and R are true, and R correctly explains A: judging actions against honesty, compassion and integrity is exactly how this framework looks at character.",
+    "hi": "(a) A और R दोनों सही हैं, और R, A की सही व्याख्या है: ईमानदारी, करुणा और सत्यनिष्ठा के आधार पर कार्यों को परखना ही वह तरीका है जिससे यह ढाँचा चरित्र को देखता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): An AI system can be biased even if its developers never intended it.\nReason (R): AI learns patterns from its training data, and the data may reflect past inequalities.\nChoose (a), (b), (c) or (d) as above.",
+    "hi": "अभिकथन (A): AI सिस्टम पक्षपाती हो सकता है, भले उसके डेवलपर्स का ऐसा इरादा न हो।\nकारण (R): AI अपने ट्रेनिंग डेटा से पैटर्न सीखता है, और डेटा पुरानी असमानताओं को दर्शा सकता है।\nऊपर की तरह (a), (b), (c) या (d) चुनिए।"
+   },
+   "a": {
+    "en": "(a) Both are true and R explains A, as in the hiring algorithm and the high-risk patient case.",
+    "hi": "(a) दोनों सही हैं और R, A की व्याख्या करता है, जैसे भर्ती एल्गोरिद्म और अधिक-जोखिम मरीज़ वाले मामले में।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In which stage of the AI Project Cycle is data given a visual form? Why is this done? (2 marks)",
+    "hi": "AI प्रोजेक्ट चक्र के किस चरण में डेटा को दृश्य रूप दिया जाता है? ऐसा क्यों किया जाता है? (2 अंक)"
+   },
+   "a": {
+    "en": "In the third stage, Data Exploration, the acquired data is shown using graphs, charts, maps, flowcharts and tables. Because the data is usually large, visualising it makes it easier to interpret patterns and draw meaningful insights, and to decide which model to use.",
+    "hi": "तीसरे चरण, डेटा अन्वेषण, में इकट्ठा किए गए डेटा को ग्राफ़, चार्ट, नक्शे, फ़्लोचार्ट और तालिकाओं से दिखाया जाता है। डेटा आमतौर पर बड़ा होता है, इसलिए उसे दृश्य रूप देने से पैटर्न समझना और सार्थक निष्कर्ष निकालना आसान होता है, और यह तय करने में मदद मिलती है कि कौन-सा मॉडल उपयोग हो।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the 4Ws Problem Canvas with one example.",
+    "hi": "4Ws प्रॉब्लम कैनवास को एक उदाहरण से समझाइए।"
+   },
+   "a": {
+    "en": "The 4Ws canvas has four blocks. Who: the stakeholders. What: the problem and evidence. Where: the context or situation. Why: the benefit of solving it.\nExample: Who: elderly people in a housing society. What: they forget to take medicines on time (survey shows many missed doses). Where: at home, especially when living alone. Why: a reminder system in their own language would keep them healthier.",
+    "hi": "4Ws कैनवास में चार खंड हैं। कौन: हितधारक। क्या: समस्या और प्रमाण। कहाँ: संदर्भ या स्थिति। क्यों: इसे हल करने का लाभ।\nउदाहरण: कौन: एक हाउसिंग सोसाइटी के बुज़ुर्ग। क्या: वे समय पर दवा लेना भूल जाते हैं (सर्वे में कई ख़ुराकें छूटी मिलीं)। कहाँ: घर पर, ख़ासकर अकेले रहने पर। क्यों: उनकी अपनी भाषा में याद दिलाने वाला सिस्टम उन्हें ज़्यादा स्वस्थ रखेगा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is an ethical framework? Why do we need ethical frameworks for AI? Give two reasons.",
+    "hi": "नैतिक ढाँचा क्या है? AI के लिए नैतिक ढाँचों की ज़रूरत क्यों है? दो कारण बताइए।"
+   },
+   "a": {
+    "en": "An ethical framework is a framework that helps us make sure our choices do not cause unintended harm; it gives a systematic way to handle moral dilemmas using ethical principles.\nReasons: (1) AI is a decision-making tool, so its recommendations must be morally acceptable; for example, a biased hiring algorithm rejected women applicants. (2) Using a framework at design time helps prevent harm such as discrimination or privacy loss before it happens, and builds trust.",
+    "hi": "नैतिक ढाँचा ऐसा ढाँचा है जो सुनिश्चित करता है कि हमारे निर्णयों से अनचाहा नुकसान न हो; यह नैतिक सिद्धांतों के सहारे नैतिक दुविधाओं को सुलझाने का व्यवस्थित तरीका देता है।\nकारण: (1) AI निर्णय लेने का उपकरण है, इसलिए उसके सुझाव नैतिक रूप से स्वीकार्य होने चाहिए; जैसे एक पक्षपाती भर्ती एल्गोरिद्म ने महिला उम्मीदवारों को अस्वीकार किया। (2) डिज़ाइन के समय ढाँचे का उपयोग भेदभाव या निजता-हानि जैसे नुकसान को होने से पहले रोकता है और भरोसा बनाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Mention the key characteristics of sector-based frameworks with examples of sectors.",
+    "hi": "क्षेत्र-आधारित ढाँचों की मुख्य विशेषताएँ क्षेत्रों के उदाहरणों के साथ बताइए।"
+   },
+   "a": {
+    "en": "Sector-based frameworks are tailored to one sector or industry and address the special risks of that sector. The most common in AI is bioethics for healthcare, dealing with patient privacy, data security and ethical medical decisions. Others apply to finance (fair loans, account security), education (fair evaluation), transport, agriculture, governance and law enforcement.",
+    "hi": "क्षेत्र-आधारित ढाँचे किसी एक क्षेत्र या उद्योग के लिए बनाए जाते हैं और उस क्षेत्र के विशेष जोखिमों को संबोधित करते हैं। AI में सबसे आम है स्वास्थ्य सेवा के लिए बायोएथिक्स, जो मरीज़ की निजता, डेटा सुरक्षा और नैतिक चिकित्सा निर्णयों से जुड़ा है। अन्य ढाँचे वित्त (निष्पक्ष ऋण, खाते की सुरक्षा), शिक्षा (निष्पक्ष मूल्यांकन), परिवहन, कृषि, शासन और क़ानून-व्यवस्था पर लागू होते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between rights-based and utility-based frameworks with an AI example.",
+    "hi": "अधिकार-आधारित और उपयोगिता-आधारित ढाँचों में AI के एक उदाहरण के साथ अंतर बताइए।"
+   },
+   "a": {
+    "en": "Rights-based: protects every individual's rights and dignity; an action is wrong if it violates anyone's rights, even if many benefit. Utility-based: chooses the action giving the greatest total benefit and least harm to the greatest number.\nExample: an AI that reads all students' chats to detect bullying. Utility may support it because many students are protected; rights-based would object because it invades every student's privacy and suggest a less intrusive way, such as a report button.",
+    "hi": "अधिकार-आधारित: हर व्यक्ति के अधिकारों और गरिमा की रक्षा करता है; कोई कार्य ग़लत है अगर वह किसी के अधिकार तोड़ता है, भले बहुतों को लाभ हो। उपयोगिता-आधारित: वह कार्य चुनता है जो सबसे अधिक लोगों को सबसे अधिक कुल लाभ और सबसे कम नुकसान दे।\nउदाहरण: एक AI जो धमकाने (bullying) को पकड़ने के लिए सभी छात्रों की चैट पढ़ता है। उपयोगिता इसका समर्थन कर सकती है क्योंकि बहुत-से छात्र सुरक्षित होंगे; अधिकार-आधारित ढाँचा आपत्ति करेगा क्योंकि यह हर छात्र की निजता में दख़ल है, और कम दख़ल वाला तरीका सुझाएगा, जैसे रिपोर्ट बटन।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List the four principles of bioethics and explain respect for autonomy in the context of AI.",
+    "hi": "बायोएथिक्स के चार सिद्धांत लिखिए और AI के संदर्भ में स्वायत्तता के सम्मान को समझाइए।"
+   },
+   "a": {
+    "en": "Principles: respect for autonomy, do not harm, ensure maximum benefit for all, give justice.\nRespect for autonomy means users should be fully aware of how the AI makes decisions so they can make informed choices. The data the model was trained on should be reproducible and accessible, and if there are performance concerns, the model's predictions and data labels should be released.",
+    "hi": "सिद्धांत: स्वायत्तता का सम्मान, नुकसान न करें, सबके लिए अधिकतम लाभ, न्याय दें।\nस्वायत्तता के सम्मान का अर्थ है कि उपयोगकर्ता पूरी तरह जानें कि AI कैसे निर्णय लेता है ताकि वे सोच-समझकर चुनाव कर सकें। जिस डेटा पर मॉडल प्रशिक्षित हुआ वह दोहराने योग्य और उपलब्ध हो, और प्रदर्शन पर चिंता हो तो मॉडल की भविष्यवाणियाँ और डेटा लेबल सार्वजनिक किए जाएँ।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List any three factors that influence our decision-making, and explain why they matter when building AI.",
+    "hi": "हमारे निर्णयों को प्रभावित करने वाले कोई तीन कारक लिखिए, और बताइए कि AI बनाते समय ये क्यों मायने रखते हैं।"
+   },
+   "a": {
+    "en": "Any three of: culture, religion, intuition, values, value of humans, value of non-humans, experience and emotions. They matter because developers carry these influences, often unknowingly, into the data they choose and the rules they set; the AI then repeats those preferences for millions of people. A shared ethical framework checks these personal leanings.",
+    "hi": "इनमें से कोई तीन: संस्कृति, धर्म, अंतर्ज्ञान, मूल्य, मनुष्यों का मूल्य, गैर-मनुष्यों का मूल्य, अनुभव और भावनाएँ। ये इसलिए मायने रखते हैं क्योंकि डेवलपर इन प्रभावों को, अक्सर अनजाने में, अपने चुने हुए डेटा और बनाए नियमों में ले आते हैं; फिर AI उन पसंदों को लाखों लोगों पर दोहराता है। एक साझा नैतिक ढाँचा इन व्यक्तिगत झुकावों की जाँच करता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based (4 marks): A hospital AI predicts which patients need extra care using their past medical spending. Patients from poorer areas, who spent less because they could not afford hospitals, are rarely flagged. (a) Identify the ethical problem. (b) Apply all four bioethics principles to suggest a fix.",
+    "hi": "केस-आधारित (4 अंक): एक अस्पताल का AI पिछले चिकित्सा ख़र्च के आधार पर बताता है कि किन मरीज़ों को अतिरिक्त देखभाल चाहिए। ग़रीब इलाकों के मरीज़, जिन्होंने अस्पताल का ख़र्च न उठा पाने के कारण कम ख़र्च किया, शायद ही चुने जाते हैं। (क) नैतिक समस्या पहचानिए। (ख) सुधार सुझाने के लिए चारों बायोएथिक्स सिद्धांत लागू कीजिए।"
+   },
+   "a": {
+    "en": "(a) Bias: spending is used as a stand-in for health need, but spending depends on ability to pay, so poorer patients who are equally sick get lower scores and miss care.\n(b) Autonomy: explain to doctors and patients that scores are based on spending; open the data and predictions for audit. Do not harm: test the model separately on poorer patients before use; stop using it where it misses critical cases. Maximum benefit: replace spending with direct health measures (diagnoses, test results) so all sick patients benefit. Justice: ensure equally sick patients get equal scores regardless of income or area; keep monitoring fairness.",
+    "hi": "(क) पूर्वाग्रह: स्वास्थ्य ज़रूरत की जगह ख़र्च का उपयोग हुआ, पर ख़र्च भुगतान की क्षमता पर निर्भर है, इसलिए उतने ही बीमार ग़रीब मरीज़ों को कम अंक मिलते हैं और वे देखभाल से छूट जाते हैं।\n(ख) स्वायत्तता: डॉक्टरों और मरीज़ों को बताइए कि अंक ख़र्च पर आधारित हैं; डेटा और भविष्यवाणियों को जाँच के लिए खोलिए। नुकसान न करें: उपयोग से पहले मॉडल को ग़रीब मरीज़ों पर अलग से जाँचिए; जहाँ यह गंभीर मामले छोड़ता है वहाँ इसका उपयोग रोकिए। अधिकतम लाभ: ख़र्च की जगह सीधे स्वास्थ्य माप (रोग-निदान, जाँच परिणाम) रखिए ताकि सभी बीमार मरीज़ों को लाभ हो। न्याय: सुनिश्चित कीजिए कि उतने ही बीमार मरीज़ों को आय या इलाके से परे समान अंक मिलें; निष्पक्षता पर लगातार नज़र रखिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain all six stages of the AI Project Cycle using the example of an AI system that warns people about UPI payment fraud.",
+    "hi": "दीर्घ उत्तर: UPI भुगतान धोखाधड़ी के बारे में लोगों को चेतावनी देने वाले AI सिस्टम के उदाहरण से AI प्रोजेक्ट चक्र के सभी छह चरण समझाइए।"
+   },
+   "a": {
+    "en": "1. Problem scoping: Who: bank customers, especially first-time digital users. What: they lose money to fake payment requests and fraud links. Where: on UPI apps, often during calls from strangers. Why: early warnings would save money and trust.\n2. Data acquisition: past transaction records marked fraud or genuine (with privacy protection), reported scam numbers, time and amount patterns.\n3. Data exploration: graphs show that fraud often involves new payees, unusual hours and sudden large amounts.\n4. Modelling: train a learning-based classification model to label each transaction as 'likely fraud' or 'normal'.\n5. Evaluation: test on new transactions; check how many frauds it catches and how many genuine payments it wrongly blocks.\n6. Deployment: show an alert in the app before payment; collect user feedback and update the model as scammers change tricks. Ethics check: protect customers' data, explain alerts, avoid unfairly blocking any group.",
+    "hi": "1. समस्या निर्धारण: कौन: बैंक ग्राहक, ख़ासकर पहली बार डिजिटल भुगतान करने वाले। क्या: वे नकली भुगतान अनुरोधों और धोखाधड़ी वाले लिंक से पैसा खोते हैं। कहाँ: UPI ऐप पर, अक्सर अनजान लोगों के कॉल के दौरान। क्यों: समय पर चेतावनी से पैसा और भरोसा बचेगा।\n2. डेटा अधिग्रहण: पिछले लेन-देन के रिकॉर्ड जिन पर धोखाधड़ी या असली लिखा हो (निजता सुरक्षा के साथ), रिपोर्ट किए गए धोखेबाज़ नंबर, समय और राशि के पैटर्न।\n3. डेटा अन्वेषण: ग्राफ़ दिखाते हैं कि धोखाधड़ी में अक्सर नए प्राप्तकर्ता, असामान्य समय और अचानक बड़ी राशि होती है।\n4. मॉडलिंग: हर लेन-देन को 'संभावित धोखाधड़ी' या 'सामान्य' बताने वाला learning-based classification मॉडल प्रशिक्षित करना।\n5. मूल्यांकन: नए लेन-देन पर जाँचना; देखना कि यह कितनी धोखाधड़ी पकड़ता है और कितने असली भुगतान ग़लती से रोकता है।\n6. डिप्लॉयमेंट: भुगतान से पहले ऐप में अलर्ट दिखाना; उपयोगकर्ता की प्रतिक्रिया लेकर, धोखेबाज़ों के बदलते तरीकों के अनुसार मॉडल अपडेट करना। नैतिकता-जाँच: ग्राहकों का डेटा सुरक्षित रखना, अलर्ट का कारण बताना, किसी समूह को अनुचित रूप से न रोकना।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe the three types of value-based frameworks and show how each applies to an AI that decides which delivery workers get the best-paying orders.",
+    "hi": "दीर्घ उत्तर: तीनों प्रकार के मूल्य-आधारित ढाँचों का वर्णन कीजिए और दिखाइए कि हर एक उस AI पर कैसे लागू होता है जो तय करता है कि किन डिलीवरी कर्मचारियों को सबसे अच्छे भुगतान वाले ऑर्डर मिलें।"
+   },
+   "a": {
+    "en": "Rights-based: protects each worker's dignity and fair treatment. The AI must not discriminate by gender, age or the area a worker lives in, and workers should be able to challenge decisions.\nUtility-based: aims for the greatest overall good. Faster deliveries help customers and the company, but if a few workers always get poor orders and lose income, the total harm may outweigh the gain; a fairer rotation could give more total well-being.\nVirtue-based: asks whether the company acts honestly and with compassion, for example by telling workers how orders are assigned and not hiding rules that cut their pay.\nConclusion: a good design is transparent, fair to all workers and still efficient.",
+    "hi": "अधिकार-आधारित: हर कर्मचारी की गरिमा और निष्पक्ष व्यवहार की रक्षा करता है। AI लिंग, आयु या कर्मचारी के रहने के इलाके के आधार पर भेदभाव न करे, और कर्मचारी निर्णयों को चुनौती दे सकें।\nउपयोगिता-आधारित: कुल भलाई अधिकतम करने का लक्ष्य। तेज़ डिलीवरी से ग्राहकों और कंपनी को लाभ होता है, पर अगर कुछ कर्मचारियों को हमेशा ख़राब ऑर्डर मिलें और उनकी आय घटे, तो कुल नुकसान लाभ से ज़्यादा हो सकता है; बारी-बारी वाली निष्पक्ष व्यवस्था अधिक कुल भलाई दे सकती है।\nसद्गुण-आधारित: पूछता है कि क्या कंपनी ईमानदारी और करुणा से काम करती है, जैसे कर्मचारियों को बताना कि ऑर्डर कैसे बाँटे जाते हैं और वेतन घटाने वाले नियम न छिपाना।\nनिष्कर्ष: अच्छा डिज़ाइन पारदर्शी, सभी कर्मचारियों के लिए निष्पक्ष और फिर भी कुशल होता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Ethics should be considered at every stage of the AI Project Cycle, not only at the end. Give one ethical check for each of the six stages.",
+    "hi": "चिंतन प्रश्न: नैतिकता पर AI प्रोजेक्ट चक्र के हर चरण में विचार होना चाहिए, केवल अंत में नहीं। छहों चरणों के लिए एक-एक नैतिक जाँच बताइए।"
+   },
+   "a": {
+    "en": "Problem scoping: are all affected stakeholders, including vulnerable groups, included in 'Who'?\nData acquisition: was the data collected with consent and is it representative of all groups?\nData exploration: does any group appear too little or too much in the data?\nModelling: could the chosen features act as a stand-in for caste, religion, gender or income?\nEvaluation: is accuracy checked separately for each group, not just overall?\nDeployment: can users understand and challenge decisions, and is the system monitored for harm?",
+    "hi": "समस्या निर्धारण: क्या 'कौन' में सभी प्रभावित हितधारक, कमज़ोर समूहों सहित, शामिल हैं?\nडेटा अधिग्रहण: क्या डेटा सहमति से इकट्ठा हुआ और क्या वह सभी समूहों का प्रतिनिधित्व करता है?\nडेटा अन्वेषण: क्या कोई समूह डेटा में बहुत कम या बहुत ज़्यादा है?\nमॉडलिंग: क्या चुने गए फ़ीचर जाति, धर्म, लिंग या आय का छिपा रूप तो नहीं बन रहे?\nमूल्यांकन: क्या accuracy केवल कुल नहीं, हर समूह के लिए अलग जाँची गई?\nडिप्लॉयमेंट: क्या उपयोगकर्ता निर्णय समझ और चुनौती दे सकते हैं, और क्या सिस्टम पर नुकसान के लिए नज़र रखी जा रही है?"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: After doing the My Goodness activity, a student says, 'I always chose to help people from my own city.' What does this show about human decision-making, and what lesson does it give for AI developers?",
+    "hi": "गतिविधि प्रश्न: My Goodness गतिविधि करने के बाद एक छात्र कहता है, 'मैंने हमेशा अपने शहर के लोगों की मदद चुनी।' यह मानव निर्णय के बारे में क्या दिखाता है, और AI डेवलपर्स के लिए क्या सीख देता है?"
+   },
+   "a": {
+    "en": "It shows that our choices are shaped by factors such as culture, closeness and the value we give to different humans, often without our noticing. For AI developers, the lesson is that such hidden preferences can enter the data and rules they create, so the AI may favour some groups at a very large scale. They should use an ethical framework, diverse teams and diverse data to check and correct these leanings.",
+    "hi": "यह दिखाता है कि हमारे विकल्प संस्कृति, निकटता और अलग-अलग लोगों को दिए जाने वाले मूल्य जैसे कारकों से बनते हैं, अक्सर हमें पता चले बिना। AI डेवलपर्स के लिए सीख यह है कि ऐसी छिपी पसंद उनके बनाए डेटा और नियमों में आ सकती है, जिससे AI बहुत बड़े पैमाने पर कुछ समूहों का पक्ष ले सकता है। इन झुकावों को जाँचने और सुधारने के लिए उन्हें नैतिक ढाँचे, विविध टीम और विविध डेटा का उपयोग करना चाहिए।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "The AI Project Cycle has six stages: Problem Scoping, Data Acquisition, Data Exploration, Modelling, Evaluation and Deployment; it repeats with feedback.",
+   "Problem scoping uses the 4Ws canvas (Who, What, Where, Why) and ends in a one-line problem statement.",
+   "Data must be relevant, accurate, reliable, sufficient, representative and collected ethically.",
+   "Data exploration cleans data and shows it in graphs and charts to reveal patterns.",
+   "Modelling chooses and trains a model; evaluation tests it on unseen data; deployment puts it into real use and monitors it.",
+   "Based on the type of data, AI has three domains: Statistical Data (numbers), Computer Vision (images/videos) and NLP (language).",
+   "Ethics are values that separate right from wrong; frameworks give step-by-step guidance; ethical frameworks help avoid unintended harm.",
+   "AI needs ethical frameworks because it makes or influences decisions and can learn bias from data, as the biased hiring algorithm showed.",
+   "Culture, religion, intuition, values and the value we give to humans and non-humans influence our decisions; the My Goodness activity reveals them.",
+   "Ethical frameworks are sector-based (for one sector, such as bioethics in healthcare) or value-based.",
+   "Value-based frameworks are rights-based (protect every person), utility-based (greatest good for the greatest number) and virtue-based (good character and intentions).",
+   "Bioethics has four principles: respect for autonomy, do not harm, ensure maximum benefit for all, and give justice.",
+   "In the high-risk patient case, using past spending as a measure of need caused bias; the four principles show how to fix it."
+  ],
+  "hi": [
+   "AI प्रोजेक्ट चक्र में छह चरण हैं: समस्या निर्धारण, डेटा अधिग्रहण, डेटा अन्वेषण, मॉडलिंग, मूल्यांकन और डिप्लॉयमेंट; यह प्रतिक्रिया के साथ दोहराया जाता है।",
+   "समस्या निर्धारण में 4Ws कैनवास (कौन, क्या, कहाँ, क्यों) का उपयोग होता है और अंत में एक पंक्ति का समस्या कथन बनता है।",
+   "डेटा प्रासंगिक, सटीक, भरोसेमंद, पर्याप्त, प्रतिनिधिक और नैतिक तरीके से इकट्ठा किया हुआ होना चाहिए।",
+   "डेटा अन्वेषण में डेटा साफ़ करके ग्राफ़ और चार्ट से पैटर्न दिखाए जाते हैं।",
+   "मॉडलिंग में मॉडल चुना और प्रशिक्षित होता है; मूल्यांकन उसे अनदेखे डेटा पर जाँचता है; डिप्लॉयमेंट उसे असली उपयोग में लाकर उस पर नज़र रखता है।",
+   "डेटा के प्रकार के आधार पर AI के तीन डोमेन हैं: सांख्यिकीय डेटा (संख्याएँ), कंप्यूटर विज़न (चित्र/वीडियो) और NLP (भाषा)।",
+   "नैतिकता सही-ग़लत में अंतर बताने वाले मूल्य हैं; ढाँचे कदम-दर-कदम मार्गदर्शन देते हैं; नैतिक ढाँचे अनचाहे नुकसान से बचाते हैं।",
+   "AI को नैतिक ढाँचों की ज़रूरत है क्योंकि वह निर्णय लेता या प्रभावित करता है और डेटा से पूर्वाग्रह सीख सकता है, जैसा पक्षपाती भर्ती एल्गोरिद्म ने दिखाया।",
+   "संस्कृति, धर्म, अंतर्ज्ञान, मूल्य और मनुष्यों व गैर-मनुष्यों को दिया जाने वाला महत्व हमारे निर्णयों को प्रभावित करते हैं; My Goodness गतिविधि इन्हें सामने लाती है।",
+   "नैतिक ढाँचे क्षेत्र-आधारित (किसी एक क्षेत्र के लिए, जैसे स्वास्थ्य में बायोएथिक्स) या मूल्य-आधारित होते हैं।",
+   "मूल्य-आधारित ढाँचे हैं अधिकार-आधारित (हर व्यक्ति की रक्षा), उपयोगिता-आधारित (अधिकतम लोगों की अधिकतम भलाई) और सद्गुण-आधारित (अच्छा चरित्र और इरादे)।",
+   "बायोएथिक्स के चार सिद्धांत हैं: स्वायत्तता का सम्मान, नुकसान न करें, सबके लिए अधिकतम लाभ, और न्याय दें।",
+   "अधिक-जोखिम मरीज़ वाले मामले में ज़रूरत के माप के रूप में पिछले ख़र्च के उपयोग से पूर्वाग्रह आया; चार सिद्धांत बताते हैं कि इसे कैसे ठीक करें।"
+  ]
+ }
+}

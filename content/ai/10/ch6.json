@@ -1,0 +1,2159 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "10",
+ "id": "ch6",
+ "intro": {
+  "en": "Every time a phone assistant sets your alarm, a YouTube video shows live captions, or an app translates a Tamil signboard into Hindi, Natural Language Processing (NLP) is at work. NLP is the domain of AI that helps computers understand and use human language. In this chapter you will learn why human language is hard for machines, the applications and five stages of NLP, the difference between script bots and smart bots, how text is cleaned by normalisation, and how text becomes numbers using Bag of Words and TF-IDF. You will finish with a sentiment-analysis project in Orange Data Mining.",
+  "hi": "हर बार जब फ़ोन assistant आपका अलार्म लगाता है, YouTube वीडियो लाइव कैप्शन दिखाता है, या कोई ऐप तमिल साइनबोर्ड का हिंदी में अनुवाद करता है, तब Natural Language Processing (NLP) काम कर रहा होता है। NLP AI का वह क्षेत्र है जो कंप्यूटरों को मानव भाषा समझने और उपयोग करने में मदद करता है। इस अध्याय में आप सीखेंगे कि मानव भाषा मशीनों के लिए कठिन क्यों है, NLP के उपयोग और पाँच चरण, script bot और smart bot का अंतर, normalisation से पाठ कैसे साफ़ होता है, और Bag of Words तथा TF-IDF से पाठ संख्याओं में कैसे बदलता है। अंत में आप Orange Data Mining में एक sentiment-analysis प्रोजेक्ट करेंगे।"
+ },
+ "learn": {
+  "en": [
+   "Features of natural languages and why they are hard for computers",
+   "The meaning of NLP and its place among the domains of AI",
+   "Applications: voice assistants, captions, translation, sentiment analysis, text classification, keyword extraction",
+   "The stages of NLP: lexical, syntactic, semantic, discourse integration and pragmatic analysis",
+   "Chatbots, and the difference between script bots and smart bots",
+   "Text normalisation: sentence segmentation, tokenisation, stopword removal, case conversion, stemming and lemmatization",
+   "The Bag of Words algorithm, dictionary and document vectors",
+   "TF, DF, IDF and TF-IDF with full worked calculations, and their uses",
+   "A sentiment-analysis project in Orange Data Mining, and code-based vs no-code NLP tools",
+   "Challenges, bias, privacy and safe use of chatbots"
+  ],
+  "hi": [
+   "प्राकृतिक भाषाओं की विशेषताएँ और वे कंप्यूटरों के लिए कठिन क्यों हैं",
+   "NLP का अर्थ और AI के क्षेत्रों में उसका स्थान",
+   "उपयोग: voice assistants, कैप्शन, अनुवाद, sentiment analysis, text classification, keyword extraction",
+   "NLP के चरण: lexical, syntactic, semantic, discourse integration और pragmatic analysis",
+   "चैटबॉट, और script bot तथा smart bot का अंतर",
+   "Text normalisation: sentence segmentation, tokenisation, stopword हटाना, case बदलना, stemming और lemmatization",
+   "Bag of Words एल्गोरिदम, dictionary और document vectors",
+   "TF, DF, IDF और TF-IDF पूरी हल की गई गणनाओं के साथ, और उनके उपयोग",
+   "Orange Data Mining में sentiment-analysis प्रोजेक्ट, और कोड-आधारित बनाम नो-कोड NLP टूल",
+   "चुनौतियाँ, पक्षपात, निजता और चैटबॉट का सुरक्षित उपयोग"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "6.1 Natural Language and Its Features",
+    "hi": "6.1 प्राकृतिक भाषा और उसकी विशेषताएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Hindi, English, Tamil, Bengali, Marathi - the languages people speak and write every day are called natural languages. They grew naturally over thousands of years as people talked to each other. Computer languages such as Python were designed on purpose with strict rules. This difference is the reason why understanding human language is hard for a machine.",
+      "hi": "हिंदी, अंग्रेज़ी, तमिल, बांग्ला, मराठी - जो भाषाएँ लोग रोज़ बोलते और लिखते हैं, उन्हें प्राकृतिक भाषाएँ (natural languages) कहते हैं। ये हज़ारों वर्षों में लोगों की आपसी बातचीत से अपने-आप विकसित हुईं। Python जैसी कंप्यूटर भाषाएँ जान-बूझकर सख़्त नियमों के साथ बनाई गईं। यही अंतर कारण है कि मानव भाषा को समझना मशीन के लिए कठिन है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Natural language",
+       "hi": "प्राकृतिक भाषा"
+      },
+      "text": {
+       "en": "A language that humans use naturally to communicate with each other, by speaking, writing or signing. It developed over time through use, not by design.",
+       "hi": "वह भाषा जिसे मनुष्य आपस में बोलकर, लिखकर या संकेतों से बातचीत के लिए स्वाभाविक रूप से उपयोग करते हैं। यह किसी योजना से नहीं, बल्कि उपयोग से समय के साथ विकसित हुई।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "They follow rules of grammar, but the rules have many exceptions (go → went, not 'goed').",
+       "They have redundancy: we often say the same thing in more than one way, and we can still understand a sentence even if a word is missing or misspelt.",
+       "They change over time: new words appear (selfie, UPI, 'to google'), old ones go out of use, and meanings shift.",
+       "One word can have many meanings (ambiguity): 'bank' of a river or a bank that keeps money; Hindi 'आम' means mango and also 'common'.",
+       "Meaning depends on context, tone and culture: 'Great, it's raining again!' may actually express disappointment (sarcasm).",
+       "Word order matters, and different languages use different orders: English is subject-verb-object (Ram eats a mango) while Hindi is usually subject-object-verb (राम आम खाता है).",
+       "People mix languages (Hinglish: 'Kal meeting cancel ho gayi'), use slang, short forms and emojis."
+      ],
+      "hi": [
+       "ये व्याकरण के नियमों का पालन करती हैं, पर नियमों के कई अपवाद होते हैं (go → went, 'goed' नहीं)।",
+       "इनमें अतिरेक (redundancy) होता है: हम अक्सर एक ही बात कई तरह से कहते हैं, और कोई शब्द छूट जाए या ग़लत लिखा हो तब भी वाक्य समझ लेते हैं।",
+       "ये समय के साथ बदलती हैं: नए शब्द आते हैं (selfie, UPI, 'to google'), पुराने चलन से बाहर हो जाते हैं, और अर्थ बदलते हैं।",
+       "एक शब्द के कई अर्थ हो सकते हैं (अस्पष्टता/ambiguity): नदी का 'bank' (किनारा) या पैसे रखने वाला bank; हिंदी में 'आम' का अर्थ फल भी है और 'साधारण' भी।",
+       "अर्थ संदर्भ, लहज़े और संस्कृति पर निर्भर करता है: 'वाह, फिर से बारिश!' असल में निराशा भी हो सकती है (व्यंग्य/sarcasm)।",
+       "शब्दों का क्रम मायने रखता है, और अलग भाषाएँ अलग क्रम अपनाती हैं: अंग्रेज़ी कर्ता-क्रिया-कर्म (Ram eats a mango) है जबकि हिंदी आम तौर पर कर्ता-कर्म-क्रिया (राम आम खाता है)।",
+       "लोग भाषाएँ मिलाते हैं (Hinglish: 'Kal meeting cancel ho gayi'), बोलचाल के शब्द, छोटे रूप और इमोजी उपयोग करते हैं।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Human (natural) language",
+        "Computer (programming) language"
+       ],
+       "hi": [
+        "मानव (प्राकृतिक) भाषा",
+        "कंप्यूटर (प्रोग्रामिंग) भाषा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Grew naturally through use",
+         "Designed on purpose"
+        ],
+        [
+         "Rules have exceptions; flexible",
+         "Strict rules; a tiny error (missing colon) stops the program"
+        ],
+        [
+         "Words can have many meanings",
+         "Each instruction has exactly one meaning"
+        ],
+        [
+         "Meaning depends on context and tone",
+         "Meaning does not depend on context"
+        ],
+        [
+         "Understood even with mistakes",
+         "Mistakes cause errors"
+        ]
+       ],
+       "hi": [
+        [
+         "उपयोग से स्वाभाविक रूप से विकसित",
+         "जान-बूझकर बनाई गई"
+        ],
+        [
+         "नियमों में अपवाद; लचीली",
+         "सख़्त नियम; छोटी-सी ग़लती (colon छूटना) से प्रोग्राम रुक जाता है"
+        ],
+        [
+         "शब्दों के कई अर्थ हो सकते हैं",
+         "हर निर्देश का ठीक एक ही अर्थ"
+        ],
+        [
+         "अर्थ संदर्भ और लहज़े पर निर्भर",
+         "अर्थ संदर्भ पर निर्भर नहीं"
+        ],
+        [
+         "ग़लतियों के साथ भी समझ आती है",
+         "ग़लतियों से errors आती हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Two special difficulties are often asked in exams. First, a sentence can have correct grammar but no meaning, for example 'Chickens feed extravagantly while the moon drinks tea.' Every word is in the right place, yet the sentence makes no sense. Second, the same words in a different arrangement or context give different meanings: 'His face turned red' can mean he was angry or embarrassed, or that he got sunburnt. Humans use common sense to decide; a machine has to be taught.",
+      "hi": "परीक्षा में दो ख़ास कठिनाइयाँ अक्सर पूछी जाती हैं। पहली, कोई वाक्य व्याकरण में सही होकर भी अर्थहीन हो सकता है, जैसे 'Chickens feed extravagantly while the moon drinks tea' (मुर्गियाँ ठाठ से खाती हैं जबकि चाँद चाय पीता है)। हर शब्द सही स्थान पर है, फिर भी वाक्य का कोई अर्थ नहीं बनता। दूसरी, वही शब्द अलग क्रम या संदर्भ में अलग अर्थ देते हैं: 'उसका चेहरा लाल हो गया' का अर्थ हो सकता है कि वह ग़ुस्से में था, शर्मिंदा था, या धूप से झुलस गया। इंसान सामान्य समझ से तय करते हैं; मशीन को यह सिखाना पड़ता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: syntax means the structure or grammar of a sentence; semantics means its meaning. A sentence can be syntactically correct but semantically meaningless.",
+      "hi": "याद रखें: syntax का अर्थ है वाक्य की संरचना या व्याकरण; semantics का अर्थ है उसका अर्थ। कोई वाक्य syntax में सही पर semantics में अर्थहीन हो सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.2 What is Natural Language Processing?",
+    "hi": "6.2 नेचुरल लैंग्वेज प्रोसेसिंग क्या है?"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Natural Language Processing (NLP)",
+       "hi": "नेचुरल लैंग्वेज प्रोसेसिंग (NLP)"
+      },
+      "text": {
+       "en": "NLP is the domain of AI that enables computers to understand, interpret, process and generate human language in the form of text or speech. It combines linguistics (the study of language) with computer science and machine learning.",
+       "hi": "NLP AI का वह क्षेत्र है जो कंप्यूटरों को पाठ (text) या बोली (speech) के रूप में मानव भाषा को समझने, व्याख्या करने, प्रोसेस करने और बनाने (generate) योग्य बनाता है। यह भाषाविज्ञान (linguistics - भाषा का अध्ययन) को कंप्यूटर विज्ञान और machine learning के साथ जोड़ता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "NLP is the third domain of AI, after Data Science and Computer Vision. Data Science works with numbers, CV with pixels, and NLP with words. But a computer can only calculate with numbers, so a central job of NLP is to turn words into numbers without losing their meaning. You will see how this is done with Bag of Words and TF-IDF in Sections 6.7 and 6.8.",
+      "hi": "NLP, Data Science और Computer Vision के बाद AI का तीसरा क्षेत्र है। Data Science संख्याओं के साथ, CV पिक्सल के साथ, और NLP शब्दों के साथ काम करता है। पर कंप्यूटर केवल संख्याओं से गणना कर सकता है, इसलिए NLP का एक मुख्य काम है शब्दों को उनका अर्थ खोए बिना संख्याओं में बदलना। यह कैसे होता है, आप खंड 6.7 और 6.8 में Bag of Words और TF-IDF से देखेंगे।"
+     }
+    },
+    {
+     "p": {
+      "en": "When you speak to a voice assistant, three things happen: speech recognition turns your voice into text, NLP understands the text and decides a reply, and speech synthesis (text-to-speech) speaks the reply aloud. The understanding part is often called Natural Language Understanding (NLU) and the reply-writing part Natural Language Generation (NLG).",
+      "hi": "जब आप किसी voice assistant से बोलते हैं, तो तीन काम होते हैं: speech recognition आपकी आवाज़ को पाठ में बदलता है, NLP पाठ को समझकर उत्तर तय करता है, और speech synthesis (text-to-speech) उत्तर बोलकर सुनाता है। समझने वाले भाग को अक्सर Natural Language Understanding (NLU) और उत्तर लिखने वाले भाग को Natural Language Generation (NLG) कहते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "India has 22 languages in the Eighth Schedule of the Constitution and hundreds more in use. Government projects such as Bhashini aim to provide translation and speech tools in Indian languages, so that people can use digital services in their own language.",
+      "hi": "भारत में संविधान की आठवीं अनुसूची में 22 भाषाएँ हैं और सैकड़ों और भाषाएँ उपयोग में हैं। Bhashini जैसी सरकारी परियोजनाएँ भारतीय भाषाओं में अनुवाद और बोली के टूल देने का लक्ष्य रखती हैं, ताकि लोग अपनी भाषा में डिजिटल सेवाएँ उपयोग कर सकें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.3 Applications of NLP",
+    "hi": "6.3 NLP के उपयोग"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application",
+        "What it does",
+        "Example"
+       ],
+       "hi": [
+        "उपयोग",
+        "यह क्या करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Voice assistants",
+         "Understand spoken commands and reply",
+         "Asking a phone assistant 'Set an alarm for 6 a.m.' or 'Call Maa'"
+        ],
+        [
+         "Auto-generated captions",
+         "Convert speech in a video or meeting into on-screen text",
+         "Live captions on YouTube videos or online classes; helpful for people with hearing loss"
+        ],
+        [
+         "Language translation",
+         "Convert text or speech from one language to another",
+         "Translating a Tamil signboard into Hindi with a phone camera; Bhashini-based tools"
+        ],
+        [
+         "Sentiment analysis",
+         "Find whether a text expresses a positive, negative or neutral opinion",
+         "A food-delivery company checking if reviews are happy or angry"
+        ],
+        [
+         "Text classification",
+         "Put a text into a predefined category",
+         "Email spam filters; sorting customer complaints into 'delivery', 'refund', 'payment'"
+        ],
+        [
+         "Keyword extraction",
+         "Pick out the most important words or phrases from a text",
+         "Pulling 'UPI', 'refund', 'failed transaction' from a long complaint"
+        ],
+        [
+         "Automatic summarisation",
+         "Make a short summary of a long text",
+         "Summaries of news articles or long reports"
+        ],
+        [
+         "Chatbots",
+         "Hold a conversation by text or voice",
+         "Bank and railway helpdesk bots on websites and messaging apps"
+        ],
+        [
+         "Autocomplete and grammar check",
+         "Suggest next words, fix spelling",
+         "Phone keyboards predicting your next word"
+        ]
+       ],
+       "hi": [
+        [
+         "Voice assistants (आवाज़ सहायक)",
+         "बोले गए आदेश समझकर उत्तर देते हैं",
+         "फ़ोन assistant से कहना 'सुबह 6 बजे का अलार्म लगाओ' या 'माँ को फ़ोन करो'"
+        ],
+        [
+         "Auto-generated captions (स्वचालित कैप्शन)",
+         "वीडियो या मीटिंग की बोली को स्क्रीन पर पाठ में बदलते हैं",
+         "YouTube वीडियो या ऑनलाइन कक्षाओं में लाइव कैप्शन; कम सुनने वालों के लिए सहायक"
+        ],
+        [
+         "Language translation (भाषा अनुवाद)",
+         "पाठ या बोली को एक भाषा से दूसरी में बदलता है",
+         "फ़ोन कैमरे से तमिल साइनबोर्ड का हिंदी में अनुवाद; Bhashini-आधारित टूल"
+        ],
+        [
+         "Sentiment analysis (भावना विश्लेषण)",
+         "पता लगाता है कि पाठ में सकारात्मक, नकारात्मक या तटस्थ राय है",
+         "फ़ूड-डिलीवरी कंपनी जाँचती है कि समीक्षाएँ ख़ुश हैं या नाराज़"
+        ],
+        [
+         "Text classification (पाठ वर्गीकरण)",
+         "पाठ को पहले से तय श्रेणी में डालता है",
+         "ईमेल spam filter; ग्राहक शिकायतों को 'डिलीवरी', 'रिफ़ंड', 'भुगतान' में बाँटना"
+        ],
+        [
+         "Keyword extraction (मुख्य शब्द निकालना)",
+         "पाठ से सबसे महत्वपूर्ण शब्द या वाक्यांश चुनता है",
+         "लंबी शिकायत से 'UPI', 'refund', 'failed transaction' निकालना"
+        ],
+        [
+         "Automatic summarisation (स्वचालित सारांश)",
+         "लंबे पाठ का छोटा सारांश बनाता है",
+         "समाचार लेखों या लंबी रिपोर्टों के सारांश"
+        ],
+        [
+         "Chatbots",
+         "पाठ या आवाज़ से बातचीत करते हैं",
+         "वेबसाइटों और मैसेजिंग ऐप पर बैंक और रेलवे हेल्पडेस्क bot"
+        ],
+        [
+         "Autocomplete और grammar check",
+         "अगले शब्द सुझाते हैं, वर्तनी सुधारते हैं",
+         "फ़ोन कीबोर्ड आपका अगला शब्द अनुमान लगाते हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 - Keyword extraction (screen activity)",
+       "hi": "गतिविधि 1 - मुख्य शब्द निकालना (स्क्रीन गतिविधि)"
+      },
+      "a": {
+       "en": "Aim: see how NLP finds important words and entities.\nNeed: a browser with internet; CBSE suggests the free demo box on Google Cloud's Natural Language page (search 'Google Cloud Natural Language demo'). No sign-up is needed to try the demo text box; if it is unavailable, any free keyword-extraction website works. Do it with a teacher.\nDo: paste a short news paragraph, for example about an Indian cricket match or the monsoon. Click Analyse. Look at the 'Entities', 'Sentiment' and 'Syntax' tabs.\nObserve: it lists people, places and organisations with a 'salience' (importance) score, gives a sentiment score, and tags each word as noun, verb and so on.\nLearn: NLP can pick out the key terms and the mood of a text in seconds.\nSafety: never paste personal details such as phone numbers, addresses or passwords into any online tool.",
+       "hi": "लक्ष्य: देखना कि NLP महत्वपूर्ण शब्द और इकाइयाँ (entities) कैसे ढूँढता है।\nज़रूरत: इंटरनेट वाला ब्राउज़र; CBSE Google Cloud के Natural Language पेज पर मुफ़्त demo बॉक्स सुझाता है ('Google Cloud Natural Language demo' खोजें)। demo बॉक्स आज़माने के लिए साइन-अप की ज़रूरत नहीं; यदि वह उपलब्ध न हो तो कोई भी मुफ़्त keyword-extraction वेबसाइट चलेगी। शिक्षक के साथ करें।\nकरें: एक छोटा समाचार अनुच्छेद चिपकाएँ, जैसे किसी भारतीय क्रिकेट मैच या मानसून के बारे में। Analyse पर क्लिक करें। 'Entities', 'Sentiment' और 'Syntax' टैब देखें।\nदेखें: यह लोगों, स्थानों और संगठनों को 'salience' (महत्व) अंक के साथ सूचीबद्ध करता है, sentiment अंक देता है, और हर शब्द को संज्ञा, क्रिया आदि के रूप में चिह्नित करता है।\nसीख: NLP कुछ ही सेकंड में पाठ के मुख्य शब्द और मनोभाव पहचान सकता है।\nसुरक्षा: किसी भी ऑनलाइन टूल में फ़ोन नंबर, पता या पासवर्ड जैसी निजी जानकारी कभी न डालें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.4 Stages of NLP",
+    "hi": "6.4 NLP के चरण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To understand a sentence, an NLP system analyses it at several levels, one after another, much as you would in a grammar class. CBSE lists the following stages.",
+      "hi": "किसी वाक्य को समझने के लिए NLP प्रणाली उसका कई स्तरों पर, एक के बाद एक, विश्लेषण करती है, लगभग वैसे ही जैसे आप व्याकरण की कक्षा में करते हैं। CBSE निम्नलिखित चरण बताता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "1. Lexical analysis",
+       "hi": "1. Lexical analysis (शाब्दिक विश्लेषण)"
+      },
+      "text": {
+       "en": "The text is broken into paragraphs, sentences and words, and each word is identified using the lexicon (the vocabulary or dictionary of the language). Example: 'Riya plays chess.' → 'Riya', 'plays', 'chess', '.'; 'plays' is recognised as a form of 'play'.",
+       "hi": "पाठ को अनुच्छेदों, वाक्यों और शब्दों में तोड़ा जाता है, और हर शब्द को lexicon (भाषा की शब्दावली या शब्दकोश) की मदद से पहचाना जाता है। उदाहरण: 'Riya plays chess.' → 'Riya', 'plays', 'chess', '.'; 'plays' को 'play' का एक रूप पहचाना जाता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "2. Syntactic analysis (parsing)",
+       "hi": "2. Syntactic analysis (वाक्य-विन्यास विश्लेषण / parsing)"
+      },
+      "text": {
+       "en": "The grammar of the sentence is checked and the relationship between words is found: which word is the subject, the verb, the object. A sentence like 'Chess plays Riya the' is rejected because its structure is wrong.",
+       "hi": "वाक्य का व्याकरण जाँचा जाता है और शब्दों का आपसी संबंध ढूँढा जाता है: कौन-सा शब्द कर्ता है, क्रिया है, कर्म है। 'Chess plays Riya the' जैसा वाक्य अस्वीकार किया जाता है क्योंकि उसकी संरचना ग़लत है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "3. Semantic analysis",
+       "hi": "3. Semantic analysis (अर्थ विश्लेषण)"
+      },
+      "text": {
+       "en": "The exact or dictionary meaning of the sentence is found, and sentences that are grammatical but meaningless are rejected. 'Hot ice cream' or 'The moon drinks tea' pass syntax but fail semantics.",
+       "hi": "वाक्य का ठीक या शब्दकोशीय अर्थ ढूँढा जाता है, और व्याकरण में सही पर अर्थहीन वाक्यों को अस्वीकार किया जाता है। 'गरम आइसक्रीम' या 'चाँद चाय पीता है' syntax में पास होते हैं पर semantics में नहीं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "4. Discourse integration",
+       "hi": "4. Discourse integration (प्रसंग एकीकरण)"
+      },
+      "text": {
+       "en": "The meaning of a sentence depends on the sentences before it, and it can affect the sentences after it. Example: 'Aman bought a bat. He loves it.' Discourse integration links 'He' to Aman and 'it' to the bat.",
+       "hi": "किसी वाक्य का अर्थ उससे पहले वाले वाक्यों पर निर्भर करता है, और वह बाद वाले वाक्यों पर असर डाल सकता है। उदाहरण: 'अमन ने एक बल्ला ख़रीदा। उसे वह बहुत पसंद है।' Discourse integration 'उसे' को अमन से और 'वह' को बल्ले से जोड़ता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "5. Pragmatic analysis",
+       "hi": "5. Pragmatic analysis (व्यावहारिक विश्लेषण)"
+      },
+      "text": {
+       "en": "The real intended meaning is found using real-world knowledge and the situation. 'Can you pass the salt?' is not a question about ability; it is a polite request. 'It's very cold in here' may be a request to close the window.",
+       "hi": "वास्तविक दुनिया के ज्ञान और स्थिति से असली इच्छित अर्थ ढूँढा जाता है। 'क्या आप नमक दे सकते हैं?' क्षमता के बारे में प्रश्न नहीं; यह एक विनम्र अनुरोध है। 'यहाँ बहुत ठंड है' खिड़की बंद करने का अनुरोध हो सकता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "Question it answers",
+        "Example check"
+       ],
+       "hi": [
+        "चरण",
+        "किस प्रश्न का उत्तर",
+        "उदाहरण जाँच"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Lexical",
+         "What are the words?",
+         "Split 'I am going to Delhi' into 5 words"
+        ],
+        [
+         "Syntactic",
+         "Is the grammar/structure correct?",
+         "'Going I Delhi to am' is rejected"
+        ],
+        [
+         "Semantic",
+         "Does it make sense literally?",
+         "'The table ate rice' is rejected"
+        ],
+        [
+         "Discourse integration",
+         "How does it link with nearby sentences?",
+         "'She' in the next sentence refers to Priya"
+        ],
+        [
+         "Pragmatic",
+         "What does the speaker really mean?",
+         "'Do you know the time?' = 'Please tell me the time'"
+        ]
+       ],
+       "hi": [
+        [
+         "Lexical (शाब्दिक)",
+         "शब्द कौन-से हैं?",
+         "'मैं दिल्ली जा रहा हूँ' को शब्दों में बाँटना"
+        ],
+        [
+         "Syntactic (वाक्य-विन्यास)",
+         "क्या व्याकरण/संरचना सही है?",
+         "'जा मैं दिल्ली हूँ रहा' अस्वीकार"
+        ],
+        [
+         "Semantic (अर्थ)",
+         "क्या शाब्दिक अर्थ बनता है?",
+         "'मेज़ ने चावल खाए' अस्वीकार"
+        ],
+        [
+         "Discourse integration (प्रसंग)",
+         "आसपास के वाक्यों से कैसे जुड़ता है?",
+         "अगले वाक्य का 'वह' प्रिया की ओर संकेत करता है"
+        ],
+        [
+         "Pragmatic (व्यावहारिक)",
+         "वक्ता असल में क्या कहना चाहता है?",
+         "'क्या आपको समय पता है?' = 'कृपया समय बताइए'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Identify the stage at which each sentence would face a problem: (a) 'Rain the heavy is.' (b) 'The pen sang a sweet song.' (c) 'Neha met Kavya. She gave her a gift.' (who gave whom?)",
+       "hi": "बताइए कि हर वाक्य को किस चरण पर समस्या होगी: (a) 'Rain the heavy is.' (b) 'कलम ने मीठा गीत गाया।' (c) 'नेहा कव्या से मिली। उसने उसे उपहार दिया।' (किसने किसे?)"
+      },
+      "a": {
+       "en": "(a) The words are fine but their order breaks grammar: syntactic analysis.\n(b) Grammar is correct but a pen cannot sing: semantic analysis.\n(c) 'She' and 'her' could refer to either girl; linking them to earlier sentences is the job of discourse integration.",
+       "hi": "(a) शब्द ठीक हैं पर उनका क्रम व्याकरण तोड़ता है: syntactic analysis।\n(b) व्याकरण सही है पर कलम गा नहीं सकती: semantic analysis।\n(c) 'उसने' और 'उसे' किसी भी लड़की के लिए हो सकते हैं; उन्हें पिछले वाक्यों से जोड़ना discourse integration का काम है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.5 Chatbots: Script Bots and Smart Bots",
+    "hi": "6.5 चैटबॉट: स्क्रिप्ट बॉट और स्मार्ट बॉट"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Chatbot",
+       "hi": "चैटबॉट"
+      },
+      "text": {
+       "en": "A chatbot is a computer program that simulates conversation with humans through text or voice. It is one of the most common applications of NLP.",
+       "hi": "चैटबॉट एक कंप्यूटर प्रोग्राम है जो पाठ या आवाज़ के माध्यम से इंसानों के साथ बातचीत का अनुकरण करता है। यह NLP के सबसे आम उपयोगों में से एक है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 - Play with chatbots",
+       "hi": "गतिविधि 2 - चैटबॉट के साथ खेलें"
+      },
+      "a": {
+       "en": "Aim: compare how different chatbots behave.\nNeed: a browser; CBSE names Elizabot (an online version of ELIZA, one of the earliest chatbots, created in the 1960s), Mitsuku (now called Kuki), Cleverbot and the Singtel customer-service bot. Some may change or close over time; use whichever are available, with a teacher.\nDo: ask each the same questions: 'Hello, how are you?', 'What is the capital of India?', 'I feel sad about my exam', 'Tell me a joke', and one unusual question.\nObserve and record: Which replies sound natural? Which bot repeats itself or dodges the question? Which one remembers what you said earlier? Which is limited to one topic (like the telecom help bot)?\nLearn: some bots follow fixed scripts, others learn from large amounts of data; this is the difference between script bots and smart bots.\nSafety: do not share your name, school, phone number, photos or passwords with any chatbot. Treat its answers as possibly wrong and check important facts.",
+       "hi": "लक्ष्य: तुलना करना कि अलग-अलग चैटबॉट कैसे व्यवहार करते हैं।\nज़रूरत: ब्राउज़र; CBSE Elizabot (ELIZA का ऑनलाइन रूप, जो 1960 के दशक में बने सबसे शुरुआती चैटबॉट में से एक था), Mitsuku (अब Kuki कहलाता है), Cleverbot और Singtel का ग्राहक-सेवा bot बताता है। कुछ समय के साथ बदल या बंद हो सकते हैं; जो उपलब्ध हों उन्हें शिक्षक के साथ उपयोग करें।\nकरें: सबसे एक ही प्रश्न पूछें: 'Hello, how are you?', 'भारत की राजधानी क्या है?', 'मुझे अपनी परीक्षा को लेकर दुख है', 'कोई चुटकुला सुनाओ', और एक अनोखा प्रश्न।\nदेखें और लिखें: कौन-से उत्तर स्वाभाविक लगते हैं? कौन-सा bot बात दोहराता है या प्रश्न टालता है? कौन-सा पहले कही बात याद रखता है? कौन-सा एक ही विषय तक सीमित है (जैसे टेलीकॉम हेल्प bot)?\nसीख: कुछ bot तय स्क्रिप्ट पर चलते हैं, दूसरे बड़ी मात्रा में डेटा से सीखते हैं; यही script bot और smart bot का अंतर है।\nसुरक्षा: किसी भी चैटबॉट को अपना नाम, स्कूल, फ़ोन नंबर, फ़ोटो या पासवर्ड न बताएँ। उसके उत्तर ग़लत भी हो सकते हैं, इसलिए ज़रूरी तथ्य जाँचें।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Script bot",
+       "hi": "स्क्रिप्ट बॉट (Script bot)"
+      },
+      "text": {
+       "en": "A chatbot that works according to a fixed script (pre-written rules or a decision tree). It usually offers buttons or menus, or matches keywords, and gives pre-set replies. It has little or no real language understanding.",
+       "hi": "ऐसा चैटबॉट जो एक तय स्क्रिप्ट (पहले से लिखे नियम या decision tree) के अनुसार काम करता है। यह आम तौर पर बटन या मेनू देता है, या keywords मिलाता है, और पहले से तय उत्तर देता है। इसमें असली भाषा-समझ बहुत कम या नहीं होती।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Smart bot",
+       "hi": "स्मार्ट बॉट (Smart bot)"
+      },
+      "text": {
+       "en": "An AI-based chatbot that uses NLP and machine learning to understand free-form language, can handle questions it was not scripted for, and improves as it gets more data. Voice assistants and modern AI chatbots are smart bots.",
+       "hi": "AI-आधारित चैटबॉट जो NLP और machine learning से खुली भाषा समझता है, ऐसे प्रश्न भी संभाल सकता है जिनकी स्क्रिप्ट नहीं लिखी गई, और अधिक डेटा मिलने पर बेहतर होता है। Voice assistants और आधुनिक AI चैटबॉट smart bot हैं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Script bot",
+        "Smart bot"
+       ],
+       "hi": [
+        "स्क्रिप्ट बॉट",
+        "स्मार्ट बॉट"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Easy to make; can be built with simple rules",
+         "Flexible and powerful; harder to build"
+        ],
+        [
+         "Works on a script; little or no AI/NLP",
+         "Works on AI, NLP and machine learning"
+        ],
+        [
+         "Limited functionality; only answers expected inputs",
+         "Wide functionality; handles new questions"
+        ],
+        [
+         "Little or no learning from data",
+         "Learns from large amounts of data"
+        ],
+        [
+         "Example: a pizza-ordering bot with menu buttons; an IVR-style railway helpline bot",
+         "Example: voice assistants; AI chatbots that write answers"
+        ]
+       ],
+       "hi": [
+        [
+         "बनाना आसान; सरल नियमों से बन सकता है",
+         "लचीला और शक्तिशाली; बनाना कठिन"
+        ],
+        [
+         "स्क्रिप्ट पर काम; AI/NLP बहुत कम या नहीं",
+         "AI, NLP और machine learning पर काम"
+        ],
+        [
+         "सीमित काम; केवल अपेक्षित इनपुट के उत्तर",
+         "व्यापक काम; नए प्रश्न भी संभालता है"
+        ],
+        [
+         "डेटा से बहुत कम या कोई सीख नहीं",
+         "बड़ी मात्रा में डेटा से सीखता है"
+        ],
+        [
+         "उदाहरण: मेनू बटन वाला पिज़्ज़ा-ऑर्डर bot; IVR जैसी रेलवे हेल्पलाइन bot",
+         "उदाहरण: voice assistants; उत्तर लिखने वाले AI चैटबॉट"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Classify as script bot or smart bot: (a) A bank bot that shows four buttons: 'Balance', 'Block card', 'Talk to agent', 'Exit'. (b) A voice assistant that answers 'Will I need an umbrella in Pune tomorrow?' (c) A school bot that replies only when you type exactly 'fees' or 'timetable'.",
+       "hi": "script bot या smart bot में वर्गीकृत करें: (a) एक बैंक bot जो चार बटन दिखाता है: 'Balance', 'Block card', 'Talk to agent', 'Exit'। (b) एक voice assistant जो 'क्या कल पुणे में छाते की ज़रूरत होगी?' का उत्तर देता है। (c) एक स्कूल bot जो केवल ठीक 'fees' या 'timetable' लिखने पर उत्तर देता है।"
+      },
+      "a": {
+       "en": "(a) Script bot - fixed menu and pre-set paths.\n(b) Smart bot - understands a free-form question and links 'umbrella' to a rain forecast for a city and a date.\n(c) Script bot - simple exact keyword matching.",
+       "hi": "(a) Script bot - तय मेनू और पहले से तय रास्ते।\n(b) Smart bot - खुला प्रश्न समझता है और 'छाता' को किसी शहर और तारीख़ की बारिश के पूर्वानुमान से जोड़ता है।\n(c) Script bot - सरल, ठीक keyword मिलान।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: even smart bots can give wrong or made-up answers confidently. Use them for help and ideas, check facts from reliable sources, and talk to a trusted adult or a professional about health, money or personal problems.",
+      "hi": "याद रखें: स्मार्ट bot भी आत्मविश्वास से ग़लत या मनगढ़ंत उत्तर दे सकते हैं। मदद और विचारों के लिए उनका उपयोग करें, तथ्य भरोसेमंद स्रोतों से जाँचें, और स्वास्थ्य, पैसे या निजी समस्याओं के बारे में किसी भरोसेमंद बड़े या विशेषज्ञ से बात करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.6 Text Processing: Text Normalisation",
+    "hi": "6.6 पाठ प्रसंस्करण: टेक्स्ट नॉर्मलाइज़ेशन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before a computer can turn text into numbers, the text must be cleaned and simplified. This is called text normalisation: reducing the complexity of text to a simpler level that is still meaningful. The whole collection of text we work with is called the corpus (plural: corpora), and each separate text in it is a document.",
+      "hi": "कंप्यूटर पाठ को संख्याओं में बदल सके, इससे पहले पाठ को साफ़ और सरल करना पड़ता है। इसे टेक्स्ट नॉर्मलाइज़ेशन (text normalisation) कहते हैं: पाठ की जटिलता को ऐसे सरल स्तर पर लाना जो फिर भी अर्थपूर्ण हो। जिस पूरे पाठ-संग्रह के साथ हम काम करते हैं उसे corpus (बहुवचन: corpora) कहते हैं, और उसका हर अलग पाठ एक document है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Corpus",
+       "hi": "Corpus (कॉर्पस)"
+      },
+      "text": {
+       "en": "The complete collection of text (all documents together) used for an NLP task.",
+       "hi": "किसी NLP कार्य के लिए उपयोग किया जाने वाला पाठ का पूरा संग्रह (सभी documents एक साथ)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Step 1 - Sentence segmentation: the corpus is divided into sentences, usually at full stops, question marks and exclamation marks. Each sentence is then treated as separate data.",
+      "hi": "चरण 1 - Sentence segmentation (वाक्य विभाजन): corpus को वाक्यों में बाँटा जाता है, आम तौर पर पूर्ण विराम, प्रश्नचिह्न और विस्मयादिबोधक चिह्न पर। फिर हर वाक्य को अलग डेटा माना जाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Step 2 - Tokenisation: each sentence is divided into tokens. A token is any word, number or special character that occurs in a sentence. 'You want to see the dreams?' → 'You', 'want', 'to', 'see', 'the', 'dreams', '?'",
+      "hi": "चरण 2 - Tokenisation (टोकन बनाना): हर वाक्य को tokens में बाँटा जाता है। Token वाक्य में आने वाला कोई भी शब्द, संख्या या विशेष चिह्न है। 'You want to see the dreams?' → 'You', 'want', 'to', 'see', 'the', 'dreams', '?'"
+     }
+    },
+    {
+     "p": {
+      "en": "Step 3 - Removing stopwords, special characters and numbers: stopwords are words that occur very often but add little meaning, such as a, an, the, and, are, to, is, of. They are removed along with special characters (?, !, #) and, if not needed, numbers. Be careful: this depends on the task. In a search for email addresses you would keep '@' and '.'; in sentiment analysis the word 'not' should be kept because 'not good' is the opposite of 'good'.",
+      "hi": "चरण 3 - Stopwords, विशेष चिह्न और संख्याएँ हटाना: stopwords वे शब्द हैं जो बहुत बार आते हैं पर कम अर्थ जोड़ते हैं, जैसे a, an, the, and, are, to, is, of। इन्हें विशेष चिह्नों (?, !, #) और ज़रूरत न हो तो संख्याओं के साथ हटा दिया जाता है। सावधान: यह कार्य पर निर्भर करता है। ईमेल पते खोजने में आप '@' और '.' रखेंगे; sentiment analysis में 'not' शब्द रखना चाहिए क्योंकि 'not good' का अर्थ 'good' का उल्टा है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Step 4 - Converting to a common case: all text is changed to lower case (or upper case), so that 'Hello', 'HELLO' and 'hello' are treated as the same word.",
+      "hi": "चरण 4 - एक जैसे case में बदलना: पूरा पाठ छोटे अक्षरों (lower case) या बड़े अक्षरों में बदला जाता है, ताकि 'Hello', 'HELLO' और 'hello' को एक ही शब्द माना जाए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Step 5 - Stemming: affixes (endings such as -ing, -ed, -s, -es) are removed to reduce a word to its stem. The stem may not be a real dictionary word. Stemming is fast but rough.",
+      "hi": "चरण 5 - Stemming: शब्द के प्रत्यय (affixes - जैसे -ing, -ed, -s, -es) हटाकर उसे उसके stem (मूल रूप) तक छोटा किया जाता है। Stem कोई असली शब्दकोशीय शब्द न भी हो। Stemming तेज़ पर मोटा-मोटा होता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Step 6 - Lemmatization: affixes are also removed, but the result, called the lemma, is always a meaningful dictionary word. It needs knowledge of the language, so it is slower but more accurate.",
+      "hi": "चरण 6 - Lemmatization: इसमें भी प्रत्यय हटते हैं, पर परिणाम, जिसे lemma कहते हैं, हमेशा एक अर्थपूर्ण शब्दकोशीय शब्द होता है। इसके लिए भाषा का ज्ञान चाहिए, इसलिए यह धीमा पर अधिक सटीक है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Word",
+        "After stemming",
+        "After lemmatization"
+       ],
+       "hi": [
+        "शब्द",
+        "Stemming के बाद",
+        "Lemmatization के बाद"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "healing",
+         "heal",
+         "heal"
+        ],
+        [
+         "dreams",
+         "dream",
+         "dream"
+        ],
+        [
+         "studies",
+         "studi",
+         "study"
+        ],
+        [
+         "studying",
+         "study",
+         "study"
+        ],
+        [
+         "caring",
+         "car",
+         "care"
+        ],
+        [
+         "better",
+         "better",
+         "good"
+        ]
+       ],
+       "hi": [
+        [
+         "healing",
+         "heal",
+         "heal"
+        ],
+        [
+         "dreams",
+         "dream",
+         "dream"
+        ],
+        [
+         "studies",
+         "studi",
+         "study"
+        ],
+        [
+         "studying",
+         "study",
+         "study"
+        ],
+        [
+         "caring",
+         "car",
+         "care"
+        ],
+        [
+         "better",
+         "better",
+         "good"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: 'caring' → 'car' by stemming changes the meaning completely, while lemmatization correctly gives 'care'. The lemma 'good' for 'better' needs real language knowledge; a simple ending-chopper cannot find it.",
+      "hi": "याद रखें: stemming से 'caring' → 'car' अर्थ पूरी तरह बदल देता है, जबकि lemmatization सही 'care' देता है। 'better' का lemma 'good' निकालने के लिए असली भाषा-ज्ञान चाहिए; केवल अंत काटने वाला तरीका इसे नहीं ढूँढ सकता।"
+     }
+    },
+    {
+     "p": {
+      "en": "The program below is a deliberately simple stemmer that only chops common endings. Its real output shows both the speed and the weakness of stemming ('studi', 'car').",
+      "hi": "नीचे का प्रोग्राम जान-बूझकर एक सरल stemmer है जो केवल आम अंत काटता है। इसका असली आउटपुट stemming की तेज़ी और कमज़ोरी दोनों दिखाता है ('studi', 'car')।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# A very simple stemmer: it only chops common endings\ndef simple_stem(word):\n    for ending in [\"ing\", \"ed\", \"es\", \"s\"]:\n        if word.endswith(ending) and len(word) - len(ending) >= 3:\n            return word[: -len(ending)]\n    return word\n\nfor w in [\"healing\", \"dreams\", \"studies\", \"studying\", \"caring\", \"played\"]:\n    print(w, \"->\", simple_stem(w))\n\nOutput:\nhealing -> heal\ndreams -> dream\nstudies -> studi\nstudying -> study\ncaring -> car\nplayed -> play",
+      "hi": "# A very simple stemmer: it only chops common endings\ndef simple_stem(word):\n    for ending in [\"ing\", \"ed\", \"es\", \"s\"]:\n        if word.endswith(ending) and len(word) - len(ending) >= 3:\n            return word[: -len(ending)]\n    return word\n\nfor w in [\"healing\", \"dreams\", \"studies\", \"studying\", \"caring\", \"played\"]:\n    print(w, \"->\", simple_stem(w))\n\nOutput:\nhealing -> heal\ndreams -> dream\nstudies -> studi\nstudying -> study\ncaring -> car\nplayed -> play"
+     }
+    },
+    {
+     "p": {
+      "en": "The next program performs sentence segmentation, tokenisation, lower-casing and stopword removal on the three-document corpus used in the CBSE handbook. The output is real.",
+      "hi": "अगला प्रोग्राम CBSE handbook में उपयोग किए गए तीन-document corpus पर sentence segmentation, tokenisation, lower-case और stopword हटाने का काम करता है। आउटपुट असली है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Text normalisation step by step (no extra libraries)\ntext = \"Aman and Anil are stressed. Aman went to a therapist. Anil went to download a health chatbot.\"\n\n# 1. Sentence segmentation\nsentences = [s.strip() for s in text.split(\".\") if s.strip()]\nprint(\"Sentences:\", sentences)\n\n# 2. Tokenisation + 3. lower case\ntokens = [s.lower().split() for s in sentences]\nprint(\"Tokens:\", tokens)\n\n# 4. Remove stopwords\nstopwords = {\"and\", \"are\", \"to\", \"a\", \"the\", \"is\"}\nclean = [[w for w in t if w not in stopwords] for t in tokens]\nprint(\"Without stopwords:\", clean)\n\nOutput:\nSentences: ['Aman and Anil are stressed', 'Aman went to a therapist', 'Anil went to download a health chatbot']\nTokens: [['aman', 'and', 'anil', 'are', 'stressed'], ['aman', 'went', 'to', 'a', 'therapist'], ['anil', 'went', 'to', 'download', 'a', 'health', 'chatbot']]\nWithout stopwords: [['aman', 'anil', 'stressed'], ['aman', 'went', 'therapist'], ['anil', 'went', 'download', 'health', 'chatbot']]",
+      "hi": "# Text normalisation step by step (no extra libraries)\ntext = \"Aman and Anil are stressed. Aman went to a therapist. Anil went to download a health chatbot.\"\n\n# 1. Sentence segmentation\nsentences = [s.strip() for s in text.split(\".\") if s.strip()]\nprint(\"Sentences:\", sentences)\n\n# 2. Tokenisation + 3. lower case\ntokens = [s.lower().split() for s in sentences]\nprint(\"Tokens:\", tokens)\n\n# 4. Remove stopwords\nstopwords = {\"and\", \"are\", \"to\", \"a\", \"the\", \"is\"}\nclean = [[w for w in t if w not in stopwords] for t in tokens]\nprint(\"Without stopwords:\", clean)\n\nOutput:\nSentences: ['Aman and Anil are stressed', 'Aman went to a therapist', 'Anil went to download a health chatbot']\nTokens: [['aman', 'and', 'anil', 'are', 'stressed'], ['aman', 'went', 'to', 'a', 'therapist'], ['anil', 'went', 'to', 'download', 'a', 'health', 'chatbot']]\nWithout stopwords: [['aman', 'anil', 'stressed'], ['aman', 'went', 'therapist'], ['anil', 'went', 'download', 'health', 'chatbot']]"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Normalise the sentence: 'The Students ARE playing 2 matches today!'",
+       "hi": "इस वाक्य का normalisation कीजिए: 'The Students ARE playing 2 matches today!'"
+      },
+      "a": {
+       "en": "Step 1 (segmentation): one sentence.\nStep 2 (tokens): The | Students | ARE | playing | 2 | matches | today | !\nStep 3 (remove stopwords 'The' and 'ARE', the number 2 and the special character !): Students | playing | matches | today\nStep 4 (lower case): students | playing | matches | today\nStep 5 (stemming): student | play | match | today\nStep 6 (lemmatization would also give): student | play | match | today",
+       "hi": "चरण 1 (विभाजन): एक वाक्य।\nचरण 2 (tokens): The | Students | ARE | playing | 2 | matches | today | !\nचरण 3 (stopwords 'The' और 'ARE', संख्या 2 और विशेष चिह्न ! हटाएँ): Students | playing | matches | today\nचरण 4 (lower case): students | playing | matches | today\nचरण 5 (stemming): student | play | match | today\nचरण 6 (lemmatization से भी यही मिलेगा): student | play | match | today"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.7 Bag of Words (BoW)",
+    "hi": "6.7 बैग ऑफ़ वर्ड्स (Bag of Words)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Bag of Words",
+       "hi": "Bag of Words (शब्दों का थैला)"
+      },
+      "text": {
+       "en": "Bag of Words is an NLP model that represents a text by the words it contains and how many times each word occurs, ignoring grammar and word order. Imagine cutting a sentence into words and throwing them into a bag: you know which words are in it and how many of each, but not their order.",
+       "hi": "Bag of Words एक NLP मॉडल है जो किसी पाठ को उसमें मौजूद शब्दों और हर शब्द के आने की संख्या से दर्शाता है, व्याकरण और शब्द-क्रम को अनदेखा करते हुए। कल्पना कीजिए कि वाक्य को शब्दों में काटकर एक थैले में डाल दिया: आप जानते हैं कि कौन-से शब्द हैं और हर एक कितना है, पर उनका क्रम नहीं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Bag of Words gives us two things: (1) a vocabulary - the list of unique words in the corpus, and (2) the frequency of each word in each document. Its algorithm has four steps.",
+      "hi": "Bag of Words हमें दो चीज़ें देता है: (1) एक vocabulary (शब्दावली) - corpus के अद्वितीय शब्दों की सूची, और (2) हर document में हर शब्द की आवृत्ति (frequency)। इसके एल्गोरिदम में चार चरण हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Text normalisation: collect the data and pre-process it (Section 6.6).",
+       "Create a dictionary: make a list of all unique words in the corpus. Each word appears only once, even if it occurs many times.",
+       "Create document vectors: for each document, write the count of each dictionary word in that document.",
+       "Create document vectors for all the documents and arrange them as a table (the document vector table)."
+      ],
+      "hi": [
+       "Text normalisation: डेटा जुटाएँ और उसे pre-process करें (खंड 6.6)।",
+       "Dictionary बनाएँ: corpus के सभी अद्वितीय शब्दों की सूची बनाएँ। हर शब्द एक ही बार आता है, चाहे वह कई बार आया हो।",
+       "Document vectors बनाएँ: हर document के लिए लिखें कि dictionary का हर शब्द उस document में कितनी बार आया।",
+       "सभी documents के लिए document vectors बनाकर उन्हें एक तालिका (document vector table) में रखें।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Worked example (the CBSE corpus). Document 1: 'Aman and Anil are stressed'. Document 2: 'Aman went to a therapist'. Document 3: 'Anil went to download a health chatbot'. After lower-casing (here we keep stopwords so that you can follow the CBSE example), the dictionary has 12 unique words: aman, and, anil, are, stressed, went, to, a, therapist, download, health, chatbot.",
+      "hi": "हल किया उदाहरण (CBSE corpus)। Document 1: 'Aman and Anil are stressed'। Document 2: 'Aman went to a therapist'। Document 3: 'Anil went to download a health chatbot'। lower case करने के बाद (यहाँ हम stopwords रखते हैं ताकि आप CBSE उदाहरण का पालन कर सकें), dictionary में 12 अद्वितीय शब्द हैं: aman, and, anil, are, stressed, went, to, a, therapist, download, health, chatbot।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Doc",
+        "aman",
+        "and",
+        "anil",
+        "are",
+        "stressed",
+        "went",
+        "to",
+        "a",
+        "therapist",
+        "download",
+        "health",
+        "chatbot"
+       ],
+       "hi": [
+        "Doc",
+        "aman",
+        "and",
+        "anil",
+        "are",
+        "stressed",
+        "went",
+        "to",
+        "a",
+        "therapist",
+        "download",
+        "health",
+        "chatbot"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "D1",
+         "1",
+         "1",
+         "1",
+         "1",
+         "1",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "D2",
+         "1",
+         "0",
+         "0",
+         "0",
+         "0",
+         "1",
+         "1",
+         "1",
+         "1",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "D3",
+         "0",
+         "0",
+         "1",
+         "0",
+         "0",
+         "1",
+         "1",
+         "1",
+         "0",
+         "1",
+         "1",
+         "1"
+        ]
+       ],
+       "hi": [
+        [
+         "D1",
+         "1",
+         "1",
+         "1",
+         "1",
+         "1",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "D2",
+         "1",
+         "0",
+         "0",
+         "0",
+         "0",
+         "1",
+         "1",
+         "1",
+         "1",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "D3",
+         "0",
+         "0",
+         "1",
+         "0",
+         "0",
+         "1",
+         "1",
+         "1",
+         "0",
+         "1",
+         "1",
+         "1"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Each row is a document vector - the document turned into numbers. Now a machine can compare documents: D2 and D3 share 'went', 'to' and 'a'; D1 and D3 share only 'anil'.",
+      "hi": "हर पंक्ति एक document vector है - संख्याओं में बदला हुआ document। अब मशीन documents की तुलना कर सकती है: D2 और D3 में 'went', 'to' और 'a' साझा हैं; D1 और D3 में केवल 'anil'।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Make the dictionary and document vectors for: D1 'I like mangoes', D2 'I like I like cricket'.",
+       "hi": "इनके लिए dictionary और document vectors बनाइए: D1 'I like mangoes', D2 'I like I like cricket'।"
+      },
+      "a": {
+       "en": "Step 1: lower case → 'i like mangoes', 'i like i like cricket'.\nStep 2: dictionary = [i, like, mangoes, cricket].\nStep 3: D1 → i 1, like 1, mangoes 1, cricket 0 → [1, 1, 1, 0].\nStep 4: D2 → i 2, like 2, mangoes 0, cricket 1 → [2, 2, 0, 1].",
+       "hi": "चरण 1: lower case → 'i like mangoes', 'i like i like cricket'।\nचरण 2: dictionary = [i, like, mangoes, cricket]।\nचरण 3: D1 → i 1, like 1, mangoes 1, cricket 0 → [1, 1, 1, 0]।\nचरण 4: D2 → i 2, like 2, mangoes 0, cricket 1 → [2, 2, 0, 1]।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Bag of Words loses word order. 'Dog bites man' and 'Man bites dog' get exactly the same vector, although their meanings are very different. It also treats every word as equally important, which TF-IDF fixes.",
+      "hi": "याद रखें: Bag of Words शब्द-क्रम खो देता है। 'Dog bites man' और 'Man bites dog' को बिल्कुल एक ही vector मिलता है, जबकि उनके अर्थ बहुत अलग हैं। यह हर शब्द को बराबर महत्वपूर्ण भी मानता है, जिसे TF-IDF ठीक करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.8 TF-IDF: Term Frequency and Inverse Document Frequency",
+    "hi": "6.8 TF-IDF: टर्म फ़्रीक्वेंसी और इनवर्स डॉक्यूमेंट फ़्रीक्वेंसी"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In any large corpus, words like 'the', 'and', 'to' appear the most, yet they say almost nothing about the topic. Rare but specific words, like 'therapist' or 'chatbot', tell us much more. If you plot word frequency against value, stopwords have the highest frequency but lowest value; the most frequent content words are in the middle; and very rare words (for example a name that occurs once) have high value for that particular document. TF-IDF gives each word a score that reflects this importance.",
+      "hi": "किसी बड़े corpus में 'the', 'and', 'to' जैसे शब्द सबसे अधिक आते हैं, फिर भी वे विषय के बारे में लगभग कुछ नहीं बताते। 'therapist' या 'chatbot' जैसे दुर्लभ पर विशिष्ट शब्द कहीं अधिक बताते हैं। यदि आप शब्दों की आवृत्ति और उनके महत्व का ग्राफ़ बनाएँ, तो stopwords की आवृत्ति सबसे अधिक पर महत्व सबसे कम होता है; सबसे अधिक आने वाले विषय-शब्द बीच में होते हैं; और बहुत दुर्लभ शब्द (जैसे एक बार आने वाला कोई नाम) उस ख़ास document के लिए बहुत महत्वपूर्ण होते हैं। TF-IDF हर शब्द को ऐसा अंक देता है जो इस महत्व को दर्शाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Term Frequency (TF)",
+       "hi": "Term Frequency (TF)"
+      },
+      "text": {
+       "en": "The number of times a word occurs in a particular document. In Bag of Words, the document vector table already gives TF.",
+       "hi": "किसी ख़ास document में कोई शब्द कितनी बार आता है। Bag of Words में document vector table पहले से ही TF देती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Document Frequency (DF)",
+       "hi": "Document Frequency (DF)"
+      },
+      "text": {
+       "en": "The number of documents in the corpus in which a word occurs, no matter how many times it occurs in each.",
+       "hi": "corpus के कितने documents में कोई शब्द आता है, चाहे हर एक में वह कितनी भी बार आए।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Inverse Document Frequency (IDF)",
+       "hi": "Inverse Document Frequency (IDF)"
+      },
+      "text": {
+       "en": "IDF measures how rare a word is across the corpus. It is the total number of documents divided by the document frequency, with a logarithm taken. Rare words get a high IDF; words found in every document get IDF = log(1) = 0.",
+       "hi": "IDF मापता है कि कोई शब्द पूरे corpus में कितना दुर्लभ है। यह documents की कुल संख्या को document frequency से भाग देकर उसका logarithm लेने से मिलता है। दुर्लभ शब्दों का IDF अधिक होता है; हर document में आने वाले शब्दों का IDF = log(1) = 0।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "IDF(W) = log( N / DF(W) )\nTF-IDF(W) = TF(W) × log( N / DF(W) )\nN = total number of documents; log is to base 10",
+      "hi": "IDF(W) = log( N / DF(W) )\nTF-IDF(W) = TF(W) × log( N / DF(W) )\nN = documents की कुल संख्या; log का आधार 10 है"
+     }
+    },
+    {
+     "p": {
+      "en": "Worked example with the same corpus (N = 3). Document frequency of each word:",
+      "hi": "उसी corpus के साथ हल किया उदाहरण (N = 3)। हर शब्द की document frequency:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Word",
+        "aman",
+        "and",
+        "anil",
+        "are",
+        "stressed",
+        "went",
+        "to",
+        "a",
+        "therapist",
+        "download",
+        "health",
+        "chatbot"
+       ],
+       "hi": [
+        "शब्द",
+        "aman",
+        "and",
+        "anil",
+        "are",
+        "stressed",
+        "went",
+        "to",
+        "a",
+        "therapist",
+        "download",
+        "health",
+        "chatbot"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "DF",
+         "2",
+         "1",
+         "2",
+         "1",
+         "1",
+         "2",
+         "2",
+         "2",
+         "1",
+         "1",
+         "1",
+         "1"
+        ],
+        [
+         "N/DF",
+         "3/2",
+         "3/1",
+         "3/2",
+         "3/1",
+         "3/1",
+         "3/2",
+         "3/2",
+         "3/2",
+         "3/1",
+         "3/1",
+         "3/1",
+         "3/1"
+        ],
+        [
+         "IDF",
+         "0.176",
+         "0.477",
+         "0.176",
+         "0.477",
+         "0.477",
+         "0.176",
+         "0.176",
+         "0.176",
+         "0.477",
+         "0.477",
+         "0.477",
+         "0.477"
+        ]
+       ],
+       "hi": [
+        [
+         "DF",
+         "2",
+         "1",
+         "2",
+         "1",
+         "1",
+         "2",
+         "2",
+         "2",
+         "1",
+         "1",
+         "1",
+         "1"
+        ],
+        [
+         "N/DF",
+         "3/2",
+         "3/1",
+         "3/2",
+         "3/1",
+         "3/1",
+         "3/2",
+         "3/2",
+         "3/2",
+         "3/1",
+         "3/1",
+         "3/1",
+         "3/1"
+        ],
+        [
+         "IDF",
+         "0.176",
+         "0.477",
+         "0.176",
+         "0.477",
+         "0.477",
+         "0.176",
+         "0.176",
+         "0.176",
+         "0.477",
+         "0.477",
+         "0.477",
+         "0.477"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Multiply each TF (from the BoW table) by the IDF of that word to get the TF-IDF table:",
+      "hi": "TF-IDF तालिका पाने के लिए (BoW तालिका का) हर TF उस शब्द के IDF से गुणा करें:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Doc",
+        "aman",
+        "and",
+        "anil",
+        "are",
+        "stressed",
+        "went",
+        "to",
+        "a",
+        "therapist",
+        "download",
+        "health",
+        "chatbot"
+       ],
+       "hi": [
+        "Doc",
+        "aman",
+        "and",
+        "anil",
+        "are",
+        "stressed",
+        "went",
+        "to",
+        "a",
+        "therapist",
+        "download",
+        "health",
+        "chatbot"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "D1",
+         "0.176",
+         "0.477",
+         "0.176",
+         "0.477",
+         "0.477",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "D2",
+         "0.176",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0.176",
+         "0.176",
+         "0.176",
+         "0.477",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "D3",
+         "0",
+         "0",
+         "0.176",
+         "0",
+         "0",
+         "0.176",
+         "0.176",
+         "0.176",
+         "0",
+         "0.477",
+         "0.477",
+         "0.477"
+        ]
+       ],
+       "hi": [
+        [
+         "D1",
+         "0.176",
+         "0.477",
+         "0.176",
+         "0.477",
+         "0.477",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "D2",
+         "0.176",
+         "0",
+         "0",
+         "0",
+         "0",
+         "0.176",
+         "0.176",
+         "0.176",
+         "0.477",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "D3",
+         "0",
+         "0",
+         "0.176",
+         "0",
+         "0",
+         "0.176",
+         "0.176",
+         "0.176",
+         "0",
+         "0.477",
+         "0.477",
+         "0.477"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Reading the table: in D1 the highest scores go to 'stressed' (and also 'and', 'are', which here occur in only one document); in D2 'therapist' scores highest; in D3 'download', 'health' and 'chatbot'. These are exactly the words that best describe each document. In a real large corpus, stopwords occur in almost every document, so their IDF becomes close to 0 and they drop out automatically. The program below calculates the same values; its output is real.",
+      "hi": "तालिका पढ़ना: D1 में सबसे अधिक अंक 'stressed' को मिलते हैं (और 'and', 'are' को भी, जो यहाँ केवल एक document में आते हैं); D2 में 'therapist' का अंक सबसे अधिक है; D3 में 'download', 'health' और 'chatbot' का। यही वे शब्द हैं जो हर document का सबसे अच्छा वर्णन करते हैं। किसी असली बड़े corpus में stopwords लगभग हर document में आते हैं, इसलिए उनका IDF लगभग 0 हो जाता है और वे अपने-आप बाहर हो जाते हैं। नीचे का प्रोग्राम यही मान निकालता है; उसका आउटपुट असली है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Bag of Words and TF-IDF for a tiny corpus\nimport math\n\ndocs = [\n    \"aman and anil are stressed\",\n    \"aman went to a therapist\",\n    \"anil went to download a health chatbot\",\n]\ntokens = [d.split() for d in docs]\n\n# Step 1: dictionary of unique words (in order of first appearance)\nvocab = []\nfor t in tokens:\n    for w in t:\n        if w not in vocab:\n            vocab.append(w)\nprint(\"Vocabulary (\", len(vocab), \"words ):\", vocab)\n\n# Step 2: document vectors (term frequency)\nfor i, t in enumerate(tokens, 1):\n    print(\"Doc\", i, [t.count(w) for w in vocab])\n\n# Step 3: document frequency and IDF\nN = len(docs)\ndf = {w: sum(1 for t in tokens if w in t) for w in vocab}\nprint(\"DF:\", df)\nfor w in [\"aman\", \"to\", \"stressed\"]:\n    idf = math.log10(N / df[w])\n    print(w, \"IDF = log(\", N, \"/\", df[w], \") =\", round(idf, 3))\n\n# Step 4: TF-IDF of doc 1\nrow = [round(tokens[0].count(w) * math.log10(N / df[w]), 3) for w in vocab]\nprint(\"TF-IDF Doc 1:\", row)\n\nOutput:\nVocabulary ( 12 words ): ['aman', 'and', 'anil', 'are', 'stressed', 'went', 'to', 'a', 'therapist', 'download', 'health', 'chatbot']\nDoc 1 [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]\nDoc 2 [1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0]\nDoc 3 [0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1]\nDF: {'aman': 2, 'and': 1, 'anil': 2, 'are': 1, 'stressed': 1, 'went': 2, 'to': 2, 'a': 2, 'therapist': 1, 'download': 1, 'health': 1, 'chatbot': 1}\naman IDF = log( 3 / 2 ) = 0.176\nto IDF = log( 3 / 2 ) = 0.176\nstressed IDF = log( 3 / 1 ) = 0.477\nTF-IDF Doc 1: [0.176, 0.477, 0.176, 0.477, 0.477, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]",
+      "hi": "# Bag of Words and TF-IDF for a tiny corpus\nimport math\n\ndocs = [\n    \"aman and anil are stressed\",\n    \"aman went to a therapist\",\n    \"anil went to download a health chatbot\",\n]\ntokens = [d.split() for d in docs]\n\n# Step 1: dictionary of unique words (in order of first appearance)\nvocab = []\nfor t in tokens:\n    for w in t:\n        if w not in vocab:\n            vocab.append(w)\nprint(\"Vocabulary (\", len(vocab), \"words ):\", vocab)\n\n# Step 2: document vectors (term frequency)\nfor i, t in enumerate(tokens, 1):\n    print(\"Doc\", i, [t.count(w) for w in vocab])\n\n# Step 3: document frequency and IDF\nN = len(docs)\ndf = {w: sum(1 for t in tokens if w in t) for w in vocab}\nprint(\"DF:\", df)\nfor w in [\"aman\", \"to\", \"stressed\"]:\n    idf = math.log10(N / df[w])\n    print(w, \"IDF = log(\", N, \"/\", df[w], \") =\", round(idf, 3))\n\n# Step 4: TF-IDF of doc 1\nrow = [round(tokens[0].count(w) * math.log10(N / df[w]), 3) for w in vocab]\nprint(\"TF-IDF Doc 1:\", row)\n\nOutput:\nVocabulary ( 12 words ): ['aman', 'and', 'anil', 'are', 'stressed', 'went', 'to', 'a', 'therapist', 'download', 'health', 'chatbot']\nDoc 1 [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]\nDoc 2 [1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0]\nDoc 3 [0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1]\nDF: {'aman': 2, 'and': 1, 'anil': 2, 'are': 1, 'stressed': 1, 'went': 2, 'to': 2, 'a': 2, 'therapist': 1, 'download': 1, 'health': 1, 'chatbot': 1}\naman IDF = log( 3 / 2 ) = 0.176\nto IDF = log( 3 / 2 ) = 0.176\nstressed IDF = log( 3 / 1 ) = 0.477\nTF-IDF Doc 1: [0.176, 0.477, 0.176, 0.477, 0.477, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A corpus has 10 documents. The word 'cricket' appears 4 times in document 3 and occurs in 2 of the 10 documents. Find its TF-IDF in document 3. (log 5 ≈ 0.699)",
+       "hi": "एक corpus में 10 documents हैं। शब्द 'cricket' document 3 में 4 बार आता है और 10 में से 2 documents में मौजूद है। document 3 में उसका TF-IDF ज्ञात कीजिए। (log 5 ≈ 0.699)"
+      },
+      "a": {
+       "en": "Step 1: TF = 4.\nStep 2: DF = 2, N = 10, so N/DF = 10/2 = 5.\nStep 3: IDF = log 5 ≈ 0.699.\nStep 4: TF-IDF = 4 × 0.699 ≈ 2.796.",
+       "hi": "चरण 1: TF = 4।\nचरण 2: DF = 2, N = 10, इसलिए N/DF = 10/2 = 5।\nचरण 3: IDF = log 5 ≈ 0.699।\nचरण 4: TF-IDF = 4 × 0.699 ≈ 2.796।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the same corpus of 10 documents, the word 'the' appears in all 10. What is its TF-IDF, even if it occurs 50 times in a document?",
+       "hi": "10 documents वाले उसी corpus में शब्द 'the' सभी 10 में आता है। उसका TF-IDF क्या होगा, भले ही वह किसी document में 50 बार आए?"
+      },
+      "a": {
+       "en": "Step 1: N/DF = 10/10 = 1.\nStep 2: IDF = log 1 = 0.\nStep 3: TF-IDF = 50 × 0 = 0.\nSo a word present in every document has zero importance.",
+       "hi": "चरण 1: N/DF = 10/10 = 1।\nचरण 2: IDF = log 1 = 0।\nचरण 3: TF-IDF = 50 × 0 = 0।\nइसलिए हर document में मौजूद शब्द का महत्व शून्य है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Document classification: deciding the type or genre of a text (sports news, politics, science).",
+       "Topic modelling: finding the main topics in a large collection of texts.",
+       "Information retrieval: search engines ranking pages that best match the words you typed.",
+       "Stopword filtering: words with very low TF-IDF across the corpus can be dropped automatically."
+      ],
+      "hi": [
+       "Document classification: पाठ का प्रकार या शैली तय करना (खेल समाचार, राजनीति, विज्ञान)।",
+       "Topic modelling: पाठों के बड़े संग्रह में मुख्य विषय ढूँढना।",
+       "Information retrieval: search engine द्वारा उन पेजों को ऊपर रखना जो आपके लिखे शब्दों से सबसे अधिक मेल खाते हैं।",
+       "Stopword filtering: पूरे corpus में बहुत कम TF-IDF वाले शब्द अपने-आप हटाए जा सकते हैं।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.9 Sentiment Analysis with Orange Data Mining (Practical)",
+    "hi": "6.9 Orange Data Mining से Sentiment Analysis (प्रायोगिक)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Sentiment analysis",
+       "hi": "Sentiment analysis (भावना विश्लेषण)"
+      },
+      "text": {
+       "en": "The NLP task of finding the emotion or opinion in a text and classifying it as positive, negative or neutral (sometimes with a score). It helps companies, governments and creators understand what people feel.",
+       "hi": "पाठ में भावना या राय ढूँढकर उसे सकारात्मक, नकारात्मक या तटस्थ (कभी-कभी अंक के साथ) में वर्गीकृत करने का NLP कार्य। यह कंपनियों, सरकारों और रचनाकारों को समझने में मदद करता है कि लोग क्या महसूस करते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "NLP tools can be code-based or no-code. Code-based examples include Python libraries such as NLTK, spaCy and TextBlob, where you write programs. No-code examples include Orange Data Mining (with its Text add-on), and online demos like Google Cloud Natural Language. CBSE's practical uses Orange.",
+      "hi": "NLP टूल कोड-आधारित या नो-कोड हो सकते हैं। कोड-आधारित उदाहरणों में NLTK, spaCy और TextBlob जैसी Python libraries आती हैं, जिनमें आप प्रोग्राम लिखते हैं। नो-कोड उदाहरणों में Orange Data Mining (उसके Text add-on के साथ), और Google Cloud Natural Language जैसे ऑनलाइन demo आते हैं। CBSE के प्रायोगिक भाग में Orange का उपयोग होता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Project cycle stage",
+        "Sentiment analysis of product reviews"
+       ],
+       "hi": [
+        "प्रोजेक्ट चक्र का चरण",
+        "उत्पाद समीक्षाओं का sentiment analysis"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Problem scoping",
+         "A company receives thousands of reviews and cannot read all of them; it wants to know quickly which reviews are unhappy so it can respond."
+        ],
+        [
+         "Data acquisition",
+         "A dataset (e.g. a CSV/Excel file) of reviews or tweets, usually provided by the teacher."
+        ],
+        [
+         "Data exploration",
+         "Corpus Viewer to read the texts; Word Cloud to see the most frequent words."
+        ],
+        [
+         "Modelling",
+         "Preprocess Text (normalisation), then Sentiment Analysis (a lexicon-based method such as VADER gives positive, negative, neutral and compound scores); or Bag of Words + a learner if labelled data is given."
+        ],
+        [
+         "Evaluation",
+         "Compare predictions with a sample checked by humans; use Test & Score and Confusion Matrix if a learner is trained."
+        ],
+        [
+         "Deployment",
+         "Run the workflow on new reviews daily and show results in a chart or table."
+        ]
+       ],
+       "hi": [
+        [
+         "Problem scoping (समस्या निर्धारण)",
+         "एक कंपनी को हज़ारों समीक्षाएँ मिलती हैं और वह सब नहीं पढ़ सकती; वह जल्दी जानना चाहती है कि कौन-सी समीक्षाएँ नाख़ुश हैं ताकि जवाब दे सके।"
+        ],
+        [
+         "Data acquisition (डेटा संग्रह)",
+         "समीक्षाओं या ट्वीट्स का dataset (जैसे CSV/Excel फ़ाइल), आम तौर पर शिक्षक देते हैं।"
+        ],
+        [
+         "Data exploration (डेटा अन्वेषण)",
+         "पाठ पढ़ने के लिए Corpus Viewer; सबसे अधिक आने वाले शब्द देखने के लिए Word Cloud।"
+        ],
+        [
+         "Modelling (मॉडलिंग)",
+         "Preprocess Text (normalisation), फिर Sentiment Analysis (VADER जैसी lexicon-आधारित विधि positive, negative, neutral और compound अंक देती है); या लेबल वाला डेटा हो तो Bag of Words + learner।"
+        ],
+        [
+         "Evaluation (मूल्यांकन)",
+         "अनुमानों की तुलना इंसानों द्वारा जाँचे गए नमूने से करें; learner ट्रेन किया हो तो Test & Score और Confusion Matrix उपयोग करें।"
+        ],
+        [
+         "Deployment (उपयोग में लाना)",
+         "नई समीक्षाओं पर रोज़ workflow चलाएँ और परिणाम चार्ट या तालिका में दिखाएँ।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Practical - Sentiment analysis workflow in Orange",
+       "hi": "प्रायोगिक - Orange में sentiment analysis workflow"
+      },
+      "a": {
+       "en": "Need: Orange (free) with the Text add-on installed (Options → Add-ons → Text); a dataset of reviews.\nSteps:\n1. Corpus widget: load the dataset and choose the column that contains the text.\n2. Corpus Viewer: read a few documents to understand the data.\n3. Preprocess Text: choose lower case, remove punctuation/URLs, tokenisation (words), filtering (stopwords, e.g. English), and optionally normalisation (lemmatization or a stemmer).\n4. Word Cloud: see the most common words after cleaning.\n5. Sentiment Analysis widget: choose a method (for example VADER for English). New columns appear with positive, negative, neutral and compound scores.\n6. Data Table: view the scores; sort by 'compound'. Compound above 0 suggests positive, below 0 negative, near 0 neutral.\n7. Optional: Box Plot or Distributions to compare positive vs negative counts; Heat Map to see patterns.\nObserve: most clear reviews are scored correctly; sarcasm ('Wow, delivered in only 10 days, great!') and Hinglish are often scored wrongly.\nLearn: the same NLP steps (normalise → represent → model → evaluate) work for real data; lexicon-based tools have limits.",
+       "hi": "ज़रूरत: Text add-on के साथ Orange (मुफ़्त) (Options → Add-ons → Text); समीक्षाओं का dataset।\nचरण:\n1. Corpus widget: dataset लोड करें और पाठ वाला स्तंभ चुनें।\n2. Corpus Viewer: डेटा समझने के लिए कुछ documents पढ़ें।\n3. Preprocess Text: lower case, विराम-चिह्न/URLs हटाना, tokenisation (शब्द), filtering (stopwords, जैसे English) और वैकल्पिक रूप से normalisation (lemmatization या stemmer) चुनें।\n4. Word Cloud: सफ़ाई के बाद सबसे आम शब्द देखें।\n5. Sentiment Analysis widget: कोई विधि चुनें (जैसे अंग्रेज़ी के लिए VADER)। positive, negative, neutral और compound अंकों वाले नए स्तंभ आते हैं।\n6. Data Table: अंक देखें; 'compound' से क्रमबद्ध करें। 0 से अधिक compound सकारात्मक, 0 से कम नकारात्मक, 0 के पास तटस्थ का संकेत है।\n7. वैकल्पिक: सकारात्मक बनाम नकारात्मक गिनती की तुलना के लिए Box Plot या Distributions; पैटर्न देखने के लिए Heat Map।\nदेखें: अधिकतर साफ़ समीक्षाएँ सही अंक पाती हैं; व्यंग्य ('वाह, सिर्फ़ 10 दिन में डिलीवरी, बढ़िया!') और Hinglish अक्सर ग़लत अंक पाते हैं।\nसीख: वही NLP चरण (normalise → represent → model → evaluate) असली डेटा पर भी काम करते हैं; lexicon-आधारित टूल की सीमाएँ हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Unplugged activity - Human sentiment analysers",
+       "hi": "बिना कंप्यूटर गतिविधि - इंसानी sentiment analyser"
+      },
+      "a": {
+       "en": "Aim: understand why sentiment is hard.\nDo: the teacher writes 10 short reviews on the board, for example 'Loved the samosas!', 'Service was slow but food was tasty', 'Not bad at all', 'Great, the app crashed again'. Each student marks P, N or Neutral for each. Count how often the class agrees.\nObserve: clear sentences get full agreement; mixed, negated ('not bad') and sarcastic ones get split votes.\nLearn: if humans disagree, a machine will also struggle; labelled data must be checked carefully.",
+       "hi": "लक्ष्य: समझना कि भावना पहचानना कठिन क्यों है।\nकरें: शिक्षक बोर्ड पर 10 छोटी समीक्षाएँ लिखते हैं, जैसे 'समोसे बहुत पसंद आए!', 'सेवा धीमी थी पर खाना स्वादिष्ट था', 'बिल्कुल बुरा नहीं', 'बढ़िया, ऐप फिर से क्रैश हो गया'। हर विद्यार्थी हर एक के लिए P, N या तटस्थ लिखता है। गिनिए कि कक्षा कितनी बार सहमत होती है।\nदेखें: साफ़ वाक्यों पर पूरी सहमति होती है; मिले-जुले, निषेध वाले ('बुरा नहीं') और व्यंग्य वाले वाक्यों पर मत बँट जाते हैं।\nसीख: अगर इंसान ही असहमत हों तो मशीन को भी कठिनाई होगी; लेबल वाला डेटा सावधानी से जाँचना चाहिए।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.10 Challenges and Responsible Use of NLP",
+    "hi": "6.10 NLP की चुनौतियाँ और ज़िम्मेदार उपयोग"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Ambiguity and sarcasm make meaning hard to find.",
+       "Indian languages, dialects and code-mixed text (Hinglish, Tanglish) have less training data, so tools may work less well; projects like Bhashini aim to improve this.",
+       "Bias: models learn from human text and can repeat stereotypes about gender, caste, religion or region. Outputs must be checked.",
+       "Misinformation: AI chatbots can produce fluent but false answers; always verify with reliable sources such as textbooks and official websites.",
+       "Privacy: messages, voice recordings and chats may be stored by companies. Do not share personal details, Aadhaar or OTPs with any bot. Real banks never ask for OTP or PIN in a chat.",
+       "Scams: fake 'customer care' chats and messages use urgent language to trick people into sharing UPI PINs. Stop, do not click links, and tell a trusted adult; report cyber fraud on 1930 or cybercrime.gov.in.",
+       "Kindness: use AI writing tools honestly (do not submit AI work as your own) and never use them to write hurtful messages about others."
+      ],
+      "hi": [
+       "अस्पष्टता और व्यंग्य से अर्थ ढूँढना कठिन होता है।",
+       "भारतीय भाषाओं, बोलियों और मिश्रित पाठ (Hinglish, Tanglish) के लिए ट्रेनिंग डेटा कम है, इसलिए टूल कम अच्छा काम कर सकते हैं; Bhashini जैसी परियोजनाएँ इसे सुधारने का लक्ष्य रखती हैं।",
+       "पक्षपात (bias): मॉडल इंसानी पाठ से सीखते हैं और लिंग, जाति, धर्म या क्षेत्र के बारे में रूढ़ियाँ दोहरा सकते हैं। आउटपुट जाँचने चाहिए।",
+       "ग़लत जानकारी: AI चैटबॉट धाराप्रवाह पर ग़लत उत्तर दे सकते हैं; हमेशा पाठ्यपुस्तकों और आधिकारिक वेबसाइटों जैसे भरोसेमंद स्रोतों से जाँचें।",
+       "निजता: संदेश, आवाज़ की रिकॉर्डिंग और चैट कंपनियों द्वारा रखे जा सकते हैं। किसी भी bot को निजी जानकारी, आधार या OTP न दें। असली बैंक कभी चैट में OTP या PIN नहीं माँगते।",
+       "धोखाधड़ी: नक़ली 'customer care' चैट और संदेश जल्दबाज़ी वाली भाषा से लोगों को UPI PIN बताने के लिए फँसाते हैं। रुकें, लिंक पर क्लिक न करें, और किसी भरोसेमंद बड़े को बताएँ; साइबर धोखाधड़ी की शिकायत 1930 या cybercrime.gov.in पर करें।",
+       "दयालुता: AI लेखन टूल ईमानदारी से उपयोग करें (AI का काम अपना बताकर जमा न करें) और कभी दूसरों के बारे में आहत करने वाले संदेश लिखने में उनका उपयोग न करें।"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking a grammatically correct sentence must be meaningful. Fix: syntax (structure) and semantics (meaning) are checked separately.",
+   "Mixing up discourse integration and pragmatic analysis. Fix: discourse links a sentence to nearby sentences; pragmatics finds the speaker's real intention using real-world knowledge.",
+   "Calling every chatbot 'AI'. Fix: script bots follow fixed rules with little or no AI; smart bots use NLP and machine learning.",
+   "Believing stemming always gives real words. Fix: stems can be non-words ('studi'); lemmatization gives real dictionary words ('study').",
+   "Always removing every stopword. Fix: keep words like 'not' when meaning depends on them, for example in sentiment analysis.",
+   "Writing a word twice in the BoW dictionary. Fix: the dictionary has each unique word only once; counts go in the document vectors.",
+   "Confusing TF and DF. Fix: TF counts occurrences in one document; DF counts how many documents contain the word.",
+   "Writing IDF as DF/N. Fix: IDF = log(N/DF); a word in every document gets IDF = log 1 = 0.",
+   "Forgetting the log in TF-IDF. Fix: TF-IDF = TF × log(N/DF), using log base 10 in CBSE examples.",
+   "Sharing personal details or OTPs with chatbots. Fix: never share them; real banks never ask for OTP or PIN in chat."
+  ],
+  "hi": [
+   "यह सोचना कि व्याकरण में सही वाक्य का अर्थ ज़रूर होगा। सुधार: syntax (संरचना) और semantics (अर्थ) अलग-अलग जाँचे जाते हैं।",
+   "discourse integration और pragmatic analysis को मिला देना। सुधार: discourse वाक्य को आसपास के वाक्यों से जोड़ता है; pragmatics वास्तविक दुनिया के ज्ञान से वक्ता का असली इरादा ढूँढता है।",
+   "हर चैटबॉट को 'AI' कहना। सुधार: script bot तय नियमों पर बहुत कम या बिना AI के चलते हैं; smart bot NLP और machine learning उपयोग करते हैं।",
+   "यह मानना कि stemming हमेशा असली शब्द देता है। सुधार: stem अशब्द हो सकते हैं ('studi'); lemmatization असली शब्दकोशीय शब्द देता है ('study')।",
+   "हमेशा हर stopword हटा देना। सुधार: जब अर्थ उन पर निर्भर हो, जैसे sentiment analysis में, तो 'not' जैसे शब्द रखें।",
+   "BoW dictionary में किसी शब्द को दो बार लिखना। सुधार: dictionary में हर अद्वितीय शब्द एक ही बार होता है; गिनती document vectors में जाती है।",
+   "TF और DF को मिला देना। सुधार: TF एक document में आने की गिनती है; DF बताता है कि कितने documents में शब्द है।",
+   "IDF को DF/N लिखना। सुधार: IDF = log(N/DF); हर document में आने वाले शब्द का IDF = log 1 = 0।",
+   "TF-IDF में log भूल जाना। सुधार: TF-IDF = TF × log(N/DF), CBSE उदाहरणों में आधार 10 का log।",
+   "चैटबॉट को निजी जानकारी या OTP बताना। सुधार: कभी न बताएँ; असली बैंक कभी चैट में OTP या PIN नहीं माँगते।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Natural language",
+    "hi": "प्राकृतिक भाषा"
+   },
+   "d": {
+    "en": "Language humans use naturally to communicate, such as Hindi or English.",
+    "hi": "मनुष्यों द्वारा बातचीत के लिए स्वाभाविक रूप से उपयोग की जाने वाली भाषा, जैसे हिंदी या अंग्रेज़ी।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLP",
+    "hi": "NLP"
+   },
+   "d": {
+    "en": "Natural Language Processing; AI domain that helps computers understand and generate human language.",
+    "hi": "Natural Language Processing; AI का क्षेत्र जो कंप्यूटरों को मानव भाषा समझने और बनाने में मदद करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Syntax",
+    "hi": "Syntax"
+   },
+   "d": {
+    "en": "The grammatical structure of a sentence.",
+    "hi": "वाक्य की व्याकरणिक संरचना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Semantics",
+    "hi": "Semantics"
+   },
+   "d": {
+    "en": "The meaning of words and sentences.",
+    "hi": "शब्दों और वाक्यों का अर्थ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Lexicon",
+    "hi": "Lexicon"
+   },
+   "d": {
+    "en": "The vocabulary or dictionary of a language.",
+    "hi": "किसी भाषा की शब्दावली या शब्दकोश।"
+   }
+  },
+  {
+   "t": {
+    "en": "Lexical analysis",
+    "hi": "Lexical analysis"
+   },
+   "d": {
+    "en": "Breaking text into sentences and words and identifying the words.",
+    "hi": "पाठ को वाक्यों और शब्दों में तोड़ना और शब्दों को पहचानना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Syntactic analysis (parsing)",
+    "hi": "Syntactic analysis (parsing)"
+   },
+   "d": {
+    "en": "Checking grammar and relationships between words.",
+    "hi": "व्याकरण और शब्दों के आपसी संबंध की जाँच।"
+   }
+  },
+  {
+   "t": {
+    "en": "Semantic analysis",
+    "hi": "Semantic analysis"
+   },
+   "d": {
+    "en": "Finding the literal meaning and rejecting meaningless sentences.",
+    "hi": "शाब्दिक अर्थ ढूँढना और अर्थहीन वाक्यों को अस्वीकार करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Discourse integration",
+    "hi": "Discourse integration"
+   },
+   "d": {
+    "en": "Linking the meaning of a sentence with sentences before and after it.",
+    "hi": "किसी वाक्य के अर्थ को उससे पहले और बाद के वाक्यों से जोड़ना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pragmatic analysis",
+    "hi": "Pragmatic analysis"
+   },
+   "d": {
+    "en": "Finding the intended meaning using real-world knowledge.",
+    "hi": "वास्तविक दुनिया के ज्ञान से इच्छित अर्थ ढूँढना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Chatbot",
+    "hi": "चैटबॉट"
+   },
+   "d": {
+    "en": "Program that holds a conversation with humans by text or voice.",
+    "hi": "प्रोग्राम जो पाठ या आवाज़ से इंसानों से बातचीत करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Script bot",
+    "hi": "Script bot"
+   },
+   "d": {
+    "en": "Chatbot that follows fixed rules or menus; little or no AI.",
+    "hi": "तय नियमों या मेनू पर चलने वाला चैटबॉट; बहुत कम या बिना AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "Smart bot",
+    "hi": "Smart bot"
+   },
+   "d": {
+    "en": "AI-based chatbot using NLP and machine learning; flexible and learns from data.",
+    "hi": "NLP और machine learning वाला AI-आधारित चैटबॉट; लचीला और डेटा से सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Corpus",
+    "hi": "Corpus"
+   },
+   "d": {
+    "en": "The whole collection of text documents used in a task.",
+    "hi": "किसी कार्य में उपयोग होने वाले पाठ documents का पूरा संग्रह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Document",
+    "hi": "Document"
+   },
+   "d": {
+    "en": "One separate text in a corpus.",
+    "hi": "corpus का एक अलग पाठ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Text normalisation",
+    "hi": "Text normalisation"
+   },
+   "d": {
+    "en": "Cleaning and simplifying text before processing.",
+    "hi": "प्रोसेसिंग से पहले पाठ को साफ़ और सरल करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sentence segmentation",
+    "hi": "Sentence segmentation"
+   },
+   "d": {
+    "en": "Dividing text into sentences.",
+    "hi": "पाठ को वाक्यों में बाँटना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Token / tokenisation",
+    "hi": "Token / tokenisation"
+   },
+   "d": {
+    "en": "A token is any word, number or symbol in a sentence; tokenisation splits a sentence into tokens.",
+    "hi": "Token वाक्य का कोई भी शब्द, संख्या या चिह्न है; tokenisation वाक्य को tokens में बाँटता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stopwords",
+    "hi": "Stopwords"
+   },
+   "d": {
+    "en": "Very common words with little meaning (a, the, and, to, is).",
+    "hi": "कम अर्थ वाले बहुत आम शब्द (a, the, and, to, is)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stemming",
+    "hi": "Stemming"
+   },
+   "d": {
+    "en": "Removing affixes to get a stem, which may not be a real word.",
+    "hi": "प्रत्यय हटाकर stem पाना, जो असली शब्द न भी हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Lemmatization",
+    "hi": "Lemmatization"
+   },
+   "d": {
+    "en": "Removing affixes to get the lemma, always a real dictionary word.",
+    "hi": "प्रत्यय हटाकर lemma पाना, जो हमेशा असली शब्दकोशीय शब्द होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bag of Words",
+    "hi": "Bag of Words"
+   },
+   "d": {
+    "en": "Model representing text by word counts, ignoring order.",
+    "hi": "क्रम अनदेखा करके शब्द-गिनती से पाठ को दर्शाने वाला मॉडल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Document vector",
+    "hi": "Document vector"
+   },
+   "d": {
+    "en": "List of word counts for one document over the dictionary.",
+    "hi": "dictionary के अनुसार एक document के शब्दों की गिनती की सूची।"
+   }
+  },
+  {
+   "t": {
+    "en": "Term Frequency (TF)",
+    "hi": "Term Frequency (TF)"
+   },
+   "d": {
+    "en": "How many times a word occurs in a document.",
+    "hi": "कोई शब्द एक document में कितनी बार आता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Document Frequency (DF)",
+    "hi": "Document Frequency (DF)"
+   },
+   "d": {
+    "en": "Number of documents in which a word occurs.",
+    "hi": "कितने documents में कोई शब्द आता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "IDF",
+    "hi": "IDF"
+   },
+   "d": {
+    "en": "Inverse Document Frequency = log(N/DF); high for rare words.",
+    "hi": "Inverse Document Frequency = log(N/DF); दुर्लभ शब्दों के लिए अधिक।"
+   }
+  },
+  {
+   "t": {
+    "en": "TF-IDF",
+    "hi": "TF-IDF"
+   },
+   "d": {
+    "en": "TF × IDF; a score for how important a word is to a document in a corpus.",
+    "hi": "TF × IDF; यह अंक कि कोई शब्द corpus के किसी document के लिए कितना महत्वपूर्ण है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sentiment analysis",
+    "hi": "Sentiment analysis"
+   },
+   "d": {
+    "en": "Finding whether a text is positive, negative or neutral.",
+    "hi": "पता लगाना कि पाठ सकारात्मक, नकारात्मक या तटस्थ है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Keyword extraction",
+    "hi": "Keyword extraction"
+   },
+   "d": {
+    "en": "Picking the most important words or phrases from a text.",
+    "hi": "पाठ से सबसे महत्वपूर्ण शब्द या वाक्यांश चुनना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Text classification",
+    "hi": "Text classification"
+   },
+   "d": {
+    "en": "Assigning a text to a predefined category, e.g. spam or not spam.",
+    "hi": "पाठ को पहले से तय श्रेणी में रखना, जैसे spam या spam नहीं।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is NOT an application of NLP?\n(a) Sentiment analysis (b) Language translation (c) Object detection (d) Keyword extraction",
+    "hi": "MCQ: इनमें से कौन NLP का उपयोग नहीं है?\n(a) Sentiment analysis (b) Language translation (c) Object detection (d) Keyword extraction"
+   },
+   "a": {
+    "en": "(c) Object detection - it is a Computer Vision task.",
+    "hi": "(c) Object detection - यह Computer Vision का कार्य है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The stage of NLP that checks whether a sentence follows grammar rules is:\n(a) Lexical (b) Syntactic (c) Semantic (d) Pragmatic",
+    "hi": "MCQ: NLP का वह चरण जो जाँचता है कि वाक्य व्याकरण के नियमों का पालन करता है:\n(a) Lexical (b) Syntactic (c) Semantic (d) Pragmatic"
+   },
+   "a": {
+    "en": "(b) Syntactic analysis.",
+    "hi": "(b) Syntactic analysis।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which process always gives a meaningful dictionary word?\n(a) Stemming (b) Tokenisation (c) Lemmatization (d) Segmentation",
+    "hi": "MCQ: कौन-सी प्रक्रिया हमेशा अर्थपूर्ण शब्दकोशीय शब्द देती है?\n(a) Stemming (b) Tokenisation (c) Lemmatization (d) Segmentation"
+   },
+   "a": {
+    "en": "(c) Lemmatization.",
+    "hi": "(c) Lemmatization।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (a) The whole collection of text in an NLP task is called the ______. (b) Words like 'a', 'the', 'and' are called ______. (c) IDF of a word present in all documents is ______.",
+    "hi": "रिक्त स्थान भरें: (a) NLP कार्य में पाठ का पूरा संग्रह ______ कहलाता है। (b) 'a', 'the', 'and' जैसे शब्द ______ कहलाते हैं। (c) सभी documents में मौजूद शब्द का IDF ______ होता है।"
+   },
+   "a": {
+    "en": "(a) corpus (b) stopwords (c) 0",
+    "hi": "(a) corpus (b) stopwords (c) 0"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (a) Bag of Words keeps the order of words. (b) A script bot is easy to make. (c) Every token is a word.",
+    "hi": "सही या ग़लत: (a) Bag of Words शब्दों का क्रम बनाए रखता है। (b) Script bot बनाना आसान है। (c) हर token एक शब्द होता है।"
+   },
+   "a": {
+    "en": "(a) False - order is ignored. (b) True. (c) False - a token can also be a number or a special character.",
+    "hi": "(a) ग़लत - क्रम अनदेखा होता है। (b) सही। (c) ग़लत - token संख्या या विशेष चिह्न भी हो सकता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the chatbots suggested by CBSE for the 'play with chatbots' activity.",
+    "hi": "'चैटबॉट के साथ खेलें' गतिविधि के लिए CBSE द्वारा सुझाए गए चैटबॉट के नाम लिखिए।"
+   },
+   "a": {
+    "en": "Elizabot, Mitsuku (now Kuki), Cleverbot and the Singtel bot.",
+    "hi": "Elizabot, Mitsuku (अब Kuki), Cleverbot और Singtel bot।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "List any four features of natural languages.",
+    "hi": "प्राकृतिक भाषाओं की कोई चार विशेषताएँ लिखिए।"
+   },
+   "a": {
+    "en": "Any four: they follow grammar rules with exceptions; they have redundancy; they change over time; words can have multiple meanings; meaning depends on context and tone; word order differs between languages; people mix languages and slang.",
+    "hi": "कोई चार: अपवादों के साथ व्याकरण नियम मानती हैं; इनमें अतिरेक होता है; समय के साथ बदलती हैं; शब्दों के कई अर्थ हो सकते हैं; अर्थ संदर्भ और लहज़े पर निर्भर है; भाषाओं में शब्द-क्रम अलग होता है; लोग भाषाएँ और बोलचाल के शब्द मिलाते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between script bots and smart bots (any four points).",
+    "hi": "Script bot और smart bot में अंतर बताइए (कोई चार बिंदु)।"
+   },
+   "a": {
+    "en": "Script bot: easy to make; works on a script; limited functionality; little or no AI and no learning; e.g. a menu-button pizza bot.\nSmart bot: flexible and powerful; works on AI/NLP; wide functionality; learns from large data; e.g. a voice assistant.",
+    "hi": "Script bot: बनाना आसान; स्क्रिप्ट पर काम; सीमित काम; बहुत कम या बिना AI और बिना सीख; जैसे मेनू-बटन पिज़्ज़ा bot।\nSmart bot: लचीला और शक्तिशाली; AI/NLP पर काम; व्यापक काम; बड़े डेटा से सीखता है; जैसे voice assistant।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between stemming and lemmatization with examples.",
+    "hi": "उदाहरण सहित stemming और lemmatization में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Both remove affixes. Stemming just chops endings, is faster, and the stem may not be meaningful: 'studies' → 'studi', 'caring' → 'car'. Lemmatization uses language knowledge, is slower, and always gives a meaningful lemma: 'studies' → 'study', 'caring' → 'care', 'better' → 'good'.",
+    "hi": "दोनों प्रत्यय हटाते हैं। Stemming बस अंत काटता है, तेज़ है, और stem अर्थहीन हो सकता है: 'studies' → 'studi', 'caring' → 'car'। Lemmatization भाषा-ज्ञान उपयोग करता है, धीमा है, और हमेशा अर्थपूर्ण lemma देता है: 'studies' → 'study', 'caring' → 'care', 'better' → 'good'।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Tokenise the sentence and count the tokens: 'Wow! India won by 7 wickets.'",
+    "hi": "वाक्य का tokenisation करें और tokens गिनें: 'Wow! India won by 7 wickets.'"
+   },
+   "a": {
+    "en": "Tokens: Wow | ! | India | won | by | 7 | wickets | .\nThere are 8 tokens (6 words/numbers including '7', plus 2 special characters).",
+    "hi": "Tokens: Wow | ! | India | won | by | 7 | wickets | .\nकुल 8 tokens हैं ('7' सहित 6 शब्द/संख्याएँ, और 2 विशेष चिह्न)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Create the dictionary and document vector table for:\nD1: 'we can see the sun'\nD2: 'we can see the moon and the stars'",
+    "hi": "इनके लिए dictionary और document vector table बनाइए:\nD1: 'we can see the sun'\nD2: 'we can see the moon and the stars'"
+   },
+   "a": {
+    "en": "Dictionary: we, can, see, the, sun, moon, and, stars (8 words).\nD1: [1, 1, 1, 1, 1, 0, 0, 0]\nD2: [1, 1, 1, 2, 0, 1, 1, 1] ('the' occurs twice in D2).",
+    "hi": "Dictionary: we, can, see, the, sun, moon, and, stars (8 शब्द)।\nD1: [1, 1, 1, 1, 1, 0, 0, 0]\nD2: [1, 1, 1, 2, 0, 1, 1, 1] (D2 में 'the' दो बार आता है)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "For the corpus in the previous question (N = 2), find the IDF of 'the' and 'moon', and the TF-IDF of 'moon' in D2. (log 2 ≈ 0.301)",
+    "hi": "पिछले प्रश्न के corpus (N = 2) के लिए 'the' और 'moon' का IDF, और D2 में 'moon' का TF-IDF ज्ञात कीजिए। (log 2 ≈ 0.301)"
+   },
+   "a": {
+    "en": "'the': DF = 2, IDF = log(2/2) = log 1 = 0.\n'moon': DF = 1, IDF = log(2/1) = 0.301.\nTF-IDF of 'moon' in D2 = 1 × 0.301 = 0.301.\nSo 'moon' is important to D2 while 'the' has no importance.",
+    "hi": "'the': DF = 2, IDF = log(2/2) = log 1 = 0।\n'moon': DF = 1, IDF = log(2/1) = 0.301।\nD2 में 'moon' का TF-IDF = 1 × 0.301 = 0.301।\nइसलिए 'moon' D2 के लिए महत्वपूर्ण है जबकि 'the' का कोई महत्व नहीं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Stopwords are usually removed during text normalisation.\nReason (R): Stopwords occur very frequently but add little meaning to the text.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): Text normalisation के दौरान stopwords आम तौर पर हटा दिए जाते हैं।\nकारण (R): Stopwords बहुत बार आते हैं पर पाठ में कम अर्थ जोड़ते हैं।\n(a) दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R, A की व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(a).",
+    "hi": "(a)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): In TF-IDF, a word that appears in every document gets a score of zero.\nReason (R): For such a word, N/DF = 1 and log 1 = 0.\nChoose (a)-(d) as in the previous question.",
+    "hi": "अभिकथन (A): TF-IDF में हर document में आने वाले शब्द का अंक शून्य होता है।\nकारण (R): ऐसे शब्द के लिए N/DF = 1 और log 1 = 0।\nपिछले प्रश्न की तरह (a)-(d) चुनें।"
+   },
+   "a": {
+    "en": "(a).",
+    "hi": "(a)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Identify the NLP stage that handles each: (a) 'Ravi met Sohan. He gave him a book.' - who gave? (b) 'Can you open the door?' understood as a request. (c) Rejecting 'The book ate the boy.'",
+    "hi": "बताइए कि कौन-सा NLP चरण इन्हें संभालता है: (a) 'रवि सोहन से मिला। उसने उसे किताब दी।' - किसने दी? (b) 'क्या आप दरवाज़ा खोल सकते हैं?' को अनुरोध समझना। (c) 'किताब ने लड़के को खाया' को अस्वीकार करना।"
+   },
+   "a": {
+    "en": "(a) Discourse integration. (b) Pragmatic analysis. (c) Semantic analysis.",
+    "hi": "(a) Discourse integration। (b) Pragmatic analysis। (c) Semantic analysis।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain all the steps of text normalisation using the sentence: 'Raju is playing cricket. He LOVES the game!!'",
+    "hi": "वाक्य 'Raju is playing cricket. He LOVES the game!!' से text normalisation के सभी चरण समझाइए।"
+   },
+   "a": {
+    "en": "1. Sentence segmentation: 'Raju is playing cricket' | 'He LOVES the game!!'\n2. Tokenisation: [Raju, is, playing, cricket, .] and [He, LOVES, the, game, !, !]\n3. Remove stopwords and special characters: [Raju, playing, cricket] and [LOVES, game] ('is', 'He', 'the', '.', '!' removed).\n4. Lower case: [raju, playing, cricket], [loves, game]\n5. Stemming: [raju, play, cricket], [love, game]\n6. Lemmatization gives the same here: [raju, play, cricket], [love, game].",
+    "hi": "1. Sentence segmentation: 'Raju is playing cricket' | 'He LOVES the game!!'\n2. Tokenisation: [Raju, is, playing, cricket, .] और [He, LOVES, the, game, !, !]\n3. Stopwords और विशेष चिह्न हटाएँ: [Raju, playing, cricket] और [LOVES, game] ('is', 'He', 'the', '.', '!' हटे)।\n4. Lower case: [raju, playing, cricket], [loves, game]\n5. Stemming: [raju, play, cricket], [love, game]\n6. Lemmatization से यहाँ भी यही मिलता है: [raju, play, cricket], [love, game]।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the five stages of NLP with one example each.",
+    "hi": "NLP के पाँच चरणों को एक-एक उदाहरण के साथ समझाइए।"
+   },
+   "a": {
+    "en": "1. Lexical analysis: split text into sentences and words and identify words - 'Meera reads books' → Meera | reads | books.\n2. Syntactic analysis: check grammar - 'Books Meera reads the' is rejected.\n3. Semantic analysis: check literal meaning - 'The chair laughed' is rejected.\n4. Discourse integration: link to surrounding sentences - 'Meera bought a book. She liked it.' → She = Meera, it = book.\n5. Pragmatic analysis: find the real intention - 'Do you have a pen?' means 'Please lend me a pen'.",
+    "hi": "1. Lexical analysis: पाठ को वाक्यों और शब्दों में बाँटकर शब्द पहचानना - 'Meera reads books' → Meera | reads | books।\n2. Syntactic analysis: व्याकरण जाँचना - 'Books Meera reads the' अस्वीकार।\n3. Semantic analysis: शाब्दिक अर्थ जाँचना - 'कुर्सी हँसी' अस्वीकार।\n4. Discourse integration: आसपास के वाक्यों से जोड़ना - 'मीरा ने एक किताब ख़रीदी। उसे वह अच्छी लगी।' → उसे = मीरा, वह = किताब।\n5. Pragmatic analysis: असली इरादा ढूँढना - 'क्या आपके पास पेन है?' का अर्थ 'कृपया मुझे पेन दीजिए'।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Corpus: D1 'cats like milk', D2 'dogs like bones', D3 'cats and dogs play'. (a) Build the BoW table. (b) Find DF and IDF of 'cats', 'like' and 'milk'. (c) Find TF-IDF of 'milk' in D1. (log 1.5 ≈ 0.176, log 3 ≈ 0.477)",
+    "hi": "Corpus: D1 'cats like milk', D2 'dogs like bones', D3 'cats and dogs play'। (a) BoW तालिका बनाइए। (b) 'cats', 'like' और 'milk' का DF और IDF ज्ञात कीजिए। (c) D1 में 'milk' का TF-IDF ज्ञात कीजिए। (log 1.5 ≈ 0.176, log 3 ≈ 0.477)"
+   },
+   "a": {
+    "en": "(a) Dictionary: cats, like, milk, dogs, bones, and, play.\nD1: [1, 1, 1, 0, 0, 0, 0]\nD2: [0, 1, 0, 1, 1, 0, 0]\nD3: [1, 0, 0, 1, 0, 1, 1]\n(b) cats: DF 2, IDF log(3/2) ≈ 0.176; like: DF 2, IDF ≈ 0.176; milk: DF 1, IDF log 3 ≈ 0.477.\n(c) TF-IDF(milk, D1) = 1 × 0.477 = 0.477 - the most distinctive word of D1.",
+    "hi": "(a) Dictionary: cats, like, milk, dogs, bones, and, play।\nD1: [1, 1, 1, 0, 0, 0, 0]\nD2: [0, 1, 0, 1, 1, 0, 0]\nD3: [1, 0, 0, 1, 0, 1, 1]\n(b) cats: DF 2, IDF log(3/2) ≈ 0.176; like: DF 2, IDF ≈ 0.176; milk: DF 1, IDF log 3 ≈ 0.477।\n(c) TF-IDF(milk, D1) = 1 × 0.477 = 0.477 - D1 का सबसे विशिष्ट शब्द।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A state government receives thousands of citizen complaints daily in Hindi and English on its grievance portal. (a) Which NLP applications could help? (b) What normalisation steps are needed? (c) Mention two challenges.",
+    "hi": "केस स्टडी: एक राज्य सरकार को उसके शिकायत पोर्टल पर रोज़ हिंदी और अंग्रेज़ी में हज़ारों नागरिक शिकायतें मिलती हैं। (a) कौन-से NLP उपयोग मदद कर सकते हैं? (b) कौन-से normalisation चरण चाहिए? (c) दो चुनौतियाँ बताइए।"
+   },
+   "a": {
+    "en": "(a) Text classification to route each complaint to the right department (water, electricity, roads); keyword extraction to find the main issue and place; sentiment analysis to flag very angry or urgent complaints; translation to handle both languages; summarisation for officers.\n(b) Sentence segmentation, tokenisation, removing stopwords and special characters, lower-casing (for English), and stemming or lemmatization.\n(c) Code-mixed Hinglish and spelling variations; sarcasm or unclear complaints; privacy of citizens' personal data; bias against certain groups or dialects.",
+    "hi": "(a) हर शिकायत को सही विभाग (पानी, बिजली, सड़क) तक भेजने के लिए text classification; मुख्य समस्या और स्थान ढूँढने के लिए keyword extraction; बहुत नाराज़ या ज़रूरी शिकायतें चिह्नित करने के लिए sentiment analysis; दोनों भाषाएँ संभालने के लिए अनुवाद; अधिकारियों के लिए सारांश।\n(b) Sentence segmentation, tokenisation, stopwords और विशेष चिह्न हटाना, lower case (अंग्रेज़ी के लिए), और stemming या lemmatization।\n(c) मिश्रित Hinglish और वर्तनी के अंतर; व्यंग्य या अस्पष्ट शिकायतें; नागरिकों के निजी डेटा की निजता; कुछ समूहों या बोलियों के प्रति पक्षपात।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe the steps to perform sentiment analysis on a reviews dataset in Orange Data Mining, linking them to the AI project cycle.",
+    "hi": "दीर्घ उत्तर: Orange Data Mining में समीक्षाओं के dataset पर sentiment analysis करने के चरण बताइए, उन्हें AI project cycle से जोड़ते हुए।"
+   },
+   "a": {
+    "en": "Problem scoping: too many reviews to read; need to find negative ones quickly.\nData acquisition: load the review file with the Corpus widget and select the text column.\nData exploration: read samples in Corpus Viewer; view frequent words in Word Cloud.\nModelling: Preprocess Text (lower case, tokenisation, stopword filtering, lemmatization), then the Sentiment Analysis widget (e.g. VADER) adds positive, negative, neutral and compound scores.\nEvaluation: compare scores with human-checked reviews in Data Table; note errors with sarcasm and mixed language.\nDeployment: run the same workflow on new reviews regularly and show the share of negative reviews in a chart.",
+    "hi": "Problem scoping: पढ़ने के लिए बहुत अधिक समीक्षाएँ; नकारात्मक समीक्षाएँ जल्दी ढूँढनी हैं।\nData acquisition: Corpus widget से समीक्षा फ़ाइल लोड करें और पाठ स्तंभ चुनें।\nData exploration: Corpus Viewer में नमूने पढ़ें; Word Cloud में आम शब्द देखें।\nModelling: Preprocess Text (lower case, tokenisation, stopword filtering, lemmatization), फिर Sentiment Analysis widget (जैसे VADER) positive, negative, neutral और compound अंक जोड़ता है।\nEvaluation: Data Table में अंकों की तुलना इंसानों द्वारा जाँची गई समीक्षाओं से करें; व्यंग्य और मिश्रित भाषा वाली ग़लतियाँ नोट करें।\nDeployment: वही workflow नियमित रूप से नई समीक्षाओं पर चलाएँ और नकारात्मक समीक्षाओं का हिस्सा चार्ट में दिखाएँ।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: 'The movie was not good' and 'The movie was good' could get the same Bag of Words vector after stopword removal. Why, and how can this be avoided?",
+    "hi": "सोचिए: stopword हटाने के बाद 'The movie was not good' और 'The movie was good' को एक ही Bag of Words vector मिल सकता है। क्यों, और इससे कैसे बचें?"
+   },
+   "a": {
+    "en": "If 'not' is in the stopword list it is removed, so both become [movie, good]. BoW also ignores order. To avoid this: keep negation words like 'not', 'no', 'never' in the vocabulary; use pairs of words (bigrams such as 'not good'); or use a sentiment tool (like VADER) that handles negation.",
+    "hi": "यदि 'not' stopword सूची में है तो हट जाता है, इसलिए दोनों [movie, good] बन जाते हैं। BoW क्रम भी अनदेखा करता है। बचने के लिए: 'not', 'no', 'never' जैसे निषेध शब्द vocabulary में रखें; शब्द-जोड़ियाँ (जैसे 'not good' जैसे bigrams) उपयोग करें; या ऐसा sentiment टूल (जैसे VADER) उपयोग करें जो निषेध संभालता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking (safety): You receive a WhatsApp chat from a 'bank chatbot' saying your account will be blocked today unless you share the OTP sent to your phone. What should you do and why?",
+    "hi": "सोचिए (सुरक्षा): आपको एक 'बैंक चैटबॉट' से WhatsApp चैट मिलती है कि यदि आपने फ़ोन पर आया OTP नहीं बताया तो आज आपका खाता बंद हो जाएगा। आपको क्या करना चाहिए और क्यों?"
+   },
+   "a": {
+    "en": "Do not share the OTP or click any link; it is a scam. Real banks never ask for OTP, PIN or passwords in chats or calls. The urgent tone is a trick. Tell a parent or trusted adult, block and report the number, and if money is lost, call the cyber fraud helpline 1930 or report at cybercrime.gov.in quickly.",
+    "hi": "OTP न बताएँ और किसी लिंक पर क्लिक न करें; यह धोखाधड़ी है। असली बैंक कभी चैट या कॉल में OTP, PIN या पासवर्ड नहीं माँगते। जल्दबाज़ी वाला लहज़ा एक चाल है। माता-पिता या किसी भरोसेमंद बड़े को बताएँ, नंबर ब्लॉक और रिपोर्ट करें, और यदि पैसे गए हों तो जल्दी से साइबर धोखाधड़ी हेल्पलाइन 1930 पर कॉल करें या cybercrime.gov.in पर शिकायत करें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give one example each of a code-based and a no-code NLP tool.",
+    "hi": "कोड-आधारित और नो-कोड NLP टूल का एक-एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Code-based: Python libraries such as NLTK, spaCy or TextBlob. No-code: Orange Data Mining with the Text add-on, or the Google Cloud Natural Language online demo.",
+    "hi": "कोड-आधारित: NLTK, spaCy या TextBlob जैसी Python libraries। नो-कोड: Text add-on के साथ Orange Data Mining, या Google Cloud Natural Language का ऑनलाइन demo।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Natural languages grew naturally; they have grammar with exceptions, redundancy, ambiguity, change over time and depend on context, which makes them hard for computers.",
+   "NLP is the AI domain that enables computers to understand, process and generate human language as text or speech; it is the third domain after Data Science and CV.",
+   "Applications include voice assistants, auto-generated captions, translation, sentiment analysis, text classification, keyword extraction, summarisation and chatbots.",
+   "The stages of NLP are lexical, syntactic, semantic, discourse integration and pragmatic analysis.",
+   "A sentence can be syntactically correct but semantically meaningless.",
+   "Chatbots simulate conversation; script bots follow fixed rules and are limited, smart bots use AI/NLP, are flexible and learn from data.",
+   "Text normalisation: sentence segmentation → tokenisation → removing stopwords, special characters and numbers → common case → stemming or lemmatization.",
+   "Stemming chops affixes and may give non-words; lemmatization gives meaningful dictionary words but is slower.",
+   "Bag of Words builds a dictionary of unique words and document vectors of word counts, ignoring word order.",
+   "TF counts a word in a document; DF counts documents containing it; IDF = log(N/DF); TF-IDF = TF × IDF.",
+   "TF-IDF gives high scores to words that are frequent in one document but rare in the corpus; words in every document get 0.",
+   "TF-IDF is used in document classification, topic modelling, information retrieval and stopword filtering.",
+   "Sentiment analysis in Orange uses Corpus → Preprocess Text → Sentiment Analysis → Data Table, following the AI project cycle.",
+   "Use chatbots safely: never share personal data or OTPs, verify answers, and report scams on 1930 or cybercrime.gov.in."
+  ],
+  "hi": [
+   "प्राकृतिक भाषाएँ स्वाभाविक रूप से विकसित हुईं; इनमें अपवादों वाला व्याकरण, अतिरेक, अस्पष्टता, समय के साथ बदलाव और संदर्भ पर निर्भरता होती है, जिससे ये कंप्यूटरों के लिए कठिन हैं।",
+   "NLP AI का वह क्षेत्र है जो कंप्यूटरों को पाठ या बोली के रूप में मानव भाषा समझने, प्रोसेस करने और बनाने योग्य बनाता है; यह Data Science और CV के बाद तीसरा क्षेत्र है।",
+   "उपयोगों में voice assistants, स्वचालित कैप्शन, अनुवाद, sentiment analysis, text classification, keyword extraction, सारांश और चैटबॉट आते हैं।",
+   "NLP के चरण lexical, syntactic, semantic, discourse integration और pragmatic analysis हैं।",
+   "कोई वाक्य syntax में सही पर semantics में अर्थहीन हो सकता है।",
+   "चैटबॉट बातचीत का अनुकरण करते हैं; script bot तय नियमों पर चलते हैं और सीमित होते हैं, smart bot AI/NLP उपयोग करते हैं, लचीले होते हैं और डेटा से सीखते हैं।",
+   "Text normalisation: sentence segmentation → tokenisation → stopwords, विशेष चिह्न और संख्याएँ हटाना → एक जैसा case → stemming या lemmatization।",
+   "Stemming प्रत्यय काटता है और अशब्द दे सकता है; lemmatization अर्थपूर्ण शब्दकोशीय शब्द देता है पर धीमा है।",
+   "Bag of Words अद्वितीय शब्दों की dictionary और शब्द-गिनती वाले document vectors बनाता है, शब्द-क्रम अनदेखा करते हुए।",
+   "TF किसी document में शब्द की गिनती है; DF उन documents की गिनती है जिनमें वह है; IDF = log(N/DF); TF-IDF = TF × IDF।",
+   "TF-IDF उन शब्दों को अधिक अंक देता है जो एक document में बार-बार पर corpus में दुर्लभ हों; हर document में आने वाले शब्दों को 0 मिलता है।",
+   "TF-IDF का उपयोग document classification, topic modelling, information retrieval और stopword filtering में होता है।",
+   "Orange में sentiment analysis, AI project cycle का पालन करते हुए Corpus → Preprocess Text → Sentiment Analysis → Data Table से होता है।",
+   "चैटबॉट सुरक्षित रूप से उपयोग करें: निजी डेटा या OTP कभी न बताएँ, उत्तर जाँचें, और धोखाधड़ी की शिकायत 1930 या cybercrime.gov.in पर करें।"
+  ]
+ }
+}

@@ -1,0 +1,1467 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "7",
+ "id": "ch2",
+ "intro": {
+  "en": "AI is not one single thing. Just as science has branches like physics, chemistry and biology, AI has domains: big areas, each dealing with a different kind of input. The three main domains are Data (also called Data Science or Statistical Data), Computer Vision, which works with pictures and videos, and Natural Language Processing, which works with text and speech. In Class 6 you had a first look at how machines see and hear. In this chapter you will study each domain properly: what kind of data it uses, the main tasks it performs, how it works step by step, and where you meet it in daily life in India.",
+  "hi": "AI कोई एक अकेली चीज़ नहीं है। जैसे विज्ञान की भौतिकी, रसायन और जीव विज्ञान जैसी शाखाएँ हैं, वैसे ही AI के डोमेन (क्षेत्र) हैं: बड़े क्षेत्र, जिनमें से हर एक अलग तरह के इनपुट से काम करता है। तीन मुख्य डोमेन हैं: डेटा (जिसे डेटा साइंस या स्टैटिस्टिकल डेटा भी कहते हैं), कंप्यूटर विज़न, जो चित्रों और वीडियो से काम करता है, और नेचुरल लैंग्वेज प्रोसेसिंग, जो पाठ और बोली से काम करता है। कक्षा 6 में आपने पहली झलक देखी थी कि मशीनें कैसे देखती और सुनती हैं। इस अध्याय में आप हर डोमेन को ठीक से पढ़ेंगे: यह किस तरह का डेटा उपयोग करता है, इसके मुख्य काम क्या हैं, यह कदम-दर-कदम कैसे काम करता है, और भारत के दैनिक जीवन में आप इससे कहाँ मिलते हैं।"
+ },
+ "learn": {
+  "en": [
+   "What a domain of AI is, and the three main domains",
+   "Kinds of data: numbers, text, images, audio, video; structured and unstructured data; big data",
+   "The Data Science domain: collecting, cleaning, analysing and visualising data, and predicting from it",
+   "Computer Vision: pixels, image classification, object detection, face recognition, OCR, image search and more",
+   "Natural Language Processing: understanding (NLU) and generating (NLG) language",
+   "NLP tasks: speech-to-text, text-to-speech, translation, chatbots, sentiment analysis, summarising",
+   "Why language is hard for machines, and AI for Indian languages",
+   "How domains work together in real systems",
+   "Two small Python programs: a picture as numbers, and a simple review-mood checker"
+  ],
+  "hi": [
+   "AI का डोमेन क्या है, और तीन मुख्य डोमेन",
+   "डेटा के प्रकार: संख्याएँ, पाठ, चित्र, ऑडियो, वीडियो; संरचित और असंरचित डेटा; बिग डेटा",
+   "डेटा साइंस डोमेन: डेटा इकट्ठा करना, साफ़ करना, विश्लेषण करना, चित्र रूप में दिखाना और उससे भविष्यवाणी करना",
+   "कंप्यूटर विज़न: पिक्सेल, इमेज क्लासिफ़िकेशन, ऑब्जेक्ट डिटेक्शन, फ़ेस रिकग्निशन, OCR, इमेज सर्च और भी",
+   "नेचुरल लैंग्वेज प्रोसेसिंग: भाषा को समझना (NLU) और बनाना (NLG)",
+   "NLP के काम: स्पीच-टू-टेक्स्ट, टेक्स्ट-टू-स्पीच, अनुवाद, चैटबॉट, सेंटिमेंट एनालिसिस, सारांश बनाना",
+   "भाषा मशीनों के लिए कठिन क्यों है, और भारतीय भाषाओं के लिए AI",
+   "असली सिस्टमों में डोमेन मिलकर कैसे काम करते हैं",
+   "दो छोटे Python प्रोग्राम: संख्याओं के रूप में चित्र, और एक सरल समीक्षा-मूड जाँचने वाला"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "2.1 What is a domain of AI?",
+    "hi": "2.1 AI का डोमेन क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A domain is an area of work or study. AI researchers divide AI into domains depending on the type of data the AI takes in. Remember: every AI system works on data, but the data can be very different: a spreadsheet of numbers, a photo, or a sentence spoken in Marathi. Each needs different methods.",
+      "hi": "डोमेन किसी काम या अध्ययन का क्षेत्र है। AI शोधकर्ता AI को इस आधार पर डोमेन में बाँटते हैं कि AI किस प्रकार का डेटा लेता है। याद रखिए: हर AI सिस्टम डेटा पर काम करता है, पर डेटा बहुत अलग हो सकता है: संख्याओं की स्प्रेडशीट, एक फ़ोटो, या मराठी में बोला गया एक वाक्य। हर एक के लिए अलग तरीके चाहिए।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Domain",
+        "Input it works with",
+        "Human ability it is like",
+        "Everyday example"
+       ],
+       "hi": [
+        "डोमेन",
+        "किस इनपुट से काम करता है",
+        "किस मानव क्षमता जैसा",
+        "रोज़मर्रा का उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data (Data Science)",
+         "Numbers, tables, records",
+         "Thinking with facts and figures, spotting trends",
+         "Weather forecast, cricket win-probability, shop sales forecast"
+        ],
+        [
+         "Computer Vision (CV)",
+         "Images and videos",
+         "Seeing",
+         "Face unlock, scanning a QR code, number-plate cameras"
+        ],
+        [
+         "Natural Language Processing (NLP)",
+         "Text and speech",
+         "Reading, listening, speaking, writing",
+         "Voice typing in Hindi, Google Translate, chatbots"
+        ]
+       ],
+       "hi": [
+        [
+         "डेटा (डेटा साइंस)",
+         "संख्याएँ, तालिकाएँ, रिकॉर्ड",
+         "तथ्यों और आँकड़ों से सोचना, रुझान पहचानना",
+         "मौसम पूर्वानुमान, क्रिकेट जीत-संभावना, दुकान की बिक्री का अनुमान"
+        ],
+        [
+         "कंप्यूटर विज़न (CV)",
+         "चित्र और वीडियो",
+         "देखना",
+         "फ़ेस अनलॉक, QR कोड स्कैन करना, नंबर-प्लेट कैमरे"
+        ],
+        [
+         "नेचुरल लैंग्वेज प्रोसेसिंग (NLP)",
+         "पाठ और बोली",
+         "पढ़ना, सुनना, बोलना, लिखना",
+         "हिंदी में वॉइस टाइपिंग, Google Translate, चैटबॉट"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture a simple flow chart drawn on the board: a big box 'AI' at the top with three arrows coming down to three boxes: 'Data', 'Computer Vision' and 'NLP'. Under 'Data' are small boxes for 'numbers and tables'; under 'Computer Vision' for 'images and video'; under 'NLP' for 'text and speech'. Many real AI products use more than one box at the same time, as you will see at the end of this chapter.",
+      "hi": "बोर्ड पर बने एक सरल फ़्लो चार्ट की कल्पना कीजिए: सबसे ऊपर 'AI' का बड़ा डिब्बा और उससे तीन तीर नीचे तीन डिब्बों तक: 'डेटा', 'कंप्यूटर विज़न' और 'NLP'। 'डेटा' के नीचे 'संख्याएँ और तालिकाएँ' के छोटे डिब्बे; 'कंप्यूटर विज़न' के नीचे 'चित्र और वीडियो'; 'NLP' के नीचे 'पाठ और बोली'। बहुत से असली AI उत्पाद एक साथ एक से अधिक डिब्बे का उपयोग करते हैं, जैसा कि आप इस अध्याय के अंत में देखेंगे।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the three domains by what they take in: numbers → Data; pictures → Vision; words → Language.",
+      "hi": "तीनों डोमेन को उनके इनपुट से याद रखिए: संख्याएँ → डेटा; चित्र → विज़न; शब्द → भाषा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.2 Kinds of data: structured, unstructured and big data",
+    "hi": "2.2 डेटा के प्रकार: संरचित, असंरचित और बिग डेटा"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Class 6 you learned that data comes in many forms: numbers, text, pictures, sounds and videos. Data scientists also sort data by how neatly it is arranged.",
+      "hi": "कक्षा 6 में आपने सीखा कि डेटा कई रूपों में आता है: संख्याएँ, पाठ, चित्र, आवाज़ें और वीडियो। डेटा वैज्ञानिक डेटा को इस आधार पर भी बाँटते हैं कि वह कितने व्यवस्थित ढंग से रखा है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Structured data",
+       "hi": "संरचित डेटा (Structured data)"
+      },
+      "text": {
+       "en": "Data arranged in a fixed format of rows and columns, like a table or spreadsheet, so a computer can easily search and count it.",
+       "hi": "पंक्तियों और स्तंभों के तय ढाँचे में रखा डेटा, जैसे तालिका या स्प्रेडशीट, ताकि कंप्यूटर आसानी से खोज और गिनती कर सके।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Unstructured data",
+       "hi": "असंरचित डेटा (Unstructured data)"
+      },
+      "text": {
+       "en": "Data with no fixed table format, such as photos, voice notes, videos, emails and social-media posts.",
+       "hi": "बिना तय तालिका ढाँचे का डेटा, जैसे फ़ोटो, वॉइस नोट, वीडियो, ईमेल और सोशल मीडिया पोस्ट।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Structured data",
+        "Unstructured data"
+       ],
+       "hi": [
+        "संरचित डेटा",
+        "असंरचित डेटा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Class attendance register",
+         "Photos from the school annual day"
+        ],
+        [
+         "Railway timetable",
+         "Voice messages in a family WhatsApp group"
+        ],
+        [
+         "Cricket scorecard (runs, balls, wickets)",
+         "Video of the match"
+        ],
+        [
+         "Bank passbook entries",
+         "Customer complaint letters"
+        ]
+       ],
+       "hi": [
+        [
+         "कक्षा का उपस्थिति रजिस्टर",
+         "स्कूल के वार्षिकोत्सव की फ़ोटो"
+        ],
+        [
+         "रेलवे समय सारणी",
+         "परिवार के WhatsApp समूह में वॉइस संदेश"
+        ],
+        [
+         "क्रिकेट स्कोरकार्ड (रन, गेंदें, विकेट)",
+         "मैच का वीडियो"
+        ],
+        [
+         "बैंक पासबुक की प्रविष्टियाँ",
+         "ग्राहकों के शिकायत पत्र"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Most of the world's data is unstructured. The Data domain mainly works with structured data, while Computer Vision and NLP have special methods to turn unstructured pictures and words into numbers a computer can work with.",
+      "hi": "दुनिया का अधिकतर डेटा असंरचित है। डेटा डोमेन मुख्य रूप से संरचित डेटा से काम करता है, जबकि कंप्यूटर विज़न और NLP के पास असंरचित चित्रों और शब्दों को ऐसी संख्याओं में बदलने के खास तरीके हैं जिनसे कंप्यूटर काम कर सके।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Big data",
+       "hi": "बिग डेटा"
+      },
+      "text": {
+       "en": "Extremely large amounts of data that arrive very fast and in many forms, too big to handle with ordinary tools like a notebook or a simple spreadsheet.",
+       "hi": "बहुत विशाल मात्रा में डेटा जो बहुत तेज़ी से और कई रूपों में आता है, इतना बड़ा कि नोटबुक या साधारण स्प्रेडशीट जैसे सामान्य औज़ारों से संभाला न जा सके।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Big data is often described by three Vs: Volume (how much: crores of UPI payments every day), Velocity (how fast it arrives: live location of lakhs of phones on Google Maps every second), and Variety (how many forms: text, photos, videos, sensor readings). AI is useful precisely because it can find patterns in data far too large for any human to read.",
+      "hi": "बिग डेटा को अक्सर तीन V से बताया जाता है: Volume (वॉल्यूम, कितना: हर दिन करोड़ों UPI भुगतान), Velocity (वेलोसिटी, कितनी तेज़ी से आता है: हर सेकंड Google Maps पर लाखों फ़ोनों की लाइव लोकेशन), और Variety (वैरायटी, कितने रूप: पाठ, फ़ोटो, वीडियो, सेंसर रीडिंग)। AI इसीलिए उपयोगी है क्योंकि यह इतने बड़े डेटा में पैटर्न ढूँढ सकता है जिसे कोई इंसान पढ़ ही न सके।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Sort into structured or unstructured: (a) marks of all students in a spreadsheet (b) a selfie (c) a list of train numbers and departure times (d) a podcast episode.",
+       "hi": "संरचित या असंरचित में छाँटिए: (a) स्प्रेडशीट में सभी विद्यार्थियों के अंक (b) एक सेल्फ़ी (c) ट्रेन नंबरों और प्रस्थान समय की सूची (d) एक पॉडकास्ट एपिसोड।"
+      },
+      "a": {
+       "en": "(a) Structured: rows (students) and columns (subjects).\n(b) Unstructured: a picture.\n(c) Structured: a table of numbers and times.\n(d) Unstructured: audio.",
+       "hi": "(a) संरचित: पंक्तियाँ (विद्यार्थी) और स्तंभ (विषय)।\n(b) असंरचित: एक चित्र।\n(c) संरचित: संख्याओं और समय की तालिका।\n(d) असंरचित: ऑडियो।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.3 Domain 1: Data (Data Science)",
+    "hi": "2.3 डोमेन 1: डेटा (डेटा साइंस)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data Science",
+       "hi": "डेटा साइंस"
+      },
+      "text": {
+       "en": "The domain of AI that collects, cleans and studies data, mostly numbers and tables, to find patterns, show them clearly and make predictions or decisions.",
+       "hi": "AI का वह डोमेन जो पैटर्न ढूँढने, उन्हें साफ़ दिखाने और भविष्यवाणी या निर्णय लेने के लिए डेटा, ज़्यादातर संख्याएँ और तालिकाएँ, इकट्ठा करता, साफ़ करता और पढ़ता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Data Science works in a series of steps. A useful way to remember them is: Collect → Clean → Explore and Visualise → Analyse and Predict → Decide.",
+      "hi": "डेटा साइंस कई चरणों में काम करता है। इन्हें याद रखने का अच्छा तरीका: इकट्ठा करना → साफ़ करना → खोजबीन और चित्रण → विश्लेषण और भविष्यवाणी → निर्णय।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Collect: gather data from surveys, sensors (thermometers, rain gauges), apps, websites, registers and government open-data portals.",
+       "Clean: remove repeated entries, fix spelling mistakes ('Dilli', 'Delhi', 'New Delhi' should be one city), fill or remove missing values, and remove impossible values (a student aged 150).",
+       "Explore and visualise: make tables, bar graphs, line graphs and pie charts to see patterns quickly.",
+       "Analyse and predict: use averages, trends and machine-learning models to find relationships and predict the future.",
+       "Decide: use the results to take a sensible action, such as stocking more umbrellas before the monsoon."
+      ],
+      "hi": [
+       "इकट्ठा करना: सर्वे, सेंसर (थर्मामीटर, वर्षा मापी), ऐप, वेबसाइट, रजिस्टर और सरकारी ओपन-डेटा पोर्टलों से डेटा जुटाना।",
+       "साफ़ करना: दोहराई गई प्रविष्टियाँ हटाना, वर्तनी की गलतियाँ ठीक करना ('Dilli', 'Delhi', 'New Delhi' एक ही शहर होना चाहिए), छूटे मान भरना या हटाना, और असंभव मान हटाना (150 वर्ष का विद्यार्थी)।",
+       "खोजबीन और चित्रण: पैटर्न जल्दी देखने के लिए तालिकाएँ, दंड आलेख (बार ग्राफ़), रेखा ग्राफ़ और पाई चार्ट बनाना।",
+       "विश्लेषण और भविष्यवाणी: संबंध ढूँढने और भविष्य बताने के लिए औसत, रुझान और मशीन-लर्निंग मॉडल उपयोग करना।",
+       "निर्णय: परिणामों से समझदारी भरा कदम उठाना, जैसे मानसून से पहले ज़्यादा छाते रखना।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Choosing the right chart matters. A bar graph compares amounts across groups (runs scored by five batters). A line graph shows how something changes over time (temperature every day of a week). A pie chart shows parts of a whole (how a family's monthly budget is divided). A table shows exact values.",
+      "hi": "सही चार्ट चुनना ज़रूरी है। बार ग्राफ़ समूहों के बीच मात्राओं की तुलना करता है (पाँच बल्लेबाज़ों के रन)। रेखा ग्राफ़ दिखाता है कि कोई चीज़ समय के साथ कैसे बदलती है (हफ़्ते के हर दिन का तापमान)। पाई चार्ट पूरे के हिस्से दिखाता है (परिवार का मासिक बजट कैसे बँटा है)। तालिका सटीक मान दिखाती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A juice shop sold these glasses of juice in a week: Mon 20, Tue 22, Wed 25, Thu 24, Fri 30, Sat 45, Sun 50. Find the average, describe the pattern, and say what the owner should do. Which chart would best show this data?",
+       "hi": "एक जूस की दुकान ने एक हफ़्ते में इतने गिलास बेचे: सोम 20, मंगल 22, बुध 25, गुरु 24, शुक्र 30, शनि 45, रवि 50। औसत निकालिए, पैटर्न बताइए, और बताइए मालिक को क्या करना चाहिए। यह डेटा कौन-सा चार्ट सबसे अच्छा दिखाएगा?"
+      },
+      "a": {
+       "en": "Step 1 (total): 20 + 22 + 25 + 24 + 30 + 45 + 50 = 216 glasses.\nStep 2 (average): 216 ÷ 7 ≈ 30.9, about 31 glasses a day.\nStep 3 (pattern): sales are low and steady on weekdays (20 to 30) and jump on Saturday and Sunday (45 and 50).\nStep 4 (decision): buy more fruit and keep an extra helper on weekends; maybe offer a weekday discount.\nStep 5 (chart): a line graph shows the change over the days; a bar graph also works well for comparing days.",
+       "hi": "चरण 1 (कुल): 20 + 22 + 25 + 24 + 30 + 45 + 50 = 216 गिलास।\nचरण 2 (औसत): 216 ÷ 7 ≈ 30.9, लगभग 31 गिलास प्रतिदिन।\nचरण 3 (पैटर्न): सप्ताह के दिनों में बिक्री कम और स्थिर (20 से 30) है और शनिवार-रविवार को बढ़ जाती है (45 और 50)।\nचरण 4 (निर्णय): सप्ताहांत पर ज़्यादा फल खरीदें और एक अतिरिक्त सहायक रखें; शायद सप्ताह के दिनों में छूट दें।\nचरण 5 (चार्ट): रेखा ग्राफ़ दिनों के साथ बदलाव दिखाता है; दिनों की तुलना के लिए बार ग्राफ़ भी अच्छा है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Where do we see the Data domain in India? Cricket broadcasts show a live 'win predictor' calculated from past match data, runs needed and wickets left. Weather departments use years of temperature, rainfall and wind data with computer models to forecast monsoon rain. Banks study patterns in transactions to spot unusual UPI payments and send a fraud alert. Shops and online stores forecast how much stock they need before festivals. Google Maps combines data from many phones to estimate traffic and arrival time. Cities study electricity and water use to plan supply.",
+      "hi": "भारत में डेटा डोमेन कहाँ दिखता है? क्रिकेट प्रसारण पुराने मैचों के डेटा, ज़रूरी रन और बचे विकेटों से गणना किया गया लाइव 'विन प्रेडिक्टर' दिखाते हैं। मौसम विभाग मानसून की बारिश का पूर्वानुमान लगाने के लिए वर्षों के तापमान, वर्षा और हवा के डेटा को कंप्यूटर मॉडलों के साथ उपयोग करते हैं। बैंक लेन-देन के पैटर्न पढ़कर असामान्य UPI भुगतान पकड़ते हैं और धोखाधड़ी अलर्ट भेजते हैं। दुकानें और ऑनलाइन स्टोर त्योहारों से पहले अनुमान लगाते हैं कि उन्हें कितना सामान चाहिए। Google Maps कई फ़ोनों के डेटा को मिलाकर ट्रैफ़िक और पहुँचने का समय आँकता है। शहर आपूर्ति की योजना के लिए बिजली और पानी के उपयोग का अध्ययन करते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Correlation is not cause: ice-cream sales and the number of people swimming both go up in summer, but ice cream does not make people swim. Hot weather causes both. Good data scientists check the reason before making a decision.",
+      "hi": "साथ-साथ बदलना कारण नहीं है: गर्मियों में आइसक्रीम की बिक्री और तैरने वालों की संख्या दोनों बढ़ती हैं, पर आइसक्रीम लोगों को तैरने पर मजबूर नहीं करती। गर्म मौसम दोनों का कारण है। अच्छे डेटा वैज्ञानिक निर्णय लेने से पहले कारण जाँचते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.4 Domain 2: Computer Vision – how machines see",
+    "hi": "2.4 डोमेन 2: कंप्यूटर विज़न – मशीनें कैसे देखती हैं"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Computer Vision (CV)",
+       "hi": "कंप्यूटर विज़न (CV)"
+      },
+      "text": {
+       "en": "The domain of AI that enables computers to take in images and videos and understand what is in them: objects, people, text, movement and more.",
+       "hi": "AI का वह डोमेन जो कंप्यूटरों को चित्र और वीडियो लेकर यह समझने योग्य बनाता है कि उनमें क्या है: वस्तुएँ, लोग, लिखावट, गति और भी बहुत कुछ।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "From Class 6, remember that a digital picture is a grid of tiny squares called pixels. In a black-and-white picture each pixel is a number for brightness (for example 0 for black to 255 for white). In a colour picture each pixel has three numbers, for red, green and blue (RGB). A phone photo can have more than a crore pixels. So for a computer, every photo is a huge table of numbers, and Computer Vision is the art of finding patterns in those numbers.",
+      "hi": "कक्षा 6 से याद कीजिए कि डिजिटल चित्र पिक्सेल नाम के छोटे वर्गों का एक जाल है। काले-सफ़ेद चित्र में हर पिक्सेल चमक की एक संख्या है (जैसे काले के लिए 0 से सफ़ेद के लिए 255)। रंगीन चित्र में हर पिक्सेल की तीन संख्याएँ होती हैं, लाल, हरे और नीले (RGB) के लिए। फ़ोन की एक फ़ोटो में एक करोड़ से ज़्यादा पिक्सेल हो सकते हैं। इसलिए कंप्यूटर के लिए हर फ़ोटो संख्याओं की एक विशाल तालिका है, और कंप्यूटर विज़न उन संख्याओं में पैटर्न ढूँढने की कला है।"
+     }
+    },
+    {
+     "p": {
+      "en": "How does a CV system work? Step 1, input: a camera captures an image or video. Step 2, pre-processing: the picture is resized, brightened or cleaned of noise. Step 3, feature extraction: the system looks for edges, corners, colours, textures and shapes. Step 4, recognition: a trained model (usually a neural network trained on lakhs of labelled images) decides what these features mean. Step 5, output: a label, a box drawn around an object, a reading of text, or an action such as unlocking the phone.",
+      "hi": "CV सिस्टम कैसे काम करता है? चरण 1, इनपुट: कैमरा चित्र या वीडियो लेता है। चरण 2, प्री-प्रोसेसिंग: चित्र का आकार बदला जाता है, चमक बढ़ाई जाती है या धुंधलापन (नॉइज़) हटाया जाता है। चरण 3, फ़ीचर निकालना: सिस्टम किनारे, कोने, रंग, बनावट और आकार ढूँढता है। चरण 4, पहचान: एक ट्रेन किया हुआ मॉडल (आमतौर पर लाखों लेबल वाले चित्रों पर ट्रेन किया न्यूरल नेटवर्क) तय करता है कि इन फ़ीचरों का क्या अर्थ है। चरण 5, आउटपुट: एक लेबल, किसी वस्तु के चारों ओर बना डिब्बा, लिखावट को पढ़ना, या कोई काम जैसे फ़ोन अनलॉक करना।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# A tiny 5 x 5 black-and-white picture: 1 = black pixel, 0 = white pixel\npicture = [\n    [0, 0, 1, 0, 0],\n    [0, 1, 1, 0, 0],\n    [0, 0, 1, 0, 0],\n    [0, 0, 1, 0, 0],\n    [0, 1, 1, 1, 0],\n]\nfor row in picture:\n    line = \"\"\n    for pixel in row:\n        line = line + (\"#\" if pixel == 1 else \".\")\n    print(line)\n\nblack = sum(sum(row) for row in picture)\nprint(\"Black pixels:\", black, \"out of\", 5 * 5)",
+      "hi": "# एक छोटा 5 x 5 काला-सफ़ेद चित्र: 1 = काला पिक्सेल, 0 = सफ़ेद पिक्सेल\npicture = [\n    [0, 0, 1, 0, 0],\n    [0, 1, 1, 0, 0],\n    [0, 0, 1, 0, 0],\n    [0, 0, 1, 0, 0],\n    [0, 1, 1, 1, 0],\n]\nfor row in picture:\n    line = \"\"\n    for pixel in row:\n        line = line + (\"#\" if pixel == 1 else \".\")\n    print(line)\n\nblack = sum(sum(row) for row in picture)\nprint(\"Black pixels:\", black, \"out of\", 5 * 5)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output of the program above:",
+      "hi": "ऊपर के प्रोग्राम का आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "..#..\n.##..\n..#..\n..#..\n.###.\nBlack pixels: 8 out of 25",
+      "hi": "..#..\n.##..\n..#..\n..#..\n.###.\nBlack pixels: 8 out of 25"
+     }
+    },
+    {
+     "p": {
+      "en": "The program stores a tiny 5 × 5 picture as rows of 0s and 1s and prints it with # for black. You can see the digit 1. This is exactly how a computer holds a picture: only numbers. A CV model trained on thousands of such grids can learn which number patterns mean '1', '7' or 'क'.",
+      "hi": "यह प्रोग्राम एक छोटे 5 × 5 चित्र को 0 और 1 की पंक्तियों के रूप में रखता है और काले के लिए # छापता है। आप अंक 1 देख सकते हैं। ठीक इसी तरह कंप्यूटर चित्र रखता है: केवल संख्याएँ। हज़ारों ऐसे जालों पर ट्रेन हुआ CV मॉडल सीख सकता है कि कौन-से संख्या पैटर्न का अर्थ '1', '7' या 'क' है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.5 Main tasks of Computer Vision",
+    "hi": "2.5 कंप्यूटर विज़न के मुख्य काम"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Task",
+        "What it does",
+        "Example in daily life"
+       ],
+       "hi": [
+        "काम",
+        "क्या करता है",
+        "दैनिक जीवन का उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Image classification",
+         "Gives one label to the whole image",
+         "Is this leaf healthy or diseased? Is this a cat or a dog?"
+        ],
+        [
+         "Object detection",
+         "Finds several objects and draws a box around each, with a label",
+         "A traffic camera finding cars, bikes, autos and people in one frame"
+        ],
+        [
+         "Face detection and face recognition",
+         "Detection finds where faces are; recognition identifies whose face it is",
+         "Phone camera focusing on faces; face unlock; face-based entry at some airports (DigiYatra)"
+        ],
+        [
+         "Optical Character Recognition (OCR)",
+         "Reads printed or handwritten text from an image and turns it into typed text",
+         "Google Lens reading a signboard; scanning a document into text"
+        ],
+        [
+         "Image segmentation",
+         "Colours every pixel by what it belongs to (road, sky, person)",
+         "Portrait-mode blur behind a person; self-driving research"
+        ],
+        [
+         "Content-based image retrieval (image search)",
+         "Finds pictures similar to a given picture, using the picture itself instead of words",
+         "Searching with a photo of a shoe to find similar shoes; Google Lens"
+        ],
+        [
+         "Object tracking and activity recognition",
+         "Follows a moving object across video frames and understands actions",
+         "Ball-tracking replays in cricket; counting people entering a station"
+        ],
+        [
+         "Pose estimation",
+         "Finds body points like elbows and knees",
+         "Fitness and yoga apps checking your posture"
+        ]
+       ],
+       "hi": [
+        [
+         "इमेज क्लासिफ़िकेशन",
+         "पूरे चित्र को एक लेबल देता है",
+         "यह पत्ती स्वस्थ है या रोगग्रस्त? यह बिल्ली है या कुत्ता?"
+        ],
+        [
+         "ऑब्जेक्ट डिटेक्शन",
+         "कई वस्तुएँ ढूँढकर हर एक के चारों ओर लेबल के साथ डिब्बा बनाता है",
+         "ट्रैफ़िक कैमरा एक फ़्रेम में कार, बाइक, ऑटो और लोग ढूँढता है"
+        ],
+        [
+         "फ़ेस डिटेक्शन और फ़ेस रिकग्निशन",
+         "डिटेक्शन बताता है चेहरे कहाँ हैं; रिकग्निशन पहचानता है कि चेहरा किसका है",
+         "फ़ोन कैमरा चेहरों पर फ़ोकस करता है; फ़ेस अनलॉक; कुछ हवाई अड्डों पर चेहरे से प्रवेश (DigiYatra)"
+        ],
+        [
+         "ऑप्टिकल कैरेक्टर रिकग्निशन (OCR)",
+         "चित्र से छपी या हाथ की लिखावट पढ़कर उसे टाइप किए पाठ में बदलता है",
+         "Google Lens से साइनबोर्ड पढ़ना; दस्तावेज़ को स्कैन करके पाठ बनाना"
+        ],
+        [
+         "इमेज सेगमेंटेशन",
+         "हर पिक्सेल को इस आधार पर रंगता है कि वह किसका हिस्सा है (सड़क, आसमान, व्यक्ति)",
+         "व्यक्ति के पीछे पोर्ट्रेट-मोड धुंधलापन; स्वचालित कार पर शोध"
+        ],
+        [
+         "कंटेंट-बेस्ड इमेज रिट्रीवल (इमेज सर्च)",
+         "शब्दों के बजाय चित्र का ही उपयोग करके दिए गए चित्र जैसे चित्र ढूँढता है",
+         "जूते की फ़ोटो से मिलते-जुलते जूते खोजना; Google Lens"
+        ],
+        [
+         "ऑब्जेक्ट ट्रैकिंग और गतिविधि पहचान",
+         "वीडियो फ़्रेमों में चलती वस्तु का पीछा करता है और काम समझता है",
+         "क्रिकेट में गेंद-ट्रैकिंग रीप्ले; स्टेशन में आने वाले लोगों की गिनती"
+        ],
+        [
+         "पोज़ एस्टिमेशन",
+         "शरीर के बिंदु जैसे कोहनी और घुटने ढूँढता है",
+         "फ़िटनेस और योग ऐप आपकी मुद्रा जाँचते हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Notice the difference between classification and detection. Classification answers 'What is this picture of?' with one word. Detection answers 'What objects are in this picture, and where?' with many boxes. Similarly, face detection only says 'there is a face here', while face recognition says 'this is Aman's face'. Face recognition uses very personal data, so it must be used carefully and with permission.",
+      "hi": "क्लासिफ़िकेशन और डिटेक्शन का अंतर देखिए। क्लासिफ़िकेशन 'यह चित्र किसका है?' का उत्तर एक शब्द में देता है। डिटेक्शन 'इस चित्र में कौन-सी वस्तुएँ हैं, और कहाँ?' का उत्तर कई डिब्बों से देता है। इसी तरह फ़ेस डिटेक्शन केवल कहता है 'यहाँ एक चेहरा है', जबकि फ़ेस रिकग्निशन कहता है 'यह अमन का चेहरा है'। फ़ेस रिकग्निशन बहुत निजी डेटा उपयोग करता है, इसलिए इसे सावधानी से और अनुमति के साथ उपयोग करना चाहिए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Computer Vision has limits. It can be fooled by poor light, blur, unusual angles or objects it never saw in training. A model trained only on photos of fair-skinned faces may work poorly for darker skin; this is a kind of unfairness you will study in Chapter 6. CV can also be misused to create fake photos and videos (deepfakes), so always check where a picture came from.",
+      "hi": "कंप्यूटर विज़न की सीमाएँ हैं। कम रोशनी, धुंधलापन, अजीब कोण या ऐसी वस्तुएँ जो उसने ट्रेनिंग में कभी नहीं देखीं, उसे भ्रमित कर सकती हैं। जो मॉडल केवल गोरी त्वचा वाले चेहरों की फ़ोटो पर ट्रेन हुआ हो, वह साँवली त्वचा पर खराब काम कर सकता है; यह एक तरह का अन्याय है जो आप अध्याय 6 में पढ़ेंगे। CV का दुरुपयोग नकली फ़ोटो और वीडियो (डीपफ़ेक) बनाने में भी हो सकता है, इसलिए हमेशा जाँचिए कि चित्र कहाँ से आया।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Name the CV task: (a) An app reads the text on a medicine strip so it can be read aloud. (b) A camera at a toll plaza finds the number plate on each vehicle. (c) A photo app blurs everything behind the person.",
+       "hi": "CV का काम बताइए: (a) एक ऐप दवा की पट्टी पर लिखा पाठ पढ़ता है ताकि उसे बोलकर सुनाया जा सके। (b) टोल प्लाज़ा का कैमरा हर गाड़ी पर नंबर प्लेट ढूँढता है। (c) फ़ोटो ऐप व्यक्ति के पीछे सब कुछ धुंधला कर देता है।"
+      },
+      "a": {
+       "en": "(a) OCR (optical character recognition), followed by text-to-speech from NLP.\n(b) Object detection to find the plate, then OCR to read the letters and numbers.\n(c) Image segmentation: it separates the person's pixels from the background pixels.",
+       "hi": "(a) OCR (ऑप्टिकल कैरेक्टर रिकग्निशन), फिर NLP का टेक्स्ट-टू-स्पीच।\n(b) प्लेट ढूँढने के लिए ऑब्जेक्ट डिटेक्शन, फिर अक्षर और अंक पढ़ने के लिए OCR।\n(c) इमेज सेगमेंटेशन: यह व्यक्ति के पिक्सेल को पृष्ठभूमि के पिक्सेल से अलग करता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.6 Domain 3: Natural Language Processing – how machines handle language",
+    "hi": "2.6 डोमेन 3: नेचुरल लैंग्वेज प्रोसेसिंग – मशीनें भाषा कैसे संभालती हैं"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Natural Language Processing (NLP)",
+       "hi": "नेचुरल लैंग्वेज प्रोसेसिंग (NLP)"
+      },
+      "text": {
+       "en": "The domain of AI that enables computers to read, understand, translate and produce human languages, in text or in speech.",
+       "hi": "AI का वह डोमेन जो कंप्यूटरों को मानव भाषाओं को पाठ या बोली के रूप में पढ़ने, समझने, अनुवाद करने और बनाने योग्य बनाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "'Natural' language means the languages people speak, like Hindi, English, Tamil or Bengali, as opposed to computer languages like Python, which have strict rules. NLP has two big parts.",
+      "hi": "'नेचुरल' भाषा का अर्थ है वे भाषाएँ जो लोग बोलते हैं, जैसे हिंदी, अंग्रेज़ी, तमिल या बांग्ला, Python जैसी कंप्यूटर भाषाओं के विपरीत, जिनके नियम सख्त होते हैं। NLP के दो बड़े भाग हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Natural Language Understanding (NLU)",
+       "hi": "नेचुरल लैंग्वेज अंडरस्टैंडिंग (NLU)"
+      },
+      "text": {
+       "en": "The part of NLP that works out the meaning and intention behind words. Example: understanding that 'Will I need an umbrella tomorrow?' is a question about rain.",
+       "hi": "NLP का वह भाग जो शब्दों के पीछे का अर्थ और इरादा समझता है। उदाहरण: समझना कि 'क्या कल मुझे छाते की ज़रूरत होगी?' बारिश के बारे में प्रश्न है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Natural Language Generation (NLG)",
+       "hi": "नेचुरल लैंग्वेज जनरेशन (NLG)"
+      },
+      "text": {
+       "en": "The part of NLP that produces meaningful sentences in human language. Example: replying 'Yes, rain is likely in your area tomorrow afternoon.'",
+       "hi": "NLP का वह भाग जो मानव भाषा में अर्थपूर्ण वाक्य बनाता है। उदाहरण: उत्तर देना 'हाँ, कल दोपहर आपके क्षेत्र में बारिश की संभावना है।'"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How does a computer process a sentence? Step 1, the sentence is broken into small pieces called tokens (usually words or parts of words): 'Mujhe kal Patna jaana hai' becomes 'Mujhe | kal | Patna | jaana | hai'. This is called tokenisation. Step 2, common filler words may be removed and words reduced to their root ('playing', 'played' → 'play'). Step 3, the computer finds the parts of the sentence: who, what, when, where ('kal' = time, 'Patna' = place). Step 4, words are turned into numbers so a model can work with them. Step 5, a trained model works out the meaning or produces an answer.",
+      "hi": "कंप्यूटर किसी वाक्य को कैसे प्रोसेस करता है? चरण 1, वाक्य को छोटे टुकड़ों में तोड़ा जाता है जिन्हें टोकन कहते हैं (आमतौर पर शब्द या शब्दों के भाग): 'मुझे कल पटना जाना है' बनता है 'मुझे | कल | पटना | जाना | है'। इसे टोकनाइज़ेशन कहते हैं। चरण 2, आम भराव वाले शब्द हटाए जा सकते हैं और शब्दों को उनके मूल रूप में लाया जाता है ('खेलते', 'खेला' → 'खेल')। चरण 3, कंप्यूटर वाक्य के भाग ढूँढता है: कौन, क्या, कब, कहाँ ('कल' = समय, 'पटना' = जगह)। चरण 4, शब्दों को संख्याओं में बदला जाता है ताकि मॉडल उनसे काम कर सके। चरण 5, एक ट्रेन किया हुआ मॉडल अर्थ निकालता है या उत्तर बनाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.7 Main tasks of NLP",
+    "hi": "2.7 NLP के मुख्य काम"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Task",
+        "What it does",
+        "Example"
+       ],
+       "hi": [
+        "काम",
+        "क्या करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Speech recognition (speech-to-text)",
+         "Turns spoken words into written text",
+         "Voice typing in Hindi on a phone keyboard; voice search"
+        ],
+        [
+         "Text-to-speech",
+         "Reads written text aloud in a human-like voice",
+         "Station announcements; screen readers for people who cannot see"
+        ],
+        [
+         "Machine translation",
+         "Translates text or speech from one language to another",
+         "Google Translate; Bhashini translating between Indian languages"
+        ],
+        [
+         "Chatbots and voice assistants",
+         "Hold a conversation, answer questions, do tasks",
+         "Bank or railway help chatbots; asking a voice assistant to set an alarm"
+        ],
+        [
+         "Sentiment analysis",
+         "Finds whether a text shows a positive, negative or neutral feeling",
+         "A company checking whether customer reviews are happy or angry"
+        ],
+        [
+         "Text classification",
+         "Puts text into groups",
+         "Spam vs not spam; sorting complaints into 'delivery', 'payment', 'quality'"
+        ],
+        [
+         "Summarisation",
+         "Makes a short version of a long text",
+         "A one-paragraph summary of a long news article"
+        ],
+        [
+         "Autocomplete and autocorrect",
+         "Predicts the next word or fixes spelling",
+         "Phone keyboard suggestions; search box suggestions"
+        ],
+        [
+         "Question answering and search",
+         "Finds the answer to a question from text",
+         "Search engines showing a direct answer"
+        ]
+       ],
+       "hi": [
+        [
+         "स्पीच रिकग्निशन (स्पीच-टू-टेक्स्ट)",
+         "बोले गए शब्दों को लिखे पाठ में बदलता है",
+         "फ़ोन कीबोर्ड पर हिंदी में वॉइस टाइपिंग; वॉइस सर्च"
+        ],
+        [
+         "टेक्स्ट-टू-स्पीच",
+         "लिखे पाठ को इंसान जैसी आवाज़ में पढ़कर सुनाता है",
+         "स्टेशन की घोषणाएँ; देख न सकने वालों के लिए स्क्रीन रीडर"
+        ],
+        [
+         "मशीन ट्रांसलेशन (अनुवाद)",
+         "पाठ या बोली को एक भाषा से दूसरी में बदलता है",
+         "Google Translate; भारतीय भाषाओं के बीच अनुवाद करता Bhashini"
+        ],
+        [
+         "चैटबॉट और वॉइस असिस्टेंट",
+         "बातचीत करते, प्रश्नों के उत्तर देते, काम करते हैं",
+         "बैंक या रेलवे के सहायता चैटबॉट; वॉइस असिस्टेंट से अलार्म लगवाना"
+        ],
+        [
+         "सेंटिमेंट एनालिसिस",
+         "पता लगाता है कि पाठ में सकारात्मक, नकारात्मक या तटस्थ भाव है",
+         "कंपनी जाँचती है कि ग्राहकों की समीक्षाएँ खुश हैं या नाराज़"
+        ],
+        [
+         "टेक्स्ट क्लासिफ़िकेशन",
+         "पाठ को समूहों में रखता है",
+         "स्पैम बनाम स्पैम नहीं; शिकायतों को 'डिलीवरी', 'भुगतान', 'गुणवत्ता' में छाँटना"
+        ],
+        [
+         "सारांश बनाना",
+         "लंबे पाठ का छोटा रूप बनाता है",
+         "लंबे समाचार लेख का एक अनुच्छेद का सारांश"
+        ],
+        [
+         "ऑटोकम्प्लीट और ऑटोकरेक्ट",
+         "अगले शब्द का अनुमान लगाता है या वर्तनी ठीक करता है",
+         "फ़ोन कीबोर्ड के सुझाव; सर्च बॉक्स के सुझाव"
+        ],
+        [
+         "प्रश्नोत्तर और खोज",
+         "पाठ से किसी प्रश्न का उत्तर ढूँढता है",
+         "सर्च इंजन सीधा उत्तर दिखाते हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a very simple sentiment checker in Python. It is rule-based: it counts happy words and unhappy words. Real sentiment models are trained on lakhs of labelled reviews and are much smarter, but the idea of turning words into a score is the same.",
+      "hi": "यहाँ Python में एक बहुत सरल सेंटिमेंट जाँचने वाला प्रोग्राम है। यह नियम-आधारित है: यह खुशी वाले और नाखुशी वाले शब्द गिनता है। असली सेंटिमेंट मॉडल लाखों लेबल वाली समीक्षाओं पर ट्रेन होते हैं और बहुत ज़्यादा समझदार होते हैं, पर शब्दों को एक स्कोर में बदलने का विचार वही है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "happy_words = [\"good\", \"great\", \"love\", \"tasty\", \"fast\", \"friendly\"]\nsad_words = [\"bad\", \"slow\", \"cold\", \"late\", \"rude\", \"dirty\"]\n\nreviews = [\n    \"The food was tasty and the staff were friendly\",\n    \"Delivery was late and the food was cold\",\n    \"Good taste but slow service\",\n]\n\nfor review in reviews:\n    words = review.lower().split()\n    score = 0\n    for w in words:\n        if w in happy_words:\n            score = score + 1\n        if w in sad_words:\n            score = score - 1\n    if score > 0:\n        mood = \"positive\"\n    elif score < 0:\n        mood = \"negative\"\n    else:\n        mood = \"neutral\"\n    print(review, \"->\", \"score\", score, \"->\", mood)",
+      "hi": "happy_words = [\"good\", \"great\", \"love\", \"tasty\", \"fast\", \"friendly\"]\nsad_words = [\"bad\", \"slow\", \"cold\", \"late\", \"rude\", \"dirty\"]\n\nreviews = [\n    \"The food was tasty and the staff were friendly\",\n    \"Delivery was late and the food was cold\",\n    \"Good taste but slow service\",\n]\n\nfor review in reviews:\n    words = review.lower().split()\n    score = 0\n    for w in words:\n        if w in happy_words:\n            score = score + 1\n        if w in sad_words:\n            score = score - 1\n    if score > 0:\n        mood = \"positive\"\n    elif score < 0:\n        mood = \"negative\"\n    else:\n        mood = \"neutral\"\n    print(review, \"->\", \"score\", score, \"->\", mood)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output:",
+      "hi": "आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "The food was tasty and the staff were friendly -> score 2 -> positive\nDelivery was late and the food was cold -> score -2 -> negative\nGood taste but slow service -> score 0 -> neutral",
+      "hi": "The food was tasty and the staff were friendly -> score 2 -> positive\nDelivery was late and the food was cold -> score -2 -> negative\nGood taste but slow service -> score 0 -> neutral"
+     }
+    },
+    {
+     "p": {
+      "en": "Look at the third review. A person can tell it is mixed: good taste but slow service. The program gave 0 (neutral), which is fair. But notice 'taste' did not count, because only 'tasty' was in the list. Also, a review like 'not good' would wrongly score +1 because the program ignores the word 'not'. This shows why language is hard for machines and why real NLP uses learning from many examples instead of short word lists.",
+      "hi": "तीसरी समीक्षा देखिए। व्यक्ति समझ सकता है कि यह मिली-जुली है: स्वाद अच्छा पर सेवा धीमी। प्रोग्राम ने 0 (तटस्थ) दिया, जो ठीक है। पर देखिए 'taste' नहीं गिना गया, क्योंकि सूची में केवल 'tasty' था। साथ ही 'not good' जैसी समीक्षा गलती से +1 पाएगी क्योंकि प्रोग्राम 'not' शब्द को अनदेखा करता है। इससे पता चलता है कि भाषा मशीनों के लिए कठिन क्यों है और असली NLP छोटी शब्द-सूचियों के बजाय कई उदाहरणों से सीखने का उपयोग क्यों करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.8 Why language is hard for machines, and AI for Indian languages",
+    "hi": "2.8 भाषा मशीनों के लिए कठिन क्यों है, और भारतीय भाषाओं के लिए AI"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "One word, many meanings: 'bat' can be a cricket bat or a flying animal; 'kal' in Hindi can mean yesterday or tomorrow. The machine must use context (the other words around it).",
+       "Same meaning, many ways: 'I'm hungry', 'I want to eat', 'Bhook lagi hai' all mean nearly the same.",
+       "Tone and sarcasm: 'Wah, kya baat hai, train phir se 3 ghante late!' uses praise words but the feeling is annoyed.",
+       "Mixed languages: Indians often mix Hindi and English in one sentence (Hinglish), or write Hindi in English letters.",
+       "Accents and dialects: the same language sounds different in Lucknow, Patna and Indore; background noise makes speech harder.",
+       "Many scripts: Devanagari, Bengali, Tamil, Gurmukhi, Odia and more, each needs its own handling.",
+       "Less data for some languages: there is a lot of online text in English but much less in some Indian languages, so models for them can be weaker."
+      ],
+      "hi": [
+       "एक शब्द, कई अर्थ: 'bat' क्रिकेट का बल्ला भी हो सकता है और उड़ने वाला जानवर भी; हिंदी में 'कल' का अर्थ बीता हुआ कल या आने वाला कल हो सकता है। मशीन को संदर्भ (आस-पास के दूसरे शब्द) का उपयोग करना पड़ता है।",
+       "एक अर्थ, कई तरीके: 'I'm hungry', 'मुझे खाना है', 'भूख लगी है' सबका अर्थ लगभग एक है।",
+       "लहजा और व्यंग्य: 'वाह, क्या बात है, ट्रेन फिर से 3 घंटे लेट!' में तारीफ़ के शब्द हैं पर भाव चिढ़ का है।",
+       "मिली-जुली भाषाएँ: भारतीय अक्सर एक वाक्य में हिंदी और अंग्रेज़ी मिलाते हैं (हिंग्लिश), या हिंदी को अंग्रेज़ी अक्षरों में लिखते हैं।",
+       "लहजे और बोलियाँ: एक ही भाषा लखनऊ, पटना और इंदौर में अलग सुनाई देती है; पृष्ठभूमि का शोर बोली को और कठिन बनाता है।",
+       "कई लिपियाँ: देवनागरी, बांग्ला, तमिल, गुरमुखी, ओड़िया और भी, हर एक को अलग तरह से संभालना पड़ता है।",
+       "कुछ भाषाओं के लिए कम डेटा: अंग्रेज़ी में बहुत सारा ऑनलाइन पाठ है पर कुछ भारतीय भाषाओं में बहुत कम, इसलिए उनके मॉडल कमज़ोर हो सकते हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "India has 22 languages listed in the Eighth Schedule of the Constitution and hundreds of other languages and dialects. To help everyone use digital services in their own language, the Government of India runs the Bhashini mission, which builds AI tools for translation, speech-to-text and text-to-speech in Indian languages. Similar tools let a farmer ask a question by voice in Kannada, or let a Bengali speaker read a Hindi notice. NLP can make technology friendlier for people who cannot read English, and even for people who cannot read at all.",
+      "hi": "भारत में संविधान की आठवीं अनुसूची में 22 भाषाएँ सूचीबद्ध हैं और सैकड़ों दूसरी भाषाएँ और बोलियाँ हैं। सबको अपनी भाषा में डिजिटल सेवाएँ उपयोग करने में मदद देने के लिए भारत सरकार Bhashini मिशन चलाती है, जो भारतीय भाषाओं में अनुवाद, स्पीच-टू-टेक्स्ट और टेक्स्ट-टू-स्पीच के लिए AI टूल बनाता है। ऐसे टूल किसी किसान को कन्नड़ में बोलकर प्रश्न पूछने देते हैं, या किसी बांग्ला भाषी को हिंदी सूचना पढ़ने देते हैं। NLP तकनीक को उन लोगों के लिए आसान बना सकता है जो अंग्रेज़ी नहीं पढ़ सकते, और उनके लिए भी जो बिल्कुल पढ़ नहीं सकते।"
+     }
+    },
+    {
+     "note": {
+      "en": "Chatbots and translators can make mistakes, especially with names, numbers, jokes and rare words. For anything important (medicine, money, exams), check with a trusted adult or an official source.",
+      "hi": "चैटबॉट और अनुवादक गलतियाँ कर सकते हैं, खासकर नामों, संख्याओं, मज़ाक और दुर्लभ शब्दों में। किसी भी ज़रूरी बात (दवा, पैसा, परीक्षा) के लिए किसी भरोसेमंद बड़े या आधिकारिक स्रोत से जाँच करें।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Why might a translation app translate 'Main kal aaunga' correctly but get confused by 'Kal maine bahut padhai ki'? What helps it decide?",
+       "hi": "अनुवाद ऐप 'मैं कल आऊँगा' का सही अनुवाद क्यों कर सकता है पर 'कल मैंने बहुत पढ़ाई की' में क्यों उलझ सकता है? उसे तय करने में क्या मदद करता है?"
+      },
+      "a": {
+       "en": "Step 1: 'kal' can mean tomorrow or yesterday.\nStep 2: In 'Main kal aaunga', the verb 'aaunga' (will come) is future tense, so kal = tomorrow.\nStep 3: In 'Kal maine bahut padhai ki', 'ki' (did) is past tense, so kal = yesterday.\nStep 4: A good model uses this context. If the model looks only at the word 'kal' it may guess wrongly. Context is the key.",
+       "hi": "चरण 1: 'कल' का अर्थ आने वाला कल या बीता हुआ कल हो सकता है।\nचरण 2: 'मैं कल आऊँगा' में क्रिया 'आऊँगा' भविष्य काल है, इसलिए कल = आने वाला कल (tomorrow)।\nचरण 3: 'कल मैंने बहुत पढ़ाई की' में 'की' भूतकाल है, इसलिए कल = बीता हुआ कल (yesterday)।\nचरण 4: अच्छा मॉडल यह संदर्भ उपयोग करता है। अगर मॉडल केवल 'कल' शब्द देखे तो गलत अनुमान लगा सकता है। संदर्भ ही कुंजी है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.9 Domains working together",
+    "hi": "2.9 डोमेन मिलकर काम करते हैं"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Real AI products often combine domains. When a system takes in more than one kind of data (for example a picture and a question in words), it is sometimes called multimodal AI.",
+      "hi": "असली AI उत्पाद अक्सर डोमेन मिलाते हैं। जब कोई सिस्टम एक से अधिक तरह का डेटा लेता है (जैसे एक चित्र और शब्दों में एक प्रश्न), तो उसे कभी-कभी मल्टीमोडल AI कहते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "System",
+        "Domains used",
+        "How"
+       ],
+       "hi": [
+        "सिस्टम",
+        "उपयोग हुए डोमेन",
+        "कैसे"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Google Lens translating a Tamil signboard",
+         "CV + NLP",
+         "CV (OCR) reads the letters; NLP translates them"
+        ],
+        [
+         "Voice assistant answering 'Will it rain today?'",
+         "NLP + Data",
+         "NLP understands the question; weather data gives the forecast; NLP speaks the answer"
+        ],
+        [
+         "Self-driving car research",
+         "CV + Data",
+         "Cameras detect lanes and people; sensor data predicts movement"
+        ],
+        [
+         "Crop-disease app with advice in Hindi",
+         "CV + Data + NLP",
+         "CV checks the leaf photo; data on weather and disease spread adds advice; NLP gives it in Hindi by voice"
+        ],
+        [
+         "Cricket broadcast",
+         "CV + Data",
+         "Ball-tracking cameras (CV) plus match statistics and win prediction (Data)"
+        ]
+       ],
+       "hi": [
+        [
+         "तमिल साइनबोर्ड का अनुवाद करता Google Lens",
+         "CV + NLP",
+         "CV (OCR) अक्षर पढ़ता है; NLP उनका अनुवाद करता है"
+        ],
+        [
+         "'क्या आज बारिश होगी?' का उत्तर देता वॉइस असिस्टेंट",
+         "NLP + डेटा",
+         "NLP प्रश्न समझता है; मौसम डेटा पूर्वानुमान देता है; NLP उत्तर बोलता है"
+        ],
+        [
+         "स्वचालित कार पर शोध",
+         "CV + डेटा",
+         "कैमरे लेन और लोगों को पहचानते हैं; सेंसर डेटा गति का अनुमान लगाता है"
+        ],
+        [
+         "हिंदी में सलाह देने वाला फसल-रोग ऐप",
+         "CV + डेटा + NLP",
+         "CV पत्ती की फ़ोटो जाँचता है; मौसम और रोग फैलने का डेटा सलाह जोड़ता है; NLP उसे हिंदी में बोलकर देता है"
+        ],
+        [
+         "क्रिकेट प्रसारण",
+         "CV + डेटा",
+         "गेंद-ट्रैकिंग कैमरे (CV) और मैच के आँकड़े व जीत का अनुमान (डेटा)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A student photographs an English notice and asks an app, by voice, 'Iska Hindi mein matlab batao'. List each step and the domain used.",
+       "hi": "एक विद्यार्थी अंग्रेज़ी सूचना की फ़ोटो लेता है और ऐप से बोलकर पूछता है 'इसका हिंदी में मतलब बताओ'। हर चरण और उपयोग हुआ डोमेन लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: speech recognition turns the spoken request into text (NLP).\nStep 2: NLU understands the intention: translate the notice into Hindi (NLP).\nStep 3: OCR reads the English text from the photo (CV).\nStep 4: machine translation turns it into Hindi (NLP).\nStep 5: text-to-speech reads the Hindi aloud, or it is shown on screen (NLP).\nSo the app uses both Computer Vision and NLP.",
+       "hi": "चरण 1: स्पीच रिकग्निशन बोले गए अनुरोध को पाठ में बदलता है (NLP)।\nचरण 2: NLU इरादा समझता है: सूचना का हिंदी में अनुवाद (NLP)।\nचरण 3: OCR फ़ोटो से अंग्रेज़ी पाठ पढ़ता है (CV)।\nचरण 4: मशीन ट्रांसलेशन उसे हिंदी में बदलता है (NLP)।\nचरण 5: टेक्स्ट-टू-स्पीच हिंदी को बोलकर सुनाता है, या वह स्क्रीन पर दिखता है (NLP)।\nइसलिए ऐप कंप्यूटर विज़न और NLP दोनों का उपयोग करता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.10 Activities",
+    "hi": "2.10 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (unplugged): Domain sorting game",
+       "hi": "गतिविधि 1 (बिना कंप्यूटर): डोमेन छाँटने का खेल"
+      },
+      "a": {
+       "en": "Aim: to recognise the domain of an AI application.\nYou need: 15 slips of paper, three boxes marked Data, CV and NLP.\nWhat to do: Write one AI use on each slip: face unlock, weather forecast, voice typing, number-plate camera, spam filter, cricket win predictor, Google Translate, QR scanner, Bhashini, crop-price prediction, chatbot, yoga posture app, sales forecast, OCR scanner, autocorrect. Students pick a slip, place it in a box and give a reason. Slips that need two domains go between boxes.\nWhat you observe: some uses clearly belong to one domain; many combine two.\nWhat it teaches: domains are decided by the kind of input data.",
+       "hi": "उद्देश्य: किसी AI उपयोग का डोमेन पहचानना।\nक्या चाहिए: कागज़ की 15 पर्चियाँ, डेटा, CV और NLP लिखे तीन डिब्बे।\nक्या करें: हर पर्ची पर एक AI उपयोग लिखिए: फ़ेस अनलॉक, मौसम पूर्वानुमान, वॉइस टाइपिंग, नंबर-प्लेट कैमरा, स्पैम फ़िल्टर, क्रिकेट विन प्रेडिक्टर, Google Translate, QR स्कैनर, Bhashini, फसल-मूल्य अनुमान, चैटबॉट, योग मुद्रा ऐप, बिक्री पूर्वानुमान, OCR स्कैनर, ऑटोकरेक्ट। विद्यार्थी पर्ची उठाकर डिब्बे में रखें और कारण बताएँ। दो डोमेन वाली पर्चियाँ डिब्बों के बीच रखें।\nक्या देखेंगे: कुछ उपयोग साफ़ तौर पर एक डोमेन के हैं; कई दो को मिलाते हैं।\nक्या सिखाती है: डोमेन इनपुट डेटा के प्रकार से तय होते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (unplugged): Pixel art on grid paper",
+       "hi": "गतिविधि 2 (बिना कंप्यूटर): ग्रिड पेपर पर पिक्सेल आर्ट"
+      },
+      "a": {
+       "en": "Aim: to understand that pictures are numbers.\nYou need: grid (graph) paper, a pencil, a partner.\nWhat to do: Draw a 8 × 8 grid. Secretly shade squares to make a simple shape (a heart, a letter, a house). Then write the picture as 8 rows of 0s and 1s and give only the numbers to your partner. Your partner shades the grid using the numbers.\nWhat you observe: your partner recreates your picture exactly, without seeing it.\nWhat it teaches: a computer stores images as pixel numbers, and CV works by finding patterns in those numbers.",
+       "hi": "उद्देश्य: समझना कि चित्र संख्याएँ हैं।\nक्या चाहिए: ग्रिड (ग्राफ़) पेपर, पेंसिल, एक साथी।\nक्या करें: 8 × 8 का ग्रिड बनाइए। चुपके से कुछ वर्ग भरकर एक सरल आकृति बनाइए (दिल, कोई अक्षर, घर)। फिर चित्र को 0 और 1 की 8 पंक्तियों में लिखिए और केवल संख्याएँ साथी को दीजिए। साथी संख्याओं से ग्रिड भरे।\nक्या देखेंगे: साथी बिना देखे आपका चित्र ठीक वैसा ही बना लेता है।\nक्या सिखाती है: कंप्यूटर चित्रों को पिक्सेल संख्याओं के रूप में रखता है, और CV उन संख्याओं में पैटर्न ढूँढकर काम करता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (screen): Quick, Draw! and AutoDraw",
+       "hi": "गतिविधि 3 (स्क्रीन): Quick, Draw! और AutoDraw"
+      },
+      "a": {
+       "en": "Aim: to see a computer vision model guess drawings.\nYou need: a phone or computer with a browser; the free Google websites Quick, Draw! and AutoDraw (no sign-up needed). An adult should supervise.\nWhat to do: In Quick, Draw! the computer gives you a word and 20 seconds to draw it; it tries to guess while you draw. Note which drawings it guessed fast and which it missed. In AutoDraw, scribble a shape and see the drawing suggestions it offers.\nWhat you observe: it guesses common, simple drawings quickly; strange or incomplete drawings confuse it.\nWhat it teaches: the model learned from millions of drawings by other people; it recognises patterns it has seen often.",
+       "hi": "उद्देश्य: कंप्यूटर विज़न मॉडल को चित्रों का अनुमान लगाते देखना।\nक्या चाहिए: ब्राउज़र वाला फ़ोन या कंप्यूटर; Google की मुफ़्त वेबसाइटें Quick, Draw! और AutoDraw (साइन-अप की ज़रूरत नहीं)। कोई बड़ा व्यक्ति साथ रहे।\nक्या करें: Quick, Draw! में कंप्यूटर एक शब्द और उसे बनाने के लिए 20 सेकंड देता है; आप बनाते हैं तो वह अनुमान लगाता है। लिखिए किन चित्रों को उसने जल्दी पहचाना और किनमें चूका। AutoDraw में कोई आकृति खींचिए और उसके दिए चित्र-सुझाव देखिए।\nक्या देखेंगे: वह आम, सरल चित्र जल्दी पहचानता है; अजीब या अधूरे चित्र उसे भ्रमित करते हैं।\nक्या सिखाती है: मॉडल ने दूसरे लोगों के लाखों चित्रों से सीखा है; वह वे पैटर्न पहचानता है जो उसने अक्सर देखे हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4 (screen): Voice typing and translation test",
+       "hi": "गतिविधि 4 (स्क्रीन): वॉइस टाइपिंग और अनुवाद की जाँच"
+      },
+      "a": {
+       "en": "Aim: to test NLP tools in Indian languages.\nYou need: a phone with a keyboard that has a microphone button, and a free translation app.\nWhat to do: Speak five sentences in Hindi or your home language using voice typing: one simple, one with a name, one with numbers, one in Hinglish, one spoken fast. Count the mistakes. Then translate a short sentence to English and back to Hindi.\nWhat you observe: simple sentences work well; names, mixed language, noise and speed cause mistakes; back-translation may change the meaning slightly.\nWhat it teaches: speech recognition and translation are NLP tasks; they are useful but not perfect, so we must check.",
+       "hi": "उद्देश्य: भारतीय भाषाओं में NLP टूल की जाँच करना।\nक्या चाहिए: माइक्रोफ़ोन बटन वाले कीबोर्ड वाला फ़ोन, और एक मुफ़्त अनुवाद ऐप।\nक्या करें: वॉइस टाइपिंग से हिंदी या अपनी घर की भाषा में पाँच वाक्य बोलिए: एक सरल, एक किसी नाम के साथ, एक संख्याओं के साथ, एक हिंग्लिश में, एक तेज़ी से बोला। गलतियाँ गिनिए। फिर एक छोटे वाक्य का अंग्रेज़ी में और वापस हिंदी में अनुवाद कीजिए।\nक्या देखेंगे: सरल वाक्य अच्छे चलते हैं; नाम, मिली भाषा, शोर और गति से गलतियाँ होती हैं; वापस अनुवाद में अर्थ थोड़ा बदल सकता है।\nक्या सिखाती है: स्पीच रिकग्निशन और अनुवाद NLP के काम हैं; ये उपयोगी हैं पर पूरी तरह सही नहीं, इसलिए जाँचना चाहिए।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 5 (unplugged): Class data survey",
+       "hi": "गतिविधि 5 (बिना कंप्यूटर): कक्षा का डेटा सर्वे"
+      },
+      "a": {
+       "en": "Aim: to practise the Data Science steps.\nYou need: a notebook, chart paper, coloured pens.\nWhat to do: Ask every classmate: 'How do you come to school?' (walk, cycle, bus, auto, car). Collect the answers (collect), check for repeats or unclear answers (clean), make a tally table and a bar graph (visualise), find the most and least common mode (analyse), and suggest one idea, such as a cycle stand or a safe crossing (decide).\nWhat it teaches: the full data journey from collecting to deciding.",
+       "hi": "उद्देश्य: डेटा साइंस के चरणों का अभ्यास करना।\nक्या चाहिए: नोटबुक, चार्ट पेपर, रंगीन पेन।\nक्या करें: हर सहपाठी से पूछिए: 'आप स्कूल कैसे आते हैं?' (पैदल, साइकिल, बस, ऑटो, कार)। उत्तर इकट्ठा कीजिए (इकट्ठा करना), दोहराव या अस्पष्ट उत्तर जाँचिए (साफ़ करना), मिलान-चिह्न तालिका और बार ग्राफ़ बनाइए (चित्रण), सबसे ज़्यादा और सबसे कम आम साधन ढूँढिए (विश्लेषण), और एक सुझाव दीजिए, जैसे साइकिल स्टैंड या सुरक्षित क्रॉसिंग (निर्णय)।\nक्या सिखाती है: इकट्ठा करने से निर्णय तक डेटा की पूरी यात्रा।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking each AI product uses only one domain. Fix: many products combine Data, CV and NLP.",
+   "Confusing face detection with face recognition. Fix: detection finds a face; recognition says whose face it is.",
+   "Confusing image classification with object detection. Fix: classification gives one label for the whole image; detection finds and boxes many objects.",
+   "Thinking NLP is only about text. Fix: NLP handles speech too (speech-to-text, text-to-speech).",
+   "Mixing up NLU and NLG. Fix: NLU understands meaning (input side); NLG produces sentences (output side).",
+   "Calling a photo 'structured data'. Fix: photos, audio and video are unstructured; tables are structured.",
+   "Believing a translation or chatbot answer is always correct. Fix: check important answers with a trusted source.",
+   "Thinking two things that rise together must cause each other. Fix: correlation is not cause; look for the real reason."
+  ],
+  "hi": [
+   "यह सोचना कि हर AI उत्पाद केवल एक डोमेन उपयोग करता है। सुधार: कई उत्पाद डेटा, CV और NLP को मिलाते हैं।",
+   "फ़ेस डिटेक्शन और फ़ेस रिकग्निशन को एक समझना। सुधार: डिटेक्शन चेहरा ढूँढता है; रिकग्निशन बताता है कि चेहरा किसका है।",
+   "इमेज क्लासिफ़िकेशन को ऑब्जेक्ट डिटेक्शन समझना। सुधार: क्लासिफ़िकेशन पूरे चित्र को एक लेबल देता है; डिटेक्शन कई वस्तुएँ ढूँढकर डिब्बे बनाता है।",
+   "यह सोचना कि NLP केवल पाठ के बारे में है। सुधार: NLP बोली भी संभालता है (स्पीच-टू-टेक्स्ट, टेक्स्ट-टू-स्पीच)।",
+   "NLU और NLG को मिला देना। सुधार: NLU अर्थ समझता है (इनपुट की ओर); NLG वाक्य बनाता है (आउटपुट की ओर)।",
+   "फ़ोटो को 'संरचित डेटा' कहना। सुधार: फ़ोटो, ऑडियो और वीडियो असंरचित हैं; तालिकाएँ संरचित हैं।",
+   "यह मानना कि अनुवाद या चैटबॉट का उत्तर हमेशा सही है। सुधार: ज़रूरी उत्तर किसी भरोसेमंद स्रोत से जाँचें।",
+   "यह सोचना कि साथ-साथ बढ़ने वाली दो चीज़ें एक-दूसरे का कारण हैं। सुधार: साथ बदलना कारण नहीं है; असली कारण खोजें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Domain of AI",
+    "hi": "AI का डोमेन"
+   },
+   "d": {
+    "en": "A main area of AI, grouped by the kind of data it works with.",
+    "hi": "AI का मुख्य क्षेत्र, इस आधार पर कि वह किस तरह के डेटा से काम करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data Science",
+    "hi": "डेटा साइंस"
+   },
+   "d": {
+    "en": "The domain that collects, cleans, analyses and visualises data to find patterns and predict.",
+    "hi": "वह डोमेन जो पैटर्न ढूँढने और भविष्यवाणी के लिए डेटा इकट्ठा, साफ़, विश्लेषित और चित्रित करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Structured data",
+    "hi": "संरचित डेटा"
+   },
+   "d": {
+    "en": "Data neatly arranged in rows and columns.",
+    "hi": "पंक्तियों और स्तंभों में व्यवस्थित डेटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unstructured data",
+    "hi": "असंरचित डेटा"
+   },
+   "d": {
+    "en": "Data without a table format, such as images, audio and free text.",
+    "hi": "बिना तालिका ढाँचे का डेटा, जैसे चित्र, ऑडियो और खुला पाठ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Big data",
+    "hi": "बिग डेटा"
+   },
+   "d": {
+    "en": "Huge, fast-arriving, varied data (volume, velocity, variety).",
+    "hi": "विशाल, तेज़ी से आने वाला, विविध डेटा (वॉल्यूम, वेलोसिटी, वैरायटी)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data visualisation",
+    "hi": "डेटा विज़ुअलाइज़ेशन"
+   },
+   "d": {
+    "en": "Showing data as charts and graphs to see patterns quickly.",
+    "hi": "पैटर्न जल्दी देखने के लिए डेटा को चार्ट और ग्राफ़ के रूप में दिखाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Computer Vision",
+    "hi": "कंप्यूटर विज़न"
+   },
+   "d": {
+    "en": "The domain that helps computers understand images and videos.",
+    "hi": "वह डोमेन जो कंप्यूटरों को चित्र और वीडियो समझने में मदद करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pixel",
+    "hi": "पिक्सेल"
+   },
+   "d": {
+    "en": "The smallest square of a digital image, stored as numbers.",
+    "hi": "डिजिटल चित्र का सबसे छोटा वर्ग, जो संख्याओं के रूप में रखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "RGB",
+    "hi": "RGB"
+   },
+   "d": {
+    "en": "Red, green and blue values that together make the colour of a pixel.",
+    "hi": "लाल, हरे और नीले मान जो मिलकर पिक्सेल का रंग बनाते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image classification",
+    "hi": "इमेज क्लासिफ़िकेशन"
+   },
+   "d": {
+    "en": "Giving one label to a whole image.",
+    "hi": "पूरे चित्र को एक लेबल देना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Object detection",
+    "hi": "ऑब्जेक्ट डिटेक्शन"
+   },
+   "d": {
+    "en": "Finding objects in an image and marking where each one is.",
+    "hi": "चित्र में वस्तुएँ ढूँढना और बताना कि हर एक कहाँ है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Face recognition",
+    "hi": "फ़ेस रिकग्निशन"
+   },
+   "d": {
+    "en": "Identifying a person from their face.",
+    "hi": "चेहरे से व्यक्ति की पहचान करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "OCR",
+    "hi": "OCR"
+   },
+   "d": {
+    "en": "Optical Character Recognition: reading text from images.",
+    "hi": "ऑप्टिकल कैरेक्टर रिकग्निशन: चित्रों से पाठ पढ़ना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image segmentation",
+    "hi": "इमेज सेगमेंटेशन"
+   },
+   "d": {
+    "en": "Labelling every pixel of an image by what it belongs to.",
+    "hi": "चित्र के हर पिक्सेल को इस आधार पर लेबल देना कि वह किसका हिस्सा है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Content-based image retrieval",
+    "hi": "कंटेंट-बेस्ड इमेज रिट्रीवल"
+   },
+   "d": {
+    "en": "Searching for similar images using an image instead of words.",
+    "hi": "शब्दों के बजाय चित्र से मिलते-जुलते चित्र खोजना।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLP",
+    "hi": "NLP"
+   },
+   "d": {
+    "en": "Natural Language Processing: helping computers work with human language.",
+    "hi": "नेचुरल लैंग्वेज प्रोसेसिंग: कंप्यूटरों को मानव भाषा से काम करने में मदद।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLU",
+    "hi": "NLU"
+   },
+   "d": {
+    "en": "Natural Language Understanding: working out meaning and intention.",
+    "hi": "नेचुरल लैंग्वेज अंडरस्टैंडिंग: अर्थ और इरादा समझना।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLG",
+    "hi": "NLG"
+   },
+   "d": {
+    "en": "Natural Language Generation: producing sentences in human language.",
+    "hi": "नेचुरल लैंग्वेज जनरेशन: मानव भाषा में वाक्य बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Token / tokenisation",
+    "hi": "टोकन / टोकनाइज़ेशन"
+   },
+   "d": {
+    "en": "Breaking text into small pieces (tokens) such as words.",
+    "hi": "पाठ को शब्दों जैसे छोटे टुकड़ों (टोकन) में तोड़ना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sentiment analysis",
+    "hi": "सेंटिमेंट एनालिसिस"
+   },
+   "d": {
+    "en": "Finding whether a text is positive, negative or neutral.",
+    "hi": "पता लगाना कि पाठ सकारात्मक, नकारात्मक या तटस्थ है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine translation",
+    "hi": "मशीन ट्रांसलेशन"
+   },
+   "d": {
+    "en": "Automatic translation from one language to another.",
+    "hi": "एक भाषा से दूसरी में स्वचालित अनुवाद।"
+   }
+  },
+  {
+   "t": {
+    "en": "Chatbot",
+    "hi": "चैटबॉट"
+   },
+   "d": {
+    "en": "A program that holds a conversation in text or voice.",
+    "hi": "ऐसा प्रोग्राम जो पाठ या आवाज़ में बातचीत करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bhashini",
+    "hi": "Bhashini (भाषिणी)"
+   },
+   "d": {
+    "en": "Government of India mission building AI language tools for Indian languages.",
+    "hi": "भारत सरकार का मिशन जो भारतीय भाषाओं के लिए AI भाषा टूल बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Multimodal AI",
+    "hi": "मल्टीमोडल AI"
+   },
+   "d": {
+    "en": "AI that takes in more than one kind of data, such as images and text.",
+    "hi": "ऐसा AI जो एक से अधिक तरह का डेटा लेता है, जैसे चित्र और पाठ।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which domain does face unlock belong to? (a) Data (b) Computer Vision (c) NLP (d) none",
+    "hi": "MCQ: फ़ेस अनलॉक किस डोमेन का है? (a) डेटा (b) कंप्यूटर विज़न (c) NLP (d) कोई नहीं"
+   },
+   "a": {
+    "en": "(b) Computer Vision, because the input is an image of the face.",
+    "hi": "(b) कंप्यूटर विज़न, क्योंकि इनपुट चेहरे का चित्र है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is structured data? (a) a voice note (b) a selfie (c) a railway timetable (d) a video",
+    "hi": "MCQ: इनमें से कौन संरचित डेटा है? (a) वॉइस नोट (b) सेल्फ़ी (c) रेलवे समय सारणी (d) वीडियो"
+   },
+   "a": {
+    "en": "(c) a railway timetable (rows and columns).",
+    "hi": "(c) रेलवे समय सारणी (पंक्तियाँ और स्तंभ)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The smallest square of a digital image is called a ______.",
+    "hi": "रिक्त स्थान भरिए: डिजिटल चित्र का सबसे छोटा वर्ग ______ कहलाता है।"
+   },
+   "a": {
+    "en": "pixel.",
+    "hi": "पिक्सेल।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The part of NLP that produces sentences is called ______.",
+    "hi": "रिक्त स्थान भरिए: NLP का वह भाग जो वाक्य बनाता है ______ कहलाता है।"
+   },
+   "a": {
+    "en": "NLG (Natural Language Generation).",
+    "hi": "NLG (नेचुरल लैंग्वेज जनरेशन)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: NLP works only with written text, not speech.",
+    "hi": "सही या गलत: NLP केवल लिखे पाठ से काम करता है, बोली से नहीं।"
+   },
+   "a": {
+    "en": "False. NLP also does speech-to-text and text-to-speech.",
+    "hi": "गलत। NLP स्पीच-टू-टेक्स्ट और टेक्स्ट-टू-स्पीच भी करता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: OCR is a Computer Vision task.",
+    "hi": "सही या गलत: OCR कंप्यूटर विज़न का काम है।"
+   },
+   "a": {
+    "en": "True. It reads text from an image.",
+    "hi": "सही। यह चित्र से पाठ पढ़ता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the three main domains of AI.",
+    "hi": "AI के तीन मुख्य डोमेन के नाम बताइए।"
+   },
+   "a": {
+    "en": "Data (Data Science), Computer Vision and Natural Language Processing.",
+    "hi": "डेटा (डेटा साइंस), कंप्यूटर विज़न और नेचुरल लैंग्वेज प्रोसेसिंग।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What are the three Vs of big data? Give an Indian example for each.",
+    "hi": "बिग डेटा के तीन V क्या हैं? हर एक का भारतीय उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Volume: crores of UPI payments every day.\nVelocity: live locations of lakhs of phones on Google Maps every second.\nVariety: social media has text, photos, videos and voice notes.",
+    "hi": "वॉल्यूम: हर दिन करोड़ों UPI भुगतान।\nवेलोसिटी: हर सेकंड Google Maps पर लाखों फ़ोनों की लाइव लोकेशन।\nवैरायटी: सोशल मीडिया में पाठ, फ़ोटो, वीडियो और वॉइस नोट होते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List the five steps of Data Science in order.",
+    "hi": "डेटा साइंस के पाँच चरण क्रम से लिखिए।"
+   },
+   "a": {
+    "en": "Collect → Clean → Explore and visualise → Analyse and predict → Decide.",
+    "hi": "इकट्ठा करना → साफ़ करना → खोजबीन और चित्रण → विश्लेषण और भविष्यवाणी → निर्णय।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which chart would you use? (a) a city's temperature each month of a year (b) how a family spends its monthly income (c) runs scored by five batters",
+    "hi": "आप कौन-सा चार्ट उपयोग करेंगे? (a) साल के हर महीने किसी शहर का तापमान (b) परिवार अपनी मासिक आय कैसे खर्च करता है (c) पाँच बल्लेबाज़ों के रन"
+   },
+   "a": {
+    "en": "(a) Line graph (change over time).\n(b) Pie chart (parts of a whole).\n(c) Bar graph (comparing groups).",
+    "hi": "(a) रेखा ग्राफ़ (समय के साथ बदलाव)।\n(b) पाई चार्ट (पूरे के हिस्से)।\n(c) बार ग्राफ़ (समूहों की तुलना)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the difference between image classification and object detection with an example.",
+    "hi": "इमेज क्लासिफ़िकेशन और ऑब्जेक्ट डिटेक्शन का अंतर उदाहरण सहित समझाइए।"
+   },
+   "a": {
+    "en": "Image classification gives one label for the whole image, e.g. 'this photo shows a street'. Object detection finds each object and its position, e.g. boxes around 3 cars, 2 autos and 5 people in the same street photo.",
+    "hi": "इमेज क्लासिफ़िकेशन पूरे चित्र को एक लेबल देता है, जैसे 'यह फ़ोटो एक सड़क की है'। ऑब्जेक्ट डिटेक्शन हर वस्तु और उसकी जगह ढूँढता है, जैसे उसी सड़क की फ़ोटो में 3 कारों, 2 ऑटो और 5 लोगों के चारों ओर डिब्बे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give three reasons why language is hard for machines.",
+    "hi": "भाषा मशीनों के लिए कठिन क्यों है, तीन कारण दीजिए।"
+   },
+   "a": {
+    "en": "1. One word can have many meanings (kal = yesterday/tomorrow).\n2. Sarcasm and tone can reverse the meaning.\n3. People mix languages (Hinglish), use different accents and dialects, and some languages have less data.",
+    "hi": "1. एक शब्द के कई अर्थ हो सकते हैं (कल = बीता/आने वाला)।\n2. व्यंग्य और लहजा अर्थ उलट सकते हैं।\n3. लोग भाषाएँ मिलाते हैं (हिंग्लिश), अलग लहजे और बोलियाँ उपयोग करते हैं, और कुछ भाषाओं का डेटा कम है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is Bhashini and why is it useful for India?",
+    "hi": "Bhashini क्या है और यह भारत के लिए उपयोगी क्यों है?"
+   },
+   "a": {
+    "en": "Bhashini is a Government of India mission that builds AI tools for translation, speech-to-text and text-to-speech in Indian languages. It helps people use digital services in their own language, including those who do not know English or cannot read.",
+    "hi": "Bhashini भारत सरकार का एक मिशन है जो भारतीय भाषाओं में अनुवाद, स्पीच-टू-टेक्स्ट और टेक्स्ट-टू-स्पीच के लिए AI टूल बनाता है। यह लोगों को अपनी भाषा में डिजिटल सेवाएँ उपयोग करने में मदद करता है, उनको भी जो अंग्रेज़ी नहीं जानते या पढ़ नहीं सकते।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In the sentiment program of section 2.7, what score would 'The service was slow and the room was dirty' get? Show working.",
+    "hi": "खंड 2.7 के सेंटिमेंट प्रोग्राम में 'The service was slow and the room was dirty' का स्कोर क्या होगा? हल दिखाइए।"
+   },
+   "a": {
+    "en": "Happy words: none → +0.\nSad words: 'slow' (−1) and 'dirty' (−1) → −2.\nScore = −2, which is less than 0, so the mood is 'negative'.",
+    "hi": "खुशी वाले शब्द: कोई नहीं → +0।\nनाखुशी वाले शब्द: 'slow' (−1) और 'dirty' (−1) → −2।\nस्कोर = −2, जो 0 से कम है, इसलिए मूड 'negative' है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the CV or NLP task: (a) yoga app checks your knee position (b) keyboard suggests the next word (c) a shopping app finds shoes like your photo.",
+    "hi": "CV या NLP का काम बताइए: (a) योग ऐप आपके घुटने की स्थिति जाँचता है (b) कीबोर्ड अगला शब्द सुझाता है (c) शॉपिंग ऐप आपकी फ़ोटो जैसे जूते ढूँढता है।"
+   },
+   "a": {
+    "en": "(a) Pose estimation (CV).\n(b) Autocomplete / next-word prediction (NLP).\n(c) Content-based image retrieval (CV).",
+    "hi": "(a) पोज़ एस्टिमेशन (CV)।\n(b) ऑटोकम्प्लीट / अगले शब्द का अनुमान (NLP)।\n(c) कंटेंट-बेस्ड इमेज रिट्रीवल (CV)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "The sentiment program gives 'The food was not good' a positive score. Explain why, and suggest an improvement.",
+    "hi": "सेंटिमेंट प्रोग्राम 'The food was not good' को सकारात्मक स्कोर देता है। कारण बताइए और सुधार सुझाइए।"
+   },
+   "a": {
+    "en": "Why: it only counts words from the lists. 'good' is a happy word (+1), and 'not' is ignored, so the score is +1 (positive), though the real feeling is negative.\nImprovement: if 'not' comes just before a happy word, subtract instead of adding (and vice versa). Better still, train a model on many labelled reviews so it learns such patterns itself.",
+    "hi": "कारण: यह केवल सूचियों के शब्द गिनता है। 'good' खुशी वाला शब्द है (+1), और 'not' अनदेखा होता है, इसलिए स्कोर +1 (सकारात्मक) है, जबकि असली भाव नकारात्मक है।\nसुधार: अगर 'not' किसी खुशी वाले शब्द के ठीक पहले आए तो जोड़ने के बजाय घटाएँ (और उल्टा भी)। उससे भी अच्छा, कई लेबल वाली समीक्षाओं पर मॉडल ट्रेन करें ताकि वह ऐसे पैटर्न खुद सीखे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe the five steps by which a Computer Vision system recognises a vehicle number plate at a toll plaza.",
+    "hi": "दीर्घ उत्तर: बताइए कि कंप्यूटर विज़न सिस्टम टोल प्लाज़ा पर गाड़ी की नंबर प्लेट किन पाँच चरणों में पहचानता है।"
+   },
+   "a": {
+    "en": "1. Input: a camera captures an image of the vehicle.\n2. Pre-processing: the image is brightened, sharpened and resized; glare or night darkness is reduced.\n3. Feature extraction / detection: the system finds the rectangular plate area using edges and shape (object detection).\n4. Recognition: OCR reads each letter and number on the plate.\n5. Output: the number is matched with records to charge the toll or open the gate.\nProblems can come from dirt on the plate, rain, fancy fonts or fast movement, so a person checks unclear cases.",
+    "hi": "1. इनपुट: कैमरा गाड़ी का चित्र लेता है।\n2. प्री-प्रोसेसिंग: चित्र की चमक, तीक्ष्णता और आकार ठीक किए जाते हैं; चकाचौंध या रात का अँधेरा कम किया जाता है।\n3. फ़ीचर निकालना / डिटेक्शन: सिस्टम किनारों और आकार से प्लेट का आयताकार हिस्सा ढूँढता है (ऑब्जेक्ट डिटेक्शन)।\n4. पहचान: OCR प्लेट के हर अक्षर और अंक को पढ़ता है।\n5. आउटपुट: नंबर का रिकॉर्ड से मिलान करके टोल लिया जाता है या गेट खुलता है।\nप्लेट पर गंदगी, बारिश, फ़ैंसी अक्षर या तेज़ गति से समस्या हो सकती है, इसलिए अस्पष्ट मामलों को कोई व्यक्ति जाँचता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A city wants to reduce traffic jams near schools. Explain how all three domains of AI could help.",
+    "hi": "केस स्टडी: एक शहर स्कूलों के पास ट्रैफ़िक जाम कम करना चाहता है। बताइए AI के तीनों डोमेन कैसे मदद कर सकते हैं।"
+   },
+   "a": {
+    "en": "Computer Vision: cameras count vehicles and detect jams, wrong parking and children crossing.\nData: past traffic data by time and day shows when jams happen (for example 7:30 to 8:00 am); models predict tomorrow's rush and suggest signal timings or staggered school timings.\nNLP: a multilingual chatbot or voice alerts tell parents about jams and suggest drop-off times in their language.\nTogether they help planners decide, while traffic police still make the final decisions.",
+    "hi": "कंप्यूटर विज़न: कैमरे गाड़ियाँ गिनते हैं और जाम, गलत पार्किंग और सड़क पार करते बच्चों को पहचानते हैं।\nडेटा: समय और दिन के अनुसार पुराना ट्रैफ़िक डेटा बताता है कि जाम कब लगता है (जैसे सुबह 7:30 से 8:00); मॉडल कल की भीड़ का अनुमान लगाकर सिग्नल समय या स्कूलों के अलग-अलग समय सुझाते हैं।\nNLP: बहुभाषी चैटबॉट या वॉइस अलर्ट अभिभावकों को उनकी भाषा में जाम के बारे में बताते और छोड़ने का समय सुझाते हैं।\nमिलकर ये योजनाकारों को निर्णय लेने में मदद करते हैं, जबकि अंतिम निर्णय ट्रैफ़िक पुलिस ही लेती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Why should face recognition be used carefully? Give two reasons.",
+    "hi": "सोचने वाला प्रश्न: फ़ेस रिकग्निशन का उपयोग सावधानी से क्यों करना चाहिए? दो कारण दीजिए।"
+   },
+   "a": {
+    "en": "1. Privacy: a face is very personal data; people should know and agree before their face is stored or used.\n2. Mistakes and unfairness: if trained on unbalanced data, it can wrongly identify some groups more often, which may cause harm. A human should check important decisions.",
+    "hi": "1. निजता: चेहरा बहुत निजी डेटा है; चेहरा रखने या उपयोग करने से पहले लोगों को पता होना और उनकी सहमति होनी चाहिए।\n2. गलतियाँ और अन्याय: असंतुलित डेटा पर ट्रेन होने पर यह कुछ समूहों को अधिक बार गलत पहचान सकता है, जिससे नुकसान हो सकता है। ज़रूरी निर्णय किसी इंसान को जाँचने चाहिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: In Quick, Draw!, the computer failed to recognise your drawing of a 'rickshaw'. Give two possible reasons using what you learned about training data.",
+    "hi": "गतिविधि प्रश्न: Quick, Draw! में कंप्यूटर आपके 'रिक्शा' के चित्र को नहीं पहचान पाया। ट्रेनिंग डेटा के बारे में जो सीखा उसके आधार पर दो संभावित कारण दीजिए।"
+   },
+   "a": {
+    "en": "1. The model may have very few or no rickshaw drawings in its training data, so it never learned that pattern.\n2. Your drawing may look different from the way most people drew it (for example from an unusual angle or unfinished in 20 seconds), so it does not match the learned pattern.",
+    "hi": "1. मॉडल के ट्रेनिंग डेटा में रिक्शा के चित्र बहुत कम या बिल्कुल न हों, इसलिए उसने वह पैटर्न कभी सीखा ही नहीं।\n2. आपका चित्र ज़्यादातर लोगों के बनाए चित्रों से अलग दिख सकता है (जैसे अजीब कोण से या 20 सेकंड में अधूरा), इसलिए यह सीखे गए पैटर्न से मेल नहीं खाता।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain tokenisation using the sentence 'Aaj school band hai'.",
+    "hi": "वाक्य 'आज स्कूल बंद है' से टोकनाइज़ेशन समझाइए।"
+   },
+   "a": {
+    "en": "Tokenisation breaks the sentence into small pieces called tokens: 'Aaj' | 'school' | 'band' | 'hai'. The computer then finds roles (Aaj = time, school = place/thing, band = state) and turns tokens into numbers for the model.",
+    "hi": "टोकनाइज़ेशन वाक्य को टोकन नाम के छोटे टुकड़ों में तोड़ता है: 'आज' | 'स्कूल' | 'बंद' | 'है'। फिर कंप्यूटर भूमिकाएँ ढूँढता है (आज = समय, स्कूल = जगह/चीज़, बंद = स्थिति) और मॉडल के लिए टोकनों को संख्याओं में बदलता है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "AI has three main domains, divided by input type: Data (numbers and tables), Computer Vision (images and video) and NLP (text and speech).",
+   "Structured data sits in rows and columns; unstructured data includes photos, audio, video and free text.",
+   "Big data is described by volume, velocity and variety.",
+   "Data Science steps: collect, clean, explore and visualise, analyse and predict, decide.",
+   "Bar graphs compare groups, line graphs show change over time, pie charts show parts of a whole.",
+   "To a computer an image is a grid of pixel numbers; CV finds patterns in these numbers.",
+   "CV tasks: classification, object detection, face detection/recognition, OCR, segmentation, image search, tracking, pose estimation.",
+   "NLP has two parts: NLU (understanding) and NLG (generating).",
+   "NLP tasks: speech-to-text, text-to-speech, translation, chatbots, sentiment analysis, text classification, summarising, autocomplete.",
+   "Language is hard for machines because of many meanings, context, sarcasm, mixed languages, accents and less data for some languages.",
+   "Bhashini is India's mission for AI tools in Indian languages.",
+   "Many real systems combine domains (multimodal AI), such as Google Lens translation or a crop-disease app with voice advice.",
+   "All domains can make mistakes; privacy, fairness and checking answers always matter."
+  ],
+  "hi": [
+   "AI के तीन मुख्य डोमेन हैं, जो इनपुट के प्रकार से बँटे हैं: डेटा (संख्याएँ और तालिकाएँ), कंप्यूटर विज़न (चित्र और वीडियो) और NLP (पाठ और बोली)।",
+   "संरचित डेटा पंक्तियों और स्तंभों में होता है; असंरचित डेटा में फ़ोटो, ऑडियो, वीडियो और खुला पाठ आते हैं।",
+   "बिग डेटा को वॉल्यूम, वेलोसिटी और वैरायटी से बताया जाता है।",
+   "डेटा साइंस के चरण: इकट्ठा करना, साफ़ करना, खोजबीन और चित्रण, विश्लेषण और भविष्यवाणी, निर्णय।",
+   "बार ग्राफ़ समूहों की तुलना करते हैं, रेखा ग्राफ़ समय के साथ बदलाव दिखाते हैं, पाई चार्ट पूरे के हिस्से दिखाते हैं।",
+   "कंप्यूटर के लिए चित्र पिक्सेल संख्याओं का जाल है; CV इन संख्याओं में पैटर्न ढूँढता है।",
+   "CV के काम: क्लासिफ़िकेशन, ऑब्जेक्ट डिटेक्शन, फ़ेस डिटेक्शन/रिकग्निशन, OCR, सेगमेंटेशन, इमेज सर्च, ट्रैकिंग, पोज़ एस्टिमेशन।",
+   "NLP के दो भाग हैं: NLU (समझना) और NLG (बनाना)।",
+   "NLP के काम: स्पीच-टू-टेक्स्ट, टेक्स्ट-टू-स्पीच, अनुवाद, चैटबॉट, सेंटिमेंट एनालिसिस, टेक्स्ट क्लासिफ़िकेशन, सारांश, ऑटोकम्प्लीट।",
+   "भाषा मशीनों के लिए कठिन है क्योंकि इसमें कई अर्थ, संदर्भ, व्यंग्य, मिली भाषाएँ, लहजे और कुछ भाषाओं का कम डेटा है।",
+   "Bhashini भारतीय भाषाओं में AI टूल के लिए भारत का मिशन है।",
+   "कई असली सिस्टम डोमेन मिलाते हैं (मल्टीमोडल AI), जैसे Google Lens अनुवाद या आवाज़ में सलाह देने वाला फसल-रोग ऐप।",
+   "सभी डोमेन गलतियाँ कर सकते हैं; निजता, निष्पक्षता और उत्तरों की जाँच हमेशा ज़रूरी है।"
+  ]
+ }
+}

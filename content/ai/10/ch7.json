@@ -1,0 +1,3582 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "10",
+ "id": "ch7",
+ "intro": {
+  "en": "Every AI project you met in this book (sorting cricket stats, reading a crop photo, understanding a Hindi voice command) is finally built with code, and the most popular language for that is Python. This chapter is the hands-on unit of Class X AI: you will set up the tools (Anaconda, Jupyter Notebook and virtual environments), revise Python basics from Class IX, and then use real libraries such as NumPy, Pandas, Matplotlib and OpenCV to work with numbers, tables, charts and images. Every program here was actually run, and the output shown is the real output, so you can type it in and check yourself. It is assessed through the practical file, practical exam and viva.",
+  "hi": "इस पुस्तक में आपने जितने भी AI प्रोजेक्ट देखे (क्रिकेट के आँकड़े छाँटना, फसल की फोटो पढ़ना, हिंदी में दी गई आवाज़ की कमांड समझना), वे आख़िरकार कोड से ही बनते हैं, और इसके लिए सबसे लोकप्रिय भाषा Python है। यह कक्षा 10 AI की प्रैक्टिकल इकाई है: आप ज़रूरी टूल (Anaconda, Jupyter Notebook और virtual environment) तैयार करेंगे, कक्षा 9 की Python की मूल बातें दोहराएँगे, और फिर NumPy, Pandas, Matplotlib और OpenCV जैसी असली libraries से संख्याओं, तालिकाओं, चार्ट और चित्रों पर काम करेंगे। यहाँ दिया हर प्रोग्राम सचमुच चलाकर देखा गया है और दिखाया गया आउटपुट असली है, इसलिए आप इसे टाइप करके ख़ुद जाँच सकते हैं। इस इकाई का मूल्यांकन practical file, practical exam और viva से होता है।"
+ },
+ "learn": {
+  "en": [
+   "Why Python is the favourite language for AI, and where it is used",
+   "What Anaconda, Anaconda Navigator and Anaconda Prompt are, and other free ways to run Python (IDLE, Google Colab)",
+   "Working in Jupyter Notebook: cells, kernel, modes, shortcuts, menus, checkpoints and the .ipynb file",
+   "What a virtual environment is, why we need it, and the conda/venv/pip commands to create and use one",
+   "Modules, packages and libraries; import, import ... as, and from ... import",
+   "Python basics recap: comments, keywords, identifiers, variables, data types, type conversion, input and print",
+   "Operators and their precedence; if, elif, else and nested if; for, while, range, break and continue",
+   "Lists, tuples, dictionaries, sets and strings, and useful built-in and user-defined functions",
+   "NumPy arrays and the CBSE programs on lists, mean, median, mode, variance and standard deviation",
+   "Line, scatter, bar and pie charts with Matplotlib",
+   "Reading a CSV file with Pandas: head, shape, info, describe and handling missing values",
+   "Reading an image and finding its shape with OpenCV, plus a first taste of scikit-learn, and how to prepare your practical file"
+  ],
+  "hi": [
+   "AI के लिए Python सबसे पसंदीदा भाषा क्यों है, और इसका उपयोग कहाँ होता है",
+   "Anaconda, Anaconda Navigator और Anaconda Prompt क्या हैं, और Python चलाने के अन्य मुफ़्त तरीके (IDLE, Google Colab)",
+   "Jupyter Notebook में काम करना: cell, kernel, mode, शॉर्टकट, मेन्यू, checkpoint और .ipynb फ़ाइल",
+   "Virtual environment क्या है, इसकी ज़रूरत क्यों है, और इसे बनाने व उपयोग करने के conda/venv/pip कमांड",
+   "Module, package और library; import, import ... as और from ... import",
+   "Python की मूल बातें दोहराना: comment, keyword, identifier, variable, data type, type conversion, input और print",
+   "Operator और उनकी प्राथमिकता (precedence); if, elif, else और nested if; for, while, range, break और continue",
+   "List, tuple, dictionary, set और string, तथा उपयोगी built-in और user-defined function",
+   "NumPy array और list, mean, median, mode, variance व standard deviation वाले CBSE प्रोग्राम",
+   "Matplotlib से line, scatter, bar और pie chart",
+   "Pandas से CSV फ़ाइल पढ़ना: head, shape, info, describe और missing values सँभालना",
+   "OpenCV से चित्र पढ़ना और उसका shape पता करना, scikit-learn की पहली झलक, और अपनी practical file कैसे तैयार करें"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "7.1 Why Python for AI?",
+    "hi": "7.1 AI के लिए Python ही क्यों?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A computer only follows instructions. A programming language is a way of writing those instructions so that both people and computers can understand them. Python was created by Guido van Rossum and first released in 1991. It is free, open-source and today it is the most widely used language for data science and AI. When a bank's fraud system flags a strange UPI payment, or an app tells a farmer that a leaf has a disease, there is a good chance that the model behind it was trained using Python code.",
+      "hi": "कंप्यूटर केवल निर्देशों का पालन करता है। प्रोग्रामिंग भाषा उन निर्देशों को लिखने का ऐसा तरीका है जिसे इंसान और कंप्यूटर दोनों समझ सकें। Python को Guido van Rossum ने बनाया था और इसे पहली बार 1991 में जारी किया गया। यह मुफ़्त और open-source है, और आज data science तथा AI के लिए सबसे ज़्यादा उपयोग होने वाली भाषा है। जब किसी बैंक का fraud सिस्टम किसी अजीब UPI भुगतान पर चेतावनी देता है, या कोई ऐप किसान को बताता है कि पत्ती में रोग है, तो बहुत संभव है कि उसके पीछे का model Python कोड से train किया गया हो।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Simple, English-like syntax: programs are short and easy to read, so you can focus on the AI idea rather than on brackets and semicolons.",
+       "Huge collection of free libraries: NumPy (numbers), Pandas (tables), Matplotlib (charts), OpenCV (images), NLTK and spaCy (language), scikit-learn (machine learning), TensorFlow, Keras and PyTorch (deep learning).",
+       "Easy testing and debugging: Python is interpreted, i.e. it runs line by line, so an error message points to the exact line.",
+       "Platform independent: the same program runs on Windows, Linux and macOS, and even in a phone browser through online notebooks.",
+       "Flexible and extensible: Python can be combined with other languages such as C and C++ for speed.",
+       "Database connectivity: Python can connect to databases like MySQL and read data from CSV and Excel files.",
+       "Large community: millions of users, so help, tutorials and answers are easy to find."
+      ],
+      "hi": [
+       "सरल, अंग्रेज़ी जैसी syntax: प्रोग्राम छोटे और पढ़ने में आसान होते हैं, इसलिए आप ब्रैकेट और सेमीकोलन के बजाय AI के विचार पर ध्यान दे पाते हैं।",
+       "मुफ़्त libraries का बड़ा भंडार: NumPy (संख्याएँ), Pandas (तालिकाएँ), Matplotlib (चार्ट), OpenCV (चित्र), NLTK और spaCy (भाषा), scikit-learn (machine learning), TensorFlow, Keras और PyTorch (deep learning)।",
+       "आसान testing और debugging: Python interpreted भाषा है, यानी यह पंक्ति-दर-पंक्ति चलती है, इसलिए error संदेश ठीक उसी पंक्ति की ओर इशारा करता है।",
+       "Platform independent: एक ही प्रोग्राम Windows, Linux और macOS पर चलता है, और online notebook के ज़रिए फ़ोन के browser में भी।",
+       "लचीली और विस्तार योग्य: तेज़ी के लिए Python को C और C++ जैसी दूसरी भाषाओं के साथ जोड़ा जा सकता है।",
+       "Database से जुड़ाव: Python, MySQL जैसे database से जुड़ सकती है और CSV व Excel फ़ाइलों से data पढ़ सकती है।",
+       "बड़ा समुदाय: करोड़ों उपयोगकर्ता हैं, इसलिए मदद, tutorial और उत्तर आसानी से मिल जाते हैं।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Area",
+        "How Python is used (examples)"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "Python का उपयोग कैसे होता है (उदाहरण)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data science",
+         "Cleaning and analysing data such as IPL match statistics or rainfall records"
+        ],
+        [
+         "Machine learning",
+         "Training models that predict crop yield or house prices"
+        ],
+        [
+         "Computer vision",
+         "Detecting number plates, counting people, reading handwritten digits"
+        ],
+        [
+         "Natural language processing",
+         "Chatbots, translation between Indian languages, sentiment of reviews"
+        ],
+        [
+         "Web development",
+         "Back end of websites (frameworks such as Django and Flask)"
+        ],
+        [
+         "Automation and scripting",
+         "Renaming hundreds of files, sending reminders, filling spreadsheets"
+        ],
+        [
+         "Games and education",
+         "Simple games (Pygame), maths and science simulations"
+        ]
+       ],
+       "hi": [
+        [
+         "Data science",
+         "IPL मैचों के आँकड़े या वर्षा के रिकॉर्ड जैसे data को साफ़ करना और उनका विश्लेषण"
+        ],
+        [
+         "Machine learning",
+         "फसल की पैदावार या मकान की कीमत का अनुमान लगाने वाले model train करना"
+        ],
+        [
+         "Computer vision",
+         "नंबर प्लेट पहचानना, लोगों की गिनती, हाथ से लिखे अंक पढ़ना"
+        ],
+        [
+         "Natural language processing",
+         "Chatbot, भारतीय भाषाओं के बीच अनुवाद, समीक्षाओं की भावना (sentiment)"
+        ],
+        [
+         "Web development",
+         "वेबसाइटों का back end (Django और Flask जैसे framework)"
+        ],
+        [
+         "Automation और scripting",
+         "सैकड़ों फ़ाइलों के नाम बदलना, reminder भेजना, spreadsheet भरना"
+        ],
+        [
+         "Games और शिक्षा",
+         "सरल गेम (Pygame), गणित और विज्ञान के simulation"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Python is case-sensitive. Print, PRINT and print are three different names; only print works as the built-in function.",
+      "hi": "याद रखें: Python, case-sensitive है। Print, PRINT और print तीन अलग नाम हैं; built-in function के रूप में केवल print ही काम करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.2 Where do we write Python? Anaconda, IDLE and online notebooks",
+    "hi": "7.2 Python कहाँ लिखें? Anaconda, IDLE और online notebook"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To run Python you need an interpreter (the program that reads and runs your code) and an editor (where you type). There are several free choices. In Class IX you may have used IDLE, the simple editor that comes with Python from python.org. For AI work, schools usually use Anaconda with Jupyter Notebook, because it brings Python, the AI libraries and the tools together in one installation.",
+      "hi": "Python चलाने के लिए आपको एक interpreter (वह प्रोग्राम जो आपका कोड पढ़कर चलाता है) और एक editor (जहाँ आप टाइप करते हैं) चाहिए। इसके कई मुफ़्त विकल्प हैं। कक्षा 9 में आपने शायद IDLE का उपयोग किया होगा, जो python.org से मिलने वाले Python के साथ आने वाला सरल editor है। AI के काम के लिए स्कूल आमतौर पर Jupyter Notebook के साथ Anaconda का उपयोग करते हैं, क्योंकि यह Python, AI libraries और टूल को एक ही installation में साथ ले आता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Anaconda",
+       "hi": "Anaconda"
+      },
+      "text": {
+       "en": "A free distribution (bundle) of Python made for data science, machine learning and scientific computing. It comes with Python, hundreds of popular packages (such as NumPy, Pandas and Matplotlib), the conda package and environment manager, and tools like Jupyter Notebook and Spyder. Its job is to make package management and deployment easy.",
+       "hi": "Python का एक मुफ़्त distribution (बंडल) जो data science, machine learning और वैज्ञानिक गणना के लिए बनाया गया है। इसमें Python, सैकड़ों लोकप्रिय package (जैसे NumPy, Pandas और Matplotlib), conda नाम का package और environment manager, तथा Jupyter Notebook और Spyder जैसे टूल आते हैं। इसका काम package management और deployment को आसान बनाना है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Anaconda Navigator",
+       "hi": "Anaconda Navigator"
+      },
+      "text": {
+       "en": "A desktop program with a graphical user interface (buttons and icons) that comes with Anaconda. From it you can launch Jupyter Notebook, JupyterLab, Spyder and other tools, and manage environments and packages without typing commands.",
+       "hi": "Anaconda के साथ आने वाला एक desktop प्रोग्राम जिसमें graphical user interface (बटन और आइकन) होता है। इससे आप बिना कमांड टाइप किए Jupyter Notebook, JupyterLab, Spyder और अन्य टूल खोल सकते हैं तथा environment और package सँभाल सकते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Anaconda Prompt",
+       "hi": "Anaconda Prompt"
+      },
+      "text": {
+       "en": "A command-line window (on Windows) where you type conda and pip commands, for example to create an environment or install a package. On Linux and macOS the normal Terminal does the same job.",
+       "hi": "Windows पर एक command-line विंडो जहाँ आप conda और pip कमांड टाइप करते हैं, जैसे environment बनाने या package install करने के लिए। Linux और macOS पर सामान्य Terminal यही काम करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Installing Anaconda on a Windows computer (do this with your teacher or a parent, because it changes the computer):",
+      "hi": "Windows कंप्यूटर पर Anaconda install करना (यह अपने शिक्षक या माता-पिता के साथ करें, क्योंकि इससे कंप्यूटर में बदलाव होता है):"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Open the official Anaconda website and download the installer for your operating system (Windows 64-bit for most school computers). Download only from the official site.",
+       "Double-click the downloaded file and click Next, then read and accept the licence agreement.",
+       "Choose the installation type: 'Just Me' (recommended, only your user account) or 'All Users' (needs administrator rights).",
+       "Choose the destination folder. The default is fine; a path without spaces avoids some problems.",
+       "On the advanced options screen, the installer recommends NOT adding Anaconda to the PATH variable (you will use Anaconda Prompt instead), and lets you register Anaconda as the default Python. Keep the recommended choices.",
+       "Click Install, wait until it finishes, then click Next and Finish.",
+       "Open Anaconda Navigator or Anaconda Prompt from the Start menu to check that it works."
+      ],
+      "hi": [
+       "Anaconda की आधिकारिक वेबसाइट खोलें और अपने operating system के लिए installer डाउनलोड करें (ज़्यादातर स्कूल कंप्यूटरों के लिए Windows 64-bit)। केवल आधिकारिक साइट से ही डाउनलोड करें।",
+       "डाउनलोड हुई फ़ाइल पर double-click करें, Next दबाएँ, फिर licence agreement पढ़कर स्वीकार करें।",
+       "Installation का प्रकार चुनें: 'Just Me' (सुझाया गया, केवल आपका user account) या 'All Users' (administrator अधिकार चाहिए)।",
+       "Destination folder चुनें। डिफ़ॉल्ट ठीक है; बिना spaces वाला path कुछ समस्याओं से बचाता है।",
+       "Advanced options स्क्रीन पर installer सुझाव देता है कि Anaconda को PATH variable में न जोड़ें (आप इसके बजाय Anaconda Prompt का उपयोग करेंगे), और Anaconda को डिफ़ॉल्ट Python के रूप में register करने का विकल्प देता है। सुझाए गए विकल्प ही रखें।",
+       "Install पर क्लिक करें, पूरा होने तक प्रतीक्षा करें, फिर Next और Finish दबाएँ।",
+       "जाँचने के लिए Start menu से Anaconda Navigator या Anaconda Prompt खोलें।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Tool",
+        "What it is",
+        "Good for"
+       ],
+       "hi": [
+        "टूल",
+        "यह क्या है",
+        "किसके लिए अच्छा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "IDLE",
+         "Simple editor and shell that comes with Python from python.org",
+         "Small programs, learning basics"
+        ],
+        [
+         "Jupyter Notebook",
+         "Browser-based notebook with code, text and output in cells",
+         "AI and data work, practical file"
+        ],
+        [
+         "JupyterLab",
+         "Newer, more powerful interface for notebooks",
+         "Many notebooks and files at once"
+        ],
+        [
+         "Spyder",
+         "Editor made for scientists, comes with Anaconda",
+         "Longer scripts, viewing variables"
+        ],
+        [
+         "Google Colab",
+         "Free online Jupyter-style notebook that runs on Google's computers",
+         "Phones, tablets or computers without installation"
+        ]
+       ],
+       "hi": [
+        [
+         "IDLE",
+         "python.org वाले Python के साथ आने वाला सरल editor और shell",
+         "छोटे प्रोग्राम, मूल बातें सीखना"
+        ],
+        [
+         "Jupyter Notebook",
+         "Browser में चलने वाली notebook जिसमें cells में कोड, टेक्स्ट और आउटपुट होते हैं",
+         "AI और data का काम, practical file"
+        ],
+        [
+         "JupyterLab",
+         "Notebook के लिए नया और अधिक शक्तिशाली interface",
+         "एक साथ कई notebook और फ़ाइलें"
+        ],
+        [
+         "Spyder",
+         "वैज्ञानिकों के लिए बना editor, Anaconda के साथ आता है",
+         "लंबी script, variables देखना"
+        ],
+        [
+         "Google Colab",
+         "मुफ़्त online, Jupyter जैसी notebook जो Google के कंप्यूटरों पर चलती है",
+         "फ़ोन, टैबलेट या बिना installation वाले कंप्यूटर"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "No laptop at home? Google Colab opens in a phone browser and already has NumPy, Pandas, Matplotlib, OpenCV and scikit-learn installed. It needs a Google account; students under 13 should sign up only with a parent (for example through Family Link). Never paste passwords, Aadhaar numbers or other personal data into a shared notebook.",
+      "hi": "घर पर लैपटॉप नहीं है? Google Colab फ़ोन के browser में खुल जाता है और उसमें NumPy, Pandas, Matplotlib, OpenCV और scikit-learn पहले से install होते हैं। इसके लिए Google account चाहिए; 13 वर्ष से कम उम्र के विद्यार्थी केवल माता-पिता के साथ ही sign up करें (जैसे Family Link के ज़रिए)। किसी shared notebook में कभी भी password, आधार नंबर या अन्य निजी जानकारी न डालें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3 Jupyter Notebook",
+    "hi": "7.3 Jupyter Notebook"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Jupyter Notebook",
+       "hi": "Jupyter Notebook"
+      },
+      "text": {
+       "en": "A free, open-source web application in which you create documents called notebooks that mix live code, its output (numbers, tables, charts), formatted text, equations and images. It runs in your web browser. The name comes from three languages it supported first: Julia, Python and R.",
+       "hi": "एक मुफ़्त, open-source web application जिसमें आप notebook नाम के दस्तावेज़ बनाते हैं जिनमें चलने वाला कोड, उसका आउटपुट (संख्याएँ, तालिकाएँ, चार्ट), formatted टेक्स्ट, समीकरण और चित्र एक साथ होते हैं। यह आपके web browser में चलता है। इसका नाम उन तीन भाषाओं से बना है जिन्हें इसने सबसे पहले support किया: Julia, Python और R।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why is a notebook so useful for AI? AI work is a cycle of trying, looking and changing. In a notebook you can load data in one cell, look at it in the next, draw a chart in the third and write your explanation in between, all in one file. You can run each cell separately, so if only the chart is wrong you rerun just that cell instead of the whole program. A notebook also becomes a neat report to share with your teacher.",
+      "hi": "Notebook AI के लिए इतनी उपयोगी क्यों है? AI का काम आज़माने, देखने और बदलने का एक चक्र है। Notebook में आप एक cell में data load कर सकते हैं, अगले में उसे देख सकते हैं, तीसरे में चार्ट बना सकते हैं और बीच-बीच में अपनी व्याख्या लिख सकते हैं, सब एक ही फ़ाइल में। आप हर cell को अलग से चला सकते हैं, इसलिए अगर केवल चार्ट ग़लत है तो पूरे प्रोग्राम के बजाय सिर्फ़ वही cell दोबारा चलाते हैं। Notebook अपने आप में शिक्षक के साथ साझा करने लायक एक साफ़ रिपोर्ट भी बन जाती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Opening Jupyter Notebook: open Anaconda Navigator and click Launch under Jupyter Notebook, or open Anaconda Prompt and type jupyter notebook. A browser tab opens showing the Dashboard, which is a list of folders and files on your computer. Go to your folder, click New and choose Python 3 (ipykernel). A new notebook called Untitled opens; click the name to rename it, for example Practical_01.",
+      "hi": "Jupyter Notebook खोलना: Anaconda Navigator खोलकर Jupyter Notebook के नीचे Launch पर क्लिक करें, या Anaconda Prompt खोलकर jupyter notebook टाइप करें। Browser में एक tab खुलता है जिसमें Dashboard दिखता है, यानी आपके कंप्यूटर के फ़ोल्डर और फ़ाइलों की सूची। अपने फ़ोल्डर में जाएँ, New पर क्लिक करें और Python 3 (ipykernel) चुनें। Untitled नाम की नई notebook खुलती है; उसका नाम बदलने के लिए नाम पर क्लिक करें, जैसे Practical_01।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Part",
+        "Meaning"
+       ],
+       "hi": [
+        "भाग",
+        "अर्थ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Notebook file (.ipynb)",
+         "The saved notebook. ipynb stands for IPython Notebook. It stores code, text and outputs together."
+        ],
+        [
+         "Cell",
+         "A box in which you type. A notebook is a list of cells run from top to bottom."
+        ],
+        [
+         "Code cell",
+         "Holds Python code. Its output appears just below it. Shown with In [ ]: on the left."
+        ],
+        [
+         "Markdown cell",
+         "Holds formatted text: headings (# Heading), bold (**text**), lists and equations. Used to explain your work."
+        ],
+        [
+         "Raw cell",
+         "Text that is neither run nor formatted; rarely used."
+        ],
+        [
+         "Kernel",
+         "The engine that actually runs your code in the background. For Python the default kernel is IPython (ipykernel)."
+        ],
+        [
+         "Dashboard",
+         "The first page that lists files and folders and lets you open or create notebooks."
+        ],
+        [
+         "Checkpoint",
+         "A saved snapshot of the notebook. File > Save and Checkpoint creates one; you can go back to it later."
+        ]
+       ],
+       "hi": [
+        [
+         "Notebook फ़ाइल (.ipynb)",
+         "सेव की गई notebook। ipynb का अर्थ IPython Notebook है। इसमें कोड, टेक्स्ट और आउटपुट साथ में रहते हैं।"
+        ],
+        [
+         "Cell",
+         "एक बॉक्स जिसमें आप टाइप करते हैं। Notebook ऊपर से नीचे चलने वाले cells की सूची है।"
+        ],
+        [
+         "Code cell",
+         "इसमें Python कोड होता है। आउटपुट ठीक इसके नीचे आता है। बाईं ओर In [ ]: दिखता है।"
+        ],
+        [
+         "Markdown cell",
+         "इसमें formatted टेक्स्ट होता है: शीर्षक (# Heading), bold (**text**), सूचियाँ और समीकरण। अपने काम की व्याख्या के लिए।"
+        ],
+        [
+         "Raw cell",
+         "ऐसा टेक्स्ट जो न चलता है न format होता है; कम उपयोग होता है।"
+        ],
+        [
+         "Kernel",
+         "वह इंजन जो पीछे से आपका कोड वास्तव में चलाता है। Python के लिए डिफ़ॉल्ट kernel IPython (ipykernel) है।"
+        ],
+        [
+         "Dashboard",
+         "पहला पेज जो फ़ाइलें और फ़ोल्डर दिखाता है और notebook खोलने या बनाने देता है।"
+        ],
+        [
+         "Checkpoint",
+         "Notebook का सेव किया गया snapshot। File > Save and Checkpoint से बनता है; बाद में उस पर लौट सकते हैं।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Reading the label next to a code cell: In [ ]: means the cell has not been run yet. In [*]: means it is running right now (or waiting). In [3]: means it was the third cell run in this session. These numbers tell you the order in which cells were really run, which may differ from their order on the page.",
+      "hi": "Code cell के पास लिखे लेबल को पढ़ना: In [ ]: का अर्थ है cell अभी चलाया नहीं गया। In [*]: का अर्थ है वह अभी चल रहा है (या प्रतीक्षा में है)। In [3]: का अर्थ है इस session में चलाया गया यह तीसरा cell था। ये संख्याएँ बताती हैं कि cells असल में किस क्रम में चलाए गए, जो पेज पर उनके क्रम से अलग हो सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Two modes: a notebook is always in one of two modes. In Edit mode (press Enter or click inside a cell; the cell border is green or the cursor blinks) you type inside the cell. In Command mode (press Esc; border turns blue) your keys act on whole cells, for example adding or deleting them.",
+      "hi": "दो mode: notebook हमेशा दो में से किसी एक mode में होती है। Edit mode में (Enter दबाएँ या cell के अंदर क्लिक करें; cell की किनारी हरी होती है या cursor टिमटिमाता है) आप cell के अंदर टाइप करते हैं। Command mode में (Esc दबाएँ; किनारी नीली हो जाती है) आपकी keys पूरे cells पर काम करती हैं, जैसे cell जोड़ना या हटाना।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Shortcut",
+        "Mode",
+        "What it does"
+       ],
+       "hi": [
+        "शॉर्टकट",
+        "Mode",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Shift + Enter",
+         "Any",
+         "Run the cell and move to the next one"
+        ],
+        [
+         "Ctrl + Enter",
+         "Any",
+         "Run the cell and stay on it"
+        ],
+        [
+         "Alt + Enter",
+         "Any",
+         "Run the cell and insert a new cell below"
+        ],
+        [
+         "Esc / Enter",
+         "-",
+         "Go to Command mode / Edit mode"
+        ],
+        [
+         "A / B",
+         "Command",
+         "Insert a new cell Above / Below"
+        ],
+        [
+         "D, D (press D twice)",
+         "Command",
+         "Delete the selected cell"
+        ],
+        [
+         "Z",
+         "Command",
+         "Undo the last cell deletion"
+        ],
+        [
+         "M / Y",
+         "Command",
+         "Change cell to Markdown / to Code"
+        ],
+        [
+         "Ctrl + S",
+         "Any",
+         "Save the notebook (and create a checkpoint)"
+        ],
+        [
+         "Tab",
+         "Edit",
+         "Auto-complete a name; Shift + Tab shows help for a function"
+        ]
+       ],
+       "hi": [
+        [
+         "Shift + Enter",
+         "कोई भी",
+         "Cell चलाएँ और अगले cell पर जाएँ"
+        ],
+        [
+         "Ctrl + Enter",
+         "कोई भी",
+         "Cell चलाएँ और उसी पर रहें"
+        ],
+        [
+         "Alt + Enter",
+         "कोई भी",
+         "Cell चलाएँ और नीचे नया cell जोड़ें"
+        ],
+        [
+         "Esc / Enter",
+         "-",
+         "Command mode / Edit mode में जाएँ"
+        ],
+        [
+         "A / B",
+         "Command",
+         "ऊपर (Above) / नीचे (Below) नया cell जोड़ें"
+        ],
+        [
+         "D, D (D दो बार)",
+         "Command",
+         "चुना हुआ cell हटाएँ"
+        ],
+        [
+         "Z",
+         "Command",
+         "पिछला cell हटाना undo करें"
+        ],
+        [
+         "M / Y",
+         "Command",
+         "Cell को Markdown / Code में बदलें"
+        ],
+        [
+         "Ctrl + S",
+         "कोई भी",
+         "Notebook सेव करें (और checkpoint बनाएँ)"
+        ],
+        [
+         "Tab",
+         "Edit",
+         "नाम auto-complete करें; Shift + Tab से function की सहायता दिखती है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The menu bar of the classic Jupyter Notebook has these menus (names can differ slightly in newer versions and in Colab):",
+      "hi": "Classic Jupyter Notebook के menu bar में ये मेन्यू होते हैं (नए संस्करणों और Colab में नाम थोड़े अलग हो सकते हैं):"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "File: new notebook, open, rename, Save and Checkpoint, Revert to Checkpoint, download as .ipynb, .py, HTML or PDF.",
+       "Edit: cut, copy, paste, delete, split and merge cells, move cells up or down.",
+       "View: show or hide the header, toolbar and line numbers.",
+       "Insert: insert a cell above or below.",
+       "Cell: Run cells, Run All, Run All Above or Below, change cell type, clear outputs.",
+       "Kernel: Interrupt (stop a running cell, e.g. an endless loop), Restart, Restart and Clear Output, Restart and Run All, Change kernel.",
+       "Widgets: manage interactive widgets such as sliders.",
+       "Help: keyboard shortcuts, user interface tour, and links to Python, NumPy, Pandas and Matplotlib documentation."
+      ],
+      "hi": [
+       "File: नई notebook, खोलना, नाम बदलना, Save and Checkpoint, Revert to Checkpoint, .ipynb, .py, HTML या PDF के रूप में डाउनलोड।",
+       "Edit: cells को cut, copy, paste, delete, split और merge करना, ऊपर-नीचे खिसकाना।",
+       "View: header, toolbar और line numbers दिखाना या छिपाना।",
+       "Insert: ऊपर या नीचे cell जोड़ना।",
+       "Cell: cells चलाना, Run All, ऊपर या नीचे के सभी चलाना, cell का प्रकार बदलना, आउटपुट साफ़ करना।",
+       "Kernel: Interrupt (चल रहे cell को रोकना, जैसे अनंत loop), Restart, Restart and Clear Output, Restart and Run All, kernel बदलना।",
+       "Widgets: slider जैसे interactive widgets सँभालना।",
+       "Help: keyboard शॉर्टकट, user interface tour, और Python, NumPy, Pandas व Matplotlib के documentation के लिंक।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: all cells share one kernel memory. If cell 5 uses a variable created in cell 2, cell 2 must have been run first. When a notebook behaves strangely, use Kernel > Restart and Run All to run everything fresh from the top.",
+      "hi": "याद रखें: सभी cells एक ही kernel memory साझा करते हैं। अगर cell 5 किसी ऐसे variable का उपयोग करता है जो cell 2 में बना है, तो cell 2 पहले चलाया जाना चाहिए। जब notebook अजीब व्यवहार करे, तो Kernel > Restart and Run All से ऊपर से सब कुछ नए सिरे से चलाएँ।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity (screen): your first notebook. Aim: learn cells and modes. You need: Jupyter Notebook or Google Colab.",
+       "hi": "गतिविधि (स्क्रीन): आपकी पहली notebook। उद्देश्य: cells और modes सीखना। ज़रूरत: Jupyter Notebook या Google Colab।"
+      },
+      "a": {
+       "en": "Step 1: Create a notebook and rename it My_First_Notebook.\nStep 2: In the first cell press M (Command mode) and type: # About me. Run it with Shift + Enter. It becomes a big heading.\nStep 3: In the next code cell type: name = \"Asha\" and run it. Nothing is printed, but the variable now lives in the kernel.\nStep 4: In a new cell type: print(\"Hello\", name) and run it. Output: Hello Asha.\nStep 5: Change Asha to your name in cell 2 but run only cell 3. Observe: the old name still prints, because cell 2 was not rerun.\nStep 6: Use Kernel > Restart and Run All. Now your name prints.\nWhat it teaches: cells run in the order you run them, and the kernel remembers variables between cells.",
+       "hi": "चरण 1: एक notebook बनाएँ और उसका नाम My_First_Notebook रखें।\nचरण 2: पहले cell में M दबाएँ (Command mode) और टाइप करें: # About me. Shift + Enter से चलाएँ। यह बड़ा शीर्षक बन जाता है।\nचरण 3: अगले code cell में टाइप करें: name = \"Asha\" और चलाएँ। कुछ print नहीं होता, पर variable अब kernel में मौजूद है।\nचरण 4: नए cell में टाइप करें: print(\"Hello\", name) और चलाएँ। आउटपुट: Hello Asha।\nचरण 5: cell 2 में Asha की जगह अपना नाम लिखें पर केवल cell 3 चलाएँ। देखें: पुराना नाम ही print होता है, क्योंकि cell 2 दोबारा नहीं चलाया गया।\nचरण 6: Kernel > Restart and Run All चुनें। अब आपका नाम print होता है।\nसीख: cells उसी क्रम में चलते हैं जिसमें आप उन्हें चलाते हैं, और kernel cells के बीच variables याद रखता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.4 Virtual environments",
+    "hi": "7.4 Virtual environment"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Imagine two projects. Your school project needs an older version of a library because the teacher's notebook was written for it, while a new project needs the latest version. If both share one Python installation, upgrading for one project can break the other. The solution is to give each project its own separate, isolated space.",
+      "hi": "दो प्रोजेक्ट की कल्पना करें। आपके स्कूल प्रोजेक्ट को किसी library का पुराना संस्करण चाहिए क्योंकि शिक्षक की notebook उसी के लिए लिखी गई थी, जबकि नए प्रोजेक्ट को नवीनतम संस्करण चाहिए। अगर दोनों एक ही Python installation साझा करें, तो एक प्रोजेक्ट के लिए upgrade करने से दूसरा बिगड़ सकता है। इसका हल है हर प्रोजेक्ट को उसकी अपनी अलग, isolated जगह देना।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Virtual environment",
+       "hi": "Virtual environment"
+      },
+      "text": {
+       "en": "An isolated folder that contains its own Python interpreter and its own set of installed packages. Packages installed inside one environment do not affect the main Python or any other environment.",
+       "hi": "एक अलग (isolated) फ़ोल्डर जिसमें उसका अपना Python interpreter और install किए गए packages का अपना सेट होता है। एक environment में install किए गए packages मुख्य Python या किसी दूसरे environment पर असर नहीं डालते।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Think of it like separate school bags for separate subjects: the Maths bag has a geometry box, the Art bag has colours. Taking out the colours never disturbs the geometry box. Anaconda itself starts with one environment called base.",
+      "hi": "इसे अलग-अलग विषयों के अलग-अलग स्कूल बैग जैसा समझें: गणित वाले बैग में ज्यामिति बॉक्स है, कला वाले बैग में रंग। रंग निकालने से ज्यामिति बॉक्स कभी नहीं बिगड़ता। Anaconda ख़ुद base नाम के एक environment से शुरू होता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Avoids version conflicts between projects.",
+       "Keeps the main (base) installation clean; if an environment breaks you simply delete it and make a new one.",
+       "Makes projects reproducible: you can list exactly which packages a project uses and share that list.",
+       "Lets you try a new library safely without risking your working setup."
+      ],
+      "hi": [
+       "प्रोजेक्टों के बीच संस्करणों के टकराव (version conflict) से बचाता है।",
+       "मुख्य (base) installation को साफ़ रखता है; अगर कोई environment बिगड़ जाए तो उसे हटाकर नया बना लें।",
+       "प्रोजेक्ट को दोहराने योग्य (reproducible) बनाता है: आप ठीक-ठीक बता सकते हैं कि प्रोजेक्ट किन packages का उपयोग करता है और वह सूची साझा कर सकते हैं।",
+       "आपके चालू setup को जोखिम में डाले बिना नई library सुरक्षित रूप से आज़माने देता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Creating and using an environment with conda (type these in Anaconda Prompt; 'ai_env' is just a name you choose):",
+      "hi": "conda से environment बनाना और उपयोग करना (इन्हें Anaconda Prompt में टाइप करें; 'ai_env' बस आपका चुना हुआ नाम है):"
+     }
+    },
+    {
+     "formula": {
+      "en": "conda create -n ai_env python=3.11      # create an environment named ai_env\nconda activate ai_env                    # switch into it; prompt shows (ai_env)\nconda install numpy pandas matplotlib    # install packages inside it\npip install opencv-python                # pip also works inside the environment\nconda install jupyter                    # or: pip install notebook\njupyter notebook                         # open Jupyter from this environment\nconda list                               # list packages in the active environment\nconda env list                           # list all environments (* marks active one)\nconda deactivate                         # go back to base\nconda remove -n ai_env --all             # delete the environment completely",
+      "hi": "conda create -n ai_env python=3.11      # ai_env नाम का environment बनाएँ\nconda activate ai_env                    # उसमें जाएँ; prompt में (ai_env) दिखेगा\nconda install numpy pandas matplotlib    # उसके अंदर packages install करें\npip install opencv-python                # environment के अंदर pip भी काम करता है\nconda install jupyter                    # या: pip install notebook\njupyter notebook                         # इसी environment से Jupyter खोलें\nconda list                               # सक्रिय environment के packages की सूची\nconda env list                           # सभी environments की सूची (* सक्रिय को दर्शाता है)\nconda deactivate                         # वापस base में जाएँ\nconda remove -n ai_env --all             # environment को पूरी तरह हटाएँ"
+     }
+    },
+    {
+     "p": {
+      "en": "Without Anaconda, Python's built-in venv module does the same job, and pip installs packages from PyPI (the Python Package Index):",
+      "hi": "Anaconda के बिना, Python का built-in venv module यही काम करता है, और pip, PyPI (Python Package Index) से packages install करता है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "python -m venv myenv              # create the environment folder myenv\nmyenv\\Scripts\\activate             # activate on Windows\nsource myenv/bin/activate          # activate on Linux / macOS\npip install numpy pandas           # install packages\npip list                           # see installed packages\npip freeze > requirements.txt      # save the list to share\npip install -r requirements.txt    # someone else installs the same list\ndeactivate                         # leave the environment",
+      "hi": "python -m venv myenv              # myenv नाम का environment फ़ोल्डर बनाएँ\nmyenv\\Scripts\\activate             # Windows पर activate करें\nsource myenv/bin/activate          # Linux / macOS पर activate करें\npip install numpy pandas           # packages install करें\npip list                           # install हुए packages देखें\npip freeze > requirements.txt      # सूची साझा करने के लिए सेव करें\npip install -r requirements.txt    # कोई दूसरा वही सूची install करे\ndeactivate                         # environment से बाहर निकलें"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Task",
+        "conda",
+        "pip / venv"
+       ],
+       "hi": [
+        "काम",
+        "conda",
+        "pip / venv"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Create environment",
+         "conda create -n name",
+         "python -m venv name"
+        ],
+        [
+         "Activate",
+         "conda activate name",
+         "name\\Scripts\\activate (Windows)"
+        ],
+        [
+         "Install a package",
+         "conda install package",
+         "pip install package"
+        ],
+        [
+         "List packages",
+         "conda list",
+         "pip list"
+        ],
+        [
+         "Leave environment",
+         "conda deactivate",
+         "deactivate"
+        ]
+       ],
+       "hi": [
+        [
+         "Environment बनाना",
+         "conda create -n name",
+         "python -m venv name"
+        ],
+        [
+         "Activate करना",
+         "conda activate name",
+         "name\\Scripts\\activate (Windows)"
+        ],
+        [
+         "Package install करना",
+         "conda install package",
+         "pip install package"
+        ],
+        [
+         "Packages की सूची",
+         "conda list",
+         "pip list"
+        ],
+        [
+         "Environment छोड़ना",
+         "conda deactivate",
+         "deactivate"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: these are commands for Anaconda Prompt or Terminal, not Python code. In a Jupyter or Colab cell you can run them by putting ! or % in front, for example !pip install opencv-python or %pip install opencv-python. Install packages only from trusted sources such as the official conda channels and PyPI, and check the spelling, because fake packages with look-alike names exist.",
+      "hi": "याद रखें: ये Anaconda Prompt या Terminal के कमांड हैं, Python कोड नहीं। Jupyter या Colab के cell में इन्हें आगे ! या % लगाकर चला सकते हैं, जैसे !pip install opencv-python या %pip install opencv-python। Packages केवल भरोसेमंद स्रोतों जैसे आधिकारिक conda channels और PyPI से ही install करें, और spelling जाँचें, क्योंकि मिलते-जुलते नामों वाले नकली packages भी होते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A classmate types conda activate ai_env and gets an error that the environment does not exist. What are two likely reasons and fixes?",
+       "hi": "एक सहपाठी conda activate ai_env टाइप करता है और error आता है कि environment मौजूद नहीं है। दो संभावित कारण और उपाय क्या हैं?"
+      },
+      "a": {
+       "en": "Reason 1: the environment was never created. Fix: run conda create -n ai_env python=3.11 first.\nReason 2: the name is spelt differently (for example ai-env or AI_env). Fix: run conda env list to see the exact names, then activate the right one.",
+       "hi": "कारण 1: environment कभी बनाया ही नहीं गया। उपाय: पहले conda create -n ai_env python=3.11 चलाएँ।\nकारण 2: नाम की spelling अलग है (जैसे ai-env या AI_env)। उपाय: सही नाम देखने के लिए conda env list चलाएँ, फिर सही वाला activate करें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.5 Modules, packages and libraries",
+    "hi": "7.5 Module, package और library"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Nobody writes every tool from scratch. Python lets you reuse code that others have written and tested. There are three related words:",
+      "hi": "कोई भी हर टूल शुरू से नहीं लिखता। Python आपको दूसरों द्वारा लिखा और जाँचा गया कोड दोबारा उपयोग करने देती है। इससे जुड़े तीन शब्द हैं:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Word",
+        "Meaning",
+        "Example"
+       ],
+       "hi": [
+        "शब्द",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Module",
+         "A single Python file (.py) containing functions and variables",
+         "math, random, statistics"
+        ],
+        [
+         "Package",
+         "A folder of related modules organised together",
+         "matplotlib (contains the pyplot module)"
+        ],
+        [
+         "Library",
+         "A collection of packages and modules for a broad purpose; often used loosely to mean package",
+         "NumPy, Pandas, OpenCV, scikit-learn"
+        ]
+       ],
+       "hi": [
+        [
+         "Module",
+         "Functions और variables वाली एक अकेली Python फ़ाइल (.py)",
+         "math, random, statistics"
+        ],
+        [
+         "Package",
+         "आपस में जुड़े modules का एक व्यवस्थित फ़ोल्डर",
+         "matplotlib (इसमें pyplot module है)"
+        ],
+        [
+         "Library",
+         "किसी बड़े उद्देश्य के लिए packages और modules का संग्रह; अक्सर package के अर्थ में भी बोला जाता है",
+         "NumPy, Pandas, OpenCV, scikit-learn"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Some modules (the standard library, such as math, random and statistics) come with Python. Others must be installed once with pip or conda, and then imported in every program that uses them. There are three ways to import:",
+      "hi": "कुछ modules (standard library, जैसे math, random और statistics) Python के साथ ही आते हैं। बाकी को pip या conda से एक बार install करना पड़ता है, और फिर हर उस प्रोग्राम में import करना होता है जो उनका उपयोग करता है। Import करने के तीन तरीके हैं:"
+     }
+    },
+    {
+     "formula": {
+      "en": "import math                    # use as math.sqrt(16)\nimport numpy as np             # short alias: np.mean(...)\nfrom statistics import mode    # use directly: mode(...)",
+      "hi": "import math                    # उपयोग: math.sqrt(16)\nimport numpy as np             # छोटा उपनाम (alias): np.mean(...)\nfrom statistics import mode    # सीधे उपयोग: mode(...)"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Library",
+        "Usual import",
+        "Used for"
+       ],
+       "hi": [
+        "Library",
+        "सामान्य import",
+        "किसके लिए"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "NumPy",
+         "import numpy as np",
+         "Fast arrays and maths: mean, median, standard deviation, matrices"
+        ],
+        [
+         "Pandas",
+         "import pandas as pd",
+         "Tables (DataFrames): reading CSV/Excel, cleaning, filtering"
+        ],
+        [
+         "Matplotlib",
+         "import matplotlib.pyplot as plt",
+         "Charts: line, bar, scatter, pie, histogram, showing images"
+        ],
+        [
+         "OpenCV",
+         "import cv2",
+         "Reading, changing and analysing images and video (computer vision)"
+        ],
+        [
+         "SciPy",
+         "from scipy import stats",
+         "Scientific and statistical functions, e.g. mode"
+        ],
+        [
+         "scikit-learn",
+         "from sklearn... import ...",
+         "Ready-made machine learning models and evaluation"
+        ],
+        [
+         "NLTK",
+         "import nltk",
+         "Natural language processing: tokenising, stemming, stop words"
+        ],
+        [
+         "TensorFlow / Keras, PyTorch",
+         "import tensorflow as tf / import torch",
+         "Deep learning (neural networks)"
+        ]
+       ],
+       "hi": [
+        [
+         "NumPy",
+         "import numpy as np",
+         "तेज़ array और गणित: mean, median, standard deviation, matrix"
+        ],
+        [
+         "Pandas",
+         "import pandas as pd",
+         "तालिकाएँ (DataFrame): CSV/Excel पढ़ना, साफ़ करना, छाँटना"
+        ],
+        [
+         "Matplotlib",
+         "import matplotlib.pyplot as plt",
+         "चार्ट: line, bar, scatter, pie, histogram, चित्र दिखाना"
+        ],
+        [
+         "OpenCV",
+         "import cv2",
+         "चित्र और वीडियो पढ़ना, बदलना और विश्लेषण (computer vision)"
+        ],
+        [
+         "SciPy",
+         "from scipy import stats",
+         "वैज्ञानिक और सांख्यिकीय function, जैसे mode"
+        ],
+        [
+         "scikit-learn",
+         "from sklearn... import ...",
+         "तैयार machine learning model और मूल्यांकन"
+        ],
+        [
+         "NLTK",
+         "import nltk",
+         "Natural language processing: tokenising, stemming, stop words"
+        ],
+        [
+         "TensorFlow / Keras, PyTorch",
+         "import tensorflow as tf / import torch",
+         "Deep learning (neural network)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Package names for installing are not always the same as the import names: you install opencv-python but import cv2; you install scikit-learn but import sklearn; you install Pillow but import PIL. If you see ModuleNotFoundError, the package is not installed in the environment you are using.",
+      "hi": "Install करने वाले package के नाम हमेशा import वाले नाम जैसे नहीं होते: आप opencv-python install करते हैं पर import cv2 करते हैं; scikit-learn install करते हैं पर import sklearn; Pillow install करते हैं पर import PIL। अगर ModuleNotFoundError दिखे, तो वह package उस environment में install नहीं है जिसका आप उपयोग कर रहे हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.6 Python basics recap (1): statements, comments, keywords, identifiers and variables",
+    "hi": "7.6 Python की मूल बातें (1): statement, comment, keyword, identifier और variable"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "This section quickly revises Class IX Python so that the library programs later make sense. A statement is one instruction, usually written on one line, such as x = 5 or print(x). Python uses indentation (spaces at the start of a line, normally 4) to group statements into blocks, for example the body of an if or a loop. Wrong indentation gives an IndentationError.",
+      "hi": "यह भाग कक्षा 9 की Python को जल्दी से दोहराता है ताकि आगे के library प्रोग्राम समझ आएँ। Statement एक निर्देश है, जो आमतौर पर एक पंक्ति में लिखा जाता है, जैसे x = 5 या print(x)। Python, statements को block में बाँधने के लिए indentation (पंक्ति की शुरुआत में spaces, सामान्यतः 4) का उपयोग करती है, जैसे if या loop का भाग। ग़लत indentation से IndentationError आता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Comment",
+       "hi": "Comment (टिप्पणी)"
+      },
+      "text": {
+       "en": "Text in a program that Python ignores; it is written for humans to explain the code. A single-line comment starts with #. For several lines, put # at the start of each line, or use a triple-quoted string (''' ... ''' or \"\"\" ... \"\"\") that is not assigned to any variable.",
+       "hi": "प्रोग्राम का वह टेक्स्ट जिसे Python अनदेखा करती है; यह कोड समझाने के लिए इंसानों के लिए लिखा जाता है। एक-पंक्ति comment # से शुरू होता है। कई पंक्तियों के लिए हर पंक्ति की शुरुआत में # लगाएँ, या ऐसा triple-quoted string (''' ... ''' या \"\"\" ... \"\"\") लिखें जो किसी variable को assign न हो।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# This program greets the user\nprint(\"Namaste\")   # comment after code\n'''\nThis is a multi-line note.\nPython does not run it.\n'''",
+      "hi": "# This program greets the user\nprint(\"Namaste\")   # comment after code\n'''\nThis is a multi-line note.\nPython does not run it.\n'''"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Keyword",
+       "hi": "Keyword"
+      },
+      "text": {
+       "en": "A reserved word that has a special meaning in Python and cannot be used as a variable name. Python 3 has about 35 keywords, for example False, None, True, and, or, not, if, elif, else, for, while, break, continue, def, return, import, from, as, in, is, try, except, class, pass, lambda.",
+       "hi": "एक आरक्षित शब्द जिसका Python में विशेष अर्थ है और जिसे variable के नाम की तरह उपयोग नहीं किया जा सकता। Python 3 में लगभग 35 keywords हैं, जैसे False, None, True, and, or, not, if, elif, else, for, while, break, continue, def, return, import, from, as, in, is, try, except, class, pass, lambda।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Identifier",
+       "hi": "Identifier"
+      },
+      "text": {
+       "en": "The name given to a variable, function or other object. Rules: it may contain letters (A-Z, a-z), digits (0-9) and underscore (_); it must not start with a digit; it cannot contain spaces or symbols like @, $, -, +; it cannot be a keyword; it is case-sensitive (Marks and marks are different).",
+       "hi": "किसी variable, function या अन्य वस्तु को दिया गया नाम। नियम: इसमें अक्षर (A-Z, a-z), अंक (0-9) और underscore (_) हो सकते हैं; यह अंक से शुरू नहीं हो सकता; इसमें space या @, $, -, + जैसे चिह्न नहीं हो सकते; यह keyword नहीं हो सकता; यह case-sensitive है (Marks और marks अलग हैं)।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Name",
+        "Valid?",
+        "Reason"
+       ],
+       "hi": [
+        "नाम",
+        "मान्य?",
+        "कारण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "total_marks",
+         "Yes",
+         "letters and underscore"
+        ],
+        [
+         "_count",
+         "Yes",
+         "may start with underscore"
+        ],
+        [
+         "marks2025",
+         "Yes",
+         "digits allowed after the first character"
+        ],
+        [
+         "2ndPlace",
+         "No",
+         "starts with a digit"
+        ],
+        [
+         "roll no",
+         "No",
+         "contains a space"
+        ],
+        [
+         "my-name",
+         "No",
+         "hyphen is not allowed"
+        ],
+        [
+         "for",
+         "No",
+         "keyword"
+        ],
+        [
+         "Price$",
+         "No",
+         "symbol $ not allowed"
+        ]
+       ],
+       "hi": [
+        [
+         "total_marks",
+         "हाँ",
+         "अक्षर और underscore"
+        ],
+        [
+         "_count",
+         "हाँ",
+         "underscore से शुरू हो सकता है"
+        ],
+        [
+         "marks2025",
+         "हाँ",
+         "पहले अक्षर के बाद अंक चल सकते हैं"
+        ],
+        [
+         "2ndPlace",
+         "नहीं",
+         "अंक से शुरू होता है"
+        ],
+        [
+         "roll no",
+         "नहीं",
+         "इसमें space है"
+        ],
+        [
+         "my-name",
+         "नहीं",
+         "hyphen की अनुमति नहीं"
+        ],
+        [
+         "for",
+         "नहीं",
+         "keyword है"
+        ],
+        [
+         "Price$",
+         "नहीं",
+         "$ चिह्न की अनुमति नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Variable",
+       "hi": "Variable"
+      },
+      "text": {
+       "en": "A name that refers to a value stored in memory. It is created the moment you assign a value with = (the assignment operator). Its value can change later. Python works out the type by itself, so you do not declare it.",
+       "hi": "एक नाम जो memory में रखे किसी मान (value) की ओर संकेत करता है। यह उसी क्षण बनता है जब आप = (assignment operator) से उसे मान देते हैं। इसका मान बाद में बदल सकता है। Python ख़ुद type पहचान लेती है, इसलिए उसे घोषित (declare) नहीं करना पड़ता।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "x = y = 0              # same value to many variables\na, b, c = 5, 10, 15    # many values in one line\na, b = b, a            # swap two values\ncount = count + 1      # same as count += 1 (count must exist first)",
+      "hi": "x = y = 0              # कई variables को एक ही मान\na, b, c = 5, 10, 15    # एक पंक्ति में कई मान\na, b = b, a            # दो मानों की अदला-बदली\ncount = count + 1      # count += 1 के समान (count पहले से होना चाहिए)"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Basics: variables, data types, type()\nname = \"Priya\"\nage = 15\nheight = 1.58\nis_student = True\nmarks = [78, 85, 92]\nprint(name, age, height, is_student)\nprint(type(name), type(age), type(height), type(is_student), type(marks))\n\nOutput:\nPriya 15 1.58 True\n<class 'str'> <class 'int'> <class 'float'> <class 'bool'> <class 'list'>",
+      "hi": "# Basics: variables, data types, type()\nname = \"Priya\"\nage = 15\nheight = 1.58\nis_student = True\nmarks = [78, 85, 92]\nprint(name, age, height, is_student)\nprint(type(name), type(age), type(height), type(is_student), type(marks))\n\nआउटपुट (Output):\nPriya 15 1.58 True\n<class 'str'> <class 'int'> <class 'float'> <class 'bool'> <class 'list'>"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.7 Python basics recap (2): data types, type conversion, input and print",
+    "hi": "7.7 Python की मूल बातें (2): data type, type conversion, input और print"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every value has a data type, which tells Python what kind of value it is and what can be done with it. Use type(value) to check it.",
+      "hi": "हर मान का एक data type होता है, जो Python को बताता है कि वह किस प्रकार का मान है और उसके साथ क्या किया जा सकता है। इसे जाँचने के लिए type(value) का उपयोग करें।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Category",
+        "Example",
+        "Notes"
+       ],
+       "hi": [
+        "Type",
+        "श्रेणी",
+        "उदाहरण",
+        "टिप्पणी"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "int",
+         "Number",
+         "x = 500",
+         "Whole numbers, positive or negative"
+        ],
+        [
+         "float",
+         "Number",
+         "x = 50.5",
+         "Numbers with a decimal point"
+        ],
+        [
+         "complex",
+         "Number",
+         "x = 10 + 4j",
+         "Real and imaginary part (j)"
+        ],
+        [
+         "bool",
+         "Boolean",
+         "x = 15 > 6  (True)",
+         "Only True or False (capital T and F)"
+        ],
+        [
+         "str",
+         "Sequence",
+         "name = \"Rakesh\"",
+         "Text in single, double or triple quotes; immutable"
+        ],
+        [
+         "list",
+         "Sequence",
+         "dob = [19, \"January\", 1995]",
+         "Ordered, in [ ], mutable (can change), mixed types allowed"
+        ],
+        [
+         "tuple",
+         "Sequence",
+         "t = (15, 20, 20, 40)",
+         "Ordered, in ( ), immutable (cannot change)"
+        ],
+        [
+         "set",
+         "Set",
+         "s = {10, 20, 30}",
+         "Unordered, in { }, no duplicate items"
+        ],
+        [
+         "dict",
+         "Mapping",
+         "d = {1: 'Ajay', 'key': 2}",
+         "Key : value pairs in { }; keys are unique"
+        ],
+        [
+         "NoneType",
+         "-",
+         "x = None",
+         "Means 'no value'"
+        ]
+       ],
+       "hi": [
+        [
+         "int",
+         "संख्या",
+         "x = 500",
+         "पूर्ण संख्याएँ, धनात्मक या ऋणात्मक"
+        ],
+        [
+         "float",
+         "संख्या",
+         "x = 50.5",
+         "दशमलव बिंदु वाली संख्याएँ"
+        ],
+        [
+         "complex",
+         "संख्या",
+         "x = 10 + 4j",
+         "वास्तविक और काल्पनिक भाग (j)"
+        ],
+        [
+         "bool",
+         "Boolean",
+         "x = 15 > 6  (True)",
+         "केवल True या False (बड़े T और F के साथ)"
+        ],
+        [
+         "str",
+         "Sequence",
+         "name = \"Rakesh\"",
+         "एकल, दोहरे या तिहरे उद्धरण में टेक्स्ट; immutable"
+        ],
+        [
+         "list",
+         "Sequence",
+         "dob = [19, \"January\", 1995]",
+         "क्रमबद्ध, [ ] में, mutable (बदल सकती है), मिश्रित types चलते हैं"
+        ],
+        [
+         "tuple",
+         "Sequence",
+         "t = (15, 20, 20, 40)",
+         "क्रमबद्ध, ( ) में, immutable (बदल नहीं सकता)"
+        ],
+        [
+         "set",
+         "Set",
+         "s = {10, 20, 30}",
+         "क्रमहीन, { } में, दोहराव वाले items नहीं"
+        ],
+        [
+         "dict",
+         "Mapping",
+         "d = {1: 'Ajay', 'key': 2}",
+         "{ } में key : value जोड़े; keys अद्वितीय होती हैं"
+        ],
+        [
+         "NoneType",
+         "-",
+         "x = None",
+         "अर्थ है 'कोई मान नहीं'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Type conversion",
+       "hi": "Type conversion (प्रकार परिवर्तन)"
+      },
+      "text": {
+       "en": "Changing a value from one data type to another. Implicit conversion is done automatically by Python, for example 5 + 2.0 gives 7.0 (int becomes float so no information is lost). Explicit conversion (type casting) is done by you with functions such as int(), float(), str(), list(), tuple(), set() and bool().",
+       "hi": "किसी मान को एक data type से दूसरे में बदलना। Implicit conversion, Python अपने आप करती है, जैसे 5 + 2.0 का परिणाम 7.0 (int, float बन जाता है ताकि कोई जानकारी न खोए)। Explicit conversion (type casting) आप स्वयं int(), float(), str(), list(), tuple(), set() और bool() जैसे functions से करते हैं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Expression",
+        "Result",
+        "Why"
+       ],
+       "hi": [
+        "Expression",
+        "परिणाम",
+        "क्यों"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "int('25') + 5",
+         "30",
+         "text '25' converted to number"
+        ],
+        [
+         "str(25) + '5'",
+         "255",
+         "both are text, so + joins them"
+        ],
+        [
+         "float(7)",
+         "7.0",
+         "int to float"
+        ],
+        [
+         "int(9.8)",
+         "9",
+         "int() cuts off the decimal part, it does not round"
+        ],
+        [
+         "5 + 2.0",
+         "7.0",
+         "implicit conversion to float"
+        ],
+        [
+         "bool(0), bool('hi')",
+         "False, True",
+         "0 and empty values are False; others True"
+        ]
+       ],
+       "hi": [
+        [
+         "int('25') + 5",
+         "30",
+         "टेक्स्ट '25' संख्या में बदला"
+        ],
+        [
+         "str(25) + '5'",
+         "255",
+         "दोनों टेक्स्ट हैं, इसलिए + उन्हें जोड़ता है"
+        ],
+        [
+         "float(7)",
+         "7.0",
+         "int से float"
+        ],
+        [
+         "int(9.8)",
+         "9",
+         "int() दशमलव भाग काट देता है, round नहीं करता"
+        ],
+        [
+         "5 + 2.0",
+         "7.0",
+         "float में implicit conversion"
+        ],
+        [
+         "bool(0), bool('hi')",
+         "False, True",
+         "0 और ख़ाली मान False होते हैं; बाकी True"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "input() shows a message and waits for the user to type something. Whatever the user types is always returned as a string (str), so convert it with int() or float() before doing maths. print() displays values; sep sets what goes between values (a space by default) and end sets what comes at the end (a new line by default). An f-string, like f\"Total is {x}\", puts values directly inside text.",
+      "hi": "input() एक संदेश दिखाता है और उपयोगकर्ता के कुछ टाइप करने की प्रतीक्षा करता है। उपयोगकर्ता जो भी टाइप करे, वह हमेशा string (str) के रूप में मिलता है, इसलिए गणित करने से पहले उसे int() या float() से बदलें। print() मान दिखाता है; sep तय करता है कि मानों के बीच क्या आए (डिफ़ॉल्ट रूप से space) और end तय करता है कि अंत में क्या आए (डिफ़ॉल्ट रूप से नई पंक्ति)। f-string, जैसे f\"Total is {x}\", मानों को सीधे टेक्स्ट के अंदर रख देता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Input and type conversion\nprice = float(input(\"Enter price of one pen: \"))\nqty = int(input(\"Enter number of pens: \"))\ntotal = price * qty\nprint(\"Total amount =\", total)\n\nSample run (what you type is shown after the colon):\nEnter price of one pen: 12.5\nEnter number of pens: 4\nTotal amount = 50.0",
+      "hi": "# Input and type conversion\nprice = float(input(\"Enter price of one pen: \"))\nqty = int(input(\"Enter number of pens: \"))\ntotal = price * qty\nprint(\"Total amount =\", total)\n\nनमूना रन (आप जो टाइप करते हैं वह कोलन के बाद दिखाया गया है):\nEnter price of one pen: 12.5\nEnter number of pens: 4\nTotal amount = 50.0"
+     }
+    },
+    {
+     "formula": {
+      "en": "# print() with sep and end, and continue in a loop\nprint(\"Delhi\", \"Mumbai\", \"Chennai\", sep=\" | \")\nprint(\"Loading\", end=\"...\")\nprint(\"done\")\nfor n in range(1, 8):\n    if n % 2 == 0:\n        continue\n    print(n, end=\" \")\nprint()\nprint(f\"Total of 3 and 4 is {3 + 4}\")\n\nOutput:\nDelhi | Mumbai | Chennai\nLoading...done\n1 3 5 7 \nTotal of 3 and 4 is 7",
+      "hi": "# print() with sep and end, and continue in a loop\nprint(\"Delhi\", \"Mumbai\", \"Chennai\", sep=\" | \")\nprint(\"Loading\", end=\"...\")\nprint(\"done\")\nfor n in range(1, 8):\n    if n % 2 == 0:\n        continue\n    print(n, end=\" \")\nprint()\nprint(f\"Total of 3 and 4 is {3 + 4}\")\n\nआउटपुट (Output):\nDelhi | Mumbai | Chennai\nLoading...done\n1 3 5 7 \nTotal of 3 and 4 is 7"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: = assigns a value (x = 5), while == compares two values and gives True or False (x == 5). Also, input() without int() gives text: '4' + '4' is '44', not 8.",
+      "hi": "याद रखें: = मान assign करता है (x = 5), जबकि == दो मानों की तुलना करता है और True या False देता है (x == 5)। साथ ही, int() के बिना input() टेक्स्ट देता है: '4' + '4' का परिणाम '44' है, 8 नहीं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.8 Python basics recap (3): operators",
+    "hi": "7.8 Python की मूल बातें (3): operator"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "An operator is a symbol that performs an operation on values (called operands). In 7 + 3, + is the operator and 7 and 3 are operands.",
+      "hi": "Operator वह चिह्न है जो मानों (जिन्हें operand कहते हैं) पर कोई क्रिया करता है। 7 + 3 में + operator है और 7 तथा 3 operand हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Operators",
+        "Example (a = 17, b = 5)"
+       ],
+       "hi": [
+        "प्रकार",
+        "Operators",
+        "उदाहरण (a = 17, b = 5)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Arithmetic",
+         "+  -  *  /  //  %  **",
+         "a / b = 3.4, a // b = 3 (floor division), a % b = 2 (remainder), a ** b = 1419857 (power)"
+        ],
+        [
+         "Relational (comparison)",
+         "==  !=  >  <  >=  <=",
+         "a > b is True, a == b is False"
+        ],
+        [
+         "Assignment",
+         "=  +=  -=  *=  /=  //=  %=  **=",
+         "a += 1 makes a equal to 18"
+        ],
+        [
+         "Logical",
+         "and  or  not",
+         "a > 10 and b > 10 is False; a > 10 or b > 10 is True"
+        ],
+        [
+         "Membership",
+         "in  not in",
+         "'ar' in 'Bharat' is True"
+        ],
+        [
+         "Identity",
+         "is  is not",
+         "x is None checks if x is the very same object None"
+        ]
+       ],
+       "hi": [
+        [
+         "Arithmetic (अंकगणितीय)",
+         "+  -  *  /  //  %  **",
+         "a / b = 3.4, a // b = 3 (floor division), a % b = 2 (शेषफल), a ** b = 1419857 (घात)"
+        ],
+        [
+         "Relational (तुलना)",
+         "==  !=  >  <  >=  <=",
+         "a > b, True है; a == b, False है"
+        ],
+        [
+         "Assignment",
+         "=  +=  -=  *=  /=  //=  %=  **=",
+         "a += 1 से a का मान 18 हो जाता है"
+        ],
+        [
+         "Logical (तार्किक)",
+         "and  or  not",
+         "a > 10 and b > 10, False है; a > 10 or b > 10, True है"
+        ],
+        [
+         "Membership",
+         "in  not in",
+         "'ar' in 'Bharat', True है"
+        ],
+        [
+         "Identity",
+         "is  is not",
+         "x is None जाँचता है कि क्या x वही वस्तु None है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# Arithmetic operators\na = 17\nb = 5\nprint(\"a + b =\", a + b)\nprint(\"a - b =\", a - b)\nprint(\"a * b =\", a * b)\nprint(\"a / b =\", a / b)\nprint(\"a // b =\", a // b)\nprint(\"a % b =\", a % b)\nprint(\"a ** b =\", a ** b)\nprint(a > b, a == b, a != b)\nprint(a > 10 and b > 10, a > 10 or b > 10, not a > 10)\n\nOutput:\na + b = 22\na - b = 12\na * b = 85\na / b = 3.4\na // b = 3\na % b = 2\na ** b = 1419857\nTrue False True\nFalse True False",
+      "hi": "# Arithmetic operators\na = 17\nb = 5\nprint(\"a + b =\", a + b)\nprint(\"a - b =\", a - b)\nprint(\"a * b =\", a * b)\nprint(\"a / b =\", a / b)\nprint(\"a // b =\", a // b)\nprint(\"a % b =\", a % b)\nprint(\"a ** b =\", a ** b)\nprint(a > b, a == b, a != b)\nprint(a > 10 and b > 10, a > 10 or b > 10, not a > 10)\n\nआउटपुट (Output):\na + b = 22\na - b = 12\na * b = 85\na / b = 3.4\na // b = 3\na % b = 2\na ** b = 1419857\nTrue False True\nFalse True False"
+     }
+    },
+    {
+     "p": {
+      "en": "Operator precedence decides which operation happens first when an expression has many operators. From highest to lowest: brackets ( ), then ** (power), then unary minus, then * / // %, then + -, then comparisons, then not, then and, then or. Operators of the same level are worked left to right, except ** which goes right to left.",
+      "hi": "Operator precedence (प्राथमिकता) तय करती है कि जब expression में कई operators हों तो कौन-सी क्रिया पहले होगी। सबसे ऊँचे से सबसे नीचे: कोष्ठक ( ), फिर ** (घात), फिर unary minus, फिर * / // %, फिर + -, फिर तुलना, फिर not, फिर and, फिर or। एक ही स्तर के operators बाएँ से दाएँ हल होते हैं, सिवाय ** के जो दाएँ से बाएँ चलता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the value: (a) 2 + 3 * 4 (b) (2 + 3) * 4 (c) 2 ** 3 ** 2 (d) 10 - 4 - 3 (e) 7 // 2 * 2",
+       "hi": "मान ज्ञात करें: (a) 2 + 3 * 4 (b) (2 + 3) * 4 (c) 2 ** 3 ** 2 (d) 10 - 4 - 3 (e) 7 // 2 * 2"
+      },
+      "a": {
+       "en": "(a) * first: 3 * 4 = 12, then 2 + 12 = 14\n(b) bracket first: 5 * 4 = 20\n(c) ** goes right to left: 3 ** 2 = 9, then 2 ** 9 = 512\n(d) left to right: 10 - 4 = 6, then 6 - 3 = 3\n(e) // and * have equal level, left to right: 7 // 2 = 3, then 3 * 2 = 6",
+       "hi": "(a) पहले *: 3 * 4 = 12, फिर 2 + 12 = 14\n(b) पहले कोष्ठक: 5 * 4 = 20\n(c) ** दाएँ से बाएँ: 3 ** 2 = 9, फिर 2 ** 9 = 512\n(d) बाएँ से दाएँ: 10 - 4 = 6, फिर 6 - 3 = 3\n(e) // और * का स्तर बराबर, बाएँ से दाएँ: 7 // 2 = 3, फिर 3 * 2 = 6"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.9 Python basics recap (4): decisions and loops",
+    "hi": "7.9 Python की मूल बातें (4): निर्णय और loop"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Control structures decide the flow of a program. Normally statements run one after another (sequence). Selection (if) chooses between paths, and iteration (loops) repeats steps. A condition is an expression that is True or False; the line before a block ends with a colon (:) and the block is indented.",
+      "hi": "Control structures प्रोग्राम का प्रवाह तय करते हैं। सामान्यतः statements एक के बाद एक चलते हैं (sequence)। Selection (if) रास्तों में से चुनता है, और iteration (loop) चरणों को दोहराता है। Condition ऐसा expression है जो True या False हो; block से पहले वाली पंक्ति colon (:) पर ख़त्म होती है और block indented होता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Form",
+        "Use"
+       ],
+       "hi": [
+        "रूप",
+        "उपयोग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "if",
+         "Do something only when the condition is True (e.g. print 'Positive' if n > 0)"
+        ],
+        [
+         "if ... else",
+         "Two paths: one for True, one for False (e.g. eligible to vote or not)"
+        ],
+        [
+         "if ... elif ... else (ladder)",
+         "Many conditions checked in order; only the first True block runs (e.g. grades)"
+        ],
+        [
+         "Nested if",
+         "An if inside another if (e.g. first check n >= 0, then check n == 0)"
+        ]
+       ],
+       "hi": [
+        [
+         "if",
+         "केवल तभी कुछ करें जब condition True हो (जैसे n > 0 हो तो 'Positive' print करें)"
+        ],
+        [
+         "if ... else",
+         "दो रास्ते: एक True के लिए, एक False के लिए (जैसे वोट देने योग्य है या नहीं)"
+        ],
+        [
+         "if ... elif ... else (ladder)",
+         "कई conditions क्रम से जाँची जाती हैं; केवल पहला True block चलता है (जैसे grade)"
+        ],
+        [
+         "Nested if",
+         "एक if के अंदर दूसरा if (जैसे पहले n >= 0 जाँचें, फिर n == 0)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# if - elif - else: grade from marks\nmarks = int(input(\"Enter marks out of 100: \"))\nif marks >= 90:\n    grade = \"A1\"\nelif marks >= 75:\n    grade = \"A2\"\nelif marks >= 60:\n    grade = \"B\"\nelif marks >= 33:\n    grade = \"C\"\nelse:\n    grade = \"Needs improvement\"\nprint(\"Grade:\", grade)\n\nSample run (what you type is shown after the colon):\nEnter marks out of 100: 81\nGrade: A2",
+      "hi": "# if - elif - else: grade from marks\nmarks = int(input(\"Enter marks out of 100: \"))\nif marks >= 90:\n    grade = \"A1\"\nelif marks >= 75:\n    grade = \"A2\"\nelif marks >= 60:\n    grade = \"B\"\nelif marks >= 33:\n    grade = \"C\"\nelse:\n    grade = \"Needs improvement\"\nprint(\"Grade:\", grade)\n\nनमूना रन (आप जो टाइप करते हैं वह कोलन के बाद दिखाया गया है):\nEnter marks out of 100: 81\nGrade: A2"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Nested if: classify a number\nnum = -12\nif num >= 0:\n    if num == 0:\n        print(\"Zero\")\n    else:\n        print(\"Positive number\")\nelse:\n    print(\"Negative number\")\n\nOutput:\nNegative number",
+      "hi": "# Nested if: classify a number\nnum = -12\nif num >= 0:\n    if num == 0:\n        print(\"Zero\")\n    else:\n        print(\"Positive number\")\nelse:\n    print(\"Negative number\")\n\nआउटपुट (Output):\nNegative number"
+     }
+    },
+    {
+     "p": {
+      "en": "A for loop repeats once for each item in a sequence (a list, string, tuple or range). range(start, stop, step) produces numbers from start up to but NOT including stop: range(5) gives 0,1,2,3,4; range(1, 6) gives 1 to 5; range(10, 0, -2) gives 10,8,6,4,2. A while loop repeats as long as its condition stays True, so something inside it must change, or it runs forever. break stops the loop immediately; continue skips the rest of the current round and goes to the next.",
+      "hi": "for loop किसी sequence (list, string, tuple या range) के हर item के लिए एक बार दोहराता है। range(start, stop, step), start से लेकर stop तक की संख्याएँ बनाता है, पर stop शामिल नहीं होता: range(5) से 0,1,2,3,4; range(1, 6) से 1 से 5; range(10, 0, -2) से 10,8,6,4,2 मिलते हैं। while loop तब तक दोहराता है जब तक उसकी condition True रहे, इसलिए उसके अंदर कुछ बदलना ज़रूरी है, वरना वह हमेशा चलता रहेगा। break, loop को तुरंत रोक देता है; continue मौजूदा चक्कर का बाकी भाग छोड़कर अगले पर चला जाता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Loops: for with range, while, break\nfor i in range(1, 6):\n    print(\"7 x\", i, \"=\", 7 * i)\n\ntotal = 0\nn = 1\nwhile n <= 10:\n    total = total + n\n    n = n + 1\nprint(\"Sum of 1 to 10 =\", total)\n\nfor ch in \"AI\":\n    print(ch)\n\nfor num in [4, 9, 15, 22]:\n    if num > 10:\n        print(\"First number above 10:\", num)\n        break\n\nOutput:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\nSum of 1 to 10 = 55\nA\nI\nFirst number above 10: 15",
+      "hi": "# Loops: for with range, while, break\nfor i in range(1, 6):\n    print(\"7 x\", i, \"=\", 7 * i)\n\ntotal = 0\nn = 1\nwhile n <= 10:\n    total = total + n\n    n = n + 1\nprint(\"Sum of 1 to 10 =\", total)\n\nfor ch in \"AI\":\n    print(ch)\n\nfor num in [4, 9, 15, 22]:\n    if num > 10:\n        print(\"First number above 10:\", num)\n        break\n\nआउटपुट (Output):\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\nSum of 1 to 10 = 55\nA\nI\nFirst number above 10: 15"
+     }
+    },
+    {
+     "note": {
+      "en": "An endless while loop in Jupyter shows In [*] for ever. Stop it with Kernel > Interrupt (or the square stop button), then fix the condition.",
+      "hi": "Jupyter में अनंत while loop हमेशा In [*] दिखाता है। उसे Kernel > Interrupt (या चौकोर stop बटन) से रोकें, फिर condition ठीक करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.10 Python basics recap (5): lists, tuples, dictionaries, sets and strings",
+    "hi": "7.10 Python की मूल बातें (5): list, tuple, dictionary, set और string"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI work is mostly about collections of data: a list of temperatures, a table of students, the pixels of an image. Python's built-in collections are the first step. Items in lists, tuples and strings have positions called indexes, starting from 0. Negative indexes count from the end: -1 is the last item. Slicing s[start:stop] takes items from start up to but not including stop.",
+      "hi": "AI का ज़्यादातर काम data के संग्रहों पर होता है: तापमानों की सूची, विद्यार्थियों की तालिका, किसी चित्र के pixels। Python के built-in संग्रह इसकी पहली सीढ़ी हैं। List, tuple और string के items की स्थितियाँ index कहलाती हैं, जो 0 से शुरू होती हैं। ऋणात्मक index अंत से गिनते हैं: -1 आख़िरी item है। Slicing s[start:stop], start से लेकर stop तक के items लेता है, पर stop शामिल नहीं होता।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Strings: indexing, slicing and joining\ns = \"Bharat\"\nprint(s[0], s[-1], s[1:4], len(s))\nprint(s * 2, \"ar\" in s)\nprint(s + \" \" + \"Ratna\")\n\nOutput:\nB t har 6\nBharatBharat True\nBharat Ratna",
+      "hi": "# Strings: indexing, slicing and joining\ns = \"Bharat\"\nprint(s[0], s[-1], s[1:4], len(s))\nprint(s * 2, \"ar\" in s)\nprint(s + \" \" + \"Ratna\")\n\nआउटपुट (Output):\nB t har 6\nBharatBharat True\nBharat Ratna"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Method / function",
+        "Works on",
+        "What it does"
+       ],
+       "hi": [
+        "Method / function",
+        "किस पर",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "append(x)",
+         "list",
+         "Adds x at the end"
+        ],
+        [
+         "insert(i, x)",
+         "list",
+         "Inserts x at index i"
+        ],
+        [
+         "extend(list2)",
+         "list",
+         "Adds all items of list2"
+        ],
+        [
+         "remove(x)",
+         "list",
+         "Removes the first x"
+        ],
+        [
+         "pop() / pop(i)",
+         "list",
+         "Removes and returns the last item / item at i"
+        ],
+        [
+         "sort() / reverse()",
+         "list",
+         "Sorts / reverses the list in place"
+        ],
+        [
+         "count(x), index(x)",
+         "list, tuple, str",
+         "How many times x appears; position of first x"
+        ],
+        [
+         "keys(), values(), items()",
+         "dict",
+         "All keys, all values, all (key, value) pairs"
+        ],
+        [
+         "get(key)",
+         "dict",
+         "Value for key, or None if the key is missing (no error)"
+        ],
+        [
+         "add(x)",
+         "set",
+         "Adds x if not already present"
+        ],
+        [
+         "upper(), lower(), title()",
+         "str",
+         "Change case"
+        ],
+        [
+         "split(), join()",
+         "str",
+         "Break text into a list of words; join a list into text"
+        ],
+        [
+         "replace(a, b), strip()",
+         "str",
+         "Replace a with b; remove spaces from both ends"
+        ]
+       ],
+       "hi": [
+        [
+         "append(x)",
+         "list",
+         "अंत में x जोड़ता है"
+        ],
+        [
+         "insert(i, x)",
+         "list",
+         "index i पर x डालता है"
+        ],
+        [
+         "extend(list2)",
+         "list",
+         "list2 के सभी items जोड़ता है"
+        ],
+        [
+         "remove(x)",
+         "list",
+         "पहला x हटाता है"
+        ],
+        [
+         "pop() / pop(i)",
+         "list",
+         "आख़िरी item / i वाला item हटाकर लौटाता है"
+        ],
+        [
+         "sort() / reverse()",
+         "list",
+         "List को उसी जगह क्रमबद्ध / उलटा करता है"
+        ],
+        [
+         "count(x), index(x)",
+         "list, tuple, str",
+         "x कितनी बार आया; पहले x की स्थिति"
+        ],
+        [
+         "keys(), values(), items()",
+         "dict",
+         "सभी keys, सभी values, सभी (key, value) जोड़े"
+        ],
+        [
+         "get(key)",
+         "dict",
+         "key का मान, या key न हो तो None (error नहीं)"
+        ],
+        [
+         "add(x)",
+         "set",
+         "x न हो तो जोड़ता है"
+        ],
+        [
+         "upper(), lower(), title()",
+         "str",
+         "अक्षरों का case बदलता है"
+        ],
+        [
+         "split(), join()",
+         "str",
+         "टेक्स्ट को शब्दों की list में तोड़ता है; list को टेक्स्ट में जोड़ता है"
+        ],
+        [
+         "replace(a, b), strip()",
+         "str",
+         "a की जगह b; दोनों सिरों से spaces हटाता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# Lists, tuples, dictionaries, sets\nfruits = [\"mango\", \"banana\", \"apple\"]\nfruits.append(\"guava\")\nfruits.sort()\nprint(fruits, len(fruits), fruits[0], fruits[-1])\nprint(fruits[1:3])\n\npoint = (2, 5)\nprint(point[0], point[1])\n\nstudent = {\"name\": \"Kabir\", \"class\": 10, \"city\": \"Pune\"}\nstudent[\"marks\"] = 88\nprint(student[\"name\"], student.get(\"city\"))\nfor key, value in student.items():\n    print(key, \"->\", value)\n\ncolours = {\"red\", \"green\", \"red\", \"blue\"}\nprint(len(colours))\n\nOutput:\n['apple', 'banana', 'guava', 'mango'] 4 apple mango\n['banana', 'guava']\n2 5\nKabir Pune\nname -> Kabir\nclass -> 10\ncity -> Pune\nmarks -> 88\n3",
+      "hi": "# Lists, tuples, dictionaries, sets\nfruits = [\"mango\", \"banana\", \"apple\"]\nfruits.append(\"guava\")\nfruits.sort()\nprint(fruits, len(fruits), fruits[0], fruits[-1])\nprint(fruits[1:3])\n\npoint = (2, 5)\nprint(point[0], point[1])\n\nstudent = {\"name\": \"Kabir\", \"class\": 10, \"city\": \"Pune\"}\nstudent[\"marks\"] = 88\nprint(student[\"name\"], student.get(\"city\"))\nfor key, value in student.items():\n    print(key, \"->\", value)\n\ncolours = {\"red\", \"green\", \"red\", \"blue\"}\nprint(len(colours))\n\nआउटपुट (Output):\n['apple', 'banana', 'guava', 'mango'] 4 apple mango\n['banana', 'guava']\n2 5\nKabir Pune\nname -> Kabir\nclass -> 10\ncity -> Pune\nmarks -> 88\n3"
+     }
+    },
+    {
+     "p": {
+      "en": "Notice in the output: the set {\"red\", \"green\", \"red\", \"blue\"} has only 3 items because duplicates are removed. A tuple like point = (2, 5) is used for values that should not change, such as coordinates.",
+      "hi": "आउटपुट में ध्यान दें: set {\"red\", \"green\", \"red\", \"blue\"} में केवल 3 items हैं क्योंकि दोहराव हट जाते हैं। point = (2, 5) जैसा tuple उन मानों के लिए उपयोग होता है जिन्हें बदलना नहीं चाहिए, जैसे निर्देशांक (coordinates)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "List",
+        "Tuple",
+        "Set",
+        "Dictionary"
+       ],
+       "hi": [
+        "विशेषता",
+        "List",
+        "Tuple",
+        "Set",
+        "Dictionary"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Brackets",
+         "[ ]",
+         "( )",
+         "{ }",
+         "{ key: value }"
+        ],
+        [
+         "Ordered (has index)",
+         "Yes",
+         "Yes",
+         "No",
+         "Accessed by key"
+        ],
+        [
+         "Can change (mutable)",
+         "Yes",
+         "No",
+         "Yes",
+         "Yes"
+        ],
+        [
+         "Duplicates allowed",
+         "Yes",
+         "Yes",
+         "No",
+         "Keys no, values yes"
+        ]
+       ],
+       "hi": [
+        [
+         "कोष्ठक",
+         "[ ]",
+         "( )",
+         "{ }",
+         "{ key: value }"
+        ],
+        [
+         "क्रमबद्ध (index है)",
+         "हाँ",
+         "हाँ",
+         "नहीं",
+         "key से पहुँच"
+        ],
+        [
+         "बदल सकता है (mutable)",
+         "हाँ",
+         "नहीं",
+         "हाँ",
+         "हाँ"
+        ],
+        [
+         "दोहराव की अनुमति",
+         "हाँ",
+         "हाँ",
+         "नहीं",
+         "keys नहीं, values हाँ"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.11 Built-in functions, user-defined functions and errors",
+    "hi": "7.11 Built-in function, user-defined function और error"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Function",
+       "hi": "Function"
+      },
+      "text": {
+       "en": "A named block of code that does one job and can be used again and again by calling its name with brackets. Built-in functions come with Python (print, len, max). User-defined functions are written by you with the keyword def; return sends a result back.",
+       "hi": "कोड का नाम वाला block जो एक काम करता है और उसका नाम कोष्ठक के साथ बुलाकर बार-बार उपयोग किया जा सकता है। Built-in functions Python के साथ आते हैं (print, len, max)। User-defined functions आप keyword def से लिखते हैं; return परिणाम वापस भेजता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Built-in function",
+        "Example",
+        "Result"
+       ],
+       "hi": [
+        "Built-in function",
+        "उदाहरण",
+        "परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "len()",
+         "len([12, 45, 7])",
+         "3"
+        ],
+        [
+         "max(), min()",
+         "max([12, 45, 7])",
+         "45"
+        ],
+        [
+         "sum()",
+         "sum([12, 45, 7])",
+         "64"
+        ],
+        [
+         "sorted()",
+         "sorted([12, 45, 7])",
+         "[7, 12, 45] (new list)"
+        ],
+        [
+         "round(x, n)",
+         "round(22.456, 2)",
+         "22.46"
+        ],
+        [
+         "abs(), pow()",
+         "abs(-9), pow(2, 10)",
+         "9, 1024"
+        ],
+        [
+         "type()",
+         "type(3.5)",
+         "<class 'float'>"
+        ],
+        [
+         "range()",
+         "list(range(3))",
+         "[0, 1, 2]"
+        ],
+        [
+         "input(), print()",
+         "-",
+         "read from keyboard, display output"
+        ]
+       ],
+       "hi": [
+        [
+         "len()",
+         "len([12, 45, 7])",
+         "3"
+        ],
+        [
+         "max(), min()",
+         "max([12, 45, 7])",
+         "45"
+        ],
+        [
+         "sum()",
+         "sum([12, 45, 7])",
+         "64"
+        ],
+        [
+         "sorted()",
+         "sorted([12, 45, 7])",
+         "[7, 12, 45] (नई list)"
+        ],
+        [
+         "round(x, n)",
+         "round(22.456, 2)",
+         "22.46"
+        ],
+        [
+         "abs(), pow()",
+         "abs(-9), pow(2, 10)",
+         "9, 1024"
+        ],
+        [
+         "type()",
+         "type(3.5)",
+         "<class 'float'>"
+        ],
+        [
+         "range()",
+         "list(range(3))",
+         "[0, 1, 2]"
+        ],
+        [
+         "input(), print()",
+         "-",
+         "कीबोर्ड से पढ़ना, आउटपुट दिखाना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# Built-in functions and user-defined functions\nnums = [12, 45, 7, 30, 18]\nprint(len(nums), max(nums), min(nums), sum(nums))\nprint(sorted(nums))\nprint(round(sum(nums) / len(nums), 2))\nprint(abs(-9), pow(2, 10))\ntext = \"Artificial Intelligence\"\nprint(text.upper())\nprint(text.lower())\nprint(text.split())\nprint(text.count(\"i\"))\nprint(text.replace(\"Artificial\", \"Human\"))\n\ndef percentage(obtained, maximum):\n    return obtained / maximum * 100\n\nprint(\"Percentage:\", percentage(423, 500))\n\nOutput:\n5 45 7 112\n[7, 12, 18, 30, 45]\n22.4\n9 1024\nARTIFICIAL INTELLIGENCE\nartificial intelligence\n['Artificial', 'Intelligence']\n4\nHuman Intelligence\nPercentage: 84.6",
+      "hi": "# Built-in functions and user-defined functions\nnums = [12, 45, 7, 30, 18]\nprint(len(nums), max(nums), min(nums), sum(nums))\nprint(sorted(nums))\nprint(round(sum(nums) / len(nums), 2))\nprint(abs(-9), pow(2, 10))\ntext = \"Artificial Intelligence\"\nprint(text.upper())\nprint(text.lower())\nprint(text.split())\nprint(text.count(\"i\"))\nprint(text.replace(\"Artificial\", \"Human\"))\n\ndef percentage(obtained, maximum):\n    return obtained / maximum * 100\n\nprint(\"Percentage:\", percentage(423, 500))\n\nआउटपुट (Output):\n5 45 7 112\n[7, 12, 18, 30, 45]\n22.4\n9 1024\nARTIFICIAL INTELLIGENCE\nartificial intelligence\n['Artificial', 'Intelligence']\n4\nHuman Intelligence\nPercentage: 84.6"
+     }
+    },
+    {
+     "p": {
+      "en": "Errors are normal; reading them is a skill. A SyntaxError means the code breaks Python's grammar (missing colon or bracket). NameError means a name was used before it was created or is misspelt. TypeError means an operation is used on the wrong type, such as '4' + 4. ValueError means the type is right but the value is not, such as int('abc'). IndexError means an index is outside the list. ZeroDivisionError means dividing by 0. A try ... except block lets the program handle an error politely instead of crashing.",
+      "hi": "Error आना सामान्य है; उन्हें पढ़ना एक कौशल है। SyntaxError का अर्थ है कोड Python के व्याकरण को तोड़ता है (colon या कोष्ठक छूटा)। NameError का अर्थ है किसी नाम का उपयोग उसके बनने से पहले हुआ या spelling ग़लत है। TypeError का अर्थ है किसी क्रिया का उपयोग ग़लत type पर हुआ, जैसे '4' + 4। ValueError का अर्थ है type सही है पर मान नहीं, जैसे int('abc')। IndexError का अर्थ है index list के बाहर है। ZeroDivisionError का अर्थ है 0 से भाग। try ... except block प्रोग्राम को crash होने के बजाय error को शालीनता से सँभालने देता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Function to check eligibility to vote, with try/except\ndef can_vote(age):\n    if age >= 18:\n        return \"Eligible to vote\"\n    return \"Not eligible yet\"\n\ntry:\n    age = int(input(\"Enter age: \"))\n    print(can_vote(age))\nexcept ValueError:\n    print(\"Please enter a whole number.\")\n\nSample run (what you type is shown after the colon):\nEnter age: abc\nPlease enter a whole number.",
+      "hi": "# Function to check eligibility to vote, with try/except\ndef can_vote(age):\n    if age >= 18:\n        return \"Eligible to vote\"\n    return \"Not eligible yet\"\n\ntry:\n    age = int(input(\"Enter age: \"))\n    print(can_vote(age))\nexcept ValueError:\n    print(\"Please enter a whole number.\")\n\nनमूना रन (आप जो टाइप करते हैं वह कोलन के बाद दिखाया गया है):\nEnter age: abc\nPlease enter a whole number."
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.12 NumPy: working with arrays",
+    "hi": "7.12 NumPy: array के साथ काम"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "NumPy",
+       "hi": "NumPy"
+      },
+      "text": {
+       "en": "Short for Numerical Python. A library that provides the ndarray (n-dimensional array): a grid of values of the same type on which maths can be done on all items at once. It is much faster than plain lists for large data and is the base of Pandas, OpenCV, scikit-learn and most AI libraries.",
+       "hi": "Numerical Python का संक्षिप्त रूप। एक library जो ndarray (n-dimensional array) देती है: एक ही type के मानों का ग्रिड जिस पर सभी items पर एक साथ गणित किया जा सकता है। बड़े data के लिए यह साधारण lists से बहुत तेज़ है और Pandas, OpenCV, scikit-learn तथा ज़्यादातर AI libraries का आधार है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why not just use lists? With a list, [1, 2] + [3, 4] joins the lists into [1, 2, 3, 4]. With NumPy arrays, a + b adds item by item. This item-wise working is called vectorisation, and it is exactly what AI needs, because an image is a big grid of numbers and a dataset is a big table of numbers.",
+      "hi": "सिर्फ़ lists का उपयोग क्यों न करें? List में [1, 2] + [3, 4] lists को जोड़कर [1, 2, 3, 4] बना देता है। NumPy array में a + b हर item को उसके साथी से जोड़ता है। Item-दर-item इस तरह काम करना vectorisation कहलाता है, और AI को ठीक यही चाहिए, क्योंकि चित्र संख्याओं का बड़ा ग्रिड है और dataset संख्याओं की बड़ी तालिका।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# NumPy array basics\nimport numpy as np\na = np.array([[1, 2, 3], [4, 5, 6]])\nprint(a)\nprint(\"Shape:\", a.shape, \"Dimensions:\", a.ndim, \"Size:\", a.size)\nprint(a * 10)\nprint(np.zeros((2, 3)))\nprint(np.arange(0, 10, 2))\nprint(a[1, 2], a[0])\n\nOutput:\n[[1 2 3]\n [4 5 6]]\nShape: (2, 3) Dimensions: 2 Size: 6\n[[10 20 30]\n [40 50 60]]\n[[0. 0. 0.]\n [0. 0. 0.]]\n[0 2 4 6 8]\n6 [1 2 3]",
+      "hi": "# NumPy array basics\nimport numpy as np\na = np.array([[1, 2, 3], [4, 5, 6]])\nprint(a)\nprint(\"Shape:\", a.shape, \"Dimensions:\", a.ndim, \"Size:\", a.size)\nprint(a * 10)\nprint(np.zeros((2, 3)))\nprint(np.arange(0, 10, 2))\nprint(a[1, 2], a[0])\n\nआउटपुट (Output):\n[[1 2 3]\n [4 5 6]]\nShape: (2, 3) Dimensions: 2 Size: 6\n[[10 20 30]\n [40 50 60]]\n[[0. 0. 0.]\n [0. 0. 0.]]\n[0 2 4 6 8]\n6 [1 2 3]"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Term",
+        "Meaning"
+       ],
+       "hi": [
+        "शब्द",
+        "अर्थ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "ndim",
+         "Number of dimensions (axes): 1 for a row of numbers, 2 for a table, 3 for a colour image"
+        ],
+        [
+         "shape",
+         "Size along each dimension, as a tuple: (rows, columns)"
+        ],
+        [
+         "size",
+         "Total number of items"
+        ],
+        [
+         "dtype",
+         "Data type of the items, e.g. int64, float64, uint8"
+        ],
+        [
+         "np.zeros, np.ones",
+         "Make an array filled with 0s or 1s of a given shape"
+        ],
+        [
+         "np.arange(start, stop, step)",
+         "Like range(), but gives an array"
+        ],
+        [
+         "a[r, c]",
+         "Item at row r, column c (indexes from 0)"
+        ]
+       ],
+       "hi": [
+        [
+         "ndim",
+         "आयामों (axes) की संख्या: संख्याओं की एक पंक्ति के लिए 1, तालिका के लिए 2, रंगीन चित्र के लिए 3"
+        ],
+        [
+         "shape",
+         "हर आयाम में आकार, tuple के रूप में: (पंक्तियाँ, स्तंभ)"
+        ],
+        [
+         "size",
+         "Items की कुल संख्या"
+        ],
+        [
+         "dtype",
+         "Items का data type, जैसे int64, float64, uint8"
+        ],
+        [
+         "np.zeros, np.ones",
+         "दिए गए shape का 0 या 1 से भरा array बनाते हैं"
+        ],
+        [
+         "np.arange(start, stop, step)",
+         "range() जैसा, पर array देता है"
+        ],
+        [
+         "a[r, c]",
+         "पंक्ति r, स्तंभ c वाला item (index 0 से)"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.13 CBSE practical programs on lists",
+    "hi": "7.13 List पर CBSE practical प्रोग्राम"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Program 1 of the CBSE suggested list asks you to add the elements of two lists. Since + joins lists, we must go position by position. range(len(list1)) gives the indexes 0, 1, 2, 3, and we add the items at each index.",
+      "hi": "CBSE की सुझाई सूची का प्रोग्राम 1 दो lists के elements जोड़ने को कहता है। चूँकि + lists को जोड़ (join) देता है, हमें स्थिति-दर-स्थिति चलना होगा। range(len(list1)) से index 0, 1, 2, 3 मिलते हैं, और हम हर index के items को जोड़ते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 1: Add the elements of two lists\nlist1 = [10, 20, 30, 40]\nlist2 = [5, 15, 25, 35]\nresult = []\nfor i in range(len(list1)):\n    result.append(list1[i] + list2[i])\nprint(\"List 1:\", list1)\nprint(\"List 2:\", list2)\nprint(\"Sum list:\", result)\n\n# Shorter way using zip and a list comprehension\nresult2 = [a + b for a, b in zip(list1, list2)]\nprint(\"Sum list (zip):\", result2)\n\nOutput:\nList 1: [10, 20, 30, 40]\nList 2: [5, 15, 25, 35]\nSum list: [15, 35, 55, 75]\nSum list (zip): [15, 35, 55, 75]",
+      "hi": "# Program 1: Add the elements of two lists\nlist1 = [10, 20, 30, 40]\nlist2 = [5, 15, 25, 35]\nresult = []\nfor i in range(len(list1)):\n    result.append(list1[i] + list2[i])\nprint(\"List 1:\", list1)\nprint(\"List 2:\", list2)\nprint(\"Sum list:\", result)\n\n# Shorter way using zip and a list comprehension\nresult2 = [a + b for a, b in zip(list1, list2)]\nprint(\"Sum list (zip):\", result2)\n\nआउटपुट (Output):\nList 1: [10, 20, 30, 40]\nList 2: [5, 15, 25, 35]\nSum list: [15, 35, 55, 75]\nSum list (zip): [15, 35, 55, 75]"
+     }
+    },
+    {
+     "p": {
+      "en": "zip(list1, list2) pairs the items: (10, 5), (20, 15) and so on. A list comprehension [a + b for a, b in ...] builds the new list in one line. The same idea works for other operations:",
+      "hi": "zip(list1, list2) items की जोड़ियाँ बनाता है: (10, 5), (20, 15) इत्यादि। List comprehension [a + b for a, b in ...] नई list एक पंक्ति में बना देता है। यही तरीका दूसरी क्रियाओं पर भी चलता है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 2: Subtract, multiply and divide elements of two lists\nlist1 = [12, 20, 35, 48]\nlist2 = [4, 5, 7, 8]\ndiff = [a - b for a, b in zip(list1, list2)]\nprod = [a * b for a, b in zip(list1, list2)]\nquot = [a / b for a, b in zip(list1, list2)]\nprint(\"Difference:\", diff)\nprint(\"Product:\", prod)\nprint(\"Quotient:\", quot)\n\nOutput:\nDifference: [8, 15, 28, 40]\nProduct: [48, 100, 245, 384]\nQuotient: [3.0, 4.0, 5.0, 6.0]",
+      "hi": "# Program 2: Subtract, multiply and divide elements of two lists\nlist1 = [12, 20, 35, 48]\nlist2 = [4, 5, 7, 8]\ndiff = [a - b for a, b in zip(list1, list2)]\nprod = [a * b for a, b in zip(list1, list2)]\nquot = [a / b for a, b in zip(list1, list2)]\nprint(\"Difference:\", diff)\nprint(\"Product:\", prod)\nprint(\"Quotient:\", quot)\n\nआउटपुट (Output):\nDifference: [8, 15, 28, 40]\nProduct: [48, 100, 245, 384]\nQuotient: [3.0, 4.0, 5.0, 6.0]"
+     }
+    },
+    {
+     "formula": {
+      "en": "# The same with NumPy arrays\nimport numpy as np\na = np.array([12, 20, 35, 48])\nb = np.array([4, 5, 7, 8])\nprint(a + b)\nprint(a - b)\nprint(a * b)\nprint(a / b)\nprint([1, 2] + [3, 4])\n\nOutput:\n[16 25 42 56]\n[ 8 15 28 40]\n[ 48 100 245 384]\n[3. 4. 5. 6.]\n[1, 2, 3, 4]",
+      "hi": "# The same with NumPy arrays\nimport numpy as np\na = np.array([12, 20, 35, 48])\nb = np.array([4, 5, 7, 8])\nprint(a + b)\nprint(a - b)\nprint(a * b)\nprint(a / b)\nprint([1, 2] + [3, 4])\n\nआउटपुट (Output):\n[16 25 42 56]\n[ 8 15 28 40]\n[ 48 100 245 384]\n[3. 4. 5. 6.]\n[1, 2, 3, 4]"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: the two lists must have the same length. With a for loop over range(len(list1)), a shorter list2 causes IndexError; zip() quietly stops at the shorter list. NumPy gives an error if shapes do not match.",
+      "hi": "याद रखें: दोनों lists की लंबाई समान होनी चाहिए। range(len(list1)) पर for loop में छोटी list2 होने पर IndexError आता है; zip() चुपचाप छोटी list पर रुक जाता है। Shape मेल न खाने पर NumPy error देता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.14 Statistics with NumPy: mean, median, mode, variance and standard deviation",
+    "hi": "7.14 NumPy से सांख्यिकी: mean, median, mode, variance और standard deviation"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Chapter 4 (Statistical Data) explained what these measures mean. Here we let Python calculate them. Mean is the average (sum divided by count). Median is the middle value after sorting (for an even count, the average of the two middle values). Mode is the value that occurs most often. Variance is the average of the squared differences from the mean, and standard deviation is its square root; both show how spread out the data is.",
+      "hi": "अध्याय 4 (Statistical Data) में इन मापों का अर्थ समझाया गया था। यहाँ हम Python से इनकी गणना कराते हैं। Mean औसत है (योग भाग गिनती)। Median क्रम से लगाने के बाद बीच का मान है (सम संख्या होने पर बीच के दो मानों का औसत)। Mode वह मान है जो सबसे अधिक बार आता है। Variance, mean से अंतरों के वर्गों का औसत है, और standard deviation उसका वर्गमूल; दोनों बताते हैं कि data कितना फैला हुआ है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Mean = (sum of all values) / (number of values)\nVariance = sum of (value - mean)^2 / (number of values)\nStandard deviation = square root of variance",
+      "hi": "Mean = (सभी मानों का योग) / (मानों की संख्या)\nVariance = (मान - mean)^2 का योग / (मानों की संख्या)\nStandard deviation = variance का वर्गमूल"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 3: Mean, median and mode using NumPy\nimport numpy as np\nfrom scipy import stats\n\ndata = [45, 60, 72, 60, 85, 90, 60, 72, 55]\narr = np.array(data)\nprint(\"Mean:\", np.mean(arr))\nprint(\"Median:\", np.median(arr))\nresult = stats.mode(arr, keepdims=False)\nprint(\"Mode:\", result.mode, \"appears\", result.count, \"times\")\n\nOutput:\nMean: 66.55555555555556\nMedian: 60.0\nMode: 60 appears 3 times",
+      "hi": "# Program 3: Mean, median and mode using NumPy\nimport numpy as np\nfrom scipy import stats\n\ndata = [45, 60, 72, 60, 85, 90, 60, 72, 55]\narr = np.array(data)\nprint(\"Mean:\", np.mean(arr))\nprint(\"Median:\", np.median(arr))\nresult = stats.mode(arr, keepdims=False)\nprint(\"Mode:\", result.mode, \"appears\", result.count, \"times\")\n\nआउटपुट (Output):\nMean: 66.55555555555556\nMedian: 60.0\nMode: 60 appears 3 times"
+     }
+    },
+    {
+     "p": {
+      "en": "NumPy has mean() and median() but no mode() function, so we use stats.mode() from the SciPy library (keepdims=False gives a simple answer). Another way is Python's built-in statistics module:",
+      "hi": "NumPy में mean() और median() हैं पर mode() function नहीं है, इसलिए हम SciPy library का stats.mode() उपयोग करते हैं (keepdims=False से सीधा उत्तर मिलता है)। दूसरा तरीका Python का built-in statistics module है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Mode without SciPy, using the statistics module\nimport statistics\ndata = [45, 60, 72, 60, 85, 90, 60, 72, 55]\nprint(\"Mode:\", statistics.mode(data))\n\nOutput:\nMode: 60",
+      "hi": "# Mode without SciPy, using the statistics module\nimport statistics\ndata = [45, 60, 72, 60, 85, 90, 60, 72, 55]\nprint(\"Mode:\", statistics.mode(data))\n\nआउटपुट (Output):\nMode: 60"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Check the program's answers by hand for the data 45, 60, 72, 60, 85, 90, 60, 72, 55.",
+       "hi": "Data 45, 60, 72, 60, 85, 90, 60, 72, 55 के लिए प्रोग्राम के उत्तर हाथ से जाँचें।"
+      },
+      "a": {
+       "en": "Sum = 45 + 60 + 72 + 60 + 85 + 90 + 60 + 72 + 55 = 599; count = 9; mean = 599 / 9 = 66.56 (approx.)\nSorted: 45, 55, 60, 60, 60, 72, 72, 85, 90. The 5th (middle) value is 60, so median = 60.\n60 appears 3 times, more than any other value, so mode = 60. All three match the program.",
+       "hi": "योग = 45 + 60 + 72 + 60 + 85 + 90 + 60 + 72 + 55 = 599; गिनती = 9; mean = 599 / 9 = 66.56 (लगभग)\nक्रम में: 45, 55, 60, 60, 60, 72, 72, 85, 90। 5वाँ (बीच का) मान 60 है, इसलिए median = 60।\n60 तीन बार आता है, किसी भी और मान से ज़्यादा, इसलिए mode = 60। तीनों प्रोग्राम से मेल खाते हैं।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 4: Variance and standard deviation using NumPy\nimport numpy as np\nruns = np.array([45, 30, 60, 75, 40])\nprint(\"Mean:\", np.mean(runs))\nprint(\"Variance:\", np.var(runs))\nprint(\"Standard deviation:\", round(np.std(runs), 2))\n\nOutput:\nMean: 50.0\nVariance: 250.0\nStandard deviation: 15.81",
+      "hi": "# Program 4: Variance and standard deviation using NumPy\nimport numpy as np\nruns = np.array([45, 30, 60, 75, 40])\nprint(\"Mean:\", np.mean(runs))\nprint(\"Variance:\", np.var(runs))\nprint(\"Standard deviation:\", round(np.std(runs), 2))\n\nआउटपुट (Output):\nMean: 50.0\nVariance: 250.0\nStandard deviation: 15.81"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A batter's runs in 5 matches are 45, 30, 60, 75, 40. Verify the variance 250 and standard deviation 15.81.",
+       "hi": "किसी बल्लेबाज़ के 5 मैचों के रन 45, 30, 60, 75, 40 हैं। Variance 250 और standard deviation 15.81 की पुष्टि करें।"
+      },
+      "a": {
+       "en": "Mean = 250 / 5 = 50\nDifferences from mean: -5, -20, 10, 25, -10\nSquares: 25, 400, 100, 625, 100; sum = 1250\nVariance = 1250 / 5 = 250\nStandard deviation = square root of 250 = 15.81 (approx.)\nNote: np.var and np.std divide by n (population formula) by default.",
+       "hi": "Mean = 250 / 5 = 50\nMean से अंतर: -5, -20, 10, 25, -10\nवर्ग: 25, 400, 100, 625, 100; योग = 1250\nVariance = 1250 / 5 = 250\nStandard deviation = 250 का वर्गमूल = 15.81 (लगभग)\nध्यान दें: np.var और np.std डिफ़ॉल्ट रूप से n से भाग देते हैं (population सूत्र)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.15 Drawing charts with Matplotlib",
+    "hi": "7.15 Matplotlib से चार्ट बनाना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Matplotlib",
+       "hi": "Matplotlib"
+      },
+      "text": {
+       "en": "A Python library for drawing graphs and charts. Its pyplot module (imported as plt) has simple functions: plot() for line charts, scatter() for scatter plots, bar() for bar charts, pie() for pie charts, hist() for histograms and imshow() to show images.",
+       "hi": "ग्राफ़ और चार्ट बनाने की Python library। इसका pyplot module (plt के रूप में import) सरल functions देता है: line chart के लिए plot(), scatter plot के लिए scatter(), bar chart के लिए bar(), pie chart के लिए pie(), histogram के लिए hist() और चित्र दिखाने के लिए imshow()।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Every chart follows the same recipe: import pyplot, prepare x and y values as lists, call the chart function, add a title, axis labels and (if needed) a legend and grid, then call plt.show(). In Jupyter the chart appears below the cell.",
+      "hi": "हर चार्ट एक ही विधि से बनता है: pyplot import करें, x और y मान lists में तैयार करें, चार्ट function बुलाएँ, शीर्षक, axis labels और (ज़रूरत हो तो) legend व grid जोड़ें, फिर plt.show() बुलाएँ। Jupyter में चार्ट cell के नीचे दिखता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 5: Line chart from (2,5) to (9,10)\nimport matplotlib.pyplot as plt\nx = [2, 9]\ny = [5, 10]\nplt.plot(x, y, color=\"blue\", marker=\"o\", label=\"Line from (2,5) to (9,10)\")\nplt.title(\"Line Chart\")\nplt.xlabel(\"X axis\")\nplt.ylabel(\"Y axis\")\nplt.grid(True)\nplt.legend()\nplt.show()\n\nOutput: a window (or, in Jupyter, the area below the cell) shows the chart described below. Nothing is printed as text. A straight blue line joins the point (2, 5) to the point (9, 10), each end marked with a dot, with the title 'Line Chart', labelled axes, grid lines and a legend box.",
+      "hi": "# Program 5: Line chart from (2,5) to (9,10)\nimport matplotlib.pyplot as plt\nx = [2, 9]\ny = [5, 10]\nplt.plot(x, y, color=\"blue\", marker=\"o\", label=\"Line from (2,5) to (9,10)\")\nplt.title(\"Line Chart\")\nplt.xlabel(\"X axis\")\nplt.ylabel(\"Y axis\")\nplt.grid(True)\nplt.legend()\nplt.show()\n\nआउटपुट: एक विंडो में (या Jupyter में cell के नीचे) नीचे बताया गया चार्ट दिखता है। टेक्स्ट के रूप में कुछ print नहीं होता। एक सीधी नीली रेखा बिंदु (2, 5) को बिंदु (9, 10) से जोड़ती है, दोनों सिरों पर बिंदी का निशान है, साथ में 'Line Chart' शीर्षक, नाम वाले axes, grid रेखाएँ और legend बॉक्स है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Note how a line from (2,5) to (9,10) is made: x-values of both points go in one list [2, 9] and y-values in another [5, 10]. Python pairs them in order.",
+      "hi": "ध्यान दें कि (2,5) से (9,10) तक रेखा कैसे बनती है: दोनों बिंदुओं के x-मान एक list [2, 9] में और y-मान दूसरी list [5, 10] में जाते हैं। Python उन्हें क्रम से जोड़ती है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 6: Scatter chart\nimport matplotlib.pyplot as plt\nx = [2, 9, 8, 5, 6]\ny = [5, 10, 3, 7, 18]\nplt.scatter(x, y, color=\"red\", marker=\"*\", s=100)\nplt.title(\"Scatter Chart\")\nplt.xlabel(\"X values\")\nplt.ylabel(\"Y values\")\nplt.show()\n\nOutput: a window (or, in Jupyter, the area below the cell) shows the chart described below. Nothing is printed as text. Five separate red stars appear at (2,5), (9,10), (8,3), (5,7) and (6,18), not joined by lines. The point (6,18) is clearly above the rest.",
+      "hi": "# Program 6: Scatter chart\nimport matplotlib.pyplot as plt\nx = [2, 9, 8, 5, 6]\ny = [5, 10, 3, 7, 18]\nplt.scatter(x, y, color=\"red\", marker=\"*\", s=100)\nplt.title(\"Scatter Chart\")\nplt.xlabel(\"X values\")\nplt.ylabel(\"Y values\")\nplt.show()\n\nआउटपुट: एक विंडो में (या Jupyter में cell के नीचे) नीचे बताया गया चार्ट दिखता है। टेक्स्ट के रूप में कुछ print नहीं होता। (2,5), (9,10), (8,3), (5,7) और (6,18) पर पाँच अलग-अलग लाल तारे दिखते हैं, जो रेखाओं से जुड़े नहीं हैं। बिंदु (6,18) बाकी सबसे साफ़ तौर पर ऊपर है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 7: Bar chart of marks\nimport matplotlib.pyplot as plt\nsubjects = [\"English\", \"Hindi\", \"Maths\", \"Science\", \"AI\"]\nmarks = [78, 85, 92, 88, 95]\nplt.bar(subjects, marks, color=\"green\")\nplt.title(\"Marks of Ananya\")\nplt.xlabel(\"Subject\")\nplt.ylabel(\"Marks\")\nplt.show()\n\nOutput: a window (or, in Jupyter, the area below the cell) shows the chart described below. Nothing is printed as text. Five green vertical bars, one per subject; the AI bar (95) is the tallest and English (78) the shortest.",
+      "hi": "# Program 7: Bar chart of marks\nimport matplotlib.pyplot as plt\nsubjects = [\"English\", \"Hindi\", \"Maths\", \"Science\", \"AI\"]\nmarks = [78, 85, 92, 88, 95]\nplt.bar(subjects, marks, color=\"green\")\nplt.title(\"Marks of Ananya\")\nplt.xlabel(\"Subject\")\nplt.ylabel(\"Marks\")\nplt.show()\n\nआउटपुट: एक विंडो में (या Jupyter में cell के नीचे) नीचे बताया गया चार्ट दिखता है। टेक्स्ट के रूप में कुछ print नहीं होता। हर विषय के लिए एक, कुल पाँच हरे खड़े bar; AI का bar (95) सबसे ऊँचा और English (78) सबसे छोटा है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 8: Pie chart of a class survey\nimport matplotlib.pyplot as plt\ngames = [\"Cricket\", \"Football\", \"Badminton\", \"Kabaddi\"]\nstudents = [18, 8, 6, 4]\nplt.pie(students, labels=games, autopct=\"%1.1f%%\")\nplt.title(\"Favourite game of 36 students\")\nplt.show()\n\nOutput: a window (or, in Jupyter, the area below the cell) shows the chart described below. Nothing is printed as text. A circle cut into four slices labelled with the games and percentages: Cricket 50.0%, Football 22.2%, Badminton 16.7%, Kabaddi 11.1%.",
+      "hi": "# Program 8: Pie chart of a class survey\nimport matplotlib.pyplot as plt\ngames = [\"Cricket\", \"Football\", \"Badminton\", \"Kabaddi\"]\nstudents = [18, 8, 6, 4]\nplt.pie(students, labels=games, autopct=\"%1.1f%%\")\nplt.title(\"Favourite game of 36 students\")\nplt.show()\n\nआउटपुट: एक विंडो में (या Jupyter में cell के नीचे) नीचे बताया गया चार्ट दिखता है। टेक्स्ट के रूप में कुछ print नहीं होता। एक वृत्त चार टुकड़ों में बँटा है जिन पर खेलों के नाम और प्रतिशत हैं: Cricket 50.0%, Football 22.2%, Badminton 16.7%, Kabaddi 11.1%।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Chart",
+        "Function",
+        "Best for"
+       ],
+       "hi": [
+        "चार्ट",
+        "Function",
+        "किसके लिए सबसे अच्छा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Line chart",
+         "plt.plot(x, y)",
+         "Change over time, e.g. daily temperature or a share price"
+        ],
+        [
+         "Scatter plot",
+         "plt.scatter(x, y)",
+         "Relation between two variables, e.g. study hours vs marks; spotting outliers"
+        ],
+        [
+         "Bar chart",
+         "plt.bar(labels, values)",
+         "Comparing categories, e.g. marks in subjects"
+        ],
+        [
+         "Histogram",
+         "plt.hist(values, bins=5)",
+         "How values are spread across ranges, e.g. how many students scored 40-50, 50-60..."
+        ],
+        [
+         "Pie chart",
+         "plt.pie(values, labels=...)",
+         "Parts of a whole, e.g. share of each game in a survey"
+        ]
+       ],
+       "hi": [
+        [
+         "Line chart",
+         "plt.plot(x, y)",
+         "समय के साथ बदलाव, जैसे रोज़ का तापमान या शेयर का भाव"
+        ],
+        [
+         "Scatter plot",
+         "plt.scatter(x, y)",
+         "दो चरों के बीच संबंध, जैसे पढ़ाई के घंटे बनाम अंक; outlier पहचानना"
+        ],
+        [
+         "Bar chart",
+         "plt.bar(labels, values)",
+         "श्रेणियों की तुलना, जैसे विषयों में अंक"
+        ],
+        [
+         "Histogram",
+         "plt.hist(values, bins=5)",
+         "मान अलग-अलग दायरों में कैसे फैले हैं, जैसे कितने विद्यार्थियों ने 40-50, 50-60... अंक पाए"
+        ],
+        [
+         "Pie chart",
+         "plt.pie(values, labels=...)",
+         "किसी पूरे के हिस्से, जैसे सर्वे में हर खेल का हिस्सा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Useful extras: color=, marker= ('o', '*', 's'), linestyle= ('--'), label= with plt.legend(), plt.grid(True), and plt.savefig('chart.png') to save the chart as a picture for your practical file (call it before plt.show()).",
+      "hi": "उपयोगी अतिरिक्त: color=, marker= ('o', '*', 's'), linestyle= ('--'), plt.legend() के साथ label=, plt.grid(True), और plt.savefig('chart.png') जिससे चार्ट practical file के लिए चित्र के रूप में सेव हो (इसे plt.show() से पहले बुलाएँ)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.16 Pandas: reading and exploring a CSV file",
+    "hi": "7.16 Pandas: CSV फ़ाइल पढ़ना और समझना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Pandas",
+       "hi": "Pandas"
+      },
+      "text": {
+       "en": "A library for working with tables of data. Its two main structures are the Series (one labelled column) and the DataFrame (a table of rows and columns, like a spreadsheet). It can read and write CSV and Excel files, find missing values, filter, sort and summarise data.",
+       "hi": "Data की तालिकाओं के साथ काम करने की library। इसकी दो मुख्य संरचनाएँ हैं Series (एक नामांकित स्तंभ) और DataFrame (पंक्तियों और स्तंभों की तालिका, spreadsheet जैसी)। यह CSV और Excel फ़ाइलें पढ़-लिख सकती है, missing values ढूँढ सकती है, और data को छाँट, क्रमबद्ध और सारांशित कर सकती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "CSV file",
+       "hi": "CSV फ़ाइल"
+      },
+      "text": {
+       "en": "Comma-Separated Values: a plain text file in which each line is one row and values are separated by commas. The first line usually has the column names. It can be made in Excel or Google Sheets using Save as / Download as CSV.",
+       "hi": "Comma-Separated Values: एक सादी टेक्स्ट फ़ाइल जिसमें हर पंक्ति एक row है और मान commas से अलग होते हैं। पहली पंक्ति में आमतौर पर स्तंभों के नाम होते हैं। इसे Excel या Google Sheets में Save as / Download as CSV से बनाया जा सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "For the programs below we use a file students.csv with 12 students and the columns Name, Gender, Maths, Science, English and Attendance. Two marks are deliberately left blank (Kabir's Science and Sana's English), because real data often has gaps. Its first lines look like this:",
+      "hi": "नीचे के प्रोग्रामों के लिए हम students.csv फ़ाइल का उपयोग करते हैं जिसमें 12 विद्यार्थी और Name, Gender, Maths, Science, English और Attendance स्तंभ हैं। दो अंक जानबूझकर ख़ाली छोड़े गए हैं (Kabir का Science और Sana का English), क्योंकि असली data में अक्सर कमियाँ होती हैं। इसकी पहली पंक्तियाँ ऐसी दिखती हैं:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Name,Gender,Maths,Science,English,Attendance\nAarav,M,78,82,70,92\nDiya,F,91,88,85,96\nKabir,M,65,,72,81\n...",
+      "hi": "Name,Gender,Maths,Science,English,Attendance\nAarav,M,78,82,70,92\nDiya,F,91,88,85,96\nKabir,M,65,,72,81\n..."
+     }
+    },
+    {
+     "note": {
+      "en": "Keep the CSV file in the same folder as your notebook, or give the full path, for example pd.read_csv(r\"C:\\Users\\Asha\\Documents\\students.csv\"). The r before the quotes stops Python from treating the backslashes as special characters. A wrong name or folder gives FileNotFoundError.",
+      "hi": "CSV फ़ाइल को अपनी notebook वाले फ़ोल्डर में ही रखें, या पूरा path दें, जैसे pd.read_csv(r\"C:\\Users\\Asha\\Documents\\students.csv\")। उद्धरण से पहले r लगाने से Python backslash को विशेष अक्षर नहीं मानती। ग़लत नाम या फ़ोल्डर होने पर FileNotFoundError आता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 9: Read a CSV file and display 10 rows\nimport pandas as pd\ndf = pd.read_csv(\"students.csv\")\nprint(df.head(10))\nprint(\"Shape:\", df.shape)\nprint(\"Columns:\", list(df.columns))\n\nOutput:\n     Name Gender  Maths  Science  English  Attendance\n0   Aarav      M     78     82.0     70.0          92\n1    Diya      F     91     88.0     85.0          96\n2   Kabir      M     65      NaN     72.0          81\n3   Meera      F     88     94.0     90.0          98\n4   Rohan      M     55     60.0     58.0          75\n5    Sana      F     72     79.0      NaN          88\n6   Arjun      M     95     91.0     80.0          99\n7    Isha      F     60     68.0     74.0          84\n8  Vivaan      M     82     77.0     69.0          90\n9   Anaya      F     70     73.0     81.0          87\nShape: (12, 6)\nColumns: ['Name', 'Gender', 'Maths', 'Science', 'English', 'Attendance']",
+      "hi": "# Program 9: Read a CSV file and display 10 rows\nimport pandas as pd\ndf = pd.read_csv(\"students.csv\")\nprint(df.head(10))\nprint(\"Shape:\", df.shape)\nprint(\"Columns:\", list(df.columns))\n\nआउटपुट (Output):\n     Name Gender  Maths  Science  English  Attendance\n0   Aarav      M     78     82.0     70.0          92\n1    Diya      F     91     88.0     85.0          96\n2   Kabir      M     65      NaN     72.0          81\n3   Meera      F     88     94.0     90.0          98\n4   Rohan      M     55     60.0     58.0          75\n5    Sana      F     72     79.0      NaN          88\n6   Arjun      M     95     91.0     80.0          99\n7    Isha      F     60     68.0     74.0          84\n8  Vivaan      M     82     77.0     69.0          90\n9   Anaya      F     70     73.0     81.0          87\nShape: (12, 6)\nColumns: ['Name', 'Gender', 'Maths', 'Science', 'English', 'Attendance']"
+     }
+    },
+    {
+     "p": {
+      "en": "head(10) shows the first 10 rows (head() alone shows 5), and tail() shows the last rows. The numbers 0 to 9 on the left are the index. NaN means Not a Number, i.e. a missing value. shape gives (rows, columns), and columns lists the column names. Notice that Science and English show decimals (82.0) because a column with a NaN is stored as float.",
+      "hi": "head(10) पहली 10 पंक्तियाँ दिखाता है (सिर्फ़ head() 5 दिखाता है), और tail() आख़िरी पंक्तियाँ। बाईं ओर 0 से 9 तक की संख्याएँ index हैं। NaN का अर्थ है Not a Number, यानी missing value। shape (पंक्तियाँ, स्तंभ) देता है, और columns स्तंभों के नाम बताता है। ध्यान दें कि Science और English में दशमलव (82.0) दिखते हैं क्योंकि NaN वाला स्तंभ float के रूप में रखा जाता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 10: Read a CSV file and display its information\nimport pandas as pd\ndf = pd.read_csv(\"students.csv\")\ndf.info()\nprint(df.describe())\n\nOutput:\n<class 'pandas.DataFrame'>\nRangeIndex: 12 entries, 0 to 11\nData columns (total 6 columns):\n #   Column      Non-Null Count  Dtype  \n---  ------      --------------  -----  \n 0   Name        12 non-null     str    \n 1   Gender      12 non-null     str    \n 2   Maths       12 non-null     int64  \n 3   Science     11 non-null     float64\n 4   English     11 non-null     float64\n 5   Attendance  12 non-null     int64  \ndtypes: float64(2), int64(2), str(2)\nmemory usage: 708.0 bytes\n           Maths    Science    English  Attendance\ncount  12.000000  11.000000  11.000000   12.000000\nmean   74.083333  77.545455  75.545455   87.916667\nstd    14.957262  13.366852  11.210385    9.110018\nmin    48.000000  52.000000  58.000000   70.000000\n25%    63.750000  70.500000  69.500000   83.250000\n50%    75.000000  79.000000  74.000000   89.000000\n75%    85.750000  88.500000  83.000000   95.250000\nmax    95.000000  94.000000  92.000000   99.000000",
+      "hi": "# Program 10: Read a CSV file and display its information\nimport pandas as pd\ndf = pd.read_csv(\"students.csv\")\ndf.info()\nprint(df.describe())\n\nआउटपुट (Output):\n<class 'pandas.DataFrame'>\nRangeIndex: 12 entries, 0 to 11\nData columns (total 6 columns):\n #   Column      Non-Null Count  Dtype  \n---  ------      --------------  -----  \n 0   Name        12 non-null     str    \n 1   Gender      12 non-null     str    \n 2   Maths       12 non-null     int64  \n 3   Science     11 non-null     float64\n 4   English     11 non-null     float64\n 5   Attendance  12 non-null     int64  \ndtypes: float64(2), int64(2), str(2)\nmemory usage: 708.0 bytes\n           Maths    Science    English  Attendance\ncount  12.000000  11.000000  11.000000   12.000000\nmean   74.083333  77.545455  75.545455   87.916667\nstd    14.957262  13.366852  11.210385    9.110018\nmin    48.000000  52.000000  58.000000   70.000000\n25%    63.750000  70.500000  69.500000   83.250000\n50%    75.000000  79.000000  74.000000   89.000000\n75%    85.750000  88.500000  83.000000   95.250000\nmax    95.000000  94.000000  92.000000   99.000000"
+     }
+    },
+    {
+     "p": {
+      "en": "info() gives a summary of the table: number of rows, each column's name, how many non-missing (non-null) values it has, and its data type (the text columns may show as object or str depending on the Pandas version). describe() gives statistics for every number column: count, mean, std (standard deviation), min, 25%, 50% (median) and 75% (quartiles) and max. From it we learn at once that Maths marks range from 48 to 95 with a mean of about 74.",
+      "hi": "info() तालिका का सारांश देता है: पंक्तियों की संख्या, हर स्तंभ का नाम, उसमें कितने non-missing (non-null) मान हैं, और उसका data type (Pandas के संस्करण के अनुसार टेक्स्ट स्तंभ object या str दिख सकते हैं)। describe() हर संख्या वाले स्तंभ के आँकड़े देता है: count, mean, std (standard deviation), min, 25%, 50% (median) और 75% (quartiles) तथा max। इससे तुरंत पता चलता है कि Maths के अंक 48 से 95 तक हैं और mean लगभग 74 है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 11: Find and handle missing values\nimport pandas as pd\ndf = pd.read_csv(\"students.csv\")\nprint(df.isnull().sum())\ndf[\"Science\"] = df[\"Science\"].fillna(df[\"Science\"].mean())\ndf[\"English\"] = df[\"English\"].fillna(df[\"English\"].median())\nprint(df.loc[[2, 5]])\nprint(\"Missing now:\", df.isnull().sum().sum())\n\nOutput:\nName          0\nGender        0\nMaths         0\nScience       1\nEnglish       1\nAttendance    0\ndtype: int64\n    Name Gender  Maths    Science  English  Attendance\n2  Kabir      M     65  77.545455     72.0          81\n5   Sana      F     72  79.000000     74.0          88\nMissing now: 0",
+      "hi": "# Program 11: Find and handle missing values\nimport pandas as pd\ndf = pd.read_csv(\"students.csv\")\nprint(df.isnull().sum())\ndf[\"Science\"] = df[\"Science\"].fillna(df[\"Science\"].mean())\ndf[\"English\"] = df[\"English\"].fillna(df[\"English\"].median())\nprint(df.loc[[2, 5]])\nprint(\"Missing now:\", df.isnull().sum().sum())\n\nआउटपुट (Output):\nName          0\nGender        0\nMaths         0\nScience       1\nEnglish       1\nAttendance    0\ndtype: int64\n    Name Gender  Maths    Science  English  Attendance\n2  Kabir      M     65  77.545455     72.0          81\n5   Sana      F     72  79.000000     74.0          88\nMissing now: 0"
+     }
+    },
+    {
+     "p": {
+      "en": "isnull().sum() counts missing values in each column. fillna() fills them: here Science gaps get the column mean and English gaps get the median. Another option is dropna(), which removes rows with missing values, but with a small dataset we would lose too much. This is data cleaning, a key part of the Data Exploration stage of the AI Project Cycle.",
+      "hi": "isnull().sum() हर स्तंभ में missing values गिनता है। fillna() उन्हें भरता है: यहाँ Science की कमी स्तंभ के mean से और English की कमी median से भरी गई है। दूसरा विकल्प dropna() है, जो missing values वाली पंक्तियाँ हटा देता है, पर छोटे dataset में इससे बहुत कुछ खो जाएगा। यह data cleaning है, जो AI Project Cycle के Data Exploration चरण का अहम हिस्सा है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Selecting, filtering and sorting with pandas\nimport pandas as pd\ndf = pd.read_csv(\"students.csv\")\nprint(df[\"Maths\"].mean())\nprint(df[df[\"Maths\"] >= 85][[\"Name\", \"Maths\"]])\ntop = df.sort_values(\"Attendance\", ascending=False)\nprint(top[[\"Name\", \"Attendance\"]].head(3))\nprint(df.tail(2))\n\nOutput:\n74.08333333333333\n     Name  Maths\n1    Diya     91\n3   Meera     88\n6   Arjun     95\n11   Riya     85\n    Name  Attendance\n6  Arjun          99\n3  Meera          98\n1   Diya          96\n    Name Gender  Maths  Science  English  Attendance\n10   Dev      M     48     52.0     60.0          70\n11  Riya      F     85     89.0     92.0          95",
+      "hi": "# Selecting, filtering and sorting with pandas\nimport pandas as pd\ndf = pd.read_csv(\"students.csv\")\nprint(df[\"Maths\"].mean())\nprint(df[df[\"Maths\"] >= 85][[\"Name\", \"Maths\"]])\ntop = df.sort_values(\"Attendance\", ascending=False)\nprint(top[[\"Name\", \"Attendance\"]].head(3))\nprint(df.tail(2))\n\nआउटपुट (Output):\n74.08333333333333\n     Name  Maths\n1    Diya     91\n3   Meera     88\n6   Arjun     95\n11   Riya     85\n    Name  Attendance\n6  Arjun          99\n3  Meera          98\n1   Diya          96\n    Name Gender  Maths  Science  English  Attendance\n10   Dev      M     48     52.0     60.0          70\n11  Riya      F     85     89.0     92.0          95"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Code",
+        "What it does"
+       ],
+       "hi": [
+        "कोड",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "pd.read_csv('file.csv')",
+         "Read a CSV into a DataFrame"
+        ],
+        [
+         "df.head(n) / df.tail(n)",
+         "First / last n rows"
+        ],
+        [
+         "df.shape, df.columns, df.dtypes",
+         "Size, column names, column types"
+        ],
+        [
+         "df.info(), df.describe()",
+         "Summary and statistics"
+        ],
+        [
+         "df['Maths']",
+         "One column (a Series)"
+        ],
+        [
+         "df[['Name', 'Maths']]",
+         "Several columns"
+        ],
+        [
+         "df[df['Maths'] >= 85]",
+         "Rows that meet a condition (filtering)"
+        ],
+        [
+         "df.sort_values('Attendance', ascending=False)",
+         "Sort rows by a column"
+        ],
+        [
+         "df['Maths'].mean(), .max(), .min()",
+         "Statistics of one column"
+        ],
+        [
+         "df.isnull().sum(), df.fillna(v), df.dropna()",
+         "Find, fill or remove missing values"
+        ],
+        [
+         "df.loc[2], df.iloc[0]",
+         "Row by index label / by position"
+        ],
+        [
+         "df.to_csv('new.csv', index=False)",
+         "Save a DataFrame as CSV"
+        ]
+       ],
+       "hi": [
+        [
+         "pd.read_csv('file.csv')",
+         "CSV को DataFrame में पढ़ें"
+        ],
+        [
+         "df.head(n) / df.tail(n)",
+         "पहली / आख़िरी n पंक्तियाँ"
+        ],
+        [
+         "df.shape, df.columns, df.dtypes",
+         "आकार, स्तंभों के नाम, स्तंभों के type"
+        ],
+        [
+         "df.info(), df.describe()",
+         "सारांश और आँकड़े"
+        ],
+        [
+         "df['Maths']",
+         "एक स्तंभ (Series)"
+        ],
+        [
+         "df[['Name', 'Maths']]",
+         "कई स्तंभ"
+        ],
+        [
+         "df[df['Maths'] >= 85]",
+         "शर्त पूरी करने वाली पंक्तियाँ (filtering)"
+        ],
+        [
+         "df.sort_values('Attendance', ascending=False)",
+         "किसी स्तंभ के अनुसार पंक्तियाँ क्रमबद्ध करें"
+        ],
+        [
+         "df['Maths'].mean(), .max(), .min()",
+         "एक स्तंभ के आँकड़े"
+        ],
+        [
+         "df.isnull().sum(), df.fillna(v), df.dropna()",
+         "Missing values ढूँढें, भरें या हटाएँ"
+        ],
+        [
+         "df.loc[2], df.iloc[0]",
+         "Index label से / स्थिति से पंक्ति"
+        ],
+        [
+         "df.to_csv('new.csv', index=False)",
+         "DataFrame को CSV के रूप में सेव करें"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "You can also build a DataFrame directly from a dictionary, where keys become column names:",
+      "hi": "आप सीधे dictionary से भी DataFrame बना सकते हैं, जिसमें keys स्तंभों के नाम बन जाती हैं:"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Creating a DataFrame from a dictionary\nimport pandas as pd\ndata = {\"City\": [\"Delhi\", \"Mumbai\", \"Chennai\", \"Kolkata\"],\n        \"Rain_mm\": [790, 2200, 1400, 1600]}\ndf = pd.DataFrame(data)\nprint(df)\ndf.to_csv(\"rain.csv\", index=False)\nprint(pd.read_csv(\"rain.csv\").shape)\n\nOutput:\n      City  Rain_mm\n0    Delhi      790\n1   Mumbai     2200\n2  Chennai     1400\n3  Kolkata     1600\n(4, 2)",
+      "hi": "# Creating a DataFrame from a dictionary\nimport pandas as pd\ndata = {\"City\": [\"Delhi\", \"Mumbai\", \"Chennai\", \"Kolkata\"],\n        \"Rain_mm\": [790, 2200, 1400, 1600]}\ndf = pd.DataFrame(data)\nprint(df)\ndf.to_csv(\"rain.csv\", index=False)\nprint(pd.read_csv(\"rain.csv\").shape)\n\nआउटपुट (Output):\n      City  Rain_mm\n0    Delhi      790\n1   Mumbai     2200\n2  Chennai     1400\n3  Kolkata     1600\n(4, 2)"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.17 Working with images: OpenCV",
+    "hi": "7.17 चित्रों के साथ काम: OpenCV"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Chapter 5 (Computer Vision) explained that a computer sees an image as a grid of pixels, each pixel a number from 0 (dark) to 255 (bright). A grayscale image is one 2-D grid. A colour image has three such grids (channels) stacked together, for Blue, Green and Red. So an image is simply a NumPy array, and its shape tells its size.",
+      "hi": "अध्याय 5 (Computer Vision) में बताया गया था कि कंप्यूटर चित्र को pixels के ग्रिड के रूप में देखता है, और हर pixel 0 (गहरा) से 255 (चमकीला) तक की एक संख्या है। Grayscale चित्र एक 2-D ग्रिड होता है। रंगीन चित्र में ऐसे तीन ग्रिड (channels) एक साथ होते हैं, Blue, Green और Red के लिए। इसलिए चित्र बस एक NumPy array है, और उसका shape उसका आकार बताता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "OpenCV",
+       "hi": "OpenCV"
+      },
+      "text": {
+       "en": "Open Source Computer Vision Library: a free library for reading, writing, changing and analysing images and videos. It is installed as opencv-python and imported as cv2. Common functions: cv2.imread() to read, cv2.imshow() / cv2.imwrite() to show / save, cv2.cvtColor() to change colour space, cv2.resize() to change size.",
+       "hi": "Open Source Computer Vision Library: चित्रों और वीडियो को पढ़ने, लिखने, बदलने और उनका विश्लेषण करने की मुफ़्त library। इसे opencv-python के रूप में install और cv2 के रूप में import किया जाता है। सामान्य functions: पढ़ने के लिए cv2.imread(), दिखाने / सेव करने के लिए cv2.imshow() / cv2.imwrite(), colour space बदलने के लिए cv2.cvtColor(), आकार बदलने के लिए cv2.resize()।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "For these programs we use an image file sun.jpg, 400 pixels wide and 300 pixels high, showing a yellow sun (circle) on a sky-blue background. Use any photo of your own; keep it in the notebook's folder.",
+      "hi": "इन प्रोग्रामों के लिए हम sun.jpg चित्र फ़ाइल का उपयोग करते हैं, जो 400 pixel चौड़ी और 300 pixel ऊँची है और आसमानी नीली पृष्ठभूमि पर पीला सूरज (वृत्त) दिखाती है। आप अपनी कोई भी फ़ोटो ले सकते हैं; उसे notebook वाले फ़ोल्डर में रखें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 12: Read an image and display it\nimport cv2\nimport matplotlib.pyplot as plt\nimg = cv2.imread(\"sun.jpg\")\nimg_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)\nplt.imshow(img_rgb)\nplt.title(\"My image\")\nplt.axis(\"off\")\nplt.show()\n\nOutput: the picture appears below the cell (or in a window) with the title 'My image' and no axes: a yellow circle on a light-blue background.",
+      "hi": "# Program 12: Read an image and display it\nimport cv2\nimport matplotlib.pyplot as plt\nimg = cv2.imread(\"sun.jpg\")\nimg_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)\nplt.imshow(img_rgb)\nplt.title(\"My image\")\nplt.axis(\"off\")\nplt.show()\n\nआउटपुट: चित्र cell के नीचे (या विंडो में) 'My image' शीर्षक के साथ और बिना axes के दिखता है: हल्की नीली पृष्ठभूमि पर पीला वृत्त।"
+     }
+    },
+    {
+     "note": {
+      "en": "Why cvtColor? OpenCV stores colours in the order Blue, Green, Red (BGR), while Matplotlib expects Red, Green, Blue (RGB). Without conversion, the yellow sun would look blue and the sky would look light brownish-yellow. On a computer you can also use cv2.imshow('title', img) followed by cv2.waitKey(0) and cv2.destroyAllWindows(), but cv2.imshow does not work inside Google Colab, so plt.imshow is the safer choice in notebooks.",
+      "hi": "cvtColor क्यों? OpenCV रंगों को Blue, Green, Red (BGR) क्रम में रखता है, जबकि Matplotlib, Red, Green, Blue (RGB) की अपेक्षा करता है। बदले बिना पीला सूरज नीला और आसमान हल्का भूरा-पीला दिखेगा। कंप्यूटर पर आप cv2.imshow('title', img) के बाद cv2.waitKey(0) और cv2.destroyAllWindows() भी उपयोग कर सकते हैं, पर cv2.imshow, Google Colab में काम नहीं करता, इसलिए notebook में plt.imshow सुरक्षित विकल्प है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Program 13: Read an image and identify its shape\nimport cv2\nimg = cv2.imread(\"sun.jpg\")\nprint(\"Shape:\", img.shape)\nh, w, c = img.shape\nprint(\"Height:\", h, \"Width:\", w, \"Channels:\", c)\nprint(\"Total pixels:\", h * w)\nprint(\"Data type:\", img.dtype)\ngray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\nprint(\"Grayscale shape:\", gray.shape)\nprint(\"Pixel at centre (B, G, R):\", img[150, 200])\n\nOutput:\nShape: (300, 400, 3)\nHeight: 300 Width: 400 Channels: 3\nTotal pixels: 120000\nData type: uint8\nGrayscale shape: (300, 400)\nPixel at centre (B, G, R): [  0 215 254]",
+      "hi": "# Program 13: Read an image and identify its shape\nimport cv2\nimg = cv2.imread(\"sun.jpg\")\nprint(\"Shape:\", img.shape)\nh, w, c = img.shape\nprint(\"Height:\", h, \"Width:\", w, \"Channels:\", c)\nprint(\"Total pixels:\", h * w)\nprint(\"Data type:\", img.dtype)\ngray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\nprint(\"Grayscale shape:\", gray.shape)\nprint(\"Pixel at centre (B, G, R):\", img[150, 200])\n\nआउटपुट (Output):\nShape: (300, 400, 3)\nHeight: 300 Width: 400 Channels: 3\nTotal pixels: 120000\nData type: uint8\nGrayscale shape: (300, 400)\nPixel at centre (B, G, R): [  0 215 254]"
+     }
+    },
+    {
+     "p": {
+      "en": "Reading the output: shape (300, 400, 3) means 300 rows (height), 400 columns (width) and 3 channels (B, G, R). Notice the order: height comes first, then width. uint8 means each value is a whole number from 0 to 255. After converting to grayscale the shape becomes (300, 400), with no channel number. The centre pixel [0 215 254] has almost no blue, a lot of green and full red, which our eyes see as yellow. If cv2.imread cannot find the file it does not raise an error at once; it returns None, and the next line fails with \"'NoneType' object has no attribute 'shape'\". That message almost always means a wrong file name or path.",
+      "hi": "आउटपुट पढ़ना: shape (300, 400, 3) का अर्थ है 300 पंक्तियाँ (ऊँचाई), 400 स्तंभ (चौड़ाई) और 3 channels (B, G, R)। क्रम पर ध्यान दें: पहले ऊँचाई, फिर चौड़ाई। uint8 का अर्थ है हर मान 0 से 255 तक की पूर्ण संख्या है। Grayscale में बदलने के बाद shape (300, 400) हो जाता है, बिना channel संख्या के। बीच वाला pixel [0 215 254] में लगभग कोई नीला नहीं, काफ़ी हरा और पूरा लाल है, जिसे हमारी आँखें पीला देखती हैं। अगर cv2.imread को फ़ाइल नहीं मिलती तो वह तुरंत error नहीं देता; वह None लौटाता है, और अगली पंक्ति \"'NoneType' object has no attribute 'shape'\" के साथ विफल होती है। इस संदेश का अर्थ लगभग हमेशा ग़लत फ़ाइल नाम या path होता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A photo has shape (720, 1280, 3). (a) What are its width and height? (b) How many pixels does it have? (c) How many numbers are stored? (d) What would the shape be in grayscale?",
+       "hi": "एक फ़ोटो का shape (720, 1280, 3) है। (a) उसकी चौड़ाई और ऊँचाई क्या है? (b) उसमें कितने pixel हैं? (c) कितनी संख्याएँ रखी गई हैं? (d) Grayscale में shape क्या होगा?"
+      },
+      "a": {
+       "en": "(a) Height = 720 pixels, width = 1280 pixels (shape is height, width, channels).\n(b) Pixels = 720 x 1280 = 921600.\n(c) Each pixel has 3 values, so 921600 x 3 = 2764800 numbers.\n(d) (720, 1280).",
+       "hi": "(a) ऊँचाई = 720 pixel, चौड़ाई = 1280 pixel (shape का क्रम ऊँचाई, चौड़ाई, channels है)।\n(b) Pixel = 720 x 1280 = 921600।\n(c) हर pixel में 3 मान हैं, इसलिए 921600 x 3 = 2764800 संख्याएँ।\n(d) (720, 1280)।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Privacy: practise with your own pictures, objects or free images. Do not upload photos of friends or strangers without their permission, and never use image tools to make fake or hurtful pictures of anyone.",
+      "hi": "निजता: अपने ही चित्रों, वस्तुओं या मुफ़्त चित्रों से अभ्यास करें। दोस्तों या अजनबियों की फ़ोटो उनकी अनुमति के बिना अपलोड न करें, और किसी की नकली या आहत करने वाली तस्वीरें बनाने के लिए कभी भी image tools का उपयोग न करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.18 A first taste of machine learning with scikit-learn",
+    "hi": "7.18 scikit-learn के साथ machine learning की पहली झलक"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The libraries above prepare and show data. scikit-learn (imported as sklearn) is the library that actually learns from data. Most of its models follow the same three steps: create the model, fit() it on training examples (features X and labels y), then predict() for new examples. Here is a tiny classifier, using the K-Nearest Neighbours idea (a new fruit gets the label that most of its 3 closest known fruits have):",
+      "hi": "ऊपर की libraries data तैयार करती हैं और दिखाती हैं। scikit-learn (sklearn के रूप में import) वह library है जो सच में data से सीखती है। इसके ज़्यादातर model एक जैसे तीन चरण अपनाते हैं: model बनाएँ, training उदाहरणों (features X और labels y) पर उसे fit() करें, फिर नए उदाहरणों के लिए predict() करें। यह एक छोटा classifier है, जो K-Nearest Neighbours के विचार पर चलता है (नए फल को वही label मिलता है जो उसके 3 सबसे निकट ज्ञात फलों में से ज़्यादातर का है):"
+     }
+    },
+    {
+     "formula": {
+      "en": "# A tiny machine learning model with scikit-learn\nfrom sklearn.neighbors import KNeighborsClassifier\n# features: [weight in grams, smoothness score 1-10]\nX = [[150, 8], [170, 9], [140, 7], [130, 3], [120, 2], [110, 4]]\ny = [\"apple\", \"apple\", \"apple\", \"orange\", \"orange\", \"orange\"]\nmodel = KNeighborsClassifier(n_neighbors=3)\nmodel.fit(X, y)\nprint(model.predict([[160, 8], [115, 3]]))\n\nOutput:\n['apple' 'orange']",
+      "hi": "# A tiny machine learning model with scikit-learn\nfrom sklearn.neighbors import KNeighborsClassifier\n# features: [weight in grams, smoothness score 1-10]\nX = [[150, 8], [170, 9], [140, 7], [130, 3], [120, 2], [110, 4]]\ny = [\"apple\", \"apple\", \"apple\", \"orange\", \"orange\", \"orange\"]\nmodel = KNeighborsClassifier(n_neighbors=3)\nmodel.fit(X, y)\nprint(model.predict([[160, 8], [115, 3]]))\n\nआउटपुट (Output):\n['apple' 'orange']"
+     }
+    },
+    {
+     "p": {
+      "en": "A fruit of 160 g with smoothness 8 is closest to the apples, and one of 115 g with smoothness 3 is closest to the oranges. This toy uses only six made-up examples; real models need much more data and must be tested on data they have not seen, as you learnt in Chapter 3 (Evaluating Models).",
+      "hi": "160 g और smoothness 8 वाला फल सेबों के सबसे निकट है, और 115 g व smoothness 3 वाला संतरों के सबसे निकट। यह खिलौना-उदाहरण केवल छह बनाए हुए उदाहरणों पर चलता है; असली models को बहुत अधिक data चाहिए और उन्हें ऐसे data पर जाँचना होता है जो उन्होंने नहीं देखा, जैसा आपने अध्याय 3 (Evaluating Models) में सीखा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.19 Your practical file, practical exam and viva",
+    "hi": "7.19 आपकी practical file, practical exam और viva"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Advance Python has no theory paper; it is tested in the practical part (50 marks in total for Part C). As per the CBSE curriculum for Class X AI, the practical file must contain at least 15 programs (15 marks); the practical examination covers Units 4 to 7 (15 marks); there is a viva voce (5 marks); and project work / field visit / portfolio (10 marks) with its own viva (5 marks). Check the latest curriculum from your teacher, as details can change each year.",
+      "hi": "Advance Python का कोई theory पेपर नहीं है; इसकी परीक्षा practical भाग में होती है (Part C के कुल 50 अंक)। कक्षा 10 AI के CBSE पाठ्यक्रम के अनुसार practical file में कम से कम 15 प्रोग्राम होने चाहिए (15 अंक); practical examination इकाई 4 से 7 तक की होती है (15 अंक); viva voce (5 अंक); और project work / field visit / portfolio (10 अंक) तथा उसका अलग viva (5 अंक)। नवीनतम पाठ्यक्रम अपने शिक्षक से जाँचें, क्योंकि विवरण हर साल बदल सकते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "#",
+        "CBSE suggested program",
+        "Covered in"
+       ],
+       "hi": [
+        "#",
+        "CBSE द्वारा सुझाया प्रोग्राम",
+        "कहाँ दिया है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1",
+         "Add the elements of two lists",
+         "7.13"
+        ],
+        [
+         "2",
+         "Calculate mean, median and mode using NumPy",
+         "7.14"
+        ],
+        [
+         "3",
+         "Display a line chart from (2,5) to (9,10)",
+         "7.15"
+        ],
+        [
+         "4",
+         "Display a scatter chart for (2,5), (9,10), (8,3), (5,7), (6,18)",
+         "7.15"
+        ],
+        [
+         "5",
+         "Read a CSV file saved in your system and display 10 rows",
+         "7.16"
+        ],
+        [
+         "6",
+         "Read a CSV file saved in your system and display its information",
+         "7.16"
+        ],
+        [
+         "7",
+         "Read an image and display it using Python",
+         "7.17"
+        ],
+        [
+         "8",
+         "Read an image and identify its shape using Python",
+         "7.17"
+        ]
+       ],
+       "hi": [
+        [
+         "1",
+         "दो lists के elements जोड़ना",
+         "7.13"
+        ],
+        [
+         "2",
+         "NumPy से mean, median और mode निकालना",
+         "7.14"
+        ],
+        [
+         "3",
+         "(2,5) से (9,10) तक line chart दिखाना",
+         "7.15"
+        ],
+        [
+         "4",
+         "(2,5), (9,10), (8,3), (5,7), (6,18) के लिए scatter chart दिखाना",
+         "7.15"
+        ],
+        [
+         "5",
+         "अपने सिस्टम में सेव CSV फ़ाइल पढ़कर 10 पंक्तियाँ दिखाना",
+         "7.16"
+        ],
+        [
+         "6",
+         "अपने सिस्टम में सेव CSV फ़ाइल पढ़कर उसकी जानकारी दिखाना",
+         "7.16"
+        ],
+        [
+         "7",
+         "चित्र पढ़कर Python से दिखाना",
+         "7.17"
+        ],
+        [
+         "8",
+         "चित्र पढ़कर Python से उसका shape पहचानना",
+         "7.17"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "To reach 15 or more programs, add others from this chapter: subtract/multiply/divide two lists, variance and standard deviation, bar chart, pie chart, missing values, filtering and sorting a DataFrame, creating a DataFrame, NumPy array basics, grade calculator, multiplication table, list and dictionary operations, and the scikit-learn classifier.",
+      "hi": "15 या अधिक प्रोग्राम पूरे करने के लिए इस अध्याय से दूसरे भी जोड़ें: दो lists का घटाव/गुणा/भाग, variance और standard deviation, bar chart, pie chart, missing values, DataFrame को छाँटना और क्रमबद्ध करना, DataFrame बनाना, NumPy array की मूल बातें, grade calculator, पहाड़ा, list और dictionary की क्रियाएँ, और scikit-learn classifier।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "For each program write: program number and aim, the code, the output (printout or screenshot of text, chart or image), and one line on what you learnt.",
+       "Use comments in your code and meaningful variable names.",
+       "Before printing, use Kernel > Restart and Run All so the numbers In [1], In [2]... are in order and every output is fresh.",
+       "Keep your CSV file and image with the notebook; the examiner may ask you to run a program with a different file.",
+       "Typical viva questions: What is a kernel? Difference between a list and a tuple? Why do we use a virtual environment? What does df.shape return? Why convert BGR to RGB? What is NaN? What does import numpy as np mean?"
+      ],
+      "hi": [
+       "हर प्रोग्राम के लिए लिखें: प्रोग्राम संख्या और उद्देश्य, कोड, आउटपुट (टेक्स्ट, चार्ट या चित्र का printout या screenshot), और आपने क्या सीखा इस पर एक पंक्ति।",
+       "अपने कोड में comments और अर्थपूर्ण variable नामों का उपयोग करें।",
+       "Print करने से पहले Kernel > Restart and Run All चलाएँ ताकि In [1], In [2]... क्रम में हों और हर आउटपुट ताज़ा हो।",
+       "अपनी CSV फ़ाइल और चित्र notebook के साथ रखें; परीक्षक किसी दूसरी फ़ाइल के साथ प्रोग्राम चलाने को कह सकते हैं।",
+       "आम viva प्रश्न: Kernel क्या है? List और tuple में अंतर? हम virtual environment क्यों उपयोग करते हैं? df.shape क्या लौटाता है? BGR को RGB में क्यों बदलते हैं? NaN क्या है? import numpy as np का क्या अर्थ है?"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Mini project activity: My Class Data Story. Aim: use the whole chapter together, following the AI Project Cycle.",
+       "hi": "मिनी प्रोजेक्ट गतिविधि: मेरी कक्षा की Data कहानी। उद्देश्य: AI Project Cycle के अनुसार पूरे अध्याय का एक साथ उपयोग।"
+      },
+      "a": {
+       "en": "Problem scoping: Does attendance relate to marks in our class?\nData acquisition: with your teacher's permission, make a CSV in Google Sheets with roll numbers (not names, to protect privacy), attendance and marks of 15-20 students, or use the students.csv from this chapter.\nData exploration: read it with Pandas; use head(), info(), describe(); fill missing values.\nVisualise: draw a scatter plot of Attendance (x) against Maths (y) and a bar chart of the subject means.\nObserve: in students.csv, students with higher attendance mostly have higher Maths marks (Arjun 99% and 95 marks, Dev 70% and 48 marks).\nConclude carefully: a pattern does not prove that one thing causes the other; write two other reasons that could also explain it.\nWhat it teaches: the full path from raw data to an evidence-based conclusion.",
+       "hi": "Problem scoping: क्या हमारी कक्षा में उपस्थिति (attendance) का अंकों से संबंध है?\nData acquisition: शिक्षक की अनुमति से Google Sheets में 15-20 विद्यार्थियों के roll number (निजता के लिए नाम नहीं), attendance और अंकों की CSV बनाएँ, या इस अध्याय की students.csv लें।\nData exploration: Pandas से पढ़ें; head(), info(), describe() चलाएँ; missing values भरें।\nVisualise: Attendance (x) बनाम Maths (y) का scatter plot और विषयों के mean का bar chart बनाएँ।\nअवलोकन: students.csv में ज़्यादा attendance वाले विद्यार्थियों के Maths अंक प्रायः ज़्यादा हैं (Arjun 99% और 95 अंक, Dev 70% और 48 अंक)।\nसावधानी से निष्कर्ष: कोई पैटर्न यह सिद्ध नहीं करता कि एक चीज़ दूसरी का कारण है; दो और कारण लिखें जो इसे समझा सकते हों।\nसीख: कच्चे data से प्रमाण-आधारित निष्कर्ष तक का पूरा रास्ता।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Writing print as Print or True as true. Fix: Python is case-sensitive; use print, True, False and None exactly.",
+   "Using = in a condition (if x = 5:). Fix: use == to compare; = only assigns.",
+   "Forgetting that input() returns text, so '4' + '4' gives '44'. Fix: wrap it as int(input(...)) or float(input(...)).",
+   "Missing colon or wrong indentation after if, for, while or def. Fix: end the line with : and indent the block by 4 spaces consistently.",
+   "Expecting range(1, 10) to include 10. Fix: the stop value is never included; use range(1, 11) for 1 to 10.",
+   "Using list1 + list2 to add numbers item by item. Fix: + joins lists; use a loop, zip() or NumPy arrays.",
+   "Running a cell that uses a variable or import from an earlier cell that was never run, getting NameError. Fix: run cells top to bottom, or use Kernel > Restart and Run All.",
+   "Getting ModuleNotFoundError: No module named 'cv2' and assuming the code is wrong. Fix: install the package (pip install opencv-python) in the same environment that the notebook's kernel uses.",
+   "Showing an OpenCV image with plt.imshow without conversion, so colours look wrong. Fix: convert with cv2.cvtColor(img, cv2.COLOR_BGR2RGB) first.",
+   "Reading image shape (300, 400, 3) as width 300 and height 400. Fix: the order is (height, width, channels).",
+   "Writing df.shape() with brackets. Fix: shape is an attribute, not a function: write df.shape; but head(), info() and describe() are functions and need ().",
+   "Typing conda or pip commands as if they were Python code in a normal cell. Fix: run them in Anaconda Prompt/Terminal, or put ! or % in front inside a notebook cell."
+  ],
+  "hi": [
+   "print को Print या True को true लिखना। सुधार: Python, case-sensitive है; print, True, False और None ठीक इसी रूप में लिखें।",
+   "Condition में = लिखना (if x = 5:)। सुधार: तुलना के लिए == लिखें; = केवल assign करता है।",
+   "यह भूल जाना कि input() टेक्स्ट लौटाता है, इसलिए '4' + '4' से '44' मिलता है। सुधार: int(input(...)) या float(input(...)) लिखें।",
+   "if, for, while या def के बाद colon छोड़ना या ग़लत indentation। सुधार: पंक्ति के अंत में : लगाएँ और block को लगातार 4 spaces से indent करें।",
+   "range(1, 10) में 10 शामिल होने की अपेक्षा करना। सुधार: stop मान कभी शामिल नहीं होता; 1 से 10 के लिए range(1, 11) लिखें।",
+   "Item-दर-item संख्याएँ जोड़ने के लिए list1 + list2 लिखना। सुधार: + lists को जोड़ (join) देता है; loop, zip() या NumPy array का उपयोग करें।",
+   "ऐसा cell चलाना जो किसी पिछले cell के variable या import पर निर्भर है जो चलाया ही नहीं गया, जिससे NameError आता है। सुधार: cells ऊपर से नीचे चलाएँ, या Kernel > Restart and Run All चुनें।",
+   "ModuleNotFoundError: No module named 'cv2' आने पर मान लेना कि कोड ग़लत है। सुधार: package (pip install opencv-python) उसी environment में install करें जिसे notebook का kernel उपयोग करता है।",
+   "OpenCV चित्र को बिना बदले plt.imshow से दिखाना, जिससे रंग ग़लत दिखते हैं। सुधार: पहले cv2.cvtColor(img, cv2.COLOR_BGR2RGB) से बदलें।",
+   "Image shape (300, 400, 3) को चौड़ाई 300 और ऊँचाई 400 पढ़ना। सुधार: क्रम (ऊँचाई, चौड़ाई, channels) है।",
+   "df.shape() कोष्ठक के साथ लिखना। सुधार: shape एक attribute है, function नहीं: df.shape लिखें; पर head(), info() और describe() functions हैं और उन्हें () चाहिए।",
+   "conda या pip कमांड को सामान्य cell में Python कोड की तरह टाइप करना। सुधार: इन्हें Anaconda Prompt/Terminal में चलाएँ, या notebook cell में आगे ! या % लगाएँ।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Python",
+    "hi": "Python"
+   },
+   "d": {
+    "en": "A free, open-source, high-level, interpreted programming language created by Guido van Rossum (first released 1991), widely used for AI.",
+    "hi": "Guido van Rossum द्वारा बनाई गई (पहली बार 1991 में जारी) एक मुफ़्त, open-source, high-level, interpreted प्रोग्रामिंग भाषा, जो AI में बहुत उपयोग होती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Interpreter",
+    "hi": "Interpreter"
+   },
+   "d": {
+    "en": "A program that reads and runs code line by line.",
+    "hi": "वह प्रोग्राम जो कोड को पंक्ति-दर-पंक्ति पढ़कर चलाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Anaconda",
+    "hi": "Anaconda"
+   },
+   "d": {
+    "en": "A free Python distribution for data science with many packages, conda and tools like Jupyter.",
+    "hi": "Data science के लिए मुफ़्त Python distribution, जिसमें कई packages, conda और Jupyter जैसे टूल हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Anaconda Navigator",
+    "hi": "Anaconda Navigator"
+   },
+   "d": {
+    "en": "Graphical desktop app to launch tools and manage environments and packages.",
+    "hi": "टूल खोलने और environments व packages सँभालने का graphical desktop ऐप।"
+   }
+  },
+  {
+   "t": {
+    "en": "conda",
+    "hi": "conda"
+   },
+   "d": {
+    "en": "Anaconda's command-line package and environment manager.",
+    "hi": "Anaconda का command-line package और environment manager।"
+   }
+  },
+  {
+   "t": {
+    "en": "pip",
+    "hi": "pip"
+   },
+   "d": {
+    "en": "Python's package installer; installs packages from PyPI.",
+    "hi": "Python का package installer; PyPI से packages install करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Jupyter Notebook",
+    "hi": "Jupyter Notebook"
+   },
+   "d": {
+    "en": "Browser-based app for notebooks that combine code, output, text and charts.",
+    "hi": "Browser में चलने वाला ऐप जिसकी notebooks में कोड, आउटपुट, टेक्स्ट और चार्ट साथ होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Cell",
+    "hi": "Cell"
+   },
+   "d": {
+    "en": "A box in a notebook holding code, Markdown text or raw text.",
+    "hi": "Notebook का एक बॉक्स जिसमें कोड, Markdown टेक्स्ट या raw टेक्स्ट होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Kernel",
+    "hi": "Kernel"
+   },
+   "d": {
+    "en": "The engine that runs a notebook's code; IPython is the default for Python.",
+    "hi": "Notebook का कोड चलाने वाला इंजन; Python के लिए IPython डिफ़ॉल्ट है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Markdown",
+    "hi": "Markdown"
+   },
+   "d": {
+    "en": "A simple way to format text (headings with #, bold with **).",
+    "hi": "टेक्स्ट को format करने का सरल तरीका (# से शीर्षक, ** से bold)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Checkpoint",
+    "hi": "Checkpoint"
+   },
+   "d": {
+    "en": "A saved snapshot of a notebook that you can revert to.",
+    "hi": "Notebook का सेव किया गया snapshot जिस पर वापस जा सकते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": ".ipynb",
+    "hi": ".ipynb"
+   },
+   "d": {
+    "en": "File extension of a Jupyter notebook (IPython Notebook).",
+    "hi": "Jupyter notebook का file extension (IPython Notebook)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Virtual environment",
+    "hi": "Virtual environment"
+   },
+   "d": {
+    "en": "An isolated Python setup with its own interpreter and packages.",
+    "hi": "अपने interpreter और packages वाला अलग (isolated) Python setup।"
+   }
+  },
+  {
+   "t": {
+    "en": "Module / package / library",
+    "hi": "Module / package / library"
+   },
+   "d": {
+    "en": "A Python file of reusable code / a folder of modules / a collection of packages for a purpose.",
+    "hi": "दोबारा उपयोग होने वाले कोड की Python फ़ाइल / modules का फ़ोल्डर / किसी उद्देश्य के लिए packages का संग्रह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Keyword",
+    "hi": "Keyword"
+   },
+   "d": {
+    "en": "A reserved word with special meaning, e.g. if, for, def; cannot be a name.",
+    "hi": "विशेष अर्थ वाला आरक्षित शब्द, जैसे if, for, def; नाम नहीं बन सकता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Identifier",
+    "hi": "Identifier"
+   },
+   "d": {
+    "en": "A name for a variable, function etc., following the naming rules.",
+    "hi": "Variable, function आदि का नाम, जो नामकरण के नियमों का पालन करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Variable",
+    "hi": "Variable"
+   },
+   "d": {
+    "en": "A name that refers to a stored value.",
+    "hi": "एक नाम जो रखे गए मान की ओर संकेत करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data type",
+    "hi": "Data type"
+   },
+   "d": {
+    "en": "The kind of a value: int, float, complex, bool, str, list, tuple, set, dict.",
+    "hi": "मान का प्रकार: int, float, complex, bool, str, list, tuple, set, dict।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mutable / immutable",
+    "hi": "Mutable / immutable"
+   },
+   "d": {
+    "en": "Can be changed after creation (list, dict, set) / cannot be changed (str, tuple).",
+    "hi": "बनने के बाद बदल सकता है (list, dict, set) / बदल नहीं सकता (str, tuple)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Type conversion",
+    "hi": "Type conversion"
+   },
+   "d": {
+    "en": "Changing a value's type: implicit (by Python) or explicit (by int(), float(), str() etc.).",
+    "hi": "मान का type बदलना: implicit (Python द्वारा) या explicit (int(), float(), str() आदि से)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Operator precedence",
+    "hi": "Operator precedence"
+   },
+   "d": {
+    "en": "The order in which operators are evaluated in an expression.",
+    "hi": "वह क्रम जिसमें expression के operators हल होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Loop",
+    "hi": "Loop"
+   },
+   "d": {
+    "en": "A structure that repeats statements: for (over a sequence) or while (while a condition is True).",
+    "hi": "Statements दोहराने वाली संरचना: for (sequence पर) या while (जब तक condition True हो)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Function",
+    "hi": "Function"
+   },
+   "d": {
+    "en": "A named, reusable block of code; built-in or user-defined with def.",
+    "hi": "नाम वाला, दोबारा उपयोग होने वाला कोड block; built-in या def से user-defined।"
+   }
+  },
+  {
+   "t": {
+    "en": "NumPy / ndarray",
+    "hi": "NumPy / ndarray"
+   },
+   "d": {
+    "en": "Numerical Python library / its fast n-dimensional array of same-type values.",
+    "hi": "Numerical Python library / एक ही type के मानों का उसका तेज़ n-dimensional array।"
+   }
+  },
+  {
+   "t": {
+    "en": "shape",
+    "hi": "shape"
+   },
+   "d": {
+    "en": "Tuple giving the size of an array or DataFrame along each dimension.",
+    "hi": "Array या DataFrame का हर आयाम में आकार बताने वाला tuple।"
+   }
+  },
+  {
+   "t": {
+    "en": "Matplotlib / pyplot",
+    "hi": "Matplotlib / pyplot"
+   },
+   "d": {
+    "en": "Charting library / its simple plotting module, imported as plt.",
+    "hi": "चार्ट बनाने की library / उसका सरल plotting module, plt के रूप में import।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pandas",
+    "hi": "Pandas"
+   },
+   "d": {
+    "en": "Library for tables of data (Series and DataFrame).",
+    "hi": "Data की तालिकाओं (Series और DataFrame) की library।"
+   }
+  },
+  {
+   "t": {
+    "en": "DataFrame",
+    "hi": "DataFrame"
+   },
+   "d": {
+    "en": "A two-dimensional labelled table of rows and columns in Pandas.",
+    "hi": "Pandas में पंक्तियों और स्तंभों की द्वि-आयामी नामांकित तालिका।"
+   }
+  },
+  {
+   "t": {
+    "en": "CSV",
+    "hi": "CSV"
+   },
+   "d": {
+    "en": "Comma-Separated Values: a text file of table data.",
+    "hi": "Comma-Separated Values: तालिका data की टेक्स्ट फ़ाइल।"
+   }
+  },
+  {
+   "t": {
+    "en": "NaN",
+    "hi": "NaN"
+   },
+   "d": {
+    "en": "Not a Number: how Pandas/NumPy mark a missing value.",
+    "hi": "Not a Number: Pandas/NumPy में missing value का निशान।"
+   }
+  },
+  {
+   "t": {
+    "en": "OpenCV (cv2)",
+    "hi": "OpenCV (cv2)"
+   },
+   "d": {
+    "en": "Open Source Computer Vision library for images and video.",
+    "hi": "चित्रों और वीडियो के लिए Open Source Computer Vision library।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pixel / channel",
+    "hi": "Pixel / channel"
+   },
+   "d": {
+    "en": "Smallest dot of an image / one colour layer (B, G or R) of an image.",
+    "hi": "चित्र का सबसे छोटा बिंदु / चित्र की एक रंग परत (B, G या R)।"
+   }
+  },
+  {
+   "t": {
+    "en": "BGR / RGB",
+    "hi": "BGR / RGB"
+   },
+   "d": {
+    "en": "Colour orders: OpenCV uses Blue-Green-Red; Matplotlib uses Red-Green-Blue.",
+    "hi": "रंगों का क्रम: OpenCV, Blue-Green-Red और Matplotlib, Red-Green-Blue उपयोग करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "scikit-learn",
+    "hi": "scikit-learn"
+   },
+   "d": {
+    "en": "Machine learning library with models that use fit() and predict().",
+    "hi": "Machine learning library जिसके models fit() और predict() उपयोग करते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Google Colab",
+    "hi": "Google Colab"
+   },
+   "d": {
+    "en": "Free online Jupyter-style notebook that runs in a browser.",
+    "hi": "Browser में चलने वाली मुफ़्त online, Jupyter जैसी notebook।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is the default kernel for Python in Jupyter Notebook? (a) Anaconda (b) IPython (c) conda (d) Spyder",
+    "hi": "MCQ: Jupyter Notebook में Python का डिफ़ॉल्ट kernel कौन-सा है? (a) Anaconda (b) IPython (c) conda (d) Spyder"
+   },
+   "a": {
+    "en": "(b) IPython. Anaconda is a distribution, conda is a package manager and Spyder is an editor.",
+    "hi": "(b) IPython। Anaconda एक distribution है, conda package manager है और Spyder एक editor है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The extension of a Jupyter notebook file is (a) .py (b) .jpg (c) .ipynb (d) .csv",
+    "hi": "MCQ: Jupyter notebook फ़ाइल का extension है (a) .py (b) .jpg (c) .ipynb (d) .csv"
+   },
+   "a": {
+    "en": "(c) .ipynb (IPython Notebook).",
+    "hi": "(c) .ipynb (IPython Notebook)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which keyboard shortcut runs a cell and moves to the next one? (a) Ctrl + S (b) Shift + Enter (c) D, D (d) Esc",
+    "hi": "MCQ: कौन-सा शॉर्टकट cell चलाकर अगले पर ले जाता है? (a) Ctrl + S (b) Shift + Enter (c) D, D (d) Esc"
+   },
+   "a": {
+    "en": "(b) Shift + Enter. Ctrl + S saves, D, D deletes a cell and Esc enters Command mode.",
+    "hi": "(b) Shift + Enter। Ctrl + S सेव करता है, D, D cell हटाता है और Esc से Command mode आता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is a valid identifier? (a) 2total (b) total marks (c) total_marks (d) for",
+    "hi": "MCQ: कौन-सा मान्य identifier है? (a) 2total (b) total marks (c) total_marks (d) for"
+   },
+   "a": {
+    "en": "(c) total_marks. (a) starts with a digit, (b) has a space, (d) is a keyword.",
+    "hi": "(c) total_marks। (a) अंक से शुरू होता है, (b) में space है, (d) keyword है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which data type is immutable? (a) list (b) dictionary (c) set (d) tuple",
+    "hi": "MCQ: कौन-सा data type immutable है? (a) list (b) dictionary (c) set (d) tuple"
+   },
+   "a": {
+    "en": "(d) tuple. Its items cannot be changed after it is created.",
+    "hi": "(d) tuple। इसके items बनने के बाद बदले नहीं जा सकते।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (i) The command to create a conda environment named ai_env is conda ______ -n ai_env. (ii) In Pandas, a missing value is shown as ______. (iii) OpenCV is imported with the name ______. (iv) The ______ module of Matplotlib is imported as plt. (v) ______ loop runs as long as its condition is True.",
+    "hi": "रिक्त स्थान भरें: (i) ai_env नाम का conda environment बनाने का कमांड है conda ______ -n ai_env। (ii) Pandas में missing value ______ के रूप में दिखती है। (iii) OpenCV को ______ नाम से import किया जाता है। (iv) Matplotlib का ______ module plt के रूप में import होता है। (v) ______ loop तब तक चलता है जब तक उसकी condition True हो।"
+   },
+   "a": {
+    "en": "(i) create (ii) NaN (iii) cv2 (iv) pyplot (v) while",
+    "hi": "(i) create (ii) NaN (iii) cv2 (iv) pyplot (v) while"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (i) Python is case-sensitive. (ii) range(1, 5) includes 5. (iii) A set can contain duplicate items. (iv) Installing a package in one virtual environment also installs it in all others. (v) df.head() shows the first 5 rows by default.",
+    "hi": "सत्य या असत्य: (i) Python, case-sensitive है। (ii) range(1, 5) में 5 शामिल है। (iii) Set में दोहराव वाले items हो सकते हैं। (iv) एक virtual environment में package install करने से वह बाकी सभी में भी install हो जाता है। (v) df.head() डिफ़ॉल्ट रूप से पहली 5 पंक्तियाँ दिखाता है।"
+   },
+   "a": {
+    "en": "(i) True (ii) False, it gives 1, 2, 3, 4 (iii) False, duplicates are removed (iv) False, environments are isolated (v) True",
+    "hi": "(i) सत्य (ii) असत्य, इससे 1, 2, 3, 4 मिलते हैं (iii) असत्य, दोहराव हट जाते हैं (iv) असत्य, environments अलग-अलग होते हैं (v) सत्य"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write the output: print(17 // 5, 17 % 5, 2 ** 4, 7 / 2)",
+    "hi": "आउटपुट लिखें: print(17 // 5, 17 % 5, 2 ** 4, 7 / 2)"
+   },
+   "a": {
+    "en": "3 2 16 3.5\n17 // 5 is floor division (3), 17 % 5 is the remainder (2), 2 ** 4 is 16, and / always gives a float (3.5).",
+    "hi": "3 2 16 3.5\n17 // 5 floor division है (3), 17 % 5 शेषफल है (2), 2 ** 4 = 16, और / हमेशा float देता है (3.5)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write the output of:\nfor n in range(10, 0, -2):\n    print(n, end=' ')",
+    "hi": "इसका आउटपुट लिखें:\nfor n in range(10, 0, -2):\n    print(n, end=' ')"
+   },
+   "a": {
+    "en": "10 8 6 4 2 \nThe loop starts at 10, steps by -2 and stops before 0. end=' ' keeps everything on one line.",
+    "hi": "10 8 6 4 2 \nLoop 10 से शुरू होता है, -2 के कदम से चलता है और 0 से पहले रुकता है। end=' ' सब कुछ एक पंक्ति में रखता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: What is a virtual environment? Give two reasons for using one.",
+    "hi": "लघु उत्तर: Virtual environment क्या है? इसका उपयोग करने के दो कारण बताइए।"
+   },
+   "a": {
+    "en": "A virtual environment is an isolated Python setup with its own interpreter and packages.\nReasons: (1) different projects can use different versions of the same library without conflict; (2) the main installation stays clean, and a broken environment can simply be deleted and recreated. (Also: a project's package list can be shared and reproduced.)",
+    "hi": "Virtual environment अपने interpreter और packages वाला एक अलग (isolated) Python setup है।\nकारण: (1) अलग-अलग प्रोजेक्ट एक ही library के अलग संस्करण बिना टकराव के उपयोग कर सकते हैं; (2) मुख्य installation साफ़ रहता है, और बिगड़ा environment हटाकर फिर से बनाया जा सकता है। (साथ ही: प्रोजेक्ट के packages की सूची साझा और दोहराई जा सकती है।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Differentiate between a code cell and a Markdown cell, and between Edit mode and Command mode.",
+    "hi": "लघु उत्तर: Code cell और Markdown cell में, तथा Edit mode और Command mode में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Code cell holds Python code that the kernel runs; its output appears below. Markdown cell holds formatted text (headings, lists, bold) to explain the work; running it only formats the text.\nEdit mode (Enter, green border) lets you type inside a cell. Command mode (Esc, blue border) lets keys act on whole cells, e.g. A/B to insert, D,D to delete, M/Y to change type.",
+    "hi": "Code cell में Python कोड होता है जिसे kernel चलाता है; आउटपुट नीचे आता है। Markdown cell में काम समझाने के लिए formatted टेक्स्ट (शीर्षक, सूची, bold) होता है; उसे चलाने से सिर्फ़ टेक्स्ट format होता है।\nEdit mode (Enter, हरी किनारी) में cell के अंदर टाइप करते हैं। Command mode (Esc, नीली किनारी) में keys पूरे cells पर काम करती हैं, जैसे A/B से जोड़ना, D,D से हटाना, M/Y से प्रकार बदलना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Give the difference between a list and a tuple with one example each.",
+    "hi": "लघु उत्तर: List और tuple में अंतर एक-एक उदाहरण के साथ बताइए।"
+   },
+   "a": {
+    "en": "List: written in [ ], mutable (items can be added, removed or changed), e.g. marks = [78, 85, 92]; marks.append(90) works.\nTuple: written in ( ), immutable (cannot be changed), e.g. point = (2, 5); point[0] = 3 gives a TypeError. Tuples suit fixed data such as coordinates or dates of birth.",
+    "hi": "List: [ ] में लिखी जाती है, mutable है (items जोड़े, हटाए या बदले जा सकते हैं), जैसे marks = [78, 85, 92]; marks.append(90) चलता है।\nTuple: ( ) में लिखा जाता है, immutable है (बदला नहीं जा सकता), जैसे point = (2, 5); point[0] = 3 से TypeError आता है। Tuple स्थिर data जैसे निर्देशांक या जन्मतिथि के लिए उपयुक्त है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write a program to add the elements of two lists [3, 6, 9] and [1, 2, 3] using NumPy and also print the mean of the result.",
+    "hi": "NumPy से दो lists [3, 6, 9] और [1, 2, 3] के elements जोड़ने और परिणाम का mean print करने का प्रोग्राम लिखिए।"
+   },
+   "a": {
+    "en": "import numpy as np\na = np.array([3, 6, 9])\nb = np.array([1, 2, 3])\nc = a + b\nprint(c)\nprint(c.mean())\nOutput:\n[ 4  8 12]\n8.0",
+    "hi": "import numpy as np\na = np.array([3, 6, 9])\nb = np.array([1, 2, 3])\nc = a + b\nprint(c)\nprint(c.mean())\nआउटपुट:\n[ 4  8 12]\n8.0"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the error(s) and correct the code:\nage = input('Enter age')\nif age >= 18\n    print('Adult')",
+    "hi": "Error ढूँढिए और कोड ठीक कीजिए:\nage = input('Enter age')\nif age >= 18\n    print('Adult')"
+   },
+   "a": {
+    "en": "Error 1: input() returns text, so comparing it with 18 gives TypeError. Use int(input('Enter age')).\nError 2: the if line needs a colon at the end.\nCorrect code:\nage = int(input('Enter age'))\nif age >= 18:\n    print('Adult')",
+    "hi": "Error 1: input() टेक्स्ट लौटाता है, इसलिए 18 से तुलना करने पर TypeError आता है। int(input('Enter age')) लिखें।\nError 2: if वाली पंक्ति के अंत में colon चाहिए।\nसही कोड:\nage = int(input('Enter age'))\nif age >= 18:\n    print('Adult')"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): An image read with cv2.imread() looks wrong in colour when shown directly with plt.imshow().\nReason (R): OpenCV stores colour images in BGR order while Matplotlib expects RGB.\n(a) Both A and R are true and R is the correct explanation of A (b) Both true but R is not the correct explanation (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): cv2.imread() से पढ़ा गया चित्र सीधे plt.imshow() से दिखाने पर रंगों में ग़लत दिखता है।\nकारण (R): OpenCV रंगीन चित्रों को BGR क्रम में रखता है जबकि Matplotlib, RGB की अपेक्षा करता है।\n(a) A और R दोनों सत्य हैं और R, A की सही व्याख्या है (b) दोनों सत्य पर R सही व्याख्या नहीं (c) A सत्य, R असत्य (d) A असत्य, R सत्य"
+   },
+   "a": {
+    "en": "(a). The swapped channel order is exactly why red and blue get exchanged; cv2.cvtColor(img, cv2.COLOR_BGR2RGB) fixes it.",
+    "hi": "(a)। Channels का बदला हुआ क्रम ही लाल और नीले के आपस में बदल जाने का कारण है; cv2.cvtColor(img, cv2.COLOR_BGR2RGB) इसे ठीक करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): NumPy is preferred over Python lists for large numeric data in AI.\nReason (R): NumPy arrays can hold items of different data types in one array.\nChoose (a), (b), (c) or (d) as in the previous question.",
+    "hi": "अभिकथन (A): AI में बड़े संख्यात्मक data के लिए Python lists की बजाय NumPy को प्राथमिकता दी जाती है।\nकारण (R): NumPy array एक ही array में अलग-अलग data types के items रख सकता है।\nपिछले प्रश्न की तरह (a), (b), (c) या (d) चुनें।"
+   },
+   "a": {
+    "en": "(c) A is true, R is false. NumPy arrays store items of the same type, which is why they are fast and support item-wise maths (vectorisation). Lists are the ones that allow mixed types.",
+    "hi": "(c) A सत्य, R असत्य। NumPy array एक ही type के items रखते हैं, इसीलिए वे तेज़ हैं और item-दर-item गणित (vectorisation) करते हैं। मिश्रित types की अनुमति lists देती हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What will df.shape and df.columns return for a CSV of 250 students with columns RollNo, Name, Marks?",
+    "hi": "RollNo, Name, Marks स्तंभों वाली 250 विद्यार्थियों की CSV के लिए df.shape और df.columns क्या लौटाएँगे?"
+   },
+   "a": {
+    "en": "df.shape returns (250, 3): 250 rows and 3 columns (the header line is not counted as a row).\ndf.columns returns the column names RollNo, Name and Marks (as an Index object; list(df.columns) gives ['RollNo', 'Name', 'Marks']).",
+    "hi": "df.shape से (250, 3) मिलता है: 250 पंक्तियाँ और 3 स्तंभ (शीर्षक पंक्ति row में नहीं गिनी जाती)।\ndf.columns से स्तंभों के नाम RollNo, Name और Marks मिलते हैं (Index object के रूप में; list(df.columns) से ['RollNo', 'Name', 'Marks'] मिलता है)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: Riya has weather data in rain.csv with columns Date, City and Rainfall_mm. Some Rainfall_mm cells are blank. Write code to (i) read the file, (ii) count missing values, (iii) fill them with the column median, (iv) show the 5 rainiest days, and (v) draw a line chart of rainfall over dates.",
+    "hi": "केस-आधारित: रिया के पास rain.csv में मौसम का data है जिसमें Date, City और Rainfall_mm स्तंभ हैं। Rainfall_mm के कुछ cells ख़ाली हैं। ऐसा कोड लिखिए जो (i) फ़ाइल पढ़े, (ii) missing values गिने, (iii) उन्हें स्तंभ के median से भरे, (iv) सबसे अधिक वर्षा वाले 5 दिन दिखाए, और (v) तारीख़ों पर वर्षा का line chart बनाए।"
+   },
+   "a": {
+    "en": "import pandas as pd\nimport matplotlib.pyplot as plt\ndf = pd.read_csv('rain.csv')                      # (i)\nprint(df.isnull().sum())                          # (ii)\ndf['Rainfall_mm'] = df['Rainfall_mm'].fillna(df['Rainfall_mm'].median())   # (iii)\nprint(df.sort_values('Rainfall_mm', ascending=False).head(5))              # (iv)\nplt.plot(df['Date'], df['Rainfall_mm'], marker='o')                        # (v)\nplt.title('Daily rainfall')\nplt.xlabel('Date')\nplt.ylabel('Rainfall (mm)')\nplt.show()\nMedian is a good choice when a few very heavy rain days would pull the mean up.",
+    "hi": "import pandas as pd\nimport matplotlib.pyplot as plt\ndf = pd.read_csv('rain.csv')                      # (i)\nprint(df.isnull().sum())                          # (ii)\ndf['Rainfall_mm'] = df['Rainfall_mm'].fillna(df['Rainfall_mm'].median())   # (iii)\nprint(df.sort_values('Rainfall_mm', ascending=False).head(5))              # (iv)\nplt.plot(df['Date'], df['Rainfall_mm'], marker='o')                        # (v)\nplt.title('Daily rainfall')\nplt.xlabel('Date')\nplt.ylabel('Rainfall (mm)')\nplt.show()\nजब कुछ बहुत भारी वर्षा वाले दिन mean को ऊपर खींच दें, तब median अच्छा विकल्प है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: An image leaf.jpg prints shape (480, 640, 3) and dtype uint8. Answer: (a) width and height, (b) number of channels and their order in OpenCV, (c) range of each value, (d) the shape after cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), (e) what happens if the file name is misspelt.",
+    "hi": "केस-आधारित: leaf.jpg चित्र का shape (480, 640, 3) और dtype uint8 print होता है। उत्तर दीजिए: (a) चौड़ाई और ऊँचाई, (b) channels की संख्या और OpenCV में उनका क्रम, (c) हर मान का दायरा, (d) cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) के बाद shape, (e) फ़ाइल नाम की spelling ग़लत हो तो क्या होगा।"
+   },
+   "a": {
+    "en": "(a) Height 480 pixels, width 640 pixels.\n(b) 3 channels in the order Blue, Green, Red.\n(c) uint8 means whole numbers from 0 to 255.\n(d) (480, 640).\n(e) cv2.imread returns None instead of an image, so the next line using img.shape fails with AttributeError: 'NoneType' object has no attribute 'shape'.",
+    "hi": "(a) ऊँचाई 480 pixel, चौड़ाई 640 pixel।\n(b) 3 channels, क्रम Blue, Green, Red।\n(c) uint8 का अर्थ है 0 से 255 तक की पूर्ण संख्याएँ।\n(d) (480, 640)।\n(e) cv2.imread चित्र की जगह None लौटाता है, इसलिए img.shape वाली अगली पंक्ति AttributeError: 'NoneType' object has no attribute 'shape' के साथ विफल होती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain the features of Jupyter Notebook that make it suitable for AI projects, and describe the steps to create, run, save and download a notebook.",
+    "hi": "दीर्घ उत्तर: Jupyter Notebook की वे विशेषताएँ समझाइए जो उसे AI प्रोजेक्ट के लिए उपयुक्त बनाती हैं, और notebook बनाने, चलाने, सेव करने और डाउनलोड करने के चरण बताइए।"
+   },
+   "a": {
+    "en": "Features: (1) code, output, charts, formatted text and equations in one document; (2) cells can be run one at a time, so you can test and fix small parts; (3) variables stay in the kernel's memory between cells, so data loaded once can be explored step by step; (4) charts and tables appear right under the code; (5) Markdown cells explain the reasoning, making the notebook a report; (6) it is free, open-source, runs in a browser and supports many languages through kernels; (7) notebooks can be shared and downloaded as .ipynb, .py, HTML or PDF.\nSteps: open Anaconda Navigator and Launch Jupyter Notebook (or type jupyter notebook in Anaconda Prompt); in the Dashboard go to your folder, click New > Python 3; rename the notebook; type code in a cell and press Shift + Enter; add Markdown cells for headings; save with Ctrl + S or File > Save and Checkpoint; download with File > Download as.",
+    "hi": "विशेषताएँ: (1) एक ही दस्तावेज़ में कोड, आउटपुट, चार्ट, formatted टेक्स्ट और समीकरण; (2) cells एक-एक करके चलाए जा सकते हैं, इसलिए छोटे हिस्सों को जाँचकर ठीक किया जा सकता है; (3) variables cells के बीच kernel की memory में रहते हैं, इसलिए एक बार load किया data चरण-दर-चरण खोजा जा सकता है; (4) चार्ट और तालिकाएँ कोड के ठीक नीचे दिखती हैं; (5) Markdown cells तर्क समझाते हैं, जिससे notebook एक रिपोर्ट बन जाती है; (6) यह मुफ़्त, open-source है, browser में चलती है और kernels के ज़रिए कई भाषाएँ support करती है; (7) notebooks साझा की जा सकती हैं और .ipynb, .py, HTML या PDF के रूप में डाउनलोड की जा सकती हैं।\nचरण: Anaconda Navigator खोलकर Jupyter Notebook को Launch करें (या Anaconda Prompt में jupyter notebook टाइप करें); Dashboard में अपने फ़ोल्डर में जाकर New > Python 3 पर क्लिक करें; notebook का नाम बदलें; cell में कोड टाइप करके Shift + Enter दबाएँ; शीर्षकों के लिए Markdown cells जोड़ें; Ctrl + S या File > Save and Checkpoint से सेव करें; File > Download as से डाउनलोड करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Write the sequence of commands to create a virtual environment called cv_env with Python 3.11, install NumPy, OpenCV and Jupyter in it, open Jupyter from it, check its packages, and finally leave it. Explain each command.",
+    "hi": "दीर्घ उत्तर: Python 3.11 के साथ cv_env नाम का virtual environment बनाने, उसमें NumPy, OpenCV और Jupyter install करने, उससे Jupyter खोलने, उसके packages जाँचने और अंत में उससे बाहर निकलने के कमांड क्रम से लिखिए। हर कमांड समझाइए।"
+   },
+   "a": {
+    "en": "conda create -n cv_env python=3.11   -> makes a new isolated environment named cv_env with Python 3.11\nconda activate cv_env                 -> switches into it; the prompt shows (cv_env)\nconda install numpy jupyter           -> installs NumPy and Jupyter inside cv_env only\npip install opencv-python             -> installs OpenCV (imported as cv2) inside cv_env\njupyter notebook                      -> opens Jupyter using this environment's Python and packages\nconda list                            -> lists all packages in cv_env\nconda deactivate                      -> returns to the base environment\n(With venv: python -m venv cv_env, then cv_env\\Scripts\\activate on Windows, pip install numpy opencv-python notebook, pip list, deactivate.)",
+    "hi": "conda create -n cv_env python=3.11   -> Python 3.11 के साथ cv_env नाम का नया अलग environment बनाता है\nconda activate cv_env                 -> उसमें ले जाता है; prompt में (cv_env) दिखता है\nconda install numpy jupyter           -> NumPy और Jupyter केवल cv_env के अंदर install करता है\npip install opencv-python             -> cv_env के अंदर OpenCV (cv2 के रूप में import) install करता है\njupyter notebook                      -> इसी environment के Python और packages से Jupyter खोलता है\nconda list                            -> cv_env के सभी packages की सूची देता है\nconda deactivate                      -> base environment में वापस ले जाता है\n(venv से: python -m venv cv_env, फिर Windows पर cv_env\\Scripts\\activate, pip install numpy opencv-python notebook, pip list, deactivate।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Program: Write a program that stores the marks of 6 students in a list, uses NumPy to find the mean, median and standard deviation, prints how many students scored above the mean, and draws a bar chart of the marks.",
+    "hi": "प्रोग्राम: ऐसा प्रोग्राम लिखिए जो 6 विद्यार्थियों के अंक एक list में रखे, NumPy से mean, median और standard deviation निकाले, बताए कि कितने विद्यार्थियों ने mean से अधिक अंक पाए, और अंकों का bar chart बनाए।"
+   },
+   "a": {
+    "en": "import numpy as np\nimport matplotlib.pyplot as plt\nmarks = [56, 78, 91, 64, 83, 70]\narr = np.array(marks)\nmean = np.mean(arr)\nprint(\"Mean:\", round(mean, 2))\nprint(\"Median:\", np.median(arr))\nprint(\"Standard deviation:\", round(np.std(arr), 2))\nprint(\"Above mean:\", np.sum(arr > mean))\nnames = [\"S1\", \"S2\", \"S3\", \"S4\", \"S5\", \"S6\"]\nplt.bar(names, marks, color=\"orange\")\nplt.title(\"Marks of 6 students\")\nplt.xlabel(\"Student\")\nplt.ylabel(\"Marks\")\nplt.show()\n\nOutput (text part; the bar chart opens separately):\nMean: 73.67\nMedian: 74.0\nStandard deviation: 11.73\nAbove mean: 3\nnp.sum(arr > mean) counts the True values in the comparison.",
+    "hi": "import numpy as np\nimport matplotlib.pyplot as plt\nmarks = [56, 78, 91, 64, 83, 70]\narr = np.array(marks)\nmean = np.mean(arr)\nprint(\"Mean:\", round(mean, 2))\nprint(\"Median:\", np.median(arr))\nprint(\"Standard deviation:\", round(np.std(arr), 2))\nprint(\"Above mean:\", np.sum(arr > mean))\nnames = [\"S1\", \"S2\", \"S3\", \"S4\", \"S5\", \"S6\"]\nplt.bar(names, marks, color=\"orange\")\nplt.title(\"Marks of 6 students\")\nplt.xlabel(\"Student\")\nplt.ylabel(\"Marks\")\nplt.show()\n\nआउटपुट (टेक्स्ट भाग; bar chart अलग से खुलता है):\nMean: 73.67\nMedian: 74.0\nStandard deviation: 11.73\nAbove mean: 3\nnp.sum(arr > mean) तुलना में True मानों की गिनती करता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: A school wants to put all students' names, phone numbers and marks in a public Google Colab notebook so that anyone can practise Pandas on 'real' data. Is this a good idea? Suggest a better approach.",
+    "hi": "विचार प्रश्न: एक स्कूल सभी विद्यार्थियों के नाम, फ़ोन नंबर और अंक एक सार्वजनिक Google Colab notebook में डालना चाहता है ताकि कोई भी 'असली' data पर Pandas का अभ्यास कर सके। क्या यह अच्छा विचार है? बेहतर तरीका सुझाइए।"
+   },
+   "a": {
+    "en": "No. Names, phone numbers and marks are personal data; making them public breaks students' privacy and could lead to spam, scams or embarrassment. Better: remove names and phone numbers and use roll numbers or made-up IDs, or create a sample (synthetic) dataset like students.csv in this chapter; keep any real data private and share it only with permission. Good data practice is part of AI ethics.",
+    "hi": "नहीं। नाम, फ़ोन नंबर और अंक निजी data हैं; इन्हें सार्वजनिक करने से विद्यार्थियों की निजता टूटती है और spam, धोखाधड़ी या शर्मिंदगी हो सकती है। बेहतर: नाम और फ़ोन नंबर हटाकर roll number या बनाए हुए ID उपयोग करें, या इस अध्याय की students.csv जैसा नमूना (synthetic) dataset बनाएँ; कोई भी असली data निजी रखें और केवल अनुमति से साझा करें। अच्छी data practice, AI ethics का हिस्सा है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: Using Google Colab or Jupyter, take a photo of a notebook page with your phone, upload it, read it with OpenCV and print its shape. Then resize it to 200 x 200 and print the new shape. What do you observe about the number of pixels?",
+    "hi": "गतिविधि प्रश्न: Google Colab या Jupyter में, अपने फ़ोन से किसी कॉपी के पन्ने की फ़ोटो लें, उसे upload करें, OpenCV से पढ़ें और उसका shape print करें। फिर उसे 200 x 200 में resize करके नया shape print करें। Pixels की संख्या के बारे में आप क्या देखते हैं?"
+   },
+   "a": {
+    "en": "Code: import cv2; img = cv2.imread('page.jpg'); print(img.shape); small = cv2.resize(img, (200, 200)); print(small.shape)\nA phone photo is usually thousands of pixels on each side, e.g. a shape like (3000, 4000, 3). After resizing the shape is (200, 200, 3): only 40000 pixels. Note that cv2.resize takes (width, height). Observation: the picture loses detail but becomes much smaller and faster to process, which is why AI models often resize images to a fixed small size before training.",
+    "hi": "कोड: import cv2; img = cv2.imread('page.jpg'); print(img.shape); small = cv2.resize(img, (200, 200)); print(small.shape)\nफ़ोन की फ़ोटो आमतौर पर हर ओर हज़ारों pixel की होती है, जैसे (3000, 4000, 3) जैसा shape। Resize के बाद shape (200, 200, 3) होता है: केवल 40000 pixel। ध्यान दें कि cv2.resize का क्रम (चौड़ाई, ऊँचाई) है। अवलोकन: चित्र का विवरण घटता है पर वह बहुत छोटा और process करने में तेज़ हो जाता है, इसीलिए AI models अक्सर training से पहले चित्रों को एक तय छोटे आकार में बदलते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which function displays basic statistics like mean, std, min and max of all numeric columns of a DataFrame? (a) info() (b) head() (c) describe() (d) shape",
+    "hi": "MCQ: कौन-सा function DataFrame के सभी संख्यात्मक स्तंभों के mean, std, min और max जैसे आँकड़े दिखाता है? (a) info() (b) head() (c) describe() (d) shape"
+   },
+   "a": {
+    "en": "(c) describe(). info() shows column names, non-null counts and types.",
+    "hi": "(c) describe()। info() स्तंभों के नाम, non-null गिनती और types दिखाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which chart would you use for each and why? (i) A city's temperature every day for a month (ii) Share of students using cycle, bus, walk and car to reach school (iii) Hours of study vs marks for 40 students (iv) Runs scored by 5 batters in a match",
+    "hi": "हर स्थिति के लिए कौन-सा चार्ट उपयोग करेंगे और क्यों? (i) एक महीने तक शहर का रोज़ का तापमान (ii) स्कूल आने के लिए साइकिल, बस, पैदल और कार का उपयोग करने वाले विद्यार्थियों का हिस्सा (iii) 40 विद्यार्थियों के पढ़ाई के घंटे बनाम अंक (iv) एक मैच में 5 बल्लेबाज़ों के रन"
+   },
+   "a": {
+    "en": "(i) Line chart: change over time. (ii) Pie chart: parts of a whole. (iii) Scatter plot: relation between two numeric variables. (iv) Bar chart: comparing categories.",
+    "hi": "(i) Line chart: समय के साथ बदलाव। (ii) Pie chart: पूरे के हिस्से। (iii) Scatter plot: दो संख्यात्मक चरों के बीच संबंध। (iv) Bar chart: श्रेणियों की तुलना।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Python is free, simple, has a huge set of AI libraries, runs on all platforms and has a large community, which makes it the main language for AI.",
+   "Anaconda bundles Python, many data-science packages, the conda manager and tools like Jupyter; Navigator is its graphical launcher and Anaconda Prompt its command window. Google Colab is a free online alternative.",
+   "A Jupyter notebook (.ipynb) is made of code, Markdown and raw cells run by a kernel (IPython by default); it has Edit and Command modes, shortcuts like Shift + Enter, and checkpoints.",
+   "A virtual environment is an isolated Python setup; create it with conda create -n name or python -m venv name, activate it, install packages with conda install or pip install, and deactivate when done.",
+   "Modules, packages and libraries are reusable code; bring them in with import, import ... as or from ... import.",
+   "Python basics: comments (#), keywords, identifier rules, variables, data types (int, float, complex, bool, str, list, tuple, set, dict) and implicit/explicit type conversion.",
+   "Operators (arithmetic, relational, assignment, logical, membership, identity) follow precedence rules; brackets come first and ** goes right to left.",
+   "if / elif / else and nested if make decisions; for (with range) and while repeat; break exits a loop and continue skips to the next round.",
+   "NumPy arrays do fast item-wise maths and have shape, ndim, size and dtype; np.mean, np.median, np.var and np.std give statistics, and SciPy or statistics gives the mode.",
+   "Matplotlib's pyplot draws line (plot), scatter, bar, histogram and pie charts; always add a title and axis labels.",
+   "Pandas reads a CSV into a DataFrame; head(), shape, columns, info() and describe() explore it; isnull(), fillna() and dropna() handle missing values (NaN).",
+   "OpenCV (cv2) reads an image as a NumPy array of shape (height, width, channels) in BGR order with values 0-255; convert to RGB before plt.imshow.",
+   "scikit-learn models follow create, fit() and predict().",
+   "This unit is assessed through a practical file of at least 15 programs, the practical exam and the viva; run every program yourself and keep data private and safe."
+  ],
+  "hi": [
+   "Python मुफ़्त, सरल है, इसमें AI libraries का विशाल भंडार है, यह सभी platforms पर चलती है और इसका बड़ा समुदाय है, इसीलिए यह AI की मुख्य भाषा है।",
+   "Anaconda, Python, कई data-science packages, conda manager और Jupyter जैसे टूल को एक साथ देता है; Navigator इसका graphical launcher है और Anaconda Prompt इसकी command विंडो। Google Colab एक मुफ़्त online विकल्प है।",
+   "Jupyter notebook (.ipynb), code, Markdown और raw cells से बनी होती है जिन्हें kernel (डिफ़ॉल्ट रूप से IPython) चलाता है; इसमें Edit और Command mode, Shift + Enter जैसे शॉर्टकट और checkpoints होते हैं।",
+   "Virtual environment एक अलग Python setup है; इसे conda create -n name या python -m venv name से बनाएँ, activate करें, conda install या pip install से packages डालें, और काम के बाद deactivate करें।",
+   "Modules, packages और libraries दोबारा उपयोग होने वाला कोड हैं; इन्हें import, import ... as या from ... import से लाएँ।",
+   "Python की मूल बातें: comments (#), keywords, identifier के नियम, variables, data types (int, float, complex, bool, str, list, tuple, set, dict) और implicit/explicit type conversion।",
+   "Operators (arithmetic, relational, assignment, logical, membership, identity) प्राथमिकता के नियमों का पालन करते हैं; कोष्ठक सबसे पहले और ** दाएँ से बाएँ।",
+   "if / elif / else और nested if निर्णय लेते हैं; for (range के साथ) और while दोहराते हैं; break, loop से बाहर निकालता है और continue अगले चक्कर पर ले जाता है।",
+   "NumPy arrays तेज़ item-दर-item गणित करते हैं और उनमें shape, ndim, size और dtype होते हैं; np.mean, np.median, np.var और np.std आँकड़े देते हैं, और SciPy या statistics से mode मिलता है।",
+   "Matplotlib का pyplot, line (plot), scatter, bar, histogram और pie chart बनाता है; हमेशा शीर्षक और axis labels जोड़ें।",
+   "Pandas, CSV को DataFrame में पढ़ता है; head(), shape, columns, info() और describe() उसे समझने में मदद करते हैं; isnull(), fillna() और dropna() missing values (NaN) सँभालते हैं।",
+   "OpenCV (cv2) चित्र को (ऊँचाई, चौड़ाई, channels) shape वाले NumPy array के रूप में BGR क्रम में 0-255 मानों के साथ पढ़ता है; plt.imshow से पहले RGB में बदलें।",
+   "scikit-learn models बनाएँ, fit() और predict() के क्रम का पालन करते हैं।",
+   "इस इकाई का मूल्यांकन कम से कम 15 प्रोग्रामों वाली practical file, practical exam और viva से होता है; हर प्रोग्राम ख़ुद चलाएँ और data को निजी व सुरक्षित रखें।"
+  ]
+ }
+}

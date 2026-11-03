@@ -1,0 +1,1958 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "10",
+ "id": "ch4",
+ "intro": {
+  "en": "Much of the world's useful data is numbers: marks, prices, rainfall, runs and rupees. This chapter introduces statistical data and the Data Science domain of AI. You will compare high-code, low-code and no-code ways of building AI, learn the statistics behind data (population and sample, mean, median, mode, range, variance, standard deviation, distributions, outliers and probability), and then use the free no-code tool Orange Data Mining to explore data and run a complete AI project without writing code.",
+  "hi": "दुनिया का बहुत-सा उपयोगी डेटा संख्याएँ हैं: अंक, कीमतें, वर्षा, रन और रुपये। यह अध्याय सांख्यिकीय डेटा और AI के डेटा साइंस क्षेत्र से परिचय कराता है। आप AI बनाने के हाई-कोड, लो-कोड और नो-कोड तरीकों की तुलना करेंगे, डेटा के पीछे की सांख्यिकी सीखेंगे (समष्टि और नमूना, माध्य, माध्यिका, बहुलक, परिसर, प्रसरण, मानक विचलन, वितरण, बाहरी मान और प्रायिकता), और फिर मुफ़्त नो-कोड टूल Orange Data Mining से डेटा का अन्वेषण करके बिना कोड लिखे एक पूरा AI प्रोजेक्ट करेंगे।"
+ },
+ "learn": {
+  "en": [
+   "The three AI domains and what statistical data is",
+   "Applications of data science in daily life",
+   "High-code, low-code and no-code AI, with a comparison",
+   "Why no-code AI is useful, who uses it, its benefits and disadvantages (including automation bias)",
+   "Population, sample and random sampling",
+   "Mean, median and mode, and when to use each",
+   "Range, variance and standard deviation",
+   "Distributions, the normal distribution and the 68-95-99.7 rule",
+   "Outliers and probability",
+   "Choosing charts to visualise data",
+   "Using Orange Data Mining widgets to follow the AI Project Cycle"
+  ],
+  "hi": [
+   "AI के तीन क्षेत्र और सांख्यिकीय डेटा क्या है",
+   "दैनिक जीवन में डेटा साइंस के अनुप्रयोग",
+   "तुलना सहित हाई-कोड, लो-कोड और नो-कोड AI",
+   "नो-कोड AI क्यों उपयोगी है, कौन उपयोग करता है, इसके लाभ और कमियाँ (स्वचालन पक्षपात सहित)",
+   "समष्टि, नमूना और यादृच्छिक नमूना चयन",
+   "माध्य, माध्यिका और बहुलक, और हर एक कब उपयोग करें",
+   "परिसर, प्रसरण और मानक विचलन",
+   "वितरण, सामान्य वितरण और 68-95-99.7 नियम",
+   "बाहरी मान और प्रायिकता",
+   "डेटा विज़ुअलाइज़ करने के लिए चार्ट चुनना",
+   "AI प्रोजेक्ट चक्र अपनाने के लिए Orange Data Mining विजेटों का उपयोग"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "4.1 Three domains of AI and where statistics fits",
+    "hi": "4.1 AI के तीन क्षेत्र और सांख्यिकी का स्थान"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI systems are often grouped by the kind of data they work with. Data Science works with numbers and tables (sales figures, cricket scores, rainfall records). Computer Vision works with images and videos (you will study it in Chapter 5). Natural Language Processing works with text and speech (Chapter 6). This chapter is about the first domain, and about statistics, the branch of mathematics that helps us make sense of numerical data.",
+      "hi": "AI सिस्टमों को अक्सर इस आधार पर बाँटा जाता है कि वे किस तरह के डेटा के साथ काम करते हैं। डेटा साइंस (Data Science) संख्याओं और तालिकाओं के साथ काम करता है (बिक्री के आँकड़े, क्रिकेट स्कोर, वर्षा के रिकॉर्ड)। कंप्यूटर विज़न (Computer Vision) चित्रों और वीडियो के साथ काम करता है (इसे आप अध्याय 5 में पढ़ेंगे)। नेचुरल लैंग्वेज प्रोसेसिंग (NLP) पाठ और वाणी के साथ काम करता है (अध्याय 6)। यह अध्याय पहले क्षेत्र के बारे में है, और सांख्यिकी (statistics) के बारे में, गणित की वह शाखा जो संख्यात्मक डेटा को समझने में मदद करती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Domain",
+        "Type of data",
+        "Indian example"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "डेटा का प्रकार",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data Science (statistical data)",
+         "Numbers, tables, records",
+         "Predicting electricity demand in a city; IPL team strategy from match stats"
+        ],
+        [
+         "Computer Vision",
+         "Images, video",
+         "FASTag-style number-plate reading; crop-disease photo apps"
+        ],
+        [
+         "Natural Language Processing",
+         "Text, speech",
+         "Bhashini voice translation between Indian languages"
+        ]
+       ],
+       "hi": [
+        [
+         "डेटा साइंस (सांख्यिकीय डेटा)",
+         "संख्याएँ, तालिकाएँ, रिकॉर्ड",
+         "शहर में बिजली की माँग का अनुमान; मैच के आँकड़ों से IPL टीम की रणनीति"
+        ],
+        [
+         "कंप्यूटर विज़न",
+         "चित्र, वीडियो",
+         "नंबर-प्लेट पढ़ना; फ़सल-रोग पहचानने वाले फ़ोटो ऐप"
+        ],
+        [
+         "नेचुरल लैंग्वेज प्रोसेसिंग",
+         "पाठ, वाणी",
+         "भारतीय भाषाओं के बीच Bhashini वॉइस अनुवाद"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data Science",
+       "hi": "डेटा साइंस (Data Science)"
+      },
+      "text": {
+       "en": "Data Science is the field that collects, cleans, explores and analyses data, using statistics, programming and machine learning, to find useful patterns and make predictions or decisions.",
+       "hi": "डेटा साइंस वह क्षेत्र है जो सांख्यिकी, प्रोग्रामिंग और machine learning की मदद से डेटा इकट्ठा करता है, साफ़ करता है, उसका अन्वेषण और विश्लेषण करता है, ताकि उपयोगी पैटर्न मिलें और अनुमान या निर्णय लिए जा सकें।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Statistical data",
+       "hi": "सांख्यिकीय डेटा (Statistical data)"
+      },
+      "text": {
+       "en": "Statistical data is information recorded as numbers or categories that can be counted, measured, summarised and compared, usually arranged in rows (records) and columns (features).",
+       "hi": "सांख्यिकीय डेटा वह जानकारी है जो संख्याओं या श्रेणियों के रूप में दर्ज होती है और जिसे गिना, मापा, सारांशित और तुलना किया जा सकता है; आमतौर पर यह पंक्तियों (records) और स्तंभों (features) में व्यवस्थित होती है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.2 Applications of data science",
+    "hi": "4.2 डेटा साइंस के अनुप्रयोग"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Internet search: search engines analyse huge amounts of data to show the most relevant results in a fraction of a second.",
+       "Targeted advertising: platforms use your past clicks and searches to show ads you are more likely to click; this raises the click-through rate but also raises privacy questions.",
+       "Recommendations: shopping, video and music apps suggest products or shows based on what similar users liked.",
+       "Finance: banks score loan risk and detect unusual transactions; UPI apps warn about suspicious payment requests.",
+       "Healthcare: analysing patient records and scans helps in early diagnosis, predicting disease risk and planning hospital resources.",
+       "Genetics and medicine research: studying gene data to understand diseases and how people react to drugs.",
+       "Agriculture and weather: rainfall and soil data help predict crop yield and advise farmers on sowing time.",
+       "Transport: Google Maps-style apps combine location data from many phones to estimate traffic and travel time.",
+       "Sports: cricket analysts study strike rates, economy rates and pitch data to plan matches."
+      ],
+      "hi": [
+       "इंटरनेट सर्च: सर्च इंजन सेकंड के अंश में सबसे प्रासंगिक परिणाम दिखाने के लिए विशाल डेटा का विश्लेषण करते हैं।",
+       "लक्षित विज्ञापन (Targeted advertising): प्लेटफ़ॉर्म आपकी पुरानी क्लिक और खोजों के आधार पर ऐसे विज्ञापन दिखाते हैं जिन पर आपके क्लिक करने की संभावना अधिक है; इससे click-through rate बढ़ता है पर निजता के प्रश्न भी उठते हैं।",
+       "सुझाव (Recommendations): शॉपिंग, वीडियो और संगीत ऐप वही उत्पाद या शो सुझाते हैं जो मिलते-जुलते उपयोगकर्ताओं को पसंद आए।",
+       "वित्त: बैंक ऋण जोखिम आँकते हैं और असामान्य लेन-देन पकड़ते हैं; UPI ऐप संदिग्ध भुगतान अनुरोधों पर चेतावनी देते हैं।",
+       "स्वास्थ्य: मरीज़ों के रिकॉर्ड और स्कैन का विश्लेषण शुरुआती निदान, बीमारी के जोखिम के अनुमान और अस्पताल संसाधनों की योजना में मदद करता है।",
+       "आनुवंशिकी और चिकित्सा शोध: बीमारियों और दवाओं पर लोगों की प्रतिक्रिया समझने के लिए जीन डेटा का अध्ययन।",
+       "कृषि और मौसम: वर्षा और मिट्टी का डेटा फ़सल उपज के अनुमान और किसानों को बुवाई का समय सुझाने में मदद करता है।",
+       "परिवहन: Google Maps जैसे ऐप कई फ़ोनों के लोकेशन डेटा को जोड़कर ट्रैफ़िक और यात्रा समय का अनुमान लगाते हैं।",
+       "खेल: क्रिकेट विश्लेषक मैच की योजना के लिए strike rate, economy rate और पिच डेटा का अध्ययन करते हैं।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.3 High-code, low-code and no-code AI",
+    "hi": "4.3 हाई-कोड, लो-कोड और नो-कोड AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "There are three ways to build an AI or data application, depending on how much programming is involved.",
+      "hi": "AI या डेटा एप्लिकेशन बनाने के तीन तरीके हैं, यह इस पर निर्भर करता है कि कितनी प्रोग्रामिंग शामिल है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "High-code (custom code)",
+       "hi": "हाई-कोड (कस्टम कोड)"
+      },
+      "text": {
+       "en": "Programmers write every part of the application themselves in languages such as Python, Java or C#. It gives full control and flexibility but needs skilled people, more time and more money.",
+       "hi": "प्रोग्रामर एप्लिकेशन का हर हिस्सा Python, Java या C# जैसी भाषाओं में स्वयं लिखते हैं। इसमें पूरा नियंत्रण और लचीलापन मिलता है पर कुशल लोग, अधिक समय और अधिक पैसा चाहिए।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Low-code",
+       "hi": "लो-कोड (Low-code)"
+      },
+      "text": {
+       "en": "Most of the application is built with visual drag-and-drop blocks, and a little code is written where something special is needed. Users need some programming knowledge.",
+       "hi": "एप्लिकेशन का अधिकांश भाग विज़ुअल drag-and-drop ब्लॉकों से बनता है, और जहाँ कुछ विशेष चाहिए वहाँ थोड़ा कोड लिखा जाता है। उपयोगकर्ता को कुछ प्रोग्रामिंग ज्ञान चाहिए।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "No-code",
+       "hi": "नो-कोड (No-code)"
+      },
+      "text": {
+       "en": "The whole application or model is built through a visual interface (drag-and-drop, menus, uploading data) without writing any code. Anyone, including non-programmers, can use it.",
+       "hi": "पूरा एप्लिकेशन या मॉडल बिना कोई कोड लिखे विज़ुअल इंटरफ़ेस (drag-and-drop, मेनू, डेटा अपलोड) से बनाया जाता है। कोई भी, गैर-प्रोग्रामर भी, इसका उपयोग कर सकता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "High-code",
+        "Low-code",
+        "No-code"
+       ],
+       "hi": [
+        "बिंदु",
+        "हाई-कोड",
+        "लो-कोड",
+        "नो-कोड"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who builds",
+         "Expert programmers",
+         "Users with some coding skill",
+         "Anyone, even without coding"
+        ],
+        [
+         "Speed",
+         "Slowest",
+         "Faster",
+         "Fastest"
+        ],
+        [
+         "Cost",
+         "Highest",
+         "Medium",
+         "Lowest"
+        ],
+        [
+         "Flexibility",
+         "Complete",
+         "Good",
+         "Limited to what the tool offers"
+        ],
+        [
+         "Fixing errors",
+         "Developer debugs the code",
+         "Mostly handled by the platform, some by user",
+         "Handled by the platform"
+        ],
+        [
+         "Ownership/control",
+         "Full ownership of code",
+         "Shared with the platform",
+         "Depends on the platform"
+        ],
+        [
+         "Examples",
+         "Python with scikit-learn",
+         "Platforms such as IBM Watson Studio, DataRobot",
+         "Teachable Machine, Orange (mostly), Google AutoML, Microsoft AI Builder"
+        ]
+       ],
+       "hi": [
+        [
+         "कौन बनाता है",
+         "विशेषज्ञ प्रोग्रामर",
+         "कुछ कोडिंग जानने वाले उपयोगकर्ता",
+         "कोई भी, बिना कोडिंग के भी"
+        ],
+        [
+         "गति",
+         "सबसे धीमा",
+         "तेज़",
+         "सबसे तेज़"
+        ],
+        [
+         "लागत",
+         "सबसे अधिक",
+         "मध्यम",
+         "सबसे कम"
+        ],
+        [
+         "लचीलापन",
+         "पूरा",
+         "अच्छा",
+         "टूल जितना देता है उतना ही"
+        ],
+        [
+         "त्रुटि सुधार",
+         "डेवलपर कोड डीबग करता है",
+         "अधिकतर प्लेटफ़ॉर्म, कुछ उपयोगकर्ता",
+         "प्लेटफ़ॉर्म संभालता है"
+        ],
+        [
+         "स्वामित्व/नियंत्रण",
+         "कोड पर पूरा स्वामित्व",
+         "प्लेटफ़ॉर्म के साथ साझा",
+         "प्लेटफ़ॉर्म पर निर्भर"
+        ],
+        [
+         "उदाहरण",
+         "scikit-learn के साथ Python",
+         "IBM Watson Studio, DataRobot जैसे प्लेटफ़ॉर्म",
+         "Teachable Machine, Orange (अधिकतर), Google AutoML, Microsoft AI Builder"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Orange is mainly no-code (drag-and-drop widgets) but it also has a Python Script widget, so it can be used in a low-code way too.",
+      "hi": "याद रखें: Orange मुख्य रूप से नो-कोड (drag-and-drop विजेट) है पर इसमें Python Script विजेट भी है, इसलिए इसे लो-कोड तरीके से भी उपयोग किया जा सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.4 Why no-code AI, and who uses it?",
+    "hi": "4.4 नो-कोड AI क्यों, और कौन उपयोग करता है?"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "No coding errors to fix: there is no code to break.",
+       "Lower cost: organisations do not always need to hire specialist AI programmers for simple tasks.",
+       "Easy to learn: even school students can build a working model.",
+       "Instant results: you can see the effect of a change in real time.",
+       "Domain experts can build their own tools: they know the problem best."
+      ],
+      "hi": [
+       "ठीक करने के लिए कोडिंग त्रुटियाँ नहीं: तोड़ने के लिए कोई कोड ही नहीं है।",
+       "कम लागत: सरल कामों के लिए संस्थाओं को हमेशा विशेषज्ञ AI प्रोग्रामर नहीं रखने पड़ते।",
+       "सीखना आसान: स्कूल के विद्यार्थी भी काम करने वाला मॉडल बना सकते हैं।",
+       "तुरंत परिणाम: किसी बदलाव का असर आप उसी समय देख सकते हैं।",
+       "क्षेत्र के विशेषज्ञ अपने टूल खुद बना सकते हैं: वे समस्या को सबसे अच्छी तरह जानते हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Who uses no-code AI? People who are experts in their own field but are not programmers: a doctor sorting X-ray images, a teacher analysing class results, a shopkeeper forecasting festival-season demand, an architect, a musician, a farmer-producer company analysing mandi prices, or a small business owner studying customer feedback.",
+      "hi": "नो-कोड AI का उपयोग कौन करता है? वे लोग जो अपने क्षेत्र में विशेषज्ञ हैं पर प्रोग्रामर नहीं: एक्स-रे चित्र छाँटने वाला डॉक्टर, कक्षा के परिणाम का विश्लेषण करने वाला शिक्षक, त्योहार के मौसम की माँग का अनुमान लगाने वाला दुकानदार, वास्तुकार, संगीतकार, मंडी भावों का विश्लेषण करने वाली किसान उत्पादक कंपनी, या ग्राहकों की प्रतिक्रिया पढ़ने वाला छोटा व्यापारी।"
+     }
+    },
+    {
+     "p": {
+      "en": "Benefits of no-code tools in short: accessibility (open to non-technical people), speed (much faster than traditional development), ease of use (drag-and-drop) and innovation (people closest to a problem can try their own solutions).",
+      "hi": "संक्षेप में नो-कोड टूल के लाभ: सुलभता (गैर-तकनीकी लोगों के लिए खुला), गति (पारंपरिक विकास से बहुत तेज़), उपयोग में आसानी (drag-and-drop) और नवाचार (समस्या के सबसे निकट लोग अपने समाधान आज़मा सकते हैं)।"
+     }
+    },
+    {
+     "p": {
+      "en": "Disadvantages of no-code tools:",
+      "hi": "नो-कोड टूल की कमियाँ:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Limited flexibility: you can use only the blocks and options the tool provides; unusual needs cannot be met.",
+       "Automation bias: people may start trusting the tool's automatic output too much, even when other information shows it is wrong.",
+       "Security and privacy risks: data is often uploaded to the platform, so it may not suit organisations that handle sensitive data (health, bank or Aadhaar-linked data).",
+       "Dependence on the platform: if the service changes its rules, prices or shuts down, your project may be affected.",
+       "Less understanding: it is easy to build a model without understanding why it works, which makes mistakes harder to notice."
+      ],
+      "hi": [
+       "सीमित लचीलापन: आप केवल वही ब्लॉक और विकल्प उपयोग कर सकते हैं जो टूल देता है; असामान्य ज़रूरतें पूरी नहीं हो सकतीं।",
+       "स्वचालन पक्षपात (Automation bias): लोग टूल के स्वचालित परिणाम पर ज़रूरत से ज़्यादा भरोसा करने लगते हैं, तब भी जब दूसरी जानकारी दिखाए कि वह गलत है।",
+       "सुरक्षा और निजता के जोखिम: डेटा अक्सर प्लेटफ़ॉर्म पर अपलोड होता है, इसलिए संवेदनशील डेटा (स्वास्थ्य, बैंक या आधार से जुड़ा डेटा) संभालने वाली संस्थाओं के लिए यह उपयुक्त न हो।",
+       "प्लेटफ़ॉर्म पर निर्भरता: यदि सेवा अपने नियम, कीमत बदले या बंद हो जाए, तो आपका प्रोजेक्ट प्रभावित हो सकता है।",
+       "कम समझ: बिना समझे कि मॉडल क्यों काम करता है, उसे बनाना आसान है, जिससे गलतियाँ पकड़ना कठिन हो जाता है।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Automation bias",
+       "hi": "स्वचालन पक्षपात (Automation bias)"
+      },
+      "text": {
+       "en": "Automation bias is the human tendency to favour suggestions from automated systems and to ignore contradicting information, even when that information is correct. Example: a driver follows a navigation app into a flooded underpass even though the road is visibly blocked.",
+       "hi": "स्वचालन पक्षपात मनुष्य की वह प्रवृत्ति है जिसमें वह स्वचालित सिस्टम के सुझावों को प्राथमिकता देता है और विरोधी जानकारी को अनदेखा करता है, भले ही वह जानकारी सही हो। उदाहरण: चालक नेविगेशन ऐप के पीछे जलभराव वाले अंडरपास में चला जाता है, जबकि सड़क साफ़ दिख रही है कि बंद है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "No-code / low-code tool",
+        "What it is used for"
+       ],
+       "hi": [
+        "नो-कोड / लो-कोड टूल",
+        "किस काम आता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Orange Data Mining",
+         "Free, open-source tool from the University of Ljubljana, Slovenia, for data visualisation, analysis and machine learning with widgets"
+        ],
+        [
+         "Google Teachable Machine",
+         "Free web tool (launched in 2017) to train image, sound and pose models in a browser"
+        ],
+        [
+         "Lobe",
+         "Desktop app (from Microsoft) to train image-classification models visually"
+        ],
+        [
+         "Google Cloud AutoML / Vertex AI",
+         "Cloud service (AutoML announced in 2018) that builds custom models for users with limited ML knowledge"
+        ],
+        [
+         "Azure Machine Learning designer",
+         "Microsoft's cloud tool with a drag-and-drop designer for ML pipelines"
+        ]
+       ],
+       "hi": [
+        [
+         "Orange Data Mining",
+         "स्लोवेनिया के University of Ljubljana का मुफ़्त, ओपन-सोर्स टूल, विजेट से डेटा विज़ुअलाइज़ेशन, विश्लेषण और machine learning के लिए"
+        ],
+        [
+         "Google Teachable Machine",
+         "ब्राउज़र में चित्र, ध्वनि और मुद्रा (pose) मॉडल प्रशिक्षित करने वाला मुफ़्त वेब टूल (2017 में शुरू)"
+        ],
+        [
+         "Lobe",
+         "चित्र-वर्गीकरण मॉडल को विज़ुअल तरीके से प्रशिक्षित करने वाला डेस्कटॉप ऐप (Microsoft का)"
+        ],
+        [
+         "Google Cloud AutoML / Vertex AI",
+         "क्लाउड सेवा (AutoML की घोषणा 2018 में) जो कम ML ज्ञान वाले उपयोगकर्ताओं के लिए कस्टम मॉडल बनाती है"
+        ],
+        [
+         "Azure Machine Learning designer",
+         "ML पाइपलाइन के लिए drag-and-drop डिज़ाइनर वाला Microsoft का क्लाउड टूल"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Tools change over time; some may be renamed or retired. Learn the idea of no-code, not just the product names. For practice in school, free tools such as Orange and Teachable Machine are enough.",
+      "hi": "टूल समय के साथ बदलते रहते हैं; कुछ के नाम बदल सकते हैं या वे बंद हो सकते हैं। केवल उत्पादों के नाम नहीं, नो-कोड का विचार सीखिए। स्कूल में अभ्यास के लिए Orange और Teachable Machine जैसे मुफ़्त टूल पर्याप्त हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.5 Statistics in AI: population and sample",
+    "hi": "4.5 AI में सांख्यिकी: समष्टि (Population) और नमूना (Sample)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Statistics helps at every stage of a data project: collecting data, exploring it with summaries and graphs, analysing relationships, and drawing conclusions. Machine learning models themselves are built on statistical ideas such as averages, spread and probability.",
+      "hi": "सांख्यिकी डेटा प्रोजेक्ट के हर चरण में मदद करती है: डेटा इकट्ठा करना, सारांशों और ग्राफ़ से उसका अन्वेषण, संबंधों का विश्लेषण, और निष्कर्ष निकालना। Machine learning मॉडल स्वयं औसत, फैलाव और प्रायिकता जैसे सांख्यिकीय विचारों पर बने होते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Population",
+       "hi": "समष्टि (Population)"
+      },
+      "text": {
+       "en": "The population is the complete set of all the items or people we want to study, for example every voter in India or every mango in a 10-tonne lot.",
+       "hi": "समष्टि उन सभी वस्तुओं या लोगों का पूरा समूह है जिनका हम अध्ययन करना चाहते हैं, जैसे भारत के सभी मतदाता या 10 टन के ढेर का हर आम।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Sample",
+       "hi": "नमूना (Sample)"
+      },
+      "text": {
+       "en": "A sample is a smaller part selected from the population and actually studied, because measuring the whole population is often too costly, slow or impossible.",
+       "hi": "नमूना समष्टि से चुना गया एक छोटा भाग है जिसका वास्तव में अध्ययन किया जाता है, क्योंकि पूरी समष्टि को मापना अक्सर बहुत महँगा, धीमा या असंभव होता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A good sample must represent the population. The safest way is random sampling, where every member has an equal chance of being chosen. A survey that asks only people in one metro city about 'India's favourite food' will be biased; this is called sampling bias. Election exit polls and the government's sample surveys use carefully designed samples for this reason.",
+      "hi": "अच्छा नमूना समष्टि का प्रतिनिधित्व करना चाहिए। सबसे सुरक्षित तरीका यादृच्छिक नमूना चयन (random sampling) है, जिसमें हर सदस्य के चुने जाने की बराबर संभावना हो। जो सर्वे 'भारत का पसंदीदा भोजन' जानने के लिए केवल एक महानगर के लोगों से पूछे, वह पक्षपाती होगा; इसे नमूना पक्षपात (sampling bias) कहते हैं। इसी कारण चुनावी एग्ज़िट पोल और सरकारी नमूना सर्वेक्षण सावधानी से बने नमूने उपयोग करते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A fruit exporter cannot cut open every mango to check sweetness. How can statistics help?",
+       "hi": "एक फल निर्यातक मिठास जाँचने के लिए हर आम को काट नहीं सकता। सांख्यिकी कैसे मदद कर सकती है?"
+      },
+      "a": {
+       "en": "Step 1: Population = all mangoes in the lot.\nStep 2: Pick, say, 50 mangoes at random from different crates (sample).\nStep 3: Measure their sweetness and find the average.\nStep 4: Use the sample average as an estimate for the whole lot.",
+       "hi": "चरण 1: समष्टि = ढेर के सभी आम।\nचरण 2: अलग-अलग पेटियों से, मान लीजिए, 50 आम यादृच्छिक रूप से चुनें (नमूना)।\nचरण 3: उनकी मिठास मापें और औसत निकालें।\nचरण 4: नमूने के औसत को पूरे ढेर का अनुमान मानें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The Python program below creates a population of 1,000 random heights and takes a random sample of 50. The real output shows that the sample mean is close to the population mean.",
+      "hi": "नीचे का Python प्रोग्राम 1,000 यादृच्छिक लंबाइयों की समष्टि बनाता है और 50 का यादृच्छिक नमूना लेता है। असली आउटपुट दिखाता है कि नमूने का माध्य समष्टि के माध्य के करीब है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import random\nimport statistics as st\n\nrandom.seed(7)\npopulation = [random.randint(140, 180) for _ in range(1000)]  # heights in cm\nsample = random.sample(population, 50)\n\nprint(\"Population mean:\", round(st.mean(population), 2))\nprint(\"Sample mean    :\", round(st.mean(sample), 2))",
+      "hi": "import random\nimport statistics as st\n\nrandom.seed(7)\npopulation = [random.randint(140, 180) for _ in range(1000)]  # heights in cm\nsample = random.sample(population, 50)\n\nprint(\"Population mean:\", round(st.mean(population), 2))\nprint(\"Sample mean    :\", round(st.mean(sample), 2))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nPopulation mean: 159.38\nSample mean    : 159.86",
+      "hi": "आउटपुट:\nPopulation mean: 159.38\nSample mean    : 159.86"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.6 Descriptive statistics: measures of central tendency",
+    "hi": "4.6 वर्णनात्मक सांख्यिकी: केंद्रीय प्रवृत्ति के माप"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Descriptive statistics",
+       "hi": "वर्णनात्मक सांख्यिकी (Descriptive statistics)"
+      },
+      "text": {
+       "en": "Descriptive statistics are methods that summarise and describe the main features of a dataset using a few numbers (such as mean, median, mode, range and standard deviation) and graphs.",
+       "hi": "वर्णनात्मक सांख्यिकी वे विधियाँ हैं जो कुछ संख्याओं (जैसे माध्य, माध्यिका, बहुलक, परिसर और मानक विचलन) और ग्राफ़ से किसी डेटासेट की मुख्य विशेषताओं का सारांश और वर्णन करती हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A measure of central tendency is a single value that represents the 'centre' or typical value of the data. There are three: mean, median and mode. You studied these in Mathematics; here we see how they are used in AI.",
+      "hi": "केंद्रीय प्रवृत्ति का माप एक ऐसा मान है जो डेटा के 'केंद्र' या सामान्य मान को दर्शाता है। ये तीन हैं: माध्य, माध्यिका और बहुलक। आपने इन्हें गणित में पढ़ा है; यहाँ हम देखते हैं कि AI में इनका उपयोग कैसे होता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Mean (average)",
+       "hi": "माध्य (Mean, औसत)"
+      },
+      "text": {
+       "en": "The mean is the sum of all values divided by the number of values.",
+       "hi": "माध्य सभी मानों का योग, मानों की संख्या से भाग देकर मिलता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Mean = (x₁ + x₂ + … + xₙ) ÷ n",
+      "hi": "माध्य = (x₁ + x₂ + … + xₙ) ÷ n"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Median",
+       "hi": "माध्यिका (Median)"
+      },
+      "text": {
+       "en": "The median is the middle value after the data is arranged in order. If there are an even number of values, it is the average of the two middle values.",
+       "hi": "माध्यिका डेटा को क्रम में लगाने के बाद बीच का मान है। यदि मानों की संख्या सम हो, तो यह बीच के दो मानों का औसत होती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Mode",
+       "hi": "बहुलक (Mode)"
+      },
+      "text": {
+       "en": "The mode is the value that occurs most often. Data can have one mode, more than one mode, or none.",
+       "hi": "बहुलक वह मान है जो सबसे अधिक बार आता है। डेटा में एक बहुलक, एक से अधिक बहुलक, या कोई भी नहीं हो सकता।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A batter's scores in 10 innings are 45, 12, 78, 45, 30, 101, 45, 8, 60, 30. Find mean, median and mode.",
+       "hi": "एक बल्लेबाज़ के 10 पारियों के स्कोर हैं 45, 12, 78, 45, 30, 101, 45, 8, 60, 30। माध्य, माध्यिका और बहुलक ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Sum = 454, n = 10, so mean = 454 ÷ 10 = 45.4 runs.\nStep 2: In order: 8, 12, 30, 30, 45, 45, 45, 60, 78, 101. The two middle values (5th and 6th) are 45 and 45, so median = 45.\nStep 3: 45 appears three times, more than any other, so mode = 45.",
+       "hi": "चरण 1: योग = 454, n = 10, इसलिए माध्य = 454 ÷ 10 = 45.4 रन।\nचरण 2: क्रम में: 8, 12, 30, 30, 45, 45, 45, 60, 78, 101। बीच के दो मान (5वाँ और 6वाँ) 45 और 45 हैं, इसलिए माध्यिका = 45।\nचरण 3: 45 तीन बार आता है, किसी भी अन्य से अधिक, इसलिए बहुलक = 45।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Measure",
+        "Best used when",
+        "Weakness",
+        "AI/data example"
+       ],
+       "hi": [
+        "माप",
+        "कब सबसे उपयुक्त",
+        "कमज़ोरी",
+        "AI/डेटा उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Mean",
+         "Data is fairly even, no extreme values",
+         "Pulled strongly by outliers",
+         "Average daily temperature to fill a missing reading"
+        ],
+        [
+         "Median",
+         "Data has outliers or is skewed (e.g. incomes, house prices)",
+         "Ignores the size of extreme values",
+         "Typical flat price in a city where a few villas cost crores"
+        ],
+        [
+         "Mode",
+         "Categorical data or most common choice",
+         "May not exist or may be many",
+         "Most common shoe size to stock; filling a missing 'city' value"
+        ]
+       ],
+       "hi": [
+        [
+         "माध्य",
+         "डेटा लगभग समान हो, कोई चरम मान न हो",
+         "बाहरी मानों से बहुत खिंचता है",
+         "छूटे हुए पठन को भरने के लिए औसत दैनिक तापमान"
+        ],
+        [
+         "माध्यिका",
+         "डेटा में बाहरी मान हों या तिरछा हो (जैसे आय, मकान की कीमतें)",
+         "चरम मानों के आकार को अनदेखा करती है",
+         "ऐसे शहर में सामान्य फ़्लैट कीमत जहाँ कुछ बँगले करोड़ों के हैं"
+        ],
+        [
+         "बहुलक",
+         "श्रेणीबद्ध डेटा या सबसे आम पसंद",
+         "हो सकता है न हो, या कई हों",
+         "स्टॉक के लिए सबसे आम जूते का साइज़; छूटा हुआ 'शहर' मान भरना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: In data cleaning, missing numbers are often filled with the mean or median of the column, and missing categories with the mode. This is called imputation.",
+      "hi": "याद रखें: डेटा सफ़ाई में छूटी हुई संख्याएँ अक्सर स्तंभ के माध्य या माध्यिका से, और छूटी श्रेणियाँ बहुलक से भरी जाती हैं। इसे imputation (आरोपण) कहते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.7 Measures of spread: range, variance and standard deviation",
+    "hi": "4.7 फैलाव के माप: परिसर, प्रसरण और मानक विचलन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Two classes can have the same average marks but very different results: in one, everyone scored around 70; in the other, some scored 30 and some 100. Measures of spread (dispersion) tell how scattered the data is around the centre.",
+      "hi": "दो कक्षाओं के औसत अंक बराबर होने पर भी परिणाम बहुत अलग हो सकते हैं: एक में सभी के लगभग 70 आए; दूसरी में कुछ के 30 और कुछ के 100। फैलाव (dispersion) के माप बताते हैं कि डेटा केंद्र के आसपास कितना बिखरा है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Range",
+       "hi": "परिसर (Range)"
+      },
+      "text": {
+       "en": "Range = largest value − smallest value. It is quick but depends only on two values.",
+       "hi": "परिसर = सबसे बड़ा मान − सबसे छोटा मान। यह जल्दी निकलता है पर केवल दो मानों पर निर्भर है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Variance",
+       "hi": "प्रसरण (Variance)"
+      },
+      "text": {
+       "en": "Variance is the average of the squared differences of each value from the mean. Squaring makes all differences positive and gives more weight to values far from the mean.",
+       "hi": "प्रसरण हर मान के माध्य से अंतर के वर्गों का औसत है। वर्ग करने से सभी अंतर धनात्मक हो जाते हैं और माध्य से दूर मानों को अधिक भार मिलता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Standard deviation",
+       "hi": "मानक विचलन (Standard deviation)"
+      },
+      "text": {
+       "en": "Standard deviation (SD, σ) is the square root of the variance. It is in the same unit as the data, so it is easier to understand: a small SD means values are close to the mean; a large SD means they are spread out.",
+       "hi": "मानक विचलन (SD, σ) प्रसरण का वर्गमूल है। यह डेटा की ही इकाई में होता है, इसलिए समझना आसान है: छोटा SD यानी मान माध्य के पास हैं; बड़ा SD यानी वे फैले हुए हैं।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Variance (σ²) = Σ (x − mean)² ÷ n\nStandard deviation (σ) = √Variance\n(For a sample, statisticians often divide by n − 1 instead of n.)",
+      "hi": "प्रसरण (σ²) = Σ (x − माध्य)² ÷ n\nमानक विचलन (σ) = √प्रसरण\n(नमूने के लिए सांख्यिकीविद अक्सर n की जगह n − 1 से भाग देते हैं।)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Daily sales of samosas at a canteen for 5 days: 20, 22, 18, 24, 16. Find range, variance and standard deviation.",
+       "hi": "एक कैंटीन में 5 दिनों की समोसा बिक्री: 20, 22, 18, 24, 16। परिसर, प्रसरण और मानक विचलन ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Range = 24 − 16 = 8.\nStep 2: Mean = (20 + 22 + 18 + 24 + 16) ÷ 5 = 100 ÷ 5 = 20.\nStep 3: Differences from mean: 0, 2, −2, 4, −4.\nStep 4: Squares: 0, 4, 4, 16, 16; sum = 40.\nStep 5: Variance = 40 ÷ 5 = 8.\nStep 6: SD = √8 ≈ 2.83 samosas. Sales usually stay within about 3 of the average 20.",
+       "hi": "चरण 1: परिसर = 24 − 16 = 8।\nचरण 2: माध्य = (20 + 22 + 18 + 24 + 16) ÷ 5 = 100 ÷ 5 = 20।\nचरण 3: माध्य से अंतर: 0, 2, −2, 4, −4।\nचरण 4: वर्ग: 0, 4, 4, 16, 16; योग = 40।\nचरण 5: प्रसरण = 40 ÷ 5 = 8।\nचरण 6: SD = √8 ≈ 2.83 समोसे। बिक्री आमतौर पर औसत 20 से लगभग 3 के भीतर रहती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Python's built-in statistics module calculates all these. The program below uses the batter's scores; its real output is shown after it. (pvariance and pstdev divide by n, the population formula.)",
+      "hi": "Python का अंतर्निहित statistics मॉड्यूल ये सब निकालता है। नीचे का प्रोग्राम बल्लेबाज़ के स्कोर उपयोग करता है; उसका असली आउटपुट उसके बाद है। (pvariance और pstdev n से भाग देते हैं, यानी समष्टि का सूत्र।)"
+     }
+    },
+    {
+     "formula": {
+      "en": "import statistics as st\n\nruns = [45, 12, 78, 45, 30, 101, 45, 8, 60, 30]   # a batter's last 10 innings\n\nprint(\"Mean   :\", st.mean(runs))\nprint(\"Median :\", st.median(runs))\nprint(\"Mode   :\", st.mode(runs))\nprint(\"Range  :\", max(runs) - min(runs))\nprint(\"Population variance :\", round(st.pvariance(runs), 2))\nprint(\"Population std dev  :\", round(st.pstdev(runs), 2))",
+      "hi": "import statistics as st\n\nruns = [45, 12, 78, 45, 30, 101, 45, 8, 60, 30]   # a batter's last 10 innings\n\nprint(\"Mean   :\", st.mean(runs))\nprint(\"Median :\", st.median(runs))\nprint(\"Mode   :\", st.mode(runs))\nprint(\"Range  :\", max(runs) - min(runs))\nprint(\"Population variance :\", round(st.pvariance(runs), 2))\nprint(\"Population std dev  :\", round(st.pstdev(runs), 2))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nMean   : 45.4\nMedian : 45.0\nMode   : 45\nRange  : 93\nPopulation variance : 735.64\nPopulation std dev  : 27.12",
+      "hi": "आउटपुट:\nMean   : 45.4\nMedian : 45.0\nMode   : 45\nRange  : 93\nPopulation variance : 735.64\nPopulation std dev  : 27.12"
+     }
+    },
+    {
+     "note": {
+      "en": "A standard deviation of about 27 runs on an average of about 45 shows this batter is quite inconsistent. A selector comparing two batters with the same average would prefer the one with the smaller SD if consistency matters.",
+      "hi": "लगभग 45 के औसत पर लगभग 27 रन का मानक विचलन दिखाता है कि यह बल्लेबाज़ काफ़ी असंगत है। समान औसत वाले दो बल्लेबाज़ों की तुलना करने वाला चयनकर्ता, यदि निरंतरता महत्वपूर्ण हो, तो छोटे SD वाले को पसंद करेगा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.8 Distributions and the normal distribution",
+    "hi": "4.8 वितरण (Distribution) और सामान्य वितरण (Normal distribution)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Distribution",
+       "hi": "वितरण (Distribution)"
+      },
+      "text": {
+       "en": "A distribution shows how often each value (or range of values) occurs in a dataset. It is usually drawn as a histogram: bars whose heights show how many values fall in each interval.",
+       "hi": "वितरण दिखाता है कि डेटासेट में हर मान (या मानों का अंतराल) कितनी बार आता है। इसे आमतौर पर आयतचित्र (histogram) से दिखाते हैं: ऐसे बार जिनकी ऊँचाई बताती है कि हर अंतराल में कितने मान हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Normal distribution",
+       "hi": "सामान्य वितरण (Normal distribution)"
+      },
+      "text": {
+       "en": "A normal distribution is a symmetric, bell-shaped distribution in which most values lie near the mean and fewer and fewer lie far away on either side. Mean, median and mode are equal and sit at the centre.",
+       "hi": "सामान्य वितरण एक सममित, घंटी के आकार का वितरण है जिसमें अधिकांश मान माध्य के पास होते हैं और दोनों ओर दूर जाने पर कम होते जाते हैं। माध्य, माध्यिका और बहुलक बराबर होते हैं और केंद्र में होते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture the heights of all Class 10 students in a large city. Most are around the average height, some are a little taller or shorter, and very few are extremely tall or short. If you draw a histogram, it looks like a bell. Many natural measurements (heights, weights, measurement errors) roughly follow this shape.",
+      "hi": "किसी बड़े शहर के सभी कक्षा 10 के विद्यार्थियों की लंबाई की कल्पना कीजिए। ज़्यादातर औसत लंबाई के आसपास होते हैं, कुछ थोड़े लंबे या छोटे, और बहुत कम अत्यधिक लंबे या छोटे। यदि आप आयतचित्र बनाएँ, तो वह घंटी जैसा दिखता है। कई प्राकृतिक माप (लंबाई, वज़न, मापन त्रुटियाँ) मोटे तौर पर इसी आकार के होते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Empirical (68-95-99.7) rule for a normal distribution:\nAbout 68% of values lie within 1 SD of the mean\nAbout 95% lie within 2 SD\nAbout 99.7% lie within 3 SD",
+      "hi": "सामान्य वितरण के लिए अनुभवजन्य (68-95-99.7) नियम:\nलगभग 68% मान माध्य से 1 SD के भीतर\nलगभग 95% मान 2 SD के भीतर\nलगभग 99.7% मान 3 SD के भीतर"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Heights of boys in a district are roughly normal with mean 160 cm and SD 6 cm. Between which heights do about 95% of the boys lie?",
+       "hi": "एक ज़िले के लड़कों की लंबाई लगभग सामान्य है, माध्य 160 cm और SD 6 cm। लगभग 95% लड़के किन लंबाइयों के बीच हैं?"
+      },
+      "a": {
+       "en": "Step 1: 95% lies within 2 SD.\nStep 2: 2 × 6 = 12 cm.\nStep 3: 160 − 12 = 148 cm and 160 + 12 = 172 cm. So about 95% are between 148 cm and 172 cm.",
+       "hi": "चरण 1: 95% मान 2 SD के भीतर हैं।\nचरण 2: 2 × 6 = 12 cm।\nचरण 3: 160 − 12 = 148 cm और 160 + 12 = 172 cm। इसलिए लगभग 95% लड़के 148 cm और 172 cm के बीच हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Not all data is normal. Skewed data has a long tail on one side: incomes in a country have a long right tail because a few people earn far more than most. For skewed data the mean is pulled towards the tail, so the median is a better 'typical' value. A uniform distribution has all values equally likely, like the faces of a fair die.",
+      "hi": "हर डेटा सामान्य नहीं होता। तिरछे (skewed) डेटा में एक ओर लंबी पूँछ होती है: किसी देश की आय में दाईं ओर लंबी पूँछ होती है क्योंकि कुछ लोग अधिकांश से बहुत अधिक कमाते हैं। तिरछे डेटा में माध्य पूँछ की ओर खिंच जाता है, इसलिए माध्यिका बेहतर 'सामान्य' मान है। एकसमान (uniform) वितरण में सभी मान बराबर संभावित होते हैं, जैसे निष्पक्ष पासे के फलक।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.9 Outliers",
+    "hi": "4.9 बाहरी मान (Outliers)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Outlier",
+       "hi": "बाहरी मान (Outlier)"
+      },
+      "text": {
+       "en": "An outlier is a value that is very different from most other values in the dataset. It may be a mistake (typing or sensor error) or a real but rare event (a batter scoring 200).",
+       "hi": "बाहरी मान वह मान है जो डेटासेट के अधिकांश अन्य मानों से बहुत अलग हो। यह गलती (टाइपिंग या सेंसर त्रुटि) हो सकता है या कोई असली पर दुर्लभ घटना (बल्लेबाज़ का 200 बनाना)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Outliers matter because they can pull the mean and standard deviation, and can confuse a model during training. But they are not always bad: in fraud detection, the outliers (unusual transactions) are exactly what we want to find. So we must first ask why the outlier exists before deciding to remove, correct or keep it.",
+      "hi": "बाहरी मान इसलिए महत्वपूर्ण हैं क्योंकि वे माध्य और मानक विचलन को खींच सकते हैं, और ट्रेनिंग के समय मॉडल को भ्रमित कर सकते हैं। पर वे हमेशा बुरे नहीं होते: धोखाधड़ी पहचान में बाहरी मान (असामान्य लेन-देन) ठीक वही हैं जिन्हें हम ढूँढना चाहते हैं। इसलिए हटाने, सुधारने या रखने का निर्णय लेने से पहले पूछना चाहिए कि बाहरी मान क्यों है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Look at a graph: a box plot or scatter plot shows points far away from the rest.",
+       "Use the z-score: z = (value − mean) ÷ SD. A value with |z| greater than 2 or 3 is often treated as a possible outlier.",
+       "Use common sense: a student's age recorded as 150 years is surely an error."
+      ],
+      "hi": [
+       "ग्राफ़ देखें: box plot या scatter plot बाकी से दूर बिंदु दिखाता है।",
+       "z-score उपयोग करें: z = (मान − माध्य) ÷ SD। जिस मान का |z| 2 या 3 से अधिक हो, उसे अक्सर संभावित बाहरी मान माना जाता है।",
+       "सामान्य समझ उपयोग करें: किसी विद्यार्थी की आयु 150 वर्ष दर्ज होना निश्चित रूप से गलती है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Below, a weather sensor recorded a week's temperatures and one reading is a glitch. The program finds it with the z-score rule (real output shown). Notice that the median (32) is hardly affected while the mean rises to about 33.9.",
+      "hi": "नीचे एक मौसम सेंसर ने एक सप्ताह के तापमान दर्ज किए हैं और एक पठन गड़बड़ है। प्रोग्राम z-score नियम से उसे ढूँढता है (असली आउटपुट दिखाया गया है)। ध्यान दें कि माध्यिका (32) पर लगभग कोई असर नहीं पड़ता जबकि माध्य लगभग 33.9 तक बढ़ जाता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import statistics as st\n\ntemps = [31, 32, 30, 33, 31, 32, 48]   # one week, last value is a sensor glitch\n\nmean = st.mean(temps)\nsd = st.pstdev(temps)\nprint(\"Mean:\", round(mean, 2), \" Std dev:\", round(sd, 2))\nprint(\"Median:\", st.median(temps))\n\nfor t in temps:\n    z = (t - mean) / sd\n    if abs(z) > 2:\n        print(\"Possible outlier:\", t, \" z =\", round(z, 2))",
+      "hi": "import statistics as st\n\ntemps = [31, 32, 30, 33, 31, 32, 48]   # one week, last value is a sensor glitch\n\nmean = st.mean(temps)\nsd = st.pstdev(temps)\nprint(\"Mean:\", round(mean, 2), \" Std dev:\", round(sd, 2))\nprint(\"Median:\", st.median(temps))\n\nfor t in temps:\n    z = (t - mean) / sd\n    if abs(z) > 2:\n        print(\"Possible outlier:\", t, \" z =\", round(z, 2))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nMean: 33.86  Std dev: 5.84\nMedian: 32\nPossible outlier: 48  z = 2.42",
+      "hi": "आउटपुट:\nMean: 33.86  Std dev: 5.84\nMedian: 32\nPossible outlier: 48  z = 2.42"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.10 Probability",
+    "hi": "4.10 प्रायिकता (Probability)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Probability",
+       "hi": "प्रायिकता (Probability)"
+      },
+      "text": {
+       "en": "Probability measures how likely an event is, as a number from 0 (impossible) to 1 (certain).",
+       "hi": "प्रायिकता मापती है कि कोई घटना कितनी संभावित है, 0 (असंभव) से 1 (निश्चित) तक की संख्या के रूप में।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "P(event) = number of favourable outcomes ÷ total number of equally likely outcomes",
+      "hi": "P(घटना) = अनुकूल परिणामों की संख्या ÷ समान रूप से संभावित कुल परिणामों की संख्या"
+     }
+    },
+    {
+     "p": {
+      "en": "AI models often give their answers as probabilities. A weather app saying '70% chance of rain' means the model estimates P(rain) = 0.7. Teachable Machine shows a confidence bar such as 'Cat 92%'. A spam filter may mark an email as spam only if the probability is above 0.9. When we evaluate models (Chapter 3), changing this threshold changes precision and recall.",
+      "hi": "AI मॉडल अक्सर अपने उत्तर प्रायिकता के रूप में देते हैं। मौसम ऐप का '70% बारिश की संभावना' कहना यानी मॉडल का अनुमान P(बारिश) = 0.7 है। Teachable Machine 'Cat 92%' जैसा विश्वास बार (confidence) दिखाता है। Spam फ़िल्टर किसी ईमेल को तभी spam मान सकता है जब प्रायिकता 0.9 से अधिक हो। मॉडलों का मूल्यांकन करते समय (अध्याय 3), यह सीमा (threshold) बदलने से precision और recall बदलते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In past data of a city, it rained on 18 of the 30 days of July. Estimate the probability of rain on a July day.",
+       "hi": "किसी शहर के पिछले डेटा में जुलाई के 30 में से 18 दिन बारिश हुई। जुलाई के किसी दिन बारिश की प्रायिकता का अनुमान लगाइए।"
+      },
+      "a": {
+       "en": "Step 1: Favourable = 18 rainy days; total = 30.\nStep 2: P(rain) = 18 ÷ 30 = 0.6, i.e. 60%.\nStep 3: This estimate from past data is called experimental (empirical) probability.",
+       "hi": "चरण 1: अनुकूल = 18 बारिश वाले दिन; कुल = 30।\nचरण 2: P(बारिश) = 18 ÷ 30 = 0.6, अर्थात 60%।\nचरण 3: पिछले डेटा से निकले इस अनुमान को प्रायोगिक (empirical) प्रायिकता कहते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.11 Visualising statistical data",
+    "hi": "4.11 सांख्यिकीय डेटा का विज़ुअलाइज़ेशन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Numbers become easier to understand when drawn. The right chart depends on the question:",
+      "hi": "संख्याएँ चित्र बनाने पर समझने में आसान हो जाती हैं। सही चार्ट प्रश्न पर निर्भर करता है:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Chart",
+        "Shows",
+        "Example"
+       ],
+       "hi": [
+        "चार्ट",
+        "क्या दिखाता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Bar chart",
+         "Comparison between categories",
+         "Number of students choosing each optional subject"
+        ],
+        [
+         "Histogram",
+         "Distribution of a numerical variable",
+         "How many students scored 0–10, 10–20, … in a test"
+        ],
+        [
+         "Line chart",
+         "Change over time",
+         "Monthly rainfall in Mumbai over a year"
+        ],
+        [
+         "Pie chart",
+         "Parts of a whole",
+         "Share of each expense in a family budget"
+        ],
+        [
+         "Scatter plot",
+         "Relationship between two numerical variables",
+         "Hours studied vs marks scored"
+        ],
+        [
+         "Box plot",
+         "Median, quartiles, spread and outliers",
+         "Comparing house prices in three localities"
+        ]
+       ],
+       "hi": [
+        [
+         "दंड आलेख (Bar chart)",
+         "श्रेणियों के बीच तुलना",
+         "हर वैकल्पिक विषय चुनने वाले विद्यार्थियों की संख्या"
+        ],
+        [
+         "आयतचित्र (Histogram)",
+         "संख्यात्मक चर का वितरण",
+         "टेस्ट में 0–10, 10–20, … अंक पाने वाले विद्यार्थियों की संख्या"
+        ],
+        [
+         "रेखा चार्ट (Line chart)",
+         "समय के साथ बदलाव",
+         "एक वर्ष में मुंबई की मासिक वर्षा"
+        ],
+        [
+         "वृत्त चार्ट (Pie chart)",
+         "पूरे के हिस्से",
+         "परिवार के बजट में हर खर्च का हिस्सा"
+        ],
+        [
+         "प्रकीर्ण आरेख (Scatter plot)",
+         "दो संख्यात्मक चरों के बीच संबंध",
+         "पढ़ाई के घंटे बनाम प्राप्त अंक"
+        ],
+        [
+         "बॉक्स प्लॉट (Box plot)",
+         "माध्यिका, चतुर्थक, फैलाव और बाहरी मान",
+         "तीन इलाकों में मकान की कीमतों की तुलना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A scatter plot can also show correlation. If points rise from left to right (more study hours, more marks), the variables have a positive correlation. If they fall (more screen time, less sleep), the correlation is negative. If they form no pattern, there is little or no correlation. Remember: correlation does not prove that one causes the other.",
+      "hi": "Scatter plot सहसंबंध (correlation) भी दिखा सकता है। यदि बिंदु बाएँ से दाएँ ऊपर उठें (अधिक पढ़ाई के घंटे, अधिक अंक), तो चरों में धनात्मक सहसंबंध है। यदि वे गिरें (अधिक स्क्रीन समय, कम नींद), तो सहसंबंध ऋणात्मक है। यदि कोई पैटर्न न बने, तो सहसंबंध बहुत कम या नहीं है। याद रखें: सहसंबंध यह साबित नहीं करता कि एक दूसरे का कारण है।"
+     }
+    },
+    {
+     "p": {
+      "en": "A box plot is drawn as a box from the first quartile (Q1, the value below which 25% of the data lies) to the third quartile (Q3, 75%), with a line inside at the median. 'Whiskers' extend to the smallest and largest normal values, and outliers appear as separate dots beyond the whiskers.",
+      "hi": "Box plot एक डिब्बे के रूप में बनता है जो पहले चतुर्थक (Q1, वह मान जिसके नीचे 25% डेटा है) से तीसरे चतुर्थक (Q3, 75%) तक होता है, और उसके अंदर माध्यिका पर एक रेखा होती है। 'Whiskers' (मूँछें) सबसे छोटे और सबसे बड़े सामान्य मानों तक जाती हैं, और बाहरी मान उनसे आगे अलग बिंदुओं के रूप में दिखते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.12 Orange Data Mining: a no-code tool for statistical data",
+    "hi": "4.12 Orange Data Mining: सांख्यिकीय डेटा के लिए नो-कोड टूल"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Orange Data Mining",
+       "hi": "Orange Data Mining"
+      },
+      "text": {
+       "en": "Orange is a free, open-source data visualisation, machine learning and data mining tool developed at the University of Ljubljana, Slovenia. It uses visual programming: you build a workflow by placing widgets on a canvas and connecting them.",
+       "hi": "Orange स्लोवेनिया के University of Ljubljana में विकसित एक मुफ़्त, ओपन-सोर्स डेटा विज़ुअलाइज़ेशन, machine learning और डेटा माइनिंग टूल है। यह विज़ुअल प्रोग्रामिंग उपयोग करता है: आप कैनवास पर विजेट रखकर और उन्हें जोड़कर workflow बनाते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Widget",
+       "hi": "विजेट (Widget)"
+      },
+      "text": {
+       "en": "A widget is a building block in Orange that does one task, such as loading data, showing a table, drawing a chart, training a model or evaluating it. Data flows along the lines (links) from one widget to the next.",
+       "hi": "विजेट Orange का एक बिल्डिंग ब्लॉक है जो एक काम करता है, जैसे डेटा लोड करना, तालिका दिखाना, चार्ट बनाना, मॉडल प्रशिक्षित करना या उसका मूल्यांकन करना। डेटा रेखाओं (links) के साथ एक विजेट से अगले विजेट तक बहता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Installing Orange: download it free from the official site orangedatamining.com for Windows, macOS or Linux (it needs a laptop or desktop; it does not run on a phone). Ask a teacher or parent before installing software. Orange comes with sample datasets such as iris (flowers), titanic, heart disease and housing, so you can practise without any personal data.",
+      "hi": "Orange इंस्टॉल करना: इसे Windows, macOS या Linux के लिए आधिकारिक साइट orangedatamining.com से मुफ़्त डाउनलोड करें (इसके लिए लैपटॉप या डेस्कटॉप चाहिए; यह फ़ोन पर नहीं चलता)। सॉफ़्टवेयर इंस्टॉल करने से पहले शिक्षक या अभिभावक से पूछें। Orange में iris (फूल), titanic, heart disease और housing जैसे नमूना डेटासेट आते हैं, ताकि आप बिना किसी व्यक्तिगत डेटा के अभ्यास कर सकें।"
+     }
+    },
+    {
+     "p": {
+      "en": "The Orange screen: on the left is the widget panel grouped into categories (Data, Transform, Visualize, Model, Evaluate, Unsupervised). The large white area is the canvas. You drag a widget onto the canvas, then drag from the small curved edge on its right side to another widget to connect them. Double-click any widget to open its window.",
+      "hi": "Orange की स्क्रीन: बाईं ओर विजेट पैनल है जो श्रेणियों (Data, Transform, Visualize, Model, Evaluate, Unsupervised) में बँटा है। बड़ा सफ़ेद क्षेत्र कैनवास है। आप विजेट को कैनवास पर खींचते हैं, फिर उसके दाईं ओर के छोटे घुमावदार किनारे से दूसरे विजेट तक खींचकर उन्हें जोड़ते हैं। किसी भी विजेट की विंडो खोलने के लिए उस पर डबल-क्लिक करें।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Widget",
+        "Group",
+        "What it does"
+       ],
+       "hi": [
+        "विजेट",
+        "समूह",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "File",
+         "Data",
+         "Loads a dataset (CSV, Excel or a built-in sample) and lets you set which column is the target"
+        ],
+        [
+         "Data Table",
+         "Data",
+         "Shows the data in rows and columns, like a spreadsheet"
+        ],
+        [
+         "Feature Statistics",
+         "Data",
+         "Shows mean, median, dispersion, min, max and missing values for every column"
+        ],
+        [
+         "Select Columns",
+         "Transform",
+         "Chooses which features to use and which is the target"
+        ],
+        [
+         "Impute",
+         "Transform",
+         "Fills missing values, e.g. with the average or most frequent value"
+        ],
+        [
+         "Distributions",
+         "Visualize",
+         "Draws a histogram of a feature, optionally split by class"
+        ],
+        [
+         "Box Plot",
+         "Visualize",
+         "Shows median, quartiles and outliers"
+        ],
+        [
+         "Scatter Plot",
+         "Visualize",
+         "Plots two features against each other, coloured by class"
+        ],
+        [
+         "Tree / kNN / Logistic Regression / Naive Bayes",
+         "Model",
+         "Learners that train a model"
+        ],
+        [
+         "Test & Score",
+         "Evaluate",
+         "Splits data or cross-validates and reports CA, Precision, Recall, F1, AUC"
+        ],
+        [
+         "Confusion Matrix",
+         "Evaluate",
+         "Shows TP, TN, FP, FN counts from Test & Score"
+        ],
+        [
+         "Predictions",
+         "Evaluate",
+         "Uses a trained model to predict new data"
+        ]
+       ],
+       "hi": [
+        [
+         "File",
+         "Data",
+         "डेटासेट (CSV, Excel या अंतर्निहित नमूना) लोड करता है और तय करने देता है कि कौन-सा स्तंभ target है"
+        ],
+        [
+         "Data Table",
+         "Data",
+         "डेटा को स्प्रेडशीट की तरह पंक्तियों और स्तंभों में दिखाता है"
+        ],
+        [
+         "Feature Statistics",
+         "Data",
+         "हर स्तंभ का माध्य, माध्यिका, फैलाव, न्यूनतम, अधिकतम और छूटे मान दिखाता है"
+        ],
+        [
+         "Select Columns",
+         "Transform",
+         "चुनता है कि कौन-सी features उपयोग हों और कौन-सा target है"
+        ],
+        [
+         "Impute",
+         "Transform",
+         "छूटे मान भरता है, जैसे औसत या सबसे अधिक आने वाले मान से"
+        ],
+        [
+         "Distributions",
+         "Visualize",
+         "किसी feature का आयतचित्र बनाता है, चाहें तो वर्ग के अनुसार बाँटकर"
+        ],
+        [
+         "Box Plot",
+         "Visualize",
+         "माध्यिका, चतुर्थक और बाहरी मान दिखाता है"
+        ],
+        [
+         "Scatter Plot",
+         "Visualize",
+         "दो features को एक-दूसरे के विरुद्ध, वर्ग के अनुसार रंगकर, दिखाता है"
+        ],
+        [
+         "Tree / kNN / Logistic Regression / Naive Bayes",
+         "Model",
+         "मॉडल प्रशिक्षित करने वाले learners"
+        ],
+        [
+         "Test & Score",
+         "Evaluate",
+         "डेटा बाँटता या cross-validate करता है और CA, Precision, Recall, F1, AUC बताता है"
+        ],
+        [
+         "Confusion Matrix",
+         "Evaluate",
+         "Test & Score से TP, TN, FP, FN की गिनती दिखाता है"
+        ],
+        [
+         "Predictions",
+         "Evaluate",
+         "प्रशिक्षित मॉडल से नए डेटा का अनुमान लगाता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: In the File widget, the column you want to predict must be given the role 'target'. Other columns are 'feature'; ID or name columns should be set to 'meta' or 'skip' so the model does not learn from them.",
+      "hi": "याद रखें: File विजेट में, जिस स्तंभ का अनुमान लगाना है उसे role 'target' देना ज़रूरी है। बाकी स्तंभ 'feature' हैं; ID या नाम वाले स्तंभों को 'meta' या 'skip' करें ताकि मॉडल उनसे न सीखे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.13 The AI Project Cycle in Orange: an example project",
+    "hi": "4.13 Orange में AI प्रोजेक्ट चक्र: एक उदाहरण प्रोजेक्ट"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Let us walk through a complete project using Orange's built-in iris dataset. It has 150 flowers of three species (setosa, versicolor, virginica), 50 of each, with four measurements in cm: sepal length, sepal width, petal length and petal width.",
+      "hi": "आइए Orange के अंतर्निहित iris डेटासेट से एक पूरा प्रोजेक्ट करें। इसमें तीन प्रजातियों (setosa, versicolor, virginica) के 150 फूल हैं, हर एक के 50, और cm में चार माप हैं: sepal length, sepal width, petal length और petal width।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Project cycle stage",
+        "What we do in Orange"
+       ],
+       "hi": [
+        "प्रोजेक्ट चक्र का चरण",
+        "Orange में हम क्या करते हैं"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Problem Scoping",
+         "Goal: predict the species of an iris flower from its four measurements (a classification problem)."
+        ],
+        [
+         "Data Acquisition",
+         "File widget → choose the sample 'iris' dataset; 'iris' column is the target."
+        ],
+        [
+         "Data Exploration",
+         "Data Table to see rows; Feature Statistics for mean, median and spread; Distributions and Box Plot for each measurement; Scatter Plot of petal length vs petal width coloured by species."
+        ],
+        [
+         "Modelling",
+         "Connect File to a learner such as Tree or kNN."
+        ],
+        [
+         "Evaluation",
+         "Connect File and the learner to Test & Score (e.g. random sampling, 80% training) and then to Confusion Matrix; read CA, Precision, Recall and F1."
+        ],
+        [
+         "Deployment",
+         "Connect the trained model and a new File (new flower measurements) to Predictions to label new flowers."
+        ]
+       ],
+       "hi": [
+        [
+         "समस्या निर्धारण",
+         "लक्ष्य: iris फूल की प्रजाति उसके चार मापों से अनुमानित करना (वर्गीकरण समस्या)।"
+        ],
+        [
+         "डेटा अधिग्रहण",
+         "File विजेट → नमूना 'iris' डेटासेट चुनें; 'iris' स्तंभ target है।"
+        ],
+        [
+         "डेटा अन्वेषण",
+         "पंक्तियाँ देखने के लिए Data Table; माध्य, माध्यिका और फैलाव के लिए Feature Statistics; हर माप के लिए Distributions और Box Plot; प्रजाति के अनुसार रंगा petal length बनाम petal width का Scatter Plot।"
+        ],
+        [
+         "मॉडलिंग",
+         "File को Tree या kNN जैसे learner से जोड़ें।"
+        ],
+        [
+         "मूल्यांकन",
+         "File और learner को Test & Score (जैसे random sampling, 80% ट्रेनिंग) और फिर Confusion Matrix से जोड़ें; CA, Precision, Recall और F1 पढ़ें।"
+        ],
+        [
+         "परिनियोजन",
+         "प्रशिक्षित मॉडल और एक नई File (नए फूलों के माप) को Predictions से जोड़कर नए फूलों को लेबल करें।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "What you will observe: in the Scatter Plot of petal length against petal width, setosa forms a separate cluster at the bottom-left (small petals), while versicolor and virginica sit close together with a slight overlap. That is why most models classify setosa perfectly and make their few mistakes between versicolor and virginica, which you will see in the Confusion Matrix. Feature Statistics will show that petal length has a much larger spread than sepal width, a hint that petal size is the more useful feature.",
+      "hi": "आप क्या देखेंगे: petal length बनाम petal width के Scatter Plot में setosa नीचे-बाईं ओर एक अलग समूह बनाता है (छोटी पंखुड़ियाँ), जबकि versicolor और virginica थोड़ी अधिव्याप्ति (overlap) के साथ पास-पास रहते हैं। इसीलिए अधिकांश मॉडल setosa को पूरी तरह सही वर्गीकृत करते हैं और अपनी थोड़ी-सी गलतियाँ versicolor और virginica के बीच करते हैं, जो आप Confusion Matrix में देखेंगे। Feature Statistics दिखाएगा कि petal length का फैलाव sepal width से बहुत अधिक है, जो संकेत है कि पंखुड़ी का आकार अधिक उपयोगी feature है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Test & Score needs both the data and a learner as inputs. Exact scores change a little with the sampling settings, so record the settings along with your results.",
+      "hi": "याद रखें: Test & Score को इनपुट के रूप में डेटा और learner दोनों चाहिए। सटीक अंक sampling सेटिंग्स के साथ थोड़े बदलते हैं, इसलिए परिणामों के साथ सेटिंग्स भी लिखें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.14 Activities",
+    "hi": "4.14 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (unplugged): Class survey statistics.\nAim: Practise population, sample, mean, median, mode and range.\nYou need: Paper, pen, calculator.",
+       "hi": "गतिविधि 1 (बिना कंप्यूटर): कक्षा सर्वे सांख्यिकी।\nउद्देश्य: समष्टि, नमूना, माध्य, माध्यिका, बहुलक और परिसर का अभ्यास।\nसामग्री: कागज़, पेन, कैलकुलेटर।"
+      },
+      "a": {
+       "en": "Step 1: The population is your whole class. Pick 10 classmates by drawing names from a box (random sample).\nStep 2: Ask each how many minutes they travel to school.\nStep 3: Calculate mean, median, mode and range.\nStep 4: Now ask everyone and compare the class mean with the sample mean.\nObservation: The sample mean is usually close but not exactly equal. One student who travels 90 minutes pulls the mean up but not the median.\nLesson: Samples estimate populations; the median resists outliers.",
+       "hi": "चरण 1: समष्टि आपकी पूरी कक्षा है। एक डिब्बे से नाम निकालकर 10 सहपाठी चुनें (यादृच्छिक नमूना)।\nचरण 2: हर एक से पूछें कि वे स्कूल आने में कितने मिनट लगाते हैं।\nचरण 3: माध्य, माध्यिका, बहुलक और परिसर निकालें।\nचरण 4: अब सभी से पूछें और कक्षा के माध्य की तुलना नमूने के माध्य से करें।\nअवलोकन: नमूने का माध्य आमतौर पर करीब होता है पर ठीक बराबर नहीं। 90 मिनट यात्रा करने वाला एक विद्यार्थी माध्य को ऊपर खींचता है पर माध्यिका को नहीं।\nसीख: नमूने समष्टि का अनुमान देते हैं; माध्यिका बाहरी मानों से प्रभावित नहीं होती।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (screen, free): Explore your own data in Orange.\nAim: Load a CSV and find statistics without code.\nYou need: Orange on a laptop; a spreadsheet app (free Google Sheets or LibreOffice Calc).",
+       "hi": "गतिविधि 2 (स्क्रीन, मुफ़्त): Orange में अपना डेटा खोजें।\nउद्देश्य: बिना कोड के CSV लोड करना और सांख्यिकी निकालना।\nसामग्री: लैपटॉप पर Orange; स्प्रेडशीट ऐप (मुफ़्त Google Sheets या LibreOffice Calc)।"
+      },
+      "a": {
+       "en": "Step 1: Make a sheet with columns Name, Hours_Study, Hours_Screen, Marks for 15 imaginary students (do not use real personal data). Save as CSV.\nStep 2: In Orange, load it with File; set Name to 'meta'.\nStep 3: Connect Feature Statistics and note the mean and dispersion of each column.\nStep 4: Connect Scatter Plot with Hours_Study on the x-axis and Marks on the y-axis.\nStep 5: Connect Box Plot and look for outliers in Hours_Screen.\nObservation: You see a rising pattern between study hours and marks.\nLesson: Visualisation reveals relationships and odd values quickly.",
+       "hi": "चरण 1: 15 काल्पनिक विद्यार्थियों के लिए Name, Hours_Study, Hours_Screen, Marks स्तंभों वाली शीट बनाएँ (असली व्यक्तिगत डेटा न लें)। CSV के रूप में सहेजें।\nचरण 2: Orange में File से लोड करें; Name को 'meta' करें।\nचरण 3: Feature Statistics जोड़ें और हर स्तंभ का माध्य और फैलाव लिखें।\nचरण 4: x-अक्ष पर Hours_Study और y-अक्ष पर Marks के साथ Scatter Plot जोड़ें।\nचरण 5: Box Plot जोड़ें और Hours_Screen में बाहरी मान ढूँढें।\nअवलोकन: पढ़ाई के घंटों और अंकों के बीच ऊपर उठता पैटर्न दिखता है।\nसीख: विज़ुअलाइज़ेशन संबंधों और अजीब मानों को जल्दी दिखाता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (thinking): Spot automation bias.\nAim: Recognise over-trust in automatic tools.",
+       "hi": "गतिविधि 3 (सोचने वाली): स्वचालन पक्षपात पहचानें।\nउद्देश्य: स्वचालित टूल पर ज़रूरत से ज़्यादा भरोसा पहचानना।"
+      },
+      "a": {
+       "en": "Step 1: In groups, list three times you or your family followed an app even though something seemed wrong (a navigation app, an autocorrect, a calculator after a typing slip).\nStep 2: For each, write what the warning sign was and what a careful person would have done.\nLesson: AI tools help, but humans must stay alert and check results.",
+       "hi": "चरण 1: समूहों में ऐसे तीन मौके लिखें जब आपने या आपके परिवार ने कुछ गलत लगने पर भी किसी ऐप का पालन किया (नेविगेशन ऐप, ऑटोकरेक्ट, टाइपिंग गलती के बाद कैलकुलेटर)।\nचरण 2: हर एक के लिए लिखें कि चेतावनी का संकेत क्या था और सावधान व्यक्ति क्या करता।\nसीख: AI टूल मदद करते हैं, पर इंसानों को सतर्क रहकर परिणाम जाँचने चाहिए।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking no-code means 'no thinking'. Fix: you still need to understand the problem, the data and the evaluation.",
+   "Using the mean for skewed data such as incomes. Fix: use the median when there are outliers or long tails.",
+   "Forgetting to arrange data in order before finding the median. Fix: always sort first.",
+   "For an even number of values, picking one middle value as the median. Fix: take the average of the two middle values.",
+   "Confusing variance with standard deviation. Fix: SD = √variance and is in the same unit as the data.",
+   "Deleting every outlier automatically. Fix: first check whether it is an error or a real rare event (like fraud).",
+   "Taking a sample only from people who are easy to reach. Fix: use random sampling so the sample represents the population.",
+   "Saying correlation proves cause. Fix: two things can move together without one causing the other.",
+   "In Orange, forgetting to set the target column, or leaving a Name/ID column as a feature. Fix: set roles in the File widget.",
+   "Believing an automatic result even when it is obviously wrong (automation bias). Fix: always cross-check."
+  ],
+  "hi": [
+   "सोचना कि नो-कोड का अर्थ 'बिना सोचे' है। सुधार: आपको फिर भी समस्या, डेटा और मूल्यांकन समझना होगा।",
+   "आय जैसे तिरछे डेटा के लिए माध्य लेना। सुधार: बाहरी मान या लंबी पूँछ हो तो माध्यिका लें।",
+   "माध्यिका निकालने से पहले डेटा को क्रम में न लगाना। सुधार: हमेशा पहले क्रम में लगाएँ।",
+   "सम संख्या के मानों में बीच का एक मान माध्यिका मान लेना। सुधार: बीच के दो मानों का औसत लें।",
+   "प्रसरण और मानक विचलन को एक समझना। सुधार: SD = √प्रसरण और यह डेटा की ही इकाई में होता है।",
+   "हर बाहरी मान को अपने-आप हटा देना। सुधार: पहले जाँचें कि यह गलती है या असली दुर्लभ घटना (जैसे धोखाधड़ी)।",
+   "केवल आसानी से मिलने वाले लोगों से नमूना लेना। सुधार: यादृच्छिक नमूना लें ताकि वह समष्टि का प्रतिनिधित्व करे।",
+   "कहना कि सहसंबंध कारण साबित करता है। सुधार: दो चीज़ें साथ बदल सकती हैं बिना एक के दूसरे का कारण बने।",
+   "Orange में target स्तंभ तय करना भूलना, या Name/ID स्तंभ को feature छोड़ देना। सुधार: File विजेट में roles तय करें।",
+   "स्पष्ट रूप से गलत होने पर भी स्वचालित परिणाम पर भरोसा करना (स्वचालन पक्षपात)। सुधार: हमेशा दोबारा जाँचें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Data Science",
+    "hi": "डेटा साइंस"
+   },
+   "d": {
+    "en": "Field that analyses data with statistics, programming and ML to find patterns.",
+    "hi": "सांख्यिकी, प्रोग्रामिंग और ML से डेटा का विश्लेषण कर पैटर्न ढूँढने वाला क्षेत्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "Statistical data",
+    "hi": "सांख्यिकीय डेटा"
+   },
+   "d": {
+    "en": "Numbers or categories that can be counted, measured and summarised.",
+    "hi": "गिनी, मापी और सारांशित की जा सकने वाली संख्याएँ या श्रेणियाँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "High-code",
+    "hi": "हाई-कोड"
+   },
+   "d": {
+    "en": "Building applications by writing all the code.",
+    "hi": "सारा कोड लिखकर एप्लिकेशन बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Low-code",
+    "hi": "लो-कोड"
+   },
+   "d": {
+    "en": "Mostly visual building with a little code.",
+    "hi": "थोड़े कोड के साथ अधिकतर विज़ुअल निर्माण।"
+   }
+  },
+  {
+   "t": {
+    "en": "No-code",
+    "hi": "नो-कोड"
+   },
+   "d": {
+    "en": "Building without writing any code, using a visual interface.",
+    "hi": "विज़ुअल इंटरफ़ेस से, बिना कोई कोड लिखे, निर्माण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Automation bias",
+    "hi": "स्वचालन पक्षपात"
+   },
+   "d": {
+    "en": "Over-trusting automated suggestions and ignoring correct contrary information.",
+    "hi": "स्वचालित सुझावों पर ज़रूरत से ज़्यादा भरोसा और सही विरोधी जानकारी की अनदेखी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Population",
+    "hi": "समष्टि"
+   },
+   "d": {
+    "en": "The complete group being studied.",
+    "hi": "अध्ययन किया जा रहा पूरा समूह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sample",
+    "hi": "नमूना"
+   },
+   "d": {
+    "en": "A part of the population that is actually measured.",
+    "hi": "समष्टि का वह भाग जिसे वास्तव में मापा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Random sampling / sampling bias",
+    "hi": "यादृच्छिक नमूना / नमूना पक्षपात"
+   },
+   "d": {
+    "en": "Equal chance for every member / a sample that does not represent the population.",
+    "hi": "हर सदस्य को बराबर मौका / ऐसा नमूना जो समष्टि का प्रतिनिधित्व न करे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Descriptive statistics",
+    "hi": "वर्णनात्मक सांख्यिकी"
+   },
+   "d": {
+    "en": "Summarising data with a few numbers and graphs.",
+    "hi": "कुछ संख्याओं और ग्राफ़ से डेटा का सारांश।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mean",
+    "hi": "माध्य"
+   },
+   "d": {
+    "en": "Sum of values ÷ number of values.",
+    "hi": "मानों का योग ÷ मानों की संख्या।"
+   }
+  },
+  {
+   "t": {
+    "en": "Median",
+    "hi": "माध्यिका"
+   },
+   "d": {
+    "en": "Middle value of ordered data.",
+    "hi": "क्रमबद्ध डेटा का बीच का मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mode",
+    "hi": "बहुलक"
+   },
+   "d": {
+    "en": "Most frequent value.",
+    "hi": "सबसे अधिक बार आने वाला मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Range",
+    "hi": "परिसर"
+   },
+   "d": {
+    "en": "Largest value − smallest value.",
+    "hi": "सबसे बड़ा मान − सबसे छोटा मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Variance",
+    "hi": "प्रसरण"
+   },
+   "d": {
+    "en": "Average of squared differences from the mean.",
+    "hi": "माध्य से अंतरों के वर्गों का औसत।"
+   }
+  },
+  {
+   "t": {
+    "en": "Standard deviation",
+    "hi": "मानक विचलन"
+   },
+   "d": {
+    "en": "Square root of variance; typical distance of values from the mean.",
+    "hi": "प्रसरण का वर्गमूल; माध्य से मानों की सामान्य दूरी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Distribution / histogram",
+    "hi": "वितरण / आयतचित्र"
+   },
+   "d": {
+    "en": "How often values occur / bar graph showing it.",
+    "hi": "मान कितनी बार आते हैं / उसे दिखाने वाला बार ग्राफ़।"
+   }
+  },
+  {
+   "t": {
+    "en": "Normal distribution",
+    "hi": "सामान्य वितरण"
+   },
+   "d": {
+    "en": "Symmetric bell-shaped distribution; mean = median = mode.",
+    "hi": "सममित घंटी-आकार का वितरण; माध्य = माध्यिका = बहुलक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Skewed distribution",
+    "hi": "तिरछा वितरण"
+   },
+   "d": {
+    "en": "Distribution with a long tail on one side.",
+    "hi": "एक ओर लंबी पूँछ वाला वितरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Outlier",
+    "hi": "बाहरी मान"
+   },
+   "d": {
+    "en": "A value very different from most others.",
+    "hi": "अधिकांश अन्य मानों से बहुत अलग मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "z-score",
+    "hi": "z-score"
+   },
+   "d": {
+    "en": "(value − mean) ÷ SD; how many SDs a value is from the mean.",
+    "hi": "(मान − माध्य) ÷ SD; कोई मान माध्य से कितने SD दूर है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Probability",
+    "hi": "प्रायिकता"
+   },
+   "d": {
+    "en": "Likelihood of an event, from 0 to 1.",
+    "hi": "किसी घटना की संभावना, 0 से 1 तक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Correlation",
+    "hi": "सहसंबंध"
+   },
+   "d": {
+    "en": "How two variables move together (positive, negative, none).",
+    "hi": "दो चर साथ-साथ कैसे बदलते हैं (धनात्मक, ऋणात्मक, कोई नहीं)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Imputation",
+    "hi": "आरोपण (Imputation)"
+   },
+   "d": {
+    "en": "Filling missing values, e.g. with mean, median or mode.",
+    "hi": "छूटे मान भरना, जैसे माध्य, माध्यिका या बहुलक से।"
+   }
+  },
+  {
+   "t": {
+    "en": "Orange Data Mining",
+    "hi": "Orange Data Mining"
+   },
+   "d": {
+    "en": "Free open-source visual tool for data analysis and ML.",
+    "hi": "डेटा विश्लेषण और ML के लिए मुफ़्त ओपन-सोर्स विज़ुअल टूल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Widget",
+    "hi": "विजेट"
+   },
+   "d": {
+    "en": "An Orange block that performs one task.",
+    "hi": "एक काम करने वाला Orange ब्लॉक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Target / feature / meta",
+    "hi": "Target / feature / meta"
+   },
+   "d": {
+    "en": "Column to predict / input column / extra info not used for learning.",
+    "hi": "अनुमानित किया जाने वाला स्तंभ / इनपुट स्तंभ / सीखने में उपयोग न होने वाली अतिरिक्त जानकारी।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which AI domain mainly works with numbers and tables?\n(a) Computer Vision (b) NLP (c) Data Science (d) Robotics",
+    "hi": "MCQ: कौन-सा AI क्षेत्र मुख्य रूप से संख्याओं और तालिकाओं के साथ काम करता है?\n(a) कंप्यूटर विज़न (b) NLP (c) डेटा साइंस (d) रोबोटिक्स"
+   },
+   "a": {
+    "en": "(c) Data Science",
+    "hi": "(c) डेटा साइंस"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is a no-code tool?\n(a) Python (b) Java (c) Teachable Machine (d) C#",
+    "hi": "MCQ: इनमें से कौन नो-कोड टूल है?\n(a) Python (b) Java (c) Teachable Machine (d) C#"
+   },
+   "a": {
+    "en": "(c) Teachable Machine",
+    "hi": "(c) Teachable Machine"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The value that occurs most often in data is the ____.",
+    "hi": "रिक्त स्थान भरें: डेटा में सबसे अधिक बार आने वाला मान ____ है।"
+   },
+   "a": {
+    "en": "mode",
+    "hi": "बहुलक (mode)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Standard deviation is the square root of ____.",
+    "hi": "रिक्त स्थान भरें: मानक विचलन ____ का वर्गमूल है।"
+   },
+   "a": {
+    "en": "variance",
+    "hi": "प्रसरण (variance)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: In a normal distribution, mean, median and mode are equal.",
+    "hi": "सही या गलत: सामान्य वितरण में माध्य, माध्यिका और बहुलक बराबर होते हैं।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: An outlier should always be deleted.",
+    "hi": "सही या गलत: बाहरी मान को हमेशा हटा देना चाहिए।"
+   },
+   "a": {
+    "en": "False. First check if it is an error or a real rare case; in fraud detection outliers are what we look for.",
+    "hi": "गलत। पहले जाँचें कि यह गलती है या असली दुर्लभ मामला; धोखाधड़ी पहचान में बाहरी मान ही हम ढूँढते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Differentiate between population and sample with an example.",
+    "hi": "उदाहरण सहित समष्टि और नमूने में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Population is the whole group (all students of a state); a sample is a part chosen from it (500 randomly chosen students) and actually studied.",
+    "hi": "समष्टि पूरा समूह है (किसी राज्य के सभी विद्यार्थी); नमूना उसमें से चुना गया भाग है (यादृच्छिक रूप से चुने 500 विद्यार्थी) जिसका वास्तव में अध्ययन होता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find mean, median, mode and range: 7, 3, 9, 3, 5, 8, 3, 10.",
+    "hi": "माध्य, माध्यिका, बहुलक और परिसर ज्ञात कीजिए: 7, 3, 9, 3, 5, 8, 3, 10।"
+   },
+   "a": {
+    "en": "Sum = 48, n = 8, mean = 6. Ordered: 3, 3, 3, 5, 7, 8, 9, 10; median = (5 + 7) ÷ 2 = 6. Mode = 3. Range = 10 − 3 = 7.",
+    "hi": "योग = 48, n = 8, माध्य = 6। क्रम: 3, 3, 3, 5, 7, 8, 9, 10; माध्यिका = (5 + 7) ÷ 2 = 6। बहुलक = 3। परिसर = 10 − 3 = 7।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the variance and SD of 2, 4, 4, 4, 5, 5, 7, 9 (divide by n).",
+    "hi": "2, 4, 4, 4, 5, 5, 7, 9 का प्रसरण और SD ज्ञात कीजिए (n से भाग दें)।"
+   },
+   "a": {
+    "en": "Mean = 40 ÷ 8 = 5. Squared differences: 9, 1, 1, 1, 0, 0, 4, 16; sum = 32. Variance = 32 ÷ 8 = 4. SD = √4 = 2.",
+    "hi": "माध्य = 40 ÷ 8 = 5। अंतरों के वर्ग: 9, 1, 1, 1, 0, 0, 4, 16; योग = 32। प्रसरण = 32 ÷ 8 = 4। SD = √4 = 2।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give three advantages and three disadvantages of no-code AI tools.",
+    "hi": "नो-कोड AI टूल के तीन लाभ और तीन कमियाँ बताइए।"
+   },
+   "a": {
+    "en": "Advantages: no coding needed (accessible), fast to build, low cost. Disadvantages: limited flexibility, automation bias, security/privacy risks when data is uploaded to a platform.",
+    "hi": "लाभ: कोडिंग की ज़रूरत नहीं (सुलभ), जल्दी बनता है, कम लागत। कमियाँ: सीमित लचीलापन, स्वचालन पक्षपात, प्लेटफ़ॉर्म पर डेटा अपलोड होने से सुरक्षा/निजता जोखिम।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Monthly salaries (₹ thousand) in a small office: 20, 22, 25, 24, 21, 300. Which measure, mean or median, better shows a typical salary? Calculate both.",
+    "hi": "एक छोटे दफ़्तर में मासिक वेतन (₹ हज़ार): 20, 22, 25, 24, 21, 300। सामान्य वेतन कौन बेहतर दिखाता है, माध्य या माध्यिका? दोनों निकालिए।"
+   },
+   "a": {
+    "en": "Mean = 412 ÷ 6 ≈ 68.7 thousand. Ordered: 20, 21, 22, 24, 25, 300; median = (22 + 24) ÷ 2 = 23 thousand. The median is better because the owner's 300 is an outlier that pulls the mean up.",
+    "hi": "माध्य = 412 ÷ 6 ≈ 68.7 हज़ार। क्रम: 20, 21, 22, 24, 25, 300; माध्यिका = (22 + 24) ÷ 2 = 23 हज़ार। माध्यिका बेहतर है क्योंकि मालिक का 300 एक बाहरी मान है जो माध्य को ऊपर खींचता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): No-code tools may not suit hospitals handling patient records.\nReason (R): Data uploaded to an external platform may raise security and privacy risks.",
+    "hi": "अभिकथन (A): नो-कोड टूल मरीज़ों के रिकॉर्ड संभालने वाले अस्पतालों के लिए उपयुक्त न हों।\nकारण (R): बाहरी प्लेटफ़ॉर्म पर अपलोड डेटा सुरक्षा और निजता जोखिम पैदा कर सकता है।"
+   },
+   "a": {
+    "en": "(a) Both A and R are true, and R correctly explains A.",
+    "hi": "(a) A और R दोनों सही हैं, और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): The median is affected strongly by outliers.\nReason (R): The median depends only on the middle position of ordered data.",
+    "hi": "अभिकथन (A): माध्यिका बाहरी मानों से बहुत प्रभावित होती है।\nकारण (R): माध्यिका केवल क्रमबद्ध डेटा की मध्य स्थिति पर निर्भर करती है।"
+   },
+   "a": {
+    "en": "(d) A is false, R is true. Because it depends on position, the median is hardly affected by outliers.",
+    "hi": "(d) A गलत, R सही। स्थिति पर निर्भर होने के कारण माध्यिका बाहरी मानों से बहुत कम प्रभावित होती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the Orange widget for each: (i) load a CSV (ii) see mean and missing values of every column (iii) plot two features (iv) get accuracy, precision and recall (v) predict new data.",
+    "hi": "हर एक के लिए Orange विजेट का नाम बताइए: (i) CSV लोड करना (ii) हर स्तंभ का माध्य और छूटे मान देखना (iii) दो features प्लॉट करना (iv) accuracy, precision और recall पाना (v) नए डेटा का अनुमान।"
+   },
+   "a": {
+    "en": "(i) File (ii) Feature Statistics (iii) Scatter Plot (iv) Test & Score (v) Predictions.",
+    "hi": "(i) File (ii) Feature Statistics (iii) Scatter Plot (iv) Test & Score (v) Predictions।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Marks in a test are normal with mean 60 and SD 8. Within what range do about 68% of students score? About 99.7%?",
+    "hi": "एक टेस्ट के अंक सामान्य हैं, माध्य 60 और SD 8। लगभग 68% विद्यार्थियों के अंक किस सीमा में हैं? लगभग 99.7% के?"
+   },
+   "a": {
+    "en": "68% → within 1 SD: 52 to 68. 99.7% → within 3 SD: 60 ± 24 = 36 to 84.",
+    "hi": "68% → 1 SD के भीतर: 52 से 68। 99.7% → 3 SD के भीतर: 60 ± 24 = 36 से 84।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A bag has 4 red, 5 blue and 1 green marble. What is the probability of drawing a blue marble?",
+    "hi": "एक थैले में 4 लाल, 5 नीले और 1 हरा कंचा है। नीला कंचा निकालने की प्रायिकता क्या है?"
+   },
+   "a": {
+    "en": "Total = 10, blue = 5; P(blue) = 5/10 = 0.5.",
+    "hi": "कुल = 10, नीले = 5; P(नीला) = 5/10 = 0.5।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Mean of daily temperatures 30, 31, 29, 30, 30 is 30 and SD ≈ 0.63. A new reading of 45 arrives. Find its z-score and decide if it is an outlier. What should a data scientist do next?",
+    "hi": "दैनिक तापमान 30, 31, 29, 30, 30 का माध्य 30 और SD ≈ 0.63 है। 45 का नया पठन आता है। उसका z-score निकालिए और तय कीजिए कि क्या यह बाहरी मान है। डेटा वैज्ञानिक को आगे क्या करना चाहिए?"
+   },
+   "a": {
+    "en": "z = (45 − 30) ÷ 0.63 ≈ 23.8, far above 3, so it is an outlier. Next, check the sensor and weather reports: if it is a glitch, correct or remove it (or impute with the median); if it is real (a heatwave), keep it and note it.",
+    "hi": "z = (45 − 30) ÷ 0.63 ≈ 23.8, जो 3 से बहुत अधिक है, इसलिए यह बाहरी मान है। आगे सेंसर और मौसम रिपोर्ट जाँचें: यदि गड़बड़ है, तो सुधारें या हटाएँ (या माध्यिका से भरें); यदि असली है (लू), तो रखें और दर्ज करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A shop owner in Jaipur wants to predict how many kites to stock before Makar Sankranti using sales of the last 8 years, without writing code. Explain how she can follow the AI Project Cycle in Orange, naming widgets and statistics she would use.",
+    "hi": "केस स्टडी: जयपुर की एक दुकानदार बिना कोड लिखे, पिछले 8 वर्षों की बिक्री से मकर संक्रांति से पहले कितनी पतंगें रखनी हैं, इसका अनुमान लगाना चाहती है। समझाइए कि वह Orange में AI प्रोजेक्ट चक्र कैसे अपनाएगी, विजेटों और सांख्यिकी के नाम सहित।"
+   },
+   "a": {
+    "en": "Problem scoping: predict kite demand for this season. Data acquisition: a CSV with year, weather, price, festival-week sales; load with File, set 'sales' as target. Exploration: Data Table, Feature Statistics (mean, median, SD of sales), Line/Scatter Plot of sales over years, Box Plot to find an outlier year (e.g. a lockdown year). Modelling: a regression learner such as Linear Regression. Evaluation: Test & Score (error measures such as MAE/RMSE). Deployment: Predictions with this year's inputs. She should still use her own judgement (avoid automation bias).",
+    "hi": "समस्या निर्धारण: इस मौसम की पतंग माँग का अनुमान। डेटा अधिग्रहण: वर्ष, मौसम, कीमत, त्योहार-सप्ताह बिक्री वाली CSV; File से लोड करें, 'sales' को target बनाएँ। अन्वेषण: Data Table, Feature Statistics (बिक्री का माध्य, माध्यिका, SD), वर्षों के साथ बिक्री का Line/Scatter Plot, बाहरी वर्ष (जैसे लॉकडाउन वर्ष) ढूँढने के लिए Box Plot। मॉडलिंग: Linear Regression जैसा regression learner। मूल्यांकन: Test & Score (MAE/RMSE जैसे त्रुटि माप)। परिनियोजन: इस वर्ष के इनपुट के साथ Predictions। उसे फिर भी अपने विवेक का उपयोग करना चाहिए (स्वचालन पक्षपात से बचें)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Compare high-code, low-code and no-code development on at least five points with examples.",
+    "hi": "दीर्घ उत्तर: उदाहरणों सहित कम से कम पाँच बिंदुओं पर हाई-कोड, लो-कोड और नो-कोड विकास की तुलना कीजिए।"
+   },
+   "a": {
+    "en": "Who builds: experts / users with some coding / anyone. Speed: slow / faster / fastest. Cost: high / medium / low. Flexibility: full / good / limited. Error handling: developer debugs / mostly platform / platform. Examples: Python with scikit-learn; platforms like IBM Watson Studio or DataRobot; Teachable Machine, Orange, Google AutoML.",
+    "hi": "कौन बनाता है: विशेषज्ञ / कुछ कोडिंग वाले / कोई भी। गति: धीमी / तेज़ / सबसे तेज़। लागत: अधिक / मध्यम / कम। लचीलापन: पूरा / अच्छा / सीमित। त्रुटि संभालना: डेवलपर डीबग करता है / अधिकतर प्लेटफ़ॉर्म / प्लेटफ़ॉर्म। उदाहरण: scikit-learn के साथ Python; IBM Watson Studio या DataRobot जैसे प्लेटफ़ॉर्म; Teachable Machine, Orange, Google AutoML।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: A survey on 'Do teenagers like online classes?' was done only through an Instagram poll. Is the result reliable? Suggest a better sampling method.",
+    "hi": "सोचिए: 'क्या किशोर ऑनलाइन कक्षाएँ पसंद करते हैं?' पर सर्वे केवल Instagram पोल से किया गया। क्या परिणाम भरोसेमंद है? बेहतर नमूना विधि सुझाइए।"
+   },
+   "a": {
+    "en": "Not reliable: it suffers from sampling bias, since it reaches only teens with phones, internet and that app, and those who choose to answer. Better: randomly select schools across urban and rural areas and different states, then randomly select students within them, and survey them on paper or in person.",
+    "hi": "भरोसेमंद नहीं: इसमें नमूना पक्षपात है, क्योंकि यह केवल फ़ोन, इंटरनेट और उस ऐप वाले किशोरों तक, और जो उत्तर देना चुनें उन तक पहुँचता है। बेहतर: शहरी और ग्रामीण क्षेत्रों तथा अलग-अलग राज्यों के स्कूल यादृच्छिक रूप से चुनें, फिर उनमें विद्यार्थी यादृच्छिक रूप से चुनें, और कागज़ पर या आमने-सामने सर्वे करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "What will this Python code print?\nimport statistics as st\nd = [4, 8, 6, 8, 9]\nprint(st.mean(d), st.median(d), st.mode(d))",
+    "hi": "यह Python कोड क्या छापेगा?\nimport statistics as st\nd = [4, 8, 6, 8, 9]\nprint(st.mean(d), st.median(d), st.mode(d))"
+   },
+   "a": {
+    "en": "7 8 8. (Sum 35 ÷ 5 = 7; ordered 4, 6, 8, 8, 9 so median 8; 8 appears twice so mode 8.)",
+    "hi": "7 8 8। (योग 35 ÷ 5 = 7; क्रम 4, 6, 8, 8, 9 इसलिए माध्यिका 8; 8 दो बार आता है इसलिए बहुलक 8।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which chart would you use? (i) monthly rainfall over a year (ii) relationship of study hours and marks (iii) how many students got marks in 0–10, 10–20, … (iv) spotting outliers in house prices.",
+    "hi": "आप कौन-सा चार्ट उपयोग करेंगे? (i) एक वर्ष में मासिक वर्षा (ii) पढ़ाई के घंटे और अंकों का संबंध (iii) 0–10, 10–20, … अंक पाने वाले विद्यार्थियों की संख्या (iv) मकान कीमतों में बाहरी मान ढूँढना।"
+   },
+   "a": {
+    "en": "(i) Line chart (ii) Scatter plot (iii) Histogram (iv) Box plot.",
+    "hi": "(i) रेखा चार्ट (ii) Scatter plot (iii) आयतचित्र (iv) Box plot।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Data Science works with numerical/statistical data; Computer Vision with images; NLP with text and speech.",
+   "Data science is used in search, advertising, recommendations, finance, healthcare, agriculture and sports.",
+   "High-code means writing all code; low-code uses visual blocks with a little code; no-code needs no code at all.",
+   "No-code AI is accessible, fast, cheap and easy, and lets domain experts such as doctors and teachers build tools.",
+   "Its drawbacks are limited flexibility, automation bias and security/privacy risks.",
+   "Examples of no-code/low-code tools: Orange, Teachable Machine, Lobe, Google AutoML, Azure ML designer.",
+   "A population is the whole group; a sample is a randomly chosen part that should represent it.",
+   "Mean, median and mode describe the centre; the median is best when there are outliers.",
+   "Range, variance and standard deviation describe spread; SD = √variance.",
+   "A normal distribution is bell-shaped; about 68%, 95% and 99.7% of values lie within 1, 2 and 3 SD.",
+   "Outliers are unusual values; check why they exist before removing them.",
+   "Probability (0 to 1) expresses how likely an event is; AI models often output probabilities.",
+   "Charts such as histogram, scatter plot and box plot reveal patterns, correlation and outliers.",
+   "Orange uses widgets (File, Data Table, Feature Statistics, Scatter Plot, Test & Score, Predictions) to follow the full AI Project Cycle without code."
+  ],
+  "hi": [
+   "डेटा साइंस संख्यात्मक/सांख्यिकीय डेटा के साथ काम करता है; कंप्यूटर विज़न चित्रों के साथ; NLP पाठ और वाणी के साथ।",
+   "डेटा साइंस का उपयोग सर्च, विज्ञापन, सुझाव, वित्त, स्वास्थ्य, कृषि और खेल में होता है।",
+   "हाई-कोड यानी सारा कोड लिखना; लो-कोड थोड़े कोड के साथ विज़ुअल ब्लॉक उपयोग करता है; नो-कोड में कोई कोड नहीं चाहिए।",
+   "नो-कोड AI सुलभ, तेज़, सस्ता और आसान है, और डॉक्टर व शिक्षक जैसे क्षेत्र-विशेषज्ञों को टूल बनाने देता है।",
+   "इसकी कमियाँ हैं सीमित लचीलापन, स्वचालन पक्षपात और सुरक्षा/निजता जोखिम।",
+   "नो-कोड/लो-कोड टूल के उदाहरण: Orange, Teachable Machine, Lobe, Google AutoML, Azure ML designer।",
+   "समष्टि पूरा समूह है; नमूना यादृच्छिक रूप से चुना गया भाग है जो उसका प्रतिनिधित्व करे।",
+   "माध्य, माध्यिका और बहुलक केंद्र बताते हैं; बाहरी मान हों तो माध्यिका सबसे अच्छी है।",
+   "परिसर, प्रसरण और मानक विचलन फैलाव बताते हैं; SD = √प्रसरण।",
+   "सामान्य वितरण घंटी-आकार का है; लगभग 68%, 95% और 99.7% मान 1, 2 और 3 SD के भीतर होते हैं।",
+   "बाहरी मान असामान्य मान हैं; हटाने से पहले जाँचें कि वे क्यों हैं।",
+   "प्रायिकता (0 से 1) बताती है कि कोई घटना कितनी संभावित है; AI मॉडल अक्सर प्रायिकता देते हैं।",
+   "आयतचित्र, scatter plot और box plot जैसे चार्ट पैटर्न, सहसंबंध और बाहरी मान दिखाते हैं।",
+   "Orange विजेटों (File, Data Table, Feature Statistics, Scatter Plot, Test & Score, Predictions) से बिना कोड पूरा AI प्रोजेक्ट चक्र अपनाने देता है।"
+  ]
+ }
+}

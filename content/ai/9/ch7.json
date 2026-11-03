@@ -1,0 +1,2648 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "9",
+ "id": "ch7",
+ "intro": {
+  "en": "Every AI tool you met in this book, from a chatbot to a crop-disease app, is made of programs that tell a computer exactly what to do. Python is the language most AI developers use, and it is simple enough to start in Class 9. In this chapter you will first warm up with game-based coding, then learn what Python is, how to run it on a computer or phone, and its basic building blocks: keywords, identifiers, variables, data types, operators, type conversion, print() and input(), if-elif-else decisions, for and while loops, and lists. Every program here has been run, and the outputs shown are real, so you can type them and check.",
+  "hi": "इस किताब में मिले हर AI tool, chatbot से लेकर फ़सल-रोग app तक, ऐसे प्रोग्रामों से बने हैं जो कंप्यूटर को ठीक-ठीक बताते हैं कि क्या करना है। Python वह भाषा है जिसका उपयोग अधिकांश AI developers करते हैं, और यह इतनी सरल है कि कक्षा 9 में शुरू की जा सके। इस अध्याय में आप पहले खेल-आधारित coding से अभ्यास करेंगे, फिर सीखेंगे कि Python क्या है, इसे कंप्यूटर या फ़ोन पर कैसे चलाएँ, और इसके मूल घटक: keyword, identifier, variable, data type, operator, type conversion, print() और input(), if-elif-else निर्णय, for और while loop, और list। यहाँ हर प्रोग्राम चलाकर देखा गया है और दिखाए गए आउटपुट असली हैं, इसलिए आप इन्हें टाइप करके जाँच सकते हैं।"
+ },
+ "learn": {
+  "en": [
+   "Algorithms, flowcharts and programs, and learning coding through games such as CodeCombat",
+   "What Python is, its features, its applications and why it is used for AI",
+   "Running Python in IDLE, online compilers and phone apps; interactive mode and script mode",
+   "Statements, comments, indentation, keywords and the rules for identifiers",
+   "Variables and data types: int, float, str and bool; the type() function",
+   "Arithmetic, comparison, logical and assignment operators, expressions and precedence",
+   "Implicit and explicit type conversion",
+   "Output with print() (including sep and end) and input from the user with input()",
+   "Decisions with if, if-else, if-elif-else and nested if",
+   "Repetition with for loops (range) and while loops",
+   "Lists: indexing, negative indexing, slicing and list operations such as append, insert, extend, remove, pop, sort",
+   "All the CBSE practical-file programs, and how to find and fix errors"
+  ],
+  "hi": [
+   "Algorithm, flowchart और program, और CodeCombat जैसे खेलों से coding सीखना",
+   "Python क्या है, इसकी विशेषताएँ, उपयोग और AI के लिए इसका उपयोग क्यों होता है",
+   "IDLE, online compiler और फ़ोन app में Python चलाना; interactive mode और script mode",
+   "Statement, comment, indentation, keyword और identifier के नियम",
+   "Variable और data type: int, float, str और bool; type() function",
+   "अंकगणितीय, तुलना, तार्किक और assignment operator, expression और precedence",
+   "Implicit और explicit type conversion",
+   "print() से आउटपुट (sep और end सहित) और input() से उपयोगकर्ता से इनपुट",
+   "if, if-else, if-elif-else और nested if से निर्णय",
+   "for loop (range) और while loop से दोहराव",
+   "List: indexing, negative indexing, slicing और append, insert, extend, remove, pop, sort जैसे list operations",
+   "CBSE practical file के सभी प्रोग्राम, और errors ढूँढना व ठीक करना"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "7.1 Before Python: algorithms, flowcharts and coding games",
+    "hi": "7.1 Python से पहले: algorithm, flowchart और coding खेल"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Algorithm",
+       "hi": "Algorithm (एल्गोरिदम)"
+      },
+      "text": {
+       "en": "A finite, step-by-step set of clear instructions to solve a problem, written in plain language.",
+       "hi": "किसी समस्या को हल करने के लिए स्पष्ट निर्देशों का सीमित, चरण-दर-चरण समूह, सरल भाषा में लिखा हुआ।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Flowchart",
+       "hi": "Flowchart (फ़्लोचार्ट)"
+      },
+      "text": {
+       "en": "A diagram of an algorithm using standard shapes: an oval for Start/Stop, a parallelogram for input/output, a rectangle for a process (calculation), a diamond for a decision (yes/no), and arrows for the flow.",
+       "hi": "मानक आकृतियों से बना algorithm का चित्र: Start/Stop के लिए अंडाकार, input/output के लिए समांतर चतुर्भुज, प्रक्रिया (गणना) के लिए आयत, निर्णय (हाँ/नहीं) के लिए हीरा (diamond), और प्रवाह के लिए तीर।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Program",
+       "hi": "Program (प्रोग्राम)"
+      },
+      "text": {
+       "en": "An algorithm written in a programming language (such as Python) so that a computer can run it.",
+       "hi": "किसी programming भाषा (जैसे Python) में लिखा algorithm ताकि कंप्यूटर उसे चला सके।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write an algorithm and describe the flowchart to find whether a person can vote (age 18 or more).",
+       "hi": "यह पता करने का algorithm लिखिए और flowchart का वर्णन कीजिए कि कोई व्यक्ति वोट दे सकता है या नहीं (आयु 18 या अधिक)।"
+      },
+      "a": {
+       "en": "Algorithm:\n1. Start.\n2. Input age.\n3. If age >= 18, display 'Eligible to vote'.\n4. Otherwise display 'Not eligible'.\n5. Stop.\nFlowchart in words: Oval 'Start' -> parallelogram 'Input age' -> diamond 'age >= 18?' -> Yes arrow to parallelogram 'Print Eligible'; No arrow to parallelogram 'Print Not eligible' -> both arrows join at oval 'Stop'.",
+       "hi": "Algorithm:\n1. शुरू करें।\n2. आयु इनपुट करें।\n3. अगर आयु >= 18 है, तो 'Eligible to vote' दिखाएँ।\n4. वरना 'Not eligible' दिखाएँ।\n5. रुकें।\nFlowchart शब्दों में: अंडाकार 'Start' -> समांतर चतुर्भुज 'Input age' -> हीरा 'age >= 18?' -> हाँ वाला तीर समांतर चतुर्भुज 'Print Eligible' तक; नहीं वाला तीर समांतर चतुर्भुज 'Print Not eligible' तक -> दोनों तीर अंडाकार 'Stop' पर मिलते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The CBSE syllabus begins coding with a gamified platform. CodeCombat is a website where you guide a hero through dungeons by typing real Python (or JavaScript) commands such as hero.moveRight() and hero.attack(enemy). Each level teaches one idea: sequence (commands run in order), loops (repeat moves), variables, if-conditions (attack only if an enemy is near) and functions. Its early levels can be played free; a school can set up class accounts. Similar free options are Code.org's Hour of Code puzzles and Scratch (block coding), which you may have used in earlier classes.",
+      "hi": "CBSE पाठ्यक्रम coding की शुरुआत एक खेल-आधारित मंच से करता है। CodeCombat एक वेबसाइट है जिसमें आप असली Python (या JavaScript) commands जैसे hero.moveRight() और hero.attack(enemy) टाइप करके एक नायक को भूलभुलैया से निकालते हैं। हर level एक विचार सिखाता है: sequence (commands क्रम से चलते हैं), loop (चालें दोहराना), variable, if-शर्त (दुश्मन पास हो तभी हमला) और function। इसके शुरुआती levels मुफ़्त खेले जा सकते हैं; स्कूल कक्षा के खाते बना सकता है। ऐसे ही मुफ़्त विकल्प हैं Code.org की Hour of Code पहेलियाँ और Scratch (block coding), जो आपने पिछली कक्षाओं में उपयोग किए होंगे।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity - CodeCombat warm-up (screen, supervised). Aim: feel how exact commands control a computer. What to do: with the teacher's class code (an adult should handle any sign-up for students under 13), play the first 5 levels of the first world. In each level, write down the commands you used. What you observe: a missing bracket or a misspelt word stops the hero; commands run top to bottom; repeating the same command again and again is boring, which is exactly why loops exist. What it teaches: programming needs precise syntax and logical order.",
+      "hi": "गतिविधि - CodeCombat अभ्यास (स्क्रीन, निगरानी में)। उद्देश्य: महसूस करना कि सटीक commands कंप्यूटर को कैसे नियंत्रित करते हैं। क्या करें: शिक्षक के class code से (13 से कम उम्र के छात्रों का sign-up कोई बड़ा करे), पहली दुनिया के पहले 5 levels खेलें। हर level में उपयोग किए commands लिख लें। क्या देखेंगे: एक छूटा कोष्ठक या गलत वर्तनी नायक को रोक देती है; commands ऊपर से नीचे चलते हैं; एक ही command बार-बार लिखना उबाऊ है, और इसी कारण loop बने हैं। क्या सिखाता है: programming में सटीक syntax और तार्किक क्रम चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.2 What is Python? Features and applications",
+    "hi": "7.2 Python क्या है? विशेषताएँ और उपयोग"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Python",
+       "hi": "Python (पाइथन)"
+      },
+      "text": {
+       "en": "A free, open-source, high-level, general-purpose programming language created by Guido van Rossum and first released in 1991. It is named after the British comedy show 'Monty Python's Flying Circus', not the snake.",
+       "hi": "एक मुफ़्त, open-source, high-level, सामान्य-उद्देश्य programming भाषा जिसे Guido van Rossum ने बनाया और पहली बार 1991 में जारी किया। इसका नाम ब्रिटिश हास्य कार्यक्रम 'Monty Python's Flying Circus' पर रखा गया है, साँप पर नहीं।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Easy to read and write: its code looks close to English, e.g. if marks >= 33: print('Pass').",
+       "High-level: you do not need to manage the computer's memory or hardware details.",
+       "Interpreted: code runs line by line, so errors are shown at the line where they occur.",
+       "Free and open source: anyone can download, use and share it.",
+       "Cross-platform (portable): the same program runs on Windows, Linux, macOS and even phones.",
+       "Dynamically typed: you do not declare a variable's type; Python works it out from the value.",
+       "Large standard library and huge community: ready-made modules and many free tutorials.",
+       "Case-sensitive: Marks and marks are two different names."
+      ],
+      "hi": [
+       "पढ़ने-लिखने में आसान: इसका कोड अंग्रेज़ी के करीब दिखता है, जैसे if marks >= 33: print('Pass')।",
+       "High-level: कंप्यूटर की memory या hardware के विवरण आपको नहीं संभालने पड़ते।",
+       "Interpreted: कोड पंक्ति-दर-पंक्ति चलता है, इसलिए error उसी पंक्ति पर दिखती है जहाँ वह होती है।",
+       "मुफ़्त और open source: कोई भी इसे download, उपयोग और साझा कर सकता है।",
+       "Cross-platform (portable): एक ही प्रोग्राम Windows, Linux, macOS और फ़ोन पर भी चलता है।",
+       "Dynamically typed: variable का type घोषित नहीं करना पड़ता; Python मान से खुद पता कर लेता है।",
+       "बड़ी standard library और विशाल समुदाय: तैयार modules और बहुत-से मुफ़्त tutorials।",
+       "Case-sensitive: Marks और marks दो अलग नाम हैं।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application area",
+        "What Python does there"
+       ],
+       "hi": [
+        "उपयोग क्षेत्र",
+        "वहाँ Python क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Artificial Intelligence and Machine Learning",
+         "Training models with libraries like scikit-learn, TensorFlow and PyTorch"
+        ],
+        [
+         "Data science",
+         "Analysing data with NumPy and Pandas, drawing graphs with Matplotlib"
+        ],
+        [
+         "Web development",
+         "Building websites and web apps with frameworks such as Django and Flask"
+        ],
+        [
+         "Desktop GUI apps and games",
+         "Windows and buttons with Tkinter; simple games with Pygame"
+        ],
+        [
+         "Automation and scripting",
+         "Renaming hundreds of files, filling spreadsheets, sending reports automatically"
+        ],
+        [
+         "Databases and business software",
+         "Storing and fetching records, billing and inventory programs"
+        ],
+        [
+         "Science, robotics and IoT",
+         "Scientific calculations, controlling sensors on boards such as Raspberry Pi"
+        ]
+       ],
+       "hi": [
+        [
+         "Artificial Intelligence और Machine Learning",
+         "scikit-learn, TensorFlow और PyTorch जैसी libraries से मॉडल train करना"
+        ],
+        [
+         "Data science",
+         "NumPy और Pandas से डेटा विश्लेषण, Matplotlib से ग्राफ़ बनाना"
+        ],
+        [
+         "Web development",
+         "Django और Flask जैसे frameworks से वेबसाइट और web app बनाना"
+        ],
+        [
+         "Desktop GUI app और गेम",
+         "Tkinter से विंडो और बटन; Pygame से सरल गेम"
+        ],
+        [
+         "Automation और scripting",
+         "सैकड़ों फ़ाइलों का नाम बदलना, spreadsheet भरना, अपने-आप रिपोर्ट भेजना"
+        ],
+        [
+         "Database और business software",
+         "रिकॉर्ड रखना और निकालना, billing और inventory प्रोग्राम"
+        ],
+        [
+         "विज्ञान, robotics और IoT",
+         "वैज्ञानिक गणनाएँ, Raspberry Pi जैसे बोर्ड पर sensors नियंत्रित करना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why Python for AI? Its simple syntax lets researchers focus on the problem rather than on the language; powerful free libraries (NumPy, Pandas, Matplotlib, scikit-learn, TensorFlow, PyTorch, OpenCV, NLTK) already do the heavy mathematics; you can test ideas quickly in interactive mode; and it runs on all platforms. Google, NASA, Netflix and many Indian start-ups use Python.",
+      "hi": "AI के लिए Python क्यों? इसका सरल syntax शोधकर्ताओं को भाषा के बजाय समस्या पर ध्यान देने देता है; शक्तिशाली मुफ़्त libraries (NumPy, Pandas, Matplotlib, scikit-learn, TensorFlow, PyTorch, OpenCV, NLTK) भारी गणित पहले से करती हैं; interactive mode में विचार जल्दी परखे जा सकते हैं; और यह सभी platforms पर चलता है। Google, NASA, Netflix और कई भारतीय start-ups Python का उपयोग करते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3 Getting started: where and how to run Python",
+    "hi": "7.3 शुरुआत: Python कहाँ और कैसे चलाएँ"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "On a computer: download Python free from python.org; it comes with IDLE (Integrated Development and Learning Environment). Other free editors: Thonny, VS Code, Jupyter Notebook.",
+       "In a browser (no installation): online Python compilers/editors, or Google Colab (needs a Google account; an adult should help under-13s).",
+       "On an Android phone: free Python editor apps from the Play Store let you type and run programs offline."
+      ],
+      "hi": [
+       "कंप्यूटर पर: python.org से Python मुफ़्त download करें; इसके साथ IDLE (Integrated Development and Learning Environment) आता है। अन्य मुफ़्त editors: Thonny, VS Code, Jupyter Notebook।",
+       "browser में (बिना installation): online Python compiler/editor, या Google Colab (Google खाता चाहिए; 13 से कम उम्र वालों की मदद कोई बड़ा करे)।",
+       "Android फ़ोन पर: Play Store के मुफ़्त Python editor apps से प्रोग्राम offline टाइप करके चला सकते हैं।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Interactive mode",
+       "hi": "Interactive mode (इंटरैक्टिव मोड)"
+      },
+      "text": {
+       "en": "Typing one statement at a time at the Python shell prompt >>> and getting the result immediately. Good for quick tests; the work is not saved.",
+       "hi": "Python shell के prompt >>> पर एक बार में एक statement टाइप करना और तुरंत परिणाम पाना। जल्दी परखने के लिए अच्छा; काम save नहीं होता।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": ">>> 5 + 3\n8\n>>> print('Namaste')\nNamaste\n>>> 2 ** 10\n1024",
+      "hi": ">>> 5 + 3\n8\n>>> print('Namaste')\nNamaste\n>>> 2 ** 10\n1024"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Script mode",
+       "hi": "Script mode (स्क्रिप्ट मोड)"
+      },
+      "text": {
+       "en": "Writing many lines in a file saved with the extension .py (for example marks.py) and running the whole file (in IDLE: File > New File, type, save, then Run > Run Module or press F5). The program can be saved, edited and run again.",
+       "hi": "कई पंक्तियाँ .py extension वाली फ़ाइल (जैसे marks.py) में लिखकर पूरी फ़ाइल चलाना (IDLE में: File > New File, टाइप करें, save करें, फिर Run > Run Module या F5 दबाएँ)। प्रोग्राम save, संपादित और दोबारा चलाया जा सकता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "In interactive mode, typing just an expression such as 5 + 3 shows its value. In script mode nothing is shown unless you use print(). This is why every program in this chapter uses print().",
+      "hi": "Interactive mode में केवल 5 + 3 जैसा expression लिखने पर उसका मान दिख जाता है। Script mode में print() उपयोग किए बिना कुछ नहीं दिखता। इसीलिए इस अध्याय के हर प्रोग्राम में print() है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# My first Python program\nprint('Hello, India!')\nprint('I am learning Python for AI.')\n\nOutput:\nHello, India!\nI am learning Python for AI.",
+      "hi": "# My first Python program\nprint('Hello, India!')\nprint('I am learning Python for AI.')\n\nआउटपुट:\nHello, India!\nI am learning Python for AI."
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.4 Building blocks: statements, comments, indentation, keywords and identifiers",
+    "hi": "7.4 मूल घटक: statement, comment, indentation, keyword और identifier"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Statement",
+       "hi": "Statement (स्टेटमेंट)"
+      },
+      "text": {
+       "en": "One instruction that Python can run, such as x = 5 or print(x). Normally each statement is written on its own line.",
+       "hi": "एक निर्देश जिसे Python चला सकता है, जैसे x = 5 या print(x)। आमतौर पर हर statement अपनी अलग पंक्ति में लिखा जाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Types of statements you will use: assignment statements (x = 10), input/output statements (print(), input()), conditional statements (if), and looping statements (for, while). A long statement can be continued on the next line with a backslash \\ at the end of the line, or by keeping it inside brackets ( ), [ ].",
+      "hi": "आप जिन statements का उपयोग करेंगे: assignment statement (x = 10), input/output statement (print(), input()), conditional statement (if), और looping statement (for, while)। लंबे statement को पंक्ति के अंत में backslash \\ लगाकर, या उसे कोष्ठक ( ), [ ] के अंदर रखकर, अगली पंक्ति में जारी रखा जा सकता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "total = 10 + 20 + \\\n        30 + 40\nprint(total)\nmarks = [90, 85,\n         78, 92]\nprint(marks)\n\nOutput:\n100\n[90, 85, 78, 92]",
+      "hi": "total = 10 + 20 + \\\n        30 + 40\nprint(total)\nmarks = [90, 85,\n         78, 92]\nprint(marks)\n\nआउटपुट:\n100\n[90, 85, 78, 92]"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Comment",
+       "hi": "Comment (टिप्पणी)"
+      },
+      "text": {
+       "en": "A note for humans that Python ignores. A single-line comment starts with #. Text inside triple quotes ''' ... ''' is often used as a multi-line note (docstring).",
+       "hi": "इंसानों के लिए नोट जिसे Python अनदेखा करता है। एक-पंक्ति comment # से शुरू होता है। ट्रिपल quotes ''' ... ''' के अंदर का टेक्स्ट अक्सर कई-पंक्ति नोट (docstring) के रूप में उपयोग होता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# This program finds the square of 7\nn = 7          # store the number\nprint(n * n)   # prints 49\n\nOutput:\n49",
+      "hi": "# This program finds the square of 7\nn = 7          # store the number\nprint(n * n)   # prints 49\n\nआउटपुट:\n49"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Indentation",
+       "hi": "Indentation (इंडेंटेशन)"
+      },
+      "text": {
+       "en": "Spaces at the start of a line. Python uses indentation (usually 4 spaces) to show which statements belong to a block, such as the body of an if or a loop. Wrong indentation gives an IndentationError.",
+       "hi": "पंक्ति की शुरुआत में खाली जगह। Python indentation (आमतौर पर 4 spaces) से दिखाता है कि कौन-से statement किसी block के हैं, जैसे if या loop का भाग। गलत indentation से IndentationError आती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Keyword",
+       "hi": "Keyword (कीवर्ड)"
+      },
+      "text": {
+       "en": "A reserved word with a special meaning in Python. Keywords cannot be used as variable names.",
+       "hi": "Python में विशेष अर्थ वाला आरक्षित शब्द। Keyword को variable के नाम के रूप में उपयोग नहीं किया जा सकता।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Python 3 (version 3.13, used to test this chapter) has 35 keywords: False, None, True, and, as, assert, async, await, break, class, continue, def, del, elif, else, except, finally, for, from, global, if, import, in, is, lambda, nonlocal, not, or, pass, raise, return, try, while, with, yield. Only True, False and None begin with a capital letter. The exact count can change slightly between versions; you can see the list with: import keyword, then print(keyword.kwlist).",
+      "hi": "Python 3 (संस्करण 3.13, जिससे इस अध्याय की जाँच हुई) में 35 keywords हैं: False, None, True, and, as, assert, async, await, break, class, continue, def, del, elif, else, except, finally, for, from, global, if, import, in, is, lambda, nonlocal, not, or, pass, raise, return, try, while, with, yield। केवल True, False और None बड़े अक्षर से शुरू होते हैं। संस्करणों के बीच संख्या थोड़ी बदल सकती है; सूची ऐसे देख सकते हैं: import keyword, फिर print(keyword.kwlist)।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Identifier",
+       "hi": "Identifier (आइडेंटिफ़ायर)"
+      },
+      "text": {
+       "en": "A name given to a variable, function or other object, such as marks, city_name or total2.",
+       "hi": "variable, function या अन्य वस्तु को दिया गया नाम, जैसे marks, city_name या total2।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "It may contain letters (A-Z, a-z), digits (0-9) and underscore _.",
+       "It must not begin with a digit: 2marks is invalid, marks2 is valid.",
+       "It cannot be a keyword: if, for, True are invalid names.",
+       "No spaces or special symbols such as @, $, %, -, !: my name and total-marks are invalid; use my_name.",
+       "Identifiers are case-sensitive: Age, age and AGE are three different names.",
+       "Good practice: choose meaningful names (price, not p) in lowercase with underscores."
+      ],
+      "hi": [
+       "इसमें अक्षर (A-Z, a-z), अंक (0-9) और underscore _ हो सकते हैं।",
+       "यह अंक से शुरू नहीं हो सकता: 2marks अमान्य है, marks2 मान्य है।",
+       "यह keyword नहीं हो सकता: if, for, True अमान्य नाम हैं।",
+       "कोई space या @, $, %, -, ! जैसे विशेष चिह्न नहीं: my name और total-marks अमान्य हैं; my_name उपयोग करें।",
+       "Identifier case-sensitive हैं: Age, age और AGE तीन अलग नाम हैं।",
+       "अच्छी आदत: अर्थपूर्ण नाम चुनें (price, p नहीं), छोटे अक्षरों में underscore के साथ।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which identifiers are valid? (a) student_name (b) 9class (c) _total (d) for (e) roll no (f) Marks2025 (g) price$",
+       "hi": "कौन-से identifier मान्य हैं? (a) student_name (b) 9class (c) _total (d) for (e) roll no (f) Marks2025 (g) price$"
+      },
+      "a": {
+       "en": "(a) valid. (b) invalid: starts with a digit. (c) valid: may start with underscore. (d) invalid: keyword. (e) invalid: contains a space. (f) valid. (g) invalid: $ is not allowed.",
+       "hi": "(a) मान्य। (b) अमान्य: अंक से शुरू। (c) मान्य: underscore से शुरू हो सकता है। (d) अमान्य: keyword है। (e) अमान्य: इसमें space है। (f) मान्य। (g) अमान्य: $ की अनुमति नहीं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.5 Variables and data types",
+    "hi": "7.5 Variable और data type"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Variable",
+       "hi": "Variable (वेरिएबल)"
+      },
+      "text": {
+       "en": "A named location that stores a value in the computer's memory. In Python a variable is created the moment you assign a value to it with =, and its value can change later.",
+       "hi": "कंप्यूटर की memory में मान रखने वाली नामित जगह। Python में variable उसी समय बन जाता है जब आप = से उसे मान देते हैं, और उसका मान बाद में बदल सकता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "city = 'Patna'\nrank = 3\ntemperature = 31.5\nprint(city, rank, temperature)\nrank = 1            # value changed\nprint('New rank:', rank)\na, b, c = 10, 20, 30 # multiple assignment\nx = y = 0            # same value to many\nprint(a, b, c, x, y)\n\nOutput:\nPatna 3 31.5\nNew rank: 1\n10 20 30 0 0",
+      "hi": "city = 'Patna'\nrank = 3\ntemperature = 31.5\nprint(city, rank, temperature)\nrank = 1            # value changed\nprint('New rank:', rank)\na, b, c = 10, 20, 30 # multiple assignment\nx = y = 0            # same value to many\nprint(a, b, c, x, y)\n\nआउटपुट:\nPatna 3 31.5\nNew rank: 1\n10 20 30 0 0"
+     }
+    },
+    {
+     "p": {
+      "en": "Python decides the type of the value automatically. The main data types in your syllabus are integer, float and string; Boolean is also needed for conditions. You can check the type of any value with type().",
+      "hi": "Python मान का type अपने-आप तय करता है। आपके पाठ्यक्रम के मुख्य data type integer, float और string हैं; शर्तों के लिए Boolean भी ज़रूरी है। किसी भी मान का type type() से देख सकते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Data type",
+        "Meaning",
+        "Examples"
+       ],
+       "hi": [
+        "Data type",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "int (integer)",
+         "Whole numbers, positive, negative or zero, with no decimal point",
+         "25, -7, 0, 2025"
+        ],
+        [
+         "float",
+         "Numbers with a decimal point",
+         "3.14, -0.5, 98.6, 5.0"
+        ],
+        [
+         "str (string)",
+         "Text: a sequence of characters inside single, double or triple quotes",
+         "'Ravi', \"Class 9\", '123'"
+        ],
+        [
+         "bool (Boolean)",
+         "Only two values, used for conditions",
+         "True, False"
+        ],
+        [
+         "list",
+         "An ordered, changeable collection in square brackets (section 7.11)",
+         "[10, 20, 30], ['a', 'b']"
+        ]
+       ],
+       "hi": [
+        [
+         "int (integer)",
+         "पूर्ण संख्याएँ, धनात्मक, ऋणात्मक या शून्य, बिना दशमलव",
+         "25, -7, 0, 2025"
+        ],
+        [
+         "float",
+         "दशमलव बिंदु वाली संख्याएँ",
+         "3.14, -0.5, 98.6, 5.0"
+        ],
+        [
+         "str (string)",
+         "टेक्स्ट: single, double या triple quotes के अंदर अक्षरों का क्रम",
+         "'Ravi', \"Class 9\", '123'"
+        ],
+        [
+         "bool (Boolean)",
+         "केवल दो मान, शर्तों में उपयोग",
+         "True, False"
+        ],
+        [
+         "list",
+         "वर्ग कोष्ठक में क्रमबद्ध, बदलने योग्य संग्रह (भाग 7.11)",
+         "[10, 20, 30], ['a', 'b']"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "print(type(25))\nprint(type(3.14))\nprint(type('Ravi'))\nprint(type('123'))\nprint(type(True))\nprint(type([1, 2, 3]))\n\nOutput:\n<class 'int'>\n<class 'float'>\n<class 'str'>\n<class 'str'>\n<class 'bool'>\n<class 'list'>",
+      "hi": "print(type(25))\nprint(type(3.14))\nprint(type('Ravi'))\nprint(type('123'))\nprint(type(True))\nprint(type([1, 2, 3]))\n\nआउटपुट:\n<class 'int'>\n<class 'float'>\n<class 'str'>\n<class 'str'>\n<class 'bool'>\n<class 'list'>"
+     }
+    },
+    {
+     "note": {
+      "en": "'123' in quotes is a string, not a number. '5' + '5' joins text to give '55', while 5 + 5 gives 10. Python also has other types you will meet later: complex numbers (2+3j), tuple, set and dictionary.",
+      "hi": "quotes में '123' string है, संख्या नहीं। '5' + '5' टेक्स्ट जोड़कर '55' देता है, जबकि 5 + 5 देता है 10। Python में और types भी हैं जो बाद में मिलेंगे: complex संख्याएँ (2+3j), tuple, set और dictionary।"
+     }
+    },
+    {
+     "formula": {
+      "en": "print('5' + '5')\nprint(5 + 5)\nname = 'Isha'\nprint('Hello ' + name)\nprint('Ha' * 3)\nprint(len(name))\n\nOutput:\n55\n10\nHello Isha\nHaHaHa\n4",
+      "hi": "print('5' + '5')\nprint(5 + 5)\nname = 'Isha'\nprint('Hello ' + name)\nprint('Ha' * 3)\nprint(len(name))\n\nआउटपुट:\n55\n10\nHello Isha\nHaHaHa\n4"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.6 Operators and expressions",
+    "hi": "7.6 Operator और expression"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Operator and operand",
+       "hi": "Operator और operand"
+      },
+      "text": {
+       "en": "An operator is a symbol that performs an operation (such as +). The values it works on are operands. In 7 + 3, + is the operator and 7 and 3 are operands.",
+       "hi": "Operator एक चिह्न है जो कोई क्रिया करता है (जैसे +)। जिन मानों पर वह काम करता है वे operand हैं। 7 + 3 में + operator है और 7 तथा 3 operand हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Expression",
+       "hi": "Expression (व्यंजक)"
+      },
+      "text": {
+       "en": "A combination of values, variables and operators that Python evaluates to a single value, such as (a + b) * 2 or marks >= 33.",
+       "hi": "मानों, variables और operators का मेल जिसे Python एक मान में हल करता है, जैसे (a + b) * 2 या marks >= 33।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Arithmetic operator",
+        "Meaning",
+        "Example (a = 17, b = 5)",
+        "Result"
+       ],
+       "hi": [
+        "अंकगणितीय operator",
+        "अर्थ",
+        "उदाहरण (a = 17, b = 5)",
+        "परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "+",
+         "Addition",
+         "a + b",
+         "22"
+        ],
+        [
+         "-",
+         "Subtraction",
+         "a - b",
+         "12"
+        ],
+        [
+         "*",
+         "Multiplication",
+         "a * b",
+         "85"
+        ],
+        [
+         "/",
+         "Division (always gives a float)",
+         "a / b",
+         "3.4"
+        ],
+        [
+         "//",
+         "Floor division (quotient, rounded down)",
+         "a // b",
+         "3"
+        ],
+        [
+         "%",
+         "Modulus (remainder)",
+         "a % b",
+         "2"
+        ],
+        [
+         "**",
+         "Exponent (power)",
+         "b ** 2",
+         "25"
+        ]
+       ],
+       "hi": [
+        [
+         "+",
+         "जोड़",
+         "a + b",
+         "22"
+        ],
+        [
+         "-",
+         "घटाव",
+         "a - b",
+         "12"
+        ],
+        [
+         "*",
+         "गुणा",
+         "a * b",
+         "85"
+        ],
+        [
+         "/",
+         "भाग (हमेशा float देता है)",
+         "a / b",
+         "3.4"
+        ],
+        [
+         "//",
+         "Floor division (भागफल, नीचे की ओर पूर्णांक)",
+         "a // b",
+         "3"
+        ],
+        [
+         "%",
+         "Modulus (शेषफल)",
+         "a % b",
+         "2"
+        ],
+        [
+         "**",
+         "घात (power)",
+         "b ** 2",
+         "25"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "a = 17\nb = 5\nprint(a + b, a - b, a * b)\nprint(a / b, a // b, a % b)\nprint(b ** 2, 10 / 2)\n\nOutput:\n22 12 85\n3.4 3 2\n25 5.0",
+      "hi": "a = 17\nb = 5\nprint(a + b, a - b, a * b)\nprint(a / b, a // b, a % b)\nprint(b ** 2, 10 / 2)\n\nआउटपुट:\n22 12 85\n3.4 3 2\n25 5.0"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Comparison operator",
+        "Meaning",
+        "Example (x = 10)",
+        "Result"
+       ],
+       "hi": [
+        "तुलना operator",
+        "अर्थ",
+        "उदाहरण (x = 10)",
+        "परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "==",
+         "equal to",
+         "x == 10",
+         "True"
+        ],
+        [
+         "!=",
+         "not equal to",
+         "x != 10",
+         "False"
+        ],
+        [
+         ">",
+         "greater than",
+         "x > 7",
+         "True"
+        ],
+        [
+         "<",
+         "less than",
+         "x < 7",
+         "False"
+        ],
+        [
+         ">=",
+         "greater than or equal to",
+         "x >= 10",
+         "True"
+        ],
+        [
+         "<=",
+         "less than or equal to",
+         "x <= 9",
+         "False"
+        ]
+       ],
+       "hi": [
+        [
+         "==",
+         "बराबर",
+         "x == 10",
+         "True"
+        ],
+        [
+         "!=",
+         "बराबर नहीं",
+         "x != 10",
+         "False"
+        ],
+        [
+         ">",
+         "से बड़ा",
+         "x > 7",
+         "True"
+        ],
+        [
+         "<",
+         "से छोटा",
+         "x < 7",
+         "False"
+        ],
+        [
+         ">=",
+         "से बड़ा या बराबर",
+         "x >= 10",
+         "True"
+        ],
+        [
+         "<=",
+         "से छोटा या बराबर",
+         "x <= 9",
+         "False"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "= stores a value (assignment); == compares two values. Writing if x = 5: is a SyntaxError; write if x == 5:.",
+      "hi": "= मान रखता है (assignment); == दो मानों की तुलना करता है। if x = 5: लिखना SyntaxError है; if x == 5: लिखें।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Logical operator",
+        "Result is True when...",
+        "Example",
+        "Result"
+       ],
+       "hi": [
+        "तार्किक operator",
+        "परिणाम True कब",
+        "उदाहरण",
+        "परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "and",
+         "both conditions are True",
+         "(5 > 3) and (2 > 4)",
+         "False"
+        ],
+        [
+         "or",
+         "at least one condition is True",
+         "(5 > 3) or (2 > 4)",
+         "True"
+        ],
+        [
+         "not",
+         "the condition is False (it reverses)",
+         "not (5 > 3)",
+         "False"
+        ]
+       ],
+       "hi": [
+        [
+         "and",
+         "दोनों शर्तें True हों",
+         "(5 > 3) and (2 > 4)",
+         "False"
+        ],
+        [
+         "or",
+         "कम से कम एक शर्त True हो",
+         "(5 > 3) or (2 > 4)",
+         "True"
+        ],
+        [
+         "not",
+         "शर्त False हो (उलट देता है)",
+         "not (5 > 3)",
+         "False"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Assignment operator",
+        "Example",
+        "Same as"
+       ],
+       "hi": [
+        "Assignment operator",
+        "उदाहरण",
+        "इसके बराबर"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "=",
+         "x = 5",
+         "store 5 in x"
+        ],
+        [
+         "+=",
+         "x += 3",
+         "x = x + 3"
+        ],
+        [
+         "-=",
+         "x -= 3",
+         "x = x - 3"
+        ],
+        [
+         "*=",
+         "x *= 3",
+         "x = x * 3"
+        ],
+        [
+         "/=",
+         "x /= 2",
+         "x = x / 2"
+        ],
+        [
+         "//=",
+         "x //= 2",
+         "x = x // 2"
+        ],
+        [
+         "%=",
+         "x %= 2",
+         "x = x % 2"
+        ],
+        [
+         "**=",
+         "x **= 2",
+         "x = x ** 2"
+        ]
+       ],
+       "hi": [
+        [
+         "=",
+         "x = 5",
+         "x में 5 रखें"
+        ],
+        [
+         "+=",
+         "x += 3",
+         "x = x + 3"
+        ],
+        [
+         "-=",
+         "x -= 3",
+         "x = x - 3"
+        ],
+        [
+         "*=",
+         "x *= 3",
+         "x = x * 3"
+        ],
+        [
+         "/=",
+         "x /= 2",
+         "x = x / 2"
+        ],
+        [
+         "//=",
+         "x //= 2",
+         "x = x // 2"
+        ],
+        [
+         "%=",
+         "x %= 2",
+         "x = x % 2"
+        ],
+        [
+         "**=",
+         "x **= 2",
+         "x = x ** 2"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "x = 10\nx += 5\nprint(x)\nx *= 2\nprint(x)\nx //= 4\nprint(x)\nx **= 2\nprint(x)\nage = 15\nprint(age >= 13 and age <= 19)\nprint(not age > 18)\n\nOutput:\n15\n30\n7\n49\nTrue\nTrue",
+      "hi": "x = 10\nx += 5\nprint(x)\nx *= 2\nprint(x)\nx //= 4\nprint(x)\nx **= 2\nprint(x)\nage = 15\nprint(age >= 13 and age <= 19)\nprint(not age > 18)\n\nआउटपुट:\n15\n30\n7\n49\nTrue\nTrue"
+     }
+    },
+    {
+     "p": {
+      "en": "Operator precedence (which operation is done first), from highest to lowest: brackets ( ) -> ** -> unary minus -> *, /, //, % -> +, - -> comparisons (==, !=, <, >, <=, >=) -> not -> and -> or -> assignment. Operators of equal precedence are done left to right, except ** which is done right to left. When in doubt, use brackets.",
+      "hi": "Operator precedence (कौन-सी क्रिया पहले होगी), सबसे ऊँची से सबसे नीची: कोष्ठक ( ) -> ** -> unary minus -> *, /, //, % -> +, - -> तुलना (==, !=, <, >, <=, >=) -> not -> and -> or -> assignment। समान precedence वाले operators बाएँ से दाएँ हल होते हैं, सिवाय ** के जो दाएँ से बाएँ होता है। संदेह हो तो कोष्ठक लगाएँ।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Evaluate: (a) 10 + 4 * 3 (b) (10 + 4) * 3 (c) 2 ** 3 ** 2 (d) 20 - 10 / 5 (e) 17 % 5 * 2",
+       "hi": "हल कीजिए: (a) 10 + 4 * 3 (b) (10 + 4) * 3 (c) 2 ** 3 ** 2 (d) 20 - 10 / 5 (e) 17 % 5 * 2"
+      },
+      "a": {
+       "en": "(a) * first: 4 * 3 = 12; 10 + 12 = 22.\n(b) Brackets first: 14 * 3 = 42.\n(c) ** is right to left: 3 ** 2 = 9; 2 ** 9 = 512.\n(d) / first: 10 / 5 = 2.0; 20 - 2.0 = 18.0 (a float, because / always gives a float).\n(e) % and * have equal precedence, left to right: 17 % 5 = 2; 2 * 2 = 4.",
+       "hi": "(a) * पहले: 4 * 3 = 12; 10 + 12 = 22।\n(b) कोष्ठक पहले: 14 * 3 = 42।\n(c) ** दाएँ से बाएँ: 3 ** 2 = 9; 2 ** 9 = 512।\n(d) / पहले: 10 / 5 = 2.0; 20 - 2.0 = 18.0 (float, क्योंकि / हमेशा float देता है)।\n(e) % और * की precedence समान, बाएँ से दाएँ: 17 % 5 = 2; 2 * 2 = 4।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.7 Type conversion",
+    "hi": "7.7 Type conversion (प्रकार परिवर्तन)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Type conversion",
+       "hi": "Type conversion"
+      },
+      "text": {
+       "en": "Changing a value from one data type to another. It is of two kinds: implicit (done automatically by Python) and explicit (done by the programmer using functions such as int(), float() and str(); also called type casting).",
+       "hi": "किसी मान को एक data type से दूसरे में बदलना। यह दो प्रकार का होता है: implicit (Python अपने-आप करता है) और explicit (प्रोग्रामर int(), float() और str() जैसे functions से करता है; इसे type casting भी कहते हैं)।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# Implicit conversion: int + float gives float\na = 7\nb = 2.5\nc = a + b\nprint(c, type(c))\nprint(True + 1)\n\nOutput:\n9.5 <class 'float'>\n2",
+      "hi": "# Implicit conversion: int + float gives float\na = 7\nb = 2.5\nc = a + b\nprint(c, type(c))\nprint(True + 1)\n\nआउटपुट:\n9.5 <class 'float'>\n2"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Explicit conversion (type casting)\nprint(int(9.8))        # decimal part is cut off\nprint(float(4))\nprint(int('25') + 5)\nprint(str(100) + ' marks')\nprint(float('3.5') * 2)\n\nOutput:\n9\n4.0\n30\n100 marks\n7.0",
+      "hi": "# Explicit conversion (type casting)\nprint(int(9.8))        # decimal part is cut off\nprint(float(4))\nprint(int('25') + 5)\nprint(str(100) + ' marks')\nprint(float('3.5') * 2)\n\nआउटपुट:\n9\n4.0\n30\n100 marks\n7.0"
+     }
+    },
+    {
+     "note": {
+      "en": "int() cuts off the decimal part; it does not round. int(9.8) is 9. int('9.8') gives a ValueError because the text is not a whole number; use float('9.8') instead. Python never converts a string to a number automatically: '5' + 5 gives a TypeError.",
+      "hi": "int() दशमलव भाग काट देता है; यह round नहीं करता। int(9.8) का मान 9 है। int('9.8') से ValueError आती है क्योंकि टेक्स्ट पूर्ण संख्या नहीं है; इसके बजाय float('9.8') उपयोग करें। Python string को कभी अपने-आप संख्या में नहीं बदलता: '5' + 5 से TypeError आती है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "print('5' + 5)\n\nOutput:\nTypeError: can only concatenate str (not \"int\") to str\n\nprint(int('9.8'))\n\nOutput:\nValueError: invalid literal for int() with base 10: '9.8'",
+      "hi": "print('5' + 5)\n\nआउटपुट:\nTypeError: can only concatenate str (not \"int\") to str\n\nprint(int('9.8'))\n\nआउटपुट:\nValueError: invalid literal for int() with base 10: '9.8'"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.8 Output and input: print() and input()",
+    "hi": "7.8 आउटपुट और इनपुट: print() और input()"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "print()",
+       "hi": "print()"
+      },
+      "text": {
+       "en": "A built-in function that displays values on the screen. Several values separated by commas are printed with a space between them. Optional sep sets the separator and end sets what is printed at the end (default: a new line).",
+       "hi": "built-in function जो स्क्रीन पर मान दिखाता है। comma से अलग किए कई मान बीच में space के साथ छपते हैं। वैकल्पिक sep विभाजक तय करता है और end तय करता है कि अंत में क्या छपे (default: नई पंक्ति)।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "print('Name:', 'Arjun', 'Class:', 9)\nprint('15', '08', '1947', sep='-')\nprint('Loading', end='...')\nprint('done')\nprint()                     # blank line\nprint('Line 1\\nLine 2')    # \\n = new line\n\nOutput:\nName: Arjun Class: 9\n15-08-1947\nLoading...done\n\nLine 1\nLine 2",
+      "hi": "print('Name:', 'Arjun', 'Class:', 9)\nprint('15', '08', '1947', sep='-')\nprint('Loading', end='...')\nprint('done')\nprint()                     # blank line\nprint('Line 1\\nLine 2')    # \\n = new line\n\nआउटपुट:\nName: Arjun Class: 9\n15-08-1947\nLoading...done\n\nLine 1\nLine 2"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "input()",
+       "hi": "input()"
+      },
+      "text": {
+       "en": "A built-in function that shows a message, waits for the user to type something and press Enter, and returns what was typed as a string (str). To use it as a number, convert it with int() or float().",
+       "hi": "built-in function जो संदेश दिखाता है, उपयोगकर्ता के कुछ टाइप करके Enter दबाने का इंतज़ार करता है, और टाइप किए को string (str) के रूप में लौटाता है। संख्या की तरह उपयोग करने के लिए उसे int() या float() से बदलें।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "name = input('Enter your name: ')\nage = int(input('Enter your age: '))\nprint('Hello', name)\nprint('Next year you will be', age + 1)\n\nSample run:\nEnter your name: Sonal\nEnter your age: 14\nHello Sonal\nNext year you will be 15",
+      "hi": "name = input('Enter your name: ')\nage = int(input('Enter your age: '))\nprint('Hello', name)\nprint('Next year you will be', age + 1)\n\nनमूना रन:\nEnter your name: Sonal\nEnter your age: 14\nHello Sonal\nNext year you will be 15"
+     }
+    },
+    {
+     "note": {
+      "en": "Mistake to avoid: a = input('Enter a number: ') followed by print(a + 5) gives a TypeError, because a is a string. Write a = int(input(...)). All 'sample runs' in this chapter show the user's typed values after the prompt.",
+      "hi": "बचने वाली गलती: a = input('Enter a number: ') के बाद print(a + 5) से TypeError आती है, क्योंकि a एक string है। a = int(input(...)) लिखें। इस अध्याय के सभी 'नमूना रन' में prompt के बाद उपयोगकर्ता द्वारा टाइप किए मान दिखाए गए हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.9 Flow of control: making decisions with if",
+    "hi": "7.9 नियंत्रण का प्रवाह: if से निर्णय लेना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Normally Python runs statements one after another from top to bottom; this is sequential flow. Two other kinds of flow let a program think: selection (choose what to do using a condition, with if) and iteration (repeat, with for and while). A condition is an expression that is either True or False.",
+      "hi": "सामान्यतः Python statements को ऊपर से नीचे एक के बाद एक चलाता है; यह sequential प्रवाह है। दो और प्रकार के प्रवाह प्रोग्राम को सोचने देते हैं: selection (शर्त से तय करना कि क्या करें, if से) और iteration (दोहराना, for और while से)। शर्त (condition) एक ऐसा expression है जो या तो True होता है या False।"
+     }
+    },
+    {
+     "formula": {
+      "en": "if condition:\n    statements run when condition is True\nelif another_condition:\n    statements run when this one is True\nelse:\n    statements run when no condition is True",
+      "hi": "if condition:\n    condition True होने पर चलने वाले statements\nelif another_condition:\n    यह True होने पर चलने वाले statements\nelse:\n    कोई भी शर्त True न होने पर चलने वाले statements"
+     }
+    },
+    {
+     "note": {
+      "en": "Rules: put a colon : at the end of the if, elif and else lines; indent the block under each by the same number of spaces (4 is standard); elif and else are optional; you can have many elif parts but only one else, and it comes last.",
+      "hi": "नियम: if, elif और else पंक्तियों के अंत में colon : लगाएँ; हर एक के नीचे का block समान spaces से indent करें (4 मानक है); elif और else वैकल्पिक हैं; elif कई हो सकते हैं पर else केवल एक, और वह सबसे अंत में आता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "1. Simple if: the block runs only when the condition is True.",
+      "hi": "1. सरल if: block केवल तब चलता है जब शर्त True हो।"
+     }
+    },
+    {
+     "formula": {
+      "en": "temperature = 41\nif temperature > 40:\n    print('Heatwave alert! Drink water.')\nprint('Have a good day.')\n\nOutput:\nHeatwave alert! Drink water.\nHave a good day.",
+      "hi": "temperature = 41\nif temperature > 40:\n    print('Heatwave alert! Drink water.')\nprint('Have a good day.')\n\nआउटपुट:\nHeatwave alert! Drink water.\nHave a good day."
+     }
+    },
+    {
+     "p": {
+      "en": "2. if-else: one of two blocks always runs. Program: is a person eligible to vote?",
+      "hi": "2. if-else: दो में से एक block हमेशा चलता है। प्रोग्राम: क्या व्यक्ति वोट देने योग्य है?"
+     }
+    },
+    {
+     "formula": {
+      "en": "age = int(input('Enter age: '))\nif age >= 18:\n    print('You are eligible to vote.')\nelse:\n    print('You are not eligible to vote yet.')\n    print('Wait', 18 - age, 'more year(s).')\n\nSample run:\nEnter age: 15\nYou are not eligible to vote yet.\nWait 3 more year(s).",
+      "hi": "age = int(input('Enter age: '))\nif age >= 18:\n    print('You are eligible to vote.')\nelse:\n    print('You are not eligible to vote yet.')\n    print('Wait', 18 - age, 'more year(s).')\n\nनमूना रन:\nEnter age: 15\nYou are not eligible to vote yet.\nWait 3 more year(s)."
+     }
+    },
+    {
+     "p": {
+      "en": "3. if-elif-else: checks conditions in order and runs the first block whose condition is True. Program: positive, negative or zero.",
+      "hi": "3. if-elif-else: शर्तों को क्रम से जाँचता है और पहला ऐसा block चलाता है जिसकी शर्त True हो। प्रोग्राम: धनात्मक, ऋणात्मक या शून्य।"
+     }
+    },
+    {
+     "formula": {
+      "en": "num = float(input('Enter a number: '))\nif num > 0:\n    print('Positive')\nelif num < 0:\n    print('Negative')\nelse:\n    print('Zero')\n\nSample run:\nEnter a number: -4\nNegative",
+      "hi": "num = float(input('Enter a number: '))\nif num > 0:\n    print('Positive')\nelif num < 0:\n    print('Negative')\nelse:\n    print('Zero')\n\nनमूना रन:\nEnter a number: -4\nNegative"
+     }
+    },
+    {
+     "p": {
+      "en": "Program: check a student's grade (using an example grading scale).",
+      "hi": "प्रोग्राम: छात्र का grade जाँचना (एक उदाहरण grading scale से)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "marks = int(input('Enter marks out of 100: '))\nif marks >= 90:\n    grade = 'A'\nelif marks >= 75:\n    grade = 'B'\nelif marks >= 60:\n    grade = 'C'\nelif marks >= 33:\n    grade = 'D'\nelse:\n    grade = 'E (needs improvement)'\nprint('Grade:', grade)\n\nSample run:\nEnter marks out of 100: 78\nGrade: B",
+      "hi": "marks = int(input('Enter marks out of 100: '))\nif marks >= 90:\n    grade = 'A'\nelif marks >= 75:\n    grade = 'B'\nelif marks >= 60:\n    grade = 'C'\nelif marks >= 33:\n    grade = 'D'\nelse:\n    grade = 'E (needs improvement)'\nprint('Grade:', grade)\n\nनमूना रन:\nEnter marks out of 100: 78\nGrade: B"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the grade program, why does 78 give 'B' and not 'C', although 78 >= 60 is also True?",
+       "hi": "grade प्रोग्राम में 78 पर 'B' क्यों आता है, 'C' क्यों नहीं, जबकि 78 >= 60 भी True है?"
+      },
+      "a": {
+       "en": "Step 1: Python checks marks >= 90: 78 >= 90 is False.\nStep 2: It checks marks >= 75: True, so grade = 'B'.\nStep 3: Once one branch runs, the remaining elif and else are skipped. So the order of conditions matters: put the highest range first.",
+       "hi": "चरण 1: Python जाँचता है marks >= 90: 78 >= 90 False है।\nचरण 2: फिर marks >= 75: True, इसलिए grade = 'B'।\nचरण 3: एक शाखा चलते ही बाकी elif और else छोड़ दिए जाते हैं। इसलिए शर्तों का क्रम ज़रूरी है: सबसे ऊँची सीमा पहले रखें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "4. Nested if: an if inside another if. Program: an even or odd check for positive numbers only.",
+      "hi": "4. Nested if: एक if के अंदर दूसरा if। प्रोग्राम: केवल धनात्मक संख्याओं के लिए सम या विषम जाँच।"
+     }
+    },
+    {
+     "formula": {
+      "en": "n = int(input('Enter a number: '))\nif n > 0:\n    if n % 2 == 0:\n        print(n, 'is positive and even')\n    else:\n        print(n, 'is positive and odd')\nelse:\n    print('Please enter a positive number')\n\nSample run:\nEnter a number: 7\n7 is positive and odd",
+      "hi": "n = int(input('Enter a number: '))\nif n > 0:\n    if n % 2 == 0:\n        print(n, 'is positive and even')\n    else:\n        print(n, 'is positive and odd')\nelse:\n    print('Please enter a positive number')\n\nनमूना रन:\nEnter a number: 7\n7 is positive and odd"
+     }
+    },
+    {
+     "p": {
+      "en": "Real-life example: a simple BMI checker for a school health camp (BMI = weight in kg divided by the square of height in metres).",
+      "hi": "वास्तविक उदाहरण: स्कूल स्वास्थ्य शिविर के लिए सरल BMI जाँच (BMI = kg में वज़न को मीटर में लंबाई के वर्ग से भाग)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "weight = 50      # kg\nheight = 1.6     # metres\nbmi = weight / height ** 2\nprint('BMI =', round(bmi, 1))\nif bmi < 18.5:\n    print('Underweight')\nelif bmi < 25:\n    print('Normal')\nelse:\n    print('Overweight')\n\nOutput:\nBMI = 19.5\nNormal",
+      "hi": "weight = 50      # kg\nheight = 1.6     # metres\nbmi = weight / height ** 2\nprint('BMI =', round(bmi, 1))\nif bmi < 18.5:\n    print('Underweight')\nelif bmi < 25:\n    print('Normal')\nelse:\n    print('Overweight')\n\nआउटपुट:\nBMI = 19.5\nNormal"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.10 Iteration: for and while loops",
+    "hi": "7.10 Iteration: for और while loop"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Loop",
+       "hi": "Loop (लूप)"
+      },
+      "text": {
+       "en": "A statement that repeats a block of code. Each repetition is called an iteration. Python has two loops: for (repeat over a sequence, a known number of times) and while (repeat as long as a condition stays True).",
+       "hi": "ऐसा statement जो कोड के किसी block को दोहराता है। हर दोहराव को iteration कहते हैं। Python में दो loop हैं: for (किसी क्रम पर, ज्ञात बार दोहराना) और while (जब तक शर्त True रहे तब तक दोहराना)।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "range()",
+       "hi": "range()"
+      },
+      "text": {
+       "en": "A function that produces a sequence of integers for a for loop. range(stop) gives 0 to stop-1; range(start, stop) gives start to stop-1; range(start, stop, step) moves by step. The stop value is never included.",
+       "hi": "for loop के लिए पूर्णांकों का क्रम बनाने वाला function। range(stop) 0 से stop-1 तक देता है; range(start, stop) start से stop-1 तक; range(start, stop, step) step के अंतर से चलता है। stop मान कभी शामिल नहीं होता।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "print(list(range(5)))\nprint(list(range(1, 6)))\nprint(list(range(2, 21, 2)))\nprint(list(range(10, 0, -3)))\n\nOutput:\n[0, 1, 2, 3, 4]\n[1, 2, 3, 4, 5]\n[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]\n[10, 7, 4, 1]",
+      "hi": "print(list(range(5)))\nprint(list(range(1, 6)))\nprint(list(range(2, 21, 2)))\nprint(list(range(10, 0, -3)))\n\nआउटपुट:\n[0, 1, 2, 3, 4]\n[1, 2, 3, 4, 5]\n[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]\n[10, 7, 4, 1]"
+     }
+    },
+    {
+     "p": {
+      "en": "Program: print the first 10 natural numbers.",
+      "hi": "प्रोग्राम: पहली 10 प्राकृतिक संख्याएँ छापना।"
+     }
+    },
+    {
+     "formula": {
+      "en": "for i in range(1, 11):\n    print(i, end=' ')\n\nOutput:\n1 2 3 4 5 6 7 8 9 10 ",
+      "hi": "for i in range(1, 11):\n    print(i, end=' ')\n\nआउटपुट:\n1 2 3 4 5 6 7 8 9 10 "
+     }
+    },
+    {
+     "p": {
+      "en": "Program: print the first 10 even numbers, and the table of 5 up to five terms.",
+      "hi": "प्रोग्राम: पहली 10 सम संख्याएँ, और 5 का पहाड़ा पाँच पदों तक।"
+     }
+    },
+    {
+     "formula": {
+      "en": "for i in range(1, 11):\n    print(2 * i, end=' ')\nprint()\nfor i in range(1, 6):\n    print('5 x', i, '=', 5 * i)\n\nOutput:\n2 4 6 8 10 12 14 16 18 20 \n5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25",
+      "hi": "for i in range(1, 11):\n    print(2 * i, end=' ')\nprint()\nfor i in range(1, 6):\n    print('5 x', i, '=', 5 * i)\n\nआउटपुट:\n2 4 6 8 10 12 14 16 18 20 \n5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25"
+     }
+    },
+    {
+     "p": {
+      "en": "Program: print the odd numbers from 1 to n.",
+      "hi": "प्रोग्राम: 1 से n तक की विषम संख्याएँ छापना।"
+     }
+    },
+    {
+     "formula": {
+      "en": "n = int(input('Enter n: '))\nfor i in range(1, n + 1, 2):\n    print(i, end=' ')\n\nSample run:\nEnter n: 15\n1 3 5 7 9 11 13 15 ",
+      "hi": "n = int(input('Enter n: '))\nfor i in range(1, n + 1, 2):\n    print(i, end=' ')\n\nनमूना रन:\nEnter n: 15\n1 3 5 7 9 11 13 15 "
+     }
+    },
+    {
+     "p": {
+      "en": "Program: sum of the first 10 natural numbers. A variable that collects a running total is called an accumulator; start it at 0.",
+      "hi": "प्रोग्राम: पहली 10 प्राकृतिक संख्याओं का योग। जो variable चलता हुआ योग जमा करता है उसे accumulator कहते हैं; उसे 0 से शुरू करें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "total = 0\nfor i in range(1, 11):\n    total = total + i\nprint('Sum =', total)\n\nOutput:\nSum = 55",
+      "hi": "total = 0\nfor i in range(1, 11):\n    total = total + i\nprint('Sum =', total)\n\nआउटपुट:\nSum = 55"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Trace the sum program for the first 4 iterations.",
+       "hi": "योग प्रोग्राम के पहले 4 iteration का trace कीजिए।"
+      },
+      "a": {
+       "en": "Start: total = 0.\ni = 1: total = 0 + 1 = 1\ni = 2: total = 1 + 2 = 3\ni = 3: total = 3 + 3 = 6\ni = 4: total = 6 + 4 = 10\n...continuing to i = 10 gives total = 55, which matches the formula n(n + 1)/2 = 10 x 11 / 2 = 55.",
+       "hi": "शुरुआत: total = 0।\ni = 1: total = 0 + 1 = 1\ni = 2: total = 1 + 2 = 3\ni = 3: total = 3 + 3 = 6\ni = 4: total = 6 + 4 = 10\n...i = 10 तक चलने पर total = 55 मिलता है, जो सूत्र n(n + 1)/2 = 10 x 11 / 2 = 55 से मेल खाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A for loop can also go through a string or a list directly, one item at a time.",
+      "hi": "for loop सीधे किसी string या list पर भी एक-एक तत्व लेकर चल सकता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "for letter in 'INDIA':\n    print(letter, end=' ')\nprint()\nfor city in ['Delhi', 'Pune', 'Kochi']:\n    print('Welcome to', city)\n\nOutput:\nI N D I A \nWelcome to Delhi\nWelcome to Pune\nWelcome to Kochi",
+      "hi": "for letter in 'INDIA':\n    print(letter, end=' ')\nprint()\nfor city in ['Delhi', 'Pune', 'Kochi']:\n    print('Welcome to', city)\n\nआउटपुट:\nI N D I A \nWelcome to Delhi\nWelcome to Pune\nWelcome to Kochi"
+     }
+    },
+    {
+     "p": {
+      "en": "The while loop checks its condition before every iteration. Something inside the loop must change the condition, otherwise the loop never stops (an infinite loop; press Ctrl + C to stop it).",
+      "hi": "while loop हर iteration से पहले अपनी शर्त जाँचता है। loop के अंदर कुछ ऐसा होना चाहिए जो शर्त बदले, वरना loop कभी नहीं रुकेगा (infinite loop; रोकने के लिए Ctrl + C दबाएँ)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "initialise\nwhile condition:\n    statements\n    update (change the variable)",
+      "hi": "आरंभिक मान दें\nwhile condition:\n    statements\n    update (variable बदलें)"
+     }
+    },
+    {
+     "formula": {
+      "en": "i = 1\nwhile i <= 5:\n    print('Iteration', i)\n    i = i + 1\nprint('Loop over, i is now', i)\n\nOutput:\nIteration 1\nIteration 2\nIteration 3\nIteration 4\nIteration 5\nLoop over, i is now 6",
+      "hi": "i = 1\nwhile i <= 5:\n    print('Iteration', i)\n    i = i + 1\nprint('Loop over, i is now', i)\n\nआउटपुट:\nIteration 1\nIteration 2\nIteration 3\nIteration 4\nIteration 5\nLoop over, i is now 6"
+     }
+    },
+    {
+     "p": {
+      "en": "Program: savings until a target. Riya saves ₹150 every week. How many weeks to reach ₹1000? Here we do not know the number of repetitions in advance, so while fits better.",
+      "hi": "प्रोग्राम: लक्ष्य तक बचत। रिया हर सप्ताह ₹150 बचाती है। ₹1000 तक पहुँचने में कितने सप्ताह? यहाँ दोहराव की संख्या पहले से पता नहीं, इसलिए while बेहतर है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "savings = 0\nweeks = 0\nwhile savings < 1000:\n    savings += 150\n    weeks += 1\nprint('Weeks needed:', weeks)\nprint('Savings: Rs', savings)\n\nOutput:\nWeeks needed: 7\nSavings: Rs 1050",
+      "hi": "savings = 0\nweeks = 0\nwhile savings < 1000:\n    savings += 150\n    weeks += 1\nprint('Weeks needed:', weeks)\nprint('Savings: Rs', savings)\n\nआउटपुट:\nWeeks needed: 7\nSavings: Rs 1050"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "for loop",
+        "while loop"
+       ],
+       "hi": [
+        "for loop",
+        "while loop"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Used when the number of repetitions is known or when going through a sequence",
+         "Used when repetition depends on a condition and the count is not known in advance"
+        ],
+        [
+         "The loop variable updates automatically",
+         "You must update the variable yourself"
+        ],
+        [
+         "Example: print a table up to 10 terms",
+         "Example: keep asking for a password until it is correct"
+        ]
+       ],
+       "hi": [
+        [
+         "जब दोहराव की संख्या ज्ञात हो या किसी क्रम पर चलना हो",
+         "जब दोहराव किसी शर्त पर निर्भर हो और संख्या पहले से ज्ञात न हो"
+        ],
+        [
+         "loop variable अपने-आप बदलता है",
+         "variable आपको खुद बदलना होता है"
+        ],
+        [
+         "उदाहरण: 10 पदों तक पहाड़ा छापना",
+         "उदाहरण: सही होने तक पासवर्ड पूछते रहना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Two extra keywords control loops: break stops the loop immediately, and continue skips the rest of the current iteration and goes to the next one.",
+      "hi": "दो अतिरिक्त keywords loop को नियंत्रित करते हैं: break loop को तुरंत रोक देता है, और continue वर्तमान iteration का बाकी भाग छोड़कर अगले पर चला जाता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "for i in range(1, 10):\n    if i == 6:\n        break\n    if i % 2 == 0:\n        continue\n    print(i)\n\nOutput:\n1\n3\n5",
+      "hi": "for i in range(1, 10):\n    if i == 6:\n        break\n    if i % 2 == 0:\n        continue\n    print(i)\n\nआउटपुट:\n1\n3\n5"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.11 Python lists",
+    "hi": "7.11 Python list"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "List",
+       "hi": "List (सूची)"
+      },
+      "text": {
+       "en": "An ordered, changeable (mutable) collection of items written inside square brackets [ ] and separated by commas. A list can hold items of different types and can even hold other lists (a nested list).",
+       "hi": "वर्ग कोष्ठक [ ] के अंदर comma से अलग लिखे तत्वों का क्रमबद्ध, बदलने योग्य (mutable) संग्रह। list में अलग-अलग type के तत्व हो सकते हैं और इसमें दूसरी lists भी हो सकती हैं (nested list)।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "marks = [78, 92, 65, 88]\nfruits = ['mango', 'banana', 'guava']\nmixed = ['Ravi', 14, 52.5, True]\nempty = []\nnested = [[1, 2], [3, 4]]\nprint(marks)\nprint(mixed)\nprint(len(fruits), len(empty))\nprint(nested[1])\n\nOutput:\n[78, 92, 65, 88]\n['Ravi', 14, 52.5, True]\n3 0\n[3, 4]",
+      "hi": "marks = [78, 92, 65, 88]\nfruits = ['mango', 'banana', 'guava']\nmixed = ['Ravi', 14, 52.5, True]\nempty = []\nnested = [[1, 2], [3, 4]]\nprint(marks)\nprint(mixed)\nprint(len(fruits), len(empty))\nprint(nested[1])\n\nआउटपुट:\n[78, 92, 65, 88]\n['Ravi', 14, 52.5, True]\n3 0\n[3, 4]"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Index",
+       "hi": "Index (इंडेक्स)"
+      },
+      "text": {
+       "en": "The position number of an item. Positive indexing starts at 0 from the left; negative indexing starts at -1 from the right.",
+       "hi": "किसी तत्व की स्थिति संख्या। Positive indexing बाईं ओर से 0 से शुरू होती है; negative indexing दाईं ओर से -1 से शुरू होती है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Item",
+        "'P'",
+        "'Y'",
+        "'T'",
+        "'H'",
+        "'O'",
+        "'N'"
+       ],
+       "hi": [
+        "तत्व",
+        "'P'",
+        "'Y'",
+        "'T'",
+        "'H'",
+        "'O'",
+        "'N'"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Positive index",
+         "0",
+         "1",
+         "2",
+         "3",
+         "4",
+         "5"
+        ],
+        [
+         "Negative index",
+         "-6",
+         "-5",
+         "-4",
+         "-3",
+         "-2",
+         "-1"
+        ]
+       ],
+       "hi": [
+        [
+         "Positive index",
+         "0",
+         "1",
+         "2",
+         "3",
+         "4",
+         "5"
+        ],
+        [
+         "Negative index",
+         "-6",
+         "-5",
+         "-4",
+         "-3",
+         "-2",
+         "-1"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "L = ['P', 'Y', 'T', 'H', 'O', 'N']\nprint(L[0], L[3], L[-1], L[-6])\nL[0] = 'J'           # lists are changeable\nprint(L)\n\nOutput:\nP H N P\n['J', 'Y', 'T', 'H', 'O', 'N']",
+      "hi": "L = ['P', 'Y', 'T', 'H', 'O', 'N']\nprint(L[0], L[3], L[-1], L[-6])\nL[0] = 'J'           # lists are changeable\nprint(L)\n\nआउटपुट:\nP H N P\n['J', 'Y', 'T', 'H', 'O', 'N']"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Slicing",
+       "hi": "Slicing (स्लाइसिंग)"
+      },
+      "text": {
+       "en": "Taking a part of a list with L[start:stop:step]. It includes start but stops before stop. Missing start means 'from the beginning'; missing stop means 'to the end'.",
+       "hi": "L[start:stop:step] से list का एक भाग लेना। इसमें start शामिल है पर stop से पहले रुक जाता है। start न लिखें तो 'शुरू से'; stop न लिखें तो 'अंत तक'।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "num = [23, 12, 5, 9, 65, 44]\nprint(num[1:4])\nprint(num[:3])\nprint(num[3:])\nprint(num[-4:-1])\nprint(num[::2])\nprint(num[::-1])\n\nOutput:\n[12, 5, 9]\n[23, 12, 5]\n[9, 65, 44]\n[5, 9, 65]\n[23, 5, 65]\n[44, 65, 9, 5, 12, 23]",
+      "hi": "num = [23, 12, 5, 9, 65, 44]\nprint(num[1:4])\nprint(num[:3])\nprint(num[3:])\nprint(num[-4:-1])\nprint(num[::2])\nprint(num[::-1])\n\nआउटपुट:\n[12, 5, 9]\n[23, 12, 5]\n[9, 65, 44]\n[5, 9, 65]\n[23, 5, 65]\n[44, 65, 9, 5, 12, 23]"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Operation",
+        "What it does",
+        "Example"
+       ],
+       "hi": [
+        "Operation",
+        "क्या करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "len(L)",
+         "Number of items",
+         "len([4, 7, 9]) -> 3"
+        ],
+        [
+         "L.append(x)",
+         "Adds x at the end",
+         "L.append('Jay')"
+        ],
+        [
+         "L.insert(i, x)",
+         "Inserts x at index i",
+         "L.insert(1, 'Riya')"
+        ],
+        [
+         "L.extend(L2)",
+         "Adds all items of L2 at the end",
+         "L.extend([14, 15])"
+        ],
+        [
+         "L.remove(x)",
+         "Removes the first item equal to x",
+         "L.remove('Vikram')"
+        ],
+        [
+         "L.pop(i)",
+         "Removes and returns the item at index i (the last item if i is not given)",
+         "L.pop(1)"
+        ],
+        [
+         "del L[i]",
+         "Deletes the item at index i",
+         "del L[0]"
+        ],
+        [
+         "L.sort()",
+         "Sorts in ascending order; L.sort(reverse=True) for descending",
+         "L.sort()"
+        ],
+        [
+         "L.reverse()",
+         "Reverses the order",
+         "L.reverse()"
+        ],
+        [
+         "L.index(x), L.count(x)",
+         "Position of x; how many times x appears",
+         "L.count(5)"
+        ],
+        [
+         "sum(L), max(L), min(L)",
+         "Total, largest, smallest (numbers)",
+         "sum([1, 2, 3]) -> 6"
+        ],
+        [
+         "L1 + L2, L * n, x in L",
+         "Join lists; repeat a list; check membership",
+         "[1] * 3 -> [1, 1, 1]"
+        ]
+       ],
+       "hi": [
+        [
+         "len(L)",
+         "तत्वों की संख्या",
+         "len([4, 7, 9]) -> 3"
+        ],
+        [
+         "L.append(x)",
+         "x को अंत में जोड़ता है",
+         "L.append('Jay')"
+        ],
+        [
+         "L.insert(i, x)",
+         "x को index i पर डालता है",
+         "L.insert(1, 'Riya')"
+        ],
+        [
+         "L.extend(L2)",
+         "L2 के सभी तत्व अंत में जोड़ता है",
+         "L.extend([14, 15])"
+        ],
+        [
+         "L.remove(x)",
+         "x के बराबर पहला तत्व हटाता है",
+         "L.remove('Vikram')"
+        ],
+        [
+         "L.pop(i)",
+         "index i वाला तत्व हटाकर लौटाता है (i न दें तो आखिरी)",
+         "L.pop(1)"
+        ],
+        [
+         "del L[i]",
+         "index i वाला तत्व मिटाता है",
+         "del L[0]"
+        ],
+        [
+         "L.sort()",
+         "आरोही क्रम में लगाता है; अवरोही के लिए L.sort(reverse=True)",
+         "L.sort()"
+        ],
+        [
+         "L.reverse()",
+         "क्रम उलट देता है",
+         "L.reverse()"
+        ],
+        [
+         "L.index(x), L.count(x)",
+         "x की स्थिति; x कितनी बार आता है",
+         "L.count(5)"
+        ],
+        [
+         "sum(L), max(L), min(L)",
+         "योग, सबसे बड़ा, सबसे छोटा (संख्याएँ)",
+         "sum([1, 2, 3]) -> 6"
+        ],
+        [
+         "L1 + L2, L * n, x in L",
+         "lists जोड़ना; list दोहराना; सदस्यता जाँचना",
+         "[1] * 3 -> [1, 1, 1]"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "L = [40, 10, 30]\nL.append(20)\nprint(L)\nL.insert(0, 5)\nprint(L)\nremoved = L.pop()\nprint(removed, L)\nL.sort()\nprint(L)\nL.reverse()\nprint(L)\nprint(sum(L), max(L), min(L))\nprint(30 in L, [1, 2] + [3], [0] * 4)\n\nOutput:\n[40, 10, 30, 20]\n[5, 40, 10, 30, 20]\n20 [5, 40, 10, 30]\n[5, 10, 30, 40]\n[40, 30, 10, 5]\n85 40 5\nTrue [1, 2, 3] [0, 0, 0, 0]",
+      "hi": "L = [40, 10, 30]\nL.append(20)\nprint(L)\nL.insert(0, 5)\nprint(L)\nremoved = L.pop()\nprint(removed, L)\nL.sort()\nprint(L)\nL.reverse()\nprint(L)\nprint(sum(L), max(L), min(L))\nprint(30 in L, [1, 2] + [3], [0] * 4)\n\nआउटपुट:\n[40, 10, 30, 20]\n[5, 40, 10, 30, 20]\n20 [5, 40, 10, 30]\n[5, 10, 30, 40]\n[40, 30, 10, 5]\n85 40 5\nTrue [1, 2, 3] [0, 0, 0, 0]"
+     }
+    },
+    {
+     "note": {
+      "en": "remove() needs the value, pop() and del need the index. If the value is not in the list, remove() gives a ValueError; an index beyond the end gives an IndexError.",
+      "hi": "remove() को मान चाहिए, pop() और del को index। अगर मान list में नहीं है तो remove() से ValueError आती है; अंत से आगे का index देने पर IndexError आती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.12 Practical file programs (CBSE suggested list)",
+    "hi": "7.12 Practical file के प्रोग्राम (CBSE सुझाई सूची)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The programs below cover the practical list suggested by CBSE for Class 9. Type each one, run it, and paste the code and output into your practical file (at least 15 programs are required). Try changing the values to see new results.",
+      "hi": "नीचे के प्रोग्राम कक्षा 9 के लिए CBSE की सुझाई practical सूची को कवर करते हैं। हर एक टाइप करें, चलाएँ, और कोड तथा आउटपुट अपनी practical file में लगाएँ (कम से कम 15 प्रोग्राम ज़रूरी हैं)। नए परिणाम देखने के लिए मान बदलकर देखें।"
+     }
+    },
+    {
+     "p": {
+      "en": "P1. Print personal information (name, father's name, class, school).",
+      "hi": "P1. व्यक्तिगत जानकारी छापना (नाम, पिता का नाम, कक्षा, स्कूल)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "print('Name          : Kavya Sharma')\nprint(\"Father's name : Mr. Rajesh Sharma\")\nprint('Class         : IX')\nprint('School        : Govt. Senior Secondary School, Ranchi')\n\nOutput:\nName          : Kavya Sharma\nFather's name : Mr. Rajesh Sharma\nClass         : IX\nSchool        : Govt. Senior Secondary School, Ranchi",
+      "hi": "print('Name          : Kavya Sharma')\nprint(\"Father's name : Mr. Rajesh Sharma\")\nprint('Class         : IX')\nprint('School        : Govt. Senior Secondary School, Ranchi')\n\nआउटपुट:\nName          : Kavya Sharma\nFather's name : Mr. Rajesh Sharma\nClass         : IX\nSchool        : Govt. Senior Secondary School, Ranchi"
+     }
+    },
+    {
+     "p": {
+      "en": "P2. Print a pattern using multiple print statements.",
+      "hi": "P2. कई print statements से पैटर्न छापना।"
+     }
+    },
+    {
+     "formula": {
+      "en": "print('*')\nprint('* *')\nprint('* * *')\nprint('* * * *')\n\nOutput:\n*\n* *\n* * *\n* * * *",
+      "hi": "print('*')\nprint('* *')\nprint('* * *')\nprint('* * * *')\n\nआउटपुट:\n*\n* *\n* * *\n* * * *"
+     }
+    },
+    {
+     "p": {
+      "en": "P3. Square of 7, sum of 15 and 20, and kilometres to metres.",
+      "hi": "P3. 7 का वर्ग, 15 और 20 का योग, और किलोमीटर से मीटर।"
+     }
+    },
+    {
+     "formula": {
+      "en": "print('Square of 7 =', 7 ** 2)\nprint('Sum of 15 and 20 =', 15 + 20)\nkm = 3.5\nprint(km, 'km =', km * 1000, 'm')\n\nOutput:\nSquare of 7 = 49\nSum of 15 and 20 = 35\n3.5 km = 3500.0 m",
+      "hi": "print('Square of 7 =', 7 ** 2)\nprint('Sum of 15 and 20 =', 15 + 20)\nkm = 3.5\nprint(km, 'km =', km * 1000, 'm')\n\nआउटपुट:\nSquare of 7 = 49\nSum of 15 and 20 = 35\n3.5 km = 3500.0 m"
+     }
+    },
+    {
+     "p": {
+      "en": "P4. Simple interest for principal 2000, rate 4.5% and time 10 years (SI = P x R x T / 100).",
+      "hi": "P4. मूलधन 2000, दर 4.5% और समय 10 वर्ष के लिए साधारण ब्याज (SI = P x R x T / 100)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "P = 2000\nR = 4.5\nT = 10\nSI = P * R * T / 100\nprint('Simple Interest =', SI)\nprint('Amount =', P + SI)\n\nOutput:\nSimple Interest = 900.0\nAmount = 2900.0",
+      "hi": "P = 2000\nR = 4.5\nT = 10\nSI = P * R * T / 100\nprint('Simple Interest =', SI)\nprint('Amount =', P + SI)\n\nआउटपुट:\nSimple Interest = 900.0\nAmount = 2900.0"
+     }
+    },
+    {
+     "p": {
+      "en": "P5. Area and perimeter of a rectangle (input).",
+      "hi": "P5. आयत का क्षेत्रफल और परिमाप (इनपुट)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "l = float(input('Enter length: '))\nb = float(input('Enter breadth: '))\nprint('Area =', l * b)\nprint('Perimeter =', 2 * (l + b))\n\nSample run:\nEnter length: 12\nEnter breadth: 7.5\nArea = 90.0\nPerimeter = 39.0",
+      "hi": "l = float(input('Enter length: '))\nb = float(input('Enter breadth: '))\nprint('Area =', l * b)\nprint('Perimeter =', 2 * (l + b))\n\nनमूना रन:\nEnter length: 12\nEnter breadth: 7.5\nArea = 90.0\nPerimeter = 39.0"
+     }
+    },
+    {
+     "p": {
+      "en": "P6. Area of a triangle from base and height (area = 1/2 x base x height).",
+      "hi": "P6. आधार और ऊँचाई से त्रिभुज का क्षेत्रफल (क्षेत्रफल = 1/2 x आधार x ऊँचाई)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "base = float(input('Enter base: '))\nheight = float(input('Enter height: '))\narea = 0.5 * base * height\nprint('Area of triangle =', area)\n\nSample run:\nEnter base: 10\nEnter height: 6\nArea of triangle = 30.0",
+      "hi": "base = float(input('Enter base: '))\nheight = float(input('Enter height: '))\narea = 0.5 * base * height\nprint('Area of triangle =', area)\n\nनमूना रन:\nEnter base: 10\nEnter height: 6\nArea of triangle = 30.0"
+     }
+    },
+    {
+     "p": {
+      "en": "P7. Average marks of three subjects.",
+      "hi": "P7. तीन विषयों के औसत अंक।"
+     }
+    },
+    {
+     "formula": {
+      "en": "eng = float(input('English marks: '))\nmaths = float(input('Maths marks: '))\nsci = float(input('Science marks: '))\navg = (eng + maths + sci) / 3\nprint('Average =', round(avg, 2))\n\nSample run:\nEnglish marks: 82\nMaths marks: 95\nScience marks: 88\nAverage = 88.33",
+      "hi": "eng = float(input('English marks: '))\nmaths = float(input('Maths marks: '))\nsci = float(input('Science marks: '))\navg = (eng + maths + sci) / 3\nprint('Average =', round(avg, 2))\n\nनमूना रन:\nEnglish marks: 82\nMaths marks: 95\nScience marks: 88\nAverage = 88.33"
+     }
+    },
+    {
+     "p": {
+      "en": "P8. Discounted amount, given the price and the discount percentage.",
+      "hi": "P8. मूल्य और छूट प्रतिशत देकर छूट के बाद राशि।"
+     }
+    },
+    {
+     "formula": {
+      "en": "price = float(input('Enter price: '))\ndisc = float(input('Enter discount %: '))\ndiscount = price * disc / 100\nprint('Discount =', discount)\nprint('Amount to pay =', price - discount)\n\nSample run:\nEnter price: 1200\nEnter discount %: 15\nDiscount = 180.0\nAmount to pay = 1020.0",
+      "hi": "price = float(input('Enter price: '))\ndisc = float(input('Enter discount %: '))\ndiscount = price * disc / 100\nprint('Discount =', discount)\nprint('Amount to pay =', price - discount)\n\nनमूना रन:\nEnter price: 1200\nEnter discount %: 15\nDiscount = 180.0\nAmount to pay = 1020.0"
+     }
+    },
+    {
+     "p": {
+      "en": "P9. Surface area and volume of a cuboid (TSA = 2(lb + bh + hl), V = l x b x h).",
+      "hi": "P9. घनाभ का पृष्ठीय क्षेत्रफल और आयतन (TSA = 2(lb + bh + hl), V = l x b x h)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "l = float(input('Length: '))\nb = float(input('Breadth: '))\nh = float(input('Height: '))\nprint('Surface area =', 2 * (l*b + b*h + h*l))\nprint('Volume =', l * b * h)\n\nSample run:\nLength: 5\nBreadth: 4\nHeight: 3\nSurface area = 94.0\nVolume = 60.0",
+      "hi": "l = float(input('Length: '))\nb = float(input('Breadth: '))\nh = float(input('Height: '))\nprint('Surface area =', 2 * (l*b + b*h + h*l))\nprint('Volume =', l * b * h)\n\nनमूना रन:\nLength: 5\nBreadth: 4\nHeight: 3\nSurface area = 94.0\nVolume = 60.0"
+     }
+    },
+    {
+     "p": {
+      "en": "P10. Science quiz list: print it, delete 'Vikram', add 'Jay' at the end, and remove the item at the second position.",
+      "hi": "P10. Science quiz list: उसे छापें, 'Vikram' हटाएँ, अंत में 'Jay' जोड़ें, और दूसरी स्थिति का तत्व हटाएँ।"
+     }
+    },
+    {
+     "formula": {
+      "en": "quiz = ['Arjun', 'Sonakshi', 'Vikram', 'Sandhya', 'Sonal', 'Isha', 'Kartik']\nprint(quiz)\nquiz.remove('Vikram')\nprint(quiz)\nquiz.append('Jay')\nprint(quiz)\ndel quiz[1]          # second position = index 1\nprint(quiz)\n\nOutput:\n['Arjun', 'Sonakshi', 'Vikram', 'Sandhya', 'Sonal', 'Isha', 'Kartik']\n['Arjun', 'Sonakshi', 'Sandhya', 'Sonal', 'Isha', 'Kartik']\n['Arjun', 'Sonakshi', 'Sandhya', 'Sonal', 'Isha', 'Kartik', 'Jay']\n['Arjun', 'Sandhya', 'Sonal', 'Isha', 'Kartik', 'Jay']",
+      "hi": "quiz = ['Arjun', 'Sonakshi', 'Vikram', 'Sandhya', 'Sonal', 'Isha', 'Kartik']\nprint(quiz)\nquiz.remove('Vikram')\nprint(quiz)\nquiz.append('Jay')\nprint(quiz)\ndel quiz[1]          # second position = index 1\nprint(quiz)\n\nआउटपुट:\n['Arjun', 'Sonakshi', 'Vikram', 'Sandhya', 'Sonal', 'Isha', 'Kartik']\n['Arjun', 'Sonakshi', 'Sandhya', 'Sonal', 'Isha', 'Kartik']\n['Arjun', 'Sonakshi', 'Sandhya', 'Sonal', 'Isha', 'Kartik', 'Jay']\n['Arjun', 'Sandhya', 'Sonal', 'Isha', 'Kartik', 'Jay']"
+     }
+    },
+    {
+     "p": {
+      "en": "P11. For num = [23, 12, 5, 9, 65, 44]: length, elements from the 2nd to 4th position (positive indexing) and from the 3rd to 5th position (negative indexing).",
+      "hi": "P11. num = [23, 12, 5, 9, 65, 44] के लिए: लंबाई, दूसरी से चौथी स्थिति तक के तत्व (positive indexing) और तीसरी से पाँचवीं स्थिति तक (negative indexing)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "num = [23, 12, 5, 9, 65, 44]\nprint('Length:', len(num))\nprint('2nd to 4th:', num[1:4])\nprint('3rd to 5th:', num[-4:-1])\n\nOutput:\nLength: 6\n2nd to 4th: [12, 5, 9]\n3rd to 5th: [5, 9, 65]",
+      "hi": "num = [23, 12, 5, 9, 65, 44]\nprint('Length:', len(num))\nprint('2nd to 4th:', num[1:4])\nprint('3rd to 5th:', num[-4:-1])\n\nआउटपुट:\nLength: 6\n2nd to 4th: [12, 5, 9]\n3rd to 5th: [5, 9, 65]"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Why is the 3rd to 5th position written num[-4:-1]?",
+       "hi": "तीसरी से पाँचवीं स्थिति को num[-4:-1] क्यों लिखा गया?"
+      },
+      "a": {
+       "en": "Step 1: The list has 6 items, so negative indexes are -6 (1st) to -1 (6th).\nStep 2: The 3rd item has index -4 and the 5th item has index -2.\nStep 3: A slice stops before the stop index, so to include -2 we write stop = -1.\nResult: num[-4:-1] = [5, 9, 65].",
+       "hi": "चरण 1: list में 6 तत्व हैं, इसलिए negative index -6 (पहला) से -1 (छठा) तक हैं।\nचरण 2: तीसरे तत्व का index -4 और पाँचवें का -2 है।\nचरण 3: slice stop index से पहले रुकता है, इसलिए -2 शामिल करने के लिए stop = -1 लिखते हैं।\nपरिणाम: num[-4:-1] = [5, 9, 65]।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "P12. Create a list of the first 10 even numbers, add 1 to each item and print the result.",
+      "hi": "P12. पहली 10 सम संख्याओं की list बनाएँ, हर तत्व में 1 जोड़ें और परिणाम छापें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "even = []\nfor i in range(1, 11):\n    even.append(2 * i)\nprint(even)\nfor i in range(len(even)):\n    even[i] = even[i] + 1\nprint(even)\n\nOutput:\n[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]\n[3, 5, 7, 9, 11, 13, 15, 17, 19, 21]",
+      "hi": "even = []\nfor i in range(1, 11):\n    even.append(2 * i)\nprint(even)\nfor i in range(len(even)):\n    even[i] = even[i] + 1\nprint(even)\n\nआउटपुट:\n[2, 4, 6, 8, 10, 12, 14, 16, 18, 20]\n[3, 5, 7, 9, 11, 13, 15, 17, 19, 21]"
+     }
+    },
+    {
+     "p": {
+      "en": "P13. Extend List_1 = [10, 20, 30, 40] with [14, 15, 12], sort in ascending order and print.",
+      "hi": "P13. List_1 = [10, 20, 30, 40] को [14, 15, 12] से बढ़ाएँ, आरोही क्रम में लगाएँ और छापें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "List_1 = [10, 20, 30, 40]\nList_1.extend([14, 15, 12])\nprint(List_1)\nList_1.sort()\nprint(List_1)\n\nOutput:\n[10, 20, 30, 40, 14, 15, 12]\n[10, 12, 14, 15, 20, 30, 40]",
+      "hi": "List_1 = [10, 20, 30, 40]\nList_1.extend([14, 15, 12])\nprint(List_1)\nList_1.sort()\nprint(List_1)\n\nआउटपुट:\n[10, 20, 30, 40, 14, 15, 12]\n[10, 12, 14, 15, 20, 30, 40]"
+     }
+    },
+    {
+     "p": {
+      "en": "P14. Sum of all numbers stored in a list (with a loop, and with sum()).",
+      "hi": "P14. list में रखी सभी संख्याओं का योग (loop से, और sum() से)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "runs = [45, 12, 78, 33, 90]   # a batsman's scores\ntotal = 0\nfor r in runs:\n    total += r\nprint('Total runs (loop):', total)\nprint('Total runs (sum):', sum(runs))\nprint('Average:', total / len(runs))\n\nOutput:\nTotal runs (loop): 258\nTotal runs (sum): 258\nAverage: 51.6",
+      "hi": "runs = [45, 12, 78, 33, 90]   # a batsman's scores\ntotal = 0\nfor r in runs:\n    total += r\nprint('Total runs (loop):', total)\nprint('Total runs (sum):', sum(runs))\nprint('Average:', total / len(runs))\n\nआउटपुट:\nTotal runs (loop): 258\nTotal runs (sum): 258\nAverage: 51.6"
+     }
+    },
+    {
+     "p": {
+      "en": "P15. Bonus - a tiny 'AI-style' rule-based chatbot using a while loop and if-elif. Real AI chatbots learn from data; this one only follows fixed rules, which shows the difference.",
+      "hi": "P15. बोनस - while loop और if-elif से एक छोटा 'AI जैसा' नियम-आधारित chatbot। असली AI chatbot डेटा से सीखते हैं; यह केवल तय नियम मानता है, जिससे अंतर समझ आता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "print('EduBot: Hi! Type bye to exit.')\nwhile True:\n    msg = input('You: ').lower()\n    if msg == 'bye':\n        print('EduBot: Goodbye! Keep learning.')\n        break\n    elif 'python' in msg:\n        print('EduBot: Python is great for AI!')\n    elif 'hello' in msg or 'hi' in msg:\n        print('EduBot: Hello! Ask me about Python.')\n    else:\n        print('EduBot: Sorry, I only know a few rules.')\n\nSample run:\nEduBot: Hi! Type bye to exit.\nYou: Hello\nEduBot: Hello! Ask me about Python.\nYou: Why learn Python?\nEduBot: Python is great for AI!\nYou: What is GST?\nEduBot: Sorry, I only know a few rules.\nYou: bye\nEduBot: Goodbye! Keep learning.",
+      "hi": "print('EduBot: Hi! Type bye to exit.')\nwhile True:\n    msg = input('You: ').lower()\n    if msg == 'bye':\n        print('EduBot: Goodbye! Keep learning.')\n        break\n    elif 'python' in msg:\n        print('EduBot: Python is great for AI!')\n    elif 'hello' in msg or 'hi' in msg:\n        print('EduBot: Hello! Ask me about Python.')\n    else:\n        print('EduBot: Sorry, I only know a few rules.')\n\nनमूना रन:\nEduBot: Hi! Type bye to exit.\nYou: Hello\nEduBot: Hello! Ask me about Python.\nYou: Why learn Python?\nEduBot: Python is great for AI!\nYou: What is GST?\nEduBot: Sorry, I only know a few rules.\nYou: bye\nEduBot: Goodbye! Keep learning."
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.13 Errors and debugging",
+    "hi": "7.13 Errors और debugging"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Bug and debugging",
+       "hi": "Bug और debugging"
+      },
+      "text": {
+       "en": "A bug is a mistake in a program; debugging is finding and fixing it. Python stops and prints an error message naming the error type and the line number.",
+       "hi": "Bug प्रोग्राम में गलती है; debugging उसे ढूँढना और ठीक करना है। Python रुक जाता है और error का प्रकार तथा पंक्ति संख्या बताने वाला संदेश छापता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Error",
+        "Cause",
+        "Example"
+       ],
+       "hi": [
+        "Error",
+        "कारण",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "SyntaxError",
+         "Breaking the grammar of Python: missing colon, bracket or quote",
+         "if x > 5 print(x)"
+        ],
+        [
+         "IndentationError",
+         "Missing or inconsistent spaces in a block",
+         "a line under if not indented"
+        ],
+        [
+         "NameError",
+         "Using a name that was never created or is misspelt",
+         "print(Marks) when the variable is marks"
+        ],
+        [
+         "TypeError",
+         "Operation on the wrong type",
+         "'5' + 5"
+        ],
+        [
+         "ValueError",
+         "Right type but unsuitable value",
+         "int('abc')"
+        ],
+        [
+         "ZeroDivisionError",
+         "Dividing by zero",
+         "10 / 0"
+        ],
+        [
+         "IndexError",
+         "List index beyond the end",
+         "[1, 2, 3][5]"
+        ]
+       ],
+       "hi": [
+        [
+         "SyntaxError",
+         "Python के व्याकरण का उल्लंघन: colon, कोष्ठक या quote छूटना",
+         "if x > 5 print(x)"
+        ],
+        [
+         "IndentationError",
+         "block में spaces का न होना या असमान होना",
+         "if के नीचे की पंक्ति indent न होना"
+        ],
+        [
+         "NameError",
+         "ऐसा नाम उपयोग करना जो बना ही नहीं या गलत लिखा",
+         "variable marks हो और print(Marks) लिखें"
+        ],
+        [
+         "TypeError",
+         "गलत type पर क्रिया",
+         "'5' + 5"
+        ],
+        [
+         "ValueError",
+         "सही type पर अनुचित मान",
+         "int('abc')"
+        ],
+        [
+         "ZeroDivisionError",
+         "शून्य से भाग",
+         "10 / 0"
+        ],
+        [
+         "IndexError",
+         "list के अंत से आगे का index",
+         "[1, 2, 3][5]"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "print(Marks)\n-> NameError: name 'Marks' is not defined. Did you mean: 'marks'?\n\nprint(10 / 0)\n-> ZeroDivisionError: division by zero\n\nprint([1, 2, 3][5])\n-> IndexError: list index out of range",
+      "hi": "print(Marks)\n-> NameError: name 'Marks' is not defined. Did you mean: 'marks'?\n\nprint(10 / 0)\n-> ZeroDivisionError: division by zero\n\nprint([1, 2, 3][5])\n-> IndexError: list index out of range"
+     }
+    },
+    {
+     "note": {
+      "en": "Logical errors are the hardest: the program runs but gives a wrong answer, for example writing avg = a + b + c / 3 instead of (a + b + c) / 3. Test programs with values whose answer you already know.",
+      "hi": "तार्किक errors सबसे कठिन हैं: प्रोग्राम चलता है पर गलत जवाब देता है, जैसे (a + b + c) / 3 के बजाय avg = a + b + c / 3 लिखना। प्रोग्रामों को ऐसे मानों से जाँचें जिनका उत्तर आपको पहले से पता हो।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Using = instead of == in a condition (if x = 5:). Fix: = assigns, == compares.",
+   "Forgetting the colon after if, elif, else, for or while. Fix: every such line ends with :.",
+   "Wrong or mixed indentation. Fix: indent every line of a block by the same 4 spaces; do not mix tabs and spaces.",
+   "Doing maths on input() directly. Fix: input() returns a string; use int(input()) or float(input()).",
+   "Thinking range(1, 10) includes 10. Fix: the stop value is excluded; use range(1, 11) for 1 to 10.",
+   "Counting list positions from 1. Fix: the first index is 0 and the last is -1; 'second position' is index 1.",
+   "Confusing remove() and pop(). Fix: remove(value) deletes by value; pop(index) deletes by position.",
+   "Writing a while loop that never changes its variable, creating an infinite loop. Fix: update the variable inside the loop.",
+   "Expecting / to give a whole number. Fix: / always gives a float (10 / 2 = 5.0); use // for the whole-number quotient.",
+   "Using keywords or spaces in names (for = 3, roll no = 5). Fix: follow identifier rules, e.g. roll_no."
+  ],
+  "hi": [
+   "शर्त में == के बजाय = लिखना (if x = 5:)। सुधार: = मान देता है, == तुलना करता है।",
+   "if, elif, else, for या while के बाद colon भूलना। सुधार: ऐसी हर पंक्ति : से खत्म होती है।",
+   "गलत या मिला-जुला indentation। सुधार: block की हर पंक्ति समान 4 spaces से indent करें; tab और space न मिलाएँ।",
+   "input() पर सीधे गणित करना। सुधार: input() string लौटाता है; int(input()) या float(input()) उपयोग करें।",
+   "यह सोचना कि range(1, 10) में 10 शामिल है। सुधार: stop मान शामिल नहीं होता; 1 से 10 के लिए range(1, 11) लिखें।",
+   "list की स्थितियाँ 1 से गिनना। सुधार: पहला index 0 और आखिरी -1 है; 'दूसरी स्थिति' index 1 है।",
+   "remove() और pop() में उलझना। सुधार: remove(value) मान से हटाता है; pop(index) स्थिति से।",
+   "ऐसा while loop लिखना जिसमें variable कभी नहीं बदलता, जिससे infinite loop बनता है। सुधार: loop के अंदर variable बदलें।",
+   "/ से पूर्ण संख्या की उम्मीद करना। सुधार: / हमेशा float देता है (10 / 2 = 5.0); पूर्ण भागफल के लिए // उपयोग करें।",
+   "नामों में keyword या space उपयोग करना (for = 3, roll no = 5)। सुधार: identifier के नियम मानें, जैसे roll_no।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Algorithm",
+    "hi": "Algorithm"
+   },
+   "d": {
+    "en": "Step-by-step instructions to solve a problem.",
+    "hi": "समस्या हल करने के चरण-दर-चरण निर्देश।"
+   }
+  },
+  {
+   "t": {
+    "en": "Flowchart",
+    "hi": "Flowchart"
+   },
+   "d": {
+    "en": "A diagram of an algorithm using standard shapes and arrows.",
+    "hi": "मानक आकृतियों और तीरों से बना algorithm का चित्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "Program",
+    "hi": "Program"
+   },
+   "d": {
+    "en": "An algorithm written in a programming language.",
+    "hi": "programming भाषा में लिखा algorithm।"
+   }
+  },
+  {
+   "t": {
+    "en": "CodeCombat",
+    "hi": "CodeCombat"
+   },
+   "d": {
+    "en": "A game website where players type real code to guide a hero through levels.",
+    "hi": "खेल वेबसाइट जिसमें खिलाड़ी असली कोड टाइप करके नायक को levels पार कराते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Python",
+    "hi": "Python"
+   },
+   "d": {
+    "en": "A free, high-level, interpreted language created by Guido van Rossum (1991), widely used in AI.",
+    "hi": "Guido van Rossum (1991) द्वारा बनाई मुफ़्त, high-level, interpreted भाषा, AI में बहुत उपयोगी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Interpreter",
+    "hi": "Interpreter"
+   },
+   "d": {
+    "en": "A program that runs code line by line.",
+    "hi": "प्रोग्राम जो कोड पंक्ति-दर-पंक्ति चलाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "IDLE",
+    "hi": "IDLE"
+   },
+   "d": {
+    "en": "Integrated Development and Learning Environment, Python's built-in editor and shell.",
+    "hi": "Integrated Development and Learning Environment, Python का built-in editor और shell।"
+   }
+  },
+  {
+   "t": {
+    "en": "Interactive mode",
+    "hi": "Interactive mode"
+   },
+   "d": {
+    "en": "Running one statement at a time at the >>> prompt.",
+    "hi": ">>> prompt पर एक बार में एक statement चलाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Script mode",
+    "hi": "Script mode"
+   },
+   "d": {
+    "en": "Writing a program in a .py file and running it all together.",
+    "hi": ".py फ़ाइल में प्रोग्राम लिखकर पूरा एक साथ चलाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Statement",
+    "hi": "Statement"
+   },
+   "d": {
+    "en": "A single instruction Python can execute.",
+    "hi": "एक निर्देश जिसे Python चला सकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Comment",
+    "hi": "Comment"
+   },
+   "d": {
+    "en": "A note starting with # that Python ignores.",
+    "hi": "# से शुरू नोट जिसे Python अनदेखा करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Indentation",
+    "hi": "Indentation"
+   },
+   "d": {
+    "en": "Spaces at the start of a line that mark a block.",
+    "hi": "पंक्ति की शुरुआत की spaces जो block बताती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Keyword",
+    "hi": "Keyword"
+   },
+   "d": {
+    "en": "A reserved word with special meaning, e.g. if, for, True.",
+    "hi": "विशेष अर्थ वाला आरक्षित शब्द, जैसे if, for, True।"
+   }
+  },
+  {
+   "t": {
+    "en": "Identifier",
+    "hi": "Identifier"
+   },
+   "d": {
+    "en": "A name for a variable or other object, following naming rules.",
+    "hi": "variable या अन्य वस्तु का नाम, नामकरण नियमों के अनुसार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Variable",
+    "hi": "Variable"
+   },
+   "d": {
+    "en": "A named memory location storing a value.",
+    "hi": "मान रखने वाली नामित memory जगह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data type",
+    "hi": "Data type"
+   },
+   "d": {
+    "en": "The kind of value: int, float, str, bool, list and others.",
+    "hi": "मान का प्रकार: int, float, str, bool, list आदि।"
+   }
+  },
+  {
+   "t": {
+    "en": "int",
+    "hi": "int"
+   },
+   "d": {
+    "en": "Whole-number data type.",
+    "hi": "पूर्ण संख्या data type।"
+   }
+  },
+  {
+   "t": {
+    "en": "float",
+    "hi": "float"
+   },
+   "d": {
+    "en": "Decimal-number data type.",
+    "hi": "दशमलव संख्या data type।"
+   }
+  },
+  {
+   "t": {
+    "en": "str",
+    "hi": "str"
+   },
+   "d": {
+    "en": "Text data type written in quotes.",
+    "hi": "quotes में लिखा टेक्स्ट data type।"
+   }
+  },
+  {
+   "t": {
+    "en": "bool",
+    "hi": "bool"
+   },
+   "d": {
+    "en": "Data type with values True and False.",
+    "hi": "True और False मान वाला data type।"
+   }
+  },
+  {
+   "t": {
+    "en": "Operator",
+    "hi": "Operator"
+   },
+   "d": {
+    "en": "A symbol that performs an operation on operands.",
+    "hi": "operands पर क्रिया करने वाला चिह्न।"
+   }
+  },
+  {
+   "t": {
+    "en": "Expression",
+    "hi": "Expression"
+   },
+   "d": {
+    "en": "A combination of values, variables and operators that gives a value.",
+    "hi": "मानों, variables और operators का मेल जो एक मान देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Operator precedence",
+    "hi": "Operator precedence"
+   },
+   "d": {
+    "en": "The order in which operators are evaluated.",
+    "hi": "वह क्रम जिसमें operators हल होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Type conversion",
+    "hi": "Type conversion"
+   },
+   "d": {
+    "en": "Changing a value's type, implicitly (automatic) or explicitly (int(), float(), str()).",
+    "hi": "मान का type बदलना, implicit (अपने-आप) या explicit (int(), float(), str())।"
+   }
+  },
+  {
+   "t": {
+    "en": "print()",
+    "hi": "print()"
+   },
+   "d": {
+    "en": "Function that displays output; sep and end control spacing and line ending.",
+    "hi": "आउटपुट दिखाने वाला function; sep और end spacing और पंक्ति-अंत नियंत्रित करते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "input()",
+    "hi": "input()"
+   },
+   "d": {
+    "en": "Function that reads what the user types and returns it as a string.",
+    "hi": "function जो उपयोगकर्ता का टाइप किया पढ़कर string के रूप में लौटाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Condition",
+    "hi": "Condition"
+   },
+   "d": {
+    "en": "An expression that is True or False.",
+    "hi": "ऐसा expression जो True या False हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "if-elif-else",
+    "hi": "if-elif-else"
+   },
+   "d": {
+    "en": "Statements that choose which block to run based on conditions.",
+    "hi": "statements जो शर्तों के आधार पर तय करते हैं कि कौन-सा block चले।"
+   }
+  },
+  {
+   "t": {
+    "en": "Loop / iteration",
+    "hi": "Loop / iteration"
+   },
+   "d": {
+    "en": "Repeating a block; each repetition is an iteration.",
+    "hi": "किसी block को दोहराना; हर दोहराव एक iteration है।"
+   }
+  },
+  {
+   "t": {
+    "en": "range()",
+    "hi": "range()"
+   },
+   "d": {
+    "en": "Function giving a sequence of integers, excluding the stop value.",
+    "hi": "पूर्णांकों का क्रम देने वाला function, stop मान को छोड़कर।"
+   }
+  },
+  {
+   "t": {
+    "en": "break / continue",
+    "hi": "break / continue"
+   },
+   "d": {
+    "en": "break exits a loop; continue skips to the next iteration.",
+    "hi": "break loop से बाहर निकालता है; continue अगले iteration पर जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "List",
+    "hi": "List"
+   },
+   "d": {
+    "en": "An ordered, changeable collection in [ ].",
+    "hi": "[ ] में क्रमबद्ध, बदलने योग्य संग्रह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Index",
+    "hi": "Index"
+   },
+   "d": {
+    "en": "Position of an item: 0 from the left, -1 from the right.",
+    "hi": "तत्व की स्थिति: बाएँ से 0, दाएँ से -1।"
+   }
+  },
+  {
+   "t": {
+    "en": "Slicing",
+    "hi": "Slicing"
+   },
+   "d": {
+    "en": "Taking part of a list with L[start:stop:step].",
+    "hi": "L[start:stop:step] से list का भाग लेना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bug / debugging",
+    "hi": "Bug / debugging"
+   },
+   "d": {
+    "en": "A program error / the process of finding and fixing it.",
+    "hi": "प्रोग्राम की गलती / उसे ढूँढने और ठीक करने की प्रक्रिया।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Who created Python? (a) Dennis Ritchie (b) Guido van Rossum (c) James Gosling (d) Charles Babbage",
+    "hi": "MCQ: Python किसने बनाई? (a) Dennis Ritchie (b) Guido van Rossum (c) James Gosling (d) Charles Babbage"
+   },
+   "a": {
+    "en": "(b) Guido van Rossum; first released in 1991.",
+    "hi": "(b) Guido van Rossum; पहली बार 1991 में जारी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is a valid identifier? (a) 1st_name (b) first name (c) first_name (d) if",
+    "hi": "MCQ: कौन-सा मान्य identifier है? (a) 1st_name (b) first name (c) first_name (d) if"
+   },
+   "a": {
+    "en": "(c) first_name. (a) starts with a digit, (b) has a space, (d) is a keyword.",
+    "hi": "(c) first_name। (a) अंक से शुरू, (b) में space, (d) keyword है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: What is the output of print(7 // 2, 7 % 2)? (a) 3.5 1 (b) 3 1 (c) 3 0 (d) 4 1",
+    "hi": "MCQ: print(7 // 2, 7 % 2) का आउटपुट क्या है? (a) 3.5 1 (b) 3 1 (c) 3 0 (d) 4 1"
+   },
+   "a": {
+    "en": "(b) 3 1: quotient 3, remainder 1.",
+    "hi": "(b) 3 1: भागफल 3, शेषफल 1।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The data type returned by input() is: (a) int (b) float (c) str (d) bool",
+    "hi": "MCQ: input() जो data type लौटाता है: (a) int (b) float (c) str (d) bool"
+   },
+   "a": {
+    "en": "(c) str. Convert with int() or float() for numbers.",
+    "hi": "(c) str। संख्याओं के लिए int() या float() से बदलें।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which list method adds an item at the end? (a) insert() (b) append() (c) pop() (d) sort()",
+    "hi": "MCQ: कौन-सी list method अंत में तत्व जोड़ती है? (a) insert() (b) append() (c) pop() (d) sort()"
+   },
+   "a": {
+    "en": "(b) append().",
+    "hi": "(b) append()।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (a) A single-line comment starts with ____. (b) Python files are saved with the extension ____. (c) The symbol for exponent is ____. (d) The first index of a list is ____.",
+    "hi": "रिक्त स्थान भरें: (a) एक-पंक्ति comment ____ से शुरू होता है। (b) Python फ़ाइलें ____ extension से save होती हैं। (c) घात का चिह्न ____ है। (d) list का पहला index ____ है।"
+   },
+   "a": {
+    "en": "(a) # (b) .py (c) ** (d) 0",
+    "hi": "(a) # (b) .py (c) ** (d) 0"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: (a) Python is case-sensitive. (b) range(5) includes 5. (c) A list can store items of different types. (d) 10 / 2 gives 5.",
+    "hi": "सही या गलत: (a) Python case-sensitive है। (b) range(5) में 5 शामिल है। (c) list में अलग-अलग type के तत्व हो सकते हैं। (d) 10 / 2 से 5 मिलता है।"
+   },
+   "a": {
+    "en": "(a) True. (b) False: 0 to 4. (c) True. (d) False: it gives 5.0, a float.",
+    "hi": "(a) सही। (b) गलत: 0 से 4। (c) सही। (d) गलत: इससे 5.0 मिलता है, एक float।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Give any four features of Python and any four applications.",
+    "hi": "Python की कोई चार विशेषताएँ और कोई चार उपयोग बताइए।"
+   },
+   "a": {
+    "en": "Features: easy to read, free and open source, interpreted, cross-platform, dynamically typed, large library (any four). Applications: AI/ML, data science, web development, games/GUI apps, automation, databases, robotics (any four).",
+    "hi": "विशेषताएँ: पढ़ने में आसान, मुफ़्त और open source, interpreted, cross-platform, dynamically typed, बड़ी library (कोई चार)। उपयोग: AI/ML, data science, web development, गेम/GUI app, automation, database, robotics (कोई चार)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between interactive mode and script mode.",
+    "hi": "interactive mode और script mode में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Interactive mode: one statement at a time at >>>, instant result, not saved, good for testing. Script mode: whole program in a .py file, saved and reusable, run with F5/Run Module, output only through print().",
+    "hi": "Interactive mode: >>> पर एक बार में एक statement, तुरंत परिणाम, save नहीं होता, परखने के लिए अच्छा। Script mode: पूरा प्रोग्राम .py फ़ाइल में, save और दोबारा उपयोग योग्य, F5/Run Module से चलता है, आउटपुट केवल print() से।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is type conversion? Explain implicit and explicit conversion with one example each.",
+    "hi": "type conversion क्या है? implicit और explicit conversion को एक-एक उदाहरण से समझाइए।"
+   },
+   "a": {
+    "en": "Type conversion changes a value from one type to another. Implicit: Python does it automatically, e.g. 7 + 2.5 gives 9.5 (int becomes float). Explicit (type casting): the programmer uses a function, e.g. int('25') + 5 gives 30.",
+    "hi": "Type conversion किसी मान को एक type से दूसरे में बदलता है। Implicit: Python अपने-आप करता है, जैसे 7 + 2.5 से 9.5 (int, float बन जाता है)। Explicit (type casting): प्रोग्रामर function उपयोग करता है, जैसे int('25') + 5 से 30।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Predict the output:\nL = [5, 8, 2]\nL.append(4)\nL.sort()\nprint(L, L[1], L[-1])",
+    "hi": "आउटपुट बताइए:\nL = [5, 8, 2]\nL.append(4)\nL.sort()\nprint(L, L[1], L[-1])"
+   },
+   "a": {
+    "en": "After append: [5, 8, 2, 4]; after sort: [2, 4, 5, 8].\nOutput: [2, 4, 5, 8] 4 8",
+    "hi": "append के बाद: [5, 8, 2, 4]; sort के बाद: [2, 4, 5, 8]।\nआउटपुट: [2, 4, 5, 8] 4 8"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Predict the output:\nfor i in range(3, 15, 4):\n    print(i, end=',')",
+    "hi": "आउटपुट बताइए:\nfor i in range(3, 15, 4):\n    print(i, end=',')"
+   },
+   "a": {
+    "en": "range(3, 15, 4) gives 3, 7, 11 (15 is excluded).\nOutput: 3,7,11,",
+    "hi": "range(3, 15, 4) से 3, 7, 11 मिलते हैं (15 शामिल नहीं)।\nआउटपुट: 3,7,11,"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Predict the output:\nn = 1\nwhile n < 50:\n    n = n * 3\nprint(n)",
+    "hi": "आउटपुट बताइए:\nn = 1\nwhile n < 50:\n    n = n * 3\nprint(n)"
+   },
+   "a": {
+    "en": "n goes 1 -> 3 -> 9 -> 27 -> 81; 81 < 50 is False, so the loop stops.\nOutput: 81",
+    "hi": "n का मान 1 -> 3 -> 9 -> 27 -> 81; 81 < 50 False है, इसलिए loop रुकता है।\nआउटपुट: 81"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find and correct the errors:\nMarks = input('Enter marks')\nif Marks >= 33\nprint('Pass')",
+    "hi": "गलतियाँ ढूँढकर ठीक कीजिए:\nMarks = input('Enter marks')\nif Marks >= 33\nprint('Pass')"
+   },
+   "a": {
+    "en": "1. input() returns a string; use int(input(...)).\n2. Colon missing after the if condition.\n3. print must be indented under if.\nCorrect:\nMarks = int(input('Enter marks: '))\nif Marks >= 33:\n    print('Pass')",
+    "hi": "1. input() string लौटाता है; int(input(...)) लिखें।\n2. if की शर्त के बाद colon छूटा है।\n3. print को if के नीचे indent करना है।\nसही:\nMarks = int(input('Enter marks: '))\nif Marks >= 33:\n    print('Pass')"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): print(int('7') + 3) prints 10. Reason (R): int() converts a string containing a whole number into an integer. Choose: (a) both true, R explains A (b) both true, R does not explain A (c) A true, R false (d) A false, R true.",
+    "hi": "अभिकथन (A): print(int('7') + 3) से 10 छपता है। कारण (R): int() पूर्ण संख्या वाली string को integer में बदलता है। चुनें: (a) दोनों सही, R, A की व्याख्या है (b) दोनों सही, R, A की व्याख्या नहीं (c) A सही, R गलत (d) A गलत, R सही।"
+   },
+   "a": {
+    "en": "(a) Both true; R explains A. Output: 10.",
+    "hi": "(a) दोनों सही; R, A की व्याख्या करता है। आउटपुट: 10।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): L[1:3] of L = [10, 20, 30, 40] gives [20, 30, 40]. Reason (R): slicing excludes the stop index. Choose (a)-(d) as above.",
+    "hi": "अभिकथन (A): L = [10, 20, 30, 40] का L[1:3] देता है [20, 30, 40]। कारण (R): slicing में stop index शामिल नहीं होता। ऊपर की तरह (a)-(d) चुनें।"
+   },
+   "a": {
+    "en": "(d) A is false, R is true. L[1:3] = [20, 30] because index 3 is excluded.",
+    "hi": "(d) A गलत, R सही। L[1:3] = [20, 30] क्योंकि index 3 शामिल नहीं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write a program that inputs a number and prints its multiplication table up to 10.",
+    "hi": "ऐसा प्रोग्राम लिखिए जो एक संख्या इनपुट करे और 10 तक उसका पहाड़ा छापे।"
+   },
+   "a": {
+    "en": "n = int(input('Enter a number: '))\nfor i in range(1, 11):\n    print(n, 'x', i, '=', n * i)\nFor input 7 the last line printed is: 7 x 10 = 70",
+    "hi": "n = int(input('Enter a number: '))\nfor i in range(1, 11):\n    print(n, 'x', i, '=', n * i)\nइनपुट 7 पर आखिरी छपी पंक्ति: 7 x 10 = 70"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write a program using a while loop to find the sum of digits of a number, e.g. 4721.",
+    "hi": "while loop से किसी संख्या, जैसे 4721, के अंकों का योग निकालने का प्रोग्राम लिखिए।"
+   },
+   "a": {
+    "en": "n = 4721\ns = 0\nwhile n > 0:\n    s = s + n % 10   # last digit\n    n = n // 10      # remove last digit\nprint('Sum of digits =', s)\nOutput: Sum of digits = 14 (4 + 7 + 2 + 1).",
+    "hi": "n = 4721\ns = 0\nwhile n > 0:\n    s = s + n % 10   # आखिरी अंक\n    n = n // 10      # आखिरी अंक हटाएँ\nprint('Sum of digits =', s)\nआउटपुट: Sum of digits = 14 (4 + 7 + 2 + 1)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write a program that stores the temperatures of a week in a list and prints the highest, the lowest, the average and how many days were above 35.",
+    "hi": "ऐसा प्रोग्राम लिखिए जो सप्ताह के तापमान list में रखे और सबसे अधिक, सबसे कम, औसत तथा 35 से ऊपर वाले दिनों की संख्या छापे।"
+   },
+   "a": {
+    "en": "temps = [34, 36, 38, 33, 35, 37, 31]\nprint('Highest:', max(temps))\nprint('Lowest:', min(temps))\nprint('Average:', round(sum(temps) / len(temps), 1))\nhot = 0\nfor t in temps:\n    if t > 35:\n        hot += 1\nprint('Days above 35:', hot)\nOutput:\nHighest: 38\nLowest: 31\nAverage: 34.9\nDays above 35: 3",
+    "hi": "temps = [34, 36, 38, 33, 35, 37, 31]\nprint('Highest:', max(temps))\nprint('Lowest:', min(temps))\nprint('Average:', round(sum(temps) / len(temps), 1))\nhot = 0\nfor t in temps:\n    if t > 35:\n        hot += 1\nprint('Days above 35:', hot)\nआउटपुट:\nHighest: 38\nLowest: 31\nAverage: 34.9\nDays above 35: 3"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: An electricity board charges ₹3 per unit for the first 100 units, ₹5 per unit for the next 100 units and ₹7 per unit above 200 units. Write a program to compute the bill for given units.",
+    "hi": "केस स्टडी: एक बिजली बोर्ड पहली 100 units के लिए ₹3 प्रति unit, अगली 100 units के लिए ₹5 प्रति unit और 200 units से ऊपर ₹7 प्रति unit लेता है। दी गई units के लिए बिल निकालने का प्रोग्राम लिखिए।"
+   },
+   "a": {
+    "en": "units = int(input('Units used: '))\nif units <= 100:\n    bill = units * 3\nelif units <= 200:\n    bill = 100 * 3 + (units - 100) * 5\nelse:\n    bill = 100 * 3 + 100 * 5 + (units - 200) * 7\nprint('Bill: Rs', bill)\nCheck for 250 units: 300 + 500 + 50 x 7 = 1150. Program output: Bill: Rs 1150",
+    "hi": "units = int(input('Units used: '))\nif units <= 100:\n    bill = units * 3\nelif units <= 200:\n    bill = 100 * 3 + (units - 100) * 5\nelse:\n    bill = 100 * 3 + 100 * 5 + (units - 200) * 7\nprint('Bill: Rs', bill)\n250 units के लिए जाँच: 300 + 500 + 50 x 7 = 1150। प्रोग्राम आउटपुट: Bill: Rs 1150"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain the three types of flow of control in Python with a small program for each.",
+    "hi": "दीर्घ उत्तर: Python में नियंत्रण प्रवाह के तीन प्रकार एक-एक छोटे प्रोग्राम के साथ समझाइए।"
+   },
+   "a": {
+    "en": "1. Sequential: statements run top to bottom. a = 5; b = 3; print(a + b) prints 8.\n2. Selection (if, if-else, if-elif-else): a condition chooses the block. if a > b: print('a is bigger') else: print('b is bigger') prints 'a is bigger'.\n3. Iteration (for, while): a block repeats. for i in range(3): print('Hi') prints Hi three times; i = 1; while i <= 3: print(i); i += 1 prints 1 2 3.\nIndentation marks the blocks, and every if/else/for/while line ends with a colon.",
+    "hi": "1. Sequential: statements ऊपर से नीचे चलते हैं। a = 5; b = 3; print(a + b) से 8 छपता है।\n2. Selection (if, if-else, if-elif-else): शर्त block चुनती है। if a > b: print('a is bigger') else: print('b is bigger') से 'a is bigger' छपता है।\n3. Iteration (for, while): block दोहराया जाता है। for i in range(3): print('Hi') से Hi तीन बार छपता है; i = 1; while i <= 3: print(i); i += 1 से 1 2 3 छपता है।\nIndentation block बताता है, और हर if/else/for/while पंक्ति colon से खत्म होती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity/thinking: P15 (EduBot) answers only fixed rules. How is it different from a Generative AI chatbot from Chapter 6? Suggest one way to make it 'learn'.",
+    "hi": "गतिविधि/सोच: P15 (EduBot) केवल तय नियमों से जवाब देता है। यह अध्याय 6 के जनरेटिव AI chatbot से कैसे अलग है? इसे 'सीखने' लायक बनाने का एक तरीका सुझाइए।"
+   },
+   "a": {
+    "en": "EduBot is rule-based: a programmer wrote every condition, so it cannot answer anything outside its rules and never improves. A generative chatbot is an LLM trained on huge text; it predicts new answers it was never explicitly given (and may hallucinate). One idea to make EduBot learn: when it does not know an answer, ask the user for a good reply and store the question-answer pair in a list (or file) so it can use it next time. That is a very simple form of learning from data.",
+    "hi": "EduBot नियम-आधारित है: हर शर्त प्रोग्रामर ने लिखी, इसलिए यह अपने नियमों से बाहर कुछ नहीं बता सकता और कभी नहीं सुधरता। जनरेटिव chatbot विशाल टेक्स्ट पर train किया LLM है; यह ऐसे नए जवाबों का अनुमान लगाता है जो उसे कभी सीधे नहीं दिए गए (और hallucinate भी कर सकता है)। EduBot को सिखाने का एक विचार: जब उसे जवाब न पता हो, तो उपयोगकर्ता से अच्छा जवाब पूछे और प्रश्न-उत्तर जोड़ी को list (या फ़ाइल) में रख ले ताकि अगली बार उपयोग कर सके। यह डेटा से सीखने का बहुत सरल रूप है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "An algorithm is step-by-step instructions; a flowchart draws it; a program writes it in a language such as Python. Games like CodeCombat teach coding ideas.",
+   "Python, created by Guido van Rossum (1991), is free, easy, interpreted, cross-platform and case-sensitive, and is the main language for AI.",
+   "Python runs in IDLE, online editors or phone apps, in interactive mode (>>>) or script mode (.py files).",
+   "Comments start with #; indentation marks blocks; keywords are reserved; identifiers follow naming rules.",
+   "Variables store values; main types are int, float, str and bool; type() shows the type.",
+   "Operators: arithmetic (+ - * / // % **), comparison (== != > < >= <=), logical (and or not) and assignment (= += -= ...), evaluated by precedence.",
+   "Type conversion is implicit (automatic, e.g. int + float) or explicit (int(), float(), str()).",
+   "print() shows output (sep, end); input() always returns a string, so convert it for numbers.",
+   "if, if-else, if-elif-else and nested if make decisions; the first True branch runs.",
+   "for loops repeat over a sequence or range() (stop excluded); while loops repeat while a condition is True and need an update.",
+   "Lists are ordered and changeable; index from 0 (or -1 from the end); slice with [start:stop:step].",
+   "List operations: len, append, insert, extend, remove, pop, del, sort, reverse, sum, max, min, in.",
+   "Common errors: SyntaxError, IndentationError, NameError, TypeError, ValueError, ZeroDivisionError, IndexError; also logical errors.",
+   "The practical file needs at least 15 programs on print, input, operators, if, loops and lists."
+  ],
+  "hi": [
+   "Algorithm चरण-दर-चरण निर्देश है; flowchart उसका चित्र है; program उसे Python जैसी भाषा में लिखता है। CodeCombat जैसे खेल coding के विचार सिखाते हैं।",
+   "Guido van Rossum (1991) द्वारा बनाई Python मुफ़्त, आसान, interpreted, cross-platform और case-sensitive है, और AI की मुख्य भाषा है।",
+   "Python IDLE, online editors या फ़ोन apps में, interactive mode (>>>) या script mode (.py फ़ाइलें) में चलती है।",
+   "Comment # से शुरू होते हैं; indentation block बताता है; keyword आरक्षित हैं; identifier नामकरण नियम मानते हैं।",
+   "Variable मान रखते हैं; मुख्य types int, float, str और bool हैं; type() type दिखाता है।",
+   "Operator: अंकगणितीय (+ - * / // % **), तुलना (== != > < >= <=), तार्किक (and or not) और assignment (= += -= ...), precedence के अनुसार हल होते हैं।",
+   "Type conversion implicit (अपने-आप, जैसे int + float) या explicit (int(), float(), str()) होता है।",
+   "print() आउटपुट दिखाता है (sep, end); input() हमेशा string लौटाता है, इसलिए संख्याओं के लिए बदलें।",
+   "if, if-else, if-elif-else और nested if निर्णय लेते हैं; पहली True शाखा चलती है।",
+   "for loop किसी क्रम या range() पर दोहराते हैं (stop शामिल नहीं); while loop शर्त True रहने तक दोहराते हैं और update चाहिए।",
+   "List क्रमबद्ध और बदलने योग्य हैं; index 0 से (या अंत से -1); [start:stop:step] से slice करें।",
+   "List operations: len, append, insert, extend, remove, pop, del, sort, reverse, sum, max, min, in।",
+   "सामान्य errors: SyntaxError, IndentationError, NameError, TypeError, ValueError, ZeroDivisionError, IndexError; साथ ही तार्किक errors।",
+   "Practical file में print, input, operators, if, loops और lists पर कम से कम 15 प्रोग्राम चाहिए।"
+  ]
+ }
+}

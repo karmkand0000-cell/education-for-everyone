@@ -1,0 +1,2052 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "10",
+ "id": "ch5",
+ "intro": {
+  "en": "Computer Vision (CV) is the domain of AI that lets machines see and understand images and videos - from unlocking your phone with your face to reading number plates at a toll plaza and spotting disease on a crop leaf. In this chapter you will learn what CV is and how it differs from image processing, its applications, the four CV tasks, how images are stored as pixels and numbers (grayscale and RGB), how features are found using convolution, and how a Convolutional Neural Network works layer by layer. You will also build no-code CV models using Teachable Machine and Orange Data Mining.",
+  "hi": "कंप्यूटर विज़न (CV) AI का वह क्षेत्र है जो मशीनों को तस्वीरें और वीडियो देखने और समझने देता है - चेहरे से फ़ोन अनलॉक करने से लेकर टोल प्लाज़ा पर नंबर प्लेट पढ़ने और फसल की पत्ती पर रोग पहचानने तक। इस अध्याय में आप सीखेंगे कि CV क्या है और यह इमेज प्रोसेसिंग से कैसे अलग है, इसके उपयोग, CV के चार कार्य, तस्वीरें पिक्सल और संख्याओं (ग्रेस्केल और RGB) के रूप में कैसे रखी जाती हैं, convolution से फ़ीचर कैसे ढूँढे जाते हैं, और Convolutional Neural Network परत-दर-परत कैसे काम करता है। आप Teachable Machine और Orange Data Mining से बिना कोड के CV मॉडल भी बनाएँगे।"
+ },
+ "learn": {
+  "en": [
+   "The meaning of Computer Vision and how it differs from image processing",
+   "Applications of CV in phones, transport, health, farming, sports, security and the environment",
+   "The four CV tasks: classification, classification + localisation, object detection and instance segmentation",
+   "Pixels, resolution and megapixels, with calculations",
+   "Pixel values (0-255), bytes and bits, grayscale and RGB images and channels",
+   "Image features (edges, corners, blobs) and why corners are the best features",
+   "The convolution operator, kernels, feature maps, stride and padding, with worked examples",
+   "The layers of a CNN: convolution, ReLU, pooling (max and average) and fully connected",
+   "No-code CV projects: a Smart Sorter in Teachable Machine and a coral-bleaching classifier in Orange",
+   "Challenges, bias, privacy and deepfakes in computer vision"
+  ],
+  "hi": [
+   "कंप्यूटर विज़न का अर्थ और यह इमेज प्रोसेसिंग से कैसे अलग है",
+   "फ़ोन, यातायात, स्वास्थ्य, खेती, खेल, सुरक्षा और पर्यावरण में CV के उपयोग",
+   "CV के चार कार्य: classification, classification + localisation, object detection और instance segmentation",
+   "पिक्सल, रेज़ोल्यूशन और मेगापिक्सल, गणना के साथ",
+   "पिक्सल मान (0-255), byte और bit, ग्रेस्केल और RGB तस्वीरें तथा channels",
+   "इमेज फ़ीचर (किनारे, कोने, ब्लॉब) और कोने सबसे अच्छे फ़ीचर क्यों हैं",
+   "Convolution ऑपरेटर, kernels, feature maps, stride और padding, हल किए उदाहरणों के साथ",
+   "CNN की परतें: convolution, ReLU, pooling (max और average) और fully connected",
+   "नो-कोड CV प्रोजेक्ट: Teachable Machine में Smart Sorter और Orange में coral-bleaching classifier",
+   "कंप्यूटर विज़न में चुनौतियाँ, पक्षपात, निजता और deepfakes"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "5.1 What is Computer Vision?",
+    "hi": "5.1 कंप्यूटर विज़न क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Look around you for five seconds. Without any effort you recognise your friend's face, read the words on the board, notice that the bus is moving and judge whether the road is safe to cross. Humans do this with their eyes and brain. Computer Vision (CV) is the domain of Artificial Intelligence that tries to give a similar ability to machines: to take in pictures or videos through a camera and make sense of them.",
+      "hi": "पाँच सेकंड के लिए अपने चारों ओर देखिए। बिना किसी मेहनत के आप अपने दोस्त का चेहरा पहचान लेते हैं, बोर्ड पर लिखे शब्द पढ़ लेते हैं, देख लेते हैं कि बस चल रही है, और तय कर लेते हैं कि सड़क पार करना सुरक्षित है या नहीं। इंसान यह काम अपनी आँखों और दिमाग से करते हैं। कंप्यूटर विज़न (Computer Vision या CV) Artificial Intelligence का वह क्षेत्र (domain) है जो मशीनों को ऐसी ही क्षमता देने की कोशिश करता है: कैमरे से तस्वीरें या वीडियो लेना और उनका अर्थ समझना।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Computer Vision",
+       "hi": "कंप्यूटर विज़न"
+      },
+      "text": {
+       "en": "Computer Vision is a domain of AI that enables machines to see, capture, process and analyse images and videos, and to take decisions or give outputs based on what they 'see'. The input is visual data; the output can be a label, a location, a count, a warning or an action.",
+       "hi": "कंप्यूटर विज़न AI का वह क्षेत्र है जो मशीनों को तस्वीरें और वीडियो देखने, कैप्चर करने, प्रोसेस करने और उनका विश्लेषण करने योग्य बनाता है, और जो वे 'देखती' हैं उसके आधार पर निर्णय लेने या आउटपुट देने में मदद करता है। इनपुट दृश्य (visual) डेटा होता है; आउटपुट कोई लेबल, कोई स्थान, कोई गिनती, कोई चेतावनी या कोई कार्य हो सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "In Class 9 and in Chapter 1 of this book you met the three main domains of AI: Data Science (working with numbers and tables), Computer Vision (working with images and video) and Natural Language Processing (working with text and speech). This chapter goes deep into the second domain. The next chapter covers the third.",
+      "hi": "कक्षा 9 में और इस किताब के अध्याय 1 में आपने AI के तीन मुख्य क्षेत्रों के बारे में पढ़ा: Data Science (संख्याओं और तालिकाओं के साथ काम), Computer Vision (तस्वीरों और वीडियो के साथ काम) और Natural Language Processing (पाठ और बोली के साथ काम)। यह अध्याय दूसरे क्षेत्र को गहराई से समझाता है। अगला अध्याय तीसरे क्षेत्र के बारे में है।"
+     }
+    },
+    {
+     "p": {
+      "en": "A camera alone is not Computer Vision. A CCTV camera that only records video is just a recording device. When software analyses that video to count people, read a number plate or raise an alarm when someone falls, it becomes Computer Vision. So CV = camera (or image) + intelligent analysis + useful output.",
+      "hi": "सिर्फ़ कैमरा होना कंप्यूटर विज़न नहीं है। जो CCTV कैमरा केवल वीडियो रिकॉर्ड करता है, वह बस एक रिकॉर्डिंग उपकरण है। जब कोई सॉफ़्टवेयर उस वीडियो का विश्लेषण करके लोगों को गिनता है, नंबर प्लेट पढ़ता है, या किसी के गिरने पर अलार्म बजाता है, तब वह कंप्यूटर विज़न बन जाता है। यानी CV = कैमरा (या तस्वीर) + बुद्धिमान विश्लेषण + उपयोगी आउटपुट।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Human vision",
+        "Computer Vision"
+       ],
+       "hi": [
+        "मानव दृष्टि",
+        "कंप्यूटर विज़न"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Eyes capture light",
+         "Camera or scanner captures the image"
+        ],
+        [
+         "Brain recognises shapes, faces, objects from experience",
+         "AI model recognises patterns it learnt from training data"
+        ],
+        [
+         "Learns from a lifetime of seeing",
+         "Learns from thousands or millions of labelled images"
+        ],
+        [
+         "Understands context easily (a toy car is not a real car)",
+         "May get confused by context, lighting, unusual angles"
+        ],
+        [
+         "Gets tired, can be distracted",
+         "Works non-stop and fast, but only on the task it was trained for"
+        ]
+       ],
+       "hi": [
+        [
+         "आँखें प्रकाश ग्रहण करती हैं",
+         "कैमरा या स्कैनर तस्वीर लेता है"
+        ],
+        [
+         "दिमाग अनुभव से आकृतियाँ, चेहरे, वस्तुएँ पहचानता है",
+         "AI मॉडल ट्रेनिंग डेटा से सीखे गए पैटर्न पहचानता है"
+        ],
+        [
+         "पूरी ज़िंदगी देखते-देखते सीखता है",
+         "हज़ारों या लाखों लेबल वाली तस्वीरों से सीखता है"
+        ],
+        [
+         "संदर्भ आसानी से समझता है (खिलौना कार असली कार नहीं है)",
+         "संदर्भ, रोशनी, अजीब कोणों से भ्रमित हो सकता है"
+        ],
+        [
+         "थकता है, ध्यान भटक सकता है",
+         "लगातार और तेज़ काम करता है, पर केवल उसी काम पर जिसके लिए उसे ट्रेन किया गया"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Computer Vision does not 'see' like we do. It only receives numbers (pixel values) and finds patterns in those numbers. You will understand this clearly in Sections 5.5 and 5.6.",
+      "hi": "याद रखें: कंप्यूटर विज़न हमारी तरह 'देखता' नहीं है। उसे केवल संख्याएँ (pixel values) मिलती हैं और वह उन संख्याओं में पैटर्न ढूँढता है। यह बात आप खंड 5.5 और 5.6 में साफ़ समझ जाएँगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.2 Computer Vision and Image Processing",
+    "hi": "5.2 कंप्यूटर विज़न और इमेज प्रोसेसिंग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Students often mix up Computer Vision with Image Processing. They are related, but they are not the same.",
+      "hi": "विद्यार्थी अक्सर कंप्यूटर विज़न और इमेज प्रोसेसिंग को एक ही समझ लेते हैं। दोनों आपस में जुड़े हैं, पर एक नहीं हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Image Processing",
+       "hi": "इमेज प्रोसेसिंग"
+      },
+      "text": {
+       "en": "Image processing means changing or enhancing an image to get a better or different image. Input = image, output = image. Examples: increasing brightness, cropping, removing noise, converting a colour photo to black and white, sharpening, applying a beauty filter.",
+       "hi": "इमेज प्रोसेसिंग का अर्थ है किसी तस्वीर को बदलना या सुधारना ताकि बेहतर या अलग तस्वीर मिले। इनपुट = तस्वीर, आउटपुट = तस्वीर। उदाहरण: चमक (brightness) बढ़ाना, क्रॉप करना, शोर (noise) हटाना, रंगीन फ़ोटो को श्वेत-श्याम बनाना, शार्प करना, ब्यूटी फ़िल्टर लगाना।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Image Processing",
+        "Computer Vision"
+       ],
+       "hi": [
+        "बिंदु",
+        "इमेज प्रोसेसिंग",
+        "कंप्यूटर विज़न"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Goal",
+         "Improve or transform the image",
+         "Understand the image and extract meaning"
+        ],
+        [
+         "Output",
+         "Another image",
+         "Information or a decision (label, box, count, alert)"
+        ],
+        [
+         "Example",
+         "Making a dark photo brighter",
+         "Telling that the photo shows a cow on the road"
+        ],
+        [
+         "Relation",
+         "Often used as a first step (pre-processing)",
+         "Uses image processing, then adds understanding"
+        ]
+       ],
+       "hi": [
+        [
+         "लक्ष्य",
+         "तस्वीर को सुधारना या बदलना",
+         "तस्वीर को समझना और उससे अर्थ निकालना"
+        ],
+        [
+         "आउटपुट",
+         "एक दूसरी तस्वीर",
+         "जानकारी या निर्णय (लेबल, बॉक्स, गिनती, चेतावनी)"
+        ],
+        [
+         "उदाहरण",
+         "अँधेरी फ़ोटो को उजला बनाना",
+         "बताना कि फ़ोटो में सड़क पर गाय है"
+        ],
+        [
+         "संबंध",
+         "अक्सर पहले चरण (pre-processing) के रूप में उपयोग",
+         "इमेज प्रोसेसिंग का उपयोग करके फिर समझ जोड़ता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A phone app first removes blur from a photo of a crop leaf and then says 'Early blight detected'. Which part is image processing and which part is computer vision?",
+       "hi": "एक फ़ोन ऐप पहले फसल की पत्ती की फ़ोटो का धुंधलापन हटाता है और फिर बताता है 'Early blight (अगेती झुलसा) पाया गया'। कौन-सा भाग इमेज प्रोसेसिंग है और कौन-सा कंप्यूटर विज़न?"
+      },
+      "a": {
+       "en": "Step 1: Removing blur gives a clearer image. Input image, output image, so this is image processing.\nStep 2: Deciding the leaf has early blight gives information, not an image. This is computer vision.\nStep 3: So the app uses image processing as pre-processing and computer vision for the final understanding.",
+       "hi": "चरण 1: धुंधलापन हटाने से साफ़ तस्वीर मिलती है। इनपुट तस्वीर, आउटपुट तस्वीर, इसलिए यह इमेज प्रोसेसिंग है।\nचरण 2: यह तय करना कि पत्ती में अगेती झुलसा है, जानकारी देता है, तस्वीर नहीं। यह कंप्यूटर विज़न है।\nचरण 3: इसलिए ऐप इमेज प्रोसेसिंग को pre-processing के रूप में और कंप्यूटर विज़न को अंतिम समझ के लिए उपयोग करता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.3 Applications of Computer Vision",
+    "hi": "5.3 कंप्यूटर विज़न के उपयोग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Computer Vision is already part of daily life in India. Here are the main application areas you should know, with examples.",
+      "hi": "कंप्यूटर विज़न भारत में पहले से ही रोज़मर्रा की ज़िंदगी का हिस्सा है। यहाँ मुख्य उपयोग-क्षेत्र दिए गए हैं जो आपको जानने चाहिए, उदाहरणों के साथ।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Facial recognition: phones unlock when they recognise the owner's face; some airports use face-based boarding (for example DigiYatra) so passengers can pass gates without showing paper documents; schools and offices may use face-based attendance.",
+       "Face filters: social media and camera apps find the eyes, nose and mouth (facial landmarks) in real time and place dog ears, glasses or make-up exactly on them, even when you move.",
+       "Google Lens and visual search: point the camera at a flower, a monument, a product or text in another language, and the app identifies it, searches for it or translates the text.",
+       "Automotive and self-driving: cars with driver-assistance systems use cameras to detect lanes, other vehicles, pedestrians and traffic signs; some warn a sleepy driver whose eyes close for too long.",
+       "Medical imaging: AI helps doctors look at X-rays, CT and MRI scans and retina images to spot signs of disease such as tuberculosis, fractures or diabetic eye disease. The doctor makes the final decision.",
+       "Agriculture: crop-disease apps identify pests and diseases from a photo of a leaf; drones count plants and check crop health over large fields.",
+       "Traffic and security: cameras read vehicle number plates (Automatic Number Plate Recognition) to issue e-challans or collect toll; CCTV analytics can count crowds at big events.",
+       "Retail and banking: self-checkout and stock-counting cameras, scanning a cheque or QR code, reading printed documents (OCR - Optical Character Recognition) to fill forms automatically.",
+       "Sports: ball-tracking systems in cricket (used for LBW reviews) and line-calling in tennis use multiple cameras and CV to track the ball.",
+       "Environment: satellite and underwater images are analysed to track forest cover, floods or coral bleaching (you will study a coral-bleaching project in Section 5.10)."
+      ],
+      "hi": [
+       "चेहरा पहचान (Facial recognition): फ़ोन मालिक का चेहरा पहचान कर अनलॉक होते हैं; कुछ हवाई अड्डे चेहरे के आधार पर बोर्डिंग (उदाहरण के लिए DigiYatra) का उपयोग करते हैं ताकि यात्री काग़ज़ दिखाए बिना गेट से निकल सकें; स्कूल और दफ़्तर चेहरे से हाज़िरी ले सकते हैं।",
+       "फ़ेस फ़िल्टर: सोशल मीडिया और कैमरा ऐप असल समय में आँख, नाक और मुँह (facial landmarks) ढूँढते हैं और कुत्ते के कान, चश्मा या मेकअप ठीक उन्हीं पर लगाते हैं, आपके हिलने पर भी।",
+       "Google Lens और दृश्य खोज: कैमरे को किसी फूल, स्मारक, सामान या किसी दूसरी भाषा के पाठ पर रखें, ऐप उसे पहचानता है, खोजता है या पाठ का अनुवाद करता है।",
+       "वाहन और स्वचालित ड्राइविंग: ड्राइवर-सहायता वाली कारें कैमरों से लेन, दूसरे वाहन, पैदल यात्री और ट्रैफ़िक संकेत पहचानती हैं; कुछ कारें नींद में ड्राइवर को चेतावनी देती हैं जिसकी आँखें ज़्यादा देर बंद रहें।",
+       "चिकित्सा इमेजिंग: AI डॉक्टरों को X-ray, CT, MRI स्कैन और रेटिना की तस्वीरें देखने में मदद करता है ताकि टीबी, हड्डी टूटना या डायबिटीज़ से आँख की बीमारी के संकेत पकड़े जा सकें। अंतिम निर्णय डॉक्टर लेते हैं।",
+       "कृषि: फसल-रोग ऐप पत्ती की फ़ोटो से कीट और रोग पहचानते हैं; ड्रोन बड़े खेतों में पौधे गिनते हैं और फसल की सेहत जाँचते हैं।",
+       "ट्रैफ़िक और सुरक्षा: कैमरे वाहनों की नंबर प्लेट पढ़ते हैं (Automatic Number Plate Recognition) ताकि e-challan जारी हो या टोल कटे; CCTV विश्लेषण बड़े आयोजनों में भीड़ गिन सकता है।",
+       "खुदरा व्यापार और बैंकिंग: सेल्फ़-चेकआउट और स्टॉक गिनने वाले कैमरे, चेक या QR कोड स्कैन करना, छपे दस्तावेज़ पढ़कर (OCR - Optical Character Recognition) फ़ॉर्म अपने-आप भरना।",
+       "खेल: क्रिकेट में बॉल-ट्रैकिंग (LBW रिव्यू के लिए) और टेनिस में लाइन-कॉलिंग कई कैमरों और CV से गेंद को ट्रैक करती है।",
+       "पर्यावरण: उपग्रह और पानी के नीचे की तस्वीरों का विश्लेषण करके वन क्षेत्र, बाढ़ या मूंगा विरंजन (coral bleaching) पर नज़र रखी जाती है (खंड 5.10 में आप coral bleaching प्रोजेक्ट पढ़ेंगे)।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: in medicine, traffic fines and security, a human must check important AI decisions. CV models can make mistakes, especially in poor light or with people and objects they did not see much during training.",
+      "hi": "याद रखें: चिकित्सा, ट्रैफ़िक जुर्माने और सुरक्षा में AI के महत्वपूर्ण निर्णयों को किसी इंसान को जाँचना चाहिए। CV मॉडल ग़लती कर सकते हैं, ख़ासकर कम रोशनी में या उन लोगों और वस्तुओं के साथ जिन्हें उन्होंने ट्रेनिंग में कम देखा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.4 Computer Vision Tasks",
+    "hi": "5.4 कंप्यूटर विज़न के कार्य (Tasks)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every CV application is built from a few basic tasks. CBSE groups them by whether the image has a single object or multiple objects. Imagine a photo of a street in Jaipur with one dog, two cars and three people.",
+      "hi": "हर CV उपयोग कुछ मूल कार्यों से बनता है। CBSE इन्हें इस आधार पर बाँटता है कि तस्वीर में एक वस्तु है या कई वस्तुएँ। जयपुर की एक गली की फ़ोटो की कल्पना कीजिए जिसमें एक कुत्ता, दो कारें और तीन लोग हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Group",
+        "Task",
+        "What it answers",
+        "Output"
+       ],
+       "hi": [
+        "समूह",
+        "कार्य",
+        "किस प्रश्न का उत्तर",
+        "आउटपुट"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Single object",
+         "Image classification",
+         "What is in this image?",
+         "One label for the whole image, e.g. 'dog'"
+        ],
+        [
+         "Single object",
+         "Classification + localisation",
+         "What is it and where is it?",
+         "Label + one bounding box around the object"
+        ],
+        [
+         "Multiple objects",
+         "Object detection",
+         "What objects are present and where is each?",
+         "Many labels, each with its own bounding box"
+        ],
+        [
+         "Multiple objects",
+         "Instance segmentation",
+         "Exactly which pixels belong to each object?",
+         "A pixel-level outline (mask) for every single object"
+        ]
+       ],
+       "hi": [
+        [
+         "एक वस्तु",
+         "Image classification (तस्वीर वर्गीकरण)",
+         "इस तस्वीर में क्या है?",
+         "पूरी तस्वीर के लिए एक लेबल, जैसे 'कुत्ता'"
+        ],
+        [
+         "एक वस्तु",
+         "Classification + localisation (वर्गीकरण + स्थान निर्धारण)",
+         "यह क्या है और कहाँ है?",
+         "लेबल + वस्तु के चारों ओर एक bounding box"
+        ],
+        [
+         "कई वस्तुएँ",
+         "Object detection (वस्तु पहचान)",
+         "कौन-कौन सी वस्तुएँ हैं और हर एक कहाँ है?",
+         "कई लेबल, हर एक का अपना bounding box"
+        ],
+        [
+         "कई वस्तुएँ",
+         "Instance segmentation (इंस्टेंस विभाजन)",
+         "कौन-से पिक्सल ठीक-ठीक किस वस्तु के हैं?",
+         "हर एक वस्तु की पिक्सल-स्तर की रूपरेखा (mask)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Image classification",
+       "hi": "Image classification"
+      },
+      "text": {
+       "en": "Assigning one label, from a fixed set of categories, to an entire input image. Example: a model sorts photos into 'cat' or 'dog', or a waste sorter decides 'plastic', 'paper' or 'metal'.",
+       "hi": "पूरी इनपुट तस्वीर को श्रेणियों के एक तय समूह में से एक लेबल देना। उदाहरण: मॉडल फ़ोटो को 'बिल्ली' या 'कुत्ता' में बाँटता है, या कचरा छाँटने वाला तय करता है 'प्लास्टिक', 'काग़ज़' या 'धातु'।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Classification + localisation",
+       "hi": "Classification + localisation"
+      },
+      "text": {
+       "en": "Identifying what the single main object is and also finding where it is in the image, usually by drawing a rectangle called a bounding box around it.",
+       "hi": "यह पहचानना कि एक मुख्य वस्तु क्या है और यह भी बताना कि वह तस्वीर में कहाँ है, आम तौर पर उसके चारों ओर एक आयत बनाकर जिसे bounding box कहते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Object detection",
+       "hi": "Object detection"
+      },
+      "text": {
+       "en": "Finding all instances of real-world objects such as faces, bicycles, cars or buildings in an image or video, labelling each and marking each with its own bounding box. It is used in self-driving cars, CCTV analytics and image retrieval.",
+       "hi": "किसी तस्वीर या वीडियो में चेहरे, साइकिल, कार या इमारत जैसी वास्तविक वस्तुओं के सभी उदाहरण ढूँढना, हर एक को लेबल देना और हर एक पर अलग bounding box लगाना। इसका उपयोग स्वचालित कारों, CCTV विश्लेषण और तस्वीर खोज (image retrieval) में होता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Instance segmentation",
+       "hi": "Instance segmentation"
+      },
+      "text": {
+       "en": "Detecting each object, labelling it, and marking the exact pixels that belong to it, so that two people standing together get two separate outlines. Segmentation means dividing an image into meaningful regions.",
+       "hi": "हर वस्तु को पहचानना, लेबल देना और उसके ठीक-ठीक पिक्सल चिह्नित करना, ताकि साथ खड़े दो लोगों की दो अलग रूपरेखाएँ बनें। Segmentation का अर्थ है तस्वीर को सार्थक भागों में बाँटना।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Extra (good to know): in semantic segmentation all pixels of the same class get the same colour, so three people become one 'person' region. In instance segmentation, each person gets a different colour. Segmentation is used to separate a tumour from healthy tissue in a scan, or to blur the background in video calls.",
+      "hi": "अतिरिक्त (जानना अच्छा है): semantic segmentation में एक ही वर्ग के सभी पिक्सल को एक ही रंग मिलता है, यानी तीन लोग मिलकर एक 'व्यक्ति' क्षेत्र बन जाते हैं। Instance segmentation में हर व्यक्ति को अलग रंग मिलता है। Segmentation का उपयोग स्कैन में ट्यूमर को स्वस्थ ऊतक से अलग करने, या वीडियो कॉल में पृष्ठभूमि धुंधली करने में होता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Name the CV task: (a) An app tells you 'This is a mango leaf'. (b) A toll camera draws boxes around every vehicle in the frame and labels each 'car', 'truck' or 'bike'. (c) A photo editor cuts out exactly the outline of each of three friends to remove the background. (d) An app shows 'Taj Mahal' and draws a box around the monument.",
+       "hi": "CV कार्य का नाम बताइए: (a) ऐप बताता है 'यह आम की पत्ती है'। (b) टोल कैमरा फ़्रेम में हर वाहन पर बॉक्स बनाकर उसे 'कार', 'ट्रक' या 'बाइक' लेबल देता है। (c) फ़ोटो एडिटर तीनों दोस्तों में से हर एक की ठीक रूपरेखा काटकर पृष्ठभूमि हटाता है। (d) ऐप 'ताज महल' दिखाता है और स्मारक के चारों ओर बॉक्स बनाता है।"
+      },
+      "a": {
+       "en": "(a) One label for the whole image: image classification.\n(b) Many objects, each with a box and label: object detection.\n(c) Exact pixel outline for each separate person: instance segmentation.\n(d) One object, its label and one box: classification + localisation.",
+       "hi": "(a) पूरी तस्वीर का एक लेबल: image classification।\n(b) कई वस्तुएँ, हर एक का बॉक्स और लेबल: object detection।\n(c) हर अलग व्यक्ति की ठीक पिक्सल रूपरेखा: instance segmentation।\n(d) एक वस्तु, उसका लेबल और एक बॉक्स: classification + localisation।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.5 Basics of Images: Pixels and Resolution",
+    "hi": "5.5 तस्वीरों की मूल बातें: पिक्सल और रेज़ोल्यूशन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To a computer, a digital image is not a picture; it is a grid of tiny squares. Zoom into any photo on your phone again and again: it becomes blocky, and you finally see small coloured squares. Each square is a pixel.",
+      "hi": "कंप्यूटर के लिए डिजिटल तस्वीर कोई चित्र नहीं, बल्कि छोटे-छोटे वर्गों का एक जाल (grid) है। अपने फ़ोन पर किसी फ़ोटो को बार-बार ज़ूम कीजिए: वह खंडों में बँटी दिखने लगती है और अंत में आपको छोटे रंगीन वर्ग दिखते हैं। हर वर्ग एक पिक्सल है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Pixel",
+       "hi": "पिक्सल (Pixel)"
+      },
+      "text": {
+       "en": "The word pixel comes from 'picture element'. A pixel is the smallest unit of a digital image. Each pixel shows only one colour. Pixels are arranged in rows and columns (a 2-D grid) to make the full image.",
+       "hi": "पिक्सल शब्द 'picture element' (चित्र तत्व) से बना है। पिक्सल डिजिटल तस्वीर की सबसे छोटी इकाई है। हर पिक्सल केवल एक रंग दिखाता है। पिक्सल पंक्तियों और स्तंभों (2-D जाल) में सजे होते हैं और मिलकर पूरी तस्वीर बनाते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Resolution",
+       "hi": "रेज़ोल्यूशन (Resolution)"
+      },
+      "text": {
+       "en": "Resolution is the number of pixels in an image. It is written as width × height, for example 1280 × 720, meaning 1280 pixels across (columns) and 720 pixels down (rows). It is also expressed in megapixels: 1 megapixel = about one million pixels.",
+       "hi": "रेज़ोल्यूशन तस्वीर में पिक्सल की संख्या है। इसे चौड़ाई × ऊँचाई के रूप में लिखा जाता है, जैसे 1280 × 720, यानी आड़े 1280 पिक्सल (स्तंभ) और खड़े 720 पिक्सल (पंक्तियाँ)। इसे मेगापिक्सल में भी बताते हैं: 1 मेगापिक्सल = लगभग दस लाख पिक्सल।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Total pixels = width × height\nMegapixels = total pixels ÷ 1,000,000",
+      "hi": "कुल पिक्सल = चौड़ाई × ऊँचाई\nमेगापिक्सल = कुल पिक्सल ÷ 10,00,000"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A phone camera takes photos of 4000 × 3000 pixels. How many pixels are there, and how many megapixels is this?",
+       "hi": "एक फ़ोन कैमरा 4000 × 3000 पिक्सल की फ़ोटो लेता है। कुल कितने पिक्सल हैं, और यह कितने मेगापिक्सल है?"
+      },
+      "a": {
+       "en": "Step 1: Total pixels = 4000 × 3000 = 12,000,000.\nStep 2: Megapixels = 12,000,000 ÷ 1,000,000 = 12.\nAnswer: 12 million pixels, i.e. a 12 MP camera.",
+       "hi": "चरण 1: कुल पिक्सल = 4000 × 3000 = 1,20,00,000।\nचरण 2: मेगापिक्सल = 1,20,00,000 ÷ 10,00,000 = 12।\nउत्तर: 1.2 करोड़ पिक्सल, यानी 12 MP कैमरा।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Image A is 640 × 480 and image B is 1920 × 1080. Which has higher resolution and by how many times (approximately)?",
+       "hi": "तस्वीर A 640 × 480 की है और तस्वीर B 1920 × 1080 की। किसका रेज़ोल्यूशन अधिक है और लगभग कितने गुना?"
+      },
+      "a": {
+       "en": "Step 1: A = 640 × 480 = 307,200 pixels.\nStep 2: B = 1920 × 1080 = 2,073,600 pixels.\nStep 3: 2,073,600 ÷ 307,200 = 6.75.\nAnswer: B has higher resolution, about 6.75 times as many pixels.",
+       "hi": "चरण 1: A = 640 × 480 = 3,07,200 पिक्सल।\nचरण 2: B = 1920 × 1080 = 20,73,600 पिक्सल।\nचरण 3: 20,73,600 ÷ 3,07,200 = 6.75।\nउत्तर: B का रेज़ोल्यूशन अधिक है, लगभग 6.75 गुना पिक्सल।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: more pixels show finer details, but also make the file bigger and the AI slower. That is why many CV models first resize every image to a small fixed size (for example 224 × 224) before processing.",
+      "hi": "याद रखें: अधिक पिक्सल बारीक विवरण दिखाते हैं, पर फ़ाइल बड़ी और AI धीमा भी करते हैं। इसीलिए कई CV मॉडल प्रोसेसिंग से पहले हर तस्वीर को एक छोटे तय आकार (जैसे 224 × 224) में बदल देते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.6 Pixel Values, Grayscale and RGB Images",
+    "hi": "5.6 पिक्सल मान, ग्रेस्केल और RGB तस्वीरें"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Computers store everything as numbers in binary (0s and 1s). So every pixel's colour or brightness must also be stored as a number. This number is called the pixel value.",
+      "hi": "कंप्यूटर सब कुछ बाइनरी (0 और 1) में संख्याओं के रूप में रखते हैं। इसलिए हर पिक्सल का रंग या चमक भी एक संख्या के रूप में रखनी पड़ती है। इस संख्या को पिक्सल मान (pixel value) कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Pixel value",
+       "hi": "पिक्सल मान"
+      },
+      "text": {
+       "en": "A number that describes how bright a pixel is or what colour it has. In the most common format, each value is stored in 1 byte (8 bits), so it can range from 0 to 255 - that is 2^8 = 256 possible values. 0 means no intensity (black) and 255 means full intensity (white).",
+       "hi": "एक संख्या जो बताती है कि पिक्सल कितना चमकीला है या उसका रंग क्या है। सबसे आम प्रारूप में हर मान 1 byte (8 bits) में रखा जाता है, इसलिए यह 0 से 255 तक हो सकता है - यानी 2^8 = 256 संभव मान। 0 का अर्थ कोई तीव्रता नहीं (काला) और 255 का अर्थ पूरी तीव्रता (सफ़ेद)।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "1 byte = 8 bits\nNumber of values = 2^8 = 256\nRange = 0 (black) to 255 (white)",
+      "hi": "1 byte = 8 bits\nमानों की संख्या = 2^8 = 256\nसीमा = 0 (काला) से 255 (सफ़ेद)"
+     }
+    },
+    {
+     "p": {
+      "en": "Why from 0 to 255 and not 1 to 256? Because counting in computers starts from 0. With 8 bits the smallest binary number is 00000000 = 0 and the largest is 11111111 = 255.",
+      "hi": "0 से 255 क्यों, 1 से 256 क्यों नहीं? क्योंकि कंप्यूटर में गिनती 0 से शुरू होती है। 8 bits में सबसे छोटी बाइनरी संख्या 00000000 = 0 और सबसे बड़ी 11111111 = 255 है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Grayscale image",
+       "hi": "ग्रेस्केल तस्वीर"
+      },
+      "text": {
+       "en": "An image in which each pixel has only one value showing its brightness, from black (0) through many shades of grey to white (255). It has a single channel (one layer of numbers). An image of size 100 × 100 needs 100 × 100 = 10,000 values.",
+       "hi": "ऐसी तस्वीर जिसमें हर पिक्सल का केवल एक मान होता है जो उसकी चमक बताता है, काले (0) से ग्रे के कई रंगों से होते हुए सफ़ेद (255) तक। इसमें एक ही channel (संख्याओं की एक परत) होता है। 100 × 100 आकार की तस्वीर के लिए 100 × 100 = 10,000 मान चाहिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Below is a tiny 5 × 5 grayscale image stored as a list of rows in Python, then drawn using '#' for bright pixels and '.' for dark ones. Notice that the 'picture' is just numbers. The program was run and the output shown is its real output.",
+      "hi": "नीचे Python में पंक्तियों की सूची के रूप में रखी एक छोटी 5 × 5 ग्रेस्केल तस्वीर है, जिसे चमकीले पिक्सल के लिए '#' और गहरे पिक्सल के लिए '.' से बनाया गया है। ध्यान दीजिए कि 'चित्र' केवल संख्याएँ है। प्रोग्राम चलाया गया है और दिखाया गया आउटपुट उसका असली आउटपुट है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# A tiny 5 x 5 grayscale image (0 = black, 255 = white)\nimg = [\n    [0,   0,   0,   0,   0],\n    [0, 255, 255, 255,   0],\n    [0, 255,   0, 255,   0],\n    [0, 255, 255, 255,   0],\n    [0,   0,   0,   0,   0],\n]\nfor row in img:\n    print(\" \".join(\"#\" if v > 127 else \".\" for v in row))\nprint(\"Height:\", len(img), \"Width:\", len(img[0]))\nprint(\"Total pixels:\", len(img) * len(img[0]))\n\nOutput:\n. . . . .\n. # # # .\n. # . # .\n. # # # .\n. . . . .\nHeight: 5 Width: 5\nTotal pixels: 25",
+      "hi": "# A tiny 5 x 5 grayscale image (0 = black, 255 = white)\nimg = [\n    [0,   0,   0,   0,   0],\n    [0, 255, 255, 255,   0],\n    [0, 255,   0, 255,   0],\n    [0, 255, 255, 255,   0],\n    [0,   0,   0,   0,   0],\n]\nfor row in img:\n    print(\" \".join(\"#\" if v > 127 else \".\" for v in row))\nprint(\"Height:\", len(img), \"Width:\", len(img[0]))\nprint(\"Total pixels:\", len(img) * len(img[0]))\n\nOutput:\n. . . . .\n. # # # .\n. # . # .\n. # # # .\n. . . . .\nHeight: 5 Width: 5\nTotal pixels: 25"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "RGB image",
+       "hi": "RGB तस्वीर"
+      },
+      "text": {
+       "en": "A colour image in which each pixel has three values: Red, Green and Blue, each from 0 to 255. The image is stored as three channels (three layers of numbers) placed one above another. The colour you see is the mix of these three lights.",
+       "hi": "एक रंगीन तस्वीर जिसमें हर पिक्सल के तीन मान होते हैं: लाल (Red), हरा (Green) और नीला (Blue), हर एक 0 से 255 तक। तस्वीर तीन channels (संख्याओं की तीन परतें) के रूप में एक के ऊपर एक रखी जाती है। जो रंग आप देखते हैं वह इन तीन प्रकाशों का मिश्रण है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Colour",
+        "R",
+        "G",
+        "B"
+       ],
+       "hi": [
+        "रंग",
+        "R",
+        "G",
+        "B"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Black",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "White",
+         "255",
+         "255",
+         "255"
+        ],
+        [
+         "Red",
+         "255",
+         "0",
+         "0"
+        ],
+        [
+         "Green",
+         "0",
+         "255",
+         "0"
+        ],
+        [
+         "Blue",
+         "0",
+         "0",
+         "255"
+        ],
+        [
+         "Yellow (red + green)",
+         "255",
+         "255",
+         "0"
+        ],
+        [
+         "Cyan (green + blue)",
+         "0",
+         "255",
+         "255"
+        ],
+        [
+         "Magenta (red + blue)",
+         "255",
+         "0",
+         "255"
+        ],
+        [
+         "Medium grey",
+         "128",
+         "128",
+         "128"
+        ],
+        [
+         "Saffron (approx.)",
+         "255",
+         "153",
+         "51"
+        ]
+       ],
+       "hi": [
+        [
+         "काला",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "सफ़ेद",
+         "255",
+         "255",
+         "255"
+        ],
+        [
+         "लाल",
+         "255",
+         "0",
+         "0"
+        ],
+        [
+         "हरा",
+         "0",
+         "255",
+         "0"
+        ],
+        [
+         "नीला",
+         "0",
+         "0",
+         "255"
+        ],
+        [
+         "पीला (लाल + हरा)",
+         "255",
+         "255",
+         "0"
+        ],
+        [
+         "सियान (हरा + नीला)",
+         "0",
+         "255",
+         "255"
+        ],
+        [
+         "मैजेंटा (लाल + नीला)",
+         "255",
+         "0",
+         "255"
+        ],
+        [
+         "मध्यम ग्रे",
+         "128",
+         "128",
+         "128"
+        ],
+        [
+         "केसरिया (लगभग)",
+         "255",
+         "153",
+         "51"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: when R, G and B are all equal, the colour is a shade of grey. Mixing coloured light is different from mixing paints: red + green light gives yellow, and all three at full strength give white.",
+      "hi": "याद रखें: जब R, G और B तीनों बराबर हों, तो रंग ग्रे का कोई शेड होता है। रंगीन प्रकाश को मिलाना पेंट मिलाने से अलग है: लाल + हरा प्रकाश पीला देता है, और तीनों पूरी तीव्रता पर सफ़ेद देते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "How many different colours can one RGB pixel show? How many numbers are needed to store a 100 × 100 RGB image?",
+       "hi": "एक RGB पिक्सल कितने अलग रंग दिखा सकता है? 100 × 100 की RGB तस्वीर रखने के लिए कितनी संख्याएँ चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: Each channel has 256 values.\nStep 2: Colours = 256 × 256 × 256 = 16,777,216 (about 16.7 million).\nStep 3: Pixels = 100 × 100 = 10,000; each needs 3 numbers.\nStep 4: Numbers = 10,000 × 3 = 30,000.",
+       "hi": "चरण 1: हर channel में 256 मान हैं।\nचरण 2: रंग = 256 × 256 × 256 = 1,67,77,216 (लगभग 1.67 करोड़)।\nचरण 3: पिक्सल = 100 × 100 = 10,000; हर एक को 3 संख्याएँ चाहिए।\nचरण 4: संख्याएँ = 10,000 × 3 = 30,000।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A colour image can be turned into grayscale by combining the three values into one brightness number. A common formula gives green the most weight because our eyes are most sensitive to green. The program below was run and its real output is shown.",
+      "hi": "रंगीन तस्वीर को तीनों मानों को मिलाकर एक चमक-संख्या बनाकर ग्रेस्केल में बदला जा सकता है। एक आम सूत्र हरे को सबसे अधिक भार देता है क्योंकि हमारी आँखें हरे रंग के प्रति सबसे अधिक संवेदनशील हैं। नीचे का प्रोग्राम चलाया गया है और उसका असली आउटपुट दिखाया गया है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Gray = 0.299 × R + 0.587 × G + 0.114 × B",
+      "hi": "ग्रे = 0.299 × R + 0.587 × G + 0.114 × B"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Turn an RGB pixel into one grayscale value\ndef to_gray(r, g, b):\n    return round(0.299 * r + 0.587 * g + 0.114 * b)\n\npixels = {\"red\": (255, 0, 0), \"green\": (0, 255, 0),\n          \"blue\": (0, 0, 255), \"saffron\": (255, 153, 51),\n          \"white\": (255, 255, 255)}\nfor name, (r, g, b) in pixels.items():\n    print(name, (r, g, b), \"->\", to_gray(r, g, b))\n\nOutput:\nred (255, 0, 0) -> 76\ngreen (0, 255, 0) -> 150\nblue (0, 0, 255) -> 29\nsaffron (255, 153, 51) -> 172\nwhite (255, 255, 255) -> 255",
+      "hi": "# Turn an RGB pixel into one grayscale value\ndef to_gray(r, g, b):\n    return round(0.299 * r + 0.587 * g + 0.114 * b)\n\npixels = {\"red\": (255, 0, 0), \"green\": (0, 255, 0),\n          \"blue\": (0, 0, 255), \"saffron\": (255, 153, 51),\n          \"white\": (255, 255, 255)}\nfor name, (r, g, b) in pixels.items():\n    print(name, (r, g, b), \"->\", to_gray(r, g, b))\n\nOutput:\nred (255, 0, 0) -> 76\ngreen (0, 255, 0) -> 150\nblue (0, 0, 255) -> 29\nsaffron (255, 153, 51) -> 172\nwhite (255, 255, 255) -> 255"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.7 Activities: Seeing Like a Computer",
+    "hi": "5.7 गतिविधियाँ: कंप्यूटर की तरह देखना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "CBSE suggests a few short activities for this unit. All are free and work in a browser. Students under 13 should use them with a teacher or parent, and no sign-up is needed for most of them. Some online experiments are taken down over time; if one is unavailable, your teacher can use a similar free tool.",
+      "hi": "CBSE इस इकाई के लिए कुछ छोटी गतिविधियाँ सुझाता है। सभी मुफ़्त हैं और ब्राउज़र में चलती हैं। 13 वर्ष से कम आयु के विद्यार्थी इन्हें शिक्षक या माता-पिता के साथ करें; अधिकतर के लिए साइन-अप की ज़रूरत नहीं होती। कुछ ऑनलाइन प्रयोग समय के साथ बंद हो जाते हैं; यदि कोई उपलब्ध न हो तो आपके शिक्षक कोई मिलता-जुलता मुफ़्त टूल उपयोग कर सकते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 - Emoji Scavenger Hunt (a Google browser game)",
+       "hi": "गतिविधि 1 - Emoji Scavenger Hunt (Google का एक ब्राउज़र खेल)"
+      },
+      "a": {
+       "en": "Aim: see image classification live.\nNeed: a phone or laptop with a camera.\nDo: the game shows an emoji (say a shoe or a clock). You have a short time to find that object at home or in class and show it to the camera.\nObserve: the model keeps guessing what it sees and you win when it matches. It may fail in dim light or with an odd-looking object.\nLearn: a trained model classifies camera frames in real time; light, angle and background affect accuracy.",
+       "hi": "लक्ष्य: image classification को चलते हुए देखना।\nज़रूरत: कैमरे वाला फ़ोन या लैपटॉप।\nकरें: खेल एक इमोजी दिखाता है (जैसे जूता या घड़ी)। आपके पास थोड़ा समय होता है उस वस्तु को घर या कक्षा में ढूँढकर कैमरे को दिखाने का।\nदेखें: मॉडल लगातार अनुमान लगाता है कि वह क्या देख रहा है और मेल होने पर आप जीतते हैं। कम रोशनी में या अजीब दिखने वाली वस्तु पर वह चूक सकता है।\nसीख: ट्रेन किया हुआ मॉडल कैमरे के फ़्रेम को असल समय में वर्गीकृत करता है; रोशनी, कोण और पृष्ठभूमि सटीकता पर असर डालते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 - RGB calculator",
+       "hi": "गतिविधि 2 - RGB कैलकुलेटर"
+      },
+      "a": {
+       "en": "Aim: understand how three numbers make a colour.\nNeed: any free online 'RGB colour picker' or 'RGB calculator' page.\nDo: move the R, G and B sliders. Try (255,0,0), (0,255,0), (255,255,0), (128,128,128). Try to make the colours of the Indian flag.\nObserve: equal values give grey; raising all values makes the colour lighter.\nLearn: every colour pixel is just three numbers between 0 and 255.",
+       "hi": "लक्ष्य: समझना कि तीन संख्याएँ मिलकर रंग कैसे बनाती हैं।\nज़रूरत: कोई भी मुफ़्त ऑनलाइन 'RGB colour picker' या 'RGB calculator' पेज।\nकरें: R, G और B स्लाइडर हिलाइए। (255,0,0), (0,255,0), (255,255,0), (128,128,128) आज़माइए। भारतीय तिरंगे के रंग बनाने की कोशिश कीजिए।\nदेखें: बराबर मान ग्रे देते हैं; सभी मान बढ़ाने से रंग हल्का होता है।\nसीख: हर रंगीन पिक्सल बस 0 से 255 के बीच की तीन संख्याएँ है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 - Pixel art with Piskel",
+       "hi": "गतिविधि 3 - Piskel से पिक्सल आर्ट"
+      },
+      "a": {
+       "en": "Aim: create an image pixel by pixel.\nNeed: the free browser tool Piskel (no account needed to draw).\nDo: choose a small canvas such as 16 × 16 and colour individual squares to draw a diya, a kite or a smiley. Use the colour picker to read the RGB/hex value of each colour.\nObserve: with few pixels, curves look jagged; a larger canvas looks smoother.\nLearn: resolution decides how much detail an image can hold.",
+       "hi": "लक्ष्य: पिक्सल-दर-पिक्सल तस्वीर बनाना।\nज़रूरत: मुफ़्त ब्राउज़र टूल Piskel (चित्र बनाने के लिए खाते की ज़रूरत नहीं)।\nकरें: 16 × 16 जैसा छोटा कैनवास चुनें और अलग-अलग वर्ग रंगकर दीया, पतंग या स्माइली बनाइए। हर रंग का RGB/hex मान देखने के लिए colour picker का उपयोग करें।\nदेखें: कम पिक्सल में गोलाइयाँ टेढ़ी-मेढ़ी दिखती हैं; बड़ा कैनवास अधिक चिकना दिखता है।\nसीख: रेज़ोल्यूशन तय करता है कि तस्वीर कितना विवरण रख सकती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4 (unplugged) - Be the camera",
+       "hi": "गतिविधि 4 (बिना कंप्यूटर) - कैमरा बनिए"
+      },
+      "a": {
+       "en": "Aim: feel how a computer receives an image.\nNeed: graph paper and a pencil, in pairs.\nDo: Student A draws a simple shape on an 8 × 8 grid, then reads out only numbers row by row (0 for empty, 1 for filled). Student B, without seeing the drawing, fills an empty grid using the numbers.\nObserve: B can recreate the shape exactly, but hears only numbers.\nLearn: a computer receives an image as a grid of numbers and must find patterns in them.",
+       "hi": "लक्ष्य: महसूस करना कि कंप्यूटर तस्वीर कैसे प्राप्त करता है।\nज़रूरत: ग्राफ़ पेपर और पेंसिल, जोड़ियों में।\nकरें: विद्यार्थी A 8 × 8 जाल पर एक सरल आकृति बनाता है, फिर पंक्ति-दर-पंक्ति केवल संख्याएँ बोलता है (खाली के लिए 0, भरे के लिए 1)। विद्यार्थी B चित्र देखे बिना संख्याओं से खाली जाल भरता है।\nदेखें: B आकृति ठीक-ठीक बना लेता है, पर उसे केवल संख्याएँ सुनाई देती हैं।\nसीख: कंप्यूटर तस्वीर को संख्याओं के जाल के रूप में पाता है और उसे उनमें पैटर्न ढूँढने होते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.8 Image Features and the Convolution Operator",
+    "hi": "5.8 इमेज फ़ीचर और कन्वोल्यूशन ऑपरेटर"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "How does a computer tell a mango from a banana if all it has are numbers? It looks for features - small, useful patterns in the image.",
+      "hi": "अगर कंप्यूटर के पास केवल संख्याएँ हैं, तो वह आम और केले में अंतर कैसे करता है? वह फ़ीचर (features) ढूँढता है - तस्वीर के छोटे, उपयोगी पैटर्न।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Image feature",
+       "hi": "इमेज फ़ीचर"
+      },
+      "text": {
+       "en": "A feature is a piece of information about the content of an image that helps identify it, such as an edge (a sudden change in brightness), a corner (where two edges meet), a blob (a small region that differs from its surroundings), a colour patch or a texture.",
+       "hi": "फ़ीचर तस्वीर की सामग्री के बारे में जानकारी का एक टुकड़ा है जो उसे पहचानने में मदद करता है, जैसे किनारा (edge - चमक में अचानक बदलाव), कोना (corner - जहाँ दो किनारे मिलते हैं), ब्लॉब (blob - आसपास से अलग दिखने वाला छोटा क्षेत्र), रंग का धब्बा या बनावट (texture)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Think of a jigsaw puzzle. A piece showing only blue sky could fit almost anywhere along the top: it is a poor feature. A piece with an edge of a building could fit at many points along that edge. A piece with a corner of a window fits in only one place: corners are the best features because they are unique and easy to locate. Computer vision uses the same idea.",
+      "hi": "एक जिगसॉ पहेली के बारे में सोचिए। केवल नीला आसमान दिखाने वाला टुकड़ा ऊपर लगभग कहीं भी लग सकता है: यह कमज़ोर फ़ीचर है। इमारत के किनारे वाला टुकड़ा उस किनारे के कई स्थानों पर फ़िट हो सकता है। खिड़की के कोने वाला टुकड़ा केवल एक ही जगह फ़िट होता है: कोने सबसे अच्छे फ़ीचर हैं क्योंकि वे अनोखे और ढूँढने में आसान होते हैं। कंप्यूटर विज़न भी यही विचार अपनाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature type",
+        "How useful",
+        "Reason"
+       ],
+       "hi": [
+        "फ़ीचर का प्रकार",
+        "कितना उपयोगी",
+        "कारण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Flat area (plain sky, wall)",
+         "Least",
+         "Looks the same everywhere, cannot be located exactly"
+        ],
+        [
+         "Edge",
+         "Medium",
+         "Can be located across the edge but not along it"
+        ],
+        [
+         "Corner",
+         "Most",
+         "Unique; changes in every direction, so it has one exact position"
+        ]
+       ],
+       "hi": [
+        [
+         "सपाट क्षेत्र (साफ़ आसमान, दीवार)",
+         "सबसे कम",
+         "हर जगह एक जैसा दिखता है, ठीक स्थान नहीं बताया जा सकता"
+        ],
+        [
+         "किनारा (Edge)",
+         "मध्यम",
+         "किनारे के आर-पार स्थान बताया जा सकता है, पर किनारे के साथ-साथ नहीं"
+        ],
+        [
+         "कोना (Corner)",
+         "सबसे अधिक",
+         "अनोखा; हर दिशा में बदलता है, इसलिए उसकी एक ठीक स्थिति होती है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Convolution",
+       "hi": "कन्वोल्यूशन (Convolution)"
+      },
+      "text": {
+       "en": "Convolution is a simple mathematical operation used to find features. A small grid of numbers called a kernel (or filter) slides over the image. At each position, each kernel number is multiplied by the pixel under it, all products are added, and the sum becomes one pixel of a new image called the feature map (or convolved image).",
+       "hi": "कन्वोल्यूशन फ़ीचर ढूँढने के लिए उपयोग की जाने वाली एक सरल गणितीय क्रिया है। संख्याओं का एक छोटा जाल, जिसे kernel (या filter) कहते हैं, तस्वीर पर सरकता है। हर स्थान पर kernel की हर संख्या को उसके नीचे वाले पिक्सल से गुणा किया जाता है, सभी गुणनफल जोड़े जाते हैं, और योग एक नई तस्वीर का एक पिक्सल बनता है जिसे feature map (या convolved image) कहते हैं।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Output pixel = sum of (kernel value × image pixel under it)\nOutput size (no padding, stride 1) = (N - K + 1) × (N - K + 1)\nwhere N = image size, K = kernel size",
+      "hi": "आउटपुट पिक्सल = (kernel मान × उसके नीचे का पिक्सल) का योग\nआउटपुट आकार (बिना padding, stride 1) = (N - K + 1) × (N - K + 1)\nजहाँ N = तस्वीर का आकार, K = kernel का आकार"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Place the kernel (say 3 × 3) on the top-left corner of the image.",
+       "Multiply each kernel value with the pixel value directly below it (9 products for a 3 × 3 kernel).",
+       "Add the 9 products. Write the sum in the first cell of the output.",
+       "Slide the kernel one pixel to the right (this step size is called the stride) and repeat.",
+       "At the end of a row, move one pixel down and start again from the left.",
+       "Continue until the kernel has visited every possible position. The output grid is the feature map."
+      ],
+      "hi": [
+       "kernel (मान लीजिए 3 × 3) को तस्वीर के ऊपर-बाएँ कोने पर रखें।",
+       "kernel के हर मान को ठीक उसके नीचे वाले पिक्सल मान से गुणा करें (3 × 3 kernel के लिए 9 गुणनफल)।",
+       "9 गुणनफल जोड़ें। योग को आउटपुट के पहले खाने में लिखें।",
+       "kernel को एक पिक्सल दाईं ओर सरकाएँ (इस कदम के आकार को stride कहते हैं) और दोहराएँ।",
+       "पंक्ति के अंत में एक पिक्सल नीचे जाएँ और फिर से बाईं ओर से शुरू करें।",
+       "तब तक जारी रखें जब तक kernel हर संभव स्थान पर न जा चुका हो। आउटपुट जाल ही feature map है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Image patch (3 × 3):\n10 10 80\n10 10 80\n10 10 80\nKernel:\n-1 0 1\n-1 0 1\n-1 0 1\nFind the output value.",
+       "hi": "तस्वीर का टुकड़ा (3 × 3):\n10 10 80\n10 10 80\n10 10 80\nKernel:\n-1 0 1\n-1 0 1\n-1 0 1\nआउटपुट मान ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Row 1 products: 10×(-1) + 10×0 + 80×1 = -10 + 0 + 80 = 70.\nStep 2: Row 2 is the same: 70.\nStep 3: Row 3 is the same: 70.\nStep 4: Sum = 70 + 70 + 70 = 210.\nAnswer: 210. A large value means a strong change from dark (left) to bright (right): a vertical edge is present.",
+       "hi": "चरण 1: पंक्ति 1 के गुणनफल: 10×(-1) + 10×0 + 80×1 = -10 + 0 + 80 = 70।\nचरण 2: पंक्ति 2 भी वैसी ही: 70।\nचरण 3: पंक्ति 3 भी वैसी ही: 70।\nचरण 4: योग = 70 + 70 + 70 = 210।\nउत्तर: 210। बड़ा मान बताता है कि बाएँ (गहरे) से दाएँ (चमकीले) की ओर तेज़ बदलाव है: यहाँ एक खड़ा किनारा (vertical edge) है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The Python program below applies the same kernel to a whole 5 × 5 image whose left part is dark (10) and right part is bright (80). Output size = 5 - 3 + 1 = 3, so we get a 3 × 3 feature map. Zeros appear where the image is flat and 210 appears where the edge is. The output shown is the real output of the program.",
+      "hi": "नीचे का Python प्रोग्राम वही kernel एक पूरी 5 × 5 तस्वीर पर लगाता है जिसका बायाँ भाग गहरा (10) और दायाँ भाग चमकीला (80) है। आउटपुट आकार = 5 - 3 + 1 = 3, इसलिए हमें 3 × 3 feature map मिलता है। जहाँ तस्वीर सपाट है वहाँ शून्य और जहाँ किनारा है वहाँ 210 आता है। दिखाया गया आउटपुट प्रोग्राम का असली आउटपुट है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Convolution of a 5x5 image with a 3x3 kernel (no padding, stride 1)\nimage = [\n    [10, 10, 10, 80, 80],\n    [10, 10, 10, 80, 80],\n    [10, 10, 10, 80, 80],\n    [10, 10, 10, 80, 80],\n    [10, 10, 10, 80, 80],\n]\nkernel = [\n    [-1, 0, 1],\n    [-1, 0, 1],\n    [-1, 0, 1],\n]\n\ndef convolve(img, k):\n    n = len(img) - len(k) + 1\n    out = []\n    for i in range(n):\n        row = []\n        for j in range(n):\n            total = 0\n            for a in range(3):\n                for b in range(3):\n                    total += img[i + a][j + b] * k[a][b]\n            row.append(total)\n        out.append(row)\n    return out\n\nfeature_map = convolve(image, kernel)\nfor row in feature_map:\n    print(row)\n\nOutput:\n[0, 210, 210]\n[0, 210, 210]\n[0, 210, 210]",
+      "hi": "# Convolution of a 5x5 image with a 3x3 kernel (no padding, stride 1)\nimage = [\n    [10, 10, 10, 80, 80],\n    [10, 10, 10, 80, 80],\n    [10, 10, 10, 80, 80],\n    [10, 10, 10, 80, 80],\n    [10, 10, 10, 80, 80],\n]\nkernel = [\n    [-1, 0, 1],\n    [-1, 0, 1],\n    [-1, 0, 1],\n]\n\ndef convolve(img, k):\n    n = len(img) - len(k) + 1\n    out = []\n    for i in range(n):\n        row = []\n        for j in range(n):\n            total = 0\n            for a in range(3):\n                for b in range(3):\n                    total += img[i + a][j + b] * k[a][b]\n            row.append(total)\n        out.append(row)\n    return out\n\nfeature_map = convolve(image, kernel)\nfor row in feature_map:\n    print(row)\n\nOutput:\n[0, 210, 210]\n[0, 210, 210]\n[0, 210, 210]"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Kernel name",
+        "Effect on image"
+       ],
+       "hi": [
+        "Kernel का नाम",
+        "तस्वीर पर प्रभाव"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Identity (1 in centre, 0 elsewhere)",
+         "No change"
+        ],
+        [
+         "Blur / box blur (all values 1/9)",
+         "Softens the image, removes noise"
+        ],
+        [
+         "Sharpen (5 in centre, -1 above, below, left, right)",
+         "Makes details crisper"
+        ],
+        [
+         "Edge detection / outline (8 in centre, -1 all around)",
+         "Shows outlines; flat areas become dark"
+        ],
+        [
+         "Sobel (like the -1 0 1 kernel)",
+         "Finds vertical or horizontal edges"
+        ]
+       ],
+       "hi": [
+        [
+         "Identity (केंद्र में 1, बाक़ी 0)",
+         "कोई बदलाव नहीं"
+        ],
+        [
+         "Blur / box blur (सभी मान 1/9)",
+         "तस्वीर को नरम करता है, शोर हटाता है"
+        ],
+        [
+         "Sharpen (केंद्र में 5, ऊपर-नीचे-बाएँ-दाएँ -1)",
+         "विवरण को अधिक साफ़ बनाता है"
+        ],
+        [
+         "Edge detection / outline (केंद्र में 8, चारों ओर -1)",
+         "रूपरेखा दिखाता है; सपाट क्षेत्र गहरे हो जाते हैं"
+        ],
+        [
+         "Sobel (-1 0 1 kernel जैसा)",
+         "खड़े या पड़े किनारे ढूँढता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: the output is smaller than the input because the kernel cannot hang off the edge. To keep the same size, programs add a border of zeros around the image; this is called padding. If a result goes below 0 or above 255, it is usually clipped back into the 0-255 range for display.",
+      "hi": "याद रखें: आउटपुट इनपुट से छोटा होता है क्योंकि kernel किनारे से बाहर नहीं लटक सकता। आकार वही रखने के लिए प्रोग्राम तस्वीर के चारों ओर शून्यों का किनारा जोड़ते हैं; इसे padding कहते हैं। यदि परिणाम 0 से कम या 255 से अधिक हो, तो दिखाने के लिए उसे आम तौर पर 0-255 की सीमा में वापस लाया जाता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 5 - Image kernels on Setosa (screen activity)",
+       "hi": "गतिविधि 5 - Setosa पर इमेज kernels (स्क्रीन गतिविधि)"
+      },
+      "a": {
+       "en": "Aim: watch convolution happen.\nNeed: a browser; search 'Setosa image kernels' (an interactive explanation page).\nDo: hover over the sample image and watch the 3 × 3 kernel multiply and add pixel values. Choose blur, sharpen, outline and Sobel from the menu. Edit a kernel value yourself.\nObserve: the same image looks completely different with each kernel.\nLearn: kernels pick out different features; this is the first step of how a CNN 'sees'.",
+       "hi": "लक्ष्य: कन्वोल्यूशन को होते हुए देखना।\nज़रूरत: ब्राउज़र; 'Setosa image kernels' खोजिए (एक इंटरैक्टिव व्याख्या पेज)।\nकरें: नमूना तस्वीर पर माउस ले जाइए और देखिए कि 3 × 3 kernel पिक्सल मानों को कैसे गुणा और जोड़ता है। मेनू से blur, sharpen, outline और Sobel चुनिए। ख़ुद kernel का कोई मान बदलिए।\nदेखें: हर kernel के साथ वही तस्वीर बिल्कुल अलग दिखती है।\nसीख: kernels अलग-अलग फ़ीचर चुनते हैं; यही CNN के 'देखने' का पहला कदम है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.9 Convolutional Neural Network (CNN)",
+    "hi": "5.9 कन्वोल्यूशनल न्यूरल नेटवर्क (CNN)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Chapter 2 you met neural networks: layers of connected nodes that learn from data. A Convolutional Neural Network (CNN) is a special kind of deep neural network designed for images. Its big advantage: it learns the best kernels by itself during training, instead of a human choosing them.",
+      "hi": "अध्याय 2 में आपने न्यूरल नेटवर्क के बारे में पढ़ा: जुड़े हुए नोड्स की परतें जो डेटा से सीखती हैं। Convolutional Neural Network (CNN) तस्वीरों के लिए बना एक विशेष प्रकार का डीप न्यूरल नेटवर्क है। इसका बड़ा फ़ायदा: यह ट्रेनिंग के दौरान सबसे अच्छे kernels ख़ुद सीख लेता है, बजाय इसके कि कोई इंसान उन्हें चुने।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "CNN",
+       "hi": "CNN"
+      },
+      "text": {
+       "en": "A Convolutional Neural Network is a deep learning algorithm that takes an image as input, assigns importance (learnable weights) to different features in the image, and is able to tell one image from another. It is the main technology behind modern image classification, face recognition and object detection.",
+       "hi": "Convolutional Neural Network एक deep learning एल्गोरिदम है जो तस्वीर को इनपुट के रूप में लेता है, तस्वीर के अलग-अलग फ़ीचर को महत्व (सीखे जा सकने वाले weights) देता है, और एक तस्वीर को दूसरी से अलग पहचान सकता है। यह आधुनिक image classification, चेहरा पहचान और object detection के पीछे की मुख्य तकनीक है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A CNN has four main kinds of layers, arranged one after another. Picture it as a pipeline: Input image → Convolution layer → ReLU → Pooling layer → (repeat several times) → Fully connected layer → Output (class probabilities).",
+      "hi": "CNN में चार मुख्य प्रकार की परतें होती हैं, एक के बाद एक। इसे एक पाइपलाइन की तरह सोचिए: इनपुट तस्वीर → Convolution layer → ReLU → Pooling layer → (कई बार दोहराव) → Fully connected layer → आउटपुट (वर्ग-संभावनाएँ)।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "1. Convolution layer",
+       "hi": "1. Convolution layer"
+      },
+      "text": {
+       "en": "Applies many kernels to the input to produce many feature maps. The first layers find simple low-level features (edges, colours, gradients); deeper layers combine them into high-level features (eyes, wheels, leaves, whole faces).",
+       "hi": "इनपुट पर कई kernels लगाकर कई feature maps बनाती है। शुरुआती परतें सरल निम्न-स्तरीय फ़ीचर (किनारे, रंग, ढलान) ढूँढती हैं; गहरी परतें उन्हें मिलाकर उच्च-स्तरीय फ़ीचर (आँखें, पहिए, पत्तियाँ, पूरे चेहरे) बनाती हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "2. ReLU (Rectified Linear Unit)",
+       "hi": "2. ReLU (Rectified Linear Unit)"
+      },
+      "text": {
+       "en": "An activation function applied to every value of the feature map. It keeps positive values as they are and turns every negative value into 0. This removes the 'negative' noise and adds non-linearity, so the network can learn complex shapes. In the feature map, the change from dark to bright becomes sharper.",
+       "hi": "feature map के हर मान पर लगाया जाने वाला एक activation function। यह धनात्मक मानों को वैसे ही रखता है और हर ऋणात्मक मान को 0 कर देता है। इससे 'ऋणात्मक' शोर हटता है और non-linearity जुड़ती है, ताकि नेटवर्क जटिल आकृतियाँ सीख सके। feature map में गहरे से चमकीले का बदलाव और तीखा हो जाता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "ReLU(x) = max(0, x)\nExamples: ReLU(5) = 5, ReLU(0) = 0, ReLU(-3) = 0",
+      "hi": "ReLU(x) = max(0, x)\nउदाहरण: ReLU(5) = 5, ReLU(0) = 0, ReLU(-3) = 0"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "3. Pooling layer",
+       "hi": "3. Pooling layer"
+      },
+      "text": {
+       "en": "Reduces the size (width and height) of each feature map while keeping the important information. It makes the network faster, uses less memory, and makes it less sensitive to small shifts or distortions of the object. Two types: max pooling (keeps the largest value in each window) and average pooling (keeps the average).",
+       "hi": "हर feature map का आकार (चौड़ाई और ऊँचाई) घटाती है पर ज़रूरी जानकारी बनाए रखती है। यह नेटवर्क को तेज़ बनाती है, कम मेमोरी लेती है, और वस्तु के छोटे खिसकाव या विकृति के प्रति उसे कम संवेदनशील बनाती है। दो प्रकार: max pooling (हर खिड़की का सबसे बड़ा मान रखती है) और average pooling (औसत रखती है)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The program below applies ReLU to a 4 × 4 feature map and then 2 × 2 max pooling and average pooling with stride 2. The 4 × 4 map becomes 2 × 2. The output shown is the real output.",
+      "hi": "नीचे का प्रोग्राम 4 × 4 feature map पर ReLU लगाता है और फिर stride 2 के साथ 2 × 2 max pooling और average pooling करता है। 4 × 4 map 2 × 2 बन जाता है। दिखाया गया आउटपुट असली आउटपुट है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# ReLU and 2x2 max pooling / average pooling\nfmap = [\n    [ 3, -1,  5,  0],\n    [-4,  2,  1,  6],\n    [ 7,  0, -2,  3],\n    [ 1,  8,  4, -5],\n]\nrelu = [[max(0, v) for v in row] for row in fmap]\nprint(\"After ReLU:\")\nfor row in relu:\n    print(row)\n\ndef pool(m, mode):\n    out = []\n    for i in range(0, len(m), 2):\n        row = []\n        for j in range(0, len(m[0]), 2):\n            block = [m[i][j], m[i][j+1], m[i+1][j], m[i+1][j+1]]\n            row.append(max(block) if mode == \"max\" else sum(block) / 4)\n        out.append(row)\n    return out\n\nprint(\"Max pooling:\", pool(relu, \"max\"))\nprint(\"Average pooling:\", pool(relu, \"avg\"))\n\nOutput:\nAfter ReLU:\n[3, 0, 5, 0]\n[0, 2, 1, 6]\n[7, 0, 0, 3]\n[1, 8, 4, 0]\nMax pooling: [[3, 6], [8, 4]]\nAverage pooling: [[1.25, 3.0], [4.0, 1.75]]",
+      "hi": "# ReLU and 2x2 max pooling / average pooling\nfmap = [\n    [ 3, -1,  5,  0],\n    [-4,  2,  1,  6],\n    [ 7,  0, -2,  3],\n    [ 1,  8,  4, -5],\n]\nrelu = [[max(0, v) for v in row] for row in fmap]\nprint(\"After ReLU:\")\nfor row in relu:\n    print(row)\n\ndef pool(m, mode):\n    out = []\n    for i in range(0, len(m), 2):\n        row = []\n        for j in range(0, len(m[0]), 2):\n            block = [m[i][j], m[i][j+1], m[i+1][j], m[i+1][j+1]]\n            row.append(max(block) if mode == \"max\" else sum(block) / 4)\n        out.append(row)\n    return out\n\nprint(\"Max pooling:\", pool(relu, \"max\"))\nprint(\"Average pooling:\", pool(relu, \"avg\"))\n\nOutput:\nAfter ReLU:\n[3, 0, 5, 0]\n[0, 2, 1, 6]\n[7, 0, 0, 3]\n[1, 8, 4, 0]\nMax pooling: [[3, 6], [8, 4]]\nAverage pooling: [[1.25, 3.0], [4.0, 1.75]]"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Apply 2 × 2 max pooling (stride 2) to:\n1 4 2 0\n3 2 9 1\n0 6 5 5\n7 1 2 8",
+       "hi": "इस पर 2 × 2 max pooling (stride 2) लगाइए:\n1 4 2 0\n3 2 9 1\n0 6 5 5\n7 1 2 8"
+      },
+      "a": {
+       "en": "Step 1: Top-left window {1,4,3,2} → max 4.\nStep 2: Top-right window {2,0,9,1} → max 9.\nStep 3: Bottom-left window {0,6,7,1} → max 7.\nStep 4: Bottom-right window {5,5,2,8} → max 8.\nAnswer:\n4 9\n7 8",
+       "hi": "चरण 1: ऊपर-बायाँ खाना {1,4,3,2} → अधिकतम 4।\nचरण 2: ऊपर-दायाँ खाना {2,0,9,1} → अधिकतम 9।\nचरण 3: नीचे-बायाँ खाना {0,6,7,1} → अधिकतम 7।\nचरण 4: नीचे-दायाँ खाना {5,5,2,8} → अधिकतम 8।\nउत्तर:\n4 9\n7 8"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "4. Fully connected layer",
+       "hi": "4. Fully connected layer"
+      },
+      "text": {
+       "en": "The final small feature maps are flattened into one long list of numbers. In this layer every input is connected to every node, and the layer combines all features to give the final output: a probability for each class (for example cat 0.92, dog 0.08). The class with the highest probability is the prediction.",
+       "hi": "अंतिम छोटे feature maps को समतल (flatten) करके संख्याओं की एक लंबी सूची बनाई जाती है। इस परत में हर इनपुट हर नोड से जुड़ा होता है, और परत सभी फ़ीचर को मिलाकर अंतिम आउटपुट देती है: हर वर्ग की एक संभावना (उदाहरण बिल्ली 0.92, कुत्ता 0.08)। सबसे अधिक संभावना वाला वर्ग ही अनुमान (prediction) है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Convolution layer",
+        "Pooling layer"
+       ],
+       "hi": [
+        "Convolution layer",
+        "Pooling layer"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Extracts features using kernels",
+         "Reduces the size of feature maps"
+        ],
+        [
+         "Kernel values are learnt during training",
+         "Has no learnt values; uses a fixed rule (max or average)"
+        ],
+        [
+         "Output can be same size or a little smaller",
+         "Output is clearly smaller (e.g. half width and half height)"
+        ],
+        [
+         "Finds what is present (edges, shapes)",
+         "Keeps the strongest signals, ignores exact position"
+        ]
+       ],
+       "hi": [
+        [
+         "kernels से फ़ीचर निकालती है",
+         "feature maps का आकार घटाती है"
+        ],
+        [
+         "kernel मान ट्रेनिंग में सीखे जाते हैं",
+         "कोई सीखा हुआ मान नहीं; तय नियम (max या average) अपनाती है"
+        ],
+        [
+         "आउटपुट उतना ही या थोड़ा छोटा हो सकता है",
+         "आउटपुट साफ़ तौर पर छोटा (जैसे आधी चौड़ाई और आधी ऊँचाई)"
+        ],
+        [
+         "बताती है क्या मौजूद है (किनारे, आकृतियाँ)",
+         "सबसे मज़बूत संकेत रखती है, ठीक स्थिति को अनदेखा करती है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 6 - Testing a CNN",
+       "hi": "गतिविधि 6 - CNN को परखना"
+      },
+      "a": {
+       "en": "Aim: see what happens inside a CNN.\nNeed: a browser; free interactive CNN visualisers exist (for example 'CNN Explainer', which lets you click on each layer).\nDo: pick a sample image (a car, a coffee cup), click the convolution, ReLU and pooling layers and look at the feature maps. See the final probabilities.\nObserve: early feature maps look like edge drawings; later ones are tiny and abstract; the output layer gives a percentage for each class.\nLearn: a CNN turns pixels into features, features into bigger features, and finally into a decision.",
+       "hi": "लक्ष्य: देखना कि CNN के अंदर क्या होता है।\nज़रूरत: ब्राउज़र; मुफ़्त इंटरैक्टिव CNN विज़ुअलाइज़र उपलब्ध हैं (उदाहरण 'CNN Explainer', जिसमें हर परत पर क्लिक कर सकते हैं)।\nकरें: कोई नमूना तस्वीर चुनें (कार, कॉफ़ी कप), convolution, ReLU और pooling परतों पर क्लिक करके feature maps देखें। अंतिम संभावनाएँ देखें।\nदेखें: शुरुआती feature maps किनारों के चित्र जैसे दिखते हैं; बाद वाले बहुत छोटे और अमूर्त होते हैं; आउटपुट परत हर वर्ग का प्रतिशत देती है।\nसीख: CNN पिक्सल को फ़ीचर में, फ़ीचर को बड़े फ़ीचर में, और अंत में निर्णय में बदलता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.10 No-Code AI Tools for Computer Vision (Practical)",
+    "hi": "5.10 कंप्यूटर विज़न के लिए नो-कोड AI टूल (प्रायोगिक)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "You do not need to write code to build a working image classifier. CBSE's practical part of this unit uses no-code tools. Every no-code CV project still follows the AI project cycle: collect and label data → pre-process → choose/train a model → test and evaluate → deploy and use.",
+      "hi": "काम करने वाला image classifier बनाने के लिए कोड लिखना ज़रूरी नहीं। इस इकाई के CBSE प्रायोगिक भाग में नो-कोड टूल उपयोग होते हैं। हर नो-कोड CV प्रोजेक्ट भी AI project cycle का पालन करता है: डेटा इकट्ठा करना और लेबल देना → pre-process → मॉडल चुनना/ट्रेन करना → परखना और मूल्यांकन → deploy करना और उपयोग।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Tool",
+        "What it is",
+        "Typical use in class"
+       ],
+       "hi": [
+        "टूल",
+        "यह क्या है",
+        "कक्षा में सामान्य उपयोग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Google Teachable Machine",
+         "Free browser tool; trains image, sound or pose models from webcam or uploaded photos",
+         "Smart Sorter, mask/no-mask, plant leaf classifier"
+        ],
+        [
+         "Lobe",
+         "A free desktop app by Microsoft for training image classifiers by dragging in labelled photos (check availability; the app is no longer actively developed)",
+         "Same type of image classification projects"
+        ],
+        [
+         "Orange Data Mining",
+         "Free open-source desktop software; you connect 'widgets' like blocks in a flowchart; has an Image Analytics add-on",
+         "Coral bleaching classifier, sentiment analysis (next chapter)"
+        ]
+       ],
+       "hi": [
+        [
+         "Google Teachable Machine",
+         "मुफ़्त ब्राउज़र टूल; webcam या अपलोड की गई फ़ोटो से तस्वीर, आवाज़ या मुद्रा (pose) मॉडल ट्रेन करता है",
+         "Smart Sorter, मास्क/बिना मास्क, पौधे की पत्ती classifier"
+        ],
+        [
+         "Lobe",
+         "Microsoft का एक मुफ़्त डेस्कटॉप ऐप जिसमें लेबल वाली फ़ोटो खींचकर डालने से image classifier ट्रेन होता है (उपलब्धता जाँचें; ऐप का अब सक्रिय विकास नहीं हो रहा)",
+         "इसी तरह के image classification प्रोजेक्ट"
+        ],
+        [
+         "Orange Data Mining",
+         "मुफ़्त open-source डेस्कटॉप सॉफ़्टवेयर; flowchart के ब्लॉक जैसे 'widgets' जोड़ते हैं; इसमें Image Analytics add-on है",
+         "Coral bleaching classifier, sentiment analysis (अगला अध्याय)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Practical 1 - Build a Smart Sorter with Teachable Machine",
+       "hi": "प्रायोगिक 1 - Teachable Machine से Smart Sorter बनाइए"
+      },
+      "a": {
+       "en": "Aim: train a model that sorts waste into classes.\nNeed: a laptop with webcam (or phone photos), items such as plastic bottles, paper and metal cans; teacher supervision. No account is needed to train and test in the browser.\nSteps:\n1. Open Teachable Machine → Get Started → Image Project → Standard image model.\n2. Rename Class 1 'Plastic', Class 2 'Paper', add Class 3 'Metal'.\n3. For each class, hold up different items and record about 100-200 webcam images from different angles and backgrounds (data collection).\n4. Click 'Train Model'. Do not close the tab while training.\n5. In the Preview panel, show new items and read the confidence bars (testing).\n6. Note mistakes. Add more varied images to the confused class and train again (improving the model).\n7. Click 'Export Model' to get a link or file that a website or app can use (deployment).\nLearn: more varied, balanced data gives a better model; the model only knows the classes you gave it.",
+       "hi": "लक्ष्य: ऐसा मॉडल ट्रेन करना जो कचरे को वर्गों में छाँटे।\nज़रूरत: webcam वाला लैपटॉप (या फ़ोन की फ़ोटो), प्लास्टिक की बोतलें, काग़ज़ और धातु के डिब्बे जैसी चीज़ें; शिक्षक की देखरेख। ब्राउज़र में ट्रेन और टेस्ट करने के लिए खाते की ज़रूरत नहीं।\nचरण:\n1. Teachable Machine खोलें → Get Started → Image Project → Standard image model।\n2. Class 1 का नाम 'Plastic', Class 2 का 'Paper' रखें, Class 3 'Metal' जोड़ें।\n3. हर वर्ग के लिए अलग-अलग चीज़ें दिखाकर अलग कोणों और पृष्ठभूमियों से लगभग 100-200 webcam तस्वीरें रिकॉर्ड करें (डेटा संग्रह)।\n4. 'Train Model' पर क्लिक करें। ट्रेनिंग के दौरान टैब बंद न करें।\n5. Preview पैनल में नई चीज़ें दिखाएँ और confidence पट्टियाँ पढ़ें (परीक्षण)।\n6. ग़लतियाँ नोट करें। भ्रमित वर्ग में और विविध तस्वीरें जोड़कर फिर ट्रेन करें (मॉडल सुधारना)।\n7. 'Export Model' पर क्लिक करके लिंक या फ़ाइल पाएँ जिसे वेबसाइट या ऐप उपयोग कर सके (deployment)।\nसीख: अधिक विविध, संतुलित डेटा बेहतर मॉडल देता है; मॉडल केवल वही वर्ग जानता है जो आपने उसे दिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Use case walkthrough - Early detection of coral bleaching. Coral reefs are underwater structures built by tiny animals. Algae living inside the coral give it colour and food. When sea water becomes too warm or polluted, the coral expels the algae and turns white; this is called coral bleaching. Bleached coral can die if conditions do not improve. Divers and scientists take thousands of underwater photos, and checking them by hand is slow. An image classifier can sort photos into 'healthy' and 'bleached' quickly. India's reefs, such as those in the Gulf of Mannar, Lakshadweep and the Andaman and Nicobar Islands, are monitored for bleaching.",
+      "hi": "उपयोग-प्रकरण (use case) walkthrough - मूंगा विरंजन (coral bleaching) की जल्दी पहचान। मूंगे की चट्टानें (coral reefs) छोटे जीवों द्वारा बनाई पानी के नीचे की संरचनाएँ हैं। मूंगे के अंदर रहने वाले शैवाल (algae) उसे रंग और भोजन देते हैं। जब समुद्र का पानी बहुत गर्म या प्रदूषित हो जाता है, तो मूंगा शैवाल को बाहर निकाल देता है और सफ़ेद हो जाता है; इसे coral bleaching कहते हैं। हालात न सुधरें तो विरंजित मूंगा मर सकता है। गोताखोर और वैज्ञानिक हज़ारों पानी के नीचे की फ़ोटो लेते हैं, और उन्हें हाथ से जाँचना धीमा है। एक image classifier फ़ोटो को 'स्वस्थ' और 'विरंजित' में जल्दी बाँट सकता है। भारत की चट्टानों, जैसे मन्नार की खाड़ी, लक्षद्वीप और अंडमान-निकोबार द्वीप समूह, पर विरंजन के लिए नज़र रखी जाती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Project cycle stage",
+        "Coral bleaching project"
+       ],
+       "hi": [
+        "प्रोजेक्ट चक्र का चरण",
+        "Coral bleaching प्रोजेक्ट"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Problem scoping",
+         "Who: marine scientists. What: detecting bleaching in many photos is slow. Where: reef monitoring. Why: early action can protect reefs."
+        ],
+        [
+         "Data acquisition",
+         "A folder of underwater images, sorted into two sub-folders: 'healthy' and 'bleached' (a dataset is usually given by the teacher)."
+        ],
+        [
+         "Data exploration",
+         "Use Image Viewer to look at images; check both classes have enough, clear pictures."
+        ],
+        [
+         "Modelling",
+         "Image Embedding turns each picture into a list of numbers (features) using a pre-trained CNN; a learner such as Logistic Regression is trained on them."
+        ],
+        [
+         "Evaluation",
+         "Test & Score gives accuracy and other metrics; Confusion Matrix shows which healthy corals were called bleached and vice versa."
+        ],
+        [
+         "Deployment",
+         "Use Predictions on new photos to label them automatically."
+        ]
+       ],
+       "hi": [
+        [
+         "Problem scoping (समस्या निर्धारण)",
+         "कौन: समुद्री वैज्ञानिक। क्या: बहुत सी फ़ोटो में विरंजन पहचानना धीमा है। कहाँ: चट्टानों की निगरानी। क्यों: जल्दी कार्रवाई से चट्टानें बच सकती हैं।"
+        ],
+        [
+         "Data acquisition (डेटा संग्रह)",
+         "पानी के नीचे की तस्वीरों का एक फ़ोल्डर, दो उप-फ़ोल्डरों में बँटा: 'healthy' और 'bleached' (dataset आम तौर पर शिक्षक देते हैं)।"
+        ],
+        [
+         "Data exploration (डेटा अन्वेषण)",
+         "Image Viewer से तस्वीरें देखें; जाँचें कि दोनों वर्गों में पर्याप्त, साफ़ तस्वीरें हों।"
+        ],
+        [
+         "Modelling (मॉडलिंग)",
+         "Image Embedding एक पहले से ट्रेन किए CNN से हर तस्वीर को संख्याओं की सूची (फ़ीचर) में बदलता है; Logistic Regression जैसा learner उन पर ट्रेन होता है।"
+        ],
+        [
+         "Evaluation (मूल्यांकन)",
+         "Test & Score सटीकता (accuracy) और दूसरे मापदंड देता है; Confusion Matrix दिखाता है कि कौन-से स्वस्थ मूंगे विरंजित बताए गए और उल्टा।"
+        ],
+        [
+         "Deployment (उपयोग में लाना)",
+         "नई फ़ोटो पर Predictions का उपयोग करके उन्हें अपने-आप लेबल करें।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Practical 2 - Coral bleaching classifier in Orange Data Mining",
+       "hi": "प्रायोगिक 2 - Orange Data Mining में coral bleaching classifier"
+      },
+      "a": {
+       "en": "Need: Orange installed on a computer (free), with the Image Analytics add-on (Options → Add-ons); internet for Image Embedding.\nSteps:\n1. Drag an 'Import Images' widget and choose the main dataset folder. Sub-folder names become the class labels.\n2. Connect 'Image Viewer' to look at the images.\n3. Connect 'Image Embedding' (for example the SqueezeNet or Inception embedder). Each image becomes a row of numbers.\n4. Connect the embeddings and a learner (e.g. 'Logistic Regression') to 'Test & Score'. Choose cross-validation. Read accuracy (CA), precision, recall and F1 (from Chapter 3).\n5. Connect 'Test & Score' to 'Confusion Matrix' to see correct and wrong predictions.\n6. Load new test images with another 'Import Images' + 'Image Embedding', and connect them with the trained model to 'Predictions'.\nObserve: the model usually gets most images right; blurry or unusual photos are often wrong.\nLearn: a pre-trained CNN can provide features, so even a simple learner works well; evaluation tells you how much to trust it.",
+       "hi": "ज़रूरत: कंप्यूटर पर इंस्टॉल Orange (मुफ़्त), Image Analytics add-on के साथ (Options → Add-ons); Image Embedding के लिए इंटरनेट।\nचरण:\n1. 'Import Images' widget खींचें और मुख्य dataset फ़ोल्डर चुनें। उप-फ़ोल्डरों के नाम वर्ग-लेबल बन जाते हैं।\n2. तस्वीरें देखने के लिए 'Image Viewer' जोड़ें।\n3. 'Image Embedding' जोड़ें (उदाहरण SqueezeNet या Inception embedder)। हर तस्वीर संख्याओं की एक पंक्ति बन जाती है।\n4. embeddings और एक learner (जैसे 'Logistic Regression') को 'Test & Score' से जोड़ें। cross-validation चुनें। accuracy (CA), precision, recall और F1 पढ़ें (अध्याय 3 से)।\n5. सही और ग़लत अनुमान देखने के लिए 'Test & Score' को 'Confusion Matrix' से जोड़ें।\n6. दूसरे 'Import Images' + 'Image Embedding' से नई परीक्षण तस्वीरें लाएँ, और उन्हें ट्रेन किए मॉडल के साथ 'Predictions' से जोड़ें।\nदेखें: मॉडल आम तौर पर अधिकतर तस्वीरें सही बताता है; धुंधली या असामान्य फ़ोटो अक्सर ग़लत होती हैं।\nसीख: पहले से ट्रेन किया CNN फ़ीचर दे सकता है, इसलिए सरल learner भी अच्छा काम करता है; मूल्यांकन बताता है कि उस पर कितना भरोसा करें।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: no-code does not mean no thinking. You still decide the classes, collect fair and varied data, check the confusion matrix and judge whether the model is safe to use.",
+      "hi": "याद रखें: नो-कोड का मतलब बिना सोचे नहीं है। वर्ग तय करना, निष्पक्ष और विविध डेटा जुटाना, confusion matrix जाँचना और यह तय करना कि मॉडल उपयोग के लिए सुरक्षित है या नहीं - ये काम आपको ही करने हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.11 Challenges and Ethics of Computer Vision",
+    "hi": "5.11 कंप्यूटर विज़न की चुनौतियाँ और नैतिकता"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Lighting, angle and blur: the same object can look very different at night, from above, or when moving.",
+       "Occlusion: part of the object is hidden (a person behind a pole), so it is harder to detect.",
+       "Bias in data: if training images mostly show one skin tone, age group or region, the model may perform worse for others. Datasets must be diverse.",
+       "Privacy: face recognition in public places can track people without their consent. Laws such as India's Digital Personal Data Protection Act, 2023 require personal data to be handled carefully.",
+       "Deepfakes: AI can create fake but realistic photos and videos of real people. Check the source, look for odd details, and never make or share a deepfake of anyone.",
+       "Over-trust: a confident prediction can still be wrong; humans should review important decisions.",
+       "Personal safety: do not upload photos of friends or family to unknown apps without permission; be careful with apps that ask for camera access."
+      ],
+      "hi": [
+       "रोशनी, कोण और धुंधलापन: वही वस्तु रात में, ऊपर से, या चलते समय बहुत अलग दिख सकती है।",
+       "Occlusion (आड़): वस्तु का कुछ भाग छिपा हो (खंभे के पीछे व्यक्ति), तो पहचानना कठिन होता है।",
+       "डेटा में पक्षपात (bias): यदि ट्रेनिंग तस्वीरों में ज़्यादातर एक ही रंग-रूप, आयु वर्ग या क्षेत्र के लोग हों, तो मॉडल दूसरों के लिए कमज़ोर काम कर सकता है। Dataset विविध होने चाहिए।",
+       "निजता (privacy): सार्वजनिक स्थानों पर चेहरा पहचान लोगों को उनकी सहमति के बिना ट्रैक कर सकती है। भारत के Digital Personal Data Protection Act, 2023 जैसे क़ानून निजी डेटा को सावधानी से संभालने की माँग करते हैं।",
+       "Deepfakes: AI असली लोगों की नक़ली पर असली जैसी फ़ोटो और वीडियो बना सकता है। स्रोत जाँचें, अजीब विवरण देखें, और कभी किसी का deepfake न बनाएँ, न साझा करें।",
+       "ज़रूरत से ज़्यादा भरोसा: आत्मविश्वास भरा अनुमान भी ग़लत हो सकता है; महत्वपूर्ण निर्णय इंसानों को जाँचने चाहिए।",
+       "निजी सुरक्षा: दोस्तों या परिवार की फ़ोटो बिना अनुमति अनजान ऐप पर अपलोड न करें; कैमरा अनुमति माँगने वाले ऐप से सावधान रहें।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: if you see a fake or hurtful image of someone online, do not forward it. Tell a trusted adult; in India, cyber crimes can be reported at cybercrime.gov.in or on helpline 1930.",
+      "hi": "याद रखें: अगर आप ऑनलाइन किसी की नक़ली या आहत करने वाली तस्वीर देखें, तो उसे आगे न भेजें। किसी भरोसेमंद बड़े को बताएँ; भारत में साइबर अपराध की शिकायत cybercrime.gov.in पर या हेल्पलाइन 1930 पर की जा सकती है।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking a camera that only records is Computer Vision. Fix: CV needs analysis that produces meaning or a decision.",
+   "Mixing up image processing and CV. Fix: image processing gives an image as output; CV gives information or a decision.",
+   "Writing the pixel range as 1-256. Fix: 8 bits give 256 values, numbered 0 to 255.",
+   "Saying 0 is white. Fix: 0 is black (no light), 255 is white (full intensity).",
+   "Thinking a grayscale pixel has three values. Fix: grayscale has one channel; RGB has three.",
+   "Confusing object detection with instance segmentation. Fix: detection draws boxes; instance segmentation outlines the exact pixels of each object.",
+   "Forgetting that convolution shrinks the image. Fix: output size = N - K + 1 without padding (5 × 5 with 3 × 3 gives 3 × 3).",
+   "Adding instead of multiplying first in convolution. Fix: multiply each kernel value with the pixel under it, then add all products.",
+   "Thinking ReLU makes negative values positive. Fix: ReLU turns negatives into 0; positives stay the same.",
+   "Believing pooling learns weights. Fix: pooling uses a fixed rule (max or average); learnt weights are in the convolution and fully connected layers."
+  ],
+  "hi": [
+   "यह सोचना कि केवल रिकॉर्ड करने वाला कैमरा कंप्यूटर विज़न है। सुधार: CV के लिए ऐसा विश्लेषण चाहिए जो अर्थ या निर्णय दे।",
+   "इमेज प्रोसेसिंग और CV को मिला देना। सुधार: इमेज प्रोसेसिंग का आउटपुट तस्वीर है; CV का आउटपुट जानकारी या निर्णय।",
+   "पिक्सल सीमा 1-256 लिखना। सुधार: 8 bits से 256 मान मिलते हैं, जिनकी संख्या 0 से 255 है।",
+   "0 को सफ़ेद कहना। सुधार: 0 काला (कोई प्रकाश नहीं) है, 255 सफ़ेद (पूरी तीव्रता)।",
+   "यह सोचना कि ग्रेस्केल पिक्सल के तीन मान होते हैं। सुधार: ग्रेस्केल में एक channel होता है; RGB में तीन।",
+   "object detection और instance segmentation को मिला देना। सुधार: detection बॉक्स बनाता है; instance segmentation हर वस्तु के ठीक पिक्सल की रूपरेखा बनाता है।",
+   "भूल जाना कि convolution तस्वीर को छोटा करता है। सुधार: बिना padding आउटपुट आकार = N - K + 1 (5 × 5 पर 3 × 3 से 3 × 3)।",
+   "convolution में पहले गुणा करने की जगह जोड़ देना। सुधार: kernel के हर मान को नीचे वाले पिक्सल से गुणा करें, फिर सभी गुणनफल जोड़ें।",
+   "यह सोचना कि ReLU ऋणात्मक मानों को धनात्मक बनाता है। सुधार: ReLU ऋणात्मक को 0 करता है; धनात्मक वैसे ही रहते हैं।",
+   "यह मानना कि pooling weights सीखती है। सुधार: pooling तय नियम (max या average) अपनाती है; सीखे गए weights convolution और fully connected परतों में होते हैं।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Computer Vision",
+    "hi": "कंप्यूटर विज़न"
+   },
+   "d": {
+    "en": "AI domain that enables machines to see, process and understand images and videos.",
+    "hi": "AI का क्षेत्र जो मशीनों को तस्वीरें और वीडियो देखने, प्रोसेस करने और समझने योग्य बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image processing",
+    "hi": "इमेज प्रोसेसिंग"
+   },
+   "d": {
+    "en": "Changing or enhancing an image; output is another image.",
+    "hi": "तस्वीर को बदलना या सुधारना; आउटपुट दूसरी तस्वीर होती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pixel",
+    "hi": "पिक्सल"
+   },
+   "d": {
+    "en": "Picture element; the smallest unit of a digital image.",
+    "hi": "Picture element; डिजिटल तस्वीर की सबसे छोटी इकाई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Resolution",
+    "hi": "रेज़ोल्यूशन"
+   },
+   "d": {
+    "en": "Number of pixels in an image, written width × height.",
+    "hi": "तस्वीर में पिक्सल की संख्या, चौड़ाई × ऊँचाई के रूप में लिखी जाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Megapixel",
+    "hi": "मेगापिक्सल"
+   },
+   "d": {
+    "en": "About one million pixels.",
+    "hi": "लगभग दस लाख पिक्सल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pixel value",
+    "hi": "पिक्सल मान"
+   },
+   "d": {
+    "en": "Number (usually 0-255) giving a pixel's brightness or colour intensity.",
+    "hi": "संख्या (आम तौर पर 0-255) जो पिक्सल की चमक या रंग की तीव्रता बताती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Byte / bit",
+    "hi": "Byte / bit"
+   },
+   "d": {
+    "en": "A bit is a 0 or 1; a byte is 8 bits and can store 256 values.",
+    "hi": "Bit एक 0 या 1 है; byte 8 bits का होता है और 256 मान रख सकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Grayscale image",
+    "hi": "ग्रेस्केल तस्वीर"
+   },
+   "d": {
+    "en": "Image with one channel; each pixel is a shade from black to white.",
+    "hi": "एक channel वाली तस्वीर; हर पिक्सल काले से सफ़ेद तक का कोई शेड है।"
+   }
+  },
+  {
+   "t": {
+    "en": "RGB image",
+    "hi": "RGB तस्वीर"
+   },
+   "d": {
+    "en": "Colour image with three channels: red, green and blue.",
+    "hi": "तीन channels वाली रंगीन तस्वीर: लाल, हरा और नीला।"
+   }
+  },
+  {
+   "t": {
+    "en": "Channel",
+    "hi": "Channel"
+   },
+   "d": {
+    "en": "One layer of pixel values in an image (1 in grayscale, 3 in RGB).",
+    "hi": "तस्वीर में पिक्सल मानों की एक परत (ग्रेस्केल में 1, RGB में 3)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image classification",
+    "hi": "Image classification"
+   },
+   "d": {
+    "en": "Giving one label to a whole image.",
+    "hi": "पूरी तस्वीर को एक लेबल देना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Localisation",
+    "hi": "Localisation"
+   },
+   "d": {
+    "en": "Finding where an object is, usually with a bounding box.",
+    "hi": "वस्तु कहाँ है, यह ढूँढना, आम तौर पर bounding box से।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bounding box",
+    "hi": "Bounding box"
+   },
+   "d": {
+    "en": "A rectangle drawn around a detected object.",
+    "hi": "पहचानी गई वस्तु के चारों ओर बना आयत।"
+   }
+  },
+  {
+   "t": {
+    "en": "Object detection",
+    "hi": "Object detection"
+   },
+   "d": {
+    "en": "Finding and labelling all objects in an image, each with a box.",
+    "hi": "तस्वीर की सभी वस्तुओं को ढूँढना और लेबल देना, हर एक बॉक्स के साथ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Instance segmentation",
+    "hi": "Instance segmentation"
+   },
+   "d": {
+    "en": "Marking the exact pixels of each separate object.",
+    "hi": "हर अलग वस्तु के ठीक-ठीक पिक्सल चिह्नित करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature",
+    "hi": "फ़ीचर"
+   },
+   "d": {
+    "en": "Useful pattern in an image such as an edge, corner or blob.",
+    "hi": "तस्वीर का उपयोगी पैटर्न जैसे किनारा, कोना या ब्लॉब।"
+   }
+  },
+  {
+   "t": {
+    "en": "Kernel / filter",
+    "hi": "Kernel / filter"
+   },
+   "d": {
+    "en": "Small matrix of numbers slid over an image in convolution.",
+    "hi": "convolution में तस्वीर पर सरकाया जाने वाला संख्याओं का छोटा मैट्रिक्स।"
+   }
+  },
+  {
+   "t": {
+    "en": "Convolution",
+    "hi": "Convolution"
+   },
+   "d": {
+    "en": "Multiplying kernel values with the pixels under them and adding, at every position.",
+    "hi": "हर स्थान पर kernel मानों को नीचे के पिक्सल से गुणा करके जोड़ना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature map",
+    "hi": "Feature map"
+   },
+   "d": {
+    "en": "Output image produced by convolution.",
+    "hi": "convolution से बनी आउटपुट तस्वीर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stride",
+    "hi": "Stride"
+   },
+   "d": {
+    "en": "Number of pixels the kernel moves at each step.",
+    "hi": "हर कदम पर kernel कितने पिक्सल सरकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Padding",
+    "hi": "Padding"
+   },
+   "d": {
+    "en": "Border of extra (usually zero) pixels added so output keeps its size.",
+    "hi": "अतिरिक्त (आम तौर पर शून्य) पिक्सल का किनारा ताकि आउटपुट का आकार बना रहे।"
+   }
+  },
+  {
+   "t": {
+    "en": "CNN",
+    "hi": "CNN"
+   },
+   "d": {
+    "en": "Convolutional Neural Network; a deep learning model for images.",
+    "hi": "Convolutional Neural Network; तस्वीरों के लिए deep learning मॉडल।"
+   }
+  },
+  {
+   "t": {
+    "en": "ReLU",
+    "hi": "ReLU"
+   },
+   "d": {
+    "en": "Rectified Linear Unit; activation that changes negative values to 0.",
+    "hi": "Rectified Linear Unit; activation जो ऋणात्मक मानों को 0 करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pooling",
+    "hi": "Pooling"
+   },
+   "d": {
+    "en": "Reducing feature-map size by taking the max or average of small windows.",
+    "hi": "छोटी खिड़कियों का अधिकतम या औसत लेकर feature map का आकार घटाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Fully connected layer",
+    "hi": "Fully connected layer"
+   },
+   "d": {
+    "en": "Final layer(s) where every input connects to every node to give class scores.",
+    "hi": "अंतिम परत(ें) जहाँ हर इनपुट हर नोड से जुड़ता है और वर्ग-अंक देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image embedding",
+    "hi": "Image embedding"
+   },
+   "d": {
+    "en": "Turning an image into a list of feature numbers using a pre-trained network.",
+    "hi": "पहले से ट्रेन किए नेटवर्क से तस्वीर को फ़ीचर-संख्याओं की सूची में बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "OCR",
+    "hi": "OCR"
+   },
+   "d": {
+    "en": "Optical Character Recognition; reading printed or written text from images.",
+    "hi": "Optical Character Recognition; तस्वीरों से छपा या लिखा पाठ पढ़ना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Coral bleaching",
+    "hi": "Coral bleaching"
+   },
+   "d": {
+    "en": "Coral turning white after losing its algae, often due to warm water.",
+    "hi": "शैवाल खोने के बाद मूंगे का सफ़ेद होना, अक्सर गर्म पानी के कारण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deepfake",
+    "hi": "Deepfake"
+   },
+   "d": {
+    "en": "Fake but realistic image or video made with AI.",
+    "hi": "AI से बनी नक़ली पर असली जैसी तस्वीर या वीडियो।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which domain of AI works mainly with images and videos?\n(a) Data Science (b) Computer Vision (c) NLP (d) Statistics",
+    "hi": "MCQ: AI का कौन-सा क्षेत्र मुख्य रूप से तस्वीरों और वीडियो के साथ काम करता है?\n(a) Data Science (b) Computer Vision (c) NLP (d) Statistics"
+   },
+   "a": {
+    "en": "(b) Computer Vision.",
+    "hi": "(b) Computer Vision।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The full form of pixel is:\n(a) picture element (b) picture cell (c) pixel element (d) photo cell",
+    "hi": "MCQ: पिक्सल का पूर्ण रूप है:\n(a) picture element (b) picture cell (c) pixel element (d) photo cell"
+   },
+   "a": {
+    "en": "(a) picture element.",
+    "hi": "(a) picture element।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The pixel value of pure white in an 8-bit grayscale image is:\n(a) 0 (b) 128 (c) 255 (d) 256",
+    "hi": "MCQ: 8-bit ग्रेस्केल तस्वीर में शुद्ध सफ़ेद का पिक्सल मान है:\n(a) 0 (b) 128 (c) 255 (d) 256"
+   },
+   "a": {
+    "en": "(c) 255.",
+    "hi": "(c) 255।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: An RGB image has ______ channels, while a grayscale image has ______ channel.",
+    "hi": "रिक्त स्थान भरें: RGB तस्वीर में ______ channels होते हैं, जबकि ग्रेस्केल तस्वीर में ______ channel।"
+   },
+   "a": {
+    "en": "3; 1.",
+    "hi": "3; 1।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The small matrix slid over an image during convolution is called a ______.",
+    "hi": "रिक्त स्थान भरें: convolution के दौरान तस्वीर पर सरकाया जाने वाला छोटा मैट्रिक्स ______ कहलाता है।"
+   },
+   "a": {
+    "en": "kernel (or filter).",
+    "hi": "kernel (या filter)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (a) Image processing always gives an image as output. (b) ReLU changes -7 to 7. (c) Corners are better features than flat areas.",
+    "hi": "सही या ग़लत: (a) इमेज प्रोसेसिंग का आउटपुट हमेशा तस्वीर होता है। (b) ReLU -7 को 7 बना देता है। (c) कोने सपाट क्षेत्रों से बेहतर फ़ीचर हैं।"
+   },
+   "a": {
+    "en": "(a) True. (b) False - ReLU changes -7 to 0. (c) True.",
+    "hi": "(a) सही। (b) ग़लत - ReLU -7 को 0 बनाता है। (c) सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Give four applications of computer vision from daily life in India.",
+    "hi": "भारत के दैनिक जीवन से कंप्यूटर विज़न के चार उपयोग बताइए।"
+   },
+   "a": {
+    "en": "Any four: face unlock on phones; face-based airport boarding; number-plate reading for e-challan or toll; crop-disease detection apps; Google Lens translation of signboards; cricket ball tracking; X-ray screening support for doctors; face filters.",
+    "hi": "कोई चार: फ़ोन में फ़ेस अनलॉक; हवाई अड्डे पर चेहरे से बोर्डिंग; e-challan या टोल के लिए नंबर प्लेट पढ़ना; फसल-रोग पहचान ऐप; Google Lens से साइनबोर्ड का अनुवाद; क्रिकेट में बॉल ट्रैकिंग; डॉक्टरों के लिए X-ray जाँच में सहायता; फ़ेस फ़िल्टर।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the three free no-code tools mentioned in the CBSE syllabus for computer vision practicals.",
+    "hi": "कंप्यूटर विज़न प्रायोगिक के लिए CBSE पाठ्यक्रम में बताए गए तीन मुफ़्त नो-कोड टूल के नाम लिखिए।"
+   },
+   "a": {
+    "en": "Google Teachable Machine, Lobe and Orange Data Mining.",
+    "hi": "Google Teachable Machine, Lobe और Orange Data Mining।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Calculate the total pixels and megapixels of a 3000 × 2000 image. How many numbers are needed to store it as RGB?",
+    "hi": "3000 × 2000 तस्वीर के कुल पिक्सल और मेगापिक्सल निकालिए। इसे RGB में रखने के लिए कितनी संख्याएँ चाहिए?"
+   },
+   "a": {
+    "en": "Pixels = 3000 × 2000 = 6,000,000 = 6 MP.\nRGB numbers = 6,000,000 × 3 = 18,000,000.",
+    "hi": "पिक्सल = 3000 × 2000 = 60,00,000 = 6 MP।\nRGB संख्याएँ = 60,00,000 × 3 = 1,80,00,000।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why are pixel values in the range 0 to 255?",
+    "hi": "पिक्सल मान 0 से 255 की सीमा में क्यों होते हैं?"
+   },
+   "a": {
+    "en": "Each pixel value is commonly stored in 1 byte = 8 bits. 8 bits can make 2^8 = 256 different numbers. Counting starts at 0, so the values are 0 to 255.",
+    "hi": "हर पिक्सल मान आम तौर पर 1 byte = 8 bits में रखा जाता है। 8 bits से 2^8 = 256 अलग संख्याएँ बन सकती हैं। गिनती 0 से शुरू होती है, इसलिए मान 0 से 255 तक होते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between image classification and object detection with one example each.",
+    "hi": "Image classification और object detection में एक-एक उदाहरण के साथ अंतर बताइए।"
+   },
+   "a": {
+    "en": "Image classification gives one label for the whole image, e.g. 'this X-ray is pneumonia / normal'. It does not say where. Object detection finds every object, labels it and draws a bounding box around each, e.g. a traffic camera boxing all cars, bikes and people in a frame.",
+    "hi": "Image classification पूरी तस्वीर को एक लेबल देता है, जैसे 'यह X-ray निमोनिया / सामान्य है'। यह स्थान नहीं बताता। Object detection हर वस्तु ढूँढता है, लेबल देता है और हर एक पर bounding box बनाता है, जैसे ट्रैफ़िक कैमरा फ़्रेम की सभी कारों, बाइकों और लोगों पर बॉक्स बनाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Compute the convolution output for the patch\n2 0 1\n1 3 0\n4 1 2\nwith the kernel\n0 1 0\n1 -4 1\n0 1 0",
+    "hi": "इस टुकड़े\n2 0 1\n1 3 0\n4 1 2\nपर kernel\n0 1 0\n1 -4 1\n0 1 0\nका convolution आउटपुट निकालिए।"
+   },
+   "a": {
+    "en": "Multiply cell by cell: 2×0 + 0×1 + 1×0 + 1×1 + 3×(-4) + 0×1 + 4×0 + 1×1 + 2×0\n= 0 + 0 + 0 + 1 - 12 + 0 + 0 + 1 + 0 = -10.\nAfter ReLU it would become 0.",
+    "hi": "खाने-दर-खाने गुणा: 2×0 + 0×1 + 1×0 + 1×1 + 3×(-4) + 0×1 + 4×0 + 1×1 + 2×0\n= 0 + 0 + 0 + 1 - 12 + 0 + 0 + 1 + 0 = -10।\nReLU के बाद यह 0 हो जाएगा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A 7 × 7 grayscale image is convolved with a 3 × 3 kernel, stride 1, no padding. What is the size of the feature map? If 2 × 2 max pooling with stride 2 is applied to a 6 × 6 map, what size results?",
+    "hi": "7 × 7 ग्रेस्केल तस्वीर पर 3 × 3 kernel, stride 1, बिना padding से convolution किया जाता है। feature map का आकार क्या होगा? यदि 6 × 6 map पर stride 2 के साथ 2 × 2 max pooling लगाई जाए तो कितना आकार मिलेगा?"
+   },
+   "a": {
+    "en": "Feature map = (7 - 3 + 1) × (7 - 3 + 1) = 5 × 5.\nPooling 6 × 6 with 2 × 2, stride 2 gives 3 × 3.",
+    "hi": "Feature map = (7 - 3 + 1) × (7 - 3 + 1) = 5 × 5।\n6 × 6 पर 2 × 2, stride 2 की pooling से 3 × 3 मिलता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Apply ReLU and then 2 × 2 average pooling (stride 2) to:\n-2 4 6 -6\n2 -8 2 2\n0 0 -1 3\n8 4 1 0",
+    "hi": "इस पर ReLU और फिर 2 × 2 average pooling (stride 2) लगाइए:\n-2 4 6 -6\n2 -8 2 2\n0 0 -1 3\n8 4 1 0"
+   },
+   "a": {
+    "en": "After ReLU:\n0 4 6 0\n2 0 2 2\n0 0 0 3\n8 4 1 0\nAverages: top-left (0+4+2+0)/4 = 1.5; top-right (6+0+2+2)/4 = 2.5; bottom-left (0+0+8+4)/4 = 3; bottom-right (0+3+1+0)/4 = 1.\nAnswer:\n1.5 2.5\n3 1",
+    "hi": "ReLU के बाद:\n0 4 6 0\n2 0 2 2\n0 0 0 3\n8 4 1 0\nऔसत: ऊपर-बायाँ (0+4+2+0)/4 = 1.5; ऊपर-दायाँ (6+0+2+2)/4 = 2.5; नीचे-बायाँ (0+0+8+4)/4 = 3; नीचे-दायाँ (0+3+1+0)/4 = 1।\nउत्तर:\n1.5 2.5\n3 1"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Pooling makes a CNN faster.\nReason (R): Pooling reduces the width and height of feature maps.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): Pooling CNN को तेज़ बनाती है।\nकारण (R): Pooling feature maps की चौड़ाई और ऊँचाई घटाती है।\n(a) दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R, A की व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(a). Smaller feature maps mean fewer calculations in later layers, so the network runs faster.",
+    "hi": "(a)। छोटे feature maps का अर्थ है आगे की परतों में कम गणनाएँ, इसलिए नेटवर्क तेज़ चलता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A grayscale pixel with value 0 appears white.\nReason (R): 0 means no light intensity.\nChoose (a)-(d) as in the previous question.",
+    "hi": "अभिकथन (A): मान 0 वाला ग्रेस्केल पिक्सल सफ़ेद दिखता है।\nकारण (R): 0 का अर्थ है कोई प्रकाश तीव्रता नहीं।\nपिछले प्रश्न की तरह (a)-(d) चुनें।"
+   },
+   "a": {
+    "en": "(d). A is false (0 appears black); R is true.",
+    "hi": "(d)। A ग़लत है (0 काला दिखता है); R सही है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why are corners considered the best features in an image? Explain with the jigsaw puzzle example.",
+    "hi": "तस्वीर में कोनों को सबसे अच्छा फ़ीचर क्यों माना जाता है? जिगसॉ पहेली के उदाहरण से समझाइए।"
+   },
+   "a": {
+    "en": "In a jigsaw, a plain sky piece fits almost anywhere, so it gives little information. An edge piece fits anywhere along that edge. A corner piece fits in only one place. Similarly, a corner in an image changes in every direction, so it has a unique, exact location, making it easy to match and track.",
+    "hi": "जिगसॉ में साफ़ आसमान वाला टुकड़ा लगभग कहीं भी लग जाता है, इसलिए कम जानकारी देता है। किनारे वाला टुकड़ा उस किनारे के साथ कहीं भी लग सकता है। कोने वाला टुकड़ा केवल एक ही जगह लगता है। इसी तरह तस्वीर में कोना हर दिशा में बदलता है, इसलिए उसकी अनोखी, ठीक स्थिति होती है, जिससे उसे मिलाना और ट्रैक करना आसान है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: What is the role of 'Image Embedding' in an Orange image-classification workflow?",
+    "hi": "लघु उत्तर: Orange के image-classification workflow में 'Image Embedding' की क्या भूमिका है?"
+   },
+   "a": {
+    "en": "A learner such as Logistic Regression cannot read raw pictures. Image Embedding passes each image through a pre-trained deep network (a CNN) and outputs a vector of numbers describing its features. These numbers become the input columns for the learner.",
+    "hi": "Logistic Regression जैसा learner कच्ची तस्वीरें नहीं पढ़ सकता। Image Embedding हर तस्वीर को पहले से ट्रेन किए deep network (CNN) से गुज़ारता है और उसके फ़ीचर बताने वाली संख्याओं का vector देता है। ये संख्याएँ learner के लिए इनपुट स्तंभ बनती हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the four layers of a CNN in order, stating the job of each.",
+    "hi": "CNN की चार परतों को क्रम से समझाइए और हर एक का काम बताइए।"
+   },
+   "a": {
+    "en": "1. Convolution layer: applies many learnt kernels to the image to extract features; early layers find edges, deeper layers find shapes and objects.\n2. ReLU layer: replaces all negative values in feature maps with 0, adding non-linearity and making features clearer.\n3. Pooling layer: shrinks feature maps using the max or average of small windows; reduces computation and makes the network robust to small shifts.\n4. Fully connected layer: flattens the final features and connects all of them to output nodes, giving a probability for each class; the highest is the prediction.",
+    "hi": "1. Convolution layer: तस्वीर पर कई सीखे गए kernels लगाकर फ़ीचर निकालती है; शुरुआती परतें किनारे, गहरी परतें आकृतियाँ और वस्तुएँ ढूँढती हैं।\n2. ReLU layer: feature maps के सभी ऋणात्मक मानों को 0 से बदलती है, non-linearity जोड़ती है और फ़ीचर साफ़ करती है।\n3. Pooling layer: छोटी खिड़कियों के max या average से feature maps को छोटा करती है; गणना घटाती है और नेटवर्क को छोटे खिसकाव के प्रति मज़बूत बनाती है।\n4. Fully connected layer: अंतिम फ़ीचर को समतल करके सभी को आउटपुट नोड्स से जोड़ती है, हर वर्ग की संभावना देती है; सबसे अधिक वाली अनुमान है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A city wants cameras at signals to issue e-challans automatically for vehicles that jump red lights.\n(a) Which CV tasks are needed? (b) Name two challenges. (c) Suggest one ethical safeguard.",
+    "hi": "केस स्टडी: एक शहर चाहता है कि सिग्नल पर लगे कैमरे लाल बत्ती तोड़ने वाले वाहनों को अपने-आप e-challan भेजें।\n(a) कौन-से CV कार्य चाहिए? (b) दो चुनौतियाँ बताइए। (c) एक नैतिक सुरक्षा उपाय सुझाइए।"
+   },
+   "a": {
+    "en": "(a) Object detection to find and box each vehicle; tracking across frames to see if it crossed the line during red; OCR / number-plate recognition to read the plate.\n(b) Any two: night-time glare and rain; dirty or bent plates; vehicles hidden behind buses (occlusion).\n(c) A human officer should check each case before a fine is final; store images securely and delete them when no longer needed; allow citizens to appeal.",
+    "hi": "(a) हर वाहन को ढूँढने और बॉक्स करने के लिए object detection; लाल बत्ती के दौरान लाइन पार की या नहीं, यह देखने के लिए फ़्रेमों में tracking; प्लेट पढ़ने के लिए OCR / नंबर-प्लेट पहचान।\n(b) कोई दो: रात की चकाचौंध और बारिश; गंदी या मुड़ी प्लेटें; बस के पीछे छिपे वाहन (occlusion)।\n(c) जुर्माना पक्का होने से पहले कोई अधिकारी हर मामला जाँचे; तस्वीरें सुरक्षित रखें और ज़रूरत न रहने पर हटा दें; नागरिकों को अपील का अधिकार दें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study (coral bleaching): In Orange, a model's confusion matrix shows: 40 healthy predicted healthy, 10 healthy predicted bleached, 5 bleached predicted healthy, 45 bleached predicted bleached. Taking 'bleached' as positive, find accuracy, precision and recall.",
+    "hi": "केस स्टडी (coral bleaching): Orange में एक मॉडल की confusion matrix दिखाती है: 40 स्वस्थ को स्वस्थ बताया, 10 स्वस्थ को विरंजित बताया, 5 विरंजित को स्वस्थ बताया, 45 विरंजित को विरंजित बताया। 'विरंजित' को positive मानकर accuracy, precision और recall ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "TP = 45, TN = 40, FP = 10, FN = 5; total = 100.\nAccuracy = (45 + 40) / 100 = 0.85 = 85%.\nPrecision = TP / (TP + FP) = 45 / 55 ≈ 0.82.\nRecall = TP / (TP + FN) = 45 / 50 = 0.90.\nHigh recall is good here: few bleached reefs are missed.",
+    "hi": "TP = 45, TN = 40, FP = 10, FN = 5; कुल = 100।\nAccuracy = (45 + 40) / 100 = 0.85 = 85%।\nPrecision = TP / (TP + FP) = 45 / 55 ≈ 0.82।\nRecall = TP / (TP + FN) = 45 / 50 = 0.90।\nयहाँ अधिक recall अच्छा है: बहुत कम विरंजित चट्टानें छूटती हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe how you would build a Smart Sorter using Teachable Machine, mapping each step to the AI project cycle.",
+    "hi": "दीर्घ उत्तर: बताइए कि आप Teachable Machine से Smart Sorter कैसे बनाएँगे, हर चरण को AI project cycle से जोड़ते हुए।"
+   },
+   "a": {
+    "en": "Problem scoping: mixed waste is hard to separate; goal - classify items as plastic, paper or metal.\nData acquisition: create three classes and record 100-200 webcam images per class from varied angles, lights and backgrounds.\nData exploration: review samples, delete blurry ones, keep classes balanced.\nModelling: click Train Model; the tool trains an image classifier (it reuses a pre-trained network).\nEvaluation: test with new items in Preview, note wrong or low-confidence results, add more data and retrain.\nDeployment: export the model (link or file) for use in a website or app at the school's dry-waste bin.",
+    "hi": "Problem scoping: मिला-जुला कचरा अलग करना कठिन है; लक्ष्य - चीज़ों को प्लास्टिक, काग़ज़ या धातु में बाँटना।\nData acquisition: तीन वर्ग बनाएँ और हर वर्ग के लिए अलग कोणों, रोशनी और पृष्ठभूमि से 100-200 webcam तस्वीरें लें।\nData exploration: नमूने देखें, धुंधली तस्वीरें हटाएँ, वर्ग संतुलित रखें।\nModelling: Train Model पर क्लिक करें; टूल image classifier ट्रेन करता है (यह पहले से ट्रेन किए नेटवर्क का उपयोग करता है)।\nEvaluation: Preview में नई चीज़ों से परखें, ग़लत या कम confidence वाले परिणाम नोट करें, और डेटा जोड़कर फिर ट्रेन करें।\nDeployment: मॉडल export करें (लिंक या फ़ाइल) ताकि स्कूल के सूखे-कचरे के डिब्बे पर वेबसाइट या ऐप में उपयोग हो।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: A face-recognition attendance system works well for most students but often fails for students who wear spectacles. What is the likely cause and how can it be fixed?",
+    "hi": "सोचिए: चेहरा-पहचान हाज़िरी प्रणाली ज़्यादातर विद्यार्थियों के लिए ठीक चलती है पर चश्मा पहनने वालों के लिए अक्सर विफल रहती है। संभावित कारण क्या है और इसे कैसे ठीक करें?"
+   },
+   "a": {
+    "en": "Likely cause: data bias - the training images had few faces with spectacles, so the model did not learn that variation.\nFix: collect more images of students with and without spectacles under different lighting; retrain and evaluate separately for each group; keep a manual backup for attendance.",
+    "hi": "संभावित कारण: डेटा पक्षपात - ट्रेनिंग तस्वीरों में चश्मे वाले चेहरे कम थे, इसलिए मॉडल ने वह भिन्नता नहीं सीखी।\nसुधार: अलग रोशनी में चश्मे के साथ और बिना चश्मे वाले विद्यार्थियों की और तस्वीरें जुटाएँ; फिर ट्रेन करें और हर समूह के लिए अलग से मूल्यांकन करें; हाज़िरी के लिए हाथ से रिकॉर्ड का विकल्प रखें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity: On graph paper, draw a 6 × 6 grayscale image of the letter 'L' using values 0 and 255. Apply the 3 × 3 kernel with every row [-1 0 1] to the top-left 3 × 3 patch, then one step to the right, and interpret the results.",
+    "hi": "गतिविधि: ग्राफ़ पेपर पर 0 और 255 मानों से अक्षर 'L' की 6 × 6 ग्रेस्केल तस्वीर बनाइए। हर पंक्ति [-1 0 1] वाले 3 × 3 kernel को ऊपर-बाएँ 3 × 3 टुकड़े पर, फिर एक कदम दाईं ओर लगाइए और परिणाम समझाइए।"
+   },
+   "a": {
+    "en": "Sample answer: put 255 in column 2 (rows 1-5) and in row 5 (columns 2-5); all other cells 0. Top-left patch (rows 1-3, columns 1-3):\n0 255 0\n0 255 0\n0 255 0\nEach row gives 0×(-1) + 255×0 + 0×1 = 0, so the output is 0: the left and right columns of the patch are equal.\nOne step right (columns 2-4):\n255 0 0 in each row → 255×(-1) + 0 + 0 = -255 per row; total -765. A large negative value shows a strong edge going from bright to dark (left to right). ReLU would turn it into 0, so another kernel (with signs reversed) would be needed to keep this edge. Answers vary with the drawing.",
+    "hi": "नमूना उत्तर: स्तंभ 2 (पंक्ति 1-5) और पंक्ति 5 (स्तंभ 2-5) में 255 रखें; बाक़ी सभी खानों में 0। ऊपर-बायाँ टुकड़ा (पंक्ति 1-3, स्तंभ 1-3):\n0 255 0\n0 255 0\n0 255 0\nहर पंक्ति से 0×(-1) + 255×0 + 0×1 = 0, इसलिए आउटपुट 0 है: टुकड़े के बाएँ और दाएँ स्तंभ बराबर हैं।\nएक कदम दाईं ओर (स्तंभ 2-4):\nहर पंक्ति में 255 0 0 → 255×(-1) + 0 + 0 = -255; कुल -765। बड़ा ऋणात्मक मान बाएँ से दाएँ चमकीले से गहरे की ओर तीखा किनारा दिखाता है। ReLU इसे 0 कर देगा, इसलिए इस किनारे को रखने के लिए उल्टे चिह्नों वाला दूसरा kernel चाहिए। उत्तर चित्र के अनुसार अलग हो सकते हैं।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Computer Vision is the AI domain that helps machines capture, process and understand images and videos and act on them.",
+   "Image processing improves or changes an image (output is an image); CV extracts meaning (output is information or a decision).",
+   "CV is used in face unlock, face filters, Google Lens, driver assistance, medical scans, crop-disease apps, number-plate reading, sports and environment monitoring.",
+   "CV tasks: image classification and classification + localisation (single object); object detection and instance segmentation (multiple objects).",
+   "A pixel is the smallest unit of an image; resolution = width × height; 1 megapixel ≈ one million pixels.",
+   "Pixel values are stored in 1 byte (8 bits), giving 256 values from 0 (black) to 255 (white).",
+   "Grayscale images have one channel; RGB images have three channels and can show about 16.7 million colours.",
+   "Features are useful patterns such as edges, corners and blobs; corners are the most useful because they are unique.",
+   "Convolution slides a kernel over an image, multiplying and adding values to produce a feature map; output size = N - K + 1 without padding.",
+   "A CNN has convolution layers (extract features), ReLU (negatives to 0), pooling layers (shrink maps; max or average) and fully connected layers (final class probabilities).",
+   "No-code tools such as Teachable Machine, Lobe and Orange Data Mining let you build CV models following the AI project cycle.",
+   "In the coral-bleaching project, Image Embedding + a learner + Test & Score + Confusion Matrix build and evaluate a healthy/bleached classifier.",
+   "CV faces challenges of lighting, occlusion and biased data, and raises privacy and deepfake concerns; humans must review important decisions."
+  ],
+  "hi": [
+   "कंप्यूटर विज़न AI का वह क्षेत्र है जो मशीनों को तस्वीरें और वीडियो लेने, प्रोसेस करने, समझने और उन पर कार्य करने में मदद करता है।",
+   "इमेज प्रोसेसिंग तस्वीर को सुधारती या बदलती है (आउटपुट तस्वीर); CV अर्थ निकालता है (आउटपुट जानकारी या निर्णय)।",
+   "CV का उपयोग फ़ेस अनलॉक, फ़ेस फ़िल्टर, Google Lens, ड्राइवर सहायता, चिकित्सा स्कैन, फसल-रोग ऐप, नंबर-प्लेट पढ़ने, खेल और पर्यावरण निगरानी में होता है।",
+   "CV कार्य: image classification और classification + localisation (एक वस्तु); object detection और instance segmentation (कई वस्तुएँ)।",
+   "पिक्सल तस्वीर की सबसे छोटी इकाई है; रेज़ोल्यूशन = चौड़ाई × ऊँचाई; 1 मेगापिक्सल ≈ दस लाख पिक्सल।",
+   "पिक्सल मान 1 byte (8 bits) में रखे जाते हैं, जिससे 0 (काला) से 255 (सफ़ेद) तक 256 मान मिलते हैं।",
+   "ग्रेस्केल तस्वीरों में एक channel होता है; RGB तस्वीरों में तीन channels होते हैं और वे लगभग 1.67 करोड़ रंग दिखा सकती हैं।",
+   "फ़ीचर किनारे, कोने और ब्लॉब जैसे उपयोगी पैटर्न हैं; कोने सबसे उपयोगी हैं क्योंकि वे अनोखे होते हैं।",
+   "Convolution में kernel तस्वीर पर सरकता है, मानों को गुणा और जोड़कर feature map बनाता है; बिना padding आउटपुट आकार = N - K + 1।",
+   "CNN में convolution परतें (फ़ीचर निकालना), ReLU (ऋणात्मक को 0), pooling परतें (map छोटा करना; max या average) और fully connected परतें (अंतिम वर्ग-संभावनाएँ) होती हैं।",
+   "Teachable Machine, Lobe और Orange Data Mining जैसे नो-कोड टूल से AI project cycle का पालन करते हुए CV मॉडल बनाए जा सकते हैं।",
+   "Coral-bleaching प्रोजेक्ट में Image Embedding + learner + Test & Score + Confusion Matrix से स्वस्थ/विरंजित classifier बनाया और परखा जाता है।",
+   "CV को रोशनी, आड़ और पक्षपाती डेटा की चुनौतियाँ होती हैं, और यह निजता व deepfake की चिंताएँ उठाता है; महत्वपूर्ण निर्णय इंसानों को जाँचने चाहिए।"
+  ]
+ }
+}

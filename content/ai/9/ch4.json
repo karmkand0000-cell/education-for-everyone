@@ -1,0 +1,2235 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "9",
+ "id": "ch4",
+ "intro": {
+  "en": "Every time you check a cricket scorecard, compare phone prices online, or see a Google Maps route turn red with traffic, you are reading data. AI systems learn only from data, so a person who works with AI must know how to collect it, clean it, protect it and make sense of it. This chapter teaches data literacy: the data pyramid, the data literacy framework, data privacy and security, types of data, data acquisition, preprocessing, data interpretation and the ways of presenting data in tables and graphs.",
+  "hi": "जब भी आप क्रिकेट का स्कोरकार्ड देखते हैं, ऑनलाइन फ़ोन के दाम मिलाते हैं, या Google Maps पर रास्ता ट्रैफ़िक से लाल होते देखते हैं, तब आप data पढ़ रहे होते हैं। AI सिस्टम केवल data से सीखते हैं, इसलिए AI के साथ काम करने वाले व्यक्ति को data इकट्ठा करना, साफ़ करना, सुरक्षित रखना और उसका अर्थ समझना आना चाहिए। यह अध्याय डेटा साक्षरता (data literacy) सिखाता है: data पिरामिड, data literacy framework, data की निजता और सुरक्षा, data के प्रकार, data acquisition, preprocessing, data interpretation और data को तालिकाओं व ग्राफ़ में प्रस्तुत करने के तरीके।"
+ },
+ "learn": {
+  "en": [
+   "What data literacy means and what a data-literate person can do",
+   "The data pyramid (DIKW): data, information, knowledge and wisdom",
+   "Steps to become data literate and the seven-step data literacy process framework",
+   "Data privacy, data security, cyber security do's and don'ts, and why they matter for AI",
+   "Types of data: qualitative and quantitative, discrete and continuous, and data used in the three AI domains",
+   "Data acquisition: discovery, augmentation, generation, primary and secondary sources, good and bad data, and ethics",
+   "Features of data, usability factors and data preprocessing, with a small Python example",
+   "Independent and dependent features in an AI model",
+   "The five stages from acquiring data to presenting it, and the difference between processing and interpretation",
+   "Qualitative and quantitative data interpretation, and textual, tabular and graphical presentation (bar, pie, line graphs)",
+   "Tools such as spreadsheets, Tableau and dashboards, and why data interpretation is important"
+  ],
+  "hi": [
+   "डेटा साक्षरता का अर्थ, और data-साक्षर व्यक्ति क्या-क्या कर सकता है",
+   "Data पिरामिड (DIKW): data, information, knowledge और wisdom",
+   "Data-साक्षर बनने के चरण और सात चरणों वाला data literacy process framework",
+   "Data privacy, data security, साइबर सुरक्षा के क्या करें और क्या न करें, और AI के लिए इनका महत्व",
+   "Data के प्रकार: गुणात्मक और मात्रात्मक, असतत और सतत, तथा AI के तीन domains में प्रयुक्त data",
+   "Data acquisition: discovery, augmentation, generation, प्राथमिक और द्वितीयक स्रोत, अच्छा और खराब data, और नैतिकता",
+   "Data की features, उपयोगिता के कारक और data preprocessing, एक छोटे Python उदाहरण के साथ",
+   "AI मॉडल में स्वतंत्र (independent) और आश्रित (dependent) features",
+   "Data प्राप्त करने से प्रस्तुत करने तक के पाँच चरण, और processing तथा interpretation में अंतर",
+   "गुणात्मक और मात्रात्मक data interpretation, तथा पाठ्य, सारणीबद्ध और ग्राफ़ीय प्रस्तुति (बार, पाई, लाइन ग्राफ़)",
+   "Spreadsheet, Tableau और dashboard जैसे tools, और data interpretation क्यों ज़रूरी है"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "4.1 What is data literacy?",
+    "hi": "4.1 डेटा साक्षरता क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Literacy means being able to read and write. In the same way, data literacy means being able to read, understand, work with and talk about data. A data-literate person can look at a table of numbers, a chart or a survey result and answer: what does this tell me, can I trust it, and what should I do because of it?",
+      "hi": "साक्षरता का अर्थ है पढ़ना-लिखना जानना। इसी तरह डेटा साक्षरता का अर्थ है data को पढ़ना, समझना, उसके साथ काम करना और उसके बारे में बात करना। Data-साक्षर व्यक्ति संख्याओं की तालिका, चार्ट या सर्वे के परिणाम को देखकर इन प्रश्नों के उत्तर दे सकता है: यह मुझे क्या बताता है, क्या मैं इस पर भरोसा कर सकता हूँ, और इसके आधार पर मुझे क्या करना चाहिए?"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data literacy",
+       "hi": "डेटा साक्षरता (Data literacy)"
+      },
+      "text": {
+       "en": "The ability to find, understand, explore, analyse, use and communicate data in a meaningful and responsible way.",
+       "hi": "Data को अर्थपूर्ण और ज़िम्मेदार ढंग से खोजने, समझने, जाँचने, विश्लेषण करने, उपयोग करने और दूसरों तक पहुँचाने की क्षमता।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why is it needed? Today schools, hospitals, shops, banks, farmers and governments all collect huge amounts of data. Big data on its own is confusing. Data literacy helps us summarise complex data so that a clear message comes out of it. For example, a school office may keep a neat table with each student's roll number, name, address, parent's job and travel time. The table is well arranged, but it does not tell us anything useful until we ask a question, for example 'How many students travel more than 45 minutes to school?' and then count. Only then does the table give an insight, such as 'the school needs one more bus route'.",
+      "hi": "इसकी ज़रूरत क्यों है? आज स्कूल, अस्पताल, दुकानें, बैंक, किसान और सरकारें सभी बहुत बड़ी मात्रा में data इकट्ठा करते हैं। अकेले बहुत सारा data उलझन पैदा करता है। डेटा साक्षरता हमें जटिल data का सार निकालने में मदद करती है ताकि उससे एक स्पष्ट संदेश निकले। उदाहरण के लिए, स्कूल का कार्यालय हर विद्यार्थी का रोल नंबर, नाम, पता, अभिभावक का काम और यात्रा में लगने वाला समय एक सुव्यवस्थित तालिका में रख सकता है। तालिका व्यवस्थित है, पर जब तक हम कोई प्रश्न न पूछें, जैसे 'कितने विद्यार्थी 45 मिनट से अधिक यात्रा करके आते हैं?', और फिर गिनती न करें, तब तक वह कुछ उपयोगी नहीं बताती। तभी तालिका से कोई अंतर्दृष्टि मिलती है, जैसे 'स्कूल को एक और बस रूट चाहिए'।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Reads data correctly from tables, charts and dashboards.",
+       "Checks where the data came from and whether it is reliable.",
+       "Asks good questions of the data and finds patterns and trends.",
+       "Uses data to make decisions instead of guessing.",
+       "Explains findings to others clearly, using words, tables or graphs.",
+       "Uses data ethically and protects people's privacy."
+      ],
+      "hi": [
+       "तालिकाओं, चार्ट और dashboard से data सही-सही पढ़ता है।",
+       "जाँचता है कि data कहाँ से आया और क्या वह भरोसेमंद है।",
+       "Data से अच्छे प्रश्न पूछता है और पैटर्न व रुझान (trends) खोजता है।",
+       "अनुमान लगाने के बजाय data के आधार पर निर्णय लेता है।",
+       "अपने निष्कर्ष दूसरों को शब्दों, तालिकाओं या ग्राफ़ से स्पष्ट समझाता है।",
+       "Data का नैतिक उपयोग करता है और लोगों की निजता की रक्षा करता है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: a data-literate person can do four things with data: read it, work with it, analyse it and argue (communicate) with it.",
+      "hi": "याद रखिए: data-साक्षर व्यक्ति data के साथ चार काम कर सकता है: उसे पढ़ना, उसके साथ काम करना, उसका विश्लेषण करना और उसके आधार पर तर्क करना (संवाद करना)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity: Impact of a news article. Aim: see how data is used in news. Need: a newspaper or news app. Pick one trending story that uses numbers (for example monsoon rainfall, a cricket series or exam results). What to do: write down every number in the story, where it came from, and what conclusion the reporter draws. What does it teach?",
+       "hi": "गतिविधि: समाचार लेख का प्रभाव। उद्देश्य: देखना कि समाचारों में data का उपयोग कैसे होता है। सामग्री: अख़बार या समाचार ऐप। संख्याओं वाली कोई एक चर्चित ख़बर चुनिए (जैसे मानसून वर्षा, क्रिकेट सीरीज़ या परीक्षा परिणाम)। क्या करें: ख़बर की हर संख्या, उसका स्रोत, और रिपोर्टर का निकाला गया निष्कर्ष लिखिए। इससे क्या सीख मिलती है?"
+      },
+      "a": {
+       "en": "Step 1: List the numbers, e.g. 'rainfall 12% above normal in July'.\nStep 2: Note the source, e.g. 'India Meteorological Department (IMD)'.\nStep 3: Ask: is the source trustworthy? Is the comparison fair (same month, same region)?\nStep 4: Write the message in one line: 'July was wetter than usual, so sowing may go well'.\nLearning: news uses data to persuade us; a data-literate reader checks the source and the comparison before believing the headline.",
+       "hi": "चरण 1: संख्याएँ लिखिए, जैसे 'जुलाई में वर्षा सामान्य से 12% अधिक'।\nचरण 2: स्रोत लिखिए, जैसे 'भारत मौसम विज्ञान विभाग (IMD)'।\nचरण 3: पूछिए: क्या स्रोत भरोसेमंद है? क्या तुलना उचित है (वही महीना, वही क्षेत्र)?\nचरण 4: संदेश एक पंक्ति में लिखिए: 'जुलाई सामान्य से अधिक बारिश वाला रहा, इसलिए बुवाई अच्छी हो सकती है'।\nसीख: समाचार data से हमें प्रभावित करते हैं; data-साक्षर पाठक शीर्षक पर विश्वास करने से पहले स्रोत और तुलना जाँचता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.2 The data pyramid (DIKW)",
+    "hi": "4.2 Data पिरामिड (DIKW)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Raw data by itself rarely helps. It becomes useful as it moves up a pyramid of four levels: Data at the bottom, then Information, then Knowledge, and Wisdom at the top. This is called the DIKW pyramid. Picture a triangle: the wide base is a huge amount of raw facts; each level above is smaller but more valuable.",
+      "hi": "अकेला कच्चा data शायद ही मदद करता है। वह चार स्तरों वाले पिरामिड में ऊपर चढ़ते हुए उपयोगी बनता है: सबसे नीचे Data, फिर Information (सूचना), फिर Knowledge (ज्ञान), और सबसे ऊपर Wisdom (विवेक)। इसे DIKW पिरामिड कहते हैं। एक त्रिभुज की कल्पना कीजिए: चौड़ा आधार बहुत सारे कच्चे तथ्य हैं; ऊपर का हर स्तर छोटा है पर अधिक मूल्यवान है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Level",
+        "What it is",
+        "Question it answers",
+        "Traffic-light example"
+       ],
+       "hi": [
+        "स्तर",
+        "यह क्या है",
+        "किस प्रश्न का उत्तर देता है",
+        "ट्रैफ़िक-लाइट उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Raw facts and figures with no context",
+         "-",
+         "A light is red"
+        ],
+        [
+         "Information",
+         "Data that is organised and given context",
+         "Who, what, when, where?",
+         "The traffic light I am driving towards is red"
+        ],
+        [
+         "Knowledge",
+         "Information connected with experience and understanding",
+         "How?",
+         "If I keep driving through a red light I may hit a vehicle, so I should apply the brakes"
+        ],
+        [
+         "Wisdom",
+         "Using knowledge with good judgement to decide the best action",
+         "Why?",
+         "Stop at red because rules keep everyone safe, even when the road looks empty"
+        ]
+       ],
+       "hi": [
+        [
+         "Data",
+         "बिना संदर्भ के कच्चे तथ्य और आँकड़े",
+         "-",
+         "एक बत्ती लाल है"
+        ],
+        [
+         "Information",
+         "व्यवस्थित और संदर्भ सहित data",
+         "कौन, क्या, कब, कहाँ?",
+         "जिस ट्रैफ़िक लाइट की ओर मैं जा रहा हूँ, वह लाल है"
+        ],
+        [
+         "Knowledge",
+         "अनुभव और समझ से जुड़ी सूचना",
+         "कैसे?",
+         "लाल बत्ती पार करने पर किसी वाहन से टक्कर हो सकती है, इसलिए ब्रेक लगाने चाहिए"
+        ],
+        [
+         "Wisdom",
+         "अच्छे विवेक से ज्ञान का उपयोग करके सबसे अच्छा निर्णय लेना",
+         "क्यों?",
+         "लाल पर रुको क्योंकि नियम सबको सुरक्षित रखते हैं, चाहे सड़क खाली दिखे"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Place each statement on the correct level of the pyramid: (a) 31, 33, 38, 41 (b) Delhi's maximum temperature rose from 31 °C to 41 °C between March and May (c) Temperatures rise sharply before the monsoon, so heatwaves are likely in May (d) The school shifts sports day to February and asks students to carry water bottles.",
+       "hi": "हर कथन को पिरामिड के सही स्तर पर रखिए: (a) 31, 33, 38, 41 (b) मार्च से मई के बीच दिल्ली का अधिकतम तापमान 31 °C से बढ़कर 41 °C हो गया (c) मानसून से पहले तापमान तेज़ी से बढ़ता है, इसलिए मई में लू की संभावना होती है (d) स्कूल खेल दिवस को फ़रवरी में कर देता है और विद्यार्थियों से पानी की बोतल लाने को कहता है।"
+      },
+      "a": {
+       "en": "(a) Data: bare numbers, no context.\n(b) Information: the numbers now have place, time and unit.\n(c) Knowledge: we understand how temperature behaves and what follows.\n(d) Wisdom: a sensible action chosen because of the knowledge.",
+       "hi": "(a) Data: केवल संख्याएँ, कोई संदर्भ नहीं।\n(b) Information: संख्याओं के साथ अब स्थान, समय और मात्रक हैं।\n(c) Knowledge: हम समझते हैं कि तापमान कैसे बदलता है और आगे क्या होगा।\n(d) Wisdom: ज्ञान के आधार पर चुना गया समझदारी भरा कदम।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Data → Information (what?) → Knowledge (how?) → Wisdom (why?). AI systems mostly work at the lower levels; humans must supply wisdom.",
+      "hi": "याद रखिए: Data → Information (क्या?) → Knowledge (कैसे?) → Wisdom (क्यों?)। AI सिस्टम अधिकतर निचले स्तरों पर काम करते हैं; विवेक मनुष्य को देना होता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.3 How to become data literate",
+    "hi": "4.3 Data-साक्षर कैसे बनें"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Understand the basics of data: what data is, its types, and where it comes from.",
+       "Develop statistical and analytical skills: averages, percentages, comparisons, trends.",
+       "Learn to work with data tools: spreadsheets (Google Sheets, Excel, LibreOffice Calc), charts and simple visualisation tools.",
+       "Interpret data accurately: read charts carefully, check scales and units, avoid jumping to conclusions.",
+       "Develop critical thinking: ask who collected the data, why, from how many people, and whether anything is missing."
+      ],
+      "hi": [
+       "Data की मूल बातें समझिए: data क्या है, उसके प्रकार, और वह कहाँ से आता है।",
+       "सांख्यिकीय और विश्लेषणात्मक कौशल विकसित कीजिए: औसत, प्रतिशत, तुलना, रुझान।",
+       "Data tools के साथ काम करना सीखिए: spreadsheet (Google Sheets, Excel, LibreOffice Calc), चार्ट और सरल visualisation tools।",
+       "Data की सही व्याख्या कीजिए: चार्ट ध्यान से पढ़िए, पैमाना और मात्रक जाँचिए, जल्दबाज़ी में निष्कर्ष मत निकालिए।",
+       "आलोचनात्मक सोच विकसित कीजिए: पूछिए कि data किसने, क्यों और कितने लोगों से इकट्ठा किया, और क्या कुछ छूट गया है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Scenario: buying a video game online. Imran has ₹2,000 and wants a football game for his family laptop. On a shopping site there are 40 options. Without data literacy he might pick the first flashy advertisement. With data literacy he asks three questions and uses the site's data to answer each one.",
+      "hi": "परिदृश्य: ऑनलाइन वीडियो गेम ख़रीदना। इमरान के पास ₹2,000 हैं और वह परिवार के लैपटॉप के लिए फ़ुटबॉल गेम लेना चाहता है। शॉपिंग साइट पर 40 विकल्प हैं। डेटा साक्षरता के बिना वह पहला चमकदार विज्ञापन चुन सकता है। डेटा साक्षरता के साथ वह तीन प्रश्न पूछता है और हर प्रश्न का उत्तर साइट के data से निकालता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Question Imran asks",
+        "Data he uses",
+        "Action"
+       ],
+       "hi": [
+        "इमरान का प्रश्न",
+        "वह कौन-सा data उपयोग करता है",
+        "कार्य"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Which is the cheapest?",
+         "Price",
+         "Sort by price: low to high; remove games above ₹2,000"
+        ],
+        [
+         "Which do people like most?",
+         "User ratings and number of reviews",
+         "Prefer 4.3 stars from 5,000 reviews over 5 stars from 3 reviews"
+        ],
+        [
+         "Will it run on my laptop?",
+         "System requirements (RAM, storage, operating system)",
+         "Compare with the laptop's settings page; drop games that need more"
+        ]
+       ],
+       "hi": [
+        [
+         "सबसे सस्ता कौन-सा है?",
+         "क़ीमत",
+         "क़ीमत के अनुसार कम से अधिक क्रम में लगाओ; ₹2,000 से ऊपर वाले हटाओ"
+        ],
+        [
+         "लोगों को सबसे अधिक कौन-सा पसंद है?",
+         "उपयोगकर्ता रेटिंग और समीक्षाओं की संख्या",
+         "3 समीक्षाओं वाले 5 स्टार के बजाय 5,000 समीक्षाओं वाले 4.3 स्टार चुनो"
+        ],
+        [
+         "क्या यह मेरे लैपटॉप पर चलेगा?",
+         "सिस्टम आवश्यकताएँ (RAM, स्टोरेज, ऑपरेटिंग सिस्टम)",
+         "लैपटॉप की settings से मिलाओ; जिनको अधिक चाहिए उन्हें हटाओ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Tip: a rating from very few people is weak evidence. More data from more people usually gives a more reliable picture.",
+      "hi": "सुझाव: बहुत कम लोगों की रेटिंग कमज़ोर प्रमाण है। अधिक लोगों से मिला अधिक data आम तौर पर अधिक भरोसेमंद तस्वीर देता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.4 The data literacy process framework",
+    "hi": "4.4 Data literacy process framework"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Organisations such as schools and companies follow a framework (a guiding set of steps) so that everyone uses data in a planned and aware way. It is iterative, which means after the last step you return to the first step and improve again. The example below follows a school that wants to improve student engagement (how actively students take part in class).",
+      "hi": "स्कूल और कंपनियाँ जैसी संस्थाएँ एक framework (मार्गदर्शक चरणों का समूह) अपनाती हैं ताकि हर कोई data का योजनाबद्ध और जागरूक तरीके से उपयोग करे। यह पुनरावृत्त (iterative) है, अर्थात अंतिम चरण के बाद फिर पहले चरण पर लौटकर सुधार किया जाता है। नीचे का उदाहरण एक स्कूल का है जो विद्यार्थियों की सहभागिता (कक्षा में वे कितनी सक्रियता से भाग लेते हैं) बढ़ाना चाहता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Step",
+        "Meaning",
+        "School example"
+       ],
+       "hi": [
+        "चरण",
+        "अर्थ",
+        "स्कूल का उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Plan",
+         "Decide the goal and what data is needed",
+         "Goal: raise engagement; data needed: attendance, assignment submission, test scores, feedback"
+        ],
+        [
+         "2. Communicate",
+         "Share the goal and plan with all stakeholders",
+         "Principal explains the plan to teachers, students and parents"
+        ],
+        [
+         "3. Assess",
+         "Look at the current data and systems",
+         "Attendance drops on Mondays; Class 9 maths submissions are low"
+        ],
+        [
+         "4. Develop culture",
+         "Build a habit of decisions based on data",
+         "Teachers check a simple class dashboard every week"
+        ],
+        [
+         "5. Prescriptive",
+         "Recommend actions based on the data",
+         "Extra doubt-clearing periods, small rewards for regular submission"
+        ],
+        [
+         "6. Learning",
+         "Understand the effect of the actions",
+         "Watch how attendance and submissions change over a month"
+        ],
+        [
+         "7. Evaluate",
+         "Measure success and refine the strategy",
+         "Submissions rose from 60% to 80%; keep the idea and try it in science too"
+        ]
+       ],
+       "hi": [
+        [
+         "1. योजना (Plan)",
+         "लक्ष्य और ज़रूरी data तय करना",
+         "लक्ष्य: सहभागिता बढ़ाना; ज़रूरी data: उपस्थिति, असाइनमेंट जमा करना, टेस्ट अंक, फ़ीडबैक"
+        ],
+        [
+         "2. संवाद (Communicate)",
+         "लक्ष्य और योजना सभी हितधारकों से साझा करना",
+         "प्रधानाचार्य शिक्षकों, विद्यार्थियों और अभिभावकों को योजना समझाते हैं"
+        ],
+        [
+         "3. आकलन (Assess)",
+         "मौजूदा data और व्यवस्था को देखना",
+         "सोमवार को उपस्थिति घटती है; कक्षा 9 गणित में असाइनमेंट कम जमा होते हैं"
+        ],
+        [
+         "4. संस्कृति विकसित करना (Develop culture)",
+         "Data के आधार पर निर्णय की आदत बनाना",
+         "शिक्षक हर सप्ताह एक सरल कक्षा dashboard देखते हैं"
+        ],
+        [
+         "5. निर्देशात्मक (Prescriptive)",
+         "Data के आधार पर कदम सुझाना",
+         "अतिरिक्त शंका-समाधान पीरियड, नियमित जमा करने पर छोटे पुरस्कार"
+        ],
+        [
+         "6. सीखना (Learning)",
+         "कदमों का प्रभाव समझना",
+         "एक महीने में उपस्थिति और असाइनमेंट में बदलाव देखना"
+        ],
+        [
+         "7. मूल्यांकन (Evaluate)",
+         "सफलता मापना और रणनीति सुधारना",
+         "असाइनमेंट 60% से बढ़कर 80% हुए; यह तरीका रखें और विज्ञान में भी आज़माएँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Memory trick for the seven steps: Plan, Communicate, Assess, Develop culture, Prescriptive, Learning, Evaluate — then repeat.",
+      "hi": "सात चरण याद रखने का तरीका: योजना, संवाद, आकलन, संस्कृति, निर्देश, सीखना, मूल्यांकन — और फिर दोहराना।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.5 Data privacy",
+    "hi": "4.5 Data privacy (डेटा निजता)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data privacy",
+       "hi": "Data privacy (डेटा निजता)"
+      },
+      "text": {
+       "en": "Also called information privacy: the proper handling of personal and sensitive data (such as name, phone number, Aadhaar number, health records, bank details, photos) so that it is collected, used and shared only in fair, lawful ways and with the person's knowledge and consent.",
+       "hi": "इसे सूचना निजता भी कहते हैं: व्यक्तिगत और संवेदनशील data (जैसे नाम, फ़ोन नंबर, आधार नंबर, स्वास्थ्य रिकॉर्ड, बैंक विवरण, फ़ोटो) का सही प्रबंधन, ताकि वह केवल उचित, क़ानूनी तरीकों से और व्यक्ति की जानकारी व सहमति से इकट्ठा, उपयोग और साझा किया जाए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Privacy is about who is allowed to see and use your data and for what purpose. In India, the Digital Personal Data Protection Act, 2023 (DPDP Act) sets rules for organisations that collect personal data in digital form: they must have a clear purpose, take consent, keep the data safe and let people correct or erase their data. For children, organisations need verifiable consent from a parent or guardian.",
+      "hi": "निजता का संबंध इससे है कि आपका data कौन देख और उपयोग कर सकता है और किस उद्देश्य से। भारत में डिजिटल व्यक्तिगत डेटा संरक्षण अधिनियम, 2023 (DPDP Act) उन संस्थाओं के लिए नियम बनाता है जो डिजिटल रूप में व्यक्तिगत data इकट्ठा करती हैं: उनका उद्देश्य स्पष्ट होना चाहिए, सहमति लेनी चाहिए, data सुरक्षित रखना चाहिए और लोगों को अपना data सुधारने या मिटवाने देना चाहिए। बच्चों के मामले में संस्थाओं को माता-पिता या अभिभावक की सत्यापित सहमति चाहिए।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Know what data is collected, how it is handled and where it is stored.",
+       "Collect only the data the project actually needs (data minimisation). A school quiz app does not need a student's home address.",
+       "Take consent before collecting data, and explain in simple words what it will be used for.",
+       "Give people the right to see, correct or delete their data.",
+       "Remove names and IDs (anonymise) when data is used for analysis or AI training."
+      ],
+      "hi": [
+       "जानिए कि कौन-सा data इकट्ठा होता है, उसे कैसे संभाला जाता है और वह कहाँ संग्रहीत है।",
+       "केवल उतना data इकट्ठा कीजिए जितना प्रोजेक्ट को सचमुच चाहिए (data minimisation)। स्कूल के क्विज़ ऐप को विद्यार्थी के घर का पता नहीं चाहिए।",
+       "Data इकट्ठा करने से पहले सहमति लीजिए, और सरल शब्दों में बताइए कि उसका उपयोग किसलिए होगा।",
+       "लोगों को अपना data देखने, सुधारने या मिटवाने का अधिकार दीजिए।",
+       "विश्लेषण या AI प्रशिक्षण में data का उपयोग करते समय नाम और ID हटा दीजिए (anonymise)।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: never type your Aadhaar number, passwords, OTPs, home address or photos into a chatbot or an unknown website. If an app asks for more data than it needs, ask a trusted adult before agreeing.",
+      "hi": "सुरक्षा: अपना आधार नंबर, पासवर्ड, OTP, घर का पता या फ़ोटो किसी chatbot या अनजान वेबसाइट में कभी न डालें। यदि कोई ऐप ज़रूरत से अधिक data माँगे, तो सहमति देने से पहले किसी भरोसेमंद बड़े से पूछिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.6 Data security and cyber security",
+    "hi": "4.6 Data security और साइबर सुरक्षा"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data security",
+       "hi": "Data security (डेटा सुरक्षा)"
+      },
+      "text": {
+       "en": "Protecting digital information from unauthorised access, corruption (damage) or theft throughout its whole life: when it is collected, stored, used, shared and finally deleted.",
+       "hi": "डिजिटल सूचना को उसके पूरे जीवनकाल में — इकट्ठा करने, संग्रह, उपयोग, साझा करने और अंत में मिटाने तक — अनधिकृत पहुँच, बिगड़ने (क्षति) या चोरी से बचाना।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Authentication: proving who you are with passwords, PINs, fingerprints or OTPs.",
+       "Access control: only the right people can open certain data (a class teacher sees her class's marks, not the whole school's salary records).",
+       "Encryption: scrambling data into a secret code so that stolen data cannot be read without the key. Messaging apps that offer end-to-end encryption are an example.",
+       "Network security: firewalls and secure Wi-Fi that block outsiders.",
+       "Backups: extra copies so that data is not lost if a device breaks."
+      ],
+      "hi": [
+       "प्रमाणीकरण (Authentication): पासवर्ड, PIN, फ़िंगरप्रिंट या OTP से यह साबित करना कि आप कौन हैं।",
+       "पहुँच नियंत्रण (Access control): केवल सही लोग ही कुछ data खोल सकें (कक्षा शिक्षिका अपनी कक्षा के अंक देखती है, पूरे स्कूल का वेतन रिकॉर्ड नहीं)।",
+       "एन्क्रिप्शन (Encryption): data को गुप्त कोड में बदलना ताकि चोरी हुआ data कुंजी के बिना पढ़ा न जा सके। End-to-end encryption देने वाले मैसेजिंग ऐप इसका उदाहरण हैं।",
+       "नेटवर्क सुरक्षा: firewall और सुरक्षित Wi-Fi जो बाहरी लोगों को रोकते हैं।",
+       "बैकअप: अतिरिक्त प्रतियाँ ताकि डिवाइस ख़राब होने पर data न खोए।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Why does data security matter more every year? More and more data is stored on cloud servers, so a single break-in can expose millions of records. Cyber attacks such as phishing, malware and ransomware affect individuals, schools, hospitals and banks alike. Technology changes fast, and attackers keep finding new tricks, so security must keep improving too.",
+      "hi": "हर साल data security का महत्व क्यों बढ़ता जा रहा है? अधिकाधिक data cloud सर्वरों पर रखा जाता है, इसलिए एक ही सेंध से लाखों रिकॉर्ड उजागर हो सकते हैं। Phishing, malware और ransomware जैसे साइबर हमले व्यक्तियों, स्कूलों, अस्पतालों और बैंकों सभी को प्रभावित करते हैं। तकनीक तेज़ी से बदलती है और हमलावर नई चालें खोजते रहते हैं, इसलिए सुरक्षा को भी लगातार बेहतर होना पड़ता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Data privacy",
+        "Data security"
+       ],
+       "hi": [
+        "Data privacy",
+        "Data security"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who may collect and use data, and for what purpose",
+         "How data is protected from attackers and accidents"
+        ],
+        [
+         "Focus on rights, consent and rules",
+         "Focus on tools and methods: passwords, encryption, firewalls"
+        ],
+        [
+         "Example: an app should not sell your contact list",
+         "Example: the app's server must not be hacked"
+        ],
+        [
+         "Privacy needs security",
+         "Security alone does not guarantee privacy (a company could securely store data it should never have collected)"
+        ]
+       ],
+       "hi": [
+        [
+         "कौन data इकट्ठा और उपयोग कर सकता है, और किस उद्देश्य से",
+         "Data को हमलावरों और दुर्घटनाओं से कैसे बचाया जाता है"
+        ],
+        [
+         "अधिकार, सहमति और नियमों पर ध्यान",
+         "Tools और तरीकों पर ध्यान: पासवर्ड, encryption, firewall"
+        ],
+        [
+         "उदाहरण: ऐप को आपकी contact list नहीं बेचनी चाहिए",
+         "उदाहरण: ऐप का सर्वर हैक नहीं होना चाहिए"
+        ],
+        [
+         "निजता के लिए सुरक्षा ज़रूरी है",
+         "केवल सुरक्षा से निजता की गारंटी नहीं (कंपनी वह data भी सुरक्षित रख सकती है जो उसे कभी इकट्ठा ही नहीं करना चाहिए था)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Cyber security",
+       "hi": "साइबर सुरक्षा (Cyber security)"
+      },
+      "text": {
+       "en": "The practice of protecting computers, servers, mobile devices, networks and data from harmful digital attacks.",
+       "hi": "कंप्यूटर, सर्वर, मोबाइल डिवाइस, नेटवर्क और data को हानिकारक डिजिटल हमलों से बचाने का अभ्यास।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Do's",
+        "Don'ts"
+       ],
+       "hi": [
+        "क्या करें",
+        "क्या न करें"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Use strong, different passwords for each account",
+         "Do not share personal details (full name, phone, address, school) with strangers online"
+        ],
+        [
+         "Turn on two-factor authentication (2FA)",
+         "Do not send or post your pictures to unknown people"
+        ],
+        [
+         "Download apps only from trusted sources and scan files",
+         "Do not open unknown emails, links or attachments"
+        ],
+        [
+         "Prefer websites that start with https:// (the padlock)",
+         "Never reply to messages asking for bank details, UPI PIN or OTP"
+        ],
+        [
+         "Keep the browser, operating system and antivirus updated",
+         "Never share passwords or security answers, even with friends"
+        ],
+        [
+         "Set social media accounts to private",
+         "Do not use pirated (illegally copied) software"
+        ],
+        [
+         "Lock your screen when you leave the device",
+         "Do not bully, insult or use offensive language online"
+        ],
+        [
+         "Accept requests only from people you know",
+         "Do not use open public Wi-Fi for banking"
+        ],
+        [
+         "Use a secure, password-protected Wi-Fi",
+         "Do not forward unverified messages"
+        ],
+        [
+         "Report cyberbullying or anything scary to a trusted adult; in India you can also report cyber crime at cybercrime.gov.in or the helpline 1930",
+         "Do not panic or pay if someone threatens you online; tell an adult"
+        ]
+       ],
+       "hi": [
+        [
+         "हर खाते के लिए मज़बूत और अलग-अलग पासवर्ड रखिए",
+         "अजनबियों से ऑनलाइन व्यक्तिगत विवरण (पूरा नाम, फ़ोन, पता, स्कूल) साझा न करें"
+        ],
+        [
+         "Two-factor authentication (2FA) चालू कीजिए",
+         "अनजान लोगों को अपनी तस्वीरें न भेजें, न पोस्ट करें"
+        ],
+        [
+         "ऐप केवल भरोसेमंद स्रोतों से डाउनलोड कीजिए और फ़ाइलें स्कैन कीजिए",
+         "अनजान ईमेल, लिंक या attachment न खोलें"
+        ],
+        [
+         "https:// (ताले के निशान) वाली वेबसाइटों को प्राथमिकता दीजिए",
+         "बैंक विवरण, UPI PIN या OTP माँगने वाले संदेशों का कभी जवाब न दें"
+        ],
+        [
+         "ब्राउज़र, ऑपरेटिंग सिस्टम और antivirus अपडेट रखिए",
+         "पासवर्ड या सुरक्षा प्रश्नों के उत्तर कभी साझा न करें, दोस्तों से भी नहीं"
+        ],
+        [
+         "सोशल मीडिया खाते private रखिए",
+         "Pirated (ग़ैरक़ानूनी रूप से कॉपी किया गया) software उपयोग न करें"
+        ],
+        [
+         "डिवाइस छोड़ते समय स्क्रीन लॉक कीजिए",
+         "ऑनलाइन किसी को धमकाएँ, अपमानित न करें या अपशब्द न कहें"
+        ],
+        [
+         "केवल परिचित लोगों के अनुरोध स्वीकार कीजिए",
+         "बैंकिंग के लिए खुला सार्वजनिक Wi-Fi उपयोग न करें"
+        ],
+        [
+         "सुरक्षित, पासवर्ड वाला Wi-Fi उपयोग कीजिए",
+         "बिना जाँचे संदेश आगे न भेजें"
+        ],
+        [
+         "साइबर बुलिंग या किसी डरावनी बात की सूचना भरोसेमंद बड़े को दीजिए; भारत में cybercrime.gov.in या हेल्पलाइन 1930 पर भी शिकायत कर सकते हैं",
+         "कोई ऑनलाइन धमकाए तो घबराएँ नहीं और पैसे न दें; किसी बड़े को बताएँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How are privacy and security connected to AI? AI models are trained on large datasets, which often contain personal data such as photos, voices, messages or health records. If such data is collected without consent, the model breaks privacy. If the dataset or the model is stolen, people's details can leak. AI can also help security: banks use AI to flag unusual UPI or card transactions, and email services use AI to filter spam and phishing. So the AI project cycle must include privacy and security at every stage, from data acquisition to deployment.",
+      "hi": "निजता और सुरक्षा का AI से क्या संबंध है? AI मॉडल बड़े datasets पर प्रशिक्षित होते हैं, जिनमें अक्सर फ़ोटो, आवाज़, संदेश या स्वास्थ्य रिकॉर्ड जैसा व्यक्तिगत data होता है। यदि ऐसा data बिना सहमति के लिया गया, तो मॉडल निजता का उल्लंघन करता है। यदि dataset या मॉडल चोरी हो जाए, तो लोगों की जानकारी लीक हो सकती है। AI सुरक्षा में मदद भी करता है: बैंक असामान्य UPI या कार्ड लेन-देन पहचानने के लिए AI का उपयोग करते हैं, और ईमेल सेवाएँ spam और phishing छाँटने के लिए AI का उपयोग करती हैं। इसलिए AI project cycle के हर चरण में, data acquisition से deployment तक, निजता और सुरक्षा शामिल होनी चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.7 What is data? Types of data",
+    "hi": "4.7 Data क्या है? Data के प्रकार"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data",
+       "hi": "Data (डेटा)"
+      },
+      "text": {
+       "en": "Representations of facts, observations or instructions — numbers, text, images, audio or video — in a form that humans or machines can store and process.",
+       "hi": "तथ्यों, अवलोकनों या निर्देशों का ऐसा रूप — संख्याएँ, पाठ, चित्र, ऑडियो या वीडियो — जिसे मनुष्य या मशीन संग्रहीत और संसाधित कर सकें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Data is broadly of two kinds. Qualitative (textual or categorical) data describes qualities in words or labels: favourite subject, colour of a car, a customer's review, the state you live in. It is used heavily in Natural Language Processing. Quantitative (numeric) data is made of numbers that can be counted or measured: marks, height, runs, price, rainfall.",
+      "hi": "Data मुख्यतः दो प्रकार का होता है। गुणात्मक (qualitative, पाठ्य या श्रेणीगत) data गुणों को शब्दों या लेबल में बताता है: पसंदीदा विषय, कार का रंग, ग्राहक की समीक्षा, आप किस राज्य में रहते हैं। Natural Language Processing में इसका बहुत उपयोग होता है। मात्रात्मक (quantitative, संख्यात्मक) data ऐसी संख्याओं से बनता है जिन्हें गिना या मापा जा सके: अंक, ऊँचाई, रन, क़ीमत, वर्षा।"
+     }
+    },
+    {
+     "p": {
+      "en": "Quantitative data is further divided. Discrete data can take only separate, countable values, usually whole numbers: number of students in a class (42, not 42.5), number of sixes hit, number of siblings. Continuous data can take any value in a range, including decimals, because it is measured: height (152.4 cm), weight, temperature (36.8 °C), time to run 100 m, voltage.",
+      "hi": "मात्रात्मक data आगे बँटता है। असतत (discrete) data केवल अलग-अलग, गिने जा सकने वाले मान लेता है, आम तौर पर पूर्ण संख्याएँ: कक्षा में विद्यार्थियों की संख्या (42, 42.5 नहीं), लगाए गए छक्के, भाई-बहनों की संख्या। सतत (continuous) data किसी सीमा में कोई भी मान, दशमलव सहित, ले सकता है क्योंकि वह मापा जाता है: ऊँचाई (152.4 cm), वज़न, तापमान (36.8 °C), 100 m दौड़ने का समय, वोल्टेज।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "Qualitative",
+        "Quantitative"
+       ],
+       "hi": [
+        "आधार",
+        "गुणात्मक",
+        "मात्रात्मक"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Nature",
+         "Words, labels, categories",
+         "Numbers"
+        ],
+        [
+         "Answers",
+         "What kind? Why? How do people feel?",
+         "How many? How much? How often?"
+        ],
+        [
+         "Examples",
+         "Blood group, review text, city name, song genre",
+         "Age, marks, price, song length"
+        ],
+        [
+         "Analysis",
+         "Grouping, coding themes, reading",
+         "Counting, averages, graphs, statistics"
+        ]
+       ],
+       "hi": [
+        [
+         "स्वरूप",
+         "शब्द, लेबल, श्रेणियाँ",
+         "संख्याएँ"
+        ],
+        [
+         "उत्तर देता है",
+         "किस प्रकार? क्यों? लोग कैसा महसूस करते हैं?",
+         "कितने? कितना? कितनी बार?"
+        ],
+        [
+         "उदाहरण",
+         "रक्त समूह, समीक्षा का पाठ, शहर का नाम, गाने की शैली",
+         "आयु, अंक, क़ीमत, गाने की अवधि"
+        ],
+        [
+         "विश्लेषण",
+         "समूह बनाना, विषयों को कोड करना, पढ़ना",
+         "गिनना, औसत, ग्राफ़, सांख्यिकी"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Careful: a number is not always quantitative. A PIN code, roll number, mobile number or jersey number is a label; adding two PIN codes means nothing, so these are qualitative (categorical). A year such as 2024 in a spreadsheet is quantitative when you use it to find gaps in time (2024 − 2019 = 5 years).",
+      "hi": "सावधान: हर संख्या मात्रात्मक नहीं होती। पिन कोड, रोल नंबर, मोबाइल नंबर या जर्सी नंबर एक लेबल है; दो पिन कोड जोड़ने का कोई अर्थ नहीं, इसलिए ये गुणात्मक (श्रेणीगत) हैं। Spreadsheet में 2024 जैसा वर्ष तब मात्रात्मक है जब आप उससे समय का अंतर निकालते हैं (2024 − 2019 = 5 वर्ष)।"
+     }
+    },
+    {
+     "p": {
+      "en": "Levels (scales) of measurement. Statisticians also sort data into four scales, which decide what maths is allowed. Nominal: names or labels with no order (blood group, state). Ordinal: categories with an order but unequal gaps (ranks 1st, 2nd, 3rd; ratings poor/fair/good). Interval: numbers with equal gaps but no true zero (temperature in °C; 0 °C does not mean 'no temperature'). Ratio: numbers with equal gaps and a true zero (height, marks, money; ₹200 really is twice ₹100).",
+      "hi": "मापन के स्तर (scales)। सांख्यिकीविद data को चार पैमानों में भी बाँटते हैं, जिनसे तय होता है कि कौन-सा गणित किया जा सकता है। Nominal (नाममात्र): बिना क्रम के नाम या लेबल (रक्त समूह, राज्य)। Ordinal (क्रमसूचक): क्रम वाली श्रेणियाँ पर असमान अंतर (रैंक 1, 2, 3; रेटिंग ख़राब/ठीक/अच्छा)। Interval (अंतराल): समान अंतर वाली संख्याएँ पर कोई वास्तविक शून्य नहीं (°C में तापमान; 0 °C का अर्थ 'तापमान नहीं' नहीं है)। Ratio (अनुपात): समान अंतर और वास्तविक शून्य वाली संख्याएँ (ऊँचाई, अंक, पैसा; ₹200 सचमुच ₹100 का दुगुना है)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "AI domain",
+        "Main type of data",
+        "Indian example"
+       ],
+       "hi": [
+        "AI domain",
+        "मुख्य data प्रकार",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data Science / Statistical Data",
+         "Numbers and tables (spreadsheets, databases)",
+         "Predicting crop yield from rainfall and soil data; IPL score prediction"
+        ],
+        [
+         "Computer Vision",
+         "Images and videos (pixels)",
+         "A crop-disease app that recognises leaf spots from a phone photo; DigiYatra face check at airports"
+        ],
+        [
+         "Natural Language Processing",
+         "Text and speech",
+         "Bhashini translating Hindi speech into Tamil; chatbots answering in Indian languages"
+        ]
+       ],
+       "hi": [
+        [
+         "Data Science / सांख्यिकीय data",
+         "संख्याएँ और तालिकाएँ (spreadsheet, database)",
+         "वर्षा और मिट्टी के data से फ़सल उत्पादन का अनुमान; IPL स्कोर का अनुमान"
+        ],
+        [
+         "Computer Vision",
+         "चित्र और वीडियो (pixels)",
+         "फ़ोन की फ़ोटो से पत्ती के धब्बे पहचानने वाला फ़सल-रोग ऐप; हवाई अड्डों पर DigiYatra चेहरा जाँच"
+        ],
+        [
+         "Natural Language Processing",
+         "पाठ और वाणी",
+         "Bhashini द्वारा हिंदी वाणी का तमिल में अनुवाद; भारतीय भाषाओं में उत्तर देने वाले chatbot"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.8 Data acquisition",
+    "hi": "4.8 Data acquisition (डेटा प्राप्त करना)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data acquisition",
+       "hi": "Data acquisition"
+      },
+      "text": {
+       "en": "The process of collecting data from the real world (and converting it into digital form if needed) so that it can be used, for example to train an AI model. It is the second stage of the AI project cycle, after problem scoping.",
+       "hi": "वास्तविक दुनिया से data इकट्ठा करने (और ज़रूरत हो तो उसे डिजिटल रूप में बदलने) की प्रक्रिया, ताकि उसका उपयोग हो सके, जैसे AI मॉडल को प्रशिक्षित करने के लिए। यह AI project cycle का दूसरा चरण है, problem scoping के बाद।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Step",
+        "What happens",
+        "Example"
+       ],
+       "hi": [
+        "चरण",
+        "क्या होता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data discovery",
+         "Searching for data that already exists (open datasets, websites, records)",
+         "Finding thousands of road images with cars, bikes and pedestrians to train a self-driving car's vision model"
+        ],
+        [
+         "Data augmentation",
+         "Making new samples by changing existing data slightly",
+         "Flipping, rotating, cropping or changing brightness and colour of a leaf photo so the model sees more variety"
+        ],
+        [
+         "Data generation",
+         "Creating fresh data using sensors, devices, surveys or recordings",
+         "Temperature sensors in a building record a reading every minute; a smartwatch records steps"
+        ]
+       ],
+       "hi": [
+        [
+         "Data discovery (खोज)",
+         "पहले से मौजूद data खोजना (open datasets, वेबसाइट, रिकॉर्ड)",
+         "सेल्फ़-ड्राइविंग कार के vision मॉडल के लिए कारों, बाइकों और पैदल यात्रियों वाली हज़ारों सड़क तस्वीरें खोजना"
+        ],
+        [
+         "Data augmentation (संवर्धन)",
+         "मौजूदा data को थोड़ा बदलकर नए नमूने बनाना",
+         "पत्ती की फ़ोटो को पलटना, घुमाना, काटना या उसकी चमक और रंग बदलना ताकि मॉडल अधिक विविधता देखे"
+        ],
+        [
+         "Data generation (सृजन)",
+         "Sensors, उपकरण, सर्वे या रिकॉर्डिंग से नया data बनाना",
+         "इमारत के तापमान sensors हर मिनट रीडिंग दर्ज करते हैं; स्मार्टवॉच क़दम गिनती है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Sources of data. Primary data is collected first-hand by you for your own purpose, through surveys, interviews, observation, experiments or sensors. For example, a Google Form survey of your class about screen time, stored in a spreadsheet. It is usually more reliable for your question but takes time and effort. Secondary data was collected by someone else and you reuse it: government portals (data.gov.in, Census of India, IMD weather data), journals, newspapers, websites, online datasets (for example Kaggle) and product reviews. It is quick and cheap but may be old or not fit your question exactly.",
+      "hi": "Data के स्रोत। प्राथमिक (primary) data आप स्वयं अपने उद्देश्य के लिए सर्वे, साक्षात्कार, अवलोकन, प्रयोग या sensors से सीधे इकट्ठा करते हैं। जैसे स्क्रीन-टाइम पर अपनी कक्षा का Google Form सर्वे, जो spreadsheet में संग्रहीत हो। यह आपके प्रश्न के लिए अधिक भरोसेमंद होता है पर समय और मेहनत लेता है। द्वितीयक (secondary) data किसी और ने इकट्ठा किया होता है और आप उसका पुनः उपयोग करते हैं: सरकारी पोर्टल (data.gov.in, भारत की जनगणना, IMD मौसम data), पत्रिकाएँ, अख़बार, वेबसाइटें, online datasets (जैसे Kaggle) और उत्पाद समीक्षाएँ। यह जल्दी और सस्ता मिलता है पर पुराना हो सकता है या आपके प्रश्न पर ठीक से न बैठे।"
+     }
+    },
+    {
+     "p": {
+      "en": "Web scraping means using a program or tool to automatically pull data from web pages (for example prices of phones from many shopping pages) into a table. No-code tools such as ParseHub and Octoparse do this with clicks. Always check the website's terms of use; scraping personal information or copyrighted content without permission is wrong.",
+      "hi": "Web scraping का अर्थ है किसी प्रोग्राम या tool से वेब पेजों से data (जैसे कई शॉपिंग पेजों से फ़ोनों के दाम) अपने-आप निकालकर तालिका में रखना। ParseHub और Octoparse जैसे no-code tools यह क्लिक करके करते हैं। वेबसाइट की उपयोग-शर्तें हमेशा जाँचिए; बिना अनुमति व्यक्तिगत जानकारी या कॉपीराइट सामग्री scrape करना ग़लत है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Good data",
+        "Bad data"
+       ],
+       "hi": [
+        "अच्छा data",
+        "ख़राब data"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Structured and well organised",
+         "Scattered and unorganised"
+        ],
+        [
+         "Accurate (matches reality)",
+         "Incorrect values or typing errors"
+        ],
+        [
+         "Consistent formats (all dates as DD-MM-YYYY)",
+         "Mixed formats (12/3/24, March 12, 2024-03-12)"
+        ],
+        [
+         "No duplicates",
+         "Same record repeated"
+        ],
+        [
+         "Complete",
+         "Missing values (blank cells)"
+        ],
+        [
+         "Relevant to the problem",
+         "Irrelevant columns that add noise"
+        ],
+        [
+         "Cleanly presented with clear headings and units",
+         "Poor presentation, no units"
+        ]
+       ],
+       "hi": [
+        [
+         "संरचित और सुव्यवस्थित",
+         "बिखरा और अव्यवस्थित"
+        ],
+        [
+         "सटीक (वास्तविकता से मेल)",
+         "ग़लत मान या टाइपिंग की ग़लतियाँ"
+        ],
+        [
+         "एक जैसे प्रारूप (सभी तारीखें DD-MM-YYYY)",
+         "मिले-जुले प्रारूप (12/3/24, March 12, 2024-03-12)"
+        ],
+        [
+         "कोई दोहराव नहीं",
+         "एक ही रिकॉर्ड बार-बार"
+        ],
+        [
+         "पूर्ण",
+         "छूटे मान (ख़ाली cells)"
+        ],
+        [
+         "समस्या से संबंधित",
+         "असंबंधित कॉलम जो शोर बढ़ाते हैं"
+        ],
+        [
+         "स्पष्ट शीर्षक और मात्रक के साथ साफ़ प्रस्तुति",
+         "ख़राब प्रस्तुति, मात्रक नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Consent: tell people what you collect and why, and get permission (a parent's permission for children).",
+       "Privacy: collect only what is needed; hide names and phone numbers.",
+       "Fairness and bias: include data from all groups (girls and boys, rural and urban, many languages) so that the AI works fairly for everyone.",
+       "Honesty: never invent or alter data to get the result you want.",
+       "Legality and ownership: respect copyright and website rules; credit the source of secondary data.",
+       "Security: store the collected data safely and delete it when the project ends."
+      ],
+      "hi": [
+       "सहमति: लोगों को बताइए कि आप क्या और क्यों इकट्ठा कर रहे हैं, और अनुमति लीजिए (बच्चों के लिए माता-पिता की)।",
+       "निजता: केवल ज़रूरी data लीजिए; नाम और फ़ोन नंबर छिपाइए।",
+       "निष्पक्षता और पूर्वाग्रह (bias): सभी समूहों (लड़कियाँ और लड़के, ग्रामीण और शहरी, कई भाषाएँ) का data शामिल कीजिए ताकि AI सबके लिए निष्पक्ष काम करे।",
+       "ईमानदारी: मनचाहा परिणाम पाने के लिए data कभी गढ़िए या बदलिए मत।",
+       "वैधता और स्वामित्व: कॉपीराइट और वेबसाइट नियमों का सम्मान कीजिए; द्वितीयक data के स्रोत का श्रेय दीजिए।",
+       "सुरक्षा: इकट्ठा किया data सुरक्षित रखिए और प्रोजेक्ट ख़त्म होने पर उसे मिटा दीजिए।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the three acquisition steps as D-A-G: Discovery, Augmentation, Generation. The two sources are primary (first-hand) and secondary (someone else's).",
+      "hi": "Acquisition के तीन चरण D-A-G के रूप में याद रखिए: Discovery, Augmentation, Generation। दो स्रोत हैं प्राथमिक (स्वयं का) और द्वितीयक (किसी और का)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.9 Features of data and data preprocessing",
+    "hi": "4.9 Data की features और data preprocessing"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before data can be used it must be usable. Three main factors decide how usable a dataset is. Structure: how the data is stored and arranged (rows and columns with clear headings are easiest). Cleanliness: the data should be free of duplicates, missing values and outliers (values that are far away from the rest, often errors, such as a mark of 640 out of 100). Accuracy: how closely the values match the real world; if a box is really 30 cm long but is recorded as 3 cm, the data is inaccurate. Dataset websites such as Kaggle show a usability score for each dataset, based on how well documented and complete it is, so that users can choose good datasets.",
+      "hi": "Data का उपयोग करने से पहले उसका उपयोग-योग्य होना ज़रूरी है। तीन मुख्य कारक तय करते हैं कि कोई dataset कितना उपयोगी है। संरचना (Structure): data कैसे संग्रहीत और व्यवस्थित है (स्पष्ट शीर्षकों वाली पंक्तियाँ और कॉलम सबसे आसान हैं)। स्वच्छता (Cleanliness): data दोहराव, छूटे मानों और outliers से मुक्त होना चाहिए (outlier वे मान हैं जो बाकी से बहुत दूर हों, अक्सर ग़लती, जैसे 100 में से 640 अंक)। सटीकता (Accuracy): मान वास्तविक दुनिया से कितने मेल खाते हैं; यदि कोई डिब्बा सचमुच 30 cm लंबा है पर 3 cm दर्ज है, तो data ग़लत है। Kaggle जैसी dataset वेबसाइटें हर dataset का usability score दिखाती हैं, जो इस पर आधारित है कि वह कितना पूर्ण और अच्छी तरह प्रलेखित है, ताकि उपयोगकर्ता अच्छे datasets चुन सकें।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data preprocessing",
+       "hi": "Data preprocessing (पूर्व-प्रसंस्करण)"
+      },
+      "text": {
+       "en": "Organising and cleaning raw data — removing duplicates, filling or removing missing values, correcting errors, handling outliers and putting everything in one format — so that it is of good quality and consistent before analysis or AI training.",
+       "hi": "कच्चे data को व्यवस्थित और साफ़ करना — दोहराव हटाना, छूटे मान भरना या हटाना, ग़लतियाँ सुधारना, outliers संभालना और सब कुछ एक प्रारूप में लाना — ताकि विश्लेषण या AI प्रशिक्षण से पहले वह अच्छी गुणवत्ता का और सुसंगत हो।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a tiny Python program (using the free pandas library) that cleans five student records. Ravi appears twice, Meena's age is missing, and Kabir's marks (640) are impossible for a test out of 100.",
+      "hi": "यहाँ एक छोटा Python प्रोग्राम (मुफ़्त pandas library से) है जो पाँच विद्यार्थियों के रिकॉर्ड साफ़ करता है। रवि दो बार है, मीना की आयु छूटी है, और कबीर के अंक (640) 100 में से होने वाले टेस्ट में असंभव हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\n\ndata = {\n    \"Name\":  [\"Asha\", \"Ravi\", \"Ravi\", \"Meena\", \"Kabir\"],\n    \"Age\":   [14, 15, 15, None, 14],\n    \"Marks\": [78, 85, 85, 92, 640],\n}\ndf = pd.DataFrame(data)\nprint(\"Raw data:\")\nprint(df)\n\ndf = df.drop_duplicates()            # remove repeated rows\ndf[\"Age\"] = df[\"Age\"].fillna(14)     # fill the missing age\ndf = df[df[\"Marks\"] <= 100]          # drop impossible marks (outlier)\nprint(\"\\nClean data:\")\nprint(df)\nprint(\"\\nAverage marks:\", df[\"Marks\"].mean())",
+      "hi": "import pandas as pd\n\ndata = {\n    \"Name\":  [\"Asha\", \"Ravi\", \"Ravi\", \"Meena\", \"Kabir\"],\n    \"Age\":   [14, 15, 15, None, 14],\n    \"Marks\": [78, 85, 85, 92, 640],\n}\ndf = pd.DataFrame(data)\nprint(\"Raw data:\")\nprint(df)\n\ndf = df.drop_duplicates()            # दोहराई पंक्तियाँ हटाओ\ndf[\"Age\"] = df[\"Age\"].fillna(14)     # छूटी आयु भरो\ndf = df[df[\"Marks\"] <= 100]          # असंभव अंक (outlier) हटाओ\nprint(\"\\nClean data:\")\nprint(df)\nprint(\"\\nAverage marks:\", df[\"Marks\"].mean())"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nRaw data:\n    Name   Age  Marks\n0   Asha  14.0     78\n1   Ravi  15.0     85\n2   Ravi  15.0     85\n3  Meena   NaN     92\n4  Kabir  14.0    640\n\nClean data:\n    Name   Age  Marks\n0   Asha  14.0     78\n1   Ravi  15.0     85\n3  Meena  14.0     92\n\nAverage marks: 85.0",
+      "hi": "आउटपुट:\nRaw data:\n    Name   Age  Marks\n0   Asha  14.0     78\n1   Ravi  15.0     85\n2   Ravi  15.0     85\n3  Meena   NaN     92\n4  Kabir  14.0    640\n\nClean data:\n    Name   Age  Marks\n0   Asha  14.0     78\n1   Ravi  15.0     85\n3  Meena  14.0     92\n\nAverage marks: 85.0"
+     }
+    },
+    {
+     "p": {
+      "en": "Notice what happened: the duplicate row 2 was removed, NaN ('not a number', meaning missing) was replaced by 14, and Kabir's row was dropped because 640 is an outlier caused by an error. Without cleaning, the average would have been pulled far upward by 640. In a real project you would check with the teacher instead of guessing Meena's age — filling with a guess is only one choice.",
+      "hi": "देखिए क्या हुआ: दोहराई गई पंक्ति 2 हट गई, NaN ('not a number', अर्थात छूटा मान) की जगह 14 भरा गया, और कबीर की पंक्ति हटा दी गई क्योंकि 640 ग़लती से आया outlier है। सफ़ाई के बिना 640 के कारण औसत बहुत ऊपर चला जाता। असली प्रोजेक्ट में मीना की आयु का अनुमान लगाने के बजाय शिक्षक से पूछना चाहिए — अनुमान से भरना केवल एक विकल्प है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Features",
+       "hi": "Features (विशेषताएँ)"
+      },
+      "text": {
+       "en": "The characteristics or properties recorded about each item in a dataset, usually the columns of a table. For a student: name, age, class, marks. For a photo: colours, edges and shapes of its pixels.",
+       "hi": "Dataset की हर वस्तु के बारे में दर्ज गुण या विशेषताएँ, आम तौर पर तालिका के कॉलम। विद्यार्थी के लिए: नाम, आयु, कक्षा, अंक। फ़ोटो के लिए: उसके pixels के रंग, किनारे और आकृतियाँ।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "In an AI model, features are of two types. Independent features are the inputs the model uses to make a prediction. The dependent feature (also called the target or label) is the output the model predicts; it 'depends' on the inputs. Example: to predict a house's price, area, number of rooms, locality and age of the building are independent features, and price is the dependent feature.",
+      "hi": "AI मॉडल में features दो प्रकार की होती हैं। स्वतंत्र (independent) features वे इनपुट हैं जिनसे मॉडल अनुमान लगाता है। आश्रित (dependent) feature (जिसे target या label भी कहते हैं) वह आउटपुट है जिसका मॉडल अनुमान लगाता है; यह इनपुट पर 'निर्भर' होता है। उदाहरण: मकान की क़ीमत का अनुमान लगाने के लिए क्षेत्रफल, कमरों की संख्या, इलाक़ा और इमारत की आयु स्वतंत्र features हैं, और क़ीमत आश्रित feature है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A crop-advice app predicts whether a wheat crop will be 'healthy' or 'diseased' using leaf colour, temperature, humidity and days since sowing. Identify the independent and dependent features.",
+       "hi": "एक फ़सल-सलाह ऐप पत्ती के रंग, तापमान, नमी और बुवाई के बाद के दिनों से अनुमान लगाता है कि गेहूँ की फ़सल 'स्वस्थ' होगी या 'रोगग्रस्त'। स्वतंत्र और आश्रित features पहचानिए।"
+      },
+      "a": {
+       "en": "Step 1: Ask what the app is trying to predict: health status.\nStep 2: So the dependent feature is 'healthy or diseased'.\nStep 3: Everything used to make that guess is independent: leaf colour, temperature, humidity, days since sowing.",
+       "hi": "चरण 1: पूछिए कि ऐप किसका अनुमान लगा रहा है: स्वास्थ्य स्थिति।\nचरण 2: इसलिए आश्रित feature 'स्वस्थ या रोगग्रस्त' है।\nचरण 3: अनुमान के लिए उपयोग होने वाली सभी चीज़ें स्वतंत्र हैं: पत्ती का रंग, तापमान, नमी, बुवाई के बाद के दिन।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.10 From data to decisions: processing and interpretation",
+    "hi": "4.10 Data से निर्णय तक: processing और interpretation"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data processing means using computers (or careful hand work) to operate on raw data — sorting, cleaning, calculating totals and averages — so that results can be understood. Data interpretation means explaining what those processed results mean in the real situation and what decision they support. Processing answers 'what are the numbers?'; interpretation answers 'so what?'. Example: processing finds that a shop sold 120 chocolate bars and 30 candies this week. Interpretation says: chocolate is four times as popular, so order more chocolate before Diwali and fewer candies.",
+      "hi": "Data processing का अर्थ है कंप्यूटर (या सावधानी से हाथ से) द्वारा कच्चे data पर काम करना — क्रम लगाना, साफ़ करना, योग और औसत निकालना — ताकि परिणाम समझे जा सकें। Data interpretation का अर्थ है यह समझाना कि संसाधित परिणामों का वास्तविक स्थिति में क्या अर्थ है और वे किस निर्णय का समर्थन करते हैं। Processing बताता है 'संख्याएँ क्या हैं?'; interpretation बताता है 'तो इससे क्या?'। उदाहरण: processing से पता चलता है कि इस सप्ताह दुकान में 120 चॉकलेट और 30 टॉफ़ियाँ बिकीं। Interpretation कहता है: चॉकलेट चार गुना अधिक लोकप्रिय है, इसलिए दिवाली से पहले अधिक चॉकलेट और कम टॉफ़ियाँ मँगाओ।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "What you do",
+        "Example: Class 9 half-yearly marks"
+       ],
+       "hi": [
+        "चरण",
+        "क्या करते हैं",
+        "उदाहरण: कक्षा 9 के अर्धवार्षिक अंक"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Acquire data",
+         "Collect data from sources",
+         "Get marks of all 40 students in 6 subjects from the teachers"
+        ],
+        [
+         "2. Data processing",
+         "Arrange, clean, calculate",
+         "Enter in a spreadsheet, fix typing errors, find each subject's average"
+        ],
+        [
+         "3. Data analysis",
+         "Examine parts to find patterns",
+         "Science average is lowest (52%); most low scores are in the physics questions"
+        ],
+        [
+         "4. Data interpretation",
+         "Explain the meaning in context",
+         "Fewer lab practicals this term and tough numericals may be the reason"
+        ],
+        [
+         "5. Data presentation",
+         "Show the findings clearly",
+         "A bar graph of subject averages on two slides for the staff meeting"
+        ]
+       ],
+       "hi": [
+        [
+         "1. Data प्राप्त करना",
+         "स्रोतों से data इकट्ठा करना",
+         "शिक्षकों से सभी 40 विद्यार्थियों के 6 विषयों के अंक लेना"
+        ],
+        [
+         "2. Data processing",
+         "व्यवस्थित करना, साफ़ करना, गणना करना",
+         "Spreadsheet में भरना, टाइपिंग की ग़लतियाँ सुधारना, हर विषय का औसत निकालना"
+        ],
+        [
+         "3. Data analysis",
+         "पैटर्न खोजने के लिए भागों की जाँच",
+         "विज्ञान का औसत सबसे कम (52%) है; अधिकांश कम अंक भौतिकी के प्रश्नों में हैं"
+        ],
+        [
+         "4. Data interpretation",
+         "संदर्भ में अर्थ समझाना",
+         "इस सत्र में कम प्रयोगशाला अभ्यास और कठिन संख्यात्मक प्रश्न कारण हो सकते हैं"
+        ],
+        [
+         "5. Data presentation",
+         "निष्कर्ष स्पष्ट दिखाना",
+         "स्टाफ़ मीटिंग के लिए दो स्लाइडों पर विषयवार औसत का बार ग्राफ़"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Order to remember: Acquire → Process → Analyse → Interpret → Present.",
+      "hi": "याद रखने का क्रम: प्राप्त करना → संसाधित करना → विश्लेषण → व्याख्या → प्रस्तुति।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.11 Methods of data interpretation",
+    "hi": "4.11 Data interpretation की विधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "There are two methods, matching the two kinds of data. Qualitative data interpretation studies non-numerical data such as opinions, emotions, feelings, insights and motivations. It answers 'why' and 'how'. Quantitative data interpretation studies numbers using statistics and answers 'when', 'how many' and 'how often' — for example the number of likes on an Instagram post or how many times a week students use a library.",
+      "hi": "Data के दो प्रकारों के अनुसार दो विधियाँ हैं। गुणात्मक data interpretation राय, भावनाओं, अनुभूतियों, अंतर्दृष्टियों और प्रेरणाओं जैसे ग़ैर-संख्यात्मक data का अध्ययन करता है। यह 'क्यों' और 'कैसे' का उत्तर देता है। मात्रात्मक data interpretation सांख्यिकी से संख्याओं का अध्ययन करता है और 'कब', 'कितने' और 'कितनी बार' का उत्तर देता है — जैसे Instagram पोस्ट पर likes की संख्या या विद्यार्थी सप्ताह में कितनी बार पुस्तकालय जाते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Qualitative collection methods",
+        "Meaning"
+       ],
+       "hi": [
+        "गुणात्मक संग्रह विधियाँ",
+        "अर्थ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Record keeping",
+         "Using existing records, diaries, documents"
+        ],
+        [
+         "Observation",
+         "Watching and noting behaviour, e.g. how children use a playground"
+        ],
+        [
+         "Case study",
+         "Studying one person, group or event in depth"
+        ],
+        [
+         "Focus group",
+         "A guided discussion with a small group of 6–10 people"
+        ],
+        [
+         "Longitudinal study",
+         "Collecting data from the same people over a long time"
+        ],
+        [
+         "One-to-one interview",
+         "Detailed conversation with one person"
+        ]
+       ],
+       "hi": [
+        [
+         "रिकॉर्ड रखना",
+         "मौजूदा रिकॉर्ड, डायरी, दस्तावेज़ों का उपयोग"
+        ],
+        [
+         "अवलोकन",
+         "व्यवहार देखना और लिखना, जैसे बच्चे खेल के मैदान का उपयोग कैसे करते हैं"
+        ],
+        [
+         "केस स्टडी",
+         "किसी एक व्यक्ति, समूह या घटना का गहराई से अध्ययन"
+        ],
+        [
+         "फ़ोकस ग्रुप",
+         "6–10 लोगों के छोटे समूह के साथ निर्देशित चर्चा"
+        ],
+        [
+         "दीर्घकालिक अध्ययन",
+         "लंबे समय तक उन्हीं लोगों से data इकट्ठा करना"
+        ],
+        [
+         "आमने-सामने साक्षात्कार",
+         "एक व्यक्ति से विस्तृत बातचीत"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Collect the data (interviews, observations, notes).",
+       "Organise it (type notes, group answers by question).",
+       "Assign codes: tag repeated ideas with short labels such as 'too much homework', 'likes group work'.",
+       "Analyse: count and connect the codes to find the main themes.",
+       "Report: write the findings with examples of what people said."
+      ],
+      "hi": [
+       "Data इकट्ठा कीजिए (साक्षात्कार, अवलोकन, नोट्स)।",
+       "उसे व्यवस्थित कीजिए (नोट्स टाइप कीजिए, उत्तरों को प्रश्न के अनुसार समूहित कीजिए)।",
+       "कोड दीजिए: बार-बार आने वाले विचारों को छोटे लेबल दीजिए जैसे 'बहुत अधिक गृहकार्य', 'समूह कार्य पसंद'।",
+       "विश्लेषण कीजिए: कोड गिनिए और जोड़िए ताकि मुख्य विषय (themes) निकलें।",
+       "रिपोर्ट कीजिए: लोगों के कहे के उदाहरणों सहित निष्कर्ष लिखिए।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Quantitative data is collected through interviews (with fixed, numbered answers), polls (usually one quick question, such as 'Which day should sports day be?'), observations (counting cars at a crossing), longitudinal studies and surveys (many questions to many people). The four steps of quantitative interpretation are: (1) relate measurement scales to the variables (nominal, ordinal, interval, ratio), (2) connect descriptive statistics with the data (mean, median, mode, range, percentages), (3) decide which measurement scale and statistics fit the question, and (4) represent the data in an appropriate format such as a table or graph.",
+      "hi": "मात्रात्मक data साक्षात्कार (निश्चित, संख्या वाले उत्तरों के साथ), poll (आम तौर पर एक छोटा प्रश्न, जैसे 'खेल दिवस किस दिन हो?'), अवलोकन (चौराहे पर कारें गिनना), दीर्घकालिक अध्ययन और सर्वे (बहुत लोगों से बहुत प्रश्न) से इकट्ठा होता है। मात्रात्मक interpretation के चार चरण हैं: (1) मापन पैमानों को चरों (variables) से जोड़ना (nominal, ordinal, interval, ratio), (2) वर्णनात्मक सांख्यिकी को data से जोड़ना (माध्य, माध्यिका, बहुलक, परिसर, प्रतिशत), (3) तय करना कि प्रश्न के लिए कौन-सा पैमाना और सांख्यिकी उपयुक्त है, और (4) data को तालिका या ग्राफ़ जैसे उपयुक्त रूप में दिखाना।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Basis",
+        "Qualitative interpretation",
+        "Quantitative interpretation"
+       ],
+       "hi": [
+        "आधार",
+        "गुणात्मक interpretation",
+        "मात्रात्मक interpretation"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Categorical, words",
+         "Numerical"
+        ],
+        [
+         "Question",
+         "How? Why?",
+         "How many? How often? When?"
+        ],
+        [
+         "Methods",
+         "Interviews, focus groups, observation",
+         "Tests, polls, surveys, counts"
+        ],
+        [
+         "Result",
+         "Themes and explanations",
+         "Numbers, averages, graphs"
+        ]
+       ],
+       "hi": [
+        [
+         "Data",
+         "श्रेणीगत, शब्द",
+         "संख्यात्मक"
+        ],
+        [
+         "प्रश्न",
+         "कैसे? क्यों?",
+         "कितने? कितनी बार? कब?"
+        ],
+        [
+         "विधियाँ",
+         "साक्षात्कार, फ़ोकस ग्रुप, अवलोकन",
+         "टेस्ट, poll, सर्वे, गिनती"
+        ],
+        [
+         "परिणाम",
+         "विषय (themes) और व्याख्याएँ",
+         "संख्याएँ, औसत, ग्राफ़"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.12 Ways of presenting data: textual, tabular, graphical",
+    "hi": "4.12 Data प्रस्तुत करने के तरीके: पाठ्य, सारणीबद्ध, ग्राफ़ीय"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Textual presentation writes data in sentences and paragraphs: 'Of 40 students, 18 come by bus, 12 walk and 10 cycle.' It is good only for a small amount of data; with more numbers the reader gets lost. Tabular presentation arranges data in rows and columns, with a title, column headings and units. It is exact and easy to compare. Raw data (a jumble of numbers) is not a method of presentation.",
+      "hi": "पाठ्य (textual) प्रस्तुति data को वाक्यों और अनुच्छेदों में लिखती है: '40 विद्यार्थियों में से 18 बस से, 12 पैदल और 10 साइकिल से आते हैं।' यह केवल थोड़े data के लिए अच्छी है; अधिक संख्याओं पर पाठक भटक जाता है। सारणीबद्ध (tabular) प्रस्तुति data को शीर्षक, कॉलम शीर्षकों और मात्रकों सहित पंक्तियों और कॉलमों में रखती है। यह सटीक है और तुलना आसान बनाती है। कच्चा data (संख्याओं का ढेर) प्रस्तुति का तरीका नहीं है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Item of expenditure (company, year)",
+        "Amount (₹ lakh)"
+       ],
+       "hi": [
+        "व्यय की मद (कंपनी, वर्ष)",
+        "राशि (₹ लाख)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Salaries",
+         "45"
+        ],
+        [
+         "Fuel and transport",
+         "20"
+        ],
+        [
+         "Bonus",
+         "8"
+        ],
+        [
+         "Interest on loans",
+         "12"
+        ],
+        [
+         "Taxes",
+         "15"
+        ],
+        [
+         "Total",
+         "100"
+        ]
+       ],
+       "hi": [
+        [
+         "वेतन",
+         "45"
+        ],
+        [
+         "ईंधन और परिवहन",
+         "20"
+        ],
+        [
+         "बोनस",
+         "8"
+        ],
+        [
+         "ऋण पर ब्याज",
+         "12"
+        ],
+        [
+         "कर",
+         "15"
+        ],
+        [
+         "कुल",
+         "100"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Graphical presentation shows data as pictures, which the eye understands fastest. Bar graph: rectangular bars, vertical or horizontal, whose lengths show values; best for comparing categories (marks in each subject, runs by each batter). Imagine five bars for the table above: the 'Salaries' bar is the tallest. Pie chart: a circle cut into slices, each slice proportional to its share of the whole; best for parts of a total. In a pie chart for the table above, salaries take 45% of the circle, i.e. 45% of 360° = 162°. Line graph: points joined by lines; best for change over time (a city's temperature over a week, India's UPI transactions month by month). Other common charts are histograms (bars for ranges of continuous data, such as heights 140–150 cm), scatter plots (dots showing how two quantities relate) and pictographs (pictures as symbols).",
+      "hi": "ग्राफ़ीय (graphical) प्रस्तुति data को चित्रों के रूप में दिखाती है, जिसे आँख सबसे जल्दी समझती है। बार ग्राफ़: खड़ी या पड़ी आयताकार पट्टियाँ, जिनकी लंबाई मान दिखाती है; श्रेणियों की तुलना के लिए सबसे अच्छा (हर विषय के अंक, हर बल्लेबाज़ के रन)। ऊपर की तालिका के लिए पाँच पट्टियों की कल्पना कीजिए: 'वेतन' की पट्टी सबसे ऊँची है। पाई चार्ट: स्लाइसों में कटा वृत्त, हर स्लाइस पूरे में अपने हिस्से के अनुपात में; किसी कुल के भागों के लिए सबसे अच्छा। ऊपर की तालिका के पाई चार्ट में वेतन वृत्त का 45% लेता है, अर्थात 360° का 45% = 162°। लाइन ग्राफ़: रेखाओं से जुड़े बिंदु; समय के साथ बदलाव के लिए सबसे अच्छा (एक सप्ताह में शहर का तापमान, महीने-दर-महीने भारत के UPI लेन-देन)। अन्य सामान्य चार्ट हैं histogram (सतत data की सीमाओं के लिए पट्टियाँ, जैसे 140–150 cm की ऊँचाई), scatter plot (दो मात्राओं का संबंध दिखाने वाले बिंदु) और चित्रलेख (pictograph, प्रतीक के रूप में चित्र)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Angle of a slice in a pie chart = (value ÷ total) × 360°",
+      "hi": "पाई चार्ट में स्लाइस का कोण = (मान ÷ कुल) × 360°"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using the expenditure table, find the pie-chart angle for 'Fuel and transport' and for 'Taxes'. Which chart would you choose to show the company's salary bill over the last 10 years?",
+       "hi": "व्यय तालिका से 'ईंधन और परिवहन' तथा 'कर' के लिए पाई-चार्ट कोण निकालिए। पिछले 10 वर्षों में कंपनी के वेतन ख़र्च को दिखाने के लिए आप कौन-सा चार्ट चुनेंगे?"
+      },
+      "a": {
+       "en": "Step 1: Total = 100.\nStep 2: Fuel and transport = (20 ÷ 100) × 360° = 72°.\nStep 3: Taxes = (15 ÷ 100) × 360° = 54°.\nStep 4: Change over 10 years is change over time, so a line graph is best.",
+       "hi": "चरण 1: कुल = 100।\nचरण 2: ईंधन और परिवहन = (20 ÷ 100) × 360° = 72°।\nचरण 3: कर = (15 ÷ 100) × 360° = 54°।\nचरण 4: 10 वर्षों में बदलाव समय के साथ बदलाव है, इसलिए लाइन ग्राफ़ सबसे अच्छा है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.13 Data visualisation tools and dashboards",
+    "hi": "4.13 Data visualisation tools और dashboards"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data visualisation means turning data into charts, maps and dashboards so that patterns jump out. It is used in the data exploration stage of the AI project cycle, where we look for trends before building a model. Free or free-to-start tools include Google Sheets, LibreOffice Calc and Microsoft Excel (bar, pie, line and scatter charts), Tableau Public (drag-and-drop charts and dashboards; it can make bar charts, line charts, pie charts, maps, scatter plots, histograms, heat maps and tree maps), Google Looker Studio and Microsoft Power BI.",
+      "hi": "Data visualisation का अर्थ है data को चार्ट, मानचित्र और dashboard में बदलना ताकि पैटर्न साफ़ दिखें। इसका उपयोग AI project cycle के data exploration चरण में होता है, जहाँ मॉडल बनाने से पहले हम रुझान खोजते हैं। मुफ़्त या मुफ़्त में शुरू होने वाले tools में Google Sheets, LibreOffice Calc और Microsoft Excel (बार, पाई, लाइन और scatter चार्ट), Tableau Public (drag-and-drop चार्ट और dashboard; यह बार चार्ट, लाइन चार्ट, पाई चार्ट, मानचित्र, scatter plot, histogram, heat map और tree map बना सकता है), Google Looker Studio और Microsoft Power BI शामिल हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Dashboard",
+       "hi": "Dashboard (डैशबोर्ड)"
+      },
+      "text": {
+       "en": "A single screen that shows several key charts and numbers together, often updating automatically, so that people can monitor a situation at a glance — like a car's dashboard showing speed and fuel.",
+       "hi": "एक ऐसी स्क्रीन जो कई मुख्य चार्ट और संख्याएँ एक साथ दिखाती है, अक्सर अपने-आप अपडेट होती है, ताकि लोग एक नज़र में स्थिति पर नज़र रख सकें — जैसे कार का dashboard गति और ईंधन दिखाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Indian examples: a cricket website's match dashboard shows run rate (line graph), wagon wheel and partnership bars; the CoWIN vaccination dashboard showed doses per day and per state; a school might show attendance and submissions on one sheet for teachers.",
+      "hi": "भारतीय उदाहरण: क्रिकेट वेबसाइट का मैच dashboard रन रेट (लाइन ग्राफ़), wagon wheel और साझेदारी की पट्टियाँ दिखाता है; CoWIN टीकाकरण dashboard प्रति दिन और प्रति राज्य ख़ुराकें दिखाता था; स्कूल शिक्षकों के लिए एक ही sheet पर उपस्थिति और असाइनमेंट दिखा सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Screen activity: make your own chart. Aim: practise graphical presentation. Need: a phone or computer with Google Sheets (free; an adult should help an under-13 student with any sign-in, or use LibreOffice Calc offline). What to do: survey 15 classmates — 'How do you come to school?' (bus, walk, cycle, car, auto). Type the categories in column A and counts in column B. Select both columns, then Insert → Chart; try bar and pie. What do you observe and learn?",
+       "hi": "स्क्रीन गतिविधि: अपना चार्ट बनाइए। उद्देश्य: ग्राफ़ीय प्रस्तुति का अभ्यास। सामग्री: Google Sheets (मुफ़्त) वाला फ़ोन या कंप्यूटर (13 वर्ष से कम आयु वाले विद्यार्थी किसी बड़े की सहायता से sign-in करें, या ऑफ़लाइन LibreOffice Calc का उपयोग करें)। क्या करें: 15 सहपाठियों से सर्वे कीजिए — 'आप स्कूल कैसे आते हैं?' (बस, पैदल, साइकिल, कार, ऑटो)। कॉलम A में श्रेणियाँ और कॉलम B में गिनती लिखिए। दोनों कॉलम चुनिए, फिर Insert → Chart; बार और पाई दोनों आज़माइए। आप क्या देखते और सीखते हैं?"
+      },
+      "a": {
+       "en": "Observation: the bar chart makes it easy to see which mode is most common; the pie chart shows each mode's share of the whole class.\nLearning: the same data can be presented in different ways; choose the chart that best answers your question. This is primary, quantitative (discrete counts of a qualitative category) data.",
+       "hi": "अवलोकन: बार चार्ट से आसानी से दिखता है कि कौन-सा साधन सबसे आम है; पाई चार्ट पूरी कक्षा में हर साधन का हिस्सा दिखाता है।\nसीख: एक ही data को अलग-अलग तरीकों से दिखाया जा सकता है; वह चार्ट चुनिए जो आपके प्रश्न का सबसे अच्छा उत्तर दे। यह प्राथमिक data है — एक गुणात्मक श्रेणी की असतत गिनतियाँ।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.14 Why data interpretation is important",
+    "hi": "4.14 Data interpretation क्यों ज़रूरी है"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Better decisions: choices are based on evidence, not guesswork (a farmer decides when to irrigate using soil-moisture data).",
+       "Turns data into insight: reveals patterns, relationships and trends hidden in tables.",
+       "Builds problem-solving and logical thinking.",
+       "Helps forecasting: recognising trends lets us predict the future, such as festive-season demand or monsoon rainfall.",
+       "Saves time and money: a shop that knows what sells avoids wasting stock; Google Maps traffic data saves fuel and time.",
+       "Better AI: a model is only as good as the data and its interpretation — 'garbage in, garbage out'."
+      ],
+      "hi": [
+       "बेहतर निर्णय: चुनाव अनुमान पर नहीं, प्रमाण पर आधारित होते हैं (किसान मिट्टी-नमी के data से तय करता है कि सिंचाई कब करनी है)।",
+       "Data को अंतर्दृष्टि में बदलता है: तालिकाओं में छिपे पैटर्न, संबंध और रुझान दिखाता है।",
+       "समस्या-समाधान और तार्किक सोच बढ़ाता है।",
+       "पूर्वानुमान में मदद: रुझान पहचानकर भविष्य का अनुमान लगाया जा सकता है, जैसे त्योहारों में माँग या मानसून वर्षा।",
+       "समय और पैसा बचाता है: जो दुकान जानती है कि क्या बिकता है, वह माल बर्बाद नहीं करती; Google Maps का ट्रैफ़िक data ईंधन और समय बचाता है।",
+       "बेहतर AI: मॉडल उतना ही अच्छा होता है जितना उसका data और उसकी व्याख्या — 'garbage in, garbage out' (कचरा डालोगे तो कचरा मिलेगा)।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Case study: A UPI app notices that a user who normally sends ₹200–₹500 to local shops in Lucknow suddenly sends ₹45,000 at 2 a.m. to a new account in another state. (a) What type of data is the amount? (b) What does the app's AI do with this data? (c) Which stage of interpretation is 'this looks like fraud'? (d) Give one privacy concern.",
+       "hi": "केस स्टडी: एक UPI ऐप देखता है कि लखनऊ में सामान्यतः स्थानीय दुकानों को ₹200–₹500 भेजने वाला उपयोगकर्ता अचानक रात 2 बजे दूसरे राज्य के एक नए खाते में ₹45,000 भेजता है। (a) राशि किस प्रकार का data है? (b) ऐप का AI इस data से क्या करता है? (c) 'यह धोखाधड़ी जैसा लगता है' interpretation का कौन-सा चरण है? (d) एक निजता संबंधी चिंता बताइए।"
+      },
+      "a": {
+       "en": "(a) Quantitative, continuous (money can have paise) and ratio scale.\n(b) It compares the new transaction with the user's normal pattern and flags it as an outlier, then sends an alert or asks for extra confirmation.\n(c) Data interpretation: explaining what the unusual number means in context.\n(d) The app holds sensitive financial and location data; it must keep it secure and use it only for the stated purpose (fraud protection), not sell it.",
+       "hi": "(a) मात्रात्मक, सतत (पैसे में पैसे भी हो सकते हैं) और ratio पैमाना।\n(b) वह नए लेन-देन की तुलना उपयोगकर्ता के सामान्य पैटर्न से करता है और उसे outlier मानकर चिह्नित करता है, फिर अलर्ट भेजता है या अतिरिक्त पुष्टि माँगता है।\n(c) Data interpretation: असामान्य संख्या का संदर्भ में अर्थ बताना।\n(d) ऐप के पास संवेदनशील वित्तीय और स्थान data है; उसे यह सुरक्षित रखना चाहिए और केवल बताए गए उद्देश्य (धोखाधड़ी से सुरक्षा) के लिए उपयोग करना चाहिए, बेचना नहीं।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking data and information are the same. Fix: data is raw; information is data given context and meaning.",
+   "Treating every number as quantitative. Fix: roll numbers, PIN codes and phone numbers are labels (qualitative).",
+   "Mixing up discrete and continuous. Fix: if you count it, it is discrete; if you measure it, it is continuous.",
+   "Thinking privacy and security are the same. Fix: privacy is about the right to control data; security is the protection that keeps it safe.",
+   "Confusing data augmentation with data generation. Fix: augmentation changes existing samples; generation creates brand-new data with sensors or surveys.",
+   "Calling the predicted output an independent feature. Fix: the output is the dependent feature (target); inputs are independent.",
+   "Training a model on uncleaned data. Fix: always remove duplicates, handle missing values and outliers first.",
+   "Using a pie chart to show change over time. Fix: use a line graph for time; a pie chart only for parts of one whole.",
+   "Believing a 5-star rating from 3 people over 4.3 stars from thousands. Fix: check sample size before trusting data.",
+   "Sharing OTP, UPI PIN or Aadhaar number when someone asks 'from the bank'. Fix: banks never ask; refuse and tell a trusted adult."
+  ],
+  "hi": [
+   "Data और information को एक ही समझना। सुधार: data कच्चा है; information संदर्भ और अर्थ सहित data है।",
+   "हर संख्या को मात्रात्मक मानना। सुधार: रोल नंबर, पिन कोड और फ़ोन नंबर लेबल हैं (गुणात्मक)।",
+   "असतत और सतत को मिला देना। सुधार: यदि आप उसे गिनते हैं तो असतत; यदि मापते हैं तो सतत।",
+   "निजता और सुरक्षा को एक मानना। सुधार: निजता data पर नियंत्रण के अधिकार की बात है; सुरक्षा वह बचाव है जो उसे सुरक्षित रखता है।",
+   "Data augmentation और data generation को मिला देना। सुधार: augmentation मौजूदा नमूनों को बदलता है; generation sensors या सर्वे से बिल्कुल नया data बनाता है।",
+   "अनुमानित आउटपुट को स्वतंत्र feature कहना। सुधार: आउटपुट आश्रित feature (target) है; इनपुट स्वतंत्र हैं।",
+   "बिना साफ़ किए data पर मॉडल प्रशिक्षित करना। सुधार: पहले दोहराव हटाइए, छूटे मान और outliers संभालिए।",
+   "समय के साथ बदलाव दिखाने के लिए पाई चार्ट लेना। सुधार: समय के लिए लाइन ग्राफ़; पाई चार्ट केवल एक पूरे के भागों के लिए।",
+   "हज़ारों लोगों के 4.3 स्टार के बजाय 3 लोगों के 5 स्टार पर भरोसा करना। सुधार: data पर भरोसा करने से पहले नमूने का आकार देखिए।",
+   "'बैंक से' कोई माँगे तो OTP, UPI PIN या आधार नंबर बता देना। सुधार: बैंक कभी नहीं माँगते; मना कीजिए और किसी भरोसेमंद बड़े को बताइए।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Data",
+    "hi": "Data"
+   },
+   "d": {
+    "en": "Raw facts and figures (numbers, text, images, audio, video) that can be processed.",
+    "hi": "संसाधित किए जा सकने वाले कच्चे तथ्य और आँकड़े (संख्याएँ, पाठ, चित्र, ऑडियो, वीडियो)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data literacy",
+    "hi": "डेटा साक्षरता"
+   },
+   "d": {
+    "en": "Ability to read, work with, analyse and communicate data responsibly.",
+    "hi": "Data को पढ़ने, उसके साथ काम करने, विश्लेषण करने और ज़िम्मेदारी से संप्रेषित करने की क्षमता।"
+   }
+  },
+  {
+   "t": {
+    "en": "DIKW pyramid",
+    "hi": "DIKW पिरामिड"
+   },
+   "d": {
+    "en": "Data → Information → Knowledge → Wisdom; how raw data becomes useful judgement.",
+    "hi": "Data → Information → Knowledge → Wisdom; कच्चा data कैसे उपयोगी विवेक बनता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Information",
+    "hi": "Information (सूचना)"
+   },
+   "d": {
+    "en": "Data organised and given context; answers who, what, when, where.",
+    "hi": "व्यवस्थित और संदर्भ सहित data; कौन, क्या, कब, कहाँ का उत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Knowledge",
+    "hi": "Knowledge (ज्ञान)"
+   },
+   "d": {
+    "en": "Information combined with understanding and experience; answers how.",
+    "hi": "समझ और अनुभव से जुड़ी सूचना; कैसे का उत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Wisdom",
+    "hi": "Wisdom (विवेक)"
+   },
+   "d": {
+    "en": "Using knowledge with judgement to choose the right action; answers why.",
+    "hi": "सही कदम चुनने के लिए विवेक से ज्ञान का उपयोग; क्यों का उत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data literacy framework",
+    "hi": "Data literacy framework"
+   },
+   "d": {
+    "en": "Iterative steps: Plan, Communicate, Assess, Develop culture, Prescriptive, Learning, Evaluate.",
+    "hi": "पुनरावृत्त चरण: योजना, संवाद, आकलन, संस्कृति विकास, निर्देश, सीखना, मूल्यांकन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data privacy",
+    "hi": "Data privacy (निजता)"
+   },
+   "d": {
+    "en": "Proper, lawful and consent-based handling of personal data.",
+    "hi": "व्यक्तिगत data का उचित, क़ानूनी और सहमति-आधारित प्रबंधन।"
+   }
+  },
+  {
+   "t": {
+    "en": "DPDP Act, 2023",
+    "hi": "DPDP अधिनियम, 2023"
+   },
+   "d": {
+    "en": "India's Digital Personal Data Protection Act, which sets rules for handling digital personal data.",
+    "hi": "भारत का डिजिटल व्यक्तिगत डेटा संरक्षण अधिनियम, जो डिजिटल व्यक्तिगत data के प्रबंधन के नियम बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data security",
+    "hi": "Data security"
+   },
+   "d": {
+    "en": "Protecting data from unauthorised access, damage or theft throughout its life.",
+    "hi": "Data को पूरे जीवनकाल में अनधिकृत पहुँच, क्षति या चोरी से बचाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Cyber security",
+    "hi": "साइबर सुरक्षा"
+   },
+   "d": {
+    "en": "Protecting devices, networks and data from digital attacks.",
+    "hi": "उपकरणों, नेटवर्क और data को डिजिटल हमलों से बचाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Encryption",
+    "hi": "Encryption"
+   },
+   "d": {
+    "en": "Converting data into a secret code readable only with a key.",
+    "hi": "Data को ऐसे गुप्त कोड में बदलना जो केवल कुंजी से पढ़ा जा सके।"
+   }
+  },
+  {
+   "t": {
+    "en": "Two-factor authentication (2FA)",
+    "hi": "Two-factor authentication (2FA)"
+   },
+   "d": {
+    "en": "Logging in with two proofs, e.g. password plus OTP.",
+    "hi": "दो प्रमाणों से लॉग-इन करना, जैसे पासवर्ड और OTP।"
+   }
+  },
+  {
+   "t": {
+    "en": "Phishing",
+    "hi": "Phishing"
+   },
+   "d": {
+    "en": "A fake message or website that tricks people into giving passwords or money.",
+    "hi": "नकली संदेश या वेबसाइट जो धोखे से पासवर्ड या पैसे ले लेती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Qualitative data",
+    "hi": "गुणात्मक data"
+   },
+   "d": {
+    "en": "Data in words or categories describing qualities.",
+    "hi": "गुणों का वर्णन करने वाला शब्दों या श्रेणियों में data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Quantitative data",
+    "hi": "मात्रात्मक data"
+   },
+   "d": {
+    "en": "Numerical data that can be counted or measured.",
+    "hi": "गिना या मापा जा सकने वाला संख्यात्मक data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Discrete data",
+    "hi": "असतत data"
+   },
+   "d": {
+    "en": "Countable, separate values (usually whole numbers).",
+    "hi": "गिने जा सकने वाले, अलग-अलग मान (आम तौर पर पूर्ण संख्याएँ)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Continuous data",
+    "hi": "सतत data"
+   },
+   "d": {
+    "en": "Measured values that can be any number in a range, including decimals.",
+    "hi": "मापे गए मान जो किसी सीमा में दशमलव सहित कोई भी संख्या हो सकते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Nominal / Ordinal / Interval / Ratio",
+    "hi": "Nominal / Ordinal / Interval / Ratio"
+   },
+   "d": {
+    "en": "Four levels of measurement: labels; ordered labels; equal gaps without true zero; equal gaps with true zero.",
+    "hi": "मापन के चार स्तर: लेबल; क्रम वाले लेबल; समान अंतर पर वास्तविक शून्य नहीं; समान अंतर और वास्तविक शून्य।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data acquisition",
+    "hi": "Data acquisition"
+   },
+   "d": {
+    "en": "Collecting data for a project; steps: discovery, augmentation, generation.",
+    "hi": "प्रोजेक्ट के लिए data इकट्ठा करना; चरण: discovery, augmentation, generation।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data augmentation",
+    "hi": "Data augmentation"
+   },
+   "d": {
+    "en": "Creating extra samples by modifying existing ones (rotate, flip, brighten).",
+    "hi": "मौजूदा नमूनों को बदलकर (घुमाना, पलटना, चमक) अतिरिक्त नमूने बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Primary data",
+    "hi": "प्राथमिक data"
+   },
+   "d": {
+    "en": "Data collected first-hand for your own purpose.",
+    "hi": "अपने उद्देश्य के लिए स्वयं सीधे इकट्ठा किया गया data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Secondary data",
+    "hi": "द्वितीयक data"
+   },
+   "d": {
+    "en": "Data collected by others and reused.",
+    "hi": "दूसरों द्वारा इकट्ठा किया गया और पुनः उपयोग किया गया data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Web scraping",
+    "hi": "Web scraping"
+   },
+   "d": {
+    "en": "Automatically extracting data from web pages using a tool or program.",
+    "hi": "किसी tool या प्रोग्राम से वेब पेजों से अपने-आप data निकालना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Outlier",
+    "hi": "Outlier"
+   },
+   "d": {
+    "en": "A value far away from the rest of the data, often an error.",
+    "hi": "बाकी data से बहुत दूर का मान, अक्सर ग़लती।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data preprocessing",
+    "hi": "Data preprocessing"
+   },
+   "d": {
+    "en": "Cleaning and organising raw data before use.",
+    "hi": "उपयोग से पहले कच्चे data को साफ़ और व्यवस्थित करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature",
+    "hi": "Feature"
+   },
+   "d": {
+    "en": "A property recorded for each item (a column).",
+    "hi": "हर वस्तु के लिए दर्ज गुण (एक कॉलम)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Independent / dependent feature",
+    "hi": "स्वतंत्र / आश्रित feature"
+   },
+   "d": {
+    "en": "Inputs used to predict / the output being predicted.",
+    "hi": "अनुमान के लिए उपयोग होने वाले इनपुट / जिस आउटपुट का अनुमान लगाया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data processing",
+    "hi": "Data processing"
+   },
+   "d": {
+    "en": "Operating on raw data (sort, clean, calculate) to get results.",
+    "hi": "परिणाम पाने के लिए कच्चे data पर काम (क्रम, सफ़ाई, गणना)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data interpretation",
+    "hi": "Data interpretation"
+   },
+   "d": {
+    "en": "Explaining what processed results mean and what decision they support.",
+    "hi": "यह समझाना कि संसाधित परिणामों का क्या अर्थ है और वे किस निर्णय का समर्थन करते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Coding (qualitative)",
+    "hi": "Coding (गुणात्मक)"
+   },
+   "d": {
+    "en": "Tagging repeated ideas in text answers with short labels.",
+    "hi": "पाठ्य उत्तरों में बार-बार आने वाले विचारों को छोटे लेबल देना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bar graph / Pie chart / Line graph",
+    "hi": "बार ग्राफ़ / पाई चार्ट / लाइन ग्राफ़"
+   },
+   "d": {
+    "en": "Compare categories / show parts of a whole / show change over time.",
+    "hi": "श्रेणियों की तुलना / पूरे के भाग / समय के साथ बदलाव।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dashboard",
+    "hi": "Dashboard"
+   },
+   "d": {
+    "en": "One screen showing several key charts and numbers together.",
+    "hi": "एक स्क्रीन जिस पर कई मुख्य चार्ट और संख्याएँ एक साथ हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Tableau",
+    "hi": "Tableau"
+   },
+   "d": {
+    "en": "A data visualisation tool for making charts and dashboards (Tableau Public is free).",
+    "hi": "चार्ट और dashboard बनाने का data visualisation tool (Tableau Public मुफ़्त है)।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which level of the DIKW pyramid answers the question 'why'? (a) Data (b) Information (c) Knowledge (d) Wisdom",
+    "hi": "MCQ: DIKW पिरामिड का कौन-सा स्तर 'क्यों' का उत्तर देता है? (a) Data (b) Information (c) Knowledge (d) Wisdom"
+   },
+   "a": {
+    "en": "(d) Wisdom",
+    "hi": "(d) Wisdom"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The number of students in a class is an example of (a) continuous data (b) discrete data (c) qualitative data (d) nominal text",
+    "hi": "MCQ: कक्षा में विद्यार्थियों की संख्या किसका उदाहरण है? (a) सतत data (b) असतत data (c) गुणात्मक data (d) नाममात्र पाठ"
+   },
+   "a": {
+    "en": "(b) discrete data — it is counted in whole numbers.",
+    "hi": "(b) असतत data — इसे पूर्ण संख्याओं में गिना जाता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Rotating and changing the brightness of existing photos to get more training images is called (a) data discovery (b) data augmentation (c) data generation (d) web scraping",
+    "hi": "MCQ: अधिक प्रशिक्षण चित्र पाने के लिए मौजूदा फ़ोटो को घुमाना और चमक बदलना कहलाता है (a) data discovery (b) data augmentation (c) data generation (d) web scraping"
+   },
+   "a": {
+    "en": "(b) data augmentation",
+    "hi": "(b) data augmentation"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is NOT a type of data presentation? (a) Textual (b) Tabular (c) Graphical (d) Raw data",
+    "hi": "MCQ: इनमें से कौन data प्रस्तुति का प्रकार नहीं है? (a) पाठ्य (b) सारणीबद्ध (c) ग्राफ़ीय (d) कच्चा data"
+   },
+   "a": {
+    "en": "(d) Raw data — it is unprocessed and not a way of presenting.",
+    "hi": "(d) कच्चा data — यह असंसाधित है, प्रस्तुति का तरीका नहीं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (a) A ______ chart shows parts of a whole. (b) Data collected first-hand is ______ data. (c) A value far away from the rest is an ______. (d) India's law on digital personal data is the ______ Act, 2023.",
+    "hi": "रिक्त स्थान भरिए: (a) ______ चार्ट पूरे के भाग दिखाता है। (b) सीधे स्वयं इकट्ठा किया गया data ______ data है। (c) बाकी से बहुत दूर का मान ______ है। (d) डिजिटल व्यक्तिगत data पर भारत का क़ानून ______ अधिनियम, 2023 है।"
+   },
+   "a": {
+    "en": "(a) pie (b) primary (c) outlier (d) Digital Personal Data Protection (DPDP)",
+    "hi": "(a) पाई (b) प्राथमिक (c) outlier (d) डिजिटल व्यक्तिगत डेटा संरक्षण (DPDP)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (a) A mobile number is quantitative data. (b) Data security protects data across its whole lifecycle. (c) Textual presentation suits large data. (d) A polling question is usually a single question.",
+    "hi": "सही या ग़लत: (a) मोबाइल नंबर मात्रात्मक data है। (b) Data security पूरे जीवनकाल में data की रक्षा करती है। (c) पाठ्य प्रस्तुति बड़े data के लिए उपयुक्त है। (d) Poll में आम तौर पर एक ही प्रश्न होता है।"
+   },
+   "a": {
+    "en": "(a) False — it is a label. (b) True. (c) False — only small data. (d) True.",
+    "hi": "(a) ग़लत — यह लेबल है। (b) सही। (c) ग़लत — केवल थोड़े data के लिए। (d) सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Classify as qualitative or quantitative (and discrete/continuous where numeric): blood group, height, number of sixes, review comment, temperature, length of a song, genre of a song.",
+    "hi": "गुणात्मक या मात्रात्मक में बाँटिए (और संख्यात्मक हो तो असतत/सतत): रक्त समूह, ऊँचाई, छक्कों की संख्या, समीक्षा टिप्पणी, तापमान, गाने की अवधि, गाने की शैली।"
+   },
+   "a": {
+    "en": "Qualitative: blood group, review comment, song genre.\nQuantitative continuous: height, temperature, length of a song.\nQuantitative discrete: number of sixes.",
+    "hi": "गुणात्मक: रक्त समूह, समीक्षा टिप्पणी, गाने की शैली।\nमात्रात्मक सतत: ऊँचाई, तापमान, गाने की अवधि।\nमात्रात्मक असतत: छक्कों की संख्या।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Data privacy and data security are the same thing. Reason (R): Both deal with personal data. Choose: (a) both true, R explains A (b) both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): Data privacy और data security एक ही चीज़ हैं। कारण (R): दोनों व्यक्तिगत data से संबंधित हैं। चुनिए: (a) दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(d) A is false: privacy is about rights and consent, security about protection methods. R is true: both concern data, including personal data.",
+    "hi": "(d) A ग़लत है: निजता अधिकार और सहमति की बात है, सुरक्षा बचाव के तरीकों की। R सही है: दोनों का संबंध data से, व्यक्तिगत data सहित, है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Data must be preprocessed before training an AI model. Reason (R): Duplicates, missing values and outliers can make the model learn wrong patterns. Choose (a)–(d) as above.",
+    "hi": "अभिकथन (A): AI मॉडल प्रशिक्षित करने से पहले data का preprocessing ज़रूरी है। कारण (R): दोहराव, छूटे मान और outliers मॉडल को ग़लत पैटर्न सिखा सकते हैं। ऊपर की तरह (a)–(d) चुनिए।"
+   },
+   "a": {
+    "en": "(a) Both true and R correctly explains A.",
+    "hi": "(a) दोनों सही हैं और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the seven steps of the data literacy process framework and explain any two with an example.",
+    "hi": "Data literacy process framework के सात चरण बताइए और किन्हीं दो को उदाहरण सहित समझाइए।"
+   },
+   "a": {
+    "en": "Steps: Plan, Communicate, Assess, Develop culture, Prescriptive, Learning, Evaluate.\nPlan: a school decides its goal (better engagement) and the data needed (attendance, submissions).\nEvaluate: after a month it measures that submissions rose from 60% to 80% and refines the plan. The cycle then repeats.",
+    "hi": "चरण: योजना, संवाद, आकलन, संस्कृति विकास, निर्देशात्मक, सीखना, मूल्यांकन।\nयोजना: स्कूल लक्ष्य (बेहतर सहभागिता) और ज़रूरी data (उपस्थिति, असाइनमेंट) तय करता है।\nमूल्यांकन: एक महीने बाद मापता है कि असाइनमेंट 60% से 80% हुए और योजना सुधारता है। फिर चक्र दोहराया जाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What are the three factors that decide the usability of data? Explain each.",
+    "hi": "Data की उपयोगिता तय करने वाले तीन कारक कौन-से हैं? हर एक समझाइए।"
+   },
+   "a": {
+    "en": "Structure: how data is stored and arranged (clear rows and columns).\nCleanliness: free from duplicates, missing values and outliers.\nAccuracy: how closely values match the real world.",
+    "hi": "संरचना: data कैसे संग्रहीत और व्यवस्थित है (स्पष्ट पंक्तियाँ और कॉलम)।\nस्वच्छता: दोहराव, छूटे मानों और outliers से मुक्त।\nसटीकता: मान वास्तविक दुनिया से कितने मेल खाते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between data processing and data interpretation with an example.",
+    "hi": "Data processing और data interpretation में उदाहरण सहित अंतर बताइए।"
+   },
+   "a": {
+    "en": "Processing operates on raw data to get results (a canteen finds it sold 200 samosas and 50 sandwiches).\nInterpretation explains the meaning and decision (samosas are four times as popular, so prepare more samosas).",
+    "hi": "Processing कच्चे data पर काम करके परिणाम देता है (कैंटीन पाती है कि 200 समोसे और 50 सैंडविच बिके)।\nInterpretation अर्थ और निर्णय समझाता है (समोसे चार गुना लोकप्रिय हैं, इसलिए अधिक समोसे बनाओ)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List the five steps of qualitative data analysis and the four steps of quantitative data interpretation.",
+    "hi": "गुणात्मक data विश्लेषण के पाँच चरण और मात्रात्मक data interpretation के चार चरण लिखिए।"
+   },
+   "a": {
+    "en": "Qualitative: collect, organise, assign codes, analyse, report.\nQuantitative: relate measurement scales to variables; connect descriptive statistics with data; decide a measurement scale; represent data in an appropriate format.",
+    "hi": "गुणात्मक: इकट्ठा करना, व्यवस्थित करना, कोड देना, विश्लेषण, रिपोर्ट।\nमात्रात्मक: मापन पैमानों को चरों से जोड़ना; वर्णनात्मक सांख्यिकी को data से जोड़ना; मापन पैमाना तय करना; data को उपयुक्त रूप में दिखाना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which chart would you use, and why? (a) Monthly rainfall in Mumbai for a year (b) Share of each sport students like (c) Runs scored by five batters in a match.",
+    "hi": "आप कौन-सा चार्ट उपयोग करेंगे और क्यों? (a) एक वर्ष में मुंबई की मासिक वर्षा (b) विद्यार्थियों को पसंद हर खेल का हिस्सा (c) एक मैच में पाँच बल्लेबाज़ों के रन।"
+   },
+   "a": {
+    "en": "(a) Line graph — change over time.\n(b) Pie chart — parts of a whole.\n(c) Bar graph — comparing categories.",
+    "hi": "(a) लाइन ग्राफ़ — समय के साथ बदलाव।\n(b) पाई चार्ट — पूरे के भाग।\n(c) बार ग्राफ़ — श्रेणियों की तुलना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In a survey of 60 students, 27 chose cricket, 15 football, 12 badminton and 6 kabaddi. Find the pie-chart angle for each.",
+    "hi": "60 विद्यार्थियों के सर्वे में 27 ने क्रिकेट, 15 ने फ़ुटबॉल, 12 ने बैडमिंटन और 6 ने कबड्डी चुना। हर एक का पाई-चार्ट कोण निकालिए।"
+   },
+   "a": {
+    "en": "Angle = (value ÷ 60) × 360° = value × 6°.\nCricket 27 × 6 = 162°; Football 15 × 6 = 90°; Badminton 12 × 6 = 72°; Kabaddi 6 × 6 = 36°.\nCheck: 162 + 90 + 72 + 36 = 360°.",
+    "hi": "कोण = (मान ÷ 60) × 360° = मान × 6°।\nक्रिकेट 27 × 6 = 162°; फ़ुटबॉल 15 × 6 = 90°; बैडमिंटन 12 × 6 = 72°; कबड्डी 6 × 6 = 36°।\nजाँच: 162 + 90 + 72 + 36 = 360°।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give four cyber security do's and four don'ts for a Class 9 student.",
+    "hi": "कक्षा 9 के विद्यार्थी के लिए साइबर सुरक्षा के चार 'क्या करें' और चार 'क्या न करें' बताइए।"
+   },
+   "a": {
+    "en": "Do's: strong unique passwords; turn on 2FA; keep apps updated; report bullying to a trusted adult.\nDon'ts: never share OTP/UPI PIN/passwords; don't open unknown links; don't post personal details or photos to strangers; don't cyberbully.",
+    "hi": "क्या करें: मज़बूत अलग पासवर्ड; 2FA चालू करें; ऐप अपडेट रखें; बुलिंग की सूचना भरोसेमंद बड़े को दें।\nक्या न करें: OTP/UPI PIN/पासवर्ड कभी साझा न करें; अनजान लिंक न खोलें; अजनबियों को व्यक्तिगत विवरण या फ़ोटो न भेजें; साइबर बुलिंग न करें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Case-based: Riya builds a model that predicts a student's final exam score from hours studied, attendance and mock-test score. (a) Name the dependent feature. (b) Name the independent features. (c) Her spreadsheet has the same student entered twice and one mock score of 250/100. What should she do? (d) Is this primary or secondary data if she collected it from her class with a form?",
+    "hi": "केस-आधारित: रिया एक मॉडल बनाती है जो पढ़ाई के घंटे, उपस्थिति और मॉक-टेस्ट अंकों से विद्यार्थी के अंतिम परीक्षा अंक का अनुमान लगाता है। (a) आश्रित feature बताइए। (b) स्वतंत्र features बताइए। (c) उसकी spreadsheet में एक विद्यार्थी दो बार है और एक मॉक अंक 250/100 है। उसे क्या करना चाहिए? (d) यदि उसने यह form से अपनी कक्षा से लिया, तो यह प्राथमिक है या द्वितीयक?"
+   },
+   "a": {
+    "en": "(a) Final exam score.\n(b) Hours studied, attendance, mock-test score.\n(c) Remove the duplicate row; check the 250 with the student or teacher and correct it, or remove it as an outlier.\n(d) Primary data.",
+    "hi": "(a) अंतिम परीक्षा अंक।\n(b) पढ़ाई के घंटे, उपस्थिति, मॉक-टेस्ट अंक।\n(c) दोहराई पंक्ति हटाए; 250 को विद्यार्थी या शिक्षक से जाँचकर सुधारे, या outlier मानकर हटाए।\n(d) प्राथमिक data।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Classify into levels of measurement: (a) jersey numbers (b) T-shirt sizes S, M, L, XL (c) temperature in °C (d) pocket money in rupees.",
+    "hi": "मापन के स्तरों में बाँटिए: (a) जर्सी नंबर (b) टी-शर्ट साइज़ S, M, L, XL (c) °C में तापमान (d) रुपयों में जेब ख़र्च।"
+   },
+   "a": {
+    "en": "(a) Nominal (b) Ordinal (c) Interval (d) Ratio",
+    "hi": "(a) Nominal (b) Ordinal (c) Interval (d) Ratio"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the DIKW pyramid with an example from cricket.",
+    "hi": "क्रिकेट के उदाहरण से DIKW पिरामिड समझाइए।"
+   },
+   "a": {
+    "en": "Data: 4, 0, 6, 1, 4, 6 (runs off six balls).\nInformation: in the 18th over, the batter scored 21 runs off six balls.\nKnowledge: this bowler concedes many runs to short-pitched balls at the death overs; this is how the batter scored.\nWisdom: the captain decides to give the last over to another bowler and set a deeper field, because protecting the total matters most.",
+    "hi": "Data: 4, 0, 6, 1, 4, 6 (छह गेंदों पर रन)।\nInformation: 18वें ओवर में बल्लेबाज़ ने छह गेंदों पर 21 रन बनाए।\nKnowledge: यह गेंदबाज़ अंतिम ओवरों में छोटी गेंदों पर बहुत रन देता है; बल्लेबाज़ ने ऐसे रन बनाए।\nWisdom: कप्तान आख़िरी ओवर दूसरे गेंदबाज़ को देता है और फ़ील्ड पीछे करता है, क्योंकि स्कोर बचाना सबसे ज़रूरी है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Describe the three steps of data acquisition and the two sources of data, with one AI example for each step.",
+    "hi": "Data acquisition के तीन चरण और data के दो स्रोत, हर चरण के एक AI उदाहरण सहित बताइए।"
+   },
+   "a": {
+    "en": "Discovery: finding existing road-image datasets for a self-driving car.\nAugmentation: flipping and brightening leaf photos for a crop-disease app.\nGeneration: soil-moisture sensors recording readings every hour on a farm.\nSources: primary (first-hand surveys, sensors, experiments; reliable but slow) and secondary (government portals such as data.gov.in, journals, websites, Kaggle; quick but may be old or unsuitable).",
+    "hi": "Discovery: सेल्फ़-ड्राइविंग कार के लिए मौजूदा सड़क-चित्र datasets खोजना।\nAugmentation: फ़सल-रोग ऐप के लिए पत्ती की फ़ोटो पलटना और चमकाना।\nGeneration: खेत में मिट्टी-नमी sensors का हर घंटे रीडिंग दर्ज करना।\nस्रोत: प्राथमिक (स्वयं सर्वे, sensors, प्रयोग; भरोसेमंद पर धीमा) और द्वितीयक (data.gov.in जैसे सरकारी पोर्टल, पत्रिकाएँ, वेबसाइटें, Kaggle; जल्दी पर पुराना या अनुपयुक्त हो सकता है)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "What ethical concerns should you keep in mind while acquiring data for an AI project? Explain at least four.",
+    "hi": "AI प्रोजेक्ट के लिए data लेते समय किन नैतिक चिंताओं का ध्यान रखना चाहिए? कम से कम चार समझाइए।"
+   },
+   "a": {
+    "en": "Consent: ask permission and explain purpose (parental consent for children).\nPrivacy: collect only needed data and anonymise it.\nBias and fairness: include all groups so that the model works for everyone.\nHonesty: do not fake or alter data.\nLegality: respect copyright and website terms; credit sources.\nSecurity: store safely and delete after use.",
+    "hi": "सहमति: अनुमति लें और उद्देश्य बताएँ (बच्चों के लिए माता-पिता की सहमति)।\nनिजता: केवल ज़रूरी data लें और उसे anonymise करें।\nपूर्वाग्रह और निष्पक्षता: सभी समूह शामिल करें ताकि मॉडल सबके लिए काम करे।\nईमानदारी: data न गढ़ें, न बदलें।\nवैधता: कॉपीराइट और वेबसाइट शर्तों का सम्मान करें; स्रोतों का श्रेय दें।\nसुरक्षा: सुरक्षित रखें और उपयोग के बाद मिटाएँ।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "How are data privacy and data security related to AI? Give two ways AI creates risks and two ways AI helps.",
+    "hi": "Data privacy और data security का AI से क्या संबंध है? दो तरीके बताइए जिनसे AI जोखिम पैदा करता है और दो जिनसे मदद करता है।"
+   },
+   "a": {
+    "en": "Risks: AI is trained on personal data (photos, voices) that may be collected without consent; stolen datasets or models can leak people's details; deepfakes misuse someone's face or voice.\nHelp: banks use AI to flag unusual UPI/card transactions; email services use AI to block spam and phishing.\nSo privacy and security must be built into every stage of the AI project cycle.",
+    "hi": "जोखिम: AI व्यक्तिगत data (फ़ोटो, आवाज़) पर प्रशिक्षित होता है जो बिना सहमति लिया गया हो सकता है; चोरी हुए datasets या मॉडल लोगों की जानकारी लीक कर सकते हैं; deepfakes किसी के चेहरे या आवाज़ का दुरुपयोग करते हैं।\nमदद: बैंक असामान्य UPI/कार्ड लेन-देन पहचानने में AI का उपयोग करते हैं; ईमेल सेवाएँ spam और phishing रोकने में AI का उपयोग करती हैं।\nइसलिए AI project cycle के हर चरण में निजता और सुरक्षा शामिल होनी चाहिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the five stages from acquiring data to presenting it, using the example of a canteen that wants to reduce food waste.",
+    "hi": "कैंटीन के भोजन की बर्बादी घटाने के उदाहरण से data प्राप्त करने से प्रस्तुत करने तक के पाँच चरण समझाइए।"
+   },
+   "a": {
+    "en": "Acquire: record daily how many plates of each dish are cooked and how many are left over, for a month.\nProcess: enter in a spreadsheet, fix errors, compute waste per dish per day.\nAnalyse: rajma-rice is wasted most on Saturdays; poha has almost no waste.\nInterpret: many students leave early on Saturdays, so less food is needed then.\nPresent: a bar graph of waste per dish and a line graph of waste per weekday, shown to the canteen manager, who cooks less on Saturdays.",
+    "hi": "प्राप्त करना: एक महीने तक रोज़ लिखना कि हर व्यंजन की कितनी प्लेटें बनीं और कितनी बचीं।\nसंसाधित करना: spreadsheet में भरना, ग़लतियाँ सुधारना, हर दिन हर व्यंजन की बर्बादी निकालना।\nविश्लेषण: शनिवार को राजमा-चावल सबसे अधिक बर्बाद होता है; पोहा लगभग नहीं बचता।\nव्याख्या: शनिवार को बहुत विद्यार्थी जल्दी चले जाते हैं, इसलिए तब कम भोजन चाहिए।\nप्रस्तुति: हर व्यंजन की बर्बादी का बार ग्राफ़ और हर दिन की बर्बादी का लाइन ग्राफ़ कैंटीन प्रबंधक को दिखाना, जो शनिवार को कम पकाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity/thinking: You want to find out why students in your school skip breakfast. Would you use qualitative or quantitative interpretation, or both? Plan the data collection and how you will present the results.",
+    "hi": "गतिविधि/चिंतन: आप जानना चाहते हैं कि आपके स्कूल के विद्यार्थी नाश्ता क्यों छोड़ते हैं। आप गुणात्मक, मात्रात्मक या दोनों interpretation उपयोग करेंगे? data संग्रह और परिणाम प्रस्तुति की योजना बनाइए।"
+   },
+   "a": {
+    "en": "Both. Quantitative: a survey/poll — 'Did you eat breakfast today? How many days a week?' — gives how many and how often; present as a bar graph by class and a pie chart of yes/no.\nQualitative: short one-to-one interviews or a focus group asking why; code the answers ('no time', 'not hungry', 'nothing ready') and report the main themes with quotes.\nTake consent, keep answers anonymous, and share findings with teachers to plan solutions such as a breakfast corner.",
+    "hi": "दोनों। मात्रात्मक: सर्वे/poll — 'क्या आज नाश्ता किया? सप्ताह में कितने दिन?' — कितने और कितनी बार बताता है; कक्षावार बार ग्राफ़ और हाँ/नहीं का पाई चार्ट।\nगुणात्मक: छोटे आमने-सामने साक्षात्कार या फ़ोकस ग्रुप में 'क्यों' पूछना; उत्तरों को कोड करना ('समय नहीं', 'भूख नहीं', 'कुछ तैयार नहीं') और उद्धरणों सहित मुख्य विषय बताना।\nसहमति लें, उत्तर गुमनाम रखें, और समाधान (जैसे नाश्ता कोना) के लिए शिक्षकों से निष्कर्ष साझा करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Why is data interpretation important? Give five reasons with everyday Indian examples.",
+    "hi": "Data interpretation क्यों ज़रूरी है? रोज़मर्रा के भारतीय उदाहरणों के साथ पाँच कारण दीजिए।"
+   },
+   "a": {
+    "en": "1. Better decisions: a farmer irrigates using soil-moisture data.\n2. Insight: a school finds science scores dip after fewer practicals.\n3. Forecasting: shops stock up before Diwali based on past sales trends.\n4. Saves time and money: Google Maps traffic data suggests a faster route.\n5. Problem solving and safety: UPI apps spot unusual transactions and warn users.",
+    "hi": "1. बेहतर निर्णय: किसान मिट्टी-नमी data से सिंचाई करता है।\n2. अंतर्दृष्टि: स्कूल पाता है कि कम प्रयोगों के बाद विज्ञान के अंक गिरे।\n3. पूर्वानुमान: दुकानें पिछली बिक्री के रुझान से दिवाली से पहले माल भरती हैं।\n4. समय और पैसे की बचत: Google Maps का ट्रैफ़िक data तेज़ रास्ता सुझाता है।\n5. समस्या-समाधान और सुरक्षा: UPI ऐप असामान्य लेन-देन पहचानकर चेतावनी देते हैं।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Data literacy is the ability to read, work with, analyse and communicate data responsibly.",
+   "The DIKW pyramid: Data (raw) → Information (what) → Knowledge (how) → Wisdom (why).",
+   "Becoming data literate needs basics of data, statistical skills, data tools, accurate interpretation and critical thinking.",
+   "The data literacy framework is iterative: Plan, Communicate, Assess, Develop culture, Prescriptive, Learning, Evaluate.",
+   "Data privacy is about consent and lawful use of personal data (India's DPDP Act, 2023); data security protects data from unauthorised access, damage and theft.",
+   "Cyber security habits: strong passwords, 2FA, updates, https, private accounts; never share OTP, PIN or passwords; report bullying to a trusted adult.",
+   "Data is qualitative (words, categories) or quantitative (numbers); quantitative is discrete (counted) or continuous (measured).",
+   "Levels of measurement: nominal, ordinal, interval, ratio.",
+   "Data acquisition has three steps — discovery, augmentation, generation — and two sources — primary and secondary; it must be ethical.",
+   "Usable data is well structured, clean (no duplicates, missing values or outliers) and accurate; preprocessing makes it so.",
+   "Features are the properties of data; independent features are inputs and the dependent feature is the predicted output.",
+   "Five stages: acquire, process, analyse, interpret, present. Processing finds results; interpretation explains their meaning.",
+   "Qualitative interpretation answers why/how (5 steps); quantitative answers how many/how often (4 steps).",
+   "Data is presented as text, tables or graphs: bar (compare), pie (parts of whole, angle = value/total × 360°), line (over time).",
+   "Tools such as spreadsheets, Tableau and dashboards help visualise data in the data exploration stage of the AI project cycle."
+  ],
+  "hi": [
+   "डेटा साक्षरता data को ज़िम्मेदारी से पढ़ने, उसके साथ काम करने, विश्लेषण करने और संप्रेषित करने की क्षमता है।",
+   "DIKW पिरामिड: Data (कच्चा) → Information (क्या) → Knowledge (कैसे) → Wisdom (क्यों)।",
+   "Data-साक्षर बनने के लिए data की मूल बातें, सांख्यिकीय कौशल, data tools, सही व्याख्या और आलोचनात्मक सोच चाहिए।",
+   "Data literacy framework पुनरावृत्त है: योजना, संवाद, आकलन, संस्कृति विकास, निर्देशात्मक, सीखना, मूल्यांकन।",
+   "Data privacy व्यक्तिगत data की सहमति और क़ानूनी उपयोग की बात है (भारत का DPDP अधिनियम, 2023); data security data को अनधिकृत पहुँच, क्षति और चोरी से बचाती है।",
+   "साइबर सुरक्षा की आदतें: मज़बूत पासवर्ड, 2FA, अपडेट, https, private खाते; OTP, PIN या पासवर्ड कभी साझा न करें; बुलिंग की सूचना भरोसेमंद बड़े को दें।",
+   "Data गुणात्मक (शब्द, श्रेणियाँ) या मात्रात्मक (संख्याएँ) होता है; मात्रात्मक असतत (गिना हुआ) या सतत (मापा हुआ) होता है।",
+   "मापन के स्तर: nominal, ordinal, interval, ratio।",
+   "Data acquisition के तीन चरण — discovery, augmentation, generation — और दो स्रोत — प्राथमिक और द्वितीयक — हैं; यह नैतिक होना चाहिए।",
+   "उपयोगी data सुव्यवस्थित, साफ़ (दोहराव, छूटे मान या outliers नहीं) और सटीक होता है; preprocessing उसे ऐसा बनाता है।",
+   "Features data के गुण हैं; स्वतंत्र features इनपुट हैं और आश्रित feature अनुमानित आउटपुट है।",
+   "पाँच चरण: प्राप्त करना, संसाधित करना, विश्लेषण, व्याख्या, प्रस्तुति। Processing परिणाम देता है; interpretation उनका अर्थ बताता है।",
+   "गुणात्मक interpretation क्यों/कैसे का उत्तर देता है (5 चरण); मात्रात्मक कितने/कितनी बार का (4 चरण)।",
+   "Data पाठ, तालिका या ग्राफ़ में दिखाया जाता है: बार (तुलना), पाई (पूरे के भाग, कोण = मान/कुल × 360°), लाइन (समय के साथ)।",
+   "Spreadsheet, Tableau और dashboard जैसे tools AI project cycle के data exploration चरण में data दिखाने में मदद करते हैं।"
+  ]
+ }
+}

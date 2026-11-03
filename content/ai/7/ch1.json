@@ -1,0 +1,1498 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "7",
+ "id": "ch1",
+ "intro": {
+  "en": "In Class 6 you met AI: machines that can do tasks which need some intelligence, such as recognising faces, understanding speech and suggesting videos. But how does a machine become 'smart'? Nobody can sit and write a rule for every face in the world. Instead, the machine is shown many examples and it learns the pattern by itself. This chapter compares how humans learn with how machines learn, explains machine learning step by step (data, training, model, testing), introduces the three main types of learning and the idea of a neural network, and ends with a tiny Python program that actually learns a rule from data.",
+  "hi": "कक्षा 6 में आपने AI को जाना: ऐसी मशीनें जो ऐसे काम कर सकती हैं जिनमें कुछ बुद्धि चाहिए, जैसे चेहरे पहचानना, बोली समझना और वीडियो सुझाना। पर कोई मशीन 'स्मार्ट' बनती कैसे है? दुनिया के हर चेहरे के लिए कोई बैठकर नियम नहीं लिख सकता। इसके बजाय मशीन को बहुत सारे उदाहरण दिखाए जाते हैं और वह खुद पैटर्न सीख लेती है। इस अध्याय में हम तुलना करेंगे कि इंसान कैसे सीखते हैं और मशीनें कैसे सीखती हैं, मशीन लर्निंग को कदम-दर-कदम समझेंगे (डेटा, ट्रेनिंग, मॉडल, टेस्टिंग), सीखने के तीन मुख्य प्रकार और न्यूरल नेटवर्क का विचार जानेंगे, और अंत में एक छोटा Python प्रोग्राम देखेंगे जो सच में डेटा से एक नियम सीखता है।"
+ },
+ "learn": {
+  "en": [
+   "How humans learn: senses, experience, practice, feedback and memory",
+   "How ordinary machines work by following instructions (programs and algorithms)",
+   "The difference between rule-based systems and learning systems",
+   "What machine learning is, and the meaning of data, features, labels, training, model and testing",
+   "The steps of machine learning, from collecting data to improving the model",
+   "Three types of learning: supervised, unsupervised and reinforcement learning",
+   "Classification, regression and clustering, with Indian examples",
+   "A first look at neural networks, inspired by the human brain",
+   "Strengths of humans and machines, and why they work best together",
+   "A tiny Python program that learns a rule from data, and activities to train your own model"
+  ],
+  "hi": [
+   "इंसान कैसे सीखते हैं: इंद्रियाँ, अनुभव, अभ्यास, प्रतिक्रिया (फ़ीडबैक) और स्मृति",
+   "साधारण मशीनें निर्देशों (प्रोग्राम और एल्गोरिद्म) का पालन करके कैसे काम करती हैं",
+   "नियम-आधारित सिस्टम और सीखने वाले सिस्टम में अंतर",
+   "मशीन लर्निंग क्या है, और डेटा, फ़ीचर, लेबल, ट्रेनिंग, मॉडल और टेस्टिंग का अर्थ",
+   "मशीन लर्निंग के चरण: डेटा इकट्ठा करने से मॉडल सुधारने तक",
+   "सीखने के तीन प्रकार: सुपरवाइज़्ड, अनसुपरवाइज़्ड और रीइन्फ़ोर्समेंट लर्निंग",
+   "क्लासिफ़िकेशन, रिग्रेशन और क्लस्टरिंग, भारतीय उदाहरणों के साथ",
+   "न्यूरल नेटवर्क की पहली झलक, जो मानव मस्तिष्क से प्रेरित है",
+   "इंसानों और मशीनों की ताकतें, और वे साथ मिलकर सबसे अच्छा काम क्यों करते हैं",
+   "एक छोटा Python प्रोग्राम जो डेटा से नियम सीखता है, और अपना मॉडल ट्रेन करने की गतिविधियाँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "1.1 Quick recap from Class 6",
+    "hi": "1.1 कक्षा 6 का संक्षिप्त दोहराव"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before we go further, let us recall a few ideas from Class 6. Artificial Intelligence (AI) is the ability of a computer or machine to do tasks that normally need human intelligence: seeing, hearing, understanding language, finding patterns, making predictions and taking decisions. Every AI system works on the Input → Processing → Output idea. For example, a voice assistant takes your voice as input, processes it to understand the words, and gives an answer as output.",
+      "hi": "आगे बढ़ने से पहले कक्षा 6 की कुछ बातें याद कर लें। आर्टिफ़िशियल इंटेलिजेंस (AI) किसी कंप्यूटर या मशीन की वह क्षमता है जिससे वह ऐसे काम कर सके जिनके लिए आमतौर पर मानव बुद्धि चाहिए: देखना, सुनना, भाषा समझना, पैटर्न ढूँढना, भविष्यवाणी करना और निर्णय लेना। हर AI सिस्टम इनपुट → प्रोसेसिंग → आउटपुट के विचार पर काम करता है। जैसे, वॉइस असिस्टेंट आपकी आवाज़ को इनपुट के रूप में लेता है, शब्द समझने के लिए उसे प्रोसेस करता है और उत्तर को आउटपुट के रूप में देता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "You also learned that data is the food of AI, that AI finds patterns in data, and that AI predictions are 'most likely' guesses, not certainties. In this chapter we answer the big question left open in Class 6: how exactly does a machine learn from data?",
+      "hi": "आपने यह भी सीखा कि डेटा AI का भोजन है, AI डेटा में पैटर्न ढूँढता है, और AI की भविष्यवाणियाँ 'सबसे संभावित' अनुमान होती हैं, पक्की बातें नहीं। इस अध्याय में हम कक्षा 6 में छूटे बड़े प्रश्न का उत्तर देंगे: मशीन डेटा से ठीक-ठीक कैसे सीखती है?"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI = machines doing tasks that need intelligence. Machine learning = the most common way of making AI today, where the machine learns from examples instead of being told every rule.",
+      "hi": "याद रखिए: AI = मशीनें जो बुद्धि वाले काम करती हैं। मशीन लर्निंग = आज AI बनाने का सबसे आम तरीका, जिसमें मशीन को हर नियम बताने के बजाय वह उदाहरणों से सीखती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.2 How do humans learn?",
+    "hi": "1.2 इंसान कैसे सीखते हैं?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think about how you learned to ride a bicycle. Nobody gave you a book of 500 rules. You watched others, tried, wobbled, fell, got up, and someone shouted 'pedal faster!' or 'look ahead!'. Slowly your brain worked out what to do. Humans learn in several ways, and each of them has a matching idea in machine learning.",
+      "hi": "सोचिए आपने साइकिल चलाना कैसे सीखा। किसी ने आपको 500 नियमों की किताब नहीं दी। आपने दूसरों को देखा, कोशिश की, डगमगाए, गिरे, उठे, और किसी ने चिल्लाकर कहा 'तेज़ पैडल मारो!' या 'आगे देखो!'। धीरे-धीरे आपके दिमाग ने समझ लिया कि क्या करना है। इंसान कई तरह से सीखते हैं, और हर तरीके से मिलता-जुलता एक विचार मशीन लर्निंग में भी है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Through the senses: we see, hear, touch, smell and taste. Our senses collect information (data) about the world.",
+       "From experience and examples: after seeing many mango trees, a child can recognise a new mango tree without being told.",
+       "From a teacher: a teacher shows a picture and says 'this is a peacock'. Here we get the example and the correct answer together.",
+       "By practice: the more problems you solve, the better and faster you become.",
+       "From feedback, rewards and mistakes: a good mark, a 'well done', or the pain of a fall tells us whether we did right or wrong.",
+       "By memory and connecting ideas: our brain stores what we learn and links new ideas to old ones.",
+       "By reasoning and imagination: we can think about things we have never seen, and understand feelings, jokes and situations."
+      ],
+      "hi": [
+       "इंद्रियों से: हम देखते, सुनते, छूते, सूँघते और चखते हैं। हमारी इंद्रियाँ दुनिया के बारे में जानकारी (डेटा) इकट्ठा करती हैं।",
+       "अनुभव और उदाहरणों से: बहुत से आम के पेड़ देखने के बाद बच्चा बिना बताए नए आम के पेड़ को पहचान लेता है।",
+       "शिक्षक से: शिक्षक एक चित्र दिखाकर कहते हैं 'यह मोर है'। यहाँ हमें उदाहरण और सही उत्तर साथ मिलते हैं।",
+       "अभ्यास से: जितने ज़्यादा प्रश्न आप हल करते हैं, उतने बेहतर और तेज़ होते जाते हैं।",
+       "प्रतिक्रिया, इनाम और गलतियों से: अच्छे अंक, 'शाबाश', या गिरने का दर्द हमें बताता है कि हमने सही किया या गलत।",
+       "स्मृति और विचारों को जोड़कर: हमारा दिमाग सीखी बातें याद रखता है और नए विचारों को पुराने से जोड़ता है।",
+       "तर्क और कल्पना से: हम उन चीज़ों के बारे में भी सोच सकते हैं जो कभी नहीं देखीं, और भावनाएँ, मज़ाक और परिस्थितियाँ समझ सकते हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Notice that humans learn from very few examples. A child may need to see only two or three elephants to recognise every elephant afterwards, even a toy elephant or a cartoon one. Humans also use common sense: you know that a cup of tea placed on the edge of a table may fall. Machines usually need many more examples and have no common sense of their own.",
+      "hi": "ध्यान दीजिए कि इंसान बहुत कम उदाहरणों से सीख लेते हैं। बच्चे को शायद दो-तीन हाथी देखने की ज़रूरत होती है, फिर वह हर हाथी पहचान लेता है, चाहे खिलौना हाथी हो या कार्टून वाला। इंसान सामान्य समझ (कॉमन सेंस) भी इस्तेमाल करते हैं: आप जानते हैं कि मेज़ के किनारे रखा चाय का कप गिर सकता है। मशीनों को आमतौर पर बहुत अधिक उदाहरण चाहिए होते हैं और उनकी अपनी कोई सामान्य समझ नहीं होती।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Riya learned to identify ripe bananas at a fruit stall. List what she used to learn: senses, examples, teacher, feedback.",
+       "hi": "रिया ने फल के ठेले पर पके केले पहचानना सीखा। बताइए उसने सीखने के लिए क्या-क्या इस्तेमाल किया: इंद्रियाँ, उदाहरण, शिक्षक, प्रतिक्रिया।"
+      },
+      "a": {
+       "en": "Senses: she looked at the colour (yellow with small brown spots) and felt the softness.\nExamples: she saw many bananas, green, yellow and very dark.\nTeacher: the fruit seller told her 'yellow ones are ready, green ones need two days'.\nFeedback: when she bought a green one, it tasted hard and sour, so she learned from the mistake.",
+       "hi": "इंद्रियाँ: उसने रंग देखा (पीला, छोटे भूरे धब्बों वाला) और नरमी को छूकर महसूस किया।\nउदाहरण: उसने बहुत से केले देखे, हरे, पीले और बहुत गहरे।\nशिक्षक: फल वाले ने बताया 'पीले वाले तैयार हैं, हरे वालों को दो दिन लगेंगे'।\nप्रतिक्रिया: जब उसने हरा केला खरीदा तो वह सख्त और खट्टा निकला, इसलिए उसने गलती से सीखा।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.3 How ordinary machines work: following instructions",
+    "hi": "1.3 साधारण मशीनें कैसे काम करती हैं: निर्देशों का पालन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A calculator, a washing machine on a fixed programme, a traffic light that changes every 60 seconds and an ATM all follow instructions written by people. These instructions are called a program. A program is built from an algorithm: a clear, step-by-step method for doing a task, where each step is exact and the steps are in the right order.",
+      "hi": "कैलकुलेटर, तय प्रोग्राम पर चलने वाली वॉशिंग मशीन, हर 60 सेकंड में बदलने वाली ट्रैफ़िक लाइट और ATM सभी लोगों द्वारा लिखे निर्देशों का पालन करते हैं। इन निर्देशों को प्रोग्राम कहते हैं। प्रोग्राम एक एल्गोरिद्म से बनता है: किसी काम को करने का स्पष्ट, कदम-दर-कदम तरीका, जिसमें हर कदम सटीक हो और कदम सही क्रम में हों।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Algorithm",
+       "hi": "एल्गोरिद्म (Algorithm)"
+      },
+      "text": {
+       "en": "An algorithm is a finite list of clear steps, in a fixed order, that solves a problem or completes a task.",
+       "hi": "एल्गोरिद्म स्पष्ट कदमों की एक सीमित सूची है, तय क्रम में, जो किसी समस्या को हल करती है या कोई काम पूरा करती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write an algorithm for making a cup of tea.",
+       "hi": "एक कप चाय बनाने का एल्गोरिद्म लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: Pour one cup of water into a pan and put it on the stove.\nStep 2: Add tea leaves and a little ginger; let it boil for 2 minutes.\nStep 3: Add half a cup of milk and sugar to taste.\nStep 4: Boil again for 2 minutes.\nStep 5: Switch off the stove and strain the tea into a cup.\nStep 6: Stop.\nEvery step is clear and the order matters: you cannot strain before boiling.",
+       "hi": "चरण 1: एक कप पानी पतीले में डालकर चूल्हे पर रखिए।\nचरण 2: चायपत्ती और थोड़ा अदरक डालिए; 2 मिनट उबलने दीजिए।\nचरण 3: आधा कप दूध और स्वाद अनुसार चीनी डालिए।\nचरण 4: फिर 2 मिनट उबालिए।\nचरण 5: चूल्हा बंद करके चाय को कप में छान लीजिए।\nचरण 6: रुकिए।\nहर कदम स्पष्ट है और क्रम ज़रूरी है: उबालने से पहले छाना नहीं जा सकता।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Such machines are very fast, never get tired and never forget a step. But they cannot do anything that was not written in the program. If a new situation comes, they fail or simply stop. An ATM cannot understand a customer who is upset; a timer traffic light keeps showing green on an empty road while a long queue waits on the red side.",
+      "hi": "ऐसी मशीनें बहुत तेज़ होती हैं, कभी थकती नहीं और कोई कदम नहीं भूलतीं। पर वे ऐसा कुछ नहीं कर सकतीं जो प्रोग्राम में लिखा न हो। कोई नई स्थिति आए तो वे गलती करती हैं या रुक जाती हैं। ATM परेशान ग्राहक को नहीं समझ सकता; टाइमर वाली ट्रैफ़िक लाइट खाली सड़क पर हरी बत्ती दिखाती रहती है जबकि लाल वाली तरफ़ लंबी कतार इंतज़ार करती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.4 Rule-based systems and learning systems",
+    "hi": "1.4 नियम-आधारित सिस्टम और सीखने वाले सिस्टम"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "There are two big ways to make a computer do a smart-looking task. In a rule-based system, a human expert thinks of the rules and the programmer writes them as IF-THEN statements. In a learning system (machine learning), the computer is given data and examples, and it works out the rules or patterns by itself.",
+      "hi": "कंप्यूटर से कोई स्मार्ट दिखने वाला काम करवाने के दो बड़े तरीके हैं। नियम-आधारित सिस्टम में कोई मानव विशेषज्ञ नियम सोचता है और प्रोग्रामर उन्हें IF-THEN कथनों के रूप में लिखता है। सीखने वाले सिस्टम (मशीन लर्निंग) में कंप्यूटर को डेटा और उदाहरण दिए जाते हैं, और वह नियम या पैटर्न खुद निकालता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Traditional programming:  Data + Rules  →  Computer  →  Answers\nMachine learning:           Data + Answers  →  Computer  →  Rules (a model)",
+      "hi": "पारंपरिक प्रोग्रामिंग:  डेटा + नियम  →  कंप्यूटर  →  उत्तर\nमशीन लर्निंग:            डेटा + उत्तर  →  कंप्यूटर  →  नियम (एक मॉडल)"
+     }
+    },
+    {
+     "p": {
+      "en": "Take an SMS spam filter. A rule-based filter might say: IF the message contains 'lottery' OR 'you have won' THEN mark it spam. Fraudsters quickly change words ('l0ttery', 'prize claim'), and the rule stops working. A learning filter is shown lakhs of messages already labelled 'spam' or 'not spam'. It discovers hundreds of small clues by itself (strange links, urgent tone, requests for OTP, unknown senders) and keeps improving as people report new spam.",
+      "hi": "SMS स्पैम फ़िल्टर को लीजिए। नियम-आधारित फ़िल्टर कह सकता है: IF संदेश में 'lottery' OR 'you have won' है THEN उसे स्पैम मानो। धोखेबाज़ जल्दी शब्द बदल देते हैं ('l0ttery', 'prize claim'), और नियम काम करना बंद कर देता है। सीखने वाले फ़िल्टर को लाखों ऐसे संदेश दिखाए जाते हैं जिन पर पहले से 'स्पैम' या 'स्पैम नहीं' लेबल लगा है। वह खुद सैकड़ों छोटे सुराग खोज लेता है (अजीब लिंक, जल्दबाज़ी वाला लहजा, OTP की माँग, अनजान भेजने वाले) और लोगों के नए स्पैम रिपोर्ट करने पर सुधरता रहता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Rule-based system",
+        "Learning system (ML)"
+       ],
+       "hi": [
+        "बिंदु",
+        "नियम-आधारित सिस्टम",
+        "सीखने वाला सिस्टम (ML)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who makes the rules?",
+         "A human writes every rule",
+         "The machine finds patterns from data"
+        ],
+        [
+         "What it needs",
+         "Expert knowledge",
+         "Lots of good, labelled data"
+        ],
+        [
+         "New situations",
+         "Fails if no rule fits",
+         "Can handle new cases similar to its examples"
+        ],
+        [
+         "Changing world",
+         "Rules must be rewritten by hand",
+         "Can be retrained with new data"
+        ],
+        [
+         "Easy to explain?",
+         "Yes, every rule can be read",
+         "Often hard to see why it decided"
+        ],
+        [
+         "Example",
+         "Calculator, timer traffic light, simple quiz app",
+         "Face unlock, spam filter, Google Maps traffic, voice typing"
+        ]
+       ],
+       "hi": [
+        [
+         "नियम कौन बनाता है?",
+         "इंसान हर नियम लिखता है",
+         "मशीन डेटा से पैटर्न ढूँढती है"
+        ],
+        [
+         "क्या चाहिए",
+         "विशेषज्ञ का ज्ञान",
+         "बहुत सारा अच्छा, लेबल वाला डेटा"
+        ],
+        [
+         "नई स्थितियाँ",
+         "कोई नियम न बैठे तो विफल",
+         "अपने उदाहरणों जैसे नए मामले संभाल सकता है"
+        ],
+        [
+         "बदलती दुनिया",
+         "नियम हाथ से दोबारा लिखने पड़ते हैं",
+         "नए डेटा से फिर ट्रेन किया जा सकता है"
+        ],
+        [
+         "समझाना आसान?",
+         "हाँ, हर नियम पढ़ा जा सकता है",
+         "अक्सर देखना कठिन कि उसने ऐसा क्यों तय किया"
+        ],
+        [
+         "उदाहरण",
+         "कैलकुलेटर, टाइमर ट्रैफ़िक लाइट, साधारण क्विज़ ऐप",
+         "फ़ेस अनलॉक, स्पैम फ़िल्टर, Google Maps ट्रैफ़िक, वॉइस टाइपिंग"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Rule-based systems are not 'bad'. When the rules are simple and fixed (like calculating GST or checking if marks are 33 or more), rules are the best choice. Machine learning is useful when the rules are too many, too fuzzy or keep changing, like recognising handwriting or faces.",
+      "hi": "नियम-आधारित सिस्टम 'बुरे' नहीं हैं। जब नियम सरल और तय हों (जैसे GST की गणना या यह जाँचना कि अंक 33 या ज़्यादा हैं), तब नियम ही सबसे अच्छा विकल्प हैं। मशीन लर्निंग तब उपयोगी है जब नियम बहुत ज़्यादा, धुंधले या बदलते रहने वाले हों, जैसे हस्तलेख या चेहरे पहचानना।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Could you write rules to recognise every handwritten '7'? Why is machine learning better here?",
+       "hi": "क्या आप हर हाथ से लिखे '7' को पहचानने के नियम लिख सकते हैं? यहाँ मशीन लर्निंग बेहतर क्यों है?"
+      },
+      "a": {
+       "en": "Step 1: People write 7 in many ways: with or without a middle line, slanted, curved, thick or thin.\nStep 2: A rule like 'a flat line on top and a slanting line down' fails for many real 7s and may wrongly match a 1.\nStep 3: With machine learning, we show the computer thousands of handwritten digits with their correct labels.\nStep 4: The computer learns the patterns itself and can recognise 7s it has never seen. So ML is better for such fuzzy tasks.",
+       "hi": "चरण 1: लोग 7 कई तरह से लिखते हैं: बीच की लकीर के साथ या बिना, तिरछा, मुड़ा हुआ, मोटा या पतला।\nचरण 2: 'ऊपर सीधी रेखा और नीचे तिरछी रेखा' जैसा नियम बहुत से असली 7 पर विफल होगा और गलती से 1 से मेल खा सकता है।\nचरण 3: मशीन लर्निंग में हम कंप्यूटर को हज़ारों हाथ से लिखे अंक उनके सही लेबल के साथ दिखाते हैं।\nचरण 4: कंप्यूटर खुद पैटर्न सीखता है और ऐसे 7 भी पहचान लेता है जो उसने कभी नहीं देखे। इसलिए ऐसे धुंधले कामों के लिए ML बेहतर है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.5 What is machine learning?",
+    "hi": "1.5 मशीन लर्निंग क्या है?"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Machine learning (ML)",
+       "hi": "मशीन लर्निंग (ML)"
+      },
+      "text": {
+       "en": "Machine learning is a part of AI in which a computer learns patterns from data and examples, and uses them to make decisions or predictions about new data, without being given a separate rule for every case.",
+       "hi": "मशीन लर्निंग AI का एक भाग है जिसमें कंप्यूटर डेटा और उदाहरणों से पैटर्न सीखता है और उनका उपयोग नए डेटा के बारे में निर्णय या भविष्यवाणी करने में करता है, बिना हर मामले के लिए अलग नियम दिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The term 'machine learning' was made popular by the American computer scientist Arthur Samuel in 1959. He wrote a program that played the board game checkers and became better by playing many games against itself, until it could beat its own creator at times. The key idea: the program improved with experience, just like a student improves with practice.",
+      "hi": "'मशीन लर्निंग' शब्द को अमेरिकी कंप्यूटर वैज्ञानिक आर्थर सैमुअल ने 1959 में लोकप्रिय बनाया। उन्होंने चेकर्स (एक बोर्ड गेम) खेलने वाला प्रोग्राम लिखा जो खुद के विरुद्ध बहुत सारे खेल खेलकर बेहतर होता गया, यहाँ तक कि कभी-कभी अपने निर्माता को भी हरा देता था। मुख्य विचार: प्रोग्राम अनुभव से सुधरा, जैसे विद्यार्थी अभ्यास से सुधरता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "A few key words appear again and again in machine learning. Learn them well; you will use them in every chapter of AI from now on.",
+      "hi": "मशीन लर्निंग में कुछ शब्द बार-बार आते हैं। इन्हें अच्छी तरह सीख लीजिए; अब से AI के हर अध्याय में आप इनका उपयोग करेंगे।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Word",
+        "Meaning",
+        "Example: sorting fruits"
+       ],
+       "hi": [
+        "शब्द",
+        "अर्थ",
+        "उदाहरण: फल छाँटना"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Facts, pictures, sounds or numbers collected for learning",
+         "500 photos of fruits"
+        ],
+        [
+         "Feature",
+         "A property that helps tell things apart",
+         "Colour, shape, size, weight"
+        ],
+        [
+         "Label",
+         "The correct answer attached to an example",
+         "'apple', 'banana', 'orange'"
+        ],
+        [
+         "Training",
+         "The process in which the computer studies examples and finds patterns",
+         "Showing the 400 labelled photos to the computer"
+        ],
+        [
+         "Model",
+         "What the computer has learned; the 'trained brain' that makes predictions",
+         "The fruit recogniser"
+        ],
+        [
+         "Testing",
+         "Checking the model on examples it has not seen",
+         "Trying the other 100 photos"
+        ],
+        [
+         "Prediction",
+         "The model's answer for a new input",
+         "'This is a banana'"
+        ],
+        [
+         "Accuracy",
+         "How often the model is right, often as a percentage",
+         "92 correct out of 100 = 92%"
+        ]
+       ],
+       "hi": [
+        [
+         "डेटा",
+         "सीखने के लिए इकट्ठे किए गए तथ्य, चित्र, आवाज़ें या संख्याएँ",
+         "फलों की 500 तस्वीरें"
+        ],
+        [
+         "फ़ीचर",
+         "वह गुण जो चीज़ों में अंतर करने में मदद करे",
+         "रंग, आकार, माप, वज़न"
+        ],
+        [
+         "लेबल",
+         "किसी उदाहरण के साथ जुड़ा सही उत्तर",
+         "'सेब', 'केला', 'संतरा'"
+        ],
+        [
+         "ट्रेनिंग",
+         "वह प्रक्रिया जिसमें कंप्यूटर उदाहरणों को पढ़कर पैटर्न ढूँढता है",
+         "400 लेबल वाली तस्वीरें कंप्यूटर को दिखाना"
+        ],
+        [
+         "मॉडल",
+         "कंप्यूटर ने जो सीखा; 'ट्रेन किया हुआ दिमाग' जो भविष्यवाणी करता है",
+         "फल पहचानने वाला"
+        ],
+        [
+         "टेस्टिंग",
+         "मॉडल को ऐसे उदाहरणों पर जाँचना जो उसने नहीं देखे",
+         "बाकी 100 तस्वीरें आज़माना"
+        ],
+        [
+         "प्रेडिक्शन (भविष्यवाणी)",
+         "किसी नए इनपुट के लिए मॉडल का उत्तर",
+         "'यह केला है'"
+        ],
+        [
+         "एक्यूरेसी (सटीकता)",
+         "मॉडल कितनी बार सही है, अक्सर प्रतिशत में",
+         "100 में 92 सही = 92%"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Accuracy (%) = (number of correct predictions ÷ total predictions) × 100",
+      "hi": "एक्यूरेसी (%) = (सही भविष्यवाणियों की संख्या ÷ कुल भविष्यवाणियाँ) × 100"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A model that recognises cats and dogs was tested on 50 new photos. It was right 45 times. Find its accuracy.",
+       "hi": "बिल्ली और कुत्ते पहचानने वाले मॉडल को 50 नई तस्वीरों पर टेस्ट किया गया। वह 45 बार सही रहा। उसकी एक्यूरेसी ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Correct predictions = 45\nTotal predictions = 50\nAccuracy = (45 ÷ 50) × 100 = 0.9 × 100 = 90%\nSo the model is right 9 times out of 10, and wrong 5 times. It is good but not perfect.",
+       "hi": "सही भविष्यवाणियाँ = 45\nकुल भविष्यवाणियाँ = 50\nएक्यूरेसी = (45 ÷ 50) × 100 = 0.9 × 100 = 90%\nयानी मॉडल 10 में से 9 बार सही है, और 5 बार गलत। यह अच्छा है पर पूरी तरह सही नहीं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "A model is like a student who has prepared for an exam. Training is the preparation, testing is the exam with new questions, and accuracy is the score. A student who only memorised the textbook answers may fail when the questions are new; a model can fail the same way.",
+      "hi": "मॉडल उस विद्यार्थी जैसा है जिसने परीक्षा की तैयारी की हो। ट्रेनिंग तैयारी है, टेस्टिंग नए प्रश्नों वाली परीक्षा है, और एक्यूरेसी अंक है। जिस विद्यार्थी ने सिर्फ़ किताब के उत्तर रटे हों, वह नए प्रश्नों पर फ़ेल हो सकता है; मॉडल भी इसी तरह विफल हो सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.6 The steps of machine learning",
+    "hi": "1.6 मशीन लर्निंग के चरण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Let us follow one example all the way: a farmer-helper app that looks at a photo of a tomato leaf and says whether the leaf is healthy or diseased. Apps like this are used by farmers in India to catch plant diseases early.",
+      "hi": "एक उदाहरण को शुरू से अंत तक देखें: किसान-सहायक ऐप जो टमाटर की पत्ती की फ़ोटो देखकर बताता है कि पत्ती स्वस्थ है या रोगग्रस्त। भारत में किसान ऐसे ऐप का उपयोग पौधों के रोग जल्दी पकड़ने के लिए करते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1 – Define the problem: What should the model do? 'Tell healthy leaves from diseased leaves.'",
+       "Step 2 – Collect data: Take thousands of photos of tomato leaves from many farms, in sunlight and shade, young and old leaves.",
+       "Step 3 – Prepare and label the data: Experts (plant doctors) mark each photo 'healthy' or 'diseased'. Blurry or wrong photos are removed.",
+       "Step 4 – Split the data: Keep most photos (for example 80%) for training and keep the rest (20%) aside for testing.",
+       "Step 5 – Train the model: The computer studies the training photos and finds patterns, such as brown spots, yellow patches or curled edges.",
+       "Step 6 – Test (evaluate) the model: Show it the 20% test photos it has never seen. Count how many it gets right (accuracy).",
+       "Step 7 – Improve: If accuracy is low, add more and better data, fix wrong labels, or train again.",
+       "Step 8 – Use (deploy) and keep learning: Put the model in the app. As farmers send new photos and experts check them, the model can be retrained and becomes better."
+      ],
+      "hi": [
+       "चरण 1 – समस्या तय करना: मॉडल को क्या करना है? 'स्वस्थ और रोगग्रस्त पत्तियों में अंतर बताना।'",
+       "चरण 2 – डेटा इकट्ठा करना: कई खेतों से, धूप और छाँव में, नई और पुरानी पत्तियों की हज़ारों फ़ोटो लेना।",
+       "चरण 3 – डेटा तैयार करना और लेबल लगाना: विशेषज्ञ (पौधों के डॉक्टर) हर फ़ोटो पर 'स्वस्थ' या 'रोगग्रस्त' लिखते हैं। धुंधली या गलत फ़ोटो हटा दी जाती हैं।",
+       "चरण 4 – डेटा बाँटना: ज़्यादातर फ़ोटो (जैसे 80%) ट्रेनिंग के लिए और बाकी (20%) टेस्टिंग के लिए अलग रखना।",
+       "चरण 5 – मॉडल ट्रेन करना: कंप्यूटर ट्रेनिंग फ़ोटो पढ़ता है और पैटर्न ढूँढता है, जैसे भूरे धब्बे, पीले हिस्से या मुड़े किनारे।",
+       "चरण 6 – मॉडल टेस्ट (मूल्यांकन) करना: उसे वे 20% टेस्ट फ़ोटो दिखाइए जो उसने कभी नहीं देखीं। गिनिए कितनी सही बताईं (एक्यूरेसी)।",
+       "चरण 7 – सुधारना: एक्यूरेसी कम हो तो और बेहतर डेटा जोड़िए, गलत लेबल ठीक कीजिए, या फिर से ट्रेन कीजिए।",
+       "चरण 8 – उपयोग (डिप्लॉय) और सीखते रहना: मॉडल को ऐप में डालिए। किसान नई फ़ोटो भेजते हैं और विशेषज्ञ उन्हें जाँचते हैं, तो मॉडल फिर ट्रेन होकर और बेहतर बनता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Picture this as a circle drawn on the board: Problem → Data → Labels → Training → Testing → Improve → Use, and then an arrow back from Use to Data, because new data keeps coming in. In higher classes you will study this as the 'AI Project Cycle', and you will use it yourself in Chapter 7 (My First AI Project).",
+      "hi": "इसे बोर्ड पर बने एक गोले की तरह सोचिए: समस्या → डेटा → लेबल → ट्रेनिंग → टेस्टिंग → सुधार → उपयोग, और फिर उपयोग से डेटा की ओर वापस तीर, क्योंकि नया डेटा आता रहता है। ऊँची कक्षाओं में आप इसे 'AI प्रोजेक्ट साइकिल' के रूप में पढ़ेंगे, और अध्याय 7 (मेरा पहला AI प्रोजेक्ट) में खुद इसका उपयोग करेंगे।"
+     }
+    },
+    {
+     "note": {
+      "en": "Why keep test data separate? If you test a model on the same photos it trained on, it may look perfect because it has simply 'remembered' them. Only new, unseen data tells you whether it truly learned the pattern. This is like a teacher giving fresh questions in the exam, not the exact ones done in class.",
+      "hi": "टेस्ट डेटा अलग क्यों रखें? अगर आप मॉडल को उन्हीं फ़ोटो पर टेस्ट करें जिन पर वह ट्रेन हुआ, तो वह पूरी तरह सही दिख सकता है क्योंकि उसने बस उन्हें 'याद' कर लिया है। केवल नया, बिना देखा डेटा बताता है कि उसने सच में पैटर्न सीखा या नहीं। यह वैसा ही है जैसे शिक्षक परीक्षा में नए प्रश्न देते हैं, कक्षा में किए हुए वही प्रश्न नहीं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A school has 1,000 labelled photos for a 'mask / no mask' model. If they use an 80:20 split, how many photos are for training and how many for testing?",
+       "hi": "एक स्कूल के पास 'मास्क / बिना मास्क' मॉडल के लिए 1,000 लेबल वाली फ़ोटो हैं। अगर वे 80:20 का बँटवारा करें तो कितनी फ़ोटो ट्रेनिंग के लिए और कितनी टेस्टिंग के लिए होंगी?"
+      },
+      "a": {
+       "en": "Training = 80% of 1,000 = (80 ÷ 100) × 1,000 = 800 photos.\nTesting = 20% of 1,000 = (20 ÷ 100) × 1,000 = 200 photos.\nCheck: 800 + 200 = 1,000.",
+       "hi": "ट्रेनिंग = 1,000 का 80% = (80 ÷ 100) × 1,000 = 800 फ़ोटो।\nटेस्टिंग = 1,000 का 20% = (20 ÷ 100) × 1,000 = 200 फ़ोटो।\nजाँच: 800 + 200 = 1,000।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The quality of data decides the quality of the model. Remember 'garbage in, garbage out' from Class 6. If all the diseased-leaf photos were taken in the evening and all the healthy ones at noon, the model might wrongly learn 'dark photo = diseased'. Data must be large enough, correct, varied (many kinds of examples) and balanced (enough examples of every group).",
+      "hi": "डेटा की गुणवत्ता ही मॉडल की गुणवत्ता तय करती है। कक्षा 6 का 'कचरा अंदर, कचरा बाहर' याद कीजिए। अगर रोगग्रस्त पत्तियों की सारी फ़ोटो शाम को और स्वस्थ पत्तियों की सारी दोपहर में ली गईं, तो मॉडल गलती से सीख सकता है 'अँधेरी फ़ोटो = रोगग्रस्त'। डेटा काफ़ी बड़ा, सही, विविध (कई तरह के उदाहरण) और संतुलित (हर समूह के पर्याप्त उदाहरण) होना चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.7 Three types of machine learning",
+    "hi": "1.7 मशीन लर्निंग के तीन प्रकार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Machines can learn in three main ways. Each matches a way in which humans learn.",
+      "hi": "मशीनें तीन मुख्य तरीकों से सीख सकती हैं। हर तरीका इंसानों के सीखने के किसी ढंग से मिलता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Supervised learning",
+       "hi": "सुपरवाइज़्ड लर्निंग (निरीक्षित अधिगम)"
+      },
+      "text": {
+       "en": "Learning from examples that come with the correct answers (labels), like a student learning with a teacher who checks every answer.",
+       "hi": "ऐसे उदाहरणों से सीखना जिनके साथ सही उत्तर (लेबल) हों, जैसे विद्यार्थी ऐसे शिक्षक के साथ सीखता है जो हर उत्तर जाँचते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Supervised learning does two kinds of jobs. Classification puts a new item into one of a fixed set of groups (classes): spam or not spam, healthy or diseased leaf, cat or dog, which Indian language is being spoken. Regression predicts a number: tomorrow's temperature, the price of a second-hand bike, how many runs a team may score in the remaining overs, or the expected arrival time on Google Maps.",
+      "hi": "सुपरवाइज़्ड लर्निंग दो तरह के काम करती है। क्लासिफ़िकेशन (वर्गीकरण) किसी नई चीज़ को तय समूहों (क्लास) में से किसी एक में रखता है: स्पैम या नहीं, स्वस्थ या रोगग्रस्त पत्ती, बिल्ली या कुत्ता, कौन-सी भारतीय भाषा बोली जा रही है। रिग्रेशन किसी संख्या की भविष्यवाणी करता है: कल का तापमान, पुरानी बाइक की कीमत, बचे ओवरों में टीम कितने रन बना सकती है, या Google Maps पर पहुँचने का अनुमानित समय।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Unsupervised learning",
+       "hi": "अनसुपरवाइज़्ड लर्निंग (अनिरीक्षित अधिगम)"
+      },
+      "text": {
+       "en": "Learning from data that has no labels. The machine finds groups or hidden patterns by itself, like a child sorting a box of mixed buttons into piles without being told the groups.",
+       "hi": "बिना लेबल वाले डेटा से सीखना। मशीन खुद समूह या छिपे पैटर्न ढूँढती है, जैसे कोई बच्चा मिले-जुले बटनों के डिब्बे को बिना बताए ढेरों में छाँट दे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The main job of unsupervised learning is clustering: putting similar items together. A shopping app may find that some customers buy mostly school stationery in June, others buy festival lights in October, and others buy cricket gear all year. Nobody told the app these groups; it found them by looking at similarities. The app can then show each group suitable offers.",
+      "hi": "अनसुपरवाइज़्ड लर्निंग का मुख्य काम क्लस्टरिंग है: मिलती-जुलती चीज़ों को साथ रखना। कोई शॉपिंग ऐप पा सकता है कि कुछ ग्राहक जून में ज़्यादातर स्कूल की स्टेशनरी खरीदते हैं, कुछ अक्टूबर में त्योहार की लाइटें, और कुछ साल भर क्रिकेट का सामान। ऐप को ये समूह किसी ने नहीं बताए; उसने समानताएँ देखकर खुद ढूँढे। फिर ऐप हर समूह को उपयुक्त ऑफ़र दिखा सकता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Reinforcement learning",
+       "hi": "रीइन्फ़ोर्समेंट लर्निंग (प्रबलन अधिगम)"
+      },
+      "text": {
+       "en": "Learning by trial and error: the machine (called an agent) tries actions, gets a reward for good results and a penalty for bad ones, and slowly learns the actions that bring the most reward.",
+       "hi": "प्रयास और त्रुटि से सीखना: मशीन (जिसे एजेंट कहते हैं) काम करके देखती है, अच्छे परिणाम पर इनाम और बुरे पर दंड पाती है, और धीरे-धीरे वे काम सीख जाती है जिनसे सबसे ज़्यादा इनाम मिलता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "This is how you might train a puppy: a biscuit when it sits on command, no biscuit when it jumps on guests. Computers have learned to play games like chess and Go at a very high level this way, by playing millions of games and keeping the moves that led to wins. Robots can learn to walk by being rewarded for every step they take without falling.",
+      "hi": "ऐसे ही आप पिल्ले को सिखा सकते हैं: कहने पर बैठे तो बिस्किट, मेहमानों पर कूदे तो बिस्किट नहीं। कंप्यूटरों ने शतरंज और गो जैसे खेल इसी तरह बहुत ऊँचे स्तर पर खेलना सीखा है, लाखों खेल खेलकर और जीत दिलाने वाली चालें याद रखकर। रोबोट बिना गिरे उठाए हर कदम पर इनाम पाकर चलना सीख सकते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Data",
+        "Main jobs",
+        "Human example",
+        "AI example"
+       ],
+       "hi": [
+        "प्रकार",
+        "डेटा",
+        "मुख्य काम",
+        "मानव उदाहरण",
+        "AI उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Supervised",
+         "Labelled (with answers)",
+         "Classification, regression",
+         "Teacher shows flash cards with names",
+         "Spam filter, crop-disease app, price prediction"
+        ],
+        [
+         "Unsupervised",
+         "Unlabelled",
+         "Clustering, finding hidden patterns",
+         "Sorting a mixed box of toys into piles",
+         "Grouping customers, grouping similar news stories"
+        ],
+        [
+         "Reinforcement",
+         "Rewards and penalties from trying",
+         "Learning the best actions",
+         "Learning a video game by playing",
+         "Game-playing AI, robots learning to walk"
+        ]
+       ],
+       "hi": [
+        [
+         "सुपरवाइज़्ड",
+         "लेबल वाला (उत्तरों के साथ)",
+         "क्लासिफ़िकेशन, रिग्रेशन",
+         "शिक्षक नाम लिखे फ़्लैश कार्ड दिखाते हैं",
+         "स्पैम फ़िल्टर, फसल-रोग ऐप, कीमत अनुमान"
+        ],
+        [
+         "अनसुपरवाइज़्ड",
+         "बिना लेबल",
+         "क्लस्टरिंग, छिपे पैटर्न ढूँढना",
+         "मिले-जुले खिलौनों को ढेरों में छाँटना",
+         "ग्राहकों का समूह बनाना, मिलती-जुलती खबरों को एक साथ रखना"
+        ],
+        [
+         "रीइन्फ़ोर्समेंट",
+         "कोशिश से मिले इनाम और दंड",
+         "सबसे अच्छे काम सीखना",
+         "वीडियो गेम खेलते-खेलते सीखना",
+         "खेल खेलने वाला AI, चलना सीखते रोबोट"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Name the type of learning: (a) A model is given 10,000 X-ray images marked 'normal' or 'pneumonia'. (b) An app groups songs that sound similar without any genre names. (c) A robot vacuum gets points for cleaning and loses points for bumping into walls.",
+       "hi": "सीखने का प्रकार बताइए: (a) मॉडल को 'सामान्य' या 'निमोनिया' चिह्नित 10,000 एक्स-रे दिए गए। (b) एक ऐप बिना किसी शैली के नाम के मिलती-जुलती धुनों वाले गानों का समूह बनाता है। (c) रोबोट वैक्यूम को सफ़ाई पर अंक मिलते हैं और दीवार से टकराने पर अंक कटते हैं।"
+      },
+      "a": {
+       "en": "(a) The images have correct answers (labels), so it is supervised learning. Since the answer is a group, it is classification.\n(b) No labels; the app finds groups by itself, so it is unsupervised learning (clustering).\n(c) Learning from rewards and penalties by trying, so it is reinforcement learning.",
+       "hi": "(a) तस्वीरों के साथ सही उत्तर (लेबल) हैं, इसलिए यह सुपरवाइज़्ड लर्निंग है। उत्तर एक समूह है, इसलिए यह क्लासिफ़िकेशन है।\n(b) कोई लेबल नहीं; ऐप खुद समूह ढूँढता है, इसलिए यह अनसुपरवाइज़्ड लर्निंग (क्लस्टरिंग) है।\n(c) कोशिश करके इनाम और दंड से सीखना, इसलिए यह रीइन्फ़ोर्समेंट लर्निंग है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Is each task classification or regression? (a) Predict tomorrow's rainfall in mm. (b) Decide if a UPI payment looks like fraud. (c) Guess a cricket team's final score.",
+       "hi": "हर काम क्लासिफ़िकेशन है या रिग्रेशन? (a) कल की बारिश mm में बताना। (b) तय करना कि कोई UPI भुगतान धोखाधड़ी जैसा दिखता है या नहीं। (c) क्रिकेट टीम का अंतिम स्कोर अनुमान लगाना।"
+      },
+      "a": {
+       "en": "(a) The answer is a number (mm of rain), so regression.\n(b) The answer is one of two groups (fraud / not fraud), so classification.\n(c) The answer is a number (runs), so regression.\nTip: ask 'Is the answer a group name or a number?'",
+       "hi": "(a) उत्तर एक संख्या (बारिश के mm) है, इसलिए रिग्रेशन।\n(b) उत्तर दो समूहों में से एक (धोखाधड़ी / नहीं) है, इसलिए क्लासिफ़िकेशन।\n(c) उत्तर एक संख्या (रन) है, इसलिए रिग्रेशन।\nसुझाव: पूछिए 'उत्तर किसी समूह का नाम है या कोई संख्या?'"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.8 Neural networks: a machine 'brain' made of numbers",
+    "hi": "1.8 न्यूरल नेटवर्क: संख्याओं से बना मशीनी 'दिमाग'"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Your brain has billions of tiny nerve cells called neurons. Each neuron receives signals from other neurons, and if the signals are strong enough, it 'fires' and passes a signal on. Learning makes some connections stronger and others weaker. Scientists borrowed this idea to build artificial neural networks, which power many modern AI systems such as face recognition, voice typing and chatbots.",
+      "hi": "आपके दिमाग में अरबों छोटी तंत्रिका कोशिकाएँ होती हैं जिन्हें न्यूरॉन कहते हैं। हर न्यूरॉन दूसरे न्यूरॉनों से संकेत पाता है, और अगर संकेत काफ़ी मज़बूत हों तो वह 'सक्रिय' होकर संकेत आगे भेज देता है। सीखने से कुछ जुड़ाव मज़बूत और कुछ कमज़ोर हो जाते हैं। वैज्ञानिकों ने यही विचार लेकर कृत्रिम न्यूरल नेटवर्क बनाए, जो चेहरा पहचान, वॉइस टाइपिंग और चैटबॉट जैसे कई आधुनिक AI सिस्टमों को चलाते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Artificial neural network",
+       "hi": "कृत्रिम न्यूरल नेटवर्क"
+      },
+      "text": {
+       "en": "A computer model made of many small connected units (artificial neurons) arranged in layers. Each connection has a strength (weight) that is adjusted during training so that the network gives the right outputs.",
+       "hi": "एक कंप्यूटर मॉडल जो परतों में जमे बहुत सी छोटी जुड़ी हुई इकाइयों (कृत्रिम न्यूरॉन) से बना है। हर जुड़ाव की एक ताकत (वेट) होती है जो ट्रेनिंग के दौरान बदली जाती है ताकि नेटवर्क सही आउटपुट दे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Imagine a diagram with three columns of circles joined by many lines. The left column is the input layer: it receives the data, for example the pixels of a photo. The middle columns are hidden layers: they find patterns step by step (first edges, then shapes like eyes and ears, then whole faces). The right column is the output layer: it gives the answer, such as 'cat' or 'dog'. A network with many hidden layers is called a deep neural network, and learning with it is called deep learning.",
+      "hi": "एक चित्र की कल्पना कीजिए जिसमें गोलों के तीन स्तंभ बहुत-सी रेखाओं से जुड़े हैं। बाएँ स्तंभ इनपुट लेयर (परत) है: यह डेटा लेता है, जैसे फ़ोटो के पिक्सेल। बीच के स्तंभ हिडन लेयर (छिपी परतें) हैं: ये कदम-दर-कदम पैटर्न ढूँढती हैं (पहले किनारे, फिर आँख-कान जैसे आकार, फिर पूरा चेहरा)। दाएँ स्तंभ आउटपुट लेयर है: यह उत्तर देती है, जैसे 'बिल्ली' या 'कुत्ता'। जिस नेटवर्क में बहुत-सी हिडन लेयर हों उसे डीप न्यूरल नेटवर्क कहते हैं, और उससे सीखने को डीप लर्निंग कहते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "How does such a network learn? During training it makes a guess, compares it with the correct label, and measures the error. Then it adjusts the weights a tiny bit so that next time the error is smaller. This is repeated for thousands or millions of examples. It is like tuning a radio knob little by little until the sound becomes clear.",
+      "hi": "ऐसा नेटवर्क सीखता कैसे है? ट्रेनिंग के दौरान वह एक अनुमान लगाता है, उसकी तुलना सही लेबल से करता है और गलती नापता है। फिर वह वेट को थोड़ा-सा बदलता है ताकि अगली बार गलती कम हो। यह हज़ारों या लाखों उदाहरणों के लिए दोहराया जाता है। यह रेडियो की घुंडी को थोड़ा-थोड़ा घुमाने जैसा है जब तक आवाज़ साफ़ न हो जाए।"
+     }
+    },
+    {
+     "note": {
+      "en": "A neural network is inspired by the brain but it is NOT a real brain. It does not think, feel or understand like you. It is a huge set of numbers that has been adjusted to match patterns in data.",
+      "hi": "न्यूरल नेटवर्क दिमाग से प्रेरित है पर यह असली दिमाग नहीं है। यह आपकी तरह सोचता, महसूस करता या समझता नहीं। यह संख्याओं का एक विशाल समूह है जिसे डेटा के पैटर्न से मेल खाने के लिए समायोजित किया गया है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.9 Humans and machines: who is good at what?",
+    "hi": "1.9 इंसान और मशीनें: कौन किसमें अच्छा है?"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Ability",
+        "Humans",
+        "Machines (AI)"
+       ],
+       "hi": [
+        "क्षमता",
+        "इंसान",
+        "मशीनें (AI)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Speed with numbers and data",
+         "Slow",
+         "Extremely fast; can check lakhs of records in seconds"
+        ],
+        [
+         "Learning from few examples",
+         "Very good",
+         "Usually need many examples"
+        ],
+        [
+         "Getting tired or bored",
+         "Yes",
+         "No; can work 24 hours"
+        ],
+        [
+         "Common sense",
+         "Yes",
+         "No; can make silly mistakes"
+        ],
+        [
+         "Feelings, kindness, empathy",
+         "Yes",
+         "No real feelings (can only imitate words)"
+        ],
+        [
+         "Creativity and imagination",
+         "Deep and original",
+         "Can mix patterns from data, but no real ideas of its own"
+        ],
+        [
+         "Handling a totally new situation",
+         "Can adapt and reason",
+         "Often fails outside its training data"
+        ],
+        [
+         "Responsibility for decisions",
+         "Yes, humans are answerable",
+         "No; a person must stay responsible"
+        ]
+       ],
+       "hi": [
+        [
+         "संख्याओं और डेटा में गति",
+         "धीमी",
+         "बहुत तेज़; सेकंडों में लाखों रिकॉर्ड जाँच सकती है"
+        ],
+        [
+         "कम उदाहरणों से सीखना",
+         "बहुत अच्छे",
+         "आमतौर पर बहुत उदाहरण चाहिए"
+        ],
+        [
+         "थकना या ऊबना",
+         "हाँ",
+         "नहीं; 24 घंटे काम कर सकती है"
+        ],
+        [
+         "सामान्य समझ",
+         "हाँ",
+         "नहीं; बेतुकी गलतियाँ कर सकती है"
+        ],
+        [
+         "भावनाएँ, दया, सहानुभूति",
+         "हाँ",
+         "कोई असली भावना नहीं (सिर्फ़ शब्दों की नकल)"
+        ],
+        [
+         "रचनात्मकता और कल्पना",
+         "गहरी और मौलिक",
+         "डेटा के पैटर्न मिला सकती है, पर अपने असली विचार नहीं"
+        ],
+        [
+         "बिल्कुल नई स्थिति संभालना",
+         "ढल सकते हैं और तर्क कर सकते हैं",
+         "अक्सर अपने ट्रेनिंग डेटा के बाहर विफल"
+        ],
+        [
+         "निर्णयों की ज़िम्मेदारी",
+         "हाँ, इंसान जवाबदेह हैं",
+         "नहीं; किसी व्यक्ति को ज़िम्मेदार रहना होगा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The best results come when humans and machines work together. This is sometimes called 'human in the loop'. A doctor uses an AI tool that marks suspicious spots on an X-ray, but the doctor makes the final diagnosis. A bank's AI flags an unusual UPI payment and sends you an alert, but you decide whether it was really you. Google Maps predicts traffic, but the driver still watches the road. AI is a helper and a tool; it does not replace human judgement.",
+      "hi": "सबसे अच्छे परिणाम तब आते हैं जब इंसान और मशीनें साथ काम करें। इसे कभी-कभी 'ह्यूमन इन द लूप' (प्रक्रिया में इंसान) कहते हैं। डॉक्टर एक AI टूल का उपयोग करते हैं जो एक्स-रे पर संदिग्ध धब्बे चिह्नित करता है, पर अंतिम निदान डॉक्टर करते हैं। बैंक का AI किसी असामान्य UPI भुगतान को पकड़कर आपको अलर्ट भेजता है, पर आप तय करते हैं कि वह सच में आपने किया था या नहीं। Google Maps ट्रैफ़िक का अनुमान लगाता है, पर ड्राइवर फिर भी सड़क देखता है। AI एक सहायक और औज़ार है; यह मानव विवेक की जगह नहीं लेता।"
+     }
+    },
+    {
+     "note": {
+      "en": "Machines learn only what their data shows them. If the data is incomplete or unfair, the model will be incomplete or unfair too. You will study this in Chapter 6 (Fair and Unfair AI).",
+      "hi": "मशीनें वही सीखती हैं जो उनका डेटा उन्हें दिखाता है। डेटा अधूरा या अनुचित हो तो मॉडल भी अधूरा या अनुचित होगा। यह आप अध्याय 6 (निष्पक्ष और अनुचित AI) में पढ़ेंगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.10 A tiny Python program that learns a rule",
+    "hi": "1.10 एक छोटा Python प्रोग्राम जो नियम सीखता है"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Let us see machine learning in its simplest form. We have data about eight students: how many hours they practised for a typing test, and whether they passed. We do not tell the computer the rule. Instead, the program tries different rules ('pass if hours ≥ 1', '≥ 2', and so on), counts how many training examples each rule gets right, and keeps the best one. That best rule is the 'model'. Then we test it on three new students.",
+      "hi": "आइए मशीन लर्निंग को उसके सबसे सरल रूप में देखें। हमारे पास आठ विद्यार्थियों का डेटा है: उन्होंने टाइपिंग टेस्ट के लिए कितने घंटे अभ्यास किया, और वे पास हुए या नहीं। हम कंप्यूटर को नियम नहीं बताते। इसके बजाय प्रोग्राम अलग-अलग नियम आज़माता है ('पास अगर घंटे ≥ 1', '≥ 2', इत्यादि), गिनता है कि हर नियम कितने ट्रेनिंग उदाहरण सही बताता है, और सबसे अच्छा नियम रख लेता है। वही सबसे अच्छा नियम 'मॉडल' है। फिर हम उसे तीन नए विद्यार्थियों पर टेस्ट करते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Training data: (hours of practice, result)\ntrain = [(1, \"fail\"), (2, \"fail\"), (3, \"fail\"), (4, \"pass\"),\n         (5, \"pass\"), (6, \"pass\"), (2.5, \"fail\"), (4.5, \"pass\")]\n\nbest_cut, best_correct = 0, 0\nfor cut in [1, 2, 3, 4, 5, 6]:\n    correct = 0\n    for hours, result in train:\n        guess = \"pass\" if hours >= cut else \"fail\"\n        if guess == result:\n            correct += 1\n    print(\"Try rule: pass if hours >=\", cut, \"->\", correct, \"of\", len(train), \"correct\")\n    if correct > best_correct:\n        best_cut, best_correct = cut, correct\n\nprint(\"Learned rule: pass if hours >=\", best_cut)\n\n# Testing on new examples the program has never seen\ntest = [(3.5, \"pass\"), (1.5, \"fail\"), (5.5, \"pass\")]\nfor hours, real in test:\n    guess = \"pass\" if hours >= best_cut else \"fail\"\n    print(hours, \"hours -> guess:\", guess, \"| real:\", real)",
+      "hi": "# ट्रेनिंग डेटा: (अभ्यास के घंटे, परिणाम)\ntrain = [(1, \"fail\"), (2, \"fail\"), (3, \"fail\"), (4, \"pass\"),\n         (5, \"pass\"), (6, \"pass\"), (2.5, \"fail\"), (4.5, \"pass\")]\n\nbest_cut, best_correct = 0, 0\nfor cut in [1, 2, 3, 4, 5, 6]:\n    correct = 0\n    for hours, result in train:\n        guess = \"pass\" if hours >= cut else \"fail\"\n        if guess == result:\n            correct += 1\n    print(\"Try rule: pass if hours >=\", cut, \"->\", correct, \"of\", len(train), \"correct\")\n    if correct > best_correct:\n        best_cut, best_correct = cut, correct\n\nprint(\"Learned rule: pass if hours >=\", best_cut)\n\n# नए उदाहरणों पर टेस्ट, जिन्हें प्रोग्राम ने कभी नहीं देखा\ntest = [(3.5, \"pass\"), (1.5, \"fail\"), (5.5, \"pass\")]\nfor hours, real in test:\n    guess = \"pass\" if hours >= best_cut else \"fail\"\n    print(hours, \"hours -> guess:\", guess, \"| real:\", real)"
+     }
+    },
+    {
+     "p": {
+      "en": "When this program is run, it prints:",
+      "hi": "यह प्रोग्राम चलाने पर यह छापता है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Try rule: pass if hours >= 1 -> 4 of 8 correct\nTry rule: pass if hours >= 2 -> 5 of 8 correct\nTry rule: pass if hours >= 3 -> 7 of 8 correct\nTry rule: pass if hours >= 4 -> 8 of 8 correct\nTry rule: pass if hours >= 5 -> 6 of 8 correct\nTry rule: pass if hours >= 6 -> 5 of 8 correct\nLearned rule: pass if hours >= 4\n3.5 hours -> guess: fail | real: pass\n1.5 hours -> guess: fail | real: fail\n5.5 hours -> guess: pass | real: pass",
+      "hi": "Try rule: pass if hours >= 1 -> 4 of 8 correct\nTry rule: pass if hours >= 2 -> 5 of 8 correct\nTry rule: pass if hours >= 3 -> 7 of 8 correct\nTry rule: pass if hours >= 4 -> 8 of 8 correct\nTry rule: pass if hours >= 5 -> 6 of 8 correct\nTry rule: pass if hours >= 6 -> 5 of 8 correct\nLearned rule: pass if hours >= 4\n3.5 hours -> guess: fail | real: pass\n1.5 hours -> guess: fail | real: fail\n5.5 hours -> guess: pass | real: pass"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "The list 'train' is the labelled training data: each item has a feature (hours) and a label (pass/fail).",
+       "The 'for cut in ...' loop tries six possible rules. This is the training step.",
+       "The rule 'pass if hours >= 4' got all 8 training examples right, so the program learned it. Nobody typed the number 4 as the answer.",
+       "On the test data, the model was right for 1.5 and 5.5 hours but wrong for 3.5 hours (it guessed fail, the student really passed). Test accuracy = 2 ÷ 3 × 100 ≈ 67%.",
+       "Lesson: a rule that is perfect on training data can still make mistakes on new data. More and better data (for example, more students who practised 3 to 4 hours) would help the model learn a better cut-off."
+      ],
+      "hi": [
+       "सूची 'train' लेबल वाला ट्रेनिंग डेटा है: हर आइटम में एक फ़ीचर (घंटे) और एक लेबल (pass/fail) है।",
+       "'for cut in ...' लूप छह संभावित नियम आज़माता है। यही ट्रेनिंग का चरण है।",
+       "नियम 'pass if hours >= 4' ने सभी 8 ट्रेनिंग उदाहरण सही बताए, इसलिए प्रोग्राम ने उसे सीख लिया। किसी ने उत्तर के रूप में संख्या 4 टाइप नहीं की।",
+       "टेस्ट डेटा पर मॉडल 1.5 और 5.5 घंटों के लिए सही रहा पर 3.5 घंटों के लिए गलत (उसने fail बताया, विद्यार्थी असल में पास हुआ)। टेस्ट एक्यूरेसी = 2 ÷ 3 × 100 ≈ 67%।",
+       "सीख: जो नियम ट्रेनिंग डेटा पर पूरी तरह सही हो, वह भी नए डेटा पर गलती कर सकता है। ज़्यादा और बेहतर डेटा (जैसे 3 से 4 घंटे अभ्यास करने वाले और विद्यार्थी) मॉडल को बेहतर सीमा सीखने में मदद करेगा।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "You can run this program for free in an online Python editor or on a phone app that runs Python. Ask a teacher or parent to help you choose one. Try changing the data and see how the learned rule changes.",
+      "hi": "आप यह प्रोग्राम किसी ऑनलाइन Python एडिटर में या Python चलाने वाले फ़ोन ऐप पर मुफ़्त में चला सकते हैं। कोई ऐप चुनने में शिक्षक या माता-पिता की मदद लीजिए। डेटा बदलकर देखिए कि सीखा गया नियम कैसे बदलता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.11 Activities",
+    "hi": "1.11 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (unplugged): Be the machine – learning from labelled cards",
+       "hi": "गतिविधि 1 (बिना कंप्यूटर): मशीन बनिए – लेबल वाले कार्डों से सीखना"
+      },
+      "a": {
+       "en": "Aim: to feel how supervised learning works.\nYou need: 12 small cards, a pencil, a partner.\nWhat to do: Your partner secretly decides a rule (for example 'animals with four legs = Group A, others = Group B'). They draw or write one animal on each card and label 8 cards A or B. You study the 8 labelled cards (training) and guess the rule. Then they show you the 4 unlabelled cards (testing) and you predict A or B.\nWhat you observe: With more cards you guess the rule better. Tricky cards (a snake, a duck) test whether you really learned the rule.\nWhat it teaches: training data, labels, testing on new examples, and accuracy.",
+       "hi": "उद्देश्य: महसूस करना कि सुपरवाइज़्ड लर्निंग कैसे काम करती है।\nक्या चाहिए: 12 छोटे कार्ड, पेंसिल, एक साथी।\nक्या करें: आपका साथी चुपके से एक नियम तय करे (जैसे 'चार पैरों वाले जानवर = समूह A, बाकी = समूह B')। वह हर कार्ड पर एक जानवर बनाए या लिखे और 8 कार्डों पर A या B लेबल लगाए। आप 8 लेबल वाले कार्ड पढ़ें (ट्रेनिंग) और नियम का अनुमान लगाएँ। फिर वह 4 बिना लेबल वाले कार्ड दिखाए (टेस्टिंग) और आप A या B बताएँ।\nक्या देखेंगे: ज़्यादा कार्डों से आप नियम बेहतर समझते हैं। मुश्किल कार्ड (साँप, बत्तख) जाँचते हैं कि आपने सच में नियम सीखा या नहीं।\nक्या सिखाती है: ट्रेनिंग डेटा, लेबल, नए उदाहरणों पर टेस्टिंग, और एक्यूरेसी।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (screen): Train your own model with Google Teachable Machine",
+       "hi": "गतिविधि 2 (स्क्रीन): Google Teachable Machine से अपना मॉडल ट्रेन कीजिए"
+      },
+      "a": {
+       "en": "Aim: to train and test a real machine learning model.\nYou need: a laptop or phone with a camera and internet, and the free website Teachable Machine (by Google). It works in the browser without an account. An adult should supervise.\nWhat to do: Choose 'Image Project'. Make two classes, for example 'Thumbs up' and 'Thumbs down'. Record about 50 to 100 webcam pictures for each class. Click 'Train Model'. Now show your hand to the camera and watch the output bars.\nThen experiment: (1) Train with only 5 pictures per class; is it worse? (2) Record all 'thumbs up' pictures in bright light and 'thumbs down' in dim light, then test in bright light. What happens?\nWhat you observe: More and varied data gives better results; unbalanced or one-sided data confuses the model.\nWhat it teaches: classes, training, testing, and why data quality matters.",
+       "hi": "उद्देश्य: एक असली मशीन लर्निंग मॉडल को ट्रेन और टेस्ट करना।\nक्या चाहिए: कैमरा और इंटरनेट वाला लैपटॉप या फ़ोन, और मुफ़्त वेबसाइट Teachable Machine (Google की)। यह ब्राउज़र में बिना अकाउंट के चलती है। कोई बड़ा व्यक्ति साथ रहे।\nक्या करें: 'Image Project' चुनिए। दो क्लास बनाइए, जैसे 'अंगूठा ऊपर' और 'अंगूठा नीचे'। हर क्लास के लिए लगभग 50 से 100 वेबकैम तस्वीरें रिकॉर्ड कीजिए। 'Train Model' पर क्लिक कीजिए। अब कैमरे को हाथ दिखाइए और आउटपुट की पट्टियाँ देखिए।\nफिर प्रयोग कीजिए: (1) हर क्लास में सिर्फ़ 5 तस्वीरों से ट्रेन कीजिए; क्या यह खराब है? (2) सारी 'अंगूठा ऊपर' तस्वीरें तेज़ रोशनी में और 'अंगूठा नीचे' मंद रोशनी में रिकॉर्ड कीजिए, फिर तेज़ रोशनी में टेस्ट कीजिए। क्या होता है?\nक्या देखेंगे: ज़्यादा और विविध डेटा बेहतर परिणाम देता है; असंतुलित या एकतरफ़ा डेटा मॉडल को भ्रमित करता है।\nक्या सिखाती है: क्लास, ट्रेनिंग, टेस्टिंग, और डेटा की गुणवत्ता क्यों ज़रूरी है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (unplugged): Reinforcement learning with a 'hot and cold' game",
+       "hi": "गतिविधि 3 (बिना कंप्यूटर): 'गरम-ठंडा' खेल से रीइन्फ़ोर्समेंट लर्निंग"
+      },
+      "a": {
+       "en": "Aim: to understand learning from rewards.\nYou need: a small object (eraser), a classroom, friends.\nWhat to do: Hide the eraser. One student (the 'agent') walks around without knowing where it is. The class says 'warmer' (reward) when the agent moves closer and 'colder' (penalty) when it moves away. Play three rounds with the eraser in the same place.\nWhat you observe: In later rounds the agent finds it faster, because it remembers which moves were rewarded.\nWhat it teaches: an agent, actions, rewards and penalties, and improvement through trial and error.",
+       "hi": "उद्देश्य: इनाम से सीखना समझना।\nक्या चाहिए: एक छोटी चीज़ (रबर), कक्षा, दोस्त।\nक्या करें: रबर छिपा दीजिए। एक विद्यार्थी ('एजेंट') बिना जाने घूमता है कि वह कहाँ है। जब एजेंट पास जाए तो कक्षा 'गरम' (इनाम) कहे और दूर जाए तो 'ठंडा' (दंड)। रबर को उसी जगह रखकर तीन राउंड खेलिए।\nक्या देखेंगे: बाद के राउंड में एजेंट उसे जल्दी ढूँढ लेता है, क्योंकि उसे याद रहता है कि किन चालों पर इनाम मिला।\nक्या सिखाती है: एजेंट, काम, इनाम और दंड, और प्रयास-त्रुटि से सुधार।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4 (unplugged): Be a neural network",
+       "hi": "गतिविधि 4 (बिना कंप्यूटर): न्यूरल नेटवर्क बनिए"
+      },
+      "a": {
+       "en": "Aim: to see how layers pass information.\nYou need: 7 students standing in three rows (3 in the input row, 3 in the hidden row, 1 as output), a picture of a fruit.\nWhat to do: Input students each look at only one feature: colour, shape, size. Each tells the hidden-row students their observation. Hidden students combine what they hear ('yellow + long' or 'red + round') and pass a guess to the output student, who announces the fruit. If the answer is wrong, the teacher tells everyone, and they agree to give more importance to the clues that were right.\nWhat you observe: No single student knows the answer alone; the answer comes from combining many small pieces.\nWhat it teaches: input, hidden and output layers, and adjusting importance (weights) after a mistake.",
+       "hi": "उद्देश्य: देखना कि परतें जानकारी कैसे आगे बढ़ाती हैं।\nक्या चाहिए: तीन पंक्तियों में खड़े 7 विद्यार्थी (इनपुट पंक्ति में 3, हिडन पंक्ति में 3, आउटपुट में 1), किसी फल का चित्र।\nक्या करें: इनपुट विद्यार्थी केवल एक-एक फ़ीचर देखें: रंग, आकार, माप। हर एक हिडन पंक्ति को अपना अवलोकन बताए। हिडन विद्यार्थी सुनी बातें मिलाएँ ('पीला + लंबा' या 'लाल + गोल') और अनुमान आउटपुट विद्यार्थी को दें, जो फल का नाम बताए। उत्तर गलत हो तो शिक्षक सबको बताएँ, और वे सही रहे सुरागों को ज़्यादा महत्व देने पर सहमत हों।\nक्या देखेंगे: किसी अकेले विद्यार्थी को उत्तर नहीं पता; उत्तर कई छोटे टुकड़ों को मिलाकर आता है।\nक्या सिखाती है: इनपुट, हिडन और आउटपुट परतें, और गलती के बाद महत्व (वेट) बदलना।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: when using any AI website, do not upload photos of other people without their permission, never type your full name, address, school or phone number, and ask an adult before signing up for anything. Many services require users to be at least 13 years old.",
+      "hi": "सुरक्षा: किसी भी AI वेबसाइट का उपयोग करते समय दूसरों की तस्वीरें उनकी अनुमति के बिना अपलोड न करें, अपना पूरा नाम, पता, स्कूल या फ़ोन नंबर कभी न लिखें, और किसी भी चीज़ में साइन-अप करने से पहले किसी बड़े से पूछें। कई सेवाओं के लिए उपयोगकर्ता की आयु कम से कम 13 वर्ष होनी चाहिए।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking machines learn by 'understanding' like humans. Fix: machines find number patterns in data; they do not understand meaning or have feelings.",
+   "Confusing AI and machine learning. Fix: AI is the big field; machine learning is one way (today the main way) of building AI.",
+   "Testing a model on its own training data and calling it perfect. Fix: always test on new, unseen data.",
+   "Believing more data is always enough. Fix: data must also be correct, varied and balanced; wrong labels teach wrong patterns.",
+   "Mixing up classification and regression. Fix: classification gives a group name; regression gives a number.",
+   "Thinking unsupervised learning means 'no data'. Fix: it uses data, just without labels.",
+   "Thinking a neural network is a real brain. Fix: it is only inspired by the brain; it is a mathematical model.",
+   "Believing an AI answer must be correct because a computer gave it. Fix: models make mistakes; a human should check important decisions."
+  ],
+  "hi": [
+   "यह सोचना कि मशीनें इंसानों की तरह 'समझकर' सीखती हैं। सुधार: मशीनें डेटा में संख्याओं के पैटर्न ढूँढती हैं; वे अर्थ नहीं समझतीं और उनमें भावनाएँ नहीं होतीं।",
+   "AI और मशीन लर्निंग को एक ही समझना। सुधार: AI बड़ा क्षेत्र है; मशीन लर्निंग AI बनाने का एक तरीका (आज मुख्य तरीका) है।",
+   "मॉडल को उसके अपने ट्रेनिंग डेटा पर टेस्ट करके उसे पूरी तरह सही कहना। सुधार: हमेशा नए, बिना देखे डेटा पर टेस्ट करें।",
+   "यह मानना कि ज़्यादा डेटा हमेशा काफ़ी है। सुधार: डेटा सही, विविध और संतुलित भी होना चाहिए; गलत लेबल गलत पैटर्न सिखाते हैं।",
+   "क्लासिफ़िकेशन और रिग्रेशन को मिला देना। सुधार: क्लासिफ़िकेशन समूह का नाम देता है; रिग्रेशन एक संख्या देता है।",
+   "यह सोचना कि अनसुपरवाइज़्ड लर्निंग का अर्थ 'बिना डेटा' है। सुधार: इसमें डेटा होता है, बस लेबल नहीं होते।",
+   "यह सोचना कि न्यूरल नेटवर्क असली दिमाग है। सुधार: यह सिर्फ़ दिमाग से प्रेरित है; यह एक गणितीय मॉडल है।",
+   "यह मानना कि AI का उत्तर सही ही होगा क्योंकि कंप्यूटर ने दिया। सुधार: मॉडल गलतियाँ करते हैं; ज़रूरी निर्णय किसी इंसान को जाँचने चाहिए।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Algorithm",
+    "hi": "एल्गोरिद्म"
+   },
+   "d": {
+    "en": "A clear, finite, step-by-step method to solve a problem.",
+    "hi": "किसी समस्या को हल करने का स्पष्ट, सीमित, कदम-दर-कदम तरीका।"
+   }
+  },
+  {
+   "t": {
+    "en": "Program",
+    "hi": "प्रोग्राम"
+   },
+   "d": {
+    "en": "An algorithm written in a language the computer can follow.",
+    "hi": "ऐसी भाषा में लिखा एल्गोरिद्म जिसका कंप्यूटर पालन कर सके।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rule-based system",
+    "hi": "नियम-आधारित सिस्टम"
+   },
+   "d": {
+    "en": "A system that follows IF-THEN rules written by humans.",
+    "hi": "ऐसा सिस्टम जो इंसानों द्वारा लिखे IF-THEN नियमों का पालन करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine learning (ML)",
+    "hi": "मशीन लर्निंग (ML)"
+   },
+   "d": {
+    "en": "A part of AI where computers learn patterns from data instead of being given every rule.",
+    "hi": "AI का भाग जिसमें कंप्यूटर हर नियम दिए जाने के बजाय डेटा से पैटर्न सीखते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data",
+    "hi": "डेटा"
+   },
+   "d": {
+    "en": "Facts, numbers, pictures, sounds or text collected for use.",
+    "hi": "उपयोग के लिए इकट्ठे किए गए तथ्य, संख्याएँ, चित्र, आवाज़ें या पाठ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature",
+    "hi": "फ़ीचर"
+   },
+   "d": {
+    "en": "A measurable property of an item used for learning, such as colour or size.",
+    "hi": "किसी चीज़ का मापने योग्य गुण जो सीखने में काम आए, जैसे रंग या माप।"
+   }
+  },
+  {
+   "t": {
+    "en": "Label",
+    "hi": "लेबल"
+   },
+   "d": {
+    "en": "The correct answer attached to a training example.",
+    "hi": "किसी ट्रेनिंग उदाहरण के साथ जुड़ा सही उत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training data",
+    "hi": "ट्रेनिंग डेटा"
+   },
+   "d": {
+    "en": "The examples a model learns from.",
+    "hi": "वे उदाहरण जिनसे मॉडल सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Testing data",
+    "hi": "टेस्टिंग डेटा"
+   },
+   "d": {
+    "en": "New examples kept aside to check how well the model learned.",
+    "hi": "अलग रखे गए नए उदाहरण जिनसे जाँचा जाता है कि मॉडल ने कितना अच्छा सीखा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Model",
+    "hi": "मॉडल"
+   },
+   "d": {
+    "en": "The result of training; it takes new input and gives a prediction.",
+    "hi": "ट्रेनिंग का परिणाम; यह नया इनपुट लेकर भविष्यवाणी देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prediction",
+    "hi": "प्रेडिक्शन"
+   },
+   "d": {
+    "en": "A model's answer or best guess for new data.",
+    "hi": "नए डेटा के लिए मॉडल का उत्तर या सबसे अच्छा अनुमान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Accuracy",
+    "hi": "एक्यूरेसी"
+   },
+   "d": {
+    "en": "Percentage of predictions that are correct.",
+    "hi": "सही भविष्यवाणियों का प्रतिशत।"
+   }
+  },
+  {
+   "t": {
+    "en": "Supervised learning",
+    "hi": "सुपरवाइज़्ड लर्निंग"
+   },
+   "d": {
+    "en": "Learning from labelled examples.",
+    "hi": "लेबल वाले उदाहरणों से सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unsupervised learning",
+    "hi": "अनसुपरवाइज़्ड लर्निंग"
+   },
+   "d": {
+    "en": "Finding groups or patterns in unlabelled data.",
+    "hi": "बिना लेबल वाले डेटा में समूह या पैटर्न ढूँढना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reinforcement learning",
+    "hi": "रीइन्फ़ोर्समेंट लर्निंग"
+   },
+   "d": {
+    "en": "Learning by trial and error using rewards and penalties.",
+    "hi": "इनाम और दंड का उपयोग करते हुए प्रयास-त्रुटि से सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification",
+    "hi": "क्लासिफ़िकेशन (वर्गीकरण)"
+   },
+   "d": {
+    "en": "Predicting which group (class) an item belongs to.",
+    "hi": "यह बताना कि कोई चीज़ किस समूह (क्लास) की है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Regression",
+    "hi": "रिग्रेशन"
+   },
+   "d": {
+    "en": "Predicting a number, such as price or temperature.",
+    "hi": "किसी संख्या की भविष्यवाणी, जैसे कीमत या तापमान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Clustering",
+    "hi": "क्लस्टरिंग"
+   },
+   "d": {
+    "en": "Grouping similar items together without labels.",
+    "hi": "बिना लेबल के मिलती-जुलती चीज़ों का समूह बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Agent",
+    "hi": "एजेंट"
+   },
+   "d": {
+    "en": "In reinforcement learning, the learner that takes actions and receives rewards.",
+    "hi": "रीइन्फ़ोर्समेंट लर्निंग में वह सीखने वाला जो काम करता है और इनाम पाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Neural network",
+    "hi": "न्यूरल नेटवर्क"
+   },
+   "d": {
+    "en": "A model of connected artificial neurons in layers, inspired by the brain.",
+    "hi": "परतों में जुड़े कृत्रिम न्यूरॉनों का मॉडल, जो दिमाग से प्रेरित है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hidden layer",
+    "hi": "हिडन लेयर"
+   },
+   "d": {
+    "en": "A layer between input and output in a neural network that finds patterns.",
+    "hi": "न्यूरल नेटवर्क में इनपुट और आउटपुट के बीच की परत जो पैटर्न ढूँढती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Weight",
+    "hi": "वेट"
+   },
+   "d": {
+    "en": "The strength of a connection in a neural network, adjusted during training.",
+    "hi": "न्यूरल नेटवर्क में किसी जुड़ाव की ताकत, जो ट्रेनिंग में बदली जाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deep learning",
+    "hi": "डीप लर्निंग"
+   },
+   "d": {
+    "en": "Machine learning using neural networks with many hidden layers.",
+    "hi": "बहुत-सी हिडन लेयर वाले न्यूरल नेटवर्क से मशीन लर्निंग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Human in the loop",
+    "hi": "ह्यूमन इन द लूप"
+   },
+   "d": {
+    "en": "A setup where a person checks or makes the final decision with AI's help.",
+    "hi": "ऐसी व्यवस्था जिसमें AI की मदद से कोई व्यक्ति जाँचता या अंतिम निर्णय लेता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these learns from data? (a) a calculator (b) a timer traffic light (c) a spam filter trained on labelled messages (d) a light switch",
+    "hi": "MCQ: इनमें से कौन डेटा से सीखता है? (a) कैलकुलेटर (b) टाइमर ट्रैफ़िक लाइट (c) लेबल वाले संदेशों पर ट्रेन किया स्पैम फ़िल्टर (d) बिजली का स्विच"
+   },
+   "a": {
+    "en": "(c) The spam filter learned patterns from labelled messages. The others only follow fixed instructions.",
+    "hi": "(c) स्पैम फ़िल्टर ने लेबल वाले संदेशों से पैटर्न सीखे। बाकी सिर्फ़ तय निर्देशों का पालन करते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In supervised learning, the data has: (a) no labels (b) labels (correct answers) (c) only rewards (d) no features",
+    "hi": "MCQ: सुपरवाइज़्ड लर्निंग में डेटा में होते हैं: (a) कोई लेबल नहीं (b) लेबल (सही उत्तर) (c) केवल इनाम (d) कोई फ़ीचर नहीं"
+   },
+   "a": {
+    "en": "(b) labels (correct answers).",
+    "hi": "(b) लेबल (सही उत्तर)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The term 'machine learning' was made popular by ______ in 1959.",
+    "hi": "रिक्त स्थान भरिए: 'मशीन लर्निंग' शब्द को ______ ने 1959 में लोकप्रिय बनाया।"
+   },
+   "a": {
+    "en": "Arthur Samuel.",
+    "hi": "आर्थर सैमुअल।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The result of training, which makes predictions on new data, is called a ______.",
+    "hi": "रिक्त स्थान भरिए: ट्रेनिंग का परिणाम, जो नए डेटा पर भविष्यवाणी करता है, ______ कहलाता है।"
+   },
+   "a": {
+    "en": "model.",
+    "hi": "मॉडल।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: A neural network thinks and feels exactly like a human brain.",
+    "hi": "सही या गलत: न्यूरल नेटवर्क ठीक मानव दिमाग की तरह सोचता और महसूस करता है।"
+   },
+   "a": {
+    "en": "False. It is only inspired by the brain; it is a set of numbers adjusted to fit patterns.",
+    "hi": "गलत। यह सिर्फ़ दिमाग से प्रेरित है; यह पैटर्न से मेल खाने के लिए समायोजित संख्याओं का समूह है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: Test data should be different from training data.",
+    "hi": "सही या गलत: टेस्ट डेटा ट्रेनिंग डेटा से अलग होना चाहिए।"
+   },
+   "a": {
+    "en": "True. Only unseen data shows whether the model really learned the pattern.",
+    "hi": "सही। केवल बिना देखा डेटा बताता है कि मॉडल ने सच में पैटर्न सीखा या नहीं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the three types of machine learning.",
+    "hi": "मशीन लर्निंग के तीन प्रकारों के नाम बताइए।"
+   },
+   "a": {
+    "en": "Supervised learning, unsupervised learning and reinforcement learning.",
+    "hi": "सुपरवाइज़्ड लर्निंग, अनसुपरवाइज़्ड लर्निंग और रीइन्फ़ोर्समेंट लर्निंग।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What is an algorithm? Give one daily-life example.",
+    "hi": "एल्गोरिद्म क्या है? रोज़मर्रा का एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "An algorithm is a clear, step-by-step method in a fixed order to do a task. Example: the steps to brush your teeth or to make tea.",
+    "hi": "एल्गोरिद्म किसी काम को करने का तय क्रम वाला स्पष्ट, कदम-दर-कदम तरीका है। उदाहरण: दाँत ब्रश करने या चाय बनाने के चरण।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A fruit model was tested on 80 photos and got 68 right. Find its accuracy.",
+    "hi": "एक फल मॉडल को 80 फ़ोटो पर टेस्ट किया गया और 68 सही रहीं। उसकी एक्यूरेसी ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Accuracy = (68 ÷ 80) × 100 = 0.85 × 100 = 85%.",
+    "hi": "एक्यूरेसी = (68 ÷ 80) × 100 = 0.85 × 100 = 85%।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Classify as classification, regression or clustering: (a) predicting the price of a flat (b) grouping news articles about similar topics without labels (c) identifying whether a voice is Hindi or Tamil.",
+    "hi": "क्लासिफ़िकेशन, रिग्रेशन या क्लस्टरिंग बताइए: (a) फ़्लैट की कीमत का अनुमान (b) बिना लेबल के मिलते-जुलते विषयों वाले समाचार लेखों का समूह बनाना (c) पहचानना कि आवाज़ हिंदी है या तमिल।"
+   },
+   "a": {
+    "en": "(a) Regression (a number).\n(b) Clustering (unsupervised, no labels).\n(c) Classification (a group: Hindi or Tamil).",
+    "hi": "(a) रिग्रेशन (एक संख्या)।\n(b) क्लस्टरिंग (अनसुपरवाइज़्ड, बिना लेबल)।\n(c) क्लासिफ़िकेशन (एक समूह: हिंदी या तमिल)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give two differences between a rule-based system and a machine learning system.",
+    "hi": "नियम-आधारित सिस्टम और मशीन लर्निंग सिस्टम में दो अंतर बताइए।"
+   },
+   "a": {
+    "en": "1. In a rule-based system humans write every rule; in ML the computer finds patterns from data.\n2. A rule-based system fails when no rule fits a new situation; an ML system can handle new cases similar to its training examples and can be retrained with new data.",
+    "hi": "1. नियम-आधारित सिस्टम में इंसान हर नियम लिखते हैं; ML में कंप्यूटर डेटा से पैटर्न ढूँढता है।\n2. नियम-आधारित सिस्टम तब विफल होता है जब कोई नियम नई स्थिति पर न बैठे; ML सिस्टम अपने ट्रेनिंग उदाहरणों जैसे नए मामले संभाल सकता है और नए डेटा से फिर ट्रेन किया जा सकता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why do humans usually need fewer examples to learn than machines?",
+    "hi": "इंसानों को आमतौर पर मशीनों से कम उदाहरणों में सीखना क्यों आ जाता है?"
+   },
+   "a": {
+    "en": "Humans use common sense, earlier knowledge and reasoning. They connect a new thing to what they already know, so two or three examples are often enough. Machines learn mainly from patterns in data and have no common sense, so they need many examples.",
+    "hi": "इंसान सामान्य समझ, पहले के ज्ञान और तर्क का उपयोग करते हैं। वे नई चीज़ को पहले से जानी बातों से जोड़ लेते हैं, इसलिए दो-तीन उदाहरण अक्सर काफ़ी होते हैं। मशीनें मुख्य रूप से डेटा के पैटर्न से सीखती हैं और उनमें सामान्य समझ नहीं होती, इसलिए उन्हें बहुत उदाहरण चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the three kinds of layers in a neural network and say what each does.",
+    "hi": "न्यूरल नेटवर्क की तीन तरह की परतों के नाम बताइए और हर एक का काम बताइए।"
+   },
+   "a": {
+    "en": "Input layer: receives the data (for example pixels).\nHidden layers: find patterns step by step.\nOutput layer: gives the final answer (for example 'cat').",
+    "hi": "इनपुट लेयर: डेटा लेती है (जैसे पिक्सेल)।\nहिडन लेयर: कदम-दर-कदम पैटर्न ढूँढती हैं।\nआउटपुट लेयर: अंतिम उत्तर देती है (जैसे 'बिल्ली')।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A dataset has 2,500 labelled images. With an 80:20 split, how many are used for testing?",
+    "hi": "एक डेटासेट में 2,500 लेबल वाली तस्वीरें हैं। 80:20 बँटवारे में कितनी टेस्टिंग के लिए होंगी?"
+   },
+   "a": {
+    "en": "Testing = 20% of 2,500 = (20 ÷ 100) × 2,500 = 500 images. (Training = 2,000.)",
+    "hi": "टेस्टिंग = 2,500 का 20% = (20 ÷ 100) × 2,500 = 500 तस्वीरें। (ट्रेनिंग = 2,000।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is 'human in the loop'? Give an example.",
+    "hi": "'ह्यूमन इन द लूप' क्या है? एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "It means a person stays involved to check AI's output or make the final decision. Example: an AI marks possible problems on an X-ray, and a doctor checks them and decides the treatment.",
+    "hi": "इसका अर्थ है कि AI के आउटपुट को जाँचने या अंतिम निर्णय लेने के लिए कोई व्यक्ति शामिल रहता है। उदाहरण: AI एक्स-रे पर संभावित समस्याएँ चिह्नित करता है, और डॉक्टर उन्हें जाँचकर इलाज तय करते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In the Python program of section 1.10, what was the feature, what was the label and what rule was learned?",
+    "hi": "खंड 1.10 के Python प्रोग्राम में फ़ीचर क्या था, लेबल क्या था और कौन-सा नियम सीखा गया?"
+   },
+   "a": {
+    "en": "Feature: hours of practice. Label: pass or fail. Learned rule: pass if hours >= 4 (it got all 8 training examples right).",
+    "hi": "फ़ीचर: अभ्यास के घंटे। लेबल: pass या fail। सीखा गया नियम: pass अगर घंटे >= 4 (इसने सभी 8 ट्रेनिंग उदाहरण सही बताए)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "List the eight steps of machine learning for a model that recognises handwritten Hindi letters.",
+    "hi": "हाथ से लिखे हिंदी अक्षर पहचानने वाले मॉडल के लिए मशीन लर्निंग के आठ चरण लिखिए।"
+   },
+   "a": {
+    "en": "1. Define the problem: recognise which Hindi letter (क, ख, ग ...) is written.\n2. Collect data: thousands of handwritten letters from many people of different ages.\n3. Prepare and label: mark each image with its correct letter; remove unclear images.\n4. Split: for example 80% training, 20% testing.\n5. Train: the computer finds patterns of strokes and shapes.\n6. Test: check accuracy on unseen images.\n7. Improve: add samples of letters it confuses (like घ and ध), fix wrong labels, retrain.\n8. Use and keep learning: put it in an app; collect checked new samples and retrain.",
+    "hi": "1. समस्या तय करना: पहचानना कि कौन-सा हिंदी अक्षर (क, ख, ग ...) लिखा है।\n2. डेटा इकट्ठा करना: अलग-अलग उम्र के कई लोगों से हज़ारों हाथ से लिखे अक्षर।\n3. तैयार करना और लेबल लगाना: हर तस्वीर पर सही अक्षर लिखना; अस्पष्ट तस्वीरें हटाना।\n4. बाँटना: जैसे 80% ट्रेनिंग, 20% टेस्टिंग।\n5. ट्रेन करना: कंप्यूटर रेखाओं और आकारों के पैटर्न ढूँढता है।\n6. टेस्ट करना: बिना देखी तस्वीरों पर एक्यूरेसी जाँचना।\n7. सुधारना: जिन अक्षरों में वह भ्रमित होता है (जैसे घ और ध) उनके नमूने जोड़ना, गलत लेबल ठीक करना, फिर ट्रेन करना।\n8. उपयोग और सीखते रहना: इसे ऐप में डालना; जाँचे हुए नए नमूने इकट्ठा करके फिर ट्रेन करना।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A model for spotting diseased leaves was trained only on photos from one village, all taken on sunny days. Explain what might go wrong and how to fix it.",
+    "hi": "रोगग्रस्त पत्तियाँ पहचानने वाले मॉडल को केवल एक गाँव की, सभी धूप वाले दिनों में ली गई फ़ोटो पर ट्रेन किया गया। बताइए क्या गलत हो सकता है और कैसे ठीक करें।"
+   },
+   "a": {
+    "en": "Problem: the data is not varied. The model may fail on cloudy-day photos, on other varieties of plants, or on diseases common in other regions. It might even link brightness with health.\nFix: collect photos from many villages and states, in different light and weather, from different phone cameras, with enough healthy and diseased examples of each kind; have experts label them; then retrain and test on photos from new places.",
+    "hi": "समस्या: डेटा विविध नहीं है। मॉडल बादल वाले दिन की फ़ोटो पर, पौधों की दूसरी किस्मों पर, या दूसरे क्षेत्रों में आम रोगों पर विफल हो सकता है। वह चमक को स्वास्थ्य से भी जोड़ सकता है।\nसुधार: कई गाँवों और राज्यों से, अलग-अलग रोशनी और मौसम में, अलग-अलग फ़ोन कैमरों से फ़ोटो इकट्ठा करें, हर तरह के स्वस्थ और रोगग्रस्त उदाहरण पर्याप्त हों; विशेषज्ञों से लेबल लगवाएँ; फिर ट्रेन करके नई जगहों की फ़ोटो पर टेस्ट करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Compare how a child learns to recognise a cow with how a machine learns it. Mention at least four points.",
+    "hi": "दीर्घ उत्तर: तुलना कीजिए कि बच्चा गाय पहचानना कैसे सीखता है और मशीन कैसे सीखती है। कम से कम चार बिंदु लिखिए।"
+   },
+   "a": {
+    "en": "1. Number of examples: a child needs a few cows; a machine needs hundreds or thousands of labelled photos.\n2. Teacher and labels: an adult says 'this is a cow'; for the machine, people attach the label 'cow' to each photo (supervised learning).\n3. Common sense: the child knows a cow in a cartoon or a toy is still a cow; a machine may fail on drawings if it trained only on photos.\n4. Understanding: the child knows cows give milk and need care; the machine only links pixel patterns to the word 'cow'.\n5. Speed and tirelessness: once trained, the machine can check thousands of images in seconds without getting tired.\nConclusion: both learn from examples and feedback, but humans understand while machines find patterns.",
+    "hi": "1. उदाहरणों की संख्या: बच्चे को कुछ गायें चाहिए; मशीन को सैकड़ों या हज़ारों लेबल वाली फ़ोटो।\n2. शिक्षक और लेबल: कोई बड़ा कहता है 'यह गाय है'; मशीन के लिए लोग हर फ़ोटो पर 'गाय' लेबल लगाते हैं (सुपरवाइज़्ड लर्निंग)।\n3. सामान्य समझ: बच्चा जानता है कि कार्टून या खिलौने वाली गाय भी गाय है; अगर मशीन केवल फ़ोटो पर ट्रेन हुई हो तो वह चित्रों पर विफल हो सकती है।\n4. समझ: बच्चा जानता है कि गाय दूध देती है और उसकी देखभाल चाहिए; मशीन केवल पिक्सेल के पैटर्न को 'गाय' शब्द से जोड़ती है।\n5. गति और न थकना: ट्रेन होने के बाद मशीन बिना थके सेकंडों में हज़ारों तस्वीरें जाँच सकती है।\nनिष्कर्ष: दोनों उदाहरणों और प्रतिक्रिया से सीखते हैं, पर इंसान समझते हैं जबकि मशीनें पैटर्न ढूँढती हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: In the Python program, the model was wrong for a student who practised 3.5 hours. Suggest two ways to make the model better.",
+    "hi": "सोचने वाला प्रश्न: Python प्रोग्राम में मॉडल 3.5 घंटे अभ्यास करने वाले विद्यार्थी के लिए गलत रहा। मॉडल को बेहतर बनाने के दो तरीके सुझाइए।"
+   },
+   "a": {
+    "en": "1. Collect more training data, especially students who practised between 3 and 4 hours, so the program can find a more exact cut-off (it could also try cut-offs like 3.5).\n2. Use more features, such as typing speed in the last practice or marks in an earlier test, because hours alone do not decide the result.\nAlso, test on a larger set of new students before trusting the model.",
+    "hi": "1. और ट्रेनिंग डेटा इकट्ठा करें, खासकर 3 से 4 घंटे अभ्यास करने वाले विद्यार्थी, ताकि प्रोग्राम ज़्यादा सटीक सीमा ढूँढ सके (वह 3.5 जैसी सीमाएँ भी आज़मा सकता है)।\n2. ज़्यादा फ़ीचर उपयोग करें, जैसे पिछले अभ्यास में टाइपिंग गति या पहले की परीक्षा के अंक, क्योंकि सिर्फ़ घंटे परिणाम तय नहीं करते।\nसाथ ही, मॉडल पर भरोसा करने से पहले नए विद्यार्थियों के बड़े समूह पर टेस्ट करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: You trained a Teachable Machine model with 'apple' photos on a white plate and 'orange' photos on a blue plate. It now calls everything on a blue plate 'orange'. Why? How will you fix it?",
+    "hi": "गतिविधि प्रश्न: आपने Teachable Machine मॉडल को सफ़ेद प्लेट पर 'सेब' की और नीली प्लेट पर 'संतरा' की फ़ोटो से ट्रेन किया। अब वह नीली प्लेट पर रखी हर चीज़ को 'संतरा' कहता है। क्यों? कैसे ठीक करेंगे?"
+   },
+   "a": {
+    "en": "Why: the model learned the easiest pattern that separated the classes, the plate colour, instead of the fruit itself.\nFix: take photos of both fruits on both plates, on a table, in hands, and in different light, so the only thing that differs between classes is the fruit. Then retrain and test with new photos.",
+    "hi": "क्यों: मॉडल ने कक्षाओं को अलग करने वाला सबसे आसान पैटर्न सीख लिया, यानी प्लेट का रंग, न कि फल।\nसुधार: दोनों फलों की फ़ोटो दोनों प्लेटों पर, मेज़ पर, हाथ में और अलग रोशनी में लें, ताकि कक्षाओं में अंतर सिर्फ़ फल का हो। फिर ट्रेन करके नई फ़ोटो से टेस्ट करें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give one example each of supervised, unsupervised and reinforcement learning from daily life in India.",
+    "hi": "भारत के दैनिक जीवन से सुपरवाइज़्ड, अनसुपरवाइज़्ड और रीइन्फ़ोर्समेंट लर्निंग का एक-एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Supervised: a bank's fraud model trained on past UPI transactions labelled 'fraud' or 'genuine'.\nUnsupervised: a shopping app grouping customers by what they buy during Diwali, Eid or school reopening, without labels.\nReinforcement: a game-playing AI that learns to play ludo or chess better by playing many games and being rewarded for winning.",
+    "hi": "सुपरवाइज़्ड: बैंक का धोखाधड़ी मॉडल जो 'धोखाधड़ी' या 'असली' लेबल वाले पुराने UPI लेन-देन पर ट्रेन हुआ।\nअनसुपरवाइज़्ड: शॉपिंग ऐप जो बिना लेबल के ग्राहकों को दिवाली, ईद या स्कूल खुलने पर उनकी खरीदारी के आधार पर समूहों में बाँटता है।\nरीइन्फ़ोर्समेंट: खेल खेलने वाला AI जो बहुत से खेल खेलकर और जीतने पर इनाम पाकर लूडो या शतरंज बेहतर खेलना सीखता है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Humans learn through senses, examples, teachers, practice, feedback, memory and reasoning, often from very few examples.",
+   "Ordinary machines follow programs built from algorithms: exact steps in a fixed order.",
+   "Rule-based systems use human-written IF-THEN rules; machine learning systems find the rules from data.",
+   "Machine learning is a part of AI; the term was made popular by Arthur Samuel in 1959.",
+   "Key words: data, feature, label, training, model, testing, prediction, accuracy.",
+   "Steps: define problem, collect data, label, split, train, test, improve, use and keep learning.",
+   "Accuracy = correct predictions ÷ total predictions × 100; always test on unseen data.",
+   "Supervised learning uses labelled data for classification (groups) and regression (numbers).",
+   "Unsupervised learning finds groups in unlabelled data (clustering).",
+   "Reinforcement learning learns by trial and error with rewards and penalties.",
+   "Neural networks have input, hidden and output layers; weights are adjusted during training. Many hidden layers = deep learning.",
+   "Good data must be large, correct, varied and balanced: garbage in, garbage out.",
+   "Machines are fast and tireless; humans have common sense, feelings and responsibility. They work best together (human in the loop)."
+  ],
+  "hi": [
+   "इंसान इंद्रियों, उदाहरणों, शिक्षकों, अभ्यास, प्रतिक्रिया, स्मृति और तर्क से सीखते हैं, अक्सर बहुत कम उदाहरणों से।",
+   "साधारण मशीनें एल्गोरिद्म से बने प्रोग्रामों का पालन करती हैं: तय क्रम में सटीक कदम।",
+   "नियम-आधारित सिस्टम इंसानों के लिखे IF-THEN नियम उपयोग करते हैं; मशीन लर्निंग सिस्टम डेटा से नियम खोजते हैं।",
+   "मशीन लर्निंग AI का भाग है; यह शब्द आर्थर सैमुअल ने 1959 में लोकप्रिय बनाया।",
+   "मुख्य शब्द: डेटा, फ़ीचर, लेबल, ट्रेनिंग, मॉडल, टेस्टिंग, प्रेडिक्शन, एक्यूरेसी।",
+   "चरण: समस्या तय करना, डेटा इकट्ठा करना, लेबल लगाना, बाँटना, ट्रेन करना, टेस्ट करना, सुधारना, उपयोग करना और सीखते रहना।",
+   "एक्यूरेसी = सही भविष्यवाणियाँ ÷ कुल भविष्यवाणियाँ × 100; हमेशा बिना देखे डेटा पर टेस्ट करें।",
+   "सुपरवाइज़्ड लर्निंग लेबल वाले डेटा का उपयोग क्लासिफ़िकेशन (समूह) और रिग्रेशन (संख्या) के लिए करती है।",
+   "अनसुपरवाइज़्ड लर्निंग बिना लेबल वाले डेटा में समूह ढूँढती है (क्लस्टरिंग)।",
+   "रीइन्फ़ोर्समेंट लर्निंग इनाम और दंड के साथ प्रयास-त्रुटि से सीखती है।",
+   "न्यूरल नेटवर्क में इनपुट, हिडन और आउटपुट परतें होती हैं; ट्रेनिंग में वेट बदले जाते हैं। बहुत-सी हिडन लेयर = डीप लर्निंग।",
+   "अच्छा डेटा बड़ा, सही, विविध और संतुलित होना चाहिए: कचरा अंदर, कचरा बाहर।",
+   "मशीनें तेज़ और न थकने वाली हैं; इंसानों में सामान्य समझ, भावनाएँ और ज़िम्मेदारी है। वे साथ मिलकर सबसे अच्छा काम करते हैं (ह्यूमन इन द लूप)।"
+  ]
+ }
+}

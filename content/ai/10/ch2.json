@@ -1,0 +1,2017 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "10",
+ "id": "ch2",
+ "intro": {
+  "en": "Modelling is the heart of the AI Project Cycle: it is where a machine actually learns. In this chapter you separate AI, ML and DL, learn the words used with data (features, labels, training and testing data), and compare rule-based and learning-based models. You then meet the three families of machine learning (supervised, unsupervised and reinforcement), their sub-types, the two deep learning models ANN and CNN, and finally see, with a worked calculation and real Python code, how a neural network makes a decision.",
+  "hi": "मॉडलिंग AI प्रोजेक्ट चक्र का दिल है: यहीं मशीन सचमुच सीखती है। इस अध्याय में आप AI, ML और DL को अलग-अलग समझेंगे, डेटा से जुड़े शब्द (फ़ीचर्स, लेबल, ट्रेनिंग और टेस्टिंग डेटा) सीखेंगे, और नियम-आधारित व सीखने-आधारित मॉडलों की तुलना करेंगे। फिर आप मशीन लर्निंग के तीन परिवारों (supervised, unsupervised और reinforcement), उनके उप-प्रकारों, डीप लर्निंग के दो मॉडल ANN और CNN से मिलेंगे, और अंत में एक हल की हुई गणना और असली Python कोड से देखेंगे कि न्यूरल नेटवर्क निर्णय कैसे लेता है।"
+ },
+ "learn": {
+  "en": [
+   "The difference between AI, ML and DL, and how they nest inside each other",
+   "Data terms: data, features, labels, labelled and unlabelled data, training and testing data sets",
+   "What AI modelling is, and the full family tree of AI models",
+   "Rule-based versus learning-based approaches, with a Python example",
+   "Supervised learning and its sub-types: classification and regression",
+   "Unsupervised learning and its sub-types: clustering and association",
+   "Reinforcement learning and how it differs from the other two",
+   "Deep learning models: Artificial Neural Networks (ANN) and Convolutional Neural Networks (CNN)",
+   "The layers of a neural network and the role of weights and bias",
+   "How a perceptron makes a decision, with a worked example and code",
+   "Activities: Teachable Machine, Drum Machine, Human Neural Network, TensorFlow Playground"
+  ],
+  "hi": [
+   "AI, ML और DL में अंतर, और वे एक-दूसरे के अंदर कैसे आते हैं",
+   "डेटा के शब्द: डेटा, फ़ीचर्स, लेबल, लेबल वाला और बिना लेबल का डेटा, ट्रेनिंग और टेस्टिंग डेटा सेट",
+   "AI मॉडलिंग क्या है, और AI मॉडलों का पूरा वंश-वृक्ष",
+   "नियम-आधारित बनाम सीखने-आधारित तरीके, Python उदाहरण के साथ",
+   "Supervised learning और इसके उप-प्रकार: classification और regression",
+   "Unsupervised learning और इसके उप-प्रकार: clustering और association",
+   "Reinforcement learning और यह बाक़ी दो से कैसे अलग है",
+   "डीप लर्निंग मॉडल: आर्टिफ़िशियल न्यूरल नेटवर्क (ANN) और कन्वोल्यूशनल न्यूरल नेटवर्क (CNN)",
+   "न्यूरल नेटवर्क की परतें और weights व bias की भूमिका",
+   "परसेप्ट्रॉन निर्णय कैसे लेता है, हल किए उदाहरण और कोड के साथ",
+   "गतिविधियाँ: Teachable Machine, Drum Machine, ह्यूमन न्यूरल नेटवर्क, TensorFlow Playground"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "2.1 Revisiting AI, ML and DL",
+    "hi": "2.1 AI, ML और DL को दोबारा समझना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Chapter 1 you saw that Modelling is the fourth stage of the AI Project Cycle. To build an AI project we work with AI models (algorithms), either by designing our own or by using existing ones. Before going deeper, let us clearly separate three terms that are often mixed up: Artificial Intelligence, Machine Learning and Deep Learning.",
+      "hi": "अध्याय 1 में आपने देखा कि मॉडलिंग AI प्रोजेक्ट चक्र का चौथा चरण है। AI प्रोजेक्ट बनाने के लिए हम AI मॉडल (एल्गोरिद्म) के साथ काम करते हैं, या तो अपना मॉडल बनाकर या पहले से बने मॉडल का उपयोग करके। आगे बढ़ने से पहले तीन शब्दों को साफ़-साफ़ अलग करते हैं जो अक्सर आपस में मिल जाते हैं: आर्टिफ़िशियल इंटेलिजेंस, मशीन लर्निंग और डीप लर्निंग।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Artificial Intelligence (AI)",
+       "hi": "आर्टिफ़िशियल इंटेलिजेंस (AI)"
+      },
+      "text": {
+       "en": "AI refers to any technique that enables computers to mimic human intelligence: to make decisions, predict, learn and improve. An AI machine works on algorithms and data fed to it and gives the desired output.",
+       "hi": "AI वह कोई भी तकनीक है जो कंप्यूटर को मानव बुद्धि की नक़ल करने में सक्षम बनाती है: निर्णय लेना, भविष्यवाणी करना, सीखना और सुधरना। AI मशीन उसे दिए गए एल्गोरिद्म और डेटा पर काम करके वांछित आउटपुट देती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Machine Learning (ML)",
+       "hi": "मशीन लर्निंग (ML)"
+      },
+      "text": {
+       "en": "ML is a part of AI that enables machines to improve at tasks with experience. The machine learns from data and from its own mistakes, and uses this experience in the next attempt, without being given every rule.",
+       "hi": "ML, AI का वह भाग है जो मशीनों को अनुभव से किसी काम में बेहतर होने देता है। मशीन डेटा और अपनी ग़लतियों से सीखती है, और हर नियम बताए बिना इस अनुभव का उपयोग अगले प्रयास में करती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Deep Learning (DL)",
+       "hi": "डीप लर्निंग (DL)"
+      },
+      "text": {
+       "en": "DL is a part of ML that enables software to train itself to perform tasks using vast amounts of data. It uses many-layered artificial neural networks and can develop its own way of solving a task. It is the most advanced of the three.",
+       "hi": "DL, ML का वह भाग है जो सॉफ़्टवेयर को बहुत बड़ी मात्रा में डेटा से स्वयं को प्रशिक्षित करने देता है। यह कई परतों वाले आर्टिफ़िशियल न्यूरल नेटवर्क का उपयोग करता है और काम हल करने का अपना तरीका विकसित कर सकता है। यह तीनों में सबसे उन्नत है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture a Venn diagram of three circles, one inside another. The biggest circle is AI. Inside it is a smaller circle, ML. Inside ML is the smallest circle, DL. So AI is the umbrella term: every DL system is an ML system, and every ML system is an AI system, but not the other way round. It is like a funnel: there are many AI applications, a smaller number use ML, and a still smaller number use DL.",
+      "hi": "तीन वृत्तों वाले वेन आरेख की कल्पना कीजिए, एक के अंदर दूसरा। सबसे बड़ा वृत्त AI है। उसके अंदर छोटा वृत्त ML है। ML के अंदर सबसे छोटा वृत्त DL है। इसलिए AI एक छतरी जैसा शब्द है: हर DL सिस्टम ML सिस्टम है और हर ML सिस्टम AI सिस्टम है, पर उल्टा सही नहीं है। यह एक कीप (funnel) जैसा है: AI के बहुत-से उपयोग हैं, उनमें से कम ML का उपयोग करते हैं, और उनसे भी कम DL का।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "AI",
+        "ML",
+        "DL"
+       ],
+       "hi": [
+        "बिंदु",
+        "AI",
+        "ML",
+        "DL"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Scope",
+         "Widest umbrella",
+         "Subset of AI",
+         "Subset of ML"
+        ],
+        [
+         "How it works",
+         "Rules or learning, any method that acts intelligently",
+         "Learns patterns from data and improves with experience",
+         "Learns from huge data using many-layered neural networks"
+        ],
+        [
+         "Data needed",
+         "Can work with little data if rules are given",
+         "Moderate to large data",
+         "Very large data and strong computing power"
+        ],
+        [
+         "Who finds the features",
+         "Developer (in rule-based systems)",
+         "Often the developer chooses the features",
+         "The network extracts features by itself"
+        ],
+        [
+         "Example",
+         "A chess program, a rule-based FAQ chatbot",
+         "Spam filter, house-price prediction",
+         "Face recognition, handwritten digit recognition"
+        ]
+       ],
+       "hi": [
+        [
+         "दायरा",
+         "सबसे बड़ी छतरी",
+         "AI का उपसमुच्चय",
+         "ML का उपसमुच्चय"
+        ],
+        [
+         "कैसे काम करता है",
+         "नियम या सीखना, कोई भी तरीका जो बुद्धिमानी से काम करे",
+         "डेटा से पैटर्न सीखता है और अनुभव से सुधरता है",
+         "कई परतों वाले न्यूरल नेटवर्क से विशाल डेटा से सीखता है"
+        ],
+        [
+         "कितना डेटा चाहिए",
+         "नियम दिए हों तो कम डेटा से भी चल सकता है",
+         "मध्यम से बड़ा डेटा",
+         "बहुत बड़ा डेटा और शक्तिशाली कंप्यूटिंग"
+        ],
+        [
+         "फ़ीचर कौन ढूँढता है",
+         "डेवलपर (rule-based सिस्टम में)",
+         "अक्सर डेवलपर फ़ीचर चुनता है",
+         "नेटवर्क स्वयं फ़ीचर निकालता है"
+        ],
+        [
+         "उदाहरण",
+         "शतरंज प्रोग्राम, नियम-आधारित FAQ चैटबॉट",
+         "स्पैम फ़िल्टर, मकान के दाम का अनुमान",
+         "फ़ेस रिकग्निशन, हाथ से लिखे अंक पहचानना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Two common ML examples: object classification, where a model trained on labelled images of apples and strawberries learns to tell a new fruit image as apple or strawberry; and anomaly detection, which finds unusual, unexpected things in data, such as a sudden spike in your heart rate on a smartwatch, or a card payment from an unusual city at 3 a.m. Two common DL examples: object classification inside images (finding and labelling everything in a photo, for example a bird), and digit recognition, where the computer identifies handwritten digits 0 to 9, as when a postal system reads PIN codes on envelopes. In a DL block diagram, the pixels of the image enter an artificial neural network (ANN), pass through it, and the DL block outputs the answer, for example 'bird'.",
+      "hi": "ML के दो आम उदाहरण: ऑब्जेक्ट क्लासिफ़िकेशन, जिसमें सेब और स्ट्रॉबेरी के लेबल वाले चित्रों पर प्रशिक्षित मॉडल किसी नए फल-चित्र को सेब या स्ट्रॉबेरी बताना सीखता है; और एनॉमली डिटेक्शन (असामान्यता की पहचान), जो डेटा में असामान्य, अप्रत्याशित चीज़ें ढूँढता है, जैसे स्मार्टवॉच पर दिल की धड़कन में अचानक उछाल, या रात 3 बजे किसी अनजान शहर से कार्ड भुगतान। DL के दो आम उदाहरण: चित्रों के अंदर ऑब्जेक्ट क्लासिफ़िकेशन (फ़ोटो में हर चीज़ को ढूँढकर नाम देना, जैसे पक्षी), और अंक पहचान (digit recognition), जिसमें कंप्यूटर हाथ से लिखे 0 से 9 तक के अंक पहचानता है, जैसे डाक व्यवस्था लिफ़ाफ़ों पर PIN कोड पढ़ती है। DL के ब्लॉक आरेख में चित्र के पिक्सेल एक आर्टिफ़िशियल न्यूरल नेटवर्क (ANN) में जाते हैं, उससे गुज़रते हैं, और DL ब्लॉक उत्तर देता है, जैसे 'पक्षी'।"
+     }
+    },
+    {
+     "note": {
+      "en": "Exam tip: 'AI is the umbrella term; ML is a subset of AI; DL is a subset of ML.' Learn this one line well.",
+      "hi": "परीक्षा सुझाव: 'AI छतरी शब्द है; ML, AI का उपसमुच्चय है; DL, ML का उपसमुच्चय है।' यह एक पंक्ति अच्छी तरह याद कर लीजिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.2 Common terminologies used with data",
+    "hi": "2.2 डेटा से जुड़े आम शब्द"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data",
+       "hi": "डेटा (Data)"
+      },
+      "text": {
+       "en": "Data is information in any form: numbers, text, images, sound or video. For example, a table with information about fruits is data; each row describes one fruit.",
+       "hi": "डेटा किसी भी रूप में जानकारी है: संख्याएँ, टेक्स्ट, चित्र, ध्वनि या वीडियो। जैसे फलों की जानकारी वाली तालिका डेटा है; हर पंक्ति एक फल का वर्णन करती है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Colour",
+        "Size",
+        "Shape",
+        "Taste",
+        "Fruit name (label)"
+       ],
+       "hi": [
+        "रंग",
+        "आकार",
+        "आकृति",
+        "स्वाद",
+        "फल का नाम (लेबल)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Red",
+         "Medium",
+         "Round",
+         "Sweet",
+         "Apple"
+        ],
+        [
+         "Yellow",
+         "Long",
+         "Curved",
+         "Sweet",
+         "Banana"
+        ],
+        [
+         "Green",
+         "Small",
+         "Round",
+         "Sour",
+         "Lime"
+        ],
+        [
+         "Orange",
+         "Medium",
+         "Round",
+         "Sweet-sour",
+         "Orange"
+        ]
+       ],
+       "hi": [
+        [
+         "लाल",
+         "मध्यम",
+         "गोल",
+         "मीठा",
+         "सेब"
+        ],
+        [
+         "पीला",
+         "लंबा",
+         "मुड़ा",
+         "मीठा",
+         "केला"
+        ],
+        [
+         "हरा",
+         "छोटा",
+         "गोल",
+         "खट्टा",
+         "नींबू"
+        ],
+        [
+         "नारंगी",
+         "मध्यम",
+         "गोल",
+         "खट्टा-मीठा",
+         "संतरा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Features",
+       "hi": "फ़ीचर्स (Features)"
+      },
+      "text": {
+       "en": "Features are the columns of a data table: the properties that describe each example. In the fruit table, colour, size, shape and taste are features.",
+       "hi": "फ़ीचर्स डेटा तालिका के स्तंभ (columns) हैं: वे गुण जो हर उदाहरण का वर्णन करते हैं। फलों की तालिका में रंग, आकार, आकृति और स्वाद फ़ीचर्स हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Label",
+       "hi": "लेबल (Label)"
+      },
+      "text": {
+       "en": "A label is a special feature: the answer or tag we want the model to predict. Data labelling is the process of attaching meaning to data. Which column is the label depends on the problem: if we want to predict the fruit from its colour, colour is a feature and fruit name is the label.",
+       "hi": "लेबल एक विशेष फ़ीचर है: वह उत्तर या टैग जिसकी भविष्यवाणी हम मॉडल से चाहते हैं। डेटा लेबलिंग डेटा को अर्थ देने की प्रक्रिया है। कौन-सा स्तंभ लेबल होगा, यह समस्या पर निर्भर करता है: अगर हम रंग से फल का अनुमान लगाना चाहते हैं, तो रंग फ़ीचर है और फल का नाम लेबल है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Term",
+        "Meaning",
+        "Example"
+       ],
+       "hi": [
+        "शब्द",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Labelled data",
+         "Data to which a tag or label is attached",
+         "Photos of leaves each marked 'healthy' or 'diseased'; emails marked 'spam' or 'not spam'"
+        ],
+        [
+         "Unlabelled data",
+         "Raw data with no tag attached",
+         "A folder of 1,000 photos of stray dogs with no breed written on them"
+        ],
+        [
+         "Dataset",
+         "An organised collection of related data used for a task",
+         "A table of 10,000 past house sales with area, location and price"
+        ],
+        [
+         "Training data set",
+         "The collection of examples given to the model to analyse and learn from, like a teacher teaching a topic through many examples",
+         "80% of the leaf photos, with their labels, used to teach the model"
+        ],
+        [
+         "Testing data set",
+         "Data kept aside to test the accuracy of the trained model, like a class test after teaching; the model predicts without seeing the labels, and its answers are then checked against them",
+         "The other 20% of leaf photos, used only for checking"
+        ]
+       ],
+       "hi": [
+        [
+         "लेबल वाला डेटा (Labelled data)",
+         "वह डेटा जिस पर कोई टैग या लेबल लगा हो",
+         "पत्तियों की फ़ोटो जिन पर 'स्वस्थ' या 'बीमार' लिखा हो; ईमेल जिन पर 'स्पैम' या 'स्पैम नहीं' लिखा हो"
+        ],
+        [
+         "बिना लेबल का डेटा (Unlabelled data)",
+         "कच्चा डेटा जिस पर कोई टैग न हो",
+         "आवारा कुत्तों की 1,000 फ़ोटो का फ़ोल्डर जिन पर नस्ल नहीं लिखी"
+        ],
+        [
+         "डेटासेट (Dataset)",
+         "किसी काम के लिए उपयोग होने वाले संबंधित डेटा का व्यवस्थित संग्रह",
+         "क्षेत्रफल, स्थान और दाम वाली 10,000 पुरानी मकान-बिक्री की तालिका"
+        ],
+        [
+         "ट्रेनिंग डेटा सेट",
+         "मॉडल को विश्लेषण करने और सीखने के लिए दिए गए उदाहरणों का संग्रह, जैसे शिक्षक कई उदाहरणों से विषय पढ़ाते हैं",
+         "पत्तियों की 80% फ़ोटो, लेबल के साथ, मॉडल को सिखाने के लिए"
+        ],
+        [
+         "टेस्टिंग डेटा सेट",
+         "प्रशिक्षित मॉडल की सटीकता जाँचने के लिए अलग रखा गया डेटा, जैसे पढ़ाने के बाद क्लास टेस्ट; मॉडल लेबल देखे बिना अनुमान लगाता है, फिर उसके उत्तर लेबल से मिलाए जाते हैं",
+         "बाक़ी 20% फ़ोटो, केवल जाँच के लिए"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Never test a model on the same data it was trained on. It may simply have memorised the answers, just as a student who memorised last year's paper may fail a new one. (Chapter 3 explains the train-test split and overfitting.)",
+      "hi": "मॉडल को कभी उसी डेटा पर मत जाँचिए जिस पर उसे प्रशिक्षित किया गया। हो सकता है उसने उत्तर बस रट लिए हों, जैसे पिछले साल का पेपर रटने वाला छात्र नए पेपर में असफल हो सकता है। (अध्याय 3 में ट्रेन-टेस्ट स्प्लिट और ओवरफ़िटिंग समझाए गए हैं।)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A dataset of students has these columns: hours studied, attendance %, hours of sleep, and 'Result' (Pass/Fail). The school wants to predict the result. Identify the features and the label. Is this labelled data?",
+       "hi": "छात्रों के एक डेटासेट में ये स्तंभ हैं: पढ़ाई के घंटे, उपस्थिति %, नींद के घंटे, और 'परिणाम' (पास/फ़ेल)। स्कूल परिणाम का अनुमान लगाना चाहता है। फ़ीचर्स और लेबल पहचानिए। क्या यह लेबल वाला डेटा है?"
+      },
+      "a": {
+       "en": "Features: hours studied, attendance %, hours of sleep (the inputs that describe each student).\nLabel: Result (Pass/Fail), because that is what we want to predict.\nYes, it is labelled data, since every row already has its Result filled in. It can be used for supervised learning.",
+       "hi": "फ़ीचर्स: पढ़ाई के घंटे, उपस्थिति %, नींद के घंटे (वे इनपुट जो हर छात्र का वर्णन करते हैं)।\nलेबल: परिणाम (पास/फ़ेल), क्योंकि हमें इसी का अनुमान लगाना है।\nहाँ, यह लेबल वाला डेटा है, क्योंकि हर पंक्ति में परिणाम पहले से भरा है। इसका उपयोग supervised learning में हो सकता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.3 Modelling and the two types of AI models",
+    "hi": "2.3 मॉडलिंग और AI मॉडल के दो प्रकार"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "AI Modelling",
+       "hi": "AI मॉडलिंग (AI Modelling)"
+      },
+      "text": {
+       "en": "AI modelling means developing algorithms, also called models, that can be trained to give intelligent outputs; in other words, writing code that makes a machine artificially intelligent.",
+       "hi": "AI मॉडलिंग का अर्थ है ऐसे एल्गोरिद्म, जिन्हें मॉडल भी कहते हैं, विकसित करना जिन्हें बुद्धिमान आउटपुट देने के लिए प्रशिक्षित किया जा सके; यानी ऐसा कोड लिखना जो मशीन को कृत्रिम रूप से बुद्धिमान बनाए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Researchers build AI models in one of two ways: the rule-based approach or the learning-based approach. Picture the full family tree that this chapter follows. 'AI Models' splits into 'Rule Based' and 'Learning Based'. 'Learning Based' splits into 'Machine Learning' and 'Deep Learning'. Machine Learning has three branches: Supervised Learning (with Classification and Regression), Unsupervised Learning (with Clustering and Association) and Reinforcement Learning. Deep Learning has two branches: Artificial Neural Networks (ANN) and Convolutional Neural Networks (CNN).",
+      "hi": "शोधकर्ता AI मॉडल दो में से किसी एक तरीके से बनाते हैं: नियम-आधारित तरीका (rule-based approach) या सीखने-आधारित तरीका (learning-based approach)। इस अध्याय के पूरे वंश-वृक्ष की कल्पना कीजिए। 'AI मॉडल' दो में बँटते हैं: 'Rule Based' और 'Learning Based'। 'Learning Based' दो में बँटता है: 'मशीन लर्निंग' और 'डीप लर्निंग'। मशीन लर्निंग की तीन शाखाएँ हैं: Supervised Learning (Classification और Regression के साथ), Unsupervised Learning (Clustering और Association के साथ) और Reinforcement Learning। डीप लर्निंग की दो शाखाएँ हैं: आर्टिफ़िशियल न्यूरल नेटवर्क (ANN) और कन्वोल्यूशनल न्यूरल नेटवर्क (CNN)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "AI Models\n├── Rule Based\n└── Learning Based\n    ├── Machine Learning\n    │   ├── Supervised  → Classification, Regression\n    │   ├── Unsupervised → Clustering, Association\n    │   └── Reinforcement\n    └── Deep Learning\n        ├── Artificial Neural Network (ANN)\n        └── Convolutional Neural Network (CNN)",
+      "hi": "AI मॉडल\n├── Rule Based (नियम-आधारित)\n└── Learning Based (सीखने-आधारित)\n    ├── मशीन लर्निंग\n    │   ├── Supervised  → Classification, Regression\n    │   ├── Unsupervised → Clustering, Association\n    │   └── Reinforcement\n    └── डीप लर्निंग\n        ├── आर्टिफ़िशियल न्यूरल नेटवर्क (ANN)\n        └── कन्वोल्यूशनल न्यूरल नेटवर्क (CNN)"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Rule-based approach",
+       "hi": "नियम-आधारित तरीका (Rule-based approach)"
+      },
+      "text": {
+       "en": "In the rule-based approach, the developer defines the relationships or patterns in the data. The machine simply follows the rules or instructions written by the developer and performs its task accordingly.",
+       "hi": "नियम-आधारित तरीके में डेटा के संबंध या पैटर्न डेवलपर तय करता है। मशीन बस डेवलपर के लिखे नियमों या निर्देशों का पालन करके अपना काम करती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example: a rule-based FAQ chatbot on a railway or bank website. The developer writes rules such as 'if the message contains the word refund, reply with the refund policy'. Another example: a smart home system with the rule 'if the room temperature is above 30 °C, switch on the fan'. Rule-based systems are quick to build and easy to explain, but they have one big drawback: the model is static. Once trained or written, it does not take into account changes in the data. If a user types 'paisa wapas kab milega?', the refund chatbot may not understand, because nobody wrote a rule for those words. To handle anything new, a developer must rewrite the rules.",
+      "hi": "उदाहरण: किसी रेलवे या बैंक की वेबसाइट पर नियम-आधारित FAQ चैटबॉट। डेवलपर ऐसे नियम लिखता है: 'अगर संदेश में refund शब्द है, तो रिफ़ंड नीति बताओ'। दूसरा उदाहरण: एक स्मार्ट होम सिस्टम जिसमें नियम है 'अगर कमरे का तापमान 30 °C से ऊपर हो, तो पंखा चलाओ'। नियम-आधारित सिस्टम जल्दी बनते हैं और आसानी से समझाए जा सकते हैं, पर इनकी एक बड़ी कमी है: मॉडल स्थिर (static) होता है। एक बार लिखे जाने के बाद यह डेटा में आए बदलावों को ध्यान में नहीं रखता। अगर कोई उपयोगकर्ता लिखे 'paisa wapas kab milega?', तो रिफ़ंड चैटबॉट शायद न समझे, क्योंकि उन शब्दों के लिए किसी ने नियम नहीं लिखा। कुछ भी नया संभालने के लिए डेवलपर को नियम दोबारा लिखने पड़ते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Learning-based approach",
+       "hi": "सीखने-आधारित तरीका (Learning-based approach)"
+      },
+      "text": {
+       "en": "In the learning-based approach, the machine is given data (and often the desired outputs) and designs its own rules to match the data to the output, much as we learn from examples and experience. The model is adaptive: it can modify itself as the data changes and handle exceptions.",
+       "hi": "सीखने-आधारित तरीके में मशीन को डेटा (और अक्सर वांछित आउटपुट) दिया जाता है और वह डेटा को आउटपुट से मिलाने के लिए अपने नियम स्वयं बनाती है, जैसे हम उदाहरणों और अनुभव से सीखते हैं। मॉडल अनुकूलनशील (adaptive) होता है: डेटा बदलने पर यह ख़ुद को बदल सकता है और अपवादों (exceptions) को संभाल सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example 1: a learning-based spam filter. Instead of being given rules, it is trained on a large set of emails each labelled spam or legitimate. It studies words used, sender details and attachments, and learns the patterns that separate spam from real mail. Once trained, it classifies new emails, and as it sees new examples it keeps adapting. Example 2: you have 1,000 photos of stray dogs in your area but know nothing about their breed or colour. A learning-based approach can still group them by colour, size or fur style, and may even find a grouping you never thought of.",
+      "hi": "उदाहरण 1: सीखने-आधारित स्पैम फ़िल्टर। इसे नियम देने के बजाय उन ईमेल के बड़े संग्रह पर प्रशिक्षित किया जाता है जिन पर स्पैम या असली लिखा है। यह उपयोग हुए शब्द, भेजने वाले का विवरण और अटैचमेंट देखता है, और वे पैटर्न सीखता है जो स्पैम को असली मेल से अलग करते हैं। प्रशिक्षण के बाद यह नए ईमेल को वर्गीकृत करता है, और नए उदाहरण देखकर बदलता रहता है। उदाहरण 2: आपके पास अपने इलाके के आवारा कुत्तों की 1,000 फ़ोटो हैं पर उनकी नस्ल या रंग के बारे में कुछ नहीं पता। सीखने-आधारित तरीका फिर भी उन्हें रंग, आकार या बालों की बनावट के आधार पर समूहों में बाँट सकता है, और ऐसा समूह भी ढूँढ सकता है जिसके बारे में आपने सोचा भी न हो।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Basis",
+        "Rule-based approach",
+        "Learning-based approach"
+       ],
+       "hi": [
+        "आधार",
+        "नियम-आधारित तरीका",
+        "सीखने-आधारित तरीका"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who makes the rules",
+         "The developer writes them",
+         "The machine finds them from data"
+        ],
+        [
+         "Nature of model",
+         "Fixed / static",
+         "Flexible / adaptive"
+        ],
+        [
+         "Handling new situations",
+         "Fails unless a new rule is added",
+         "Can handle new cases similar to what it has learnt"
+        ],
+        [
+         "Data needed",
+         "Little; mostly expert knowledge",
+         "Large amounts of good data"
+        ],
+        [
+         "Explaining decisions",
+         "Easy: just read the rule",
+         "Harder: patterns are learnt, not written"
+        ],
+        [
+         "Example",
+         "FAQ chatbot, thermostat rule",
+         "Spam filter, crop-disease app, recommendations"
+        ]
+       ],
+       "hi": [
+        [
+         "नियम कौन बनाता है",
+         "डेवलपर लिखता है",
+         "मशीन डेटा से ढूँढती है"
+        ],
+        [
+         "मॉडल का स्वरूप",
+         "स्थिर / static",
+         "लचीला / adaptive"
+        ],
+        [
+         "नई स्थितियाँ संभालना",
+         "नया नियम जोड़े बिना असफल",
+         "सीखी हुई बातों जैसे नए मामले संभाल सकता है"
+        ],
+        [
+         "कितना डेटा चाहिए",
+         "कम; ज़्यादातर विशेषज्ञ ज्ञान",
+         "अच्छे डेटा की बड़ी मात्रा"
+        ],
+        [
+         "निर्णय समझाना",
+         "आसान: नियम पढ़ लीजिए",
+         "कठिन: पैटर्न सीखे गए हैं, लिखे नहीं"
+        ],
+        [
+         "उदाहरण",
+         "FAQ चैटबॉट, थर्मोस्टेट नियम",
+         "स्पैम फ़िल्टर, फ़सल-रोग ऐप, सुझाव (recommendations)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The short Python program below (standard Python, no libraries) shows both approaches on a made-up task: sorting three types of toy coins, A, B and C, by weight. In the rule-based part, the developer writes the weight limits. In the learning-based part, the program is given labelled examples and works out the average weight of each type by itself, then labels a new coin by the nearest average.",
+      "hi": "नीचे दिया छोटा Python प्रोग्राम (साधारण Python, कोई लाइब्रेरी नहीं) एक काल्पनिक काम पर दोनों तरीके दिखाता है: तीन प्रकार के खिलौना सिक्कों A, B और C को वज़न से छाँटना। नियम-आधारित भाग में डेवलपर वज़न की सीमाएँ लिखता है। सीखने-आधारित भाग में प्रोग्राम को लेबल वाले उदाहरण दिए जाते हैं और वह हर प्रकार का औसत वज़न स्वयं निकालता है, फिर किसी नए सिक्के को सबसे पास के औसत से लेबल देता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Rule-based vs learning-based: sorting toy coins A, B, C by weight (made-up grams)\n# Rule-based: the developer writes the rules\ndef rule_based(weight):\n    if weight < 4.5:\n        return \"A\"\n    elif weight < 5.5:\n        return \"B\"\n    else:\n        return \"C\"\n\n# Learning-based: the program learns an average weight for each label\ntraining_data = [(3.8, \"A\"), (3.9, \"A\"), (4.9, \"B\"),\n                 (4.8, \"B\"), (6.0, \"C\"), (6.1, \"C\")]\naverages = {}\nfor label in [\"A\", \"B\", \"C\"]:\n    w = [x for x, y in training_data if y == label]\n    averages[label] = round(sum(w) / len(w), 2)\nprint(\"Learnt averages:\", averages)\n\ndef learnt(weight):\n    best = None\n    for label, avg in averages.items():\n        if best is None or abs(weight - avg) < abs(weight - averages[best]):\n            best = label\n    return best\n\nfor coin in [3.85, 5.0, 6.05]:\n    print(coin, \"g -> rule:\", rule_based(coin), \"| learnt:\", learnt(coin))",
+      "hi": "# Rule-based vs learning-based: sorting toy coins A, B, C by weight (made-up grams)\n# Rule-based: the developer writes the rules\ndef rule_based(weight):\n    if weight < 4.5:\n        return \"A\"\n    elif weight < 5.5:\n        return \"B\"\n    else:\n        return \"C\"\n\n# Learning-based: the program learns an average weight for each label\ntraining_data = [(3.8, \"A\"), (3.9, \"A\"), (4.9, \"B\"),\n                 (4.8, \"B\"), (6.0, \"C\"), (6.1, \"C\")]\naverages = {}\nfor label in [\"A\", \"B\", \"C\"]:\n    w = [x for x, y in training_data if y == label]\n    averages[label] = round(sum(w) / len(w), 2)\nprint(\"Learnt averages:\", averages)\n\ndef learnt(weight):\n    best = None\n    for label, avg in averages.items():\n        if best is None or abs(weight - avg) < abs(weight - averages[best]):\n            best = label\n    return best\n\nfor coin in [3.85, 5.0, 6.05]:\n    print(coin, \"g -> rule:\", rule_based(coin), \"| learnt:\", learnt(coin))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nLearnt averages: {'A': 3.85, 'B': 4.85, 'C': 6.05}\n3.85 g -> rule: A | learnt: A\n5.0 g -> rule: B | learnt: B\n6.05 g -> rule: C | learnt: C",
+      "hi": "आउटपुट:\nLearnt averages: {'A': 3.85, 'B': 4.85, 'C': 6.05}\n3.85 g -> rule: A | learnt: A\n5.0 g -> rule: B | learnt: B\n6.05 g -> rule: C | learnt: C"
+     }
+    },
+    {
+     "note": {
+      "en": "Both give the same answers here. The difference shows when the data changes: if a new batch of B coins is made heavier, the learning-based program only needs new examples, while the rule-based one needs a person to rewrite the limits.",
+      "hi": "यहाँ दोनों एक जैसे उत्तर देते हैं। अंतर तब दिखता है जब डेटा बदलता है: अगर B सिक्कों का नया बैच भारी बनाया जाए, तो सीखने-आधारित प्रोग्राम को केवल नए उदाहरण चाहिए, जबकि नियम-आधारित प्रोग्राम में किसी व्यक्ति को सीमाएँ दोबारा लिखनी पड़ेंगी।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.4 Supervised Learning",
+    "hi": "2.4 सुपरवाइज़्ड लर्निंग (Supervised Learning)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Machine learning models are of three kinds: supervised, unsupervised and reinforcement learning. Let us take them one by one.",
+      "hi": "मशीन लर्निंग मॉडल तीन प्रकार के होते हैं: supervised, unsupervised और reinforcement learning। एक-एक करके समझते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Supervised learning",
+       "hi": "सुपरवाइज़्ड लर्निंग"
+      },
+      "text": {
+       "en": "In supervised learning the dataset fed to the machine is labelled: every example comes with the correct answer. The person training the model knows the data well enough to label it. The model learns the relationship between features and labels, and then predicts labels for new data.",
+       "hi": "सुपरवाइज़्ड लर्निंग में मशीन को दिया गया डेटासेट लेबल वाला होता है: हर उदाहरण के साथ सही उत्तर होता है। मॉडल को प्रशिक्षित करने वाला व्यक्ति डेटा को इतनी अच्छी तरह जानता है कि उस पर लेबल लगा सके। मॉडल फ़ीचर्स और लेबल के बीच संबंध सीखता है, और फिर नए डेटा के लिए लेबल का अनुमान लगाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Think of a child learning fruits with a parent: 'This is a mango, this is a guava.' After many labelled examples, the child names a new fruit correctly. A label is information used as a tag for data, just as grades (A1, A2, B1 and so on) are labels that categorise students by their marks. Classic example: currency coins. Each Indian coin has a fairly fixed weight. If we train a model with the feature 'weight' and the label 'currency value', the trained model can identify a coin from its weight alone.",
+      "hi": "सोचिए, बच्चा माता-पिता के साथ फल पहचानना सीख रहा है: 'यह आम है, यह अमरूद है।' बहुत-से लेबल वाले उदाहरणों के बाद बच्चा किसी नए फल का सही नाम बता देता है। लेबल वह जानकारी है जो डेटा पर टैग की तरह लगती है, जैसे ग्रेड (A1, A2, B1 आदि) ऐसे लेबल हैं जो छात्रों को अंकों के अनुसार वर्गों में बाँटते हैं। प्रसिद्ध उदाहरण: मुद्रा के सिक्के। हर भारतीय सिक्के का वज़न लगभग तय होता है। अगर हम मॉडल को फ़ीचर 'वज़न' और लेबल 'मुद्रा मूल्य' से प्रशिक्षित करें, तो प्रशिक्षित मॉडल केवल वज़न से सिक्का पहचान सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Is it supervised learning? (a) A social media app suggests tagging your friend in a new photo because many earlier photos were tagged with her name. (b) An OTT app recommends shows by grouping viewers with similar watch history.",
+       "hi": "क्या यह supervised learning है? (क) एक सोशल मीडिया ऐप नई फ़ोटो में आपकी सहेली को टैग करने का सुझाव देता है क्योंकि पहले की कई फ़ोटो पर उसका नाम टैग था। (ख) एक OTT ऐप मिलती-जुलती देखने की आदत वाले दर्शकों को समूह में रखकर शो सुझाता है।"
+      },
+      "a": {
+       "en": "(a) Yes. The earlier tagged photos are labelled data (the tag is the label), so the model learns from labels.\n(b) No. Viewers are grouped by similarity without given labels; this is unsupervised learning (clustering).",
+       "hi": "(क) हाँ। पहले टैग की गई फ़ोटो लेबल वाला डेटा हैं (टैग ही लेबल है), इसलिए मॉडल लेबल से सीखता है।\n(ख) नहीं। दर्शकों को बिना दिए गए लेबल के समानता से समूहों में रखा गया है; यह unsupervised learning (clustering) है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Screen activity: Train an image classifier with Google Teachable Machine (free, works in a browser on phone or laptop, no sign-up needed to try; an adult should supervise under-13s).",
+       "hi": "स्क्रीन गतिविधि: Google Teachable Machine से एक इमेज क्लासिफ़ायर प्रशिक्षित कीजिए (मुफ़्त, फ़ोन या लैपटॉप के ब्राउज़र में चलता है, आज़माने के लिए साइन-अप ज़रूरी नहीं; 13 वर्ष से कम आयु वालों के लिए किसी बड़े की निगरानी हो)।"
+      },
+      "a": {
+       "en": "Aim: experience supervised learning directly.\nWhat you need: teachablemachine.withgoogle.com and a camera (suggested in the CBSE curriculum).\nWhat to do: choose 'Image Project'. Make Class 1 'Pen' and Class 2 'Eraser'. Hold each object in front of the camera and record about 50 sample images per class from different angles. Click 'Train Model'. Then show the objects again and watch the confidence bars.\nWhat you observe: the model names the objects correctly most of the time; it gets confused if you trained in bright light and test in dim light, or if one class had far fewer images.\nWhat it teaches: you supplied labelled data (you named each class), so this is supervised learning; and the quality and variety of training data decide how well the model works. Do not record other people's faces without their permission.",
+       "hi": "उद्देश्य: supervised learning को सीधे अनुभव करना।\nक्या चाहिए: teachablemachine.withgoogle.com और एक कैमरा (CBSE पाठ्यक्रम में सुझाया गया)।\nक्या करें: 'Image Project' चुनिए। Class 1 का नाम 'Pen' और Class 2 का 'Eraser' रखिए। हर वस्तु को कैमरे के सामने अलग-अलग कोणों से रखकर हर class के लिए लगभग 50 नमूना चित्र रिकॉर्ड कीजिए। 'Train Model' दबाइए। फिर वस्तुएँ दोबारा दिखाइए और confidence की पट्टियाँ देखिए।\nक्या दिखता है: मॉडल ज़्यादातर बार वस्तुओं का सही नाम बताता है; अगर आपने तेज़ रोशनी में प्रशिक्षण दिया और धीमी रोशनी में जाँचा, या एक class में बहुत कम चित्र थे, तो वह भ्रमित होता है।\nयह क्या सिखाता है: आपने लेबल वाला डेटा दिया (हर class का नाम रखा), इसलिए यह supervised learning है; और ट्रेनिंग डेटा की गुणवत्ता व विविधता तय करती है कि मॉडल कितना अच्छा काम करेगा। किसी दूसरे का चेहरा उसकी अनुमति के बिना रिकॉर्ड मत कीजिए।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.5 Sub-categories of supervised learning: Classification and Regression",
+    "hi": "2.5 सुपरवाइज़्ड लर्निंग के उप-प्रकार: क्लासिफ़िकेशन और रिग्रेशन"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Classification model",
+       "hi": "क्लासिफ़िकेशन मॉडल"
+      },
+      "text": {
+       "en": "A classification model sorts data into fixed classes (categories) according to the labels. Its output is a discrete value: one class from a fixed set. The target variable is categorical.",
+       "hi": "क्लासिफ़िकेशन मॉडल लेबल के अनुसार डेटा को तय वर्गों (श्रेणियों) में छाँटता है। इसका आउटपुट असतत (discrete) मान होता है: तय समूह में से एक वर्ग। लक्ष्य चर (target variable) श्रेणीबद्ध (categorical) होता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Examples: will tomorrow be hot or cool; is this email spam or not spam; is this leaf healthy or diseased; is this transaction fraud or genuine. For the spam case, the model is shown many real emails and many spam emails, learns what makes an email look like spam, and then gives each new email one category, 'spam' or 'not spam', just like sorting post into two trays. When there are only two classes (yes/no) it is called binary classification; with more classes (for example, identifying which of 10 crop diseases a leaf has) it is multi-class classification.",
+      "hi": "उदाहरण: कल मौसम गर्म होगा या ठंडा; यह ईमेल स्पैम है या नहीं; यह पत्ती स्वस्थ है या बीमार; यह लेन-देन धोखाधड़ी है या असली। स्पैम वाले मामले में मॉडल को बहुत-से असली और बहुत-से स्पैम ईमेल दिखाए जाते हैं, वह सीखता है कि किसी ईमेल को स्पैम जैसा क्या बनाता है, और फिर हर नए ईमेल को एक श्रेणी देता है, 'स्पैम' या 'स्पैम नहीं', ठीक वैसे जैसे डाक को दो ट्रे में छाँटा जाता है। जब केवल दो वर्ग (हाँ/नहीं) हों तो इसे बाइनरी क्लासिफ़िकेशन कहते हैं; अधिक वर्ग हों (जैसे पत्ती में 10 फ़सल-रोगों में से कौन-सा है) तो मल्टी-क्लास क्लासिफ़िकेशन।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Regression model",
+       "hi": "रिग्रेशन मॉडल"
+      },
+      "text": {
+       "en": "A regression model works on continuous data and predicts a continuous (numerical) value based on the input variables, such as temperature, price, income or age.",
+       "hi": "रिग्रेशन मॉडल सतत (continuous) डेटा पर काम करता है और इनपुट चरों के आधार पर एक सतत (संख्यात्मक) मान का अनुमान लगाता है, जैसे तापमान, दाम, आय या आयु।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Examples: predicting your next salary from past salary and increments; predicting tomorrow's temperature; predicting the price of a house from its area and location; predicting the resale price of a used car from its age and kilometres driven. The answer can be any number in a range (₹4,12,500 or 31.7 °C), not a fixed category.",
+      "hi": "उदाहरण: पिछले वेतन और वेतन-वृद्धि से अगला वेतन अनुमानित करना; कल का तापमान अनुमानित करना; क्षेत्रफल और स्थान से मकान का दाम अनुमानित करना; पुरानी कार की उम्र और चली दूरी से उसकी दोबारा बिक्री का दाम अनुमानित करना। उत्तर किसी सीमा के भीतर कोई भी संख्या हो सकता है (₹4,12,500 या 31.7 °C), कोई तय श्रेणी नहीं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Basis",
+        "Classification",
+        "Regression"
+       ],
+       "hi": [
+        "आधार",
+        "क्लासिफ़िकेशन",
+        "रिग्रेशन"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Output",
+         "Discrete class / category",
+         "Continuous number"
+        ],
+        [
+         "Question it answers",
+         "Which group?",
+         "How much? How many?"
+        ],
+        [
+         "Data type of label",
+         "Categorical (yes/no, A/B/C)",
+         "Numerical (price, marks, rainfall in mm)"
+        ],
+        [
+         "Examples",
+         "Spam or not, pass or fail, disease type",
+         "House price, temperature, crop yield in quintals"
+        ]
+       ],
+       "hi": [
+        [
+         "आउटपुट",
+         "असतत वर्ग / श्रेणी",
+         "सतत संख्या"
+        ],
+        [
+         "किस प्रश्न का उत्तर",
+         "कौन-सा समूह?",
+         "कितना? कितने?"
+        ],
+        [
+         "लेबल का डेटा प्रकार",
+         "श्रेणीबद्ध (हाँ/नहीं, A/B/C)",
+         "संख्यात्मक (दाम, अंक, mm में वर्षा)"
+        ],
+        [
+         "उदाहरण",
+         "स्पैम है या नहीं, पास या फ़ेल, रोग का प्रकार",
+         "मकान का दाम, तापमान, क्विंटल में फ़सल उपज"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Classification or regression? (a) Will a customer be eligible for a loan? (b) Predicting the weather (temperature) for the next 24 hours. (c) Predicting how many runs a team will score in an IPL innings. (d) Is a mango ripe or unripe?",
+       "hi": "क्लासिफ़िकेशन या रिग्रेशन? (क) क्या ग्राहक ऋण के योग्य होगा? (ख) अगले 24 घंटों के मौसम (तापमान) का अनुमान। (ग) IPL की एक पारी में टीम कितने रन बनाएगी, इसका अनुमान। (घ) आम पका है या कच्चा?"
+      },
+      "a": {
+       "en": "(a) Classification (binary): the output is yes or no, a discrete value.\n(b) Regression: temperature is a continuous range that keeps changing through the 24 hours.\n(c) Regression: the number of runs is a numerical value.\n(d) Classification: two fixed classes, ripe or unripe.",
+       "hi": "(क) क्लासिफ़िकेशन (बाइनरी): आउटपुट हाँ या नहीं है, एक असतत मान।\n(ख) रिग्रेशन: तापमान एक सतत सीमा है जो 24 घंटों में बदलती रहती है।\n(ग) रिग्रेशन: रनों की संख्या एक संख्यात्मक मान है।\n(घ) क्लासिफ़िकेशन: दो तय वर्ग, पका या कच्चा।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.6 Unsupervised Learning: Clustering and Association",
+    "hi": "2.6 अनसुपरवाइज़्ड लर्निंग: क्लस्टरिंग और एसोसिएशन"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Unsupervised learning",
+       "hi": "अनसुपरवाइज़्ड लर्निंग"
+      },
+      "text": {
+       "en": "An unsupervised learning model works on an unlabelled dataset. The data fed to the machine may be random, and the trainer may have no information about it. The model is used to discover relationships, patterns and trends in the data by itself.",
+       "hi": "अनसुपरवाइज़्ड लर्निंग मॉडल बिना लेबल वाले डेटासेट पर काम करता है। मशीन को दिया गया डेटा बेतरतीब हो सकता है, और प्रशिक्षक को उसके बारे में कोई जानकारी न हो। इस मॉडल का उपयोग डेटा में संबंध, पैटर्न और रुझान स्वयं खोजने के लिए होता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Imagine emptying a box of mixed buttons on a table and sorting them without anyone telling you the categories. You may group them by colour, by size or by number of holes. That is unsupervised learning. It is used when we want to discover new patterns from data. It has two sub-categories: clustering and association.",
+      "hi": "सोचिए, आप मिले-जुले बटनों का डिब्बा मेज़ पर उलट देते हैं और बिना किसी के श्रेणियाँ बताए उन्हें छाँटते हैं। आप उन्हें रंग, आकार या छेदों की संख्या से समूहों में रख सकते हैं। यही unsupervised learning है। इसका उपयोग तब होता है जब हमें डेटा से नए पैटर्न खोजने हों। इसके दो उप-प्रकार हैं: क्लस्टरिंग और एसोसिएशन।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Clustering",
+       "hi": "क्लस्टरिंग (Clustering)"
+      },
+      "text": {
+       "en": "Clustering finds similarities between data points and puts similar ones in the same group (cluster), keeping them different from points in other clusters. No classes are given in advance; the model forms the groups.",
+       "hi": "क्लस्टरिंग डेटा बिंदुओं के बीच समानता ढूँढकर मिलते-जुलते बिंदुओं को एक समूह (क्लस्टर) में रखती है, और उन्हें दूसरे क्लस्टरों के बिंदुओं से अलग रखती है। वर्ग पहले से नहीं दिए जाते; समूह मॉडल स्वयं बनाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Examples: an unlabelled set of pictures of birds and animals is split into two clusters even though nobody named them; a shop groups customers by buying behaviour (for example, 'weekend bulk buyers' and 'daily small buyers'); music and OTT apps group users with similar likes. Picture a scatter plot where dots are spread at first, and then the model draws circles around three tight bunches of dots: those are the clusters.",
+      "hi": "उदाहरण: पक्षियों और जानवरों के बिना लेबल वाले चित्रों को दो क्लस्टरों में बाँट दिया जाता है, जबकि किसी ने उनके नाम नहीं बताए; एक दुकान ग्राहकों को उनकी ख़रीदारी के व्यवहार के आधार पर समूहों में रखती है (जैसे 'सप्ताहांत पर थोक ख़रीदने वाले' और 'रोज़ थोड़ा ख़रीदने वाले'); संगीत और OTT ऐप मिलती-जुलती पसंद वाले उपयोगकर्ताओं को समूहों में रखते हैं। एक स्कैटर प्लॉट की कल्पना कीजिए जिसमें पहले बिंदु बिखरे हैं, फिर मॉडल बिंदुओं के तीन घने झुंडों के चारों ओर घेरे बना देता है: वही क्लस्टर हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Association",
+       "hi": "एसोसिएशन (Association)"
+      },
+      "text": {
+       "en": "Association finds relationships or links between items or variables in large datasets, of the form 'people who buy X also tend to buy Y'. These links are called association rules and are used to recommend items.",
+       "hi": "एसोसिएशन बड़े डेटासेट में वस्तुओं या चरों के बीच संबंध ढूँढता है, इस रूप में: 'जो लोग X ख़रीदते हैं वे Y भी ख़रीदते हैं'। इन संबंधों को एसोसिएशन नियम (association rules) कहते हैं और इनसे वस्तुएँ सुझाई जाती हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Examples: in a kirana store's billing data, customers who buy bread often also buy butter or eggs, so the shop places them close together or offers a combo; an online shop shows 'frequently bought together: phone + cover + screen guard'; during Diwali, people who buy diyas often also buy rangoli colours.",
+      "hi": "उदाहरण: किराना दुकान के बिलिंग डेटा में जो ग्राहक ब्रेड ख़रीदते हैं वे अक्सर मक्खन या अंडे भी ख़रीदते हैं, इसलिए दुकान उन्हें पास-पास रखती है या कॉम्बो देती है; एक ऑनलाइन दुकान दिखाती है 'अक्सर साथ ख़रीदे जाते हैं: फ़ोन + कवर + स्क्रीन गार्ड'; दिवाली पर दीये ख़रीदने वाले अक्सर रंगोली के रंग भी ख़रीदते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Basis",
+        "Classification (supervised)",
+        "Clustering (unsupervised)"
+       ],
+       "hi": [
+        "आधार",
+        "क्लासिफ़िकेशन (supervised)",
+        "क्लस्टरिंग (unsupervised)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Labelled",
+         "Unlabelled"
+        ],
+        [
+         "Groups",
+         "Fixed classes known in advance",
+         "Groups discovered by the model"
+        ],
+        [
+         "Goal",
+         "Put new data into a known class",
+         "Find natural groups of similar data"
+        ],
+        [
+         "Example",
+         "Sort emails into spam / not spam",
+         "Group customers by buying habits"
+        ]
+       ],
+       "hi": [
+        [
+         "डेटा",
+         "लेबल वाला",
+         "बिना लेबल का"
+        ],
+        [
+         "समूह",
+         "पहले से ज्ञात तय वर्ग",
+         "मॉडल द्वारा खोजे गए समूह"
+        ],
+        [
+         "लक्ष्य",
+         "नए डेटा को ज्ञात वर्ग में डालना",
+         "मिलते-जुलते डेटा के स्वाभाविक समूह ढूँढना"
+        ],
+        [
+         "उदाहरण",
+         "ईमेल को स्पैम/स्पैम नहीं में छाँटना",
+         "ख़रीदारी की आदतों से ग्राहकों के समूह बनाना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Screen activity: Explore an unsupervised pattern map with the Google 'Drum Machine' AI Experiment (free, browser-based; suggested in the CBSE curriculum).",
+       "hi": "स्क्रीन गतिविधि: Google 'Drum Machine' AI Experiment से एक unsupervised पैटर्न नक्शा देखिए (मुफ़्त, ब्राउज़र में; CBSE पाठ्यक्रम में सुझाया गया)।"
+      },
+      "a": {
+       "en": "Aim: see how a computer groups data without labels.\nWhat you need: a browser opened at experiments.withgoogle.com, then search for 'Drum Machine'.\nWhat to do: the experiment shows thousands of short everyday sounds arranged as a map. Move around and click points in different areas. Build a beat by picking sounds from different regions.\nWhat you observe: sounds that are similar (deep thuds, sharp clicks, ringing tones) sit close together, though nobody labelled them.\nWhat it teaches: the computer organised the sounds only by their similarity, which is the idea behind clustering in unsupervised learning.",
+       "hi": "उद्देश्य: देखना कि कंप्यूटर बिना लेबल के डेटा को कैसे समूहों में रखता है।\nक्या चाहिए: ब्राउज़र में experiments.withgoogle.com खोलकर 'Drum Machine' खोजिए।\nक्या करें: यह प्रयोग रोज़मर्रा की हज़ारों छोटी आवाज़ों को एक नक्शे की तरह दिखाता है। अलग-अलग हिस्सों में घूमकर बिंदुओं पर क्लिक कीजिए। अलग क्षेत्रों से आवाज़ें चुनकर एक ताल बनाइए।\nक्या दिखता है: मिलती-जुलती आवाज़ें (गहरी धमक, तीखी खट, गूँजती ध्वनि) पास-पास होती हैं, जबकि किसी ने उन पर लेबल नहीं लगाया।\nयह क्या सिखाता है: कंप्यूटर ने आवाज़ों को केवल उनकी समानता से व्यवस्थित किया, जो unsupervised learning में क्लस्टरिंग का विचार है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.7 Reinforcement Learning",
+    "hi": "2.7 रीइन्फ़ोर्समेंट लर्निंग (Reinforcement Learning)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Reinforcement learning",
+       "hi": "रीइन्फ़ोर्समेंट लर्निंग"
+      },
+      "text": {
+       "en": "Reinforcement learning lets a computer make a series of decisions that maximise a reward for a task, without human intervention and without being explicitly programmed for the task. The machine learns by repeated trial and error: good actions are rewarded and bad actions are penalised.",
+       "hi": "रीइन्फ़ोर्समेंट लर्निंग कंप्यूटर को किसी काम के लिए ऐसे निर्णयों की श्रृंखला लेने देता है जो इनाम (reward) को अधिकतम करें, बिना मानव हस्तक्षेप के और बिना उस काम के लिए स्पष्ट प्रोग्रामिंग के। मशीन बार-बार प्रयास और ग़लती (trial and error) से सीखती है: अच्छे कार्यों पर इनाम और बुरे कार्यों पर दंड मिलता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example: you show the machine a picture of an apple and ask what it is. It says 'cherry'. You give negative feedback: wrong. The machine learns it is not a cherry and tries again; it says 'apple' and you give positive feedback. Over many rounds it learns to give the rewarded answer. Similarly, a game-playing AI loses points for crashing and gains points for finishing a level; after thousands of games it learns a winning strategy. This is like training a pet dog with treats, or how you learnt to ride a bicycle: each fall taught you something. Reinforcement learning is especially useful when the desired outcome is clear but the path to reach it is unknown, such as robots learning to walk, self-driving car control, or a traffic-signal system learning timings that reduce waiting.",
+      "hi": "उदाहरण: आप मशीन को सेब का चित्र दिखाकर पूछते हैं कि यह क्या है। वह कहती है 'चेरी'। आप नकारात्मक प्रतिक्रिया देते हैं: ग़लत। मशीन सीखती है कि यह चेरी नहीं है और फिर कोशिश करती है; वह 'सेब' कहती है और आप सकारात्मक प्रतिक्रिया देते हैं। कई दौरों में वह इनाम वाला उत्तर देना सीख जाती है। इसी तरह, खेल खेलने वाला AI टकराने पर अंक खोता है और लेवल पूरा करने पर अंक पाता है; हज़ारों खेलों के बाद वह जीतने की रणनीति सीख लेता है। यह पालतू कुत्ते को इनाम देकर सिखाने जैसा है, या जैसे आपने साइकिल चलाना सीखा: हर बार गिरने से कुछ सीखा। रीइन्फ़ोर्समेंट लर्निंग ख़ास तौर पर तब उपयोगी है जब वांछित परिणाम साफ़ हो पर वहाँ पहुँचने का रास्ता अज्ञात हो, जैसे रोबोट का चलना सीखना, स्वचालित कार का नियंत्रण, या ट्रैफ़िक-सिग्नल सिस्टम का ऐसे समय सीखना जिनसे इंतज़ार घटे।"
+     }
+    },
+    {
+     "p": {
+      "en": "What makes it different: for supervised and unsupervised learning you need a fairly good idea of the data you have and how to solve the problem. In reinforcement learning you may not have a ready dataset at all; the machine creates its own experience by interacting with an environment, and the target is to maximise the total reward. It does not predict a continuous value from labelled data; it learns which actions to take.",
+      "hi": "यह अलग कैसे है: supervised और unsupervised learning में आपको अपने डेटा और समस्या हल करने के तरीके की काफ़ी अच्छी समझ चाहिए। रीइन्फ़ोर्समेंट लर्निंग में शायद कोई तैयार डेटासेट हो ही नहीं; मशीन किसी वातावरण (environment) से संपर्क करके अपना अनुभव स्वयं बनाती है, और लक्ष्य कुल इनाम को अधिकतम करना होता है। यह लेबल वाले डेटा से सतत मान का अनुमान नहीं लगाता; यह सीखता है कि कौन-से कार्य करने हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Basis",
+        "Supervised",
+        "Unsupervised",
+        "Reinforcement"
+       ],
+       "hi": [
+        "आधार",
+        "Supervised",
+        "Unsupervised",
+        "Reinforcement"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Labelled",
+         "Unlabelled",
+         "No fixed dataset; learns from interaction"
+        ],
+        [
+         "How it learns",
+         "From correct answers given",
+         "By finding similarities and patterns",
+         "By rewards and penalties (trial and error)"
+        ],
+        [
+         "Used when we want to",
+         "Determine relationships through training",
+         "Discover new patterns",
+         "Implement learning through a reward mechanism"
+        ],
+        [
+         "Sub-types",
+         "Classification, Regression",
+         "Clustering, Association",
+         "-"
+        ],
+        [
+         "Example",
+         "Spam filter, house price",
+         "Customer groups, 'bought together'",
+         "Game-playing AI, robot learning to walk"
+        ]
+       ],
+       "hi": [
+        [
+         "डेटा",
+         "लेबल वाला",
+         "बिना लेबल का",
+         "कोई तय डेटासेट नहीं; संपर्क से सीखता है"
+        ],
+        [
+         "कैसे सीखता है",
+         "दिए गए सही उत्तरों से",
+         "समानताएँ और पैटर्न ढूँढकर",
+         "इनाम और दंड से (प्रयास और ग़लती)"
+        ],
+        [
+         "कब उपयोग करते हैं",
+         "प्रशिक्षण से संबंध तय करने के लिए",
+         "नए पैटर्न खोजने के लिए",
+         "इनाम-व्यवस्था से सीखने के लिए"
+        ],
+        [
+         "उप-प्रकार",
+         "Classification, Regression",
+         "Clustering, Association",
+         "-"
+        ],
+        [
+         "उदाहरण",
+         "स्पैम फ़िल्टर, मकान का दाम",
+         "ग्राहक समूह, 'साथ ख़रीदे गए'",
+         "खेल खेलने वाला AI, चलना सीखता रोबोट"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "One-line summary of ML models: Supervised = determine relationships; Unsupervised = discover new patterns; Reinforcement = learn by rewarding actions.",
+      "hi": "ML मॉडल का एक पंक्ति में सारांश: Supervised = संबंध तय करना; Unsupervised = नए पैटर्न खोजना; Reinforcement = कार्यों को इनाम देकर सीखना।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.8 Deep Learning: ANN and CNN",
+    "hi": "2.8 डीप लर्निंग: ANN और CNN"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Deep learning lets software train itself on vast amounts of data; such machines are powerful enough to develop their own algorithms. There are two types of deep learning models in this syllabus.",
+      "hi": "डीप लर्निंग सॉफ़्टवेयर को विशाल डेटा पर स्वयं प्रशिक्षित होने देता है; ऐसी मशीनें इतनी सक्षम होती हैं कि अपने एल्गोरिद्म स्वयं विकसित कर सकें। इस पाठ्यक्रम में डीप लर्निंग मॉडल के दो प्रकार हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Artificial Neural Network (ANN)",
+       "hi": "आर्टिफ़िशियल न्यूरल नेटवर्क (ANN)"
+      },
+      "text": {
+       "en": "An ANN is a deep learning model inspired by the human brain and nervous system. It can automatically extract features from large datasets without the programmer specifying them. Each node of the network acts like a small machine learning algorithm. It is useful for problems with very large datasets.",
+       "hi": "ANN मानव मस्तिष्क और तंत्रिका तंत्र से प्रेरित डीप लर्निंग मॉडल है। यह बड़े डेटासेट से फ़ीचर्स अपने-आप निकाल सकता है, प्रोग्रामर को उन्हें बताना नहीं पड़ता। नेटवर्क का हर नोड एक छोटे मशीन लर्निंग एल्गोरिद्म की तरह काम करता है। यह बहुत बड़े डेटासेट वाली समस्याओं के लिए उपयोगी है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Convolutional Neural Network (CNN)",
+       "hi": "कन्वोल्यूशनल न्यूरल नेटवर्क (CNN)"
+      },
+      "text": {
+       "en": "A CNN is a deep learning algorithm that takes in an input image, assigns importance (learnable weights and biases) to various aspects or objects in the image, and can differentiate one from another. It is mostly used for visual data such as images and videos.",
+       "hi": "CNN एक डीप लर्निंग एल्गोरिद्म है जो इनपुट चित्र लेता है, चित्र के अलग-अलग पहलुओं या वस्तुओं को महत्व (सीखने योग्य weights और biases) देता है, और उन्हें एक-दूसरे से अलग पहचान सकता है। इसका उपयोग ज़्यादातर चित्र और वीडियो जैसे दृश्य डेटा के लिए होता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "CNNs are especially effective for image classification, object detection and face recognition, for example a phone's face unlock or an app that spots crop disease from a leaf photo. You will study the layers of a CNN (convolution, ReLU, pooling, fully connected) in Chapter 5, Computer Vision.",
+      "hi": "CNN ख़ास तौर पर इमेज क्लासिफ़िकेशन, ऑब्जेक्ट डिटेक्शन और फ़ेस रिकग्निशन में प्रभावी हैं, जैसे फ़ोन का फ़ेस अनलॉक या पत्ती की फ़ोटो से फ़सल-रोग पहचानने वाला ऐप। CNN की परतें (convolution, ReLU, pooling, fully connected) आप अध्याय 5, कंप्यूटर विज़न में पढ़ेंगे।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Basis",
+        "ANN",
+        "CNN"
+       ],
+       "hi": [
+        "आधार",
+        "ANN",
+        "CNN"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Inspired by",
+         "Neurons of the human brain",
+         "Visual processing; built on neural networks"
+        ],
+        [
+         "Best for",
+         "General large datasets (numbers, text)",
+         "Images and videos"
+        ],
+        [
+         "Example",
+         "Vegetable price prediction, customer-support chatbot",
+         "Face recognition, object detection"
+        ]
+       ],
+       "hi": [
+        [
+         "प्रेरणा",
+         "मानव मस्तिष्क के न्यूरॉन",
+         "दृश्य प्रसंस्करण; न्यूरल नेटवर्क पर आधारित"
+        ],
+        [
+         "किसके लिए सबसे अच्छा",
+         "सामान्य बड़े डेटासेट (संख्याएँ, टेक्स्ट)",
+         "चित्र और वीडियो"
+        ],
+        [
+         "उदाहरण",
+         "सब्ज़ी के दाम का अनुमान, ग्राहक-सहायता चैटबॉट",
+         "फ़ेस रिकग्निशन, ऑब्जेक्ट डिटेक्शन"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Identify the model: (a) This deep learning algorithm takes an input image, assigns learnable weights and biases to objects in it and can tell them apart. (b) This deep learning model is inspired by the human brain, extracts features automatically, and each node acts like a small ML algorithm.",
+       "hi": "मॉडल पहचानिए: (क) यह डीप लर्निंग एल्गोरिद्म इनपुट चित्र लेता है, उसमें वस्तुओं को सीखने योग्य weights और biases देता है और उन्हें अलग पहचान सकता है। (ख) यह डीप लर्निंग मॉडल मानव मस्तिष्क से प्रेरित है, फ़ीचर्स अपने-आप निकालता है, और हर नोड छोटे ML एल्गोरिद्म की तरह काम करता है।"
+      },
+      "a": {
+       "en": "(a) Convolutional Neural Network (CNN).\n(b) Artificial Neural Network (ANN).",
+       "hi": "(क) कन्वोल्यूशनल न्यूरल नेटवर्क (CNN)।\n(ख) आर्टिफ़िशियल न्यूरल नेटवर्क (ANN)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.9 What is a neural network?",
+    "hi": "2.9 न्यूरल नेटवर्क क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Neural networks are loosely modelled on how neurons in the human brain behave. In the brain, a neuron receives signals from other neurons, and if the combined signal is strong enough it 'fires' and passes a signal on. An artificial neural network copies this idea with simple mathematical units called nodes (artificial neurons). The key advantage of neural networks is that they extract data features automatically, without the programmer's input. A neural network is a system of organising machine learning algorithms to perform tasks, and it is a fast, efficient way to solve problems with very large datasets, such as images.",
+      "hi": "न्यूरल नेटवर्क मोटे तौर पर इस आधार पर बने हैं कि मानव मस्तिष्क के न्यूरॉन कैसे व्यवहार करते हैं। मस्तिष्क में एक न्यूरॉन दूसरे न्यूरॉनों से संकेत लेता है, और अगर कुल संकेत पर्याप्त मज़बूत हो तो वह 'सक्रिय' होकर संकेत आगे भेजता है। आर्टिफ़िशियल न्यूरल नेटवर्क इसी विचार की नक़ल नोड (कृत्रिम न्यूरॉन) नाम की सरल गणितीय इकाइयों से करता है। न्यूरल नेटवर्क का मुख्य लाभ यह है कि वे प्रोग्रामर की मदद के बिना डेटा के फ़ीचर्स अपने-आप निकाल लेते हैं। न्यूरल नेटवर्क कुछ काम करने के लिए मशीन लर्निंग एल्गोरिद्म को व्यवस्थित करने की एक प्रणाली है, और बहुत बड़े डेटासेट, जैसे चित्रों, वाली समस्याएँ हल करने का तेज़ और कुशल तरीका है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Structure: picture three columns of circles joined by many lines. The left column is the input layer, the middle column(s) are hidden layers, and the right column is the output layer. Each circle is a node, and every line carries a number called a weight.",
+      "hi": "संरचना: रेखाओं से जुड़े गोलों के तीन स्तंभों की कल्पना कीजिए। बायाँ स्तंभ इनपुट परत (input layer) है, बीच के स्तंभ छिपी परतें (hidden layers) हैं, और दायाँ स्तंभ आउटपुट परत (output layer) है। हर गोला एक नोड है, और हर रेखा एक संख्या लेकर चलती है जिसे weight (भार) कहते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Layer",
+        "Job",
+        "Does it process data?"
+       ],
+       "hi": [
+        "परत",
+        "काम",
+        "क्या यह डेटा को प्रोसेस करती है?"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Input layer",
+         "The first layer; acquires the data and feeds it into the network (for an image, one node per pixel value)",
+         "No processing happens here"
+        ],
+        [
+         "Hidden layer(s)",
+         "Do the actual computation using weights and biases at each node, and pass results to the next layer; there can be many hidden layers, and their number and nodes depend on how complex the task is",
+         "Yes, all processing happens here"
+        ],
+        [
+         "Output layer",
+         "Receives the final processed data from the last hidden layer and gives it to the user as the final output (for example 'cat 92%')",
+         "No, it only presents the result"
+        ]
+       ],
+       "hi": [
+        [
+         "इनपुट परत",
+         "पहली परत; डेटा लेकर नेटवर्क में डालती है (चित्र के लिए हर पिक्सेल मान का एक नोड)",
+         "यहाँ कोई प्रोसेसिंग नहीं होती"
+        ],
+        [
+         "छिपी परत(ें)",
+         "हर नोड पर weights और biases से असली गणना करती हैं और परिणाम अगली परत को भेजती हैं; कई छिपी परतें हो सकती हैं, और उनकी संख्या व नोड काम की जटिलता पर निर्भर करते हैं",
+         "हाँ, सारी प्रोसेसिंग यहीं होती है"
+        ],
+        [
+         "आउटपुट परत",
+         "अंतिम छिपी परत से अंतिम प्रोसेस्ड डेटा लेकर उपयोगकर्ता को अंतिम आउटपुट देती है (जैसे 'बिल्ली 92%')",
+         "नहीं, यह केवल परिणाम दिखाती है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Weight and bias",
+       "hi": "वेट (भार) और बायस"
+      },
+      "text": {
+       "en": "A weight is a number that shows how important an input is to a node; a larger weight means more influence, and a negative weight pushes against the decision. A bias is an extra number added at a node that shifts its decision up or down, like a starting tendency, regardless of the inputs.",
+       "hi": "वेट (भार) एक संख्या है जो बताती है कि किसी नोड के लिए कोई इनपुट कितना महत्वपूर्ण है; बड़ा वेट मतलब ज़्यादा प्रभाव, और ऋणात्मक वेट निर्णय के विरुद्ध धकेलता है। बायस नोड पर जोड़ी जाने वाली एक अतिरिक्त संख्या है जो इनपुट से परे उसके निर्णय को ऊपर या नीचे खिसकाती है, जैसे कोई शुरुआती झुकाव।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How a network learns: finding the right output starts with trial and error. The network makes a guess, compares it with the desired output, and finds the error. With each try, the weights are adjusted based on that error, and slowly the network gets better. This process of adjusting weights to improve performance is called training. A neural network with many hidden layers is called a deep neural network, which is why this field is called deep learning. Training needs a lot of data and computing power. Real-world uses include facial recognition, customer-support chatbots and vegetable price prediction.",
+      "hi": "नेटवर्क कैसे सीखता है: सही आउटपुट ढूँढने की शुरुआत प्रयास और ग़लती से होती है। नेटवर्क एक अनुमान लगाता है, उसे वांछित आउटपुट से मिलाता है, और त्रुटि (error) निकालता है। हर प्रयास में उस त्रुटि के आधार पर weights बदले जाते हैं, और धीरे-धीरे नेटवर्क बेहतर होता जाता है। प्रदर्शन सुधारने के लिए weights बदलने की इस प्रक्रिया को ट्रेनिंग (प्रशिक्षण) कहते हैं। कई छिपी परतों वाले न्यूरल नेटवर्क को डीप न्यूरल नेटवर्क कहते हैं, इसीलिए इस क्षेत्र का नाम डीप लर्निंग है। प्रशिक्षण के लिए बहुत डेटा और कंप्यूटिंग शक्ति चाहिए। वास्तविक उपयोगों में फ़ेस रिकग्निशन, ग्राहक-सहायता चैटबॉट और सब्ज़ियों के दाम का अनुमान शामिल हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.10 How does AI make a decision? The perceptron",
+    "hi": "2.10 AI निर्णय कैसे लेता है? परसेप्ट्रॉन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Suppose you want to decide whether to go to the park this evening. What would you think about? Is the weather pleasant? Is homework still pending? Are your friends coming? Is the park open? Some of these matter more to you than others. Your brain weighs them and decides. A single artificial neuron, called a perceptron, makes decisions in exactly this way.",
+      "hi": "मान लीजिए, आप तय करना चाहते हैं कि आज शाम पार्क जाएँ या नहीं। आप किन बातों पर सोचेंगे? क्या मौसम सुहावना है? क्या गृहकार्य अभी बाक़ी है? क्या दोस्त आ रहे हैं? क्या पार्क खुला है? इनमें से कुछ बातें आपके लिए दूसरों से ज़्यादा मायने रखती हैं। आपका दिमाग़ उन्हें तौलकर निर्णय लेता है। एक अकेला कृत्रिम न्यूरॉन, जिसे परसेप्ट्रॉन (perceptron) कहते हैं, ठीक इसी तरह निर्णय लेता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Perceptron",
+       "hi": "परसेप्ट्रॉन (Perceptron)"
+      },
+      "text": {
+       "en": "A perceptron is the simplest artificial neuron. It takes several inputs, multiplies each by its weight, adds them together with a bias, compares the total with a threshold, and gives an output such as yes (1) or no (0).",
+       "hi": "परसेप्ट्रॉन सबसे सरल कृत्रिम न्यूरॉन है। यह कई इनपुट लेता है, हर एक को उसके weight से गुणा करता है, बायस के साथ सबको जोड़ता है, कुल को एक सीमा (threshold) से मिलाता है, और हाँ (1) या नहीं (0) जैसा आउटपुट देता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Weighted sum = (X1 × W1) + (X2 × W2) + (X3 × W3) + (X4 × W4) + Bias\nIf weighted sum > threshold → output 1 (Yes)\nOtherwise → output 0 (No)",
+      "hi": "भारित योग = (X1 × W1) + (X2 × W2) + (X3 × W3) + (X4 × W4) + बायस\nअगर भारित योग > सीमा (threshold) → आउटपुट 1 (हाँ)\nनहीं तो → आउटपुट 0 (नहीं)"
+     }
+    },
+    {
+     "p": {
+      "en": "Picture the perceptron diagram: four arrows on the left labelled X1 to X4 (the inputs), each passing through a small box with its weight W1 to W4. A fifth arrow brings the bias B. All arrows meet in a circle marked Σ (sum). From the circle an arrow goes into a box marked 'threshold', and from there to the output 'Go' or 'Stay'. (Some textbooks also draw the bias as an input of 1 with its own weight WB; the idea is the same.)",
+      "hi": "परसेप्ट्रॉन आरेख की कल्पना कीजिए: बाईं ओर X1 से X4 नाम के चार तीर (इनपुट), हर एक अपने weight W1 से W4 वाले छोटे डिब्बे से गुज़रता है। पाँचवाँ तीर बायस B लाता है। सभी तीर Σ (योग) लिखे एक गोले में मिलते हैं। गोले से एक तीर 'threshold' लिखे डिब्बे में और वहाँ से आउटपुट 'जाओ' या 'रुको' तक जाता है। (कुछ पाठ्यपुस्तकें बायस को 1 के इनपुट और उसके अपने weight WB के रूप में भी बनाती हैं; विचार वही है।)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Worked example: Inputs are 1 for yes and 0 for no. X1 weather pleasant = 1 (weight 3), X2 homework pending = 0 (weight -4), X3 friends coming = 1 (weight 2), X4 park open = 1 (weight 2). Bias = -2, threshold = 0. Should you go to the park?",
+       "hi": "हल किया हुआ उदाहरण: हाँ के लिए इनपुट 1 और नहीं के लिए 0। X1 मौसम सुहावना = 1 (weight 3), X2 गृहकार्य बाक़ी = 0 (weight -4), X3 दोस्त आ रहे हैं = 1 (weight 2), X4 पार्क खुला = 1 (weight 2)। बायस = -2, सीमा = 0। क्या आपको पार्क जाना चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: multiply each input by its weight: 1×3 = 3; 0×(-4) = 0; 1×2 = 2; 1×2 = 2.\nStep 2: add them: 3 + 0 + 2 + 2 = 7.\nStep 3: add the bias: 7 + (-2) = 5.\nStep 4: compare with threshold: 5 > 0, so output = 1.\nDecision: go to the park.\nCheck: if homework were pending (X2 = 1), the sum would be 3 - 4 + 2 + 2 - 2 = 1, still above 0; a heavier homework weight such as -6 would give -1 and the answer would change to 'stay home'. Weights decide how much each factor counts.",
+       "hi": "चरण 1: हर इनपुट को उसके weight से गुणा कीजिए: 1×3 = 3; 0×(-4) = 0; 1×2 = 2; 1×2 = 2।\nचरण 2: इन्हें जोड़िए: 3 + 0 + 2 + 2 = 7।\nचरण 3: बायस जोड़िए: 7 + (-2) = 5।\nचरण 4: सीमा से मिलाइए: 5 > 0, इसलिए आउटपुट = 1।\nनिर्णय: पार्क जाइए।\nजाँच: अगर गृहकार्य बाक़ी होता (X2 = 1), तो योग 3 - 4 + 2 + 2 - 2 = 1 होता, फिर भी 0 से ऊपर; गृहकार्य का भारी weight जैसे -6 हो तो योग -1 होता और उत्तर 'घर रुको' हो जाता। weights तय करते हैं कि हर कारक कितना गिना जाए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The same calculation in Python (standard Python, no libraries):",
+      "hi": "यही गणना Python में (साधारण Python, कोई लाइब्रेरी नहीं):"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Should I go to the park? A one-neuron (perceptron) decision\ninputs  = [1, 0, 1, 1]          # X1 weather pleasant, X2 homework pending, X3 friends coming, X4 park open\nweights = [3, -4, 2, 2]         # how much each input matters\nbias = -2                       # starting tendency (I feel a little lazy today)\nthreshold = 0\n\ntotal = bias\nfor x, w in zip(inputs, weights):\n    total = total + x * w\nprint(\"Weighted sum =\", total)\n\nif total > threshold:\n    print(\"Decision: Go to the park\")\nelse:\n    print(\"Decision: Stay at home\")",
+      "hi": "# Should I go to the park? A one-neuron (perceptron) decision\ninputs  = [1, 0, 1, 1]          # X1 weather pleasant, X2 homework pending, X3 friends coming, X4 park open\nweights = [3, -4, 2, 2]         # how much each input matters\nbias = -2                       # starting tendency (I feel a little lazy today)\nthreshold = 0\n\ntotal = bias\nfor x, w in zip(inputs, weights):\n    total = total + x * w\nprint(\"Weighted sum =\", total)\n\nif total > threshold:\n    print(\"Decision: Go to the park\")\nelse:\n    print(\"Decision: Stay at home\")"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nWeighted sum = 5\nDecision: Go to the park",
+      "hi": "आउटपुट:\nWeighted sum = 5\nDecision: Go to the park"
+     }
+    },
+    {
+     "p": {
+      "en": "Learning the weights: in the example we chose the weights ourselves. In real AI the network finds them by training. The next program starts with all weights at 0 and adjusts them whenever it makes a mistake on four labelled examples (go out if it is not raining, or if you have an umbrella). Notice how the number of mistakes falls to zero.",
+      "hi": "weights सीखना: ऊपर के उदाहरण में weights हमने स्वयं चुने। असली AI में नेटवर्क उन्हें प्रशिक्षण से ढूँढता है। अगला प्रोग्राम सभी weights को 0 से शुरू करता है और चार लेबल वाले उदाहरणों (बारिश न हो, या छाता हो, तो बाहर जाओ) पर जब भी ग़लती करता है, उन्हें बदलता है। देखिए कि ग़लतियों की संख्या कैसे शून्य पर पहुँचती है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Training a perceptron: weights change a little after every mistake\n# Each example: (is_raining, have_umbrella) -> should_go_out (1 = yes, 0 = no)\ndata = [((0, 0), 1), ((0, 1), 1), ((1, 1), 1), ((1, 0), 0)]\nw = [0.0, 0.0]\nb = 0.0\nrate = 0.5\n\ndef predict(x):\n    total = x[0] * w[0] + x[1] * w[1] + b\n    return 1 if total > 0 else 0\n\nfor rnd in range(1, 6):\n    mistakes = 0\n    for x, target in data:\n        error = target - predict(x)\n        if error != 0:\n            mistakes += 1\n            w[0] += rate * error * x[0]\n            w[1] += rate * error * x[1]\n            b += rate * error\n    print(\"Round\", rnd, \"mistakes:\", mistakes, \"weights:\", w, \"bias:\", b)\n    if mistakes == 0:\n        break\n\nprint(\"Final answers:\", [predict(x) for x, t in data])",
+      "hi": "# Training a perceptron: weights change a little after every mistake\n# Each example: (is_raining, have_umbrella) -> should_go_out (1 = yes, 0 = no)\ndata = [((0, 0), 1), ((0, 1), 1), ((1, 1), 1), ((1, 0), 0)]\nw = [0.0, 0.0]\nb = 0.0\nrate = 0.5\n\ndef predict(x):\n    total = x[0] * w[0] + x[1] * w[1] + b\n    return 1 if total > 0 else 0\n\nfor rnd in range(1, 6):\n    mistakes = 0\n    for x, target in data:\n        error = target - predict(x)\n        if error != 0:\n            mistakes += 1\n            w[0] += rate * error * x[0]\n            w[1] += rate * error * x[1]\n            b += rate * error\n    print(\"Round\", rnd, \"mistakes:\", mistakes, \"weights:\", w, \"bias:\", b)\n    if mistakes == 0:\n        break\n\nprint(\"Final answers:\", [predict(x) for x, t in data])"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nRound 1 mistakes: 2 weights: [-0.5, 0.0] bias: 0.0\nRound 2 mistakes: 3 weights: [-0.5, 0.5] bias: 0.5\nRound 3 mistakes: 0 weights: [-0.5, 0.5] bias: 0.5\nFinal answers: [1, 1, 1, 0]",
+      "hi": "आउटपुट:\nRound 1 mistakes: 2 weights: [-0.5, 0.0] bias: 0.0\nRound 2 mistakes: 3 weights: [-0.5, 0.5] bias: 0.5\nRound 3 mistakes: 0 weights: [-0.5, 0.5] bias: 0.5\nFinal answers: [1, 1, 1, 0]"
+     }
+    },
+    {
+     "note": {
+      "en": "The learnt weights make sense: rain has a negative weight (-0.5, it discourages going out) and an umbrella has a positive weight (+0.5). Nobody wrote these numbers; the program found them from errors. This is training in miniature. A real neural network has thousands or millions of such nodes arranged in layers.",
+      "hi": "सीखे गए weights समझ में आते हैं: बारिश का weight ऋणात्मक है (-0.5, यह बाहर जाने से रोकती है) और छाते का धनात्मक (+0.5)। ये संख्याएँ किसी ने नहीं लिखीं; प्रोग्राम ने ग़लतियों से इन्हें ढूँढा। यह छोटे रूप में प्रशिक्षण है। असली न्यूरल नेटवर्क में ऐसे हज़ारों या लाखों नोड परतों में व्यवस्थित होते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.11 Activities: Human Neural Network and TensorFlow Playground",
+    "hi": "2.11 गतिविधियाँ: ह्यूमन न्यूरल नेटवर्क और TensorFlow Playground"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Unplugged activity: Human Neural Network, the game (class of about 40; 20 players, the rest observe; one period).",
+       "hi": "बिना-डिवाइस गतिविधि: ह्यूमन न्यूरल नेटवर्क, खेल (लगभग 40 की कक्षा; 20 खिलाड़ी, बाक़ी पर्यवेक्षक; एक पीरियड)।"
+      },
+      "a": {
+       "en": "Aim: feel how information flows and is processed through layers.\nWhat you need: 2 pictures kept secretly by the teacher (for example, a picture of the Taj Mahal and a picture of a peacock), about 80 sticky notes or chits, pens.\nSet-up: Input layer = 7 students, Hidden layer 1 = 6 students, Hidden layer 2 = 6 students, Output layer = 1 student. Sit in four rows.\nWhat to do: 1) Only the input layer sees the picture for a few seconds. Each input student writes 6 short clues about it (shapes, colours, objects) on chits, without naming it, and passes them to hidden layer 1. 2) Each hidden-1 student reads the chits they receive, combines them, and writes 4 new, more meaningful clues to pass to hidden layer 2. 3) Each hidden-2 student combines again into 2 clues and passes them to the output student. 4) The output student, who never saw the picture, announces what it is. 5) Reveal the picture. Repeat with the second picture, letting layers improve their clues based on the first round's error.\nWhat you observe: the output can be correct even though the output student saw nothing; weak or vague clues in early layers lead to wrong answers; the second round usually goes better.\nWhat it teaches: input layers only pass data, hidden layers process and combine features, the output layer only announces the result, and feedback (error) helps the network improve, which is like adjusting weights.",
+       "hi": "उद्देश्य: महसूस करना कि जानकारी परतों से कैसे बहती और प्रोसेस होती है।\nक्या चाहिए: शिक्षक के पास गुप्त रूप से 2 चित्र (जैसे ताजमहल का चित्र और मोर का चित्र), लगभग 80 स्टिकी नोट या पर्चियाँ, पेन।\nव्यवस्था: इनपुट परत = 7 छात्र, छिपी परत 1 = 6 छात्र, छिपी परत 2 = 6 छात्र, आउटपुट परत = 1 छात्र। चार पंक्तियों में बैठिए।\nक्या करें: 1) केवल इनपुट परत कुछ सेकंड के लिए चित्र देखती है। हर इनपुट छात्र उसका नाम लिए बिना उसके बारे में 6 छोटे संकेत (आकृतियाँ, रंग, वस्तुएँ) पर्चियों पर लिखकर छिपी परत 1 को देता है। 2) छिपी परत 1 का हर छात्र मिली पर्चियाँ पढ़कर, उन्हें जोड़कर, 4 नए और अधिक सार्थक संकेत लिखकर छिपी परत 2 को देता है। 3) छिपी परत 2 का हर छात्र फिर जोड़कर 2 संकेत बनाता है और आउटपुट छात्र को देता है। 4) आउटपुट छात्र, जिसने चित्र कभी नहीं देखा, बताता है कि वह क्या है। 5) चित्र दिखाइए। दूसरे चित्र के साथ दोहराइए, और परतों को पहले दौर की ग़लती के आधार पर अपने संकेत सुधारने दीजिए।\nक्या दिखता है: आउटपुट छात्र ने कुछ नहीं देखा फिर भी उत्तर सही हो सकता है; शुरुआती परतों के कमज़ोर या अस्पष्ट संकेत ग़लत उत्तर तक ले जाते हैं; दूसरा दौर आमतौर पर बेहतर जाता है।\nयह क्या सिखाता है: इनपुट परत केवल डेटा आगे देती है, छिपी परतें फ़ीचर्स को प्रोसेस करके जोड़ती हैं, आउटपुट परत केवल परिणाम बताती है, और प्रतिक्रिया (त्रुटि) नेटवर्क को सुधरने में मदद करती है, जो weights बदलने जैसा है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Screen activity: TensorFlow Playground (free, browser-based at playground.tensorflow.org; works on a phone in landscape, better on a laptop; no sign-up).",
+       "hi": "स्क्रीन गतिविधि: TensorFlow Playground (मुफ़्त, ब्राउज़र में playground.tensorflow.org पर; फ़ोन को आड़ा रखकर चलता है, लैपटॉप पर बेहतर; कोई साइन-अप नहीं)।"
+      },
+      "a": {
+       "en": "Aim: watch a real neural network train.\nWhat to do: 1) Choose the simple dataset with two separate blobs of orange and blue dots. Keep 1 hidden layer with 2 neurons. Press Play and watch the 'Test loss' number fall as the background colours start to separate the dots. 2) Now choose the circle dataset (blue dots inside a ring of orange). Press Play with 1 hidden layer of 2 neurons and note that it struggles. 3) Add a second hidden layer and more neurons (for example 4 and 4). Press Play again.\nWhat you observe: the lines between neurons change thickness and colour as weights change; with more hidden layers and neurons the network can learn the harder circular pattern, and test loss becomes small.\nWhat it teaches: weights are adjusted during training, error (loss) falls over time, and more complex problems need more hidden layers, which is the idea of a deep neural network.",
+       "hi": "उद्देश्य: एक असली न्यूरल नेटवर्क को प्रशिक्षित होते देखना।\nक्या करें: 1) नारंगी और नीले बिंदुओं के दो अलग झुंडों वाला सरल डेटासेट चुनिए। 2 न्यूरॉन वाली 1 छिपी परत रखिए। Play दबाइए और देखिए कि 'Test loss' की संख्या घटती है और पृष्ठभूमि के रंग बिंदुओं को अलग करने लगते हैं। 2) अब वृत्त वाला डेटासेट चुनिए (नारंगी घेरे के अंदर नीले बिंदु)। 2 न्यूरॉन की 1 छिपी परत के साथ Play दबाइए और देखिए कि यह संघर्ष करता है। 3) दूसरी छिपी परत और ज़्यादा न्यूरॉन जोड़िए (जैसे 4 और 4)। फिर Play दबाइए।\nक्या दिखता है: weights बदलने के साथ न्यूरॉनों के बीच की रेखाओं की मोटाई और रंग बदलते हैं; ज़्यादा छिपी परतों और न्यूरॉन के साथ नेटवर्क कठिन गोल पैटर्न सीख लेता है, और test loss छोटा हो जाता है।\nयह क्या सिखाता है: प्रशिक्षण के दौरान weights बदलते हैं, त्रुटि (loss) समय के साथ घटती है, और जटिल समस्याओं के लिए अधिक छिपी परतें चाहिए, जो डीप न्यूरल नेटवर्क का विचार है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Responsible modelling: a model is only as fair as its data. Before trusting any model you build, check that its training data includes all kinds of people and cases it will meet, test it on new data (Chapter 3), and never feed it other people's personal photos or details without permission.",
+      "hi": "ज़िम्मेदार मॉडलिंग: कोई मॉडल उतना ही निष्पक्ष होता है जितना उसका डेटा। अपने बनाए किसी भी मॉडल पर भरोसा करने से पहले जाँचिए कि उसके ट्रेनिंग डेटा में वे सभी तरह के लोग और मामले शामिल हों जिनसे उसका सामना होगा, उसे नए डेटा पर जाँचिए (अध्याय 3), और दूसरों की निजी फ़ोटो या जानकारी बिना अनुमति के उसमें कभी मत डालिए।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Saying ML contains AI, or that DL is separate from ML. Fix: AI is the umbrella; ML is inside AI; DL is inside ML.",
+   "Calling every column a label. Fix: columns are features; the label is the one special column we want to predict, and it depends on the problem.",
+   "Testing a model on its training data. Fix: keep separate testing data; a model can memorise training answers (overfitting).",
+   "Thinking rule-based systems learn from new data. Fix: rule-based models are static; only a developer changing the rules updates them.",
+   "Mixing up classification and regression. Fix: ask 'which group?' (classification, discrete) or 'how much?' (regression, continuous).",
+   "Confusing clustering with classification. Fix: classification uses labelled data and known classes; clustering uses unlabelled data and discovers groups.",
+   "Saying reinforcement learning needs labelled data. Fix: it learns from rewards and penalties through trial and error, aiming to maximise reward.",
+   "Believing the input or output layer does calculations. Fix: only hidden layers process data using weights and biases.",
+   "Forgetting the bias, or adding it before multiplying, in perceptron sums. Fix: multiply each input by its weight, add them all, then add the bias, then compare with the threshold.",
+   "Writing 'CNN is used for numbers and ANN only for images'. Fix: CNNs are mainly for images and videos; ANNs work on many kinds of large data."
+  ],
+  "hi": [
+   "कहना कि ML में AI आता है, या DL, ML से अलग है। सुधार: AI छतरी है; ML, AI के अंदर है; DL, ML के अंदर है।",
+   "हर स्तंभ को लेबल कहना। सुधार: स्तंभ फ़ीचर्स हैं; लेबल वह एक विशेष स्तंभ है जिसका अनुमान हमें लगाना है, और यह समस्या पर निर्भर है।",
+   "मॉडल को उसके ट्रेनिंग डेटा पर ही जाँचना। सुधार: अलग टेस्टिंग डेटा रखिए; मॉडल ट्रेनिंग के उत्तर रट सकता है (ओवरफ़िटिंग)।",
+   "मानना कि नियम-आधारित सिस्टम नए डेटा से सीखते हैं। सुधार: नियम-आधारित मॉडल स्थिर होते हैं; केवल डेवलपर के नियम बदलने से ही वे अपडेट होते हैं।",
+   "क्लासिफ़िकेशन और रिग्रेशन में भ्रम। सुधार: पूछिए 'कौन-सा समूह?' (classification, असतत) या 'कितना?' (regression, सतत)।",
+   "क्लस्टरिंग को क्लासिफ़िकेशन समझना। सुधार: classification लेबल वाले डेटा और ज्ञात वर्गों का उपयोग करता है; clustering बिना लेबल के डेटा में समूह खोजता है।",
+   "कहना कि reinforcement learning को लेबल वाला डेटा चाहिए। सुधार: यह प्रयास और ग़लती से इनाम और दंड द्वारा सीखता है, इनाम अधिकतम करने के लक्ष्य से।",
+   "मानना कि इनपुट या आउटपुट परत गणना करती है। सुधार: केवल छिपी परतें weights और biases से डेटा प्रोसेस करती हैं।",
+   "परसेप्ट्रॉन के योग में बायस भूल जाना या गुणा से पहले जोड़ देना। सुधार: हर इनपुट को उसके weight से गुणा कीजिए, सब जोड़िए, फिर बायस जोड़िए, फिर सीमा से मिलाइए।",
+   "लिखना 'CNN संख्याओं के लिए और ANN केवल चित्रों के लिए है'। सुधार: CNN मुख्य रूप से चित्रों और वीडियो के लिए है; ANN कई तरह के बड़े डेटा पर काम करता है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Artificial Intelligence (AI)",
+    "hi": "आर्टिफ़िशियल इंटेलिजेंस (AI)"
+   },
+   "d": {
+    "en": "Any technique that enables computers to mimic human intelligence; the umbrella term.",
+    "hi": "कोई भी तकनीक जो कंप्यूटर को मानव बुद्धि की नक़ल करने देती है; छतरी शब्द।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine Learning (ML)",
+    "hi": "मशीन लर्निंग (ML)"
+   },
+   "d": {
+    "en": "A subset of AI in which machines improve at tasks with experience by learning from data.",
+    "hi": "AI का उपसमुच्चय जिसमें मशीनें डेटा से सीखकर अनुभव के साथ बेहतर होती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deep Learning (DL)",
+    "hi": "डीप लर्निंग (DL)"
+   },
+   "d": {
+    "en": "A subset of ML in which many-layered neural networks train themselves on vast data.",
+    "hi": "ML का उपसमुच्चय जिसमें कई परतों वाले न्यूरल नेटवर्क विशाल डेटा पर स्वयं प्रशिक्षित होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Anomaly detection",
+    "hi": "एनॉमली डिटेक्शन"
+   },
+   "d": {
+    "en": "Finding unusual or unexpected values in data, such as a sudden heart-rate spike.",
+    "hi": "डेटा में असामान्य या अप्रत्याशित मान ढूँढना, जैसे दिल की धड़कन में अचानक उछाल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data",
+    "hi": "डेटा"
+   },
+   "d": {
+    "en": "Information in any form: numbers, text, images, sound or video.",
+    "hi": "किसी भी रूप में जानकारी: संख्याएँ, टेक्स्ट, चित्र, ध्वनि या वीडियो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature",
+    "hi": "फ़ीचर"
+   },
+   "d": {
+    "en": "A column of a data table; a property that describes each example.",
+    "hi": "डेटा तालिका का एक स्तंभ; वह गुण जो हर उदाहरण का वर्णन करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Label",
+    "hi": "लेबल"
+   },
+   "d": {
+    "en": "The special feature or tag that a model is trained to predict.",
+    "hi": "वह विशेष फ़ीचर या टैग जिसका अनुमान लगाने के लिए मॉडल प्रशिक्षित होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Labelled data",
+    "hi": "लेबल वाला डेटा"
+   },
+   "d": {
+    "en": "Data with a tag or answer attached to each example.",
+    "hi": "वह डेटा जिसके हर उदाहरण पर टैग या उत्तर लगा हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unlabelled data",
+    "hi": "बिना लेबल का डेटा"
+   },
+   "d": {
+    "en": "Raw data with no tags attached.",
+    "hi": "कच्चा डेटा जिस पर कोई टैग न हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training data set",
+    "hi": "ट्रेनिंग डेटा सेट"
+   },
+   "d": {
+    "en": "Examples given to a model to analyse and learn from.",
+    "hi": "मॉडल को विश्लेषण करने और सीखने के लिए दिए गए उदाहरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Testing data set",
+    "hi": "टेस्टिंग डेटा सेट"
+   },
+   "d": {
+    "en": "Data kept aside to check the accuracy of a trained model.",
+    "hi": "प्रशिक्षित मॉडल की सटीकता जाँचने के लिए अलग रखा गया डेटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI modelling",
+    "hi": "AI मॉडलिंग"
+   },
+   "d": {
+    "en": "Developing algorithms (models) that can be trained to give intelligent outputs.",
+    "hi": "ऐसे एल्गोरिद्म (मॉडल) विकसित करना जिन्हें बुद्धिमान आउटपुट देने के लिए प्रशिक्षित किया जा सके।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rule-based approach",
+    "hi": "नियम-आधारित तरीका"
+   },
+   "d": {
+    "en": "Modelling in which the developer defines the rules; the model is static.",
+    "hi": "मॉडलिंग जिसमें नियम डेवलपर तय करता है; मॉडल स्थिर होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Learning-based approach",
+    "hi": "सीखने-आधारित तरीका"
+   },
+   "d": {
+    "en": "Modelling in which the machine finds its own rules from data; the model is adaptive.",
+    "hi": "मॉडलिंग जिसमें मशीन डेटा से अपने नियम स्वयं ढूँढती है; मॉडल अनुकूलनशील होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Supervised learning",
+    "hi": "सुपरवाइज़्ड लर्निंग"
+   },
+   "d": {
+    "en": "ML using labelled data to learn relationships between features and labels.",
+    "hi": "लेबल वाले डेटा से फ़ीचर्स और लेबल के बीच संबंध सीखने वाली ML।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification",
+    "hi": "क्लासिफ़िकेशन"
+   },
+   "d": {
+    "en": "Supervised model that predicts a discrete class, such as spam or not spam.",
+    "hi": "Supervised मॉडल जो असतत वर्ग का अनुमान लगाता है, जैसे स्पैम या स्पैम नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Binary classification",
+    "hi": "बाइनरी क्लासिफ़िकेशन"
+   },
+   "d": {
+    "en": "Classification with exactly two classes, such as yes or no.",
+    "hi": "ठीक दो वर्गों वाला क्लासिफ़िकेशन, जैसे हाँ या नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Regression",
+    "hi": "रिग्रेशन"
+   },
+   "d": {
+    "en": "Supervised model that predicts a continuous numerical value, such as price or temperature.",
+    "hi": "Supervised मॉडल जो सतत संख्यात्मक मान का अनुमान लगाता है, जैसे दाम या तापमान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unsupervised learning",
+    "hi": "अनसुपरवाइज़्ड लर्निंग"
+   },
+   "d": {
+    "en": "ML on unlabelled data that discovers patterns, relationships and trends.",
+    "hi": "बिना लेबल के डेटा पर ML जो पैटर्न, संबंध और रुझान खोजती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Clustering",
+    "hi": "क्लस्टरिंग"
+   },
+   "d": {
+    "en": "Grouping similar data points into clusters without given labels.",
+    "hi": "बिना दिए गए लेबल के मिलते-जुलते डेटा बिंदुओं को क्लस्टरों में रखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Association",
+    "hi": "एसोसिएशन"
+   },
+   "d": {
+    "en": "Finding links between items, such as 'people who buy bread also buy butter'.",
+    "hi": "वस्तुओं के बीच संबंध ढूँढना, जैसे 'ब्रेड ख़रीदने वाले मक्खन भी ख़रीदते हैं'।"
+   }
+  },
+  {
+   "t": {
+    "en": "Association rule",
+    "hi": "एसोसिएशन नियम"
+   },
+   "d": {
+    "en": "A discovered link of the form 'if X then also Y', used for recommendations.",
+    "hi": "'अगर X तो Y भी' जैसा खोजा गया संबंध, जो सुझावों में उपयोग होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reinforcement learning",
+    "hi": "रीइन्फ़ोर्समेंट लर्निंग"
+   },
+   "d": {
+    "en": "ML in which a machine learns by trial and error to maximise a reward.",
+    "hi": "ML जिसमें मशीन इनाम अधिकतम करने के लिए प्रयास और ग़लती से सीखती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reward",
+    "hi": "इनाम (Reward)"
+   },
+   "d": {
+    "en": "Positive feedback given to a learning machine for a good action.",
+    "hi": "अच्छे कार्य के लिए सीखती मशीन को दी गई सकारात्मक प्रतिक्रिया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Artificial Neural Network (ANN)",
+    "hi": "आर्टिफ़िशियल न्यूरल नेटवर्क (ANN)"
+   },
+   "d": {
+    "en": "Deep learning model inspired by the brain, made of layers of nodes that extract features automatically.",
+    "hi": "मस्तिष्क से प्रेरित डीप लर्निंग मॉडल, नोड की परतों से बना, जो फ़ीचर्स अपने-आप निकालता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Convolutional Neural Network (CNN)",
+    "hi": "कन्वोल्यूशनल न्यूरल नेटवर्क (CNN)"
+   },
+   "d": {
+    "en": "Deep learning algorithm for images that assigns learnable weights and biases to parts of an image.",
+    "hi": "चित्रों के लिए डीप लर्निंग एल्गोरिद्म जो चित्र के हिस्सों को सीखने योग्य weights और biases देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Node (neuron)",
+    "hi": "नोड (न्यूरॉन)"
+   },
+   "d": {
+    "en": "A single processing unit of a neural network.",
+    "hi": "न्यूरल नेटवर्क की एक प्रोसेसिंग इकाई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Input layer",
+    "hi": "इनपुट परत"
+   },
+   "d": {
+    "en": "First layer; feeds data into the network without processing it.",
+    "hi": "पहली परत; बिना प्रोसेस किए डेटा नेटवर्क में डालती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hidden layer",
+    "hi": "छिपी परत"
+   },
+   "d": {
+    "en": "Middle layer(s) where computation with weights and biases happens.",
+    "hi": "बीच की परत(ें) जहाँ weights और biases से गणना होती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Output layer",
+    "hi": "आउटपुट परत"
+   },
+   "d": {
+    "en": "Last layer; gives the final result to the user without processing.",
+    "hi": "अंतिम परत; बिना प्रोसेस किए उपयोगकर्ता को अंतिम परिणाम देती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Weight",
+    "hi": "वेट (भार)"
+   },
+   "d": {
+    "en": "A number showing how strongly an input affects a node's decision.",
+    "hi": "एक संख्या जो बताती है कि कोई इनपुट नोड के निर्णय को कितना प्रभावित करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias (in a neuron)",
+    "hi": "बायस (न्यूरॉन में)"
+   },
+   "d": {
+    "en": "An extra number added at a node that shifts its output up or down.",
+    "hi": "नोड पर जोड़ी जाने वाली अतिरिक्त संख्या जो उसके आउटपुट को ऊपर या नीचे खिसकाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Threshold",
+    "hi": "सीमा (Threshold)"
+   },
+   "d": {
+    "en": "The value the weighted sum is compared with to decide the output.",
+    "hi": "वह मान जिससे भारित योग की तुलना करके आउटपुट तय होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Perceptron",
+    "hi": "परसेप्ट्रॉन"
+   },
+   "d": {
+    "en": "The simplest artificial neuron: weighted sum plus bias compared with a threshold.",
+    "hi": "सबसे सरल कृत्रिम न्यूरॉन: भारित योग और बायस की सीमा से तुलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training",
+    "hi": "ट्रेनिंग (प्रशिक्षण)"
+   },
+   "d": {
+    "en": "Adjusting a model's weights using data and errors to improve its performance.",
+    "hi": "डेटा और त्रुटियों के आधार पर मॉडल के weights बदलकर उसका प्रदर्शन सुधारना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deep neural network",
+    "hi": "डीप न्यूरल नेटवर्क"
+   },
+   "d": {
+    "en": "A neural network with many hidden layers.",
+    "hi": "कई छिपी परतों वाला न्यूरल नेटवर्क।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which learning approach uses labelled data for training? (a) Unsupervised (b) Supervised (c) Reinforcement (d) Clustering",
+    "hi": "MCQ: कौन-सा तरीका प्रशिक्षण के लिए लेबल वाले डेटा का उपयोग करता है? (a) Unsupervised (b) Supervised (c) Reinforcement (d) Clustering"
+   },
+   "a": {
+    "en": "(b) Supervised learning.",
+    "hi": "(b) Supervised learning।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In the fruit dataset, colour, size and shape are called: (a) labels (b) features (c) clusters (d) weights",
+    "hi": "MCQ: फलों के डेटासेट में रंग, आकार और आकृति कहलाते हैं: (a) लेबल (b) फ़ीचर्स (c) क्लस्टर (d) weights"
+   },
+   "a": {
+    "en": "(b) Features: they are the columns that describe each fruit.",
+    "hi": "(b) फ़ीचर्स: ये वे स्तंभ हैं जो हर फल का वर्णन करते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which model would you use to predict a continuous-valued output? (a) Classification (b) Clustering (c) Regression (d) Association",
+    "hi": "MCQ: सतत मान वाले आउटपुट के अनुमान के लिए कौन-सा मॉडल उपयोग करेंगे? (a) Classification (b) Clustering (c) Regression (d) Association"
+   },
+   "a": {
+    "en": "(c) Regression.",
+    "hi": "(c) Regression।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is FALSE about reinforcement learning? (a) uses a reward mechanism (b) learns by trial and error (c) target is to maximise reward (d) predicts a continuous value from labelled data",
+    "hi": "MCQ: reinforcement learning के बारे में इनमें से कौन-सा ग़लत है? (a) इनाम-व्यवस्था का उपयोग करता है (b) प्रयास और ग़लती से सीखता है (c) लक्ष्य इनाम अधिकतम करना है (d) लेबल वाले डेटा से सतत मान का अनुमान लगाता है"
+   },
+   "a": {
+    "en": "(d). Predicting a continuous value from labelled data is regression, a supervised method.",
+    "hi": "(d)। लेबल वाले डेटा से सतत मान का अनुमान रिग्रेशन है, जो एक supervised तरीका है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Clustering is a type of ____ learning, and its goal is to divide data points into different ____.",
+    "hi": "रिक्त स्थान भरिए: क्लस्टरिंग ____ learning का प्रकार है, और इसका लक्ष्य डेटा बिंदुओं को अलग-अलग ____ में बाँटना है।"
+   },
+   "a": {
+    "en": "Unsupervised; groups (clusters).",
+    "hi": "Unsupervised; समूहों (क्लस्टरों)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: In a neural network, the input layer performs most of the calculations.",
+    "hi": "सही या ग़लत: न्यूरल नेटवर्क में ज़्यादातर गणना इनपुट परत करती है।"
+   },
+   "a": {
+    "en": "False. The input layer only feeds data in; the hidden layers do the computation using weights and biases.",
+    "hi": "ग़लत। इनपुट परत केवल डेटा डालती है; गणना छिपी परतें weights और biases से करती हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Artificial neural networks are inspired by: (a) quantum computers (b) the human brain (c) calculators (d) the internet",
+    "hi": "MCQ: आर्टिफ़िशियल न्यूरल नेटवर्क किससे प्रेरित हैं? (a) क्वांटम कंप्यूटर (b) मानव मस्तिष्क (c) कैलकुलेटर (d) इंटरनेट"
+   },
+   "a": {
+    "en": "(b) The human brain.",
+    "hi": "(b) मानव मस्तिष्क।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The process of adjusting the weights in a neural network to improve its performance is called: (a) activation (b) clustering (c) training (d) deployment",
+    "hi": "MCQ: प्रदर्शन सुधारने के लिए न्यूरल नेटवर्क के weights बदलने की प्रक्रिया कहलाती है: (a) activation (b) clustering (c) training (d) deployment"
+   },
+   "a": {
+    "en": "(c) Training.",
+    "hi": "(c) Training (प्रशिक्षण)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "MCQ: A rule-based chatbot cannot answer 'paisa wapas kab milega?' though it answers 'When will I get my refund?'. Which statement explains this? (a) It has too much data (b) The rule-based approach is static and cannot adapt to new words or expressions (c) It uses deep learning (d) It is unsupervised",
+    "hi": "MCQ: एक नियम-आधारित चैटबॉट 'When will I get my refund?' का उत्तर देता है पर 'paisa wapas kab milega?' का नहीं। कौन-सा कथन इसे समझाता है? (a) इसके पास बहुत ज़्यादा डेटा है (b) नियम-आधारित तरीका स्थिर है और नए शब्दों या अभिव्यक्तियों के अनुसार नहीं बदल सकता (c) यह डीप लर्निंग का उपयोग करता है (d) यह unsupervised है"
+   },
+   "a": {
+    "en": "(b) The rule-based approach is static; nobody wrote a rule for those words.",
+    "hi": "(b) नियम-आधारित तरीका स्थिर है; उन शब्दों के लिए किसी ने नियम नहीं लिखा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Unsupervised learning can find patterns in data that has no labels.\nReason (R): Unsupervised models work on unlabelled datasets in which the trainer may have no prior information about the data.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): Unsupervised learning बिना लेबल वाले डेटा में पैटर्न ढूँढ सकता है।\nकारण (R): Unsupervised मॉडल बिना लेबल वाले डेटासेट पर काम करते हैं, जिनके बारे में प्रशिक्षक को पहले से कोई जानकारी न भी हो।\n(a) दोनों सही, R, A को समझाता है (b) दोनों सही, R, A को नहीं समझाता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(a) Both are true and R explains A.",
+    "hi": "(a) दोनों सही हैं और R, A को समझाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Information processing in a neural network relies on weights and biases assigned to nodes.\nReason (R): The output layer of a neural network performs all calculations.\nChoose (a), (b), (c) or (d).",
+    "hi": "अभिकथन (A): न्यूरल नेटवर्क में सूचना-प्रसंस्करण नोड को दिए गए weights और biases पर निर्भर करता है।\nकारण (R): न्यूरल नेटवर्क की आउटपुट परत सारी गणना करती है।\n(a), (b), (c) या (d) चुनिए।"
+   },
+   "a": {
+    "en": "(c) A is true but R is false: the hidden layers do the calculations; the output layer only presents the result.",
+    "hi": "(c) A सही है पर R ग़लत: गणना छिपी परतें करती हैं; आउटपुट परत केवल परिणाम दिखाती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between rule-based and learning-based AI models (any three points) with one example of each.",
+    "hi": "नियम-आधारित और सीखने-आधारित AI मॉडलों में अंतर बताइए (कोई तीन बिंदु), हर एक का एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "1. Rules: developer writes them vs machine finds them from data.\n2. Nature: static/fixed vs adaptive/flexible.\n3. New situations: fails unless rules are changed vs can adapt to new data.\n(Also: rule-based is easy to explain and needs little data; learning-based needs a lot of data.)\nExamples: rule-based FAQ chatbot; learning-based spam filter.",
+    "hi": "1. नियम: डेवलपर लिखता है बनाम मशीन डेटा से ढूँढती है।\n2. स्वरूप: स्थिर बनाम अनुकूलनशील/लचीला।\n3. नई स्थितियाँ: नियम बदले बिना असफल बनाम नए डेटा के अनुसार बदल सकता है।\n(साथ ही: नियम-आधारित को समझाना आसान है और कम डेटा चाहिए; सीखने-आधारित को बहुत डेटा चाहिए।)\nउदाहरण: नियम-आधारित FAQ चैटबॉट; सीखने-आधारित स्पैम फ़िल्टर।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How is reinforcement learning different from supervised and unsupervised learning? (2 marks)",
+    "hi": "Reinforcement learning, supervised और unsupervised learning से कैसे अलग है? (2 अंक)"
+   },
+   "a": {
+    "en": "1. In supervised and unsupervised learning you need a good idea of the data you have and how to solve the problem; reinforcement learning may start with no ready dataset and learns by interacting with an environment.\n2. Reinforcement learning learns through rewards and penalties by trial and error, aiming to maximise total reward, instead of learning from labels or from similarities.",
+    "hi": "1. Supervised और unsupervised learning में आपको अपने डेटा और समस्या हल करने के तरीके की अच्छी समझ चाहिए; reinforcement learning बिना तैयार डेटासेट के भी शुरू होकर वातावरण से संपर्क करके सीखता है।\n2. Reinforcement learning लेबल या समानताओं से नहीं, बल्कि प्रयास और ग़लती से इनाम और दंड द्वारा सीखता है, कुल इनाम अधिकतम करने के लक्ष्य से।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is clustering and how is it different from classification? Give an example of each.",
+    "hi": "क्लस्टरिंग क्या है और यह क्लासिफ़िकेशन से कैसे अलग है? हर एक का उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Clustering is an unsupervised method that groups similar data points together and keeps them different from other groups, without any labels. Classification is a supervised method that puts data into fixed, known classes using labelled training data.\nClustering example: grouping shop customers by buying behaviour. Classification example: sorting emails into spam and not spam.",
+    "hi": "क्लस्टरिंग एक unsupervised तरीका है जो बिना किसी लेबल के मिलते-जुलते डेटा बिंदुओं को एक साथ और दूसरे समूहों से अलग रखता है। क्लासिफ़िकेशन एक supervised तरीका है जो लेबल वाले ट्रेनिंग डेटा से डेटा को तय, ज्ञात वर्गों में डालता है।\nक्लस्टरिंग उदाहरण: ख़रीदारी के व्यवहार से दुकान के ग्राहकों के समूह बनाना। क्लासिफ़िकेशन उदाहरण: ईमेल को स्पैम और स्पैम नहीं में छाँटना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Identify the type of learning and sub-type: (a) An app groups news articles into topics nobody defined. (b) A model predicts a student's board percentage from mock-test scores. (c) A robot vacuum learns which path cleans a room fastest by getting points. (d) A shop finds that customers who buy tea also buy biscuits.",
+    "hi": "लर्निंग का प्रकार और उप-प्रकार पहचानिए: (क) एक ऐप समाचार लेखों को ऐसे विषयों में बाँटता है जो किसी ने तय नहीं किए। (ख) एक मॉडल मॉक-टेस्ट के अंकों से छात्र के बोर्ड प्रतिशत का अनुमान लगाता है। (ग) एक रोबोट वैक्यूम अंक पाकर सीखता है कि कौन-सा रास्ता कमरा सबसे जल्दी साफ़ करता है। (घ) एक दुकान पाती है कि चाय ख़रीदने वाले बिस्कुट भी ख़रीदते हैं।"
+   },
+   "a": {
+    "en": "(a) Unsupervised, clustering.\n(b) Supervised, regression (percentage is continuous).\n(c) Reinforcement learning.\n(d) Unsupervised, association.",
+    "hi": "(क) Unsupervised, clustering।\n(ख) Supervised, regression (प्रतिशत सतत है)।\n(ग) Reinforcement learning।\n(घ) Unsupervised, association।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A perceptron has inputs X1 = 1, X2 = 1, X3 = 0 with weights W1 = 2, W2 = -1, W3 = 4, bias = -0.5 and threshold 0. Find the weighted sum and the output.",
+    "hi": "एक परसेप्ट्रॉन के इनपुट X1 = 1, X2 = 1, X3 = 0 हैं, weights W1 = 2, W2 = -1, W3 = 4, बायस = -0.5 और सीमा 0। भारित योग और आउटपुट निकालिए।"
+   },
+   "a": {
+    "en": "Products: 1×2 = 2; 1×(-1) = -1; 0×4 = 0.\nSum = 2 - 1 + 0 = 1.\nAdd bias: 1 + (-0.5) = 0.5.\n0.5 > 0, so output = 1 (Yes).",
+    "hi": "गुणनफल: 1×2 = 2; 1×(-1) = -1; 0×4 = 0।\nयोग = 2 - 1 + 0 = 1।\nबायस जोड़िए: 1 + (-0.5) = 0.5।\n0.5 > 0, इसलिए आउटपुट = 1 (हाँ)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Define features, labels, training data and testing data using the example of a crop-disease detection app.",
+    "hi": "फ़सल-रोग पहचानने वाले ऐप के उदाहरण से फ़ीचर्स, लेबल, ट्रेनिंग डेटा और टेस्टिंग डेटा परिभाषित कीजिए।"
+   },
+   "a": {
+    "en": "Features: properties of each leaf photo, such as colour, spots, shape and texture (in a photo, the pixel values).\nLabel: the disease name or 'healthy' written for each photo.\nTraining data: the labelled leaf photos given to the model to learn from (for example 80% of them).\nTesting data: the remaining labelled photos kept aside; the model predicts on them without seeing labels, and its answers are checked to measure accuracy.",
+    "hi": "फ़ीचर्स: हर पत्ती की फ़ोटो के गुण, जैसे रंग, धब्बे, आकृति और बनावट (फ़ोटो में पिक्सेल मान)।\nलेबल: हर फ़ोटो पर लिखा रोग का नाम या 'स्वस्थ'।\nट्रेनिंग डेटा: मॉडल को सीखने के लिए दी गई लेबल वाली पत्ती-फ़ोटो (जैसे उनमें से 80%)।\nटेस्टिंग डेटा: अलग रखी गई बाक़ी लेबल वाली फ़ोटो; मॉडल लेबल देखे बिना उन पर अनुमान लगाता है, और सटीकता मापने के लिए उसके उत्तर जाँचे जाते हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer (4 marks): What is a neural network? Explain the functions of its three layers and how it learns.",
+    "hi": "दीर्घ उत्तर (4 अंक): न्यूरल नेटवर्क क्या है? इसकी तीन परतों के कार्य और यह कैसे सीखता है, समझाइए।"
+   },
+   "a": {
+    "en": "A neural network is a system loosely modelled on the neurons of the human brain that organises ML algorithms to perform tasks; its key advantage is that it extracts features automatically, which makes it efficient for very large datasets such as images.\nInput layer: acquires data and feeds it to the network; no processing.\nHidden layers: perform computation using weights and biases at each node and pass results onward; there can be many, depending on the complexity of the task.\nOutput layer: receives the processed data from the last hidden layer and gives the final output; no processing.\nLearning: it starts by trial and error; after each try the error between the desired and actual output is used to adjust the weights. Repeating this (training) improves performance.",
+    "hi": "न्यूरल नेटवर्क मानव मस्तिष्क के न्यूरॉनों पर मोटे तौर पर आधारित एक प्रणाली है जो काम करने के लिए ML एल्गोरिद्म को व्यवस्थित करती है; इसका मुख्य लाभ यह है कि यह फ़ीचर्स अपने-आप निकालती है, जिससे यह चित्रों जैसे बहुत बड़े डेटासेट के लिए कुशल है।\nइनपुट परत: डेटा लेकर नेटवर्क में डालती है; कोई प्रोसेसिंग नहीं।\nछिपी परतें: हर नोड पर weights और biases से गणना करके परिणाम आगे भेजती हैं; काम की जटिलता के अनुसार कई हो सकती हैं।\nआउटपुट परत: अंतिम छिपी परत से प्रोसेस्ड डेटा लेकर अंतिम आउटपुट देती है; कोई प्रोसेसिंग नहीं।\nसीखना: शुरुआत प्रयास और ग़लती से होती है; हर प्रयास के बाद वांछित और वास्तविक आउटपुट की त्रुटि से weights बदले जाते हैं। इसे दोहराने (प्रशिक्षण) से प्रदर्शन सुधरता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer (4 marks): Explain supervised, unsupervised and reinforcement learning with one Indian everyday example each, and state when each is used.",
+    "hi": "दीर्घ उत्तर (4 अंक): Supervised, unsupervised और reinforcement learning को हर एक के एक भारतीय रोज़मर्रा के उदाहरण के साथ समझाइए, और बताइए कि हर एक का उपयोग कब होता है।"
+   },
+   "a": {
+    "en": "Supervised: learns from labelled data. Example: a bank model trained on past transactions marked 'fraud' or 'genuine' flags suspicious UPI payments. Used when we want to determine relationships through training.\nUnsupervised: finds patterns in unlabelled data. Example: an online grocery app groups customers by buying habits to plan offers, or finds that people who buy atta also buy oil. Used when we want to discover new patterns.\nReinforcement: learns by trial and error with rewards and penalties. Example: an AI learning to play a mobile game or a traffic-signal controller learning timings that cut waiting time. Used when we want learning through a reward mechanism, where the goal is clear but the path is unknown.",
+    "hi": "Supervised: लेबल वाले डेटा से सीखता है। उदाहरण: 'धोखाधड़ी' या 'असली' लिखे पिछले लेन-देन पर प्रशिक्षित बैंक का मॉडल संदिग्ध UPI भुगतानों को चिह्नित करता है। उपयोग तब जब प्रशिक्षण से संबंध तय करने हों।\nUnsupervised: बिना लेबल के डेटा में पैटर्न ढूँढता है। उदाहरण: एक ऑनलाइन किराना ऐप ऑफ़र की योजना के लिए ख़रीदारी की आदतों से ग्राहकों के समूह बनाता है, या पाता है कि आटा ख़रीदने वाले तेल भी ख़रीदते हैं। उपयोग तब जब नए पैटर्न खोजने हों।\nReinforcement: इनाम और दंड के साथ प्रयास और ग़लती से सीखता है। उदाहरण: मोबाइल गेम खेलना सीखता AI, या इंतज़ार घटाने वाले समय सीखता ट्रैफ़िक-सिग्नल नियंत्रक। उपयोग तब जब इनाम-व्यवस्था से सीखना हो, जहाँ लक्ष्य साफ़ हो पर रास्ता अज्ञात।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A dairy cooperative has a table of 5,000 past days with columns: temperature, festival day (yes/no), day of the week, and litres of milk sold. (a) Which column is the label? (b) Which type of learning and which sub-type should be used to predict litres sold? (c) If instead they want to know only whether demand will be 'high' or 'low', what changes? (d) Name one ethical or data-quality check before deploying.",
+    "hi": "केस-आधारित: एक डेयरी सहकारी के पास 5,000 पुराने दिनों की तालिका है, जिसमें स्तंभ हैं: तापमान, त्योहार का दिन (हाँ/नहीं), सप्ताह का दिन, और बिके दूध के लीटर। (क) कौन-सा स्तंभ लेबल है? (ख) बिके लीटर के अनुमान के लिए किस प्रकार और किस उप-प्रकार की learning उपयोग हो? (ग) अगर वे केवल यह जानना चाहें कि माँग 'अधिक' होगी या 'कम', तो क्या बदलेगा? (घ) डिप्लॉय करने से पहले एक नैतिक या डेटा-गुणवत्ता जाँच बताइए।"
+   },
+   "a": {
+    "en": "(a) Litres of milk sold.\n(b) Supervised learning (the data is labelled), regression (litres is a continuous number).\n(c) The label becomes a class (high/low), so it becomes a classification (binary) problem.\n(d) For example: check that the 5,000 days include all seasons and festival types, keep separate testing data, and check that the predictions do not lead to unfair cuts in supply to some villages.",
+    "hi": "(क) बिके दूध के लीटर।\n(ख) Supervised learning (डेटा लेबल वाला है), regression (लीटर एक सतत संख्या है)।\n(ग) लेबल एक वर्ग (अधिक/कम) बन जाता है, इसलिए यह classification (बाइनरी) समस्या बन जाती है।\n(घ) जैसे: जाँचिए कि 5,000 दिनों में सभी मौसम और त्योहार शामिल हों, अलग टेस्टिंग डेटा रखिए, और देखिए कि अनुमान से कुछ गाँवों की आपूर्ति में अनुचित कटौती न हो।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Compare ANN and CNN. Why is a CNN better suited than an ordinary rule-based program for recognising faces in photos?",
+    "hi": "ANN और CNN की तुलना कीजिए। फ़ोटो में चेहरे पहचानने के लिए CNN, साधारण नियम-आधारित प्रोग्राम से बेहतर क्यों है?"
+   },
+   "a": {
+    "en": "ANN: brain-inspired network of layers of nodes; extracts features automatically; used for many kinds of large data, for example price prediction or chatbots.\nCNN: a deep learning algorithm designed for images; takes an input image, assigns learnable weights and biases to parts of it, and distinguishes objects; used for image classification, object detection and face recognition.\nWhy CNN for faces: faces vary in lighting, angle, expression and background. Writing rules for every possible variation is impossible, and a rule-based program is static. A CNN learns the important visual features (edges, eyes, shapes) by itself from many example images and can adapt to new photos.",
+    "hi": "ANN: नोड की परतों वाला मस्तिष्क-प्रेरित नेटवर्क; फ़ीचर्स अपने-आप निकालता है; कई तरह के बड़े डेटा के लिए, जैसे दाम का अनुमान या चैटबॉट।\nCNN: चित्रों के लिए बना डीप लर्निंग एल्गोरिद्म; इनपुट चित्र लेकर उसके हिस्सों को सीखने योग्य weights और biases देता है और वस्तुओं को अलग पहचानता है; इमेज क्लासिफ़िकेशन, ऑब्जेक्ट डिटेक्शन और फ़ेस रिकग्निशन में उपयोग।\nचेहरों के लिए CNN क्यों: चेहरे रोशनी, कोण, भाव और पृष्ठभूमि में बदलते हैं। हर संभव बदलाव के लिए नियम लिखना असंभव है, और नियम-आधारित प्रोग्राम स्थिर होता है। CNN बहुत-से उदाहरण चित्रों से महत्वपूर्ण दृश्य फ़ीचर्स (किनारे, आँखें, आकृतियाँ) स्वयं सीखता है और नई फ़ोटो के अनुसार ढल सकता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: In the 'go to the park' perceptron, which number would you change, and how, for a student who never goes out when homework is pending? Explain using weighted sums.",
+    "hi": "चिंतन प्रश्न: 'पार्क जाने' वाले परसेप्ट्रॉन में, ऐसे छात्र के लिए जो गृहकार्य बाक़ी होने पर कभी बाहर नहीं जाता, आप कौन-सी संख्या कैसे बदलेंगे? भारित योग से समझाइए।"
+   },
+   "a": {
+    "en": "Make the homework weight W2 much more negative. With weights 3, W2, 2, 2 and bias -2, the largest possible sum of the other parts is 3 + 2 + 2 - 2 = 5. If W2 is -6 (anything below -5 works), then whenever X2 = 1 the sum is at most 5 - 6 = -1, which is below the threshold 0, so the output is always 'stay'. A heavier (more negative) weight means that factor dominates the decision; in a real network, training would find such a weight from the student's past behaviour.",
+    "hi": "गृहकार्य के weight W2 को बहुत अधिक ऋणात्मक कर दीजिए। weights 3, W2, 2, 2 और बायस -2 के साथ, बाक़ी हिस्सों का सबसे बड़ा संभव योग 3 + 2 + 2 - 2 = 5 है। अगर W2 = -6 हो (-5 से कम कुछ भी चलेगा), तो जब भी X2 = 1 हो, योग अधिकतम 5 - 6 = -1 होगा, जो सीमा 0 से कम है, इसलिए आउटपुट हमेशा 'रुको' होगा। भारी (अधिक ऋणात्मक) weight का अर्थ है कि वह कारक निर्णय पर हावी है; असली नेटवर्क में प्रशिक्षण छात्र के पिछले व्यवहार से ऐसा weight ढूँढ लेगा।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: In the Human Neural Network game, the output student guessed 'temple' instead of 'Taj Mahal'. Using the idea of layers and weights, suggest two reasons and how the second round can improve.",
+    "hi": "गतिविधि प्रश्न: ह्यूमन न्यूरल नेटवर्क खेल में आउटपुट छात्र ने 'ताजमहल' की जगह 'मंदिर' अनुमान लगाया। परतों और weights के विचार से दो कारण और दूसरे दौर में सुधार का तरीका बताइए।"
+   },
+   "a": {
+    "en": "Reasons: (1) the input layer passed vague features (white building, dome) and missed distinctive ones (four minarets, long water pool in front). (2) Hidden layers combined clues wrongly or dropped important clues, giving too much 'weight' to general clues like 'religious building'.\nImprovement: after the error is revealed, each layer gives more importance (weight) to distinctive features and less to common ones, just as a network adjusts weights using the error; the second guess is then more likely to be correct.",
+    "hi": "कारण: (1) इनपुट परत ने अस्पष्ट फ़ीचर्स (सफ़ेद इमारत, गुंबद) आगे भेजे और विशिष्ट फ़ीचर्स (चार मीनारें, सामने लंबा पानी का कुंड) छोड़ दिए। (2) छिपी परतों ने संकेत ग़लत जोड़े या ज़रूरी संकेत छोड़ दिए, और 'धार्मिक इमारत' जैसे सामान्य संकेतों को ज़्यादा 'weight' दे दिया।\nसुधार: त्रुटि पता चलने के बाद हर परत विशिष्ट फ़ीचर्स को ज़्यादा महत्व (weight) और सामान्य फ़ीचर्स को कम दे, ठीक वैसे जैसे नेटवर्क त्रुटि से weights बदलता है; तब दूसरा अनुमान सही होने की संभावना ज़्यादा होगी।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "AI is the umbrella term; ML (learning from experience) is a subset of AI; DL (learning from huge data with many-layered neural networks) is a subset of ML.",
+   "Data is information in any form; columns are features; the label is the special feature we predict; data can be labelled or unlabelled.",
+   "Training data teaches the model; separate testing data checks its accuracy.",
+   "AI modelling means developing algorithms (models) that can be trained to give intelligent outputs.",
+   "Rule-based models follow developer-written rules and are static; learning-based models find rules from data and adapt.",
+   "Machine learning has three types: supervised (labelled data), unsupervised (unlabelled data) and reinforcement (rewards).",
+   "Supervised learning has two sub-types: classification (discrete classes) and regression (continuous values).",
+   "Unsupervised learning has two sub-types: clustering (grouping similar items) and association (finding items that go together).",
+   "Reinforcement learning learns by trial and error to maximise reward, useful when the goal is clear but the path is unknown.",
+   "Deep learning has two model types here: ANN (brain-inspired, general large data) and CNN (images and videos).",
+   "A neural network has an input layer (no processing), hidden layers (computation with weights and biases) and an output layer (gives the result).",
+   "A perceptron multiplies inputs by weights, adds them with a bias, compares with a threshold and outputs yes or no.",
+   "Training adjusts weights using the error after each try; networks with many hidden layers are deep neural networks."
+  ],
+  "hi": [
+   "AI छतरी शब्द है; ML (अनुभव से सीखना) AI का उपसमुच्चय है; DL (कई परतों वाले न्यूरल नेटवर्क से विशाल डेटा से सीखना) ML का उपसमुच्चय है।",
+   "डेटा किसी भी रूप में जानकारी है; स्तंभ फ़ीचर्स हैं; लेबल वह विशेष फ़ीचर है जिसका हम अनुमान लगाते हैं; डेटा लेबल वाला या बिना लेबल का हो सकता है।",
+   "ट्रेनिंग डेटा मॉडल को सिखाता है; अलग टेस्टिंग डेटा उसकी सटीकता जाँचता है।",
+   "AI मॉडलिंग का अर्थ है ऐसे एल्गोरिद्म (मॉडल) बनाना जिन्हें बुद्धिमान आउटपुट देने के लिए प्रशिक्षित किया जा सके।",
+   "नियम-आधारित मॉडल डेवलपर के लिखे नियमों पर चलते हैं और स्थिर होते हैं; सीखने-आधारित मॉडल डेटा से नियम ढूँढते हैं और ढल जाते हैं।",
+   "मशीन लर्निंग के तीन प्रकार हैं: supervised (लेबल वाला डेटा), unsupervised (बिना लेबल का डेटा) और reinforcement (इनाम)।",
+   "Supervised learning के दो उप-प्रकार हैं: classification (असतत वर्ग) और regression (सतत मान)।",
+   "Unsupervised learning के दो उप-प्रकार हैं: clustering (मिलती-जुलती चीज़ों के समूह) और association (साथ चलने वाली चीज़ें ढूँढना)।",
+   "Reinforcement learning इनाम अधिकतम करने के लिए प्रयास और ग़लती से सीखता है, जो तब उपयोगी है जब लक्ष्य साफ़ हो पर रास्ता अज्ञात।",
+   "यहाँ डीप लर्निंग के दो मॉडल हैं: ANN (मस्तिष्क-प्रेरित, सामान्य बड़ा डेटा) और CNN (चित्र और वीडियो)।",
+   "न्यूरल नेटवर्क में इनपुट परत (कोई प्रोसेसिंग नहीं), छिपी परतें (weights और biases से गणना) और आउटपुट परत (परिणाम देती है) होती हैं।",
+   "परसेप्ट्रॉन इनपुट को weights से गुणा करके बायस के साथ जोड़ता है, सीमा से मिलाता है और हाँ या नहीं बताता है।",
+   "प्रशिक्षण हर प्रयास के बाद त्रुटि से weights बदलता है; कई छिपी परतों वाले नेटवर्क डीप न्यूरल नेटवर्क हैं।"
+  ]
+ }
+}

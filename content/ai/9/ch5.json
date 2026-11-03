@@ -1,0 +1,1646 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "9",
+ "id": "ch5",
+ "intro": {
+  "en": "Why does a weather app say '70% chance of rain' instead of simply 'it will rain'? How does an AI decide that a photo shows a dog and not a muffin? The answer is mathematics. AI finds patterns in data, and the two branches of maths it uses most for this are statistics (making sense of data) and probability (measuring how likely something is). This chapter explains why maths matters for AI, introduces the four maths areas behind AI, and then teaches statistics and probability step by step with Indian examples, activities and small Python programs.",
+  "hi": "मौसम ऐप सीधे 'बारिश होगी' कहने के बजाय '70% बारिश की संभावना' क्यों कहता है? AI कैसे तय करता है कि फ़ोटो में कुत्ता है, मफ़िन नहीं? उत्तर है गणित। AI data में पैटर्न खोजता है, और इसके लिए गणित की जिन दो शाखाओं का सबसे अधिक उपयोग होता है वे हैं सांख्यिकी (data का अर्थ समझना) और प्रायिकता (कोई चीज़ कितनी संभावित है, यह मापना)। यह अध्याय समझाता है कि AI के लिए गणित क्यों ज़रूरी है, AI के पीछे के गणित के चार क्षेत्रों का परिचय देता है, और फिर भारतीय उदाहरणों, गतिविधियों और छोटे Python प्रोग्रामों के साथ सांख्यिकी और प्रायिकता को क़दम-दर-क़दम सिखाता है।"
+ },
+ "learn": {
+  "en": [
+   "How maths and AI are related: maths as the study of patterns and AI as pattern recognition",
+   "Number patterns and picture patterns, and how AI spots them",
+   "The four maths areas used in AI: statistics, linear algebra, calculus and probability",
+   "What statistics is, its steps, and its uses in disaster management, sports, disease prediction and weather forecasting",
+   "Measures of central tendency — mean, median, mode — and range, with worked examples",
+   "Reading statistics around us and using tally tables and graphs",
+   "Probability: experiment, outcome, sample space, event and the probability formula",
+   "The probability scale from 0 to 1 and certain, likely, equally likely, unlikely and impossible events",
+   "Complement of an event, and theoretical versus experimental probability",
+   "Uses of probability in cricket, weather forecasting, traffic estimation and AI systems",
+   "Simple Python programs that compute statistics and probabilities"
+  ],
+  "hi": [
+   "गणित और AI का संबंध: गणित पैटर्न का अध्ययन है और AI पैटर्न पहचान है",
+   "संख्या पैटर्न और चित्र पैटर्न, और AI उन्हें कैसे पहचानता है",
+   "AI में प्रयुक्त गणित के चार क्षेत्र: सांख्यिकी, रैखिक बीजगणित, कलन और प्रायिकता",
+   "सांख्यिकी क्या है, इसके चरण, और आपदा प्रबंधन, खेल, रोग पूर्वानुमान व मौसम पूर्वानुमान में इसके उपयोग",
+   "केंद्रीय प्रवृत्ति के माप — माध्य, माध्यिका, बहुलक — और परिसर, हल किए उदाहरणों सहित",
+   "अपने आस-पास के आँकड़े पढ़ना और मिलान-चिह्न तालिका व ग्राफ़ का उपयोग",
+   "प्रायिकता: प्रयोग, परिणाम, प्रतिदर्श समष्टि, घटना और प्रायिकता का सूत्र",
+   "0 से 1 तक प्रायिकता का पैमाना, और निश्चित, संभावित, समसंभावित, असंभावित व असंभव घटनाएँ",
+   "किसी घटना का पूरक, और सैद्धांतिक तथा प्रायोगिक प्रायिकता",
+   "क्रिकेट, मौसम पूर्वानुमान, ट्रैफ़िक अनुमान और AI सिस्टम में प्रायिकता के उपयोग",
+   "सांख्यिकी और प्रायिकता की गणना करने वाले सरल Python प्रोग्राम"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "5.1 How are maths and AI related?",
+    "hi": "5.1 गणित और AI का संबंध क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Maths is often called the study of patterns. A pattern is an order or arrangement that repeats or follows a rule. When you solve a puzzle such as 2, 4, 8, 16, ?, you look for the rule (each number doubles) and use it to predict the next number (32). AI does exactly this, but with millions of numbers. It looks for patterns in numbers, images, speech and text, and uses them to make decisions or predictions.",
+      "hi": "गणित को अक्सर पैटर्न का अध्ययन कहा जाता है। पैटर्न एक ऐसा क्रम या व्यवस्था है जो दोहराई जाती है या किसी नियम का पालन करती है। जब आप 2, 4, 8, 16, ? जैसी पहेली हल करते हैं, तो आप नियम खोजते हैं (हर संख्या दुगुनी होती है) और उससे अगली संख्या (32) का अनुमान लगाते हैं। AI ठीक यही करता है, पर लाखों संख्याओं के साथ। वह संख्याओं, चित्रों, वाणी और पाठ में पैटर्न खोजता है और उनसे निर्णय या अनुमान लेता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Pattern recognition",
+       "hi": "पैटर्न पहचान (Pattern recognition)"
+      },
+      "text": {
+       "en": "Finding regularities, similarities or rules in data so that new data can be sorted or predicted. It is the core skill of most AI systems.",
+       "hi": "Data में नियमितता, समानता या नियम खोजना ताकि नए data को वर्गीकृत किया जा सके या उसका अनुमान लगाया जा सके। यह अधिकांश AI सिस्टम का मूल कौशल है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Number patterns. Look at: 1, 4, 9, 16, 25 — these are square numbers (1×1, 2×2, 3×3 ...), so the next is 36. Or 3, 7, 11, 15 — add 4 each time, so the next is 19. Or 1, 1, 2, 3, 5, 8 — each number is the sum of the two before it (this is the Fibonacci-type sequence, which Indian scholars such as Pingala and Hemachandra described centuries ago in the study of poetic metres), so the next is 13.",
+      "hi": "संख्या पैटर्न। देखिए: 1, 4, 9, 16, 25 — ये वर्ग संख्याएँ हैं (1×1, 2×2, 3×3 ...), इसलिए अगली 36 है। या 3, 7, 11, 15 — हर बार 4 जोड़ो, इसलिए अगली 19 है। या 1, 1, 2, 3, 5, 8 — हर संख्या पिछली दो का योग है (यह Fibonacci-प्रकार का क्रम है, जिसका वर्णन पिंगल और हेमचंद्र जैसे भारतीय विद्वानों ने सदियों पहले छंद-शास्त्र के अध्ययन में किया था), इसलिए अगली 13 है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Picture patterns. In a rangoli, the same petal shape repeats around a centre; in a chessboard, black and white squares alternate; tiles on a floor repeat in rows. A computer stores a picture as a grid of tiny squares called pixels, each holding numbers for its colour. So a picture pattern is really a number pattern to the computer. A famous example: photos of chihuahua dogs and blueberry muffins look surprisingly alike (round shape, dark dots). An AI trained on many labelled examples learns subtle patterns — nose shape, ears, texture — that separate the two.",
+      "hi": "चित्र पैटर्न। रंगोली में एक ही पंखुड़ी का आकार केंद्र के चारों ओर दोहराया जाता है; शतरंज की बिसात में काले और सफ़ेद वर्ग बारी-बारी से आते हैं; फ़र्श की टाइलें पंक्तियों में दोहराई जाती हैं। कंप्यूटर चित्र को छोटे-छोटे वर्गों की जाली के रूप में रखता है जिन्हें pixel कहते हैं, और हर pixel में उसके रंग की संख्याएँ होती हैं। इसलिए कंप्यूटर के लिए चित्र पैटर्न वास्तव में संख्या पैटर्न है। एक प्रसिद्ध उदाहरण: chihuahua कुत्तों और blueberry मफ़िन की तस्वीरें आश्चर्यजनक रूप से मिलती-जुलती दिखती हैं (गोल आकार, काले बिंदु)। बहुत से लेबल वाले उदाहरणों पर प्रशिक्षित AI बारीक पैटर्न सीखता है — नाक का आकार, कान, बनावट — जो दोनों को अलग करते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the rule and the next term: (a) 5, 10, 20, 40, ? (b) 2, 5, 10, 17, 26, ? (c) A, C, E, G, ? (d) 100, 91, 82, 73, ?",
+       "hi": "नियम और अगला पद खोजिए: (a) 5, 10, 20, 40, ? (b) 2, 5, 10, 17, 26, ? (c) A, C, E, G, ? (d) 100, 91, 82, 73, ?"
+      },
+      "a": {
+       "en": "(a) Multiply by 2 each time: 80.\n(b) Differences are 3, 5, 7, 9 (odd numbers), so add 11: 37. (Also n×n + 1.)\n(c) Skip one letter each time: I.\n(d) Subtract 9 each time: 64.",
+       "hi": "(a) हर बार 2 से गुणा: 80।\n(b) अंतर 3, 5, 7, 9 (विषम संख्याएँ) हैं, इसलिए 11 जोड़ो: 37। (यह n×n + 1 भी है।)\n(c) हर बार एक अक्षर छोड़ो: I।\n(d) हर बार 9 घटाओ: 64।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Other examples of AI and patterns: weather scientists feed AI decades of data on ocean temperature, wind and pressure so it can recognise the pattern that comes before a cyclone or hurricane and give early warnings; Google Maps learns the daily pattern of traffic on each road; a phone keyboard learns which word you usually type next.",
+      "hi": "AI और पैटर्न के अन्य उदाहरण: मौसम वैज्ञानिक AI को समुद्र के तापमान, हवा और दबाव का दशकों का data देते हैं ताकि वह चक्रवात या तूफ़ान से पहले आने वाले पैटर्न को पहचानकर पहले से चेतावनी दे सके; Google Maps हर सड़क के रोज़ के ट्रैफ़िक का पैटर्न सीखता है; फ़ोन का कीबोर्ड सीखता है कि आप आम तौर पर अगला कौन-सा शब्द टाइप करते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Unplugged activity: be the pattern finder. Aim: experience pattern recognition. Need: paper, pencil, a friend. What to do: your friend secretly picks a rule (e.g. 'multiply by 3 and subtract 1') and tells you only the first four outputs for inputs 1, 2, 3, 4 (here 2, 5, 8, 11). You guess the rule and predict the output for 10. Swap roles. What do you observe and learn?",
+       "hi": "बिना कंप्यूटर गतिविधि: पैटर्न खोजक बनिए। उद्देश्य: पैटर्न पहचान का अनुभव। सामग्री: काग़ज़, पेंसिल, एक मित्र। क्या करें: मित्र चुपके से एक नियम चुनता है (जैसे '3 से गुणा करो और 1 घटाओ') और इनपुट 1, 2, 3, 4 के केवल पहले चार आउटपुट बताता है (यहाँ 2, 5, 8, 11)। आप नियम का अनुमान लगाकर 10 के लिए आउटपुट बताइए। फिर भूमिकाएँ बदलिए। आप क्या देखते और सीखते हैं?"
+      },
+      "a": {
+       "en": "Observation: outputs rise by 3 each time, so the rule involves ×3; 3×1 = 3 and the output is 2, so subtract 1. For 10: 3×10 − 1 = 29.\nLearning: with only one or two examples many rules fit; more examples make the guess reliable. AI also needs plenty of data to learn the right pattern.",
+       "hi": "अवलोकन: आउटपुट हर बार 3 बढ़ते हैं, इसलिए नियम में ×3 है; 3×1 = 3 और आउटपुट 2 है, इसलिए 1 घटाओ। 10 के लिए: 3×10 − 1 = 29।\nसीख: केवल एक-दो उदाहरणों से कई नियम बैठ जाते हैं; अधिक उदाहरण अनुमान को भरोसेमंद बनाते हैं। AI को भी सही पैटर्न सीखने के लिए बहुत data चाहिए।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.2 The four areas of maths used in AI",
+    "hi": "5.2 AI में प्रयुक्त गणित के चार क्षेत्र"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Different kinds of questions need different branches of maths. The table shows the four main branches that AI depends on, with the kind of question each answers. In Class 9 we study statistics and probability in detail; linear algebra and calculus are only introduced.",
+      "hi": "अलग-अलग प्रकार के प्रश्नों के लिए गणित की अलग-अलग शाखाएँ चाहिए। तालिका उन चार मुख्य शाखाओं को दिखाती है जिन पर AI निर्भर है, और हर एक किस प्रकार के प्रश्न का उत्तर देती है। कक्षा 9 में हम सांख्यिकी और प्रायिकता विस्तार से पढ़ते हैं; रैखिक बीजगणित और कलन का केवल परिचय दिया जाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Branch",
+        "Used in AI for",
+        "Sample question",
+        "Simple example"
+       ],
+       "hi": [
+        "शाखा",
+        "AI में उपयोग",
+        "नमूना प्रश्न",
+        "सरल उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Statistics",
+         "Exploring and summarising data",
+         "What is the middle value? Which value is most common?",
+         "Middle value of 11, 22, 33, 44, 55 is 33"
+        ],
+        [
+         "Linear algebra",
+         "Storing data as vectors and matrices (tables of numbers) and finding unknown values",
+         "How many plants are there in total? How many cars in a city?",
+         "A has 2, B has 3, C has 1, D has 7 plants: total 13"
+        ],
+        [
+         "Calculus",
+         "Training and improving models by measuring change and slope",
+         "Which line is more slanted? Which figure covers more area?",
+         "A road rising 3 m in 10 m is steeper than one rising 1 m in 10 m"
+        ],
+        [
+         "Probability",
+         "Predicting how likely an event is",
+         "What are the possible results of a coin toss? Will it rain tomorrow?",
+         "Heads and tails each have probability 1/2"
+        ]
+       ],
+       "hi": [
+        [
+         "सांख्यिकी (Statistics)",
+         "Data का अन्वेषण और सार",
+         "बीच का मान क्या है? कौन-सा मान सबसे अधिक आता है?",
+         "11, 22, 33, 44, 55 का बीच का मान 33 है"
+        ],
+        [
+         "रैखिक बीजगणित (Linear algebra)",
+         "Data को vectors और matrices (संख्याओं की तालिकाएँ) के रूप में रखना और अज्ञात मान खोजना",
+         "कुल कितने पौधे हैं? शहर में कितनी कारें हैं?",
+         "A के 2, B के 3, C का 1, D के 7 पौधे: कुल 13"
+        ],
+        [
+         "कलन (Calculus)",
+         "परिवर्तन और ढलान मापकर मॉडल को प्रशिक्षित और बेहतर करना",
+         "कौन-सी रेखा अधिक तिरछी है? कौन-सी आकृति अधिक क्षेत्र घेरती है?",
+         "10 m में 3 m चढ़ने वाली सड़क 10 m में 1 m चढ़ने वाली से अधिक खड़ी है"
+        ],
+        [
+         "प्रायिकता (Probability)",
+         "कोई घटना कितनी संभावित है, इसका अनुमान",
+         "सिक्का उछालने के संभव परिणाम क्या हैं? क्या कल बारिश होगी?",
+         "चित और पट दोनों की प्रायिकता 1/2 है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Linear algebra in a little more detail: a photo of 3 × 3 pixels in black and white can be written as a grid (matrix) of nine numbers, 0 for black and 1 for white. A list of numbers such as a student's [age 14, height 152, marks 86] is called a vector. AI models do millions of additions and multiplications on such grids. Calculus in a little more detail: when a model makes an error, calculus tells it in which direction and by how much to change its settings so the error becomes smaller, like walking downhill step by step to reach the lowest point of a valley.",
+      "hi": "रैखिक बीजगणित थोड़ा और विस्तार से: 3 × 3 pixels की काली-सफ़ेद फ़ोटो को नौ संख्याओं की जाली (matrix) के रूप में लिखा जा सकता है, काले के लिए 0 और सफ़ेद के लिए 1। विद्यार्थी के [आयु 14, ऊँचाई 152, अंक 86] जैसी संख्याओं की सूची को vector कहते हैं। AI मॉडल ऐसी जालियों पर लाखों जोड़ और गुणा करते हैं। कलन थोड़ा और विस्तार से: जब मॉडल कोई ग़लती करता है, तो कलन बताता है कि अपनी settings को किस दिशा में और कितना बदले ताकि ग़लती घटे, जैसे घाटी के सबसे निचले बिंदु तक पहुँचने के लिए क़दम-दर-क़दम ढलान से नीचे उतरना।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the four: Statistics (explore data), Linear algebra (organise data, find unknowns), Calculus (train and improve), Probability (predict).",
+      "hi": "चारों याद रखिए: सांख्यिकी (data का अन्वेषण), रैखिक बीजगणित (data व्यवस्थित करना, अज्ञात खोजना), कलन (प्रशिक्षण और सुधार), प्रायिकता (अनुमान)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.3 What is statistics?",
+    "hi": "5.3 सांख्यिकी क्या है?"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Statistics",
+       "hi": "सांख्यिकी (Statistics)"
+      },
+      "text": {
+       "en": "The branch of mathematics that deals with collecting, organising, exploring, analysing and interpreting data, and drawing conclusions from it.",
+       "hi": "गणित की वह शाखा जो data को इकट्ठा करने, व्यवस्थित करने, अन्वेषण, विश्लेषण और व्याख्या करने तथा उससे निष्कर्ष निकालने से संबंधित है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Collect data from different sources (surveys, sensors, records).",
+       "Explore and clean the data so that it is usable (remove errors and duplicates).",
+       "Analyse the data using tables, graphs and measures such as averages.",
+       "Draw conclusions and make decisions or predictions."
+      ],
+      "hi": [
+       "विभिन्न स्रोतों (सर्वे, sensors, रिकॉर्ड) से data इकट्ठा करना।",
+       "Data का अन्वेषण करके उसे साफ़ करना ताकि वह उपयोगी हो (ग़लतियाँ और दोहराव हटाना)।",
+       "तालिकाओं, ग्राफ़ और औसत जैसे मापों से data का विश्लेषण करना।",
+       "निष्कर्ष निकालना और निर्णय या अनुमान लेना।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Everyday questions statistics answers: How well is a sports team likely to perform this season? What is the reading level of students in a class? What do voters think about an issue? What is the average weight or height of people in a city? Statements you hear daily are statistics too, for example 'most teenagers check their phone soon after waking up' or 'many children do not get enough physical activity' — such statements come from surveys of large groups.",
+      "hi": "सांख्यिकी रोज़ के इन प्रश्नों का उत्तर देती है: इस सत्र में खेल टीम का प्रदर्शन कैसा रहने की संभावना है? कक्षा के विद्यार्थियों का पठन-स्तर क्या है? मतदाता किसी मुद्दे पर क्या सोचते हैं? किसी शहर के लोगों का औसत वज़न या ऊँचाई क्या है? रोज़ सुने जाने वाले कथन भी सांख्यिकी हैं, जैसे 'अधिकतर किशोर जागते ही फ़ोन देखते हैं' या 'बहुत से बच्चों को पर्याप्त शारीरिक गतिविधि नहीं मिलती' — ऐसे कथन बड़े समूहों के सर्वे से आते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Area",
+        "How statistics is used"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "सांख्यिकी का उपयोग कैसे होता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Disaster management",
+         "Past data on cyclones, floods and earthquakes helps predict risky areas and alert citizens early. Data on population, hospitals, roads and shelters in the affected area helps plan rescue and relief. Cyclone warnings from the India Meteorological Department (IMD) that lead to timely evacuation along the Odisha coast are a good example."
+        ],
+        [
+         "Sports",
+         "Teams study players' runs, strike rates and fitness to pick the playing XI and plan strategy. In March 2020 the Tokyo Olympics were postponed to 2021 after organisers and health experts studied the rising number of COVID-19 cases."
+        ],
+        [
+         "Disease prediction",
+         "Health departments use statistics to find which diseases are most common, where cases are rising (for example COVID-19 or dengue hotspots) and where more vaccination or hospital beds are needed."
+        ],
+        [
+         "Weather forecasting",
+         "Computers compare today's temperature, humidity, wind and pressure with records from past seasons to forecast rain, heatwaves or monsoon onset."
+        ]
+       ],
+       "hi": [
+        [
+         "आपदा प्रबंधन",
+         "चक्रवात, बाढ़ और भूकंप का पुराना data जोखिम वाले क्षेत्रों का अनुमान लगाने और नागरिकों को पहले से सचेत करने में मदद करता है। प्रभावित क्षेत्र की जनसंख्या, अस्पतालों, सड़कों और आश्रयों का data बचाव और राहत की योजना में मदद करता है। भारत मौसम विज्ञान विभाग (IMD) की चक्रवात चेतावनियाँ जिनसे ओडिशा तट पर समय पर लोगों को निकाला जाता है, इसका अच्छा उदाहरण हैं।"
+        ],
+        [
+         "खेल",
+         "टीमें खिलाड़ियों के रन, स्ट्राइक रेट और फ़िटनेस का अध्ययन करके प्लेइंग XI चुनती और रणनीति बनाती हैं। मार्च 2020 में आयोजकों और स्वास्थ्य विशेषज्ञों द्वारा COVID-19 के बढ़ते मामलों के अध्ययन के बाद टोक्यो ओलंपिक को 2021 तक स्थगित किया गया।"
+        ],
+        [
+         "रोग पूर्वानुमान",
+         "स्वास्थ्य विभाग सांख्यिकी से पता लगाते हैं कि कौन-से रोग सबसे आम हैं, मामले कहाँ बढ़ रहे हैं (जैसे COVID-19 या डेंगू के hotspots) और कहाँ अधिक टीकाकरण या अस्पताल बिस्तर चाहिए।"
+        ],
+        [
+         "मौसम पूर्वानुमान",
+         "कंप्यूटर आज के तापमान, नमी, हवा और दबाव की तुलना पिछले मौसमों के रिकॉर्ड से करके बारिश, लू या मानसून के आगमन का पूर्वानुमान लगाते हैं।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity: counting car colours. Aim: practise collecting and summarising data. Need: a notebook, 10 minutes near a safe roadside or school gate, with a teacher. What to do: make a tally of the colour of each car that passes. Suppose your tally gives Blue 25, Red 20, Yellow 37. Answer: (a) total cars (b) most spotted colour (c) the 'most common' value — which statistical measure is it?",
+       "hi": "गतिविधि: कारों के रंग गिनना। उद्देश्य: data इकट्ठा करने और सार निकालने का अभ्यास। सामग्री: नोटबुक, शिक्षक के साथ किसी सुरक्षित सड़क किनारे या स्कूल गेट के पास 10 मिनट। क्या करें: गुज़रने वाली हर कार के रंग का मिलान-चिह्न (tally) बनाइए। मान लीजिए गिनती है नीला 25, लाल 20, पीला 37। उत्तर दीजिए: (a) कुल कारें (b) सबसे अधिक दिखा रंग (c) 'सबसे आम' मान — यह कौन-सा सांख्यिकीय माप है?"
+      },
+      "a": {
+       "en": "Step 1: Tally marks are made in groups of five (four lines and a fifth line across) to count quickly.\nStep 2: Total = 25 + 20 + 37 = 82 cars.\nStep 3: Most spotted colour = yellow (37).\nStep 4: The most common value is called the mode; here the mode is yellow.\nLearning: a quick count turns a busy road into clear information.",
+       "hi": "चरण 1: तेज़ गिनती के लिए मिलान-चिह्न पाँच के समूह में बनते हैं (चार रेखाएँ और पाँचवीं उन्हें काटती हुई)।\nचरण 2: कुल = 25 + 20 + 37 = 82 कारें।\nचरण 3: सबसे अधिक दिखा रंग = पीला (37)।\nचरण 4: सबसे आम मान को बहुलक (mode) कहते हैं; यहाँ बहुलक पीला है।\nसीख: एक छोटी गिनती व्यस्त सड़क को स्पष्ट सूचना में बदल देती है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.4 Measures of central tendency: mean, median and mode",
+    "hi": "5.4 केंद्रीय प्रवृत्ति के माप: माध्य, माध्यिका और बहुलक"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "When we have many numbers, we often want one number that represents the whole group — a 'typical' or 'central' value. Such a number is called a measure of central tendency. The three most common ones are mean, median and mode. AI uses them all the time, for example to fill a missing value with the average, or to describe a dataset before training.",
+      "hi": "जब हमारे पास बहुत सी संख्याएँ होती हैं, तो हम अक्सर एक ऐसी संख्या चाहते हैं जो पूरे समूह का प्रतिनिधित्व करे — एक 'सामान्य' या 'केंद्रीय' मान। ऐसी संख्या को केंद्रीय प्रवृत्ति का माप कहते हैं। सबसे आम तीन हैं माध्य, माध्यिका और बहुलक। AI इनका हर समय उपयोग करता है, जैसे छूटे मान को औसत से भरना, या प्रशिक्षण से पहले dataset का वर्णन करना।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Mean (arithmetic average)",
+       "hi": "माध्य (Mean, समांतर औसत)"
+      },
+      "text": {
+       "en": "The sum of all values divided by the number of values.",
+       "hi": "सभी मानों का योग, मानों की संख्या से भाग देने पर।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Mean = (sum of all values) ÷ (number of values)",
+      "hi": "माध्य = (सभी मानों का योग) ÷ (मानों की संख्या)"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Median",
+       "hi": "माध्यिका (Median)"
+      },
+      "text": {
+       "en": "The middle value when the data is arranged in increasing (or decreasing) order. If there is an even number of values, the median is the mean of the two middle values.",
+       "hi": "Data को बढ़ते (या घटते) क्रम में लगाने पर बीच का मान। यदि मानों की संख्या सम हो, तो माध्यिका दोनों बीच के मानों का माध्य है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "For n values in order: if n is odd, median = value at position (n + 1) ÷ 2\nif n is even, median = mean of values at positions n ÷ 2 and (n ÷ 2) + 1",
+      "hi": "क्रम में लगे n मानों के लिए: यदि n विषम है, माध्यिका = (n + 1) ÷ 2 वें स्थान का मान\nयदि n सम है, माध्यिका = n ÷ 2 वें और (n ÷ 2) + 1 वें स्थान के मानों का माध्य"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Mode",
+       "hi": "बहुलक (Mode)"
+      },
+      "text": {
+       "en": "The value that occurs most often. Data may have one mode, more than one mode, or no mode (if every value occurs equally often). Mode is the only one of the three that also works for qualitative data, such as the most popular colour.",
+       "hi": "वह मान जो सबसे अधिक बार आता है। Data का एक बहुलक, एक से अधिक बहुलक, या कोई बहुलक नहीं हो सकता (यदि हर मान बराबर बार आए)। तीनों में केवल बहुलक ही गुणात्मक data, जैसे सबसे लोकप्रिय रंग, के लिए भी काम करता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Range",
+       "hi": "परिसर (Range)"
+      },
+      "text": {
+       "en": "Highest value minus lowest value. It shows how spread out the data is.",
+       "hi": "सबसे बड़ा मान घटा सबसे छोटा मान। यह दिखाता है कि data कितना फैला हुआ है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A batter's scores in 10 matches: 45, 12, 78, 45, 0, 33, 45, 90, 12, 60. Find the mean, median, mode and range.",
+       "hi": "एक बल्लेबाज़ के 10 मैचों के स्कोर: 45, 12, 78, 45, 0, 33, 45, 90, 12, 60। माध्य, माध्यिका, बहुलक और परिसर निकालिए।"
+      },
+      "a": {
+       "en": "Mean: sum = 45+12+78+45+0+33+45+90+12+60 = 420; 420 ÷ 10 = 42.\nMedian: arrange in order: 0, 12, 12, 33, 45, 45, 45, 60, 78, 90. n = 10 (even), so take the 5th and 6th values: (45 + 45) ÷ 2 = 45.\nMode: 45 occurs 3 times, more than any other, so mode = 45.\nRange: 90 − 0 = 90.",
+       "hi": "माध्य: योग = 45+12+78+45+0+33+45+90+12+60 = 420; 420 ÷ 10 = 42।\nमाध्यिका: क्रम में लगाइए: 0, 12, 12, 33, 45, 45, 45, 60, 78, 90। n = 10 (सम), इसलिए 5वाँ और 6वाँ मान लीजिए: (45 + 45) ÷ 2 = 45।\nबहुलक: 45 तीन बार आता है, किसी और से अधिक, इसलिए बहुलक = 45।\nपरिसर: 90 − 0 = 90।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "The monthly pocket money (₹) of 7 friends: 300, 250, 400, 350, 300, 5000, 300. Find the mean and median. Which better describes a typical friend, and why?",
+       "hi": "7 दोस्तों का मासिक जेब ख़र्च (₹): 300, 250, 400, 350, 300, 5000, 300। माध्य और माध्यिका निकालिए। कौन-सा एक सामान्य दोस्त का बेहतर वर्णन करता है, और क्यों?"
+      },
+      "a": {
+       "en": "Mean: sum = 6900; 6900 ÷ 7 ≈ ₹985.71.\nMedian: order: 250, 300, 300, 300, 350, 400, 5000. n = 7 (odd), position (7+1) ÷ 2 = 4th value = ₹300.\nThe median (₹300) is better: the single value ₹5000 is an outlier that pulls the mean far above what six of the seven friends get.\nLesson: the mean is affected by extreme values; the median is not.",
+       "hi": "माध्य: योग = 6900; 6900 ÷ 7 ≈ ₹985.71।\nमाध्यिका: क्रम: 250, 300, 300, 300, 350, 400, 5000। n = 7 (विषम), स्थान (7+1) ÷ 2 = चौथा मान = ₹300।\nमाध्यिका (₹300) बेहतर है: एक मान ₹5000 outlier है जो माध्य को सात में से छह दोस्तों की राशि से बहुत ऊपर खींच देता है।\nसीख: माध्य चरम मानों से प्रभावित होता है; माध्यिका नहीं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Measure",
+        "Best used when",
+        "Weakness"
+       ],
+       "hi": [
+        "माप",
+        "कब सबसे उपयुक्त",
+        "कमज़ोरी"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Mean",
+         "Values are fairly even, no outliers (average marks of a class)",
+         "Pulled by extreme values"
+        ],
+        [
+         "Median",
+         "Data has outliers or is skewed (typical house price, typical income)",
+         "Ignores the exact size of other values"
+        ],
+        [
+         "Mode",
+         "Finding the most popular choice, also for categories (most sold shoe size, favourite colour)",
+         "May not exist or may have several values"
+        ]
+       ],
+       "hi": [
+        [
+         "माध्य",
+         "मान लगभग समान हों, outliers न हों (कक्षा के औसत अंक)",
+         "चरम मानों से खिंच जाता है"
+        ],
+        [
+         "माध्यिका",
+         "Data में outliers हों या वह तिरछा हो (सामान्य मकान की क़ीमत, सामान्य आय)",
+         "बाकी मानों के सटीक आकार को अनदेखा करता है"
+        ],
+        [
+         "बहुलक",
+         "सबसे लोकप्रिय विकल्प खोजना, श्रेणियों के लिए भी (सबसे अधिक बिकने वाला जूते का साइज़, पसंदीदा रंग)",
+         "हो सकता है न हो या कई मान हों"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Spread of data (a short look ahead). Two classes may both have a mean of 60 marks, but in one class everyone scored between 55 and 65 while in the other scores ran from 10 to 100. The range shows this difference. Statisticians also use the standard deviation, which measures how far values typically lie from the mean; a small standard deviation means the data is tightly bunched. You will meet it again in higher classes.",
+      "hi": "Data का फैलाव (आगे की एक झलक)। दो कक्षाओं का माध्य 60 अंक हो सकता है, पर एक कक्षा में सबके अंक 55 से 65 के बीच हों और दूसरी में 10 से 100 तक। परिसर यह अंतर दिखाता है। सांख्यिकीविद मानक विचलन (standard deviation) का भी उपयोग करते हैं, जो मापता है कि मान आम तौर पर माध्य से कितनी दूर हैं; छोटा मानक विचलन बताता है कि data पास-पास है। आप इसे ऊँची कक्षाओं में फिर पढ़ेंगे।"
+     }
+    },
+    {
+     "p": {
+      "en": "Python can calculate these for you. The program below uses Python's built-in statistics module for the batter's scores, and the random module to toss a virtual coin many times (we will use the coin result in section 5.8).",
+      "hi": "Python आपके लिए ये गणनाएँ कर सकता है। नीचे का प्रोग्राम बल्लेबाज़ के स्कोर के लिए Python के built-in statistics module का, और आभासी सिक्का कई बार उछालने के लिए random module का उपयोग करता है (सिक्के का परिणाम हम खंड 5.8 में उपयोग करेंगे)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import statistics as st\nimport random\n\nruns = [45, 12, 78, 45, 0, 33, 45, 90, 12, 60]\nprint(\"Mean  :\", st.mean(runs))\nprint(\"Median:\", st.median(runs))\nprint(\"Mode  :\", st.mode(runs))\nprint(\"Range :\", max(runs) - min(runs))\n\nrandom.seed(7)\nfor n in [10, 100, 10000]:\n    heads = sum(random.choice(\"HT\") == \"H\" for _ in range(n))\n    print(n, \"tosses -> heads share =\", round(heads / n, 3))",
+      "hi": "import statistics as st\nimport random\n\nruns = [45, 12, 78, 45, 0, 33, 45, 90, 12, 60]\nprint(\"Mean  :\", st.mean(runs))\nprint(\"Median:\", st.median(runs))\nprint(\"Mode  :\", st.mode(runs))\nprint(\"Range :\", max(runs) - min(runs))\n\nrandom.seed(7)\nfor n in [10, 100, 10000]:\n    heads = sum(random.choice(\"HT\") == \"H\" for _ in range(n))\n    print(n, \"tosses -> heads share =\", round(heads / n, 3))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nMean  : 42\nMedian: 45.0\nMode  : 45\nRange : 90\n10 tosses -> heads share = 0.7\n100 tosses -> heads share = 0.49\n10000 tosses -> heads share = 0.505",
+      "hi": "आउटपुट:\nMean  : 42\nMedian: 45.0\nMode  : 45\nRange : 90\n10 tosses -> heads share = 0.7\n100 tosses -> heads share = 0.49\n10000 tosses -> heads share = 0.505"
+     }
+    },
+    {
+     "note": {
+      "en": "The program's answers (mean 42, median 45, mode 45, range 90) match our hand calculation. random.seed(7) fixes the random numbers so the same output appears every time the program is run.",
+      "hi": "प्रोग्राम के उत्तर (माध्य 42, माध्यिका 45, बहुलक 45, परिसर 90) हमारी हाथ की गणना से मेल खाते हैं। random.seed(7) यादृच्छिक संख्याओं को स्थिर कर देता है ताकि प्रोग्राम हर बार चलाने पर वही आउटपुट आए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.5 Reading statistics in tables and graphs",
+    "hi": "5.5 तालिकाओं और ग्राफ़ में सांख्यिकी पढ़ना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Statistics is usually shared as a table or graph (you met textual, tabular and graphical presentation in the Data Literacy chapter). A frequency table lists each value with the number of times it occurs (its frequency). From a frequency table we can read the mode directly (the value with the highest frequency) and draw a bar graph whose tallest bar is the mode.",
+      "hi": "सांख्यिकी आम तौर पर तालिका या ग्राफ़ के रूप में साझा की जाती है (पाठ्य, सारणीबद्ध और ग्राफ़ीय प्रस्तुति आप डेटा साक्षरता अध्याय में पढ़ चुके हैं)। बारंबारता तालिका (frequency table) हर मान और वह कितनी बार आता है (उसकी बारंबारता) दिखाती है। बारंबारता तालिका से हम बहुलक सीधे पढ़ सकते हैं (सबसे अधिक बारंबारता वाला मान) और बार ग्राफ़ बना सकते हैं जिसकी सबसे ऊँची पट्टी बहुलक है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Hours of sleep last night",
+        "Tally",
+        "Number of students (frequency)"
+       ],
+       "hi": [
+        "पिछली रात सोने के घंटे",
+        "मिलान-चिह्न",
+        "विद्यार्थियों की संख्या (बारंबारता)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "6",
+         "||||",
+         "4"
+        ],
+        [
+         "7",
+         "|||| |||",
+         "8"
+        ],
+        [
+         "8",
+         "|||| |||| ||",
+         "12"
+        ],
+        [
+         "9",
+         "||||",
+         "4"
+        ],
+        [
+         "Total",
+         "",
+         "28"
+        ]
+       ],
+       "hi": [
+        [
+         "6",
+         "||||",
+         "4"
+        ],
+        [
+         "7",
+         "|||| |||",
+         "8"
+        ],
+        [
+         "8",
+         "|||| |||| ||",
+         "12"
+        ],
+        [
+         "9",
+         "||||",
+         "4"
+        ],
+        [
+         "कुल",
+         "",
+         "28"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using the sleep table: (a) What is the mode? (b) Find the mean hours of sleep. (c) Find the median. (d) Describe the bar graph.",
+       "hi": "नींद की तालिका से: (a) बहुलक क्या है? (b) सोने के औसत घंटे निकालिए। (c) माध्यिका निकालिए। (d) बार ग्राफ़ का वर्णन कीजिए।"
+      },
+      "a": {
+       "en": "(a) 8 hours has the highest frequency (12), so mode = 8 hours.\n(b) Sum = 6×4 + 7×8 + 8×12 + 9×4 = 24 + 56 + 96 + 36 = 212; mean = 212 ÷ 28 ≈ 7.57 hours.\n(c) n = 28 (even): the 14th and 15th values. The first 4 are 6 h, the next 8 (positions 5–12) are 7 h, positions 13–24 are 8 h. So both are 8 h; median = 8 hours.\n(d) Hours 6, 7, 8, 9 on the horizontal axis; number of students on the vertical axis; bars of height 4, 8, 12, 4, the tallest at 8 hours.",
+       "hi": "(a) 8 घंटे की बारंबारता सबसे अधिक (12) है, इसलिए बहुलक = 8 घंटे।\n(b) योग = 6×4 + 7×8 + 8×12 + 9×4 = 24 + 56 + 96 + 36 = 212; माध्य = 212 ÷ 28 ≈ 7.57 घंटे।\n(c) n = 28 (सम): 14वाँ और 15वाँ मान। पहले 4 मान 6 घंटे, अगले 8 (स्थान 5–12) 7 घंटे, स्थान 13–24 पर 8 घंटे। इसलिए दोनों 8 घंटे; माध्यिका = 8 घंटे।\n(d) क्षैतिज अक्ष पर घंटे 6, 7, 8, 9; ऊर्ध्वाधर अक्ष पर विद्यार्थियों की संख्या; पट्टियों की ऊँचाई 4, 8, 12, 4, सबसे ऊँची 8 घंटे पर।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Be a smart reader of statistics: check the sample size (how many people?), the source (who collected it?), the axis of a graph (does it start at zero?) and whether a 'percentage' is of the same total.",
+      "hi": "आँकड़ों के समझदार पाठक बनिए: नमूने का आकार (कितने लोग?), स्रोत (किसने इकट्ठा किया?), ग्राफ़ का अक्ष (क्या शून्य से शुरू होता है?) और क्या 'प्रतिशत' एक ही कुल का है — यह जाँचिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.6 What is probability?",
+    "hi": "5.6 प्रायिकता क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Many things in life are uncertain. Will it rain on sports day? Will India win the toss? Probability gives a number to this uncertainty. Toss a coin: it can land in only two ways, heads (H) or tails (T). If the coin is fair, both are equally likely, so we say the probability of heads is 1/2 and the probability of tails is 1/2. This does not tell us what the next toss will be; it tells us that over many tosses about half will be heads.",
+      "hi": "जीवन में बहुत सी चीज़ें अनिश्चित हैं। क्या खेल दिवस पर बारिश होगी? क्या भारत टॉस जीतेगा? प्रायिकता इस अनिश्चितता को एक संख्या देती है। एक सिक्का उछालिए: वह केवल दो तरह गिर सकता है, चित (Heads, H) या पट (Tails, T)। यदि सिक्का निष्पक्ष है, तो दोनों समान रूप से संभावित हैं, इसलिए हम कहते हैं कि चित की प्रायिकता 1/2 और पट की प्रायिकता 1/2 है। यह नहीं बताता कि अगला टॉस क्या होगा; यह बताता है कि बहुत से टॉसों में लगभग आधे चित होंगे।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Probability",
+       "hi": "प्रायिकता (Probability)"
+      },
+      "text": {
+       "en": "A number from 0 to 1 that measures how likely an event is to happen. It can also be written as a percentage from 0% to 100%.",
+       "hi": "0 से 1 तक की एक संख्या जो मापती है कि कोई घटना होने की कितनी संभावना है। इसे 0% से 100% तक प्रतिशत में भी लिखा जा सकता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Term",
+        "Meaning",
+        "Example (rolling one die)"
+       ],
+       "hi": [
+        "पद",
+        "अर्थ",
+        "उदाहरण (एक पासा फेंकना)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Experiment (trial)",
+         "An action whose result is uncertain",
+         "Rolling a six-faced die once"
+        ],
+        [
+         "Outcome",
+         "One possible result",
+         "Getting a 4"
+        ],
+        [
+         "Sample space",
+         "The set of all possible outcomes",
+         "{1, 2, 3, 4, 5, 6}"
+        ],
+        [
+         "Event",
+         "One or more outcomes we are interested in",
+         "'Getting an even number' = {2, 4, 6}"
+        ],
+        [
+         "Favourable outcomes",
+         "Outcomes that make the event happen",
+         "2, 4 and 6 (three outcomes)"
+        ],
+        [
+         "Equally likely outcomes",
+         "Outcomes that have the same chance",
+         "Each face of a fair die"
+        ]
+       ],
+       "hi": [
+        [
+         "प्रयोग (Experiment)",
+         "ऐसा कार्य जिसका परिणाम अनिश्चित हो",
+         "छह फलकों वाला पासा एक बार फेंकना"
+        ],
+        [
+         "परिणाम (Outcome)",
+         "एक संभव नतीजा",
+         "4 आना"
+        ],
+        [
+         "प्रतिदर्श समष्टि (Sample space)",
+         "सभी संभव परिणामों का समुच्चय",
+         "{1, 2, 3, 4, 5, 6}"
+        ],
+        [
+         "घटना (Event)",
+         "एक या अधिक परिणाम जिनमें हमारी रुचि है",
+         "'सम संख्या आना' = {2, 4, 6}"
+        ],
+        [
+         "अनुकूल परिणाम (Favourable outcomes)",
+         "वे परिणाम जिनसे घटना घटती है",
+         "2, 4 और 6 (तीन परिणाम)"
+        ],
+        [
+         "समसंभावित परिणाम",
+         "जिन परिणामों की संभावना बराबर हो",
+         "निष्पक्ष पासे का हर फलक"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "P(E) = Number of favourable outcomes ÷ Total number of possible outcomes\n(valid when all outcomes are equally likely)\n0 ≤ P(E) ≤ 1",
+      "hi": "P(E) = अनुकूल परिणामों की संख्या ÷ कुल संभव परिणामों की संख्या\n(जब सभी परिणाम समसंभावित हों)\n0 ≤ P(E) ≤ 1"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A fair die is rolled once. Find the probability of getting (a) a 5 (b) an even number (c) a number less than 5 (d) a number greater than 6 (e) a number from 1 to 6.",
+       "hi": "एक निष्पक्ष पासा एक बार फेंका जाता है। प्रायिकता निकालिए: (a) 5 आना (b) सम संख्या आना (c) 5 से कम संख्या आना (d) 6 से बड़ी संख्या आना (e) 1 से 6 तक की कोई संख्या आना।"
+      },
+      "a": {
+       "en": "Total outcomes = 6.\n(a) Favourable {5}: P = 1/6.\n(b) Favourable {2, 4, 6}: P = 3/6 = 1/2.\n(c) Favourable {1, 2, 3, 4}: P = 4/6 = 2/3.\n(d) No outcome is greater than 6: P = 0/6 = 0 (impossible).\n(e) All six outcomes: P = 6/6 = 1 (certain).",
+       "hi": "कुल परिणाम = 6।\n(a) अनुकूल {5}: P = 1/6।\n(b) अनुकूल {2, 4, 6}: P = 3/6 = 1/2।\n(c) अनुकूल {1, 2, 3, 4}: P = 4/6 = 2/3।\n(d) कोई परिणाम 6 से बड़ा नहीं: P = 0/6 = 0 (असंभव)।\n(e) सभी छह परिणाम: P = 6/6 = 1 (निश्चित)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A bag has 5 red, 3 green and 2 blue marbles. One marble is picked without looking. Find P(red), P(green), P(blue), P(not red) and P(yellow).",
+       "hi": "एक थैले में 5 लाल, 3 हरे और 2 नीले कंचे हैं। बिना देखे एक कंचा निकाला जाता है। P(लाल), P(हरा), P(नीला), P(लाल नहीं) और P(पीला) निकालिए।"
+      },
+      "a": {
+       "en": "Total = 5 + 3 + 2 = 10.\nP(red) = 5/10 = 1/2; P(green) = 3/10; P(blue) = 2/10 = 1/5.\nCheck: 5/10 + 3/10 + 2/10 = 1.\nP(not red) = 1 − 1/2 = 1/2 (green or blue: 5 marbles).\nP(yellow) = 0/10 = 0, because there is no yellow marble.",
+       "hi": "कुल = 5 + 3 + 2 = 10।\nP(लाल) = 5/10 = 1/2; P(हरा) = 3/10; P(नीला) = 2/10 = 1/5।\nजाँच: 5/10 + 3/10 + 2/10 = 1।\nP(लाल नहीं) = 1 − 1/2 = 1/2 (हरा या नीला: 5 कंचे)।\nP(पीला) = 0/10 = 0, क्योंकि कोई पीला कंचा नहीं है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.7 The probability scale and types of events",
+    "hi": "5.7 प्रायिकता का पैमाना और घटनाओं के प्रकार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Picture a horizontal line marked 0 at the left end, 1/2 in the middle and 1 at the right end. Every event sits somewhere on this line. Near 0 means it almost never happens; near 1 means it almost always happens; at 1/2 it is an even (50–50) chance.",
+      "hi": "एक क्षैतिज रेखा की कल्पना कीजिए जिसके बाएँ सिरे पर 0, बीच में 1/2 और दाएँ सिरे पर 1 लिखा है। हर घटना इस रेखा पर कहीं न कहीं होती है। 0 के पास का अर्थ है वह लगभग कभी नहीं होती; 1 के पास का अर्थ है वह लगभग हमेशा होती है; 1/2 पर बराबर (50–50) संभावना है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type of event",
+        "Probability",
+        "Meaning",
+        "Example"
+       ],
+       "hi": [
+        "घटना का प्रकार",
+        "प्रायिकता",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Impossible",
+         "0",
+         "Can never happen",
+         "Rolling a 9 on a normal die; picking a red ball from a bag of only blue balls"
+        ],
+        [
+         "Unlikely",
+         "Between 0 and 1/2",
+         "Less chance than not",
+         "Getting 10 heads in a row; rolling a 6 on a die (1/6)"
+        ],
+        [
+         "Equally likely (even chance)",
+         "1/2",
+         "Same chance of happening or not",
+         "Getting an even or an odd number on a die; heads on a fair coin"
+        ],
+        [
+         "Likely",
+         "Between 1/2 and 1",
+         "More chance than not",
+         "Rolling a number less than 5 (4/6); a hot day in Rajasthan in May"
+        ],
+        [
+         "Certain",
+         "1",
+         "Will surely happen",
+         "Picking a red ball from a bag of only red balls; the sun rising tomorrow"
+        ]
+       ],
+       "hi": [
+        [
+         "असंभव",
+         "0",
+         "कभी नहीं हो सकती",
+         "सामान्य पासे पर 9 आना; केवल नीली गेंदों वाले थैले से लाल गेंद निकालना"
+        ],
+        [
+         "असंभावित (कम संभावना)",
+         "0 और 1/2 के बीच",
+         "न होने की संभावना अधिक",
+         "लगातार 10 बार चित आना; पासे पर 6 आना (1/6)"
+        ],
+        [
+         "समसंभावित (बराबर संभावना)",
+         "1/2",
+         "होने और न होने की बराबर संभावना",
+         "पासे पर सम या विषम संख्या आना; निष्पक्ष सिक्के पर चित"
+        ],
+        [
+         "संभावित (अधिक संभावना)",
+         "1/2 और 1 के बीच",
+         "होने की संभावना अधिक",
+         "5 से कम संख्या आना (4/6); मई में राजस्थान में गर्म दिन"
+        ],
+        [
+         "निश्चित",
+         "1",
+         "अवश्य होगी",
+         "केवल लाल गेंदों वाले थैले से लाल गेंद निकालना; कल सूर्य का उगना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "'Equal probability' can also mean two different events have the same chance, e.g. on a die, P(even) = P(odd) = 1/2. 'Likely' and 'unlikely' are often used to compare two events: one event is more likely than another if its probability is higher.",
+      "hi": "'समान प्रायिकता' का अर्थ यह भी हो सकता है कि दो अलग घटनाओं की संभावना बराबर है, जैसे पासे पर P(सम) = P(विषम) = 1/2। 'संभावित' और 'असंभावित' का उपयोग अक्सर दो घटनाओं की तुलना में होता है: जिस घटना की प्रायिकता अधिक है वह दूसरी से अधिक संभावित है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity: the star bag. A bag has 7 dotted stars and 3 striped stars (and nothing else). Fill in with likely, unlikely, impossible, certain or equal probability: (a) picking a dotted star is ____ (b) picking a striped star is ____ (c) picking a plain star with no pattern is ____ (d) picking a star is ____ (e) If 4 dotted stars are removed, picking dotted or striped has ____.",
+       "hi": "गतिविधि: तारों का थैला। एक थैले में 7 बिंदीदार तारे और 3 धारीदार तारे हैं (और कुछ नहीं)। संभावित, असंभावित, असंभव, निश्चित या समान प्रायिकता से भरिए: (a) बिंदीदार तारा निकालना ____ है (b) धारीदार तारा निकालना ____ है (c) बिना पैटर्न वाला सादा तारा निकालना ____ है (d) कोई तारा निकालना ____ है (e) यदि 4 बिंदीदार तारे निकाल दिए जाएँ, तो बिंदीदार या धारीदार निकालने की ____ है।"
+      },
+      "a": {
+       "en": "(a) Likely: P = 7/10.\n(b) Unlikely: P = 3/10.\n(c) Impossible: P = 0.\n(d) Certain: P = 10/10 = 1.\n(e) Now 3 dotted and 3 striped, so equal probability: each 3/6 = 1/2.",
+       "hi": "(a) संभावित: P = 7/10।\n(b) असंभावित: P = 3/10।\n(c) असंभव: P = 0।\n(d) निश्चित: P = 10/10 = 1।\n(e) अब 3 बिंदीदार और 3 धारीदार, इसलिए समान प्रायिकता: हर एक 3/6 = 1/2।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Scenario: Tanvi is invited to a birthday party on Sunday. Place each on the scale (impossible, unlikely, equally likely, likely, certain): (a) The party is on Sunday, and she has no other plan, so she goes. (b) She has a board exam on Monday morning and her parents prefer she study; she might still go for an hour. (c) Her best friend is the host and they live next door. (d) The party is on Sunday but she is asked to attend on Saturday instead of Sunday at the same venue (it does not exist on Saturday).",
+       "hi": "परिदृश्य: तन्वी को रविवार की जन्मदिन पार्टी में बुलाया गया है। हर एक को पैमाने पर रखिए (असंभव, असंभावित, समसंभावित, संभावित, निश्चित): (a) पार्टी रविवार को है, उसका कोई और कार्यक्रम नहीं है, इसलिए वह जाती है। (b) सोमवार सुबह उसकी बोर्ड परीक्षा है और माता-पिता चाहते हैं कि वह पढ़े; फिर भी वह एक घंटे के लिए जा सकती है। (c) मेज़बान उसकी सबसे अच्छी दोस्त है और वे पड़ोस में रहते हैं। (d) पार्टी रविवार को है पर उसे शनिवार को उसी जगह जाने को कहा जाता है (शनिवार को कोई पार्टी नहीं है)।"
+      },
+      "a": {
+       "en": "These are judgement-based answers; reasons matter more than exact numbers.\n(a) Likely to certain — nothing stops her.\n(b) Unlikely, or about equally likely if the party is short — there is a strong reason against.\n(c) Likely — closeness and distance both favour going.\n(d) Impossible — there is no party on Saturday.\nLearning: in real life we estimate probabilities from evidence; AI does the same with data.",
+       "hi": "ये विवेक-आधारित उत्तर हैं; सटीक संख्या से अधिक कारण महत्वपूर्ण हैं।\n(a) संभावित से निश्चित — उसे कोई नहीं रोकता।\n(b) असंभावित, या पार्टी छोटी हो तो लगभग समसंभावित — न जाने का मज़बूत कारण है।\n(c) संभावित — दोस्ती और दूरी दोनों जाने के पक्ष में हैं।\n(d) असंभव — शनिवार को कोई पार्टी नहीं है।\nसीख: वास्तविक जीवन में हम प्रमाणों से प्रायिकता का अनुमान लगाते हैं; AI यही data से करता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.8 Complement, and theoretical vs experimental probability",
+    "hi": "5.8 पूरक, और सैद्धांतिक बनाम प्रायोगिक प्रायिकता"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "An event either happens or does not happen, so the two probabilities always add up to 1. The event 'not E' is called the complement of E. If the chance of rain today is 0.7 (70%), the chance of no rain is 1 − 0.7 = 0.3 (30%).",
+      "hi": "कोई घटना या तो घटती है या नहीं घटती, इसलिए दोनों प्रायिकताओं का योग हमेशा 1 होता है। घटना 'E नहीं' को E का पूरक (complement) कहते हैं। यदि आज बारिश की संभावना 0.7 (70%) है, तो बारिश न होने की संभावना 1 − 0.7 = 0.3 (30%) है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "P(not E) = 1 − P(E)",
+      "hi": "P(E नहीं) = 1 − P(E)"
+     }
+    },
+    {
+     "p": {
+      "en": "Theoretical probability is worked out by reasoning, using the formula (a fair coin: 1/2). Experimental (empirical) probability is found by actually doing the experiment many times: P(E) = number of times E happened ÷ total number of trials. With few trials the two can differ a lot; with many trials the experimental value gets close to the theoretical value. This idea is called the law of large numbers. In the Python output of section 5.4, 10 virtual tosses gave heads 0.7 of the time, 100 tosses gave 0.49, and 10,000 tosses gave 0.505 — closer and closer to 0.5.",
+      "hi": "सैद्धांतिक प्रायिकता तर्क से, सूत्र का उपयोग करके निकाली जाती है (निष्पक्ष सिक्का: 1/2)। प्रायोगिक (empirical) प्रायिकता प्रयोग को सचमुच कई बार करके निकाली जाती है: P(E) = E जितनी बार हुई ÷ कुल प्रयासों की संख्या। कम प्रयासों में दोनों में बहुत अंतर हो सकता है; बहुत प्रयासों में प्रायोगिक मान सैद्धांतिक मान के पास आ जाता है। इस विचार को बड़ी संख्याओं का नियम (law of large numbers) कहते हैं। खंड 5.4 के Python आउटपुट में 10 आभासी टॉसों में चित का हिस्सा 0.7, 100 टॉसों में 0.49, और 10,000 टॉसों में 0.505 आया — 0.5 के पास, और पास।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Experimental probability = (number of times the event occurred) ÷ (total number of trials)",
+      "hi": "प्रायोगिक प्रायिकता = (घटना जितनी बार हुई) ÷ (कुल प्रयासों की संख्या)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Hands-on activity: toss a coin. Aim: compare experimental and theoretical probability. Need: one coin, a notebook; work in pairs. What to do: toss 20 times and tally heads and tails. Then combine the results of the whole class (say 20 pairs = 400 tosses). Suppose your pair got 13 heads in 20 tosses and the class got 206 heads in 400 tosses. Find both experimental probabilities and compare with the theoretical value.",
+       "hi": "हाथों से गतिविधि: सिक्का उछालिए। उद्देश्य: प्रायोगिक और सैद्धांतिक प्रायिकता की तुलना। सामग्री: एक सिक्का, नोटबुक; जोड़ियों में काम करें। क्या करें: 20 बार उछालिए और चित-पट का मिलान-चिह्न बनाइए। फिर पूरी कक्षा के परिणाम जोड़िए (मान लीजिए 20 जोड़ियाँ = 400 टॉस)। मान लीजिए आपकी जोड़ी को 20 टॉस में 13 चित और कक्षा को 400 टॉस में 206 चित मिले। दोनों प्रायोगिक प्रायिकताएँ निकालकर सैद्धांतिक मान से तुलना कीजिए।"
+      },
+      "a": {
+       "en": "Pair: 13 ÷ 20 = 0.65.\nClass: 206 ÷ 400 = 0.515.\nTheoretical: 0.5.\nObservation: the class result (many trials) is much closer to 0.5 than one pair's result.\nLearning: probability describes the long run, not a single toss. AI models also become more reliable when trained on more data.",
+       "hi": "जोड़ी: 13 ÷ 20 = 0.65।\nकक्षा: 206 ÷ 400 = 0.515।\nसैद्धांतिक: 0.5।\nअवलोकन: कक्षा का परिणाम (बहुत प्रयास) एक जोड़ी के परिणाम से 0.5 के बहुत अधिक पास है।\nसीख: प्रायिकता लंबे समय का वर्णन करती है, एक टॉस का नहीं। AI मॉडल भी अधिक data पर प्रशिक्षित होकर अधिक भरोसेमंद बनते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Python can list all outcomes and count the favourable ones exactly. The Fraction type keeps answers as fractions.",
+      "hi": "Python सभी परिणामों की सूची बनाकर अनुकूल परिणाम ठीक-ठीक गिन सकता है। Fraction प्रकार उत्तरों को भिन्न के रूप में रखता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from fractions import Fraction\n\ndie = [1, 2, 3, 4, 5, 6]\neven = [x for x in die if x % 2 == 0]\nless_than_5 = [x for x in die if x < 5]\n\nprint(\"P(even)      =\", Fraction(len(even), len(die)))\nprint(\"P(less than 5) =\", Fraction(len(less_than_5), len(die)))\nprint(\"P(9)         =\", Fraction(0, len(die)))\nprint(\"P(not 6)     =\", 1 - Fraction(1, 6))",
+      "hi": "from fractions import Fraction\n\ndie = [1, 2, 3, 4, 5, 6]\neven = [x for x in die if x % 2 == 0]\nless_than_5 = [x for x in die if x < 5]\n\nprint(\"P(even)      =\", Fraction(len(even), len(die)))\nprint(\"P(less than 5) =\", Fraction(len(less_than_5), len(die)))\nprint(\"P(9)         =\", Fraction(0, len(die)))\nprint(\"P(not 6)     =\", 1 - Fraction(1, 6))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nP(even)      = 1/2\nP(less than 5) = 2/3\nP(9)         = 0\nP(not 6)     = 5/6",
+      "hi": "आउटपुट:\nP(even)      = 1/2\nP(less than 5) = 2/3\nP(9)         = 0\nP(not 6)     = 5/6"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.9 Probability in everyday life and in AI",
+    "hi": "5.9 रोज़मर्रा के जीवन और AI में प्रायिकता"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Area",
+        "How probability is used"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "प्रायिकता का उपयोग कैसे होता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Sports (cricket)",
+         "A batter's average = total runs ÷ number of times out. If a batter scored 200 runs and was out 5 times, the average is 200 ÷ 5 = 40. Coaches use such figures to estimate what the batter is likely to score, but an average of 40 does not guarantee 40 runs in the next innings. Win-probability graphs on cricket apps update after every ball."
+        ],
+        [
+         "Weather forecasting",
+         "A forecast of '70% chance of rain between 4 p.m. and 6 p.m.' means that, in past situations with similar conditions, it rained about 7 times out of 10. It is a medium-to-high chance, so carrying an umbrella is wise. A 10% chance means rain is unlikely but not impossible."
+        ],
+        [
+         "Traffic estimation",
+         "Navigation apps estimate the chance of heavy traffic on a road from the time of day, day of the week, weather and live data from phones. If there is a 90% chance of a jam from 6 p.m. to 7:30 p.m., a person may leave earlier or take another route."
+        ],
+        [
+         "Fraud alerts (UPI, cards)",
+         "A bank's AI estimates the probability that a transaction is fraud; if it is high (an unusual amount, time and place), it blocks the payment or asks for confirmation."
+        ],
+        [
+         "Spam filters",
+         "An email or SMS filter estimates the probability that a message is spam from words like 'lottery', 'urgent' and 'click here'."
+        ],
+        [
+         "AI predictions",
+         "Image classifiers give a confidence for each label, such as 'dog: 0.92, muffin: 0.08'. Chatbots choose the next word by its probability. In Google Teachable Machine the bars under the webcam preview show the model's confidence for each class."
+        ]
+       ],
+       "hi": [
+        [
+         "खेल (क्रिकेट)",
+         "बल्लेबाज़ का औसत = कुल रन ÷ कितनी बार आउट हुआ। यदि किसी बल्लेबाज़ ने 200 रन बनाए और 5 बार आउट हुआ, तो औसत 200 ÷ 5 = 40 है। कोच ऐसे आँकड़ों से अनुमान लगाते हैं कि बल्लेबाज़ कितने रन बना सकता है, पर 40 का औसत अगली पारी में 40 रन की गारंटी नहीं है। क्रिकेट ऐप पर जीत-प्रायिकता ग्राफ़ हर गेंद के बाद बदलता है।"
+        ],
+        [
+         "मौसम पूर्वानुमान",
+         "'शाम 4 से 6 बजे के बीच 70% बारिश की संभावना' का अर्थ है कि मिलती-जुलती परिस्थितियों में पहले लगभग 10 में से 7 बार बारिश हुई। यह मध्यम से अधिक संभावना है, इसलिए छाता ले जाना समझदारी है। 10% संभावना का अर्थ है बारिश असंभावित है पर असंभव नहीं।"
+        ],
+        [
+         "ट्रैफ़िक अनुमान",
+         "नेविगेशन ऐप दिन के समय, सप्ताह के दिन, मौसम और फ़ोनों से मिले लाइव data से किसी सड़क पर भारी ट्रैफ़िक की संभावना का अनुमान लगाते हैं। यदि शाम 6 से 7:30 बजे तक जाम की 90% संभावना है, तो व्यक्ति पहले निकल सकता है या दूसरा रास्ता ले सकता है।"
+        ],
+        [
+         "धोखाधड़ी अलर्ट (UPI, कार्ड)",
+         "बैंक का AI अनुमान लगाता है कि किसी लेन-देन के धोखाधड़ी होने की कितनी प्रायिकता है; यदि वह अधिक हो (असामान्य राशि, समय और स्थान), तो भुगतान रोकता है या पुष्टि माँगता है।"
+        ],
+        [
+         "Spam filter",
+         "ईमेल या SMS filter 'lottery', 'urgent' और 'click here' जैसे शब्दों से अनुमान लगाता है कि संदेश के spam होने की कितनी प्रायिकता है।"
+        ],
+        [
+         "AI अनुमान",
+         "चित्र वर्गीकरण मॉडल हर लेबल के लिए विश्वास (confidence) देते हैं, जैसे 'कुत्ता: 0.92, मफ़िन: 0.08'। Chatbot अगला शब्द उसकी प्रायिकता से चुनते हैं। Google Teachable Machine में webcam preview के नीचे की पट्टियाँ हर class के लिए मॉडल का विश्वास दिखाती हैं।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Because AI works with probabilities, it can be wrong even when it sounds confident. Always check important AI answers with a reliable source or a trusted adult.",
+      "hi": "क्योंकि AI प्रायिकताओं से काम करता है, वह आत्मविश्वासी लगने पर भी ग़लत हो सकता है। महत्वपूर्ण AI उत्तरों को हमेशा किसी भरोसेमंद स्रोत या भरोसेमंद बड़े से जाँचिए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Screen activity: see probability in an AI model. Aim: observe confidence scores. Need: a phone or computer with a webcam and the free Google Teachable Machine website (works in the browser, no sign-in needed to try; for under-13s, an adult should supervise). What to do: make an Image Project with two classes, 'Pen' and 'Pencil'. Record about 50 webcam pictures of each, click Train, then hold up a pen, a pencil, and then something half-hidden. What do you observe and learn?",
+       "hi": "स्क्रीन गतिविधि: AI मॉडल में प्रायिकता देखिए। उद्देश्य: confidence score देखना। सामग्री: webcam वाला फ़ोन या कंप्यूटर और मुफ़्त Google Teachable Machine वेबसाइट (ब्राउज़र में चलती है, आज़माने के लिए sign-in ज़रूरी नहीं; 13 वर्ष से कम के लिए कोई बड़ा निगरानी करे)। क्या करें: दो classes 'Pen' और 'Pencil' वाला Image Project बनाइए। हर एक की लगभग 50 webcam तस्वीरें लीजिए, Train पर क्लिक कीजिए, फिर पेन, पेंसिल और फिर कोई आधी छिपी चीज़ दिखाइए। आप क्या देखते और सीखते हैं?"
+      },
+      "a": {
+       "en": "Observation: for a clear pen the 'Pen' bar is near 100%; for a pencil the 'Pencil' bar is high; for a half-hidden or unknown object both bars hover, e.g. 60% and 40%.\nLearning: the model does not 'know' — it gives probabilities, and the two bars always add to 100%. More and more varied training pictures make it more confident and accurate.",
+       "hi": "अवलोकन: साफ़ पेन के लिए 'Pen' की पट्टी लगभग 100% होती है; पेंसिल के लिए 'Pencil' की पट्टी ऊँची होती है; आधी छिपी या अनजान वस्तु के लिए दोनों पट्टियाँ डगमगाती हैं, जैसे 60% और 40%।\nसीख: मॉडल 'जानता' नहीं — वह प्रायिकताएँ देता है, और दोनों पट्टियों का योग हमेशा 100% होता है। अधिक और विविध प्रशिक्षण चित्र उसे अधिक आत्मविश्वासी और सटीक बनाते हैं।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Finding the median without arranging the data in order. Fix: always sort first, then pick the middle.",
+   "For an even number of values, taking just one middle value. Fix: take the mean of the two middle values.",
+   "Thinking the mean is always the best average. Fix: when there are outliers, the median describes typical values better.",
+   "Saying data has no mode when two values tie. Fix: data can have two (or more) modes.",
+   "Writing a probability greater than 1 or less than 0. Fix: probability is always between 0 and 1 (0% to 100%).",
+   "Believing that after five heads, tails is 'due'. Fix: each fair toss is independent; P(tails) is still 1/2.",
+   "Reading '70% chance of rain' as 'it will rain for 70% of the day'. Fix: it is the chance that rain happens at that place and time.",
+   "Thinking a batting average of 40 means the batter will score 40 next time. Fix: it is a long-run average, not a guarantee.",
+   "Forgetting that P(E) + P(not E) = 1. Fix: use it to find a complement quickly.",
+   "Trusting an AI answer because it sounds confident. Fix: AI gives probabilities and can be wrong; verify."
+  ],
+  "hi": [
+   "Data को क्रम में लगाए बिना माध्यिका निकालना। सुधार: पहले हमेशा क्रम में लगाइए, फिर बीच का मान लीजिए।",
+   "सम संख्या में मान होने पर केवल एक बीच का मान लेना। सुधार: दोनों बीच के मानों का माध्य लीजिए।",
+   "माध्य को हमेशा सबसे अच्छा औसत मानना। सुधार: outliers हों तो माध्यिका सामान्य मानों का बेहतर वर्णन करती है।",
+   "दो मान बराबर हों तो कहना कि बहुलक नहीं है। सुधार: data के दो (या अधिक) बहुलक हो सकते हैं।",
+   "1 से अधिक या 0 से कम प्रायिकता लिखना। सुधार: प्रायिकता हमेशा 0 और 1 (0% से 100%) के बीच होती है।",
+   "यह मानना कि पाँच बार चित के बाद पट 'आना ही है'। सुधार: हर निष्पक्ष टॉस स्वतंत्र है; P(पट) अब भी 1/2 है।",
+   "'70% बारिश की संभावना' को 'दिन के 70% समय बारिश' समझना। सुधार: यह उस स्थान और समय पर बारिश होने की संभावना है।",
+   "यह सोचना कि 40 के औसत वाला बल्लेबाज़ अगली बार 40 बनाएगा। सुधार: यह लंबे समय का औसत है, गारंटी नहीं।",
+   "P(E) + P(E नहीं) = 1 भूल जाना। सुधार: पूरक जल्दी निकालने के लिए इसका उपयोग कीजिए।",
+   "AI के उत्तर पर इसलिए भरोसा करना कि वह आत्मविश्वासी लगता है। सुधार: AI प्रायिकताएँ देता है और ग़लत हो सकता है; जाँचिए।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Pattern",
+    "hi": "पैटर्न"
+   },
+   "d": {
+    "en": "An order or arrangement that repeats or follows a rule.",
+    "hi": "कोई क्रम या व्यवस्था जो दोहराई जाती है या किसी नियम का पालन करती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pattern recognition",
+    "hi": "पैटर्न पहचान"
+   },
+   "d": {
+    "en": "Finding regularities in data to sort or predict new data.",
+    "hi": "नए data को वर्गीकृत करने या उसका अनुमान लगाने के लिए data में नियमितता खोजना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pixel",
+    "hi": "Pixel"
+   },
+   "d": {
+    "en": "The smallest square of a digital image, stored as numbers for its colour.",
+    "hi": "डिजिटल चित्र का सबसे छोटा वर्ग, जिसका रंग संख्याओं के रूप में रखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Statistics",
+    "hi": "सांख्यिकी"
+   },
+   "d": {
+    "en": "Collecting, organising, analysing and interpreting data to draw conclusions.",
+    "hi": "निष्कर्ष निकालने के लिए data को इकट्ठा, व्यवस्थित, विश्लेषित और व्याख्यायित करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Linear algebra",
+    "hi": "रैखिक बीजगणित"
+   },
+   "d": {
+    "en": "Maths of vectors and matrices, used to organise data and find unknown values.",
+    "hi": "Vectors और matrices का गणित, जिससे data व्यवस्थित होता है और अज्ञात मान मिलते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Vector / Matrix",
+    "hi": "Vector / Matrix"
+   },
+   "d": {
+    "en": "A list of numbers / a grid (table) of numbers.",
+    "hi": "संख्याओं की सूची / संख्याओं की जाली (तालिका)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Calculus",
+    "hi": "कलन"
+   },
+   "d": {
+    "en": "Maths of change and slope, used to train and improve AI models.",
+    "hi": "परिवर्तन और ढलान का गणित, जिससे AI मॉडल प्रशिक्षित और बेहतर होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Measure of central tendency",
+    "hi": "केंद्रीय प्रवृत्ति का माप"
+   },
+   "d": {
+    "en": "A single value that represents the centre of data: mean, median or mode.",
+    "hi": "Data के केंद्र को दर्शाने वाला एक मान: माध्य, माध्यिका या बहुलक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mean",
+    "hi": "माध्य"
+   },
+   "d": {
+    "en": "Sum of values ÷ number of values.",
+    "hi": "मानों का योग ÷ मानों की संख्या।"
+   }
+  },
+  {
+   "t": {
+    "en": "Median",
+    "hi": "माध्यिका"
+   },
+   "d": {
+    "en": "Middle value of data arranged in order.",
+    "hi": "क्रम में लगे data का बीच का मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mode",
+    "hi": "बहुलक"
+   },
+   "d": {
+    "en": "The most frequently occurring value.",
+    "hi": "सबसे अधिक बार आने वाला मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Range",
+    "hi": "परिसर"
+   },
+   "d": {
+    "en": "Highest value − lowest value; a simple measure of spread.",
+    "hi": "सबसे बड़ा मान − सबसे छोटा मान; फैलाव का सरल माप।"
+   }
+  },
+  {
+   "t": {
+    "en": "Standard deviation",
+    "hi": "मानक विचलन"
+   },
+   "d": {
+    "en": "A measure of how far values typically lie from the mean.",
+    "hi": "यह माप कि मान आम तौर पर माध्य से कितनी दूर हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Outlier",
+    "hi": "Outlier"
+   },
+   "d": {
+    "en": "A value far from the rest; it strongly affects the mean.",
+    "hi": "बाकी से बहुत दूर का मान; यह माध्य को बहुत प्रभावित करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Frequency / Tally",
+    "hi": "बारंबारता / मिलान-चिह्न"
+   },
+   "d": {
+    "en": "How often a value occurs / marks in groups of five used to count.",
+    "hi": "कोई मान कितनी बार आता है / गिनती के लिए पाँच-पाँच के समूह में चिह्न।"
+   }
+  },
+  {
+   "t": {
+    "en": "Probability",
+    "hi": "प्रायिकता"
+   },
+   "d": {
+    "en": "A number from 0 to 1 showing how likely an event is.",
+    "hi": "0 से 1 तक की संख्या जो बताती है कि घटना कितनी संभावित है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Experiment",
+    "hi": "प्रयोग"
+   },
+   "d": {
+    "en": "An action with an uncertain result, e.g. tossing a coin.",
+    "hi": "अनिश्चित परिणाम वाला कार्य, जैसे सिक्का उछालना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Outcome",
+    "hi": "परिणाम"
+   },
+   "d": {
+    "en": "One possible result of an experiment.",
+    "hi": "प्रयोग का एक संभव नतीजा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sample space",
+    "hi": "प्रतिदर्श समष्टि"
+   },
+   "d": {
+    "en": "The set of all possible outcomes.",
+    "hi": "सभी संभव परिणामों का समुच्चय।"
+   }
+  },
+  {
+   "t": {
+    "en": "Event",
+    "hi": "घटना"
+   },
+   "d": {
+    "en": "One or more outcomes of interest.",
+    "hi": "रुचि के एक या अधिक परिणाम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Favourable outcome",
+    "hi": "अनुकूल परिणाम"
+   },
+   "d": {
+    "en": "An outcome that makes the event happen.",
+    "hi": "ऐसा परिणाम जिससे घटना घटती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Certain / Impossible event",
+    "hi": "निश्चित / असंभव घटना"
+   },
+   "d": {
+    "en": "Probability 1 / probability 0.",
+    "hi": "प्रायिकता 1 / प्रायिकता 0।"
+   }
+  },
+  {
+   "t": {
+    "en": "Likely / Unlikely event",
+    "hi": "संभावित / असंभावित घटना"
+   },
+   "d": {
+    "en": "Probability more than 1/2 / less than 1/2 (or higher/lower than another event).",
+    "hi": "प्रायिकता 1/2 से अधिक / 1/2 से कम (या किसी दूसरी घटना से अधिक/कम)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Equally likely",
+    "hi": "समसंभावित"
+   },
+   "d": {
+    "en": "Having the same probability.",
+    "hi": "बराबर प्रायिकता वाली।"
+   }
+  },
+  {
+   "t": {
+    "en": "Complement",
+    "hi": "पूरक"
+   },
+   "d": {
+    "en": "The event 'not E'; P(not E) = 1 − P(E).",
+    "hi": "घटना 'E नहीं'; P(E नहीं) = 1 − P(E)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Theoretical probability",
+    "hi": "सैद्धांतिक प्रायिकता"
+   },
+   "d": {
+    "en": "Probability found by reasoning with the formula.",
+    "hi": "सूत्र से तर्क द्वारा निकाली गई प्रायिकता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Experimental probability",
+    "hi": "प्रायोगिक प्रायिकता"
+   },
+   "d": {
+    "en": "Times event happened ÷ total trials.",
+    "hi": "घटना जितनी बार हुई ÷ कुल प्रयास।"
+   }
+  },
+  {
+   "t": {
+    "en": "Law of large numbers",
+    "hi": "बड़ी संख्याओं का नियम"
+   },
+   "d": {
+    "en": "With many trials, experimental probability gets close to theoretical probability.",
+    "hi": "बहुत से प्रयासों में प्रायोगिक प्रायिकता सैद्धांतिक प्रायिकता के पास आ जाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Batting average",
+    "hi": "बल्लेबाज़ी औसत"
+   },
+   "d": {
+    "en": "Total runs ÷ number of times out.",
+    "hi": "कुल रन ÷ कितनी बार आउट हुआ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Confidence score",
+    "hi": "Confidence score"
+   },
+   "d": {
+    "en": "The probability an AI model gives for each possible answer.",
+    "hi": "हर संभव उत्तर के लिए AI मॉडल द्वारा दी गई प्रायिकता।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which branch of maths is mainly used to predict how likely an event is? (a) Statistics (b) Calculus (c) Probability (d) Linear algebra",
+    "hi": "MCQ: किसी घटना की संभावना का अनुमान मुख्यतः गणित की किस शाखा से लगाया जाता है? (a) सांख्यिकी (b) कलन (c) प्रायिकता (d) रैखिक बीजगणित"
+   },
+   "a": {
+    "en": "(c) Probability",
+    "hi": "(c) प्रायिकता"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The probability of an impossible event is (a) 1 (b) 0 (c) 1/2 (d) −1",
+    "hi": "MCQ: असंभव घटना की प्रायिकता है (a) 1 (b) 0 (c) 1/2 (d) −1"
+   },
+   "a": {
+    "en": "(b) 0",
+    "hi": "(b) 0"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The middle value of 11, 22, 33, 44, 55 is (a) 22 (b) 33 (c) 44 (d) 165",
+    "hi": "MCQ: 11, 22, 33, 44, 55 का बीच का मान है (a) 22 (b) 33 (c) 44 (d) 165"
+   },
+   "a": {
+    "en": "(b) 33 — the 3rd of 5 ordered values (the median).",
+    "hi": "(b) 33 — 5 क्रमबद्ध मानों में तीसरा (माध्यिका)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these cannot be a probability? (a) 0.25 (b) 3/4 (c) 1.2 (d) 0",
+    "hi": "MCQ: इनमें से कौन प्रायिकता नहीं हो सकती? (a) 0.25 (b) 3/4 (c) 1.2 (d) 0"
+   },
+   "a": {
+    "en": "(c) 1.2 — probability cannot exceed 1.",
+    "hi": "(c) 1.2 — प्रायिकता 1 से अधिक नहीं हो सकती।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (a) The most frequent value is the ____. (b) P(E) + P(not E) = ____. (c) The set of all outcomes is the ____. (d) The maths of change used to train models is ____.",
+    "hi": "रिक्त स्थान भरिए: (a) सबसे अधिक बार आने वाला मान ____ है। (b) P(E) + P(E नहीं) = ____। (c) सभी परिणामों का समुच्चय ____ है। (d) मॉडल प्रशिक्षित करने में प्रयुक्त परिवर्तन का गणित ____ है।"
+   },
+   "a": {
+    "en": "(a) mode (b) 1 (c) sample space (d) calculus",
+    "hi": "(a) बहुलक (b) 1 (c) प्रतिदर्श समष्टि (d) कलन"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (a) The mean is not affected by outliers. (b) A fair coin's P(heads) is 1/2. (c) Rolling a 7 on a normal die is impossible. (d) Statistics is used in weather forecasting.",
+    "hi": "सही या ग़लत: (a) माध्य outliers से प्रभावित नहीं होता। (b) निष्पक्ष सिक्के की P(चित) 1/2 है। (c) सामान्य पासे पर 7 आना असंभव है। (d) मौसम पूर्वानुमान में सांख्यिकी का उपयोग होता है।"
+   },
+   "a": {
+    "en": "(a) False (b) True (c) True (d) True",
+    "hi": "(a) ग़लत (b) सही (c) सही (d) सही"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the next term: (a) 1, 4, 9, 16, ? (b) 7, 14, 21, 28, ? (c) 1, 1, 2, 3, 5, 8, ?",
+    "hi": "अगला पद खोजिए: (a) 1, 4, 9, 16, ? (b) 7, 14, 21, 28, ? (c) 1, 1, 2, 3, 5, 8, ?"
+   },
+   "a": {
+    "en": "(a) 25 (squares) (b) 35 (add 7) (c) 13 (sum of previous two)",
+    "hi": "(a) 25 (वर्ग) (b) 35 (7 जोड़ो) (c) 13 (पिछले दो का योग)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the mean, median, mode and range of the daily temperatures (°C) of a week in Jaipur: 38, 41, 40, 38, 43, 39, 38.",
+    "hi": "जयपुर के एक सप्ताह के दैनिक तापमान (°C) का माध्य, माध्यिका, बहुलक और परिसर निकालिए: 38, 41, 40, 38, 43, 39, 38।"
+   },
+   "a": {
+    "en": "Sum = 277; mean = 277 ÷ 7 ≈ 39.57 °C.\nOrder: 38, 38, 38, 39, 40, 41, 43; median = 4th = 39 °C.\nMode = 38 °C (3 times).\nRange = 43 − 38 = 5 °C.",
+    "hi": "योग = 277; माध्य = 277 ÷ 7 ≈ 39.57 °C।\nक्रम: 38, 38, 38, 39, 40, 41, 43; माध्यिका = चौथा = 39 °C।\nबहुलक = 38 °C (3 बार)।\nपरिसर = 43 − 38 = 5 °C।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the median of 12, 7, 15, 9, 20, 11.",
+    "hi": "12, 7, 15, 9, 20, 11 की माध्यिका निकालिए।"
+   },
+   "a": {
+    "en": "Order: 7, 9, 11, 12, 15, 20. n = 6 (even): 3rd and 4th values are 11 and 12. Median = (11 + 12) ÷ 2 = 11.5.",
+    "hi": "क्रम: 7, 9, 11, 12, 15, 20। n = 6 (सम): तीसरा और चौथा मान 11 और 12। माध्यिका = (11 + 12) ÷ 2 = 11.5।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "The mean of five numbers is 18. Four of them are 15, 20, 12 and 25. Find the fifth.",
+    "hi": "पाँच संख्याओं का माध्य 18 है। उनमें से चार 15, 20, 12 और 25 हैं। पाँचवीं निकालिए।"
+   },
+   "a": {
+    "en": "Total = 18 × 5 = 90.\nSum of four = 72.\nFifth = 90 − 72 = 18.",
+    "hi": "कुल = 18 × 5 = 90।\nचार का योग = 72।\nपाँचवीं = 90 − 72 = 18।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A box has 4 mango toffees, 6 orange toffees and 2 cola toffees. One is picked at random. Find P(mango), P(orange), P(not cola) and P(chocolate).",
+    "hi": "एक डिब्बे में 4 आम, 6 संतरा और 2 कोला टॉफ़ियाँ हैं। एक यादृच्छिक रूप से निकाली जाती है। P(आम), P(संतरा), P(कोला नहीं) और P(चॉकलेट) निकालिए।"
+   },
+   "a": {
+    "en": "Total = 12.\nP(mango) = 4/12 = 1/3.\nP(orange) = 6/12 = 1/2.\nP(not cola) = 1 − 2/12 = 10/12 = 5/6.\nP(chocolate) = 0 (impossible).",
+    "hi": "कुल = 12।\nP(आम) = 4/12 = 1/3।\nP(संतरा) = 6/12 = 1/2।\nP(कोला नहीं) = 1 − 2/12 = 10/12 = 5/6।\nP(चॉकलेट) = 0 (असंभव)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Classify each as certain, likely, equally likely, unlikely or impossible: (a) getting a number less than 7 on a die (b) getting tails on a fair coin (c) getting a 1 on a die (d) a month having 32 days (e) getting a number greater than 1 on a die.",
+    "hi": "हर एक को निश्चित, संभावित, समसंभावित, असंभावित या असंभव में बाँटिए: (a) पासे पर 7 से कम संख्या आना (b) निष्पक्ष सिक्के पर पट आना (c) पासे पर 1 आना (d) किसी महीने में 32 दिन होना (e) पासे पर 1 से बड़ी संख्या आना।"
+   },
+   "a": {
+    "en": "(a) Certain (6/6) (b) Equally likely (1/2) (c) Unlikely (1/6) (d) Impossible (0) (e) Likely (5/6)",
+    "hi": "(a) निश्चित (6/6) (b) समसंभावित (1/2) (c) असंभावित (1/6) (d) असंभव (0) (e) संभावित (5/6)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): The median is a better measure than the mean for the incomes of people in a village where one person is very rich. Reason (R): The mean is strongly affected by extreme values. Choose: (a) both true, R explains A (b) both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): जिस गाँव में एक व्यक्ति बहुत अमीर है, वहाँ लोगों की आय के लिए माध्यिका माध्य से बेहतर माप है। कारण (R): माध्य चरम मानों से बहुत प्रभावित होता है। चुनिए: (a) दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(a) Both true and R correctly explains A.",
+    "hi": "(a) दोनों सही हैं और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): If a fair coin shows heads 4 times in a row, the 5th toss is more likely to be tails. Reason (R): Each toss of a fair coin has P(tails) = 1/2. Choose (a)–(d) as above.",
+    "hi": "अभिकथन (A): यदि निष्पक्ष सिक्का लगातार 4 बार चित दिखाए, तो 5वें टॉस में पट की संभावना अधिक है। कारण (R): निष्पक्ष सिक्के के हर टॉस में P(पट) = 1/2 है। ऊपर की तरह (a)–(d) चुनिए।"
+   },
+   "a": {
+    "en": "(d) A is false; R is true. Tosses are independent, so the 5th toss still has P(tails) = 1/2.",
+    "hi": "(d) A ग़लत है; R सही है। टॉस स्वतंत्र होते हैं, इसलिए 5वें टॉस में भी P(पट) = 1/2 है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the four branches of maths used in AI and write one question each helps answer.",
+    "hi": "AI में प्रयुक्त गणित की चार शाखाएँ बताइए और हर एक जिस प्रश्न का उत्तर देने में मदद करती है, वह लिखिए।"
+   },
+   "a": {
+    "en": "Statistics: What is the most common value in this data?\nLinear algebra: How many cars are there in the city in total? (organising data as vectors/matrices)\nCalculus: Which line is steeper, and how should the model change to reduce error?\nProbability: What is the chance it will rain tomorrow?",
+    "hi": "सांख्यिकी: इस data में सबसे आम मान क्या है?\nरैखिक बीजगणित: शहर में कुल कितनी कारें हैं? (data को vectors/matrices में व्यवस्थित करना)\nकलन: कौन-सी रेखा अधिक खड़ी है, और ग़लती घटाने के लिए मॉडल कैसे बदले?\nप्रायिकता: कल बारिश होने की क्या संभावना है?"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A batter scored 360 runs in a season and was out 8 times. Find the batting average. Does it mean the batter will score 45 in the next match?",
+    "hi": "एक बल्लेबाज़ ने एक सत्र में 360 रन बनाए और 8 बार आउट हुआ। बल्लेबाज़ी औसत निकालिए। क्या इसका अर्थ है कि वह अगले मैच में 45 बनाएगा?"
+   },
+   "a": {
+    "en": "Average = 360 ÷ 8 = 45.\nNo. It is a long-run average that helps estimate likely performance; any single innings can be higher or lower.",
+    "hi": "औसत = 360 ÷ 8 = 45।\nनहीं। यह लंबे समय का औसत है जो संभावित प्रदर्शन का अनुमान देता है; कोई एक पारी अधिक या कम हो सकती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A weather app says there is a 30% chance of rain. (a) What is the chance of no rain? (b) Is rain likely or unlikely? (c) Should you cancel an outdoor match?",
+    "hi": "एक मौसम ऐप कहता है कि बारिश की 30% संभावना है। (a) बारिश न होने की संभावना क्या है? (b) बारिश संभावित है या असंभावित? (c) क्या आपको बाहर का मैच रद्द करना चाहिए?"
+   },
+   "a": {
+    "en": "(a) 100% − 30% = 70%.\n(b) Unlikely (less than 50%), but possible.\n(c) Not necessarily; keep a backup plan or covers ready, because 3 out of 10 similar days do get rain.",
+    "hi": "(a) 100% − 30% = 70%।\n(b) असंभावित (50% से कम), पर संभव।\n(c) ज़रूरी नहीं; बैकअप योजना या कवर तैयार रखिए, क्योंकि ऐसे 10 में से 3 दिनों में बारिश होती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A Class 9 survey recorded the number of books read last month by 20 students: 0, 2, 1, 3, 2, 2, 4, 1, 0, 2, 5, 3, 2, 1, 2, 3, 0, 2, 1, 4. (a) Make a frequency table. (b) Find the mode. (c) Find the mean. (d) Find the median. (e) If a student is picked at random, what is P(read 0 books)?",
+    "hi": "केस-आधारित: कक्षा 9 के सर्वे में 20 विद्यार्थियों द्वारा पिछले महीने पढ़ी गई पुस्तकों की संख्या दर्ज हुई: 0, 2, 1, 3, 2, 2, 4, 1, 0, 2, 5, 3, 2, 1, 2, 3, 0, 2, 1, 4। (a) बारंबारता तालिका बनाइए। (b) बहुलक निकालिए। (c) माध्य निकालिए। (d) माध्यिका निकालिए। (e) यदि एक विद्यार्थी यादृच्छिक रूप से चुना जाए, तो P(0 पुस्तकें पढ़ीं) क्या है?"
+   },
+   "a": {
+    "en": "(a) 0 books: 3; 1: 4; 2: 7; 3: 3; 4: 2; 5: 1 (total 20).\n(b) Mode = 2 books (frequency 7).\n(c) Sum = 0×3 + 1×4 + 2×7 + 3×3 + 4×2 + 5×1 = 0 + 4 + 14 + 9 + 8 + 5 = 40; mean = 40 ÷ 20 = 2 books.\n(d) n = 20: 10th and 11th values. Positions 1–3 are 0, 4–7 are 1, 8–14 are 2. Both are 2; median = 2.\n(e) P = 3/20 = 0.15.",
+    "hi": "(a) 0 पुस्तकें: 3; 1: 4; 2: 7; 3: 3; 4: 2; 5: 1 (कुल 20)।\n(b) बहुलक = 2 पुस्तकें (बारंबारता 7)।\n(c) योग = 0×3 + 1×4 + 2×7 + 3×3 + 4×2 + 5×1 = 0 + 4 + 14 + 9 + 8 + 5 = 40; माध्य = 40 ÷ 20 = 2 पुस्तकें।\n(d) n = 20: 10वाँ और 11वाँ मान। स्थान 1–3 पर 0, 4–7 पर 1, 8–14 पर 2। दोनों 2; माध्यिका = 2।\n(e) P = 3/20 = 0.15।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Two dice experiments: Ravi rolled a die 30 times and got a six 8 times. Meera combined the class data: 600 rolls, 102 sixes. (a) Find each experimental probability. (b) What is the theoretical probability? (c) Explain which result is closer and why.",
+    "hi": "दो पासा प्रयोग: रवि ने पासा 30 बार फेंका और 8 बार छक्का आया। मीरा ने कक्षा का data जोड़ा: 600 बार फेंका, 102 छक्के। (a) हर एक की प्रायोगिक प्रायिकता निकालिए। (b) सैद्धांतिक प्रायिकता क्या है? (c) समझाइए कि कौन-सा परिणाम अधिक पास है और क्यों।"
+   },
+   "a": {
+    "en": "(a) Ravi: 8/30 ≈ 0.267; class: 102/600 = 0.17.\n(b) 1/6 ≈ 0.167.\n(c) The class result is much closer, because with many more trials the experimental probability approaches the theoretical value (law of large numbers).",
+    "hi": "(a) रवि: 8/30 ≈ 0.267; कक्षा: 102/600 = 0.17।\n(b) 1/6 ≈ 0.167।\n(c) कक्षा का परिणाम बहुत अधिक पास है, क्योंकि बहुत अधिक प्रयासों में प्रायोगिक प्रायिकता सैद्धांतिक मान के पास पहुँचती है (बड़ी संख्याओं का नियम)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain with examples how statistics is used in (a) disaster management (b) sports (c) disease prediction (d) weather forecasting.",
+    "hi": "उदाहरणों सहित समझाइए कि सांख्यिकी का उपयोग (a) आपदा प्रबंधन (b) खेल (c) रोग पूर्वानुमान (d) मौसम पूर्वानुमान में कैसे होता है।"
+   },
+   "a": {
+    "en": "(a) Past cyclone and flood data identify risky areas; population and infrastructure data plan evacuation and relief, e.g. IMD cyclone alerts along the Odisha coast.\n(b) Player statistics guide team selection and strategy; rising COVID-19 case numbers led to the Tokyo 2020 Olympics being postponed in March 2020.\n(c) Health departments track which diseases are rising and where (e.g. dengue or COVID-19 hotspots) to send vaccines, doctors and beds.\n(d) Current conditions are compared with records of past seasons to forecast rain, heatwaves and monsoon onset.",
+    "hi": "(a) पुराना चक्रवात और बाढ़ data जोखिम वाले क्षेत्र पहचानता है; जनसंख्या और बुनियादी ढाँचे का data निकासी और राहत की योजना बनाता है, जैसे ओडिशा तट पर IMD की चक्रवात चेतावनियाँ।\n(b) खिलाड़ियों के आँकड़े टीम चयन और रणनीति में मदद करते हैं; COVID-19 के बढ़ते मामलों के कारण मार्च 2020 में टोक्यो 2020 ओलंपिक स्थगित हुआ।\n(c) स्वास्थ्य विभाग देखते हैं कि कौन-से रोग कहाँ बढ़ रहे हैं (जैसे डेंगू या COVID-19 hotspots) ताकि टीके, डॉक्टर और बिस्तर भेजे जा सकें।\n(d) वर्तमान परिस्थितियों की तुलना पिछले मौसमों के रिकॉर्ड से करके बारिश, लू और मानसून आगमन का पूर्वानुमान लगाया जाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Why is maths important for AI? Explain with the dog-versus-muffin example and one probability-based AI application.",
+    "hi": "AI के लिए गणित क्यों ज़रूरी है? कुत्ता-बनाम-मफ़िन उदाहरण और प्रायिकता पर आधारित एक AI अनुप्रयोग से समझाइए।"
+   },
+   "a": {
+    "en": "Maths is the study of patterns, and AI is pattern recognition. A computer sees a photo as numbers (pixels). To tell a chihuahua from a blueberry muffin, an AI learns numerical patterns of shape, texture and features from many labelled photos (statistics and linear algebra), improves itself by reducing errors (calculus), and gives an answer with a probability, e.g. 'dog 0.92'.\nProbability application: a UPI fraud-detection system estimates the probability that a payment is fraudulent and blocks it if the probability is high.",
+    "hi": "गणित पैटर्न का अध्ययन है, और AI पैटर्न पहचान है। कंप्यूटर फ़ोटो को संख्याओं (pixels) के रूप में देखता है। Chihuahua और blueberry मफ़िन में अंतर करने के लिए AI बहुत सी लेबल वाली फ़ोटो से आकार, बनावट और विशेषताओं के संख्यात्मक पैटर्न सीखता है (सांख्यिकी और रैखिक बीजगणित), ग़लतियाँ घटाकर स्वयं को सुधारता है (कलन), और प्रायिकता के साथ उत्तर देता है, जैसे 'कुत्ता 0.92'।\nप्रायिकता अनुप्रयोग: UPI धोखाधड़ी पहचान प्रणाली अनुमान लगाती है कि भुगतान के धोखाधड़ी होने की कितनी प्रायिकता है और अधिक होने पर उसे रोक देती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A spinner is divided into 8 equal parts numbered 1 to 8. Find the probability of getting (a) an odd number (b) a number greater than 6 (c) a multiple of 3 (d) a prime number (e) not a prime number.",
+    "hi": "एक spinner 8 बराबर भागों में बँटा है जिन पर 1 से 8 तक संख्याएँ हैं। प्रायिकता निकालिए: (a) विषम संख्या (b) 6 से बड़ी संख्या (c) 3 का गुणज (d) अभाज्य संख्या (e) अभाज्य संख्या नहीं।"
+   },
+   "a": {
+    "en": "Total = 8.\n(a) {1, 3, 5, 7}: 4/8 = 1/2.\n(b) {7, 8}: 2/8 = 1/4.\n(c) {3, 6}: 2/8 = 1/4.\n(d) {2, 3, 5, 7}: 4/8 = 1/2.\n(e) 1 − 1/2 = 1/2.",
+    "hi": "कुल = 8।\n(a) {1, 3, 5, 7}: 4/8 = 1/2।\n(b) {7, 8}: 2/8 = 1/4।\n(c) {3, 6}: 2/8 = 1/4।\n(d) {2, 3, 5, 7}: 4/8 = 1/2।\n(e) 1 − 1/2 = 1/2।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: A navigation app says there is a 90% chance of heavy traffic on your route between 6 p.m. and 7:30 p.m. You must reach a coaching class by 7 p.m. What would you do, and how does probability help you decide? Mention what data the app likely uses.",
+    "hi": "चिंतन प्रश्न: एक नेविगेशन ऐप बताता है कि शाम 6 से 7:30 बजे तक आपके रास्ते पर भारी ट्रैफ़िक की 90% संभावना है। आपको शाम 7 बजे तक कोचिंग पहुँचना है। आप क्या करेंगे, और प्रायिकता निर्णय में कैसे मदद करती है? ऐप संभवतः कौन-सा data उपयोग करता है, बताइए।"
+   },
+   "a": {
+    "en": "Decision: leave before 6 p.m. or choose another route the app shows as clearer, because a 90% chance means a jam is very likely.\nHow probability helps: it turns uncertainty into a number, so you can weigh the risk (being late) against the cost (leaving early).\nData used: time of day, day of week, past traffic patterns on that road, weather, events, and live speed data from many phones (shared anonymously).",
+    "hi": "निर्णय: शाम 6 बजे से पहले निकलिए या ऐप द्वारा दिखाया गया कम भीड़ वाला दूसरा रास्ता चुनिए, क्योंकि 90% संभावना का अर्थ है जाम बहुत संभावित है।\nप्रायिकता कैसे मदद करती है: यह अनिश्चितता को संख्या में बदलती है, जिससे आप जोखिम (देर होना) की तुलना कीमत (जल्दी निकलना) से कर सकते हैं।\nप्रयुक्त data: दिन का समय, सप्ताह का दिन, उस सड़क के पुराने ट्रैफ़िक पैटर्न, मौसम, आयोजन, और बहुत से फ़ोनों से मिला लाइव गति data (गुमनाम रूप से साझा)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity: Plan a mini statistics project on 'screen time of my classmates'. List the steps from collecting data to drawing conclusions, which measures you would calculate, which graph you would draw, and one privacy rule you would follow.",
+    "hi": "गतिविधि: 'मेरे सहपाठियों का स्क्रीन टाइम' पर एक छोटे सांख्यिकी प्रोजेक्ट की योजना बनाइए। Data इकट्ठा करने से निष्कर्ष तक के चरण, आप कौन-से माप निकालेंगे, कौन-सा ग्राफ़ बनाएँगे, और एक निजता नियम जिसका आप पालन करेंगे, लिखिए।"
+   },
+   "a": {
+    "en": "Steps: collect (an anonymous form: 'hours of screen time yesterday') → explore and clean (remove impossible answers like 30 hours) → analyse (mean, median, mode, range) → conclude (e.g. median 3 hours; most use screens after 8 p.m.).\nGraph: a bar graph of hours (or a histogram of ranges 0–1, 1–2, ...).\nPrivacy: do not collect names; take consent and share only class-level results.",
+    "hi": "चरण: इकट्ठा करना (गुमनाम form: 'कल स्क्रीन टाइम के घंटे') → अन्वेषण और सफ़ाई (30 घंटे जैसे असंभव उत्तर हटाना) → विश्लेषण (माध्य, माध्यिका, बहुलक, परिसर) → निष्कर्ष (जैसे माध्यिका 3 घंटे; अधिकतर रात 8 बजे के बाद स्क्रीन देखते हैं)।\nग्राफ़: घंटों का बार ग्राफ़ (या 0–1, 1–2, ... सीमाओं का histogram)।\nनिजता: नाम न लें; सहमति लें और केवल कक्षा-स्तर के परिणाम साझा करें।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Maths is the study of patterns, and AI is pattern recognition in numbers, images, speech and text.",
+   "Computers store pictures as pixels (numbers), so picture patterns are number patterns to AI.",
+   "Four maths areas power AI: statistics (explore data), linear algebra (organise data, find unknowns), calculus (train and improve), probability (predict).",
+   "Statistics means collecting, cleaning, analysing and interpreting data to draw conclusions.",
+   "Statistics is used in disaster management, sports, disease prediction and weather forecasting.",
+   "Mean = sum ÷ count; median = middle value after ordering; mode = most frequent value; range = highest − lowest.",
+   "The mean is pulled by outliers; the median is better for skewed data; the mode works even for categories.",
+   "Probability measures how likely an event is: P(E) = favourable outcomes ÷ total outcomes, always from 0 to 1.",
+   "Key terms: experiment, outcome, sample space, event, favourable outcomes, equally likely outcomes.",
+   "Events can be impossible (0), unlikely, equally likely (1/2), likely or certain (1).",
+   "P(not E) = 1 − P(E); a 70% chance of rain means a 30% chance of no rain.",
+   "Experimental probability gets closer to theoretical probability as the number of trials grows.",
+   "Probability is used in cricket averages, weather forecasts, traffic estimation, fraud alerts, spam filters and AI confidence scores.",
+   "AI gives answers with probabilities and can be wrong, so check important answers."
+  ],
+  "hi": [
+   "गणित पैटर्न का अध्ययन है, और AI संख्याओं, चित्रों, वाणी और पाठ में पैटर्न पहचान है।",
+   "कंप्यूटर चित्रों को pixels (संख्याओं) के रूप में रखता है, इसलिए AI के लिए चित्र पैटर्न संख्या पैटर्न हैं।",
+   "गणित के चार क्षेत्र AI को चलाते हैं: सांख्यिकी (data अन्वेषण), रैखिक बीजगणित (data व्यवस्थित करना, अज्ञात खोजना), कलन (प्रशिक्षण और सुधार), प्रायिकता (अनुमान)।",
+   "सांख्यिकी का अर्थ है निष्कर्ष निकालने के लिए data इकट्ठा करना, साफ़ करना, विश्लेषण करना और व्याख्या करना।",
+   "सांख्यिकी का उपयोग आपदा प्रबंधन, खेल, रोग पूर्वानुमान और मौसम पूर्वानुमान में होता है।",
+   "माध्य = योग ÷ संख्या; माध्यिका = क्रम में लगाने के बाद बीच का मान; बहुलक = सबसे अधिक बार आने वाला मान; परिसर = सबसे बड़ा − सबसे छोटा।",
+   "माध्य outliers से खिंचता है; तिरछे data के लिए माध्यिका बेहतर है; बहुलक श्रेणियों के लिए भी काम करता है।",
+   "प्रायिकता मापती है कि घटना कितनी संभावित है: P(E) = अनुकूल परिणाम ÷ कुल परिणाम, हमेशा 0 से 1 तक।",
+   "मुख्य पद: प्रयोग, परिणाम, प्रतिदर्श समष्टि, घटना, अनुकूल परिणाम, समसंभावित परिणाम।",
+   "घटनाएँ असंभव (0), असंभावित, समसंभावित (1/2), संभावित या निश्चित (1) हो सकती हैं।",
+   "P(E नहीं) = 1 − P(E); 70% बारिश की संभावना का अर्थ है 30% बारिश न होने की संभावना।",
+   "प्रयासों की संख्या बढ़ने पर प्रायोगिक प्रायिकता सैद्धांतिक प्रायिकता के पास आती है।",
+   "प्रायिकता का उपयोग क्रिकेट औसत, मौसम पूर्वानुमान, ट्रैफ़िक अनुमान, धोखाधड़ी अलर्ट, spam filter और AI confidence scores में होता है।",
+   "AI प्रायिकताओं के साथ उत्तर देता है और ग़लत हो सकता है, इसलिए महत्वपूर्ण उत्तर जाँचिए।"
+  ]
+ }
+}

@@ -1,0 +1,1612 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "10",
+ "id": "ch3",
+ "intro": {
+  "en": "You have built an AI model. But is it any good? This chapter explains Evaluation, the stage of the AI Project Cycle where we test a model honestly before people rely on it. You will learn the train-test split, overfitting, how to calculate error and accuracy, how to read a confusion matrix, and how to compute precision, recall and F1 score, with Indian examples such as UPI fraud alerts, spam filters and crop-disease apps. Finally you will see how to choose the right metric and evaluate models ethically.",
+  "hi": "आपने एक AI मॉडल बना लिया है। पर क्या वह अच्छा है? यह अध्याय मूल्यांकन (Evaluation) समझाता है, AI प्रोजेक्ट चक्र का वह चरण जहाँ लोगों के उस पर निर्भर होने से पहले मॉडल को ईमानदारी से परखा जाता है। आप ट्रेन-टेस्ट स्प्लिट, ओवरफिटिंग, त्रुटि और सटीकता की गणना, कन्फ़्यूज़न मैट्रिक्स पढ़ना, और precision, recall तथा F1 स्कोर निकालना सीखेंगे, UPI धोखाधड़ी चेतावनी, spam फ़िल्टर और फ़सल-रोग ऐप जैसे भारतीय उदाहरणों के साथ। अंत में आप देखेंगे कि सही मेट्रिक कैसे चुनें और मॉडलों का नैतिक मूल्यांकन कैसे करें।"
+ },
+ "learn": {
+  "en": [
+   "What model evaluation is and why it is needed",
+   "The train-test split and why test data must be unseen",
+   "Overfitting, underfitting and generalisation",
+   "Calculating error, error rate and accuracy for number predictions (and MAE)",
+   "Classification and positive/negative classes",
+   "The confusion matrix: TP, TN, FP (Type I) and FN (Type II)",
+   "Accuracy, precision, recall and F1 score with formulas and worked examples",
+   "Choosing the right metric for real situations",
+   "Ethical concerns: bias, transparency and accountability",
+   "Hands-on evaluation with Python, Teachable Machine and Orange"
+  ],
+  "hi": [
+   "मॉडल मूल्यांकन क्या है और इसकी ज़रूरत क्यों है",
+   "ट्रेन-टेस्ट स्प्लिट और टेस्ट डेटा अनदेखा क्यों होना चाहिए",
+   "ओवरफिटिंग, अंडरफिटिंग और सामान्यीकरण",
+   "संख्या अनुमानों के लिए त्रुटि, त्रुटि दर और सटीकता की गणना (और MAE)",
+   "वर्गीकरण और positive/negative वर्ग",
+   "कन्फ़्यूज़न मैट्रिक्स: TP, TN, FP (Type I) और FN (Type II)",
+   "सूत्रों और हल किए गए उदाहरणों के साथ accuracy, precision, recall और F1 स्कोर",
+   "असली परिस्थितियों के लिए सही मेट्रिक चुनना",
+   "नैतिक चिंताएँ: पक्षपात, पारदर्शिता और जवाबदेही",
+   "Python, Teachable Machine और Orange से व्यावहारिक मूल्यांकन"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "3.1 Where evaluation fits in the AI Project Cycle",
+    "hi": "3.1 AI प्रोजेक्ट चक्र में मूल्यांकन का स्थान"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Class 9 and in Chapter 1 of this book you met the AI Project Cycle: Problem Scoping, Data Acquisition, Data Exploration, Modelling, Evaluation and Deployment. This chapter is about the fifth stage, Evaluation. After a model has been built, we must check how good it really is before we let real people depend on it. A model that looks clever in the lab but makes many mistakes in the real world can cause harm, for example by blocking a genuine UPI payment or by missing a crop disease that a farmer needed to know about.",
+      "hi": "कक्षा 9 में और इस पुस्तक के अध्याय 1 में आपने AI प्रोजेक्ट चक्र पढ़ा था: समस्या निर्धारण (Problem Scoping), डेटा अधिग्रहण (Data Acquisition), डेटा अन्वेषण (Data Exploration), मॉडलिंग (Modelling), मूल्यांकन (Evaluation) और परिनियोजन (Deployment)। यह अध्याय पाँचवें चरण, मूल्यांकन, के बारे में है। मॉडल बन जाने के बाद, लोगों को उस पर निर्भर करने देने से पहले हमें जाँचना होता है कि वह सचमुच कितना अच्छा है। जो मॉडल प्रयोगशाला में चतुर दिखे पर असली दुनिया में बहुत गलतियाँ करे, वह नुकसान कर सकता है, जैसे किसी असली UPI भुगतान को रोक देना या किसी किसान की फ़सल की बीमारी को पहचान न पाना।"
+     }
+    },
+    {
+     "p": {
+      "en": "Think of a model like a student who has prepared for an exam. Classwork shows that the student has practised, but the board exam, with new questions the student has never seen, shows how much the student has truly learnt. Model evaluation is the 'board exam' for an AI model.",
+      "hi": "मॉडल को परीक्षा की तैयारी कर चुके एक विद्यार्थी की तरह समझिए। कक्षा का काम दिखाता है कि विद्यार्थी ने अभ्यास किया है, पर बोर्ड परीक्षा, जिसमें ऐसे नए प्रश्न होते हैं जो उसने पहले कभी नहीं देखे, यह दिखाती है कि उसने सचमुच कितना सीखा। मॉडल मूल्यांकन AI मॉडल की 'बोर्ड परीक्षा' है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Model evaluation",
+       "hi": "मॉडल मूल्यांकन (Model evaluation)"
+      },
+      "text": {
+       "en": "Model evaluation is the process of using evaluation metrics (measures such as accuracy, precision and recall) to understand how well a machine learning model performs, what its strengths and weaknesses are, and whether it is suitable for the task.",
+       "hi": "मॉडल मूल्यांकन वह प्रक्रिया है जिसमें मूल्यांकन मेट्रिक्स (accuracy, precision और recall जैसे माप) का उपयोग करके यह समझा जाता है कि कोई machine learning मॉडल कितना अच्छा काम करता है, उसकी ताकत और कमज़ोरियाँ क्या हैं, और क्या वह उस काम के लिए उपयुक्त है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Evaluation is not done once and forgotten. It works like a feedback loop: build the model, evaluate it, find where it goes wrong, improve the data or the model, and evaluate again, until the model reaches the accuracy the problem needs.",
+      "hi": "याद रखें: मूल्यांकन एक बार करके भुला देने वाला काम नहीं है। यह एक फ़ीडबैक लूप (feedback loop) की तरह चलता है: मॉडल बनाओ, उसका मूल्यांकन करो, पता लगाओ कि वह कहाँ गलत होता है, डेटा या मॉडल सुधारो, और फिर से मूल्यांकन करो, जब तक मॉडल उस समस्या के लिए ज़रूरी सटीकता तक न पहुँच जाए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.2 Why do we need model evaluation?",
+    "hi": "3.2 मॉडल मूल्यांकन की आवश्यकता क्यों है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Evaluation answers practical questions: Is the model good enough to use? Which of two models is better? On which kind of cases does it fail? Is it fair to every group of users? Without evaluation we would only be guessing.",
+      "hi": "मूल्यांकन व्यावहारिक प्रश्नों के उत्तर देता है: क्या मॉडल इतना अच्छा है कि उसका उपयोग किया जाए? दो मॉडलों में से कौन बेहतर है? किस प्रकार के मामलों में वह असफल होता है? क्या वह हर समूह के उपयोगकर्ताओं के साथ न्यायपूर्ण है? मूल्यांकन के बिना हम केवल अंदाज़ा लगा रहे होंगे।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "It tells us how reliable the model is on new, unseen data, not just on data it has already seen.",
+       "It shows the strengths and weaknesses of the model, for example a plant-disease app may be good at leaf rust but weak at leaf blight.",
+       "It helps compare different models or settings and choose the best one.",
+       "It guides improvement: if errors come from poor data, we collect better data; if they come from a weak model, we change the model.",
+       "It builds trust: users, doctors, banks and governments need numbers that show a system works before they rely on it.",
+       "It helps catch unfair or biased behaviour before the model reaches the public."
+      ],
+      "hi": [
+       "यह बताता है कि मॉडल नए, अनदेखे डेटा पर कितना भरोसेमंद है, न कि केवल उस डेटा पर जो वह पहले देख चुका है।",
+       "यह मॉडल की ताकत और कमज़ोरियाँ दिखाता है, जैसे पौधों की बीमारी पहचानने वाला कोई ऐप पत्तियों के रतुआ (rust) को अच्छी तरह पहचानता हो पर झुलसा (blight) में कमज़ोर हो।",
+       "यह अलग-अलग मॉडलों या सेटिंग्स की तुलना करके सबसे अच्छा चुनने में मदद करता है।",
+       "यह सुधार की दिशा दिखाता है: यदि गलतियाँ खराब डेटा से हैं तो बेहतर डेटा इकट्ठा करें; यदि कमज़ोर मॉडल से हैं तो मॉडल बदलें।",
+       "यह भरोसा बनाता है: उपयोगकर्ता, डॉक्टर, बैंक और सरकारें किसी सिस्टम पर निर्भर होने से पहले ऐसे आँकड़े चाहते हैं जो दिखाएँ कि वह काम करता है।",
+       "यह मॉडल के जनता तक पहुँचने से पहले अनुचित या पक्षपाती (biased) व्यवहार पकड़ने में मदद करता है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A school builds a model to predict which students may need extra help in Maths. Give two reasons why it must be evaluated before teachers use it.",
+       "hi": "एक स्कूल यह अनुमान लगाने वाला मॉडल बनाता है कि किन विद्यार्थियों को गणित में अतिरिक्त मदद की ज़रूरत हो सकती है। शिक्षकों के उपयोग से पहले इसका मूल्यांकन क्यों ज़रूरी है, दो कारण दीजिए।"
+      },
+      "a": {
+       "en": "Step 1: If the model misses students who need help, those students will not get support, so we must measure how many it misses.\nStep 2: If it wrongly labels capable students as weak, it may hurt their confidence, so we must measure false alarms too.\nStep 3: Evaluation also checks that the model is fair to boys and girls, and to students from different backgrounds.",
+       "hi": "चरण 1: यदि मॉडल उन विद्यार्थियों को छोड़ दे जिन्हें मदद चाहिए, तो उन्हें सहायता नहीं मिलेगी, इसलिए मापना होगा कि वह कितनों को छोड़ता है।\nचरण 2: यदि वह सक्षम विद्यार्थियों को गलत तरीके से कमज़ोर बता दे, तो उनका आत्मविश्वास टूट सकता है, इसलिए गलत चेतावनियाँ भी मापनी होंगी।\nचरण 3: मूल्यांकन यह भी जाँचता है कि मॉडल लड़कों और लड़कियों, और अलग-अलग पृष्ठभूमि के विद्यार्थियों के साथ न्यायपूर्ण है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.3 Evaluation techniques: the train-test split",
+    "hi": "3.3 मूल्यांकन की तकनीकें: ट्रेन-टेस्ट स्प्लिट"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Which evaluation technique we use depends on the type of model and its purpose, but the most basic idea is common to almost all: never judge a model only on the data it learnt from. The simplest way to follow this rule is the train-test split.",
+      "hi": "हम कौन-सी मूल्यांकन तकनीक अपनाते हैं, यह मॉडल के प्रकार और उद्देश्य पर निर्भर करता है, पर एक मूल विचार लगभग सभी में समान है: मॉडल को केवल उसी डेटा पर मत परखो जिससे उसने सीखा है। इस नियम को मानने का सबसे सरल तरीका ट्रेन-टेस्ट स्प्लिट (train-test split) है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Train-test split",
+       "hi": "ट्रेन-टेस्ट स्प्लिट (Train-test split)"
+      },
+      "text": {
+       "en": "Train-test split is a technique in which the dataset is divided into two parts: a training set, used to teach (fit) the model, and a testing set, kept aside and used only to check how well the trained model performs on data it has never seen.",
+       "hi": "ट्रेन-टेस्ट स्प्लिट वह तकनीक है जिसमें डेटासेट को दो भागों में बाँटा जाता है: ट्रेनिंग सेट, जिससे मॉडल को सिखाया जाता है, और टेस्टिंग सेट, जिसे अलग रखा जाता है और केवल यह जाँचने के लिए उपयोग किया जाता है कि प्रशिक्षित मॉडल ऐसे डेटा पर कितना अच्छा काम करता है जो उसने कभी नहीं देखा।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A common choice is 80% of the rows for training and 20% for testing (some projects use 70:30 or 75:25). The rows should be picked randomly so that both parts contain a fair mix of all kinds of examples. The train-test split works best when the dataset is large, because then even the 20% testing part has enough examples to give a trustworthy score.",
+      "hi": "एक आम विकल्प है 80% पंक्तियाँ ट्रेनिंग के लिए और 20% टेस्टिंग के लिए (कुछ प्रोजेक्ट 70:30 या 75:25 भी लेते हैं)। पंक्तियाँ यादृच्छिक (random) रूप से चुनी जानी चाहिए ताकि दोनों भागों में हर तरह के उदाहरणों का उचित मिश्रण हो। ट्रेन-टेस्ट स्प्लिट तब सबसे अच्छा काम करता है जब डेटासेट बड़ा हो, क्योंकि तब 20% टेस्टिंग भाग में भी इतने उदाहरण होते हैं कि भरोसेमंद अंक मिल सके।"
+     }
+    },
+    {
+     "p": {
+      "en": "Picture the split as a long table of 1,000 rows of past loan applications. Shuffle the rows like a pack of cards, take the first 800 rows into a box marked 'Train' and the last 200 into a box marked 'Test'. The model studies only the Train box. Then we hide the answers in the Test box, let the model predict them, and compare its predictions with the hidden answers.",
+      "hi": "स्प्लिट को पिछले ऋण आवेदनों की 1,000 पंक्तियों वाली एक लंबी तालिका की तरह सोचिए। पंक्तियों को ताश की गड्डी की तरह फेंटिए, पहली 800 पंक्तियाँ 'Train' लिखे डिब्बे में और आखिरी 200 'Test' लिखे डिब्बे में रख दीजिए। मॉडल केवल Train डिब्बा पढ़ता है। फिर हम Test डिब्बे के उत्तर छिपा देते हैं, मॉडल से उनका अनुमान लगवाते हैं, और उसके अनुमानों की तुलना छिपे उत्तरों से करते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Overfitting",
+       "hi": "ओवरफिटिंग (Overfitting)"
+      },
+      "text": {
+       "en": "Overfitting happens when a model learns the training data too closely, including its noise and accidental details, so it scores almost perfectly on training data but performs poorly on new data. It is like a student who memorises answers to last year's paper word for word and fails when the questions are changed slightly.",
+       "hi": "ओवरफिटिंग तब होती है जब मॉडल ट्रेनिंग डेटा को बहुत बारीकी से, उसकी गड़बड़ियों (noise) और संयोगवश आए विवरणों समेत, रट लेता है; इसलिए वह ट्रेनिंग डेटा पर लगभग पूरे अंक लाता है पर नए डेटा पर खराब प्रदर्शन करता है। यह उस विद्यार्थी जैसा है जो पिछले साल के प्रश्नपत्र के उत्तर शब्दशः रट लेता है और प्रश्न थोड़े बदलते ही असफल हो जाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "If we test a model on the same data used for training, it will usually look excellent because it has already seen those answers. That score hides overfitting. The separate test set reveals it. The opposite problem, underfitting, is when the model is too simple to learn even the training data well; it scores poorly on both training and testing data. A good model sits in the middle: it does well on training data and nearly as well on testing data. This is called generalisation.",
+      "hi": "यदि हम मॉडल को उसी डेटा पर परखें जिस पर उसे सिखाया गया, तो वह आमतौर पर बहुत अच्छा दिखेगा क्योंकि वह उन उत्तरों को पहले देख चुका है। वह अंक ओवरफिटिंग को छिपा देता है। अलग टेस्ट सेट उसे उजागर करता है। इसकी उलटी समस्या अंडरफिटिंग (underfitting) है, जब मॉडल इतना सरल हो कि ट्रेनिंग डेटा भी ठीक से न सीख पाए; वह ट्रेनिंग और टेस्टिंग दोनों पर कम अंक लाता है। अच्छा मॉडल बीच में होता है: ट्रेनिंग डेटा पर अच्छा और टेस्टिंग डेटा पर लगभग उतना ही अच्छा। इसे सामान्यीकरण (generalisation) कहते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Situation",
+        "Training score",
+        "Testing score",
+        "What it means"
+       ],
+       "hi": [
+        "स्थिति",
+        "ट्रेनिंग अंक",
+        "टेस्टिंग अंक",
+        "इसका अर्थ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Overfitting",
+         "Very high (e.g. 99%)",
+         "Much lower (e.g. 70%)",
+         "Model memorised; does not generalise"
+        ],
+        [
+         "Underfitting",
+         "Low (e.g. 60%)",
+         "Low (e.g. 58%)",
+         "Model too simple; has not learnt the pattern"
+        ],
+        [
+         "Good fit",
+         "High (e.g. 92%)",
+         "Close (e.g. 89%)",
+         "Model learnt the real pattern"
+        ]
+       ],
+       "hi": [
+        [
+         "ओवरफिटिंग",
+         "बहुत अधिक (जैसे 99%)",
+         "काफ़ी कम (जैसे 70%)",
+         "मॉडल ने रटा है; सामान्यीकरण नहीं करता"
+        ],
+        [
+         "अंडरफिटिंग",
+         "कम (जैसे 60%)",
+         "कम (जैसे 58%)",
+         "मॉडल बहुत सरल; पैटर्न नहीं सीखा"
+        ],
+        [
+         "अच्छा फ़िट",
+         "अधिक (जैसे 92%)",
+         "पास-पास (जैसे 89%)",
+         "मॉडल ने असली पैटर्न सीखा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: The test set must stay 'sealed' until the end. If you keep changing the model after looking at test results again and again, the test set slowly stops being 'unseen'. Large projects therefore also keep a third part called a validation set, or use cross-validation (splitting the data into several folds and testing on each fold in turn). For Class 10, knowing the simple train-test split is enough.",
+      "hi": "याद रखें: टेस्ट सेट अंत तक 'सील बंद' रहना चाहिए। यदि आप बार-बार टेस्ट परिणाम देखकर मॉडल बदलते रहें, तो टेस्ट सेट धीरे-धीरे 'अनदेखा' नहीं रहता। इसलिए बड़े प्रोजेक्ट एक तीसरा भाग, वैलिडेशन सेट (validation set), भी रखते हैं, या क्रॉस-वैलिडेशन (cross-validation) करते हैं (डेटा को कई हिस्सों में बाँटकर बारी-बारी से हर हिस्से पर परखना)। कक्षा 10 के लिए सरल ट्रेन-टेस्ट स्प्लिट जानना पर्याप्त है।"
+     }
+    },
+    {
+     "p": {
+      "en": "In Python, the scikit-learn library has a ready function for this. The program below splits data of 20 students in the ratio 80:20 and then prints a confusion matrix (you will learn this in Section 3.6) for 8 test predictions. Its real output is shown after it.",
+      "hi": "Python में scikit-learn लाइब्रेरी में इसके लिए तैयार फ़ंक्शन है। नीचे का प्रोग्राम 20 विद्यार्थियों के डेटा को 80:20 के अनुपात में बाँटता है और फिर 8 टेस्ट अनुमानों के लिए एक confusion matrix (जिसे आप खंड 3.6 में सीखेंगे) छापता है। इसका असली आउटपुट इसके बाद दिखाया गया है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.model_selection import train_test_split\nfrom sklearn.metrics import confusion_matrix, accuracy_score\n\nmarks = list(range(1, 21))          # 20 students (feature)\nresult = [0]*8 + [1]*12             # 0 = fail, 1 = pass (label)\n\nX_train, X_test, y_train, y_test = train_test_split(\n    marks, result, test_size=0.2, random_state=1)\n\nprint(\"Training rows:\", len(X_train))\nprint(\"Testing rows :\", len(X_test))\n\nactual    = [1, 0, 1, 1, 0, 1, 0, 0]\npredicted = [1, 0, 0, 1, 1, 1, 0, 0]\nprint(confusion_matrix(actual, predicted, labels=[1, 0]))\nprint(\"Accuracy:\", accuracy_score(actual, predicted))",
+      "hi": "from sklearn.model_selection import train_test_split\nfrom sklearn.metrics import confusion_matrix, accuracy_score\n\nmarks = list(range(1, 21))          # 20 students (feature)\nresult = [0]*8 + [1]*12             # 0 = fail, 1 = pass (label)\n\nX_train, X_test, y_train, y_test = train_test_split(\n    marks, result, test_size=0.2, random_state=1)\n\nprint(\"Training rows:\", len(X_train))\nprint(\"Testing rows :\", len(X_test))\n\nactual    = [1, 0, 1, 1, 0, 1, 0, 0]\npredicted = [1, 0, 0, 1, 1, 1, 0, 0]\nprint(confusion_matrix(actual, predicted, labels=[1, 0]))\nprint(\"Accuracy:\", accuracy_score(actual, predicted))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nTraining rows: 16\nTesting rows : 4\n[[3 1]\n [1 3]]\nAccuracy: 0.75",
+      "hi": "आउटपुट:\nTraining rows: 16\nTesting rows : 4\n[[3 1]\n [1 3]]\nAccuracy: 0.75"
+     }
+    },
+    {
+     "note": {
+      "en": "In the printed matrix, with labels=[1, 0], the first row is actual 1 (pass) and the second row is actual 0 (fail); the first column is predicted 1 and the second column predicted 0. So TP = 3, FN = 1, FP = 1, TN = 3, and accuracy = 6/8 = 0.75.",
+      "hi": "छपे हुए मैट्रिक्स में, labels=[1, 0] के साथ, पहली पंक्ति वास्तविक 1 (पास) और दूसरी पंक्ति वास्तविक 0 (फ़ेल) है; पहला स्तंभ अनुमानित 1 और दूसरा स्तंभ अनुमानित 0 है। इसलिए TP = 3, FN = 1, FP = 1, TN = 3, और accuracy = 6/8 = 0.75।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.4 Accuracy and error",
+    "hi": "3.4 सटीकता (Accuracy) और त्रुटि (Error)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Error",
+       "hi": "त्रुटि (Error)"
+      },
+      "text": {
+       "en": "Error is the difference between what the model predicted and the actual (true) outcome. Small error means the prediction was close; zero error means it was exactly right.",
+       "hi": "त्रुटि वह अंतर है जो मॉडल के अनुमान और वास्तविक (सही) परिणाम के बीच होता है। छोटी त्रुटि का अर्थ है अनुमान पास था; शून्य त्रुटि का अर्थ है वह बिल्कुल सही था।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Accuracy",
+       "hi": "सटीकता (Accuracy)"
+      },
+      "text": {
+       "en": "Accuracy tells how often, or how closely, the model's predictions match the actual values. Higher accuracy means a better-performing model on that data.",
+       "hi": "सटीकता बताती है कि मॉडल के अनुमान कितनी बार, या कितनी निकटता से, वास्तविक मानों से मेल खाते हैं। अधिक सटीकता का अर्थ है उस डेटा पर बेहतर प्रदर्शन करने वाला मॉडल।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "For a model that predicts a number (such as a price, temperature or rainfall), we can work out error and accuracy for each prediction with four steps:",
+      "hi": "जो मॉडल कोई संख्या अनुमानित करता है (जैसे कीमत, तापमान या वर्षा), उसके हर अनुमान की त्रुटि और सटीकता चार चरणों में निकाली जा सकती है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Absolute error = | Actual value − Predicted value |\nError rate = Absolute error ÷ Actual value\nAccuracy = 1 − Error rate\nAccuracy % = Accuracy × 100",
+      "hi": "निरपेक्ष त्रुटि (Absolute error) = | वास्तविक मान − अनुमानित मान |\nत्रुटि दर (Error rate) = निरपेक्ष त्रुटि ÷ वास्तविक मान\nसटीकता (Accuracy) = 1 − त्रुटि दर\nसटीकता % = सटीकता × 100"
+     }
+    },
+    {
+     "p": {
+      "en": "The vertical bars | | mean 'absolute value': we ignore the minus sign, because predicting 5 lakh too low is as much an error as predicting 5 lakh too high. To get the accuracy of the whole model, we take the mean (average) of the accuracy of all the predictions.",
+      "hi": "खड़ी रेखाएँ | | 'निरपेक्ष मान' दर्शाती हैं: हम ऋण चिह्न को छोड़ देते हैं, क्योंकि 5 लाख कम अनुमान लगाना उतनी ही त्रुटि है जितनी 5 लाख ज़्यादा अनुमान लगाना। पूरे मॉडल की सटीकता पाने के लिए हम सभी अनुमानों की सटीकता का माध्य (औसत) लेते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A model predicts flat prices (in lakh ₹) in Pune. Actual: 50, 80, 40, 120, 65. Predicted: 45, 88, 40, 108, 70. Find the accuracy % of each prediction and the overall accuracy.",
+       "hi": "एक मॉडल पुणे में फ़्लैटों की कीमतें (लाख ₹ में) अनुमानित करता है। वास्तविक: 50, 80, 40, 120, 65। अनुमानित: 45, 88, 40, 108, 70। हर अनुमान की सटीकता % और कुल सटीकता ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1 (50 vs 45): error = 5, error rate = 5/50 = 0.10, accuracy = 0.90 → 90%.\nStep 2 (80 vs 88): error = 8, rate = 8/80 = 0.10 → 90%.\nStep 3 (40 vs 40): error = 0 → 100%.\nStep 4 (120 vs 108): error = 12, rate = 12/120 = 0.10 → 90%.\nStep 5 (65 vs 70): error = 5, rate = 5/65 ≈ 0.077 → about 92.3%.\nStep 6: Overall accuracy = (90 + 90 + 100 + 90 + 92.3) ÷ 5 ≈ 92.5%.",
+       "hi": "चरण 1 (50 बनाम 45): त्रुटि = 5, त्रुटि दर = 5/50 = 0.10, सटीकता = 0.90 → 90%।\nचरण 2 (80 बनाम 88): त्रुटि = 8, दर = 8/80 = 0.10 → 90%।\nचरण 3 (40 बनाम 40): त्रुटि = 0 → 100%।\nचरण 4 (120 बनाम 108): त्रुटि = 12, दर = 12/120 = 0.10 → 90%।\nचरण 5 (65 बनाम 70): त्रुटि = 5, दर = 5/65 ≈ 0.077 → लगभग 92.3%।\nचरण 6: कुल सटीकता = (90 + 90 + 100 + 90 + 92.3) ÷ 5 ≈ 92.5%।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The same calculation in Python (real output below):",
+      "hi": "यही गणना Python में (असली आउटपुट नीचे):"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Accuracy of a house-price model (prices in lakh rupees)\nactual    = [50, 80, 40, 120, 65]\npredicted = [45, 88, 40, 108, 70]\n\ntotal = 0\nfor a, p in zip(actual, predicted):\n    error = abs(a - p)\n    error_rate = error / a\n    acc = 1 - error_rate\n    total += acc\n    print(a, p, \"error =\", error, \" accuracy % =\", round(acc * 100, 1))\n\nprint(\"Overall accuracy % =\", round(total / len(actual) * 100, 1))",
+      "hi": "# Accuracy of a house-price model (prices in lakh rupees)\nactual    = [50, 80, 40, 120, 65]\npredicted = [45, 88, 40, 108, 70]\n\ntotal = 0\nfor a, p in zip(actual, predicted):\n    error = abs(a - p)\n    error_rate = error / a\n    acc = 1 - error_rate\n    total += acc\n    print(a, p, \"error =\", error, \" accuracy % =\", round(acc * 100, 1))\n\nprint(\"Overall accuracy % =\", round(total / len(actual) * 100, 1))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n50 45 error = 5  accuracy % = 90.0\n80 88 error = 8  accuracy % = 90.0\n40 40 error = 0  accuracy % = 100.0\n120 108 error = 12  accuracy % = 90.0\n65 70 error = 5  accuracy % = 92.3\nOverall accuracy % = 92.5",
+      "hi": "आउटपुट:\n50 45 error = 5  accuracy % = 90.0\n80 88 error = 8  accuracy % = 90.0\n40 40 error = 0  accuracy % = 100.0\n120 108 error = 12  accuracy % = 90.0\n65 70 error = 5  accuracy % = 92.3\nOverall accuracy % = 92.5"
+     }
+    },
+    {
+     "p": {
+      "en": "For number-predicting (regression) models, data scientists also use summary error measures. You may see these in projects; they are useful extra knowledge:",
+      "hi": "संख्या अनुमानित करने वाले (regression) मॉडलों के लिए डेटा वैज्ञानिक कुछ सारांश त्रुटि माप भी उपयोग करते हैं। आप इन्हें प्रोजेक्टों में देख सकते हैं; ये उपयोगी अतिरिक्त जानकारी हैं:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Mean Absolute Error (MAE) = average of | Actual − Predicted |\nMean Squared Error (MSE) = average of (Actual − Predicted)²\nRoot Mean Squared Error (RMSE) = √MSE",
+      "hi": "माध्य निरपेक्ष त्रुटि (MAE) = | वास्तविक − अनुमानित | का औसत\nमाध्य वर्ग त्रुटि (MSE) = (वास्तविक − अनुमानित)² का औसत\nमूल माध्य वर्ग त्रुटि (RMSE) = √MSE"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the MAE for the Pune example above.",
+       "hi": "ऊपर के पुणे उदाहरण के लिए MAE ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Absolute errors are 5, 8, 0, 12, 5.\nStep 2: Sum = 30.\nStep 3: MAE = 30 ÷ 5 = 6 lakh ₹. On average, the model is off by about 6 lakh rupees.",
+       "hi": "चरण 1: निरपेक्ष त्रुटियाँ 5, 8, 0, 12, 5 हैं।\nचरण 2: योग = 30।\nचरण 3: MAE = 30 ÷ 5 = 6 लाख ₹। औसतन मॉडल लगभग 6 लाख रुपये गलत होता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: For numbers, lower error = better model. For classification (choosing a category), we count right and wrong answers instead, using a confusion matrix.",
+      "hi": "याद रखें: संख्याओं के लिए कम त्रुटि = बेहतर मॉडल। वर्गीकरण (कोई श्रेणी चुनना) के लिए हम इसके बजाय सही और गलत उत्तर गिनते हैं, confusion matrix की मदद से।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.5 Classification and its evaluation",
+    "hi": "3.5 वर्गीकरण (Classification) और उसका मूल्यांकन"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Classification",
+       "hi": "वर्गीकरण (Classification)"
+      },
+      "text": {
+       "en": "Classification is the task of putting each item into one of a fixed set of categories (classes) based on its features. For example, sorting items in a kirana shop into 'fruits and vegetables' or 'grocery', or deciding whether an email is 'spam' or 'not spam'.",
+       "hi": "वर्गीकरण किसी वस्तु को उसकी विशेषताओं (features) के आधार पर पहले से तय श्रेणियों (classes) में से एक में रखने का काम है। जैसे किराने की दुकान की चीज़ों को 'फल और सब्ज़ियाँ' या 'राशन' में छाँटना, या तय करना कि कोई ईमेल 'spam' है या 'not spam'।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "When there are only two classes, it is called binary classification. We usually call the class we are trying to detect the 'positive' class (often written as 1) and the other the 'negative' class (0). 'Positive' does not mean good; it only means 'the thing we are looking for'. In a disease test, 'positive' means the disease is present.",
+      "hi": "जब केवल दो वर्ग हों, तो इसे बाइनरी वर्गीकरण (binary classification) कहते हैं। जिस वर्ग को हम पहचानना चाहते हैं उसे आमतौर पर 'positive' वर्ग (अक्सर 1 लिखा जाता है) और दूसरे को 'negative' वर्ग (0) कहते हैं। 'Positive' का अर्थ अच्छा नहीं है; इसका अर्थ केवल 'वह चीज़ जिसे हम ढूँढ रहे हैं' है। बीमारी की जाँच में 'positive' का अर्थ है बीमारी मौजूद है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Problem",
+        "Positive class (1)",
+        "Negative class (0)"
+       ],
+       "hi": [
+        "समस्या",
+        "Positive वर्ग (1)",
+        "Negative वर्ग (0)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Credit card / UPI fraud detection",
+         "Fraud",
+         "Genuine transaction"
+        ],
+        [
+         "Email filter",
+         "Spam",
+         "Not spam"
+        ],
+        [
+         "Crop-disease app",
+         "Diseased leaf",
+         "Healthy leaf"
+        ],
+        [
+         "Medical test",
+         "Disease present",
+         "Disease absent"
+        ],
+        [
+         "Forest-fire alarm",
+         "Fire",
+         "No fire"
+        ]
+       ],
+       "hi": [
+        [
+         "क्रेडिट कार्ड / UPI धोखाधड़ी पहचान",
+         "धोखाधड़ी (Fraud)",
+         "असली लेन-देन"
+        ],
+        [
+         "ईमेल फ़िल्टर",
+         "Spam",
+         "Spam नहीं"
+        ],
+        [
+         "फ़सल-रोग ऐप",
+         "रोगी पत्ती",
+         "स्वस्थ पत्ती"
+        ],
+        [
+         "चिकित्सा जाँच",
+         "बीमारी मौजूद",
+         "बीमारी नहीं"
+        ],
+        [
+         "जंगल की आग का अलार्म",
+         "आग",
+         "आग नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "For each test example, the model's prediction is either right or wrong, and the actual answer is either positive or negative. That gives exactly four possible outcomes, described next.",
+      "hi": "हर टेस्ट उदाहरण के लिए मॉडल का अनुमान या तो सही होता है या गलत, और वास्तविक उत्तर या तो positive होता है या negative। इससे ठीक चार संभावित परिणाम बनते हैं, जिनका वर्णन आगे है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.6 The confusion matrix",
+    "hi": "3.6 कन्फ़्यूज़न मैट्रिक्स (Confusion matrix)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Confusion matrix",
+       "hi": "कन्फ़्यूज़न मैट्रिक्स (Confusion matrix)"
+      },
+      "text": {
+       "en": "A confusion matrix is a table that compares a classification model's predictions with the actual values and counts how many examples fall into each combination. For two classes it is a 2 × 2 table. It is called 'confusion' matrix because it shows where the model gets confused between classes.",
+       "hi": "कन्फ़्यूज़न मैट्रिक्स एक तालिका है जो वर्गीकरण मॉडल के अनुमानों की तुलना वास्तविक मानों से करती है और गिनती है कि कितने उदाहरण हर संयोजन में आते हैं। दो वर्गों के लिए यह 2 × 2 तालिका होती है। इसे 'confusion' मैट्रिक्स इसलिए कहते हैं क्योंकि यह दिखाती है कि मॉडल किन वर्गों के बीच भ्रमित (confused) होता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "True Positive (TP): the actual value is positive and the model predicted positive. Correct. (A fraud that was caught.)",
+       "True Negative (TN): the actual value is negative and the model predicted negative. Correct. (A genuine payment that was allowed.)",
+       "False Positive (FP): the actual value is negative but the model predicted positive. Wrong. A false alarm, also called a Type I error. (A genuine payment wrongly blocked.)",
+       "False Negative (FN): the actual value is positive but the model predicted negative. Wrong. A miss, also called a Type II error. (A fraud that slipped through.)"
+      ],
+      "hi": [
+       "True Positive (TP): वास्तविक मान positive है और मॉडल ने positive बताया। सही। (पकड़ी गई धोखाधड़ी।)",
+       "True Negative (TN): वास्तविक मान negative है और मॉडल ने negative बताया। सही। (असली भुगतान जिसे होने दिया गया।)",
+       "False Positive (FP): वास्तविक मान negative है पर मॉडल ने positive बताया। गलत। झूठी चेतावनी, जिसे Type I error भी कहते हैं। (असली भुगतान जिसे गलती से रोक दिया गया।)",
+       "False Negative (FN): वास्तविक मान positive है पर मॉडल ने negative बताया। गलत। चूक, जिसे Type II error भी कहते हैं। (धोखाधड़ी जो निकल गई।)"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Memory trick: the second word (Positive / Negative) is what the MODEL said. The first word (True / False) tells whether the model was RIGHT. So 'False Negative' = the model said negative, and it was wrong.",
+      "hi": "याद करने की तरकीब: दूसरा शब्द (Positive / Negative) वह है जो मॉडल ने कहा। पहला शब्द (True / False) बताता है कि मॉडल सही था या नहीं। इसलिए 'False Negative' = मॉडल ने negative कहा, और वह गलत था।"
+     }
+    },
+    {
+     "p": {
+      "en": "In the layout used in this book, actual values run down the side (rows) and predicted values run across the top (columns):",
+      "hi": "इस पुस्तक में उपयोग किए गए ढाँचे में वास्तविक मान बगल में (पंक्तियाँ) और अनुमानित मान ऊपर (स्तंभ) होते हैं:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Actual ↓ / Predicted →",
+        "Predicted: Positive (1)",
+        "Predicted: Negative (0)"
+       ],
+       "hi": [
+        "वास्तविक ↓ / अनुमानित →",
+        "अनुमानित: Positive (1)",
+        "अनुमानित: Negative (0)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Actual: Positive (1)",
+         "TP",
+         "FN (Type II)"
+        ],
+        [
+         "Actual: Negative (0)",
+         "FP (Type I)",
+         "TN"
+        ]
+       ],
+       "hi": [
+        [
+         "वास्तविक: Positive (1)",
+         "TP",
+         "FN (Type II)"
+        ],
+        [
+         "वास्तविक: Negative (0)",
+         "FP (Type I)",
+         "TN"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Some books and software put predicted values on the rows and actual values on the columns (the older CBSE handbook drew a 'Prediction vs Reality' table that way). The four boxes keep the same meaning; only their positions change. Always read the row and column labels before calculating.",
+      "hi": "याद रखें: कुछ पुस्तकें और सॉफ़्टवेयर अनुमानित मान पंक्तियों पर और वास्तविक मान स्तंभों पर रखते हैं (पुरानी CBSE हैंडबुक ने 'Prediction vs Reality' तालिका इसी तरह बनाई थी)। चारों खानों का अर्थ वही रहता है; केवल उनकी जगह बदलती है। गणना से पहले हमेशा पंक्ति और स्तंभ के लेबल पढ़ें।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A forest-fire detection model is tested on 43 days. On 18 days there really was a fire; it raised an alarm on 12 of them. On 25 days there was no fire; it raised a wrong alarm on 4 of them. Make the confusion matrix.",
+       "hi": "एक जंगल-आग पहचान मॉडल को 43 दिनों पर परखा गया। 18 दिन सचमुच आग लगी थी; उनमें से 12 पर उसने अलार्म दिया। 25 दिन आग नहीं थी; उनमें से 4 पर उसने गलत अलार्म दिया। कन्फ़्यूज़न मैट्रिक्स बनाइए।"
+      },
+      "a": {
+       "en": "Step 1: Fire days with alarm = TP = 12.\nStep 2: Fire days without alarm = FN = 18 − 12 = 6.\nStep 3: No-fire days with alarm = FP = 4.\nStep 4: No-fire days without alarm = TN = 25 − 4 = 21.\nStep 5: Check: 12 + 6 + 4 + 21 = 43 days. ✔\nMatrix (rows = actual, columns = predicted): Fire row: 12 | 6; No-fire row: 4 | 21.",
+       "hi": "चरण 1: आग वाले दिन जिन पर अलार्म बजा = TP = 12।\nचरण 2: आग वाले दिन जिन पर अलार्म नहीं बजा = FN = 18 − 12 = 6।\nचरण 3: बिना आग वाले दिन जिन पर अलार्म बजा = FP = 4।\nचरण 4: बिना आग वाले दिन जिन पर अलार्म नहीं बजा = TN = 25 − 4 = 21।\nचरण 5: जाँच: 12 + 6 + 4 + 21 = 43 दिन। ✔\nमैट्रिक्स (पंक्तियाँ = वास्तविक, स्तंभ = अनुमानित): आग पंक्ति: 12 | 6; बिना आग पंक्ति: 4 | 21।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A confusion matrix can also be larger. A model that sorts fruit photos into apple, banana and mango gives a 3 × 3 matrix. The diagonal from top-left to bottom-right holds the correct predictions; every box off the diagonal is a mistake and shows which class was confused with which.",
+      "hi": "कन्फ़्यूज़न मैट्रिक्स बड़ा भी हो सकता है। जो मॉडल फलों की तस्वीरों को सेब, केला और आम में छाँटता है, वह 3 × 3 मैट्रिक्स देता है। ऊपर-बाएँ से नीचे-दाएँ तक का विकर्ण (diagonal) सही अनुमान रखता है; विकर्ण से बाहर का हर खाना एक गलती है और दिखाता है कि कौन-सा वर्ग किससे भ्रमित हुआ।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.7 Classification accuracy",
+    "hi": "3.7 वर्गीकरण सटीकता (Classification accuracy)"
+   },
+   "blocks": [
+    {
+     "formula": {
+      "en": "Accuracy = (TP + TN) ÷ (TP + TN + FP + FN)\n(= correct predictions ÷ total predictions)",
+      "hi": "Accuracy = (TP + TN) ÷ (TP + TN + FP + FN)\n(= सही अनुमान ÷ कुल अनुमान)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the accuracy of the forest-fire model (TP = 12, FN = 6, FP = 4, TN = 21).",
+       "hi": "जंगल-आग मॉडल (TP = 12, FN = 6, FP = 4, TN = 21) की accuracy ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Correct = TP + TN = 12 + 21 = 33.\nStep 2: Total = 43.\nStep 3: Accuracy = 33 ÷ 43 ≈ 0.767, that is about 76.7%.",
+       "hi": "चरण 1: सही = TP + TN = 12 + 21 = 33।\nचरण 2: कुल = 43।\nचरण 3: Accuracy = 33 ÷ 43 ≈ 0.767, अर्थात लगभग 76.7%।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Accuracy is easy to understand, but it can be misleading when one class is very rare. This is called an imbalanced dataset.",
+      "hi": "Accuracy समझने में आसान है, पर जब एक वर्ग बहुत दुर्लभ हो तो यह भ्रामक हो सकती है। इसे असंतुलित डेटासेट (imbalanced dataset) कहते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Out of 1,000 UPI transactions, only 10 are fraud. A lazy model says 'genuine' for every transaction. What is its accuracy? Is it a good model?",
+       "hi": "1,000 UPI लेन-देनों में से केवल 10 धोखाधड़ी हैं। एक आलसी मॉडल हर लेन-देन को 'असली' बताता है। उसकी accuracy क्या है? क्या यह अच्छा मॉडल है?"
+      },
+      "a": {
+       "en": "Step 1: TP = 0 (no fraud caught), FN = 10, FP = 0, TN = 990.\nStep 2: Accuracy = (0 + 990) ÷ 1000 = 0.99 = 99%.\nStep 3: Even with 99% accuracy, it catches zero frauds, so it is useless for its purpose. Accuracy alone is not enough; we need precision and recall.",
+       "hi": "चरण 1: TP = 0 (कोई धोखाधड़ी नहीं पकड़ी), FN = 10, FP = 0, TN = 990।\nचरण 2: Accuracy = (0 + 990) ÷ 1000 = 0.99 = 99%।\nचरण 3: 99% accuracy होने पर भी यह एक भी धोखाधड़ी नहीं पकड़ता, इसलिए अपने उद्देश्य के लिए बेकार है। केवल accuracy पर्याप्त नहीं; हमें precision और recall चाहिए।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.8 Precision",
+    "hi": "3.8 प्रिसिज़न (Precision)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Precision",
+       "hi": "प्रिसिज़न (Precision)"
+      },
+      "text": {
+       "en": "Precision is the fraction of the model's positive predictions that are actually positive. It answers: 'When the model says YES, how often is it right?'",
+       "hi": "Precision मॉडल के positive अनुमानों का वह अंश है जो वास्तव में positive हैं। यह इस प्रश्न का उत्तर देता है: 'जब मॉडल हाँ कहता है, तो वह कितनी बार सही होता है?'"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Precision = TP ÷ (TP + FP)",
+      "hi": "Precision = TP ÷ (TP + FP)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A spam filter moves 10 emails to the spam folder. 9 of them are really spam and 1 is your school's exam notice. Find the precision.",
+       "hi": "एक spam फ़िल्टर 10 ईमेल spam फ़ोल्डर में डालता है। उनमें से 9 सचमुच spam हैं और 1 आपके स्कूल की परीक्षा सूचना है। Precision ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: TP = 9, FP = 1.\nStep 2: Precision = 9 ÷ (9 + 1) = 0.9 = 90%.",
+       "hi": "चरण 1: TP = 9, FP = 1।\nचरण 2: Precision = 9 ÷ (9 + 1) = 0.9 = 90%।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Precision matters most when a false positive is costly. A spam filter with low precision hides important mail. Imagine a model that decides whether the weather is safe for a satellite launch, with 'safe' as the positive class: a false positive means launching on a bad-weather day, which could destroy a costly rocket, so precision must be very high. Similarly, a model that recommends which customers get a special loan offer should not wrongly pick people who cannot repay.",
+      "hi": "Precision सबसे अधिक तब मायने रखता है जब false positive महँगा हो। कम precision वाला spam फ़िल्टर ज़रूरी मेल छिपा देता है। सोचिए एक मॉडल तय करता है कि उपग्रह प्रक्षेपण के लिए मौसम सुरक्षित है या नहीं, जिसमें 'सुरक्षित' positive वर्ग है: false positive का अर्थ है खराब मौसम वाले दिन प्रक्षेपण, जिससे महँगा रॉकेट नष्ट हो सकता है, इसलिए precision बहुत अधिक होना चाहिए। इसी तरह जो मॉडल तय करता है कि किन ग्राहकों को विशेष ऋण ऑफ़र मिले, उसे ऐसे लोगों को गलती से नहीं चुनना चाहिए जो चुका न सकें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.9 Recall",
+    "hi": "3.9 रिकॉल (Recall)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Recall (Sensitivity, True Positive Rate)",
+       "hi": "रिकॉल (Recall) (Sensitivity, True Positive Rate)"
+      },
+      "text": {
+       "en": "Recall is the fraction of all actually positive cases that the model correctly finds. It answers: 'Of all the real YES cases, how many did the model catch?'",
+       "hi": "Recall सभी वास्तविक positive मामलों का वह अंश है जिसे मॉडल सही पहचानता है। यह इस प्रश्न का उत्तर देता है: 'सभी असली हाँ वाले मामलों में से मॉडल ने कितने पकड़े?'"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Recall = TP ÷ (TP + FN)",
+      "hi": "Recall = TP ÷ (TP + FN)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A bank's fraud model checks a day's transactions. There were 3 actual frauds; the model caught 1 and missed 2. Find recall.",
+       "hi": "एक बैंक का धोखाधड़ी मॉडल एक दिन के लेन-देन जाँचता है। 3 वास्तविक धोखाधड़ियाँ थीं; मॉडल ने 1 पकड़ी और 2 छोड़ दीं। Recall ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: TP = 1, FN = 2.\nStep 2: Recall = 1 ÷ (1 + 2) = 1/3 ≈ 0.33 = 33%.\nStep 3: The model misses two out of three frauds, which is poor for a fraud system.",
+       "hi": "चरण 1: TP = 1, FN = 2।\nचरण 2: Recall = 1 ÷ (1 + 2) = 1/3 ≈ 0.33 = 33%।\nचरण 3: मॉडल तीन में से दो धोखाधड़ियाँ छोड़ देता है, जो धोखाधड़ी सिस्टम के लिए खराब है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Recall matters most when a false negative is costly. In a test for an infectious disease such as COVID-19, a missed positive patient (FN) goes home untreated and may infect others, so recall must be high. In fraud detection, missing a real fraud loses money, while a false alarm only means the bank sends an SMS to check, so recall is usually given priority. A forest-fire or flood-warning system should also have high recall.",
+      "hi": "Recall सबसे अधिक तब मायने रखता है जब false negative महँगा हो। COVID-19 जैसी संक्रामक बीमारी की जाँच में छूटा हुआ positive मरीज़ (FN) बिना इलाज घर चला जाता है और दूसरों को संक्रमित कर सकता है, इसलिए recall अधिक होना चाहिए। धोखाधड़ी पहचान में असली धोखाधड़ी छूटने से पैसा जाता है, जबकि झूठी चेतावनी का अर्थ केवल इतना है कि बैंक जाँच के लिए SMS भेजता है, इसलिए आमतौर पर recall को प्राथमिकता दी जाती है। जंगल की आग या बाढ़ चेतावनी सिस्टम का recall भी अधिक होना चाहिए।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Metric",
+        "Question it answers",
+        "Formula",
+        "High value needed when…"
+       ],
+       "hi": [
+        "मेट्रिक",
+        "किस प्रश्न का उत्तर",
+        "सूत्र",
+        "अधिक मान कब ज़रूरी…"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Accuracy",
+         "How many predictions were right overall?",
+         "(TP+TN)/All",
+         "Classes are balanced and both errors cost about the same"
+        ],
+        [
+         "Precision",
+         "When it says yes, is it right?",
+         "TP/(TP+FP)",
+         "False positives are costly (spam, satellite launch)"
+        ],
+        [
+         "Recall",
+         "Did it catch all the real yes cases?",
+         "TP/(TP+FN)",
+         "False negatives are costly (disease, fraud, fire)"
+        ]
+       ],
+       "hi": [
+        [
+         "Accuracy",
+         "कुल मिलाकर कितने अनुमान सही थे?",
+         "(TP+TN)/कुल",
+         "वर्ग संतुलित हों और दोनों गलतियों की कीमत लगभग बराबर हो"
+        ],
+        [
+         "Precision",
+         "जब हाँ कहता है, तो क्या सही है?",
+         "TP/(TP+FP)",
+         "False positive महँगे हों (spam, उपग्रह प्रक्षेपण)"
+        ],
+        [
+         "Recall",
+         "क्या उसने सभी असली हाँ मामले पकड़े?",
+         "TP/(TP+FN)",
+         "False negative महँगे हों (बीमारी, धोखाधड़ी, आग)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Precision and recall usually pull against each other. If a fraud model blocks almost every payment, recall becomes very high but precision falls. If it blocks only the most obvious cases, precision rises but recall falls.",
+      "hi": "याद रखें: Precision और recall आमतौर पर एक-दूसरे के विपरीत खिंचते हैं। यदि धोखाधड़ी मॉडल लगभग हर भुगतान रोक दे, तो recall बहुत अधिक हो जाता है पर precision गिर जाता है। यदि वह केवल सबसे स्पष्ट मामले रोके, तो precision बढ़ता है पर recall गिरता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.10 F1 score",
+    "hi": "3.10 F1 स्कोर (F1 score)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "F1 score",
+       "hi": "F1 स्कोर (F1 score)"
+      },
+      "text": {
+       "en": "The F1 score combines precision and recall into one number. It is their harmonic mean, so it is high only when both precision and recall are high. Its value lies between 0 and 1.",
+       "hi": "F1 स्कोर precision और recall को एक संख्या में जोड़ता है। यह उनका हरात्मक माध्य (harmonic mean) है, इसलिए यह तभी अधिक होता है जब precision और recall दोनों अधिक हों। इसका मान 0 और 1 के बीच होता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "F1 score = 2 × Precision × Recall ÷ (Precision + Recall)",
+      "hi": "F1 स्कोर = 2 × Precision × Recall ÷ (Precision + Recall)"
+     }
+    },
+    {
+     "p": {
+      "en": "Use F1 when the dataset is imbalanced and it is not clear whether false positives or false negatives matter more, or when you want a single number to compare models fairly. If precision is 1 and recall is 0, the simple average would be 0.5, but F1 is 0, which correctly shows that the model is useless.",
+      "hi": "F1 का उपयोग तब करें जब डेटासेट असंतुलित हो और स्पष्ट न हो कि false positive अधिक मायने रखते हैं या false negative, या जब मॉडलों की निष्पक्ष तुलना के लिए एक संख्या चाहिए। यदि precision 1 और recall 0 हो, तो साधारण औसत 0.5 होगा, पर F1 0 होगा, जो सही दिखाता है कि मॉडल बेकार है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "For the forest-fire model (TP = 12, FN = 6, FP = 4, TN = 21) find precision, recall and F1.",
+       "hi": "जंगल-आग मॉडल (TP = 12, FN = 6, FP = 4, TN = 21) के लिए precision, recall और F1 ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Precision = 12 ÷ (12 + 4) = 12/16 = 0.75.\nStep 2: Recall = 12 ÷ (12 + 6) = 12/18 ≈ 0.667.\nStep 3: F1 = 2 × 0.75 × 0.667 ÷ (0.75 + 0.667) = 1.0 ÷ 1.417 ≈ 0.706.\nStep 4: Recall is the weaker side; for a fire alarm we would try to raise it.",
+       "hi": "चरण 1: Precision = 12 ÷ (12 + 4) = 12/16 = 0.75।\nचरण 2: Recall = 12 ÷ (12 + 6) = 12/18 ≈ 0.667।\nचरण 3: F1 = 2 × 0.75 × 0.667 ÷ (0.75 + 0.667) = 1.0 ÷ 1.417 ≈ 0.706।\nचरण 4: Recall कमज़ोर पक्ष है; आग के अलार्म के लिए हम इसे बढ़ाने की कोशिश करेंगे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The Python program below counts TP, TN, FP and FN for a spam filter tested on 10 emails and then computes all four metrics. Its real output follows.",
+      "hi": "नीचे का Python प्रोग्राम 10 ईमेल पर परखे गए spam फ़िल्टर के लिए TP, TN, FP और FN गिनता है और फिर चारों मेट्रिक्स निकालता है। इसका असली आउटपुट आगे है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Evaluating a spam filter: actual vs predicted (1 = spam, 0 = not spam)\nactual    = [1, 0, 1, 1, 0, 0, 1, 0, 0, 1]\npredicted = [1, 1, 0, 1, 0, 1, 1, 0, 0, 1]\n\nTP = TN = FP = FN = 0\nfor a, p in zip(actual, predicted):\n    if a == 1 and p == 1:\n        TP += 1\n    elif a == 0 and p == 0:\n        TN += 1\n    elif a == 0 and p == 1:\n        FP += 1\n    else:\n        FN += 1\n\naccuracy = (TP + TN) / (TP + TN + FP + FN)\nprecision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nf1 = 2 * precision * recall / (precision + recall)\n\nprint(\"TP =\", TP, \" TN =\", TN, \" FP =\", FP, \" FN =\", FN)\nprint(\"Accuracy  =\", round(accuracy, 2))\nprint(\"Precision =\", round(precision, 2))\nprint(\"Recall    =\", round(recall, 2))\nprint(\"F1 score  =\", round(f1, 2))",
+      "hi": "# Evaluating a spam filter: actual vs predicted (1 = spam, 0 = not spam)\nactual    = [1, 0, 1, 1, 0, 0, 1, 0, 0, 1]\npredicted = [1, 1, 0, 1, 0, 1, 1, 0, 0, 1]\n\nTP = TN = FP = FN = 0\nfor a, p in zip(actual, predicted):\n    if a == 1 and p == 1:\n        TP += 1\n    elif a == 0 and p == 0:\n        TN += 1\n    elif a == 0 and p == 1:\n        FP += 1\n    else:\n        FN += 1\n\naccuracy = (TP + TN) / (TP + TN + FP + FN)\nprecision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nf1 = 2 * precision * recall / (precision + recall)\n\nprint(\"TP =\", TP, \" TN =\", TN, \" FP =\", FP, \" FN =\", FN)\nprint(\"Accuracy  =\", round(accuracy, 2))\nprint(\"Precision =\", round(precision, 2))\nprint(\"Recall    =\", round(recall, 2))\nprint(\"F1 score  =\", round(f1, 2))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nTP = 4  TN = 3  FP = 2  FN = 1\nAccuracy  = 0.7\nPrecision = 0.67\nRecall    = 0.8\nF1 score  = 0.73",
+      "hi": "आउटपुट:\nTP = 4  TN = 3  FP = 2  FN = 1\nAccuracy  = 0.7\nPrecision = 0.67\nRecall    = 0.8\nF1 score  = 0.73"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Check the program's answer by hand.",
+       "hi": "प्रोग्राम का उत्तर हाथ से जाँचिए।"
+      },
+      "a": {
+       "en": "Step 1: Accuracy = (4 + 3) ÷ 10 = 0.7.\nStep 2: Precision = 4 ÷ (4 + 2) = 0.667 → 0.67.\nStep 3: Recall = 4 ÷ (4 + 1) = 0.8.\nStep 4: F1 = 2 × 0.667 × 0.8 ÷ (0.667 + 0.8) = 1.067 ÷ 1.467 ≈ 0.727 → 0.73. ✔",
+       "hi": "चरण 1: Accuracy = (4 + 3) ÷ 10 = 0.7।\nचरण 2: Precision = 4 ÷ (4 + 2) = 0.667 → 0.67।\nचरण 3: Recall = 4 ÷ (4 + 1) = 0.8।\nचरण 4: F1 = 2 × 0.667 × 0.8 ÷ (0.667 + 0.8) = 1.067 ÷ 1.467 ≈ 0.727 → 0.73। ✔"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.11 Choosing the right metric",
+    "hi": "3.11 सही मेट्रिक चुनना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "There is no single 'best' metric. Ask: which mistake hurts more in this situation, a false positive or a false negative? Then choose the metric that keeps that mistake low.",
+      "hi": "कोई एक 'सबसे अच्छा' मेट्रिक नहीं है। पूछिए: इस स्थिति में कौन-सी गलती अधिक नुकसान करती है, false positive या false negative? फिर वह मेट्रिक चुनिए जो उस गलती को कम रखे।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Scenario",
+        "Costlier mistake",
+        "Metric to focus on"
+       ],
+       "hi": [
+        "परिस्थिति",
+        "अधिक महँगी गलती",
+        "किस मेट्रिक पर ध्यान"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Cancer or TB screening",
+         "FN: a sick person sent home",
+         "Recall"
+        ],
+        [
+         "UPI / card fraud alert",
+         "FN: fraud not stopped",
+         "Recall (keep precision reasonable so users are not annoyed)"
+        ],
+        [
+         "Spam filter",
+         "FP: important mail hidden",
+         "Precision"
+        ],
+        [
+         "Satellite launch 'safe weather' model",
+         "FP: launch in bad weather",
+         "Precision"
+        ],
+        [
+         "Flood or cyclone warning",
+         "FN: no warning before disaster",
+         "Recall"
+        ],
+        [
+         "Fruit sorting with balanced classes",
+         "Both similar",
+         "Accuracy"
+        ],
+        [
+         "Rare disease, unclear trade-off",
+         "Both matter, data imbalanced",
+         "F1 score"
+        ]
+       ],
+       "hi": [
+        [
+         "कैंसर या TB जाँच",
+         "FN: बीमार व्यक्ति घर भेज दिया",
+         "Recall"
+        ],
+        [
+         "UPI / कार्ड धोखाधड़ी चेतावनी",
+         "FN: धोखाधड़ी नहीं रुकी",
+         "Recall (precision उचित रखें ताकि उपयोगकर्ता परेशान न हों)"
+        ],
+        [
+         "Spam फ़िल्टर",
+         "FP: ज़रूरी मेल छिप गई",
+         "Precision"
+        ],
+        [
+         "उपग्रह प्रक्षेपण 'सुरक्षित मौसम' मॉडल",
+         "FP: खराब मौसम में प्रक्षेपण",
+         "Precision"
+        ],
+        [
+         "बाढ़ या चक्रवात चेतावनी",
+         "FN: आपदा से पहले चेतावनी नहीं",
+         "Recall"
+        ],
+        [
+         "संतुलित वर्गों के साथ फल छँटाई",
+         "दोनों समान",
+         "Accuracy"
+        ],
+        [
+         "दुर्लभ बीमारी, अस्पष्ट संतुलन",
+         "दोनों महत्वपूर्ण, डेटा असंतुलित",
+         "F1 स्कोर"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Case study: A city traffic police AI camera flags vehicles for jumping a red light, and an e-challan is sent automatically. Which error is more serious and which metric should the city check carefully?",
+       "hi": "केस स्टडी: शहर की ट्रैफ़िक पुलिस का AI कैमरा लाल बत्ती पार करने वाले वाहनों को चिह्नित करता है, और ई-चालान अपने-आप भेजा जाता है। कौन-सी गलती अधिक गंभीर है और शहर को किस मेट्रिक की ध्यान से जाँच करनी चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: Positive class = 'jumped the light'.\nStep 2: FP = an innocent driver gets a fine. FN = a rule-breaker is missed.\nStep 3: Fining innocent people is unfair and harms trust, so FP is more serious here.\nStep 4: The city should check precision carefully, and a human should review doubtful cases before the challan is sent.",
+       "hi": "चरण 1: Positive वर्ग = 'बत्ती पार की'।\nचरण 2: FP = निर्दोष चालक पर जुर्माना। FN = नियम तोड़ने वाला छूट गया।\nचरण 3: निर्दोष लोगों पर जुर्माना अनुचित है और भरोसा तोड़ता है, इसलिए यहाँ FP अधिक गंभीर है।\nचरण 4: शहर को precision की ध्यान से जाँच करनी चाहिए, और चालान भेजने से पहले संदिग्ध मामलों की समीक्षा किसी इंसान को करनी चाहिए।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.12 Ethical concerns in model evaluation",
+    "hi": "3.12 मॉडल मूल्यांकन में नैतिक चिंताएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Choosing and reporting metrics is not only a technical job. The numbers decide whether a system reaches millions of people, so evaluation must be done responsibly. Chapter 1 discussed ethical frameworks for AI; here we apply them to evaluation.",
+      "hi": "मेट्रिक्स चुनना और रिपोर्ट करना केवल तकनीकी काम नहीं है। ये संख्याएँ तय करती हैं कि कोई सिस्टम लाखों लोगों तक पहुँचेगा या नहीं, इसलिए मूल्यांकन ज़िम्मेदारी से होना चाहिए। अध्याय 1 में AI के नैतिक ढाँचों की चर्चा हुई थी; यहाँ हम उन्हें मूल्यांकन पर लागू करते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Bias: A model can have high overall accuracy yet perform badly for one group, for example a face-recognition system tested mostly on one skin tone, or a voice assistant that understands Hindi well but struggles with Bhojpuri or Tamil-accented speech. Evaluate separately for different groups and make sure the chosen metric does not hide unfair results.",
+       "Transparency: Be open about how the model was tested, on what data, which metrics were used and what the results were, including the weak spots. Do not show only the best-looking number.",
+       "Accountability: The people who build and deploy a model must take responsibility if their choice of metric or evaluation leads to users being harmed, and must fix it.",
+       "Privacy: Test data often contains personal information (health records, bank data). It must be protected and used only with permission.",
+       "Human oversight: For high-stakes decisions (loans, medical diagnosis, legal action), evaluation results should support human decision-makers, not replace them."
+      ],
+      "hi": [
+       "पक्षपात (Bias): किसी मॉडल की कुल accuracy अधिक होने पर भी वह किसी एक समूह के लिए खराब काम कर सकता है, जैसे ज़्यादातर एक ही त्वचा के रंग पर परखा गया चेहरा-पहचान सिस्टम, या वह वॉइस असिस्टेंट जो हिंदी अच्छी समझे पर भोजपुरी या तमिल लहज़े वाली बोली में अटके। अलग-अलग समूहों के लिए अलग मूल्यांकन करें और सुनिश्चित करें कि चुना गया मेट्रिक अनुचित परिणामों को छिपाए नहीं।",
+       "पारदर्शिता (Transparency): खुलकर बताइए कि मॉडल को कैसे, किस डेटा पर परखा गया, कौन-से मेट्रिक्स उपयोग हुए और परिणाम क्या रहे, कमज़ोर पहलुओं समेत। केवल सबसे अच्छी दिखने वाली संख्या न दिखाएँ।",
+       "जवाबदेही (Accountability): मॉडल बनाने और लागू करने वालों को ज़िम्मेदारी लेनी होगी यदि उनके मेट्रिक या मूल्यांकन के चुनाव से उपयोगकर्ताओं को नुकसान हो, और उसे ठीक करना होगा।",
+       "निजता (Privacy): टेस्ट डेटा में अक्सर व्यक्तिगत जानकारी (स्वास्थ्य रिकॉर्ड, बैंक डेटा) होती है। इसकी सुरक्षा होनी चाहिए और इसका उपयोग केवल अनुमति से होना चाहिए।",
+       "मानवीय निगरानी (Human oversight): ऊँचे दाँव वाले निर्णयों (ऋण, चिकित्सा निदान, कानूनी कार्रवाई) में मूल्यांकन के परिणाम मानव निर्णयकर्ताओं की सहायता करें, उनकी जगह न लें।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the three words from the CBSE unit: Bias, Transparency, Accountability.",
+      "hi": "CBSE इकाई के तीन शब्द याद रखें: Bias (पक्षपात), Transparency (पारदर्शिता), Accountability (जवाबदेही)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.13 Activities",
+    "hi": "3.13 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (unplugged): 'Fake model' confusion matrix.\nAim: Understand TP, TN, FP, FN by playing.\nYou need: 20 small chits, a pen, two friends.",
+       "hi": "गतिविधि 1 (बिना कंप्यूटर): 'नकली मॉडल' कन्फ़्यूज़न मैट्रिक्स।\nउद्देश्य: खेलकर TP, TN, FP, FN समझना।\nसामग्री: 20 छोटी पर्चियाँ, पेन, दो मित्र।"
+      },
+      "a": {
+       "en": "Step 1: Friend A secretly writes 'Spam' on 8 chits and 'Not spam' on 12 (this is the actual value).\nStep 2: Friend B, acting as the 'model', looks only at the back of each chit and guesses Spam or Not spam; write the guess on the back.\nStep 3: Turn the chits over and sort them into four piles: TP, TN, FP, FN.\nStep 4: Draw the 2 × 2 matrix on the board and calculate accuracy, precision, recall and F1.\nObservation: A random guesser gets about 50% accuracy, and precision and recall come out low.\nLesson: A real model must do much better than guessing; metrics prove whether it does.",
+       "hi": "चरण 1: मित्र A चुपचाप 8 पर्चियों पर 'Spam' और 12 पर 'Not spam' लिखता है (यह वास्तविक मान है)।\nचरण 2: मित्र B 'मॉडल' बनकर हर पर्ची की केवल पीठ देखकर Spam या Not spam अनुमान लगाता है; अनुमान पीठ पर लिखें।\nचरण 3: पर्चियाँ पलटें और चार ढेरों में छाँटें: TP, TN, FP, FN।\nचरण 4: बोर्ड पर 2 × 2 मैट्रिक्स बनाएँ और accuracy, precision, recall तथा F1 निकालें।\nअवलोकन: अंदाज़े से अनुमान लगाने वाला लगभग 50% accuracy पाता है, और precision व recall कम आते हैं।\nसीख: असली मॉडल को अंदाज़े से बहुत बेहतर होना चाहिए; मेट्रिक्स साबित करते हैं कि वह है या नहीं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (screen, free): Test a Teachable Machine model.\nAim: See train-test thinking and errors in a real model.\nYou need: A phone or laptop with a browser and camera; Google Teachable Machine (free, no login needed for trying). An adult should supervise.",
+       "hi": "गतिविधि 2 (स्क्रीन, मुफ़्त): Teachable Machine मॉडल परखना।\nउद्देश्य: असली मॉडल में ट्रेन-टेस्ट सोच और गलतियाँ देखना।\nसामग्री: ब्राउज़र और कैमरा वाला फ़ोन या लैपटॉप; Google Teachable Machine (मुफ़्त, आज़माने के लिए लॉग-इन ज़रूरी नहीं)। कोई बड़ा देखरेख करे।"
+      },
+      "a": {
+       "en": "Step 1: Make an Image Project with two classes, 'Pen' and 'Eraser'. Record about 40 photos of each.\nStep 2: Click Train.\nStep 3: Now show 10 NEW objects (5 pens, 5 erasers) that were not in training, in different light and angles. Note each prediction.\nStep 4: Make a confusion matrix with 'Pen' as positive and calculate accuracy, precision and recall.\nStep 5: Open 'Advanced' → 'Under the hood' to see the accuracy per class that Teachable Machine itself reports on its own held-back test samples.\nObservation: The model may fail with a coloured pen or dim light.\nLesson: Testing on new data shows real performance; adding varied training photos improves it.",
+       "hi": "चरण 1: दो वर्गों 'Pen' और 'Eraser' के साथ Image Project बनाएँ। हर वर्ग की लगभग 40 तस्वीरें लें।\nचरण 2: Train पर क्लिक करें।\nचरण 3: अब 10 नई वस्तुएँ (5 पेन, 5 रबर) दिखाएँ जो ट्रेनिंग में नहीं थीं, अलग रोशनी और कोणों में। हर अनुमान लिखें।\nचरण 4: 'Pen' को positive मानकर कन्फ़्यूज़न मैट्रिक्स बनाएँ और accuracy, precision और recall निकालें।\nचरण 5: 'Advanced' → 'Under the hood' खोलकर देखें कि Teachable Machine स्वयं अपने अलग रखे टेस्ट नमूनों पर हर वर्ग की कितनी accuracy बताता है।\nअवलोकन: रंगीन पेन या धीमी रोशनी में मॉडल गलती कर सकता है।\nसीख: नए डेटा पर परखने से असली प्रदर्शन दिखता है; विविध ट्रेनिंग तस्वीरें जोड़ने से सुधार होता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (screen, free): Test & Score in Orange.\nAim: Evaluate a model without code.\nYou need: Orange Data Mining (free, open-source; you will use it more in Chapter 4).",
+       "hi": "गतिविधि 3 (स्क्रीन, मुफ़्त): Orange में Test & Score।\nउद्देश्य: बिना कोड के मॉडल का मूल्यांकन करना।\nसामग्री: Orange Data Mining (मुफ़्त, ओपन-सोर्स; अध्याय 4 में आप इसका और उपयोग करेंगे)।"
+      },
+      "a": {
+       "en": "Step 1: Drag a File widget and load the built-in 'iris' dataset.\nStep 2: Add a learner widget such as Tree or kNN.\nStep 3: Connect File and the learner to a Test & Score widget; choose 'Random sampling' with training set size 80% (a train-test split), or 'Cross validation'.\nStep 4: Read CA (classification accuracy), Precision, Recall and F1 in the table.\nStep 5: Connect Test & Score to a Confusion Matrix widget to see which flowers are confused.\nLesson: Software calculates the same metrics you learnt by hand.",
+       "hi": "चरण 1: File विजेट खींचें और अंतर्निहित 'iris' डेटासेट लोड करें।\nचरण 2: Tree या kNN जैसा कोई learner विजेट जोड़ें।\nचरण 3: File और learner को Test & Score विजेट से जोड़ें; 'Random sampling' में ट्रेनिंग सेट 80% चुनें (ट्रेन-टेस्ट स्प्लिट), या 'Cross validation'।\nचरण 4: तालिका में CA (classification accuracy), Precision, Recall और F1 पढ़ें।\nचरण 5: Test & Score को Confusion Matrix विजेट से जोड़कर देखें कि कौन-से फूल भ्रमित होते हैं।\nसीख: सॉफ़्टवेयर वही मेट्रिक्स निकालता है जो आपने हाथ से सीखे।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Testing a model on its own training data and believing the high score. Fix: always keep a separate test set the model has never seen.",
+   "Thinking 'positive' means 'good'. Fix: positive simply means the class we are trying to detect, such as 'disease' or 'fraud'.",
+   "Mixing up FP and FN. Fix: the second word is the model's answer; the first word says if it was right. FP = said positive, wrong.",
+   "Reading a confusion matrix without checking which side is actual and which is predicted. Fix: read the labels first.",
+   "Using precision's formula for recall. Fix: Precision divides by everything the model called positive (TP + FP); recall divides by everything that was really positive (TP + FN).",
+   "Trusting accuracy on imbalanced data (e.g. 99% accuracy by never detecting fraud). Fix: look at precision, recall and F1 too.",
+   "Taking the simple average of precision and recall instead of F1. Fix: use 2PR/(P + R).",
+   "Forgetting the absolute value in error and getting negative errors. Fix: error = |actual − predicted|.",
+   "Choosing a metric without thinking about the real-world cost of each mistake. Fix: ask which mistake hurts more.",
+   "Reporting only the overall score and hiding poor results for some groups. Fix: be transparent and check for bias."
+  ],
+  "hi": [
+   "मॉडल को उसी के ट्रेनिंग डेटा पर परखकर ऊँचे अंक पर भरोसा करना। सुधार: हमेशा एक अलग टेस्ट सेट रखें जिसे मॉडल ने कभी न देखा हो।",
+   "'Positive' का अर्थ 'अच्छा' समझना। सुधार: positive का अर्थ केवल वह वर्ग है जिसे हम पहचानना चाहते हैं, जैसे 'बीमारी' या 'धोखाधड़ी'।",
+   "FP और FN को आपस में मिला देना। सुधार: दूसरा शब्द मॉडल का उत्तर है; पहला शब्द बताता है कि वह सही था या नहीं। FP = positive कहा, गलत।",
+   "बिना देखे कन्फ़्यूज़न मैट्रिक्स पढ़ना कि कौन-सी ओर वास्तविक और कौन-सी अनुमानित है। सुधार: पहले लेबल पढ़ें।",
+   "Recall के लिए precision का सूत्र लगाना। सुधार: Precision में उससे भाग देते हैं जिसे मॉडल ने positive कहा (TP + FP); recall में उससे जो वास्तव में positive था (TP + FN)।",
+   "असंतुलित डेटा पर accuracy पर भरोसा करना (जैसे कभी धोखाधड़ी न पकड़कर भी 99% accuracy)। सुधार: precision, recall और F1 भी देखें।",
+   "F1 की जगह precision और recall का साधारण औसत लेना। सुधार: 2PR/(P + R) का उपयोग करें।",
+   "त्रुटि में निरपेक्ष मान भूलकर ऋणात्मक त्रुटियाँ पाना। सुधार: त्रुटि = |वास्तविक − अनुमानित|।",
+   "हर गलती की वास्तविक कीमत सोचे बिना मेट्रिक चुनना। सुधार: पूछें कि कौन-सी गलती अधिक नुकसान करती है।",
+   "केवल कुल अंक बताना और कुछ समूहों के खराब परिणाम छिपाना। सुधार: पारदर्शी रहें और पक्षपात की जाँच करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Model evaluation",
+    "hi": "मॉडल मूल्यांकन"
+   },
+   "d": {
+    "en": "Checking how well a trained model performs using metrics.",
+    "hi": "मेट्रिक्स से जाँचना कि प्रशिक्षित मॉडल कितना अच्छा काम करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Evaluation metric",
+    "hi": "मूल्यांकन मेट्रिक"
+   },
+   "d": {
+    "en": "A number that measures a model's performance, e.g. accuracy, precision, recall, F1.",
+    "hi": "मॉडल के प्रदर्शन को मापने वाली संख्या, जैसे accuracy, precision, recall, F1।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training set",
+    "hi": "ट्रेनिंग सेट"
+   },
+   "d": {
+    "en": "The part of the data used to teach the model.",
+    "hi": "डेटा का वह भाग जिससे मॉडल को सिखाया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Testing set",
+    "hi": "टेस्टिंग सेट"
+   },
+   "d": {
+    "en": "The part of the data kept aside to check the model on unseen examples.",
+    "hi": "डेटा का वह भाग जिसे अनदेखे उदाहरणों पर मॉडल परखने के लिए अलग रखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Train-test split",
+    "hi": "ट्रेन-टेस्ट स्प्लिट"
+   },
+   "d": {
+    "en": "Dividing a dataset into training and testing parts, e.g. 80:20.",
+    "hi": "डेटासेट को ट्रेनिंग और टेस्टिंग भागों में बाँटना, जैसे 80:20।"
+   }
+  },
+  {
+   "t": {
+    "en": "Validation set / cross-validation",
+    "hi": "वैलिडेशन सेट / क्रॉस-वैलिडेशन"
+   },
+   "d": {
+    "en": "Extra ways to tune and check a model without touching the final test set.",
+    "hi": "अंतिम टेस्ट सेट छुए बिना मॉडल को सुधारने और जाँचने के अतिरिक्त तरीके।"
+   }
+  },
+  {
+   "t": {
+    "en": "Overfitting",
+    "hi": "ओवरफिटिंग"
+   },
+   "d": {
+    "en": "Model memorises training data and performs poorly on new data.",
+    "hi": "मॉडल ट्रेनिंग डेटा रट लेता है और नए डेटा पर खराब करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Underfitting",
+    "hi": "अंडरफिटिंग"
+   },
+   "d": {
+    "en": "Model is too simple and performs poorly even on training data.",
+    "hi": "मॉडल बहुत सरल है और ट्रेनिंग डेटा पर भी खराब करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Generalisation",
+    "hi": "सामान्यीकरण"
+   },
+   "d": {
+    "en": "A model's ability to work well on new, unseen data.",
+    "hi": "नए, अनदेखे डेटा पर अच्छा काम करने की मॉडल की क्षमता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Error",
+    "hi": "त्रुटि"
+   },
+   "d": {
+    "en": "Difference between predicted and actual value.",
+    "hi": "अनुमानित और वास्तविक मान का अंतर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Accuracy",
+    "hi": "सटीकता"
+   },
+   "d": {
+    "en": "Share of correct predictions: (TP + TN)/total; for numbers, 1 − error rate.",
+    "hi": "सही अनुमानों का अंश: (TP + TN)/कुल; संख्याओं के लिए, 1 − त्रुटि दर।"
+   }
+  },
+  {
+   "t": {
+    "en": "MAE",
+    "hi": "MAE"
+   },
+   "d": {
+    "en": "Mean Absolute Error: average size of errors for number predictions.",
+    "hi": "माध्य निरपेक्ष त्रुटि: संख्या अनुमानों में त्रुटियों का औसत आकार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification",
+    "hi": "वर्गीकरण"
+   },
+   "d": {
+    "en": "Putting items into fixed categories based on features.",
+    "hi": "विशेषताओं के आधार पर वस्तुओं को तय श्रेणियों में रखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Positive / negative class",
+    "hi": "Positive / negative वर्ग"
+   },
+   "d": {
+    "en": "The class we try to detect / the other class.",
+    "hi": "वह वर्ग जिसे हम पहचानना चाहते हैं / दूसरा वर्ग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Confusion matrix",
+    "hi": "कन्फ़्यूज़न मैट्रिक्स"
+   },
+   "d": {
+    "en": "Table counting TP, TN, FP and FN.",
+    "hi": "TP, TN, FP और FN गिनने वाली तालिका।"
+   }
+  },
+  {
+   "t": {
+    "en": "True Positive (TP)",
+    "hi": "True Positive (TP)"
+   },
+   "d": {
+    "en": "Actually positive, predicted positive.",
+    "hi": "वास्तव में positive, अनुमान positive।"
+   }
+  },
+  {
+   "t": {
+    "en": "True Negative (TN)",
+    "hi": "True Negative (TN)"
+   },
+   "d": {
+    "en": "Actually negative, predicted negative.",
+    "hi": "वास्तव में negative, अनुमान negative।"
+   }
+  },
+  {
+   "t": {
+    "en": "False Positive (FP) / Type I error",
+    "hi": "False Positive (FP) / Type I त्रुटि"
+   },
+   "d": {
+    "en": "Actually negative, predicted positive (false alarm).",
+    "hi": "वास्तव में negative, अनुमान positive (झूठी चेतावनी)।"
+   }
+  },
+  {
+   "t": {
+    "en": "False Negative (FN) / Type II error",
+    "hi": "False Negative (FN) / Type II त्रुटि"
+   },
+   "d": {
+    "en": "Actually positive, predicted negative (a miss).",
+    "hi": "वास्तव में positive, अनुमान negative (चूक)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Precision",
+    "hi": "Precision"
+   },
+   "d": {
+    "en": "TP/(TP + FP): how often a 'yes' prediction is right.",
+    "hi": "TP/(TP + FP): 'हाँ' अनुमान कितनी बार सही है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Recall / sensitivity",
+    "hi": "Recall / sensitivity"
+   },
+   "d": {
+    "en": "TP/(TP + FN): how many real positives are caught.",
+    "hi": "TP/(TP + FN): कितने असली positive पकड़े गए।"
+   }
+  },
+  {
+   "t": {
+    "en": "F1 score",
+    "hi": "F1 स्कोर"
+   },
+   "d": {
+    "en": "Harmonic mean of precision and recall: 2PR/(P + R).",
+    "hi": "Precision और recall का हरात्मक माध्य: 2PR/(P + R)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Imbalanced dataset",
+    "hi": "असंतुलित डेटासेट"
+   },
+   "d": {
+    "en": "Data in which one class is much rarer than the other.",
+    "hi": "ऐसा डेटा जिसमें एक वर्ग दूसरे से बहुत दुर्लभ हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias, transparency, accountability",
+    "hi": "पक्षपात, पारदर्शिता, जवाबदेही"
+   },
+   "d": {
+    "en": "Ethical duties in evaluation: be fair, be open, take responsibility.",
+    "hi": "मूल्यांकन के नैतिक कर्तव्य: निष्पक्ष रहें, खुले रहें, ज़िम्मेदारी लें।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Evaluation is which stage of the AI Project Cycle?\n(a) First (b) Third (c) Fifth (d) Sixth",
+    "hi": "MCQ: मूल्यांकन AI प्रोजेक्ट चक्र का कौन-सा चरण है?\n(a) पहला (b) तीसरा (c) पाँचवाँ (d) छठा"
+   },
+   "a": {
+    "en": "(c) Fifth: it comes after Modelling and before Deployment.",
+    "hi": "(c) पाँचवाँ: यह मॉडलिंग के बाद और परिनियोजन से पहले आता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: A model said 'no disease' but the patient had the disease. This is a:\n(a) TP (b) TN (c) FP (d) FN",
+    "hi": "MCQ: मॉडल ने 'बीमारी नहीं' कहा पर मरीज़ को बीमारी थी। यह है:\n(a) TP (b) TN (c) FP (d) FN"
+   },
+   "a": {
+    "en": "(d) FN: predicted negative, actually positive (Type II error).",
+    "hi": "(d) FN: अनुमान negative, वास्तव में positive (Type II त्रुटि)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Precision = TP ÷ (TP + ____).",
+    "hi": "रिक्त स्थान भरें: Precision = TP ÷ (TP + ____)।"
+   },
+   "a": {
+    "en": "FP",
+    "hi": "FP"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A false positive is also called a Type ____ error.",
+    "hi": "रिक्त स्थान भरें: False positive को Type ____ त्रुटि भी कहते हैं।"
+   },
+   "a": {
+    "en": "I (one)",
+    "hi": "I (एक)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: A model should be evaluated on the same data it was trained on.",
+    "hi": "सही या गलत: मॉडल का मूल्यांकन उसी डेटा पर होना चाहिए जिस पर उसे प्रशिक्षित किया गया।"
+   },
+   "a": {
+    "en": "False. It must be tested on unseen data, otherwise overfitting stays hidden.",
+    "hi": "गलत। उसे अनदेखे डेटा पर परखना चाहिए, नहीं तो ओवरफिटिंग छिपी रहती है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: F1 score is high only when both precision and recall are high.",
+    "hi": "सही या गलत: F1 स्कोर तभी अधिक होता है जब precision और recall दोनों अधिक हों।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Define model evaluation in one sentence.",
+    "hi": "मॉडल मूल्यांकन को एक वाक्य में परिभाषित कीजिए।"
+   },
+   "a": {
+    "en": "Model evaluation is using metrics to measure how well a trained model performs on data, especially new data.",
+    "hi": "मॉडल मूल्यांकन मेट्रिक्स से यह मापना है कि प्रशिक्षित मॉडल डेटा पर, विशेषकर नए डेटा पर, कितना अच्छा काम करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Actual temperature is 40 °C and the model predicted 36 °C. Find error, error rate and accuracy %.",
+    "hi": "वास्तविक तापमान 40 °C है और मॉडल ने 36 °C अनुमान लगाया। त्रुटि, त्रुटि दर और सटीकता % ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Error = |40 − 36| = 4. Error rate = 4/40 = 0.1. Accuracy = 1 − 0.1 = 0.9 = 90%.",
+    "hi": "त्रुटि = |40 − 36| = 4। त्रुटि दर = 4/40 = 0.1। सटीकता = 1 − 0.1 = 0.9 = 90%।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "TP = 50, TN = 30, FP = 10, FN = 10. Find accuracy, precision, recall and F1.",
+    "hi": "TP = 50, TN = 30, FP = 10, FN = 10। Accuracy, precision, recall और F1 ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Total = 100. Accuracy = 80/100 = 0.8. Precision = 50/60 ≈ 0.833. Recall = 50/60 ≈ 0.833. F1 = 2 × 0.833 × 0.833 ÷ 1.667 ≈ 0.833.",
+    "hi": "कुल = 100। Accuracy = 80/100 = 0.8। Precision = 50/60 ≈ 0.833। Recall = 50/60 ≈ 0.833। F1 = 2 × 0.833 × 0.833 ÷ 1.667 ≈ 0.833।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain overfitting with an example. How does the train-test split help detect it?",
+    "hi": "उदाहरण सहित ओवरफिटिंग समझाइए। ट्रेन-टेस्ट स्प्लिट इसे पकड़ने में कैसे मदद करता है?"
+   },
+   "a": {
+    "en": "Overfitting is when a model memorises training data, like a student who rote-learns last year's paper, and fails on new questions. If training accuracy is 99% but test accuracy is only 70%, the gap shows overfitting. Without a separate test set we would see only the 99% and be fooled.",
+    "hi": "ओवरफिटिंग तब है जब मॉडल ट्रेनिंग डेटा रट ले, जैसे पिछले साल का प्रश्नपत्र रटने वाला विद्यार्थी, और नए प्रश्नों पर असफल हो। यदि ट्रेनिंग accuracy 99% पर टेस्ट accuracy केवल 70% हो, तो यह अंतर ओवरफिटिंग दिखाता है। अलग टेस्ट सेट के बिना हम केवल 99% देखते और धोखा खाते।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why can accuracy be misleading? Give an example.",
+    "hi": "Accuracy भ्रामक क्यों हो सकती है? उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "On imbalanced data, a model can get high accuracy by always predicting the common class. If 990 of 1,000 transactions are genuine, a model that never flags fraud is 99% accurate but catches no fraud (recall = 0).",
+    "hi": "असंतुलित डेटा पर मॉडल हमेशा आम वर्ग बताकर ऊँची accuracy पा सकता है। यदि 1,000 में से 990 लेन-देन असली हों, तो कभी धोखाधड़ी न बताने वाला मॉडल 99% सटीक है पर एक भी धोखाधड़ी नहीं पकड़ता (recall = 0)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): For a cancer screening model, recall is more important than precision.\nReason (R): A false negative in cancer screening can delay treatment of a sick person.\n(a) Both A and R true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): कैंसर जाँच मॉडल के लिए recall, precision से अधिक महत्वपूर्ण है।\nकारण (R): कैंसर जाँच में false negative किसी बीमार व्यक्ति के इलाज में देरी कर सकता है।\n(a) A और R दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R गलत (d) A गलत, R सही"
+   },
+   "a": {
+    "en": "(a) Both are true and R is the correct explanation of A.",
+    "hi": "(a) दोनों सही हैं और R, A की सही व्याख्या है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A spam filter should have high precision.\nReason (R): Recall is calculated as TP/(TP + FP).",
+    "hi": "अभिकथन (A): Spam फ़िल्टर का precision अधिक होना चाहिए।\nकारण (R): Recall की गणना TP/(TP + FP) से होती है।"
+   },
+   "a": {
+    "en": "(c) A is true (a false positive hides important mail), but R is false: TP/(TP + FP) is precision; recall is TP/(TP + FN).",
+    "hi": "(c) A सही है (false positive ज़रूरी मेल छिपा देता है), पर R गलत है: TP/(TP + FP) precision है; recall TP/(TP + FN) है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which metric would you focus on for each, and why? (i) flood warning (ii) a model that picks 'safe' days for a satellite launch (iii) sorting mangoes and bananas from equal numbers of photos.",
+    "hi": "हर एक के लिए किस मेट्रिक पर ध्यान देंगे, और क्यों? (i) बाढ़ चेतावनी (ii) उपग्रह प्रक्षेपण के लिए 'सुरक्षित' दिन चुनने वाला मॉडल (iii) बराबर संख्या की तस्वीरों से आम और केले छाँटना।"
+   },
+   "a": {
+    "en": "(i) Recall: missing a real flood (FN) endangers lives. (ii) Precision: a false 'safe' (FP) means launching in bad weather. (iii) Accuracy: classes are balanced and both mistakes cost about the same.",
+    "hi": "(i) Recall: असली बाढ़ छूटना (FN) जान को खतरे में डालता है। (ii) Precision: झूठा 'सुरक्षित' (FP) यानी खराब मौसम में प्रक्षेपण। (iii) Accuracy: वर्ग संतुलित हैं और दोनों गलतियों की कीमत लगभग बराबर है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Precision = 0.6 and recall = 0.9. Find the F1 score.",
+    "hi": "Precision = 0.6 और recall = 0.9। F1 स्कोर ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "F1 = 2 × 0.6 × 0.9 ÷ (0.6 + 0.9) = 1.08 ÷ 1.5 = 0.72.",
+    "hi": "F1 = 2 × 0.6 × 0.9 ÷ (0.6 + 0.9) = 1.08 ÷ 1.5 = 0.72।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A crop-disease app was tested on 200 leaf photos. 60 were diseased; the app marked 48 of them diseased. Of the 140 healthy leaves, it wrongly marked 14 as diseased. (i) Draw the confusion matrix. (ii) Find accuracy, precision, recall and F1. (iii) Which number should the developers improve first and why?",
+    "hi": "केस स्टडी: एक फ़सल-रोग ऐप को 200 पत्तियों की तस्वीरों पर परखा गया। 60 रोगी थीं; ऐप ने उनमें से 48 को रोगी बताया। 140 स्वस्थ पत्तियों में से उसने 14 को गलती से रोगी बताया। (i) कन्फ़्यूज़न मैट्रिक्स बनाइए। (ii) Accuracy, precision, recall और F1 ज्ञात कीजिए। (iii) डेवलपर्स को पहले कौन-सी संख्या सुधारनी चाहिए और क्यों?"
+   },
+   "a": {
+    "en": "(i) TP = 48, FN = 60 − 48 = 12, FP = 14, TN = 140 − 14 = 126. Rows (actual): Diseased: 48 | 12; Healthy: 14 | 126.\n(ii) Accuracy = (48 + 126)/200 = 174/200 = 0.87. Precision = 48/62 ≈ 0.774. Recall = 48/60 = 0.8. F1 = 2 × 0.774 × 0.8 ÷ 1.574 ≈ 0.787.\n(iii) Recall: 12 diseased crops were missed, and an untreated disease can spread to the whole field. A false alarm only costs the farmer a closer look.",
+    "hi": "(i) TP = 48, FN = 60 − 48 = 12, FP = 14, TN = 140 − 14 = 126। पंक्तियाँ (वास्तविक): रोगी: 48 | 12; स्वस्थ: 14 | 126।\n(ii) Accuracy = (48 + 126)/200 = 174/200 = 0.87। Precision = 48/62 ≈ 0.774। Recall = 48/60 = 0.8। F1 = 2 × 0.774 × 0.8 ÷ 1.574 ≈ 0.787।\n(iii) Recall: 12 रोगी फ़सलें छूट गईं, और बिना इलाज की बीमारी पूरे खेत में फैल सकती है। झूठी चेतावनी से किसान को बस थोड़ा ध्यान से देखना पड़ता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Two models are tested for UPI fraud. Model A: precision 0.95, recall 0.40. Model B: precision 0.70, recall 0.85. Compute F1 for both and recommend one.",
+    "hi": "UPI धोखाधड़ी के लिए दो मॉडल परखे गए। मॉडल A: precision 0.95, recall 0.40। मॉडल B: precision 0.70, recall 0.85। दोनों के लिए F1 निकालिए और एक की सिफ़ारिश कीजिए।"
+   },
+   "a": {
+    "en": "F1(A) = 2 × 0.95 × 0.40 ÷ 1.35 = 0.76 ÷ 1.35 ≈ 0.563. F1(B) = 2 × 0.70 × 0.85 ÷ 1.55 = 1.19 ÷ 1.55 ≈ 0.768. Model B has a higher F1 and much higher recall, so it catches more frauds; its extra false alarms can be handled by an SMS confirmation. Recommend Model B.",
+    "hi": "F1(A) = 2 × 0.95 × 0.40 ÷ 1.35 = 0.76 ÷ 1.35 ≈ 0.563। F1(B) = 2 × 0.70 × 0.85 ÷ 1.55 = 1.19 ÷ 1.55 ≈ 0.768। मॉडल B का F1 अधिक है और recall काफ़ी अधिक, इसलिए यह अधिक धोखाधड़ियाँ पकड़ता है; इसकी अतिरिक्त झूठी चेतावनियाँ SMS पुष्टि से संभाली जा सकती हैं। मॉडल B की सिफ़ारिश।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A model's training accuracy is 62% and test accuracy is 60%. Another model scores 99% on training and 71% on test. Name the problem in each and suggest one fix for each.",
+    "hi": "एक मॉडल की ट्रेनिंग accuracy 62% और टेस्ट accuracy 60% है। दूसरा मॉडल ट्रेनिंग पर 99% और टेस्ट पर 71% लाता है। हर एक में समस्या का नाम बताइए और एक-एक उपाय सुझाइए।"
+   },
+   "a": {
+    "en": "First model: underfitting (both low). Fix: use a more powerful model or add more useful features. Second model: overfitting (big gap). Fix: collect more varied training data or use a simpler model.",
+    "hi": "पहला मॉडल: अंडरफिटिंग (दोनों कम)। उपाय: अधिक सक्षम मॉडल या अधिक उपयोगी विशेषताएँ जोड़ें। दूसरा मॉडल: ओवरफिटिंग (बड़ा अंतर)। उपाय: अधिक विविध ट्रेनिंग डेटा इकट्ठा करें या सरल मॉडल लें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain the ethical concerns in model evaluation with an Indian example for each.",
+    "hi": "दीर्घ उत्तर: मॉडल मूल्यांकन की नैतिक चिंताओं को हर एक के भारतीय उदाहरण के साथ समझाइए।"
+   },
+   "a": {
+    "en": "Bias: a speech app with 95% overall accuracy may be much worse for rural or regional accents; evaluate each group separately. Transparency: a bank using an AI loan model should publish how it was tested and its error rates, not just a headline score. Accountability: if an AI camera wrongly fines drivers, the agency must accept responsibility, refund and fix the system. Also protect privacy of test data and keep humans in charge of high-stakes decisions.",
+    "hi": "पक्षपात: 95% कुल accuracy वाला स्पीच ऐप ग्रामीण या क्षेत्रीय लहज़ों के लिए बहुत खराब हो सकता है; हर समूह का अलग मूल्यांकन करें। पारदर्शिता: AI ऋण मॉडल उपयोग करने वाले बैंक को बताना चाहिए कि उसे कैसे परखा गया और उसकी त्रुटि दरें क्या हैं, केवल मुख्य अंक नहीं। जवाबदेही: यदि AI कैमरा गलती से चालकों पर जुर्माना लगाए, तो एजेंसी ज़िम्मेदारी ले, पैसा लौटाए और सिस्टम सुधारे। साथ ही टेस्ट डेटा की निजता की रक्षा करें और ऊँचे दाँव वाले निर्णयों में इंसानों को नियंत्रण में रखें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: You built a Teachable Machine model that tells apples from tomatoes. Plan how you will test it fairly. Mention data, split and metrics.",
+    "hi": "सोचिए: आपने सेब और टमाटर पहचानने वाला Teachable Machine मॉडल बनाया है। उसे निष्पक्ष रूप से परखने की योजना बनाइए। डेटा, स्प्लिट और मेट्रिक्स का उल्लेख करें।"
+   },
+   "a": {
+    "en": "Collect photos in different light, angles and backgrounds, with green and red tomatoes and different apple varieties. Keep about 20% aside, never used for training. Test on these and on new real objects. Build a confusion matrix; report accuracy (classes balanced), plus precision and recall for each class. Note where it fails and add more varied photos.",
+    "hi": "अलग रोशनी, कोणों और पृष्ठभूमियों में, हरे और लाल टमाटर तथा अलग-अलग किस्म के सेबों की तस्वीरें लें। लगभग 20% अलग रखें, जिनका ट्रेनिंग में कभी उपयोग न हो। इन पर और नई असली वस्तुओं पर परखें। कन्फ़्यूज़न मैट्रिक्स बनाएँ; accuracy (वर्ग संतुलित) के साथ हर वर्ग का precision और recall बताएँ। जहाँ गलती हो, वहाँ और विविध तस्वीरें जोड़ें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In the scikit-learn program in Section 3.3, how many rows went to training and testing when test_size=0.2 and there were 20 rows?",
+    "hi": "खंड 3.3 के scikit-learn प्रोग्राम में test_size=0.2 और 20 पंक्तियाँ होने पर कितनी पंक्तियाँ ट्रेनिंग और टेस्टिंग में गईं?"
+   },
+   "a": {
+    "en": "16 rows for training and 4 for testing (20% of 20 = 4).",
+    "hi": "ट्रेनिंग में 16 और टेस्टिंग में 4 पंक्तियाँ (20 का 20% = 4)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Short answer: What is a confusion matrix and why is it called so?",
+    "hi": "लघु उत्तर: कन्फ़्यूज़न मैट्रिक्स क्या है और इसे ऐसा क्यों कहते हैं?"
+   },
+   "a": {
+    "en": "It is a table that counts TP, TN, FP and FN by comparing predictions with actual values. It is called 'confusion' matrix because it shows where the model confuses one class with another.",
+    "hi": "यह एक तालिका है जो अनुमानों की वास्तविक मानों से तुलना करके TP, TN, FP और FN गिनती है। इसे 'confusion' मैट्रिक्स इसलिए कहते हैं क्योंकि यह दिखाती है कि मॉडल कहाँ एक वर्ग को दूसरे से भ्रमित करता है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Evaluation is the fifth stage of the AI Project Cycle and checks how well a model performs before deployment.",
+   "It works as a feedback loop: evaluate, find weaknesses, improve, evaluate again.",
+   "The train-test split (often 80:20) keeps unseen data aside to test the model honestly; it suits large datasets.",
+   "Overfitting = great on training data, poor on new data; underfitting = poor on both; a good model generalises.",
+   "For number predictions: error = |actual − predicted|, error rate = error/actual, accuracy = 1 − error rate.",
+   "Classification puts items into categories; the class we detect is called positive.",
+   "A confusion matrix counts TP, TN, FP (Type I, false alarm) and FN (Type II, miss).",
+   "Accuracy = (TP + TN)/total, but it can mislead on imbalanced data.",
+   "Precision = TP/(TP + FP): important when false positives are costly (spam, satellite launch).",
+   "Recall = TP/(TP + FN): important when false negatives are costly (disease, fraud, floods).",
+   "F1 = 2PR/(P + R) balances precision and recall, useful for imbalanced data.",
+   "Choose metrics by asking which mistake hurts more in the real world.",
+   "Evaluate ethically: check bias across groups, be transparent, take accountability, protect privacy."
+  ],
+  "hi": [
+   "मूल्यांकन AI प्रोजेक्ट चक्र का पाँचवाँ चरण है और परिनियोजन से पहले जाँचता है कि मॉडल कितना अच्छा काम करता है।",
+   "यह फ़ीडबैक लूप की तरह चलता है: मूल्यांकन करो, कमज़ोरियाँ ढूँढो, सुधारो, फिर मूल्यांकन करो।",
+   "ट्रेन-टेस्ट स्प्लिट (अक्सर 80:20) अनदेखा डेटा अलग रखकर मॉडल को ईमानदारी से परखता है; यह बड़े डेटासेट के लिए उपयुक्त है।",
+   "ओवरफिटिंग = ट्रेनिंग पर बढ़िया, नए डेटा पर खराब; अंडरफिटिंग = दोनों पर खराब; अच्छा मॉडल सामान्यीकरण करता है।",
+   "संख्या अनुमानों के लिए: त्रुटि = |वास्तविक − अनुमानित|, त्रुटि दर = त्रुटि/वास्तविक, सटीकता = 1 − त्रुटि दर।",
+   "वर्गीकरण वस्तुओं को श्रेणियों में रखता है; जिस वर्ग को हम पहचानते हैं उसे positive कहते हैं।",
+   "कन्फ़्यूज़न मैट्रिक्स TP, TN, FP (Type I, झूठी चेतावनी) और FN (Type II, चूक) गिनता है।",
+   "Accuracy = (TP + TN)/कुल, पर असंतुलित डेटा पर यह भ्रामक हो सकती है।",
+   "Precision = TP/(TP + FP): तब महत्वपूर्ण जब false positive महँगे हों (spam, उपग्रह प्रक्षेपण)।",
+   "Recall = TP/(TP + FN): तब महत्वपूर्ण जब false negative महँगे हों (बीमारी, धोखाधड़ी, बाढ़)।",
+   "F1 = 2PR/(P + R) precision और recall में संतुलन बनाता है, असंतुलित डेटा के लिए उपयोगी।",
+   "मेट्रिक यह पूछकर चुनें कि असली दुनिया में कौन-सी गलती अधिक नुकसान करती है।",
+   "नैतिक मूल्यांकन करें: समूहों में पक्षपात जाँचें, पारदर्शी रहें, जवाबदेही लें, निजता की रक्षा करें।"
+  ]
+ }
+}
