@@ -1,0 +1,1296 @@
+{
+ "v": 1,
+ "sub": "maths",
+ "lv": "6",
+ "id": "ch6",
+ "intro": {
+  "en": "How much lace is needed to go around a tablecloth? How many tiles will cover a floor? The first question is about perimeter, the length of the boundary of a shape. The second is about area, the amount of surface a shape covers. In this chapter you will learn to find both, see that they are very different ideas, and solve fun puzzles where shapes are cut, rearranged and built from squares.",
+  "hi": "मेज़पोश के चारों ओर कितनी लेस लगेगी? किसी फ़र्श पर कितनी टाइलें लगेंगी? पहला प्रश्न परिमाप का है, यानी आकृति की सीमा की लंबाई। दूसरा प्रश्न क्षेत्रफल का है, यानी आकृति कितनी सतह घेरती है। इस अध्याय में आप दोनों निकालना सीखेंगे, समझेंगे कि ये बिल्कुल अलग विचार हैं, और ऐसी मज़ेदार पहेलियाँ हल करेंगे जिनमें आकृतियों को काटा, फिर से जोड़ा और वर्गों से बनाया जाता है।"
+ },
+ "learn": {
+  "en": [
+   "What perimeter means and how to measure it",
+   "Formulas for the perimeter of a rectangle, a square, a triangle and regular polygons",
+   "Solving word problems on fencing, lace, rounds of a park and running tracks",
+   "Perimeters made of straight and diagonal units on dot or grid paper",
+   "How cutting and rejoining a shape changes its perimeter but not its area",
+   "What area means and why we measure it in square units",
+   "Area of a rectangle and a square, and of shapes made of rectangles",
+   "Comparing areas of tangram pieces",
+   "Estimating the area of irregular shapes by counting squares on a grid",
+   "Area of a triangle as half of a rectangle",
+   "Shapes with the same area but different perimeters, and the reverse",
+   "House plans and area maze puzzles"
+  ],
+  "hi": [
+   "परिमाप का अर्थ और इसे कैसे मापें",
+   "आयत, वर्ग, त्रिभुज और सम बहुभुजों के परिमाप के सूत्र",
+   "बाड़, लेस, पार्क के चक्कर और दौड़ के ट्रैक वाले शाब्दिक प्रश्न हल करना",
+   "डॉट या ग्रिड पेपर पर सीधी और तिरछी इकाइयों से बने परिमाप",
+   "किसी आकृति को काटकर दोबारा जोड़ने से परिमाप कैसे बदलता है पर क्षेत्रफल नहीं",
+   "क्षेत्रफल का अर्थ और इसे वर्ग इकाइयों में क्यों मापते हैं",
+   "आयत और वर्ग का क्षेत्रफल, और आयतों से बनी आकृतियों का क्षेत्रफल",
+   "टैनग्राम के टुकड़ों के क्षेत्रफल की तुलना",
+   "ग्रिड पर वर्ग गिनकर अनियमित आकृतियों के क्षेत्रफल का अनुमान",
+   "त्रिभुज का क्षेत्रफल आयत के आधे के रूप में",
+   "समान क्षेत्रफल पर अलग परिमाप वाली आकृतियाँ, और इसका उल्टा",
+   "घर के नक्शे और क्षेत्रफल भूलभुलैया (एरिया मेज़) पहेलियाँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "6.1 Perimeter",
+    "hi": "6.1 परिमाप"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Imagine an ant walking along the edge of a postcard, starting at one corner and walking all the way round until it is back at the start. The total distance it walks is the perimeter of the postcard. 'Peri' means around and 'meter' means measure, so perimeter is the measure around a shape.",
+      "hi": "सोचिए एक चींटी पोस्टकार्ड के किनारे-किनारे चल रही है, एक कोने से शुरू करके पूरा चक्कर लगाकर वापस शुरुआत पर आ जाती है। वह कुल जितनी दूरी चलती है, वह पोस्टकार्ड का परिमाप है। परिमाप का अर्थ है किसी आकृति के चारों ओर का माप।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Perimeter",
+       "hi": "परिमाप"
+      },
+      "text": {
+       "en": "The perimeter of a closed figure is the total length of its boundary. For a polygon (a closed figure made of straight sides) it is the sum of the lengths of all its sides. It is measured in units of length: mm, cm, m, km.",
+       "hi": "किसी बंद आकृति का परिमाप उसकी सीमा की कुल लंबाई है। बहुभुज (सीधी भुजाओं से बनी बंद आकृति) के लिए यह सभी भुजाओं की लंबाइयों का योग है। इसे लंबाई की इकाइयों में मापते हैं: मिमी, सेमी, मी, किमी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Perimeter of a rectangle. A rectangle has two pairs of equal opposite sides: two lengths and two breadths (widths). Going around it we walk length + breadth + length + breadth. Grouping, that is 2 × length + 2 × breadth, or 2 × (length + breadth).",
+      "hi": "आयत का परिमाप। आयत में आमने-सामने की भुजाओं के दो जोड़े बराबर होते हैं: दो लंबाइयाँ और दो चौड़ाइयाँ। इसके चारों ओर चलने पर हम लंबाई + चौड़ाई + लंबाई + चौड़ाई चलते हैं। इसे समूह में लिखें तो 2 × लंबाई + 2 × चौड़ाई, या 2 × (लंबाई + चौड़ाई)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Perimeter of rectangle = 2 × (length + breadth)",
+      "hi": "आयत का परिमाप = 2 × (लंबाई + चौड़ाई)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A tablecloth is 2 m long and 1 m 50 cm wide. How much lace is needed to stitch all round its edge?",
+       "hi": "एक मेज़पोश 2 मी लंबा और 1 मी 50 सेमी चौड़ा है। इसके पूरे किनारे पर लगाने के लिए कितनी लेस चाहिए?"
+      },
+      "a": {
+       "en": "Convert to the same unit: 2 m = 200 cm, 1 m 50 cm = 150 cm.\nPerimeter = 2 × (200 + 150) = 2 × 350 = 700 cm.\nLace needed = 700 cm = 7 m.",
+       "hi": "एक ही इकाई में बदलिए: 2 मी = 200 सेमी, 1 मी 50 सेमी = 150 सेमी।\nपरिमाप = 2 × (200 + 150) = 2 × 350 = 700 सेमी।\nआवश्यक लेस = 700 सेमी = 7 मी।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Always change all lengths into the same unit before adding. Adding 2 m and 50 cm as '52' is wrong.",
+      "hi": "जोड़ने से पहले सभी लंबाइयों को एक ही इकाई में बदलिए। 2 मी और 50 सेमी को '52' जोड़ना गलत है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Perimeter of a square. A square has four equal sides. So its perimeter is side + side + side + side = 4 × side. A nice activity: take a wire 36 cm long and bend it into a square. Each side will be 36 ÷ 4 = 9 cm.",
+      "hi": "वर्ग का परिमाप। वर्ग की चारों भुजाएँ बराबर होती हैं। इसलिए इसका परिमाप भुजा + भुजा + भुजा + भुजा = 4 × भुजा है। एक अच्छी गतिविधि: 36 सेमी लंबा तार लेकर उसे मोड़कर वर्ग बनाइए। हर भुजा 36 ÷ 4 = 9 सेमी होगी।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Perimeter of square = 4 × side",
+      "hi": "वर्ग का परिमाप = 4 × भुजा"
+     }
+    },
+    {
+     "p": {
+      "en": "Perimeter of a triangle. Add the three sides: perimeter = side 1 + side 2 + side 3. In an equilateral triangle all three sides are equal, so perimeter = 3 × side.",
+      "hi": "त्रिभुज का परिमाप। तीनों भुजाएँ जोड़िए: परिमाप = भुजा 1 + भुजा 2 + भुजा 3। समबाहु त्रिभुज में तीनों भुजाएँ बराबर होती हैं, इसलिए परिमाप = 3 × भुजा।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A rectangular wire frame is 14 cm long and 10 cm wide. It is opened and bent into a square. What is the side of the square?",
+       "hi": "तार का एक आयताकार ढाँचा 14 सेमी लंबा और 10 सेमी चौड़ा है। इसे खोलकर वर्ग बनाया जाता है। वर्ग की भुजा क्या होगी?"
+      },
+      "a": {
+       "en": "Length of wire = perimeter of rectangle = 2 × (14 + 10) = 48 cm.\nThe same wire makes the square, so 4 × side = 48.\nSide = 48 ÷ 4 = 12 cm.",
+       "hi": "तार की लंबाई = आयत का परिमाप = 2 × (14 + 10) = 48 सेमी।\nयही तार वर्ग बनाता है, इसलिए 4 × भुजा = 48।\nभुजा = 48 ÷ 4 = 12 सेमी।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "The perimeter of a triangle is 55 cm. Two of its sides are 20 cm and 14 cm. Find the third side.",
+       "hi": "एक त्रिभुज का परिमाप 55 सेमी है। इसकी दो भुजाएँ 20 सेमी और 14 सेमी हैं। तीसरी भुजा ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Sum of the two known sides = 20 + 14 = 34 cm.\nThird side = 55 − 34 = 21 cm.",
+       "hi": "दो ज्ञात भुजाओं का योग = 20 + 14 = 34 सेमी।\nतीसरी भुजा = 55 − 34 = 21 सेमी।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the breadth of a rectangle whose perimeter is 86 cm and length is 26 cm.",
+       "hi": "उस आयत की चौड़ाई ज्ञात कीजिए जिसका परिमाप 86 सेमी और लंबाई 26 सेमी है।"
+      },
+      "a": {
+       "en": "Perimeter = 2 × (length + breadth), so length + breadth = 86 ÷ 2 = 43 cm.\nBreadth = 43 − 26 = 17 cm.\nCheck: 2 × (26 + 17) = 86.",
+       "hi": "परिमाप = 2 × (लंबाई + चौड़ाई), इसलिए लंबाई + चौड़ाई = 86 ÷ 2 = 43 सेमी।\nचौड़ाई = 43 − 26 = 17 सेमी।\nजाँच: 2 × (26 + 17) = 86।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Usha walks 3 rounds of a rectangular park 60 m long and 40 m wide. How far does she walk?",
+       "hi": "उषा 60 मी लंबे और 40 मी चौड़े आयताकार पार्क के 3 चक्कर लगाती है। वह कितना चलती है?"
+      },
+      "a": {
+       "en": "One round = perimeter = 2 × (60 + 40) = 200 m.\n3 rounds = 3 × 200 = 600 m.",
+       "hi": "एक चक्कर = परिमाप = 2 × (60 + 40) = 200 मी।\n3 चक्कर = 3 × 200 = 600 मी।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A park is 150 m long and 90 m wide. Fencing costs ₹40 per metre. What does it cost to fence the park?",
+       "hi": "एक पार्क 150 मी लंबा और 90 मी चौड़ा है। बाड़ लगाने का खर्च ₹40 प्रति मीटर है। पार्क पर बाड़ लगाने का खर्च क्या होगा?"
+      },
+      "a": {
+       "en": "Length of fence = perimeter = 2 × (150 + 90) = 2 × 240 = 480 m.\nCost = 480 × 40 = ₹19,200.",
+       "hi": "बाड़ की लंबाई = परिमाप = 2 × (150 + 90) = 2 × 240 = 480 मी।\nखर्च = 480 × 40 = ₹19,200।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Running tracks (the Toshi activity). Two children run on two rectangular tracks, one inside the other. The inner track might be 70 m by 40 m (perimeter 220 m) and the outer one 80 m by 50 m (perimeter 260 m). For the same number of rounds, the runner on the outer track covers more distance. This is why in real races runners on outer lanes start a little ahead: so that everyone runs the same distance. To find where a runner is after a certain distance, keep subtracting the perimeter (full rounds) and then walk the leftover distance along the sides from the starting point.",
+      "hi": "दौड़ के ट्रैक (तोशी वाली गतिविधि)। दो बच्चे दो आयताकार ट्रैकों पर दौड़ते हैं, एक दूसरे के अंदर। भीतरी ट्रैक 70 मी × 40 मी (परिमाप 220 मी) और बाहरी 80 मी × 50 मी (परिमाप 260 मी) हो सकता है। बराबर चक्करों में बाहरी ट्रैक वाला धावक अधिक दूरी तय करता है। इसीलिए असली दौड़ में बाहरी लेन के धावक थोड़ा आगे से शुरू करते हैं, ताकि सब बराबर दूरी दौड़ें। किसी दूरी के बाद धावक कहाँ है, यह जानने के लिए परिमाप (पूरे चक्कर) घटाते जाइए और फिर बची दूरी शुरुआती बिंदु से भुजाओं के साथ नापिए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A rectangular track is 100 m long and 60 m wide. Arun starts at a corner and runs 1000 m. How many full rounds does he complete, and how far along the next round is he?",
+       "hi": "एक आयताकार ट्रैक 100 मी लंबा और 60 मी चौड़ा है। अरुण एक कोने से शुरू करके 1000 मी दौड़ता है। वह कितने पूरे चक्कर लगाता है, और अगले चक्कर में कितना आगे है?"
+      },
+      "a": {
+       "en": "One round = 2 × (100 + 60) = 320 m.\n3 rounds = 960 m; 4 rounds = 1280 m is too much.\nSo 3 full rounds, and 1000 − 960 = 40 m more.\nIf he first runs along a 100 m side, he is 40 m along that first long side.",
+       "hi": "एक चक्कर = 2 × (100 + 60) = 320 मी।\n3 चक्कर = 960 मी; 4 चक्कर = 1280 मी बहुत अधिक है।\nइसलिए 3 पूरे चक्कर, और 1000 − 960 = 40 मी और।\nयदि वह पहले 100 मी वाली भुजा पर दौड़ता है, तो वह पहली लंबी भुजा पर 40 मी आगे है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Estimate and verify. Cut a few shapes from paper with wavy or zigzag edges. First guess each perimeter, then measure it by laying a thread along the edge and measuring the thread with a ruler. Compare guess and answer. With practice your estimates improve.",
+      "hi": "अनुमान लगाइए और जाँचिए। कागज़ से लहरदार या टेढ़े-मेढ़े किनारों वाली कुछ आकृतियाँ काटिए। पहले हर एक के परिमाप का अनुमान लगाइए, फिर किनारे पर धागा रखकर और धागे को रूलर से नापकर परिमाप मापिए। अनुमान और उत्तर की तुलना कीजिए। अभ्यास से अनुमान बेहतर होते जाते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Straight and diagonal units. On dot paper, a step between two neighbouring dots going across or up is a straight unit. A step going slantwise from one dot to the dot diagonally next to it is a diagonal unit. A diagonal unit is longer than a straight unit (about 1.4 times), so we do not add them together as if they were the same. We write a perimeter like '6 straight units + 4 diagonal units'.",
+      "hi": "सीधी और तिरछी इकाइयाँ। डॉट पेपर पर दो पड़ोसी बिंदुओं के बीच आड़ा या खड़ा एक कदम सीधी इकाई है। एक बिंदु से तिरछे पास वाले बिंदु तक का कदम तिरछी (विकर्ण) इकाई है। तिरछी इकाई सीधी इकाई से लंबी होती है (लगभग 1.4 गुना), इसलिए दोनों को एक जैसा मानकर नहीं जोड़ते। परिमाप को '6 सीधी इकाइयाँ + 4 तिरछी इकाइयाँ' जैसा लिखते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "On dot paper, a shape is drawn like a house: a square base of side 3 straight units, with a roof made of two slanting lines, each 3 diagonal units long, meeting at the top. (The top side of the square is inside the shape.) What is the perimeter?",
+       "hi": "डॉट पेपर पर घर जैसी आकृति बनी है: 3 सीधी इकाई भुजा वाला वर्गाकार आधार, जिस पर दो तिरछी रेखाओं की छत है, हर एक 3 तिरछी इकाई लंबी, जो ऊपर मिलती हैं। (वर्ग की ऊपरी भुजा आकृति के अंदर है।) परिमाप क्या है?"
+      },
+      "a": {
+       "en": "Boundary: bottom 3 + left wall 3 + right wall 3 = 9 straight units.\nRoof: 3 + 3 = 6 diagonal units.\nThe top of the square is inside, so it is not counted.\nPerimeter = 9 straight units + 6 diagonal units.",
+       "hi": "सीमा: नीचे 3 + बाईं दीवार 3 + दाईं दीवार 3 = 9 सीधी इकाइयाँ।\nछत: 3 + 3 = 6 तिरछी इकाइयाँ।\nवर्ग की ऊपरी भुजा अंदर है, इसलिए नहीं गिनी जाती।\nपरिमाप = 9 सीधी इकाइयाँ + 6 तिरछी इकाइयाँ।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Perimeter of a regular polygon. A regular polygon has all sides equal and all angles equal: equilateral triangle (3 sides), square (4), regular pentagon (5), regular hexagon (6), and so on. Its perimeter is the number of sides multiplied by the length of one side.",
+      "hi": "सम बहुभुज का परिमाप। सम बहुभुज की सभी भुजाएँ और सभी कोण बराबर होते हैं: समबाहु त्रिभुज (3 भुजाएँ), वर्ग (4), सम पंचभुज (5), सम षट्भुज (6), आदि। इसका परिमाप भुजाओं की संख्या × एक भुजा की लंबाई है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Perimeter of a regular polygon = number of sides × length of one side",
+      "hi": "सम बहुभुज का परिमाप = भुजाओं की संख्या × एक भुजा की लंबाई"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Shape",
+        "Sides",
+        "Perimeter if side = 6 cm"
+       ],
+       "hi": [
+        "आकृति",
+        "भुजाएँ",
+        "भुजा = 6 सेमी हो तो परिमाप"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Equilateral triangle",
+         "3",
+         "18 cm"
+        ],
+        [
+         "Square",
+         "4",
+         "24 cm"
+        ],
+        [
+         "Regular pentagon",
+         "5",
+         "30 cm"
+        ],
+        [
+         "Regular hexagon",
+         "6",
+         "36 cm"
+        ],
+        [
+         "Regular octagon",
+         "8",
+         "48 cm"
+        ]
+       ],
+       "hi": [
+        [
+         "समबाहु त्रिभुज",
+         "3",
+         "18 सेमी"
+        ],
+        [
+         "वर्ग",
+         "4",
+         "24 सेमी"
+        ],
+        [
+         "सम पंचभुज",
+         "5",
+         "30 सेमी"
+        ],
+        [
+         "सम षट्भुज",
+         "6",
+         "36 सेमी"
+        ],
+        [
+         "सम अष्टभुज",
+         "8",
+         "48 सेमी"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A 36 cm string is used to make (a) a square (b) an equilateral triangle (c) a regular hexagon. Find the side in each case.",
+       "hi": "36 सेमी की डोरी से (a) वर्ग (b) समबाहु त्रिभुज (c) सम षट्भुज बनाया जाता है। हर स्थिति में भुजा ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "The string length is the perimeter, 36 cm.\n(a) Square: 36 ÷ 4 = 9 cm.\n(b) Equilateral triangle: 36 ÷ 3 = 12 cm.\n(c) Regular hexagon: 36 ÷ 6 = 6 cm.",
+       "hi": "डोरी की लंबाई परिमाप है, 36 सेमी।\n(a) वर्ग: 36 ÷ 4 = 9 सेमी।\n(b) समबाहु त्रिभुज: 36 ÷ 3 = 12 सेमी।\n(c) सम षट्भुज: 36 ÷ 6 = 6 सेमी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Split and rejoin. Take a rectangle 6 cm by 4 cm (perimeter 20 cm). Cut it straight down the middle into two pieces of 3 cm by 4 cm. Now join the two pieces in different ways, always edge to edge. Put one on top of the other to make a 3 cm by 8 cm rectangle: perimeter 22 cm. Join them so that they touch along only part of a side, like a step: the perimeter grows to 24 cm or 26 cm, depending on how much they overlap. The more the pieces touch, the smaller the perimeter. But the area never changes, because the same paper is used.",
+      "hi": "काटिए और फिर जोड़िए। 6 सेमी × 4 सेमी का आयत लीजिए (परिमाप 20 सेमी)। इसे बीच से सीधा काटकर 3 सेमी × 4 सेमी के दो टुकड़े बनाइए। अब दोनों टुकड़ों को अलग-अलग तरह से, हमेशा किनारे से किनारा मिलाकर, जोड़िए। एक को दूसरे के ऊपर रखकर 3 सेमी × 8 सेमी का आयत बनाइए: परिमाप 22 सेमी। उन्हें ऐसे जोड़िए कि वे भुजा के केवल कुछ हिस्से पर छुएँ, सीढ़ी की तरह: जितना कम मेल, परिमाप उतना बढ़कर 24 सेमी या 26 सेमी हो जाता है। टुकड़े जितना अधिक छूते हैं, परिमाप उतना छोटा। पर क्षेत्रफल कभी नहीं बदलता, क्योंकि वही कागज़ प्रयोग हुआ है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Key idea: when two pieces are joined, the length along which they touch goes inside and is no longer part of the boundary. It is lost twice, once from each piece. So perimeter = (sum of the two perimeters) − 2 × (length touching).",
+      "hi": "मुख्य बात: दो टुकड़े जोड़ने पर जिस लंबाई पर वे छूते हैं, वह अंदर चली जाती है और सीमा का भाग नहीं रहती। यह दो बार घटती है, हर टुकड़े से एक बार। इसलिए परिमाप = (दोनों परिमापों का योग) − 2 × (छूने वाली लंबाई)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.2 Area",
+    "hi": "6.2 क्षेत्रफल"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Perimeter tells us about the boundary. Area tells us how much surface is inside the boundary. A big chapati covers more of the plate than a small one; we say it has a greater area.",
+      "hi": "परिमाप सीमा के बारे में बताता है। क्षेत्रफल बताता है कि सीमा के अंदर कितनी सतह है। बड़ी रोटी छोटी रोटी से थाली का अधिक भाग ढकती है; हम कहते हैं उसका क्षेत्रफल अधिक है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Area",
+       "hi": "क्षेत्रफल"
+      },
+      "text": {
+       "en": "The area of a closed figure is the amount of surface (region) enclosed by it.",
+       "hi": "किसी बंद आकृति का क्षेत्रफल उसके द्वारा घेरी गई सतह (क्षेत्र) की मात्रा है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Square unit",
+       "hi": "वर्ग इकाई"
+      },
+      "text": {
+       "en": "Area is measured by counting how many unit squares cover a shape without gaps or overlaps. A square of side 1 cm has area 1 square centimetre (1 sq cm). Similarly we use square metres (sq m) for rooms and fields, and square kilometres (sq km) for cities and states.",
+       "hi": "क्षेत्रफल यह गिनकर मापते हैं कि कितने इकाई वर्ग आकृति को बिना खाली जगह और बिना एक-दूसरे पर चढ़े ढकते हैं। 1 सेमी भुजा वाले वर्ग का क्षेत्रफल 1 वर्ग सेंटीमीटर (1 वर्ग सेमी) है। इसी तरह कमरों और खेतों के लिए वर्ग मीटर (वर्ग मी) और शहरों व राज्यों के लिए वर्ग किलोमीटर (वर्ग किमी) प्रयोग करते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why squares and not circles? Circles placed side by side always leave gaps between them, so they cannot cover a surface completely. Squares fit together perfectly with no gaps and no overlaps, and they match the straight rows and columns of rectangles. That is why area is measured in square units.",
+      "hi": "वर्ग ही क्यों, वृत्त क्यों नहीं? पास-पास रखे वृत्तों के बीच हमेशा खाली जगह बचती है, इसलिए वे सतह को पूरा नहीं ढक सकते। वर्ग बिना खाली जगह और बिना एक-दूसरे पर चढ़े पूरी तरह फिट होते हैं, और आयतों की सीधी पंक्तियों और स्तंभों से मेल खाते हैं। इसीलिए क्षेत्रफल वर्ग इकाइयों में मापा जाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Area of a rectangle. Draw a rectangle 5 cm long and 3 cm wide on squared paper. It is covered by 3 rows with 5 unit squares in each row, that is 3 × 5 = 15 unit squares. So its area is 15 sq cm. In general, area of rectangle = length × breadth.",
+      "hi": "आयत का क्षेत्रफल। वर्गाकार कागज़ पर 5 सेमी लंबा और 3 सेमी चौड़ा आयत बनाइए। यह 3 पंक्तियों से ढका है जिनमें हर पंक्ति में 5 इकाई वर्ग हैं, यानी 3 × 5 = 15 इकाई वर्ग। इसलिए इसका क्षेत्रफल 15 वर्ग सेमी है। सामान्य रूप से, आयत का क्षेत्रफल = लंबाई × चौड़ाई।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Area of rectangle = length × breadth;  Area of square = side × side",
+      "hi": "आयत का क्षेत्रफल = लंबाई × चौड़ाई;  वर्ग का क्षेत्रफल = भुजा × भुजा"
+     }
+    },
+    {
+     "note": {
+      "en": "Perimeter is a length, so its unit is cm or m. Area is a surface, so its unit is sq cm or sq m. Never write an area in plain cm.",
+      "hi": "परिमाप एक लंबाई है, इसलिए उसकी इकाई सेमी या मी है। क्षेत्रफल एक सतह है, इसलिए उसकी इकाई वर्ग सेमी या वर्ग मी है। क्षेत्रफल को कभी केवल सेमी में न लिखें।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A rectangle has area 72 sq cm and length 12 cm. What is its width?",
+       "hi": "एक आयत का क्षेत्रफल 72 वर्ग सेमी और लंबाई 12 सेमी है। उसकी चौड़ाई क्या है?"
+      },
+      "a": {
+       "en": "Area = length × width, so 72 = 12 × width.\nWidth = 72 ÷ 12 = 6 cm.",
+       "hi": "क्षेत्रफल = लंबाई × चौड़ाई, इसलिए 72 = 12 × चौड़ाई।\nचौड़ाई = 72 ÷ 12 = 6 सेमी।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A room is 6 m long and 5 m wide. A carpet 4 m by 3 m is laid on the floor. What area of the floor is not carpeted?",
+       "hi": "एक कमरा 6 मी लंबा और 5 मी चौड़ा है। फ़र्श पर 4 मी × 3 मी का कालीन बिछा है। फ़र्श का कितना क्षेत्रफल कालीन से ढका नहीं है?"
+      },
+      "a": {
+       "en": "Area of floor = 6 × 5 = 30 sq m.\nArea of carpet = 4 × 3 = 12 sq m.\nUncovered area = 30 − 12 = 18 sq m.",
+       "hi": "फ़र्श का क्षेत्रफल = 6 × 5 = 30 वर्ग मी।\nकालीन का क्षेत्रफल = 4 × 3 = 12 वर्ग मी।\nबिना ढका क्षेत्रफल = 30 − 12 = 18 वर्ग मी।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A plot of land is 20 m by 15 m. In each of its 4 corners there is a square flower bed of side 2 m. What area is left for the lawn?",
+       "hi": "एक ज़मीन का टुकड़ा 20 मी × 15 मी है। इसके चारों कोनों में 2 मी भुजा वाली एक-एक वर्गाकार फूलों की क्यारी है। घास के मैदान के लिए कितना क्षेत्रफल बचा है?"
+      },
+      "a": {
+       "en": "Area of plot = 20 × 15 = 300 sq m.\nArea of one flower bed = 2 × 2 = 4 sq m; four beds = 4 × 4 = 16 sq m.\nLawn area = 300 − 16 = 284 sq m.",
+       "hi": "ज़मीन का क्षेत्रफल = 20 × 15 = 300 वर्ग मी।\nएक क्यारी का क्षेत्रफल = 2 × 2 = 4 वर्ग मी; चार क्यारियाँ = 4 × 4 = 16 वर्ग मी।\nघास का क्षेत्रफल = 300 − 16 = 284 वर्ग मी।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A floor 5 m by 4 m is to be tiled. Each tile is a square of side 1 m and costs ₹60. What is the total cost?",
+       "hi": "5 मी × 4 मी के फ़र्श पर टाइल लगानी है। हर टाइल 1 मी भुजा का वर्ग है और ₹60 की है। कुल खर्च कितना होगा?"
+      },
+      "a": {
+       "en": "Area of floor = 5 × 4 = 20 sq m.\nEach tile covers 1 × 1 = 1 sq m, so 20 tiles are needed.\nCost = 20 × 60 = ₹1,200.",
+       "hi": "फ़र्श का क्षेत्रफल = 5 × 4 = 20 वर्ग मी।\nहर टाइल 1 × 1 = 1 वर्ग मी ढकती है, इसलिए 20 टाइलें चाहिए।\nखर्च = 20 × 60 = ₹1,200।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A mango grove is 60 m long and 40 m wide. Each tree needs a square of side 5 m around it. What is the greatest number of trees that can be planted?",
+       "hi": "एक आम का बाग 60 मी लंबा और 40 मी चौड़ा है। हर पेड़ को अपने चारों ओर 5 मी भुजा का वर्ग चाहिए। अधिक से अधिक कितने पेड़ लगाए जा सकते हैं?"
+      },
+      "a": {
+       "en": "Along the length: 60 ÷ 5 = 12 squares.\nAlong the width: 40 ÷ 5 = 8 squares.\nNumber of trees = 12 × 8 = 96.\n(Check by area: 2400 sq m ÷ 25 sq m = 96.)",
+       "hi": "लंबाई के साथ: 60 ÷ 5 = 12 वर्ग।\nचौड़ाई के साथ: 40 ÷ 5 = 8 वर्ग।\nपेड़ों की संख्या = 12 × 8 = 96।\n(क्षेत्रफल से जाँच: 2400 वर्ग मी ÷ 25 वर्ग मी = 96।)"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Shapes made of rectangles. An L-shaped or T-shaped figure can be split into rectangles. Find the area of each rectangle and add. Alternatively, think of a big rectangle and subtract the missing part.",
+      "hi": "आयतों से बनी आकृतियाँ। L या T आकार की आकृति को आयतों में बाँटा जा सकता है। हर आयत का क्षेत्रफल निकालकर जोड़िए। या फिर एक बड़ा आयत सोचिए और जो भाग कम है उसे घटाइए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "An L-shaped room: the full outline is 8 m by 6 m, but a 3 m by 2 m corner is missing. Find its area in two ways.",
+       "hi": "एक L आकार का कमरा: पूरी रूपरेखा 8 मी × 6 मी है, पर 3 मी × 2 मी का एक कोना कम है। इसका क्षेत्रफल दो तरीकों से ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Way 1 (subtract): 8 × 6 − 3 × 2 = 48 − 6 = 42 sq m.\nWay 2 (split): suppose the missing corner is in the top-right, 3 m along the 8 m side and 2 m down the 6 m side. Cut the room into a top strip 5 m by 2 m and a bottom strip 8 m by 4 m.\n5 × 2 + 8 × 4 = 10 + 32 = 42 sq m.\nBoth ways give 42 sq m.",
+       "hi": "तरीका 1 (घटाकर): 8 × 6 − 3 × 2 = 48 − 6 = 42 वर्ग मी।\nतरीका 2 (बाँटकर): मान लीजिए कम वाला कोना ऊपर-दाएँ है, 8 मी वाली भुजा पर 3 मी और 6 मी वाली भुजा पर 2 मी नीचे तक। कमरे को 5 मी × 2 मी की ऊपरी पट्टी और 8 मी × 4 मी की निचली पट्टी में काटिए।\n5 × 2 + 8 × 4 = 10 + 32 = 42 वर्ग मी।\nदोनों तरीकों से 42 वर्ग मी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Tangram. A tangram is an old Chinese puzzle: a square is cut into 7 pieces, which are 2 large triangles, 1 medium triangle, 2 small triangles, 1 small square and 1 parallelogram. Comparing the pieces by placing one over another shows beautiful relationships:",
+      "hi": "टैनग्राम। टैनग्राम एक पुरानी चीनी पहेली है: एक वर्ग को 7 टुकड़ों में काटा जाता है, जो हैं 2 बड़े त्रिभुज, 1 मध्यम त्रिभुज, 2 छोटे त्रिभुज, 1 छोटा वर्ग और 1 समांतर चतुर्भुज। एक टुकड़े को दूसरे पर रखकर तुलना करने से सुंदर संबंध दिखते हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "The two large triangles have equal area, and so do the two small triangles.",
+       "Two small triangles together exactly cover the medium triangle, the small square, or the parallelogram. So these three pieces have equal area, each twice a small triangle.",
+       "A large triangle has the area of 4 small triangles (or 2 medium triangles).",
+       "In units of one small triangle, the whole square is 4 + 4 + 2 + 2 + 2 + 1 + 1 = 16 small triangles. So each large triangle is one-fourth of the whole square, and the small square piece is one-eighth of it.",
+       "The 7 pieces can also be rearranged into a rectangle. Its area is the same as the original square (same pieces), but its perimeter is different. Rearranging changes perimeter, not area."
+      ],
+      "hi": [
+       "दोनों बड़े त्रिभुजों का क्षेत्रफल बराबर है, और दोनों छोटे त्रिभुजों का भी।",
+       "दो छोटे त्रिभुज मिलकर ठीक मध्यम त्रिभुज, छोटे वर्ग या समांतर चतुर्भुज को ढक लेते हैं। इसलिए इन तीनों टुकड़ों का क्षेत्रफल बराबर है, हर एक छोटे त्रिभुज का दोगुना।",
+       "एक बड़े त्रिभुज का क्षेत्रफल 4 छोटे त्रिभुजों (या 2 मध्यम त्रिभुजों) के बराबर है।",
+       "एक छोटे त्रिभुज को इकाई मानें तो पूरा वर्ग 4 + 4 + 2 + 2 + 2 + 1 + 1 = 16 छोटे त्रिभुज है। इसलिए हर बड़ा त्रिभुज पूरे वर्ग का एक-चौथाई है, और छोटा वर्ग वाला टुकड़ा एक-आठवाँ।",
+       "7 टुकड़ों को जोड़कर एक आयत भी बनाया जा सकता है। उसका क्षेत्रफल मूल वर्ग जितना ही है (वही टुकड़े), पर परिमाप अलग है। टुकड़ों को फिर से जमाने से परिमाप बदलता है, क्षेत्रफल नहीं।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A tangram square has area 64 sq cm. What are the areas of a large triangle, the small square piece and a small triangle?",
+       "hi": "एक टैनग्राम वर्ग का क्षेत्रफल 64 वर्ग सेमी है। एक बड़े त्रिभुज, छोटे वर्ग वाले टुकड़े और एक छोटे त्रिभुज का क्षेत्रफल क्या है?"
+      },
+      "a": {
+       "en": "The square is 16 small triangles, so one small triangle = 64 ÷ 16 = 4 sq cm.\nSmall square piece = 2 small triangles = 8 sq cm.\nLarge triangle = 4 small triangles = 16 sq cm (one-fourth of 64).",
+       "hi": "वर्ग 16 छोटे त्रिभुज है, इसलिए एक छोटा त्रिभुज = 64 ÷ 16 = 4 वर्ग सेमी।\nछोटा वर्ग वाला टुकड़ा = 2 छोटे त्रिभुज = 8 वर्ग सेमी।\nबड़ा त्रिभुज = 4 छोटे त्रिभुज = 16 वर्ग सेमी (64 का एक-चौथाई)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Estimating area on squared paper. For a leaf, a footprint or a map of a lake, the boundary is curved, so no formula works. Place it on squared (graph) paper, trace its outline, and count the squares using these rules:",
+      "hi": "वर्गाकार कागज़ पर क्षेत्रफल का अनुमान। पत्ती, पैर के निशान या झील के नक्शे की सीमा घुमावदार होती है, इसलिए कोई सूत्र काम नहीं करता। इसे वर्गाकार (ग्राफ़) कागज़ पर रखकर रूपरेखा बनाइए, और इन नियमों से वर्ग गिनिए:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Part of square covered",
+        "Count it as"
+       ],
+       "hi": [
+        "वर्ग का ढका भाग",
+        "कितना गिनें"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Full square",
+         "1"
+        ],
+        [
+         "More than half",
+         "1"
+        ],
+        [
+         "Exactly half",
+         "1/2"
+        ],
+        [
+         "Less than half",
+         "0 (ignore)"
+        ]
+       ],
+       "hi": [
+        [
+         "पूरा वर्ग",
+         "1"
+        ],
+        [
+         "आधे से अधिक",
+         "1"
+        ],
+        [
+         "ठीक आधा",
+         "1/2"
+        ],
+        [
+         "आधे से कम",
+         "0 (छोड़ दें)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A leaf traced on 1 cm squared paper covers 18 full squares, 7 squares more than half, 4 squares exactly half and 9 squares less than half. Estimate its area.",
+       "hi": "1 सेमी वर्गाकार कागज़ पर बनी एक पत्ती 18 पूरे वर्ग, आधे से अधिक वाले 7 वर्ग, ठीक आधे वाले 4 वर्ग और आधे से कम वाले 9 वर्ग ढकती है। इसके क्षेत्रफल का अनुमान लगाइए।"
+      },
+      "a": {
+       "en": "Full squares: 18 × 1 = 18.\nMore than half: 7 × 1 = 7.\nExactly half: 4 × 1/2 = 2.\nLess than half: ignored, 0.\nEstimated area = 18 + 7 + 2 = 27 sq cm.",
+       "hi": "पूरे वर्ग: 18 × 1 = 18।\nआधे से अधिक: 7 × 1 = 7।\nठीक आधे: 4 × 1/2 = 2।\nआधे से कम: छोड़ दिए, 0।\nअनुमानित क्षेत्रफल = 18 + 7 + 2 = 27 वर्ग सेमी।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "This is an estimate, not an exact answer. The parts we count as 1 and the parts we ignore roughly balance each other. Smaller squares give a better estimate. You can also try measuring real spaces this way: count the floor tiles of your classroom or corridor to estimate its area.",
+      "hi": "यह अनुमान है, सटीक उत्तर नहीं। जिन भागों को हम 1 गिनते हैं और जिन्हें छोड़ते हैं, वे लगभग एक-दूसरे को संतुलित कर देते हैं। छोटे वर्गों से बेहतर अनुमान मिलता है। असली जगहों को भी ऐसे माप सकते हैं: अपनी कक्षा या गलियारे की फ़र्श की टाइलें गिनकर उसका क्षेत्रफल आँकिए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Same area, different perimeters. Find all rectangles with whole-number sides and area 24 sq units. There are four: 1 × 24, 2 × 12, 3 × 8 and 4 × 6. Their perimeters are 50, 28, 22 and 20 units. The long thin rectangle has the greatest perimeter, and the one closest to a square has the least.",
+      "hi": "समान क्षेत्रफल, अलग परिमाप। पूर्ण संख्या भुजाओं और 24 वर्ग इकाई क्षेत्रफल वाले सारे आयत खोजिए। चार हैं: 1 × 24, 2 × 12, 3 × 8 और 4 × 6। इनके परिमाप 50, 28, 22 और 20 इकाई हैं। लंबे-पतले आयत का परिमाप सबसे अधिक है, और वर्ग के सबसे पास वाले का सबसे कम।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Rectangle (area 24)",
+        "Perimeter"
+       ],
+       "hi": [
+        "आयत (क्षेत्रफल 24)",
+        "परिमाप"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1 × 24",
+         "50"
+        ],
+        [
+         "2 × 12",
+         "28"
+        ],
+        [
+         "3 × 8",
+         "22"
+        ],
+        [
+         "4 × 6",
+         "20"
+        ]
+       ],
+       "hi": [
+        [
+         "1 × 24",
+         "50"
+        ],
+        [
+         "2 × 12",
+         "28"
+        ],
+        [
+         "3 × 8",
+         "22"
+        ],
+        [
+         "4 × 6",
+         "20"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Generalisation: for a fixed area, the closer a rectangle is to a square, the smaller its perimeter; the longer and thinner it is, the bigger its perimeter. For area 36, the 6 × 6 square has perimeter 24, the least possible.",
+      "hi": "सामान्य नियम: किसी तय क्षेत्रफल के लिए, आयत जितना वर्ग के पास हो, उसका परिमाप उतना कम; जितना लंबा-पतला हो, परिमाप उतना अधिक। क्षेत्रफल 36 के लिए 6 × 6 वर्ग का परिमाप 24 है, जो सबसे कम संभव है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.3 Area of a Triangle",
+    "hi": "6.3 त्रिभुज का क्षेत्रफल"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity: cut out a paper rectangle and fold or cut it along one diagonal (the line joining opposite corners). You get two triangles. Place one on top of the other: they match exactly. So each triangle is exactly half of the rectangle.",
+      "hi": "गतिविधि: कागज़ का एक आयत काटिए और उसे एक विकर्ण (आमने-सामने के कोनों को मिलाने वाली रेखा) के साथ मोड़िए या काटिए। दो त्रिभुज मिलते हैं। एक को दूसरे पर रखिए: वे ठीक मेल खाते हैं। इसलिए हर त्रिभुज आयत का ठीक आधा है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Area of the triangle cut off by a diagonal = (length × breadth) ÷ 2",
+      "hi": "विकर्ण से कटे त्रिभुज का क्षेत्रफल = (लंबाई × चौड़ाई) ÷ 2"
+     }
+    },
+    {
+     "p": {
+      "en": "Now draw a rectangle and pick any point on its top side. Join this point to the two bottom corners, making a triangle with the whole bottom side as its base. A vertical line from the chosen point down to the base splits the rectangle into two smaller rectangles. In each small rectangle, the triangle takes exactly the half that lies on one side of its diagonal. Adding up, the big triangle covers exactly half of the whole rectangle.",
+      "hi": "अब एक आयत बनाइए और उसकी ऊपरी भुजा पर कोई भी बिंदु चुनिए। इस बिंदु को नीचे के दोनों कोनों से मिलाइए, जिससे पूरी निचली भुजा आधार वाला त्रिभुज बने। चुने गए बिंदु से आधार तक की खड़ी रेखा आयत को दो छोटे आयतों में बाँटती है। हर छोटे आयत में त्रिभुज ठीक वही आधा भाग लेता है जो उसके विकर्ण के एक ओर है। जोड़ने पर बड़ा त्रिभुज पूरे आयत का ठीक आधा ढकता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Conclusion: if a triangle has one side along one side of a rectangle and its third corner on the opposite side, the area of the triangle is half the area of the rectangle. That is, area = (base × height) ÷ 2, where height is the distance between those two opposite sides.",
+      "hi": "निष्कर्ष: यदि त्रिभुज की एक भुजा आयत की एक भुजा पर हो और उसका तीसरा कोना सामने वाली भुजा पर हो, तो त्रिभुज का क्षेत्रफल आयत के क्षेत्रफल का आधा है। यानी क्षेत्रफल = (आधार × ऊँचाई) ÷ 2, जहाँ ऊँचाई उन दो आमने-सामने की भुजाओं के बीच की दूरी है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A rectangle is 10 cm by 6 cm. A triangle has the 10 cm side as its base and its top corner on the opposite side. Find the area of the triangle.",
+       "hi": "एक आयत 10 सेमी × 6 सेमी है। एक त्रिभुज का आधार 10 सेमी वाली भुजा है और उसका ऊपरी कोना सामने वाली भुजा पर है। त्रिभुज का क्षेत्रफल ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Area of rectangle = 10 × 6 = 60 sq cm.\nThe triangle is half of it: 60 ÷ 2 = 30 sq cm.",
+       "hi": "आयत का क्षेत्रफल = 10 × 6 = 60 वर्ग सेमी।\nत्रिभुज इसका आधा है: 60 ÷ 2 = 30 वर्ग सेमी।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "On squared paper, a figure is made of a 6 by 6 square with a right triangle on top whose two short sides are 6 units (along the top of the square) and 4 units (going up from a corner). Find its area.",
+       "hi": "वर्गाकार कागज़ पर एक आकृति 6 × 6 वर्ग से बनी है जिसके ऊपर एक समकोण त्रिभुज है, जिसकी दो छोटी भुजाएँ 6 इकाई (वर्ग के ऊपर के साथ) और 4 इकाई (एक कोने से ऊपर की ओर) हैं। इसका क्षेत्रफल ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Square: 6 × 6 = 36 sq units.\nThe right triangle is half of a 6 by 4 rectangle: (6 × 4) ÷ 2 = 12 sq units.\nTotal area = 36 + 12 = 48 sq units.",
+       "hi": "वर्ग: 6 × 6 = 36 वर्ग इकाई।\nसमकोण त्रिभुज 6 × 4 आयत का आधा है: (6 × 4) ÷ 2 = 12 वर्ग इकाई।\nकुल क्षेत्रफल = 36 + 12 = 48 वर्ग इकाई।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A square of side 8 cm has a corner cut off: a right triangle whose two short sides are 3 cm and 2 cm. Find the area left.",
+       "hi": "8 सेमी भुजा वाले वर्ग से एक कोना काटा गया है: एक समकोण त्रिभुज जिसकी दो छोटी भुजाएँ 3 सेमी और 2 सेमी हैं। बचा हुआ क्षेत्रफल ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Square = 8 × 8 = 64 sq cm.\nCut triangle = (3 × 2) ÷ 2 = 3 sq cm.\nArea left = 64 − 3 = 61 sq cm.",
+       "hi": "वर्ग = 8 × 8 = 64 वर्ग सेमी।\nकटा त्रिभुज = (3 × 2) ÷ 2 = 3 वर्ग सेमी।\nबचा क्षेत्रफल = 64 − 3 = 61 वर्ग सेमी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Making it 'more' or 'less'. Take 9 unit squares and join them edge to edge (full sides touching) to make different shapes. All shapes have area 9 sq units, but their perimeters differ. A 3 by 3 square has the smallest perimeter, 12 units. A straight line of 9 squares (9 by 1) has the largest, 20 units. Any shape where each new square touches only one earlier square, like a long line or a zigzag staircase, also has perimeter 20. Perimeter 18 is possible too: for example, a 2 by 2 block of 4 squares with a row of 5 squares attached in line with its bottom row.",
+      "hi": "'अधिक' या 'कम' बनाइए। 9 इकाई वर्ग लेकर उन्हें किनारे से किनारा (पूरी भुजाएँ मिलाकर) जोड़िए और अलग-अलग आकृतियाँ बनाइए। सभी का क्षेत्रफल 9 वर्ग इकाई है, पर परिमाप अलग। 3 × 3 वर्ग का परिमाप सबसे कम, 12 इकाई है। 9 वर्गों की सीधी पंक्ति (9 × 1) का सबसे अधिक, 20 इकाई। ऐसी कोई भी आकृति जिसमें हर नया वर्ग पहले के केवल एक वर्ग को छूता है, जैसे लंबी पंक्ति या टेढ़ी सीढ़ी, उसका परिमाप भी 20 है। परिमाप 18 भी संभव है: जैसे 4 वर्गों का 2 × 2 खंड, जिसकी निचली पंक्ति की सीध में 5 वर्गों की पंक्ति जुड़ी हो।"
+     }
+    },
+    {
+     "note": {
+      "en": "Rule for adding a square to a shape: the new square brings 4 new edges, but every edge it shares with the shape is removed twice (once from the square, once from the shape). Sharing 1 edge: perimeter goes up by 2. Sharing 2 edges: no change. Sharing 3 edges (filling a notch): perimeter goes down by 2.",
+      "hi": "किसी आकृति में वर्ग जोड़ने का नियम: नया वर्ग 4 नए किनारे लाता है, पर आकृति के साथ साझा हर किनारा दो बार हटता है (एक बार वर्ग से, एक बार आकृति से)। 1 किनारा साझा: परिमाप 2 बढ़ता है। 2 किनारे साझा: कोई बदलाव नहीं। 3 किनारे साझा (खाँचा भरना): परिमाप 2 घटता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A shape made of unit squares has perimeter 24 units. One more unit square is attached. Can the perimeter increase, decrease or stay the same?",
+       "hi": "इकाई वर्गों से बनी एक आकृति का परिमाप 24 इकाई है। एक और इकाई वर्ग जोड़ा जाता है। क्या परिमाप बढ़ सकता है, घट सकता है या वही रह सकता है?"
+      },
+      "a": {
+       "en": "All three can happen.\nIncrease: a 7 by 5 rectangle has perimeter 24. Attaching a square along one edge on the outside makes it 26.\nSame: remove a corner square from the 7 by 5 rectangle (perimeter is still 24). Putting a square back into that corner touches 2 edges, so perimeter stays 24.\nDecrease: take a 6 by 5 rectangle (perimeter 22) and remove one square from the middle of a long edge. This notch adds 2, so the new shape has perimeter 24. Now attach a square into the notch: it touches 3 edges, so the perimeter drops by 2, back to 22.",
+       "hi": "तीनों हो सकते हैं।\nबढ़ना: 7 × 5 आयत का परिमाप 24 है। बाहर किसी किनारे पर वर्ग जोड़ने से यह 26 हो जाता है।\nवही रहना: 7 × 5 आयत से एक कोने का वर्ग हटाइए (परिमाप फिर भी 24)। उस कोने में वर्ग वापस रखने पर वह 2 किनारे छूता है, इसलिए परिमाप 24 ही रहता है।\nघटना: 6 × 5 आयत (परिमाप 22) लेकर उसकी एक लंबी भुजा के बीच से एक वर्ग हटाइए। यह खाँचा परिमाप 2 बढ़ाता है, इसलिए नई आकृति का परिमाप 24 है। अब खाँचे में वर्ग लगाइए: वह 3 किनारे छूता है, इसलिए परिमाप 2 घटकर फिर 22 हो जाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Same perimeter, different areas. Rectangles with perimeter 20 cm have length + breadth = 10 cm. They can be 1 × 9 (area 9), 2 × 8 (16), 3 × 7 (21), 4 × 6 (24) or 5 × 5 (25). Same perimeter, but areas from 9 to 25. The square has the greatest area. So perimeter and area are independent: knowing one does not tell you the other.",
+      "hi": "समान परिमाप, अलग क्षेत्रफल। 20 सेमी परिमाप वाले आयतों में लंबाई + चौड़ाई = 10 सेमी होता है। वे 1 × 9 (क्षेत्रफल 9), 2 × 8 (16), 3 × 7 (21), 4 × 6 (24) या 5 × 5 (25) हो सकते हैं। परिमाप वही, पर क्षेत्रफल 9 से 25 तक। वर्ग का क्षेत्रफल सबसे अधिक है। इसलिए परिमाप और क्षेत्रफल स्वतंत्र हैं: एक जानने से दूसरा पता नहीं चलता।"
+     }
+    },
+    {
+     "p": {
+      "en": "House plans (Charan and Sharan activity). A house plan shows rooms as rectangles, with some lengths written and some missing. To find a missing length, use the fact that opposite sides of the whole house add up the same way. For example, if the full house is 12 m wide and the bedroom along the top is 5 m wide, the room next to it along the top must be 12 − 5 = 7 m wide. After filling in all lengths, find the area of each room and add them to get the total area. Two different house plans can have the same total area but different perimeters, or the other way round.",
+      "hi": "घर के नक्शे (चरण और शरण वाली गतिविधि)। घर के नक्शे में कमरे आयतों के रूप में दिखते हैं, कुछ लंबाइयाँ लिखी होती हैं और कुछ नहीं। छूटी लंबाई निकालने के लिए इस बात का प्रयोग कीजिए कि पूरे घर की आमने-सामने की भुजाएँ बराबर होती हैं। जैसे, पूरा घर 12 मी चौड़ा हो और ऊपर वाला शयनकक्ष 5 मी चौड़ा हो, तो उसके बगल वाला ऊपरी कमरा 12 − 5 = 7 मी चौड़ा होगा। सारी लंबाइयाँ भरकर हर कमरे का क्षेत्रफल निकालिए और जोड़कर कुल क्षेत्रफल पाइए। दो अलग नक्शों का कुल क्षेत्रफल बराबर पर परिमाप अलग हो सकता है, या इसका उल्टा।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A rectangular house is 12 m by 8 m. It has three rooms: a bedroom 5 m by 8 m on the left, and on the right a kitchen at the top and a hall at the bottom. The kitchen is 3 m deep. Find the dimensions and area of each room and check the total.",
+       "hi": "एक आयताकार घर 12 मी × 8 मी है। इसमें तीन कमरे हैं: बाईं ओर 5 मी × 8 मी का शयनकक्ष, और दाईं ओर ऊपर रसोई और नीचे हॉल। रसोई 3 मी गहरी है। हर कमरे की माप और क्षेत्रफल ज्ञात कीजिए और कुल की जाँच कीजिए।"
+      },
+      "a": {
+       "en": "Width of the right part = 12 − 5 = 7 m.\nKitchen = 7 m by 3 m, area 21 sq m.\nHall depth = 8 − 3 = 5 m, so hall = 7 m by 5 m, area 35 sq m.\nBedroom = 5 × 8 = 40 sq m.\nTotal = 40 + 21 + 35 = 96 sq m, which matches 12 × 8 = 96.",
+       "hi": "दाएँ भाग की चौड़ाई = 12 − 5 = 7 मी।\nरसोई = 7 मी × 3 मी, क्षेत्रफल 21 वर्ग मी।\nहॉल की गहराई = 8 − 3 = 5 मी, इसलिए हॉल = 7 मी × 5 मी, क्षेत्रफल 35 वर्ग मी।\nशयनकक्ष = 5 × 8 = 40 वर्ग मी।\nकुल = 40 + 21 + 35 = 96 वर्ग मी, जो 12 × 8 = 96 से मेल खाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Area maze puzzles. A big rectangle is divided into smaller rectangles. Some areas and some side lengths are given; you must find a missing length or area using only whole-number thinking (no long calculations). The trick: rectangles that share a full side have the same length on that side, so area ÷ known side gives the other side.",
+      "hi": "क्षेत्रफल भूलभुलैया पहेलियाँ (एरिया मेज़)। एक बड़ा आयत छोटे आयतों में बँटा होता है। कुछ क्षेत्रफल और कुछ भुजाओं की लंबाई दी होती है; आपको छूटी लंबाई या क्षेत्रफल निकालना होता है। तरकीब: जो आयत पूरी भुजा साझा करते हैं, उस भुजा पर उनकी लंबाई बराबर होती है, इसलिए क्षेत्रफल ÷ ज्ञात भुजा से दूसरी भुजा मिलती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Area maze: a rectangle is split by one vertical line and one horizontal line into four smaller rectangles. Top-left has area 12 sq cm and width 4 cm. Top-right has area 15 sq cm. Bottom-left has area 20 sq cm. Find the area of the bottom-right rectangle.",
+       "hi": "एरिया मेज़: एक आयत एक खड़ी और एक आड़ी रेखा से चार छोटे आयतों में बँटा है। ऊपर-बाएँ का क्षेत्रफल 12 वर्ग सेमी और चौड़ाई 4 सेमी है। ऊपर-दाएँ का क्षेत्रफल 15 वर्ग सेमी है। नीचे-बाएँ का क्षेत्रफल 20 वर्ग सेमी है। नीचे-दाएँ आयत का क्षेत्रफल ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Top-left: height = 12 ÷ 4 = 3 cm. The top row is 3 cm tall.\nTop-right: width = 15 ÷ 3 = 5 cm.\nBottom-left has width 4 cm, so its height = 20 ÷ 4 = 5 cm.\nBottom-right is 5 cm wide and 5 cm tall: area = 25 sq cm.",
+       "hi": "ऊपर-बाएँ: ऊँचाई = 12 ÷ 4 = 3 सेमी। ऊपरी पंक्ति 3 सेमी ऊँची है।\nऊपर-दाएँ: चौड़ाई = 15 ÷ 3 = 5 सेमी।\nनीचे-बाएँ की चौड़ाई 4 सेमी है, इसलिए उसकी ऊँचाई = 20 ÷ 4 = 5 सेमी।\nनीचे-दाएँ 5 सेमी चौड़ा और 5 सेमी ऊँचा है: क्षेत्रफल = 25 वर्ग सेमी।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Mixing up perimeter and area. Perimeter is the length around (add sides); area is the surface inside (multiply length by breadth).",
+   "Writing the perimeter of a rectangle as length + breadth. That is only half the way round; perimeter is 2 × (length + breadth).",
+   "Using wrong units: writing area as cm or perimeter as sq cm. Area is in square units, perimeter in length units.",
+   "Not converting units. Adding 3 m and 40 cm directly is wrong; first write 300 cm + 40 cm = 340 cm.",
+   "Thinking that shapes with the same area have the same perimeter. 1 × 24 and 4 × 6 rectangles both have area 24, but perimeters 50 and 20.",
+   "Counting inside edges in the perimeter of a combined shape. Edges where two pieces touch are inside and are not part of the boundary.",
+   "Forgetting to halve when finding the area of a triangle in a rectangle. The triangle is half the rectangle, not the whole.",
+   "Adding straight and diagonal units as if equal. A diagonal unit is longer, so write them separately, like 8 straight + 4 diagonal units.",
+   "Counting every partly covered square as 1 when estimating area. Only squares more than half covered count as 1; exactly half count as 1/2; less than half are ignored."
+  ],
+  "hi": [
+   "परिमाप और क्षेत्रफल को मिला देना। परिमाप चारों ओर की लंबाई है (भुजाएँ जोड़ें); क्षेत्रफल अंदर की सतह है (लंबाई × चौड़ाई)।",
+   "आयत का परिमाप लंबाई + चौड़ाई लिखना। यह केवल आधा चक्कर है; परिमाप 2 × (लंबाई + चौड़ाई) है।",
+   "गलत इकाई लिखना: क्षेत्रफल को सेमी या परिमाप को वर्ग सेमी में। क्षेत्रफल वर्ग इकाइयों में, परिमाप लंबाई की इकाइयों में।",
+   "इकाइयों को न बदलना। 3 मी और 40 सेमी को सीधे जोड़ना गलत है; पहले 300 सेमी + 40 सेमी = 340 सेमी लिखिए।",
+   "सोचना कि समान क्षेत्रफल वाली आकृतियों का परिमाप भी समान होगा। 1 × 24 और 4 × 6 दोनों का क्षेत्रफल 24 है, पर परिमाप 50 और 20।",
+   "जुड़ी आकृति के परिमाप में अंदर के किनारे गिनना। जहाँ दो टुकड़े मिलते हैं वे किनारे अंदर हैं, सीमा का भाग नहीं।",
+   "आयत में बने त्रिभुज का क्षेत्रफल निकालते समय आधा करना भूल जाना। त्रिभुज आयत का आधा है, पूरा नहीं।",
+   "सीधी और तिरछी इकाइयों को बराबर मानकर जोड़ना। तिरछी इकाई लंबी है, इसलिए अलग लिखिए, जैसे 8 सीधी + 4 तिरछी इकाइयाँ।",
+   "क्षेत्रफल का अनुमान लगाते समय हर आंशिक ढके वर्ग को 1 गिनना। केवल आधे से अधिक ढके वर्ग 1 गिनें; ठीक आधे को 1/2; आधे से कम को छोड़ दें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Perimeter",
+    "hi": "परिमाप"
+   },
+   "d": {
+    "en": "The total length of the boundary of a closed figure.",
+    "hi": "किसी बंद आकृति की सीमा की कुल लंबाई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Area",
+    "hi": "क्षेत्रफल"
+   },
+   "d": {
+    "en": "The amount of surface enclosed by a closed figure.",
+    "hi": "किसी बंद आकृति द्वारा घेरी गई सतह की मात्रा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Square unit",
+    "hi": "वर्ग इकाई"
+   },
+   "d": {
+    "en": "The area of a square with side 1 unit; used to measure area (sq cm, sq m, sq km).",
+    "hi": "1 इकाई भुजा वाले वर्ग का क्षेत्रफल; क्षेत्रफल मापने की इकाई (वर्ग सेमी, वर्ग मी, वर्ग किमी)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rectangle",
+    "hi": "आयत"
+   },
+   "d": {
+    "en": "A four-sided figure with all angles right angles and opposite sides equal.",
+    "hi": "चार भुजाओं वाली आकृति जिसके सभी कोण समकोण और आमने-सामने की भुजाएँ बराबर हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Square",
+    "hi": "वर्ग"
+   },
+   "d": {
+    "en": "A rectangle with all four sides equal.",
+    "hi": "ऐसा आयत जिसकी चारों भुजाएँ बराबर हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Length and breadth",
+    "hi": "लंबाई और चौड़ाई"
+   },
+   "d": {
+    "en": "The longer and shorter sides of a rectangle.",
+    "hi": "आयत की लंबी और छोटी भुजाएँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Polygon",
+    "hi": "बहुभुज"
+   },
+   "d": {
+    "en": "A closed figure made of straight line sides.",
+    "hi": "सीधी रेखा वाली भुजाओं से बनी बंद आकृति।"
+   }
+  },
+  {
+   "t": {
+    "en": "Regular polygon",
+    "hi": "सम बहुभुज"
+   },
+   "d": {
+    "en": "A polygon with all sides equal and all angles equal.",
+    "hi": "ऐसा बहुभुज जिसकी सभी भुजाएँ और सभी कोण बराबर हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Equilateral triangle",
+    "hi": "समबाहु त्रिभुज"
+   },
+   "d": {
+    "en": "A triangle with all three sides equal.",
+    "hi": "ऐसा त्रिभुज जिसकी तीनों भुजाएँ बराबर हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Diagonal",
+    "hi": "विकर्ण"
+   },
+   "d": {
+    "en": "A line joining two opposite corners of a rectangle or other polygon.",
+    "hi": "आयत या किसी बहुभुज के आमने-सामने के दो कोनों को मिलाने वाली रेखा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Straight and diagonal units",
+    "hi": "सीधी और तिरछी इकाइयाँ"
+   },
+   "d": {
+    "en": "On dot paper, a step across or up is straight; a slanting step to the diagonal neighbour is diagonal.",
+    "hi": "डॉट पेपर पर आड़ा या खड़ा कदम सीधी इकाई; तिरछे पड़ोसी बिंदु तक का कदम तिरछी इकाई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Tangram",
+    "hi": "टैनग्राम"
+   },
+   "d": {
+    "en": "A square cut into 7 pieces (5 triangles, a square and a parallelogram) that can be rearranged into many shapes.",
+    "hi": "7 टुकड़ों (5 त्रिभुज, एक वर्ग और एक समांतर चतुर्भुज) में कटा वर्ग, जिनसे कई आकृतियाँ बनती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Parallelogram",
+    "hi": "समांतर चतुर्भुज"
+   },
+   "d": {
+    "en": "A four-sided figure whose opposite sides are parallel.",
+    "hi": "चार भुजाओं वाली आकृति जिसकी आमने-सामने की भुजाएँ समांतर हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Squared (graph) paper",
+    "hi": "वर्गाकार (ग्राफ़) कागज़"
+   },
+   "d": {
+    "en": "Paper ruled into equal small squares, used to count area.",
+    "hi": "बराबर छोटे वर्गों में बँटा कागज़, जिससे क्षेत्रफल गिना जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Area maze",
+    "hi": "क्षेत्रफल भूलभुलैया (एरिया मेज़)"
+   },
+   "d": {
+    "en": "A puzzle where a rectangle is split into rectangles and missing lengths or areas must be found.",
+    "hi": "पहेली जिसमें आयत छोटे आयतों में बँटा होता है और छूटी लंबाई या क्षेत्रफल निकालना होता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the perimeter of a rectangle 18 cm long and 11 cm wide.",
+    "hi": "18 सेमी लंबे और 11 सेमी चौड़े आयत का परिमाप ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Perimeter = 2 × (18 + 11) = 2 × 29 = 58 cm.",
+    "hi": "परिमाप = 2 × (18 + 11) = 2 × 29 = 58 सेमी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "A square garden has side 25 m. Find its perimeter.",
+    "hi": "एक वर्गाकार बगीचे की भुजा 25 मी है। इसका परिमाप ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Perimeter = 4 × 25 = 100 m.",
+    "hi": "परिमाप = 4 × 25 = 100 मी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the missing value: (a) a rectangle with perimeter 50 cm and length 15 cm; find the breadth. (b) a square with perimeter 64 m; find the side. (c) a triangle with perimeter 30 cm and two sides 8 cm and 13 cm; find the third side.",
+    "hi": "छूटा मान ज्ञात कीजिए: (a) आयत का परिमाप 50 सेमी और लंबाई 15 सेमी; चौड़ाई ज्ञात कीजिए। (b) वर्ग का परिमाप 64 मी; भुजा ज्ञात कीजिए। (c) त्रिभुज का परिमाप 30 सेमी और दो भुजाएँ 8 सेमी और 13 सेमी; तीसरी भुजा ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "(a) length + breadth = 50 ÷ 2 = 25, so breadth = 25 − 15 = 10 cm.\n(b) side = 64 ÷ 4 = 16 m.\n(c) third side = 30 − (8 + 13) = 30 − 21 = 9 cm.",
+    "hi": "(a) लंबाई + चौड़ाई = 50 ÷ 2 = 25, इसलिए चौड़ाई = 25 − 15 = 10 सेमी।\n(b) भुजा = 64 ÷ 4 = 16 मी।\n(c) तीसरी भुजा = 30 − (8 + 13) = 30 − 21 = 9 सेमी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A wire bent into a square of side 15 cm is straightened and bent into a rectangle of length 18 cm. What is the breadth of the rectangle?",
+    "hi": "15 सेमी भुजा वाले वर्ग में मुड़े तार को सीधा करके 18 सेमी लंबा आयत बनाया जाता है। आयत की चौड़ाई क्या है?"
+   },
+   "a": {
+    "en": "Wire length = 4 × 15 = 60 cm.\nFor the rectangle, length + breadth = 60 ÷ 2 = 30 cm.\nBreadth = 30 − 18 = 12 cm.",
+    "hi": "तार की लंबाई = 4 × 15 = 60 सेमी।\nआयत के लिए लंबाई + चौड़ाई = 60 ÷ 2 = 30 सेमी।\nचौड़ाई = 30 − 18 = 12 सेमी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A farmer fences a rectangular field 120 m by 80 m with 3 rounds of wire. How much wire does he need? If wire costs ₹15 per metre, what is the cost?",
+    "hi": "एक किसान 120 मी × 80 मी के आयताकार खेत पर तार के 3 चक्कर लगाकर बाड़ बनाता है। उसे कितना तार चाहिए? यदि तार ₹15 प्रति मीटर है, तो खर्च कितना होगा?"
+   },
+   "a": {
+    "en": "One round = 2 × (120 + 80) = 400 m.\n3 rounds = 1200 m of wire.\nCost = 1200 × 15 = ₹18,000.",
+    "hi": "एक चक्कर = 2 × (120 + 80) = 400 मी।\n3 चक्कर = 1200 मी तार।\nखर्च = 1200 × 15 = ₹18,000।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "A 48 cm long string is used to make a regular octagon (8 equal sides). What is the length of each side? What if it makes an equilateral triangle?",
+    "hi": "48 सेमी लंबी डोरी से सम अष्टभुज (8 बराबर भुजाएँ) बनाया जाता है। हर भुजा कितनी लंबी है? यदि इससे समबाहु त्रिभुज बने तो?"
+   },
+   "a": {
+    "en": "Octagon: 48 ÷ 8 = 6 cm.\nEquilateral triangle: 48 ÷ 3 = 16 cm.",
+    "hi": "अष्टभुज: 48 ÷ 8 = 6 सेमी।\nसमबाहु त्रिभुज: 48 ÷ 3 = 16 सेमी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Meena runs 4 rounds of a square track of side 75 m. Ravi runs 3 rounds of a rectangular track 110 m by 40 m. Who runs farther and by how much?",
+    "hi": "मीना 75 मी भुजा वाले वर्गाकार ट्रैक के 4 चक्कर दौड़ती है। रवि 110 मी × 40 मी वाले आयताकार ट्रैक के 3 चक्कर दौड़ता है। कौन अधिक दौड़ता है और कितना?"
+   },
+   "a": {
+    "en": "Meena: one round = 4 × 75 = 300 m; 4 rounds = 1200 m.\nRavi: one round = 2 × (110 + 40) = 300 m; 3 rounds = 900 m.\nMeena runs farther, by 1200 − 900 = 300 m.",
+    "hi": "मीना: एक चक्कर = 4 × 75 = 300 मी; 4 चक्कर = 1200 मी।\nरवि: एक चक्कर = 2 × (110 + 40) = 300 मी; 3 चक्कर = 900 मी।\nमीना 1200 − 900 = 300 मी अधिक दौड़ती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A square track has side 50 m (perimeter 200 m). Two runners must each run 350 m and both finish at the same corner, called the finish corner. Where should each start if one runs clockwise and the other anticlockwise?",
+    "hi": "एक वर्गाकार ट्रैक की भुजा 50 मी है (परिमाप 200 मी)। दो धावकों को 350 मी दौड़ना है और दोनों को एक ही कोने पर, जिसे अंतिम कोना कहते हैं, खत्म करना है। यदि एक घड़ी की दिशा में और दूसरा उल्टी दिशा में दौड़े, तो हर एक कहाँ से शुरू करे?"
+   },
+   "a": {
+    "en": "350 m = 1 full round (200 m) + 150 m.\nAfter a full round you are back where you started, so only the extra 150 m matters, which is 3 sides of 50 m.\nThe clockwise runner should start 3 sides before the finish corner going clockwise, which is the corner just after the finish corner going clockwise (1 side away).\nThe anticlockwise runner should likewise start at the corner 1 side away from the finish corner, but on the other side.\nSo they start at the two corners next to the finish corner, on opposite sides of it.",
+    "hi": "350 मी = 1 पूरा चक्कर (200 मी) + 150 मी।\nपूरे चक्कर के बाद आप वहीं लौट आते हैं, इसलिए केवल अतिरिक्त 150 मी मायने रखता है, जो 50 मी की 3 भुजाएँ हैं।\nघड़ी की दिशा वाला धावक अंतिम कोने से घड़ी की दिशा में 3 भुजा पहले शुरू करे, यानी वह कोना जो अंतिम कोने के घड़ी की दिशा में ठीक बाद आता है (1 भुजा दूर)।\nउल्टी दिशा वाला धावक भी अंतिम कोने से 1 भुजा दूर वाले कोने से शुरू करे, पर दूसरी ओर।\nयानी वे अंतिम कोने के दोनों पड़ोसी कोनों से शुरू करें, उसके आमने-सामने की ओर।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A rectangle 8 cm by 2 cm is cut into two 4 cm by 2 cm pieces. Find the perimeter of the original rectangle, of the shape made by joining the pieces along their 2 cm sides, and of the shape made by joining them along their 4 cm sides.",
+    "hi": "8 सेमी × 2 सेमी के आयत को 4 सेमी × 2 सेमी के दो टुकड़ों में काटा गया। मूल आयत का परिमाप ज्ञात कीजिए, और उस आकृति का भी जो टुकड़ों को उनकी 2 सेमी भुजाओं से जोड़कर बनती है, और 4 सेमी भुजाओं से जोड़कर बनती है।"
+   },
+   "a": {
+    "en": "Original: 2 × (8 + 2) = 20 cm.\nEach piece: 2 × (4 + 2) = 12 cm.\nJoined along 2 cm sides: back to 8 × 2, perimeter = 12 + 12 − 2 × 2 = 20 cm.\nJoined along 4 cm sides: a 4 × 4 square, perimeter = 12 + 12 − 2 × 4 = 16 cm.\nArea is 16 sq cm every time.",
+    "hi": "मूल: 2 × (8 + 2) = 20 सेमी।\nहर टुकड़ा: 2 × (4 + 2) = 12 सेमी।\n2 सेमी भुजाओं से जोड़ने पर: फिर से 8 × 2, परिमाप = 12 + 12 − 2 × 2 = 20 सेमी।\n4 सेमी भुजाओं से जोड़ने पर: 4 × 4 वर्ग, परिमाप = 12 + 12 − 2 × 4 = 16 सेमी।\nक्षेत्रफल हर बार 16 वर्ग सेमी है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "On dot paper, a diamond shape has 4 sides, each 2 diagonal units long. A rectangle on the same paper is 3 straight units by 2 straight units. Write the perimeter of each.",
+    "hi": "डॉट पेपर पर एक हीरे जैसी आकृति की 4 भुजाएँ हैं, हर एक 2 तिरछी इकाई लंबी। उसी कागज़ पर एक आयत 3 सीधी इकाई × 2 सीधी इकाई है। दोनों का परिमाप लिखिए।"
+   },
+   "a": {
+    "en": "Diamond: 4 × 2 = 8 diagonal units.\nRectangle: 2 × (3 + 2) = 10 straight units.",
+    "hi": "हीरा: 4 × 2 = 8 तिरछी इकाइयाँ।\nआयत: 2 × (3 + 2) = 10 सीधी इकाइयाँ।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the area of a rectangle 14 cm by 9 cm and of a square of side 13 cm.",
+    "hi": "14 सेमी × 9 सेमी आयत और 13 सेमी भुजा वाले वर्ग का क्षेत्रफल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Rectangle: 14 × 9 = 126 sq cm.\nSquare: 13 × 13 = 169 sq cm.",
+    "hi": "आयत: 14 × 9 = 126 वर्ग सेमी।\nवर्ग: 13 × 13 = 169 वर्ग सेमी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "The area of a rectangular notebook cover is 336 sq cm and its length is 21 cm. Find its width.",
+    "hi": "एक आयताकार कॉपी के कवर का क्षेत्रफल 336 वर्ग सेमी और लंबाई 21 सेमी है। इसकी चौड़ाई ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Width = 336 ÷ 21 = 16 cm. (Check: 21 × 16 = 336.)",
+    "hi": "चौड़ाई = 336 ÷ 21 = 16 सेमी। (जाँच: 21 × 16 = 336।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A hall floor is 12 m by 9 m. Square tiles of side 1 m cost ₹250 each. Find the cost of tiling the floor.",
+    "hi": "एक हॉल का फ़र्श 12 मी × 9 मी है। 1 मी भुजा वाली वर्गाकार टाइलें ₹250 की हैं। फ़र्श पर टाइल लगाने का खर्च ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Area = 12 × 9 = 108 sq m, so 108 tiles are needed.\nCost = 108 × 250 = ₹27,000.",
+    "hi": "क्षेत्रफल = 12 × 9 = 108 वर्ग मी, इसलिए 108 टाइलें चाहिए।\nखर्च = 108 × 250 = ₹27,000।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A school garden is 30 m by 24 m. Plants are placed so that each needs a 3 m by 3 m square. What is the greatest number of plants?",
+    "hi": "एक स्कूल का बगीचा 30 मी × 24 मी है। हर पौधे को 3 मी × 3 मी का वर्ग चाहिए। अधिकतम कितने पौधे लगेंगे?"
+   },
+   "a": {
+    "en": "Along 30 m: 30 ÷ 3 = 10. Along 24 m: 24 ÷ 3 = 8.\nPlants = 10 × 8 = 80.",
+    "hi": "30 मी के साथ: 30 ÷ 3 = 10। 24 मी के साथ: 24 ÷ 3 = 8।\nपौधे = 10 × 8 = 80।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A T-shaped figure is made of a top bar 9 cm by 2 cm and a stem 3 cm wide and 6 cm long below its middle. Find its area.",
+    "hi": "एक T आकार की आकृति 9 सेमी × 2 सेमी की ऊपरी पट्टी और उसके बीच के नीचे 3 सेमी चौड़े और 6 सेमी लंबे तने से बनी है। इसका क्षेत्रफल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Top bar: 9 × 2 = 18 sq cm.\nStem: 3 × 6 = 18 sq cm.\nTotal = 36 sq cm.",
+    "hi": "ऊपरी पट्टी: 9 × 2 = 18 वर्ग सेमी।\nतना: 3 × 6 = 18 वर्ग सेमी।\nकुल = 36 वर्ग सेमी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "The total area of two rectangles is 75 sq cm. One is 5 cm by 9 cm. The other has width 5 cm. Find its length.",
+    "hi": "दो आयतों का कुल क्षेत्रफल 75 वर्ग सेमी है। एक 5 सेमी × 9 सेमी है। दूसरे की चौड़ाई 5 सेमी है। उसकी लंबाई ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "First rectangle = 5 × 9 = 45 sq cm.\nSecond = 75 − 45 = 30 sq cm.\nLength = 30 ÷ 5 = 6 cm.",
+    "hi": "पहला आयत = 5 × 9 = 45 वर्ग सेमी।\nदूसरा = 75 − 45 = 30 वर्ग सेमी।\nलंबाई = 30 ÷ 5 = 6 सेमी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A rectangular park is 40 m by 25 m. A path 2 m wide runs along the inside of its whole boundary. Find the area of the path.",
+    "hi": "एक आयताकार पार्क 40 मी × 25 मी है। इसकी पूरी सीमा के अंदर की ओर 2 मी चौड़ा रास्ता है। रास्ते का क्षेत्रफल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Whole park = 40 × 25 = 1000 sq m.\nInner part without path = (40 − 4) × (25 − 4) = 36 × 21 = 756 sq m.\nPath = 1000 − 756 = 244 sq m.",
+    "hi": "पूरा पार्क = 40 × 25 = 1000 वर्ग मी।\nरास्ते के बिना अंदर का भाग = (40 − 4) × (25 − 4) = 36 × 21 = 756 वर्ग मी।\nरास्ता = 1000 − 756 = 244 वर्ग मी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "A tangram square has area 32 sq cm. Find the area of the medium triangle and of the parallelogram.",
+    "hi": "एक टैनग्राम वर्ग का क्षेत्रफल 32 वर्ग सेमी है। मध्यम त्रिभुज और समांतर चतुर्भुज का क्षेत्रफल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Whole square = 16 small triangles, so one small triangle = 32 ÷ 16 = 2 sq cm.\nMedium triangle = 2 small triangles = 4 sq cm.\nParallelogram = 2 small triangles = 4 sq cm.",
+    "hi": "पूरा वर्ग = 16 छोटे त्रिभुज, इसलिए एक छोटा त्रिभुज = 32 ÷ 16 = 2 वर्ग सेमी।\nमध्यम त्रिभुज = 2 छोटे त्रिभुज = 4 वर्ग सेमी।\nसमांतर चतुर्भुज = 2 छोटे त्रिभुज = 4 वर्ग सेमी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A pond traced on 1 m squared paper covers 40 full squares, 12 more than half, 6 exactly half and 10 less than half. Estimate its area.",
+    "hi": "1 मी वर्गाकार कागज़ पर बना एक तालाब 40 पूरे वर्ग, आधे से अधिक वाले 12, ठीक आधे वाले 6 और आधे से कम वाले 10 वर्ग ढकता है। इसके क्षेत्रफल का अनुमान लगाइए।"
+   },
+   "a": {
+    "en": "40 + 12 + 6 × 1/2 + 0 = 40 + 12 + 3 = 55 sq m (approximately).",
+    "hi": "40 + 12 + 6 × 1/2 + 0 = 40 + 12 + 3 = 55 वर्ग मी (लगभग)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find all rectangles with whole-number sides and area 32 sq cm. Which has the greatest perimeter and which the least?",
+    "hi": "पूर्ण संख्या भुजाओं और 32 वर्ग सेमी क्षेत्रफल वाले सारे आयत ज्ञात कीजिए। किसका परिमाप सबसे अधिक और किसका सबसे कम है?"
+   },
+   "a": {
+    "en": "1 × 32: perimeter 66 cm.\n2 × 16: perimeter 36 cm.\n4 × 8: perimeter 24 cm.\nGreatest: 1 × 32 (66 cm). Least: 4 × 8 (24 cm), the one closest to a square.",
+    "hi": "1 × 32: परिमाप 66 सेमी।\n2 × 16: परिमाप 36 सेमी।\n4 × 8: परिमाप 24 सेमी।\nसबसे अधिक: 1 × 32 (66 सेमी)। सबसे कम: 4 × 8 (24 सेमी), जो वर्ग के सबसे पास है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Draw (describe) two rectangles such that the one with the smaller area has the larger perimeter.",
+    "hi": "दो ऐसे आयत बनाइए (वर्णन कीजिए) कि कम क्षेत्रफल वाले का परिमाप अधिक हो।"
+   },
+   "a": {
+    "en": "Rectangle A: 10 cm by 1 cm. Area = 10 sq cm, perimeter = 2 × 11 = 22 cm.\nRectangle B: 4 cm by 4 cm. Area = 16 sq cm, perimeter = 16 cm.\nA has the smaller area (10 is less than 16) but the larger perimeter (22 is more than 16).",
+    "hi": "आयत A: 10 सेमी × 1 सेमी। क्षेत्रफल = 10 वर्ग सेमी, परिमाप = 2 × 11 = 22 सेमी।\nआयत B: 4 सेमी × 4 सेमी। क्षेत्रफल = 16 वर्ग सेमी, परिमाप = 16 सेमी।\nA का क्षेत्रफल कम है (10 is less than 16) पर परिमाप अधिक (22 is more than 16)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "A rectangle is 12 cm by 7 cm. A diagonal divides it into two triangles. Find the area of each triangle.",
+    "hi": "एक आयत 12 सेमी × 7 सेमी है। एक विकर्ण इसे दो त्रिभुजों में बाँटता है। हर त्रिभुज का क्षेत्रफल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Rectangle = 12 × 7 = 84 sq cm. Each triangle = 84 ÷ 2 = 42 sq cm.",
+    "hi": "आयत = 12 × 7 = 84 वर्ग सेमी। हर त्रिभुज = 84 ÷ 2 = 42 वर्ग सेमी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A figure on squared paper is a 5 by 4 rectangle with two right triangles attached, one on each short side. Each triangle has short sides 4 units (along the rectangle) and 3 units. Find the total area.",
+    "hi": "वर्गाकार कागज़ पर एक आकृति 5 × 4 आयत है जिसकी दोनों छोटी भुजाओं पर एक-एक समकोण त्रिभुज जुड़ा है। हर त्रिभुज की छोटी भुजाएँ 4 इकाई (आयत के साथ) और 3 इकाई हैं। कुल क्षेत्रफल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Rectangle: 5 × 4 = 20 sq units.\nEach triangle: (4 × 3) ÷ 2 = 6 sq units; two triangles = 12.\nTotal = 20 + 12 = 32 sq units.",
+    "hi": "आयत: 5 × 4 = 20 वर्ग इकाई।\nहर त्रिभुज: (4 × 3) ÷ 2 = 6 वर्ग इकाई; दो त्रिभुज = 12।\nकुल = 20 + 12 = 32 वर्ग इकाई।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Using 9 unit squares joined edge to edge, what are the smallest and largest possible perimeters? Describe a shape with perimeter 16.",
+    "hi": "किनारे से किनारा जुड़े 9 इकाई वर्गों से सबसे कम और सबसे अधिक संभव परिमाप क्या हैं? 16 परिमाप वाली एक आकृति का वर्णन कीजिए।"
+   },
+   "a": {
+    "en": "Smallest: the 3 by 3 square, perimeter 12.\nLargest: 9 squares in a row (or any shape where each square touches only one earlier square), perimeter 20.\nPerimeter 16: three rows lined up on the left, with 5 squares in the bottom row, 3 in the middle row and 1 in the top row (a staircase). Count the boundary: bottom 5 + top edges 1 + 2 + 2 = 5, right-side steps 1 + 1 + 1 = 3, left side 3, total 5 + 5 + 3 + 3 = 16.",
+    "hi": "सबसे कम: 3 × 3 वर्ग, परिमाप 12।\nसबसे अधिक: एक पंक्ति में 9 वर्ग (या कोई भी आकृति जिसमें हर वर्ग पहले के केवल एक वर्ग को छुए), परिमाप 20।\nपरिमाप 16: बाईं ओर एक सीध में तीन पंक्तियाँ, निचली में 5 वर्ग, बीच वाली में 3 और ऊपर वाली में 1 (सीढ़ी जैसी)। सीमा गिनिए: नीचे 5 + ऊपर के किनारे 1 + 2 + 2 = 5, दाईं ओर की सीढ़ियाँ 1 + 1 + 1 = 3, बाईं भुजा 3, कुल 5 + 5 + 3 + 3 = 16।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A shape made of unit squares has perimeter 24. When one more square is added, the perimeter becomes 22. How many edges of the new square touch the shape? Explain.",
+    "hi": "इकाई वर्गों से बनी एक आकृति का परिमाप 24 है। एक और वर्ग जोड़ने पर परिमाप 22 हो जाता है। नए वर्ग के कितने किनारे आकृति को छूते हैं? समझाइए।"
+   },
+   "a": {
+    "en": "Adding a square that shares k edges changes the perimeter by 4 − 2 × k.\nThe change here is 22 − 24 = −2, so 4 − 2 × k = −2, which gives 2 × k = 6, k = 3.\nThe new square touches the shape on 3 edges: it fills a notch.",
+    "hi": "k किनारे साझा करने वाला वर्ग जोड़ने पर परिमाप 4 − 2 × k बदलता है।\nयहाँ बदलाव 22 − 24 = −2 है, इसलिए 4 − 2 × k = −2, यानी 2 × k = 6, k = 3।\nनया वर्ग आकृति को 3 किनारों पर छूता है: वह एक खाँचा भरता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Area maze: a rectangle is cut into four parts by one vertical and one horizontal line. Top-left area 18 sq cm, top-right area 12 sq cm, bottom-right area 10 sq cm, and the top-right part is 4 cm wide. Find the area of the bottom-left part.",
+    "hi": "एरिया मेज़: एक आयत को एक खड़ी और एक आड़ी रेखा से चार भागों में काटा गया है। ऊपर-बाएँ का क्षेत्रफल 18 वर्ग सेमी, ऊपर-दाएँ का 12 वर्ग सेमी, नीचे-दाएँ का 10 वर्ग सेमी, और ऊपर-दाएँ भाग 4 सेमी चौड़ा है। नीचे-बाएँ भाग का क्षेत्रफल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Top-right: height = 12 ÷ 4 = 3 cm, so the top row is 3 cm tall.\nTop-left: width = 18 ÷ 3 = 6 cm.\nBottom-right is 4 cm wide: height = 10 ÷ 4 = 2.5 cm.\nBottom-left: 6 × 2.5 = 15 sq cm.\n(Quick check: top-left ÷ top-right = 18 ÷ 12, and bottom-left ÷ bottom-right must be the same, so bottom-left = 10 × 18 ÷ 12 = 15.)",
+    "hi": "ऊपर-दाएँ: ऊँचाई = 12 ÷ 4 = 3 सेमी, यानी ऊपरी पंक्ति 3 सेमी ऊँची है।\nऊपर-बाएँ: चौड़ाई = 18 ÷ 3 = 6 सेमी।\nनीचे-दाएँ 4 सेमी चौड़ा है: ऊँचाई = 10 ÷ 4 = 2.5 सेमी।\nनीचे-बाएँ: 6 × 2.5 = 15 वर्ग सेमी।\n(जल्दी जाँच: ऊपर-बाएँ ÷ ऊपर-दाएँ = 18 ÷ 12, और नीचे-बाएँ ÷ नीचे-दाएँ भी इतना ही होगा, इसलिए नीचे-बाएँ = 10 × 18 ÷ 12 = 15।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A rectangular page is 20 cm by 30 cm. A border is drawn 2 cm inside the edge all round. Find the perimeter of the border rectangle.",
+    "hi": "एक आयताकार पन्ना 20 सेमी × 30 सेमी है। किनारे से चारों ओर 2 सेमी अंदर एक बॉर्डर बनाई गई है। बॉर्डर वाले आयत का परिमाप ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "The border rectangle is 2 cm less on each side: (20 − 4) by (30 − 4) = 16 cm by 26 cm.\nPerimeter = 2 × (16 + 26) = 84 cm.",
+    "hi": "बॉर्डर वाला आयत हर ओर से 2 सेमी कम है: (20 − 4) × (30 − 4) = 16 सेमी × 26 सेमी।\nपरिमाप = 2 × (16 + 26) = 84 सेमी।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Inside a rectangle 8 cm by 6 cm, describe a smaller rectangle with exactly half its area. Then a square sheet is folded in half: which is always true, (a) the two halves have equal area, or (b) each half has half the perimeter of the square?",
+    "hi": "8 सेमी × 6 सेमी के आयत के अंदर एक छोटे आयत का वर्णन कीजिए जिसका क्षेत्रफल ठीक आधा हो। फिर एक वर्गाकार कागज़ को आधा मोड़ा जाता है: कौन-सा हमेशा सही है, (a) दोनों आधों का क्षेत्रफल बराबर है, या (b) हर आधे का परिमाप वर्ग के परिमाप का आधा है?"
+   },
+   "a": {
+    "en": "Big rectangle area = 8 × 6 = 48 sq cm; half = 24 sq cm. A rectangle 6 cm by 4 cm (or 8 cm by 3 cm) inside it works.\nFolded square: (a) is always true, the halves exactly cover each other. (b) is false: for a square of side 4 cm folded into two 4 by 2 rectangles, each half has perimeter 12 cm, not 16 ÷ 2 = 8 cm.",
+    "hi": "बड़े आयत का क्षेत्रफल = 8 × 6 = 48 वर्ग सेमी; आधा = 24 वर्ग सेमी। उसके अंदर 6 सेमी × 4 सेमी (या 8 सेमी × 3 सेमी) का आयत सही है।\nमुड़ा वर्ग: (a) हमेशा सही है, दोनों आधे एक-दूसरे को ठीक ढकते हैं। (b) गलत है: 4 सेमी भुजा वाले वर्ग को 4 × 2 के दो आयतों में मोड़ने पर हर आधे का परिमाप 12 सेमी है, 16 ÷ 2 = 8 सेमी नहीं।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Perimeter is the total length of the boundary of a closed figure; for a polygon, add all its sides.",
+   "Perimeter of rectangle = 2 × (length + breadth); perimeter of square = 4 × side.",
+   "Perimeter of a triangle = sum of its three sides; for an equilateral triangle = 3 × side.",
+   "Perimeter of a regular polygon = number of sides × length of a side.",
+   "On dot paper, straight and diagonal units are written separately because they have different lengths.",
+   "Cutting and rejoining pieces can change the perimeter, but the area stays the same.",
+   "Area is the amount of surface enclosed by a figure, measured in square units such as sq cm and sq m.",
+   "Area of rectangle = length × breadth; area of square = side × side.",
+   "Shapes made of rectangles: split into rectangles and add, or subtract a missing part from a big rectangle.",
+   "In a tangram, the whole square equals 16 small triangles; large triangles are one-fourth of the square.",
+   "The area of an irregular shape can be estimated on squared paper: full and more-than-half squares count 1, half squares count 1/2, less-than-half are ignored.",
+   "A triangle drawn on one side of a rectangle with its top corner on the opposite side has half the rectangle's area.",
+   "Figures can have the same area but different perimeters, and the same perimeter but different areas.",
+   "For a fixed area the square-like rectangle has the least perimeter; for a fixed perimeter the square has the greatest area."
+  ],
+  "hi": [
+   "परिमाप किसी बंद आकृति की सीमा की कुल लंबाई है; बहुभुज के लिए सभी भुजाएँ जोड़िए।",
+   "आयत का परिमाप = 2 × (लंबाई + चौड़ाई); वर्ग का परिमाप = 4 × भुजा।",
+   "त्रिभुज का परिमाप = तीनों भुजाओं का योग; समबाहु त्रिभुज के लिए = 3 × भुजा।",
+   "सम बहुभुज का परिमाप = भुजाओं की संख्या × एक भुजा की लंबाई।",
+   "डॉट पेपर पर सीधी और तिरछी इकाइयाँ अलग लिखी जाती हैं क्योंकि उनकी लंबाई अलग है।",
+   "टुकड़ों को काटकर फिर से जोड़ने से परिमाप बदल सकता है, पर क्षेत्रफल वही रहता है।",
+   "क्षेत्रफल आकृति द्वारा घेरी गई सतह है, जो वर्ग सेमी और वर्ग मी जैसी वर्ग इकाइयों में मापी जाती है।",
+   "आयत का क्षेत्रफल = लंबाई × चौड़ाई; वर्ग का क्षेत्रफल = भुजा × भुजा।",
+   "आयतों से बनी आकृतियाँ: आयतों में बाँटकर जोड़िए, या बड़े आयत से कम वाला भाग घटाइए।",
+   "टैनग्राम में पूरा वर्ग 16 छोटे त्रिभुजों के बराबर है; बड़े त्रिभुज वर्ग का एक-चौथाई हैं।",
+   "अनियमित आकृति का क्षेत्रफल वर्गाकार कागज़ पर आँका जा सकता है: पूरे और आधे से अधिक वर्ग 1, आधे वर्ग 1/2, आधे से कम छोड़ दें।",
+   "आयत की एक भुजा पर बना त्रिभुज, जिसका ऊपरी कोना सामने की भुजा पर हो, आयत के आधे क्षेत्रफल का होता है।",
+   "आकृतियों का क्षेत्रफल समान पर परिमाप अलग हो सकता है, और परिमाप समान पर क्षेत्रफल अलग।",
+   "तय क्षेत्रफल पर वर्ग जैसे आयत का परिमाप सबसे कम होता है; तय परिमाप पर वर्ग का क्षेत्रफल सबसे अधिक।"
+  ]
+ }
+}
