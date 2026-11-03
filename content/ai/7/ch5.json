@@ -1,0 +1,1420 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "7",
+ "id": "ch5",
+ "intro": {
+  "en": "A farmer photographs a sick leaf and learns which disease it may be, a village health worker screens a patient's eyes for diabetes damage, a flood alert reaches a family's phone hours before the water rises, and a traffic signal changes its timing to clear a jam. In each case AI is being used to solve a real problem. This chapter shows how AI helps in farming, health, education, disasters and cities, linked to the UN Sustainable Development Goals, and also looks honestly at its costs and limits.",
+  "hi": "एक किसान बीमार पत्ते की फ़ोटो खींचकर जान लेता है कि कौन-सा रोग हो सकता है, गाँव की स्वास्थ्य कर्मी मरीज़ की आँखों में डायबिटीज़ से हुए नुकसान की जाँच करती है, पानी बढ़ने से घंटों पहले बाढ़ की चेतावनी परिवार के फ़ोन पर पहुँचती है, और जाम हटाने के लिए ट्रैफ़िक सिग्नल अपना समय बदल लेता है। हर मामले में AI किसी असली समस्या को हल करने में लगा है। यह अध्याय दिखाता है कि खेती, स्वास्थ्य, शिक्षा, आपदा और शहरों में AI कैसे मदद करता है, संयुक्त राष्ट्र के सतत विकास लक्ष्यों से जोड़कर, और उसकी कीमत व सीमाओं को भी ईमानदारी से देखता है।"
+ },
+ "learn": {
+  "en": [
+   "What 'AI for Good' means and why AI can help with big problems",
+   "Sustainability, the 17 UN Sustainable Development Goals and how AI links to them",
+   "The chain from problem to data, prediction, human action and improvement; systems thinking",
+   "AI in farming: pest detection, weather, soil, irrigation, prices, chatbots",
+   "AI in health: eye and TB screening, telemedicine, disease forecasting, accessibility",
+   "AI in education and Indian languages (adaptive learning, Bhashini, DIKSHA)",
+   "AI for disasters and climate: floods, cyclones, heatwaves, forests",
+   "AI in smart cities: traffic, road safety, air quality, garbage, water",
+   "Costs and limits: energy, e-waste, digital divide, mistakes, bias, privacy, jobs",
+   "A checklist to judge any AI for Good idea, and hands-on activities"
+  ],
+  "hi": [
+   "'भलाई के लिए AI' का क्या अर्थ है और AI बड़ी समस्याओं में क्यों मदद कर सकता है",
+   "स्थिरता, संयुक्त राष्ट्र के 17 सतत विकास लक्ष्य और AI का उनसे संबंध",
+   "समस्या से डेटा, अनुमान, इंसानी काम और सुधार तक का क्रम; तंत्र-चिंतन",
+   "खेती में AI: कीट पहचान, मौसम, मिट्टी, सिंचाई, दाम, चैटबॉट",
+   "स्वास्थ्य में AI: आँख और TB की जाँच, टेलीमेडिसिन, बीमारी का पूर्वानुमान, दिव्यांगजनों की सुविधा",
+   "शिक्षा और भारतीय भाषाओं में AI (अनुकूली पढ़ाई, भाषिणी, दीक्षा)",
+   "आपदा और जलवायु के लिए AI: बाढ़, चक्रवात, लू, जंगल",
+   "स्मार्ट सिटी में AI: ट्रैफ़िक, सड़क सुरक्षा, हवा की गुणवत्ता, कचरा, पानी",
+   "कीमत और सीमाएँ: ऊर्जा, ई-कचरा, डिजिटल खाई, गलतियाँ, पक्षपात, निजता, नौकरियाँ",
+   "भलाई के लिए AI के किसी भी विचार को परखने की जाँच-सूची और व्यावहारिक गतिविधियाँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "5.1 What does 'AI for Good' mean?",
+    "hi": "5.1 'भलाई के लिए AI' का क्या अर्थ है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Class 6 you met AI in phones, maps, banks and farms. In this chapter we ask a bigger question: how can AI help solve the real problems that people in India and the world face every day? Some problems are very large: farmers losing crops to pests, villages far from a doctor, floods and cyclones, traffic jams and dirty air in cities. When AI is used carefully to make life better for people and the planet, we call it 'AI for Good'.",
+      "hi": "कक्षा 6 में आपने फ़ोन, नक्शे, बैंक और खेतों में AI को देखा। इस अध्याय में हम एक बड़ा प्रश्न पूछेंगे: भारत और दुनिया के लोग रोज़ जिन असली समस्याओं का सामना करते हैं, उन्हें हल करने में AI कैसे मदद कर सकता है? कुछ समस्याएँ बहुत बड़ी हैं: कीटों से किसानों की फसल का नुकसान, डॉक्टर से दूर बसे गाँव, बाढ़ और चक्रवात, शहरों में ट्रैफ़िक जाम और गंदी हवा। जब AI को सोच-समझकर लोगों और धरती का जीवन बेहतर बनाने के लिए उपयोग किया जाता है, तो इसे 'भलाई के लिए AI' (AI for Good) कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "AI for Good",
+       "hi": "भलाई के लिए AI (AI for Good)"
+      },
+      "text": {
+       "en": "Using Artificial Intelligence to solve social and environmental problems, such as hunger, illness, poor education, disasters and pollution, in a way that is safe and fair for everyone.",
+       "hi": "आर्टिफ़िशियल इंटेलिजेंस का उपयोग सामाजिक और पर्यावरण से जुड़ी समस्याओं, जैसे भूख, बीमारी, कमज़ोर शिक्षा, आपदा और प्रदूषण, को ऐसे तरीके से हल करने के लिए करना जो सबके लिए सुरक्षित और न्यायपूर्ण हो।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "AI is a tool, like a knife or electricity. A knife can cut vegetables or hurt someone; electricity can light a home or give a shock. In the same way AI can help or harm, depending on how people design and use it. 'AI for Good' is about choosing the helpful uses on purpose and checking that they really help.",
+      "hi": "AI एक औज़ार है, जैसे चाकू या बिजली। चाकू से सब्ज़ी भी कटती है और किसी को चोट भी लग सकती है; बिजली घर रोशन भी करती है और झटका भी दे सकती है। इसी तरह AI मदद भी कर सकता है और नुकसान भी, यह इस पर निर्भर है कि लोग उसे कैसे बनाते और उपयोग करते हैं। 'भलाई के लिए AI' का मतलब है जान-बूझकर मददगार उपयोग चुनना और जाँचना कि वे सच में मदद कर रहे हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Why can AI help with big problems? Because many big problems involve huge amounts of data that humans cannot look at fast enough: millions of leaf photos, years of rainfall records, thousands of X-rays, live video from hundreds of traffic cameras. AI is good at finding patterns in such data quickly and making predictions. Humans then use those predictions to act.",
+      "hi": "AI बड़ी समस्याओं में क्यों मदद कर सकता है? क्योंकि कई बड़ी समस्याओं में इतना ज़्यादा डेटा होता है कि इंसान उसे जल्दी देख ही नहीं सकते: लाखों पत्तों की फ़ोटो, सालों के बारिश के रिकॉर्ड, हज़ारों एक्स-रे, सैकड़ों ट्रैफ़िक कैमरों का लाइव वीडियो। AI ऐसे डेटा में जल्दी पैटर्न ढूँढने और अनुमान (prediction) लगाने में अच्छा है। फिर इंसान उन अनुमानों के आधार पर काम करते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: In AI for Good, AI gives information or suggestions; people (farmers, doctors, officials, families) take the final decisions and actions.",
+      "hi": "याद रखें: भलाई के लिए AI में AI जानकारी या सुझाव देता है; अंतिम निर्णय और काम लोग (किसान, डॉक्टर, अधिकारी, परिवार) करते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.2 The Sustainable Development Goals (SDGs)",
+    "hi": "5.2 सतत विकास लक्ष्य (SDGs)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In 2015, the countries of the United Nations, including India, agreed on 17 Sustainable Development Goals (SDGs) to be reached by the year 2030. They are like a to-do list for the whole world: end poverty and hunger, give everyone good health and education, protect the environment and make cities safe. Many AI for Good projects are planned around these goals.",
+      "hi": "2015 में भारत सहित संयुक्त राष्ट्र के देशों ने 17 सतत विकास लक्ष्यों (Sustainable Development Goals, SDGs) पर सहमति दी, जिन्हें 2030 तक पूरा करना है। ये पूरी दुनिया की 'करने वाले कामों की सूची' जैसे हैं: गरीबी और भूख खत्म करना, सबको अच्छा स्वास्थ्य और शिक्षा देना, पर्यावरण की रक्षा करना और शहरों को सुरक्षित बनाना। भलाई के लिए AI की कई परियोजनाएँ इन्हीं लक्ष्यों के आसपास बनाई जाती हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Sustainable development",
+       "hi": "सतत विकास (sustainable development)"
+      },
+      "text": {
+       "en": "Progress that meets the needs of people today without spoiling the chances of future generations to meet their own needs, for example using water so that some is left for our grandchildren.",
+       "hi": "ऐसी प्रगति जो आज के लोगों की ज़रूरतें पूरी करे पर आने वाली पीढ़ियों के लिए अपनी ज़रूरतें पूरी करने का मौका न बिगाड़े, जैसे पानी ऐसे खर्च करना कि हमारे पोते-पोतियों के लिए भी बचा रहे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Sustainability has three parts that must stay in balance: society (people's health, education and fairness), economy (jobs and income) and environment (land, water, air, forests and animals). A solution that earns money but poisons a river is not sustainable. You do not need to memorise all 17 goals, but you should know the ones that this chapter connects to AI:",
+      "hi": "स्थिरता (sustainability) के तीन भाग हैं जिनमें संतुलन ज़रूरी है: समाज (लोगों का स्वास्थ्य, शिक्षा और न्याय), अर्थव्यवस्था (रोज़गार और आय) और पर्यावरण (ज़मीन, पानी, हवा, जंगल और जानवर)। जो समाधान पैसा तो कमाए पर नदी को ज़हरीला कर दे, वह टिकाऊ नहीं है। आपको सभी 17 लक्ष्य याद करने की ज़रूरत नहीं, पर इस अध्याय में जिन लक्ष्यों को AI से जोड़ा गया है, वे आपको पता होने चाहिए:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "SDG number and name",
+        "Simple meaning",
+        "One way AI can help"
+       ],
+       "hi": [
+        "SDG संख्या और नाम",
+        "सरल अर्थ",
+        "AI मदद का एक तरीका"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1 No Poverty",
+         "No one should be too poor to live with dignity",
+         "Helping the right families find government schemes they are eligible for"
+        ],
+        [
+         "2 Zero Hunger",
+         "Enough healthy food for all",
+         "Detecting crop disease early, advising farmers"
+        ],
+        [
+         "3 Good Health and Well-being",
+         "Healthy lives for all ages",
+         "Screening eye disease and TB, telemedicine support"
+        ],
+        [
+         "4 Quality Education",
+         "Good learning for every child",
+         "Practice that adapts to each learner, lessons in Indian languages"
+        ],
+        [
+         "6 Clean Water and Sanitation",
+         "Safe water and toilets for all",
+         "Finding leaks in water pipes, predicting water shortage"
+        ],
+        [
+         "7 Affordable and Clean Energy",
+         "Clean electricity for all",
+         "Forecasting solar and wind power so the grid stays steady"
+        ],
+        [
+         "11 Sustainable Cities and Communities",
+         "Safe, clean, well-run towns",
+         "Smart traffic signals, pothole and garbage reporting"
+        ],
+        [
+         "13 Climate Action",
+         "Fighting climate change",
+         "Better weather, flood and cyclone forecasts"
+        ],
+        [
+         "15 Life on Land",
+         "Protecting forests and animals",
+         "Camera traps that recognise tigers; spotting forest fires from satellite images"
+        ]
+       ],
+       "hi": [
+        [
+         "1 गरीबी का अंत",
+         "कोई इतना गरीब न हो कि सम्मान से न जी सके",
+         "सही परिवारों को उन सरकारी योजनाओं तक पहुँचाना जिनके वे पात्र हैं"
+        ],
+        [
+         "2 शून्य भुखमरी",
+         "सबके लिए पर्याप्त पौष्टिक भोजन",
+         "फसल रोग जल्दी पहचानना, किसानों को सलाह"
+        ],
+        [
+         "3 अच्छा स्वास्थ्य और कल्याण",
+         "हर उम्र में स्वस्थ जीवन",
+         "आँखों की बीमारी और TB की जाँच, टेलीमेडिसिन में मदद"
+        ],
+        [
+         "4 गुणवत्तापूर्ण शिक्षा",
+         "हर बच्चे को अच्छी पढ़ाई",
+         "हर विद्यार्थी के अनुसार बदलता अभ्यास, भारतीय भाषाओं में पाठ"
+        ],
+        [
+         "6 स्वच्छ जल और स्वच्छता",
+         "सबके लिए साफ़ पानी और शौचालय",
+         "पानी की पाइपों में रिसाव ढूँढना, पानी की कमी का अनुमान"
+        ],
+        [
+         "7 सस्ती और स्वच्छ ऊर्जा",
+         "सबके लिए स्वच्छ बिजली",
+         "सौर और पवन बिजली का अनुमान ताकि ग्रिड स्थिर रहे"
+        ],
+        [
+         "11 टिकाऊ शहर और समुदाय",
+         "सुरक्षित, साफ़, अच्छे से चलने वाले शहर",
+         "स्मार्ट ट्रैफ़िक सिग्नल, गड्ढे और कचरे की शिकायत"
+        ],
+        [
+         "13 जलवायु कार्रवाई",
+         "जलवायु परिवर्तन से लड़ना",
+         "मौसम, बाढ़ और चक्रवात का बेहतर पूर्वानुमान"
+        ],
+        [
+         "15 भूमि पर जीवन",
+         "जंगल और जानवरों की रक्षा",
+         "बाघ पहचानने वाले कैमरा ट्रैप; उपग्रह चित्रों से जंगल की आग पहचानना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: There are 17 SDGs, agreed in 2015, with a target year of 2030. AI is one tool among many (laws, money, people's effort) for reaching them.",
+      "hi": "याद रखें: कुल 17 SDGs हैं, जिन पर 2015 में सहमति बनी और लक्ष्य वर्ष 2030 है। इन्हें पाने के कई साधनों (कानून, धन, लोगों की मेहनत) में AI भी एक साधन है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.3 How AI solves a problem: from data to action",
+    "hi": "5.3 AI किसी समस्या को कैसे हल करता है: डेटा से काम तक"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every AI for Good example in this chapter follows the same simple chain. You learned input, processing and output in Class 6; here we add the human action at the end.",
+      "hi": "इस अध्याय का हर 'भलाई के लिए AI' उदाहरण एक ही सरल क्रम पर चलता है। कक्षा 6 में आपने इनपुट, प्रोसेसिंग और आउटपुट सीखा था; यहाँ हम अंत में इंसान का काम भी जोड़ते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Problem → Data (input) → AI finds patterns (processing) → Prediction or alert (output) → People act → Check results and improve",
+      "hi": "समस्या → डेटा (इनपुट) → AI पैटर्न ढूँढता है (प्रोसेसिंग) → अनुमान या चेतावनी (आउटपुट) → लोग काम करते हैं → परिणाम जाँचें और सुधारें"
+     }
+    },
+    {
+     "p": {
+      "en": "Picture this chain as a row of six boxes joined by arrows from left to right, with one extra arrow curving back from the last box to the first. That curved arrow shows that good projects keep learning from their results.",
+      "hi": "इस क्रम को बाएँ से दाएँ तीरों से जुड़े छह डिब्बों की तरह सोचिए, और आखिरी डिब्बे से पहले डिब्बे तक एक घुमावदार तीर वापस जाता है। यह घुमावदार तीर दिखाता है कि अच्छी परियोजनाएँ अपने परिणामों से लगातार सीखती रहती हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Problem: what is going wrong and who is affected?",
+       "Data: what information can be collected, such as photos, numbers, sounds or text?",
+       "Patterns: the AI is trained on many past examples and learns what usually goes with what.",
+       "Output: a prediction ('heavy rain likely on Thursday'), a label ('this leaf has rust disease') or an alert ('this payment looks like fraud').",
+       "Action: a person decides what to do: spray, move to safety, see a doctor.",
+       "Check: did it help? Were there mistakes? The data and model are improved."
+      ],
+      "hi": [
+       "समस्या: क्या गलत हो रहा है और किस पर असर है?",
+       "डेटा: कौन-सी जानकारी जुटाई जा सकती है, जैसे फ़ोटो, संख्याएँ, आवाज़ या लिखित पाठ?",
+       "पैटर्न: AI को पुराने कई उदाहरणों पर सिखाया जाता है और वह सीखता है कि आमतौर पर किसके साथ क्या होता है।",
+       "आउटपुट: एक अनुमान ('गुरुवार को भारी बारिश की संभावना'), एक लेबल ('इस पत्ते में रस्ट रोग है') या चेतावनी ('यह भुगतान धोखाधड़ी जैसा लगता है')।",
+       "काम: कोई इंसान तय करता है कि क्या करना है: दवा छिड़कना, सुरक्षित जगह जाना, डॉक्टर को दिखाना।",
+       "जाँच: क्या इससे मदद मिली? क्या गलतियाँ हुईं? डेटा और मॉडल को सुधारा जाता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Systems thinking. Big problems are connected to each other like the threads of a net. Less rain means poorer crops, which means less income for farmers, which can mean children leave school to work. Thinking about how the parts of a problem affect one another is called systems thinking. It helps us see where AI can help most, and what side-effects a solution may have.",
+      "hi": "तंत्र-चिंतन (systems thinking)। बड़ी समस्याएँ जाल के धागों की तरह आपस में जुड़ी होती हैं। कम बारिश यानी कमज़ोर फसल, यानी किसानों की कम आय, और इससे बच्चे काम करने के लिए स्कूल छोड़ सकते हैं। यह सोचना कि किसी समस्या के भाग एक-दूसरे पर कैसे असर डालते हैं, तंत्र-चिंतन कहलाता है। इससे हमें दिखता है कि AI सबसे ज़्यादा कहाँ मदद कर सकता है और किसी समाधान के क्या दुष्प्रभाव हो सकते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "You will use this same chain in Chapter 7 when you plan your own AI project with the AI project cycle.",
+      "hi": "अध्याय 7 में जब आप AI प्रोजेक्ट चक्र से अपना खुद का AI प्रोजेक्ट बनाएँगे, तब भी यही क्रम काम आएगा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.4 AI in farming (agriculture)",
+    "hi": "5.4 खेती (कृषि) में AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Farming feeds the whole country, and a large part of India's people depend on it for their living. Farmers face many risks: pests and diseases, too little or too much rain, poor soil, wrong amount of fertiliser and uncertain market prices. Most Indian farmers have small fields, so one bad season can hurt a family badly. AI tools are being built to reduce these risks.",
+      "hi": "खेती पूरे देश का पेट भरती है, और भारत के बहुत से लोग अपनी रोज़ी-रोटी के लिए इस पर निर्भर हैं। किसानों के सामने कई जोखिम हैं: कीट और रोग, बहुत कम या बहुत ज़्यादा बारिश, कमज़ोर मिट्टी, खाद की गलत मात्रा और बाज़ार के अनिश्चित दाम। ज़्यादातर भारतीय किसानों के खेत छोटे हैं, इसलिए एक खराब मौसम भी परिवार को बहुत नुकसान पहुँचा सकता है। इन जोखिमों को कम करने के लिए AI टूल बनाए जा रहे हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "1. Pest and disease detection. A farmer clicks a photo of a sick leaf with a phone app. The app's AI has been trained on many thousands of labelled photos of healthy and diseased leaves. It compares the new photo with the patterns it learned and suggests the most likely disease or pest, along with possible treatment. This is computer vision (image classification), which you met in Chapter 2. Free apps of this kind exist in India and many work in Hindi and other Indian languages.",
+      "hi": "1. कीट और रोग की पहचान। किसान फ़ोन ऐप से बीमार पत्ते की फ़ोटो खींचता है। ऐप के AI को स्वस्थ और रोगी पत्तों की हज़ारों लेबल वाली फ़ोटो पर सिखाया गया है। वह नई फ़ोटो को सीखे हुए पैटर्न से मिलाकर सबसे संभावित रोग या कीट और संभावित उपचार बताता है। यह कंप्यूटर विज़न (चित्र वर्गीकरण) है, जिसे आपने अध्याय 2 में देखा था। भारत में ऐसे मुफ़्त ऐप उपलब्ध हैं और कई हिंदी व अन्य भारतीय भाषाओं में काम करते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "2. Weather and rainfall forecasts. Knowing when rain will come helps a farmer decide when to sow seeds, when to water and when to harvest. Forecasters such as the India Meteorological Department (IMD) use huge amounts of data from satellites, radars and weather stations with computer models, and AI methods are increasingly used to improve these forecasts. Forecasts reach farmers through SMS, apps and radio.",
+      "hi": "2. मौसम और बारिश का पूर्वानुमान। बारिश कब आएगी, यह जानकर किसान तय करता है कि बीज कब बोए, सिंचाई कब करे और कटाई कब करे। भारत मौसम विज्ञान विभाग (IMD) जैसे पूर्वानुमानकर्ता उपग्रह, रडार और मौसम केंद्रों के बहुत सारे डेटा को कंप्यूटर मॉडलों के साथ उपयोग करते हैं, और इन पूर्वानुमानों को बेहतर बनाने में AI तरीकों का उपयोग बढ़ रहा है। पूर्वानुमान SMS, ऐप और रेडियो से किसानों तक पहुँचते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "3. Soil and fertiliser advice. Under the government's Soil Health Card scheme, soil samples are tested and farmers get a card showing nutrients such as nitrogen, phosphorus and potassium. Data like this, together with the crop and the weather, can be used by advisory tools, some of them AI-based, to suggest how much fertiliser to use. Using the right amount saves money and keeps soil and water cleaner.",
+      "hi": "3. मिट्टी और खाद की सलाह। सरकार की मृदा स्वास्थ्य कार्ड (Soil Health Card) योजना में मिट्टी के नमूनों की जाँच होती है और किसानों को एक कार्ड मिलता है जिसमें नाइट्रोजन, फ़ॉस्फ़ोरस और पोटैशियम जैसे पोषक तत्व दिखाए जाते हैं। ऐसा डेटा, फसल और मौसम के साथ मिलाकर, सलाह देने वाले टूल (जिनमें कुछ AI आधारित हैं) खाद की सही मात्रा सुझाने में उपयोग कर सकते हैं। सही मात्रा से पैसा बचता है और मिट्टी व पानी साफ़ रहते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "4. Smart irrigation. Small soil-moisture sensors placed in a field measure how wet the soil is. A system can combine these readings with the weather forecast and switch the water pump on only when the crop really needs water. In many parts of India groundwater is falling, so saving water matters a lot.",
+      "hi": "4. स्मार्ट सिंचाई। खेत में लगे छोटे मिट्टी-नमी सेंसर नापते हैं कि मिट्टी कितनी गीली है। एक सिस्टम इन रीडिंग को मौसम पूर्वानुमान के साथ मिलाकर पानी का पंप तभी चालू कर सकता है जब फसल को सच में पानी चाहिए। भारत के कई हिस्सों में भूजल घट रहा है, इसलिए पानी बचाना बहुत ज़रूरी है।"
+     }
+    },
+    {
+     "p": {
+      "en": "5. Crop prices and selling. AI can look at past market (mandi) prices, arrivals and seasons to estimate whether prices may rise or fall in the coming weeks. This can help a farmer decide when and where to sell. Price predictions are never certain, so they are only a guide.",
+      "hi": "5. फसल के दाम और बिक्री। AI पिछले मंडी के दाम, आवक और मौसम देखकर अनुमान लगा सकता है कि आने वाले हफ़्तों में दाम बढ़ सकते हैं या घट सकते हैं। इससे किसान को तय करने में मदद मिलती है कि कब और कहाँ बेचे। दाम का अनुमान कभी पक्का नहीं होता, इसलिए यह केवल एक मार्गदर्शन है।"
+     }
+    },
+    {
+     "p": {
+      "en": "6. Satellites, drones and chatbots. Satellite and drone images can show which part of a field is unhealthy (it looks less green) so that only that part is treated. The government has also launched an AI chatbot called Kisan e-Mitra that answers farmers' questions about the PM-KISAN scheme in several Indian languages. Voice chatbots are especially useful for farmers who find typing difficult.",
+      "hi": "6. उपग्रह, ड्रोन और चैटबॉट। उपग्रह और ड्रोन के चित्र दिखा सकते हैं कि खेत का कौन-सा भाग अस्वस्थ है (वह कम हरा दिखता है), ताकि केवल उसी भाग का उपचार हो। सरकार ने किसान ई-मित्र (Kisan e-Mitra) नाम का एक AI चैटबॉट भी शुरू किया है जो PM-KISAN योजना के बारे में किसानों के प्रश्नों का उत्तर कई भारतीय भाषाओं में देता है। बोलकर चलने वाले चैटबॉट उन किसानों के लिए खास उपयोगी हैं जिन्हें टाइप करना कठिन लगता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Farming problem",
+        "Data used",
+        "AI output",
+        "Farmer's action"
+       ],
+       "hi": [
+        "खेती की समस्या",
+        "उपयोग होने वाला डेटा",
+        "AI का आउटपुट",
+        "किसान का काम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Leaf disease",
+         "Leaf photos",
+         "Likely disease name",
+         "Confirm with expert, treat early"
+        ],
+        [
+         "Uncertain rain",
+         "Satellite, radar, past weather",
+         "Rain forecast",
+         "Plan sowing and harvest"
+        ],
+        [
+         "Too much or too little fertiliser",
+         "Soil test, crop, weather",
+         "Fertiliser amount",
+         "Buy and use only what is needed"
+        ],
+        [
+         "Water waste",
+         "Soil-moisture sensor readings",
+         "When to irrigate",
+         "Run pump only when needed"
+        ],
+        [
+         "Low selling price",
+         "Past mandi prices",
+         "Price trend estimate",
+         "Choose when and where to sell"
+        ]
+       ],
+       "hi": [
+        [
+         "पत्ते का रोग",
+         "पत्तों की फ़ोटो",
+         "संभावित रोग का नाम",
+         "विशेषज्ञ से पुष्टि, जल्दी उपचार"
+        ],
+        [
+         "अनिश्चित बारिश",
+         "उपग्रह, रडार, पुराना मौसम",
+         "बारिश का पूर्वानुमान",
+         "बुआई और कटाई की योजना"
+        ],
+        [
+         "बहुत ज़्यादा या कम खाद",
+         "मिट्टी जाँच, फसल, मौसम",
+         "खाद की मात्रा",
+         "केवल ज़रूरी खाद खरीदना और डालना"
+        ],
+        [
+         "पानी की बर्बादी",
+         "मिट्टी-नमी सेंसर की रीडिंग",
+         "सिंचाई कब करें",
+         "ज़रूरत पर ही पंप चलाना"
+        ],
+        [
+         "कम बिक्री दाम",
+         "पुराने मंडी दाम",
+         "दाम के रुझान का अनुमान",
+         "कब और कहाँ बेचें, यह चुनना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Meena's family grows tomatoes in Maharashtra. Brown spots appear on the leaves. Explain step by step how an AI crop app helps, and what its limits are.",
+       "hi": "मीना का परिवार महाराष्ट्र में टमाटर उगाता है। पत्तों पर भूरे धब्बे दिखते हैं। चरण-दर-चरण समझाइए कि AI फसल ऐप कैसे मदद करता है और उसकी सीमाएँ क्या हैं।"
+      },
+      "a": {
+       "en": "Step 1 (input): Meena's father takes a clear photo of a spotted leaf in daylight.\nStep 2 (processing): the app compares the photo with patterns learned from thousands of labelled tomato-leaf photos.\nStep 3 (output): it says, for example, 'likely early blight' and suggests treatment.\nStep 4 (action): he checks with the local agriculture officer or Krishi Vigyan Kendra before buying any spray.\nLimits: a blurry photo, a disease the app was never trained on, or a leaf with two problems can give a wrong answer. The app gives a likely answer, not a certain one.",
+       "hi": "चरण 1 (इनपुट): मीना के पिता दिन की रोशनी में धब्बे वाले पत्ते की साफ़ फ़ोटो लेते हैं।\nचरण 2 (प्रोसेसिंग): ऐप फ़ोटो को टमाटर के हज़ारों लेबल वाले पत्तों से सीखे पैटर्न से मिलाता है।\nचरण 3 (आउटपुट): वह बताता है, जैसे 'संभवतः अगेती झुलसा (early blight)', और उपचार सुझाता है।\nचरण 4 (काम): कोई दवा खरीदने से पहले वे स्थानीय कृषि अधिकारी या कृषि विज्ञान केंद्र से पुष्टि करते हैं।\nसीमाएँ: धुंधली फ़ोटो, ऐसा रोग जिस पर ऐप सिखाया ही नहीं गया, या दो समस्याओं वाला पत्ता गलत उत्तर दे सकता है। ऐप संभावित उत्तर देता है, पक्का नहीं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI farm advice should be checked with experts (agriculture officers, Krishi Vigyan Kendras). Wrong spraying wastes money and harms soil, water and bees.",
+      "hi": "याद रखें: AI की खेती सलाह को विशेषज्ञों (कृषि अधिकारी, कृषि विज्ञान केंद्र) से जाँचना चाहिए। गलत छिड़काव से पैसा बर्बाद होता है और मिट्टी, पानी और मधुमक्खियों को नुकसान होता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.5 AI in health care",
+    "hi": "5.5 स्वास्थ्य सेवा में AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "India has many people but not enough doctors and specialists everywhere, especially in villages and small towns. A patient may have to travel far and wait long. AI can help doctors and health workers do more, faster, and catch some diseases early. It works as an assistant to doctors, never as a replacement.",
+      "hi": "भारत में लोग बहुत हैं पर हर जगह पर्याप्त डॉक्टर और विशेषज्ञ नहीं हैं, खासकर गाँवों और छोटे शहरों में। मरीज़ को दूर जाना और लंबा इंतज़ार करना पड़ सकता है। AI डॉक्टरों और स्वास्थ्य कर्मियों को ज़्यादा और जल्दी काम करने में तथा कुछ बीमारियों को जल्दी पकड़ने में मदद कर सकता है। यह डॉक्टरों का सहायक है, उनकी जगह कभी नहीं लेता।"
+     }
+    },
+    {
+     "p": {
+      "en": "1. Screening eye disease. People with diabetes can slowly lose their sight because of damage to the back of the eye (diabetic retinopathy). Finding it early can prevent blindness. AI systems trained on many labelled photos of the back of the eye can flag photos that look unusual, and such tools have been tested together with Indian eye hospitals. A health worker takes the photo; the AI says 'looks normal' or 'refer to an eye doctor'; the doctor then examines the patient.",
+      "hi": "1. आँखों की बीमारी की जाँच। डायबिटीज़ (मधुमेह) वाले लोगों की आँख के पिछले भाग को नुकसान (डायबिटिक रेटिनोपैथी) से धीरे-धीरे नज़र जा सकती है। जल्दी पता चलने पर अंधेपन से बचा जा सकता है। आँख के पिछले भाग की बहुत-सी लेबल वाली फ़ोटो पर सिखाए गए AI सिस्टम असामान्य दिखने वाली फ़ोटो को चिह्नित कर सकते हैं, और ऐसे टूल भारतीय नेत्र अस्पतालों के साथ परखे गए हैं। स्वास्थ्य कर्मी फ़ोटो लेता है; AI बताता है 'सामान्य लगती है' या 'नेत्र डॉक्टर को भेजें'; फिर डॉक्टर मरीज़ की जाँच करता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "2. Reading X-rays and scans. AI can mark areas on a chest X-ray that may show signs of tuberculosis (TB) or other lung problems, so that the doctor looks at those patients first. India is working hard to end TB, and faster screening helps find more patients early.",
+      "hi": "2. एक्स-रे और स्कैन पढ़ना। AI छाती के एक्स-रे में उन जगहों को चिह्नित कर सकता है जहाँ तपेदिक (TB) या फेफड़ों की अन्य समस्या के संकेत हो सकते हैं, ताकि डॉक्टर पहले उन मरीज़ों को देखें। भारत TB खत्म करने के लिए बहुत प्रयास कर रहा है, और तेज़ जाँच से ज़्यादा मरीज़ जल्दी मिलते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "3. Telemedicine. Telemedicine means getting advice from a doctor over a phone or video call. The government's eSanjeevani service lets patients, often at a local health centre, consult doctors far away. AI can support such services, for example by helping arrange patient details or by translating between languages, while the doctor gives the advice.",
+      "hi": "3. टेलीमेडिसिन। टेलीमेडिसिन का अर्थ है फ़ोन या वीडियो कॉल से डॉक्टर की सलाह लेना। सरकार की ई-संजीवनी (eSanjeevani) सेवा से मरीज़, अक्सर स्थानीय स्वास्थ्य केंद्र से, दूर बैठे डॉक्टरों से परामर्श ले सकते हैं। AI ऐसी सेवाओं में मदद कर सकता है, जैसे मरीज़ की जानकारी व्यवस्थित करना या भाषाओं के बीच अनुवाद करना, जबकि सलाह डॉक्टर ही देता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "4. Predicting needs and outbreaks. By looking at data on patients, seasons and places, AI can help hospitals guess how many beds, medicines or vaccines may be needed, and help health departments notice early when cases of a disease such as dengue start rising in an area.",
+      "hi": "4. ज़रूरतों और प्रकोप का अनुमान। मरीज़ों, मौसम और स्थानों के डेटा को देखकर AI अस्पतालों को यह अनुमान लगाने में मदद कर सकता है कि कितने बिस्तर, दवाइयाँ या टीके चाहिए होंगे, और स्वास्थ्य विभाग को जल्दी पता चल सकता है कि किसी क्षेत्र में डेंगू जैसी बीमारी के मामले बढ़ने लगे हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "5. Helping people with disabilities. Apps that read printed text aloud, describe a scene for people who cannot see well, or turn speech into captions for people who cannot hear well all use AI. These make daily life more independent.",
+      "hi": "5. दिव्यांगजनों की मदद। छपे पाठ को पढ़कर सुनाने वाले, कम देख पाने वालों के लिए दृश्य का वर्णन करने वाले, या कम सुन पाने वालों के लिए बोली को कैप्शन में बदलने वाले ऐप AI का उपयोग करते हैं। इनसे रोज़ का जीवन ज़्यादा आत्मनिर्भर बनता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "6. Fitness and well-being. Smartwatches and fitness bands count steps, track sleep and may notice an unusual heart-rate pattern. They can encourage healthy habits, but they are not medical devices for children to rely on.",
+      "hi": "6. फ़िटनेस और कल्याण। स्मार्टवॉच और फ़िटनेस बैंड कदम गिनते हैं, नींद पर नज़र रखते हैं और दिल की धड़कन का असामान्य पैटर्न पकड़ सकते हैं। ये अच्छी आदतों को बढ़ावा दे सकते हैं, पर बच्चों के लिए इन पर भरोसा करने वाले चिकित्सा उपकरण नहीं हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Why is it better for an eye-screening AI to say 'refer to a doctor' when it is unsure, instead of saying 'normal'?",
+       "hi": "जब आँख-जाँच वाला AI निश्चित न हो, तब 'सामान्य' कहने के बजाय 'डॉक्टर को भेजें' कहना क्यों बेहतर है?"
+      },
+      "a": {
+       "en": "Step 1: Think about the two kinds of mistakes. If the AI wrongly says 'refer', the patient makes an extra visit and the doctor finds the eye is fine: a small cost.\nStep 2: If the AI wrongly says 'normal' to a sick patient, the disease is missed and the person may lose sight: a big cost.\nStep 3: So in health, missing a sick person is the more serious mistake, and a careful AI is set up to send doubtful cases to a human doctor.",
+       "hi": "चरण 1: दो तरह की गलतियों के बारे में सोचें। अगर AI गलती से 'भेजें' कहे, तो मरीज़ एक बार ज़्यादा जाता है और डॉक्टर पाते हैं कि आँख ठीक है: छोटा नुकसान।\nचरण 2: अगर AI बीमार मरीज़ को गलती से 'सामान्य' कहे, तो बीमारी छूट जाती है और व्यक्ति की नज़र जा सकती है: बड़ा नुकसान।\nचरण 3: इसलिए स्वास्थ्य में बीमार व्यक्ति को छोड़ देना ज़्यादा गंभीर गलती है, और सावधान AI को ऐसे बनाया जाता है कि संदेह वाले मामले इंसानी डॉक्टर के पास जाएँ।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Never take a medicine or change a treatment because an app or chatbot said so. Health data is very private; it should be shared only with doctors and trusted family.",
+      "hi": "याद रखें: किसी ऐप या चैटबॉट के कहने पर कभी दवा न लें और न इलाज बदलें। स्वास्थ्य का डेटा बहुत निजी है; इसे केवल डॉक्टरों और भरोसेमंद परिवार के साथ साझा करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.6 AI in education and Indian languages",
+    "hi": "5.6 शिक्षा और भारतीय भाषाओं में AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every child learns at a different speed. In a class of 40, a teacher cannot always give each student exactly the practice they need. AI-based learning apps can notice which questions a student gets wrong and give more practice on that topic, and easier or harder questions as needed. This is called personalised or adaptive learning.",
+      "hi": "हर बच्चा अलग गति से सीखता है। 40 बच्चों की कक्षा में शिक्षक हमेशा हर छात्र को ठीक वैसा अभ्यास नहीं दे पाते जैसा उसे चाहिए। AI आधारित पढ़ाई ऐप देख सकते हैं कि छात्र किन प्रश्नों में गलती करता है, और उस विषय पर ज़्यादा अभ्यास तथा ज़रूरत के अनुसार आसान या कठिन प्रश्न दे सकते हैं। इसे व्यक्तिगत या अनुकूली (adaptive) पढ़ाई कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Personalised (adaptive) learning",
+       "hi": "व्यक्तिगत (अनुकूली) पढ़ाई"
+      },
+      "text": {
+       "en": "Learning in which the practice, speed and level change to suit each learner, based on how that learner is doing.",
+       "hi": "ऐसी पढ़ाई जिसमें अभ्यास, गति और स्तर हर विद्यार्थी के प्रदर्शन के आधार पर उसके अनुसार बदलते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Language is another big barrier. India has 22 languages listed in the Eighth Schedule of the Constitution and hundreds of other languages and dialects, but much material online is in English. AI translation and speech tools help here. The government's Bhashini mission builds AI tools for translation, speech-to-text and text-to-speech in Indian languages, so that services and lessons can reach people in their own language. Platforms such as DIKSHA offer school content in many languages.",
+      "hi": "भाषा एक और बड़ी बाधा है। भारत के संविधान की आठवीं अनुसूची में 22 भाषाएँ हैं और सैकड़ों अन्य भाषाएँ व बोलियाँ हैं, पर ऑनलाइन बहुत-सी सामग्री अंग्रेज़ी में है। AI अनुवाद और वाणी टूल यहाँ मदद करते हैं। सरकार का भाषिणी (Bhashini) मिशन भारतीय भाषाओं में अनुवाद, बोली-से-पाठ और पाठ-से-बोली के AI टूल बनाता है, ताकि सेवाएँ और पाठ लोगों तक उनकी अपनी भाषा में पहुँचें। दीक्षा (DIKSHA) जैसे प्लेटफ़ॉर्म कई भाषाओं में स्कूली सामग्री देते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Read-aloud and reading-practice apps that listen to a child read and point out words to practise.",
+       "Captions and translations that let a student who speaks Tamil follow a video recorded in Hindi.",
+       "Text-to-speech that lets a student with low vision listen to a chapter.",
+       "Chatbots that explain a topic in simple words; their answers must still be checked with the textbook or teacher (Chapter 4)."
+      ],
+      "hi": [
+       "ज़ोर से पढ़ने और पढ़ने का अभ्यास कराने वाले ऐप जो बच्चे को पढ़ते हुए सुनकर अभ्यास वाले शब्द बताते हैं।",
+       "कैप्शन और अनुवाद जिससे तमिल बोलने वाला छात्र हिंदी में बना वीडियो समझ सके।",
+       "पाठ-से-बोली (text-to-speech) जिससे कम देख पाने वाला छात्र पूरा अध्याय सुन सके।",
+       "चैटबॉट जो किसी विषय को सरल शब्दों में समझाते हैं; उनके उत्तर फिर भी पाठ्यपुस्तक या शिक्षक से जाँचने चाहिए (अध्याय 4)।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI can help you practise, but learning happens in your own brain. Use AI to understand and check, not to copy homework.",
+      "hi": "याद रखें: AI अभ्यास में मदद कर सकता है, पर सीखना आपके अपने दिमाग में होता है। AI का उपयोग समझने और जाँचने के लिए करें, होमवर्क नकल करने के लिए नहीं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.7 AI for disasters, weather and climate",
+    "hi": "5.7 आपदा, मौसम और जलवायु के लिए AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "India faces floods, cyclones, heatwaves, landslides and droughts. The most important thing in a disaster is time: if people are warned early, they can move to safety, protect animals and store food and water. AI helps by finding patterns in huge weather and river data quickly.",
+      "hi": "भारत में बाढ़, चक्रवात, लू, भूस्खलन और सूखा आते हैं। आपदा में सबसे ज़रूरी चीज़ समय है: अगर लोगों को जल्दी चेतावनी मिल जाए, तो वे सुरक्षित स्थान पर जा सकते हैं, पशुओं को बचा सकते हैं और भोजन-पानी जमा कर सकते हैं। AI बहुत सारे मौसम और नदी के डेटा में जल्दी पैटर्न ढूँढकर मदद करता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Flood forecasting: river levels, rainfall and maps of the land are combined to predict which villages may flood and how deep the water may get. Projects in India have combined river data from the Central Water Commission with AI models to send flood alerts to phones.",
+       "Cyclones: satellites watch storms over the sea. Forecasts of the cyclone's path help states such as Odisha and Andhra Pradesh move people to cyclone shelters before landfall. Early warning and good planning have saved many lives.",
+       "Heatwaves: forecasts of very hot days help cities open cool shelters, change school timings and warn outdoor workers.",
+       "After a disaster: AI can compare satellite photos from before and after to show quickly which roads and houses are damaged, so rescue teams know where to go first.",
+       "Climate and environment: AI helps study long-term weather records, track forest fires from satellite images and count animals in camera-trap photos in tiger reserves."
+      ],
+      "hi": [
+       "बाढ़ पूर्वानुमान: नदी का स्तर, बारिश और ज़मीन के नक्शे मिलाकर अनुमान लगाया जाता है कि कौन-से गाँव डूब सकते हैं और पानी कितना गहरा हो सकता है। भारत में कुछ परियोजनाओं ने केंद्रीय जल आयोग (Central Water Commission) के नदी डेटा को AI मॉडलों के साथ मिलाकर फ़ोन पर बाढ़ चेतावनी भेजी है।",
+       "चक्रवात: उपग्रह समुद्र पर तूफ़ानों पर नज़र रखते हैं। चक्रवात के रास्ते के पूर्वानुमान से ओडिशा और आंध्र प्रदेश जैसे राज्य तट से टकराने से पहले लोगों को चक्रवात आश्रयों में पहुँचाते हैं। जल्दी चेतावनी और अच्छी योजना ने बहुत-सी जानें बचाई हैं।",
+       "लू: बहुत गर्म दिनों के पूर्वानुमान से शहर ठंडे आश्रय खोलते हैं, स्कूल का समय बदलते हैं और बाहर काम करने वालों को सावधान करते हैं।",
+       "आपदा के बाद: AI पहले और बाद की उपग्रह फ़ोटो की तुलना करके जल्दी दिखा सकता है कि कौन-सी सड़कें और घर टूटे हैं, ताकि बचाव दल जानें कि पहले कहाँ जाना है।",
+       "जलवायु और पर्यावरण: AI लंबे समय के मौसम रिकॉर्ड का अध्ययन करने, उपग्रह चित्रों से जंगल की आग पर नज़र रखने और बाघ अभयारण्यों में कैमरा-ट्रैप फ़ोटो से जानवर गिनने में मदद करता है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A flood-alert app says: 'Water may reach 1 metre in your village in the next 24 hours.' Identify the input, processing, output and action.",
+       "hi": "बाढ़-चेतावनी ऐप कहता है: 'अगले 24 घंटों में आपके गाँव में पानी 1 मीटर तक पहुँच सकता है।' इनपुट, प्रोसेसिंग, आउटपुट और काम पहचानिए।"
+      },
+      "a": {
+       "en": "Input: rainfall data, river water levels upstream, and maps showing how high or low the land is.\nProcessing: the model has learned from past floods how rising river levels and rain lead to water spreading over land.\nOutput: the alert with the expected depth and time.\nAction: families move to higher ground or a relief camp, take documents, medicines and drinking water, and follow instructions from local officials.",
+       "hi": "इनपुट: बारिश का डेटा, ऊपर की ओर नदी का जल-स्तर, और ज़मीन की ऊँचाई-निचाई दिखाने वाले नक्शे।\nप्रोसेसिंग: मॉडल ने पुरानी बाढ़ों से सीखा है कि नदी का बढ़ता स्तर और बारिश कैसे पानी को ज़मीन पर फैलाते हैं।\nआउटपुट: अपेक्षित गहराई और समय के साथ चेतावनी।\nकाम: परिवार ऊँची जगह या राहत शिविर में जाते हैं, ज़रूरी कागज़, दवाइयाँ और पीने का पानी साथ लेते हैं, और स्थानीय अधिकारियों के निर्देश मानते हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: In an emergency, follow official warnings from government sources and local officials, and do not spread unchecked messages forwarded on chat apps.",
+      "hi": "याद रखें: आपात स्थिति में सरकारी स्रोतों और स्थानीय अधिकारियों की आधिकारिक चेतावनी मानें, और चैट ऐप पर आए बिना जाँचे संदेश आगे न फैलाएँ।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.8 AI in cities: smart cities, transport and environment",
+    "hi": "5.8 शहरों में AI: स्मार्ट सिटी, परिवहन और पर्यावरण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "More and more Indians live in cities. Cities face traffic jams, accidents, polluted air, piles of garbage and water shortages. In 2015 the government started the Smart Cities Mission, and many cities set up control centres (often called Integrated Command and Control Centres) where data from cameras and sensors is watched on big screens. AI helps make sense of this data.",
+      "hi": "ज़्यादा से ज़्यादा भारतीय शहरों में रहते हैं। शहरों में ट्रैफ़िक जाम, दुर्घटनाएँ, प्रदूषित हवा, कचरे के ढेर और पानी की कमी जैसी समस्याएँ हैं। 2015 में सरकार ने स्मार्ट सिटी मिशन शुरू किया, और कई शहरों ने नियंत्रण केंद्र (अक्सर एकीकृत कमांड और नियंत्रण केंद्र कहे जाते हैं) बनाए जहाँ कैमरों और सेंसरों का डेटा बड़ी स्क्रीनों पर देखा जाता है। AI इस डेटा को समझने में मदद करता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Smart city",
+       "hi": "स्मार्ट सिटी"
+      },
+      "text": {
+       "en": "A city that uses data, sensors and technology (including AI) to run services such as traffic, water, electricity, garbage and safety more efficiently for its people.",
+       "hi": "ऐसा शहर जो अपने लोगों के लिए ट्रैफ़िक, पानी, बिजली, कचरा और सुरक्षा जैसी सेवाएँ ज़्यादा कुशलता से चलाने के लिए डेटा, सेंसर और तकनीक (AI सहित) का उपयोग करता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Smart traffic signals: cameras count vehicles at a junction and the signal gives more green time to the busier road, instead of fixed timings.",
+       "Map apps: phones on the move share anonymous speed data; AI predicts traffic and suggests a faster route and arrival time (you saw this in Class 6).",
+       "Road safety: cameras can detect vehicles jumping red lights or riders without helmets. Some systems warn drivers who look sleepy.",
+       "Potholes and complaints: citizens can photograph a pothole or overflowing garbage bin in a city app; AI can sort the complaint and send it to the right department.",
+       "Air quality: sensors measure pollution, and the Central Pollution Control Board publishes the Air Quality Index (AQI), for example through its SAMEER app. AI models can forecast bad-air days so that people, especially children and the elderly, can take care.",
+       "Garbage and recycling: AI cameras at recycling centres can sort plastic, paper and metal on a moving belt; routes of garbage trucks can be planned to save fuel.",
+       "Water and electricity: AI can spot unusual patterns that suggest a leaking pipe, and forecast electricity demand and solar power so that supply matches need."
+      ],
+      "hi": [
+       "स्मार्ट ट्रैफ़िक सिग्नल: कैमरे चौराहे पर वाहन गिनते हैं और तय समय के बजाय ज़्यादा भीड़ वाली सड़क को ज़्यादा देर हरी बत्ती मिलती है।",
+       "नक्शा ऐप: चलते फ़ोन बिना पहचान वाला गति-डेटा भेजते हैं; AI ट्रैफ़िक का अनुमान लगाकर तेज़ रास्ता और पहुँचने का समय बताता है (यह आपने कक्षा 6 में देखा)।",
+       "सड़क सुरक्षा: कैमरे लाल बत्ती पार करने वाले वाहनों या बिना हेलमेट चालकों को पहचान सकते हैं। कुछ सिस्टम नींद में दिखते चालक को चेतावनी देते हैं।",
+       "गड्ढे और शिकायतें: नागरिक शहर के ऐप में गड्ढे या भरे कूड़ेदान की फ़ोटो भेज सकते हैं; AI शिकायत को छाँटकर सही विभाग को भेज सकता है।",
+       "हवा की गुणवत्ता: सेंसर प्रदूषण नापते हैं, और केंद्रीय प्रदूषण नियंत्रण बोर्ड वायु गुणवत्ता सूचकांक (AQI) प्रकाशित करता है, जैसे अपने SAMEER ऐप से। AI मॉडल खराब हवा वाले दिनों का पूर्वानुमान लगा सकते हैं ताकि लोग, खासकर बच्चे और बुज़ुर्ग, सावधानी रख सकें।",
+       "कचरा और रीसाइक्लिंग: रीसाइक्लिंग केंद्रों पर AI कैमरे चलती बेल्ट पर प्लास्टिक, कागज़ और धातु छाँट सकते हैं; ईंधन बचाने के लिए कचरा गाड़ियों के रास्ते की योजना बनाई जा सकती है।",
+       "पानी और बिजली: AI ऐसे असामान्य पैटर्न पकड़ सकता है जो रिसती पाइप का संकेत दें, और बिजली की माँग व सौर बिजली का अनुमान लगा सकता है ताकि आपूर्ति ज़रूरत के बराबर रहे।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "At a junction, the north road has 40 waiting vehicles and the east road has 10. A fixed signal gives each road 60 seconds. How might a smart signal behave, and why is that better?",
+       "hi": "एक चौराहे पर उत्तर वाली सड़क पर 40 वाहन और पूर्व वाली सड़क पर 10 वाहन रुके हैं। तय समय वाला सिग्नल हर सड़क को 60 सेकंड देता है। स्मार्ट सिग्नल कैसा व्यवहार कर सकता है, और वह बेहतर क्यों है?"
+      },
+      "a": {
+       "en": "Step 1: The camera counts 40 + 10 = 50 waiting vehicles.\nStep 2: The north road has 40 out of 50, which is 4 out of 5 of the queue.\nStep 3: Instead of 60 + 60, the smart signal might give the north road more green time (for example about 90 seconds) and the east road less (about 30 seconds), always keeping a safe minimum for each road and for pedestrians.\nStep 4: Fewer vehicles stand idling, so there is less waiting, less fuel wasted and less pollution.",
+       "hi": "चरण 1: कैमरा 40 + 10 = 50 रुके वाहन गिनता है।\nचरण 2: उत्तर वाली सड़क पर 50 में से 40, यानी कतार का 5 में से 4 भाग है।\nचरण 3: 60 + 60 के बजाय स्मार्ट सिग्नल उत्तर वाली सड़क को ज़्यादा हरा समय (जैसे लगभग 90 सेकंड) और पूर्व वाली को कम (लगभग 30 सेकंड) दे सकता है, पर हर सड़क और पैदल चलने वालों के लिए सुरक्षित न्यूनतम समय हमेशा रखता है।\nचरण 4: कम वाहन खड़े होकर इंजन चलाते हैं, इसलिए इंतज़ार, ईंधन की बर्बादी और प्रदूषण कम होता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Cameras in public places raise privacy questions. Good smart-city systems collect only what they need, keep it safe, and follow the law.",
+      "hi": "याद रखें: सार्वजनिक जगहों पर कैमरे निजता (privacy) के प्रश्न उठाते हैं। अच्छे स्मार्ट-सिटी सिस्टम केवल ज़रूरी डेटा लेते हैं, उसे सुरक्षित रखते हैं और कानून का पालन करते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.9 AI for people and public services",
+    "hi": "5.9 लोगों और सार्वजनिक सेवाओं के लिए AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI for Good is not only about farms, hospitals and cities. It also helps ordinary people use services and stay safe.",
+      "hi": "भलाई के लिए AI केवल खेतों, अस्पतालों और शहरों तक सीमित नहीं है। यह आम लोगों को सेवाओं का उपयोग करने और सुरक्षित रहने में भी मदद करता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Money safety: banks and UPI apps use AI to notice payments that look unusual (for example a large payment at midnight to a new account) and warn or block them, protecting families from fraud.",
+       "Government services: chatbots and voice helplines in Indian languages answer common questions about schemes, so people need not stand in long queues. Digital services such as DigiLocker keep documents safely in one place.",
+       "Finding missing people: face-matching tools have been used by police in some places to match photos of missing children with children found in shelters, with officers checking every match.",
+       "Wildlife and forests: camera-trap photos are sorted by AI so that forest officers can count tigers and leopards faster, and satellite images help spot illegal tree cutting or fires."
+      ],
+      "hi": [
+       "पैसों की सुरक्षा: बैंक और UPI ऐप असामान्य दिखने वाले भुगतान (जैसे आधी रात को किसी नए खाते में बड़ा भुगतान) पहचानने और चेतावनी देने या रोकने के लिए AI का उपयोग करते हैं, जिससे परिवार धोखाधड़ी से बचते हैं।",
+       "सरकारी सेवाएँ: भारतीय भाषाओं में चैटबॉट और वॉइस हेल्पलाइन योजनाओं से जुड़े आम प्रश्नों के उत्तर देते हैं, ताकि लोगों को लंबी कतारों में न खड़ा होना पड़े। डिजीलॉकर (DigiLocker) जैसी डिजिटल सेवाएँ दस्तावेज़ों को एक जगह सुरक्षित रखती हैं।",
+       "लापता लोगों को ढूँढना: कुछ जगहों पर पुलिस ने लापता बच्चों की फ़ोटो को आश्रय गृहों में मिले बच्चों से मिलाने के लिए चेहरा-मिलान टूल का उपयोग किया है, और हर मिलान की जाँच अधिकारी करते हैं।",
+       "वन्यजीव और जंगल: कैमरा-ट्रैप की फ़ोटो AI से छाँटी जाती हैं ताकि वन अधिकारी बाघ और तेंदुए जल्दी गिन सकें, और उपग्रह चित्र अवैध पेड़ कटाई या आग पहचानने में मदद करते हैं।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.10 The other side: costs and limits of AI for Good",
+    "hi": "5.10 दूसरा पहलू: भलाई के लिए AI की कीमत और सीमाएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Even helpful AI has costs and limits. A wise citizen looks at both sides before saying a project is 'good'.",
+      "hi": "मददगार AI की भी कीमत और सीमाएँ होती हैं। एक समझदार नागरिक किसी परियोजना को 'अच्छा' कहने से पहले दोनों पहलू देखता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Concern",
+        "What it means",
+        "What can be done"
+       ],
+       "hi": [
+        "चिंता",
+        "इसका अर्थ",
+        "क्या किया जा सकता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Electricity and water",
+         "Training and running big AI models in data centres uses a lot of electricity, and cooling them can use water",
+         "Use AI only where it truly helps; use smaller models and clean energy"
+        ],
+        [
+         "E-waste",
+         "Phones, sensors and computers become waste when thrown away",
+         "Repair, reuse and recycle devices properly"
+        ],
+        [
+         "Digital divide",
+         "Not everyone has a smartphone, internet or reading skills",
+         "Voice tools in local languages, SMS and radio, help centres"
+        ],
+        [
+         "Wrong answers",
+         "AI predictions can be wrong, for example for a new disease or unusual weather",
+         "Humans check important outputs; keep testing and improving"
+        ],
+        [
+         "Bias",
+         "If data comes mostly from one region or group, AI may work badly for others",
+         "Collect data from all groups and regions (Chapter 6)"
+        ],
+        [
+         "Privacy",
+         "Health, location and face data are sensitive",
+         "Collect only what is needed, protect it, ask permission"
+        ],
+        [
+         "Jobs",
+         "Some tasks done by people may be done by machines",
+         "Train people for new tasks; use AI to assist workers"
+        ],
+        [
+         "Over-dependence",
+         "People may stop using their own knowledge",
+         "Combine AI with local experience and expert advice"
+        ]
+       ],
+       "hi": [
+        [
+         "बिजली और पानी",
+         "डेटा सेंटर में बड़े AI मॉडल सिखाने और चलाने में बहुत बिजली लगती है, और उन्हें ठंडा रखने में पानी लग सकता है",
+         "AI का उपयोग वहीं करें जहाँ सच में मदद मिले; छोटे मॉडल और स्वच्छ ऊर्जा अपनाएँ"
+        ],
+        [
+         "ई-कचरा",
+         "फेंके गए फ़ोन, सेंसर और कंप्यूटर कचरा बन जाते हैं",
+         "उपकरणों की मरम्मत, दोबारा उपयोग और सही रीसाइक्लिंग"
+        ],
+        [
+         "डिजिटल खाई",
+         "सबके पास स्मार्टफ़ोन, इंटरनेट या पढ़ने का कौशल नहीं है",
+         "स्थानीय भाषाओं में वॉइस टूल, SMS और रेडियो, सहायता केंद्र"
+        ],
+        [
+         "गलत उत्तर",
+         "AI के अनुमान गलत हो सकते हैं, जैसे नई बीमारी या असामान्य मौसम में",
+         "ज़रूरी आउटपुट इंसान जाँचें; लगातार परखें और सुधारें"
+        ],
+        [
+         "पक्षपात",
+         "अगर डेटा ज़्यादातर एक क्षेत्र या समूह से आए, तो AI दूसरों के लिए खराब काम कर सकता है",
+         "सभी समूहों और क्षेत्रों से डेटा लें (अध्याय 6)"
+        ],
+        [
+         "निजता",
+         "स्वास्थ्य, स्थान और चेहरे का डेटा संवेदनशील है",
+         "केवल ज़रूरी डेटा लें, उसे सुरक्षित रखें, अनुमति लें"
+        ],
+        [
+         "नौकरियाँ",
+         "लोगों के कुछ काम मशीनें कर सकती हैं",
+         "लोगों को नए कामों का प्रशिक्षण; AI को कर्मचारियों का सहायक बनाएँ"
+        ],
+        [
+         "ज़रूरत से ज़्यादा निर्भरता",
+         "लोग अपना ज्ञान उपयोग करना छोड़ सकते हैं",
+         "AI को स्थानीय अनुभव और विशेषज्ञ सलाह के साथ मिलाएँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Sometimes the best solution is not AI at all. If a village school's problem is that there is no drinking-water tap, the answer is a tap, not an app. Always ask: is AI really needed here, or is a simpler solution better?",
+      "hi": "कभी-कभी सबसे अच्छा समाधान AI होता ही नहीं। अगर गाँव के स्कूल की समस्या यह है कि पीने के पानी का नल नहीं है, तो उत्तर नल है, ऐप नहीं। हमेशा पूछें: क्या यहाँ सच में AI की ज़रूरत है, या कोई सरल समाधान बेहतर है?"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: A project is truly 'AI for Good' only if it helps the people who need it, works fairly for all of them, protects their data and is checked by humans.",
+      "hi": "याद रखें: कोई परियोजना सच में 'भलाई के लिए AI' तभी है जब वह ज़रूरतमंद लोगों की मदद करे, उन सबके लिए न्यायपूर्ण काम करे, उनके डेटा की रक्षा करे और इंसान उसकी जाँच करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.11 How to judge an AI for Good idea: a checklist",
+    "hi": "5.11 भलाई के लिए AI के किसी विचार को कैसे परखें: एक जाँच-सूची"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "When you read about a new AI project in the news, or think of one yourself, ask these questions:",
+      "hi": "जब आप समाचार में किसी नई AI परियोजना के बारे में पढ़ें, या खुद कोई सोचें, तो ये प्रश्न पूछें:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Problem: Is it a real problem? Who faces it and how serious is it?",
+       "Need for AI: Does it need pattern-finding in lots of data, or would a simple fix work?",
+       "Data: Where will the data come from? Is it from many kinds of people and places? Was permission taken?",
+       "Users: Can the real users (for example farmers who speak only Bhojpuri) use it easily, perhaps by voice?",
+       "Mistakes: What happens if the AI is wrong? Is a human checking important decisions?",
+       "Fairness and privacy: Does it work equally well for everyone? Is personal data protected?",
+       "Planet: Is the energy and e-waste worth the benefit?",
+       "Results: How will we know it helped, for example fewer crops lost or faster ambulance arrival?"
+      ],
+      "hi": [
+       "समस्या: क्या यह असली समस्या है? किसे इसका सामना है और यह कितनी गंभीर है?",
+       "AI की ज़रूरत: क्या इसमें बहुत सारे डेटा में पैटर्न ढूँढने की ज़रूरत है, या कोई सरल उपाय काम करेगा?",
+       "डेटा: डेटा कहाँ से आएगा? क्या यह कई तरह के लोगों और जगहों से है? क्या अनुमति ली गई?",
+       "उपयोगकर्ता: क्या असली उपयोगकर्ता (जैसे केवल भोजपुरी बोलने वाले किसान) इसे आसानी से, शायद बोलकर, उपयोग कर सकते हैं?",
+       "गलतियाँ: अगर AI गलत हो तो क्या होगा? क्या ज़रूरी निर्णय कोई इंसान जाँच रहा है?",
+       "न्याय और निजता: क्या यह सबके लिए बराबर अच्छा काम करता है? क्या व्यक्तिगत डेटा सुरक्षित है?",
+       "धरती: क्या ऊर्जा और ई-कचरे की कीमत लाभ के लायक है?",
+       "परिणाम: हमें कैसे पता चलेगा कि मदद मिली, जैसे कम फसल नुकसान या एम्बुलेंस का जल्दी पहुँचना?"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A company wants to give every village a talking robot to tell farmers the weather. Use the checklist to judge this idea and suggest an improvement.",
+       "hi": "एक कंपनी हर गाँव को एक बोलने वाला रोबोट देना चाहती है जो किसानों को मौसम बताए। जाँच-सूची से इस विचार को परखिए और सुधार सुझाइए।"
+      },
+      "a": {
+       "en": "Problem: farmers need weather information; this is real.\nNeed for AI: forecasts already exist; the real need is to deliver them clearly.\nUsers: a robot in one place helps only those who walk to it; it needs electricity and repairs.\nPlanet and cost: a robot per village means high cost and future e-waste.\nImprovement: send the same forecast as a free voice call or SMS in the local language to every farmer's phone, plus announcements on the panchayat loudspeaker. Simpler, cheaper and reaches more people.",
+       "hi": "समस्या: किसानों को मौसम की जानकारी चाहिए; यह असली है।\nAI की ज़रूरत: पूर्वानुमान पहले से मौजूद हैं; असली ज़रूरत उन्हें साफ़ तरीके से पहुँचाने की है।\nउपयोगकर्ता: एक जगह रखा रोबोट केवल उन्हीं की मदद करेगा जो वहाँ तक जाएँ; उसे बिजली और मरम्मत चाहिए।\nधरती और कीमत: हर गाँव में रोबोट यानी ज़्यादा खर्च और आगे ई-कचरा।\nसुधार: वही पूर्वानुमान स्थानीय भाषा में मुफ़्त वॉइस कॉल या SMS से हर किसान के फ़ोन पर भेजें, साथ में पंचायत के लाउडस्पीकर पर घोषणा। सरल, सस्ता और ज़्यादा लोगों तक पहुँचने वाला।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.12 Activities",
+    "hi": "5.12 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (unplugged): SDG match-up.\nAim: to connect real problems, SDGs and AI solutions.\nYou need: 9 cards with SDG names, 9 cards with problems (for example 'farmer cannot tell which pest is eating the cotton') and 9 cards with AI ideas.\nWhat to do: in groups of four, match each problem with an SDG and an AI idea. Then each group explains one match to the class, saying what data the AI would need.\nWhat you observe: one problem can link to more than one SDG (dirty air affects health and cities), and some problems do not need AI at all.\nWhat it teaches: AI for Good starts from a problem and a goal, not from a gadget.",
+      "hi": "गतिविधि 1 (बिना कंप्यूटर): SDG मिलान।\nउद्देश्य: असली समस्याओं, SDGs और AI समाधानों को जोड़ना।\nआवश्यक सामग्री: SDG नाम वाले 9 कार्ड, समस्याओं वाले 9 कार्ड (जैसे 'किसान पहचान नहीं पा रहा कि कपास को कौन-सा कीट खा रहा है') और AI विचारों वाले 9 कार्ड।\nक्या करें: चार-चार के समूह में हर समस्या को एक SDG और एक AI विचार से मिलाएँ। फिर हर समूह कक्षा को एक मिलान समझाए और बताए कि AI को कौन-सा डेटा चाहिए होगा।\nक्या देखेंगे: एक समस्या एक से ज़्यादा SDG से जुड़ सकती है (गंदी हवा स्वास्थ्य और शहर दोनों पर असर डालती है), और कुछ समस्याओं को AI की ज़रूरत ही नहीं होती।\nक्या सीखेंगे: भलाई के लिए AI समस्या और लक्ष्य से शुरू होता है, किसी गैजेट से नहीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (screen, with an adult): Check today's air.\nAim: to see real environmental data that AI forecasts use.\nYou need: a phone or computer with a parent or teacher, and the free SAMEER app or the official CPCB AQI website.\nWhat to do: look up the AQI for your city or the nearest city for five days. Note the number and the category (Good, Satisfactory, Moderate, Poor, Very Poor, Severe). Draw a bar graph.\nWhat you observe: AQI changes from day to day and is often worse in winter in north India.\nWhat it teaches: AI forecasts are built on data like this; with a forecast, schools and families can plan outdoor activities.",
+      "hi": "गतिविधि 2 (स्क्रीन, किसी बड़े के साथ): आज की हवा जाँचें।\nउद्देश्य: वह असली पर्यावरण डेटा देखना जिससे AI पूर्वानुमान बनते हैं।\nआवश्यक सामग्री: माता-पिता या शिक्षक के साथ फ़ोन या कंप्यूटर, और मुफ़्त SAMEER ऐप या CPCB की आधिकारिक AQI वेबसाइट।\nक्या करें: पाँच दिन तक अपने शहर या नज़दीकी शहर का AQI देखें। संख्या और श्रेणी (अच्छा, संतोषजनक, मध्यम, खराब, बहुत खराब, गंभीर) लिखें। एक दंड आलेख (bar graph) बनाएँ।\nक्या देखेंगे: AQI रोज़ बदलता है और उत्तर भारत में सर्दियों में अक्सर ज़्यादा खराब होता है।\nक्या सीखेंगे: AI पूर्वानुमान ऐसे ही डेटा पर बनते हैं; पूर्वानुमान से स्कूल और परिवार बाहर की गतिविधियों की योजना बना सकते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen, with an adult): Be a mini crop doctor with Teachable Machine.\nAim: to see how an image model can tell healthy from unhealthy leaves.\nYou need: a computer or phone browser, Google Teachable Machine (free, works in the browser), 20 or more leaves from your garden or school: some fresh and green, some yellow, dry or spotted.\nWhat to do: make an Image Project with two classes, 'Healthy' and 'Unhealthy'. Show about 20 to 30 webcam pictures of each class from different angles. Click Train Model, then test with leaves the model has not seen.\nWhat you observe: it often works for clear cases but gets confused by a leaf that is half green and half yellow, or by a different background.\nWhat it teaches: real crop apps need thousands of varied, correctly labelled photos and expert checking. (You will build a full project like this in Chapter 7.)",
+      "hi": "गतिविधि 3 (स्क्रीन, किसी बड़े के साथ): Teachable Machine से छोटे फसल डॉक्टर बनें।\nउद्देश्य: देखना कि चित्र मॉडल स्वस्थ और अस्वस्थ पत्तों में फ़र्क कैसे कर सकता है।\nआवश्यक सामग्री: कंप्यूटर या फ़ोन ब्राउज़र, Google Teachable Machine (मुफ़्त, ब्राउज़र में चलता है), बगीचे या स्कूल से 20 या ज़्यादा पत्ते: कुछ ताज़ा और हरे, कुछ पीले, सूखे या धब्बेदार।\nक्या करें: 'Healthy' और 'Unhealthy' दो क्लास वाला Image Project बनाएँ। हर क्लास के लगभग 20 से 30 वेबकैम चित्र अलग-अलग कोणों से दिखाएँ। Train Model दबाएँ, फिर ऐसे पत्तों से जाँचें जो मॉडल ने नहीं देखे।\nक्या देखेंगे: साफ़ मामलों में यह अक्सर ठीक काम करता है, पर आधे हरे-आधे पीले पत्ते या अलग पृष्ठभूमि से उलझ जाता है।\nक्या सीखेंगे: असली फसल ऐप को हज़ारों विविध, सही लेबल वाली फ़ोटो और विशेषज्ञ जाँच चाहिए। (अध्याय 7 में आप ऐसा पूरा प्रोजेक्ट बनाएँगे।)"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (unplugged): Problem walk in my locality.\nAim: to find real local problems AI might help with.\nYou need: a notebook; walk only with a parent or as a class trip with teachers.\nWhat to do: note five problems you see (garbage, traffic, water leakage, stray animals on roads, broken street lights). For each, write: who is affected, what data could be collected, could AI help, or is a simple fix better?\nWhat you observe: some problems need people and money more than AI; some, like predicting where garbage piles up, could use data.\nWhat it teaches: thinking like a problem solver, which is the first step of every AI project.",
+      "hi": "गतिविधि 4 (बिना कंप्यूटर): अपने मोहल्ले में समस्या-यात्रा।\nउद्देश्य: ऐसी असली स्थानीय समस्याएँ ढूँढना जिनमें AI मदद कर सके।\nआवश्यक सामग्री: एक कॉपी; केवल माता-पिता के साथ या शिक्षकों के साथ कक्षा भ्रमण में ही चलें।\nक्या करें: जो पाँच समस्याएँ दिखें, लिखें (कचरा, ट्रैफ़िक, पानी का रिसाव, सड़कों पर आवारा पशु, खराब स्ट्रीट लाइट)। हर एक के लिए लिखें: किस पर असर है, कौन-सा डेटा जुटाया जा सकता है, क्या AI मदद कर सकता है, या कोई सरल उपाय बेहतर है?\nक्या देखेंगे: कुछ समस्याओं को AI से ज़्यादा लोगों और पैसे की ज़रूरत है; कुछ, जैसे कचरा कहाँ जमा होता है इसका अनुमान, डेटा का उपयोग कर सकती हैं।\nक्या सीखेंगे: समस्या-समाधानकर्ता की तरह सोचना, जो हर AI प्रोजेक्ट का पहला कदम है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 5 (class discussion): Two sides of a smart camera.\nAim: to weigh benefits and concerns.\nWhat to do: half the class lists benefits of AI cameras at traffic junctions (safety, fewer jams); the other half lists concerns (privacy, mistakes, cost). Then together decide rules that would make the cameras fair and safe.\nWhat it teaches: good AI needs good rules as well as good technology.",
+      "hi": "गतिविधि 5 (कक्षा चर्चा): स्मार्ट कैमरे के दो पहलू।\nउद्देश्य: लाभ और चिंताओं को तौलना।\nक्या करें: आधी कक्षा ट्रैफ़िक चौराहों पर AI कैमरों के लाभ लिखे (सुरक्षा, कम जाम); बाकी आधी चिंताएँ लिखे (निजता, गलतियाँ, खर्च)। फिर साथ मिलकर ऐसे नियम तय करें जो कैमरों को न्यायपूर्ण और सुरक्षित बनाएँ।\nक्या सीखेंगे: अच्छे AI के लिए अच्छी तकनीक के साथ अच्छे नियम भी चाहिए।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: Children under 13 should use online tools only with a parent or teacher, and should not create accounts on their own. Do not photograph people without their permission.",
+      "hi": "सुरक्षा: 13 वर्ष से कम उम्र के बच्चे ऑनलाइन टूल केवल माता-पिता या शिक्षक के साथ उपयोग करें, और खुद अकाउंट न बनाएँ। किसी की अनुमति के बिना उसकी फ़ोटो न लें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking AI alone solves the problem. Fix: AI gives a prediction or alert; people still have to decide and act.",
+   "Believing an AI crop or health app is always right. Fix: its answer is the most likely one; confirm with an agriculture officer or doctor.",
+   "Using AI for every problem. Fix: first ask whether a simple solution (a tap, a speed breaker, an SMS) works better.",
+   "Forgetting people without smartphones or internet. Fix: plan voice, SMS, radio and local-language access.",
+   "Ignoring the environmental cost. Fix: remember AI uses electricity and devices become e-waste; use it where the benefit is clear.",
+   "Thinking 'AI for Good' means 'no risks'. Fix: check fairness, privacy and mistakes for every project.",
+   "Mixing up SDG facts or saying there are 10 or 20 goals. Fix: there are 17 SDGs, agreed in 2015, for 2030.",
+   "Saying AI replaces doctors or teachers. Fix: AI assists them; humans stay responsible for decisions."
+  ],
+  "hi": [
+   "यह सोचना कि अकेला AI समस्या हल कर देता है। सुधार: AI अनुमान या चेतावनी देता है; निर्णय और काम फिर भी लोगों को करना है।",
+   "यह मानना कि AI फसल या स्वास्थ्य ऐप हमेशा सही है। सुधार: उसका उत्तर सबसे संभावित है; कृषि अधिकारी या डॉक्टर से पुष्टि करें।",
+   "हर समस्या के लिए AI लगाना। सुधार: पहले पूछें कि क्या कोई सरल उपाय (नल, स्पीड ब्रेकर, SMS) बेहतर है।",
+   "बिना स्मार्टफ़ोन या इंटरनेट वाले लोगों को भूल जाना। सुधार: बोलकर, SMS, रेडियो और स्थानीय भाषा में पहुँच की योजना बनाएँ।",
+   "पर्यावरण की कीमत को अनदेखा करना। सुधार: याद रखें AI बिजली खर्च करता है और उपकरण ई-कचरा बनते हैं; जहाँ लाभ साफ़ हो वहीं उपयोग करें।",
+   "यह सोचना कि 'भलाई के लिए AI' में 'कोई जोखिम नहीं'। सुधार: हर परियोजना में न्याय, निजता और गलतियों की जाँच करें।",
+   "SDG के तथ्य गड़बड़ाना या 10 या 20 लक्ष्य बताना। सुधार: 17 SDGs हैं, 2015 में तय, 2030 के लिए।",
+   "कहना कि AI डॉक्टरों या शिक्षकों की जगह लेता है। सुधार: AI उनकी मदद करता है; निर्णयों की ज़िम्मेदारी इंसानों की रहती है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "AI for Good",
+    "hi": "भलाई के लिए AI"
+   },
+   "d": {
+    "en": "Using AI to solve social and environmental problems safely and fairly.",
+    "hi": "सामाजिक और पर्यावरण समस्याओं को सुरक्षित और न्यायपूर्ण तरीके से हल करने के लिए AI का उपयोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sustainable Development Goals (SDGs)",
+    "hi": "सतत विकास लक्ष्य (SDGs)"
+   },
+   "d": {
+    "en": "17 goals agreed by UN countries in 2015 to end poverty, protect the planet and improve lives by 2030.",
+    "hi": "2015 में संयुक्त राष्ट्र के देशों द्वारा तय 17 लक्ष्य जो 2030 तक गरीबी मिटाने, धरती की रक्षा और जीवन सुधारने के लिए हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sustainable development",
+    "hi": "सतत विकास"
+   },
+   "d": {
+    "en": "Progress today that does not harm the chances of future generations.",
+    "hi": "आज की ऐसी प्रगति जो आने वाली पीढ़ियों के अवसरों को नुकसान न पहुँचाए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Systems thinking",
+    "hi": "तंत्र-चिंतन (systems thinking)"
+   },
+   "d": {
+    "en": "Looking at how the parts of a problem are connected and affect one another.",
+    "hi": "यह देखना कि किसी समस्या के भाग कैसे जुड़े हैं और एक-दूसरे पर कैसे असर डालते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Crop disease detection",
+    "hi": "फसल रोग पहचान"
+   },
+   "d": {
+    "en": "Using image classification on leaf photos to suggest which disease or pest a plant has.",
+    "hi": "पत्तों की फ़ोटो पर चित्र वर्गीकरण से यह सुझाना कि पौधे को कौन-सा रोग या कीट है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sensor",
+    "hi": "सेंसर"
+   },
+   "d": {
+    "en": "A device that measures something, such as soil moisture, temperature or air pollution, and turns it into data.",
+    "hi": "ऐसा उपकरण जो मिट्टी की नमी, तापमान या वायु प्रदूषण जैसी चीज़ नापकर उसे डेटा में बदलता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Smart irrigation",
+    "hi": "स्मार्ट सिंचाई"
+   },
+   "d": {
+    "en": "Watering crops only when sensors and forecasts show it is needed.",
+    "hi": "फसलों को तभी पानी देना जब सेंसर और पूर्वानुमान बताएँ कि ज़रूरत है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Forecast",
+    "hi": "पूर्वानुमान"
+   },
+   "d": {
+    "en": "A prediction about the future, such as tomorrow's rain or next week's prices.",
+    "hi": "भविष्य के बारे में अनुमान, जैसे कल की बारिश या अगले हफ़्ते के दाम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Screening",
+    "hi": "जाँच (स्क्रीनिंग)"
+   },
+   "d": {
+    "en": "Checking many people quickly to find those who may have a disease and need a doctor.",
+    "hi": "बहुत से लोगों की जल्दी जाँच करके उन्हें ढूँढना जिन्हें बीमारी हो सकती है और डॉक्टर की ज़रूरत है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Telemedicine",
+    "hi": "टेलीमेडिसिन"
+   },
+   "d": {
+    "en": "Getting a doctor's advice through phone or video, for example eSanjeevani.",
+    "hi": "फ़ोन या वीडियो से डॉक्टर की सलाह लेना, जैसे ई-संजीवनी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Personalised (adaptive) learning",
+    "hi": "व्यक्तिगत (अनुकूली) पढ़ाई"
+   },
+   "d": {
+    "en": "Practice that changes to suit each learner's level and speed.",
+    "hi": "ऐसा अभ्यास जो हर विद्यार्थी के स्तर और गति के अनुसार बदलता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bhashini",
+    "hi": "भाषिणी"
+   },
+   "d": {
+    "en": "India's national mission building AI translation and speech tools for Indian languages.",
+    "hi": "भारतीय भाषाओं के लिए AI अनुवाद और वाणी टूल बनाने वाला भारत का राष्ट्रीय मिशन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Early warning",
+    "hi": "पूर्व चेतावनी"
+   },
+   "d": {
+    "en": "An alert given before a disaster so people can get ready or move to safety.",
+    "hi": "आपदा से पहले दी गई सूचना ताकि लोग तैयार हो सकें या सुरक्षित जगह जा सकें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Smart city",
+    "hi": "स्मार्ट सिटी"
+   },
+   "d": {
+    "en": "A city that uses data, sensors and AI to run services better.",
+    "hi": "ऐसा शहर जो सेवाएँ बेहतर चलाने के लिए डेटा, सेंसर और AI का उपयोग करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Air Quality Index (AQI)",
+    "hi": "वायु गुणवत्ता सूचकांक (AQI)"
+   },
+   "d": {
+    "en": "A number and category that tell how clean or polluted the air is.",
+    "hi": "एक संख्या और श्रेणी जो बताती है कि हवा कितनी साफ़ या प्रदूषित है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Digital divide",
+    "hi": "डिजिटल खाई"
+   },
+   "d": {
+    "en": "The gap between people who have phones, internet and digital skills and those who do not.",
+    "hi": "जिनके पास फ़ोन, इंटरनेट और डिजिटल कौशल है और जिनके पास नहीं, उनके बीच का अंतर।"
+   }
+  },
+  {
+   "t": {
+    "en": "E-waste",
+    "hi": "ई-कचरा"
+   },
+   "d": {
+    "en": "Thrown-away electronic devices such as phones, chargers and computers.",
+    "hi": "फेंके गए इलेक्ट्रॉनिक उपकरण जैसे फ़ोन, चार्जर और कंप्यूटर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data centre",
+    "hi": "डेटा सेंटर"
+   },
+   "d": {
+    "en": "A building full of computers that store data and run AI services; it uses a lot of electricity.",
+    "hi": "कंप्यूटरों से भरी इमारत जो डेटा रखती है और AI सेवाएँ चलाती है; इसमें बहुत बिजली लगती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Camera trap",
+    "hi": "कैमरा ट्रैप"
+   },
+   "d": {
+    "en": "A camera in a forest that clicks a photo automatically when an animal passes.",
+    "hi": "जंगल में लगा कैमरा जो जानवर के गुज़रने पर अपने आप फ़ोटो खींचता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: How many Sustainable Development Goals are there? (a) 10 (b) 15 (c) 17 (d) 20",
+    "hi": "बहुविकल्पी: कितने सतत विकास लक्ष्य हैं? (a) 10 (b) 15 (c) 17 (d) 20"
+   },
+   "a": {
+    "en": "(c) 17, agreed in 2015, to be reached by 2030.",
+    "hi": "(c) 17, 2015 में तय, 2030 तक पूरे करने हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: A farmer clicks a photo of a leaf and an app names the disease. Which AI domain is this? (a) Natural Language Processing (b) Computer Vision (c) Speech only (d) None",
+    "hi": "बहुविकल्पी: किसान पत्ते की फ़ोटो खींचता है और ऐप रोग का नाम बताता है। यह कौन-सा AI क्षेत्र है? (a) प्राकृतिक भाषा प्रसंस्करण (b) कंप्यूटर विज़न (c) केवल वाणी (d) कोई नहीं"
+   },
+   "a": {
+    "en": "(b) Computer Vision: the AI classifies an image.",
+    "hi": "(b) कंप्यूटर विज़न: AI एक चित्र का वर्गीकरण करता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is NOT a cost or limit of AI? (a) Uses electricity (b) Can be biased (c) Can find patterns quickly (d) Creates e-waste",
+    "hi": "बहुविकल्पी: इनमें से कौन AI की कीमत या सीमा नहीं है? (a) बिजली खर्च (b) पक्षपाती हो सकता है (c) जल्दी पैटर्न ढूँढ सकता है (d) ई-कचरा बनाता है"
+   },
+   "a": {
+    "en": "(c) Finding patterns quickly is a strength, not a cost.",
+    "hi": "(c) जल्दी पैटर्न ढूँढना एक ताकत है, कीमत नहीं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Getting a doctor's advice over a video call is called ______.",
+    "hi": "रिक्त स्थान भरिए: वीडियो कॉल से डॉक्टर की सलाह लेना ______ कहलाता है।"
+   },
+   "a": {
+    "en": "Telemedicine.",
+    "hi": "टेलीमेडिसिन।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: India's mission for AI translation and speech tools in Indian languages is called ______.",
+    "hi": "रिक्त स्थान भरिए: भारतीय भाषाओं में AI अनुवाद और वाणी टूल का भारत का मिशन ______ कहलाता है।"
+   },
+   "a": {
+    "en": "Bhashini.",
+    "hi": "भाषिणी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: AI for Good projects never have any risks.",
+    "hi": "सही या गलत: भलाई के लिए AI परियोजनाओं में कभी कोई जोखिम नहीं होता।"
+   },
+   "a": {
+    "en": "False. They can make mistakes, be biased, risk privacy and use energy.",
+    "hi": "गलत। उनमें गलतियाँ, पक्षपात, निजता का खतरा और ऊर्जा खर्च हो सकता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: A smart traffic signal can give more green time to a busier road.",
+    "hi": "सही या गलत: स्मार्ट ट्रैफ़िक सिग्नल ज़्यादा भीड़ वाली सड़क को ज़्यादा हरा समय दे सकता है।"
+   },
+   "a": {
+    "en": "True. Cameras count vehicles and the timing adjusts.",
+    "hi": "सही। कैमरे वाहन गिनते हैं और समय बदल जाता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Match: (i) SDG 2 (ii) SDG 3 (iii) SDG 11 (iv) SDG 13 with (a) Climate Action (b) Zero Hunger (c) Sustainable Cities and Communities (d) Good Health and Well-being",
+    "hi": "मिलान कीजिए: (i) SDG 2 (ii) SDG 3 (iii) SDG 11 (iv) SDG 13 को (a) जलवायु कार्रवाई (b) शून्य भुखमरी (c) टिकाऊ शहर और समुदाय (d) अच्छा स्वास्थ्य और कल्याण से"
+   },
+   "a": {
+    "en": "(i)-(b), (ii)-(d), (iii)-(c), (iv)-(a).",
+    "hi": "(i)-(b), (ii)-(d), (iii)-(c), (iv)-(a)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Give three ways AI helps Indian farmers.",
+    "hi": "लघु उत्तर: AI भारतीय किसानों की मदद करने के तीन तरीके बताइए।"
+   },
+   "a": {
+    "en": "Any three: detecting pests and diseases from leaf photos; weather and rain forecasts for sowing and harvest; fertiliser advice using soil data; smart irrigation with soil-moisture sensors; price trend estimates; chatbots such as Kisan e-Mitra answering questions in Indian languages.",
+    "hi": "कोई तीन: पत्तों की फ़ोटो से कीट और रोग पहचान; बुआई और कटाई के लिए मौसम व बारिश का पूर्वानुमान; मिट्टी डेटा से खाद की सलाह; मिट्टी-नमी सेंसर से स्मार्ट सिंचाई; दाम के रुझान का अनुमान; किसान ई-मित्र जैसे चैटबॉट जो भारतीय भाषाओं में प्रश्नों के उत्तर देते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Why should a health AI send doubtful cases to a doctor?",
+    "hi": "लघु उत्तर: स्वास्थ्य AI को संदेह वाले मामले डॉक्टर को क्यों भेजने चाहिए?"
+   },
+   "a": {
+    "en": "Because missing a sick person (saying 'normal' wrongly) can cause serious harm, while an extra check costs little. The doctor makes the final decision.",
+    "hi": "क्योंकि बीमार व्यक्ति को छोड़ देना (गलती से 'सामान्य' कहना) गंभीर नुकसान कर सकता है, जबकि एक अतिरिक्त जाँच का नुकसान छोटा है। अंतिम निर्णय डॉक्टर लेता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Write the six steps of the chain from problem to improvement.",
+    "hi": "लघु उत्तर: समस्या से सुधार तक के क्रम के छह चरण लिखिए।"
+   },
+   "a": {
+    "en": "Problem → Data (input) → AI finds patterns (processing) → Prediction or alert (output) → People act → Check results and improve.",
+    "hi": "समस्या → डेटा (इनपुट) → AI पैटर्न ढूँढता है (प्रोसेसिंग) → अनुमान या चेतावनी (आउटपुट) → लोग काम करते हैं → परिणाम जाँचें और सुधारें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: What is the digital divide, and how can AI projects reduce its effect?",
+    "hi": "लघु उत्तर: डिजिटल खाई क्या है, और AI परियोजनाएँ इसका असर कैसे कम कर सकती हैं?"
+   },
+   "a": {
+    "en": "It is the gap between people who have phones, internet and digital skills and those who do not. Projects can use voice in local languages, SMS, radio and help centres so that everyone benefits.",
+    "hi": "यह उन लोगों के बीच का अंतर है जिनके पास फ़ोन, इंटरनेट और डिजिटल कौशल है और जिनके पास नहीं। परियोजनाएँ स्थानीय भाषाओं में वॉइस, SMS, रेडियो और सहायता केंद्रों का उपयोग कर सकती हैं ताकि सबको लाभ मिले।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Name two environmental costs of AI.",
+    "hi": "लघु उत्तर: AI की दो पर्यावरणीय कीमतें बताइए।"
+   },
+   "a": {
+    "en": "Large AI models in data centres use a lot of electricity (and water for cooling); devices such as phones and sensors become e-waste.",
+    "hi": "डेटा सेंटर में बड़े AI मॉडल बहुत बिजली (और ठंडा करने के लिए पानी) खर्च करते हैं; फ़ोन और सेंसर जैसे उपकरण ई-कचरा बनते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: How does AI help after a disaster such as a flood?",
+    "hi": "लघु उत्तर: बाढ़ जैसी आपदा के बाद AI कैसे मदद करता है?"
+   },
+   "a": {
+    "en": "It compares satellite or drone photos from before and after to show quickly which roads and buildings are damaged, so rescue teams know where to go first.",
+    "hi": "वह पहले और बाद की उपग्रह या ड्रोन फ़ोटो की तुलना करके जल्दी दिखाता है कि कौन-सी सड़कें और इमारतें टूटी हैं, ताकि बचाव दल जानें कि पहले कहाँ जाना है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Identify input, processing and output: an app forecasts that tomorrow's AQI in Delhi will be 'Very Poor'.",
+    "hi": "इनपुट, प्रोसेसिंग और आउटपुट पहचानिए: एक ऐप पूर्वानुमान देता है कि कल दिल्ली का AQI 'बहुत खराब' होगा।"
+   },
+   "a": {
+    "en": "Input: pollution sensor readings, weather (wind, temperature), past AQI data. Processing: a model finds patterns linking weather and past pollution to future AQI. Output: the forecast 'Very Poor', which helps schools and families plan.",
+    "hi": "इनपुट: प्रदूषण सेंसर की रीडिंग, मौसम (हवा, तापमान), पुराना AQI डेटा। प्रोसेसिंग: मॉडल मौसम और पुराने प्रदूषण को आगे के AQI से जोड़ने वाले पैटर्न ढूँढता है। आउटपुट: 'बहुत खराब' का पूर्वानुमान, जिससे स्कूल और परिवार योजना बनाते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Give two ways AI helps in education.",
+    "hi": "लघु उत्तर: शिक्षा में AI मदद के दो तरीके बताइए।"
+   },
+   "a": {
+    "en": "Adaptive practice that gives each student questions at the right level; translation, captions and text-to-speech that bring lessons in Indian languages and help students with disabilities.",
+    "hi": "अनुकूली अभ्यास जो हर छात्र को सही स्तर के प्रश्न देता है; अनुवाद, कैप्शन और पाठ-से-बोली जो भारतीय भाषाओं में पाठ लाते हैं और दिव्यांग छात्रों की मदद करते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: What is systems thinking? Give one example.",
+    "hi": "लघु उत्तर: तंत्र-चिंतन क्या है? एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Systems thinking means looking at how the parts of a problem are connected. Example: less rain → poor crops → less income → children may leave school to work. So helping farmers with rain forecasts can also help education.",
+    "hi": "तंत्र-चिंतन का अर्थ है यह देखना कि किसी समस्या के भाग कैसे जुड़े हैं। उदाहरण: कम बारिश → कमज़ोर फसल → कम आय → बच्चे काम के लिए स्कूल छोड़ सकते हैं। इसलिए बारिश के पूर्वानुमान से किसानों की मदद शिक्षा में भी मदद कर सकती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain with examples how AI supports SDG 3 (Good Health and Well-being) in India, and two precautions needed.",
+    "hi": "दीर्घ उत्तर: उदाहरणों सहित समझाइए कि AI भारत में SDG 3 (अच्छा स्वास्थ्य और कल्याण) में कैसे मदद करता है, और दो आवश्यक सावधानियाँ बताइए।"
+   },
+   "a": {
+    "en": "Examples: AI screens photos of the back of the eye for diabetic retinopathy so that patients at risk are sent to eye doctors early; AI marks chest X-rays that may show TB so doctors check them first; telemedicine services such as eSanjeevani connect village patients to distant doctors, with AI helping with records or translation; AI forecasts needs for beds and medicines and early rises in diseases like dengue; apps that read text aloud or caption speech help people with disabilities.\nPrecautions: (1) a doctor must make the final decision; never take medicine just because an app said so; (2) health data is private and must be protected and shared only with permission. Also the AI must be tested on patients from all regions so it is not biased.",
+    "hi": "उदाहरण: AI आँख के पिछले भाग की फ़ोटो में डायबिटिक रेटिनोपैथी की जाँच करता है ताकि जोखिम वाले मरीज़ जल्दी नेत्र डॉक्टर तक पहुँचें; AI छाती के उन एक्स-रे को चिह्नित करता है जिनमें TB हो सकती है ताकि डॉक्टर पहले उन्हें देखें; ई-संजीवनी जैसी टेलीमेडिसिन सेवाएँ गाँव के मरीज़ों को दूर के डॉक्टरों से जोड़ती हैं, और AI रिकॉर्ड या अनुवाद में मदद करता है; AI बिस्तरों और दवाइयों की ज़रूरत और डेंगू जैसी बीमारियों में शुरुआती बढ़ोतरी का अनुमान लगाता है; पाठ पढ़कर सुनाने या बोली का कैप्शन बनाने वाले ऐप दिव्यांगजनों की मदद करते हैं।\nसावधानियाँ: (1) अंतिम निर्णय डॉक्टर ले; केवल ऐप के कहने पर कभी दवा न लें; (2) स्वास्थ्य डेटा निजी है, उसे सुरक्षित रखना और केवल अनुमति से साझा करना चाहिए। साथ ही AI को सभी क्षेत्रों के मरीज़ों पर परखना चाहिए ताकि वह पक्षपाती न हो।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: 'AI will solve all of India's problems.' Do you agree? Give reasons for both sides and your conclusion.",
+    "hi": "दीर्घ उत्तर: 'AI भारत की सारी समस्याएँ हल कर देगा।' क्या आप सहमत हैं? दोनों पक्षों के कारण और अपना निष्कर्ष दीजिए।"
+   },
+   "a": {
+    "en": "For: AI finds patterns in huge data quickly; it helps farmers detect disease, doctors screen patients, cities manage traffic and governments give early flood warnings.\nAgainst: AI can be wrong or biased; many people lack phones or internet; it uses electricity and creates e-waste; some problems need money, laws, buildings or people, not AI (a missing water tap needs a tap); jobs and privacy are concerns.\nConclusion: AI is a powerful helper for some problems but not a magic answer. It works best with good data, fair design, human checking and other solutions such as good policies and people's effort.",
+    "hi": "पक्ष में: AI बहुत सारे डेटा में जल्दी पैटर्न ढूँढता है; यह किसानों को रोग पहचानने, डॉक्टरों को जाँच करने, शहरों को ट्रैफ़िक संभालने और सरकार को बाढ़ की जल्दी चेतावनी देने में मदद करता है।\nविपक्ष में: AI गलत या पक्षपाती हो सकता है; बहुत से लोगों के पास फ़ोन या इंटरनेट नहीं है; यह बिजली खर्च करता है और ई-कचरा बनाता है; कुछ समस्याओं को AI नहीं, बल्कि पैसा, कानून, इमारतें या लोग चाहिए (पानी के नल की कमी के लिए नल चाहिए); नौकरियाँ और निजता भी चिंता हैं।\nनिष्कर्ष: AI कुछ समस्याओं के लिए शक्तिशाली सहायक है, पर जादुई उत्तर नहीं। यह अच्छे डेटा, न्यायपूर्ण डिज़ाइन, इंसानी जाँच और अच्छी नीतियों व लोगों की मेहनत जैसे अन्य समाधानों के साथ सबसे अच्छा काम करता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: In a town, garbage piles up near the market every Monday and Thursday. The municipality has 3 trucks. Suggest how data and AI could help, what data to collect, and one risk.",
+    "hi": "केस अध्ययन: एक कस्बे में हर सोमवार और गुरुवार बाज़ार के पास कचरा जमा हो जाता है। नगरपालिका के पास 3 ट्रक हैं। बताइए कि डेटा और AI कैसे मदद कर सकते हैं, कौन-सा डेटा जुटाएँ, और एक जोखिम।"
+   },
+   "a": {
+    "en": "Data: photos or reports of overflowing bins with date, time and place (from citizens' app or sensors in bins), market days, festival dates, truck routes.\nAI use: find the pattern that market days cause overflow; predict which bins will be full on which day; plan truck routes to visit those bins first.\nAction: send an extra truck on market days, add bins, ask shopkeepers to separate waste.\nRisk: if only some areas report through the app, the AI may ignore poorer areas where fewer people have smartphones; also a simple fix (an extra pick-up after market) might be enough without AI.",
+    "hi": "डेटा: भरे कूड़ेदानों की फ़ोटो या शिकायतें तारीख, समय और जगह के साथ (नागरिकों के ऐप या कूड़ेदानों में लगे सेंसर से), बाज़ार के दिन, त्योहारों की तारीखें, ट्रकों के रास्ते।\nAI उपयोग: यह पैटर्न ढूँढना कि बाज़ार के दिन कचरा बढ़ता है; अनुमान लगाना कि कौन-से कूड़ेदान किस दिन भरेंगे; ट्रकों के रास्ते ऐसे बनाना कि वे पहले वहीं जाएँ।\nकाम: बाज़ार के दिन एक अतिरिक्त ट्रक भेजना, कूड़ेदान बढ़ाना, दुकानदारों से कचरा अलग करने को कहना।\nजोखिम: अगर केवल कुछ इलाके ऐप से शिकायत करें, तो AI उन गरीब इलाकों को अनदेखा कर सकता है जहाँ कम लोगों के पास स्मार्टफ़ोन है; और शायद बिना AI के सरल उपाय (बाज़ार के बाद एक अतिरिक्त उठान) ही काफ़ी हो।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Why can an AI trained only on crop photos from Punjab work poorly for farmers in Kerala? What should the makers do?",
+    "hi": "सोचने वाला प्रश्न: केवल पंजाब की फसल फ़ोटो पर सिखाया गया AI केरल के किसानों के लिए खराब काम क्यों कर सकता है? बनाने वालों को क्या करना चाहिए?"
+   },
+   "a": {
+    "en": "Different regions grow different crops and varieties, have different soils, weather, pests and even light and backgrounds in photos. The AI has learned patterns only from Punjab, so new patterns confuse it. Makers should collect labelled photos from many states, crops and seasons, test the AI separately in each region, and let local experts check results. This connects to bias, which you will study in Chapter 6.",
+    "hi": "अलग-अलग क्षेत्रों में अलग फसलें और किस्में, अलग मिट्टी, मौसम, कीट और फ़ोटो में अलग रोशनी व पृष्ठभूमि होती है। AI ने केवल पंजाब से पैटर्न सीखे हैं, इसलिए नए पैटर्न उसे उलझाते हैं। बनाने वालों को कई राज्यों, फसलों और मौसमों से लेबल वाली फ़ोटो जुटानी चाहिए, हर क्षेत्र में AI को अलग से परखना चाहिए, और स्थानीय विशेषज्ञों से परिणाम जाँचवाने चाहिए। यह पक्षपात से जुड़ा है, जो आप अध्याय 6 में पढ़ेंगे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: Choose one problem in your school (for example water wastage or late buses). Use the AI for Good checklist to decide whether AI is the right solution. Write at least five checklist points.",
+    "hi": "गतिविधि प्रश्न: अपने स्कूल की एक समस्या चुनिए (जैसे पानी की बर्बादी या बस का देर से आना)। भलाई के लिए AI की जाँच-सूची से तय कीजिए कि क्या AI सही समाधान है। कम से कम पाँच बिंदु लिखिए।"
+   },
+   "a": {
+    "en": "Sample (water wastage): Problem: taps left running after lunch, wasting many litres daily; affects everyone. Need for AI: probably not first; a simple fix is self-closing taps and a 'water monitor' rota. Data: if needed, hourly water-meter readings could show when waste happens. Users: students and the caretaker. Mistakes: low risk. Privacy: no personal data needed. Planet: self-closing taps use no electricity. Result: compare meter readings before and after. Conclusion: a simple solution first; AI only if the pattern is hard to find.",
+    "hi": "नमूना (पानी की बर्बादी): समस्या: दोपहर के भोजन के बाद नल खुले रह जाते हैं, रोज़ कई लीटर पानी बर्बाद; सब पर असर। AI की ज़रूरत: शायद पहले नहीं; सरल उपाय अपने आप बंद होने वाले नल और 'जल निगरानी' की बारी है। डेटा: ज़रूरत हो तो हर घंटे पानी मीटर की रीडिंग दिखा सकती है कि बर्बादी कब होती है। उपयोगकर्ता: छात्र और चौकीदार। गलतियाँ: कम जोखिम। निजता: व्यक्तिगत डेटा की ज़रूरत नहीं। धरती: अपने आप बंद होने वाले नल बिजली नहीं लेते। परिणाम: पहले और बाद की मीटर रीडिंग की तुलना। निष्कर्ष: पहले सरल समाधान; AI तभी जब पैटर्न ढूँढना कठिन हो।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "AI for Good means using AI to solve real social and environmental problems safely and fairly.",
+   "AI helps because it can find patterns in huge amounts of data quickly and make predictions; people take the final action.",
+   "The UN's 17 Sustainable Development Goals (agreed 2015, for 2030) guide many AI for Good projects; sustainability balances society, economy and environment.",
+   "Chain: problem → data → patterns → prediction or alert → human action → check and improve. Systems thinking shows how problems connect.",
+   "Farming: leaf-photo disease detection, weather forecasts, soil and fertiliser advice, smart irrigation, price trends, chatbots like Kisan e-Mitra.",
+   "Health: eye and TB screening, telemedicine such as eSanjeevani, forecasting needs and outbreaks, tools for people with disabilities; doctors decide.",
+   "Education: adaptive practice and Indian-language tools such as Bhashini and DIKSHA content.",
+   "Disasters: flood, cyclone and heatwave forecasts give early warnings; satellite images guide rescue.",
+   "Cities: smart signals, map traffic, road safety cameras, complaint apps, AQI forecasts, garbage sorting, leak detection.",
+   "Costs and limits: electricity and water use, e-waste, digital divide, wrong answers, bias, privacy and jobs.",
+   "Sometimes a simple non-AI solution is better; always ask if AI is really needed.",
+   "Judge any AI idea with the checklist: problem, need, data, users, mistakes, fairness, privacy, planet, results."
+  ],
+  "hi": [
+   "भलाई के लिए AI का अर्थ है असली सामाजिक और पर्यावरण समस्याओं को सुरक्षित और न्यायपूर्ण तरीके से हल करने के लिए AI का उपयोग।",
+   "AI इसलिए मदद करता है क्योंकि वह बहुत सारे डेटा में जल्दी पैटर्न ढूँढकर अनुमान लगा सकता है; अंतिम काम लोग करते हैं।",
+   "संयुक्त राष्ट्र के 17 सतत विकास लक्ष्य (2015 में तय, 2030 के लिए) कई 'भलाई के लिए AI' परियोजनाओं को दिशा देते हैं; स्थिरता समाज, अर्थव्यवस्था और पर्यावरण में संतुलन है।",
+   "क्रम: समस्या → डेटा → पैटर्न → अनुमान या चेतावनी → इंसानी काम → जाँच और सुधार। तंत्र-चिंतन दिखाता है कि समस्याएँ कैसे जुड़ी हैं।",
+   "खेती: पत्तों की फ़ोटो से रोग पहचान, मौसम पूर्वानुमान, मिट्टी और खाद सलाह, स्मार्ट सिंचाई, दाम के रुझान, किसान ई-मित्र जैसे चैटबॉट।",
+   "स्वास्थ्य: आँख और TB की जाँच, ई-संजीवनी जैसी टेलीमेडिसिन, ज़रूरतों और प्रकोप का अनुमान, दिव्यांगजनों के लिए टूल; निर्णय डॉक्टर लेते हैं।",
+   "शिक्षा: अनुकूली अभ्यास और भाषिणी व दीक्षा जैसे भारतीय भाषा टूल।",
+   "आपदा: बाढ़, चक्रवात और लू के पूर्वानुमान से पूर्व चेतावनी; उपग्रह चित्र बचाव में मदद करते हैं।",
+   "शहर: स्मार्ट सिग्नल, नक्शे पर ट्रैफ़िक, सड़क सुरक्षा कैमरे, शिकायत ऐप, AQI पूर्वानुमान, कचरा छँटाई, रिसाव पहचान।",
+   "कीमत और सीमाएँ: बिजली और पानी का खर्च, ई-कचरा, डिजिटल खाई, गलत उत्तर, पक्षपात, निजता और नौकरियाँ।",
+   "कभी-कभी बिना AI का सरल समाधान बेहतर होता है; हमेशा पूछें कि क्या AI सच में ज़रूरी है।",
+   "किसी भी AI विचार को जाँच-सूची से परखें: समस्या, ज़रूरत, डेटा, उपयोगकर्ता, गलतियाँ, न्याय, निजता, धरती, परिणाम।"
+  ]
+ }
+}

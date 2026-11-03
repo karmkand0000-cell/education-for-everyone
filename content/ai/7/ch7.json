@@ -1,0 +1,1813 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "7",
+ "id": "ch7",
+ "intro": {
+  "en": "This is the chapter where you become an AI maker. Every AI project, from a crop-disease app to a flood alert, is built through the same six stages called the AI project cycle: problem scoping, data acquisition, data exploration, modelling, evaluation and deployment. Using one complete example, a 'Clean Bin Helper' that tells students which bin to use, you will learn each stage step by step, calculate accuracy, check your project for fairness and safety, and plan and present a project of your own with free tools such as Teachable Machine.",
+  "hi": "इस अध्याय में आप AI बनाने वाले बनेंगे। हर AI प्रोजेक्ट, फसल-रोग ऐप से बाढ़ चेतावनी तक, छह चरणों से बनता है जिन्हें AI प्रोजेक्ट चक्र कहते हैं: समस्या निर्धारण, डेटा अधिग्रहण, डेटा अन्वेषण, मॉडलिंग, मूल्यांकन और परिनियोजन। एक पूरे उदाहरण, 'क्लीन बिन हेल्पर' जो छात्रों को बताता है कि कौन-सा कूड़ेदान उपयोग करें, के ज़रिए आप हर चरण कदम-दर-कदम सीखेंगे, शुद्धता निकालेंगे, अपने प्रोजेक्ट की निष्पक्षता और सुरक्षा जाँचेंगे, और Teachable Machine जैसे मुफ़्त टूल से अपना खुद का प्रोजेक्ट बनाकर प्रस्तुत करेंगे।"
+ },
+ "learn": {
+  "en": [
+   "What a project and a project cycle are",
+   "The six stages of the AI project cycle and their order",
+   "Problem scoping with the 4Ws canvas, stakeholders and a problem statement template",
+   "Data acquisition: types and sources of data (primary, secondary), training and testing data",
+   "Data exploration: cleaning, counting, balancing and graphing data",
+   "Modelling: rule-based versus learning-based models; training in Teachable Machine; confidence",
+   "Evaluation: testing on new data, calculating accuracy overall and per class (with a Python program)",
+   "Deployment: putting the model to real use, feedback and improvement",
+   "An ethics check for your own project",
+   "Project ideas, team roles, presenting your project and hands-on activities"
+  ],
+  "hi": [
+   "प्रोजेक्ट और प्रोजेक्ट चक्र क्या हैं",
+   "AI प्रोजेक्ट चक्र के छह चरण और उनका क्रम",
+   "4W कैनवास, हितधारकों और समस्या कथन साँचे से समस्या निर्धारण",
+   "डेटा अधिग्रहण: डेटा के प्रकार और स्रोत (प्राथमिक, द्वितीयक), ट्रेनिंग और परीक्षण डेटा",
+   "डेटा अन्वेषण: डेटा की सफ़ाई, गिनती, संतुलन और ग्राफ़",
+   "मॉडलिंग: नियम-आधारित बनाम सीखने-आधारित मॉडल; Teachable Machine में ट्रेनिंग; भरोसा",
+   "मूल्यांकन: नए डेटा पर जाँच, कुल और हर क्लास की शुद्धता निकालना (Python प्रोग्राम के साथ)",
+   "परिनियोजन: मॉडल का असली उपयोग, प्रतिक्रिया और सुधार",
+   "अपने प्रोजेक्ट की नैतिकता जाँच",
+   "प्रोजेक्ट विचार, टीम भूमिकाएँ, प्रोजेक्ट प्रस्तुति और व्यावहारिक गतिविधियाँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "7.1 What is a project, and what is a project cycle?",
+    "hi": "7.1 प्रोजेक्ट क्या है, और प्रोजेक्ट चक्र क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "You have now learned how machines learn, the domains of AI, decision trees, prompts, AI for Good and fairness. In this chapter you put it all together and plan and build your own small AI project. First, let us understand the word 'project'.",
+      "hi": "अब तक आपने सीखा कि मशीनें कैसे सीखती हैं, AI के क्षेत्र, डिसीज़न ट्री, प्रॉम्प्ट, भलाई के लिए AI और निष्पक्षता। इस अध्याय में आप यह सब जोड़कर अपना खुद का छोटा AI प्रोजेक्ट योजना बनाकर तैयार करेंगे। पहले 'प्रोजेक्ट' शब्द को समझें।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Project",
+       "hi": "प्रोजेक्ट (परियोजना)"
+      },
+      "text": {
+       "en": "A planned piece of work with a clear goal, done in steps over a fixed time, for example organising a class picnic or growing a vegetable patch in school.",
+       "hi": "स्पष्ट लक्ष्य वाला योजनाबद्ध काम, जो तय समय में चरणों में किया जाता है, जैसे कक्षा की पिकनिक आयोजित करना या स्कूल में सब्ज़ी की क्यारी उगाना।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Project cycle",
+       "hi": "प्रोजेक्ट चक्र"
+      },
+      "text": {
+       "en": "The ordered set of stages a project goes through from start to finish. It is called a cycle because after the last stage we learn from the results and can start again to improve.",
+       "hi": "शुरुआत से अंत तक प्रोजेक्ट के क्रमबद्ध चरण। इसे चक्र इसलिए कहते हैं क्योंकि अंतिम चरण के बाद हम परिणामों से सीखते हैं और सुधार के लिए फिर से शुरू कर सकते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write the stages of the project 'Grow tomatoes in the school garden'.",
+       "hi": "प्रोजेक्ट 'स्कूल के बगीचे में टमाटर उगाना' के चरण लिखिए।"
+      },
+      "a": {
+       "en": "1. Decide the goal: harvest tomatoes for the mid-day meal.\n2. Gather what is needed: seeds, soil, compost, water, a sunny spot.\n3. Check and prepare: test which spot gets the most sun, clear stones from the soil.\n4. Do the work: sow seeds, water and weed regularly.\n5. Check results: count how many tomatoes grew and note problems (pests, too little water).\n6. Share and improve: give tomatoes to the kitchen and plan a better garden next season.",
+       "hi": "1. लक्ष्य तय करें: मध्याह्न भोजन के लिए टमाटर उगाना।\n2. ज़रूरी चीज़ें जुटाएँ: बीज, मिट्टी, खाद, पानी, धूप वाली जगह।\n3. जाँचें और तैयार करें: देखें किस जगह सबसे ज़्यादा धूप आती है, मिट्टी से पत्थर हटाएँ।\n4. काम करें: बीज बोएँ, नियमित पानी दें और खरपतवार निकालें।\n5. परिणाम जाँचें: गिनें कितने टमाटर उगे और समस्याएँ (कीट, कम पानी) लिखें।\n6. साझा करें और सुधारें: टमाटर रसोई को दें और अगले मौसम के लिए बेहतर बगीचे की योजना बनाएँ।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Almost every project, AI or not, follows the same idea: decide the goal, gather resources, prepare, do, check and improve.",
+      "hi": "याद रखें: लगभग हर प्रोजेक्ट, AI हो या न हो, एक ही विचार पर चलता है: लक्ष्य तय करना, संसाधन जुटाना, तैयारी, काम, जाँच और सुधार।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.2 The AI project cycle: six stages",
+    "hi": "7.2 AI प्रोजेक्ट चक्र: छह चरण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "An AI project has its own cycle with six stages. Picture them as six boxes arranged in a circle with arrows going clockwise: Problem Scoping → Data Acquisition → Data Exploration → Modelling → Evaluation → Deployment, and an arrow from Deployment back to Problem Scoping.",
+      "hi": "AI प्रोजेक्ट का अपना छह चरणों वाला चक्र होता है। इन्हें एक घेरे में रखे छह डिब्बों की तरह सोचिए जिन पर घड़ी की दिशा में तीर हैं: समस्या निर्धारण → डेटा अधिग्रहण → डेटा अन्वेषण → मॉडलिंग → मूल्यांकन → परिनियोजन (deployment), और परिनियोजन से वापस समस्या निर्धारण तक एक तीर।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "Key question",
+        "What you do"
+       ],
+       "hi": [
+        "चरण",
+        "मुख्य प्रश्न",
+        "आप क्या करते हैं"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Problem Scoping",
+         "What problem are we solving, for whom and why?",
+         "Use the 4Ws canvas and write a problem statement"
+        ],
+        [
+         "2. Data Acquisition",
+         "What data do we need and where will we get it?",
+         "Collect enough, varied, labelled data with permission"
+        ],
+        [
+         "3. Data Exploration",
+         "What does the data look like? Is it clean and balanced?",
+         "Clean mistakes, count, draw graphs, spot patterns"
+        ],
+        [
+         "4. Modelling",
+         "How will the machine make decisions?",
+         "Choose rule-based or learning-based; train a model"
+        ],
+        [
+         "5. Evaluation",
+         "How well does it work on new data? Is it fair?",
+         "Test with unseen data, calculate accuracy, check each group"
+        ],
+        [
+         "6. Deployment",
+         "How will real people use it?",
+         "Put it in an app, website or device, collect feedback, improve"
+        ]
+       ],
+       "hi": [
+        [
+         "1. समस्या निर्धारण",
+         "हम कौन-सी समस्या, किसके लिए और क्यों हल कर रहे हैं?",
+         "4W कैनवास से समस्या कथन लिखें"
+        ],
+        [
+         "2. डेटा अधिग्रहण",
+         "कौन-सा डेटा चाहिए और कहाँ से मिलेगा?",
+         "अनुमति के साथ पर्याप्त, विविध, लेबल वाला डेटा जुटाएँ"
+        ],
+        [
+         "3. डेटा अन्वेषण",
+         "डेटा कैसा दिखता है? क्या साफ़ और संतुलित है?",
+         "गलतियाँ साफ़ करें, गिनें, ग्राफ़ बनाएँ, पैटर्न देखें"
+        ],
+        [
+         "4. मॉडलिंग",
+         "मशीन निर्णय कैसे लेगी?",
+         "नियम-आधारित या सीखने-आधारित चुनें; मॉडल सिखाएँ"
+        ],
+        [
+         "5. मूल्यांकन",
+         "नए डेटा पर यह कितना अच्छा काम करता है? क्या न्यायपूर्ण है?",
+         "बिना देखे डेटा से जाँचें, शुद्धता निकालें, हर समूह जाँचें"
+        ],
+        [
+         "6. परिनियोजन",
+         "असली लोग इसका उपयोग कैसे करेंगे?",
+         "इसे ऐप, वेबसाइट या उपकरण में लगाएँ, प्रतिक्रिया लें, सुधारें"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Memory tip: 'Please Don't Disturb My Exam Day' = Problem scoping, Data acquisition, Data exploration, Modelling, Evaluation, Deployment.",
+      "hi": "याद रखने का तरीका: अंग्रेज़ी वाक्य 'Please Don't Disturb My Exam Day' के पहले अक्षर = Problem scoping, Data acquisition, Data exploration, Modelling, Evaluation, Deployment।"
+     }
+    },
+    {
+     "p": {
+      "en": "Throughout this chapter we will follow one example project, 'Clean Bin Helper', a camera-based helper that tells students which bin to use for a piece of waste. You can then use the same steps for your own idea.",
+      "hi": "पूरे अध्याय में हम एक उदाहरण प्रोजेक्ट 'क्लीन बिन हेल्पर' पर चलेंगे, जो कैमरे से देखकर छात्रों को बताता है कि कचरे का कोई टुकड़ा किस कूड़ेदान में डालें। फिर आप यही चरण अपने विचार के लिए अपना सकते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3 Stage 1: Problem scoping",
+    "hi": "7.3 चरण 1: समस्या निर्धारण (Problem Scoping)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every good AI project starts with a real problem worth solving, not with the technology. Problem scoping means understanding the problem clearly and deciding exactly what you will try to solve. A tool that helps for this is the 4Ws Problem Canvas: Who, What, Where and Why.",
+      "hi": "हर अच्छा AI प्रोजेक्ट तकनीक से नहीं, बल्कि हल करने लायक असली समस्या से शुरू होता है। समस्या निर्धारण का अर्थ है समस्या को साफ़ समझना और ठीक-ठीक तय करना कि आप क्या हल करने की कोशिश करेंगे। इसमें मदद करने वाला टूल है 4W समस्या कैनवास: कौन (Who), क्या (What), कहाँ (Where) और क्यों (Why)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "W",
+        "Question",
+        "Clean Bin Helper answer"
+       ],
+       "hi": [
+        "W",
+        "प्रश्न",
+        "क्लीन बिन हेल्पर का उत्तर"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who",
+         "Who has the problem? Who are the stakeholders (people affected)?",
+         "Students and staff of our school; the cleaning staff; the municipality that collects waste"
+        ],
+        [
+         "What",
+         "What exactly is the problem? What is the evidence?",
+         "Plastic is often thrown in the wet-waste bin; on a 5-day check, about half the wet bins had plastic in them"
+        ],
+        [
+         "Where",
+         "Where and when does it happen?",
+         "Near the canteen and corridors, mostly after lunch break"
+        ],
+        [
+         "Why",
+         "Why does it matter? What will be better if solved?",
+         "Mixed waste cannot be composted or recycled; cleaning staff must sort it by hand; the school wants to be plastic-free"
+        ]
+       ],
+       "hi": [
+        [
+         "Who",
+         "समस्या किसकी है? हितधारक (प्रभावित लोग) कौन हैं?",
+         "हमारे स्कूल के छात्र और कर्मचारी; सफ़ाई कर्मी; कचरा उठाने वाली नगरपालिका"
+        ],
+        [
+         "What",
+         "ठीक-ठीक समस्या क्या है? प्रमाण क्या है?",
+         "प्लास्टिक अक्सर गीले कचरे के कूड़ेदान में डाला जाता है; 5 दिन की जाँच में लगभग आधे गीले कूड़ेदानों में प्लास्टिक मिला"
+        ],
+        [
+         "Where",
+         "यह कहाँ और कब होता है?",
+         "कैंटीन और गलियारों के पास, ज़्यादातर दोपहर की छुट्टी के बाद"
+        ],
+        [
+         "Why",
+         "यह क्यों ज़रूरी है? हल होने पर क्या बेहतर होगा?",
+         "मिला कचरा खाद या रीसाइक्लिंग में नहीं जा सकता; सफ़ाई कर्मियों को हाथ से छाँटना पड़ता है; स्कूल प्लास्टिक-मुक्त बनना चाहता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Stakeholder",
+       "hi": "हितधारक (stakeholder)"
+      },
+      "text": {
+       "en": "Any person or group who is affected by the problem or by the solution, or who has a say in it.",
+       "hi": "कोई भी व्यक्ति या समूह जिस पर समस्या या समाधान का असर पड़ता है, या जिसकी उसमें भूमिका है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "After the 4Ws, write a one-sentence problem statement. A common template is:",
+      "hi": "4W के बाद एक वाक्य का समस्या कथन लिखें। एक आम साँचा (template) है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Our [WHO] have a problem that [WHAT] when/where [WHERE]. An ideal solution would [WHY: the benefit].",
+      "hi": "हमारे [कौन] की समस्या है कि [क्या] जब/जहाँ [कहाँ]। एक आदर्श समाधान [क्यों: लाभ] करेगा।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write the problem statement for Clean Bin Helper.",
+       "hi": "क्लीन बिन हेल्पर का समस्या कथन लिखिए।"
+      },
+      "a": {
+       "en": "Our students and staff have a problem that they often put plastic and paper in the wet-waste bin, near the canteen after lunch. An ideal solution would tell them the correct bin within a few seconds, so that waste can be composted and recycled and cleaning staff need not sort it by hand.",
+       "hi": "हमारे छात्रों और कर्मचारियों की समस्या है कि वे कैंटीन के पास दोपहर के भोजन के बाद अक्सर प्लास्टिक और कागज़ गीले कचरे के कूड़ेदान में डाल देते हैं। एक आदर्श समाधान कुछ ही सेकंड में उन्हें सही कूड़ेदान बताएगा, ताकि कचरे से खाद बने और रीसाइक्लिंग हो सके और सफ़ाई कर्मियों को हाथ से छाँटना न पड़े।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Choose a problem that is real, small enough for a school project and safe.",
+       "Talk to the people affected (users) and observe; do not guess.",
+       "Decide what 'success' means, for example 'the helper names the right bin at least 8 times out of 10'.",
+       "Ask honestly: does this problem need AI? (Chapter 5) If a simple poster solves it, that is fine too."
+      ],
+      "hi": [
+       "ऐसी समस्या चुनें जो असली हो, स्कूल प्रोजेक्ट के लिए छोटी हो और सुरक्षित हो।",
+       "प्रभावित लोगों (उपयोगकर्ताओं) से बात करें और देखें; अनुमान न लगाएँ।",
+       "तय करें कि 'सफलता' का क्या अर्थ है, जैसे 'हेल्पर 10 में से कम से कम 8 बार सही कूड़ेदान बताए'।",
+       "ईमानदारी से पूछें: क्या इस समस्या को AI चाहिए? (अध्याय 5) अगर एक पोस्टर से हल हो जाए, तो वह भी ठीक है।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.4 Stage 2: Data acquisition",
+    "hi": "7.4 चरण 2: डेटा अधिग्रहण (Data Acquisition)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data acquisition means collecting the data the AI will learn from. In Class 6 you learned that data is food for AI. The quality of your project depends mostly on the quality of your data.",
+      "hi": "डेटा अधिग्रहण का अर्थ है वह डेटा जुटाना जिससे AI सीखेगा। कक्षा 6 में आपने सीखा कि डेटा AI का भोजन है। आपके प्रोजेक्ट की गुणवत्ता ज़्यादातर आपके डेटा की गुणवत्ता पर निर्भर है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type of data",
+        "Examples",
+        "Used in"
+       ],
+       "hi": [
+        "डेटा का प्रकार",
+        "उदाहरण",
+        "कहाँ उपयोग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Images (visual)",
+         "Photos of waste, leaves, hand signs",
+         "Computer vision projects"
+        ],
+        [
+         "Sound (audio)",
+         "Claps, whistles, spoken words",
+         "Speech and sound projects"
+        ],
+        [
+         "Text",
+         "Feedback comments, messages, stories",
+         "Language (NLP) projects"
+        ],
+        [
+         "Numbers and tables (numeric)",
+         "Attendance, marks, temperature, rainfall",
+         "Data and prediction projects"
+        ]
+       ],
+       "hi": [
+        [
+         "चित्र (दृश्य)",
+         "कचरे, पत्तों, हाथ के इशारों की फ़ोटो",
+         "कंप्यूटर विज़न प्रोजेक्ट"
+        ],
+        [
+         "ध्वनि (ऑडियो)",
+         "ताली, सीटी, बोले गए शब्द",
+         "वाणी और ध्वनि प्रोजेक्ट"
+        ],
+        [
+         "पाठ (टेक्स्ट)",
+         "प्रतिक्रिया टिप्पणियाँ, संदेश, कहानियाँ",
+         "भाषा (NLP) प्रोजेक्ट"
+        ],
+        [
+         "संख्याएँ और तालिकाएँ",
+         "हाज़िरी, अंक, तापमान, बारिश",
+         "डेटा और अनुमान प्रोजेक्ट"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Sources of data. Primary data is collected by you, first-hand, for your project: clicking photos, doing a survey, recording sounds, measuring with a sensor. Secondary data was collected by someone else and you reuse it: government open-data portals (such as data.gov.in), IMD weather records, CPCB air-quality data, or public datasets prepared for learning.",
+      "hi": "डेटा के स्रोत। प्राथमिक डेटा (primary data) आप खुद, सीधे अपने प्रोजेक्ट के लिए जुटाते हैं: फ़ोटो खींचना, सर्वे करना, आवाज़ रिकॉर्ड करना, सेंसर से नापना। द्वितीयक डेटा (secondary data) किसी और ने जुटाया है और आप उसका दोबारा उपयोग करते हैं: सरकारी ओपन-डेटा पोर्टल (जैसे data.gov.in), IMD मौसम रिकॉर्ड, CPCB वायु-गुणवत्ता डेटा, या सीखने के लिए बने सार्वजनिक डेटासेट।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Enough: collect many examples of each class. For a simple Teachable Machine project, 30 to 60 pictures per class is a reasonable start.",
+       "Varied: different objects, angles, lighting, backgrounds and people (Chapter 6). Clean Bin Helper needs bottles, wrappers, cups, peels, leftover food, paper of many kinds.",
+       "Balanced: about the same number of examples in each class, so the AI does not favour one class.",
+       "Correctly labelled: each example must have the right label. Two students should check labels.",
+       "Legal and ethical: take permission; do not photograph people's faces without consent; use only data you are allowed to use.",
+       "Keep some aside: put about one-fifth of the data aside as testing data that the model never sees during training."
+      ],
+      "hi": [
+       "पर्याप्त: हर क्लास के बहुत से उदाहरण जुटाएँ। Teachable Machine के सरल प्रोजेक्ट के लिए हर क्लास में 30 से 60 चित्र अच्छी शुरुआत है।",
+       "विविध: अलग वस्तुएँ, कोण, रोशनी, पृष्ठभूमि और लोग (अध्याय 6)। क्लीन बिन हेल्पर को कई तरह की बोतलें, रैपर, कप, छिलके, बचा खाना और कागज़ चाहिए।",
+       "संतुलित: हर क्लास में लगभग बराबर उदाहरण, ताकि AI किसी एक क्लास की ओर न झुके।",
+       "सही लेबल वाला: हर उदाहरण पर सही लेबल हो। दो छात्र लेबल जाँचें।",
+       "कानूनी और नैतिक: अनुमति लें; सहमति के बिना लोगों के चेहरे की फ़ोटो न लें; केवल वही डेटा उपयोग करें जिसकी अनुमति हो।",
+       "कुछ अलग रखें: लगभग पाँचवाँ भाग डेटा परीक्षण डेटा (testing data) के रूप में अलग रखें जिसे मॉडल ट्रेनिंग में कभी नहीं देखता।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Training data and testing data",
+       "hi": "ट्रेनिंग डेटा और परीक्षण डेटा"
+      },
+      "text": {
+       "en": "Training data is the part of the data used to teach the model. Testing data is kept separate and used only at the end to check how well the model works on examples it has never seen, like a surprise test after practice.",
+       "hi": "ट्रेनिंग डेटा डेटा का वह भाग है जिससे मॉडल को सिखाया जाता है। परीक्षण डेटा अलग रखा जाता है और केवल अंत में यह जाँचने के लिए उपयोग होता है कि मॉडल ऐसे उदाहरणों पर कितना अच्छा काम करता है जिन्हें उसने कभी नहीं देखा, जैसे अभ्यास के बाद अचानक टेस्ट।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "The Clean Bin team collects 60 photos each of plastic, paper and food waste. How many photos are there, and how many should be kept aside for testing if they keep 1 out of every 5 photos?",
+       "hi": "क्लीन बिन टीम प्लास्टिक, कागज़ और खाने के कचरे की 60-60 फ़ोटो जुटाती है। कुल कितनी फ़ोटो हैं, और अगर हर 5 में से 1 फ़ोटो अलग रखें तो परीक्षण के लिए कितनी होंगी?"
+      },
+      "a": {
+       "en": "Step 1: Total = 60 × 3 = 180 photos.\nStep 2: Testing = 180 ÷ 5 = 36 photos (12 of each class).\nStep 3: Training = 180 − 36 = 144 photos (48 of each class).",
+       "hi": "चरण 1: कुल = 60 × 3 = 180 फ़ोटो।\nचरण 2: परीक्षण = 180 ÷ 5 = 36 फ़ोटो (हर क्लास की 12)।\nचरण 3: ट्रेनिंग = 180 − 36 = 144 फ़ोटो (हर क्लास की 48)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.5 Stage 3: Data exploration",
+    "hi": "7.5 चरण 3: डेटा अन्वेषण (Data Exploration)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before training, look carefully at your data. Data exploration means studying, cleaning and visualising data to understand it and find problems or patterns. A good detective looks at the clues before deciding!",
+      "hi": "ट्रेनिंग से पहले अपने डेटा को ध्यान से देखिए। डेटा अन्वेषण का अर्थ है डेटा को समझने और उसमें समस्याएँ या पैटर्न ढूँढने के लिए उसका अध्ययन, सफ़ाई और चित्रण करना। अच्छा जासूस निर्णय से पहले सुराग देखता है!"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Clean: remove blurry, dark or duplicate photos, and photos with two kinds of waste in one picture. Fix wrong labels.",
+       "Count: how many examples are in each class? Draw a bar graph. If plastic has 60 and food has only 20, the data is unbalanced.",
+       "Check variety: are all plastic photos of the same blue bottle? Are all photos on the same table? Add variety where needed.",
+       "Look for patterns: which items look similar (a paper cup with a plastic coating)? These may confuse the model; decide a clear rule for them.",
+       "For number data, use tables, bar graphs, pie charts or line graphs to see trends, for example which day has the most waste."
+      ],
+      "hi": [
+       "सफ़ाई: धुंधली, अँधेरी या दोहराई गई फ़ोटो, और एक चित्र में दो तरह के कचरे वाली फ़ोटो हटाएँ। गलत लेबल ठीक करें।",
+       "गिनती: हर क्लास में कितने उदाहरण हैं? दंड आलेख बनाएँ। अगर प्लास्टिक के 60 और खाने के केवल 20 हैं, तो डेटा असंतुलित है।",
+       "विविधता जाँचें: क्या प्लास्टिक की सभी फ़ोटो एक ही नीली बोतल की हैं? क्या सभी फ़ोटो एक ही मेज़ पर हैं? ज़रूरत हो तो विविधता जोड़ें।",
+       "पैटर्न देखें: कौन-सी चीज़ें एक जैसी दिखती हैं (प्लास्टिक परत वाला कागज़ का कप)? ये मॉडल को उलझा सकती हैं; उनके लिए साफ़ नियम तय करें।",
+       "संख्या वाले डेटा के लिए तालिका, दंड आलेख, पाई चार्ट या रेखा ग्राफ़ से रुझान देखें, जैसे किस दिन सबसे ज़्यादा कचरा होता है।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Class",
+        "Photos collected",
+        "Removed (blurry/duplicate)",
+        "Photos kept"
+       ],
+       "hi": [
+        "क्लास",
+        "जुटाई गई फ़ोटो",
+        "हटाई गईं (धुंधली/दोहराई)",
+        "रखी गई फ़ोटो"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Plastic",
+         "66",
+         "6",
+         "60"
+        ],
+        [
+         "Paper",
+         "63",
+         "3",
+         "60"
+        ],
+        [
+         "Food waste",
+         "48",
+         "8",
+         "40"
+        ]
+       ],
+       "hi": [
+        [
+         "प्लास्टिक",
+         "66",
+         "6",
+         "60"
+        ],
+        [
+         "कागज़",
+         "63",
+         "3",
+         "60"
+        ],
+        [
+         "खाने का कचरा",
+         "48",
+         "8",
+         "40"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Imagine the bar graph of 'Photos kept': two tall bars of 60 for plastic and paper and a shorter bar of 40 for food waste. The graph quickly shows that food waste needs about 20 more photos to balance the data. These were the team's numbers after its first round of collecting; after adding 20 more clear food-waste photos it reached the balanced 60 per class used in 7.4. This is why we explore before modelling.",
+      "hi": "'रखी गई फ़ोटो' का दंड आलेख सोचिए: प्लास्टिक और कागज़ के लिए 60 की दो ऊँची पट्टियाँ और खाने के कचरे के लिए 40 की छोटी पट्टी। ग्राफ़ तुरंत दिखाता है कि डेटा संतुलित करने के लिए खाने के कचरे की लगभग 20 और फ़ोटो चाहिए। ये टीम के पहले दौर की संख्याएँ थीं; खाने के कचरे की 20 और साफ़ फ़ोटो जोड़ने के बाद वह 7.4 में उपयोग हुई हर क्लास की संतुलित 60 फ़ोटो तक पहुँची। इसीलिए हम मॉडलिंग से पहले अन्वेषण करते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Garbage in, garbage out. Ten minutes of cleaning data can save hours of confusion later.",
+      "hi": "याद रखें: कचरा अंदर, कचरा बाहर (garbage in, garbage out)। दस मिनट की डेटा सफ़ाई बाद के घंटों की उलझन बचा सकती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.6 Stage 4: Modelling",
+    "hi": "7.6 चरण 4: मॉडलिंग (Modelling)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A model is the 'brain' of the AI project: the part that takes an input and produces an output, such as a photo in and 'plastic' out. Modelling means choosing and building this model. There are two broad kinds.",
+      "hi": "मॉडल AI प्रोजेक्ट का 'दिमाग' है: वह भाग जो इनपुट लेकर आउटपुट देता है, जैसे फ़ोटो अंदर और 'प्लास्टिक' बाहर। मॉडलिंग का अर्थ है इस मॉडल को चुनना और बनाना। इसके दो मुख्य प्रकार हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Rule-based model",
+       "hi": "नियम-आधारित मॉडल"
+      },
+      "text": {
+       "en": "A model in which people write the rules (IF-THEN) themselves. The machine follows the rules exactly and does not learn from data. Decision trees drawn by hand, which you made in Chapter 3, are rule-based.",
+       "hi": "ऐसा मॉडल जिसमें लोग खुद नियम (IF-THEN) लिखते हैं। मशीन नियमों का ठीक-ठीक पालन करती है और डेटा से नहीं सीखती। अध्याय 3 में आपने हाथ से जो डिसीज़न ट्री बनाए, वे नियम-आधारित हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Learning-based model",
+       "hi": "सीखने-आधारित मॉडल"
+      },
+      "text": {
+       "en": "A model that finds the rules itself by learning patterns from many labelled examples (machine learning). Teachable Machine creates learning-based models.",
+       "hi": "ऐसा मॉडल जो बहुत से लेबल वाले उदाहरणों से पैटर्न सीखकर खुद नियम ढूँढता है (मशीन लर्निंग)। Teachable Machine सीखने-आधारित मॉडल बनाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a tiny rule-based waste sorter in Python. It works only for items whose names it already knows:",
+      "hi": "यहाँ Python में एक छोटा नियम-आधारित कचरा छाँटने वाला है। यह केवल उन्हीं चीज़ों के लिए काम करता है जिनके नाम उसे पहले से पता हैं:"
+     }
+    },
+    {
+     "formula": {
+      "en": "def sort_waste(item):\n    if item == \"banana peel\" or item == \"vegetable peel\":\n        return \"wet waste bin (green)\"\n    elif item == \"plastic bottle\" or item == \"chips packet\":\n        return \"dry waste bin (blue)\"\n    else:\n        return \"ask the teacher\"\n\nfor thing in [\"banana peel\", \"plastic bottle\", \"old battery\"]:\n    print(thing, \"->\", sort_waste(thing))\n\nOutput:\nbanana peel -> wet waste bin (green)\nplastic bottle -> dry waste bin (blue)\nold battery -> ask the teacher",
+      "hi": "def sort_waste(item):\n    if item == \"banana peel\" or item == \"vegetable peel\":\n        return \"wet waste bin (green)\"\n    elif item == \"plastic bottle\" or item == \"chips packet\":\n        return \"dry waste bin (blue)\"\n    else:\n        return \"ask the teacher\"\n\nfor thing in [\"banana peel\", \"plastic bottle\", \"old battery\"]:\n    print(thing, \"->\", sort_waste(thing))\n\nआउटपुट:\nbanana peel -> wet waste bin (green)\nplastic bottle -> dry waste bin (blue)\nold battery -> ask the teacher"
+     }
+    },
+    {
+     "p": {
+      "en": "The rule-based program is easy to understand and always gives the same answer, but it fails for anything not in its rules (the battery), and it needs the item's name typed in; it cannot look at a photo. A learning-based model can look at a photo of a crushed bottle it has never seen and still guess 'plastic', because it learned the pattern from many examples. Note also that batteries are hazardous waste and must never go in either bin; a good project includes such safety rules.",
+      "hi": "नियम-आधारित प्रोग्राम समझने में आसान है और हमेशा एक जैसा उत्तर देता है, पर जो चीज़ उसके नियमों में नहीं (बैटरी), उसके लिए विफल हो जाता है, और उसे चीज़ का नाम टाइप करके देना पड़ता है; वह फ़ोटो नहीं देख सकता। सीखने-आधारित मॉडल ऐसी पिचकी बोतल की फ़ोटो देखकर भी 'प्लास्टिक' का अनुमान लगा सकता है जो उसने कभी नहीं देखी, क्योंकि उसने बहुत से उदाहरणों से पैटर्न सीखा है। यह भी ध्यान दें कि बैटरी खतरनाक कचरा है और कभी किसी भी कूड़ेदान में नहीं जानी चाहिए; अच्छे प्रोजेक्ट में ऐसे सुरक्षा नियम शामिल होते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "Rule-based",
+        "Learning-based"
+       ],
+       "hi": [
+        "विशेषता",
+        "नियम-आधारित",
+        "सीखने-आधारित"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who makes the rules?",
+         "Humans write them",
+         "The machine learns them from data"
+        ],
+        [
+         "Needs lots of data?",
+         "No",
+         "Yes, labelled examples"
+        ],
+        [
+         "Handles new, unseen cases?",
+         "Poorly",
+         "Often well, if data was varied"
+        ],
+        [
+         "Easy to explain?",
+         "Yes",
+         "Harder"
+        ],
+        [
+         "Example",
+         "IF temperature > 38 THEN 'fever'",
+         "Teachable Machine waste sorter"
+        ]
+       ],
+       "hi": [
+        [
+         "नियम कौन बनाता है?",
+         "इंसान लिखते हैं",
+         "मशीन डेटा से सीखती है"
+        ],
+        [
+         "बहुत डेटा चाहिए?",
+         "नहीं",
+         "हाँ, लेबल वाले उदाहरण"
+        ],
+        [
+         "नए, बिना देखे मामले संभालता है?",
+         "कमज़ोर",
+         "अक्सर अच्छे से, अगर डेटा विविध था"
+        ],
+        [
+         "समझाना आसान?",
+         "हाँ",
+         "कठिन"
+        ],
+        [
+         "उदाहरण",
+         "IF तापमान > 38 THEN 'बुखार'",
+         "Teachable Machine कचरा छाँटने वाला"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Training a learning-based model with Google Teachable Machine (free, runs in a web browser, with a teacher or parent):",
+      "hi": "Google Teachable Machine (मुफ़्त, वेब ब्राउज़र में चलता है, शिक्षक या माता-पिता के साथ) से सीखने-आधारित मॉडल सिखाना:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Open Teachable Machine and choose Image Project, then Standard image model.",
+       "Rename 'Class 1' to 'Plastic' and 'Class 2' to 'Paper'; click 'Add a class' and name it 'Food waste'.",
+       "For each class, use the webcam (hold to record) or upload your training photos, about 48 per class.",
+       "Click 'Train Model' and wait; keep the browser tab open while it trains.",
+       "In the Preview panel, hold up new items and watch the confidence bars, for example 'Plastic 92%'.",
+       "If the model is weak, go back: add more varied photos, remove bad ones, and train again. This going back is normal."
+      ],
+      "hi": [
+       "Teachable Machine खोलें और Image Project, फिर Standard image model चुनें।",
+       "'Class 1' का नाम 'Plastic' और 'Class 2' का 'Paper' रखें; 'Add a class' दबाकर उसका नाम 'Food waste' रखें।",
+       "हर क्लास के लिए वेबकैम (दबाकर रिकॉर्ड) से या अपनी ट्रेनिंग फ़ोटो अपलोड करके लगभग 48-48 चित्र दें।",
+       "'Train Model' दबाएँ और प्रतीक्षा करें; ट्रेनिंग के दौरान ब्राउज़र टैब खुला रखें।",
+       "Preview पैनल में नई चीज़ें दिखाएँ और भरोसे (confidence) की पट्टियाँ देखें, जैसे 'Plastic 92%'।",
+       "अगर मॉडल कमज़ोर है, तो पीछे जाएँ: ज़्यादा विविध फ़ोटो जोड़ें, खराब हटाएँ, और फिर सिखाएँ। यह पीछे जाना सामान्य है।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Confidence",
+       "hi": "भरोसा (confidence)"
+      },
+      "text": {
+       "en": "A percentage that shows how sure the model is about each possible answer. A high confidence does not guarantee the answer is correct.",
+       "hi": "प्रतिशत जो दिखाता है कि मॉडल हर संभावित उत्तर के बारे में कितना निश्चित है। ऊँचा भरोसा इस बात की गारंटी नहीं कि उत्तर सही है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Teachable Machine can also make Audio Projects (for example, recognising a clap, a whistle and silence) and Pose Projects (body positions). Without an account, a project may be lost when you close the page, so save the project file or export the model with an adult's help if you want to keep it.",
+      "hi": "Teachable Machine से Audio Project (जैसे ताली, सीटी और शांति पहचानना) और Pose Project (शरीर की मुद्राएँ) भी बनते हैं। बिना अकाउंट के पेज बंद करने पर प्रोजेक्ट खो सकता है, इसलिए रखना हो तो किसी बड़े की मदद से प्रोजेक्ट फ़ाइल सहेजें या मॉडल एक्सपोर्ट करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.7 Stage 5: Evaluation",
+    "hi": "7.7 चरण 5: मूल्यांकन (Evaluation)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Evaluation means testing the model on new data it has never seen (the testing data) to find out how well it works. Testing on the training photos is like giving a student the exact questions they practised: the score looks good but tells you little.",
+      "hi": "मूल्यांकन का अर्थ है मॉडल को ऐसे नए डेटा (परीक्षण डेटा) पर परखना जो उसने कभी नहीं देखा, ताकि पता चले वह कितना अच्छा काम करता है। ट्रेनिंग फ़ोटो पर ही जाँचना ऐसा है जैसे छात्र को वही प्रश्न दे देना जिनका उसने अभ्यास किया: अंक अच्छे दिखते हैं पर कुछ खास पता नहीं चलता।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Accuracy = (number of correct predictions ÷ total number of predictions) × 100",
+      "hi": "शुद्धता (accuracy) = (सही अनुमानों की संख्या ÷ कुल अनुमानों की संख्या) × 100"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Clean Bin Helper is tested on the 36 testing photos. It gets 11 of 12 plastic, 10 of 12 paper and 12 of 12 food waste correct. Find the overall accuracy and the accuracy for each class. Does it meet the success goal of 80%?",
+       "hi": "क्लीन बिन हेल्पर को 36 परीक्षण फ़ोटो पर जाँचा गया। यह 12 में से 11 प्लास्टिक, 12 में से 10 कागज़ और 12 में से 12 खाने का कचरा सही बताता है। कुल शुद्धता और हर क्लास की शुद्धता निकालिए। क्या यह 80% का सफलता लक्ष्य पूरा करता है?"
+      },
+      "a": {
+       "en": "Step 1: Correct = 11 + 10 + 12 = 33 out of 36.\nStep 2: Overall accuracy = 33 ÷ 36 × 100 = 91.7% (about 92%).\nStep 3: Plastic = 11 ÷ 12 × 100 = 91.7%; Paper = 10 ÷ 12 × 100 = 83.3%; Food = 12 ÷ 12 × 100 = 100%.\nStep 4: Yes, all are above 80%. Paper is the weakest class, so the team looks at which paper photos were wrong (they were shiny magazine pages mistaken for plastic) and adds more such photos.",
+       "hi": "चरण 1: सही = 11 + 10 + 12 = 36 में से 33।\nचरण 2: कुल शुद्धता = 33 ÷ 36 × 100 = 91.7% (लगभग 92%)।\nचरण 3: प्लास्टिक = 11 ÷ 12 × 100 = 91.7%; कागज़ = 10 ÷ 12 × 100 = 83.3%; खाना = 12 ÷ 12 × 100 = 100%।\nचरण 4: हाँ, सभी 80% से ऊपर हैं। कागज़ सबसे कमज़ोर क्लास है, इसलिए टीम देखती है कि कौन-सी कागज़ फ़ोटो गलत हुईं (चमकीले पत्रिका के पन्ने जिन्हें प्लास्टिक समझा गया) और ऐसी और फ़ोटो जोड़ती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A small Python program can count correct answers and show which ones were wrong. Here 'actual' holds the true labels of 10 test photos and 'predicted' holds what the model said:",
+      "hi": "एक छोटा Python प्रोग्राम सही उत्तर गिन सकता है और दिखा सकता है कि कौन-से गलत थे। यहाँ 'actual' में 10 परीक्षण फ़ोटो के असली लेबल हैं और 'predicted' में वह जो मॉडल ने बताया:"
+     }
+    },
+    {
+     "formula": {
+      "en": "actual    = [\"plastic\", \"paper\", \"food\", \"plastic\", \"paper\",\n             \"food\", \"plastic\", \"food\", \"paper\", \"plastic\"]\npredicted = [\"plastic\", \"paper\", \"food\", \"paper\", \"paper\",\n             \"food\", \"plastic\", \"food\", \"plastic\", \"plastic\"]\n\ncorrect = 0\nfor i in range(len(actual)):\n    if actual[i] == predicted[i]:\n        correct = correct + 1\n    else:\n        print(\"Mistake on photo\", i + 1, \":\", actual[i], \"was guessed as\", predicted[i])\n\ntotal = len(actual)\naccuracy = correct / total * 100\nprint(\"Correct:\", correct, \"out of\", total)\nprint(\"Accuracy:\", accuracy, \"%\")\n\nOutput:\nMistake on photo 4 : plastic was guessed as paper\nMistake on photo 9 : paper was guessed as plastic\nCorrect: 8 out of 10\nAccuracy: 80.0 %",
+      "hi": "actual    = [\"plastic\", \"paper\", \"food\", \"plastic\", \"paper\",\n             \"food\", \"plastic\", \"food\", \"paper\", \"plastic\"]\npredicted = [\"plastic\", \"paper\", \"food\", \"paper\", \"paper\",\n             \"food\", \"plastic\", \"food\", \"plastic\", \"plastic\"]\n\ncorrect = 0\nfor i in range(len(actual)):\n    if actual[i] == predicted[i]:\n        correct = correct + 1\n    else:\n        print(\"Mistake on photo\", i + 1, \":\", actual[i], \"was guessed as\", predicted[i])\n\ntotal = len(actual)\naccuracy = correct / total * 100\nprint(\"Correct:\", correct, \"out of\", total)\nprint(\"Accuracy:\", accuracy, \"%\")\n\nआउटपुट:\nMistake on photo 4 : plastic was guessed as paper\nMistake on photo 9 : paper was guessed as plastic\nCorrect: 8 out of 10\nAccuracy: 80.0 %"
+     }
+    },
+    {
+     "p": {
+      "en": "How it works: the loop compares each actual label with the predicted one, position by position. If they match, it adds 1 to 'correct'; if not, it prints the mistake. Finally it divides correct by total and multiplies by 100. Looking at the mistakes is as important as the final number, because it tells you what to fix.",
+      "hi": "यह कैसे काम करता है: लूप हर असली लेबल की तुलना अनुमानित लेबल से, स्थान-दर-स्थान, करता है। मेल खाने पर 'correct' में 1 जोड़ता है; न मिलने पर गलती छापता है। अंत में correct को total से भाग देकर 100 से गुणा करता है। गलतियाँ देखना अंतिम संख्या जितना ही ज़रूरी है, क्योंकि इससे पता चलता है कि क्या ठीक करना है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Test with new items, new backgrounds, different lighting and different people holding the items.",
+       "Calculate accuracy for each class and each kind of user (Chapter 6), not only the overall number.",
+       "Note what kind of mistakes happen and how serious each one is.",
+       "If results are poor, go back to data acquisition or exploration; if good, move to deployment."
+      ],
+      "hi": [
+       "नई चीज़ों, नई पृष्ठभूमि, अलग रोशनी और चीज़ें पकड़े अलग लोगों के साथ जाँचें।",
+       "केवल कुल संख्या नहीं, हर क्लास और हर तरह के उपयोगकर्ता की शुद्धता निकालें (अध्याय 6)।",
+       "लिखें कि किस तरह की गलतियाँ होती हैं और हर एक कितनी गंभीर है।",
+       "परिणाम खराब हों तो डेटा अधिग्रहण या अन्वेषण पर लौटें; अच्छे हों तो परिनियोजन की ओर बढ़ें।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: 100% accuracy on a small test does not mean the model is perfect. It may just mean the test was too easy. Real-world use will always bring surprises.",
+      "hi": "याद रखें: छोटी जाँच में 100% शुद्धता का अर्थ यह नहीं कि मॉडल पूर्ण है। हो सकता है जाँच बहुत आसान थी। असली दुनिया में उपयोग हमेशा कुछ आश्चर्य लाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.8 Stage 6: Deployment",
+    "hi": "7.8 चरण 6: परिनियोजन (Deployment)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Deployment means putting the tested model into the real world so that people can use it, and then watching how it performs. A model sitting on your laptop helps no one.",
+      "hi": "परिनियोजन का अर्थ है जाँचे गए मॉडल को असली दुनिया में लगाना ताकि लोग उसका उपयोग कर सकें, और फिर देखना कि वह कैसा काम करता है। आपके लैपटॉप पर पड़ा मॉडल किसी की मदद नहीं करता।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Ways to deploy: a webpage, a mobile app, a tablet with a camera near the bins, a smart device or a chatbot.",
+       "Teachable Machine lets you export a model so it can be used in a webpage or app; at school, a teacher can simply run the preview on a laptop or tablet near the bins.",
+       "Make it easy to use: big clear labels, local language, a voice or colour signal (green screen = wet bin, blue screen = dry bin).",
+       "Collect feedback: ask users if it helped, and keep a register of mistakes.",
+       "Measure the real result: after two weeks, check the bins again. Is there less plastic in the wet bin than before?",
+       "Keep improving: add new photos of items it gets wrong and retrain. This brings you back to the start of the cycle."
+      ],
+      "hi": [
+       "परिनियोजन के तरीके: वेबपेज, मोबाइल ऐप, कूड़ेदानों के पास कैमरे वाला टैबलेट, स्मार्ट उपकरण या चैटबॉट।",
+       "Teachable Machine से मॉडल एक्सपोर्ट करके वेबपेज या ऐप में उपयोग किया जा सकता है; स्कूल में शिक्षक कूड़ेदानों के पास लैपटॉप या टैबलेट पर केवल प्रीव्यू चला सकते हैं।",
+       "उपयोग आसान बनाएँ: बड़े साफ़ लेबल, स्थानीय भाषा, आवाज़ या रंग का संकेत (हरी स्क्रीन = गीला कूड़ेदान, नीली स्क्रीन = सूखा कूड़ेदान)।",
+       "प्रतिक्रिया लें: उपयोगकर्ताओं से पूछें कि क्या मदद मिली, और गलतियों का रजिस्टर रखें।",
+       "असली परिणाम नापें: दो हफ़्ते बाद कूड़ेदान फिर जाँचें। क्या गीले कूड़ेदान में पहले से कम प्लास्टिक है?",
+       "सुधार करते रहें: जिन चीज़ों में गलती होती है उनकी नई फ़ोटो जोड़कर फिर सिखाएँ। यह आपको चक्र की शुरुआत पर वापस ले आता है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "After deployment, the Clean Bin team checks 10 wet bins. Before the project, 5 of 10 wet bins had plastic. Two weeks after, 2 of 10 had plastic. By how many percentage points did the share of bins with plastic fall, and what else should the team consider?",
+       "hi": "परिनियोजन के बाद क्लीन बिन टीम 10 गीले कूड़ेदान जाँचती है। प्रोजेक्ट से पहले 10 में से 5 में प्लास्टिक था। दो हफ़्ते बाद 10 में से 2 में प्लास्टिक था। प्लास्टिक वाले कूड़ेदानों का हिस्सा कितने प्रतिशत अंक घटा, और टीम को और क्या सोचना चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: Before: 5 ÷ 10 × 100 = 50% of wet bins had plastic.\nStep 2: After: 2 ÷ 10 × 100 = 20%.\nStep 3: Drop = 50% − 20% = 30 percentage points.\nStep 4: Also consider: the posters and class talks made during the project may also have helped, not only the AI; check again after a month; ask cleaning staff; watch whether younger children find it easy to use.",
+       "hi": "चरण 1: पहले: 5 ÷ 10 × 100 = 50% गीले कूड़ेदानों में प्लास्टिक था।\nचरण 2: बाद में: 2 ÷ 10 × 100 = 20%।\nचरण 3: कमी = 50% − 20% = 30 प्रतिशत अंक।\nचरण 4: और भी सोचें: प्रोजेक्ट के दौरान बने पोस्टर और कक्षा की बातचीत ने भी मदद की होगी, केवल AI ने नहीं; एक महीने बाद फिर जाँचें; सफ़ाई कर्मियों से पूछें; देखें कि छोटे बच्चों को इसका उपयोग आसान लगता है या नहीं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.9 Ethics check for your project",
+    "hi": "7.9 अपने प्रोजेक्ट की नैतिकता जाँच"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before and after deployment, go through the ethics questions from Chapter 6. Write the answers in your project file.",
+      "hi": "परिनियोजन से पहले और बाद में अध्याय 6 के नैतिकता प्रश्नों पर विचार करें। उत्तर अपनी प्रोजेक्ट फ़ाइल में लिखें।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Question",
+        "Clean Bin Helper answer"
+       ],
+       "hi": [
+        "प्रश्न",
+        "क्लीन बिन हेल्पर का उत्तर"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Is personal data collected?",
+         "No. Only photos of waste items; the camera points at the item, not at faces"
+        ],
+        [
+         "Was consent needed and taken?",
+         "Principal's permission to place the tablet; no personal photos, so no individual consent needed"
+        ],
+        [
+         "Is it fair to all users?",
+         "Tested with items held by students of Classes 3 to 10, left- and right-handed; added a voice message for younger children"
+        ],
+        [
+         "What if it is wrong?",
+         "A wrong bin is a small harm; a chart of correct bins is also placed nearby, and cleaning staff still check"
+        ],
+        [
+         "Who is accountable?",
+         "The project team and teacher-in-charge keep a mistakes register and fix problems"
+        ],
+        [
+         "Is it sustainable?",
+         "Uses an old school tablet; switched off after school hours"
+        ],
+        [
+         "Is it inclusive?",
+         "Hindi and English labels, colour and sound signals, large text"
+        ]
+       ],
+       "hi": [
+        [
+         "क्या व्यक्तिगत डेटा लिया जाता है?",
+         "नहीं। केवल कचरे की चीज़ों की फ़ोटो; कैमरा चीज़ की ओर है, चेहरों की ओर नहीं"
+        ],
+        [
+         "क्या सहमति ज़रूरी थी और ली गई?",
+         "टैबलेट रखने के लिए प्रधानाचार्य की अनुमति; व्यक्तिगत फ़ोटो नहीं, इसलिए व्यक्तिगत सहमति की ज़रूरत नहीं"
+        ],
+        [
+         "क्या यह सब उपयोगकर्ताओं के लिए न्यायपूर्ण है?",
+         "कक्षा 3 से 10 के, बाएँ और दाएँ हाथ वाले छात्रों के हाथ में पकड़ी चीज़ों से जाँचा; छोटे बच्चों के लिए आवाज़ संदेश जोड़ा"
+        ],
+        [
+         "गलत होने पर क्या?",
+         "गलत कूड़ेदान छोटा नुकसान है; पास में सही कूड़ेदानों का चार्ट भी है, और सफ़ाई कर्मी फिर भी जाँचते हैं"
+        ],
+        [
+         "जवाबदेह कौन है?",
+         "प्रोजेक्ट टीम और प्रभारी शिक्षक गलतियों का रजिस्टर रखते हैं और समस्याएँ ठीक करते हैं"
+        ],
+        [
+         "क्या यह टिकाऊ है?",
+         "स्कूल का पुराना टैबलेट उपयोग होता है; स्कूल के बाद बंद कर दिया जाता है"
+        ],
+        [
+         "क्या यह समावेशी है?",
+         "हिंदी और अंग्रेज़ी लेबल, रंग और ध्वनि संकेत, बड़े अक्षर"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.10 The complete project at a glance",
+    "hi": "7.10 पूरा प्रोजेक्ट एक नज़र में"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Here is how the whole Clean Bin Helper project fits on one page. Your project file or poster can follow the same layout.",
+      "hi": "पूरा क्लीन बिन हेल्पर प्रोजेक्ट एक पन्ने पर ऐसे आता है। आपकी प्रोजेक्ट फ़ाइल या पोस्टर भी इसी ढाँचे पर बन सकता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "What the team did"
+       ],
+       "hi": [
+        "चरण",
+        "टीम ने क्या किया"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Problem scoping",
+         "4Ws canvas; problem statement; success goal: correct bin at least 8 times out of 10"
+        ],
+        [
+         "Data acquisition",
+         "Primary data: 60 photos each of plastic, paper and food waste (180), with variety; 36 kept for testing"
+        ],
+        [
+         "Data exploration",
+         "Removed blurry and duplicate photos; bar graph showed food waste had too few, so 20 more were added"
+        ],
+        [
+         "Modelling",
+         "Learning-based image model trained in Teachable Machine; compared with a simple rule-based program"
+        ],
+        [
+         "Evaluation",
+         "33 of 36 test photos correct = about 92%; paper weakest at about 83%; added shiny-paper photos and retrained"
+        ],
+        [
+         "Deployment",
+         "Tablet near canteen bins with colour and voice signals; plastic in wet bins fell from 50% to 20% of bins checked"
+        ],
+        [
+         "Ethics",
+         "No faces collected, tested with many users, mistakes register, low energy use"
+        ]
+       ],
+       "hi": [
+        [
+         "समस्या निर्धारण",
+         "4W कैनवास; समस्या कथन; सफलता लक्ष्य: 10 में से कम से कम 8 बार सही कूड़ेदान"
+        ],
+        [
+         "डेटा अधिग्रहण",
+         "प्राथमिक डेटा: प्लास्टिक, कागज़ और खाने के कचरे की 60-60 फ़ोटो (180), विविधता के साथ; 36 परीक्षण के लिए"
+        ],
+        [
+         "डेटा अन्वेषण",
+         "धुंधली और दोहराई फ़ोटो हटाईं; दंड आलेख ने दिखाया कि खाने के कचरे की फ़ोटो कम थीं, तो 20 और जोड़ीं"
+        ],
+        [
+         "मॉडलिंग",
+         "Teachable Machine में सीखने-आधारित चित्र मॉडल सिखाया; सरल नियम-आधारित प्रोग्राम से तुलना की"
+        ],
+        [
+         "मूल्यांकन",
+         "36 में से 33 परीक्षण फ़ोटो सही = लगभग 92%; कागज़ सबसे कमज़ोर, लगभग 83%; चमकीले कागज़ की फ़ोटो जोड़कर फिर सिखाया"
+        ],
+        [
+         "परिनियोजन",
+         "कैंटीन के कूड़ेदानों के पास रंग और आवाज़ संकेत वाला टैबलेट; जाँचे गए गीले कूड़ेदानों में प्लास्टिक 50% से घटकर 20%"
+        ],
+        [
+         "नैतिकता",
+         "चेहरे नहीं लिए, कई उपयोगकर्ताओं से जाँचा, गलतियों का रजिस्टर, कम ऊर्जा उपयोग"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.11 More project ideas for Class 7",
+    "hi": "7.11 कक्षा 7 के लिए और प्रोजेक्ट विचार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Choose an idea that solves a real problem around you. Here are some that can be built with free tools such as Teachable Machine, or planned on paper if no computer is available:",
+      "hi": "ऐसा विचार चुनें जो आपके आसपास की असली समस्या हल करे। यहाँ कुछ विचार हैं जो Teachable Machine जैसे मुफ़्त टूल से बनाए जा सकते हैं, या कंप्यूटर न हो तो कागज़ पर योजना बनाई जा सकती है:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Project idea",
+        "Problem it solves",
+        "Data needed",
+        "AI domain"
+       ],
+       "hi": [
+        "प्रोजेक्ट विचार",
+        "कौन-सी समस्या हल करता है",
+        "ज़रूरी डेटा",
+        "AI क्षेत्र"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Healthy or unhealthy leaf",
+         "Spotting sick plants in the school garden early",
+         "Photos of healthy and spotted or yellow leaves",
+         "Computer vision"
+        ],
+        [
+         "Fresh or rotten fruit",
+         "Reducing food waste in the canteen",
+         "Photos of fresh and spoiled fruits",
+         "Computer vision"
+        ],
+        [
+         "Sign helper",
+         "Helping classmates learn simple hand signs",
+         "Webcam images of 4 to 5 hand signs (with consent)",
+         "Computer vision (pose/image)"
+        ],
+        [
+         "Clap counter or sound alert",
+         "Recognising a school bell, clap or whistle for a hearing-impaired friend",
+         "Short audio clips of each sound",
+         "Sound/audio"
+        ],
+        [
+         "Feedback sorter",
+         "Sorting canteen feedback into happy, unhappy and suggestion",
+         "100 written comments labelled by the class",
+         "Natural language processing"
+        ],
+        [
+         "Attendance trend",
+         "Predicting which days attendance drops (for example before festivals)",
+         "Class attendance table for a term (no names)",
+         "Statistical data"
+        ]
+       ],
+       "hi": [
+        [
+         "स्वस्थ या अस्वस्थ पत्ता",
+         "स्कूल बगीचे में बीमार पौधे जल्दी पहचानना",
+         "स्वस्थ और धब्बेदार या पीले पत्तों की फ़ोटो",
+         "कंप्यूटर विज़न"
+        ],
+        [
+         "ताज़ा या सड़ा फल",
+         "कैंटीन में खाने की बर्बादी घटाना",
+         "ताज़े और खराब फलों की फ़ोटो",
+         "कंप्यूटर विज़न"
+        ],
+        [
+         "संकेत सहायक",
+         "सहपाठियों को सरल हाथ के संकेत सिखाना",
+         "4 से 5 हाथ संकेतों के वेबकैम चित्र (सहमति से)",
+         "कंप्यूटर विज़न (मुद्रा/चित्र)"
+        ],
+        [
+         "ताली गिनने वाला या ध्वनि चेतावनी",
+         "कम सुनने वाले दोस्त के लिए स्कूल की घंटी, ताली या सीटी पहचानना",
+         "हर ध्वनि की छोटी ऑडियो क्लिप",
+         "ध्वनि/ऑडियो"
+        ],
+        [
+         "प्रतिक्रिया छाँटने वाला",
+         "कैंटीन की प्रतिक्रियाओं को खुश, नाखुश और सुझाव में छाँटना",
+         "कक्षा द्वारा लेबल की गईं 100 लिखित टिप्पणियाँ",
+         "प्राकृतिक भाषा प्रसंस्करण"
+        ],
+        [
+         "हाज़िरी रुझान",
+         "अनुमान लगाना कि किन दिनों हाज़िरी घटती है (जैसे त्योहारों से पहले)",
+         "एक सत्र की कक्षा हाज़िरी तालिका (बिना नाम)",
+         "सांख्यिकीय डेटा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "No computer? You can still do the whole cycle unplugged: scope the problem, collect data on paper (tally sheets, drawings), explore it with bar graphs, build a rule-based decision tree as your model, test it on classmates and present it on a chart.",
+      "hi": "कंप्यूटर नहीं है? तब भी आप पूरा चक्र बिना कंप्यूटर कर सकते हैं: समस्या निर्धारित करें, कागज़ पर डेटा जुटाएँ (मिलान चिह्न, चित्र), दंड आलेख से अन्वेषण करें, मॉडल के रूप में नियम-आधारित डिसीज़न ट्री बनाएँ, सहपाठियों पर जाँचें और चार्ट पर प्रस्तुत करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.12 Working in a team and presenting your project",
+    "hi": "7.12 टीम में काम करना और प्रोजेक्ट प्रस्तुत करना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Real AI projects are made by teams. Divide work fairly and rotate roles so everyone learns each stage.",
+      "hi": "असली AI प्रोजेक्ट टीमें बनाती हैं। काम न्यायपूर्ण ढंग से बाँटें और भूमिकाएँ बदलते रहें ताकि हर कोई हर चरण सीखे।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Role",
+        "Responsibility"
+       ],
+       "hi": [
+        "भूमिका",
+        "ज़िम्मेदारी"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Team leader",
+         "Keeps the plan and timeline, makes sure everyone is heard"
+        ],
+        [
+         "Data collector",
+         "Collects data with permission, keeps it organised in labelled folders"
+        ],
+        [
+         "Data checker",
+         "Cleans data, checks labels, draws graphs"
+        ],
+        [
+         "Model builder",
+         "Trains and retrains the model"
+        ],
+        [
+         "Tester",
+         "Tests on new data and different users, calculates accuracy"
+        ],
+        [
+         "Presenter and ethics officer",
+         "Prepares the poster or slides, checks privacy and fairness"
+        ]
+       ],
+       "hi": [
+        [
+         "टीम लीडर",
+         "योजना और समय-सारिणी रखता है, सुनिश्चित करता है कि सबकी बात सुनी जाए"
+        ],
+        [
+         "डेटा संग्राहक",
+         "अनुमति से डेटा जुटाता है, उसे लेबल वाले फ़ोल्डरों में व्यवस्थित रखता है"
+        ],
+        [
+         "डेटा जाँचकर्ता",
+         "डेटा साफ़ करता है, लेबल जाँचता है, ग्राफ़ बनाता है"
+        ],
+        [
+         "मॉडल निर्माता",
+         "मॉडल को सिखाता है और फिर से सिखाता है"
+        ],
+        [
+         "परीक्षक",
+         "नए डेटा और अलग उपयोगकर्ताओं पर जाँचता है, शुद्धता निकालता है"
+        ],
+        [
+         "प्रस्तुतकर्ता और नैतिकता अधिकारी",
+         "पोस्टर या स्लाइड तैयार करता है, निजता और निष्पक्षता जाँचता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A good project presentation (poster, slides or a 3-minute talk) includes:",
+      "hi": "एक अच्छी प्रोजेक्ट प्रस्तुति (पोस्टर, स्लाइड या 3 मिनट की बात) में ये शामिल हों:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Title and team names.",
+       "The problem statement and the 4Ws.",
+       "Data: what, how much, from where, and a bar graph.",
+       "Model: rule-based or learning-based, and the tool used.",
+       "Results: accuracy overall and for each class or group, with examples of mistakes.",
+       "Deployment and real effect, user feedback.",
+       "Ethics check, limitations ('it does not recognise batteries') and future improvements.",
+       "Honesty: say which parts used AI tools (for example a chatbot to brainstorm) and which you did yourselves."
+      ],
+      "hi": [
+       "शीर्षक और टीम के नाम।",
+       "समस्या कथन और 4W।",
+       "डेटा: क्या, कितना, कहाँ से, और एक दंड आलेख।",
+       "मॉडल: नियम-आधारित या सीखने-आधारित, और उपयोग किया टूल।",
+       "परिणाम: कुल और हर क्लास या समूह की शुद्धता, गलतियों के उदाहरणों के साथ।",
+       "परिनियोजन और असली असर, उपयोगकर्ताओं की प्रतिक्रिया।",
+       "नैतिकता जाँच, सीमाएँ ('यह बैटरी नहीं पहचानता') और आगे के सुधार।",
+       "ईमानदारी: बताएँ कि किन भागों में AI टूल का उपयोग हुआ (जैसे विचार के लिए चैटबॉट) और कौन-से आपने खुद किए।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.13 Activities",
+    "hi": "7.13 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (unplugged): Arrange the cycle.\nAim: to remember the six stages in order.\nYou need: six cards with stage names and six cards with descriptions, shuffled.\nWhat to do: in pairs, arrange the stage cards in a circle and place the matching description under each. Time yourselves.\nWhat it teaches: the order of the AI project cycle and what happens in each stage.",
+      "hi": "गतिविधि 1 (बिना कंप्यूटर): चक्र को क्रम में लगाइए।\nउद्देश्य: छह चरणों को क्रम से याद रखना।\nआवश्यक सामग्री: चरणों के नाम वाले छह कार्ड और विवरण वाले छह कार्ड, फेंटे हुए।\nक्या करें: जोड़ियों में चरण कार्डों को घेरे में लगाएँ और हर एक के नीचे मेल खाता विवरण रखें। समय नापें।\nक्या सीखेंगे: AI प्रोजेक्ट चक्र का क्रम और हर चरण में क्या होता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (unplugged): 4Ws for my problem.\nAim: to practise problem scoping.\nYou need: a sheet divided into four boxes labelled Who, What, Where, Why.\nWhat to do: choose a school problem (long canteen queues, lost water bottles, noisy library). Fill each box after talking to at least three people affected. Then write the problem statement using the template.\nWhat it teaches: a clear problem is half the solution.",
+      "hi": "गतिविधि 2 (बिना कंप्यूटर): मेरी समस्या के 4W।\nउद्देश्य: समस्या निर्धारण का अभ्यास।\nआवश्यक सामग्री: Who, What, Where, Why लिखे चार डिब्बों में बँटा एक पन्ना।\nक्या करें: स्कूल की एक समस्या चुनें (कैंटीन की लंबी कतार, खोई पानी की बोतलें, शोर वाला पुस्तकालय)। कम से कम तीन प्रभावित लोगों से बात करके हर डिब्बा भरें। फिर साँचे से समस्या कथन लिखें।\nक्या सीखेंगे: स्पष्ट समस्या आधा समाधान है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen, with an adult): Build 'Fresh or Rotten?' in Teachable Machine.\nAim: to complete all six stages on a small scale.\nYou need: a browser with Teachable Machine, a webcam, a few fresh and a few overripe bananas or tomatoes.\nWhat to do: Problem: reduce fruit wasted in the canteen. Data: 40 webcam images of fresh and 40 of rotten fruit, from many angles and two backgrounds; keep 5 fruits aside for testing. Explore: delete blurry images. Model: train. Evaluate: test the 5 kept-aside fruits under two kinds of light and record correct answers in a table; calculate accuracy. Deploy: show it to the canteen staff and ask for feedback.\nWhat you observe: the model works well on clear cases and struggles with 'in-between' fruit.\nWhat it teaches: the full AI project cycle, and that evaluation must use new data.",
+      "hi": "गतिविधि 3 (स्क्रीन, किसी बड़े के साथ): Teachable Machine में 'ताज़ा या सड़ा?' बनाइए।\nउद्देश्य: छोटे पैमाने पर सभी छह चरण पूरे करना।\nआवश्यक सामग्री: Teachable Machine वाला ब्राउज़र, वेबकैम, कुछ ताज़े और कुछ ज़्यादा पके केले या टमाटर।\nक्या करें: समस्या: कैंटीन में बर्बाद होने वाले फल घटाना। डेटा: ताज़े फल के 40 और सड़े फल के 40 वेबकैम चित्र, कई कोणों और दो पृष्ठभूमियों से; 5 फल परीक्षण के लिए अलग रखें। अन्वेषण: धुंधले चित्र हटाएँ। मॉडल: सिखाएँ। मूल्यांकन: अलग रखे 5 फलों को दो तरह की रोशनी में जाँचें और सही उत्तर तालिका में लिखें; शुद्धता निकालें। परिनियोजन: कैंटीन कर्मचारियों को दिखाएँ और प्रतिक्रिया लें।\nक्या देखेंगे: मॉडल साफ़ मामलों में अच्छा काम करता है और 'बीच वाले' फलों में उलझता है।\nक्या सीखेंगे: पूरा AI प्रोजेक्ट चक्र, और यह कि मूल्यांकन नए डेटा से होना चाहिए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (screen, with an adult): Sound helper.\nAim: to try an Audio Project.\nYou need: Teachable Machine Audio Project, a microphone.\nWhat to do: record 'Background noise' (required by the tool), then classes 'Clap' and 'Whistle' (or 'School bell'). Train and test with new claps by different people.\nWhat you observe: it may confuse sounds when the room is noisy.\nWhat it teaches: audio data needs variety too, and a noisy environment is a real-world challenge.",
+      "hi": "गतिविधि 4 (स्क्रीन, किसी बड़े के साथ): ध्वनि सहायक।\nउद्देश्य: Audio Project आज़माना।\nआवश्यक सामग्री: Teachable Machine Audio Project, माइक्रोफ़ोन।\nक्या करें: 'Background noise' रिकॉर्ड करें (टूल में ज़रूरी है), फिर 'Clap' और 'Whistle' (या 'School bell') क्लास। सिखाएँ और अलग-अलग लोगों की नई तालियों से जाँचें।\nक्या देखेंगे: कमरे में शोर हो तो यह आवाज़ों में उलझ सकता है।\nक्या सीखेंगे: ऑडियो डेटा को भी विविधता चाहिए, और शोर वाला वातावरण असली दुनिया की चुनौती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 5 (class): AI project fair.\nAim: to present and give feedback.\nWhat to do: each team displays its poster. Visitors use a feedback slip with three questions: Is the problem real? Was the model tested on new data? Is it safe and fair? Teams then write one improvement based on the feedback.\nWhat it teaches: deployment and feedback are part of the cycle, and good projects keep improving.",
+      "hi": "गतिविधि 5 (कक्षा): AI प्रोजेक्ट मेला।\nउद्देश्य: प्रस्तुत करना और प्रतिक्रिया देना।\nक्या करें: हर टीम अपना पोस्टर लगाती है। आने वाले तीन प्रश्नों वाली प्रतिक्रिया पर्ची भरते हैं: क्या समस्या असली है? क्या मॉडल नए डेटा पर जाँचा गया? क्या यह सुरक्षित और न्यायपूर्ण है? फिर टीमें प्रतिक्रिया के आधार पर एक सुधार लिखती हैं।\nक्या सीखेंगे: परिनियोजन और प्रतिक्रिया चक्र का हिस्सा हैं, और अच्छे प्रोजेक्ट सुधरते रहते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: Use AI tools with a teacher or parent; under-13s should not make accounts on their own. Do not record classmates' faces or voices without their and their parents' permission, and never upload personal details.",
+      "hi": "सुरक्षा: AI टूल शिक्षक या माता-पिता के साथ उपयोग करें; 13 वर्ष से कम उम्र के बच्चे खुद अकाउंट न बनाएँ। सहपाठियों और उनके माता-पिता की अनुमति के बिना उनके चेहरे या आवाज़ रिकॉर्ड न करें, और कभी व्यक्तिगत जानकारी अपलोड न करें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Starting with the tool ('let us make an app') instead of a real problem. Fix: begin with the 4Ws and a problem statement.",
+   "Collecting too few or very similar examples. Fix: collect enough, varied and balanced data for every class.",
+   "Testing the model on the same photos used for training. Fix: keep aside testing data the model has never seen.",
+   "Skipping data exploration. Fix: clean, count and graph data first; it shows missing or wrong data early.",
+   "Reporting only overall accuracy. Fix: also calculate accuracy for each class and group, and look at the mistakes.",
+   "Mixing up the order of the stages. Fix: remember 'Please Don't Disturb My Exam Day'.",
+   "Thinking the project ends at deployment. Fix: collect feedback, measure real results and improve: it is a cycle.",
+   "Taking photos of classmates or uploading personal data without permission. Fix: get consent, prefer photos of objects, and follow the ethics check.",
+   "Believing a high confidence score means the answer is certainly right. Fix: confidence shows how sure the model is, not whether it is correct."
+  ],
+  "hi": [
+   "असली समस्या के बजाय टूल से शुरू करना ('चलो एक ऐप बनाते हैं')। सुधार: 4W और समस्या कथन से शुरुआत करें।",
+   "बहुत कम या बहुत मिलते-जुलते उदाहरण जुटाना। सुधार: हर क्लास के लिए पर्याप्त, विविध और संतुलित डेटा जुटाएँ।",
+   "मॉडल को उन्हीं फ़ोटो पर जाँचना जिनसे सिखाया। सुधार: ऐसा परीक्षण डेटा अलग रखें जो मॉडल ने कभी नहीं देखा।",
+   "डेटा अन्वेषण छोड़ देना। सुधार: पहले डेटा साफ़ करें, गिनें और ग्राफ़ बनाएँ; इससे छूटा या गलत डेटा जल्दी दिखता है।",
+   "केवल कुल शुद्धता बताना। सुधार: हर क्लास और समूह की शुद्धता भी निकालें, और गलतियाँ देखें।",
+   "चरणों का क्रम गड़बड़ाना। सुधार: 'Please Don't Disturb My Exam Day' याद रखें।",
+   "यह सोचना कि प्रोजेक्ट परिनियोजन पर खत्म हो जाता है। सुधार: प्रतिक्रिया लें, असली परिणाम नापें और सुधारें: यह एक चक्र है।",
+   "बिना अनुमति सहपाठियों की फ़ोटो लेना या व्यक्तिगत डेटा अपलोड करना। सुधार: सहमति लें, वस्तुओं की फ़ोटो को प्राथमिकता दें, और नैतिकता जाँच अपनाएँ।",
+   "यह मानना कि ऊँचे भरोसे का अर्थ उत्तर निश्चित रूप से सही है। सुधार: भरोसा दिखाता है कि मॉडल कितना निश्चित है, यह नहीं कि वह सही है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Project",
+    "hi": "प्रोजेक्ट"
+   },
+   "d": {
+    "en": "A planned piece of work with a clear goal, done in steps over a fixed time.",
+    "hi": "स्पष्ट लक्ष्य वाला योजनाबद्ध काम, जो तय समय में चरणों में होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI project cycle",
+    "hi": "AI प्रोजेक्ट चक्र"
+   },
+   "d": {
+    "en": "The six stages of building an AI project: problem scoping, data acquisition, data exploration, modelling, evaluation, deployment.",
+    "hi": "AI प्रोजेक्ट बनाने के छह चरण: समस्या निर्धारण, डेटा अधिग्रहण, डेटा अन्वेषण, मॉडलिंग, मूल्यांकन, परिनियोजन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Problem scoping",
+    "hi": "समस्या निर्धारण"
+   },
+   "d": {
+    "en": "Understanding a problem clearly and deciding exactly what to solve.",
+    "hi": "समस्या को साफ़ समझना और ठीक-ठीक तय करना कि क्या हल करना है।"
+   }
+  },
+  {
+   "t": {
+    "en": "4Ws Problem Canvas",
+    "hi": "4W समस्या कैनवास"
+   },
+   "d": {
+    "en": "A tool that asks Who, What, Where and Why about a problem.",
+    "hi": "एक टूल जो समस्या के बारे में कौन, क्या, कहाँ और क्यों पूछता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stakeholder",
+    "hi": "हितधारक"
+   },
+   "d": {
+    "en": "A person or group affected by the problem or solution.",
+    "hi": "समस्या या समाधान से प्रभावित व्यक्ति या समूह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Problem statement",
+    "hi": "समस्या कथन"
+   },
+   "d": {
+    "en": "A short sentence that sums up who has the problem, what it is, where it happens and why solving it matters.",
+    "hi": "छोटा वाक्य जो बताता है कि समस्या किसकी है, क्या है, कहाँ होती है और उसे हल करना क्यों ज़रूरी है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data acquisition",
+    "hi": "डेटा अधिग्रहण"
+   },
+   "d": {
+    "en": "Collecting the data an AI will learn from.",
+    "hi": "वह डेटा जुटाना जिससे AI सीखेगा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Primary data",
+    "hi": "प्राथमिक डेटा"
+   },
+   "d": {
+    "en": "Data you collect yourself for your project, such as your own photos or survey.",
+    "hi": "अपने प्रोजेक्ट के लिए खुद जुटाया डेटा, जैसे अपनी फ़ोटो या सर्वे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Secondary data",
+    "hi": "द्वितीयक डेटा"
+   },
+   "d": {
+    "en": "Data collected by others that you reuse, such as government open data.",
+    "hi": "दूसरों द्वारा जुटाया डेटा जिसे आप दोबारा उपयोग करते हैं, जैसे सरकारी ओपन डेटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training data",
+    "hi": "ट्रेनिंग डेटा"
+   },
+   "d": {
+    "en": "The part of the data used to teach a model.",
+    "hi": "डेटा का वह भाग जिससे मॉडल को सिखाया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Testing data",
+    "hi": "परीक्षण डेटा"
+   },
+   "d": {
+    "en": "Data kept aside and used only to check the model on unseen examples.",
+    "hi": "अलग रखा डेटा जो केवल बिना देखे उदाहरणों पर मॉडल को जाँचने के लिए उपयोग होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data exploration",
+    "hi": "डेटा अन्वेषण"
+   },
+   "d": {
+    "en": "Studying, cleaning and graphing data to understand it before modelling.",
+    "hi": "मॉडलिंग से पहले डेटा को समझने के लिए उसका अध्ययन, सफ़ाई और ग्राफ़ बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Balanced data",
+    "hi": "संतुलित डेटा"
+   },
+   "d": {
+    "en": "Data with roughly equal numbers of examples in each class.",
+    "hi": "ऐसा डेटा जिसमें हर क्लास के लगभग बराबर उदाहरण हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Model",
+    "hi": "मॉडल"
+   },
+   "d": {
+    "en": "The part of an AI system that turns an input into an output, such as a photo into a label.",
+    "hi": "AI सिस्टम का वह भाग जो इनपुट को आउटपुट में बदलता है, जैसे फ़ोटो को लेबल में।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rule-based model",
+    "hi": "नियम-आधारित मॉडल"
+   },
+   "d": {
+    "en": "A model that follows IF-THEN rules written by people.",
+    "hi": "ऐसा मॉडल जो लोगों द्वारा लिखे IF-THEN नियमों का पालन करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Learning-based model",
+    "hi": "सीखने-आधारित मॉडल"
+   },
+   "d": {
+    "en": "A model that learns its own rules from labelled examples (machine learning).",
+    "hi": "ऐसा मॉडल जो लेबल वाले उदाहरणों से अपने नियम खुद सीखता है (मशीन लर्निंग)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Class (in a model)",
+    "hi": "क्लास (मॉडल में)"
+   },
+   "d": {
+    "en": "One of the groups or labels a model chooses between, such as 'Plastic'.",
+    "hi": "वे समूह या लेबल जिनमें से मॉडल चुनता है, जैसे 'Plastic'।"
+   }
+  },
+  {
+   "t": {
+    "en": "Confidence",
+    "hi": "भरोसा"
+   },
+   "d": {
+    "en": "A percentage showing how sure a model is about an answer.",
+    "hi": "प्रतिशत जो दिखाता है कि मॉडल किसी उत्तर के बारे में कितना निश्चित है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Evaluation",
+    "hi": "मूल्यांकन"
+   },
+   "d": {
+    "en": "Testing a model on new data to see how well and how fairly it works.",
+    "hi": "मॉडल को नए डेटा पर जाँचना कि वह कितना अच्छा और न्यायपूर्ण काम करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Accuracy",
+    "hi": "शुद्धता"
+   },
+   "d": {
+    "en": "Correct predictions ÷ total predictions × 100.",
+    "hi": "सही अनुमान ÷ कुल अनुमान × 100।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deployment",
+    "hi": "परिनियोजन"
+   },
+   "d": {
+    "en": "Putting a tested model into real use and monitoring it.",
+    "hi": "जाँचे गए मॉडल को असली उपयोग में लगाना और उस पर नज़र रखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feedback",
+    "hi": "प्रतिक्रिया"
+   },
+   "d": {
+    "en": "Users' comments and results that show what to improve.",
+    "hi": "उपयोगकर्ताओं की टिप्पणियाँ और परिणाम जो दिखाते हैं कि क्या सुधारना है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is the FIRST stage of the AI project cycle? (a) Modelling (b) Problem scoping (c) Deployment (d) Evaluation",
+    "hi": "बहुविकल्पी: AI प्रोजेक्ट चक्र का पहला चरण कौन-सा है? (a) मॉडलिंग (b) समस्या निर्धारण (c) परिनियोजन (d) मूल्यांकन"
+   },
+   "a": {
+    "en": "(b) Problem scoping.",
+    "hi": "(b) समस्या निर्धारण।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Testing a model on photos it has never seen happens in (a) Data acquisition (b) Evaluation (c) Problem scoping (d) Data exploration",
+    "hi": "बहुविकल्पी: मॉडल को ऐसी फ़ोटो पर जाँचना जो उसने कभी नहीं देखीं, किस चरण में होता है? (a) डेटा अधिग्रहण (b) मूल्यांकन (c) समस्या निर्धारण (d) डेटा अन्वेषण"
+   },
+   "a": {
+    "en": "(b) Evaluation.",
+    "hi": "(b) मूल्यांकन।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Photos you click yourself for your project are (a) primary data (b) secondary data (c) testing rules (d) a model",
+    "hi": "बहुविकल्पी: अपने प्रोजेक्ट के लिए खुद खींची फ़ोटो क्या हैं? (a) प्राथमिक डेटा (b) द्वितीयक डेटा (c) परीक्षण नियम (d) मॉडल"
+   },
+   "a": {
+    "en": "(a) Primary data.",
+    "hi": "(a) प्राथमिक डेटा।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The 4Ws of problem scoping are Who, What, Where and ______.",
+    "hi": "रिक्त स्थान भरिए: समस्या निर्धारण के 4W हैं कौन, क्या, कहाँ और ______।"
+   },
+   "a": {
+    "en": "Why.",
+    "hi": "क्यों (Why)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Accuracy = correct predictions ÷ ______ × 100.",
+    "hi": "रिक्त स्थान भरिए: शुद्धता = सही अनुमान ÷ ______ × 100।"
+   },
+   "a": {
+    "en": "Total predictions.",
+    "hi": "कुल अनुमान।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: A rule-based model learns its rules from data.",
+    "hi": "सही या गलत: नियम-आधारित मॉडल अपने नियम डेटा से सीखता है।"
+   },
+   "a": {
+    "en": "False. People write the rules; a learning-based model learns from data.",
+    "hi": "गलत। नियम लोग लिखते हैं; सीखने-आधारित मॉडल डेटा से सीखता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: After deployment, the AI project is finished forever.",
+    "hi": "सही या गलत: परिनियोजन के बाद AI प्रोजेक्ट हमेशा के लिए खत्म हो जाता है।"
+   },
+   "a": {
+    "en": "False. Feedback and real results are used to improve the model; it is a cycle.",
+    "hi": "गलत। प्रतिक्रिया और असली परिणामों से मॉडल सुधारा जाता है; यह एक चक्र है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Arrange in order: Evaluation, Data acquisition, Deployment, Problem scoping, Modelling, Data exploration.",
+    "hi": "क्रम में लगाइए: मूल्यांकन, डेटा अधिग्रहण, परिनियोजन, समस्या निर्धारण, मॉडलिंग, डेटा अन्वेषण।"
+   },
+   "a": {
+    "en": "Problem scoping → Data acquisition → Data exploration → Modelling → Evaluation → Deployment.",
+    "hi": "समस्या निर्धारण → डेटा अधिग्रहण → डेटा अन्वेषण → मॉडलिंग → मूल्यांकन → परिनियोजन।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A model is tested on 25 new photos and gets 20 right. Find its accuracy. If the goal was 85%, did it pass?",
+    "hi": "एक मॉडल को 25 नई फ़ोटो पर जाँचा गया और 20 सही हुईं। उसकी शुद्धता निकालिए। अगर लक्ष्य 85% था, तो क्या वह सफल हुआ?"
+   },
+   "a": {
+    "en": "Accuracy = 20 ÷ 25 × 100 = 80%. No, 80% is below the 85% goal, so the team should improve the data and retrain.",
+    "hi": "शुद्धता = 20 ÷ 25 × 100 = 80%। नहीं, 80% लक्ष्य 85% से कम है, इसलिए टीम को डेटा सुधारकर फिर सिखाना चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A team has 150 photos and keeps 1 out of every 5 for testing. How many photos are for training and how many for testing?",
+    "hi": "एक टीम के पास 150 फ़ोटो हैं और वह हर 5 में से 1 परीक्षण के लिए रखती है। ट्रेनिंग और परीक्षण के लिए कितनी फ़ोटो हैं?"
+   },
+   "a": {
+    "en": "Testing = 150 ÷ 5 = 30. Training = 150 − 30 = 120.",
+    "hi": "परीक्षण = 150 ÷ 5 = 30। ट्रेनिंग = 150 − 30 = 120।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Why must testing data be different from training data?",
+    "hi": "लघु उत्तर: परीक्षण डेटा ट्रेनिंग डेटा से अलग क्यों होना चाहिए?"
+   },
+   "a": {
+    "en": "Because we want to know how the model works on new examples in the real world. Testing on training data is like giving the same practice questions in an exam: the score looks high but does not show real understanding.",
+    "hi": "क्योंकि हम जानना चाहते हैं कि मॉडल असली दुनिया के नए उदाहरणों पर कैसा काम करता है। ट्रेनिंग डेटा पर जाँचना परीक्षा में वही अभ्यास प्रश्न देने जैसा है: अंक ऊँचे दिखते हैं पर असली समझ नहीं दिखती।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Give three things you do in data exploration.",
+    "hi": "लघु उत्तर: डेटा अन्वेषण में किए जाने वाले तीन काम बताइए।"
+   },
+   "a": {
+    "en": "Any three: remove blurry or duplicate examples; fix wrong labels; count examples in each class to check balance; draw bar graphs or other charts; check variety of backgrounds, lighting and objects; look for confusing items.",
+    "hi": "कोई तीन: धुंधले या दोहराए उदाहरण हटाना; गलत लेबल ठीक करना; संतुलन जाँचने के लिए हर क्लास के उदाहरण गिनना; दंड आलेख या अन्य चार्ट बनाना; पृष्ठभूमि, रोशनी और वस्तुओं की विविधता जाँचना; उलझाने वाली चीज़ें ढूँढना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Write two differences between rule-based and learning-based models.",
+    "hi": "लघु उत्तर: नियम-आधारित और सीखने-आधारित मॉडलों के दो अंतर लिखिए।"
+   },
+   "a": {
+    "en": "Rule-based: humans write IF-THEN rules, needs little data, easy to explain, fails on cases not in its rules. Learning-based: learns rules from many labelled examples, needs lots of varied data, can handle new cases, harder to explain. (Any two.)",
+    "hi": "नियम-आधारित: इंसान IF-THEN नियम लिखते हैं, कम डेटा चाहिए, समझाना आसान, नियमों से बाहर के मामलों में विफल। सीखने-आधारित: बहुत से लेबल वाले उदाहरणों से नियम सीखता है, बहुत विविध डेटा चाहिए, नए मामले संभाल सकता है, समझाना कठिन। (कोई दो।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Fill the 4Ws for this problem: 'Many students in our school forget their water bottles at the playground.'",
+    "hi": "इस समस्या के लिए 4W भरिए: 'हमारे स्कूल के कई छात्र अपनी पानी की बोतलें खेल के मैदान में भूल जाते हैं।'"
+   },
+   "a": {
+    "en": "Who: students (especially juniors), PE teachers, the lost-and-found staff, parents who buy new bottles. What: bottles are left behind daily (for example, count them for a week). Where: playground and sports room, after PE periods. Why: wastes money and plastic, students go thirsty, lost-and-found gets crowded; a solution would return bottles and reduce waste.",
+    "hi": "कौन: छात्र (खासकर छोटे), खेल शिक्षक, खोया-पाया कर्मचारी, नई बोतलें खरीदने वाले माता-पिता। क्या: रोज़ बोतलें छूट जाती हैं (जैसे एक हफ़्ते तक गिनें)। कहाँ: खेल का मैदान और खेल कक्ष, PE पीरियड के बाद। क्यों: पैसे और प्लास्टिक की बर्बादी, छात्र प्यासे रहते हैं, खोया-पाया भर जाता है; समाधान से बोतलें लौटेंगी और बर्बादी घटेगी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: What does a confidence of 'Plastic 92%' mean in Teachable Machine? Is the answer certainly correct?",
+    "hi": "लघु उत्तर: Teachable Machine में 'Plastic 92%' भरोसे का क्या अर्थ है? क्या उत्तर निश्चित रूप से सही है?"
+   },
+   "a": {
+    "en": "It means the model is 92% sure the item belongs to the 'Plastic' class compared with the other classes. It is not certain; a model can be very confident and still wrong, especially for items unlike its training data.",
+    "hi": "इसका अर्थ है कि मॉडल अन्य क्लासों की तुलना में 92% निश्चित है कि चीज़ 'Plastic' क्लास की है। यह निश्चित नहीं है; मॉडल बहुत भरोसे के साथ भी गलत हो सकता है, खासकर उन चीज़ों पर जो ट्रेनिंग डेटा से अलग हों।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Assertion-Reason: Assertion (A): Data exploration should be done before modelling. Reason (R): Exploring data helps find wrong labels, missing classes and unbalanced data. Choose: (a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन-कारण: अभिकथन (A): डेटा अन्वेषण मॉडलिंग से पहले करना चाहिए। कारण (R): डेटा अन्वेषण से गलत लेबल, छूटी क्लास और असंतुलित डेटा पकड़ में आते हैं। चुनिए: (a) दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R, A की व्याख्या नहीं करता (c) A सही, R गलत (d) A गलत, R सही"
+   },
+   "a": {
+    "en": "(a) Both are true and R explains A.",
+    "hi": "(a) दोनों सही हैं और R, A की व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A team's 'Healthy or Sick Leaf' model gets 100% on its test, but in the garden it keeps calling healthy leaves 'sick'. All training photos of sick leaves were taken on a brown table and healthy ones on a white sheet; the garden has a brown soil background. Explain what went wrong and how to fix it, stage by stage.",
+    "hi": "केस अध्ययन: एक टीम का 'स्वस्थ या बीमार पत्ता' मॉडल अपनी जाँच में 100% लाता है, पर बगीचे में स्वस्थ पत्तों को बार-बार 'बीमार' बताता है। बीमार पत्तों की सभी ट्रेनिंग फ़ोटो भूरी मेज़ पर और स्वस्थ पत्तों की सफ़ेद कागज़ पर खींची गई थीं; बगीचे में पृष्ठभूमि भूरी मिट्टी है। बताइए क्या गलत हुआ और चरण-दर-चरण इसे कैसे ठीक करें।"
+   },
+   "a": {
+    "en": "What went wrong: the model learned the background colour (brown = sick) instead of the leaf. The test photos had the same backgrounds, so the test was too easy and the 100% was misleading.\nData acquisition: take photos of both healthy and sick leaves on many backgrounds, including soil, and in different light.\nData exploration: check that each class has a mix of backgrounds; remove photos where the leaf is tiny.\nModelling: retrain with the new balanced data.\nEvaluation: test with new leaves photographed in the garden itself; calculate accuracy for each class.\nDeployment: try it with the gardener, collect mistakes and keep improving.",
+    "hi": "क्या गलत हुआ: मॉडल ने पत्ते के बजाय पृष्ठभूमि का रंग सीख लिया (भूरा = बीमार)। जाँच की फ़ोटो की पृष्ठभूमि भी वही थी, इसलिए जाँच बहुत आसान थी और 100% भ्रामक था।\nडेटा अधिग्रहण: स्वस्थ और बीमार दोनों पत्तों की फ़ोटो कई पृष्ठभूमियों पर, मिट्टी सहित, और अलग रोशनी में लें।\nडेटा अन्वेषण: जाँचें कि हर क्लास में पृष्ठभूमियाँ मिली-जुली हों; जिन फ़ोटो में पत्ता बहुत छोटा है उन्हें हटाएँ।\nमॉडलिंग: नए संतुलित डेटा से फिर सिखाएँ।\nमूल्यांकन: बगीचे में ही खींची नई पत्तियों से जाँचें; हर क्लास की शुद्धता निकालें।\nपरिनियोजन: माली के साथ आज़माएँ, गलतियाँ इकट्ठा करें और सुधारते रहें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Plan a complete AI project 'Fresh or Rotten Fruit' for your school canteen using all six stages of the AI project cycle, and add an ethics check.",
+    "hi": "दीर्घ उत्तर: अपने स्कूल की कैंटीन के लिए AI प्रोजेक्ट चक्र के सभी छह चरणों से 'ताज़ा या सड़ा फल' का पूरा प्रोजेक्ट नियोजित कीजिए, और नैतिकता जाँच जोड़िए।"
+   },
+   "a": {
+    "en": "1. Problem scoping: Who: canteen staff and students. What: spoiled fruit is sometimes served or good fruit is thrown away. Where: canteen fruit counter, each morning. Why: health and less food waste. Statement: 'Our canteen staff need a quick way to sort fresh and spoiled fruit each morning so that students get safe fruit and less is wasted.' Goal: 85% accuracy.\n2. Data acquisition: primary data: 50 photos each of fresh and spoiled bananas, apples and guavas, in different lights and backgrounds; keep 1 in 5 for testing.\n3. Data exploration: remove blurry photos, check each class is balanced, draw a bar graph.\n4. Modelling: train a learning-based image model in Teachable Machine with two classes, Fresh and Rotten.\n5. Evaluation: test on kept-aside photos, calculate overall and per-fruit accuracy, study mistakes, retrain if below 85%.\n6. Deployment: a tablet at the counter for staff; record mistakes for two weeks; measure how much fruit is thrown away before and after.\nEthics: no faces or personal data; staff make the final decision; tested on all fruit types; uses an existing tablet; labels in Hindi and English.",
+    "hi": "1. समस्या निर्धारण: कौन: कैंटीन कर्मचारी और छात्र। क्या: कभी खराब फल परोसा जाता है या अच्छा फल फेंक दिया जाता है। कहाँ: कैंटीन का फल काउंटर, हर सुबह। क्यों: स्वास्थ्य और कम भोजन बर्बादी। कथन: 'हमारे कैंटीन कर्मचारियों को हर सुबह ताज़े और खराब फल जल्दी छाँटने का तरीका चाहिए ताकि छात्रों को सुरक्षित फल मिले और बर्बादी कम हो।' लक्ष्य: 85% शुद्धता।\n2. डेटा अधिग्रहण: प्राथमिक डेटा: ताज़े और खराब केले, सेब और अमरूद की 50-50 फ़ोटो, अलग रोशनी और पृष्ठभूमि में; हर 5 में से 1 परीक्षण के लिए।\n3. डेटा अन्वेषण: धुंधली फ़ोटो हटाएँ, हर क्लास का संतुलन जाँचें, दंड आलेख बनाएँ।\n4. मॉडलिंग: Teachable Machine में Fresh और Rotten दो क्लास वाला सीखने-आधारित चित्र मॉडल सिखाएँ।\n5. मूल्यांकन: अलग रखी फ़ोटो पर जाँचें, कुल और हर फल की शुद्धता निकालें, गलतियाँ देखें, 85% से कम हो तो फिर सिखाएँ।\n6. परिनियोजन: कर्मचारियों के लिए काउंटर पर टैबलेट; दो हफ़्ते गलतियाँ लिखें; पहले और बाद में फेंके गए फल की मात्रा नापें।\nनैतिकता: कोई चेहरा या व्यक्तिगत डेटा नहीं; अंतिम निर्णय कर्मचारी लेते हैं; सभी फलों पर जाँचा; मौजूदा टैबलेट का उपयोग; हिंदी और अंग्रेज़ी लेबल।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A 3-class model was tested: Class A 18 of 20 correct, Class B 12 of 20 correct, Class C 19 of 20 correct. Find overall accuracy and each class accuracy. Which class needs work, and what would you do?",
+    "hi": "3 क्लास वाले मॉडल की जाँच हुई: क्लास A में 20 में से 18 सही, क्लास B में 20 में से 12 सही, क्लास C में 20 में से 19 सही। कुल और हर क्लास की शुद्धता निकालिए। किस क्लास पर काम चाहिए, और आप क्या करेंगे?"
+   },
+   "a": {
+    "en": "Overall: (18 + 12 + 19) ÷ 60 × 100 = 49 ÷ 60 × 100 = 81.7%. Class A = 90%, Class B = 60%, Class C = 95%. Class B needs work: look at which B items were wrong and what they were confused with, add more varied and correctly labelled B examples, check B is not unbalanced, retrain and test again with new data.",
+    "hi": "कुल: (18 + 12 + 19) ÷ 60 × 100 = 49 ÷ 60 × 100 = 81.7%। क्लास A = 90%, क्लास B = 60%, क्लास C = 95%। क्लास B पर काम चाहिए: देखें B की कौन-सी चीज़ें गलत हुईं और किससे उलझीं, B के ज़्यादा विविध और सही लेबल वाले उदाहरण जोड़ें, जाँचें कि B असंतुलित न हो, फिर सिखाएँ और नए डेटा से फिर जाँचें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Why is the AI project cycle drawn as a circle and not a straight line? Give an example of going back to an earlier stage.",
+    "hi": "सोचने वाला प्रश्न: AI प्रोजेक्ट चक्र को सीधी रेखा के बजाय घेरे के रूप में क्यों बनाया जाता है? किसी पिछले चरण पर लौटने का उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Because building AI is repeated improvement: results from evaluation and deployment show new problems, so we return to earlier stages, and the world itself changes over time. Example: during evaluation Clean Bin Helper confused shiny magazine paper with plastic, so the team went back to data acquisition, added photos of shiny paper, explored and retrained, then evaluated again.",
+    "hi": "क्योंकि AI बनाना बार-बार सुधार है: मूल्यांकन और परिनियोजन के परिणाम नई समस्याएँ दिखाते हैं, इसलिए हम पिछले चरणों पर लौटते हैं, और दुनिया भी समय के साथ बदलती है। उदाहरण: मूल्यांकन में क्लीन बिन हेल्पर चमकीले पत्रिका कागज़ को प्लास्टिक समझ रहा था, तो टीम डेटा अधिग्रहण पर लौटी, चमकीले कागज़ की फ़ोटो जोड़ीं, अन्वेषण कर फिर सिखाया, और फिर मूल्यांकन किया।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: With your group, choose one idea from section 7.11 (or your own). Write the problem statement, the data you will collect (how much and from where), the type of model, how you will evaluate it, how it will be deployed, and two ethics points.",
+    "hi": "गतिविधि प्रश्न: अपने समूह के साथ भाग 7.11 से एक विचार (या अपना) चुनिए। समस्या कथन, जुटाया जाने वाला डेटा (कितना और कहाँ से), मॉडल का प्रकार, मूल्यांकन का तरीका, परिनियोजन कैसे होगा, और नैतिकता के दो बिंदु लिखिए।"
+   },
+   "a": {
+    "en": "Sample (Sound alert): Problem statement: 'Our classmate with hearing loss has a problem that she cannot hear the school bell in the corridor; an ideal solution would flash a light on her phone when the bell rings.' Data: 40 short clips each of the school bell, people talking and background noise, recorded at different places in school with permission. Model: learning-based audio model in Teachable Machine. Evaluation: 10 new bell rings and 10 other sounds; target 9 out of 10 correct for the bell. Deployment: a teacher's phone or tablet near her class runs the model and flashes the screen; collect her feedback weekly. Ethics: no recording of private conversations (delete talking clips after training); she chooses whether to use it; a friend still tells her if it fails.",
+    "hi": "नमूना (ध्वनि चेतावनी): समस्या कथन: 'कम सुनने वाली हमारी सहपाठी की समस्या है कि वह गलियारे में स्कूल की घंटी नहीं सुन पाती; आदर्श समाधान घंटी बजने पर उसके फ़ोन पर रोशनी चमकाएगा।' डेटा: अनुमति से स्कूल की अलग-अलग जगहों पर रिकॉर्ड की गईं स्कूल की घंटी, लोगों की बातचीत और पृष्ठभूमि शोर की 40-40 छोटी क्लिप। मॉडल: Teachable Machine में सीखने-आधारित ऑडियो मॉडल। मूल्यांकन: 10 नई घंटियाँ और 10 अन्य आवाज़ें; घंटी के लिए 10 में से 9 सही का लक्ष्य। परिनियोजन: उसकी कक्षा के पास शिक्षक का फ़ोन या टैबलेट मॉडल चलाकर स्क्रीन चमकाता है; हर हफ़्ते उसकी प्रतिक्रिया लें। नैतिकता: निजी बातचीत रिकॉर्ड न हो (ट्रेनिंग के बाद बातचीत की क्लिप हटाएँ); उपयोग करना है या नहीं, वह खुद चुने; विफल होने पर कोई दोस्त फिर भी उसे बताए।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A project is planned work with a clear goal done in stages; a project cycle repeats to improve.",
+   "The AI project cycle has six stages: problem scoping, data acquisition, data exploration, modelling, evaluation, deployment (memory tip: Please Don't Disturb My Exam Day).",
+   "Problem scoping uses the 4Ws canvas (Who, What, Where, Why), identifies stakeholders and ends with a problem statement and a success goal.",
+   "Data acquisition collects enough, varied, balanced, correctly labelled data with permission; primary data is your own, secondary data is reused.",
+   "Keep testing data separate from training data, for example 1 in every 5 examples.",
+   "Data exploration cleans, counts and graphs data to find errors, imbalance and patterns before modelling.",
+   "Modelling chooses rule-based (human-written IF-THEN rules) or learning-based (learns from examples) models; Teachable Machine trains image, audio and pose models.",
+   "Confidence shows how sure a model is, not whether it is right.",
+   "Evaluation tests on unseen data: accuracy = correct ÷ total × 100; also check each class and group and study the mistakes.",
+   "Deployment puts the model to real use with easy design, feedback and measurement of real results.",
+   "The cycle loops back: poor results send you to earlier stages to improve data and model.",
+   "Every project needs an ethics check: privacy and consent, fairness, accountability, safety, inclusion and sustainability.",
+   "Work in teams with clear roles and present the problem, data, model, results, ethics and limits honestly."
+  ],
+  "hi": [
+   "प्रोजेक्ट स्पष्ट लक्ष्य वाला योजनाबद्ध काम है जो चरणों में होता है; सुधार के लिए प्रोजेक्ट चक्र दोहराया जाता है।",
+   "AI प्रोजेक्ट चक्र के छह चरण हैं: समस्या निर्धारण, डेटा अधिग्रहण, डेटा अन्वेषण, मॉडलिंग, मूल्यांकन, परिनियोजन (याद रखने का तरीका: Please Don't Disturb My Exam Day)।",
+   "समस्या निर्धारण में 4W कैनवास (कौन, क्या, कहाँ, क्यों) का उपयोग होता है, हितधारक पहचाने जाते हैं और अंत में समस्या कथन व सफलता लक्ष्य बनता है।",
+   "डेटा अधिग्रहण में अनुमति से पर्याप्त, विविध, संतुलित, सही लेबल वाला डेटा जुटाया जाता है; प्राथमिक डेटा अपना होता है, द्वितीयक डेटा दोबारा उपयोग होता है।",
+   "परीक्षण डेटा को ट्रेनिंग डेटा से अलग रखें, जैसे हर 5 में से 1 उदाहरण।",
+   "डेटा अन्वेषण में मॉडलिंग से पहले डेटा साफ़ करके, गिनकर और ग्राफ़ बनाकर गलतियाँ, असंतुलन और पैटर्न ढूँढे जाते हैं।",
+   "मॉडलिंग में नियम-आधारित (इंसानों के लिखे IF-THEN नियम) या सीखने-आधारित (उदाहरणों से सीखने वाले) मॉडल चुने जाते हैं; Teachable Machine चित्र, ऑडियो और मुद्रा मॉडल सिखाता है।",
+   "भरोसा दिखाता है कि मॉडल कितना निश्चित है, यह नहीं कि वह सही है।",
+   "मूल्यांकन बिना देखे डेटा पर जाँच है: शुद्धता = सही ÷ कुल × 100; हर क्लास और समूह भी जाँचें और गलतियों का अध्ययन करें।",
+   "परिनियोजन में आसान डिज़ाइन, प्रतिक्रिया और असली परिणामों की माप के साथ मॉडल का असली उपयोग होता है।",
+   "चक्र वापस घूमता है: खराब परिणाम आपको डेटा और मॉडल सुधारने के लिए पिछले चरणों पर भेजते हैं।",
+   "हर प्रोजेक्ट को नैतिकता जाँच चाहिए: निजता और सहमति, निष्पक्षता, जवाबदेही, सुरक्षा, समावेश और स्थिरता।",
+   "स्पष्ट भूमिकाओं वाली टीमों में काम करें और समस्या, डेटा, मॉडल, परिणाम, नैतिकता और सीमाएँ ईमानदारी से प्रस्तुत करें।"
+  ]
+ }
+}
