@@ -1,0 +1,1970 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "8",
+ "id": "ch7",
+ "intro": {
+  "en": "So far you have learned what AI is, how it learns from data and how to use it responsibly. Now it is time to give instructions to a computer yourself. In this chapter you will take your first steps in Python, the language most widely used for AI. You will write programs that print messages, take input, store data in variables and lists, make decisions with if-else, repeat steps with loops, and reuse code with functions. Finally you will build tiny programs that copy real AI ideas: a rule-based chatbot, a spam checker, a nearest-neighbour fruit classifier and your first machine learning model with a Python library. Every program in this chapter has been run, and the output shown is its real output.",
+  "hi": "अब तक आपने सीखा कि AI क्या है, यह डेटा से कैसे सीखता है और इसका ज़िम्मेदार उपयोग कैसे करें। अब समय है कि आप खुद कंप्यूटर को निर्देश दें। इस अध्याय में आप Python में पहले कदम रखेंगे, जो AI के लिए सबसे अधिक उपयोग होने वाली भाषा है। आप ऐसे प्रोग्राम लिखेंगे जो संदेश छापें, इनपुट लें, डेटा को variables और lists में रखें, if-else से निर्णय लें, loops से कदम दोहराएँ, और functions से कोड दोबारा उपयोग करें। अंत में आप ऐसे छोटे प्रोग्राम बनाएँगे जो असली AI विचारों की नकल करते हैं: नियम-आधारित chatbot, spam जाँचक, nearest-neighbour फल वर्गीकारक और Python library से आपका पहला machine learning model। इस अध्याय का हर प्रोग्राम चलाकर देखा गया है, और दिखाया गया आउटपुट उसका असली आउटपुट है।"
+ },
+ "learn": {
+  "en": [
+   "What a program and a programming language are, and why Python is popular for AI",
+   "Free ways to run Python on a phone or computer (Google Colab, online editors, IDLE) and block-based tools",
+   "print(), comments, input() and type conversion with int() and float()",
+   "Variables, naming rules and data types: int, float, str, bool",
+   "Operators: arithmetic, comparison and logical (and, or, not)",
+   "Strings and lists, indexing, and functions like len(), sum(), max(), min(), append()",
+   "Decisions with if, elif and else, and the importance of indentation",
+   "Repetition with for loops, range() and while loops",
+   "Writing your own functions with def and return",
+   "Reading and fixing common errors (SyntaxError, NameError, TypeError, IndentationError)",
+   "Mini AI programs: a rule-based chatbot, a spam checker, a nearest-neighbour classifier and a scikit-learn decision tree"
+  ],
+  "hi": [
+   "प्रोग्राम और प्रोग्रामिंग भाषा क्या हैं, और Python AI के लिए लोकप्रिय क्यों है",
+   "फ़ोन या कंप्यूटर पर Python चलाने के मुफ़्त तरीके (Google Colab, ऑनलाइन editor, IDLE) और block-based टूल",
+   "print(), comments, input() और int() व float() से type बदलना",
+   "Variables, नाम रखने के नियम और data types: int, float, str, bool",
+   "Operators: गणितीय, तुलना और तार्किक (and, or, not)",
+   "Strings और lists, indexing, और len(), sum(), max(), min(), append() जैसे functions",
+   "if, elif और else से निर्णय, और indentation का महत्व",
+   "for loop, range() और while loop से दोहराव",
+   "def और return से अपने functions लिखना",
+   "आम त्रुटियाँ पढ़ना और ठीक करना (SyntaxError, NameError, TypeError, IndentationError)",
+   "छोटे AI प्रोग्राम: नियम-आधारित chatbot, spam जाँचक, nearest-neighbour वर्गीकारक और scikit-learn decision tree"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "7.1 Programs, coding and Python",
+    "hi": "7.1 प्रोग्राम, कोडिंग और Python"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Program",
+       "hi": "प्रोग्राम (Program)"
+      },
+      "text": {
+       "en": "A program is a set of exact, step-by-step instructions that tells a computer what to do. Writing programs is called programming or coding.",
+       "hi": "प्रोग्राम सटीक, चरण-दर-चरण निर्देशों का समूह है जो कंप्यूटर को बताता है कि क्या करना है। प्रोग्राम लिखने को programming या coding कहते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A computer follows instructions exactly, without guessing what you meant. If a recipe says 'add salt' a cook uses common sense; a computer needs 'add 5 grams of salt at step 3'. A programming language is a special language with strict rules (called syntax) that both people and computers can understand. Examples are Python, Scratch, Java, C++ and JavaScript.",
+      "hi": "कंप्यूटर निर्देशों का ठीक-ठीक पालन करता है, यह अनुमान लगाए बिना कि आपका मतलब क्या था। अगर नुस्खे में लिखा हो 'नमक डालो' तो रसोइया समझदारी लगाता है; कंप्यूटर को चाहिए 'चरण 3 पर 5 ग्राम नमक डालो'। programming language कड़े नियमों (जिन्हें syntax कहते हैं) वाली विशेष भाषा है जिसे लोग और कंप्यूटर दोनों समझ सकें। उदाहरण हैं Python, Scratch, Java, C++ और JavaScript।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Algorithm",
+       "hi": "Algorithm (एल्गोरिदम)"
+      },
+      "text": {
+       "en": "An algorithm is a clear, finite list of steps to solve a problem. A program is an algorithm written in a programming language.",
+       "hi": "algorithm किसी समस्या को हल करने के स्पष्ट, सीमित चरणों की सूची है। प्रोग्राम किसी programming language में लिखा गया algorithm है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Python was created by Guido van Rossum and first released in 1991. It is named after a British comedy show, not the snake. Why is it the favourite language for AI?",
+      "hi": "Python को Guido van Rossum ने बनाया और पहली बार 1991 में जारी किया। इसका नाम एक ब्रिटिश हास्य कार्यक्रम पर रखा गया, साँप पर नहीं। यह AI की पसंदीदा भाषा क्यों है?"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Easy to read: Python code looks close to English, e.g. 'if marks > 33: print(\"Pass\")'.",
+       "Free and open source: anyone can download and use it.",
+       "Huge collection of libraries (ready-made code): NumPy for numbers, Pandas for tables of data, Matplotlib for graphs, scikit-learn for machine learning, and TensorFlow and PyTorch for deep learning.",
+       "Large community: lots of free tutorials and help in many languages, including Hindi.",
+       "Works everywhere: Windows, Mac, Linux, and in a web browser through free notebooks."
+      ],
+      "hi": [
+       "पढ़ने में आसान: Python कोड अंग्रेज़ी जैसा दिखता है, जैसे 'if marks > 33: print(\"Pass\")'।",
+       "मुफ़्त और open source: कोई भी डाउनलोड और उपयोग कर सकता है।",
+       "libraries (तैयार कोड) का विशाल संग्रह: संख्याओं के लिए NumPy, डेटा तालिकाओं के लिए Pandas, ग्राफ़ के लिए Matplotlib, machine learning के लिए scikit-learn, और deep learning के लिए TensorFlow व PyTorch।",
+       "बड़ा समुदाय: हिंदी सहित कई भाषाओं में बहुत-से मुफ़्त ट्यूटोरियल और मदद।",
+       "हर जगह चलता है: Windows, Mac, Linux, और मुफ़्त notebooks के ज़रिए वेब ब्राउज़र में।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Where can you run Python for free?",
+      "hi": "Python मुफ़्त में कहाँ चला सकते हैं?"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Option",
+        "What it is",
+        "Good for"
+       ],
+       "hi": [
+        "विकल्प",
+        "यह क्या है",
+        "किसके लिए अच्छा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Google Colab",
+         "A free online notebook that runs Python in the browser; needs a Google account (an adult should create it for under-13s)",
+         "Phones, tablets, laptops; AI projects with libraries"
+        ],
+        [
+         "Online Python editors",
+         "Websites where you type code and press Run",
+         "Quick practice without installing anything"
+        ],
+        [
+         "IDLE (from python.org)",
+         "The editor that comes with Python when installed on a computer",
+         "School computer labs, offline work"
+        ],
+        [
+         "Python apps on Android",
+         "Free apps that run small Python programs on a phone",
+         "Practice anywhere"
+        ],
+        [
+         "Scratch / PictoBlox",
+         "Block-based coding: drag and snap blocks; PictoBlox adds AI and ML blocks and can also show Python",
+         "Beginners, games, AI projects with a camera"
+        ]
+       ],
+       "hi": [
+        [
+         "Google Colab",
+         "मुफ़्त ऑनलाइन notebook जो ब्राउज़र में Python चलाता है; Google खाता चाहिए (13 से कम आयु वालों के लिए कोई बड़ा बनाए)",
+         "फ़ोन, टैबलेट, लैपटॉप; libraries वाली AI परियोजनाएँ"
+        ],
+        [
+         "ऑनलाइन Python editor",
+         "वेबसाइटें जहाँ आप कोड लिखकर Run दबाते हैं",
+         "बिना कुछ install किए जल्दी अभ्यास"
+        ],
+        [
+         "IDLE (python.org से)",
+         "कंप्यूटर पर Python install करने पर साथ आने वाला editor",
+         "स्कूल की कंप्यूटर लैब, ऑफ़लाइन काम"
+        ],
+        [
+         "Android पर Python ऐप",
+         "मुफ़्त ऐप जो फ़ोन पर छोटे Python प्रोग्राम चलाते हैं",
+         "कहीं भी अभ्यास"
+        ],
+        [
+         "Scratch / PictoBlox",
+         "Block-based coding: blocks खींचकर जोड़ें; PictoBlox में AI और ML blocks हैं और यह Python भी दिखा सकता है",
+         "शुरुआती, खेल, कैमरे वाली AI परियोजनाएँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "In Class 6 (Chapter 5) you read a tiny Python program that found a pattern in chai sales. Now you will learn to write such programs yourself. Type each program, run it, and then change something to see what happens: that is the best way to learn coding.",
+      "hi": "कक्षा 6 (अध्याय 5) में आपने एक छोटा Python प्रोग्राम पढ़ा था जो चाय की बिक्री में पैटर्न ढूँढता था। अब आप ऐसे प्रोग्राम खुद लिखना सीखेंगे। हर प्रोग्राम टाइप कीजिए, चलाइए, फिर कुछ बदलकर देखिए कि क्या होता है: कोडिंग सीखने का यही सबसे अच्छा तरीका है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.2 Your first program: print() and comments",
+    "hi": "7.2 आपका पहला प्रोग्राम: print() और comments"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The print() function shows output on the screen. Text must be inside quotation marks (single ' ' or double \" \"); numbers and calculations can be written without quotes. Lines that begin with # are comments: Python ignores them, and they are notes for people reading the code.",
+      "hi": "print() function स्क्रीन पर आउटपुट दिखाता है। टेक्स्ट उद्धरण चिह्नों (single ' ' या double \" \") के अंदर होना चाहिए; संख्याएँ और गणनाएँ बिना उद्धरण के लिखी जा सकती हैं। # से शुरू होने वाली पंक्तियाँ comments हैं: Python उन्हें अनदेखा करता है, वे कोड पढ़ने वालों के लिए नोट हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# My first Python program\nprint(\"Hello, I am learning AI!\")\nprint(\"Namaste\", \"Bharat\", sep=\" - \")\nprint(7 + 5)",
+      "hi": "# My first Python program\nprint(\"Hello, I am learning AI!\")\nprint(\"Namaste\", \"Bharat\", sep=\" - \")\nprint(7 + 5)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Hello, I am learning AI!\nNamaste - Bharat\n12",
+      "hi": "Hello, I am learning AI!\nNamaste - Bharat\n12"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Line 1 is a comment; nothing is printed for it.",
+       "Line 2 prints the text exactly as written inside the quotes.",
+       "Line 3 prints two pieces of text; sep=\" - \" tells print() to put ' - ' between them instead of the usual single space.",
+       "Line 4 has no quotes, so Python calculates 7 + 5 and prints 12. If you wrote print(\"7 + 5\") it would print the text 7 + 5."
+      ],
+      "hi": [
+       "पंक्ति 1 comment है; इसके लिए कुछ नहीं छपता।",
+       "पंक्ति 2 उद्धरण चिह्नों के अंदर लिखा टेक्स्ट जैसा-का-तैसा छापती है।",
+       "पंक्ति 3 टेक्स्ट के दो टुकड़े छापती है; sep=\" - \" print() को बताता है कि उनके बीच सामान्य एक खाली जगह की बजाय ' - ' लगाए।",
+       "पंक्ति 4 में उद्धरण नहीं हैं, इसलिए Python 7 + 5 की गणना करके 12 छापता है। अगर आप print(\"7 + 5\") लिखते तो टेक्स्ट 7 + 5 छपता।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Python is case-sensitive: print works, but Print or PRINT gives an error. Also, every opening bracket or quote needs a closing one.",
+      "hi": "Python case-sensitive है: print काम करता है, पर Print या PRINT त्रुटि देते हैं। साथ ही, हर खुलते कोष्ठक या उद्धरण चिह्न का बंद होना ज़रूरी है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3 Variables and data types",
+    "hi": "7.3 Variables और data types"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Variable",
+       "hi": "Variable (चर)"
+      },
+      "text": {
+       "en": "A variable is a name that stores a value in the computer's memory, like a labelled box. You create it with the = sign, called the assignment operator.",
+       "hi": "variable एक नाम है जो कंप्यूटर की memory में एक मान रखता है, जैसे लेबल लगा डिब्बा। इसे = चिह्न से बनाते हैं, जिसे assignment operator कहते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "In marks = 85, the name is marks and the value 85 is stored in it. The = here does not mean 'equals' as in maths; it means 'put the value on the right into the box on the left'. So marks = marks + 5 is valid: it takes the old value, adds 5 and stores the new value.",
+      "hi": "marks = 85 में नाम marks है और उसमें मान 85 रखा गया है। यहाँ = का अर्थ गणित वाला 'बराबर' नहीं; इसका अर्थ है 'दाईं ओर के मान को बाईं ओर के डिब्बे में रखो'। इसलिए marks = marks + 5 सही है: यह पुराना मान लेकर 5 जोड़ता है और नया मान रखता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Rules for variable names: they can have letters, digits and underscores (_); they cannot start with a digit; they cannot have spaces; they cannot be Python keywords such as if, for or while (naming a variable print is allowed but is a bad idea). Good names describe the value: total_marks, city_name. Bad names: 2marks (starts with a digit), total marks (space), if (keyword).",
+      "hi": "variable के नाम के नियम: इनमें अक्षर, अंक और underscore (_) हो सकते हैं; ये अंक से शुरू नहीं हो सकते; इनमें खाली जगह नहीं हो सकती; ये if, for, while जैसे Python keywords नहीं हो सकते (print रखना संभव है पर बुरा विचार है)। अच्छे नाम मान का वर्णन करते हैं: total_marks, city_name। बुरे नाम: 2marks (अंक से शुरू), total marks (खाली जगह), if (keyword)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Data type",
+        "Meaning",
+        "Examples"
+       ],
+       "hi": [
+        "Data type",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "int",
+         "Whole numbers (integers), positive or negative",
+         "85, -3, 2026"
+        ],
+        [
+         "float",
+         "Numbers with a decimal point",
+         "1.52, 36.6, 99.5"
+        ],
+        [
+         "str",
+         "String: text inside quotes",
+         "\"Asha\", 'Pune', \"123\""
+        ],
+        [
+         "bool",
+         "Boolean: only True or False",
+         "True, False"
+        ]
+       ],
+       "hi": [
+        [
+         "int",
+         "पूर्ण संख्याएँ (integers), धनात्मक या ऋणात्मक",
+         "85, -3, 2026"
+        ],
+        [
+         "float",
+         "दशमलव वाली संख्याएँ",
+         "1.52, 36.6, 99.5"
+        ],
+        [
+         "str",
+         "String: उद्धरण चिह्नों के अंदर टेक्स्ट",
+         "\"Asha\", 'Pune', \"123\""
+        ],
+        [
+         "bool",
+         "Boolean: केवल True या False",
+         "True, False"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "name = \"Asha\"\nmarks = 85\nheight = 1.52\npassed = True\nprint(name, marks, height, passed)\nprint(type(name), type(marks), type(height), type(passed))",
+      "hi": "name = \"Asha\"\nmarks = 85\nheight = 1.52\npassed = True\nprint(name, marks, height, passed)\nprint(type(name), type(marks), type(height), type(passed))"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Asha 85 1.52 True\n<class 'str'> <class 'int'> <class 'float'> <class 'bool'>",
+      "hi": "Asha 85 1.52 True\n<class 'str'> <class 'int'> <class 'float'> <class 'bool'>"
+     }
+    },
+    {
+     "p": {
+      "en": "The type() function tells you the data type of a value. Note that \"123\" in quotes is a string, not a number; you cannot do maths with it until you convert it.",
+      "hi": "type() function किसी मान का data type बताता है। ध्यान दें कि उद्धरण में लिखा \"123\" string है, संख्या नहीं; उसे बदले बिना आप उससे गणित नहीं कर सकते।"
+     }
+    },
+    {
+     "note": {
+      "en": "Data types matter in AI: a dataset has columns of numbers (int, float), text (str) and yes/no values (bool). Choosing the right type is the first step of data handling (Chapter 2).",
+      "hi": "AI में data types मायने रखते हैं: dataset में संख्याओं (int, float), टेक्स्ट (str) और हाँ/नहीं मानों (bool) के कॉलम होते हैं। सही type चुनना डेटा संभालने का पहला कदम है (अध्याय 2)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.4 Taking input from the user",
+    "hi": "7.4 उपयोगकर्ता से इनपुट लेना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The input() function shows a message, waits for the user to type something and press Enter, and gives back what was typed as a string. To do maths with it, convert it using int() for whole numbers or float() for decimals.",
+      "hi": "input() function एक संदेश दिखाता है, उपयोगकर्ता के कुछ टाइप करके Enter दबाने की प्रतीक्षा करता है, और जो टाइप हुआ उसे string के रूप में लौटाता है। उससे गणित करने के लिए पूर्ण संख्याओं के लिए int() या दशमलव के लिए float() से बदलें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "name = input(\"What is your name? \")\nage = int(input(\"How old are you? \"))\nprint(\"Namaste,\", name + \"!\")\nprint(\"Next year you will be\", age + 1, \"years old.\")",
+      "hi": "name = input(\"What is your name? \")\nage = int(input(\"How old are you? \"))\nprint(\"Namaste,\", name + \"!\")\nprint(\"Next year you will be\", age + 1, \"years old.\")"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the user types Ravi and 13 (the typed answers are shown after each question):",
+      "hi": "जब उपयोगकर्ता Ravi और 13 टाइप करे तब आउटपुट (टाइप किए उत्तर हर प्रश्न के बाद दिखाए गए हैं):"
+     }
+    },
+    {
+     "formula": {
+      "en": "What is your name? Ravi\nHow old are you? 13\nNamaste, Ravi!\nNext year you will be 14 years old.",
+      "hi": "What is your name? Ravi\nHow old are you? 13\nNamaste, Ravi!\nNext year you will be 14 years old."
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Line 1 stores the typed name (a string) in name.",
+       "Line 2: input() returns the string \"13\"; int() changes it to the number 13 so that age + 1 works.",
+       "Line 3: name + \"!\" joins two strings (this is called concatenation).",
+       "Line 4 prints 14, the result of 13 + 1."
+      ],
+      "hi": [
+       "पंक्ति 1 टाइप किया गया नाम (string) name में रखती है।",
+       "पंक्ति 2: input() string \"13\" लौटाता है; int() उसे संख्या 13 में बदलता है ताकि age + 1 काम करे।",
+       "पंक्ति 3: name + \"!\" दो strings को जोड़ता है (इसे concatenation कहते हैं)।",
+       "पंक्ति 4 13 + 1 का परिणाम 14 छापती है।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.5 Operators: doing calculations and comparisons",
+    "hi": "7.5 Operators: गणना और तुलना"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Operator",
+        "Meaning",
+        "Example with a = 17, b = 5",
+        "Result"
+       ],
+       "hi": [
+        "Operator",
+        "अर्थ",
+        "a = 17, b = 5 के साथ उदाहरण",
+        "परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "+",
+         "Add",
+         "a + b",
+         "22"
+        ],
+        [
+         "-",
+         "Subtract",
+         "a - b",
+         "12"
+        ],
+        [
+         "*",
+         "Multiply",
+         "a * b",
+         "85"
+        ],
+        [
+         "/",
+         "Divide (always gives a float)",
+         "a / b",
+         "3.4"
+        ],
+        [
+         "//",
+         "Floor division (whole-number part)",
+         "a // b",
+         "3"
+        ],
+        [
+         "%",
+         "Modulus (remainder)",
+         "a % b",
+         "2"
+        ],
+        [
+         "**",
+         "Power",
+         "a ** 2",
+         "289"
+        ]
+       ],
+       "hi": [
+        [
+         "+",
+         "जोड़",
+         "a + b",
+         "22"
+        ],
+        [
+         "-",
+         "घटाव",
+         "a - b",
+         "12"
+        ],
+        [
+         "*",
+         "गुणा",
+         "a * b",
+         "85"
+        ],
+        [
+         "/",
+         "भाग (हमेशा float देता है)",
+         "a / b",
+         "3.4"
+        ],
+        [
+         "//",
+         "Floor division (पूर्ण संख्या वाला भाग)",
+         "a // b",
+         "3"
+        ],
+        [
+         "%",
+         "Modulus (शेषफल)",
+         "a % b",
+         "2"
+        ],
+        [
+         "**",
+         "घात",
+         "a ** 2",
+         "289"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Comparison operators compare two values and give a bool (True or False): > greater than, < less than, >= greater than or equal to, <= less than or equal to, == equal to, != not equal to. Note: = stores a value, while == checks whether two values are equal.",
+      "hi": "तुलना operators दो मानों की तुलना करके bool (True या False) देते हैं: > से बड़ा, < से छोटा, >= बड़ा या बराबर, <= छोटा या बराबर, == बराबर, != बराबर नहीं। ध्यान दें: = मान रखता है, जबकि == जाँचता है कि दो मान बराबर हैं या नहीं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "a = 17\nb = 5\nprint(a + b, a - b, a * b, a / b)\nprint(a // b, a % b, a ** 2)\nprint(a > b, a == b, a != b)",
+      "hi": "a = 17\nb = 5\nprint(a + b, a - b, a * b, a / b)\nprint(a // b, a % b, a ** 2)\nprint(a > b, a == b, a != b)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "22 12 85 3.4\n3 2 289\nTrue False True",
+      "hi": "22 12 85 3.4\n3 2 289\nTrue False True"
+     }
+    },
+    {
+     "p": {
+      "en": "Logical operators combine conditions: and is True only if both conditions are True; or is True if at least one is True; not reverses True and False.",
+      "hi": "तार्किक operators शर्तों को जोड़ते हैं: and तभी True है जब दोनों शर्तें True हों; or तब True है जब कम-से-कम एक True हो; not, True और False को उलट देता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "age = 12\nhas_permission = True\nif age >= 13 or has_permission:\n    print(\"You may use the learning app.\")\ntemp = 38\nhumid = 80\nif temp > 35 and humid > 70:\n    print(\"Alert: hot and humid, drink water!\")\nprint(not has_permission)",
+      "hi": "age = 12\nhas_permission = True\nif age >= 13 or has_permission:\n    print(\"You may use the learning app.\")\ntemp = 38\nhumid = 80\nif temp > 35 and humid > 70:\n    print(\"Alert: hot and humid, drink water!\")\nprint(not has_permission)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "You may use the learning app.\nAlert: hot and humid, drink water!\nFalse",
+      "hi": "You may use the learning app.\nAlert: hot and humid, drink water!\nFalse"
+     }
+    },
+    {
+     "p": {
+      "en": "Order of operations: Python follows the usual maths order: brackets first, then **, then *, /, //, %, then + and -. So 2 + 3 * 4 is 14, and (2 + 3) * 4 is 20.",
+      "hi": "संक्रियाओं का क्रम: Python सामान्य गणित का क्रम मानता है: पहले कोष्ठक, फिर **, फिर *, /, //, %, फिर + और -। इसलिए 2 + 3 * 4 का मान 14 है, और (2 + 3) * 4 का 20।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A shop sells pens at Rs 12 each. Write Python statements to find the cost of 7 pens and how much change you get from Rs 100.",
+       "hi": "एक दुकान पेन 12 रुपये प्रति पेन बेचती है। 7 पेन की कीमत और 100 रुपये में से बचे पैसे निकालने के Python कथन लिखिए।"
+      },
+      "a": {
+       "en": "price = 12\ncount = 7\ncost = price * count      # 84\nchange = 100 - cost       # 16\nprint(\"Cost:\", cost, \"Change:\", change)\nOutput: Cost: 84 Change: 16",
+       "hi": "price = 12\ncount = 7\ncost = price * count      # 84\nchange = 100 - cost       # 16\nprint(\"Cost:\", cost, \"Change:\", change)\nआउटपुट: Cost: 84 Change: 16"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.6 Strings: working with text",
+    "hi": "7.6 Strings: टेक्स्ट के साथ काम"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Much of AI works with text: chat messages, reviews, search queries. Python strings have useful tools. Each character has a position number called an index, starting from 0. Negative indexes count from the end: -1 is the last character.",
+      "hi": "AI का बहुत-सा काम टेक्स्ट से होता है: चैट संदेश, समीक्षाएँ, खोज-प्रश्न। Python strings के पास उपयोगी औज़ार हैं। हर अक्षर की एक स्थिति-संख्या होती है जिसे index कहते हैं, जो 0 से शुरू होती है। ऋणात्मक index अंत से गिनते हैं: -1 अंतिम अक्षर है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "city = \"New Delhi\"\nprint(len(city))\nprint(city.upper())\nprint(city.lower())\nprint(\"Delhi\" in city)\ngreeting = \"Namaste \" + city\nprint(greeting)\nprint(city[0], city[-1])",
+      "hi": "city = \"New Delhi\"\nprint(len(city))\nprint(city.upper())\nprint(city.lower())\nprint(\"Delhi\" in city)\ngreeting = \"Namaste \" + city\nprint(greeting)\nprint(city[0], city[-1])"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "9\nNEW DELHI\nnew delhi\nTrue\nNamaste New Delhi\nN i",
+      "hi": "9\nNEW DELHI\nnew delhi\nTrue\nNamaste New Delhi\nN i"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "len(city) counts characters, including the space: 'New Delhi' has 9.",
+       ".upper() and .lower() change the case. Chatbots often convert messages to lowercase so that 'Hello', 'HELLO' and 'hello' are treated the same.",
+       "\"Delhi\" in city checks whether one string is inside another, giving True or False.",
+       "+ joins strings; city[0] is the first character 'N' and city[-1] the last character 'i'."
+      ],
+      "hi": [
+       "len(city) खाली जगह सहित अक्षर गिनता है: 'New Delhi' में 9 हैं।",
+       ".upper() और .lower() अक्षरों का रूप (बड़ा/छोटा) बदलते हैं। chatbot अक्सर संदेशों को छोटे अक्षरों में बदलते हैं ताकि 'Hello', 'HELLO' और 'hello' एक जैसे माने जाएँ।",
+       "\"Delhi\" in city जाँचता है कि एक string दूसरी के अंदर है या नहीं, और True या False देता है।",
+       "+ strings जोड़ता है; city[0] पहला अक्षर 'N' है और city[-1] अंतिम अक्षर 'i'।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.7 Lists: storing many values",
+    "hi": "7.7 Lists: बहुत-से मान रखना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "List",
+       "hi": "List (सूची)"
+      },
+      "text": {
+       "en": "A list is an ordered collection of values stored in one variable, written inside square brackets and separated by commas, e.g. temps = [31, 33, 35].",
+       "hi": "list एक variable में रखे गए मानों का क्रमबद्ध संग्रह है, जिसे वर्गाकार कोष्ठकों में अल्पविराम लगाकर लिखा जाता है, जैसे temps = [31, 33, 35]।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Data for AI usually comes as many values: a week of temperatures, a list of scores, all the words in a sentence. Lists let you store and process them together. Like strings, list items have indexes starting at 0.",
+      "hi": "AI के लिए डेटा आमतौर पर बहुत-से मानों में आता है: एक हफ़्ते का तापमान, अंकों की सूची, किसी वाक्य के सभी शब्द। lists आपको इन्हें एक साथ रखने और संसाधित करने देती हैं। strings की तरह list के items के index भी 0 से शुरू होते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "temps = [31, 33, 35, 34, 36]\nprint(\"First day:\", temps[0])\nprint(\"Last day:\", temps[-1])\nprint(\"Days:\", len(temps))\nprint(\"Highest:\", max(temps), \"Lowest:\", min(temps))\naverage = sum(temps) / len(temps)\nprint(\"Average:\", round(average, 1))\ntemps.append(38)\nprint(\"After adding Saturday:\", temps)",
+      "hi": "temps = [31, 33, 35, 34, 36]\nprint(\"First day:\", temps[0])\nprint(\"Last day:\", temps[-1])\nprint(\"Days:\", len(temps))\nprint(\"Highest:\", max(temps), \"Lowest:\", min(temps))\naverage = sum(temps) / len(temps)\nprint(\"Average:\", round(average, 1))\ntemps.append(38)\nprint(\"After adding Saturday:\", temps)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "First day: 31\nLast day: 36\nDays: 5\nHighest: 36 Lowest: 31\nAverage: 33.8\nAfter adding Saturday: [31, 33, 35, 34, 36, 38]",
+      "hi": "First day: 31\nLast day: 36\nDays: 5\nHighest: 36 Lowest: 31\nAverage: 33.8\nAfter adding Saturday: [31, 33, 35, 34, 36, 38]"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Tool",
+        "What it does",
+        "Example result for [31, 33, 35, 34, 36]"
+       ],
+       "hi": [
+        "औज़ार",
+        "क्या करता है",
+        "[31, 33, 35, 34, 36] के लिए उदाहरण परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "temps[0]",
+         "First item",
+         "31"
+        ],
+        [
+         "temps[-1]",
+         "Last item",
+         "36"
+        ],
+        [
+         "len(temps)",
+         "Number of items",
+         "5"
+        ],
+        [
+         "max(temps), min(temps)",
+         "Largest and smallest",
+         "36, 31"
+        ],
+        [
+         "sum(temps)",
+         "Total",
+         "169"
+        ],
+        [
+         "sum(temps) / len(temps)",
+         "Average (mean)",
+         "33.8"
+        ],
+        [
+         "temps.append(38)",
+         "Adds 38 at the end",
+         "[31, 33, 35, 34, 36, 38]"
+        ],
+        [
+         "round(x, 1)",
+         "Rounds x to 1 decimal place",
+         "round(33.83, 1) is 33.8"
+        ]
+       ],
+       "hi": [
+        [
+         "temps[0]",
+         "पहला item",
+         "31"
+        ],
+        [
+         "temps[-1]",
+         "अंतिम item",
+         "36"
+        ],
+        [
+         "len(temps)",
+         "items की संख्या",
+         "5"
+        ],
+        [
+         "max(temps), min(temps)",
+         "सबसे बड़ा और सबसे छोटा",
+         "36, 31"
+        ],
+        [
+         "sum(temps)",
+         "योग",
+         "169"
+        ],
+        [
+         "sum(temps) / len(temps)",
+         "औसत (माध्य)",
+         "33.8"
+        ],
+        [
+         "temps.append(38)",
+         "अंत में 38 जोड़ता है",
+         "[31, 33, 35, 34, 36, 38]"
+        ],
+        [
+         "round(x, 1)",
+         "x को 1 दशमलव स्थान तक पूर्णांकित करता है",
+         "round(33.83, 1) का मान 33.8"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Finding the average, highest and lowest values is the start of data exploration in any AI project. Libraries like Pandas do the same for tables with lakhs of rows.",
+      "hi": "औसत, सबसे बड़ा और सबसे छोटा मान निकालना किसी भी AI परियोजना में data exploration की शुरुआत है। Pandas जैसी libraries लाखों पंक्तियों वाली तालिकाओं के लिए यही करती हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.8 Making decisions: if, elif, else",
+    "hi": "7.8 निर्णय लेना: if, elif, else"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Programs often need to choose what to do. The if statement runs a block of code only when a condition is True. elif (short for 'else if') checks another condition if the earlier ones were False, and else runs when none of the conditions were True. This is exactly how a rule-based AI works: IF a condition THEN an action.",
+      "hi": "प्रोग्रामों को अक्सर चुनना होता है कि क्या करें। if कथन कोड का एक block तभी चलाता है जब शर्त True हो। elif ('else if' का छोटा रूप) पहले वाली शर्तें False होने पर दूसरी शर्त जाँचता है, और else तब चलता है जब कोई भी शर्त True न हो। नियम-आधारित AI ठीक ऐसे ही काम करता है: IF कोई शर्त THEN कोई कार्य।"
+     }
+    },
+    {
+     "formula": {
+      "en": "marks = 72\nif marks >= 90:\n    print(\"Grade A\")\nelif marks >= 75:\n    print(\"Grade B\")\nelif marks >= 50:\n    print(\"Grade C\")\nelse:\n    print(\"Needs more practice\")",
+      "hi": "marks = 72\nif marks >= 90:\n    print(\"Grade A\")\nelif marks >= 75:\n    print(\"Grade B\")\nelif marks >= 50:\n    print(\"Grade C\")\nelse:\n    print(\"Needs more practice\")"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Grade C",
+      "hi": "Grade C"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Python checks the conditions from top to bottom and runs only the first block whose condition is True.",
+       "72 >= 90 is False, 72 >= 75 is False, 72 >= 50 is True, so 'Grade C' is printed and the rest is skipped.",
+       "Each if/elif/else line ends with a colon (:).",
+       "The lines under it are indented (moved right, usually by 4 spaces). Indentation tells Python which lines belong to which block; it is not just for neatness."
+      ],
+      "hi": [
+       "Python ऊपर से नीचे शर्तें जाँचता है और केवल पहला ऐसा block चलाता है जिसकी शर्त True हो।",
+       "72 >= 90 False है, 72 >= 75 False है, 72 >= 50 True है, इसलिए 'Grade C' छपता है और बाक़ी छोड़ दिया जाता है।",
+       "हर if/elif/else पंक्ति colon (:) पर ख़त्म होती है।",
+       "उसके नीचे की पंक्तियाँ indent होती हैं (दाईं ओर खिसकी, आमतौर पर 4 spaces)। indentation Python को बताता है कि कौन-सी पंक्तियाँ किस block की हैं; यह केवल सफ़ाई के लिए नहीं है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Think of if-elif-else as a flowchart: a diamond asks 'marks >= 90?'; the 'yes' arrow goes to 'Grade A', the 'no' arrow goes to the next diamond 'marks >= 75?', and so on, with the last 'no' leading to 'Needs more practice'. It is also the same shape as a decision tree from Chapter 3.",
+      "hi": "if-elif-else को एक flowchart की तरह सोचिए: एक हीरे के आकार का डिब्बा पूछता है 'marks >= 90?'; 'हाँ' वाला तीर 'Grade A' तक जाता है, 'नहीं' वाला तीर अगले हीरे 'marks >= 75?' तक, और इसी तरह, अंतिम 'नहीं' 'Needs more practice' तक ले जाता है। यह अध्याय 3 के decision tree जैसा ही आकार है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write an if-else program for a simple weather advisor: if the temperature is above 35, print 'Very hot: drink water'; if it is between 20 and 35, print 'Pleasant'; otherwise print 'Cold: wear a sweater'.",
+       "hi": "एक सरल मौसम सलाहकार के लिए if-else प्रोग्राम लिखिए: अगर तापमान 35 से ऊपर हो तो 'Very hot: drink water' छापे; 20 और 35 के बीच हो तो 'Pleasant'; नहीं तो 'Cold: wear a sweater'।"
+      },
+      "a": {
+       "en": "temp = float(input(\"Temperature: \"))\nif temp > 35:\n    print(\"Very hot: drink water\")\nelif temp >= 20:\n    print(\"Pleasant\")\nelse:\n    print(\"Cold: wear a sweater\")\nFor input 28 it prints: Pleasant",
+       "hi": "temp = float(input(\"Temperature: \"))\nif temp > 35:\n    print(\"Very hot: drink water\")\nelif temp >= 20:\n    print(\"Pleasant\")\nelse:\n    print(\"Cold: wear a sweater\")\nइनपुट 28 के लिए यह छापता है: Pleasant"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.9 Repeating steps: loops",
+    "hi": "7.9 कदम दोहराना: loops"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Computers are great at doing the same thing many times without getting tired. A loop repeats a block of code. A for loop goes through each item of a list (or string) one by one. range(start, stop) produces numbers from start up to, but not including, stop: range(1, 6) gives 1, 2, 3, 4, 5.",
+      "hi": "कंप्यूटर बिना थके एक ही काम बहुत बार करने में माहिर हैं। loop कोड के एक block को दोहराता है। for loop किसी list (या string) के हर item से एक-एक करके गुज़रता है। range(start, stop) start से stop तक की संख्याएँ देता है, पर stop शामिल नहीं होता: range(1, 6) देता है 1, 2, 3, 4, 5।"
+     }
+    },
+    {
+     "formula": {
+      "en": "temps = [31, 33, 35, 34, 36, 38]\nhot_days = 0\nfor t in temps:\n    if t > 34:\n        hot_days = hot_days + 1\nprint(\"Hot days:\", hot_days)\nfor i in range(1, 6):\n    print(\"7 x\", i, \"=\", 7 * i)",
+      "hi": "temps = [31, 33, 35, 34, 36, 38]\nhot_days = 0\nfor t in temps:\n    if t > 34:\n        hot_days = hot_days + 1\nprint(\"Hot days:\", hot_days)\nfor i in range(1, 6):\n    print(\"7 x\", i, \"=\", 7 * i)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Hot days: 3\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35",
+      "hi": "Hot days: 3\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "hot_days starts at 0; it works as a counter.",
+       "for t in temps: takes each temperature one at a time and calls it t.",
+       "Inside the loop, if t > 34, the counter goes up by 1. Temperatures 35, 36 and 38 are above 34, so the answer is 3.",
+       "The second loop uses range(1, 6) to print the first five lines of the 7 times table."
+      ],
+      "hi": [
+       "hot_days 0 से शुरू होता है; यह गिनती करने वाले (counter) की तरह काम करता है।",
+       "for t in temps: हर तापमान को एक-एक करके लेता है और उसे t कहता है।",
+       "loop के अंदर, अगर t > 34 हो तो counter 1 बढ़ जाता है। 35, 36 और 38 तापमान 34 से ऊपर हैं, इसलिए उत्तर 3 है।",
+       "दूसरा loop range(1, 6) से 7 के पहाड़े की पहली पाँच पंक्तियाँ छापता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "A while loop repeats as long as a condition stays True. It is useful when you do not know in advance how many times to repeat, for example a chatbot that keeps talking until the user types 'bye'. Be careful: if the condition never becomes False, the loop never ends (an infinite loop). The break statement stops a loop immediately.",
+      "hi": "while loop तब तक दोहराता है जब तक शर्त True रहे। यह तब उपयोगी है जब पहले से पता न हो कि कितनी बार दोहराना है, जैसे chatbot जो तब तक बात करता रहे जब तक उपयोगकर्ता 'bye' न लिखे। सावधान: अगर शर्त कभी False न हो, तो loop कभी ख़त्म नहीं होता (infinite loop)। break कथन loop को तुरंत रोक देता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "count = 3\nwhile count > 0:\n    print(\"Rocket launch in\", count)\n    count = count - 1\nprint(\"Lift off!\")",
+      "hi": "count = 3\nwhile count > 0:\n    print(\"Rocket launch in\", count)\n    count = count - 1\nprint(\"Lift off!\")"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Rocket launch in 3\nRocket launch in 2\nRocket launch in 1\nLift off!",
+      "hi": "Rocket launch in 3\nRocket launch in 2\nRocket launch in 1\nLift off!"
+     }
+    },
+    {
+     "note": {
+      "en": "Loops are why AI can handle big data: the same few lines can process 10 values or 10 crore values. Training a model also uses loops, going over the data again and again (each full pass is called an epoch).",
+      "hi": "loops के कारण ही AI बड़ा डेटा संभाल पाता है: वही कुछ पंक्तियाँ 10 मान या 10 करोड़ मान संसाधित कर सकती हैं। model के प्रशिक्षण में भी loops होते हैं, जो डेटा पर बार-बार जाते हैं (हर पूरे चक्कर को epoch कहते हैं)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.10 Functions: reusable blocks of code",
+    "hi": "7.10 Functions: दोबारा उपयोग होने वाले कोड blocks"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Function",
+       "hi": "Function (फ़ंक्शन)"
+      },
+      "text": {
+       "en": "A function is a named block of code that does one job. You can call it whenever you need that job done, giving it inputs (called parameters or arguments) and getting back a result with return.",
+       "hi": "function कोड का एक नाम वाला block है जो एक काम करता है। जब भी वह काम करवाना हो, आप उसे call कर सकते हैं, उसे इनपुट (जिन्हें parameters या arguments कहते हैं) देकर और return से परिणाम वापस पाकर।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "You have already used built-in functions: print(), input(), len(), sum(), max(), min(), type(), int(), round(). You can also make your own with the keyword def.",
+      "hi": "आप पहले से built-in functions उपयोग कर चुके हैं: print(), input(), len(), sum(), max(), min(), type(), int(), round()। आप def keyword से अपने functions भी बना सकते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "def average(numbers):\n    return sum(numbers) / len(numbers)\n\nruns = [45, 12, 78, 33, 60]\nprint(\"Average runs:\", average(runs))",
+      "hi": "def average(numbers):\n    return sum(numbers) / len(numbers)\n\nruns = [45, 12, 78, 33, 60]\nprint(\"Average runs:\", average(runs))"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Average runs: 45.6",
+      "hi": "Average runs: 45.6"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "def average(numbers): creates a function named average with one parameter, numbers.",
+       "return sends the result back to wherever the function was called.",
+       "average(runs) calls the function with the list of a batter's runs: (45 + 12 + 78 + 33 + 60) ÷ 5 = 228 ÷ 5 = 45.6.",
+       "Functions avoid repeating the same code, make programs easier to read and are the building blocks of AI libraries."
+      ],
+      "hi": [
+       "def average(numbers): average नाम का function बनाता है जिसका एक parameter numbers है।",
+       "return परिणाम को वहाँ वापस भेजता है जहाँ से function call हुआ था।",
+       "average(runs) एक बल्लेबाज़ के रनों की list के साथ function call करता है: (45 + 12 + 78 + 33 + 60) ÷ 5 = 228 ÷ 5 = 45.6।",
+       "functions एक ही कोड दोहराने से बचाते हैं, प्रोग्राम पढ़ना आसान बनाते हैं और AI libraries की नींव हैं।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.11 Errors and debugging",
+    "hi": "7.11 त्रुटियाँ और debugging"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Everyone who codes makes mistakes; finding and fixing them is called debugging. Python's error messages tell you the line number and the type of error. Read them calmly from the bottom line.",
+      "hi": "कोड लिखने वाला हर व्यक्ति गलतियाँ करता है; उन्हें ढूँढना और ठीक करना debugging कहलाता है। Python के त्रुटि संदेश पंक्ति संख्या और त्रुटि का प्रकार बताते हैं। उन्हें शांति से, नीचे की पंक्ति से पढ़िए।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Error",
+        "Cause",
+        "Wrong code",
+        "Fix"
+       ],
+       "hi": [
+        "त्रुटि",
+        "कारण",
+        "गलत कोड",
+        "सुधार"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "SyntaxError",
+         "Breaking Python's grammar, e.g. a missing bracket, quote or colon",
+         "print(\"Hello\"",
+         "print(\"Hello\")"
+        ],
+        [
+         "NameError",
+         "Using a variable or function name that does not exist or is misspelt",
+         "print(score) when score was never created",
+         "Create it first: score = 10"
+        ],
+        [
+         "TypeError",
+         "Mixing types that cannot work together",
+         "age = input(\"Age? \")\nprint(age + 1)",
+         "age = int(input(\"Age? \"))"
+        ],
+        [
+         "IndentationError",
+         "Missing or wrong indentation after if, for, while or def",
+         "if 5 > 3:\nprint(\"yes\")",
+         "if 5 > 3:\n    print(\"yes\")"
+        ],
+        [
+         "ZeroDivisionError",
+         "Dividing by zero",
+         "print(10 / 0)",
+         "Check the divisor is not 0 first"
+        ],
+        [
+         "Logic error",
+         "No error message, but the answer is wrong",
+         "average = sum(m) / 3 when there are 5 marks",
+         "average = sum(m) / len(m)"
+        ]
+       ],
+       "hi": [
+        [
+         "SyntaxError",
+         "Python का व्याकरण तोड़ना, जैसे कोष्ठक, उद्धरण चिह्न या colon छूटना",
+         "print(\"Hello\"",
+         "print(\"Hello\")"
+        ],
+        [
+         "NameError",
+         "ऐसा variable या function नाम उपयोग करना जो बना ही न हो या गलत लिखा हो",
+         "print(score) जबकि score कभी बना नहीं",
+         "पहले बनाएँ: score = 10"
+        ],
+        [
+         "TypeError",
+         "ऐसे types मिलाना जो साथ काम नहीं कर सकते",
+         "age = input(\"Age? \")\nprint(age + 1)",
+         "age = int(input(\"Age? \"))"
+        ],
+        [
+         "IndentationError",
+         "if, for, while या def के बाद indentation न होना या गलत होना",
+         "if 5 > 3:\nprint(\"yes\")",
+         "if 5 > 3:\n    print(\"yes\")"
+        ],
+        [
+         "ZeroDivisionError",
+         "शून्य से भाग देना",
+         "print(10 / 0)",
+         "पहले जाँचें कि भाजक 0 न हो"
+        ],
+        [
+         "Logic error (तर्क त्रुटि)",
+         "कोई त्रुटि संदेश नहीं, पर उत्तर गलत",
+         "5 अंकों के लिए average = sum(m) / 3",
+         "average = sum(m) / len(m)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here is the real message Python shows for the TypeError example above (the user typed 12):",
+      "hi": "ऊपर के TypeError उदाहरण के लिए Python का असली संदेश यह है (उपयोगकर्ता ने 12 टाइप किया):"
+     }
+    },
+    {
+     "formula": {
+      "en": "Traceback (most recent call last):\n  File \"e3.py\", line 2, in <module>\n    print(age + 1)\n          ~~~~^~~\nTypeError: can only concatenate str (not \"int\") to str",
+      "hi": "Traceback (most recent call last):\n  File \"e3.py\", line 2, in <module>\n    print(age + 1)\n          ~~~~^~~\nTypeError: can only concatenate str (not \"int\") to str"
+     }
+    },
+    {
+     "note": {
+      "en": "Debugging tips: read the last line of the error; check the line number and the line just before it; look for missing brackets, quotes and colons; print the values of variables to see what is happening; change one thing at a time.",
+      "hi": "debugging के सुझाव: त्रुटि की अंतिम पंक्ति पढ़ें; पंक्ति संख्या और उससे ठीक पहले की पंक्ति जाँचें; छूटे कोष्ठक, उद्धरण और colon देखें; क्या हो रहा है यह देखने के लिए variables के मान print करें; एक बार में एक ही चीज़ बदलें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.12 Mini AI project 1: a rule-based chatbot",
+    "hi": "7.12 छोटी AI परियोजना 1: नियम-आधारित chatbot"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Let us combine what we learned: a while loop to keep chatting, input() to read messages, .lower() and 'in' to look for keywords, and if-elif-else to choose replies. This is a rule-based chatbot, similar to early chatbots like ELIZA. Modern chatbots use LLMs (Chapter 5) instead of fixed rules.",
+      "hi": "आइए जो सीखा उसे जोड़ें: बातचीत चलाते रहने के लिए while loop, संदेश पढ़ने के लिए input(), keywords ढूँढने के लिए .lower() और 'in', और उत्तर चुनने के लिए if-elif-else। यह नियम-आधारित chatbot है, ELIZA जैसे शुरुआती chatbots जैसा। आधुनिक chatbot तय नियमों की जगह LLM (अध्याय 5) उपयोग करते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# A tiny rule-based chatbot\nprint(\"Bot: Hi! Ask me about timings, fees or library. Type bye to stop.\")\nwhile True:\n    msg = input(\"You: \").lower()\n    if \"bye\" in msg:\n        print(\"Bot: Bye! Have a good day.\")\n        break\n    elif \"timing\" in msg or \"time\" in msg:\n        print(\"Bot: School runs from 8 am to 2 pm.\")\n    elif \"fee\" in msg:\n        print(\"Bot: Please ask the school office for fee details.\")\n    elif \"library\" in msg:\n        print(\"Bot: The library is open from 9 am to 1 pm.\")\n    else:\n        print(\"Bot: Sorry, I do not know that yet.\")",
+      "hi": "# A tiny rule-based chatbot\nprint(\"Bot: Hi! Ask me about timings, fees or library. Type bye to stop.\")\nwhile True:\n    msg = input(\"You: \").lower()\n    if \"bye\" in msg:\n        print(\"Bot: Bye! Have a good day.\")\n        break\n    elif \"timing\" in msg or \"time\" in msg:\n        print(\"Bot: School runs from 8 am to 2 pm.\")\n    elif \"fee\" in msg:\n        print(\"Bot: Please ask the school office for fee details.\")\n    elif \"library\" in msg:\n        print(\"Bot: The library is open from 9 am to 1 pm.\")\n    else:\n        print(\"Bot: Sorry, I do not know that yet.\")"
+     }
+    },
+    {
+     "p": {
+      "en": "A sample run (the user's messages are shown after 'You:'):",
+      "hi": "एक नमूना रन (उपयोगकर्ता के संदेश 'You:' के बाद दिखाए गए हैं):"
+     }
+    },
+    {
+     "formula": {
+      "en": "Bot: Hi! Ask me about timings, fees or library. Type bye to stop.\nYou: What are the school timings?\nBot: School runs from 8 am to 2 pm.\nYou: Is the library open?\nBot: The library is open from 9 am to 1 pm.\nYou: Who won the match?\nBot: Sorry, I do not know that yet.\nYou: bye\nBot: Bye! Have a good day.",
+      "hi": "Bot: Hi! Ask me about timings, fees or library. Type bye to stop.\nYou: What are the school timings?\nBot: School runs from 8 am to 2 pm.\nYou: Is the library open?\nBot: The library is open from 9 am to 1 pm.\nYou: Who won the match?\nBot: Sorry, I do not know that yet.\nYou: bye\nBot: Bye! Have a good day."
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "while True: repeats forever until break is reached.",
+       "Each message is changed to lowercase so 'TIMING' and 'timing' both match.",
+       "The bot looks for keywords; 'time' is inside 'timings', so the timing reply is given.",
+       "For 'Who won the match?', no rule matches, so the else reply is used. A rule-based bot only knows what its rules cover.",
+       "Typing a message with 'bye' prints a goodbye and break ends the loop."
+      ],
+      "hi": [
+       "while True: break आने तक हमेशा दोहराता है।",
+       "हर संदेश छोटे अक्षरों में बदला जाता है ताकि 'TIMING' और 'timing' दोनों मेल खाएँ।",
+       "bot keywords ढूँढता है; 'time' शब्द 'timings' के अंदर है, इसलिए समय वाला उत्तर मिलता है।",
+       "'Who won the match?' के लिए कोई नियम मेल नहीं खाता, इसलिए else वाला उत्तर आता है। नियम-आधारित bot केवल वही जानता है जो उसके नियमों में है।",
+       "'bye' वाला संदेश लिखने पर अलविदा छपता है और break loop समाप्त करता है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Try it: add a rule for 'exam' or 'holiday', or make the bot reply in Hindi. Notice how much work it takes to cover every possible question; this is why AI that learns from data is so useful.",
+      "hi": "करके देखिए: 'exam' या 'holiday' के लिए एक नियम जोड़िए, या bot को हिंदी में उत्तर देने वाला बनाइए। ध्यान दीजिए कि हर संभावित प्रश्न को कवर करने में कितना काम लगता है; इसीलिए डेटा से सीखने वाला AI इतना उपयोगी है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.13 Mini AI project 2: a spam message checker",
+    "hi": "7.13 छोटी AI परियोजना 2: spam संदेश जाँचक"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Spam filters and fraud alerts (like the warnings banks and UPI apps show) began with simple rules: count suspicious words. This program gives each message a 'spam score' and labels it.",
+      "hi": "spam filter और धोखाधड़ी अलर्ट (जैसे बैंक और UPI ऐप की चेतावनियाँ) सरल नियमों से शुरू हुए: संदिग्ध शब्द गिनो। यह प्रोग्राम हर संदेश को 'spam अंक' देकर लेबल लगाता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Spam checker: counts suspicious words\nspam_words = [\"lottery\", \"winner\", \"free\", \"urgent\", \"otp\", \"click\"]\nmessages = [\n    \"Congratulations winner! Click to claim your free lottery prize\",\n    \"Class test moved to Friday\",\n    \"Urgent: share OTP to stop your account block\",\n]\nfor m in messages:\n    words = m.lower().replace(\":\", \"\").replace(\"!\", \"\").split()\n    score = 0\n    for w in words:\n        if w in spam_words:\n            score = score + 1\n    if score >= 2:\n        label = \"SPAM\"\n    else:\n        label = \"OK\"\n    print(label, score, \"-\", m)",
+      "hi": "# Spam checker: counts suspicious words\nspam_words = [\"lottery\", \"winner\", \"free\", \"urgent\", \"otp\", \"click\"]\nmessages = [\n    \"Congratulations winner! Click to claim your free lottery prize\",\n    \"Class test moved to Friday\",\n    \"Urgent: share OTP to stop your account block\",\n]\nfor m in messages:\n    words = m.lower().replace(\":\", \"\").replace(\"!\", \"\").split()\n    score = 0\n    for w in words:\n        if w in spam_words:\n            score = score + 1\n    if score >= 2:\n        label = \"SPAM\"\n    else:\n        label = \"OK\"\n    print(label, score, \"-\", m)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "SPAM 4 - Congratulations winner! Click to claim your free lottery prize\nOK 0 - Class test moved to Friday\nSPAM 2 - Urgent: share OTP to stop your account block",
+      "hi": "SPAM 4 - Congratulations winner! Click to claim your free lottery prize\nOK 0 - Class test moved to Friday\nSPAM 2 - Urgent: share OTP to stop your account block"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "spam_words is a list of suspicious words; messages is a list of three test messages.",
+       "For each message, .lower() and .replace() clean the text, and .split() breaks it into words.",
+       "The inner loop adds 1 to score for every suspicious word found.",
+       "A score of 2 or more is labelled SPAM. Message 1 has winner, click, free, lottery (score 4); message 3 has urgent and otp (score 2).",
+       "Limits: a scammer can avoid these exact words, and a genuine message may contain 'free'. Real filters learn from lakhs of labelled messages (machine learning) instead of a fixed list."
+      ],
+      "hi": [
+       "spam_words संदिग्ध शब्दों की list है; messages तीन परीक्षण संदेशों की list है।",
+       "हर संदेश के लिए .lower() और .replace() टेक्स्ट साफ़ करते हैं, और .split() उसे शब्दों में तोड़ता है।",
+       "अंदर वाला loop मिले हर संदिग्ध शब्द पर score में 1 जोड़ता है।",
+       "2 या अधिक अंक वाले को SPAM लेबल मिलता है। संदेश 1 में winner, click, free, lottery हैं (अंक 4); संदेश 3 में urgent और otp हैं (अंक 2)।",
+       "सीमाएँ: ठग ठीक इन शब्दों से बच सकता है, और असली संदेश में भी 'free' हो सकता है। असली filter एक तय सूची की जगह लाखों लेबल वाले संदेशों से सीखते हैं (machine learning)।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.14 Mini AI project 3: learning from examples",
+    "hi": "7.14 छोटी AI परियोजना 3: उदाहरणों से सीखना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Chapter 3 you learned that machine learning finds patterns from labelled examples instead of hand-written rules. One of the simplest methods is nearest neighbour: to label a new item, find the most similar example you already know and copy its label. Here each fruit has two features: weight in grams and a colour score from 1 (green) to 10 (deep yellow).",
+      "hi": "अध्याय 3 में आपने सीखा कि machine learning हाथ से लिखे नियमों की जगह लेबल वाले उदाहरणों से पैटर्न ढूँढती है। सबसे सरल विधियों में से एक है nearest neighbour (निकटतम पड़ोसी): किसी नई चीज़ को लेबल देने के लिए, पहले से ज्ञात सबसे मिलता-जुलता उदाहरण ढूँढो और उसका लेबल ले लो। यहाँ हर फल के दो features हैं: ग्राम में वज़न और 1 (हरा) से 10 (गहरा पीला) तक रंग-अंक।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Learning from examples: nearest neighbour\n# Each fruit: [weight in grams, colour score 1-10], label\nexamples = [\n    [150, 2, \"lemon\"], [130, 3, \"lemon\"], [160, 2, \"lemon\"],\n    [300, 8, \"mango\"], [280, 9, \"mango\"], [320, 7, \"mango\"],\n]\nnew_fruit = [290, 7]\nbest_label = \"\"\nbest_distance = 100000\nfor e in examples:\n    d = abs(e[0] - new_fruit[0]) + abs(e[1] - new_fruit[1]) * 10\n    if d < best_distance:\n        best_distance = d\n        best_label = e[2]\nprint(\"Nearest example distance:\", best_distance)\nprint(\"Prediction:\", best_label)",
+      "hi": "# Learning from examples: nearest neighbour\n# Each fruit: [weight in grams, colour score 1-10], label\nexamples = [\n    [150, 2, \"lemon\"], [130, 3, \"lemon\"], [160, 2, \"lemon\"],\n    [300, 8, \"mango\"], [280, 9, \"mango\"], [320, 7, \"mango\"],\n]\nnew_fruit = [290, 7]\nbest_label = \"\"\nbest_distance = 100000\nfor e in examples:\n    d = abs(e[0] - new_fruit[0]) + abs(e[1] - new_fruit[1]) * 10\n    if d < best_distance:\n        best_distance = d\n        best_label = e[2]\nprint(\"Nearest example distance:\", best_distance)\nprint(\"Prediction:\", best_label)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Nearest example distance: 20\nPrediction: mango",
+      "hi": "Nearest example distance: 20\nPrediction: mango"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "examples is the training data: each item is [weight, colour, label].",
+       "For each example, d measures how different it is from the new fruit: the weight difference plus 10 times the colour difference (colour is multiplied so it counts as much as weight).",
+       "The loop keeps the example with the smallest distance. The mango [280, 9] gives |280 - 290| + |9 - 7| × 10 = 10 + 20 = 30; the mango [300, 8] gives 10 + 10 = 20, which is the smallest.",
+       "So the new fruit is predicted to be a mango. Nothing in the code says 'mangoes are heavy'; the answer comes from the data."
+      ],
+      "hi": [
+       "examples प्रशिक्षण डेटा है: हर item [वज़न, रंग, लेबल] है।",
+       "हर उदाहरण के लिए d मापता है कि वह नए फल से कितना अलग है: वज़न का अंतर जमा रंग के अंतर का 10 गुना (रंग को गुणा किया गया है ताकि वह वज़न जितना मायने रखे)।",
+       "loop सबसे कम दूरी वाला उदाहरण रखता है। आम [280, 9] देता है |280 - 290| + |9 - 7| × 10 = 10 + 20 = 30; आम [300, 8] देता है 10 + 10 = 20, जो सबसे छोटा है।",
+       "इसलिए नए फल का अनुमान आम है। कोड में कहीं नहीं लिखा कि 'आम भारी होते हैं'; उत्तर डेटा से आता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Now the same task with scikit-learn, a free machine learning library. (It is already available in Google Colab.) We give it the features X and labels y, call fit() to train, and predict() to label new fruits.",
+      "hi": "अब यही काम scikit-learn से, जो एक मुफ़्त machine learning library है। (यह Google Colab में पहले से उपलब्ध है।) हम इसे features X और labels y देते हैं, प्रशिक्षण के लिए fit() और नए फलों को लेबल देने के लिए predict() call करते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.tree import DecisionTreeClassifier\nX = [[150, 2], [130, 3], [160, 2], [300, 8], [280, 9], [320, 7]]\ny = [\"lemon\", \"lemon\", \"lemon\", \"mango\", \"mango\", \"mango\"]\nmodel = DecisionTreeClassifier()\nmodel.fit(X, y)\nprint(model.predict([[290, 7], [140, 3]]))",
+      "hi": "from sklearn.tree import DecisionTreeClassifier\nX = [[150, 2], [130, 3], [160, 2], [300, 8], [280, 9], [320, 7]]\ny = [\"lemon\", \"lemon\", \"lemon\", \"mango\", \"mango\", \"mango\"]\nmodel = DecisionTreeClassifier()\nmodel.fit(X, y)\nprint(model.predict([[290, 7], [140, 3]]))"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "['mango' 'lemon']",
+      "hi": "['mango' 'lemon']"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "from sklearn.tree import DecisionTreeClassifier brings in a ready-made decision tree model (Chapter 3).",
+       "X holds the features of six fruits; y holds their labels.",
+       "model.fit(X, y) trains the model: it finds rules like 'if weight is above some value, then mango'.",
+       "model.predict([[290, 7], [140, 3]]) labels two new fruits: mango and lemon.",
+       "Just a few lines use a powerful library; this is why Python is so popular for AI."
+      ],
+      "hi": [
+       "from sklearn.tree import DecisionTreeClassifier एक तैयार decision tree model (अध्याय 3) लाता है।",
+       "X में छह फलों के features हैं; y में उनके labels।",
+       "model.fit(X, y) model को प्रशिक्षित करता है: यह 'अगर वज़न किसी मान से ऊपर है, तो आम' जैसे नियम ढूँढता है।",
+       "model.predict([[290, 7], [140, 3]]) दो नए फलों को लेबल देता है: mango और lemon।",
+       "बस कुछ पंक्तियाँ एक शक्तिशाली library उपयोग करती हैं; इसीलिए Python AI के लिए इतना लोकप्रिय है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Six examples are far too few for a real model. Real projects use hundreds or thousands of examples and test the model on data it has not seen. Remember the lessons from Chapter 6: check that the data represents all kinds of fruit, not just one variety.",
+      "hi": "असली model के लिए छह उदाहरण बहुत कम हैं। असली परियोजनाएँ सैकड़ों या हज़ारों उदाहरण उपयोग करती हैं और model को ऐसे डेटा पर परखती हैं जो उसने नहीं देखा। अध्याय 6 की सीख याद रखें: जाँचें कि डेटा हर तरह के फलों का प्रतिनिधित्व करता है, केवल एक किस्म का नहीं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.15 Activities",
+    "hi": "7.15 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (unplugged): Human robot",
+       "hi": "गतिविधि 1 (बिना कंप्यूटर): इंसानी रोबोट"
+      },
+      "a": {
+       "en": "Aim: to understand that computers follow instructions exactly.\nYou need: a partner, a bottle of water on a desk.\nWhat to do: One student is the 'robot' and does only exactly what is said. The 'programmer' gives instructions to walk to the desk and pick up the bottle, e.g. 'Take 3 steps forward. Turn right. Stretch your right hand.'\nObserve: Vague instructions like 'go there' fail; the robot needs precise steps in the right order.\nLearn: A program is an exact algorithm. Mistakes in instructions are bugs; fixing them is debugging.",
+       "hi": "उद्देश्य: समझना कि कंप्यूटर निर्देशों का ठीक-ठीक पालन करते हैं।\nज़रूरत: एक साथी, मेज़ पर पानी की बोतल।\nक्या करें: एक विद्यार्थी 'रोबोट' बनता है और केवल ठीक वही करता है जो कहा जाए। 'प्रोग्रामर' मेज़ तक जाकर बोतल उठाने के निर्देश देता है, जैसे '3 कदम आगे चलो। दाएँ मुड़ो। दायाँ हाथ फैलाओ।'\nअवलोकन: 'वहाँ जाओ' जैसे अस्पष्ट निर्देश विफल होते हैं; रोबोट को सही क्रम में सटीक कदम चाहिए।\nसीख: प्रोग्राम एक सटीक algorithm है। निर्देशों की गलतियाँ bugs हैं; उन्हें ठीक करना debugging है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (screen): Your first Colab notebook",
+       "hi": "गतिविधि 2 (स्क्रीन): आपकी पहली Colab notebook"
+      },
+      "a": {
+       "en": "Aim: to run Python in a browser.\nYou need: a phone or computer, and a Google account created and supervised by a parent or teacher (or any free online Python editor that needs no sign-up).\nWhat to do: Open Google Colab, create a new notebook, type print(\"Namaste, AI!\") in a code cell and press the run button. Then run programs 7.3 to 7.7 one by one and change values to see new outputs.\nObserve: Output appears under the cell; errors appear in red with a line number.\nLearn: You can code for free on almost any device.",
+       "hi": "उद्देश्य: ब्राउज़र में Python चलाना।\nज़रूरत: फ़ोन या कंप्यूटर, और माता-पिता या शिक्षक द्वारा बनाया और देखरेख वाला Google खाता (या कोई भी मुफ़्त ऑनलाइन Python editor जिसमें sign-up न लगे)।\nक्या करें: Google Colab खोलकर नई notebook बनाइए, code cell में print(\"Namaste, AI!\") लिखकर run बटन दबाइए। फिर 7.3 से 7.7 तक के प्रोग्राम एक-एक करके चलाइए और मान बदलकर नए आउटपुट देखिए।\nअवलोकन: आउटपुट cell के नीचे आता है; त्रुटियाँ पंक्ति संख्या के साथ लाल रंग में आती हैं।\nसीख: आप लगभग किसी भी उपकरण पर मुफ़्त में कोड कर सकते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (screen): Class marks analyser",
+       "hi": "गतिविधि 3 (स्क्रीन): कक्षा अंक विश्लेषक"
+      },
+      "a": {
+       "en": "Aim: to use lists, loops and if together on real-looking data.\nYou need: Python (Colab or an online editor).\nWhat to do: Make a list of 10 made-up marks (no real names). Print the highest, lowest and average. Use a loop to count how many scored 75 or more. Then write a function grade(m) that returns 'A', 'B', 'C' or 'Needs practice' and print the grade for each mark.\nObserve: A few lines give a full summary of the data.\nLearn: This is the 'data exploration' step of the AI project cycle done with code.",
+       "hi": "उद्देश्य: असली जैसे डेटा पर lists, loops और if एक साथ उपयोग करना।\nज़रूरत: Python (Colab या ऑनलाइन editor)।\nक्या करें: 10 काल्पनिक अंकों की list बनाइए (असली नाम नहीं)। सबसे अधिक, सबसे कम और औसत छापिए। loop से गिनिए कि कितनों के 75 या अधिक अंक हैं। फिर एक function grade(m) लिखिए जो 'A', 'B', 'C' या 'Needs practice' लौटाए और हर अंक का grade छापिए।\nअवलोकन: कुछ पंक्तियाँ डेटा का पूरा सारांश दे देती हैं।\nसीख: यह कोड से किया गया AI project cycle का 'data exploration' चरण है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4 (screen): AI blocks in PictoBlox or Scratch",
+       "hi": "गतिविधि 4 (स्क्रीन): PictoBlox या Scratch में AI blocks"
+      },
+      "a": {
+       "en": "Aim: to build an AI project without typing code.\nYou need: PictoBlox (free, with AI/ML extensions) or Scratch with a machine-learning extension, under teacher supervision.\nWhat to do: Train a model to recognise 'rock', 'paper' and 'scissors' hand signs from the webcam, then use if-blocks so a sprite plays the game. If available, switch to the Python view to see the same logic as code.\nObserve: The blocks 'if', 'repeat' and 'when' are the same ideas as if, loops and events in Python.\nLearn: Block coding and Python share the same logic; moving from blocks to text code is a natural next step.",
+       "hi": "उद्देश्य: बिना कोड टाइप किए AI परियोजना बनाना।\nज़रूरत: PictoBlox (मुफ़्त, AI/ML extensions के साथ) या machine-learning extension वाला Scratch, शिक्षक की निगरानी में।\nक्या करें: webcam से 'पत्थर', 'काग़ज़' और 'कैंची' हाथ के संकेत पहचानने के लिए model प्रशिक्षित कीजिए, फिर if-blocks से एक sprite को खेल खिलाइए। अगर उपलब्ध हो, तो Python view पर जाकर वही तर्क कोड के रूप में देखिए।\nअवलोकन: 'if', 'repeat' और 'when' blocks Python के if, loops और events जैसे ही विचार हैं।\nसीख: block coding और Python का तर्क एक ही है; blocks से टेक्स्ट कोड पर जाना स्वाभाविक अगला कदम है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 5 (pair work): Bug hunt",
+       "hi": "गतिविधि 5 (जोड़ी में): bug खोज"
+      },
+      "a": {
+       "en": "Aim: to practise debugging.\nYou need: a partner, Python.\nWhat to do: Each partner writes a short working program, then secretly adds two bugs (e.g. a missing colon and a misspelt variable). Swap and fix each other's programs using the error messages.\nObserve: The error message usually points to the right line or the line just after the mistake.\nLearn: Reading error messages carefully is a key coding skill.",
+       "hi": "उद्देश्य: debugging का अभ्यास।\nज़रूरत: एक साथी, Python।\nक्या करें: हर साथी एक छोटा चालू प्रोग्राम लिखे, फिर चुपके से दो bugs डाले (जैसे छूटा colon और गलत लिखा variable)। अदला-बदली कर त्रुटि संदेशों की मदद से एक-दूसरे के प्रोग्राम ठीक करें।\nअवलोकन: त्रुटि संदेश आमतौर पर सही पंक्ति या गलती के ठीक बाद वाली पंक्ति की ओर इशारा करता है।\nसीख: त्रुटि संदेश ध्यान से पढ़ना कोडिंग का मुख्य कौशल है।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Writing Print or PRINT. Fix: Python is case-sensitive; use print in lowercase.",
+   "Forgetting quotes around text, e.g. print(Hello). Fix: text must be in quotes: print(\"Hello\"); without quotes Python looks for a variable named Hello.",
+   "Using = when you mean ==. Fix: = stores a value; == compares two values in a condition.",
+   "Doing maths with input() directly. Fix: input() returns a string; convert with int() or float().",
+   "Missing the colon after if, elif, else, for, while or def. Fix: always end these lines with :.",
+   "Wrong or missing indentation. Fix: indent the lines inside a block by 4 spaces, consistently.",
+   "Thinking list indexes start at 1. Fix: the first item is at index 0; the last is at -1.",
+   "Thinking range(1, 5) includes 5. Fix: the stop number is not included; range(1, 5) gives 1, 2, 3, 4.",
+   "Writing a while loop whose condition never becomes False. Fix: change the variable inside the loop or use break.",
+   "Starting a variable name with a digit or using spaces (2marks, total marks). Fix: use names like marks2 or total_marks."
+  ],
+  "hi": [
+   "Print या PRINT लिखना। सुधार: Python case-sensitive है; छोटे अक्षरों में print लिखें।",
+   "टेक्स्ट के चारों ओर उद्धरण भूलना, जैसे print(Hello)। सुधार: टेक्स्ट उद्धरण में हो: print(\"Hello\"); बिना उद्धरण के Python Hello नाम का variable ढूँढता है।",
+   "== की जगह = लिखना। सुधार: = मान रखता है; == शर्त में दो मानों की तुलना करता है।",
+   "input() से सीधे गणित करना। सुधार: input() string लौटाता है; int() या float() से बदलें।",
+   "if, elif, else, for, while या def के बाद colon भूलना। सुधार: इन पंक्तियों को हमेशा : से ख़त्म करें।",
+   "indentation गलत या न होना। सुधार: block के अंदर की पंक्तियों को एक जैसे 4 spaces से indent करें।",
+   "सोचना कि list के index 1 से शुरू होते हैं। सुधार: पहला item index 0 पर है; अंतिम -1 पर।",
+   "सोचना कि range(1, 5) में 5 शामिल है। सुधार: stop संख्या शामिल नहीं होती; range(1, 5) देता है 1, 2, 3, 4।",
+   "ऐसा while loop लिखना जिसकी शर्त कभी False न हो। सुधार: loop के अंदर variable बदलें या break उपयोग करें।",
+   "variable का नाम अंक से शुरू करना या उसमें खाली जगह रखना (2marks, total marks)। सुधार: marks2 या total_marks जैसे नाम रखें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Program",
+    "hi": "प्रोग्राम"
+   },
+   "d": {
+    "en": "Exact step-by-step instructions for a computer.",
+    "hi": "कंप्यूटर के लिए सटीक चरण-दर-चरण निर्देश।"
+   }
+  },
+  {
+   "t": {
+    "en": "Programming language",
+    "hi": "Programming language"
+   },
+   "d": {
+    "en": "A language with strict rules used to write programs, e.g. Python.",
+    "hi": "प्रोग्राम लिखने के लिए कड़े नियमों वाली भाषा, जैसे Python।"
+   }
+  },
+  {
+   "t": {
+    "en": "Syntax",
+    "hi": "Syntax"
+   },
+   "d": {
+    "en": "The grammar rules of a programming language.",
+    "hi": "किसी programming language के व्याकरण नियम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Algorithm",
+    "hi": "Algorithm"
+   },
+   "d": {
+    "en": "A clear, finite list of steps to solve a problem.",
+    "hi": "किसी समस्या को हल करने के स्पष्ट, सीमित चरणों की सूची।"
+   }
+  },
+  {
+   "t": {
+    "en": "Library",
+    "hi": "Library"
+   },
+   "d": {
+    "en": "A collection of ready-made code, e.g. NumPy, Pandas, Matplotlib, scikit-learn.",
+    "hi": "तैयार कोड का संग्रह, जैसे NumPy, Pandas, Matplotlib, scikit-learn।"
+   }
+  },
+  {
+   "t": {
+    "en": "Google Colab",
+    "hi": "Google Colab"
+   },
+   "d": {
+    "en": "A free online notebook for running Python in a browser.",
+    "hi": "ब्राउज़र में Python चलाने की मुफ़्त ऑनलाइन notebook।"
+   }
+  },
+  {
+   "t": {
+    "en": "Comment",
+    "hi": "Comment"
+   },
+   "d": {
+    "en": "A note in code starting with #, ignored by Python.",
+    "hi": "# से शुरू होने वाला कोड में नोट, जिसे Python अनदेखा करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "print()",
+    "hi": "print()"
+   },
+   "d": {
+    "en": "A function that displays output.",
+    "hi": "आउटपुट दिखाने वाला function।"
+   }
+  },
+  {
+   "t": {
+    "en": "input()",
+    "hi": "input()"
+   },
+   "d": {
+    "en": "A function that reads what the user types, as a string.",
+    "hi": "उपयोगकर्ता द्वारा टाइप किया गया string के रूप में पढ़ने वाला function।"
+   }
+  },
+  {
+   "t": {
+    "en": "Variable",
+    "hi": "Variable"
+   },
+   "d": {
+    "en": "A named storage place for a value.",
+    "hi": "किसी मान को रखने का नाम वाला स्थान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data type",
+    "hi": "Data type"
+   },
+   "d": {
+    "en": "The kind of value: int, float, str or bool.",
+    "hi": "मान का प्रकार: int, float, str या bool।"
+   }
+  },
+  {
+   "t": {
+    "en": "Type conversion",
+    "hi": "Type conversion"
+   },
+   "d": {
+    "en": "Changing a value's type, e.g. int(\"13\") gives 13.",
+    "hi": "मान का type बदलना, जैसे int(\"13\") देता है 13।"
+   }
+  },
+  {
+   "t": {
+    "en": "Operator",
+    "hi": "Operator"
+   },
+   "d": {
+    "en": "A symbol for an operation: arithmetic (+, -, *, /, //, %, **), comparison (==, !=, >, <, >=, <=), logical (and, or, not).",
+    "hi": "किसी संक्रिया का चिह्न: गणितीय (+, -, *, /, //, %, **), तुलना (==, !=, >, <, >=, <=), तार्किक (and, or, not)।"
+   }
+  },
+  {
+   "t": {
+    "en": "String",
+    "hi": "String"
+   },
+   "d": {
+    "en": "Text inside quotes.",
+    "hi": "उद्धरण चिह्नों के अंदर टेक्स्ट।"
+   }
+  },
+  {
+   "t": {
+    "en": "Concatenation",
+    "hi": "Concatenation"
+   },
+   "d": {
+    "en": "Joining strings with +.",
+    "hi": "+ से strings जोड़ना।"
+   }
+  },
+  {
+   "t": {
+    "en": "List",
+    "hi": "List"
+   },
+   "d": {
+    "en": "An ordered collection of values in square brackets.",
+    "hi": "वर्गाकार कोष्ठकों में मानों का क्रमबद्ध संग्रह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Index",
+    "hi": "Index"
+   },
+   "d": {
+    "en": "The position number of an item, starting at 0.",
+    "hi": "किसी item की स्थिति-संख्या, 0 से शुरू।"
+   }
+  },
+  {
+   "t": {
+    "en": "Condition",
+    "hi": "Condition (शर्त)"
+   },
+   "d": {
+    "en": "An expression that is True or False, used in if and while.",
+    "hi": "ऐसा व्यंजक जो True या False हो, if और while में उपयोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "if / elif / else",
+    "hi": "if / elif / else"
+   },
+   "d": {
+    "en": "Statements that choose which code to run based on conditions.",
+    "hi": "कथन जो शर्तों के आधार पर चुनते हैं कि कौन-सा कोड चले।"
+   }
+  },
+  {
+   "t": {
+    "en": "Indentation",
+    "hi": "Indentation"
+   },
+   "d": {
+    "en": "Spaces at the start of a line that show which block it belongs to.",
+    "hi": "पंक्ति की शुरुआत की खाली जगह जो बताती है कि वह किस block की है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Loop",
+    "hi": "Loop"
+   },
+   "d": {
+    "en": "Code that repeats: for loops go through items; while loops repeat while a condition is True.",
+    "hi": "दोहराने वाला कोड: for loop items से गुज़रता है; while loop शर्त True रहने तक दोहराता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "range()",
+    "hi": "range()"
+   },
+   "d": {
+    "en": "Produces a sequence of numbers, not including the stop value.",
+    "hi": "संख्याओं का क्रम देता है, stop मान शामिल नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "break",
+    "hi": "break"
+   },
+   "d": {
+    "en": "A statement that stops a loop immediately.",
+    "hi": "loop को तुरंत रोकने वाला कथन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Function",
+    "hi": "Function"
+   },
+   "d": {
+    "en": "A named, reusable block of code made with def; return sends back a result.",
+    "hi": "def से बना नाम वाला, दोबारा उपयोगी कोड block; return परिणाम लौटाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bug / debugging",
+    "hi": "Bug / debugging"
+   },
+   "d": {
+    "en": "A mistake in a program / finding and fixing it.",
+    "hi": "प्रोग्राम की गलती / उसे ढूँढना और ठीक करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Nearest neighbour",
+    "hi": "Nearest neighbour"
+   },
+   "d": {
+    "en": "A method that labels a new item with the label of the most similar known example.",
+    "hi": "विधि जो नई चीज़ को सबसे मिलते-जुलते ज्ञात उदाहरण का लेबल देती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "fit() / predict()",
+    "hi": "fit() / predict()"
+   },
+   "d": {
+    "en": "scikit-learn functions to train a model and to make predictions.",
+    "hi": "model प्रशिक्षित करने और अनुमान लगाने के scikit-learn functions।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is the correct way to print Hello in Python?\n(a) Print(\"Hello\") (b) print(Hello) (c) print(\"Hello\") (d) echo \"Hello\"",
+    "hi": "MCQ: Python में Hello छापने का सही तरीका कौन-सा है?\n(a) Print(\"Hello\") (b) print(Hello) (c) print(\"Hello\") (d) echo \"Hello\""
+   },
+   "a": {
+    "en": "(c) print(\"Hello\").",
+    "hi": "(c) print(\"Hello\")।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write the data type of each: 25, 3.14, \"India\", False, \"25\".",
+    "hi": "हर एक का data type लिखिए: 25, 3.14, \"India\", False, \"25\"।"
+   },
+   "a": {
+    "en": "int, float, str, bool, str (in quotes, so it is text).",
+    "hi": "int, float, str, bool, str (उद्धरण में है, इसलिए टेक्स्ट)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A line starting with ______ is a comment and is ignored by Python.",
+    "hi": "रिक्त स्थान भरिए: ______ से शुरू होने वाली पंक्ति comment है और Python उसे अनदेखा करता है।"
+   },
+   "a": {
+    "en": "#",
+    "hi": "#"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: In Python, the first item of a list has index 1.",
+    "hi": "सही या गलत: Python में list के पहले item का index 1 होता है।"
+   },
+   "a": {
+    "en": "False. It has index 0.",
+    "hi": "गलत। उसका index 0 होता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Which of these are valid variable names? total_marks, 2nd_place, my name, city1, for",
+    "hi": "इनमें से कौन-से variable नाम मान्य हैं? total_marks, 2nd_place, my name, city1, for"
+   },
+   "a": {
+    "en": "Valid: total_marks, city1. Invalid: 2nd_place (starts with a digit), my name (space), for (keyword).",
+    "hi": "मान्य: total_marks, city1। अमान्य: 2nd_place (अंक से शुरू), my name (खाली जगह), for (keyword)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name three Python libraries used in AI and what each is for.",
+    "hi": "AI में उपयोग होने वाली तीन Python libraries और उनका काम बताइए।"
+   },
+   "a": {
+    "en": "NumPy (numbers and arrays), Pandas (tables of data), scikit-learn (machine learning); also Matplotlib (graphs), TensorFlow/PyTorch (deep learning).",
+    "hi": "NumPy (संख्याएँ और arrays), Pandas (डेटा तालिकाएँ), scikit-learn (machine learning); Matplotlib (ग्राफ़), TensorFlow/PyTorch (deep learning) भी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the output?\nprint(17 // 5, 17 % 5, 2 ** 3, 10 / 4)",
+    "hi": "आउटपुट क्या होगा?\nprint(17 // 5, 17 % 5, 2 ** 3, 10 / 4)"
+   },
+   "a": {
+    "en": "3 2 8 2.5",
+    "hi": "3 2 8 2.5"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the output?\nx = 10\nx = x + 5\nx = x * 2\nprint(x)",
+    "hi": "आउटपुट क्या होगा?\nx = 10\nx = x + 5\nx = x * 2\nprint(x)"
+   },
+   "a": {
+    "en": "30 (10 + 5 = 15, then 15 × 2 = 30).",
+    "hi": "30 (10 + 5 = 15, फिर 15 × 2 = 30)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the output?\nnums = [4, 8, 15, 16, 23]\nprint(len(nums), nums[1], nums[-1], sum(nums))",
+    "hi": "आउटपुट क्या होगा?\nnums = [4, 8, 15, 16, 23]\nprint(len(nums), nums[1], nums[-1], sum(nums))"
+   },
+   "a": {
+    "en": "5 8 23 66",
+    "hi": "5 8 23 66"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What numbers does this print?\nfor i in range(2, 11, 2):\n    print(i)",
+    "hi": "यह कौन-सी संख्याएँ छापेगा?\nfor i in range(2, 11, 2):\n    print(i)"
+   },
+   "a": {
+    "en": "2, 4, 6, 8, 10 (one per line). The third value 2 is the step; 11 is not included.",
+    "hi": "2, 4, 6, 8, 10 (हर एक अलग पंक्ति में)। तीसरा मान 2 कदम (step) है; 11 शामिल नहीं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find and fix the errors:\nage = input(\"Enter age \")\nif age >= 13\nprint(\"Teen\")",
+    "hi": "त्रुटियाँ ढूँढकर ठीक कीजिए:\nage = input(\"Enter age \")\nif age >= 13\nprint(\"Teen\")"
+   },
+   "a": {
+    "en": "1. input() gives a string, so use age = int(input(\"Enter age \")).\n2. Add a colon: if age >= 13:\n3. Indent the print line by 4 spaces.",
+    "hi": "1. input() string देता है, इसलिए age = int(input(\"Enter age \")) लिखें।\n2. colon जोड़ें: if age >= 13:\n3. print वाली पंक्ति को 4 spaces से indent करें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Difference between = and == with an example.",
+    "hi": "उदाहरण सहित = और == में अंतर।"
+   },
+   "a": {
+    "en": "= assigns: score = 50 stores 50. == compares: score == 50 gives True if score is 50, otherwise False.",
+    "hi": "= मान रखता है: score = 50 में 50 रखा जाता है। == तुलना करता है: score == 50 तब True देता है जब score 50 हो, नहीं तो False।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write a program that asks for a number and prints whether it is even or odd.",
+    "hi": "ऐसा प्रोग्राम लिखिए जो एक संख्या पूछे और बताए कि वह सम है या विषम।"
+   },
+   "a": {
+    "en": "n = int(input(\"Number: \"))\nif n % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")\nFor 7 it prints Odd; for 12 it prints Even.",
+    "hi": "n = int(input(\"Number: \"))\nif n % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")\n7 के लिए Odd छपता है; 12 के लिए Even।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Difference between a for loop and a while loop.",
+    "hi": "for loop और while loop में अंतर।"
+   },
+   "a": {
+    "en": "A for loop repeats once for each item in a list or range, so the number of repeats is known. A while loop repeats as long as a condition is True, useful when the number of repeats is not known in advance (e.g. until the user types bye).",
+    "hi": "for loop list या range के हर item के लिए एक बार दोहराता है, इसलिए दोहराव की संख्या पता होती है। while loop शर्त True रहने तक दोहराता है, जो तब उपयोगी है जब दोहराव की संख्या पहले से पता न हो (जैसे उपयोगकर्ता के bye लिखने तक)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is Python popular for AI? Give four reasons.",
+    "hi": "Python AI के लिए लोकप्रिय क्यों है? चार कारण दीजिए।"
+   },
+   "a": {
+    "en": "Easy to read and learn; free and open source; many AI and data libraries (NumPy, Pandas, scikit-learn, TensorFlow); large helpful community; runs on many devices including browser notebooks like Colab.",
+    "hi": "पढ़ना और सीखना आसान; मुफ़्त और open source; बहुत-सी AI और डेटा libraries (NumPy, Pandas, scikit-learn, TensorFlow); बड़ा सहायक समुदाय; Colab जैसी browser notebooks सहित कई उपकरणों पर चलता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write a function called max_temp_day(temps) that returns the position (day number starting from 1) of the highest temperature in a list. Test it on [31, 33, 38, 34].",
+    "hi": "max_temp_day(temps) नाम का function लिखिए जो list में सबसे अधिक तापमान की स्थिति (1 से शुरू होने वाला दिन क्रमांक) लौटाए। इसे [31, 33, 38, 34] पर परखिए।"
+   },
+   "a": {
+    "en": "def max_temp_day(temps):\n    best = 0\n    for i in range(len(temps)):\n        if temps[i] > temps[best]:\n            best = i\n    return best + 1\n\nprint(max_temp_day([31, 33, 38, 34]))\nOutput: 3 (38 is at index 2, which is day 3).",
+    "hi": "def max_temp_day(temps):\n    best = 0\n    for i in range(len(temps)):\n        if temps[i] > temps[best]:\n            best = i\n    return best + 1\n\nprint(max_temp_day([31, 33, 38, 34]))\nआउटपुट: 3 (38 index 2 पर है, यानी दिन 3)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In the spam checker (7.13), what score and label would 'Free class notes for everyone' get? What does this show?",
+    "hi": "spam जाँचक (7.13) में 'Free class notes for everyone' को कौन-सा अंक और लेबल मिलेगा? इससे क्या पता चलता है?"
+   },
+   "a": {
+    "en": "Only 'free' matches, so the score is 1 and the label is OK. If the threshold were 1, this genuine message would be wrongly marked SPAM. Fixed word rules are fragile; ML models learn from many labelled examples and consider context.",
+    "hi": "केवल 'free' मेल खाता है, इसलिए अंक 1 और लेबल OK है। अगर सीमा 1 होती, तो यह असली संदेश गलत तरीके से SPAM बन जाता। तय शब्द-नियम कमज़ोर हैं; ML model बहुत-से लेबल वाले उदाहरणों से सीखते हैं और संदर्भ समझते हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In the nearest-neighbour program, which label would the new fruit [150, 3] get? Show the closest distance.",
+    "hi": "nearest-neighbour प्रोग्राम में नए फल [150, 3] को कौन-सा लेबल मिलेगा? सबसे कम दूरी दिखाइए।"
+   },
+   "a": {
+    "en": "Compare with [150, 2, lemon]: |150 - 150| + |2 - 3| × 10 = 0 + 10 = 10. [130, 3, lemon] gives 20 + 0 = 20; [160, 2, lemon] gives 10 + 10 = 20. The mangoes are much farther. Closest distance 10, so the prediction is lemon.",
+    "hi": "[150, 2, lemon] से तुलना: |150 - 150| + |2 - 3| × 10 = 0 + 10 = 10। [130, 3, lemon] देता है 20 + 0 = 20; [160, 2, lemon] देता है 10 + 10 = 20। आम बहुत दूर हैं। सबसे कम दूरी 10, इसलिए अनुमान lemon है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "How is a rule-based chatbot (7.12) different from an LLM chatbot (Chapter 5)? Give one advantage of each.",
+    "hi": "नियम-आधारित chatbot (7.12) LLM chatbot (अध्याय 5) से कैसे अलग है? हर एक का एक लाभ बताइए।"
+   },
+   "a": {
+    "en": "A rule-based bot replies only using keywords and fixed rules written by a programmer; an LLM chatbot generates replies by predicting tokens learned from huge text. Rule-based advantage: predictable, never invents facts outside its rules. LLM advantage: handles any wording and many topics.",
+    "hi": "नियम-आधारित bot केवल प्रोग्रामर के लिखे keywords और तय नियमों से उत्तर देता है; LLM chatbot विशाल टेक्स्ट से सीखे tokens का अनुमान लगाकर उत्तर बनाता है। नियम-आधारित का लाभ: पूर्वानुमेय, अपने नियमों से बाहर तथ्य नहीं गढ़ता। LLM का लाभ: कोई भी शब्द-रचना और बहुत-से विषय संभाल लेता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write a program that keeps asking for marks until the user types -1, then prints how many marks were entered and their average.",
+    "hi": "ऐसा प्रोग्राम लिखिए जो तब तक अंक पूछता रहे जब तक उपयोगकर्ता -1 न लिखे, फिर बताए कि कितने अंक डाले गए और उनका औसत क्या है।"
+   },
+   "a": {
+    "en": "marks = []\nwhile True:\n    m = int(input(\"Marks (-1 to stop): \"))\n    if m == -1:\n        break\n    marks.append(m)\nprint(\"Count:\", len(marks))\nprint(\"Average:\", sum(marks) / len(marks))\nFor inputs 80, 70, 90, -1 it prints Count: 3 and Average: 80.0",
+    "hi": "marks = []\nwhile True:\n    m = int(input(\"Marks (-1 to stop): \"))\n    if m == -1:\n        break\n    marks.append(m)\nprint(\"Count:\", len(marks))\nprint(\"Average:\", sum(marks) / len(marks))\nइनपुट 80, 70, 90, -1 के लिए यह छापता है Count: 3 और Average: 80.0"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "What do fit() and predict() do in scikit-learn? Relate them to the machine learning steps from Chapter 3.",
+    "hi": "scikit-learn में fit() और predict() क्या करते हैं? इन्हें अध्याय 3 के machine learning चरणों से जोड़िए।"
+   },
+   "a": {
+    "en": "fit(X, y) trains the model on features X and labels y (the training step, where patterns are learned). predict(new_X) uses the learned patterns to label new data (the prediction/testing step).",
+    "hi": "fit(X, y) model को features X और labels y पर प्रशिक्षित करता है (प्रशिक्षण चरण, जहाँ पैटर्न सीखे जाते हैं)। predict(new_X) सीखे पैटर्न से नए डेटा को लेबल देता है (अनुमान/परीक्षण चरण)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Activity question: In the 'human robot' activity, what did vague instructions teach you about programming?",
+    "hi": "गतिविधि प्रश्न: 'इंसानी रोबोट' गतिविधि में अस्पष्ट निर्देशों ने प्रोग्रामिंग के बारे में क्या सिखाया?"
+   },
+   "a": {
+    "en": "Computers cannot guess what we mean; they need exact steps in the right order. Missing or unclear steps are bugs, and fixing them is debugging.",
+    "hi": "कंप्यूटर हमारा मतलब अनुमान नहीं लगा सकते; उन्हें सही क्रम में सटीक कदम चाहिए। छूटे या अस्पष्ट कदम bugs हैं, और उन्हें ठीक करना debugging है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A program is an exact set of instructions; a programming language like Python has strict syntax.",
+   "Python is popular for AI because it is readable, free, has libraries (NumPy, Pandas, Matplotlib, scikit-learn, TensorFlow) and a big community.",
+   "You can run Python free in Google Colab, online editors, IDLE or phone apps; Scratch and PictoBlox offer block-based AI coding.",
+   "print() shows output, # starts a comment, and input() reads text that you convert with int() or float().",
+   "Variables store values; the main data types are int, float, str and bool.",
+   "Operators: arithmetic (+ - * / // % **), comparison (== != > < >= <=) and logical (and, or, not).",
+   "Strings and lists use indexes from 0; len(), sum(), max(), min(), append(), upper(), lower() help process data.",
+   "if, elif and else make decisions like a rule-based AI; colons and indentation are essential.",
+   "for loops go through items and range(); while loops repeat while a condition is True; break stops a loop.",
+   "Functions made with def and return let you reuse code.",
+   "Read error messages (SyntaxError, NameError, TypeError, IndentationError) to debug step by step.",
+   "Mini projects showed a rule-based chatbot, a word-counting spam checker and a nearest-neighbour classifier.",
+   "With scikit-learn, fit() trains a model and predict() labels new data in just a few lines."
+  ],
+  "hi": [
+   "प्रोग्राम निर्देशों का सटीक समूह है; Python जैसी programming language का syntax कड़ा होता है।",
+   "Python AI के लिए लोकप्रिय है क्योंकि यह पढ़ने योग्य, मुफ़्त है, इसमें libraries (NumPy, Pandas, Matplotlib, scikit-learn, TensorFlow) और बड़ा समुदाय है।",
+   "Python मुफ़्त में Google Colab, ऑनलाइन editor, IDLE या फ़ोन ऐप में चला सकते हैं; Scratch और PictoBlox block-based AI coding देते हैं।",
+   "print() आउटपुट दिखाता है, # से comment शुरू होता है, और input() टेक्स्ट पढ़ता है जिसे int() या float() से बदलते हैं।",
+   "variables मान रखते हैं; मुख्य data types हैं int, float, str और bool।",
+   "Operators: गणितीय (+ - * / // % **), तुलना (== != > < >= <=) और तार्किक (and, or, not)।",
+   "strings और lists में index 0 से शुरू होते हैं; len(), sum(), max(), min(), append(), upper(), lower() डेटा संसाधित करने में मदद करते हैं।",
+   "if, elif और else नियम-आधारित AI की तरह निर्णय लेते हैं; colon और indentation ज़रूरी हैं।",
+   "for loop items और range() से गुज़रता है; while loop शर्त True रहने तक दोहराता है; break loop रोकता है।",
+   "def और return से बने functions कोड को दोबारा उपयोग करने देते हैं।",
+   "क्रम से debug करने के लिए त्रुटि संदेश (SyntaxError, NameError, TypeError, IndentationError) पढ़ें।",
+   "छोटी परियोजनाओं ने नियम-आधारित chatbot, शब्द गिनने वाला spam जाँचक और nearest-neighbour वर्गीकारक दिखाए।",
+   "scikit-learn से बस कुछ पंक्तियों में fit() model प्रशिक्षित करता है और predict() नए डेटा को लेबल देता है।"
+  ]
+ }
+}

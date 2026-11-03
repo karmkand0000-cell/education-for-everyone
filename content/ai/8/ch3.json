@@ -1,0 +1,1900 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "8",
+ "id": "ch3",
+ "intro": {
+  "en": "In Class 7 you saw that machines can learn from examples, and you sorted things using decision trees. In Chapter 1 you read how AI moved from hand-written rules to learning from data, and in Chapter 2 you learnt to collect and clean that data. Now we open the box called machine learning. You will learn what a model is, the three main ways machines learn, the difference between classification, regression and clustering, how data is split into training and testing sets, how to measure accuracy, what overfitting and underfitting mean, and you will run a tiny learning program yourself.",
+  "hi": "कक्षा 7 में आपने देखा था कि मशीनें उदाहरणों से सीख सकती हैं, और आपने decision trees से चीज़ें छाँटी थीं। अध्याय 1 में आपने पढ़ा कि AI हाथ से लिखे नियमों से data से सीखने की ओर कैसे बढ़ा, और अध्याय 2 में आपने वह data जुटाना और साफ़ करना सीखा। अब हम machine learning नाम का डिब्बा खोलते हैं। आप सीखेंगे कि मॉडल क्या होता है, मशीनों के सीखने के तीन मुख्य तरीके, classification, regression और clustering में अंतर, data को training और testing हिस्सों में कैसे बाँटते हैं, accuracy कैसे मापते हैं, overfitting और underfitting का अर्थ, और आप ख़ुद एक छोटा सीखने वाला प्रोग्राम चलाएँगे।"
+ },
+ "learn": {
+  "en": [
+   "What machine learning is, and how it differs from traditional programming",
+   "Key words: data, features, labels, model, training, prediction",
+   "Supervised learning, with classification and regression",
+   "Unsupervised learning and clustering",
+   "Reinforcement learning: rewards, penalties and agents",
+   "Training data, testing data and the 80:20 split",
+   "Accuracy, errors, and a simple confusion table",
+   "Overfitting and underfitting",
+   "Neural networks and deep learning, in simple words",
+   "A nearest-neighbour program in Python, and no-code ML with Teachable Machine"
+  ],
+  "hi": [
+   "Machine learning क्या है, और यह पारंपरिक programming से कैसे अलग है",
+   "मुख्य शब्द: data, features, labels, model, training, prediction",
+   "Supervised learning, classification और regression के साथ",
+   "Unsupervised learning और clustering",
+   "Reinforcement learning: इनाम, दंड और agents",
+   "Training data, testing data और 80:20 बँटवारा",
+   "Accuracy, गलतियाँ, और एक सरल confusion table",
+   "Overfitting और underfitting",
+   "Neural networks और deep learning, सरल शब्दों में",
+   "Python में nearest-neighbour प्रोग्राम, और Teachable Machine से बिना code के ML"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "3.1 What is machine learning?",
+    "hi": "3.1 Machine learning क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think about how you learnt to tell a ripe mango from an unripe one. Nobody gave you a rulebook. You saw many mangoes, someone told you 'this one is ripe, that one is not', and slowly you noticed the pattern: colour, softness, smell. Now you can judge a mango you have never seen before. Machine learning is a way of making computers learn in a similar way, from examples.",
+      "hi": "सोचिए कि आपने पके और कच्चे आम में अंतर करना कैसे सीखा। किसी ने आपको नियमों की किताब नहीं दी। आपने बहुत आम देखे, किसी ने बताया 'यह पका है, वह नहीं', और धीरे-धीरे आपने पैटर्न पहचाना: रंग, कोमलता, गंध। अब आप ऐसे आम को भी परख सकते हैं जो आपने पहले कभी नहीं देखा। Machine learning कंप्यूटरों को इसी तरह, उदाहरणों से, सिखाने का तरीका है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Machine learning (ML)",
+       "hi": "Machine learning (ML) / मशीन लर्निंग"
+      },
+      "text": {
+       "en": "A part of AI in which a computer learns patterns from data and uses them to make predictions or decisions about new data, instead of being given a fixed rule for every case.",
+       "hi": "AI का वह हिस्सा जिसमें कंप्यूटर data से पैटर्न सीखता है और उनका उपयोग नए data के बारे में अनुमान या निर्णय लेने के लिए करता है, न कि उसे हर स्थिति के लिए तय नियम दिया जाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Compare the two approaches. In traditional programming, a person writes the rules, the computer takes data and the rules, and gives answers. In machine learning, a person gives the computer data together with the correct answers, and the computer works out the rules (the pattern) by itself. Then those learnt rules are used on new data.",
+      "hi": "दोनों तरीकों की तुलना करें। पारंपरिक programming में व्यक्ति नियम लिखता है, कंप्यूटर data और नियम लेता है, और उत्तर देता है। Machine learning में व्यक्ति कंप्यूटर को data के साथ सही उत्तर देता है, और कंप्यूटर ख़ुद नियम (पैटर्न) निकालता है। फिर उन सीखे नियमों को नए data पर लगाया जाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Traditional programming",
+        "Machine learning"
+       ],
+       "hi": [
+        "बिंदु",
+        "पारंपरिक programming",
+        "Machine learning"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "What goes in",
+         "Data + rules written by a person",
+         "Data + correct answers (examples)"
+        ],
+        [
+         "What comes out",
+         "Answers",
+         "Learnt rules (a model), which then give answers for new data"
+        ],
+        [
+         "Example",
+         "Electricity bill: units × rate per unit",
+         "Spam filter that learns from thousands of messages marked spam or not spam"
+        ],
+        [
+         "Good when",
+         "The rule is clear and fixed",
+         "The rule is hard to write down, or keeps changing"
+        ]
+       ],
+       "hi": [
+        [
+         "क्या अंदर जाता है",
+         "Data + व्यक्ति के लिखे नियम",
+         "Data + सही उत्तर (उदाहरण)"
+        ],
+        [
+         "क्या बाहर आता है",
+         "उत्तर",
+         "सीखे नियम (एक मॉडल), जो फिर नए data के उत्तर देते हैं"
+        ],
+        [
+         "उदाहरण",
+         "बिजली का बिल: यूनिट × प्रति यूनिट दर",
+         "Spam filter जो spam या not spam चिह्नित हज़ारों संदेशों से सीखता है"
+        ],
+        [
+         "कब अच्छा",
+         "नियम साफ़ और तय हो",
+         "नियम लिखना कठिन हो, या बदलता रहता हो"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why not write rules for everything? Try writing exact rules to recognise your friend's face in any photo, in any light, with or without glasses. It is nearly impossible. But a machine learning system shown enough labelled photos can learn it. Similarly, fraudsters keep changing their tricks, so a UPI fraud detector that learns from new data keeps up better than a fixed rule list.",
+      "hi": "हर चीज़ के लिए नियम क्यों न लिखें? किसी भी फ़ोटो में, किसी भी रोशनी में, चश्मे के साथ या बिना, अपने दोस्त का चेहरा पहचानने के सटीक नियम लिखकर देखिए। यह लगभग असंभव है। पर पर्याप्त लेबल वाली फ़ोटो देखने वाला machine learning सिस्टम इसे सीख सकता है। इसी तरह, धोखेबाज़ अपनी तरकीबें बदलते रहते हैं, इसलिए नए data से सीखने वाला UPI fraud detector तय नियमों की सूची से बेहतर तालमेल रखता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI is the big field; machine learning is one part of AI; deep learning is one part of machine learning. Picture three circles, one inside the other: AI ⊃ ML ⊃ Deep learning.",
+      "hi": "याद रखें: AI बड़ा क्षेत्र है; machine learning, AI का एक हिस्सा है; deep learning, machine learning का एक हिस्सा है। तीन वृत्त सोचिए, एक के अंदर दूसरा: AI ⊃ ML ⊃ Deep learning।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.2 Key words: features, labels, model, training, prediction",
+    "hi": "3.2 मुख्य शब्द: features, labels, model, training, prediction"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Let us use one running example: an app that helps farmers by looking at a leaf photo and saying 'healthy' or 'diseased'.",
+      "hi": "एक चलता हुआ उदाहरण लें: एक ऐप जो पत्ती की फ़ोटो देखकर 'स्वस्थ' या 'रोगी' बताकर किसानों की मदद करता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Word",
+        "Meaning",
+        "In the leaf app"
+       ],
+       "hi": [
+        "शब्द",
+        "अर्थ",
+        "पत्ती वाले ऐप में"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data / example",
+         "One item the machine learns from",
+         "One leaf photo"
+        ],
+        [
+         "Features",
+         "The properties used to decide (you met these in Chapter 2)",
+         "Colours, spots, shape, edges (found from the pixels)"
+        ],
+        [
+         "Label",
+         "The correct answer for an example",
+         "'Healthy' or 'Diseased', given by an expert"
+        ],
+        [
+         "Training",
+         "The process of the machine finding patterns in labelled examples",
+         "Showing thousands of labelled leaf photos"
+        ],
+        [
+         "Model",
+         "What the machine has learnt: a set of patterns or rules stored as numbers",
+         "The trained 'leaf checker'"
+        ],
+        [
+         "Prediction (inference)",
+         "The model's answer for a new example",
+         "'Diseased, 87% confidence' for a new photo"
+        ],
+        [
+         "Algorithm",
+         "The step-by-step method used for learning",
+         "For example, a neural network learning method"
+        ]
+       ],
+       "hi": [
+        [
+         "Data / उदाहरण",
+         "एक वस्तु जिससे मशीन सीखती है",
+         "पत्ती की एक फ़ोटो"
+        ],
+        [
+         "Features",
+         "निर्णय के लिए उपयोग होने वाले गुण (अध्याय 2 में मिले थे)",
+         "रंग, धब्बे, आकार, किनारे (pixels से निकाले गए)"
+        ],
+        [
+         "Label",
+         "किसी उदाहरण का सही उत्तर",
+         "'स्वस्थ' या 'रोगी', विशेषज्ञ द्वारा दिया गया"
+        ],
+        [
+         "Training",
+         "लेबल वाले उदाहरणों में मशीन के पैटर्न ढूँढने की प्रक्रिया",
+         "हज़ारों लेबल वाली पत्ती-फ़ोटो दिखाना"
+        ],
+        [
+         "Model",
+         "जो मशीन ने सीखा: संख्याओं के रूप में रखे पैटर्न या नियम",
+         "Train किया हुआ 'पत्ती जाँचक'"
+        ],
+        [
+         "Prediction (inference)",
+         "नए उदाहरण के लिए मॉडल का उत्तर",
+         "नई फ़ोटो के लिए 'रोगी, 87% भरोसा'"
+        ],
+        [
+         "Algorithm",
+         "सीखने का चरण-दर-चरण तरीका",
+         "जैसे neural network का सीखने का तरीका"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Imagine a flow diagram: Labelled data → [Learning algorithm] → Model. Then: New data → [Model] → Prediction. The first part (training) happens once or now and then, and can take a long time. The second part (prediction) happens every time you use the app and is usually fast.",
+      "hi": "एक प्रवाह-चित्र सोचिए: लेबल वाला data → [सीखने का algorithm] → मॉडल। फिर: नया data → [मॉडल] → अनुमान। पहला हिस्सा (training) एक बार या कभी-कभी होता है, और इसमें बहुत समय लग सकता है। दूसरा हिस्सा (prediction) हर बार ऐप उपयोग करने पर होता है और आमतौर पर तेज़ होता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "A model's answer is a prediction with some confidence, not a certainty. Many apps show a confidence such as 87%. A good app tells the farmer to confirm with an expert when confidence is low.",
+      "hi": "मॉडल का उत्तर कुछ भरोसे के साथ एक अनुमान है, निश्चितता नहीं। कई ऐप 87% जैसा भरोसा (confidence) दिखाते हैं। अच्छा ऐप किसान से कहता है कि भरोसा कम हो तो विशेषज्ञ से पुष्टि करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.3 Supervised learning",
+    "hi": "3.3 Supervised learning (निरीक्षित सीखना)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In supervised learning, the machine learns from labelled data: every training example comes with the correct answer, like a student practising with an answer key. A 'supervisor' (the person who provided labels) has, in a sense, shown the right answers.",
+      "hi": "Supervised learning में मशीन लेबल वाले data से सीखती है: हर training उदाहरण के साथ सही उत्तर होता है, जैसे कोई छात्र उत्तर-कुंजी के साथ अभ्यास करे। एक तरह से 'supervisor' (लेबल देने वाले व्यक्ति) ने सही उत्तर दिखा दिए हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Supervised learning",
+       "hi": "Supervised learning (निरीक्षित सीखना)"
+      },
+      "text": {
+       "en": "Machine learning from labelled examples, where the correct output for each input is given, so the model learns to map inputs to outputs.",
+       "hi": "लेबल वाले उदाहरणों से machine learning, जिसमें हर input का सही output दिया होता है, ताकि मॉडल input से output तक पहुँचना सीखे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Supervised learning solves two kinds of problems.",
+      "hi": "Supervised learning दो तरह की समस्याएँ हल करती है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Classification",
+       "hi": "Classification (वर्गीकरण)"
+      },
+      "text": {
+       "en": "Predicting a category (class). The answer is one of a fixed set of labels, such as spam / not spam, healthy / diseased, cat / dog / bird, or which digit 0-9 was written.",
+       "hi": "किसी श्रेणी (class) का अनुमान लगाना। उत्तर तय लेबलों में से एक होता है, जैसे spam / not spam, स्वस्थ / रोगी, बिल्ली / कुत्ता / पक्षी, या कौन-सा अंक 0-9 लिखा गया।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Regression",
+       "hi": "Regression (रिग्रेशन)"
+      },
+      "text": {
+       "en": "Predicting a number on a continuous scale, such as tomorrow's temperature, the price of a flat, the time a delivery will take, or a crop's yield in quintals.",
+       "hi": "सतत पैमाने पर किसी संख्या का अनुमान लगाना, जैसे कल का तापमान, फ़्लैट का दाम, डिलीवरी में लगने वाला समय, या क्विंटल में फसल की पैदावार।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Task",
+        "Classification or regression?",
+        "Why"
+       ],
+       "hi": [
+        "काम",
+        "Classification या regression?",
+        "क्यों"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Is this SMS a fraud message?",
+         "Classification",
+         "Answer is a category: fraud / not fraud"
+        ],
+        [
+         "How many runs will a team score in 20 overs?",
+         "Regression",
+         "Answer is a number"
+        ],
+        [
+         "Which language is this voice clip in?",
+         "Classification",
+         "Answer is one of a list of languages"
+        ],
+        [
+         "What will the AQI (air quality index) be tomorrow in Delhi?",
+         "Regression",
+         "Answer is a number"
+        ],
+        [
+         "Will it rain tomorrow: yes or no?",
+         "Classification",
+         "Two categories"
+        ],
+        [
+         "How many millimetres of rain will fall tomorrow?",
+         "Regression",
+         "A number"
+        ]
+       ],
+       "hi": [
+        [
+         "क्या यह SMS धोखाधड़ी वाला है?",
+         "Classification",
+         "उत्तर एक श्रेणी है: धोखाधड़ी / नहीं"
+        ],
+        [
+         "एक टीम 20 ओवर में कितने रन बनाएगी?",
+         "Regression",
+         "उत्तर एक संख्या है"
+        ],
+        [
+         "यह वॉइस क्लिप किस भाषा में है?",
+         "Classification",
+         "उत्तर भाषाओं की सूची में से एक है"
+        ],
+        [
+         "कल दिल्ली में AQI (वायु गुणवत्ता सूचकांक) कितना होगा?",
+         "Regression",
+         "उत्तर एक संख्या है"
+        ],
+        [
+         "कल बारिश होगी: हाँ या नहीं?",
+         "Classification",
+         "दो श्रेणियाँ"
+        ],
+        [
+         "कल कितने मिलीमीटर बारिश होगी?",
+         "Regression",
+         "एक संख्या"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A very simple regression. Five students recorded hours studied and marks (out of 50): 1 h - 20, 2 h - 25, 3 h - 30, 4 h - 35, 5 h - 40. Find the pattern and predict the marks for 6 hours. Is the prediction certain?",
+       "hi": "एक बहुत सरल regression। पाँच छात्रों ने पढ़ाई के घंटे और अंक (50 में से) दर्ज किए: 1 घंटा - 20, 2 घंटे - 25, 3 घंटे - 30, 4 घंटे - 35, 5 घंटे - 40। पैटर्न ढूँढिए और 6 घंटे के अंक का अनुमान लगाइए। क्या अनुमान निश्चित है?"
+      },
+      "a": {
+       "en": "Step 1: Each extra hour adds 5 marks (25 - 20 = 5, 30 - 25 = 5, ...).\nStep 2: At 0 hours the pattern would give 20 - 5 = 15. So marks = 15 + 5 × hours.\nStep 3: For 6 hours: 15 + 5 × 6 = 15 + 30 = 45 marks.\nStep 4: Not certain. Real students differ; sleep, understanding and the test matter too. Also, marks cannot go above 50, so the pattern cannot continue for ever (8 hours would give 55, which is impossible). Models are useful only within the range of data they learnt from.",
+       "hi": "चरण 1: हर अतिरिक्त घंटा 5 अंक जोड़ता है (25 - 20 = 5, 30 - 25 = 5, ...)।\nचरण 2: 0 घंटे पर पैटर्न 20 - 5 = 15 देगा। इसलिए अंक = 15 + 5 × घंटे।\nचरण 3: 6 घंटे के लिए: 15 + 5 × 6 = 15 + 30 = 45 अंक।\nचरण 4: निश्चित नहीं। असली छात्र अलग होते हैं; नींद, समझ और टेस्ट भी मायने रखते हैं। साथ ही, अंक 50 से ऊपर नहीं जा सकते, इसलिए पैटर्न हमेशा नहीं चल सकता (8 घंटे पर 55 आएगा, जो असंभव है)। मॉडल केवल उसी दायरे में उपयोगी हैं जिस data से उन्होंने सीखा।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The same idea as a tiny Python program (Python is covered properly in Chapter 7). It works out how much each hour adds and then predicts:",
+      "hi": "यही विचार एक छोटे Python प्रोग्राम में (Python अध्याय 7 में ठीक से है)। यह निकालता है कि हर घंटा कितना जोड़ता है और फिर अनुमान लगाता है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Hours studied and marks scored (out of 50) by five students\nhours = [1, 2, 3, 4, 5]\nmarks = [20, 25, 30, 35, 40]\n\n# Learn the pattern: how many marks does each extra hour add?\nstep = (marks[-1] - marks[0]) / (hours[-1] - hours[0])\nstart = marks[0] - step * hours[0]\nprint(\"Each extra hour adds\", step, \"marks; starting value\", start)\n\nfor h in [6, 2.5]:\n    print(\"Predicted marks for\", h, \"hours:\", start + step * h)",
+      "hi": "# Hours studied and marks scored (out of 50) by five students\nhours = [1, 2, 3, 4, 5]\nmarks = [20, 25, 30, 35, 40]\n\n# Learn the pattern: how many marks does each extra hour add?\nstep = (marks[-1] - marks[0]) / (hours[-1] - hours[0])\nstart = marks[0] - step * hours[0]\nprint(\"Each extra hour adds\", step, \"marks; starting value\", start)\n\nfor h in [6, 2.5]:\n    print(\"Predicted marks for\", h, \"hours:\", start + step * h)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output:",
+      "hi": "Output:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Each extra hour adds 5.0 marks; starting value 15.0\nPredicted marks for 6 hours: 45.0\nPredicted marks for 2.5 hours: 27.5",
+      "hi": "Each extra hour adds 5.0 marks; starting value 15.0\nPredicted marks for 6 hours: 45.0\nPredicted marks for 2.5 hours: 27.5"
+     }
+    },
+    {
+     "note": {
+      "en": "Classification answers 'which group?'. Regression answers 'how much / how many?'.",
+      "hi": "Classification उत्तर देता है 'कौन-सा समूह?'। Regression उत्तर देता है 'कितना / कितने?'।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.4 Unsupervised learning and clustering",
+    "hi": "3.4 Unsupervised learning और clustering"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Sometimes we have lots of data but no labels. In unsupervised learning, the machine looks at unlabelled data and finds structure by itself, usually by putting similar items together into groups. Nobody tells it what the groups should be called.",
+      "hi": "कभी-कभी हमारे पास बहुत data होता है पर लेबल नहीं। Unsupervised learning में मशीन बिना लेबल वाले data को देखकर ख़ुद ढाँचा ढूँढती है, आमतौर पर मिलती-जुलती चीज़ों को समूहों में रखकर। कोई उसे नहीं बताता कि समूहों के नाम क्या हों।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Unsupervised learning",
+       "hi": "Unsupervised learning (अनिरीक्षित सीखना)"
+      },
+      "text": {
+       "en": "Machine learning from unlabelled data, where the model finds patterns or groups on its own.",
+       "hi": "बिना लेबल वाले data से machine learning, जिसमें मॉडल ख़ुद पैटर्न या समूह ढूँढता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Clustering",
+       "hi": "Clustering (समूहन)"
+      },
+      "text": {
+       "en": "An unsupervised task of dividing data into groups (clusters) so that items in the same group are more similar to each other than to items in other groups.",
+       "hi": "Data को समूहों (clusters) में बाँटने का unsupervised काम, ताकि एक समूह की चीज़ें आपस में दूसरे समूहों की चीज़ों से ज़्यादा मिलती-जुलती हों।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example: a grocery app has records of what thousands of customers buy, with no labels. Clustering might discover three groups: customers who buy mostly fruits and vegetables every morning, customers who buy snacks and cold drinks on weekends, and customers who buy large monthly packs of rice, atta and oil. The app did not know these groups in advance. A person then looks at them, gives them names, and decides how to use them, for example sending morning offers on vegetables to the first group.",
+      "hi": "उदाहरण: एक किराना ऐप के पास हज़ारों ग्राहकों की ख़रीदारी के रिकॉर्ड हैं, बिना लेबल के। Clustering तीन समूह खोज सकता है: जो ग्राहक हर सुबह ज़्यादातर फल-सब्ज़ी ख़रीदते हैं, जो सप्ताहांत पर स्नैक्स और ठंडे पेय ख़रीदते हैं, और जो चावल, आटा और तेल के बड़े मासिक पैक ख़रीदते हैं। ऐप को ये समूह पहले से पता नहीं थे। फिर कोई व्यक्ति इन्हें देखता है, नाम देता है, और तय करता है कि इनका उपयोग कैसे हो, जैसे पहले समूह को सब्ज़ियों पर सुबह के ऑफ़र भेजना।"
+     }
+    },
+    {
+     "p": {
+      "en": "Picture a scatter plot (a graph of dots). Each dot is a customer, placed by 'number of visits per month' (across) and 'money spent per visit' (up). Without labels, you can still see three blobs of dots: many small visits, few big visits, and a middle group. Clustering algorithms find such blobs automatically, even when there are many more than two features.",
+      "hi": "एक scatter plot (बिंदुओं का ग्राफ़) सोचिए। हर बिंदु एक ग्राहक है, जिसे 'महीने में आने की संख्या' (आड़ी दिशा) और 'हर बार ख़र्च किया पैसा' (ऊपर की दिशा) से रखा गया है। लेबल के बिना भी आप बिंदुओं के तीन झुंड देख सकते हैं: कई छोटी ख़रीदारियाँ, कुछ बड़ी ख़रीदारियाँ, और एक बीच का समूह। Clustering algorithms ऐसे झुंड अपने आप ढूँढते हैं, तब भी जब दो से कहीं ज़्यादा features हों।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Grouping news articles on the same event from many websites",
+       "Grouping songs with a similar mood for a playlist",
+       "Grouping photos in your gallery by the same face, without knowing names",
+       "Finding unusual bank transactions that do not fit any normal group (called anomaly detection)",
+       "Grouping regions with similar soil and rainfall to plan crops"
+      ],
+      "hi": [
+       "कई वेबसाइटों से एक ही घटना के समाचार लेखों को समूह में रखना",
+       "Playlist के लिए एक जैसे मूड वाले गानों को समूह में रखना",
+       "नाम जाने बिना, गैलरी की फ़ोटो को एक ही चेहरे के आधार पर समूह में रखना",
+       "ऐसे असामान्य बैंक लेन-देन ढूँढना जो किसी सामान्य समूह में फ़िट न हों (इसे anomaly detection कहते हैं)",
+       "फ़सल योजना के लिए एक जैसी मिट्टी और वर्षा वाले क्षेत्रों को समूह में रखना"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Ten pupils' scores (Maths, Art) out of 10: A(9,2), B(8,3), C(9,3), D(2,9), E(3,8), F(2,8), G(5,5), H(6,5), I(5,6), J(8,2). Group them into clusters by looking at the numbers. Describe each cluster.",
+       "hi": "दस छात्रों के अंक (गणित, कला) 10 में से: A(9,2), B(8,3), C(9,3), D(2,9), E(3,8), F(2,8), G(5,5), H(6,5), I(5,6), J(8,2)। संख्याएँ देखकर इन्हें clusters में बाँटिए। हर cluster का वर्णन कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Look for points that are close: A, B, C, J all have high Maths (8-9) and low Art (2-3).\nStep 2: D, E, F have low Maths (2-3) and high Art (8-9).\nStep 3: G, H, I are in the middle (5-6 each).\nStep 4: Cluster 1 = {A, B, C, J}: strong in Maths. Cluster 2 = {D, E, F}: strong in Art. Cluster 3 = {G, H, I}: balanced. We found groups without any labels, which is what clustering does. The names 'Maths-strong' etc. were added by us afterwards.",
+       "hi": "चरण 1: पास-पास वाले बिंदु ढूँढें: A, B, C, J सभी के गणित में ऊँचे (8-9) और कला में कम (2-3) अंक हैं।\nचरण 2: D, E, F के गणित में कम (2-3) और कला में ऊँचे (8-9) अंक हैं।\nचरण 3: G, H, I बीच में हैं (हर एक 5-6)।\nचरण 4: Cluster 1 = {A, B, C, J}: गणित में मज़बूत। Cluster 2 = {D, E, F}: कला में मज़बूत। Cluster 3 = {G, H, I}: संतुलित। हमने बिना किसी लेबल के समूह ढूँढे, यही clustering करता है। 'गणित में मज़बूत' जैसे नाम हमने बाद में जोड़े।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Clustering ≠ classification. Classification puts items into groups that are already known and labelled (supervised). Clustering discovers new groups in unlabelled data (unsupervised).",
+      "hi": "Clustering ≠ classification। Classification चीज़ों को पहले से ज्ञात और लेबल वाले समूहों में रखता है (supervised)। Clustering बिना लेबल वाले data में नए समूह खोजता है (unsupervised)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.5 Reinforcement learning",
+    "hi": "3.5 Reinforcement learning (प्रबलन सीखना)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The third way of learning is like training a puppy or learning to ride a bicycle. Nobody gives you a table of right answers. You try something, see what happens, and get a reward (you stay balanced, the puppy gets a biscuit) or a penalty (you wobble and fall). Over many tries, you learn which actions lead to the most reward.",
+      "hi": "सीखने का तीसरा तरीका पिल्ले को सिखाने या साइकिल चलाना सीखने जैसा है। कोई आपको सही उत्तरों की तालिका नहीं देता। आप कुछ आज़माते हैं, देखते हैं क्या होता है, और इनाम (reward) पाते हैं (आप संतुलित रहते हैं, पिल्ले को बिस्कुट मिलता है) या दंड (penalty) (आप डगमगाकर गिर जाते हैं)। कई कोशिशों के बाद आप सीखते हैं कि कौन-से कदम सबसे ज़्यादा इनाम देते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Reinforcement learning (RL)",
+       "hi": "Reinforcement learning (RL) / प्रबलन सीखना"
+      },
+      "text": {
+       "en": "Machine learning in which an agent learns by trial and error, taking actions in an environment and receiving rewards or penalties, so that it learns the actions that give the most total reward over time.",
+       "hi": "Machine learning जिसमें एक agent कोशिश और गलती से सीखता है; वह किसी environment में कार्य (actions) करता है और इनाम या दंड पाता है, ताकि समय के साथ सबसे ज़्यादा कुल इनाम देने वाले कार्य सीख सके।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "RL word",
+        "Meaning",
+        "Example: a robot learning to walk"
+       ],
+       "hi": [
+        "RL शब्द",
+        "अर्थ",
+        "उदाहरण: चलना सीखता रोबोट"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Agent",
+         "The learner that takes actions",
+         "The robot"
+        ],
+        [
+         "Environment",
+         "The world the agent acts in",
+         "The floor, slopes and obstacles"
+        ],
+        [
+         "State",
+         "The situation right now",
+         "Position of legs, tilt of body"
+        ],
+        [
+         "Action",
+         "What the agent can do",
+         "Move left leg forward, shift weight"
+        ],
+        [
+         "Reward / penalty",
+         "Feedback after an action",
+         "+1 for each step forward, -10 for falling"
+        ],
+        [
+         "Policy",
+         "The strategy it has learnt: which action to take in each state",
+         "'If tilting right, step with the right leg'"
+        ]
+       ],
+       "hi": [
+        [
+         "Agent (कर्ता)",
+         "सीखने वाला जो कार्य करता है",
+         "रोबोट"
+        ],
+        [
+         "Environment (परिवेश)",
+         "वह दुनिया जिसमें agent काम करता है",
+         "फ़र्श, ढलान और रुकावटें"
+        ],
+        [
+         "State (स्थिति)",
+         "अभी की हालत",
+         "पैरों की स्थिति, शरीर का झुकाव"
+        ],
+        [
+         "Action (कार्य)",
+         "agent क्या कर सकता है",
+         "बायाँ पैर आगे बढ़ाना, वज़न खिसकाना"
+        ],
+        [
+         "Reward / penalty (इनाम / दंड)",
+         "कार्य के बाद मिली प्रतिक्रिया",
+         "हर कदम आगे पर +1, गिरने पर -10"
+        ],
+        [
+         "Policy (नीति)",
+         "सीखी हुई रणनीति: हर स्थिति में कौन-सा कार्य",
+         "'दाईं ओर झुक रहे हो तो दाएँ पैर से कदम रखो'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture the RL loop as a circle: the agent looks at the state → chooses an action → the environment changes → the agent receives a reward or penalty and the new state → and the loop repeats thousands or millions of times. AlphaGo, from Chapter 1, improved partly by playing millions of games against itself, a form of reinforcement learning. RL is also used for game-playing AI, robot control, and, in research, for managing things like traffic signals or the cooling of data centres. Chatbots are also fine-tuned using human feedback, where people rate answers and the model is rewarded for better ones.",
+      "hi": "RL चक्र को एक वृत्त की तरह सोचिए: agent स्थिति देखता है → एक कार्य चुनता है → environment बदलता है → agent को इनाम या दंड और नई स्थिति मिलती है → और चक्र हज़ारों या लाखों बार दोहराता है। अध्याय 1 का AlphaGo आंशिक रूप से ख़ुद के ख़िलाफ़ लाखों खेल खेलकर बेहतर हुआ, जो reinforcement learning का एक रूप है। RL का उपयोग खेल खेलने वाले AI, रोबोट नियंत्रण, और शोध में ट्रैफ़िक सिग्नल या data centres की कूलिंग सँभालने जैसे कामों में भी होता है। Chatbots को भी मानव प्रतिक्रिया (human feedback) से सुधारा जाता है, जिसमें लोग जवाबों को अंक देते हैं और बेहतर जवाबों के लिए मॉडल को इनाम मिलता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A robot vacuum cleaner gets +5 for each dusty patch cleaned, -3 for bumping into furniture, and -20 if its battery runs out away from the charger. What will it learn to do over time?",
+       "hi": "एक रोबोट वैक्यूम क्लीनर को हर धूल भरा हिस्सा साफ़ करने पर +5, फ़र्नीचर से टकराने पर -3, और चार्जर से दूर बैटरी ख़त्म होने पर -20 मिलता है। समय के साथ यह क्या करना सीखेगा?"
+      },
+      "a": {
+       "en": "Step 1: It tries many paths; it notices that cleaning patches increases its score.\nStep 2: Bumping lowers the score, so it learns to slow down or turn near furniture.\nStep 3: The large -20 penalty teaches it to return to the charger before the battery is empty.\nStep 4: Its learnt policy: clean as much as possible, avoid obstacles, and go back to charge in time. Note: if rewards are designed badly (for example only +5 for cleaning, nothing else), it may learn odd behaviour, like bumping into everything. Designing rewards carefully is a big part of RL.",
+       "hi": "चरण 1: यह कई रास्ते आज़माता है; यह देखता है कि हिस्से साफ़ करने से उसका स्कोर बढ़ता है।\nचरण 2: टकराने से स्कोर घटता है, इसलिए यह फ़र्नीचर के पास धीमा होना या मुड़ना सीखता है।\nचरण 3: -20 का बड़ा दंड इसे बैटरी ख़त्म होने से पहले चार्जर पर लौटना सिखाता है।\nचरण 4: इसकी सीखी नीति: जितना हो सके साफ़ करो, रुकावटों से बचो, और समय पर चार्ज करने लौटो। ध्यान दें: अगर इनाम ठीक से न बनाए जाएँ (जैसे केवल सफ़ाई पर +5, और कुछ नहीं), तो यह अजीब व्यवहार सीख सकता है, जैसे हर चीज़ से टकराना। इनाम सावधानी से बनाना RL का बड़ा हिस्सा है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Supervised",
+        "Unsupervised",
+        "Reinforcement"
+       ],
+       "hi": [
+        "बिंदु",
+        "Supervised",
+        "Unsupervised",
+        "Reinforcement"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Labelled examples",
+         "Unlabelled data",
+         "No fixed dataset; experience from actions"
+        ],
+        [
+         "Feedback",
+         "Correct answer for each example",
+         "None",
+         "Rewards and penalties"
+        ],
+        [
+         "Main tasks",
+         "Classification, regression",
+         "Clustering, finding unusual items",
+         "Decision-making over many steps"
+        ],
+        [
+         "Like a student who...",
+         "practises with an answer key",
+         "sorts a mixed box of objects into piles without being told the categories",
+         "learns cycling by trying and falling"
+        ],
+        [
+         "Example",
+         "Spam filter, crop-disease app, house-price prediction",
+         "Customer groups, photo grouping by face",
+         "Game-playing AI, walking robots"
+        ]
+       ],
+       "hi": [
+        [
+         "Data",
+         "लेबल वाले उदाहरण",
+         "बिना लेबल का data",
+         "कोई तय dataset नहीं; कार्यों से मिला अनुभव"
+        ],
+        [
+         "प्रतिक्रिया",
+         "हर उदाहरण का सही उत्तर",
+         "कोई नहीं",
+         "इनाम और दंड"
+        ],
+        [
+         "मुख्य काम",
+         "Classification, regression",
+         "Clustering, असामान्य चीज़ें ढूँढना",
+         "कई चरणों में निर्णय लेना"
+        ],
+        [
+         "उस छात्र जैसा जो...",
+         "उत्तर-कुंजी के साथ अभ्यास करता है",
+         "बिना श्रेणियाँ बताए चीज़ों के मिले-जुले डिब्बे को ढेरों में छाँटता है",
+         "कोशिश करके और गिरकर साइकिल चलाना सीखता है"
+        ],
+        [
+         "उदाहरण",
+         "Spam filter, फसल-रोग ऐप, मकान के दाम का अनुमान",
+         "ग्राहक समूह, चेहरे से फ़ोटो समूह",
+         "खेल खेलने वाला AI, चलने वाले रोबोट"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.6 Training data and testing data",
+    "hi": "3.6 Training data और testing data"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "How do we know if a model has really learnt, or has just memorised? We do what teachers do: we test it on questions it has not seen before. So before training, we split the labelled data into two parts.",
+      "hi": "हम कैसे जानें कि मॉडल ने सचमुच सीखा है या केवल रट लिया है? हम वही करते हैं जो शिक्षक करते हैं: उसे ऐसे सवालों पर जाँचते हैं जो उसने पहले नहीं देखे। इसलिए training से पहले हम लेबल वाले data को दो हिस्सों में बाँटते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Training data",
+       "hi": "Training data (प्रशिक्षण डेटा)"
+      },
+      "text": {
+       "en": "The part of the data the model learns from.",
+       "hi": "data का वह हिस्सा जिससे मॉडल सीखता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Testing data",
+       "hi": "Testing data (परीक्षण डेटा)"
+      },
+      "text": {
+       "en": "A separate part of the data, kept hidden during training, used to check how well the model works on new examples.",
+       "hi": "data का एक अलग हिस्सा, जो training के दौरान छिपाकर रखा जाता है, और यह जाँचने में उपयोग होता है कि मॉडल नए उदाहरणों पर कितना अच्छा काम करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A common split is 80% for training and 20% for testing (70:30 is also used). The split should be random, and both parts should contain all kinds of examples. The testing data must never be used for training; otherwise it is like seeing the exam paper before the exam, and the score means nothing. Larger projects also keep a third part called validation data, used to adjust settings during development, with the test data saved for the final check.",
+      "hi": "आम बँटवारा 80% training और 20% testing है (70:30 भी उपयोग होता है)। बँटवारा यादृच्छिक होना चाहिए, और दोनों हिस्सों में सभी तरह के उदाहरण होने चाहिए। Testing data कभी training में उपयोग नहीं होना चाहिए; वरना यह परीक्षा से पहले प्रश्नपत्र देखने जैसा है, और स्कोर का कोई अर्थ नहीं रहता। बड़े projects एक तीसरा हिस्सा भी रखते हैं जिसे validation data कहते हैं, जो विकास के दौरान सेटिंग्स बदलने में उपयोग होता है, और test data अंतिम जाँच के लिए बचाकर रखा जाता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A school has 500 labelled leaf photos: 300 healthy and 200 diseased. Make an 80:20 split. How many photos go into each part, and how many healthy and diseased should each part have?",
+       "hi": "एक स्कूल के पास 500 लेबल वाली पत्ती-फ़ोटो हैं: 300 स्वस्थ और 200 रोगी। 80:20 बँटवारा कीजिए। हर हिस्से में कितनी फ़ोटो जाएँगी, और हर हिस्से में कितनी स्वस्थ और रोगी होनी चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: Training = 80% of 500 = 0.8 × 500 = 400 photos. Testing = 500 - 400 = 100 photos.\nStep 2: Keep the same proportions in both. Healthy share = 300/500 = 60%; diseased = 40%.\nStep 3: Training: 60% of 400 = 240 healthy, 40% of 400 = 160 diseased.\nStep 4: Testing: 60% of 100 = 60 healthy, 40 diseased.\nStep 5: Check: 240 + 60 = 300 healthy; 160 + 40 = 200 diseased. Correct.",
+       "hi": "चरण 1: Training = 500 का 80% = 0.8 × 500 = 400 फ़ोटो। Testing = 500 - 400 = 100 फ़ोटो।\nचरण 2: दोनों में एक जैसा अनुपात रखें। स्वस्थ का हिस्सा = 300/500 = 60%; रोगी = 40%।\nचरण 3: Training: 400 का 60% = 240 स्वस्थ, 400 का 40% = 160 रोगी।\nचरण 4: Testing: 100 का 60% = 60 स्वस्थ, 40 रोगी।\nचरण 5: जाँच: 240 + 60 = 300 स्वस्थ; 160 + 40 = 200 रोगी। सही।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: train on one part, test on a different, unseen part. Never test on the training data.",
+      "hi": "याद रखें: एक हिस्से पर train करें, दूसरे, न देखे हिस्से पर test करें। Training data पर कभी test न करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.7 Measuring performance: accuracy and errors",
+    "hi": "3.7 प्रदर्शन मापना: accuracy और गलतियाँ"
+   },
+   "blocks": [
+    {
+     "formula": {
+      "en": "Accuracy (%) = (Number of correct predictions ÷ Total number of predictions) × 100",
+      "hi": "Accuracy (%) = (सही अनुमानों की संख्या ÷ कुल अनुमानों की संख्या) × 100"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "The leaf model is tested on the 100 test photos and gets 92 right. Find its accuracy and error rate.",
+       "hi": "पत्ती वाले मॉडल को 100 test फ़ोटो पर जाँचा गया और 92 सही आए। इसकी accuracy और error rate निकालिए।"
+      },
+      "a": {
+       "en": "Step 1: Accuracy = 92 ÷ 100 × 100 = 92%.\nStep 2: Wrong predictions = 100 - 92 = 8.\nStep 3: Error rate = 8 ÷ 100 × 100 = 8% (or 100% - 92%).",
+       "hi": "चरण 1: Accuracy = 92 ÷ 100 × 100 = 92%।\nचरण 2: गलत अनुमान = 100 - 92 = 8।\nचरण 3: Error rate = 8 ÷ 100 × 100 = 8% (या 100% - 92%)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Accuracy alone can mislead. Suppose only 5 out of 100 leaves in the test set are diseased. A lazy model that always says 'healthy' is right 95 times: accuracy 95%! But it never catches a single sick leaf, which is the whole point of the app. So we also look at which kinds of mistakes are made, using a confusion table (also called a confusion matrix).",
+      "hi": "केवल accuracy भ्रामक हो सकती है। मान लीजिए test set की 100 में से केवल 5 पत्तियाँ रोगी हैं। एक आलसी मॉडल जो हमेशा 'स्वस्थ' कहे, 95 बार सही होगा: accuracy 95%! पर वह एक भी बीमार पत्ती नहीं पकड़ता, जो ऐप का असली मक़सद है। इसलिए हम यह भी देखते हैं कि किस तरह की गलतियाँ हुईं, एक confusion table (जिसे confusion matrix भी कहते हैं) से।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Model's answer",
+        "Actually diseased",
+        "Actually healthy"
+       ],
+       "hi": [
+        "मॉडल का उत्तर",
+        "असल में रोगी",
+        "असल में स्वस्थ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Model says diseased",
+         "True positive (TP): correct alarm",
+         "False positive (FP): false alarm"
+        ],
+        [
+         "Model says healthy",
+         "False negative (FN): missed a sick leaf",
+         "True negative (TN): correct 'all clear'"
+        ]
+       ],
+       "hi": [
+        [
+         "मॉडल कहता है रोगी",
+         "True positive (TP): सही चेतावनी",
+         "False positive (FP): झूठी चेतावनी"
+        ],
+        [
+         "मॉडल कहता है स्वस्थ",
+         "False negative (FN): बीमार पत्ती छूटी",
+         "True negative (TN): सही 'सब ठीक'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A spam filter is tested on 100 messages: 30 are really spam and 70 are not. It marks 26 of the spam messages as spam, and also wrongly marks 4 normal messages as spam. Fill the confusion table and find the accuracy. Which mistake is more annoying for a user?",
+       "hi": "एक spam filter को 100 संदेशों पर जाँचा गया: 30 सचमुच spam हैं और 70 नहीं। यह 26 spam संदेशों को spam चिह्नित करता है, और 4 सामान्य संदेशों को भी गलती से spam चिह्नित करता है। Confusion table भरिए और accuracy निकालिए। उपयोगकर्ता के लिए कौन-सी गलती ज़्यादा परेशान करने वाली है?"
+      },
+      "a": {
+       "en": "Step 1: TP = 26 (spam caught). FN = 30 - 26 = 4 (spam missed).\nStep 2: FP = 4 (normal messages wrongly called spam). TN = 70 - 4 = 66.\nStep 3: Correct = TP + TN = 26 + 66 = 92. Accuracy = 92 ÷ 100 × 100 = 92%.\nStep 4: A false positive may hide an important message, such as an OTP or a school notice, in the spam folder, so many users find that worse than seeing a few spam messages. Which mistake matters more depends on the problem: for a disease test, a false negative (missing a sick person) is usually more dangerous.",
+       "hi": "चरण 1: TP = 26 (spam पकड़ा)। FN = 30 - 26 = 4 (spam छूटा)।\nचरण 2: FP = 4 (सामान्य संदेश गलती से spam)। TN = 70 - 4 = 66।\nचरण 3: सही = TP + TN = 26 + 66 = 92। Accuracy = 92 ÷ 100 × 100 = 92%।\nचरण 4: False positive किसी महत्वपूर्ण संदेश, जैसे OTP या स्कूल की सूचना, को spam फ़ोल्डर में छिपा सकता है, इसलिए कई उपयोगकर्ताओं को यह कुछ spam संदेश देखने से बुरा लगता है। कौन-सी गलती ज़्यादा मायने रखती है, यह समस्या पर निर्भर है: बीमारी की जाँच में false negative (बीमार व्यक्ति छूटना) आमतौर पर ज़्यादा ख़तरनाक है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "For regression, we cannot count 'right' or 'wrong' exactly, because a predicted temperature of 31.5°C when the real one is 32°C is close but not exact. Instead we measure the error: how far each prediction is from the true value, and the average of those gaps. Smaller average error means a better model.",
+      "hi": "Regression में हम ठीक-ठीक 'सही' या 'गलत' नहीं गिन सकते, क्योंकि असली 32°C के सामने 31.5°C का अनुमान पास है पर सटीक नहीं। इसके बजाय हम error (त्रुटि) मापते हैं: हर अनुमान असली मान से कितना दूर है, और उन अंतरों का औसत। कम औसत error का अर्थ है बेहतर मॉडल।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A model predicted temperatures 30, 33, 29 °C for three days. Actual: 31, 32, 31 °C. Find the average error (ignore plus or minus signs).",
+       "hi": "एक मॉडल ने तीन दिनों का तापमान 30, 33, 29 °C बताया। असली: 31, 32, 31 °C। औसत error निकालिए (धन या ऋण चिह्न छोड़ दें)।"
+      },
+      "a": {
+       "en": "Step 1: Gaps: |30 - 31| = 1, |33 - 32| = 1, |29 - 31| = 2.\nStep 2: Total = 1 + 1 + 2 = 4.\nStep 3: Average error = 4 ÷ 3 ≈ 1.33 °C. On average, the forecast was about 1.3 degrees off.",
+       "hi": "चरण 1: अंतर: |30 - 31| = 1, |33 - 32| = 1, |29 - 31| = 2।\nचरण 2: कुल = 1 + 1 + 2 = 4।\nचरण 3: औसत error = 4 ÷ 3 ≈ 1.33 °C। औसतन पूर्वानुमान लगभग 1.3 डिग्री दूर था।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.8 Overfitting and underfitting",
+    "hi": "3.8 Overfitting और underfitting"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Imagine two students preparing for a maths test. Rohan memorises the answers to the 20 textbook examples, word for word. Priya practises enough to understand the method. In the test, the questions use different numbers. Rohan cannot do them; Priya can. Rohan 'overfitted' to his practice questions.",
+      "hi": "दो छात्रों की कल्पना करें जो गणित के टेस्ट की तैयारी कर रहे हैं। रोहन किताब के 20 उदाहरणों के उत्तर शब्दशः रट लेता है। प्रिया इतना अभ्यास करती है कि तरीका समझ जाए। टेस्ट में सवालों की संख्याएँ अलग हैं। रोहन उन्हें हल नहीं कर पाता; प्रिया कर लेती है। रोहन ने अपने अभ्यास सवालों पर 'overfit' कर लिया।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Overfitting",
+       "hi": "Overfitting (ओवरफ़िटिंग)"
+      },
+      "text": {
+       "en": "When a model learns the training data too closely, including its noise and accidental details, so it scores very high on training data but poorly on new (test) data. It has memorised instead of learning the general pattern.",
+       "hi": "जब मॉडल training data को बहुत बारीकी से सीख ले, उसके शोर और संयोगवश विवरणों समेत, जिससे training data पर बहुत ऊँचा स्कोर आए पर नए (test) data पर ख़राब। उसने सामान्य पैटर्न सीखने के बजाय रट लिया है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Underfitting",
+       "hi": "Underfitting (अंडरफ़िटिंग)"
+      },
+      "text": {
+       "en": "When a model is too simple or has learnt too little, so it performs poorly even on the training data. It has not caught the pattern at all.",
+       "hi": "जब मॉडल बहुत सरल हो या उसने बहुत कम सीखा हो, जिससे training data पर भी ख़राब प्रदर्शन हो। उसने पैटर्न पकड़ा ही नहीं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Training accuracy",
+        "Test accuracy",
+        "Like a student who..."
+       ],
+       "hi": [
+        "बिंदु",
+        "Training accuracy",
+        "Test accuracy",
+        "उस छात्र जैसा जो..."
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Underfitting",
+         "Low",
+         "Low",
+         "has hardly studied"
+        ],
+        [
+         "Good fit",
+         "High",
+         "High (close to training)",
+         "understood the method"
+        ],
+        [
+         "Overfitting",
+         "Very high",
+         "Much lower",
+         "memorised the examples"
+        ]
+       ],
+       "hi": [
+        [
+         "Underfitting",
+         "कम",
+         "कम",
+         "मुश्किल से पढ़ा"
+        ],
+        [
+         "अच्छा fit",
+         "ऊँचा",
+         "ऊँचा (training के क़रीब)",
+         "तरीका समझ गया"
+        ],
+        [
+         "Overfitting",
+         "बहुत ऊँचा",
+         "कहीं कम",
+         "उदाहरण रट लिए"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A real-world style example: a model meant to tell huskies from wolves learnt from photos where most wolves happened to be standing in snow. It started to label any animal on a snowy background as 'wolf'. It had latched on to an accidental detail (snow) instead of the animal itself. Varied training data and honest testing reveal such problems.",
+      "hi": "असली दुनिया जैसा उदाहरण: हस्की कुत्तों और भेड़ियों में अंतर करने वाले एक मॉडल ने ऐसी फ़ोटो से सीखा जिनमें ज़्यादातर भेड़िये संयोग से बर्फ़ पर खड़े थे। वह बर्फ़ीली पृष्ठभूमि वाले किसी भी जानवर को 'भेड़िया' कहने लगा। उसने जानवर के बजाय एक संयोगवश विवरण (बर्फ़) पकड़ लिया था। विविध training data और ईमानदार testing ऐसी समस्याएँ सामने लाते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Use more and more varied training data",
+       "Keep the model simple enough for the amount of data you have",
+       "Always check on separate test data",
+       "Stop training when test performance stops improving"
+      ],
+      "hi": [
+       "ज़्यादा और ज़्यादा विविध training data उपयोग करें",
+       "मॉडल को उपलब्ध data के हिसाब से पर्याप्त सरल रखें",
+       "हमेशा अलग test data पर जाँचें",
+       "जब test प्रदर्शन सुधरना बंद हो जाए तो training रोक दें"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Model X: training accuracy 99%, test accuracy 62%. Model Y: training 88%, test 86%. Model Z: training 55%, test 52%. Which is overfitting, which is underfitting, and which would you use?",
+       "hi": "मॉडल X: training accuracy 99%, test accuracy 62%। मॉडल Y: training 88%, test 86%। मॉडल Z: training 55%, test 52%। कौन overfitting कर रहा है, कौन underfitting, और आप किसे उपयोग करेंगे?"
+      },
+      "a": {
+       "en": "Step 1: X: very high on training, much lower on test: overfitting.\nStep 2: Z: low on both: underfitting.\nStep 3: Y: high on both, and close together: a good fit.\nStep 4: Use Model Y, because test accuracy shows how it will do on new, real data.",
+       "hi": "चरण 1: X: training पर बहुत ऊँचा, test पर कहीं कम: overfitting।\nचरण 2: Z: दोनों पर कम: underfitting।\nचरण 3: Y: दोनों पर ऊँचा, और पास-पास: अच्छा fit।\nचरण 4: मॉडल Y उपयोग करें, क्योंकि test accuracy दिखाती है कि यह नए, असली data पर कैसा करेगा।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.9 Learning by nearest neighbours: a program you can run",
+    "hi": "3.9 निकटतम पड़ोसी से सीखना: एक प्रोग्राम जो आप चला सकते हैं"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "One of the simplest supervised methods is called nearest neighbour. To classify a new item, find the training example that is most similar to it, and copy its label. It is like saying: 'This new fruit looks most like that apple I have seen, so it is probably an apple.' (A common version, k-nearest neighbours, looks at the k closest examples and takes a vote.)",
+      "hi": "सबसे सरल supervised तरीकों में से एक को nearest neighbour (निकटतम पड़ोसी) कहते हैं। किसी नई वस्तु को वर्गीकृत करने के लिए, उससे सबसे मिलता-जुलता training उदाहरण ढूँढें, और उसका लेबल ले लें। यह ऐसा कहने जैसा है: 'यह नया फल उस सेब से सबसे ज़्यादा मिलता है जो मैंने देखा है, इसलिए यह शायद सेब है।' (एक आम रूप, k-nearest neighbours, k सबसे पास वाले उदाहरण देखकर वोट लेता है।)"
+     }
+    },
+    {
+     "p": {
+      "en": "Below, each fruit is described by two features: weight in grams, and smoothness of the skin on a scale of 1 to 10 (apples are smooth, oranges are bumpy). The program measures the 'gap' between a new fruit and each training fruit, giving extra importance to smoothness by multiplying its gap by 10. It then tests itself on four fruits whose true labels we know, and prints the accuracy.",
+      "hi": "नीचे हर फल का वर्णन दो features से है: ग्राम में वज़न, और 1 से 10 के पैमाने पर छिलके की चिकनाई (सेब चिकने होते हैं, संतरे खुरदुरे)। प्रोग्राम नए फल और हर training फल के बीच 'अंतर' मापता है, चिकनाई के अंतर को 10 से गुणा करके उसे ज़्यादा महत्व देता है। फिर यह ख़ुद को चार ऐसे फलों पर जाँचता है जिनके असली लेबल हमें पता हैं, और accuracy छापता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Each fruit: (weight in grams, smoothness 1-10), label\ntraining = [\n    ((150, 9), \"apple\"), ((170, 8), \"apple\"), ((140, 9), \"apple\"),\n    ((120, 3), \"orange\"), ((130, 2), \"orange\"), ((115, 4), \"orange\"),\n]\n\ndef predict(fruit):\n    best_label, best_gap = None, None\n    for (w, s), label in training:\n        gap = abs(fruit[0] - w) + abs(fruit[1] - s) * 10\n        if best_gap is None or gap < best_gap:\n            best_label, best_gap = label, gap\n    return best_label\n\ntesting = [((160, 8), \"apple\"), ((125, 3), \"orange\"),\n           ((145, 7), \"apple\"), ((135, 5), \"apple\")]\n\ncorrect = 0\nfor fruit, true_label in testing:\n    guess = predict(fruit)\n    print(fruit, \"-> predicted:\", guess, \"| actual:\", true_label)\n    if guess == true_label:\n        correct += 1\n\nprint(\"Accuracy:\", correct / len(testing) * 100, \"%\")",
+      "hi": "# Each fruit: (weight in grams, smoothness 1-10), label\ntraining = [\n    ((150, 9), \"apple\"), ((170, 8), \"apple\"), ((140, 9), \"apple\"),\n    ((120, 3), \"orange\"), ((130, 2), \"orange\"), ((115, 4), \"orange\"),\n]\n\ndef predict(fruit):\n    best_label, best_gap = None, None\n    for (w, s), label in training:\n        gap = abs(fruit[0] - w) + abs(fruit[1] - s) * 10\n        if best_gap is None or gap < best_gap:\n            best_label, best_gap = label, gap\n    return best_label\n\ntesting = [((160, 8), \"apple\"), ((125, 3), \"orange\"),\n           ((145, 7), \"apple\"), ((135, 5), \"apple\")]\n\ncorrect = 0\nfor fruit, true_label in testing:\n    guess = predict(fruit)\n    print(fruit, \"-> predicted:\", guess, \"| actual:\", true_label)\n    if guess == true_label:\n        correct += 1\n\nprint(\"Accuracy:\", correct / len(testing) * 100, \"%\")"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर output:"
+     }
+    },
+    {
+     "formula": {
+      "en": "(160, 8) -> predicted: apple | actual: apple\n(125, 3) -> predicted: orange | actual: orange\n(145, 7) -> predicted: apple | actual: apple\n(135, 5) -> predicted: orange | actual: apple\nAccuracy: 75.0 %",
+      "hi": "(160, 8) -> predicted: apple | actual: apple\n(125, 3) -> predicted: orange | actual: orange\n(145, 7) -> predicted: apple | actual: apple\n(135, 5) -> predicted: orange | actual: apple\nAccuracy: 75.0 %"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Explain why the program got the fourth test fruit (135 g, smoothness 5) wrong, and suggest how to improve it.",
+       "hi": "समझाइए कि प्रोग्राम ने चौथा test फल (135 g, चिकनाई 5) गलत क्यों बताया, और इसे सुधारने का तरीका सुझाइए।"
+      },
+      "a": {
+       "en": "Step 1: Gaps from (135, 5): apple (150, 9): 15 + 4×10 = 55; apple (170, 8): 35 + 30 = 65; apple (140, 9): 5 + 40 = 45; orange (120, 3): 15 + 20 = 35; orange (130, 2): 5 + 30 = 35; orange (115, 4): 20 + 10 = 30.\nStep 2: The smallest gap is 30, to the orange (115, 4), so it predicted 'orange'. But it was really an apple with medium smoothness.\nStep 3: The training data has no medium-smooth apples, so the model never learnt that apples can look like this.\nStep 4: Improvements: add more varied training examples (including less smooth apples), add a better feature such as colour, or use k-nearest neighbours with a vote. Note the accuracy of 75% on only 4 test fruits is a rough estimate; more test data gives a more reliable score.",
+       "hi": "चरण 1: (135, 5) से अंतर: सेब (150, 9): 15 + 4×10 = 55; सेब (170, 8): 35 + 30 = 65; सेब (140, 9): 5 + 40 = 45; संतरा (120, 3): 15 + 20 = 35; संतरा (130, 2): 5 + 30 = 35; संतरा (115, 4): 20 + 10 = 30।\nचरण 2: सबसे छोटा अंतर 30 है, संतरे (115, 4) से, इसलिए अनुमान 'संतरा' आया। पर यह असल में मध्यम चिकनाई वाला सेब था।\nचरण 3: Training data में मध्यम चिकने सेब नहीं हैं, इसलिए मॉडल ने कभी नहीं सीखा कि सेब ऐसे भी दिख सकते हैं।\nचरण 4: सुधार: ज़्यादा विविध training उदाहरण जोड़ें (कम चिकने सेब समेत), रंग जैसा बेहतर feature जोड़ें, या वोट वाला k-nearest neighbours उपयोग करें। ध्यान दें कि केवल 4 test फलों पर 75% accuracy एक मोटा अनुमान है; ज़्यादा test data ज़्यादा भरोसेमंद स्कोर देता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "This tiny program shows the whole ML idea: training examples with labels → a way to compare → prediction on new data → testing → accuracy → improve the data.",
+      "hi": "यह छोटा प्रोग्राम पूरा ML विचार दिखाता है: लेबल वाले training उदाहरण → तुलना का तरीका → नए data पर अनुमान → testing → accuracy → data सुधारना।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.10 Neural networks and deep learning, simply",
+    "hi": "3.10 Neural networks और deep learning, सरल रूप में"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Many modern AI systems, including image recognisers, voice assistants and chatbots, use artificial neural networks. Picture a diagram with columns of circles joined by lines. The first column (input layer) receives the data, for example the pixel values of a photo. One or more middle columns (hidden layers) combine these signals. The last column (output layer) gives the answer, such as 'cat 0.9, dog 0.1'.",
+      "hi": "कई आधुनिक AI सिस्टम, जिनमें चित्र पहचानने वाले, voice assistants और chatbots शामिल हैं, कृत्रिम neural networks का उपयोग करते हैं। एक चित्र सोचिए जिसमें रेखाओं से जुड़े वृत्तों के स्तंभ हैं। पहला स्तंभ (input layer) data लेता है, जैसे किसी फ़ोटो के pixel मान। एक या ज़्यादा बीच के स्तंभ (hidden layers) इन संकेतों को जोड़ते हैं। आख़िरी स्तंभ (output layer) उत्तर देता है, जैसे 'बिल्ली 0.9, कुत्ता 0.1'।"
+     }
+    },
+    {
+     "p": {
+      "en": "Each line has a number called a weight, which says how strongly one circle affects the next. At first the weights are random, so the answers are poor. During training, the network compares its answer with the correct label and adjusts the weights a tiny bit to reduce the error. Repeating this over thousands or millions of examples tunes the weights until the network gives good answers. Those learnt weights are the model.",
+      "hi": "हर रेखा पर एक संख्या होती है जिसे weight (भार) कहते हैं, जो बताती है कि एक वृत्त अगले पर कितना असर डालता है। शुरू में weights यादृच्छिक होते हैं, इसलिए उत्तर ख़राब होते हैं। Training के दौरान network अपने उत्तर की तुलना सही लेबल से करता है और गलती घटाने के लिए weights को थोड़ा-सा बदलता है। हज़ारों या लाखों उदाहरणों पर यह दोहराने से weights तब तक ठीक होते जाते हैं जब तक network अच्छे उत्तर न देने लगे। वे सीखे हुए weights ही मॉडल हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "A network with many hidden layers is called a deep neural network, and learning with it is deep learning. Deep learning needs a lot of data and computing power, but it can learn features by itself: you do not have to tell it to look for spots on leaves; it discovers useful patterns from the pixels.",
+      "hi": "बहुत सारी hidden layers वाले network को deep neural network कहते हैं, और उससे सीखना deep learning है। Deep learning को बहुत data और computing power चाहिए, पर यह ख़ुद features सीख सकती है: आपको उसे पत्तियों पर धब्बे ढूँढने के लिए नहीं कहना पड़ता; वह pixels से उपयोगी पैटर्न ख़ुद खोज लेती है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Neural networks are inspired by the brain but are not brains. They are mathematics: multiplying and adding numbers, very many times.",
+      "hi": "Neural networks दिमाग़ से प्रेरित हैं पर दिमाग़ नहीं हैं। वे गणित हैं: संख्याओं को गुणा करना और जोड़ना, बहुत-बहुत बार।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.11 Machine learning around us, and its limits",
+    "hi": "3.11 हमारे आसपास machine learning, और इसकी सीमाएँ"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application",
+        "Type of learning",
+        "Task"
+       ],
+       "hi": [
+        "उपयोग",
+        "सीखने का प्रकार",
+        "काम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "UPI / bank fraud alerts",
+         "Supervised (and unsupervised anomaly detection)",
+         "Classification: fraud or not; spotting unusual payments"
+        ],
+        [
+         "Google Maps travel-time estimate",
+         "Supervised",
+         "Regression: minutes to reach"
+        ],
+        [
+         "Crop-disease app",
+         "Supervised",
+         "Classification of leaf photos"
+        ],
+        [
+         "Voice typing in Indian languages",
+         "Supervised (deep learning)",
+         "Speech to text"
+        ],
+        [
+         "Shopping app customer groups",
+         "Unsupervised",
+         "Clustering"
+        ],
+        [
+         "Photo gallery 'people' albums",
+         "Unsupervised (mostly)",
+         "Clustering similar faces"
+        ],
+        [
+         "Game-playing AI, robot movement",
+         "Reinforcement",
+         "Learning actions from rewards"
+        ],
+        [
+         "Weather and rainfall forecasts",
+         "Supervised (with physics-based models)",
+         "Regression"
+        ]
+       ],
+       "hi": [
+        [
+         "UPI / बैंक धोखाधड़ी चेतावनी",
+         "Supervised (और unsupervised anomaly detection)",
+         "Classification: धोखाधड़ी या नहीं; असामान्य भुगतान पहचानना"
+        ],
+        [
+         "Google Maps यात्रा-समय अनुमान",
+         "Supervised",
+         "Regression: पहुँचने के मिनट"
+        ],
+        [
+         "फसल-रोग ऐप",
+         "Supervised",
+         "पत्ती-फ़ोटो का classification"
+        ],
+        [
+         "भारतीय भाषाओं में voice typing",
+         "Supervised (deep learning)",
+         "बोली से text"
+        ],
+        [
+         "शॉपिंग ऐप के ग्राहक समूह",
+         "Unsupervised",
+         "Clustering"
+        ],
+        [
+         "फ़ोटो गैलरी के 'लोग' एल्बम",
+         "Unsupervised (ज़्यादातर)",
+         "मिलते-जुलते चेहरों का clustering"
+        ],
+        [
+         "खेल खेलने वाला AI, रोबोट की चाल",
+         "Reinforcement",
+         "इनाम से कार्य सीखना"
+        ],
+        [
+         "मौसम और वर्षा पूर्वानुमान",
+         "Supervised (भौतिकी-आधारित मॉडलों के साथ)",
+         "Regression"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "ML learns only from its data: biased or poor data gives biased or poor results (Chapter 2 and Chapter 6).",
+       "It finds patterns, not reasons: it may notice that ice-cream sales and sunburn rise together without knowing both are caused by hot weather.",
+       "It works best on situations similar to its training data; it can fail badly on very different cases.",
+       "Many models cannot easily explain why they gave an answer (they are hard to interpret).",
+       "Predictions have a level of confidence, never certainty; important decisions need a human in the loop."
+      ],
+      "hi": [
+       "ML केवल अपने data से सीखता है: पक्षपाती या ख़राब data से पक्षपाती या ख़राब परिणाम (अध्याय 2 और अध्याय 6)।",
+       "यह पैटर्न ढूँढता है, कारण नहीं: यह देख सकता है कि आइसक्रीम की बिक्री और धूप से जलना साथ बढ़ते हैं, बिना यह जाने कि दोनों का कारण गर्म मौसम है।",
+       "यह training data जैसी स्थितियों पर सबसे अच्छा काम करता है; बहुत अलग मामलों पर बुरी तरह विफल हो सकता है।",
+       "कई मॉडल आसानी से नहीं बता पाते कि उन्होंने उत्तर क्यों दिया (उन्हें समझना कठिन है)।",
+       "अनुमानों में भरोसे का स्तर होता है, निश्चितता कभी नहीं; महत्वपूर्ण निर्णयों में प्रक्रिया में इंसान ज़रूरी है।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.12 Activities",
+    "hi": "3.12 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (screen, with an adult): Train an image classifier with Google Teachable Machine.\nAim: To experience the full supervised learning cycle without code.\nYou need: a computer or phone browser with a camera; teachablemachine.withgoogle.com (no sign-in needed to train and test); adult supervision.\nWhat to do: (1) Choose Image Project → Standard image model. (2) Make three classes: 'Rock', 'Paper', 'Scissors' (hand shapes). (3) Record about 50 images for each class, moving your hand and changing the background a little. (4) Click Train Model. (5) In Preview, show new hand shapes and watch the confidence bars. (6) Now test with a friend's hand or in different light.\nWhat you observe: the model works well on situations like the training data, and worse on very different ones; adding varied examples improves it.\nWhat it teaches: labelled data (classes) → training → model → prediction with confidence → testing on new data.",
+      "hi": "गतिविधि 1 (स्क्रीन, बड़े के साथ): Google Teachable Machine से image classifier train कीजिए।\nउद्देश्य: बिना code के पूरा supervised learning चक्र अनुभव करना।\nआपको चाहिए: कैमरे वाला कंप्यूटर या फ़ोन ब्राउज़र; teachablemachine.withgoogle.com (train और test के लिए sign-in ज़रूरी नहीं); बड़े की निगरानी।\nक्या करें: (1) Image Project → Standard image model चुनें। (2) तीन classes बनाएँ: 'Rock', 'Paper', 'Scissors' (हाथ के आकार)। (3) हर class के लिए लगभग 50 चित्र लें, हाथ हिलाते हुए और पृष्ठभूमि थोड़ी बदलते हुए। (4) Train Model दबाएँ। (5) Preview में नए हाथ के आकार दिखाएँ और भरोसे की पट्टियाँ देखें। (6) अब किसी दोस्त के हाथ से या अलग रोशनी में जाँचें।\nआप क्या देखेंगे: मॉडल training data जैसी स्थितियों में अच्छा काम करता है, और बहुत अलग स्थितियों में ख़राब; विविध उदाहरण जोड़ने से सुधरता है।\nयह क्या सिखाता है: लेबल वाला data (classes) → training → मॉडल → भरोसे के साथ अनुमान → नए data पर testing।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (unplugged): Human clustering.\nAim: To understand unsupervised learning.\nYou need: 20 mixed objects or picture cards (leaves, buttons, coins, pencils, bottle caps).\nWhat to do: (1) Give a group the mixed pile without saying what the categories are. (2) Ask them to sort it into 3 or 4 groups of similar things. (3) Each group explains the feature they used (colour, size, material, use). (4) Compare: did different groups make different clusters?\nWhat you observe: different features give different but sensible clusters.\nWhat it teaches: clustering finds groups without labels, and the features chosen shape the result; humans then name and interpret the groups.",
+      "hi": "गतिविधि 2 (बिना कंप्यूटर): मानव clustering।\nउद्देश्य: Unsupervised learning समझना।\nआपको चाहिए: 20 मिली-जुली वस्तुएँ या चित्र-कार्ड (पत्तियाँ, बटन, सिक्के, पेंसिल, बोतल के ढक्कन)।\nक्या करें: (1) एक समूह को मिला-जुला ढेर दें, बिना बताए कि श्रेणियाँ क्या हैं। (2) उनसे इसे मिलती-जुलती चीज़ों के 3 या 4 समूहों में छाँटने को कहें। (3) हर समूह बताए कि उसने कौन-सा feature उपयोग किया (रंग, आकार, सामग्री, उपयोग)। (4) तुलना करें: क्या अलग समूहों ने अलग clusters बनाए?\nआप क्या देखेंगे: अलग features अलग पर समझदार clusters देते हैं।\nयह क्या सिखाता है: clustering बिना लेबल के समूह ढूँढता है, और चुने गए features परिणाम तय करते हैं; फिर इंसान समूहों को नाम देते और समझते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (unplugged game): Hot and cold - reinforcement learning.\nAim: To feel learning from rewards.\nWhat to do: (1) Hide a small object in the classroom. (2) One student (the agent) walks around; the class says only 'warmer' (+1) when the agent moves closer and 'colder' (-1) when it moves away. (3) Count how many steps it takes to find the object. (4) Hide it again in a similar place; the agent often finds it faster.\nWhat it teaches: agent, environment, action, reward and improving with experience.",
+      "hi": "गतिविधि 3 (बिना कंप्यूटर खेल): गरम और ठंडा - reinforcement learning।\nउद्देश्य: इनाम से सीखने का अनुभव।\nक्या करें: (1) कक्षा में एक छोटी वस्तु छिपाएँ। (2) एक छात्र (agent) घूमता है; कक्षा केवल 'गरम' (+1) कहती है जब agent पास जाए और 'ठंडा' (-1) जब दूर जाए। (3) गिनें कि वस्तु ढूँढने में कितने कदम लगे। (4) इसे फिर से मिलती-जुलती जगह छिपाएँ; agent अक्सर जल्दी ढूँढ लेता है।\nयह क्या सिखाता है: agent, environment, action, reward और अनुभव से बेहतर होना।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (unplugged): Overfitting quiz.\nAim: To see why memorising fails.\nWhat to do: (1) The teacher shows 6 cards: three 'birds' (crow, parrot, sparrow) and three 'not birds' (cat, dog, cow). (2) One student writes rules that fit these 6 cards exactly, for example 'black, green or brown small animals are birds'. (3) Now test with new cards: penguin, bat, peacock, black kitten.\nWhat you observe: rules copied from a few examples break on new cases (the bat or the black kitten may be wrongly called a bird, the penguin missed).\nWhat it teaches: a good model learns the general pattern (feathers, beak), not accidental details; testing on new data reveals overfitting.",
+      "hi": "गतिविधि 4 (बिना कंप्यूटर): Overfitting क्विज़।\nउद्देश्य: देखना कि रटना क्यों विफल होता है।\nक्या करें: (1) शिक्षक 6 कार्ड दिखाते हैं: तीन 'पक्षी' (कौआ, तोता, गौरैया) और तीन 'पक्षी नहीं' (बिल्ली, कुत्ता, गाय)। (2) एक छात्र ऐसे नियम लिखता है जो इन 6 कार्डों पर बिल्कुल फ़िट हों, जैसे 'काले, हरे या भूरे छोटे जानवर पक्षी हैं'। (3) अब नए कार्डों से जाँचें: पेंगुइन, चमगादड़, मोर, काला बिल्ली का बच्चा।\nआप क्या देखेंगे: कुछ उदाहरणों से बने नियम नए मामलों पर टूट जाते हैं (चमगादड़ या काले बिल्ली के बच्चे को गलती से पक्षी कहा जा सकता है, पेंगुइन छूट सकता है)।\nयह क्या सिखाता है: अच्छा मॉडल सामान्य पैटर्न (पंख, चोंच) सीखता है, संयोगवश विवरण नहीं; नए data पर testing से overfitting पता चलता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: when using a webcam for Teachable Machine, train on objects or hand shapes rather than faces, and do not upload the model or images publicly. Teachable Machine processes training in the browser, but always check with an adult before saving or sharing anything.",
+      "hi": "सुरक्षा: Teachable Machine के लिए वेबकैम उपयोग करते समय चेहरों के बजाय वस्तुओं या हाथ के आकारों पर train करें, और मॉडल या चित्र सार्वजनिक रूप से अपलोड न करें। Teachable Machine training ब्राउज़र में करता है, पर कुछ भी सहेजने या साझा करने से पहले हमेशा किसी बड़े से पूछें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking ML and AI are the same thing. Fix: ML is one part of AI; deep learning is one part of ML.",
+   "Confusing classification with clustering. Fix: classification uses known labelled groups (supervised); clustering discovers groups in unlabelled data (unsupervised).",
+   "Calling every prediction 'classification'. Fix: if the answer is a number (price, temperature, minutes), it is regression.",
+   "Testing a model on its training data. Fix: always keep a separate, unseen test set.",
+   "Believing high accuracy always means a good model. Fix: check the kinds of errors (false positives and false negatives), especially when one class is rare.",
+   "Thinking 99% training accuracy is great news. Fix: if test accuracy is much lower, the model is overfitting.",
+   "Thinking reinforcement learning needs a labelled answer key. Fix: it learns from rewards and penalties after actions.",
+   "Treating a model's answer as certain. Fix: it is a prediction with some confidence; check important results.",
+   "Thinking neural networks are real brains. Fix: they are mathematical models loosely inspired by the brain."
+  ],
+  "hi": [
+   "यह सोचना कि ML और AI एक ही हैं। सुधार: ML, AI का एक हिस्सा है; deep learning, ML का एक हिस्सा है।",
+   "Classification और clustering को मिलाना। सुधार: classification ज्ञात लेबल वाले समूह उपयोग करता है (supervised); clustering बिना लेबल के data में समूह खोजता है (unsupervised)।",
+   "हर अनुमान को 'classification' कहना। सुधार: अगर उत्तर एक संख्या है (दाम, तापमान, मिनट), तो वह regression है।",
+   "मॉडल को उसके training data पर जाँचना। सुधार: हमेशा अलग, न देखा test set रखें।",
+   "यह मानना कि ऊँची accuracy का अर्थ हमेशा अच्छा मॉडल है। सुधार: गलतियों के प्रकार (false positives और false negatives) जाँचें, ख़ासकर जब कोई class दुर्लभ हो।",
+   "यह सोचना कि 99% training accuracy बढ़िया ख़बर है। सुधार: अगर test accuracy कहीं कम है, तो मॉडल overfitting कर रहा है।",
+   "यह सोचना कि reinforcement learning को लेबल वाली उत्तर-कुंजी चाहिए। सुधार: यह कार्यों के बाद इनाम और दंड से सीखता है।",
+   "मॉडल के उत्तर को निश्चित मानना। सुधार: यह कुछ भरोसे के साथ अनुमान है; महत्वपूर्ण परिणाम जाँचें।",
+   "यह सोचना कि neural networks असली दिमाग़ हैं। सुधार: वे दिमाग़ से थोड़ा प्रेरित गणितीय मॉडल हैं।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Machine learning (ML)",
+    "hi": "Machine learning (ML)"
+   },
+   "d": {
+    "en": "Part of AI where computers learn patterns from data to make predictions.",
+    "hi": "AI का हिस्सा जिसमें कंप्यूटर अनुमान लगाने के लिए data से पैटर्न सीखते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Traditional programming",
+    "hi": "Traditional programming (पारंपरिक प्रोग्रामिंग)"
+   },
+   "d": {
+    "en": "People write the rules; the computer applies them to data.",
+    "hi": "लोग नियम लिखते हैं; कंप्यूटर उन्हें data पर लगाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Model",
+    "hi": "Model (मॉडल)"
+   },
+   "d": {
+    "en": "What a machine has learnt from data, used to make predictions.",
+    "hi": "मशीन ने data से जो सीखा, जिसका उपयोग अनुमान लगाने में होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Algorithm",
+    "hi": "Algorithm (एल्गोरिद्म)"
+   },
+   "d": {
+    "en": "A step-by-step method; in ML, the method used to learn from data.",
+    "hi": "चरण-दर-चरण तरीका; ML में data से सीखने का तरीका।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature",
+    "hi": "Feature (फ़ीचर)"
+   },
+   "d": {
+    "en": "A property of an example used for deciding.",
+    "hi": "उदाहरण का गुण जो निर्णय में उपयोग होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Label",
+    "hi": "Label (लेबल)"
+   },
+   "d": {
+    "en": "The correct answer attached to a training example.",
+    "hi": "Training उदाहरण से जुड़ा सही उत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training",
+    "hi": "Training (प्रशिक्षण)"
+   },
+   "d": {
+    "en": "The process of learning patterns from data.",
+    "hi": "data से पैटर्न सीखने की प्रक्रिया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prediction (inference)",
+    "hi": "Prediction / inference (अनुमान)"
+   },
+   "d": {
+    "en": "The model's output for new data.",
+    "hi": "नए data के लिए मॉडल का output।"
+   }
+  },
+  {
+   "t": {
+    "en": "Supervised learning",
+    "hi": "Supervised learning (निरीक्षित सीखना)"
+   },
+   "d": {
+    "en": "Learning from labelled examples.",
+    "hi": "लेबल वाले उदाहरणों से सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification",
+    "hi": "Classification (वर्गीकरण)"
+   },
+   "d": {
+    "en": "Predicting a category.",
+    "hi": "श्रेणी का अनुमान लगाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Regression",
+    "hi": "Regression (रिग्रेशन)"
+   },
+   "d": {
+    "en": "Predicting a number.",
+    "hi": "संख्या का अनुमान लगाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unsupervised learning",
+    "hi": "Unsupervised learning (अनिरीक्षित सीखना)"
+   },
+   "d": {
+    "en": "Finding patterns in unlabelled data.",
+    "hi": "बिना लेबल वाले data में पैटर्न ढूँढना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Clustering",
+    "hi": "Clustering (समूहन)"
+   },
+   "d": {
+    "en": "Grouping similar items without labels.",
+    "hi": "बिना लेबल के मिलती-जुलती चीज़ों को समूह में रखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Anomaly detection",
+    "hi": "Anomaly detection (असामान्यता पहचान)"
+   },
+   "d": {
+    "en": "Finding items that do not fit normal patterns, such as unusual transactions.",
+    "hi": "ऐसी चीज़ें ढूँढना जो सामान्य पैटर्न में फ़िट न हों, जैसे असामान्य लेन-देन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reinforcement learning",
+    "hi": "Reinforcement learning (प्रबलन सीखना)"
+   },
+   "d": {
+    "en": "Learning by trial and error from rewards and penalties.",
+    "hi": "इनाम और दंड से कोशिश और गलती द्वारा सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Agent",
+    "hi": "Agent (एजेंट)"
+   },
+   "d": {
+    "en": "The learner that acts in reinforcement learning.",
+    "hi": "Reinforcement learning में कार्य करने वाला सीखने वाला।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reward",
+    "hi": "Reward (इनाम)"
+   },
+   "d": {
+    "en": "Positive or negative feedback given after an action in RL.",
+    "hi": "RL में कार्य के बाद मिलने वाली धनात्मक या ऋणात्मक प्रतिक्रिया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Policy",
+    "hi": "Policy (नीति)"
+   },
+   "d": {
+    "en": "The learnt strategy of which action to take in each situation.",
+    "hi": "हर स्थिति में कौन-सा कार्य करना है, इसकी सीखी हुई रणनीति।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training data",
+    "hi": "Training data (प्रशिक्षण डेटा)"
+   },
+   "d": {
+    "en": "Data used for learning.",
+    "hi": "सीखने के लिए उपयोग होने वाला data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Testing data",
+    "hi": "Testing data (परीक्षण डेटा)"
+   },
+   "d": {
+    "en": "Unseen data used to check the model.",
+    "hi": "मॉडल जाँचने के लिए उपयोग होने वाला न देखा data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Validation data",
+    "hi": "Validation data (सत्यापन डेटा)"
+   },
+   "d": {
+    "en": "A third part of data used to tune the model during development.",
+    "hi": "विकास के दौरान मॉडल को सुधारने में उपयोग होने वाला data का तीसरा हिस्सा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Accuracy",
+    "hi": "Accuracy (शुद्धता)"
+   },
+   "d": {
+    "en": "Correct predictions ÷ total predictions × 100.",
+    "hi": "सही अनुमान ÷ कुल अनुमान × 100।"
+   }
+  },
+  {
+   "t": {
+    "en": "Confusion matrix",
+    "hi": "Confusion matrix (भ्रम तालिका)"
+   },
+   "d": {
+    "en": "A table showing true positives, false positives, false negatives and true negatives.",
+    "hi": "True positives, false positives, false negatives और true negatives दिखाने वाली तालिका।"
+   }
+  },
+  {
+   "t": {
+    "en": "False positive",
+    "hi": "False positive (झूठी चेतावनी)"
+   },
+   "d": {
+    "en": "The model says 'yes' but the true answer is 'no'.",
+    "hi": "मॉडल 'हाँ' कहता है पर सही उत्तर 'नहीं' है।"
+   }
+  },
+  {
+   "t": {
+    "en": "False negative",
+    "hi": "False negative (छूटा मामला)"
+   },
+   "d": {
+    "en": "The model says 'no' but the true answer is 'yes'.",
+    "hi": "मॉडल 'नहीं' कहता है पर सही उत्तर 'हाँ' है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Overfitting",
+    "hi": "Overfitting (ओवरफ़िटिंग)"
+   },
+   "d": {
+    "en": "Memorising training data so the model does badly on new data.",
+    "hi": "Training data रट लेना जिससे मॉडल नए data पर ख़राब करे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Underfitting",
+    "hi": "Underfitting (अंडरफ़िटिंग)"
+   },
+   "d": {
+    "en": "Learning too little, so the model does badly even on training data.",
+    "hi": "बहुत कम सीखना, जिससे मॉडल training data पर भी ख़राब करे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Nearest neighbour",
+    "hi": "Nearest neighbour (निकटतम पड़ोसी)"
+   },
+   "d": {
+    "en": "Classifying a new item by copying the label of the most similar training example.",
+    "hi": "नई वस्तु को सबसे मिलते-जुलते training उदाहरण का लेबल देकर वर्गीकृत करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Neural network",
+    "hi": "Neural network (न्यूरल नेटवर्क)"
+   },
+   "d": {
+    "en": "Layers of connected units with weights, adjusted during training.",
+    "hi": "weights वाली जुड़ी इकाइयों की परतें, जो training में बदली जाती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Weight",
+    "hi": "Weight (भार)"
+   },
+   "d": {
+    "en": "A number on a connection in a neural network that is adjusted during learning.",
+    "hi": "Neural network के किसी जोड़ पर संख्या जो सीखने के दौरान बदली जाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deep learning",
+    "hi": "Deep learning (डीप लर्निंग)"
+   },
+   "d": {
+    "en": "ML with neural networks that have many hidden layers.",
+    "hi": "कई hidden layers वाले neural networks से ML।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Learning from data where every example has the correct answer is called:\n(a) unsupervised learning (b) supervised learning (c) reinforcement learning (d) clustering",
+    "hi": "बहुविकल्पी: ऐसे data से सीखना जिसमें हर उदाहरण का सही उत्तर हो, कहलाता है:\n(क) unsupervised learning (ख) supervised learning (ग) reinforcement learning (घ) clustering"
+   },
+   "a": {
+    "en": "(b) Supervised learning.",
+    "hi": "(ख) Supervised learning।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Predicting the price of a second-hand scooter is an example of:\n(a) classification (b) clustering (c) regression (d) reinforcement",
+    "hi": "बहुविकल्पी: पुराने स्कूटर के दाम का अनुमान किसका उदाहरण है:\n(क) classification (ख) clustering (ग) regression (घ) reinforcement"
+   },
+   "a": {
+    "en": "(c) Regression, because the answer is a number.",
+    "hi": "(ग) Regression, क्योंकि उत्तर एक संख्या है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In reinforcement learning, the learner is called the:\n(a) label (b) agent (c) cluster (d) dataset",
+    "hi": "बहुविकल्पी: Reinforcement learning में सीखने वाले को कहते हैं:\n(क) label (ख) agent (ग) cluster (घ) dataset"
+   },
+   "a": {
+    "en": "(b) Agent.",
+    "hi": "(ख) Agent।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A common way to split data is ____% for training and ____% for testing.",
+    "hi": "रिक्त स्थान भरिए: data बाँटने का आम तरीका ____% training और ____% testing है।"
+   },
+   "a": {
+    "en": "80; 20",
+    "hi": "80; 20"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Grouping customers by shopping habits without any labels is called ________.",
+    "hi": "रिक्त स्थान भरिए: बिना किसी लेबल के ख़रीदारी की आदतों से ग्राहकों को समूह में रखना ________ कहलाता है।"
+   },
+   "a": {
+    "en": "clustering",
+    "hi": "clustering (समूहन)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: A model should be tested on the same data it was trained on.",
+    "hi": "सही या गलत: मॉडल को उसी data पर जाँचना चाहिए जिस पर उसे train किया गया।"
+   },
+   "a": {
+    "en": "False. It must be tested on separate, unseen data.",
+    "hi": "गलत। इसे अलग, न देखे data पर जाँचना चाहिए।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: Deep learning is a type of machine learning.",
+    "hi": "सही या गलत: Deep learning, machine learning का एक प्रकार है।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What is a label? Give an example.",
+    "hi": "Label क्या है? एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "The correct answer attached to a training example, for example 'spam' attached to a fraud SMS, or 'diseased' attached to a leaf photo.",
+    "hi": "Training उदाहरण से जुड़ा सही उत्तर, जैसे धोखाधड़ी SMS से जुड़ा 'spam', या पत्ती-फ़ोटो से जुड़ा 'रोगी'।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How is machine learning different from traditional programming? Use one example.",
+    "hi": "Machine learning पारंपरिक programming से कैसे अलग है? एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "In traditional programming, people write rules and the computer applies them to data (e.g., bill = units × rate). In ML, people give data with correct answers and the computer learns the rules itself (e.g., a spam filter learns from thousands of labelled messages), then uses them on new data.",
+    "hi": "पारंपरिक programming में लोग नियम लिखते हैं और कंप्यूटर उन्हें data पर लगाता है (जैसे बिल = यूनिट × दर)। ML में लोग सही उत्तरों के साथ data देते हैं और कंप्यूटर ख़ुद नियम सीखता है (जैसे spam filter हज़ारों लेबल वाले संदेशों से सीखता है), फिर उन्हें नए data पर लगाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Classify each as supervised, unsupervised or reinforcement learning: (a) a model that learns to play Ludo by winning or losing games (b) grouping news articles on the same topic (c) predicting tomorrow's AQI from past readings and their actual values.",
+    "hi": "हर एक को supervised, unsupervised या reinforcement learning में बाँटिए: (क) ऐसा मॉडल जो खेल जीतकर या हारकर लूडो खेलना सीखे (ख) एक ही विषय के समाचार लेखों को समूह में रखना (ग) पिछली रीडिंग और उनके असली मानों से कल का AQI अनुमान लगाना।"
+   },
+   "a": {
+    "en": "(a) Reinforcement (b) Unsupervised (clustering) (c) Supervised (regression).",
+    "hi": "(क) Reinforcement (ख) Unsupervised (clustering) (ग) Supervised (regression)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A dataset has 1,200 labelled images. With a 75:25 split, how many images are used for training and testing?",
+    "hi": "एक dataset में 1,200 लेबल वाले चित्र हैं। 75:25 बँटवारे में training और testing के लिए कितने चित्र होंगे?"
+   },
+   "a": {
+    "en": "Training = 0.75 × 1200 = 900 images. Testing = 1200 - 900 = 300 images.",
+    "hi": "Training = 0.75 × 1200 = 900 चित्र। Testing = 1200 - 900 = 300 चित्र।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A handwriting model is tested on 250 digits and gets 230 right. Find accuracy and error rate.",
+    "hi": "एक लिखावट मॉडल को 250 अंकों पर जाँचा गया और 230 सही आए। Accuracy और error rate निकालिए।"
+   },
+   "a": {
+    "en": "Accuracy = 230 ÷ 250 × 100 = 92%. Errors = 20; error rate = 20 ÷ 250 × 100 = 8%.",
+    "hi": "Accuracy = 230 ÷ 250 × 100 = 92%। गलतियाँ = 20; error rate = 20 ÷ 250 × 100 = 8%।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is overfitting? How can you detect it?",
+    "hi": "Overfitting क्या है? इसे कैसे पहचानें?"
+   },
+   "a": {
+    "en": "Overfitting is when a model memorises the training data, including accidental details, and so does very well on training data but poorly on new data. Detect it by comparing training accuracy with test accuracy: a big gap (e.g., 99% vs 60%) means overfitting.",
+    "hi": "Overfitting तब है जब मॉडल training data को संयोगवश विवरणों समेत रट ले, और इसलिए training data पर बहुत अच्छा पर नए data पर ख़राब करे। इसे training accuracy और test accuracy की तुलना से पहचानें: बड़ा अंतर (जैसे 99% बनाम 60%) overfitting दर्शाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the parts of reinforcement learning using the example of a dog learning to sit.",
+    "hi": "बैठना सीखते कुत्ते के उदाहरण से reinforcement learning के हिस्से बताइए।"
+   },
+   "a": {
+    "en": "Agent: the dog. Environment: the room and the trainer. State: standing, trainer says 'sit'. Action: sit, jump, run. Reward: a treat for sitting; no treat (penalty) for other actions. Policy learnt: when the trainer says 'sit', sit.",
+    "hi": "Agent: कुत्ता। Environment: कमरा और प्रशिक्षक। State: खड़ा है, प्रशिक्षक कहता है 'बैठो'। Action: बैठना, कूदना, दौड़ना। Reward: बैठने पर खाने की चीज़; दूसरे कार्यों पर कुछ नहीं (दंड)। सीखी नीति: जब प्रशिक्षक 'बैठो' कहे, तो बैठो।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A delivery-time model predicted 25, 40, 30 minutes; actual times were 28, 36, 30 minutes. Find the average error.",
+    "hi": "एक डिलीवरी-समय मॉडल ने 25, 40, 30 मिनट बताए; असली समय 28, 36, 30 मिनट थे। औसत error निकालिए।"
+   },
+   "a": {
+    "en": "Gaps: 3, 4, 0. Total = 7. Average error = 7 ÷ 3 ≈ 2.33 minutes.",
+    "hi": "अंतर: 3, 4, 0। कुल = 7। औसत error = 7 ÷ 3 ≈ 2.33 मिनट।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A disease-screening model is tested on 200 people: 20 actually have the disease. It correctly flags 15 of them, and wrongly flags 10 healthy people. Make the confusion table, find the accuracy, and explain which error is more serious here.",
+    "hi": "एक रोग-जाँच मॉडल को 200 लोगों पर जाँचा गया: 20 को सचमुच रोग है। यह उनमें से 15 को सही चिह्नित करता है, और 10 स्वस्थ लोगों को गलत चिह्नित करता है। Confusion table बनाइए, accuracy निकालिए, और बताइए यहाँ कौन-सी गलती ज़्यादा गंभीर है।"
+   },
+   "a": {
+    "en": "TP = 15, FN = 20 - 15 = 5, FP = 10, TN = 180 - 10 = 170. Correct = 15 + 170 = 185. Accuracy = 185 ÷ 200 × 100 = 92.5%. False negatives (5 sick people told they are fine) are more serious, because they may not get treatment; false positives can be cleared by a further test from a doctor.",
+    "hi": "TP = 15, FN = 20 - 15 = 5, FP = 10, TN = 180 - 10 = 170। सही = 15 + 170 = 185। Accuracy = 185 ÷ 200 × 100 = 92.5%। False negatives (5 बीमार लोगों को बताया गया कि वे ठीक हैं) ज़्यादा गंभीर हैं, क्योंकि उन्हें इलाज न मिले; false positives डॉक्टर की आगे की जाँच से साफ़ हो सकते हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Why can accuracy be misleading when one class is rare? Give a numerical example.",
+    "hi": "जब कोई class दुर्लभ हो तो accuracy भ्रामक क्यों हो सकती है? संख्यात्मक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "If only 2 of 100 transactions are fraud, a model that always says 'not fraud' is right 98 times: 98% accuracy, but it catches no fraud at all. So we must also look at false negatives and false positives.",
+    "hi": "अगर 100 में से केवल 2 लेन-देन धोखाधड़ी हैं, तो हमेशा 'धोखाधड़ी नहीं' कहने वाला मॉडल 98 बार सही होगा: 98% accuracy, पर वह एक भी धोखाधड़ी नहीं पकड़ता। इसलिए हमें false negatives और false positives भी देखने होंगे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Compare supervised, unsupervised and reinforcement learning under: data, feedback, main task and one Indian example each.",
+    "hi": "विस्तृत उत्तर: Supervised, unsupervised और reinforcement learning की तुलना कीजिए: data, प्रतिक्रिया, मुख्य काम और एक-एक भारतीय उदाहरण।"
+   },
+   "a": {
+    "en": "Supervised: labelled data; feedback is the correct answer for each example; classification and regression; example: a crop-disease app trained on labelled leaf photos, or a UPI fraud detector.\nUnsupervised: unlabelled data; no feedback; clustering and anomaly detection; example: a grocery app grouping customers by buying habits.\nReinforcement: no fixed dataset, the agent learns from experience; feedback is rewards and penalties; sequential decision-making; example: research on AI that adjusts traffic-signal timings to reduce waiting, or game-playing AI.",
+    "hi": "Supervised: लेबल वाला data; प्रतिक्रिया हर उदाहरण का सही उत्तर; classification और regression; उदाहरण: लेबल वाली पत्ती-फ़ोटो पर train फसल-रोग ऐप, या UPI fraud detector।\nUnsupervised: बिना लेबल का data; कोई प्रतिक्रिया नहीं; clustering और anomaly detection; उदाहरण: ख़रीदारी की आदतों से ग्राहकों को समूह में रखने वाला किराना ऐप।\nReinforcement: कोई तय dataset नहीं, agent अनुभव से सीखता है; प्रतिक्रिया इनाम और दंड; क्रमिक निर्णय; उदाहरण: प्रतीक्षा घटाने के लिए ट्रैफ़िक-सिग्नल समय बदलने वाले AI पर शोध, या खेल खेलने वाला AI।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Using the nearest-neighbour idea and the program's rule (gap = weight difference + 10 × smoothness difference), predict the label for a fruit of 118 g with smoothness 3. Show the gaps.",
+    "hi": "Nearest-neighbour विचार और प्रोग्राम के नियम (अंतर = वज़न का अंतर + 10 × चिकनाई का अंतर) से 118 g और चिकनाई 3 वाले फल का लेबल बताइए। अंतर दिखाइए।"
+   },
+   "a": {
+    "en": "Gaps: apple (150,9): 32 + 60 = 92; apple (170,8): 52 + 50 = 102; apple (140,9): 22 + 60 = 82; orange (120,3): 2 + 0 = 2; orange (130,2): 12 + 10 = 22; orange (115,4): 3 + 10 = 13. Smallest gap = 2 (orange 120, 3). Prediction: orange.",
+    "hi": "अंतर: सेब (150,9): 32 + 60 = 92; सेब (170,8): 52 + 50 = 102; सेब (140,9): 22 + 60 = 82; संतरा (120,3): 2 + 0 = 2; संतरा (130,2): 12 + 10 = 22; संतरा (115,4): 3 + 10 = 13। सबसे छोटा अंतर = 2 (संतरा 120, 3)। अनुमान: संतरा।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A model trained to spot potholes in road photos from Mumbai in the dry season works poorly in Guwahati during the monsoon. Explain using ML ideas, and suggest fixes.",
+    "hi": "केस-आधारित: सूखे मौसम में मुंबई की सड़क-फ़ोटो से गड्ढे पहचानने के लिए train मॉडल मानसून में गुवाहाटी में ख़राब काम करता है। ML विचारों से समझाइए, और सुधार सुझाइए।"
+   },
+   "a": {
+    "en": "The training data covered only dry roads in one city, so the model learnt patterns specific to those conditions (overfitting to that kind of data / non-representative training data). Water-filled potholes, wet reflections and different road surfaces were never seen. Fixes: collect labelled photos from many cities, seasons, times of day and phones; keep a test set from new places; retrain and compare test accuracy; ask road engineers to check uncertain cases.",
+    "hi": "Training data में केवल एक शहर की सूखी सड़कें थीं, इसलिए मॉडल ने उन्हीं हालात के पैटर्न सीखे (उस तरह के data पर overfitting / गैर-प्रतिनिधि training data)। पानी भरे गड्ढे, गीली चमक और अलग सड़क-सतहें कभी नहीं देखीं। सुधार: कई शहरों, मौसमों, दिन के समयों और फ़ोनों की लेबल वाली फ़ोटो जुटाएँ; नई जगहों का test set रखें; फिर train करके test accuracy की तुलना करें; अनिश्चित मामलों को सड़क इंजीनियरों से जँचवाएँ।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Assertion-reason: Assertion (A): Clustering is an unsupervised learning task. Reason (R): Clustering uses labelled examples to put items into known groups. Choose: (a) both true, R explains A (b) both true, R does not explain A (c) A true, R false (d) A false, R true.",
+    "hi": "कथन-कारण: कथन (A): Clustering एक unsupervised learning काम है। कारण (R): Clustering चीज़ों को ज्ञात समूहों में रखने के लिए लेबल वाले उदाहरण उपयोग करता है। चुनिए: (क) दोनों सही, R, A को समझाता है (ख) दोनों सही, R, A को नहीं समझाता (ग) A सही, R गलत (घ) A गलत, R सही।"
+   },
+   "a": {
+    "en": "(c) A is true, R is false. Clustering uses unlabelled data and discovers the groups; using labelled known groups describes classification.",
+    "hi": "(ग) A सही, R गलत। Clustering बिना लेबल का data उपयोग करता है और समूह खोजता है; लेबल वाले ज्ञात समूह classification का वर्णन है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity/thinking: Plan a Teachable Machine project to sort waste into 'paper', 'plastic' and 'metal'. Write your classes, how many examples, how you will test, and one fairness check.",
+    "hi": "गतिविधि/चिंतन: कचरे को 'काग़ज़', 'प्लास्टिक' और 'धातु' में छाँटने का Teachable Machine project योजना बनाइए। अपनी classes, कितने उदाहरण, कैसे जाँचेंगे, और एक निष्पक्षता जाँच लिखिए।"
+   },
+   "a": {
+    "en": "Classes: Paper, Plastic, Metal. Examples: about 50-100 images per class, from different items (bottles, wrappers, cans, newspapers), angles, backgrounds and lighting, balanced across classes. Testing: keep about 20% of new items not used in training and check accuracy and which classes get confused (e.g., shiny plastic vs metal). Fairness/quality check: include crushed, dirty and coloured items, and items common in local homes and shops, so it does not work only for clean, new objects.",
+    "hi": "Classes: काग़ज़, प्लास्टिक, धातु। उदाहरण: हर class के लगभग 50-100 चित्र, अलग वस्तुओं (बोतलें, रैपर, डिब्बे, अख़बार), कोणों, पृष्ठभूमियों और रोशनी से, classes में संतुलित। Testing: लगभग 20% नई वस्तुएँ training में न डालें और accuracy तथा कौन-सी classes उलझती हैं (जैसे चमकीला प्लास्टिक बनाम धातु) जाँचें। निष्पक्षता/गुणवत्ता जाँच: कुचली, गंदी और रंगीन वस्तुएँ, और स्थानीय घरों तथा दुकानों में आम वस्तुएँ शामिल करें, ताकि यह केवल साफ़, नई वस्तुओं पर काम न करे।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Machine learning is the part of AI in which computers learn patterns from data instead of only following hand-written rules; AI ⊃ ML ⊃ deep learning.",
+   "Key words: features (inputs), label (answer), training (learning), model (what is learnt), prediction (output for new data).",
+   "Supervised learning uses labelled data; it does classification (categories) and regression (numbers).",
+   "Unsupervised learning finds structure in unlabelled data, mainly by clustering similar items and detecting anomalies.",
+   "Reinforcement learning: an agent acts in an environment and learns a policy from rewards and penalties.",
+   "Data is split into training and testing sets (often 80:20); the test set must stay unseen.",
+   "Accuracy = correct ÷ total × 100; check false positives and false negatives too, especially when one class is rare.",
+   "For regression, measure the average error between predicted and actual values.",
+   "Overfitting = memorising training data (high training, low test score); underfitting = learning too little (low on both).",
+   "Nearest neighbour classifies a new item by the label of the most similar training example; a short Python program can do it.",
+   "Neural networks learn by adjusting weights between layers; many layers = deep learning.",
+   "ML finds patterns, not reasons; it depends on its data, gives predictions with confidence (not certainty), and needs human checking for important decisions."
+  ],
+  "hi": [
+   "Machine learning AI का वह हिस्सा है जिसमें कंप्यूटर केवल हाथ से लिखे नियमों के बजाय data से पैटर्न सीखते हैं; AI ⊃ ML ⊃ deep learning।",
+   "मुख्य शब्द: features (input), label (उत्तर), training (सीखना), model (जो सीखा), prediction (नए data का output)।",
+   "Supervised learning लेबल वाला data उपयोग करती है; यह classification (श्रेणियाँ) और regression (संख्याएँ) करती है।",
+   "Unsupervised learning बिना लेबल के data में ढाँचा ढूँढती है, मुख्यतः मिलती-जुलती चीज़ों का clustering और anomalies पहचानकर।",
+   "Reinforcement learning: एक agent किसी environment में कार्य करता है और इनाम तथा दंड से नीति सीखता है।",
+   "Data को training और testing हिस्सों में बाँटते हैं (अक्सर 80:20); test set न देखा रहना चाहिए।",
+   "Accuracy = सही ÷ कुल × 100; false positives और false negatives भी जाँचें, ख़ासकर जब कोई class दुर्लभ हो।",
+   "Regression के लिए अनुमानित और असली मानों के बीच औसत error मापें।",
+   "Overfitting = training data रटना (training ऊँचा, test कम); underfitting = बहुत कम सीखना (दोनों पर कम)।",
+   "Nearest neighbour नई वस्तु को सबसे मिलते-जुलते training उदाहरण के लेबल से वर्गीकृत करता है; एक छोटा Python प्रोग्राम यह कर सकता है।",
+   "Neural networks परतों के बीच weights बदलकर सीखते हैं; बहुत परतें = deep learning।",
+   "ML पैटर्न ढूँढता है, कारण नहीं; यह अपने data पर निर्भर है, भरोसे के साथ अनुमान देता है (निश्चितता नहीं), और महत्वपूर्ण निर्णयों के लिए इंसानी जाँच चाहिए।"
+  ]
+ }
+}

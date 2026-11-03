@@ -1,0 +1,1551 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "8",
+ "id": "ch8",
+ "intro": {
+  "en": "Your parents may have grown up without smartphones; you are growing up with AI. By the time you start working, AI will be part of almost every job, from farming and medicine to film-making and teaching. This chapter looks ahead. You will learn how AI is changing work (which tasks it automates, which it helps with, and which new jobs it creates), the main careers in AI and the many jobs that use AI, the technical and human skills you will need, and how a student in India can start preparing today using free resources. You will also practise thinking about the future like the CBSE 'Possibilities' activity: writing a job advertisement for the year 2036.",
+  "hi": "हो सकता है आपके माता-पिता बिना स्मार्टफ़ोन के बड़े हुए हों; आप AI के साथ बड़े हो रहे हैं। जब तक आप काम शुरू करेंगे, AI लगभग हर नौकरी का हिस्सा होगा, खेती और चिकित्सा से लेकर फ़िल्म-निर्माण और पढ़ाने तक। यह अध्याय आगे की ओर देखता है। आप सीखेंगे कि AI काम को कैसे बदल रहा है (वह कौन-से काम स्वचालित करता है, किनमें मदद करता है, और कौन-सी नई नौकरियाँ बनाता है), AI के मुख्य करियर और AI उपयोग करने वाली अनेक नौकरियाँ, आपको कौन-से तकनीकी और मानवीय कौशल चाहिए, और भारत का विद्यार्थी आज मुफ़्त संसाधनों से तैयारी कैसे शुरू कर सकता है। आप CBSE की 'Possibilities' गतिविधि की तरह भविष्य के बारे में सोचने का अभ्यास भी करेंगे: वर्ष 2036 के लिए एक नौकरी का विज्ञापन लिखकर।"
+ },
+ "learn": {
+  "en": [
+   "How technology has changed work in the past, and what is different about AI",
+   "Tasks versus jobs: automation, augmentation and new jobs created by AI",
+   "Which kinds of tasks AI does well and which still need humans",
+   "Core AI careers: data scientist, ML engineer, data analyst, computer vision and NLP engineers, robotics engineer, AI researcher, AI ethicist and more",
+   "Entry-level and new roles: data annotation, AI trainers, AI product and support roles",
+   "How AI is used in every field: health, farming, law, media, design, teaching, sports and government",
+   "Technical skills (maths, coding, data, AI literacy) and human skills (creativity, empathy, communication, ethics)",
+   "Study pathways in India: CBSE AI subjects 417 and 843, streams, degrees, diplomas and skill courses",
+   "Free ways to start now: DIKSHA, SWAYAM, government AI literacy courses, Colab, Teachable Machine, projects and competitions",
+   "Building a portfolio, lifelong learning and a growth mindset for an AI future"
+  ],
+  "hi": [
+   "अतीत में तकनीक ने काम को कैसे बदला, और AI में क्या अलग है",
+   "काम (tasks) बनाम नौकरियाँ (jobs): automation, augmentation और AI से बनी नई नौकरियाँ",
+   "AI कौन-से काम अच्छे से करता है और किनके लिए अब भी इंसान चाहिए",
+   "मुख्य AI करियर: data scientist, ML engineer, data analyst, computer vision और NLP engineer, robotics engineer, AI researcher, AI ethicist और अन्य",
+   "शुरुआती और नई भूमिकाएँ: data annotation, AI trainer, AI product और support भूमिकाएँ",
+   "हर क्षेत्र में AI का उपयोग: स्वास्थ्य, खेती, क़ानून, मीडिया, डिज़ाइन, शिक्षण, खेल और सरकार",
+   "तकनीकी कौशल (गणित, कोडिंग, डेटा, AI साक्षरता) और मानवीय कौशल (रचनात्मकता, सहानुभूति, संवाद, नैतिकता)",
+   "भारत में पढ़ाई के रास्ते: CBSE AI विषय 417 और 843, स्ट्रीम, डिग्री, डिप्लोमा और कौशल पाठ्यक्रम",
+   "अभी शुरू करने के मुफ़्त तरीके: DIKSHA, SWAYAM, सरकारी AI साक्षरता पाठ्यक्रम, Colab, Teachable Machine, परियोजनाएँ और प्रतियोगिताएँ",
+   "portfolio बनाना, आजीवन सीखना और AI भविष्य के लिए growth mindset"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "8.1 Technology has always changed work",
+    "hi": "8.1 तकनीक ने हमेशा काम को बदला है"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "New technology has changed jobs many times. When tractors came, fewer people were needed to plough fields, but jobs appeared in making, selling and repairing tractors. When computers arrived in banks and railway offices in India, typists and ledger clerks became fewer, but computer operators, programmers and IT companies grew into one of India's biggest industries. When mobile phones spread, telephone booth (STD/PCO) jobs vanished, while mobile repair shops, recharge sellers and app developers appeared. UPI changed how shops collect money and created jobs in digital payments.",
+      "hi": "नई तकनीक ने कई बार नौकरियाँ बदली हैं। जब ट्रैक्टर आए, तो खेत जोतने के लिए कम लोगों की ज़रूरत पड़ी, पर ट्रैक्टर बनाने, बेचने और मरम्मत करने में नौकरियाँ आईं। जब भारत में बैंकों और रेलवे दफ़्तरों में कंप्यूटर आए, तो टाइपिस्ट और बही-खाता क्लर्क कम हुए, पर कंप्यूटर ऑपरेटर, प्रोग्रामर और IT कंपनियाँ बढ़कर भारत के सबसे बड़े उद्योगों में से एक बन गईं। जब मोबाइल फ़ोन फैले, तो टेलीफ़ोन बूथ (STD/PCO) की नौकरियाँ ग़ायब हुईं, जबकि मोबाइल मरम्मत की दुकानें, रिचार्ज विक्रेता और ऐप डेवलपर आए। UPI ने दुकानों के पैसे लेने का तरीका बदला और डिजिटल भुगतान में नौकरियाँ बनाईं।"
+     }
+    },
+    {
+     "p": {
+      "en": "What is different about AI? Earlier machines mostly replaced physical effort (lifting, ploughing, weaving) or simple, repeated office steps. AI can also do some thinking-type tasks: reading documents, recognising images, translating, writing drafts, writing code. So AI affects office jobs, creative jobs and professional jobs too, not only factory work. It is also spreading faster than earlier technologies because it runs on phones and computers people already have.",
+      "hi": "AI में क्या अलग है? पहले की मशीनें ज़्यादातर शारीरिक मेहनत (उठाना, जोतना, बुनना) या दफ़्तर के सरल, दोहराए जाने वाले कदमों की जगह लेती थीं। AI कुछ सोचने वाले काम भी कर सकता है: दस्तावेज़ पढ़ना, चित्र पहचानना, अनुवाद करना, मसौदे लिखना, कोड लिखना। इसलिए AI केवल कारख़ाने के काम को नहीं, दफ़्तर की, रचनात्मक और पेशेवर नौकरियों को भी प्रभावित करता है। यह पहले की तकनीकों से तेज़ी से फैल रहा है क्योंकि यह उन फ़ोन और कंप्यूटरों पर चलता है जो लोगों के पास पहले से हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "The lesson from history: technology removes some tasks and jobs, changes many, and creates new ones. The people who do well are those who keep learning.",
+      "hi": "इतिहास की सीख: तकनीक कुछ काम और नौकरियाँ हटाती है, बहुतों को बदलती है, और नई बनाती है। सफल वे होते हैं जो सीखते रहते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.2 Tasks, not jobs: automation, augmentation and new work",
+    "hi": "8.2 नौकरियाँ नहीं, काम: automation, augmentation और नया काम"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every job is a bundle of many tasks. A teacher plans lessons, explains, checks copies, solves doubts, comforts a worried child, talks to parents and fills attendance. AI may do some of these tasks (checking multiple-choice answers, filling registers) while making others easier (preparing practice questions), and leaving some fully to humans (caring for a child). So the right question is not 'Will AI take this job?' but 'Which tasks in this job will AI change?'",
+      "hi": "हर नौकरी बहुत-से कामों (tasks) का गुच्छा है। एक शिक्षक पाठ की योजना बनाता है, समझाता है, कॉपियाँ जाँचता है, शंकाएँ दूर करता है, चिंतित बच्चे को ढाढ़स देता है, माता-पिता से बात करता है और हाज़िरी भरता है। AI इनमें से कुछ काम कर सकता है (बहुविकल्पी उत्तर जाँचना, रजिस्टर भरना), कुछ को आसान बना सकता है (अभ्यास प्रश्न तैयार करना), और कुछ पूरी तरह इंसानों पर छोड़ देता है (बच्चे की देखभाल)। इसलिए सही प्रश्न 'क्या AI यह नौकरी ले लेगा?' नहीं, बल्कि 'इस नौकरी के कौन-से काम AI बदलेगा?' है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Automation",
+       "hi": "Automation (स्वचालन)"
+      },
+      "text": {
+       "en": "Automation is when a machine or AI does a task by itself that a person used to do.",
+       "hi": "Automation तब होता है जब कोई मशीन या AI खुद वह काम करे जो पहले कोई व्यक्ति करता था।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Augmentation",
+       "hi": "Augmentation (संवर्धन)"
+      },
+      "text": {
+       "en": "Augmentation is when AI works alongside a person to make them faster, more accurate or more capable, while the person stays in charge.",
+       "hi": "Augmentation तब होता है जब AI किसी व्यक्ति के साथ काम करके उसे तेज़, अधिक सटीक या अधिक सक्षम बनाए, जबकि नियंत्रण व्यक्ति के पास रहे।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Effect",
+        "What happens",
+        "Indian example"
+       ],
+       "hi": [
+        "प्रभाव",
+        "क्या होता है",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Automation",
+         "A task is done fully by AI or machines",
+         "Toll collection by FASTag instead of cash counters; automatic sorting of letters by PIN code"
+        ],
+        [
+         "Augmentation",
+         "AI helps a person do the task better",
+         "A doctor uses AI to spot signs of TB in X-rays, then decides; a farmer gets AI crop advice but chooses what to do"
+        ],
+        [
+         "New jobs",
+         "Work that did not exist before",
+         "Data annotators, drone operators for crop spraying, AI trainers, prompt designers, AI ethics officers"
+        ],
+        [
+         "Changed jobs",
+         "Same job, new tools and skills",
+         "A journalist uses AI for transcripts and translation but still checks facts and writes the story"
+        ]
+       ],
+       "hi": [
+        [
+         "Automation",
+         "कोई काम पूरी तरह AI या मशीन करती है",
+         "नकद काउंटर की जगह FASTag से टोल वसूली; PIN code से पत्रों की स्वचालित छँटाई"
+        ],
+        [
+         "Augmentation",
+         "AI व्यक्ति को काम बेहतर करने में मदद करता है",
+         "डॉक्टर X-ray में TB के संकेत पहचानने के लिए AI उपयोग करता है, फिर निर्णय लेता है; किसान को AI फ़सल सलाह मिलती है पर करना क्या है वह चुनता है"
+        ],
+        [
+         "नई नौकरियाँ",
+         "ऐसा काम जो पहले था ही नहीं",
+         "data annotator, फ़सल छिड़काव के drone operator, AI trainer, prompt designer, AI ethics officer"
+        ],
+        [
+         "बदली नौकरियाँ",
+         "वही नौकरी, नए औज़ार और कौशल",
+         "पत्रकार प्रतिलेखन और अनुवाद के लिए AI उपयोग करता है पर तथ्य जाँचना और ख़बर लिखना अब भी उसी का काम है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Forecasts give a sense of scale. For example, the World Economic Forum's Future of Jobs Report 2025 estimated that between 2025 and 2030 about 170 million jobs could be created worldwide and about 92 million displaced, a net gain of about 78 million, with AI and big data among the fastest-growing skills. Forecasts are estimates, not certainties, but they agree on one point: skills will change a lot, and learning new skills will be essential.",
+      "hi": "पूर्वानुमान पैमाने का अंदाज़ा देते हैं। उदाहरण के लिए, World Economic Forum की Future of Jobs Report 2025 का अनुमान था कि 2025 से 2030 के बीच दुनिया भर में लगभग 17 करोड़ नौकरियाँ बन सकती हैं और लगभग 9.2 करोड़ हट सकती हैं, यानी लगभग 7.8 करोड़ की शुद्ध बढ़त, और AI व big data सबसे तेज़ी से बढ़ते कौशलों में हैं। पूर्वानुमान अनुमान हैं, निश्चितता नहीं, पर वे एक बात पर सहमत हैं: कौशल बहुत बदलेंगे, और नए कौशल सीखना ज़रूरी होगा।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Break the job of a bank cashier into tasks. Which might be automated, which augmented, and which stay human?",
+       "hi": "बैंक कैशियर की नौकरी को कामों में बाँटिए। कौन-से स्वचालित हो सकते हैं, किनमें AI मदद करेगा, और कौन-से इंसानी रहेंगे?"
+      },
+      "a": {
+       "en": "Tasks: counting cash, entering deposits, checking signatures, spotting fake notes, answering customer questions, helping elderly customers fill forms, explaining loan or savings schemes.\nAutomated: cash counting (machines), deposit entry (UPI, cash deposit machines).\nAugmented: signature checking and fake-note detection (AI flags, cashier confirms); answering common questions (chatbot handles simple ones).\nHuman: helping an elderly or confused customer, handling complaints, explaining choices with care and trust.\nConclusion: the job changes from counting to advising and helping.",
+       "hi": "काम: नकद गिनना, जमा राशि दर्ज करना, हस्ताक्षर जाँचना, नकली नोट पहचानना, ग्राहकों के प्रश्नों के उत्तर देना, बुज़ुर्ग ग्राहकों को फ़ॉर्म भरने में मदद करना, ऋण या बचत योजनाएँ समझाना।\nस्वचालित: नकद गिनना (मशीनें), जमा दर्ज करना (UPI, नकद जमा मशीनें)।\nAI मदद: हस्ताक्षर जाँच और नकली नोट पहचान (AI चिह्नित करे, कैशियर पुष्टि करे); आम प्रश्नों के उत्तर (सरल प्रश्न chatbot संभाले)।\nइंसानी: बुज़ुर्ग या उलझे ग्राहक की मदद, शिकायतें संभालना, ध्यान और भरोसे के साथ विकल्प समझाना।\nनिष्कर्ष: नौकरी गिनने से सलाह देने और मदद करने की ओर बदलती है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.3 What AI does well, and what needs humans",
+    "hi": "8.3 AI क्या अच्छा करता है, और किसके लिए इंसान चाहिए"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "AI is usually good at",
+        "Humans are still much better at"
+       ],
+       "hi": [
+        "AI आमतौर पर अच्छा है",
+        "इंसान अब भी कहीं बेहतर हैं"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Repeating the same task quickly without getting tired",
+         "Handling new, unexpected situations"
+        ],
+        [
+         "Finding patterns in huge amounts of data",
+         "Understanding context, culture and feelings"
+        ],
+        [
+         "Recognising images, speech and text it has been trained on",
+         "Empathy, care and building trust (nursing, counselling, teaching)"
+        ],
+        [
+         "Drafting text, translations and code",
+         "Deciding what is right: ethics, judgement and responsibility"
+        ],
+        [
+         "Making predictions from past data",
+         "Original creativity, asking new questions, setting goals"
+        ],
+        [
+         "Working 24 hours on routine requests",
+         "Skilled hand work in changing places (plumbing, electrical repair, surgery, cooking for a family)"
+        ],
+        [
+         "Working in many languages at once, quickly",
+         "Leadership, teamwork, negotiation and persuasion"
+        ]
+       ],
+       "hi": [
+        [
+         "एक ही काम बिना थके तेज़ी से दोहराना",
+         "नई, अनपेक्षित स्थितियाँ संभालना"
+        ],
+        [
+         "विशाल डेटा में पैटर्न ढूँढना",
+         "संदर्भ, संस्कृति और भावनाएँ समझना"
+        ],
+        [
+         "जिन चित्रों, बोली और टेक्स्ट पर प्रशिक्षित हो उन्हें पहचानना",
+         "सहानुभूति, देखभाल और भरोसा बनाना (नर्सिंग, परामर्श, शिक्षण)"
+        ],
+        [
+         "टेक्स्ट, अनुवाद और कोड का मसौदा बनाना",
+         "क्या सही है यह तय करना: नैतिकता, विवेक और ज़िम्मेदारी"
+        ],
+        [
+         "पिछले डेटा से अनुमान लगाना",
+         "मौलिक रचनात्मकता, नए प्रश्न पूछना, लक्ष्य तय करना"
+        ],
+        [
+         "नियमित अनुरोधों पर 24 घंटे काम करना",
+         "बदलती जगहों पर कुशल हाथ का काम (प्लंबिंग, बिजली मरम्मत, सर्जरी, परिवार के लिए खाना बनाना)"
+        ],
+        [
+         "कई भाषाओं में एक साथ, जल्दी काम करना",
+         "नेतृत्व, टीमवर्क, बातचीत से समझौता और समझाना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "AI can also be wrong, biased or out of date (Chapters 5 and 6). That is why almost every AI system at work needs people to check, correct and take responsibility. 'Human + AI' teams usually do better than either alone.",
+      "hi": "AI गलत, पक्षपाती या पुराना भी हो सकता है (अध्याय 5 और 6)। इसीलिए काम पर लगभग हर AI सिस्टम को जाँचने, सुधारने और ज़िम्मेदारी लेने के लिए लोगों की ज़रूरत है। 'इंसान + AI' टीमें आमतौर पर दोनों में से किसी एक से बेहतर करती हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.4 Careers in building AI",
+    "hi": "8.4 AI बनाने वाले करियर"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "These are people whose main work is to build, train, test or study AI systems.",
+      "hi": "ये वे लोग हैं जिनका मुख्य काम AI सिस्टम बनाना, प्रशिक्षित करना, परखना या उनका अध्ययन करना है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Career",
+        "What they do",
+        "Main skills"
+       ],
+       "hi": [
+        "करियर",
+        "क्या करते हैं",
+        "मुख्य कौशल"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data analyst",
+         "Cleans data, makes charts and reports to answer questions, e.g. which products sell most in which month",
+         "Spreadsheets, statistics, SQL, Python, clear communication"
+        ],
+        [
+         "Data scientist",
+         "Finds patterns in data and builds models to predict, e.g. rainfall or demand for medicines",
+         "Statistics, probability, Python, machine learning, domain knowledge"
+        ],
+        [
+         "Machine learning (ML) engineer",
+         "Builds, trains and deploys ML models so they work reliably in apps",
+         "Python, maths, ML libraries, software engineering"
+        ],
+        [
+         "Computer vision engineer",
+         "Makes systems that understand images and video, e.g. crop-disease detection or number-plate reading",
+         "Image processing, deep learning"
+        ],
+        [
+         "NLP engineer",
+         "Builds language systems: chatbots, translation, speech in Indian languages",
+         "Linguistics, deep learning, Python"
+        ],
+        [
+         "Robotics engineer",
+         "Designs robots for factories, farms, hospitals, warehouses",
+         "Mechanics, electronics, programming, AI"
+        ],
+        [
+         "AI research scientist",
+         "Invents new AI methods and studies how AI works",
+         "Advanced maths, research, usually a postgraduate degree"
+        ],
+        [
+         "Data engineer",
+         "Builds the pipelines and storage that collect and move large data",
+         "Databases, cloud computing, programming"
+        ],
+        [
+         "AI ethicist / responsible AI specialist",
+         "Checks AI for fairness, privacy and safety; writes guidelines",
+         "Ethics, law, social science, understanding of AI"
+        ],
+        [
+         "AI product manager",
+         "Decides what an AI product should do and leads the team building it",
+         "Understanding users, communication, basic AI knowledge"
+        ],
+        [
+         "Cybersecurity analyst",
+         "Protects systems and data from attacks, often using AI to detect fraud",
+         "Networks, security, data analysis"
+        ]
+       ],
+       "hi": [
+        [
+         "Data analyst",
+         "डेटा साफ़ करता है, प्रश्नों के उत्तर के लिए चार्ट और रिपोर्ट बनाता है, जैसे किस महीने कौन-से उत्पाद सबसे ज़्यादा बिकते हैं",
+         "Spreadsheet, सांख्यिकी, SQL, Python, स्पष्ट संवाद"
+        ],
+        [
+         "Data scientist",
+         "डेटा में पैटर्न ढूँढकर अनुमान के model बनाता है, जैसे वर्षा या दवाओं की माँग",
+         "सांख्यिकी, प्रायिकता, Python, machine learning, क्षेत्र-ज्ञान"
+        ],
+        [
+         "Machine learning (ML) engineer",
+         "ML model बनाता, प्रशिक्षित और लागू करता है ताकि वे ऐप में भरोसेमंद ढंग से काम करें",
+         "Python, गणित, ML libraries, software engineering"
+        ],
+        [
+         "Computer vision engineer",
+         "चित्र और वीडियो समझने वाले सिस्टम बनाता है, जैसे फ़सल-रोग पहचान या नंबर-प्लेट पढ़ना",
+         "Image processing, deep learning"
+        ],
+        [
+         "NLP engineer",
+         "भाषा सिस्टम बनाता है: chatbot, अनुवाद, भारतीय भाषाओं में बोली",
+         "भाषाविज्ञान, deep learning, Python"
+        ],
+        [
+         "Robotics engineer",
+         "कारख़ानों, खेतों, अस्पतालों, गोदामों के लिए रोबोट डिज़ाइन करता है",
+         "यांत्रिकी, इलेक्ट्रॉनिक्स, प्रोग्रामिंग, AI"
+        ],
+        [
+         "AI research scientist",
+         "नई AI विधियाँ खोजता है और अध्ययन करता है कि AI कैसे काम करता है",
+         "उन्नत गणित, शोध, आमतौर पर स्नातकोत्तर डिग्री"
+        ],
+        [
+         "Data engineer",
+         "बड़ा डेटा इकट्ठा करने और ले जाने के pipeline और भंडारण बनाता है",
+         "Databases, cloud computing, प्रोग्रामिंग"
+        ],
+        [
+         "AI ethicist / responsible AI specialist",
+         "निष्पक्षता, निजता और सुरक्षा के लिए AI जाँचता है; दिशानिर्देश लिखता है",
+         "नैतिकता, क़ानून, सामाजिक विज्ञान, AI की समझ"
+        ],
+        [
+         "AI product manager",
+         "तय करता है कि AI उत्पाद क्या करे और उसे बनाने वाली टीम का नेतृत्व करता है",
+         "उपयोगकर्ताओं की समझ, संवाद, AI का बुनियादी ज्ञान"
+        ],
+        [
+         "Cybersecurity analyst",
+         "सिस्टम और डेटा को हमलों से बचाता है, अक्सर धोखाधड़ी पहचानने के लिए AI उपयोग करते हुए",
+         "Networks, सुरक्षा, डेटा विश्लेषण"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "You do not need to be a 'genius' or to choose now. Many people in these careers started with curiosity, small projects and steady practice. People from commerce, arts, law, biology and design also work in AI teams.",
+      "hi": "आपको 'प्रतिभाशाली' होने या अभी चुनने की ज़रूरत नहीं। इन करियरों के बहुत-से लोगों ने जिज्ञासा, छोटी परियोजनाओं और लगातार अभ्यास से शुरुआत की। वाणिज्य, कला, क़ानून, जीवविज्ञान और डिज़ाइन के लोग भी AI टीमों में काम करते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.5 Entry-level and new roles",
+    "hi": "8.5 शुरुआती और नई भूमिकाएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Not every AI job needs an engineering degree. Some roles are open after Class 12 or a short skill course, and some are completely new.",
+      "hi": "हर AI नौकरी के लिए इंजीनियरिंग डिग्री ज़रूरी नहीं। कुछ भूमिकाएँ कक्षा 12 या छोटे कौशल पाठ्यक्रम के बाद खुलती हैं, और कुछ बिलकुल नई हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Data annotator / data labeller: draws boxes around cars in road images, tags the language and meaning of sentences, or transcribes speech so AI can learn. Many such centres operate in Indian towns. Accuracy and patience matter.",
+       "AI trainer / evaluator: tests chatbots, rates answers, writes example answers and checks content in Indian languages.",
+       "Content moderator: reviews flagged posts and AI outputs for harmful content.",
+       "Prompt writer / AI content specialist: uses generative AI tools well to produce drafts, images or code, and checks and edits the results.",
+       "AI support and implementation roles: helping shops, schools, clinics and farmers set up and use AI tools.",
+       "Drone pilot and technician: drones with AI are used for spraying crops, mapping land and inspecting power lines; training and certification are needed.",
+       "Robot operator and maintenance technician in factories and warehouses (ITI and diploma courses help here)."
+      ],
+      "hi": [
+       "Data annotator / data labeller: सड़क के चित्रों में कारों के चारों ओर डिब्बे बनाता है, वाक्यों की भाषा और अर्थ के लेबल लगाता है, या बोली को लिखता है ताकि AI सीख सके। भारत के कई कस्बों में ऐसे केंद्र चलते हैं। सटीकता और धैर्य मायने रखते हैं।",
+       "AI trainer / evaluator: chatbot परखता है, उत्तरों को अंक देता है, उदाहरण-उत्तर लिखता है और भारतीय भाषाओं में सामग्री जाँचता है।",
+       "Content moderator: हानिकारक सामग्री के लिए चिह्नित पोस्ट और AI आउटपुट की समीक्षा करता है।",
+       "Prompt writer / AI content specialist: जनरेटिव AI टूल का अच्छा उपयोग करके मसौदे, चित्र या कोड बनाता है, और परिणाम जाँचता व सुधारता है।",
+       "AI support और implementation भूमिकाएँ: दुकानों, स्कूलों, क्लीनिकों और किसानों को AI टूल लगाने और उपयोग करने में मदद।",
+       "Drone pilot और technician: AI वाले drone फ़सल छिड़काव, ज़मीन के नक्शे और बिजली लाइनों की जाँच में उपयोग होते हैं; प्रशिक्षण और प्रमाणन ज़रूरी है।",
+       "कारख़ानों और गोदामों में Robot operator और maintenance technician (यहाँ ITI और डिप्लोमा पाठ्यक्रम मदद करते हैं)।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Job titles change quickly; 'prompt engineer' hardly existed a few years ago. Skills such as clear thinking, careful checking and good communication carry over from one title to the next.",
+      "hi": "नौकरियों के नाम जल्दी बदलते हैं; कुछ साल पहले 'prompt engineer' लगभग था ही नहीं। साफ़ सोचना, ध्यान से जाँचना और अच्छा संवाद जैसे कौशल एक नाम से अगले नाम तक साथ चलते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.6 AI in every field",
+    "hi": "8.6 हर क्षेत्र में AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Most people who use AI at work will not build it. They will be doctors, farmers, shopkeepers, designers, lawyers and teachers who use AI tools. Knowing how AI works, its limits and its ethics (AI literacy) will be useful in all of these.",
+      "hi": "काम पर AI उपयोग करने वाले अधिकतर लोग उसे बनाएँगे नहीं। वे डॉक्टर, किसान, दुकानदार, डिज़ाइनर, वकील और शिक्षक होंगे जो AI टूल उपयोग करते हैं। AI कैसे काम करता है, उसकी सीमाएँ और उसकी नैतिकता (AI साक्षरता) जानना इन सबमें उपयोगी होगा।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Field",
+        "How AI is used (examples)",
+        "What the human still does"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "AI का उपयोग कैसे (उदाहरण)",
+        "इंसान अब भी क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Health",
+         "Reading X-rays and eye scans, early warning of disease, telemedicine support",
+         "Diagnosis decisions, care, explaining to patients"
+        ],
+        [
+         "Agriculture",
+         "Crop-disease apps, weather and price forecasts, soil analysis, drone spraying",
+         "Choosing crops, managing land and labour, local knowledge"
+        ],
+        [
+         "Law",
+         "Searching old judgements, translating court documents into Indian languages, drafting",
+         "Arguing cases, judgement, ethics, client trust"
+        ],
+        [
+         "Media and films",
+         "Subtitles, dubbing, editing help, transcripts",
+         "Storytelling, checking facts, original ideas"
+        ],
+        [
+         "Design and fashion",
+         "Quick mock-ups, colour and pattern ideas",
+         "Taste, cultural meaning, final design"
+        ],
+        [
+         "Teaching",
+         "Practice questions, adaptive learning apps, translation",
+         "Motivation, care, discussion, values"
+        ],
+        [
+         "Retail and small business",
+         "Stock prediction, product descriptions, customer chat in many languages",
+         "Relationships with customers and suppliers"
+        ],
+        [
+         "Sports",
+         "Ball-tracking, player performance analysis, injury prevention",
+         "Coaching, strategy, team spirit"
+        ],
+        [
+         "Government services",
+         "Grievance sorting, Indian-language services through Bhashini, fraud detection",
+         "Policy, fairness, accountability to citizens"
+        ],
+        [
+         "Banking and finance",
+         "Fraud alerts on UPI and cards, credit checks, chatbots",
+         "Advice, complaints, rules and responsibility"
+        ]
+       ],
+       "hi": [
+        [
+         "स्वास्थ्य",
+         "X-ray और आँख के स्कैन पढ़ना, रोग की पूर्व-चेतावनी, telemedicine सहायता",
+         "निदान के निर्णय, देखभाल, मरीज़ों को समझाना"
+        ],
+        [
+         "कृषि",
+         "फ़सल-रोग ऐप, मौसम और भाव के पूर्वानुमान, मिट्टी विश्लेषण, drone छिड़काव",
+         "फ़सल चुनना, ज़मीन और श्रम सँभालना, स्थानीय ज्ञान"
+        ],
+        [
+         "क़ानून",
+         "पुराने फ़ैसले खोजना, अदालती दस्तावेज़ों का भारतीय भाषाओं में अनुवाद, मसौदे",
+         "मुकदमे में बहस, विवेक, नैतिकता, मुवक्किल का भरोसा"
+        ],
+        [
+         "मीडिया और फ़िल्में",
+         "उपशीर्षक, डबिंग, संपादन में मदद, प्रतिलेखन",
+         "कहानी कहना, तथ्य जाँचना, मौलिक विचार"
+        ],
+        [
+         "डिज़ाइन और फ़ैशन",
+         "जल्दी के नमूने, रंग और पैटर्न के विचार",
+         "रुचि, सांस्कृतिक अर्थ, अंतिम डिज़ाइन"
+        ],
+        [
+         "शिक्षण",
+         "अभ्यास प्रश्न, adaptive learning ऐप, अनुवाद",
+         "प्रेरणा, देखभाल, चर्चा, मूल्य"
+        ],
+        [
+         "खुदरा और छोटा व्यापार",
+         "स्टॉक का अनुमान, उत्पाद विवरण, कई भाषाओं में ग्राहक चैट",
+         "ग्राहकों और आपूर्तिकर्ताओं से संबंध"
+        ],
+        [
+         "खेल",
+         "गेंद-ट्रैकिंग, खिलाड़ी प्रदर्शन विश्लेषण, चोट से बचाव",
+         "कोचिंग, रणनीति, टीम भावना"
+        ],
+        [
+         "सरकारी सेवाएँ",
+         "शिकायतें छाँटना, Bhashini से भारतीय-भाषा सेवाएँ, धोखाधड़ी पहचान",
+         "नीति, निष्पक्षता, नागरिकों के प्रति जवाबदेही"
+        ],
+        [
+         "बैंकिंग और वित्त",
+         "UPI और कार्ड पर धोखाधड़ी अलर्ट, ऋण जाँच, chatbot",
+         "सलाह, शिकायतें, नियम और ज़िम्मेदारी"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Meena wants to become a fashion designer, not an engineer. Does AI matter for her? How?",
+       "hi": "मीना इंजीनियर नहीं, फ़ैशन डिज़ाइनर बनना चाहती है। क्या AI उसके लिए मायने रखता है? कैसे?"
+      },
+      "a": {
+       "en": "Yes. Step 1: She can use image generators for quick mood boards and pattern ideas, saving time.\nStep 2: AI can predict which colours and styles are trending, helping her plan.\nStep 3: She must know the limits: AI images may copy other designers' styles (copyright), show bias, or lack the cultural meaning of, say, a Banarasi weave.\nStep 4: Her own taste, understanding of customers and craft skills remain her biggest strengths. AI literacy plus design skill makes her stronger.",
+       "hi": "हाँ। चरण 1: वह जल्दी mood board और पैटर्न विचारों के लिए चित्र-टूल उपयोग कर सकती है, जिससे समय बचे।\nचरण 2: AI अनुमान लगा सकता है कि कौन-से रंग और शैलियाँ चलन में हैं, जिससे योजना में मदद मिले।\nचरण 3: उसे सीमाएँ पता होनी चाहिए: AI चित्र दूसरे डिज़ाइनरों की शैली की नकल कर सकते हैं (कॉपीराइट), पक्षपात दिखा सकते हैं, या बनारसी बुनाई जैसे सांस्कृतिक अर्थ से खाली हो सकते हैं।\nचरण 4: उसकी अपनी रुचि, ग्राहकों की समझ और शिल्प-कौशल उसकी सबसे बड़ी ताकत रहेंगे। AI साक्षरता और डिज़ाइन कौशल मिलकर उसे और मज़बूत बनाते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.7 Skills for an AI future",
+    "hi": "8.7 AI भविष्य के लिए कौशल"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think of skills in two groups that work together.",
+      "hi": "कौशलों को दो समूहों में सोचिए जो साथ काम करते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Technical skills",
+        "Why they matter"
+       ],
+       "hi": [
+        "तकनीकी कौशल",
+        "ये क्यों ज़रूरी हैं"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Maths: statistics, probability, graphs, algebra (later: linear algebra, calculus)",
+         "AI models are built from maths; statistics helps you judge data and results"
+        ],
+        [
+         "Coding, especially Python (Chapter 7)",
+         "To build, test and automate AI tasks"
+        ],
+        [
+         "Data skills: collecting, cleaning, organising, visualising (Chapter 2)",
+         "Good data is the base of every AI system"
+        ],
+        [
+         "AI literacy: how AI learns, its limits, prompting, checking outputs (Chapters 3 to 5)",
+         "Needed in every job, not just technical ones"
+        ],
+        [
+         "Digital safety and cybersecurity basics",
+         "To protect data and spot fraud and deepfakes"
+        ],
+        [
+         "Domain knowledge (health, farming, finance, law, etc.)",
+         "AI is most useful when combined with real understanding of a field"
+        ]
+       ],
+       "hi": [
+        [
+         "गणित: सांख्यिकी, प्रायिकता, ग्राफ़, बीजगणित (बाद में: linear algebra, calculus)",
+         "AI model गणित से बनते हैं; सांख्यिकी डेटा और परिणाम परखने में मदद करती है"
+        ],
+        [
+         "कोडिंग, विशेषकर Python (अध्याय 7)",
+         "AI काम बनाने, परखने और स्वचालित करने के लिए"
+        ],
+        [
+         "डेटा कौशल: इकट्ठा करना, साफ़ करना, व्यवस्थित करना, दृश्य बनाना (अध्याय 2)",
+         "अच्छा डेटा हर AI सिस्टम का आधार है"
+        ],
+        [
+         "AI साक्षरता: AI कैसे सीखता है, उसकी सीमाएँ, prompting, आउटपुट जाँचना (अध्याय 3 से 5)",
+         "हर नौकरी में ज़रूरी, केवल तकनीकी में नहीं"
+        ],
+        [
+         "डिजिटल सुरक्षा और cybersecurity की बुनियादी बातें",
+         "डेटा बचाने और धोखाधड़ी व डीपफ़ेक पहचानने के लिए"
+        ],
+        [
+         "क्षेत्र-ज्ञान (स्वास्थ्य, खेती, वित्त, क़ानून आदि)",
+         "AI तब सबसे उपयोगी है जब उसे किसी क्षेत्र की असली समझ से जोड़ा जाए"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Human (soft) skills",
+        "Why AI cannot easily replace them"
+       ],
+       "hi": [
+        "मानवीय (soft) कौशल",
+        "AI इन्हें आसानी से क्यों नहीं बदल सकता"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Critical thinking and problem-solving",
+         "Deciding which problem matters and whether an answer makes sense"
+        ],
+        [
+         "Creativity and curiosity",
+         "Asking new questions and imagining what does not exist yet"
+        ],
+        [
+         "Communication (in your language and others)",
+         "Explaining ideas, listening, persuading"
+        ],
+        [
+         "Empathy and emotional intelligence",
+         "Understanding and caring for people"
+        ],
+        [
+         "Collaboration and teamwork",
+         "Most projects are done by diverse teams"
+        ],
+        [
+         "Ethics and responsibility",
+         "Choosing what is right, as in Chapter 6"
+        ],
+        [
+         "Adaptability and learning to learn",
+         "Tools will keep changing throughout your life"
+        ]
+       ],
+       "hi": [
+        [
+         "आलोचनात्मक सोच और समस्या-समाधान",
+         "तय करना कि कौन-सी समस्या ज़रूरी है और कोई उत्तर समझ में आता है या नहीं"
+        ],
+        [
+         "रचनात्मकता और जिज्ञासा",
+         "नए प्रश्न पूछना और जो अभी नहीं है उसकी कल्पना करना"
+        ],
+        [
+         "संवाद (अपनी और दूसरी भाषाओं में)",
+         "विचार समझाना, सुनना, मनाना"
+        ],
+        [
+         "सहानुभूति और भावनात्मक समझ",
+         "लोगों को समझना और उनकी परवाह करना"
+        ],
+        [
+         "सहयोग और टीमवर्क",
+         "अधिकतर परियोजनाएँ विविध टीमें करती हैं"
+        ],
+        [
+         "नैतिकता और ज़िम्मेदारी",
+         "जो सही है वह चुनना, जैसे अध्याय 6 में"
+        ],
+        [
+         "अनुकूलन क्षमता और सीखना सीखना",
+         "आपके जीवन भर औज़ार बदलते रहेंगे"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Growth mindset",
+       "hi": "Growth mindset (विकास की सोच)"
+      },
+      "text": {
+       "en": "A growth mindset is the belief that your abilities can improve with effort, practice and learning from mistakes, rather than being fixed.",
+       "hi": "growth mindset यह विश्वास है कि आपकी क्षमताएँ तय नहीं हैं, बल्कि मेहनत, अभ्यास और गलतियों से सीखकर बेहतर हो सकती हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Lifelong learning",
+       "hi": "आजीवन सीखना (Lifelong learning)"
+      },
+      "text": {
+       "en": "Lifelong learning means continuing to learn new knowledge and skills throughout life, not only in school or college. Updating your skills is called upskilling; learning skills for a different job is called reskilling.",
+       "hi": "आजीवन सीखने का अर्थ है केवल स्कूल या कॉलेज में नहीं, जीवन भर नया ज्ञान और कौशल सीखते रहना। अपने कौशल ताज़ा करना upskilling कहलाता है; किसी दूसरी नौकरी के लिए कौशल सीखना reskilling कहलाता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "The best preparation is a combination: strong basics in maths and language, comfort with technology, and the human skills that make you a good team member and citizen. These T-shaped people have broad general skills plus deep skill in one area.",
+      "hi": "सबसे अच्छी तैयारी एक मेल है: गणित और भाषा की मज़बूत नींव, तकनीक के साथ सहजता, और वे मानवीय कौशल जो आपको अच्छा टीम सदस्य और नागरिक बनाते हैं। ऐसे T-shaped लोगों के पास व्यापक सामान्य कौशल और किसी एक क्षेत्र में गहरा कौशल होता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.8 Study pathways in India",
+    "hi": "8.8 भारत में पढ़ाई के रास्ते"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "There is no single path into AI. Here is a broad map (details of courses and entrance exams change, so always check official websites when the time comes).",
+      "hi": "AI में जाने का कोई एक रास्ता नहीं है। यहाँ एक मोटा नक्शा है (पाठ्यक्रमों और प्रवेश परीक्षाओं का विवरण बदलता रहता है, इसलिए समय आने पर हमेशा आधिकारिक वेबसाइटें देखें)।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Classes 6 to 8: AI skill modules like this one, computational thinking, coding clubs and science fairs.",
+       "Classes 9 and 10: CBSE offers Artificial Intelligence (subject code 417) as a skill subject. It covers the AI project cycle, data, computer vision, NLP, Python basics and ethics.",
+       "Classes 11 and 12: CBSE offers Artificial Intelligence (subject code 843). Students also choose streams: science with maths opens engineering and computer science; commerce opens data analytics and business analytics; humanities opens AI policy, law, psychology, linguistics and design roles.",
+       "After Class 12: degrees such as B.Tech/B.E. in Computer Science or AI and Data Science, B.Sc. in Data Science, Statistics or Mathematics, BCA; polytechnic diplomas; ITI courses for robotics and electronics technicians; skill courses for data annotation and analytics (for example under Skill India).",
+       "Later: M.Tech, M.Sc., MBA in analytics, research (PhD), or professional certificates while working."
+      ],
+      "hi": [
+       "कक्षा 6 से 8: इस जैसे AI skill module, computational thinking, कोडिंग क्लब और विज्ञान मेले।",
+       "कक्षा 9 और 10: CBSE कौशल विषय के रूप में Artificial Intelligence (विषय कोड 417) देता है। इसमें AI project cycle, डेटा, computer vision, NLP, Python की बुनियादी बातें और नैतिकता शामिल हैं।",
+       "कक्षा 11 और 12: CBSE Artificial Intelligence (विषय कोड 843) देता है। विद्यार्थी स्ट्रीम भी चुनते हैं: गणित सहित विज्ञान से इंजीनियरिंग और कंप्यूटर विज्ञान खुलते हैं; वाणिज्य से data analytics और business analytics; मानविकी से AI नीति, क़ानून, मनोविज्ञान, भाषाविज्ञान और डिज़ाइन की भूमिकाएँ।",
+       "कक्षा 12 के बाद: B.Tech/B.E. (Computer Science या AI and Data Science), B.Sc. (Data Science, Statistics या Mathematics), BCA जैसी डिग्रियाँ; polytechnic डिप्लोमा; robotics और electronics technician के लिए ITI पाठ्यक्रम; data annotation और analytics के कौशल पाठ्यक्रम (जैसे Skill India के तहत)।",
+       "बाद में: M.Tech, M.Sc., analytics में MBA, शोध (PhD), या काम करते हुए पेशेवर प्रमाणपत्र।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "You can enter AI from many directions. A biology student can become a bioinformatics expert; a law student can specialise in AI and data protection law; a languages student can help build Indian-language AI.",
+      "hi": "आप कई दिशाओं से AI में आ सकते हैं। जीवविज्ञान का विद्यार्थी bioinformatics विशेषज्ञ बन सकता है; क़ानून का विद्यार्थी AI और डेटा संरक्षण क़ानून में विशेषज्ञता ले सकता है; भाषाओं का विद्यार्थी भारतीय-भाषा AI बनाने में मदद कर सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.9 Start now, for free",
+    "hi": "8.9 अभी शुरू करें, मुफ़्त में"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "DIKSHA: the government's free learning platform with lessons and courses for school students and teachers, including AI and coding content.",
+       "SWAYAM: free online courses from Indian universities and institutions, including programming, data and AI (mostly for older students; good to explore with a teacher).",
+       "Government AI literacy courses: for example, the IndiaAI Mission has offered a free, short introductory course called 'YUVA AI for ALL' for young people and citizens.",
+       "Free tools to practise: Google Colab for Python, Teachable Machine for training simple models, Quick, Draw! and AutoDraw to explore AI, Scratch and PictoBlox for block coding.",
+       "School activities: Atal Tinkering Labs (in many schools) for robotics and electronics projects, science exhibitions, coding clubs and AI project competitions.",
+       "Your library and newspaper: read about how AI is used in India; discuss with friends and teachers.",
+       "Safety first: an adult should supervise sign-ups if you are under 13, never share personal data, and check that a course is genuine and free before entering any details."
+      ],
+      "hi": [
+       "DIKSHA: सरकार का मुफ़्त शिक्षण मंच जिसमें स्कूली विद्यार्थियों और शिक्षकों के लिए पाठ और पाठ्यक्रम हैं, AI और कोडिंग सामग्री सहित।",
+       "SWAYAM: भारतीय विश्वविद्यालयों और संस्थानों के मुफ़्त ऑनलाइन पाठ्यक्रम, जिनमें प्रोग्रामिंग, डेटा और AI शामिल हैं (ज़्यादातर बड़े विद्यार्थियों के लिए; शिक्षक के साथ देखना अच्छा है)।",
+       "सरकारी AI साक्षरता पाठ्यक्रम: उदाहरण के लिए, IndiaAI Mission ने युवाओं और नागरिकों के लिए 'YUVA AI for ALL' नाम का मुफ़्त, छोटा परिचयात्मक पाठ्यक्रम दिया है।",
+       "अभ्यास के मुफ़्त टूल: Python के लिए Google Colab, सरल model प्रशिक्षित करने के लिए Teachable Machine, AI खोजने के लिए Quick, Draw! और AutoDraw, block coding के लिए Scratch और PictoBlox।",
+       "स्कूल की गतिविधियाँ: robotics और electronics परियोजनाओं के लिए Atal Tinkering Labs (बहुत-से स्कूलों में), विज्ञान प्रदर्शनियाँ, कोडिंग क्लब और AI परियोजना प्रतियोगिताएँ।",
+       "आपका पुस्तकालय और समाचार-पत्र: पढ़िए कि भारत में AI कैसे उपयोग हो रहा है; मित्रों और शिक्षकों से चर्चा कीजिए।",
+       "पहले सुरक्षा: 13 से कम आयु हो तो sign-up कोई बड़ा व्यक्ति देखे, निजी डेटा कभी साझा न करें, और कोई भी जानकारी भरने से पहले जाँचें कि पाठ्यक्रम असली और मुफ़्त है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Beware of 'guaranteed AI job' or 'earn lakhs from home with AI' advertisements that ask for fees or personal documents. Genuine government courses are listed on official websites (ending in .gov.in or .nic.in) and should be checked with a teacher.",
+      "hi": "'पक्की AI नौकरी' या 'घर बैठे AI से लाखों कमाओ' जैसे विज्ञापनों से सावधान रहें जो फ़ीस या निजी दस्तावेज़ माँगते हैं। असली सरकारी पाठ्यक्रम आधिकारिक वेबसाइटों (.gov.in या .nic.in पर ख़त्म होने वाली) पर होते हैं और उन्हें शिक्षक के साथ जाँचना चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.10 Building a portfolio",
+    "hi": "8.10 portfolio बनाना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Portfolio",
+       "hi": "Portfolio"
+      },
+      "text": {
+       "en": "A portfolio is a collection of your projects and work that shows what you can do, such as programs, models, posters, reports and videos, with a short explanation of each.",
+       "hi": "portfolio आपकी परियोजनाओं और कामों का संग्रह है जो दिखाता है कि आप क्या कर सकते हैं, जैसे प्रोग्राम, model, पोस्टर, रिपोर्ट और वीडियो, हर एक की छोटी व्याख्या के साथ।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Projects show your skills better than marks alone. Start small and solve real problems around you. For each project, write: the problem, the data you used, what you built, how well it worked (with numbers), what went wrong, what you learned, and any ethical issues (fairness, privacy).",
+      "hi": "परियोजनाएँ केवल अंकों से बेहतर आपके कौशल दिखाती हैं। छोटे से शुरू करें और अपने आसपास की असली समस्याएँ हल करें। हर परियोजना के लिए लिखें: समस्या, उपयोग किया डेटा, आपने क्या बनाया, वह कितना अच्छा चला (संख्याओं सहित), क्या गलत हुआ, आपने क्या सीखा, और कोई नैतिक मुद्दे (निष्पक्षता, निजता)।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "A Teachable Machine model that sorts waste into dry, wet and recyclable, tested on 20 new items.",
+       "A Python program that analyses a month of your city's temperature or rainfall and draws conclusions.",
+       "A rule-based Hindi or regional-language chatbot that answers questions about your school.",
+       "A survey of how classmates use AI, with charts and a report on safe habits.",
+       "A poster or video for your community explaining how to spot deepfakes and voice-clone scams."
+      ],
+      "hi": [
+       "Teachable Machine model जो कचरे को सूखा, गीला और पुनर्चक्रण योग्य में छाँटे, 20 नई वस्तुओं पर परखा गया।",
+       "Python प्रोग्राम जो आपके शहर के एक महीने के तापमान या वर्षा का विश्लेषण करके निष्कर्ष निकाले।",
+       "हिंदी या क्षेत्रीय भाषा का नियम-आधारित chatbot जो आपके स्कूल के बारे में प्रश्नों के उत्तर दे।",
+       "सहपाठी AI का उपयोग कैसे करते हैं इसका सर्वेक्षण, चार्ट और सुरक्षित आदतों पर रिपोर्ट के साथ।",
+       "आपके समुदाय के लिए पोस्टर या वीडियो जो डीपफ़ेक और voice-clone ठगी पहचानना समझाए।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write a portfolio entry for the waste-sorting project.",
+       "hi": "कचरा-छँटाई परियोजना के लिए एक portfolio प्रविष्टि लिखिए।"
+      },
+      "a": {
+       "en": "Problem: Our school's dustbins mix dry and wet waste.\nData: 60 photos per class (dry, wet, recyclable) taken by our team in different light; no faces included.\nBuilt: An image model in Teachable Machine.\nResult: Correct for 17 of 20 new items (85%); it confused shiny wet wrappers with recyclable plastic.\nImprovement: Added 30 more photos of wrappers; accuracy rose to 18 of 20 (90%).\nEthics: No personal data used; the model only advises, students still decide.\nLearned: More varied data fixed most errors.",
+       "hi": "समस्या: हमारे स्कूल के कूड़ेदानों में सूखा और गीला कचरा मिल जाता है।\nडेटा: हर class (सूखा, गीला, पुनर्चक्रण योग्य) की 60 फ़ोटो, हमारी टीम ने अलग-अलग रोशनी में लीं; कोई चेहरा शामिल नहीं।\nबनाया: Teachable Machine में एक image model।\nपरिणाम: 20 नई वस्तुओं में से 17 पर सही (85%); चमकीले गीले रैपर को यह पुनर्चक्रण योग्य प्लास्टिक समझ बैठा।\nसुधार: रैपर की 30 और फ़ोटो जोड़ीं; सटीकता 20 में से 18 (90%) हो गई।\nनैतिकता: कोई निजी डेटा नहीं; model केवल सलाह देता है, निर्णय विद्यार्थी लेते हैं।\nसीख: अधिक विविध डेटा से अधिकतर गलतियाँ ठीक हुईं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.11 Making the future of work fair",
+    "hi": "8.11 काम के भविष्य को न्यायपूर्ण बनाना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The future of work is not decided by technology alone; it depends on choices made by people, companies and governments. Important questions include: Will workers whose tasks are automated get help to reskill? Will AI tools be available in Indian languages and on low-cost phones so that villages and small towns also benefit? Will gig workers (delivery riders, drivers) whose work is assigned by apps get fair pay and a way to question decisions? Will women and people with disabilities get equal access to AI jobs and training? Responsible AI (Chapter 6) applies to the workplace too.",
+      "hi": "काम का भविष्य केवल तकनीक तय नहीं करती; यह लोगों, कंपनियों और सरकारों के निर्णयों पर निर्भर है। महत्वपूर्ण प्रश्न हैं: क्या जिन कामगारों के काम स्वचालित हुए उन्हें reskill होने में मदद मिलेगी? क्या AI टूल भारतीय भाषाओं में और सस्ते फ़ोन पर उपलब्ध होंगे ताकि गाँवों और छोटे शहरों को भी लाभ हो? क्या ऐप से काम पाने वाले gig workers (डिलीवरी राइडर, ड्राइवर) को उचित वेतन और निर्णयों पर सवाल उठाने का रास्ता मिलेगा? क्या महिलाओं और दिव्यांगजनों को AI नौकरियों और प्रशिक्षण तक समान पहुँच मिलेगी? ज़िम्मेदार AI (अध्याय 6) कार्यस्थल पर भी लागू होता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Gig work",
+       "hi": "Gig work"
+      },
+      "text": {
+       "en": "Gig work is short-term, task-based work, often found and managed through apps, such as food delivery, ride driving or freelance design.",
+       "hi": "gig work अल्पकालिक, काम-आधारित काम है, जो अक्सर ऐप के ज़रिए मिलता और संभाला जाता है, जैसे खाना डिलीवरी, सवारी चलाना या freelance डिज़ाइन।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "You are not just a future worker; you are a future decision-maker. The values you build now (fairness, honesty, care for others) will shape how AI is used at work.",
+      "hi": "आप केवल भविष्य के कामगार नहीं; आप भविष्य के निर्णय-कर्ता हैं। जो मूल्य आप अभी बनाते हैं (निष्पक्षता, ईमानदारी, दूसरों की परवाह) वे तय करेंगे कि काम पर AI कैसे उपयोग होगा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.12 Activities",
+    "hi": "8.12 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (writing): Job advertisement for 2036",
+       "hi": "गतिविधि 1 (लेखन): 2036 के लिए नौकरी का विज्ञापन"
+      },
+      "a": {
+       "en": "Aim: to imagine how AI will change jobs.\nYou need: paper, colours.\nWhat to do: Pick any job (farmer, nurse, cricket coach, shopkeeper, teacher). Write a job advertisement for that job in the year 2036: title, what the person will do each day, which AI tools they will use, which tasks only a human can do, skills required (technical and human) and qualifications.\nObserve: Most jobs still exist but involve new tools and skills.\nLearn: Thinking in tasks helps you prepare for change. Display the ads on a class 'Future Jobs Wall'.",
+       "hi": "उद्देश्य: कल्पना करना कि AI नौकरियों को कैसे बदलेगा।\nज़रूरत: काग़ज़, रंग।\nक्या करें: कोई भी नौकरी चुनिए (किसान, नर्स, क्रिकेट कोच, दुकानदार, शिक्षक)। वर्ष 2036 के लिए उस नौकरी का विज्ञापन लिखिए: पद का नाम, व्यक्ति रोज़ क्या करेगा, कौन-से AI टूल उपयोग करेगा, कौन-से काम केवल इंसान कर सकता है, ज़रूरी कौशल (तकनीकी और मानवीय) और योग्यता।\nअवलोकन: अधिकतर नौकरियाँ अब भी रहती हैं पर उनमें नए औज़ार और कौशल शामिल होते हैं।\nसीख: कामों (tasks) में सोचने से बदलाव की तैयारी में मदद मिलती है। विज्ञापनों को कक्षा की 'भविष्य की नौकरियाँ दीवार' पर लगाइए।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (interview): Ask a working adult",
+       "hi": "गतिविधि 2 (साक्षात्कार): किसी कामकाजी बड़े से पूछिए"
+      },
+      "a": {
+       "en": "Aim: to see AI in real jobs around you.\nYou need: a family member, neighbour or shopkeeper willing to talk (with a parent's permission).\nWhat to do: Ask: What are the main tasks in your work? Which tasks use apps, computers or AI now? What changed in the last five years? Which skills do you wish you had learned earlier? Write a half-page report without personal details.\nObserve: Even jobs that seem non-technical use apps for payments, orders, maps and messages.\nLearn: Digital and AI skills matter in every job; human skills matter just as much.",
+       "hi": "उद्देश्य: अपने आसपास असली नौकरियों में AI देखना।\nज़रूरत: बात करने को तैयार परिवार का सदस्य, पड़ोसी या दुकानदार (माता-पिता की अनुमति से)।\nक्या करें: पूछिए: आपके काम के मुख्य काम क्या हैं? कौन-से काम अब ऐप, कंप्यूटर या AI से होते हैं? पिछले पाँच साल में क्या बदला? कौन-से कौशल आप चाहते हैं कि पहले सीख लेते? बिना निजी जानकारी के आधे पन्ने की रिपोर्ट लिखिए।\nअवलोकन: जो नौकरियाँ तकनीकी नहीं लगतीं, उनमें भी भुगतान, ऑर्डर, नक्शे और संदेशों के लिए ऐप उपयोग होते हैं।\nसीख: डिजिटल और AI कौशल हर नौकरी में मायने रखते हैं; मानवीय कौशल भी उतने ही।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (sorting game): Automate, augment or human?",
+       "hi": "गतिविधि 3 (छँटाई खेल): स्वचालित, सहायता या इंसानी?"
+      },
+      "a": {
+       "en": "Aim: to classify tasks.\nYou need: 20 task cards, e.g. 'counting coins', 'comforting a crying child', 'translating a menu', 'deciding a court case', 'spotting a fake note', 'planning a school trip', 'checking spelling', 'designing a festival poster'.\nWhat to do: In groups, place each card under 'AI can automate', 'AI can assist', or 'Needs a human'. Each group must give a reason for three cards. Compare with other groups.\nObserve: Groups disagree on some cards; many tasks fall under 'AI can assist'.\nLearn: Most work will be humans and AI together.",
+       "hi": "उद्देश्य: कामों का वर्गीकरण।\nज़रूरत: 20 काम-कार्ड, जैसे 'सिक्के गिनना', 'रोते बच्चे को चुप कराना', 'मेनू का अनुवाद', 'अदालती मामले का फ़ैसला', 'नकली नोट पहचानना', 'स्कूल यात्रा की योजना', 'वर्तनी जाँचना', 'त्योहार का पोस्टर डिज़ाइन करना'।\nक्या करें: समूहों में हर कार्ड को 'AI स्वचालित कर सकता है', 'AI मदद कर सकता है' या 'इंसान चाहिए' के नीचे रखिए। हर समूह तीन कार्डों का कारण बताए। दूसरे समूहों से तुलना कीजिए।\nअवलोकन: कुछ कार्डों पर समूह असहमत होते हैं; बहुत-से काम 'AI मदद कर सकता है' में आते हैं।\nसीख: अधिकतर काम इंसान और AI मिलकर करेंगे।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4 (planning): My skill map",
+       "hi": "गतिविधि 4 (योजना): मेरा कौशल नक्शा"
+      },
+      "a": {
+       "en": "Aim: to plan your own learning.\nYou need: a notebook.\nWhat to do: Draw two columns: 'Technical skills' and 'Human skills'. List three skills you already have in each, and two you want to build in the next year. For each, write one free way to practise (e.g. 'Python: 20 minutes on Colab twice a week'; 'communication: speak in the school assembly').\nObserve: You already have useful skills.\nLearn: Small, regular steps build a strong skill set; review the map every few months.",
+       "hi": "उद्देश्य: अपनी सीखने की योजना बनाना।\nज़रूरत: एक कॉपी।\nक्या करें: दो कॉलम बनाइए: 'तकनीकी कौशल' और 'मानवीय कौशल'। हर एक में तीन कौशल लिखिए जो आपके पास हैं, और दो जो अगले साल में बनाना चाहते हैं। हर एक के लिए अभ्यास का एक मुफ़्त तरीका लिखिए (जैसे 'Python: हफ़्ते में दो बार Colab पर 20 मिनट'; 'संवाद: स्कूल सभा में बोलना')।\nअवलोकन: आपके पास पहले से उपयोगी कौशल हैं।\nसीख: छोटे, नियमित कदम मज़बूत कौशल बनाते हैं; हर कुछ महीनों में नक्शा देखिए।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 5 (class project): AI career fair",
+       "hi": "गतिविधि 5 (कक्षा परियोजना): AI करियर मेला"
+      },
+      "a": {
+       "en": "Aim: to learn about many careers.\nYou need: chart paper; library or trusted websites.\nWhat to do: Each group researches one career from 8.4 or 8.5: what the person does, a day in their work, skills and study path, how it helps society, and one ethical challenge. Make a stall and present to another class.\nObserve: Careers need different mixes of maths, coding, language and people skills.\nLearn: There is a place in AI for many kinds of talent.",
+       "hi": "उद्देश्य: कई करियरों के बारे में जानना।\nज़रूरत: चार्ट पेपर; पुस्तकालय या विश्वसनीय वेबसाइटें।\nक्या करें: हर समूह 8.4 या 8.5 से एक करियर पर शोध करे: व्यक्ति क्या करता है, उसके काम का एक दिन, कौशल और पढ़ाई का रास्ता, यह समाज की कैसे मदद करता है, और एक नैतिक चुनौती। एक स्टॉल बनाकर दूसरी कक्षा को प्रस्तुत करें।\nअवलोकन: करियरों में गणित, कोडिंग, भाषा और लोगों से जुड़ने के कौशल का अलग-अलग मेल चाहिए।\nसीख: AI में कई तरह की प्रतिभा के लिए जगह है।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Believing 'AI will take all jobs'. Fix: AI changes tasks; it automates some, assists with many and creates new jobs. People who keep learning adapt.",
+   "Believing 'AI will not affect my job'. Fix: almost every field now uses AI tools; basic AI literacy is useful for everyone.",
+   "Thinking only engineers can work in AI. Fix: analysts, designers, lawyers, linguists, ethicists, annotators and domain experts all work with AI.",
+   "Focusing only on technical skills. Fix: creativity, communication, empathy and ethics are just as important and harder for AI to replace.",
+   "Thinking you must choose a career now. Fix: build strong basics, explore widely and keep options open.",
+   "Thinking marks alone are enough. Fix: projects and a portfolio show what you can actually do.",
+   "Believing that learning stops after college. Fix: tools change fast; plan for lifelong learning, upskilling and reskilling.",
+   "Paying for 'guaranteed AI job' courses from unknown ads. Fix: start with free, official platforms and check with a teacher or parent."
+  ],
+  "hi": [
+   "मानना कि 'AI सारी नौकरियाँ ले लेगा'। सुधार: AI काम बदलता है; कुछ स्वचालित करता है, बहुतों में मदद करता है और नई नौकरियाँ बनाता है। सीखते रहने वाले लोग ढल जाते हैं।",
+   "मानना कि 'AI मेरी नौकरी को प्रभावित नहीं करेगा'। सुधार: लगभग हर क्षेत्र अब AI टूल उपयोग करता है; बुनियादी AI साक्षरता सबके लिए उपयोगी है।",
+   "सोचना कि केवल इंजीनियर AI में काम कर सकते हैं। सुधार: विश्लेषक, डिज़ाइनर, वकील, भाषाविद, नैतिकता-विशेषज्ञ, annotator और क्षेत्र-विशेषज्ञ सभी AI के साथ काम करते हैं।",
+   "केवल तकनीकी कौशल पर ध्यान देना। सुधार: रचनात्मकता, संवाद, सहानुभूति और नैतिकता उतने ही ज़रूरी हैं और AI के लिए इन्हें बदलना कठिन है।",
+   "सोचना कि करियर अभी चुनना ज़रूरी है। सुधार: मज़बूत नींव बनाइए, व्यापक रूप से खोजिए और विकल्प खुले रखिए।",
+   "सोचना कि केवल अंक काफ़ी हैं। सुधार: परियोजनाएँ और portfolio दिखाते हैं कि आप वास्तव में क्या कर सकते हैं।",
+   "मानना कि कॉलेज के बाद सीखना रुक जाता है। सुधार: औज़ार तेज़ी से बदलते हैं; आजीवन सीखने, upskilling और reskilling की योजना बनाइए।",
+   "अनजान विज्ञापनों के 'पक्की AI नौकरी' वाले पाठ्यक्रमों के लिए पैसे देना। सुधार: मुफ़्त, आधिकारिक मंचों से शुरू कीजिए और शिक्षक या माता-पिता से जाँचिए।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Task",
+    "hi": "काम (Task)"
+   },
+   "d": {
+    "en": "A single piece of work within a job.",
+    "hi": "किसी नौकरी के भीतर का एक काम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Automation",
+    "hi": "Automation"
+   },
+   "d": {
+    "en": "A machine or AI doing a task by itself that people used to do.",
+    "hi": "मशीन या AI द्वारा खुद वह काम करना जो पहले लोग करते थे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Augmentation",
+    "hi": "Augmentation"
+   },
+   "d": {
+    "en": "AI helping a person do a task better while the person stays in charge.",
+    "hi": "AI द्वारा व्यक्ति को काम बेहतर करने में मदद, जबकि नियंत्रण व्यक्ति के पास रहे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Job displacement",
+    "hi": "नौकरी का विस्थापन"
+   },
+   "d": {
+    "en": "When jobs are lost or reduced because tasks are automated.",
+    "hi": "जब काम स्वचालित होने से नौकरियाँ घटें या ख़त्म हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data analyst",
+    "hi": "Data analyst"
+   },
+   "d": {
+    "en": "A person who cleans and studies data to answer questions with charts and reports.",
+    "hi": "ऐसा व्यक्ति जो डेटा साफ़ करके और पढ़कर चार्ट व रिपोर्ट से प्रश्नों के उत्तर देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data scientist",
+    "hi": "Data scientist"
+   },
+   "d": {
+    "en": "A person who finds patterns in data and builds predictive models.",
+    "hi": "ऐसा व्यक्ति जो डेटा में पैटर्न ढूँढकर अनुमान वाले model बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine learning engineer",
+    "hi": "Machine learning engineer"
+   },
+   "d": {
+    "en": "A person who builds, trains and deploys ML models in real products.",
+    "hi": "ऐसा व्यक्ति जो असली उत्पादों में ML model बनाता, प्रशिक्षित और लागू करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Computer vision engineer",
+    "hi": "Computer vision engineer"
+   },
+   "d": {
+    "en": "Builds systems that understand images and video.",
+    "hi": "चित्र और वीडियो समझने वाले सिस्टम बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLP engineer",
+    "hi": "NLP engineer"
+   },
+   "d": {
+    "en": "Builds systems that understand and generate human language.",
+    "hi": "मानव भाषा समझने और बनाने वाले सिस्टम बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI ethicist",
+    "hi": "AI ethicist"
+   },
+   "d": {
+    "en": "Checks AI for fairness, privacy and safety and writes guidelines.",
+    "hi": "निष्पक्षता, निजता और सुरक्षा के लिए AI जाँचता है और दिशानिर्देश लिखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data annotator",
+    "hi": "Data annotator"
+   },
+   "d": {
+    "en": "Labels data (images, text, audio) so that AI can learn from it.",
+    "hi": "डेटा (चित्र, टेक्स्ट, ऑडियो) पर लेबल लगाता है ताकि AI उससे सीख सके।"
+   }
+  },
+  {
+   "t": {
+    "en": "Domain knowledge",
+    "hi": "क्षेत्र-ज्ञान"
+   },
+   "d": {
+    "en": "Deep understanding of a particular field such as health or farming.",
+    "hi": "स्वास्थ्य या खेती जैसे किसी विशेष क्षेत्र की गहरी समझ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Technical skills",
+    "hi": "तकनीकी कौशल"
+   },
+   "d": {
+    "en": "Skills like maths, coding and data handling.",
+    "hi": "गणित, कोडिंग और डेटा संभालने जैसे कौशल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Human (soft) skills",
+    "hi": "मानवीय (soft) कौशल"
+   },
+   "d": {
+    "en": "Skills like creativity, communication, empathy, teamwork and ethics.",
+    "hi": "रचनात्मकता, संवाद, सहानुभूति, टीमवर्क और नैतिकता जैसे कौशल।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI literacy",
+    "hi": "AI साक्षरता"
+   },
+   "d": {
+    "en": "Understanding what AI is, how it works, its limits and how to use it responsibly.",
+    "hi": "यह समझ कि AI क्या है, कैसे काम करता है, उसकी सीमाएँ क्या हैं और उसका ज़िम्मेदार उपयोग कैसे करें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Upskilling",
+    "hi": "Upskilling"
+   },
+   "d": {
+    "en": "Learning new skills to do your current job better.",
+    "hi": "अपनी वर्तमान नौकरी बेहतर करने के लिए नए कौशल सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reskilling",
+    "hi": "Reskilling"
+   },
+   "d": {
+    "en": "Learning skills for a different job.",
+    "hi": "किसी दूसरी नौकरी के लिए कौशल सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Lifelong learning",
+    "hi": "आजीवन सीखना"
+   },
+   "d": {
+    "en": "Continuing to learn throughout life.",
+    "hi": "जीवन भर सीखते रहना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Growth mindset",
+    "hi": "Growth mindset"
+   },
+   "d": {
+    "en": "Belief that abilities grow with effort and practice.",
+    "hi": "यह विश्वास कि क्षमताएँ मेहनत और अभ्यास से बढ़ती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Portfolio",
+    "hi": "Portfolio"
+   },
+   "d": {
+    "en": "A collection of your projects that shows your skills.",
+    "hi": "आपकी परियोजनाओं का संग्रह जो आपके कौशल दिखाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Gig work",
+    "hi": "Gig work"
+   },
+   "d": {
+    "en": "Short-term, task-based work often managed through apps.",
+    "hi": "अल्पकालिक, काम-आधारित काम जो अक्सर ऐप से संभाला जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "CBSE 417 / 843",
+    "hi": "CBSE 417 / 843"
+   },
+   "d": {
+    "en": "CBSE subject codes for Artificial Intelligence in Classes 9-10 (417) and 11-12 (843).",
+    "hi": "कक्षा 9-10 (417) और 11-12 (843) में Artificial Intelligence के CBSE विषय कोड।"
+   }
+  },
+  {
+   "t": {
+    "en": "DIKSHA / SWAYAM",
+    "hi": "DIKSHA / SWAYAM"
+   },
+   "d": {
+    "en": "Free Government of India online learning platforms.",
+    "hi": "भारत सरकार के मुफ़्त ऑनलाइन शिक्षण मंच।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: AI helps a doctor find signs of disease in an X-ray, and the doctor makes the final decision. This is:\n(a) Automation (b) Augmentation (c) Displacement (d) Annotation",
+    "hi": "MCQ: AI डॉक्टर को X-ray में रोग के संकेत ढूँढने में मदद करता है, और अंतिम निर्णय डॉक्टर लेता है। यह है:\n(a) Automation (b) Augmentation (c) विस्थापन (d) Annotation"
+   },
+   "a": {
+    "en": "(b) Augmentation.",
+    "hi": "(b) Augmentation।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: CBSE offers Artificial Intelligence as subject code ______ in Classes 9-10 and ______ in Classes 11-12.",
+    "hi": "रिक्त स्थान भरिए: CBSE कक्षा 9-10 में Artificial Intelligence को विषय कोड ______ और कक्षा 11-12 में ______ के रूप में देता है।"
+   },
+   "a": {
+    "en": "417; 843.",
+    "hi": "417; 843।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: Only people with an engineering degree can have a career connected to AI.",
+    "hi": "सही या गलत: केवल इंजीनियरिंग डिग्री वाले लोग ही AI से जुड़ा करियर बना सकते हैं।"
+   },
+   "a": {
+    "en": "False. Data annotators, analysts, designers, lawyers, ethicists, linguists and many others work with AI.",
+    "hi": "गलत। data annotator, विश्लेषक, डिज़ाइनर, वकील, नैतिकता-विशेषज्ञ, भाषाविद और कई अन्य AI के साथ काम करते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name two free government learning platforms in India.",
+    "hi": "भारत के दो मुफ़्त सरकारी शिक्षण मंचों के नाम बताइए।"
+   },
+   "a": {
+    "en": "DIKSHA and SWAYAM.",
+    "hi": "DIKSHA और SWAYAM।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "List three human skills that AI cannot easily replace.",
+    "hi": "तीन मानवीय कौशल लिखिए जिन्हें AI आसानी से नहीं बदल सकता।"
+   },
+   "a": {
+    "en": "Empathy, creativity, communication (also critical thinking, teamwork, ethics, leadership).",
+    "hi": "सहानुभूति, रचनात्मकता, संवाद (आलोचनात्मक सोच, टीमवर्क, नैतिकता, नेतृत्व भी)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What does a data annotator do?",
+    "hi": "data annotator क्या करता है?"
+   },
+   "a": {
+    "en": "Labels data, such as drawing boxes around objects in images, tagging text or transcribing audio, so AI models can learn from it.",
+    "hi": "डेटा पर लेबल लगाता है, जैसे चित्रों में वस्तुओं के चारों ओर डिब्बे बनाना, टेक्स्ट पर टैग लगाना या ऑडियो लिखना, ताकि AI model उससे सीख सकें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the difference between automation and augmentation with one Indian example of each.",
+    "hi": "automation और augmentation में अंतर हर एक के एक भारतीय उदाहरण के साथ समझाइए।"
+   },
+   "a": {
+    "en": "Automation: AI or machines do the task fully, e.g. FASTag toll collection replacing cash counters. Augmentation: AI helps a person who stays in charge, e.g. a farmer using an AI crop-disease app but deciding the treatment.",
+    "hi": "Automation: AI या मशीनें काम पूरी तरह करती हैं, जैसे नकद काउंटर की जगह FASTag से टोल वसूली। Augmentation: AI उस व्यक्ति की मदद करता है जिसके पास नियंत्रण रहता है, जैसे किसान AI फ़सल-रोग ऐप उपयोग करे पर इलाज खुद तय करे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is it better to ask 'Which tasks will AI change?' rather than 'Will AI take this job?'",
+    "hi": "'क्या AI यह नौकरी ले लेगा?' की बजाय 'AI कौन-से काम बदलेगा?' पूछना बेहतर क्यों है?"
+   },
+   "a": {
+    "en": "Jobs are bundles of tasks. AI usually automates some tasks, assists with others and leaves some to humans, so most jobs change rather than disappear. Thinking in tasks shows which skills to build.",
+    "hi": "नौकरियाँ कामों का गुच्छा हैं। AI आमतौर पर कुछ काम स्वचालित करता है, कुछ में मदद करता है और कुछ इंसानों पर छोड़ता है, इसलिए अधिकतर नौकरियाँ ख़त्म होने की बजाय बदलती हैं। कामों में सोचने से पता चलता है कि कौन-से कौशल बनाने हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How is AI different from earlier technologies like tractors in its effect on work?",
+    "hi": "काम पर प्रभाव में AI ट्रैक्टर जैसी पहले की तकनीकों से कैसे अलग है?"
+   },
+   "a": {
+    "en": "Earlier machines mostly replaced physical effort or simple repeated steps. AI can also do some thinking-type tasks (reading, recognising, translating, drafting, coding), so it affects office, creative and professional jobs too, and it spreads faster through existing phones and computers.",
+    "hi": "पहले की मशीनें ज़्यादातर शारीरिक मेहनत या सरल दोहराए कदमों की जगह लेती थीं। AI कुछ सोचने वाले काम भी कर सकता है (पढ़ना, पहचानना, अनुवाद, मसौदा, कोडिंग), इसलिए यह दफ़्तर, रचनात्मक और पेशेवर नौकरियों को भी प्रभावित करता है, और मौजूदा फ़ोन व कंप्यूटरों से तेज़ी से फैलता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Match the career to the work: (1) NLP engineer (2) Computer vision engineer (3) Data analyst (4) AI ethicist\n(a) checks AI for fairness and privacy (b) builds a Tamil speech assistant (c) makes sales charts and reports (d) builds a number-plate reader",
+    "hi": "करियर को काम से मिलाइए: (1) NLP engineer (2) Computer vision engineer (3) Data analyst (4) AI ethicist\n(a) निष्पक्षता और निजता के लिए AI जाँचता है (b) तमिल बोली सहायक बनाता है (c) बिक्री के चार्ट और रिपोर्ट बनाता है (d) नंबर-प्लेट पढ़ने वाला बनाता है"
+   },
+   "a": {
+    "en": "1-b, 2-d, 3-c, 4-a.",
+    "hi": "1-b, 2-d, 3-c, 4-a।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the difference between upskilling and reskilling? Give an example.",
+    "hi": "upskilling और reskilling में क्या अंतर है? उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Upskilling: learning new skills for your current job, e.g. an accountant learning to use AI tools for reports. Reskilling: learning skills for a different job, e.g. a toll-booth cashier training to become a data annotator.",
+    "hi": "Upskilling: अपनी वर्तमान नौकरी के लिए नए कौशल सीखना, जैसे लेखाकार रिपोर्ट के लिए AI टूल सीखे। Reskilling: किसी दूसरी नौकरी के लिए कौशल सीखना, जैसे टोल-बूथ कैशियर data annotator बनने का प्रशिक्षण ले।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name four technical skills useful for AI careers.",
+    "hi": "AI करियर के लिए उपयोगी चार तकनीकी कौशल बताइए।"
+   },
+   "a": {
+    "en": "Maths (statistics, probability), Python coding, data handling and visualisation, AI literacy (also cybersecurity basics and domain knowledge).",
+    "hi": "गणित (सांख्यिकी, प्रायिकता), Python कोडिंग, डेटा संभालना और दृश्य बनाना, AI साक्षरता (cybersecurity की बुनियादी बातें और क्षेत्र-ज्ञान भी)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "According to the WEF Future of Jobs Report 2025 estimate, about 170 million jobs may be created and 92 million displaced between 2025 and 2030. What is the net change? What caution should we keep in mind?",
+    "hi": "WEF Future of Jobs Report 2025 के अनुमान के अनुसार 2025 से 2030 के बीच लगभग 17 करोड़ नौकरियाँ बन सकती हैं और 9.2 करोड़ हट सकती हैं। शुद्ध बदलाव क्या है? कौन-सी सावधानी रखनी चाहिए?"
+   },
+   "a": {
+    "en": "Net change = 170 - 92 = 78 million more jobs. Caution: these are forecasts, not certainties; and the new jobs may need different skills and be in different places from the lost ones, so people need help to reskill.",
+    "hi": "शुद्ध बदलाव = 17 करोड़ - 9.2 करोड़ = 7.8 करोड़ अधिक नौकरियाँ। सावधानी: ये पूर्वानुमान हैं, निश्चितता नहीं; और नई नौकरियों के लिए अलग कौशल चाहिए हो सकते हैं और वे खोई नौकरियों से अलग जगहों पर हो सकती हैं, इसलिए लोगों को reskill होने में मदद चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is a portfolio, and what should each project entry include?",
+    "hi": "portfolio क्या है, और हर परियोजना प्रविष्टि में क्या होना चाहिए?"
+   },
+   "a": {
+    "en": "A collection of your projects showing your skills. Each entry: the problem, data used, what you built, results with numbers, what went wrong, what you learned and ethical issues.",
+    "hi": "आपकी परियोजनाओं का संग्रह जो आपके कौशल दिखाता है। हर प्रविष्टि: समस्या, उपयोग किया डेटा, क्या बनाया, संख्याओं सहित परिणाम, क्या गलत हुआ, क्या सीखा और नैतिक मुद्दे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Break the job of a school teacher into at least six tasks and classify each as automate, assist or human.",
+    "hi": "स्कूल शिक्षक की नौकरी को कम-से-कम छह कामों में बाँटकर हर एक को स्वचालित, सहायता या इंसानी में वर्गीकृत कीजिए।"
+   },
+   "a": {
+    "en": "Marking attendance: automate. Checking MCQ tests: automate. Making practice questions: assist (teacher checks). Translating notes for a new student: assist. Explaining a hard concept in a new way: mainly human, AI can assist. Comforting a worried child, guiding values, talking with parents, managing a class discussion: human.",
+    "hi": "हाज़िरी लगाना: स्वचालित। MCQ परीक्षा जाँचना: स्वचालित। अभ्यास प्रश्न बनाना: सहायता (शिक्षक जाँचे)। नए विद्यार्थी के लिए नोट्स का अनुवाद: सहायता। कठिन अवधारणा नए तरीके से समझाना: मुख्यतः इंसानी, AI मदद कर सकता है। चिंतित बच्चे को ढाढ़स, मूल्यों का मार्गदर्शन, माता-पिता से बात, कक्षा चर्चा सँभालना: इंसानी।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A small-town BPO that did data entry is losing work because of automation. Suggest a plan for its workers.",
+    "hi": "केस स्टडी: डेटा एंट्री करने वाला एक छोटे शहर का BPO automation के कारण काम खो रहा है। उसके कामगारों के लिए योजना सुझाइए।"
+   },
+   "a": {
+    "en": "1. Identify skills workers already have: typing, accuracy, language, computer use.\n2. Reskill them for nearby AI roles: data annotation, AI output checking in Indian languages, customer support with AI tools.\n3. Use free or government skill courses; partner with AI companies that need annotation.\n4. Upskill supervisors in data analytics.\n5. Support workers during the change with fair pay and clear information. This turns displacement into new work.",
+    "hi": "1. कामगारों के मौजूदा कौशल पहचानिए: टाइपिंग, सटीकता, भाषा, कंप्यूटर उपयोग।\n2. उन्हें पास की AI भूमिकाओं के लिए reskill कीजिए: data annotation, भारतीय भाषाओं में AI आउटपुट जाँच, AI टूल के साथ ग्राहक सहायता।\n3. मुफ़्त या सरकारी कौशल पाठ्यक्रम उपयोग कीजिए; annotation की ज़रूरत वाली AI कंपनियों से साझेदारी कीजिए।\n4. पर्यवेक्षकों को data analytics में upskill कीजिए।\n5. बदलाव के दौरान उचित वेतन और स्पष्ट जानकारी से कामगारों का साथ दीजिए। इससे विस्थापन नए काम में बदलता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Assertion (A): Human skills such as empathy and ethics will become more valuable as AI spreads.\nReason (R): AI can automate many routine tasks, but it cannot take responsibility or truly care for people.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): AI फैलने के साथ सहानुभूति और नैतिकता जैसे मानवीय कौशल और मूल्यवान होंगे।\nकारण (R): AI बहुत-से नियमित काम स्वचालित कर सकता है, पर ज़िम्मेदारी नहीं ले सकता या सच में लोगों की परवाह नहीं कर सकता।\n(a) दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R गलत (d) A गलत, R सही"
+   },
+   "a": {
+    "en": "(a). As routine tasks are automated, the remaining human work relies more on care, judgement and responsibility.",
+    "hi": "(a)। जैसे-जैसे नियमित काम स्वचालित होते हैं, बचा इंसानी काम देखभाल, विवेक और ज़िम्मेदारी पर अधिक निर्भर होता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "How can India make sure the benefits of AI jobs reach villages and small towns as well as big cities?",
+    "hi": "भारत यह कैसे सुनिश्चित कर सकता है कि AI नौकरियों के लाभ बड़े शहरों के साथ गाँवों और छोटे शहरों तक भी पहुँचें?"
+   },
+   "a": {
+    "en": "Provide internet and affordable devices; build AI tools in Indian languages (e.g. through Bhashini) and for low-cost phones; offer free training through DIKSHA, SWAYAM, ITIs and skill centres; set up annotation and AI support centres in small towns; support women and people with disabilities to join; teach AI literacy in schools.",
+    "hi": "इंटरनेट और सस्ते उपकरण उपलब्ध कराना; भारतीय भाषाओं में (जैसे Bhashini के ज़रिए) और सस्ते फ़ोन के लिए AI टूल बनाना; DIKSHA, SWAYAM, ITI और कौशल केंद्रों से मुफ़्त प्रशिक्षण देना; छोटे शहरों में annotation और AI सहायता केंद्र खोलना; महिलाओं और दिव्यांगजनों को जुड़ने में मदद करना; स्कूलों में AI साक्षरता पढ़ाना।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "You see an advertisement: 'Learn AI in 7 days, guaranteed job of Rs 1 lakh per month, pay Rs 5,000 and upload your Aadhaar.' What should you do and why?",
+    "hi": "आप एक विज्ञापन देखते हैं: '7 दिन में AI सीखो, 1 लाख रुपये महीने की पक्की नौकरी, 5,000 रुपये दो और अपना आधार अपलोड करो।' आपको क्या करना चाहिए और क्यों?"
+   },
+   "a": {
+    "en": "Do not pay or upload documents. Real skills take time, and no genuine course can guarantee such a job; asking for money and ID documents up front is a common scam pattern. Check with a parent or teacher, prefer free official platforms (DIKSHA, SWAYAM, .gov.in sites), and report fraud at 1930 or cybercrime.gov.in if someone lost money.",
+    "hi": "पैसे न दें और दस्तावेज़ अपलोड न करें। असली कौशल में समय लगता है, और कोई असली पाठ्यक्रम ऐसी नौकरी की गारंटी नहीं दे सकता; पहले ही पैसे और पहचान दस्तावेज़ माँगना ठगी का आम तरीका है। माता-पिता या शिक्षक से जाँचें, मुफ़्त आधिकारिक मंच (DIKSHA, SWAYAM, .gov.in साइटें) चुनें, और किसी के पैसे गए हों तो 1930 या cybercrime.gov.in पर शिकायत करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Choose a job you might like. Describe how AI could help in it, one risk of using AI there, and two human skills that will stay important.",
+    "hi": "सोचने वाला प्रश्न: अपनी पसंद की कोई नौकरी चुनिए। बताइए AI उसमें कैसे मदद कर सकता है, वहाँ AI उपयोग का एक खतरा, और दो मानवीय कौशल जो ज़रूरी रहेंगे।"
+   },
+   "a": {
+    "en": "Sample (sports coach): AI helps analyse match videos and players' fitness data. Risk: over-relying on numbers, or players' health data being shared without consent. Human skills: motivating players and communication/teamwork. (Any well-reasoned answer is acceptable.)",
+    "hi": "नमूना (खेल कोच): AI मैच वीडियो और खिलाड़ियों के फ़िटनेस डेटा के विश्लेषण में मदद करता है। खतरा: संख्याओं पर अति-निर्भरता, या खिलाड़ियों का स्वास्थ्य डेटा बिना अनुमति साझा होना। मानवीय कौशल: खिलाड़ियों को प्रेरित करना और संवाद/टीमवर्क। (कोई भी अच्छी तरह तर्कपूर्ण उत्तर स्वीकार्य है।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Activity question: In the '2036 job advertisement' activity, what main headings should your advertisement have?",
+    "hi": "गतिविधि प्रश्न: '2036 नौकरी विज्ञापन' गतिविधि में आपके विज्ञापन में कौन-से मुख्य शीर्षक होने चाहिए?"
+   },
+   "a": {
+    "en": "Job title; daily work; AI tools used; tasks only a human can do; technical skills; human skills; qualifications.",
+    "hi": "पद का नाम; रोज़ का काम; उपयोग होने वाले AI टूल; केवल इंसान वाले काम; तकनीकी कौशल; मानवीय कौशल; योग्यता।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Technology has always changed work: it removes some tasks and jobs, changes many and creates new ones.",
+   "AI is different because it can do some thinking-type tasks, so it affects office, creative and professional work too.",
+   "Jobs are bundles of tasks; AI automates some, augments many and leaves others to humans.",
+   "Forecasts such as the WEF Future of Jobs Report 2025 expect both job creation and displacement, with big changes in skills.",
+   "AI is good at speed, patterns and routine; humans lead in empathy, judgement, ethics, creativity and new situations.",
+   "Core AI careers include data analyst, data scientist, ML engineer, computer vision and NLP engineers, robotics engineer, data engineer, researcher and AI ethicist.",
+   "New and entry-level roles include data annotators, AI trainers, content moderators, prompt writers, AI support staff and drone technicians.",
+   "AI is used in every field, so AI literacy helps doctors, farmers, lawyers, designers, teachers and shopkeepers.",
+   "Build technical skills (maths, Python, data, AI literacy) and human skills (critical thinking, creativity, communication, empathy, teamwork, ethics).",
+   "Pathways: AI skill modules, CBSE AI 417 and 843, any stream, degrees, diplomas, ITIs and skill courses.",
+   "Start free with DIKSHA, SWAYAM, government AI literacy courses, Colab, Teachable Machine and school labs; avoid paid 'guaranteed job' scams.",
+   "A portfolio of real projects shows your abilities better than marks alone.",
+   "Keep a growth mindset and plan for lifelong learning, upskilling and reskilling, and help make the future of work fair for all."
+  ],
+  "hi": [
+   "तकनीक ने हमेशा काम बदला है: यह कुछ काम और नौकरियाँ हटाती है, बहुतों को बदलती है और नई बनाती है।",
+   "AI अलग है क्योंकि यह कुछ सोचने वाले काम कर सकता है, इसलिए यह दफ़्तर, रचनात्मक और पेशेवर काम को भी प्रभावित करता है।",
+   "नौकरियाँ कामों का गुच्छा हैं; AI कुछ को स्वचालित करता है, बहुतों में मदद करता है और बाक़ी इंसानों पर छोड़ता है।",
+   "WEF Future of Jobs Report 2025 जैसे पूर्वानुमान नौकरियाँ बनने और हटने दोनों की, और कौशलों में बड़े बदलाव की अपेक्षा करते हैं।",
+   "AI गति, पैटर्न और नियमित काम में अच्छा है; इंसान सहानुभूति, विवेक, नैतिकता, रचनात्मकता और नई स्थितियों में आगे हैं।",
+   "मुख्य AI करियरों में data analyst, data scientist, ML engineer, computer vision और NLP engineer, robotics engineer, data engineer, researcher और AI ethicist शामिल हैं।",
+   "नई और शुरुआती भूमिकाओं में data annotator, AI trainer, content moderator, prompt writer, AI support कर्मचारी और drone technician शामिल हैं।",
+   "AI हर क्षेत्र में उपयोग होता है, इसलिए AI साक्षरता डॉक्टरों, किसानों, वकीलों, डिज़ाइनरों, शिक्षकों और दुकानदारों की मदद करती है।",
+   "तकनीकी कौशल (गणित, Python, डेटा, AI साक्षरता) और मानवीय कौशल (आलोचनात्मक सोच, रचनात्मकता, संवाद, सहानुभूति, टीमवर्क, नैतिकता) बनाइए।",
+   "रास्ते: AI skill module, CBSE AI 417 और 843, कोई भी स्ट्रीम, डिग्रियाँ, डिप्लोमा, ITI और कौशल पाठ्यक्रम।",
+   "DIKSHA, SWAYAM, सरकारी AI साक्षरता पाठ्यक्रम, Colab, Teachable Machine और स्कूल लैब से मुफ़्त शुरुआत कीजिए; पैसे वाले 'पक्की नौकरी' घोटालों से बचिए।",
+   "असली परियोजनाओं का portfolio केवल अंकों से बेहतर आपकी क्षमता दिखाता है।",
+   "growth mindset रखिए, आजीवन सीखने, upskilling और reskilling की योजना बनाइए, और काम के भविष्य को सबके लिए न्यायपूर्ण बनाने में मदद कीजिए।"
+  ]
+ }
+}

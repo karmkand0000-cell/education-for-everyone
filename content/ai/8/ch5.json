@@ -1,0 +1,1452 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "8",
+ "id": "ch5",
+ "intro": {
+  "en": "In Class 8 you have already learned how machines learn from data (Chapter 3) and how to write good prompts (Chapter 4). Now we meet the kind of AI that does not just sort or predict, but creates: it writes paragraphs, draws pictures, composes music, speaks in any voice and even makes videos. This is generative AI. It is a powerful helper, but the same power can be used to make deepfakes, fake media that show real people saying or doing things they never did. In this chapter you will learn how generative AI works, where it helps, where it fails, and how to spot, stop and report deepfakes.",
+  "hi": "कक्षा 8 में आप सीख चुके हैं कि मशीनें डेटा से कैसे सीखती हैं (अध्याय 3) और अच्छे prompt कैसे लिखे जाते हैं (अध्याय 4)। अब हम ऐसे AI से मिलेंगे जो केवल छाँटता या अनुमान नहीं लगाता, बल्कि कुछ नया बनाता है: यह अनुच्छेद लिखता है, चित्र बनाता है, संगीत रचता है, किसी भी आवाज़ में बोलता है और वीडियो तक बना देता है। इसे जनरेटिव AI कहते हैं। यह एक शक्तिशाली सहायक है, पर इसी शक्ति से डीपफ़ेक भी बनाए जा सकते हैं, यानी ऐसी नकली सामग्री जिसमें असली लोग वह कहते या करते दिखते हैं जो उन्होंने कभी नहीं किया। इस अध्याय में आप जानेंगे कि जनरेटिव AI कैसे काम करता है, कहाँ मदद करता है, कहाँ चूकता है, और डीपफ़ेक को कैसे पहचानें, रोकें और उसकी शिकायत करें।"
+ },
+ "learn": {
+  "en": [
+   "What generative AI is and how it differs from AI that only classifies or predicts",
+   "How generative AI learns from huge data and turns a prompt into new content",
+   "How chatbots and Large Language Models (LLMs) work by predicting the next word (token)",
+   "How image, voice, music and video generators work (diffusion and GANs, in simple words)",
+   "Good uses of generative AI in study, work, art, Indian languages and accessibility",
+   "Limits and risks: hallucination, bias, copyright, privacy, over-dependence and misinformation",
+   "What deepfakes are, how they are made (face swap, lip sync, voice cloning) and the harm they cause",
+   "A step-by-step method to check suspicious photos, videos and voice calls",
+   "What to do about voice-clone scams and harmful deepfakes, including reporting at 1930 and cybercrime.gov.in",
+   "Rules for using generative AI honestly and responsibly, with hands-on activities"
+  ],
+  "hi": [
+   "जनरेटिव AI क्या है और यह केवल वर्गीकरण या अनुमान करने वाले AI से कैसे अलग है",
+   "जनरेटिव AI विशाल डेटा से कैसे सीखता है और prompt को नई सामग्री में कैसे बदलता है",
+   "chatbot और Large Language Model (LLM) अगला शब्द (token) अनुमान लगाकर कैसे काम करते हैं",
+   "चित्र, आवाज़, संगीत और वीडियो बनाने वाले AI कैसे काम करते हैं (diffusion और GAN, सरल शब्दों में)",
+   "पढ़ाई, काम, कला, भारतीय भाषाओं और सुलभता (accessibility) में जनरेटिव AI के अच्छे उपयोग",
+   "सीमाएँ और खतरे: hallucination, पक्षपात, कॉपीराइट, निजता, अति-निर्भरता और गलत सूचना",
+   "डीपफ़ेक क्या हैं, कैसे बनते हैं (face swap, lip sync, voice cloning) और इनसे क्या नुकसान होता है",
+   "संदिग्ध फ़ोटो, वीडियो और वॉइस कॉल जाँचने का चरण-दर-चरण तरीका",
+   "voice-clone ठगी और हानिकारक डीपफ़ेक पर क्या करें, जिसमें 1930 और cybercrime.gov.in पर शिकायत शामिल है",
+   "जनरेटिव AI को ईमानदारी और ज़िम्मेदारी से उपयोग करने के नियम, साथ में करके सीखने वाली गतिविधियाँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "5.1 What is generative AI?",
+    "hi": "5.1 जनरेटिव AI क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think of two kinds of AI. The first kind looks at something and gives a label or a number. A spam filter says 'spam' or 'not spam'. A crop-disease app looks at a leaf photo and says 'leaf blight'. Google Maps predicts that you will reach in 25 minutes. This kind of AI answers the question 'What is this?' or 'What will happen?'. The second kind makes something new that did not exist before: a poem about the monsoon, a picture of a tiger playing cricket, a song tune, a voice reading a story. This second kind is called generative AI, because to 'generate' means to produce or create.",
+      "hi": "दो तरह के AI के बारे में सोचिए। पहला AI किसी चीज़ को देखकर उसे एक लेबल या संख्या देता है। spam filter बताता है 'spam' या 'spam नहीं'। फ़सल-रोग वाला ऐप पत्ते की फ़ोटो देखकर कहता है 'पत्ती झुलसा रोग'। Google Maps अनुमान लगाता है कि आप 25 मिनट में पहुँचेंगे। यह AI 'यह क्या है?' या 'क्या होगा?' जैसे प्रश्नों का उत्तर देता है। दूसरा AI कुछ ऐसा नया बनाता है जो पहले नहीं था: मानसून पर कविता, क्रिकेट खेलते बाघ का चित्र, किसी गीत की धुन, कहानी पढ़ती आवाज़। इस दूसरे प्रकार को जनरेटिव AI कहते हैं, क्योंकि 'generate' का अर्थ है उत्पन्न करना या बनाना।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Generative AI",
+       "hi": "जनरेटिव AI"
+      },
+      "text": {
+       "en": "Generative AI is a type of AI that creates new content, such as text, images, audio, music, video or computer code, after learning patterns from a very large amount of existing examples.",
+       "hi": "जनरेटिव AI ऐसा AI है जो बहुत बड़ी संख्या में मौजूदा उदाहरणों से पैटर्न सीखने के बाद नई सामग्री बनाता है, जैसे टेक्स्ट, चित्र, ऑडियो, संगीत, वीडियो या कंप्यूटर कोड।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Predictive / classifying AI",
+        "Generative AI"
+       ],
+       "hi": [
+        "बिंदु",
+        "अनुमान लगाने / वर्गीकरण करने वाला AI",
+        "जनरेटिव AI"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Main job",
+         "Gives a label, a score or a forecast",
+         "Creates new content"
+        ],
+        [
+         "Question it answers",
+         "What is this? What will happen?",
+         "Can you make one for me?"
+        ],
+        [
+         "Output",
+         "Usually short: 'cat', 'spam', '25 minutes'",
+         "Long and rich: an essay, a picture, a song"
+        ],
+        [
+         "Indian example",
+         "UPI fraud alert, Google Maps arrival time, crop-disease app",
+         "A chatbot writing a leave application, an app turning a Hindi sentence into speech"
+        ],
+        [
+         "Same input twice",
+         "Usually the same answer",
+         "Often a different answer each time"
+        ]
+       ],
+       "hi": [
+        [
+         "मुख्य काम",
+         "लेबल, अंक या पूर्वानुमान देता है",
+         "नई सामग्री बनाता है"
+        ],
+        [
+         "किस प्रश्न का उत्तर",
+         "यह क्या है? क्या होगा?",
+         "क्या मेरे लिए एक बना सकते हो?"
+        ],
+        [
+         "आउटपुट",
+         "आमतौर पर छोटा: 'बिल्ली', 'spam', '25 मिनट'",
+         "लंबा और विस्तृत: निबंध, चित्र, गीत"
+        ],
+        [
+         "भारतीय उदाहरण",
+         "UPI धोखाधड़ी अलर्ट, Google Maps का पहुँचने का समय, फ़सल-रोग ऐप",
+         "छुट्टी का आवेदन लिखता chatbot, हिंदी वाक्य को आवाज़ में बदलता ऐप"
+        ],
+        [
+         "एक ही इनपुट दो बार",
+         "आमतौर पर वही उत्तर",
+         "अक्सर हर बार अलग उत्तर"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Generative AI can create many kinds of content. These kinds are called modalities. The main ones are: text (answers, stories, summaries, translations), images (drawings, posters, photo-like pictures), audio (speech in different voices, sound effects), music (tunes, background scores), video (short clips, animations) and code (computer programs). Some tools are multimodal, which means they can take in or give out more than one kind, for example you show a photo of a math problem and ask a question about it in words.",
+      "hi": "जनरेटिव AI कई तरह की सामग्री बना सकता है। इन प्रकारों को modality कहते हैं। मुख्य प्रकार हैं: टेक्स्ट (उत्तर, कहानियाँ, सारांश, अनुवाद), चित्र (रेखाचित्र, पोस्टर, फ़ोटो जैसे चित्र), ऑडियो (अलग-अलग आवाज़ों में बोलना, ध्वनि प्रभाव), संगीत (धुनें, पृष्ठभूमि संगीत), वीडियो (छोटे क्लिप, एनिमेशन) और कोड (कंप्यूटर प्रोग्राम)। कुछ टूल multimodal होते हैं, यानी वे एक से ज़्यादा प्रकार ले या दे सकते हैं, जैसे आप गणित के प्रश्न की फ़ोटो दिखाकर उसके बारे में शब्दों में सवाल पूछें।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: generative AI does not 'think up' ideas the way you do. It produces new combinations of patterns it has seen in its training data. That is why it can be very creative-looking and still be completely wrong.",
+      "hi": "याद रखिए: जनरेटिव AI आपकी तरह विचार 'सोचता' नहीं है। यह अपने training data में देखे गए पैटर्न के नए मेल बनाता है। इसीलिए यह बहुत रचनात्मक दिख सकता है और फिर भी पूरी तरह गलत हो सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "A short history: the idea of computers producing text is old. ELIZA, a simple chatbot made in the 1960s, replied using fixed rules. In 2014 researchers introduced GANs (explained in 5.4), which made realistic fake faces possible. In 2017 a new design called the transformer made language models much better. From around 2022, chatbots and image generators built on these ideas became free for the public to try, and generative AI suddenly became part of everyday life.",
+      "hi": "संक्षिप्त इतिहास: कंप्यूटर द्वारा टेक्स्ट बनाने का विचार पुराना है। 1960 के दशक में बना ELIZA एक सरल chatbot था जो तय नियमों से उत्तर देता था। 2014 में शोधकर्ताओं ने GAN (5.4 में समझाया गया) प्रस्तुत किए, जिनसे असली जैसे नकली चेहरे बनाना संभव हुआ। 2017 में transformer नाम की नई रचना ने language model को बहुत बेहतर बना दिया। लगभग 2022 से इन विचारों पर बने chatbot और चित्र बनाने वाले टूल आम लोगों के लिए मुफ़्त में आज़माने को उपलब्ध हुए, और जनरेटिव AI अचानक रोज़मर्रा के जीवन का हिस्सा बन गया।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.2 How does generative AI learn and create?",
+    "hi": "5.2 जनरेटिव AI कैसे सीखता और बनाता है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Recall Chapter 3: a machine learning model learns from examples. Generative AI follows the same idea, but on a giant scale. The steps are:",
+      "hi": "अध्याय 3 याद कीजिए: machine learning model उदाहरणों से सीखता है। जनरेटिव AI भी यही करता है, पर बहुत विशाल पैमाने पर। चरण इस प्रकार हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Collect training data: billions of sentences from books, websites and articles, or millions of pictures with captions, or many hours of recorded speech.",
+       "Train the model: a computer program (usually a neural network, which is made of many connected layers of simple calculations) studies the data again and again, adjusting millions or billions of numbers called parameters until it captures the patterns: which words follow which, what a 'tiger' looks like, how a voice rises and falls.",
+       "Fine-tune and add safety: the model is further trained on good example answers, and people rate answers so that it becomes more helpful and refuses harmful requests.",
+       "Use (generation): you give a prompt. The model uses its learned patterns to produce new output, one small piece at a time.",
+       "Feedback: users and testers report mistakes, and newer versions are improved."
+      ],
+      "hi": [
+       "training data इकट्ठा करना: किताबों, वेबसाइटों और लेखों से अरबों वाक्य, या कैप्शन वाले लाखों चित्र, या कई घंटों की रिकॉर्ड की गई बोली।",
+       "model को प्रशिक्षित करना: एक कंप्यूटर प्रोग्राम (आमतौर पर neural network, जो सरल गणनाओं की कई जुड़ी परतों से बना होता है) डेटा को बार-बार पढ़ता है और लाखों-अरबों संख्याओं (parameters) को तब तक बदलता है जब तक वह पैटर्न न पकड़ ले: कौन-सा शब्द किसके बाद आता है, 'बाघ' कैसा दिखता है, आवाज़ कैसे ऊपर-नीचे होती है।",
+       "fine-tuning और सुरक्षा जोड़ना: model को अच्छे उदाहरण-उत्तरों पर और प्रशिक्षित किया जाता है, और लोग उत्तरों को अंक देते हैं ताकि वह अधिक सहायक बने और हानिकारक अनुरोधों को मना करे।",
+       "उपयोग (generation): आप prompt देते हैं। model अपने सीखे पैटर्न से नया आउटपुट बनाता है, एक-एक छोटा टुकड़ा करके।",
+       "प्रतिक्रिया (feedback): उपयोगकर्ता और परीक्षक गलतियाँ बताते हैं, और नए संस्करण सुधारे जाते हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Picture this as a flow diagram: on the left a huge pile labelled 'training data', an arrow into a box labelled 'model (learns patterns)', then a small speech bubble labelled 'your prompt' entering the box from above, and an arrow out of the box on the right labelled 'new content'.",
+      "hi": "इसे एक प्रवाह-चित्र की तरह सोचिए: बाईं ओर एक बड़ा ढेर जिस पर लिखा है 'training data', उससे एक तीर एक डिब्बे में जाता है जिस पर लिखा है 'model (पैटर्न सीखता है)', ऊपर से एक छोटा संवाद-गुब्बारा 'आपका prompt' डिब्बे में आता है, और दाईं ओर डिब्बे से निकलता तीर 'नई सामग्री' बताता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Because the model learns from data made by people, it also picks up people's mistakes, opinions and unfairness present in that data. Garbage in, garbage out (Chapter 2) applies here too.",
+      "hi": "क्योंकि model लोगों द्वारा बनाए गए डेटा से सीखता है, वह उस डेटा में मौजूद लोगों की गलतियाँ, राय और अन्याय भी सीख लेता है। 'कचरा अंदर, कचरा बाहर' (अध्याय 2) यहाँ भी लागू होता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A friend says, 'Generative AI has a giant library inside it and just copies the right page for you.' Is this correct?",
+       "hi": "एक मित्र कहता है, 'जनरेटिव AI के अंदर एक विशाल पुस्तकालय है और वह आपके लिए सही पन्ना बस कॉपी कर देता है।' क्या यह सही है?"
+      },
+      "a": {
+       "en": "Step 1: During training, the model does not store every book as it is; it adjusts its parameters to capture patterns.\nStep 2: When it answers, it builds a new response piece by piece from those patterns.\nStep 3: So it is not a library or a search engine. That is also why it can produce sentences that sound right but are false, and why you must check facts.\nStep 4: (It can sometimes repeat famous lines it saw many times, which is one reason copyright is a concern.)",
+       "hi": "चरण 1: प्रशिक्षण के समय model हर किताब को जैसा-का-तैसा नहीं रखता; वह पैटर्न पकड़ने के लिए अपने parameters बदलता है।\nचरण 2: उत्तर देते समय वह उन्हीं पैटर्न से टुकड़ा-टुकड़ा करके नया उत्तर बनाता है।\nचरण 3: इसलिए यह न पुस्तकालय है, न search engine। इसीलिए यह ऐसे वाक्य बना सकता है जो सही लगें पर गलत हों, और आपको तथ्य जाँचने चाहिए।\nचरण 4: (कभी-कभी यह बहुत बार देखी गई प्रसिद्ध पंक्तियाँ दोहरा सकता है, जो कॉपीराइट की चिंता का एक कारण है।)"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.3 Chatbots and Large Language Models",
+    "hi": "5.3 Chatbot और Large Language Model"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Chatbots that write answers are built on Large Language Models (LLMs). 'Large' because they are trained on enormous amounts of text and have billions of parameters; 'language model' because their basic skill is predicting language.",
+      "hi": "उत्तर लिखने वाले chatbot, Large Language Model (LLM) पर बने होते हैं। 'Large' इसलिए क्योंकि इन्हें अत्यधिक मात्रा में टेक्स्ट पर प्रशिक्षित किया जाता है और इनमें अरबों parameters होते हैं; 'language model' इसलिए क्योंकि इनकी मूल क्षमता भाषा का अनुमान लगाना है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Large Language Model (LLM)",
+       "hi": "Large Language Model (LLM)"
+      },
+      "text": {
+       "en": "An LLM is an AI model trained on a huge amount of text that generates language by repeatedly predicting the most suitable next word (token) given all the words before it.",
+       "hi": "LLM एक AI model है जिसे बहुत अधिक टेक्स्ट पर प्रशिक्षित किया गया है और जो पिछले सभी शब्दों को देखकर बार-बार सबसे उपयुक्त अगले शब्द (token) का अनुमान लगाकर भाषा बनाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Your phone keyboard already does a tiny version of this: type 'Happy' and it suggests 'birthday'. An LLM does the same thing, but it looks at your whole prompt and everything it has written so far, and it has learned from far more text. It writes one token, adds it to the text, then predicts the next token, and so on, until the answer is complete. A token is a small piece of text: a whole short word, part of a long word, or a punctuation mark. For example, 'unbelievable' might be split into 'un', 'believ', 'able'.",
+      "hi": "आपके फ़ोन का कीबोर्ड पहले से इसका छोटा रूप करता है: 'Happy' लिखिए और वह 'birthday' सुझाता है। LLM भी यही करता है, पर वह आपका पूरा prompt और अब तक लिखा सब कुछ देखता है, और उसने कहीं ज़्यादा टेक्स्ट से सीखा है। वह एक token लिखता है, उसे टेक्स्ट में जोड़ता है, फिर अगले token का अनुमान लगाता है, और ऐसे ही चलता रहता है जब तक उत्तर पूरा न हो जाए। token टेक्स्ट का छोटा टुकड़ा है: पूरा छोटा शब्द, लंबे शब्द का हिस्सा, या विराम चिह्न। जैसे 'unbelievable' को 'un', 'believ', 'able' में बाँटा जा सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Show how an LLM might complete the prompt 'The capital of India is'.",
+       "hi": "दिखाइए कि LLM prompt 'The capital of India is' को कैसे पूरा कर सकता है।"
+      },
+      "a": {
+       "en": "Step 1: The model looks at the tokens 'The capital of India is'.\nStep 2: From training, it has seen 'New' follow such phrases very often, so 'New' gets a high probability; it picks 'New'.\nStep 3: Now the text is 'The capital of India is New'. The most likely next token is 'Delhi'.\nStep 4: Next it predicts '.', and then a special 'end' signal, so it stops.\nResult: 'The capital of India is New Delhi.' The model never 'looked up' the fact; it predicted likely words. For common facts this works well; for rare facts it may predict wrong words confidently.",
+       "hi": "चरण 1: model tokens 'The capital of India is' को देखता है।\nचरण 2: प्रशिक्षण में उसने ऐसे वाक्यांशों के बाद 'New' बहुत बार देखा है, इसलिए 'New' की संभावना ऊँची है; वह 'New' चुनता है।\nचरण 3: अब टेक्स्ट 'The capital of India is New' है। अगला सबसे संभावित token 'Delhi' है।\nचरण 4: फिर वह '.' का अनुमान लगाता है, फिर एक विशेष 'समाप्त' संकेत, और रुक जाता है।\nपरिणाम: 'The capital of India is New Delhi.' model ने तथ्य को कहीं 'खोजा' नहीं; उसने संभावित शब्दों का अनुमान लगाया। आम तथ्यों के लिए यह अच्छा चलता है; दुर्लभ तथ्यों में वह आत्मविश्वास से गलत शब्द चुन सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a tiny Python program that shows the idea. It counts which word comes after 'like' in a small piece of text and picks the most common one. A real LLM learns far richer patterns from billions of sentences, but the idea of 'predict the most likely next word from data' is the same. (You will learn Python properly in Chapter 7.)",
+      "hi": "यह एक छोटा Python प्रोग्राम विचार को दिखाता है। यह छोटे टेक्स्ट में गिनता है कि 'like' के बाद कौन-सा शब्द आता है और सबसे आम शब्द चुनता है। असली LLM अरबों वाक्यों से कहीं गहरे पैटर्न सीखता है, पर 'डेटा से सबसे संभावित अगला शब्द अनुमान लगाना' का विचार वही है। (Python आप अध्याय 7 में ठीक से सीखेंगे।)"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Next-word guesser: the idea behind language models\ntext = \"i like mango . i like chai . you like chai . we like chai\"\nwords = text.split()\ncounts = {}\nfor i in range(len(words) - 1):\n    if words[i] == \"like\":\n        nxt = words[i + 1]\n        counts[nxt] = counts.get(nxt, 0) + 1\nprint(counts)\nbest = max(counts, key=counts.get)\nprint(\"After 'like', the most likely next word is:\", best)",
+      "hi": "# Next-word guesser: the idea behind language models\ntext = \"i like mango . i like chai . you like chai . we like chai\"\nwords = text.split()\ncounts = {}\nfor i in range(len(words) - 1):\n    if words[i] == \"like\":\n        nxt = words[i + 1]\n        counts[nxt] = counts.get(nxt, 0) + 1\nprint(counts)\nbest = max(counts, key=counts.get)\nprint(\"After 'like', the most likely next word is:\", best)"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "{'mango': 1, 'chai': 3}\nAfter 'like', the most likely next word is: chai",
+      "hi": "{'mango': 1, 'chai': 3}\nAfter 'like', the most likely next word is: chai"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Line 2 stores a small 'training text'. Line 3 splits it into a list of words.",
+       "Lines 5 to 8 go through every word; whenever a word is 'like', the word after it is counted in a dictionary called counts.",
+       "Line 9 prints the counts: 'mango' appeared once after 'like', 'chai' three times.",
+       "Line 10 picks the word with the highest count, so the 'model' predicts 'chai'. If the training text had more mango, the prediction would change: the output depends on the data."
+      ],
+      "hi": [
+       "पंक्ति 2 एक छोटा 'training text' रखती है। पंक्ति 3 उसे शब्दों की सूची में बाँटती है।",
+       "पंक्ति 5 से 8 हर शब्द से गुज़रती हैं; जब भी शब्द 'like' हो, उसके बाद वाला शब्द counts नाम के dictionary में गिना जाता है।",
+       "पंक्ति 9 गिनती छापती है: 'like' के बाद 'mango' एक बार और 'chai' तीन बार आया।",
+       "पंक्ति 10 सबसे अधिक गिनती वाला शब्द चुनती है, इसलिए 'model' 'chai' का अनुमान लगाता है। अगर training text में mango ज़्यादा होता तो अनुमान बदल जाता: आउटपुट डेटा पर निर्भर है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Why do chatbots give a different answer when you ask the same question again? Because at each step the model does not always pick the single top word; it often picks from the few most likely words with some randomness. This makes writing more varied and natural, but it also means two answers can disagree. Chatbots also have a limited memory for the conversation (called the context window): in a very long chat, they may forget what was said at the start.",
+      "hi": "एक ही प्रश्न दोबारा पूछने पर chatbot अलग उत्तर क्यों देते हैं? क्योंकि हर चरण पर model हमेशा केवल सबसे ऊपर वाला शब्द नहीं चुनता; वह अक्सर कुछ सबसे संभावित शब्दों में से थोड़ी यादृच्छिकता (randomness) के साथ चुनता है। इससे लेखन अधिक विविध और स्वाभाविक बनता है, पर दो उत्तर आपस में असहमत भी हो सकते हैं। chatbot की बातचीत के लिए याददाश्त भी सीमित होती है (इसे context window कहते हैं): बहुत लंबी बातचीत में वे शुरुआत की बात भूल सकते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "An LLM is very good with language, not automatically good with truth. Many chatbots now can also search the web and show sources; even then, open the source and check it yourself.",
+      "hi": "LLM भाषा में बहुत अच्छा है, सच में अपने-आप अच्छा नहीं। अब कई chatbot वेब पर खोज करके स्रोत भी दिखा सकते हैं; तब भी स्रोत खोलकर खुद जाँचिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.4 How AI makes pictures, voices, music and video",
+    "hi": "5.4 AI चित्र, आवाज़, संगीत और वीडियो कैसे बनाता है"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Image generators learn from millions of pictures paired with text descriptions, so they connect words like 'tiger', 'cricket bat' and 'watercolour' with what these look like. Many modern image tools use a method called diffusion. Imagine taking a clear photo and adding a little random noise (grainy dots) again and again until it becomes pure static, like an old TV with no signal. The model is trained to do the reverse: remove a little noise at a time. To make a new picture, it starts from pure random noise and, guided by your prompt, removes noise step by step until a picture matching the words appears. It is like a sculptor who starts with a rough block and chips away until a shape appears.",
+      "hi": "चित्र बनाने वाले टूल ऐसे लाखों चित्रों से सीखते हैं जिनके साथ शब्दों में विवरण होता है, इसलिए वे 'बाघ', 'क्रिकेट बैट' और 'जलरंग' जैसे शब्दों को उनके रूप से जोड़ लेते हैं। कई आधुनिक चित्र-टूल diffusion नाम की विधि उपयोग करते हैं। कल्पना कीजिए कि एक साफ़ फ़ोटो में बार-बार थोड़ा-थोड़ा यादृच्छिक शोर (दानेदार बिंदु) मिलाया जाए, जब तक वह बिना सिग्नल वाले पुराने टीवी जैसी झिलमिलाहट न बन जाए। model को उल्टा करना सिखाया जाता है: थोड़ा-थोड़ा शोर हटाना। नया चित्र बनाने के लिए वह शुद्ध यादृच्छिक शोर से शुरू करता है और आपके prompt के मार्गदर्शन में धीरे-धीरे शोर हटाता है, जब तक शब्दों से मेल खाता चित्र न उभर आए। यह उस मूर्तिकार जैसा है जो खुरदरे पत्थर से शुरू करके तराशता जाता है जब तक आकृति न बन जाए।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Diffusion model",
+       "hi": "Diffusion model"
+      },
+      "text": {
+       "en": "A diffusion model is a generative AI model that creates an image (or sound or video) by starting from random noise and removing the noise step by step, guided by a prompt.",
+       "hi": "Diffusion model ऐसा जनरेटिव AI model है जो यादृच्छिक शोर से शुरू करके, prompt के मार्गदर्शन में, चरण-दर-चरण शोर हटाते हुए चित्र (या ध्वनि या वीडियो) बनाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "An older but important method is the GAN (Generative Adversarial Network). It has two parts that compete. The generator tries to make fake pictures; the discriminator tries to tell fake from real. Think of a forger making fake currency notes and a bank checker catching them. Each time the checker catches a fake, the forger learns and improves; each time the forger fools the checker, the checker gets stricter. After a long contest, the generator becomes so good that its fakes look real. GANs were widely used for early deepfake faces.",
+      "hi": "एक पुरानी पर महत्वपूर्ण विधि GAN (Generative Adversarial Network) है। इसमें दो हिस्से होते हैं जो आपस में मुकाबला करते हैं। generator नकली चित्र बनाने की कोशिश करता है; discriminator असली और नकली में फ़र्क पहचानने की कोशिश करता है। सोचिए एक जालसाज़ नकली नोट बनाता है और बैंक का जाँचकर्ता उन्हें पकड़ता है। हर बार जाँचकर्ता नकली पकड़े तो जालसाज़ सीखकर सुधरता है; हर बार जालसाज़ जाँचकर्ता को धोखा दे तो जाँचकर्ता और सख़्त हो जाता है। लंबे मुकाबले के बाद generator इतना अच्छा हो जाता है कि उसके नकली चित्र असली लगते हैं। शुरुआती डीपफ़ेक चेहरों में GAN का खूब उपयोग हुआ।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Content",
+        "What the AI learns from",
+        "How it is commonly made"
+       ],
+       "hi": [
+        "सामग्री",
+        "AI किससे सीखता है",
+        "आमतौर पर कैसे बनती है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Text",
+         "Billions of sentences",
+         "LLM predicts the next token again and again"
+        ],
+        [
+         "Images",
+         "Pictures with captions",
+         "Diffusion (noise to picture), earlier GANs"
+        ],
+        [
+         "Speech / voice",
+         "Hours of recorded speech with text",
+         "Text-to-speech models; voice cloning copies the style of one person's voice from samples"
+        ],
+        [
+         "Music",
+         "Many songs and tunes",
+         "Models that predict the next bit of sound or notes"
+        ],
+        [
+         "Video",
+         "Many video clips with descriptions",
+         "Diffusion-like models that make many frames that fit together"
+        ],
+        [
+         "Code",
+         "Public programs and documentation",
+         "LLMs trained on code"
+        ]
+       ],
+       "hi": [
+        [
+         "टेक्स्ट",
+         "अरबों वाक्य",
+         "LLM बार-बार अगले token का अनुमान लगाता है"
+        ],
+        [
+         "चित्र",
+         "कैप्शन वाले चित्र",
+         "Diffusion (शोर से चित्र), पहले GAN"
+        ],
+        [
+         "बोली / आवाज़",
+         "टेक्स्ट सहित घंटों की रिकॉर्ड की गई बोली",
+         "text-to-speech model; voice cloning नमूनों से किसी एक व्यक्ति की आवाज़ की शैली की नकल करता है"
+        ],
+        [
+         "संगीत",
+         "बहुत से गीत और धुनें",
+         "ध्वनि या सुरों के अगले टुकड़े का अनुमान लगाने वाले model"
+        ],
+        [
+         "वीडियो",
+         "विवरण सहित बहुत से वीडियो क्लिप",
+         "diffusion जैसे model जो आपस में मेल खाते कई फ़्रेम बनाते हैं"
+        ],
+        [
+         "कोड",
+         "सार्वजनिक प्रोग्राम और दस्तावेज़",
+         "कोड पर प्रशिक्षित LLM"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "A video is just many still pictures (frames) shown quickly, often 24 to 30 frames every second. Making a believable fake video is harder than a single picture because every frame must match the next; this is one reason older deepfakes showed flicker and glitches.",
+      "hi": "वीडियो बस बहुत-से स्थिर चित्र (frames) हैं जो जल्दी-जल्दी दिखाए जाते हैं, अक्सर हर सेकंड 24 से 30 frames। विश्वसनीय नकली वीडियो बनाना एक चित्र से कठिन है क्योंकि हर frame को अगले से मेल खाना चाहिए; यही एक कारण है कि पुराने डीपफ़ेक में झिलमिलाहट और गड़बड़ियाँ दिखती थीं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.5 Good uses of generative AI",
+    "hi": "5.5 जनरेटिव AI के अच्छे उपयोग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Used wisely and honestly, generative AI can save time, open up new ideas and include more people. Some examples:",
+      "hi": "समझदारी और ईमानदारी से उपयोग करने पर जनरेटिव AI समय बचा सकता है, नए विचार दे सकता है और अधिक लोगों को शामिल कर सकता है। कुछ उदाहरण:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Learning: asking a chatbot to explain photosynthesis in simple Hindi, to give five practice questions, or to quiz you before a test (then checking with your textbook).",
+       "Brainstorming: ideas for a science fair project, a school assembly skit or names for a class newsletter.",
+       "Drafting: a first draft of a letter, which you then correct and personalise.",
+       "Indian languages: translation and speech tools, such as those built under the government's Bhashini mission, help people read, listen and speak across Indian languages; a farmer can hear advice in Marathi, a shopkeeper can type in Tamil.",
+       "Accessibility: text-to-speech reads books aloud for people with low vision; speech-to-text and auto-captions help people who are deaf or hard of hearing; voice banking can give a personal synthetic voice to someone losing their speech due to illness.",
+       "Art and design: quick sketches, poster ideas, colour choices for a rangoli design; artists use these as a starting point, not a replacement.",
+       "Science and health: researchers use generative models to suggest new molecules for medicines and to design proteins; doctors may use AI to draft notes that they then check.",
+       "Coding: tools that suggest lines of code and explain errors help learners and programmers.",
+       "Business: small shops make product descriptions or festival offer posters in several languages."
+      ],
+      "hi": [
+       "पढ़ाई: chatbot से प्रकाश संश्लेषण को सरल हिंदी में समझाने, पाँच अभ्यास प्रश्न देने, या परीक्षा से पहले आपसे प्रश्न पूछने को कहना (फिर पाठ्यपुस्तक से जाँचना)।",
+       "विचार-मंथन: विज्ञान मेले की परियोजना, स्कूल सभा के नाटक, या कक्षा पत्रिका के नाम के विचार।",
+       "मसौदा बनाना: पत्र का पहला मसौदा, जिसे आप फिर सुधारें और अपने शब्दों में ढालें।",
+       "भारतीय भाषाएँ: अनुवाद और बोली के टूल, जैसे सरकार के Bhashini मिशन के तहत बने टूल, लोगों को भारतीय भाषाओं में पढ़ने, सुनने और बोलने में मदद करते हैं; किसान मराठी में सलाह सुन सकता है, दुकानदार तमिल में टाइप कर सकता है।",
+       "सुलभता: text-to-speech कम दृष्टि वाले लोगों के लिए किताबें पढ़कर सुनाता है; speech-to-text और स्वचालित कैप्शन बधिर या कम सुनने वाले लोगों की मदद करते हैं; voice banking बीमारी से बोलने की क्षमता खो रहे व्यक्ति को उसकी अपनी कृत्रिम आवाज़ दे सकती है।",
+       "कला और डिज़ाइन: झटपट रेखाचित्र, पोस्टर के विचार, रंगोली डिज़ाइन के रंग; कलाकार इन्हें शुरुआत के रूप में उपयोग करते हैं, बदले के रूप में नहीं।",
+       "विज्ञान और स्वास्थ्य: शोधकर्ता दवाओं के लिए नए अणु सुझाने और प्रोटीन डिज़ाइन करने में जनरेटिव model का उपयोग करते हैं; डॉक्टर AI से नोट्स का मसौदा बनवाकर उसे जाँच सकते हैं।",
+       "कोडिंग: कोड की पंक्तियाँ सुझाने और त्रुटियाँ समझाने वाले टूल सीखने वालों और प्रोग्रामरों की मदद करते हैं।",
+       "व्यापार: छोटी दुकानें कई भाषाओं में उत्पाद विवरण या त्योहार ऑफ़र के पोस्टर बनाती हैं।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Riya wants to use a chatbot for her history project on the Dandi March. Suggest three good ways and one bad way to use it.",
+       "hi": "रिया दांडी मार्च पर अपनी इतिहास परियोजना के लिए chatbot उपयोग करना चाहती है। उपयोग के तीन अच्छे तरीके और एक गलत तरीका सुझाइए।"
+      },
+      "a": {
+       "en": "Good 1: Ask it to explain the background of the Salt March in simple words, then confirm dates (1930) and facts in her NCERT textbook.\nGood 2: Ask for a list of questions she could research, such as 'Why did Gandhiji choose salt?'.\nGood 3: After writing her own draft, ask it to point out unclear sentences or spelling errors.\nBad: Asking it to write the whole project and submitting it as her own work. This is dishonest and she learns nothing; the text may also contain errors.",
+       "hi": "अच्छा 1: उससे नमक सत्याग्रह की पृष्ठभूमि सरल शब्दों में समझाने को कहे, फिर तारीखें (1930) और तथ्य अपनी NCERT पुस्तक में पक्की करे।\nअच्छा 2: शोध करने लायक प्रश्नों की सूची माँगे, जैसे 'गांधीजी ने नमक ही क्यों चुना?'।\nअच्छा 3: अपना मसौदा खुद लिखने के बाद उससे अस्पष्ट वाक्य या वर्तनी की गलतियाँ बताने को कहे।\nगलत: पूरी परियोजना उससे लिखवाकर अपने नाम से जमा करना। यह बेईमानी है, वह कुछ नहीं सीखती, और टेक्स्ट में गलतियाँ भी हो सकती हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.6 Limits and risks of generative AI",
+    "hi": "5.6 जनरेटिव AI की सीमाएँ और खतरे"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Generative AI is impressive, but you should know its weaknesses before trusting it.",
+      "hi": "जनरेटिव AI प्रभावशाली है, पर उस पर भरोसा करने से पहले उसकी कमज़ोरियाँ जाननी चाहिए।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Hallucination",
+       "hi": "Hallucination (भ्रम)"
+      },
+      "text": {
+       "en": "A hallucination is when an AI confidently produces information that is false or made up, such as a fake quote, a wrong date or a book that does not exist.",
+       "hi": "Hallucination तब होता है जब AI आत्मविश्वास से ऐसी जानकारी देता है जो गलत या मनगढ़ंत है, जैसे नकली उद्धरण, गलत तारीख, या ऐसी किताब जो मौजूद ही नहीं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Risk",
+        "What it means",
+        "What you can do"
+       ],
+       "hi": [
+        "खतरा",
+        "इसका अर्थ",
+        "आप क्या कर सकते हैं"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Hallucination",
+         "Made-up facts that sound confident",
+         "Check important facts in textbooks or trusted sites"
+        ],
+        [
+         "Bias",
+         "Repeats unfair patterns from data, e.g. always drawing doctors as men",
+         "Notice it, ask for diverse examples, report it"
+        ],
+        [
+         "Out-of-date or missing knowledge",
+         "May not know recent events or local details",
+         "Use current, official sources for news and rules"
+        ],
+        [
+         "Privacy",
+         "What you type or upload may be stored and used",
+         "Never share personal details, photos of others, passwords or OTPs"
+        ],
+        [
+         "Copyright and credit",
+         "May imitate artists' styles or repeat text from its training",
+         "Give credit, do not pass off AI work as your own, respect creators"
+        ],
+        [
+         "Over-dependence",
+         "Letting AI think for you weakens your own skills",
+         "Try first yourself, use AI to check and explain"
+        ],
+        [
+         "Misinformation",
+         "Fake news, images and voices can be made quickly and cheaply",
+         "Stop, check the source, do not forward in doubt"
+        ],
+        [
+         "Energy and water use",
+         "Training and running big models uses a lot of electricity and cooling water",
+         "Use AI when it really helps, not for every small thing"
+        ]
+       ],
+       "hi": [
+        [
+         "Hallucination",
+         "आत्मविश्वास भरे मनगढ़ंत तथ्य",
+         "महत्वपूर्ण तथ्य पाठ्यपुस्तक या विश्वसनीय साइटों पर जाँचें"
+        ],
+        [
+         "पक्षपात",
+         "डेटा के अनुचित पैटर्न दोहराना, जैसे डॉक्टर को हमेशा पुरुष दिखाना",
+         "पहचानें, विविध उदाहरण माँगें, शिकायत करें"
+        ],
+        [
+         "पुराना या अधूरा ज्ञान",
+         "हाल की घटनाएँ या स्थानीय जानकारी शायद न जाने",
+         "समाचार और नियमों के लिए ताज़ा, आधिकारिक स्रोत देखें"
+        ],
+        [
+         "निजता",
+         "जो आप टाइप या अपलोड करते हैं वह सहेजा और उपयोग किया जा सकता है",
+         "निजी जानकारी, दूसरों की फ़ोटो, पासवर्ड या OTP कभी साझा न करें"
+        ],
+        [
+         "कॉपीराइट और श्रेय",
+         "कलाकारों की शैली की नकल या प्रशिक्षण का टेक्स्ट दोहरा सकता है",
+         "श्रेय दें, AI के काम को अपना न बताएँ, रचनाकारों का सम्मान करें"
+        ],
+        [
+         "अति-निर्भरता",
+         "AI से सोचवाने से आपकी अपनी क्षमता कमज़ोर होती है",
+         "पहले खुद प्रयास करें, AI से जाँच और व्याख्या करवाएँ"
+        ],
+        [
+         "गलत सूचना",
+         "नकली ख़बरें, चित्र और आवाज़ें जल्दी और सस्ते में बन सकती हैं",
+         "रुकें, स्रोत जाँचें, शक हो तो आगे न भेजें"
+        ],
+        [
+         "ऊर्जा और पानी का उपयोग",
+         "बड़े model को प्रशिक्षित करने और चलाने में बहुत बिजली और ठंडा करने का पानी लगता है",
+         "AI तभी उपयोग करें जब सच में मदद करे, हर छोटी बात पर नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A chatbot tells you that 'the Indian scientist who invented the telephone was C. V. Raman'. What has happened and what should you do?",
+       "hi": "एक chatbot आपको बताता है कि 'टेलीफ़ोन का आविष्कार करने वाले भारतीय वैज्ञानिक सी. वी. रमन थे'। क्या हुआ है और आपको क्या करना चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: This is a hallucination: the model mixed two patterns ('Indian scientist' and 'inventor') into a false sentence.\nStep 2: Fact: the telephone is credited to Alexander Graham Bell (1876); C. V. Raman won the Nobel Prize in Physics in 1930 for the Raman effect.\nStep 3: Check such facts in a textbook or a trusted encyclopedia, tell the chatbot it is wrong if you like, and never copy unchecked facts into your work.",
+       "hi": "चरण 1: यह hallucination है: model ने दो पैटर्न ('भारतीय वैज्ञानिक' और 'आविष्कारक') मिलाकर गलत वाक्य बना दिया।\nचरण 2: तथ्य: टेलीफ़ोन का श्रेय अलेक्ज़ेंडर ग्राहम बेल (1876) को है; सी. वी. रमन को रमन प्रभाव के लिए 1930 में भौतिकी का नोबेल पुरस्कार मिला।\nचरण 3: ऐसे तथ्य पाठ्यपुस्तक या विश्वसनीय विश्वकोश में जाँचें, चाहें तो chatbot को बताएँ कि वह गलत है, और बिना जाँचे तथ्य अपने काम में कभी न लिखें।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Most generative AI apps have age rules (often 13 or older, and some need a parent's permission for under-18s). Students should use them with a parent or teacher's guidance and an adult should handle any sign-up.",
+      "hi": "अधिकतर जनरेटिव AI ऐप में आयु के नियम होते हैं (अक्सर 13 वर्ष या अधिक, और कुछ में 18 से कम आयु वालों के लिए माता-पिता की अनुमति ज़रूरी)। विद्यार्थी इन्हें माता-पिता या शिक्षक के मार्गदर्शन में उपयोग करें और कोई भी sign-up कोई बड़ा व्यक्ति करे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.7 What is a deepfake and how is it made?",
+    "hi": "5.7 डीपफ़ेक क्या है और कैसे बनता है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Class 6 you met the word deepfake. Now let us go deeper. The word joins 'deep learning' (the kind of machine learning that uses many-layered neural networks) and 'fake'.",
+      "hi": "कक्षा 6 में आपने डीपफ़ेक शब्द सुना था। अब इसे गहराई से समझते हैं। यह शब्द 'deep learning' (कई परतों वाले neural network उपयोग करने वाली machine learning) और 'fake' (नकली) को जोड़कर बना है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Deepfake",
+       "hi": "डीपफ़ेक"
+      },
+      "text": {
+       "en": "A deepfake is a photo, video or audio clip created or changed with AI so that a real person appears to say or do something they never said or did.",
+       "hi": "डीपफ़ेक AI से बनाई या बदली गई फ़ोटो, वीडियो या ऑडियो क्लिप है जिसमें कोई असली व्यक्ति ऐसा कुछ कहता या करता दिखे जो उसने कभी नहीं कहा या किया।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Main types of deepfakes:",
+      "hi": "डीपफ़ेक के मुख्य प्रकार:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Face swap: one person's face is placed on another person's body in a video.",
+       "Lip sync: a real video is changed so that the person's lips move to match new, fake words.",
+       "Voice cloning: AI learns the sound of a person's voice from short recordings and then speaks any sentence in that voice.",
+       "Full synthetic person: a face or person who does not exist at all, created from scratch, sometimes used for fake social media profiles.",
+       "Puppet or body re-enactment: the movements of an actor drive the face and body of a real person in a video."
+      ],
+      "hi": [
+       "Face swap: वीडियो में एक व्यक्ति का चेहरा दूसरे व्यक्ति के शरीर पर लगा दिया जाता है।",
+       "Lip sync: असली वीडियो को बदला जाता है ताकि व्यक्ति के होंठ नए, नकली शब्दों से मेल खाते हुए हिलें।",
+       "Voice cloning: AI छोटी रिकॉर्डिंग से किसी व्यक्ति की आवाज़ सीखकर उसी आवाज़ में कोई भी वाक्य बोलता है।",
+       "पूरी तरह कृत्रिम व्यक्ति: ऐसा चेहरा या व्यक्ति जो मौजूद ही नहीं, शुरू से बनाया गया, कभी-कभी नकली सोशल मीडिया प्रोफ़ाइल के लिए उपयोग होता है।",
+       "Puppet या शरीर की नकल: किसी अभिनेता की हरकतें वीडियो में असली व्यक्ति के चेहरे और शरीर को चलाती हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "How a face-swap deepfake is made, in simple steps: (1) collect many photos or video frames of the target person's face from the internet; (2) train a model to learn that face from many angles and expressions; (3) take a source video of someone else; (4) frame by frame, the model replaces the face in the source video with the learned face, matching expression and lighting; (5) smooth the edges and add the fake or cloned voice. This is why people with many public photos and videos, such as film stars, cricketers and politicians, are common targets, and why sharing fewer public photos of yourself is a sensible habit.",
+      "hi": "face-swap डीपफ़ेक कैसे बनता है, सरल चरणों में: (1) इंटरनेट से लक्षित व्यक्ति के चेहरे की बहुत-सी फ़ोटो या वीडियो frames इकट्ठा करना; (2) model को उस चेहरे को कई कोणों और भावों से सीखने के लिए प्रशिक्षित करना; (3) किसी और व्यक्ति का स्रोत-वीडियो लेना; (4) frame-दर-frame, model स्रोत-वीडियो के चेहरे की जगह सीखा हुआ चेहरा लगाता है, भाव और रोशनी मिलाते हुए; (5) किनारों को चिकना करना और नकली या cloned आवाज़ जोड़ना। इसीलिए जिन लोगों की बहुत-सी सार्वजनिक फ़ोटो और वीडियो हैं, जैसे फ़िल्मी सितारे, क्रिकेटर और नेता, वे अक्सर निशाना बनते हैं, और अपनी कम सार्वजनिक फ़ोटो साझा करना समझदारी की आदत है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Not every fake needs AI. A 'cheapfake' or 'shallowfake' is made with simple editing: slowing down a clip so a person sounds drunk, cutting a speech to change its meaning, or sharing an old photo of a flood with a false caption saying it happened today. These are often even more common than deepfakes, and the same checking habits work for both.",
+      "hi": "हर नकली सामग्री के लिए AI ज़रूरी नहीं। 'cheapfake' या 'shallowfake' साधारण एडिटिंग से बनता है: क्लिप को धीमा करना ताकि व्यक्ति नशे में लगे, भाषण को काटकर उसका अर्थ बदलना, या बाढ़ की पुरानी फ़ोटो को झूठे कैप्शन के साथ साझा करना कि यह आज हुआ। ये अक्सर डीपफ़ेक से भी आम हैं, और दोनों के लिए जाँचने की आदतें एक जैसी हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "The same technology has honest uses too: dubbing films into many Indian languages with matching lip movement, recreating historical figures in museums (clearly labelled), training doctors with simulated patients, and restoring voices of people who lost them. The difference is consent and honesty: the person agreed, and viewers are told it is synthetic.",
+      "hi": "इसी तकनीक के ईमानदार उपयोग भी हैं: फ़िल्मों को होंठों की हरकत मिलाते हुए कई भारतीय भाषाओं में डब करना, संग्रहालयों में ऐतिहासिक व्यक्तियों को फिर से दिखाना (स्पष्ट लेबल के साथ), नकली मरीज़ों से डॉक्टरों का प्रशिक्षण, और आवाज़ खो चुके लोगों की आवाज़ लौटाना। फ़र्क है अनुमति और ईमानदारी का: व्यक्ति ने सहमति दी, और दर्शकों को बताया गया कि यह कृत्रिम है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.8 Why deepfakes are harmful",
+    "hi": "5.8 डीपफ़ेक हानिकारक क्यों हैं"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Scams and fraud: a cloned voice of a relative asks for urgent money on UPI; a fake video of a celebrity or businessperson advertises a 'double your money' scheme or a fake trading app.",
+       "Fake news and panic: a made-up video of a leader announcing a holiday, a curfew or a fake exam-paper leak can spread across WhatsApp groups in minutes.",
+       "Bullying and harassment: using someone's photo to make embarrassing or hurtful pictures hurts real people deeply, especially students and girls, and it is a serious offence.",
+       "Damage to reputation: a person can lose respect, a job or friends because of something they never did.",
+       "Elections and democracy: fake speeches can mislead voters.",
+       "Loss of trust (the 'liar's dividend'): when people know fakes exist, a dishonest person caught on a real video can falsely claim 'that is a deepfake'. Fakes make it harder to believe even real evidence."
+      ],
+      "hi": [
+       "ठगी और धोखाधड़ी: किसी रिश्तेदार की cloned आवाज़ UPI पर तुरंत पैसे माँगती है; किसी सेलिब्रिटी या व्यवसायी का नकली वीडियो 'पैसा दोगुना' योजना या नकली trading ऐप का विज्ञापन करता है।",
+       "फ़र्ज़ी ख़बर और घबराहट: किसी नेता द्वारा छुट्टी, कर्फ़्यू या परीक्षा-पत्र लीक की घोषणा का मनगढ़ंत वीडियो मिनटों में WhatsApp समूहों में फैल सकता है।",
+       "धमकाना और उत्पीड़न: किसी की फ़ोटो से शर्मनाक या चोट पहुँचाने वाले चित्र बनाना असली लोगों को गहरा दुख देता है, ख़ासकर विद्यार्थियों और लड़कियों को, और यह गंभीर अपराध है।",
+       "प्रतिष्ठा को नुकसान: व्यक्ति उस काम के कारण सम्मान, नौकरी या मित्र खो सकता है जो उसने कभी किया ही नहीं।",
+       "चुनाव और लोकतंत्र: नकली भाषण मतदाताओं को गुमराह कर सकते हैं।",
+       "भरोसे की कमी ('झूठे का फ़ायदा'): जब लोग जानते हैं कि नकली सामग्री होती है, तो असली वीडियो में पकड़ा गया बेईमान व्यक्ति झूठा दावा कर सकता है कि 'वह डीपफ़ेक है'। नकली सामग्री असली सबूत पर भी विश्वास करना कठिन बना देती है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Creating or sharing a deepfake of someone to cheat, threaten, defame or embarrass them is wrong and can be a crime under Indian law, including the Information Technology Act. Forwarding it can also cause harm. If you receive one, do not forward it.",
+      "hi": "किसी को ठगने, धमकाने, बदनाम करने या शर्मिंदा करने के लिए उसका डीपफ़ेक बनाना या साझा करना गलत है और भारतीय कानून, जिसमें सूचना प्रौद्योगिकी अधिनियम (IT Act) शामिल है, के तहत अपराध हो सकता है। उसे आगे भेजने से भी नुकसान होता है। अगर आपको ऐसा मिले, तो उसे आगे न भेजें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.9 How to spot and check a deepfake",
+    "hi": "5.9 डीपफ़ेक कैसे पहचानें और जाँचें"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Deepfakes keep improving, so looking for glitches is only one part. A better habit is to check the source and the story. Use these four steps, remembered as STOP, LOOK, CHECK, DECIDE.",
+      "hi": "डीपफ़ेक लगातार बेहतर हो रहे हैं, इसलिए गड़बड़ियाँ ढूँढना केवल एक हिस्सा है। बेहतर आदत है स्रोत और कहानी की जाँच करना। ये चार चरण अपनाइए, जिन्हें याद रखें: रुको, देखो, जाँचो, तय करो।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "STOP: notice your feelings. Is the clip shocking, very emotional, urgent ('forward now!', 'send money in 10 minutes')? Strong emotion is a warning sign. Pause before reacting.",
+       "LOOK for clues in the media: lips not matching the words; unusual or no blinking; blurry or flickering edges around the face, hair or glasses; skin too smooth; lighting or shadows on the face different from the background; teeth, ears, jewellery or fingers that look odd; jumbled text on signs; a flat, robotic voice with strange pauses or no breathing sounds; background sounds that suddenly cut.",
+       "CHECK the source and story: Who posted it first? Is it on the official account or website of the person or organisation? Do trusted news outlets report it? Search the key words of the claim. Use a reverse image search (for example Google Lens) on a photo or a screenshot of a video to see where and when it appeared before. Look at fact-check sites, including PIB Fact Check for claims about the Government of India. Some AI tools add labels or hidden watermarks (content credentials) to their output; a label saying 'AI-generated' is a clue, but no label does not prove a picture is real.",
+       "DECIDE: if you cannot confirm it, do not believe it and do not forward it. If it is harmful (a scam, bullying or a fake of someone you know), save a screenshot and the link as evidence, tell a trusted adult and report it."
+      ],
+      "hi": [
+       "रुको: अपनी भावनाओं पर ध्यान दो। क्या क्लिप चौंकाने वाली, बहुत भावुक या जल्दबाज़ी वाली है ('अभी आगे भेजो!', '10 मिनट में पैसे भेजो')? तेज़ भावना एक चेतावनी है। प्रतिक्रिया से पहले रुको।",
+       "देखो, सामग्री में संकेत: होंठ शब्दों से मेल न खाना; असामान्य या बिलकुल न पलक झपकाना; चेहरे, बालों या चश्मे के आसपास धुंधले या झिलमिलाते किनारे; ज़रूरत से ज़्यादा चिकनी त्वचा; चेहरे पर रोशनी या छाया पृष्ठभूमि से अलग; दाँत, कान, गहने या उँगलियाँ अजीब; बोर्डों पर गड़बड़ अक्षर; सपाट, यांत्रिक आवाज़ जिसमें अजीब ठहराव हों या साँस की आवाज़ न हो; पृष्ठभूमि की आवाज़ अचानक कट जाना।",
+       "जाँचो, स्रोत और कहानी: इसे सबसे पहले किसने डाला? क्या यह उस व्यक्ति या संस्था के आधिकारिक खाते या वेबसाइट पर है? क्या विश्वसनीय समाचार माध्यम इसे बता रहे हैं? दावे के मुख्य शब्द खोजो। फ़ोटो पर या वीडियो के स्क्रीनशॉट पर reverse image search (जैसे Google Lens) करो ताकि पता चले कि यह पहले कहाँ और कब दिखा। fact-check साइटें देखो, जिनमें भारत सरकार से जुड़े दावों के लिए PIB Fact Check शामिल है। कुछ AI टूल अपने आउटपुट पर लेबल या छिपे watermark (content credentials) लगाते हैं; 'AI-generated' का लेबल एक संकेत है, पर लेबल न होना यह साबित नहीं करता कि चित्र असली है।",
+       "तय करो: अगर पुष्टि नहीं हो सकती, तो विश्वास मत करो और आगे मत भेजो। अगर यह हानिकारक है (ठगी, धमकाना, या किसी परिचित का नकली), तो सबूत के रूप में स्क्रीनशॉट और लिंक सहेजो, किसी भरोसेमंद बड़े को बताओ और शिकायत करो।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A video on a family WhatsApp group shows a famous film actor saying, 'Download this app and your money will double in one week. Forward to 10 groups!' Use the four steps.",
+       "hi": "परिवार के WhatsApp समूह में एक वीडियो आता है जिसमें एक प्रसिद्ध फ़िल्म अभिनेता कहता है, 'यह ऐप डाउनलोड करो और एक हफ़्ते में तुम्हारे पैसे दोगुने हो जाएँगे। 10 समूहों में भेजो!' चार चरण अपनाइए।"
+      },
+      "a": {
+       "en": "STOP: It promises easy money and pushes you to forward quickly; both are warning signs.\nLOOK: Watch closely: do the lips match the words? Is the voice flat? Is the face blurry at the edges when he turns?\nCHECK: Search the actor's official social media and trusted news; no real report exists. A reverse image search shows the original clip was from a film interview about something else.\nDECIDE: It is a scam deepfake. Do not download the app or forward. Tell the family group politely that it is fake, and report the post. If anyone lost money, call 1930 at once and report at cybercrime.gov.in.",
+       "hi": "रुको: यह आसान पैसे का वादा करता है और जल्दी आगे भेजने का दबाव डालता है; दोनों चेतावनी के संकेत हैं।\nदेखो: ध्यान से देखिए: क्या होंठ शब्दों से मेल खाते हैं? क्या आवाज़ सपाट है? मुड़ने पर क्या चेहरे के किनारे धुंधले होते हैं?\nजाँचो: अभिनेता का आधिकारिक सोशल मीडिया और विश्वसनीय समाचार खोजिए; ऐसी कोई असली ख़बर नहीं है। reverse image search दिखाता है कि मूल क्लिप किसी और विषय पर एक फ़िल्मी साक्षात्कार की थी।\nतय करो: यह ठगी वाला डीपफ़ेक है। ऐप डाउनलोड न करें, आगे न भेजें। परिवार समूह को विनम्रता से बताएँ कि यह नकली है, और पोस्ट की शिकायत करें। अगर किसी के पैसे गए हों, तो तुरंत 1930 पर फ़ोन करें और cybercrime.gov.in पर शिकायत दर्ज करें।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "You do not have to be a technical expert. Most fakes are caught not by spotting a glitch but by asking: 'Where did this come from, and who else confirms it?'",
+      "hi": "आपको तकनीकी विशेषज्ञ होने की ज़रूरत नहीं। अधिकतर नकली सामग्री गड़बड़ी देखकर नहीं, बल्कि यह पूछकर पकड़ी जाती है: 'यह कहाँ से आया, और कौन और इसकी पुष्टि करता है?'"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.10 Voice-clone scams and what to do",
+    "hi": "5.10 Voice-clone ठगी और क्या करें"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Scammers can copy a voice using a short clip taken from a video or voice note posted online. A typical scam: a grandparent gets a call at night; a crying voice that sounds exactly like a grandchild says, 'I am in trouble, please send money on this UPI ID right now and do not tell Papa.' The scam works by creating panic and secrecy.",
+      "hi": "ठग ऑनलाइन डाले गए किसी वीडियो या वॉइस नोट की छोटी क्लिप से आवाज़ की नकल कर सकते हैं। आम ठगी: दादाजी को रात में फ़ोन आता है; पोते जैसी हूबहू रोती हुई आवाज़ कहती है, 'मैं मुसीबत में हूँ, अभी इस UPI ID पर पैसे भेज दो और पापा को मत बताना।' यह ठगी घबराहट और गोपनीयता पैदा करके काम करती है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Hang up and call back the person on the number you already have saved, or call another family member to check.",
+       "Agree on a secret family code word that only family knows; ask for it in any emergency call.",
+       "Ask a personal question a stranger could not know.",
+       "Never share OTPs, UPI PINs or passwords on a call, whoever it seems to be. Banks and police never ask for them. Remember that you enter your UPI PIN only to send money, never to receive it.",
+       "Be careful about posting long voice notes and videos publicly; keep accounts private where possible.",
+       "If money is lost, call the national cyber helpline 1930 immediately (fast reporting helps freeze the money) and file a complaint at cybercrime.gov.in. Suspected fraud calls and messages can also be reported through the government's Sanchar Saathi portal (Chakshu)."
+      ],
+      "hi": [
+       "फ़ोन काटें और उस व्यक्ति को अपने पास पहले से सहेजे नंबर पर वापस फ़ोन करें, या जाँच के लिए परिवार के किसी और सदस्य को फ़ोन करें।",
+       "परिवार में एक गुप्त कोड शब्द तय करें जो केवल परिवार जाने; किसी भी आपात कॉल में उसे पूछें।",
+       "कोई निजी प्रश्न पूछें जो अजनबी न जान सके।",
+       "कॉल पर कभी OTP, UPI PIN या पासवर्ड न बताएँ, चाहे कोई भी लगे। बैंक और पुलिस इन्हें कभी नहीं माँगते। याद रखें, UPI PIN केवल पैसे भेजने के लिए डाला जाता है, पाने के लिए कभी नहीं।",
+       "लंबे वॉइस नोट और वीडियो सार्वजनिक रूप से डालने में सावधानी रखें; जहाँ हो सके खाते निजी (private) रखें।",
+       "अगर पैसे चले जाएँ, तो तुरंत राष्ट्रीय साइबर हेल्पलाइन 1930 पर फ़ोन करें (जल्दी शिकायत से पैसे रोकने में मदद मिलती है) और cybercrime.gov.in पर शिकायत दर्ज करें। संदिग्ध धोखाधड़ी कॉल और संदेशों की शिकायत सरकार के Sanchar Saathi पोर्टल (Chakshu) पर भी की जा सकती है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "If someone makes a deepfake of you or a friend: do not panic and do not blame yourself; it is not your fault. Do not reply to or pay anyone threatening you. Take screenshots and save links. Tell a parent, teacher or school counsellor. Report the post using the platform's report button (most platforms remove such content), and report at cybercrime.gov.in or 1930 with an adult's help.",
+      "hi": "अगर कोई आपका या आपके मित्र का डीपफ़ेक बना दे: घबराएँ नहीं और खुद को दोष न दें; यह आपकी गलती नहीं है। धमकी देने वाले को जवाब या पैसे न दें। स्क्रीनशॉट लें और लिंक सहेजें। माता-पिता, शिक्षक या स्कूल काउंसलर को बताएँ। प्लेटफ़ॉर्म के report बटन से पोस्ट की शिकायत करें (अधिकतर प्लेटफ़ॉर्म ऐसी सामग्री हटाते हैं), और किसी बड़े की मदद से cybercrime.gov.in या 1930 पर शिकायत करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.11 Using generative AI responsibly",
+    "hi": "5.11 जनरेटिव AI का ज़िम्मेदार उपयोग"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Be honest: say when you used AI ('I used a chatbot to get ideas for this poem'). Follow your school's rules on AI in homework.",
+       "Check before you trust: verify facts, numbers, quotes and references.",
+       "Protect privacy: never upload photos of friends or family to AI apps without their permission; never type addresses, phone numbers, passwords or OTPs.",
+       "Consent first: never make an AI picture, voice or video of a real person without their clear permission, and never to mock, scare or trick anyone.",
+       "Label your creations: if you share an AI image or voice, mark it 'AI-generated' so no one is fooled.",
+       "Respect creators: do not claim AI art in an artist's style is your original work; credit sources.",
+       "Keep your own skills: write, draw and solve first; use AI as a coach, not a crutch.",
+       "Be kind and calm online: think before posting or forwarding anything."
+      ],
+      "hi": [
+       "ईमानदार रहें: बताएँ कि आपने AI उपयोग किया ('इस कविता के विचार के लिए मैंने chatbot की मदद ली')। गृहकार्य में AI के बारे में अपने स्कूल के नियम मानें।",
+       "भरोसे से पहले जाँचें: तथ्य, संख्याएँ, उद्धरण और संदर्भ पक्के करें।",
+       "निजता बचाएँ: मित्रों या परिवार की फ़ोटो उनकी अनुमति के बिना AI ऐप में कभी अपलोड न करें; पता, फ़ोन नंबर, पासवर्ड या OTP कभी टाइप न करें।",
+       "पहले अनुमति: किसी असली व्यक्ति का AI चित्र, आवाज़ या वीडियो उसकी स्पष्ट अनुमति के बिना कभी न बनाएँ, और किसी का मज़ाक उड़ाने, डराने या धोखा देने के लिए तो कभी नहीं।",
+       "अपनी रचनाओं पर लेबल लगाएँ: AI चित्र या आवाज़ साझा करें तो 'AI-generated' लिखें ताकि कोई धोखा न खाए।",
+       "रचनाकारों का सम्मान करें: किसी कलाकार की शैली में बनी AI कला को अपना मौलिक काम न बताएँ; स्रोतों को श्रेय दें।",
+       "अपना कौशल बनाए रखें: पहले खुद लिखें, बनाएँ और हल करें; AI को सहारा नहीं, कोच की तरह उपयोग करें।",
+       "ऑनलाइन दयालु और शांत रहें: कुछ भी पोस्ट या आगे भेजने से पहले सोचें।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Governments and companies are also acting. Many platforms label AI-generated content and remove harmful deepfakes on complaint. In India, the IT Rules require social media platforms to act on complaints about fake and harmful content, and the government has been working on rules for clearly labelling AI-generated media. Researchers are building detection tools and watermarks. But laws and tools cannot catch everything, so careful users like you are the most important defence.",
+      "hi": "सरकारें और कंपनियाँ भी कदम उठा रही हैं। कई प्लेटफ़ॉर्म AI से बनी सामग्री पर लेबल लगाते हैं और शिकायत पर हानिकारक डीपफ़ेक हटाते हैं। भारत में IT Rules के तहत सोशल मीडिया प्लेटफ़ॉर्म को नकली और हानिकारक सामग्री की शिकायतों पर कार्रवाई करनी होती है, और सरकार AI से बनी सामग्री पर स्पष्ट लेबल के नियमों पर काम कर रही है। शोधकर्ता पहचान के टूल और watermark बना रहे हैं। पर कानून और टूल सब कुछ नहीं पकड़ सकते, इसलिए आप जैसे सावधान उपयोगकर्ता सबसे महत्वपूर्ण रक्षा हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.12 Activities",
+    "hi": "5.12 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (unplugged): The next-word game",
+       "hi": "गतिविधि 1 (बिना कंप्यूटर): अगला-शब्द खेल"
+      },
+      "a": {
+       "en": "Aim: to feel how an LLM builds sentences.\nYou need: the class sitting in a circle, a board.\nWhat to do: The teacher writes 'Every morning I drink'. Each student in turn adds one word that fits, without planning the whole sentence. Write the sentence on the board as it grows. Play three rounds with different starts.\nObserve: The sentences are grammatical and sometimes funny, but nobody planned the meaning; sometimes the sentence wanders off topic.\nLearn: An LLM also adds one likely token at a time. Fluent does not mean true or sensible.",
+       "hi": "उद्देश्य: महसूस करना कि LLM वाक्य कैसे बनाता है।\nज़रूरत: कक्षा गोले में बैठे, एक बोर्ड।\nक्या करें: शिक्षक लिखते हैं 'हर सुबह मैं पीता हूँ'। हर विद्यार्थी बारी-बारी से एक उपयुक्त शब्द जोड़ता है, पूरा वाक्य सोचे बिना। बढ़ते वाक्य को बोर्ड पर लिखते जाएँ। अलग-अलग शुरुआत से तीन दौर खेलें।\nअवलोकन: वाक्य व्याकरण में सही और कभी-कभी मज़ेदार होते हैं, पर अर्थ किसी ने नहीं सोचा; कभी वाक्य विषय से भटक जाता है।\nसीख: LLM भी एक बार में एक संभावित token जोड़ता है। धाराप्रवाह होने का अर्थ सच या समझदार होना नहीं है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (screen): Doodle to drawing with AutoDraw and Quick, Draw!",
+       "hi": "गतिविधि 2 (स्क्रीन): AutoDraw और Quick, Draw! से रेखाचित्र"
+      },
+      "a": {
+       "en": "Aim: to see AI guessing and generating from your input.\nYou need: a phone or computer with a browser; no sign-up is needed.\nWhat to do: Open AutoDraw and sketch a rough bicycle; pick one of the clean drawings it suggests. Then open Quick, Draw! and draw the objects it asks for in 20 seconds while it guesses.\nObserve: AutoDraw matches your rough lines to drawings it already has; Quick, Draw! guesses from patterns learned from millions of doodles and sometimes guesses wrong.\nLearn: AI matches your input to learned patterns. Discuss: whose doodles trained it? What happens to drawings that look different from most people's?",
+       "hi": "उद्देश्य: देखना कि AI आपके इनपुट से कैसे अनुमान लगाता और बनाता है।\nज़रूरत: ब्राउज़र वाला फ़ोन या कंप्यूटर; sign-up की ज़रूरत नहीं।\nक्या करें: AutoDraw खोलकर एक कच्ची साइकिल बनाइए; उसके सुझाए साफ़ चित्रों में से एक चुनिए। फिर Quick, Draw! खोलकर उसके कहे चित्र 20 सेकंड में बनाइए जबकि वह अनुमान लगाता है।\nअवलोकन: AutoDraw आपकी कच्ची रेखाओं को अपने पास पहले से मौजूद चित्रों से मिलाता है; Quick, Draw! लाखों रेखाचित्रों से सीखे पैटर्न से अनुमान लगाता है और कभी गलत भी।\nसीख: AI आपके इनपुट को सीखे पैटर्न से मिलाता है। चर्चा: इसे किसके रेखाचित्रों से प्रशिक्षित किया गया? उन चित्रों का क्या होता है जो अधिकतर लोगों से अलग दिखते हैं?"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (screen, with a teacher): Catch the hallucination",
+       "hi": "गतिविधि 3 (स्क्रीन, शिक्षक के साथ): hallucination पकड़ो"
+      },
+      "a": {
+       "en": "Aim: to practise checking AI answers.\nYou need: one chatbot account handled by the teacher, the class textbook.\nWhat to do: The teacher asks a chatbot five questions from your science or history book, including one about a very local fact (for example, the year your school or town library opened). Students check each answer in the textbook or with the teacher.\nObserve: Most textbook answers are right; local or rare facts are often wrong or made up, yet stated confidently.\nLearn: Always check, especially for rare facts, numbers, names and references.",
+       "hi": "उद्देश्य: AI के उत्तर जाँचने का अभ्यास।\nज़रूरत: शिक्षक द्वारा चलाया गया एक chatbot खाता, कक्षा की पाठ्यपुस्तक।\nक्या करें: शिक्षक chatbot से आपकी विज्ञान या इतिहास की किताब से पाँच प्रश्न पूछते हैं, जिनमें एक बहुत स्थानीय तथ्य हो (जैसे आपके स्कूल या शहर का पुस्तकालय किस वर्ष खुला)। विद्यार्थी हर उत्तर पाठ्यपुस्तक में या शिक्षक से जाँचते हैं।\nअवलोकन: पाठ्यपुस्तक वाले अधिकतर उत्तर सही होते हैं; स्थानीय या दुर्लभ तथ्य अक्सर गलत या मनगढ़ंत होते हैं, फिर भी आत्मविश्वास से कहे जाते हैं।\nसीख: हमेशा जाँचें, ख़ासकर दुर्लभ तथ्य, संख्याएँ, नाम और संदर्भ।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4 (group): Real or fake? detective board",
+       "hi": "गतिविधि 4 (समूह): असली या नकली? जासूस बोर्ड"
+      },
+      "a": {
+       "en": "Aim: to practise STOP, LOOK, CHECK, DECIDE.\nYou need: 6 to 8 printed or projected images and headlines chosen by the teacher (some real, some AI-made or with false captions), Google Lens on one phone.\nWhat to do: In groups, list clues for each item, then check one or two with a reverse image search. Mark each 'real', 'fake' or 'cannot tell yet' with a reason.\nObserve: Some AI images are very hard to judge by eye; source checking settles more cases than glitch spotting.\nLearn: 'Cannot tell yet' is an honest answer; when unsure, do not share.",
+       "hi": "उद्देश्य: रुको, देखो, जाँचो, तय करो का अभ्यास।\nज़रूरत: शिक्षक द्वारा चुने 6 से 8 छपे या प्रोजेक्टर पर दिखाए चित्र और शीर्षक (कुछ असली, कुछ AI से बने या झूठे कैप्शन वाले), एक फ़ोन पर Google Lens।\nक्या करें: समूहों में हर चीज़ के संकेत लिखें, फिर एक-दो को reverse image search से जाँचें। हर एक को कारण सहित 'असली', 'नकली' या 'अभी नहीं कह सकते' चिह्नित करें।\nअवलोकन: कुछ AI चित्र आँख से परखना बहुत कठिन है; गड़बड़ी ढूँढने से ज़्यादा मामले स्रोत जाँचने से सुलझते हैं।\nसीख: 'अभी नहीं कह सकते' एक ईमानदार उत्तर है; शक हो तो साझा न करें।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 5 (home): Family safety plan",
+       "hi": "गतिविधि 5 (घर पर): परिवार सुरक्षा योजना"
+      },
+      "a": {
+       "en": "Aim: to protect your family from voice-clone scams.\nYou need: a family discussion and a paper.\nWhat to do: Explain voice-clone scams to your family. Together choose a secret code word, write the 1930 helpline and cybercrime.gov.in on a card near the phone, and agree: 'We always call back before sending money.'\nObserve: Elders may not know that voices can be copied; they are often grateful.\nLearn: Simple habits beat clever scams.",
+       "hi": "उद्देश्य: परिवार को voice-clone ठगी से बचाना।\nज़रूरत: परिवार के साथ चर्चा और एक काग़ज़।\nक्या करें: परिवार को voice-clone ठगी समझाइए। मिलकर एक गुप्त कोड शब्द चुनिए, फ़ोन के पास एक कार्ड पर 1930 हेल्पलाइन और cybercrime.gov.in लिखिए, और तय कीजिए: 'पैसे भेजने से पहले हम हमेशा वापस फ़ोन करेंगे।'\nअवलोकन: बड़ों को शायद पता न हो कि आवाज़ की नकल हो सकती है; वे अक्सर आभारी होते हैं।\nसीख: सरल आदतें चालाक ठगी को हरा देती हैं।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking generative AI looks up answers like a search engine. Fix: it predicts likely words or pixels from patterns, so it can be fluent and wrong; check facts.",
+   "Believing an answer because it is long, polite and confident. Fix: confidence is not evidence; verify with trusted sources.",
+   "Thinking a picture is real because it has no 'AI' label. Fix: many fakes are unlabelled; check the source and story.",
+   "Relying only on glitch-spotting (blinking, blurry edges). Fix: new deepfakes may have no visible glitches; always check who posted it and who confirms it.",
+   "Forwarding a shocking video 'just in case it is true'. Fix: when in doubt, do not forward; forwarding spreads the harm.",
+   "Sending money because the voice on the phone sounds exactly like a relative. Fix: hang up, call back on the saved number, use a family code word.",
+   "Making a 'funny' AI picture of a classmate without asking. Fix: it can hurt and humiliate; never use someone's face or voice without clear consent.",
+   "Submitting AI-written work as your own. Fix: use AI for ideas and feedback, write in your own words and say how you used AI.",
+   "Uploading friends' or family photos to AI apps. Fix: photos are personal data; ask permission and prefer not to upload."
+  ],
+  "hi": [
+   "सोचना कि जनरेटिव AI search engine की तरह उत्तर खोजता है। सुधार: यह पैटर्न से संभावित शब्द या पिक्सेल का अनुमान लगाता है, इसलिए धाराप्रवाह और गलत दोनों हो सकता है; तथ्य जाँचें।",
+   "किसी उत्तर पर इसलिए विश्वास करना कि वह लंबा, विनम्र और आत्मविश्वास भरा है। सुधार: आत्मविश्वास सबूत नहीं; विश्वसनीय स्रोतों से पुष्टि करें।",
+   "चित्र को इसलिए असली मानना कि उस पर 'AI' का लेबल नहीं। सुधार: बहुत-सी नकली सामग्री बिना लेबल होती है; स्रोत और कहानी जाँचें।",
+   "केवल गड़बड़ियाँ (पलक झपकाना, धुंधले किनारे) ढूँढने पर निर्भर रहना। सुधार: नए डीपफ़ेक में दिखने वाली गड़बड़ी न भी हो; हमेशा जाँचें कि किसने डाला और कौन पुष्टि करता है।",
+   "चौंकाने वाला वीडियो 'शायद सच हो' सोचकर आगे भेजना। सुधार: शक हो तो आगे न भेजें; आगे भेजना नुकसान फैलाता है।",
+   "फ़ोन की आवाज़ बिलकुल रिश्तेदार जैसी लगने पर पैसे भेज देना। सुधार: फ़ोन काटें, सहेजे नंबर पर वापस फ़ोन करें, परिवार का कोड शब्द उपयोग करें।",
+   "बिना पूछे किसी सहपाठी का 'मज़ेदार' AI चित्र बनाना। सुधार: यह चोट पहुँचा और अपमानित कर सकता है; किसी का चेहरा या आवाज़ स्पष्ट अनुमति के बिना कभी उपयोग न करें।",
+   "AI से लिखा काम अपने नाम से जमा करना। सुधार: विचार और सुझाव के लिए AI उपयोग करें, अपने शब्दों में लिखें और बताएँ कि AI का उपयोग कैसे किया।",
+   "मित्रों या परिवार की फ़ोटो AI ऐप पर अपलोड करना। सुधार: फ़ोटो निजी डेटा हैं; अनुमति लें और बेहतर है अपलोड न करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Generative AI",
+    "hi": "जनरेटिव AI"
+   },
+   "d": {
+    "en": "AI that creates new text, images, audio, music, video or code by learning patterns from large data.",
+    "hi": "ऐसा AI जो बड़े डेटा से पैटर्न सीखकर नया टेक्स्ट, चित्र, ऑडियो, संगीत, वीडियो या कोड बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Modality",
+    "hi": "Modality"
+   },
+   "d": {
+    "en": "A kind of content or input, such as text, image, audio or video.",
+    "hi": "सामग्री या इनपुट का प्रकार, जैसे टेक्स्ट, चित्र, ऑडियो या वीडियो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Multimodal AI",
+    "hi": "Multimodal AI"
+   },
+   "d": {
+    "en": "AI that can work with more than one modality, e.g. a photo and a text question together.",
+    "hi": "ऐसा AI जो एक से अधिक modality के साथ काम कर सके, जैसे फ़ोटो और टेक्स्ट प्रश्न एक साथ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training data",
+    "hi": "Training data"
+   },
+   "d": {
+    "en": "The examples a model learns from.",
+    "hi": "वे उदाहरण जिनसे model सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Neural network",
+    "hi": "Neural network"
+   },
+   "d": {
+    "en": "A model made of many connected layers of simple calculations, loosely inspired by brain cells.",
+    "hi": "सरल गणनाओं की कई जुड़ी परतों से बना model, जो मस्तिष्क की कोशिकाओं से ढीले रूप में प्रेरित है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Parameters",
+    "hi": "Parameters"
+   },
+   "d": {
+    "en": "The many numbers inside a model that are adjusted during training to capture patterns.",
+    "hi": "model के अंदर की बहुत-सी संख्याएँ जिन्हें प्रशिक्षण के दौरान पैटर्न पकड़ने के लिए बदला जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Large Language Model (LLM)",
+    "hi": "Large Language Model (LLM)"
+   },
+   "d": {
+    "en": "A model trained on huge text that generates language by predicting the next token.",
+    "hi": "बहुत बड़े टेक्स्ट पर प्रशिक्षित model जो अगले token का अनुमान लगाकर भाषा बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Token",
+    "hi": "Token"
+   },
+   "d": {
+    "en": "A small piece of text (word, part of a word or punctuation) that an LLM reads and writes.",
+    "hi": "टेक्स्ट का छोटा टुकड़ा (शब्द, शब्द का भाग या विराम चिह्न) जिसे LLM पढ़ता और लिखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Context window",
+    "hi": "Context window"
+   },
+   "d": {
+    "en": "The amount of conversation or text a model can consider at once.",
+    "hi": "बातचीत या टेक्स्ट की वह मात्रा जिसे model एक बार में ध्यान में रख सकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Transformer",
+    "hi": "Transformer"
+   },
+   "d": {
+    "en": "A neural network design (introduced in 2017) that made modern language models much better.",
+    "hi": "neural network की एक रचना (2017 में प्रस्तुत) जिसने आधुनिक language model को बहुत बेहतर बनाया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Diffusion model",
+    "hi": "Diffusion model"
+   },
+   "d": {
+    "en": "A model that makes images or sound by removing noise step by step, guided by a prompt.",
+    "hi": "ऐसा model जो prompt के मार्गदर्शन में चरण-दर-चरण शोर हटाकर चित्र या ध्वनि बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "GAN",
+    "hi": "GAN"
+   },
+   "d": {
+    "en": "Generative Adversarial Network: a generator and a discriminator compete until fakes look real.",
+    "hi": "Generative Adversarial Network: generator और discriminator तब तक मुकाबला करते हैं जब तक नकली असली न लगने लगे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hallucination",
+    "hi": "Hallucination"
+   },
+   "d": {
+    "en": "Confident but false or made-up output from an AI.",
+    "hi": "AI का आत्मविश्वास भरा पर गलत या मनगढ़ंत आउटपुट।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deepfake",
+    "hi": "डीपफ़ेक"
+   },
+   "d": {
+    "en": "AI-made or AI-changed photo, video or audio that shows a real person saying or doing what they never did.",
+    "hi": "AI से बनी या बदली फ़ोटो, वीडियो या ऑडियो जिसमें असली व्यक्ति वह कहता या करता दिखे जो उसने कभी नहीं किया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Face swap",
+    "hi": "Face swap"
+   },
+   "d": {
+    "en": "Putting one person's face onto another person in a video or photo.",
+    "hi": "वीडियो या फ़ोटो में एक व्यक्ति का चेहरा दूसरे पर लगाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Lip sync deepfake",
+    "hi": "Lip sync डीपफ़ेक"
+   },
+   "d": {
+    "en": "A video changed so the lips match new, fake words.",
+    "hi": "ऐसा वीडियो जिसे बदलकर होंठ नए, नकली शब्दों से मिला दिए गए हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Voice cloning",
+    "hi": "Voice cloning"
+   },
+   "d": {
+    "en": "Using AI to copy a person's voice from samples and make it say new things.",
+    "hi": "नमूनों से किसी व्यक्ति की आवाज़ की नकल करके उससे नई बातें कहलवाने के लिए AI का उपयोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Cheapfake / shallowfake",
+    "hi": "Cheapfake / shallowfake"
+   },
+   "d": {
+    "en": "Misleading media made with simple editing or false captions, without advanced AI.",
+    "hi": "उन्नत AI के बिना, साधारण एडिटिंग या झूठे कैप्शन से बनी भ्रामक सामग्री।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reverse image search",
+    "hi": "Reverse image search"
+   },
+   "d": {
+    "en": "Searching with a picture (e.g. Google Lens) to find where and when it appeared before.",
+    "hi": "चित्र से खोज करना (जैसे Google Lens) ताकि पता चले वह पहले कहाँ और कब दिखा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Watermark / content credentials",
+    "hi": "Watermark / content credentials"
+   },
+   "d": {
+    "en": "Visible or hidden marks or data showing that content was made or edited with AI.",
+    "hi": "दिखने वाले या छिपे निशान या डेटा जो बताते हैं कि सामग्री AI से बनी या बदली गई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Liar's dividend",
+    "hi": "झूठे का फ़ायदा (Liar's dividend)"
+   },
+   "d": {
+    "en": "When people falsely call real evidence 'fake' because deepfakes exist.",
+    "hi": "जब डीपफ़ेक के होने का फ़ायदा उठाकर लोग असली सबूत को झूठा 'नकली' कह दें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Consent",
+    "hi": "अनुमति (Consent)"
+   },
+   "d": {
+    "en": "Clear permission given freely by a person, e.g. before using their photo or voice.",
+    "hi": "किसी व्यक्ति द्वारा स्वेच्छा से दी गई स्पष्ट अनुमति, जैसे उसकी फ़ोटो या आवाज़ उपयोग करने से पहले।"
+   }
+  },
+  {
+   "t": {
+    "en": "1930 / cybercrime.gov.in",
+    "hi": "1930 / cybercrime.gov.in"
+   },
+   "d": {
+    "en": "India's national cybercrime helpline number and online reporting portal.",
+    "hi": "भारत का राष्ट्रीय साइबर अपराध हेल्पलाइन नंबर और ऑनलाइन शिकायत पोर्टल।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is an example of generative AI?\n(a) A spam filter marking an email as spam\n(b) A chatbot writing a poem on the monsoon\n(c) A calculator adding two numbers\n(d) A weighing machine showing your weight",
+    "hi": "MCQ: इनमें से कौन जनरेटिव AI का उदाहरण है?\n(a) ईमेल को spam चिह्नित करता spam filter\n(b) मानसून पर कविता लिखता chatbot\n(c) दो संख्याएँ जोड़ता कैलकुलेटर\n(d) आपका वज़न दिखाती मशीन"
+   },
+   "a": {
+    "en": "(b). It creates new content. (a) classifies; (c) and (d) are not AI.",
+    "hi": "(b)। यह नई सामग्री बनाता है। (a) वर्गीकरण करता है; (c) और (d) AI नहीं हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Chatbots are built on ______ Language Models that predict the next ______.",
+    "hi": "रिक्त स्थान भरिए: chatbot ______ Language Model पर बने होते हैं जो अगले ______ का अनुमान लगाते हैं।"
+   },
+   "a": {
+    "en": "Large; word (token).",
+    "hi": "Large; शब्द (token)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: If a picture has no 'AI-generated' label, it must be real.",
+    "hi": "सही या गलत: अगर किसी चित्र पर 'AI-generated' का लेबल नहीं है, तो वह ज़रूर असली है।"
+   },
+   "a": {
+    "en": "False. Many AI images carry no label, and labels can be removed. Check the source.",
+    "hi": "गलत। बहुत-से AI चित्रों पर लेबल नहीं होता, और लेबल हटाए भी जा सकते हैं। स्रोत जाँचें।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Expand LLM and GAN.",
+    "hi": "LLM और GAN का पूरा रूप लिखिए।"
+   },
+   "a": {
+    "en": "LLM: Large Language Model. GAN: Generative Adversarial Network.",
+    "hi": "LLM: Large Language Model। GAN: Generative Adversarial Network।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What number should you call in India if you lose money in a cyber fraud?",
+    "hi": "भारत में साइबर धोखाधड़ी में पैसे जाने पर किस नंबर पर फ़ोन करना चाहिए?"
+   },
+   "a": {
+    "en": "1930, the national cybercrime helpline; also report at cybercrime.gov.in.",
+    "hi": "1930, राष्ट्रीय साइबर अपराध हेल्पलाइन; साथ ही cybercrime.gov.in पर शिकायत करें।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: An AI confidently gives a fake quotation by a freedom fighter. This is called:\n(a) Training (b) Hallucination (c) Encryption (d) Watermarking",
+    "hi": "MCQ: AI आत्मविश्वास से किसी स्वतंत्रता सेनानी का नकली उद्धरण देता है। इसे कहते हैं:\n(a) Training (b) Hallucination (c) Encryption (d) Watermarking"
+   },
+   "a": {
+    "en": "(b) Hallucination.",
+    "hi": "(b) Hallucination।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How is generative AI different from predictive (classifying) AI? Give one Indian example of each.",
+    "hi": "जनरेटिव AI, अनुमान लगाने वाले (वर्गीकरण करने वाले) AI से कैसे अलग है? हर एक का एक भारतीय उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Predictive AI gives a label, score or forecast, e.g. a UPI fraud alert or Google Maps arrival time. Generative AI creates new content, e.g. a chatbot drafting a leave application in Hindi or a tool reading text aloud in Tamil.",
+    "hi": "अनुमान लगाने वाला AI लेबल, अंक या पूर्वानुमान देता है, जैसे UPI धोखाधड़ी अलर्ट या Google Maps का पहुँचने का समय। जनरेटिव AI नई सामग्री बनाता है, जैसे हिंदी में छुट्टी का आवेदन लिखता chatbot या तमिल में टेक्स्ट पढ़कर सुनाता टूल।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain, with an example, how an LLM writes a sentence.",
+    "hi": "उदाहरण सहित समझाइए कि LLM वाक्य कैसे लिखता है।"
+   },
+   "a": {
+    "en": "It looks at the prompt and predicts the most suitable next token, adds it, and repeats. For 'Happy Diwali to you and your', it predicts 'family', then perhaps '!', then stops. It chooses from likely tokens learned from huge text, not from a stored list of facts.",
+    "hi": "यह prompt देखकर सबसे उपयुक्त अगले token का अनुमान लगाता है, उसे जोड़ता है, और दोहराता है। 'Happy Diwali to you and your' के लिए यह 'family' का अनुमान लगाता है, फिर शायद '!', फिर रुक जाता है। यह विशाल टेक्स्ट से सीखे संभावित tokens में से चुनता है, तथ्यों की सहेजी सूची से नहीं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Describe how a diffusion model creates an image.",
+    "hi": "समझाइए कि diffusion model चित्र कैसे बनाता है।"
+   },
+   "a": {
+    "en": "During training it learns to remove noise from noisy pictures. To create, it starts from pure random noise and removes a little noise at each step, guided by the prompt, until a clear picture that matches the words appears.",
+    "hi": "प्रशिक्षण में यह शोर वाले चित्रों से शोर हटाना सीखता है। बनाते समय यह शुद्ध यादृच्छिक शोर से शुरू करता है और prompt के मार्गदर्शन में हर चरण में थोड़ा शोर हटाता है, जब तक शब्दों से मेल खाता साफ़ चित्र न उभर आए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain a GAN using the example of a currency forger and a bank checker.",
+    "hi": "जालसाज़ और बैंक जाँचकर्ता के उदाहरण से GAN समझाइए।"
+   },
+   "a": {
+    "en": "The generator (forger) makes fakes; the discriminator (checker) tries to catch them. Each learns from the other: caught fakes teach the forger to improve, and fooled checks teach the checker to be sharper. In the end the generator's fakes look very real.",
+    "hi": "generator (जालसाज़) नकली बनाता है; discriminator (जाँचकर्ता) उन्हें पकड़ने की कोशिश करता है। दोनों एक-दूसरे से सीखते हैं: पकड़े गए नकली से जालसाज़ सुधरता है, और धोखा खाने से जाँचकर्ता और तेज़ होता है। अंत में generator के नकली बहुत असली लगते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List any five clues that a video may be a deepfake.",
+    "hi": "कोई पाँच संकेत लिखिए कि कोई वीडियो डीपफ़ेक हो सकता है।"
+   },
+   "a": {
+    "en": "Lips not matching words; unusual blinking; blurry or flickering edges around the face; lighting on the face different from the background; robotic or flat voice; plus a shocking claim, pressure to forward, and no trusted source confirming it.",
+    "hi": "होंठ शब्दों से मेल न खाना; असामान्य पलक झपकाना; चेहरे के आसपास धुंधले या झिलमिलाते किनारे; चेहरे की रोशनी पृष्ठभूमि से अलग; यांत्रिक या सपाट आवाज़; साथ ही चौंकाने वाला दावा, आगे भेजने का दबाव, और किसी विश्वसनीय स्रोत द्वारा पुष्टि न होना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is a cheapfake? Give an example.",
+    "hi": "cheapfake क्या है? उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Misleading media made by simple editing or a false caption, without advanced AI. Example: an old flood photo shared with the caption 'Today in our city'.",
+    "hi": "उन्नत AI के बिना साधारण एडिटिंग या झूठे कैप्शन से बनी भ्रामक सामग्री। उदाहरण: बाढ़ की पुरानी फ़ोटो 'आज हमारे शहर में' कैप्शन के साथ साझा करना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give four ways a family can protect itself from voice-clone scams.",
+    "hi": "परिवार voice-clone ठगी से बचने के चार तरीके लिखिए।"
+   },
+   "a": {
+    "en": "Hang up and call back on a saved number; use a secret family code word; never share OTP or UPI PIN; keep voice notes and videos private; report fraud quickly to 1930.",
+    "hi": "फ़ोन काटकर सहेजे नंबर पर वापस फ़ोन करें; गुप्त पारिवारिक कोड शब्द रखें; OTP या UPI PIN कभी न बताएँ; वॉइस नोट और वीडियो निजी रखें; धोखाधड़ी की शिकायत तुरंत 1930 पर करें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why do chatbots sometimes give different answers to the same question?",
+    "hi": "chatbot कभी-कभी एक ही प्रश्न के अलग उत्तर क्यों देते हैं?"
+   },
+   "a": {
+    "en": "They choose each next token from several likely options with some randomness, so the wording and even the content can change between tries.",
+    "hi": "वे हर अगला token कुछ संभावित विकल्पों में से थोड़ी यादृच्छिकता के साथ चुनते हैं, इसलिए हर बार शब्द और कभी-कभी सामग्री भी बदल सकती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name three good uses of generative AI for accessibility or Indian languages.",
+    "hi": "सुलभता या भारतीय भाषाओं के लिए जनरेटिव AI के तीन अच्छे उपयोग बताइए।"
+   },
+   "a": {
+    "en": "Text-to-speech reading books aloud for people with low vision; auto-captions for people who are hard of hearing; translation and speech tools (e.g. under Bhashini) for reading and speaking across Indian languages; voice banking for people losing their speech.",
+    "hi": "कम दृष्टि वाले लोगों के लिए किताबें पढ़कर सुनाता text-to-speech; कम सुनने वालों के लिए स्वचालित कैप्शन; भारतीय भाषाओं में पढ़ने-बोलने के लिए अनुवाद और बोली टूल (जैसे Bhashini के तहत); बोलने की क्षमता खो रहे लोगों के लिए voice banking।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "What is the 'liar's dividend'? Why does it make deepfakes dangerous even when no fake is shown?",
+    "hi": "'झूठे का फ़ायदा' क्या है? यह डीपफ़ेक को तब भी खतरनाक क्यों बनाता है जब कोई नकली दिखाया ही न गया हो?"
+   },
+   "a": {
+    "en": "Because people know deepfakes exist, someone caught on a real video can falsely claim it is fake. This weakens trust in all evidence, so honest records and journalism become easier to deny.",
+    "hi": "क्योंकि लोग जानते हैं कि डीपफ़ेक होते हैं, असली वीडियो में पकड़ा गया व्यक्ति झूठा दावा कर सकता है कि वह नकली है। इससे सभी सबूतों पर भरोसा कमज़ोर होता है, और सच्चे रिकॉर्ड और पत्रकारिता को नकारना आसान हो जाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In the Python next-word program of section 5.3, what would the prediction be if the text were 'i like mango . you like mango . we like chai'? Explain.",
+    "hi": "खंड 5.3 के Python अगला-शब्द प्रोग्राम में, अगर टेक्स्ट 'i like mango . you like mango . we like chai' हो, तो अनुमान क्या होगा? समझाइए।"
+   },
+   "a": {
+    "en": "The counts would be mango: 2 and chai: 1, so the prediction would be 'mango'. The 'model' only reflects its data: change the data and the output changes. This is also how bias in data turns into bias in AI output.",
+    "hi": "गिनती होगी mango: 2 और chai: 1, इसलिए अनुमान 'mango' होगा। 'model' केवल अपने डेटा को दर्शाता है: डेटा बदलो तो आउटपुट बदल जाता है। इसी तरह डेटा का पक्षपात AI के आउटपुट में पक्षपात बन जाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "An image generator, asked for 'a picture of a pilot', always shows a man. Explain why this happens and what could be done.",
+    "hi": "चित्र बनाने वाले टूल से 'पायलट का चित्र' माँगने पर वह हमेशा पुरुष दिखाता है। समझाइए ऐसा क्यों होता है और क्या किया जा सकता है।"
+   },
+   "a": {
+    "en": "The training pictures probably showed mostly male pilots, so the model learned that pattern (bias from data). Fixes: developers can train on more balanced and diverse data and test outputs for fairness; users can notice it, ask for diverse examples ('a woman pilot from Kerala') and report biased results. India in fact has many women pilots, so the output does not reflect reality.",
+    "hi": "प्रशिक्षण के चित्रों में शायद अधिकतर पुरुष पायलट थे, इसलिए model ने वही पैटर्न सीखा (डेटा से पक्षपात)। सुधार: डेवलपर अधिक संतुलित और विविध डेटा पर प्रशिक्षित करें और निष्पक्षता के लिए आउटपुट जाँचें; उपयोगकर्ता इसे पहचानें, विविध उदाहरण माँगें ('केरल की एक महिला पायलट') और पक्षपाती परिणामों की शिकायत करें। भारत में वास्तव में बहुत-सी महिला पायलट हैं, इसलिए आउटपुट वास्तविकता नहीं दिखाता।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A Class 8 student finds that someone made a fake, embarrassing AI photo of her and posted it in a group. Write the steps she and the adults should take.",
+    "hi": "केस स्टडी: कक्षा 8 की एक छात्रा को पता चलता है कि किसी ने उसकी नकली, शर्मनाक AI फ़ोटो बनाकर एक समूह में डाल दी है। उसे और बड़ों को क्या कदम उठाने चाहिए, लिखिए।"
+   },
+   "a": {
+    "en": "1. Stay calm; it is not her fault.\n2. Do not reply to or bargain with the person.\n3. Save screenshots, the link, group name and time as evidence.\n4. Tell a parent, teacher or counsellor immediately.\n5. Report the post and account on the platform and ask group admins to remove it.\n6. With an adult, file a complaint at cybercrime.gov.in or call 1930; the school can act against bullying.\n7. Friends should not forward it and should support her.",
+    "hi": "1. शांत रहे; यह उसकी गलती नहीं है।\n2. उस व्यक्ति को जवाब न दे और उससे मोलभाव न करे।\n3. सबूत के रूप में स्क्रीनशॉट, लिंक, समूह का नाम और समय सहेजे।\n4. तुरंत माता-पिता, शिक्षक या काउंसलर को बताए।\n5. प्लेटफ़ॉर्म पर पोस्ट और खाते की शिकायत करे और समूह के admin से उसे हटाने को कहे।\n6. किसी बड़े के साथ cybercrime.gov.in पर शिकायत करे या 1930 पर फ़ोन करे; स्कूल धमकाने के विरुद्ध कार्रवाई कर सकता है।\n7. मित्र उसे आगे न भेजें और उसका साथ दें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Is all deepfake technology bad? Argue both sides and give your conclusion.",
+    "hi": "क्या सारी डीपफ़ेक तकनीक बुरी है? दोनों पक्षों के तर्क देकर अपना निष्कर्ष लिखिए।"
+   },
+   "a": {
+    "en": "Helpful uses: film dubbing with matching lips, restoring the voice of patients, labelled museum or education content, safe training simulations. Harmful uses: scams, fake news, bullying, election misinformation. Conclusion: the technology itself is a tool; what matters is consent, honesty (clear labels) and purpose. Using it on real people without consent, or to deceive, is wrong.",
+    "hi": "उपयोगी उपयोग: होंठ मिलाकर फ़िल्म डबिंग, मरीज़ों की आवाज़ लौटाना, लेबल वाली संग्रहालय या शिक्षा सामग्री, सुरक्षित प्रशिक्षण अनुकरण। हानिकारक उपयोग: ठगी, फ़र्ज़ी ख़बर, धमकाना, चुनाव में गलत सूचना। निष्कर्ष: तकनीक खुद एक औज़ार है; मायने रखते हैं अनुमति, ईमानदारी (स्पष्ट लेबल) और उद्देश्य। असली लोगों पर बिना अनुमति, या धोखा देने के लिए इसका उपयोग गलत है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: List three risks of generative AI other than deepfakes and suggest one sensible habit for each.",
+    "hi": "सोचने वाला प्रश्न: डीपफ़ेक के अलावा जनरेटिव AI के तीन खतरे लिखिए और हर एक के लिए एक समझदार आदत सुझाइए।"
+   },
+   "a": {
+    "en": "Hallucination: check facts in trusted sources. Privacy: never type personal data or upload others' photos. Over-dependence: attempt work yourself first and use AI to check. (Also: bias, copyright, energy use.)",
+    "hi": "Hallucination: विश्वसनीय स्रोतों में तथ्य जाँचें। निजता: निजी डेटा कभी टाइप न करें, दूसरों की फ़ोटो अपलोड न करें। अति-निर्भरता: पहले खुद काम का प्रयास करें और जाँच के लिए AI उपयोग करें। (और भी: पक्षपात, कॉपीराइट, ऊर्जा उपयोग।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Activity question: Describe the next-word game and what it teaches about LLMs.",
+    "hi": "गतिविधि प्रश्न: अगला-शब्द खेल का वर्णन कीजिए और बताइए कि यह LLM के बारे में क्या सिखाता है।"
+   },
+   "a": {
+    "en": "Students add one fitting word at a time to a starting phrase without planning the whole sentence. The result is fluent but unplanned, sometimes off-topic. It shows that LLMs also add one likely token at a time, so fluency does not guarantee truth.",
+    "hi": "विद्यार्थी शुरुआती वाक्यांश में पूरा वाक्य सोचे बिना एक-एक उपयुक्त शब्द जोड़ते हैं। परिणाम धाराप्रवाह पर बिना योजना का, कभी विषय से भटका होता है। यह दिखाता है कि LLM भी एक बार में एक संभावित token जोड़ते हैं, इसलिए धाराप्रवाह होना सच की गारंटी नहीं।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Generative AI creates new text, images, audio, music, video and code after learning patterns from huge data.",
+   "Predictive AI labels or forecasts; generative AI makes something new, often different each time.",
+   "Models are trained on data, fine-tuned for helpfulness and safety, then generate output from your prompt.",
+   "LLMs power chatbots by predicting the next token again and again; fluent output can still be false (hallucination).",
+   "Image tools often use diffusion (noise removed step by step); GANs use a generator and discriminator that compete.",
+   "Good uses include learning, brainstorming, drafting, Indian-language tools, accessibility, art, science and coding.",
+   "Risks include hallucination, bias, privacy loss, copyright issues, over-dependence, misinformation and energy use.",
+   "A deepfake is AI-made or AI-changed media showing a real person saying or doing what they never did: face swaps, lip sync, voice clones.",
+   "Deepfakes are used for scams, fake news, bullying and damaging reputations, and they reduce trust in real evidence.",
+   "Check suspicious media with STOP, LOOK, CHECK, DECIDE: notice emotions, look for clues, verify the source, and do not forward if unsure.",
+   "Against voice-clone scams: call back on a saved number, use a family code word, never share OTP or UPI PIN.",
+   "Report fraud and harmful deepfakes at 1930 and cybercrime.gov.in, and tell a trusted adult.",
+   "Use generative AI honestly: check facts, protect privacy, get consent, label AI content and keep building your own skills."
+  ],
+  "hi": [
+   "जनरेटिव AI विशाल डेटा से पैटर्न सीखकर नया टेक्स्ट, चित्र, ऑडियो, संगीत, वीडियो और कोड बनाता है।",
+   "अनुमान लगाने वाला AI लेबल या पूर्वानुमान देता है; जनरेटिव AI कुछ नया बनाता है, अक्सर हर बार अलग।",
+   "model डेटा पर प्रशिक्षित होते हैं, सहायकता और सुरक्षा के लिए fine-tune किए जाते हैं, फिर आपके prompt से आउटपुट बनाते हैं।",
+   "LLM बार-बार अगले token का अनुमान लगाकर chatbot चलाते हैं; धाराप्रवाह आउटपुट भी गलत हो सकता है (hallucination)।",
+   "चित्र-टूल अक्सर diffusion (चरण-दर-चरण शोर हटाना) उपयोग करते हैं; GAN में generator और discriminator मुकाबला करते हैं।",
+   "अच्छे उपयोगों में पढ़ाई, विचार-मंथन, मसौदा, भारतीय-भाषा टूल, सुलभता, कला, विज्ञान और कोडिंग शामिल हैं।",
+   "खतरों में hallucination, पक्षपात, निजता की हानि, कॉपीराइट, अति-निर्भरता, गलत सूचना और ऊर्जा उपयोग शामिल हैं।",
+   "डीपफ़ेक AI से बनी या बदली सामग्री है जिसमें असली व्यक्ति वह कहता या करता दिखे जो उसने कभी नहीं किया: face swap, lip sync, voice clone।",
+   "डीपफ़ेक का उपयोग ठगी, फ़र्ज़ी ख़बर, धमकाने और प्रतिष्ठा बिगाड़ने में होता है, और ये असली सबूत पर भरोसा भी घटाते हैं।",
+   "संदिग्ध सामग्री को रुको, देखो, जाँचो, तय करो से परखें: भावना पहचानें, संकेत देखें, स्रोत जाँचें, और शक हो तो आगे न भेजें।",
+   "voice-clone ठगी से बचाव: सहेजे नंबर पर वापस फ़ोन करें, पारिवारिक कोड शब्द रखें, OTP या UPI PIN कभी न बताएँ।",
+   "धोखाधड़ी और हानिकारक डीपफ़ेक की शिकायत 1930 और cybercrime.gov.in पर करें, और किसी भरोसेमंद बड़े को बताएँ।",
+   "जनरेटिव AI ईमानदारी से उपयोग करें: तथ्य जाँचें, निजता बचाएँ, अनुमति लें, AI सामग्री पर लेबल लगाएँ और अपना कौशल बढ़ाते रहें।"
+  ]
+ }
+}

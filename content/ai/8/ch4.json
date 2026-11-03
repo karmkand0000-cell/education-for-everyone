@@ -1,0 +1,1377 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "8",
+ "id": "ch4",
+ "intro": {
+  "en": "A chatbot is only as helpful as the instructions you give it. Ask 'tell me about volcanoes' and you get a long, general answer; ask clearly, with a role, a task, context, a format and limits, and you get exactly what you need. In Class 7 you wrote your first prompts. In this chapter you will learn prompt engineering properly: how a chatbot turns your prompt into an answer, the five building blocks of a strong prompt, zero-shot and few-shot prompting, asking for step-by-step reasoning, breaking big tasks into a chain of prompts, improving prompts by iteration, spotting and checking hallucinations, and using AI safely and honestly for schoolwork.",
+  "hi": "Chatbot उतना ही मददगार है जितने अच्छे निर्देश आप उसे देते हैं। 'ज्वालामुखी के बारे में बताओ' पूछिए तो लंबा, सामान्य जवाब मिलता है; भूमिका, काम, संदर्भ, रूप और सीमाओं के साथ साफ़ पूछिए तो ठीक वही मिलता है जो आपको चाहिए। कक्षा 7 में आपने अपने पहले prompts लिखे थे। इस अध्याय में आप prompt engineering ठीक से सीखेंगे: chatbot आपके prompt को जवाब में कैसे बदलता है, मज़बूत prompt के पाँच हिस्से, zero-shot और few-shot prompting, चरण-दर-चरण तर्क माँगना, बड़े काम को prompts की एक कड़ी में तोड़ना, दोहराकर prompts सुधारना, hallucinations पहचानना और जाँचना, और स्कूल के काम में AI का सुरक्षित तथा ईमानदार उपयोग।"
+ },
+ "learn": {
+  "en": [
+   "What a prompt is and what prompt engineering means",
+   "How a chatbot (large language model) produces an answer, in simple steps",
+   "The five building blocks: Role, Task, Context, Format, Constraints",
+   "Zero-shot, one-shot and few-shot prompting",
+   "Step-by-step (chain-of-thought) prompts for maths and reasoning",
+   "Breaking a big task into a chain of prompts",
+   "Iteration: read, check, refine",
+   "Hallucinations, bias and how to verify AI answers",
+   "Prompts for learning, not cheating; privacy and safety rules"
+  ],
+  "hi": [
+   "Prompt क्या है और prompt engineering का अर्थ",
+   "Chatbot (large language model) जवाब कैसे बनाता है, सरल चरणों में",
+   "पाँच हिस्से: Role, Task, Context, Format, Constraints",
+   "Zero-shot, one-shot और few-shot prompting",
+   "गणित और तर्क के लिए चरण-दर-चरण (chain-of-thought) prompts",
+   "बड़े काम को prompts की कड़ी में तोड़ना",
+   "Iteration: पढ़ें, जाँचें, सुधारें",
+   "Hallucinations, पक्षपात और AI के जवाब कैसे जाँचें",
+   "सीखने के लिए prompts, नकल के लिए नहीं; निजता और सुरक्षा के नियम"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "4.1 What is a prompt? What is prompt engineering?",
+    "hi": "4.1 Prompt क्या है? Prompt engineering क्या है?"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Prompt",
+       "hi": "Prompt (प्रॉम्प्ट)"
+      },
+      "text": {
+       "en": "The instruction, question or input you give to an AI tool, such as a chatbot or an image generator, to get a response.",
+       "hi": "वह निर्देश, सवाल या input जो आप किसी AI टूल, जैसे chatbot या image generator, को जवाब पाने के लिए देते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Prompt engineering",
+       "hi": "Prompt engineering (प्रॉम्प्ट इंजीनियरिंग)"
+      },
+      "text": {
+       "en": "The skill of designing, testing and improving prompts so that an AI tool gives accurate, useful and safe answers for a particular purpose.",
+       "hi": "Prompts को इस तरह बनाने, जाँचने और सुधारने का कौशल कि AI टूल किसी ख़ास उद्देश्य के लिए सटीक, उपयोगी और सुरक्षित जवाब दे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Think of a chatbot as a very fast, well-read helper who has never met you. It does not know your class, your syllabus, what you already know, how long the answer should be, or why you are asking. A good prompt gives it that missing information. A vague prompt forces it to guess, and guesses are often too long, too hard, too general or simply wrong.",
+      "hi": "Chatbot को एक बहुत तेज़, बहुत पढ़े-लिखे सहायक की तरह सोचिए जो आपसे कभी नहीं मिला। उसे नहीं पता कि आप किस कक्षा में हैं, आपका पाठ्यक्रम क्या है, आप पहले से क्या जानते हैं, जवाब कितना लंबा हो, या आप क्यों पूछ रहे हैं। अच्छा prompt उसे यह छूटी जानकारी देता है। अस्पष्ट prompt उसे अनुमान लगाने पर मजबूर करता है, और अनुमान अक्सर बहुत लंबे, बहुत कठिन, बहुत सामान्य या बस गलत होते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Compare two prompts and the kind of answer each is likely to produce.\nPrompt A: 'photosynthesis'\nPrompt B: 'Explain photosynthesis to a Class 8 student in 5 short bullet points. Include the word equation and one everyday example from an Indian farm.'",
+       "hi": "दो prompts की तुलना कीजिए और बताइए हर एक से किस तरह का जवाब मिलने की संभावना है।\nPrompt A: 'photosynthesis'\nPrompt B: 'कक्षा 8 के छात्र को प्रकाश-संश्लेषण 5 छोटे बिंदुओं में समझाओ। शब्द-समीकरण और किसी भारतीय खेत का एक रोज़मर्रा का उदाहरण शामिल करो।'"
+      },
+      "a": {
+       "en": "Step 1: Prompt A gives no audience, length or format, so the AI may write a long college-level essay with hard terms.\nStep 2: Prompt B states the audience (Class 8), the format (5 bullet points), required content (word equation) and context (an Indian farm example).\nStep 3: So Prompt B is far more likely to give a short, clear, useful answer at the right level.",
+       "hi": "चरण 1: Prompt A में न पाठक, न लंबाई, न रूप है, इसलिए AI कठिन शब्दों वाला लंबा कॉलेज-स्तर का निबंध लिख सकता है।\nचरण 2: Prompt B पाठक (कक्षा 8), रूप (5 बिंदु), ज़रूरी सामग्री (शब्द-समीकरण) और संदर्भ (भारतीय खेत का उदाहरण) बताता है।\nचरण 3: इसलिए Prompt B से छोटा, साफ़, सही स्तर का उपयोगी जवाब मिलने की संभावना कहीं ज़्यादा है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: clear in, clear out. A prompt is an instruction to a machine that cannot read your mind.",
+      "hi": "याद रखें: साफ़ अंदर, साफ़ बाहर। Prompt एक ऐसी मशीन के लिए निर्देश है जो आपका मन नहीं पढ़ सकती।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.2 How does a chatbot answer a prompt?",
+    "hi": "4.2 Chatbot prompt का जवाब कैसे देता है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Chapter 1 you read that chatbots are built on large language models (LLMs), and in Chapter 3 you learnt how models are trained on data. Knowing the basic process helps you write better prompts.",
+      "hi": "अध्याय 1 में आपने पढ़ा था कि chatbots large language models (LLMs) पर बने हैं, और अध्याय 3 में आपने सीखा कि मॉडल data पर कैसे train होते हैं। बुनियादी प्रक्रिया जानने से आप बेहतर prompts लिख पाते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "1. Training: the model was trained on a huge amount of text to predict the next small piece of text. Later it was fine-tuned with human feedback to follow instructions and be helpful and safe.",
+       "2. Your prompt is split into small pieces called tokens (whole words, parts of words or punctuation).",
+       "3. The model looks at all the tokens in the conversation so far, which is its context.",
+       "4. It predicts the most suitable next token, adds it, and repeats, token by token, until the answer is complete.",
+       "5. Some chatbots can also search the web or read a file you share, and use that text as extra context."
+      ],
+      "hi": [
+       "1. Training: मॉडल को भारी मात्रा में text पर train किया गया ताकि वह text का अगला छोटा टुकड़ा अनुमान लगा सके। बाद में उसे मानव प्रतिक्रिया (human feedback) से सुधारा गया ताकि वह निर्देश माने और मददगार तथा सुरक्षित रहे।",
+       "2. आपका prompt छोटे टुकड़ों में बँटता है जिन्हें tokens कहते हैं (पूरे शब्द, शब्दों के हिस्से या विराम-चिह्न)।",
+       "3. मॉडल अब तक की बातचीत के सभी tokens देखता है, जो उसका context (संदर्भ) है।",
+       "4. यह सबसे उपयुक्त अगला token अनुमान लगाता है, उसे जोड़ता है, और दोहराता है, token दर token, जब तक जवाब पूरा न हो।",
+       "5. कुछ chatbots वेब पर खोज भी सकते हैं या आपकी दी फ़ाइल पढ़ सकते हैं, और उस text को अतिरिक्त context के रूप में उपयोग करते हैं।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Token",
+       "hi": "Token (टोकन)"
+      },
+      "text": {
+       "en": "A small piece of text, such as a word or part of a word, that a language model reads and writes. 'Unbelievable' might be split into pieces like 'un', 'believ', 'able'.",
+       "hi": "Text का छोटा टुकड़ा, जैसे कोई शब्द या शब्द का हिस्सा, जिसे language model पढ़ता और लिखता है। 'Unbelievable' को 'un', 'believ', 'able' जैसे टुकड़ों में बाँटा जा सकता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Context window",
+       "hi": "Context window (संदर्भ खिड़की)"
+      },
+      "text": {
+       "en": "The amount of text (measured in tokens) a model can consider at one time: your prompt, the earlier messages and its own replies. Very old parts of a very long chat may fall outside it.",
+       "hi": "Text की वह मात्रा (tokens में मापी गई) जिस पर मॉडल एक समय में विचार कर सकता है: आपका prompt, पहले के संदेश और उसके अपने जवाब। बहुत लंबी चैट के बहुत पुराने हिस्से इससे बाहर हो सकते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "What this means for you: (1) Everything the model 'knows' about your request comes from your prompt and the conversation, so put the important details in. (2) The model produces likely-sounding text; it does not look facts up in a textbook unless a search tool is used, so it can sound sure and still be wrong. (3) The same prompt can give slightly different answers each time, because there is some randomness in choosing the next token. (4) Its training data stops at some date, so it may not know recent events.",
+      "hi": "आपके लिए इसका अर्थ: (1) मॉडल आपके अनुरोध के बारे में जो 'जानता' है, वह आपके prompt और बातचीत से आता है, इसलिए ज़रूरी विवरण डालें। (2) मॉडल सही लगने वाला text बनाता है; जब तक खोज टूल उपयोग न हो, वह किताब में तथ्य नहीं देखता, इसलिए वह भरोसे से बोलकर भी गलत हो सकता है। (3) एक ही prompt हर बार थोड़े अलग जवाब दे सकता है, क्योंकि अगला token चुनने में कुछ यादृच्छिकता होती है। (4) इसका training data किसी तारीख़ पर रुक जाता है, इसलिए उसे हाल की घटनाएँ पता न हों, ऐसा हो सकता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "A chatbot predicts words; it does not 'know' or 'believe' anything. Treat it as a helpful draft-maker whose work you must check.",
+      "hi": "Chatbot शब्दों का अनुमान लगाता है; वह कुछ 'जानता' या 'मानता' नहीं। उसे एक मददगार मसौदा-लेखक मानें जिसका काम आपको जाँचना है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.3 The five building blocks of a strong prompt",
+    "hi": "4.3 मज़बूत prompt के पाँच हिस्से"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A simple checklist for strong prompts is R-T-C-F-C: Role, Task, Context, Format, Constraints. You do not need all five every time, but the more important the task, the more of them you should use.",
+      "hi": "मज़बूत prompts के लिए एक सरल जाँच-सूची है R-T-C-F-C: Role (भूमिका), Task (काम), Context (संदर्भ), Format (रूप), Constraints (सीमाएँ)। हर बार पाँचों ज़रूरी नहीं, पर काम जितना महत्वपूर्ण हो, उतने ज़्यादा उपयोग करें।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Block",
+        "What it tells the AI",
+        "Example phrase"
+       ],
+       "hi": [
+        "हिस्सा",
+        "यह AI को क्या बताता है",
+        "उदाहरण वाक्यांश"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Role",
+         "Who it should act as, which sets the tone and level",
+         "'Act as a friendly science teacher.'"
+        ],
+        [
+         "Task",
+         "Exactly what to do, using a clear action verb (explain, list, compare, summarise, quiz me, check)",
+         "'Explain how a rainbow forms.'"
+        ],
+        [
+         "Context",
+         "Background: who the answer is for, what you already know, why you need it",
+         "'I am in Class 8 and know about reflection but not refraction. It is for a class presentation.'"
+        ],
+        [
+         "Format",
+         "Shape of the answer: bullets, table, steps, paragraph, dialogue, flashcards",
+         "'Give 4 numbered steps and then a 3-row table.'"
+        ],
+        [
+         "Constraints",
+         "Limits and rules: length, language, reading level, what to avoid or include",
+         "'Under 120 words, simple English, no jargon, include one Indian example.'"
+        ]
+       ],
+       "hi": [
+        [
+         "Role (भूमिका)",
+         "उसे किस रूप में काम करना है, जिससे लहजा और स्तर तय होता है",
+         "'एक दोस्ताना विज्ञान शिक्षक की तरह व्यवहार करो।'"
+        ],
+        [
+         "Task (काम)",
+         "ठीक-ठीक क्या करना है, साफ़ क्रिया के साथ (समझाओ, सूची बनाओ, तुलना करो, सारांश दो, मुझसे क्विज़ करो, जाँचो)",
+         "'समझाओ कि इंद्रधनुष कैसे बनता है।'"
+        ],
+        [
+         "Context (संदर्भ)",
+         "पृष्ठभूमि: जवाब किसके लिए है, आप पहले से क्या जानते हैं, आपको क्यों चाहिए",
+         "'मैं कक्षा 8 में हूँ और परावर्तन जानता हूँ पर अपवर्तन नहीं। यह कक्षा प्रस्तुति के लिए है।'"
+        ],
+        [
+         "Format (रूप)",
+         "जवाब का आकार: बिंदु, तालिका, चरण, अनुच्छेद, संवाद, flashcards",
+         "'4 क्रमांकित चरण दो और फिर 3 पंक्तियों की तालिका।'"
+        ],
+        [
+         "Constraints (सीमाएँ)",
+         "सीमाएँ और नियम: लंबाई, भाषा, पढ़ने का स्तर, क्या टालें या शामिल करें",
+         "'120 शब्दों से कम, सरल हिंदी, कठिन शब्द नहीं, एक भारतीय उदाहरण शामिल करो।'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Turn the weak prompt 'tell me about the Mughal empire' into a strong prompt using all five blocks. Label each part.",
+       "hi": "कमज़ोर prompt 'मुग़ल साम्राज्य के बारे में बताओ' को पाँचों हिस्सों से मज़बूत prompt में बदलिए। हर हिस्से पर लेबल लगाइए।"
+      },
+      "a": {
+       "en": "Step 1 (Role): 'Act as a history teacher who makes topics easy.'\nStep 2 (Task): 'Make a revision sheet on the Mughal empire.'\nStep 3 (Context): 'I am a Class 8 CBSE student revising for a unit test; I know the names of the rulers but mix up their order and achievements.'\nStep 4 (Format): 'Give a table with columns: Ruler, Years of rule, Two main achievements. Then add 3 quiz questions with answers.'\nStep 5 (Constraints): 'Cover Babur to Aurangzeb only, keep it under 200 words, and use simple English.'\nFull prompt: all five sentences together. Finally, check the years and facts against your NCERT textbook.",
+       "hi": "चरण 1 (Role): 'ऐसे इतिहास शिक्षक की तरह व्यवहार करो जो विषयों को आसान बनाता है।'\nचरण 2 (Task): 'मुग़ल साम्राज्य पर एक दोहराव-पत्रक बनाओ।'\nचरण 3 (Context): 'मैं CBSE कक्षा 8 का छात्र हूँ और यूनिट टेस्ट के लिए दोहरा रहा हूँ; मुझे शासकों के नाम पता हैं पर उनका क्रम और उपलब्धियाँ उलझ जाती हैं।'\nचरण 4 (Format): 'तालिका दो जिसके स्तंभ हों: शासक, शासन के वर्ष, दो मुख्य उपलब्धियाँ। फिर उत्तरों के साथ 3 क्विज़ सवाल जोड़ो।'\nचरण 5 (Constraints): 'केवल बाबर से औरंगज़ेब तक, 200 शब्दों से कम, और सरल हिंदी में।'\nपूरा prompt: पाँचों वाक्य एक साथ। अंत में वर्ष और तथ्य अपनी NCERT किताब से जाँचें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Other useful additions: tone ('encouraging', 'formal', 'funny but correct'), audience ('for my grandmother who reads only Hindi'), and success criteria ('the answer is good if a Class 6 student can follow it'). You can also tell the AI what to do if it is unsure: 'If you are not sure of a fact, say so instead of guessing.'",
+      "hi": "अन्य उपयोगी जोड़: लहजा ('उत्साह बढ़ाने वाला', 'औपचारिक', 'मज़ेदार पर सही'), पाठक ('मेरी दादी के लिए जो केवल हिंदी पढ़ती हैं'), और सफलता की कसौटी ('जवाब तब अच्छा है जब कक्षा 6 का छात्र समझ सके')। आप AI को यह भी बता सकते हैं कि अनिश्चित होने पर क्या करे: 'अगर किसी तथ्य पर पक्का न हो, तो अनुमान लगाने के बजाय बता देना।'"
+     }
+    },
+    {
+     "note": {
+      "en": "Use clear action verbs: explain, summarise, compare, list, classify, translate, rewrite, quiz, check, give feedback. Vague verbs like 'talk about' or 'tell me' give vague answers.",
+      "hi": "साफ़ क्रियाएँ उपयोग करें: समझाओ, सारांश दो, तुलना करो, सूची बनाओ, वर्गीकृत करो, अनुवाद करो, दोबारा लिखो, क्विज़ करो, जाँचो, प्रतिक्रिया दो। 'बात करो' या 'बताओ' जैसी अस्पष्ट क्रियाएँ अस्पष्ट जवाब देती हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.4 Zero-shot, one-shot and few-shot prompting",
+    "hi": "4.4 Zero-shot, one-shot और few-shot prompting"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Sometimes it is easier to show the AI what you want than to describe it. The number of examples you include gives these techniques their names.",
+      "hi": "कभी-कभी AI को यह बताने से आसान है कि आप क्या चाहते हैं, उसे दिखा देना। आप जितने उदाहरण शामिल करते हैं, उसी से इन तकनीकों के नाम बनते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Technique",
+        "Meaning",
+        "Example"
+       ],
+       "hi": [
+        "तकनीक",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Zero-shot",
+         "Only the instruction, no examples",
+         "'Classify this review as positive or negative: The samosas were cold.'"
+        ],
+        [
+         "One-shot",
+         "The instruction plus one example of input and output",
+         "'Example: \"Loved the dosa!\" → positive. Now: \"The samosas were cold.\" →'"
+        ],
+        [
+         "Few-shot",
+         "The instruction plus two or more examples, showing the pattern clearly",
+         "Three labelled reviews, then the new one"
+        ]
+       ],
+       "hi": [
+        [
+         "Zero-shot",
+         "केवल निर्देश, कोई उदाहरण नहीं",
+         "'इस समीक्षा को सकारात्मक या नकारात्मक में बाँटो: समोसे ठंडे थे।'"
+        ],
+        [
+         "One-shot",
+         "निर्देश के साथ input और output का एक उदाहरण",
+         "'उदाहरण: \"डोसा बहुत पसंद आया!\" → सकारात्मक। अब: \"समोसे ठंडे थे।\" →'"
+        ],
+        [
+         "Few-shot",
+         "निर्देश के साथ दो या ज़्यादा उदाहरण, जो पैटर्न साफ़ दिखाएँ",
+         "तीन लेबल वाली समीक्षाएँ, फिर नई वाली"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "You want the AI to make vocabulary cards in a fixed style. Write a few-shot prompt.",
+       "hi": "आप चाहते हैं कि AI एक तय शैली में शब्दावली कार्ड बनाए। एक few-shot prompt लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: State the task: 'Make vocabulary cards in exactly this style.'\nStep 2: Give examples:\n'Word: generous | Meaning: happy to give or share | Sentence: Our neighbour is generous and shares mangoes with everyone. | Hindi: उदार'\n'Word: curious | Meaning: eager to know or learn | Sentence: The curious child asked how rockets fly. | Hindi: जिज्ञासु'\nStep 3: Ask for the new items: 'Now make cards for: brave, ancient, fragile.'\nStep 4: Why it works: the examples fix the order, the length of the meaning, the type of sentence and the Hindi word, so the AI copies the pattern instead of guessing.",
+       "hi": "चरण 1: काम बताएँ: 'ठीक इसी शैली में शब्दावली कार्ड बनाओ।'\nचरण 2: उदाहरण दें:\n'Word: generous | Meaning: happy to give or share | Sentence: Our neighbour is generous and shares mangoes with everyone. | Hindi: उदार'\n'Word: curious | Meaning: eager to know or learn | Sentence: The curious child asked how rockets fly. | Hindi: जिज्ञासु'\nचरण 3: नई चीज़ें माँगें: 'अब इनके कार्ड बनाओ: brave, ancient, fragile।'\nचरण 4: यह क्यों काम करता है: उदाहरण क्रम, अर्थ की लंबाई, वाक्य का प्रकार और हिंदी शब्द तय कर देते हैं, इसलिए AI अनुमान लगाने के बजाय पैटर्न की नकल करता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Few-shot prompting is like learning from examples in Chapter 3, but the 'learning' happens only inside this one conversation; the model itself is not retrained. Choose examples that are correct and varied, because the AI will copy their mistakes too.",
+      "hi": "Few-shot prompting अध्याय 3 के उदाहरणों से सीखने जैसा है, पर यह 'सीखना' केवल इसी एक बातचीत के अंदर होता है; मॉडल ख़ुद दोबारा train नहीं होता। सही और विविध उदाहरण चुनें, क्योंकि AI उनकी गलतियों की भी नकल करेगा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.5 Asking for step-by-step reasoning",
+    "hi": "4.5 चरण-दर-चरण तर्क माँगना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "For maths, logic puzzles and science reasoning, asking the AI to work 'step by step' and show each step usually gives better and more checkable answers. This idea is often called chain-of-thought prompting. It also helps you learn, because you can see the method and spot where a mistake happens.",
+      "hi": "गणित, तर्क की पहेलियों और विज्ञान के तर्क के लिए AI से 'चरण-दर-चरण' काम करने और हर चरण दिखाने को कहना आमतौर पर बेहतर और जाँचने लायक जवाब देता है। इस विचार को अक्सर chain-of-thought prompting कहते हैं। इससे आपको सीखने में भी मदद मिलती है, क्योंकि आप तरीका देख सकते हैं और पहचान सकते हैं कि गलती कहाँ हुई।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Prompt: 'Act as a maths teacher. Solve step by step for a Class 8 student: A shirt costs Rs 840. There is a 15% discount. What is the price after discount? Show each step, then check the answer another way.' Work out what a correct answer should contain.",
+       "hi": "Prompt: 'गणित शिक्षक की तरह, कक्षा 8 के छात्र के लिए चरण-दर-चरण हल करो: एक कमीज़ Rs 840 की है। 15% छूट है। छूट के बाद दाम क्या है? हर चरण दिखाओ, फिर दूसरे तरीके से उत्तर जाँचो।' बताइए कि सही उत्तर में क्या होना चाहिए।"
+      },
+      "a": {
+       "en": "Step 1: Discount = 15% of 840 = 15/100 × 840 = 12600/100 = Rs 126.\nStep 2: Price after discount = 840 - 126 = Rs 714.\nStep 3: Check another way: paying 85% of the price: 85/100 × 840 = 71400/100 = Rs 714. Both methods agree.\nStep 4: Your own check: 10% of 840 = 84 and 5% = 42, so 15% = 126. Correct. If the AI had written 'Rs 726', the steps would let you find exactly where it went wrong.",
+       "hi": "चरण 1: छूट = 840 का 15% = 15/100 × 840 = 12600/100 = Rs 126।\nचरण 2: छूट के बाद दाम = 840 - 126 = Rs 714।\nचरण 3: दूसरे तरीके से जाँच: दाम का 85% देना: 85/100 × 840 = 71400/100 = Rs 714। दोनों तरीके मिलते हैं।\nचरण 4: आपकी अपनी जाँच: 840 का 10% = 84 और 5% = 42, इसलिए 15% = 126। सही। अगर AI ने 'Rs 726' लिखा होता, तो चरणों से आप ठीक-ठीक पता लगा लेते कि गलती कहाँ हुई।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Chatbots can still make arithmetic slips, because they predict text rather than calculate like a calculator. So for numbers, either check with a calculator yourself, or ask the AI to use a calculator or code tool if it has one. And for homework, a better prompt is often: 'Don't give me the answer. Give me a hint for the first step, then wait for my attempt.'",
+      "hi": "Chatbots फिर भी गणना की छोटी गलतियाँ कर सकते हैं, क्योंकि वे कैलकुलेटर की तरह गणना करने के बजाय text का अनुमान लगाते हैं। इसलिए संख्याओं के लिए या तो ख़ुद कैलकुलेटर से जाँचें, या AI के पास कैलकुलेटर या code टूल हो तो उससे उसका उपयोग करने को कहें। और होमवर्क के लिए अक्सर बेहतर prompt यह है: 'मुझे उत्तर मत दो। पहले चरण का संकेत दो, फिर मेरी कोशिश का इंतज़ार करो।'"
+     }
+    },
+    {
+     "note": {
+      "en": "Step-by-step answers are easier to check, not automatically correct. You are the final checker.",
+      "hi": "चरण-दर-चरण जवाब जाँचने में आसान हैं, अपने आप सही नहीं। अंतिम जाँचकर्ता आप हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.6 Breaking a big task into a chain of prompts",
+    "hi": "4.6 बड़े काम को prompts की कड़ी में तोड़ना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A single huge prompt like 'Make my whole science project on water conservation' often gives a shallow result. In Class 7 computational thinking you met decomposition: breaking a problem into smaller parts. Prompt chaining uses the same idea: you do the task in stages, check each stage, and feed the good output into the next prompt.",
+      "hi": "'जल संरक्षण पर मेरा पूरा विज्ञान project बना दो' जैसा एक बड़ा prompt अक्सर उथला परिणाम देता है। कक्षा 7 की computational thinking में आप decomposition से मिले थे: समस्या को छोटे हिस्सों में तोड़ना। Prompt chaining यही विचार उपयोग करता है: आप काम चरणों में करते हैं, हर चरण जाँचते हैं, और अच्छा output अगले prompt में डालते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Prompt chaining",
+       "hi": "Prompt chaining (प्रॉम्प्ट की कड़ी)"
+      },
+      "text": {
+       "en": "Doing a large task through a series of smaller prompts, where the result of one step (after you check it) is used in the next.",
+       "hi": "बड़े काम को छोटे prompts की एक श्रृंखला से करना, जिसमें एक चरण का परिणाम (आपकी जाँच के बाद) अगले में उपयोग होता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Plan a prompt chain for a Class 8 poster on saving water at school.",
+       "hi": "स्कूल में पानी बचाने पर कक्षा 8 के पोस्टर के लिए prompt chain की योजना बनाइए।"
+      },
+      "a": {
+       "en": "Prompt 1 (ideas): 'List 10 ways students can save water at school in India. One line each.' → You choose the 4 best and most practical.\nPrompt 2 (facts): 'For these 4 ideas, explain briefly why each saves water. Mark any number you give as approximate, and tell me which official source I could check it in.' → You verify numbers yourself.\nPrompt 3 (slogan): 'Suggest 5 short, catchy Hindi and English slogans for a poster on these ideas, for Class 6-8 students.' → You pick or rewrite one in your own words.\nPrompt 4 (layout): 'Suggest a simple poster layout: title, 4 boxes, a slogan, a small drawing idea.' → You draw it yourself.\nAt each step you check, choose and add your own thinking; the final poster is your work, with AI used as a helper.",
+       "hi": "Prompt 1 (विचार): 'भारत में छात्र स्कूल में पानी बचाने के 10 तरीके बताओ। हर एक एक पंक्ति में।' → आप 4 सबसे अच्छे और व्यावहारिक चुनते हैं।\nPrompt 2 (तथ्य): 'इन 4 विचारों के लिए संक्षेप में समझाओ कि हर एक पानी कैसे बचाता है। जो भी संख्या दो उसे अनुमानित चिह्नित करो, और बताओ कि मैं उसे किस आधिकारिक स्रोत में जाँच सकता हूँ।' → संख्याएँ आप ख़ुद जाँचते हैं।\nPrompt 3 (नारा): 'कक्षा 6-8 के छात्रों के लिए इन विचारों पर पोस्टर के 5 छोटे, आकर्षक हिंदी और अंग्रेज़ी नारे सुझाओ।' → आप एक चुनते हैं या अपने शब्दों में दोबारा लिखते हैं।\nPrompt 4 (लेआउट): 'एक सरल पोस्टर लेआउट सुझाओ: शीर्षक, 4 डिब्बे, एक नारा, एक छोटे चित्र का विचार।' → चित्र आप ख़ुद बनाते हैं।\nहर चरण पर आप जाँचते, चुनते और अपनी सोच जोड़ते हैं; अंतिम पोस्टर आपका काम है, AI केवल सहायक।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.7 Iteration: read, check, refine",
+    "hi": "4.7 Iteration: पढ़ें, जाँचें, सुधारें"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Expert prompt writers rarely get the perfect answer on the first try. They treat the first answer as a draft and improve the prompt in a loop. Picture a cycle with four arrows: Write the prompt → Read the answer → Check it (facts, level, format) → Refine the prompt → back to Read.",
+      "hi": "विशेषज्ञ prompt लेखकों को भी पहली बार में शायद ही कभी एकदम सही जवाब मिलता है। वे पहले जवाब को मसौदा मानते हैं और prompt को एक चक्र में सुधारते हैं। चार तीरों वाला एक चक्र सोचिए: Prompt लिखें → जवाब पढ़ें → जाँचें (तथ्य, स्तर, रूप) → Prompt सुधारें → फिर पढ़ें।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Iteration (iterative prompting)",
+       "hi": "Iteration (दोहराकर सुधारना)"
+      },
+      "text": {
+       "en": "Improving a result step by step by giving follow-up instructions based on what was wrong or missing in the previous answer.",
+       "hi": "पिछले जवाब में जो गलत या अधूरा था उसके आधार पर आगे के निर्देश देकर परिणाम को चरण-दर-चरण सुधारना।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Problem with the answer",
+        "Follow-up prompt"
+       ],
+       "hi": [
+        "जवाब में समस्या",
+        "आगे का prompt"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Too long",
+         "'Shorten it to 5 bullet points of one line each.'"
+        ],
+        [
+         "Too difficult",
+         "'Explain it again as if I am in Class 6, with an everyday example.'"
+        ],
+        [
+         "Too general",
+         "'Give an example from an Indian city or village.'"
+        ],
+        [
+         "Wrong format",
+         "'Put this in a table with columns: Term, Meaning, Example.'"
+        ],
+        [
+         "Missing part",
+         "'You did not include the causes. Add 3 causes.'"
+        ],
+        [
+         "Doubtful fact",
+         "'Which part of this are you least sure about? What source could I check?'"
+        ],
+        [
+         "Want to practise",
+         "'Now quiz me with 5 questions, one at a time, and tell me if I am right.'"
+        ]
+       ],
+       "hi": [
+        [
+         "बहुत लंबा",
+         "'इसे एक-एक पंक्ति के 5 बिंदुओं में छोटा करो।'"
+        ],
+        [
+         "बहुत कठिन",
+         "'इसे फिर से ऐसे समझाओ जैसे मैं कक्षा 6 में हूँ, रोज़मर्रा के उदाहरण के साथ।'"
+        ],
+        [
+         "बहुत सामान्य",
+         "'किसी भारतीय शहर या गाँव का उदाहरण दो।'"
+        ],
+        [
+         "गलत रूप",
+         "'इसे स्तंभों वाली तालिका में रखो: शब्द, अर्थ, उदाहरण।'"
+        ],
+        [
+         "कोई हिस्सा छूटा",
+         "'तुमने कारण शामिल नहीं किए। 3 कारण जोड़ो।'"
+        ],
+        [
+         "संदिग्ध तथ्य",
+         "'इसमें किस हिस्से पर तुम सबसे कम पक्के हो? मैं कौन-सा स्रोत जाँच सकता हूँ?'"
+        ],
+        [
+         "अभ्यास करना है",
+         "'अब मुझसे एक-एक करके 5 सवाल पूछो, और बताओ मैं सही हूँ या नहीं।'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A student asks, 'Explain the water cycle.' The AI gives 400 words with terms like 'sublimation' and 'advection'. Write two rounds of follow-up prompts.",
+       "hi": "एक छात्र पूछता है, 'जल चक्र समझाओ।' AI 'sublimation' और 'advection' जैसे शब्दों के साथ 400 शब्द देता है। आगे के prompts के दो दौर लिखिए।"
+      },
+      "a": {
+       "en": "Round 1: 'That is too long and too advanced. Explain the water cycle for a Class 8 student in 6 steps (evaporation, condensation, precipitation, collection and so on), one line each, using a monsoon example from India.'\nRound 2 (after reading it): 'Good. Now add one line on how plants are part of the cycle (transpiration), and give me 3 fill-in-the-blank questions to test myself.'\nThen check the steps against your science textbook.",
+       "hi": "दौर 1: 'यह बहुत लंबा और बहुत कठिन है। कक्षा 8 के छात्र के लिए जल चक्र 6 चरणों में समझाओ (वाष्पीकरण, संघनन, वर्षण, संग्रहण आदि), हर एक एक पंक्ति में, भारत के मानसून के उदाहरण से।'\nदौर 2 (पढ़ने के बाद): 'अच्छा। अब एक पंक्ति जोड़ो कि पौधे चक्र का हिस्सा कैसे हैं (वाष्पोत्सर्जन), और ख़ुद को जाँचने के लिए 3 रिक्त-स्थान वाले सवाल दो।'\nफिर चरणों को अपनी विज्ञान की किताब से मिलाएँ।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "If a conversation goes off track, it is often better to start a new chat with an improved full prompt than to keep correcting.",
+      "hi": "अगर बातचीत भटक जाए, तो बार-बार सुधारने के बजाय एक सुधरे हुए पूरे prompt के साथ नई चैट शुरू करना अक्सर बेहतर होता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.8 Hallucinations and how to verify AI answers",
+    "hi": "4.8 Hallucinations और AI के जवाब कैसे जाँचें"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Hallucination",
+       "hi": "Hallucination (हैलुसिनेशन / मनगढ़ंत जवाब)"
+      },
+      "text": {
+       "en": "When an AI model gives information that sounds confident and fluent but is false or made up, such as wrong dates, invented quotes, fake book titles or links that do not exist.",
+       "hi": "जब AI मॉडल ऐसी जानकारी दे जो भरोसेमंद और धाराप्रवाह लगे पर गलत या गढ़ी हुई हो, जैसे गलत तारीख़ें, गढ़े हुए उद्धरण, नकली किताबों के नाम या ऐसे लिंक जो मौजूद ही नहीं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why does it happen? Because the model predicts likely-sounding text (section 4.2). If its training data had little about a topic, or if your prompt pushes it to give an answer anyway, it may fill the gap with something plausible. It is not lying on purpose; it simply has no built-in sense of truth.",
+      "hi": "ऐसा क्यों होता है? क्योंकि मॉडल सही लगने वाले text का अनुमान लगाता है (खंड 4.2)। अगर उसके training data में किसी विषय पर कम था, या आपका prompt उसे हर हाल में जवाब देने को मजबूर करे, तो वह ख़ाली जगह को किसी विश्वसनीय-सी चीज़ से भर सकता है। वह जानबूझकर झूठ नहीं बोल रहा; बस उसमें सच की कोई अंदरूनी समझ नहीं है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Check facts, dates, names and numbers in your NCERT textbook or another trusted source (official government sites ending in .gov.in or .nic.in, reputed encyclopaedias, your teacher).",
+       "Be extra careful with: recent events, statistics, quotes, references and links, maths, medical, legal and money advice.",
+       "Ask the AI where the information comes from, then open and read that source yourself; a source the AI names may not exist.",
+       "Cross-check: ask the question in a different way, or compare with a second source; if answers disagree, investigate.",
+       "Watch for warning signs: very precise numbers with no source, perfect-looking quotes, links that do not open, answers that change when you ask again.",
+       "Prompt to reduce errors: 'If you do not know, say \"I am not sure\". Do not make up sources.'"
+      ],
+      "hi": [
+       "तथ्य, तारीख़ें, नाम और संख्याएँ अपनी NCERT किताब या किसी दूसरे भरोसेमंद स्रोत में जाँचें (.gov.in या .nic.in पर ख़त्म होने वाली आधिकारिक सरकारी साइटें, प्रतिष्ठित विश्वकोश, आपके शिक्षक)।",
+       "इनमें ख़ास सावधानी रखें: हाल की घटनाएँ, आँकड़े, उद्धरण, संदर्भ और लिंक, गणित, चिकित्सा, क़ानूनी और पैसे की सलाह।",
+       "AI से पूछें कि जानकारी कहाँ से है, फिर वह स्रोत ख़ुद खोलकर पढ़ें; AI जो स्रोत बताए, हो सकता है वह मौजूद ही न हो।",
+       "मिलान करें: सवाल अलग तरीके से पूछें, या दूसरे स्रोत से तुलना करें; जवाब अलग हों तो छानबीन करें।",
+       "चेतावनी के संकेत देखें: बिना स्रोत के बहुत सटीक संख्याएँ, एकदम सही दिखने वाले उद्धरण, न खुलने वाले लिंक, दोबारा पूछने पर बदलते जवाब।",
+       "गलतियाँ घटाने वाला prompt: 'अगर नहीं पता, तो कहो \"मैं पक्का नहीं हूँ\"। स्रोत मत गढ़ो।'"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "An AI says: 'The Indian Space Research Organisation (ISRO) was founded in 1969, and Chandrayaan-3 landed near the Moon's north pole in 2023.' How would you check this, and what do you find?",
+       "hi": "एक AI कहता है: 'भारतीय अंतरिक्ष अनुसंधान संगठन (ISRO) 1969 में बना, और चंद्रयान-3 2023 में चंद्रमा के उत्तरी ध्रुव के पास उतरा।' आप इसे कैसे जाँचेंगे, और क्या पाएँगे?"
+      },
+      "a": {
+       "en": "Step 1: Split it into separate claims: (a) ISRO founded in 1969; (b) Chandrayaan-3 landed in 2023; (c) the landing was near the north pole.\nStep 2: Check each on a trusted source, such as ISRO's official website (isro.gov.in) or your textbook.\nStep 3: (a) and (b) are correct: ISRO was set up in 1969, and Chandrayaan-3 landed on 23 August 2023.\nStep 4: (c) is wrong: Chandrayaan-3 landed near the Moon's south pole, which made India the first country to land near the south pole.\nStep 5: Lesson: a mostly correct answer can hide one wrong detail. Check every claim, not just the overall feel.",
+       "hi": "चरण 1: इसे अलग-अलग दावों में बाँटें: (क) ISRO 1969 में बना; (ख) चंद्रयान-3 2023 में उतरा; (ग) उतरना उत्तरी ध्रुव के पास था।\nचरण 2: हर एक को भरोसेमंद स्रोत पर जाँचें, जैसे ISRO की आधिकारिक वेबसाइट (isro.gov.in) या आपकी किताब।\nचरण 3: (क) और (ख) सही हैं: ISRO 1969 में बना, और चंद्रयान-3 23 अगस्त 2023 को उतरा।\nचरण 4: (ग) गलत है: चंद्रयान-3 चंद्रमा के दक्षिणी ध्रुव के पास उतरा, जिससे भारत दक्षिणी ध्रुव के पास उतरने वाला पहला देश बना।\nचरण 5: सबक: ज़्यादातर सही जवाब में भी एक गलत विवरण छिपा हो सकता है। हर दावा जाँचें, केवल कुल मिलाकर का अहसास नहीं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "AI answers can also carry bias learnt from data (more in Chapter 6). For example, if you ask for 'a story about a doctor and a nurse', some tools may always make the doctor a man and the nurse a woman. You can notice this and prompt for fairness: 'Write a story where the characters' jobs do not follow stereotypes, with names from different Indian states.'",
+      "hi": "AI के जवाबों में data से सीखा पक्षपात (bias) भी हो सकता है (अध्याय 6 में और)। उदाहरण के लिए, अगर आप 'एक डॉक्टर और एक नर्स की कहानी' माँगें, तो कुछ टूल हमेशा डॉक्टर को पुरुष और नर्स को महिला बना सकते हैं। आप इसे पहचानकर निष्पक्षता के लिए prompt कर सकते हैं: 'ऐसी कहानी लिखो जिसमें पात्रों के काम रूढ़ियों (stereotypes) पर न चलें, अलग-अलग भारतीय राज्यों के नामों के साथ।'"
+     }
+    },
+    {
+     "note": {
+      "en": "Golden rule: trust, but verify. Never copy an AI fact into homework, a WhatsApp message or a project without checking it.",
+      "hi": "सुनहरा नियम: भरोसा करें, पर जाँचें। बिना जाँचे AI का कोई तथ्य होमवर्क, WhatsApp संदेश या project में कभी न डालें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.9 Prompts for learning, not cheating",
+    "hi": "4.9 सीखने के लिए prompts, नकल के लिए नहीं"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI can be a patient tutor, available any time, in many Indian languages. But if it does your thinking for you, you do not learn, and your marks will not show what you really know. Most schools now ask students to say honestly when and how they used AI.",
+      "hi": "AI एक धैर्यवान ट्यूटर हो सकता है, कभी भी उपलब्ध, कई भारतीय भाषाओं में। पर अगर वह आपकी जगह सोचे, तो आप नहीं सीखते, और आपके अंक यह नहीं दिखाएँगे कि आप सचमुच क्या जानते हैं। ज़्यादातर स्कूल अब छात्रों से ईमानदारी से बताने को कहते हैं कि उन्होंने AI कब और कैसे उपयोग किया।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Learning prompt (good)",
+        "Shortcut prompt (avoid)"
+       ],
+       "hi": [
+        "सीखने वाला prompt (अच्छा)",
+        "शॉर्टकट prompt (टालें)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "'Explain fractions to me with a pizza example, then give me 3 questions to try.'",
+         "'Solve all 20 questions of my maths homework.'"
+        ],
+        [
+         "'I wrote this paragraph. Point out 3 grammar mistakes but do not rewrite it.'",
+         "'Write my English essay on My Favourite Festival.'"
+        ],
+        [
+         "'Ask me questions one by one to help me revise Chapter 5.'",
+         "'Give me answers to tomorrow's test.'"
+        ],
+        [
+         "'What are the strengths and weaknesses of my argument?'",
+         "'Write a story and I will say I wrote it.'"
+        ],
+        [
+         "'Give me a hint, not the answer.'",
+         "'Just give the final answer, no steps.'"
+        ]
+       ],
+       "hi": [
+        [
+         "'मुझे पिज़्ज़ा के उदाहरण से भिन्न समझाओ, फिर हल करने के लिए 3 सवाल दो।'",
+         "'मेरे गणित होमवर्क के सारे 20 सवाल हल करो।'"
+        ],
+        [
+         "'मैंने यह अनुच्छेद लिखा है। 3 व्याकरण की गलतियाँ बताओ पर इसे दोबारा मत लिखो।'",
+         "'मेरा हिंदी निबंध मेरा प्रिय त्योहार लिख दो।'"
+        ],
+        [
+         "'अध्याय 5 दोहराने में मदद के लिए मुझसे एक-एक करके सवाल पूछो।'",
+         "'कल के टेस्ट के उत्तर दे दो।'"
+        ],
+        [
+         "'मेरे तर्क की ख़ूबियाँ और कमज़ोरियाँ क्या हैं?'",
+         "'एक कहानी लिखो और मैं कहूँगा कि मैंने लिखी।'"
+        ],
+        [
+         "'मुझे संकेत दो, उत्तर नहीं।'",
+         "'बस अंतिम उत्तर दो, चरण नहीं।'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "If you use AI in a project, add a short honest note, for example: 'I used an AI chatbot to brainstorm slogan ideas and to check my grammar. The research, final text and drawings are my own.' This is called disclosing AI use, and it is part of being a responsible digital citizen.",
+      "hi": "अगर आप किसी project में AI उपयोग करते हैं, तो एक छोटा ईमानदार नोट जोड़ें, जैसे: 'मैंने नारों के विचार सोचने और अपना व्याकरण जाँचने के लिए AI chatbot का उपयोग किया। शोध, अंतिम text और चित्र मेरे अपने हैं।' इसे AI उपयोग का खुलासा (disclosure) कहते हैं, और यह एक ज़िम्मेदार digital नागरिक होने का हिस्सा है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.10 Safety and privacy rules for prompting",
+    "hi": "4.10 Prompting के लिए सुरक्षा और निजता के नियम"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Never type personal details: full name with school, home address, phone number, Aadhaar number, passwords, OTPs, bank or UPI details, or private photos.",
+       "Do not paste other people's private messages or photos into an AI tool without permission.",
+       "Check age rules: many chatbots require users to be at least 13, and some 18; under-13s should use AI only through an adult or a school-approved tool, and an adult should handle any sign-up.",
+       "Do not ask for, or try to get, harmful content, and do not try to 'trick' a chatbot into breaking its safety rules.",
+       "For health, money, legal or emotional problems, use AI only for general information and talk to a trusted adult, doctor or counsellor.",
+       "Remember that conversations may be stored by the company; prompt as if someone else might read it.",
+       "If an AI reply makes you uncomfortable or scared, stop and tell a parent or teacher."
+      ],
+      "hi": [
+       "कभी निजी विवरण न लिखें: स्कूल के साथ पूरा नाम, घर का पता, फ़ोन नंबर, आधार नंबर, पासवर्ड, OTP, बैंक या UPI विवरण, या निजी फ़ोटो।",
+       "दूसरों के निजी संदेश या फ़ोटो बिना अनुमति AI टूल में न डालें।",
+       "उम्र के नियम जाँचें: कई chatbots के लिए उपयोगकर्ता कम से कम 13 वर्ष, और कुछ के लिए 18 वर्ष का होना चाहिए; 13 से कम उम्र वाले AI केवल किसी बड़े के ज़रिए या स्कूल द्वारा स्वीकृत टूल से उपयोग करें, और कोई भी sign-up बड़े करें।",
+       "हानिकारक सामग्री न माँगें, न पाने की कोशिश करें, और chatbot को उसके सुरक्षा नियम तोड़ने के लिए 'चकमा' देने की कोशिश न करें।",
+       "स्वास्थ्य, पैसे, क़ानूनी या भावनात्मक समस्याओं में AI केवल सामान्य जानकारी के लिए उपयोग करें और किसी भरोसेमंद बड़े, डॉक्टर या परामर्शदाता से बात करें।",
+       "याद रखें कि बातचीत कंपनी सँभालकर रख सकती है; ऐसे prompt करें जैसे कोई और भी पढ़ सकता है।",
+       "अगर AI का कोई जवाब आपको असहज करे या डराए, तो रुकें और माता-पिता या शिक्षक को बताएँ।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Make this prompt safe: 'I am Ananya Sharma, Class 8B, St. Mary's School, Lucknow, phone 98xxxxxx12. Write a birthday message for my friend and also tell me what my bank OTP 482913 means.'",
+       "hi": "इस prompt को सुरक्षित बनाइए: 'मैं अनन्या शर्मा, कक्षा 8B, सेंट मैरी स्कूल, लखनऊ, फ़ोन 98xxxxxx12। मेरी दोस्त के लिए जन्मदिन संदेश लिखो और यह भी बताओ कि मेरे बैंक OTP 482913 का क्या मतलब है।'"
+      },
+      "a": {
+       "en": "Step 1: Remove the name, class, school, city and phone number; the AI does not need them for a birthday message.\nStep 2: Remove the OTP completely. An OTP must never be shared with anyone, including an AI or someone claiming to be from a bank; tell a parent.\nStep 3: Safe prompt: 'Write a warm, funny 3-line birthday message for my best friend who loves cricket and painting. Use simple English and one Hindi word.'",
+       "hi": "चरण 1: नाम, कक्षा, स्कूल, शहर और फ़ोन नंबर हटाएँ; जन्मदिन संदेश के लिए AI को इनकी ज़रूरत नहीं।\nचरण 2: OTP पूरी तरह हटाएँ। OTP कभी किसी से साझा नहीं करना चाहिए, AI से या बैंक से होने का दावा करने वाले से भी नहीं; माता-पिता को बताएँ।\nचरण 3: सुरक्षित prompt: 'मेरी सबसे अच्छी दोस्त के लिए, जिसे क्रिकेट और पेंटिंग पसंद है, 3 पंक्तियों का प्यारा, मज़ेदार जन्मदिन संदेश लिखो। सरल हिंदी और एक अंग्रेज़ी शब्द उपयोग करो।'"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.11 Prompts for different tasks and tools",
+    "hi": "4.11 अलग-अलग कामों और टूल के लिए prompts"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Purpose",
+        "Sample strong prompt"
+       ],
+       "hi": [
+        "उद्देश्य",
+        "नमूना मज़बूत prompt"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Understand a concept",
+         "'Explain electric circuits to a Class 8 student using a water-pipe comparison. Then tell me one common misconception.'"
+        ],
+        [
+         "Revise",
+         "'Make 8 flashcards (question on one side, answer on the other) on the chapter about soil and water resources in my Class 8 geography book. I will paste the key points from my textbook below.'"
+        ],
+        [
+         "Practise a language",
+         "'Act as a patient English teacher. Have a 5-turn conversation with me about my weekend. Correct my mistakes gently after each reply.'"
+        ],
+        [
+         "Plan",
+         "'Make a 7-day revision timetable for 4 subjects, 1.5 hours a day after school, with one rest day. Show it as a table.'"
+        ],
+        [
+         "Translate and simplify",
+         "'Translate this notice into simple Tamil for my grandmother, and keep the date and time exactly as written.'"
+        ],
+        [
+         "Get feedback",
+         "'Here is my science project introduction. Give 2 strengths and 2 suggestions, but do not rewrite it.'"
+        ],
+        [
+         "Generate an image (with permission)",
+         "'A watercolour illustration of a village pond being cleaned by students, bright morning light, no text in the image.'"
+        ]
+       ],
+       "hi": [
+        [
+         "कोई अवधारणा समझना",
+         "'कक्षा 8 के छात्र को पानी के पाइप की तुलना से विद्युत परिपथ समझाओ। फिर एक आम ग़लतफ़हमी बताओ।'"
+        ],
+        [
+         "दोहराना",
+         "'मेरी कक्षा 8 की भूगोल की किताब के मृदा और जल संसाधन वाले अध्याय पर 8 flashcards बनाओ (एक तरफ़ सवाल, दूसरी तरफ़ उत्तर)। मैं नीचे अपनी किताब के मुख्य बिंदु चिपका रहा हूँ।'"
+        ],
+        [
+         "भाषा का अभ्यास",
+         "'एक धैर्यवान अंग्रेज़ी शिक्षक की तरह मुझसे मेरे सप्ताहांत पर 5 बारी की बातचीत करो। हर जवाब के बाद मेरी गलतियाँ प्यार से सुधारो।'"
+        ],
+        [
+         "योजना बनाना",
+         "'4 विषयों के लिए 7 दिन की दोहराव समय-सारणी बनाओ, स्कूल के बाद रोज़ 1.5 घंटे, एक दिन आराम के साथ। इसे तालिका में दिखाओ।'"
+        ],
+        [
+         "अनुवाद और सरल बनाना",
+         "'इस सूचना का मेरी दादी के लिए सरल तमिल में अनुवाद करो, और तारीख़ तथा समय बिल्कुल वैसे ही रखो।'"
+        ],
+        [
+         "प्रतिक्रिया पाना",
+         "'यह मेरे विज्ञान project की भूमिका है। 2 ख़ूबियाँ और 2 सुझाव दो, पर इसे दोबारा मत लिखो।'"
+        ],
+        [
+         "चित्र बनवाना (अनुमति के साथ)",
+         "'छात्रों द्वारा साफ़ किए जा रहे गाँव के तालाब का जलरंग चित्र, सुबह की तेज़ रोशनी, चित्र में कोई text नहीं।'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Image generators need different details: the subject, the setting, the style (photo, cartoon, watercolour), the lighting, the colours and what to leave out. Never ask for images of real people that could embarrass or mislead (Chapter 5 covers deepfakes). Free tools that work on a phone in India, used with an adult, include general chatbots and Google's AutoDraw for turning rough sketches into neat drawings.",
+      "hi": "Image generators को अलग विवरण चाहिए: विषय, जगह, शैली (फ़ोटो, कार्टून, जलरंग), रोशनी, रंग और क्या छोड़ना है। असली लोगों के ऐसे चित्र कभी न माँगें जो शर्मिंदा करें या भ्रम फैलाएँ (deepfakes अध्याय 5 में हैं)। भारत में फ़ोन पर चलने वाले मुफ़्त टूल, किसी बड़े के साथ उपयोग के लिए, में सामान्य chatbots और कच्चे स्केच को साफ़ चित्र में बदलने वाला Google का AutoDraw शामिल हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Speak your language: many chatbots accept prompts in Hindi and other Indian languages, and voice input lets you speak your prompt. Write the important words clearly, and check translations of numbers, names and dates.",
+      "hi": "अपनी भाषा में बोलें: कई chatbots हिंदी और दूसरी भारतीय भाषाओं में prompts लेते हैं, और voice input से आप prompt बोल सकते हैं। ज़रूरी शब्द साफ़ लिखें, और संख्याओं, नामों तथा तारीख़ों के अनुवाद जाँचें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.12 Activities",
+    "hi": "4.12 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (unplugged): Human chatbot.\nAim: To feel why clear prompts matter.\nYou need: paper, pencils; two students.\nWhat to do: (1) Student A secretly draws a simple picture (a house with two windows, a tree on the left, a sun at top right). (2) Student A gives Student B only spoken instructions; B is the 'AI' and must draw exactly what is said, nothing more. (3) Round 1: A says only 'Draw a house.' (4) Round 2: A gives full instructions with position, number, size. (5) Compare both drawings with the original.\nWhat you observe: Round 1 looks nothing like the original; Round 2 is much closer.\nWhat it teaches: an AI, like B, cannot read your mind; detail and structure in the prompt improve the result.",
+      "hi": "गतिविधि 1 (बिना कंप्यूटर): मानव chatbot।\nउद्देश्य: महसूस करना कि साफ़ prompts क्यों मायने रखते हैं।\nआपको चाहिए: काग़ज़, पेंसिल; दो छात्र।\nक्या करें: (1) छात्र A चुपके से एक सरल चित्र बनाता है (दो खिड़कियों वाला घर, बाईं ओर पेड़, ऊपर दाईं ओर सूरज)। (2) A, B को केवल बोलकर निर्देश देता है; B 'AI' है और उसे ठीक वही बनाना है जो कहा जाए, उससे ज़्यादा नहीं। (3) दौर 1: A केवल कहता है 'एक घर बनाओ।' (4) दौर 2: A स्थिति, संख्या, आकार के साथ पूरे निर्देश देता है। (5) दोनों चित्रों की मूल से तुलना करें।\nआप क्या देखेंगे: दौर 1 मूल जैसा बिल्कुल नहीं दिखता; दौर 2 कहीं पास है।\nयह क्या सिखाता है: B की तरह AI भी आपका मन नहीं पढ़ सकता; prompt में विवरण और ढाँचा परिणाम सुधारते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (screen, with an adult or teacher): Prompt makeover.\nAim: To practise R-T-C-F-C and iteration.\nYou need: one free chatbot, used on a teacher's or parent's account.\nWhat to do: (1) Type the weak prompt 'tell me about volcanoes' and save the answer. (2) Rewrite it with Role, Task, Context, Format and Constraints, and save the new answer. (3) Do two rounds of follow-up prompts. (4) Fill a table: prompt version, length of answer, was it at the right level (yes/no), facts checked (how many correct).\nWhat you observe: the structured prompt and follow-ups give a shorter, clearer, more useful answer.\nWhat it teaches: prompt engineering is a repeatable method, not luck.",
+      "hi": "गतिविधि 2 (स्क्रीन, बड़े या शिक्षक के साथ): Prompt का कायाकल्प।\nउद्देश्य: R-T-C-F-C और iteration का अभ्यास।\nआपको चाहिए: एक मुफ़्त chatbot, शिक्षक या माता-पिता के खाते पर।\nक्या करें: (1) कमज़ोर prompt 'ज्वालामुखी के बारे में बताओ' लिखें और जवाब सहेजें। (2) इसे Role, Task, Context, Format और Constraints के साथ दोबारा लिखें, और नया जवाब सहेजें। (3) आगे के prompts के दो दौर करें। (4) तालिका भरें: prompt का संस्करण, जवाब की लंबाई, क्या स्तर सही था (हाँ/नहीं), जाँचे गए तथ्य (कितने सही)।\nआप क्या देखेंगे: ढाँचे वाला prompt और आगे के prompts छोटा, साफ़, ज़्यादा उपयोगी जवाब देते हैं।\nयह क्या सिखाता है: prompt engineering दोहराया जा सकने वाला तरीका है, क़िस्मत नहीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen, with an adult): Hallucination hunt.\nAim: To practise verifying AI answers.\nWhat to do: (1) Ask a chatbot 5 factual questions from your textbooks (for example, 'When did the Revolt of 1857 begin, and where?', 'What is the SI unit of force?'). (2) Ask it for 2 sources for one answer. (3) Check every answer and source in your textbook or an official website. (4) Record: correct, partly correct, wrong, source real or not.\nWhat you observe: most simple facts are right, but some details or sources may be wrong or invented.\nWhat it teaches: always verify; never trust a source until you have opened it.",
+      "hi": "गतिविधि 3 (स्क्रीन, बड़े के साथ): Hallucination की खोज।\nउद्देश्य: AI के जवाब जाँचने का अभ्यास।\nक्या करें: (1) Chatbot से अपनी किताबों के 5 तथ्यात्मक सवाल पूछें (जैसे, '1857 का विद्रोह कब और कहाँ शुरू हुआ?', 'बल की SI इकाई क्या है?')। (2) एक जवाब के लिए 2 स्रोत माँगें। (3) हर जवाब और स्रोत अपनी किताब या आधिकारिक वेबसाइट पर जाँचें। (4) दर्ज करें: सही, आंशिक सही, गलत, स्रोत असली है या नहीं।\nआप क्या देखेंगे: ज़्यादातर सरल तथ्य सही होते हैं, पर कुछ विवरण या स्रोत गलत या गढ़े हुए हो सकते हैं।\nयह क्या सिखाता है: हमेशा जाँचें; किसी स्रोत पर तब तक भरोसा न करें जब तक उसे खोलकर न देख लें।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (unplugged): Few-shot pattern game.\nAim: To see how examples steer an answer.\nWhat to do: (1) The teacher writes two examples on the board: 'cat → tac', 'sun → nus'. (2) Students, acting as the 'AI', answer 'pen → ?' (3) Change the examples to 'cat → CAT', 'sun → SUN' and ask again.\nWhat you observe: the same question gets a different answer depending on the examples (nep, then PEN).\nWhat it teaches: in few-shot prompting, the examples define the pattern, so choose them carefully.",
+      "hi": "गतिविधि 4 (बिना कंप्यूटर): Few-shot पैटर्न खेल।\nउद्देश्य: देखना कि उदाहरण जवाब को कैसे दिशा देते हैं।\nक्या करें: (1) शिक्षक बोर्ड पर दो उदाहरण लिखते हैं: 'cat → tac', 'sun → nus'। (2) 'AI' बने छात्र 'pen → ?' का जवाब देते हैं। (3) उदाहरण बदलकर 'cat → CAT', 'sun → SUN' करें और फिर पूछें।\nआप क्या देखेंगे: एक ही सवाल का जवाब उदाहरणों के अनुसार बदल जाता है (nep, फिर PEN)।\nयह क्या सिखाता है: few-shot prompting में उदाहरण पैटर्न तय करते हैं, इसलिए उन्हें सावधानी से चुनें।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: use chatbots only with a parent, guardian or teacher, follow each tool's age rules, and never enter personal information.",
+      "hi": "सुरक्षा: chatbots केवल माता-पिता, अभिभावक या शिक्षक के साथ उपयोग करें, हर टूल के उम्र-नियम मानें, और कभी निजी जानकारी न डालें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Writing one-word or vague prompts. Fix: state the task with an action verb and add context, format and limits.",
+   "Accepting the first answer. Fix: iterate: read, check and refine with follow-up prompts.",
+   "Believing a confident answer must be correct. Fix: chatbots can hallucinate; verify facts in trusted sources.",
+   "Trusting sources and links the AI gives without opening them. Fix: open and read every source; some may not exist.",
+   "Thinking step-by-step answers are always right. Fix: they are easier to check; still check each step and the arithmetic.",
+   "Using few-shot examples with mistakes. Fix: the AI copies your examples, so make them correct and varied.",
+   "Putting personal data, OTPs or passwords into prompts. Fix: never share them; remove personal details.",
+   "Submitting AI-written work as your own. Fix: use AI to learn, do the work yourself, and disclose any AI help.",
+   "Cramming a huge task into one prompt. Fix: break it into a chain of smaller prompts and check each step.",
+   "Thinking the chatbot knows today's news. Fix: its training stops at a date; check recent facts in current, trusted sources."
+  ],
+  "hi": [
+   "एक शब्द वाले या अस्पष्ट prompts लिखना। सुधार: क्रिया के साथ काम बताएँ और संदर्भ, रूप तथा सीमाएँ जोड़ें।",
+   "पहला जवाब मान लेना। सुधार: iterate करें: पढ़ें, जाँचें और आगे के prompts से सुधारें।",
+   "यह मानना कि भरोसे वाला जवाब सही ही होगा। सुधार: chatbots hallucinate कर सकते हैं; तथ्य भरोसेमंद स्रोतों में जाँचें।",
+   "AI के दिए स्रोतों और लिंक पर बिना खोले भरोसा करना। सुधार: हर स्रोत खोलकर पढ़ें; कुछ मौजूद ही न हों।",
+   "यह सोचना कि चरण-दर-चरण जवाब हमेशा सही होते हैं। सुधार: वे जाँचने में आसान हैं; फिर भी हर चरण और गणना जाँचें।",
+   "गलतियों वाले few-shot उदाहरण देना। सुधार: AI आपके उदाहरणों की नकल करता है, इसलिए उन्हें सही और विविध रखें।",
+   "Prompts में निजी data, OTP या पासवर्ड डालना। सुधार: इन्हें कभी साझा न करें; निजी विवरण हटाएँ।",
+   "AI का लिखा काम अपना बताकर जमा करना। सुधार: AI से सीखें, काम ख़ुद करें, और AI की कोई भी मदद बताएँ।",
+   "बड़े काम को एक prompt में ठूँसना। सुधार: उसे छोटे prompts की कड़ी में तोड़ें और हर चरण जाँचें।",
+   "यह सोचना कि chatbot आज की ख़बरें जानता है। सुधार: इसकी training किसी तारीख़ पर रुकती है; हाल के तथ्य ताज़ा, भरोसेमंद स्रोतों में जाँचें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Prompt",
+    "hi": "Prompt (प्रॉम्प्ट)"
+   },
+   "d": {
+    "en": "The instruction or question given to an AI tool.",
+    "hi": "AI टूल को दिया गया निर्देश या सवाल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prompt engineering",
+    "hi": "Prompt engineering (प्रॉम्प्ट इंजीनियरिंग)"
+   },
+   "d": {
+    "en": "The skill of designing and improving prompts to get accurate, useful, safe answers.",
+    "hi": "सटीक, उपयोगी, सुरक्षित जवाब पाने के लिए prompts बनाने और सुधारने का कौशल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Large language model (LLM)",
+    "hi": "Large language model (LLM)"
+   },
+   "d": {
+    "en": "An AI model trained on huge amounts of text to predict the next token; the engine of chatbots.",
+    "hi": "अगला token अनुमान लगाने के लिए विशाल text पर train किया AI मॉडल; chatbots का इंजन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Token",
+    "hi": "Token (टोकन)"
+   },
+   "d": {
+    "en": "A small piece of text (word or part of a word) a language model reads and writes.",
+    "hi": "Text का छोटा टुकड़ा (शब्द या शब्द का हिस्सा) जिसे language model पढ़ता और लिखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Context",
+    "hi": "Context (संदर्भ)"
+   },
+   "d": {
+    "en": "Background information in the prompt and conversation that the model uses.",
+    "hi": "Prompt और बातचीत की पृष्ठभूमि जानकारी जिसका मॉडल उपयोग करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Context window",
+    "hi": "Context window (संदर्भ खिड़की)"
+   },
+   "d": {
+    "en": "How much text a model can consider at one time.",
+    "hi": "मॉडल एक समय में कितने text पर विचार कर सकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Role",
+    "hi": "Role (भूमिका)"
+   },
+   "d": {
+    "en": "The part a prompt asks the AI to play, such as a teacher or coach.",
+    "hi": "Prompt में AI से निभाने को कहा गया किरदार, जैसे शिक्षक या कोच।"
+   }
+  },
+  {
+   "t": {
+    "en": "Format",
+    "hi": "Format (रूप)"
+   },
+   "d": {
+    "en": "The shape of the answer, such as bullets, a table or steps.",
+    "hi": "जवाब का आकार, जैसे बिंदु, तालिका या चरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Constraint",
+    "hi": "Constraint (सीमा)"
+   },
+   "d": {
+    "en": "A limit or rule in a prompt, such as length or language.",
+    "hi": "Prompt में कोई सीमा या नियम, जैसे लंबाई या भाषा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Zero-shot prompting",
+    "hi": "Zero-shot prompting"
+   },
+   "d": {
+    "en": "Giving only the instruction, with no examples.",
+    "hi": "केवल निर्देश देना, कोई उदाहरण नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "One-shot prompting",
+    "hi": "One-shot prompting"
+   },
+   "d": {
+    "en": "Giving the instruction with one example.",
+    "hi": "निर्देश के साथ एक उदाहरण देना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Few-shot prompting",
+    "hi": "Few-shot prompting"
+   },
+   "d": {
+    "en": "Giving the instruction with two or more examples of the desired output.",
+    "hi": "निर्देश के साथ चाहे गए output के दो या ज़्यादा उदाहरण देना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Chain-of-thought prompting",
+    "hi": "Chain-of-thought prompting"
+   },
+   "d": {
+    "en": "Asking the AI to reason step by step and show its working.",
+    "hi": "AI से चरण-दर-चरण तर्क करने और अपना हल दिखाने को कहना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prompt chaining",
+    "hi": "Prompt chaining (प्रॉम्प्ट की कड़ी)"
+   },
+   "d": {
+    "en": "Doing a big task through a sequence of smaller, checked prompts.",
+    "hi": "बड़े काम को छोटे, जाँचे गए prompts के क्रम से करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Iteration",
+    "hi": "Iteration (दोहराकर सुधार)"
+   },
+   "d": {
+    "en": "Improving results through repeated follow-up prompts.",
+    "hi": "बार-बार आगे के prompts से परिणाम सुधारना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Follow-up prompt",
+    "hi": "Follow-up prompt (आगे का prompt)"
+   },
+   "d": {
+    "en": "A new instruction that refines the previous answer.",
+    "hi": "पिछले जवाब को सुधारने वाला नया निर्देश।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hallucination",
+    "hi": "Hallucination (हैलुसिनेशन)"
+   },
+   "d": {
+    "en": "A confident but false or made-up AI answer.",
+    "hi": "भरोसे वाला पर गलत या गढ़ा हुआ AI जवाब।"
+   }
+  },
+  {
+   "t": {
+    "en": "Verification",
+    "hi": "Verification (सत्यापन)"
+   },
+   "d": {
+    "en": "Checking AI output against trusted sources.",
+    "hi": "AI output को भरोसेमंद स्रोतों से जाँचना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias (in AI output)",
+    "hi": "Bias (AI output में पक्षपात)"
+   },
+   "d": {
+    "en": "Unfair patterns or stereotypes in answers, learnt from data.",
+    "hi": "जवाबों में data से सीखे अनुचित पैटर्न या रूढ़ियाँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Disclosure of AI use",
+    "hi": "Disclosure (AI उपयोग का खुलासा)"
+   },
+   "d": {
+    "en": "Honestly stating how AI helped with a piece of work.",
+    "hi": "ईमानदारी से बताना कि किसी काम में AI ने कैसे मदद की।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image prompt",
+    "hi": "Image prompt (चित्र prompt)"
+   },
+   "d": {
+    "en": "A prompt for an image generator describing subject, style, setting and details.",
+    "hi": "Image generator के लिए prompt जो विषय, शैली, जगह और विवरण बताए।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which part of a prompt is 'Act as a geography teacher'?\n(a) Task (b) Role (c) Format (d) Constraint",
+    "hi": "बहुविकल्पी: 'भूगोल शिक्षक की तरह व्यवहार करो' prompt का कौन-सा हिस्सा है?\n(क) Task (ख) Role (ग) Format (घ) Constraint"
+   },
+   "a": {
+    "en": "(b) Role.",
+    "hi": "(ख) Role।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Giving the AI two or three examples of the answer style you want is called:\n(a) zero-shot (b) few-shot (c) hallucination (d) tokenising",
+    "hi": "बहुविकल्पी: AI को चाहे गए जवाब की शैली के दो-तीन उदाहरण देना कहलाता है:\n(क) zero-shot (ख) few-shot (ग) hallucination (घ) tokenising"
+   },
+   "a": {
+    "en": "(b) Few-shot prompting.",
+    "hi": "(ख) Few-shot prompting।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: An AI confidently gives the name of a book that does not exist. This is:\n(a) iteration (b) a constraint (c) a hallucination (d) a role",
+    "hi": "बहुविकल्पी: AI भरोसे से ऐसी किताब का नाम देता है जो मौजूद ही नहीं। यह है:\n(क) iteration (ख) constraint (ग) hallucination (घ) role"
+   },
+   "a": {
+    "en": "(c) A hallucination.",
+    "hi": "(ग) Hallucination।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The five building blocks of a strong prompt are Role, Task, ________, Format and Constraints.",
+    "hi": "रिक्त स्थान भरिए: मज़बूत prompt के पाँच हिस्से हैं Role, Task, ________, Format और Constraints।"
+   },
+   "a": {
+    "en": "Context",
+    "hi": "Context (संदर्भ)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Small pieces of text that a language model reads and writes are called ________.",
+    "hi": "रिक्त स्थान भरिए: Text के जिन छोटे टुकड़ों को language model पढ़ता और लिखता है, उन्हें ________ कहते हैं।"
+   },
+   "a": {
+    "en": "tokens",
+    "hi": "tokens (टोकन)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: It is safe to share an OTP with a chatbot if it asks for it.",
+    "hi": "सही या गलत: अगर chatbot माँगे तो उससे OTP साझा करना सुरक्षित है।"
+   },
+   "a": {
+    "en": "False. Never share an OTP with anyone or any AI.",
+    "hi": "गलत। OTP कभी किसी व्यक्ति या AI से साझा न करें।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: The same prompt can give slightly different answers at different times.",
+    "hi": "सही या गलत: एक ही prompt अलग-अलग समय पर थोड़े अलग जवाब दे सकता है।"
+   },
+   "a": {
+    "en": "True. There is some randomness in how the next token is chosen.",
+    "hi": "सही। अगला token चुनने में कुछ यादृच्छिकता होती है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What is prompt engineering?",
+    "hi": "Prompt engineering क्या है?"
+   },
+   "a": {
+    "en": "The skill of designing, testing and improving prompts so an AI gives accurate, useful and safe answers.",
+    "hi": "Prompts बनाने, जाँचने और सुधारने का कौशल ताकि AI सटीक, उपयोगी और सुरक्षित जवाब दे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Identify the five parts in this prompt: 'You are a cricket coach. Suggest a 20-minute warm-up for a school team of 12-year-olds who practise on a dusty ground. Give it as a numbered list. Avoid any equipment except a ball and cones.'",
+    "hi": "इस prompt में पाँचों हिस्से पहचानिए: 'तुम एक क्रिकेट कोच हो। धूल भरे मैदान पर अभ्यास करने वाली 12 साल के बच्चों की स्कूल टीम के लिए 20 मिनट का वॉर्म-अप सुझाओ। इसे क्रमांकित सूची में दो। गेंद और कोन के अलावा कोई उपकरण न लो।'"
+   },
+   "a": {
+    "en": "Role: cricket coach. Task: suggest a 20-minute warm-up. Context: school team of 12-year-olds on a dusty ground. Format: numbered list. Constraints: 20 minutes; no equipment except a ball and cones.",
+    "hi": "Role: क्रिकेट कोच। Task: 20 मिनट का वॉर्म-अप सुझाना। Context: धूल भरे मैदान पर 12 साल के बच्चों की स्कूल टीम। Format: क्रमांकित सूची। Constraints: 20 मिनट; गेंद और कोन के अलावा कोई उपकरण नहीं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Rewrite this weak prompt into a strong one: 'help with fractions'.",
+    "hi": "इस कमज़ोर prompt को मज़बूत बनाइए: 'भिन्न में मदद करो'।"
+   },
+   "a": {
+    "en": "Sample: 'Act as a patient maths tutor. I am in Class 8 and get confused when adding fractions with different denominators. Explain the method in 4 steps using a roti example, then give me 3 practice questions one at a time and check my answers. Do not give the answer before I try.'",
+    "hi": "नमूना: 'एक धैर्यवान गणित ट्यूटर की तरह व्यवहार करो। मैं कक्षा 8 में हूँ और अलग हर वाली भिन्नें जोड़ते समय उलझ जाता हूँ। रोटी के उदाहरण से तरीका 4 चरणों में समझाओ, फिर एक-एक करके 3 अभ्यास सवाल दो और मेरे उत्तर जाँचो। मेरी कोशिश से पहले उत्तर मत देना।'"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the difference between zero-shot and few-shot prompting? When is few-shot useful?",
+    "hi": "Zero-shot और few-shot prompting में क्या अंतर है? Few-shot कब उपयोगी है?"
+   },
+   "a": {
+    "en": "Zero-shot gives only the instruction; few-shot adds two or more examples of input and desired output. Few-shot is useful when you need a fixed style or format that is hard to describe, such as vocabulary cards, a particular quiz format or labelling reviews.",
+    "hi": "Zero-shot में केवल निर्देश होता है; few-shot में input और चाहे गए output के दो या ज़्यादा उदाहरण जुड़ते हैं। Few-shot तब उपयोगी है जब आपको कोई तय शैली या रूप चाहिए जिसे बताना कठिन हो, जैसे शब्दावली कार्ड, ख़ास क्विज़ प्रारूप या समीक्षाओं पर लेबल लगाना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why do chatbots hallucinate? Give two ways to reduce or catch hallucinations.",
+    "hi": "Chatbots hallucinate क्यों करते हैं? Hallucinations घटाने या पकड़ने के दो तरीके बताइए।"
+   },
+   "a": {
+    "en": "They predict likely-sounding text rather than look up verified facts, so when information is missing they may fill the gap with something plausible but false. Ways: tell the AI to say 'I am not sure' instead of guessing and not to invent sources; verify every fact, number and source in a textbook or official website; ask the question differently and compare.",
+    "hi": "वे सत्यापित तथ्य देखने के बजाय सही लगने वाले text का अनुमान लगाते हैं, इसलिए जानकारी न होने पर ख़ाली जगह विश्वसनीय-सी पर गलत चीज़ से भर सकते हैं। तरीके: AI से कहें कि अनुमान के बजाय 'मैं पक्का नहीं हूँ' कहे और स्रोत न गढ़े; हर तथ्य, संख्या और स्रोत किताब या आधिकारिक वेबसाइट पर जाँचें; सवाल अलग तरह से पूछकर तुलना करें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "An AI's answer about the water cycle is too long and uses hard words. Write two follow-up prompts.",
+    "hi": "जल चक्र पर AI का जवाब बहुत लंबा है और कठिन शब्दों वाला है। आगे के दो prompts लिखिए।"
+   },
+   "a": {
+    "en": "(1) 'Make it shorter: 6 steps, one line each, for a Class 8 student.' (2) 'Replace difficult words with simple ones and add a monsoon example from India.'",
+    "hi": "(1) 'इसे छोटा करो: कक्षा 8 के छात्र के लिए 6 चरण, हर एक एक पंक्ति में।' (2) 'कठिन शब्दों को सरल शब्दों से बदलो और भारत के मानसून का उदाहरण जोड़ो।'"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A chatbot solves '20% of Rs 450' and writes Rs 80. Check it step by step and write a better prompt.",
+    "hi": "एक chatbot '450 रुपये का 20%' हल करके Rs 80 लिखता है। चरण-दर-चरण जाँचिए और बेहतर prompt लिखिए।"
+   },
+   "a": {
+    "en": "Check: 20% = 20/100; 450 × 20 / 100 = 9000 / 100 = Rs 90. Also 10% of 450 = 45, so 20% = 90. The AI was wrong. Better prompt: 'Find 20% of Rs 450 step by step, then check the answer a second way (for example using 10%).'",
+    "hi": "जाँच: 20% = 20/100; 450 × 20 / 100 = 9000 / 100 = Rs 90। साथ ही 450 का 10% = 45, इसलिए 20% = 90। AI गलत था। बेहतर prompt: '450 रुपये का 20% चरण-दर-चरण निकालो, फिर दूसरे तरीके से (जैसे 10% से) उत्तर जाँचो।'"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which of these is a learning prompt and which is a shortcut? (a) 'Write my essay on pollution.' (b) 'Give me 5 points I could include in an essay on pollution, and ask me which I want to explain.' (c) 'Check my essay for spelling mistakes and list them.'",
+    "hi": "इनमें कौन सीखने वाला prompt है और कौन शॉर्टकट? (क) 'प्रदूषण पर मेरा निबंध लिख दो।' (ख) 'प्रदूषण पर निबंध में शामिल करने लायक 5 बिंदु दो, और मुझसे पूछो कि मैं किसे समझाना चाहता हूँ।' (ग) 'मेरा निबंध वर्तनी की गलतियों के लिए जाँचो और उनकी सूची दो।'"
+   },
+   "a": {
+    "en": "(a) Shortcut: the AI does the work. (b) Learning: the AI helps you think, and you write. (c) Learning: you wrote it, and AI gives feedback (disclose it if required).",
+    "hi": "(क) शॉर्टकट: काम AI करता है। (ख) सीखना: AI आपको सोचने में मदद करता है, और आप लिखते हैं। (ग) सीखना: आपने लिखा, और AI प्रतिक्रिया देता है (ज़रूरी हो तो बताएँ)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain in four steps how a chatbot turns your prompt into an answer, and give two tips that follow from this.",
+    "hi": "चार चरणों में समझाइए कि chatbot आपके prompt को जवाब में कैसे बदलता है, और इससे निकलने वाले दो सुझाव दीजिए।"
+   },
+   "a": {
+    "en": "(1) The model was trained on huge text to predict the next token, then fine-tuned with human feedback. (2) Your prompt is split into tokens. (3) It reads the whole context (prompt plus earlier chat). (4) It predicts the next token again and again until the answer is complete. Tips: put all important details in the prompt, because context is all it has; verify facts, because it predicts likely text and can be wrong; check recent information elsewhere, because training stops at a date.",
+    "hi": "(1) मॉडल को अगला token अनुमान लगाने के लिए विशाल text पर train किया गया, फिर मानव प्रतिक्रिया से सुधारा गया। (2) आपका prompt tokens में बँटता है। (3) वह पूरा context पढ़ता है (prompt और पहले की चैट)। (4) वह जवाब पूरा होने तक बार-बार अगला token अनुमान लगाता है। सुझाव: सारे ज़रूरी विवरण prompt में डालें, क्योंकि उसके पास केवल context है; तथ्य जाँचें, क्योंकि वह संभावित text बनाता है और गलत हो सकता है; हाल की जानकारी कहीं और जाँचें, क्योंकि training किसी तारीख़ पर रुकती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Design a prompt chain of three prompts to prepare a 2-minute speech on 'Clean India, Healthy India' for the morning assembly. Say what you check at each step.",
+    "hi": "सुबह की सभा के लिए 'स्वच्छ भारत, स्वस्थ भारत' पर 2 मिनट का भाषण तैयार करने के लिए तीन prompts की कड़ी बनाइए। बताइए हर चरण में आप क्या जाँचेंगे।"
+   },
+   "a": {
+    "en": "Prompt 1: 'List 8 ideas linking cleanliness and health that a Class 8 student could talk about, one line each.' Check: choose 3 ideas I understand and agree with.\nPrompt 2: 'For these 3 ideas, suggest one simple fact or example each, and tell me where I can verify it.' Check: verify facts on official sites or in textbooks; drop anything I cannot confirm.\nPrompt 3: 'Here is my draft speech [my own words]. It should take about 2 minutes (about 250 words). Suggest improvements to the opening and closing lines only.' Check: keep my own voice, time it aloud, and mention AI help if the school asks.",
+    "hi": "Prompt 1: 'स्वच्छता और स्वास्थ्य को जोड़ने वाले 8 विचार बताओ जिन पर कक्षा 8 का छात्र बोल सके, हर एक एक पंक्ति में।' जाँच: वे 3 विचार चुनें जो मुझे समझ आते हैं और जिनसे मैं सहमत हूँ।\nPrompt 2: 'इन 3 विचारों के लिए एक-एक सरल तथ्य या उदाहरण सुझाओ, और बताओ मैं उसे कहाँ जाँच सकता हूँ।' जाँच: तथ्य आधिकारिक साइटों या किताबों में जाँचें; जो पक्का न हो उसे छोड़ दें।\nPrompt 3: 'यह मेरा भाषण का मसौदा है [मेरे अपने शब्द]। यह लगभग 2 मिनट (लगभग 250 शब्द) का होना चाहिए। केवल शुरुआती और अंतिम पंक्तियों में सुधार सुझाओ।' जाँच: अपनी आवाज़ बनाए रखें, बोलकर समय नापें, और स्कूल पूछे तो AI की मदद बताएँ।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write a few-shot prompt that makes an AI turn English sentences into simple Hindi with the key science word kept in English in brackets. Give two examples in your prompt.",
+    "hi": "ऐसा few-shot prompt लिखिए जिससे AI अंग्रेज़ी वाक्यों को सरल हिंदी में बदले और मुख्य विज्ञान शब्द कोष्ठक में अंग्रेज़ी में रखे। अपने prompt में दो उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Sample: 'Translate each sentence into simple Hindi and keep the key science word in English in brackets, exactly like these examples.\nExample 1: \"Plants make food by photosynthesis.\" → \"पौधे प्रकाश-संश्लेषण (photosynthesis) से भोजन बनाते हैं।\"\nExample 2: \"Friction slows down a moving ball.\" → \"घर्षण (friction) चलती गेंद को धीमा करता है।\"\nNow translate: \"Magnets attract iron.\" \"Sound needs a medium to travel.\"'",
+    "hi": "नमूना: 'हर वाक्य का सरल हिंदी में अनुवाद करो और मुख्य विज्ञान शब्द कोष्ठक में अंग्रेज़ी में रखो, बिल्कुल इन उदाहरणों की तरह।\nउदाहरण 1: \"Plants make food by photosynthesis.\" → \"पौधे प्रकाश-संश्लेषण (photosynthesis) से भोजन बनाते हैं।\"\nउदाहरण 2: \"Friction slows down a moving ball.\" → \"घर्षण (friction) चलती गेंद को धीमा करता है।\"\nअब अनुवाद करो: \"Magnets attract iron.\" \"Sound needs a medium to travel.\"'"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: Ravi asks a chatbot for 'the five best sources on the history of Indian Railways with links'. It gives five neat links, but two do not open and one book title cannot be found anywhere. What has happened, what should Ravi do, and how could he prompt better?",
+    "hi": "केस-आधारित: रवि एक chatbot से 'लिंक के साथ भारतीय रेल के इतिहास पर पाँच सबसे अच्छे स्रोत' माँगता है। वह पाँच साफ़ लिंक देता है, पर दो खुलते नहीं और एक किताब का नाम कहीं नहीं मिलता। क्या हुआ, रवि को क्या करना चाहिए, और वह बेहतर prompt कैसे कर सकता है?"
+   },
+   "a": {
+    "en": "The chatbot hallucinated some sources: it produced plausible-looking links and a title that do not exist. Ravi should not use any source he has not opened and read; he should search official sites (such as Indian Railways' government website or a railway museum), his library and textbooks, and ask his teacher. Better prompt: 'Suggest types of reliable sources and search keywords for the history of Indian Railways. Do not invent titles or links; if you are not sure a source exists, say so.' Then he finds and checks sources himself.",
+    "hi": "Chatbot ने कुछ स्रोतों की hallucination की: उसने विश्वसनीय दिखने वाले लिंक और एक नाम बनाए जो मौजूद नहीं हैं। रवि को कोई ऐसा स्रोत उपयोग नहीं करना चाहिए जिसे उसने खोलकर पढ़ा न हो; उसे आधिकारिक साइटें (जैसे भारतीय रेल की सरकारी वेबसाइट या रेल संग्रहालय), अपनी लाइब्रेरी और किताबें खोजनी चाहिए, और शिक्षक से पूछना चाहिए। बेहतर prompt: 'भारतीय रेल के इतिहास के लिए भरोसेमंद स्रोतों के प्रकार और खोज के शब्द सुझाओ। नाम या लिंक मत गढ़ो; अगर पक्का न हो कि कोई स्रोत मौजूद है, तो बता दो।' फिर वह ख़ुद स्रोत ढूँढकर जाँचे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Assertion-reason: Assertion (A): Asking a chatbot to 'solve step by step' makes its maths answers easier to check. Reason (R): Showing each step lets the user see exactly where a mistake happens. Choose: (a) both true, R explains A (b) both true, R does not explain A (c) A true, R false (d) A false, R true.",
+    "hi": "कथन-कारण: कथन (A): Chatbot से 'चरण-दर-चरण हल करो' कहने से उसके गणित के जवाब जाँचने में आसान होते हैं। कारण (R): हर चरण दिखाने से उपयोगकर्ता ठीक-ठीक देख सकता है कि गलती कहाँ हुई। चुनिए: (क) दोनों सही, R, A को समझाता है (ख) दोनों सही, R, A को नहीं समझाता (ग) A सही, R गलत (घ) A गलत, R सही।"
+   },
+   "a": {
+    "en": "(a) Both true, and R correctly explains A.",
+    "hi": "(क) दोनों सही, और R, A को सही ढंग से समझाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: An AI story always makes the scientist a man and the cook a woman. What is this called, why might it happen, and write a prompt to fix it.",
+    "hi": "चिंतन: एक AI कहानी हमेशा वैज्ञानिक को पुरुष और रसोइए को महिला बनाती है। इसे क्या कहते हैं, ऐसा क्यों हो सकता है, और इसे ठीक करने का prompt लिखिए।"
+   },
+   "a": {
+    "en": "It is bias (a stereotype) in AI output. It can happen because the model learnt from large amounts of text in which such patterns were common. Prompt: 'Write a short story about a scientist and a cook. Make the scientist a woman from Assam and the cook a man from Kerala, and avoid stereotypes about jobs, gender or region.' Then read it to check the result is respectful.",
+    "hi": "यह AI output में पक्षपात (bias) या रूढ़ि (stereotype) है। ऐसा इसलिए हो सकता है कि मॉडल ने भारी मात्रा में ऐसे text से सीखा जिसमें ऐसे पैटर्न आम थे। Prompt: 'एक वैज्ञानिक और एक रसोइए की छोटी कहानी लिखो। वैज्ञानिक को असम की महिला और रसोइए को केरल का पुरुष बनाओ, और काम, लिंग या क्षेत्र से जुड़ी रूढ़ियों से बचो।' फिर पढ़कर जाँचें कि परिणाम सम्मानजनक है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A prompt is the instruction given to an AI; prompt engineering is the skill of designing, testing and improving prompts.",
+   "Chatbots run on large language models that split text into tokens and predict the next token again and again, using the context of the conversation.",
+   "Because they predict likely text, chatbots can sound sure and still be wrong, may vary in answers, and may not know recent events.",
+   "Strong prompts use R-T-C-F-C: Role, Task (clear action verb), Context, Format and Constraints.",
+   "Zero-shot gives no examples, one-shot gives one, few-shot gives several; examples fix the pattern, so they must be correct.",
+   "Step-by-step (chain-of-thought) prompts make reasoning visible and easier to check; still verify arithmetic.",
+   "Prompt chaining breaks a big task into smaller checked steps, like decomposition.",
+   "Iteration: read, check and refine with follow-up prompts; start a new chat if needed.",
+   "Hallucinations are confident but false answers; verify every fact, number and source in trusted places.",
+   "AI output can carry bias; notice stereotypes and prompt for fairness.",
+   "Use AI to learn (hints, explanations, quizzes, feedback), not to copy, and disclose AI help honestly.",
+   "Never put personal data, OTPs or passwords in prompts; follow age rules and use AI with a trusted adult."
+  ],
+  "hi": [
+   "Prompt AI को दिया गया निर्देश है; prompt engineering prompts बनाने, जाँचने और सुधारने का कौशल है।",
+   "Chatbots large language models पर चलते हैं जो text को tokens में बाँटते हैं और बातचीत के context से बार-बार अगला token अनुमान लगाते हैं।",
+   "क्योंकि वे संभावित text का अनुमान लगाते हैं, chatbots भरोसे से बोलकर भी गलत हो सकते हैं, जवाब बदल सकते हैं, और हाल की घटनाएँ न जानें ऐसा हो सकता है।",
+   "मज़बूत prompts R-T-C-F-C उपयोग करते हैं: Role, Task (साफ़ क्रिया), Context, Format और Constraints।",
+   "Zero-shot में कोई उदाहरण नहीं, one-shot में एक, few-shot में कई; उदाहरण पैटर्न तय करते हैं, इसलिए उन्हें सही होना चाहिए।",
+   "चरण-दर-चरण (chain-of-thought) prompts तर्क को दिखाते और जाँचने में आसान बनाते हैं; फिर भी गणना जाँचें।",
+   "Prompt chaining बड़े काम को छोटे जाँचे गए चरणों में तोड़ता है, decomposition की तरह।",
+   "Iteration: पढ़ें, जाँचें और आगे के prompts से सुधारें; ज़रूरत हो तो नई चैट शुरू करें।",
+   "Hallucinations भरोसे वाले पर गलत जवाब हैं; हर तथ्य, संख्या और स्रोत भरोसेमंद जगहों पर जाँचें।",
+   "AI output में पक्षपात हो सकता है; रूढ़ियाँ पहचानें और निष्पक्षता के लिए prompt करें।",
+   "AI का उपयोग सीखने (संकेत, व्याख्या, क्विज़, प्रतिक्रिया) के लिए करें, नकल के लिए नहीं, और AI की मदद ईमानदारी से बताएँ।",
+   "Prompts में कभी निजी data, OTP या पासवर्ड न डालें; उम्र के नियम मानें और किसी भरोसेमंद बड़े के साथ AI उपयोग करें।"
+  ]
+ }
+}

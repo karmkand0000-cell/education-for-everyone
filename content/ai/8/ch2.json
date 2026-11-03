@@ -1,0 +1,1712 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "8",
+ "id": "ch2",
+ "intro": {
+  "en": "In Class 6 you learnt that data is the food of AI and that 'garbage in, garbage out'. In Class 8 we go deeper, as a real AI team would. Before any AI model is trained, someone must decide what data is needed, find or collect it fairly and legally, and check and clean it carefully. In this chapter you will learn the kinds and sources of data, methods of collecting it, how to choose a fair sample, how to judge data quality, how to clean messy data step by step (even with a small Python program), and the rules of ethical data collection in India.",
+  "hi": "कक्षा 6 में आपने सीखा था कि data AI का भोजन है और 'garbage in, garbage out' (कचरा अंदर, कचरा बाहर)। कक्षा 8 में हम एक असली AI टीम की तरह और गहराई में जाएँगे। किसी भी AI मॉडल को train करने से पहले किसी को तय करना होता है कि कौन-सा data चाहिए, उसे निष्पक्ष और क़ानूनी तरीके से ढूँढना या जुटाना होता है, और उसे ध्यान से जाँचना तथा साफ़ करना होता है। इस अध्याय में आप data के प्रकार और स्रोत, उसे जुटाने के तरीके, निष्पक्ष sample चुनना, data की गुणवत्ता परखना, गंदे data को चरण-दर-चरण साफ़ करना (एक छोटे Python प्रोग्राम से भी), और भारत में नैतिक data संग्रह के नियम सीखेंगे।"
+ },
+ "learn": {
+  "en": [
+   "Where data fits in the AI project cycle (data acquisition)",
+   "Structured, unstructured and semi-structured data",
+   "Quantitative and qualitative data; features and labels",
+   "Primary and secondary sources, including open government data",
+   "Methods of collection: surveys, interviews, observation, sensors, experiments, digital records",
+   "Population, sample and representative data; sampling bias",
+   "Six qualities of good data: accuracy, completeness, consistency, timeliness, relevance, validity",
+   "Data cleaning step by step, by hand and with a short Python program",
+   "Ethical collection: consent, minimum data, security, anonymisation, and the DPDP Act, 2023"
+  ],
+  "hi": [
+   "AI project cycle में data कहाँ आता है (data acquisition)",
+   "Structured, unstructured और semi-structured data",
+   "मात्रात्मक (quantitative) और गुणात्मक (qualitative) data; features और labels",
+   "प्राथमिक और द्वितीयक स्रोत, जिनमें खुला सरकारी data भी है",
+   "संग्रह के तरीके: सर्वे, साक्षात्कार, अवलोकन, सेंसर, प्रयोग, digital रिकॉर्ड",
+   "Population, sample और प्रतिनिधि data; sampling bias",
+   "अच्छे data के छह गुण: सटीकता, पूर्णता, एकरूपता, समयानुकूलता, प्रासंगिकता, वैधता",
+   "Data cleaning चरण-दर-चरण, हाथ से और एक छोटे Python प्रोग्राम से",
+   "नैतिक संग्रह: अनुमति, न्यूनतम data, सुरक्षा, गुमनामीकरण, और DPDP Act, 2023"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "2.1 Why data comes first in an AI project",
+    "hi": "2.1 AI project में data पहले क्यों आता है"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every AI project follows a cycle. CBSE's AI curriculum describes it as the AI project cycle: (1) Problem scoping - understand the problem and who it affects; (2) Data acquisition - collect the data needed; (3) Data exploration - study, clean and visualise the data; (4) Modelling - build or train an AI model; (5) Evaluation - test how well it works; and then deploy and improve. Two of these stages are all about data, which shows how central it is.",
+      "hi": "हर AI project एक चक्र का पालन करता है। CBSE का AI पाठ्यक्रम इसे AI project cycle कहता है: (1) Problem scoping - समस्या और उससे प्रभावित लोगों को समझना; (2) Data acquisition - ज़रूरी data जुटाना; (3) Data exploration - data का अध्ययन, सफ़ाई और चित्र-रूप में प्रदर्शन; (4) Modelling - AI मॉडल बनाना या train करना; (5) Evaluation - जाँचना कि यह कितना अच्छा काम करता है; और फिर लागू करना और सुधारना। इनमें से दो चरण पूरी तरह data से जुड़े हैं, जिससे पता चलता है कि यह कितना केंद्रीय है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Picture the cycle as a circle with five boxes and arrows going round: Problem scoping → Data acquisition → Data exploration → Modelling → Evaluation → back to Problem scoping. If evaluation shows the AI makes mistakes, the team often goes back and collects better data, not just a cleverer model.",
+      "hi": "इस चक्र को पाँच डिब्बों वाले एक वृत्त की तरह सोचिए जिसमें तीर घूमते हैं: Problem scoping → Data acquisition → Data exploration → Modelling → Evaluation → फिर से Problem scoping। अगर evaluation में दिखे कि AI गलतियाँ करता है, तो टीम अक्सर केवल ज़्यादा चतुर मॉडल नहीं, बल्कि बेहतर data जुटाने वापस जाती है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data acquisition",
+       "hi": "Data acquisition (डेटा अधिग्रहण)"
+      },
+      "text": {
+       "en": "The stage of an AI project in which the team identifies what data is needed and collects it from reliable and authentic sources.",
+       "hi": "AI project का वह चरण जिसमें टीम पहचानती है कि कौन-सा data चाहिए और उसे विश्वसनीय तथा प्रामाणिक स्रोतों से जुटाती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A school wants an AI that warns when a student may be falling behind in maths. In problem scoping, the team writes: 'Who? Class 8 students. What? Falling marks. Where? Our school. Why? To give help early.' What data should they plan to collect?",
+       "hi": "एक स्कूल ऐसा AI चाहता है जो चेतावनी दे कि कोई छात्र गणित में पिछड़ रहा हो सकता है। Problem scoping में टीम लिखती है: 'कौन? कक्षा 8 के छात्र। क्या? गिरते अंक। कहाँ? हमारा स्कूल। क्यों? जल्दी मदद देने के लिए।' उन्हें कौन-सा data जुटाने की योजना बनानी चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: List what affects maths progress: past test marks, homework completed, attendance, and maybe time spent on practice.\nStep 2: Decide the label (the answer the AI must learn): 'needed extra help' or 'did not', from past years' records.\nStep 3: Leave out what is not needed: home address, religion, phone number. These add risk but not value.\nStep 4: Plan consent: tell students and parents what is collected and why, and get permission.",
+       "hi": "चरण 1: गणित की प्रगति पर असर डालने वाली चीज़ें लिखें: पिछले टेस्ट के अंक, पूरा किया गया होमवर्क, उपस्थिति, और शायद अभ्यास में लगा समय।\nचरण 2: लेबल तय करें (वह उत्तर जो AI को सीखना है): पिछले वर्षों के रिकॉर्ड से 'अतिरिक्त मदद चाहिए थी' या 'नहीं'।\nचरण 3: जो ज़रूरी नहीं, उसे छोड़ दें: घर का पता, धर्म, फ़ोन नंबर। इनसे जोखिम बढ़ता है, मूल्य नहीं।\nचरण 4: अनुमति की योजना: छात्रों और माता-पिता को बताएँ कि क्या जुटाया जा रहा है और क्यों, और अनुमति लें।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: a model can only be as good as the data it learns from. Good AI teams spend a large share of their time on collecting and cleaning data.",
+      "hi": "याद रखें: मॉडल उतना ही अच्छा हो सकता है जितना वह data जिससे वह सीखता है। अच्छी AI टीमें अपना बड़ा समय data जुटाने और साफ़ करने में लगाती हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.2 Kinds of data: structured, unstructured, semi-structured",
+    "hi": "2.2 Data के प्रकार: structured, unstructured, semi-structured"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Class 6 you met the forms of data: numbers, text, pictures, sound and video. Data scientists also sort data by how organised it is.",
+      "hi": "कक्षा 6 में आप data के रूपों से मिले थे: संख्याएँ, text, चित्र, आवाज़ और वीडियो। Data वैज्ञानिक data को इस आधार पर भी बाँटते हैं कि वह कितना व्यवस्थित है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Structured data",
+       "hi": "Structured data (संरचित डेटा)"
+      },
+      "text": {
+       "en": "Data arranged in a fixed format of rows and columns, where each column has one kind of value, for example a marks register, a railway timetable or a spreadsheet of prices.",
+       "hi": "पंक्तियों और स्तंभों के तय ढाँचे में सजा data, जिसमें हर स्तंभ में एक ही तरह का मान होता है, जैसे अंकों का रजिस्टर, रेलवे की समय-सारणी या दामों की spreadsheet।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Unstructured data",
+       "hi": "Unstructured data (असंरचित डेटा)"
+      },
+      "text": {
+       "en": "Data without a fixed table format, such as photos, voice notes, videos, handwritten letters, social media posts and emails. Most of the world's data is unstructured.",
+       "hi": "बिना तय तालिका-ढाँचे का data, जैसे फ़ोटो, वॉइस नोट, वीडियो, हाथ से लिखे पत्र, सोशल मीडिया पोस्ट और ईमेल। दुनिया का ज़्यादातर data असंरचित है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Semi-structured data",
+       "hi": "Semi-structured data (अर्ध-संरचित डेटा)"
+      },
+      "text": {
+       "en": "Data that is not a neat table but carries labels (tags) that give it some organisation, for example an email (fixed fields like To, From, Date, Subject plus free text), or a photo file that stores date, time and location along with the picture.",
+       "hi": "ऐसा data जो साफ़ तालिका नहीं है पर उसमें लेबल (tags) होते हैं जो उसे कुछ व्यवस्था देते हैं, जैसे ईमेल (To, From, Date, Subject जैसे तय खाने और साथ में खुला text), या फ़ोटो फ़ाइल जो चित्र के साथ तारीख़, समय और स्थान भी रखती है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Data",
+        "Type",
+        "Why"
+       ],
+       "hi": [
+        "Data",
+        "प्रकार",
+        "क्यों"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Attendance register (Roll no., Name, Present/Absent)",
+         "Structured",
+         "Fixed rows and columns"
+        ],
+        [
+         "WhatsApp voice notes from a class group",
+         "Unstructured",
+         "Audio, no table format"
+        ],
+        [
+         "Train ticket SMS: 'PNR 1234567890, Train 12951, Coach B2, Seat 34'",
+         "Semi-structured",
+         "Free text, but with clear labelled parts"
+        ],
+        [
+         "CCTV footage at a traffic signal",
+         "Unstructured",
+         "Video"
+        ],
+        [
+         "Cricket scorecard (Batter, Runs, Balls, 4s, 6s)",
+         "Structured",
+         "Fixed columns"
+        ],
+        [
+         "A form with fixed fields and one 'comments' box",
+         "Semi-structured",
+         "Mostly labelled, some free text"
+        ]
+       ],
+       "hi": [
+        [
+         "उपस्थिति रजिस्टर (रोल नं., नाम, उपस्थित/अनुपस्थित)",
+         "Structured",
+         "तय पंक्तियाँ और स्तंभ"
+        ],
+        [
+         "कक्षा के ग्रुप के WhatsApp वॉइस नोट",
+         "Unstructured",
+         "ऑडियो, कोई तालिका नहीं"
+        ],
+        [
+         "ट्रेन टिकट का SMS: 'PNR 1234567890, Train 12951, Coach B2, Seat 34'",
+         "Semi-structured",
+         "खुला text, पर साफ़ लेबल वाले हिस्से"
+        ],
+        [
+         "ट्रैफ़िक सिग्नल की CCTV फ़ुटेज",
+         "Unstructured",
+         "वीडियो"
+        ],
+        [
+         "क्रिकेट स्कोरकार्ड (बल्लेबाज़, रन, गेंदें, 4, 6)",
+         "Structured",
+         "तय स्तंभ"
+        ],
+        [
+         "तय खानों और एक 'टिप्पणी' बॉक्स वाला फ़ॉर्म",
+         "Semi-structured",
+         "ज़्यादातर लेबल वाला, कुछ खुला text"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why does this matter for AI? Structured data is easy to sort, count and feed into simple models. Unstructured data needs extra AI tools first: computer vision for photos, speech recognition for audio, natural language processing for text (you met these domains in Class 6 and Class 7). Often the first step is to turn unstructured data into structured data, for example a crop app converts a leaf photo into numbers (pixels) and then into a label such as 'leaf blight'.",
+      "hi": "AI के लिए यह क्यों मायने रखता है? Structured data को छाँटना, गिनना और सरल मॉडलों में डालना आसान है। Unstructured data के लिए पहले अतिरिक्त AI टूल चाहिए: फ़ोटो के लिए computer vision, ऑडियो के लिए speech recognition, text के लिए natural language processing (ये domains आप कक्षा 6 और 7 में मिल चुके हैं)। अक्सर पहला कदम unstructured data को structured बनाना होता है, जैसे फसल ऐप पत्ती की फ़ोटो को संख्याओं (pixels) में और फिर 'leaf blight' जैसे लेबल में बदलता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Quick test: can you put it straight into a table with fixed columns? Yes = structured. No = unstructured. Partly, with labels = semi-structured.",
+      "hi": "तुरंत जाँच: क्या इसे सीधे तय स्तंभों वाली तालिका में रख सकते हैं? हाँ = structured। नहीं = unstructured। आंशिक रूप से, लेबल के साथ = semi-structured।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.3 Quantitative and qualitative data; features and labels",
+    "hi": "2.3 मात्रात्मक और गुणात्मक data; features और labels"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data can also be sorted by what kind of value it holds.",
+      "hi": "Data को इस आधार पर भी बाँटा जा सकता है कि उसमें किस तरह का मान है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Kind",
+        "Meaning",
+        "Examples"
+       ],
+       "hi": [
+        "प्रकार",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Quantitative (numerical)",
+         "Values are numbers you can measure or count and do maths with",
+         "Height 148 cm, marks 72, rainfall 30 mm, number of siblings 2"
+        ],
+        [
+         "  - Discrete",
+         "Counted in whole steps",
+         "Number of students, runs scored, goals"
+        ],
+        [
+         "  - Continuous",
+         "Measured; can take any value in a range",
+         "Height, weight, temperature, time taken"
+        ],
+        [
+         "Qualitative (categorical)",
+         "Values are categories or descriptions",
+         "Favourite sport, state of birth, blood group, 'healthy/diseased', 'spam/not spam'"
+        ]
+       ],
+       "hi": [
+        [
+         "Quantitative (मात्रात्मक/संख्यात्मक)",
+         "मान संख्याएँ हैं जिन्हें माप या गिन सकते हैं और जिन पर गणित कर सकते हैं",
+         "लंबाई 148 cm, अंक 72, वर्षा 30 mm, भाई-बहनों की संख्या 2"
+        ],
+        [
+         "  - Discrete (असतत)",
+         "पूरे कदमों में गिना जाता है",
+         "छात्रों की संख्या, बनाए गए रन, गोल"
+        ],
+        [
+         "  - Continuous (सतत)",
+         "मापा जाता है; किसी सीमा में कोई भी मान हो सकता है",
+         "लंबाई, वज़न, तापमान, लगा समय"
+        ],
+        [
+         "Qualitative (गुणात्मक/श्रेणीगत)",
+         "मान श्रेणियाँ या विवरण हैं",
+         "पसंदीदा खेल, जन्म का राज्य, रक्त समूह, 'स्वस्थ/रोगी', 'spam/not spam'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "In a dataset, each row is usually one example (also called a record or an instance), and each column is one property. The properties the AI uses to make a decision are called features. The answer we want the AI to learn to predict is called the label (or target).",
+      "hi": "किसी dataset में आमतौर पर हर पंक्ति एक उदाहरण (जिसे record या instance भी कहते हैं) होती है, और हर स्तंभ एक गुण। जिन गुणों का उपयोग AI निर्णय लेने में करता है, उन्हें features कहते हैं। जिस उत्तर का अनुमान हम AI को लगाना सिखाना चाहते हैं, उसे label (या target) कहते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A dataset for a mango-sorting machine has columns: Weight (g), Colour (green/yellow/orange), Firmness (1-10), Spots (yes/no), Grade (A/B/C). Identify the features, the label, and say which features are quantitative or qualitative.",
+       "hi": "आम छाँटने वाली मशीन के dataset में स्तंभ हैं: वज़न (g), रंग (हरा/पीला/नारंगी), कठोरता (1-10), धब्बे (हाँ/नहीं), ग्रेड (A/B/C)। features, label पहचानिए, और बताइए कौन-से features मात्रात्मक या गुणात्मक हैं।"
+      },
+      "a": {
+       "en": "Step 1: The label is what we want predicted: Grade (A/B/C).\nStep 2: Features are the rest: Weight, Colour, Firmness, Spots.\nStep 3: Quantitative: Weight (continuous), Firmness (a number scale).\nStep 4: Qualitative: Colour, Spots, and the label Grade.",
+       "hi": "चरण 1: label वह है जिसका अनुमान चाहिए: ग्रेड (A/B/C)।\nचरण 2: बाक़ी features हैं: वज़न, रंग, कठोरता, धब्बे।\nचरण 3: मात्रात्मक: वज़न (सतत), कठोरता (संख्या पैमाना)।\nचरण 4: गुणात्मक: रंग, धब्बे, और label ग्रेड।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: row = one example; column = one feature; label = the answer column the AI learns to predict.",
+      "hi": "याद रखें: पंक्ति = एक उदाहरण; स्तंभ = एक feature; label = उत्तर वाला स्तंभ जिसका अनुमान AI सीखता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.4 Sources of data: primary and secondary",
+    "hi": "2.4 Data के स्रोत: प्राथमिक और द्वितीयक"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Primary data",
+       "hi": "Primary data (प्राथमिक डेटा)"
+      },
+      "text": {
+       "en": "Data you collect yourself, first-hand, for your own purpose, for example by a survey of your class, an experiment, or readings from a sensor you set up.",
+       "hi": "वह data जो आप खुद, सीधे, अपने उद्देश्य के लिए जुटाते हैं, जैसे अपनी कक्षा का सर्वे, कोई प्रयोग, या आपके लगाए सेंसर की रीडिंग।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Secondary data",
+       "hi": "Secondary data (द्वितीयक डेटा)"
+      },
+      "text": {
+       "en": "Data that someone else has already collected, which you reuse, for example from government reports, books, websites or published datasets.",
+       "hi": "वह data जो किसी और ने पहले ही जुटाया है और आप दोबारा उपयोग करते हैं, जैसे सरकारी रिपोर्टों, किताबों, वेबसाइटों या प्रकाशित datasets से।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Primary data",
+        "Secondary data"
+       ],
+       "hi": [
+        "बिंदु",
+        "प्राथमिक data",
+        "द्वितीयक data"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who collects",
+         "You or your team",
+         "Someone else, earlier"
+        ],
+        [
+         "Fits your question?",
+         "Exactly, because you designed it",
+         "Maybe partly; it was made for another purpose"
+        ],
+        [
+         "Cost and time",
+         "More effort and time",
+         "Quick and often free"
+        ],
+        [
+         "Control over quality",
+         "High: you know how it was collected",
+         "Lower: you must check the source"
+        ],
+        [
+         "Example",
+         "Surveying 40 classmates about sleep hours",
+         "Rainfall data from the India Meteorological Department"
+        ]
+       ],
+       "hi": [
+        [
+         "कौन जुटाता है",
+         "आप या आपकी टीम",
+         "कोई और, पहले"
+        ],
+        [
+         "आपके सवाल पर फ़िट?",
+         "बिल्कुल, क्योंकि आपने बनाया",
+         "शायद आंशिक; यह दूसरे उद्देश्य से बना था"
+        ],
+        [
+         "लागत और समय",
+         "ज़्यादा मेहनत और समय",
+         "जल्दी और अक्सर मुफ़्त"
+        ],
+        [
+         "गुणवत्ता पर नियंत्रण",
+         "ज़्यादा: आपको पता है कैसे जुटाया",
+         "कम: आपको स्रोत जाँचना होगा"
+        ],
+        [
+         "उदाहरण",
+         "नींद के घंटों पर 40 सहपाठियों का सर्वे",
+         "भारत मौसम विज्ञान विभाग (IMD) का वर्षा data"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Trusted secondary sources in India include the Open Government Data Platform (data.gov.in), where ministries publish datasets on topics such as agriculture, health and transport; the Census of India; the India Meteorological Department; and reports of organisations such as the Reserve Bank of India. Internationally, sites like Kaggle host datasets made for learning AI. Always note who published the data, when, and how it was collected.",
+      "hi": "भारत में भरोसेमंद द्वितीयक स्रोतों में Open Government Data Platform (data.gov.in) शामिल है, जहाँ मंत्रालय खेती, स्वास्थ्य और परिवहन जैसे विषयों पर datasets प्रकाशित करते हैं; भारत की जनगणना (Census); भारत मौसम विज्ञान विभाग; और भारतीय रिज़र्व बैंक जैसी संस्थाओं की रिपोर्टें। अंतरराष्ट्रीय स्तर पर Kaggle जैसी साइटें AI सीखने के लिए बने datasets रखती हैं। हमेशा लिखें कि data किसने प्रकाशित किया, कब, और कैसे जुटाया गया।"
+     }
+    },
+    {
+     "note": {
+      "en": "Before using secondary data, ask: Who made it? Is the source official or well known? How old is it? Does it cover the people and places I care about? May I use it (licence)?",
+      "hi": "द्वितीयक data उपयोग करने से पहले पूछें: इसे किसने बनाया? क्या स्रोत आधिकारिक या जाना-माना है? यह कितना पुराना है? क्या यह उन लोगों और जगहों को शामिल करता है जिनकी मुझे परवाह है? क्या मुझे इसे उपयोग करने की अनुमति (licence) है?"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.5 Methods of collecting data",
+    "hi": "2.5 Data जुटाने के तरीके"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Method",
+        "How it works",
+        "Good for",
+        "Watch out for"
+       ],
+       "hi": [
+        "तरीका",
+        "कैसे काम करता है",
+        "किसके लिए अच्छा",
+        "किस बात से सावधान"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Survey / questionnaire",
+         "Same written questions to many people, on paper or a form like Google Forms",
+         "Opinions and habits of many people quickly",
+         "Leading or confusing questions; people may not answer honestly"
+        ],
+        [
+         "Interview",
+         "Talking one-to-one and asking follow-up questions",
+         "Deep understanding of a few people",
+         "Slow; the interviewer's tone can influence answers"
+        ],
+        [
+         "Observation",
+         "Watching and recording what happens",
+         "Behaviour, e.g. how many vehicles stop at a red light",
+         "Observer may miss things or be biased"
+        ],
+        [
+         "Experiment",
+         "Change one thing and measure the effect",
+         "Cause and effect, e.g. does a plant grow taller with more sunlight?",
+         "Must keep other things the same"
+        ],
+        [
+         "Sensors and devices",
+         "Machines record automatically: thermometers, GPS, cameras, smartwatches, soil-moisture sensors",
+         "Large amounts of continuous data",
+         "Broken or badly placed sensors give wrong readings"
+        ],
+        [
+         "Digital records and logs",
+         "Data created by apps and systems: UPI transactions, website clicks, ticket bookings",
+         "Very large datasets",
+         "Privacy; may not represent people without phones"
+        ],
+        [
+         "Web scraping / existing datasets",
+         "Programs collect public data from websites, or teams download published datasets",
+         "Text and images in bulk",
+         "Copyright, permission, accuracy and fake content"
+        ]
+       ],
+       "hi": [
+        [
+         "सर्वे / प्रश्नावली",
+         "बहुत लोगों से एक जैसे लिखित सवाल, काग़ज़ पर या Google Forms जैसे फ़ॉर्म से",
+         "बहुत लोगों की राय और आदतें जल्दी",
+         "भटकाने वाले या उलझाने वाले सवाल; लोग ईमानदारी से जवाब न दें"
+        ],
+        [
+         "साक्षात्कार (interview)",
+         "आमने-सामने बात करना और आगे के सवाल पूछना",
+         "कुछ लोगों की गहरी समझ",
+         "धीमा; पूछने वाले का लहजा जवाब पर असर डाल सकता है"
+        ],
+        [
+         "अवलोकन (observation)",
+         "जो होता है उसे देखना और लिखना",
+         "व्यवहार, जैसे लाल बत्ती पर कितनी गाड़ियाँ रुकती हैं",
+         "देखने वाला कुछ चूक सकता है या पक्षपाती हो सकता है"
+        ],
+        [
+         "प्रयोग (experiment)",
+         "एक चीज़ बदलें और असर मापें",
+         "कारण और प्रभाव, जैसे ज़्यादा धूप में पौधा लंबा होता है?",
+         "बाक़ी चीज़ें एक जैसी रखनी होंगी"
+        ],
+        [
+         "सेंसर और उपकरण",
+         "मशीनें अपने आप रिकॉर्ड करती हैं: थर्मामीटर, GPS, कैमरा, स्मार्टवॉच, मिट्टी-नमी सेंसर",
+         "भारी मात्रा में लगातार data",
+         "खराब या गलत जगह लगे सेंसर गलत रीडिंग देते हैं"
+        ],
+        [
+         "Digital रिकॉर्ड और logs",
+         "ऐप और सिस्टम से बनने वाला data: UPI लेन-देन, वेबसाइट क्लिक, टिकट बुकिंग",
+         "बहुत बड़े datasets",
+         "निजता; बिना फ़ोन वाले लोग शामिल न हों"
+        ],
+        [
+         "Web scraping / मौजूदा datasets",
+         "प्रोग्राम वेबसाइटों से सार्वजनिक data जुटाते हैं, या टीमें प्रकाशित datasets डाउनलोड करती हैं",
+         "भारी मात्रा में text और चित्र",
+         "कॉपीराइट, अनुमति, सटीकता और नकली सामग्री"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Writing good survey questions is a skill. Compare two questions. Bad: 'Don't you agree that our canteen food is terrible?' This is a leading question; it pushes people towards one answer. Better: 'How would you rate the canteen food? (1 = very poor, 5 = very good)'. Good questions are short, neutral, ask one thing at a time, and give clear answer choices.",
+      "hi": "अच्छे सर्वे सवाल लिखना एक कौशल है। दो सवालों की तुलना करें। खराब: 'क्या आप नहीं मानते कि हमारी कैंटीन का खाना बहुत बुरा है?' यह भटकाने वाला (leading) सवाल है; यह लोगों को एक जवाब की ओर धकेलता है। बेहतर: 'आप कैंटीन के खाने को कितने अंक देंगे? (1 = बहुत खराब, 5 = बहुत अच्छा)'। अच्छे सवाल छोटे, निष्पक्ष होते हैं, एक बार में एक ही बात पूछते हैं, और साफ़ विकल्प देते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find what is wrong with each survey question and rewrite it: (a) 'How many hours do you sleep and study?' (b) 'Which is your favourite subject: Maths or Science?' (c) 'You use your phone too much, right?'",
+       "hi": "हर सर्वे सवाल में क्या गलत है बताइए और उसे दोबारा लिखिए: (क) 'आप कितने घंटे सोते और पढ़ते हैं?' (ख) 'आपका पसंदीदा विषय कौन-सा है: गणित या विज्ञान?' (ग) 'आप फ़ोन बहुत ज़्यादा चलाते हैं, है न?'"
+      },
+      "a": {
+       "en": "(a) Two questions in one (double-barrelled). Fix: 'How many hours do you sleep on a school night?' and a separate question for study hours.\n(b) Too few choices; people who like Hindi or Art cannot answer truly. Fix: give all subjects plus 'Other'.\n(c) Leading and judging. Fix: 'On a school day, about how many hours do you use a phone? (less than 1 / 1-2 / 2-3 / more than 3)'.",
+       "hi": "(क) एक में दो सवाल। सुधार: 'स्कूल वाली रात आप कितने घंटे सोते हैं?' और पढ़ाई के घंटों के लिए अलग सवाल।\n(ख) बहुत कम विकल्प; हिंदी या कला पसंद करने वाले सही जवाब नहीं दे सकते। सुधार: सभी विषय और 'अन्य' दें।\n(ग) भटकाने वाला और आलोचनात्मक। सुधार: 'स्कूल के दिन आप लगभग कितने घंटे फ़ोन उपयोग करते हैं? (1 से कम / 1-2 / 2-3 / 3 से ज़्यादा)'।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Choose the method that fits the question: opinions → survey or interview; behaviour → observation; cause and effect → experiment; continuous measurements → sensors.",
+      "hi": "सवाल के अनुसार तरीका चुनें: राय → सर्वे या साक्षात्कार; व्यवहार → अवलोकन; कारण और प्रभाव → प्रयोग; लगातार माप → सेंसर।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.6 Population, sample and representative data",
+    "hi": "2.6 Population, sample और प्रतिनिधि data"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Usually we cannot collect data from everyone. If you want to know the favourite sport of all Class 8 students in India, you cannot ask millions of students. Instead you ask a smaller group and hope it reflects the whole.",
+      "hi": "आमतौर पर हम सबसे data नहीं जुटा सकते। अगर आप भारत के सभी कक्षा 8 के छात्रों का पसंदीदा खेल जानना चाहें, तो लाखों छात्रों से नहीं पूछ सकते। इसके बजाय आप एक छोटे समूह से पूछते हैं और उम्मीद करते हैं कि वह पूरे समूह को दर्शाए।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Population",
+       "hi": "Population (समष्टि)"
+      },
+      "text": {
+       "en": "The whole group you want to learn about, for example all Class 8 students in a state.",
+       "hi": "वह पूरा समूह जिसके बारे में आप जानना चाहते हैं, जैसे किसी राज्य के सभी कक्षा 8 के छात्र।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Sample",
+       "hi": "Sample (नमूना)"
+      },
+      "text": {
+       "en": "The smaller group from the population from whom you actually collect data.",
+       "hi": "समष्टि में से वह छोटा समूह जिससे आप सचमुच data जुटाते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Representative sample",
+       "hi": "Representative sample (प्रतिनिधि नमूना)"
+      },
+      "text": {
+       "en": "A sample that contains the different kinds of members of the population in roughly the right proportions, so that results from the sample are fair for the whole population.",
+       "hi": "ऐसा नमूना जिसमें समष्टि के अलग-अलग तरह के सदस्य लगभग सही अनुपात में हों, ताकि नमूने के परिणाम पूरी समष्टि के लिए उचित हों।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "If a sample leaves out some groups, the results are skewed. This is called sampling bias. For AI, it is very serious: a voice assistant trained mostly on voices of adult men from one city may understand women, children, elderly people or speakers from other regions poorly. A face-recognition system trained mostly on one skin tone may make more mistakes on others. A crop-disease app trained only on photos taken in bright sunlight may fail on cloudy-day photos.",
+      "hi": "अगर नमूना कुछ समूहों को छोड़ दे, तो परिणाम एक ओर झुक जाते हैं। इसे sampling bias (नमूना-पक्षपात) कहते हैं। AI के लिए यह बहुत गंभीर है: एक शहर के वयस्क पुरुषों की आवाज़ों पर ज़्यादा train हुआ voice assistant महिलाओं, बच्चों, बुज़ुर्गों या दूसरे क्षेत्रों के लोगों को कम समझ सकता है। ज़्यादातर एक त्वचा-रंग पर train हुआ face-recognition सिस्टम दूसरों पर ज़्यादा गलतियाँ कर सकता है। केवल तेज़ धूप में ली गई फ़ोटो पर train हुआ फसल-रोग ऐप बादल वाले दिन की फ़ोटो पर विफल हो सकता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Way of sampling",
+        "How",
+        "Fair?"
+       ],
+       "hi": [
+        "नमूना लेने का तरीका",
+        "कैसे",
+        "निष्पक्ष?"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Random sampling",
+         "Every member has an equal chance, e.g. draw roll numbers from a box",
+         "Usually fair if the sample is big enough"
+        ],
+        [
+         "Stratified sampling",
+         "Divide into groups (boys/girls, sections, regions) and pick from each in the right proportion",
+         "Fair; makes sure small groups are included"
+        ],
+        [
+         "Convenience sampling",
+         "Ask whoever is easiest to reach, e.g. only your friends",
+         "Often biased"
+        ],
+        [
+         "Voluntary sampling",
+         "Only people who choose to reply, e.g. an online poll",
+         "Often biased towards people with strong opinions or more internet access"
+        ]
+       ],
+       "hi": [
+        [
+         "Random sampling (यादृच्छिक)",
+         "हर सदस्य को बराबर मौका, जैसे डिब्बे से रोल नंबर निकालना",
+         "नमूना काफ़ी बड़ा हो तो आमतौर पर निष्पक्ष"
+        ],
+        [
+         "Stratified sampling (स्तरीकृत)",
+         "समूहों में बाँटें (लड़के/लड़कियाँ, सेक्शन, क्षेत्र) और हर एक से सही अनुपात में चुनें",
+         "निष्पक्ष; छोटे समूहों को शामिल करना सुनिश्चित करता है"
+        ],
+        [
+         "Convenience sampling (सुविधा वाला)",
+         "जो सबसे आसानी से मिले उससे पूछें, जैसे केवल अपने दोस्त",
+         "अक्सर पक्षपाती"
+        ],
+        [
+         "Voluntary sampling (स्वैच्छिक)",
+         "केवल वे लोग जो जवाब देना चुनें, जैसे ऑनलाइन पोल",
+         "अक्सर तेज़ राय वाले या ज़्यादा इंटरनेट वाले लोगों की ओर झुका"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A school has 600 students: 360 in the middle section (Classes 6-8) and 240 in the senior section (Classes 9-12). You can survey 50 students about the new library timing. How many should you pick from each section for a stratified sample?",
+       "hi": "एक स्कूल में 600 छात्र हैं: मध्य वर्ग (कक्षा 6-8) में 360 और वरिष्ठ वर्ग (कक्षा 9-12) में 240। आप नई लाइब्रेरी के समय पर 50 छात्रों का सर्वे कर सकते हैं। Stratified sample के लिए हर वर्ग से कितने चुनें?"
+      },
+      "a": {
+       "en": "Step 1: Fraction in middle section = 360 / 600 = 0.6 (60%).\nStep 2: Fraction in senior section = 240 / 600 = 0.4 (40%).\nStep 3: Middle: 0.6 × 50 = 30 students. Senior: 0.4 × 50 = 20 students.\nStep 4: Check: 30 + 20 = 50. Then pick the 30 and the 20 at random within each section.",
+       "hi": "चरण 1: मध्य वर्ग का भाग = 360 / 600 = 0.6 (60%)।\nचरण 2: वरिष्ठ वर्ग का भाग = 240 / 600 = 0.4 (40%)।\nचरण 3: मध्य: 0.6 × 50 = 30 छात्र। वरिष्ठ: 0.4 × 50 = 20 छात्र।\nचरण 4: जाँच: 30 + 20 = 50। फिर हर वर्ग के अंदर 30 और 20 को यादृच्छिक रूप से चुनें।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: more data is not automatically better data. 10,000 photos all from one village are less useful than 2,000 photos from many villages, seasons and phones.",
+      "hi": "याद रखें: ज़्यादा data अपने आप बेहतर data नहीं है। एक ही गाँव की 10,000 फ़ोटो, कई गाँवों, मौसमों और फ़ोनों की 2,000 फ़ोटो से कम उपयोगी हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.7 What makes data good? Six dimensions of data quality",
+    "hi": "2.7 Data अच्छा कैसे बनता है? Data गुणवत्ता के छह आयाम"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data quality means how fit the data is for its purpose. Experts check several dimensions. Learn these six with a simple example: a school's student records.",
+      "hi": "Data quality (डेटा गुणवत्ता) का अर्थ है कि data अपने उद्देश्य के लिए कितना उपयुक्त है। विशेषज्ञ कई आयाम जाँचते हैं। ये छह एक सरल उदाहरण से सीखें: स्कूल के छात्र-रिकॉर्ड।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Dimension",
+        "Question to ask",
+        "Problem example"
+       ],
+       "hi": [
+        "आयाम",
+        "पूछने लायक सवाल",
+        "समस्या का उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Accuracy",
+         "Is it correct and true to reality?",
+         "Height typed as 1450 cm instead of 145 cm"
+        ],
+        [
+         "Completeness",
+         "Is anything missing?",
+         "Blood group blank for 30 students"
+        ],
+        [
+         "Consistency",
+         "Is the same thing written the same way everywhere?",
+         "'Delhi', 'New Delhi', 'DL' and 'delhi' used for the same city; dates as 03/04/2025 and 2025-04-03"
+        ],
+        [
+         "Timeliness",
+         "Is it up to date for the purpose?",
+         "Using last year's class list for this year's bus routes"
+        ],
+        [
+         "Relevance",
+         "Is it useful for this problem?",
+         "Collecting favourite colours to predict maths marks"
+        ],
+        [
+         "Validity",
+         "Does it follow the allowed format and range?",
+         "Age 250; a phone number with 7 digits; 'Grade' column containing 'banana'"
+        ]
+       ],
+       "hi": [
+        [
+         "Accuracy (सटीकता)",
+         "क्या यह सही और वास्तविकता के अनुरूप है?",
+         "लंबाई 145 cm के बजाय 1450 cm टाइप"
+        ],
+        [
+         "Completeness (पूर्णता)",
+         "क्या कुछ छूटा है?",
+         "30 छात्रों का रक्त समूह खाली"
+        ],
+        [
+         "Consistency (एकरूपता)",
+         "क्या एक ही चीज़ हर जगह एक ढंग से लिखी है?",
+         "एक ही शहर के लिए 'Delhi', 'New Delhi', 'DL' और 'delhi'; तारीख़ें 03/04/2025 और 2025-04-03 दोनों तरह"
+        ],
+        [
+         "Timeliness (समयानुकूलता)",
+         "क्या यह उद्देश्य के लिए ताज़ा है?",
+         "इस साल के बस रूट के लिए पिछले साल की कक्षा-सूची का उपयोग"
+        ],
+        [
+         "Relevance (प्रासंगिकता)",
+         "क्या यह इस समस्या के लिए उपयोगी है?",
+         "गणित के अंक अनुमान लगाने के लिए पसंदीदा रंग जुटाना"
+        ],
+        [
+         "Validity (वैधता)",
+         "क्या यह अनुमत रूप और सीमा में है?",
+         "आयु 250; 7 अंकों का फ़ोन नंबर; 'ग्रेड' स्तंभ में 'केला'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "For AI, add one more check: is the data representative and balanced (section 2.6)? And for labelled data: are the labels correct? If volunteers labelled 1,000 leaf photos and 100 labels are wrong, the AI learns those mistakes too.",
+      "hi": "AI के लिए एक और जाँच जोड़ें: क्या data प्रतिनिधि और संतुलित है (खंड 2.6)? और लेबल वाले data के लिए: क्या लेबल सही हैं? अगर स्वयंसेवकों ने 1,000 पत्ती-फ़ोटो पर लेबल लगाए और 100 लेबल गलत हैं, तो AI वे गलतियाँ भी सीख लेता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Outlier",
+       "hi": "Outlier (बाहरी मान)"
+      },
+      "text": {
+       "en": "A value very far from the others. It may be an error (1450 cm height) or a real but rare case (a very tall basketball player). It must be checked, not deleted blindly.",
+       "hi": "ऐसा मान जो बाक़ियों से बहुत दूर हो। यह गलती हो सकता है (1450 cm लंबाई) या असली पर दुर्लभ मामला (बहुत लंबा बास्केटबॉल खिलाड़ी)। इसे जाँचना चाहिए, आँख मूँदकर हटाना नहीं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Identify the quality problem in each: (a) a weather dataset from 1995 used to plan this year's sowing alone (b) a survey where 'Gender' has values M, F, Male, female, m (c) a feedback form where half the students skipped 'Suggestions' (d) a marks list where one student has 112 out of 100.",
+       "hi": "हर एक में गुणवत्ता की समस्या पहचानिए: (क) इस साल की बुवाई की योजना के लिए केवल 1995 का मौसम dataset (ख) सर्वे जिसमें 'लिंग' के मान M, F, Male, female, m हैं (ग) फ़ीडबैक फ़ॉर्म जिसमें आधे छात्रों ने 'सुझाव' छोड़ दिया (घ) अंक सूची जिसमें एक छात्र के 100 में से 112 हैं।"
+      },
+      "a": {
+       "en": "(a) Timeliness: the data is too old to rely on by itself.\n(b) Consistency: the same category is written in different ways; standardise to one form.\n(c) Completeness: many missing values.\n(d) Validity (and accuracy): 112 is outside the allowed range 0-100.",
+       "hi": "(क) समयानुकूलता: data अकेले भरोसे के लिए बहुत पुराना है।\n(ख) एकरूपता: एक ही श्रेणी अलग-अलग ढंग से लिखी है; एक रूप में मानकीकृत करें।\n(ग) पूर्णता: बहुत से खाली मान।\n(घ) वैधता (और सटीकता): 112 अनुमत सीमा 0-100 से बाहर है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.8 Data cleaning step by step",
+    "hi": "2.8 Data cleaning चरण-दर-चरण"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data cleaning",
+       "hi": "Data cleaning (डेटा सफ़ाई)"
+      },
+      "text": {
+       "en": "Finding and fixing (or removing) errors, duplicates, missing values and inconsistencies in data, so that it is ready for analysis or for training AI. It is also called data cleansing or data scrubbing.",
+       "hi": "Data में गलतियाँ, दोहराव, खाली मान और असंगतियाँ ढूँढना और ठीक करना (या हटाना), ताकि वह विश्लेषण या AI training के लिए तैयार हो। इसे data cleansing या data scrubbing भी कहते हैं।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "1. Remove duplicates: the same record entered twice.",
+       "2. Handle missing values: fill them (with the correct value from the source, or a reasonable value such as the average) or remove the record, and note what you did.",
+       "3. Fix errors and invalid values: typing mistakes, impossible values, wrong units (cm vs m).",
+       "4. Standardise formats: one spelling, one date format, one unit, same case (all 'Delhi').",
+       "5. Check outliers: confirm whether each is an error or a real rare value.",
+       "6. Check labels: correct wrong labels; make sure each class has enough examples.",
+       "7. Keep the original copy and write a short note of every change, so others can check your work."
+      ],
+      "hi": [
+       "1. दोहराव हटाएँ: एक ही रिकॉर्ड दो बार दर्ज।",
+       "2. खाली मान सँभालें: उन्हें भरें (स्रोत से सही मान, या औसत जैसा उचित मान) या रिकॉर्ड हटाएँ, और लिखें कि क्या किया।",
+       "3. गलतियाँ और अमान्य मान ठीक करें: टाइपिंग गलतियाँ, असंभव मान, गलत इकाई (cm बनाम m)।",
+       "4. रूप मानकीकृत करें: एक वर्तनी, एक तारीख़ प्रारूप, एक इकाई, एक जैसे अक्षर (सब 'Delhi')।",
+       "5. Outliers जाँचें: पुष्टि करें कि हर एक गलती है या असली दुर्लभ मान।",
+       "6. लेबल जाँचें: गलत लेबल सुधारें; पक्का करें कि हर वर्ग के पर्याप्त उदाहरण हों।",
+       "7. मूल प्रति सँभालकर रखें और हर बदलाव का छोटा नोट लिखें, ताकि दूसरे आपका काम जाँच सकें।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Seven heights (cm) were recorded: Asha 142, Ravi 150, Ravi 150 (entered twice), Meena 0 (left blank, saved as 0), Imran 148, Joseph 1450, Gurpreet 139. (a) Find the average before cleaning. (b) Clean the data and find the new average. (c) Why is the first average misleading?",
+       "hi": "सात लंबाइयाँ (cm) दर्ज हुईं: आशा 142, रवि 150, रवि 150 (दो बार दर्ज), मीना 0 (खाली छोड़ा, 0 के रूप में सहेजा), इमरान 148, जोसेफ़ 1450, गुरप्रीत 139। (क) सफ़ाई से पहले औसत निकालिए। (ख) data साफ़ करके नया औसत निकालिए। (ग) पहला औसत भ्रामक क्यों है?"
+      },
+      "a": {
+       "en": "Step 1: (a) Sum = 142 + 150 + 150 + 0 + 148 + 1450 + 139 = 2179. Average = 2179 / 7 ≈ 311.3 cm. No Class 8 student is 3 metres tall!\nStep 2: Remove Ravi's duplicate. Skip Meena's 0 because it means 'missing' (ask her later for the real value). Fix Joseph's 1450 to 145 after checking with him (an extra digit was typed).\nStep 3: (b) Clean data: 142, 150, 148, 145, 139. Sum = 724. Average = 724 / 5 = 144.8 cm.\nStep 4: (c) One typing error and one fake zero pulled the average far from the truth. An AI trained on such data would learn nonsense.",
+       "hi": "चरण 1: (क) योग = 142 + 150 + 150 + 0 + 148 + 1450 + 139 = 2179। औसत = 2179 / 7 ≈ 311.3 cm। कक्षा 8 का कोई छात्र 3 मीटर लंबा नहीं होता!\nचरण 2: रवि का दोहराव हटाएँ। मीना का 0 छोड़ दें क्योंकि उसका अर्थ 'खाली' है (बाद में उससे असली मान पूछें)। जोसेफ़ का 1450 उससे पूछकर 145 करें (एक अंक ज़्यादा टाइप हुआ था)।\nचरण 3: (ख) साफ़ data: 142, 150, 148, 145, 139। योग = 724। औसत = 724 / 5 = 144.8 cm।\nचरण 4: (ग) एक टाइपिंग गलती और एक नकली शून्य ने औसत को सच्चाई से बहुत दूर खींच दिया। ऐसे data पर train हुआ AI बेतुकी बातें सीखेगा।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The same cleaning can be done by a computer. Below is a short Python program (you will learn Python properly in Chapter 7). It goes through each name and height, removes repeats, skips missing values (0), and fixes heights above 250 cm by dividing by 10, which is the correction for an extra digit in this dataset.",
+      "hi": "यही सफ़ाई कंप्यूटर भी कर सकता है। नीचे एक छोटा Python प्रोग्राम है (Python आप अध्याय 7 में ठीक से सीखेंगे)। यह हर नाम और लंबाई को एक-एक करके देखता है, दोहराव हटाता है, खाली मान (0) छोड़ता है, और 250 cm से ज़्यादा लंबाई को 10 से भाग देकर ठीक करता है, जो इस dataset में एक अतिरिक्त अंक की गलती का सुधार है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "heights = [142, 150, 150, 0, 148, 1450, 139]\nnames = [\"Asha\", \"Ravi\", \"Ravi\", \"Meena\", \"Imran\", \"Joseph\", \"Gurpreet\"]\n\nseen = set()\nclean = []\nfor name, h in zip(names, heights):\n    if name in seen:\n        print(\"Duplicate removed:\", name)\n        continue\n    seen.add(name)\n    if h == 0:\n        print(\"Missing value skipped:\", name)\n        continue\n    if h > 250:\n        h = h / 10\n        print(\"Typing error fixed:\", name, \"->\", h)\n    clean.append(h)\n\nprint(\"Clean data:\", clean)\nprint(\"Average height:\", round(sum(clean) / len(clean), 2), \"cm\")",
+      "hi": "heights = [142, 150, 150, 0, 148, 1450, 139]\nnames = [\"Asha\", \"Ravi\", \"Ravi\", \"Meena\", \"Imran\", \"Joseph\", \"Gurpreet\"]\n\nseen = set()\nclean = []\nfor name, h in zip(names, heights):\n    if name in seen:\n        print(\"Duplicate removed:\", name)\n        continue\n    seen.add(name)\n    if h == 0:\n        print(\"Missing value skipped:\", name)\n        continue\n    if h > 250:\n        h = h / 10\n        print(\"Typing error fixed:\", name, \"->\", h)\n    clean.append(h)\n\nprint(\"Clean data:\", clean)\nprint(\"Average height:\", round(sum(clean) / len(clean), 2), \"cm\")"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर output:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Duplicate removed: Ravi\nMissing value skipped: Meena\nTyping error fixed: Joseph -> 145.0\nClean data: [142, 150, 148, 145.0, 139]\nAverage height: 144.8 cm",
+      "hi": "Duplicate removed: Ravi\nMissing value skipped: Meena\nTyping error fixed: Joseph -> 145.0\nClean data: [142, 150, 148, 145.0, 139]\nAverage height: 144.8 cm"
+     }
+    },
+    {
+     "note": {
+      "en": "A program applies a rule to every row, which is fast for thousands of rows. But a human must decide the rules (for example, that 0 means missing and that 1450 means 145). In real projects, you confirm such fixes with the source whenever possible.",
+      "hi": "प्रोग्राम हर पंक्ति पर एक नियम लगाता है, जो हज़ारों पंक्तियों के लिए तेज़ है। पर नियम इंसान को तय करने होते हैं (जैसे कि 0 का अर्थ खाली है और 1450 का अर्थ 145)। असली projects में जहाँ संभव हो, ऐसे सुधार स्रोत से पुष्टि करके करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.9 Ethical and legal data collection",
+    "hi": "2.9 नैतिक और क़ानूनी data संग्रह"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data is often about people, and people have a right to privacy. Collecting data in the right way is called ethical data collection. Follow these principles in every project, even a school project.",
+      "hi": "Data अक्सर लोगों के बारे में होता है, और लोगों को निजता (privacy) का अधिकार है। सही ढंग से data जुटाना नैतिक data संग्रह कहलाता है। हर project में, स्कूल project में भी, इन सिद्धांतों का पालन करें।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Principle",
+        "What it means",
+        "School example"
+       ],
+       "hi": [
+        "सिद्धांत",
+        "इसका अर्थ",
+        "स्कूल का उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Informed consent",
+         "People know what is collected, why, and how it will be used, and agree freely; they may say no",
+         "A note at the top of your survey; for younger students, a parent's permission"
+        ],
+        [
+         "Purpose limitation",
+         "Use data only for the purpose you told people",
+         "Sleep-survey data is not later shared to tease someone"
+        ],
+        [
+         "Data minimisation",
+         "Collect only what you really need",
+         "Ask 'Class' but not home address or phone number"
+        ],
+        [
+         "Anonymisation",
+         "Remove names and details that identify a person",
+         "Use 'Student 1, Student 2' in the final table"
+        ],
+        [
+         "Security",
+         "Keep data safe from others",
+         "Store the sheet with a password; do not post it in a public group"
+        ],
+        [
+         "Accuracy and honesty",
+         "Record data truthfully; do not make up answers",
+         "Do not fill blank forms yourself to finish faster"
+        ],
+        [
+         "Respect for copyright and terms",
+         "Use only data and images you are allowed to use",
+         "Use open datasets or your own photos, with credit"
+        ],
+        [
+         "Limited storage",
+         "Delete personal data when it is no longer needed",
+         "Delete raw survey forms after the project is graded"
+        ]
+       ],
+       "hi": [
+        [
+         "सूचित अनुमति (informed consent)",
+         "लोग जानें कि क्या जुटाया जा रहा है, क्यों, और कैसे उपयोग होगा, और खुले मन से सहमत हों; वे मना भी कर सकते हैं",
+         "सर्वे के ऊपर एक नोट; छोटे छात्रों के लिए माता-पिता की अनुमति"
+        ],
+        [
+         "उद्देश्य की सीमा",
+         "data केवल उसी उद्देश्य के लिए उपयोग करें जो लोगों को बताया",
+         "नींद-सर्वे का data बाद में किसी को चिढ़ाने के लिए साझा न हो"
+        ],
+        [
+         "Data minimisation (न्यूनतम data)",
+         "केवल वही जुटाएँ जो सचमुच ज़रूरी हो",
+         "'कक्षा' पूछें पर घर का पता या फ़ोन नंबर नहीं"
+        ],
+        [
+         "Anonymisation (गुमनामीकरण)",
+         "किसी व्यक्ति की पहचान कराने वाले नाम और विवरण हटाएँ",
+         "अंतिम तालिका में 'छात्र 1, छात्र 2' लिखें"
+        ],
+        [
+         "सुरक्षा",
+         "data को दूसरों से सुरक्षित रखें",
+         "शीट को पासवर्ड से रखें; सार्वजनिक ग्रुप में न डालें"
+        ],
+        [
+         "सटीकता और ईमानदारी",
+         "data सच्चाई से दर्ज करें; जवाब ख़ुद न गढ़ें",
+         "जल्दी पूरा करने के लिए खाली फ़ॉर्म ख़ुद न भरें"
+        ],
+        [
+         "कॉपीराइट और शर्तों का सम्मान",
+         "केवल वही data और चित्र उपयोग करें जिनकी अनुमति हो",
+         "खुले datasets या अपनी फ़ोटो, श्रेय के साथ"
+        ],
+        [
+         "सीमित भंडारण",
+         "ज़रूरत ख़त्म होने पर निजी data मिटा दें",
+         "project का मूल्यांकन होने के बाद कच्चे सर्वे फ़ॉर्म मिटाएँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "India's Digital Personal Data Protection Act, 2023 (DPDP Act) sets legal rules for digital personal data. In simple words: the person whose data it is (called the Data Principal) has rights, such as to know how their data is used, to get it corrected or erased, and to raise complaints. Organisations that collect and decide how to use personal data (called Data Fiduciaries) must take clear consent, use data only for the stated purpose, keep it secure, and report data breaches. For children (under 18), organisations need verifiable consent from a parent or guardian, and must not track or target advertising at children.",
+      "hi": "भारत का Digital Personal Data Protection Act, 2023 (DPDP Act) digital निजी data के लिए क़ानूनी नियम तय करता है। सरल शब्दों में: जिस व्यक्ति का data है (उसे Data Principal कहते हैं) उसके अधिकार हैं, जैसे यह जानना कि उसका data कैसे उपयोग हो रहा है, उसे सुधरवाना या मिटवाना, और शिकायत करना। जो संस्थाएँ निजी data जुटाती हैं और तय करती हैं कि उसका उपयोग कैसे होगा (उन्हें Data Fiduciaries कहते हैं) उन्हें साफ़ अनुमति लेनी होती है, data केवल बताए उद्देश्य के लिए उपयोग करना होता है, उसे सुरक्षित रखना होता है, और data चोरी/लीक (breach) की सूचना देनी होती है। बच्चों (18 से कम) के लिए संस्थाओं को माता-पिता या अभिभावक की सत्यापित अनुमति चाहिए, और वे बच्चों को ट्रैक नहीं कर सकतीं या उन पर लक्षित विज्ञापन नहीं चला सकतीं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Personal data",
+       "hi": "Personal data (निजी डेटा)"
+      },
+      "text": {
+       "en": "Any data about a person who can be identified from it, such as name, photo, phone number, Aadhaar number, address, voice or location.",
+       "hi": "किसी ऐसे व्यक्ति के बारे में कोई भी data जिसकी पहचान उससे हो सके, जैसे नाम, फ़ोटो, फ़ोन नंबर, आधार नंबर, पता, आवाज़ या स्थान।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Your group wants to build a small AI that recognises hand-drawn digits. You plan to collect drawings from 100 students. Write an ethical plan in five points.",
+       "hi": "आपका समूह हाथ से बने अंक पहचानने वाला छोटा AI बनाना चाहता है। आप 100 छात्रों से चित्र जुटाने की योजना बनाते हैं। पाँच बिंदुओं में नैतिक योजना लिखिए।"
+      },
+      "a": {
+       "en": "1. Consent: explain the project and ask each student (and get the teacher's approval); anyone may refuse.\n2. Minimum data: collect only the drawings and the digit label; no names, faces or roll numbers on the sheets.\n3. Representative: include students from different classes and both left- and right-handed writers.\n4. Security: keep scans in a school folder, not on personal social media.\n5. Honesty and deletion: do not draw extra samples yourself and pretend they are from others; delete the scans when the project ends unless everyone agreed to keep them.",
+       "hi": "1. अनुमति: project समझाएँ और हर छात्र से पूछें (और शिक्षक की मंज़ूरी लें); कोई भी मना कर सकता है।\n2. न्यूनतम data: केवल चित्र और अंक का लेबल जुटाएँ; शीट पर नाम, चेहरा या रोल नंबर नहीं।\n3. प्रतिनिधि: अलग-अलग कक्षाओं और बाएँ तथा दाएँ हाथ से लिखने वाले दोनों छात्रों को शामिल करें।\n4. सुरक्षा: स्कैन स्कूल के फ़ोल्डर में रखें, निजी सोशल मीडिया पर नहीं।\n5. ईमानदारी और मिटाना: ख़ुद अतिरिक्त नमूने बनाकर दूसरों के न बताएँ; project ख़त्म होने पर स्कैन मिटाएँ, जब तक सब रखने पर सहमत न हों।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "You also generate data every day: searches, location, photos, app use. Check app permissions with an adult, and never share OTPs, passwords or Aadhaar details with anyone or any chatbot.",
+      "hi": "आप भी हर दिन data बनाते हैं: खोज, स्थान, फ़ोटो, ऐप का उपयोग। किसी बड़े के साथ ऐप की अनुमतियाँ (permissions) जाँचें, और OTP, पासवर्ड या आधार विवरण किसी व्यक्ति या chatbot से कभी साझा न करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.10 Activities",
+    "hi": "2.10 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (unplugged): Run a fair class survey.\nAim: To plan, collect, check and clean primary data.\nYou need: paper slips or a printed form, a box, pencils.\nWhat to do: (1) As a class, choose a question such as 'How many hours did you sleep last night?' (2) Write the question in a neutral way with answer choices. (3) Add a consent line: 'This survey is for a class activity. No names. You may skip it.' (4) Collect the slips in a box. (5) Enter the answers in a table and look for problems: blanks, unreadable entries, impossible values (25 hours), duplicates. (6) Clean the data and write a cleaning note. (7) Find the average and draw a bar graph.\nWhat you observe: even a small survey contains messy entries; cleaning changes the result.\nWhat it teaches: the full data journey: plan → collect with consent → clean → analyse.",
+      "hi": "गतिविधि 1 (बिना कंप्यूटर): एक निष्पक्ष कक्षा सर्वे।\nउद्देश्य: प्राथमिक data की योजना बनाना, जुटाना, जाँचना और साफ़ करना।\nआपको चाहिए: पर्चियाँ या छपा फ़ॉर्म, एक डिब्बा, पेंसिल।\nक्या करें: (1) कक्षा मिलकर एक सवाल चुने, जैसे 'कल रात आप कितने घंटे सोए?' (2) सवाल निष्पक्ष ढंग से विकल्पों के साथ लिखें। (3) अनुमति की पंक्ति जोड़ें: 'यह सर्वे कक्षा गतिविधि के लिए है। नाम नहीं। आप छोड़ सकते हैं।' (4) पर्चियाँ डिब्बे में जमा करें। (5) जवाब तालिका में भरें और समस्याएँ ढूँढें: खाली, न पढ़ी जा सकने वाली प्रविष्टियाँ, असंभव मान (25 घंटे), दोहराव। (6) data साफ़ करें और सफ़ाई का नोट लिखें। (7) औसत निकालें और बार ग्राफ़ बनाएँ।\nआप क्या देखेंगे: छोटे सर्वे में भी गंदी प्रविष्टियाँ होती हैं; सफ़ाई से परिणाम बदलता है।\nयह क्या सिखाता है: data की पूरी यात्रा: योजना → अनुमति से संग्रह → सफ़ाई → विश्लेषण।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (unplugged): Biased sample detective.\nAim: To see how sampling bias changes results.\nWhat to do: (1) Ask only the 10 students sitting near the cricket-loving group 'What is your favourite sport?' (2) Now draw 10 roll numbers at random from a box and ask them. (3) Compare the two bar graphs.\nWhat you observe: the first sample over-represents one sport.\nWhat it teaches: an AI trained on a non-representative sample learns a wrong picture of the world.",
+      "hi": "गतिविधि 2 (बिना कंप्यूटर): पक्षपाती नमूने का जासूस।\nउद्देश्य: देखना कि sampling bias परिणाम कैसे बदलता है।\nक्या करें: (1) केवल क्रिकेट-प्रेमी समूह के पास बैठे 10 छात्रों से पूछें 'आपका पसंदीदा खेल कौन-सा है?' (2) अब डिब्बे से 10 रोल नंबर यादृच्छिक रूप से निकालें और उनसे पूछें। (3) दोनों बार ग्राफ़ की तुलना करें।\nआप क्या देखेंगे: पहला नमूना एक खेल को ज़रूरत से ज़्यादा दिखाता है।\nयह क्या सिखाता है: गैर-प्रतिनिधि नमूने पर train हुआ AI दुनिया की गलत तस्वीर सीखता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen, with a teacher): Explore open government data.\nAim: To find and judge a secondary data source.\nYou need: a computer or phone with internet, with a teacher.\nWhat to do: (1) Open data.gov.in and search for a topic such as 'rainfall' or 'school'. (2) Open one dataset and note: who published it, the date, what each column means, and its file type. (3) Look for blanks or odd values. (4) Write two questions this dataset could help answer, and one it cannot.\nWhat it teaches: secondary data is powerful but must be checked for source, timeliness and relevance.",
+      "hi": "गतिविधि 3 (स्क्रीन, शिक्षक के साथ): खुला सरकारी data खोजिए।\nउद्देश्य: एक द्वितीयक data स्रोत ढूँढना और परखना।\nआपको चाहिए: इंटरनेट वाला कंप्यूटर या फ़ोन, शिक्षक के साथ।\nक्या करें: (1) data.gov.in खोलें और 'rainfall' या 'school' जैसा विषय खोजें। (2) एक dataset खोलें और लिखें: इसे किसने प्रकाशित किया, तारीख़, हर स्तंभ का अर्थ, और फ़ाइल का प्रकार। (3) खाली या अजीब मान ढूँढें। (4) दो सवाल लिखें जिनका जवाब यह dataset दे सकता है, और एक जो नहीं दे सकता।\nयह क्या सिखाता है: द्वितीयक data शक्तिशाली है पर स्रोत, समयानुकूलता और प्रासंगिकता के लिए जाँचना ज़रूरी है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (screen, with an adult): See data quality in action with Teachable Machine.\nAim: To observe how unbalanced or poor data affects an AI model.\nYou need: Google Teachable Machine (teachablemachine.withgoogle.com) in a browser with a webcam; no account is needed to try it, and an adult should supervise.\nWhat to do: (1) Make an Image Project with two classes, 'Pen' and 'Pencil'. (2) Train it with 50 pen pictures but only 5 pencil pictures, all in bad light. Test it. (3) Now give about 50 clear pictures of each, from different angles and backgrounds. Train and test again.\nWhat you observe: the first model is confused or always says 'Pen'; the second is much better.\nWhat it teaches: balanced, varied, good-quality data matters as much as the AI itself.",
+      "hi": "गतिविधि 4 (स्क्रीन, बड़े के साथ): Teachable Machine से data गुणवत्ता का असर देखिए।\nउद्देश्य: देखना कि असंतुलित या घटिया data AI मॉडल पर कैसे असर डालता है।\nआपको चाहिए: वेबकैम वाले ब्राउज़र में Google Teachable Machine (teachablemachine.withgoogle.com); आज़माने के लिए खाते की ज़रूरत नहीं, और किसी बड़े की निगरानी हो।\nक्या करें: (1) दो classes, 'Pen' और 'Pencil', वाला Image Project बनाएँ। (2) 50 पेन की तस्वीरों पर पर केवल 5 पेंसिल की तस्वीरों पर, सब कम रोशनी में, train करें। जाँचें। (3) अब हर एक की लगभग 50 साफ़ तस्वीरें, अलग कोणों और पृष्ठभूमियों से दें। फिर train करें और जाँचें।\nआप क्या देखेंगे: पहला मॉडल उलझता है या हमेशा 'Pen' कहता है; दूसरा कहीं बेहतर है।\nयह क्या सिखाता है: संतुलित, विविध, अच्छी गुणवत्ता का data उतना ही ज़रूरी है जितना ख़ुद AI।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: do not photograph classmates' faces for projects without permission; use objects instead. Do not upload personal data to any website.",
+      "hi": "सुरक्षा: projects के लिए सहपाठियों के चेहरों की फ़ोटो बिना अनुमति न लें; इसके बजाय वस्तुओं का उपयोग करें। कोई भी निजी data किसी वेबसाइट पर अपलोड न करें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking more data is always better. Fix: varied, representative and correct data beats a large pile of one-sided or wrong data.",
+   "Calling every digital file 'structured'. Fix: photos, audio and videos are unstructured even though they are stored on a computer.",
+   "Mixing up primary and secondary data. Fix: primary = collected by you for your purpose; secondary = collected earlier by someone else.",
+   "Treating a blank as zero. Fix: a missing value is unknown, not 0; mark it as missing and handle it separately.",
+   "Deleting every outlier. Fix: check first; some outliers are real and important.",
+   "Writing leading survey questions. Fix: keep questions neutral, one idea at a time, with clear choices.",
+   "Asking only friends and calling it a survey of the school. Fix: use random or stratified sampling.",
+   "Collecting extra personal details 'just in case'. Fix: data minimisation; collect only what the problem needs.",
+   "Cleaning data without keeping the original or a note. Fix: keep the raw copy and record every change."
+  ],
+  "hi": [
+   "यह सोचना कि ज़्यादा data हमेशा बेहतर है। सुधार: विविध, प्रतिनिधि और सही data, एकतरफ़ा या गलत data के बड़े ढेर से बेहतर है।",
+   "हर digital फ़ाइल को 'structured' कहना। सुधार: फ़ोटो, ऑडियो और वीडियो कंप्यूटर पर रखे होने पर भी unstructured हैं।",
+   "प्राथमिक और द्वितीयक data को मिलाना। सुधार: प्राथमिक = आपने अपने उद्देश्य के लिए जुटाया; द्वितीयक = किसी और ने पहले जुटाया।",
+   "खाली को शून्य मान लेना। सुधार: खाली मान अज्ञात है, 0 नहीं; उसे खाली चिह्नित करें और अलग से सँभालें।",
+   "हर outlier को हटा देना। सुधार: पहले जाँचें; कुछ outliers असली और महत्वपूर्ण होते हैं।",
+   "भटकाने वाले सर्वे सवाल लिखना। सुधार: सवाल निष्पक्ष, एक बार में एक विचार, साफ़ विकल्पों के साथ रखें।",
+   "केवल दोस्तों से पूछकर उसे पूरे स्कूल का सर्वे कहना। सुधार: यादृच्छिक या स्तरीकृत नमूना लें।",
+   "'शायद काम आए' सोचकर अतिरिक्त निजी विवरण जुटाना। सुधार: data minimisation; केवल वही जुटाएँ जो समस्या के लिए ज़रूरी हो।",
+   "मूल प्रति या नोट रखे बिना data साफ़ करना। सुधार: कच्ची प्रति रखें और हर बदलाव दर्ज करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "AI project cycle",
+    "hi": "AI project cycle (AI परियोजना चक्र)"
+   },
+   "d": {
+    "en": "The stages of an AI project: problem scoping, data acquisition, data exploration, modelling, evaluation (then deployment).",
+    "hi": "AI project के चरण: problem scoping, data acquisition, data exploration, modelling, evaluation (फिर लागू करना)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data acquisition",
+    "hi": "Data acquisition (डेटा अधिग्रहण)"
+   },
+   "d": {
+    "en": "Collecting the data needed for an AI project from reliable sources.",
+    "hi": "विश्वसनीय स्रोतों से AI project के लिए ज़रूरी data जुटाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dataset",
+    "hi": "Dataset (डेटासेट)"
+   },
+   "d": {
+    "en": "An organised collection of data, often a table of examples.",
+    "hi": "data का व्यवस्थित संग्रह, अक्सर उदाहरणों की तालिका।"
+   }
+  },
+  {
+   "t": {
+    "en": "Structured data",
+    "hi": "Structured data (संरचित)"
+   },
+   "d": {
+    "en": "Data in fixed rows and columns.",
+    "hi": "तय पंक्तियों और स्तंभों में data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unstructured data",
+    "hi": "Unstructured data (असंरचित)"
+   },
+   "d": {
+    "en": "Data with no table format: photos, audio, video, free text.",
+    "hi": "बिना तालिका-ढाँचे का data: फ़ोटो, ऑडियो, वीडियो, खुला text।"
+   }
+  },
+  {
+   "t": {
+    "en": "Semi-structured data",
+    "hi": "Semi-structured data (अर्ध-संरचित)"
+   },
+   "d": {
+    "en": "Data with some labels or tags but not a full table, such as emails.",
+    "hi": "कुछ लेबल या tags वाला पर पूरी तालिका नहीं, जैसे ईमेल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Quantitative data",
+    "hi": "Quantitative data (मात्रात्मक)"
+   },
+   "d": {
+    "en": "Numerical data that is counted (discrete) or measured (continuous).",
+    "hi": "संख्यात्मक data जो गिना (असतत) या मापा (सतत) जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Qualitative data",
+    "hi": "Qualitative data (गुणात्मक)"
+   },
+   "d": {
+    "en": "Data in categories or descriptions.",
+    "hi": "श्रेणियों या विवरणों में data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature",
+    "hi": "Feature (फ़ीचर/विशेषता)"
+   },
+   "d": {
+    "en": "A property (column) used by AI to make a decision.",
+    "hi": "AI द्वारा निर्णय के लिए उपयोग होने वाला गुण (स्तंभ)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Label",
+    "hi": "Label (लेबल)"
+   },
+   "d": {
+    "en": "The correct answer attached to an example, which the AI learns to predict.",
+    "hi": "उदाहरण से जुड़ा सही उत्तर, जिसका अनुमान AI सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Primary data",
+    "hi": "Primary data (प्राथमिक)"
+   },
+   "d": {
+    "en": "Data collected first-hand by you.",
+    "hi": "आपके द्वारा सीधे जुटाया गया data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Secondary data",
+    "hi": "Secondary data (द्वितीयक)"
+   },
+   "d": {
+    "en": "Data collected earlier by someone else and reused.",
+    "hi": "किसी और का पहले जुटाया, दोबारा उपयोग होने वाला data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Open data",
+    "hi": "Open data (खुला डेटा)"
+   },
+   "d": {
+    "en": "Data published for anyone to use, such as on data.gov.in.",
+    "hi": "सबके उपयोग के लिए प्रकाशित data, जैसे data.gov.in पर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Survey",
+    "hi": "Survey (सर्वेक्षण)"
+   },
+   "d": {
+    "en": "Collecting answers to the same questions from many people.",
+    "hi": "बहुत लोगों से एक जैसे सवालों के जवाब जुटाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sensor",
+    "hi": "Sensor (सेंसर)"
+   },
+   "d": {
+    "en": "A device that measures and records something automatically, such as temperature or location.",
+    "hi": "ऐसा उपकरण जो अपने आप कुछ मापता और दर्ज करता है, जैसे तापमान या स्थान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Population",
+    "hi": "Population (समष्टि)"
+   },
+   "d": {
+    "en": "The whole group being studied.",
+    "hi": "अध्ययन किया जा रहा पूरा समूह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sample",
+    "hi": "Sample (नमूना)"
+   },
+   "d": {
+    "en": "The part of the population from whom data is collected.",
+    "hi": "समष्टि का वह हिस्सा जिससे data जुटाया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Representative sample",
+    "hi": "Representative sample (प्रतिनिधि नमूना)"
+   },
+   "d": {
+    "en": "A sample that includes all kinds of members in the right proportions.",
+    "hi": "ऐसा नमूना जिसमें सभी तरह के सदस्य सही अनुपात में हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sampling bias",
+    "hi": "Sampling bias (नमूना पक्षपात)"
+   },
+   "d": {
+    "en": "Error caused when a sample leaves out or under-represents some groups.",
+    "hi": "नमूने द्वारा कुछ समूहों को छोड़ने या कम दिखाने से होने वाली गलती।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data quality",
+    "hi": "Data quality (डेटा गुणवत्ता)"
+   },
+   "d": {
+    "en": "How fit data is for its purpose: accurate, complete, consistent, timely, relevant, valid.",
+    "hi": "data अपने उद्देश्य के लिए कितना उपयुक्त है: सटीक, पूर्ण, एकरूप, समयानुकूल, प्रासंगिक, वैध।"
+   }
+  },
+  {
+   "t": {
+    "en": "Missing value",
+    "hi": "Missing value (खाली मान)"
+   },
+   "d": {
+    "en": "An entry that was not recorded.",
+    "hi": "ऐसी प्रविष्टि जो दर्ज नहीं हुई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Duplicate",
+    "hi": "Duplicate (दोहराव)"
+   },
+   "d": {
+    "en": "The same record entered more than once.",
+    "hi": "एक ही रिकॉर्ड का एक से ज़्यादा बार दर्ज होना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Outlier",
+    "hi": "Outlier (बाहरी मान)"
+   },
+   "d": {
+    "en": "A value very far from the rest; may be an error or a rare real case.",
+    "hi": "बाक़ियों से बहुत दूर का मान; गलती या दुर्लभ असली मामला।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data cleaning",
+    "hi": "Data cleaning (डेटा सफ़ाई)"
+   },
+   "d": {
+    "en": "Fixing or removing errors, duplicates, missing and inconsistent values.",
+    "hi": "गलतियाँ, दोहराव, खाली और असंगत मान ठीक करना या हटाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Informed consent",
+    "hi": "Informed consent (सूचित अनुमति)"
+   },
+   "d": {
+    "en": "Agreement given after being told clearly what data is collected and why.",
+    "hi": "साफ़ बताए जाने के बाद दी गई सहमति कि कौन-सा data और क्यों जुटाया जा रहा है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data minimisation",
+    "hi": "Data minimisation (न्यूनतम डेटा)"
+   },
+   "d": {
+    "en": "Collecting only the data that is necessary.",
+    "hi": "केवल ज़रूरी data जुटाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Anonymisation",
+    "hi": "Anonymisation (गुमनामीकरण)"
+   },
+   "d": {
+    "en": "Removing details that identify a person.",
+    "hi": "व्यक्ति की पहचान कराने वाले विवरण हटाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Personal data",
+    "hi": "Personal data (निजी डेटा)"
+   },
+   "d": {
+    "en": "Data from which a person can be identified.",
+    "hi": "ऐसा data जिससे किसी व्यक्ति की पहचान हो सके।"
+   }
+  },
+  {
+   "t": {
+    "en": "DPDP Act, 2023",
+    "hi": "DPDP Act, 2023"
+   },
+   "d": {
+    "en": "India's Digital Personal Data Protection Act, which gives people rights over their digital personal data and sets duties for organisations.",
+    "hi": "भारत का Digital Personal Data Protection Act, जो लोगों को उनके digital निजी data पर अधिकार देता है और संस्थाओं के कर्तव्य तय करता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is unstructured data?\n(a) A railway timetable (b) A marks spreadsheet (c) A folder of voice notes (d) An attendance register",
+    "hi": "बहुविकल्पी: इनमें से कौन unstructured data है?\n(क) रेलवे समय-सारणी (ख) अंकों की spreadsheet (ग) वॉइस नोट्स का फ़ोल्डर (घ) उपस्थिति रजिस्टर"
+   },
+   "a": {
+    "en": "(c) A folder of voice notes.",
+    "hi": "(ग) वॉइस नोट्स का फ़ोल्डर।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Rainfall data downloaded from the India Meteorological Department for your project is:\n(a) primary data (b) secondary data (c) unlabelled noise (d) personal data",
+    "hi": "बहुविकल्पी: आपके project के लिए भारत मौसम विज्ञान विभाग से डाउनलोड किया वर्षा data है:\n(क) प्राथमिक data (ख) द्वितीयक data (ग) बिना लेबल का शोर (घ) निजी data"
+   },
+   "a": {
+    "en": "(b) Secondary data.",
+    "hi": "(ख) द्वितीयक data।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: 'Delhi', 'delhi' and 'DL' used for the same city is a problem of:\n(a) timeliness (b) relevance (c) consistency (d) security",
+    "hi": "बहुविकल्पी: एक ही शहर के लिए 'Delhi', 'delhi' और 'DL' का उपयोग किसकी समस्या है:\n(क) समयानुकूलता (ख) प्रासंगिकता (ग) एकरूपता (घ) सुरक्षा"
+   },
+   "a": {
+    "en": "(c) Consistency.",
+    "hi": "(ग) एकरूपता।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The whole group you want to study is the ________; the smaller group you actually ask is the ________.",
+    "hi": "रिक्त स्थान भरिए: जिस पूरे समूह का अध्ययन करना है वह ________ है; जिस छोटे समूह से आप सचमुच पूछते हैं वह ________ है।"
+   },
+   "a": {
+    "en": "population; sample",
+    "hi": "समष्टि (population); नमूना (sample)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Collecting only the data you really need is called data ________.",
+    "hi": "रिक्त स्थान भरिए: केवल सचमुच ज़रूरी data जुटाना data ________ कहलाता है।"
+   },
+   "a": {
+    "en": "minimisation",
+    "hi": "minimisation (न्यूनतमीकरण)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: A blank entry in a marks list should be treated as 0 marks.",
+    "hi": "सही या गलत: अंक सूची में खाली प्रविष्टि को 0 अंक माना जाना चाहिए।"
+   },
+   "a": {
+    "en": "False. A blank is a missing value (unknown); it should be marked missing and checked.",
+    "hi": "गलत। खाली प्रविष्टि खाली मान (अज्ञात) है; उसे खाली चिह्नित करके जाँचना चाहिए।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: An email is an example of semi-structured data.",
+    "hi": "सही या गलत: ईमेल semi-structured data का उदाहरण है।"
+   },
+   "a": {
+    "en": "True. It has labelled fields (To, From, Date, Subject) plus free text.",
+    "hi": "सही। इसमें लेबल वाले खाने (To, From, Date, Subject) और खुला text होता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the five stages of the AI project cycle.",
+    "hi": "AI project cycle के पाँच चरण बताइए।"
+   },
+   "a": {
+    "en": "Problem scoping, data acquisition, data exploration, modelling, evaluation.",
+    "hi": "Problem scoping, data acquisition, data exploration, modelling, evaluation।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Classify as discrete, continuous or qualitative: (a) number of wickets (b) time to run 100 m (c) favourite cuisine (d) body temperature (e) number of siblings.",
+    "hi": "असतत, सतत या गुणात्मक में बाँटिए: (क) विकेटों की संख्या (ख) 100 m दौड़ने का समय (ग) पसंदीदा भोजन शैली (घ) शरीर का तापमान (ङ) भाई-बहनों की संख्या।"
+   },
+   "a": {
+    "en": "(a) Discrete (b) Continuous (c) Qualitative (d) Continuous (e) Discrete.",
+    "hi": "(क) असतत (ख) सतत (ग) गुणात्मक (घ) सतत (ङ) असतत।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give two advantages and one disadvantage of primary data.",
+    "hi": "प्राथमिक data के दो लाभ और एक हानि बताइए।"
+   },
+   "a": {
+    "en": "Advantages: it fits your exact question; you know how it was collected, so you control its quality. Disadvantage: it takes more time, effort and sometimes money.",
+    "hi": "लाभ: यह आपके सवाल पर बिल्कुल फ़िट होता है; आपको पता है कैसे जुटाया, इसलिए गुणवत्ता पर नियंत्रण रहता है। हानि: इसमें ज़्यादा समय, मेहनत और कभी-कभी पैसा लगता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which collection method would you use for each, and why? (a) how many vehicles jump the red light at a crossing (b) students' opinions on a new uniform (c) soil moisture in a field every hour.",
+    "hi": "हर एक के लिए आप कौन-सा संग्रह तरीका अपनाएँगे और क्यों? (क) चौराहे पर कितनी गाड़ियाँ लाल बत्ती तोड़ती हैं (ख) नई यूनिफ़ॉर्म पर छात्रों की राय (ग) खेत में हर घंटे मिट्टी की नमी।"
+   },
+   "a": {
+    "en": "(a) Observation (or a camera), because it is behaviour that can be watched. (b) Survey, to get many opinions quickly (interviews for detail). (c) A soil-moisture sensor, because it records automatically and continuously.",
+    "hi": "(क) अवलोकन (या कैमरा), क्योंकि यह देखा जा सकने वाला व्यवहार है। (ख) सर्वे, बहुत राय जल्दी पाने के लिए (विवरण के लिए साक्षात्कार)। (ग) मिट्टी-नमी सेंसर, क्योंकि यह अपने आप और लगातार दर्ज करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is sampling bias? Give an example of how it can make an AI unfair.",
+    "hi": "Sampling bias क्या है? उदाहरण दीजिए कि यह AI को कैसे अनुचित बना सकता है।"
+   },
+   "a": {
+    "en": "Sampling bias happens when the sample leaves out or under-represents some groups. Example: a Hindi voice-typing tool trained mostly on young urban speakers may misunderstand elderly people or speakers with regional accents, so they get worse service.",
+    "hi": "Sampling bias तब होता है जब नमूना कुछ समूहों को छोड़ दे या कम दिखाए। उदाहरण: ज़्यादातर युवा शहरी लोगों पर train हुआ हिंदी voice-typing टूल बुज़ुर्गों या क्षेत्रीय लहजे वालों को गलत समझ सकता है, जिससे उन्हें ख़राब सेवा मिलती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A school has 800 students: 480 girls and 320 boys. For a stratified sample of 40, how many girls and boys should be chosen?",
+    "hi": "एक स्कूल में 800 छात्र हैं: 480 लड़कियाँ और 320 लड़के। 40 के stratified sample के लिए कितनी लड़कियाँ और कितने लड़के चुनें?"
+   },
+   "a": {
+    "en": "Girls: 480/800 = 0.6; 0.6 × 40 = 24. Boys: 320/800 = 0.4; 0.4 × 40 = 16. Check: 24 + 16 = 40.",
+    "hi": "लड़कियाँ: 480/800 = 0.6; 0.6 × 40 = 24। लड़के: 320/800 = 0.4; 0.4 × 40 = 16। जाँच: 24 + 16 = 40।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List the six dimensions of data quality with one example problem for each.",
+    "hi": "Data गुणवत्ता के छह आयाम, हर एक की एक उदाहरण-समस्या के साथ लिखिए।"
+   },
+   "a": {
+    "en": "Accuracy - wrong value (1450 cm). Completeness - blanks. Consistency - 'M'/'Male'/'male'. Timeliness - old class list. Relevance - favourite colour to predict marks. Validity - age 250 or 7-digit phone number.",
+    "hi": "सटीकता - गलत मान (1450 cm)। पूर्णता - खाली। एकरूपता - 'M'/'Male'/'male'। समयानुकूलता - पुरानी कक्षा-सूची। प्रासंगिकता - अंक अनुमान के लिए पसंदीदा रंग। वैधता - आयु 250 या 7 अंकों का फ़ोन नंबर।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Marks out of 50: 42, 38, 38 (duplicate of same student), blank, 45, 410. The 410 should be 41. Clean the data and find the average.",
+    "hi": "50 में से अंक: 42, 38, 38 (उसी छात्र का दोहराव), खाली, 45, 410। 410 को 41 होना चाहिए। data साफ़ करके औसत निकालिए।"
+   },
+   "a": {
+    "en": "Remove the duplicate 38, set aside the blank as missing, correct 410 to 41. Clean: 42, 38, 45, 41. Sum = 166. Average = 166 / 4 = 41.5 marks.",
+    "hi": "दोहराव वाला 38 हटाएँ, खाली को खाली मान के रूप में अलग रखें, 410 को 41 करें। साफ़: 42, 38, 45, 41। योग = 166। औसत = 166 / 4 = 41.5 अंक।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In a dataset to predict whether a mango is ripe, columns are Colour, Softness, Smell, Ripe (yes/no). Which are features and which is the label?",
+    "hi": "आम पका है या नहीं इसका अनुमान लगाने वाले dataset में स्तंभ हैं: रंग, कोमलता, गंध, पका (हाँ/नहीं)। कौन features हैं और कौन label?"
+   },
+   "a": {
+    "en": "Features: Colour, Softness, Smell. Label: Ripe (yes/no).",
+    "hi": "Features: रंग, कोमलता, गंध। Label: पका (हाँ/नहीं)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Under the DPDP Act, 2023, who is a Data Principal and who is a Data Fiduciary? State two duties of a Data Fiduciary and one special rule for children's data.",
+    "hi": "DPDP Act, 2023 के तहत Data Principal कौन है और Data Fiduciary कौन? Data Fiduciary के दो कर्तव्य और बच्चों के data का एक विशेष नियम बताइए।"
+   },
+   "a": {
+    "en": "Data Principal: the person the personal data is about. Data Fiduciary: the organisation that decides why and how the data is processed. Duties (any two): take clear consent; use data only for the stated purpose; keep it secure; correct or erase it on request; report data breaches. Children (under 18): verifiable consent from a parent or guardian is needed, and tracking or targeted advertising at children is not allowed.",
+    "hi": "Data Principal: वह व्यक्ति जिसके बारे में निजी data है। Data Fiduciary: वह संस्था जो तय करती है कि data क्यों और कैसे संसाधित होगा। कर्तव्य (कोई दो): साफ़ अनुमति लेना; data केवल बताए उद्देश्य के लिए उपयोग करना; सुरक्षित रखना; अनुरोध पर सुधारना या मिटाना; data breach की सूचना देना। बच्चे (18 से कम): माता-पिता या अभिभावक की सत्यापित अनुमति ज़रूरी है, और बच्चों को ट्रैक करना या उन पर लक्षित विज्ञापन मना है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A health app wants to train AI to detect skin diseases from photos. Suggest four steps to make sure its data is good and ethical.",
+    "hi": "एक स्वास्थ्य ऐप तस्वीरों से त्वचा रोग पहचानने के लिए AI train करना चाहता है। इसका data अच्छा और नैतिक हो, इसके चार कदम सुझाइए।"
+   },
+   "a": {
+    "en": "1. Representative data: include all skin tones, ages, and regions, and photos from different phones and lighting. 2. Correct labels: have qualified doctors label the photos and double-check a sample. 3. Consent and privacy: take informed consent, remove faces and names (anonymise), store securely, and follow the DPDP Act. 4. Cleaning and testing: remove blurry and duplicate photos, and test the AI separately on each group to find hidden bias.",
+    "hi": "1. प्रतिनिधि data: सभी त्वचा-रंग, आयु और क्षेत्र, और अलग-अलग फ़ोन व रोशनी की फ़ोटो शामिल करें। 2. सही लेबल: योग्य डॉक्टरों से फ़ोटो पर लेबल लगवाएँ और एक हिस्से की दोबारा जाँच कराएँ। 3. अनुमति और निजता: सूचित अनुमति लें, चेहरे और नाम हटाएँ (गुमनाम करें), सुरक्षित रखें, और DPDP Act का पालन करें। 4. सफ़ाई और जाँच: धुंधली और दोहराई फ़ोटो हटाएँ, और छिपा पक्षपात ढूँढने के लिए हर समूह पर AI को अलग से जाँचें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain the steps of data cleaning with an example dataset of your own.",
+    "hi": "विस्तृत उत्तर: अपने बनाए एक उदाहरण dataset से data cleaning के चरण समझाइए।"
+   },
+   "a": {
+    "en": "Example dataset: daily temperatures (°C) from a school weather station: 31, 32, 32 (same day entered twice), blank, 33, 330, 'thirty', 30.\nSteps: (1) Remove duplicates: drop the repeated 32. (2) Missing values: mark the blank as missing; fill it with the average of the days around it or leave it out, and note it. (3) Fix errors and invalid values: 330 is impossible, likely 33.0 typed wrongly; check the log. (4) Standardise formats: change 'thirty' to 30 so all values are numbers. (5) Check outliers: after fixes, all lie between 30 and 33, which is believable. (6) Keep the raw file and write a cleaning note. Clean data: 31, 32, 33, 33, 30, 30 (missing day excluded).",
+    "hi": "उदाहरण dataset: स्कूल मौसम केंद्र के दैनिक तापमान (°C): 31, 32, 32 (एक ही दिन दो बार), खाली, 33, 330, 'thirty', 30।\nचरण: (1) दोहराव हटाएँ: दोहराया 32 निकालें। (2) खाली मान: खाली को खाली चिह्नित करें; आसपास के दिनों के औसत से भरें या छोड़ दें, और नोट करें। (3) गलतियाँ और अमान्य मान ठीक करें: 330 असंभव है, शायद 33.0 गलत टाइप हुआ; log जाँचें। (4) रूप मानकीकृत करें: 'thirty' को 30 करें ताकि सब मान संख्याएँ हों। (5) Outliers जाँचें: सुधार के बाद सभी 30 और 33 के बीच हैं, जो विश्वसनीय है। (6) कच्ची फ़ाइल रखें और सफ़ाई का नोट लिखें। साफ़ data: 31, 32, 33, 33, 30, 30 (खाली दिन छोड़कर)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A food-delivery start-up in Pune trains an AI to predict delivery time using only orders placed on weekday afternoons in dry weather. Predictions during the monsoon and festival evenings are very wrong. Identify the data problems and suggest fixes.",
+    "hi": "केस-आधारित: पुणे का एक फ़ूड-डिलीवरी स्टार्ट-अप केवल सूखे मौसम में सप्ताह के दिनों की दोपहर के ऑर्डर से डिलीवरी समय का अनुमान लगाने वाला AI train करता है। मानसून और त्योहार की शामों में अनुमान बहुत गलत होते हैं। data की समस्याएँ पहचानिए और सुधार सुझाइए।"
+   },
+   "a": {
+    "en": "Problems: the sample is not representative (no rain, no evenings, no weekends or festivals), so relevant features such as weather, time of day and special days were missing. Fixes: collect data from all seasons, times and days; add features such as rainfall, traffic level and festival/holiday flag; keep the data up to date (timeliness); test separately on monsoon and festival orders before relying on it.",
+    "hi": "समस्याएँ: नमूना प्रतिनिधि नहीं है (बारिश, शाम, सप्ताहांत या त्योहार नहीं), इसलिए मौसम, दिन का समय और विशेष दिन जैसे प्रासंगिक features छूट गए। सुधार: सभी मौसमों, समयों और दिनों का data जुटाएँ; वर्षा, ट्रैफ़िक स्तर और त्योहार/छुट्टी का संकेत जैसे features जोड़ें; data ताज़ा रखें (समयानुकूलता); भरोसा करने से पहले मानसून और त्योहार के ऑर्डरों पर अलग से जाँचें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Assertion-reason: Assertion (A): An AI trained on 50,000 photos can still be unfair. Reason (R): A large dataset may not represent all groups of people. Choose: (a) both true, R explains A (b) both true, R does not explain A (c) A true, R false (d) A false, R true.",
+    "hi": "कथन-कारण: कथन (A): 50,000 फ़ोटो पर train हुआ AI भी अनुचित हो सकता है। कारण (R): बड़ा dataset भी सभी समूहों का प्रतिनिधित्व न करे, ऐसा हो सकता है। चुनिए: (क) दोनों सही, R, A को समझाता है (ख) दोनों सही, R, A को नहीं समझाता (ग) A सही, R गलत (घ) A गलत, R सही।"
+   },
+   "a": {
+    "en": "(a) Both true, and R correctly explains A.",
+    "hi": "(क) दोनों सही, और R, A को सही ढंग से समझाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: Rewrite this survey to make it ethical and unbiased: 'Name: ___ Phone: ___ Address: ___ Q1. Don't you think students waste too much time on games? Yes/No'",
+    "hi": "चिंतन: इस सर्वे को नैतिक और निष्पक्ष बनाते हुए दोबारा लिखिए: 'नाम: ___ फ़ोन: ___ पता: ___ प्रश्न 1. क्या आपको नहीं लगता कि छात्र खेलों में बहुत समय बर्बाद करते हैं? हाँ/नहीं'"
+   },
+   "a": {
+    "en": "Remove name, phone and address (data minimisation and anonymity). Add a consent line: 'This anonymous survey is for a class project on free time. You may skip any question.' Ask only what is needed, e.g. 'Class: ___'. Neutral question: 'On a school day, about how much time do you spend on video games? (none / less than 30 min / 30-60 min / more than 1 hour)'. Optionally add: 'What else do you do in your free time?'",
+    "hi": "नाम, फ़ोन और पता हटाएँ (न्यूनतम data और गुमनामी)। अनुमति की पंक्ति जोड़ें: 'यह गुमनाम सर्वे खाली समय पर एक कक्षा project के लिए है। आप कोई भी सवाल छोड़ सकते हैं।' केवल ज़रूरी पूछें, जैसे 'कक्षा: ___'। निष्पक्ष सवाल: 'स्कूल के दिन आप लगभग कितना समय वीडियो गेम पर लगाते हैं? (बिल्कुल नहीं / 30 मिनट से कम / 30-60 मिनट / 1 घंटे से ज़्यादा)'। चाहें तो जोड़ें: 'खाली समय में आप और क्या करते हैं?'"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Data acquisition and data exploration are two of the five stages of the AI project cycle; an AI is only as good as its data.",
+   "Structured data fits rows and columns; unstructured data (photos, audio, video, free text) does not; semi-structured data has some labels.",
+   "Quantitative data is numerical (discrete or continuous); qualitative data is in categories.",
+   "In a dataset, rows are examples, columns are features, and the label is the answer the AI learns.",
+   "Primary data is collected by you; secondary data comes from existing sources like data.gov.in, Census and IMD, and must be checked.",
+   "Methods: surveys, interviews, observation, experiments, sensors, digital records and existing datasets; choose the one that fits the question.",
+   "Good survey questions are neutral, simple, one idea at a time, with clear choices.",
+   "A sample must represent the population; random and stratified sampling reduce sampling bias, which can make AI unfair.",
+   "Six dimensions of data quality: accuracy, completeness, consistency, timeliness, relevance and validity; for AI also check balance and correct labels.",
+   "Data cleaning: remove duplicates, handle missing values, fix invalid values, standardise formats, check outliers and labels, keep the original and notes.",
+   "Ethical collection: informed consent, purpose limitation, data minimisation, anonymisation, security, honesty, copyright respect and limited storage.",
+   "The DPDP Act, 2023 gives Data Principals rights over their personal data and requires parental consent for children's data."
+  ],
+  "hi": [
+   "Data acquisition और data exploration AI project cycle के पाँच में से दो चरण हैं; AI उतना ही अच्छा है जितना उसका data।",
+   "Structured data पंक्ति-स्तंभ में आता है; unstructured (फ़ोटो, ऑडियो, वीडियो, खुला text) नहीं; semi-structured में कुछ लेबल होते हैं।",
+   "मात्रात्मक data संख्यात्मक (असतत या सतत) है; गुणात्मक data श्रेणियों में है।",
+   "Dataset में पंक्तियाँ उदाहरण, स्तंभ features, और label वह उत्तर है जो AI सीखता है।",
+   "प्राथमिक data आप जुटाते हैं; द्वितीयक data data.gov.in, जनगणना और IMD जैसे मौजूदा स्रोतों से आता है, और उसकी जाँच ज़रूरी है।",
+   "तरीके: सर्वे, साक्षात्कार, अवलोकन, प्रयोग, सेंसर, digital रिकॉर्ड और मौजूदा datasets; सवाल के अनुसार चुनें।",
+   "अच्छे सर्वे सवाल निष्पक्ष, सरल, एक बार में एक विचार, और साफ़ विकल्पों वाले होते हैं।",
+   "नमूना समष्टि का प्रतिनिधि होना चाहिए; यादृच्छिक और स्तरीकृत नमूने sampling bias घटाते हैं, जो AI को अनुचित बना सकता है।",
+   "Data गुणवत्ता के छह आयाम: सटीकता, पूर्णता, एकरूपता, समयानुकूलता, प्रासंगिकता और वैधता; AI के लिए संतुलन और सही लेबल भी जाँचें।",
+   "Data cleaning: दोहराव हटाएँ, खाली मान सँभालें, अमान्य मान ठीक करें, रूप मानकीकृत करें, outliers और लेबल जाँचें, मूल और नोट रखें।",
+   "नैतिक संग्रह: सूचित अनुमति, उद्देश्य की सीमा, न्यूनतम data, गुमनामीकरण, सुरक्षा, ईमानदारी, कॉपीराइट का सम्मान और सीमित भंडारण।",
+   "DPDP Act, 2023 Data Principals को उनके निजी data पर अधिकार देता है और बच्चों के data के लिए माता-पिता की अनुमति ज़रूरी करता है।"
+  ]
+ }
+}
