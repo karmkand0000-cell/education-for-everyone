@@ -2274,7 +2274,7 @@ var EFEViz = (function () {
     document.addEventListener("submit", onSubmit);
     document.addEventListener("click", function (e) {
       var t = e.target.closest("button, a"); if (!t) return;
-      if (t.dataset.jump) { var jt = $(t.dataset.jump); if (jt) jt.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+      if (t.dataset.jump) { var jt = $(t.dataset.jump), hb = $("bar"); if (jt) window.scrollTo({ top: jt.getBoundingClientRect().top + window.scrollY - (hb ? hb.offsetHeight : 0) - 12, behavior: "smooth" }); return; }
       if (t.id === "pub-go") return publish();
       if (t.id === "pub-discard") return discard();
       if (t.dataset.lang) { lang = t.dataset.lang; save("efe-lang", lang); applySettings(); var y = window.scrollY; render(); window.scrollTo(0, y); return; }

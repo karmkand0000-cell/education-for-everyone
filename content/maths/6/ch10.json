@@ -1,0 +1,1726 @@
+{
+ "v": 1,
+ "sub": "maths",
+ "lv": "6",
+ "id": "ch10",
+ "intro": {
+  "en": "So far you have used counting numbers, zero and fractions. But how do we describe a basement two floors below the ground, a temperature below freezing in Ladakh, a place lower than sea level, or a bank account that owes money? We need numbers on the other side of zero: the negative numbers. In this chapter you will meet integers through Bela's Building of Fun, a building with floors above and below the ground, and learn to compare, add and subtract them using a lift, a number line and a token model.",
+  "hi": "अब तक आपने गिनती की संख्याओं, शून्य और भिन्नों का उपयोग किया है। पर ज़मीन से दो मंज़िल नीचे के तहखाने, लद्दाख में हिमांक से नीचे के तापमान, समुद्र तल से नीचे की जगह, या ऐसे बैंक खाते का वर्णन कैसे करें जिस पर पैसा बकाया हो? इसके लिए हमें शून्य के दूसरी ओर की संख्याएँ चाहिए: ऋणात्मक संख्याएँ। इस अध्याय में आप बेला की मनोरंजन इमारत (बिल्डिंग ऑफ़ फ़न), जिसमें ज़मीन के ऊपर और नीचे मंज़िलें हैं, के माध्यम से पूर्णांकों से मिलेंगे, और लिफ़्ट, संख्या रेखा तथा टोकन मॉडल की सहायता से उनकी तुलना करना, उन्हें जोड़ना और घटाना सीखेंगे।"
+ },
+ "learn": {
+  "en": [
+   "What negative numbers are and why we need them",
+   "What integers are: positive numbers, negative numbers and zero",
+   "How to label floors above and below the ground and read movements of a lift as additions",
+   "Additive inverses: numbers that add up to zero",
+   "How to compare and order integers using floors and the number line",
+   "How to add and subtract integers using the lift, the number line and the unmarked number line",
+   "How subtraction can be turned into adding the inverse",
+   "How to use positive and negative tokens and zero pairs to add and subtract",
+   "Where integers appear in daily life: credits and debits, heights above and below sea level, temperatures",
+   "Integer puzzles and games: the hollow grid, the amazing grid and the dice game",
+   "The history of negative numbers in China and India, including Brahmagupta's rules"
+  ],
+  "hi": [
+   "ऋणात्मक संख्याएँ क्या हैं और हमें उनकी आवश्यकता क्यों है",
+   "पूर्णांक क्या हैं: धनात्मक संख्याएँ, ऋणात्मक संख्याएँ और शून्य",
+   "ज़मीन के ऊपर और नीचे की मंज़िलों को नाम देना और लिफ़्ट की गति को जोड़ के रूप में पढ़ना",
+   "योज्य प्रतिलोम: ऐसी संख्याएँ जिनका योग शून्य हो",
+   "मंज़िलों और संख्या रेखा से पूर्णांकों की तुलना करना और उन्हें क्रम में लगाना",
+   "लिफ़्ट, संख्या रेखा और बिना अंकित संख्या रेखा से पूर्णांकों को जोड़ना और घटाना",
+   "घटाव को प्रतिलोम जोड़ने में कैसे बदला जा सकता है",
+   "धनात्मक और ऋणात्मक टोकनों तथा शून्य युग्मों से जोड़ना और घटाना",
+   "दैनिक जीवन में पूर्णांक: जमा और नामे (क्रेडिट और डेबिट), समुद्र तल से ऊपर और नीचे की ऊँचाई, तापमान",
+   "पूर्णांकों की पहेलियाँ और खेल: खोखली जाली, अद्भुत जाली और पासे का खेल",
+   "चीन और भारत में ऋणात्मक संख्याओं का इतिहास, ब्रह्मगुप्त के नियमों सहित"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "Introduction: More and more numbers",
+    "hi": "परिचय: और अधिक संख्याएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "People first used counting numbers 1, 2, 3, ... to count cows, coins and mangoes. Later, zero was invented (in India) to mean 'nothing' and to act as a placeholder in numbers like 105. Fractions like 1/2 and 3/4 were needed to share and measure. Each time people needed to describe something new, the family of numbers grew. Now we ask: are there numbers less than zero?",
+      "hi": "लोगों ने सबसे पहले गायों, सिक्कों और आमों को गिनने के लिए गिनती की संख्याओं 1, 2, 3, ... का उपयोग किया। बाद में (भारत में) शून्य का आविष्कार हुआ, जिसका अर्थ 'कुछ नहीं' है और जो 105 जैसी संख्याओं में स्थान भरने का काम करता है। बाँटने और मापने के लिए 1/2 और 3/4 जैसी भिन्नों की आवश्यकता हुई। हर बार जब लोगों को कुछ नया बताना पड़ा, संख्याओं का परिवार बढ़ गया। अब हम पूछते हैं: क्या शून्य से कम संख्याएँ भी होती हैं?"
+     }
+    },
+    {
+     "p": {
+      "en": "Think of a building. The ground floor is our starting point, like zero. Floors above it are 1, 2, 3, .... But many buildings, malls and metro stations also have floors below the ground: basements and parking levels. How should we number them so that we know how far below the ground they are? This is where negative numbers come in.",
+      "hi": "एक इमारत के बारे में सोचिए। भूतल (ग्राउंड फ़्लोर) हमारा प्रारंभिक बिंदु है, जैसे शून्य। इसके ऊपर की मंज़िलें 1, 2, 3, ... हैं। पर कई इमारतों, मॉलों और मेट्रो स्टेशनों में ज़मीन के नीचे भी मंज़िलें होती हैं: तहखाने और पार्किंग। इन्हें कैसे क्रमांक दें ताकि पता चले कि वे ज़मीन से कितनी नीचे हैं? यहीं पर ऋणात्मक संख्याएँ आती हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.1 Bela's Building of Fun: Numbering the Floors",
+    "hi": "10.1 बेला की मनोरंजन इमारत: मंज़िलों को क्रमांक देना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Bela has built a 'Building of Fun' with games and rides on every floor. It has floors above the ground and floors below the ground. The ground floor is numbered 0. The floors above are numbered +1, +2, +3, ... (read 'positive one', 'positive two', ...), counting up from the ground. The floors below are numbered -1, -2, -3, ... (read 'negative one', 'negative two', ...), counting down from the ground. So Floor -1 is the first basement just below the ground, Floor -2 is below that, and so on.",
+      "hi": "बेला ने एक 'मनोरंजन इमारत' बनाई है जिसकी हर मंज़िल पर खेल और झूले हैं। इसमें ज़मीन के ऊपर और ज़मीन के नीचे मंज़िलें हैं। भूतल को 0 क्रमांक दिया गया है। ऊपर की मंज़िलें ज़मीन से ऊपर गिनते हुए +1, +2, +3, ... हैं (पढ़ें 'धन एक', 'धन दो', ...)। नीचे की मंज़िलें ज़मीन से नीचे गिनते हुए -1, -2, -3, ... हैं (पढ़ें 'ऋण एक', 'ऋण दो', ...)। इस प्रकार मंज़िल -1 ज़मीन के ठीक नीचे का पहला तहखाना है, मंज़िल -2 उसके नीचे, और इसी तरह आगे।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Positive numbers",
+       "hi": "धनात्मक संख्याएँ"
+      },
+      "text": {
+       "en": "Numbers greater than zero, such as +1, +2, +3, .... The plus sign is often left out, so +5 is the same as 5.",
+       "hi": "शून्य से बड़ी संख्याएँ, जैसे +1, +2, +3, ...। धन चिह्न अक्सर नहीं लिखा जाता, इसलिए +5 और 5 एक ही हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Negative numbers",
+       "hi": "ऋणात्मक संख्याएँ"
+      },
+      "text": {
+       "en": "Numbers less than zero, such as -1, -2, -3, .... The minus sign must always be written.",
+       "hi": "शून्य से छोटी संख्याएँ, जैसे -1, -2, -3, ...। ऋण चिह्न हमेशा लिखना ज़रूरी है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Integers",
+       "hi": "पूर्णांक"
+      },
+      "text": {
+       "en": "The collection of all positive whole numbers, all negative whole numbers and zero: ..., -3, -2, -1, 0, +1, +2, +3, ....",
+       "hi": "सभी धनात्मक पूर्ण संख्याओं, सभी ऋणात्मक पूर्ण संख्याओं और शून्य का समूह: ..., -3, -2, -1, 0, +1, +2, +3, ...।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Zero is neither positive nor negative. It is the dividing point between the two sides.",
+      "hi": "शून्य न धनात्मक है, न ऋणात्मक। यह दोनों ओर के बीच का विभाजक बिंदु है।"
+     }
+    },
+    {
+     "p": {
+      "en": "The lift in the building has special buttons. A button marked +3 takes you 3 floors up from wherever you are. A button marked -2 takes you 2 floors down. So in the lift, a positive number means 'move up' and a negative number means 'move down'. The same symbol can describe a position (Floor -2) or a movement (press -2 to go down 2 floors); the context tells you which.",
+      "hi": "इमारत की लिफ़्ट में विशेष बटन हैं। +3 वाला बटन आप जहाँ हैं वहाँ से 3 मंज़िल ऊपर ले जाता है। -2 वाला बटन 2 मंज़िल नीचे ले जाता है। इसलिए लिफ़्ट में धनात्मक संख्या का अर्थ है 'ऊपर जाओ' और ऋणात्मक संख्या का अर्थ है 'नीचे जाओ'। एक ही प्रतीक स्थिति (मंज़िल -2) या गति (-2 दबाकर 2 मंज़िल नीचे जाना) दोनों बता सकता है; संदर्भ से पता चलता है कि कौन-सा।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A building has 5 floors above the ground and 3 basements. List all the floor numbers from top to bottom.",
+       "hi": "एक इमारत में ज़मीन के ऊपर 5 मंज़िलें और 3 तहखाने हैं। ऊपर से नीचे तक सभी मंज़िलों के क्रमांक लिखें।"
+      },
+      "a": {
+       "en": "Step 1: Floors above the ground: +5, +4, +3, +2, +1.\nStep 2: Ground floor: 0.\nStep 3: Basements: -1, -2, -3.\nAnswer: +5, +4, +3, +2, +1, 0, -1, -2, -3. That is 9 floors in total.",
+       "hi": "चरण 1: ज़मीन के ऊपर की मंज़िलें: +5, +4, +3, +2, +1।\nचरण 2: भूतल: 0।\nचरण 3: तहखाने: -1, -2, -3।\nउत्तर: +5, +4, +3, +2, +1, 0, -1, -2, -3। कुल 9 मंज़िलें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.1 (continued) Addition to Keep Track of Movement",
+    "hi": "10.1 (जारी) गति का हिसाब रखने के लिए जोड़"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "If you are on some floor and press a button, you reach a new floor. We can write this as an addition:",
+      "hi": "यदि आप किसी मंज़िल पर हैं और एक बटन दबाते हैं, तो आप नई मंज़िल पर पहुँचते हैं। इसे हम जोड़ के रूप में लिख सकते हैं:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Starting floor + Movement = Target floor",
+      "hi": "प्रारंभिक मंज़िल + गति = लक्ष्य मंज़िल"
+     }
+    },
+    {
+     "p": {
+      "en": "For example, start at Floor +2 and press +3: you go up 3 floors to Floor +5. We write (+2) + (+3) = +5. Start at Floor +2 and press -5: you go down 5 floors, passing +1, 0, -1, -2, and reach Floor -3. We write (+2) + (-5) = -3. Start at Floor -1 and press +4: you go up to 0, +1, +2, +3. We write (-1) + (+4) = +3.",
+      "hi": "जैसे, मंज़िल +2 से शुरू करके +3 दबाइए: आप 3 मंज़िल ऊपर जाकर मंज़िल +5 पर पहुँचते हैं। हम लिखते हैं (+2) + (+3) = +5। मंज़िल +2 से शुरू करके -5 दबाइए: आप 5 मंज़िल नीचे जाते हैं, +1, 0, -1, -2 से होते हुए मंज़िल -3 पर पहुँचते हैं। हम लिखते हैं (+2) + (-5) = -3। मंज़िल -1 से शुरू करके +4 दबाइए: आप 0, +1, +2, +3 तक ऊपर जाते हैं। हम लिखते हैं (-1) + (+4) = +3।"
+     }
+    },
+    {
+     "note": {
+      "en": "Brackets around a signed number, like (-5), keep its sign from mixing up with the plus or minus sign of the operation. (+2) + (-5) means 'start at +2, then add the movement -5'.",
+      "hi": "चिह्न वाली संख्या के चारों ओर कोष्ठक, जैसे (-5), उसके चिह्न को संक्रिया के धन या ऋण चिह्न से मिलने नहीं देते। (+2) + (-5) का अर्थ है '+2 से शुरू करो, फिर गति -5 जोड़ो'।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Bela is on Floor -2. She presses -3. Which floor does she reach? Write the addition.",
+       "hi": "बेला मंज़िल -2 पर है। वह -3 दबाती है। वह किस मंज़िल पर पहुँचती है? जोड़ लिखें।"
+      },
+      "a": {
+       "en": "Step 1: -3 means go down 3 floors.\nStep 2: From -2, going down: -3, -4, -5.\nStep 3: She reaches Floor -5.\nAddition: (-2) + (-3) = -5.",
+       "hi": "चरण 1: -3 का अर्थ है 3 मंज़िल नीचे जाना।\nचरण 2: -2 से नीचे जाते हुए: -3, -4, -5।\nचरण 3: वह मंज़िल -5 पर पहुँचती है।\nजोड़: (-2) + (-3) = -5।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Starting from Floor +1, which single button takes you to Floor -5?",
+       "hi": "मंज़िल +1 से शुरू करके कौन-सा एक बटन आपको मंज़िल -5 पर ले जाएगा?"
+      },
+      "a": {
+       "en": "Step 1: From +1 down to 0 is 1 floor; from 0 down to -5 is 5 floors.\nStep 2: Total 1 + 5 = 6 floors down.\nStep 3: The button is -6.\nCheck: (+1) + (-6) = -5.",
+       "hi": "चरण 1: +1 से 0 तक नीचे 1 मंज़िल; 0 से -5 तक नीचे 5 मंज़िलें।\nचरण 2: कुल 1 + 5 = 6 मंज़िल नीचे।\nचरण 3: बटन -6 है।\nजाँच: (+1) + (-6) = -5।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.1 (continued) Combining Button Presses; Back to Zero (Additive Inverses)",
+    "hi": "10.1 (जारी) बटन दबाने को मिलाना; वापस शून्य पर (योज्य प्रतिलोम)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Pressing two buttons one after another is also addition: the two movements combine into one total movement. Pressing +4 and then -6 takes you up 4 and down 6, which is the same as going down 2 overall. So (+4) + (-6) = -2. Pressing -3 then +5: down 3, up 5, overall up 2. So (-3) + (+5) = +2. Pressing +2, -4, +3: overall +1.",
+      "hi": "एक के बाद एक दो बटन दबाना भी जोड़ है: दोनों गतियाँ मिलकर एक कुल गति बनती हैं। +4 और फिर -6 दबाने से आप 4 ऊपर और 6 नीचे जाते हैं, जो कुल मिलाकर 2 नीचे जाने के बराबर है। इसलिए (+4) + (-6) = -2। -3 फिर +5: 3 नीचे, 5 ऊपर, कुल 2 ऊपर। इसलिए (-3) + (+5) = +2। +2, -4, +3 दबाने पर: कुल +1।"
+     }
+    },
+    {
+     "note": {
+      "en": "The order of pressing does not change the total movement: (+4) + (-6) = (-6) + (+4) = -2. Addition of integers can be done in any order.",
+      "hi": "दबाने का क्रम कुल गति को नहीं बदलता: (+4) + (-6) = (-6) + (+4) = -2। पूर्णांकों का जोड़ किसी भी क्रम में किया जा सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Back to Zero: If you press +5 and then -5, you go up 5 and come straight back down 5. You end where you began. The total movement is 0: (+5) + (-5) = 0. Two numbers that add up to zero are called additive inverses of each other. The inverse of +7 is -7, and the inverse of -7 is +7. The inverse of 0 is 0 itself.",
+      "hi": "वापस शून्य पर: यदि आप +5 और फिर -5 दबाते हैं, तो आप 5 ऊपर जाकर सीधे 5 नीचे लौट आते हैं। आप वहीं पहुँचते हैं जहाँ से चले थे। कुल गति 0 है: (+5) + (-5) = 0। जिन दो संख्याओं का योग शून्य हो, उन्हें एक-दूसरे का योज्य प्रतिलोम कहते हैं। +7 का प्रतिलोम -7 है, और -7 का प्रतिलोम +7 है। 0 का प्रतिलोम स्वयं 0 है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Additive inverse",
+       "hi": "योज्य प्रतिलोम"
+      },
+      "text": {
+       "en": "The additive inverse of a number is the number which, added to it, gives zero. It is the same distance from zero on the other side.",
+       "hi": "किसी संख्या का योज्य प्रतिलोम वह संख्या है जिसे उसमें जोड़ने पर शून्य मिले। यह शून्य से उतनी ही दूरी पर दूसरी ओर होती है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "a + (inverse of a) = 0     e.g. (+9) + (-9) = 0,  (-12) + (+12) = 0",
+      "hi": "a + (a का प्रतिलोम) = 0     जैसे (+9) + (-9) = 0,  (-12) + (+12) = 0"
+     }
+    },
+    {
+     "p": {
+      "en": "We write the inverse of a number by putting a minus sign in front: the inverse of 4 is -4, and the inverse of -4 is -(-4) = 4. So 'minus minus four' is 'four'. This makes sense: going in the opposite direction of 'down 4' means 'up 4'.",
+      "hi": "किसी संख्या का प्रतिलोम उसके आगे ऋण चिह्न लगाकर लिखते हैं: 4 का प्रतिलोम -4 है, और -4 का प्रतिलोम -(-4) = 4 है। यानी 'ऋण ऋण चार' 'चार' है। यह तर्कसंगत है: '4 नीचे' की उल्टी दिशा का अर्थ है '4 ऊपर'।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the value: (-16) + (-9) + (+25).",
+       "hi": "मान ज्ञात करें: (-16) + (-9) + (+25)।"
+      },
+      "a": {
+       "en": "Step 1: Combine the two downward movements: (-16) + (-9) = -25.\nStep 2: Now (-25) + (+25) = 0, because they are inverses.\nAnswer: 0.",
+       "hi": "चरण 1: दोनों नीचे की गतियों को मिलाएँ: (-16) + (-9) = -25।\nचरण 2: अब (-25) + (+25) = 0, क्योंकि ये प्रतिलोम हैं।\nउत्तर: 0।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write the inverse of each: +13, -8, 0, -(-6).",
+       "hi": "हर एक का प्रतिलोम लिखें: +13, -8, 0, -(-6)।"
+      },
+      "a": {
+       "en": "Inverse of +13 is -13.\nInverse of -8 is +8.\nInverse of 0 is 0.\n-(-6) is +6, so its inverse is -6.",
+       "hi": "+13 का प्रतिलोम -13 है।\n-8 का प्रतिलोम +8 है।\n0 का प्रतिलोम 0 है।\n-(-6) = +6 है, इसलिए इसका प्रतिलोम -6 है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.1 (continued) Comparing Numbers Using Floors",
+    "hi": "10.1 (जारी) मंज़िलों से संख्याओं की तुलना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A floor that is higher up in the building has a greater number. Floor +3 is above Floor +1, so +3 > +1. Floor 0 is above Floor -2, so 0 > -2. Floor -1 is above Floor -4, so -1 > -4. This last one surprises many students: 4 is bigger than 1, but -4 is smaller than -1, because the 4th basement is deeper down than the 1st basement.",
+      "hi": "इमारत में ऊपर वाली मंज़िल का क्रमांक बड़ा होता है। मंज़िल +3, मंज़िल +1 के ऊपर है, इसलिए +3 > +1। मंज़िल 0, मंज़िल -2 के ऊपर है, इसलिए 0 > -2। मंज़िल -1, मंज़िल -4 के ऊपर है, इसलिए -1 > -4। अंतिम बात कई छात्रों को चौंकाती है: 4, 1 से बड़ा है, पर -4, -1 से छोटा है, क्योंकि चौथा तहखाना पहले तहखाने से अधिक गहरा है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Every positive number is greater than 0.",
+       "Every negative number is less than 0.",
+       "Every positive number is greater than every negative number, for example +1 > -100.",
+       "Between two negative numbers, the one closer to zero is greater: -3 > -7.",
+       "The symbol > means 'is greater than' and < means 'is less than'; the open side faces the bigger number."
+      ],
+      "hi": [
+       "हर धनात्मक संख्या 0 से बड़ी है।",
+       "हर ऋणात्मक संख्या 0 से छोटी है।",
+       "हर धनात्मक संख्या हर ऋणात्मक संख्या से बड़ी है, जैसे +1 > -100।",
+       "दो ऋणात्मक संख्याओं में जो शून्य के अधिक पास हो, वह बड़ी है: -3 > -7।",
+       "चिह्न > का अर्थ 'से बड़ा है' और < का अर्थ 'से छोटा है'; खुला भाग बड़ी संख्या की ओर होता है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Put > or < between: (a) -5 and -2, (b) +3 and -8, (c) 0 and -1, (d) -10 and -11.",
+       "hi": "बीच में > या < लगाएँ: (क) -5 और -2, (ख) +3 और -8, (ग) 0 और -1, (घ) -10 और -11।"
+      },
+      "a": {
+       "en": "(a) Floor -5 is below Floor -2, so -5 < -2.\n(b) Positive is always above negative: +3 > -8.\n(c) Ground is above the 1st basement: 0 > -1.\n(d) -10 is closer to zero than -11: -10 > -11.",
+       "hi": "(क) मंज़िल -5, मंज़िल -2 के नीचे है, इसलिए -5 < -2।\n(ख) धनात्मक हमेशा ऋणात्मक के ऊपर: +3 > -8।\n(ग) भूतल पहले तहखाने के ऊपर है: 0 > -1।\n(घ) -10, -11 की तुलना में शून्य के अधिक पास है: -10 > -11।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Arrange in increasing order (smallest first): 4, -6, 0, -1, 7, -9.",
+       "hi": "बढ़ते क्रम में लगाएँ (सबसे छोटा पहले): 4, -6, 0, -1, 7, -9।"
+      },
+      "a": {
+       "en": "Step 1: Negatives first, deepest first: -9, -6, -1.\nStep 2: Then zero: 0.\nStep 3: Then positives: 4, 7.\nAnswer: -9 < -6 < -1 < 0 < 4 < 7.",
+       "hi": "चरण 1: पहले ऋणात्मक, सबसे गहरा पहले: -9, -6, -1।\nचरण 2: फिर शून्य: 0।\nचरण 3: फिर धनात्मक: 4, 7।\nउत्तर: -9 < -6 < -1 < 0 < 4 < 7।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.1 (continued) Subtraction to Find Which Button to Press",
+    "hi": "10.1 (जारी) कौन-सा बटन दबाएँ, यह जानने के लिए घटाव"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Now suppose you know where you are and where you want to go. Which button should you press? The movement needed is found by subtraction:",
+      "hi": "अब मान लीजिए आपको पता है कि आप कहाँ हैं और कहाँ जाना है। कौन-सा बटन दबाएँ? आवश्यक गति घटाव से निकलती है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Target floor - Starting floor = Movement",
+      "hi": "लक्ष्य मंज़िल - प्रारंभिक मंज़िल = गति"
+     }
+    },
+    {
+     "p": {
+      "en": "This is just the addition rule turned around. Since Start + Movement = Target, we get Movement = Target - Start. To go from Floor +5 to Floor +9 you go up 4: (+9) - (+5) = +4. To go from Floor +9 to Floor +5 you go down 4: (+5) - (+9) = -4. To go from Floor -3 to Floor +5 you go up 8: (+5) - (-3) = +8. To go from Floor +5 to Floor -3 you go down 8: (-3) - (+5) = -8.",
+      "hi": "यह जोड़ के नियम को उलटकर ही मिलता है। क्योंकि प्रारंभ + गति = लक्ष्य, इसलिए गति = लक्ष्य - प्रारंभ। मंज़िल +5 से +9 जाने के लिए 4 ऊपर: (+9) - (+5) = +4। मंज़िल +9 से +5 जाने के लिए 4 नीचे: (+5) - (+9) = -4। मंज़िल -3 से +5 जाने के लिए 8 ऊपर: (+5) - (-3) = +8। मंज़िल +5 से -3 जाने के लिए 8 नीचे: (-3) - (+5) = -8।"
+     }
+    },
+    {
+     "note": {
+      "en": "The answer of a subtraction is positive when the target is above the start, negative when it is below, and zero when they are the same floor.",
+      "hi": "घटाव का उत्तर धनात्मक होता है जब लक्ष्य प्रारंभ से ऊपर हो, ऋणात्मक जब नीचे हो, और शून्य जब दोनों एक ही मंज़िल हों।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which button takes you from Floor -6 to Floor -2? From Floor -2 to Floor -6?",
+       "hi": "कौन-सा बटन आपको मंज़िल -6 से मंज़िल -2 तक ले जाएगा? मंज़िल -2 से मंज़िल -6 तक?"
+      },
+      "a": {
+       "en": "Part 1: Movement = Target - Start = (-2) - (-6). Floor -2 is 4 floors above -6, so the movement is +4. Button +4.\nPart 2: Movement = (-6) - (-2). Floor -6 is 4 floors below -2, so the movement is -4. Button -4.",
+       "hi": "भाग 1: गति = लक्ष्य - प्रारंभ = (-2) - (-6)। मंज़िल -2, मंज़िल -6 से 4 ऊपर है, इसलिए गति +4। बटन +4।\nभाग 2: गति = (-6) - (-2)। मंज़िल -6, मंज़िल -2 से 4 नीचे है, इसलिए गति -4। बटन -4।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find (+1) - (-3) by thinking of the lift.",
+       "hi": "लिफ़्ट के बारे में सोचकर (+1) - (-3) ज्ञात करें।"
+      },
+      "a": {
+       "en": "Step 1: This asks: what movement takes you from Floor -3 (start) to Floor +1 (target)?\nStep 2: From -3 up to 0 is 3 floors; from 0 up to +1 is 1 floor.\nStep 3: Total 4 floors up.\nAnswer: (+1) - (-3) = +4.",
+       "hi": "चरण 1: यह पूछता है: कौन-सी गति मंज़िल -3 (प्रारंभ) से मंज़िल +1 (लक्ष्य) तक ले जाती है?\nचरण 2: -3 से 0 तक 3 मंज़िल ऊपर; 0 से +1 तक 1 मंज़िल ऊपर।\nचरण 3: कुल 4 मंज़िल ऊपर।\nउत्तर: (+1) - (-3) = +4।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.1 (continued) Larger Numbers: the Mine Shaft and the Infinite Lift",
+    "hi": "10.1 (जारी) बड़ी संख्याएँ: खदान का कुआँ और अनंत लिफ़्ट"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Bela also visits a mine. A mine shaft is a deep vertical tunnel. Positions in the shaft are measured in metres: ground level is 0, positions below the ground are negative (for example -40 m means 40 metres deep), and the top of a tower above the shaft is positive. A cage-lift moves miners up and down. The same rules work for these larger numbers.",
+      "hi": "बेला एक खदान भी देखने जाती है। खदान का कुआँ (माइन शाफ़्ट) एक गहरी खड़ी सुरंग है। कुएँ में स्थितियाँ मीटर में मापी जाती हैं: ज़मीन का स्तर 0 है, ज़मीन के नीचे की स्थितियाँ ऋणात्मक हैं (जैसे -40 मी का अर्थ 40 मीटर गहराई), और कुएँ के ऊपर बने टावर का शिखर धनात्मक है। एक पिंजरे जैसी लिफ़्ट खनिकों को ऊपर-नीचे ले जाती है। इन बड़ी संख्याओं के लिए भी वही नियम काम करते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A miner is at -20 m and the lift goes up 35 m. Where is the miner now? Another miner at -40 m wants to go to -15 m. What movement is needed?",
+       "hi": "एक खनिक -20 मी पर है और लिफ़्ट 35 मी ऊपर जाती है। अब खनिक कहाँ है? दूसरा खनिक -40 मी पर है और -15 मी पर जाना चाहता है। कितनी गति चाहिए?"
+      },
+      "a": {
+       "en": "Part 1: (-20) + (+35). Going up 20 m reaches 0; 15 m more remain, so the miner reaches +15 m (15 m above the ground, on the tower).\nPart 2: Movement = Target - Start = (-15) - (-40). From -40 up to -15 is 25 m. So +25 m (25 m up).",
+       "hi": "भाग 1: (-20) + (+35)। 20 मी ऊपर जाने से 0 पर पहुँचते हैं; 15 मी और बचे हैं, इसलिए खनिक +15 मी पर (ज़मीन से 15 मी ऊपर, टावर पर) पहुँचता है।\nभाग 2: गति = लक्ष्य - प्रारंभ = (-15) - (-40)। -40 से -15 तक ऊपर 25 मी है। इसलिए +25 मी (25 मी ऊपर)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The Infinite Lift: Now imagine a magical lift in a building with no top floor and no bottom floor. It can go up or down as far as you like. Every integer, no matter how large, is a floor. With this imaginary lift you can add, subtract and compare any integers, such as (-250) + (+400) = +150 or (-300) - (+200) = -500, simply by picturing the movement.",
+      "hi": "अनंत लिफ़्ट: अब ऐसी इमारत की जादुई लिफ़्ट की कल्पना कीजिए जिसकी न कोई सबसे ऊपरी मंज़िल है, न सबसे निचली। यह जितना चाहें ऊपर या नीचे जा सकती है। हर पूर्णांक, चाहे कितना भी बड़ा हो, एक मंज़िल है। इस काल्पनिक लिफ़्ट से आप किसी भी पूर्णांक को जोड़, घटा और तुलना कर सकते हैं, जैसे (-250) + (+400) = +150 या (-300) - (+200) = -500, केवल गति की कल्पना करके।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Use the infinite lift: (a) (-65) + (-80), (b) (+120) - (-30).",
+       "hi": "अनंत लिफ़्ट का उपयोग करें: (क) (-65) + (-80), (ख) (+120) - (-30)।"
+      },
+      "a": {
+       "en": "(a) Start 65 floors below ground, go down another 80 floors: 65 + 80 = 145 floors below. Answer -145.\n(b) Movement from -30 to +120: up 30 to reach 0, then up 120 more. Total 150 up. Answer +150.",
+       "hi": "(क) ज़मीन से 65 मंज़िल नीचे से शुरू करें, और 80 मंज़िल नीचे जाएँ: 65 + 80 = 145 मंज़िल नीचे। उत्तर -145।\n(ख) -30 से +120 तक की गति: 0 तक 30 ऊपर, फिर 120 और ऊपर। कुल 150 ऊपर। उत्तर +150।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.1 (continued) Back to the Number Line",
+    "hi": "10.1 (जारी) फिर से संख्या रेखा पर"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Turn Bela's building on its side and you get the number line. Draw a straight line, mark 0 in the middle, and mark equally spaced points. To the right of 0 put +1, +2, +3, ...; to the left put -1, -2, -3, .... The number line goes on forever in both directions, shown by arrows at both ends.",
+      "hi": "बेला की इमारत को करवट पर लिटा दीजिए तो संख्या रेखा मिलती है। एक सीधी रेखा खींचिए, बीच में 0 अंकित कीजिए, और बराबर दूरी पर बिंदु अंकित कीजिए। 0 के दाईं ओर +1, +2, +3, ... और बाईं ओर -1, -2, -3, ... लिखिए। संख्या रेखा दोनों दिशाओं में अनंत तक जाती है, जो दोनों सिरों पर तीर से दिखाया जाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Number line",
+       "hi": "संख्या रेखा"
+      },
+      "text": {
+       "en": "A straight line on which integers are marked at equal gaps: zero in the middle, positive numbers to the right and negative numbers to the left.",
+       "hi": "एक सीधी रेखा जिस पर पूर्णांक बराबर अंतराल पर अंकित होते हैं: बीच में शून्य, दाईं ओर धनात्मक और बाईं ओर ऋणात्मक संख्याएँ।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Moving right is like going up in the lift: adding a positive number moves you right.",
+       "Moving left is like going down: adding a negative number moves you left.",
+       "A number to the right is always greater than a number to its left. So -2 > -5 because -2 is to the right of -5.",
+       "A number and its inverse (like -4 and +4) are at the same distance from 0, on opposite sides.",
+       "The number of steps from a to b is b - a; if b is to the left of a, the answer is negative."
+      ],
+      "hi": [
+       "दाईं ओर चलना लिफ़्ट में ऊपर जाने जैसा है: धनात्मक संख्या जोड़ने पर आप दाईं ओर जाते हैं।",
+       "बाईं ओर चलना नीचे जाने जैसा है: ऋणात्मक संख्या जोड़ने पर आप बाईं ओर जाते हैं।",
+       "दाईं ओर वाली संख्या अपनी बाईं ओर वाली संख्या से हमेशा बड़ी होती है। इसलिए -2 > -5 क्योंकि -2, -5 के दाईं ओर है।",
+       "कोई संख्या और उसका प्रतिलोम (जैसे -4 और +4) 0 से बराबर दूरी पर, उल्टी ओर होते हैं।",
+       "a से b तक के कदमों की संख्या b - a है; यदि b, a के बाईं ओर हो, तो उत्तर ऋणात्मक है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Math talk: How many steps from 5 to 9? 9 - 5 = 4 steps to the right. From 9 to 5? 5 - 9 = -4, that is 4 steps to the left. From -3 to 5? 5 - (-3) = 8 steps right. From 5 to -3? (-3) - 5 = -8, 8 steps left.",
+      "hi": "गणित चर्चा: 5 से 9 तक कितने कदम? 9 - 5 = 4 कदम दाईं ओर। 9 से 5 तक? 5 - 9 = -4, यानी 4 कदम बाईं ओर। -3 से 5 तक? 5 - (-3) = 8 कदम दाईं ओर। 5 से -3 तक? (-3) - 5 = -8, यानी 8 कदम बाईं ओर।"
+     }
+    },
+    {
+     "p": {
+      "en": "Using an unmarked number line: For big numbers you do not need to mark every point. Draw a line, mark 0, and draw arrows (jumps) of roughly the right length. For example, to find (-14) + 10, start at -14 and jump 10 to the right. You pass none of zero yet because 10 is less than 14, so you stop 4 to the left of zero: -4. To find (-25) - (-5), think 'what movement takes me from -5 to -25?'; that is 20 to the left, so the answer is -20.",
+      "hi": "बिना अंकित संख्या रेखा का उपयोग: बड़ी संख्याओं के लिए हर बिंदु अंकित करने की ज़रूरत नहीं। एक रेखा खींचिए, 0 अंकित कीजिए, और लगभग सही लंबाई की छलाँगें (तीर) बनाइए। जैसे (-14) + 10 के लिए -14 से शुरू करके 10 दाईं ओर छलाँग लगाइए। 10, 14 से कम है, इसलिए आप शून्य तक नहीं पहुँचते और शून्य से 4 बाईं ओर रुकते हैं: -4। (-25) - (-5) के लिए सोचिए 'कौन-सी गति मुझे -5 से -25 तक ले जाती है?'; यह 20 बाईं ओर है, इसलिए उत्तर -20 है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using an unmarked number line, find (a) (-12) + 30, (b) 15 - (-5).",
+       "hi": "बिना अंकित संख्या रेखा से ज्ञात करें: (क) (-12) + 30, (ख) 15 - (-5)।"
+      },
+      "a": {
+       "en": "(a) Start at -12. A jump of 12 to the right reaches 0. 30 - 12 = 18 is left over, so jump 18 more right. Answer +18.\n(b) Movement from -5 to 15: 5 right to reach 0, then 15 right. Total 20 right. Answer 20.",
+       "hi": "(क) -12 से शुरू करें। 12 की छलाँग दाईं ओर 0 तक ले जाती है। 30 - 12 = 18 बचते हैं, इसलिए 18 और दाईं ओर। उत्तर +18।\n(ख) -5 से 15 तक की गति: 0 तक 5 दाईं ओर, फिर 15 दाईं ओर। कुल 20 दाईं ओर। उत्तर 20।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.1 (continued) Converting Subtraction to Addition and Addition to Subtraction",
+    "hi": "10.1 (जारी) घटाव को जोड़ में और जोड़ को घटाव में बदलना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Compare these two: 7 - 2 = 5 and 7 + (-2) = 5. Subtracting 2 gives the same answer as adding -2, the inverse of 2. Now compare 7 - (-2) and 7 + 2. The first asks for the movement from -2 to 7, which is 9 steps up. The second is also 9. So subtracting -2 is the same as adding +2.",
+      "hi": "इन दोनों की तुलना कीजिए: 7 - 2 = 5 और 7 + (-2) = 5। 2 घटाने पर वही उत्तर मिलता है जो 2 का प्रतिलोम -2 जोड़ने पर। अब 7 - (-2) और 7 + 2 की तुलना कीजिए। पहला -2 से 7 तक की गति पूछता है, जो 9 कदम ऊपर है। दूसरा भी 9 है। इसलिए -2 घटाना +2 जोड़ने के समान है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "a - b = a + (inverse of b)\n7 - 2 = 7 + (-2) = 5\n7 - (-2) = 7 + (+2) = 9\n-6 - (-6) = -6 + 6 = 0",
+      "hi": "a - b = a + (b का प्रतिलोम)\n7 - 2 = 7 + (-2) = 5\n7 - (-2) = 7 + (+2) = 9\n-6 - (-6) = -6 + 6 = 0"
+     }
+    },
+    {
+     "p": {
+      "en": "This rule is very powerful: every subtraction can be done as an addition. Turning it around, every addition can be written as a subtraction: a + b = a - (inverse of b). For example, (-8) + 3 = (-8) - (-3) = -5 and 6 + (-2) = 6 - 2 = 4.",
+      "hi": "यह नियम बहुत उपयोगी है: हर घटाव को जोड़ की तरह किया जा सकता है। उलटकर, हर जोड़ को घटाव के रूप में लिखा जा सकता है: a + b = a - (b का प्रतिलोम)। जैसे (-8) + 3 = (-8) - (-3) = -5 और 6 + (-2) = 6 - 2 = 4।"
+     }
+    },
+    {
+     "note": {
+      "en": "Subtracting a negative number makes the answer bigger; subtracting a positive number makes it smaller. Remember: 3 - (-4) = 3 + 4 = 7.",
+      "hi": "ऋणात्मक संख्या घटाने से उत्तर बढ़ता है; धनात्मक संख्या घटाने से घटता है। याद रखें: 3 - (-4) = 3 + 4 = 7।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Rewrite as addition and find: (a) -5 - 2, (b) -1 - (-4), (c) -2 - (-15).",
+       "hi": "जोड़ के रूप में लिखकर ज्ञात करें: (क) -5 - 2, (ख) -1 - (-4), (ग) -2 - (-15)।"
+      },
+      "a": {
+       "en": "(a) -5 - 2 = -5 + (-2) = -7.\n(b) -1 - (-4) = -1 + 4 = 3.\n(c) -2 - (-15) = -2 + 15 = 13.",
+       "hi": "(क) -5 - 2 = -5 + (-2) = -7।\n(ख) -1 - (-4) = -1 + 4 = 3।\n(ग) -2 - (-15) = -2 + 15 = 13।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.2 The Token Model: Using Tokens for Addition",
+    "hi": "10.2 टोकन मॉडल: जोड़ के लिए टोकनों का उपयोग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Another way to picture integers is with tokens (small counters). We use two kinds: a positive token stands for +1 and a negative token stands for -1. In this material we show positive tokens as red and negative tokens as black, like the red and black counting rods used in ancient China. A number is shown by a pile of tokens: +4 is four positive tokens; -3 is three negative tokens.",
+      "hi": "पूर्णांकों को देखने का एक और तरीका टोकनों (छोटे गोटियों) से है। हम दो प्रकार के टोकन लेते हैं: धनात्मक टोकन +1 दर्शाता है और ऋणात्मक टोकन -1 दर्शाता है। इस सामग्री में हम धनात्मक टोकन लाल और ऋणात्मक टोकन काले दिखाते हैं, प्राचीन चीन की लाल और काली गिनती की छड़ों की तरह। किसी संख्या को टोकनों के ढेर से दिखाया जाता है: +4 यानी चार धनात्मक टोकन; -3 यानी तीन ऋणात्मक टोकन।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Zero pair",
+       "hi": "शून्य युग्म"
+      },
+      "text": {
+       "en": "One positive token together with one negative token. Their values add to (+1) + (-1) = 0, so a zero pair is worth nothing and can be removed or added without changing the value.",
+       "hi": "एक धनात्मक टोकन और एक ऋणात्मक टोकन साथ में। उनका मान (+1) + (-1) = 0 होता है, इसलिए शून्य युग्म का मान कुछ नहीं है और उसे मान बदले बिना हटाया या जोड़ा जा सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "To add, put both piles together, then remove as many zero pairs as possible. Whatever tokens are left give the answer. Same-colour piles simply combine. Different-colour piles cancel pair by pair, and the colour that has more tokens survives.",
+      "hi": "जोड़ने के लिए दोनों ढेरों को एक साथ रखिए, फिर जितने शून्य युग्म बन सकें, हटा दीजिए। जो टोकन बचें, वही उत्तर है। एक ही रंग के ढेर बस मिल जाते हैं। अलग-अलग रंग के ढेर जोड़ी-जोड़ी कटते हैं, और जिस रंग के टोकन अधिक हों, वह बचता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Addition",
+        "Tokens put together",
+        "Zero pairs removed",
+        "Left over",
+        "Answer"
+       ],
+       "hi": [
+        "जोड़",
+        "साथ रखे टोकन",
+        "हटाए गए शून्य युग्म",
+        "बचे टोकन",
+        "उत्तर"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "(+3) + (+2)",
+         "5 positive",
+         "0",
+         "5 positive",
+         "+5"
+        ],
+        [
+         "(-4) + (-2)",
+         "6 negative",
+         "0",
+         "6 negative",
+         "-6"
+        ],
+        [
+         "(+3) + (-5)",
+         "3 positive, 5 negative",
+         "3",
+         "2 negative",
+         "-2"
+        ],
+        [
+         "(+6) + (-2)",
+         "6 positive, 2 negative",
+         "2",
+         "4 positive",
+         "+4"
+        ],
+        [
+         "(-7) + (+7)",
+         "7 positive, 7 negative",
+         "7",
+         "none",
+         "0"
+        ]
+       ],
+       "hi": [
+        [
+         "(+3) + (+2)",
+         "5 धनात्मक",
+         "0",
+         "5 धनात्मक",
+         "+5"
+        ],
+        [
+         "(-4) + (-2)",
+         "6 ऋणात्मक",
+         "0",
+         "6 ऋणात्मक",
+         "-6"
+        ],
+        [
+         "(+3) + (-5)",
+         "3 धनात्मक, 5 ऋणात्मक",
+         "3",
+         "2 ऋणात्मक",
+         "-2"
+        ],
+        [
+         "(+6) + (-2)",
+         "6 धनात्मक, 2 ऋणात्मक",
+         "2",
+         "4 धनात्मक",
+         "+4"
+        ],
+        [
+         "(-7) + (+7)",
+         "7 धनात्मक, 7 ऋणात्मक",
+         "7",
+         "कोई नहीं",
+         "0"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A box has 9 positive and 5 negative tokens. What number does it show? Write the addition.",
+       "hi": "एक डिब्बे में 9 धनात्मक और 5 ऋणात्मक टोकन हैं। यह कौन-सी संख्या दर्शाता है? जोड़ लिखें।"
+      },
+      "a": {
+       "en": "Step 1: Make zero pairs: 5 positive tokens pair with the 5 negative tokens.\nStep 2: Remove the 5 zero pairs.\nStep 3: Left over: 9 - 5 = 4 positive tokens.\nAnswer: +4. Addition: (+9) + (-5) = +4.",
+       "hi": "चरण 1: शून्य युग्म बनाएँ: 5 धनात्मक टोकन 5 ऋणात्मक टोकनों से जोड़ी बनाते हैं।\nचरण 2: 5 शून्य युग्म हटाएँ।\nचरण 3: बचे: 9 - 5 = 4 धनात्मक टोकन।\nउत्तर: +4। जोड़: (+9) + (-5) = +4।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "The same number can be shown in many ways: +2 can be 2 positive tokens, or 5 positive and 3 negative tokens, or 10 positive and 8 negative tokens. Adding zero pairs never changes the value.",
+      "hi": "एक ही संख्या को कई तरह से दिखाया जा सकता है: +2 को 2 धनात्मक टोकनों से, या 5 धनात्मक और 3 ऋणात्मक से, या 10 धनात्मक और 8 ऋणात्मक से। शून्य युग्म जोड़ने से मान कभी नहीं बदलता।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.2 (continued) Using Tokens for Subtraction",
+    "hi": "10.2 (जारी) घटाव के लिए टोकनों का उपयोग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To subtract, show the first number with tokens and then take away the tokens of the second number. If there are enough of the right kind, simply remove them. For example, (+5) - (+2): from 5 positive tokens take away 2 positive tokens; 3 positive remain, so the answer is +3. Similarly (-6) - (-2): from 6 negative tokens remove 2 negative tokens; 4 negative remain: -4.",
+      "hi": "घटाने के लिए पहली संख्या को टोकनों से दिखाइए और फिर दूसरी संख्या के टोकन निकाल लीजिए। यदि सही प्रकार के पर्याप्त टोकन हों, तो बस उन्हें हटा दीजिए। जैसे (+5) - (+2): 5 धनात्मक टोकनों में से 2 धनात्मक हटाइए; 3 धनात्मक बचते हैं, इसलिए उत्तर +3। इसी तरह (-6) - (-2): 6 ऋणात्मक टोकनों में से 2 ऋणात्मक हटाइए; 4 ऋणात्मक बचते हैं: -4।"
+     }
+    },
+    {
+     "p": {
+      "en": "What if there are not enough tokens of the kind you need to remove? Then add zero pairs first. Adding zero pairs does not change the value, but it gives you the tokens you need. For example, (+2) - (+5): you have only 2 positive tokens but must remove 5. Add 3 zero pairs: now there are 5 positive and 3 negative tokens, still worth +2. Remove 5 positive. Left: 3 negative. Answer: -3.",
+      "hi": "यदि जिस प्रकार के टोकन हटाने हैं वे पर्याप्त न हों तो? तब पहले शून्य युग्म जोड़िए। शून्य युग्म जोड़ने से मान नहीं बदलता, पर आपको आवश्यक टोकन मिल जाते हैं। जैसे (+2) - (+5): आपके पास केवल 2 धनात्मक टोकन हैं पर 5 हटाने हैं। 3 शून्य युग्म जोड़िए: अब 5 धनात्मक और 3 ऋणात्मक टोकन हैं, मान फिर भी +2 है। 5 धनात्मक हटाइए। बचे: 3 ऋणात्मक। उत्तर: -3।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Use tokens to find (-3) - (+2).",
+       "hi": "टोकनों से (-3) - (+2) ज्ञात करें।"
+      },
+      "a": {
+       "en": "Step 1: Show -3 as 3 negative tokens.\nStep 2: We must remove 2 positive tokens, but there are none.\nStep 3: Add 2 zero pairs: now 2 positive and 5 negative tokens (value still -3).\nStep 4: Remove the 2 positive tokens. Left: 5 negative.\nAnswer: (-3) - (+2) = -5.",
+       "hi": "चरण 1: -3 को 3 ऋणात्मक टोकनों से दिखाएँ।\nचरण 2: हमें 2 धनात्मक टोकन हटाने हैं, पर कोई नहीं है।\nचरण 3: 2 शून्य युग्म जोड़ें: अब 2 धनात्मक और 5 ऋणात्मक टोकन (मान अब भी -3)।\nचरण 4: 2 धनात्मक टोकन हटाएँ। बचे: 5 ऋणात्मक।\nउत्तर: (-3) - (+2) = -5।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Use tokens to find (+1) - (-3) and (-2) - (-6).",
+       "hi": "टोकनों से (+1) - (-3) और (-2) - (-6) ज्ञात करें।"
+      },
+      "a": {
+       "en": "Part 1: Show +1 as 1 positive token. We must remove 3 negative tokens; add 3 zero pairs, giving 4 positive and 3 negative. Remove 3 negative. Left: 4 positive. Answer +4.\nPart 2: Show -2 as 2 negative tokens. We must remove 6 negative tokens; add 4 zero pairs, giving 4 positive and 6 negative. Remove 6 negative. Left: 4 positive. Answer +4.",
+       "hi": "भाग 1: +1 को 1 धनात्मक टोकन से दिखाएँ। 3 ऋणात्मक टोकन हटाने हैं; 3 शून्य युग्म जोड़ें, जिससे 4 धनात्मक और 3 ऋणात्मक हो जाते हैं। 3 ऋणात्मक हटाएँ। बचे: 4 धनात्मक। उत्तर +4।\nभाग 2: -2 को 2 ऋणात्मक टोकनों से दिखाएँ। 6 ऋणात्मक हटाने हैं; 4 शून्य युग्म जोड़ें, जिससे 4 धनात्मक और 6 ऋणात्मक हो जाते हैं। 6 ऋणात्मक हटाएँ। बचे: 4 धनात्मक। उत्तर +4।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "The token model shows why subtracting a negative is the same as adding a positive: removing a negative token leaves behind its positive partner from a zero pair.",
+      "hi": "टोकन मॉडल दिखाता है कि ऋणात्मक घटाना धनात्मक जोड़ने के समान क्यों है: ऋणात्मक टोकन हटाने पर शून्य युग्म का उसका धनात्मक साथी पीछे बच जाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.3 Integers in Other Places: Credits and Debits",
+    "hi": "10.3 अन्य स्थानों पर पूर्णांक: जमा और नामे (क्रेडिट और डेबिट)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Money in a bank account is a common place for integers. When money is put into the account (salary received, a deposit, a refund), it is called a credit, and we treat it as a positive number. When money is taken out (a withdrawal, a payment by UPI, a fee), it is called a debit, and we treat it as a negative number. The balance is the total of all credits and debits.",
+      "hi": "बैंक खाते में पैसा पूर्णांकों के उपयोग की आम जगह है। जब खाते में पैसा डाला जाता है (वेतन मिलना, जमा करना, पैसा वापस आना), तो इसे जमा (क्रेडिट) कहते हैं और हम इसे धनात्मक संख्या मानते हैं। जब पैसा निकाला जाता है (निकासी, UPI से भुगतान, शुल्क), तो इसे नामे (डेबिट) कहते हैं और इसे ऋणात्मक संख्या मानते हैं। शेष राशि (बैलेंस) सभी जमा और नामे का योग है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Balance",
+       "hi": "शेष राशि (बैलेंस)"
+      },
+      "text": {
+       "en": "The total amount in an account after all credits are added and all debits are subtracted. A negative balance means the account owes money to the bank.",
+       "hi": "सभी जमा जोड़ने और सभी नामे घटाने के बाद खाते में बची कुल राशि। ऋणात्मक शेष का अर्थ है कि खाते पर बैंक का पैसा बकाया है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Somu's account has 0 rupees. He deposits 500, pays 200 for books, pays 150 for a bus pass, then receives 300 as prize money. What is his balance?",
+       "hi": "सोमू के खाते में 0 रुपये हैं। वह 500 जमा करता है, किताबों के लिए 200 देता है, बस पास के लिए 150 देता है, फिर 300 इनाम में पाता है। उसका शेष क्या है?"
+      },
+      "a": {
+       "en": "Step 1: Write credits as positive and debits as negative: (+500) + (-200) + (-150) + (+300).\nStep 2: 500 - 200 = 300.\nStep 3: 300 - 150 = 150.\nStep 4: 150 + 300 = 450.\nAnswer: Balance = 450 rupees.",
+       "hi": "चरण 1: जमा को धनात्मक और नामे को ऋणात्मक लिखें: (+500) + (-200) + (-150) + (+300)।\nचरण 2: 500 - 200 = 300।\nचरण 3: 300 - 150 = 150।\nचरण 4: 150 + 300 = 450।\nउत्तर: शेष = 450 रुपये।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A shopkeeper has a balance of 1000 rupees and makes a payment of 1200 rupees, which the bank allows as an overdraft. What is the balance now? How much must be deposited to get the balance to +300?",
+       "hi": "एक दुकानदार का शेष 1000 रुपये है और वह 1200 रुपये का भुगतान करता है, जिसकी अनुमति बैंक ओवरड्राफ़्ट के रूप में देता है। अब शेष क्या है? शेष को +300 तक लाने के लिए कितना जमा करना होगा?"
+      },
+      "a": {
+       "en": "Part 1: 1000 + (-1200) = -200. The balance is -200 rupees: he owes the bank 200.\nPart 2: Deposit needed = Target - Start = 300 - (-200) = 500 rupees.\nCheck: -200 + 500 = 300.",
+       "hi": "भाग 1: 1000 + (-1200) = -200। शेष -200 रुपये है: उस पर बैंक के 200 बकाया हैं।\nभाग 2: आवश्यक जमा = लक्ष्य - प्रारंभ = 300 - (-200) = 500 रुपये।\nजाँच: -200 + 500 = 300।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "A positive balance is better than a negative one, because a negative balance means you are in debt and banks usually charge extra interest on money owed.",
+      "hi": "धनात्मक शेष ऋणात्मक से बेहतर है, क्योंकि ऋणात्मक शेष का अर्थ है कि आप पर कर्ज़ है और बैंक आमतौर पर बकाया राशि पर अतिरिक्त ब्याज लेते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.3 (continued) Geographical Cross-sections and Temperature",
+    "hi": "10.3 (जारी) भौगोलिक अनुप्रस्थ काट और तापमान"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Heights on Earth are measured from sea level, which is taken as 0 metres. A hill top 300 m above sea level has height +300 m. The bottom of a lake or sea 50 m below sea level has height -50 m. A geographical cross-section is a picture of what you would see if you cut the land straight down like slicing a cake and looked at it from the side: mountains, valleys, the sea surface and the sea floor, each with its height marked.",
+      "hi": "पृथ्वी पर ऊँचाइयाँ समुद्र तल से मापी जाती हैं, जिसे 0 मीटर माना जाता है। समुद्र तल से 300 मी ऊपर पहाड़ी की चोटी की ऊँचाई +300 मी है। समुद्र तल से 50 मी नीचे झील या समुद्र की तली की ऊँचाई -50 मी है। भौगोलिक अनुप्रस्थ काट वह चित्र है जो ज़मीन को केक की तरह सीधा नीचे काटकर बगल से देखने पर दिखता है: पहाड़, घाटियाँ, समुद्र की सतह और समुद्र की तली, हर एक की ऊँचाई अंकित।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Mount Everest, the highest point on Earth: about +8849 m.",
+       "The shore of the Dead Sea, the lowest land surface: about -430 m.",
+       "The Challenger Deep in the Pacific Ocean, the deepest known point: about -11000 m (close to 11 km below sea level).",
+       "Kuttanad in Kerala is one of the few places in India where farming is done below sea level, about 1 to 2 m below."
+      ],
+      "hi": [
+       "माउंट एवरेस्ट, पृथ्वी का सबसे ऊँचा बिंदु: लगभग +8849 मी।",
+       "मृत सागर (डेड सी) का तट, सबसे निचली भूमि सतह: लगभग -430 मी।",
+       "प्रशांत महासागर में चैलेंजर डीप, सबसे गहरा ज्ञात बिंदु: लगभग -11000 मी (समुद्र तल से लगभग 11 किमी नीचे)।",
+       "केरल का कुट्टनाड भारत की उन गिनी-चुनी जगहों में है जहाँ समुद्र तल से नीचे, लगभग 1 से 2 मी नीचे, खेती होती है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "What is the difference in height between the top of Mount Everest (+8849 m) and the shore of the Dead Sea (-430 m)?",
+       "hi": "माउंट एवरेस्ट की चोटी (+8849 मी) और मृत सागर के तट (-430 मी) की ऊँचाई में कितना अंतर है?"
+      },
+      "a": {
+       "en": "Step 1: Difference = higher - lower = 8849 - (-430).\nStep 2: Subtracting a negative is adding: 8849 + 430.\nStep 3: = 9279 m.\nAnswer: about 9279 m.",
+       "hi": "चरण 1: अंतर = ऊँचा - नीचा = 8849 - (-430)।\nचरण 2: ऋणात्मक घटाना जोड़ना है: 8849 + 430।\nचरण 3: = 9279 मी।\nउत्तर: लगभग 9279 मी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Temperature: On the Celsius scale, 0 °C is the temperature at which water freezes into ice. Temperatures colder than this are negative: -5 °C is 5 degrees below freezing. In the plains of India temperatures are mostly positive, but in places like Leh, Kargil and Dras in Ladakh, or high in the Himalayas, winter temperatures often fall far below 0 °C; Dras is one of the coldest inhabited places in India. A laboratory thermometer has a scale that goes below 0, so it can measure these temperatures.",
+      "hi": "तापमान: सेल्सियस पैमाने पर 0 °C वह तापमान है जिस पर पानी जमकर बर्फ़ बनता है। इससे ठंडे तापमान ऋणात्मक होते हैं: -5 °C का अर्थ हिमांक से 5 डिग्री नीचे है। भारत के मैदानों में तापमान अधिकतर धनात्मक होता है, पर लद्दाख के लेह, कारगिल और द्रास जैसी जगहों या हिमालय की ऊँचाइयों पर सर्दियों में तापमान अक्सर 0 °C से बहुत नीचे चला जाता है; द्रास भारत की सबसे ठंडी बसी हुई जगहों में से है। प्रयोगशाला थर्मामीटर का पैमाना 0 से नीचे भी जाता है, इसलिए यह इन तापमानों को माप सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In Leh on a winter day the temperature was -11 °C at 6 am. By 2 pm it rose by 9 degrees, and by midnight it fell by 15 degrees from the 2 pm value. Find the temperatures at 2 pm and midnight.",
+       "hi": "सर्दियों के एक दिन लेह में सुबह 6 बजे तापमान -11 °C था। दोपहर 2 बजे तक यह 9 डिग्री बढ़ा, और आधी रात तक 2 बजे वाले मान से 15 डिग्री गिरा। दोपहर 2 बजे और आधी रात के तापमान ज्ञात करें।"
+      },
+      "a": {
+       "en": "2 pm: (-11) + 9 = -2 °C.\nMidnight: (-2) + (-15) = -17 °C.\nNote that it was warmest in the afternoon and coldest at night, as is usual.",
+       "hi": "दोपहर 2 बजे: (-11) + 9 = -2 °C।\nआधी रात: (-2) + (-15) = -17 °C।\nध्यान दें कि दोपहर सबसे गर्म और रात सबसे ठंडी थी, जैसा आमतौर पर होता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.4 Explorations with Integers",
+    "hi": "10.4 पूर्णांकों के साथ खोजबीन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A Hollow Integer Grid: Take a 4 by 4 grid and use only the 12 border squares (the middle 4 are left empty, which is why it is 'hollow'). The puzzle is to fill integers so that the top row, the bottom row, the left column and the right column all have the same sum, called the border sum. Note that each corner number belongs to both a row and a column.",
+      "hi": "खोखली पूर्णांक जाली: 4 गुणा 4 की जाली लीजिए और केवल किनारे के 12 खानों का उपयोग कीजिए (बीच के 4 खाली छोड़े जाते हैं, इसीलिए यह 'खोखली' है)। पहेली यह है कि ऐसे पूर्णांक भरें कि ऊपरी पंक्ति, निचली पंक्ति, बायाँ स्तंभ और दायाँ स्तंभ, सबका योग बराबर हो; इसे किनारे का योग (बॉर्डर योग) कहते हैं। ध्यान दें कि हर कोने की संख्या एक पंक्ति और एक स्तंभ दोनों में आती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Row",
+        "Column 1",
+        "Column 2",
+        "Column 3",
+        "Column 4"
+       ],
+       "hi": [
+        "पंक्ति",
+        "स्तंभ 1",
+        "स्तंभ 2",
+        "स्तंभ 3",
+        "स्तंभ 4"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Row 1",
+         "-2",
+         "5",
+         "-4",
+         "3"
+        ],
+        [
+         "Row 2",
+         "1",
+         "(empty)",
+         "(empty)",
+         "-6"
+        ],
+        [
+         "Row 3",
+         "4",
+         "(empty)",
+         "(empty)",
+         "1"
+        ],
+        [
+         "Row 4",
+         "-1",
+         "-3",
+         "2",
+         "4"
+        ]
+       ],
+       "hi": [
+        [
+         "पंक्ति 1",
+         "-2",
+         "5",
+         "-4",
+         "3"
+        ],
+        [
+         "पंक्ति 2",
+         "1",
+         "(खाली)",
+         "(खाली)",
+         "-6"
+        ],
+        [
+         "पंक्ति 3",
+         "4",
+         "(खाली)",
+         "(खाली)",
+         "1"
+        ],
+        [
+         "पंक्ति 4",
+         "-1",
+         "-3",
+         "2",
+         "4"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Check the border sum of the hollow grid in the table above.",
+       "hi": "ऊपर की तालिका वाली खोखली जाली का किनारे का योग जाँचें।"
+      },
+      "a": {
+       "en": "Top row: (-2) + 5 + (-4) + 3 = 2.\nBottom row: (-1) + (-3) + 2 + 4 = 2.\nLeft column: (-2) + 1 + 4 + (-1) = 2.\nRight column: 3 + (-6) + 1 + 4 = 2.\nAll four are 2, so the border sum is 2.",
+       "hi": "ऊपरी पंक्ति: (-2) + 5 + (-4) + 3 = 2।\nनिचली पंक्ति: (-1) + (-3) + 2 + 4 = 2।\nबायाँ स्तंभ: (-2) + 1 + 4 + (-1) = 2।\nदायाँ स्तंभ: 3 + (-6) + 1 + 4 = 2।\nचारों 2 हैं, इसलिए किनारे का योग 2 है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Such puzzles usually have many solutions. A good strategy: first choose the four corners, then fill the two middle squares of each side so that the side adds up to the target. For example, if the top-left corner is a and the top-right is b, the two middle top squares must add to (target - a - b).",
+      "hi": "ऐसी पहेलियों के प्रायः कई हल होते हैं। अच्छी रणनीति: पहले चारों कोने चुनिए, फिर हर किनारे के बीच के दो खाने ऐसे भरिए कि किनारे का योग लक्ष्य के बराबर हो। जैसे यदि ऊपरी-बायाँ कोना a और ऊपरी-दायाँ b हो, तो ऊपर के बीच वाले दो खानों का योग (लक्ष्य - a - b) होना चाहिए।"
+     }
+    },
+    {
+     "p": {
+      "en": "An Amazing Grid of Numbers (a game): Look at the 4 by 4 grid below. Circle any one number, then strike out all the other numbers in its row and its column. Circle any number that is not yet struck out, and strike out its row and column. Repeat until you have circled 4 numbers. Add the circled numbers. Whatever choices you make, the total is always the same, here -1!",
+      "hi": "संख्याओं की अद्भुत जाली (एक खेल): नीचे दी गई 4 गुणा 4 जाली देखिए। कोई एक संख्या घेरिए, फिर उसकी पंक्ति और स्तंभ की बाकी सभी संख्याएँ काट दीजिए। ऐसी कोई संख्या घेरिए जो अभी कटी न हो, और उसकी पंक्ति व स्तंभ काटिए। 4 संख्याएँ घेरने तक दोहराइए। घेरी गई संख्याओं को जोड़िए। आप कोई भी चुनाव करें, योग हमेशा वही आता है, यहाँ -1!"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Row",
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+       ],
+       "hi": [
+        "पंक्ति",
+        "स्तं 1",
+        "स्तं 2",
+        "स्तं 3",
+        "स्तं 4"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "R1",
+         "-3",
+         "2",
+         "5",
+         "-4"
+        ],
+        [
+         "R2",
+         "-6",
+         "-1",
+         "2",
+         "-7"
+        ],
+        [
+         "R3",
+         "1",
+         "6",
+         "9",
+         "0"
+        ],
+        [
+         "R4",
+         "-5",
+         "0",
+         "3",
+         "-6"
+        ]
+       ],
+       "hi": [
+        [
+         "पं 1",
+         "-3",
+         "2",
+         "5",
+         "-4"
+        ],
+        [
+         "पं 2",
+         "-6",
+         "-1",
+         "2",
+         "-7"
+        ],
+        [
+         "पं 3",
+         "1",
+         "6",
+         "9",
+         "0"
+        ],
+        [
+         "पं 4",
+         "-5",
+         "0",
+         "3",
+         "-6"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Play the amazing grid twice: first circle -3 (R1, C1), -1 (R2, C2), 9 (R3, C3), -6 (R4, C4); then circle 5 (R1, C3), -7 (R2, C4), 6 (R3, C2), -5 (R4, C1). Why is the total the same?",
+       "hi": "अद्भुत जाली दो बार खेलें: पहले -3 (पं 1, स्तं 1), -1 (पं 2, स्तं 2), 9 (पं 3, स्तं 3), -6 (पं 4, स्तं 4) घेरें; फिर 5 (पं 1, स्तं 3), -7 (पं 2, स्तं 4), 6 (पं 3, स्तं 2), -5 (पं 4, स्तं 1) घेरें। योग एक ही क्यों है?"
+      },
+      "a": {
+       "en": "First game: (-3) + (-1) + 9 + (-6) = -1.\nSecond game: 5 + (-7) + 6 + (-5) = -1.\nWhy: the grid was made like an addition table. Each row has a hidden number (-2, -5, 2, -4) and each column has a hidden number (-1, 4, 7, -2), and every entry is its row number plus its column number. For example, R1 C1 = (-2) + (-1) = -3. Because you always pick exactly one number from each row and each column, your total always contains every hidden number once: (-2) + (-5) + 2 + (-4) + (-1) + 4 + 7 + (-2) = -1.",
+       "hi": "पहला खेल: (-3) + (-1) + 9 + (-6) = -1।\nदूसरा खेल: 5 + (-7) + 6 + (-5) = -1।\nकारण: जाली जोड़ की तालिका की तरह बनाई गई है। हर पंक्ति की एक छिपी संख्या (-2, -5, 2, -4) है और हर स्तंभ की एक छिपी संख्या (-1, 4, 7, -2) है, और हर प्रविष्टि उसकी पंक्ति-संख्या और स्तंभ-संख्या का योग है। जैसे पं 1 स्तं 1 = (-2) + (-1) = -3। क्योंकि आप हर पंक्ति और हर स्तंभ से ठीक एक संख्या चुनते हैं, आपके योग में हर छिपी संख्या एक बार आती है: (-2) + (-5) + 2 + (-4) + (-1) + 4 + 7 + (-2) = -1।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Snakes and Ladders with integers (a dice game): Draw a number line from -50 to +50, with both players' pieces at 0. Use two dice: one is the positive die with faces +1 to +6, the other is the negative die with faces -1 to -6. On your turn, roll both, then choose to add them or to subtract one from the other (in either order), and move your piece by the result: right for a positive result, left for a negative result. A player wins by reaching +50 or -50 (decide at the start which goal each player aims for). Snakes and ladders drawn on the line send you jumping forward or back.",
+      "hi": "पूर्णांकों वाला साँप-सीढ़ी (पासे का खेल): -50 से +50 तक संख्या रेखा बनाइए, दोनों खिलाड़ियों की गोटियाँ 0 पर। दो पासे लीजिए: एक धनात्मक पासा जिसके फलक +1 से +6 हैं, दूसरा ऋणात्मक पासा जिसके फलक -1 से -6 हैं। अपनी बारी में दोनों फेंकिए, फिर उन्हें जोड़ना या एक को दूसरे से घटाना (किसी भी क्रम में) चुनिए, और परिणाम के अनुसार गोटी चलाइए: धनात्मक परिणाम पर दाईं ओर, ऋणात्मक पर बाईं ओर। जो खिलाड़ी +50 या -50 तक पहुँचे, वह जीतता है (शुरू में तय करें कि कौन किस लक्ष्य की ओर जाएगा)। रेखा पर बने साँप और सीढ़ियाँ आपको आगे या पीछे कुदा देते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the dice game, you roll +4 and -6. What are your choices of move?",
+       "hi": "पासे के खेल में आपको +4 और -6 मिलते हैं। आपकी चाल के क्या विकल्प हैं?"
+      },
+      "a": {
+       "en": "Add: (+4) + (-6) = -2 (2 steps left).\nSubtract: (+4) - (-6) = 10 (10 steps right).\nSubtract the other way: (-6) - (+4) = -10 (10 steps left).\nChoose 10 if you are heading for +50, -10 if heading for -50.",
+       "hi": "जोड़ें: (+4) + (-6) = -2 (2 कदम बाईं ओर)।\nघटाएँ: (+4) - (-6) = 10 (10 कदम दाईं ओर)।\nदूसरे क्रम में घटाएँ: (-6) - (+4) = -10 (10 कदम बाईं ओर)।\nयदि आप +50 की ओर जा रहे हैं तो 10 चुनें, -50 की ओर तो -10।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "With one positive and one negative die, adding them can give every integer from -5 to +5 and nothing else; subtracting gives 2 to 12 or -12 to -2. So a move of 1 step can only come from adding (for example +3 and -2), and a move of 11 only from subtracting (+6 and -5, or +5 and -6).",
+      "hi": "एक धनात्मक और एक ऋणात्मक पासे को जोड़ने से -5 से +5 तक का हर पूर्णांक मिल सकता है, इसके अलावा कुछ नहीं; घटाने से 2 से 12 या -12 से -2 मिलते हैं। इसलिए 1 कदम की चाल केवल जोड़ने से (जैसे +3 और -2), और 11 की चाल केवल घटाने से (+6 और -5, या +5 और -6) आ सकती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "10.5 A Pinch of History",
+    "hi": "10.5 थोड़ा-सा इतिहास"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Negative numbers took a long time to be accepted. In ancient China, the book 'The Nine Chapters on the Mathematical Art' (written over many centuries, finished around 2000 years ago) used red counting rods for positive numbers and black rods for negative numbers, much like our tokens. In India, Kautilya's Arthashastra (around 300 BCE) discussed money owed and money received, which is the idea of credits and debits. The Bakhshali manuscript (from around the 3rd or 4th century CE) wrote negative numbers using a small mark placed after the number.",
+      "hi": "ऋणात्मक संख्याओं को स्वीकार किए जाने में लंबा समय लगा। प्राचीन चीन की पुस्तक 'गणितीय कला के नौ अध्याय' (कई शताब्दियों में लिखी गई, लगभग 2000 वर्ष पहले पूर्ण) में धनात्मक संख्याओं के लिए लाल और ऋणात्मक संख्याओं के लिए काली गिनती की छड़ें प्रयोग होती थीं, बिल्कुल हमारे टोकनों की तरह। भारत में कौटिल्य के अर्थशास्त्र (लगभग 300 ईसा पूर्व) में बकाया धन और प्राप्त धन की चर्चा है, जो जमा और नामे का विचार है। बख्शाली पांडुलिपि (लगभग तीसरी या चौथी शताब्दी ईसवी) में संख्या के बाद एक छोटा चिह्न लगाकर ऋणात्मक संख्याएँ लिखी जाती थीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "The first complete set of rules for working with positive numbers, negative numbers and zero was given by the Indian mathematician Brahmagupta in his book Brahmasphutasiddhanta in 628 CE. He called positive numbers 'fortunes' (dhana) and negative numbers 'debts' (rina). These ideas reached the Arab world by about the 9th century and Europe by about the 13th century. Even so, many European mathematicians were uncomfortable with negative numbers for centuries; as late as the 18th century, the French mathematician Lazare Carnot called them absurd.",
+      "hi": "धनात्मक संख्याओं, ऋणात्मक संख्याओं और शून्य के साथ काम करने के नियमों का पहला पूर्ण समूह भारतीय गणितज्ञ ब्रह्मगुप्त ने 628 ईसवी में अपनी पुस्तक ब्राह्मस्फुटसिद्धांत में दिया। उन्होंने धनात्मक संख्याओं को 'धन' और ऋणात्मक संख्याओं को 'ऋण' कहा। ये विचार लगभग 9वीं शताब्दी तक अरब जगत में और लगभग 13वीं शताब्दी तक यूरोप में पहुँचे। फिर भी कई यूरोपीय गणितज्ञ सदियों तक ऋणात्मक संख्याओं से असहज रहे; 18वीं शताब्दी में भी फ्रांसीसी गणितज्ञ लज़ार कार्नो ने उन्हें बेतुका कहा।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Brahmagupta's rule (in modern words)",
+        "Example"
+       ],
+       "hi": [
+        "ब्रह्मगुप्त का नियम (आधुनिक शब्दों में)",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Positive + positive = positive (add the sizes)",
+         "3 + 5 = 8"
+        ],
+        [
+         "Negative + negative = negative (add the sizes, keep the minus)",
+         "(-3) + (-5) = -8"
+        ],
+        [
+         "Positive + negative: subtract the smaller size from the larger and keep the sign of the larger",
+         "7 + (-10) = -3;  10 + (-7) = 3"
+        ],
+        [
+         "A number + its inverse = 0",
+         "(-6) + 6 = 0"
+        ],
+        [
+         "Number + 0 = the same number",
+         "(-4) + 0 = -4"
+        ],
+        [
+         "0 - positive = negative",
+         "0 - 5 = -5"
+        ],
+        [
+         "0 - negative = positive",
+         "0 - (-3) = 3"
+        ],
+        [
+         "Subtracting a number = adding its inverse",
+         "4 - (-2) = 4 + 2 = 6"
+        ]
+       ],
+       "hi": [
+        [
+         "धनात्मक + धनात्मक = धनात्मक (मान जोड़ें)",
+         "3 + 5 = 8"
+        ],
+        [
+         "ऋणात्मक + ऋणात्मक = ऋणात्मक (मान जोड़ें, ऋण चिह्न रखें)",
+         "(-3) + (-5) = -8"
+        ],
+        [
+         "धनात्मक + ऋणात्मक: बड़े मान से छोटा घटाएँ और बड़े का चिह्न रखें",
+         "7 + (-10) = -3;  10 + (-7) = 3"
+        ],
+        [
+         "कोई संख्या + उसका प्रतिलोम = 0",
+         "(-6) + 6 = 0"
+        ],
+        [
+         "संख्या + 0 = वही संख्या",
+         "(-4) + 0 = -4"
+        ],
+        [
+         "0 - धनात्मक = ऋणात्मक",
+         "0 - 5 = -5"
+        ],
+        [
+         "0 - ऋणात्मक = धनात्मक",
+         "0 - (-3) = 3"
+        ],
+        [
+         "किसी संख्या को घटाना = उसका प्रतिलोम जोड़ना",
+         "4 - (-2) = 4 + 2 = 6"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Explain Brahmagupta's rule 'positive + negative, keep the sign of the larger' with the lift, using (+3) + (-8).",
+       "hi": "ब्रह्मगुप्त के नियम 'धनात्मक + ऋणात्मक, बड़े का चिह्न रखें' को लिफ़्ट से (+3) + (-8) द्वारा समझाइए।"
+      },
+      "a": {
+       "en": "Step 1: Start at Floor +3 and go down 8 floors.\nStep 2: The first 3 floors down bring you to 0 (this is where the 3 up and 3 of the down cancel).\nStep 3: 8 - 3 = 5 floors of 'down' remain, so you reach -5.\nStep 4: The 'down' part was larger, so the answer is negative, and its size is 8 - 3 = 5.\nAnswer: (+3) + (-8) = -5.",
+       "hi": "चरण 1: मंज़िल +3 से शुरू करके 8 मंज़िल नीचे जाएँ।\nचरण 2: पहली 3 मंज़िलें नीचे आपको 0 पर लाती हैं (यहाँ 3 ऊपर और नीचे के 3 कट जाते हैं)।\nचरण 3: 8 - 3 = 5 मंज़िलें 'नीचे' की बचती हैं, इसलिए आप -5 पर पहुँचते हैं।\nचरण 4: 'नीचे' वाला भाग बड़ा था, इसलिए उत्तर ऋणात्मक है, और उसका मान 8 - 3 = 5 है।\nउत्तर: (+3) + (-8) = -5।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Brahmagupta lived in 628 CE. Suppose the present year is 2025. About how many years ago did he write his rules?",
+       "hi": "ब्रह्मगुप्त 628 ईसवी में थे। मान लीजिए वर्तमान वर्ष 2025 है। उन्होंने अपने नियम लगभग कितने वर्ष पहले लिखे?"
+      },
+      "a": {
+       "en": "Years ago = present year - year of event = 2025 - 628 = 1397.\nAnswer: about 1397 years ago (nearly 1400 years).",
+       "hi": "कितने वर्ष पहले = वर्तमान वर्ष - घटना का वर्ष = 2025 - 628 = 1397।\nउत्तर: लगभग 1397 वर्ष पहले (लगभग 1400 वर्ष)।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Dates in BCE (before the Common Era) behave like negative years and CE dates like positive years. Because the calendar has no year 0, the exact number of years between a BCE date and a CE date is one less than the simple difference; for rough answers the difference on the number line is fine.",
+      "hi": "ईसा पूर्व (BCE) की तिथियाँ ऋणात्मक वर्षों की तरह और ईसवी (CE) की तिथियाँ धनात्मक वर्षों की तरह व्यवहार करती हैं। क्योंकि कैलेंडर में वर्ष 0 नहीं है, ईसा पूर्व और ईसवी की किसी तिथि के बीच के सटीक वर्ष साधारण अंतर से एक कम होते हैं; मोटे उत्तर के लिए संख्या रेखा पर अंतर ठीक है।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking -8 is greater than -3 because 8 is greater than 3. Correct thinking: -8 is further below zero (a deeper basement), so -8 < -3.",
+   "Saying zero is positive (or negative). Correct thinking: zero is neither positive nor negative.",
+   "Writing 3 - (-4) = -1. Correct thinking: subtracting a negative is adding the positive: 3 - (-4) = 3 + 4 = 7.",
+   "Writing (-5) + (-2) = -3 or +7. Correct thinking: two downward movements add up: 5 + 2 = 7 floors down, so -7.",
+   "Getting the sign wrong in positive + negative, e.g. (+3) + (-8) = +5. Correct thinking: the larger size is 8 (negative), so the answer is negative: -5.",
+   "Doing subtraction in the wrong order, e.g. finding the movement from -2 to 5 as (-2) - 5. Correct thinking: Movement = Target - Start = 5 - (-2) = 7.",
+   "Forgetting the minus sign on an answer, e.g. writing 0 - 6 = 6. Correct thinking: going 6 below 0 gives -6.",
+   "In the token model, refusing to subtract when there are not enough tokens of the right kind. Correct thinking: first add zero pairs (they do not change the value), then remove.",
+   "Treating a debit as a positive number. Correct thinking: money going out of an account is a debit and is written as a negative number.",
+   "Thinking the inverse of -9 is -9 or 1/9. Correct thinking: the additive inverse of -9 is +9, because (-9) + 9 = 0."
+  ],
+  "hi": [
+   "यह सोचना कि -8, -3 से बड़ा है क्योंकि 8, 3 से बड़ा है। सही सोच: -8 शून्य से अधिक नीचे है (गहरा तहखाना), इसलिए -8 < -3।",
+   "शून्य को धनात्मक (या ऋणात्मक) कहना। सही सोच: शून्य न धनात्मक है, न ऋणात्मक।",
+   "3 - (-4) = -1 लिखना। सही सोच: ऋणात्मक घटाना धनात्मक जोड़ना है: 3 - (-4) = 3 + 4 = 7।",
+   "(-5) + (-2) = -3 या +7 लिखना। सही सोच: दो नीचे की गतियाँ जुड़ती हैं: 5 + 2 = 7 मंज़िल नीचे, इसलिए -7।",
+   "धनात्मक + ऋणात्मक में चिह्न गलत करना, जैसे (+3) + (-8) = +5। सही सोच: बड़ा मान 8 (ऋणात्मक) है, इसलिए उत्तर ऋणात्मक है: -5।",
+   "घटाव गलत क्रम में करना, जैसे -2 से 5 तक की गति को (-2) - 5 लिखना। सही सोच: गति = लक्ष्य - प्रारंभ = 5 - (-2) = 7।",
+   "उत्तर पर ऋण चिह्न लगाना भूल जाना, जैसे 0 - 6 = 6 लिखना। सही सोच: 0 से 6 नीचे जाने पर -6 मिलता है।",
+   "टोकन मॉडल में सही प्रकार के टोकन कम होने पर घटाने से इनकार करना। सही सोच: पहले शून्य युग्म जोड़ें (उनसे मान नहीं बदलता), फिर हटाएँ।",
+   "नामे (डेबिट) को धनात्मक संख्या मानना। सही सोच: खाते से निकलने वाला पैसा नामे है और ऋणात्मक संख्या के रूप में लिखा जाता है।",
+   "यह सोचना कि -9 का प्रतिलोम -9 या 1/9 है। सही सोच: -9 का योज्य प्रतिलोम +9 है, क्योंकि (-9) + 9 = 0।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Integers",
+    "hi": "पूर्णांक"
+   },
+   "d": {
+    "en": "All positive whole numbers, negative whole numbers and zero: ..., -2, -1, 0, 1, 2, ....",
+    "hi": "सभी धनात्मक पूर्ण संख्याएँ, ऋणात्मक पूर्ण संख्याएँ और शून्य: ..., -2, -1, 0, 1, 2, ...।"
+   }
+  },
+  {
+   "t": {
+    "en": "Positive number",
+    "hi": "धनात्मक संख्या"
+   },
+   "d": {
+    "en": "A number greater than zero; shown to the right of 0 on the number line.",
+    "hi": "शून्य से बड़ी संख्या; संख्या रेखा पर 0 के दाईं ओर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Negative number",
+    "hi": "ऋणात्मक संख्या"
+   },
+   "d": {
+    "en": "A number less than zero, written with a minus sign; shown to the left of 0.",
+    "hi": "शून्य से छोटी संख्या, ऋण चिह्न के साथ लिखी जाती है; 0 के बाईं ओर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Zero",
+    "hi": "शून्य"
+   },
+   "d": {
+    "en": "The integer that is neither positive nor negative; the ground floor or starting point.",
+    "hi": "वह पूर्णांक जो न धनात्मक है न ऋणात्मक; भूतल या प्रारंभिक बिंदु।"
+   }
+  },
+  {
+   "t": {
+    "en": "Additive inverse",
+    "hi": "योज्य प्रतिलोम"
+   },
+   "d": {
+    "en": "The number that adds to a given number to give 0; the inverse of a is -a.",
+    "hi": "वह संख्या जो दी गई संख्या में जोड़ने पर 0 दे; a का प्रतिलोम -a है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Number line",
+    "hi": "संख्या रेखा"
+   },
+   "d": {
+    "en": "A line with integers marked at equal gaps, increasing from left to right.",
+    "hi": "बराबर अंतराल पर अंकित पूर्णांकों वाली रेखा, जिस पर बाएँ से दाएँ संख्याएँ बढ़ती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Movement",
+    "hi": "गति"
+   },
+   "d": {
+    "en": "The change in position; up or right is positive, down or left is negative. Movement = Target - Start.",
+    "hi": "स्थिति में परिवर्तन; ऊपर या दाईं ओर धनात्मक, नीचे या बाईं ओर ऋणात्मक। गति = लक्ष्य - प्रारंभ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Positive token / negative token",
+    "hi": "धनात्मक टोकन / ऋणात्मक टोकन"
+   },
+   "d": {
+    "en": "Counters worth +1 and -1 used to model integers.",
+    "hi": "+1 और -1 मान वाली गोटियाँ जिनसे पूर्णांकों का मॉडल बनाया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Zero pair",
+    "hi": "शून्य युग्म"
+   },
+   "d": {
+    "en": "One positive token and one negative token together; worth 0.",
+    "hi": "एक धनात्मक और एक ऋणात्मक टोकन साथ में; मान 0।"
+   }
+  },
+  {
+   "t": {
+    "en": "Credit",
+    "hi": "जमा (क्रेडिट)"
+   },
+   "d": {
+    "en": "Money coming into an account; written as a positive number.",
+    "hi": "खाते में आने वाला पैसा; धनात्मक संख्या के रूप में लिखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Debit",
+    "hi": "नामे (डेबिट)"
+   },
+   "d": {
+    "en": "Money going out of an account; written as a negative number.",
+    "hi": "खाते से जाने वाला पैसा; ऋणात्मक संख्या के रूप में लिखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Balance",
+    "hi": "शेष राशि"
+   },
+   "d": {
+    "en": "The total of all credits and debits in an account.",
+    "hi": "किसी खाते में सभी जमा और नामे का योग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sea level",
+    "hi": "समुद्र तल"
+   },
+   "d": {
+    "en": "The level of the sea surface, taken as 0 m for measuring heights and depths.",
+    "hi": "समुद्र की सतह का स्तर, जिसे ऊँचाई और गहराई मापने के लिए 0 मी माना जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Geographical cross-section",
+    "hi": "भौगोलिक अनुप्रस्थ काट"
+   },
+   "d": {
+    "en": "A side view of land and sea cut straight down, showing heights above and below sea level.",
+    "hi": "ज़मीन और समुद्र को सीधा नीचे काटकर बगल से देखा गया दृश्य, जिसमें समुद्र तल से ऊपर और नीचे की ऊँचाइयाँ दिखती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Degree Celsius (°C)",
+    "hi": "डिग्री सेल्सियस (°C)"
+   },
+   "d": {
+    "en": "Unit of temperature; water freezes at 0 °C, and colder temperatures are negative.",
+    "hi": "तापमान की इकाई; पानी 0 °C पर जमता है, और उससे ठंडे तापमान ऋणात्मक होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Border sum",
+    "hi": "किनारे का योग"
+   },
+   "d": {
+    "en": "In a hollow grid, the common sum of the top row, bottom row, left column and right column.",
+    "hi": "खोखली जाली में ऊपरी पंक्ति, निचली पंक्ति, बाएँ स्तंभ और दाएँ स्तंभ का समान योग।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write the floor numbers of a building with 3 floors above ground and 4 basements, from the lowest to the highest.",
+    "hi": "ज़मीन के ऊपर 3 मंज़िलों और 4 तहखानों वाली इमारत के मंज़िल क्रमांक सबसे निचली से सबसे ऊपरी तक लिखें।"
+   },
+   "a": {
+    "en": "-4, -3, -2, -1, 0, +1, +2, +3 (8 floors in all).",
+    "hi": "-4, -3, -2, -1, 0, +1, +2, +3 (कुल 8 मंज़िलें)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "You are on Floor +3. Which floor do you reach after pressing (a) +2, (b) -5, (c) -3? Write each as an addition.",
+    "hi": "आप मंज़िल +3 पर हैं। (क) +2, (ख) -5, (ग) -3 दबाने पर किस मंज़िल पर पहुँचेंगे? हर एक को जोड़ के रूप में लिखें।"
+   },
+   "a": {
+    "en": "(a) (+3) + (+2) = +5.\n(b) (+3) + (-5) = -2.\n(c) (+3) + (-3) = 0, the ground floor.",
+    "hi": "(क) (+3) + (+2) = +5।\n(ख) (+3) + (-5) = -2।\n(ग) (+3) + (-3) = 0, भूतल।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write the additive inverse of: 14, -21, 0, -1.",
+    "hi": "इनका योज्य प्रतिलोम लिखें: 14, -21, 0, -1।"
+   },
+   "a": {
+    "en": "-14, 21, 0, 1. (Check: 14 + (-14) = 0, -21 + 21 = 0, 0 + 0 = 0, -1 + 1 = 0.)",
+    "hi": "-14, 21, 0, 1। (जाँच: 14 + (-14) = 0, -21 + 21 = 0, 0 + 0 = 0, -1 + 1 = 0।)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in > or <: (a) -7 __ -2, (b) 0 __ -9, (c) -1 __ 1, (d) -15 __ -51.",
+    "hi": "> या < भरें: (क) -7 __ -2, (ख) 0 __ -9, (ग) -1 __ 1, (घ) -15 __ -51।"
+   },
+   "a": {
+    "en": "(a) -7 < -2.\n(b) 0 > -9.\n(c) -1 < 1.\n(d) -15 > -51 (since -15 is closer to zero).",
+    "hi": "(क) -7 < -2।\n(ख) 0 > -9।\n(ग) -1 < 1।\n(घ) -15 > -51 (क्योंकि -15 शून्य के अधिक पास है)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find: (a) (-11) + (-6), (b) 8 + (-3), (c) (-4) + 9, (d) (-12) + 12.",
+    "hi": "ज्ञात करें: (क) (-11) + (-6), (ख) 8 + (-3), (ग) (-4) + 9, (घ) (-12) + 12।"
+   },
+   "a": {
+    "en": "(a) Both down: 11 + 6 = 17 down: -17.\n(b) 8 up, 3 down: +5.\n(c) 4 down, 9 up: +5.\n(d) Inverses: 0.",
+    "hi": "(क) दोनों नीचे: 11 + 6 = 17 नीचे: -17।\n(ख) 8 ऊपर, 3 नीचे: +5।\n(ग) 4 नीचे, 9 ऊपर: +5।\n(घ) प्रतिलोम: 0।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write all the integers between -4 and 3.",
+    "hi": "-4 और 3 के बीच के सभी पूर्णांक लिखें।"
+   },
+   "a": {
+    "en": "-3, -2, -1, 0, 1, 2 (six integers; -4 and 3 themselves are not 'between').",
+    "hi": "-3, -2, -1, 0, 1, 2 (छह पूर्णांक; -4 और 3 स्वयं 'बीच' में नहीं हैं)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Which button takes you from (a) Floor +2 to Floor +7, (b) Floor +2 to Floor -4, (c) Floor -5 to Floor -1?",
+    "hi": "कौन-सा बटन आपको ले जाएगा (क) मंज़िल +2 से +7, (ख) मंज़िल +2 से -4, (ग) मंज़िल -5 से -1?"
+   },
+   "a": {
+    "en": "Movement = Target - Start.\n(a) 7 - 2 = +5.\n(b) (-4) - 2 = -6.\n(c) (-1) - (-5) = -1 + 5 = +4.",
+    "hi": "गति = लक्ष्य - प्रारंभ।\n(क) 7 - 2 = +5।\n(ख) (-4) - 2 = -6।\n(ग) (-1) - (-5) = -1 + 5 = +4।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find: (a) -18 - (-12), (b) 63 - (-37), (c) -45 + (-27), (d) -80 - (-80).",
+    "hi": "ज्ञात करें: (क) -18 - (-12), (ख) 63 - (-37), (ग) -45 + (-27), (घ) -80 - (-80)।"
+   },
+   "a": {
+    "en": "(a) -18 + 12 = -6.\n(b) 63 + 37 = 100.\n(c) 45 + 27 = 72 down: -72.\n(d) -80 + 80 = 0.",
+    "hi": "(क) -18 + 12 = -6।\n(ख) 63 + 37 = 100।\n(ग) 45 + 27 = 72 नीचे: -72।\n(घ) -80 + 80 = 0।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Arrange in decreasing order: -12, 5, -3, 0, -20, 8, -1.",
+    "hi": "घटते क्रम में लगाएँ: -12, 5, -3, 0, -20, 8, -1।"
+   },
+   "a": {
+    "en": "Largest first: 8 > 5 > 0 > -1 > -3 > -12 > -20.",
+    "hi": "सबसे बड़ा पहले: 8 > 5 > 0 > -1 > -3 > -12 > -20।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Use tokens to find (a) (+4) + (-7), (b) (-2) - (+3), (c) (+3) - (-2). Show the zero pairs.",
+    "hi": "टोकनों से ज्ञात करें (क) (+4) + (-7), (ख) (-2) - (+3), (ग) (+3) - (-2)। शून्य युग्म दिखाएँ।"
+   },
+   "a": {
+    "en": "(a) 4 positive and 7 negative; remove 4 zero pairs; 3 negative left: -3.\n(b) 2 negative; to remove 3 positive, add 3 zero pairs (3 positive, 5 negative); remove 3 positive; 5 negative left: -5.\n(c) 3 positive; to remove 2 negative, add 2 zero pairs (5 positive, 2 negative); remove 2 negative; 5 positive left: +5.",
+    "hi": "(क) 4 धनात्मक और 7 ऋणात्मक; 4 शून्य युग्म हटाएँ; 3 ऋणात्मक बचे: -3।\n(ख) 2 ऋणात्मक; 3 धनात्मक हटाने के लिए 3 शून्य युग्म जोड़ें (3 धनात्मक, 5 ऋणात्मक); 3 धनात्मक हटाएँ; 5 ऋणात्मक बचे: -5।\n(ग) 3 धनात्मक; 2 ऋणात्मक हटाने के लिए 2 शून्य युग्म जोड़ें (5 धनात्मक, 2 ऋणात्मक); 2 ऋणात्मक हटाएँ; 5 धनात्मक बचे: +5।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A box has 6 positive tokens and 11 negative tokens. What number does it show? Give two other ways of showing the same number with tokens.",
+    "hi": "एक डिब्बे में 6 धनात्मक और 11 ऋणात्मक टोकन हैं। यह कौन-सी संख्या दर्शाता है? उसी संख्या को टोकनों से दिखाने के दो और तरीके बताइए।"
+   },
+   "a": {
+    "en": "6 zero pairs cancel; 11 - 6 = 5 negative tokens left: the number is -5.\nOther ways: 5 negative tokens alone; or 2 positive and 7 negative tokens (2 + (-7) = -5).",
+    "hi": "6 शून्य युग्म कट जाते हैं; 11 - 6 = 5 ऋणात्मक बचते हैं: संख्या -5 है।\nअन्य तरीके: केवल 5 ऋणात्मक टोकन; या 2 धनात्मक और 7 ऋणात्मक टोकन (2 + (-7) = -5)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Rewrite each subtraction as an addition and find the value: (a) 9 - 14, (b) -6 - 8, (c) -10 - (-25).",
+    "hi": "हर घटाव को जोड़ के रूप में लिखकर मान ज्ञात करें: (क) 9 - 14, (ख) -6 - 8, (ग) -10 - (-25)।"
+   },
+   "a": {
+    "en": "(a) 9 + (-14) = -5.\n(b) -6 + (-8) = -14.\n(c) -10 + 25 = 15.",
+    "hi": "(क) 9 + (-14) = -5।\n(ख) -6 + (-8) = -14।\n(ग) -10 + 25 = 15।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Meena's account balance is 250 rupees. In one week she makes these transactions: debit 400 (school fees), credit 150 (pocket money), debit 75 (stationery), credit 500 (gift). Find her balance after each transaction and at the end.",
+    "hi": "मीना के खाते में 250 रुपये हैं। एक सप्ताह में वह ये लेन-देन करती है: नामे 400 (स्कूल फ़ीस), जमा 150 (जेब खर्च), नामे 75 (स्टेशनरी), जमा 500 (उपहार)। हर लेन-देन के बाद और अंत में उसका शेष ज्ञात करें।"
+   },
+   "a": {
+    "en": "250 + (-400) = -150.\n-150 + 150 = 0.\n0 + (-75) = -75.\n-75 + 500 = 425.\nFinal balance: 425 rupees.",
+    "hi": "250 + (-400) = -150।\n-150 + 150 = 0।\n0 + (-75) = -75।\n-75 + 500 = 425।\nअंतिम शेष: 425 रुपये।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A submarine is at -120 m. It rises 45 m, then dives 70 m. Where is it now? How far must it rise to reach the surface?",
+    "hi": "एक पनडुब्बी -120 मी पर है। यह 45 मी ऊपर उठती है, फिर 70 मी नीचे गोता लगाती है। अब यह कहाँ है? सतह तक पहुँचने के लिए इसे कितना ऊपर उठना होगा?"
+   },
+   "a": {
+    "en": "-120 + 45 = -75.\n-75 + (-70) = -145 m.\nTo reach the surface (0): 0 - (-145) = 145 m up.",
+    "hi": "-120 + 45 = -75।\n-75 + (-70) = -145 मी।\nसतह (0) तक पहुँचने के लिए: 0 - (-145) = 145 मी ऊपर।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "The temperature in Dras was -14 °C in the morning and 6 °C in the afternoon. By how many degrees did it rise? If at night it is 9 degrees colder than the morning, what is the night temperature?",
+    "hi": "द्रास में सुबह तापमान -14 °C और दोपहर में 6 °C था। यह कितने डिग्री बढ़ा? यदि रात में सुबह से 9 डिग्री अधिक ठंड हो, तो रात का तापमान क्या है?"
+   },
+   "a": {
+    "en": "Rise = 6 - (-14) = 6 + 14 = 20 degrees.\nNight = -14 + (-9) = -23 °C.",
+    "hi": "बढ़त = 6 - (-14) = 6 + 14 = 20 डिग्री।\nरात = -14 + (-9) = -23 °C।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find three different integers whose sum is -7. Give two different answers.",
+    "hi": "तीन अलग-अलग पूर्णांक खोजें जिनका योग -7 हो। दो अलग उत्तर दें।"
+   },
+   "a": {
+    "en": "Answer 1: -10, 1, 2: (-10) + 1 + 2 = -7.\nAnswer 2: -3, -5, 1: (-3) + (-5) + 1 = -7.\n(Many other answers are possible, e.g. 5, -8, -4.)",
+    "hi": "उत्तर 1: -10, 1, 2: (-10) + 1 + 2 = -7।\nउत्तर 2: -3, -5, 1: (-3) + (-5) + 1 = -7।\n(कई और उत्तर संभव हैं, जैसे 5, -8, -4।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Complete the sequences: (a) 7, 4, 1, -2, __, __, __; (b) -20, -15, -10, __, __, __; (c) 3, -3, 6, -6, 9, __, __.",
+    "hi": "अनुक्रम पूरे करें: (क) 7, 4, 1, -2, __, __, __; (ख) -20, -15, -10, __, __, __; (ग) 3, -3, 6, -6, 9, __, __।"
+   },
+   "a": {
+    "en": "(a) Subtract 3 each time: -5, -8, -11.\n(b) Add 5 each time: -5, 0, 5.\n(c) Pattern: a multiple of 3 followed by its inverse: -9, 12.",
+    "hi": "(क) हर बार 3 घटाएँ: -5, -8, -11।\n(ख) हर बार 5 जोड़ें: -5, 0, 5।\n(ग) पैटर्न: 3 का गुणज और फिर उसका प्रतिलोम: -9, 12।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In the integer dice game you roll +2 and -5. List the three possible moves. Which sums from adding the two dice can never happen: -6, 0, 5, 6?",
+    "hi": "पूर्णांक पासे के खेल में आपको +2 और -5 मिलते हैं। तीनों संभव चालें लिखें। दोनों पासों को जोड़ने पर इनमें से कौन-से योग कभी नहीं आ सकते: -6, 0, 5, 6?"
+   },
+   "a": {
+    "en": "Moves: 2 + (-5) = -3; 2 - (-5) = 7; (-5) - 2 = -7.\nAdding a positive die (1 to 6) and a negative die (-1 to -6) gives only -5 to 5. So -6 and 6 can never happen; 0 (e.g. +3 and -3) and 5 (+6 and -1) can.",
+    "hi": "चालें: 2 + (-5) = -3; 2 - (-5) = 7; (-5) - 2 = -7।\nधनात्मक पासा (1 से 6) और ऋणात्मक पासा (-1 से -6) जोड़ने पर केवल -5 से 5 मिलते हैं। इसलिए -6 और 6 कभी नहीं आ सकते; 0 (जैसे +3 और -3) और 5 (+6 और -1) आ सकते हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Fill in the missing numbers so that the hollow grid has border sum -4. Top row: -3, 2, __, 1. Left column (top to bottom): -3, 0, 5, __. Right column: 1, -2, __, __. Bottom row: (left corner), 4, -6, (right corner).",
+    "hi": "छूटी संख्याएँ भरें ताकि खोखली जाली का किनारे का योग -4 हो। ऊपरी पंक्ति: -3, 2, __, 1। बायाँ स्तंभ (ऊपर से नीचे): -3, 0, 5, __। दायाँ स्तंभ: 1, -2, __, __। निचली पंक्ति: (बायाँ कोना), 4, -6, (दायाँ कोना)।"
+   },
+   "a": {
+    "en": "Top row: -3 + 2 + x + 1 = -4, so x = -4 - 0 = -4.\nLeft column: -3 + 0 + 5 + y = -4, so 2 + y = -4, y = -6 (bottom-left corner).\nBottom row: -6 + 4 + (-6) + z = -4, so -8 + z = -4, z = 4 (bottom-right corner).\nRight column: 1 + (-2) + w + 4 = -4, so 3 + w = -4, w = -7.\nMissing: top row -4; bottom-left -6; bottom-right 4; right column third entry -7.",
+    "hi": "ऊपरी पंक्ति: -3 + 2 + x + 1 = -4, इसलिए x = -4 - 0 = -4।\nबायाँ स्तंभ: -3 + 0 + 5 + y = -4, इसलिए 2 + y = -4, y = -6 (निचला-बायाँ कोना)।\nनिचली पंक्ति: -6 + 4 + (-6) + z = -4, इसलिए -8 + z = -4, z = 4 (निचला-दायाँ कोना)।\nदायाँ स्तंभ: 1 + (-2) + w + 4 = -4, इसलिए 3 + w = -4, w = -7।\nछूटी संख्याएँ: ऊपरी पंक्ति -4; निचला-बायाँ -6; निचला-दायाँ 4; दाएँ स्तंभ की तीसरी प्रविष्टि -7।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Make your own 3 by 3 'amazing grid' using row numbers 1, -3, 4 and column numbers -2, 5, -1 (each entry = row number + column number). What total will every game give? Check with one game.",
+    "hi": "पंक्ति-संख्याएँ 1, -3, 4 और स्तंभ-संख्याएँ -2, 5, -1 लेकर अपनी 3 गुणा 3 'अद्भुत जाली' बनाइए (हर प्रविष्टि = पंक्ति-संख्या + स्तंभ-संख्या)। हर खेल का योग क्या होगा? एक खेल से जाँचें।"
+   },
+   "a": {
+    "en": "Grid rows: Row 1: -1, 6, 0. Row 2: -5, 2, -4. Row 3: 2, 9, 3.\nTotal = 1 + (-3) + 4 + (-2) + 5 + (-1) = 4.\nCheck: circle -1 (R1 C1), 2 (R2 C2), 3 (R3 C3): -1 + 2 + 3 = 4. Correct.",
+    "hi": "जाली की पंक्तियाँ: पंक्ति 1: -1, 6, 0। पंक्ति 2: -5, 2, -4। पंक्ति 3: 2, 9, 3।\nयोग = 1 + (-3) + 4 + (-2) + 5 + (-1) = 4।\nजाँच: -1 (पं 1 स्तं 1), 2 (पं 2 स्तं 2), 3 (पं 3 स्तं 3) घेरें: -1 + 2 + 3 = 4। सही।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Using each of the cards -5, 3, -2, 7 exactly once in the blanks of ( __ - __ ) + ( __ - __ ), make (a) the largest possible value, (b) the smallest possible value.",
+    "hi": "कार्ड -5, 3, -2, 7 को ( __ - __ ) + ( __ - __ ) के खाली स्थानों में ठीक एक-एक बार लगाकर (क) सबसे बड़ा संभव मान, (ख) सबसे छोटा संभव मान बनाइए।"
+   },
+   "a": {
+    "en": "The value is (first + third) - (second + fourth).\n(a) Largest: put the two biggest, 7 and 3, in the 'plus' places and the two smallest, -5 and -2, in the 'minus' places: (7 - (-5)) + (3 - (-2)) = 12 + 5 = 17.\n(b) Smallest: swap them: (-5 - 7) + (-2 - 3) = -12 + (-5) = -17.",
+    "hi": "मान = (पहला + तीसरा) - (दूसरा + चौथा)।\n(क) सबसे बड़ा: दो सबसे बड़े, 7 और 3, 'धन' स्थानों पर और दो सबसे छोटे, -5 और -2, 'ऋण' स्थानों पर: (7 - (-5)) + (3 - (-2)) = 12 + 5 = 17।\n(ख) सबसे छोटा: इन्हें अदल-बदल दें: (-5 - 7) + (-2 - 3) = -12 + (-5) = -17।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Say whether the answer is always positive, always negative, or could be either: (a) positive + positive, (b) negative + negative, (c) positive + negative, (d) positive - negative, (e) negative - positive, (f) negative - negative.",
+    "hi": "बताइए कि उत्तर हमेशा धनात्मक, हमेशा ऋणात्मक, या कोई भी हो सकता है: (क) धनात्मक + धनात्मक, (ख) ऋणात्मक + ऋणात्मक, (ग) धनात्मक + ऋणात्मक, (घ) धनात्मक - ऋणात्मक, (ङ) ऋणात्मक - धनात्मक, (च) ऋणात्मक - ऋणात्मक।"
+   },
+   "a": {
+    "en": "(a) Always positive (3 + 4 = 7).\n(b) Always negative ((-3) + (-4) = -7).\n(c) Either, or zero: 5 + (-2) = 3, 2 + (-5) = -3, 2 + (-2) = 0.\n(d) Always positive: it is positive + positive (3 - (-4) = 7).\n(e) Always negative: it is negative + negative ((-3) - 4 = -7).\n(f) Either, or zero: (-2) - (-5) = 3, (-5) - (-2) = -3, (-2) - (-2) = 0.",
+    "hi": "(क) हमेशा धनात्मक (3 + 4 = 7)।\n(ख) हमेशा ऋणात्मक ((-3) + (-4) = -7)।\n(ग) कोई भी, या शून्य: 5 + (-2) = 3, 2 + (-5) = -3, 2 + (-2) = 0।\n(घ) हमेशा धनात्मक: यह धनात्मक + धनात्मक है (3 - (-4) = 7)।\n(ङ) हमेशा ऋणात्मक: यह ऋणात्मक + ऋणात्मक है ((-3) - 4 = -7)।\n(च) कोई भी, या शून्य: (-2) - (-5) = 3, (-5) - (-2) = -3, (-2) - (-2) = 0।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Tokens are laid in a row of 100: positive, negative, positive, negative, ... alternating, starting with positive. What number do they show? What if the row has 101 tokens?",
+    "hi": "100 टोकन एक पंक्ति में रखे हैं: धनात्मक, ऋणात्मक, धनात्मक, ऋणात्मक, ... बारी-बारी से, धनात्मक से शुरू। ये कौन-सी संख्या दर्शाते हैं? यदि पंक्ति में 101 टोकन हों तो?"
+   },
+   "a": {
+    "en": "100 tokens alternating make 50 zero pairs: the value is 0.\nWith 101 tokens, the 101st token is positive (odd places are positive): 50 zero pairs plus one positive token: +1.",
+    "hi": "100 बारी-बारी वाले टोकन 50 शून्य युग्म बनाते हैं: मान 0 है।\n101 टोकनों में 101वाँ टोकन धनात्मक है (विषम स्थान धनात्मक हैं): 50 शून्य युग्म और एक धनात्मक टोकन: +1।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Give your own example of each of Brahmagupta's rules: (a) the sum of two debts is a debt, (b) the sum of a fortune and a debt equal in size is zero, (c) zero minus a debt is a fortune. Explain each using a number line.",
+    "hi": "ब्रह्मगुप्त के हर नियम का अपना उदाहरण दीजिए: (क) दो ऋणों का योग ऋण है, (ख) बराबर मान वाले धन और ऋण का योग शून्य है, (ग) शून्य में से ऋण घटाने पर धन मिलता है। हर एक को संख्या रेखा से समझाइए।"
+   },
+   "a": {
+    "en": "(a) (-6) + (-9) = -15: start at -6 and move 9 more to the left, ending 15 left of zero.\n(b) 8 + (-8) = 0: start at 8 and move 8 left, landing on 0.\n(c) 0 - (-5) = 5: the movement from -5 to 0 is 5 steps to the right, so the answer is +5.",
+    "hi": "(क) (-6) + (-9) = -15: -6 से शुरू करके 9 और बाईं ओर चलें, शून्य से 15 बाईं ओर पहुँचते हैं।\n(ख) 8 + (-8) = 0: 8 से शुरू करके 8 बाईं ओर चलें, 0 पर पहुँचते हैं।\n(ग) 0 - (-5) = 5: -5 से 0 तक की गति 5 कदम दाईं ओर है, इसलिए उत्तर +5 है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A hill top is +1200 m and the bottom of a nearby lake is -900 m from sea level. A diver goes from the lake bottom to the surface, and a climber goes from sea level to the hill top. Who travels the greater vertical distance and by how much? What is the height difference between the hill top and the lake bottom?",
+    "hi": "एक पहाड़ी की चोटी समुद्र तल से +1200 मी और पास की झील की तली -900 मी पर है। एक गोताखोर झील की तली से सतह (समुद्र तल) तक जाता है, और एक पर्वतारोही समुद्र तल से पहाड़ी की चोटी तक। कौन अधिक ऊर्ध्वाधर दूरी तय करता है और कितनी अधिक? पहाड़ी की चोटी और झील की तली में ऊँचाई का अंतर क्या है?"
+   },
+   "a": {
+    "en": "Diver: 0 - (-900) = 900 m.\nClimber: 1200 - 0 = 1200 m.\nThe climber travels 1200 - 900 = 300 m more.\nHeight difference: 1200 - (-900) = 2100 m.",
+    "hi": "गोताखोर: 0 - (-900) = 900 मी।\nपर्वतारोही: 1200 - 0 = 1200 मी।\nपर्वतारोही 1200 - 900 = 300 मी अधिक चलता है।\nऊँचाई का अंतर: 1200 - (-900) = 2100 मी।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Without calculating each sum fully, decide which is greater: (-37) + 58 or 58 - 37? And which is greater: 25 - (-13) or 25 + 13?",
+    "hi": "हर योग पूरा निकाले बिना बताइए कि कौन बड़ा है: (-37) + 58 या 58 - 37? और कौन बड़ा है: 25 - (-13) या 25 + 13?"
+   },
+   "a": {
+    "en": "(-37) + 58 = 58 + (-37) = 58 - 37, so they are equal (both 21).\n25 - (-13) = 25 + 13, so they are equal (both 38).\nThese show that adding a negative is subtracting, and subtracting a negative is adding.",
+    "hi": "(-37) + 58 = 58 + (-37) = 58 - 37, इसलिए दोनों बराबर हैं (दोनों 21)।\n25 - (-13) = 25 + 13, इसलिए दोनों बराबर हैं (दोनों 38)।\nइनसे पता चलता है कि ऋणात्मक जोड़ना घटाना है, और ऋणात्मक घटाना जोड़ना है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Numbers less than zero are negative numbers; they lie to the left of 0 on the number line.",
+   "Integers are the positive whole numbers, the negative whole numbers and zero.",
+   "Zero is neither positive nor negative.",
+   "In Bela's building, the ground floor is 0, floors above are positive, basements are negative; lift buttons + mean up and - mean down.",
+   "Addition: Starting position + Movement = Target position; combining two movements is also addition.",
+   "Every integer has an additive inverse; a number plus its inverse is 0, e.g. 6 + (-6) = 0.",
+   "On the number line a number to the right is greater; every positive number is greater than every negative number, and -3 > -7.",
+   "Subtraction: Target - Starting position = Movement.",
+   "Subtracting a number is the same as adding its inverse: a - b = a + (-b), so 3 - (-4) = 7.",
+   "Same signs: add the sizes and keep the sign. Different signs: subtract the smaller size from the larger and keep the sign of the larger.",
+   "In the token model, a positive and a negative token make a zero pair worth 0; add zero pairs when you need more tokens to take away.",
+   "Integers describe credits (+) and debits (-) in a bank account, heights above (+) and below (-) sea level, and temperatures above and below 0 °C.",
+   "Puzzles like the hollow grid and the amazing grid, and the dice game, give practice in adding and subtracting integers.",
+   "Negative numbers were used in ancient China and India; Brahmagupta (628 CE) gave the first full set of rules for positive numbers, negative numbers and zero."
+  ],
+  "hi": [
+   "शून्य से छोटी संख्याएँ ऋणात्मक संख्याएँ हैं; ये संख्या रेखा पर 0 के बाईं ओर होती हैं।",
+   "पूर्णांक धनात्मक पूर्ण संख्याएँ, ऋणात्मक पूर्ण संख्याएँ और शून्य हैं।",
+   "शून्य न धनात्मक है, न ऋणात्मक।",
+   "बेला की इमारत में भूतल 0 है, ऊपर की मंज़िलें धनात्मक, तहखाने ऋणात्मक; लिफ़्ट के + बटन का अर्थ ऊपर और - का अर्थ नीचे।",
+   "जोड़: प्रारंभिक स्थिति + गति = लक्ष्य स्थिति; दो गतियों को मिलाना भी जोड़ है।",
+   "हर पूर्णांक का एक योज्य प्रतिलोम होता है; संख्या और उसके प्रतिलोम का योग 0 है, जैसे 6 + (-6) = 0।",
+   "संख्या रेखा पर दाईं ओर की संख्या बड़ी होती है; हर धनात्मक संख्या हर ऋणात्मक से बड़ी है, और -3 > -7।",
+   "घटाव: लक्ष्य - प्रारंभिक स्थिति = गति।",
+   "किसी संख्या को घटाना उसका प्रतिलोम जोड़ने के समान है: a - b = a + (-b), इसलिए 3 - (-4) = 7।",
+   "समान चिह्न: मान जोड़ें और चिह्न रखें। भिन्न चिह्न: बड़े मान से छोटा घटाएँ और बड़े का चिह्न रखें।",
+   "टोकन मॉडल में एक धनात्मक और एक ऋणात्मक टोकन मिलकर 0 मान का शून्य युग्म बनाते हैं; हटाने के लिए अधिक टोकन चाहिए हों तो शून्य युग्म जोड़ें।",
+   "पूर्णांक बैंक खाते में जमा (+) और नामे (-), समुद्र तल से ऊपर (+) और नीचे (-) की ऊँचाई, और 0 °C से ऊपर व नीचे के तापमान दर्शाते हैं।",
+   "खोखली जाली और अद्भुत जाली जैसी पहेलियाँ तथा पासे का खेल पूर्णांकों को जोड़ने-घटाने का अभ्यास कराते हैं।",
+   "ऋणात्मक संख्याएँ प्राचीन चीन और भारत में प्रयोग होती थीं; ब्रह्मगुप्त (628 ईसवी) ने धनात्मक संख्याओं, ऋणात्मक संख्याओं और शून्य के नियमों का पहला पूर्ण समूह दिया।"
+  ]
+ }
+}

@@ -1,0 +1,1695 @@
+{
+ "v": 1,
+ "sub": "maths",
+ "lv": "6",
+ "id": "ch2",
+ "intro": {
+  "en": "Geometry is built from a few very simple ideas: points, line segments, lines and rays. In this chapter we learn what each of these is, how to name them, and how two rays starting from the same point make an angle. We then learn to compare angles, to measure them in degrees with a protractor, to draw angles of any size, and to sort angles into types such as acute, right, obtuse, straight and reflex.",
+  "hi": "ज्यामिति कुछ बहुत सरल विचारों से बनती है: बिंदु, रेखाखंड, रेखा और किरण। इस अध्याय में हम सीखेंगे कि इनमें से हर एक क्या है, इनके नाम कैसे लिखते हैं, और एक ही बिंदु से निकलने वाली दो किरणें कोण कैसे बनाती हैं। फिर हम कोणों की तुलना करना, चाँदे से उन्हें अंशों (डिग्री) में मापना, किसी भी माप का कोण बनाना, और कोणों को न्यून, समकोण, अधिक, ऋजु और प्रतिवर्ती जैसे प्रकारों में बाँटना सीखेंगे।"
+ },
+ "learn": {
+  "en": [
+   "What a point is and how points are named",
+   "The difference between a line segment, a line and a ray, and how to name each",
+   "Facts such as: through two points there is exactly one line, but through one point there are endlessly many",
+   "What an angle is, its vertex and arms, and how to name it with three letters",
+   "How to compare angles by placing one on another, by folding and with a transparent circle",
+   "Why the size of an angle depends on the turn between its arms and not on the length of the arms",
+   "Straight angles, right angles and perpendicular lines",
+   "Measuring angles in degrees: full turn 360°, straight angle 180°, right angle 90°",
+   "Making a paper protractor, using a real protractor correctly, and the angle bisector",
+   "Drawing an angle of a given measure",
+   "Types of angles: zero, acute, right, obtuse, straight, reflex and complete",
+   "Finding angles in real life: clocks, doors, swings, slopes and turning"
+  ],
+  "hi": [
+   "बिंदु क्या है और बिंदुओं के नाम कैसे रखते हैं",
+   "रेखाखंड, रेखा और किरण में अंतर, और हर एक का नाम कैसे लिखें",
+   "ऐसे तथ्य: दो बिंदुओं से ठीक एक रेखा गुज़रती है, पर एक बिंदु से अनगिनत रेखाएँ",
+   "कोण क्या है, उसका शीर्ष और भुजाएँ, और तीन अक्षरों से उसका नाम कैसे लिखें",
+   "एक कोण को दूसरे पर रखकर, मोड़कर और पारदर्शी वृत्त से कोणों की तुलना कैसे करें",
+   "कोण का माप उसकी भुजाओं के बीच के घुमाव पर क्यों निर्भर करता है, भुजाओं की लंबाई पर नहीं",
+   "ऋजुकोण, समकोण और लंब रेखाएँ",
+   "कोणों को अंशों में मापना: पूरा घुमाव 360°, ऋजुकोण 180°, समकोण 90°",
+   "कागज़ का चाँदा बनाना, असली चाँदे का सही उपयोग, और कोण समद्विभाजक",
+   "दिए गए माप का कोण बनाना",
+   "कोणों के प्रकार: शून्य, न्यून, समकोण, अधिक, ऋजु, प्रतिवर्ती और संपूर्ण",
+   "वास्तविक जीवन में कोण खोजना: घड़ियाँ, दरवाज़े, झूले, ढलान और घूमना"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "2.1 Point",
+    "hi": "2.1 बिंदु"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Touch the tip of a sharpened pencil on paper. The tiny dot it leaves shows a position: an exact place. In mathematics, such an exact place is called a point. A real dot always has a little size, but a mathematical point is imagined to have no length, no breadth and no height at all. It only tells us where.",
+      "hi": "नुकीली पेंसिल की नोक को कागज़ पर छुआइए। जो छोटा-सा निशान बनता है, वह एक स्थिति दिखाता है: एक सटीक जगह। गणित में ऐसी सटीक जगह को बिंदु कहते हैं। असली निशान का थोड़ा-बहुत आकार होता ही है, पर गणितीय बिंदु की कल्पना ऐसे की जाती है कि उसकी कोई लंबाई, चौड़ाई या ऊँचाई नहीं होती। वह केवल यह बताता है कि कहाँ।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Point",
+       "hi": "बिंदु"
+      },
+      "text": {
+       "en": "A point marks an exact location. It has no size: no length, no breadth and no height.",
+       "hi": "बिंदु एक सटीक स्थान को दर्शाता है। उसका कोई आकार नहीं होता: न लंबाई, न चौड़ाई, न ऊँचाई।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Models of a point in everyday life: the tip of a compass, the tip of a needle, the sharp end of a pencil, a star seen far away in the night sky, the dot on a dice face, or a city shown as a dot on the map of India. The sharper the tip, the better it shows a point.",
+      "hi": "रोज़मर्रा में बिंदु के नमूने: परकार की नोक, सुई की नोक, पेंसिल का नुकीला सिरा, रात के आकाश में दूर दिखता तारा, पासे पर बना बिंदु, या भारत के नक्शे में बिंदु से दिखाया गया शहर। नोक जितनी पतली होगी, वह बिंदु को उतना अच्छा दिखाएगी।"
+     }
+    },
+    {
+     "p": {
+      "en": "We name a point with a single capital letter written next to it, such as A, B, P or Z. We then say 'point A' or 'point P'. Two different points on the same page must get different letters.",
+      "hi": "बिंदु का नाम उसके पास लिखे एक बड़े अंग्रेज़ी अक्षर से रखते हैं, जैसे A, B, P या Z। फिर हम 'बिंदु A' या 'बिंदु P' कहते हैं। एक ही पृष्ठ पर दो अलग बिंदुओं को अलग-अलग अक्षर देने चाहिए।"
+     }
+    },
+    {
+     "note": {
+      "en": "Always use capital letters (A, B, C) for points. Small letters (l, m, n) are used for lines, as we will see.",
+      "hi": "बिंदुओं के लिए हमेशा बड़े अक्षर (A, B, C) प्रयोग करें। छोटे अक्षर (l, m, n) रेखाओं के लिए प्रयोग होते हैं, जैसा हम आगे देखेंगे।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Mark three points on a page and name them. Give two classroom examples of things that model a point.",
+       "hi": "एक पृष्ठ पर तीन बिंदु अंकित कीजिए और उनके नाम लिखिए। कक्षा की ऐसी दो चीज़ें बताइए जो बिंदु का नमूना हैं।"
+      },
+      "a": {
+       "en": "Step 1: Press a sharp pencil at three different places to make three tiny dots.\nStep 2: Write a capital letter beside each: Z, P and T. These are point Z, point P and point T.\nExamples: the corner of the blackboard; the tip of the teacher's pointer.",
+       "hi": "चरण 1: नुकीली पेंसिल को तीन अलग जगह दबाकर तीन छोटे निशान बनाइए।\nचरण 2: हर एक के पास एक बड़ा अक्षर लिखिए: Z, P और T। ये बिंदु Z, बिंदु P और बिंदु T हैं।\nउदाहरण: श्यामपट का कोना; शिक्षक की छड़ी की नोक।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.2 Line Segment",
+    "hi": "2.2 रेखाखंड"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Fold a sheet of paper and then open it. The crease you see is a straight mark with two ends. Now mark two points A and B on a page and try joining them in different ways: with a wavy curve, with a zig-zag, and with a ruler in a straight line. All of these join A to B, but the straight one is the shortest. This shortest path from A to B, including the two points A and B, is called a line segment.",
+      "hi": "एक कागज़ को मोड़िए और फिर खोलिए। जो सिलवट दिखती है, वह दो सिरों वाला सीधा निशान है। अब एक पृष्ठ पर दो बिंदु A और B अंकित कीजिए और उन्हें अलग-अलग तरह से जोड़ने की कोशिश कीजिए: लहरदार वक्र से, टेढ़ी-मेढ़ी रेखा से, और पटरी से सीधी रेखा द्वारा। ये सभी A को B से जोड़ते हैं, पर सीधा रास्ता सबसे छोटा है। A से B तक का यह सबसे छोटा रास्ता, बिंदु A और B सहित, रेखाखंड कहलाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Line segment",
+       "hi": "रेखाखंड"
+      },
+      "text": {
+       "en": "A line segment is the straight, shortest path between two points, together with those two points. The two points are its end points. It has a definite length that can be measured with a ruler.",
+       "hi": "रेखाखंड दो बिंदुओं के बीच का सीधा, सबसे छोटा रास्ता है, उन दोनों बिंदुओं सहित। ये दोनों बिंदु उसके अंत्य बिंदु कहलाते हैं। इसकी एक निश्चित लंबाई होती है जिसे पटरी से मापा जा सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A line segment with end points A and B is written AB (in books, often with a short bar drawn over the letters). Since the same segment goes from A to B or from B to A, AB and BA are names of the same segment.",
+      "hi": "अंत्य बिंदु A और B वाले रेखाखंड को AB लिखते हैं (पुस्तकों में प्रायः अक्षरों के ऊपर एक छोटी पट्टी बनाकर)। चूँकि वही रेखाखंड A से B या B से A तक जाता है, इसलिए AB और BA एक ही रेखाखंड के नाम हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Examples of line segments around us: the edges of a table, a book or a brick; the sides of a blackboard; a straight stick; a tight string between two nails; the crease of a folded paper; the edge of a cricket stump.",
+      "hi": "हमारे आसपास रेखाखंड के उदाहरण: मेज़, किताब या ईंट के किनारे; श्यामपट की भुजाएँ; सीधी छड़ी; दो कीलों के बीच तनी डोरी; मुड़े कागज़ की सिलवट; क्रिकेट स्टंप का किनारा।"
+     }
+    },
+    {
+     "note": {
+      "en": "A line segment has two end points and a fixed length. If you can measure it with a ruler from one end to the other, it is a segment.",
+      "hi": "रेखाखंड के दो अंत्य बिंदु और एक निश्चित लंबाई होती है। यदि आप उसे पटरी से एक सिरे से दूसरे सिरे तक माप सकें, तो वह रेखाखंड है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Mark points P, Q and R not in a straight line. Join each pair. How many line segments do you get? Name them.",
+       "hi": "बिंदु P, Q और R इस तरह अंकित कीजिए कि वे एक सीधी रेखा में न हों। हर जोड़े को मिलाइए। कितने रेखाखंड मिलते हैं? उनके नाम लिखिए।"
+      },
+      "a": {
+       "en": "Pairs of points: P and Q, Q and R, P and R.\nSegments: PQ, QR and PR (3 segments). Together they form a triangle PQR.\nNote: QP is the same as PQ, so we do not count it again.",
+       "hi": "बिंदुओं के जोड़े: P और Q, Q और R, P और R।\nरेखाखंड: PQ, QR और PR (3 रेखाखंड)। मिलकर ये त्रिभुज PQR बनाते हैं।\nध्यान दें: QP वही है जो PQ है, इसलिए उसे दोबारा नहीं गिनते।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.3 Line",
+    "hi": "2.3 रेखा"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Take the line segment AB and imagine stretching it further and further beyond A and beyond B, in both directions, without ever stopping. What you get is a line. A line goes on forever in both directions, so it has no end points and no fixed length. On paper we can only draw a part of it; we show that it continues by putting arrowheads at both ends.",
+      "hi": "रेखाखंड AB को लीजिए और कल्पना कीजिए कि उसे A के आगे और B के आगे, दोनों दिशाओं में, बिना रुके बढ़ाते जा रहे हैं। जो मिलता है वह रेखा है। रेखा दोनों दिशाओं में अनंत तक जाती है, इसलिए उसके कोई अंत्य बिंदु नहीं होते और कोई निश्चित लंबाई नहीं होती। कागज़ पर हम उसका केवल एक भाग बना सकते हैं; वह आगे भी चलती है, यह दिखाने के लिए दोनों सिरों पर तीर के निशान लगाते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Line",
+       "hi": "रेखा"
+      },
+      "text": {
+       "en": "A line is a straight path that extends endlessly in both directions. It has no end points and its length cannot be measured.",
+       "hi": "रेखा एक सीधा रास्ता है जो दोनों दिशाओं में अनंत तक फैला होता है। इसके कोई अंत्य बिंदु नहीं होते और इसकी लंबाई मापी नहीं जा सकती।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Naming a line: if A and B are any two points on it, we call it line AB (often written with a small double-headed arrow over AB). Line AB and line BA are the same line. A line can also be named by one small letter, such as line l or line m.",
+      "hi": "रेखा का नाम: यदि A और B उस पर कोई दो बिंदु हैं, तो उसे रेखा AB कहते हैं (प्रायः AB के ऊपर दोनों ओर तीर वाला छोटा निशान लगाकर)। रेखा AB और रेखा BA एक ही रेखा हैं। रेखा का नाम एक छोटे अक्षर से भी रखा जा सकता है, जैसे रेखा l या रेखा m।"
+     }
+    },
+    {
+     "p": {
+      "en": "Two important facts. (1) Through one point, you can draw as many lines as you like: endlessly many, in all directions, like the spokes of a wheel spreading out from its centre. (2) Through two different points, you can draw exactly one line, no more and no less. Try it: mark two points and lay a ruler through both; there is only one way to do it.",
+      "hi": "दो महत्वपूर्ण तथ्य। (1) एक बिंदु से आप जितनी चाहें उतनी रेखाएँ खींच सकते हैं: अनगिनत, सभी दिशाओं में, जैसे पहिए के केंद्र से निकलती तीलियाँ। (2) दो अलग बिंदुओं से ठीक एक रेखा खींची जा सकती है, न अधिक, न कम। आज़माइए: दो बिंदु अंकित कीजिए और पटरी को दोनों से होकर रखिए; ऐसा करने का केवल एक ही तरीका है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Collinear points",
+       "hi": "संरेख बिंदु"
+      },
+      "text": {
+       "en": "Three or more points that lie on the same line are called collinear. Points that do not all lie on one line are non-collinear (for example, the three corners of a triangle).",
+       "hi": "तीन या अधिक बिंदु जो एक ही रेखा पर स्थित हों, संरेख कहलाते हैं। जो बिंदु सभी एक रेखा पर न हों, वे असंरेख कहलाते हैं (उदाहरण के लिए, त्रिभुज के तीनों कोने)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Two different lines either never meet (like the two rails of a railway track; such lines are parallel) or meet at exactly one point. The point where two lines meet is called their point of intersection, and we say the lines intersect.",
+      "hi": "दो अलग रेखाएँ या तो कभी नहीं मिलतीं (जैसे रेल की पटरी की दो पटरियाँ; ऐसी रेखाएँ समांतर होती हैं) या ठीक एक बिंदु पर मिलती हैं। जिस बिंदु पर दो रेखाएँ मिलती हैं, उसे उनका प्रतिच्छेद बिंदु कहते हैं, और कहते हैं कि रेखाएँ प्रतिच्छेद करती हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Why can't we draw a complete line? Because it never ends, any drawing would need an endless page. The arrows on both ends remind us that the line continues.",
+      "hi": "हम पूरी रेखा क्यों नहीं बना सकते? क्योंकि वह कभी ख़त्म नहीं होती, उसके लिए अनंत पृष्ठ चाहिए। दोनों सिरों के तीर हमें याद दिलाते हैं कि रेखा आगे चलती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Points A, B and C lie on one line in that order. Give all the names of this line using two letters, and all the line segments on it.",
+       "hi": "बिंदु A, B और C एक रेखा पर इसी क्रम में हैं। दो अक्षरों से इस रेखा के सभी नाम, और इस पर के सभी रेखाखंड लिखिए।"
+      },
+      "a": {
+       "en": "Line names (any two points): AB, BA, BC, CB, AC, CA. All six name the same line.\nSegments (distinct pairs): AB, BC and AC, so 3 segments.\nAC is the longest; AB and BC together make up AC.",
+       "hi": "रेखा के नाम (कोई भी दो बिंदु): AB, BA, BC, CB, AC, CA। ये छह नाम एक ही रेखा के हैं।\nरेखाखंड (अलग जोड़े): AB, BC और AC, यानी 3 रेखाखंड।\nAC सबसे लंबा है; AB और BC मिलकर AC बनाते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.4 Ray",
+    "hi": "2.4 किरण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Switch on a torch in a dark room. The light starts at the torch and goes straight out in one direction. The rays of the Sun start at the Sun and travel outward. A beam from a lighthouse starts at the lighthouse. These are models of a ray: a straight path that has a starting point but goes on endlessly in one direction.",
+      "hi": "अँधेरे कमरे में टॉर्च जलाइए। प्रकाश टॉर्च से शुरू होकर एक दिशा में सीधा आगे जाता है। सूर्य की किरणें सूर्य से शुरू होकर बाहर की ओर जाती हैं। प्रकाश-स्तंभ (लाइटहाउस) का प्रकाश-पुंज प्रकाश-स्तंभ से शुरू होता है। ये किरण के नमूने हैं: एक सीधा रास्ता जिसका एक आरंभ बिंदु होता है पर जो एक दिशा में अनंत तक जाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Ray",
+       "hi": "किरण"
+      },
+      "text": {
+       "en": "A ray is a part of a line that starts at one point (its initial point or starting point) and goes on endlessly in one direction. It has one end point and no fixed length.",
+       "hi": "किरण रेखा का वह भाग है जो एक बिंदु (उसके प्रारंभिक बिंदु या आरंभ बिंदु) से शुरू होकर एक दिशा में अनंत तक जाता है। इसका एक अंत्य बिंदु होता है और कोई निश्चित लंबाई नहीं होती।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Naming a ray: write the starting point first, then any other point on the ray. A ray starting at A and passing through P is written AP (often with a small one-headed arrow above, pointing right). The order matters: AP starts at A; PA would start at P and go the other way, so it is a different ray. If B is another point on ray AP, then AB is the same ray as AP.",
+      "hi": "किरण का नाम: पहले आरंभ बिंदु लिखिए, फिर किरण पर का कोई दूसरा बिंदु। A से शुरू होकर P से गुज़रने वाली किरण को AP लिखते हैं (प्रायः ऊपर दाईं ओर एक तीर वाला छोटा निशान लगाकर)। क्रम महत्वपूर्ण है: AP, A से शुरू होती है; PA, P से शुरू होकर दूसरी ओर जाएगी, इसलिए वह अलग किरण है। यदि B किरण AP पर कोई दूसरा बिंदु है, तो AB वही किरण है जो AP है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "Line segment",
+        "Line",
+        "Ray"
+       ],
+       "hi": [
+        "विशेषता",
+        "रेखाखंड",
+        "रेखा",
+        "किरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "End points",
+         "2",
+         "0",
+         "1 (starting point)"
+        ],
+        [
+         "Length",
+         "Fixed, can be measured",
+         "Endless, cannot be measured",
+         "Endless, cannot be measured"
+        ],
+        [
+         "Drawn as",
+         "No arrows",
+         "Arrows at both ends",
+         "Arrow at one end"
+        ],
+        [
+         "Name AB same as BA?",
+         "Yes",
+         "Yes",
+         "No"
+        ],
+        [
+         "Example",
+         "Edge of a table",
+         "Railway track imagined endless",
+         "Torch light"
+        ]
+       ],
+       "hi": [
+        [
+         "अंत्य बिंदु",
+         "2",
+         "0",
+         "1 (आरंभ बिंदु)"
+        ],
+        [
+         "लंबाई",
+         "निश्चित, मापी जा सकती है",
+         "अनंत, मापी नहीं जा सकती",
+         "अनंत, मापी नहीं जा सकती"
+        ],
+        [
+         "कैसे बनाते हैं",
+         "कोई तीर नहीं",
+         "दोनों सिरों पर तीर",
+         "एक सिरे पर तीर"
+        ],
+        [
+         "क्या AB और BA एक हैं?",
+         "हाँ",
+         "हाँ",
+         "नहीं"
+        ],
+        [
+         "उदाहरण",
+         "मेज़ का किनारा",
+         "अनंत मानी गई रेल पटरी",
+         "टॉर्च का प्रकाश"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "If we mark a point O on a line, the line is split into two rays starting at O and going in opposite directions. These are called opposite rays.",
+      "hi": "यदि किसी रेखा पर बिंदु O अंकित करें, तो रेखा O से शुरू होने वाली और विपरीत दिशाओं में जाने वाली दो किरणों में बँट जाती है। इन्हें विपरीत किरणें कहते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Ray OA passes through point B. (a) Can it also be called OB? (b) Can it be called AO?",
+       "hi": "किरण OA बिंदु B से होकर जाती है। (a) क्या इसे OB भी कह सकते हैं? (b) क्या इसे AO कह सकते हैं?"
+      },
+      "a": {
+       "en": "(a) Yes. The ray starts at O and B lies on it, so the starting point O followed by any other point on the ray, B, names the same ray: OB.\n(b) No. AO would mean a ray starting at A and going through O, which points in the opposite direction. The starting point must be written first.",
+       "hi": "(a) हाँ। किरण O से शुरू होती है और B उस पर है, इसलिए आरंभ बिंदु O के बाद किरण का कोई भी दूसरा बिंदु B लिखने से वही किरण मिलती है: OB।\n(b) नहीं। AO का अर्थ होगा A से शुरू होकर O से गुज़रने वाली किरण, जो उल्टी दिशा में है। आरंभ बिंदु पहले लिखना ज़रूरी है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Draw rough figures for: (a) rays OX and OY meet at O; (b) lines PQ and RS cross at M; (c) line m passes through E and F but not through D; (d) point K lies on segment GH.",
+       "hi": "इनकी कच्ची आकृतियाँ बनाइए: (a) किरणें OX और OY, O पर मिलती हैं; (b) रेखाएँ PQ और RS, M पर काटती हैं; (c) रेखा m, E और F से गुज़रती है पर D से नहीं; (d) बिंदु K रेखाखंड GH पर है।"
+      },
+      "a": {
+       "en": "(a) Mark O. Draw two arrows starting at O, one through X and one through Y. They look like an open 'V'.\n(b) Draw two long lines with arrows at both ends crossing like an 'X'. Label the crossing M, and put P, Q on one line (on either side of M) and R, S on the other.\n(c) Draw a line with arrows at both ends, label it m, mark E and F on it, and mark D away from the line.\n(d) Draw a segment with dots at G and H (no arrows) and mark K between them.",
+       "hi": "(a) O अंकित कीजिए। O से शुरू होने वाले दो तीर बनाइए, एक X से होकर और एक Y से होकर। ये खुले 'V' जैसे दिखते हैं।\n(b) दोनों सिरों पर तीर वाली दो लंबी रेखाएँ 'X' की तरह काटती हुई बनाइए। कटान बिंदु को M लिखिए, एक रेखा पर P, Q (M के दोनों ओर) और दूसरी पर R, S रखिए।\n(c) दोनों सिरों पर तीर वाली रेखा बनाकर उसे m नाम दीजिए, उस पर E और F अंकित कीजिए, और D को रेखा से दूर अंकित कीजिए।\n(d) G और H पर बिंदुओं वाला रेखाखंड बनाइए (कोई तीर नहीं) और उनके बीच K अंकित कीजिए।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A figure has a line with points A, O, B on it (O between A and B), and another ray OC going upward from O. Name all the rays starting at O and all the segments.",
+       "hi": "एक आकृति में एक रेखा पर बिंदु A, O, B हैं (O, A और B के बीच), और O से ऊपर की ओर एक किरण OC है। O से शुरू होने वाली सभी किरणें और सभी रेखाखंड लिखिए।"
+      },
+      "a": {
+       "en": "Rays from O: OA, OB and OC (3 rays). OA and OB are opposite rays.\nSegments using the marked points: AO, OB, AB and OC (4 segments).\nAB is made of AO and OB.",
+       "hi": "O से किरणें: OA, OB और OC (3 किरणें)। OA और OB विपरीत किरणें हैं।\nअंकित बिंदुओं से रेखाखंड: AO, OB, AB और OC (4 रेखाखंड)।\nAB, AO और OB से मिलकर बना है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.5 Angle",
+    "hi": "2.5 कोण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Open your book a little, then more, then wide. The two covers start from the spine and spread apart. Open a pair of scissors, or a compass, or watch the two hands of a clock. In each case two straight arms start from one common point and there is an opening between them. This opening is an angle.",
+      "hi": "अपनी किताब थोड़ी खोलिए, फिर और, फिर पूरी। दोनों जिल्दें पुश्ते (जिल्द के मोड़) से शुरू होकर अलग फैलती हैं। कैंची या परकार खोलिए, या घड़ी की दोनों सुइयों को देखिए। हर बार दो सीधी भुजाएँ एक साझे बिंदु से शुरू होती हैं और उनके बीच एक खुलाव होता है। यह खुलाव कोण है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Angle",
+       "hi": "कोण"
+      },
+      "text": {
+       "en": "An angle is formed by two rays that have the same starting point. The common starting point is called the vertex of the angle, and the two rays are called its arms (or sides).",
+       "hi": "कोण दो ऐसी किरणों से बनता है जिनका आरंभ बिंदु एक ही हो। साझा आरंभ बिंदु कोण का शीर्ष कहलाता है, और दोनों किरणें उसकी भुजाएँ कहलाती हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Naming an angle: use the symbol ∠ and three letters: a point on one arm, then the vertex, then a point on the other arm. If the vertex is B and the arms pass through D and E, the angle is ∠DBE or ∠EBD. The vertex letter is always in the middle. To show which angle we mean, we draw a small curve (arc) near the vertex between the two arms.",
+      "hi": "कोण का नाम: चिह्न ∠ और तीन अक्षर प्रयोग कीजिए: एक भुजा पर का बिंदु, फिर शीर्ष, फिर दूसरी भुजा पर का बिंदु। यदि शीर्ष B है और भुजाएँ D और E से गुज़रती हैं, तो कोण ∠DBE या ∠EBD है। शीर्ष का अक्षर हमेशा बीच में होता है। कौन-सा कोण बताना है, यह दिखाने के लिए शीर्ष के पास दोनों भुजाओं के बीच एक छोटा वक्र (चाप) बनाते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "When only one angle is at a vertex, we may simply call it by the vertex letter, like ∠B. But if several angles share the same vertex, the single letter would be confusing, so we must use three letters. For example, if rays PA, PB and PC all start at P, there are three angles at P (∠APB, ∠BPC and ∠APC), so writing just ∠P does not tell which one we mean.",
+      "hi": "जब किसी शीर्ष पर केवल एक कोण हो, तो उसे केवल शीर्ष के अक्षर से भी बुला सकते हैं, जैसे ∠B। पर यदि कई कोणों का शीर्ष एक ही हो, तो एक अक्षर से भ्रम होगा, इसलिए तीन अक्षर प्रयोग करने ही चाहिए। उदाहरण के लिए, यदि किरणें PA, PB और PC सभी P से शुरू होती हैं, तो P पर तीन कोण हैं (∠APB, ∠BPC और ∠APC), इसलिए केवल ∠P लिखने से पता नहीं चलता कि कौन-सा कोण है।"
+     }
+    },
+    {
+     "p": {
+      "en": "An angle can also be thought of as a turn. Imagine a ray lying on top of another ray; now rotate it about the common starting point. The amount it turns is the size of the angle. Opening a door, turning a steering wheel, a bowler's arm swinging and the hands of a clock all show angles as turns.",
+      "hi": "कोण को घुमाव के रूप में भी सोच सकते हैं। कल्पना कीजिए कि एक किरण दूसरी किरण के ऊपर पड़ी है; अब उसे साझे आरंभ बिंदु के चारों ओर घुमाइए। वह जितना घूमती है, वही कोण का माप है। दरवाज़ा खोलना, स्टीयरिंग घुमाना, गेंदबाज़ की बाँह का घूमना और घड़ी की सुइयाँ, सब कोणों को घुमाव के रूप में दिखाते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "The vertex letter always goes in the middle of an angle's name. ∠ABC has vertex B; ∠BAC has vertex A. These are different angles.",
+      "hi": "कोण के नाम में शीर्ष का अक्षर हमेशा बीच में आता है। ∠ABC का शीर्ष B है; ∠BAC का शीर्ष A है। ये अलग-अलग कोण हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Three non-collinear points A, B and C are marked. Draw all the lines through pairs of them. How many lines? Name the angles of the triangle formed.",
+       "hi": "तीन असंरेख बिंदु A, B और C अंकित हैं। उनके जोड़ों से होकर सभी रेखाएँ खींचिए। कितनी रेखाएँ बनीं? बने हुए त्रिभुज के कोणों के नाम लिखिए।"
+      },
+      "a": {
+       "en": "Pairs: A and B, B and C, A and C, so there are 3 lines: AB, BC and AC.\nThe lines form triangle ABC with three angles: ∠BAC (vertex A), ∠ABC (vertex B) and ∠ACB (vertex C).",
+       "hi": "जोड़े: A और B, B और C, A और C, इसलिए 3 रेखाएँ हैं: AB, BC और AC।\nरेखाएँ त्रिभुज ABC बनाती हैं जिसके तीन कोण हैं: ∠BAC (शीर्ष A), ∠ABC (शीर्ष B) और ∠ACB (शीर्ष C)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Four points A, B, C, D are marked with no three on one line. How many lines join them in pairs? If at each point we look at the angles between the rays going to the other three points, how many such angles are there in all?",
+       "hi": "चार बिंदु A, B, C, D इस तरह अंकित हैं कि कोई तीन एक रेखा पर नहीं हैं। उन्हें जोड़ों में मिलाने पर कितनी रेखाएँ बनती हैं? यदि हर बिंदु पर बाकी तीन बिंदुओं की ओर जाने वाली किरणों के बीच के कोण देखें, तो कुल कितने ऐसे कोण हैं?"
+      },
+      "a": {
+       "en": "Lines: AB, AC, AD, BC, BD, CD, so 6 lines (3 + 2 + 1).\nAt A there are 3 rays (AB, AC, AD), giving 3 angles: ∠BAC, ∠CAD, ∠BAD.\nThe same happens at B, C and D.\nTotal angles = 4 × 3 = 12.",
+       "hi": "रेखाएँ: AB, AC, AD, BC, BD, CD, यानी 6 रेखाएँ (3 + 2 + 1)।\nA पर 3 किरणें हैं (AB, AC, AD), जिनसे 3 कोण बनते हैं: ∠BAC, ∠CAD, ∠BAD।\nयही B, C और D पर होता है।\nकुल कोण = 4 × 3 = 12।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.6 Comparing Angles",
+    "hi": "2.6 कोणों की तुलना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Some angles are 'more open' than others. A crocodile opening its jaws wide makes a bigger angle than a cat yawning a little. How can we decide which of two angles is bigger?",
+      "hi": "कुछ कोण दूसरों से 'अधिक खुले' होते हैं। जबड़ा पूरा खोलता मगरमच्छ थोड़ी जम्हाई लेती बिल्ली से बड़ा कोण बनाता है। हम कैसे तय करें कि दो कोणों में कौन-सा बड़ा है?"
+     }
+    },
+    {
+     "p": {
+      "en": "Method 1: Superimposition (placing one on top of the other). Trace one angle on thin paper. Place the tracing on the other angle so that the vertices are exactly on top of each other and one arm lies along one arm. Now look at the second arms. If the second arm of the traced angle lies inside the other angle, the traced angle is smaller. If it lies outside, the traced angle is bigger. If the second arms lie exactly on top of each other, the two angles are equal.",
+      "hi": "विधि 1: अध्यारोपण (एक को दूसरे के ऊपर रखना)। एक कोण को पतले कागज़ पर उतार लीजिए। इस अनुरेखण को दूसरे कोण पर ऐसे रखिए कि दोनों शीर्ष बिल्कुल एक-दूसरे पर हों और एक भुजा एक भुजा पर पड़े। अब दूसरी भुजाओं को देखिए। यदि उतारे गए कोण की दूसरी भुजा दूसरे कोण के अंदर पड़ती है, तो उतारा गया कोण छोटा है। यदि बाहर पड़ती है, तो वह बड़ा है। यदि दूसरी भुजाएँ बिल्कुल एक-दूसरे पर पड़ती हैं, तो दोनों कोण बराबर हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Equal angles",
+       "hi": "बराबर कोण"
+      },
+      "text": {
+       "en": "Two angles are equal when one can be placed on the other so that their vertices and both pairs of arms fit exactly on top of each other.",
+       "hi": "दो कोण बराबर होते हैं जब एक को दूसरे पर ऐसे रखा जा सके कि उनके शीर्ष और भुजाओं के दोनों जोड़े बिल्कुल एक-दूसरे पर आ जाएँ।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Method 2: Paper folding. Fold a rectangular sheet along a slanting line and draw along the crease. The crease and the edges of the sheet make angles. By folding the paper again so that one angle falls on another, you can check which is larger or whether they are equal.",
+      "hi": "विधि 2: कागज़ मोड़ना। एक आयताकार कागज़ को तिरछी रेखा पर मोड़िए और सिलवट पर रेखा खींचिए। सिलवट और कागज़ के किनारे कोण बनाते हैं। कागज़ को फिर से ऐसे मोड़कर कि एक कोण दूसरे पर आ जाए, आप जाँच सकते हैं कि कौन बड़ा है या वे बराबर हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Method 3: Using a transparent circle (when the angles cannot be cut out or moved). Draw a circle on a transparent sheet and mark its centre. Place the centre on the vertex of the first angle with one arm along a marked radius, and mark where the other arm crosses the circle. Do the same for the second angle. The angle whose marks are farther apart along the circle (the larger arc) is the bigger angle. This idea, measuring how much of a circle the angle covers, leads to the protractor.",
+      "hi": "विधि 3: पारदर्शी वृत्त का उपयोग (जब कोणों को काटा या खिसकाया न जा सके)। एक पारदर्शी शीट पर वृत्त बनाइए और उसका केंद्र अंकित कीजिए। केंद्र को पहले कोण के शीर्ष पर रखिए, एक भुजा को अंकित त्रिज्या के साथ मिलाइए, और देखिए कि दूसरी भुजा वृत्त को कहाँ काटती है, वहाँ निशान लगाइए। दूसरे कोण के लिए भी यही कीजिए। जिस कोण के निशान वृत्त पर अधिक दूर हैं (बड़ा चाप), वह बड़ा कोण है। कोण वृत्त का कितना भाग घेरता है, यह मापने का विचार ही चाँदे तक ले जाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "When two angles share the vertex and one arm, comparison is easy: if ray OX lies between OA and OB, then ∠AOX is smaller than ∠AOB, because ∠AOB is made of ∠AOX and ∠XOB together.",
+      "hi": "जब दो कोणों का शीर्ष और एक भुजा साझी हो, तो तुलना आसान है: यदि किरण OX, OA और OB के बीच है, तो ∠AOX, ∠AOB से छोटा है, क्योंकि ∠AOB, ∠AOX और ∠XOB से मिलकर बना है।"
+     }
+    },
+    {
+     "note": {
+      "en": "While superimposing, the vertices must coincide and one pair of arms must lie along each other. Only then does looking at the other arms tell us which angle is bigger.",
+      "hi": "अध्यारोपण करते समय शीर्ष संपाती होने चाहिए और भुजाओं का एक जोड़ा एक-दूसरे पर पड़ना चाहिए। तभी दूसरी भुजाओं को देखकर पता चलता है कि कौन-सा कोण बड़ा है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Rays OA, OX, OB, OC start at O, in this order when going anticlockwise. Which is bigger: ∠AOX or ∠AOB? ∠XOB or ∠XOC?",
+       "hi": "किरणें OA, OX, OB, OC बिंदु O से शुरू होती हैं, वामावर्त घूमने पर इसी क्रम में। कौन बड़ा है: ∠AOX या ∠AOB? ∠XOB या ∠XOC?"
+      },
+      "a": {
+       "en": "∠AOB contains ∠AOX plus ∠XOB, so ∠AOB is bigger than ∠AOX.\n∠XOC contains ∠XOB plus ∠BOC, so ∠XOC is bigger than ∠XOB.\nReason: both angles in each pair share vertex O and arm OA (or OX), and the other arm of the bigger angle is further turned.",
+       "hi": "∠AOB में ∠AOX और ∠XOB दोनों हैं, इसलिए ∠AOB, ∠AOX से बड़ा है।\n∠XOC में ∠XOB और ∠BOC दोनों हैं, इसलिए ∠XOC, ∠XOB से बड़ा है।\nकारण: हर जोड़े के दोनों कोणों का शीर्ष O और एक भुजा OA (या OX) साझी है, और बड़े कोण की दूसरी भुजा अधिक घूमी हुई है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.7 Making Rotating Arms",
+    "hi": "2.7 घूमने वाली भुजाएँ बनाना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity: take two paper straws (or two thin strips of cardboard) and join them at one end with a paper clip or a pin, so that they can rotate. Now you have a model of an angle: the joint is the vertex and the straws are the arms. Open them a little, then more, and watch the angle grow. Make several such models of different openings and put them in order from smallest to largest by placing one on another (superimposition).",
+      "hi": "गतिविधि: दो कागज़ी स्ट्रॉ (या गत्ते की दो पतली पट्टियाँ) लीजिए और एक सिरे पर पेपर क्लिप या पिन से जोड़ दीजिए, ताकि वे घूम सकें। अब आपके पास कोण का नमूना है: जोड़ शीर्ष है और स्ट्रॉ भुजाएँ हैं। इन्हें थोड़ा खोलिए, फिर अधिक, और कोण को बढ़ता देखिए। अलग-अलग खुलाव वाले ऐसे कई नमूने बनाइए और एक को दूसरे पर रखकर (अध्यारोपण) उन्हें छोटे से बड़े क्रम में लगाइए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity with a slit: cut an angle-shaped slit (a narrow 'V' groove) in a piece of thick cardboard. Now try to push different rotating-arm models into the slit. Only the models whose opening is exactly equal to the slit's angle fit; a narrower or wider one does not fit. Notice that a model with very long arms and one with short arms can both fit, as long as the opening is the same and the arms are not longer than the slit.",
+      "hi": "दरार वाली गतिविधि: मोटे गत्ते में कोण के आकार की दरार (पतली 'V' नाली) काटिए। अब अलग-अलग घूमने वाली भुजाओं वाले नमूनों को दरार में डालने की कोशिश कीजिए। केवल वही नमूने फ़िट होते हैं जिनका खुलाव दरार के कोण के बिल्कुल बराबर है; कम या अधिक खुला नमूना फ़िट नहीं होता। ध्यान दीजिए कि बहुत लंबी भुजाओं वाला और छोटी भुजाओं वाला, दोनों नमूने फ़िट हो सकते हैं, बशर्ते खुलाव समान हो और भुजाएँ दरार से लंबी न हों।"
+     }
+    },
+    {
+     "note": {
+      "en": "The size of an angle depends only on the amount of turn (opening) between its arms. It does NOT depend on how long the arms are drawn. Since arms are rays, they are endless anyway; we just draw a part of them.",
+      "hi": "कोण का माप केवल उसकी भुजाओं के बीच के घुमाव (खुलाव) पर निर्भर करता है। यह इस पर निर्भर नहीं करता कि भुजाएँ कितनी लंबी बनाई गई हैं। भुजाएँ किरणें हैं, इसलिए वे वैसे भी अनंत हैं; हम उनका केवल एक भाग बनाते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Raju draws an angle with arms 2 cm long. Meena draws one with arms 10 cm long. Meena says her angle is bigger. Is she right?",
+       "hi": "राजू 2 cm लंबी भुजाओं वाला कोण बनाता है। मीना 10 cm लंबी भुजाओं वाला कोण बनाती है। मीना कहती है कि उसका कोण बड़ा है। क्या वह सही है?"
+      },
+      "a": {
+       "en": "Not necessarily. Arm length does not decide the size of an angle.\nTo compare, place one angle on the other with vertices together and one arm along one arm.\nIf the second arms also lie on each other, the angles are equal, even though Meena's arms are longer.\nOnly the opening matters.",
+       "hi": "ज़रूरी नहीं। भुजा की लंबाई कोण का माप तय नहीं करती।\nतुलना के लिए एक कोण को दूसरे पर रखिए, शीर्ष मिलाकर और एक भुजा को एक भुजा पर।\nयदि दूसरी भुजाएँ भी एक-दूसरे पर पड़ें, तो कोण बराबर हैं, भले मीना की भुजाएँ लंबी हों।\nकेवल खुलाव मायने रखता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.8 Special Types of Angles",
+    "hi": "2.8 विशेष प्रकार के कोण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Stand facing the blackboard and turn until you face the back wall. You have made a half turn. If you turn all the way round to face the blackboard again, you have made a full turn (one complete turn).",
+      "hi": "श्यामपट की ओर मुँह करके खड़े होइए और तब तक घूमिए जब तक पीछे की दीवार की ओर मुँह न हो जाए। आपने आधा घुमाव किया। यदि आप पूरा घूमकर फिर श्यामपट की ओर आ जाएँ, तो आपने पूरा घुमाव (एक संपूर्ण घुमाव) किया।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Straight angle",
+       "hi": "ऋजुकोण"
+      },
+      "text": {
+       "en": "When the two arms of an angle point in exactly opposite directions, so that together they form a straight line, the angle is a straight angle. It is half of a full turn.",
+       "hi": "जब कोण की दोनों भुजाएँ बिल्कुल विपरीत दिशाओं में हों, जिससे वे मिलकर एक सीधी रेखा बनाएँ, तो वह कोण ऋजुकोण कहलाता है। यह पूरे घुमाव का आधा है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Activity: take a sheet of paper with a straight edge. Mark a point O on the edge; the edge makes a straight angle at O. Now fold the paper through O so that one half of the edge falls exactly on the other half. Open it. The crease divides the straight angle into two equal angles. Each of these is called a right angle. A right angle looks like the letter L, or the corner of a page, a door frame, or a book.",
+      "hi": "गतिविधि: सीधे किनारे वाला एक कागज़ लीजिए। किनारे पर बिंदु O अंकित कीजिए; किनारा O पर ऋजुकोण बनाता है। अब कागज़ को O से होकर ऐसे मोड़िए कि किनारे का एक आधा भाग दूसरे आधे पर बिल्कुल आ जाए। खोलिए। सिलवट ऋजुकोण को दो बराबर कोणों में बाँटती है। इनमें से हर एक को समकोण कहते हैं। समकोण अंग्रेज़ी अक्षर L जैसा दिखता है, या पृष्ठ के कोने, दरवाज़े की चौखट या किताब के कोने जैसा।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Right angle",
+       "hi": "समकोण"
+      },
+      "text": {
+       "en": "A right angle is half of a straight angle (a quarter of a full turn). It is marked by drawing a small square in the corner instead of a curve.",
+       "hi": "समकोण ऋजुकोण का आधा (पूरे घुमाव का चौथाई) है। इसे दिखाने के लिए कोने में वक्र के बजाय एक छोटा वर्ग बनाते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Perpendicular lines",
+       "hi": "लंब रेखाएँ"
+      },
+      "text": {
+       "en": "Two lines that meet at a right angle are called perpendicular to each other. We write AB ⊥ CD. When two perpendicular lines cross, they make 4 right angles.",
+       "hi": "जो दो रेखाएँ समकोण पर मिलती हैं, वे एक-दूसरे पर लंब कहलाती हैं। हम AB ⊥ CD लिखते हैं। जब दो लंब रेखाएँ एक-दूसरे को काटती हैं, तो 4 समकोण बनते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Perpendicular lines are everywhere: the edges of a cricket pitch's crease and stumps, the plus sign +, the corners of a carrom board, a window grill, the lines on graph paper, a T-junction on a road.",
+      "hi": "लंब रेखाएँ हर जगह हैं: क्रिकेट पिच की क्रीज़ और स्टंप, जोड़ का चिह्न +, कैरम बोर्ड के कोने, खिड़की की जाली, ग्राफ़ पेपर की रेखाएँ, सड़क पर T आकार का मोड़।"
+     }
+    },
+    {
+     "p": {
+      "en": "Classifying angles (comparing with a right angle). Hold the corner of a page (a right angle) against any angle:",
+      "hi": "कोणों का वर्गीकरण (समकोण से तुलना)। किसी पृष्ठ का कोना (समकोण) किसी भी कोण पर रखिए:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "If the angle is smaller than a right angle, it is an acute angle. 'Acute' means sharp, like the tip of a knife or a slice of pizza.",
+       "If it is exactly equal to a right angle, it is a right angle.",
+       "If it is bigger than a right angle but smaller than a straight angle, it is an obtuse angle. 'Obtuse' means blunt, like a wide-open fan blade or a reclining chair back.",
+       "If its arms form a straight line, it is a straight angle."
+      ],
+      "hi": [
+       "यदि कोण समकोण से छोटा है, तो वह न्यून कोण है। अंग्रेज़ी शब्द 'acute' का अर्थ है नुकीला, जैसे चाकू की नोक या पिज़्ज़ा का टुकड़ा।",
+       "यदि वह समकोण के बिल्कुल बराबर है, तो वह समकोण है।",
+       "यदि वह समकोण से बड़ा पर ऋजुकोण से छोटा है, तो वह अधिक कोण है। अंग्रेज़ी शब्द 'obtuse' का अर्थ है भोथरा (कुंद), जैसे खुली हुई पंखुड़ी या पीछे झुकी कुर्सी की पीठ।",
+       "यदि उसकी भुजाएँ सीधी रेखा बनाती हैं, तो वह ऋजुकोण है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Why these names? An acute angle makes a sharp, pointed corner that can pierce, so it is called 'sharp' (acute). An obtuse angle makes a wide, blunt corner, so it is called 'blunt' (obtuse).",
+      "hi": "ये नाम क्यों? न्यून कोण नुकीला कोना बनाता है जो चुभ सकता है, इसलिए उसे 'नुकीला' (acute) कहते हैं। अधिक कोण चौड़ा, भोथरा कोना बनाता है, इसलिए उसे 'भोथरा' (obtuse) कहते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity on a dot grid: take a square grid of dots and a point A in the middle. Joining A to two other grid points in opposite directions on one straight line (for example the dot just left of A and the dot just right of A, or the dot just above and just below, or two diagonal dots on opposite sides) gives a straight angle at A. Joining A to two points whose directions are at a quarter turn (for example one to the right and one directly above) gives a right angle. From A, the 8 nearest dots lie in 8 directions, each an eighth of a turn apart: these give 4 straight angles and 8 right angles.",
+      "hi": "बिंदु-जाल पर गतिविधि: बिंदुओं का वर्गाकार जाल और उसके बीच में एक बिंदु A लीजिए। A को एक सीधी रेखा पर विपरीत दिशाओं के दो जाल-बिंदुओं से मिलाने पर (जैसे A के ठीक बाएँ और ठीक दाएँ का बिंदु, या ठीक ऊपर और ठीक नीचे का, या विपरीत ओर के दो विकर्ण बिंदु) A पर ऋजुकोण बनता है। A को ऐसे दो बिंदुओं से मिलाने पर जिनकी दिशाओं में चौथाई घुमाव का अंतर हो (जैसे एक दाएँ और एक ठीक ऊपर), समकोण बनता है। A के 8 सबसे पास के बिंदु 8 दिशाओं में हैं, हर एक में घुमाव के आठवें भाग का अंतर है: इनसे 4 ऋजुकोण और 8 समकोण बनते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Fold a sheet along any slanting crease. Now fold again so that the first crease falls on itself. How many right angles appear when you open it, and why are they exact right angles?",
+       "hi": "एक कागज़ को किसी तिरछी सिलवट पर मोड़िए। अब फिर से ऐसे मोड़िए कि पहली सिलवट अपने ही ऊपर आ जाए। खोलने पर कितने समकोण दिखते हैं, और वे ठीक समकोण क्यों हैं?"
+      },
+      "a": {
+       "en": "Step 1: The first crease is a straight line.\nStep 2: The second fold lays one half of that line exactly on the other half, so the second crease divides the straight angle into two equal parts.\nStep 3: Each part is half of a straight angle, which is a right angle. This happens on both sides of the first crease.\nAnswer: 4 right angles, where the two creases cross. The creases are perpendicular.",
+       "hi": "चरण 1: पहली सिलवट एक सीधी रेखा है।\nचरण 2: दूसरा मोड़ उस रेखा के एक आधे भाग को दूसरे आधे पर बिल्कुल रख देता है, इसलिए दूसरी सिलवट ऋजुकोण को दो बराबर भागों में बाँटती है।\nचरण 3: हर भाग ऋजुकोण का आधा है, यानी समकोण। यह पहली सिलवट के दोनों ओर होता है।\nउत्तर: 4 समकोण, जहाँ दोनों सिलवटें काटती हैं। सिलवटें एक-दूसरे पर लंब हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Classify each as acute, right, obtuse or straight: (a) the corner of a postcard (b) the hands of a clock at 1 o'clock (c) the hands at 5 o'clock (d) the hands at 6 o'clock.",
+       "hi": "हर एक को न्यून, समकोण, अधिक या ऋजु में वर्गीकृत कीजिए: (a) पोस्टकार्ड का कोना (b) 1 बजे घड़ी की सुइयाँ (c) 5 बजे सुइयाँ (d) 6 बजे सुइयाँ।"
+      },
+      "a": {
+       "en": "(a) Right angle (like the corner of a page).\n(b) At 1 o'clock the hands are only one hour-mark apart: smaller than a right angle, so acute.\n(c) At 5 o'clock they are 5 hour-marks apart, more than a quarter turn (3 marks) but less than half (6 marks), so obtuse.\n(d) At 6 o'clock they point in opposite directions: straight angle.",
+       "hi": "(a) समकोण (पृष्ठ के कोने जैसा)।\n(b) 1 बजे सुइयाँ केवल एक घंटे के निशान की दूरी पर हैं: समकोण से छोटा, इसलिए न्यून।\n(c) 5 बजे वे 5 घंटे-निशानों की दूरी पर हैं, चौथाई घुमाव (3 निशान) से अधिक पर आधे (6 निशान) से कम, इसलिए अधिक कोण।\n(d) 6 बजे वे विपरीत दिशाओं में हैं: ऋजुकोण।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.9 Measuring Angles",
+    "hi": "2.9 कोणों को मापना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Comparing tells us which angle is bigger, but not by how much. To measure an angle we need a unit. Mathematicians long ago divided one full turn into 360 equal small turns. Each small turn is called one degree, written 1°. So:",
+      "hi": "तुलना से पता चलता है कि कौन-सा कोण बड़ा है, पर कितना बड़ा, यह नहीं। कोण मापने के लिए एक इकाई चाहिए। बहुत पहले गणितज्ञों ने एक पूरे घुमाव को 360 बराबर छोटे घुमावों में बाँटा। हर छोटे घुमाव को एक अंश (डिग्री) कहते हैं, जिसे 1° लिखते हैं। इसलिए:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Full turn = 360°   Straight angle (half turn) = 180°   Right angle (quarter turn) = 90°",
+      "hi": "पूरा घुमाव = 360°   ऋजुकोण (आधा घुमाव) = 180°   समकोण (चौथाई घुमाव) = 90°"
+     }
+    },
+    {
+     "p": {
+      "en": "Why 360? Nobody knows for certain, but there are good reasons. Ancient astronomers noticed that the Sun takes about 360 days to go round the sky once, so it moves about one degree each day. Also, 360 can be divided exactly by many numbers: 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 18, 20, 24, 30, 36, 40, 45, 60, 72, 90, 120 and 180. This makes it easy to split a full turn into halves, thirds, quarters, sixths, eighths and so on. Ancient Babylonians, who counted in groups of 60, and Indian astronomers both used this system.",
+      "hi": "360 ही क्यों? पक्का कोई नहीं जानता, पर अच्छे कारण हैं। प्राचीन खगोलविदों ने देखा कि सूर्य को आकाश का एक चक्कर लगाने में लगभग 360 दिन लगते हैं, इसलिए वह हर दिन लगभग एक अंश चलता है। साथ ही, 360 बहुत-सी संख्याओं से पूरा-पूरा विभाजित होता है: 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 18, 20, 24, 30, 36, 40, 45, 60, 72, 90, 120 और 180। इससे पूरे घुमाव को आधे, तिहाई, चौथाई, छठे, आठवें भाग आदि में बाँटना आसान होता है। 60 के समूहों में गिनने वाले प्राचीन बेबीलोनवासी और भारतीय खगोलविद, दोनों इस पद्धति का उपयोग करते थे।"
+     }
+    },
+    {
+     "p": {
+      "en": "Make your own protractor (activity). Cut out a circle of paper. Fold it in half: the crease is a straight line through the centre, and each half circle is 180°. Fold it again in half: now the creases show 4 right angles of 90°. Fold once more: 8 equal parts of 360 ÷ 8 = 45° each. Open it out and draw along the creases. Take one half of the circle; starting from one end, label the creases 0°, 45°, 90°, 135°, 180°. Folding once more gives parts of 22.5°. This paper half circle is a simple protractor.",
+      "hi": "अपना चाँदा बनाइए (गतिविधि)। कागज़ का एक वृत्त काटिए। उसे आधा मोड़िए: सिलवट केंद्र से होकर जाने वाली सीधी रेखा है, और हर अर्धवृत्त 180° है। फिर आधा मोड़िए: अब सिलवटें 90° के 4 समकोण दिखाती हैं। एक बार और मोड़िए: 360 ÷ 8 = 45° के 8 बराबर भाग। खोलकर सिलवटों पर रेखाएँ खींचिए। वृत्त का एक आधा भाग लीजिए; एक सिरे से शुरू करके सिलवटों पर 0°, 45°, 90°, 135°, 180° लिखिए। एक बार और मोड़ने पर 22.5° के भाग मिलते हैं। कागज़ का यह अर्धवृत्त एक सरल चाँदा है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Protractor",
+       "hi": "चाँदा (प्रोट्रैक्टर)"
+      },
+      "text": {
+       "en": "A protractor is a half-circle (sometimes full-circle) instrument marked from 0° to 180° in steps of 1°, used to measure and draw angles. It has a centre point (marked at the middle of its straight edge), a base line through the centre joining 0° and 180°, and two scales: an outer scale and an inner scale running in opposite directions.",
+       "hi": "चाँदा एक अर्धवृत्ताकार (कभी-कभी पूरा वृत्ताकार) उपकरण है जिस पर 1° के अंतर पर 0° से 180° तक निशान होते हैं, और जिसका उपयोग कोण मापने और बनाने में होता है। इसमें एक केंद्र बिंदु (सीधे किनारे के बीच में अंकित), केंद्र से होकर 0° और 180° को जोड़ने वाली आधार रेखा, और दो पैमाने होते हैं: बाहरी पैमाना और भीतरी पैमाना, जो विपरीत दिशाओं में चलते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How to measure an angle with a protractor, for example ∠PQR:",
+      "hi": "चाँदे से कोण कैसे मापें, उदाहरण के लिए ∠PQR:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Place the centre point of the protractor exactly on the vertex Q.",
+       "Turn the protractor so that its base line lies along one arm, say QR.",
+       "Look at which scale shows 0° on the arm QR (the inner or the outer one). Use only that scale.",
+       "Follow that scale from 0° round to where the other arm QP crosses it, and read the number. That is the measure of ∠PQR.",
+       "Check the answer with common sense: if the angle looks smaller than a right angle, the reading must be less than 90°."
+      ],
+      "hi": [
+       "चाँदे के केंद्र बिंदु को ठीक शीर्ष Q पर रखिए।",
+       "चाँदे को ऐसे घुमाइए कि उसकी आधार रेखा एक भुजा, मान लीजिए QR, पर पड़े।",
+       "देखिए कि भुजा QR पर कौन-सा पैमाना 0° दिखाता है (भीतरी या बाहरी)। केवल उसी पैमाने का उपयोग कीजिए।",
+       "उस पैमाने पर 0° से आगे बढ़ते हुए वहाँ तक जाइए जहाँ दूसरी भुजा QP उसे काटती है, और संख्या पढ़िए। यही ∠PQR का माप है।",
+       "समझ से उत्तर जाँचिए: यदि कोण समकोण से छोटा दिखता है, तो माप 90° से कम होना चाहिए।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "If an arm is too short to reach the scale, extend it with a ruler first. Making the arm longer does not change the angle.",
+      "hi": "यदि कोई भुजा इतनी छोटी है कि पैमाने तक नहीं पहुँचती, तो पहले पटरी से उसे बढ़ा लीजिए। भुजा लंबी करने से कोण नहीं बदलता।"
+     }
+    },
+    {
+     "p": {
+      "en": "Angle bisector: fold an angle so that one arm lies exactly on the other arm. The crease divides the angle into two equal angles. The crease is called the angle bisector. For example, the bisector of a 90° angle makes two angles of 45° each; the bisector of a 180° angle makes two right angles.",
+      "hi": "कोण समद्विभाजक: किसी कोण को ऐसे मोड़िए कि एक भुजा दूसरी भुजा पर बिल्कुल आ जाए। सिलवट कोण को दो बराबर कोणों में बाँटती है। इस सिलवट को कोण समद्विभाजक कहते हैं। उदाहरण के लिए, 90° के कोण का समद्विभाजक 45° के दो कोण बनाता है; 180° के कोण का समद्विभाजक दो समकोण बनाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Angle bisector",
+       "hi": "कोण समद्विभाजक"
+      },
+      "text": {
+       "en": "A ray from the vertex that divides an angle into two equal angles.",
+       "hi": "शीर्ष से निकलने वाली वह किरण जो कोण को दो बराबर कोणों में बाँटती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Mind the mistake, mend the mistake. Common errors when using a protractor: (1) the centre is not on the vertex; (2) the base line is not along an arm; (3) reading the wrong scale, for example reading 120° for an angle that is clearly acute (the correct value would be 180° − 120° = 60°); (4) counting from 180° instead of from 0°. Always check that the reading matches what the angle looks like.",
+      "hi": "गलती पहचानो, गलती सुधारो। चाँदे के उपयोग में आम गलतियाँ: (1) केंद्र शीर्ष पर न होना; (2) आधार रेखा भुजा पर न होना; (3) गलत पैमाना पढ़ना, जैसे साफ़ न्यून दिखने वाले कोण को 120° पढ़ना (सही मान 180° − 120° = 60° होगा); (4) 0° के बजाय 180° से गिनना। हमेशा जाँचिए कि माप कोण के दिखने के अनुरूप है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Where are the angles? Angles describe turning and slopes in real life. On a clock face the 12 hour-marks divide 360° into 12 equal parts, so neighbouring marks are 360° ÷ 12 = 30° apart. At 1 o'clock the hands make 30°, at 2 o'clock 60°, at 3 o'clock 90°, at 4 o'clock 120°, at 6 o'clock 180°. The amount a door is open is the angle at the hinge line between the door and the door frame. A swing pulled back makes an angle at the top bar between the rope at rest (hanging straight down) and the pulled rope; the larger this angle, the faster the swing moves at the bottom. A slide or ramp makes an angle with the ground; a steeper slide has a bigger angle. A turning insect or a rotating fan blade shows an angle between its starting direction and its new direction.",
+      "hi": "कोण कहाँ हैं? वास्तविक जीवन में कोण घुमाव और ढलान को बताते हैं। घड़ी पर 12 घंटे के निशान 360° को 12 बराबर भागों में बाँटते हैं, इसलिए पास-पास के निशानों में 360° ÷ 12 = 30° का अंतर है। 1 बजे सुइयाँ 30° बनाती हैं, 2 बजे 60°, 3 बजे 90°, 4 बजे 120°, 6 बजे 180°। दरवाज़ा कितना खुला है, यह कब्ज़े वाली रेखा पर दरवाज़े और चौखट के बीच का कोण बताता है। पीछे खींचा गया झूला ऊपर की छड़ पर विश्राम की रस्सी (सीधी नीचे लटकती) और खींची गई रस्सी के बीच कोण बनाता है; यह कोण जितना बड़ा, झूला नीचे उतनी तेज़ी से चलता है। फिसलपट्टी या ढलान ज़मीन से कोण बनाती है; अधिक खड़ी फिसलपट्टी का कोण बड़ा होता है। घूमता कीड़ा या घूमती पंखे की पंखुड़ी अपनी शुरुआती और नई दिशा के बीच कोण दिखाती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Exploring triangles: draw any three triangles, measure their three angles each and add them. You will find the total is always 180° (allowing for small measuring errors of a degree or two). For example a triangle with angles 60°, 70° and 50°: 60 + 70 + 50 = 180. This is a conjecture you discover by measuring; it is proved in later classes.",
+      "hi": "त्रिभुजों की खोज: कोई भी तीन त्रिभुज बनाइए, हर एक के तीनों कोण मापिए और जोड़िए। आप पाएँगे कि योग हमेशा 180° आता है (मापन की एक-दो अंश की छोटी गलतियों को छोड़कर)। उदाहरण के लिए 60°, 70° और 50° कोणों वाला त्रिभुज: 60 + 70 + 50 = 180। यह एक अनुमान (कंजेक्चर) है जो आप मापकर खोजते हैं; इसे आगे की कक्षाओं में सिद्ध किया जाता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using a clock, find the angle between the hands at 2 o'clock, 4 o'clock and 9 o'clock.",
+       "hi": "घड़ी का उपयोग करके 2 बजे, 4 बजे और 9 बजे सुइयों के बीच का कोण ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Each hour-mark gap = 360° ÷ 12 = 30°.\n2 o'clock: 2 gaps = 2 × 30° = 60°.\n4 o'clock: 4 gaps = 4 × 30° = 120°.\n9 o'clock: going the short way from 12 to 9 is 3 gaps = 90° (the other way round is 360° − 90° = 270°).",
+       "hi": "हर घंटे-निशान का अंतर = 360° ÷ 12 = 30°।\n2 बजे: 2 अंतर = 2 × 30° = 60°।\n4 बजे: 4 अंतर = 4 × 30° = 120°।\n9 बजे: 12 से 9 तक छोटे रास्ते से 3 अंतर = 90° (दूसरी ओर से 360° − 90° = 270°)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Rays XA, XB, XC, XD, XE start from X, and a protractor placed with its centre at X and base along XA reads (on the scale starting at XA): XB at 30°, XC at 75°, XD at 120°, XE at 180°. Find ∠AXB, ∠BXC, ∠CXE and ∠BXE.",
+       "hi": "किरणें XA, XB, XC, XD, XE बिंदु X से शुरू होती हैं। केंद्र X पर और आधार XA पर रखे चाँदे पर (XA से शुरू होने वाले पैमाने पर) माप हैं: XB 30° पर, XC 75° पर, XD 120° पर, XE 180° पर। ∠AXB, ∠BXC, ∠CXE और ∠BXE ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "∠AXB = 30° − 0° = 30°.\n∠BXC = 75° − 30° = 45°.\n∠CXE = 180° − 75° = 105°.\n∠BXE = 180° − 30° = 150°.\nIdea: when two arms are read on the same scale, the angle between them is the difference of the readings.",
+       "hi": "∠AXB = 30° − 0° = 30°।\n∠BXC = 75° − 30° = 45°।\n∠CXE = 180° − 75° = 105°।\n∠BXE = 180° − 30° = 150°।\nविचार: जब दोनों भुजाएँ एक ही पैमाने पर पढ़ी जाएँ, तो उनके बीच का कोण मापों का अंतर होता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A student measures an angle that clearly looks acute and writes 145°. What went wrong, and what is the likely correct measure?",
+       "hi": "एक विद्यार्थी साफ़ न्यून दिखने वाले कोण को मापकर 145° लिखता है। क्या गलत हुआ, और सही माप संभवतः क्या है?"
+      },
+      "a": {
+       "en": "An acute angle must be less than 90°, so 145° cannot be right.\nThe student most likely read the wrong scale (counting from 180° instead of 0°).\nThe two scales add up to 180° at every mark, so the correct reading is 180° − 145° = 35°.",
+       "hi": "न्यून कोण 90° से कम होना चाहिए, इसलिए 145° सही नहीं हो सकता।\nविद्यार्थी ने संभवतः गलत पैमाना पढ़ा (0° के बजाय 180° से गिनकर)।\nहर निशान पर दोनों पैमानों का योग 180° होता है, इसलिए सही माप 180° − 145° = 35° है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.10 Drawing Angles",
+    "hi": "2.10 कोण बनाना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To draw an angle of a given measure, say ∠TIN = 30°, follow these steps:",
+      "hi": "दिए गए माप का कोण बनाने के लिए, मान लीजिए ∠TIN = 30°, ये चरण अपनाइए:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Draw a ray IN with a ruler. I is the vertex and IN is one arm (the base arm).",
+       "Place the centre of the protractor on I and line up its base line along IN, so that IN passes through 0° on one of the scales.",
+       "Using the scale that starts at 0° on IN, find 30° and mark a small dot T at that point on the edge of the protractor.",
+       "Remove the protractor and join I to T with a ruler, drawing ray IT. ∠TIN = 30°. Mark it with a small arc and write 30°."
+      ],
+      "hi": [
+       "पटरी से किरण IN खींचिए। I शीर्ष है और IN एक भुजा (आधार भुजा) है।",
+       "चाँदे के केंद्र को I पर रखिए और उसकी आधार रेखा को IN पर मिलाइए, ताकि IN किसी एक पैमाने के 0° से होकर जाए।",
+       "IN पर 0° से शुरू होने वाले पैमाने पर 30° खोजिए और चाँदे के किनारे पर वहाँ एक छोटा बिंदु T लगाइए।",
+       "चाँदा हटाइए और पटरी से I को T से मिलाकर किरण IT खींचिए। ∠TIN = 30°। एक छोटा चाप बनाकर 30° लिखिए।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "To draw an angle equal to a given angle, first measure the given angle with the protractor, then draw a new angle of that measure using the steps above.",
+      "hi": "किसी दिए गए कोण के बराबर कोण बनाने के लिए, पहले चाँदे से दिए गए कोण को मापिए, फिर ऊपर के चरणों से उसी माप का नया कोण बनाइए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Let's play a game 1 (estimating). Divide the class into two teams. Team 1 secretly draws an angle with a protractor. Team 2 looks and guesses its measure. Team 1 measures it; Team 2's score for that round is the difference between the guess and the true value. Swap and repeat. After several rounds, the team with the lower total score wins. This builds a feeling for angle sizes.",
+      "hi": "आओ खेलें 1 (अनुमान)। कक्षा को दो टीमों में बाँटिए। टीम 1 चुपके से चाँदे से एक कोण बनाती है। टीम 2 देखकर उसके माप का अनुमान लगाती है। टीम 1 उसे मापती है; उस बारी में टीम 2 का अंक अनुमान और वास्तविक मान का अंतर है। बारी बदलकर दोहराइए। कई बारियों के बाद जिस टीम का कुल अंक कम हो, वह जीतती है। इससे कोणों के माप का अंदाज़ा बनता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Let's play a game 2 (drawing without a protractor). Team 1 calls out an angle, for example 50°. A player of Team 2 draws it freehand while teammates guide (wider, narrower). Team 1 measures the drawn angle; the score is the difference from 50°. Lower total wins.",
+      "hi": "आओ खेलें 2 (चाँदे के बिना बनाना)। टीम 1 एक कोण बोलती है, जैसे 50°। टीम 2 का एक खिलाड़ी बिना चाँदे के उसे बनाता है जबकि साथी मार्गदर्शन करते हैं (और खोलो, कम करो)। टीम 1 बने कोण को मापती है; अंक 50° से अंतर है। कम कुल अंक वाली टीम जीतती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Draw ∠ABC = 110°. Describe the steps.",
+       "hi": "∠ABC = 110° बनाइए। चरण बताइए।"
+      },
+      "a": {
+       "en": "Step 1: Draw ray BC.\nStep 2: Put the protractor's centre on B with the base line along BC.\nStep 3: On the scale reading 0° at BC, go past 90° to 110° and mark point A.\nStep 4: Join BA. ∠ABC = 110°.\nCheck: it is wider than the corner of a page, as an angle more than 90° should be.",
+       "hi": "चरण 1: किरण BC खींचिए।\nचरण 2: चाँदे का केंद्र B पर और आधार रेखा BC पर रखिए।\nचरण 3: BC पर 0° दिखाने वाले पैमाने पर 90° से आगे 110° तक जाइए और बिंदु A अंकित कीजिए।\nचरण 4: BA मिलाइए। ∠ABC = 110°।\nजाँच: यह पृष्ठ के कोने से अधिक खुला है, जैसा 90° से बड़े कोण को होना चाहिए।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A player guessed 70°, 40° and 100° for three angles whose true measures were 62°, 45° and 100°. What is the player's total score in game 1?",
+       "hi": "एक खिलाड़ी ने तीन कोणों के लिए 70°, 40° और 100° का अनुमान लगाया जिनके वास्तविक माप 62°, 45° और 100° थे। खेल 1 में खिलाड़ी का कुल अंक क्या है?"
+      },
+      "a": {
+       "en": "Differences: 70 − 62 = 8, 45 − 40 = 5, 100 − 100 = 0.\nTotal score = 8 + 5 + 0 = 13. (A lower score is better.)",
+       "hi": "अंतर: 70 − 62 = 8, 45 − 40 = 5, 100 − 100 = 0।\nकुल अंक = 8 + 5 + 0 = 13। (कम अंक बेहतर है।)"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.11 Types of Angles and their Measures",
+    "hi": "2.11 कोणों के प्रकार और उनके माप"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Now that we can measure in degrees, we can describe the types of angles exactly.",
+      "hi": "अब जब हम अंशों में माप सकते हैं, तो कोणों के प्रकारों का सटीक वर्णन कर सकते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Measure",
+        "Example"
+       ],
+       "hi": [
+        "प्रकार",
+        "माप",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Zero angle",
+         "0°",
+         "Both arms lie on top of each other (no turn)"
+        ],
+        [
+         "Acute angle",
+         "More than 0° and less than 90°",
+         "Tip of a pencil, slice of pizza"
+        ],
+        [
+         "Right angle",
+         "Exactly 90°",
+         "Corner of a book"
+        ],
+        [
+         "Obtuse angle",
+         "More than 90° and less than 180°",
+         "Hands of a clock at 5 o'clock"
+        ],
+        [
+         "Straight angle",
+         "Exactly 180°",
+         "Hands at 6 o'clock"
+        ],
+        [
+         "Reflex angle",
+         "More than 180° and less than 360°",
+         "The outer side of an open pair of scissors"
+        ],
+        [
+         "Complete angle",
+         "Exactly 360°",
+         "One full turn of a wheel"
+        ]
+       ],
+       "hi": [
+        [
+         "शून्य कोण",
+         "0°",
+         "दोनों भुजाएँ एक-दूसरे पर (कोई घुमाव नहीं)"
+        ],
+        [
+         "न्यून कोण",
+         "0° से अधिक और 90° से कम",
+         "पेंसिल की नोक, पिज़्ज़ा का टुकड़ा"
+        ],
+        [
+         "समकोण",
+         "ठीक 90°",
+         "किताब का कोना"
+        ],
+        [
+         "अधिक कोण",
+         "90° से अधिक और 180° से कम",
+         "5 बजे घड़ी की सुइयाँ"
+        ],
+        [
+         "ऋजुकोण",
+         "ठीक 180°",
+         "6 बजे की सुइयाँ"
+        ],
+        [
+         "प्रतिवर्ती कोण",
+         "180° से अधिक और 360° से कम",
+         "खुली कैंची का बाहरी भाग"
+        ],
+        [
+         "संपूर्ण कोण",
+         "ठीक 360°",
+         "पहिए का एक पूरा चक्कर"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Reflex angle",
+       "hi": "प्रतिवर्ती कोण"
+      },
+      "text": {
+       "en": "An angle greater than 180° and less than 360°. Every pair of arms makes two angles: the smaller one inside and a larger one going the long way round. If the inside angle is a°, the reflex angle is 360° − a°.",
+       "hi": "180° से बड़ा और 360° से छोटा कोण। भुजाओं का हर जोड़ा दो कोण बनाता है: अंदर का छोटा कोण और लंबे रास्ते से घूमने वाला बड़ा कोण। यदि अंदर का कोण a° है, तो प्रतिवर्ती कोण 360° − a° है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Reflex angle = 360° − (the smaller angle between the same arms)",
+      "hi": "प्रतिवर्ती कोण = 360° − (उन्हीं भुजाओं के बीच का छोटा कोण)"
+     }
+    },
+    {
+     "p": {
+      "en": "To measure a reflex angle with a half-circle protractor, measure the smaller angle between the arms and subtract it from 360°. To draw a reflex angle of, say, 195°, draw the smaller angle 360° − 195° = 165° and then mark the outer side with a curve; or draw a straight angle (180°) and add 15° beyond it.",
+      "hi": "अर्धवृत्ताकार चाँदे से प्रतिवर्ती कोण मापने के लिए भुजाओं के बीच का छोटा कोण मापिए और उसे 360° में से घटाइए। मान लीजिए 195° का प्रतिवर्ती कोण बनाना है, तो छोटा कोण 360° − 195° = 165° बनाइए और फिर बाहरी ओर वक्र लगाइए; या ऋजुकोण (180°) बनाकर उसके आगे 15° और जोड़िए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Let's explore: angles on a straight line. Suppose R, E, B lie on a straight line with E in the middle, so ∠REB is a straight angle of 180°. If a ray ET makes ∠TER = 80°, then the other part ∠TEB = 180° − 80° = 100°, because the two parts together make the straight angle. In general, if a ray stands on a straight line, the two angles it makes add up to 180°.",
+      "hi": "आओ खोजें: सीधी रेखा पर कोण। मान लीजिए R, E, B एक सीधी रेखा पर हैं और E बीच में है, इसलिए ∠REB 180° का ऋजुकोण है। यदि किरण ET से ∠TER = 80° बनता है, तो दूसरा भाग ∠TEB = 180° − 80° = 100° है, क्योंकि दोनों भाग मिलकर ऋजुकोण बनाते हैं। सामान्यतः यदि कोई किरण सीधी रेखा पर खड़ी हो, तो उसके बनाए दोनों कोणों का योग 180° होता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Angles on a straight line add up to 180°.  Angles all the way round a point add up to 360°.",
+      "hi": "सीधी रेखा पर बने कोणों का योग 180° होता है। किसी बिंदु के चारों ओर बने सभी कोणों का योग 360° होता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Angles in the Ashoka Chakra: the chakra on our national flag has 24 equally spaced spokes. Going all the way round is 360°, so the angle between two neighbouring spokes is 360° ÷ 24 = 15°. The angle between spokes that are k places apart is k × 15°, as long as this is at most 180°. The largest acute angle between two spokes is 5 × 15° = 75° (6 places apart gives 90°, which is not acute).",
+      "hi": "अशोक चक्र में कोण: हमारे राष्ट्रीय ध्वज के चक्र में 24 समान दूरी पर तीलियाँ हैं। पूरा चक्कर 360° है, इसलिए दो पास-पास की तीलियों के बीच का कोण 360° ÷ 24 = 15° है। k स्थान दूर की तीलियों के बीच का कोण k × 15° है, जब तक यह 180° से अधिक न हो। दो तीलियों के बीच सबसे बड़ा न्यून कोण 5 × 15° = 75° है (6 स्थान दूर पर 90° बनता है, जो न्यून नहीं है)।"
+     }
+    },
+    {
+     "note": {
+      "en": "Acute and obtuse do not include their boundaries: 90° is neither acute nor obtuse, it is a right angle; 180° is a straight angle, not obtuse or reflex.",
+      "hi": "न्यून और अधिक कोण में उनकी सीमाएँ शामिल नहीं होतीं: 90° न न्यून है न अधिक, वह समकोण है; 180° ऋजुकोण है, न अधिक न प्रतिवर्ती।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Classify: 35°, 90°, 145°, 180°, 220°, 359°, 89°, 91°.",
+       "hi": "वर्गीकृत कीजिए: 35°, 90°, 145°, 180°, 220°, 359°, 89°, 91°।"
+      },
+      "a": {
+       "en": "35°: acute. 90°: right. 145°: obtuse. 180°: straight. 220°: reflex. 359°: reflex. 89°: acute. 91°: obtuse.",
+       "hi": "35°: न्यून। 90°: समकोण। 145°: अधिक। 180°: ऋजु। 220°: प्रतिवर्ती। 359°: प्रतिवर्ती। 89°: न्यून। 91°: अधिक।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "The smaller angle between two arms is 75°. What is the reflex angle? Also, if ∠PQR on a straight line PQS has ∠PQR = 130°, find ∠RQS.",
+       "hi": "दो भुजाओं के बीच का छोटा कोण 75° है। प्रतिवर्ती कोण क्या है? साथ ही, सीधी रेखा PQS पर ∠PQR = 130° हो तो ∠RQS ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Reflex angle = 360° − 75° = 285°.\nP, Q, S are on a straight line, so ∠PQS = 180°.\n∠RQS = 180° − 130° = 50°.",
+       "hi": "प्रतिवर्ती कोण = 360° − 75° = 285°।\nP, Q, S एक सीधी रेखा पर हैं, इसलिए ∠PQS = 180°।\n∠RQS = 180° − 130° = 50°।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Puzzle: I am an acute angle. If you double me, triple me or make me four times, I am still acute. But five times me is obtuse. What can I measure?",
+       "hi": "पहेली: मैं एक न्यून कोण हूँ। मुझे दुगुना, तिगुना या चौगुना करो, तब भी मैं न्यून रहता हूँ। पर मेरा पाँच गुना अधिक कोण है। मेरा माप क्या हो सकता है?"
+      },
+      "a": {
+       "en": "Let the angle be x°.\n4 × x is acute, so 4x < 90, giving x < 22.5.\n5 × x is obtuse, so 5x > 90, giving x > 18 (and 5x < 180 is then automatic).\nSo x is more than 18° and less than 22.5°.\nWhole-number answers: 19°, 20°, 21°, 22°. Check 20°: 80° acute, 100° obtuse.",
+       "hi": "मान लीजिए कोण x° है।\n4 × x न्यून है, इसलिए 4x < 90, जिससे x < 22.5।\n5 × x अधिक है, इसलिए 5x > 90, जिससे x > 18 (और तब 5x < 180 अपने-आप सही है)।\nअतः x, 18° से अधिक और 22.5° से कम है।\nपूर्ण संख्या वाले उत्तर: 19°, 20°, 21°, 22°। 20° की जाँच: 80° न्यून, 100° अधिक।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking a longer-armed angle is bigger. Fix: the size of an angle is the amount of turn between the arms; arm length does not matter.",
+   "Writing the vertex letter at the end, like ∠ABC for an angle whose vertex is A. Fix: the vertex always goes in the middle: ∠BAC.",
+   "Treating ray AB and ray BA as the same. Fix: a ray is named starting point first; AB starts at A, BA starts at B and points the other way.",
+   "Saying a line has a length or two end points. Fix: only a line segment has end points and a measurable length; a line goes on forever both ways.",
+   "Reading the wrong protractor scale, for example 130° for an acute angle. Fix: use the scale that shows 0° on the base arm, and check that the answer fits how the angle looks.",
+   "Not placing the protractor centre on the vertex, or not lining the base line up with an arm. Fix: centre on the vertex, base line along one arm, every time.",
+   "Calling 90° acute or obtuse, or 180° obtuse. Fix: acute is strictly less than 90°, obtuse is strictly between 90° and 180°; 90° is right and 180° is straight.",
+   "Using ∠P when several angles share vertex P. Fix: use three letters so the angle is clear.",
+   "Forgetting that a reflex angle is the 'outside' angle and measuring only the inside. Fix: reflex angle = 360° − inside angle.",
+   "At 9 o'clock saying the clock hands make 270° without thinking. Fix: the smaller angle is 90°; 270° is the reflex angle going the other way. Say which one you mean."
+  ],
+  "hi": [
+   "लंबी भुजाओं वाले कोण को बड़ा समझना। सुधार: कोण का माप भुजाओं के बीच का घुमाव है; भुजा की लंबाई मायने नहीं रखती।",
+   "शीर्ष का अक्षर अंत में लिखना, जैसे जिस कोण का शीर्ष A है उसे ∠ABC लिखना। सुधार: शीर्ष हमेशा बीच में: ∠BAC।",
+   "किरण AB और किरण BA को एक मानना। सुधार: किरण के नाम में आरंभ बिंदु पहले लिखा जाता है; AB, A से शुरू होती है, BA, B से शुरू होकर दूसरी ओर जाती है।",
+   "यह कहना कि रेखा की लंबाई या दो अंत्य बिंदु होते हैं। सुधार: केवल रेखाखंड के अंत्य बिंदु और मापने योग्य लंबाई होती है; रेखा दोनों ओर अनंत तक जाती है।",
+   "चाँदे का गलत पैमाना पढ़ना, जैसे न्यून कोण के लिए 130°। सुधार: उस पैमाने का उपयोग करें जो आधार भुजा पर 0° दिखाता है, और जाँचें कि उत्तर कोण के दिखने के अनुरूप है।",
+   "चाँदे के केंद्र को शीर्ष पर न रखना, या आधार रेखा को भुजा पर न मिलाना। सुधार: हर बार केंद्र शीर्ष पर, आधार रेखा एक भुजा पर।",
+   "90° को न्यून या अधिक, या 180° को अधिक कहना। सुधार: न्यून 90° से कम है, अधिक 90° और 180° के बीच है; 90° समकोण और 180° ऋजुकोण है।",
+   "जब कई कोणों का शीर्ष P हो, तब ∠P लिखना। सुधार: तीन अक्षर प्रयोग करें ताकि कोण स्पष्ट हो।",
+   "भूल जाना कि प्रतिवर्ती कोण 'बाहरी' कोण है और केवल अंदर का कोण मापना। सुधार: प्रतिवर्ती कोण = 360° − अंदर का कोण।",
+   "बिना सोचे कहना कि 9 बजे सुइयाँ 270° बनाती हैं। सुधार: छोटा कोण 90° है; 270° दूसरी ओर का प्रतिवर्ती कोण है। बताइए कि आपका आशय कौन-सा है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Point",
+    "hi": "बिंदु"
+   },
+   "d": {
+    "en": "An exact location with no size; named by a capital letter.",
+    "hi": "बिना आकार का सटीक स्थान; बड़े अक्षर से नाम रखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Line segment",
+    "hi": "रेखाखंड"
+   },
+   "d": {
+    "en": "The shortest straight path between two points, including them; it has a fixed length.",
+    "hi": "दो बिंदुओं के बीच का सबसे छोटा सीधा रास्ता, उन बिंदुओं सहित; इसकी निश्चित लंबाई होती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "End points",
+    "hi": "अंत्य बिंदु"
+   },
+   "d": {
+    "en": "The two points at the ends of a line segment.",
+    "hi": "रेखाखंड के सिरों पर स्थित दो बिंदु।"
+   }
+  },
+  {
+   "t": {
+    "en": "Line",
+    "hi": "रेखा"
+   },
+   "d": {
+    "en": "A straight path extending endlessly in both directions.",
+    "hi": "दोनों दिशाओं में अनंत तक फैला सीधा रास्ता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ray",
+    "hi": "किरण"
+   },
+   "d": {
+    "en": "A straight path starting at one point and going endlessly in one direction.",
+    "hi": "एक बिंदु से शुरू होकर एक दिशा में अनंत तक जाने वाला सीधा रास्ता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Initial point",
+    "hi": "प्रारंभिक बिंदु"
+   },
+   "d": {
+    "en": "The starting point of a ray.",
+    "hi": "किरण का आरंभ बिंदु।"
+   }
+  },
+  {
+   "t": {
+    "en": "Opposite rays",
+    "hi": "विपरीत किरणें"
+   },
+   "d": {
+    "en": "Two rays from the same point going in opposite directions along one line.",
+    "hi": "एक ही बिंदु से एक रेखा पर विपरीत दिशाओं में जाने वाली दो किरणें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Collinear points",
+    "hi": "संरेख बिंदु"
+   },
+   "d": {
+    "en": "Points that lie on the same line.",
+    "hi": "एक ही रेखा पर स्थित बिंदु।"
+   }
+  },
+  {
+   "t": {
+    "en": "Intersecting lines",
+    "hi": "प्रतिच्छेदी रेखाएँ"
+   },
+   "d": {
+    "en": "Lines that meet at a point.",
+    "hi": "किसी बिंदु पर मिलने वाली रेखाएँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Angle",
+    "hi": "कोण"
+   },
+   "d": {
+    "en": "The figure formed by two rays with a common starting point.",
+    "hi": "साझे आरंभ बिंदु वाली दो किरणों से बनी आकृति।"
+   }
+  },
+  {
+   "t": {
+    "en": "Vertex",
+    "hi": "शीर्ष"
+   },
+   "d": {
+    "en": "The common starting point of the two arms of an angle.",
+    "hi": "कोण की दोनों भुजाओं का साझा आरंभ बिंदु।"
+   }
+  },
+  {
+   "t": {
+    "en": "Arms",
+    "hi": "भुजाएँ"
+   },
+   "d": {
+    "en": "The two rays that form an angle.",
+    "hi": "कोण बनाने वाली दो किरणें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Superimposition",
+    "hi": "अध्यारोपण"
+   },
+   "d": {
+    "en": "Placing one figure exactly on top of another to compare them.",
+    "hi": "तुलना के लिए एक आकृति को दूसरी के ठीक ऊपर रखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Degree",
+    "hi": "अंश (डिग्री)"
+   },
+   "d": {
+    "en": "The unit of angle; one full turn is 360 degrees (360°).",
+    "hi": "कोण की इकाई; एक पूरा घुमाव 360 अंश (360°) है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Protractor",
+    "hi": "चाँदा"
+   },
+   "d": {
+    "en": "An instrument marked 0° to 180° for measuring and drawing angles.",
+    "hi": "कोण मापने और बनाने का उपकरण जिस पर 0° से 180° तक निशान होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Angle bisector",
+    "hi": "कोण समद्विभाजक"
+   },
+   "d": {
+    "en": "A ray dividing an angle into two equal angles.",
+    "hi": "कोण को दो बराबर कोणों में बाँटने वाली किरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Zero angle",
+    "hi": "शून्य कोण"
+   },
+   "d": {
+    "en": "An angle of 0°, where both arms lie on each other.",
+    "hi": "0° का कोण, जिसमें दोनों भुजाएँ एक-दूसरे पर होती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Acute angle",
+    "hi": "न्यून कोण"
+   },
+   "d": {
+    "en": "An angle more than 0° and less than 90°.",
+    "hi": "0° से अधिक और 90° से कम का कोण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Right angle",
+    "hi": "समकोण"
+   },
+   "d": {
+    "en": "An angle of exactly 90°, a quarter turn.",
+    "hi": "ठीक 90° का कोण, चौथाई घुमाव।"
+   }
+  },
+  {
+   "t": {
+    "en": "Obtuse angle",
+    "hi": "अधिक कोण"
+   },
+   "d": {
+    "en": "An angle more than 90° and less than 180°.",
+    "hi": "90° से अधिक और 180° से कम का कोण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Straight angle",
+    "hi": "ऋजुकोण"
+   },
+   "d": {
+    "en": "An angle of exactly 180°, whose arms form a straight line.",
+    "hi": "ठीक 180° का कोण, जिसकी भुजाएँ सीधी रेखा बनाती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reflex angle",
+    "hi": "प्रतिवर्ती कोण"
+   },
+   "d": {
+    "en": "An angle more than 180° and less than 360°.",
+    "hi": "180° से अधिक और 360° से कम का कोण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Complete angle",
+    "hi": "संपूर्ण कोण"
+   },
+   "d": {
+    "en": "An angle of 360°, one full turn.",
+    "hi": "360° का कोण, एक पूरा घुमाव।"
+   }
+  },
+  {
+   "t": {
+    "en": "Perpendicular lines",
+    "hi": "लंब रेखाएँ"
+   },
+   "d": {
+    "en": "Lines that meet at a right angle; written with the symbol ⊥.",
+    "hi": "समकोण पर मिलने वाली रेखाएँ; चिह्न ⊥ से लिखी जाती हैं।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "How many lines can be drawn through one point? Through two different points?",
+    "hi": "एक बिंदु से कितनी रेखाएँ खींची जा सकती हैं? दो अलग बिंदुओं से?"
+   },
+   "a": {
+    "en": "Through one point: endlessly many (infinitely many) lines, in every direction.\nThrough two different points: exactly one line.",
+    "hi": "एक बिंदु से: अनगिनत (अनंत) रेखाएँ, हर दिशा में।\nदो अलग बिंदुओं से: ठीक एक रेखा।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Say whether each is best modelled by a point, a line segment or a ray: (a) the edge of a ruler (b) a beam of car headlight (c) the tip of a needle (d) a tight clothesline between two poles.",
+    "hi": "बताइए कि हर एक का सबसे अच्छा नमूना बिंदु, रेखाखंड या किरण में से क्या है: (a) पटरी का किनारा (b) कार की हेडलाइट का प्रकाश (c) सुई की नोक (d) दो खंभों के बीच तनी कपड़े सुखाने की रस्सी।"
+   },
+   "a": {
+    "en": "(a) Line segment (two ends, fixed length).\n(b) Ray (starts at the headlight, goes on in one direction).\n(c) Point (an exact place).\n(d) Line segment (ends at the two poles).",
+    "hi": "(a) रेखाखंड (दो सिरे, निश्चित लंबाई)।\n(b) किरण (हेडलाइट से शुरू, एक दिशा में आगे)।\n(c) बिंदु (सटीक स्थान)।\n(d) रेखाखंड (दोनों खंभों पर ख़त्म)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Points L, M, N, O lie on a line in that order. Name all the line segments.",
+    "hi": "बिंदु L, M, N, O एक रेखा पर इसी क्रम में हैं। सभी रेखाखंडों के नाम लिखिए।"
+   },
+   "a": {
+    "en": "Segments: LM, LN, LO, MN, MO, NO.\nTotal = 3 + 2 + 1 = 6 segments.",
+    "hi": "रेखाखंड: LM, LN, LO, MN, MO, NO।\nकुल = 3 + 2 + 1 = 6 रेखाखंड।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Five points P, Q, R, S, T are marked. Segments drawn are PQ, QR, RS and QT. Which points lie on exactly one segment, and which on two or more?",
+    "hi": "पाँच बिंदु P, Q, R, S, T अंकित हैं। खींचे गए रेखाखंड PQ, QR, RS और QT हैं। कौन-से बिंदु ठीक एक रेखाखंड पर हैं, और कौन-से दो या अधिक पर?"
+   },
+   "a": {
+    "en": "Count for each point: P is in PQ only (1). Q is in PQ, QR, QT (3). R is in QR, RS (2). S is in RS only (1). T is in QT only (1).\nExactly one segment: P, S, T. Two or more: Q (3) and R (2).",
+    "hi": "हर बिंदु के लिए गिनती: P केवल PQ में (1)। Q, PQ, QR, QT में (3)। R, QR, RS में (2)। S केवल RS में (1)। T केवल QT में (1)।\nठीक एक रेखाखंड पर: P, S, T। दो या अधिक पर: Q (3) और R (2)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Draw and label an angle whose arms are rays MN and MK. What is its vertex? Give its two names.",
+    "hi": "एक कोण बनाकर नामांकित कीजिए जिसकी भुजाएँ किरणें MN और MK हों। इसका शीर्ष क्या है? इसके दो नाम लिखिए।"
+   },
+   "a": {
+    "en": "Mark M. Draw a ray from M through N and another from M through K, and mark the opening with a small arc.\nVertex: M (the common starting point).\nNames: ∠NMK and ∠KMN.",
+    "hi": "M अंकित कीजिए। M से N होकर एक किरण और M से K होकर दूसरी किरण खींचिए, और खुलाव पर छोटा चाप लगाइए।\nशीर्ष: M (साझा आरंभ बिंदु)।\nनाम: ∠NMK और ∠KMN।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Why can ∠DOC not be written simply as ∠O in a figure where rays OA, OB, OC and OD all start at O?",
+    "hi": "जिस आकृति में किरणें OA, OB, OC और OD सभी O से शुरू होती हैं, वहाँ ∠DOC को केवल ∠O क्यों नहीं लिख सकते?"
+   },
+   "a": {
+    "en": "Many angles share the vertex O: ∠AOB, ∠BOC, ∠COD, ∠AOC, ∠BOD, ∠AOD.\nWriting ∠O would not tell which of these six angles we mean, so three letters are needed.",
+    "hi": "कई कोणों का शीर्ष O है: ∠AOB, ∠BOC, ∠COD, ∠AOC, ∠BOD, ∠AOD।\n∠O लिखने से पता नहीं चलेगा कि इन छह में से कौन-सा कोण है, इसलिए तीन अक्षर चाहिए।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Classify each angle: 15°, 90°, 100°, 180°, 250°, 360°, 0°.",
+    "hi": "हर कोण को वर्गीकृत कीजिए: 15°, 90°, 100°, 180°, 250°, 360°, 0°।"
+   },
+   "a": {
+    "en": "15°: acute. 90°: right. 100°: obtuse. 180°: straight. 250°: reflex. 360°: complete. 0°: zero angle.",
+    "hi": "15°: न्यून। 90°: समकोण। 100°: अधिक। 180°: ऋजु। 250°: प्रतिवर्ती। 360°: संपूर्ण। 0°: शून्य कोण।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What fraction of a full turn is (a) 90° (b) 180° (c) 45° (d) 120°?",
+    "hi": "पूरे घुमाव का कितना भाग है (a) 90° (b) 180° (c) 45° (d) 120°?"
+   },
+   "a": {
+    "en": "Full turn = 360°.\n(a) 90 ÷ 360 = 1/4 (quarter turn).\n(b) 180 ÷ 360 = 1/2 (half turn).\n(c) 45 ÷ 360 = 1/8.\n(d) 120 ÷ 360 = 1/3.",
+    "hi": "पूरा घुमाव = 360°।\n(a) 90 ÷ 360 = 1/4 (चौथाई घुमाव)।\n(b) 180 ÷ 360 = 1/2 (आधा घुमाव)।\n(c) 45 ÷ 360 = 1/8।\n(d) 120 ÷ 360 = 1/3।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In a figure, line AB passes through O, and rays OC and OD go up from O. Name: 4 rays, 1 line and 5 line segments (using A, B, C, D, O).",
+    "hi": "एक आकृति में रेखा AB, O से होकर जाती है, और किरणें OC और OD, O से ऊपर जाती हैं। नाम लिखिए: 4 किरणें, 1 रेखा और 5 रेखाखंड (A, B, C, D, O का उपयोग करके)।"
+   },
+   "a": {
+    "en": "Rays: OA, OB, OC, OD.\nLine: AB.\nSegments: OA, OB, OC, OD and AB.",
+    "hi": "किरणें: OA, OB, OC, OD।\nरेखा: AB।\nरेखाखंड: OA, OB, OC, OD और AB।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain why rotating arms with arms of 5 cm and 15 cm can both fit the same angle-shaped slit.",
+    "hi": "समझाइए कि 5 cm और 15 cm भुजाओं वाली घूमने वाली भुजाएँ दोनों एक ही कोण-आकार की दरार में क्यों फ़िट हो सकती हैं।"
+   },
+   "a": {
+    "en": "A slit fits an angle only if the opening of the arms equals the slit's angle.\nThe size of an angle depends on the turn between the arms, not on arm length.\nIf both models are opened to the same amount (and the arms fit inside the slit's length), both fit.",
+    "hi": "दरार में कोई कोण तभी फ़िट होता है जब भुजाओं का खुलाव दरार के कोण के बराबर हो।\nकोण का माप भुजाओं के बीच के घुमाव पर निर्भर करता है, लंबाई पर नहीं।\nयदि दोनों नमूने समान रूप से खुले हों (और भुजाएँ दरार की लंबाई में आ जाएँ), तो दोनों फ़िट होंगे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the angle between the hands of a clock at 3 o'clock, 5 o'clock and 10 o'clock (the smaller angle each time).",
+    "hi": "3 बजे, 5 बजे और 10 बजे घड़ी की सुइयों के बीच का कोण ज्ञात कीजिए (हर बार छोटा कोण)।"
+   },
+   "a": {
+    "en": "Each hour gap = 30°.\n3 o'clock: 3 × 30° = 90°.\n5 o'clock: 5 × 30° = 150°.\n10 o'clock: going from 12 back to 10 is 2 gaps = 60° (the other way is 300°).",
+    "hi": "हर घंटे का अंतर = 30°।\n3 बजे: 3 × 30° = 90°।\n5 बजे: 5 × 30° = 150°।\n10 बजे: 12 से पीछे 10 तक 2 अंतर = 60° (दूसरी ओर 300°)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "On a square dot grid, from point A the 8 nearest dots are right, up-right, up, up-left, left, down-left, down and down-right. List all the ways to make a straight angle at A using two of these dots.",
+    "hi": "वर्गाकार बिंदु-जाल पर बिंदु A के 8 सबसे पास के बिंदु दाएँ, ऊपर-दाएँ, ऊपर, ऊपर-बाएँ, बाएँ, नीचे-बाएँ, नीचे और नीचे-दाएँ हैं। इनमें से दो बिंदुओं का उपयोग करके A पर ऋजुकोण बनाने के सभी तरीके लिखिए।"
+   },
+   "a": {
+    "en": "A straight angle needs two opposite directions.\n1. Left and right.\n2. Up and down.\n3. Up-right and down-left.\n4. Up-left and down-right.\nSo there are 4 ways.",
+    "hi": "ऋजुकोण के लिए दो विपरीत दिशाएँ चाहिए।\n1. बाएँ और दाएँ।\n2. ऊपर और नीचे।\n3. ऊपर-दाएँ और नीचे-बाएँ।\n4. ऊपर-बाएँ और नीचे-दाएँ।\nअतः 4 तरीके हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Using the same 8 directions from A, how many right angles can be made? Give two examples.",
+    "hi": "A से उन्हीं 8 दिशाओं का उपयोग करके कितने समकोण बनाए जा सकते हैं? दो उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Neighbouring directions are 45° apart, so a right angle needs directions 2 steps apart (2 × 45° = 90°).\nStarting from each of the 8 directions and going 2 steps anticlockwise gives a different pair: 8 right angles.\nExamples: right and up; up-right and up-left.",
+    "hi": "पास-पास की दिशाओं में 45° का अंतर है, इसलिए समकोण के लिए 2 कदम दूर की दिशाएँ चाहिए (2 × 45° = 90°)।\n8 दिशाओं में से हर एक से शुरू करके 2 कदम वामावर्त जाने पर एक अलग जोड़ा मिलता है: 8 समकोण।\nउदाहरण: दाएँ और ऊपर; ऊपर-दाएँ और ऊपर-बाएँ।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Draw angles of 40°, 75° and 134° with a protractor. Write the steps for 134°.",
+    "hi": "चाँदे से 40°, 75° और 134° के कोण बनाइए। 134° के चरण लिखिए।"
+   },
+   "a": {
+    "en": "For 134°: draw ray OB; put the protractor centre on O and base line on OB; on the scale with 0° at OB, count past 90° to 134° and mark A; join OA.\n∠AOB = 134°, an obtuse angle, so it should look wider than a page corner.\n40° and 75° are drawn the same way; both should look narrower than a page corner.",
+    "hi": "134° के लिए: किरण OB खींचिए; चाँदे का केंद्र O पर और आधार रेखा OB पर रखिए; OB पर 0° वाले पैमाने पर 90° से आगे 134° तक गिनकर A अंकित कीजिए; OA मिलाइए।\n∠AOB = 134°, एक अधिक कोण, इसलिए यह पृष्ठ के कोने से अधिक खुला दिखना चाहिए।\n40° और 75° इसी तरह बनते हैं; दोनों पृष्ठ के कोने से कम खुले दिखने चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Rays QP, QS, QT, QR start at Q. A protractor with base along QR reads QS at 50°, QT at 95° and QP at 140° (scale starting at QR). Find ∠RQS, ∠SQT, ∠TQP and ∠RQP, and classify each.",
+    "hi": "किरणें QP, QS, QT, QR बिंदु Q से शुरू होती हैं। QR पर आधार वाले चाँदे पर (QR से शुरू होने वाले पैमाने पर) QS 50° पर, QT 95° पर और QP 140° पर है। ∠RQS, ∠SQT, ∠TQP और ∠RQP ज्ञात कीजिए, और हर एक को वर्गीकृत कीजिए।"
+   },
+   "a": {
+    "en": "∠RQS = 50° (acute).\n∠SQT = 95° − 50° = 45° (acute).\n∠TQP = 140° − 95° = 45° (acute).\n∠RQP = 140° (obtuse).\nCheck: 50 + 45 + 45 = 140.",
+    "hi": "∠RQS = 50° (न्यून)।\n∠SQT = 95° − 50° = 45° (न्यून)।\n∠TQP = 140° − 95° = 45° (न्यून)।\n∠RQP = 140° (अधिक)।\nजाँच: 50 + 45 + 45 = 140।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A ray OC stands on line AB at O, with ∠AOC = 65°. Find ∠COB. If instead ∠COB is a right angle, what is ∠AOC?",
+    "hi": "किरण OC रेखा AB पर बिंदु O पर खड़ी है, और ∠AOC = 65° है। ∠COB ज्ञात कीजिए। यदि इसके बजाय ∠COB समकोण हो, तो ∠AOC क्या है?"
+   },
+   "a": {
+    "en": "∠AOB is a straight angle = 180°.\n∠COB = 180° − 65° = 115°.\nIf ∠COB = 90°, then ∠AOC = 180° − 90° = 90°, and OC is perpendicular to AB.",
+    "hi": "∠AOB ऋजुकोण = 180° है।\n∠COB = 180° − 65° = 115°।\nयदि ∠COB = 90°, तो ∠AOC = 180° − 90° = 90°, और OC, AB पर लंब है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Draw reflex angles of 195° and 300°. Explain how, using only a 0° to 180° protractor.",
+    "hi": "195° और 300° के प्रतिवर्ती कोण बनाइए। केवल 0° से 180° वाले चाँदे से कैसे बनाएँ, समझाइए।"
+   },
+   "a": {
+    "en": "195°: the inside angle is 360° − 195° = 165°. Draw ∠AOB = 165° and mark the outside with a curve: that is 195°.\n300°: inside angle = 360° − 300° = 60°. Draw a 60° angle and mark its outside: that is 300°.",
+    "hi": "195°: अंदर का कोण 360° − 195° = 165° है। ∠AOB = 165° बनाइए और बाहरी ओर वक्र लगाइए: वही 195° है।\n300°: अंदर का कोण = 360° − 300° = 60°। 60° का कोण बनाकर उसके बाहरी भाग को अंकित कीजिए: वही 300° है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Fold a 90° corner of a page so that its two edges meet. What angle does the crease make with each edge? What is the crease called?",
+    "hi": "पृष्ठ के 90° वाले कोने को ऐसे मोड़िए कि उसके दोनों किनारे मिल जाएँ। सिलवट हर किनारे से कितना कोण बनाती है? सिलवट को क्या कहते हैं?"
+   },
+   "a": {
+    "en": "The fold puts one arm on the other, so the crease splits 90° into two equal parts.\nEach angle = 90° ÷ 2 = 45°.\nThe crease is the angle bisector of the right angle.",
+    "hi": "मोड़ने से एक भुजा दूसरी पर आ जाती है, इसलिए सिलवट 90° को दो बराबर भागों में बाँटती है।\nहर कोण = 90° ÷ 2 = 45°।\nसिलवट समकोण का कोण समद्विभाजक है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Measured angles of three triangles are: (a) 90°, 35°, 55° (b) 40°, 60°, 80° (c) 120°, 30°, 30°. Add each set. What do you notice?",
+    "hi": "तीन त्रिभुजों के मापे गए कोण हैं: (a) 90°, 35°, 55° (b) 40°, 60°, 80° (c) 120°, 30°, 30°। हर समूह जोड़िए। आप क्या देखते हैं?"
+   },
+   "a": {
+    "en": "(a) 90 + 35 + 55 = 180.\n(b) 40 + 60 + 80 = 180.\n(c) 120 + 30 + 30 = 180.\nConjecture: the three angles of any triangle add up to 180°.",
+    "hi": "(a) 90 + 35 + 55 = 180।\n(b) 40 + 60 + 80 = 180।\n(c) 120 + 30 + 30 = 180।\nअनुमान: किसी भी त्रिभुज के तीनों कोणों का योग 180° होता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Draw the letter M so that the two outer slanting angles at the bottom are 40° each and the middle angle at the top of the V is 60°. Describe how.",
+    "hi": "अक्षर M ऐसे बनाइए कि नीचे के दोनों बाहरी तिरछे कोण 40°-40° हों और बीच के V के ऊपर का कोण 60° हो। तरीका बताइए।"
+   },
+   "a": {
+    "en": "Step 1: Draw the left leg AB going up from A. At the top B, draw stroke BC down to C making ∠ABC = 40° with a protractor centred at B.\nStep 2: At C (the bottom of the middle V), draw CD up making ∠BCD = 60°.\nStep 3: At D draw the right leg DE down making ∠CDE = 40°.\nThe letter A-B-C-D-E is an M with angles 40°, 60°, 40°.",
+    "hi": "चरण 1: A से ऊपर बाईं टाँग AB खींचिए। ऊपर B पर, B पर केंद्रित चाँदे से ∠ABC = 40° बनाते हुए नीचे C तक BC खींचिए।\nचरण 2: C पर (बीच के V का निचला बिंदु), ∠BCD = 60° बनाते हुए ऊपर CD खींचिए।\nचरण 3: D पर ∠CDE = 40° बनाते हुए नीचे दाईं टाँग DE खींचिए।\nअक्षर A-B-C-D-E, 40°, 60°, 40° कोणों वाला M है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Draw the letter Y where the two upper arms make 60° with each other and each upper arm makes 150° with the stem. Check that the angles round the centre add up correctly.",
+    "hi": "अक्षर Y ऐसे बनाइए कि ऊपर की दोनों भुजाएँ आपस में 60° बनाएँ और हर ऊपरी भुजा तने से 150° बनाए। जाँचिए कि केंद्र के चारों ओर के कोणों का योग सही है।"
+   },
+   "a": {
+    "en": "Step 1: Draw the stem OS straight down from the centre O.\nStep 2: Measure 150° from OS on one side and draw arm OA.\nStep 3: Measure 150° from OS on the other side and draw arm OB.\nStep 4: The angle between OA and OB is 360° − 150° − 150° = 60°.\nCheck: 150 + 150 + 60 = 360, the full turn round O.",
+    "hi": "चरण 1: केंद्र O से सीधा नीचे तना OS खींचिए।\nचरण 2: एक ओर OS से 150° मापकर भुजा OA खींचिए।\nचरण 3: दूसरी ओर OS से 150° मापकर भुजा OB खींचिए।\nचरण 4: OA और OB के बीच का कोण 360° − 150° − 150° = 60° है।\nजाँच: 150 + 150 + 60 = 360, O के चारों ओर पूरा घुमाव।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "The Ashoka Chakra has 24 equally spaced spokes. Find (a) the angle between neighbouring spokes, (b) the angle between spokes 4 places apart, (c) the largest acute angle between two spokes.",
+    "hi": "अशोक चक्र में 24 समान दूरी वाली तीलियाँ हैं। ज्ञात कीजिए (a) पास-पास की तीलियों के बीच का कोण, (b) 4 स्थान दूर की तीलियों के बीच का कोण, (c) दो तीलियों के बीच सबसे बड़ा न्यून कोण।"
+   },
+   "a": {
+    "en": "(a) 360° ÷ 24 = 15°.\n(b) 4 × 15° = 60°.\n(c) Angles possible are 15°, 30°, 45°, 60°, 75°, 90°, .... The largest below 90° is 75° (spokes 5 places apart).",
+    "hi": "(a) 360° ÷ 24 = 15°।\n(b) 4 × 15° = 60°।\n(c) संभव कोण 15°, 30°, 45°, 60°, 75°, 90°, ... हैं। 90° से कम सबसे बड़ा 75° है (5 स्थान दूर की तीलियाँ)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "From one point O, draw 2 rays, then 3 rays, then 4 rays, then 5 rays, all within a half turn (fanning out). Count the angles (less than 180°) formed each time and find the pattern.",
+    "hi": "एक बिंदु O से पहले 2 किरणें, फिर 3, फिर 4, फिर 5 किरणें खींचिए, सब आधे घुमाव के भीतर (पंखे की तरह)। हर बार बने कोण (180° से कम) गिनिए और पैटर्न खोजिए।"
+   },
+   "a": {
+    "en": "Each pair of rays makes one angle.\n2 rays: 1 angle. 3 rays: 1 + 2 = 3. 4 rays: 1 + 2 + 3 = 6. 5 rays: 1 + 2 + 3 + 4 = 10.\nPattern: 1, 3, 6, 10, the triangular numbers from Chapter 1. With 6 rays there would be 15 angles.",
+    "hi": "किरणों का हर जोड़ा एक कोण बनाता है।\n2 किरणें: 1 कोण। 3 किरणें: 1 + 2 = 3। 4 किरणें: 1 + 2 + 3 = 6। 5 किरणें: 1 + 2 + 3 + 4 = 10।\nपैटर्न: 1, 3, 6, 10, अध्याय 1 की त्रिकोणीय संख्याएँ। 6 किरणों से 15 कोण बनेंगे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Puzzle: an acute angle stays acute when doubled and tripled, but becomes obtuse when multiplied by 4. Which whole-number measures are possible?",
+    "hi": "पहेली: एक न्यून कोण दुगुना और तिगुना करने पर न्यून रहता है, पर 4 से गुणा करने पर अधिक कोण बन जाता है। कौन-से पूर्ण संख्या वाले माप संभव हैं?"
+   },
+   "a": {
+    "en": "Let the angle be x°.\n3x < 90 gives x < 30.\n4x > 90 gives x > 22.5; also 4x < 180 gives x < 45, which is already true.\nSo 22.5 < x < 30. Whole numbers: 23°, 24°, 25°, 26°, 27°, 28°, 29°.\nCheck 29°: 3 × 29 = 87 (acute), 4 × 29 = 116 (obtuse).",
+    "hi": "मान लीजिए कोण x° है।\n3x < 90 से x < 30।\n4x > 90 से x > 22.5; साथ ही 4x < 180 से x < 45, जो पहले से सही है।\nअतः 22.5 < x < 30। पूर्ण संख्याएँ: 23°, 24°, 25°, 26°, 27°, 28°, 29°।\n29° की जाँच: 3 × 29 = 87 (न्यून), 4 × 29 = 116 (अधिक)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A door is opened from closed until it is at a right angle to the wall, and then opened further by 35°. (a) What angle does the door make with its closed position? (b) Where is the vertex and what are the arms? (c) What kind of angle is it?",
+    "hi": "एक दरवाज़ा बंद स्थिति से दीवार के समकोण तक खोला जाता है, और फिर 35° और खोला जाता है। (a) दरवाज़ा अपनी बंद स्थिति से कितना कोण बनाता है? (b) शीर्ष कहाँ है और भुजाएँ क्या हैं? (c) यह किस प्रकार का कोण है?"
+   },
+   "a": {
+    "en": "(a) 90° + 35° = 125°.\n(b) The vertex is on the hinge line. One arm is the closed position of the door (along the door frame/wall line); the other arm is the door in its open position.\n(c) 125° is between 90° and 180°, so it is obtuse.",
+    "hi": "(a) 90° + 35° = 125°।\n(b) शीर्ष कब्ज़े वाली रेखा पर है। एक भुजा दरवाज़े की बंद स्थिति है (चौखट/दीवार की रेखा पर); दूसरी भुजा खुली स्थिति में दरवाज़ा है।\n(c) 125°, 90° और 180° के बीच है, इसलिए यह अधिक कोण है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Draw a figure (describe it) that has exactly 3 acute angles, 1 right angle and 2 obtuse angles marked, using a straight line and rays.",
+    "hi": "एक सीधी रेखा और किरणों का उपयोग करके ऐसी आकृति (वर्णन करें) बनाइए जिसमें ठीक 3 न्यून कोण, 1 समकोण और 2 अधिक कोण अंकित हों।"
+   },
+   "a": {
+    "en": "One possible figure: draw line AB with point O on it. Draw ray OC perpendicular to AB, so ∠AOC = 90° (right) and ∠COB = 90°.\nInside ∠COB draw ray OD with ∠DOB = 30°, so ∠COD = 60°.\nMark these angles: ∠AOC = 90° (right); ∠DOB = 30° and ∠COD = 60° (acute); ∠AOD = 150° (obtuse).\nNow draw ray OE inside ∠AOC with ∠AOE = 40°, so ∠EOC = 50° (acute) and ∠EOB = 140° (obtuse).\nMarked: acute 30°, 60°, 50°; right 90°; obtuse 150°, 140°. That is 3 acute, 1 right, 2 obtuse.",
+    "hi": "एक संभव आकृति: रेखा AB और उस पर बिंदु O बनाइए। AB पर लंब किरण OC खींचिए, जिससे ∠AOC = 90° (समकोण) और ∠COB = 90°।\n∠COB के अंदर किरण OD ऐसे खींचिए कि ∠DOB = 30°, जिससे ∠COD = 60°।\nये कोण अंकित कीजिए: ∠AOC = 90° (समकोण); ∠DOB = 30° और ∠COD = 60° (न्यून); ∠AOD = 150° (अधिक)।\nअब ∠AOC के अंदर किरण OE ऐसे खींचिए कि ∠AOE = 40°, जिससे ∠EOC = 50° (न्यून) और ∠EOB = 140° (अधिक)।\nअंकित: न्यून 30°, 60°, 50°; समकोण 90°; अधिक 150°, 140°। यानी 3 न्यून, 1 समकोण, 2 अधिक।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "An insect faces east and turns anticlockwise until it faces north, then keeps turning until it faces south-west. How many degrees has it turned in all? Describe the angle's vertex and arms.",
+    "hi": "एक कीड़ा पूर्व की ओर मुँह किए है और वामावर्त घूमकर उत्तर की ओर हो जाता है, फिर घूमता रहता है जब तक दक्षिण-पश्चिम की ओर न हो जाए। उसने कुल कितने अंश घुमाव किया? कोण के शीर्ष और भुजाओं का वर्णन कीजिए।"
+   },
+   "a": {
+    "en": "Going anticlockwise from east: north is 90°, west is 180°, south-west is 180° + 45° = 225°.\nTotal turn = 225°, a reflex angle.\nVertex: the point where the insect stands. Arms: the ray pointing east (starting direction) and the ray pointing south-west (final direction).",
+    "hi": "पूर्व से वामावर्त: उत्तर 90° है, पश्चिम 180°, दक्षिण-पश्चिम 180° + 45° = 225°।\nकुल घुमाव = 225°, एक प्रतिवर्ती कोण।\nशीर्ष: वह बिंदु जहाँ कीड़ा खड़ा है। भुजाएँ: पूर्व की ओर जाने वाली किरण (शुरुआती दिशा) और दक्षिण-पश्चिम की ओर जाने वाली किरण (अंतिम दिशा)।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A point marks an exact location and has no size; it is named by a capital letter.",
+   "A line segment is the shortest path between two points, has two end points and a measurable length; AB = BA.",
+   "A line extends endlessly in both directions; through two points there is exactly one line, through one point endlessly many.",
+   "A ray starts at one point and goes on endlessly in one direction; its name starts with the starting point.",
+   "An angle is formed by two rays with a common starting point (the vertex); the rays are its arms; the vertex letter is written in the middle.",
+   "The size of an angle is the amount of turn between its arms and does not depend on arm length.",
+   "Angles can be compared by superimposition, by folding, or with a transparent circle.",
+   "A full turn is 360°, a straight angle 180°, a right angle 90°; lines meeting at 90° are perpendicular (⊥).",
+   "A protractor measures angles: centre on the vertex, base line on one arm, read the scale that starts at 0° on that arm.",
+   "An angle bisector divides an angle into two equal parts; it can be made by folding.",
+   "To draw an angle: draw one arm, place the protractor, mark the required degree, join to the vertex.",
+   "Types: zero (0°), acute (between 0° and 90°), right (90°), obtuse (between 90° and 180°), straight (180°), reflex (between 180° and 360°), complete (360°).",
+   "Angles on a straight line add to 180°; angles round a point add to 360°; the angles of a triangle add to 180°.",
+   "Angles are all around us: clock hands (30° per hour gap), doors, swings, slopes and turning."
+  ],
+  "hi": [
+   "बिंदु सटीक स्थान दर्शाता है और उसका कोई आकार नहीं होता; उसका नाम बड़े अक्षर से रखते हैं।",
+   "रेखाखंड दो बिंदुओं के बीच का सबसे छोटा रास्ता है, उसके दो अंत्य बिंदु और मापने योग्य लंबाई होती है; AB = BA।",
+   "रेखा दोनों दिशाओं में अनंत तक जाती है; दो बिंदुओं से ठीक एक रेखा, एक बिंदु से अनगिनत रेखाएँ।",
+   "किरण एक बिंदु से शुरू होकर एक दिशा में अनंत तक जाती है; उसका नाम आरंभ बिंदु से शुरू होता है।",
+   "कोण साझे आरंभ बिंदु (शीर्ष) वाली दो किरणों से बनता है; किरणें उसकी भुजाएँ हैं; शीर्ष का अक्षर बीच में लिखते हैं।",
+   "कोण का माप उसकी भुजाओं के बीच का घुमाव है और भुजा की लंबाई पर निर्भर नहीं करता।",
+   "कोणों की तुलना अध्यारोपण, मोड़ने या पारदर्शी वृत्त से की जा सकती है।",
+   "पूरा घुमाव 360°, ऋजुकोण 180°, समकोण 90° है; 90° पर मिलने वाली रेखाएँ लंब (⊥) हैं।",
+   "चाँदा कोण मापता है: केंद्र शीर्ष पर, आधार रेखा एक भुजा पर, उस भुजा पर 0° से शुरू होने वाला पैमाना पढ़ें।",
+   "कोण समद्विभाजक कोण को दो बराबर भागों में बाँटता है; इसे मोड़कर बनाया जा सकता है।",
+   "कोण बनाने के लिए: एक भुजा खींचें, चाँदा रखें, आवश्यक अंश अंकित करें, शीर्ष से मिलाएँ।",
+   "प्रकार: शून्य (0°), न्यून (0° और 90° के बीच), समकोण (90°), अधिक (90° और 180° के बीच), ऋजु (180°), प्रतिवर्ती (180° और 360° के बीच), संपूर्ण (360°)।",
+   "सीधी रेखा पर कोणों का योग 180°; किसी बिंदु के चारों ओर कोणों का योग 360°; त्रिभुज के कोणों का योग 180°।",
+   "कोण हमारे चारों ओर हैं: घड़ी की सुइयाँ (हर घंटे के अंतर पर 30°), दरवाज़े, झूले, ढलान और घूमना।"
+  ]
+ }
+}

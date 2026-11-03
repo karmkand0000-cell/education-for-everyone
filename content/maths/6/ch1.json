@@ -1,0 +1,1774 @@
+{
+ "v": 1,
+ "sub": "maths",
+ "lv": "6",
+ "id": "ch1",
+ "intro": {
+  "en": "Mathematics is, at its heart, the search for patterns and for the reasons behind them. In this chapter we look at famous sequences of numbers such as odd numbers, triangular numbers, square numbers, cubes, Virahānka numbers and powers of 2 and 3. We draw them as pictures of dots and blocks, discover surprising links between them, and then find the very same numbers hiding inside sequences of shapes like polygons, complete graphs, stacked squares and the Koch snowflake.",
+  "hi": "गणित मूल रूप से पैटर्न (प्रतिरूप) खोजने और उनके पीछे का कारण समझने का विषय है। इस अध्याय में हम संख्याओं के प्रसिद्ध अनुक्रम देखेंगे, जैसे विषम संख्याएँ, त्रिकोणीय संख्याएँ, वर्ग संख्याएँ, घन संख्याएँ, विरहांक संख्याएँ और 2 तथा 3 की घातें। हम इन्हें बिंदुओं और घनों के चित्रों से दिखाएँगे, इनके बीच के रोचक संबंध खोजेंगे, और फिर यही संख्याएँ आकृतियों के अनुक्रमों, जैसे बहुभुज, पूर्ण आलेख, एक के ऊपर एक रखे वर्ग और कोख हिमकण में भी छिपी हुई पाएँगे।"
+ },
+ "learn": {
+  "en": [
+   "What mathematics is and why patterns are at its centre",
+   "How mathematics helps in daily life, science, technology and society",
+   "What a number sequence is and how to find its rule",
+   "The ten famous sequences: all 1s, counting, odd, even, triangular, square, cube, Virahānka, powers of 2, powers of 3",
+   "How to draw number sequences as pictures of dots and cubes, and why some numbers are called triangular, square or cube",
+   "Hexagonal numbers 1, 7, 19, 37, 61, ... and numbers that are both triangular and square",
+   "Why the sum of the first n odd numbers is always n × n",
+   "Other links: counting numbers add up to triangular numbers, two neighbouring triangular numbers make a square, adding hexagonal numbers gives cubes, and more",
+   "Shape sequences: regular polygons, complete graphs, stacked squares, stacked triangles and the Koch snowflake",
+   "How counting sides, lines and pieces in shape sequences gives back the number sequences"
+  ],
+  "hi": [
+   "गणित क्या है और पैटर्न इसके केंद्र में क्यों हैं",
+   "गणित दैनिक जीवन, विज्ञान, प्रौद्योगिकी और समाज में कैसे मदद करता है",
+   "संख्या अनुक्रम क्या है और उसका नियम कैसे खोजें",
+   "दस प्रसिद्ध अनुक्रम: सभी 1, गिनती, विषम, सम, त्रिकोणीय, वर्ग, घन, विरहांक, 2 की घातें, 3 की घातें",
+   "संख्या अनुक्रमों को बिंदुओं और घनों के चित्रों से कैसे दिखाएँ, और कुछ संख्याओं को त्रिकोणीय, वर्ग या घन क्यों कहते हैं",
+   "षट्कोणीय संख्याएँ 1, 7, 19, 37, 61, ... और वे संख्याएँ जो त्रिकोणीय भी हैं और वर्ग भी",
+   "पहली n विषम संख्याओं का योग हमेशा n × n क्यों होता है",
+   "अन्य संबंध: गिनती संख्याओं का योग त्रिकोणीय संख्या देता है, दो पड़ोसी त्रिकोणीय संख्याएँ मिलकर वर्ग बनाती हैं, षट्कोणीय संख्याओं का योग घन देता है, आदि",
+   "आकृति अनुक्रम: सम बहुभुज, पूर्ण आलेख, एक के ऊपर एक रखे वर्ग, एक के ऊपर एक रखे त्रिभुज और कोख हिमकण",
+   "आकृति अनुक्रमों में भुजाएँ, रेखाएँ और टुकड़े गिनने पर वही संख्या अनुक्रम कैसे मिलते हैं"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "1.1 What is Mathematics?",
+    "hi": "1.1 गणित क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Look around you. The petals of a flower, the tiles on a floor, the beats of a dhol, the days of the week repeating every 7 days, the phases of the Moon repeating about every month: everywhere there are things that repeat or grow in a regular way. Such a regular arrangement or rule is called a pattern. Mathematics, in a simple sentence, is the search for patterns and for explanations of why those patterns happen.",
+      "hi": "अपने चारों ओर देखिए। फूल की पंखुड़ियाँ, फ़र्श की टाइलें, ढोल की थाप, हर 7 दिन में दोहराए जाने वाले सप्ताह के दिन, लगभग हर महीने दोहराई जाने वाली चंद्रमा की कलाएँ: हर जगह ऐसी चीज़ें हैं जो नियमित ढंग से दोहराई जाती हैं या बढ़ती हैं। ऐसी नियमित व्यवस्था या नियम को पैटर्न (प्रतिरूप) कहते हैं। एक सरल वाक्य में, गणित पैटर्न खोजने और यह समझाने का विषय है कि वे पैटर्न क्यों बनते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Pattern",
+       "hi": "पैटर्न (प्रतिरूप)"
+      },
+      "text": {
+       "en": "A pattern is something that repeats or changes according to a fixed rule, so that once you know the rule you can say what comes next.",
+       "hi": "पैटर्न ऐसी चीज़ है जो किसी निश्चित नियम के अनुसार दोहराई जाती है या बदलती है, ताकि नियम जान लेने पर आप बता सकें कि आगे क्या आएगा।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Patterns are found in nature (the spiral of seeds in a sunflower, the six sides of a snowflake), in our homes (the dots and curves of a rangoli, the design on a saree border), and in our daily routine (the school timetable, the cricket over of 6 balls). People have been noticing these patterns for thousands of years. Ancient Indian, Egyptian, Babylonian, Greek and Chinese thinkers studied the patterns of the Sun, Moon and stars to make calendars, decide when to sow crops and when festivals fall.",
+      "hi": "पैटर्न प्रकृति में मिलते हैं (सूरजमुखी के बीजों का सर्पिल, हिमकण की छह भुजाएँ), हमारे घरों में मिलते हैं (रंगोली के बिंदु और घुमाव, साड़ी के किनारे की डिज़ाइन), और हमारी दिनचर्या में भी (स्कूल की समय-सारणी, क्रिकेट में 6 गेंदों का एक ओवर)। लोग हज़ारों वर्षों से इन पैटर्नों को देखते आ रहे हैं। प्राचीन भारतीय, मिस्री, बेबीलोनी, यूनानी और चीनी विद्वानों ने कैलेंडर बनाने, फ़सल बोने का समय तय करने और त्योहारों की तिथि जानने के लिए सूर्य, चंद्रमा और तारों के पैटर्नों का अध्ययन किया।"
+     }
+    },
+    {
+     "p": {
+      "en": "Finding a pattern is only half the work. The other half is explaining it: why does the pattern work, and will it always work? A mathematical explanation must be so clear and careful that anyone can check it. Once we understand why a pattern works, we can use it with confidence, even for numbers or situations we have never seen.",
+      "hi": "पैटर्न खोजना आधा काम है। बाकी आधा काम उसे समझाना है: पैटर्न क्यों काम करता है, और क्या वह हमेशा काम करेगा? गणितीय व्याख्या इतनी साफ़ और सावधान होनी चाहिए कि कोई भी उसे जाँच सके। जब हम समझ जाते हैं कि कोई पैटर्न क्यों काम करता है, तब हम उसे भरोसे के साथ उन संख्याओं या स्थितियों में भी उपयोग कर सकते हैं जिन्हें हमने पहले कभी नहीं देखा।"
+     }
+    },
+    {
+     "note": {
+      "en": "Mathematics is both an art and a science. It is an art because finding patterns and explaining them needs creativity, imagination and a sense of beauty. It is a science because its results can be checked and used to understand and change the real world.",
+      "hi": "गणित कला भी है और विज्ञान भी। यह कला है क्योंकि पैटर्न खोजने और समझाने के लिए रचनात्मकता, कल्पना और सौंदर्य की समझ चाहिए। यह विज्ञान है क्योंकि इसके परिणाम जाँचे जा सकते हैं और वास्तविक दुनिया को समझने और बदलने में काम आते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Mathematics has helped humanity in countless ways. Some examples:",
+      "hi": "गणित ने मानवता की अनगिनत तरह से मदद की है। कुछ उदाहरण:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Science and space: the laws of motion and gravity are written in mathematics; ISRO used careful calculations to send Chandrayaan to the Moon and Mangalyaan to Mars.",
+       "Technology: mobile phones, computers, the internet, UPI payments and online maps all run on mathematical ideas such as codes, binary numbers and shortest-path methods.",
+       "Building: engineers use geometry and measurement to design bridges, dams, metro lines and buildings that are safe.",
+       "Health: doctors use mathematics to read X-ray, CT and MRI scans, to decide medicine doses, and to study how diseases spread.",
+       "Weather and farming: forecasts of rain and cyclones are made with mathematical models, helping farmers and fishermen plan ahead.",
+       "Daily life: counting money in the market, planning a household budget, checking the time, cooking with the right quantities, keeping the score in a cricket match."
+      ],
+      "hi": [
+       "विज्ञान और अंतरिक्ष: गति और गुरुत्वाकर्षण के नियम गणित में लिखे जाते हैं; इसरो ने चंद्रयान को चंद्रमा तक और मंगलयान को मंगल तक भेजने के लिए सावधान गणनाएँ कीं।",
+       "प्रौद्योगिकी: मोबाइल फ़ोन, कंप्यूटर, इंटरनेट, यूपीआई भुगतान और ऑनलाइन नक्शे सभी गणितीय विचारों पर चलते हैं, जैसे कोड, द्विआधारी संख्याएँ और सबसे छोटा रास्ता खोजने की विधियाँ।",
+       "निर्माण: इंजीनियर सुरक्षित पुल, बाँध, मेट्रो लाइन और इमारतें बनाने के लिए ज्यामिति और मापन का उपयोग करते हैं।",
+       "स्वास्थ्य: डॉक्टर एक्स-रे, सीटी और एमआरआई स्कैन पढ़ने, दवा की मात्रा तय करने और बीमारियों के फैलने का अध्ययन करने में गणित का उपयोग करते हैं।",
+       "मौसम और खेती: बारिश और चक्रवात का पूर्वानुमान गणितीय मॉडलों से किया जाता है, जिससे किसान और मछुआरे पहले से योजना बना पाते हैं।",
+       "दैनिक जीवन: बाज़ार में पैसे गिनना, घर का बजट बनाना, समय देखना, सही मात्रा में खाना पकाना, क्रिकेट मैच का स्कोर रखना।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Very often, a piece of mathematics was first studied only because people found its patterns beautiful, and only much later did it turn out to be useful. For example, prime numbers were studied for fun for over 2000 years; today they keep our online banking safe.",
+      "hi": "अक्सर गणित का कोई भाग पहले सिर्फ़ इसलिए पढ़ा गया क्योंकि लोगों को उसके पैटर्न सुंदर लगे, और बहुत बाद में पता चला कि वह उपयोगी भी है। उदाहरण के लिए, अभाज्य संख्याओं का अध्ययन 2000 से अधिक वर्षों तक केवल आनंद के लिए हुआ; आज वही हमारी ऑनलाइन बैंकिंग को सुरक्षित रखती हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find two patterns in a normal school week and say what rule each follows.",
+       "hi": "एक सामान्य स्कूली सप्ताह में दो पैटर्न खोजिए और बताइए कि हर एक किस नियम पर चलता है।"
+      },
+      "a": {
+       "en": "Pattern 1: the days Monday, Tuesday, ..., Sunday repeat. Rule: after 7 days the same day comes back.\nPattern 2: if the maths period is always the 2nd period, the bell for it rings at the same time each day. Rule: the timetable repeats daily.\nSo we can predict: 14 days after a Monday is again a Monday, because 14 = 2 × 7.",
+       "hi": "पैटर्न 1: सोमवार, मंगलवार, ..., रविवार दोहराए जाते हैं। नियम: 7 दिन बाद वही दिन लौटता है।\nपैटर्न 2: यदि गणित का पीरियड हमेशा दूसरा पीरियड है, तो उसकी घंटी हर दिन एक ही समय बजती है। नियम: समय-सारणी रोज़ दोहराई जाती है।\nइसलिए हम अनुमान लगा सकते हैं: किसी सोमवार के 14 दिन बाद फिर सोमवार होगा, क्योंकि 14 = 2 × 7।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A rangoli border is made as: dot, flower, dot, flower, ... What will the 15th item be? What will the 40th item be?",
+       "hi": "एक रंगोली की किनारी ऐसे बनी है: बिंदु, फूल, बिंदु, फूल, ... 15वीं चीज़ क्या होगी? 40वीं चीज़ क्या होगी?"
+      },
+      "a": {
+       "en": "Step 1: The pattern repeats after every 2 items: position 1 is a dot, position 2 is a flower.\nStep 2: Odd positions (1, 3, 5, ...) are dots; even positions (2, 4, 6, ...) are flowers.\nStep 3: 15 is odd, so the 15th item is a dot.\nStep 4: 40 is even, so the 40th item is a flower.",
+       "hi": "चरण 1: पैटर्न हर 2 चीज़ों के बाद दोहराता है: स्थान 1 पर बिंदु, स्थान 2 पर फूल।\nचरण 2: विषम स्थानों (1, 3, 5, ...) पर बिंदु हैं; सम स्थानों (2, 4, 6, ...) पर फूल हैं।\nचरण 3: 15 विषम है, इसलिए 15वीं चीज़ बिंदु है।\nचरण 4: 40 सम है, इसलिए 40वीं चीज़ फूल है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.2 Patterns in Numbers",
+    "hi": "1.2 संख्याओं में पैटर्न"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The part of mathematics that studies patterns in whole numbers is called number theory. The whole numbers are 0, 1, 2, 3, 4, ... and the counting numbers (also called natural numbers) are 1, 2, 3, 4, .... One of the simplest kinds of number pattern is a number sequence.",
+      "hi": "गणित का वह भाग जो पूर्ण संख्याओं के पैटर्नों का अध्ययन करता है, संख्या सिद्धांत कहलाता है। पूर्ण संख्याएँ 0, 1, 2, 3, 4, ... हैं और गिनती संख्याएँ (जिन्हें प्राकृत संख्याएँ भी कहते हैं) 1, 2, 3, 4, ... हैं। संख्या पैटर्न का एक सबसे सरल रूप संख्या अनुक्रम है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Number sequence",
+       "hi": "संख्या अनुक्रम"
+      },
+      "text": {
+       "en": "A number sequence is a list of numbers written in a definite order, usually following a rule. Each number in the list is called a term. The first term, second term, third term and so on are counted from the left.",
+       "hi": "संख्या अनुक्रम एक निश्चित क्रम में लिखी संख्याओं की सूची है, जो प्रायः किसी नियम का पालन करती है। सूची की हर संख्या को पद कहते हैं। पहला पद, दूसरा पद, तीसरा पद आदि बाईं ओर से गिने जाते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here are ten of the most important sequences in mathematics. Read each one slowly and try to guess the rule before reading the third column.",
+      "hi": "यहाँ गणित के दस सबसे महत्वपूर्ण अनुक्रम दिए गए हैं। हर एक को धीरे-धीरे पढ़िए और तीसरा स्तंभ पढ़ने से पहले नियम का अनुमान लगाने की कोशिश कीजिए।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Name",
+        "Sequence",
+        "Rule"
+       ],
+       "hi": [
+        "नाम",
+        "अनुक्रम",
+        "नियम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "All 1s",
+         "1, 1, 1, 1, 1, 1, 1, ...",
+         "Every term is 1"
+        ],
+        [
+         "Counting numbers",
+         "1, 2, 3, 4, 5, 6, 7, ...",
+         "Add 1 each time"
+        ],
+        [
+         "Odd numbers",
+         "1, 3, 5, 7, 9, 11, 13, ...",
+         "Start at 1, add 2 each time"
+        ],
+        [
+         "Even numbers",
+         "2, 4, 6, 8, 10, 12, 14, ...",
+         "Start at 2, add 2 each time"
+        ],
+        [
+         "Triangular numbers",
+         "1, 3, 6, 10, 15, 21, 28, ...",
+         "Add 2, then 3, then 4, ... (the next counting number)"
+        ],
+        [
+         "Square numbers",
+         "1, 4, 9, 16, 25, 36, 49, ...",
+         "1×1, 2×2, 3×3, ..."
+        ],
+        [
+         "Cube numbers",
+         "1, 8, 27, 64, 125, 216, ...",
+         "1×1×1, 2×2×2, 3×3×3, ..."
+        ],
+        [
+         "Virahānka numbers",
+         "1, 2, 3, 5, 8, 13, 21, ...",
+         "Each term = sum of the two before it"
+        ],
+        [
+         "Powers of 2",
+         "1, 2, 4, 8, 16, 32, 64, ...",
+         "Multiply by 2 each time"
+        ],
+        [
+         "Powers of 3",
+         "1, 3, 9, 27, 81, 243, 729, ...",
+         "Multiply by 3 each time"
+        ]
+       ],
+       "hi": [
+        [
+         "सभी 1",
+         "1, 1, 1, 1, 1, 1, 1, ...",
+         "हर पद 1 है"
+        ],
+        [
+         "गिनती संख्याएँ",
+         "1, 2, 3, 4, 5, 6, 7, ...",
+         "हर बार 1 जोड़ें"
+        ],
+        [
+         "विषम संख्याएँ",
+         "1, 3, 5, 7, 9, 11, 13, ...",
+         "1 से शुरू, हर बार 2 जोड़ें"
+        ],
+        [
+         "सम संख्याएँ",
+         "2, 4, 6, 8, 10, 12, 14, ...",
+         "2 से शुरू, हर बार 2 जोड़ें"
+        ],
+        [
+         "त्रिकोणीय संख्याएँ",
+         "1, 3, 6, 10, 15, 21, 28, ...",
+         "2, फिर 3, फिर 4, ... जोड़ें (अगली गिनती संख्या)"
+        ],
+        [
+         "वर्ग संख्याएँ",
+         "1, 4, 9, 16, 25, 36, 49, ...",
+         "1×1, 2×2, 3×3, ..."
+        ],
+        [
+         "घन संख्याएँ",
+         "1, 8, 27, 64, 125, 216, ...",
+         "1×1×1, 2×2×2, 3×3×3, ..."
+        ],
+        [
+         "विरहांक संख्याएँ",
+         "1, 2, 3, 5, 8, 13, 21, ...",
+         "हर पद = उससे पहले के दो पदों का योग"
+        ],
+        [
+         "2 की घातें",
+         "1, 2, 4, 8, 16, 32, 64, ...",
+         "हर बार 2 से गुणा करें"
+        ],
+        [
+         "3 की घातें",
+         "1, 3, 9, 27, 81, 243, 729, ...",
+         "हर बार 3 से गुणा करें"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Let us understand each one carefully.",
+      "hi": "आइए हर एक को ध्यान से समझें।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Odd and even numbers",
+       "hi": "विषम और सम संख्याएँ"
+      },
+      "text": {
+       "en": "An even number can be split into 2 equal groups with nothing left over (it is a multiple of 2): 2, 4, 6, 8, .... An odd number leaves 1 left over when split into 2 equal groups: 1, 3, 5, 7, .... A whole number ending in 0, 2, 4, 6 or 8 is even; one ending in 1, 3, 5, 7 or 9 is odd.",
+       "hi": "सम संख्या को 2 बराबर समूहों में बिना कुछ बचे बाँटा जा सकता है (वह 2 का गुणज है): 2, 4, 6, 8, ...। विषम संख्या को 2 बराबर समूहों में बाँटने पर 1 बच जाता है: 1, 3, 5, 7, ...। जिस पूर्ण संख्या के अंत में 0, 2, 4, 6 या 8 हो वह सम है; जिसके अंत में 1, 3, 5, 7 या 9 हो वह विषम है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Triangular numbers",
+       "hi": "त्रिकोणीय संख्याएँ"
+      },
+      "text": {
+       "en": "Triangular numbers are 1, 3, 6, 10, 15, 21, .... The first is 1, and to get the next one we add the next counting number: 1, 1+2 = 3, 1+2+3 = 6, 1+2+3+4 = 10, and so on. They are called triangular because that many dots can be arranged in a neat triangle.",
+       "hi": "त्रिकोणीय संख्याएँ 1, 3, 6, 10, 15, 21, ... हैं। पहली संख्या 1 है, और अगली पाने के लिए अगली गिनती संख्या जोड़ते हैं: 1, 1+2 = 3, 1+2+3 = 6, 1+2+3+4 = 10, आदि। इन्हें त्रिकोणीय इसलिए कहते हैं क्योंकि इतने बिंदुओं को एक सुंदर त्रिभुज में सजाया जा सकता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Square numbers",
+       "hi": "वर्ग संख्याएँ"
+      },
+      "text": {
+       "en": "A square number is a counting number multiplied by itself: 1×1 = 1, 2×2 = 4, 3×3 = 9, 4×4 = 16, .... That many dots can be arranged in a square with equal rows and columns. We write 4×4 as 4² and read it as '4 squared'.",
+       "hi": "वर्ग संख्या किसी गिनती संख्या को उसी से गुणा करने पर मिलती है: 1×1 = 1, 2×2 = 4, 3×3 = 9, 4×4 = 16, ...। इतने बिंदुओं को बराबर पंक्तियों और स्तंभों वाले वर्ग में सजाया जा सकता है। 4×4 को 4² लिखते हैं और '4 का वर्ग' पढ़ते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Cube numbers",
+       "hi": "घन संख्याएँ"
+      },
+      "text": {
+       "en": "A cube number is a counting number multiplied by itself three times: 1×1×1 = 1, 2×2×2 = 8, 3×3×3 = 27, 4×4×4 = 64, .... That many small cubes can be stacked to form one bigger cube. We write 4×4×4 as 4³ and read it as '4 cubed'.",
+       "hi": "घन संख्या किसी गिनती संख्या को उसी से तीन बार गुणा करने पर मिलती है: 1×1×1 = 1, 2×2×2 = 8, 3×3×3 = 27, 4×4×4 = 64, ...। इतने छोटे घनों को जमाकर एक बड़ा घन बनाया जा सकता है। 4×4×4 को 4³ लिखते हैं और '4 का घन' पढ़ते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Virahānka numbers",
+       "hi": "विरहांक संख्याएँ"
+      },
+      "text": {
+       "en": "Virahānka numbers are 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, .... Each term after the first two is the sum of the two terms just before it: 1+2 = 3, 2+3 = 5, 3+5 = 8, 5+8 = 13, and so on. They are named after Virahānka, an Indian scholar of poetry and rhythm (about 7th century CE), who found them while counting the rhythms that can be made with short and long syllables. Outside India a closely related sequence is called the Fibonacci sequence.",
+       "hi": "विरहांक संख्याएँ 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ... हैं। पहले दो पदों के बाद हर पद अपने ठीक पहले के दो पदों का योग होता है: 1+2 = 3, 2+3 = 5, 3+5 = 8, 5+8 = 13, आदि। इनका नाम विरहांक के नाम पर रखा गया है, जो लगभग 7वीं शताब्दी के एक भारतीय छंद-शास्त्री थे, और जिन्होंने छोटे और लंबे अक्षरों से बनने वाली लयों को गिनते समय इन्हें खोजा। भारत के बाहर इससे मिलते-जुलते अनुक्रम को फ़िबोनाची अनुक्रम कहते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Powers of 2 and powers of 3",
+       "hi": "2 की घातें और 3 की घातें"
+      },
+      "text": {
+       "en": "Powers of 2 are 1, 2, 4, 8, 16, 32, ...: start at 1 and keep doubling. Powers of 3 are 1, 3, 9, 27, 81, ...: start at 1 and keep multiplying by 3. For example 2×2×2×2 = 16 is written 2⁴, and 3×3×3 = 27 is written 3³.",
+       "hi": "2 की घातें 1, 2, 4, 8, 16, 32, ... हैं: 1 से शुरू करके बार-बार दुगुना करते जाइए। 3 की घातें 1, 3, 9, 27, 81, ... हैं: 1 से शुरू करके बार-बार 3 से गुणा करते जाइए। उदाहरण के लिए 2×2×2×2 = 16 को 2⁴ लिखते हैं, और 3×3×3 = 27 को 3³ लिखते हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "To find the rule of a sequence, look at how each term is related to the one before it. Try: Is something added each time? Is the difference itself growing? Is each term multiplied by something? Is each term made from the two before it? Is each term a number multiplied by itself?",
+      "hi": "किसी अनुक्रम का नियम खोजने के लिए देखिए कि हर पद अपने पिछले पद से कैसे जुड़ा है। जाँचिए: क्या हर बार कुछ जोड़ा जा रहा है? क्या अंतर स्वयं बढ़ रहा है? क्या हर पद को किसी संख्या से गुणा किया जा रहा है? क्या हर पद पिछले दो पदों से बना है? क्या हर पद किसी संख्या को उसी से गुणा करने पर बना है?"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write the next three terms of each: (a) 1, 3, 6, 10, 15, 21, 28, ... (b) 1, 2, 3, 5, 8, 13, 21, ... (c) 1, 3, 9, 27, 81, ...",
+       "hi": "हर एक के अगले तीन पद लिखिए: (a) 1, 3, 6, 10, 15, 21, 28, ... (b) 1, 2, 3, 5, 8, 13, 21, ... (c) 1, 3, 9, 27, 81, ..."
+      },
+      "a": {
+       "en": "(a) Triangular numbers: the gaps are 2, 3, 4, 5, 6, 7, so the next gaps are 8, 9, 10.\n28 + 8 = 36, 36 + 9 = 45, 45 + 10 = 55. Answer: 36, 45, 55.\n(b) Virahānka numbers: add the last two terms.\n13 + 21 = 34, 21 + 34 = 55, 34 + 55 = 89. Answer: 34, 55, 89.\n(c) Powers of 3: multiply by 3.\n81 × 3 = 243, 243 × 3 = 729, 729 × 3 = 2187. Answer: 243, 729, 2187.",
+       "hi": "(a) त्रिकोणीय संख्याएँ: अंतर 2, 3, 4, 5, 6, 7 हैं, इसलिए अगले अंतर 8, 9, 10 होंगे।\n28 + 8 = 36, 36 + 9 = 45, 45 + 10 = 55। उत्तर: 36, 45, 55।\n(b) विरहांक संख्याएँ: अंतिम दो पद जोड़िए।\n13 + 21 = 34, 21 + 34 = 55, 34 + 55 = 89। उत्तर: 34, 55, 89।\n(c) 3 की घातें: 3 से गुणा कीजिए।\n81 × 3 = 243, 243 × 3 = 729, 729 × 3 = 2187। उत्तर: 243, 729, 2187।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the 10th square number, the 6th cube number and the 11th power of 2 in the list 1, 2, 4, 8, ... (counting 1 as the 1st term).",
+       "hi": "10वीं वर्ग संख्या, 6वीं घन संख्या और सूची 1, 2, 4, 8, ... में 2 की घातों का 11वाँ पद ज्ञात कीजिए (1 को पहला पद मानकर)।"
+      },
+      "a": {
+       "en": "10th square number = 10 × 10 = 100.\n6th cube number = 6 × 6 × 6 = 36 × 6 = 216.\nPowers of 2 list: 1st term 1, 2nd 2, 3rd 4, 4th 8, 5th 16, 6th 32, 7th 64, 8th 128, 9th 256, 10th 512, 11th 1024.\nSo the 11th term is 1024.",
+       "hi": "10वीं वर्ग संख्या = 10 × 10 = 100।\n6वीं घन संख्या = 6 × 6 × 6 = 36 × 6 = 216।\n2 की घातों की सूची: पहला पद 1, दूसरा 2, तीसरा 4, चौथा 8, पाँचवाँ 16, छठा 32, सातवाँ 64, आठवाँ 128, नौवाँ 256, दसवाँ 512, ग्यारहवाँ 1024।\nइसलिए 11वाँ पद 1024 है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Is 2 + 4 + 6 + 8 + 10 a triangular number? Look for a link.",
+       "hi": "क्या 2 + 4 + 6 + 8 + 10 एक त्रिकोणीय संख्या है? कोई संबंध खोजिए।"
+      },
+      "a": {
+       "en": "Step 1: 2 + 4 + 6 + 8 + 10 = 30.\nStep 2: Triangular numbers near it are 28 and 36, so 30 is not triangular.\nStep 3: But notice 2 + 4 + 6 + 8 + 10 = 2 × (1 + 2 + 3 + 4 + 5) = 2 × 15 = 30. So the sum of the first n even numbers is twice the nth triangular number.",
+       "hi": "चरण 1: 2 + 4 + 6 + 8 + 10 = 30।\nचरण 2: इसके पास की त्रिकोणीय संख्याएँ 28 और 36 हैं, इसलिए 30 त्रिकोणीय नहीं है।\nचरण 3: पर ध्यान दीजिए 2 + 4 + 6 + 8 + 10 = 2 × (1 + 2 + 3 + 4 + 5) = 2 × 15 = 30। अतः पहली n सम संख्याओं का योग n-वीं त्रिकोणीय संख्या का दुगुना होता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.3 Visualising Number Sequences",
+    "hi": "1.3 संख्या अनुक्रमों का चित्रण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Many number sequences become much easier to understand when we draw them. Imagine each number as a collection of dots (like the dots you put before drawing a rangoli) and arrange the dots in a nice shape. Here is how the sequences can be pictured. Since there are no pictures here, read the descriptions and draw them in your notebook.",
+      "hi": "कई संख्या अनुक्रमों को चित्र बनाकर समझना बहुत आसान हो जाता है। हर संख्या को बिंदुओं के समूह की तरह सोचिए (जैसे रंगोली बनाने से पहले लगाए गए बिंदु) और बिंदुओं को किसी सुंदर आकार में सजाइए। नीचे बताया गया है कि अनुक्रमों का चित्र कैसे बनता है। यहाँ चित्र नहीं हैं, इसलिए वर्णन पढ़कर अपनी कॉपी में बनाइए।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "All 1s: every picture is a single dot.",
+       "Counting numbers: a straight row of dots, with 1 dot, then 2 dots, then 3 dots, and so on; each picture has one more dot at the end.",
+       "Odd numbers: an L shape (a corner). 1 is one dot; 3 is a corner dot with one dot to its right and one above; 5 has two dots in each arm plus the corner; each new picture adds one dot to each arm.",
+       "Even numbers: two equal rows of dots side by side: 2 is 2 rows of 1, 4 is 2 rows of 2, 6 is 2 rows of 3, and so on.",
+       "Triangular numbers: rows of dots forming a triangle: 1 dot on top, 2 dots in the next row, 3 in the next, and so on. 10 is drawn as rows of 1, 2, 3 and 4 dots.",
+       "Square numbers: dots in a square grid: 4 is a 2 by 2 square, 9 is a 3 by 3 square, 16 is a 4 by 4 square.",
+       "Cube numbers: small cubes (like dice) stacked into a big cube: 8 is a 2 by 2 by 2 block, 27 is a 3 by 3 by 3 block."
+      ],
+      "hi": [
+       "सभी 1: हर चित्र एक अकेला बिंदु है।",
+       "गिनती संख्याएँ: बिंदुओं की एक सीधी पंक्ति, पहले 1 बिंदु, फिर 2 बिंदु, फिर 3 बिंदु, आदि; हर चित्र में अंत में एक बिंदु बढ़ जाता है।",
+       "विषम संख्याएँ: L आकार (एक कोना)। 1 एक बिंदु है; 3 में कोने का एक बिंदु, उसके दाईं ओर एक और ऊपर एक बिंदु है; 5 में हर भुजा में दो बिंदु और कोना है; हर नए चित्र में हर भुजा में एक बिंदु बढ़ता है।",
+       "सम संख्याएँ: बिंदुओं की दो बराबर पंक्तियाँ साथ-साथ: 2 यानी 1-1 की दो पंक्तियाँ, 4 यानी 2-2 की दो पंक्तियाँ, 6 यानी 3-3 की दो पंक्तियाँ, आदि।",
+       "त्रिकोणीय संख्याएँ: बिंदुओं की पंक्तियाँ जो त्रिभुज बनाती हैं: ऊपर 1 बिंदु, अगली पंक्ति में 2, उसके बाद 3, आदि। 10 को 1, 2, 3 और 4 बिंदुओं की पंक्तियों से बनाते हैं।",
+       "वर्ग संख्याएँ: वर्गाकार जाल में बिंदु: 4 यानी 2 गुणा 2 का वर्ग, 9 यानी 3 गुणा 3 का वर्ग, 16 यानी 4 गुणा 4 का वर्ग।",
+       "घन संख्याएँ: छोटे घन (पासे जैसे) जमाकर बना बड़ा घन: 8 यानी 2 गुणा 2 गुणा 2 का खंड, 27 यानी 3 गुणा 3 गुणा 3 का खंड।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "These pictures explain the names. 10 is called a triangular number because 10 dots make a triangle with rows 1, 2, 3, 4. 25 is a square number because 25 dots make a 5 by 5 square. 64 is a cube number because 64 small cubes make a 4 by 4 by 4 big cube. You can also see why 7 is odd: whatever way you pair up 7 dots, one dot is always left alone.",
+      "hi": "ये चित्र नामों का कारण बताते हैं। 10 को त्रिकोणीय संख्या इसलिए कहते हैं क्योंकि 10 बिंदु 1, 2, 3, 4 की पंक्तियों वाला त्रिभुज बनाते हैं। 25 वर्ग संख्या है क्योंकि 25 बिंदु 5 गुणा 5 का वर्ग बनाते हैं। 64 घन संख्या है क्योंकि 64 छोटे घन 4 गुणा 4 गुणा 4 का बड़ा घन बनाते हैं। आप यह भी देख सकते हैं कि 7 विषम क्यों है: 7 बिंदुओं के जोड़े किसी भी तरह बनाइए, एक बिंदु हमेशा अकेला बचता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Some numbers can be drawn in more than one way. The number 36 is special: it is a square number (6 × 6, a 6 by 6 square of dots) and also a triangular number (1+2+3+4+5+6+7+8 = 36, a triangle with 8 rows). The first few numbers that are both triangular and square are 1, 36, 1225 and 41616. For example 1225 = 35 × 35 and also 1225 = 1 + 2 + ... + 49.",
+      "hi": "कुछ संख्याओं को एक से अधिक तरह से बनाया जा सकता है। संख्या 36 विशेष है: यह वर्ग संख्या है (6 × 6, बिंदुओं का 6 गुणा 6 वर्ग) और त्रिकोणीय संख्या भी है (1+2+3+4+5+6+7+8 = 36, 8 पंक्तियों वाला त्रिभुज)। जो संख्याएँ त्रिकोणीय और वर्ग दोनों हैं, उनमें पहली कुछ हैं 1, 36, 1225 और 41616। उदाहरण के लिए 1225 = 35 × 35 और 1225 = 1 + 2 + ... + 49 भी।"
+     }
+    },
+    {
+     "p": {
+      "en": "Other numbers can also be pictured as rectangles. For example 12 dots can be arranged as 3 rows of 4, 2 rows of 6, or 1 row of 12. A number like 7 can only be drawn as a single row (1 by 7), because 7 has no other factors. Such numbers will be studied later as prime numbers.",
+      "hi": "दूसरी संख्याओं को आयत के रूप में भी बनाया जा सकता है। उदाहरण के लिए 12 बिंदुओं को 4-4 की 3 पंक्तियों, 6-6 की 2 पंक्तियों या 12 की 1 पंक्ति में सजाया जा सकता है। 7 जैसी संख्या केवल एक पंक्ति (1 गुणा 7) में बनती है, क्योंकि 7 के कोई अन्य गुणनखंड नहीं हैं। ऐसी संख्याओं को आगे अभाज्य संख्याओं के रूप में पढ़ेंगे।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Hexagonal numbers (centred hexagonal numbers)",
+       "hi": "षट्कोणीय संख्याएँ (केंद्रित षट्कोणीय संख्याएँ)"
+      },
+      "text": {
+       "en": "The sequence 1, 7, 19, 37, 61, 91, ... is called the hexagonal numbers. Picture: start with 1 dot in the centre. Put 6 dots around it to make a small hexagon: 1 + 6 = 7. Put a ring of 12 dots around that: 7 + 12 = 19. Then a ring of 18: 19 + 18 = 37. Each new ring has 6 more dots than the previous ring.",
+       "hi": "अनुक्रम 1, 7, 19, 37, 61, 91, ... को षट्कोणीय संख्याएँ कहते हैं। चित्र: केंद्र में 1 बिंदु से शुरू कीजिए। उसके चारों ओर 6 बिंदु रखकर छोटा षट्भुज बनाइए: 1 + 6 = 7। उसके चारों ओर 12 बिंदुओं का घेरा: 7 + 12 = 19। फिर 18 का घेरा: 19 + 18 = 37। हर नए घेरे में पिछले घेरे से 6 बिंदु अधिक होते हैं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Picture number",
+        "New ring of dots",
+        "Hexagonal number"
+       ],
+       "hi": [
+        "चित्र क्रमांक",
+        "बिंदुओं का नया घेरा",
+        "षट्कोणीय संख्या"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1",
+         "1 (centre)",
+         "1"
+        ],
+        [
+         "2",
+         "6",
+         "7"
+        ],
+        [
+         "3",
+         "12",
+         "19"
+        ],
+        [
+         "4",
+         "18",
+         "37"
+        ],
+        [
+         "5",
+         "24",
+         "61"
+        ],
+        [
+         "6",
+         "30",
+         "91"
+        ]
+       ],
+       "hi": [
+        [
+         "1",
+         "1 (केंद्र)",
+         "1"
+        ],
+        [
+         "2",
+         "6",
+         "7"
+        ],
+        [
+         "3",
+         "12",
+         "19"
+        ],
+        [
+         "4",
+         "18",
+         "37"
+        ],
+        [
+         "5",
+         "24",
+         "61"
+        ],
+        [
+         "6",
+         "30",
+         "91"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Powers of 2 and 3 can also be pictured. For powers of 2, think of folding a sheet of paper in half again and again: after 1 fold there are 2 layers, after 2 folds 4 layers, after 3 folds 8 layers. Or draw a tree where each branch splits into 2: 1, 2, 4, 8 branch tips. For powers of 3, draw a tree where each branch splits into 3: 1, 3, 9, 27 tips; or think of a 3 by 3 grid (9 squares) where each square is again cut into 9 smaller squares (81).",
+      "hi": "2 और 3 की घातों का भी चित्र बन सकता है। 2 की घातों के लिए, एक कागज़ को बार-बार आधा मोड़ने के बारे में सोचिए: 1 मोड़ के बाद 2 परतें, 2 मोड़ के बाद 4 परतें, 3 मोड़ के बाद 8 परतें। या एक पेड़ बनाइए जिसमें हर शाखा 2 में बँटती है: 1, 2, 4, 8 शाखा-सिरे। 3 की घातों के लिए ऐसा पेड़ बनाइए जिसमें हर शाखा 3 में बँटती है: 1, 3, 9, 27 सिरे; या 3 गुणा 3 के जाल (9 वर्ग) के बारे में सोचिए जिसके हर वर्ग को फिर 9 छोटे वर्गों में काटा जाए (81)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Describe the next picture after 1, 3, 6, 10 in the triangular-dot sequence, and the next picture after 1, 7, 19, 37 in the hexagonal sequence.",
+       "hi": "त्रिकोणीय बिंदु अनुक्रम में 1, 3, 6, 10 के बाद का चित्र और षट्कोणीय अनुक्रम में 1, 7, 19, 37 के बाद का चित्र बताइए।"
+      },
+      "a": {
+       "en": "Triangular: the picture for 10 has rows 1, 2, 3, 4. Add a new bottom row of 5 dots. Total = 10 + 5 = 15 dots.\nHexagonal: the rings were 6, 12, 18, so the next ring has 18 + 6 = 24 dots. Total = 37 + 24 = 61 dots, forming a bigger hexagon with 5 dots on each side.",
+       "hi": "त्रिकोणीय: 10 वाले चित्र में पंक्तियाँ 1, 2, 3, 4 हैं। नीचे 5 बिंदुओं की नई पंक्ति जोड़िए। कुल = 10 + 5 = 15 बिंदु।\nषट्कोणीय: घेरे 6, 12, 18 थे, इसलिए अगले घेरे में 18 + 6 = 24 बिंदु होंगे। कुल = 37 + 24 = 61 बिंदु, जो हर भुजा पर 5 बिंदुओं वाला बड़ा षट्भुज बनाते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Show that 36 is both a triangular and a square number.",
+       "hi": "दिखाइए कि 36 त्रिकोणीय संख्या भी है और वर्ग संख्या भी।"
+      },
+      "a": {
+       "en": "Square: 6 × 6 = 36, so 36 dots fill a 6 by 6 square.\nTriangular: 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36, so 36 dots fill a triangle with rows of 1 to 8 dots.\nHence 36 belongs to both sequences.",
+       "hi": "वर्ग: 6 × 6 = 36, इसलिए 36 बिंदु 6 गुणा 6 का वर्ग भरते हैं।\nत्रिकोणीय: 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36, इसलिए 36 बिंदु 1 से 8 बिंदुओं की पंक्तियों वाला त्रिभुज भरते हैं।\nअतः 36 दोनों अनुक्रमों में है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.4 Relations among Number Sequences",
+    "hi": "1.4 संख्या अनुक्रमों के बीच संबंध"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The real fun begins when we find that different sequences are connected to each other. Pictures help us not only to see these connections but also to explain why they are always true.",
+      "hi": "असली मज़ा तब शुरू होता है जब हम पाते हैं कि अलग-अलग अनुक्रम एक-दूसरे से जुड़े हैं। चित्र हमें ये संबंध देखने में ही नहीं, बल्कि यह समझाने में भी मदद करते हैं कि वे हमेशा सच क्यों होते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Relation 1: Adding odd numbers gives square numbers. Add the odd numbers starting from 1:",
+      "hi": "संबंध 1: विषम संख्याओं को जोड़ने पर वर्ग संख्याएँ मिलती हैं। 1 से शुरू करके विषम संख्याएँ जोड़िए:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Sum",
+        "Total",
+        "Square"
+       ],
+       "hi": [
+        "योग",
+        "कुल",
+        "वर्ग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1",
+         "1",
+         "1 × 1"
+        ],
+        [
+         "1 + 3",
+         "4",
+         "2 × 2"
+        ],
+        [
+         "1 + 3 + 5",
+         "9",
+         "3 × 3"
+        ],
+        [
+         "1 + 3 + 5 + 7",
+         "16",
+         "4 × 4"
+        ],
+        [
+         "1 + 3 + 5 + 7 + 9",
+         "25",
+         "5 × 5"
+        ],
+        [
+         "1 + 3 + 5 + 7 + 9 + 11",
+         "36",
+         "6 × 6"
+        ]
+       ],
+       "hi": [
+        [
+         "1",
+         "1",
+         "1 × 1"
+        ],
+        [
+         "1 + 3",
+         "4",
+         "2 × 2"
+        ],
+        [
+         "1 + 3 + 5",
+         "9",
+         "3 × 3"
+        ],
+        [
+         "1 + 3 + 5 + 7",
+         "16",
+         "4 × 4"
+        ],
+        [
+         "1 + 3 + 5 + 7 + 9",
+         "25",
+         "5 × 5"
+        ],
+        [
+         "1 + 3 + 5 + 7 + 9 + 11",
+         "36",
+         "6 × 6"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "1 + 3 + 5 + ... + (2n − 1) = n × n   (sum of the first n odd numbers)",
+      "hi": "1 + 3 + 5 + ... + (2n − 1) = n × n   (पहली n विषम संख्याओं का योग)"
+     }
+    },
+    {
+     "p": {
+      "en": "Why does this always happen? Picture explanation: draw a 5 by 5 square of dots. Colour the top-left dot (1 dot). Then colour the L-shaped strip around it that makes a 2 by 2 square (3 dots). Then the next L-shaped strip that makes it 3 by 3 (5 dots), then 7 dots, then 9 dots. Each L-shape is an odd number, and each one adds 2 more dots than the previous one (one extra on each arm). Putting the L-shapes together builds the whole square. So 1 + 3 + 5 + 7 + 9 = 5 × 5 = 25, and the same works for a square of any size. Such an L-shaped strip is sometimes called a gnomon.",
+      "hi": "ऐसा हमेशा क्यों होता है? चित्र द्वारा व्याख्या: बिंदुओं का 5 गुणा 5 वर्ग बनाइए। ऊपर-बाएँ कोने का बिंदु रंगिए (1 बिंदु)। फिर उसके चारों ओर की L आकार की पट्टी रंगिए जो 2 गुणा 2 का वर्ग बनाती है (3 बिंदु)। फिर अगली L आकार की पट्टी जो 3 गुणा 3 बनाती है (5 बिंदु), फिर 7 बिंदु, फिर 9 बिंदु। हर L आकार एक विषम संख्या है, और हर एक में पिछले से 2 बिंदु अधिक हैं (हर भुजा में एक अधिक)। L आकारों को मिलाने से पूरा वर्ग बनता है। अतः 1 + 3 + 5 + 7 + 9 = 5 × 5 = 25, और यही किसी भी आकार के वर्ग के लिए सच है। ऐसी L आकार की पट्टी को कभी-कभी नोमॉन कहते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Quick use: the sum of the first 10 odd numbers (1 + 3 + ... + 19) is 10 × 10 = 100. The sum of the first 100 odd numbers is 100 × 100 = 10000. No long addition needed! The last odd number in the first n odd numbers is 2n − 1; for example the 10th odd number is 2 × 10 − 1 = 19.",
+      "hi": "तुरंत उपयोग: पहली 10 विषम संख्याओं (1 + 3 + ... + 19) का योग 10 × 10 = 100 है। पहली 100 विषम संख्याओं का योग 100 × 100 = 10000 है। लंबा जोड़ करने की ज़रूरत नहीं! पहली n विषम संख्याओं में अंतिम विषम संख्या 2n − 1 होती है; उदाहरण के लिए 10वीं विषम संख्या 2 × 10 − 1 = 19 है।"
+     }
+    },
+    {
+     "p": {
+      "en": "A square of dots can be cut into pieces in other ways too, and each way gives a new relation. Next we cut it along slanting lines, which gives the 'up and down' sum.",
+      "hi": "बिंदुओं के वर्ग को दूसरे तरीकों से भी टुकड़ों में काटा जा सकता है, और हर तरीका एक नया संबंध देता है। आगे हम इसे तिरछी रेखाओं से काटेंगे, जिससे 'ऊपर और नीचे' योग मिलता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Relation 2: Counting up and back down gives square numbers. Look at: 1 = 1; 1 + 2 + 1 = 4; 1 + 2 + 3 + 2 + 1 = 9; 1 + 2 + 3 + 4 + 3 + 2 + 1 = 16. Each time we get a square. Picture: draw a 4 by 4 square of dots and tilt it so that one corner points up (like a diamond). Read the dots row by row from top to bottom: the rows have 1, 2, 3, 4, 3, 2, 1 dots. So the up-and-down sum equals the number of dots in the square, 16.",
+      "hi": "संबंध 2: ऊपर तक गिनकर वापस नीचे आने पर वर्ग संख्याएँ मिलती हैं। देखिए: 1 = 1; 1 + 2 + 1 = 4; 1 + 2 + 3 + 2 + 1 = 9; 1 + 2 + 3 + 4 + 3 + 2 + 1 = 16। हर बार वर्ग मिलता है। चित्र: बिंदुओं का 4 गुणा 4 वर्ग बनाइए और उसे इस तरह तिरछा कीजिए कि एक कोना ऊपर की ओर हो (हीरे जैसा)। अब ऊपर से नीचे तक पंक्तिवार बिंदु पढ़िए: पंक्तियों में 1, 2, 3, 4, 3, 2, 1 बिंदु हैं। इसलिए ऊपर-नीचे योग वर्ग के बिंदुओं की संख्या, यानी 16, के बराबर है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "1 + 2 + 3 + ... + (n − 1) + n + (n − 1) + ... + 2 + 1 = n × n",
+      "hi": "1 + 2 + 3 + ... + (n − 1) + n + (n − 1) + ... + 2 + 1 = n × n"
+     }
+    },
+    {
+     "p": {
+      "en": "Relation 3: Adding the all-1s sequence gives counting numbers. 1 = 1, 1 + 1 = 2, 1 + 1 + 1 = 3, and so on: adding n ones gives n. If we add 1s 'up and down' in the same way, we still just get the number of 1s used.",
+      "hi": "संबंध 3: सभी-1 अनुक्रम को जोड़ने पर गिनती संख्याएँ मिलती हैं। 1 = 1, 1 + 1 = 2, 1 + 1 + 1 = 3, आदि: n बार 1 जोड़ने पर n मिलता है। यदि 1 को इसी तरह 'ऊपर-नीचे' जोड़ें, तब भी हमें प्रयुक्त 1 की संख्या ही मिलती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Relation 4: Adding counting numbers gives triangular numbers. 1 = 1, 1 + 2 = 3, 1 + 2 + 3 = 6, 1 + 2 + 3 + 4 = 10. This is just the triangle picture read row by row. There is also a quick way to find the sum: take two copies of the triangle of dots for 1 + 2 + 3 + 4, turn one copy upside down and fit them together. They form a rectangle of 4 rows and 5 columns, which has 20 dots. One triangle is half of that: 10.",
+      "hi": "संबंध 4: गिनती संख्याओं को जोड़ने पर त्रिकोणीय संख्याएँ मिलती हैं। 1 = 1, 1 + 2 = 3, 1 + 2 + 3 = 6, 1 + 2 + 3 + 4 = 10। यह त्रिभुज वाले चित्र को पंक्तिवार पढ़ना ही है। योग निकालने का एक त्वरित तरीका भी है: 1 + 2 + 3 + 4 के बिंदु-त्रिभुज की दो प्रतियाँ लीजिए, एक को उल्टा कीजिए और दोनों को जोड़ दीजिए। वे 4 पंक्तियों और 5 स्तंभों का आयत बनाती हैं, जिसमें 20 बिंदु हैं। एक त्रिभुज उसका आधा है: 10।"
+     }
+    },
+    {
+     "formula": {
+      "en": "1 + 2 + 3 + ... + n = n × (n + 1) ÷ 2   (the nth triangular number)",
+      "hi": "1 + 2 + 3 + ... + n = n × (n + 1) ÷ 2   (n-वीं त्रिकोणीय संख्या)"
+     }
+    },
+    {
+     "p": {
+      "en": "Relation 5: Two neighbouring triangular numbers add up to a square number. 1 + 3 = 4, 3 + 6 = 9, 6 + 10 = 16, 10 + 15 = 25. Picture: in a 4 by 4 square of dots, draw a slanting line just above the main diagonal. The dots on and below the diagonal form a triangle of 1 + 2 + 3 + 4 = 10, and the dots above form a triangle of 1 + 2 + 3 = 6. Together 6 + 10 = 16.",
+      "hi": "संबंध 5: दो पड़ोसी त्रिकोणीय संख्याओं का योग वर्ग संख्या होता है। 1 + 3 = 4, 3 + 6 = 9, 6 + 10 = 16, 10 + 15 = 25। चित्र: बिंदुओं के 4 गुणा 4 वर्ग में मुख्य विकर्ण के ठीक ऊपर एक तिरछी रेखा खींचिए। विकर्ण पर और उसके नीचे के बिंदु 1 + 2 + 3 + 4 = 10 का त्रिभुज बनाते हैं, और ऊपर के बिंदु 1 + 2 + 3 = 6 का त्रिभुज बनाते हैं। दोनों मिलकर 6 + 10 = 16।"
+     }
+    },
+    {
+     "p": {
+      "en": "Relation 6: Adding powers of 2 and then adding 1 gives the next power of 2. 1 = 1, 1 + 2 = 3, 1 + 2 + 4 = 7, 1 + 2 + 4 + 8 = 15, 1 + 2 + 4 + 8 + 16 = 31. Add 1 to each: 2, 4, 8, 16, 32, which are powers of 2. Reason: 1 + 1 = 2, then 2 + 2 = 4, then 4 + 4 = 8, then 8 + 8 = 16: adding 1 to the sum keeps 'doubling up' the last term.",
+      "hi": "संबंध 6: 2 की घातों को जोड़कर 1 और जोड़ने पर 2 की अगली घात मिलती है। 1 = 1, 1 + 2 = 3, 1 + 2 + 4 = 7, 1 + 2 + 4 + 8 = 15, 1 + 2 + 4 + 8 + 16 = 31। हर एक में 1 जोड़िए: 2, 4, 8, 16, 32, जो 2 की घातें हैं। कारण: 1 + 1 = 2, फिर 2 + 2 = 4, फिर 4 + 4 = 8, फिर 8 + 8 = 16: योग में 1 जोड़ने से अंतिम पद बार-बार दुगुना होता जाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Relation 7: Adding powers of 3, doubling and adding 1 gives the next power of 3. 1, 1 + 3 = 4, 1 + 3 + 9 = 13, 1 + 3 + 9 + 27 = 40. Multiply each by 2 and add 1: 3, 9, 27, 81, which are powers of 3.",
+      "hi": "संबंध 7: 3 की घातों को जोड़कर दुगुना करने और 1 जोड़ने पर 3 की अगली घात मिलती है। 1, 1 + 3 = 4, 1 + 3 + 9 = 13, 1 + 3 + 9 + 27 = 40। हर एक को 2 से गुणा करके 1 जोड़िए: 3, 9, 27, 81, जो 3 की घातें हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Relation 8: Triangular numbers × 6 + 1 give hexagonal numbers. Take 0, 1, 3, 6, 10, 15 (putting 0 in front of the triangular numbers). Multiply each by 6 and add 1: 1, 7, 19, 37, 61, 91. Picture: a hexagon of dots can be cut, from its centre dot, into 6 equal triangular pieces, each piece being a triangular number of dots. For 37, the 6 pieces have 6 dots each: 6 × 6 + 1 = 37.",
+      "hi": "संबंध 8: त्रिकोणीय संख्याओं × 6 + 1 से षट्कोणीय संख्याएँ मिलती हैं। 0, 1, 3, 6, 10, 15 लीजिए (त्रिकोणीय संख्याओं के आगे 0 रखकर)। हर एक को 6 से गुणा करके 1 जोड़िए: 1, 7, 19, 37, 61, 91। चित्र: बिंदुओं के षट्भुज को उसके केंद्र बिंदु से 6 बराबर त्रिकोणीय टुकड़ों में काटा जा सकता है, और हर टुकड़े में त्रिकोणीय संख्या जितने बिंदु होते हैं। 37 के लिए 6 टुकड़ों में 6-6 बिंदु हैं: 6 × 6 + 1 = 37।"
+     }
+    },
+    {
+     "p": {
+      "en": "Relation 9: Adding hexagonal numbers gives cube numbers. 1 = 1, 1 + 7 = 8, 1 + 7 + 19 = 27, 1 + 7 + 19 + 37 = 64, and the next is 64 + 61 = 125. Picture: look at a 3 by 3 by 3 cube from one corner. You see three faces, and the visible cubes form a hexagon shape of 19 cubes. Remove that outer shell and the remaining 2 by 2 by 2 cube shows a hexagon of 7, and finally 1 cube remains. So 27 = 19 + 7 + 1.",
+      "hi": "संबंध 9: षट्कोणीय संख्याओं को जोड़ने पर घन संख्याएँ मिलती हैं। 1 = 1, 1 + 7 = 8, 1 + 7 + 19 = 27, 1 + 7 + 19 + 37 = 64, और अगला 64 + 61 = 125। चित्र: 3 गुणा 3 गुणा 3 के घन को एक कोने से देखिए। आपको तीन फलक दिखते हैं, और दिखने वाले घन 19 घनों का षट्भुज जैसा आकार बनाते हैं। वह बाहरी परत हटाने पर बचा 2 गुणा 2 गुणा 2 का घन 7 का षट्भुज दिखाता है, और अंत में 1 घन बचता है। अतः 27 = 19 + 7 + 1।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Relation",
+        "Example"
+       ],
+       "hi": [
+        "संबंध",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Odd numbers added from 1 give squares",
+         "1 + 3 + 5 + 7 = 16"
+        ],
+        [
+         "Up-and-down counting gives squares",
+         "1 + 2 + 3 + 2 + 1 = 9"
+        ],
+        [
+         "Counting numbers added from 1 give triangular numbers",
+         "1 + 2 + 3 + 4 + 5 = 15"
+        ],
+        [
+         "Two neighbouring triangular numbers give a square",
+         "10 + 15 = 25"
+        ],
+        [
+         "Powers of 2 added from 1, plus 1, give the next power of 2",
+         "1 + 2 + 4 + 8 + 1 = 16"
+        ],
+        [
+         "6 × triangular number + 1 gives a hexagonal number",
+         "6 × 10 + 1 = 61"
+        ],
+        [
+         "Hexagonal numbers added from 1 give cubes",
+         "1 + 7 + 19 + 37 = 64"
+        ]
+       ],
+       "hi": [
+        [
+         "1 से विषम संख्याएँ जोड़ने पर वर्ग",
+         "1 + 3 + 5 + 7 = 16"
+        ],
+        [
+         "ऊपर-नीचे गिनती से वर्ग",
+         "1 + 2 + 3 + 2 + 1 = 9"
+        ],
+        [
+         "1 से गिनती संख्याएँ जोड़ने पर त्रिकोणीय संख्या",
+         "1 + 2 + 3 + 4 + 5 = 15"
+        ],
+        [
+         "दो पड़ोसी त्रिकोणीय संख्याओं से वर्ग",
+         "10 + 15 = 25"
+        ],
+        [
+         "1 से 2 की घातें जोड़कर 1 जोड़ने पर 2 की अगली घात",
+         "1 + 2 + 4 + 8 + 1 = 16"
+        ],
+        [
+         "6 × त्रिकोणीय संख्या + 1 से षट्कोणीय संख्या",
+         "6 × 10 + 1 = 61"
+        ],
+        [
+         "1 से षट्कोणीय संख्याएँ जोड़ने पर घन",
+         "1 + 7 + 19 + 37 = 64"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find 1 + 3 + 5 + ... + 29 without adding every term.",
+       "hi": "हर पद जोड़े बिना 1 + 3 + 5 + ... + 29 ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Count the odd numbers. The nth odd number is 2n − 1. 2n − 1 = 29 gives 2n = 30, so n = 15.\nStep 2: The sum of the first 15 odd numbers = 15 × 15 = 225.\nAnswer: 225.",
+       "hi": "चरण 1: विषम संख्याएँ गिनिए। n-वीं विषम संख्या 2n − 1 है। 2n − 1 = 29 से 2n = 30, अतः n = 15।\nचरण 2: पहली 15 विषम संख्याओं का योग = 15 × 15 = 225।\nउत्तर: 225।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find 1 + 2 + 3 + ... + 99 + 100 + 99 + ... + 3 + 2 + 1.",
+       "hi": "1 + 2 + 3 + ... + 99 + 100 + 99 + ... + 3 + 2 + 1 ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: This is an up-and-down sum going up to 100.\nStep 2: By the up-and-down rule it equals 100 × 100.\nAnswer: 10000.\nCheck: 1 + 2 + ... + 100 = 5050, and 1 + 2 + ... + 99 = 4950; 5050 + 4950 = 10000.",
+       "hi": "चरण 1: यह 100 तक जाने वाला ऊपर-नीचे योग है।\nचरण 2: ऊपर-नीचे नियम से यह 100 × 100 के बराबर है।\nउत्तर: 10000।\nजाँच: 1 + 2 + ... + 100 = 5050, और 1 + 2 + ... + 99 = 4950; 5050 + 4950 = 10000।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the sum 1 + 2 + 3 + ... + 50.",
+       "hi": "योग 1 + 2 + 3 + ... + 50 ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Use two copies of the triangle: they form a rectangle of 50 rows and 51 columns.\nStep 2: Rectangle = 50 × 51 = 2550 dots.\nStep 3: One triangle = 2550 ÷ 2 = 1275.\nAnswer: 1275.",
+       "hi": "चरण 1: त्रिभुज की दो प्रतियाँ लीजिए: वे 50 पंक्तियों और 51 स्तंभों का आयत बनाती हैं।\nचरण 2: आयत = 50 × 51 = 2550 बिंदु।\nचरण 3: एक त्रिभुज = 2550 ÷ 2 = 1275।\nउत्तर: 1275।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find 1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 quickly.",
+       "hi": "1 + 2 + 4 + 8 + 16 + 32 + 64 + 128 + 256 जल्दी ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: The rule says: sum of powers of 2 from 1 up to a power, plus 1, is the next power of 2.\nStep 2: The next power after 256 is 512.\nStep 3: So the sum = 512 − 1 = 511.",
+       "hi": "चरण 1: नियम कहता है: 1 से किसी घात तक 2 की घातों का योग, जमा 1, 2 की अगली घात होती है।\nचरण 2: 256 के बाद की घात 512 है।\nचरण 3: इसलिए योग = 512 − 1 = 511।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.5 Patterns in Shapes",
+    "hi": "1.5 आकृतियों में पैटर्न"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The part of mathematics that studies shapes is called geometry. Shapes can be in one dimension (lines and curves, which have only length), two dimensions (flat shapes like triangles, squares and circles, drawn on paper) or three dimensions (solid shapes like cubes, cones and spheres, which take up space). Just like numbers, shapes can form sequences where each shape is made from the one before by a fixed rule.",
+      "hi": "गणित का वह भाग जो आकृतियों का अध्ययन करता है, ज्यामिति कहलाता है। आकृतियाँ एक विमा में (रेखाएँ और वक्र, जिनमें केवल लंबाई होती है), दो विमाओं में (कागज़ पर बनने वाली सपाट आकृतियाँ जैसे त्रिभुज, वर्ग और वृत्त) या तीन विमाओं में (ठोस आकृतियाँ जैसे घन, शंकु और गोला, जो जगह घेरती हैं) हो सकती हैं। संख्याओं की तरह आकृतियाँ भी अनुक्रम बना सकती हैं, जिनमें हर आकृति पिछली आकृति से किसी निश्चित नियम से बनती है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Shape sequence",
+       "hi": "आकृति अनुक्रम"
+      },
+      "text": {
+       "en": "A list of shapes in order, where each shape follows from the previous one by a rule.",
+       "hi": "क्रम में रखी आकृतियों की सूची, जिसमें हर आकृति पिछली आकृति से किसी नियम द्वारा बनती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "1. Regular polygons. A polygon is a closed shape made of straight sides. It is regular when all its sides are equal and all its angles are equal. The sequence is: equilateral triangle (3 sides), square (4 sides), regular pentagon (5), regular hexagon (6), regular heptagon (7), regular octagon (8), regular nonagon (9), regular decagon (10), .... Rule: each new shape has one more side. As the number of sides grows, the shape looks more and more like a circle.",
+      "hi": "1. सम बहुभुज। बहुभुज सीधी भुजाओं से बनी बंद आकृति है। जब उसकी सभी भुजाएँ बराबर और सभी कोण बराबर हों, तो वह सम बहुभुज कहलाता है। अनुक्रम है: समबाहु त्रिभुज (3 भुजाएँ), वर्ग (4 भुजाएँ), सम पंचभुज (5), सम षट्भुज (6), सम सप्तभुज (7), सम अष्टभुज (8), सम नवभुज (9), सम दशभुज (10), ...। नियम: हर नई आकृति में एक भुजा अधिक होती है। जैसे-जैसे भुजाएँ बढ़ती हैं, आकृति वृत्त जैसी दिखने लगती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "2. Complete graphs. Place some points (dots) so that no three are in a straight line, for example at the corners of a regular polygon. Join every point to every other point with a straight line. The result is called a complete graph. With 2 points there is 1 line; with 3 points we get a triangle (3 lines); with 4 points we get a square with both diagonals (6 lines); with 5 points a pentagon with all its diagonals, which looks like a star inside a pentagon (10 lines); with 6 points, 15 lines.",
+      "hi": "2. पूर्ण आलेख। कुछ बिंदु इस तरह रखिए कि कोई तीन एक सीधी रेखा में न हों, जैसे किसी सम बहुभुज के कोनों पर। हर बिंदु को हर दूसरे बिंदु से सीधी रेखा द्वारा मिलाइए। परिणाम को पूर्ण आलेख कहते हैं। 2 बिंदुओं से 1 रेखा; 3 बिंदुओं से त्रिभुज (3 रेखाएँ); 4 बिंदुओं से दोनों विकर्णों वाला वर्ग (6 रेखाएँ); 5 बिंदुओं से सभी विकर्णों वाला पंचभुज, जो पंचभुज के अंदर तारे जैसा दिखता है (10 रेखाएँ); 6 बिंदुओं से 15 रेखाएँ।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Complete graph",
+       "hi": "पूर्ण आलेख"
+      },
+      "text": {
+       "en": "A figure made of points in which every point is joined to every other point by exactly one line.",
+       "hi": "बिंदुओं से बनी ऐसी आकृति जिसमें हर बिंदु हर दूसरे बिंदु से ठीक एक रेखा द्वारा जुड़ा हो।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "3. Stacked squares. Make a big square out of small equal squares, like the tiles on a floor: 1 by 1 (1 tile), 2 by 2 (4 tiles), 3 by 3 (9 tiles), 4 by 4 (16 tiles), 5 by 5 (25 tiles). Rule: add one more row and one more column each time.",
+      "hi": "3. एक के ऊपर एक रखे वर्ग। छोटे बराबर वर्गों से एक बड़ा वर्ग बनाइए, जैसे फ़र्श की टाइलें: 1 गुणा 1 (1 टाइल), 2 गुणा 2 (4 टाइलें), 3 गुणा 3 (9 टाइलें), 4 गुणा 4 (16 टाइलें), 5 गुणा 5 (25 टाइलें)। नियम: हर बार एक पंक्ति और एक स्तंभ बढ़ाइए।"
+     }
+    },
+    {
+     "p": {
+      "en": "4. Stacked triangles. Make a big triangle out of small equal triangles. The first is 1 small triangle. For the second, put a row of 3 small triangles under it (two pointing up, one pointing down between them), giving a bigger triangle of 4 pieces. The next row has 5 small triangles (3 up, 2 down), then 7, and so on. Rule: each new row has 2 more small triangles than the row above it.",
+      "hi": "4. एक के ऊपर एक रखे त्रिभुज। छोटे बराबर त्रिभुजों से एक बड़ा त्रिभुज बनाइए। पहले में 1 छोटा त्रिभुज है। दूसरे के लिए उसके नीचे 3 छोटे त्रिभुजों की पंक्ति रखिए (दो ऊपर की ओर नोक वाले, और उनके बीच एक नीचे की ओर नोक वाला), जिससे 4 टुकड़ों का बड़ा त्रिभुज बनता है। अगली पंक्ति में 5 छोटे त्रिभुज (3 ऊपर, 2 नीचे), फिर 7, आदि। नियम: हर नई पंक्ति में ऊपर की पंक्ति से 2 छोटे त्रिभुज अधिक होते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "5. The Koch snowflake. Start with an equilateral triangle (3 sides). Now take every straight segment, divide it into 3 equal parts, and replace the middle part by two sides of a small equilateral triangle pointing outward, like a speed-breaker bump. Each segment becomes 4 smaller segments, each one-third as long. After the first step the triangle becomes a six-pointed star with 12 segments. Repeat the same step on every segment again and again, and the shape looks more and more like a beautiful snowflake. Shapes like this, where small parts look like the whole, are called fractals. The Koch snowflake is named after the Swedish mathematician Helge von Koch.",
+      "hi": "5. कोख हिमकण। एक समबाहु त्रिभुज (3 भुजाएँ) से शुरू कीजिए। अब हर सीधे रेखाखंड को 3 बराबर भागों में बाँटिए, और बीच वाले भाग की जगह बाहर की ओर निकले एक छोटे समबाहु त्रिभुज की दो भुजाएँ लगाइए, जैसे सड़क पर स्पीड-ब्रेकर का उभार। हर रेखाखंड 4 छोटे रेखाखंड बन जाता है, जिनमें से हर एक की लंबाई एक-तिहाई होती है। पहले चरण के बाद त्रिभुज 12 रेखाखंडों वाला छह नोकों का तारा बन जाता है। यही चरण हर रेखाखंड पर बार-बार दोहराइए, और आकृति अधिक से अधिक सुंदर हिमकण जैसी दिखने लगती है। ऐसी आकृतियाँ, जिनके छोटे भाग पूरी आकृति जैसे दिखते हैं, भिन्नक (फ्रैक्टल) कहलाती हैं। कोख हिमकण का नाम स्वीडन के गणितज्ञ हेल्गे फ़ॉन कोख के नाम पर है।"
+     }
+    },
+    {
+     "note": {
+      "en": "When drawing a shape sequence, first describe its rule in words. Then use the rule to draw the next shape. You don't have to draw the 50th shape to know about it; the rule (and the number pattern hidden in it) tells you.",
+      "hi": "आकृति अनुक्रम बनाते समय पहले उसका नियम शब्दों में लिखिए। फिर उसी नियम से अगली आकृति बनाइए। 50वीं आकृति के बारे में जानने के लिए उसे बनाना ज़रूरी नहीं; नियम (और उसमें छिपा संख्या पैटर्न) आपको बता देता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Describe the next shape after the square with both diagonals in the complete-graph sequence, and the next shape after the 4 by 4 stacked square.",
+       "hi": "पूर्ण आलेख अनुक्रम में दोनों विकर्णों वाले वर्ग के बाद की आकृति, और 4 गुणा 4 वाले वर्ग के बाद की आकृति बताइए।"
+      },
+      "a": {
+       "en": "Complete graph: after 4 points comes 5 points, at the corners of a pentagon. Join each point to all 4 others: the 5 sides of the pentagon plus 5 diagonals forming a star. Total 10 lines.\nStacked squares: after 4 by 4 comes 5 by 5: add one row and one column, giving 25 small squares.",
+       "hi": "पूर्ण आलेख: 4 बिंदुओं के बाद 5 बिंदु आते हैं, पंचभुज के कोनों पर। हर बिंदु को बाकी 4 से मिलाइए: पंचभुज की 5 भुजाएँ और तारा बनाने वाले 5 विकर्ण। कुल 10 रेखाएँ।\nवर्ग: 4 गुणा 4 के बाद 5 गुणा 5 आता है: एक पंक्ति और एक स्तंभ जोड़िए, जिससे 25 छोटे वर्ग बनते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the regular-polygon sequence starting with the triangle, which shape is 8th? How many sides does it have?",
+       "hi": "त्रिभुज से शुरू होने वाले सम बहुभुज अनुक्रम में 8वीं आकृति कौन-सी है? उसकी कितनी भुजाएँ हैं?"
+      },
+      "a": {
+       "en": "The 1st shape has 3 sides, the 2nd has 4, so the kth shape has k + 2 sides.\nThe 8th shape has 8 + 2 = 10 sides: it is a regular decagon.",
+       "hi": "पहली आकृति में 3 भुजाएँ हैं, दूसरी में 4, इसलिए k-वीं आकृति में k + 2 भुजाएँ हैं।\n8वीं आकृति में 8 + 2 = 10 भुजाएँ हैं: यह सम दशभुज है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.6 Relation to Number Sequences",
+    "hi": "1.6 संख्या अनुक्रमों से संबंध"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Now comes a wonderful surprise. If we count things in the shape sequences, we get the number sequences of Section 1.2 again. This shows how number theory and geometry are deeply connected.",
+      "hi": "अब एक अद्भुत आश्चर्य आता है। यदि हम आकृति अनुक्रमों में चीज़ें गिनें, तो हमें फिर से खंड 1.2 के संख्या अनुक्रम मिलते हैं। इससे पता चलता है कि संख्या सिद्धांत और ज्यामिति गहराई से जुड़े हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Shape sequence",
+        "What we count",
+        "Numbers we get",
+        "Name of sequence"
+       ],
+       "hi": [
+        "आकृति अनुक्रम",
+        "क्या गिनते हैं",
+        "मिलने वाली संख्याएँ",
+        "अनुक्रम का नाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Regular polygons",
+         "Sides (or corners)",
+         "3, 4, 5, 6, 7, 8, ...",
+         "Counting numbers from 3"
+        ],
+        [
+         "Complete graphs",
+         "Lines",
+         "1, 3, 6, 10, 15, 21, ...",
+         "Triangular numbers"
+        ],
+        [
+         "Stacked squares",
+         "Small squares",
+         "1, 4, 9, 16, 25, ...",
+         "Square numbers"
+        ],
+        [
+         "Stacked triangles",
+         "Small triangles",
+         "1, 4, 9, 16, 25, ...",
+         "Square numbers"
+        ],
+        [
+         "Koch snowflake",
+         "Line segments",
+         "3, 12, 48, 192, 768, ...",
+         "3 × powers of 4"
+        ]
+       ],
+       "hi": [
+        [
+         "सम बहुभुज",
+         "भुजाएँ (या कोने)",
+         "3, 4, 5, 6, 7, 8, ...",
+         "3 से गिनती संख्याएँ"
+        ],
+        [
+         "पूर्ण आलेख",
+         "रेखाएँ",
+         "1, 3, 6, 10, 15, 21, ...",
+         "त्रिकोणीय संख्याएँ"
+        ],
+        [
+         "एक के ऊपर एक रखे वर्ग",
+         "छोटे वर्ग",
+         "1, 4, 9, 16, 25, ...",
+         "वर्ग संख्याएँ"
+        ],
+        [
+         "एक के ऊपर एक रखे त्रिभुज",
+         "छोटे त्रिभुज",
+         "1, 4, 9, 16, 25, ...",
+         "वर्ग संख्याएँ"
+        ],
+        [
+         "कोख हिमकण",
+         "रेखाखंड",
+         "3, 12, 48, 192, 768, ...",
+         "3 × 4 की घातें"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why polygons give counting numbers: a regular polygon with 5 sides also has 5 corners (vertices), because every side ends at a corner and every corner joins two sides. So the number of sides and the number of corners are the same: 3, 4, 5, 6, ....",
+      "hi": "बहुभुज गिनती संख्याएँ क्यों देते हैं: 5 भुजाओं वाले सम बहुभुज में 5 कोने (शीर्ष) भी होते हैं, क्योंकि हर भुजा किसी कोने पर ख़त्म होती है और हर कोना दो भुजाओं को जोड़ता है। इसलिए भुजाओं और कोनों की संख्या बराबर होती है: 3, 4, 5, 6, ...।"
+     }
+    },
+    {
+     "p": {
+      "en": "Why complete graphs give triangular numbers: when we add a new point to a complete graph that already has some points, the new point must be joined to every old point. Going from 1 point to 2 adds 1 line; from 2 to 3 adds 2 lines; from 3 to 4 adds 3 lines; from 4 to 5 adds 4 lines. So the total lines are 1, 1 + 2 = 3, 1 + 2 + 3 = 6, 1 + 2 + 3 + 4 = 10: exactly the triangular numbers. With n points the number of lines is 1 + 2 + ... + (n − 1).",
+      "hi": "पूर्ण आलेख त्रिकोणीय संख्याएँ क्यों देते हैं: जब किसी पूर्ण आलेख में नया बिंदु जोड़ते हैं, तो उसे हर पुराने बिंदु से मिलाना पड़ता है। 1 से 2 बिंदु होने पर 1 रेखा बढ़ती है; 2 से 3 होने पर 2 रेखाएँ; 3 से 4 होने पर 3 रेखाएँ; 4 से 5 होने पर 4 रेखाएँ। इसलिए कुल रेखाएँ 1, 1 + 2 = 3, 1 + 2 + 3 = 6, 1 + 2 + 3 + 4 = 10 हैं: ठीक त्रिकोणीय संख्याएँ। n बिंदुओं पर रेखाओं की संख्या 1 + 2 + ... + (n − 1) होती है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Lines in a complete graph with n points = n × (n − 1) ÷ 2",
+      "hi": "n बिंदुओं वाले पूर्ण आलेख में रेखाएँ = n × (n − 1) ÷ 2"
+     }
+    },
+    {
+     "p": {
+      "en": "Why stacked triangles give square numbers: the rows of small triangles contain 1, 3, 5, 7, ... pieces (odd numbers). The total after 4 rows is 1 + 3 + 5 + 7 = 16 = 4 × 4. This is the same 'odd numbers add up to squares' relation from Section 1.4, now appearing in a triangle!",
+      "hi": "एक के ऊपर एक रखे त्रिभुज वर्ग संख्याएँ क्यों देते हैं: छोटे त्रिभुजों की पंक्तियों में 1, 3, 5, 7, ... टुकड़े (विषम संख्याएँ) हैं। 4 पंक्तियों के बाद कुल 1 + 3 + 5 + 7 = 16 = 4 × 4 है। यह खंड 1.4 का वही 'विषम संख्याओं का योग वर्ग है' संबंध है, जो अब त्रिभुज में दिख रहा है!"
+     }
+    },
+    {
+     "p": {
+      "en": "Why the Koch snowflake gives 3, 12, 48, ...: the triangle starts with 3 segments. At each step every segment is replaced by 4 smaller segments, so the number of segments is multiplied by 4. So we get 3, 3 × 4 = 12, 12 × 4 = 48, 48 × 4 = 192, 192 × 4 = 768, 768 × 4 = 3072. These are 3 times the powers of 4 (1, 4, 16, 64, 256, ...).",
+      "hi": "कोख हिमकण 3, 12, 48, ... क्यों देता है: त्रिभुज 3 रेखाखंडों से शुरू होता है। हर चरण में हर रेखाखंड की जगह 4 छोटे रेखाखंड आते हैं, इसलिए रेखाखंडों की संख्या 4 से गुणा होती है। इस तरह हमें 3, 3 × 4 = 12, 12 × 4 = 48, 48 × 4 = 192, 192 × 4 = 768, 768 × 4 = 3072 मिलते हैं। ये 4 की घातों (1, 4, 16, 64, 256, ...) के 3 गुने हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "The same number sequence can appear in very different places. Triangular numbers appear in dot triangles, in sums of counting numbers and in complete graphs. Square numbers appear in dot squares, in sums of odd numbers, in stacked squares and in stacked triangles. Spotting the same pattern in different places is one of the joys of mathematics.",
+      "hi": "एक ही संख्या अनुक्रम बहुत अलग-अलग जगहों पर दिख सकता है। त्रिकोणीय संख्याएँ बिंदु त्रिभुजों में, गिनती संख्याओं के योग में और पूर्ण आलेखों में दिखती हैं। वर्ग संख्याएँ बिंदु वर्गों में, विषम संख्याओं के योग में, एक के ऊपर एक रखे वर्गों में और त्रिभुजों में दिखती हैं। अलग-अलग जगहों पर एक ही पैटर्न पहचानना गणित के आनंदों में से एक है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "At a Diwali party 8 friends meet and every friend shakes hands with every other friend exactly once. How many handshakes happen?",
+       "hi": "दिवाली की एक पार्टी में 8 मित्र मिलते हैं और हर मित्र हर दूसरे मित्र से ठीक एक बार हाथ मिलाता है। कुल कितने हाथ मिलाए जाते हैं?"
+      },
+      "a": {
+       "en": "Step 1: Think of each friend as a point and each handshake as a line. This is a complete graph with 8 points.\nStep 2: Lines = 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28.\nStep 3: Check with the formula: 8 × 7 ÷ 2 = 56 ÷ 2 = 28.\nAnswer: 28 handshakes.",
+       "hi": "चरण 1: हर मित्र को एक बिंदु और हर हाथ मिलाने को एक रेखा मानिए। यह 8 बिंदुओं वाला पूर्ण आलेख है।\nचरण 2: रेखाएँ = 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28।\nचरण 3: सूत्र से जाँच: 8 × 7 ÷ 2 = 56 ÷ 2 = 28।\nउत्तर: 28 बार हाथ मिलाए गए।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In a cricket league of 6 teams, every team plays every other team once. How many matches are played?",
+       "hi": "6 टीमों की एक क्रिकेट लीग में हर टीम हर दूसरी टीम से एक बार खेलती है। कुल कितने मैच होते हैं?"
+      },
+      "a": {
+       "en": "Each match joins two teams, like a line between two points of a complete graph with 6 points.\nMatches = 1 + 2 + 3 + 4 + 5 = 15 (or 6 × 5 ÷ 2 = 15).\nAnswer: 15 matches.",
+       "hi": "हर मैच दो टीमों को जोड़ता है, जैसे 6 बिंदुओं वाले पूर्ण आलेख में दो बिंदुओं के बीच की रेखा।\nमैच = 1 + 2 + 3 + 4 + 5 = 15 (या 6 × 5 ÷ 2 = 15)।\nउत्तर: 15 मैच।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "How many line segments does the Koch snowflake have after 4 steps (starting from the triangle as step 0)? How many small triangles are in a stacked triangle with 7 rows?",
+       "hi": "त्रिभुज को चरण 0 मानकर, 4 चरणों के बाद कोख हिमकण में कितने रेखाखंड होंगे? 7 पंक्तियों वाले एक के ऊपर एक रखे त्रिभुज में कितने छोटे त्रिभुज होंगे?"
+      },
+      "a": {
+       "en": "Koch: step 0 = 3, step 1 = 12, step 2 = 48, step 3 = 192, step 4 = 192 × 4 = 768 segments.\nStacked triangle: rows have 1, 3, 5, 7, 9, 11, 13 pieces. Total = 7 × 7 = 49 small triangles.",
+       "hi": "कोख: चरण 0 = 3, चरण 1 = 12, चरण 2 = 48, चरण 3 = 192, चरण 4 = 192 × 4 = 768 रेखाखंड।\nत्रिभुज: पंक्तियों में 1, 3, 5, 7, 9, 11, 13 टुकड़े हैं। कुल = 7 × 7 = 49 छोटे त्रिभुज।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking a pattern is proved because it works for 3 or 4 cases. Fix: checking examples is a good start, but a pattern is truly understood only when you can explain why it always works, for example with a dot picture.",
+   "Mixing up triangular numbers with odd numbers or adding a fixed amount. Fix: in 1, 3, 6, 10, ... the amount added grows: +2, +3, +4, +5. It is not 'add 2 every time'.",
+   "Confusing 4² with 4 × 2 or 2³ with 2 × 3. Fix: 4² = 4 × 4 = 16 and 2³ = 2 × 2 × 2 = 8, not 8 and 6.",
+   "Using the wrong 'n' in 1 + 3 + 5 + ... = n × n by taking the last number as n. Fix: n is how many odd numbers you add. For 1 + 3 + ... + 21, n = (21 + 1) ÷ 2 = 11, so the sum is 121, not 21 × 21.",
+   "In Virahānka numbers, multiplying or adding a fixed amount instead of adding the previous two terms. Fix: after 8 and 13 comes 8 + 13 = 21.",
+   "Forgetting that the powers of 2 and 3 start at 1 (not at 2 or 3). Fix: 1 is counted as the first term because 1 is what we start with before any multiplying.",
+   "Counting the lines in a complete graph by multiplying points by (points − 1) and forgetting to halve. Fix: each line joins two points and gets counted twice, so divide by 2. With 5 points: 5 × 4 ÷ 2 = 10, not 20.",
+   "In the Koch snowflake, thinking each segment becomes 3 pieces because it is divided into thirds. Fix: the middle third is replaced by two segments, so each segment becomes 4 pieces; the count is multiplied by 4.",
+   "Calling any polygon with n sides 'regular'. Fix: a polygon is regular only if all sides AND all angles are equal. A rectangle has equal angles but not equal sides, so it is not a regular polygon."
+  ],
+  "hi": [
+   "यह सोचना कि कोई पैटर्न 3-4 उदाहरणों में सही है तो सिद्ध हो गया। सुधार: उदाहरण जाँचना अच्छी शुरुआत है, पर पैटर्न तभी सच में समझ आता है जब आप बता सकें कि वह हमेशा क्यों सही है, जैसे बिंदु-चित्र से।",
+   "त्रिकोणीय संख्याओं को विषम संख्याओं से या हर बार समान राशि जोड़ने से मिला देना। सुधार: 1, 3, 6, 10, ... में जोड़ी जाने वाली राशि बढ़ती है: +2, +3, +4, +5। यह 'हर बार 2 जोड़ो' नहीं है।",
+   "4² को 4 × 2 या 2³ को 2 × 3 समझ लेना। सुधार: 4² = 4 × 4 = 16 और 2³ = 2 × 2 × 2 = 8, न कि 8 और 6।",
+   "1 + 3 + 5 + ... = n × n में अंतिम संख्या को ही n मान लेना। सुधार: n यह बताता है कि कितनी विषम संख्याएँ जोड़ी गईं। 1 + 3 + ... + 21 में n = (21 + 1) ÷ 2 = 11, इसलिए योग 121 है, 21 × 21 नहीं।",
+   "विरहांक संख्याओं में पिछले दो पदों को जोड़ने के बजाय गुणा करना या समान राशि जोड़ना। सुधार: 8 और 13 के बाद 8 + 13 = 21 आता है।",
+   "भूल जाना कि 2 और 3 की घातें 1 से शुरू होती हैं (2 या 3 से नहीं)। सुधार: 1 को पहला पद गिनते हैं क्योंकि किसी गुणा से पहले हम 1 से ही शुरू करते हैं।",
+   "पूर्ण आलेख की रेखाएँ गिनते समय बिंदुओं को (बिंदु − 1) से गुणा करके आधा करना भूल जाना। सुधार: हर रेखा दो बिंदुओं को जोड़ती है और दो बार गिनी जाती है, इसलिए 2 से भाग दें। 5 बिंदुओं पर: 5 × 4 ÷ 2 = 10, 20 नहीं।",
+   "कोख हिमकण में यह सोचना कि हर रेखाखंड 3 टुकड़े बनता है क्योंकि उसे तीन भागों में बाँटा गया। सुधार: बीच वाले भाग की जगह दो रेखाखंड आते हैं, इसलिए हर रेखाखंड 4 टुकड़े बनता है; गिनती 4 से गुणा होती है।",
+   "n भुजाओं वाले किसी भी बहुभुज को 'सम' कहना। सुधार: बहुभुज तभी सम है जब सभी भुजाएँ और सभी कोण दोनों बराबर हों। आयत के कोण बराबर हैं पर भुजाएँ नहीं, इसलिए वह सम बहुभुज नहीं है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Pattern",
+    "hi": "पैटर्न (प्रतिरूप)"
+   },
+   "d": {
+    "en": "A regular arrangement or rule by which something repeats or grows.",
+    "hi": "नियमित व्यवस्था या नियम जिससे कोई चीज़ दोहराई जाती है या बढ़ती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mathematics",
+    "hi": "गणित"
+   },
+   "d": {
+    "en": "The search for patterns and the explanations of why they occur.",
+    "hi": "पैटर्न खोजने और उनके होने के कारण समझाने का विषय।"
+   }
+  },
+  {
+   "t": {
+    "en": "Number theory",
+    "hi": "संख्या सिद्धांत"
+   },
+   "d": {
+    "en": "The branch of mathematics that studies patterns in whole numbers.",
+    "hi": "गणित की वह शाखा जो पूर्ण संख्याओं के पैटर्नों का अध्ययन करती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Geometry",
+    "hi": "ज्यामिति"
+   },
+   "d": {
+    "en": "The branch of mathematics that studies shapes, sizes and positions.",
+    "hi": "गणित की वह शाखा जो आकृतियों, मापों और स्थितियों का अध्ययन करती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sequence",
+    "hi": "अनुक्रम"
+   },
+   "d": {
+    "en": "A list of numbers or shapes in a definite order, usually following a rule.",
+    "hi": "निश्चित क्रम में संख्याओं या आकृतियों की सूची, जो प्रायः किसी नियम पर चलती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Term",
+    "hi": "पद"
+   },
+   "d": {
+    "en": "Each number (or shape) in a sequence.",
+    "hi": "किसी अनुक्रम की हर संख्या (या आकृति)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Whole numbers",
+    "hi": "पूर्ण संख्याएँ"
+   },
+   "d": {
+    "en": "The numbers 0, 1, 2, 3, ...",
+    "hi": "संख्याएँ 0, 1, 2, 3, ..."
+   }
+  },
+  {
+   "t": {
+    "en": "Counting numbers",
+    "hi": "गिनती संख्याएँ"
+   },
+   "d": {
+    "en": "The numbers 1, 2, 3, 4, ... used for counting; also called natural numbers.",
+    "hi": "गिनने में प्रयुक्त संख्याएँ 1, 2, 3, 4, ...; इन्हें प्राकृत संख्याएँ भी कहते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Odd number",
+    "hi": "विषम संख्या"
+   },
+   "d": {
+    "en": "A whole number that leaves 1 left over when divided into 2 equal groups: 1, 3, 5, ...",
+    "hi": "वह पूर्ण संख्या जो 2 बराबर समूहों में बाँटने पर 1 बचाती है: 1, 3, 5, ..."
+   }
+  },
+  {
+   "t": {
+    "en": "Even number",
+    "hi": "सम संख्या"
+   },
+   "d": {
+    "en": "A whole number that is a multiple of 2: 2, 4, 6, ...",
+    "hi": "वह पूर्ण संख्या जो 2 का गुणज है: 2, 4, 6, ..."
+   }
+  },
+  {
+   "t": {
+    "en": "Triangular number",
+    "hi": "त्रिकोणीय संख्या"
+   },
+   "d": {
+    "en": "A number of dots that can form a triangle: 1, 3, 6, 10, ...; equal to 1 + 2 + ... + n.",
+    "hi": "बिंदुओं की वह संख्या जो त्रिभुज बना सके: 1, 3, 6, 10, ...; यह 1 + 2 + ... + n के बराबर है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Square number",
+    "hi": "वर्ग संख्या"
+   },
+   "d": {
+    "en": "A number of the form n × n: 1, 4, 9, 16, ...",
+    "hi": "n × n के रूप की संख्या: 1, 4, 9, 16, ..."
+   }
+  },
+  {
+   "t": {
+    "en": "Cube number",
+    "hi": "घन संख्या"
+   },
+   "d": {
+    "en": "A number of the form n × n × n: 1, 8, 27, 64, ...",
+    "hi": "n × n × n के रूप की संख्या: 1, 8, 27, 64, ..."
+   }
+  },
+  {
+   "t": {
+    "en": "Virahānka numbers",
+    "hi": "विरहांक संख्याएँ"
+   },
+   "d": {
+    "en": "1, 2, 3, 5, 8, 13, ..., where each term is the sum of the two before it.",
+    "hi": "1, 2, 3, 5, 8, 13, ..., जिसमें हर पद पिछले दो पदों का योग है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Powers of 2",
+    "hi": "2 की घातें"
+   },
+   "d": {
+    "en": "1, 2, 4, 8, 16, ..., got by doubling again and again.",
+    "hi": "1, 2, 4, 8, 16, ..., जो बार-बार दुगुना करने से मिलती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Powers of 3",
+    "hi": "3 की घातें"
+   },
+   "d": {
+    "en": "1, 3, 9, 27, 81, ..., got by multiplying by 3 again and again.",
+    "hi": "1, 3, 9, 27, 81, ..., जो बार-बार 3 से गुणा करने से मिलती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hexagonal numbers",
+    "hi": "षट्कोणीय संख्याएँ"
+   },
+   "d": {
+    "en": "1, 7, 19, 37, 61, ..., numbers of dots forming hexagons around a centre dot.",
+    "hi": "1, 7, 19, 37, 61, ..., केंद्र बिंदु के चारों ओर षट्भुज बनाने वाले बिंदुओं की संख्याएँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Gnomon",
+    "hi": "नोमॉन"
+   },
+   "d": {
+    "en": "The L-shaped strip of dots added to a square to make the next square; it always has an odd number of dots.",
+    "hi": "वर्ग में जोड़ी जाने वाली बिंदुओं की L आकार की पट्टी जिससे अगला वर्ग बनता है; इसमें हमेशा विषम संख्या में बिंदु होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Polygon",
+    "hi": "बहुभुज"
+   },
+   "d": {
+    "en": "A closed flat shape made of straight sides.",
+    "hi": "सीधी भुजाओं से बनी बंद सपाट आकृति।"
+   }
+  },
+  {
+   "t": {
+    "en": "Regular polygon",
+    "hi": "सम बहुभुज"
+   },
+   "d": {
+    "en": "A polygon with all sides equal and all angles equal.",
+    "hi": "वह बहुभुज जिसकी सभी भुजाएँ बराबर और सभी कोण बराबर हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Complete graph",
+    "hi": "पूर्ण आलेख"
+   },
+   "d": {
+    "en": "Points with every point joined to every other point by a line.",
+    "hi": "बिंदु जिनमें हर बिंदु हर दूसरे बिंदु से रेखा द्वारा जुड़ा हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Koch snowflake",
+    "hi": "कोख हिमकण"
+   },
+   "d": {
+    "en": "A fractal made by repeatedly replacing the middle third of every segment with a triangular bump.",
+    "hi": "हर रेखाखंड के बीच वाले तिहाई भाग को बार-बार त्रिकोणीय उभार से बदलकर बनने वाला भिन्नक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Fractal",
+    "hi": "भिन्नक (फ्रैक्टल)"
+   },
+   "d": {
+    "en": "A shape whose small parts look like the whole shape.",
+    "hi": "ऐसी आकृति जिसके छोटे भाग पूरी आकृति जैसे दिखते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dimension",
+    "hi": "विमा"
+   },
+   "d": {
+    "en": "The number of directions a shape spreads in: 1 for lines, 2 for flat shapes, 3 for solids.",
+    "hi": "आकृति कितनी दिशाओं में फैली है: रेखाओं के लिए 1, सपाट आकृतियों के लिए 2, ठोस के लिए 3।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Give three ways in which mathematics is used in a vegetable market.",
+    "hi": "सब्ज़ी बाज़ार में गणित के उपयोग के तीन तरीके बताइए।"
+   },
+   "a": {
+    "en": "1. Weighing: the seller weighs 2 kg of potatoes, 500 g of tomatoes.\n2. Cost: if onions cost Rs 40 per kg, 3 kg cost 3 × 40 = Rs 120.\n3. Change: if you pay Rs 200 for a bill of Rs 165, you get back 200 − 165 = Rs 35.",
+    "hi": "1. तौलना: विक्रेता 2 kg आलू, 500 g टमाटर तौलता है।\n2. कीमत: यदि प्याज़ Rs 40 प्रति kg है, तो 3 kg की कीमत 3 × 40 = Rs 120।\n3. बाकी पैसे: यदि Rs 165 के बिल के लिए Rs 200 दें, तो 200 − 165 = Rs 35 वापस मिलते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the sequence and write the next two terms: (a) 2, 4, 6, 8, ... (b) 1, 4, 9, 16, ... (c) 1, 8, 27, 64, ...",
+    "hi": "अनुक्रम का नाम बताइए और अगले दो पद लिखिए: (a) 2, 4, 6, 8, ... (b) 1, 4, 9, 16, ... (c) 1, 8, 27, 64, ..."
+   },
+   "a": {
+    "en": "(a) Even numbers: 10, 12.\n(b) Square numbers: 5 × 5 = 25, 6 × 6 = 36.\n(c) Cube numbers: 5 × 5 × 5 = 125, 6 × 6 × 6 = 216.",
+    "hi": "(a) सम संख्याएँ: 10, 12।\n(b) वर्ग संख्याएँ: 5 × 5 = 25, 6 × 6 = 36।\n(c) घन संख्याएँ: 5 × 5 × 5 = 125, 6 × 6 × 6 = 216।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write the next three terms and the rule: 1, 2, 4, 8, 16, 32, ...",
+    "hi": "अगले तीन पद और नियम लिखिए: 1, 2, 4, 8, 16, 32, ..."
+   },
+   "a": {
+    "en": "Rule: multiply the previous term by 2 (powers of 2).\n32 × 2 = 64, 64 × 2 = 128, 128 × 2 = 256.\nAnswer: 64, 128, 256.",
+    "hi": "नियम: पिछले पद को 2 से गुणा कीजिए (2 की घातें)।\n32 × 2 = 64, 64 × 2 = 128, 128 × 2 = 256।\nउत्तर: 64, 128, 256।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Continue the Virahānka sequence 1, 2, 3, 5, 8, ... until you pass 100.",
+    "hi": "विरहांक अनुक्रम 1, 2, 3, 5, 8, ... को 100 पार होने तक आगे बढ़ाइए।"
+   },
+   "a": {
+    "en": "5 + 8 = 13, 8 + 13 = 21, 13 + 21 = 34, 21 + 34 = 55, 34 + 55 = 89, 55 + 89 = 144.\nSequence: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144.",
+    "hi": "5 + 8 = 13, 8 + 13 = 21, 13 + 21 = 34, 21 + 34 = 55, 34 + 55 = 89, 55 + 89 = 144।\nअनुक्रम: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Which of these are triangular numbers: 21, 24, 28, 35, 45?",
+    "hi": "इनमें से कौन-सी त्रिकोणीय संख्याएँ हैं: 21, 24, 28, 35, 45?"
+   },
+   "a": {
+    "en": "Triangular numbers: 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...\n21, 28 and 45 are in the list. 24 and 35 are not.\nAnswer: 21, 28, 45.",
+    "hi": "त्रिकोणीय संख्याएँ: 1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...\n21, 28 और 45 सूची में हैं। 24 और 35 नहीं हैं।\nउत्तर: 21, 28, 45।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Describe in words how to draw dot pictures for 15 (as a triangle) and 49 (as a square).",
+    "hi": "15 (त्रिभुज के रूप में) और 49 (वर्ग के रूप में) के बिंदु-चित्र बनाने का तरीका शब्दों में बताइए।"
+   },
+   "a": {
+    "en": "15: draw 5 rows of dots, with 1, 2, 3, 4 and 5 dots from top to bottom, centred. 1 + 2 + 3 + 4 + 5 = 15.\n49: draw 7 rows of 7 dots each, forming a 7 by 7 square. 7 × 7 = 49.",
+    "hi": "15: बिंदुओं की 5 पंक्तियाँ बनाइए, ऊपर से नीचे 1, 2, 3, 4 और 5 बिंदु, बीच में संरेखित। 1 + 2 + 3 + 4 + 5 = 15।\n49: 7-7 बिंदुओं की 7 पंक्तियाँ बनाइए, जो 7 गुणा 7 का वर्ग बनाएँ। 7 × 7 = 49।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Explain why 10 is called a triangular number and 27 a cube number.",
+    "hi": "समझाइए कि 10 को त्रिकोणीय संख्या और 27 को घन संख्या क्यों कहते हैं।"
+   },
+   "a": {
+    "en": "10 dots can be arranged in rows of 1, 2, 3 and 4 to form a triangle, so 10 is triangular.\n27 small cubes can be stacked into a big cube 3 long, 3 wide and 3 high (3 × 3 × 3 = 27), so 27 is a cube number.",
+    "hi": "10 बिंदुओं को 1, 2, 3 और 4 की पंक्तियों में रखकर त्रिभुज बनाया जा सकता है, इसलिए 10 त्रिकोणीय है।\n27 छोटे घनों को 3 लंबा, 3 चौड़ा और 3 ऊँचा बड़ा घन बनाने के लिए जमाया जा सकता है (3 × 3 × 3 = 27), इसलिए 27 घन संख्या है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the next two hexagonal numbers after 1, 7, 19, 37, 61.",
+    "hi": "1, 7, 19, 37, 61 के बाद की अगली दो षट्कोणीय संख्याएँ ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Differences: 6, 12, 18, 24. The next differences are 30 and 36.\n61 + 30 = 91, 91 + 36 = 127.\nCheck with 6 × triangular + 1: 6 × 15 + 1 = 91 and 6 × 21 + 1 = 127.\nAnswer: 91, 127.",
+    "hi": "अंतर: 6, 12, 18, 24। अगले अंतर 30 और 36 हैं।\n61 + 30 = 91, 91 + 36 = 127।\n6 × त्रिकोणीय + 1 से जाँच: 6 × 15 + 1 = 91 और 6 × 21 + 1 = 127।\nउत्तर: 91, 127।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Without adding term by term, find 1 + 3 + 5 + 7 + ... + 39.",
+    "hi": "पद-दर-पद जोड़े बिना 1 + 3 + 5 + 7 + ... + 39 ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Number of odd numbers: (39 + 1) ÷ 2 = 20.\nSum of first 20 odd numbers = 20 × 20 = 400.\nAnswer: 400.",
+    "hi": "विषम संख्याओं की संख्या: (39 + 1) ÷ 2 = 20।\nपहली 20 विषम संख्याओं का योग = 20 × 20 = 400।\nउत्तर: 400।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find 1 + 2 + 3 + ... + 25 + ... + 3 + 2 + 1 (up to 25 and back).",
+    "hi": "1 + 2 + 3 + ... + 25 + ... + 3 + 2 + 1 (25 तक और वापस) ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Up-and-down sum to 25 = 25 × 25 = 625.\nAnswer: 625.",
+    "hi": "25 तक ऊपर-नीचे योग = 25 × 25 = 625।\nउत्तर: 625।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain with a dot picture why 1 + 2 + 3 + 4 + 3 + 2 + 1 = 16.",
+    "hi": "बिंदु-चित्र से समझाइए कि 1 + 2 + 3 + 4 + 3 + 2 + 1 = 16 क्यों है।"
+   },
+   "a": {
+    "en": "Draw a 4 by 4 square of dots and turn it so a corner points up, like a diamond.\nCount the dots in each horizontal row from top to bottom: 1, 2, 3, 4, 3, 2, 1.\nAll the dots of the square are counted once, so the sum equals 4 × 4 = 16.",
+    "hi": "बिंदुओं का 4 गुणा 4 वर्ग बनाइए और उसे इस तरह घुमाइए कि एक कोना ऊपर हो, हीरे जैसा।\nऊपर से नीचे हर क्षैतिज पंक्ति के बिंदु गिनिए: 1, 2, 3, 4, 3, 2, 1।\nवर्ग का हर बिंदु एक बार गिना गया, इसलिए योग 4 × 4 = 16 है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Add the first few counting numbers: 1, 1 + 2, 1 + 2 + 3, ... up to 1 + ... + 7. Which sequence do you get? What is 1 + 2 + ... + 20?",
+    "hi": "पहली कुछ गिनती संख्याएँ जोड़िए: 1, 1 + 2, 1 + 2 + 3, ... 1 + ... + 7 तक। कौन-सा अनुक्रम मिलता है? 1 + 2 + ... + 20 कितना है?"
+   },
+   "a": {
+    "en": "Sums: 1, 3, 6, 10, 15, 21, 28: the triangular numbers.\n1 + 2 + ... + 20 = 20 × 21 ÷ 2 = 420 ÷ 2 = 210.",
+    "hi": "योग: 1, 3, 6, 10, 15, 21, 28: त्रिकोणीय संख्याएँ।\n1 + 2 + ... + 20 = 20 × 21 ÷ 2 = 420 ÷ 2 = 210।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Add pairs of neighbouring triangular numbers: 15 + 21, 21 + 28, 28 + 36. What do you notice?",
+    "hi": "पड़ोसी त्रिकोणीय संख्याओं के जोड़े जोड़िए: 15 + 21, 21 + 28, 28 + 36। आप क्या देखते हैं?"
+   },
+   "a": {
+    "en": "15 + 21 = 36 = 6 × 6.\n21 + 28 = 49 = 7 × 7.\n28 + 36 = 64 = 8 × 8.\nEach sum is a square number.",
+    "hi": "15 + 21 = 36 = 6 × 6।\n21 + 28 = 49 = 7 × 7।\n28 + 36 = 64 = 8 × 8।\nहर योग वर्ग संख्या है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find 1 + 2 + 4 + 8 + 16 + 32 + 64 using the powers-of-2 relation, and check by adding.",
+    "hi": "2 की घातों वाले संबंध से 1 + 2 + 4 + 8 + 16 + 32 + 64 ज्ञात कीजिए, और जोड़कर जाँचिए।"
+   },
+   "a": {
+    "en": "The next power of 2 after 64 is 128, so the sum = 128 − 1 = 127.\nCheck: 1 + 2 = 3, + 4 = 7, + 8 = 15, + 16 = 31, + 32 = 63, + 64 = 127.",
+    "hi": "64 के बाद 2 की अगली घात 128 है, इसलिए योग = 128 − 1 = 127।\nजाँच: 1 + 2 = 3, + 4 = 7, + 8 = 15, + 16 = 31, + 32 = 63, + 64 = 127।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find 1 + 3 + 9 + 27 + 81. Then multiply by 2 and add 1. What do you get?",
+    "hi": "1 + 3 + 9 + 27 + 81 ज्ञात कीजिए। फिर 2 से गुणा करके 1 जोड़िए। क्या मिलता है?"
+   },
+   "a": {
+    "en": "1 + 3 + 9 + 27 + 81 = 121.\n121 × 2 + 1 = 242 + 1 = 243.\n243 = 3 × 3 × 3 × 3 × 3, the next power of 3 after 81.",
+    "hi": "1 + 3 + 9 + 27 + 81 = 121।\n121 × 2 + 1 = 242 + 1 = 243।\n243 = 3 × 3 × 3 × 3 × 3, जो 81 के बाद 3 की अगली घात है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Add the hexagonal numbers 1 + 7 + 19 + 37 + 61 + 91. Which special number do you get?",
+    "hi": "षट्कोणीय संख्याएँ 1 + 7 + 19 + 37 + 61 + 91 जोड़िए। कौन-सी विशेष संख्या मिलती है?"
+   },
+   "a": {
+    "en": "1 + 7 = 8, + 19 = 27, + 37 = 64, + 61 = 125, + 91 = 216.\n216 = 6 × 6 × 6, a cube number (the 6th cube).",
+    "hi": "1 + 7 = 8, + 19 = 27, + 37 = 64, + 61 = 125, + 91 = 216।\n216 = 6 × 6 × 6, एक घन संख्या (छठा घन)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How many sides and how many corners does the 6th shape in the regular-polygon sequence (starting with the triangle) have? Name it.",
+    "hi": "सम बहुभुज अनुक्रम (त्रिभुज से शुरू) की छठी आकृति में कितनी भुजाएँ और कितने कोने हैं? उसका नाम बताइए।"
+   },
+   "a": {
+    "en": "Shape k has k + 2 sides. Shape 6 has 8 sides and 8 corners.\nIt is a regular octagon (like the shape of a STOP sign).",
+    "hi": "आकृति k में k + 2 भुजाएँ हैं। आकृति 6 में 8 भुजाएँ और 8 कोने हैं।\nयह सम अष्टभुज है (STOP चिह्न जैसा आकार)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How many lines are needed to draw the complete graph on 7 points? On 10 points?",
+    "hi": "7 बिंदुओं वाला पूर्ण आलेख बनाने के लिए कितनी रेखाएँ चाहिए? 10 बिंदुओं वाले के लिए?"
+   },
+   "a": {
+    "en": "7 points: 1 + 2 + 3 + 4 + 5 + 6 = 21 lines (7 × 6 ÷ 2 = 21).\n10 points: 1 + 2 + ... + 9 = 45 lines (10 × 9 ÷ 2 = 45).",
+    "hi": "7 बिंदु: 1 + 2 + 3 + 4 + 5 + 6 = 21 रेखाएँ (7 × 6 ÷ 2 = 21)।\n10 बिंदु: 1 + 2 + ... + 9 = 45 रेखाएँ (10 × 9 ÷ 2 = 45)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A stacked triangle has rows of 1, 3, 5, ... small triangles. How many small triangles are there in total when it has 6 rows? How many in the 6th row alone?",
+    "hi": "एक के ऊपर एक रखे त्रिभुज की पंक्तियों में 1, 3, 5, ... छोटे त्रिभुज हैं। 6 पंक्तियाँ होने पर कुल कितने छोटे त्रिभुज हैं? केवल छठी पंक्ति में कितने हैं?"
+   },
+   "a": {
+    "en": "Rows: 1, 3, 5, 7, 9, 11. The 6th row has 11 (= 2 × 6 − 1).\nTotal = 1 + 3 + 5 + 7 + 9 + 11 = 36 = 6 × 6.",
+    "hi": "पंक्तियाँ: 1, 3, 5, 7, 9, 11। छठी पंक्ति में 11 (= 2 × 6 − 1) हैं।\nकुल = 1 + 3 + 5 + 7 + 9 + 11 = 36 = 6 × 6।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How many little squares are in the 8th stacked square? How many more than in the 7th?",
+    "hi": "आठवें वर्ग में कितने छोटे वर्ग हैं? सातवें से कितने अधिक?"
+   },
+   "a": {
+    "en": "8th: 8 × 8 = 64. 7th: 7 × 7 = 49.\nDifference = 64 − 49 = 15, which is the 8th odd number (2 × 8 − 1 = 15).",
+    "hi": "आठवाँ: 8 × 8 = 64। सातवाँ: 7 × 7 = 49।\nअंतर = 64 − 49 = 15, जो आठवीं विषम संख्या है (2 × 8 − 1 = 15)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Find the sum 1 + 2 + 3 + ... + 100 using the two-triangles idea. Then use it to find 2 + 4 + 6 + ... + 200.",
+    "hi": "दो-त्रिभुज वाले विचार से योग 1 + 2 + 3 + ... + 100 ज्ञात कीजिए। फिर इसका उपयोग करके 2 + 4 + 6 + ... + 200 ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Two copies of the triangle 1 + 2 + ... + 100 fit into a rectangle of 100 rows and 101 columns = 10100 dots.\nOne triangle = 10100 ÷ 2 = 5050.\n2 + 4 + ... + 200 = 2 × (1 + 2 + ... + 100) = 2 × 5050 = 10100.",
+    "hi": "त्रिभुज 1 + 2 + ... + 100 की दो प्रतियाँ 100 पंक्तियों और 101 स्तंभों के आयत में आती हैं = 10100 बिंदु।\nएक त्रिभुज = 10100 ÷ 2 = 5050।\n2 + 4 + ... + 200 = 2 × (1 + 2 + ... + 100) = 2 × 5050 = 10100।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Find a number other than 1 and 36 that is both a triangular number and a square number, and check it.",
+    "hi": "1 और 36 के अलावा कोई ऐसी संख्या खोजिए जो त्रिकोणीय भी हो और वर्ग भी, और जाँचिए।"
+   },
+   "a": {
+    "en": "1225 works.\nSquare: 35 × 35 = 1225.\nTriangular: 1 + 2 + ... + 49 = 49 × 50 ÷ 2 = 2450 ÷ 2 = 1225.\nSo 1225 is the 35th square number and the 49th triangular number. (The next such number is 41616 = 204 × 204.)",
+    "hi": "1225 सही है।\nवर्ग: 35 × 35 = 1225।\nत्रिकोणीय: 1 + 2 + ... + 49 = 49 × 50 ÷ 2 = 2450 ÷ 2 = 1225।\nअतः 1225 पैंतीसवीं वर्ग संख्या और उनचासवीं त्रिकोणीय संख्या है। (अगली ऐसी संख्या 41616 = 204 × 204 है।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain, using a picture of a hexagon of dots, why 6 × 6 + 1 = 37 is a hexagonal number.",
+    "hi": "बिंदुओं के षट्भुज के चित्र से समझाइए कि 6 × 6 + 1 = 37 षट्कोणीय संख्या क्यों है।"
+   },
+   "a": {
+    "en": "Draw the hexagon for 37: a centre dot, then rings of 6, 12 and 18 dots.\nFrom the centre, draw 6 lines to the 6 corners; this cuts the dots outside the centre into 6 equal triangular-shaped groups.\nEach group has 1 + 2 + 3 = 6 dots (a triangular number).\nTotal = 6 groups × 6 dots + 1 centre = 37.",
+    "hi": "37 का षट्भुज बनाइए: एक केंद्र बिंदु, फिर 6, 12 और 18 बिंदुओं के घेरे।\nकेंद्र से 6 कोनों तक 6 रेखाएँ खींचिए; इससे केंद्र के बाहर के बिंदु 6 बराबर त्रिकोणीय समूहों में बँट जाते हैं।\nहर समूह में 1 + 2 + 3 = 6 बिंदु हैं (एक त्रिकोणीय संख्या)।\nकुल = 6 समूह × 6 बिंदु + 1 केंद्र = 37।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Count the line segments in the Koch snowflake at each stage from 0 to 5. What is the rule?",
+    "hi": "कोख हिमकण में चरण 0 से 5 तक हर चरण पर रेखाखंड गिनिए। नियम क्या है?"
+   },
+   "a": {
+    "en": "Stage 0: 3. Rule: multiply by 4 at each stage, because every segment becomes 4 segments.\nStage 1: 12, stage 2: 48, stage 3: 192, stage 4: 768, stage 5: 3072.\nThese are 3 × 1, 3 × 4, 3 × 16, 3 × 64, 3 × 256, 3 × 1024.",
+    "hi": "चरण 0: 3। नियम: हर चरण पर 4 से गुणा, क्योंकि हर रेखाखंड 4 रेखाखंड बन जाता है।\nचरण 1: 12, चरण 2: 48, चरण 3: 192, चरण 4: 768, चरण 5: 3072।\nये 3 × 1, 3 × 4, 3 × 16, 3 × 64, 3 × 256, 3 × 1024 हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In a school, 12 students are in a chess club. Each must play every other student once. How many games are needed? Explain the link with triangular numbers.",
+    "hi": "एक स्कूल के शतरंज क्लब में 12 विद्यार्थी हैं। हर एक को हर दूसरे से एक बार खेलना है। कितने खेल होंगे? त्रिकोणीय संख्याओं से संबंध समझाइए।"
+   },
+   "a": {
+    "en": "Treat students as points and games as lines: complete graph on 12 points.\nStudent 1 plays 11 new games, student 2 has 10 left to play, ..., student 11 has 1 left.\nGames = 11 + 10 + ... + 1 = 1 + 2 + ... + 11 = 66, the 11th triangular number.\nCheck: 12 × 11 ÷ 2 = 66.",
+    "hi": "विद्यार्थियों को बिंदु और खेलों को रेखाएँ मानिए: 12 बिंदुओं का पूर्ण आलेख।\nविद्यार्थी 1 के 11 नए खेल, विद्यार्थी 2 के 10 बचे खेल, ..., विद्यार्थी 11 का 1 बचा खेल।\nखेल = 11 + 10 + ... + 1 = 1 + 2 + ... + 11 = 66, ग्यारहवीं त्रिकोणीय संख्या।\nजाँच: 12 × 11 ÷ 2 = 66।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Show that the 10th cube, 1000, equals the sum of the first 10 hexagonal numbers.",
+    "hi": "दिखाइए कि दसवाँ घन, 1000, पहली 10 षट्कोणीय संख्याओं के योग के बराबर है।"
+   },
+   "a": {
+    "en": "Hexagonal numbers: 1, 7, 19, 37, 61, 91, 127, 169, 217, 271 (differences 6, 12, 18, ..., 54).\nRunning totals: 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000.\nThe 10th total is 1000 = 10 × 10 × 10.",
+    "hi": "षट्कोणीय संख्याएँ: 1, 7, 19, 37, 61, 91, 127, 169, 217, 271 (अंतर 6, 12, 18, ..., 54)।\nक्रमिक योग: 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000।\nदसवाँ योग 1000 = 10 × 10 × 10 है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A rangoli has a 1 by 1 dot square, then a 2 by 2, then 3 by 3, and so on. Riya says the number of new dots added each time is always odd. Is she right? Explain.",
+    "hi": "एक रंगोली में पहले 1 गुणा 1 का बिंदु वर्ग, फिर 2 गुणा 2, फिर 3 गुणा 3, आदि बनता है। रिया कहती है कि हर बार जोड़े गए नए बिंदुओं की संख्या हमेशा विषम होती है। क्या वह सही है? समझाइए।"
+   },
+   "a": {
+    "en": "Yes. To go from an n by n square to an (n + 1) by (n + 1) square we add one new row of n + 1 dots and one new column of n dots (the corner is counted once).\nNew dots = n + (n + 1) = 2n + 1, which is always odd.\nFor example 4 by 4 to 5 by 5: 25 − 16 = 9 = 2 × 4 + 1.",
+    "hi": "हाँ। n गुणा n वर्ग से (n + 1) गुणा (n + 1) वर्ग बनाने के लिए हम n + 1 बिंदुओं की एक नई पंक्ति और n बिंदुओं का एक नया स्तंभ जोड़ते हैं (कोना एक बार गिना जाता है)।\nनए बिंदु = n + (n + 1) = 2n + 1, जो हमेशा विषम है।\nउदाहरण: 4 गुणा 4 से 5 गुणा 5: 25 − 16 = 9 = 2 × 4 + 1।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Look at 1, 3, 7, 15, 31, ... . Find the next two terms and explain the connection with powers of 2.",
+    "hi": "1, 3, 7, 15, 31, ... को देखिए। अगले दो पद ज्ञात कीजिए और 2 की घातों से संबंध समझाइए।"
+   },
+   "a": {
+    "en": "These are running sums of powers of 2: 1, 1 + 2, 1 + 2 + 4, 1 + 2 + 4 + 8, ...\nEach is one less than a power of 2: 2 − 1, 4 − 1, 8 − 1, 16 − 1, 32 − 1.\nNext: 64 − 1 = 63 and 128 − 1 = 127.\nAlso each term = previous × 2 + 1: 31 × 2 + 1 = 63, 63 × 2 + 1 = 127.",
+    "hi": "ये 2 की घातों के क्रमिक योग हैं: 1, 1 + 2, 1 + 2 + 4, 1 + 2 + 4 + 8, ...\nहर एक 2 की किसी घात से एक कम है: 2 − 1, 4 − 1, 8 − 1, 16 − 1, 32 − 1।\nअगले: 64 − 1 = 63 और 128 − 1 = 127।\nसाथ ही हर पद = पिछला × 2 + 1: 31 × 2 + 1 = 63, 63 × 2 + 1 = 127।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Mathematics is the search for patterns and for explanations of why they happen; it is both an art and a science.",
+   "Mathematics is used everywhere: science, space missions, technology, buildings, medicine, weather and daily life.",
+   "Number theory studies patterns in whole numbers; a number sequence is an ordered list of numbers following a rule.",
+   "Key sequences: all 1s, counting, odd, even, triangular (1, 3, 6, 10), square (1, 4, 9, 16), cube (1, 8, 27, 64), Virahānka (1, 2, 3, 5, 8), powers of 2 (1, 2, 4, 8) and powers of 3 (1, 3, 9, 27).",
+   "Each Virahānka number is the sum of the two before it.",
+   "Dot and cube pictures explain the names triangular, square and cube numbers; 36 and 1225 are both triangular and square.",
+   "Hexagonal numbers 1, 7, 19, 37, 61, ... grow by rings of 6, 12, 18, 24, ... dots.",
+   "The sum of the first n odd numbers is n × n (seen by L-shaped strips filling a square).",
+   "1 + 2 + ... + n + ... + 2 + 1 = n × n, and 1 + 2 + ... + n = n × (n + 1) ÷ 2.",
+   "Two neighbouring triangular numbers add to a square; 1 + 2 + 4 + ... plus 1 gives the next power of 2; 6 × triangular + 1 gives hexagonal; hexagonal numbers add up to cubes.",
+   "Geometry studies shapes; shape sequences include regular polygons, complete graphs, stacked squares, stacked triangles and the Koch snowflake.",
+   "Counting in shape sequences gives number sequences: polygon sides give 3, 4, 5, ...; complete-graph lines give triangular numbers; stacked squares and triangles give square numbers; Koch segments give 3, 12, 48, 192, ..."
+  ],
+  "hi": [
+   "गणित पैटर्न खोजने और उनके होने का कारण समझाने का विषय है; यह कला भी है और विज्ञान भी।",
+   "गणित हर जगह प्रयोग होता है: विज्ञान, अंतरिक्ष अभियान, प्रौद्योगिकी, भवन, चिकित्सा, मौसम और दैनिक जीवन।",
+   "संख्या सिद्धांत पूर्ण संख्याओं के पैटर्नों का अध्ययन है; संख्या अनुक्रम नियम का पालन करने वाली क्रमबद्ध सूची है।",
+   "मुख्य अनुक्रम: सभी 1, गिनती, विषम, सम, त्रिकोणीय (1, 3, 6, 10), वर्ग (1, 4, 9, 16), घन (1, 8, 27, 64), विरहांक (1, 2, 3, 5, 8), 2 की घातें (1, 2, 4, 8) और 3 की घातें (1, 3, 9, 27)।",
+   "हर विरहांक संख्या अपने पहले के दो पदों का योग है।",
+   "बिंदु और घन चित्र त्रिकोणीय, वर्ग और घन नामों का कारण बताते हैं; 36 और 1225 त्रिकोणीय और वर्ग दोनों हैं।",
+   "षट्कोणीय संख्याएँ 1, 7, 19, 37, 61, ... 6, 12, 18, 24, ... बिंदुओं के घेरों से बढ़ती हैं।",
+   "पहली n विषम संख्याओं का योग n × n है (वर्ग भरती L आकार की पट्टियों से दिखता है)।",
+   "1 + 2 + ... + n + ... + 2 + 1 = n × n, और 1 + 2 + ... + n = n × (n + 1) ÷ 2।",
+   "दो पड़ोसी त्रिकोणीय संख्याओं का योग वर्ग है; 1 + 2 + 4 + ... में 1 जोड़ने पर 2 की अगली घात; 6 × त्रिकोणीय + 1 से षट्कोणीय; षट्कोणीय संख्याओं का योग घन।",
+   "ज्यामिति आकृतियों का अध्ययन है; आकृति अनुक्रमों में सम बहुभुज, पूर्ण आलेख, एक के ऊपर एक रखे वर्ग, त्रिभुज और कोख हिमकण शामिल हैं।",
+   "आकृति अनुक्रमों में गिनने पर संख्या अनुक्रम मिलते हैं: बहुभुज की भुजाएँ 3, 4, 5, ...; पूर्ण आलेख की रेखाएँ त्रिकोणीय संख्याएँ; वर्ग और त्रिभुज वर्ग संख्याएँ; कोख के रेखाखंड 3, 12, 48, 192, ..."
+  ]
+ }
+}
