@@ -1,0 +1,1754 @@
+{
+ "v": 1,
+ "sub": "maths",
+ "lv": "6",
+ "id": "ch3",
+ "intro": {
+  "en": "Number Play is a chapter of games, puzzles and surprises with numbers. You will find special cells called supercells, numbers that read the same backwards, a magic number found by an Indian teacher, a mystery that no mathematician has solved yet, and games you can always win if you think cleverly. Along the way you will practise place value, comparing numbers, mental calculation and estimation.",
+  "hi": "संख्याओं के साथ खेल अध्याय संख्याओं से जुड़े खेलों, पहेलियों और अचरजों से भरा है। आप सुपरसेल नाम के विशेष सेल, उलटा पढ़ने पर भी वैसी ही रहने वाली संख्याएँ, एक भारतीय शिक्षक द्वारा खोजी गई जादुई संख्या, एक ऐसा रहस्य जिसे अभी तक कोई गणितज्ञ हल नहीं कर पाया, और ऐसे खेल देखेंगे जिन्हें चतुराई से सोचकर आप हमेशा जीत सकते हैं। साथ ही आप स्थानीय मान, संख्याओं की तुलना, मानसिक गणना और अनुमान का अभ्यास करेंगे।"
+ },
+ "learn": {
+  "en": [
+   "How numbers can carry information, using the taller-neighbour game",
+   "What supercells are and how to make the most of them in a table",
+   "How to read and label number lines with different intervals",
+   "How many numbers have 1, 2, 3, 4 or 5 digits, and what a digit sum is",
+   "Palindromes and the reverse-and-add game",
+   "The Kaprekar routine and the magic number 6174",
+   "Patterns in clock times and calendar dates",
+   "Mental math tricks and deciding how many digits a sum or difference can have",
+   "Quick totals of number patterns using multiplication",
+   "The unsolved Collatz conjecture",
+   "How to estimate sensibly",
+   "Winning strategies in number games"
+  ],
+  "hi": [
+   "लंबे-पड़ोसी खेल से समझना कि संख्याएँ जानकारी कैसे देती हैं",
+   "सुपरसेल क्या हैं और तालिका में अधिक से अधिक सुपरसेल कैसे बनाएँ",
+   "अलग-अलग अंतराल वाली संख्या रेखाओं को पढ़ना और उन पर संख्याएँ लिखना",
+   "1, 2, 3, 4 या 5 अंकों वाली कितनी संख्याएँ हैं, और अंकों का योग क्या है",
+   "पैलिंड्रोम और उलटो-और-जोड़ो खेल",
+   "कापरेकर प्रक्रिया और जादुई संख्या 6174",
+   "घड़ी के समय और कैलेंडर की तारीखों में पैटर्न",
+   "मानसिक गणित की तरकीबें और यह तय करना कि योग या अंतर में कितने अंक हो सकते हैं",
+   "गुणा द्वारा संख्या पैटर्न का जल्दी योग",
+   "अनसुलझा कोलाट्ज़ अनुमान",
+   "समझदारी से अनुमान कैसे लगाएँ",
+   "संख्या खेलों में जीतने की रणनीतियाँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "3.1 Numbers Can Tell Us Things",
+    "hi": "3.1 संख्याएँ हमें बातें बताती हैं"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Numbers are not only for counting. We use them to tell the time, read a bus route, pay at a shop, check a cricket score, find a house on a street, or know our roll number. Before starting, try listing five places where you saw numbers today. You will notice that the same digit, like 5, can mean very different things: 5 rupees, 5 o'clock, house number 5, or the 5th rank.",
+      "hi": "संख्याएँ केवल गिनती के लिए नहीं होतीं। हम इनसे समय बताते हैं, बस का रूट पढ़ते हैं, दुकान पर पैसे देते हैं, क्रिकेट का स्कोर देखते हैं, गली में घर ढूँढते हैं या अपना रोल नंबर जानते हैं। शुरू करने से पहले, उन पाँच जगहों की सूची बनाइए जहाँ आज आपने संख्याएँ देखीं। आप देखेंगे कि एक ही अंक, जैसे 5, के अलग-अलग अर्थ हो सकते हैं: 5 रुपये, 5 बजे, मकान नंबर 5 या 5वाँ स्थान।"
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a fun game that shows how numbers can carry information. Some children stand in a line. Each child looks only at the two children right next to them (left and right) and says aloud how many of these neighbours are taller than them. A child at either end of the line has only one neighbour, so that child can say only 0 or 1. A child in the middle can say 0, 1 or 2.",
+      "hi": "एक मज़ेदार खेल देखिए जो दिखाता है कि संख्याएँ जानकारी कैसे ले जाती हैं। कुछ बच्चे एक पंक्ति में खड़े हैं। हर बच्चा केवल अपने ठीक बगल वाले दो बच्चों (बाएँ और दाएँ) को देखता है और ज़ोर से बताता है कि इनमें से कितने पड़ोसी उससे लंबे हैं। पंक्ति के किसी भी सिरे पर खड़े बच्चे का केवल एक पड़ोसी होता है, इसलिए वह केवल 0 या 1 बोल सकता है। बीच वाला बच्चा 0, 1 या 2 बोल सकता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Taller-neighbour number",
+       "hi": "लंबे पड़ोसियों की संख्या"
+      },
+      "text": {
+       "en": "The number a child says in this game: how many of the children standing immediately beside them are taller than them.",
+       "hi": "इस खेल में बच्चा जो संख्या बोलता है: उसके ठीक बगल में खड़े बच्चों में से कितने उससे लंबे हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Five children have heights (in cm) 150, 140, 120, 135, 145 standing in this order. What number does each child say?",
+       "hi": "पाँच बच्चों की लंबाई (सेमी में) 150, 140, 120, 135, 145 है और वे इसी क्रम में खड़े हैं। हर बच्चा कौन-सी संख्या बोलेगा?"
+      },
+      "a": {
+       "en": "Child 1 (150): only neighbour is 140, which is shorter. Says 0.\nChild 2 (140): neighbours 150 (taller) and 120 (shorter). Says 1.\nChild 3 (120): neighbours 140 and 135, both taller. Says 2.\nChild 4 (135): neighbours 120 (shorter) and 145 (taller). Says 1.\nChild 5 (145): only neighbour 135, shorter. Says 0.\nThe line says: 0, 1, 2, 1, 0.",
+       "hi": "बच्चा 1 (150): केवल पड़ोसी 140 है, जो छोटा है। बोलेगा 0।\nबच्चा 2 (140): पड़ोसी 150 (लंबा) और 120 (छोटा)। बोलेगा 1।\nबच्चा 3 (120): पड़ोसी 140 और 135, दोनों लंबे। बोलेगा 2।\nबच्चा 4 (135): पड़ोसी 120 (छोटा) और 145 (लंबा)। बोलेगा 1।\nबच्चा 5 (145): केवल पड़ोसी 135, छोटा। बोलेगा 0।\nपंक्ति बोलती है: 0, 1, 2, 1, 0।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Now turn the question around: given a list of numbers, can we arrange children so that they say exactly that list? Thinking about this teaches us a lot.",
+      "hi": "अब प्रश्न को उलट दीजिए: संख्याओं की कोई सूची दी गई है, क्या हम बच्चों को ऐसे खड़ा कर सकते हैं कि वे ठीक वही सूची बोलें? इस पर सोचने से बहुत कुछ सीखने को मिलता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "All children say 0: impossible when there are 2 or more children of different heights. The tallest child is fine, but look at the shortest child: every neighbour of the shortest child is taller, so the shortest child must say at least 1.",
+       "Two neighbours both saying the same number 2: impossible. If child A says 2, then child B next to A is taller than A. So A is not taller than B, which means B can say at most 1.",
+       "Two neighbours both saying 0: impossible too. If both say 0, each is at least as tall as the other, which cannot happen when heights are different.",
+       "The pattern 1, 1, 1, 1, 0 (five children) is possible: stand them in increasing order of height, shortest first. Each child except the last has a taller child on the right only.",
+       "The pattern 0, 1, 2, 1, 0 is possible, as shown in the example above: tall at both ends, shortest in the middle.",
+       "To get as many 2s as possible with 5 children, place short children at positions 2 and 4 and taller ones at 1, 3 and 5. Pattern: 0, 2, 0, 2, 0. You cannot have two 2s next to each other, so 2 is the maximum number of 2s for five children."
+      ],
+      "hi": [
+       "सभी बच्चे 0 बोलें: अलग-अलग लंबाई वाले 2 या अधिक बच्चों के साथ असंभव है। सबसे छोटे बच्चे को देखिए: उसके हर पड़ोसी उससे लंबे हैं, इसलिए वह कम से कम 1 ज़रूर बोलेगा।",
+       "दो पड़ोसी दोनों 2 बोलें: असंभव। यदि बच्चा A 2 बोलता है, तो उसके बगल का B उससे लंबा है। तब A, B से लंबा नहीं है, इसलिए B अधिकतम 1 बोल सकता है।",
+       "दो पड़ोसी दोनों 0 बोलें: यह भी असंभव है। यदि दोनों 0 बोलें तो हर एक दूसरे से लंबा या बराबर होगा, जो अलग-अलग लंबाई में नहीं हो सकता।",
+       "पैटर्न 1, 1, 1, 1, 0 (पाँच बच्चे) संभव है: उन्हें लंबाई के बढ़ते क्रम में खड़ा कीजिए, सबसे छोटा पहले। आखिरी को छोड़कर हर बच्चे के केवल दाईं ओर एक लंबा बच्चा है।",
+       "पैटर्न 0, 1, 2, 1, 0 संभव है, जैसा ऊपर के उदाहरण में दिखाया: दोनों सिरों पर लंबे, बीच में सबसे छोटा।",
+       "5 बच्चों में अधिक से अधिक 2 पाने के लिए स्थान 2 और 4 पर छोटे बच्चे और 1, 3, 5 पर लंबे बच्चे रखिए। पैटर्न: 0, 2, 0, 2, 0। दो 2 एक साथ नहीं हो सकते, इसलिए पाँच बच्चों में अधिकतम दो 2 हो सकते हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Big idea: to prove something is impossible, look at a special child, such as the shortest or the tallest. This trick of 'look at the extreme' is used again and again in mathematics.",
+      "hi": "मुख्य विचार: किसी बात को असंभव सिद्ध करने के लिए किसी विशेष बच्चे को देखिए, जैसे सबसे छोटा या सबसे लंबा। 'सबसे बड़े या सबसे छोटे को देखो' की यह तरकीब गणित में बार-बार काम आती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.2 Supercells",
+    "hi": "3.2 सुपरसेल"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Imagine a table (grid) of numbers, made of rows and columns of boxes called cells. Each cell has neighbours: the cells directly to its left, right, above and below. Cells touching only at a corner (diagonal) are NOT neighbours. A corner cell has 2 neighbours, an edge cell has 3, and an inside cell has 4.",
+      "hi": "संख्याओं की एक तालिका (ग्रिड) की कल्पना कीजिए, जिसमें पंक्तियों और स्तंभों में बने खाने हैं जिन्हें सेल (कोष्ठक) कहते हैं। हर सेल के पड़ोसी होते हैं: उसके ठीक बाएँ, दाएँ, ऊपर और नीचे वाले सेल। केवल कोने से छूने वाले (तिरछे) सेल पड़ोसी नहीं होते। कोने वाले सेल के 2 पड़ोसी, किनारे वाले के 3 और अंदर वाले सेल के 4 पड़ोसी होते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Supercell",
+       "hi": "सुपरसेल"
+      },
+      "text": {
+       "en": "A cell whose number is greater than the number in every one of its neighbouring cells.",
+       "hi": "वह सेल जिसकी संख्या उसके हर पड़ोसी सेल की संख्या से बड़ी हो।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Column 1",
+        "Column 2",
+        "Column 3",
+        "Column 4"
+       ],
+       "hi": [
+        "स्तंभ 1",
+        "स्तंभ 2",
+        "स्तंभ 3",
+        "स्तंभ 4"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "245",
+         "618",
+         "372",
+         "509"
+        ],
+        [
+         "831",
+         "127",
+         "964",
+         "280"
+        ],
+        [
+         "456",
+         "703",
+         "315",
+         "892"
+        ]
+       ],
+       "hi": [
+        [
+         "245",
+         "618",
+         "372",
+         "509"
+        ],
+        [
+         "831",
+         "127",
+         "964",
+         "280"
+        ],
+        [
+         "456",
+         "703",
+         "315",
+         "892"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the table above (3 rows, 4 columns), find all supercells.",
+       "hi": "ऊपर की तालिका (3 पंक्तियाँ, 4 स्तंभ) में सभी सुपरसेल ढूँढिए।"
+      },
+      "a": {
+       "en": "Check each cell against its neighbours.\n618: neighbours 245, 372, 127. 618 is bigger than all. Supercell.\n509: neighbours 372, 280. Supercell.\n831: neighbours 245, 127, 456. Supercell.\n964: neighbours 372, 127, 280, 315. Supercell.\n703: neighbours 456, 127, 315. Supercell.\n892: neighbours 280, 315. Supercell.\nOthers fail, for example 245 has neighbour 618 which is bigger.\nSupercells: 618, 509, 831, 964, 703, 892 (six of them).",
+       "hi": "हर सेल की तुलना उसके पड़ोसियों से कीजिए।\n618: पड़ोसी 245, 372, 127। 618 सबसे बड़ा है। सुपरसेल।\n509: पड़ोसी 372, 280। सुपरसेल।\n831: पड़ोसी 245, 127, 456। सुपरसेल।\n964: पड़ोसी 372, 127, 280, 315। सुपरसेल।\n703: पड़ोसी 456, 127, 315। सुपरसेल।\n892: पड़ोसी 280, 315। सुपरसेल।\nबाकी नहीं हैं, जैसे 245 का पड़ोसी 618 उससे बड़ा है।\nसुपरसेल: 618, 509, 831, 964, 703, 892 (छह)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Important facts about supercells (try to see why each one is true):",
+      "hi": "सुपरसेल के बारे में महत्वपूर्ण बातें (हर एक के सच होने का कारण समझने की कोशिश कीजिए):"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Two supercells can never be neighbours. If A and B are neighbours and A is a supercell, A is bigger than B, so B cannot be bigger than A.",
+       "The largest number in the table is ALWAYS a supercell, because it is bigger than everything, including its neighbours.",
+       "So a table where all numbers are different always has at least one supercell. A table with no supercell is impossible (when numbers are all different).",
+       "The smallest number can NEVER be a supercell, because all its neighbours are bigger than it.",
+       "The second largest number is a supercell unless it sits right next to the largest number. So to stop it being a supercell, place it beside the largest.",
+       "The second smallest number can be a supercell only in a special case: all its neighbours must be smaller, but only one number (the smallest) is smaller. So it must have exactly one neighbour, which happens only in a single row or single column table at an end position.",
+       "To get the most supercells, use a chessboard idea: put big numbers on alternate cells (like the black squares of a chessboard) and small numbers on the rest."
+      ],
+      "hi": [
+       "दो सुपरसेल कभी पड़ोसी नहीं हो सकते। यदि A और B पड़ोसी हैं और A सुपरसेल है, तो A, B से बड़ा है, इसलिए B, A से बड़ा नहीं हो सकता।",
+       "तालिका की सबसे बड़ी संख्या हमेशा सुपरसेल होती है, क्योंकि वह सबसे बड़ी है, उसके पड़ोसियों से भी।",
+       "इसलिए जिस तालिका में सभी संख्याएँ अलग हों, उसमें कम से कम एक सुपरसेल ज़रूर होता है। बिना सुपरसेल वाली तालिका (सब संख्याएँ अलग होने पर) असंभव है।",
+       "सबसे छोटी संख्या कभी सुपरसेल नहीं हो सकती, क्योंकि उसके सभी पड़ोसी उससे बड़े होते हैं।",
+       "दूसरी सबसे बड़ी संख्या तब तक सुपरसेल रहती है जब तक वह सबसे बड़ी संख्या के ठीक बगल में न हो। इसलिए उसे सुपरसेल न बनने देने के लिए उसे सबसे बड़ी संख्या के बगल में रखिए।",
+       "दूसरी सबसे छोटी संख्या केवल एक विशेष स्थिति में सुपरसेल हो सकती है: उसके सभी पड़ोसी छोटे हों, पर उससे छोटी केवल एक संख्या (सबसे छोटी) है। इसलिए उसका ठीक एक पड़ोसी होना चाहिए, जो केवल एक पंक्ति या एक स्तंभ वाली तालिका के सिरे पर होता है।",
+       "अधिक से अधिक सुपरसेल पाने के लिए शतरंज वाला विचार अपनाइए: बड़ी संख्याएँ एक-छोड़-एक सेल पर (जैसे शतरंज के काले खाने) और छोटी संख्याएँ बाकी पर रखिए।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Table size",
+        "Maximum supercells",
+        "How"
+       ],
+       "hi": [
+        "तालिका का आकार",
+        "अधिकतम सुपरसेल",
+        "कैसे"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1 row × 5 cells",
+         "3",
+         "big, small, big, small, big"
+        ],
+        [
+         "3 × 3 (9 cells)",
+         "5",
+         "big numbers on the 4 corners and the centre"
+        ],
+        [
+         "3 × 4 (12 cells)",
+         "6",
+         "chessboard pattern, 6 big cells"
+        ],
+        [
+         "4 × 4 (16 cells)",
+         "8",
+         "chessboard pattern, half the cells"
+        ]
+       ],
+       "hi": [
+        [
+         "1 पंक्ति × 5 सेल",
+         "3",
+         "बड़ा, छोटा, बड़ा, छोटा, बड़ा"
+        ],
+        [
+         "3 × 3 (9 सेल)",
+         "5",
+         "बड़ी संख्याएँ 4 कोनों और बीच में"
+        ],
+        [
+         "3 × 4 (12 सेल)",
+         "6",
+         "शतरंज पैटर्न, 6 बड़े सेल"
+        ],
+        [
+         "4 × 4 (16 सेल)",
+         "8",
+         "शतरंज पैटर्न, आधे सेल"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Fill a 3 × 3 table with the numbers 10, 20, 30, ..., 90 so that there are as many supercells as possible.",
+       "hi": "3 × 3 तालिका को 10, 20, 30, ..., 90 संख्याओं से ऐसे भरिए कि अधिक से अधिक सुपरसेल बनें।"
+      },
+      "a": {
+       "en": "Supercells cannot touch each other, so use the chessboard positions: 4 corners and the centre (5 cells).\nPut the 5 biggest numbers 90, 80, 70, 60, 50 there, and 10, 20, 30, 40 in the 4 edge-middle cells.\nRow 1: 90, 10, 80\nRow 2: 20, 70, 30\nRow 3: 60, 40, 50\nCheck: 70 has neighbours 10, 20, 30, 40, all smaller. Each corner has two small neighbours.\nSupercells: 90, 80, 70, 60, 50. Five supercells, which is the maximum for 3 × 3.",
+       "hi": "सुपरसेल एक-दूसरे को छू नहीं सकते, इसलिए शतरंज वाले स्थान लीजिए: 4 कोने और बीच (5 सेल)।\nवहाँ 5 सबसे बड़ी संख्याएँ 90, 80, 70, 60, 50 रखिए और 10, 20, 30, 40 किनारों के बीच वाले 4 सेलों में।\nपंक्ति 1: 90, 10, 80\nपंक्ति 2: 20, 70, 30\nपंक्ति 3: 60, 40, 50\nजाँच: 70 के पड़ोसी 10, 20, 30, 40 सब छोटे हैं। हर कोने के दो छोटे पड़ोसी हैं।\nसुपरसेल: 90, 80, 70, 60, 50। पाँच सुपरसेल, जो 3 × 3 के लिए अधिकतम है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Activity with 5-digit numbers: take the digits 1, 0, 6, 3, 9 and make different 5-digit numbers using each digit once, such as 61039, 93610, 10369. Fill a 2-row table with them so that only the cells you choose become supercells. While doing this, practise writing large numbers with a comma after the thousands place, as in the Indian system: 61,039 and 93,610. You can also ask: what is the largest number possible with these digits (96,310), the smallest (10,369), the smallest even one (10,396) and the smallest one above 50,000 (60,139)?",
+      "hi": "5-अंकीय संख्याओं के साथ गतिविधि: अंक 1, 0, 6, 3, 9 लीजिए और हर अंक एक बार लेकर अलग-अलग 5-अंकीय संख्याएँ बनाइए, जैसे 61039, 93610, 10369। इनसे 2 पंक्तियों वाली तालिका ऐसे भरिए कि केवल आपके चुने हुए सेल सुपरसेल बनें। साथ में बड़ी संख्याओं को हज़ार के स्थान के बाद अल्पविराम लगाकर लिखने का अभ्यास कीजिए: 61,039 और 93,610। आप यह भी पूछ सकते हैं: इन अंकों से सबसे बड़ी संख्या (96,310), सबसे छोटी (10,369), सबसे छोटी सम संख्या (10,396) और 50,000 से बड़ी सबसे छोटी संख्या (60,139) कौन-सी है?"
+     }
+    },
+    {
+     "note": {
+      "en": "A 5-digit number cannot start with 0. So with digits 1, 0, 6, 3, 9 the smallest number starts with 1, then 0: 10,369.",
+      "hi": "5-अंकीय संख्या 0 से शुरू नहीं हो सकती। इसलिए अंक 1, 0, 6, 3, 9 से सबसे छोटी संख्या 1 से, फिर 0 से शुरू होगी: 10,369।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.3 Patterns of Numbers on the Number Line",
+    "hi": "3.3 संख्या रेखा पर संख्याओं के पैटर्न"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A number line is a straight line with equally spaced marks, each standing for a number. The numbers increase as we move to the right. Big numbers can also be shown on a number line if we choose a suitable gap between marks, for example each mark could stand for 100 more or 1000 more than the previous one.",
+      "hi": "संख्या रेखा एक सीधी रेखा है जिस पर बराबर दूरी पर निशान होते हैं, और हर निशान एक संख्या दर्शाता है। दाईं ओर जाने पर संख्याएँ बढ़ती हैं। यदि हम निशानों के बीच का अंतर ठीक से चुनें तो बड़ी संख्याएँ भी संख्या रेखा पर दिखाई जा सकती हैं, जैसे हर निशान पिछले से 100 या 1000 अधिक हो सकता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Interval of a number line",
+       "hi": "संख्या रेखा का अंतराल"
+      },
+      "text": {
+       "en": "The fixed amount by which the number increases from one mark to the next. Find it by taking two labelled marks, subtracting their numbers, and dividing by the number of gaps between them.",
+       "hi": "वह निश्चित मान जितना एक निशान से अगले निशान तक संख्या बढ़ती है। इसे पाने के लिए दो लिखे हुए निशान लीजिए, उनकी संख्याएँ घटाइए और उनके बीच के खानों (अंतरालों) की संख्या से भाग दीजिए।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Interval = (bigger labelled number − smaller labelled number) ÷ number of gaps between them",
+      "hi": "अंतराल = (बड़ी लिखी संख्या − छोटी लिखी संख्या) ÷ उनके बीच के खानों की संख्या"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "On a number line, a mark labelled 2000 is followed by 4 equal gaps reaching a mark labelled 6000. Label all the marks and place 4500 on it.",
+       "hi": "एक संख्या रेखा पर 2000 वाले निशान से 4 बराबर खानों के बाद 6000 वाला निशान आता है। सभी निशानों पर संख्याएँ लिखिए और 4500 को रेखा पर दिखाइए।"
+      },
+      "a": {
+       "en": "Difference = 6000 − 2000 = 4000.\nNumber of gaps = 4, so interval = 4000 ÷ 4 = 1000.\nMarks: 2000, 3000, 4000, 5000, 6000.\n4500 is exactly halfway between 4000 and 5000, so put it in the middle of that gap.",
+       "hi": "अंतर = 6000 − 2000 = 4000।\nखानों की संख्या = 4, इसलिए अंतराल = 4000 ÷ 4 = 1000।\nनिशान: 2000, 3000, 4000, 5000, 6000।\n4500 ठीक 4000 और 5000 के बीच में है, इसलिए उसे उस खाने के बीचों-बीच रखिए।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A number line starts at 0 and the 5th mark after 0 is labelled 250. What are the 2nd and 8th marks? Which number is bigger, the 3rd mark or 140?",
+       "hi": "एक संख्या रेखा 0 से शुरू होती है और 0 के बाद 5वें निशान पर 250 लिखा है। दूसरा और 8वाँ निशान क्या है? तीसरा निशान और 140 में कौन बड़ा है?"
+      },
+      "a": {
+       "en": "Interval = 250 ÷ 5 = 50.\n2nd mark = 2 × 50 = 100. 8th mark = 8 × 50 = 400.\n3rd mark = 150, which is bigger than 140. So 140 lies a little to the left of the 3rd mark.",
+       "hi": "अंतराल = 250 ÷ 5 = 50।\nदूसरा निशान = 2 × 50 = 100। 8वाँ निशान = 8 × 50 = 400।\nतीसरा निशान = 150, जो 140 से बड़ा है। इसलिए 140 तीसरे निशान से थोड़ा बाईं ओर होगा।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Comparing numbers: of any two numbers on a number line, the one further to the right is bigger. Without a number line, compare first the number of digits (more digits means bigger), and if equal, compare digit by digit from the left. For example, among 47,805, 47,580, 4,785 and 48,057, the smallest is 4,785 (only 4 digits) and the largest is 48,057 (second digit 8 is bigger than 7).",
+      "hi": "संख्याओं की तुलना: संख्या रेखा पर दो संख्याओं में से जो अधिक दाईं ओर है वह बड़ी है। बिना संख्या रेखा के, पहले अंकों की संख्या की तुलना कीजिए (अधिक अंक तो बड़ी संख्या), और बराबर हों तो बाईं ओर से एक-एक अंक की तुलना कीजिए। जैसे 47,805, 47,580, 4,785 और 48,057 में सबसे छोटी 4,785 (केवल 4 अंक) और सबसे बड़ी 48,057 (दूसरा अंक 8, 7 से बड़ा) है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Always check the interval first. Two number lines can look the same but have different intervals, such as 1, 10, 100 or 500.",
+      "hi": "हमेशा पहले अंतराल देखिए। दो संख्या रेखाएँ एक जैसी दिख सकती हैं पर उनके अंतराल अलग हो सकते हैं, जैसे 1, 10, 100 या 500।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.4 Playing with Digits",
+    "hi": "3.4 अंकों के साथ खेल"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "We write all numbers using only ten digits: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. A number's 'number of digits' tells us roughly how big it is. Let us count how many numbers there are with each number of digits (counting from 1 upwards).",
+      "hi": "हम सभी संख्याएँ केवल दस अंकों से लिखते हैं: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9। किसी संख्या में कितने अंक हैं, इससे पता चलता है कि वह लगभग कितनी बड़ी है। आइए गिनें कि हर अंक-संख्या वाली कितनी संख्याएँ हैं (1 से आगे गिनते हुए)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "From",
+        "To",
+        "How many"
+       ],
+       "hi": [
+        "प्रकार",
+        "से",
+        "तक",
+        "कितनी"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1-digit",
+         "1",
+         "9",
+         "9"
+        ],
+        [
+         "2-digit",
+         "10",
+         "99",
+         "90"
+        ],
+        [
+         "3-digit",
+         "100",
+         "999",
+         "900"
+        ],
+        [
+         "4-digit",
+         "1,000",
+         "9,999",
+         "9,000"
+        ],
+        [
+         "5-digit",
+         "10,000",
+         "99,999",
+         "90,000"
+        ]
+       ],
+       "hi": [
+        [
+         "1-अंकीय",
+         "1",
+         "9",
+         "9"
+        ],
+        [
+         "2-अंकीय",
+         "10",
+         "99",
+         "90"
+        ],
+        [
+         "3-अंकीय",
+         "100",
+         "999",
+         "900"
+        ],
+        [
+         "4-अंकीय",
+         "1,000",
+         "9,999",
+         "9,000"
+        ],
+        [
+         "5-अंकीय",
+         "10,000",
+         "99,999",
+         "90,000"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Count of numbers from a to b (both included) = b − a + 1",
+      "hi": "a से b तक (दोनों सहित) संख्याओं की गिनती = b − a + 1"
+     }
+    },
+    {
+     "note": {
+      "en": "Pattern: each time we add a digit, the count becomes 10 times bigger: 9, 90, 900, 9000, 90000. For example, 99 − 10 + 1 = 90.",
+      "hi": "पैटर्न: हर बार एक अंक बढ़ाने पर गिनती 10 गुना हो जाती है: 9, 90, 900, 9000, 90000। जैसे 99 − 10 + 1 = 90।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Digit sum",
+       "hi": "अंकों का योग"
+      },
+      "text": {
+       "en": "The number we get by adding all the digits of a number. For 368, the digit sum is 3 + 6 + 8 = 17.",
+       "hi": "किसी संख्या के सभी अंकों को जोड़ने पर मिलने वाली संख्या। 368 के अंकों का योग 3 + 6 + 8 = 17 है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Many different numbers can have the same digit sum. For example 59, 95, 149, 266, 707 and 1,175 all have digit sum 14. To find the smallest number with a given digit sum, use as few digits as possible and put the biggest digits (9s) at the end. To find the largest number with a fixed number of digits, put the biggest digits at the front and fill the rest with 0s.",
+      "hi": "बहुत-सी अलग-अलग संख्याओं के अंकों का योग एक जैसा हो सकता है। जैसे 59, 95, 149, 266, 707 और 1,175 सभी के अंकों का योग 14 है। दिए गए अंक-योग वाली सबसे छोटी संख्या पाने के लिए कम से कम अंक लीजिए और बड़े अंक (9) अंत में रखिए। निश्चित अंकों वाली सबसे बड़ी संख्या पाने के लिए बड़े अंक आगे रखिए और बाकी में 0 भरिए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "(a) Find the smallest number whose digit sum is 20. (b) Find the largest 4-digit number whose digit sum is 20.",
+       "hi": "(a) वह सबसे छोटी संख्या ज्ञात कीजिए जिसके अंकों का योग 20 है। (b) वह सबसे बड़ी 4-अंकीय संख्या ज्ञात कीजिए जिसके अंकों का योग 20 है।"
+      },
+      "a": {
+       "en": "(a) Two digits can make at most 9 + 9 = 18, which is less than 20, so we need 3 digits.\nTo keep it small, make the first digit as small as possible and the last digits 9: 2 + 9 + 9 = 20.\nAnswer: 299.\n(b) Put the biggest digits in front: 9, then 9 (total 18), then 2 (total 20), then 0.\nAnswer: 9920.",
+       "hi": "(a) दो अंकों से अधिकतम 9 + 9 = 18 बनता है, जो 20 से कम है, इसलिए 3 अंक चाहिए।\nछोटा रखने के लिए पहला अंक जितना हो सके छोटा और आखिरी अंक 9 रखिए: 2 + 9 + 9 = 20।\nउत्तर: 299।\n(b) बड़े अंक आगे रखिए: 9, फिर 9 (योग 18), फिर 2 (योग 20), फिर 0।\nउत्तर: 9920।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Patterns in digit sums: write the digit sums of 40, 41, 42, ... 70. From 40 to 49 they go 4, 5, 6, ..., 13 (increase by 1 each step). At 50 the digit sum suddenly drops to 5, because the units digit goes from 9 back to 0 while the tens digit increases by just 1. So the digit sum drops by 8 every time we cross a multiple of 10 (like 49 to 50: 13 to 5).",
+      "hi": "अंक-योग में पैटर्न: 40, 41, 42, ... 70 के अंक-योग लिखिए। 40 से 49 तक वे 4, 5, 6, ..., 13 होते हैं (हर बार 1 बढ़ते हैं)। 50 पर अंक-योग अचानक 5 हो जाता है, क्योंकि इकाई का अंक 9 से वापस 0 हो जाता है और दहाई का अंक केवल 1 बढ़ता है। इसलिए 10 के गुणज को पार करते ही अंक-योग 8 घट जाता है (जैसे 49 से 50: 13 से 5)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the digit sums of the 3-digit numbers made of consecutive digits: 123, 234, 345, 456, 567, 678, 789. What pattern do you see?",
+       "hi": "क्रमागत अंकों से बनी 3-अंकीय संख्याओं के अंक-योग ज्ञात कीजिए: 123, 234, 345, 456, 567, 678, 789। आपको कौन-सा पैटर्न दिखता है?"
+      },
+      "a": {
+       "en": "123: 6, 234: 9, 345: 12, 456: 15, 567: 18, 678: 21, 789: 24.\nEach time all three digits go up by 1, so the digit sum goes up by 3.\nAlso each digit sum is 3 times the middle digit (for 456: 3 × 5 = 15).\nThe pattern stops after 789 because the next would need the digit 10.",
+       "hi": "123: 6, 234: 9, 345: 12, 456: 15, 567: 18, 678: 21, 789: 24।\nहर बार तीनों अंक 1 बढ़ते हैं, इसलिए अंक-योग 3 बढ़ता है।\nसाथ ही हर अंक-योग बीच वाले अंक का 3 गुना है (456 के लिए 3 × 5 = 15)।\n789 के बाद पैटर्न रुक जाता है क्योंकि अगले के लिए अंक 10 चाहिए होगा।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Digit detective: how many times does the digit 7 appear when we write all numbers from 1 to 100? Count carefully in two parts: in the units place 7 appears in 7, 17, 27, ..., 97, which is 10 times. In the tens place it appears in 70, 71, ..., 79, which is another 10 times. Total = 20 (the number 77 is counted twice, correctly, because it has two 7s). From 1 to 1000, by the same idea, 7 appears 100 times in each of the units, tens and hundreds places, giving 300.",
+      "hi": "अंक जासूस: 1 से 100 तक सभी संख्याएँ लिखने पर अंक 7 कितनी बार आता है? दो भागों में ध्यान से गिनिए: इकाई के स्थान पर 7 आता है 7, 17, 27, ..., 97 में, यानी 10 बार। दहाई के स्थान पर 70, 71, ..., 79 में, फिर 10 बार। कुल = 20 (संख्या 77 दो बार गिनी गई, जो सही है क्योंकि उसमें दो 7 हैं)। इसी विचार से 1 से 1000 तक इकाई, दहाई और सैकड़ा, हर स्थान पर 7 सौ-सौ बार आता है, यानी कुल 300।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.5 Pretty Palindromic Patterns",
+    "hi": "3.5 सुंदर पैलिंड्रोम (विलोमपद) पैटर्न"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Palindrome (palindromic number)",
+       "hi": "पैलिंड्रोम (विलोमपद संख्या)"
+      },
+      "text": {
+       "en": "A number that reads the same from left to right and from right to left, such as 7, 44, 121, 5335 and 67876. Words can be palindromes too, like 'madam' or the Hindi word 'कनक'.",
+       "hi": "वह संख्या जो बाएँ से दाएँ और दाएँ से बाएँ एक जैसी पढ़ी जाए, जैसे 7, 44, 121, 5335 और 67876। शब्द भी पैलिंड्रोम हो सकते हैं, जैसे 'madam' या हिंदी शब्द 'कनक'।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Every 1-digit number is a palindrome. A 3-digit palindrome has the form A B A: the first and last digits are equal. A 5-digit palindrome has the form A B C B A.",
+      "hi": "हर 1-अंकीय संख्या पैलिंड्रोम है। 3-अंकीय पैलिंड्रोम का रूप A B A होता है: पहला और आखिरी अंक बराबर। 5-अंकीय पैलिंड्रोम का रूप A B C B A होता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "List all 3-digit palindromes that can be made using only the digits 1, 2 and 3 (digits may repeat).",
+       "hi": "केवल अंक 1, 2 और 3 का प्रयोग करके (अंक दोहराए जा सकते हैं) बनने वाले सभी 3-अंकीय पैलिंड्रोम लिखिए।"
+      },
+      "a": {
+       "en": "Form A B A: A can be 1, 2 or 3 (3 choices), B can be 1, 2 or 3 (3 choices).\nTotal = 3 × 3 = 9 palindromes.\nA = 1: 111, 121, 131\nA = 2: 212, 222, 232\nA = 3: 313, 323, 333",
+       "hi": "रूप A B A: A हो सकता है 1, 2 या 3 (3 विकल्प), B हो सकता है 1, 2 या 3 (3 विकल्प)।\nकुल = 3 × 3 = 9 पैलिंड्रोम।\nA = 1: 111, 121, 131\nA = 2: 212, 222, 232\nA = 3: 313, 323, 333"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Reverse and add: take any number, write its digits in reverse order, and add the two. If the answer is not a palindrome, repeat with the answer. Very often we reach a palindrome in a few steps.",
+      "hi": "उलटो और जोड़ो: कोई भी संख्या लीजिए, उसके अंक उलटे क्रम में लिखिए और दोनों को जोड़िए। यदि उत्तर पैलिंड्रोम नहीं है, तो उत्तर के साथ यही दोहराइए। अक्सर कुछ ही चरणों में पैलिंड्रोम मिल जाता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Use reverse-and-add starting from (a) 48 and (b) 97.",
+       "hi": "उलटो और जोड़ो विधि (a) 48 से और (b) 97 से शुरू करके लगाइए।"
+      },
+      "a": {
+       "en": "(a) 48 + 84 = 132. Not a palindrome.\n132 + 231 = 363. Palindrome after 2 steps.\n(b) 97 + 79 = 176\n176 + 671 = 847\n847 + 748 = 1595\n1595 + 5951 = 7546\n7546 + 6457 = 14003\n14003 + 30041 = 44044. Palindrome after 6 steps.",
+       "hi": "(a) 48 + 84 = 132। पैलिंड्रोम नहीं।\n132 + 231 = 363। 2 चरणों में पैलिंड्रोम।\n(b) 97 + 79 = 176\n176 + 671 = 847\n847 + 748 = 1595\n1595 + 5951 = 7546\n7546 + 6457 = 14003\n14003 + 30041 = 44044। 6 चरणों में पैलिंड्रोम।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Does every 2-digit number reach a palindrome? Yes, but 89 and 98 are stubborn: they need 24 steps and the palindrome has 13 digits (8,813,200,023,188). For some bigger numbers, such as 196, nobody has ever found a palindrome, and nobody has proved that one never comes. It is an open question.",
+      "hi": "क्या हर 2-अंकीय संख्या पैलिंड्रोम तक पहुँचती है? हाँ, पर 89 और 98 बहुत ज़िद्दी हैं: इन्हें 24 चरण लगते हैं और पैलिंड्रोम 13 अंकों का (8,813,200,023,188) होता है। कुछ बड़ी संख्याओं, जैसे 196, से आज तक किसी को पैलिंड्रोम नहीं मिला, और किसी ने यह सिद्ध भी नहीं किया कि कभी नहीं मिलेगा। यह एक खुला प्रश्न है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Puzzle: I am a 5-digit odd palindrome. My first digit is 1 more than my second digit, and my middle digit is double my second digit. All my digits add up to 26. Who am I?",
+       "hi": "पहेली: मैं एक 5-अंकीय विषम पैलिंड्रोम हूँ। मेरा पहला अंक दूसरे अंक से 1 अधिक है, और बीच का अंक दूसरे अंक का दोगुना है। मेरे सभी अंकों का योग 26 है। मैं कौन हूँ?"
+      },
+      "a": {
+       "en": "Form: A B C B A. The number is odd, so the last digit A must be odd.\nClues: A = B + 1 and C = 2 × B.\nSum = A + B + C + B + A = 2A + 2B + C.\nPut in the clues: 2(B + 1) + 2B + 2B = 6B + 2.\n6B + 2 = 26, so 6B = 24 and B = 4.\nThen A = 5 (odd, good) and C = 8.\nNumber: 54845. Check: 5 + 4 + 8 + 4 + 5 = 26.",
+       "hi": "रूप: A B C B A। संख्या विषम है, इसलिए आखिरी अंक A विषम होना चाहिए।\nसंकेत: A = B + 1 और C = 2 × B।\nयोग = A + B + C + B + A = 2A + 2B + C।\nसंकेत रखिए: 2(B + 1) + 2B + 2B = 6B + 2।\n6B + 2 = 26, इसलिए 6B = 24 और B = 4।\nतब A = 5 (विषम, सही) और C = 8।\nसंख्या: 54845। जाँच: 5 + 4 + 8 + 4 + 5 = 26।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.6 The Magic Number of Kaprekar",
+    "hi": "3.6 कापरेकर की जादुई संख्या"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "D. R. Kaprekar was a school mathematics teacher from Devlali in Maharashtra who loved playing with numbers. Around 1949 he discovered an amazing fact about 4-digit numbers.",
+      "hi": "द. रा. कापरेकर महाराष्ट्र के देवलाली के एक स्कूल गणित शिक्षक थे, जिन्हें संख्याओं से खेलना बहुत पसंद था। लगभग 1949 में उन्होंने 4-अंकीय संख्याओं के बारे में एक अद्भुत तथ्य खोजा।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Kaprekar routine",
+       "hi": "कापरेकर प्रक्रिया"
+      },
+      "text": {
+       "en": "Take a 4-digit number whose digits are not all the same. (1) Arrange its digits in decreasing order to make the largest number. (2) Arrange them in increasing order to make the smallest number (keep zeros in front, so it may look like a 3-digit number). (3) Subtract the smaller from the larger. (4) Repeat steps 1 to 3 with the answer.",
+       "hi": "एक 4-अंकीय संख्या लीजिए जिसके सभी अंक एक जैसे न हों। (1) उसके अंकों को घटते क्रम में लगाकर सबसे बड़ी संख्या बनाइए। (2) बढ़ते क्रम में लगाकर सबसे छोटी संख्या बनाइए (शून्य आगे रखिए, इसलिए वह 3-अंकीय जैसी दिख सकती है)। (3) बड़ी में से छोटी घटाइए। (4) उत्तर के साथ चरण 1 से 3 दोहराइए।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Kaprekar constant (6174)",
+       "hi": "कापरेकर स्थिरांक (6174)"
+      },
+      "text": {
+       "en": "Whatever 4-digit number you start with (digits not all the same), the routine always reaches 6174 within at most 7 steps. After that it stays at 6174, because 7641 − 1467 = 6174.",
+       "hi": "आप किसी भी 4-अंकीय संख्या से शुरू करें (सभी अंक एक जैसे न हों), यह प्रक्रिया अधिकतम 7 चरणों में हमेशा 6174 पर पहुँच जाती है। उसके बाद वह 6174 पर ही रुकी रहती है, क्योंकि 7641 − 1467 = 6174।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Apply the Kaprekar routine to 3524.",
+       "hi": "3524 पर कापरेकर प्रक्रिया लगाइए।"
+      },
+      "a": {
+       "en": "Step 1: 5432 − 2345 = 3087\nStep 2: 8730 − 0378 = 8352\nStep 3: 8532 − 2358 = 6174\nReached 6174 in 3 steps. One more step: 7641 − 1467 = 6174 again.",
+       "hi": "चरण 1: 5432 − 2345 = 3087\nचरण 2: 8730 − 0378 = 8352\nचरण 3: 8532 − 2358 = 6174\n3 चरणों में 6174 मिला। एक और चरण: 7641 − 1467 = 6174 फिर से।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Apply the routine to 2111. Be careful with the zero.",
+       "hi": "2111 पर प्रक्रिया लगाइए। शून्य का ध्यान रखिए।"
+      },
+      "a": {
+       "en": "Step 1: 2111 − 1112 = 999. Write it as 0999 to keep 4 digits.\nStep 2: 9990 − 0999 = 8991\nStep 3: 9981 − 1899 = 8082\nStep 4: 8820 − 0288 = 8532\nStep 5: 8532 − 2358 = 6174\nReached in 5 steps.",
+       "hi": "चरण 1: 2111 − 1112 = 999। 4 अंक रखने के लिए इसे 0999 लिखिए।\nचरण 2: 9990 − 0999 = 8991\nचरण 3: 9981 − 1899 = 8082\nचरण 4: 8820 − 0288 = 8532\nचरण 5: 8532 − 2358 = 6174\n5 चरणों में पहुँचा।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "If all four digits are the same (like 4444), the difference is 0 at once, so the routine does not work. That is why such numbers are left out. Always keep 4 digits by writing leading zeros, otherwise you may get a wrong answer.",
+      "hi": "यदि चारों अंक एक जैसे हों (जैसे 4444), तो अंतर तुरंत 0 हो जाता है, इसलिए प्रक्रिया काम नहीं करती। इसीलिए ऐसी संख्याएँ छोड़ दी जाती हैं। हमेशा आगे शून्य लिखकर 4 अंक बनाए रखिए, नहीं तो उत्तर गलत आ सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Explore with 3-digit numbers: apply the same routine to 352.",
+       "hi": "3-अंकीय संख्याओं के साथ खोज: 352 पर यही प्रक्रिया लगाइए।"
+      },
+      "a": {
+       "en": "532 − 235 = 297\n972 − 279 = 693\n963 − 369 = 594\n954 − 459 = 495\n954 − 459 = 495 again.\nFor 3-digit numbers (digits not all the same) the routine ends at 495.",
+       "hi": "532 − 235 = 297\n972 − 279 = 693\n963 − 369 = 594\n954 − 459 = 495\n954 − 459 = 495 फिर से।\n3-अंकीय संख्याओं (सभी अंक एक जैसे न हों) के लिए प्रक्रिया 495 पर रुकती है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.7 Clock and Calendar Numbers",
+    "hi": "3.7 घड़ी और कैलेंडर की संख्याएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A 12-hour digital clock shows times like 4:44, 10:01 or 12:21. Drop the colon and read the digits: 4:44 becomes 444, which is a palindrome. Times can show other patterns too, such as all digits the same (1:11, 2:22, 3:33, 4:44, 5:55, 11:11) or digits in counting order (1:23, 2:34, 3:45, 12:34).",
+      "hi": "12-घंटे वाली डिजिटल घड़ी 4:44, 10:01 या 12:21 जैसे समय दिखाती है। कोलन हटाकर अंक पढ़िए: 4:44 बन जाता है 444, जो पैलिंड्रोम है। समय में और पैटर्न भी दिखते हैं, जैसे सभी अंक एक जैसे (1:11, 2:22, 3:33, 4:44, 5:55, 11:11) या गिनती के क्रम में अंक (1:23, 2:34, 3:45, 12:34)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "How many palindromic times does a 12-hour clock show between 1:00 and 12:59?",
+       "hi": "12-घंटे की घड़ी 1:00 से 12:59 के बीच कितने पैलिंड्रोम समय दिखाती है?"
+      },
+      "a": {
+       "en": "Hours 1 to 9: time looks like h:mh, the minutes' last digit must equal the hour, and the middle digit can be 0 to 5. So 6 times for each hour: for 3 o'clock they are 3:03, 3:13, 3:23, 3:33, 3:43, 3:53.\n9 hours × 6 = 54.\nHour 10: only 10:01. Hour 11: only 11:11. Hour 12: only 12:21.\nTotal = 54 + 3 = 57 palindromic times.",
+       "hi": "घंटे 1 से 9: समय h:mh जैसा होता है, मिनट का आखिरी अंक घंटे के बराबर और बीच का अंक 0 से 5 तक हो सकता है। इसलिए हर घंटे में 6 समय: 3 बजे के लिए 3:03, 3:13, 3:23, 3:33, 3:43, 3:53।\n9 घंटे × 6 = 54।\nघंटा 10: केवल 10:01। घंटा 11: केवल 11:11। घंटा 12: केवल 12:21।\nकुल = 54 + 3 = 57 पैलिंड्रोम समय।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Dates also make patterns. Write a date as DD/MM/YYYY and drop the slashes. The date 22/02/2022 gives 22022022, which reads the same backwards: a palindromic date. Other examples are 12/02/2021 and 02/02/2020. Dates like 11/11/1111 or 22/2/2222 have repeating digits.",
+      "hi": "तारीखें भी पैटर्न बनाती हैं। तारीख को DD/MM/YYYY में लिखिए और तिरछी रेखाएँ हटाइए। 22/02/2022 से 22022022 बनता है, जो उलटा भी वैसा ही पढ़ा जाता है: पैलिंड्रोम तारीख। अन्य उदाहरण 12/02/2021 और 02/02/2020 हैं। 11/11/1111 या 22/2/2222 जैसी तारीखों में अंक दोहराते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Do calendars repeat? Yes. A non-leap year has 365 days = 52 weeks + 1 day, so the next year starts one weekday later (two after a leap year). Because of this, the calendar of 2015 (starting Thursday, non-leap) is exactly the same as that of 2026. A year's calendar repeats after 6, 11 or 28 years depending on leap years.",
+      "hi": "क्या कैलेंडर दोहराते हैं? हाँ। साधारण वर्ष में 365 दिन = 52 सप्ताह + 1 दिन होते हैं, इसलिए अगला वर्ष एक दिन आगे वाले वार से शुरू होता है (लीप वर्ष के बाद दो दिन आगे)। इस कारण 2015 का कैलेंडर (गुरुवार से शुरू, साधारण वर्ष) बिल्कुल 2026 जैसा है। लीप वर्षों के अनुसार किसी वर्ष का कैलेंडर 6, 11 या 28 वर्ष बाद दोहराता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "The clock shows 10:01. How many minutes until the next palindromic time, and the one after that?",
+       "hi": "घड़ी 10:01 दिखा रही है। अगले पैलिंड्रोम समय तक कितने मिनट हैं, और उसके बाद वाले तक?"
+      },
+      "a": {
+       "en": "After 10:01 the next palindrome is 11:11.\n10:01 to 11:01 = 60 minutes, plus 10 minutes = 70 minutes.\nThe next is 12:21: from 11:11 to 12:11 = 60 minutes, plus 10 = 70 minutes more.\nSo 70 minutes and 140 minutes from 10:01.",
+       "hi": "10:01 के बाद अगला पैलिंड्रोम 11:11 है।\n10:01 से 11:01 = 60 मिनट, और 10 मिनट = 70 मिनट।\nउसके बाद 12:21: 11:11 से 12:11 = 60 मिनट, और 10 = 70 मिनट और।\nयानी 10:01 से 70 मिनट और 140 मिनट।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Number challenge with fixed digits: using the digits 6, 4, 8, 5 (each once in each number) we can make many 4-digit numbers. Questions like 'make two numbers whose difference is as close as possible to 5085' or 'whose sum is just above 9779' make us think about place value: the thousands digit matters most, so fix it first, then adjust smaller places.",
+      "hi": "निश्चित अंकों के साथ संख्या चुनौती: अंक 6, 4, 8, 5 (हर संख्या में हर अंक एक बार) से कई 4-अंकीय संख्याएँ बनती हैं। 'ऐसी दो संख्याएँ बनाओ जिनका अंतर 5085 के जितना हो सके पास हो' या 'जिनका योग 9779 से ज़रा ऊपर हो' जैसे प्रश्न हमें स्थानीय मान पर सोचने को मजबूर करते हैं: हज़ार का अंक सबसे अधिक मायने रखता है, इसलिए पहले उसे तय कीजिए, फिर छोटे स्थान ठीक कीजिए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the sum and the difference of the smallest and the largest 5-digit palindromes.",
+       "hi": "सबसे छोटे और सबसे बड़े 5-अंकीय पैलिंड्रोम का योग और अंतर ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Smallest 5-digit palindrome: 10001. Largest: 99999.\nSum = 10001 + 99999 = 1,10,000.\nDifference = 99999 − 10001 = 89,998.",
+       "hi": "सबसे छोटा 5-अंकीय पैलिंड्रोम: 10001। सबसे बड़ा: 99999।\nयोग = 10001 + 99999 = 1,10,000।\nअंतर = 99999 − 10001 = 89,998।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.8 Mental Math",
+    "hi": "3.8 मानसिक गणित"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Mental math means calculating in your head using smart tricks instead of long written methods. A good way to practise is a target game: you are given some numbers and you must reach a target by adding (and later also subtracting) some of them. Each number may be used at most once.",
+      "hi": "मानसिक गणित का अर्थ है लंबी लिखित विधियों के बजाय चतुर तरकीबों से दिमाग में गणना करना। अभ्यास का अच्छा तरीका लक्ष्य खेल है: आपको कुछ संख्याएँ दी जाती हैं और उनमें से कुछ को जोड़कर (और बाद में घटाकर भी) लक्ष्य तक पहुँचना होता है। हर संख्या अधिकतम एक बार प्रयोग की जा सकती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using only addition and the numbers 1500, 2500, 5000 and 10000 (each at most once), which of these targets can you make: 4000, 9000, 14000, 16000?",
+       "hi": "केवल जोड़ और संख्याओं 1500, 2500, 5000 और 10000 (हर एक अधिकतम एक बार) से इनमें से कौन-से लक्ष्य बन सकते हैं: 4000, 9000, 14000, 16000?"
+      },
+      "a": {
+       "en": "4000 = 1500 + 2500. Yes.\n9000 = 1500 + 2500 + 5000. Yes.\n14000 = 10000 + 1500 + 2500. Yes.\n16000: the possible thousands we can make by adding are 4000, 5000, 9000, 10000, 14000, 15000 and 19000 only. 16000 is not in the list, so it cannot be made by adding alone.",
+       "hi": "4000 = 1500 + 2500। हाँ।\n9000 = 1500 + 2500 + 5000। हाँ।\n14000 = 10000 + 1500 + 2500। हाँ।\n16000: जोड़कर बनने वाले पूरे हज़ार केवल 4000, 5000, 9000, 10000, 14000, 15000 और 19000 हैं। 16000 इनमें नहीं है, इसलिए केवल जोड़ से नहीं बनता।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Now allow subtraction too. Make 6000 and 16500 with 1500, 2500, 5000, 10000.",
+       "hi": "अब घटाना भी चलेगा। 1500, 2500, 5000, 10000 से 6000 और 16500 बनाइए।"
+      },
+      "a": {
+       "en": "6000 = 10000 − 5000 + 2500 − 1500. Check: 5000 + 1000 = 6000.\n16500 = 10000 + 5000 + 1500. (No subtraction needed.)",
+       "hi": "6000 = 10000 − 5000 + 2500 − 1500। जाँच: 5000 + 1000 = 6000।\n16500 = 10000 + 5000 + 1500। (घटाने की ज़रूरत नहीं।)"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Useful mental tricks: break numbers into friendly parts (46,000 − 28,500 = 46,000 − 28,000 − 500 = 18,000 − 500 = 17,500), add in round numbers and then adjust (3,999 + 2,756 = 4,000 + 2,756 − 1 = 6,755), and pair numbers that make round totals.",
+      "hi": "उपयोगी मानसिक तरकीबें: संख्याओं को आसान भागों में तोड़िए (46,000 − 28,500 = 46,000 − 28,000 − 500 = 18,000 − 500 = 17,500), गोल संख्या जोड़कर फिर ठीक कीजिए (3,999 + 2,756 = 4,000 + 2,756 − 1 = 6,755), और ऐसी जोड़ियाँ बनाइए जिनका योग गोल संख्या हो।"
+     }
+    },
+    {
+     "p": {
+      "en": "Number of digits in answers. Thinking about the smallest and largest possible values tells us how many digits an answer can have:",
+      "hi": "उत्तर में अंकों की संख्या। सबसे छोटे और सबसे बड़े संभव मान सोचकर हम जान सकते हैं कि उत्तर में कितने अंक हो सकते हैं:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Statement",
+        "Always / Sometimes / Never",
+        "Reason"
+       ],
+       "hi": [
+        "कथन",
+        "हमेशा / कभी-कभी / कभी नहीं",
+        "कारण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "5-digit + 5-digit gives a 6-digit number",
+         "Sometimes",
+         "10,000 + 10,000 = 20,000 (5 digits) but 60,000 + 50,000 = 1,10,000 (6 digits)"
+        ],
+        [
+         "4-digit + 2-digit gives a 4-digit number",
+         "Sometimes",
+         "1,000 + 10 = 1,010 but 9,990 + 10 = 10,000"
+        ],
+        [
+         "3-digit + 3-digit gives a 3-digit or 4-digit number",
+         "Always",
+         "smallest 100 + 100 = 200, largest 999 + 999 = 1,998"
+        ],
+        [
+         "4-digit − 3-digit gives a 4-digit number",
+         "Sometimes",
+         "9,999 − 100 = 9,899 (4 digits) but 1,000 − 999 = 1 and 1,050 − 990 = 60"
+        ],
+        [
+         "5-digit − 5-digit gives a 5-digit number",
+         "Sometimes",
+         "50,000 − 10,000 = 40,000 but 50,000 − 49,000 = 1,000"
+        ],
+        [
+         "3-digit + 3-digit gives a 5-digit number",
+         "Never",
+         "the largest possible sum is 999 + 999 = 1,998, which has only 4 digits"
+        ]
+       ],
+       "hi": [
+        [
+         "5-अंकीय + 5-अंकीय से 6-अंकीय संख्या",
+         "कभी-कभी",
+         "10,000 + 10,000 = 20,000 (5 अंक) पर 60,000 + 50,000 = 1,10,000 (6 अंक)"
+        ],
+        [
+         "4-अंकीय + 2-अंकीय से 4-अंकीय संख्या",
+         "कभी-कभी",
+         "1,000 + 10 = 1,010 पर 9,990 + 10 = 10,000"
+        ],
+        [
+         "3-अंकीय + 3-अंकीय से 3 या 4 अंकों की संख्या",
+         "हमेशा",
+         "सबसे छोटा 100 + 100 = 200, सबसे बड़ा 999 + 999 = 1,998"
+        ],
+        [
+         "4-अंकीय − 3-अंकीय से 4-अंकीय संख्या",
+         "कभी-कभी",
+         "9,999 − 100 = 9,899 (4 अंक) पर 1,000 − 999 = 1 और 1,050 − 990 = 60"
+        ],
+        [
+         "5-अंकीय − 5-अंकीय से 5-अंकीय संख्या",
+         "कभी-कभी",
+         "50,000 − 10,000 = 40,000 पर 50,000 − 49,000 = 1,000"
+        ],
+        [
+         "3-अंकीय + 3-अंकीय से 5-अंकीय संख्या",
+         "कभी नहीं",
+         "सबसे बड़ा संभव योग 999 + 999 = 1,998 है, जिसमें केवल 4 अंक हैं"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.9 Playing with Number Patterns",
+    "hi": "3.9 संख्या पैटर्न के साथ खेल"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Sometimes the same number appears again and again in a pattern, for example arranged as a square, a triangle or a set of rings. To find the total, do not add one by one. Instead, count how many times each number appears and multiply, or group numbers into easy totals like 100 or 1000.",
+      "hi": "कभी-कभी कोई संख्या किसी पैटर्न में बार-बार आती है, जैसे वर्ग, त्रिभुज या छल्लों के रूप में सजी हुई। कुल योग पाने के लिए एक-एक करके मत जोड़िए। बल्कि गिनिए कि हर संख्या कितनी बार आई है और गुणा कीजिए, या संख्याओं को 100 या 1000 जैसे आसान योग वाले समूहों में बाँटिए।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Total = (number) × (how many times it appears), added up for each different number",
+      "hi": "कुल = (संख्या) × (वह कितनी बार आई), हर अलग संख्या के लिए जोड़कर"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A square pattern has 4 rows of 4 boxes. The 4 middle boxes each contain 50 and the 12 outer boxes each contain 40. Find the total quickly.",
+       "hi": "एक वर्ग पैटर्न में 4 पंक्तियाँ हैं, हर पंक्ति में 4 खाने। बीच के 4 खानों में 50-50 और बाहर के 12 खानों में 40-40 लिखा है। जल्दी से कुल योग ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Total boxes = 4 × 4 = 16 = 4 inner + 12 outer.\nInner: 4 × 50 = 200.\nOuter: 12 × 40 = 480.\nTotal = 200 + 480 = 680.",
+       "hi": "कुल खाने = 4 × 4 = 16 = 4 अंदर + 12 बाहर।\nअंदर: 4 × 50 = 200।\nबाहर: 12 × 40 = 480।\nकुल = 200 + 480 = 680।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A design has 1 circle with 1000, 2 circles with 500, 4 circles with 250 and 8 circles with 125. What is the total?",
+       "hi": "एक डिज़ाइन में 1000 वाला 1 गोला, 500 वाले 2 गोले, 250 वाले 4 गोले और 125 वाले 8 गोले हैं। कुल कितना है?"
+      },
+      "a": {
+       "en": "1 × 1000 = 1000\n2 × 500 = 1000\n4 × 250 = 1000\n8 × 125 = 1000\nEach layer makes 1000, and there are 4 layers. Total = 4000.",
+       "hi": "1 × 1000 = 1000\n2 × 500 = 1000\n4 × 250 = 1000\n8 × 125 = 1000\nहर परत 1000 बनाती है, और 4 परतें हैं। कुल = 4000।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A triangle pattern has the numbers 15, 25 and 35 repeated: 15 appears 6 times, 25 appears 6 times and 35 appears 6 times. Find the total in a smart way.",
+       "hi": "एक त्रिभुज पैटर्न में 15, 25 और 35 दोहराए गए हैं: 15 छह बार, 25 छह बार और 35 छह बार। चतुराई से कुल योग ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Group one 15, one 25 and one 35: 15 + 25 + 35 = 75.\nThere are 6 such groups.\nTotal = 6 × 75 = 450.",
+       "hi": "एक 15, एक 25 और एक 35 का समूह बनाइए: 15 + 25 + 35 = 75।\nऐसे 6 समूह हैं।\nकुल = 6 × 75 = 450।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "You can also create your own pattern to hit a chosen total. For example, to make 300, use 4 boxes of 50 and 5 boxes of 20: 200 + 100 = 300.",
+      "hi": "आप किसी चुने हुए योग के लिए अपना पैटर्न भी बना सकते हैं। जैसे 300 बनाने के लिए 50 वाले 4 खाने और 20 वाले 5 खाने: 200 + 100 = 300।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.10 An Unsolved Mystery: the Collatz Conjecture",
+    "hi": "3.10 एक अनसुलझा रहस्य: कोलाट्ज़ अनुमान"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Collatz rule",
+       "hi": "कोलाट्ज़ नियम"
+      },
+      "text": {
+       "en": "Start with any whole number greater than 0. If it is even, divide it by 2. If it is odd, multiply it by 3 and add 1. Repeat with the new number.",
+       "hi": "0 से बड़ी कोई भी पूर्ण संख्या लीजिए। यदि वह सम है, तो उसे 2 से भाग दीजिए। यदि विषम है, तो 3 से गुणा करके 1 जोड़िए। नई संख्या के साथ यही दोहराइए।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Collatz conjecture",
+       "hi": "कोलाट्ज़ अनुमान"
+      },
+      "text": {
+       "en": "The guess (made by the German mathematician Lothar Collatz in 1937) that, whatever number you start with, the sequence will always reach 1 in the end. Computers have checked it for huge numbers, but nobody has proved it is always true. It is still unsolved.",
+       "hi": "यह अनुमान (जर्मन गणितज्ञ लोथर कोलाट्ज़ ने 1937 में दिया) कि आप किसी भी संख्या से शुरू करें, क्रम अंत में हमेशा 1 पर पहुँचेगा। कंप्यूटरों ने इसे बहुत बड़ी संख्याओं के लिए जाँचा है, पर कोई सिद्ध नहीं कर पाया कि यह हमेशा सच है। यह अभी तक अनसुलझा है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Conjecture",
+       "hi": "अनुमान (कंजेक्चर)"
+      },
+      "text": {
+       "en": "A mathematical statement that seems true from many examples but has not yet been proved.",
+       "hi": "एक गणितीय कथन जो बहुत से उदाहरणों से सच लगता है, पर अभी तक सिद्ध नहीं हुआ है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write the Collatz sequence starting from 7.",
+       "hi": "7 से शुरू होने वाला कोलाट्ज़ क्रम लिखिए।"
+      },
+      "a": {
+       "en": "7 is odd: 3 × 7 + 1 = 22\n22 even: 11\n11 odd: 34\n34: 17\n17: 52\n52: 26\n26: 13\n13: 40\n40: 20\n20: 10\n10: 5\n5: 16\n16: 8\n8: 4\n4: 2\n2: 1\nSequence: 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1 (16 steps).",
+       "hi": "7 विषम: 3 × 7 + 1 = 22\n22 सम: 11\n11 विषम: 34\n34: 17\n17: 52\n52: 26\n26: 13\n13: 40\n40: 20\n20: 10\n10: 5\n5: 16\n16: 8\n8: 4\n4: 2\n2: 1\nक्रम: 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1 (16 चरण)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Why does the conjecture certainly work for powers of 2, like 64?",
+       "hi": "2 की घातों, जैसे 64, के लिए यह अनुमान निश्चित रूप से क्यों सही है?"
+      },
+      "a": {
+       "en": "A power of 2 is 2 × 2 × ... × 2. It is even, so we halve it, and the result is again a power of 2.\n64, 32, 16, 8, 4, 2, 1.\nWe keep halving and never meet an odd number until we reach 1. So every power of 2 reaches 1.",
+       "hi": "2 की घात 2 × 2 × ... × 2 होती है। यह सम है, इसलिए आधा करते हैं, और परिणाम फिर 2 की घात होता है।\n64, 32, 16, 8, 4, 2, 1।\nहम आधा करते जाते हैं और 1 तक पहुँचने से पहले कोई विषम संख्या नहीं मिलती। इसलिए 2 की हर घात 1 पर पहुँचती है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Small starting numbers can make long journeys. Starting from 27 takes 111 steps and climbs as high as 9232 before falling to 1. Starting from 100 takes 25 steps.",
+      "hi": "छोटी शुरुआती संख्याएँ भी लंबी यात्रा कर सकती हैं। 27 से शुरू करने पर 111 चरण लगते हैं और संख्या 9232 तक ऊपर जाकर फिर 1 पर आती है। 100 से शुरू करने पर 25 चरण लगते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.11 Simple Estimation",
+    "hi": "3.11 सरल अनुमान (आकलन)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Often we do not need an exact number, just a sensible idea of how big something is. This is called estimation. For example, to order chairs for a school function, it is enough to know there are 'about 400 students'. Estimation helps us check whether an answer makes sense.",
+      "hi": "अक्सर हमें सटीक संख्या की ज़रूरत नहीं होती, बस यह समझदार अंदाज़ा चाहिए कि कोई चीज़ कितनी बड़ी है। इसे अनुमान या आकलन कहते हैं। जैसे स्कूल समारोह के लिए कुर्सियाँ मँगाने के लिए इतना जानना काफ़ी है कि 'लगभग 400 विद्यार्थी' हैं। अनुमान से हम यह भी जाँच सकते हैं कि उत्तर समझ में आता है या नहीं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Estimate",
+       "hi": "अनुमान"
+      },
+      "text": {
+       "en": "A reasonable guess of a quantity, made by using known facts and simple calculation, not by exact counting.",
+       "hi": "किसी मात्रा का उचित अंदाज़ा, जो सटीक गिनती से नहीं बल्कि ज्ञात तथ्यों और सरल गणना से लगाया जाता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Break the big question into small known pieces. Number of students = classes × sections × students per section.",
+       "Use round numbers: 38 becomes about 40, 365 becomes about 360 or 400.",
+       "Measure a small part and multiply: count your breaths in 1 minute, then multiply for an hour (× 60) and a day (× 24 more).",
+       "Compare with something familiar: a step is about half a metre, walking speed is about 4 to 5 km per hour.",
+       "Say 'more than' or 'less than' a benchmark when you are not sure of the exact value."
+      ],
+      "hi": [
+       "बड़े प्रश्न को छोटे ज्ञात टुकड़ों में तोड़िए। विद्यार्थियों की संख्या = कक्षाएँ × वर्ग (सेक्शन) × हर वर्ग में विद्यार्थी।",
+       "गोल संख्याएँ लीजिए: 38 को लगभग 40, 365 को लगभग 360 या 400।",
+       "छोटे हिस्से को मापकर गुणा कीजिए: 1 मिनट में अपनी साँसें गिनिए, फिर एक घंटे के लिए (× 60) और एक दिन के लिए (और × 24) गुणा कीजिए।",
+       "किसी जानी-पहचानी चीज़ से तुलना कीजिए: एक कदम लगभग आधा मीटर होता है, पैदल चलने की चाल लगभग 4 से 5 किमी प्रति घंटा होती है।",
+       "जब सटीक मान पक्का न हो तो किसी मानक से 'अधिक' या 'कम' कहिए।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A school has classes 1 to 10, each with 2 sections of about 38 students. Estimate the number of students.",
+       "hi": "एक स्कूल में कक्षा 1 से 10 हैं, हर कक्षा में लगभग 38 विद्यार्थियों के 2 वर्ग हैं। विद्यार्थियों की संख्या का अनुमान लगाइए।"
+      },
+      "a": {
+       "en": "Number of sections = 10 × 2 = 20.\nRound 38 to 40.\nEstimate = 20 × 40 = 800 students.\n(Exact would be 20 × 38 = 760, so 800 is a good estimate.)",
+       "hi": "वर्गों की संख्या = 10 × 2 = 20।\n38 को 40 मान लीजिए।\nअनुमान = 20 × 40 = 800 विद्यार्थी।\n(सटीक 20 × 38 = 760 होगा, इसलिए 800 अच्छा अनुमान है।)"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "You breathe about 16 times a minute. Estimate your breaths in an hour and in a day.",
+       "hi": "आप एक मिनट में लगभग 16 बार साँस लेते हैं। एक घंटे और एक दिन में साँसों का अनुमान लगाइए।"
+      },
+      "a": {
+       "en": "One hour = 60 minutes. 16 × 60 = 960, about 1,000 breaths per hour.\nOne day = 24 hours. 1,000 × 24 = 24,000 (exact with 960: 23,040).\nSo roughly 23,000 to 24,000 breaths in a day.",
+       "hi": "एक घंटा = 60 मिनट। 16 × 60 = 960, लगभग 1,000 साँसें प्रति घंटा।\nएक दिन = 24 घंटे। 1,000 × 24 = 24,000 (960 से सटीक: 23,040)।\nयानी एक दिन में लगभग 23,000 से 24,000 साँसें।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Is it reasonable to say you spend 13,000 hours in school in one year?",
+       "hi": "क्या यह कहना उचित है कि आप एक वर्ष में स्कूल में 13,000 घंटे बिताते हैं?"
+      },
+      "a": {
+       "en": "A whole year has 365 × 24 = 8,760 hours, even counting nights and holidays.\n13,000 is more than all the hours in a year, so it is impossible.\nA better estimate: about 220 school days × 6 hours = 1,320 hours.",
+       "hi": "पूरे वर्ष में, रात और छुट्टियाँ मिलाकर भी, 365 × 24 = 8,760 घंटे होते हैं।\n13,000 वर्ष के सभी घंटों से भी अधिक है, इसलिए यह असंभव है।\nबेहतर अनुमान: लगभग 220 स्कूल दिन × 6 घंटे = 1,320 घंटे।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Distances: Gandhinagar (Gujarat) to Kohima (Nagaland) is about 2,200 km in a straight line and more by road. Kashmir to Kanyakumari is about 3,000 to 3,500 km by road. Walking at about 5 km per hour for 8 hours a day (40 km a day), crossing India from north to south would take roughly 80 to 90 days.",
+      "hi": "दूरियाँ: गांधीनगर (गुजरात) से कोहिमा (नागालैंड) सीधी रेखा में लगभग 2,200 किमी और सड़क से इससे अधिक है। कश्मीर से कन्याकुमारी सड़क से लगभग 3,000 से 3,500 किमी है। लगभग 5 किमी प्रति घंटा की चाल से दिन में 8 घंटे (दिन के 40 किमी) चलने पर उत्तर से दक्षिण तक भारत पार करने में लगभग 80 से 90 दिन लगेंगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.12 Games and Winning Strategies",
+    "hi": "3.12 खेल और जीतने की रणनीतियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Game 1 (the 21 game): two players start from 0. On each turn a player adds 1, 2 or 3 to the running total. Whoever makes the total exactly 21 wins. Play it many times. Is there a way to always win?",
+      "hi": "खेल 1 (21 का खेल): दो खिलाड़ी 0 से शुरू करते हैं। हर बारी में खिलाड़ी कुल योग में 1, 2 या 3 जोड़ता है। जो कुल योग ठीक 21 बनाता है वह जीतता है। इसे कई बार खेलिए। क्या हमेशा जीतने का कोई तरीका है?"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Winning strategy",
+       "hi": "जीतने की रणनीति"
+      },
+      "text": {
+       "en": "A plan of moves that makes a player win no matter what the other player does.",
+       "hi": "चालों की ऐसी योजना जिससे खिलाड़ी जीत जाए, चाहे दूसरा खिलाड़ी कुछ भी करे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Work backwards. If you say 17, the other player can reach only 18, 19 or 20, and then you can reach 21. So 17 is a 'safe' number. In the same way 13, 9, 5 and 1 are safe, because each is 4 less than the next safe number. The key is that whatever your friend adds (1, 2 or 3), you add the amount that makes 4 together (3, 2 or 1).",
+      "hi": "पीछे से सोचिए। यदि आप 17 बोलें, तो दूसरा खिलाड़ी केवल 18, 19 या 20 तक पहुँच सकता है, और फिर आप 21 बना सकते हैं। इसलिए 17 'सुरक्षित' संख्या है। इसी तरह 13, 9, 5 और 1 सुरक्षित हैं, क्योंकि हर एक अगली सुरक्षित संख्या से 4 कम है। कुंजी यह है कि आपका मित्र जो भी जोड़े (1, 2 या 3), आप उतना जोड़िए कि दोनों मिलकर 4 बनें (3, 2 या 1)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Safe totals in the 21 game: 1, 5, 9, 13, 17, 21 (each 4 apart, because 1 + 3 = 4)",
+      "hi": "21 के खेल में सुरक्षित योग: 1, 5, 9, 13, 17, 21 (हर एक में 4 का अंतर, क्योंकि 1 + 3 = 4)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Game 2: start at 0, add any number from 1 to 10 each turn, and whoever reaches 99 wins. Who can always win, the first or the second player?",
+       "hi": "खेल 2: 0 से शुरू कीजिए, हर बारी में 1 से 10 तक कोई भी संख्या जोड़िए, और जो 99 तक पहुँचे वह जीतता है। हमेशा कौन जीत सकता है, पहला या दूसरा खिलाड़ी?"
+      },
+      "a": {
+       "en": "Biggest move = 10, so each pair of moves can be made to add 1 + 10 = 11.\nSafe totals are 99, 88, 77, 66, 55, 44, 33, 22, 11, 0.\n0 is already a safe total and it is the first player's turn, so the first player cannot reach a safe total.\nThe second player wins: whatever the first player adds, the second adds the amount needed to make 11 (first adds 4, second adds 7). Totals become 11, 22, 33, ... 99.",
+       "hi": "सबसे बड़ी चाल = 10, इसलिए हर दो चालों का योग 1 + 10 = 11 बनाया जा सकता है।\nसुरक्षित योग हैं 99, 88, 77, 66, 55, 44, 33, 22, 11, 0।\n0 पहले से सुरक्षित योग है और बारी पहले खिलाड़ी की है, इसलिए पहला खिलाड़ी सुरक्षित योग तक नहीं पहुँच पाता।\nदूसरा खिलाड़ी जीतता है: पहला जो भी जोड़े, दूसरा उतना जोड़े कि 11 बने (पहला 4 जोड़े तो दूसरा 7)। योग 11, 22, 33, ... 99 होते जाते हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "General rule: if each move can add 1 up to k, the safe totals are the target, target − (k + 1), target − 2(k + 1), and so on. If 0 is a safe total, the second player wins; otherwise the first player wins by jumping straight to the smallest safe total.",
+      "hi": "सामान्य नियम: यदि हर चाल में 1 से k तक जोड़ा जा सकता है, तो सुरक्षित योग हैं लक्ष्य, लक्ष्य − (k + 1), लक्ष्य − 2(k + 1), इत्यादि। यदि 0 सुरक्षित योग है तो दूसरा खिलाड़ी जीतता है; वरना पहला खिलाड़ी सीधे सबसे छोटे सुरक्षित योग पर पहुँचकर जीतता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Thinking in clear steps like this (a procedure that always works) is called computational thinking. We used it for the Kaprekar routine, the Collatz rule, reverse-and-add and these games.",
+      "hi": "इस तरह स्पष्ट चरणों में सोचना (ऐसी विधि जो हमेशा काम करे) कम्प्यूटेशनल चिंतन (संगणनात्मक सोच) कहलाता है। हमने इसका प्रयोग कापरेकर प्रक्रिया, कोलाट्ज़ नियम, उलटो-और-जोड़ो और इन खेलों में किया।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Counting diagonal cells as neighbours when finding supercells. Correct: only the cells directly left, right, above and below are neighbours.",
+   "Thinking that the second largest number is always a supercell. Correct: it is not a supercell if it sits next to the largest number.",
+   "Dropping the zero in the Kaprekar routine (for example treating 0999 as 999 and making 999 − 999 = 0). Correct: always keep 4 digits, so 0999 gives 9990 − 0999 = 8991.",
+   "Using a number with all digits the same, like 3333, in the Kaprekar routine. Correct: such numbers give 0 at once and are not allowed.",
+   "Forgetting to add 1 when counting numbers between two numbers (saying 99 − 10 = 89 two-digit numbers). Correct: 99 − 10 + 1 = 90.",
+   "Counting 77 only once when counting how many times the digit 7 appears. Correct: 77 contains two 7s, so it adds 2 to the count.",
+   "Assuming every mark on a number line goes up by 1. Correct: first work out the interval from two labelled marks.",
+   "Believing the Collatz conjecture has been proved because it works for every number we try. Correct: checking many examples is not a proof; it is still unsolved.",
+   "Making a 5-digit number start with 0, such as 01369. Correct: that is really the 4-digit number 1369; a 5-digit number must start with a non-zero digit.",
+   "In estimation, giving an answer without checking if it is possible (like 13,000 school hours a year). Correct: compare with a known limit, such as 8,760 hours in a whole year."
+  ],
+  "hi": [
+   "सुपरसेल ढूँढते समय तिरछे सेलों को पड़ोसी मान लेना। सही: केवल ठीक बाएँ, दाएँ, ऊपर और नीचे वाले सेल पड़ोसी हैं।",
+   "यह सोचना कि दूसरी सबसे बड़ी संख्या हमेशा सुपरसेल होती है। सही: यदि वह सबसे बड़ी संख्या के बगल में हो तो सुपरसेल नहीं होती।",
+   "कापरेकर प्रक्रिया में शून्य छोड़ देना (जैसे 0999 को 999 मानकर 999 − 999 = 0 करना)। सही: हमेशा 4 अंक रखिए, इसलिए 0999 से 9990 − 0999 = 8991 बनता है।",
+   "कापरेकर प्रक्रिया में सभी एक जैसे अंकों वाली संख्या, जैसे 3333, लेना। सही: ऐसी संख्याएँ तुरंत 0 देती हैं और मान्य नहीं हैं।",
+   "दो संख्याओं के बीच गिनती करते समय 1 जोड़ना भूल जाना (कहना कि 99 − 10 = 89 दो-अंकीय संख्याएँ हैं)। सही: 99 − 10 + 1 = 90।",
+   "अंक 7 कितनी बार आता है गिनते समय 77 को केवल एक बार गिनना। सही: 77 में दो 7 हैं, इसलिए यह गिनती में 2 जोड़ता है।",
+   "यह मान लेना कि संख्या रेखा का हर निशान 1 से बढ़ता है। सही: पहले दो लिखे निशानों से अंतराल निकालिए।",
+   "यह मानना कि कोलाट्ज़ अनुमान सिद्ध हो चुका है क्योंकि यह हर आज़माई संख्या पर चलता है। सही: बहुत से उदाहरण जाँचना प्रमाण नहीं है; यह अभी भी अनसुलझा है।",
+   "5-अंकीय संख्या को 0 से शुरू करना, जैसे 01369। सही: वह असल में 4-अंकीय संख्या 1369 है; 5-अंकीय संख्या का पहला अंक शून्य नहीं हो सकता।",
+   "अनुमान में बिना जाँचे उत्तर देना कि वह संभव है या नहीं (जैसे वर्ष में 13,000 स्कूल घंटे)। सही: किसी ज्ञात सीमा से तुलना कीजिए, जैसे पूरे वर्ष में 8,760 घंटे।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Supercell",
+    "hi": "सुपरसेल"
+   },
+   "d": {
+    "en": "A cell in a table whose number is bigger than all its neighbouring cells (left, right, above, below).",
+    "hi": "तालिका का वह सेल जिसकी संख्या उसके सभी पड़ोसी सेलों (बाएँ, दाएँ, ऊपर, नीचे) से बड़ी हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Neighbouring cells",
+    "hi": "पड़ोसी सेल"
+   },
+   "d": {
+    "en": "Cells that share a side with a given cell. Diagonal cells are not neighbours.",
+    "hi": "वे सेल जो किसी सेल के साथ एक भुजा साझा करते हैं। तिरछे सेल पड़ोसी नहीं होते।"
+   }
+  },
+  {
+   "t": {
+    "en": "Number line",
+    "hi": "संख्या रेखा"
+   },
+   "d": {
+    "en": "A line with equally spaced marks standing for numbers, increasing to the right.",
+    "hi": "बराबर दूरी के निशानों वाली रेखा जिन पर संख्याएँ होती हैं, जो दाईं ओर बढ़ती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Interval",
+    "hi": "अंतराल"
+   },
+   "d": {
+    "en": "The fixed difference between numbers at two neighbouring marks of a number line.",
+    "hi": "संख्या रेखा के दो पास-पास के निशानों की संख्याओं का निश्चित अंतर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Digit",
+    "hi": "अंक"
+   },
+   "d": {
+    "en": "Any one of the ten symbols 0 to 9 used to write numbers.",
+    "hi": "संख्याएँ लिखने में प्रयुक्त 0 से 9 तक के दस चिह्नों में से कोई एक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Digit sum",
+    "hi": "अंकों का योग"
+   },
+   "d": {
+    "en": "The total obtained by adding all the digits of a number.",
+    "hi": "किसी संख्या के सभी अंकों को जोड़ने से मिलने वाला योग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Palindrome",
+    "hi": "पैलिंड्रोम (विलोमपद)"
+   },
+   "d": {
+    "en": "A number (or word) that reads the same forwards and backwards, such as 3443.",
+    "hi": "वह संख्या (या शब्द) जो आगे और पीछे से एक जैसी पढ़ी जाए, जैसे 3443।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reverse-and-add",
+    "hi": "उलटो और जोड़ो"
+   },
+   "d": {
+    "en": "Adding a number to the number formed by reversing its digits, repeated until a palindrome appears.",
+    "hi": "किसी संख्या में उसके अंकों को उलटकर बनी संख्या जोड़ना, जब तक पैलिंड्रोम न मिले तब तक दोहराना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Kaprekar routine",
+    "hi": "कापरेकर प्रक्रिया"
+   },
+   "d": {
+    "en": "Repeatedly subtracting the smallest arrangement of a number's digits from the largest arrangement.",
+    "hi": "किसी संख्या के अंकों की सबसे बड़ी व्यवस्था में से सबसे छोटी व्यवस्था को बार-बार घटाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Kaprekar constant",
+    "hi": "कापरेकर स्थिरांक"
+   },
+   "d": {
+    "en": "The number 6174, which every 4-digit number (digits not all equal) reaches through the Kaprekar routine.",
+    "hi": "संख्या 6174, जिस तक हर 4-अंकीय संख्या (सभी अंक बराबर न हों) कापरेकर प्रक्रिया से पहुँचती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Collatz conjecture",
+    "hi": "कोलाट्ज़ अनुमान"
+   },
+   "d": {
+    "en": "The unproved guess that the 'halve if even, 3 times plus 1 if odd' rule always reaches 1.",
+    "hi": "यह असिद्ध अनुमान कि 'सम हो तो आधा, विषम हो तो 3 गुना जोड़ 1' नियम हमेशा 1 पर पहुँचता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Conjecture",
+    "hi": "अनुमान (कंजेक्चर)"
+   },
+   "d": {
+    "en": "A statement believed to be true but not yet proved.",
+    "hi": "एक कथन जिसे सच माना जाता है पर अभी सिद्ध नहीं हुआ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Estimation",
+    "hi": "अनुमान लगाना (आकलन)"
+   },
+   "d": {
+    "en": "Finding a sensible approximate value without exact counting or calculation.",
+    "hi": "सटीक गिनती या गणना के बिना उचित अनुमानित मान ज्ञात करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Winning strategy",
+    "hi": "जीतने की रणनीति"
+   },
+   "d": {
+    "en": "A method of play that guarantees a win whatever the opponent does.",
+    "hi": "खेलने की ऐसी विधि जो विरोधी कुछ भी करे, जीत पक्की करे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Computational thinking",
+    "hi": "कम्प्यूटेशनल चिंतन"
+   },
+   "d": {
+    "en": "Solving problems by designing clear step-by-step procedures.",
+    "hi": "स्पष्ट चरण-दर-चरण विधियाँ बनाकर समस्याएँ हल करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mental math",
+    "hi": "मानसिक गणित"
+   },
+   "d": {
+    "en": "Calculating in the head using place value and smart groupings.",
+    "hi": "स्थानीय मान और चतुर समूह बनाकर मन में गणना करना।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Five children stand in a line with heights 125, 150, 130, 145 and 135 cm. Write the number each one says in the taller-neighbour game.",
+    "hi": "पाँच बच्चे 125, 150, 130, 145 और 135 सेमी लंबाई के साथ पंक्ति में खड़े हैं। लंबे-पड़ोसी खेल में हर बच्चा कौन-सी संख्या बोलेगा?"
+   },
+   "a": {
+    "en": "125: neighbour 150 is taller, says 1.\n150: neighbours 125 and 130, both shorter, says 0.\n130: neighbours 150 and 145, both taller, says 2.\n145: neighbours 130 and 135, both shorter, says 0.\n135: neighbour 145 taller, says 1.\nAnswer: 1, 0, 2, 0, 1.",
+    "hi": "125: पड़ोसी 150 लंबा है, बोलेगा 1।\n150: पड़ोसी 125 और 130, दोनों छोटे, बोलेगा 0।\n130: पड़ोसी 150 और 145, दोनों लंबे, बोलेगा 2।\n145: पड़ोसी 130 और 135, दोनों छोटे, बोलेगा 0।\n135: पड़ोसी 145 लंबा, बोलेगा 1।\nउत्तर: 1, 0, 2, 0, 1।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Can five children stand so that they say 2, 1, 0, 1, 2? Explain.",
+    "hi": "क्या पाँच बच्चे ऐसे खड़े हो सकते हैं कि वे 2, 1, 0, 1, 2 बोलें? समझाइए।"
+   },
+   "a": {
+    "en": "No. A child at the end of the line has only one neighbour, so the most they can say is 1. The first and last numbers cannot be 2.",
+    "hi": "नहीं। पंक्ति के सिरे वाले बच्चे का केवल एक पड़ोसी होता है, इसलिए वह अधिकतम 1 बोल सकता है। पहली और आखिरी संख्या 2 नहीं हो सकती।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the supercells in this table. Row 1: 34, 62, 15. Row 2: 87, 28, 53. Row 3: 41, 76, 90.",
+    "hi": "इस तालिका में सुपरसेल ढूँढिए। पंक्ति 1: 34, 62, 15। पंक्ति 2: 87, 28, 53। पंक्ति 3: 41, 76, 90।"
+   },
+   "a": {
+    "en": "62: neighbours 34, 15, 28, all smaller. Supercell.\n87: neighbours 34, 28, 41. Supercell.\n90: neighbours 53, 76. Supercell.\n76 is not, because its neighbour 90 is bigger. 53 is not (90 is below it).\nSupercells: 62, 87, 90.",
+    "hi": "62: पड़ोसी 34, 15, 28, सब छोटे। सुपरसेल।\n87: पड़ोसी 34, 28, 41। सुपरसेल।\n90: पड़ोसी 53, 76। सुपरसेल।\n76 नहीं, क्योंकि उसका पड़ोसी 90 बड़ा है। 53 नहीं (उसके नीचे 90 है)।\nसुपरसेल: 62, 87, 90।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In the table of the previous question, swap two numbers so that there are 4 supercells.",
+    "hi": "पिछले प्रश्न की तालिका में दो संख्याओं की अदला-बदली करके 4 सुपरसेल बनाइए।"
+   },
+   "a": {
+    "en": "76 is blocked only by 90. Move 90 away from 76: swap 53 and 90.\nNew table: Row 1: 34, 62, 15. Row 2: 87, 28, 90. Row 3: 41, 76, 53.\nNow 62 (neighbours 34, 15, 28), 87 (34, 28, 41), 90 (15, 28, 53) and 76 (41, 28, 53) are all supercells.\n4 supercells.",
+    "hi": "76 को केवल 90 रोक रहा है। 90 को 76 से दूर कीजिए: 53 और 90 की अदला-बदली।\nनई तालिका: पंक्ति 1: 34, 62, 15। पंक्ति 2: 87, 28, 90। पंक्ति 3: 41, 76, 53।\nअब 62 (पड़ोसी 34, 15, 28), 87 (34, 28, 41), 90 (15, 28, 53) और 76 (41, 28, 53) सभी सुपरसेल हैं।\n4 सुपरसेल।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the largest number of supercells possible in a 4 × 4 table with all numbers different? Why can there not be more?",
+    "hi": "सभी अलग संख्याओं वाली 4 × 4 तालिका में अधिक से अधिक कितने सुपरसेल हो सकते हैं? इससे अधिक क्यों नहीं हो सकते?"
+   },
+   "a": {
+    "en": "Supercells cannot be neighbours. In each row of 4 cells, at most 2 cells can be chosen without two touching.\n4 rows × 2 = 8.\nPlace the 8 biggest numbers in a chessboard pattern (alternate cells) and the 8 smallest in the other cells. Then all 8 big ones are supercells.\nMaximum = 8.",
+    "hi": "सुपरसेल पड़ोसी नहीं हो सकते। 4 सेल की हर पंक्ति में अधिकतम 2 सेल ऐसे चुने जा सकते हैं जो एक-दूसरे को न छुएँ।\n4 पंक्तियाँ × 2 = 8।\n8 सबसे बड़ी संख्याएँ शतरंज पैटर्न में (एक-छोड़-एक सेल) और 8 सबसे छोटी बाकी सेलों में रखिए। तब सभी 8 बड़ी संख्याएँ सुपरसेल होंगी।\nअधिकतम = 8।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "A number line starts at 0 and the 3rd mark after 0 is 600. What is the interval? What is the 7th mark?",
+    "hi": "एक संख्या रेखा 0 से शुरू होती है और 0 के बाद तीसरा निशान 600 है। अंतराल क्या है? 7वाँ निशान क्या है?"
+   },
+   "a": {
+    "en": "Interval = 600 ÷ 3 = 200.\n7th mark = 7 × 200 = 1400.",
+    "hi": "अंतराल = 600 ÷ 3 = 200।\n7वाँ निशान = 7 × 200 = 1400।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "How many whole numbers are there from 250 to 600, including both?",
+    "hi": "250 से 600 तक (दोनों सहित) कितनी पूर्ण संख्याएँ हैं?"
+   },
+   "a": {
+    "en": "Count = 600 − 250 + 1 = 351.\nWe add 1 because both ends are counted.",
+    "hi": "गिनती = 600 − 250 + 1 = 351।\n1 इसलिए जोड़ते हैं क्योंकि दोनों सिरे गिने जाते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the digit sum of 4,07,529.",
+    "hi": "4,07,529 के अंकों का योग ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "4 + 0 + 7 + 5 + 2 + 9 = 27.",
+    "hi": "4 + 0 + 7 + 5 + 2 + 9 = 27।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find (a) the smallest number whose digit sum is 14 and (b) the largest 5-digit number whose digit sum is 14.",
+    "hi": "(a) वह सबसे छोटी संख्या जिसके अंकों का योग 14 है और (b) वह सबसे बड़ी 5-अंकीय संख्या जिसके अंकों का योग 14 है, ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "(a) One digit is not enough (max 9). Two digits: make the tens digit as small as possible with the units digit 9: 5 + 9 = 14. Answer 59.\n(b) Put the biggest digit first: 9, then 14 − 9 = 5, then zeros. Answer 95,000.",
+    "hi": "(a) एक अंक काफ़ी नहीं (अधिकतम 9)। दो अंक: इकाई 9 रखकर दहाई का अंक जितना हो सके छोटा: 5 + 9 = 14। उत्तर 59।\n(b) सबसे बड़ा अंक पहले: 9, फिर 14 − 9 = 5, फिर शून्य। उत्तर 95,000।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How many times does the digit 5 appear when you write all numbers from 1 to 200?",
+    "hi": "1 से 200 तक सभी संख्याएँ लिखने पर अंक 5 कितनी बार आता है?"
+   },
+   "a": {
+    "en": "Units place: in each group of 100 it appears 10 times (5, 15, ..., 95), so 20 times in 1 to 200.\nTens place: 50 to 59 and 150 to 159, which is 10 + 10 = 20 times.\nHundreds place: hundreds digit is only 1 or 2, so 0 times.\nTotal = 40.",
+    "hi": "इकाई का स्थान: 100 के हर समूह में 10 बार (5, 15, ..., 95), इसलिए 1 से 200 में 20 बार।\nदहाई का स्थान: 50 से 59 और 150 से 159, यानी 10 + 10 = 20 बार।\nसैकड़े का स्थान: सैकड़े का अंक केवल 1 या 2 है, इसलिए 0 बार।\nकुल = 40।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Which of these are palindromes: 1221, 1231, 90709, 4554, 100?",
+    "hi": "इनमें से कौन-से पैलिंड्रोम हैं: 1221, 1231, 90709, 4554, 100?"
+   },
+   "a": {
+    "en": "1221 reversed is 1221: yes.\n1231 reversed is 1321: no.\n90709 reversed is 90709: yes.\n4554 reversed is 4554: yes.\n100 reversed is 001 = 1: no.\nPalindromes: 1221, 90709, 4554.",
+    "hi": "1221 उलटा 1221: हाँ।\n1231 उलटा 1321: नहीं।\n90709 उलटा 90709: हाँ।\n4554 उलटा 4554: हाँ।\n100 उलटा 001 = 1: नहीं।\nपैलिंड्रोम: 1221, 90709, 4554।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Apply reverse-and-add to 68 until you get a palindrome.",
+    "hi": "68 पर उलटो-और-जोड़ो तब तक लगाइए जब तक पैलिंड्रोम न मिले।"
+   },
+   "a": {
+    "en": "68 + 86 = 154\n154 + 451 = 605\n605 + 506 = 1111\nPalindrome 1111 after 3 steps.",
+    "hi": "68 + 86 = 154\n154 + 451 = 605\n605 + 506 = 1111\n3 चरणों में पैलिंड्रोम 1111।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How many 3-digit palindromes are there in all?",
+    "hi": "कुल कितने 3-अंकीय पैलिंड्रोम हैं?"
+   },
+   "a": {
+    "en": "Form A B A. A cannot be 0, so A has 9 choices (1 to 9). B has 10 choices (0 to 9).\nTotal = 9 × 10 = 90.",
+    "hi": "रूप A B A। A शून्य नहीं हो सकता, इसलिए A के 9 विकल्प (1 से 9)। B के 10 विकल्प (0 से 9)।\nकुल = 9 × 10 = 90।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Apply the Kaprekar routine to 6382.",
+    "hi": "6382 पर कापरेकर प्रक्रिया लगाइए।"
+   },
+   "a": {
+    "en": "8632 − 2368 = 6264\n6642 − 2466 = 4176\n7641 − 1467 = 6174\nReached 6174 in 3 steps.",
+    "hi": "8632 − 2368 = 6264\n6642 − 2466 = 4176\n7641 − 1467 = 6174\n3 चरणों में 6174 मिला।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "How many steps does 5683 take to reach 6174 in the Kaprekar routine?",
+    "hi": "कापरेकर प्रक्रिया में 5683 को 6174 तक पहुँचने में कितने चरण लगते हैं?"
+   },
+   "a": {
+    "en": "8653 − 3568 = 5085\n8550 − 0558 = 7992\n9972 − 2799 = 7173\n7731 − 1377 = 6354\n6543 − 3456 = 3087\n8730 − 0378 = 8352\n8532 − 2358 = 6174\n7 steps (the maximum possible).",
+    "hi": "8653 − 3568 = 5085\n8550 − 0558 = 7992\n9972 − 2799 = 7173\n7731 − 1377 = 6354\n6543 − 3456 = 3087\n8730 − 0378 = 8352\n8532 − 2358 = 6174\n7 चरण (अधिकतम संभव)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A student was born in 2014. Apply the Kaprekar routine to 2014 and count the steps.",
+    "hi": "एक विद्यार्थी 2014 में पैदा हुआ। 2014 पर कापरेकर प्रक्रिया लगाकर चरण गिनिए।"
+   },
+   "a": {
+    "en": "4210 − 0124 = 4086\n8640 − 0468 = 8172\n8721 − 1278 = 7443\n7443 − 3447 = 3996\n9963 − 3699 = 6264\n6642 − 2466 = 4176\n7641 − 1467 = 6174\n7 steps.",
+    "hi": "4210 − 0124 = 4086\n8640 − 0468 = 8172\n8721 − 1278 = 7443\n7443 − 3447 = 3996\n9963 − 3699 = 6264\n6642 − 2466 = 4176\n7641 − 1467 = 6174\n7 चरण।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find all palindromic dates (written DD/MM/YYYY) in the years 2020 to 2029.",
+    "hi": "वर्ष 2020 से 2029 तक की सभी पैलिंड्रोम तारीखें (DD/MM/YYYY में) ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "For year 202Y, the date must be the year written backwards: Y2/02 as DD/MM. So the month is 02 (February) and the day is Y2.\nY = 0: 02/02/2020. Y = 1: 12/02/2021. Y = 2: 22/02/2022.\nY = 3 would need day 32, which does not exist; the same for later years.\nAnswer: 02/02/2020, 12/02/2021, 22/02/2022.",
+    "hi": "वर्ष 202Y के लिए तारीख वर्ष को उलटा लिखकर मिलती है: DD/MM के रूप में Y2/02। इसलिए महीना 02 (फ़रवरी) और दिन Y2।\nY = 0: 02/02/2020। Y = 1: 12/02/2021। Y = 2: 22/02/2022।\nY = 3 के लिए दिन 32 चाहिए, जो होता ही नहीं; आगे के वर्षों में भी यही।\nउत्तर: 02/02/2020, 12/02/2021, 22/02/2022।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "1 January 2026 is a Thursday and 2026 is not a leap year. What day will 1 January 2027 be?",
+    "hi": "1 जनवरी 2026 गुरुवार है और 2026 लीप वर्ष नहीं है। 1 जनवरी 2027 को कौन-सा दिन होगा?"
+   },
+   "a": {
+    "en": "365 days = 52 weeks + 1 day.\nSo the weekday moves forward by 1.\nThursday + 1 = Friday.",
+    "hi": "365 दिन = 52 सप्ताह + 1 दिन।\nइसलिए वार 1 आगे खिसकता है।\nगुरुवार + 1 = शुक्रवार।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Calculate mentally: (a) 63,000 − 27,500 (b) 4,998 + 3,457.",
+    "hi": "मन में गणना कीजिए: (a) 63,000 − 27,500 (b) 4,998 + 3,457।"
+   },
+   "a": {
+    "en": "(a) 63,000 − 27,000 = 36,000, then − 500 = 35,500.\n(b) 5,000 + 3,457 = 8,457, then − 2 = 8,455.",
+    "hi": "(a) 63,000 − 27,000 = 36,000, फिर − 500 = 35,500।\n(b) 5,000 + 3,457 = 8,457, फिर − 2 = 8,455।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Always, sometimes or never? (a) 2-digit + 2-digit is a 3-digit number. (b) 4-digit + 4-digit is a 6-digit number. (c) 5-digit − 4-digit is a 5-digit number.",
+    "hi": "हमेशा, कभी-कभी या कभी नहीं? (a) 2-अंकीय + 2-अंकीय एक 3-अंकीय संख्या है। (b) 4-अंकीय + 4-अंकीय एक 6-अंकीय संख्या है। (c) 5-अंकीय − 4-अंकीय एक 5-अंकीय संख्या है।"
+   },
+   "a": {
+    "en": "(a) Sometimes: 10 + 10 = 20 (2 digits) but 60 + 50 = 110 (3 digits).\n(b) Never: the largest sum is 9,999 + 9,999 = 19,998, only 5 digits.\n(c) Sometimes: 50,000 − 1,000 = 49,000 (5 digits) but 10,000 − 9,999 = 1.",
+    "hi": "(a) कभी-कभी: 10 + 10 = 20 (2 अंक) पर 60 + 50 = 110 (3 अंक)।\n(b) कभी नहीं: सबसे बड़ा योग 9,999 + 9,999 = 19,998 है, केवल 5 अंक।\n(c) कभी-कभी: 50,000 − 1,000 = 49,000 (5 अंक) पर 10,000 − 9,999 = 1।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A pattern has 8 boxes with 64 and 4 boxes with 32. Find the total without adding one by one.",
+    "hi": "एक पैटर्न में 64 वाले 8 खाने और 32 वाले 4 खाने हैं। एक-एक करके जोड़े बिना कुल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "8 × 64 = 512\n4 × 32 = 128\nTotal = 512 + 128 = 640.",
+    "hi": "8 × 64 = 512\n4 × 32 = 128\nकुल = 512 + 128 = 640।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write one 5-digit number and two 3-digit numbers that add up to 18,670.",
+    "hi": "एक 5-अंकीय और दो 3-अंकीय संख्याएँ लिखिए जिनका योग 18,670 हो।"
+   },
+   "a": {
+    "en": "Choose a round 5-digit number: 18,000. Remaining = 670.\nSplit 670 into two 3-digit numbers: 400 + 270.\n18,000 + 400 + 270 = 18,670. (Many other answers are possible, such as 17,890 + 500 + 280.)",
+    "hi": "एक गोल 5-अंकीय संख्या चुनिए: 18,000। शेष = 670।\n670 को दो 3-अंकीय संख्याओं में बाँटिए: 400 + 270।\n18,000 + 400 + 270 = 18,670। (और भी कई उत्तर संभव हैं, जैसे 17,890 + 500 + 280।)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write the Collatz sequence starting from 12.",
+    "hi": "12 से शुरू होने वाला कोलाट्ज़ क्रम लिखिए।"
+   },
+   "a": {
+    "en": "12, 6, 3, 10, 5, 16, 8, 4, 2, 1. It reaches 1 in 9 steps.",
+    "hi": "12, 6, 3, 10, 5, 16, 8, 4, 2, 1। यह 9 चरणों में 1 पर पहुँचता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write the Collatz sequence for 21. Why is it so short?",
+    "hi": "21 का कोलाट्ज़ क्रम लिखिए। यह इतना छोटा क्यों है?"
+   },
+   "a": {
+    "en": "21 is odd: 3 × 21 + 1 = 64.\n64, 32, 16, 8, 4, 2, 1.\nIt is short because 64 is a power of 2, so after one step we only keep halving. 7 steps in all.",
+    "hi": "21 विषम: 3 × 21 + 1 = 64।\n64, 32, 16, 8, 4, 2, 1।\nयह छोटा है क्योंकि 64, 2 की घात है, इसलिए एक चरण के बाद हम बस आधा करते जाते हैं। कुल 7 चरण।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A storybook has 200 pages, with about 30 lines on each page and about 10 words in each line. Does it have more or fewer than 5,000 words?",
+    "hi": "एक कहानी की किताब में 200 पृष्ठ हैं, हर पृष्ठ पर लगभग 30 पंक्तियाँ और हर पंक्ति में लगभग 10 शब्द हैं। क्या इसमें 5,000 से अधिक शब्द हैं या कम?"
+   },
+   "a": {
+    "en": "Words per page ≈ 30 × 10 = 300.\nWhole book ≈ 200 × 300 = 60,000 words.\nThat is far more than 5,000.",
+    "hi": "हर पृष्ठ पर शब्द ≈ 30 × 10 = 300।\nपूरी किताब ≈ 200 × 300 = 60,000 शब्द।\nयह 5,000 से बहुत अधिक है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Riya says ₹100 is enough to make fruit custard for 5 people. She needs about 1 litre of milk (about ₹60), custard powder (about ₹40), about 1 kg of mixed fruit (about ₹120) and sugar (about ₹20). Is her estimate reasonable?",
+    "hi": "रिया कहती है कि 5 लोगों के लिए फ्रूट कस्टर्ड बनाने को ₹100 काफ़ी हैं। उसे लगभग 1 लीटर दूध (लगभग ₹60), कस्टर्ड पाउडर (लगभग ₹40), लगभग 1 किलो मिले-जुले फल (लगभग ₹120) और चीनी (लगभग ₹20) चाहिए। क्या उसका अनुमान उचित है?"
+   },
+   "a": {
+    "en": "Estimated cost = 60 + 40 + 120 + 20 = ₹240.\n₹240 is much more than ₹100, so her estimate is too low. About ₹250 would be a better estimate.",
+    "hi": "अनुमानित खर्च = 60 + 40 + 120 + 20 = ₹240।\n₹240, ₹100 से बहुत अधिक है, इसलिए उसका अनुमान बहुत कम है। लगभग ₹250 बेहतर अनुमान होगा।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A game starts at 0. Players take turns adding 1, 2 or 3. Whoever reaches exactly 22 wins. Find a winning strategy.",
+    "hi": "एक खेल 0 से शुरू होता है। खिलाड़ी बारी-बारी 1, 2 या 3 जोड़ते हैं। जो ठीक 22 पर पहुँचे वह जीतता है। जीतने की रणनीति ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Moves go up to 3, so pairs of moves can make 4.\nSafe totals: 22, 18, 14, 10, 6, 2 (subtract 4 each time).\n0 is not safe, so the first player wins: start by adding 2.\nAfter that, whatever the other adds (1, 2 or 3), add 3, 2 or 1 to reach 6, 10, 14, 18 and finally 22.",
+    "hi": "चालें 3 तक हैं, इसलिए दो चालों का जोड़ 4 बनाया जा सकता है।\nसुरक्षित योग: 22, 18, 14, 10, 6, 2 (हर बार 4 घटाकर)।\n0 सुरक्षित नहीं है, इसलिए पहला खिलाड़ी जीतता है: शुरुआत 2 जोड़कर कीजिए।\nउसके बाद दूसरा जो भी जोड़े (1, 2 या 3), आप 3, 2 या 1 जोड़कर 6, 10, 14, 18 और अंत में 22 पर पहुँचिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In a game, players start at 0 and add 1, 2, 3 or 4 each turn. Reaching 30 wins. Should you play first or second?",
+    "hi": "एक खेल में खिलाड़ी 0 से शुरू करके हर बारी 1, 2, 3 या 4 जोड़ते हैं। 30 पर पहुँचने वाला जीतता है। आपको पहले खेलना चाहिए या दूसरे?"
+   },
+   "a": {
+    "en": "Pairs of moves can make 1 + 4 = 5.\nSafe totals: 30, 25, 20, 15, 10, 5, 0.\n0 is safe, so the player who moves first is stuck. Play second.\nWhatever the first player adds, you add enough to make 5: totals 5, 10, 15, 20, 25, 30.",
+    "hi": "दो चालों का जोड़ 1 + 4 = 5 बनाया जा सकता है।\nसुरक्षित योग: 30, 25, 20, 15, 10, 5, 0।\n0 सुरक्षित है, इसलिए पहले चलने वाला फँस जाता है। दूसरे खेलिए।\nपहला खिलाड़ी जो भी जोड़े, आप इतना जोड़िए कि 5 बने: योग 5, 10, 15, 20, 25, 30।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Among 5-digit numbers between 25,000 and 65,000 that use only odd digits (1, 3, 5, 7, 9), find the largest, the smallest and the one closest to 45,000.",
+    "hi": "25,000 और 65,000 के बीच की उन 5-अंकीय संख्याओं में, जिनमें केवल विषम अंक (1, 3, 5, 7, 9) हैं, सबसे बड़ी, सबसे छोटी और 45,000 के सबसे पास वाली संख्या ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Largest: the first digit must be odd and at most 6, so 5; then all 9s: 59,999.\nSmallest: the first digit must be odd and at least 2, so 3; then all 1s: 31,111.\nClosest to 45,000: first digit 4 is not allowed. Just below: 39,999 (5,001 away). Just above: 51,111 (6,111 away).\nClosest is 39,999.",
+    "hi": "सबसे बड़ी: पहला अंक विषम और अधिकतम 6, इसलिए 5; फिर सब 9: 59,999।\nसबसे छोटी: पहला अंक विषम और कम से कम 2, इसलिए 3; फिर सब 1: 31,111।\n45,000 के सबसे पास: पहला अंक 4 नहीं चल सकता। ठीक नीचे: 39,999 (5,001 दूर)। ठीक ऊपर: 51,111 (6,111 दूर)।\nसबसे पास 39,999 है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Using each of the digits 1, 0, 6, 3, 9 exactly once, write the largest even 5-digit number and the smallest odd 5-digit number.",
+    "hi": "अंकों 1, 0, 6, 3, 9 में से हर एक को ठीक एक बार लेकर सबसे बड़ी सम 5-अंकीय संख्या और सबसे छोटी विषम 5-अंकीय संख्या लिखिए।"
+   },
+   "a": {
+    "en": "Largest even: it must end in 0 or 6. Ending in 0 keeps big digits in front: 96,310.\nSmallest odd: start with 1, then 0, and end with an odd digit (3 or 9). 10,369 ends in 9 and is smaller than 10,693. Answer 10,369.",
+    "hi": "सबसे बड़ी सम: अंत में 0 या 6 होना चाहिए। अंत में 0 रखने से बड़े अंक आगे रहते हैं: 96,310।\nसबसे छोटी विषम: 1 से, फिर 0 से शुरू कीजिए और अंत में विषम अंक (3 या 9) रखिए। 10,369 का अंत 9 है और यह 10,693 से छोटी है। उत्तर 10,369।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Numbers carry information: in the taller-neighbour game a list of 0s, 1s and 2s tells us about the order of heights.",
+   "A supercell is bigger than all its side neighbours. Two supercells never touch, the largest number is always a supercell, and the smallest never is.",
+   "On a number line, find the interval from two labelled marks; numbers to the right are bigger.",
+   "There are 9 one-digit, 90 two-digit, 900 three-digit, 9,000 four-digit and 90,000 five-digit numbers.",
+   "The digit sum adds all digits; many numbers share the same digit sum, and digit sums drop by 8 when crossing a multiple of 10.",
+   "A palindrome reads the same both ways. Reverse-and-add usually leads to a palindrome, but for some numbers like 196 no one knows.",
+   "The Kaprekar routine takes any 4-digit number (digits not all equal) to 6174 within 7 steps; for 3-digit numbers it ends at 495.",
+   "Clocks and calendars show patterns: there are 57 palindromic times on a 12-hour clock, and dates like 22/02/2022 are palindromes. Calendars repeat.",
+   "Mental math uses place value, round numbers and smart groupings; thinking about smallest and largest cases tells how many digits an answer can have.",
+   "Totals of repeated-number patterns are found quickly by multiplication and grouping.",
+   "The Collatz conjecture (halve if even, 3n + 1 if odd, always reaching 1) is easy to state but still unproved.",
+   "Estimation gives quick sensible answers by rounding and breaking problems into parts, and helps check if an answer is possible.",
+   "In adding games, work backwards to find safe totals spaced (largest move + 1) apart; this is a winning strategy.",
+   "Making step-by-step procedures for such problems is computational thinking."
+  ],
+  "hi": [
+   "संख्याएँ जानकारी देती हैं: लंबे-पड़ोसी खेल में 0, 1, 2 की सूची हमें लंबाइयों के क्रम के बारे में बताती है।",
+   "सुपरसेल अपने सभी भुजा-पड़ोसियों से बड़ा होता है। दो सुपरसेल कभी नहीं छूते, सबसे बड़ी संख्या हमेशा सुपरसेल होती है और सबसे छोटी कभी नहीं।",
+   "संख्या रेखा पर दो लिखे निशानों से अंतराल निकालिए; दाईं ओर की संख्याएँ बड़ी होती हैं।",
+   "1-अंकीय 9, 2-अंकीय 90, 3-अंकीय 900, 4-अंकीय 9,000 और 5-अंकीय 90,000 संख्याएँ हैं।",
+   "अंकों का योग सभी अंकों को जोड़ता है; कई संख्याओं का अंक-योग एक जैसा होता है, और 10 के गुणज को पार करने पर अंक-योग 8 घटता है।",
+   "पैलिंड्रोम दोनों ओर से एक जैसा पढ़ा जाता है। उलटो-और-जोड़ो अक्सर पैलिंड्रोम देता है, पर 196 जैसी कुछ संख्याओं के बारे में कोई नहीं जानता।",
+   "कापरेकर प्रक्रिया किसी भी 4-अंकीय संख्या (सभी अंक बराबर न हों) को 7 चरणों के अंदर 6174 पर ले जाती है; 3-अंकीय संख्याओं के लिए यह 495 पर रुकती है।",
+   "घड़ी और कैलेंडर में पैटर्न दिखते हैं: 12-घंटे की घड़ी पर 57 पैलिंड्रोम समय होते हैं, और 22/02/2022 जैसी तारीखें पैलिंड्रोम हैं। कैलेंडर दोहराते हैं।",
+   "मानसिक गणित स्थानीय मान, गोल संख्याओं और चतुर समूहों का प्रयोग करता है; सबसे छोटे और सबसे बड़े मामलों पर सोचने से पता चलता है कि उत्तर में कितने अंक हो सकते हैं।",
+   "दोहराई गई संख्याओं वाले पैटर्न का योग गुणा और समूह बनाकर जल्दी निकलता है।",
+   "कोलाट्ज़ अनुमान (सम हो तो आधा, विषम हो तो 3n + 1, हमेशा 1 तक) कहना आसान है पर अभी तक सिद्ध नहीं हुआ।",
+   "अनुमान गोल करके और समस्या को भागों में तोड़कर जल्दी उचित उत्तर देता है, और जाँचने में मदद करता है कि उत्तर संभव है या नहीं।",
+   "जोड़ने वाले खेलों में पीछे से सोचकर (सबसे बड़ी चाल + 1) की दूरी वाले सुरक्षित योग ढूँढिए; यही जीतने की रणनीति है।",
+   "ऐसी समस्याओं के लिए चरण-दर-चरण विधियाँ बनाना कम्प्यूटेशनल चिंतन है।"
+  ]
+ }
+}

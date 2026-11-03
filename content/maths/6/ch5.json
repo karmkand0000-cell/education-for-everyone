@@ -1,0 +1,1866 @@
+{
+ "v": 1,
+ "sub": "maths",
+ "lv": "6",
+ "id": "ch5",
+ "intro": {
+  "en": "This chapter is about how whole numbers are built. You will play counting and jumping games that lead to common multiples and common factors, meet the prime numbers that act like building blocks of all other numbers, and learn to break any number into primes. You will also learn quick tests that tell you whether a big number can be divided by 2, 4, 5, 8 or 10 without doing the full division.",
+  "hi": "यह अध्याय बताता है कि पूर्ण संख्याएँ किस तरह बनी होती हैं। गिनती और छलाँग वाले खेलों से आप सार्व गुणज और सार्व गुणनखंड समझेंगे, फिर अभाज्य संख्याओं से मिलेंगे जो बाकी सभी संख्याओं की ईंटों जैसी हैं, और किसी भी संख्या को अभाज्य संख्याओं में तोड़ना सीखेंगे। आप ऐसे आसान परीक्षण भी सीखेंगे जिनसे पूरा भाग किए बिना पता चल जाता है कि कोई बड़ी संख्या 2, 4, 5, 8 या 10 से विभाजित होती है या नहीं।"
+ },
+ "learn": {
+  "en": [
+   "What factors and multiples are, and how to list them completely",
+   "Common multiples through the Idli-Vada game, and how to find the smallest common multiple",
+   "Common factors through the Jump Jackpot game",
+   "Perfect numbers and 'Who am I?' number riddles",
+   "Prime numbers, composite numbers, and why 1 is neither",
+   "How the Sieve of Eratosthenes finds all primes up to 100",
+   "Twin primes and patterns among primes",
+   "Co-prime numbers, the treasure game and co-prime thread art",
+   "Prime factorisation using a factor tree and repeated division",
+   "Using prime factorisation to check co-primes and divisibility",
+   "Divisibility tests for 2, 4, 5, 8 and 10, and leap years",
+   "Special numbers and solving a prime puzzle grid"
+  ],
+  "hi": [
+   "गुणनखंड और गुणज क्या होते हैं और उनकी पूरी सूची कैसे बनाएँ",
+   "इडली-वड़ा खेल से सार्व गुणज, और सबसे छोटा सार्व गुणज कैसे निकालें",
+   "जंप जैकपॉट खेल से सार्व गुणनखंड",
+   "पूर्ण संख्याएँ (perfect numbers) और 'मैं कौन हूँ?' वाली पहेलियाँ",
+   "अभाज्य संख्याएँ, भाज्य संख्याएँ, और 1 इन दोनों में से कोई क्यों नहीं है",
+   "एराटोस्थनीज़ की छलनी से 100 तक की सभी अभाज्य संख्याएँ कैसे निकालें",
+   "जुड़वाँ अभाज्य संख्याएँ और अभाज्य संख्याओं के पैटर्न",
+   "सह-अभाज्य संख्याएँ, खजाने वाला खेल और सह-अभाज्य धागा-कला",
+   "गुणनखंड वृक्ष और बार-बार भाग देकर अभाज्य गुणनखंडन",
+   "अभाज्य गुणनखंडन से सह-अभाज्यता और विभाज्यता की जाँच",
+   "2, 4, 5, 8 और 10 के विभाज्यता परीक्षण, और अधिवर्ष (लीप वर्ष)",
+   "विशेष संख्याएँ और अभाज्य पहेली ग्रिड हल करना"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "5.1 Common Multiples and Common Factors",
+    "hi": "5.1 सार्व गुणज और सार्व गुणनखंड"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before we play the games of this chapter, let us recall two old friends: factors and multiples. Think of the multiplication fact 4 × 6 = 24. Here 4 and 6 are factors of 24, and 24 is a multiple of 4 and also a multiple of 6.",
+      "hi": "इस अध्याय के खेल खेलने से पहले दो पुराने दोस्तों को याद कर लें: गुणनखंड और गुणज। गुणा का तथ्य 4 × 6 = 24 सोचिए। यहाँ 4 और 6, संख्या 24 के गुणनखंड हैं, और 24, 4 का गुणज है और 6 का भी गुणज है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Factor",
+       "hi": "गुणनखंड"
+      },
+      "text": {
+       "en": "A factor of a number is a number that divides it exactly, leaving remainder 0. For example, 5 is a factor of 30 because 30 ÷ 5 = 6 with nothing left over.",
+       "hi": "किसी संख्या का गुणनखंड वह संख्या है जो उसे पूरा-पूरा विभाजित करे, यानी शेषफल 0 बचे। जैसे 5, संख्या 30 का गुणनखंड है क्योंकि 30 ÷ 5 = 6 और कुछ नहीं बचता।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Multiple",
+       "hi": "गुणज"
+      },
+      "text": {
+       "en": "A multiple of a number is what you get when you multiply it by 1, 2, 3, 4 and so on. The multiples of 7 are 7, 14, 21, 28, 35, ... and they never end.",
+       "hi": "किसी संख्या का गुणज वह है जो उसे 1, 2, 3, 4 आदि से गुणा करने पर मिलता है। 7 के गुणज 7, 14, 21, 28, 35, ... हैं और ये कभी खत्म नहीं होते।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Every number is a factor of itself, and 1 is a factor of every number.",
+       "A factor of a number is never bigger than the number itself, so a number has only a limited (finite) number of factors.",
+       "A number has unlimited (infinitely many) multiples.",
+       "Every number is a multiple of itself; the smallest multiple of a number is the number itself.",
+       "If a is a factor of b, then b is a multiple of a. The two words describe the same relation from two sides."
+      ],
+      "hi": [
+       "हर संख्या अपना खुद का गुणनखंड है, और 1 हर संख्या का गुणनखंड है।",
+       "किसी संख्या का गुणनखंड उस संख्या से बड़ा नहीं हो सकता, इसलिए किसी संख्या के गुणनखंड गिने-चुने (सीमित) होते हैं।",
+       "किसी संख्या के गुणज अनगिनत (असीमित) होते हैं।",
+       "हर संख्या अपना खुद का गुणज है; किसी संख्या का सबसे छोटा गुणज वह संख्या खुद है।",
+       "यदि a, b का गुणनखंड है, तो b, a का गुणज है। दोनों शब्द एक ही संबंध को दो ओर से बताते हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "How to list all factors without missing any: find factors in pairs. Start with 1 and go up, and for each number that divides exactly, write down its partner. Stop when the pairs start repeating.",
+      "hi": "बिना कोई छोड़े सारे गुणनखंड कैसे लिखें: गुणनखंडों को जोड़ियों में ढूँढिए। 1 से शुरू करके आगे बढ़िए, जो संख्या पूरा भाग दे उसकी जोड़ीदार संख्या भी लिखिए। जब जोड़ियाँ दोहराने लगें तो रुक जाइए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "List all the factors of 36.",
+       "hi": "36 के सभी गुणनखंड लिखिए।"
+      },
+      "a": {
+       "en": "1 × 36 = 36, so 1 and 36 are factors.\n2 × 18 = 36, so 2 and 18.\n3 × 12 = 36, so 3 and 12.\n4 × 9 = 36, so 4 and 9.\n5 does not divide 36.\n6 × 6 = 36, so 6 (it pairs with itself).\nThe next number, 7, does not divide 36, and after that the pairs would repeat, so we stop.\nFactors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36 (9 factors).",
+       "hi": "1 × 36 = 36, इसलिए 1 और 36 गुणनखंड हैं।\n2 × 18 = 36, इसलिए 2 और 18।\n3 × 12 = 36, इसलिए 3 और 12।\n4 × 9 = 36, इसलिए 4 और 9।\n5 से 36 पूरा नहीं बँटता।\n6 × 6 = 36, इसलिए 6 (यह अपनी जोड़ी खुद है)।\nअगली संख्या 7 से 36 नहीं बँटता, और इसके बाद जोड़ियाँ दोहराने लगेंगी, इसलिए रुक जाते हैं।\n36 के गुणनखंड: 1, 2, 3, 4, 6, 9, 12, 18, 36 (कुल 9)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The Idli-Vada game. Children sit in a circle and count aloud one by one: 1, 2, 3, ... But there is a twist. If a number is a multiple of 3, the child must say 'idli' instead of the number. If it is a multiple of 5, the child says 'vada'. If it is a multiple of both 3 and 5, the child says 'idli-vada'. Anyone who makes a mistake leaves the circle, and the last child left wins.",
+      "hi": "इडली-वड़ा खेल। बच्चे गोले में बैठकर बारी-बारी से गिनती बोलते हैं: 1, 2, 3, ... पर इसमें एक मज़ेदार नियम है। अगर संख्या 3 का गुणज है तो बच्चा संख्या की जगह 'इडली' बोलेगा। अगर 5 का गुणज है तो 'वड़ा' बोलेगा। और अगर संख्या 3 और 5 दोनों का गुणज है तो 'इडली-वड़ा' बोलेगा। जो गलती करता है वह गोले से बाहर हो जाता है, और आखिरी बचा बच्चा जीतता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "So the counting goes: 1, 2, idli, 4, vada, idli, 7, 8, idli, vada, 11, idli, 13, 14, idli-vada, 16, ... The first 'idli-vada' comes at 15, the next at 30, then 45, 60, and so on. These are exactly the numbers that are multiples of 3 and of 5 at the same time.",
+      "hi": "तो गिनती ऐसे चलती है: 1, 2, इडली, 4, वड़ा, इडली, 7, 8, इडली, वड़ा, 11, इडली, 13, 14, इडली-वड़ा, 16, ... पहला 'इडली-वड़ा' 15 पर आता है, फिर 30 पर, फिर 45, 60 आदि पर। ये वही संख्याएँ हैं जो एक साथ 3 की भी गुणज हैं और 5 की भी।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Common multiple",
+       "hi": "सार्व गुणज"
+      },
+      "text": {
+       "en": "A number that is a multiple of two (or more) given numbers is called a common multiple of those numbers. 15, 30, 45, 60, ... are common multiples of 3 and 5.",
+       "hi": "जो संख्या दो (या अधिक) दी गई संख्याओं की गुणज हो, उसे उन संख्याओं का सार्व गुणज कहते हैं। 15, 30, 45, 60, ... संख्याएँ 3 और 5 की सार्व गुणज हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Smallest (lowest) common multiple",
+       "hi": "सबसे छोटा (लघुत्तम) सार्व गुणज"
+      },
+      "text": {
+       "en": "Among all the common multiples of some numbers, the smallest one is called their smallest common multiple. For 3 and 5 it is 15. All other common multiples are multiples of this smallest one.",
+       "hi": "कुछ संख्याओं के सभी सार्व गुणजों में से जो सबसे छोटा है, उसे उनका सबसे छोटा सार्व गुणज (लघुत्तम समापवर्त्य) कहते हैं। 3 और 5 के लिए यह 15 है। बाकी सभी सार्व गुणज इसी सबसे छोटे के गुणज होते हैं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Up to 30",
+        "Numbers said",
+        "How many"
+       ],
+       "hi": [
+        "30 तक",
+        "बोली गई संख्याएँ",
+        "कितनी"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "idli (multiple of 3 only)",
+         "3, 6, 9, 12, 18, 21, 24, 27",
+         "8"
+        ],
+        [
+         "vada (multiple of 5 only)",
+         "5, 10, 20, 25",
+         "4"
+        ],
+        [
+         "idli-vada (multiple of both)",
+         "15, 30",
+         "2"
+        ]
+       ],
+       "hi": [
+        [
+         "इडली (केवल 3 का गुणज)",
+         "3, 6, 9, 12, 18, 21, 24, 27",
+         "8"
+        ],
+        [
+         "वड़ा (केवल 5 का गुणज)",
+         "5, 10, 20, 25",
+         "4"
+        ],
+        [
+         "इडली-वड़ा (दोनों का गुणज)",
+         "15, 30",
+         "2"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the Idli-Vada game with 3 and 5, children count from 1 to 60. How many times is 'idli', 'vada' and 'idli-vada' said?",
+       "hi": "3 और 5 वाले इडली-वड़ा खेल में बच्चे 1 से 60 तक गिनते हैं। 'इडली', 'वड़ा' और 'इडली-वड़ा' कितनी-कितनी बार बोला जाएगा?"
+      },
+      "a": {
+       "en": "Multiples of 3 up to 60: 60 ÷ 3 = 20 of them.\nMultiples of 5 up to 60: 60 ÷ 5 = 12 of them.\nCommon multiples of 3 and 5 are multiples of 15: 60 ÷ 15 = 4 of them (15, 30, 45, 60). These are said as 'idli-vada'.\nPlain 'idli' = 20 − 4 = 16 times.\nPlain 'vada' = 12 − 4 = 8 times.\n'idli-vada' = 4 times.",
+       "hi": "60 तक 3 के गुणज: 60 ÷ 3 = 20।\n60 तक 5 के गुणज: 60 ÷ 5 = 12।\n3 और 5 के सार्व गुणज 15 के गुणज हैं: 60 ÷ 15 = 4 (15, 30, 45, 60)। इन पर 'इडली-वड़ा' बोला जाएगा।\nसिर्फ 'इडली' = 20 − 4 = 16 बार।\nसिर्फ 'वड़ा' = 12 − 4 = 8 बार।\n'इडली-वड़ा' = 4 बार।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Play the game with other pairs too. If 'idli' means multiple of 4 and 'vada' means multiple of 6, the first 'idli-vada' is at 12, not at 24, even though 4 × 6 = 24. This is because 12 is already a multiple of both 4 and 6. So the smallest common multiple is not always the product of the two numbers. It equals the product only when the two numbers have no common factor other than 1 (like 3 and 5).",
+      "hi": "दूसरी जोड़ियों के साथ भी खेलिए। यदि 'इडली' का मतलब 4 का गुणज और 'वड़ा' का मतलब 6 का गुणज हो, तो पहला 'इडली-वड़ा' 12 पर आता है, 24 पर नहीं, जबकि 4 × 6 = 24 है। ऐसा इसलिए क्योंकि 12 पहले से ही 4 और 6 दोनों का गुणज है। यानी सबसे छोटा सार्व गुणज हमेशा दोनों संख्याओं का गुणनफल नहीं होता। यह गुणनफल के बराबर तभी होता है जब दोनों संख्याओं का 1 के अलावा कोई सार्व गुणनखंड न हो (जैसे 3 और 5)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the smallest common multiple of 6 and 8.",
+       "hi": "6 और 8 का सबसे छोटा सार्व गुणज ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Multiples of 8: 8, 16, 24, 32, ...\nCheck each for being a multiple of 6: 8 no, 16 no, 24 yes (24 = 6 × 4).\nSo the smallest common multiple of 6 and 8 is 24 (not 6 × 8 = 48).",
+       "hi": "8 के गुणज: 8, 16, 24, 32, ...\nहर एक को जाँचिए कि वह 6 का गुणज है या नहीं: 8 नहीं, 16 नहीं, 24 हाँ (24 = 6 × 4)।\nइसलिए 6 और 8 का सबसे छोटा सार्व गुणज 24 है (6 × 8 = 48 नहीं)।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Shortcut: to find the smallest common multiple, write the multiples of the bigger number and stop at the first one that the smaller number divides.",
+      "hi": "आसान तरीका: सबसे छोटा सार्व गुणज निकालने के लिए बड़ी संख्या के गुणज लिखिए और जिस पहले गुणज को छोटी संख्या पूरा बाँट दे, वहीं रुक जाइए।"
+     }
+    },
+    {
+     "p": {
+      "en": "The Jump Jackpot game. Grumpy hides a treasure on one number of a number line, say on 24. Jumpy starts at 0 and chooses one jump size. He keeps jumping by that size: for jump size 3 he lands on 3, 6, 9, 12, ... If he lands exactly on the treasure, he wins it. Which jump sizes win? Jump size 5 lands on 5, 10, 15, 20, 25 and skips 24, so it fails. The winning jump sizes are exactly the numbers that divide 24: 1, 2, 3, 4, 6, 8, 12 and 24. In other words, the winning jump sizes are the factors of the treasure's number.",
+      "hi": "जंप जैकपॉट खेल। ग्रम्पी संख्या रेखा पर किसी संख्या पर खजाना छिपाता है, मान लीजिए 24 पर। जम्पी 0 से शुरू करता है और एक छलाँग की लंबाई चुनता है। वह उसी लंबाई से छलाँग लगाता रहता है: छलाँग 3 हो तो वह 3, 6, 9, 12, ... पर पहुँचता है। यदि वह ठीक खजाने पर पहुँचे तो जीत जाता है। कौन-सी छलाँगें जीतती हैं? छलाँग 5 से वह 5, 10, 15, 20, 25 पर पहुँचता है और 24 छूट जाता है, यानी हार। जीतने वाली छलाँगें ठीक वही संख्याएँ हैं जो 24 को पूरा बाँटती हैं: 1, 2, 3, 4, 6, 8, 12 और 24। यानी जीतने वाली छलाँगें खजाने वाली संख्या के गुणनखंड हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Now suppose Grumpy hides two treasures, and Jumpy must reach both with the same jump size. Then the jump size must be a factor of both numbers. Such a number is called a common factor.",
+      "hi": "अब मान लीजिए ग्रम्पी दो खजाने छिपाता है, और जम्पी को एक ही छलाँग से दोनों तक पहुँचना है। तब छलाँग की लंबाई दोनों संख्याओं का गुणनखंड होनी चाहिए। ऐसी संख्या को सार्व गुणनखंड कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Common factor",
+       "hi": "सार्व गुणनखंड"
+      },
+      "text": {
+       "en": "A number that is a factor of two (or more) given numbers is a common factor of them. 1 is a common factor of every set of numbers.",
+       "hi": "जो संख्या दो (या अधिक) दी गई संख्याओं का गुणनखंड हो, वह उनका सार्व गुणनखंड है। 1 हर संख्या-समूह का सार्व गुणनखंड होता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Treasures are hidden at 48 and 72. Which jump sizes reach both? Which is the biggest such jump?",
+       "hi": "खजाने 48 और 72 पर छिपे हैं। कौन-सी छलाँगें दोनों तक पहुँचती हैं? इनमें सबसे बड़ी छलाँग कौन-सी है?"
+      },
+      "a": {
+       "en": "Factors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48.\nFactors of 72: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72.\nNumbers in both lists: 1, 2, 3, 4, 6, 8, 12, 24.\nSo these 8 jump sizes reach both treasures, and the biggest is 24 (24 × 2 = 48 and 24 × 3 = 72).",
+       "hi": "48 के गुणनखंड: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48।\n72 के गुणनखंड: 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36, 72।\nदोनों सूचियों में आने वाली संख्याएँ: 1, 2, 3, 4, 6, 8, 12, 24।\nये 8 छलाँगें दोनों खजानों तक पहुँचती हैं, और सबसे बड़ी 24 है (24 × 2 = 48, 24 × 3 = 72)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the common factors of 30, 42 and 54.",
+       "hi": "30, 42 और 54 के सार्व गुणनखंड ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Factors of 30: 1, 2, 3, 5, 6, 10, 15, 30.\nFactors of 42: 1, 2, 3, 6, 7, 14, 21, 42.\nFactors of 54: 1, 2, 3, 6, 9, 18, 27, 54.\nCommon to all three: 1, 2, 3, 6.",
+       "hi": "30 के गुणनखंड: 1, 2, 3, 5, 6, 10, 15, 30।\n42 के गुणनखंड: 1, 2, 3, 6, 7, 14, 21, 42।\n54 के गुणनखंड: 1, 2, 3, 6, 9, 18, 27, 54।\nतीनों में सार्व: 1, 2, 3, 6।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Perfect numbers. Add up all the factors of 6 except 6 itself: 1 + 2 + 3 = 6. The sum is the number itself! Such a number is called a perfect number. The next perfect number is 28, because 1 + 2 + 4 + 7 + 14 = 28. Perfect numbers are rare: after 6 and 28 the next one is 496. For most numbers the sum is either smaller (like 8: 1 + 2 + 4 = 7) or bigger (like 12: 1 + 2 + 3 + 4 + 6 = 16).",
+      "hi": "पूर्ण संख्याएँ (perfect numbers)। 6 को छोड़कर 6 के सारे गुणनखंड जोड़िए: 1 + 2 + 3 = 6। योग वही संख्या है! ऐसी संख्या को पूर्ण संख्या कहते हैं। अगली पूर्ण संख्या 28 है, क्योंकि 1 + 2 + 4 + 7 + 14 = 28। पूर्ण संख्याएँ बहुत कम मिलती हैं: 6 और 28 के बाद अगली 496 है। ज़्यादातर संख्याओं के लिए यह योग या तो छोटा होता है (जैसे 8: 1 + 2 + 4 = 7) या बड़ा (जैसे 12: 1 + 2 + 3 + 4 + 6 = 16)।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Perfect number",
+       "hi": "पूर्ण संख्या (perfect number)"
+      },
+      "text": {
+       "en": "A number that equals the sum of all its factors other than itself. Equivalently, the sum of all its factors (including itself) is twice the number.",
+       "hi": "वह संख्या जो अपने को छोड़कर बाकी सभी गुणनखंडों के योग के बराबर हो। दूसरे शब्दों में, उसके सभी गुणनखंडों (खुद को मिलाकर) का योग उस संख्या का दोगुना होता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Who am I? I am a multiple of 7 less than 50, and my digits add up to 10.",
+       "hi": "मैं कौन हूँ? मैं 50 से छोटा 7 का गुणज हूँ, और मेरे अंकों का योग 10 है।"
+      },
+      "a": {
+       "en": "Multiples of 7 below 50: 7, 14, 21, 28, 35, 42, 49.\nDigit sums: 7, 1 + 4 = 5, 2 + 1 = 3, 2 + 8 = 10, 3 + 5 = 8, 4 + 2 = 6, 4 + 9 = 13.\nOnly 28 has digit sum 10. Answer: 28.",
+       "hi": "50 से छोटे 7 के गुणज: 7, 14, 21, 28, 35, 42, 49।\nअंकों के योग: 7, 1 + 4 = 5, 2 + 1 = 3, 2 + 8 = 10, 3 + 5 = 8, 4 + 2 = 6, 4 + 9 = 13।\nकेवल 28 के अंकों का योग 10 है। उत्तर: 28।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find all multiples of 20 between 1 and 200 that are not multiples of 40.",
+       "hi": "1 से 200 के बीच 20 के वे सभी गुणज ज्ञात कीजिए जो 40 के गुणज नहीं हैं।"
+      },
+      "a": {
+       "en": "Multiples of 20: 20, 40, 60, 80, 100, 120, 140, 160, 180, 200.\nRemove multiples of 40 (40, 80, 120, 160, 200).\nAnswer: 20, 60, 100, 140, 180. Notice they are 20 times the odd numbers 1, 3, 5, 7, 9.",
+       "hi": "20 के गुणज: 20, 40, 60, 80, 100, 120, 140, 160, 180, 200।\n40 के गुणज (40, 80, 120, 160, 200) हटा दीजिए।\nउत्तर: 20, 60, 100, 140, 180। ध्यान दीजिए, ये विषम संख्याओं 1, 3, 5, 7, 9 के 20 गुने हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.2 Prime Numbers",
+    "hi": "5.2 अभाज्य संख्याएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Imagine Guna has 12 dried figs and wants to pack them in a box so that the figs make a full rectangle with no gaps. She can arrange them as 1 row of 12, 2 rows of 6, or 3 rows of 4 (and the same rectangles turned sideways: 12 × 1, 6 × 2, 4 × 3). The side lengths of these rectangles, 1, 2, 3, 4, 6, 12, are exactly the factors of 12.",
+      "hi": "मान लीजिए गुना के पास 12 अंजीर हैं और वह उन्हें डिब्बे में इस तरह रखना चाहती है कि वे बिना खाली जगह के पूरा आयत बनाएँ। वह उन्हें 12 की 1 पंक्ति, 6 की 2 पंक्तियाँ, या 4 की 3 पंक्तियाँ बना सकती है (और यही आयत घुमाकर: 12 × 1, 6 × 2, 4 × 3)। इन आयतों की भुजाएँ 1, 2, 3, 4, 6, 12 ठीक 12 के गुणनखंड हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Anshu has 7 figs. However he tries, the only rectangle he can make is one long row of 7 (1 × 7). Numbers like 7 that allow only one such rectangle are special. They have exactly two factors: 1 and the number itself.",
+      "hi": "अंशु के पास 7 अंजीर हैं। वह कितनी भी कोशिश करे, केवल एक ही आयत बनता है: 7 की एक लंबी पंक्ति (1 × 7)। 7 जैसी संख्याएँ जिनसे केवल एक ही तरह का आयत बने, विशेष हैं। इनके ठीक दो गुणनखंड होते हैं: 1 और वह संख्या खुद।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Prime number",
+       "hi": "अभाज्य संख्या"
+      },
+      "text": {
+       "en": "A number greater than 1 that has exactly two factors, 1 and itself. Examples: 2, 3, 5, 7, 11, 13.",
+       "hi": "1 से बड़ी वह संख्या जिसके ठीक दो गुणनखंड हों: 1 और वह संख्या खुद। उदाहरण: 2, 3, 5, 7, 11, 13।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Composite number",
+       "hi": "भाज्य संख्या"
+      },
+      "text": {
+       "en": "A number greater than 1 that has more than two factors. Examples: 4 (1, 2, 4), 9 (1, 3, 9), 12 (1, 2, 3, 4, 6, 12).",
+       "hi": "1 से बड़ी वह संख्या जिसके दो से अधिक गुणनखंड हों। उदाहरण: 4 (1, 2, 4), 9 (1, 3, 9), 12 (1, 2, 3, 4, 6, 12)।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "The number 1 has only one factor (1 itself). So 1 is neither prime nor composite. Also, 2 is the only even prime: every other even number has 2 as an extra factor, so it has more than two factors.",
+      "hi": "संख्या 1 का केवल एक गुणनखंड है (1 खुद)। इसलिए 1 न अभाज्य है न भाज्य। साथ ही, 2 एकमात्र सम अभाज्य संख्या है: हर दूसरी सम संख्या का 2 एक अतिरिक्त गुणनखंड होता है, इसलिए उसके दो से अधिक गुणनखंड होते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Number",
+        "Factors",
+        "How many",
+        "Type"
+       ],
+       "hi": [
+        "संख्या",
+        "गुणनखंड",
+        "कितने",
+        "प्रकार"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1",
+         "1",
+         "1",
+         "neither"
+        ],
+        [
+         "2",
+         "1, 2",
+         "2",
+         "prime"
+        ],
+        [
+         "9",
+         "1, 3, 9",
+         "3",
+         "composite"
+        ],
+        [
+         "13",
+         "1, 13",
+         "2",
+         "prime"
+        ],
+        [
+         "15",
+         "1, 3, 5, 15",
+         "4",
+         "composite"
+        ],
+        [
+         "29",
+         "1, 29",
+         "2",
+         "prime"
+        ]
+       ],
+       "hi": [
+        [
+         "1",
+         "1",
+         "1",
+         "कोई नहीं"
+        ],
+        [
+         "2",
+         "1, 2",
+         "2",
+         "अभाज्य"
+        ],
+        [
+         "9",
+         "1, 3, 9",
+         "3",
+         "भाज्य"
+        ],
+        [
+         "13",
+         "1, 13",
+         "2",
+         "अभाज्य"
+        ],
+        [
+         "15",
+         "1, 3, 5, 15",
+         "4",
+         "भाज्य"
+        ],
+        [
+         "29",
+         "1, 29",
+         "2",
+         "अभाज्य"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The Sieve of Eratosthenes. About 2,200 years ago the Greek scholar Eratosthenes gave a clever method to find all primes up to a limit. A sieve (chhalni) lets small grains fall through and keeps the rest; here we let the composite numbers 'fall out' and keep the primes. Write the numbers 1 to 100 in a grid of 10 rows and 10 columns and follow these steps:",
+      "hi": "एराटोस्थनीज़ की छलनी। लगभग 2,200 साल पहले यूनानी विद्वान एराटोस्थनीज़ ने किसी सीमा तक की सभी अभाज्य संख्याएँ ढूँढने का एक चतुर तरीका बताया। छलनी कुछ दानों को नीचे गिरा देती है और बाकी को रख लेती है; यहाँ हम भाज्य संख्याओं को 'गिरा' देते हैं और अभाज्य संख्याओं को रख लेते हैं। 1 से 100 तक की संख्याएँ 10 पंक्तियों और 10 स्तंभों की ग्रिड में लिखिए और ये चरण अपनाइए:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Cross out 1, since it is not prime.",
+       "Circle 2, the first prime. Then cross out every multiple of 2 after it: 4, 6, 8, ... 100.",
+       "The next number not crossed out is 3. Circle it and cross out all its remaining multiples: 9, 15, 21, ...",
+       "The next uncrossed number is 5. Circle it and cross out its multiples: 25, 35, 55, ...",
+       "Next is 7. Circle it and cross out its multiples: 49, 77, 91, ...",
+       "The next uncrossed number is 11, but 11 × 11 = 121 is already more than 100, so every multiple of 11 up to 100 has already been crossed out. Circle all the numbers that are left. These are all the primes up to 100."
+      ],
+      "hi": [
+       "1 को काट दीजिए, क्योंकि यह अभाज्य नहीं है।",
+       "पहली अभाज्य संख्या 2 पर गोला लगाइए। फिर उसके बाद 2 के हर गुणज को काटिए: 4, 6, 8, ... 100।",
+       "अगली बिना कटी संख्या 3 है। इस पर गोला लगाइए और इसके बचे हुए गुणज काटिए: 9, 15, 21, ...",
+       "अगली बिना कटी संख्या 5 है। गोला लगाइए और इसके गुणज काटिए: 25, 35, 55, ...",
+       "अगली 7 है। गोला लगाइए और इसके गुणज काटिए: 49, 77, 91, ...",
+       "अगली बिना कटी संख्या 11 है, पर 11 × 11 = 121 पहले ही 100 से बड़ा है, इसलिए 100 तक 11 के सभी गुणज पहले ही कट चुके हैं। बची हुई सारी संख्याओं पर गोला लगा दीजिए। यही 100 तक की सभी अभाज्य संख्याएँ हैं।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "Primes up to 100 (25 of them): 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97",
+      "hi": "100 तक की अभाज्य संख्याएँ (कुल 25): 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Range",
+        "Primes",
+        "Count"
+       ],
+       "hi": [
+        "सीमा",
+        "अभाज्य संख्याएँ",
+        "संख्या"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1 to 10",
+         "2, 3, 5, 7",
+         "4"
+        ],
+        [
+         "11 to 20",
+         "11, 13, 17, 19",
+         "4"
+        ],
+        [
+         "21 to 30",
+         "23, 29",
+         "2"
+        ],
+        [
+         "31 to 40",
+         "31, 37",
+         "2"
+        ],
+        [
+         "41 to 50",
+         "41, 43, 47",
+         "3"
+        ],
+        [
+         "51 to 60",
+         "53, 59",
+         "2"
+        ],
+        [
+         "61 to 70",
+         "61, 67",
+         "2"
+        ],
+        [
+         "71 to 80",
+         "71, 73, 79",
+         "3"
+        ],
+        [
+         "81 to 90",
+         "83, 89",
+         "2"
+        ],
+        [
+         "91 to 100",
+         "97",
+         "1"
+        ]
+       ],
+       "hi": [
+        [
+         "1 से 10",
+         "2, 3, 5, 7",
+         "4"
+        ],
+        [
+         "11 से 20",
+         "11, 13, 17, 19",
+         "4"
+        ],
+        [
+         "21 से 30",
+         "23, 29",
+         "2"
+        ],
+        [
+         "31 से 40",
+         "31, 37",
+         "2"
+        ],
+        [
+         "41 से 50",
+         "41, 43, 47",
+         "3"
+        ],
+        [
+         "51 से 60",
+         "53, 59",
+         "2"
+        ],
+        [
+         "61 से 70",
+         "61, 67",
+         "2"
+        ],
+        [
+         "71 से 80",
+         "71, 73, 79",
+         "3"
+        ],
+        [
+         "81 से 90",
+         "83, 89",
+         "2"
+        ],
+        [
+         "91 से 100",
+         "97",
+         "1"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "What we notice: primes become rarer as numbers grow, but they never stop. More than 2,000 years ago the Greek mathematician Euclid explained why there is no largest prime. Today computers search for giant primes; one found in 2024 has more than 4 crore digits. Also, every prime except 2 and 5 ends in 1, 3, 7 or 9, because a number ending in 0, 2, 4, 6 or 8 is divisible by 2 and a number ending in 5 is divisible by 5.",
+      "hi": "हम क्या देखते हैं: संख्याएँ बड़ी होने पर अभाज्य संख्याएँ कम मिलती हैं, पर कभी खत्म नहीं होतीं। 2,000 से अधिक साल पहले यूनानी गणितज्ञ यूक्लिड ने समझाया कि कोई सबसे बड़ी अभाज्य संख्या नहीं है। आज कंप्यूटर विशाल अभाज्य संख्याएँ खोजते हैं; 2024 में मिली एक अभाज्य संख्या में 4 करोड़ से अधिक अंक हैं। साथ ही, 2 और 5 को छोड़कर हर अभाज्य संख्या 1, 3, 7 या 9 पर खत्म होती है, क्योंकि 0, 2, 4, 6, 8 पर खत्म होने वाली संख्या 2 से और 5 पर खत्म होने वाली 5 से विभाजित होती है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Twin primes",
+       "hi": "जुड़वाँ अभाज्य संख्याएँ"
+      },
+      "text": {
+       "en": "Two primes that differ by 2. Below 100 the twin prime pairs are (3, 5), (5, 7), (11, 13), (17, 19), (29, 31), (41, 43), (59, 61), (71, 73).",
+       "hi": "ऐसी दो अभाज्य संख्याएँ जिनका अंतर 2 हो। 100 से नीचे जुड़वाँ अभाज्य जोड़ियाँ हैं: (3, 5), (5, 7), (11, 13), (17, 19), (29, 31), (41, 43), (59, 61), (71, 73)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Gaps between primes can be large. Between 89 and 97 there are seven composite numbers in a row: 90, 91, 92, 93, 94, 95, 96. Between 23 and 29 there are five: 24, 25, 26, 27, 28.",
+      "hi": "अभाज्य संख्याओं के बीच का अंतर बड़ा भी हो सकता है। 89 और 97 के बीच लगातार सात भाज्य संख्याएँ हैं: 90, 91, 92, 93, 94, 95, 96। 23 और 29 के बीच पाँच हैं: 24, 25, 26, 27, 28।"
+     }
+    },
+    {
+     "note": {
+      "en": "How to test whether a number is prime: try dividing it by the primes 2, 3, 5, 7, 11, ... in order. You can stop as soon as the prime multiplied by itself is bigger than the number. If none divides it, the number is prime.",
+      "hi": "कोई संख्या अभाज्य है या नहीं, कैसे जाँचें: उसे क्रम से अभाज्य संख्याओं 2, 3, 5, 7, 11, ... से भाग देकर देखिए। जैसे ही किसी अभाज्य संख्या का खुद से गुणनफल उस संख्या से बड़ा हो जाए, रुक सकते हैं। अगर किसी से पूरा भाग नहीं जाता, तो संख्या अभाज्य है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Is 91 prime? Is 97 prime?",
+       "hi": "क्या 91 अभाज्य है? क्या 97 अभाज्य है?"
+      },
+      "a": {
+       "en": "91: not divisible by 2 (odd), not by 3 (9 + 1 = 10), not by 5 (ends in 1). Try 7: 7 × 13 = 91. So 91 is composite.\n97: not divisible by 2, 3 (9 + 7 = 16), 5, or 7 (7 × 13 = 91, 7 × 14 = 98). Next prime 11: 11 × 11 = 121 is bigger than 97, so we stop. 97 is prime.",
+       "hi": "91: 2 से नहीं (विषम), 3 से नहीं (9 + 1 = 10), 5 से नहीं (1 पर खत्म)। 7 से देखें: 7 × 13 = 91। इसलिए 91 भाज्य है।\n97: 2, 3 (9 + 7 = 16), 5 या 7 (7 × 13 = 91, 7 × 14 = 98) से नहीं बँटता। अगली अभाज्य 11: 11 × 11 = 121, जो 97 से बड़ा है, इसलिए रुकते हैं। 97 अभाज्य है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using each of the digits 1, 3 and 7 exactly once, write all the three-digit primes.",
+       "hi": "अंक 1, 3 और 7 को एक-एक बार प्रयोग करके सभी तीन अंकों वाली अभाज्य संख्याएँ लिखिए।"
+      },
+      "a": {
+       "en": "The six numbers are 137, 173, 317, 371, 713, 731.\n371 = 7 × 53, composite. 713 = 23 × 31, composite. 731 = 17 × 43, composite.\n137, 173 and 317 have no prime factor up to their square root, so they are prime.\nAnswer: 137, 173, 317.",
+       "hi": "छह संख्याएँ हैं: 137, 173, 317, 371, 713, 731।\n371 = 7 × 53, भाज्य। 713 = 23 × 31, भाज्य। 731 = 17 × 43, भाज्य।\n137, 173 और 317 किसी छोटी अभाज्य संख्या से नहीं बँटतीं, इसलिए अभाज्य हैं।\nउत्तर: 137, 173, 317।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Start with the prime 2 and keep doing 'double it and add 1': 2, 5, 11, ... How long do you keep getting primes?",
+       "hi": "अभाज्य संख्या 2 से शुरू करके बार-बार 'दोगुना करो और 1 जोड़ो' कीजिए: 2, 5, 11, ... कब तक अभाज्य संख्याएँ मिलती रहती हैं?"
+      },
+      "a": {
+       "en": "2 × 2 + 1 = 5 (prime)\n5 × 2 + 1 = 11 (prime)\n11 × 2 + 1 = 23 (prime)\n23 × 2 + 1 = 47 (prime)\n47 × 2 + 1 = 95 = 5 × 19 (composite).\nSo we get the chain 2, 5, 11, 23, 47 of primes, and the chain breaks at 95.",
+       "hi": "2 × 2 + 1 = 5 (अभाज्य)\n5 × 2 + 1 = 11 (अभाज्य)\n11 × 2 + 1 = 23 (अभाज्य)\n23 × 2 + 1 = 47 (अभाज्य)\n47 × 2 + 1 = 95 = 5 × 19 (भाज्य)।\nइस तरह अभाज्य संख्याओं की कड़ी 2, 5, 11, 23, 47 मिलती है, और 95 पर कड़ी टूट जाती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Other prime patterns to explore: pairs of two-digit primes whose digits are reversed, like 13 and 31, 17 and 71, 37 and 73, 79 and 97. Pairs of primes whose sum is a multiple of 5, like 2 + 3 = 5, 3 + 7 = 10, 7 + 13 = 20, 13 + 17 = 30, 11 + 19 = 30.",
+      "hi": "खोजने लायक और पैटर्न: दो अंकों वाली अभाज्य संख्याओं की ऐसी जोड़ियाँ जिनके अंक उलटे हों, जैसे 13 और 31, 17 और 71, 37 और 73, 79 और 97। ऐसी अभाज्य जोड़ियाँ जिनका योग 5 का गुणज हो, जैसे 2 + 3 = 5, 3 + 7 = 10, 7 + 13 = 20, 13 + 17 = 30, 11 + 19 = 30।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.3 Co-prime Numbers for Safekeeping Treasures",
+    "hi": "5.3 खजाने की सुरक्षा के लिए सह-अभाज्य संख्याएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Let us return to Jump Jackpot with a new rule. Grumpy hides two treasures, and Jumpy must pick one jump size, which is not allowed to be 1. Grumpy wants to choose the two numbers so that no jump size can reach both. Such a pair is 'safe' for Grumpy.",
+      "hi": "चलिए जंप जैकपॉट में एक नए नियम के साथ लौटते हैं। ग्रम्पी दो खजाने छिपाता है, और जम्पी को एक ही छलाँग चुननी है, जो 1 नहीं हो सकती। ग्रम्पी ऐसी दो संख्याएँ चुनना चाहता है कि कोई भी छलाँग दोनों तक न पहुँचे। ऐसी जोड़ी ग्रम्पी के लिए 'सुरक्षित' है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Take 12 and 26. Jump size 2 lands on both, so this pair is not safe. Take 4 and 9. Factors of 4 are 1, 2, 4; factors of 9 are 1, 3, 9. The only common factor is 1, and 1 is not allowed, so no jump reaches both. The pair 4 and 9 is safe.",
+      "hi": "12 और 26 लीजिए। छलाँग 2 दोनों पर पहुँचती है, इसलिए यह जोड़ी सुरक्षित नहीं है। अब 4 और 9 लीजिए। 4 के गुणनखंड 1, 2, 4 हैं; 9 के 1, 3, 9। केवल सार्व गुणनखंड 1 है, और 1 की अनुमति नहीं है, इसलिए कोई छलाँग दोनों तक नहीं पहुँचती। 4 और 9 की जोड़ी सुरक्षित है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Co-prime numbers",
+       "hi": "सह-अभाज्य संख्याएँ"
+      },
+      "text": {
+       "en": "Two numbers are co-prime (relatively prime) if their only common factor is 1. Example: 4 and 9, 8 and 15, 10 and 21.",
+       "hi": "दो संख्याएँ सह-अभाज्य कहलाती हैं यदि उनका एकमात्र सार्व गुणनखंड 1 हो। उदाहरण: 4 और 9, 8 और 15, 10 और 21।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Co-prime numbers need not be prime themselves. 8 and 9 are both composite, yet they are co-prime. On the other hand, any two different primes are always co-prime, and any two consecutive numbers (like 20 and 21) are always co-prime. The number 1 is co-prime with every number.",
+      "hi": "सह-अभाज्य संख्याओं का खुद अभाज्य होना ज़रूरी नहीं। 8 और 9 दोनों भाज्य हैं, फिर भी सह-अभाज्य हैं। दूसरी ओर, कोई भी दो अलग-अलग अभाज्य संख्याएँ हमेशा सह-अभाज्य होती हैं, और कोई भी दो क्रमागत संख्याएँ (जैसे 20 और 21) हमेशा सह-अभाज्य होती हैं। संख्या 1 हर संख्या के साथ सह-अभाज्य है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Pair",
+        "Common factors other than 1",
+        "Safe (co-prime)?"
+       ],
+       "hi": [
+        "जोड़ी",
+        "1 के अलावा सार्व गुणनखंड",
+        "सुरक्षित (सह-अभाज्य)?"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "15 and 28",
+         "none",
+         "yes"
+        ],
+        [
+         "21 and 49",
+         "7",
+         "no"
+        ],
+        [
+         "35 and 48",
+         "none",
+         "yes"
+        ],
+        [
+         "39 and 65",
+         "13",
+         "no"
+        ],
+        [
+         "24 and 35",
+         "none",
+         "yes"
+        ],
+        [
+         "17 and 51",
+         "17",
+         "no"
+        ]
+       ],
+       "hi": [
+        [
+         "15 और 28",
+         "कोई नहीं",
+         "हाँ"
+        ],
+        [
+         "21 और 49",
+         "7",
+         "नहीं"
+        ],
+        [
+         "35 और 48",
+         "कोई नहीं",
+         "हाँ"
+        ],
+        [
+         "39 और 65",
+         "13",
+         "नहीं"
+        ],
+        [
+         "24 और 35",
+         "कोई नहीं",
+         "हाँ"
+        ],
+        [
+         "17 और 51",
+         "17",
+         "नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Are 35 and 48 co-prime?",
+       "hi": "क्या 35 और 48 सह-अभाज्य हैं?"
+      },
+      "a": {
+       "en": "Factors of 35: 1, 5, 7, 35.\nFactors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48.\nThe only common factor is 1.\nSo 35 and 48 are co-prime: a safe pair of treasures.",
+       "hi": "35 के गुणनखंड: 1, 5, 7, 35।\n48 के गुणनखंड: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48।\nएकमात्र सार्व गुणनखंड 1 है।\nइसलिए 35 और 48 सह-अभाज्य हैं: खजाने की सुरक्षित जोड़ी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Co-prime art. Fix some pegs (or nails) equally spaced around a circle and number them 0, 1, 2, ... Tie a thread at peg 0 and choose a 'thread gap', say 5. Take the thread to the peg 5 steps ahead, then 5 more, and keep going around and around until you come back to peg 0. With 12 pegs and gap 5, the thread visits all 12 pegs before returning, making a beautiful star. With 12 pegs and gap 4, the thread goes 0, 4, 8 and back to 0, touching only 3 pegs and making a triangle.",
+      "hi": "सह-अभाज्य धागा-कला। एक गोले पर बराबर दूरी पर कुछ खूँटियाँ (या कीलें) लगाइए और उन पर 0, 1, 2, ... लिखिए। खूँटी 0 पर धागा बाँधिए और एक 'धागा-अंतर' चुनिए, जैसे 5। धागे को 5 कदम आगे वाली खूँटी पर ले जाइए, फिर 5 और, ऐसे घूमते रहिए जब तक वापस खूँटी 0 पर न आ जाएँ। 12 खूँटियों और अंतर 5 के साथ धागा लौटने से पहले सभी 12 खूँटियों पर जाता है और सुंदर तारा बनता है। 12 खूँटियों और अंतर 4 के साथ धागा 0, 4, 8 और वापस 0 जाता है, केवल 3 खूँटियाँ छूता है और त्रिभुज बनता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "What we notice: the thread touches every peg exactly when the number of pegs and the thread gap are co-prime. If they share a common factor, some pegs are skipped.",
+      "hi": "हम क्या देखते हैं: धागा हर खूँटी को तभी छूता है जब खूँटियों की संख्या और धागा-अंतर सह-अभाज्य हों। यदि उनका कोई सार्व गुणनखंड है, तो कुछ खूँटियाँ छूट जाती हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Pegs",
+        "Gap",
+        "Co-prime?",
+        "Pegs touched"
+       ],
+       "hi": [
+        "खूँटियाँ",
+        "अंतर",
+        "सह-अभाज्य?",
+        "छुई गई खूँटियाँ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "12",
+         "5",
+         "yes",
+         "12 (all)"
+        ],
+        [
+         "12",
+         "4",
+         "no",
+         "3"
+        ],
+        [
+         "10",
+         "3",
+         "yes",
+         "10 (all)"
+        ],
+        [
+         "10",
+         "4",
+         "no",
+         "5"
+        ],
+        [
+         "8",
+         "3",
+         "yes",
+         "8 (all)"
+        ],
+        [
+         "15",
+         "6",
+         "no",
+         "5"
+        ]
+       ],
+       "hi": [
+        [
+         "12",
+         "5",
+         "हाँ",
+         "12 (सभी)"
+        ],
+        [
+         "12",
+         "4",
+         "नहीं",
+         "3"
+        ],
+        [
+         "10",
+         "3",
+         "हाँ",
+         "10 (सभी)"
+        ],
+        [
+         "10",
+         "4",
+         "नहीं",
+         "5"
+        ],
+        [
+         "8",
+         "3",
+         "हाँ",
+         "8 (सभी)"
+        ],
+        [
+         "15",
+         "6",
+         "नहीं",
+         "5"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "With 10 pegs and a thread gap of 4, which pegs does the thread touch?",
+       "hi": "10 खूँटियों और धागा-अंतर 4 के साथ धागा किन खूँटियों को छूता है?"
+      },
+      "a": {
+       "en": "Start at 0. Add 4 each time, and when you pass 9 go round again (subtract 10).\n0 → 4 → 8 → 12 − 10 = 2 → 6 → 10 − 10 = 0.\nThe thread touches pegs 0, 4, 8, 2, 6: only 5 of the 10 pegs (all the even ones).\nReason: 10 and 4 share the common factor 2, so they are not co-prime.",
+       "hi": "0 से शुरू कीजिए। हर बार 4 जोड़िए, और 9 पार होने पर फिर से घूमिए (10 घटाइए)।\n0 → 4 → 8 → 12 − 10 = 2 → 6 → 10 − 10 = 0।\nधागा खूँटियों 0, 4, 8, 2, 6 को छूता है: 10 में से केवल 5 (सभी सम वाली)।\nकारण: 10 और 4 का सार्व गुणनखंड 2 है, इसलिए वे सह-अभाज्य नहीं हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.4 Prime Factorisation",
+    "hi": "5.4 अभाज्य गुणनखंडन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Checking co-primes by listing every factor of big numbers like 56 and 135 is slow. A faster tool comes from breaking numbers into primes. Every composite number can be written as a product of primes. For example 12 = 2 × 2 × 3 and 30 = 2 × 3 × 5.",
+      "hi": "56 और 135 जैसी बड़ी संख्याओं के सारे गुणनखंड लिखकर सह-अभाज्यता जाँचना धीमा है। एक तेज़ तरीका संख्याओं को अभाज्य संख्याओं में तोड़ने से मिलता है। हर भाज्य संख्या को अभाज्य संख्याओं के गुणनफल के रूप में लिखा जा सकता है। जैसे 12 = 2 × 2 × 3 और 30 = 2 × 3 × 5।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Prime factorisation",
+       "hi": "अभाज्य गुणनखंडन"
+      },
+      "text": {
+       "en": "Writing a number as a product of prime numbers only. Each prime in the product is a prime factor of the number.",
+       "hi": "किसी संख्या को केवल अभाज्य संख्याओं के गुणनफल के रूप में लिखना। गुणनफल में आई हर अभाज्य संख्या उस संख्या का अभाज्य गुणनखंड है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Method 1, the factor tree: write the number at the top. Split it into any two factors (other than 1 and itself). Keep splitting every composite branch until every branch ends in a prime. The primes at the ends of the branches give the factorisation.",
+      "hi": "तरीका 1, गुणनखंड वृक्ष: सबसे ऊपर संख्या लिखिए। उसे किन्हीं दो गुणनखंडों में तोड़िए (1 और खुद को छोड़कर)। हर भाज्य शाखा को तब तक तोड़ते रहिए जब तक हर शाखा अभाज्य संख्या पर खत्म न हो। शाखाओं के सिरों पर आई अभाज्य संख्याएँ गुणनखंडन देती हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the prime factorisation of 180 using a factor tree.",
+       "hi": "गुणनखंड वृक्ष से 180 का अभाज्य गुणनखंडन ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "180 splits into 18 × 10.\n18 splits into 2 × 9, and 9 splits into 3 × 3.\n10 splits into 2 × 5.\nAll branch ends are now primes: 2, 3, 3, 2, 5.\n180 = 2 × 2 × 3 × 3 × 5.\nCheck: 2 × 2 = 4, 4 × 3 = 12, 12 × 3 = 36, 36 × 5 = 180.",
+       "hi": "180 को 18 × 10 में तोड़िए।\n18 को 2 × 9 में, और 9 को 3 × 3 में।\n10 को 2 × 5 में।\nअब सारी शाखाएँ अभाज्य संख्याओं पर खत्म हैं: 2, 3, 3, 2, 5।\n180 = 2 × 2 × 3 × 3 × 5।\nजाँच: 2 × 2 = 4, 4 × 3 = 12, 12 × 3 = 36, 36 × 5 = 180।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Method 2, repeated division: divide the number by the smallest prime that divides it, then divide the answer again, and keep going until you reach 1. The divisors you used are the prime factors.",
+      "hi": "तरीका 2, बार-बार भाग: संख्या को उस सबसे छोटी अभाज्य संख्या से भाग दीजिए जो उसे बाँटती हो, फिर भागफल को फिर से भाग दीजिए, और 1 मिलने तक ऐसा करते रहिए। जिन भाजकों का प्रयोग किया, वही अभाज्य गुणनखंड हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the prime factorisation of 360 by repeated division.",
+       "hi": "बार-बार भाग देकर 360 का अभाज्य गुणनखंडन ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "360 ÷ 2 = 180\n180 ÷ 2 = 90\n90 ÷ 2 = 45\n45 is odd, try 3: 45 ÷ 3 = 15\n15 ÷ 3 = 5\n5 ÷ 5 = 1\n360 = 2 × 2 × 2 × 3 × 3 × 5.",
+       "hi": "360 ÷ 2 = 180\n180 ÷ 2 = 90\n90 ÷ 2 = 45\n45 विषम है, 3 से देखें: 45 ÷ 3 = 15\n15 ÷ 3 = 5\n5 ÷ 5 = 1\n360 = 2 × 2 × 2 × 3 × 3 × 5।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Uniqueness: whichever way you split a number, you always end up with the same primes, the same number of times each. Only the order may change. So 180 is 2 × 2 × 3 × 3 × 5 whether you start with 18 × 10, 12 × 15 or 4 × 45. That is why primes are called the building blocks of numbers. A prime number's factorisation is just itself, for example 13 = 13.",
+      "hi": "अद्वितीयता: किसी संख्या को किसी भी तरह तोड़ें, अंत में हमेशा वही अभाज्य संख्याएँ, उतनी ही बार आती हैं। केवल क्रम बदल सकता है। इसलिए 180 = 2 × 2 × 3 × 3 × 5 ही होगा, चाहे आप 18 × 10 से शुरू करें, 12 × 15 से या 4 × 45 से। इसीलिए अभाज्य संख्याओं को संख्याओं की ईंटें कहते हैं। किसी अभाज्य संख्या का गुणनखंडन वह खुद है, जैसे 13 = 13।"
+     }
+    },
+    {
+     "p": {
+      "en": "Prime factorisation of a product: to factorise a product like 14 × 15, you do not need to multiply first. Just factorise each part and put them together: 14 = 2 × 7 and 15 = 3 × 5, so 14 × 15 = 2 × 7 × 3 × 5 = 2 × 3 × 5 × 7 (which is 210).",
+      "hi": "गुणनफल का अभाज्य गुणनखंडन: 14 × 15 जैसे गुणनफल का गुणनखंडन करने के लिए पहले गुणा करना ज़रूरी नहीं। हर भाग का गुणनखंडन करके उन्हें साथ रख दीजिए: 14 = 2 × 7 और 15 = 3 × 5, इसलिए 14 × 15 = 2 × 7 × 3 × 5 = 2 × 3 × 5 × 7 (जो 210 है)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the prime factorisation of 18 × 35 without multiplying first.",
+       "hi": "पहले गुणा किए बिना 18 × 35 का अभाज्य गुणनखंडन ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "18 = 2 × 3 × 3\n35 = 5 × 7\n18 × 35 = 2 × 3 × 3 × 5 × 7.\n(Check: 18 × 35 = 630, and 2 × 9 × 35 = 630.)",
+       "hi": "18 = 2 × 3 × 3\n35 = 5 × 7\n18 × 35 = 2 × 3 × 3 × 5 × 7।\n(जाँच: 18 × 35 = 630, और 2 × 9 × 35 = 630।)"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Using prime factorisation to check co-primes: two numbers are co-prime exactly when no prime appears in both factorisations. If some prime appears in both, that prime is a common factor bigger than 1.",
+      "hi": "अभाज्य गुणनखंडन से सह-अभाज्यता जाँचना: दो संख्याएँ ठीक तभी सह-अभाज्य हैं जब कोई भी अभाज्य संख्या दोनों गुणनखंडनों में न आए। यदि कोई अभाज्य संख्या दोनों में आती है, तो वह 1 से बड़ा सार्व गुणनखंड है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Are 56 and 135 co-prime? Are 49 and 63 co-prime?",
+       "hi": "क्या 56 और 135 सह-अभाज्य हैं? क्या 49 और 63 सह-अभाज्य हैं?"
+      },
+      "a": {
+       "en": "56 = 2 × 2 × 2 × 7\n135 = 3 × 3 × 3 × 5\nNo prime is common, so 56 and 135 are co-prime.\n49 = 7 × 7\n63 = 3 × 3 × 7\n7 appears in both, so 49 and 63 are not co-prime (7 is a common factor).",
+       "hi": "56 = 2 × 2 × 2 × 7\n135 = 3 × 3 × 3 × 5\nकोई अभाज्य संख्या सार्व नहीं है, इसलिए 56 और 135 सह-अभाज्य हैं।\n49 = 7 × 7\n63 = 3 × 3 × 7\n7 दोनों में है, इसलिए 49 और 63 सह-अभाज्य नहीं हैं (7 सार्व गुणनखंड है)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Using prime factorisation to check divisibility: a number A is divisible by a number B exactly when every prime in B's factorisation also appears in A's factorisation, at least as many times as in B.",
+      "hi": "अभाज्य गुणनखंडन से विभाज्यता जाँचना: कोई संख्या A, संख्या B से ठीक तभी विभाजित होती है जब B के गुणनखंडन की हर अभाज्य संख्या A के गुणनखंडन में भी हो, और कम से कम उतनी बार हो जितनी बार B में है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Is 168 divisible by 12? Is 1050 divisible by 84?",
+       "hi": "क्या 168, 12 से विभाजित है? क्या 1050, 84 से विभाजित है?"
+      },
+      "a": {
+       "en": "168 = 2 × 2 × 2 × 3 × 7 and 12 = 2 × 2 × 3.\n12 needs two 2s and one 3; 168 has three 2s and one 3. So yes, 168 is divisible by 12 (168 ÷ 12 = 14, the leftover primes 2 × 7).\n1050 = 2 × 3 × 5 × 5 × 7 and 84 = 2 × 2 × 3 × 7.\n84 needs two 2s, but 1050 has only one 2. So 1050 is not divisible by 84 (1050 ÷ 84 = 12 with remainder 42).",
+       "hi": "168 = 2 × 2 × 2 × 3 × 7 और 12 = 2 × 2 × 3।\n12 को दो 2 और एक 3 चाहिए; 168 में तीन 2 और एक 3 है। इसलिए हाँ, 168, 12 से विभाजित है (168 ÷ 12 = 14, बचे हुए अभाज्य 2 × 7)।\n1050 = 2 × 3 × 5 × 5 × 7 और 84 = 2 × 2 × 3 × 7।\n84 को दो 2 चाहिए, पर 1050 में केवल एक 2 है। इसलिए 1050, 84 से विभाजित नहीं है (1050 ÷ 84 = 12, शेषफल 42)।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Careful: if a number is divisible by two numbers, it need not be divisible by their product. 12 is divisible by 4 and by 6, but not by 24. But if the two numbers are co-prime, it works: a number divisible by both 4 and 5 is always divisible by 20.",
+      "hi": "सावधान: यदि कोई संख्या दो संख्याओं से विभाजित है, तो ज़रूरी नहीं कि वह उनके गुणनफल से भी विभाजित हो। 12, 4 से और 6 से विभाजित है, पर 24 से नहीं। लेकिन यदि दोनों संख्याएँ सह-अभाज्य हों, तो यह सही है: जो संख्या 4 और 5 दोनों से विभाजित है, वह हमेशा 20 से विभाजित होगी।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "What is the smallest number that has 4 different prime factors?",
+       "hi": "वह सबसे छोटी संख्या कौन-सी है जिसके 4 अलग-अलग अभाज्य गुणनखंड हों?"
+      },
+      "a": {
+       "en": "To keep the number as small as possible, use the 4 smallest primes once each: 2, 3, 5, 7.\n2 × 3 × 5 × 7 = 210.\n(Similarly the smallest with 5 different prime factors is 2 × 3 × 5 × 7 × 11 = 2310.)",
+       "hi": "संख्या को सबसे छोटा रखने के लिए 4 सबसे छोटी अभाज्य संख्याएँ एक-एक बार लीजिए: 2, 3, 5, 7।\n2 × 3 × 5 × 7 = 210।\n(इसी तरह 5 अलग-अलग अभाज्य गुणनखंडों वाली सबसे छोटी संख्या 2 × 3 × 5 × 7 × 11 = 2310 है।)"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.5 Divisibility Tests",
+    "hi": "5.5 विभाज्यता परीक्षण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Is 45,680 divisible by 8? Instead of doing a long division, we can look at just a few digits. Such shortcuts are called divisibility tests. We find them by looking at patterns in multiples.",
+      "hi": "क्या 45,680, 8 से विभाजित है? लंबा भाग करने की जगह हम केवल कुछ अंकों को देखकर बता सकते हैं। ऐसे शॉर्टकट को विभाज्यता परीक्षण कहते हैं। इन्हें हम गुणजों के पैटर्न देखकर खोजते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Divisible",
+       "hi": "विभाज्य"
+      },
+      "text": {
+       "en": "A number is divisible by another if dividing leaves remainder 0. 'Divisible by 4' means the same as 'a multiple of 4' and as '4 is a factor of it'.",
+       "hi": "कोई संख्या दूसरी से विभाज्य है यदि भाग देने पर शेषफल 0 बचे। '4 से विभाज्य' का अर्थ वही है जो '4 का गुणज' या '4 इसका गुणनखंड है' का।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Divisibility by 10: multiples of 10 are 10, 20, 30, ..., 990, 1000, ... they all end in 0. And any number ending in 0 is (something) × 10. Test: a number is divisible by 10 if and only if its last digit is 0.",
+      "hi": "10 से विभाज्यता: 10 के गुणज 10, 20, 30, ..., 990, 1000, ... सभी 0 पर खत्म होते हैं। और 0 पर खत्म होने वाली हर संख्या (कुछ) × 10 है। परीक्षण: कोई संख्या 10 से विभाज्य है यदि और केवल यदि उसका अंतिम अंक 0 हो।"
+     }
+    },
+    {
+     "p": {
+      "en": "Divisibility by 5: multiples of 5 go 5, 10, 15, 20, 25, ... The last digit keeps alternating between 5 and 0. Why? Any number is (tens part) + (last digit), and the tens part is a multiple of 10, so it is already a multiple of 5. So only the last digit matters. Test: divisible by 5 if the last digit is 0 or 5.",
+      "hi": "5 से विभाज्यता: 5 के गुणज 5, 10, 15, 20, 25, ... हैं। अंतिम अंक बारी-बारी से 5 और 0 होता है। क्यों? हर संख्या = (दहाई वाला भाग) + (अंतिम अंक), और दहाई वाला भाग 10 का गुणज है, इसलिए वह पहले से 5 का गुणज है। तो केवल अंतिम अंक मायने रखता है। परीक्षण: अंतिम अंक 0 या 5 हो तो संख्या 5 से विभाज्य है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Divisibility by 2: by the same reasoning (10 is a multiple of 2), only the last digit matters. Test: divisible by 2 if the last digit is 0, 2, 4, 6 or 8, that is, the number is even.",
+      "hi": "2 से विभाज्यता: इसी तर्क से (10, 2 का गुणज है), केवल अंतिम अंक मायने रखता है। परीक्षण: अंतिम अंक 0, 2, 4, 6 या 8 हो, यानी संख्या सम हो, तो वह 2 से विभाज्य है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Divisibility by 4: 10 is not a multiple of 4, so the last digit alone is not enough (12 and 22 both end in 2, but only 12 is divisible by 4). But 100 is a multiple of 4 (100 = 4 × 25), so every hundred, thousand, ... is a multiple of 4. Only the number made by the last two digits matters. Test: divisible by 4 if the number formed by the last two digits is divisible by 4.",
+      "hi": "4 से विभाज्यता: 10, 4 का गुणज नहीं है, इसलिए केवल अंतिम अंक काफी नहीं (12 और 22 दोनों 2 पर खत्म होते हैं, पर केवल 12, 4 से विभाज्य है)। लेकिन 100, 4 का गुणज है (100 = 4 × 25), इसलिए हर सैकड़ा, हज़ार, ... 4 का गुणज है। केवल अंतिम दो अंकों से बनी संख्या मायने रखती है। परीक्षण: अंतिम दो अंकों से बनी संख्या 4 से विभाज्य हो तो पूरी संख्या 4 से विभाज्य है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Divisibility by 8: 100 is not a multiple of 8, but 1000 is (1000 = 8 × 125). So the thousands and above are always multiples of 8. Test: divisible by 8 if the number formed by the last three digits is divisible by 8.",
+      "hi": "8 से विभाज्यता: 100, 8 का गुणज नहीं है, पर 1000 है (1000 = 8 × 125)। इसलिए हज़ार और उससे ऊपर के भाग हमेशा 8 के गुणज होते हैं। परीक्षण: अंतिम तीन अंकों से बनी संख्या 8 से विभाज्य हो तो पूरी संख्या 8 से विभाज्य है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Divisor",
+        "Look at",
+        "Rule"
+       ],
+       "hi": [
+        "भाजक",
+        "क्या देखें",
+        "नियम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "10",
+         "last digit",
+         "it is 0"
+        ],
+        [
+         "5",
+         "last digit",
+         "it is 0 or 5"
+        ],
+        [
+         "2",
+         "last digit",
+         "it is 0, 2, 4, 6 or 8"
+        ],
+        [
+         "4",
+         "last two digits",
+         "they form a multiple of 4"
+        ],
+        [
+         "8",
+         "last three digits",
+         "they form a multiple of 8"
+        ]
+       ],
+       "hi": [
+        [
+         "10",
+         "अंतिम अंक",
+         "वह 0 हो"
+        ],
+        [
+         "5",
+         "अंतिम अंक",
+         "वह 0 या 5 हो"
+        ],
+        [
+         "2",
+         "अंतिम अंक",
+         "वह 0, 2, 4, 6 या 8 हो"
+        ],
+        [
+         "4",
+         "अंतिम दो अंक",
+         "उनसे बनी संख्या 4 का गुणज हो"
+        ],
+        [
+         "8",
+         "अंतिम तीन अंक",
+         "उनसे बनी संख्या 8 का गुणज हो"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Test 7316 and 36712 for divisibility by 2, 4, 5, 8 and 10.",
+       "hi": "7316 और 36712 की 2, 4, 5, 8 और 10 से विभाज्यता जाँचिए।"
+      },
+      "a": {
+       "en": "7316: last digit 6 is even, so divisible by 2. Not 0 or 5, so not by 5 or 10. Last two digits 16 = 4 × 4, so divisible by 4. Last three digits 316: 8 × 39 = 312, 8 × 40 = 320, so 316 is not a multiple of 8. Divisible by 2 and 4 only.\n36712: even, so by 2. Last two digits 12 = 4 × 3, so by 4. Last three digits 712 = 8 × 89, so by 8. Ends in 2, so not by 5 or 10. Divisible by 2, 4 and 8.",
+       "hi": "7316: अंतिम अंक 6 सम है, इसलिए 2 से विभाज्य। 0 या 5 नहीं, इसलिए 5 और 10 से नहीं। अंतिम दो अंक 16 = 4 × 4, इसलिए 4 से विभाज्य। अंतिम तीन अंक 316: 8 × 39 = 312, 8 × 40 = 320, इसलिए 316, 8 का गुणज नहीं। केवल 2 और 4 से विभाज्य।\n36712: सम है, इसलिए 2 से। अंतिम दो अंक 12 = 4 × 3, इसलिए 4 से। अंतिम तीन अंक 712 = 8 × 89, इसलिए 8 से। 2 पर खत्म, इसलिए 5 या 10 से नहीं। 2, 4 और 8 से विभाज्य।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Links between tests: a number divisible by 8 is also divisible by 4 and 2; a number divisible by 4 is also divisible by 2; a number divisible by 10 is divisible by both 2 and 5. The reverse is not always true: 12 is divisible by 4 but not by 8.",
+      "hi": "परीक्षणों के आपसी संबंध: 8 से विभाज्य संख्या 4 और 2 से भी विभाज्य है; 4 से विभाज्य संख्या 2 से भी विभाज्य है; 10 से विभाज्य संख्या 2 और 5 दोनों से विभाज्य है। उल्टा हमेशा सही नहीं: 12, 4 से विभाज्य है पर 8 से नहीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Remainders from the last digit: when a number is divided by 10, the remainder is its last digit. When divided by 5, the remainder is the remainder of the last digit divided by 5. When divided by 2, the remainder is 0 for even numbers and 1 for odd numbers. For 3457: remainder 7 on dividing by 10, remainder 2 on dividing by 5, remainder 1 on dividing by 2.",
+      "hi": "अंतिम अंक से शेषफल: किसी संख्या को 10 से भाग देने पर शेषफल उसका अंतिम अंक होता है। 5 से भाग देने पर शेषफल वही होता है जो अंतिम अंक को 5 से भाग देने पर आता है। 2 से भाग देने पर सम संख्या का शेषफल 0 और विषम का 1 होता है। 3457 के लिए: 10 से भाग पर शेषफल 7, 5 से भाग पर 2, 2 से भाग पर 1।"
+     }
+    },
+    {
+     "p": {
+      "en": "Leap years: a year has 366 days (29 days in February) if the year number is divisible by 4, except century years like 1900 or 2100, which are leap years only if divisible by 400. So 2024 and 2028 are leap years, 2000 was a leap year, but 1900 was not, and 2100 will not be.",
+      "hi": "अधिवर्ष (लीप वर्ष): किसी वर्ष में 366 दिन (फरवरी में 29 दिन) होते हैं यदि वर्ष की संख्या 4 से विभाज्य हो, पर शताब्दी वर्ष जैसे 1900 या 2100 केवल तभी अधिवर्ष होते हैं जब वे 400 से विभाज्य हों। इसलिए 2024 और 2028 अधिवर्ष हैं, 2000 अधिवर्ष था, पर 1900 नहीं था, और 2100 नहीं होगा।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the smallest 4-digit palindrome divisible by 4. (A palindrome reads the same forwards and backwards, like 2332.)",
+       "hi": "4 से विभाज्य सबसे छोटा 4 अंकों वाला पैलिंड्रोम ज्ञात कीजिए। (पैलिंड्रोम आगे और पीछे से एक जैसा पढ़ा जाता है, जैसे 2332।)"
+      },
+      "a": {
+       "en": "A 4-digit palindrome looks like abba. Its last digit equals its first digit a.\nTo be divisible by 4 it must be even, so a must be even; a cannot be 0, so the smallest choice is a = 2.\nTry 2bb2 with the smallest b: 2002 ends in 02, not a multiple of 4. 2112 ends in 12 = 4 × 3. Yes.\nAnswer: 2112.",
+       "hi": "4 अंकों वाला पैलिंड्रोम abba जैसा दिखता है। इसका अंतिम अंक पहले अंक a के बराबर है।\n4 से विभाज्य होने के लिए संख्या सम होनी चाहिए, इसलिए a सम हो; a, 0 नहीं हो सकता, तो सबसे छोटा विकल्प a = 2।\n2bb2 को सबसे छोटे b से आज़माइए: 2002 के अंतिम दो अंक 02, जो 4 का गुणज नहीं। 2112 के अंतिम दो अंक 12 = 4 × 3। हाँ।\nउत्तर: 2112।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find two numbers, neither containing the digit 0, whose product is 10,000.",
+       "hi": "ऐसी दो संख्याएँ ज्ञात कीजिए, जिनमें से किसी में अंक 0 न हो, और जिनका गुणनफल 10,000 हो।"
+      },
+      "a": {
+       "en": "10,000 = 10 × 10 × 10 × 10 = (2 × 5) × (2 × 5) × (2 × 5) × (2 × 5).\nIf a number has both a 2 and a 5 among its factors, it is a multiple of 10 and ends in 0. So put all the 2s in one number and all the 5s in the other.\n2 × 2 × 2 × 2 = 16 and 5 × 5 × 5 × 5 = 625.\n16 × 625 = 10,000.",
+       "hi": "10,000 = 10 × 10 × 10 × 10 = (2 × 5) × (2 × 5) × (2 × 5) × (2 × 5)।\nयदि किसी संख्या के गुणनखंडों में 2 और 5 दोनों हों, तो वह 10 का गुणज होगी और 0 पर खत्म होगी। इसलिए सारे 2 एक संख्या में और सारे 5 दूसरी में रखिए।\n2 × 2 × 2 × 2 = 16 और 5 × 5 × 5 × 5 = 625।\n16 × 625 = 10,000।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.6 Fun with Numbers",
+    "hi": "5.6 संख्याओं के साथ मज़ा"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Special numbers. Look at four numbers in a box: 8, 15, 23, 36. Each one can be 'special' for some reason. 8 is the only single-digit number and the only one that is 2 × 2 × 2. 15 is the only multiple of 5 and the only odd composite number here. 23 is the only prime. 36 is the only one that is a number times itself (6 × 6) and the only multiple of 9. Playing this game trains you to notice properties: even or odd, prime or composite, multiples, factors, squares.",
+      "hi": "विशेष संख्याएँ। एक डिब्बे में चार संख्याएँ देखिए: 8, 15, 23, 36। हर एक किसी कारण से 'विशेष' हो सकती है। 8 अकेली एक अंक वाली संख्या है और अकेली जो 2 × 2 × 2 है। 15 अकेली 5 की गुणज है और यहाँ अकेली विषम भाज्य संख्या है। 23 अकेली अभाज्य है। 36 अकेली ऐसी है जो किसी संख्या का खुद से गुणनफल है (6 × 6) और अकेली 9 की गुणज है। यह खेल आपको गुण पहचानना सिखाता है: सम या विषम, अभाज्य या भाज्य, गुणज, गुणनखंड, वर्ग।"
+     }
+    },
+    {
+     "p": {
+      "en": "A prime puzzle. A 3 by 3 grid must be filled only with primes. The number written to the right of each row is the product of the three primes in that row, and the number below each column is the product of the three primes in that column. Prime factorisation is the key to solving it.",
+      "hi": "एक अभाज्य पहेली। 3 गुणा 3 की ग्रिड को केवल अभाज्य संख्याओं से भरना है। हर पंक्ति के दाईं ओर लिखी संख्या उस पंक्ति की तीनों अभाज्य संख्याओं का गुणनफल है, और हर स्तंभ के नीचे लिखी संख्या उस स्तंभ की तीनों अभाज्य संख्याओं का गुणनफल है। इसे हल करने की कुंजी अभाज्य गुणनखंडन है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Solve the prime puzzle: row products (top to bottom) are 105, 286, 12; column products (left to right) are 30, 154, 78.",
+       "hi": "अभाज्य पहेली हल कीजिए: पंक्तियों के गुणनफल (ऊपर से नीचे) 105, 286, 12 हैं; स्तंभों के गुणनफल (बाएँ से दाएँ) 30, 154, 78 हैं।"
+      },
+      "a": {
+       "en": "Factorise everything. Rows: 105 = 3 × 5 × 7, 286 = 2 × 11 × 13, 12 = 2 × 2 × 3. Columns: 30 = 2 × 3 × 5, 154 = 2 × 7 × 11, 78 = 2 × 3 × 13.\nColumn 2 (154) needs a 7, which only row 1 has; an 11, which only row 2 has; and a 2, from row 3. So column 2 is 7, 11, 2.\nColumn 3 (78) needs 13, only in row 2. Row 1 still has 3 and 5 left; 78 has no 5, so row 1 gives 3. Then row 3 gives 2.\nColumn 1 gets what is left: row 1 gives 5, row 2 gives 2, row 3 gives 3. Check 5 × 2 × 3 = 30.\nGrid: row 1 = 5, 7, 3; row 2 = 2, 11, 13; row 3 = 3, 2, 2. All row and column products match.",
+       "hi": "सबका गुणनखंडन कीजिए। पंक्तियाँ: 105 = 3 × 5 × 7, 286 = 2 × 11 × 13, 12 = 2 × 2 × 3। स्तंभ: 30 = 2 × 3 × 5, 154 = 2 × 7 × 11, 78 = 2 × 3 × 13।\nस्तंभ 2 (154) को 7 चाहिए, जो केवल पंक्ति 1 में है; 11 चाहिए, जो केवल पंक्ति 2 में है; और 2, पंक्ति 3 से। तो स्तंभ 2 = 7, 11, 2।\nस्तंभ 3 (78) को 13 चाहिए, जो केवल पंक्ति 2 में है। पंक्ति 1 में अभी 3 और 5 बचे हैं; 78 में 5 नहीं है, इसलिए पंक्ति 1 से 3 आएगा। फिर पंक्ति 3 से 2।\nस्तंभ 1 को जो बचा वह मिलेगा: पंक्ति 1 से 5, पंक्ति 2 से 2, पंक्ति 3 से 3। जाँच 5 × 2 × 3 = 30।\nग्रिड: पंक्ति 1 = 5, 7, 3; पंक्ति 2 = 2, 11, 13; पंक्ति 3 = 3, 2, 2। सभी गुणनफल मिलते हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Strategy for prime puzzles: factorise all row and column numbers first, then start with a prime that appears in only one row and one column. It must sit where that row and column cross.",
+      "hi": "अभाज्य पहेलियों की रणनीति: पहले सभी पंक्ति और स्तंभ वाली संख्याओं का गुणनखंडन कीजिए, फिर उस अभाज्य संख्या से शुरू कीजिए जो केवल एक पंक्ति और एक स्तंभ में आती है। वह उसी खाने में होगी जहाँ वह पंक्ति और स्तंभ मिलते हैं।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Calling 1 a prime number. A prime must have exactly two factors; 1 has only one, so it is neither prime nor composite.",
+   "Thinking all odd numbers are prime. 9, 15, 21, 25, 27, 33, 91 are odd but composite. Always test with small primes.",
+   "Thinking 2 is not prime because it is even. 2 has exactly two factors, 1 and 2, so it is prime; it is the only even prime.",
+   "Assuming the smallest common multiple is always the product. For 4 and 6 it is 12, not 24. The product works only for co-prime numbers.",
+   "Thinking co-prime numbers must be primes. 8 and 9 are composite but co-prime. Co-prime is about the pair having no common factor except 1.",
+   "Stopping a factorisation at a composite number, for example writing 60 = 4 × 15. Keep splitting until every factor is prime: 60 = 2 × 2 × 3 × 5.",
+   "Using only the last digit to test for 4. 22 ends in 2 but is not divisible by 4. Use the last two digits for 4 and the last three digits for 8.",
+   "Believing 'divisible by 4 and 6' means 'divisible by 24'. 12 and 36 are counterexamples. This shortcut only works when the two divisors are co-prime.",
+   "Missing factors when listing them. Always find factors in pairs (1 and n, 2 and n ÷ 2, ...) and stop when pairs repeat.",
+   "Treating every year divisible by 4 as a leap year. Century years like 1900 and 2100 must be divisible by 400 to be leap years."
+  ],
+  "hi": [
+   "1 को अभाज्य कहना। अभाज्य संख्या के ठीक दो गुणनखंड होने चाहिए; 1 का केवल एक है, इसलिए यह न अभाज्य है न भाज्य।",
+   "सोचना कि सभी विषम संख्याएँ अभाज्य हैं। 9, 15, 21, 25, 27, 33, 91 विषम हैं पर भाज्य हैं। हमेशा छोटी अभाज्य संख्याओं से जाँचिए।",
+   "सोचना कि 2 सम है इसलिए अभाज्य नहीं। 2 के ठीक दो गुणनखंड 1 और 2 हैं, इसलिए यह अभाज्य है; यह अकेली सम अभाज्य संख्या है।",
+   "मान लेना कि सबसे छोटा सार्व गुणज हमेशा गुणनफल होता है। 4 और 6 के लिए यह 12 है, 24 नहीं। गुणनफल केवल सह-अभाज्य संख्याओं के लिए सही है।",
+   "सोचना कि सह-अभाज्य संख्याएँ अभाज्य ही होंगी। 8 और 9 भाज्य हैं पर सह-अभाज्य हैं। सह-अभाज्यता जोड़ी के बारे में है कि 1 के अलावा कोई सार्व गुणनखंड न हो।",
+   "गुणनखंडन को किसी भाज्य संख्या पर रोक देना, जैसे 60 = 4 × 15 लिखना। तब तक तोड़िए जब तक हर गुणनखंड अभाज्य न हो: 60 = 2 × 2 × 3 × 5।",
+   "4 की जाँच के लिए केवल अंतिम अंक देखना। 22 का अंतिम अंक 2 है पर यह 4 से विभाज्य नहीं। 4 के लिए अंतिम दो अंक और 8 के लिए अंतिम तीन अंक देखिए।",
+   "मानना कि '4 और 6 से विभाज्य' का अर्थ '24 से विभाज्य' है। 12 और 36 इसके उल्टे उदाहरण हैं। यह शॉर्टकट तभी काम करता है जब दोनों भाजक सह-अभाज्य हों।",
+   "गुणनखंड लिखते समय कुछ छोड़ देना। हमेशा जोड़ियों में ढूँढिए (1 और n, 2 और n ÷ 2, ...) और जोड़ियाँ दोहराने पर रुकिए।",
+   "4 से विभाज्य हर वर्ष को अधिवर्ष मान लेना। 1900 और 2100 जैसे शताब्दी वर्षों को अधिवर्ष होने के लिए 400 से विभाज्य होना चाहिए।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Factor",
+    "hi": "गुणनखंड"
+   },
+   "d": {
+    "en": "A number that divides a given number exactly (remainder 0).",
+    "hi": "वह संख्या जो दी गई संख्या को पूरा-पूरा विभाजित करे (शेषफल 0)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Multiple",
+    "hi": "गुणज"
+   },
+   "d": {
+    "en": "The result of multiplying a number by 1, 2, 3, ...",
+    "hi": "किसी संख्या को 1, 2, 3, ... से गुणा करने पर मिलने वाली संख्या।"
+   }
+  },
+  {
+   "t": {
+    "en": "Common multiple",
+    "hi": "सार्व गुणज"
+   },
+   "d": {
+    "en": "A number that is a multiple of each of the given numbers.",
+    "hi": "वह संख्या जो दी गई हर संख्या का गुणज हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Smallest common multiple",
+    "hi": "सबसे छोटा सार्व गुणज"
+   },
+   "d": {
+    "en": "The least of all common multiples of the given numbers.",
+    "hi": "दी गई संख्याओं के सभी सार्व गुणजों में सबसे छोटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Common factor",
+    "hi": "सार्व गुणनखंड"
+   },
+   "d": {
+    "en": "A number that is a factor of each of the given numbers.",
+    "hi": "वह संख्या जो दी गई हर संख्या का गुणनखंड हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Perfect number",
+    "hi": "पूर्ण संख्या (perfect number)"
+   },
+   "d": {
+    "en": "A number equal to the sum of its factors other than itself, like 6 and 28.",
+    "hi": "वह संख्या जो खुद को छोड़कर अपने गुणनखंडों के योग के बराबर हो, जैसे 6 और 28।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prime number",
+    "hi": "अभाज्य संख्या"
+   },
+   "d": {
+    "en": "A number greater than 1 with exactly two factors, 1 and itself.",
+    "hi": "1 से बड़ी संख्या जिसके ठीक दो गुणनखंड हों, 1 और वह खुद।"
+   }
+  },
+  {
+   "t": {
+    "en": "Composite number",
+    "hi": "भाज्य संख्या"
+   },
+   "d": {
+    "en": "A number greater than 1 with more than two factors.",
+    "hi": "1 से बड़ी संख्या जिसके दो से अधिक गुणनखंड हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sieve of Eratosthenes",
+    "hi": "एराटोस्थनीज़ की छलनी"
+   },
+   "d": {
+    "en": "A method of finding primes by crossing out multiples of each prime in turn.",
+    "hi": "बारी-बारी से हर अभाज्य संख्या के गुणज काटकर अभाज्य संख्याएँ खोजने की विधि।"
+   }
+  },
+  {
+   "t": {
+    "en": "Twin primes",
+    "hi": "जुड़वाँ अभाज्य संख्याएँ"
+   },
+   "d": {
+    "en": "Two primes whose difference is 2, like 11 and 13.",
+    "hi": "दो अभाज्य संख्याएँ जिनका अंतर 2 हो, जैसे 11 और 13।"
+   }
+  },
+  {
+   "t": {
+    "en": "Co-prime numbers",
+    "hi": "सह-अभाज्य संख्याएँ"
+   },
+   "d": {
+    "en": "Two numbers whose only common factor is 1.",
+    "hi": "दो संख्याएँ जिनका एकमात्र सार्व गुणनखंड 1 हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prime factor",
+    "hi": "अभाज्य गुणनखंड"
+   },
+   "d": {
+    "en": "A factor of a number that is itself prime.",
+    "hi": "किसी संख्या का वह गुणनखंड जो खुद अभाज्य हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prime factorisation",
+    "hi": "अभाज्य गुणनखंडन"
+   },
+   "d": {
+    "en": "Writing a number as a product of primes; it is unique apart from order.",
+    "hi": "किसी संख्या को अभाज्य संख्याओं के गुणनफल के रूप में लिखना; क्रम छोड़कर यह अद्वितीय है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Factor tree",
+    "hi": "गुणनखंड वृक्ष"
+   },
+   "d": {
+    "en": "A diagram that splits a number into factors again and again until only primes remain.",
+    "hi": "एक चित्र जिसमें संख्या को बार-बार गुणनखंडों में तोड़ा जाता है जब तक केवल अभाज्य संख्याएँ न बचें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Divisibility test",
+    "hi": "विभाज्यता परीक्षण"
+   },
+   "d": {
+    "en": "A shortcut rule that tells whether a number is divisible by another without full division.",
+    "hi": "एक आसान नियम जो पूरा भाग किए बिना बताता है कि कोई संख्या दूसरी से विभाज्य है या नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Even and odd numbers",
+    "hi": "सम और विषम संख्याएँ"
+   },
+   "d": {
+    "en": "Even numbers are multiples of 2 (end in 0, 2, 4, 6, 8); odd numbers are not.",
+    "hi": "सम संख्याएँ 2 की गुणज हैं (0, 2, 4, 6, 8 पर खत्म); विषम संख्याएँ नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Leap year",
+    "hi": "अधिवर्ष (लीप वर्ष)"
+   },
+   "d": {
+    "en": "A year with 366 days; divisible by 4, and century years must be divisible by 400.",
+    "hi": "366 दिनों वाला वर्ष; 4 से विभाज्य, और शताब्दी वर्ष 400 से विभाज्य हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Palindrome",
+    "hi": "पैलिंड्रोम"
+   },
+   "d": {
+    "en": "A number that reads the same forwards and backwards, like 4664.",
+    "hi": "ऐसी संख्या जो आगे और पीछे से एक जैसी पढ़ी जाए, जैसे 4664।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "List all multiples of 9 between 40 and 100.",
+    "hi": "40 और 100 के बीच 9 के सभी गुणज लिखिए।"
+   },
+   "a": {
+    "en": "9 × 5 = 45 is the first above 40. Then 54, 63, 72, 81, 90, 99 (9 × 11 = 99; 9 × 12 = 108 is too big).\nAnswer: 45, 54, 63, 72, 81, 90, 99.",
+    "hi": "40 से ऊपर पहला 9 × 5 = 45 है। फिर 54, 63, 72, 81, 90, 99 (9 × 11 = 99; 9 × 12 = 108 बहुत बड़ा है)।\nउत्तर: 45, 54, 63, 72, 81, 90, 99।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "List all the factors of 84.",
+    "hi": "84 के सभी गुणनखंड लिखिए।"
+   },
+   "a": {
+    "en": "Pairs: 1 × 84, 2 × 42, 3 × 28, 4 × 21, 6 × 14, 7 × 12. (5, 8, 9 do not divide 84, and after 7 × 12 the pairs repeat.)\nFactors: 1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 84.",
+    "hi": "जोड़ियाँ: 1 × 84, 2 × 42, 3 × 28, 4 × 21, 6 × 14, 7 × 12। (5, 8, 9 से 84 नहीं बँटता, और 7 × 12 के बाद जोड़ियाँ दोहराती हैं।)\nगुणनखंड: 1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 84।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "In an Idli-Vada game where 'idli' is for multiples of 4 and 'vada' for multiples of 6, what are the first three numbers replaced by 'idli-vada'?",
+    "hi": "एक इडली-वड़ा खेल में 'इडली' 4 के गुणजों के लिए और 'वड़ा' 6 के गुणजों के लिए है। 'इडली-वड़ा' से बदली जाने वाली पहली तीन संख्याएँ कौन-सी हैं?"
+   },
+   "a": {
+    "en": "We need common multiples of 4 and 6. The smallest is 12 (multiples of 6: 6, 12 and 12 = 4 × 3).\nAll common multiples are multiples of 12: 12, 24, 36.",
+    "hi": "हमें 4 और 6 के सार्व गुणज चाहिए। सबसे छोटा 12 है (6 के गुणज: 6, 12 और 12 = 4 × 3)।\nसभी सार्व गुणज 12 के गुणज हैं: 12, 24, 36।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In the Idli-Vada game with 4 and 6, counting from 1 to 120, how many times is 'idli', 'vada' and 'idli-vada' said?",
+    "hi": "4 और 6 वाले इडली-वड़ा खेल में 1 से 120 तक गिनने पर 'इडली', 'वड़ा' और 'इडली-वड़ा' कितनी-कितनी बार बोला जाएगा?"
+   },
+   "a": {
+    "en": "Multiples of 4 up to 120: 120 ÷ 4 = 30.\nMultiples of 6: 120 ÷ 6 = 20.\nMultiples of 12 (both): 120 ÷ 12 = 10, said as 'idli-vada'.\n'idli' = 30 − 10 = 20, 'vada' = 20 − 10 = 10, 'idli-vada' = 10.",
+    "hi": "120 तक 4 के गुणज: 120 ÷ 4 = 30।\n6 के गुणज: 120 ÷ 6 = 20।\n12 के गुणज (दोनों): 120 ÷ 12 = 10, इन पर 'इडली-वड़ा'।\n'इडली' = 30 − 10 = 20, 'वड़ा' = 20 − 10 = 10, 'इडली-वड़ा' = 10।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the common factors of 24 and 36.",
+    "hi": "24 और 36 के सार्व गुणनखंड ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24.\nFactors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36.\nCommon factors: 1, 2, 3, 4, 6, 12.",
+    "hi": "24 के गुणनखंड: 1, 2, 3, 4, 6, 8, 12, 24।\n36 के गुणनखंड: 1, 2, 3, 4, 6, 9, 12, 18, 36।\nसार्व गुणनखंड: 1, 2, 3, 4, 6, 12।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Treasures are hidden at 18, 27 and 45. Which jump sizes (starting from 0) reach all three?",
+    "hi": "खजाने 18, 27 और 45 पर छिपे हैं। कौन-सी छलाँगें (0 से शुरू करके) तीनों तक पहुँचती हैं?"
+   },
+   "a": {
+    "en": "Factors of 18: 1, 2, 3, 6, 9, 18.\nFactors of 27: 1, 3, 9, 27.\nFactors of 45: 1, 3, 5, 9, 15, 45.\nCommon factors: 1, 3, 9. So jump sizes 1, 3 and 9 reach all three treasures.",
+    "hi": "18 के गुणनखंड: 1, 2, 3, 6, 9, 18।\n27 के गुणनखंड: 1, 3, 9, 27।\n45 के गुणनखंड: 1, 3, 5, 9, 15, 45।\nसार्व गुणनखंड: 1, 3, 9। इसलिए छलाँग 1, 3 और 9 तीनों खजानों तक पहुँचती हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Which number between 1 and 10 is a perfect number? Show why.",
+    "hi": "1 और 10 के बीच कौन-सी संख्या पूर्ण संख्या है? कारण दिखाइए।"
+   },
+   "a": {
+    "en": "Check sums of factors other than the number: 4: 1 + 2 = 3; 6: 1 + 2 + 3 = 6; 8: 1 + 2 + 4 = 7; 9: 1 + 3 = 4; 10: 1 + 2 + 5 = 8. Primes give just 1.\nOnly 6 equals its sum. Answer: 6.",
+    "hi": "संख्या को छोड़कर गुणनखंडों का योग देखिए: 4: 1 + 2 = 3; 6: 1 + 2 + 3 = 6; 8: 1 + 2 + 4 = 7; 9: 1 + 3 = 4; 10: 1 + 2 + 5 = 8। अभाज्य संख्याओं का योग केवल 1 है।\nकेवल 6 अपने योग के बराबर है। उत्तर: 6।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Who am I? I am less than 60. I am a multiple of both 4 and 7. My digits add up to 11.",
+    "hi": "मैं कौन हूँ? मैं 60 से छोटा हूँ। मैं 4 और 7 दोनों का गुणज हूँ। मेरे अंकों का योग 11 है।"
+   },
+   "a": {
+    "en": "Common multiples of 4 and 7 are multiples of 28: 28, 56 (84 is too big).\nDigit sums: 2 + 8 = 10, 5 + 6 = 11.\nAnswer: 56.",
+    "hi": "4 और 7 के सार्व गुणज 28 के गुणज हैं: 28, 56 (84 बहुत बड़ा है)।\nअंकों के योग: 2 + 8 = 10, 5 + 6 = 11।\nउत्तर: 56।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the smallest number that is a multiple of 3, 4 and 5 at the same time.",
+    "hi": "वह सबसे छोटी संख्या ज्ञात कीजिए जो एक साथ 3, 4 और 5 की गुणज हो।"
+   },
+   "a": {
+    "en": "Common multiples of 4 and 5 are multiples of 20: 20, 40, 60, ...\nCheck for 3: 20 no, 40 no, 60 yes (60 = 3 × 20).\nAnswer: 60.",
+    "hi": "4 और 5 के सार्व गुणज 20 के गुणज हैं: 20, 40, 60, ...\n3 से जाँचिए: 20 नहीं, 40 नहीं, 60 हाँ (60 = 3 × 20)।\nउत्तर: 60।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Which of these are prime: 51, 57, 89, 101, 121?",
+    "hi": "इनमें से कौन-सी अभाज्य हैं: 51, 57, 89, 101, 121?"
+   },
+   "a": {
+    "en": "51 = 3 × 17, composite. 57 = 3 × 19, composite. 121 = 11 × 11, composite.\n89: not divisible by 2, 3, 5, 7 (and 11 × 11 = 121 is bigger), so prime.\n101: not divisible by 2, 3, 5, 7 (and 11 × 11 = 121 is bigger), so prime.\nPrimes: 89 and 101.",
+    "hi": "51 = 3 × 17, भाज्य। 57 = 3 × 19, भाज्य। 121 = 11 × 11, भाज्य।\n89: 2, 3, 5, 7 से नहीं बँटता (और 11 × 11 = 121 बड़ा है), इसलिए अभाज्य।\n101: 2, 3, 5, 7 से नहीं बँटता (और 11 × 11 = 121 बड़ा है), इसलिए अभाज्य।\nअभाज्य: 89 और 101।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Is 2 the only even prime? Explain.",
+    "hi": "क्या 2 ही एकमात्र सम अभाज्य संख्या है? समझाइए।"
+   },
+   "a": {
+    "en": "Yes. Any even number bigger than 2 has at least three factors: 1, 2 and itself. So it is composite. 2 has only 1 and 2 as factors, so it is prime.",
+    "hi": "हाँ। 2 से बड़ी हर सम संख्या के कम से कम तीन गुणनखंड हैं: 1, 2 और वह खुद। इसलिए वह भाज्य है। 2 के केवल 1 और 2 गुणनखंड हैं, इसलिए यह अभाज्य है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write all twin prime pairs between 30 and 80.",
+    "hi": "30 और 80 के बीच की सभी जुड़वाँ अभाज्य जोड़ियाँ लिखिए।"
+   },
+   "a": {
+    "en": "Primes from 30 to 80: 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79.\nPairs with difference 2: (41, 43), (59, 61), (71, 73).",
+    "hi": "30 से 80 तक की अभाज्य संख्याएँ: 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79।\nअंतर 2 वाली जोड़ियाँ: (41, 43), (59, 61), (71, 73)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Find seven consecutive composite numbers that are all less than 100.",
+    "hi": "100 से छोटी ऐसी सात क्रमागत भाज्य संख्याएँ ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Look for a gap of 8 between neighbouring primes. 89 and 97 are consecutive primes.\nThe numbers between them: 90 (2 × 45), 91 (7 × 13), 92 (2 × 46), 93 (3 × 31), 94 (2 × 47), 95 (5 × 19), 96 (2 × 48).\nAnswer: 90, 91, 92, 93, 94, 95, 96.",
+    "hi": "पड़ोसी अभाज्य संख्याओं के बीच 8 का अंतर खोजिए। 89 और 97 क्रमागत अभाज्य हैं।\nइनके बीच की संख्याएँ: 90 (2 × 45), 91 (7 × 13), 92 (2 × 46), 93 (3 × 31), 94 (2 × 47), 95 (5 × 19), 96 (2 × 48)।\nउत्तर: 90, 91, 92, 93, 94, 95, 96।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "True or false? Give a reason. (a) The sum of two primes is always even. (b) A prime number can end in 5. (c) The product of two primes is never prime.",
+    "hi": "सही या गलत? कारण दीजिए। (a) दो अभाज्य संख्याओं का योग हमेशा सम होता है। (b) कोई अभाज्य संख्या 5 पर खत्म हो सकती है। (c) दो अभाज्य संख्याओं का गुणनफल कभी अभाज्य नहीं होता।"
+   },
+   "a": {
+    "en": "(a) False: 2 + 3 = 5 is odd. (It is true when both primes are odd.)\n(b) True, but only for 5 itself; any other number ending in 5 is divisible by 5.\n(c) True: p × q has at least the factors 1, p, q and p × q, so it is composite.",
+    "hi": "(a) गलत: 2 + 3 = 5 विषम है। (दोनों अभाज्य विषम हों तो यह सही है।)\n(b) सही, पर केवल 5 के लिए; 5 पर खत्म होने वाली कोई और संख्या 5 से विभाज्य होती है।\n(c) सही: p × q के कम से कम गुणनखंड 1, p, q और p × q हैं, इसलिए यह भाज्य है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which of these pairs are co-prime: (a) 26 and 45 (b) 38 and 57 (c) 45 and 77?",
+    "hi": "इनमें से कौन-सी जोड़ियाँ सह-अभाज्य हैं: (a) 26 और 45 (b) 38 और 57 (c) 45 और 77?"
+   },
+   "a": {
+    "en": "(a) 26 = 2 × 13, 45 = 3 × 3 × 5. No common prime, so co-prime.\n(b) 38 = 2 × 19, 57 = 3 × 19. Common prime 19, so not co-prime.\n(c) 45 = 3 × 3 × 5, 77 = 7 × 11. No common prime, so co-prime.",
+    "hi": "(a) 26 = 2 × 13, 45 = 3 × 3 × 5। कोई सार्व अभाज्य नहीं, इसलिए सह-अभाज्य।\n(b) 38 = 2 × 19, 57 = 3 × 19। सार्व अभाज्य 19, इसलिए सह-अभाज्य नहीं।\n(c) 45 = 3 × 3 × 5, 77 = 7 × 11। कोई सार्व अभाज्य नहीं, इसलिए सह-अभाज्य।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Co-prime art: with 15 pegs, which thread gaps between 2 and 7 make the thread touch every peg?",
+    "hi": "सह-अभाज्य कला: 15 खूँटियों के साथ 2 से 7 तक के कौन-से धागा-अंतर हर खूँटी को छुएँगे?"
+   },
+   "a": {
+    "en": "The thread touches all pegs when the gap is co-prime to 15 = 3 × 5.\nGaps 2, 4, 7 share no factor with 15: they work.\nGap 3 (shares 3), 5 (shares 5), 6 (shares 3) do not.\nAnswer: 2, 4 and 7.",
+    "hi": "धागा सभी खूँटियों को तब छूता है जब अंतर 15 = 3 × 5 का सह-अभाज्य हो।\nअंतर 2, 4, 7 का 15 से कोई सार्व गुणनखंड नहीं: ये काम करते हैं।\nअंतर 3 (3 सार्व), 5 (5 सार्व), 6 (3 सार्व) नहीं करते।\nउत्तर: 2, 4 और 7।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the prime factorisation of 84, 98 and 1001.",
+    "hi": "84, 98 और 1001 का अभाज्य गुणनखंडन ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "84 = 2 × 42 = 2 × 2 × 21 = 2 × 2 × 3 × 7.\n98 = 2 × 49 = 2 × 7 × 7.\n1001: not divisible by 2, 3, 5; 1001 ÷ 7 = 143, 143 = 11 × 13. So 1001 = 7 × 11 × 13.",
+    "hi": "84 = 2 × 42 = 2 × 2 × 21 = 2 × 2 × 3 × 7।\n98 = 2 × 49 = 2 × 7 × 7।\n1001: 2, 3, 5 से नहीं बँटता; 1001 ÷ 7 = 143, 143 = 11 × 13। इसलिए 1001 = 7 × 11 × 13।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find three different primes whose product is 286.",
+    "hi": "तीन अलग-अलग अभाज्य संख्याएँ ज्ञात कीजिए जिनका गुणनफल 286 हो।"
+   },
+   "a": {
+    "en": "286 is even: 286 ÷ 2 = 143.\n143 = 11 × 13.\nSo 286 = 2 × 11 × 13. The primes are 2, 11 and 13.",
+    "hi": "286 सम है: 286 ÷ 2 = 143।\n143 = 11 × 13।\nइसलिए 286 = 2 × 11 × 13। अभाज्य संख्याएँ 2, 11 और 13 हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write the prime factorisation of 48 × 35 without multiplying first. Then use it to decide whether 48 × 35 is divisible by 28.",
+    "hi": "पहले गुणा किए बिना 48 × 35 का अभाज्य गुणनखंडन लिखिए। फिर इसका प्रयोग करके बताइए कि क्या 48 × 35, 28 से विभाज्य है।"
+   },
+   "a": {
+    "en": "48 = 2 × 2 × 2 × 2 × 3 and 35 = 5 × 7.\n48 × 35 = 2 × 2 × 2 × 2 × 3 × 5 × 7.\n28 = 2 × 2 × 7. We need two 2s and one 7: there are four 2s and one 7. So yes, divisible.\n(48 × 35 = 1680 and 1680 ÷ 28 = 60.)",
+    "hi": "48 = 2 × 2 × 2 × 2 × 3 और 35 = 5 × 7।\n48 × 35 = 2 × 2 × 2 × 2 × 3 × 5 × 7।\n28 = 2 × 2 × 7। हमें दो 2 और एक 7 चाहिए: चार 2 और एक 7 हैं। इसलिए हाँ, विभाज्य है।\n(48 × 35 = 1680 और 1680 ÷ 28 = 60।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Using prime factorisation, decide whether 2520 is divisible by 36 and whether it is divisible by 16.",
+    "hi": "अभाज्य गुणनखंडन से बताइए कि क्या 2520, 36 से विभाज्य है और क्या 16 से विभाज्य है।"
+   },
+   "a": {
+    "en": "2520 = 2 × 2 × 2 × 3 × 3 × 5 × 7 (2520 ÷ 2 = 1260, ÷ 2 = 630, ÷ 2 = 315, ÷ 3 = 105, ÷ 3 = 35, ÷ 5 = 7).\n36 = 2 × 2 × 3 × 3: needs two 2s and two 3s; 2520 has three 2s and two 3s. Divisible (2520 ÷ 36 = 70).\n16 = 2 × 2 × 2 × 2: needs four 2s; 2520 has only three. Not divisible.",
+    "hi": "2520 = 2 × 2 × 2 × 3 × 3 × 5 × 7 (2520 ÷ 2 = 1260, ÷ 2 = 630, ÷ 2 = 315, ÷ 3 = 105, ÷ 3 = 35, ÷ 5 = 7)।\n36 = 2 × 2 × 3 × 3: दो 2 और दो 3 चाहिए; 2520 में तीन 2 और दो 3 हैं। विभाज्य (2520 ÷ 36 = 70)।\n16 = 2 × 2 × 2 × 2: चार 2 चाहिए; 2520 में केवल तीन हैं। विभाज्य नहीं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Without dividing, test 1350 and 98765 for divisibility by 2, 4, 5, 8 and 10.",
+    "hi": "भाग दिए बिना 1350 और 98765 की 2, 4, 5, 8 और 10 से विभाज्यता जाँचिए।"
+   },
+   "a": {
+    "en": "1350: ends in 0, so divisible by 2, 5 and 10. Last two digits 50 are not a multiple of 4, so not by 4, and hence not by 8.\n98765: ends in 5, so divisible by 5 only; it is odd, so not by 2, 4, 8, and not by 10.",
+    "hi": "1350: 0 पर खत्म, इसलिए 2, 5 और 10 से विभाज्य। अंतिम दो अंक 50, 4 का गुणज नहीं, इसलिए 4 से नहीं, और इसलिए 8 से भी नहीं।\n98765: 5 पर खत्म, इसलिए केवल 5 से विभाज्य; विषम है, इसलिए 2, 4, 8 और 10 से नहीं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which of these years are leap years: 1996, 2026, 2060, 2100, 2400?",
+    "hi": "इनमें से कौन-से वर्ष अधिवर्ष हैं: 1996, 2026, 2060, 2100, 2400?"
+   },
+   "a": {
+    "en": "1996: last two digits 96 = 4 × 24, leap year.\n2026: 26 is not a multiple of 4, not a leap year.\n2060: 60 = 4 × 15, leap year.\n2100: century year, 2100 is not divisible by 400, not a leap year.\n2400: divisible by 400, leap year.",
+    "hi": "1996: अंतिम दो अंक 96 = 4 × 24, अधिवर्ष।\n2026: 26, 4 का गुणज नहीं, अधिवर्ष नहीं।\n2060: 60 = 4 × 15, अधिवर्ष।\n2100: शताब्दी वर्ष, 400 से विभाज्य नहीं, अधिवर्ष नहीं।\n2400: 400 से विभाज्य, अधिवर्ष।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Always, sometimes or never? (a) The sum of two even numbers is a multiple of 4. (b) The sum of two odd numbers is even. (c) An even number plus an odd number is even.",
+    "hi": "हमेशा, कभी-कभी या कभी नहीं? (a) दो सम संख्याओं का योग 4 का गुणज होता है। (b) दो विषम संख्याओं का योग सम होता है। (c) एक सम और एक विषम संख्या का योग सम होता है।"
+   },
+   "a": {
+    "en": "(a) Sometimes: 2 + 6 = 8 is a multiple of 4, but 2 + 4 = 6 is not.\n(b) Always: each odd number is an even number plus 1, and the two extra 1s make 2.\n(c) Never: even + odd always leaves one extra 1, so the result is odd.",
+    "hi": "(a) कभी-कभी: 2 + 6 = 8, 4 का गुणज है, पर 2 + 4 = 6 नहीं।\n(b) हमेशा: हर विषम संख्या एक सम संख्या + 1 है, और दोनों अतिरिक्त 1 मिलकर 2 बनाते हैं।\n(c) कभी नहीं: सम + विषम में हमेशा एक अतिरिक्त 1 बचता है, इसलिए योग विषम होता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the remainders when 6,839 is divided by 10, by 5 and by 2.",
+    "hi": "6,839 को 10, 5 और 2 से भाग देने पर शेषफल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Divided by 10: remainder = last digit = 9.\nDivided by 5: 9 = 5 + 4, so remainder 4.\nDivided by 2: the number is odd, so remainder 1.",
+    "hi": "10 से भाग: शेषफल = अंतिम अंक = 9।\n5 से भाग: 9 = 5 + 4, इसलिए शेषफल 4।\n2 से भाग: संख्या विषम है, इसलिए शेषफल 1।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A number is divisible by 8 and by 5. Without knowing the number, list all of 2, 4, 10, 20, 40 that must divide it.",
+    "hi": "एक संख्या 8 से और 5 से विभाज्य है। संख्या जाने बिना बताइए कि 2, 4, 10, 20, 40 में से कौन-कौन उसे अवश्य विभाजित करेंगे।"
+   },
+   "a": {
+    "en": "Divisible by 8 means divisible by 4 and 2 too.\n8 and 5 are co-prime, so it is divisible by 8 × 5 = 40.\n40 = 2 × 2 × 2 × 5, and 10 = 2 × 5, 20 = 2 × 2 × 5 are factors of 40.\nSo all five, 2, 4, 10, 20 and 40, must divide it.",
+    "hi": "8 से विभाज्य का अर्थ है 4 और 2 से भी विभाज्य।\n8 और 5 सह-अभाज्य हैं, इसलिए संख्या 8 × 5 = 40 से विभाज्य है।\n40 = 2 × 2 × 2 × 5, और 10 = 2 × 5, 20 = 2 × 2 × 5, 40 के गुणनखंड हैं।\nइसलिए पाँचों, 2, 4, 10, 20 और 40, उसे अवश्य विभाजित करेंगे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "How many 4-digit palindromes are divisible by 4? Explain.",
+    "hi": "4 अंकों वाले कितने पैलिंड्रोम 4 से विभाज्य हैं? समझाइए।"
+   },
+   "a": {
+    "en": "A 4-digit palindrome is abba, so it ends in the two digits b and a, forming the number 'ba'. It must be even, so a is 2, 4, 6 or 8.\nFor a = 2 or 6, 'b2' or 'b6' is a multiple of 4 when b is odd (12, 32, 52, 72, 92 and 16, 36, 56, 76, 96): 5 choices each.\nFor a = 4 or 8, 'b4' or 'b8' is a multiple of 4 when b is even (04, 24, 44, 64, 84 and 08, 28, 48, 68, 88): 5 choices each.\nTotal = 4 × 5 = 20 palindromes (from 2112 up to 8888).",
+    "hi": "4 अंकों का पैलिंड्रोम abba है, इसलिए इसके अंतिम दो अंक b और a हैं, जो संख्या 'ba' बनाते हैं। यह सम होना चाहिए, इसलिए a = 2, 4, 6 या 8।\na = 2 या 6 के लिए 'b2' या 'b6' तब 4 का गुणज है जब b विषम हो (12, 32, 52, 72, 92 और 16, 36, 56, 76, 96): हर एक के 5 विकल्प।\na = 4 या 8 के लिए 'b4' या 'b8' तब 4 का गुणज है जब b सम हो (04, 24, 44, 64, 84 और 08, 28, 48, 68, 88): हर एक के 5 विकल्प।\nकुल = 4 × 5 = 20 पैलिंड्रोम (2112 से 8888 तक)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Solve the prime puzzle: row products 66, 175, 78 (top to bottom); column products 110, 195, 42 (left to right).",
+    "hi": "अभाज्य पहेली हल कीजिए: पंक्तियों के गुणनफल 66, 175, 78 (ऊपर से नीचे); स्तंभों के गुणनफल 110, 195, 42 (बाएँ से दाएँ)।"
+   },
+   "a": {
+    "en": "Rows: 66 = 2 × 3 × 11, 175 = 5 × 5 × 7, 78 = 2 × 3 × 13. Columns: 110 = 2 × 5 × 11, 195 = 3 × 5 × 13, 42 = 2 × 3 × 7.\n11 is only in row 1 and column 1: top-left is 11.\n13 is only in row 3 and column 2: bottom-middle is 13.\n7 is only in row 2 and column 3: middle-right is 7. Row 2 then has 5 and 5 in columns 1 and 2.\nColumn 1 = 11 × 5 × ? = 110, so bottom-left is 2. Row 3 = 2 × 13 × ? = 78, so bottom-right is 3.\nColumn 3 = ? × 7 × 3 = 42, so top-right is 2. Row 1 = 11 × ? × 2 = 66, so top-middle is 3. Column 2 check: 3 × 5 × 13 = 195.\nGrid: row 1 = 11, 3, 2; row 2 = 5, 5, 7; row 3 = 2, 13, 3.",
+    "hi": "पंक्तियाँ: 66 = 2 × 3 × 11, 175 = 5 × 5 × 7, 78 = 2 × 3 × 13। स्तंभ: 110 = 2 × 5 × 11, 195 = 3 × 5 × 13, 42 = 2 × 3 × 7।\n11 केवल पंक्ति 1 और स्तंभ 1 में है: ऊपर-बाएँ 11।\n13 केवल पंक्ति 3 और स्तंभ 2 में है: नीचे-बीच 13।\n7 केवल पंक्ति 2 और स्तंभ 3 में है: बीच-दाएँ 7। तब पंक्ति 2 के स्तंभ 1 और 2 में 5 और 5।\nस्तंभ 1 = 11 × 5 × ? = 110, इसलिए नीचे-बाएँ 2। पंक्ति 3 = 2 × 13 × ? = 78, इसलिए नीचे-दाएँ 3।\nस्तंभ 3 = ? × 7 × 3 = 42, इसलिए ऊपर-दाएँ 2। पंक्ति 1 = 11 × ? × 2 = 66, इसलिए ऊपर-बीच 3। स्तंभ 2 जाँच: 3 × 5 × 13 = 195।\nग्रिड: पंक्ति 1 = 11, 3, 2; पंक्ति 2 = 5, 5, 7; पंक्ति 3 = 2, 13, 3।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In the box 8, 15, 23, 36 explained in the lesson, find one more reason why 36 is special and one more why 15 is special.",
+    "hi": "पाठ में दिए गए डिब्बे 8, 15, 23, 36 में 36 के विशेष होने का एक और कारण और 15 के विशेष होने का एक और कारण बताइए।"
+   },
+   "a": {
+    "en": "36: it has the most factors (9 factors: 1, 2, 3, 4, 6, 9, 12, 18, 36); it is also the only two-digit even number in the box.\n15: it is the only number in the box with exactly two different prime factors that are both odd (3 × 5); also it is the only one whose digits add up to 6.\n(Other correct reasons are also fine.)",
+    "hi": "36: इसके सबसे अधिक गुणनखंड हैं (9 गुणनखंड: 1, 2, 3, 4, 6, 9, 12, 18, 36); यह डिब्बे में अकेली दो अंकों वाली सम संख्या भी है।\n15: यह डिब्बे में अकेली संख्या है जिसके ठीक दो अलग-अलग विषम अभाज्य गुणनखंड हैं (3 × 5); साथ ही अकेली जिसके अंकों का योग 6 है।\n(दूसरे सही कारण भी मान्य हैं।)"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A factor divides a number exactly; a multiple is the number times 1, 2, 3, ... A number has finitely many factors but infinitely many multiples.",
+   "Common multiples are multiples of each given number; all of them are multiples of the smallest common multiple (Idli-Vada game).",
+   "Common factors divide each given number; 1 is always a common factor (Jump Jackpot game).",
+   "A perfect number equals the sum of its factors other than itself: 6, 28, 496.",
+   "A prime has exactly two factors; a composite has more than two; 1 is neither. 2 is the only even prime.",
+   "The Sieve of Eratosthenes finds primes by crossing out multiples; there are 25 primes up to 100, and primes never run out.",
+   "Twin primes differ by 2, like 17 and 19; long runs of composites also exist, like 90 to 96.",
+   "Two numbers are co-prime if their only common factor is 1; co-prime numbers need not be prime.",
+   "In thread art, the thread touches every peg exactly when the number of pegs and the gap are co-prime.",
+   "Every number greater than 1 has exactly one prime factorisation, apart from the order of the primes.",
+   "Two numbers are co-prime if they share no prime factor. A is divisible by B if every prime of B appears in A at least as often.",
+   "Divisibility tests: 10 (last digit 0), 5 (0 or 5), 2 (even last digit), 4 (last two digits), 8 (last three digits).",
+   "Leap years are divisible by 4, but century years must be divisible by 400.",
+   "Prime factorisation helps solve number puzzles such as prime grids and 'special number' games."
+  ],
+  "hi": [
+   "गुणनखंड किसी संख्या को पूरा बाँटता है; गुणज संख्या को 1, 2, 3, ... से गुणा करके मिलता है। किसी संख्या के गुणनखंड सीमित पर गुणज असीमित होते हैं।",
+   "सार्व गुणज दी गई हर संख्या के गुणज होते हैं; ये सभी सबसे छोटे सार्व गुणज के गुणज होते हैं (इडली-वड़ा खेल)।",
+   "सार्व गुणनखंड दी गई हर संख्या को बाँटते हैं; 1 हमेशा सार्व गुणनखंड है (जंप जैकपॉट खेल)।",
+   "पूर्ण संख्या खुद को छोड़कर अपने गुणनखंडों के योग के बराबर होती है: 6, 28, 496।",
+   "अभाज्य संख्या के ठीक दो गुणनखंड होते हैं; भाज्य के दो से अधिक; 1 कोई नहीं है। 2 अकेली सम अभाज्य संख्या है।",
+   "एराटोस्थनीज़ की छलनी गुणज काटकर अभाज्य संख्याएँ खोजती है; 100 तक 25 अभाज्य संख्याएँ हैं, और अभाज्य संख्याएँ कभी खत्म नहीं होतीं।",
+   "जुड़वाँ अभाज्य संख्याओं का अंतर 2 होता है, जैसे 17 और 19; लगातार भाज्य संख्याओं की लंबी कतारें भी होती हैं, जैसे 90 से 96।",
+   "दो संख्याएँ सह-अभाज्य हैं यदि उनका एकमात्र सार्व गुणनखंड 1 हो; सह-अभाज्य संख्याओं का अभाज्य होना ज़रूरी नहीं।",
+   "धागा-कला में धागा हर खूँटी को ठीक तब छूता है जब खूँटियों की संख्या और अंतर सह-अभाज्य हों।",
+   "1 से बड़ी हर संख्या का, अभाज्य संख्याओं के क्रम को छोड़कर, ठीक एक ही अभाज्य गुणनखंडन होता है।",
+   "दो संख्याएँ सह-अभाज्य हैं यदि उनका कोई सार्व अभाज्य गुणनखंड न हो। A, B से विभाज्य है यदि B की हर अभाज्य संख्या A में कम से कम उतनी बार आए।",
+   "विभाज्यता परीक्षण: 10 (अंतिम अंक 0), 5 (0 या 5), 2 (अंतिम अंक सम), 4 (अंतिम दो अंक), 8 (अंतिम तीन अंक)।",
+   "अधिवर्ष 4 से विभाज्य होते हैं, पर शताब्दी वर्षों को 400 से विभाज्य होना चाहिए।",
+   "अभाज्य गुणनखंडन अभाज्य ग्रिड और 'विशेष संख्या' जैसी पहेलियाँ हल करने में मदद करता है।"
+  ]
+ }
+}

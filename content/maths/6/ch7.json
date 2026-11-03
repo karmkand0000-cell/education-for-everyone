@@ -1,0 +1,1845 @@
+{
+ "v": 1,
+ "sub": "maths",
+ "lv": "6",
+ "id": "ch7",
+ "intro": {
+  "en": "A fraction tells us how much of a whole we have when the whole is shared or cut into equal parts. In this chapter we start from fair sharing of rotis and chikkis, build the idea of a fractional unit, and use it to measure, mark points on the number line, write mixed fractions, find equivalent fractions, compare fractions, and add and subtract them. We also meet the Indian mathematicians, such as Brahmagupta, whose methods we still use today.",
+  "hi": "भिन्न हमें बताती है कि जब किसी पूरी वस्तु को बराबर भागों में बाँटा या काटा जाता है, तो हमारे पास उसका कितना भाग है। इस अध्याय में हम रोटियों और चिक्की के बराबर बँटवारे से शुरू करके भिन्नात्मक इकाई का विचार बनाएँगे, और उससे मापना, संख्या रेखा पर बिंदु अंकित करना, मिश्रित भिन्न लिखना, तुल्य भिन्न खोजना, भिन्नों की तुलना करना और उन्हें जोड़ना-घटाना सीखेंगे। हम ब्रह्मगुप्त जैसे भारतीय गणितज्ञों से भी मिलेंगे, जिनकी विधियाँ हम आज भी प्रयोग करते हैं।"
+ },
+ "learn": {
+  "en": [
+   "What a fractional unit (unit fraction) is and why the parts must be equal",
+   "How to find what fraction of a whole a given piece is",
+   "How to measure using fractional units, and the meaning of numerator and denominator",
+   "How to read and write fractions in words",
+   "How to mark fractions on the number line, including fractions greater than 1",
+   "How to change a fraction greater than 1 into a mixed fraction and back",
+   "What equivalent fractions are and how to make them by multiplying or dividing",
+   "How sharing a things among b people gives a/b to each",
+   "How to write a fraction in its simplest form (lowest terms)",
+   "How to compare and order fractions",
+   "How to add and subtract fractions, including Brahmagupta's method for different denominators",
+   "The history of fractions in India and the world, and the puzzle of Egyptian fractions"
+  ],
+  "hi": [
+   "भिन्नात्मक इकाई (इकाई भिन्न) क्या है और भाग बराबर क्यों होने चाहिए",
+   "कैसे पता करें कि दिया गया टुकड़ा पूरे का कौन-सा भाग है",
+   "भिन्नात्मक इकाइयों से मापना, और अंश व हर का अर्थ",
+   "भिन्नों को शब्दों में पढ़ना और लिखना",
+   "संख्या रेखा पर भिन्न अंकित करना, 1 से बड़ी भिन्नों सहित",
+   "1 से बड़ी भिन्न को मिश्रित भिन्न में बदलना और वापस भिन्न में बदलना",
+   "तुल्य भिन्न क्या हैं और गुणा या भाग से उन्हें कैसे बनाएँ",
+   "a वस्तुओं को b लोगों में बाँटने पर हर एक को a/b कैसे मिलता है",
+   "भिन्न को सरलतम रूप (न्यूनतम पदों) में कैसे लिखें",
+   "भिन्नों की तुलना करना और उन्हें क्रम में लगाना",
+   "भिन्नों को जोड़ना और घटाना, अलग हर के लिए ब्रह्मगुप्त की विधि सहित",
+   "भारत और विश्व में भिन्नों का इतिहास, और मिस्री भिन्नों की पहेली"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "7.1 Fractional Units and Equal Shares",
+    "hi": "7.1 भिन्नात्मक इकाइयाँ और बराबर हिस्से"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Imagine you have one roti and two people are hungry. To be fair, you tear it into two pieces of exactly the same size. Each person gets half a roti. We write half as 1/2. The 1 on top tells us we are talking about one piece, and the 2 at the bottom tells us the whole roti was cut into 2 equal pieces.",
+      "hi": "सोचिए आपके पास एक रोटी है और दो लोग भूखे हैं। न्याय के लिए आप रोटी को बिल्कुल बराबर आकार के दो टुकड़ों में तोड़ते हैं। हर व्यक्ति को आधी रोटी मिलती है। आधे को हम 1/2 लिखते हैं। ऊपर का 1 बताता है कि हम एक टुकड़े की बात कर रहे हैं, और नीचे का 2 बताता है कि पूरी रोटी 2 बराबर टुकड़ों में बाँटी गई थी।"
+     }
+    },
+    {
+     "p": {
+      "en": "Now suppose one roti is shared equally among 3 friends. The roti is cut into 3 equal pieces and each friend gets one of them, that is 1/3 (one-third) of the roti. If 4 friends share one roti equally, each gets 1/4 (one-fourth, also called a quarter). In the same way, sharing one roti equally among 5, 6, 8 or 10 people gives each person 1/5, 1/6, 1/8 or 1/10 of the roti.",
+      "hi": "अब मान लीजिए एक रोटी 3 दोस्तों में बराबर बाँटी जाती है। रोटी के 3 बराबर टुकड़े होते हैं और हर दोस्त को एक टुकड़ा मिलता है, यानी रोटी का 1/3 (एक-तिहाई)। अगर 4 दोस्त एक रोटी बराबर बाँटें, तो हर एक को 1/4 (एक-चौथाई, जिसे पाव भी कहते हैं) मिलता है। इसी तरह एक रोटी को 5, 6, 8 या 10 लोगों में बराबर बाँटने पर हर व्यक्ति को रोटी का 1/5, 1/6, 1/8 या 1/10 भाग मिलता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Fractional unit (unit fraction)",
+       "hi": "भिन्नात्मक इकाई (इकाई भिन्न)"
+      },
+      "text": {
+       "en": "When one whole is divided into a number of equal parts, each part is called a fractional unit. Fractional units are written with 1 on top, such as 1/2, 1/3, 1/4, 1/10. They are also called unit fractions.",
+       "hi": "जब एक पूरी वस्तु को कई बराबर भागों में बाँटा जाता है, तो हर एक भाग को भिन्नात्मक इकाई कहते हैं। भिन्नात्मक इकाइयों में ऊपर 1 लिखा होता है, जैसे 1/2, 1/3, 1/4, 1/10। इन्हें इकाई भिन्न भी कहते हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "The parts must be EQUAL. If a roti is torn into 2 pieces where one piece is big and one is small, neither piece is 1/2 of the roti. Equal sharing is the heart of fractions.",
+      "hi": "भाग बराबर होने चाहिए। अगर रोटी को ऐसे 2 टुकड़ों में तोड़ा जाए कि एक बड़ा हो और एक छोटा, तो कोई भी टुकड़ा रोटी का 1/2 नहीं है। बराबर बाँटना ही भिन्न का मूल विचार है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Look at what happens to each person's share as more people join. With 2 people each gets 1/2, with 3 people each gets 1/3, with 4 people each gets 1/4. The more people share the same roti, the smaller each piece becomes. So 1/2 is bigger than 1/3, 1/3 is bigger than 1/4, and so on. This may feel strange at first because 4 is bigger than 2, but 1/4 is smaller than 1/2. The bottom number tells you into how many pieces the whole is cut, so a bigger bottom number means smaller pieces.",
+      "hi": "देखिए जैसे-जैसे ज़्यादा लोग जुड़ते हैं, हर व्यक्ति का हिस्सा कैसे बदलता है। 2 लोगों में हर एक को 1/2, 3 लोगों में 1/3, और 4 लोगों में 1/4 मिलता है। जितने ज़्यादा लोग एक ही रोटी बाँटेंगे, हर टुकड़ा उतना छोटा होगा। इसलिए 1/2, 1/3 से बड़ा है; 1/3, 1/4 से बड़ा है, इत्यादि। शुरू में यह अजीब लग सकता है क्योंकि 4, 2 से बड़ा है, पर 1/4, 1/2 से छोटा है। नीचे की संख्या बताती है कि पूरी वस्तु कितने टुकड़ों में कटी है, इसलिए नीचे की बड़ी संख्या का मतलब है छोटे टुकड़े।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Shared among",
+        "Each share",
+        "Name"
+       ],
+       "hi": [
+        "कितनों में बाँटा",
+        "हर एक का हिस्सा",
+        "नाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "2",
+         "1/2",
+         "one-half (half)"
+        ],
+        [
+         "3",
+         "1/3",
+         "one-third"
+        ],
+        [
+         "4",
+         "1/4",
+         "one-fourth (quarter)"
+        ],
+        [
+         "5",
+         "1/5",
+         "one-fifth"
+        ],
+        [
+         "6",
+         "1/6",
+         "one-sixth"
+        ],
+        [
+         "8",
+         "1/8",
+         "one-eighth"
+        ],
+        [
+         "10",
+         "1/10",
+         "one-tenth"
+        ]
+       ],
+       "hi": [
+        [
+         "2",
+         "1/2",
+         "आधा"
+        ],
+        [
+         "3",
+         "1/3",
+         "एक-तिहाई"
+        ],
+        [
+         "4",
+         "1/4",
+         "एक-चौथाई (पाव)"
+        ],
+        [
+         "5",
+         "1/5",
+         "पाँचवाँ भाग"
+        ],
+        [
+         "6",
+         "1/6",
+         "छठा भाग"
+        ],
+        [
+         "8",
+         "1/8",
+         "आठवाँ भाग"
+        ],
+        [
+         "10",
+         "1/10",
+         "दसवाँ भाग"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Equal sharing works for more than one thing too. If 2 chikkis are shared equally among 2 children, each gets 1 whole chikki. If 1 chikki is shared among 2 children, each gets 1/2. If 3 rotis are shared among 3 people, each gets 1 roti. Before using fractions, always ask two questions: how many equal parts is the whole cut into, and how many of those parts do I get?",
+      "hi": "बराबर बाँटना एक से अधिक वस्तुओं के लिए भी होता है। अगर 2 चिक्की 2 बच्चों में बराबर बाँटी जाएँ तो हर एक को 1 पूरी चिक्की मिलती है। अगर 1 चिक्की 2 बच्चों में बाँटी जाए तो हर एक को 1/2 मिलती है। अगर 3 रोटियाँ 3 लोगों में बँटें तो हर एक को 1 रोटी मिलती है। भिन्न का प्रयोग करने से पहले हमेशा दो प्रश्न पूछिए: पूरी वस्तु कितने बराबर भागों में कटी है, और उनमें से मुझे कितने भाग मिले?"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "One big chikki is shared equally among 4 friends. What fraction of the chikki does each friend get? Name it in words.",
+       "hi": "एक बड़ी चिक्की 4 दोस्तों में बराबर बाँटी जाती है। हर दोस्त को चिक्की का कौन-सा भाग मिलता है? इसे शब्दों में भी बताइए।"
+      },
+      "a": {
+       "en": "Step 1: The chikki is cut into 4 equal pieces, one for each friend.\nStep 2: Each friend gets 1 piece out of 4 equal pieces.\nAnswer: 1/4 of the chikki, read as one-fourth or a quarter.",
+       "hi": "चरण 1: चिक्की 4 बराबर टुकड़ों में काटी जाती है, हर दोस्त के लिए एक।\nचरण 2: हर दोस्त को 4 बराबर टुकड़ों में से 1 टुकड़ा मिलता है।\nउत्तर: चिक्की का 1/4, जिसे एक-चौथाई या पाव पढ़ते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Arrange these shares from smallest to largest: one-third, one-eighth, half, one-fifth.",
+       "hi": "इन हिस्सों को सबसे छोटे से सबसे बड़े के क्रम में लिखिए: एक-तिहाई, आठवाँ भाग, आधा, पाँचवाँ भाग।"
+      },
+      "a": {
+       "en": "Step 1: Write them as fractions: 1/3, 1/8, 1/2, 1/5.\nStep 2: All have 1 on top, so the one with the biggest bottom number has the smallest pieces.\nStep 3: Bottom numbers in decreasing order: 8, 5, 3, 2.\nAnswer: one-eighth (1/8) < one-fifth (1/5) < one-third (1/3) < half (1/2).",
+       "hi": "चरण 1: इन्हें भिन्न में लिखिए: 1/3, 1/8, 1/2, 1/5।\nचरण 2: सबके ऊपर 1 है, इसलिए जिसकी नीचे की संख्या सबसे बड़ी है उसके टुकड़े सबसे छोटे हैं।\nचरण 3: नीचे की संख्याएँ घटते क्रम में: 8, 5, 3, 2।\nउत्तर: आठवाँ भाग (1/8) < पाँचवाँ भाग (1/5) < एक-तिहाई (1/3) < आधा (1/2)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Two equal-sized parathas are shared: the first equally among 3 sisters, the second equally among 5 brothers. Who gets more, a sister or a brother?",
+       "hi": "दो बराबर आकार के पराठे बाँटे गए: पहला 3 बहनों में बराबर, दूसरा 5 भाइयों में बराबर। किसे ज़्यादा मिला, एक बहन को या एक भाई को?"
+      },
+      "a": {
+       "en": "Step 1: Each sister gets 1/3 of a paratha.\nStep 2: Each brother gets 1/5 of a paratha.\nStep 3: The same-sized paratha cut into 3 pieces gives bigger pieces than cut into 5 pieces.\nAnswer: 1/3 > 1/5, so a sister gets more.",
+       "hi": "चरण 1: हर बहन को पराठे का 1/3 मिला।\nचरण 2: हर भाई को पराठे का 1/5 मिला।\nचरण 3: एक ही आकार का पराठा 3 टुकड़ों में काटने पर टुकड़े 5 टुकड़ों की तुलना में बड़े होते हैं।\nउत्तर: 1/3 > 1/5, इसलिए एक बहन को ज़्यादा मिला।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.2 Fractional Units as Parts of a Whole",
+    "hi": "7.2 पूर्ण के भाग के रूप में भिन्नात्मक इकाइयाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Sometimes we see a piece and need to find what fraction of the whole it is. The trick is to ask: how many pieces of exactly this size would be needed to make the whole thing? If 6 such pieces make the whole, the piece is 1/6 of the whole. If 8 such pieces make the whole, it is 1/8.",
+      "hi": "कभी-कभी हमें एक टुकड़ा दिखता है और पता करना होता है कि वह पूरी वस्तु का कौन-सा भाग है। तरकीब यह है कि पूछिए: ठीक इसी आकार के कितने टुकड़े मिलकर पूरी वस्तु बनाएँगे? अगर ऐसे 6 टुकड़े पूरी वस्तु बनाते हैं, तो वह टुकड़ा पूरे का 1/6 है। अगर ऐसे 8 टुकड़े पूरी वस्तु बनाते हैं, तो वह 1/8 है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Picture a rectangular bar of chikki that has been broken into pieces of different sizes. One piece is exactly half the bar. Another piece is a strip such that 4 of them would cover the bar, so it is 1/4. A smaller square piece needs 8 copies to cover the bar, so it is 1/8. Even if two pieces have different shapes (one long and thin, one square), they are the same fraction of the bar if they have the same size, that is, if they cover the same amount of the bar.",
+      "hi": "एक आयताकार चिक्की की पट्टी सोचिए जो अलग-अलग आकार के टुकड़ों में टूटी है। एक टुकड़ा ठीक आधी पट्टी है। दूसरा टुकड़ा ऐसी पट्टी है कि उसके 4 टुकड़े पूरी चिक्की ढक देंगे, इसलिए वह 1/4 है। एक छोटे वर्गाकार टुकड़े की 8 प्रतियाँ पूरी चिक्की ढकती हैं, इसलिए वह 1/8 है। अगर दो टुकड़ों की आकृति अलग हो (एक लंबा-पतला, एक वर्गाकार) पर उनका माप बराबर हो, यानी वे चिक्की का बराबर हिस्सा ढकते हों, तो वे पूरे का एक ही भिन्न हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Same size means same fraction, even if the shape is different. A triangle that covers 1/4 of a square sheet and a small square that covers 1/4 of the same sheet are both 1/4.",
+      "hi": "बराबर माप का मतलब है बराबर भिन्न, चाहे आकृति अलग हो। एक त्रिभुज जो वर्गाकार कागज़ का 1/4 ढकता है और एक छोटा वर्ग जो उसी कागज़ का 1/4 ढकता है, दोनों 1/4 हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "You can also find a fraction by comparing with a piece you already know. If a piece is exactly as big as two 1/8 pieces put together, then it is 2/8 of the whole, and since 4 such pieces fill the whole, it is also 1/4. If a piece is half of a 1/2 piece, it is 1/4 of the whole. If a piece is half of a 1/4 piece, it is 1/8 of the whole.",
+      "hi": "आप किसी ज्ञात टुकड़े से तुलना करके भी भिन्न पता कर सकते हैं। अगर कोई टुकड़ा ठीक दो 1/8 टुकड़ों को मिलाने जितना बड़ा है, तो वह पूरे का 2/8 है, और क्योंकि ऐसे 4 टुकड़े पूरी वस्तु भर देते हैं, वह 1/4 भी है। अगर कोई टुकड़ा 1/2 टुकड़े का आधा है, तो वह पूरे का 1/4 है। अगर कोई टुकड़ा 1/4 टुकड़े का आधा है, तो वह पूरे का 1/8 है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Half of 1/2 = 1/4,   half of 1/4 = 1/8,   half of 1/8 = 1/16",
+      "hi": "1/2 का आधा = 1/4,   1/4 का आधा = 1/8,   1/8 का आधा = 1/16"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A square sheet of paper is folded in half, and then folded in half again the other way. It is opened and cut along the folds. What fraction of the sheet is each piece?",
+       "hi": "एक वर्गाकार कागज़ को आधा मोड़ा जाता है, फिर दूसरी दिशा में फिर से आधा मोड़ा जाता है। फिर उसे खोलकर मोड़ों पर काटा जाता है। हर टुकड़ा कागज़ का कौन-सा भाग है?"
+      },
+      "a": {
+       "en": "Step 1: The first fold makes 2 equal parts.\nStep 2: The second fold cuts each of those into 2, so there are 2 × 2 = 4 equal parts.\nStep 3: 4 pieces of the same size make the whole sheet.\nAnswer: each piece is 1/4 of the sheet.",
+       "hi": "चरण 1: पहला मोड़ 2 बराबर भाग बनाता है।\nचरण 2: दूसरा मोड़ उनमें से हर एक को 2 भागों में बाँटता है, इसलिए 2 × 2 = 4 बराबर भाग बनते हैं।\nचरण 3: एक ही माप के 4 टुकड़े पूरा कागज़ बनाते हैं।\nउत्तर: हर टुकड़ा कागज़ का 1/4 है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A chocolate bar has 12 equal small blocks. Rani breaks off a piece with 3 blocks. What fractional unit is one block, and what fraction of the bar did Rani take?",
+       "hi": "एक चॉकलेट में 12 बराबर छोटे खाने हैं। रानी 3 खानों वाला टुकड़ा तोड़ती है। एक खाना कौन-सी भिन्नात्मक इकाई है, और रानी ने चॉकलेट का कौन-सा भाग लिया?"
+      },
+      "a": {
+       "en": "Step 1: 12 equal blocks make the whole bar, so one block is 1/12 of the bar.\nStep 2: Rani took 3 blocks, which is 3/12 of the bar.\nStep 3: How many pieces of Rani's size make the bar? 12 ÷ 3 = 4. So her piece is also 1/4 of the bar.\nAnswer: one block = 1/12; Rani took 3/12, which is the same as 1/4.",
+       "hi": "चरण 1: 12 बराबर खाने पूरी चॉकलेट बनाते हैं, इसलिए एक खाना चॉकलेट का 1/12 है।\nचरण 2: रानी ने 3 खाने लिए, यानी चॉकलेट का 3/12।\nचरण 3: रानी के टुकड़े जितने कितने टुकड़े पूरी चॉकलेट बनाएँगे? 12 ÷ 3 = 4। इसलिए उसका टुकड़ा 1/4 भी है।\nउत्तर: एक खाना = 1/12; रानी ने 3/12 लिया, जो 1/4 के बराबर है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3 Measuring Using Fractional Units",
+    "hi": "7.3 भिन्नात्मक इकाइयों से मापना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Fractional units can be used like a measuring tool. Just as we measure length in centimetres by counting how many centimetres fit, we can measure a part of a whole by counting how many fractional units fit in it. If a piece of roti is made of 3 pieces of size 1/4, we say the piece is 3/4 (three-quarters) of the roti.",
+      "hi": "भिन्नात्मक इकाइयों का प्रयोग मापने के औज़ार की तरह किया जा सकता है। जैसे हम लंबाई को सेंटीमीटर में यह गिनकर मापते हैं कि कितने सेंटीमीटर समाते हैं, वैसे ही हम पूरे के किसी भाग को यह गिनकर माप सकते हैं कि उसमें कितनी भिन्नात्मक इकाइयाँ समाती हैं। अगर रोटी का कोई टुकड़ा 1/4 माप के 3 टुकड़ों से बना है, तो हम कहते हैं कि वह टुकड़ा रोटी का 3/4 (तीन-चौथाई) है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "3/4 = 1/4 + 1/4 + 1/4 = 3 times 1/4",
+      "hi": "3/4 = 1/4 + 1/4 + 1/4 = 1/4 का 3 गुना"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Fraction",
+       "hi": "भिन्न"
+      },
+      "text": {
+       "en": "A fraction tells us how many fractional units we have. The fraction 5/6 means 5 units of size 1/6.",
+       "hi": "भिन्न बताती है कि हमारे पास कितनी भिन्नात्मक इकाइयाँ हैं। भिन्न 5/6 का अर्थ है 1/6 माप की 5 इकाइयाँ।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Numerator",
+       "hi": "अंश"
+      },
+      "text": {
+       "en": "The number on top of a fraction. It counts how many fractional units are taken. In 5/6 the numerator is 5.",
+       "hi": "भिन्न में ऊपर वाली संख्या। यह गिनती है कि कितनी भिन्नात्मक इकाइयाँ ली गई हैं। 5/6 में अंश 5 है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Denominator",
+       "hi": "हर"
+      },
+      "text": {
+       "en": "The number at the bottom of a fraction. It tells into how many equal parts the whole is divided, so it names the fractional unit. In 5/6 the denominator is 6, so the unit is 1/6.",
+       "hi": "भिन्न में नीचे वाली संख्या। यह बताती है कि पूरी वस्तु कितने बराबर भागों में बाँटी गई है, यानी यह भिन्नात्मक इकाई का नाम बताती है। 5/6 में हर 6 है, इसलिए इकाई 1/6 है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Reading fractions: 3/4 is read as three-quarters or three-fourths, 2/3 as two-thirds, 5/8 as five-eighths, 7/10 as seven-tenths. The numerator is said first as a number, then the denominator is said as a 'th' word. In Hindi we say 3/4 as तीन-चौथाई or teen baata chaar (तीन बटा चार).",
+      "hi": "भिन्न पढ़ना: 3/4 को तीन-चौथाई या तीन बटा चार पढ़ते हैं, 2/3 को दो-तिहाई या दो बटा तीन, 5/8 को पाँच बटा आठ, 7/10 को सात बटा दस। पहले अंश बोला जाता है, फिर 'बटा' और फिर हर। अंग्रेज़ी में 3/4 को three-quarters या three-fourths कहते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Remember that the whole itself can be written as a fraction. If a roti is cut into 4 equal parts and you take all 4, you have 4/4 of the roti, which is 1 whole roti. Similarly 2/2 = 3/3 = 6/6 = 1. When the numerator equals the denominator, the fraction is equal to 1.",
+      "hi": "याद रखिए कि पूरी वस्तु को भी भिन्न के रूप में लिखा जा सकता है। अगर रोटी 4 बराबर भागों में कटी है और आप चारों ले लें, तो आपके पास रोटी का 4/4 है, जो 1 पूरी रोटी है। इसी तरह 2/2 = 3/3 = 6/6 = 1। जब अंश और हर बराबर हों, तो भिन्न 1 के बराबर होती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity with paper strips: take a long strip of paper as 1 whole. Fold it in half and you get two pieces of 1/2. Fold again and you get four pieces of 1/4. Fold again and you get eight pieces of 1/8. Each fold doubles the number of pieces and halves the size of each piece. Colour 3 of the eighths and you have shown 3/8. Using strips of the same length folded into 3, 5 or 6 equal parts (by careful measuring), you can show thirds, fifths and sixths.",
+      "hi": "कागज़ की पट्टियों से गतिविधि: एक लंबी कागज़ की पट्टी को 1 पूर्ण मानिए। उसे आधा मोड़िए तो 1/2 के दो टुकड़े मिलते हैं। फिर मोड़िए तो 1/4 के चार टुकड़े। फिर मोड़िए तो 1/8 के आठ टुकड़े। हर मोड़ से टुकड़ों की संख्या दुगुनी होती है और हर टुकड़े का माप आधा होता है। आठवें भागों में से 3 को रंग दीजिए, तो आपने 3/8 दिखा दिया। उतनी ही लंबी पट्टियों को (सावधानी से नापकर) 3, 5 या 6 बराबर भागों में मोड़कर तिहाई, पाँचवाँ और छठा भाग दिखाया जा सकता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Number of folds",
+        "Number of equal pieces",
+        "Size of each piece"
+       ],
+       "hi": [
+        "मोड़ों की संख्या",
+        "बराबर टुकड़ों की संख्या",
+        "हर टुकड़े का माप"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "0",
+         "1",
+         "1"
+        ],
+        [
+         "1",
+         "2",
+         "1/2"
+        ],
+        [
+         "2",
+         "4",
+         "1/4"
+        ],
+        [
+         "3",
+         "8",
+         "1/8"
+        ],
+        [
+         "4",
+         "16",
+         "1/16"
+        ],
+        [
+         "5",
+         "32",
+         "1/32"
+        ],
+        [
+         "6",
+         "64",
+         "1/64"
+        ]
+       ],
+       "hi": [
+        [
+         "0",
+         "1",
+         "1"
+        ],
+        [
+         "1",
+         "2",
+         "1/2"
+        ],
+        [
+         "2",
+         "4",
+         "1/4"
+        ],
+        [
+         "3",
+         "8",
+         "1/8"
+        ],
+        [
+         "4",
+         "16",
+         "1/16"
+        ],
+        [
+         "5",
+         "32",
+         "1/32"
+        ],
+        [
+         "6",
+         "64",
+         "1/64"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Knowledge from the past: Indians have used fractions for thousands of years. The Rig Veda uses the word tripada for three-quarters (3/4). Words like aadha (1/2), paav (1/4), paune (a quarter less, as in paune do = 1 3/4) and sawa (a quarter more, as in sawa do = 2 1/4) are still used in Indian languages.",
+      "hi": "अतीत से ज्ञान: भारतीय हज़ारों वर्षों से भिन्नों का प्रयोग करते आए हैं। ऋग्वेद में तीन-चौथाई (3/4) के लिए त्रिपाद शब्द आया है। आधा (1/2), पाव (1/4), पौने (जैसे पौने दो = 1 3/4) और सवा (जैसे सवा दो = 2 1/4) जैसे शब्द आज भी भारतीय भाषाओं में प्रयोग होते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A ribbon is divided into 8 equal parts and 5 parts are used to tie a gift. Write the fraction used, name its numerator and denominator, and say how much is left.",
+       "hi": "एक रिबन 8 बराबर भागों में बाँटा गया है और 5 भाग उपहार बाँधने में लगे। प्रयोग हुए भाग की भिन्न लिखिए, उसका अंश और हर बताइए, और बताइए कितना बचा।"
+      },
+      "a": {
+       "en": "Step 1: The fractional unit is 1/8 because there are 8 equal parts.\nStep 2: 5 units of 1/8 were used, so the fraction used is 5/8.\nStep 3: Numerator = 5 (parts used), denominator = 8 (equal parts in the whole ribbon).\nStep 4: Parts left = 8 - 5 = 3, so 3/8 of the ribbon is left.\nAnswer: 5/8 used, 3/8 left.",
+       "hi": "चरण 1: भिन्नात्मक इकाई 1/8 है क्योंकि 8 बराबर भाग हैं।\nचरण 2: 1/8 की 5 इकाइयाँ प्रयोग हुईं, इसलिए प्रयोग हुआ भाग 5/8 है।\nचरण 3: अंश = 5 (प्रयोग हुए भाग), हर = 8 (पूरे रिबन के बराबर भाग)।\nचरण 4: बचे भाग = 8 - 5 = 3, इसलिए रिबन का 3/8 बचा।\nउत्तर: 5/8 प्रयोग हुआ, 3/8 बचा।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write 1/6 + 1/6 + 1/6 + 1/6 + 1/6 as a single fraction and read it aloud.",
+       "hi": "1/6 + 1/6 + 1/6 + 1/6 + 1/6 को एक भिन्न के रूप में लिखिए और पढ़िए।"
+      },
+      "a": {
+       "en": "Step 1: Count the units: there are 5 units of 1/6.\nStep 2: 5 units of 1/6 is written 5/6.\nAnswer: 5/6, read as five-sixths (पाँच बटा छह).",
+       "hi": "चरण 1: इकाइयाँ गिनिए: 1/6 की 5 इकाइयाँ हैं।\nचरण 2: 1/6 की 5 इकाइयों को 5/6 लिखते हैं।\nउत्तर: 5/6, जिसे पाँच बटा छह पढ़ते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.4 Marking Fraction Lengths on the Number Line",
+    "hi": "7.4 संख्या रेखा पर भिन्नात्मक लंबाइयाँ अंकित करना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A number line is a straight line on which numbers are marked at equal gaps: 0, 1, 2, 3 and so on. The gap from 0 to 1 is our whole, a length of 1 unit. Fractions live in between the whole numbers.",
+      "hi": "संख्या रेखा एक सीधी रेखा है जिस पर संख्याएँ बराबर दूरी पर अंकित होती हैं: 0, 1, 2, 3 इत्यादि। 0 से 1 तक की दूरी हमारा पूर्ण है, यानी 1 इकाई लंबाई। भिन्न पूर्ण संख्याओं के बीच में होती हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Draw a line and mark 0 and 1. Choose an easy length for the unit, for example 10 cm, or 12 cm when you need thirds, quarters and sixths.",
+       "Step 2: Look at the denominator. To mark fifths, divide the gap from 0 to 1 into 5 equal parts (2 cm each if the unit is 10 cm).",
+       "Step 3: The first mark after 0 is 1/5, the next is 2/5, then 3/5, 4/5, and the fifth mark is 5/5, which is exactly 1.",
+       "Step 4: Keep going past 1 with the same gap: 6/5, 7/5, 8/5, 9/5, and 10/5 lands on 2."
+      ],
+      "hi": [
+       "चरण 1: एक रेखा खींचिए और 0 और 1 अंकित कीजिए। इकाई के लिए आसान लंबाई चुनिए, जैसे 10 cm, या 12 cm जब तिहाई, चौथाई और छठे भाग चाहिए।",
+       "चरण 2: हर देखिए। पाँचवें भाग अंकित करने के लिए 0 से 1 की दूरी को 5 बराबर भागों में बाँटिए (अगर इकाई 10 cm है तो हर भाग 2 cm)।",
+       "चरण 3: 0 के बाद पहला निशान 1/5 है, फिर 2/5, फिर 3/5, 4/5, और पाँचवाँ निशान 5/5 है, जो ठीक 1 है।",
+       "चरण 4: उसी दूरी से 1 के आगे बढ़ते रहिए: 6/5, 7/5, 8/5, 9/5, और 10/5 ठीक 2 पर आता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "The point marked 3/5 is at a distance of 3/5 from 0. So a fraction on the number line is both a point and a length: the length of the line from 0 to that point.",
+      "hi": "3/5 अंकित बिंदु 0 से 3/5 की दूरी पर है। इसलिए संख्या रेखा पर भिन्न एक बिंदु भी है और एक लंबाई भी: 0 से उस बिंदु तक की रेखा की लंबाई।"
+     }
+    },
+    {
+     "note": {
+      "en": "How many fractions are there between 0 and 1? Infinitely many! Between 0 and 1 lie 1/2, then 1/3 and 2/3, then 1/4 and 3/4, then 1/5, 2/5, 3/5, 4/5, and so on. We can keep cutting the unit into more and more equal parts, so we never run out of fractions.",
+      "hi": "0 और 1 के बीच कितनी भिन्न हैं? अनगिनत (अपरिमित)! 0 और 1 के बीच 1/2 है, फिर 1/3 और 2/3, फिर 1/4 और 3/4, फिर 1/5, 2/5, 3/5, 4/5, इत्यादि। हम इकाई को और अधिक बराबर भागों में बाँटते जा सकते हैं, इसलिए भिन्न कभी खत्म नहीं होतीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Placing fractions with different denominators on one line: on a 12 cm unit, 1/2 is at 6 cm, 1/3 at 4 cm, 2/3 at 8 cm, 1/4 at 3 cm, 3/4 at 9 cm, 1/6 at 2 cm and 5/6 at 10 cm. Now you can see which fraction is bigger just by seeing which point is further to the right.",
+      "hi": "अलग-अलग हर वाली भिन्नों को एक ही रेखा पर रखना: 12 cm की इकाई पर 1/2, 6 cm पर है; 1/3, 4 cm पर; 2/3, 8 cm पर; 1/4, 3 cm पर; 3/4, 9 cm पर; 1/6, 2 cm पर और 5/6, 10 cm पर। अब आप देखकर ही बता सकते हैं कि कौन-सी भिन्न बड़ी है: जो बिंदु ज़्यादा दाईं ओर है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "On a number line where the unit from 0 to 1 is 8 cm, where will you mark 3/8 and 11/8?",
+       "hi": "एक संख्या रेखा पर 0 से 1 की इकाई 8 cm है। आप 3/8 और 11/8 कहाँ अंकित करेंगे?"
+      },
+      "a": {
+       "en": "Step 1: The denominator is 8, so divide the unit into 8 equal parts. Each part is 8 ÷ 8 = 1 cm.\nStep 2: 3/8 is 3 such parts from 0, so it is at 3 cm.\nStep 3: 11/8 is 11 parts from 0, that is 11 cm. Since 8/8 = 1 is at 8 cm, 11/8 is 3 parts beyond 1.\nAnswer: 3/8 at 3 cm from 0; 11/8 at 11 cm from 0 (between 1 and 2).",
+       "hi": "चरण 1: हर 8 है, इसलिए इकाई को 8 बराबर भागों में बाँटिए। हर भाग 8 ÷ 8 = 1 cm है।\nचरण 2: 3/8 का अर्थ 0 से ऐसे 3 भाग, इसलिए वह 3 cm पर है।\nचरण 3: 11/8 का अर्थ 0 से 11 भाग, यानी 11 cm। क्योंकि 8/8 = 1, 8 cm पर है, 11/8, 1 से 3 भाग आगे है।\nउत्तर: 3/8, 0 से 3 cm पर; 11/8, 0 से 11 cm पर (1 और 2 के बीच)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "On a number line, the gap between 0 and 1 is divided into 5 equal parts and the same parts continue after 1. A line starts at 0 and ends at the 3rd mark after 1. What is its length?",
+       "hi": "एक संख्या रेखा पर 0 और 1 के बीच की दूरी 5 बराबर भागों में बँटी है और 1 के बाद भी वही भाग चलते हैं। एक रेखा 0 से शुरू होकर 1 के बाद तीसरे निशान पर खत्म होती है। उसकी लंबाई क्या है?"
+      },
+      "a": {
+       "en": "Step 1: Each part is 1/5.\nStep 2: From 0 to 1 there are 5 parts, then 3 more parts: 5 + 3 = 8 parts.\nStep 3: 8 parts of 1/5 = 8/5.\nAnswer: 8/5 units, which is 1 whole and 3/5 more (1 3/5).",
+       "hi": "चरण 1: हर भाग 1/5 है।\nचरण 2: 0 से 1 तक 5 भाग हैं, फिर 3 भाग और: 5 + 3 = 8 भाग।\nचरण 3: 1/5 के 8 भाग = 8/5।\nउत्तर: 8/5 इकाई, यानी 1 पूर्ण और 3/5 अधिक (1 3/5)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.5 Mixed Fractions",
+    "hi": "7.5 मिश्रित भिन्न"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Fractions greater than one: if we have 7 pieces of size 1/4, we have 7/4. Four of those pieces make 1 whole (4/4 = 1), and 3 pieces are left over. So 7/4 is 1 whole and 3/4 more. A fraction whose numerator is bigger than its denominator is always more than 1.",
+      "hi": "एक से बड़ी भिन्न: अगर हमारे पास 1/4 माप के 7 टुकड़े हैं, तो हमारे पास 7/4 है। उनमें से चार टुकड़े 1 पूर्ण बनाते हैं (4/4 = 1), और 3 टुकड़े बचते हैं। इसलिए 7/4, 1 पूर्ण और 3/4 अधिक है। जिस भिन्न का अंश उसके हर से बड़ा हो, वह हमेशा 1 से अधिक होती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Rule",
+        "Examples"
+       ],
+       "hi": [
+        "प्रकार",
+        "नियम",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Less than 1",
+         "numerator < denominator",
+         "2/5, 7/9"
+        ],
+        [
+         "Equal to 1",
+         "numerator = denominator",
+         "4/4, 9/9"
+        ],
+        [
+         "More than 1",
+         "numerator > denominator",
+         "7/4, 11/3"
+        ]
+       ],
+       "hi": [
+        [
+         "1 से कम",
+         "अंश < हर",
+         "2/5, 7/9"
+        ],
+        [
+         "1 के बराबर",
+         "अंश = हर",
+         "4/4, 9/9"
+        ],
+        [
+         "1 से अधिक",
+         "अंश > हर",
+         "7/4, 11/3"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "In other books you may see fractions less than 1 called proper fractions and fractions with numerator greater than or equal to the denominator called improper fractions.",
+      "hi": "दूसरी पुस्तकों में आप 1 से कम भिन्नों को उचित भिन्न और जिनका अंश हर के बराबर या उससे बड़ा हो उन्हें विषम भिन्न (अनुचित भिन्न) कहा हुआ देख सकते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Mixed fraction (mixed number)",
+       "hi": "मिश्रित भिन्न (मिश्रित संख्या)"
+      },
+      "text": {
+       "en": "A number written as a whole number together with a fraction less than 1, such as 1 3/4 (one and three-quarters). It means 1 + 3/4.",
+       "hi": "पूर्ण संख्या और 1 से कम भिन्न को साथ लिखकर बनी संख्या, जैसे 1 3/4 (एक पूर्ण तीन बटा चार)। इसका अर्थ है 1 + 3/4।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Writing a fraction greater than one as a mixed fraction: ask how many wholes fit in it. For 17/5: each whole needs 5 fifths. 17 fifths contain 3 groups of 5 (that is 15 fifths) with 2 fifths left over. So 17/5 = 3 2/5. The quick way is to divide the numerator by the denominator: the quotient is the whole number part and the remainder is the new numerator. The denominator stays the same.",
+      "hi": "एक से बड़ी भिन्न को मिश्रित भिन्न में लिखना: पूछिए कि उसमें कितने पूर्ण समाते हैं। 17/5 के लिए: हर पूर्ण में 5 पाँचवें भाग चाहिए। 17 पाँचवें भागों में 5 के 3 समूह (यानी 15 पाँचवें भाग) हैं और 2 पाँचवें भाग बचते हैं। इसलिए 17/5 = 3 2/5। आसान तरीका है अंश को हर से भाग देना: भागफल पूर्ण संख्या वाला भाग है और शेषफल नया अंश है। हर वही रहता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "17 ÷ 5 = 3 remainder 2,   so 17/5 = 3 2/5",
+      "hi": "17 ÷ 5 = 3 शेष 2,   इसलिए 17/5 = 3 2/5"
+     }
+    },
+    {
+     "p": {
+      "en": "Writing a mixed fraction as a fraction: break each whole into fractional units. For 4 1/6: each whole has 6 sixths, so 4 wholes have 4 × 6 = 24 sixths. Add the 1 sixth: 24 + 1 = 25 sixths. So 4 1/6 = 25/6.",
+      "hi": "मिश्रित भिन्न को भिन्न में लिखना: हर पूर्ण को भिन्नात्मक इकाइयों में तोड़िए। 4 1/6 के लिए: हर पूर्ण में 6 छठे भाग हैं, इसलिए 4 पूर्ण में 4 × 6 = 24 छठे भाग। 1 छठा भाग जोड़िए: 24 + 1 = 25 छठे भाग। इसलिए 4 1/6 = 25/6।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Whole a with b/c:  a b/c = (a × c + b)/c",
+      "hi": "पूर्ण a के साथ b/c:  a b/c = (a × c + b)/c"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "How many whole units are there in 11/3 and what is left? Write it as a mixed fraction.",
+       "hi": "11/3 में कितनी पूर्ण इकाइयाँ हैं और क्या बचता है? इसे मिश्रित भिन्न में लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: One whole = 3/3, so we look for groups of 3 thirds in 11 thirds.\nStep 2: 11 ÷ 3 = 3 remainder 2.\nStep 3: 3 wholes use 9 thirds; 2 thirds remain.\nAnswer: 3 whole units with 2/3 left, so 11/3 = 3 2/3.",
+       "hi": "चरण 1: एक पूर्ण = 3/3, इसलिए 11 तिहाई में 3 तिहाई के समूह खोजिए।\nचरण 2: 11 ÷ 3 = 3 शेष 2।\nचरण 3: 3 पूर्ण में 9 तिहाई लगे; 2 तिहाई बचे।\nउत्तर: 3 पूर्ण इकाइयाँ और 2/3 बचा, इसलिए 11/3 = 3 2/3।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write 2 3/8 as a fraction.",
+       "hi": "2 3/8 को भिन्न के रूप में लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: Each whole is 8/8, so 2 wholes = 2 × 8 = 16 eighths.\nStep 2: Add the 3 eighths: 16 + 3 = 19 eighths.\nAnswer: 2 3/8 = 19/8.\nCheck: 19 ÷ 8 = 2 remainder 3, which gives back 2 3/8.",
+       "hi": "चरण 1: हर पूर्ण 8/8 है, इसलिए 2 पूर्ण = 2 × 8 = 16 आठवें भाग।\nचरण 2: 3 आठवें भाग जोड़िए: 16 + 3 = 19 आठवें भाग।\nउत्तर: 2 3/8 = 19/8।\nजाँच: 19 ÷ 8 = 2 शेष 3, जिससे फिर 2 3/8 मिलता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Mother bought 9 half-litre packets of milk. How many litres is that? Write as a fraction and as a mixed fraction.",
+       "hi": "माँ ने आधे-आधे लीटर के 9 दूध के पैकेट खरीदे। यह कितने लीटर है? भिन्न और मिश्रित भिन्न दोनों में लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: Each packet is 1/2 litre, so 9 packets = 9/2 litres.\nStep 2: 9 ÷ 2 = 4 remainder 1.\nAnswer: 9/2 litres = 4 1/2 litres (साढ़े चार लीटर).",
+       "hi": "चरण 1: हर पैकेट 1/2 लीटर है, इसलिए 9 पैकेट = 9/2 लीटर।\nचरण 2: 9 ÷ 2 = 4 शेष 1।\nउत्तर: 9/2 लीटर = 4 1/2 लीटर (साढ़े चार लीटर)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.6 Equivalent Fractions",
+    "hi": "7.6 तुल्य भिन्न"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Take two strips of paper of the same length. Fold the first into 2 equal parts and colour 1 part: that shows 1/2. Fold the second into 4 equal parts and colour 2 parts: that shows 2/4. Place them side by side and the coloured lengths are exactly the same. So 1/2 and 2/4 are the same amount, written with different fractional units. A third strip folded into 8 parts with 4 coloured shows 4/8, again the same length.",
+      "hi": "एक ही लंबाई की दो कागज़ की पट्टियाँ लीजिए। पहली को 2 बराबर भागों में मोड़कर 1 भाग रंगिए: यह 1/2 दिखाता है। दूसरी को 4 बराबर भागों में मोड़कर 2 भाग रंगिए: यह 2/4 दिखाता है। दोनों को साथ रखिए तो रंगी हुई लंबाइयाँ बिल्कुल बराबर हैं। इसलिए 1/2 और 2/4 एक ही मात्रा हैं, केवल अलग भिन्नात्मक इकाइयों में लिखी हुई। तीसरी पट्टी को 8 भागों में मोड़कर 4 भाग रंगें तो 4/8 मिलता है, फिर वही लंबाई।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Equivalent fractions",
+       "hi": "तुल्य भिन्न"
+      },
+      "text": {
+       "en": "Fractions that stand for the same share, length or point on the number line, even though they use different numerators and denominators. Example: 1/2 = 2/4 = 3/6 = 4/8.",
+       "hi": "वे भिन्न जो एक ही हिस्से, लंबाई या संख्या रेखा के एक ही बिंदु को दिखाती हैं, भले ही उनके अंश और हर अलग हों। उदाहरण: 1/2 = 2/4 = 3/6 = 4/8।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why does this work? If every 1/2 piece is cut into 2 equal smaller pieces, each small piece is 1/4 and the one half becomes 2 quarters. If every piece is cut into 3, each small piece is 1/6 and the half becomes 3 sixths. Cutting every piece into the same number k of smaller pieces multiplies the number of pieces we hold by k and multiplies the number of pieces in the whole by k. Nothing is added or eaten, so the amount stays the same.",
+      "hi": "यह क्यों होता है? अगर हर 1/2 टुकड़े को 2 बराबर छोटे टुकड़ों में काटा जाए, तो हर छोटा टुकड़ा 1/4 है और एक आधा 2 चौथाई बन जाता है। अगर हर टुकड़े को 3 में काटा जाए, तो हर छोटा टुकड़ा 1/6 है और आधा 3 छठे भाग बन जाता है। हर टुकड़े को एक ही संख्या k के छोटे टुकड़ों में काटने से हमारे पास के टुकड़े k गुना हो जाते हैं और पूरे के टुकड़े भी k गुना। कुछ जोड़ा या खाया नहीं गया, इसलिए मात्रा वही रहती है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "a/b = (a × k)/(b × k)   for any counting number k",
+      "hi": "a/b = (a × k)/(b × k)   किसी भी गिनती संख्या k के लिए"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Fraction",
+        "× 2",
+        "× 3",
+        "× 4",
+        "× 5"
+       ],
+       "hi": [
+        "भिन्न",
+        "× 2",
+        "× 3",
+        "× 4",
+        "× 5"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1/2",
+         "2/4",
+         "3/6",
+         "4/8",
+         "5/10"
+        ],
+        [
+         "1/3",
+         "2/6",
+         "3/9",
+         "4/12",
+         "5/15"
+        ],
+        [
+         "2/3",
+         "4/6",
+         "6/9",
+         "8/12",
+         "10/15"
+        ],
+        [
+         "3/4",
+         "6/8",
+         "9/12",
+         "12/16",
+         "15/20"
+        ],
+        [
+         "2/5",
+         "4/10",
+         "6/15",
+         "8/20",
+         "10/25"
+        ]
+       ],
+       "hi": [
+        [
+         "1/2",
+         "2/4",
+         "3/6",
+         "4/8",
+         "5/10"
+        ],
+        [
+         "1/3",
+         "2/6",
+         "3/9",
+         "4/12",
+         "5/15"
+        ],
+        [
+         "2/3",
+         "4/6",
+         "6/9",
+         "8/12",
+         "10/15"
+        ],
+        [
+         "3/4",
+         "6/8",
+         "9/12",
+         "12/16",
+         "15/20"
+        ],
+        [
+         "2/5",
+         "4/10",
+         "6/15",
+         "8/20",
+         "10/25"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Understanding equivalent fractions using equal shares. If 3 rotis are shared equally among 4 children, how much does each get? Cut each roti into 4 quarters. That gives 3 × 4 = 12 quarters. Share 12 quarters among 4 children: each gets 3 quarters, that is 3/4 of a roti. In general, a rotis shared equally among b children gives each child a/b of a roti. So a fraction is also a division: 3/4 = 3 ÷ 4.",
+      "hi": "बराबर हिस्सों से तुल्य भिन्न समझना। अगर 3 रोटियाँ 4 बच्चों में बराबर बाँटी जाएँ, तो हर एक को कितना मिलेगा? हर रोटी को 4 चौथाई में काटिए। इससे 3 × 4 = 12 चौथाई मिलते हैं। 12 चौथाई को 4 बच्चों में बाँटिए: हर एक को 3 चौथाई, यानी रोटी का 3/4। सामान्य रूप से, a रोटियाँ b बच्चों में बराबर बाँटने पर हर बच्चे को रोटी का a/b मिलता है। इसलिए भिन्न एक भाग (विभाजन) भी है: 3/4 = 3 ÷ 4।"
+     }
+    },
+    {
+     "formula": {
+      "en": "a things shared equally among b people: each gets a/b = a ÷ b",
+      "hi": "a वस्तुएँ b लोगों में बराबर बाँटने पर: हर एक को a/b = a ÷ b"
+     }
+    },
+    {
+     "p": {
+      "en": "Now compare two sharing situations. 1 roti shared among 2 children gives each 1/2. 2 rotis shared among 4 children also gives each 2/4. But it is clearly the same as the first situation done twice: each pair of children shares 1 roti. So 2/4 = 1/2. In the same way, 3 rotis among 6 children gives 3/6 = 1/2, and 6 rotis among 8 children is like 3 rotis among 4, so 6/8 = 3/4. When both the number of rotis and the number of children are multiplied by the same number, each child's share does not change.",
+      "hi": "अब दो बँटवारों की तुलना कीजिए। 1 रोटी 2 बच्चों में बाँटने पर हर एक को 1/2 मिलता है। 2 रोटियाँ 4 बच्चों में बाँटने पर हर एक को 2/4 मिलता है। पर यह साफ़ है कि यह पहली स्थिति ही दो बार है: हर दो बच्चों का जोड़ा 1 रोटी बाँटता है। इसलिए 2/4 = 1/2। इसी तरह 3 रोटियाँ 6 बच्चों में 3/6 = 1/2 देती हैं, और 6 रोटियाँ 8 बच्चों में, 3 रोटियाँ 4 बच्चों जैसी हैं, इसलिए 6/8 = 3/4। जब रोटियों और बच्चों दोनों की संख्या को एक ही संख्या से गुणा किया जाता है, तो हर बच्चे का हिस्सा नहीं बदलता।"
+     }
+    },
+    {
+     "p": {
+      "en": "Checking whether two fractions are equivalent: write both with the same denominator and compare numerators. For 4/6 and 6/9: 4/6 = 12/18 and 6/9 = 12/18, so they are equal. A shortcut is cross multiplication: a/b = c/d exactly when a × d = b × c. Here 4 × 9 = 36 and 6 × 6 = 36, equal, so the fractions are equivalent.",
+      "hi": "जाँचना कि दो भिन्न तुल्य हैं या नहीं: दोनों को एक ही हर के साथ लिखकर अंशों की तुलना कीजिए। 4/6 और 6/9 के लिए: 4/6 = 12/18 और 6/9 = 12/18, इसलिए ये बराबर हैं। एक छोटा तरीका तिर्यक गुणन (क्रॉस गुणा) है: a/b = c/d ठीक तब जब a × d = b × c। यहाँ 4 × 9 = 36 और 6 × 6 = 36, बराबर, इसलिए भिन्न तुल्य हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the missing numbers: 3/5 = ?/20 and 4/7 = 12/?.",
+       "hi": "लुप्त संख्याएँ ज्ञात कीजिए: 3/5 = ?/20 और 4/7 = 12/?।"
+      },
+      "a": {
+       "en": "Part 1: 5 became 20, so it was multiplied by 4 (20 ÷ 5 = 4). Multiply the numerator by 4 too: 3 × 4 = 12. So 3/5 = 12/20.\nPart 2: 4 became 12, so it was multiplied by 3. Multiply the denominator by 3: 7 × 3 = 21. So 4/7 = 12/21.",
+       "hi": "भाग 1: 5 से 20 बना, यानी 4 से गुणा हुआ (20 ÷ 5 = 4)। अंश को भी 4 से गुणा कीजिए: 3 × 4 = 12। इसलिए 3/5 = 12/20।\nभाग 2: 4 से 12 बना, यानी 3 से गुणा हुआ। हर को 3 से गुणा कीजिए: 7 × 3 = 21। इसलिए 4/7 = 12/21।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write 2/3 and 3/4 as equivalent fractions with the same denominator.",
+       "hi": "2/3 और 3/4 को एक ही हर वाली तुल्य भिन्नों में लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: Find a number that both 3 and 4 divide exactly. The smallest is 12 (the LCM of 3 and 4).\nStep 2: 2/3 = (2 × 4)/(3 × 4) = 8/12.\nStep 3: 3/4 = (3 × 3)/(4 × 3) = 9/12.\nAnswer: 8/12 and 9/12. (24 would also work: 16/24 and 18/24.)",
+       "hi": "चरण 1: ऐसी संख्या खोजिए जिसे 3 और 4 दोनों पूरा-पूरा भाग दें। सबसे छोटी 12 है (3 और 4 का लघुत्तम समापवर्त्य, LCM)।\nचरण 2: 2/3 = (2 × 4)/(3 × 4) = 8/12।\nचरण 3: 3/4 = (3 × 3)/(4 × 3) = 9/12।\nउत्तर: 8/12 और 9/12। (24 भी चलेगा: 16/24 और 18/24।)"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Are 5/8 and 15/24 equivalent? Are 3/7 and 9/28 equivalent?",
+       "hi": "क्या 5/8 और 15/24 तुल्य हैं? क्या 3/7 और 9/28 तुल्य हैं?"
+      },
+      "a": {
+       "en": "Part 1: 5 × 24 = 120 and 8 × 15 = 120. Equal, so 5/8 = 15/24 (both numbers multiplied by 3).\nPart 2: 3 × 28 = 84 and 7 × 9 = 63. Not equal, so 3/7 and 9/28 are NOT equivalent. (3/7 = 12/28, not 9/28.)",
+       "hi": "भाग 1: 5 × 24 = 120 और 8 × 15 = 120। बराबर, इसलिए 5/8 = 15/24 (दोनों संख्याएँ 3 से गुणा)।\nभाग 2: 3 × 28 = 84 और 7 × 9 = 63। बराबर नहीं, इसलिए 3/7 और 9/28 तुल्य नहीं हैं। (3/7 = 12/28 है, 9/28 नहीं।)"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Expressing a fraction in lowest terms (simplest form). Among all fractions equal to 1/2, such as 2/4, 3/6, 50/100, the fraction 1/2 uses the smallest numbers. We get it by dividing the numerator and denominator by the same number, the opposite of multiplying. A fraction is in its simplest form (lowest terms) when the numerator and denominator have no common factor other than 1.",
+      "hi": "भिन्न को सरलतम रूप (न्यूनतम पदों) में लिखना। 1/2 के बराबर सभी भिन्नों, जैसे 2/4, 3/6, 50/100, में 1/2 सबसे छोटी संख्याओं का प्रयोग करती है। हम इसे अंश और हर को एक ही संख्या से भाग देकर पाते हैं, जो गुणा का उल्टा है। कोई भिन्न सरलतम रूप में तब होती है जब उसके अंश और हर का 1 के अलावा कोई सार्व गुणनखंड न हो।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Simplest form (lowest terms)",
+       "hi": "सरलतम रूप (न्यूनतम पद)"
+      },
+      "text": {
+       "en": "A fraction whose numerator and denominator have only 1 as a common factor. 3/4 is in simplest form; 6/8 is not, because 2 divides both 6 and 8.",
+       "hi": "वह भिन्न जिसके अंश और हर का केवल 1 ही सार्व गुणनखंड हो। 3/4 सरलतम रूप में है; 6/8 नहीं, क्योंकि 2, 6 और 8 दोनों को भाग देता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Method 1 (step by step): keep dividing the top and bottom by any common factor (2, 3, 5 ...) until no common factor is left.",
+       "Method 2 (one step): find the HCF (highest common factor) of the numerator and denominator and divide both by it."
+      ],
+      "hi": [
+       "विधि 1 (चरण-दर-चरण): अंश और हर को किसी भी सार्व गुणनखंड (2, 3, 5 ...) से तब तक भाग देते रहिए जब तक कोई सार्व गुणनखंड न बचे।",
+       "विधि 2 (एक चरण में): अंश और हर का महत्तम समापवर्तक (HCF) ज्ञात कीजिए और दोनों को उससे भाग दीजिए।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Reduce 36/48 to its simplest form.",
+       "hi": "36/48 को सरलतम रूप में बदलिए।"
+      },
+      "a": {
+       "en": "Method 1: 36/48 → divide by 2 → 18/24 → divide by 2 → 9/12 → divide by 3 → 3/4. 3 and 4 have no common factor except 1.\nMethod 2: Factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36. Factors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48. HCF = 12. 36 ÷ 12 = 3, 48 ÷ 12 = 4.\nAnswer: 36/48 = 3/4.",
+       "hi": "विधि 1: 36/48 → 2 से भाग → 18/24 → 2 से भाग → 9/12 → 3 से भाग → 3/4। 3 और 4 का 1 के अलावा कोई सार्व गुणनखंड नहीं।\nविधि 2: 36 के गुणनखंड: 1, 2, 3, 4, 6, 9, 12, 18, 36। 48 के गुणनखंड: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48। HCF = 12। 36 ÷ 12 = 3, 48 ÷ 12 = 4।\nउत्तर: 36/48 = 3/4।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write 56/70 and 27/45 in lowest terms.",
+       "hi": "56/70 और 27/45 को न्यूनतम पदों में लिखिए।"
+      },
+      "a": {
+       "en": "Part 1: HCF of 56 and 70 is 14. 56 ÷ 14 = 4, 70 ÷ 14 = 5. So 56/70 = 4/5.\nPart 2: HCF of 27 and 45 is 9. 27 ÷ 9 = 3, 45 ÷ 9 = 5. So 27/45 = 3/5.",
+       "hi": "भाग 1: 56 और 70 का HCF 14 है। 56 ÷ 14 = 4, 70 ÷ 14 = 5। इसलिए 56/70 = 4/5।\nभाग 2: 27 और 45 का HCF 9 है। 27 ÷ 9 = 3, 45 ÷ 9 = 5। इसलिए 27/45 = 3/5।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.7 Comparing Fractions",
+    "hi": "7.7 भिन्नों की तुलना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To compare two fractions means to decide which is bigger, or whether they are equal. On a number line, the bigger fraction lies further to the right. Here are the cases, from easiest to the general method.",
+      "hi": "दो भिन्नों की तुलना करने का अर्थ है यह तय करना कि कौन-सी बड़ी है, या वे बराबर हैं। संख्या रेखा पर बड़ी भिन्न ज़्यादा दाईं ओर होती है। यहाँ आसान से लेकर सामान्य विधि तक के मामले दिए गए हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Case 1, unit fractions: the bigger the denominator, the smaller the fraction. 1/5 > 1/9 because a roti shared by 5 gives bigger pieces than one shared by 9.",
+       "Case 2, same denominator: the pieces are the same size, so more pieces means more. 5/8 > 3/8.",
+       "Case 3, same numerator: we have the same number of pieces, so the one with bigger pieces (smaller denominator) is bigger. 3/5 > 3/7.",
+       "Case 4, compare with a benchmark such as 1/2 or 1: 4/9 is less than 1/2 (half of 9 is 4.5), and 5/8 is more than 1/2 (half of 8 is 4). So 5/8 > 4/9. Also 7/6 > 1 > 6/7.",
+       "Case 5, general method: change both fractions to equivalent fractions with the same denominator, then compare the numerators."
+      ],
+      "hi": [
+       "मामला 1, इकाई भिन्न: हर जितना बड़ा, भिन्न उतनी छोटी। 1/5 > 1/9 क्योंकि 5 में बँटी रोटी के टुकड़े 9 में बँटी रोटी से बड़े होते हैं।",
+       "मामला 2, समान हर: टुकड़े एक ही माप के हैं, इसलिए ज़्यादा टुकड़े मतलब ज़्यादा मात्रा। 5/8 > 3/8।",
+       "मामला 3, समान अंश: टुकड़ों की संख्या बराबर है, इसलिए जिसके टुकड़े बड़े (हर छोटा) हैं वह बड़ी है। 3/5 > 3/7।",
+       "मामला 4, किसी मानक जैसे 1/2 या 1 से तुलना: 4/9, 1/2 से कम है (9 का आधा 4.5 है), और 5/8, 1/2 से अधिक है (8 का आधा 4 है)। इसलिए 5/8 > 4/9। साथ ही 7/6 > 1 > 6/7।",
+       "मामला 5, सामान्य विधि: दोनों भिन्नों को एक ही हर वाली तुल्य भिन्नों में बदलिए, फिर अंशों की तुलना कीजिए।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "A common denominator can always be found by multiplying the two denominators. The smallest common denominator is the LCM of the denominators and keeps the numbers small.",
+      "hi": "दोनों हरों को गुणा करके सार्व (समान) हर हमेशा मिल जाता है। सबसे छोटा सार्व हर हरों का LCM होता है, जिससे संख्याएँ छोटी रहती हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which is bigger, 4/7 or 5/9?",
+       "hi": "कौन बड़ी है, 4/7 या 5/9?"
+      },
+      "a": {
+       "en": "Step 1: A common denominator is 7 × 9 = 63.\nStep 2: 4/7 = (4 × 9)/(7 × 9) = 36/63.\nStep 3: 5/9 = (5 × 7)/(9 × 7) = 35/63.\nStep 4: 36 > 35.\nAnswer: 4/7 > 5/9 (just slightly).",
+       "hi": "चरण 1: एक सार्व हर 7 × 9 = 63 है।\nचरण 2: 4/7 = (4 × 9)/(7 × 9) = 36/63।\nचरण 3: 5/9 = (5 × 7)/(9 × 7) = 35/63।\nचरण 4: 36 > 35।\nउत्तर: 4/7 > 5/9 (थोड़ी-सी)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Compare 7/12 and 5/8.",
+       "hi": "7/12 और 5/8 की तुलना कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: LCM of 12 and 8 is 24.\nStep 2: 7/12 = 14/24 (multiply by 2). 5/8 = 15/24 (multiply by 3).\nStep 3: 14 < 15.\nAnswer: 7/12 < 5/8.",
+       "hi": "चरण 1: 12 और 8 का LCM 24 है।\nचरण 2: 7/12 = 14/24 (2 से गुणा)। 5/8 = 15/24 (3 से गुणा)।\nचरण 3: 14 < 15।\nउत्तर: 7/12 < 5/8।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Arrange in ascending order: 3/4, 5/8, 7/12, 2/3. Then write the descending order.",
+       "hi": "आरोही क्रम में लिखिए: 3/4, 5/8, 7/12, 2/3। फिर अवरोही क्रम भी लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: LCM of 4, 8, 12, 3 is 24.\nStep 2: 3/4 = 18/24, 5/8 = 15/24, 7/12 = 14/24, 2/3 = 16/24.\nStep 3: Order the numerators: 14 < 15 < 16 < 18.\nAscending: 7/12 < 5/8 < 2/3 < 3/4.\nDescending: 3/4 > 2/3 > 5/8 > 7/12.",
+       "hi": "चरण 1: 4, 8, 12, 3 का LCM 24 है।\nचरण 2: 3/4 = 18/24, 5/8 = 15/24, 7/12 = 14/24, 2/3 = 16/24।\nचरण 3: अंशों का क्रम: 14 < 15 < 16 < 18।\nआरोही: 7/12 < 5/8 < 2/3 < 3/4।\nअवरोही: 3/4 > 2/3 > 5/8 > 7/12।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Gopal ate 2/5 of a pizza and Meena ate 3/8 of the same size pizza. Who ate more?",
+       "hi": "गोपाल ने एक पिज़्ज़ा का 2/5 खाया और मीना ने उतने ही बड़े पिज़्ज़ा का 3/8 खाया। किसने ज़्यादा खाया?"
+      },
+      "a": {
+       "en": "Step 1: Common denominator 40.\nStep 2: 2/5 = 16/40 and 3/8 = 15/40.\nAnswer: 16/40 > 15/40, so Gopal ate a little more (1/40 of a pizza more).",
+       "hi": "चरण 1: सार्व हर 40।\nचरण 2: 2/5 = 16/40 और 3/8 = 15/40।\nउत्तर: 16/40 > 15/40, इसलिए गोपाल ने थोड़ा ज़्यादा खाया (पिज़्ज़ा का 1/40 अधिक)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.8 Addition and Subtraction of Fractions",
+    "hi": "7.8 भिन्नों का जोड़ और घटाव"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Adding fractions with the same fractional unit (same denominator). If you eat 2/7 of a cake in the morning and 3/7 in the evening, you have eaten 2 sevenths + 3 sevenths = 5 sevenths = 5/7. The unit (sevenths) is like a label, just as 2 apples + 3 apples = 5 apples. Add the numerators and keep the denominator.",
+      "hi": "समान भिन्नात्मक इकाई (समान हर) वाली भिन्नों का जोड़। अगर आप सुबह केक का 2/7 और शाम को 3/7 खाते हैं, तो आपने 2 सातवें + 3 सातवें = 5 सातवें = 5/7 खाया। इकाई (सातवाँ भाग) एक नाम की तरह है, जैसे 2 सेब + 3 सेब = 5 सेब। अंशों को जोड़िए और हर वही रखिए।"
+     }
+    },
+    {
+     "formula": {
+      "en": "a/c + b/c = (a + b)/c",
+      "hi": "a/c + b/c = (a + b)/c"
+     }
+    },
+    {
+     "note": {
+      "en": "Never add the denominators. 1/2 + 1/2 is 2/2 = 1, not 2/4. Adding two halves gives a whole, not a half.",
+      "hi": "हरों को कभी न जोड़ें। 1/2 + 1/2 = 2/2 = 1 है, 2/4 नहीं। दो आधे मिलकर एक पूरा बनाते हैं, आधा नहीं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Add 5/8 + 7/8 and write the answer as a mixed fraction.",
+       "hi": "5/8 + 7/8 जोड़िए और उत्तर मिश्रित भिन्न में लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: Same denominator, so add numerators: 5 + 7 = 12. The sum is 12/8.\nStep 2: Simplify: HCF of 12 and 8 is 4, so 12/8 = 3/2.\nStep 3: 3/2 = 1 1/2.\nAnswer: 5/8 + 7/8 = 3/2 = 1 1/2.",
+       "hi": "चरण 1: हर समान है, इसलिए अंश जोड़िए: 5 + 7 = 12। योग 12/8 है।\nचरण 2: सरल कीजिए: 12 और 8 का HCF 4 है, इसलिए 12/8 = 3/2।\nचरण 3: 3/2 = 1 1/2।\nउत्तर: 5/8 + 7/8 = 3/2 = 1 1/2।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Adding fractions with different fractional units. What is 1/2 + 1/3? We cannot count halves and thirds together because they are different sizes. So we first cut them into pieces of one common size. Both a half and a third can be cut into sixths: 1/2 = 3/6 and 1/3 = 2/6. Now 3 sixths + 2 sixths = 5 sixths. So 1/2 + 1/3 = 5/6.",
+      "hi": "अलग-अलग भिन्नात्मक इकाइयों वाली भिन्नों का जोड़। 1/2 + 1/3 कितना है? हम आधे और तिहाई को साथ नहीं गिन सकते क्योंकि उनके माप अलग हैं। इसलिए पहले उन्हें एक ही माप के टुकड़ों में काटते हैं। आधा और तिहाई दोनों को छठे भागों में काटा जा सकता है: 1/2 = 3/6 और 1/3 = 2/6। अब 3 छठे + 2 छठे = 5 छठे। इसलिए 1/2 + 1/3 = 5/6।"
+     }
+    },
+    {
+     "p": {
+      "en": "Brahmagupta's method. The great Indian mathematician Brahmagupta, in his book Brahmasphutasiddhanta written in 628 CE, gave a rule for adding and subtracting fractions with different denominators: first make the denominators the same by multiplying the numerator and denominator of each fraction by the denominator of the other fraction (or, for a quicker result, by suitable numbers so that both reach the LCM). Then add or subtract the numerators. This is exactly the method used all over the world today.",
+      "hi": "ब्रह्मगुप्त की विधि। महान भारतीय गणितज्ञ ब्रह्मगुप्त ने 628 ई. में लिखी अपनी पुस्तक ब्राह्मस्फुटसिद्धांत में अलग हर वाली भिन्नों को जोड़ने और घटाने का नियम दिया: पहले हर को समान बनाइए, इसके लिए हर भिन्न के अंश और हर को दूसरी भिन्न के हर से गुणा कीजिए (या जल्दी के लिए ऐसी उपयुक्त संख्याओं से कि दोनों का हर LCM बन जाए)। फिर अंशों को जोड़िए या घटाइए। आज पूरी दुनिया में यही विधि प्रयोग होती है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Find a common denominator, best the LCM of the denominators.",
+       "Step 2: Rewrite each fraction as an equivalent fraction with that denominator.",
+       "Step 3: Add (or subtract) the numerators; keep the common denominator.",
+       "Step 4: Simplify the answer to lowest terms and, if it is more than 1, you may write it as a mixed fraction."
+      ],
+      "hi": [
+       "चरण 1: एक सार्व हर ज्ञात कीजिए, अच्छा हो कि हरों का LCM लें।",
+       "चरण 2: हर भिन्न को उस हर वाली तुल्य भिन्न में फिर से लिखिए।",
+       "चरण 3: अंशों को जोड़िए (या घटाइए); सार्व हर वही रखिए।",
+       "चरण 4: उत्तर को सरलतम रूप में लाइए और अगर वह 1 से अधिक है तो मिश्रित भिन्न में भी लिख सकते हैं।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "a/b + c/d = (a × d + c × b)/(b × d)",
+      "hi": "a/b + c/d = (a × d + c × b)/(b × d)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Add 2/5 + 1/4.",
+       "hi": "2/5 + 1/4 जोड़िए।"
+      },
+      "a": {
+       "en": "Step 1: LCM of 5 and 4 is 20.\nStep 2: 2/5 = 8/20, 1/4 = 5/20.\nStep 3: 8/20 + 5/20 = 13/20.\nStep 4: 13 and 20 have no common factor, so this is the simplest form.\nAnswer: 13/20.",
+       "hi": "चरण 1: 5 और 4 का LCM 20 है।\nचरण 2: 2/5 = 8/20, 1/4 = 5/20।\nचरण 3: 8/20 + 5/20 = 13/20।\nचरण 4: 13 और 20 का कोई सार्व गुणनखंड नहीं, इसलिए यही सरलतम रूप है।\nउत्तर: 13/20।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Add 3/4 + 5/6.",
+       "hi": "3/4 + 5/6 जोड़िए।"
+      },
+      "a": {
+       "en": "Step 1: LCM of 4 and 6 is 12.\nStep 2: 3/4 = 9/12, 5/6 = 10/12.\nStep 3: 9/12 + 10/12 = 19/12.\nStep 4: 19/12 = 1 7/12.\nAnswer: 19/12 = 1 7/12.",
+       "hi": "चरण 1: 4 और 6 का LCM 12 है।\nचरण 2: 3/4 = 9/12, 5/6 = 10/12।\nचरण 3: 9/12 + 10/12 = 19/12।\nचरण 4: 19/12 = 1 7/12।\nउत्तर: 19/12 = 1 7/12।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Add the mixed fractions 1 1/2 + 2 2/3.",
+       "hi": "मिश्रित भिन्नों को जोड़िए: 1 1/2 + 2 2/3।"
+      },
+      "a": {
+       "en": "Method A: Add wholes and fractions separately. Wholes: 1 + 2 = 3. Fractions: 1/2 + 2/3 = 3/6 + 4/6 = 7/6 = 1 1/6. Total: 3 + 1 1/6 = 4 1/6.\nMethod B: Change to fractions. 1 1/2 = 3/2, 2 2/3 = 8/3. 3/2 + 8/3 = 9/6 + 16/6 = 25/6 = 4 1/6.\nAnswer: 4 1/6.",
+       "hi": "विधि A: पूर्ण और भिन्न भाग अलग-अलग जोड़िए। पूर्ण: 1 + 2 = 3। भिन्न: 1/2 + 2/3 = 3/6 + 4/6 = 7/6 = 1 1/6। कुल: 3 + 1 1/6 = 4 1/6।\nविधि B: भिन्न में बदलिए। 1 1/2 = 3/2, 2 2/3 = 8/3। 3/2 + 8/3 = 9/6 + 16/6 = 25/6 = 4 1/6।\nउत्तर: 4 1/6।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Add three fractions: 1/2 + 1/3 + 1/4.",
+       "hi": "तीन भिन्नें जोड़िए: 1/2 + 1/3 + 1/4।"
+      },
+      "a": {
+       "en": "Step 1: LCM of 2, 3 and 4 is 12.\nStep 2: 1/2 = 6/12, 1/3 = 4/12, 1/4 = 3/12.\nStep 3: 6 + 4 + 3 = 13, so the sum is 13/12.\nAnswer: 13/12 = 1 1/12.",
+       "hi": "चरण 1: 2, 3 और 4 का LCM 12 है।\nचरण 2: 1/2 = 6/12, 1/3 = 4/12, 1/4 = 3/12।\nचरण 3: 6 + 4 + 3 = 13, इसलिए योग 13/12 है।\nउत्तर: 13/12 = 1 1/12।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Subtraction of fractions with the same denominator. If 5/6 of a bottle has juice and you drink 1/6, then 5 sixths - 1 sixth = 4 sixths = 4/6 = 2/3 is left. Subtract the numerators and keep the denominator.",
+      "hi": "समान हर वाली भिन्नों का घटाव। अगर बोतल के 5/6 में जूस है और आप 1/6 पी लेते हैं, तो 5 छठे - 1 छठा = 4 छठे = 4/6 = 2/3 बचता है। अंशों को घटाइए और हर वही रखिए।"
+     }
+    },
+    {
+     "formula": {
+      "en": "a/c - b/c = (a - b)/c",
+      "hi": "a/c - b/c = (a - b)/c"
+     }
+    },
+    {
+     "p": {
+      "en": "Subtraction of fractions with different denominators: use Brahmagupta's method again. Make the denominators the same, then subtract the numerators. To subtract from a whole number, write the whole number as a fraction: 1 = 8/8, 2 = 16/8, and so on.",
+      "hi": "अलग हर वाली भिन्नों का घटाव: फिर से ब्रह्मगुप्त की विधि अपनाइए। हरों को समान बनाइए, फिर अंशों को घटाइए। किसी पूर्ण संख्या में से घटाने के लिए पूर्ण संख्या को भिन्न में लिखिए: 1 = 8/8, 2 = 16/8, इत्यादि।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Subtract 7/8 - 1/3.",
+       "hi": "7/8 - 1/3 घटाइए।"
+      },
+      "a": {
+       "en": "Step 1: LCM of 8 and 3 is 24.\nStep 2: 7/8 = 21/24, 1/3 = 8/24.\nStep 3: 21/24 - 8/24 = 13/24.\nAnswer: 13/24.",
+       "hi": "चरण 1: 8 और 3 का LCM 24 है।\nचरण 2: 7/8 = 21/24, 1/3 = 8/24।\nचरण 3: 21/24 - 8/24 = 13/24।\nउत्तर: 13/24।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Subtract 3 1/4 - 1 2/3.",
+       "hi": "3 1/4 - 1 2/3 घटाइए।"
+      },
+      "a": {
+       "en": "Step 1: Change to fractions: 3 1/4 = 13/4, 1 2/3 = 5/3.\nStep 2: LCM of 4 and 3 is 12: 13/4 = 39/12, 5/3 = 20/12.\nStep 3: 39/12 - 20/12 = 19/12.\nStep 4: 19/12 = 1 7/12.\nAnswer: 1 7/12.",
+       "hi": "चरण 1: भिन्न में बदलिए: 3 1/4 = 13/4, 1 2/3 = 5/3।\nचरण 2: 4 और 3 का LCM 12: 13/4 = 39/12, 5/3 = 20/12।\nचरण 3: 39/12 - 20/12 = 19/12।\nचरण 4: 19/12 = 1 7/12।\nउत्तर: 1 7/12।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Raju's school is 5/6 km from his home. He has already walked 1/2 km. How much farther must he walk?",
+       "hi": "राजू का विद्यालय उसके घर से 5/6 km दूर है। वह 1/2 km चल चुका है। उसे और कितना चलना है?"
+      },
+      "a": {
+       "en": "Step 1: Distance left = 5/6 - 1/2.\nStep 2: 1/2 = 3/6.\nStep 3: 5/6 - 3/6 = 2/6 = 1/3.\nAnswer: 1/3 km more.",
+       "hi": "चरण 1: बची दूरी = 5/6 - 1/2।\nचरण 2: 1/2 = 3/6।\nचरण 3: 5/6 - 3/6 = 2/6 = 1/3।\nउत्तर: 1/3 km और।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A puzzle on fractional units. Can 1 whole be written as a sum of different fractional units (unit fractions with different denominators)? With two different units it is impossible: the biggest unit fraction we may use is 1/2, and 1/2 + 1/3 = 5/6 is already less than 1, while 1/2 + 1/2 uses the same unit twice. With three different units there is exactly one way (apart from changing the order): 1/2 + 1/3 + 1/6 = 1. Check: 3/6 + 2/6 + 1/6 = 6/6 = 1. With four different units there are 6 ways, for example 1/2 + 1/4 + 1/6 + 1/12 = 1 and 1/2 + 1/3 + 1/7 + 1/42 = 1. Try to find the other four!",
+      "hi": "भिन्नात्मक इकाइयों की एक पहेली। क्या 1 पूर्ण को अलग-अलग भिन्नात्मक इकाइयों (अलग हर वाली इकाई भिन्नों) के योग के रूप में लिखा जा सकता है? दो अलग इकाइयों से यह असंभव है: सबसे बड़ी इकाई भिन्न जो हम ले सकते हैं 1/2 है, और 1/2 + 1/3 = 5/6 पहले ही 1 से कम है, जबकि 1/2 + 1/2 में एक ही इकाई दो बार है। तीन अलग इकाइयों से ठीक एक तरीका है (क्रम बदलने के अलावा): 1/2 + 1/3 + 1/6 = 1। जाँच: 3/6 + 2/6 + 1/6 = 6/6 = 1। चार अलग इकाइयों से 6 तरीके हैं, जैसे 1/2 + 1/4 + 1/6 + 1/12 = 1 और 1/2 + 1/3 + 1/7 + 1/42 = 1। बाकी चार तरीके खोजने का प्रयास कीजिए!"
+     }
+    },
+    {
+     "note": {
+      "en": "The six ways for four different unit fractions are: (2, 3, 7, 42), (2, 3, 8, 24), (2, 3, 9, 18), (2, 3, 10, 15), (2, 4, 5, 20), (2, 4, 6, 12), where each number is a denominator. For example 1/2 + 1/4 + 1/5 + 1/20 = 10/20 + 5/20 + 4/20 + 1/20 = 20/20 = 1.",
+      "hi": "चार अलग इकाई भिन्नों के छह तरीके ये हैं: (2, 3, 7, 42), (2, 3, 8, 24), (2, 3, 9, 18), (2, 3, 10, 15), (2, 4, 5, 20), (2, 4, 6, 12), जहाँ हर संख्या एक हर है। उदाहरण के लिए 1/2 + 1/4 + 1/5 + 1/20 = 10/20 + 5/20 + 4/20 + 1/20 = 20/20 = 1।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.9 A Pinch of History",
+    "hi": "7.9 थोड़ा इतिहास"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "India has a very long history with fractions. In Sanskrit, a fraction was called bhinna, meaning broken, and also bhaga or ansha, meaning part or piece. That is why the Hindi word for fraction is भिन्न and the word for numerator is अंश.",
+      "hi": "भारत में भिन्नों का बहुत लंबा इतिहास है। संस्कृत में भिन्न को भिन्न (अर्थात टूटा हुआ) कहा जाता था, और भाग या अंश (अर्थात हिस्सा या टुकड़ा) भी। इसी कारण हिंदी में fraction को भिन्न और numerator को अंश कहते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Vedic times: the Sulbasutras, ancient texts on making fire altars, show that Indians knew rules for working with fractions. The Rig Veda uses tripada for 3/4.",
+       "Bakhshali manuscript (around 300 CE): fractions are written with one number above the other, very much like today, but without the line in between.",
+       "Aryabhata (499 CE), Brahmagupta (628 CE), Sridharacharya (around 750 CE) and Mahaviracharya (around 850 CE) used and developed this notation and the rules of fraction arithmetic.",
+       "Brahmagupta, in the Brahmasphutasiddhanta, wrote down the method of adding and subtracting fractions by making their denominators the same, which we still use.",
+       "Ancient Egyptians and Babylonians mostly used fractional units only. Writing a fraction as a sum of different unit fractions, like 3/4 = 1/2 + 1/4, is called an Egyptian fraction.",
+       "The Moroccan mathematician Al-Hassar, in the 12th century, began using the horizontal line between the numerator and the denominator.",
+       "The Indian methods travelled through the Arab world to Europe, where they came into general use around the 17th century."
+      ],
+      "hi": [
+       "वैदिक काल: शुल्बसूत्र, जो यज्ञ-वेदियाँ बनाने पर प्राचीन ग्रंथ हैं, दिखाते हैं कि भारतीय भिन्नों के साथ काम करने के नियम जानते थे। ऋग्वेद में 3/4 के लिए त्रिपाद शब्द आया है।",
+       "बख्शाली पांडुलिपि (लगभग 300 ई.): भिन्नों को एक संख्या के ऊपर दूसरी संख्या लिखकर दिखाया गया है, बिल्कुल आज जैसा, पर बीच में रेखा के बिना।",
+       "आर्यभट (499 ई.), ब्रह्मगुप्त (628 ई.), श्रीधराचार्य (लगभग 750 ई.) और महावीराचार्य (लगभग 850 ई.) ने इस लेखन पद्धति और भिन्नों के अंकगणित के नियमों का प्रयोग और विकास किया।",
+       "ब्रह्मगुप्त ने ब्राह्मस्फुटसिद्धांत में हरों को समान बनाकर भिन्नों को जोड़ने-घटाने की विधि लिखी, जिसका प्रयोग हम आज भी करते हैं।",
+       "प्राचीन मिस्र और बेबीलोन के लोग अधिकतर केवल भिन्नात्मक इकाइयों का प्रयोग करते थे। किसी भिन्न को अलग-अलग इकाई भिन्नों के योग के रूप में लिखना, जैसे 3/4 = 1/2 + 1/4, मिस्री भिन्न कहलाता है।",
+       "12वीं शताब्दी में मोरक्को के गणितज्ञ अल-हस्सार ने अंश और हर के बीच क्षैतिज रेखा का प्रयोग शुरू किया।",
+       "भारतीय विधियाँ अरब जगत से होकर यूरोप पहुँचीं, जहाँ लगभग 17वीं शताब्दी तक ये आम प्रयोग में आ गईं।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write 7/12 as an Egyptian fraction, that is, as a sum of different unit fractions.",
+       "hi": "7/12 को मिस्री भिन्न के रूप में, यानी अलग-अलग इकाई भिन्नों के योग के रूप में लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: Try the biggest unit fraction not more than 7/12. 1/2 = 6/12 works.\nStep 2: 7/12 - 6/12 = 1/12, which is already a unit fraction.\nAnswer: 7/12 = 1/2 + 1/12. (Another way: 7/12 = 1/3 + 1/4, because 4/12 + 3/12 = 7/12.)",
+       "hi": "चरण 1: 7/12 से बड़ी न होने वाली सबसे बड़ी इकाई भिन्न आज़माइए। 1/2 = 6/12 ठीक है।\nचरण 2: 7/12 - 6/12 = 1/12, जो पहले से इकाई भिन्न है।\nउत्तर: 7/12 = 1/2 + 1/12। (दूसरा तरीका: 7/12 = 1/3 + 1/4, क्योंकि 4/12 + 3/12 = 7/12।)"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Calling unequal pieces fractions. A roti torn into one big and one small piece is not cut into halves. Fix: a fractional unit always comes from EQUAL parts.",
+   "Thinking 1/8 is bigger than 1/4 because 8 is bigger than 4. Fix: the denominator counts how many pieces the whole is cut into; more pieces means smaller pieces, so 1/8 < 1/4.",
+   "Adding denominators: writing 1/3 + 1/3 = 2/6. Fix: thirds plus thirds are still thirds. 1/3 + 1/3 = 2/3. Only numerators are added when the denominators are the same.",
+   "Adding fractions with different denominators directly: 1/2 + 1/4 = 2/6. Fix: first make the units the same: 1/2 = 2/4, so 1/2 + 1/4 = 2/4 + 1/4 = 3/4.",
+   "Multiplying only the numerator or only the denominator to get an equivalent fraction, like 2/3 = 4/3. Fix: multiply (or divide) BOTH by the same number: 2/3 = 4/6.",
+   "Converting mixed fractions wrongly, e.g. 3 2/5 = 3 × 2/5 or = 5/5. Fix: 3 2/5 = (3 × 5 + 2)/5 = 17/5.",
+   "Stopping simplification too early, e.g. leaving 18/24 as 9/12. Fix: keep dividing until the only common factor is 1, or divide by the HCF at once: 18/24 = 3/4.",
+   "Comparing fractions by looking only at numerators, e.g. saying 3/10 > 2/5 because 3 > 2. Fix: use a common denominator: 2/5 = 4/10, so 3/10 < 2/5.",
+   "When subtracting mixed fractions, subtracting the bigger fraction part from the smaller one the wrong way, e.g. 3 1/4 - 1 2/3 = 2 1/12. Fix: convert to fractions first (13/4 - 5/3 = 39/12 - 20/12 = 19/12 = 1 7/12) or borrow 1 whole.",
+   "Forgetting that the whole must be the same when comparing. Half of a small roti is not the same as half of a big roti. Fix: fractions can be compared only when they are parts of equal wholes."
+  ],
+  "hi": [
+   "असमान टुकड़ों को भिन्न कहना। एक बड़े और एक छोटे टुकड़े में फटी रोटी आधे-आधे में नहीं कटी। सुधार: भिन्नात्मक इकाई हमेशा बराबर भागों से बनती है।",
+   "यह सोचना कि 1/8, 1/4 से बड़ा है क्योंकि 8, 4 से बड़ा है। सुधार: हर गिनता है कि पूरी वस्तु कितने टुकड़ों में कटी; ज़्यादा टुकड़े मतलब छोटे टुकड़े, इसलिए 1/8 < 1/4।",
+   "हरों को जोड़ना: 1/3 + 1/3 = 2/6 लिखना। सुधार: तिहाई और तिहाई मिलकर तिहाई ही रहते हैं। 1/3 + 1/3 = 2/3। हर समान हों तो केवल अंश जुड़ते हैं।",
+   "अलग हर वाली भिन्नों को सीधे जोड़ना: 1/2 + 1/4 = 2/6। सुधार: पहले इकाइयाँ समान बनाइए: 1/2 = 2/4, इसलिए 1/2 + 1/4 = 2/4 + 1/4 = 3/4।",
+   "तुल्य भिन्न बनाने के लिए केवल अंश या केवल हर को गुणा करना, जैसे 2/3 = 4/3। सुधार: दोनों को एक ही संख्या से गुणा (या भाग) कीजिए: 2/3 = 4/6।",
+   "मिश्रित भिन्न को गलत बदलना, जैसे 3 2/5 = 3 × 2/5 या = 5/5। सुधार: 3 2/5 = (3 × 5 + 2)/5 = 17/5।",
+   "सरल करना बीच में ही रोक देना, जैसे 18/24 को 9/12 पर छोड़ देना। सुधार: तब तक भाग देते रहिए जब तक केवल 1 सार्व गुणनखंड बचे, या एक बार में HCF से भाग दीजिए: 18/24 = 3/4।",
+   "केवल अंश देखकर तुलना करना, जैसे 3/10 > 2/5 कहना क्योंकि 3 > 2। सुधार: सार्व हर लीजिए: 2/5 = 4/10, इसलिए 3/10 < 2/5।",
+   "मिश्रित भिन्न घटाते समय छोटे भिन्न भाग में से बड़ा भाग उल्टा घटा देना, जैसे 3 1/4 - 1 2/3 = 2 1/12। सुधार: पहले भिन्न में बदलिए (13/4 - 5/3 = 39/12 - 20/12 = 19/12 = 1 7/12) या 1 पूर्ण उधार लीजिए।",
+   "तुलना करते समय भूल जाना कि पूर्ण एक जैसा होना चाहिए। छोटी रोटी का आधा, बड़ी रोटी के आधे के बराबर नहीं है। सुधार: भिन्नों की तुलना तभी होती है जब वे बराबर पूर्णों के भाग हों।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Whole",
+    "hi": "पूर्ण"
+   },
+   "d": {
+    "en": "The complete object or quantity that is being divided, taken as 1.",
+    "hi": "वह पूरी वस्तु या मात्रा जिसे बाँटा जा रहा है, जिसे 1 माना जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Fractional unit (unit fraction)",
+    "hi": "भिन्नात्मक इकाई (इकाई भिन्न)"
+   },
+   "d": {
+    "en": "One of the equal parts of a whole, written with numerator 1, such as 1/3.",
+    "hi": "पूरे के बराबर भागों में से एक भाग, जिसका अंश 1 होता है, जैसे 1/3।"
+   }
+  },
+  {
+   "t": {
+    "en": "Fraction",
+    "hi": "भिन्न"
+   },
+   "d": {
+    "en": "A number that counts fractional units, such as 4/5 = four units of 1/5.",
+    "hi": "भिन्नात्मक इकाइयों को गिनने वाली संख्या, जैसे 4/5 = 1/5 की चार इकाइयाँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Numerator",
+    "hi": "अंश"
+   },
+   "d": {
+    "en": "The top number of a fraction; how many units are taken.",
+    "hi": "भिन्न की ऊपर वाली संख्या; कितनी इकाइयाँ ली गईं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Denominator",
+    "hi": "हर"
+   },
+   "d": {
+    "en": "The bottom number of a fraction; into how many equal parts the whole is divided.",
+    "hi": "भिन्न की नीचे वाली संख्या; पूरा कितने बराबर भागों में बँटा है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Half, third, quarter",
+    "hi": "आधा, तिहाई, चौथाई (पाव)"
+   },
+   "d": {
+    "en": "Everyday names for 1/2, 1/3 and 1/4.",
+    "hi": "1/2, 1/3 और 1/4 के रोज़मर्रा के नाम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Number line",
+    "hi": "संख्या रेखा"
+   },
+   "d": {
+    "en": "A line with numbers marked at equal gaps; fractions are points between them.",
+    "hi": "एक रेखा जिस पर संख्याएँ बराबर दूरी पर अंकित हों; भिन्न उनके बीच के बिंदु हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Fraction greater than one",
+    "hi": "एक से बड़ी भिन्न"
+   },
+   "d": {
+    "en": "A fraction whose numerator is bigger than its denominator, like 9/4 (often called an improper fraction).",
+    "hi": "वह भिन्न जिसका अंश हर से बड़ा हो, जैसे 9/4 (इसे प्रायः विषम भिन्न कहते हैं)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Proper fraction",
+    "hi": "उचित भिन्न"
+   },
+   "d": {
+    "en": "A fraction less than 1; numerator smaller than denominator, like 3/7.",
+    "hi": "1 से कम भिन्न; अंश हर से छोटा, जैसे 3/7।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mixed fraction (mixed number)",
+    "hi": "मिश्रित भिन्न (मिश्रित संख्या)"
+   },
+   "d": {
+    "en": "A whole number together with a fraction less than 1, like 2 1/4 = 2 + 1/4.",
+    "hi": "पूर्ण संख्या के साथ 1 से कम भिन्न, जैसे 2 1/4 = 2 + 1/4।"
+   }
+  },
+  {
+   "t": {
+    "en": "Equivalent fractions",
+    "hi": "तुल्य भिन्न"
+   },
+   "d": {
+    "en": "Fractions that show the same amount, like 2/3 = 4/6 = 6/9.",
+    "hi": "वे भिन्न जो एक ही मात्रा दिखाती हैं, जैसे 2/3 = 4/6 = 6/9।"
+   }
+  },
+  {
+   "t": {
+    "en": "Simplest form (lowest terms)",
+    "hi": "सरलतम रूप (न्यूनतम पद)"
+   },
+   "d": {
+    "en": "The equivalent fraction in which numerator and denominator have no common factor except 1.",
+    "hi": "वह तुल्य भिन्न जिसमें अंश और हर का 1 के अलावा कोई सार्व गुणनखंड न हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Common factor and HCF",
+    "hi": "सार्व गुणनखंड और HCF (महत्तम समापवर्तक)"
+   },
+   "d": {
+    "en": "A number dividing both numerator and denominator; the HCF is the biggest such number.",
+    "hi": "वह संख्या जो अंश और हर दोनों को भाग दे; HCF ऐसी सबसे बड़ी संख्या है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Common denominator and LCM",
+    "hi": "सार्व हर और LCM (लघुत्तम समापवर्त्य)"
+   },
+   "d": {
+    "en": "A denominator shared by two or more fractions after rewriting; the LCM of the denominators is the smallest one.",
+    "hi": "दोबारा लिखने के बाद दो या अधिक भिन्नों का समान हर; हरों का LCM सबसे छोटा सार्व हर है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Cross multiplication",
+    "hi": "तिर्यक गुणन (क्रॉस गुणा)"
+   },
+   "d": {
+    "en": "Test for a/b = c/d: check whether a × d = b × c.",
+    "hi": "a/b = c/d की जाँच: देखिए a × d = b × c है या नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ascending / descending order",
+    "hi": "आरोही / अवरोही क्रम"
+   },
+   "d": {
+    "en": "Smallest to largest / largest to smallest.",
+    "hi": "सबसे छोटे से सबसे बड़े तक / सबसे बड़े से सबसे छोटे तक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Brahmagupta's method",
+    "hi": "ब्रह्मगुप्त की विधि"
+   },
+   "d": {
+    "en": "Adding or subtracting fractions by first making their denominators the same (628 CE).",
+    "hi": "पहले हर समान बनाकर भिन्नों को जोड़ने या घटाने की विधि (628 ई.)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Egyptian fraction",
+    "hi": "मिस्री भिन्न"
+   },
+   "d": {
+    "en": "A fraction written as a sum of different unit fractions, like 5/6 = 1/2 + 1/3.",
+    "hi": "अलग-अलग इकाई भिन्नों के योग के रूप में लिखी भिन्न, जैसे 5/6 = 1/2 + 1/3।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bhinna, bhaga, ansha",
+    "hi": "भिन्न, भाग, अंश"
+   },
+   "d": {
+    "en": "Old Sanskrit words for a fraction, meaning broken, part and piece.",
+    "hi": "भिन्न के लिए प्राचीन संस्कृत शब्द, जिनका अर्थ टूटा हुआ, भाग और टुकड़ा है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Tripada",
+    "hi": "त्रिपाद"
+   },
+   "d": {
+    "en": "The Rig Vedic word for three-quarters (3/4).",
+    "hi": "तीन-चौथाई (3/4) के लिए ऋग्वैदिक शब्द।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "3 rotis are shared equally among 4 children. How much roti does each child get?",
+    "hi": "3 रोटियाँ 4 बच्चों में बराबर बाँटी जाती हैं। हर बच्चे को कितनी रोटी मिलती है?"
+   },
+   "a": {
+    "en": "Cut each roti into 4 quarters: 3 × 4 = 12 quarters. 12 quarters ÷ 4 children = 3 quarters each.\nAnswer: 3/4 of a roti each.",
+    "hi": "हर रोटी को 4 चौथाई में काटिए: 3 × 4 = 12 चौथाई। 12 चौथाई ÷ 4 बच्चे = हर एक को 3 चौथाई।\nउत्तर: हर एक को रोटी का 3/4।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Arrange from smallest to largest: 1/4, 1/9, 1/2, 1/6.",
+    "hi": "सबसे छोटे से सबसे बड़े के क्रम में लगाइए: 1/4, 1/9, 1/2, 1/6।"
+   },
+   "a": {
+    "en": "All are unit fractions, so the bigger the denominator, the smaller the fraction.\nAnswer: 1/9 < 1/6 < 1/4 < 1/2.",
+    "hi": "सभी इकाई भिन्न हैं, इसलिए हर जितना बड़ा, भिन्न उतनी छोटी।\nउत्तर: 1/9 < 1/6 < 1/4 < 1/2।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "A chikki bar is broken into pieces. One piece is so big that exactly 4 such pieces would make the whole bar, and another piece is half of that piece. What fraction of the bar is each piece?",
+    "hi": "एक चिक्की कई टुकड़ों में टूटी है। एक टुकड़ा इतना बड़ा है कि ठीक ऐसे 4 टुकड़े पूरी चिक्की बनाएँगे, और दूसरा टुकड़ा उस टुकड़े का आधा है। हर टुकड़ा चिक्की का कौन-सा भाग है?"
+   },
+   "a": {
+    "en": "First piece: 4 copies make the whole, so it is 1/4.\nSecond piece: half of 1/4 is 1/8 (8 such pieces make the whole).\nAnswer: 1/4 and 1/8.",
+    "hi": "पहला टुकड़ा: 4 प्रतियाँ पूरा बनाती हैं, इसलिए यह 1/4 है।\nदूसरा टुकड़ा: 1/4 का आधा 1/8 है (ऐसे 8 टुकड़े पूरा बनाते हैं)।\nउत्तर: 1/4 और 1/8।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "A strip is folded in half again and again. After 3 folds each piece is 1/8. What will each piece be after 5 folds and after 6 folds?",
+    "hi": "एक पट्टी को बार-बार आधा मोड़ा जाता है। 3 मोड़ों के बाद हर टुकड़ा 1/8 है। 5 मोड़ों और 6 मोड़ों के बाद हर टुकड़ा कितना होगा?"
+   },
+   "a": {
+    "en": "Each fold doubles the number of pieces: 8 → 16 (4 folds) → 32 (5 folds) → 64 (6 folds).\nAnswer: 1/32 after 5 folds and 1/64 after 6 folds.",
+    "hi": "हर मोड़ टुकड़ों की संख्या दुगुनी करता है: 8 → 16 (4 मोड़) → 32 (5 मोड़) → 64 (6 मोड़)।\nउत्तर: 5 मोड़ों के बाद 1/32 और 6 मोड़ों के बाद 1/64।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write as a single fraction and read it: 1/9 + 1/9 + 1/9 + 1/9.",
+    "hi": "एक भिन्न के रूप में लिखिए और पढ़िए: 1/9 + 1/9 + 1/9 + 1/9।"
+   },
+   "a": {
+    "en": "There are 4 units of 1/9.\nAnswer: 4/9, read as four-ninths (चार बटा नौ). Numerator 4, denominator 9.",
+    "hi": "1/9 की 4 इकाइयाँ हैं।\nउत्तर: 4/9, जिसे चार बटा नौ पढ़ते हैं। अंश 4, हर 9।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "On a number line, the unit from 0 to 1 is 10 cm long. How far from 0 will you mark 7/10 and 13/10?",
+    "hi": "एक संख्या रेखा पर 0 से 1 की इकाई 10 cm लंबी है। आप 7/10 और 13/10 को 0 से कितनी दूरी पर अंकित करेंगे?"
+   },
+   "a": {
+    "en": "Each tenth is 10 ÷ 10 = 1 cm.\n7/10 → 7 cm from 0.\n13/10 → 13 cm from 0, which is 3 cm past the point 1.\nAnswer: 7 cm and 13 cm.",
+    "hi": "हर दसवाँ भाग 10 ÷ 10 = 1 cm है।\n7/10 → 0 से 7 cm।\n13/10 → 0 से 13 cm, यानी बिंदु 1 से 3 cm आगे।\nउत्तर: 7 cm और 13 cm।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write all fractions with denominator 7 that lie between 0 and 1. How many fractions in all (with any denominator) lie between 0 and 1?",
+    "hi": "हर 7 वाली वे सभी भिन्नें लिखिए जो 0 और 1 के बीच हैं। कुल मिलाकर (किसी भी हर वाली) कितनी भिन्नें 0 और 1 के बीच हैं?"
+   },
+   "a": {
+    "en": "With denominator 7: 1/7, 2/7, 3/7, 4/7, 5/7, 6/7 (six fractions; 0/7 = 0 and 7/7 = 1 are the ends).\nWith any denominator there are infinitely many, because the unit can be cut into as many equal parts as we like.",
+    "hi": "हर 7 के साथ: 1/7, 2/7, 3/7, 4/7, 5/7, 6/7 (छह भिन्नें; 0/7 = 0 और 7/7 = 1 सिरे हैं)।\nकिसी भी हर के साथ अनगिनत भिन्नें हैं, क्योंकि इकाई को जितने चाहें उतने बराबर भागों में बाँटा जा सकता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write as mixed fractions: 23/4 and 29/6.",
+    "hi": "मिश्रित भिन्न में लिखिए: 23/4 और 29/6।"
+   },
+   "a": {
+    "en": "23 ÷ 4 = 5 remainder 3, so 23/4 = 5 3/4.\n29 ÷ 6 = 4 remainder 5, so 29/6 = 4 5/6.",
+    "hi": "23 ÷ 4 = 5 शेष 3, इसलिए 23/4 = 5 3/4।\n29 ÷ 6 = 4 शेष 5, इसलिए 29/6 = 4 5/6।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write as fractions: 5 2/7 and 3 4/9.",
+    "hi": "भिन्न में लिखिए: 5 2/7 और 3 4/9।"
+   },
+   "a": {
+    "en": "5 2/7 = (5 × 7 + 2)/7 = 37/7.\n3 4/9 = (3 × 9 + 4)/9 = 31/9.",
+    "hi": "5 2/7 = (5 × 7 + 2)/7 = 37/7।\n3 4/9 = (3 × 9 + 4)/9 = 31/9।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Fill in the missing numbers: 5/6 = 20/? = ?/42.",
+    "hi": "लुप्त संख्याएँ भरिए: 5/6 = 20/? = ?/42।"
+   },
+   "a": {
+    "en": "5 → 20 means × 4, so 6 × 4 = 24: 5/6 = 20/24.\n6 → 42 means × 7, so 5 × 7 = 35: 5/6 = 35/42.\nAnswer: 24 and 35.",
+    "hi": "5 → 20 का अर्थ × 4, इसलिए 6 × 4 = 24: 5/6 = 20/24।\n6 → 42 का अर्थ × 7, इसलिए 5 × 7 = 35: 5/6 = 35/42।\nउत्तर: 24 और 35।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write three fractions equivalent to 2/7.",
+    "hi": "2/7 की तीन तुल्य भिन्नें लिखिए।"
+   },
+   "a": {
+    "en": "Multiply top and bottom by 2, 3 and 4.\nAnswer: 4/14, 6/21, 8/28.",
+    "hi": "अंश और हर को 2, 3 और 4 से गुणा कीजिए।\nउत्तर: 4/14, 6/21, 8/28।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Rewrite 3/8 and 5/12 so that they have the same denominator.",
+    "hi": "3/8 और 5/12 को ऐसे लिखिए कि उनका हर समान हो।"
+   },
+   "a": {
+    "en": "LCM of 8 and 12 is 24.\n3/8 = 9/24 (× 3) and 5/12 = 10/24 (× 2).\nAnswer: 9/24 and 10/24.",
+    "hi": "8 और 12 का LCM 24 है।\n3/8 = 9/24 (× 3) और 5/12 = 10/24 (× 2)।\nउत्तर: 9/24 और 10/24।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Reduce to lowest terms: 42/56 and 48/72.",
+    "hi": "न्यूनतम पदों में बदलिए: 42/56 और 48/72।"
+   },
+   "a": {
+    "en": "HCF of 42 and 56 is 14: 42/56 = 3/4.\nHCF of 48 and 72 is 24: 48/72 = 2/3.",
+    "hi": "42 और 56 का HCF 14 है: 42/56 = 3/4।\n48 और 72 का HCF 24 है: 48/72 = 2/3।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Group A shares 6 rotis equally among 8 children. Group B shares 3 rotis equally among 4 children. In which group does a child get more?",
+    "hi": "समूह A, 6 रोटियाँ 8 बच्चों में बराबर बाँटता है। समूह B, 3 रोटियाँ 4 बच्चों में बराबर बाँटता है। किस समूह में एक बच्चे को ज़्यादा मिलता है?"
+   },
+   "a": {
+    "en": "Group A: each gets 6/8. Group B: each gets 3/4.\n6/8 = (6 ÷ 2)/(8 ÷ 2) = 3/4. Group A is just Group B doubled.\nAnswer: Both get the same, 3/4 of a roti.",
+    "hi": "समूह A: हर एक को 6/8। समूह B: हर एक को 3/4।\n6/8 = (6 ÷ 2)/(8 ÷ 2) = 3/4। समूह A, समूह B का ही दुगुना है।\nउत्तर: दोनों को बराबर, रोटी का 3/4 मिलता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which is bigger: 5/6 or 7/9? Give a reason.",
+    "hi": "कौन बड़ी है: 5/6 या 7/9? कारण दीजिए।"
+   },
+   "a": {
+    "en": "LCM of 6 and 9 is 18. 5/6 = 15/18, 7/9 = 14/18.\n15 > 14, so 5/6 > 7/9.",
+    "hi": "6 और 9 का LCM 18 है। 5/6 = 15/18, 7/9 = 14/18।\n15 > 14, इसलिए 5/6 > 7/9।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Without finding a common denominator, decide which is bigger: 3/7 or 5/8.",
+    "hi": "सार्व हर निकाले बिना बताइए कौन बड़ी है: 3/7 या 5/8।"
+   },
+   "a": {
+    "en": "Compare with 1/2. Half of 7 is 3.5, and 3 < 3.5, so 3/7 < 1/2. Half of 8 is 4, and 5 > 4, so 5/8 > 1/2.\nAnswer: 3/7 < 1/2 < 5/8, so 5/8 is bigger.",
+    "hi": "1/2 से तुलना कीजिए। 7 का आधा 3.5 है, और 3 < 3.5, इसलिए 3/7 < 1/2। 8 का आधा 4 है, और 5 > 4, इसलिए 5/8 > 1/2।\nउत्तर: 3/7 < 1/2 < 5/8, इसलिए 5/8 बड़ी है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Arrange in ascending order: 2/3, 3/5, 7/10, 1/2.",
+    "hi": "आरोही क्रम में लगाइए: 2/3, 3/5, 7/10, 1/2।"
+   },
+   "a": {
+    "en": "LCM of 3, 5, 10, 2 is 30.\n2/3 = 20/30, 3/5 = 18/30, 7/10 = 21/30, 1/2 = 15/30.\nAnswer: 1/2 < 3/5 < 2/3 < 7/10.",
+    "hi": "3, 5, 10, 2 का LCM 30 है।\n2/3 = 20/30, 3/5 = 18/30, 7/10 = 21/30, 1/2 = 15/30।\nउत्तर: 1/2 < 3/5 < 2/3 < 7/10।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Add: 5/9 + 2/9.",
+    "hi": "जोड़िए: 5/9 + 2/9।"
+   },
+   "a": {
+    "en": "Same denominator, add numerators: 5 + 2 = 7.\nAnswer: 7/9.",
+    "hi": "हर समान है, अंश जोड़िए: 5 + 2 = 7।\nउत्तर: 7/9।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Add using Brahmagupta's method: 3/8 + 5/12.",
+    "hi": "ब्रह्मगुप्त की विधि से जोड़िए: 3/8 + 5/12।"
+   },
+   "a": {
+    "en": "LCM of 8 and 12 is 24. 3/8 = 9/24, 5/12 = 10/24.\n9/24 + 10/24 = 19/24.\nAnswer: 19/24.",
+    "hi": "8 और 12 का LCM 24 है। 3/8 = 9/24, 5/12 = 10/24।\n9/24 + 10/24 = 19/24।\nउत्तर: 19/24।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Add: 2/3 + 3/8.",
+    "hi": "जोड़िए: 2/3 + 3/8।"
+   },
+   "a": {
+    "en": "LCM of 3 and 8 is 24. 2/3 = 16/24, 3/8 = 9/24.\n16/24 + 9/24 = 25/24 = 1 1/24.\nAnswer: 25/24 = 1 1/24.",
+    "hi": "3 और 8 का LCM 24 है। 2/3 = 16/24, 3/8 = 9/24।\n16/24 + 9/24 = 25/24 = 1 1/24।\nउत्तर: 25/24 = 1 1/24।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Add: 2 1/4 + 1 5/6.",
+    "hi": "जोड़िए: 2 1/4 + 1 5/6।"
+   },
+   "a": {
+    "en": "Wholes: 2 + 1 = 3. Fractions: 1/4 + 5/6 = 3/12 + 10/12 = 13/12 = 1 1/12.\nTotal: 3 + 1 1/12 = 4 1/12 (= 49/12).",
+    "hi": "पूर्ण: 2 + 1 = 3। भिन्न: 1/4 + 5/6 = 3/12 + 10/12 = 13/12 = 1 1/12।\nकुल: 3 + 1 1/12 = 4 1/12 (= 49/12)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Subtract: 9/10 - 3/4.",
+    "hi": "घटाइए: 9/10 - 3/4।"
+   },
+   "a": {
+    "en": "LCM of 10 and 4 is 20. 9/10 = 18/20, 3/4 = 15/20.\n18/20 - 15/20 = 3/20.\nAnswer: 3/20.",
+    "hi": "10 और 4 का LCM 20 है। 9/10 = 18/20, 3/4 = 15/20।\n18/20 - 15/20 = 3/20।\nउत्तर: 3/20।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Subtract: 5 - 7/3.",
+    "hi": "घटाइए: 5 - 7/3।"
+   },
+   "a": {
+    "en": "Write 5 as thirds: 5 = 15/3.\n15/3 - 7/3 = 8/3 = 2 2/3.\nAnswer: 2 2/3.",
+    "hi": "5 को तिहाई में लिखिए: 5 = 15/3।\n15/3 - 7/3 = 8/3 = 2 2/3।\nउत्तर: 2 2/3।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "To make green paint, Kabir mixes 2/3 litre of yellow paint with 3/4 litre of blue paint. How much green paint does he get?",
+    "hi": "हरा रंग बनाने के लिए कबीर 2/3 लीटर पीला रंग और 3/4 लीटर नीला रंग मिलाता है। उसे कितना हरा रंग मिलता है?"
+   },
+   "a": {
+    "en": "Total = 2/3 + 3/4. LCM of 3 and 4 is 12.\n2/3 = 8/12, 3/4 = 9/12, sum = 17/12.\nAnswer: 17/12 litres = 1 5/12 litres.",
+    "hi": "कुल = 2/3 + 3/4। 3 और 4 का LCM 12 है।\n2/3 = 8/12, 3/4 = 9/12, योग = 17/12।\nउत्तर: 17/12 लीटर = 1 5/12 लीटर।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Priya has 4 1/2 m of lace and Salma has 2 3/5 m. How much more lace does Priya have? If they join their lace for a border, how long is it?",
+    "hi": "प्रिया के पास 4 1/2 m लेस है और सलमा के पास 2 3/5 m। प्रिया के पास कितनी अधिक लेस है? अगर दोनों अपनी लेस किनारी के लिए जोड़ दें, तो वह कितनी लंबी होगी?"
+   },
+   "a": {
+    "en": "As fractions: 4 1/2 = 9/2 = 45/10, 2 3/5 = 13/5 = 26/10.\nDifference: 45/10 - 26/10 = 19/10 = 1 9/10 m.\nTotal: 45/10 + 26/10 = 71/10 = 7 1/10 m.\nAnswer: Priya has 1 9/10 m more; together 7 1/10 m.",
+    "hi": "भिन्न में: 4 1/2 = 9/2 = 45/10, 2 3/5 = 13/5 = 26/10।\nअंतर: 45/10 - 26/10 = 19/10 = 1 9/10 m।\nकुल: 45/10 + 26/10 = 71/10 = 7 1/10 m।\nउत्तर: प्रिया के पास 1 9/10 m अधिक है; दोनों मिलकर 7 1/10 m।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Asha runs one round of the park in 4/5 of a minute and Bina in 3/4 of a minute. Who is faster, and by how many seconds?",
+    "hi": "आशा पार्क का एक चक्कर 4/5 मिनट में और बीना 3/4 मिनट में लगाती है। कौन तेज़ है, और कितने सेकंड से?"
+   },
+   "a": {
+    "en": "4/5 = 16/20 and 3/4 = 15/20. Bina takes less time, so Bina is faster.\nDifference: 16/20 - 15/20 = 1/20 minute.\n1/20 of 60 seconds = 3 seconds.\nAnswer: Bina, by 1/20 minute = 3 seconds.",
+    "hi": "4/5 = 16/20 और 3/4 = 15/20। बीना कम समय लेती है, इसलिए बीना तेज़ है।\nअंतर: 16/20 - 15/20 = 1/20 मिनट।\n60 सेकंड का 1/20 = 3 सेकंड।\nउत्तर: बीना, 1/20 मिनट = 3 सेकंड से।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A family ate 2/5 of a cake on Monday and 1/3 of it on Tuesday. What fraction of the cake is left?",
+    "hi": "एक परिवार ने सोमवार को केक का 2/5 और मंगलवार को 1/3 खाया। केक का कौन-सा भाग बचा है?"
+   },
+   "a": {
+    "en": "Eaten: 2/5 + 1/3 = 6/15 + 5/15 = 11/15.\nLeft: 1 - 11/15 = 15/15 - 11/15 = 4/15.\nAnswer: 4/15 of the cake.",
+    "hi": "खाया: 2/5 + 1/3 = 6/15 + 5/15 = 11/15।\nबचा: 1 - 11/15 = 15/15 - 11/15 = 4/15।\nउत्तर: केक का 4/15।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Show that 1 = 1/2 + 1/3 + 1/9 + 1/18 (four different fractional units adding to 1).",
+    "hi": "दिखाइए कि 1 = 1/2 + 1/3 + 1/9 + 1/18 (चार अलग भिन्नात्मक इकाइयाँ जिनका योग 1 है)।"
+   },
+   "a": {
+    "en": "LCM of 2, 3, 9, 18 is 18.\n1/2 = 9/18, 1/3 = 6/18, 1/9 = 2/18, 1/18 = 1/18.\n9 + 6 + 2 + 1 = 18, so the sum is 18/18 = 1.",
+    "hi": "2, 3, 9, 18 का LCM 18 है।\n1/2 = 9/18, 1/3 = 6/18, 1/9 = 2/18, 1/18 = 1/18।\n9 + 6 + 2 + 1 = 18, इसलिए योग 18/18 = 1।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain why 1 cannot be written as the sum of two DIFFERENT unit fractions.",
+    "hi": "समझाइए कि 1 को दो अलग-अलग इकाई भिन्नों के योग के रूप में क्यों नहीं लिखा जा सकता।"
+   },
+   "a": {
+    "en": "Unit fractions other than 1 itself are at most 1/2. If both are different, one of them is at most 1/2 and the other is at most 1/3.\nSo the sum is at most 1/2 + 1/3 = 5/6, which is less than 1.\nThe only way two unit fractions make 1 is 1/2 + 1/2, but those are the same unit.",
+    "hi": "1 को छोड़कर इकाई भिन्नें अधिकतम 1/2 होती हैं। अगर दोनों अलग हों, तो एक अधिकतम 1/2 और दूसरी अधिकतम 1/3 होगी।\nइसलिए योग अधिकतम 1/2 + 1/3 = 5/6 होगा, जो 1 से कम है।\nदो इकाई भिन्नों से 1 बनाने का एकमात्र तरीका 1/2 + 1/2 है, पर वे एक ही इकाई हैं।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A fractional unit is one of the equal parts of a whole: 1/2, 1/3, 1/4, ...; the parts must be equal.",
+   "The more parts a whole is cut into, the smaller each part: 1/2 > 1/3 > 1/4 > ...",
+   "A fraction counts fractional units: 3/5 = 1/5 + 1/5 + 1/5. The top is the numerator (अंश), the bottom is the denominator (हर).",
+   "When numerator = denominator, the fraction equals 1; when numerator > denominator, it is more than 1.",
+   "On a number line, divide each unit into as many equal parts as the denominator and count forward; there are infinitely many fractions between 0 and 1.",
+   "A fraction greater than 1 can be written as a mixed fraction by dividing: 17/5 = 3 2/5; and back: a b/c = (a × c + b)/c.",
+   "Sharing a things equally among b people gives each a/b.",
+   "Equivalent fractions show the same amount: multiply or divide numerator and denominator by the same number.",
+   "A fraction is in simplest form when numerator and denominator have no common factor except 1; divide both by their HCF.",
+   "To compare fractions, use same denominator, same numerator, a benchmark like 1/2, or convert to a common denominator.",
+   "Fractions with the same denominator are added or subtracted by adding or subtracting the numerators only.",
+   "For different denominators, use Brahmagupta's method (628 CE): make the denominators equal, then add or subtract the numerators.",
+   "Indian mathematicians such as Aryabhata, Brahmagupta, Sridharacharya and Mahaviracharya developed fraction notation and rules; the horizontal bar came from Al-Hassar.",
+   "1 = 1/2 + 1/3 + 1/6 is the only way to write 1 as three different unit fractions; with four there are six ways."
+  ],
+  "hi": [
+   "भिन्नात्मक इकाई पूरे के बराबर भागों में से एक भाग है: 1/2, 1/3, 1/4, ...; भाग बराबर होने चाहिए।",
+   "पूरे को जितने ज़्यादा भागों में काटा जाए, हर भाग उतना छोटा: 1/2 > 1/3 > 1/4 > ...",
+   "भिन्न भिन्नात्मक इकाइयों की गिनती है: 3/5 = 1/5 + 1/5 + 1/5। ऊपर अंश और नीचे हर होता है।",
+   "जब अंश = हर, तो भिन्न 1 के बराबर है; जब अंश > हर, तो वह 1 से अधिक है।",
+   "संख्या रेखा पर हर इकाई को हर जितने बराबर भागों में बाँटकर आगे गिनिए; 0 और 1 के बीच अनगिनत भिन्नें हैं।",
+   "1 से बड़ी भिन्न को भाग देकर मिश्रित भिन्न में लिखा जा सकता है: 17/5 = 3 2/5; और वापस: a b/c = (a × c + b)/c।",
+   "a वस्तुओं को b लोगों में बराबर बाँटने पर हर एक को a/b मिलता है।",
+   "तुल्य भिन्नें एक ही मात्रा दिखाती हैं: अंश और हर को एक ही संख्या से गुणा या भाग कीजिए।",
+   "भिन्न सरलतम रूप में तब है जब अंश और हर का 1 के अलावा कोई सार्व गुणनखंड न हो; दोनों को उनके HCF से भाग दीजिए।",
+   "भिन्नों की तुलना के लिए समान हर, समान अंश, 1/2 जैसा मानक, या सार्व हर में बदलने का प्रयोग कीजिए।",
+   "समान हर वाली भिन्नों को जोड़ने या घटाने में केवल अंशों को जोड़ा या घटाया जाता है।",
+   "अलग हर के लिए ब्रह्मगुप्त की विधि (628 ई.) अपनाइए: हर समान बनाइए, फिर अंश जोड़िए या घटाइए।",
+   "आर्यभट, ब्रह्मगुप्त, श्रीधराचार्य और महावीराचार्य जैसे भारतीय गणितज्ञों ने भिन्न लिखने की पद्धति और नियम विकसित किए; बीच की क्षैतिज रेखा अल-हस्सार से आई।",
+   "1 = 1/2 + 1/3 + 1/6, 1 को तीन अलग इकाई भिन्नों में लिखने का एकमात्र तरीका है; चार से छह तरीके हैं।"
+  ]
+ }
+}
