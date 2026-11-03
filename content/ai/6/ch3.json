@@ -1,0 +1,1520 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "6",
+ "id": "ch3",
+ "intro": {
+  "en": "We see with our eyes, hear with our ears and speak with our mouth, and our brain makes sense of it all. Machines have no eyes or ears, yet a phone can unlock by seeing your face, type what you say and read a message aloud. In this chapter you will learn how machines take in the world through sensors, how a computer 'sees' a picture as numbers called pixels, what computer vision, speech recognition, text-to-speech and natural language processing are, where they are used in India, and why they sometimes make mistakes.",
+  "hi": "हम आँखों से देखते हैं, कानों से सुनते हैं और मुँह से बोलते हैं, और हमारा दिमाग इन सबका अर्थ निकालता है। मशीनों की न आँखें होती हैं न कान, फिर भी फ़ोन आपका चेहरा देखकर खुल जाता है, आपकी बोली टाइप कर देता है और संदेश पढ़कर सुना देता है। इस अध्याय में आप सीखेंगे कि मशीनें सेंसरों के ज़रिए दुनिया की जानकारी कैसे लेती हैं, कंप्यूटर किसी चित्र को pixels नाम की संख्याओं के रूप में कैसे 'देखता' है, computer vision, speech recognition, text-to-speech और natural language processing क्या हैं, भारत में इनका उपयोग कहाँ होता है, और ये कभी-कभी गलती क्यों करते हैं।"
+ },
+ "learn": {
+  "en": [
+   "How human senses compare with machine sensors and output devices",
+   "What a sensor is, with examples such as camera, microphone, touch screen and GPS",
+   "How a computer stores a picture as a grid of pixels with numbers for colour",
+   "Computer vision: recognising faces, objects, text and number plates",
+   "How sound becomes data and how speech recognition (speech-to-text) works",
+   "Text-to-speech: how machines speak, and who it helps",
+   "Natural Language Processing (NLP): understanding meaning, translation and chatbots",
+   "How a voice assistant joins all three abilities together",
+   "Why machines misread or mishear, and how clear input helps",
+   "Activities with Teachable Machine, voice typing and read-aloud"
+  ],
+  "hi": [
+   "इंसानी इंद्रियाँ मशीन के सेंसरों और आउटपुट उपकरणों से कैसे मिलती हैं",
+   "सेंसर क्या है, कैमरा, माइक्रोफ़ोन, टच स्क्रीन और GPS जैसे उदाहरणों के साथ",
+   "कंप्यूटर चित्र को रंग की संख्याओं वाले pixels की जाली के रूप में कैसे रखता है",
+   "Computer vision: चेहरे, वस्तुएँ, लिखावट और नंबर प्लेट पहचानना",
+   "आवाज़ data कैसे बनती है और speech recognition (speech-to-text) कैसे काम करता है",
+   "Text-to-speech: मशीनें कैसे बोलती हैं, और यह किसकी मदद करता है",
+   "Natural Language Processing (NLP): अर्थ समझना, अनुवाद और चैटबॉट",
+   "वॉइस असिस्टेंट तीनों क्षमताओं को एक साथ कैसे जोड़ता है",
+   "मशीनें गलत क्यों पढ़ती या सुनती हैं, और साफ़ इनपुट कैसे मदद करता है",
+   "Teachable Machine, वॉइस टाइपिंग और पढ़कर सुनाने वाली गतिविधियाँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "3.1 Human senses and machine senses",
+    "hi": "3.1 इंसानी इंद्रियाँ और मशीन की इंद्रियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think about what happens when a friend calls your name across the playground. Your ears catch the sound (input), your brain recognises the voice and the word (processing), and you turn and wave or shout back (output). Machines with AI follow the same pattern, but they use electronic parts instead of eyes, ears and a mouth.",
+      "hi": "सोचिए जब कोई दोस्त मैदान के उस पार से आपका नाम पुकारता है तो क्या होता है। आपके कान आवाज़ पकड़ते हैं (इनपुट), दिमाग आवाज़ और शब्द पहचानता है (प्रोसेसिंग), और आप मुड़कर हाथ हिलाते या जवाब देते हैं (आउटपुट)। AI वाली मशीनें भी यही ढंग अपनाती हैं, पर आँख, कान और मुँह की जगह इलेक्ट्रॉनिक पुर्ज़ों का उपयोग करती हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Sensor",
+       "hi": "सेंसर (Sensor)"
+      },
+      "text": {
+       "en": "A sensor is a device that detects something from the surroundings, such as light, sound, touch, heat or movement, and changes it into electrical signals that a computer can turn into numbers (data).",
+       "hi": "सेंसर एक उपकरण है जो आसपास से कुछ पकड़ता है, जैसे रोशनी, आवाज़, स्पर्श, गर्मी या हलचल, और उसे विद्युत संकेतों में बदलता है जिन्हें कंप्यूटर संख्याओं (data) में बदल सकता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Human",
+        "Job",
+        "Machine part (input)",
+        "Machine part (output)"
+       ],
+       "hi": [
+        "इंसान",
+        "काम",
+        "मशीन का पुर्ज़ा (इनपुट)",
+        "मशीन का पुर्ज़ा (आउटपुट)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Eyes",
+         "Seeing",
+         "Camera (image sensor)",
+         "Screen shows pictures and text"
+        ],
+        [
+         "Ears",
+         "Hearing",
+         "Microphone",
+         "-"
+        ],
+        [
+         "Mouth and voice",
+         "Speaking",
+         "-",
+         "Speaker"
+        ],
+        [
+         "Skin",
+         "Touch, heat",
+         "Touch screen, temperature sensor",
+         "Vibration motor (phone buzz)"
+        ],
+        [
+         "Sense of balance",
+         "Knowing which way is up, movement",
+         "Accelerometer and gyroscope (screen rotates when you turn the phone)",
+         "-"
+        ],
+        [
+         "Sense of direction",
+         "Knowing where you are",
+         "GPS receiver (location)",
+         "Map on screen"
+        ],
+        [
+         "Brain",
+         "Thinking, recognising",
+         "Processor (chip) running AI programs",
+         "-"
+        ]
+       ],
+       "hi": [
+        [
+         "आँखें",
+         "देखना",
+         "कैमरा (image sensor)",
+         "स्क्रीन चित्र और text दिखाती है"
+        ],
+        [
+         "कान",
+         "सुनना",
+         "माइक्रोफ़ोन",
+         "-"
+        ],
+        [
+         "मुँह और आवाज़",
+         "बोलना",
+         "-",
+         "स्पीकर"
+        ],
+        [
+         "त्वचा",
+         "स्पर्श, गर्मी",
+         "टच स्क्रीन, तापमान सेंसर",
+         "कंपन मोटर (फ़ोन का बज़)"
+        ],
+        [
+         "संतुलन की समझ",
+         "ऊपर-नीचे और हलचल जानना",
+         "Accelerometer और gyroscope (फ़ोन घुमाने पर स्क्रीन घूमती है)",
+         "-"
+        ],
+        [
+         "दिशा की समझ",
+         "जानना कि आप कहाँ हैं",
+         "GPS रिसीवर (स्थान)",
+         "स्क्रीन पर नक्शा"
+        ],
+        [
+         "दिमाग",
+         "सोचना, पहचानना",
+         "AI प्रोग्राम चलाने वाला प्रोसेसर (चिप)",
+         "-"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A sensor alone is not intelligent. A camera just records light; a microphone just records sound. The intelligence comes from the AI program that processes this data and finds patterns, such as 'this is a face' or 'the word spoken was namaste'.",
+      "hi": "अकेला सेंसर बुद्धिमान नहीं होता। कैमरा बस रोशनी दर्ज करता है; माइक्रोफ़ोन बस आवाज़ दर्ज करता है। बुद्धिमत्ता उस AI प्रोग्राम से आती है जो इस data को प्रोसेस करके पैटर्न खोजता है, जैसे 'यह चेहरा है' या 'बोला गया शब्द नमस्ते था'।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Sensors (camera, microphone) = input. AI program on the processor = processing. Screen and speaker = output.",
+      "hi": "याद रखें: सेंसर (कैमरा, माइक्रोफ़ोन) = इनपुट। प्रोसेसर पर AI प्रोग्राम = प्रोसेसिंग। स्क्रीन और स्पीकर = आउटपुट।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.2 How a computer 'sees' a picture: pixels",
+    "hi": "3.2 कंप्यूटर चित्र को कैसे 'देखता' है: pixels"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Zoom very close into any photo on a phone and you will see it is made of tiny square dots. Each dot is called a pixel (short for 'picture element'). A phone photo usually has millions of pixels. A '12 megapixel' camera takes photos of about 12 million pixels.",
+      "hi": "फ़ोन पर किसी भी फ़ोटो को बहुत ज़्यादा ज़ूम करें तो दिखेगा कि वह छोटे-छोटे चौकोर बिंदुओं से बनी है। हर बिंदु को pixel (picture element का छोटा रूप) कहते हैं। फ़ोन की फ़ोटो में आमतौर पर लाखों-करोड़ों pixels होते हैं। '12 megapixel' कैमरा लगभग 1.2 करोड़ (12 million) pixels की फ़ोटो लेता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Pixel",
+       "hi": "पिक्सेल (Pixel)"
+      },
+      "text": {
+       "en": "A pixel is the smallest dot of a digital picture. Each pixel has one colour, stored as numbers. A picture is a grid (rows and columns) of pixels.",
+       "hi": "Pixel डिजिटल चित्र का सबसे छोटा बिंदु है। हर pixel का एक रंग होता है, जो संख्याओं में रखा जाता है। चित्र pixels की एक जाली (पंक्तियाँ और स्तंभ) है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A computer cannot see colours the way we do. It stores each pixel's colour as numbers. In a simple black-and-white (grayscale) picture, each pixel has one number, commonly from 0 (black) to 255 (white); numbers in between are shades of grey. In a colour picture, each pixel usually has three numbers: how much Red, Green and Blue light it has (RGB), each from 0 to 255. For example, (255, 0, 0) is bright red, (0, 0, 255) is blue, (255, 255, 0) is yellow, (0, 0, 0) is black and (255, 255, 255) is white.",
+      "hi": "कंप्यूटर रंगों को हमारी तरह नहीं देख सकता। वह हर pixel का रंग संख्याओं में रखता है। साधारण श्वेत-श्याम (grayscale) चित्र में हर pixel की एक संख्या होती है, आमतौर पर 0 (काला) से 255 (सफ़ेद) तक; बीच की संख्याएँ स्लेटी (grey) के रंग हैं। रंगीन चित्र में हर pixel की आमतौर पर तीन संख्याएँ होती हैं: उसमें लाल (Red), हरी (Green) और नीली (Blue) रोशनी कितनी है (RGB), हर एक 0 से 255 तक। जैसे, (255, 0, 0) चटक लाल, (0, 0, 255) नीला, (255, 255, 0) पीला, (0, 0, 0) काला और (255, 255, 255) सफ़ेद है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Colour",
+        "R (red)",
+        "G (green)",
+        "B (blue)"
+       ],
+       "hi": [
+        "रंग",
+        "R (लाल)",
+        "G (हरा)",
+        "B (नीला)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Red",
+         "255",
+         "0",
+         "0"
+        ],
+        [
+         "Green",
+         "0",
+         "255",
+         "0"
+        ],
+        [
+         "Blue",
+         "0",
+         "0",
+         "255"
+        ],
+        [
+         "Yellow (red + green)",
+         "255",
+         "255",
+         "0"
+        ],
+        [
+         "Black",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "White",
+         "255",
+         "255",
+         "255"
+        ]
+       ],
+       "hi": [
+        [
+         "लाल",
+         "255",
+         "0",
+         "0"
+        ],
+        [
+         "हरा",
+         "0",
+         "255",
+         "0"
+        ],
+        [
+         "नीला",
+         "0",
+         "0",
+         "255"
+        ],
+        [
+         "पीला (लाल + हरा)",
+         "255",
+         "255",
+         "0"
+        ],
+        [
+         "काला",
+         "0",
+         "0",
+         "0"
+        ],
+        [
+         "सफ़ेद",
+         "255",
+         "255",
+         "255"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture a tiny 5 by 5 grid of squares on graph paper. If we use 1 for a black square and 0 for a white square, the plus sign '+' becomes these rows: 00100, 00100, 11111, 00100, 00100. To a computer, the picture of a plus sign is just this pattern of numbers. Computer vision is about finding meaning in such patterns of numbers.",
+      "hi": "ग्राफ़ पेपर पर 5 x 5 खानों की एक छोटी जाली सोचिए। अगर काले खाने के लिए 1 और सफ़ेद खाने के लिए 0 लिखें, तो धन चिह्न '+' इन पंक्तियों में बदल जाता है: 00100, 00100, 11111, 00100, 00100। कंप्यूटर के लिए धन चिह्न का चित्र बस संख्याओं का यह पैटर्न है। Computer vision ऐसे संख्या-पैटर्नों में अर्थ खोजने का काम है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Draw the capital letter 'L' on a 5 by 5 grid using 1 for black and 0 for white. Write the five rows.",
+       "hi": "5 x 5 जाली पर काले के लिए 1 और सफ़ेद के लिए 0 लेकर अंग्रेज़ी का बड़ा अक्षर 'L' बनाइए। पाँचों पंक्तियाँ लिखिए।"
+      },
+      "a": {
+       "en": "Step 1: the letter L has a vertical line on the left and a horizontal line at the bottom.\nStep 2: in rows 1 to 4, only the first square is black: 10000.\nStep 3: in row 5, all squares are black: 11111.\nAnswer: 10000, 10000, 10000, 10000, 11111.",
+       "hi": "चरण 1: अक्षर L में बाईं ओर खड़ी रेखा और नीचे आड़ी रेखा होती है।\nचरण 2: पंक्ति 1 से 4 में केवल पहला खाना काला है: 10000।\nचरण 3: पंक्ति 5 में सभी खाने काले हैं: 11111।\nउत्तर: 10000, 10000, 10000, 10000, 11111।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A colour pixel is stored as (0, 255, 0). What colour is it? What would (128, 128, 128) look like?",
+       "hi": "एक रंगीन pixel (0, 255, 0) के रूप में रखा है। उसका रंग क्या है? (128, 128, 128) कैसा दिखेगा?"
+      },
+      "a": {
+       "en": "(0, 255, 0) has no red, full green and no blue, so it is bright green.\n(128, 128, 128) has equal, medium amounts of red, green and blue, so it is a medium grey.",
+       "hi": "(0, 255, 0) में लाल नहीं, पूरा हरा और नीला नहीं है, इसलिए यह चटक हरा है।\n(128, 128, 128) में लाल, हरा और नीला बराबर और मध्यम मात्रा में है, इसलिए यह मध्यम स्लेटी (grey) है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: to a computer, every photo is a big grid of numbers. More pixels means more detail, but also a bigger file.",
+      "hi": "याद रखें: कंप्यूटर के लिए हर फ़ोटो संख्याओं की बड़ी जाली है। ज़्यादा pixels यानी ज़्यादा बारीकी, पर बड़ी फ़ाइल भी।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.3 Computer vision: teaching machines to understand pictures",
+    "hi": "3.3 Computer vision: मशीनों को चित्र समझना सिखाना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Computer Vision",
+       "hi": "Computer Vision (कंप्यूटर विज़न)"
+      },
+      "text": {
+       "en": "Computer vision is the area of AI that helps computers understand pictures and videos: recognising what objects, people, text or actions are in them.",
+       "hi": "Computer vision AI का वह क्षेत्र है जो कंप्यूटरों को चित्र और वीडियो समझने में मदद करता है: यह पहचानना कि उनमें कौन-सी वस्तुएँ, लोग, लिखावट या गतिविधियाँ हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Recognising a cat is easy for you but very hard to write as rules. Cats can be big or small, black or ginger, sitting or jumping, in light or shadow. So instead of rules, the computer is trained with thousands of example pictures labelled 'cat' and 'not cat'. It slowly learns which patterns of pixels usually mean 'cat': first simple things like edges and lines, then shapes such as ears and eyes, then the whole animal. After training, it can recognise cats in new photos.",
+      "hi": "बिल्ली पहचानना आपके लिए आसान है, पर इसे नियमों में लिखना बहुत कठिन है। बिल्लियाँ बड़ी या छोटी, काली या भूरी, बैठी या कूदती, रोशनी या छाया में हो सकती हैं। इसलिए नियमों के बजाय कंप्यूटर को 'बिल्ली' और 'बिल्ली नहीं' नाम लगे हज़ारों उदाहरण चित्रों से train किया जाता है। वह धीरे-धीरे सीखता है कि pixels के कौन-से पैटर्न का मतलब आमतौर पर 'बिल्ली' होता है: पहले किनारे और रेखाएँ जैसी सरल चीज़ें, फिर कान और आँख जैसी आकृतियाँ, फिर पूरा जानवर। Training के बाद वह नई फ़ोटो में भी बिल्ली पहचान सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Imagine the steps as a diagram of a ladder: on the bottom rung the computer finds edges (light-to-dark changes), on the next rung it joins edges into shapes (circles, triangles), higher up it combines shapes into parts (eyes, whiskers, ears), and at the top it decides 'cat' with a level of confidence, such as 'cat: 92%'.",
+      "hi": "इन चरणों को सीढ़ी के चित्र की तरह सोचिए: सबसे नीचे के डंडे पर कंप्यूटर किनारे (रोशनी से अंधेरे में बदलाव) खोजता है, अगले पर किनारों को जोड़कर आकृतियाँ (वृत्त, त्रिभुज) बनाता है, ऊपर आकृतियों को मिलाकर हिस्से (आँखें, मूँछें, कान) बनाता है, और सबसे ऊपर विश्वास के एक स्तर के साथ तय करता है 'बिल्ली', जैसे 'बिल्ली: 92%'।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Computer vision task",
+        "What it means",
+        "Example in India"
+       ],
+       "hi": [
+        "Computer vision का काम",
+        "अर्थ",
+        "भारत में उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Image classification",
+         "Saying what the whole picture shows",
+         "A crop app saying 'leaf has blight'"
+        ],
+        [
+         "Object detection",
+         "Finding and drawing boxes around many objects in one picture",
+         "A traffic camera finding cars, bikes and people"
+        ],
+        [
+         "Face recognition",
+         "Identifying or verifying a person from their face",
+         "Face unlock on phones; DigiYatra face-based entry at some airports"
+        ],
+        [
+         "Optical Character Recognition (OCR)",
+         "Reading printed or handwritten text from a picture",
+         "Scanning a document so its words can be copied; reading vehicle number plates"
+        ],
+        [
+         "Medical image analysis",
+         "Finding unusual areas in X-rays or scans",
+         "Flagging possible TB signs for a doctor"
+        ],
+        [
+         "Ball and player tracking",
+         "Following moving objects in video",
+         "Ball tracking in cricket for DRS"
+        ]
+       ],
+       "hi": [
+        [
+         "Image classification (चित्र वर्गीकरण)",
+         "बताना कि पूरा चित्र क्या दिखाता है",
+         "फ़सल ऐप का कहना 'पत्ते में झुलसा रोग है'"
+        ],
+        [
+         "Object detection (वस्तु पहचान)",
+         "एक चित्र में कई वस्तुएँ खोजकर उनके चारों ओर डिब्बे बनाना",
+         "ट्रैफ़िक कैमरा कारें, बाइक और लोग खोजे"
+        ],
+        [
+         "Face recognition (चेहरा पहचान)",
+         "चेहरे से व्यक्ति को पहचानना या पुष्टि करना",
+         "फ़ोन का फ़ेस अनलॉक; कुछ हवाई अड्डों पर DigiYatra से चेहरे द्वारा प्रवेश"
+        ],
+        [
+         "OCR (Optical Character Recognition)",
+         "चित्र से छपी या हाथ से लिखी लिखावट पढ़ना",
+         "दस्तावेज़ स्कैन करके उसके शब्द कॉपी करना; गाड़ियों की नंबर प्लेट पढ़ना"
+        ],
+        [
+         "चिकित्सा चित्र विश्लेषण",
+         "X-ray या स्कैन में असामान्य हिस्से खोजना",
+         "डॉक्टर के लिए TB के संभावित संकेत चिह्नित करना"
+        ],
+        [
+         "गेंद और खिलाड़ी ट्रैकिंग",
+         "वीडियो में चलती वस्तुओं का पीछा करना",
+         "DRS के लिए क्रिकेट में बॉल ट्रैकिंग"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Optical Character Recognition (OCR)",
+       "hi": "OCR (ऑप्टिकल कैरेक्टर रिकग्निशन)"
+      },
+      "text": {
+       "en": "OCR is a computer vision technique that recognises letters and numbers in an image and turns them into editable text.",
+       "hi": "OCR computer vision की एक तकनीक है जो चित्र में अक्षर और अंक पहचानकर उन्हें बदले जा सकने वाले text में बदलती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A parking gate at a mall opens automatically for cars with a pass. Explain how computer vision does this, step by step.",
+       "hi": "एक मॉल का पार्किंग गेट पास वाली कारों के लिए अपने-आप खुलता है। चरण दर चरण समझाइए कि computer vision यह कैसे करता है।"
+      },
+      "a": {
+       "en": "Step 1 (input): a camera at the gate takes a picture of the car's front.\nStep 2 (processing): object detection finds where the number plate is in the picture.\nStep 3 (processing): OCR reads the letters and numbers on the plate, for example 'MH 12 AB 1234'.\nStep 4 (processing): the system checks whether this number is in the list of cars with passes.\nStep 5 (output): if it is, the gate opens; if not, it stays closed and a guard checks.",
+       "hi": "चरण 1 (इनपुट): गेट पर लगा कैमरा कार के आगे के हिस्से की फ़ोटो लेता है।\nचरण 2 (प्रोसेसिंग): object detection खोजता है कि फ़ोटो में नंबर प्लेट कहाँ है।\nचरण 3 (प्रोसेसिंग): OCR प्लेट के अक्षर और अंक पढ़ता है, जैसे 'MH 12 AB 1234'।\nचरण 4 (प्रोसेसिंग): सिस्टम जाँचता है कि यह नंबर पास वाली कारों की सूची में है या नहीं।\nचरण 5 (आउटपुट): अगर है तो गेट खुलता है; नहीं तो बंद रहता है और गार्ड जाँचता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.4 How a machine hears: sound as data",
+    "hi": "3.4 मशीन कैसे सुनती है: आवाज़ data के रूप में"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Sound is a vibration that travels through air as waves. When you speak, your vocal cords vibrate and push the air. A microphone has a thin part that vibrates with these waves and turns them into an electrical signal. The computer then measures this signal thousands of times every second and stores each measurement as a number. So, just as a picture becomes a grid of numbers, a sound becomes a long list of numbers over time.",
+      "hi": "आवाज़ एक कंपन है जो हवा में तरंगों के रूप में चलती है। जब आप बोलते हैं, तो आपके स्वर-तंतु (vocal cords) काँपते हैं और हवा को धकेलते हैं। माइक्रोफ़ोन में एक पतला हिस्सा होता है जो इन तरंगों के साथ काँपता है और उन्हें विद्युत संकेत में बदलता है। फिर कंप्यूटर इस संकेत को हर सेकंड हज़ारों बार मापता है और हर माप को एक संख्या के रूप में रखता है। तो जैसे चित्र संख्याओं की जाली बनता है, वैसे ही आवाज़ समय के साथ संख्याओं की लंबी सूची बन जाती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "If you could see this as a picture, it would look like a wavy line going up and down, called a sound wave or waveform. Loud sounds make tall waves; soft sounds make small waves. High-pitched sounds (a whistle) have waves close together; low-pitched sounds (a drum) have waves far apart.",
+      "hi": "अगर आप इसे चित्र की तरह देख पाते, तो यह ऊपर-नीचे जाती लहरदार रेखा जैसी दिखती, जिसे sound wave या waveform कहते हैं। तेज़ आवाज़ ऊँची लहरें बनाती है; धीमी आवाज़ छोटी लहरें। ऊँचे सुर (pitch) वाली आवाज़ (सीटी) की लहरें पास-पास होती हैं; नीचे सुर वाली आवाज़ (ढोल) की लहरें दूर-दूर।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Picture → grid of pixel numbers. Sound → list of numbers measured over time. Both are data that AI can find patterns in.",
+      "hi": "याद रखें: चित्र → pixel संख्याओं की जाली। आवाज़ → समय के साथ मापी गई संख्याओं की सूची। दोनों data हैं जिनमें AI पैटर्न खोज सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.5 Speech recognition: from speech to text",
+    "hi": "3.5 Speech recognition: बोली से text तक"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Speech recognition (speech-to-text)",
+       "hi": "Speech recognition (speech-to-text / वाक् पहचान)"
+      },
+      "text": {
+       "en": "Speech recognition is AI that listens to spoken words and turns them into written text. It is also called speech-to-text or automatic speech recognition (ASR).",
+       "hi": "Speech recognition वह AI है जो बोले गए शब्द सुनकर उन्हें लिखित text में बदलता है। इसे speech-to-text या automatic speech recognition (ASR) भी कहते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How it works, in simple steps: the microphone records your voice (input). The AI breaks the sound into tiny pieces and matches them with the sound patterns of speech it learnt from thousands of hours of recorded speech with matching text. It also uses what it knows about the language to choose the most sensible words. For example, it hears something like 'mera naam...' and knows 'naam' is more likely than 'aam' in that place. Then it shows the words on screen (output).",
+      "hi": "यह सरल चरणों में कैसे काम करता है: माइक्रोफ़ोन आपकी आवाज़ रिकॉर्ड करता है (इनपुट)। AI आवाज़ को छोटे-छोटे टुकड़ों में बाँटता है और उनका मिलान बोली के उन ध्वनि-पैटर्नों से करता है जो उसने हज़ारों घंटों की, साथ में लिखे text वाली, रिकॉर्ड की गई बोली से सीखे। वह भाषा के अपने ज्ञान से सबसे समझदार शब्द भी चुनता है। जैसे, वह 'मेरा नाम...' जैसा कुछ सुनता है और जानता है कि उस जगह 'आम' की तुलना में 'नाम' ज़्यादा संभव है। फिर वह शब्द स्क्रीन पर दिखाता है (आउटपुट)।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Voice typing on phone keyboards, including in Hindi and many Indian languages.",
+       "Voice search: speaking a question instead of typing it.",
+       "Automatic captions (subtitles) on videos and online classes, which help people who cannot hear well.",
+       "Voice commands in cars, smart speakers and TVs.",
+       "Customer helplines that let you speak instead of pressing buttons."
+      ],
+      "hi": [
+       "फ़ोन कीबोर्ड पर वॉइस टाइपिंग, हिंदी और कई भारतीय भाषाओं में भी।",
+       "आवाज़ से खोज: टाइप करने के बजाय सवाल बोलना।",
+       "वीडियो और ऑनलाइन कक्षाओं में अपने-आप बनने वाले कैप्शन (उपशीर्षक), जो कम सुनने वालों की मदद करते हैं।",
+       "कारों, स्मार्ट स्पीकर और टीवी में आवाज़ से आदेश।",
+       "ग्राहक हेल्पलाइन जो बटन दबाने के बजाय बोलने देती हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Speech recognition is harder than it looks. People speak with different accents, speeds and voices; children, adults and elderly people sound different; there may be fans, traffic or other people talking in the background; and many Indians mix languages in one sentence, such as 'Kal mera maths ka test hai'. Systems trained on lots of examples of such speech work better. That is why projects like Bhashini collect speech in many Indian languages.",
+      "hi": "Speech recognition जितना दिखता है उससे कठिन है। लोग अलग-अलग लहजे (accent), गति और आवाज़ में बोलते हैं; बच्चे, बड़े और बुज़ुर्ग अलग सुनाई देते हैं; पीछे पंखा, ट्रैफ़िक या दूसरे लोगों की बातें हो सकती हैं; और कई भारतीय एक वाक्य में भाषाएँ मिलाते हैं, जैसे 'कल मेरा maths का test है'। ऐसी बोली के बहुत सारे उदाहरणों पर train हुए सिस्टम बेहतर काम करते हैं। इसीलिए भाषिणी जैसे प्रोजेक्ट कई भारतीय भाषाओं में बोली इकट्ठा करते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Accent",
+       "hi": "लहजा (Accent)"
+      },
+      "text": {
+       "en": "The special way people from a region or group pronounce words. Different accents can make speech recognition harder if the AI has not heard enough examples.",
+       "hi": "किसी क्षेत्र या समूह के लोगों का शब्दों को बोलने का खास ढंग। अगर AI ने पर्याप्त उदाहरण नहीं सुने, तो अलग-अलग लहजे speech recognition को कठिन बना सकते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Arjun says into voice typing, 'I want to write a letter', but the screen shows 'I want to ride a ladder'. Give two possible reasons and two fixes.",
+       "hi": "अर्जुन वॉइस टाइपिंग में कहता है 'I want to write a letter', पर स्क्रीन पर आता है 'I want to ride a ladder'। दो संभावित कारण और दो उपाय बताइए।"
+      },
+      "a": {
+       "en": "Reasons: (1) background noise, such as a TV or traffic, mixed with his voice; (2) he spoke too fast or unclearly, so the sounds 'write a letter' and 'ride a ladder' seemed similar to the AI. (An accent the AI has heard less is also possible.)\nFixes: (1) move to a quieter place and hold the phone closer; (2) speak clearly at a normal speed. Always read the text and correct mistakes before sending.",
+       "hi": "कारण: (1) पीछे का शोर, जैसे टीवी या ट्रैफ़िक, उसकी आवाज़ में मिल गया; (2) वह बहुत तेज़ या अस्पष्ट बोला, इसलिए AI को 'write a letter' और 'ride a ladder' की ध्वनियाँ मिलती-जुलती लगीं। (ऐसा लहजा भी कारण हो सकता है जो AI ने कम सुना हो।)\nउपाय: (1) शांत जगह पर जाएँ और फ़ोन पास रखें; (2) सामान्य गति से साफ़ बोलें। भेजने से पहले हमेशा text पढ़कर गलतियाँ सुधारें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.6 How machines speak: text-to-speech",
+    "hi": "3.6 मशीनें कैसे बोलती हैं: text-to-speech"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Text-to-speech (TTS)",
+       "hi": "Text-to-speech (TTS / पाठ से वाणी)"
+      },
+      "text": {
+       "en": "Text-to-speech is technology that turns written text into spoken words, so a device can read aloud. It is the opposite of speech-to-text.",
+       "hi": "Text-to-speech वह तकनीक है जो लिखे text को बोले गए शब्दों में बदलती है, ताकि उपकरण पढ़कर सुना सके। यह speech-to-text का उल्टा है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "To speak, the computer first reads the text and works out how each word should be pronounced, where to pause (at commas and full stops) and where the voice should rise (as in a question). Then it creates the sound wave and plays it through the speaker. Older systems sounded flat and robotic. Modern AI voices are trained on many hours of recordings of real people reading, so they sound much more natural, and can speak in Indian languages and accents.",
+      "hi": "बोलने के लिए कंप्यूटर पहले text पढ़कर तय करता है कि हर शब्द का उच्चारण कैसे होगा, कहाँ रुकना है (अल्पविराम और पूर्ण विराम पर) और कहाँ आवाज़ ऊपर उठेगी (जैसे सवाल में)। फिर वह ध्वनि-तरंग बनाकर स्पीकर से बजाता है। पुराने सिस्टम सपाट और रोबोट जैसे लगते थे। आज की AI आवाज़ें असली लोगों के पढ़ने की कई घंटों की रिकॉर्डिंग पर train होती हैं, इसलिए बहुत ज़्यादा स्वाभाविक लगती हैं और भारतीय भाषाओं और लहजों में बोल सकती हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "A tricky example: the English word 'read' is said differently in 'I read every day' and 'Yesterday I read a book'. Numbers are tricky too: '2025' could be 'two thousand twenty-five' as a year or a quantity, and 'Dr.' should be said as 'Doctor'. The AI must use the surrounding words to choose correctly.",
+      "hi": "एक कठिन उदाहरण: अंग्रेज़ी शब्द 'read' 'I read every day' और 'Yesterday I read a book' में अलग ढंग से बोला जाता है। संख्याएँ भी कठिन हैं: '2025' को वर्ष या मात्रा के रूप में पढ़ा जा सकता है, और 'Dr.' को 'Doctor' बोलना चाहिए। सही चुनने के लिए AI को आसपास के शब्दों का उपयोग करना होता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Screen readers read out everything on a phone or computer screen for people who are blind or have low vision.",
+       "Announcements at railway stations and in metro trains are often produced by computer voices.",
+       "Map apps speak directions: 'In 200 metres, turn left.'",
+       "Reading apps can read storybooks and lessons aloud, helping young readers and people who cannot read.",
+       "Voice assistants speak their replies."
+      ],
+      "hi": [
+       "Screen reader दृष्टिहीन या कम दृष्टि वाले लोगों के लिए फ़ोन या कंप्यूटर स्क्रीन की हर चीज़ पढ़कर सुनाते हैं।",
+       "रेलवे स्टेशनों और मेट्रो ट्रेनों की घोषणाएँ अक्सर कंप्यूटर की आवाज़ से बनती हैं।",
+       "मैप ऐप दिशाएँ बोलते हैं: '200 मीटर बाद बाएँ मुड़ें।'",
+       "पढ़ने वाले ऐप कहानियाँ और पाठ पढ़कर सुना सकते हैं, जिससे छोटे पाठकों और पढ़ न पाने वाले लोगों को मदद मिलती है।",
+       "वॉइस असिस्टेंट अपने जवाब बोलते हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Be careful: AI can now copy a real person's voice from recordings. Some fraudsters use such fake voices on calls, pretending to be a relative who needs money urgently. If you get such a call, do not panic; tell a trusted adult, who can call the relative back on a known number. Chapter 6 discusses deepfakes more.",
+      "hi": "सावधान रहें: AI अब रिकॉर्डिंग से किसी असली व्यक्ति की आवाज़ की नकल कर सकता है। कुछ ठग ऐसी नकली आवाज़ों से फ़ोन करते हैं, ऐसे रिश्तेदार बनकर जिसे तुरंत पैसे चाहिए। ऐसा फ़ोन आए तो घबराएँ नहीं; किसी भरोसेमंद बड़े को बताएँ, जो उस रिश्तेदार को जाने-पहचाने नंबर पर वापस फ़ोन कर सकते हैं। अध्याय 6 में deepfakes पर और चर्चा है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.7 Natural Language Processing: understanding meaning",
+    "hi": "3.7 Natural Language Processing: अर्थ समझना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Turning speech into text is not the same as understanding it. If you say 'Is it going to rain in Jaipur tomorrow?', speech recognition gives the words. But the machine must still understand that you are asking about weather, the place is Jaipur and the day is tomorrow. This is the job of Natural Language Processing.",
+      "hi": "बोली को text में बदलना उसे समझने जैसा नहीं है। अगर आप कहते हैं 'क्या कल जयपुर में बारिश होगी?', तो speech recognition शब्द देता है। पर मशीन को फिर भी समझना होगा कि आप मौसम के बारे में पूछ रहे हैं, जगह जयपुर है और दिन कल है। यही Natural Language Processing का काम है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Natural Language Processing (NLP)",
+       "hi": "Natural Language Processing (NLP / प्राकृतिक भाषा प्रसंस्करण)"
+      },
+      "text": {
+       "en": "NLP is the area of AI that helps computers read, understand, and produce human languages such as Hindi, English, Tamil or Bengali, in text or speech. 'Natural language' means the languages people speak, as opposed to computer languages like Python.",
+       "hi": "NLP AI का वह क्षेत्र है जो कंप्यूटरों को हिंदी, अंग्रेज़ी, तमिल या बांग्ला जैसी इंसानी भाषाएँ text या बोली में पढ़ने, समझने और बनाने में मदद करता है। 'Natural language' (प्राकृतिक भाषा) का अर्थ है लोगों द्वारा बोली जाने वाली भाषाएँ, Python जैसी कंप्यूटर भाषाओं के विपरीत।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "NLP task",
+        "What it does",
+        "Example"
+       ],
+       "hi": [
+        "NLP का काम",
+        "क्या करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Understanding requests",
+         "Works out what a person wants",
+         "'Play a Lata Mangeshkar song' → open music and play"
+        ],
+        [
+         "Machine translation",
+         "Changes text from one language to another",
+         "Hindi notice → Odia"
+        ],
+        [
+         "Chatbots",
+         "Holds a conversation in text or voice",
+         "A railway or bank help chatbot"
+        ],
+        [
+         "Spam detection",
+         "Finds tricky or unwanted messages",
+         "'You won a lottery' SMS marked spam"
+        ],
+        [
+         "Summarising",
+         "Makes a long text short",
+         "A one-paragraph summary of a news article"
+        ],
+        [
+         "Grammar and spelling help",
+         "Spots mistakes and suggests corrections",
+         "Keyboard correcting 'recieve' to 'receive'"
+        ],
+        [
+         "Sentiment analysis",
+         "Tells whether a review sounds happy, angry or neutral",
+         "Sorting customer reviews of a shop"
+        ]
+       ],
+       "hi": [
+        [
+         "अनुरोध समझना",
+         "पता लगाता है कि व्यक्ति क्या चाहता है",
+         "'लता मंगेशकर का गाना बजाओ' → संगीत ऐप खोलकर बजाना"
+        ],
+        [
+         "मशीनी अनुवाद",
+         "text को एक भाषा से दूसरी में बदलता है",
+         "हिंदी सूचना → ओड़िया"
+        ],
+        [
+         "चैटबॉट",
+         "text या आवाज़ में बातचीत करता है",
+         "रेलवे या बैंक का सहायता चैटबॉट"
+        ],
+        [
+         "स्पैम पहचान",
+         "चालाकी भरे या अनचाहे संदेश खोजता है",
+         "'आपने लॉटरी जीती' SMS स्पैम चिह्नित"
+        ],
+        [
+         "सार बनाना",
+         "लंबे text को छोटा करता है",
+         "समाचार लेख का एक अनुच्छेद में सार"
+        ],
+        [
+         "व्याकरण और वर्तनी सहायता",
+         "गलतियाँ पकड़कर सुधार सुझाता है",
+         "कीबोर्ड 'recieve' को 'receive' करता है"
+        ],
+        [
+         "भावना विश्लेषण (Sentiment analysis)",
+         "बताता है कि समीक्षा खुश, नाराज़ या सामान्य लगती है",
+         "किसी दुकान की ग्राहक समीक्षाओं को छाँटना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Language is full of puzzles for machines. One word can have many meanings: 'कल' can mean yesterday or tomorrow, and 'bat' can be a cricket bat or the animal. Sarcasm ('Wow, great, the bus is late again!') sounds positive but means the opposite. Idioms like 'नाक में दम करना' cannot be understood word by word. NLP systems learn to handle these by studying huge amounts of real text, but they still make mistakes.",
+      "hi": "भाषा मशीनों के लिए पहेलियों से भरी है। एक शब्द के कई अर्थ हो सकते हैं: 'कल' का अर्थ बीता हुआ कल या आने वाला कल हो सकता है, और 'bat' क्रिकेट का बल्ला या चमगादड़ हो सकता है। व्यंग्य ('वाह, बढ़िया, बस फिर देर से है!') सुनने में अच्छा लगता है पर अर्थ उल्टा होता है। 'नाक में दम करना' जैसे मुहावरे शब्द-दर-शब्द नहीं समझे जा सकते। NLP सिस्टम भारी मात्रा में असली text पढ़कर इन्हें संभालना सीखते हैं, पर फिर भी गलती करते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the sentence 'Kal main nani ke ghar gaya tha', does 'kal' mean yesterday or tomorrow? How could an NLP system decide?",
+       "hi": "वाक्य 'कल मैं नानी के घर गया था' में 'कल' का अर्थ बीता हुआ कल है या आने वाला? NLP सिस्टम कैसे तय कर सकता है?"
+      },
+      "a": {
+       "en": "Step 1: look at the other words. 'gaya tha' (went) is in the past tense.\nStep 2: past tense with 'kal' means the day before today.\nAnswer: 'kal' means yesterday. An NLP system learns from many examples that 'kal' with past-tense verbs means yesterday and with future-tense verbs ('jaunga') means tomorrow. Using nearby words to decide meaning is called using context.",
+       "hi": "चरण 1: दूसरे शब्द देखें। 'गया था' भूतकाल में है।\nचरण 2: 'कल' के साथ भूतकाल का अर्थ है आज से पहले वाला दिन।\nउत्तर: 'कल' का अर्थ बीता हुआ कल है। NLP सिस्टम बहुत उदाहरणों से सीखता है कि भूतकाल की क्रिया के साथ 'कल' बीता कल है और भविष्य काल ('जाऊँगा') के साथ आने वाला कल। अर्थ तय करने के लिए आसपास के शब्दों का उपयोग context (संदर्भ) का उपयोग कहलाता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Context",
+       "hi": "संदर्भ (Context)"
+      },
+      "text": {
+       "en": "The surrounding words, situation or information that help decide the meaning of a word or sentence.",
+       "hi": "आसपास के शब्द, स्थिति या जानकारी जो किसी शब्द या वाक्य का अर्थ तय करने में मदद करते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.8 Putting it together: a voice assistant",
+    "hi": "3.8 सब एक साथ: वॉइस असिस्टेंट"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A voice assistant is a good example of a machine that hears, understands and speaks. Imagine Grandma Kamla says to a smart speaker, 'Aaj Delhi mein mausam kaisa hai?' Here is what happens, step by step. Picture it as a circle of arrows going from Grandma to the speaker and back.",
+      "hi": "वॉइस असिस्टेंट ऐसी मशीन का अच्छा उदाहरण है जो सुनती, समझती और बोलती है। कल्पना कीजिए कि कमला दादी स्मार्ट स्पीकर से कहती हैं, 'आज दिल्ली में मौसम कैसा है?' चरण दर चरण क्या होता है, देखिए। इसे दादी से स्पीकर और वापस दादी तक जाने वाले तीरों के घेरे की तरह सोचिए।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "1. Wake word: the device is listening only for a special word, such as 'Alexa' or 'Hey Google'. When it hears it, it starts recording.",
+       "2. Hearing (input): the microphone records Grandma's question.",
+       "3. Speech recognition: the sound is turned into text: 'Aaj Delhi mein mausam kaisa hai?'",
+       "4. NLP (understanding): the AI works out the intent (weather), the place (Delhi) and the day (today).",
+       "5. Finding the answer: it fetches today's weather for Delhi from a weather service over the internet.",
+       "6. Making a reply: NLP writes a sentence, such as 'Aaj Delhi mein dhoop rahegi, taapmaan 32 degree.'",
+       "7. Text-to-speech (output): the sentence is spoken through the speaker."
+      ],
+      "hi": [
+       "1. Wake word (जगाने वाला शब्द): उपकरण केवल एक खास शब्द सुन रहा होता है, जैसे 'Alexa' या 'Hey Google'। जब वह सुनता है, तब रिकॉर्डिंग शुरू करता है।",
+       "2. सुनना (इनपुट): माइक्रोफ़ोन दादी का सवाल रिकॉर्ड करता है।",
+       "3. Speech recognition: आवाज़ text में बदलती है: 'आज दिल्ली में मौसम कैसा है?'",
+       "4. NLP (समझना): AI इरादा (मौसम), जगह (दिल्ली) और दिन (आज) समझता है।",
+       "5. उत्तर खोजना: वह इंटरनेट पर मौसम सेवा से दिल्ली का आज का मौसम लेता है।",
+       "6. जवाब बनाना: NLP एक वाक्य लिखता है, जैसे 'आज दिल्ली में धूप रहेगी, तापमान 32 डिग्री।'",
+       "7. Text-to-speech (आउटपुट): वाक्य स्पीकर से बोला जाता है।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "Voice in → Speech-to-text → NLP (understand) → Find answer → NLP (reply) → Text-to-speech → Voice out",
+      "hi": "आवाज़ अंदर → Speech-to-text → NLP (समझना) → उत्तर खोजना → NLP (जवाब) → Text-to-speech → आवाज़ बाहर"
+     }
+    },
+    {
+     "note": {
+      "en": "Privacy tip: smart speakers and phones with voice assistants can record what is said after the wake word. Do not say passwords, OTPs or private family matters near them, and know how to switch off the microphone.",
+      "hi": "निजता सुझाव: वॉइस असिस्टेंट वाले स्मार्ट स्पीकर और फ़ोन wake word के बाद कही बात रिकॉर्ड कर सकते हैं। उनके पास पासवर्ड, OTP या परिवार की निजी बातें न बोलें, और माइक्रोफ़ोन बंद करना जानें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.9 Why machines make mistakes, and how to help them",
+    "hi": "3.9 मशीनें गलती क्यों करती हैं, और उनकी मदद कैसे करें"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Machines that see, hear and speak are very useful but far from perfect. Most mistakes happen because the input is unclear or because the AI did not learn from enough varied examples.",
+      "hi": "देखने, सुनने और बोलने वाली मशीनें बहुत उपयोगी हैं पर पूर्ण नहीं। ज़्यादातर गलतियाँ इसलिए होती हैं क्योंकि इनपुट साफ़ नहीं होता या AI ने पर्याप्त विविध उदाहरणों से नहीं सीखा।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Problem",
+        "Example",
+        "How to help"
+       ],
+       "hi": [
+        "समस्या",
+        "उदाहरण",
+        "मदद कैसे करें"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Blurry or dark photo",
+         "A crop app cannot identify a leaf photographed at night",
+         "Take a clear, well-lit, close photo"
+        ],
+        [
+         "Unusual angle or covered object",
+         "Face unlock fails with a scarf over the face",
+         "Face the camera; remove things covering the object"
+        ],
+        [
+         "Background noise",
+         "Voice typing adds wrong words near a busy road",
+         "Speak in a quiet place, close to the microphone"
+        ],
+        [
+         "Accent or language the AI heard less",
+         "A speech app mishears a regional accent",
+         "Speak clearly; choose the right language setting; better training data helps"
+        ],
+        [
+         "Mixed languages",
+         "'Mera phone charge karo' typed wrongly",
+         "Choose a Hindi-English option if available; correct the text"
+        ],
+        [
+         "Words with many meanings",
+         "'Bat' translated as the animal in a cricket sentence",
+         "Give more context; check translations"
+        ],
+        [
+         "One-sided training data",
+         "Face recognition working less well for some skin tones or ages",
+         "Builders must use varied data; users should report errors"
+        ]
+       ],
+       "hi": [
+        [
+         "धुंधली या अंधेरी फ़ोटो",
+         "रात में खींचे पत्ते को फ़सल ऐप पहचान नहीं पाता",
+         "साफ़, अच्छी रोशनी वाली, पास से फ़ोटो लें"
+        ],
+        [
+         "अजीब कोण या ढकी वस्तु",
+         "चेहरे पर दुपट्टा हो तो फ़ेस अनलॉक नहीं होता",
+         "कैमरे की ओर देखें; वस्तु को ढकने वाली चीज़ हटाएँ"
+        ],
+        [
+         "पीछे का शोर",
+         "व्यस्त सड़क के पास वॉइस टाइपिंग गलत शब्द जोड़ती है",
+         "शांत जगह पर, माइक्रोफ़ोन के पास बोलें"
+        ],
+        [
+         "ऐसा लहजा या भाषा जो AI ने कम सुनी",
+         "वाणी ऐप क्षेत्रीय लहजा गलत सुनता है",
+         "साफ़ बोलें; सही भाषा सेटिंग चुनें; बेहतर training data मदद करता है"
+        ],
+        [
+         "मिली-जुली भाषाएँ",
+         "'मेरा phone charge करो' गलत टाइप हुआ",
+         "उपलब्ध हो तो हिंदी-अंग्रेज़ी विकल्प चुनें; text सुधारें"
+        ],
+        [
+         "कई अर्थ वाले शब्द",
+         "क्रिकेट वाले वाक्य में 'bat' का अनुवाद चमगादड़",
+         "ज़्यादा संदर्भ दें; अनुवाद जाँचें"
+        ],
+        [
+         "एकतरफ़ा training data",
+         "कुछ त्वचा के रंगों या उम्र के लोगों के लिए चेहरा पहचान कम ठीक काम करे",
+         "बनाने वाले विविध data इस्तेमाल करें; उपयोगकर्ता गलतियाँ रिपोर्ट करें"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a simple rule that applies to all AI: the quality of the output depends on the quality of the input and of the training data. People sometimes say 'garbage in, garbage out'. You will study this idea in detail in Chapter 4.",
+      "hi": "एक सरल नियम जो हर AI पर लागू होता है: आउटपुट की गुणवत्ता इनपुट और training data की गुणवत्ता पर निर्भर करती है। लोग कभी-कभी कहते हैं 'garbage in, garbage out' (कचरा अंदर, कचरा बाहर)। इस विचार को आप अध्याय 4 में विस्तार से पढ़ेंगे।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: clear input → better output. And always check what the machine typed, read or translated before you use it.",
+      "hi": "याद रखें: साफ़ इनपुट → बेहतर आउटपुट। और उपयोग से पहले हमेशा जाँचें कि मशीन ने क्या टाइप किया, पढ़ा या अनुवाद किया।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.10 Activities",
+    "hi": "3.10 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (unplugged): Be a pixel artist.\nAim: to understand how pictures become numbers.\nYou need: graph paper or a notebook page with an 8 by 8 grid, a pencil.\nWhat to do: your partner secretly draws a simple shape (a heart, a house, a smiley) by shading squares. They read out each row as 1s and 0s (1 = shaded, 0 = empty), for example '00111100'. You shade your empty grid using only these numbers, without seeing the drawing. Compare.\nWhat you observe: you can rebuild the exact picture from numbers alone. If one number is read out wrongly, one square is wrong.\nWhat it teaches: computers store pictures as grids of numbers; a mistake in data gives a mistake in the picture.",
+      "hi": "गतिविधि 1 (बिना कंप्यूटर): pixel चित्रकार बनें।\nउद्देश्य: समझना कि चित्र संख्याएँ कैसे बनते हैं।\nआवश्यक सामग्री: ग्राफ़ पेपर या 8 x 8 खानों वाला कॉपी का पन्ना, पेंसिल।\nक्या करें: आपका साथी खाने भरकर चुपचाप कोई सरल आकृति (दिल, घर, स्माइली) बनाता है। वह हर पंक्ति 1 और 0 में पढ़कर सुनाता है (1 = भरा, 0 = खाली), जैसे '00111100'। आप चित्र देखे बिना केवल इन संख्याओं से अपनी खाली जाली भरते हैं। तुलना करें।\nक्या देखेंगे: केवल संख्याओं से आप बिल्कुल वही चित्र बना लेते हैं। अगर एक संख्या गलत पढ़ी गई, तो एक खाना गलत होता है।\nसीख: कंप्यूटर चित्रों को संख्याओं की जाली के रूप में रखते हैं; data में गलती से चित्र में गलती होती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (screen): Teach a machine with Google Teachable Machine.\nAim: to train a simple computer vision model yourself.\nYou need: a laptop or phone with a camera and internet, and a browser. A teacher or parent should supervise. The tool is free at teachablemachine.withgoogle.com and an image project can be started without signing in.\nWhat to do: choose 'Image Project'. Make two classes, for example 'Pencil' and 'Eraser'. Hold a pencil in front of the camera and record about 50-100 pictures from different angles for class 1; do the same with an eraser for class 2. Click 'Train Model'. Then hold up a pencil or eraser and watch the 'Preview' bars.\nWhat you observe: the model correctly shows 'Pencil' or 'Eraser' with a percentage. If you hold up something new, like a pen, it still picks one of the two classes, often 'Pencil'. If all pencil photos were taken in bright light, it may fail in dim light.\nWhat it teaches: computer vision learns from labelled examples; it only knows the classes it was taught; more varied examples make it better. (Teachable Machine also has an 'Audio Project' to train sound recognition, for example clapping vs snapping.)",
+      "hi": "गतिविधि 2 (स्क्रीन): Google Teachable Machine से मशीन को सिखाइए।\nउद्देश्य: खुद एक सरल computer vision मॉडल train करना।\nआवश्यक सामग्री: कैमरा और इंटरनेट वाला लैपटॉप या फ़ोन, और browser। शिक्षक या माता-पिता निगरानी करें। यह टूल teachablemachine.withgoogle.com पर मुफ़्त है और image project बिना साइन-इन के शुरू हो सकता है।\nक्या करें: 'Image Project' चुनें। दो class बनाएँ, जैसे 'Pencil' और 'Eraser'। कैमरे के सामने पेंसिल पकड़कर class 1 के लिए अलग-अलग कोणों से लगभग 50-100 तस्वीरें रिकॉर्ड करें; class 2 के लिए रबर के साथ यही करें। 'Train Model' दबाएँ। फिर पेंसिल या रबर दिखाएँ और 'Preview' की पट्टियाँ देखें।\nक्या देखेंगे: मॉडल प्रतिशत के साथ सही 'Pencil' या 'Eraser' दिखाता है। कोई नई चीज़, जैसे पेन, दिखाएँ तो भी वह दोनों में से एक class चुनता है, अक्सर 'Pencil'। अगर पेंसिल की सारी तस्वीरें तेज़ रोशनी में ली गई थीं, तो धीमी रोशनी में वह चूक सकता है।\nसीख: computer vision नाम लगे उदाहरणों से सीखता है; वह केवल वही class जानता है जो सिखाई गई; ज़्यादा विविध उदाहरण उसे बेहतर बनाते हैं। (Teachable Machine में आवाज़ पहचान सिखाने के लिए 'Audio Project' भी है, जैसे ताली बनाम चुटकी।)"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen): Voice typing test.\nAim: to see how input quality affects speech recognition.\nYou need: a phone keyboard with voice typing (a parent's phone, with permission).\nWhat to do: open a notes app. Say the same sentence, for example 'Mera school subah aath baje shuru hota hai', three times: (1) in a quiet room, clearly; (2) very fast; (3) with a fan or TV loud nearby. Write down what appears each time. Try the same in Hindi and English settings.\nWhat you observe: the quiet, clear attempt is usually most accurate; speed and noise cause mistakes.\nWhat it teaches: clear input gives better output; always check voice-typed text.",
+      "hi": "गतिविधि 3 (स्क्रीन): वॉइस टाइपिंग परीक्षण।\nउद्देश्य: देखना कि इनपुट की गुणवत्ता speech recognition को कैसे प्रभावित करती है।\nआवश्यक सामग्री: वॉइस टाइपिंग वाला फ़ोन कीबोर्ड (अनुमति से माता-पिता का फ़ोन)।\nक्या करें: नोट्स ऐप खोलें। एक ही वाक्य, जैसे 'मेरा स्कूल सुबह आठ बजे शुरू होता है', तीन बार बोलें: (1) शांत कमरे में, साफ़-साफ़; (2) बहुत तेज़; (3) पास में पंखा या टीवी ज़ोर से चलाकर। हर बार जो आए वह लिखें। हिंदी और अंग्रेज़ी सेटिंग में भी आज़माएँ।\nक्या देखेंगे: शांत, साफ़ प्रयास आमतौर पर सबसे सही होता है; तेज़ी और शोर से गलतियाँ होती हैं।\nसीख: साफ़ इनपुट से बेहतर आउटपुट मिलता है; वॉइस-टाइप text हमेशा जाँचें।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (screen): Let the machine read to you.\nAim: to experience text-to-speech.\nYou need: a phone or computer. Most phones have a free read-aloud or 'Select to speak' feature in accessibility settings (ask an adult to turn it on), and many browsers can read a page aloud.\nWhat to do: select a paragraph from this chapter in English and then in Hindi and let the device read it aloud. Listen for pauses at commas and full stops, and for any words said wrongly, such as numbers or short forms like 'Dr.'\nWhat you observe: the voice is mostly natural but sometimes stresses or pronounces words oddly.\nWhat it teaches: TTS turns text into speech using pronunciation and punctuation; it helps people with low vision and young readers.",
+      "hi": "गतिविधि 4 (स्क्रीन): मशीन से पढ़वाइए।\nउद्देश्य: text-to-speech का अनुभव करना।\nआवश्यक सामग्री: फ़ोन या कंप्यूटर। ज़्यादातर फ़ोन में accessibility सेटिंग में मुफ़्त read-aloud या 'Select to speak' फ़ीचर होता है (किसी बड़े से चालू करवाएँ), और कई browser पेज पढ़कर सुना सकते हैं।\nक्या करें: इस अध्याय का एक अनुच्छेद पहले अंग्रेज़ी में और फिर हिंदी में चुनें और उपकरण से पढ़वाएँ। अल्पविराम और पूर्ण विराम पर रुकावट सुनें, और गलत बोले गए शब्दों पर ध्यान दें, जैसे संख्याएँ या 'Dr.' जैसे छोटे रूप।\nक्या देखेंगे: आवाज़ ज़्यादातर स्वाभाविक है, पर कभी-कभी शब्दों पर ज़ोर या उच्चारण अजीब होता है।\nसीख: TTS उच्चारण और विराम-चिह्नों की मदद से text को बोली में बदलता है; यह कम दृष्टि वालों और छोटे पाठकों की मदद करता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 5 (unplugged): Human voice assistant relay.\nFour students stand in a line. Student 1 (the 'microphone') hears a question from the teacher and whispers it exactly. Student 2 ('speech-to-text') writes it on paper. Student 3 ('NLP') reads it, decides what is being asked and writes a short answer. Student 4 ('text-to-speech') reads the answer aloud to the class. Try it with a noisy classroom too.\nWhat it teaches: each step depends on the one before; a mistake early on (mishearing) spoils the final answer.",
+      "hi": "गतिविधि 5 (बिना कंप्यूटर): इंसानी वॉइस असिस्टेंट रिले।\nचार विद्यार्थी एक पंक्ति में खड़े होते हैं। विद्यार्थी 1 ('माइक्रोफ़ोन') शिक्षक से सवाल सुनकर ज्यों का त्यों फुसफुसाता है। विद्यार्थी 2 ('speech-to-text') उसे कागज़ पर लिखता है। विद्यार्थी 3 ('NLP') पढ़कर तय करता है कि क्या पूछा गया है और छोटा उत्तर लिखता है। विद्यार्थी 4 ('text-to-speech') उत्तर कक्षा को पढ़कर सुनाता है। शोर वाली कक्षा में भी आज़माएँ।\nसीख: हर चरण पिछले पर निर्भर है; शुरुआत की गलती (गलत सुनना) अंतिम उत्तर बिगाड़ देती है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: do not record other people's faces or voices without their permission, and do not upload photos of friends anywhere. Use these tools with a teacher or parent.",
+      "hi": "सुरक्षा: दूसरों की अनुमति के बिना उनका चेहरा या आवाज़ रिकॉर्ड न करें, और दोस्तों की फ़ोटो कहीं अपलोड न करें। ये टूल शिक्षक या माता-पिता के साथ इस्तेमाल करें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking a camera or microphone is itself intelligent. Fix: sensors only collect data; the AI program does the recognising.",
+   "Believing a computer sees pictures like we do. Fix: it sees a grid of pixel numbers and finds patterns in them.",
+   "Mixing up speech-to-text and text-to-speech. Fix: speech-to-text = machine listens and writes; text-to-speech = machine reads aloud.",
+   "Thinking speech recognition means understanding. Fix: it only turns sound into words; NLP works out the meaning.",
+   "Writing RGB values above 255 or mixing up the order. Fix: each of R, G, B is 0 to 255, in the order Red, Green, Blue.",
+   "Blaming the AI alone for every error. Fix: often the input is the problem: blur, darkness, noise or fast speech.",
+   "Sending voice-typed or translated text without reading it. Fix: always check and correct before sending.",
+   "Thinking 'natural language' means nature words. Fix: it means human languages like Hindi and English, as opposed to computer languages."
+  ],
+  "hi": [
+   "मानना कि कैमरा या माइक्रोफ़ोन खुद बुद्धिमान है। सुधार: सेंसर केवल data इकट्ठा करते हैं; पहचानने का काम AI प्रोग्राम करता है।",
+   "मानना कि कंप्यूटर चित्रों को हमारी तरह देखता है। सुधार: वह pixel संख्याओं की जाली देखता है और उनमें पैटर्न खोजता है।",
+   "speech-to-text और text-to-speech में गड़बड़। सुधार: speech-to-text = मशीन सुनकर लिखती है; text-to-speech = मशीन पढ़कर सुनाती है।",
+   "मानना कि speech recognition का अर्थ समझना है। सुधार: यह केवल आवाज़ को शब्दों में बदलता है; अर्थ NLP निकालता है।",
+   "RGB मान 255 से ज़्यादा लिखना या क्रम उलटना। सुधार: R, G, B हर एक 0 से 255 तक है, क्रम लाल, हरा, नीला।",
+   "हर गलती के लिए केवल AI को दोष देना। सुधार: अक्सर समस्या इनपुट में होती है: धुंधलापन, अंधेरा, शोर या तेज़ बोलना।",
+   "वॉइस-टाइप या अनुवादित text बिना पढ़े भेजना। सुधार: भेजने से पहले हमेशा जाँचें और सुधारें।",
+   "मानना कि 'natural language' का अर्थ प्रकृति के शब्द है। सुधार: इसका अर्थ हिंदी और अंग्रेज़ी जैसी इंसानी भाषाएँ है, कंप्यूटर भाषाओं के विपरीत।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Sensor",
+    "hi": "सेंसर"
+   },
+   "d": {
+    "en": "A device that detects light, sound, touch, heat or movement and turns it into signals a computer can use.",
+    "hi": "रोशनी, आवाज़, स्पर्श, गर्मी या हलचल पकड़कर उसे कंप्यूटर के उपयोग लायक संकेतों में बदलने वाला उपकरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Output device",
+    "hi": "आउटपुट उपकरण"
+   },
+   "d": {
+    "en": "A part that gives results to people, such as a screen or speaker.",
+    "hi": "लोगों को परिणाम देने वाला पुर्ज़ा, जैसे स्क्रीन या स्पीकर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pixel",
+    "hi": "पिक्सेल"
+   },
+   "d": {
+    "en": "The smallest dot of a digital picture; its colour is stored as numbers.",
+    "hi": "डिजिटल चित्र का सबसे छोटा बिंदु; उसका रंग संख्याओं में रखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Megapixel",
+    "hi": "मेगापिक्सेल"
+   },
+   "d": {
+    "en": "One million pixels; used to describe camera resolution.",
+    "hi": "दस लाख pixels; कैमरे की क्षमता बताने के लिए उपयोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Grayscale",
+    "hi": "Grayscale (श्वेत-श्याम)"
+   },
+   "d": {
+    "en": "A picture made only of shades from black to white, each pixel having one number (often 0-255).",
+    "hi": "केवल काले से सफ़ेद तक के रंगों से बना चित्र, हर pixel की एक संख्या (अक्सर 0-255)।"
+   }
+  },
+  {
+   "t": {
+    "en": "RGB",
+    "hi": "RGB"
+   },
+   "d": {
+    "en": "Red, Green, Blue: three numbers (each 0-255) that describe a colour pixel.",
+    "hi": "लाल, हरा, नीला: तीन संख्याएँ (हर एक 0-255) जो रंगीन pixel बताती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Computer Vision",
+    "hi": "Computer Vision"
+   },
+   "d": {
+    "en": "The area of AI that helps computers understand images and videos.",
+    "hi": "AI का क्षेत्र जो कंप्यूटरों को चित्र और वीडियो समझने में मदद करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image classification",
+    "hi": "चित्र वर्गीकरण"
+   },
+   "d": {
+    "en": "Deciding what a whole image shows, e.g. 'cat' or 'dog'.",
+    "hi": "तय करना कि पूरा चित्र क्या दिखाता है, जैसे 'बिल्ली' या 'कुत्ता'।"
+   }
+  },
+  {
+   "t": {
+    "en": "Object detection",
+    "hi": "वस्तु पहचान"
+   },
+   "d": {
+    "en": "Finding and locating many objects in one image.",
+    "hi": "एक चित्र में कई वस्तुएँ खोजना और उनकी जगह बताना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Face recognition",
+    "hi": "चेहरा पहचान"
+   },
+   "d": {
+    "en": "Identifying or verifying a person from their face.",
+    "hi": "चेहरे से व्यक्ति की पहचान या पुष्टि करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "OCR",
+    "hi": "OCR"
+   },
+   "d": {
+    "en": "Optical Character Recognition: reading letters and numbers from images into text.",
+    "hi": "Optical Character Recognition: चित्रों से अक्षर और अंक पढ़कर text में बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sound wave / waveform",
+    "hi": "ध्वनि तरंग / waveform"
+   },
+   "d": {
+    "en": "The up-and-down pattern of a sound, which a computer stores as a list of numbers.",
+    "hi": "आवाज़ का ऊपर-नीचे वाला पैटर्न, जिसे कंप्यूटर संख्याओं की सूची के रूप में रखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Speech recognition (speech-to-text, ASR)",
+    "hi": "Speech recognition (speech-to-text, ASR)"
+   },
+   "d": {
+    "en": "AI that turns spoken words into written text.",
+    "hi": "बोले गए शब्दों को लिखित text में बदलने वाला AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "Text-to-speech (TTS)",
+    "hi": "Text-to-speech (TTS)"
+   },
+   "d": {
+    "en": "Technology that turns written text into a spoken voice.",
+    "hi": "लिखे text को बोली गई आवाज़ में बदलने वाली तकनीक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Accent",
+    "hi": "लहजा"
+   },
+   "d": {
+    "en": "The way people of a region or group pronounce words.",
+    "hi": "किसी क्षेत्र या समूह के लोगों का शब्द बोलने का ढंग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Natural Language Processing (NLP)",
+    "hi": "Natural Language Processing (NLP)"
+   },
+   "d": {
+    "en": "The area of AI that helps computers understand and produce human languages.",
+    "hi": "AI का क्षेत्र जो कंप्यूटरों को इंसानी भाषाएँ समझने और बनाने में मदद करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Natural language",
+    "hi": "प्राकृतिक भाषा"
+   },
+   "d": {
+    "en": "A language people speak, like Hindi or English, not a computer language.",
+    "hi": "लोगों द्वारा बोली जाने वाली भाषा, जैसे हिंदी या अंग्रेज़ी, कंप्यूटर भाषा नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Context",
+    "hi": "संदर्भ"
+   },
+   "d": {
+    "en": "Surrounding words or situation that help decide meaning.",
+    "hi": "आसपास के शब्द या स्थिति जो अर्थ तय करने में मदद करें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sentiment analysis",
+    "hi": "भावना विश्लेषण"
+   },
+   "d": {
+    "en": "NLP that tells whether text sounds positive, negative or neutral.",
+    "hi": "NLP जो बताता है कि text सकारात्मक, नकारात्मक या सामान्य लगता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Wake word",
+    "hi": "Wake word (जगाने वाला शब्द)"
+   },
+   "d": {
+    "en": "A special word like 'Alexa' or 'Hey Google' that makes a voice assistant start listening to a request.",
+    "hi": "'Alexa' या 'Hey Google' जैसा खास शब्द जिससे वॉइस असिस्टेंट अनुरोध सुनना शुरू करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Screen reader",
+    "hi": "Screen reader"
+   },
+   "d": {
+    "en": "Software that reads out what is on the screen, for people who are blind or have low vision.",
+    "hi": "software जो दृष्टिहीन या कम दृष्टि वालों के लिए स्क्रीन पर लिखा पढ़कर सुनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Voice cloning",
+    "hi": "आवाज़ की नकल (Voice cloning)"
+   },
+   "d": {
+    "en": "Using AI to copy a real person's voice; can be misused for fraud.",
+    "hi": "AI से किसी असली व्यक्ति की आवाज़ की नकल करना; ठगी में इसका दुरुपयोग हो सकता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The smallest dot of a digital picture is called a:\n(a) byte (b) pixel (c) sensor (d) wave",
+    "hi": "बहुविकल्पी: डिजिटल चित्र का सबसे छोटा बिंदु कहलाता है:\n(क) बाइट (ख) pixel (ग) सेंसर (घ) तरंग"
+   },
+   "a": {
+    "en": "(b) pixel.",
+    "hi": "(ख) pixel।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which machine part works like our ears?\n(a) speaker (b) screen (c) microphone (d) GPS",
+    "hi": "बहुविकल्पी: मशीन का कौन-सा पुर्ज़ा हमारे कानों की तरह काम करता है?\n(क) स्पीकर (ख) स्क्रीन (ग) माइक्रोफ़ोन (घ) GPS"
+   },
+   "a": {
+    "en": "(c) microphone.",
+    "hi": "(ग) माइक्रोफ़ोन।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: A phone reading a message aloud uses:\n(a) speech-to-text (b) text-to-speech (c) OCR (d) face recognition",
+    "hi": "बहुविकल्पी: संदेश पढ़कर सुनाने वाला फ़ोन किसका उपयोग करता है?\n(क) speech-to-text (ख) text-to-speech (ग) OCR (घ) चेहरा पहचान"
+   },
+   "a": {
+    "en": "(b) text-to-speech.",
+    "hi": "(ख) text-to-speech।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In RGB, the colour (0, 0, 255) is:\n(a) red (b) green (c) blue (d) white",
+    "hi": "बहुविकल्पी: RGB में (0, 0, 255) रंग है:\n(क) लाल (ख) हरा (ग) नीला (घ) सफ़ेद"
+   },
+   "a": {
+    "en": "(c) blue.",
+    "hi": "(ग) नीला।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The area of AI that helps computers understand pictures and videos is called ______.",
+    "hi": "रिक्त स्थान भरें: AI का वह क्षेत्र जो कंप्यूटरों को चित्र और वीडियो समझने में मदद करता है, ______ कहलाता है।"
+   },
+   "a": {
+    "en": "computer vision",
+    "hi": "computer vision"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: NLP stands for ______ ______ ______.",
+    "hi": "रिक्त स्थान भरें: NLP का पूरा रूप ______ ______ ______ है।"
+   },
+   "a": {
+    "en": "Natural Language Processing",
+    "hi": "Natural Language Processing"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: In a grayscale picture, 0 usually means white.",
+    "hi": "सही या गलत: grayscale चित्र में 0 का अर्थ आमतौर पर सफ़ेद होता है।"
+   },
+   "a": {
+    "en": "False. 0 usually means black and 255 means white.",
+    "hi": "गलत। 0 का अर्थ आमतौर पर काला और 255 का अर्थ सफ़ेद होता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: Background noise can make speech recognition less accurate.",
+    "hi": "सही या गलत: पीछे का शोर speech recognition को कम सटीक बना सकता है।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Match the human sense with the machine part: eyes, ears, voice, sense of direction → microphone, speaker, camera, GPS.",
+    "hi": "इंसानी इंद्रिय का मशीन के पुर्ज़े से मिलान कीजिए: आँखें, कान, आवाज़, दिशा की समझ → माइक्रोफ़ोन, स्पीकर, कैमरा, GPS।"
+   },
+   "a": {
+    "en": "Eyes → camera; ears → microphone; voice → speaker; sense of direction → GPS.",
+    "hi": "आँखें → कैमरा; कान → माइक्रोफ़ोन; आवाज़ → स्पीकर; दिशा की समझ → GPS।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain how a computer stores a colour photo.",
+    "hi": "समझाइए कि कंप्यूटर रंगीन फ़ोटो कैसे रखता है।"
+   },
+   "a": {
+    "en": "The photo is divided into a grid of tiny dots called pixels. Each pixel's colour is stored as three numbers for red, green and blue (RGB), each from 0 to 255. So the whole photo is a big table of numbers.",
+    "hi": "फ़ोटो को pixels नाम के छोटे बिंदुओं की जाली में बाँटा जाता है। हर pixel का रंग लाल, हरे और नीले (RGB) के लिए तीन संख्याओं के रूप में रखा जाता है, हर एक 0 से 255 तक। इस तरह पूरी फ़ोटो संख्याओं की एक बड़ी तालिका है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write the 5 rows (using 1 and 0) for the capital letter 'T' on a 5 by 5 grid.",
+    "hi": "5 x 5 जाली पर अंग्रेज़ी के बड़े अक्षर 'T' की 5 पंक्तियाँ (1 और 0 से) लिखिए।"
+   },
+   "a": {
+    "en": "Top row fully black, then only the middle column black:\n11111, 00100, 00100, 00100, 00100.",
+    "hi": "सबसे ऊपर की पंक्ति पूरी काली, फिर केवल बीच का स्तंभ काला:\n11111, 00100, 00100, 00100, 00100।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How is a computer vision system trained to recognise cats?",
+    "hi": "बिल्लियाँ पहचानने के लिए computer vision सिस्टम को कैसे train किया जाता है?"
+   },
+   "a": {
+    "en": "It is shown thousands of pictures labelled 'cat' and 'not cat'. It learns which pixel patterns usually mean cat, starting from edges, then shapes, then parts like ears and eyes. After training, it can recognise cats in new photos, with a confidence score.",
+    "hi": "उसे 'बिल्ली' और 'बिल्ली नहीं' नाम लगे हज़ारों चित्र दिखाए जाते हैं। वह सीखता है कि pixels के कौन-से पैटर्न का अर्थ आमतौर पर बिल्ली है, पहले किनारे, फिर आकृतियाँ, फिर कान और आँख जैसे हिस्से। Training के बाद वह विश्वास-अंक के साथ नई फ़ोटो में बिल्ली पहचान सकता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the difference between speech recognition and NLP? Use an example.",
+    "hi": "speech recognition और NLP में क्या अंतर है? उदाहरण से समझाइए।"
+   },
+   "a": {
+    "en": "Speech recognition turns sound into words: hearing 'Play a song by A. R. Rahman' and writing those words. NLP understands the meaning: that the person wants music, by the artist A. R. Rahman, and that the app should play it.",
+    "hi": "Speech recognition आवाज़ को शब्दों में बदलता है: 'ए. आर. रहमान का गाना बजाओ' सुनकर वे शब्द लिखना। NLP अर्थ समझता है: कि व्यक्ति संगीत चाहता है, कलाकार ए. आर. रहमान का, और ऐप को उसे बजाना चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give three uses of text-to-speech and say who each helps.",
+    "hi": "text-to-speech के तीन उपयोग बताइए और हर एक किसकी मदद करता है।"
+   },
+   "a": {
+    "en": "1. Screen readers - help people who are blind or have low vision.\n2. Map voice directions - help drivers keep their eyes on the road.\n3. Read-aloud for books - help young readers and people who cannot read.\n(Also: station announcements, voice assistants.)",
+    "hi": "1. Screen reader - दृष्टिहीन या कम दृष्टि वालों की मदद।\n2. मैप की आवाज़ से दिशाएँ - ड्राइवरों को सड़क पर नज़र रखने में मदद।\n3. किताबें पढ़कर सुनाना - छोटे पाठकों और पढ़ न पाने वालों की मदद।\n(स्टेशन घोषणाएँ, वॉइस असिस्टेंट भी।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is OCR? Give two examples of its use.",
+    "hi": "OCR क्या है? उसके उपयोग के दो उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "OCR (Optical Character Recognition) is computer vision that reads letters and numbers in an image and turns them into text. Examples: reading vehicle number plates at toll or parking gates; scanning a printed page so its text can be copied or translated.",
+    "hi": "OCR (Optical Character Recognition) computer vision है जो चित्र में अक्षर और अंक पढ़कर उन्हें text में बदलता है। उदाहरण: टोल या पार्किंग गेट पर गाड़ियों की नंबर प्लेट पढ़ना; छपे पन्ने को स्कैन करना ताकि उसका text कॉपी या अनुवादित हो सके।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is speech recognition harder in India? Give three reasons.",
+    "hi": "भारत में speech recognition कठिन क्यों है? तीन कारण बताइए।"
+   },
+   "a": {
+    "en": "1. Many languages and accents.\n2. People often mix languages in one sentence (Hindi-English).\n3. Busy, noisy surroundings (traffic, crowds). Also, some languages have less recorded data to train on.",
+    "hi": "1. कई भाषाएँ और लहजे।\n2. लोग अक्सर एक वाक्य में भाषाएँ मिलाते हैं (हिंदी-अंग्रेज़ी)।\n3. व्यस्त, शोर भरा माहौल (ट्रैफ़िक, भीड़)। साथ ही, कुछ भाषाओं में train करने के लिए रिकॉर्ड किया गया data कम है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe step by step what a voice assistant does when you ask, 'What is the weather in Chennai today?'",
+    "hi": "दीर्घ उत्तर: चरण दर चरण बताइए कि जब आप पूछते हैं 'आज चेन्नई में मौसम कैसा है?' तो वॉइस असिस्टेंट क्या करता है।"
+   },
+   "a": {
+    "en": "1. It hears the wake word and starts listening.\n2. The microphone records your question (input).\n3. Speech recognition turns the sound into text.\n4. NLP finds the intent (weather), place (Chennai) and day (today).\n5. It gets Chennai's weather from a weather service online.\n6. NLP forms a reply sentence.\n7. Text-to-speech speaks the reply through the speaker (output).",
+    "hi": "1. वह wake word सुनकर सुनना शुरू करता है।\n2. माइक्रोफ़ोन आपका सवाल रिकॉर्ड करता है (इनपुट)।\n3. Speech recognition आवाज़ को text में बदलता है।\n4. NLP इरादा (मौसम), जगह (चेन्नई) और दिन (आज) पहचानता है।\n5. वह ऑनलाइन मौसम सेवा से चेन्नई का मौसम लेता है।\n6. NLP जवाब का वाक्य बनाता है।\n7. Text-to-speech जवाब स्पीकर से बोलता है (आउटपुट)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Why do machines sometimes misread photos or mishear speech? How can users and builders reduce these mistakes?",
+    "hi": "दीर्घ उत्तर: मशीनें कभी-कभी फ़ोटो गलत क्यों पढ़ती या बोली गलत क्यों सुनती हैं? उपयोगकर्ता और बनाने वाले इन गलतियों को कैसे कम कर सकते हैं?"
+   },
+   "a": {
+    "en": "Reasons: blurry, dark or covered images; unusual angles; background noise; fast or unclear speech; accents or languages the AI heard less; mixed languages; words with many meanings; one-sided training data.\nUsers can: take clear, well-lit photos; speak clearly in a quiet place; choose the right language; give context; check and correct outputs.\nBuilders can: train with large, varied data from many kinds of people, places, accents and lighting, and test carefully.",
+    "hi": "कारण: धुंधले, अंधेरे या ढके चित्र; अजीब कोण; पीछे का शोर; तेज़ या अस्पष्ट बोली; ऐसे लहजे या भाषाएँ जो AI ने कम सुनी; मिली भाषाएँ; कई अर्थ वाले शब्द; एकतरफ़ा training data।\nउपयोगकर्ता: साफ़, अच्छी रोशनी वाली फ़ोटो लें; शांत जगह में साफ़ बोलें; सही भाषा चुनें; संदर्भ दें; आउटपुट जाँचें और सुधारें।\nबनाने वाले: कई तरह के लोगों, जगहों, लहजों और रोशनी के बड़े, विविध data से train करें, और ध्यान से परखें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: In 'Rohit hit the ball with his bat', how should a translation app know 'bat' is not the animal?",
+    "hi": "सोचने वाला प्रश्न: 'Rohit hit the ball with his bat' में अनुवाद ऐप को कैसे पता चले कि 'bat' जानवर नहीं है?"
+   },
+   "a": {
+    "en": "By using context: nearby words 'hit' and 'ball' are linked with cricket. From many examples, the NLP system has learnt that 'bat' near 'ball' and 'hit' usually means a cricket bat, so it translates it as 'बल्ला', not 'चमगादड़'.",
+    "hi": "संदर्भ के उपयोग से: पास के शब्द 'hit' और 'ball' क्रिकेट से जुड़े हैं। बहुत उदाहरणों से NLP सिस्टम ने सीखा है कि 'ball' और 'hit' के पास 'bat' का अर्थ आमतौर पर क्रिकेट का बल्ला होता है, इसलिए वह इसका अनुवाद 'बल्ला' करता है, 'चमगादड़' नहीं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Your Teachable Machine model learnt 'Pencil' and 'Eraser'. When you show a pen, it says 'Pencil 85%'. Why? How could you improve it?",
+    "hi": "सोचने वाला प्रश्न: आपके Teachable Machine मॉडल ने 'Pencil' और 'Eraser' सीखे। पेन दिखाने पर वह कहता है 'Pencil 85%'। क्यों? आप इसे कैसे सुधार सकते हैं?"
+   },
+   "a": {
+    "en": "The model only knows the two classes it was taught, so it must choose one. A pen is long and thin like a pencil, so it picks 'Pencil'. To improve: add a third class such as 'Pen' or 'Something else' with many examples, and record varied pictures (different angles, lighting, backgrounds).",
+    "hi": "मॉडल केवल वही दो class जानता है जो सिखाई गई, इसलिए उसे एक चुननी ही है। पेन पेंसिल की तरह लंबा और पतला है, इसलिए वह 'Pencil' चुनता है। सुधार: 'Pen' या 'कुछ और' जैसी तीसरी class बहुत उदाहरणों के साथ जोड़ें, और विविध तस्वीरें लें (अलग कोण, रोशनी, पृष्ठभूमि)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Someone calls your mother in a voice that sounds exactly like your uncle, asking for money urgently. What could be happening and what should you do?",
+    "hi": "सोचने वाला प्रश्न: कोई आपकी माँ को बिल्कुल आपके चाचा जैसी आवाज़ में फ़ोन करके तुरंत पैसे माँगता है। क्या हो सकता है और आपको क्या करना चाहिए?"
+   },
+   "a": {
+    "en": "It could be a fraud using AI voice cloning (a fake voice made with text-to-speech technology trained on the uncle's recordings). Do not panic or send money. Hang up and call the uncle back on his known number, and tell a trusted adult. Do not share OTPs or bank details.",
+    "hi": "यह AI voice cloning (चाचा की रिकॉर्डिंग पर train हुई text-to-speech तकनीक से बनी नकली आवाज़) से की गई ठगी हो सकती है। घबराएँ नहीं और पैसे न भेजें। फ़ोन काटकर चाचा को उनके जाने-पहचाने नंबर पर वापस फ़ोन करें, और किसी भरोसेमंद बड़े को बताएँ। OTP या बैंक विवरण साझा न करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: Do the voice typing test in a quiet room and a noisy room. Count the wrong words each time and explain the result.",
+    "hi": "गतिविधि प्रश्न: शांत कमरे और शोर वाले कमरे में वॉइस टाइपिंग परीक्षण करें। हर बार गलत शब्द गिनें और परिणाम समझाएँ।"
+   },
+   "a": {
+    "en": "Answers will vary, for example 0 wrong words in the quiet room and 3 in the noisy room. Explanation: noise mixes with the voice, so the sound patterns the AI receives are less clear, making mistakes more likely. Clear input gives better output.",
+    "hi": "उत्तर अलग-अलग होंगे, जैसे शांत कमरे में 0 और शोर वाले कमरे में 3 गलत शब्द। व्याख्या: शोर आवाज़ में मिल जाता है, इसलिए AI को मिलने वाले ध्वनि पैटर्न कम साफ़ होते हैं, जिससे गलती की संभावना बढ़ती है। साफ़ इनपुट से बेहतर आउटपुट मिलता है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Humans sense, think and act; machines use sensors (input), a processor with AI (processing) and screens or speakers (output).",
+   "A sensor detects light, sound, touch, heat or movement; it is not intelligent by itself.",
+   "A digital picture is a grid of pixels; each pixel's colour is stored as numbers (grayscale 0-255, or RGB).",
+   "Computer vision helps machines understand images: classification, object detection, face recognition, OCR, medical images, ball tracking.",
+   "Computer vision learns from many labelled pictures, building up from edges to shapes to whole objects.",
+   "Sound is stored as a list of numbers measured many times a second (a waveform).",
+   "Speech recognition (speech-to-text) turns spoken words into text, as in voice typing and captions.",
+   "Text-to-speech turns text into a spoken voice, helping people with low vision and young readers.",
+   "NLP helps machines understand and produce human languages: chatbots, translation, spam detection, summaries.",
+   "NLP uses context to handle words with many meanings, idioms and mixed languages.",
+   "A voice assistant combines speech recognition, NLP and text-to-speech.",
+   "Blur, darkness, noise, accents and one-sided data cause mistakes; clear input gives better output.",
+   "Always check machine output, protect privacy near voice devices, and beware of fake AI voices."
+  ],
+  "hi": [
+   "इंसान महसूस करते, सोचते और कार्य करते हैं; मशीनें सेंसर (इनपुट), AI वाला प्रोसेसर (प्रोसेसिंग) और स्क्रीन या स्पीकर (आउटपुट) इस्तेमाल करती हैं।",
+   "सेंसर रोशनी, आवाज़, स्पर्श, गर्मी या हलचल पकड़ता है; वह खुद बुद्धिमान नहीं है।",
+   "डिजिटल चित्र pixels की जाली है; हर pixel का रंग संख्याओं में रखा जाता है (grayscale 0-255, या RGB)।",
+   "Computer vision मशीनों को चित्र समझने में मदद करता है: वर्गीकरण, वस्तु पहचान, चेहरा पहचान, OCR, चिकित्सा चित्र, बॉल ट्रैकिंग।",
+   "Computer vision बहुत-से नाम लगे चित्रों से सीखता है, किनारों से आकृतियों और फिर पूरी वस्तुओं तक।",
+   "आवाज़ हर सेकंड कई बार मापी गई संख्याओं की सूची (waveform) के रूप में रखी जाती है।",
+   "Speech recognition (speech-to-text) बोले गए शब्दों को text में बदलता है, जैसे वॉइस टाइपिंग और कैप्शन में।",
+   "Text-to-speech text को बोली में बदलता है, जिससे कम दृष्टि वालों और छोटे पाठकों को मदद मिलती है।",
+   "NLP मशीनों को इंसानी भाषाएँ समझने और बनाने में मदद करता है: चैटबॉट, अनुवाद, स्पैम पहचान, सार।",
+   "NLP कई अर्थ वाले शब्दों, मुहावरों और मिली भाषाओं को संभालने के लिए संदर्भ का उपयोग करता है।",
+   "वॉइस असिस्टेंट speech recognition, NLP और text-to-speech को जोड़ता है।",
+   "धुंधलापन, अंधेरा, शोर, लहजे और एकतरफ़ा data गलतियाँ कराते हैं; साफ़ इनपुट से बेहतर आउटपुट मिलता है।",
+   "मशीन का आउटपुट हमेशा जाँचें, वॉइस उपकरणों के पास निजता बचाएँ, और नकली AI आवाज़ों से सावधान रहें।"
+  ]
+ }
+}

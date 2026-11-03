@@ -1,0 +1,1204 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "6",
+ "id": "ch2",
+ "intro": {
+  "en": "AI is not only in laboratories or films. It is in the phone in your family's pocket, in the bank's payment system, in the doctor's clinic, in the farmer's field and even in the cricket match you watch on TV. In this chapter you will learn to spot AI in daily life, understand what it is doing in each case using input, processing and output, and think about how it helps people and where we must be careful.",
+  "hi": "AI केवल प्रयोगशालाओं या फ़िल्मों में नहीं है। यह आपके परिवार के फ़ोन में, बैंक की भुगतान प्रणाली में, डॉक्टर के क्लिनिक में, किसान के खेत में और टीवी पर देखे जाने वाले क्रिकेट मैच में भी है। इस अध्याय में आप रोज़मर्रा की ज़िंदगी में AI को पहचानना सीखेंगे, इनपुट, प्रोसेसिंग और आउटपुट की मदद से समझेंगे कि हर जगह वह क्या कर रहा है, और सोचेंगे कि वह लोगों की कैसे मदद करता है और कहाँ हमें सावधान रहना है।"
+ },
+ "learn": {
+  "en": [
+   "How to recognise AI around you with three simple questions",
+   "AI in phones: voice assistants, face unlock, camera, keyboard and photo apps",
+   "Recommendation systems in video, music and shopping apps",
+   "AI in travel: map traffic, fastest routes, ride apps and smart signals",
+   "AI in farming, weather and disaster warnings",
+   "AI in health and in Indian languages (translation, Bhashini)",
+   "AI in money and safety: spam filters and UPI/bank fraud alerts",
+   "AI in education, sports, games and at home",
+   "Benefits of AI and points to be careful about",
+   "An 'AI spotting diary' and other activities"
+  ],
+  "hi": [
+   "तीन सरल सवालों से अपने आसपास AI कैसे पहचानें",
+   "फ़ोन में AI: वॉइस असिस्टेंट, फ़ेस अनलॉक, कैमरा, कीबोर्ड और फ़ोटो ऐप",
+   "वीडियो, संगीत और शॉपिंग ऐप में सुझाव देने वाली प्रणालियाँ (recommendation systems)",
+   "यात्रा में AI: मैप ट्रैफ़िक, सबसे तेज़ रास्ते, राइड ऐप और स्मार्ट सिग्नल",
+   "खेती, मौसम और आपदा चेतावनी में AI",
+   "स्वास्थ्य और भारतीय भाषाओं (अनुवाद, Bhashini) में AI",
+   "पैसे और सुरक्षा में AI: स्पैम फ़िल्टर और UPI/बैंक धोखाधड़ी अलर्ट",
+   "शिक्षा, खेल, गेम और घर में AI",
+   "AI के लाभ और सावधानी की बातें",
+   "'AI खोज डायरी' और अन्य गतिविधियाँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "2.1 A day with AI",
+    "hi": "2.1 AI के साथ एक दिन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Meet Kabir, a Class 6 student in Lucknow. At 6:30 a.m. his father says, 'Hey Google, what is the weather today?' and the phone replies that it may rain. His mother unlocks her phone just by looking at it. On the way to school, the taxi app shows that the driver will arrive in 4 minutes, and the map turns one road red because of a jam, so the driver takes another road. In the evening his grandmother sends a voice message in Bhojpuri to a cousin in Chennai, and an app helps translate it. At night the video app shows cartoons similar to the ones Kabir watched yesterday. Kabir did not see a single robot all day, yet he met AI at least six times.",
+      "hi": "मिलिए लखनऊ के कक्षा 6 के विद्यार्थी कबीर से। सुबह 6:30 बजे उसके पिता कहते हैं, 'Hey Google, आज मौसम कैसा है?' और फ़ोन बताता है कि बारिश हो सकती है। उसकी माँ बस फ़ोन की ओर देखकर उसे खोल लेती हैं। स्कूल जाते समय टैक्सी ऐप दिखाता है कि ड्राइवर 4 मिनट में पहुँचेगा, और जाम के कारण मैप एक सड़क को लाल कर देता है, तो ड्राइवर दूसरी सड़क लेता है। शाम को उसकी दादी चेन्नई में रहने वाले एक रिश्तेदार को भोजपुरी में वॉइस संदेश भेजती हैं, और एक ऐप उसका अनुवाद करने में मदद करता है। रात को वीडियो ऐप वैसे ही कार्टून दिखाता है जैसे कबीर ने कल देखे थे। कबीर ने पूरे दिन एक भी रोबोट नहीं देखा, फिर भी वह कम से कम छह बार AI से मिला।"
+     }
+    },
+    {
+     "p": {
+      "en": "Most AI is invisible. It works quietly inside apps and services. To notice it, you need to know what to look for.",
+      "hi": "ज़्यादातर AI दिखाई नहीं देता। यह ऐप और सेवाओं के अंदर चुपचाप काम करता है। इसे पहचानने के लिए आपको पता होना चाहिए कि क्या खोजना है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.2 How to spot AI: three questions",
+    "hi": "2.2 AI कैसे पहचानें: तीन सवाल"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Chapter 1 you learnt that AI does tasks that normally need human intelligence, mostly by learning from data. When you see a smart feature, ask these three questions:",
+      "hi": "अध्याय 1 में आपने सीखा कि AI ऐसे काम करता है जिनमें आमतौर पर इंसानी बुद्धि चाहिए, ज़्यादातर data से सीखकर। जब कोई समझदार फ़ीचर दिखे, तो ये तीन सवाल पूछिए:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "1. Is it recognising something, such as a face, voice, word, object or handwriting?",
+       "2. Is it predicting or suggesting something, such as traffic, the next word, a video you may like, or weather?",
+       "3. Does it learn or adjust from many examples or from how people use it?"
+      ],
+      "hi": [
+       "1. क्या यह कुछ पहचान रहा है, जैसे चेहरा, आवाज़, शब्द, वस्तु या लिखावट?",
+       "2. क्या यह कुछ अनुमान लगा रहा है या सुझा रहा है, जैसे ट्रैफ़िक, अगला शब्द, आपको पसंद आने वाला वीडियो, या मौसम?",
+       "3. क्या यह बहुत सारे उदाहरणों से या लोगों के उपयोग से सीखता या बदलता है?"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "If the answer to any of these is yes, there is very likely AI inside. If the device only follows a fixed setting, such as a timer, it is an ordinary machine.",
+      "hi": "अगर इनमें से किसी का जवाब हाँ है, तो बहुत संभव है कि उसके अंदर AI है। अगर उपकरण केवल तय सेटिंग, जैसे टाइमर, मानता है, तो वह साधारण मशीन है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Recognise, Predict/Suggest, Learn. These three words help you spot AI anywhere.",
+      "hi": "याद रखें: पहचानना, अनुमान/सुझाव, सीखना। ये तीन शब्द हर जगह AI पहचानने में मदद करते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.3 AI in our phones",
+    "hi": "2.3 हमारे फ़ोन में AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A smartphone is the place where most of us meet AI. Here are the main features.",
+      "hi": "स्मार्टफ़ोन वह जगह है जहाँ हममें से ज़्यादातर लोग AI से मिलते हैं। मुख्य फ़ीचर ये हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Voice assistant",
+       "hi": "वॉइस असिस्टेंट (Voice assistant)"
+      },
+      "text": {
+       "en": "A voice assistant is an AI program that listens to spoken requests and replies or acts. Examples include Google Assistant, Apple's Siri and Amazon's Alexa. Many now understand Hindi and some other Indian languages.",
+       "hi": "वॉइस असिस्टेंट एक AI प्रोग्राम है जो बोले गए अनुरोध सुनकर जवाब देता है या काम करता है। उदाहरण: Google Assistant, Apple का Siri और Amazon का Alexa। अब कई हिंदी और कुछ अन्य भारतीय भाषाएँ भी समझते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A voice assistant does several AI jobs one after another: it hears your voice and turns it into words (speech recognition), works out what you mean (language understanding), finds an answer or does the task (for example sets an alarm), and speaks the reply (text-to-speech). Chapter 3 explains these steps in detail.",
+      "hi": "वॉइस असिस्टेंट एक के बाद एक कई AI काम करता है: आपकी आवाज़ सुनकर उसे शब्दों में बदलता है (speech recognition), समझता है कि आपका मतलब क्या है (भाषा की समझ), उत्तर खोजता है या काम करता है (जैसे अलार्म लगाना), और जवाब बोलता है (text-to-speech)। अध्याय 3 में ये चरण विस्तार से समझाए गए हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Phone feature",
+        "What the AI does",
+        "Input → Output"
+       ],
+       "hi": [
+        "फ़ोन फ़ीचर",
+        "AI क्या करता है",
+        "इनपुट → आउटपुट"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Face unlock",
+         "Compares your face with the face saved during setup",
+         "Camera picture → unlock or stay locked"
+        ],
+        [
+         "Fingerprint unlock",
+         "Matches the pattern of ridges on your finger with the saved one",
+         "Finger touch → unlock or not"
+        ],
+        [
+         "Camera modes",
+         "Detects faces, scenes (food, sky, night) and adjusts settings; blurs the background in portrait mode",
+         "Scene → better-looking photo"
+        ],
+        [
+         "Photo gallery search",
+         "Recognises what is in photos and groups similar faces",
+         "Typing 'dog' → all your dog photos"
+        ],
+        [
+         "Keyboard",
+         "Suggests the next word, corrects spelling, offers voice typing",
+         "Words typed → suggestions"
+        ],
+        [
+         "Voice typing",
+         "Turns speech into text, also in Hindi and other Indian languages",
+         "Your voice → typed words"
+        ],
+        [
+         "Lens / visual search apps",
+         "Recognises objects, plants, text in a picture; can translate a signboard",
+         "Photo → name or translation"
+        ]
+       ],
+       "hi": [
+        [
+         "फ़ेस अनलॉक",
+         "आपके चेहरे की तुलना सेटअप के समय सहेजे चेहरे से करता है",
+         "कैमरा तस्वीर → फ़ोन खुले या बंद रहे"
+        ],
+        [
+         "फ़िंगरप्रिंट अनलॉक",
+         "उंगली की रेखाओं के पैटर्न का मिलान सहेजे पैटर्न से करता है",
+         "उंगली का स्पर्श → खुले या नहीं"
+        ],
+        [
+         "कैमरा मोड",
+         "चेहरे और दृश्य (खाना, आसमान, रात) पहचानकर सेटिंग बदलता है; पोर्ट्रेट मोड में पीछे का हिस्सा धुंधला करता है",
+         "दृश्य → बेहतर फ़ोटो"
+        ],
+        [
+         "फ़ोटो गैलरी खोज",
+         "फ़ोटो में क्या है पहचानता है और मिलते-जुलते चेहरों को समूह में रखता है",
+         "'dog' टाइप करना → कुत्ते की सारी फ़ोटो"
+        ],
+        [
+         "कीबोर्ड",
+         "अगला शब्द सुझाता है, वर्तनी सुधारता है, वॉइस टाइपिंग देता है",
+         "टाइप किए शब्द → सुझाव"
+        ],
+        [
+         "वॉइस टाइपिंग",
+         "बोली को text में बदलता है, हिंदी और अन्य भारतीय भाषाओं में भी",
+         "आपकी आवाज़ → टाइप किए शब्द"
+        ],
+        [
+         "Lens / विज़ुअल सर्च ऐप",
+         "तस्वीर में वस्तुएँ, पौधे, लिखावट पहचानता है; साइनबोर्ड का अनुवाद कर सकता है",
+         "फ़ोटो → नाम या अनुवाद"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Chatbots are another kind of AI many people now use on phones and computers. You type or speak a question and the chatbot writes a reply in everyday language. They are useful for explaining ideas, but they can make mistakes, so check important facts and never share personal details with them. Many chatbots also have age limits, so use them only with an adult's permission.",
+      "hi": "चैटबॉट एक और तरह का AI है जिसे अब कई लोग फ़ोन और कंप्यूटर पर इस्तेमाल करते हैं। आप सवाल टाइप करते या बोलते हैं और चैटबॉट रोज़मर्रा की भाषा में जवाब लिखता है। ये विचार समझाने में उपयोगी हैं, पर गलती कर सकते हैं, इसलिए ज़रूरी तथ्य जाँचें और उनसे कभी अपनी निजी जानकारी साझा न करें। कई चैटबॉट की आयु सीमा भी होती है, इसलिए इन्हें केवल किसी बड़े की अनुमति से इस्तेमाल करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.4 Recommendations: 'You may also like...'",
+    "hi": "2.4 सुझाव: 'आपको यह भी पसंद आ सकता है...'"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "When you finish a video, the app suggests another. A music app makes a playlist 'made for you'. A shopping app shows 'customers who bought this also bought...'. These are recommendation systems.",
+      "hi": "जब आप एक वीडियो खत्म करते हैं, तो ऐप दूसरा सुझाता है। संगीत ऐप 'आपके लिए बनी' प्लेलिस्ट बनाता है। शॉपिंग ऐप दिखाता है 'जिन ग्राहकों ने यह खरीदा उन्होंने यह भी खरीदा...'। ये recommendation systems (सुझाव प्रणालियाँ) हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Recommendation system",
+       "hi": "Recommendation system (सुझाव प्रणाली)"
+      },
+      "text": {
+       "en": "An AI system that suggests things (videos, songs, products, news, friends) a person may like, based on what they and similar people watched, liked, searched or bought before.",
+       "hi": "ऐसा AI सिस्टम जो किसी व्यक्ति को पसंद आ सकने वाली चीज़ें (वीडियो, गाने, सामान, खबरें, दोस्त) सुझाता है, इस आधार पर कि उसने और उसके जैसे लोगों ने पहले क्या देखा, पसंद किया, खोजा या खरीदा।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How it works, in simple words: the app keeps a record of what you watch, how long you watch, what you skip and what you like. It also notices patterns across millions of users: people who enjoy cricket highlights often also watch kabaddi clips. So if you watch cricket, it predicts you may like kabaddi and shows it.",
+      "hi": "यह कैसे काम करता है, सरल शब्दों में: ऐप रिकॉर्ड रखता है कि आप क्या देखते हैं, कितनी देर देखते हैं, क्या छोड़ देते हैं और क्या पसंद करते हैं। वह लाखों उपयोगकर्ताओं में पैटर्न भी देखता है: क्रिकेट हाइलाइट्स पसंद करने वाले लोग अक्सर कबड्डी की क्लिप भी देखते हैं। तो अगर आप क्रिकेट देखते हैं, तो वह अनुमान लगाता है कि आपको कबड्डी पसंद आ सकती है और उसे दिखाता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Riya watched three videos about making paper boats and one about origami birds. What will a video app probably recommend next, and why?",
+       "hi": "रिया ने कागज़ की नाव बनाने के तीन और ओरिगामी पक्षी का एक वीडियो देखा। वीडियो ऐप शायद आगे क्या सुझाएगा, और क्यों?"
+      },
+      "a": {
+       "en": "Input: her watch history (paper boats, origami birds).\nProcessing: the AI finds the pattern 'paper craft' and sees that other users who watched these also watched more origami and craft videos.\nOutput: it will likely recommend more paper craft or origami videos, for example how to make a paper plane or a paper flower.",
+       "hi": "इनपुट: उसका देखने का इतिहास (कागज़ की नाव, ओरिगामी पक्षी)।\nप्रोसेसिंग: AI 'कागज़ शिल्प' का पैटर्न पकड़ता है और देखता है कि इन्हें देखने वाले दूसरे उपयोगकर्ताओं ने और ओरिगामी तथा शिल्प वीडियो भी देखे।\nआउटपुट: वह शायद और कागज़ शिल्प या ओरिगामी वीडियो सुझाएगा, जैसे कागज़ का हवाई जहाज़ या फूल बनाना।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Be careful: recommendations are designed to keep you watching. Autoplay can make you watch for hours. Decide your screen time yourself, and remember that the app only shows you a small part of the world, similar to what you already watched.",
+      "hi": "सावधान रहें: सुझाव इस तरह बनाए जाते हैं कि आप देखते रहें। Autoplay आपसे घंटों तक देखवा सकता है। अपना स्क्रीन समय खुद तय करें, और याद रखें कि ऐप आपको दुनिया का बस छोटा-सा हिस्सा दिखाता है, जो आपके पहले देखे जैसा होता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.5 AI on the road: maps, rides and signals",
+    "hi": "2.5 सड़क पर AI: मैप, राइड और सिग्नल"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Map apps such as Google Maps show roads in green, orange or red. Where does this information come from? Many phones with location turned on share anonymous speed and location data. If many phones on a road are moving slowly, the road is probably jammed. AI combines this live data with past patterns (for example, a market road is busy every evening around 6 p.m.) to predict how long your trip will take and to suggest the fastest route.",
+      "hi": "Google Maps जैसे मैप ऐप सड़कों को हरा, नारंगी या लाल दिखाते हैं। यह जानकारी कहाँ से आती है? location चालू रखने वाले कई फ़ोन बिना नाम-पहचान वाला (anonymous) गति और स्थान का data साझा करते हैं। अगर किसी सड़क पर कई फ़ोन धीरे चल रहे हैं, तो सड़क शायद जाम है। AI इस ताज़ा data को पुराने पैटर्न (जैसे बाज़ार वाली सड़क हर शाम 6 बजे के आसपास व्यस्त रहती है) से मिलाकर अनुमान लगाता है कि आपकी यात्रा में कितना समय लगेगा और सबसे तेज़ रास्ता सुझाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Use",
+        "What AI predicts or recognises"
+       ],
+       "hi": [
+        "उपयोग",
+        "AI क्या अनुमान लगाता या पहचानता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Map traffic colours",
+         "How fast traffic is moving on each road now"
+        ],
+        [
+         "Estimated time of arrival (ETA)",
+         "How long a trip will take, using live and past traffic"
+        ],
+        [
+         "Ride and food-delivery apps",
+         "Which driver or delivery partner is best placed, arrival time, and busy times"
+        ],
+        [
+         "Smart traffic signals (in some cities)",
+         "How many vehicles wait on each side, to adjust green time"
+        ],
+        [
+         "Traffic cameras",
+         "Number plates of vehicles and rule breaking such as jumping a red light"
+        ],
+        [
+         "Cars with driver-assist features",
+         "Lanes, other vehicles and people on the road, to warn the driver or help brake"
+        ]
+       ],
+       "hi": [
+        [
+         "मैप ट्रैफ़िक के रंग",
+         "अभी हर सड़क पर ट्रैफ़िक कितनी तेज़ी से चल रहा है"
+        ],
+        [
+         "पहुँचने का अनुमानित समय (ETA)",
+         "ताज़ा और पुराने ट्रैफ़िक से यात्रा में लगने वाला समय"
+        ],
+        [
+         "राइड और फ़ूड-डिलीवरी ऐप",
+         "कौन-सा ड्राइवर या डिलीवरी साथी सबसे पास है, पहुँचने का समय, और व्यस्त समय"
+        ],
+        [
+         "स्मार्ट ट्रैफ़िक सिग्नल (कुछ शहरों में)",
+         "हर तरफ़ कितनी गाड़ियाँ रुकी हैं, ताकि हरी बत्ती का समय बदला जाए"
+        ],
+        [
+         "ट्रैफ़िक कैमरे",
+         "गाड़ियों की नंबर प्लेट और लाल बत्ती पार करने जैसे नियम तोड़ना"
+        ],
+        [
+         "ड्राइवर-सहायता वाली कारें",
+         "सड़क पर लेन, दूसरी गाड़ियाँ और लोग, ताकि ड्राइवर को चेतावनी या ब्रेक में मदद मिले"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: map predictions can be wrong, for example when a road is newly closed. Drivers must still watch the road and follow signs.",
+      "hi": "याद रखें: मैप के अनुमान गलत हो सकते हैं, जैसे जब कोई सड़क अभी-अभी बंद हुई हो। ड्राइवर को फिर भी सड़क देखनी चाहिए और संकेत मानने चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.6 AI in farming, weather and disasters",
+    "hi": "2.6 खेती, मौसम और आपदाओं में AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "India has millions of farmers, and AI is starting to help them. Some free mobile apps let a farmer click a photo of a sick leaf; the AI compares it with thousands of labelled leaf photos and suggests which disease or pest it may be, and what to do. Farmers are still advised to confirm with an agriculture officer or Krishi Vigyan Kendra before spraying chemicals.",
+      "hi": "भारत में करोड़ों किसान हैं, और AI उनकी मदद करने लगा है। कुछ मुफ़्त मोबाइल ऐप में किसान रोगी पत्ते की फ़ोटो लेता है; AI उसकी तुलना हज़ारों नाम-लगी (labelled) पत्तों की फ़ोटो से करता है और बताता है कि कौन-सा रोग या कीट हो सकता है, और क्या करना चाहिए। फिर भी किसानों को सलाह दी जाती है कि रसायन छिड़कने से पहले कृषि अधिकारी या कृषि विज्ञान केंद्र से पुष्टि करें।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Crop disease detection from leaf photos.",
+       "Weather and rainfall forecasts that help decide when to sow, water or harvest. The India Meteorological Department (IMD) and other forecasters use computer models, and AI methods are increasingly used to improve forecasts.",
+       "Soil and crop monitoring using satellite or drone images to see which part of a field is dry or unhealthy.",
+       "Price prediction to help decide when to sell in the mandi.",
+       "Chatbots that answer farmers' questions in their own language; for example, the government has introduced an AI chatbot called Kisan e-Mitra to answer farmers' questions about the PM-KISAN scheme in several languages."
+      ],
+      "hi": [
+       "पत्तों की फ़ोटो से फ़सल रोग की पहचान।",
+       "मौसम और बारिश के पूर्वानुमान, जो तय करने में मदद करते हैं कि कब बोना, सींचना या काटना है। भारत मौसम विज्ञान विभाग (IMD) और अन्य पूर्वानुमानकर्ता कंप्यूटर मॉडल इस्तेमाल करते हैं, और पूर्वानुमान बेहतर करने में AI तरीकों का उपयोग बढ़ रहा है।",
+       "उपग्रह या ड्रोन की तस्वीरों से मिट्टी और फ़सल की निगरानी, यह देखने के लिए कि खेत का कौन-सा हिस्सा सूखा या कमज़ोर है।",
+       "मंडी में कब बेचना है, यह तय करने के लिए दाम का अनुमान।",
+       "किसानों के सवालों का उनकी अपनी भाषा में जवाब देने वाले चैटबॉट; जैसे, सरकार ने PM-KISAN योजना से जुड़े सवालों के जवाब कई भाषाओं में देने के लिए Kisan e-Mitra नाम का AI चैटबॉट शुरू किया है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "AI also helps with disaster warnings. Flood forecasting systems combine rainfall data, river levels and maps to predict which areas may flood, so that people can be warned early. Cyclone and heatwave forecasts also use large amounts of data and computer models. Early warnings save lives, but people must still follow official advice from government authorities.",
+      "hi": "AI आपदा चेतावनी में भी मदद करता है। बाढ़ पूर्वानुमान प्रणालियाँ बारिश के data, नदी के जलस्तर और नक्शों को मिलाकर अनुमान लगाती हैं कि कौन-से इलाके डूब सकते हैं, ताकि लोगों को पहले से चेतावनी दी जा सके। चक्रवात और लू के पूर्वानुमान में भी भारी data और कंप्यूटर मॉडल इस्तेमाल होते हैं। समय पर चेतावनी जान बचाती है, पर लोगों को सरकारी अधिकारियों की आधिकारिक सलाह ही माननी चाहिए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A farmer in Punjab uploads a photo of a wheat leaf with yellow-orange stripes. Describe what a crop-disease app does using input, processing and output, and say what the farmer should do next.",
+       "hi": "पंजाब का एक किसान पीली-नारंगी धारियों वाले गेहूँ के पत्ते की फ़ोटो अपलोड करता है। इनपुट, प्रोसेसिंग और आउटपुट से बताइए कि फ़सल-रोग ऐप क्या करता है, और किसान को आगे क्या करना चाहिए।"
+      },
+      "a": {
+       "en": "Input: the leaf photo.\nProcessing: the AI compares the colour, shape and pattern of the stripes with labelled photos of healthy and diseased wheat leaves it learnt from.\nOutput: it suggests the most likely problem, for example a rust disease, with general advice.\nNext step: the farmer should confirm with an agriculture expert before buying or spraying any medicine, because the AI's guess may be wrong.",
+       "hi": "इनपुट: पत्ते की फ़ोटो।\nप्रोसेसिंग: AI धारियों के रंग, आकार और पैटर्न की तुलना उन स्वस्थ और रोगी गेहूँ के पत्तों की नाम-लगी फ़ोटो से करता है जिनसे उसने सीखा।\nआउटपुट: वह सबसे संभावित समस्या बताता है, जैसे रतुआ (rust) रोग, सामान्य सलाह के साथ।\nअगला कदम: कोई दवा खरीदने या छिड़कने से पहले किसान को कृषि विशेषज्ञ से पुष्टि करनी चाहिए, क्योंकि AI का अंदाज़ा गलत हो सकता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.7 AI in health",
+    "hi": "2.7 स्वास्थ्य में AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Doctors look at many X-rays, scans and test reports every day. AI systems trained on thousands of labelled images can help by marking areas that look unusual, for example a possible sign of tuberculosis (TB) on a chest X-ray or signs of eye disease in a photo of the back of the eye (the retina). This helps doctors work faster and helps screening in places where specialist doctors are few.",
+      "hi": "डॉक्टर रोज़ बहुत सारे X-ray, स्कैन और जाँच रिपोर्ट देखते हैं। हज़ारों नाम-लगी तस्वीरों पर train हुए AI सिस्टम असामान्य दिखने वाले हिस्सों को चिह्नित करके मदद कर सकते हैं, जैसे छाती के X-ray में टीबी (TB) का संभावित संकेत या आँख के पिछले भाग (रेटिना) की फ़ोटो में आँख की बीमारी के संकेत। इससे डॉक्टर तेज़ी से काम कर पाते हैं और उन जगहों पर जाँच (screening) में मदद मिलती है जहाँ विशेषज्ञ डॉक्टर कम हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Reading X-rays, CT scans and retina photos to flag possible problems for a doctor to check.",
+       "Fitness bands and smartwatches that count steps, track sleep and notice unusual heart-rate patterns.",
+       "Hospital systems that predict how many beds or medicines may be needed.",
+       "Helping scientists search for new medicines faster.",
+       "Apps that remind patients to take medicines on time."
+      ],
+      "hi": [
+       "X-ray, CT स्कैन और रेटिना फ़ोटो पढ़कर संभावित समस्याएँ चिह्नित करना, ताकि डॉक्टर जाँचें।",
+       "फ़िटनेस बैंड और स्मार्टवॉच जो कदम गिनते हैं, नींद पर नज़र रखते हैं और दिल की धड़कन के असामान्य पैटर्न पहचानते हैं।",
+       "अस्पताल प्रणालियाँ जो अनुमान लगाती हैं कि कितने बिस्तर या दवाएँ चाहिए होंगी।",
+       "वैज्ञानिकों को नई दवाएँ तेज़ी से खोजने में मदद।",
+       "ऐप जो मरीज़ों को समय पर दवा लेने की याद दिलाते हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI helps doctors; it does not replace them. Never take medicine because a chatbot or app said so. Always ask a doctor and your parents.",
+      "hi": "याद रखें: AI डॉक्टरों की मदद करता है; उनकी जगह नहीं लेता। किसी चैटबॉट या ऐप के कहने पर कभी दवा न लें। हमेशा डॉक्टर और माता-पिता से पूछें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.8 AI and Indian languages",
+    "hi": "2.8 AI और भारतीय भाषाएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "India has 22 languages listed in the Eighth Schedule of the Constitution and hundreds of other languages and dialects. Not everyone can read English, and many people prefer to speak rather than type. AI can help by translating between languages and by letting people talk to computers in their own language.",
+      "hi": "भारत में संविधान की आठवीं अनुसूची में 22 भाषाएँ हैं और सैकड़ों अन्य भाषाएँ और बोलियाँ हैं। हर कोई अंग्रेज़ी नहीं पढ़ पाता, और कई लोग टाइप करने के बजाय बोलना पसंद करते हैं। AI भाषाओं के बीच अनुवाद करके और लोगों को अपनी भाषा में कंप्यूटर से बात करने देकर मदद कर सकता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Bhashini",
+       "hi": "भाषिणी (Bhashini)"
+      },
+      "text": {
+       "en": "Bhashini is a Government of India mission and platform (under the Ministry of Electronics and Information Technology) that builds AI tools for Indian languages, such as translation, speech-to-text and text-to-speech, so that people can use digital services in their own language.",
+       "hi": "भाषिणी भारत सरकार (इलेक्ट्रॉनिकी और सूचना प्रौद्योगिकी मंत्रालय के अंतर्गत) का मिशन और प्लेटफ़ॉर्म है जो भारतीय भाषाओं के लिए अनुवाद, speech-to-text और text-to-speech जैसे AI टूल बनाता है, ताकि लोग डिजिटल सेवाएँ अपनी भाषा में इस्तेमाल कर सकें।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Translation apps can translate text, speech and even words in a photo, for example a Kannada menu card into Hindi.",
+       "Voice typing in Hindi, Bengali, Tamil, Marathi and other languages helps people who find typing hard.",
+       "Read-aloud features help people with low vision and those still learning to read.",
+       "Government websites and apps are adding Indian-language and voice options so more citizens can use them."
+      ],
+      "hi": [
+       "अनुवाद ऐप text, बोली और फ़ोटो में लिखे शब्दों तक का अनुवाद कर सकते हैं, जैसे कन्नड़ मेन्यू कार्ड का हिंदी में।",
+       "हिंदी, बांग्ला, तमिल, मराठी और अन्य भाषाओं में वॉइस टाइपिंग उन लोगों की मदद करती है जिन्हें टाइप करना कठिन लगता है।",
+       "पढ़कर सुनाने वाले फ़ीचर कम दृष्टि वाले लोगों और पढ़ना सीख रहे लोगों की मदद करते हैं।",
+       "सरकारी वेबसाइटें और ऐप भारतीय भाषाओं और आवाज़ के विकल्प जोड़ रहे हैं ताकि ज़्यादा नागरिक उनका उपयोग कर सकें।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: machine translation can be funny or wrong, especially for idioms such as 'नौ दो ग्यारह होना'. For important letters or documents, ask a person who knows both languages.",
+      "hi": "याद रखें: मशीनी अनुवाद मज़ेदार या गलत हो सकता है, खासकर 'नौ दो ग्यारह होना' जैसे मुहावरों में। ज़रूरी पत्रों या दस्तावेज़ों के लिए दोनों भाषाएँ जानने वाले व्यक्ति से पूछें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.9 AI for money and safety",
+    "hi": "2.9 पैसे और सुरक्षा के लिए AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Spam filters: Your email inbox has a 'Spam' folder. Many phones also mark some SMS or calls as 'Suspected spam'. A spam filter is an AI that learnt from huge numbers of messages that people marked as spam or not spam. It notices patterns such as 'You have won a lottery! Click this link', strange links, or many identical messages sent to thousands of people, and moves such messages away.",
+      "hi": "स्पैम फ़िल्टर: आपके ईमेल इनबॉक्स में 'Spam' फ़ोल्डर होता है। कई फ़ोन कुछ SMS या कॉल को 'संदिग्ध स्पैम' भी चिह्नित करते हैं। स्पैम फ़िल्टर एक AI है जिसने उन बहुत सारे संदेशों से सीखा जिन्हें लोगों ने स्पैम या स्पैम नहीं चिह्नित किया। वह 'आपने लॉटरी जीती है! इस लिंक पर क्लिक करें' जैसे पैटर्न, अजीब लिंक, या हज़ारों लोगों को भेजे गए एक जैसे संदेशों को पहचानकर ऐसे संदेशों को अलग कर देता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Spam",
+       "hi": "स्पैम (Spam)"
+      },
+      "text": {
+       "en": "Unwanted messages sent to many people, often advertisements or tricks to steal money or information.",
+       "hi": "बहुत लोगों को भेजे गए अनचाहे संदेश, अक्सर विज्ञापन या पैसे या जानकारी चुराने की चालें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Fraud alerts: Banks and payment apps check payments using AI to spot unusual behaviour. Suppose your uncle usually makes small UPI payments in Patna, and suddenly someone tries to send a large amount at 2 a.m. to an unknown account. The AI notices that this does not fit his normal pattern and may block it, ask for extra checking, or send an alert. This is called fraud detection.",
+      "hi": "धोखाधड़ी अलर्ट: बैंक और भुगतान ऐप असामान्य व्यवहार पकड़ने के लिए AI से भुगतान जाँचते हैं। मान लीजिए आपके चाचा आमतौर पर पटना में छोटे UPI भुगतान करते हैं, और अचानक कोई रात 2 बजे किसी अनजान खाते में बड़ी रकम भेजने की कोशिश करता है। AI देखता है कि यह उनके सामान्य पैटर्न से मेल नहीं खाता और वह भुगतान रोक सकता है, अतिरिक्त जाँच माँग सकता है, या अलर्ट भेज सकता है। इसे fraud detection (धोखाधड़ी पहचान) कहते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which of these messages would a spam filter most likely catch, and what patterns give it away? (a) 'Hi beta, reached home safely. - Mummy' (b) 'CONGRATULATIONS!!! You won Rs 25,00,000. Share your OTP to claim now: bit.ly/xxxx'",
+       "hi": "इनमें से कौन-सा संदेश स्पैम फ़िल्टर द्वारा पकड़े जाने की सबसे ज़्यादा संभावना है, और कौन-से पैटर्न उसे पहचानवाते हैं? (क) 'बेटा, घर ठीक से पहुँच गई। - मम्मी' (ख) 'बधाई हो!!! आपने 25,00,000 रुपये जीते। अभी पाने के लिए अपना OTP साझा करें: bit.ly/xxxx'"
+      },
+      "a": {
+       "en": "Message (b).\nPatterns: all-capital letters and many exclamation marks, a prize you never entered for, a request for an OTP, a shortened unknown link, and pressure to act 'now'.\nRemember: never share an OTP, PIN or password with anyone, even if the message looks real. Banks do not ask for them.",
+       "hi": "संदेश (ख)।\nपैटर्न: बड़े अक्षर और कई विस्मयादिबोधक चिह्न, ऐसा इनाम जिसके लिए आपने कभी भाग नहीं लिया, OTP की माँग, छोटा किया गया अनजान लिंक, और 'अभी' करने का दबाव।\nयाद रखें: OTP, PIN या पासवर्ड कभी किसी से साझा न करें, चाहे संदेश असली लगे। बैंक इन्हें नहीं माँगते।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI filters catch many tricks but not all. If a message asks for money, an OTP or personal details, stop and show it to a trusted adult.",
+      "hi": "याद रखें: AI फ़िल्टर कई चालें पकड़ते हैं, पर सभी नहीं। अगर कोई संदेश पैसे, OTP या निजी जानकारी माँगे, तो रुकिए और किसी भरोसेमंद बड़े को दिखाइए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.10 AI in education, sports, games and at home",
+    "hi": "2.10 शिक्षा, खेल, गेम और घर में AI"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Area",
+        "How AI is used"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "AI का उपयोग कैसे होता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Learning apps",
+         "Some apps adjust the next question to your level, give hints, check answers and read text aloud"
+        ],
+        [
+         "Cricket and other sports",
+         "Ball-tracking systems such as Hawk-Eye use several cameras and computer vision to follow the ball; this helps the Decision Review System (DRS) in LBW decisions. Analysts also use match data to study players' strengths"
+        ],
+        [
+         "Video games",
+         "Computer-controlled players react to your moves; chess apps play at different levels"
+        ],
+        [
+         "Smart home devices",
+         "Smart speakers answer questions and play songs; some air conditioners and lights adjust to habits"
+        ],
+        [
+         "Customer help",
+         "Chatbots on websites answer common questions about orders, trains or banks"
+        ],
+        [
+         "Photos and fun",
+         "Camera filters find your face and add effects; apps can turn a sketch into a neat drawing"
+        ]
+       ],
+       "hi": [
+        [
+         "सीखने वाले ऐप",
+         "कुछ ऐप आपके स्तर के अनुसार अगला सवाल बदलते हैं, संकेत देते हैं, उत्तर जाँचते हैं और text पढ़कर सुनाते हैं"
+        ],
+        [
+         "क्रिकेट और अन्य खेल",
+         "Hawk-Eye जैसी बॉल-ट्रैकिंग प्रणालियाँ कई कैमरों और computer vision से गेंद का पीछा करती हैं; इससे LBW निर्णयों में Decision Review System (DRS) को मदद मिलती है। विश्लेषक खिलाड़ियों की ताकत समझने के लिए मैच data भी इस्तेमाल करते हैं"
+        ],
+        [
+         "वीडियो गेम",
+         "कंप्यूटर-नियंत्रित खिलाड़ी आपकी चालों पर प्रतिक्रिया देते हैं; शतरंज ऐप अलग-अलग स्तरों पर खेलते हैं"
+        ],
+        [
+         "स्मार्ट घरेलू उपकरण",
+         "स्मार्ट स्पीकर सवालों के जवाब देते और गाने बजाते हैं; कुछ AC और बत्तियाँ आदतों के हिसाब से बदलती हैं"
+        ],
+        [
+         "ग्राहक सहायता",
+         "वेबसाइटों पर चैटबॉट ऑर्डर, ट्रेन या बैंक से जुड़े आम सवालों के जवाब देते हैं"
+        ],
+        [
+         "फ़ोटो और मनोरंजन",
+         "कैमरा फ़िल्टर आपका चेहरा ढूँढकर इफ़ेक्ट जोड़ते हैं; ऐप कच्चे स्केच को साफ़ चित्र में बदल सकते हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Not everything 'digital' is AI. For example, DigiLocker is a government app that safely stores digital copies of documents such as mark sheets; storing and showing documents is not AI by itself. FASTag pays toll automatically using a tag; that is automation, not learning. Using the three questions from Section 2.2 helps you avoid such confusion.",
+      "hi": "हर 'डिजिटल' चीज़ AI नहीं होती। जैसे, DigiLocker एक सरकारी ऐप है जो अंकपत्र जैसे दस्तावेज़ों की डिजिटल प्रतियाँ सुरक्षित रखता है; दस्तावेज़ रखना और दिखाना अपने-आप में AI नहीं है। FASTag एक टैग से अपने-आप टोल चुकाता है; यह स्वचालन (automation) है, सीखना नहीं। अनुभाग 2.2 के तीन सवाल ऐसी उलझन से बचाते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Is the scoreboard that adds runs automatically during a cricket match AI? Is a system that predicts 'win probability' during the match AI? Explain.",
+       "hi": "क्रिकेट मैच में अपने-आप रन जोड़ने वाला स्कोरबोर्ड क्या AI है? मैच के दौरान 'जीत की संभावना' का अनुमान लगाने वाली प्रणाली क्या AI है? समझाइए।"
+      },
+      "a": {
+       "en": "The scoreboard only adds numbers using fixed rules, like a calculator, so it is not AI.\nA win-probability system uses data from many past matches (score, wickets, overs left, pitch) to find patterns and predict the chance of each team winning. It predicts from learnt patterns, so it is an AI or data-based prediction system.",
+       "hi": "स्कोरबोर्ड कैलकुलेटर की तरह तय नियमों से केवल संख्याएँ जोड़ता है, इसलिए यह AI नहीं है।\nजीत-संभावना प्रणाली कई पुराने मैचों के data (स्कोर, विकेट, बचे ओवर, पिच) से पैटर्न खोजकर हर टीम के जीतने की संभावना का अनुमान लगाती है। यह सीखे पैटर्न से अनुमान लगाती है, इसलिए यह AI या data-आधारित अनुमान प्रणाली है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.11 Benefits of AI and things to be careful about",
+    "hi": "2.11 AI के लाभ और सावधानी की बातें"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Benefits",
+        "Be careful about"
+       ],
+       "hi": [
+        "लाभ",
+        "सावधानी"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Saves time (fast routes, quick answers, voice typing)",
+         "AI can be wrong; check important information"
+        ],
+        [
+         "Helps people with disabilities (read-aloud, voice control, captions)",
+         "Apps collect personal data; share as little as possible"
+        ],
+        [
+         "Reaches more people in their own language",
+         "Recommendations can make us spend too much time on screens"
+        ],
+        [
+         "Supports doctors, farmers and teachers",
+         "AI can be unfair if trained on one-sided data (bias)"
+        ],
+        [
+         "Improves safety (fraud alerts, spam filters, flood warnings)",
+         "AI can be used to make fake photos, videos or voices (deepfakes)"
+        ],
+        [
+         "Does boring, repeated tasks so people can do creative work",
+         "Depending on AI too much can stop us from thinking and learning ourselves"
+        ]
+       ],
+       "hi": [
+        [
+         "समय बचाता है (तेज़ रास्ते, जल्दी उत्तर, वॉइस टाइपिंग)",
+         "AI गलत हो सकता है; ज़रूरी जानकारी जाँचें"
+        ],
+        [
+         "दिव्यांग लोगों की मदद करता है (पढ़कर सुनाना, आवाज़ से नियंत्रण, कैप्शन)",
+         "ऐप निजी data इकट्ठा करते हैं; जितना हो सके कम साझा करें"
+        ],
+        [
+         "ज़्यादा लोगों तक उनकी अपनी भाषा में पहुँचता है",
+         "सुझाव हमें स्क्रीन पर बहुत समय बिताने पर मजबूर कर सकते हैं"
+        ],
+        [
+         "डॉक्टरों, किसानों और शिक्षकों का साथ देता है",
+         "एकतरफ़ा data पर train हो तो AI अन्यायपूर्ण हो सकता है (bias)"
+        ],
+        [
+         "सुरक्षा बढ़ाता है (धोखाधड़ी अलर्ट, स्पैम फ़िल्टर, बाढ़ चेतावनी)",
+         "AI से नकली फ़ोटो, वीडियो या आवाज़ (deepfakes) बनाए जा सकते हैं"
+        ],
+        [
+         "उबाऊ, दोहराए जाने वाले काम करता है ताकि लोग रचनात्मक काम कर सकें",
+         "AI पर बहुत निर्भरता हमें खुद सोचने और सीखने से रोक सकती है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Data is what lets these apps work well, and it is also why privacy matters. You will learn about data in Chapter 4 and about using AI safely and kindly in Chapter 6.",
+      "hi": "Data ही इन ऐप को अच्छी तरह काम करने देता है, और इसी कारण निजता (privacy) भी महत्वपूर्ण है। Data के बारे में आप अध्याय 4 में और AI के सुरक्षित तथा दयालु उपयोग के बारे में अध्याय 6 में पढ़ेंगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.12 Activities",
+    "hi": "2.12 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1: My AI spotting diary (one week).\nAim: to notice AI in daily life.\nYou need: a notebook and a pen.\nWhat to do: make a table with columns: Day, Where I saw it, What it did, Recognise/Predict/Learn?, Input, Output. Every day, write at least two examples you or your family used, such as voice search, map traffic, a spam SMS warning, a video suggestion. Do not use anyone's phone without permission.\nWhat you observe: by the end of the week you will usually have 10 or more examples, mostly invisible features inside apps.\nWhat it teaches: AI is part of ordinary life, and the three questions help you spot it.",
+      "hi": "गतिविधि 1: मेरी AI खोज डायरी (एक सप्ताह)।\nउद्देश्य: रोज़मर्रा की ज़िंदगी में AI पहचानना।\nआवश्यक सामग्री: कॉपी और पेन।\nक्या करें: इन स्तंभों वाली तालिका बनाएँ: दिन, कहाँ देखा, उसने क्या किया, पहचान/अनुमान/सीखना?, इनपुट, आउटपुट। हर दिन कम से कम दो उदाहरण लिखें जो आपने या परिवार ने इस्तेमाल किए, जैसे आवाज़ से खोज, मैप ट्रैफ़िक, स्पैम SMS चेतावनी, वीडियो सुझाव। किसी का फ़ोन बिना अनुमति इस्तेमाल न करें।\nक्या देखेंगे: सप्ताह के अंत तक आमतौर पर 10 या ज़्यादा उदाहरण होंगे, ज़्यादातर ऐप के अंदर छिपे फ़ीचर।\nसीख: AI सामान्य जीवन का हिस्सा है, और तीन सवाल उसे पहचानने में मदद करते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (unplugged): Human recommendation system.\nAim: to understand how recommendations are made.\nYou need: the class, a blackboard.\nWhat to do: five volunteers each name three favourite things (a film, a sport, a snack). Write them on the board. Now a sixth student names two favourites. The class looks for a volunteer with similar favourites and 'recommends' that volunteer's third favourite to the sixth student.\nWhat you observe: people with similar tastes often like similar new things, but not always; sometimes the recommendation is wrong.\nWhat it teaches: this is the basic idea behind 'people like you also liked...'. It is a prediction, not a certainty.",
+      "hi": "गतिविधि 2 (बिना कंप्यूटर): इंसानी सुझाव प्रणाली।\nउद्देश्य: समझना कि सुझाव कैसे बनते हैं।\nआवश्यक सामग्री: पूरी कक्षा, ब्लैकबोर्ड।\nक्या करें: पाँच स्वयंसेवक अपनी तीन पसंदीदा चीज़ें बताते हैं (एक फ़िल्म, एक खेल, एक नाश्ता)। उन्हें बोर्ड पर लिखें। अब छठा विद्यार्थी अपनी दो पसंद बताता है। कक्षा मिलती-जुलती पसंद वाला स्वयंसेवक खोजती है और उसकी तीसरी पसंद छठे विद्यार्थी को 'सुझाती' है।\nक्या देखेंगे: मिलती पसंद वाले लोग अक्सर नई चीज़ें भी मिलती-जुलती पसंद करते हैं, पर हमेशा नहीं; कभी सुझाव गलत होता है।\nसीख: 'आप जैसे लोगों ने यह भी पसंद किया...' के पीछे यही मूल विचार है। यह अनुमान है, पक्की बात नहीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen, with an adult): Translate a signboard.\nAim: to see AI translation and its limits.\nYou need: a phone with a free translation or lens app, used by or with a parent or teacher.\nWhat to do: point the camera at a printed sign or a page in one language and choose another language. Then type a Hindi idiom such as 'आँखों का तारा' and translate it into English.\nWhat you observe: ordinary sentences are usually translated well; idioms often come out word-by-word and sound odd.\nWhat it teaches: AI translation is helpful but not perfect; meaning and culture can be lost.",
+      "hi": "गतिविधि 3 (स्क्रीन, किसी बड़े के साथ): साइनबोर्ड का अनुवाद।\nउद्देश्य: AI अनुवाद और उसकी सीमाएँ देखना।\nआवश्यक सामग्री: मुफ़्त अनुवाद या लेंस ऐप वाला फ़ोन, जिसे माता-पिता या शिक्षक चलाएँ या साथ रहें।\nक्या करें: कैमरा किसी एक भाषा में छपे बोर्ड या पन्ने पर रखें और दूसरी भाषा चुनें। फिर 'आँखों का तारा' जैसा हिंदी मुहावरा टाइप करके अंग्रेज़ी में अनुवाद करें।\nक्या देखेंगे: सामान्य वाक्यों का अनुवाद आमतौर पर अच्छा होता है; मुहावरे अक्सर शब्द-दर-शब्द अनुवादित होकर अजीब लगते हैं।\nसीख: AI अनुवाद उपयोगी है पर पूर्ण नहीं; अर्थ और संस्कृति छूट सकते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4: AI helpers poster.\nIn groups, pick one area (farming, health, travel, money, languages, sports). On a chart paper, draw a big phone or a field or a hospital in the middle and write around it four ways AI helps in that area, with the input and output for each, and one 'be careful' point. Present it to the class.",
+      "hi": "गतिविधि 4: AI सहायक पोस्टर।\nसमूहों में एक क्षेत्र चुनें (खेती, स्वास्थ्य, यात्रा, पैसा, भाषाएँ, खेल)। चार्ट पेपर के बीच में बड़ा फ़ोन, खेत या अस्पताल बनाएँ और उसके चारों ओर उस क्षेत्र में AI के मदद करने के चार तरीके लिखें, हर एक का इनपुट और आउटपुट, और एक 'सावधानी' की बात। कक्षा के सामने प्रस्तुत करें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking AI only means robots, so 'there is no AI in my house'. Fix: most AI is hidden inside apps such as maps, keyboards and video apps.",
+   "Calling every digital service AI (DigiLocker, FASTag, an online form). Fix: use the three questions: does it recognise, predict, or learn?",
+   "Trusting map or weather predictions as certain. Fix: they are best guesses; conditions can change suddenly.",
+   "Believing that a crop or health app's answer is final. Fix: confirm with an agriculture expert or a doctor.",
+   "Thinking a message is safe because it reached the inbox and not spam. Fix: filters miss some tricks; never share OTPs or click unknown links.",
+   "Thinking recommendations show 'the best' videos. Fix: they show what you are likely to watch, based on your history.",
+   "Assuming machine translation is always correct. Fix: idioms and important documents need a human check."
+  ],
+  "hi": [
+   "मानना कि AI का मतलब केवल रोबोट है, इसलिए 'मेरे घर में AI नहीं'। सुधार: ज़्यादातर AI मैप, कीबोर्ड और वीडियो ऐप जैसे ऐप के अंदर छिपा होता है।",
+   "हर डिजिटल सेवा को AI कहना (DigiLocker, FASTag, ऑनलाइन फ़ॉर्म)। सुधार: तीन सवाल पूछें: क्या यह पहचानता, अनुमान लगाता या सीखता है?",
+   "मैप या मौसम के अनुमानों को पक्का मानना। सुधार: ये सबसे अच्छे अंदाज़े हैं; हालात अचानक बदल सकते हैं।",
+   "मानना कि फ़सल या स्वास्थ्य ऐप का उत्तर अंतिम है। सुधार: कृषि विशेषज्ञ या डॉक्टर से पुष्टि करें।",
+   "मानना कि संदेश सुरक्षित है क्योंकि वह स्पैम में नहीं, इनबॉक्स में आया। सुधार: फ़िल्टर कुछ चालें चूक जाते हैं; कभी OTP साझा न करें या अनजान लिंक न खोलें।",
+   "मानना कि सुझाव 'सबसे अच्छे' वीडियो दिखाते हैं। सुधार: वे दिखाते हैं जो आप शायद देखेंगे, आपके इतिहास के आधार पर।",
+   "मानना कि मशीनी अनुवाद हमेशा सही है। सुधार: मुहावरों और ज़रूरी दस्तावेज़ों की इंसानी जाँच ज़रूरी है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Voice assistant",
+    "hi": "वॉइस असिस्टेंट"
+   },
+   "d": {
+    "en": "AI that listens to spoken requests and replies or acts, e.g. Google Assistant, Siri, Alexa.",
+    "hi": "बोले गए अनुरोध सुनकर जवाब देने या काम करने वाला AI, जैसे Google Assistant, Siri, Alexa।"
+   }
+  },
+  {
+   "t": {
+    "en": "Face unlock",
+    "hi": "फ़ेस अनलॉक"
+   },
+   "d": {
+    "en": "A feature that opens a phone after AI matches your face with the saved face.",
+    "hi": "फ़ीचर जो AI द्वारा आपके चेहरे का सहेजे चेहरे से मिलान होने पर फ़ोन खोलता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Recommendation system",
+    "hi": "सुझाव प्रणाली"
+   },
+   "d": {
+    "en": "AI that suggests videos, songs or products based on past behaviour of you and similar users.",
+    "hi": "आपके और मिलते-जुलते उपयोगकर्ताओं के पिछले व्यवहार से वीडियो, गाने या सामान सुझाने वाला AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "Chatbot",
+    "hi": "चैटबॉट"
+   },
+   "d": {
+    "en": "A program that chats with people in text or voice; it can make mistakes.",
+    "hi": "text या आवाज़ में लोगों से बात करने वाला प्रोग्राम; यह गलती कर सकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "ETA",
+    "hi": "ETA"
+   },
+   "d": {
+    "en": "Estimated Time of Arrival: the predicted time to reach a place.",
+    "hi": "Estimated Time of Arrival: किसी जगह पहुँचने का अनुमानित समय।"
+   }
+  },
+  {
+   "t": {
+    "en": "Crop-disease detection",
+    "hi": "फ़सल-रोग पहचान"
+   },
+   "d": {
+    "en": "Using AI on leaf photos to suggest which disease or pest affects a crop.",
+    "hi": "पत्तों की फ़ोटो पर AI से यह बताना कि फ़सल पर कौन-सा रोग या कीट है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bhashini",
+    "hi": "भाषिणी"
+   },
+   "d": {
+    "en": "Government of India's mission and platform for AI language tools (translation, speech) in Indian languages.",
+    "hi": "भारतीय भाषाओं में AI भाषा टूल (अनुवाद, वाणी) के लिए भारत सरकार का मिशन और प्लेटफ़ॉर्म।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine translation",
+    "hi": "मशीनी अनुवाद"
+   },
+   "d": {
+    "en": "Translation of text or speech from one language to another by a computer.",
+    "hi": "कंप्यूटर द्वारा text या बोली का एक भाषा से दूसरी भाषा में अनुवाद।"
+   }
+  },
+  {
+   "t": {
+    "en": "Spam",
+    "hi": "स्पैम"
+   },
+   "d": {
+    "en": "Unwanted messages sent to many people, often adverts or scams.",
+    "hi": "बहुत लोगों को भेजे अनचाहे संदेश, अक्सर विज्ञापन या ठगी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Spam filter",
+    "hi": "स्पैम फ़िल्टर"
+   },
+   "d": {
+    "en": "AI that learns to detect and separate spam messages.",
+    "hi": "स्पैम संदेश पहचानकर अलग करना सीखने वाला AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "Fraud detection",
+    "hi": "धोखाधड़ी पहचान"
+   },
+   "d": {
+    "en": "AI checking payments for unusual patterns to stop cheating.",
+    "hi": "ठगी रोकने के लिए असामान्य पैटर्न के लिए भुगतानों की AI जाँच।"
+   }
+  },
+  {
+   "t": {
+    "en": "OTP",
+    "hi": "OTP"
+   },
+   "d": {
+    "en": "One-Time Password: a secret code for one transaction; never share it.",
+    "hi": "One-Time Password: एक लेन-देन के लिए गुप्त कोड; इसे कभी साझा न करें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hawk-Eye / ball tracking",
+    "hi": "Hawk-Eye / बॉल ट्रैकिंग"
+   },
+   "d": {
+    "en": "A camera-based computer vision system that tracks the ball in sports like cricket and tennis.",
+    "hi": "कैमरा-आधारित computer vision प्रणाली जो क्रिकेट और टेनिस जैसे खेलों में गेंद का पीछा करती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Automation",
+    "hi": "स्वचालन (Automation)"
+   },
+   "d": {
+    "en": "A machine doing a task by itself using fixed rules; not always AI.",
+    "hi": "मशीन द्वारा तय नियमों से अपने-आप काम करना; हमेशा AI नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Screening",
+    "hi": "स्क्रीनिंग (जाँच)"
+   },
+   "d": {
+    "en": "Checking many people quickly to find who may need a doctor's closer look.",
+    "hi": "बहुत लोगों की जल्दी जाँच करना ताकि पता चले किसे डॉक्टर द्वारा ध्यान से देखने की ज़रूरत है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deepfake",
+    "hi": "डीपफ़ेक"
+   },
+   "d": {
+    "en": "A fake photo, video or voice made with AI to look real.",
+    "hi": "AI से बनी नकली फ़ोटो, वीडियो या आवाज़ जो असली लगे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Privacy",
+    "hi": "निजता (Privacy)"
+   },
+   "d": {
+    "en": "Keeping your personal information safe and under your control.",
+    "hi": "अपनी निजी जानकारी को सुरक्षित और अपने नियंत्रण में रखना।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is a voice assistant?\n(a) DigiLocker (b) Alexa (c) FASTag (d) a calculator",
+    "hi": "बहुविकल्पी: इनमें से वॉइस असिस्टेंट कौन-सा है?\n(क) DigiLocker (ख) Alexa (ग) FASTag (घ) कैलकुलेटर"
+   },
+   "a": {
+    "en": "(b) Alexa.",
+    "hi": "(ख) Alexa।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: A video app suggesting cartoons similar to what you watched is an example of:\n(a) a spam filter (b) a recommendation system (c) face unlock (d) a timer",
+    "hi": "बहुविकल्पी: आपके देखे जैसे कार्टून सुझाने वाला वीडियो ऐप किसका उदाहरण है?\n(क) स्पैम फ़िल्टर (ख) सुझाव प्रणाली (ग) फ़ेस अनलॉक (घ) टाइमर"
+   },
+   "a": {
+    "en": "(b) a recommendation system.",
+    "hi": "(ख) सुझाव प्रणाली।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Bhashini is mainly about:\n(a) cricket scores (b) AI tools for Indian languages (c) train tickets (d) weather satellites",
+    "hi": "बहुविकल्पी: भाषिणी मुख्य रूप से किससे जुड़ा है?\n(क) क्रिकेट स्कोर (ख) भारतीय भाषाओं के लिए AI टूल (ग) ट्रेन टिकट (घ) मौसम उपग्रह"
+   },
+   "a": {
+    "en": "(b) AI tools for Indian languages.",
+    "hi": "(ख) भारतीय भाषाओं के लिए AI टूल।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Map apps show a road in ______ colour when traffic is very slow.",
+    "hi": "रिक्त स्थान भरें: ट्रैफ़िक बहुत धीमा हो तो मैप ऐप सड़क को ______ रंग में दिखाते हैं।"
+   },
+   "a": {
+    "en": "red",
+    "hi": "लाल"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: An AI that moves unwanted messages to a separate folder is called a ______ filter.",
+    "hi": "रिक्त स्थान भरें: अनचाहे संदेशों को अलग फ़ोल्डर में भेजने वाले AI को ______ फ़िल्टर कहते हैं।"
+   },
+   "a": {
+    "en": "spam",
+    "hi": "स्पैम"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: A bank never asks for your OTP, so you should never share it.",
+    "hi": "सही या गलत: बैंक कभी आपका OTP नहीं माँगता, इसलिए आपको इसे कभी साझा नहीं करना चाहिए।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: AI can replace doctors completely, so we can take medicine on an app's advice.",
+    "hi": "सही या गलत: AI डॉक्टरों की पूरी जगह ले सकता है, इसलिए हम ऐप की सलाह पर दवा ले सकते हैं।"
+   },
+   "a": {
+    "en": "False. AI only helps doctors; medicines must be taken only on a doctor's advice.",
+    "hi": "गलत। AI केवल डॉक्टरों की मदद करता है; दवा केवल डॉक्टर की सलाह पर लेनी चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What three questions help you decide whether a feature uses AI?",
+    "hi": "कौन-से तीन सवाल यह तय करने में मदद करते हैं कि किसी फ़ीचर में AI है या नहीं?"
+   },
+   "a": {
+    "en": "1. Is it recognising something (face, voice, object, words)?\n2. Is it predicting or suggesting something?\n3. Does it learn or adjust from many examples or from use?",
+    "hi": "1. क्या यह कुछ पहचान रहा है (चेहरा, आवाज़, वस्तु, शब्द)?\n2. क्या यह कुछ अनुमान लगा रहा या सुझा रहा है?\n3. क्या यह बहुत सारे उदाहरणों या उपयोग से सीखता या बदलता है?"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain how a map app knows that a road is jammed.",
+    "hi": "समझाइए कि मैप ऐप को कैसे पता चलता है कि सड़क पर जाम है।"
+   },
+   "a": {
+    "en": "Many phones with location on share anonymous speed and location data. If many phones on a road are moving slowly, the AI concludes there is a jam. It also uses past patterns for that road and time to predict travel time and suggest faster routes.",
+    "hi": "location चालू रखने वाले कई फ़ोन बिना पहचान वाला गति और स्थान data साझा करते हैं। अगर किसी सड़क पर कई फ़ोन धीरे चल रहे हैं, तो AI निष्कर्ष निकालता है कि जाम है। वह उस सड़क और समय के पुराने पैटर्न भी इस्तेमाल करके यात्रा समय का अनुमान लगाता है और तेज़ रास्ते सुझाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write the input, processing and output of a voice assistant when you ask, 'Set an alarm for 6 a.m.'",
+    "hi": "जब आप कहते हैं 'सुबह 6 बजे का अलार्म लगाओ', तो वॉइस असिस्टेंट का इनपुट, प्रोसेसिंग और आउटपुट लिखिए।"
+   },
+   "a": {
+    "en": "Input: your spoken sentence through the microphone.\nProcessing: speech recognition turns the sound into words; language understanding works out that you want an alarm at 6 a.m.\nOutput: the alarm is set and the assistant replies, for example, 'Alarm set for 6 a.m.'",
+    "hi": "इनपुट: माइक्रोफ़ोन से आपका बोला वाक्य।\nप्रोसेसिंग: speech recognition आवाज़ को शब्दों में बदलता है; भाषा की समझ से पता चलता है कि आपको सुबह 6 बजे का अलार्म चाहिए।\nआउटपुट: अलार्म लग जाता है और असिस्टेंट जवाब देता है, जैसे 'सुबह 6 बजे का अलार्म लगा दिया गया'।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give two ways AI helps farmers and one reason farmers should still ask an expert.",
+    "hi": "AI किसानों की मदद के दो तरीके और एक कारण बताइए कि किसानों को फिर भी विशेषज्ञ से क्यों पूछना चाहिए।"
+   },
+   "a": {
+    "en": "Ways: (1) detecting crop disease from leaf photos; (2) weather and rainfall forecasts for sowing and watering (also price prediction, chatbots in local languages).\nReason: AI can guess wrong, and a wrong pesticide wastes money and can harm crops, soil and health.",
+    "hi": "तरीके: (1) पत्तों की फ़ोटो से फ़सल रोग की पहचान; (2) बोने और सिंचाई के लिए मौसम और बारिश के पूर्वानुमान (दाम का अनुमान, स्थानीय भाषा चैटबॉट भी)।\nकारण: AI गलत अंदाज़ा लगा सकता है, और गलत कीटनाशक से पैसा बर्बाद होता है और फ़सल, मिट्टी और स्वास्थ्य को नुकसान हो सकता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How does AI help detect UPI or bank fraud?",
+    "hi": "AI UPI या बैंक धोखाधड़ी पहचानने में कैसे मदद करता है?"
+   },
+   "a": {
+    "en": "The AI learns each customer's normal pattern of payments (usual amounts, places, times). When a payment does not fit the pattern, such as a large amount at 2 a.m. to an unknown account, it flags it, asks for more checks, blocks it or sends an alert.",
+    "hi": "AI हर ग्राहक के भुगतानों का सामान्य पैटर्न (आम रकम, जगहें, समय) सीखता है। जब कोई भुगतान पैटर्न से मेल न खाए, जैसे रात 2 बजे अनजान खाते में बड़ी रकम, तो वह उसे चिह्नित करता है, और जाँच माँगता है, रोकता है या अलर्ट भेजता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is AI important for a country with many languages like India? Give two examples.",
+    "hi": "भारत जैसे बहुभाषी देश के लिए AI क्यों महत्वपूर्ण है? दो उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Many people cannot read English or find typing hard. AI translation and voice tools let them use digital services in their own language. Examples: Bhashini's translation and speech tools; voice typing in Hindi or Tamil; translating a signboard with a phone camera.",
+    "hi": "बहुत लोग अंग्रेज़ी नहीं पढ़ पाते या टाइप करना कठिन पाते हैं। AI अनुवाद और आवाज़ टूल उन्हें अपनी भाषा में डिजिटल सेवाएँ इस्तेमाल करने देते हैं। उदाहरण: भाषिणी के अनुवाद और वाणी टूल; हिंदी या तमिल में वॉइस टाइपिंग; फ़ोन कैमरे से साइनबोर्ड का अनुवाद।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Is DigiLocker an AI system? Give a reason.",
+    "hi": "क्या DigiLocker एक AI सिस्टम है? कारण दीजिए।"
+   },
+   "a": {
+    "en": "Not by itself. It stores and shows digital documents safely, which is a useful digital service, but storing and showing documents does not involve recognising, predicting or learning from examples.",
+    "hi": "अपने-आप में नहीं। यह डिजिटल दस्तावेज़ सुरक्षित रखता और दिखाता है, जो उपयोगी डिजिटल सेवा है, पर दस्तावेज़ रखने और दिखाने में उदाहरणों से पहचानना, अनुमान लगाना या सीखना शामिल नहीं है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe how AI is used in any four areas of daily life, with one example each and one caution.",
+    "hi": "दीर्घ उत्तर: रोज़मर्रा की ज़िंदगी के किन्हीं चार क्षेत्रों में AI का उपयोग, हर एक का एक उदाहरण और एक सावधानी के साथ लिखिए।"
+   },
+   "a": {
+    "en": "1. Phones: face unlock recognises your face. Caution: protect your phone and data.\n2. Travel: map apps predict traffic and ETA. Caution: predictions can be wrong; follow road signs.\n3. Farming: apps identify crop disease from leaf photos. Caution: confirm with an expert.\n4. Money: banks use AI to flag unusual payments. Caution: never share OTPs; filters miss some scams.\n(Health, languages, education and sports are also acceptable.)",
+    "hi": "1. फ़ोन: फ़ेस अनलॉक आपका चेहरा पहचानता है। सावधानी: फ़ोन और data सुरक्षित रखें।\n2. यात्रा: मैप ऐप ट्रैफ़िक और ETA का अनुमान लगाते हैं। सावधानी: अनुमान गलत हो सकते हैं; सड़क संकेत मानें।\n3. खेती: ऐप पत्तों की फ़ोटो से फ़सल रोग पहचानते हैं। सावधानी: विशेषज्ञ से पुष्टि करें।\n4. पैसा: बैंक असामान्य भुगतान चिह्नित करने के लिए AI इस्तेमाल करते हैं। सावधानी: कभी OTP साझा न करें; फ़िल्टर कुछ ठगी चूक जाते हैं।\n(स्वास्थ्य, भाषाएँ, शिक्षा और खेल भी मान्य हैं।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: List three benefits and three concerns of AI in daily life.",
+    "hi": "दीर्घ उत्तर: रोज़मर्रा के जीवन में AI के तीन लाभ और तीन चिंताएँ लिखिए।"
+   },
+   "a": {
+    "en": "Benefits: saves time; helps people with disabilities and people who speak different languages; improves safety through fraud alerts and disaster warnings.\nConcerns: AI can be wrong or biased; apps collect personal data; recommendations can lead to too much screen time (also: deepfakes, over-dependence).",
+    "hi": "लाभ: समय बचाता है; दिव्यांग और अलग भाषा बोलने वाले लोगों की मदद करता है; धोखाधड़ी अलर्ट और आपदा चेतावनी से सुरक्षा बढ़ाता है।\nचिंताएँ: AI गलत या पक्षपाती हो सकता है; ऐप निजी data इकट्ठा करते हैं; सुझाव बहुत ज़्यादा स्क्रीन समय की ओर ले जा सकते हैं (डीपफ़ेक, अति-निर्भरता भी)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: A video app keeps showing Meena only cooking videos because she watched a few. What problem can this cause, and what can she do?",
+    "hi": "सोचने वाला प्रश्न: मीना ने कुछ खाना बनाने के वीडियो देखे, तो वीडियो ऐप उसे केवल वही दिखाता रहता है। इससे क्या समस्या हो सकती है, और वह क्या कर सकती है?"
+   },
+   "a": {
+    "en": "Problem: she sees only one kind of content and misses other interesting topics, and autoplay may make her watch longer than she planned.\nWhat she can do: search for other topics on purpose, use the 'not interested' option, turn off autoplay, and set a screen-time limit with her parents.",
+    "hi": "समस्या: वह केवल एक तरह की सामग्री देखती है और दूसरे रोचक विषय छूट जाते हैं, और autoplay उसे योजना से ज़्यादा देर तक दिखा सकता है।\nवह क्या कर सकती है: जानबूझकर दूसरे विषय खोजे, 'रुचि नहीं' विकल्प इस्तेमाल करे, autoplay बंद करे, और माता-पिता के साथ स्क्रीन-समय सीमा तय करे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: How does Hawk-Eye in cricket use AI-like abilities? Which domain of AI is it?",
+    "hi": "सोचने वाला प्रश्न: क्रिकेट में Hawk-Eye AI जैसी क्षमताओं का उपयोग कैसे करता है? यह AI का कौन-सा क्षेत्र है?"
+   },
+   "a": {
+    "en": "It uses several high-speed cameras around the ground (input), recognises and tracks the ball in each frame to calculate its path (processing), and shows the predicted path, such as whether the ball would hit the stumps (output). It belongs to computer vision.",
+    "hi": "यह मैदान के चारों ओर लगे कई तेज़ कैमरों का उपयोग करता है (इनपुट), हर फ़्रेम में गेंद को पहचानकर और उसका पीछा करके उसका रास्ता निकालता है (प्रोसेसिंग), और अनुमानित रास्ता दिखाता है, जैसे गेंद स्टंप पर लगती या नहीं (आउटपुट)। यह computer vision क्षेत्र में आता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: Keep an AI spotting diary for three days and write five entries with input and output. Classify each as Recognise, Predict/Suggest or Learn.",
+    "hi": "गतिविधि प्रश्न: तीन दिन AI खोज डायरी रखें और इनपुट-आउटपुट के साथ पाँच प्रविष्टियाँ लिखें। हर एक को पहचान, अनुमान/सुझाव या सीखना में बाँटें।"
+   },
+   "a": {
+    "en": "Sample answer:\n1. Voice search - input: spoken question; output: answer - Recognise.\n2. Map traffic - input: location data; output: red road and ETA - Predict.\n3. Keyboard suggestions - input: typed words; output: next word - Predict/Learn.\n4. Spam SMS warning - input: message; output: 'suspected spam' label - Recognise/Learn.\n5. Photo gallery face groups - input: photos; output: albums of each person - Recognise.",
+    "hi": "नमूना उत्तर:\n1. आवाज़ से खोज - इनपुट: बोला गया सवाल; आउटपुट: उत्तर - पहचान।\n2. मैप ट्रैफ़िक - इनपुट: स्थान data; आउटपुट: लाल सड़क और ETA - अनुमान।\n3. कीबोर्ड सुझाव - इनपुट: टाइप शब्द; आउटपुट: अगला शब्द - अनुमान/सीखना।\n4. स्पैम SMS चेतावनी - इनपुट: संदेश; आउटपुट: 'संदिग्ध स्पैम' लेबल - पहचान/सीखना।\n5. फ़ोटो गैलरी में चेहरों के समूह - इनपुट: फ़ोटो; आउटपुट: हर व्यक्ति के एल्बम - पहचान।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How does AI help people with disabilities? Give two examples.",
+    "hi": "AI दिव्यांग लोगों की कैसे मदद करता है? दो उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Read-aloud (text-to-speech) helps people with low vision; voice control and voice typing help people who cannot use their hands easily; automatic captions help people who cannot hear well.",
+    "hi": "पढ़कर सुनाना (text-to-speech) कम दृष्टि वालों की मदद करता है; आवाज़ से नियंत्रण और वॉइस टाइपिंग उनकी मदद करते हैं जो हाथों का आसानी से उपयोग नहीं कर पाते; अपने-आप बनने वाले कैप्शन कम सुनने वालों की मदद करते हैं।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Most AI is invisible, working inside apps and services we use every day.",
+   "Spot AI with three questions: does it recognise, predict/suggest, or learn from examples?",
+   "Phones use AI for voice assistants, face unlock, camera modes, photo search, keyboards and voice typing.",
+   "Recommendation systems suggest videos, songs and products based on your history and similar users.",
+   "Map and ride apps predict traffic, routes and arrival times; some cities use smart signals and cameras.",
+   "In farming, AI detects crop disease, helps forecasts and answers farmers' questions in their languages.",
+   "In health, AI helps doctors read X-rays and scans faster, but doctors make the decisions.",
+   "Bhashini and translation apps help people use technology in Indian languages.",
+   "Spam filters and bank fraud detection learn patterns of scams and unusual payments.",
+   "AI is also used in learning apps, sports (ball tracking), games, smart homes and customer-help chatbots.",
+   "Not every digital service is AI; storing documents or auto-paying tolls is automation.",
+   "AI saves time and helps many people, but it can be wrong, biased, privacy-risky and habit-forming, so use it wisely."
+  ],
+  "hi": [
+   "ज़्यादातर AI दिखाई नहीं देता, यह रोज़ इस्तेमाल होने वाले ऐप और सेवाओं के अंदर काम करता है।",
+   "तीन सवालों से AI पहचानें: क्या यह पहचानता है, अनुमान/सुझाव देता है, या उदाहरणों से सीखता है?",
+   "फ़ोन वॉइस असिस्टेंट, फ़ेस अनलॉक, कैमरा मोड, फ़ोटो खोज, कीबोर्ड और वॉइस टाइपिंग के लिए AI इस्तेमाल करते हैं।",
+   "सुझाव प्रणालियाँ आपके इतिहास और मिलते-जुलते उपयोगकर्ताओं के आधार पर वीडियो, गाने और सामान सुझाती हैं।",
+   "मैप और राइड ऐप ट्रैफ़िक, रास्ते और पहुँचने का समय अनुमानित करते हैं; कुछ शहर स्मार्ट सिग्नल और कैमरे इस्तेमाल करते हैं।",
+   "खेती में AI फ़सल रोग पहचानता है, पूर्वानुमान में मदद करता है और किसानों के सवालों का उनकी भाषा में जवाब देता है।",
+   "स्वास्थ्य में AI डॉक्टरों को X-ray और स्कैन जल्दी पढ़ने में मदद करता है, पर निर्णय डॉक्टर लेते हैं।",
+   "भाषिणी और अनुवाद ऐप लोगों को भारतीय भाषाओं में तकनीक इस्तेमाल करने में मदद करते हैं।",
+   "स्पैम फ़िल्टर और बैंक की धोखाधड़ी पहचान ठगी और असामान्य भुगतानों के पैटर्न सीखते हैं।",
+   "AI सीखने वाले ऐप, खेल (बॉल ट्रैकिंग), गेम, स्मार्ट घर और ग्राहक-सहायता चैटबॉट में भी इस्तेमाल होता है।",
+   "हर डिजिटल सेवा AI नहीं; दस्तावेज़ रखना या अपने-आप टोल चुकाना स्वचालन है।",
+   "AI समय बचाता है और बहुत लोगों की मदद करता है, पर यह गलत, पक्षपाती, निजता के लिए जोखिम भरा और आदत डालने वाला हो सकता है, इसलिए समझदारी से इस्तेमाल करें।"
+  ]
+ }
+}

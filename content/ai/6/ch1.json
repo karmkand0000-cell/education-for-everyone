@@ -1,0 +1,1580 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "6",
+ "id": "ch1",
+ "intro": {
+  "en": "Your phone guesses the next word you want to type, a map app warns you about a traffic jam, and a bank sends an alert when a payment looks suspicious. Behind each of these is Artificial Intelligence, or AI. In this chapter you will start from zero: what 'intelligence' means, what makes it 'artificial', how an AI system is different from an ordinary machine, how it works in three simple steps, where the idea came from, and what AI can and cannot do.",
+  "hi": "आपका फ़ोन अंदाज़ा लगा लेता है कि आप अगला कौन-सा शब्द टाइप करना चाहते हैं, मैप ऐप ट्रैफ़िक जाम की चेतावनी देता है, और कोई भुगतान संदिग्ध लगे तो बैंक अलर्ट भेज देता है। इन सबके पीछे Artificial Intelligence यानी AI (कृत्रिम बुद्धिमत्ता) है। इस अध्याय में हम बिल्कुल शुरुआत से समझेंगे: 'बुद्धिमत्ता' का अर्थ क्या है, उसे 'कृत्रिम' क्या बनाता है, AI सिस्टम साधारण मशीन से कैसे अलग है, वह तीन सरल चरणों में कैसे काम करता है, यह विचार कहाँ से आया, और AI क्या कर सकता है तथा क्या नहीं।"
+ },
+ "learn": {
+  "en": [
+   "What intelligence is, and how humans, animals and machines show it",
+   "The meaning of 'artificial' and a clear definition of Artificial Intelligence",
+   "The difference between an ordinary (fixed-rule) machine and an AI system that learns from examples",
+   "How AI works in three steps: input, processing and output",
+   "A short history of AI: Alan Turing, John McCarthy and the 1956 Dartmouth meeting, and later milestones",
+   "Narrow AI and the idea of general AI",
+   "The difference between AI, computers and robots",
+   "Common myths about AI and the facts",
+   "What AI is good at, its limits, and why humans must check its answers",
+   "Simple unplugged and screen activities to see AI in action"
+  ],
+  "hi": [
+   "बुद्धिमत्ता क्या है, और इंसान, जानवर और मशीनें इसे कैसे दिखाते हैं",
+   "'कृत्रिम' का अर्थ और Artificial Intelligence की स्पष्ट परिभाषा",
+   "साधारण (तय नियमों वाली) मशीन और उदाहरणों से सीखने वाले AI सिस्टम में अंतर",
+   "AI तीन चरणों में कैसे काम करता है: इनपुट, प्रोसेसिंग और आउटपुट",
+   "AI का संक्षिप्त इतिहास: एलन ट्यूरिंग, जॉन मैकार्थी, 1956 की डार्टमथ बैठक, और बाद के पड़ाव",
+   "सीमित (Narrow) AI और सामान्य (General) AI का विचार",
+   "AI, कंप्यूटर और रोबोट के बीच अंतर",
+   "AI के बारे में आम भ्रम और सच्चाई",
+   "AI किसमें अच्छा है, उसकी सीमाएँ, और इंसानों को उसके उत्तर क्यों जाँचने चाहिए",
+   "AI को काम करते देखने के लिए बिना कंप्यूटर और स्क्रीन वाली सरल गतिविधियाँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "1.1 Let us begin: is this smart?",
+    "hi": "1.1 शुरुआत करें: क्या यह समझदार है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think about these three things. A ceiling fan turns at the speed you set and keeps turning until you switch it off. A calculator gives 25 every time you press 5 × 5. A phone keyboard, after you type 'Happy', often suggests 'birthday' or 'Diwali' as the next word, and over time it starts suggesting words that you personally use a lot. Which of these looks a little 'smart'?",
+      "hi": "इन तीन चीज़ों के बारे में सोचिए। छत का पंखा उसी गति से घूमता है जो आप सेट करते हैं, और बंद करने तक घूमता रहता है। कैलकुलेटर पर हर बार 5 × 5 दबाने पर 25 ही आता है। फ़ोन का कीबोर्ड 'Happy' लिखने के बाद अक्सर अगला शब्द 'birthday' या 'Diwali' सुझाता है, और धीरे-धीरे वही शब्द सुझाने लगता है जो आप खुद बहुत लिखते हैं। इनमें से कौन-सी चीज़ थोड़ी 'समझदार' लगती है?"
+     }
+    },
+    {
+     "p": {
+      "en": "The fan and the calculator are very useful, but they do exactly the same thing every time; nobody would say they 'learn'. The keyboard is different. It has looked at a huge number of sentences, noticed which words usually come together, and it also adjusts to the way you type. That ability to learn from examples and make a sensible guess is a small piece of what we call Artificial Intelligence.",
+      "hi": "पंखा और कैलकुलेटर बहुत उपयोगी हैं, पर वे हर बार बिल्कुल एक जैसा काम करते हैं; कोई नहीं कहेगा कि वे 'सीखते' हैं। कीबोर्ड अलग है। उसने बहुत सारे वाक्य देखे हैं, ध्यान दिया है कि कौन-से शब्द आमतौर पर साथ आते हैं, और वह आपके लिखने के ढंग के हिसाब से भी बदल जाता है। उदाहरणों से सीखकर समझदारी भरा अंदाज़ा लगाने की यही क्षमता उस चीज़ का छोटा-सा हिस्सा है जिसे हम Artificial Intelligence कहते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: the question to ask is not 'Is it electronic?' but 'Does it learn from examples or data and make its own guesses or decisions?'",
+      "hi": "याद रखें: पूछने लायक सवाल यह नहीं है कि 'क्या यह बिजली से चलता है?', बल्कि यह है कि 'क्या यह उदाहरणों या data से सीखकर खुद अंदाज़ा या निर्णय लेता है?'"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.2 What is intelligence?",
+    "hi": "1.2 बुद्धिमत्ता क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before we understand artificial intelligence, we must understand intelligence itself. We use the word every day: 'She is intelligent', 'That was a clever move'. But what exactly do we mean?",
+      "hi": "कृत्रिम बुद्धिमत्ता समझने से पहले हमें बुद्धिमत्ता को ही समझना होगा। हम यह शब्द रोज़ इस्तेमाल करते हैं: 'वह बहुत बुद्धिमान है', 'यह चतुर चाल थी'। पर असल में हमारा मतलब क्या होता है?"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Intelligence",
+       "hi": "बुद्धिमत्ता (Intelligence)"
+      },
+      "text": {
+       "en": "Intelligence is the ability to learn, understand, remember, solve problems, and make good decisions, and to use what you have learnt in new situations.",
+       "hi": "बुद्धिमत्ता सीखने, समझने, याद रखने, समस्याएँ हल करने और अच्छे निर्णय लेने की क्षमता है, और सीखी हुई बात को नई परिस्थितियों में इस्तेमाल करने की क्षमता भी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Intelligence is not one single skill. It is a bundle of abilities. Here are the main ones, with everyday examples:",
+      "hi": "बुद्धिमत्ता कोई एक कौशल नहीं है। यह कई क्षमताओं का समूह है। मुख्य क्षमताएँ, रोज़मर्रा के उदाहरणों के साथ:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Ability",
+        "What it means",
+        "Everyday example"
+       ],
+       "hi": [
+        "क्षमता",
+        "अर्थ",
+        "रोज़मर्रा का उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Learning",
+         "Getting better at something through practice or examples",
+         "After a few days of practice you can ride a cycle without falling"
+        ],
+        [
+         "Remembering",
+         "Storing information and recalling it later",
+         "Remembering your friend's house on the way to school"
+        ],
+        [
+         "Understanding language",
+         "Knowing what words and sentences mean",
+         "Understanding your teacher's instructions in Hindi or English"
+        ],
+        [
+         "Recognising (seeing and hearing)",
+         "Identifying things, faces and sounds",
+         "Knowing your mother's voice on the phone"
+        ],
+        [
+         "Reasoning",
+         "Thinking step by step to reach a conclusion",
+         "If the ground is wet in the morning, it probably rained at night"
+        ],
+        [
+         "Problem solving",
+         "Finding a way to reach a goal",
+         "Finding another route when the usual road is blocked"
+        ],
+        [
+         "Decision making",
+         "Choosing the best option",
+         "Choosing to carry an umbrella when clouds are dark"
+        ],
+        [
+         "Creativity",
+         "Making something new",
+         "Making up a new game or drawing a rangoli design"
+        ]
+       ],
+       "hi": [
+        [
+         "सीखना",
+         "अभ्यास या उदाहरणों से किसी काम में बेहतर होना",
+         "कुछ दिन के अभ्यास के बाद आप बिना गिरे साइकिल चला लेते हैं"
+        ],
+        [
+         "याद रखना",
+         "जानकारी को संजोना और बाद में याद करना",
+         "स्कूल जाते समय दोस्त का घर याद रहना"
+        ],
+        [
+         "भाषा समझना",
+         "शब्दों और वाक्यों का अर्थ जानना",
+         "शिक्षक के हिंदी या अंग्रेज़ी में दिए निर्देश समझना"
+        ],
+        [
+         "पहचानना (देखना और सुनना)",
+         "चीज़ों, चेहरों और आवाज़ों को पहचानना",
+         "फ़ोन पर माँ की आवाज़ पहचान लेना"
+        ],
+        [
+         "तर्क करना",
+         "क्रम से सोचकर निष्कर्ष तक पहुँचना",
+         "सुबह ज़मीन गीली है तो शायद रात को बारिश हुई होगी"
+        ],
+        [
+         "समस्या हल करना",
+         "लक्ष्य तक पहुँचने का रास्ता खोजना",
+         "सामान्य सड़क बंद हो तो दूसरा रास्ता खोजना"
+        ],
+        [
+         "निर्णय लेना",
+         "सबसे अच्छा विकल्प चुनना",
+         "काले बादल देखकर छाता साथ ले जाने का निर्णय"
+        ],
+        [
+         "रचनात्मकता",
+         "कुछ नया बनाना",
+         "नया खेल बनाना या रंगोली का नया डिज़ाइन बनाना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Animals show intelligence too. Crows have been seen using sticks to pull food out of narrow holes. Dogs learn their names and simple commands. Honeybees 'dance' to tell other bees where flowers are. Elephants remember paths to water over many years. So intelligence exists in many forms in nature.",
+      "hi": "जानवर भी बुद्धिमत्ता दिखाते हैं। कौओं को तंग छेद से खाना निकालने के लिए टहनी का उपयोग करते देखा गया है। कुत्ते अपना नाम और सरल आदेश सीख लेते हैं। मधुमक्खियाँ 'नाच' कर दूसरी मधुमक्खियों को फूलों की दिशा बताती हैं। हाथी कई वर्षों तक पानी तक जाने के रास्ते याद रखते हैं। यानी प्रकृति में बुद्धिमत्ता कई रूपों में पाई जाती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Humans and animals are born with natural intelligence. It grows with experience. A baby learns what a 'dog' is by seeing many dogs, big and small, brown and white, not by reading a definition. Keep this idea in mind: learning from many examples is also how most modern AI learns.",
+      "hi": "इंसानों और जानवरों में प्राकृतिक बुद्धिमत्ता जन्म से होती है, जो अनुभव के साथ बढ़ती है। एक छोटा बच्चा परिभाषा पढ़कर नहीं, बल्कि बहुत-से कुत्ते देखकर, बड़े-छोटे, भूरे-सफ़ेद, सीखता है कि 'कुत्ता' क्या है। यह बात याद रखिए: बहुत सारे उदाहरणों से सीखना ही आज के ज़्यादातर AI के सीखने का तरीका भी है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which ability of intelligence is used in each case? (a) Riya finds that her usual bus is late, so she walks to a different stop where another bus comes. (b) Aman hears a song for two seconds and names it. (c) A farmer looks at dark clouds and decides not to spray fertiliser today.",
+       "hi": "हर स्थिति में बुद्धिमत्ता की कौन-सी क्षमता उपयोग हो रही है? (क) रिया की रोज़ वाली बस देर से है, तो वह दूसरे स्टॉप पर चली जाती है जहाँ दूसरी बस आती है। (ख) अमन दो सेकंड गाना सुनकर उसका नाम बता देता है। (ग) किसान काले बादल देखकर आज खाद न छिड़कने का निर्णय लेता है।"
+      },
+      "a": {
+       "en": "(a) Riya has a problem (late bus) and finds another way: problem solving.\n(b) Aman identifies a sound he has heard before: recognising and remembering.\n(c) The farmer uses a pattern (dark clouds often mean rain, rain would wash away fertiliser) and chooses an action: reasoning and decision making.",
+       "hi": "(क) रिया के सामने समस्या है (बस देर से) और वह दूसरा रास्ता खोजती है: समस्या हल करना।\n(ख) अमन पहले सुनी हुई आवाज़ पहचानता है: पहचानना और याद रखना।\n(ग) किसान एक पैटर्न का उपयोग करता है (काले बादल अक्सर बारिश लाते हैं, बारिश खाद बहा देगी) और कार्य चुनता है: तर्क करना और निर्णय लेना।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.3 What is Artificial Intelligence?",
+    "hi": "1.3 Artificial Intelligence क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The word 'artificial' means made by humans, not found naturally. An artificial flower is made of plastic or cloth; an artificial lake is dug by people. So 'artificial intelligence' means intelligence that is made by humans, inside machines such as computers and phones.",
+      "hi": "'Artificial' (कृत्रिम) का अर्थ है इंसानों द्वारा बनाया गया, प्रकृति में अपने-आप न मिलने वाला। कृत्रिम फूल प्लास्टिक या कपड़े से बनता है; कृत्रिम झील लोग खोदते हैं। इसलिए 'artificial intelligence' का अर्थ है वह बुद्धिमत्ता जो इंसानों ने कंप्यूटर और फ़ोन जैसी मशीनों के अंदर बनाई है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Artificial Intelligence (AI)",
+       "hi": "Artificial Intelligence (AI) / कृत्रिम बुद्धिमत्ता"
+      },
+      "text": {
+       "en": "Artificial Intelligence is the ability of a computer or machine to do tasks that normally need human intelligence, such as recognising faces, understanding speech, translating languages, making predictions or playing games. AI is also the name of the branch of computer science that builds such systems.",
+       "hi": "Artificial Intelligence किसी कंप्यूटर या मशीन की वह क्षमता है जिससे वह ऐसे काम कर पाती है जिनके लिए आमतौर पर इंसानी बुद्धि चाहिए, जैसे चेहरे पहचानना, बोली समझना, भाषा का अनुवाद करना, भविष्यवाणी करना या खेल खेलना। AI कंप्यूटर विज्ञान की उस शाखा का नाम भी है जो ऐसे सिस्टम बनाती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Notice the words 'tasks that normally need human intelligence'. Adding two numbers is easy for a calculator but we do not call that AI, because the calculator just follows one fixed rule. Recognising your friend's face in a crowded photo is very hard to write as fixed rules, yet AI systems can learn to do it from many example photos. That is why it counts as AI.",
+      "hi": "'ऐसे काम जिनके लिए आमतौर पर इंसानी बुद्धि चाहिए' इन शब्दों पर ध्यान दीजिए। दो संख्याएँ जोड़ना कैलकुलेटर के लिए आसान है, पर हम उसे AI नहीं कहते, क्योंकि कैलकुलेटर बस एक तय नियम मानता है। भीड़ वाली फ़ोटो में अपने दोस्त का चेहरा पहचानना तय नियमों में लिखना बहुत कठिन है, फिर भी AI सिस्टम बहुत-सी उदाहरण फ़ोटो से यह करना सीख लेते हैं। इसीलिए वह AI माना जाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Most AI that we use today learns from data. Data means facts and examples: photos, numbers, words, sounds. The part of AI in which computers learn from data instead of being told every rule is called Machine Learning. You will study data in detail in Chapter 4 and how AI finds patterns in Chapter 5.",
+      "hi": "आज हम जो ज़्यादातर AI इस्तेमाल करते हैं वह data से सीखता है। Data का अर्थ है तथ्य और उदाहरण: फ़ोटो, संख्याएँ, शब्द, आवाज़ें। AI का वह हिस्सा जिसमें कंप्यूटर को हर नियम बताने के बजाय वह data से सीखता है, Machine Learning (मशीन लर्निंग) कहलाता है। Data के बारे में आप अध्याय 4 में और AI पैटर्न कैसे खोजता है, यह अध्याय 5 में विस्तार से पढ़ेंगे।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Machine Learning",
+       "hi": "Machine Learning (मशीन लर्निंग)"
+      },
+      "text": {
+       "en": "Machine Learning is a part of AI in which a computer learns from examples (data) to find patterns, so that it can make guesses or decisions about new things it has not seen before.",
+       "hi": "Machine Learning AI का वह हिस्सा है जिसमें कंप्यूटर उदाहरणों (data) से पैटर्न खोजना सीखता है, ताकि वह उन नई चीज़ों के बारे में अंदाज़ा या निर्णय ले सके जिन्हें उसने पहले नहीं देखा।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Some everyday tasks AI can do: unlock a phone by recognising your face; turn your spoken words into typed text; suggest the next video; translate a sign board from Tamil to Hindi; tell a farmer which disease a leaf may have from a photo; alert a bank about a suspicious UPI payment. Chapter 2 explores these in detail.",
+      "hi": "AI के कुछ रोज़मर्रा के काम: आपका चेहरा पहचानकर फ़ोन खोलना; आपकी बोली को टाइप किए शब्दों में बदलना; अगला वीडियो सुझाना; तमिल के साइनबोर्ड का हिंदी में अनुवाद करना; पत्ते की फ़ोटो से किसान को बताना कि उसमें कौन-सा रोग हो सकता है; बैंक को संदिग्ध UPI भुगतान की सूचना देना। अध्याय 2 में इन्हें विस्तार से देखेंगे।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI = machines doing tasks that normally need human intelligence. Most modern AI gets this ability by learning from lots of examples (data).",
+      "hi": "याद रखें: AI = मशीनों द्वारा ऐसे काम करना जिनके लिए आमतौर पर इंसानी बुद्धि चाहिए। आज का ज़्यादातर AI यह क्षमता बहुत सारे उदाहरणों (data) से सीखकर पाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.4 Ordinary machines and AI machines",
+    "hi": "1.4 साधारण मशीनें और AI मशीनें"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "An ordinary machine or program follows fixed instructions written by a person. It does the same thing for the same input every time and never changes on its own. A washing machine runs the cycle you choose. A traffic light that changes every 60 seconds does so even when the road is empty. These are called rule-based or fixed-rule machines.",
+      "hi": "साधारण मशीन या प्रोग्राम किसी व्यक्ति द्वारा लिखे तय निर्देशों का पालन करता है। एक जैसे इनपुट पर वह हर बार एक जैसा ही काम करता है और अपने-आप कभी नहीं बदलता। वॉशिंग मशीन वही चक्र चलाती है जो आप चुनते हैं। हर 60 सेकंड में बदलने वाली ट्रैफ़िक लाइट सड़क खाली होने पर भी वैसे ही बदलती है। इन्हें नियम-आधारित (rule-based) या तय-नियम वाली मशीनें कहते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "An AI system is also built and programmed by people, but instead of being given every rule, it is shown many examples and it works out the patterns itself. It can then handle new situations it was not directly told about, and it can improve when it gets more or better examples. A 'smart' traffic signal that uses cameras to count waiting vehicles and gives more green time to the busier road is an example of AI-based control.",
+      "hi": "AI सिस्टम भी इंसान ही बनाते और प्रोग्राम करते हैं, पर उसे हर नियम देने के बजाय बहुत सारे उदाहरण दिखाए जाते हैं और वह खुद पैटर्न निकालता है। फिर वह उन नई स्थितियों को भी संभाल सकता है जिनके बारे में उसे सीधे नहीं बताया गया, और ज़्यादा या बेहतर उदाहरण मिलने पर सुधर सकता है। कैमरे से रुकी गाड़ियाँ गिनकर ज़्यादा भीड़ वाली सड़क को ज़्यादा देर हरी बत्ती देने वाला 'स्मार्ट' सिग्नल AI-आधारित नियंत्रण का उदाहरण है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "Ordinary (fixed-rule) machine",
+        "AI system"
+       ],
+       "hi": [
+        "विशेषता",
+        "साधारण (तय-नियम) मशीन",
+        "AI सिस्टम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "How it knows what to do",
+         "A person writes every rule",
+         "It learns patterns from many examples (data)"
+        ],
+        [
+         "Same input",
+         "Always the same output",
+         "Usually the same, but can change after it learns more"
+        ],
+        [
+         "New situation",
+         "Cannot handle anything outside its rules",
+         "Can make a sensible guess"
+        ],
+        [
+         "Improves by itself?",
+         "No",
+         "Yes, with more and better data"
+        ],
+        [
+         "Can it be wrong?",
+         "Only if the rule or the machine is faulty",
+         "Yes, its guesses can be wrong, so checking matters"
+        ],
+        [
+         "Examples",
+         "Fan, calculator, timer traffic light, simple alarm clock",
+         "Face unlock, voice typing, video suggestions, spam filter"
+        ]
+       ],
+       "hi": [
+        [
+         "क्या करना है, कैसे जानती है",
+         "हर नियम कोई व्यक्ति लिखता है",
+         "बहुत सारे उदाहरणों (data) से पैटर्न सीखता है"
+        ],
+        [
+         "एक जैसा इनपुट",
+         "हमेशा एक जैसा आउटपुट",
+         "आमतौर पर एक जैसा, पर ज़्यादा सीखने के बाद बदल सकता है"
+        ],
+        [
+         "नई स्थिति",
+         "अपने नियमों से बाहर कुछ नहीं संभाल पाती",
+         "समझदारी भरा अंदाज़ा लगा सकता है"
+        ],
+        [
+         "खुद सुधरती है?",
+         "नहीं",
+         "हाँ, ज़्यादा और बेहतर data से"
+        ],
+        [
+         "क्या गलत हो सकती है?",
+         "केवल तब जब नियम या मशीन खराब हो",
+         "हाँ, उसके अंदाज़े गलत हो सकते हैं, इसलिए जाँचना ज़रूरी है"
+        ],
+        [
+         "उदाहरण",
+         "पंखा, कैलकुलेटर, टाइमर वाली ट्रैफ़िक लाइट, साधारण अलार्म घड़ी",
+         "फ़ेस अनलॉक, वॉइस टाइपिंग, वीडियो सुझाव, स्पैम फ़िल्टर"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a simple way to picture the difference. Suppose you want a machine to sort mangoes into 'ripe' and 'not ripe'. The rule-based way: a person writes 'IF the colour is yellow THEN ripe'. But some varieties of mango stay green even when ripe, so the rule fails. The AI way: we show the machine thousands of mango photos already marked 'ripe' or 'not ripe' by experts. It learns for itself which mix of colour, spots, shape and texture matters, and can then judge a new mango. (Sorting and IF-THEN rules are covered more in Chapter 5.)",
+      "hi": "अंतर को समझने का एक सरल तरीका देखिए। मान लीजिए आप चाहते हैं कि मशीन आमों को 'पका' और 'कच्चा' में छाँटे। नियम-आधारित तरीका: कोई व्यक्ति लिखता है 'IF रंग पीला है THEN पका है'। पर कुछ किस्मों के पके आम हरे ही रहते हैं, तो नियम फ़ेल हो जाता है। AI का तरीका: हम मशीन को विशेषज्ञों द्वारा 'पका' या 'कच्चा' चिह्नित हज़ारों आमों की फ़ोटो दिखाते हैं। वह खुद सीखती है कि रंग, धब्बे, आकार और बनावट का कौन-सा मेल मायने रखता है, और फिर नए आम को परख सकती है। (छँटाई और IF-THEN नियम अध्याय 5 में और पढ़ेंगे।)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Classify each as 'ordinary machine' or 'AI system', with a reason: (a) an electric kettle that switches off when water boils, (b) an app that identifies a bird from its photo, (c) an email service that moves suspicious messages to the spam folder, (d) a geyser with a timer.",
+       "hi": "हर एक को 'साधारण मशीन' या 'AI सिस्टम' में बाँटिए और कारण बताइए: (क) पानी उबलने पर बंद होने वाली बिजली की केतली, (ख) फ़ोटो से पक्षी पहचानने वाला ऐप, (ग) संदिग्ध संदेशों को स्पैम फ़ोल्डर में भेजने वाली ईमेल सेवा, (घ) टाइमर वाला गीज़र।"
+      },
+      "a": {
+       "en": "(a) Ordinary machine: it follows one fixed rule (switch off at a set temperature).\n(b) AI system: it learnt from many bird photos to recognise kinds of birds, a task that needs human-like recognition.\n(c) AI system: modern spam filters learn from millions of messages that people marked as spam or not spam, and keep improving.\n(d) Ordinary machine: it just switches on and off at the times set by a person.",
+       "hi": "(क) साधारण मशीन: यह एक तय नियम मानती है (तय तापमान पर बंद होना)।\n(ख) AI सिस्टम: इसने बहुत-सी पक्षियों की फ़ोटो से सीखकर पक्षियों की किस्में पहचानना सीखा है, जो इंसानी पहचान जैसा काम है।\n(ग) AI सिस्टम: आज के स्पैम फ़िल्टर उन लाखों संदेशों से सीखते हैं जिन्हें लोगों ने स्पैम या स्पैम नहीं चिह्नित किया, और लगातार सुधरते रहते हैं।\n(घ) साधारण मशीन: यह बस व्यक्ति द्वारा तय समय पर चालू-बंद होता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: being electronic, automatic or fast does not make something AI. A lift, an ATM's cash counter and a digital clock are automatic but not AI. Learning from examples is the key sign.",
+      "hi": "याद रखें: इलेक्ट्रॉनिक, स्वचालित या तेज़ होने से कोई चीज़ AI नहीं बन जाती। लिफ़्ट, ATM की नोट गिनने वाली मशीन और डिजिटल घड़ी स्वचालित हैं, पर AI नहीं। उदाहरणों से सीखना ही मुख्य पहचान है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.5 How does AI work? Input, processing, output",
+    "hi": "1.5 AI कैसे काम करता है? इनपुट, प्रोसेसिंग, आउटपुट"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every AI system, big or small, can be understood in three simple steps. Humans do the same: we sense, we think, we act.",
+      "hi": "हर AI सिस्टम, छोटा हो या बड़ा, तीन सरल चरणों में समझा जा सकता है। इंसान भी यही करते हैं: हम महसूस करते हैं, सोचते हैं, और कार्य करते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1 - Input: the AI receives information, for example a photo from a camera, your voice from a microphone, or text you type.",
+       "Step 2 - Processing: the AI looks for patterns in the input and compares them with what it learnt from earlier examples. This is the 'thinking' step, done with mathematics inside the computer.",
+       "Step 3 - Output: the AI gives a result, for example an answer on the screen, a spoken reply, a suggestion, a warning, or an action like unlocking the phone."
+      ],
+      "hi": [
+       "चरण 1 - इनपुट (Input): AI जानकारी लेता है, जैसे कैमरे से फ़ोटो, माइक्रोफ़ोन से आपकी आवाज़, या आपके द्वारा टाइप किया गया text।",
+       "चरण 2 - प्रोसेसिंग (Processing): AI इनपुट में पैटर्न खोजता है और उनकी तुलना पहले के उदाहरणों से सीखी बातों से करता है। यह 'सोचने' वाला चरण है, जो कंप्यूटर के अंदर गणित से होता है।",
+       "चरण 3 - आउटपुट (Output): AI परिणाम देता है, जैसे स्क्रीन पर उत्तर, बोलकर जवाब, सुझाव, चेतावनी, या फ़ोन खोलने जैसा कोई कार्य।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "Input  →  Processing (find patterns)  →  Output",
+      "hi": "इनपुट  →  प्रोसेसिंग (पैटर्न खोजना)  →  आउटपुट"
+     }
+    },
+    {
+     "p": {
+      "en": "Picture it as a diagram: three boxes in a row joined by arrows. The first box shows a camera and a microphone (input), the middle box shows a brain-like chip (processing), and the last box shows a screen and a speaker (output). Under the middle box is a small store labelled 'what I learnt from examples', because processing depends on earlier learning.",
+      "hi": "इसे एक चित्र की तरह सोचिए: एक पंक्ति में तीन डिब्बे जो तीरों से जुड़े हैं। पहले डिब्बे में कैमरा और माइक्रोफ़ोन हैं (इनपुट), बीच वाले में दिमाग जैसी चिप है (प्रोसेसिंग), और आखिरी में स्क्रीन और स्पीकर हैं (आउटपुट)। बीच वाले डिब्बे के नीचे एक छोटा भंडार है जिस पर लिखा है 'उदाहरणों से जो सीखा', क्योंकि प्रोसेसिंग पहले की सीख पर निर्भर करती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "AI system",
+        "Input",
+        "Processing",
+        "Output"
+       ],
+       "hi": [
+        "AI सिस्टम",
+        "इनपुट",
+        "प्रोसेसिंग",
+        "आउटपुट"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Face unlock",
+         "Camera picture of your face",
+         "Compares face features with the saved face",
+         "Phone unlocks or stays locked"
+        ],
+        [
+         "Voice assistant",
+         "Your spoken question",
+         "Turns sound into words, works out the meaning, finds an answer",
+         "Spoken or written reply"
+        ],
+        [
+         "Map app traffic",
+         "Location and speed data from many phones",
+         "Finds slow-moving areas and predicts travel time",
+         "Red/orange/green road colours and the fastest route"
+        ],
+        [
+         "Crop-disease app",
+         "Photo of a leaf",
+         "Compares spots and colours with learnt examples of diseases",
+         "Likely disease name and advice"
+        ],
+        [
+         "Bank fraud alert",
+         "Details of a payment",
+         "Checks if it is unusual compared with your normal pattern",
+         "Alert SMS or the payment is held"
+        ]
+       ],
+       "hi": [
+        [
+         "फ़ेस अनलॉक",
+         "कैमरे से आपके चेहरे की तस्वीर",
+         "चेहरे की विशेषताओं की तुलना सहेजे चेहरे से",
+         "फ़ोन खुलता है या बंद रहता है"
+        ],
+        [
+         "वॉइस असिस्टेंट",
+         "आपका बोला गया सवाल",
+         "आवाज़ को शब्दों में बदलना, अर्थ समझना, उत्तर खोजना",
+         "बोलकर या लिखकर जवाब"
+        ],
+        [
+         "मैप ऐप का ट्रैफ़िक",
+         "बहुत-से फ़ोनों से स्थान और गति का data",
+         "धीमी गति वाले इलाके खोजना और यात्रा समय का अनुमान",
+         "सड़कों के लाल/नारंगी/हरे रंग और सबसे तेज़ रास्ता"
+        ],
+        [
+         "फ़सल-रोग ऐप",
+         "पत्ते की फ़ोटो",
+         "धब्बों और रंगों की तुलना रोगों के सीखे उदाहरणों से",
+         "संभावित रोग का नाम और सलाह"
+        ],
+        [
+         "बैंक धोखाधड़ी अलर्ट",
+         "भुगतान का विवरण",
+         "जाँचना कि यह आपके सामान्य पैटर्न से अलग तो नहीं",
+         "अलर्ट SMS या भुगतान रोका जाना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "There is also a step that happens before all this: training. Training is the time when the AI learns from a large set of examples. For instance, a face-recognition AI is trained on many face pictures before it is put in phones. When you set up face unlock, the phone also records your face so it can compare later. After training, using the AI on new input is sometimes called making a prediction.",
+      "hi": "इन सबसे पहले एक और चरण होता है: प्रशिक्षण (training)। Training वह समय है जब AI उदाहरणों के बड़े समूह से सीखता है। जैसे, चेहरा पहचानने वाले AI को फ़ोनों में डालने से पहले बहुत-सी चेहरों की तस्वीरों पर train किया जाता है। जब आप फ़ेस अनलॉक सेट करते हैं, तो फ़ोन आपका चेहरा भी दर्ज कर लेता है ताकि बाद में तुलना कर सके। Training के बाद नए इनपुट पर AI का उपयोग करने को कभी-कभी prediction (अनुमान/भविष्यवाणी) करना कहते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write the input, processing and output for a phone keyboard that suggests the next word.",
+       "hi": "अगला शब्द सुझाने वाले फ़ोन कीबोर्ड के लिए इनपुट, प्रोसेसिंग और आउटपुट लिखिए।"
+      },
+      "a": {
+       "en": "Input: the words you have typed so far, for example 'See you'.\nProcessing: the AI checks which words most often come after these words in the many sentences it learnt from, and also what you usually type.\nOutput: it shows a few suggestions, such as 'tomorrow', 'soon', 'later', above the keys.",
+       "hi": "इनपुट: अब तक टाइप किए शब्द, जैसे 'See you'।\nप्रोसेसिंग: AI जाँचता है कि जिन बहुत-से वाक्यों से उसने सीखा, उनमें इन शब्दों के बाद सबसे ज़्यादा कौन-से शब्द आते हैं, और आप आमतौर पर क्या लिखते हैं।\nआउटपुट: यह कीज़ के ऊपर कुछ सुझाव दिखाता है, जैसे 'tomorrow', 'soon', 'later'।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.6 A short history of AI",
+    "hi": "1.6 AI का संक्षिप्त इतिहास"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "People have imagined thinking machines for a very long time, in stories and legends. But AI as a real science began in the twentieth century, after electronic computers were invented.",
+      "hi": "लोग बहुत लंबे समय से कहानियों और किंवदंतियों में सोचने वाली मशीनों की कल्पना करते रहे हैं। पर असली विज्ञान के रूप में AI बीसवीं सदी में, इलेक्ट्रॉनिक कंप्यूटरों के आविष्कार के बाद शुरू हुआ।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Year",
+        "Event",
+        "Why it matters"
+       ],
+       "hi": [
+        "वर्ष",
+        "घटना",
+        "महत्व"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1950",
+         "British mathematician Alan Turing wrote a famous paper asking 'Can machines think?' and suggested a test, now called the Turing Test",
+         "One of the first serious scientific discussions of machine intelligence"
+        ],
+        [
+         "1956",
+         "A summer workshop at Dartmouth College, USA, organised by John McCarthy and others, used the name 'Artificial Intelligence' (McCarthy had proposed it in 1955 while planning the workshop)",
+         "Often called the birth of AI as a field; McCarthy is known as a father of AI"
+        ],
+        [
+         "1960s",
+         "Early programs solved puzzles and one, called ELIZA, chatted by typing simple replies",
+         "Showed early, simple versions of chatbots"
+        ],
+        [
+         "1997",
+         "IBM's computer Deep Blue defeated world chess champion Garry Kasparov in a match",
+         "A machine beat the best human at a famous thinking game"
+        ],
+        [
+         "2011",
+         "Apple introduced the voice assistant Siri on iPhones",
+         "Voice assistants came into ordinary people's pockets"
+        ],
+        [
+         "2016",
+         "Google DeepMind's AlphaGo defeated top player Lee Sedol at the board game Go",
+         "Go has far more possible moves than chess; AlphaGo learnt largely from examples and practice games"
+        ],
+        [
+         "2022 onwards",
+         "Chatbots that write and answer in everyday language, such as ChatGPT (released in November 2022), became widely used",
+         "Millions of people began using AI for writing and questions; this is called generative AI"
+        ]
+       ],
+       "hi": [
+        [
+         "1950",
+         "ब्रिटिश गणितज्ञ एलन ट्यूरिंग ने 'क्या मशीनें सोच सकती हैं?' पूछते हुए एक प्रसिद्ध लेख लिखा और एक परीक्षण सुझाया, जिसे अब ट्यूरिंग टेस्ट कहते हैं",
+         "मशीनी बुद्धिमत्ता पर पहली गंभीर वैज्ञानिक चर्चाओं में से एक"
+        ],
+        [
+         "1956",
+         "अमेरिका के डार्टमथ कॉलेज में जॉन मैकार्थी और साथियों द्वारा आयोजित ग्रीष्मकालीन कार्यशाला में 'Artificial Intelligence' नाम का उपयोग हुआ (मैकार्थी ने 1955 में कार्यशाला की योजना बनाते समय यह नाम सुझाया था)",
+         "इसे अक्सर एक विषय के रूप में AI का जन्म कहा जाता है; मैकार्थी को AI के जनकों में गिना जाता है"
+        ],
+        [
+         "1960 का दशक",
+         "शुरुआती प्रोग्रामों ने पहेलियाँ हल कीं, और ELIZA नाम का एक प्रोग्राम टाइप करके सरल जवाब देकर बातचीत करता था",
+         "चैटबॉट के शुरुआती, सरल रूप सामने आए"
+        ],
+        [
+         "1997",
+         "IBM के कंप्यूटर Deep Blue ने विश्व शतरंज चैंपियन गैरी कास्पारोव को एक मैच में हराया",
+         "एक मशीन ने प्रसिद्ध दिमागी खेल में सबसे अच्छे इंसान को हराया"
+        ],
+        [
+         "2011",
+         "Apple ने iPhone में वॉइस असिस्टेंट Siri पेश किया",
+         "वॉइस असिस्टेंट आम लोगों की जेब तक पहुँचे"
+        ],
+        [
+         "2016",
+         "Google DeepMind के AlphaGo ने बोर्ड खेल Go में शीर्ष खिलाड़ी ली सेडोल को हराया",
+         "Go में शतरंज से कहीं ज़्यादा संभावित चालें हैं; AlphaGo ने काफ़ी हद तक उदाहरणों और अभ्यास खेलों से सीखा"
+        ],
+        [
+         "2022 से आगे",
+         "रोज़मर्रा की भाषा में लिखने और जवाब देने वाले चैटबॉट, जैसे ChatGPT (नवंबर 2022 में जारी), बड़े पैमाने पर इस्तेमाल होने लगे",
+         "लाखों लोग लिखने और सवालों के लिए AI इस्तेमाल करने लगे; इसे generative AI कहते हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Turing Test",
+       "hi": "ट्यूरिंग टेस्ट (Turing Test)"
+      },
+      "text": {
+       "en": "A test suggested by Alan Turing in 1950. A person chats by typing with two hidden partners, one human and one machine. If the person cannot reliably tell which one is the machine, the machine is said to have passed. It is a famous idea, not an official exam.",
+       "hi": "1950 में एलन ट्यूरिंग द्वारा सुझाया गया परीक्षण। एक व्यक्ति दो छिपे साथियों से टाइप करके बात करता है, जिनमें एक इंसान है और एक मशीन। अगर व्यक्ति भरोसे से नहीं बता पाता कि मशीन कौन-सी है, तो कहा जाता है कि मशीन पास हो गई। यह एक प्रसिद्ध विचार है, कोई आधिकारिक परीक्षा नहीं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "AI did not grow smoothly. There were periods when progress was slow and funding dropped, sometimes called 'AI winters'. AI became much more powerful in the last fifteen or so years for three main reasons: huge amounts of digital data (photos, text, videos online), much faster computers and chips, and better learning methods such as neural networks inspired loosely by the brain.",
+      "hi": "AI का विकास सीधा-सरल नहीं रहा। कई दौर ऐसे आए जब प्रगति धीमी हुई और धन घटा, जिन्हें कभी-कभी 'AI winters' (AI की सर्दियाँ) कहा जाता है। पिछले लगभग पंद्रह वर्षों में AI तीन मुख्य कारणों से बहुत शक्तिशाली हुआ: भारी मात्रा में डिजिटल data (ऑनलाइन फ़ोटो, text, वीडियो), बहुत तेज़ कंप्यूटर और चिप, और बेहतर सीखने के तरीके, जैसे दिमाग से थोड़ा प्रेरित neural networks।"
+     }
+    },
+    {
+     "p": {
+      "en": "India is also building AI for its own needs. For example, the government's Bhashini platform works on translation and speech tools for Indian languages, and Indian researchers and start-ups build AI for farming, health and education. Under the IndiaAI Mission, the country is investing in computing power and AI skills.",
+      "hi": "भारत भी अपनी ज़रूरतों के लिए AI बना रहा है। उदाहरण के लिए, सरकार का Bhashini प्लेटफ़ॉर्म भारतीय भाषाओं के लिए अनुवाद और वाणी (speech) टूल पर काम करता है, और भारतीय शोधकर्ता तथा स्टार्ट-अप खेती, स्वास्थ्य और शिक्षा के लिए AI बनाते हैं। IndiaAI Mission के तहत देश कंप्यूटिंग क्षमता और AI कौशल में निवेश कर रहा है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember for exams: Alan Turing - 1950 - 'Can machines think?' and the Turing Test. John McCarthy - the name 'Artificial Intelligence' - Dartmouth workshop, 1956.",
+      "hi": "परीक्षा के लिए याद रखें: एलन ट्यूरिंग - 1950 - 'क्या मशीनें सोच सकती हैं?' और ट्यूरिंग टेस्ट। जॉन मैकार्थी - 'Artificial Intelligence' नाम - डार्टमथ कार्यशाला, 1956।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.7 Narrow AI and general AI",
+    "hi": "1.7 सीमित (Narrow) AI और सामान्य (General) AI"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every AI you use today is very good at one kind of task, or a small group of related tasks, and knows nothing outside it. A chess AI cannot recognise a cat. A face-unlock AI cannot translate Marathi. This is called Narrow AI (also called weak AI).",
+      "hi": "आज आप जो भी AI इस्तेमाल करते हैं, वह एक तरह के काम, या कुछ जुड़े कामों में बहुत अच्छा है और उसके बाहर कुछ नहीं जानता। शतरंज वाला AI बिल्ली नहीं पहचान सकता। फ़ेस-अनलॉक वाला AI मराठी का अनुवाद नहीं कर सकता। इसे Narrow AI (सीमित AI, जिसे weak AI भी कहते हैं) कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Narrow AI",
+       "hi": "Narrow AI (सीमित AI)"
+      },
+      "text": {
+       "en": "AI that is designed and trained for a specific task or a limited set of tasks, such as recognising faces, recommending songs or translating text. All AI in use today is narrow AI, even chatbots that can do many language tasks.",
+       "hi": "ऐसा AI जो किसी खास काम या सीमित कामों के लिए बनाया और train किया गया हो, जैसे चेहरे पहचानना, गाने सुझाना या text का अनुवाद करना। आज उपयोग होने वाला सारा AI सीमित AI है, वे चैटबॉट भी जो भाषा के कई काम कर लेते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "General AI",
+       "hi": "General AI (सामान्य AI)"
+      },
+      "text": {
+       "en": "An idea of a future AI that could learn and understand almost any task a human can, and use common sense across all areas of life. It does not exist today, and scientists disagree about whether and when it could be built.",
+       "hi": "भविष्य के ऐसे AI का विचार जो लगभग हर वह काम सीख और समझ सके जो इंसान कर सकता है, और जीवन के सभी क्षेत्रों में सामान्य समझ (common sense) का उपयोग कर सके। यह आज मौजूद नहीं है, और वैज्ञानिक इस पर एकमत नहीं हैं कि यह बन सकता है या कब।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Robots and computers that think and feel like people, as in films, are science fiction. Real AI is a tool. Even a chatbot that writes smooth sentences is predicting words from patterns; it does not understand the world the way you do.",
+      "hi": "फ़िल्मों में दिखने वाले इंसानों जैसे सोचने और महसूस करने वाले रोबोट और कंप्यूटर विज्ञान-कथा हैं। असली AI एक औज़ार है। सहज वाक्य लिखने वाला चैटबॉट भी पैटर्न से शब्दों का अनुमान लगा रहा है; वह दुनिया को उस तरह नहीं समझता जैसे आप समझते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.8 AI, computers and robots: not the same thing",
+    "hi": "1.8 AI, कंप्यूटर और रोबोट: एक ही चीज़ नहीं"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Many people think AI means robots. This is not correct. Let us separate the three ideas.",
+      "hi": "कई लोग सोचते हैं कि AI का मतलब रोबोट है। यह सही नहीं है। आइए तीनों विचारों को अलग करें।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "A computer is a machine that stores and processes information by following instructions (programs). Phones, laptops and servers are computers. A computer is not AI by itself; it runs AI programs just as it runs a calculator app.",
+       "AI is a kind of software (a program) that lets a computer do tasks needing human-like intelligence. It can run on a phone, a laptop or huge computers in data centres, with no body at all.",
+       "A robot is a machine with a body that can move and act in the physical world using motors, arms or wheels, and sensors. Some robots use AI (for example a robot vacuum that maps a room and avoids obstacles); many do not (for example a factory arm that repeats the same welding movement)."
+      ],
+      "hi": [
+       "कंप्यूटर एक मशीन है जो निर्देशों (प्रोग्राम) के अनुसार जानकारी संजोती और प्रोसेस करती है। फ़ोन, लैपटॉप और सर्वर कंप्यूटर हैं। कंप्यूटर खुद AI नहीं है; वह AI प्रोग्राम भी वैसे ही चलाता है जैसे कैलकुलेटर ऐप।",
+       "AI एक तरह का software (प्रोग्राम) है जो कंप्यूटर को इंसानी बुद्धि जैसे काम करने देता है। यह फ़ोन, लैपटॉप या data centre के विशाल कंप्यूटरों पर चल सकता है, बिना किसी शरीर के।",
+       "रोबोट शरीर वाली मशीन है जो मोटर, भुजाओं या पहियों और सेंसरों की मदद से भौतिक दुनिया में चल-फिर और काम कर सकती है। कुछ रोबोट AI का उपयोग करते हैं (जैसे कमरे का नक्शा बनाकर रुकावटों से बचने वाला रोबोट वैक्यूम); कई नहीं करते (जैसे फ़ैक्ट्री की भुजा जो वही वेल्डिंग चाल दोहराती है)।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Think of it as a diagram of two overlapping circles: one circle is 'Robots', the other is 'AI'. The overlap holds AI-powered robots such as self-driving cars and smart robot vacuums. The 'AI only' part holds things like voice typing and spam filters. The 'robots only' part holds simple factory arms and toy robots that follow fixed moves.",
+      "hi": "इसे दो एक-दूसरे पर चढ़े घेरों के चित्र की तरह सोचिए: एक घेरा 'रोबोट' है, दूसरा 'AI'। साझा हिस्से में AI वाले रोबोट हैं, जैसे बिना ड्राइवर की कारें और स्मार्ट रोबोट वैक्यूम। 'केवल AI' वाले हिस्से में वॉइस टाइपिंग और स्पैम फ़िल्टर जैसी चीज़ें हैं। 'केवल रोबोट' वाले हिस्से में साधारण फ़ैक्ट्री भुजाएँ और तय चालें चलने वाले खिलौना रोबोट हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: not all AI is a robot, and not all robots have AI.",
+      "hi": "याद रखें: हर AI रोबोट नहीं होता, और हर रोबोट में AI नहीं होता।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.9 Myths and facts about AI",
+    "hi": "1.9 AI के बारे में भ्रम और तथ्य"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Myth",
+        "Fact"
+       ],
+       "hi": [
+        "भ्रम",
+        "तथ्य"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "AI is magic.",
+         "AI is mathematics and computer programs built by people, learning from data."
+        ],
+        [
+         "AI is alive and has feelings.",
+         "AI is not alive. It has no feelings, wishes or pain, even if it writes 'I am happy'. It only produces patterns of words."
+        ],
+        [
+         "AI is always right.",
+         "AI can make mistakes and can even make up facts confidently. Its answers must be checked."
+        ],
+        [
+         "AI knows everything.",
+         "AI knows only patterns from the data it was trained on. If the data was missing or wrong, the AI will be too."
+        ],
+        [
+         "AI can think entirely on its own, without humans.",
+         "Humans design AI, choose its data, decide what it is used for, and are responsible for it."
+        ],
+        [
+         "AI means robots.",
+         "Most AI is software on phones and computers, with no body."
+        ],
+        [
+         "AI will replace every person's job.",
+         "AI changes many jobs and does some tasks, but it also creates new jobs. People who learn to use AI well, and who have human skills like care, judgement and creativity, stay very important."
+        ]
+       ],
+       "hi": [
+        [
+         "AI जादू है।",
+         "AI गणित और इंसानों द्वारा बनाए कंप्यूटर प्रोग्राम हैं, जो data से सीखते हैं।"
+        ],
+        [
+         "AI ज़िंदा है और उसमें भावनाएँ हैं।",
+         "AI जीवित नहीं है। उसमें भावनाएँ, इच्छाएँ या दर्द नहीं होते, चाहे वह 'मैं खुश हूँ' लिख दे। वह केवल शब्दों के पैटर्न बनाता है।"
+        ],
+        [
+         "AI हमेशा सही होता है।",
+         "AI गलती कर सकता है और पूरे भरोसे से तथ्य गढ़ भी सकता है। उसके उत्तर जाँचने चाहिए।"
+        ],
+        [
+         "AI सब कुछ जानता है।",
+         "AI केवल उस data के पैटर्न जानता है जिस पर उसे train किया गया। data अधूरा या गलत हो तो AI भी वैसा ही होगा।"
+        ],
+        [
+         "AI इंसानों के बिना पूरी तरह खुद सोचता है।",
+         "इंसान AI बनाते हैं, उसका data चुनते हैं, तय करते हैं कि वह किस काम आए, और उसकी ज़िम्मेदारी इंसानों की है।"
+        ],
+        [
+         "AI का मतलब रोबोट।",
+         "ज़्यादातर AI फ़ोन और कंप्यूटर पर चलने वाला software है, बिना शरीर के।"
+        ],
+        [
+         "AI हर व्यक्ति की नौकरी छीन लेगा।",
+         "AI कई नौकरियों को बदलता है और कुछ काम करता है, पर नई नौकरियाँ भी बनाता है। जो लोग AI का अच्छा उपयोग सीखते हैं और जिनमें देखभाल, विवेक और रचनात्मकता जैसे इंसानी कौशल हैं, वे बहुत महत्वपूर्ण बने रहते हैं।"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.10 What AI is good at, and its limits",
+    "hi": "1.10 AI किसमें अच्छा है, और उसकी सीमाएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI is useful because it can do some things faster or at a bigger scale than people. But it also has clear limits. A smart user knows both.",
+      "hi": "AI उपयोगी है क्योंकि कुछ काम वह इंसानों से तेज़ी से या बड़े पैमाने पर कर सकता है। पर उसकी स्पष्ट सीमाएँ भी हैं। समझदार उपयोगकर्ता दोनों जानता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "AI is good at",
+        "AI struggles with"
+       ],
+       "hi": [
+        "AI इसमें अच्छा है",
+        "AI को इसमें कठिनाई होती है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Finding patterns in huge amounts of data quickly",
+         "Common sense that every child has, such as knowing a cup of tea is hot"
+        ],
+        [
+         "Repeating a task thousands of times without getting tired or bored",
+         "Situations very different from its training examples"
+        ],
+        [
+         "Recognising images and sounds after enough training",
+         "Understanding feelings, kindness and fairness the way people do"
+        ],
+        [
+         "Working all day and night (for example, checking bank payments)",
+         "Knowing when it is wrong; it may give a wrong answer confidently"
+        ],
+        [
+         "Translating and summarising text in many languages",
+         "Being fair if its data was one-sided (this is called bias)"
+        ]
+       ],
+       "hi": [
+        [
+         "भारी मात्रा में data में जल्दी पैटर्न खोजना",
+         "वह सामान्य समझ जो हर बच्चे में होती है, जैसे जानना कि चाय का कप गरम है"
+        ],
+        [
+         "बिना थके या ऊबे एक काम हज़ारों बार दोहराना",
+         "ऐसी स्थितियाँ जो उसके training उदाहरणों से बहुत अलग हों"
+        ],
+        [
+         "पर्याप्त training के बाद चित्र और आवाज़ें पहचानना",
+         "भावनाओं, दया और न्याय को इंसानों की तरह समझना"
+        ],
+        [
+         "दिन-रात काम करना (जैसे बैंक भुगतानों की जाँच)",
+         "यह जानना कि वह गलत है; वह गलत उत्तर भी भरोसे से दे सकता है"
+        ],
+        [
+         "कई भाषाओं में text का अनुवाद और सार बनाना",
+         "data एकतरफ़ा हो तो निष्पक्ष रहना (इसे bias / पक्षपात कहते हैं)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Bias",
+       "hi": "Bias (पक्षपात)"
+      },
+      "text": {
+       "en": "Bias in AI means the AI treats some people or things unfairly, usually because the examples it learnt from were one-sided or incomplete. For example, a face AI trained mostly on photos of one group of people may work poorly for others.",
+       "hi": "AI में bias का अर्थ है कि AI कुछ लोगों या चीज़ों के साथ अन्याय करता है, आमतौर पर इसलिए कि जिन उदाहरणों से उसने सीखा वे एकतरफ़ा या अधूरे थे। जैसे, ज़्यादातर एक समूह के लोगों की फ़ोटो पर train हुआ चेहरा-AI दूसरों के लिए ठीक से काम न करे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Because AI can be wrong, humans must stay in charge, especially for important matters such as health, money, exams and safety. A doctor may use AI to look at an X-ray faster, but the doctor makes the final decision. If a chatbot tells you a fact for your homework, check it in your textbook or ask your teacher. This idea of people checking and guiding AI is often called 'human in the loop'. Chapter 6 covers safe and kind use of AI in detail.",
+      "hi": "क्योंकि AI गलत हो सकता है, इसलिए नियंत्रण इंसानों के हाथ में रहना चाहिए, खासकर स्वास्थ्य, पैसे, परीक्षा और सुरक्षा जैसे महत्वपूर्ण मामलों में। डॉक्टर X-ray जल्दी देखने के लिए AI का उपयोग कर सकते हैं, पर अंतिम निर्णय डॉक्टर लेते हैं। अगर कोई चैटबॉट आपके होमवर्क के लिए कोई तथ्य बताए, तो उसे पाठ्यपुस्तक में जाँचें या शिक्षक से पूछें। इंसानों द्वारा AI को जाँचने और दिशा देने के इस विचार को अक्सर 'human in the loop' कहते हैं। AI के सुरक्षित और दयालु उपयोग को अध्याय 6 में विस्तार से पढ़ेंगे।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI is a helper, not a boss. Use it, but think for yourself and check.",
+      "hi": "याद रखें: AI सहायक है, मालिक नहीं। इसका उपयोग करें, पर खुद सोचें और जाँचें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.11 Main areas (domains) of AI: a first look",
+    "hi": "1.11 AI के मुख्य क्षेत्र (domains): पहली झलक"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI scientists often group AI into a few main areas according to the kind of input it works with. You will meet them again and again in this course.",
+      "hi": "AI वैज्ञानिक अक्सर AI को इस आधार पर कुछ मुख्य क्षेत्रों में बाँटते हैं कि वह किस तरह के इनपुट के साथ काम करता है। इस कोर्स में आप इनसे बार-बार मिलेंगे।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Domain",
+        "Works with",
+        "Examples"
+       ],
+       "hi": [
+        "क्षेत्र (Domain)",
+        "किसके साथ काम करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data (statistical data)",
+         "Numbers and tables",
+         "Weather forecasts, cricket score predictions, bank fraud alerts"
+        ],
+        [
+         "Computer Vision",
+         "Pictures and videos",
+         "Face unlock, reading number plates, crop-disease apps"
+        ],
+        [
+         "Natural Language Processing (NLP)",
+         "Text and speech in human languages",
+         "Chatbots, translation, voice typing, spam filters"
+        ]
+       ],
+       "hi": [
+        [
+         "Data (सांख्यिकीय data)",
+         "संख्याएँ और तालिकाएँ",
+         "मौसम पूर्वानुमान, क्रिकेट स्कोर अनुमान, बैंक धोखाधड़ी अलर्ट"
+        ],
+        [
+         "Computer Vision (कंप्यूटर विज़न)",
+         "चित्र और वीडियो",
+         "फ़ेस अनलॉक, नंबर प्लेट पढ़ना, फ़सल-रोग ऐप"
+        ],
+        [
+         "Natural Language Processing (NLP)",
+         "इंसानी भाषाओं में text और बोली",
+         "चैटबॉट, अनुवाद, वॉइस टाइपिंग, स्पैम फ़िल्टर"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Chapter 3 explains how machines 'see' (computer vision), 'hear' (speech recognition) and 'speak' (text-to-speech), and Chapter 4 explains data.",
+      "hi": "अध्याय 3 बताता है कि मशीनें कैसे 'देखती' (computer vision), 'सुनती' (speech recognition) और 'बोलती' (text-to-speech) हैं, और अध्याय 4 data समझाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.12 Activities",
+    "hi": "1.12 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (unplugged): 'AI or not AI?' sorting game.\nAim: to tell AI systems apart from ordinary machines.\nYou need: 12 small paper slips, a pen, two boxes or two corners of the room labelled 'AI' and 'Not AI'.\nWhat to do: write one item on each slip: ceiling fan, face unlock, calculator, voice typing, video suggestions, electric iron, map app traffic colours, digital clock, spam filter, washing machine (timer), photo app that groups faces, chatbot. In groups, place each slip in a box and say why.\nWhat you observe: items that learn from examples (face unlock, voice typing, suggestions, map traffic, spam filter, face grouping, chatbot) go in 'AI'; the rest follow fixed rules.\nWhat it teaches: 'automatic' is not the same as 'intelligent'; learning from data is the key.",
+      "hi": "गतिविधि 1 (बिना कंप्यूटर): 'AI या AI नहीं?' छँटाई खेल।\nउद्देश्य: AI सिस्टम को साधारण मशीनों से अलग पहचानना।\nआवश्यक सामग्री: 12 छोटी पर्चियाँ, पेन, 'AI' और 'AI नहीं' लिखे दो डिब्बे या कमरे के दो कोने।\nक्या करें: हर पर्ची पर एक चीज़ लिखें: छत का पंखा, फ़ेस अनलॉक, कैलकुलेटर, वॉइस टाइपिंग, वीडियो सुझाव, बिजली की प्रेस, मैप ऐप के ट्रैफ़िक रंग, डिजिटल घड़ी, स्पैम फ़िल्टर, वॉशिंग मशीन (टाइमर), चेहरों को समूह में रखने वाला फ़ोटो ऐप, चैटबॉट। समूहों में हर पर्ची को डिब्बे में डालें और कारण बताएँ।\nक्या देखेंगे: उदाहरणों से सीखने वाली चीज़ें (फ़ेस अनलॉक, वॉइस टाइपिंग, सुझाव, मैप ट्रैफ़िक, स्पैम फ़िल्टर, चेहरों का समूह, चैटबॉट) 'AI' में जाती हैं; बाकी तय नियम मानती हैं।\nसीख: 'स्वचालित' और 'बुद्धिमान' एक बात नहीं; data से सीखना ही मुख्य बात है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (unplugged): Human input-process-output.\nAim: to feel how input, processing and output work.\nYou need: a partner and a blindfold (a clean cloth).\nWhat to do: blindfold your partner. Place a fruit (banana, apple, orange) in their hands. They feel the shape and smell it (input), think about what fruits they know (processing), and say the name (output). Then try with a fruit they have never held, such as a kiwi or a star fruit.\nWhat you observe: familiar fruits are named quickly and correctly; an unfamiliar fruit leads to a guess that may be wrong.\nWhat it teaches: like AI, we recognise things by comparing with what we learnt before; with no earlier examples, guesses can go wrong.",
+      "hi": "गतिविधि 2 (बिना कंप्यूटर): इंसानी इनपुट-प्रोसेस-आउटपुट।\nउद्देश्य: महसूस करना कि इनपुट, प्रोसेसिंग और आउटपुट कैसे काम करते हैं।\nआवश्यक सामग्री: एक साथी और आँखों पर बाँधने के लिए साफ़ कपड़ा।\nक्या करें: साथी की आँखें बाँधें। उसके हाथ में कोई फल (केला, सेब, संतरा) रखें। वह आकार छूकर और सूँघकर महसूस करता है (इनपुट), जाने-पहचाने फलों के बारे में सोचता है (प्रोसेसिंग), और नाम बताता है (आउटपुट)। फिर ऐसा फल दें जो उसने कभी न छुआ हो, जैसे कीवी या कमरख।\nक्या देखेंगे: जाने-पहचाने फल जल्दी और सही पहचाने जाते हैं; अनजाने फल पर अंदाज़ा लगता है जो गलत भी हो सकता है।\nसीख: AI की तरह हम भी पहले सीखी बातों से तुलना करके पहचानते हैं; पहले के उदाहरण न हों तो अंदाज़े गलत हो सकते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (unplugged): Play the Turing Test.\nAim: to understand Turing's idea.\nYou need: three students, paper chits, a screen or a wall to hide two of them.\nWhat to do: student A is the judge. Students B and C hide. One of them secretly agrees to answer like a 'machine' (short, plain, slightly odd answers), the other answers normally. The judge passes written questions ('What did you eat today?', 'Tell me a joke') and reads the written replies. After five questions, the judge guesses who is the 'machine'.\nWhat you observe: sometimes the judge guesses right, sometimes not.\nWhat it teaches: the Turing Test checks whether a machine's replies can pass for a human's. Passing it does not mean the machine truly understands or feels.",
+      "hi": "गतिविधि 3 (बिना कंप्यूटर): ट्यूरिंग टेस्ट खेलें।\nउद्देश्य: ट्यूरिंग के विचार को समझना।\nआवश्यक सामग्री: तीन विद्यार्थी, कागज़ की पर्चियाँ, दो को छिपाने के लिए परदा या दीवार।\nक्या करें: विद्यार्थी A निर्णायक है। B और C छिपते हैं। उनमें से एक चुपचाप तय करता है कि 'मशीन' की तरह (छोटे, सपाट, थोड़े अजीब) उत्तर देगा, दूसरा सामान्य उत्तर देता है। निर्णायक लिखे सवाल भेजता है ('आज क्या खाया?', 'कोई चुटकुला सुनाओ') और लिखे जवाब पढ़ता है। पाँच सवालों के बाद निर्णायक अंदाज़ा लगाता है कि 'मशीन' कौन है।\nक्या देखेंगे: कभी निर्णायक सही पहचानता है, कभी नहीं।\nसीख: ट्यूरिंग टेस्ट जाँचता है कि क्या मशीन के जवाब इंसान जैसे लग सकते हैं। पास होने का अर्थ यह नहीं कि मशीन सच में समझती या महसूस करती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (screen): Quick, Draw!\nAim: to see an AI recognise drawings.\nYou need: a phone, tablet or computer with internet, and a browser. Ask an adult before using any website.\nWhat to do: open Google's free game 'Quick, Draw!' (quickdraw.withgoogle.com; no sign-up needed). It asks you to draw an object, such as a bicycle, within 20 seconds. While you draw, the AI says its guesses aloud. Play a few rounds. Then draw something badly on purpose.\nWhat you observe: the AI often guesses correctly even from rough doodles, and at the end it shows examples of how other people drew the same thing. When your drawing is very unusual, it guesses wrong.\nWhat it teaches: the AI learnt from a huge number of doodles drawn by people around the world (input → pattern matching → guess). It is good at patterns it has seen often and weak at unusual ones.",
+      "hi": "गतिविधि 4 (स्क्रीन): Quick, Draw!\nउद्देश्य: AI को चित्र पहचानते देखना।\nआवश्यक सामग्री: इंटरनेट वाला फ़ोन, टैबलेट या कंप्यूटर और browser। कोई भी वेबसाइट इस्तेमाल करने से पहले किसी बड़े से पूछें।\nक्या करें: Google का मुफ़्त खेल 'Quick, Draw!' (quickdraw.withgoogle.com; साइन-अप की ज़रूरत नहीं) खोलें। यह आपसे 20 सेकंड में कोई चीज़, जैसे साइकिल, बनाने को कहता है। आप बनाते जाते हैं और AI बोलकर अपने अंदाज़े बताता है। कुछ दौर खेलें। फिर जानबूझकर कुछ बहुत अजीब बनाएँ।\nक्या देखेंगे: AI कच्चे-पक्के चित्रों से भी अक्सर सही अंदाज़ा लगा लेता है, और अंत में दिखाता है कि दूसरे लोगों ने वही चीज़ कैसे बनाई। चित्र बहुत अलग हो तो वह गलत अंदाज़ा लगाता है।\nसीख: AI ने दुनिया भर के लोगों द्वारा बनाए बहुत सारे चित्रों से सीखा है (इनपुट → पैटर्न मिलान → अंदाज़ा)। जो पैटर्न उसने बार-बार देखे उनमें वह अच्छा है, अनोखे पैटर्न में कमज़ोर।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 5 (screen, optional): AutoDraw.\nOpen autodraw.com (free, no sign-up). Draw a rough shape, for example a cup. The AI suggests neat clip-art drawings that match your rough sketch; tap one to replace your doodle. Discuss: what is the input, processing and output here?\nAnswer: input is your rough sketch; processing is matching it with shapes learnt from many drawings; output is a list of neat suggestions.",
+      "hi": "गतिविधि 5 (स्क्रीन, वैकल्पिक): AutoDraw।\nautodraw.com खोलें (मुफ़्त, साइन-अप नहीं)। कोई कच्ची आकृति बनाएँ, जैसे कप। AI आपके कच्चे स्केच से मेल खाते साफ़-सुथरे चित्र सुझाता है; किसी पर टैप करें तो आपका चित्र बदल जाता है। चर्चा करें: यहाँ इनपुट, प्रोसेसिंग और आउटपुट क्या है?\nउत्तर: इनपुट आपका कच्चा स्केच है; प्रोसेसिंग बहुत-से चित्रों से सीखी आकृतियों से मिलान है; आउटपुट साफ़ सुझावों की सूची है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: do not type your name, school, phone number or address into any website or chatbot. Many AI apps have age limits (often 13 years or more), so use them only with a parent or teacher, and let an adult handle any sign-up.",
+      "hi": "सुरक्षा: किसी भी वेबसाइट या चैटबॉट में अपना नाम, स्कूल, फ़ोन नंबर या पता न लिखें। कई AI ऐप की आयु सीमा होती है (अक्सर 13 वर्ष या अधिक), इसलिए उन्हें केवल माता-पिता या शिक्षक के साथ इस्तेमाल करें, और कोई भी साइन-अप किसी बड़े को करने दें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking every electronic or automatic machine is AI. Fix: ask whether it learns from examples and makes guesses; a fan, timer or calculator does not.",
+   "Saying AI and robots are the same. Fix: AI is software; a robot is a machine with a body. Some robots use AI, many do not.",
+   "Believing AI is always correct. Fix: AI gives the most likely answer from patterns and can be wrong; check important answers.",
+   "Thinking a chatbot has feelings because it writes 'I feel happy'. Fix: AI is not alive; it only produces word patterns.",
+   "Mixing up the people and dates. Fix: Turing - 1950 - Turing Test; McCarthy - name 'Artificial Intelligence' - Dartmouth 1956.",
+   "Writing the steps in the wrong order (output before processing). Fix: always Input → Processing → Output.",
+   "Thinking today's AI is 'general AI' because a chatbot can do many tasks. Fix: all AI today is narrow AI; general AI is only an idea.",
+   "Believing AI works without humans. Fix: people build it, give it data, decide its use and must stay responsible."
+  ],
+  "hi": [
+   "हर इलेक्ट्रॉनिक या स्वचालित मशीन को AI समझना। सुधार: पूछें कि क्या वह उदाहरणों से सीखकर अंदाज़ा लगाती है; पंखा, टाइमर या कैलकुलेटर ऐसा नहीं करते।",
+   "AI और रोबोट को एक ही कहना। सुधार: AI software है; रोबोट शरीर वाली मशीन है। कुछ रोबोट AI इस्तेमाल करते हैं, कई नहीं।",
+   "मानना कि AI हमेशा सही है। सुधार: AI पैटर्न से सबसे संभावित उत्तर देता है और गलत हो सकता है; ज़रूरी उत्तर जाँचें।",
+   "चैटबॉट के 'मुझे खुशी है' लिखने से मान लेना कि उसमें भावनाएँ हैं। सुधार: AI जीवित नहीं है; वह केवल शब्दों के पैटर्न बनाता है।",
+   "व्यक्तियों और तारीखों में गड़बड़। सुधार: ट्यूरिंग - 1950 - ट्यूरिंग टेस्ट; मैकार्थी - 'Artificial Intelligence' नाम - डार्टमथ 1956।",
+   "चरण गलत क्रम में लिखना (प्रोसेसिंग से पहले आउटपुट)। सुधार: हमेशा इनपुट → प्रोसेसिंग → आउटपुट।",
+   "चैटबॉट कई काम कर लेता है, इसलिए आज के AI को 'general AI' मानना। सुधार: आज का सारा AI सीमित (narrow) AI है; general AI केवल एक विचार है।",
+   "मानना कि AI इंसानों के बिना काम करता है। सुधार: लोग इसे बनाते हैं, data देते हैं, उपयोग तय करते हैं और ज़िम्मेदार रहते हैं।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Intelligence",
+    "hi": "बुद्धिमत्ता"
+   },
+   "d": {
+    "en": "The ability to learn, understand, remember, solve problems and make decisions.",
+    "hi": "सीखने, समझने, याद रखने, समस्याएँ हल करने और निर्णय लेने की क्षमता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Artificial",
+    "hi": "कृत्रिम (Artificial)"
+   },
+   "d": {
+    "en": "Made by humans; not natural.",
+    "hi": "इंसानों द्वारा बनाया गया; प्राकृतिक नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Artificial Intelligence (AI)",
+    "hi": "Artificial Intelligence (AI)"
+   },
+   "d": {
+    "en": "The ability of machines to do tasks that normally need human intelligence; also the science of building such machines.",
+    "hi": "मशीनों की वह क्षमता जिससे वे ऐसे काम कर पाती हैं जिनमें आमतौर पर इंसानी बुद्धि चाहिए; ऐसी मशीनें बनाने का विज्ञान भी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine Learning",
+    "hi": "Machine Learning"
+   },
+   "d": {
+    "en": "A part of AI where computers learn patterns from examples (data) instead of being given every rule.",
+    "hi": "AI का वह हिस्सा जिसमें कंप्यूटर हर नियम दिए जाने के बजाय उदाहरणों (data) से पैटर्न सीखते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data",
+    "hi": "Data (आँकड़े/जानकारी)"
+   },
+   "d": {
+    "en": "Facts and examples such as numbers, words, pictures and sounds.",
+    "hi": "संख्याएँ, शब्द, चित्र और आवाज़ें जैसे तथ्य और उदाहरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rule-based machine",
+    "hi": "नियम-आधारित मशीन"
+   },
+   "d": {
+    "en": "A machine or program that only follows fixed instructions written by a person.",
+    "hi": "ऐसी मशीन या प्रोग्राम जो केवल किसी व्यक्ति द्वारा लिखे तय निर्देश मानता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Input",
+    "hi": "इनपुट (Input)"
+   },
+   "d": {
+    "en": "The information an AI system receives, such as a photo, sound or text.",
+    "hi": "AI सिस्टम को मिलने वाली जानकारी, जैसे फ़ोटो, आवाज़ या text।"
+   }
+  },
+  {
+   "t": {
+    "en": "Processing",
+    "hi": "प्रोसेसिंग (Processing)"
+   },
+   "d": {
+    "en": "The step where the AI finds patterns in the input and compares them with what it learnt.",
+    "hi": "वह चरण जिसमें AI इनपुट में पैटर्न खोजता है और सीखी बातों से तुलना करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Output",
+    "hi": "आउटपुट (Output)"
+   },
+   "d": {
+    "en": "The result an AI gives, such as an answer, suggestion, warning or action.",
+    "hi": "AI द्वारा दिया गया परिणाम, जैसे उत्तर, सुझाव, चेतावनी या कार्य।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training",
+    "hi": "Training (प्रशिक्षण)"
+   },
+   "d": {
+    "en": "The stage in which an AI learns from a large set of examples.",
+    "hi": "वह चरण जिसमें AI उदाहरणों के बड़े समूह से सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prediction",
+    "hi": "Prediction (अनुमान)"
+   },
+   "d": {
+    "en": "A guess or answer the AI gives for new input, based on learnt patterns.",
+    "hi": "सीखे पैटर्न के आधार पर नए इनपुट के लिए AI द्वारा दिया गया अंदाज़ा या उत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Turing Test",
+    "hi": "ट्यूरिंग टेस्ट"
+   },
+   "d": {
+    "en": "Alan Turing's 1950 idea: if a person chatting by text cannot tell a machine from a human, the machine passes.",
+    "hi": "एलन ट्यूरिंग का 1950 का विचार: text से बात करने वाला व्यक्ति मशीन और इंसान में फ़र्क न कर पाए, तो मशीन पास।"
+   }
+  },
+  {
+   "t": {
+    "en": "Narrow AI",
+    "hi": "Narrow AI (सीमित AI)"
+   },
+   "d": {
+    "en": "AI built for a specific task or limited set of tasks; all AI today is narrow.",
+    "hi": "किसी खास काम या सीमित कामों के लिए बना AI; आज का सारा AI सीमित है।"
+   }
+  },
+  {
+   "t": {
+    "en": "General AI",
+    "hi": "General AI (सामान्य AI)"
+   },
+   "d": {
+    "en": "An idea of AI that could do almost any task a human can; it does not exist today.",
+    "hi": "ऐसे AI का विचार जो लगभग हर इंसानी काम कर सके; यह आज मौजूद नहीं है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Robot",
+    "hi": "रोबोट"
+   },
+   "d": {
+    "en": "A machine with a body that moves and acts in the physical world; it may or may not use AI.",
+    "hi": "शरीर वाली मशीन जो भौतिक दुनिया में चलती और काम करती है; इसमें AI हो भी सकता है और नहीं भी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Software",
+    "hi": "Software"
+   },
+   "d": {
+    "en": "Programs that tell a computer what to do; AI is a kind of software.",
+    "hi": "प्रोग्राम जो कंप्यूटर को बताते हैं कि क्या करना है; AI एक तरह का software है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias",
+    "hi": "Bias (पक्षपात)"
+   },
+   "d": {
+    "en": "Unfair results from AI, usually because its training data was one-sided or incomplete.",
+    "hi": "AI के अन्यायपूर्ण परिणाम, आमतौर पर एकतरफ़ा या अधूरे training data के कारण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Human in the loop",
+    "hi": "Human in the loop"
+   },
+   "d": {
+    "en": "The practice of people checking and guiding AI decisions, especially important ones.",
+    "hi": "इंसानों द्वारा AI के निर्णयों, खासकर ज़रूरी निर्णयों, को जाँचने और दिशा देने का तरीका।"
+   }
+  },
+  {
+   "t": {
+    "en": "Generative AI",
+    "hi": "Generative AI"
+   },
+   "d": {
+    "en": "AI that creates new text, pictures, music or video, such as chatbots that write answers.",
+    "hi": "ऐसा AI जो नया text, चित्र, संगीत या वीडियो बनाता है, जैसे जवाब लिखने वाले चैटबॉट।"
+   }
+  },
+  {
+   "t": {
+    "en": "Chatbot",
+    "hi": "Chatbot (चैटबॉट)"
+   },
+   "d": {
+    "en": "A computer program that chats with people in text or voice.",
+    "hi": "कंप्यूटर प्रोग्राम जो लोगों से text या आवाज़ में बात करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Domains of AI",
+    "hi": "AI के क्षेत्र"
+   },
+   "d": {
+    "en": "Main areas of AI by type of input: Data, Computer Vision, and Natural Language Processing.",
+    "hi": "इनपुट के प्रकार के आधार पर AI के मुख्य क्षेत्र: Data, Computer Vision और Natural Language Processing।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Who wrote the 1950 paper that asked 'Can machines think?'\n(a) John McCarthy (b) Alan Turing (c) Garry Kasparov (d) Charles Babbage",
+    "hi": "बहुविकल्पी: 1950 में 'क्या मशीनें सोच सकती हैं?' पूछने वाला लेख किसने लिखा?\n(क) जॉन मैकार्थी (ख) एलन ट्यूरिंग (ग) गैरी कास्पारोव (घ) चार्ल्स बैबेज"
+   },
+   "a": {
+    "en": "(b) Alan Turing.",
+    "hi": "(ख) एलन ट्यूरिंग।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is an AI system?\n(a) ceiling fan (b) electric kettle (c) face unlock on a phone (d) wall clock",
+    "hi": "बहुविकल्पी: इनमें से AI सिस्टम कौन-सा है?\n(क) छत का पंखा (ख) बिजली की केतली (ग) फ़ोन का फ़ेस अनलॉक (घ) दीवार घड़ी"
+   },
+   "a": {
+    "en": "(c) Face unlock, because it learnt to recognise faces from examples.",
+    "hi": "(ग) फ़ेस अनलॉक, क्योंकि इसने उदाहरणों से चेहरे पहचानना सीखा है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The correct order of steps in an AI system is:\n(a) Output → Input → Processing (b) Input → Processing → Output (c) Processing → Output → Input (d) Input → Output → Processing",
+    "hi": "बहुविकल्पी: AI सिस्टम के चरणों का सही क्रम है:\n(क) आउटपुट → इनपुट → प्रोसेसिंग (ख) इनपुट → प्रोसेसिंग → आउटपुट (ग) प्रोसेसिंग → आउटपुट → इनपुट (घ) इनपुट → आउटपुट → प्रोसेसिंग"
+   },
+   "a": {
+    "en": "(b) Input → Processing → Output.",
+    "hi": "(ख) इनपुट → प्रोसेसिंग → आउटपुट।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The name 'Artificial Intelligence' is linked with ______ and the Dartmouth workshop of ______.",
+    "hi": "रिक्त स्थान भरें: 'Artificial Intelligence' नाम ______ और ______ की डार्टमथ कार्यशाला से जुड़ा है।"
+   },
+   "a": {
+    "en": "John McCarthy; 1956.",
+    "hi": "जॉन मैकार्थी; 1956।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The word 'artificial' means ______ by humans.",
+    "hi": "रिक्त स्थान भरें: 'Artificial' शब्द का अर्थ है इंसानों द्वारा ______।"
+   },
+   "a": {
+    "en": "made",
+    "hi": "बनाया गया"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: All robots use AI.",
+    "hi": "सही या गलत: सभी रोबोट AI का उपयोग करते हैं।"
+   },
+   "a": {
+    "en": "False. Many robots, such as simple factory arms, only repeat fixed movements.",
+    "hi": "गलत। कई रोबोट, जैसे साधारण फ़ैक्ट्री भुजाएँ, केवल तय चालें दोहराते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: AI has feelings like humans.",
+    "hi": "सही या गलत: AI में इंसानों जैसी भावनाएँ होती हैं।"
+   },
+   "a": {
+    "en": "False. AI is not alive and has no feelings.",
+    "hi": "गलत। AI जीवित नहीं है और उसमें भावनाएँ नहीं होतीं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: All AI in use today is narrow AI.",
+    "hi": "सही या गलत: आज उपयोग होने वाला सारा AI सीमित (narrow) AI है।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Define intelligence and list any four abilities that are part of it.",
+    "hi": "बुद्धिमत्ता को परिभाषित कीजिए और उसकी कोई चार क्षमताएँ लिखिए।"
+   },
+   "a": {
+    "en": "Intelligence is the ability to learn, understand, remember, solve problems and make decisions. Four abilities: learning, remembering, reasoning, problem solving (others: understanding language, recognising, decision making, creativity).",
+    "hi": "बुद्धिमत्ता सीखने, समझने, याद रखने, समस्याएँ हल करने और निर्णय लेने की क्षमता है। चार क्षमताएँ: सीखना, याद रखना, तर्क करना, समस्या हल करना (अन्य: भाषा समझना, पहचानना, निर्णय लेना, रचनात्मकता)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Define Artificial Intelligence in your own words and give two examples.",
+    "hi": "Artificial Intelligence को अपने शब्दों में परिभाषित कीजिए और दो उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "AI is the ability of a computer or machine to do tasks that usually need human intelligence, mostly by learning from examples. Examples: voice typing on a phone; a map app predicting traffic.",
+    "hi": "AI किसी कंप्यूटर या मशीन की वह क्षमता है जिससे वह आमतौर पर इंसानी बुद्धि वाले काम कर पाती है, ज़्यादातर उदाहरणों से सीखकर। उदाहरण: फ़ोन पर वॉइस टाइपिंग; ट्रैफ़िक का अनुमान लगाने वाला मैप ऐप।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give three differences between an ordinary machine and an AI system.",
+    "hi": "साधारण मशीन और AI सिस्टम में तीन अंतर लिखिए।"
+   },
+   "a": {
+    "en": "1. An ordinary machine follows rules written by a person; AI learns patterns from data.\n2. An ordinary machine cannot handle new situations; AI can make a sensible guess.\n3. An ordinary machine does not improve on its own; AI can improve with more and better data.",
+    "hi": "1. साधारण मशीन व्यक्ति के लिखे नियम मानती है; AI data से पैटर्न सीखता है।\n2. साधारण मशीन नई स्थितियाँ नहीं संभाल पाती; AI समझदारी भरा अंदाज़ा लगा सकता है।\n3. साधारण मशीन अपने-आप नहीं सुधरती; AI ज़्यादा और बेहतर data से सुधर सकता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write the input, processing and output for a crop-disease app.",
+    "hi": "फ़सल-रोग ऐप के लिए इनपुट, प्रोसेसिंग और आउटपुट लिखिए।"
+   },
+   "a": {
+    "en": "Input: a photo of a leaf.\nProcessing: the AI compares the colours and spots with examples of diseased and healthy leaves it learnt from.\nOutput: the likely disease name and advice, for example to show it to a local agriculture expert.",
+    "hi": "इनपुट: पत्ते की फ़ोटो।\nप्रोसेसिंग: AI रंगों और धब्बों की तुलना उन रोगी और स्वस्थ पत्तों के उदाहरणों से करता है जिनसे उसने सीखा।\nआउटपुट: संभावित रोग का नाम और सलाह, जैसे स्थानीय कृषि विशेषज्ञ को दिखाना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the Turing Test? Does passing it prove a machine can think? Explain.",
+    "hi": "ट्यूरिंग टेस्ट क्या है? क्या इसे पास करना साबित करता है कि मशीन सोच सकती है? समझाइए।"
+   },
+   "a": {
+    "en": "In the Turing Test, a person chats by text with a hidden human and a hidden machine. If the person cannot reliably tell which is the machine, the machine passes. Passing does not prove real thinking or understanding; it only shows the machine's replies can seem human.",
+    "hi": "ट्यूरिंग टेस्ट में एक व्यक्ति छिपे इंसान और छिपी मशीन से text में बात करता है। अगर वह भरोसे से नहीं बता पाता कि मशीन कौन है, तो मशीन पास होती है। पास होना असली सोच या समझ साबित नहीं करता; यह केवल दिखाता है कि मशीन के जवाब इंसानी लग सकते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain with an example why 'not all AI is a robot and not all robots have AI'.",
+    "hi": "उदाहरण सहित समझाइए कि 'हर AI रोबोट नहीं और हर रोबोट में AI नहीं'।"
+   },
+   "a": {
+    "en": "Voice typing is AI but has no body, so it is not a robot. A factory arm that repeats the same welding movement is a robot but does not learn, so it has no AI. A robot vacuum that maps a room is both.",
+    "hi": "वॉइस टाइपिंग AI है पर उसका शरीर नहीं, इसलिए वह रोबोट नहीं। वही वेल्डिंग चाल दोहराने वाली फ़ैक्ट्री भुजा रोबोट है पर सीखती नहीं, इसलिए उसमें AI नहीं। कमरे का नक्शा बनाने वाला रोबोट वैक्यूम दोनों है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the three main domains of AI and give one example of each.",
+    "hi": "AI के तीन मुख्य क्षेत्रों के नाम लिखिए और हर एक का एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Data: weather forecast. Computer Vision: face unlock. Natural Language Processing: language translation or chatbots.",
+    "hi": "Data: मौसम पूर्वानुमान। Computer Vision: फ़ेस अनलॉक। Natural Language Processing: भाषा अनुवाद या चैटबॉट।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is bias in AI? Give an example.",
+    "hi": "AI में bias क्या है? एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Bias means AI gives unfair results, usually because its training data was one-sided. Example: a face AI trained mostly on one group of people may not recognise others well.",
+    "hi": "Bias का अर्थ है AI के अन्यायपूर्ण परिणाम, आमतौर पर एकतरफ़ा training data के कारण। उदाहरण: ज़्यादातर एक समूह के लोगों पर train हुआ चेहरा-AI दूसरों को ठीक से न पहचाने।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe four important milestones in the history of AI with years.",
+    "hi": "दीर्घ उत्तर: AI के इतिहास के चार महत्वपूर्ण पड़ाव वर्ष सहित लिखिए।"
+   },
+   "a": {
+    "en": "1950: Alan Turing asked 'Can machines think?' and proposed the Turing Test.\n1956: the Dartmouth workshop, organised by John McCarthy and others, used the name 'Artificial Intelligence'; seen as the birth of AI as a field.\n1997: IBM's Deep Blue defeated chess champion Garry Kasparov.\n2016: AlphaGo defeated Lee Sedol at Go.\n(Also accepted: 2011 Siri; November 2022 release of ChatGPT and the rise of generative AI.)",
+    "hi": "1950: एलन ट्यूरिंग ने पूछा 'क्या मशीनें सोच सकती हैं?' और ट्यूरिंग टेस्ट सुझाया।\n1956: जॉन मैकार्थी और साथियों की डार्टमथ कार्यशाला में 'Artificial Intelligence' नाम का उपयोग हुआ; इसे AI विषय का जन्म माना जाता है।\n1997: IBM के Deep Blue ने शतरंज चैंपियन गैरी कास्पारोव को हराया।\n2016: AlphaGo ने Go में ली सेडोल को हराया।\n(ये भी मान्य: 2011 Siri; नवंबर 2022 में ChatGPT का आना और generative AI का उभार।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Why must humans check AI's answers? Give three situations where this is very important.",
+    "hi": "दीर्घ उत्तर: इंसानों को AI के उत्तर क्यों जाँचने चाहिए? तीन ऐसी स्थितियाँ बताइए जहाँ यह बहुत ज़रूरी है।"
+   },
+   "a": {
+    "en": "AI gives the most likely answer from patterns in its data. It can be wrong, can make up facts confidently, can be biased, and does not know when it is wrong. So people must check.\nSituations: (1) health - a doctor must confirm what AI sees in an X-ray; (2) money - a person must check before acting on an AI message about a payment; (3) studies - a student must check an AI's fact against the textbook or teacher.",
+    "hi": "AI अपने data के पैटर्न से सबसे संभावित उत्तर देता है। वह गलत हो सकता है, भरोसे से तथ्य गढ़ सकता है, पक्षपाती हो सकता है, और नहीं जानता कि वह कब गलत है। इसलिए लोगों को जाँचना चाहिए।\nस्थितियाँ: (1) स्वास्थ्य - X-ray में AI जो देखे उसकी पुष्टि डॉक्टर करें; (2) पैसा - भुगतान से जुड़े AI संदेश पर कदम उठाने से पहले व्यक्ति जाँचे; (3) पढ़ाई - विद्यार्थी AI के तथ्य को पाठ्यपुस्तक या शिक्षक से जाँचे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: A shop puts a machine at the door that says 'Welcome!' whenever anyone walks in. The owner calls it 'AI'. Is it? What change would make it AI?",
+    "hi": "सोचने वाला प्रश्न: एक दुकान के दरवाज़े पर एक मशीन है जो कोई भी अंदर आए तो 'स्वागत है!' बोलती है। मालिक इसे 'AI' कहता है। क्या यह AI है? कौन-सा बदलाव इसे AI बनाएगा?"
+   },
+   "a": {
+    "en": "As described it is not AI: it follows one fixed rule (IF someone passes the sensor THEN play 'Welcome'). It would involve AI if, for example, it used a camera and learnt to recognise regular customers or understood spoken questions such as 'Where is the rice?' and replied sensibly.",
+    "hi": "जैसा बताया गया, यह AI नहीं है: यह एक तय नियम मानती है (IF कोई सेंसर के आगे से गुज़रे THEN 'स्वागत है' बजाओ)। इसमें AI तब होगा जब, उदाहरण के लिए, यह कैमरे से नियमित ग्राहकों को पहचानना सीखे या 'चावल कहाँ है?' जैसे बोले गए सवाल समझकर सही जवाब दे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Your friend says, 'The chatbot told me it is sad today, so it must have feelings.' How will you explain the truth kindly?",
+    "hi": "सोचने वाला प्रश्न: आपका दोस्त कहता है, 'चैटबॉट ने कहा कि आज वह उदास है, इसलिए उसमें भावनाएँ होंगी।' आप प्यार से सच कैसे समझाएँगे?"
+   },
+   "a": {
+    "en": "Explain that a chatbot learnt from huge amounts of human writing, where people often write about feelings. So it can produce sentences like 'I am sad' by following word patterns, but it is not alive, has no body or experiences, and does not actually feel anything.",
+    "hi": "समझाइए कि चैटबॉट ने इंसानों के लिखे बहुत सारे text से सीखा है, जिसमें लोग अक्सर भावनाओं के बारे में लिखते हैं। इसलिए वह शब्दों के पैटर्न से 'मैं उदास हूँ' जैसे वाक्य बना सकता है, पर वह जीवित नहीं है, उसके पास शरीर या अनुभव नहीं, और वह सच में कुछ महसूस नहीं करता।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: Play Quick, Draw! (with an adult's permission) for five drawings. Note how many the AI guessed correctly. Why did it fail on some?",
+    "hi": "गतिविधि प्रश्न: (बड़े की अनुमति से) Quick, Draw! पर पाँच चित्र बनाइए। नोट कीजिए कि AI ने कितने सही पहचाने। कुछ पर वह क्यों चूका?"
+   },
+   "a": {
+    "en": "Answers will vary, for example 4 out of 5. The AI fails when the drawing is unfinished, very unusual, or drawn in a way few people draw it, because it recognises patterns it has seen often in its training doodles.",
+    "hi": "उत्तर अलग-अलग होंगे, जैसे 5 में से 4। AI तब चूकता है जब चित्र अधूरा, बहुत अनोखा हो या उस ढंग से बना हो जैसे कम लोग बनाते हैं, क्योंकि वह वही पैटर्न पहचानता है जो उसने training चित्रों में बार-बार देखे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why did AI become much more powerful in recent years? Give three reasons.",
+    "hi": "हाल के वर्षों में AI इतना शक्तिशाली क्यों हुआ? तीन कारण बताइए।"
+   },
+   "a": {
+    "en": "1. Huge amounts of digital data became available.\n2. Computers and chips became much faster.\n3. Better learning methods, such as neural networks, were developed.",
+    "hi": "1. भारी मात्रा में डिजिटल data उपलब्ध हुआ।\n2. कंप्यूटर और चिप बहुत तेज़ हो गए।\n3. neural networks जैसे बेहतर सीखने के तरीके विकसित हुए।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Intelligence is the ability to learn, understand, remember, solve problems and make decisions; humans and animals show it.",
+   "Artificial means made by humans. AI is the ability of machines to do tasks that normally need human intelligence.",
+   "Most modern AI learns from examples (data); this is called machine learning.",
+   "Ordinary machines follow fixed rules; AI systems learn patterns, handle new cases and can improve.",
+   "AI works as Input → Processing → Output, after a training stage.",
+   "Alan Turing (1950) asked 'Can machines think?' and proposed the Turing Test.",
+   "John McCarthy and the 1956 Dartmouth workshop gave the field the name 'Artificial Intelligence'.",
+   "Milestones: Deep Blue beat Kasparov (1997), Siri (2011), AlphaGo beat Lee Sedol (2016), chatbots like ChatGPT spread from late 2022.",
+   "All AI today is narrow AI; general AI is only an idea.",
+   "AI is software; robots are machines with bodies. Not all AI is a robot and not all robots have AI.",
+   "AI is not magic and not alive; it has no feelings and can be wrong or biased.",
+   "Humans must stay in charge and check AI, especially for health, money and studies.",
+   "Main domains of AI: Data, Computer Vision and Natural Language Processing."
+  ],
+  "hi": [
+   "बुद्धिमत्ता सीखने, समझने, याद रखने, समस्याएँ हल करने और निर्णय लेने की क्षमता है; इंसान और जानवर इसे दिखाते हैं।",
+   "कृत्रिम का अर्थ है इंसानों द्वारा बनाया गया। AI मशीनों की ऐसे काम करने की क्षमता है जिनमें आमतौर पर इंसानी बुद्धि चाहिए।",
+   "आज का ज़्यादातर AI उदाहरणों (data) से सीखता है; इसे machine learning कहते हैं।",
+   "साधारण मशीनें तय नियम मानती हैं; AI सिस्टम पैटर्न सीखते हैं, नई स्थितियाँ संभालते हैं और सुधर सकते हैं।",
+   "AI training चरण के बाद इनपुट → प्रोसेसिंग → आउटपुट के रूप में काम करता है।",
+   "एलन ट्यूरिंग (1950) ने पूछा 'क्या मशीनें सोच सकती हैं?' और ट्यूरिंग टेस्ट सुझाया।",
+   "जॉन मैकार्थी और 1956 की डार्टमथ कार्यशाला ने इस विषय को 'Artificial Intelligence' नाम दिया।",
+   "पड़ाव: Deep Blue ने कास्पारोव को हराया (1997), Siri (2011), AlphaGo ने ली सेडोल को हराया (2016), 2022 के अंत से ChatGPT जैसे चैटबॉट फैले।",
+   "आज का सारा AI सीमित (narrow) AI है; general AI केवल एक विचार है।",
+   "AI software है; रोबोट शरीर वाली मशीनें हैं। हर AI रोबोट नहीं और हर रोबोट में AI नहीं।",
+   "AI न जादू है न जीवित; उसमें भावनाएँ नहीं, और वह गलत या पक्षपाती हो सकता है।",
+   "नियंत्रण इंसानों के हाथ में रहे और वे AI को जाँचें, खासकर स्वास्थ्य, पैसे और पढ़ाई में।",
+   "AI के मुख्य क्षेत्र: Data, Computer Vision और Natural Language Processing।"
+  ]
+ }
+}
