@@ -1,0 +1,1417 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "6",
+ "id": "ch5",
+ "intro": {
+  "en": "In Chapter 4 you learned that data is the food of AI. But what does AI actually do with all that data? It looks for patterns. Once it finds a pattern, it can sort new things into the right group and make a smart guess about what will happen next. You do the same thing every day: when you see dark clouds you pick up an umbrella, and when your mother calls you at 8 pm you know dinner is ready. In this chapter you will learn what patterns are, how to spot and describe them, how sorting by features works, how IF-THEN rules and decision trees help in deciding, how AI finds patterns in data, and how predictions are made, used and checked.",
+  "hi": "अध्याय 4 में आपने सीखा कि डेटा AI का भोजन है। पर AI इतने सारे डेटा के साथ असल में करता क्या है? वह पैटर्न ढूँढता है। पैटर्न मिल जाने पर वह नई चीज़ों को सही समूह में रख सकता है और आगे क्या होगा इसका समझदार अनुमान लगा सकता है। आप भी रोज़ यही करते हैं: काले बादल देखकर आप छाता उठा लेते हैं, और रात 8 बजे माँ बुलाएँ तो आप जान जाते हैं कि खाना तैयार है। इस अध्याय में आप सीखेंगे कि पैटर्न क्या हैं, उन्हें कैसे पहचानें और बताएँ, गुणों के आधार पर छाँटना कैसे होता है, IF-THEN नियम और डिसीज़न ट्री निर्णय लेने में कैसे मदद करते हैं, AI डेटा में पैटर्न कैसे ढूँढता है, और अनुमान कैसे लगाए, उपयोग किए और जाँचे जाते हैं।"
+ },
+ "learn": {
+  "en": [
+   "What a pattern is, and the rule behind a pattern",
+   "Repeating, growing and shrinking patterns in numbers, shapes, nature and daily routines",
+   "Observing, finding patterns and drawing conclusions",
+   "Features, and sorting (classifying) things into groups",
+   "IF-THEN rules and simple decision trees",
+   "How AI finds patterns: learning from labelled examples and grouping similar things",
+   "What a prediction is, and how AI predicts weather, traffic, the next word and more",
+   "Why predictions are 'most likely', not certain, and why AI must keep learning",
+   "Recommendations: how apps suggest videos, songs and products",
+   "A tiny Python program that finds a pattern and predicts"
+  ],
+  "hi": [
+   "पैटर्न क्या है, और पैटर्न के पीछे का नियम",
+   "संख्याओं, आकृतियों, प्रकृति और दिनचर्या में दोहराने वाले, बढ़ने वाले और घटने वाले पैटर्न",
+   "अवलोकन करना, पैटर्न ढूँढना और निष्कर्ष निकालना",
+   "गुण (features), और चीज़ों को समूहों में छाँटना (वर्गीकरण)",
+   "IF-THEN नियम और सरल डिसीज़न ट्री",
+   "AI पैटर्न कैसे ढूँढता है: लेबल वाले उदाहरणों से सीखना और मिलती-जुलती चीज़ों के समूह बनाना",
+   "अनुमान (prediction) क्या है, और AI मौसम, ट्रैफ़िक, अगला शब्द आदि का अनुमान कैसे लगाता है",
+   "अनुमान 'सबसे संभावित' क्यों होते हैं, पक्के नहीं, और AI को सीखते क्यों रहना चाहिए",
+   "सुझाव (recommendations): ऐप वीडियो, गाने और उत्पाद कैसे सुझाते हैं",
+   "एक छोटा Python प्रोग्राम जो पैटर्न ढूँढकर अनुमान लगाता है"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "5.1 What is a pattern?",
+    "hi": "5.1 पैटर्न क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Look at these: 2, 4, 6, 8, 10 ... or red, blue, red, blue, red ... or the days of the week: Monday, Tuesday, ... Sunday, and again Monday. In each case something repeats or changes in a regular way, so you can tell what will come next. This regularity is called a pattern.",
+      "hi": "इन्हें देखिए: 2, 4, 6, 8, 10 ... या लाल, नीला, लाल, नीला, लाल ... या सप्ताह के दिन: सोमवार, मंगलवार, ... रविवार, और फिर सोमवार। हर एक में कुछ नियमित ढंग से दोहराता या बदलता है, इसलिए आप बता सकते हैं कि आगे क्या आएगा। इसी नियमितता को पैटर्न कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Pattern",
+       "hi": "पैटर्न (प्रतिरूप)"
+      },
+      "text": {
+       "en": "A pattern is something that repeats or changes in a regular, predictable way. Because it follows a rule, we can use it to tell what comes next.",
+       "hi": "पैटर्न वह है जो नियमित और अनुमान लगाने योग्य ढंग से दोहराता या बदलता है। क्योंकि यह किसी नियम पर चलता है, इसलिए इससे हम बता सकते हैं कि आगे क्या आएगा।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Every pattern has a rule. In 2, 4, 6, 8 the rule is 'add 2'. In red, blue, red, blue the rule is 'red and blue take turns'. Finding the rule is the key step. Once you know the rule, you can continue the pattern as far as you like and even spot a mistake in it.",
+      "hi": "हर पैटर्न का एक नियम होता है। 2, 4, 6, 8 में नियम है '2 जोड़ो'। लाल, नीला, लाल, नीला में नियम है 'लाल और नीला बारी-बारी से'। नियम ढूँढना सबसे ज़रूरी कदम है। नियम पता हो जाए तो आप पैटर्न को जितना चाहें आगे बढ़ा सकते हैं और उसमें गलती भी पकड़ सकते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Kind of pattern",
+        "Example",
+        "Rule"
+       ],
+       "hi": [
+        "पैटर्न का प्रकार",
+        "उदाहरण",
+        "नियम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Repeating (cyclic)",
+         "Circle, square, triangle, circle, square, triangle ...",
+         "The same block of 3 shapes repeats."
+        ],
+        [
+         "Growing (adding)",
+         "5, 10, 15, 20 ...",
+         "Add 5 each time."
+        ],
+        [
+         "Growing (multiplying)",
+         "3, 6, 12, 24 ...",
+         "Double each time (× 2)."
+        ],
+        [
+         "Shrinking",
+         "100, 90, 80, 70 ...",
+         "Subtract 10 each time."
+        ],
+        [
+         "Alternating",
+         "1, 10, 2, 20, 3, 30 ...",
+         "Two patterns take turns: 1, 2, 3 ... and 10, 20, 30 ..."
+        ],
+        [
+         "Increasing steps",
+         "1, 2, 4, 7, 11 ...",
+         "Add 1, then 2, then 3, then 4 ..."
+        ]
+       ],
+       "hi": [
+        [
+         "दोहराने वाला (चक्रीय)",
+         "वृत्त, वर्ग, त्रिभुज, वृत्त, वर्ग, त्रिभुज ...",
+         "3 आकृतियों का एक ही खंड दोहराता है।"
+        ],
+        [
+         "बढ़ने वाला (जोड़ना)",
+         "5, 10, 15, 20 ...",
+         "हर बार 5 जोड़ो।"
+        ],
+        [
+         "बढ़ने वाला (गुणा)",
+         "3, 6, 12, 24 ...",
+         "हर बार दोगुना (× 2)।"
+        ],
+        [
+         "घटने वाला",
+         "100, 90, 80, 70 ...",
+         "हर बार 10 घटाओ।"
+        ],
+        [
+         "बारी-बारी वाला",
+         "1, 10, 2, 20, 3, 30 ...",
+         "दो पैटर्न बारी-बारी: 1, 2, 3 ... और 10, 20, 30 ..."
+        ],
+        [
+         "बढ़ते कदम वाला",
+         "1, 2, 4, 7, 11 ...",
+         "पहले 1 जोड़ो, फिर 2, फिर 3, फिर 4 ..."
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the rule and the next two terms: (a) 7, 14, 21, 28, ? (b) 2, 6, 18, 54, ? (c) A, C, E, G, ? (d) 1, 4, 9, 16, ?",
+       "hi": "नियम और अगले दो पद ढूँढिए: (a) 7, 14, 21, 28, ? (b) 2, 6, 18, 54, ? (c) A, C, E, G, ? (d) 1, 4, 9, 16, ?"
+      },
+      "a": {
+       "en": "Step 1: Look at how each term changes from the one before it.\n(a) 14 − 7 = 7, 21 − 14 = 7. Rule: add 7. Next: 35, 42.\n(b) 6 ÷ 2 = 3, 18 ÷ 6 = 3. Rule: multiply by 3. Next: 54 × 3 = 162, 162 × 3 = 486.\n(c) A to C skips B, C to E skips D. Rule: skip one letter. Next: I, K.\n(d) Differences are 3, 5, 7 (going up by 2). Also 1 = 1×1, 4 = 2×2, 9 = 3×3, 16 = 4×4. Rule: square numbers. Next: 25, 36.",
+       "hi": "चरण 1: देखिए कि हर पद अपने पिछले पद से कैसे बदलता है।\n(a) 14 − 7 = 7, 21 − 14 = 7। नियम: 7 जोड़ो। अगले: 35, 42।\n(b) 6 ÷ 2 = 3, 18 ÷ 6 = 3। नियम: 3 से गुणा। अगले: 54 × 3 = 162, 162 × 3 = 486।\n(c) A से C में B छूटता है, C से E में D। नियम: एक अक्षर छोड़ो। अगले: I, K।\n(d) अंतर 3, 5, 7 हैं (2-2 से बढ़ते)। साथ ही 1 = 1×1, 4 = 2×2, 9 = 3×3, 16 = 4×4। नियम: वर्ग संख्याएँ। अगले: 25, 36।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Tip for finding a rule: first check the difference (subtract), then check if it doubles or triples (divide), then check if two patterns are mixed (look at every second term).",
+      "hi": "नियम ढूँढने का तरीका: पहले अंतर देखिए (घटाइए), फिर देखिए कि दोगुना या तिगुना होता है क्या (भाग दीजिए), फिर देखिए कि कहीं दो पैटर्न मिले तो नहीं (हर दूसरा पद देखिए)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.2 Patterns all around us",
+    "hi": "5.2 हमारे चारों ओर पैटर्न"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Patterns are not only in maths books. Nature, our homes and our daily lives are full of them.",
+      "hi": "पैटर्न केवल गणित की किताबों में नहीं हैं। प्रकृति, हमारे घर और हमारा रोज़ का जीवन इनसे भरे हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Nature: day and night, the phases of the Moon (about a month from one full moon to the next), the seasons, the six-sided cells of a honeycomb, the stripes of a tiger, the petals of a flower, the arrival of the monsoon around June in most of India.",
+       "Art and culture: rangoli and kolam designs, block-printed sarees, the beats (taal) in music, and border patterns on pottery.",
+       "Daily routine: the school bell rings at the same times every day; the milkman comes every morning; the vegetable market is busiest in the evening.",
+       "Calendar: festivals, exams and holidays come around the same months every year; a train timetable repeats every day.",
+       "Sport: a bowler who often bowls a slower ball after two fast ones; a batter who scores most runs on the leg side. Cricket analysts study such patterns from match data.",
+       "Behaviour: a crowd at a food stall often suggests the food is good; a long queue at an ATM on the first day of the month, when many people receive their salary."
+      ],
+      "hi": [
+       "प्रकृति: दिन और रात, चंद्रमा की कलाएँ (एक पूर्णिमा से अगली तक लगभग एक महीना), ऋतुएँ, मधुमक्खी के छत्ते के छह-भुजा वाले खाने, बाघ की धारियाँ, फूल की पंखुड़ियाँ, भारत के अधिकांश भागों में लगभग जून में मानसून का आना।",
+       "कला और संस्कृति: रंगोली और कोलम के डिज़ाइन, ब्लॉक-प्रिंट साड़ियाँ, संगीत की ताल, और मिट्टी के बर्तनों पर किनारी के पैटर्न।",
+       "दिनचर्या: स्कूल की घंटी रोज़ एक ही समय पर बजती है; दूधवाला हर सुबह आता है; सब्ज़ी मंडी शाम को सबसे ज़्यादा भरी होती है।",
+       "कैलेंडर: त्योहार, परीक्षाएँ और छुट्टियाँ हर साल लगभग उन्हीं महीनों में आती हैं; रेलगाड़ी की समय-सारणी रोज़ दोहराती है।",
+       "खेल: ऐसा गेंदबाज़ जो अक्सर दो तेज़ गेंदों के बाद एक धीमी गेंद डालता है; ऐसा बल्लेबाज़ जो ज़्यादातर रन लेग साइड पर बनाता है। क्रिकेट विश्लेषक मैच डेटा से ऐसे पैटर्न का अध्ययन करते हैं।",
+       "व्यवहार: खाने के ठेले पर भीड़ अक्सर बताती है कि खाना अच्छा है; महीने की पहली तारीख को ATM पर लंबी कतार, जब बहुत लोगों को वेतन मिलता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Because these patterns are regular, people use them to plan. A farmer sows seeds before the expected monsoon. A shopkeeper stocks more diyas and sweets before Diwali. A station master knows which platforms will be crowded at 9 am. Using patterns to plan is exactly what AI does, but with much more data and much faster.",
+      "hi": "क्योंकि ये पैटर्न नियमित हैं, लोग इनसे योजना बनाते हैं। किसान अपेक्षित मानसून से पहले बीज बोता है। दुकानदार दिवाली से पहले ज़्यादा दीये और मिठाइयाँ रखता है। स्टेशन मास्टर जानता है कि सुबह 9 बजे कौन-से प्लेटफ़ॉर्म भरे होंगे। पैटर्न से योजना बनाना ठीक वही है जो AI करता है, बस बहुत ज़्यादा डेटा के साथ और बहुत तेज़ी से।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.3 Observe, find the pattern, conclude",
+    "hi": "5.3 देखिए, पैटर्न ढूँढिए, निष्कर्ष निकालिए"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Scientists, detectives and AI systems all follow the same three steps. First they observe and record data. Then they look for a pattern in it. Finally they draw a conclusion, which is a sensible statement based on the pattern, and use it to decide what to do.",
+      "hi": "वैज्ञानिक, जासूस और AI सिस्टम सभी एक जैसे तीन कदम अपनाते हैं। पहले वे अवलोकन करके डेटा रिकॉर्ड करते हैं। फिर उसमें पैटर्न ढूँढते हैं। अंत में वे निष्कर्ष निकालते हैं, यानी पैटर्न पर आधारित एक समझदार कथन, और उससे तय करते हैं कि क्या करना है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Observe (collect data) → Find the pattern → Draw a conclusion → Decide / act",
+      "hi": "अवलोकन (डेटा इकट्ठा करना) → पैटर्न ढूँढना → निष्कर्ष निकालना → निर्णय / काम"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Kavya notes when the school canteen runs out of samosas: Mon 11:10, Tue 11:05, Wed 11:15, Thu 11:10, Fri 11:00. The lunch break starts at 11:00. What pattern and conclusion can she draw?",
+       "hi": "काव्या लिखती है कि स्कूल कैंटीन में समोसे कब खत्म हुए: सोम 11:10, मंगल 11:05, बुध 11:15, गुरु 11:10, शुक्र 11:00। भोजन अवकाश 11:00 बजे शुरू होता है। वह कौन-सा पैटर्न और निष्कर्ष निकाल सकती है?"
+      },
+      "a": {
+       "en": "Step 1 (observe): she has 5 days of data.\nStep 2 (pattern): every day the samosas finish within 15 minutes of the break starting.\nStep 3 (conclusion): samosas are popular and the canteen makes too few.\nStep 4 (decide): Kavya should go to the canteen first if she wants a samosa; the canteen could make more samosas.",
+       "hi": "चरण 1 (अवलोकन): उसके पास 5 दिन का डेटा है।\nचरण 2 (पैटर्न): हर दिन अवकाश शुरू होने के 15 मिनट के अंदर समोसे खत्म हो जाते हैं।\nचरण 3 (निष्कर्ष): समोसे लोकप्रिय हैं और कैंटीन कम बनाती है।\nचरण 4 (निर्णय): काव्या को समोसा चाहिए तो पहले कैंटीन जाए; कैंटीन ज़्यादा समोसे बना सकती है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "A conclusion from a few observations can be wrong. Five days is a small amount of data. The more good data we have, the more we can trust the pattern. Also, a pattern tells us that two things happen together, but not always why. Ice-cream sales and the number of people swimming both rise in summer; ice cream does not make people swim. The real reason is the hot weather.",
+      "hi": "कुछ ही अवलोकनों से निकला निष्कर्ष गलत हो सकता है। पाँच दिन थोड़ा-सा डेटा है। जितना ज़्यादा अच्छा डेटा हो, उतना ज़्यादा हम पैटर्न पर भरोसा कर सकते हैं। साथ ही, पैटर्न यह बताता है कि दो चीज़ें साथ-साथ होती हैं, पर हमेशा यह नहीं कि क्यों। गर्मी में आइसक्रीम की बिक्री और तैरने वालों की संख्या दोनों बढ़ती हैं; आइसक्रीम लोगों से तैराकी नहीं करवाती। असली कारण गर्म मौसम है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.4 Features and sorting (classification)",
+    "hi": "5.4 गुण और छाँटना (वर्गीकरण)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To find patterns among objects, we first notice their features. A feature is a property we can observe or measure: colour, shape, size, weight, sound, texture, number of legs, and so on. When we put things into groups using their features, we are sorting or classifying them.",
+      "hi": "चीज़ों के बीच पैटर्न ढूँढने के लिए हम पहले उनके गुणों पर ध्यान देते हैं। गुण (feature) वह विशेषता है जिसे देखा या मापा जा सके: रंग, आकार, माप, वज़न, आवाज़, बनावट, पैरों की संख्या आदि। जब हम गुणों के आधार पर चीज़ों को समूहों में रखते हैं, तो हम उन्हें छाँट या वर्गीकृत कर रहे होते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Feature",
+       "hi": "गुण (Feature)"
+      },
+      "text": {
+       "en": "A feature is a property of an object that can be observed or measured and helps tell it apart from other objects.",
+       "hi": "गुण किसी वस्तु की वह विशेषता है जिसे देखा या मापा जा सके और जो उसे दूसरी वस्तुओं से अलग पहचानने में मदद करे।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Classification",
+       "hi": "वर्गीकरण (Classification)"
+      },
+      "text": {
+       "en": "Classification means putting things into groups (classes) based on their features, so that things in the same group are alike in some way.",
+       "hi": "वर्गीकरण का अर्थ है चीज़ों को उनके गुणों के आधार पर समूहों (वर्गों) में रखना, ताकि एक समूह की चीज़ें किसी तरह एक जैसी हों।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Object",
+        "Colour",
+        "Shape",
+        "Grows on",
+        "Group"
+       ],
+       "hi": [
+        "वस्तु",
+        "रंग",
+        "आकार",
+        "किस पर उगता है",
+        "समूह"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Banana",
+         "Yellow",
+         "Long",
+         "Plant (tree-like)",
+         "Fruit"
+        ],
+        [
+         "Brinjal",
+         "Purple",
+         "Oval",
+         "Small plant",
+         "Vegetable"
+        ],
+        [
+         "Orange",
+         "Orange",
+         "Round",
+         "Tree",
+         "Fruit"
+        ],
+        [
+         "Carrot",
+         "Orange",
+         "Long",
+         "Underground root",
+         "Vegetable"
+        ],
+        [
+         "Potato",
+         "Brown",
+         "Round-ish",
+         "Underground stem",
+         "Vegetable"
+        ]
+       ],
+       "hi": [
+        [
+         "केला",
+         "पीला",
+         "लंबा",
+         "पौधा (पेड़ जैसा)",
+         "फल"
+        ],
+        [
+         "बैंगन",
+         "बैंगनी",
+         "अंडाकार",
+         "छोटा पौधा",
+         "सब्ज़ी"
+        ],
+        [
+         "संतरा",
+         "नारंगी",
+         "गोल",
+         "पेड़",
+         "फल"
+        ],
+        [
+         "गाजर",
+         "नारंगी",
+         "लंबा",
+         "ज़मीन के अंदर जड़",
+         "सब्ज़ी"
+        ],
+        [
+         "आलू",
+         "भूरा",
+         "लगभग गोल",
+         "ज़मीन के अंदर तना",
+         "सब्ज़ी"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Look at the table. Colour alone does not separate fruits from vegetables: an orange and a carrot are both orange. Shape alone does not work either: a banana and a carrot are both long. We need the right features, or a combination of features, to sort correctly. Choosing useful features is one of the most important parts of building an AI system.",
+      "hi": "तालिका देखिए। केवल रंग से फल और सब्ज़ी अलग नहीं होते: संतरा और गाजर दोनों नारंगी हैं। केवल आकार भी काम नहीं करता: केला और गाजर दोनों लंबे हैं। सही छाँटने के लिए हमें सही गुण, या गुणों का मेल, चाहिए। उपयोगी गुण चुनना AI सिस्टम बनाने के सबसे ज़रूरी हिस्सों में से एक है।"
+     }
+    },
+    {
+     "p": {
+      "en": "The same objects can be sorted in different ways depending on the feature we choose. Buttons can be grouped by colour, by size or by the number of holes. A library sorts books by subject; a shop may sort the same books by price. There is often more than one correct way to classify; what matters is that the rule is clear and is followed every time.",
+      "hi": "चुने गए गुण के अनुसार एक ही चीज़ों को अलग-अलग तरह से छाँटा जा सकता है। बटनों को रंग, माप या छेदों की संख्या से समूहित किया जा सकता है। पुस्तकालय किताबों को विषय से छाँटता है; दुकान उन्हीं किताबों को दाम से छाँट सकती है। अक्सर वर्गीकरण का एक से ज़्यादा सही तरीका होता है; ज़रूरी यह है कि नियम साफ़ हो और हर बार उसका पालन हो।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Sort these animals into two groups using one feature, then using a different feature: hen, cow, sparrow, goat, duck, dog.",
+       "hi": "इन जानवरों को एक गुण से दो समूहों में छाँटिए, फिर एक दूसरे गुण से: मुर्गी, गाय, गौरैया, बकरी, बत्तख, कुत्ता।"
+      },
+      "a": {
+       "en": "Feature 1: number of legs.\nTwo legs: hen, sparrow, duck. Four legs: cow, goat, dog.\nFeature 2: can it fly well?\nFlies well: sparrow. Does not fly well: hen, duck (they can flap short distances), cow, goat, dog.\nFeature 3 (another choice): has feathers or fur/hair.\nFeathers: hen, sparrow, duck. Hair: cow, goat, dog.\nConclusion: the grouping depends on the feature chosen.",
+       "hi": "गुण 1: पैरों की संख्या।\nदो पैर: मुर्गी, गौरैया, बत्तख। चार पैर: गाय, बकरी, कुत्ता।\nगुण 2: क्या यह अच्छी तरह उड़ सकता है?\nअच्छी तरह उड़ता है: गौरैया। अच्छी तरह नहीं उड़ता: मुर्गी, बत्तख (थोड़ी दूर फड़फड़ा सकते हैं), गाय, बकरी, कुत्ता।\nगुण 3 (एक और विकल्प): पंख हैं या बाल।\nपंख: मुर्गी, गौरैया, बत्तख। बाल: गाय, बकरी, कुत्ता।\nनिष्कर्ष: समूह चुने गए गुण पर निर्भर करता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.5 IF-THEN rules and decision trees",
+    "hi": "5.5 IF-THEN नियम और डिसीज़न ट्री"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A simple way to write down a pattern as a rule is the IF-THEN sentence. IF a condition is true, THEN do something (ELSE, do something different). You already think like this: IF it is raining THEN take an umbrella. Computers follow such rules exactly.",
+      "hi": "पैटर्न को नियम के रूप में लिखने का एक सरल तरीका IF-THEN वाक्य है। IF (अगर) कोई शर्त सच है, THEN (तो) कुछ करो (ELSE, यानी नहीं तो, कुछ और करो)। आप पहले से ऐसा सोचते हैं: IF बारिश हो रही है THEN छाता लो। कंप्यूटर ऐसे नियमों का ठीक-ठीक पालन करते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "IF (condition) THEN (action) ELSE (other action)",
+      "hi": "IF (शर्त) THEN (काम) ELSE (दूसरा काम)"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "IF the traffic light is red THEN stop ELSE go carefully.",
+       "IF the sky is cloudy AND the air is humid THEN carry an umbrella.",
+       "IF a message asks for your OTP OR says you won a lottery THEN mark it as suspicious.",
+       "IF the marks are 33 or more THEN 'pass' ELSE 'needs support'."
+      ],
+      "hi": [
+       "IF ट्रैफ़िक लाइट लाल है THEN रुको ELSE सावधानी से चलो।",
+       "IF आसमान में बादल हैं AND (और) हवा में उमस है THEN छाता ले जाओ।",
+       "IF कोई संदेश आपका OTP माँगे OR (या) कहे कि आपकी लॉटरी लगी है THEN उसे संदिग्ध चिह्नित करो।",
+       "IF अंक 33 या ज़्यादा हैं THEN 'उत्तीर्ण' ELSE 'मदद चाहिए'।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "AND means both conditions must be true. OR means at least one must be true. When several IF-THEN questions are joined one after another, they form a decision tree. It looks like an upside-down tree: you start at the top with one question, follow a branch depending on the answer (yes or no), ask the next question, and keep going until you reach a 'leaf', which is the final answer.",
+      "hi": "AND का अर्थ है दोनों शर्तें सच होनी चाहिए। OR का अर्थ है कम से कम एक सच होनी चाहिए। जब कई IF-THEN प्रश्न एक के बाद एक जुड़ते हैं, तो वे डिसीज़न ट्री (निर्णय वृक्ष) बनाते हैं। यह उल्टे पेड़ जैसा दिखता है: आप ऊपर एक प्रश्न से शुरू करते हैं, उत्तर (हाँ या नहीं) के अनुसार एक शाखा पकड़ते हैं, अगला प्रश्न पूछते हैं, और तब तक चलते हैं जब तक एक 'पत्ती' यानी अंतिम उत्तर तक न पहुँचें।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Decision tree",
+       "hi": "डिसीज़न ट्री (निर्णय वृक्ष)"
+      },
+      "text": {
+       "en": "A decision tree is a chart of yes/no questions, where each answer leads to the next question, until a final decision is reached.",
+       "hi": "डिसीज़न ट्री हाँ/नहीं प्रश्नों का एक चार्ट है, जिसमें हर उत्तर अगले प्रश्न तक ले जाता है, जब तक अंतिम निर्णय न मिल जाए।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Describe a decision tree that sorts: sparrow, cow, fish, snake.",
+       "hi": "एक डिसीज़न ट्री बताइए जो इन्हें छाँटे: गौरैया, गाय, मछली, साँप।"
+      },
+      "a": {
+       "en": "Question 1 (top): Does it live in water?\n  Yes → Fish.\n  No → go to Question 2.\nQuestion 2: Does it have legs?\n  No → Snake.\n  Yes → go to Question 3.\nQuestion 3: Does it have feathers?\n  Yes → Sparrow.\n  No → Cow.\nEach animal ends at exactly one leaf. Three questions were enough to sort four animals.",
+       "hi": "प्रश्न 1 (ऊपर): क्या यह पानी में रहता है?\n  हाँ → मछली।\n  नहीं → प्रश्न 2 पर जाइए।\nप्रश्न 2: क्या इसके पैर हैं?\n  नहीं → साँप।\n  हाँ → प्रश्न 3 पर जाइए।\nप्रश्न 3: क्या इसके पंख हैं?\n  हाँ → गौरैया।\n  नहीं → गाय।\nहर जानवर ठीक एक पत्ती पर पहुँचता है। चार जानवर छाँटने के लिए तीन प्रश्न काफ़ी थे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "There is an important difference between rules written by people and patterns learned by AI. In a normal computer program, a person writes the IF-THEN rules. In machine learning (a part of AI), the computer is given many labelled examples and works out useful rules or patterns by itself. Some AI models even build their own decision trees from data. This is why AI can handle problems where it would be too hard to write every rule by hand, such as recognising handwriting.",
+      "hi": "लोगों द्वारा लिखे नियमों और AI द्वारा सीखे पैटर्न में एक ज़रूरी अंतर है। सामान्य कंप्यूटर प्रोग्राम में व्यक्ति IF-THEN नियम लिखता है। मशीन लर्निंग (AI का एक भाग) में कंप्यूटर को कई लेबल वाले उदाहरण दिए जाते हैं और वह खुद उपयोगी नियम या पैटर्न निकालता है। कुछ AI मॉडल डेटा से अपने डिसीज़न ट्री भी बना लेते हैं। इसीलिए AI ऐसी समस्याएँ सँभाल पाता है जिनके लिए हर नियम हाथ से लिखना बहुत कठिन हो, जैसे लिखावट पहचानना।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.6 How AI finds patterns in data",
+    "hi": "5.6 AI डेटा में पैटर्न कैसे ढूँढता है"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Remember from Chapter 4: AI learns from data. Now we can see what it learns: patterns. There are two simple ways AI does this, which connect to labelled and unlabelled data.",
+      "hi": "अध्याय 4 से याद कीजिए: AI डेटा से सीखता है। अब हम देख सकते हैं कि वह क्या सीखता है: पैटर्न। AI यह दो सरल तरीकों से करता है, जो लेबल वाले और बिना लेबल वाले डेटा से जुड़े हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "1. Learning from labelled examples (classification). The AI is shown many examples with their correct labels, for example thousands of photos marked 'cat' or 'dog'. It finds which features matter: the shape of the ears, the face, the size of the nose. After training, when it sees a new photo it has never seen, it checks those features and puts the photo in the group it matches best. A spam filter, a crop-disease app and a handwriting reader all work in this way.",
+      "hi": "1. लेबल वाले उदाहरणों से सीखना (वर्गीकरण)। AI को उनके सही लेबल के साथ कई उदाहरण दिखाए जाते हैं, जैसे 'बिल्ली' या 'कुत्ता' लिखी हज़ारों फ़ोटो। वह ढूँढता है कि कौन-से गुण मायने रखते हैं: कानों का आकार, चेहरा, नाक का माप। ट्रेनिंग के बाद जब वह कोई नई फ़ोटो देखता है जो पहले कभी नहीं देखी, तो वह उन गुणों को जाँचकर फ़ोटो को उस समूह में रखता है जिससे वह सबसे ज़्यादा मेल खाती है। स्पैम फ़िल्टर, फसल-रोग ऐप और लिखावट पढ़ने वाला, सब इसी तरह काम करते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "2. Grouping similar things (clustering). Sometimes the data has no labels. The AI can still look for items that are similar to each other and put them together. For example, an online shop may find that some customers often buy school stationery, others buy sports goods and others buy kitchen items, even though nobody told it these groups. A music app may find that certain songs are usually played together. People then look at the groups and give them names.",
+      "hi": "2. मिलती-जुलती चीज़ों के समूह बनाना (क्लस्टरिंग)। कभी-कभी डेटा पर लेबल नहीं होते। तब भी AI एक-दूसरे से मिलती-जुलती चीज़ें ढूँढकर उन्हें साथ रख सकता है। जैसे, कोई ऑनलाइन दुकान पता लगा सकती है कि कुछ ग्राहक अक्सर स्कूल की स्टेशनरी, कुछ खेल का सामान और कुछ रसोई का सामान खरीदते हैं, जबकि किसी ने उसे ये समूह नहीं बताए। संगीत ऐप पता लगा सकता है कि कुछ गाने आमतौर पर साथ सुने जाते हैं। फिर लोग समूहों को देखकर उनके नाम रखते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Classification",
+        "Clustering (grouping)"
+       ],
+       "hi": [
+        "बिंदु",
+        "वर्गीकरण",
+        "क्लस्टरिंग (समूह बनाना)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Labelled",
+         "Unlabelled"
+        ],
+        [
+         "Groups known beforehand?",
+         "Yes (e.g. spam / not spam)",
+         "No; AI discovers them"
+        ],
+        [
+         "Like",
+         "Learning with a teacher who gives answers",
+         "Sorting a mixed box of buttons by yourself"
+        ],
+        [
+         "Example",
+         "Recognising a leaf disease from a photo",
+         "Finding groups of customers with similar shopping"
+        ]
+       ],
+       "hi": [
+        [
+         "डेटा",
+         "लेबल वाला",
+         "बिना लेबल का"
+        ],
+        [
+         "समूह पहले से पता?",
+         "हाँ (जैसे स्पैम / स्पैम नहीं)",
+         "नहीं; AI उन्हें खोजता है"
+        ],
+        [
+         "किसके जैसा",
+         "उत्तर बताने वाले शिक्षक के साथ सीखना",
+         "बटनों का मिला-जुला डिब्बा खुद छाँटना"
+        ],
+        [
+         "उदाहरण",
+         "फ़ोटो से पत्ती का रोग पहचानना",
+         "मिलती-जुलती खरीदारी वाले ग्राहकों के समूह ढूँढना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "AI is very good at finding patterns that are hard for people to see because there is too much data. A bank's AI checks lakhs of UPI payments every day and learns the usual pattern of each account: the usual amounts, times and places. If a payment suddenly breaks the pattern, for example a large amount sent at 3 am to an unknown account, it can raise a fraud alert or ask for an extra check. Doctors use AI that has learned patterns from many X-rays to help spot signs of disease early. In all these cases, a human still makes the final important decision.",
+      "hi": "AI ऐसे पैटर्न ढूँढने में बहुत अच्छा है जिन्हें लोग बहुत ज़्यादा डेटा होने के कारण देख नहीं पाते। बैंक का AI रोज़ लाखों UPI भुगतान जाँचता है और हर खाते का सामान्य पैटर्न सीखता है: सामान्य रकम, समय और जगहें। अगर कोई भुगतान अचानक पैटर्न तोड़े, जैसे रात 3 बजे किसी अनजान खाते में बड़ी रकम भेजना, तो वह धोखाधड़ी की चेतावनी दे सकता है या अतिरिक्त जाँच माँग सकता है। डॉक्टर ऐसे AI का उपयोग करते हैं जिसने कई एक्स-रे से पैटर्न सीखे हैं, ताकि बीमारी के संकेत जल्दी दिखें। इन सभी मामलों में अंतिम ज़रूरी निर्णय अब भी इंसान ही लेता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Anomaly (odd one out)",
+       "hi": "असामान्यता (Anomaly, बेमेल)"
+      },
+      "text": {
+       "en": "An anomaly is something that does not fit the usual pattern. Spotting anomalies helps catch fraud, faults and errors.",
+       "hi": "असामान्यता वह है जो सामान्य पैटर्न में फ़िट न हो। असामान्यता पकड़ने से धोखाधड़ी, खराबी और गलतियाँ पकड़ने में मदद मिलती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Odd one out: Riya's UPI payments this month: ₹40 (milk), ₹35 (milk), ₹120 (vegetables), ₹40 (milk), ₹9,500 (unknown account, 2:50 am), ₹110 (vegetables). Which payment would an AI flag and why?",
+       "hi": "बेमेल पहचानिए: इस महीने रिया के UPI भुगतान: ₹40 (दूध), ₹35 (दूध), ₹120 (सब्ज़ी), ₹40 (दूध), ₹9,500 (अनजान खाता, रात 2:50), ₹110 (सब्ज़ी)। AI कौन-सा भुगतान चिह्नित करेगा और क्यों?"
+      },
+      "a": {
+       "en": "Step 1: Find the usual pattern: small amounts (₹35 to ₹120), to known shops, in the daytime.\nStep 2: Compare each payment with the pattern.\nStep 3: ₹9,500 is far bigger than usual, goes to an unknown account and happens at 2:50 am. It breaks the pattern in three ways.\nAnswer: The ₹9,500 payment is the anomaly. The AI would flag it so that Riya's family can check whether it was really them.",
+       "hi": "चरण 1: सामान्य पैटर्न ढूँढिए: छोटी रकम (₹35 से ₹120), जानी-पहचानी दुकानों को, दिन के समय।\nचरण 2: हर भुगतान की तुलना पैटर्न से कीजिए।\nचरण 3: ₹9,500 सामान्य से बहुत बड़ा है, अनजान खाते में गया है और रात 2:50 बजे हुआ। यह पैटर्न को तीन तरह से तोड़ता है।\nउत्तर: ₹9,500 वाला भुगतान असामान्य है। AI इसे चिह्नित करेगा ताकि रिया का परिवार जाँच सके कि क्या सच में उन्होंने किया था।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.7 What is a prediction?",
+    "hi": "5.7 अनुमान (prediction) क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "When you use a pattern to say what is likely to happen next, or to guess something you cannot see yet, you are making a prediction.",
+      "hi": "जब आप किसी पैटर्न का उपयोग करके बताते हैं कि आगे क्या होने की संभावना है, या किसी ऐसी चीज़ का अंदाज़ा लगाते हैं जो अभी दिख नहीं रही, तो आप अनुमान (prediction) लगा रहे होते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Prediction",
+       "hi": "अनुमान (Prediction)"
+      },
+      "text": {
+       "en": "A prediction is a smart guess about what will happen or what something is, based on patterns found in past data.",
+       "hi": "अनुमान पिछले डेटा में मिले पैटर्न के आधार पर यह समझदार अंदाज़ा है कि क्या होगा या कोई चीज़ क्या है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A prediction is different from a random guess. If you guess a number between 1 and 100 without any information, that is a random guess. If you see that the chai stall sold 50, 55, 60 and 65 cups from Monday to Thursday, and you say Friday will be about 70, that is a prediction based on a pattern.",
+      "hi": "अनुमान एक बेतरतीब अंदाज़े से अलग है। अगर आप बिना किसी जानकारी के 1 से 100 के बीच की कोई संख्या बताते हैं, तो वह बेतरतीब अंदाज़ा है। अगर आप देखते हैं कि चाय के ठेले ने सोमवार से गुरुवार तक 50, 55, 60 और 65 कप बेचे, और आप कहते हैं कि शुक्रवार को लगभग 70 कप बिकेंगे, तो यह पैटर्न पर आधारित अनुमान है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A tea stall sold Mon 50, Tue 55, Wed 60, Thu 65 cups of chai. Predict Friday's sales and say what the owner should do.",
+       "hi": "एक चाय के ठेले ने सोम 50, मंगल 55, बुध 60, गुरु 65 कप चाय बेची। शुक्रवार की बिक्री का अनुमान लगाइए और बताइए मालिक को क्या करना चाहिए।"
+      },
+      "a": {
+       "en": "Step 1: Differences: 55 − 50 = 5, 60 − 55 = 5, 65 − 60 = 5.\nStep 2: Pattern: sales go up by 5 cups every day.\nStep 3: Prediction for Friday: 65 + 5 = 70 cups.\nStep 4: Decision: the owner should prepare milk, tea leaves and sugar for about 70 cups, maybe a little extra.\nStep 5: Check later: if it rains on Friday and 80 cups are sold, the pattern changed. The owner (or an AI) should add this new data and learn that rainy days sell more chai.",
+       "hi": "चरण 1: अंतर: 55 − 50 = 5, 60 − 55 = 5, 65 − 60 = 5।\nचरण 2: पैटर्न: बिक्री हर दिन 5 कप बढ़ती है।\nचरण 3: शुक्रवार का अनुमान: 65 + 5 = 70 कप।\nचरण 4: निर्णय: मालिक लगभग 70 कप के लिए दूध, चाय पत्ती और चीनी तैयार रखे, शायद थोड़ा ज़्यादा।\nचरण 5: बाद में जाँच: अगर शुक्रवार को बारिश हो और 80 कप बिकें, तो पैटर्न बदल गया। मालिक (या AI) को यह नया डेटा जोड़कर सीखना चाहिए कि बरसात के दिन ज़्यादा चाय बिकती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Predictions made by AI in daily life:",
+      "hi": "रोज़ के जीवन में AI द्वारा लगाए जाने वाले अनुमान:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Where",
+        "What is predicted",
+        "Pattern / data used"
+       ],
+       "hi": [
+        "कहाँ",
+        "क्या अनुमान लगाया जाता है",
+        "उपयोग किया गया पैटर्न / डेटा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Weather forecast (IMD, weather apps)",
+         "Chance of rain, temperature tomorrow",
+         "Years of past weather data, satellite pictures, current readings"
+        ],
+        [
+         "Map apps",
+         "Traffic ahead and time to reach",
+         "Speed of many phones on roads now, and usual traffic at this hour and day"
+        ],
+        [
+         "Phone keyboard",
+         "Next word you will type",
+         "Which words usually come after the ones you typed"
+        ],
+        [
+         "Cricket broadcast",
+         "Win probability, likely score",
+         "Results of thousands of past matches in similar situations"
+        ],
+        [
+         "Farming apps",
+         "Best time to sow, risk of pest attack",
+         "Weather, soil and past crop data"
+        ],
+        [
+         "Shops and ration stores",
+         "How much stock is needed next week",
+         "Past sales, festivals, season"
+        ]
+       ],
+       "hi": [
+        [
+         "मौसम पूर्वानुमान (IMD, मौसम ऐप)",
+         "कल बारिश की संभावना, तापमान",
+         "वर्षों का पिछला मौसम डेटा, उपग्रह चित्र, वर्तमान माप"
+        ],
+        [
+         "मैप ऐप",
+         "आगे का ट्रैफ़िक और पहुँचने का समय",
+         "अभी सड़कों पर कई फ़ोनों की गति, और इस घंटे व दिन का सामान्य ट्रैफ़िक"
+        ],
+        [
+         "फ़ोन कीबोर्ड",
+         "आप अगला कौन-सा शब्द लिखेंगे",
+         "आपके लिखे शब्दों के बाद आमतौर पर कौन-से शब्द आते हैं"
+        ],
+        [
+         "क्रिकेट प्रसारण",
+         "जीत की संभावना, संभावित स्कोर",
+         "मिलती-जुलती स्थितियों में हज़ारों पिछले मैचों के परिणाम"
+        ],
+        [
+         "खेती ऐप",
+         "बुवाई का सबसे अच्छा समय, कीट हमले का खतरा",
+         "मौसम, मिट्टी और पिछली फसलों का डेटा"
+        ],
+        [
+         "दुकानें और राशन की दुकानें",
+         "अगले हफ़्ते कितना सामान चाहिए",
+         "पिछली बिक्री, त्योहार, ऋतु"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Chatbots also work by prediction. A chatbot has learned patterns from a huge amount of text, and when you ask it something, it predicts, one piece at a time, the words that are most likely to make a good reply. This is why its answers can sound very natural, and also why it can sometimes produce something that sounds right but is wrong. You will learn how to deal with this in Chapter 6.",
+      "hi": "चैटबॉट भी अनुमान से ही काम करते हैं। चैटबॉट ने बहुत विशाल टेक्स्ट से पैटर्न सीखे हैं, और जब आप उससे कुछ पूछते हैं, तो वह टुकड़ा-टुकड़ा करके उन शब्दों का अनुमान लगाता है जिनसे अच्छा उत्तर बनने की सबसे ज़्यादा संभावना है। इसीलिए उसके उत्तर बहुत स्वाभाविक लग सकते हैं, और इसीलिए वह कभी-कभी ऐसी बात भी कह सकता है जो सही लगे पर हो गलत। इससे कैसे निपटें, यह आप अध्याय 6 में सीखेंगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.8 Predictions are 'most likely', not certain",
+    "hi": "5.8 अनुमान 'सबसे संभावित' होते हैं, पक्के नहीं"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A weather app may say '70% chance of rain'. This does not mean it will rain for 70% of the day. It means that, on days with conditions like today's, it rained on about 7 out of every 10 such days. So rain is likely, but not sure. AI predictions are like this: they give the most likely answer, often with a level of confidence, not a guaranteed one.",
+      "hi": "मौसम ऐप कह सकता है 'बारिश की 70% संभावना'। इसका अर्थ यह नहीं कि दिन के 70% समय बारिश होगी। इसका अर्थ है कि आज जैसी परिस्थितियों वाले दिनों में, हर 10 में से लगभग 7 दिन बारिश हुई। इसलिए बारिश की संभावना है, पर पक्का नहीं। AI के अनुमान ऐसे ही होते हैं: वे सबसे संभावित उत्तर देते हैं, अक्सर भरोसे के किसी स्तर के साथ, गारंटी वाला नहीं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Probability (chance)",
+       "hi": "प्रायिकता (संभावना)"
+      },
+      "text": {
+       "en": "Probability tells how likely something is to happen. It can be said in words (unlikely, likely, certain), as a fraction (7 out of 10) or as a percentage (70%).",
+       "hi": "प्रायिकता बताती है कि किसी चीज़ के होने की कितनी संभावना है। इसे शब्दों में (कम संभावना, संभावित, निश्चित), भिन्न में (10 में से 7) या प्रतिशत में (70%) कहा जा सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why can a prediction go wrong?",
+      "hi": "अनुमान गलत क्यों हो सकता है?"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "The pattern changes. A chai stall's sales pattern changes on a holiday, a rainy day or when a new shop opens nearby.",
+       "Something new happens that was not in the data, such as a sudden road accident on a map route or a surprise festival holiday.",
+       "Too little data. A pattern seen on only three days may just be chance.",
+       "Bad or biased data (garbage in, garbage out), as you learned in Chapter 4.",
+       "Some things are simply very hard to predict, like exactly who will win a close match or the exact day a monsoon shower will arrive in your town."
+      ],
+      "hi": [
+       "पैटर्न बदल जाता है। छुट्टी, बरसात के दिन या पास में नई दुकान खुलने पर चाय के ठेले की बिक्री का पैटर्न बदल जाता है।",
+       "कुछ ऐसा नया होता है जो डेटा में नहीं था, जैसे मैप के रास्ते पर अचानक दुर्घटना या अचानक त्योहार की छुट्टी।",
+       "बहुत कम डेटा। केवल तीन दिन में दिखा पैटर्न संयोग भी हो सकता है।",
+       "खराब या पक्षपाती डेटा (कचरा अंदर, कचरा बाहर), जैसा आपने अध्याय 4 में सीखा।",
+       "कुछ चीज़ों का अनुमान लगाना बस बहुत कठिन होता है, जैसे कड़े मुकाबले में ठीक-ठीक कौन जीतेगा या आपके शहर में ठीक किस दिन मानसून की बौछार आएगी।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Because of this, good AI systems keep learning. They compare what they predicted with what really happened and use the new data to improve. A map app that predicted 20 minutes but you took 35 minutes learns from that trip. This cycle of predict → check → learn again is why many AI tools get better over time.",
+      "hi": "इसी कारण अच्छे AI सिस्टम सीखते रहते हैं। वे अपने अनुमान की तुलना असल में हुई बात से करते हैं और नए डेटा से सुधार करते हैं। जिस मैप ऐप ने 20 मिनट का अनुमान लगाया पर आपको 35 मिनट लगे, वह उस यात्रा से सीखता है। अनुमान → जाँच → फिर से सीखना, यही चक्र कई AI टूल को समय के साथ बेहतर बनाता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Data → Pattern → Prediction → Check with what really happened → New data → Better pattern",
+      "hi": "डेटा → पैटर्न → अनुमान → असल में हुई बात से जाँच → नया डेटा → बेहतर पैटर्न"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: a prediction is a helpful guide, not a promise. For important matters such as health, money and safety, a person must check before acting on an AI prediction.",
+      "hi": "याद रखें: अनुमान एक उपयोगी मार्गदर्शन है, वादा नहीं। स्वास्थ्य, पैसे और सुरक्षा जैसे ज़रूरी मामलों में AI के अनुमान पर काम करने से पहले व्यक्ति को जाँच करनी चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.9 Recommendations: patterns in what you like",
+    "hi": "5.9 सुझाव (recommendations): आपकी पसंद के पैटर्न"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "When a video app shows 'videos you may like', or a shopping app shows 'people who bought this also bought ...', it is making a special kind of prediction called a recommendation. It predicts what you are likely to enjoy, using two patterns: what you liked before, and what other people with similar tastes liked.",
+      "hi": "जब कोई वीडियो ऐप 'आपको पसंद आ सकने वाले वीडियो' दिखाता है, या शॉपिंग ऐप दिखाता है 'जिन्होंने यह खरीदा, उन्होंने यह भी खरीदा ...', तो वह एक खास तरह का अनुमान लगा रहा है जिसे सुझाव (recommendation) कहते हैं। वह अनुमान लगाता है कि आपको क्या पसंद आने की संभावना है, दो पैटर्नों से: आपने पहले क्या पसंद किया, और मिलती-जुलती पसंद वाले दूसरे लोगों ने क्या पसंद किया।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Three friends rated snacks (Yes = likes, No = does not): Asha: samosa Yes, dhokla Yes, idli Yes. Bilal: samosa Yes, dhokla Yes, idli ?. Chetan: samosa No, dhokla No, idli No. Should an app recommend idli to Bilal?",
+       "hi": "तीन दोस्तों ने नाश्तों को रेटिंग दी (हाँ = पसंद, नहीं = नापसंद): आशा: समोसा हाँ, ढोकला हाँ, इडली हाँ। बिलाल: समोसा हाँ, ढोकला हाँ, इडली ?। चेतन: समोसा नहीं, ढोकला नहीं, इडली नहीं। क्या ऐप को बिलाल को इडली सुझानी चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: Find whose taste is most like Bilal's. Bilal and Asha agree on samosa and dhokla (both Yes). Bilal and Chetan disagree on both.\nStep 2: Asha is the most similar user. Asha likes idli.\nStep 3: Prediction: Bilal will probably like idli too.\nAnswer: Yes, recommend idli to Bilal. (It is still only a prediction; Bilal may not like it.)",
+       "hi": "चरण 1: ढूँढिए किसकी पसंद बिलाल से सबसे ज़्यादा मिलती है। बिलाल और आशा समोसा और ढोकला पर सहमत हैं (दोनों हाँ)। बिलाल और चेतन दोनों पर असहमत हैं।\nचरण 2: आशा सबसे मिलती-जुलती उपयोगकर्ता है। आशा को इडली पसंद है।\nचरण 3: अनुमान: बिलाल को भी शायद इडली पसंद आएगी।\nउत्तर: हाँ, बिलाल को इडली सुझाइए। (यह फिर भी केवल अनुमान है; हो सकता है बिलाल को पसंद न आए।)"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Recommendations are helpful, but they have a side effect. If an app shows you only more of what you already watched, you may keep seeing the same type of content and miss other interesting things. It can also keep you watching longer than you planned. A smart user notices this, searches for new topics on purpose, and decides when to stop.",
+      "hi": "सुझाव उपयोगी हैं, पर उनका एक दुष्प्रभाव भी है। अगर ऐप आपको केवल वही ज़्यादा दिखाए जो आप पहले देख चुके हैं, तो आप बार-बार एक ही तरह की सामग्री देखते रह सकते हैं और दूसरी रोचक चीज़ें छूट सकती हैं। यह आपको योजना से ज़्यादा देर तक देखते रहने पर भी मजबूर कर सकता है। समझदार उपयोगकर्ता इस पर ध्यान देता है, जानबूझकर नए विषय खोजता है, और खुद तय करता है कि कब रुकना है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.10 A tiny program that finds a pattern (Python)",
+    "hi": "5.10 पैटर्न ढूँढने वाला एक छोटा प्रोग्राम (Python)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Computers can find simple patterns using a few lines of code. Below is a short program in Python, a popular programming language. It takes the chai sales, finds the difference between each day and the next, and, if the difference is always the same, predicts the next day. You do not need to learn Python yet; just read it like a recipe.",
+      "hi": "कंप्यूटर कुछ पंक्तियों के कोड से सरल पैटर्न ढूँढ सकते हैं। नीचे Python (एक लोकप्रिय प्रोग्रामिंग भाषा) में एक छोटा प्रोग्राम है। यह चाय की बिक्री लेता है, हर दिन और अगले दिन का अंतर निकालता है, और अगर अंतर हमेशा एक जैसा हो, तो अगले दिन का अनुमान लगाता है। अभी आपको Python सीखने की ज़रूरत नहीं; बस इसे एक नुस्खे की तरह पढ़िए।"
+     }
+    },
+    {
+     "formula": {
+      "en": "cups = [50, 55, 60, 65]\nsteps = [cups[i+1] - cups[i] for i in range(len(cups) - 1)]\nprint(\"Differences:\", steps)\nif len(set(steps)) == 1:\n    print(\"Pattern: add\", steps[0], \"each day\")\n    print(\"Prediction for Friday:\", cups[-1] + steps[0], \"cups\")",
+      "hi": "cups = [50, 55, 60, 65]\nsteps = [cups[i+1] - cups[i] for i in range(len(cups) - 1)]\nprint(\"Differences:\", steps)\nif len(set(steps)) == 1:\n    print(\"Pattern: add\", steps[0], \"each day\")\n    print(\"Prediction for Friday:\", cups[-1] + steps[0], \"cups\")"
+     }
+    },
+    {
+     "p": {
+      "en": "Output when the program is run:",
+      "hi": "प्रोग्राम चलाने पर आउटपुट:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Differences: [5, 5, 5]\nPattern: add 5 each day\nPrediction for Friday: 70 cups",
+      "hi": "Differences: [5, 5, 5]\nPattern: add 5 each day\nPrediction for Friday: 70 cups"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Line 1 stores the sales data in a list called cups.",
+       "Line 2 subtracts each day's sales from the next day's and stores the differences.",
+       "Line 3 prints the differences: [5, 5, 5].",
+       "Line 4 is an IF rule: if all differences are the same, there is a steady pattern.",
+       "Lines 5 and 6 print the rule and the prediction: the last value (65) plus the step (5) = 70."
+      ],
+      "hi": [
+       "पंक्ति 1 बिक्री का डेटा cups नाम की सूची में रखती है।",
+       "पंक्ति 2 हर दिन की बिक्री को अगले दिन की बिक्री से घटाकर अंतर रखती है।",
+       "पंक्ति 3 अंतर छापती है: [5, 5, 5]।",
+       "पंक्ति 4 एक IF नियम है: अगर सभी अंतर एक जैसे हैं, तो एक स्थिर पैटर्न है।",
+       "पंक्ति 5 और 6 नियम और अनुमान छापती हैं: अंतिम मान (65) + कदम (5) = 70।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "This tiny program follows a rule written by a person. Real AI models learn much more complicated patterns from huge data, but the idea is the same: find the pattern in past data, then use it to predict.",
+      "hi": "यह छोटा प्रोग्राम व्यक्ति द्वारा लिखे नियम पर चलता है। असली AI मॉडल विशाल डेटा से कहीं ज़्यादा जटिल पैटर्न सीखते हैं, पर विचार वही है: पिछले डेटा में पैटर्न ढूँढो, फिर उससे अनुमान लगाओ।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.11 Activities: pattern detectives",
+    "hi": "5.11 गतिविधियाँ: पैटर्न जासूस"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (unplugged): Weather diary.\nAim: To collect data, find a pattern and make a prediction.\nYou need: a notebook.\nWhat to do: For two weeks, at the same time each day, write: sky (clear / cloudy), wind (calm / windy), did it rain later that day (yes / no). At the end, count: on how many cloudy days did it rain? On how many clear days did it rain?\nWhat you observe: usually rain is more common on cloudy days.\nWhat it teaches: from your own data you can write a rule such as 'IF cloudy THEN rain is likely' and use it to predict. Weather scientists do the same with far more data.",
+      "hi": "गतिविधि 1 (बिना कंप्यूटर): मौसम डायरी।\nउद्देश्य: डेटा इकट्ठा करना, पैटर्न ढूँढना और अनुमान लगाना।\nज़रूरी सामान: एक कॉपी।\nक्या करें: दो हफ़्ते तक, रोज़ एक ही समय पर लिखिए: आसमान (साफ़ / बादल), हवा (शांत / तेज़), उस दिन बाद में बारिश हुई (हाँ / नहीं)। अंत में गिनिए: बादल वाले कितने दिनों में बारिश हुई? साफ़ आसमान वाले कितने दिनों में बारिश हुई?\nक्या दिखेगा: आमतौर पर बादल वाले दिनों में बारिश ज़्यादा होती है।\nक्या सीख मिलती है: अपने ही डेटा से आप 'IF बादल THEN बारिश की संभावना' जैसा नियम लिखकर अनुमान लगा सकते हैं। मौसम वैज्ञानिक कहीं ज़्यादा डेटा के साथ यही करते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (unplugged): Twenty questions decision tree.\nAim: To build a decision tree.\nYou need: 8 picture cards of animals or objects, paper.\nWhat to do: In a group, design yes/no questions (Does it fly? Does it live in water? Is it bigger than a goat?) that separate all 8 cards. Draw the tree on paper with the first question at the top. Test it: a friend secretly picks a card and you follow the tree.\nWhat you observe: good questions split the cards into two nearly equal halves and reach the answer in about three questions.\nWhat it teaches: decision trees sort things using features; choosing good questions (features) matters.",
+      "hi": "गतिविधि 2 (बिना कंप्यूटर): बीस प्रश्न वाला डिसीज़न ट्री।\nउद्देश्य: एक डिसीज़न ट्री बनाना।\nज़रूरी सामान: जानवरों या चीज़ों के 8 चित्र-कार्ड, काग़ज़।\nक्या करें: समूह में ऐसे हाँ/नहीं प्रश्न बनाइए (क्या यह उड़ता है? क्या यह पानी में रहता है? क्या यह बकरी से बड़ा है?) जो सभी 8 कार्डों को अलग कर दें। काग़ज़ पर पेड़ बनाइए, सबसे ऊपर पहला प्रश्न। जाँचिए: एक दोस्त चुपके से कार्ड चुने और आप पेड़ पर चलें।\nक्या दिखेगा: अच्छे प्रश्न कार्डों को लगभग बराबर दो आधों में बाँटते हैं और लगभग तीन प्रश्नों में उत्तर तक पहुँचते हैं।\nक्या सीख मिलती है: डिसीज़न ट्री गुणों से चीज़ें छाँटते हैं; अच्छे प्रश्न (गुण) चुनना ज़रूरी है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen, with an adult): Watch the keyboard predict.\nAim: To see next-word prediction.\nWhat to do: On a phone keyboard with suggestions turned on, type 'Happy' and look at the suggested words. Then type 'Good' and look again. Try in Hindi too, for example typing 'नमस्ते' or 'धन्यवाद'.\nWhat you observe: the keyboard suggests words that usually follow, such as 'birthday' after 'Happy' and 'morning' after 'Good'. Suggestions may change as it learns which words you use.\nWhat it teaches: the keyboard predicts from patterns of which words often come together.",
+      "hi": "गतिविधि 3 (स्क्रीन, किसी बड़े के साथ): कीबोर्ड को अनुमान लगाते देखिए।\nउद्देश्य: अगले शब्द का अनुमान देखना।\nक्या करें: सुझाव चालू वाले फ़ोन कीबोर्ड पर 'Happy' टाइप करके सुझाए गए शब्द देखिए। फिर 'Good' टाइप करके फिर देखिए। हिंदी में भी आज़माइए, जैसे 'नमस्ते' या 'धन्यवाद' टाइप करके।\nक्या दिखेगा: कीबोर्ड आमतौर पर बाद में आने वाले शब्द सुझाता है, जैसे 'Happy' के बाद 'birthday' और 'Good' के बाद 'morning'। जैसे-जैसे वह सीखता है कि आप कौन-से शब्द उपयोग करते हैं, सुझाव बदल सकते हैं।\nक्या सीख मिलती है: कीबोर्ड इस पैटर्न से अनुमान लगाता है कि कौन-से शब्द अक्सर साथ आते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (screen, with an adult): Teachable Machine classifier.\nAim: To see AI learn to classify from examples.\nWhat to do: In Google Teachable Machine (works in the browser), make an Image Project with three classes: 'Thumbs up', 'Thumbs down' and 'Nothing'. Record about 50 webcam images for each, train, and then test by showing your hand.\nWhat you observe: the model shows a confidence bar for each class, for example 'Thumbs up 95%'. If your hand is half-hidden, the confidence drops and it may get confused.\nWhat it teaches: AI classifies by matching patterns it learned, and its answer is the 'most likely' class with a confidence level, not a certainty.",
+      "hi": "गतिविधि 4 (स्क्रीन, किसी बड़े के साथ): Teachable Machine क्लासिफ़ायर।\nउद्देश्य: AI को उदाहरणों से वर्गीकरण सीखते देखना।\nक्या करें: Google Teachable Machine (ब्राउज़र में चलता है) में तीन क्लास वाला Image Project बनाइए: 'अँगूठा ऊपर', 'अँगूठा नीचे' और 'कुछ नहीं'। हर एक के लिए लगभग 50 वेबकैम चित्र लीजिए, ट्रेन कीजिए, फिर हाथ दिखाकर टेस्ट कीजिए।\nक्या दिखेगा: मॉडल हर क्लास के लिए भरोसे की पट्टी दिखाता है, जैसे 'अँगूठा ऊपर 95%'। हाथ आधा छिपा हो तो भरोसा घटता है और वह उलझ सकता है।\nक्या सीख मिलती है: AI सीखे हुए पैटर्न से मिलाकर वर्गीकरण करता है, और उसका उत्तर भरोसे के स्तर के साथ 'सबसे संभावित' क्लास होता है, निश्चित नहीं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Use online tools only with a parent or teacher, and let an adult do any sign-up. Many apps are meant for users aged 13 or older.",
+      "hi": "ऑनलाइन टूल केवल माता-पिता या शिक्षक के साथ उपयोग करें, और कोई भी साइन-अप किसी बड़े को करने दें। कई ऐप 13 वर्ष या उससे बड़ी उम्र के उपयोगकर्ताओं के लिए होते हैं।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Guessing the next term after looking at only the first two numbers. Fix: check the rule on all the given terms before continuing.",
+   "Thinking a prediction is a certain fact. Fix: predictions are 'most likely' answers and can be wrong.",
+   "Confusing a prediction with a random guess. Fix: a prediction is based on a pattern in data.",
+   "Sorting with a feature that does not separate the groups (e.g. colour for fruit vs vegetable). Fix: choose features that really differ between groups, or combine features.",
+   "Mixing up AND and OR in IF-THEN rules. Fix: AND needs both conditions true; OR needs at least one.",
+   "Believing that if two things happen together, one causes the other. Fix: look for the real cause (ice cream and swimming both rise because of heat).",
+   "Trusting a pattern from very little data. Fix: collect more data before drawing a strong conclusion.",
+   "Thinking AI never needs to learn again once trained. Fix: patterns change, so AI must keep learning from new data."
+  ],
+  "hi": [
+   "केवल पहली दो संख्याएँ देखकर अगला पद बता देना। सुधार: आगे बढ़ने से पहले नियम को सभी दिए गए पदों पर जाँचिए।",
+   "अनुमान को पक्का तथ्य मान लेना। सुधार: अनुमान 'सबसे संभावित' उत्तर हैं और गलत हो सकते हैं।",
+   "अनुमान और बेतरतीब अंदाज़े को एक मानना। सुधार: अनुमान डेटा के पैटर्न पर आधारित होता है।",
+   "ऐसे गुण से छाँटना जो समूहों को अलग न करे (जैसे फल बनाम सब्ज़ी के लिए रंग)। सुधार: ऐसे गुण चुनें जो समूहों में सच में अलग हों, या गुणों को मिलाएँ।",
+   "IF-THEN नियमों में AND और OR को मिला देना। सुधार: AND में दोनों शर्तें सच; OR में कम से कम एक।",
+   "यह मानना कि दो चीज़ें साथ होती हैं तो एक दूसरी का कारण है। सुधार: असली कारण ढूँढिए (आइसक्रीम और तैराकी दोनों गर्मी के कारण बढ़ते हैं)।",
+   "बहुत कम डेटा के पैटर्न पर भरोसा करना। सुधार: पक्का निष्कर्ष निकालने से पहले ज़्यादा डेटा इकट्ठा करें।",
+   "यह सोचना कि एक बार सीखने के बाद AI को फिर सीखने की ज़रूरत नहीं। सुधार: पैटर्न बदलते हैं, इसलिए AI को नए डेटा से सीखते रहना चाहिए।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Pattern",
+    "hi": "पैटर्न"
+   },
+   "d": {
+    "en": "Something that repeats or changes in a regular, predictable way.",
+    "hi": "जो नियमित, अनुमान योग्य ढंग से दोहराए या बदले।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rule (of a pattern)",
+    "hi": "पैटर्न का नियम"
+   },
+   "d": {
+    "en": "The instruction that tells how a pattern continues, e.g. 'add 5'.",
+    "hi": "वह निर्देश जो बताए कि पैटर्न आगे कैसे बढ़ता है, जैसे '5 जोड़ो'।"
+   }
+  },
+  {
+   "t": {
+    "en": "Repeating pattern",
+    "hi": "दोहराने वाला पैटर्न"
+   },
+   "d": {
+    "en": "A pattern in which the same block repeats again and again.",
+    "hi": "ऐसा पैटर्न जिसमें एक ही खंड बार-बार दोहराता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Growing pattern",
+    "hi": "बढ़ने वाला पैटर्न"
+   },
+   "d": {
+    "en": "A pattern that increases by a rule, such as adding or multiplying.",
+    "hi": "ऐसा पैटर्न जो जोड़ने या गुणा करने जैसे नियम से बढ़ता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Observation",
+    "hi": "अवलोकन"
+   },
+   "d": {
+    "en": "Carefully watching and recording what happens.",
+    "hi": "जो होता है उसे ध्यान से देखना और लिखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Conclusion",
+    "hi": "निष्कर्ष"
+   },
+   "d": {
+    "en": "A sensible statement drawn from a pattern in data.",
+    "hi": "डेटा के पैटर्न से निकला समझदार कथन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature",
+    "hi": "गुण (फ़ीचर)"
+   },
+   "d": {
+    "en": "A property that can be observed or measured, such as colour, shape or size.",
+    "hi": "ऐसी विशेषता जिसे देखा या मापा जा सके, जैसे रंग, आकार या माप।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification (sorting)",
+    "hi": "वर्गीकरण (छाँटना)"
+   },
+   "d": {
+    "en": "Putting things into groups based on their features.",
+    "hi": "गुणों के आधार पर चीज़ों को समूहों में रखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Class (group)",
+    "hi": "वर्ग (समूह)"
+   },
+   "d": {
+    "en": "One of the groups into which things are sorted.",
+    "hi": "उन समूहों में से एक जिनमें चीज़ें छाँटी जाती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "IF-THEN rule",
+    "hi": "IF-THEN नियम"
+   },
+   "d": {
+    "en": "A rule that says what to do when a condition is true (and ELSE what to do otherwise).",
+    "hi": "ऐसा नियम जो बताए कि शर्त सच होने पर क्या करें (और ELSE, नहीं तो क्या करें)।"
+   }
+  },
+  {
+   "t": {
+    "en": "AND / OR",
+    "hi": "AND / OR"
+   },
+   "d": {
+    "en": "AND: both conditions must be true. OR: at least one must be true.",
+    "hi": "AND: दोनों शर्तें सच हों। OR: कम से कम एक सच हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Decision tree",
+    "hi": "डिसीज़न ट्री"
+   },
+   "d": {
+    "en": "A chart of yes/no questions leading to a final decision.",
+    "hi": "हाँ/नहीं प्रश्नों का चार्ट जो अंतिम निर्णय तक ले जाए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine learning",
+    "hi": "मशीन लर्निंग"
+   },
+   "d": {
+    "en": "A part of AI in which computers learn patterns from data instead of following only rules written by people.",
+    "hi": "AI का वह भाग जिसमें कंप्यूटर केवल लोगों के लिखे नियमों पर चलने के बजाय डेटा से पैटर्न सीखते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Clustering",
+    "hi": "क्लस्टरिंग"
+   },
+   "d": {
+    "en": "AI grouping similar items together when the data has no labels.",
+    "hi": "डेटा पर लेबल न होने पर AI द्वारा मिलती-जुलती चीज़ों को साथ समूहित करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Anomaly",
+    "hi": "असामान्यता (बेमेल)"
+   },
+   "d": {
+    "en": "Something that does not fit the usual pattern.",
+    "hi": "जो सामान्य पैटर्न में फ़िट न हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prediction",
+    "hi": "अनुमान (प्रेडिक्शन)"
+   },
+   "d": {
+    "en": "A smart guess about what will happen, based on patterns in past data.",
+    "hi": "पिछले डेटा के पैटर्न पर आधारित यह समझदार अंदाज़ा कि क्या होगा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Probability",
+    "hi": "प्रायिकता"
+   },
+   "d": {
+    "en": "How likely something is to happen, e.g. 70% chance.",
+    "hi": "किसी चीज़ के होने की कितनी संभावना है, जैसे 70% संभावना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Confidence",
+    "hi": "भरोसा (कॉन्फ़िडेंस)"
+   },
+   "d": {
+    "en": "How sure an AI is about its answer, often shown as a percentage.",
+    "hi": "AI अपने उत्तर के बारे में कितना निश्चित है, अक्सर प्रतिशत में दिखाया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Recommendation",
+    "hi": "सुझाव (रिकमेंडेशन)"
+   },
+   "d": {
+    "en": "A prediction of what a user is likely to like, based on their past choices and similar users.",
+    "hi": "उपयोगकर्ता को क्या पसंद आने की संभावना है, इसका अनुमान, उसकी पिछली पसंद और मिलते-जुलते उपयोगकर्ताओं के आधार पर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Python",
+    "hi": "Python"
+   },
+   "d": {
+    "en": "A popular programming language often used to build AI.",
+    "hi": "एक लोकप्रिय प्रोग्रामिंग भाषा जिसका AI बनाने में अक्सर उपयोग होता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Find the next number: 3, 6, 12, 24, ?",
+    "hi": "अगली संख्या ढूँढिए: 3, 6, 12, 24, ?"
+   },
+   "a": {
+    "en": "Each number doubles, so the next is 24 × 2 = 48.",
+    "hi": "हर संख्या दोगुनी होती है, इसलिए अगली 24 × 2 = 48 है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A smart guess about the future based on patterns is called a ______.",
+    "hi": "रिक्त स्थान भरिए: पैटर्न पर आधारित भविष्य का समझदार अंदाज़ा ______ कहलाता है।"
+   },
+   "a": {
+    "en": "Prediction.",
+    "hi": "अनुमान (prediction)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is a repeating pattern? (a) 1, 2, 4, 8 (b) Sun, Mon, Tue, ... Sat, Sun, Mon (c) 10, 20, 30 (d) 100, 50, 25",
+    "hi": "बहुविकल्पी: कौन-सा दोहराने वाला पैटर्न है? (a) 1, 2, 4, 8 (b) रवि, सोम, मंगल, ... शनि, रवि, सोम (c) 10, 20, 30 (d) 100, 50, 25"
+   },
+   "a": {
+    "en": "(b) The days of the week repeat in a cycle.",
+    "hi": "(b) सप्ताह के दिन एक चक्र में दोहराते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: AI predictions are always correct because computers do not make mistakes.",
+    "hi": "सही या गलत: AI के अनुमान हमेशा सही होते हैं क्योंकि कंप्यूटर गलती नहीं करते।"
+   },
+   "a": {
+    "en": "False. AI gives the most likely answer; it can be wrong if patterns change or data is poor.",
+    "hi": "गलत। AI सबसे संभावित उत्तर देता है; पैटर्न बदलें या डेटा खराब हो तो वह गलत हो सकता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Give two examples of patterns in nature.",
+    "hi": "प्रकृति में पैटर्न के दो उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Any two: day and night, phases of the Moon, seasons, honeycomb cells, tiger stripes, flower petals, monsoon arrival.",
+    "hi": "कोई दो: दिन और रात, चंद्रमा की कलाएँ, ऋतुएँ, छत्ते के खाने, बाघ की धारियाँ, फूल की पंखुड़ियाँ, मानसून का आना।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A property such as colour, shape or size that helps us sort objects is called a ______.",
+    "hi": "रिक्त स्थान भरिए: रंग, आकार या माप जैसी विशेषता जो चीज़ें छाँटने में मदद करे, ______ कहलाती है।"
+   },
+   "a": {
+    "en": "Feature.",
+    "hi": "गुण (feature)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In 'IF it is cloudy AND humid THEN carry an umbrella', when do you carry an umbrella? (a) Only cloudy (b) Only humid (c) Both cloudy and humid (d) Never",
+    "hi": "बहुविकल्पी: 'IF बादल हैं AND उमस है THEN छाता ले जाओ' में छाता कब ले जाएँगे? (a) केवल बादल (b) केवल उमस (c) बादल और उमस दोनों (d) कभी नहीं"
+   },
+   "a": {
+    "en": "(c) AND means both conditions must be true.",
+    "hi": "(c) AND का अर्थ है दोनों शर्तें सच हों।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the rule and next two terms: (a) 81, 27, 9, ? (b) 2, 5, 10, 17, ? (c) Z, Y, X, W, ?",
+    "hi": "नियम और अगले दो पद ढूँढिए: (a) 81, 27, 9, ? (b) 2, 5, 10, 17, ? (c) Z, Y, X, W, ?"
+   },
+   "a": {
+    "en": "(a) Divide by 3: 3, 1. (b) Differences 3, 5, 7, so next add 9 then 11: 26, 37. (c) Letters going backwards: V, U.",
+    "hi": "(a) 3 से भाग: 3, 1। (b) अंतर 3, 5, 7, इसलिए आगे 9 फिर 11 जोड़ें: 26, 37। (c) उल्टे क्रम में अक्षर: V, U।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the difference between a prediction and a random guess? Give an example of each.",
+    "hi": "अनुमान और बेतरतीब अंदाज़े में क्या अंतर है? हर एक का उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "A prediction uses a pattern in data; a random guess uses no information. Prediction: 'The bus came at 7:30 every day this week, so it will come around 7:30 tomorrow.' Random guess: picking a lottery number without any information.",
+    "hi": "अनुमान डेटा के पैटर्न का उपयोग करता है; बेतरतीब अंदाज़े में कोई जानकारी नहीं होती। अनुमान: 'इस हफ़्ते बस रोज़ 7:30 बजे आई, इसलिए कल भी लगभग 7:30 आएगी।' बेतरतीब अंदाज़ा: बिना किसी जानकारी के लॉटरी का नंबर चुनना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Sort these into two groups and name the feature you used: pencil, rubber ball, coin, ruler, bangle, straw.",
+    "hi": "इन्हें दो समूहों में छाँटिए और उपयोग किया गया गुण बताइए: पेंसिल, रबर की गेंद, सिक्का, स्केल, चूड़ी, स्ट्रॉ।"
+   },
+   "a": {
+    "en": "One possible answer: Feature = shape. Long and thin: pencil, ruler, straw. Round: rubber ball, coin, bangle. (Other features, such as material or 'used at school', can also be correct if the rule is clear.)",
+    "hi": "एक संभव उत्तर: गुण = आकार। लंबे और पतले: पेंसिल, स्केल, स्ट्रॉ। गोल: रबर की गेंद, सिक्का, चूड़ी। (सामग्री या 'स्कूल में उपयोग' जैसे दूसरे गुण भी सही हो सकते हैं अगर नियम साफ़ हो।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write an IF-THEN-ELSE rule for a school gate that opens only for students with an ID card.",
+    "hi": "ऐसे स्कूल गेट के लिए IF-THEN-ELSE नियम लिखिए जो केवल पहचान-पत्र वाले छात्रों के लिए खुले।"
+   },
+   "a": {
+    "en": "IF the student shows a valid ID card THEN open the gate ELSE keep the gate closed and call the guard.",
+    "hi": "IF छात्र वैध पहचान-पत्र दिखाए THEN गेट खोलो ELSE गेट बंद रखो और गार्ड को बुलाओ।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A weather app says '30% chance of rain tomorrow'. Is rain likely or unlikely? Should you still carry an umbrella?",
+    "hi": "मौसम ऐप कहता है 'कल बारिश की 30% संभावना'। बारिश की संभावना ज़्यादा है या कम? क्या फिर भी छाता ले जाना चाहिए?"
+   },
+   "a": {
+    "en": "Rain is less likely than not (about 3 in 10 such days get rain), but it is possible. You may choose to carry a small umbrella if getting wet would be a problem; a prediction is not a certainty.",
+    "hi": "बारिश न होने की संभावना ज़्यादा है (ऐसे 10 में से लगभग 3 दिन बारिश होती है), पर बारिश हो सकती है। अगर भीगना परेशानी हो तो आप छोटा छाता ले जा सकते हैं; अनुमान निश्चितता नहीं है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How does a map app predict how long your journey will take?",
+    "hi": "मैप ऐप कैसे अनुमान लगाता है कि आपकी यात्रा में कितना समय लगेगा?"
+   },
+   "a": {
+    "en": "It uses data on the current speed of many phones moving on the roads and the usual traffic pattern for that road at that time and day. From these patterns it predicts the time, and it updates the prediction if traffic changes.",
+    "hi": "यह सड़कों पर चल रहे कई फ़ोनों की वर्तमान गति और उस समय व दिन के लिए उस सड़क के सामान्य ट्रैफ़िक पैटर्न के डेटा का उपयोग करता है। इन पैटर्न से वह समय का अनुमान लगाता है, और ट्रैफ़िक बदलने पर अनुमान अपडेट करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the difference between classification and clustering?",
+    "hi": "वर्गीकरण और क्लस्टरिंग में क्या अंतर है?"
+   },
+   "a": {
+    "en": "Classification uses labelled data and known groups (e.g. spam / not spam) and puts new items in one of them. Clustering uses unlabelled data, and the AI discovers groups of similar items by itself.",
+    "hi": "वर्गीकरण लेबल वाले डेटा और पहले से पता समूहों (जैसे स्पैम / स्पैम नहीं) का उपयोग करके नई चीज़ों को उनमें से एक में रखता है। क्लस्टरिंग बिना लेबल के डेटा का उपयोग करती है, और AI खुद मिलती-जुलती चीज़ों के समूह खोजता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why do ice-cream sales and the number of people swimming rise at the same time? Does ice cream cause swimming?",
+    "hi": "आइसक्रीम की बिक्री और तैरने वालों की संख्या एक साथ क्यों बढ़ती है? क्या आइसक्रीम तैराकी का कारण है?"
+   },
+   "a": {
+    "en": "No. Both rise because of hot weather in summer. Two things happening together does not mean one causes the other.",
+    "hi": "नहीं। दोनों गर्मी के मौसम के कारण बढ़ते हैं। दो चीज़ों का साथ होना यह नहीं बताता कि एक दूसरी का कारण है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Design a decision tree (in words) to sort: mango, potato, apple, carrot. Use at most three yes/no questions.",
+    "hi": "आम, आलू, सेब, गाजर को छाँटने के लिए (शब्दों में) एक डिसीज़न ट्री बनाइए। अधिकतम तीन हाँ/नहीं प्रश्न लें।"
+   },
+   "a": {
+    "en": "Q1: Does it grow under the ground? Yes → Q2: Is it long and orange? Yes → Carrot; No → Potato. No (grows above ground) → Q3: Does it usually turn yellow when ripe? Yes → Mango; No → Apple. (Other correct trees are possible.)",
+    "hi": "प्र1: क्या यह ज़मीन के अंदर उगता है? हाँ → प्र2: क्या यह लंबा और नारंगी है? हाँ → गाजर; नहीं → आलू। नहीं (ज़मीन के ऊपर) → प्र3: क्या यह पकने पर आमतौर पर पीला होता है? हाँ → आम; नहीं → सेब। (दूसरे सही पेड़ भी संभव हैं।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A school canteen sold idlis: Mon 40, Tue 44, Wed 48, Thu 52. Predict Friday. On Friday it actually sold 30 because of a half-day. What should the canteen's AI do with this information?",
+    "hi": "एक स्कूल कैंटीन ने इडली बेचीं: सोम 40, मंगल 44, बुध 48, गुरु 52। शुक्रवार का अनुमान लगाइए। शुक्रवार को आधे दिन की छुट्टी के कारण असल में 30 बिकीं। कैंटीन के AI को इस जानकारी के साथ क्या करना चाहिए?"
+   },
+   "a": {
+    "en": "Pattern: +4 each day, so the prediction is 52 + 4 = 56. The actual sale was 30 because the pattern was broken by a half-day. The AI should add this data along with the reason (half-day), so that in future it can predict lower sales on half-days. This is the predict → check → learn cycle.",
+    "hi": "पैटर्न: हर दिन +4, इसलिए अनुमान 52 + 4 = 56। असल बिक्री 30 थी क्योंकि आधे दिन की छुट्टी से पैटर्न टूट गया। AI को यह डेटा कारण (आधा दिन) के साथ जोड़ना चाहिए, ताकि भविष्य में आधे दिन पर कम बिक्री का अनुमान लगा सके। यही अनुमान → जाँच → सीखना चक्र है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain with an example how a bank's AI can use patterns to protect people from UPI fraud. Who should make the final decision?",
+    "hi": "विस्तृत उत्तर: उदाहरण के साथ समझाइए कि बैंक का AI पैटर्न से लोगों को UPI धोखाधड़ी से कैसे बचा सकता है। अंतिम निर्णय किसे लेना चाहिए?"
+   },
+   "a": {
+    "en": "The AI learns the usual pattern of each account from past payments: typical amounts, times, places and receivers. When a new payment does not fit (an anomaly), such as a very large amount at midnight to a new account, the AI flags it, sends an alert or asks for extra checking. For example, a customer who usually pays ₹50 to ₹500 to local shops suddenly sends ₹20,000 at 1 am. The account owner and bank staff should make the final decision after checking, because the AI's flag is only a prediction and the payment may be genuine.",
+    "hi": "AI पिछले भुगतानों से हर खाते का सामान्य पैटर्न सीखता है: आम रकम, समय, जगहें और पाने वाले। जब कोई नया भुगतान फ़िट न हो (असामान्यता), जैसे आधी रात को नए खाते में बहुत बड़ी रकम, तो AI उसे चिह्नित करता है, चेतावनी भेजता है या अतिरिक्त जाँच माँगता है। जैसे, जो ग्राहक आमतौर पर स्थानीय दुकानों को ₹50 से ₹500 देता है, वह अचानक रात 1 बजे ₹20,000 भेजता है। अंतिम निर्णय जाँच के बाद खाताधारक और बैंक कर्मचारी को लेना चाहिए, क्योंकि AI का चिह्न केवल अनुमान है और भुगतान असली भी हो सकता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: A video app keeps showing you only cartoon videos because you watched a few. What pattern is it using? What is one problem with this, and what can you do?",
+    "hi": "सोचिए: एक वीडियो ऐप आपको केवल कार्टून वीडियो दिखाता रहता है क्योंकि आपने कुछ देखे थे। वह कौन-सा पैटर्न उपयोग कर रहा है? इसमें एक समस्या क्या है, और आप क्या कर सकते हैं?"
+   },
+   "a": {
+    "en": "It uses the pattern of what you watched before (and what similar users watched) to recommend more of the same. Problem: you may miss other useful or interesting topics and may spend more time than planned. What to do: search for new topics on purpose (science, music, sports), set a time limit with your parents, and stop when you decide.",
+    "hi": "यह आपके पहले देखे (और मिलते-जुलते उपयोगकर्ताओं के देखे) के पैटर्न से वैसा ही और सुझाता है। समस्या: दूसरे उपयोगी या रोचक विषय छूट सकते हैं और आप योजना से ज़्यादा समय बिता सकते हैं। क्या करें: जानबूझकर नए विषय खोजें (विज्ञान, संगीत, खेल), माता-पिता के साथ समय-सीमा तय करें, और खुद तय करके रुकें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity: Record the time your school bus (or you) reaches school for 10 days. Find the usual pattern, predict tomorrow's time, then check. Was your prediction exactly right? Why or why not?",
+    "hi": "गतिविधि: 10 दिन तक लिखिए कि आपकी स्कूल बस (या आप) स्कूल कब पहुँचते हैं। सामान्य पैटर्न ढूँढिए, कल के समय का अनुमान लगाइए, फिर जाँचिए। क्या अनुमान बिल्कुल सही निकला? क्यों या क्यों नहीं?"
+   },
+   "a": {
+    "en": "Sample: times between 7:40 and 7:50, mostly around 7:45. Prediction: about 7:45. Actual next day: 7:48. It was close but not exact, because traffic, weather and stops change a little each day. Predictions give a likely range, not an exact certainty.",
+    "hi": "नमूना: समय 7:40 और 7:50 के बीच, ज़्यादातर लगभग 7:45। अनुमान: लगभग 7:45। अगले दिन असल: 7:48। अनुमान पास था पर बिल्कुल सही नहीं, क्योंकि ट्रैफ़िक, मौसम और रुकने की जगहें हर दिन थोड़ा बदलती हैं। अनुमान एक संभावित दायरा देते हैं, पक्की निश्चितता नहीं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In the Python program in section 5.10, what would the prediction be if cups = [20, 30, 40, 50]? What would happen if cups = [20, 30, 45, 50]?",
+    "hi": "खंड 5.10 के Python प्रोग्राम में अगर cups = [20, 30, 40, 50] हो तो अनुमान क्या होगा? अगर cups = [20, 30, 45, 50] हो तो क्या होगा?"
+   },
+   "a": {
+    "en": "For [20, 30, 40, 50] the differences are [10, 10, 10], so it prints 'Pattern: add 10 each day' and 'Prediction for Friday: 60 cups'. For [20, 30, 45, 50] the differences are [10, 15, 5], which are not all the same, so the IF condition is false: it prints only the differences and makes no prediction.",
+    "hi": "[20, 30, 40, 50] के लिए अंतर [10, 10, 10] हैं, इसलिए यह 'Pattern: add 10 each day' और 'Prediction for Friday: 60 cups' छापेगा। [20, 30, 45, 50] के लिए अंतर [10, 15, 5] हैं, जो सब एक जैसे नहीं, इसलिए IF शर्त झूठी है: यह केवल अंतर छापेगा और कोई अनुमान नहीं लगाएगा।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A pattern repeats or changes in a regular way and follows a rule.",
+   "Patterns can be repeating, growing, shrinking or alternating; find the rule by checking differences or multiplications on all terms.",
+   "Patterns are everywhere: nature, art, routines, calendars, sport and behaviour.",
+   "Observe → find the pattern → conclude → decide. More good data makes a conclusion more reliable.",
+   "Happening together does not always mean one thing causes the other.",
+   "Features are properties we can observe or measure; classification sorts things into groups using features.",
+   "IF-THEN-ELSE rules and decision trees turn patterns into step-by-step decisions; AND needs both, OR needs at least one.",
+   "In machine learning, AI finds patterns from data by itself: classification with labelled data, clustering with unlabelled data.",
+   "AI can spot anomalies, such as an unusual UPI payment, to help prevent fraud.",
+   "A prediction is a smart guess based on patterns: weather, traffic, next word, match results, stock needed.",
+   "Predictions give the most likely answer with a probability or confidence, not a certainty.",
+   "Patterns change, so AI must keep learning: predict → check → learn again.",
+   "Recommendations predict what you may like; use them wisely and explore new topics yourself."
+  ],
+  "hi": [
+   "पैटर्न नियमित ढंग से दोहराता या बदलता है और एक नियम पर चलता है।",
+   "पैटर्न दोहराने वाले, बढ़ने वाले, घटने वाले या बारी-बारी वाले हो सकते हैं; सभी पदों पर अंतर या गुणा जाँचकर नियम ढूँढें।",
+   "पैटर्न हर जगह हैं: प्रकृति, कला, दिनचर्या, कैलेंडर, खेल और व्यवहार।",
+   "अवलोकन → पैटर्न ढूँढना → निष्कर्ष → निर्णय। ज़्यादा अच्छा डेटा निष्कर्ष को ज़्यादा भरोसेमंद बनाता है।",
+   "साथ होने का अर्थ हमेशा यह नहीं कि एक चीज़ दूसरी का कारण है।",
+   "गुण वे विशेषताएँ हैं जिन्हें देखा या मापा जा सके; वर्गीकरण गुणों से चीज़ों को समूहों में छाँटता है।",
+   "IF-THEN-ELSE नियम और डिसीज़न ट्री पैटर्न को चरणबद्ध निर्णयों में बदलते हैं; AND में दोनों, OR में कम से कम एक।",
+   "मशीन लर्निंग में AI डेटा से खुद पैटर्न ढूँढता है: लेबल वाले डेटा से वर्गीकरण, बिना लेबल के डेटा से क्लस्टरिंग।",
+   "AI असामान्यता पकड़ सकता है, जैसे कोई असामान्य UPI भुगतान, ताकि धोखाधड़ी रोकी जा सके।",
+   "अनुमान पैटर्न पर आधारित समझदार अंदाज़ा है: मौसम, ट्रैफ़िक, अगला शब्द, मैच परिणाम, ज़रूरी सामान।",
+   "अनुमान प्रायिकता या भरोसे के साथ सबसे संभावित उत्तर देते हैं, निश्चितता नहीं।",
+   "पैटर्न बदलते हैं, इसलिए AI को सीखते रहना चाहिए: अनुमान → जाँच → फिर सीखना।",
+   "सुझाव अनुमान लगाते हैं कि आपको क्या पसंद आ सकता है; उनका समझदारी से उपयोग करें और खुद नए विषय खोजें।"
+  ]
+ }
+}

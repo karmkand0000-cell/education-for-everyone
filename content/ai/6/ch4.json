@@ -1,0 +1,1515 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "6",
+ "id": "ch4",
+ "intro": {
+  "en": "In Chapter 3 you saw that a computer sees a photo as a grid of numbers called pixels and hears a voice as a pattern of sound. All of these are data. Just as you need healthy food every day to grow, an AI system needs a lot of good data to learn. In this chapter you will learn what data is, the different forms it takes, where it comes from, how to organise and show it in tables, bar graphs and pictographs, why AI needs labelled and varied data, what happens when data is bad, and how to keep personal data safe.",
+  "hi": "अध्याय 3 में आपने देखा कि कंप्यूटर फ़ोटो को पिक्सेल नाम की संख्याओं के जाल के रूप में देखता है और आवाज़ को ध्वनि के एक पैटर्न के रूप में सुनता है। ये सब डेटा हैं। जैसे आपको बढ़ने के लिए रोज़ पौष्टिक भोजन चाहिए, वैसे ही AI सिस्टम को सीखने के लिए ढेर सारा अच्छा डेटा चाहिए। इस अध्याय में आप सीखेंगे कि डेटा क्या है, यह किन-किन रूपों में होता है, कहाँ से आता है, इसे तालिका, बार ग्राफ़ और चित्रालेख में कैसे व्यवस्थित करें और दिखाएँ, AI को लेबल वाला और विविध डेटा क्यों चाहिए, खराब डेटा से क्या होता है, और व्यक्तिगत डेटा को सुरक्षित कैसे रखें।"
+ },
+ "learn": {
+  "en": [
+   "What data is, and the difference between data and information",
+   "Forms of data: numbers, text, pictures, sound and video",
+   "Number data and category (word) data",
+   "Ways to collect data: asking people, observing, measuring, sensors, cameras, forms and apps",
+   "Organising data with tally marks, tables, labels and folders",
+   "Showing data with pictographs and bar graphs, and reading them",
+   "Why data is the 'food' of AI: training data and examples",
+   "Labelled and unlabelled data",
+   "Good data: correct, complete, enough, varied, fair and up to date; garbage in, garbage out",
+   "Personal data, privacy and permission (consent)"
+  ],
+  "hi": [
+   "डेटा क्या है, और डेटा तथा सूचना (information) में अंतर",
+   "डेटा के रूप: संख्या, टेक्स्ट, चित्र, आवाज़ और वीडियो",
+   "संख्या वाला डेटा और श्रेणी (शब्द) वाला डेटा",
+   "डेटा इकट्ठा करने के तरीके: लोगों से पूछना, देखना, मापना, सेंसर, कैमरा, फ़ॉर्म और ऐप",
+   "टैली चिह्न, तालिका, लेबल और फ़ोल्डर से डेटा व्यवस्थित करना",
+   "चित्रालेख और बार ग्राफ़ से डेटा दिखाना और उन्हें पढ़ना",
+   "डेटा AI का 'भोजन' क्यों है: ट्रेनिंग डेटा और उदाहरण",
+   "लेबल वाला और बिना लेबल वाला डेटा",
+   "अच्छा डेटा: सही, पूरा, पर्याप्त, विविध, निष्पक्ष और ताज़ा; कचरा अंदर, कचरा बाहर",
+   "व्यक्तिगत डेटा, निजता और अनुमति (सहमति)"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "4.1 What is data?",
+    "hi": "4.1 डेटा क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every day you notice and remember many facts: today's date, the score of a cricket match, the price of a packet of biscuits, the colour of your friend's bag, the time your school bus arrives. When such facts are written down, recorded or stored so that they can be used later, we call them data. The word 'data' is the plural of the Latin word 'datum', which means 'something given'. In everyday speech, people use 'data' for both one fact and many facts.",
+      "hi": "हर दिन आप कई तथ्यों पर ध्यान देते हैं और उन्हें याद रखते हैं: आज की तारीख, क्रिकेट मैच का स्कोर, बिस्कुट के पैकेट का दाम, दोस्त के बैग का रंग, आपकी स्कूल बस आने का समय। जब ऐसे तथ्य लिखे, रिकॉर्ड या संग्रहीत किए जाते हैं ताकि बाद में काम आ सकें, तो उन्हें डेटा कहते हैं। 'डेटा' शब्द लैटिन शब्द 'डेटम' का बहुवचन है, जिसका अर्थ है 'दी गई चीज़'। रोज़ की बोलचाल में एक तथ्य और कई तथ्यों, दोनों के लिए 'डेटा' शब्द चलता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data",
+       "hi": "डेटा"
+      },
+      "text": {
+       "en": "Data is a collection of facts, such as numbers, words, measurements, pictures, sounds or observations, that can be recorded, organised and studied.",
+       "hi": "डेटा तथ्यों का संग्रह है, जैसे संख्याएँ, शब्द, माप, चित्र, आवाज़ें या अवलोकन, जिन्हें रिकॉर्ड, व्यवस्थित और अध्ययन किया जा सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "On its own, data is often raw, which means it has not yet been arranged or understood. For example, a list like '34, 36, 35, 38, 40, 41, 39' is raw data. It tells you very little until you know what it is. If someone tells you these are the highest temperatures (in degrees Celsius) in Nagpur for seven days of May, the numbers suddenly start to make sense. You can now say: 'The hottest day was 41 °C, and it got hotter in the middle of the week.' Data that has been organised and given meaning, so that it helps us understand something or take a decision, is called information.",
+      "hi": "अक्सर अकेला डेटा कच्चा (raw) होता है, यानी उसे अभी तक व्यवस्थित या समझा नहीं गया है। जैसे '34, 36, 35, 38, 40, 41, 39' जैसी सूची कच्चा डेटा है। जब तक आपको पता न हो कि यह क्या है, यह कुछ खास नहीं बताती। अगर कोई बताए कि ये मई के सात दिनों में नागपुर का सबसे ऊँचा तापमान (डिग्री सेल्सियस में) है, तो संख्याएँ अचानक समझ में आने लगती हैं। अब आप कह सकते हैं: 'सबसे गर्म दिन 41 °C था, और हफ़्ते के बीच में गर्मी बढ़ी।' जिस डेटा को व्यवस्थित करके अर्थ दिया गया हो, ताकि वह कुछ समझने या निर्णय लेने में मदद करे, उसे सूचना (information) कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Information",
+       "hi": "सूचना (Information)"
+      },
+      "text": {
+       "en": "Information is data that has been organised and explained so that it is meaningful and useful.",
+       "hi": "सूचना वह डेटा है जिसे व्यवस्थित करके समझाया गया हो ताकि वह अर्थपूर्ण और उपयोगी हो।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Raw data",
+        "Information (data with meaning)"
+       ],
+       "hi": [
+        "कच्चा डेटा",
+        "सूचना (अर्थ वाला डेटा)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Rahul, 42; Sita, 47; Arjun, 39",
+         "Sita scored the highest marks (47 out of 50) in the maths test."
+        ],
+        [
+         "8:05, 8:10, 8:20, 8:25",
+         "The school bus is reaching later each day; it was 20 minutes late by Thursday."
+        ],
+        [
+         "Red, blue, red, green, red, blue",
+         "Red is the most common bag colour in our row."
+        ]
+       ],
+       "hi": [
+        [
+         "राहुल, 42; सीता, 47; अर्जुन, 39",
+         "गणित की परीक्षा में सीता के सबसे ज़्यादा अंक (50 में से 47) आए।"
+        ],
+        [
+         "8:05, 8:10, 8:20, 8:25",
+         "स्कूल बस हर दिन और देर से आ रही है; गुरुवार तक वह 20 मिनट देर से आई।"
+        ],
+        [
+         "लाल, नीला, लाल, हरा, लाल, नीला",
+         "हमारी पंक्ति में सबसे ज़्यादा बैग लाल रंग के हैं।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: data is the raw material; information is what we get after we organise and understand the data. AI systems are tools that turn huge amounts of data into useful information or actions.",
+      "hi": "याद रखें: डेटा कच्चा माल है; सूचना वह है जो डेटा को व्यवस्थित करके समझने के बाद मिलती है। AI सिस्टम ऐसे साधन हैं जो बहुत बड़े डेटा को उपयोगी सूचना या काम में बदलते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.2 Forms (types) of data",
+    "hi": "4.2 डेटा के रूप (प्रकार)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data is not only numbers. Anything that can be recorded is data. When you click a selfie, record a voice note, type a WhatsApp message or write your height on a form, you are creating data. Computers store every form of data as numbers inside them (remember pixels from Chapter 3), but for us it is useful to know the main forms.",
+      "hi": "डेटा केवल संख्याएँ नहीं है। जो कुछ भी रिकॉर्ड किया जा सके, वह डेटा है। जब आप सेल्फ़ी लेते हैं, वॉइस नोट रिकॉर्ड करते हैं, WhatsApp संदेश टाइप करते हैं या फ़ॉर्म पर अपनी लंबाई लिखते हैं, तो आप डेटा बना रहे होते हैं। कंप्यूटर हर तरह के डेटा को अंदर संख्याओं के रूप में रखता है (अध्याय 3 के पिक्सेल याद कीजिए), पर हमारे लिए इसके मुख्य रूप जानना उपयोगी है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Form of data",
+        "Examples",
+        "How AI uses it"
+       ],
+       "hi": [
+        "डेटा का रूप",
+        "उदाहरण",
+        "AI इसका उपयोग कैसे करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Numbers",
+         "Marks, temperature, runs scored, price of onions, steps walked",
+         "Weather apps predict rain; fitness apps track health"
+        ],
+        [
+         "Text",
+         "Messages, stories, news articles, product reviews, names",
+         "Chatbots, translation, spam filters, keyboard suggestions"
+        ],
+        [
+         "Images (pictures)",
+         "Photos, drawings, X-rays, satellite pictures, leaf photos",
+         "Face unlock, crop-disease apps, reading X-rays"
+        ],
+        [
+         "Sound (audio)",
+         "Voice notes, songs, bird calls, a cough recorded on a phone",
+         "Voice assistants, voice typing, Bhashini translation of speech"
+        ],
+        [
+         "Video",
+         "CCTV footage, cricket match recordings, online classes",
+         "Traffic cameras, ball-tracking in cricket, video recommendations"
+        ]
+       ],
+       "hi": [
+        [
+         "संख्याएँ",
+         "अंक, तापमान, बनाए गए रन, प्याज़ का दाम, चले गए कदम",
+         "मौसम ऐप बारिश का अनुमान लगाते हैं; फ़िटनेस ऐप सेहत पर नज़र रखते हैं"
+        ],
+        [
+         "टेक्स्ट (लिखित शब्द)",
+         "संदेश, कहानियाँ, समाचार लेख, उत्पाद समीक्षाएँ, नाम",
+         "चैटबॉट, अनुवाद, स्पैम फ़िल्टर, कीबोर्ड सुझाव"
+        ],
+        [
+         "चित्र (इमेज)",
+         "फ़ोटो, ड्रॉइंग, एक्स-रे, उपग्रह चित्र, पत्तियों की फ़ोटो",
+         "फ़ेस अनलॉक, फसल-रोग ऐप, एक्स-रे पढ़ना"
+        ],
+        [
+         "ध्वनि (ऑडियो)",
+         "वॉइस नोट, गाने, पक्षियों की आवाज़, फ़ोन पर रिकॉर्ड की गई खाँसी",
+         "वॉइस असिस्टेंट, वॉइस टाइपिंग, भाषिणी से बोली का अनुवाद"
+        ],
+        [
+         "वीडियो",
+         "CCTV फ़ुटेज, क्रिकेट मैच की रिकॉर्डिंग, ऑनलाइन कक्षाएँ",
+         "ट्रैफ़िक कैमरे, क्रिकेट में बॉल-ट्रैकिंग, वीडियो सुझाव"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A video is really a quick series of pictures (frames) along with sound, so video data contains both image data and sound data. Many AI systems use more than one form at the same time. For example, a map app uses numbers (speed of phones moving on a road), text (names of places) and sometimes images (street photos).",
+      "hi": "वीडियो असल में चित्रों (फ़्रेम) की एक तेज़ शृंखला और साथ में आवाज़ है, इसलिए वीडियो डेटा में चित्र डेटा और ध्वनि डेटा दोनों होते हैं। कई AI सिस्टम एक साथ एक से ज़्यादा रूप उपयोग करते हैं। जैसे, मैप ऐप संख्याएँ (सड़क पर चल रहे फ़ोनों की गति), टेक्स्ट (जगहों के नाम) और कभी-कभी चित्र (सड़क की फ़ोटो) भी उपयोग करता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "We can also divide data into two simple groups by what it describes. Number data (also called numerical or quantitative data) is data you can count or measure, such as 'height = 142 cm' or 'number of siblings = 2'. You can add or compare such values. Category data (also called word or qualitative data) describes a kind, type or quality, such as 'favourite sport = kabaddi', 'colour of bag = blue' or 'mode of travel = cycle'. You cannot add 'kabaddi' and 'cricket', but you can count how many people chose each.",
+      "hi": "डेटा क्या बताता है, इस आधार पर भी हम उसे दो सरल समूहों में बाँट सकते हैं। संख्या वाला डेटा (जिसे संख्यात्मक या मात्रात्मक डेटा भी कहते हैं) वह है जिसे गिना या मापा जा सके, जैसे 'लंबाई = 142 cm' या 'भाई-बहनों की संख्या = 2'। ऐसे मानों को जोड़ा या तुलना की जा सकती है। श्रेणी वाला डेटा (जिसे शब्द या गुणात्मक डेटा भी कहते हैं) किसी किस्म, प्रकार या गुण को बताता है, जैसे 'पसंदीदा खेल = कबड्डी', 'बैग का रंग = नीला' या 'आने का साधन = साइकिल'। आप 'कबड्डी' और 'क्रिकेट' को जोड़ नहीं सकते, पर गिन सकते हैं कि हर एक को कितने लोगों ने चुना।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Sort each item into number data or category data: (a) 25 runs (b) Mother tongue: Marathi (c) 3 pencils (d) Favourite season: monsoon (e) Weight of a watermelon: 4 kg",
+       "hi": "हर चीज़ को संख्या वाले या श्रेणी वाले डेटा में रखिए: (a) 25 रन (b) मातृभाषा: मराठी (c) 3 पेंसिल (d) पसंदीदा ऋतु: बरसात (e) तरबूज़ का वज़न: 4 kg"
+      },
+      "a": {
+       "en": "Step 1: Ask 'Can I count or measure it with a number that makes sense to add?'\nStep 2: (a) 25 runs: yes, it is counted. Number data.\nStep 3: (b) Marathi is a name of a language, a type. Category data.\nStep 4: (c) 3 pencils: counted. Number data.\nStep 5: (d) Monsoon is a type of season. Category data.\nStep 6: (e) 4 kg is measured. Number data.\nAnswer: Number data: a, c, e. Category data: b, d.",
+       "hi": "चरण 1: पूछिए 'क्या इसे किसी ऐसी संख्या से गिना या मापा जा सकता है जिसे जोड़ने का अर्थ हो?'\nचरण 2: (a) 25 रन: हाँ, गिने गए हैं। संख्या वाला डेटा।\nचरण 3: (b) मराठी एक भाषा का नाम है, एक प्रकार है। श्रेणी वाला डेटा।\nचरण 4: (c) 3 पेंसिल: गिनी गईं। संख्या वाला डेटा।\nचरण 5: (d) बरसात ऋतु का एक प्रकार है। श्रेणी वाला डेटा।\nचरण 6: (e) 4 kg मापा गया है। संख्या वाला डेटा।\nउत्तर: संख्या वाला डेटा: a, c, e। श्रेणी वाला डेटा: b, d।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Careful: a number is not always number data. A PIN code (like 110001), a roll number or a phone number is made of digits, but adding two PIN codes means nothing. Such numbers work like names or labels, so they are really category data.",
+      "hi": "सावधान: हर अंक वाली चीज़ संख्या वाला डेटा नहीं होती। पिन कोड (जैसे 110001), रोल नंबर या फ़ोन नंबर अंकों से बने होते हैं, पर दो पिन कोड जोड़ने का कोई अर्थ नहीं। ऐसे नंबर नाम या लेबल की तरह काम करते हैं, इसलिए वे असल में श्रेणी वाला डेटा हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.3 Where does data come from? Collecting data",
+    "hi": "4.3 डेटा कहाँ से आता है? डेटा इकट्ठा करना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before data can be used, someone or something has to collect it. There are many ways to collect data. Some are done by people, and some are done automatically by machines.",
+      "hi": "डेटा का उपयोग करने से पहले किसी व्यक्ति या मशीन को उसे इकट्ठा करना पड़ता है। डेटा इकट्ठा करने के कई तरीके हैं। कुछ लोग करते हैं, और कुछ मशीनें अपने आप करती हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Asking people (survey or questionnaire): you ask the same questions to many people and note their answers. Example: asking classmates their favourite fruit. The national Census of India also collects data by asking every household questions.",
+       "Observing: you watch and record what happens. Example: counting how many vehicles pass the school gate in 10 minutes, or noting which birds visit a bird bath.",
+       "Measuring with instruments: thermometers, rulers, weighing scales, clocks and rain gauges give number data.",
+       "Sensors: small devices that sense the world and record data on their own. A phone has a GPS sensor (location), a step counter, a light sensor and a microphone. Weather stations, soil-moisture sensors in farms and smart electricity meters are also sensors.",
+       "Cameras and microphones: they collect image, video and sound data, as you learned in Chapter 3.",
+       "Forms and apps: when you fill an admission form, a library card form or an online form, your answers become data. Apps also record what you tap, watch, search and buy.",
+       "Books, newspapers, websites and records: data that someone else has already collected, such as cricket scorecards, rainfall records or a school's old result sheets."
+      ],
+      "hi": [
+       "लोगों से पूछना (सर्वे या प्रश्नावली): आप कई लोगों से एक ही प्रश्न पूछकर उनके उत्तर लिखते हैं। उदाहरण: सहपाठियों से उनका पसंदीदा फल पूछना। भारत की राष्ट्रीय जनगणना भी हर घर से प्रश्न पूछकर डेटा इकट्ठा करती है।",
+       "अवलोकन (देखना): आप देखते हैं और जो होता है उसे लिखते हैं। उदाहरण: 10 मिनट में स्कूल गेट से कितने वाहन गुज़रते हैं गिनना, या पक्षी-स्नान पर कौन-से पक्षी आते हैं यह लिखना।",
+       "उपकरणों से मापना: थर्मामीटर, स्केल, तराज़ू, घड़ी और वर्षामापी संख्या वाला डेटा देते हैं।",
+       "सेंसर: छोटे उपकरण जो दुनिया को महसूस करके अपने आप डेटा रिकॉर्ड करते हैं। फ़ोन में GPS सेंसर (स्थान), कदम गिनने वाला, रोशनी का सेंसर और माइक्रोफ़ोन होते हैं। मौसम केंद्र, खेतों में मिट्टी की नमी के सेंसर और स्मार्ट बिजली मीटर भी सेंसर हैं।",
+       "कैमरा और माइक्रोफ़ोन: ये चित्र, वीडियो और ध्वनि डेटा इकट्ठा करते हैं, जैसा आपने अध्याय 3 में सीखा।",
+       "फ़ॉर्म और ऐप: जब आप प्रवेश फ़ॉर्म, लाइब्रेरी कार्ड फ़ॉर्म या ऑनलाइन फ़ॉर्म भरते हैं, तो आपके उत्तर डेटा बन जाते हैं। ऐप भी रिकॉर्ड करते हैं कि आप क्या दबाते, देखते, खोजते और खरीदते हैं।",
+       "किताबें, अख़बार, वेबसाइट और रिकॉर्ड: वह डेटा जो किसी और ने पहले ही इकट्ठा कर रखा है, जैसे क्रिकेट स्कोरकार्ड, वर्षा के रिकॉर्ड या स्कूल के पुराने परिणाम-पत्र।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "When you collect data yourself (by asking, observing or measuring), it is called primary data. When you use data that someone else collected (from a book, website or government report), it is called secondary data. Both are useful. Primary data is fresh and made exactly for your question; secondary data saves time but you must check that the source is trustworthy and not too old.",
+      "hi": "जब आप खुद डेटा इकट्ठा करते हैं (पूछकर, देखकर या मापकर), तो उसे प्राथमिक डेटा (primary data) कहते हैं। जब आप किसी और का इकट्ठा किया डेटा उपयोग करते हैं (किताब, वेबसाइट या सरकारी रिपोर्ट से), तो उसे द्वितीयक डेटा (secondary data) कहते हैं। दोनों उपयोगी हैं। प्राथमिक डेटा ताज़ा और ठीक आपके प्रश्न के लिए बना होता है; द्वितीयक डेटा समय बचाता है, पर आपको जाँचना होगा कि स्रोत भरोसेमंद है और बहुत पुराना नहीं है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Indian examples: The India Meteorological Department (IMD) collects temperature, rainfall and wind data from weather stations and satellites across the country to make forecasts. When many people use a map app while travelling, the app gets anonymous speed data from their phones and uses it to show traffic as green, orange or red roads. In some farms, sensors in the soil measure moisture and tell farmers when to water.",
+      "hi": "भारतीय उदाहरण: भारत मौसम विज्ञान विभाग (IMD) पूर्वानुमान बनाने के लिए देश भर के मौसम केंद्रों और उपग्रहों से तापमान, वर्षा और हवा का डेटा इकट्ठा करता है। जब बहुत-से लोग यात्रा करते समय मैप ऐप उपयोग करते हैं, तो ऐप को उनके फ़ोनों से बिना नाम वाला गति डेटा मिलता है और वह उससे सड़कों को हरे, नारंगी या लाल रंग में ट्रैफ़िक के रूप में दिखाता है। कुछ खेतों में मिट्टी में लगे सेंसर नमी मापकर किसानों को बताते हैं कि कब पानी देना है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Good data collection starts with a clear question. Decide first: What do I want to find out? Whom or what will I ask or measure? How will I record the answers? Then collect carefully and honestly.",
+      "hi": "अच्छा डेटा संग्रह एक साफ़ प्रश्न से शुरू होता है। पहले तय कीजिए: मुझे क्या पता करना है? किससे पूछूँगा या क्या मापूँगा? उत्तर कैसे लिखूँगा? फिर ध्यान से और ईमानदारी से इकट्ठा कीजिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.4 Organising data: tally marks, tables, labels and folders",
+    "hi": "4.4 डेटा व्यवस्थित करना: टैली चिह्न, तालिका, लेबल और फ़ोल्डर"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Raw data collected in a hurry can be messy, like a heap of clothes on a bed. Organising means arranging data in a neat way so that it is easy to read, count and use. Sorting data into groups with the same feature is called classifying. For example, you may group answers by fruit name, or group photos by 'animals', 'family' and 'school trip'.",
+      "hi": "जल्दी में इकट्ठा किया गया कच्चा डेटा बिस्तर पर पड़े कपड़ों के ढेर की तरह बिखरा हो सकता है। व्यवस्थित करने का अर्थ है डेटा को साफ़-सुथरे ढंग से रखना ताकि उसे पढ़ना, गिनना और उपयोग करना आसान हो। एक जैसे गुण वाली चीज़ों को समूहों में बाँटना वर्गीकरण (classifying) कहलाता है। जैसे, आप उत्तरों को फल के नाम से समूहित कर सकते हैं, या फ़ोटो को 'जानवर', 'परिवार' और 'स्कूल ट्रिप' में बाँट सकते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Tally marks are a quick way to count while collecting. For each answer you draw one small line. When you reach the fifth, you draw a line across the first four, making a bundle of five. Bundles are easy to count in fives. For example, 12 is written as two bundles of five and two single lines.",
+      "hi": "टैली चिह्न इकट्ठा करते समय जल्दी गिनने का तरीका हैं। हर उत्तर के लिए आप एक छोटी खड़ी रेखा खींचते हैं। पाँचवें पर आप पहली चार रेखाओं के आर-पार एक तिरछी रेखा खींचते हैं, जिससे पाँच का एक गट्ठर बनता है। गट्ठरों को पाँच-पाँच में गिनना आसान होता है। जैसे, 12 को पाँच के दो गट्ठर और दो अकेली रेखाओं से लिखते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "A table arranges data in rows (going across) and columns (going down). Each column has a heading that tells what it contains. Tables are the most common way computers and AI systems store data; a spreadsheet is simply a big table on a computer.",
+      "hi": "तालिका डेटा को पंक्तियों (आड़ी) और स्तंभों (खड़े) में रखती है। हर स्तंभ का एक शीर्षक होता है जो बताता है उसमें क्या है। कंप्यूटर और AI सिस्टम डेटा को सबसे ज़्यादा तालिका के रूप में ही रखते हैं; स्प्रेडशीट बस कंप्यूटर पर एक बड़ी तालिका है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Class 6-A asked 30 students, 'What is your favourite fruit?' The answers were recorded with tally marks. Make a frequency table. (Mango: 2 bundles + 2 lines; Banana: 1 bundle + 3 lines; Apple: 1 bundle + 1 line; Guava: 4 lines.)",
+       "hi": "कक्षा 6-A ने 30 छात्रों से पूछा, 'आपका पसंदीदा फल कौन-सा है?' उत्तर टैली चिह्नों से लिखे गए। बारंबारता तालिका बनाइए। (आम: 2 गट्ठर + 2 रेखाएँ; केला: 1 गट्ठर + 3 रेखाएँ; सेब: 1 गट्ठर + 1 रेखा; अमरूद: 4 रेखाएँ।)"
+      },
+      "a": {
+       "en": "Step 1: Each bundle = 5, each single line = 1.\nStep 2: Mango = 5 + 5 + 2 = 12. Banana = 5 + 3 = 8. Apple = 5 + 1 = 6. Guava = 4.\nStep 3: Make a table with columns 'Fruit' and 'Number of students' (frequency).\nStep 4: Check the total: 12 + 8 + 6 + 4 = 30. It matches the 30 students asked, so no answer was missed.\nAnswer: Mango 12, Banana 8, Apple 6, Guava 4; Total 30.",
+       "hi": "चरण 1: हर गट्ठर = 5, हर अकेली रेखा = 1।\nचरण 2: आम = 5 + 5 + 2 = 12। केला = 5 + 3 = 8। सेब = 5 + 1 = 6। अमरूद = 4।\nचरण 3: 'फल' और 'छात्रों की संख्या' (बारंबारता) स्तंभों वाली तालिका बनाइए।\nचरण 4: कुल जाँचिए: 12 + 8 + 6 + 4 = 30। यह पूछे गए 30 छात्रों से मेल खाता है, इसलिए कोई उत्तर छूटा नहीं।\nउत्तर: आम 12, केला 8, सेब 6, अमरूद 4; कुल 30।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Fruit",
+        "Tally",
+        "Number of students"
+       ],
+       "hi": [
+        "फल",
+        "टैली",
+        "छात्रों की संख्या"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Mango",
+         "2 bundles of five + 2",
+         "12"
+        ],
+        [
+         "Banana",
+         "1 bundle of five + 3",
+         "8"
+        ],
+        [
+         "Apple",
+         "1 bundle of five + 1",
+         "6"
+        ],
+        [
+         "Guava",
+         "4 lines",
+         "4"
+        ],
+        [
+         "Total",
+         "-",
+         "30"
+        ]
+       ],
+       "hi": [
+        [
+         "आम",
+         "पाँच के 2 गट्ठर + 2",
+         "12"
+        ],
+        [
+         "केला",
+         "पाँच का 1 गट्ठर + 3",
+         "8"
+        ],
+        [
+         "सेब",
+         "पाँच का 1 गट्ठर + 1",
+         "6"
+        ],
+        [
+         "अमरूद",
+         "4 रेखाएँ",
+         "4"
+        ],
+        [
+         "कुल",
+         "-",
+         "30"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Labels and folders help organise digital data. Imagine a phone gallery with 2,000 photos in one place. Finding the photo of your school sports day would take ages. If the photos are kept in folders with clear labels such as 'Sports Day 2026', 'Diwali' and 'Science Project', anything can be found quickly. Good file names (for example 'Science_Project_Leaf_Photos' instead of 'IMG_4592') are also a form of labelling. Government services such as DigiLocker work in a similar way: each document (mark sheet, certificate) is stored with its correct name and type so that it can be found and checked easily.",
+      "hi": "लेबल और फ़ोल्डर डिजिटल डेटा को व्यवस्थित करने में मदद करते हैं। कल्पना कीजिए कि फ़ोन गैलरी में 2,000 फ़ोटो एक ही जगह हैं। स्कूल के खेल दिवस की फ़ोटो ढूँढने में बहुत समय लगेगा। अगर फ़ोटो 'खेल दिवस 2026', 'दिवाली' और 'विज्ञान प्रोजेक्ट' जैसे साफ़ लेबल वाले फ़ोल्डरों में हों, तो कुछ भी जल्दी मिल जाएगा। अच्छे फ़ाइल नाम (जैसे 'IMG_4592' की जगह 'Science_Project_Leaf_Photos') भी लेबल लगाने का ही एक रूप हैं। DigiLocker जैसी सरकारी सेवाएँ भी इसी तरह काम करती हैं: हर दस्तावेज़ (अंकपत्र, प्रमाणपत्र) अपने सही नाम और प्रकार के साथ रखा जाता है ताकि उसे आसानी से ढूँढा और जाँचा जा सके।"
+     }
+    },
+    {
+     "note": {
+      "en": "Organised data = easy to find, easy to count, fewer mistakes. Always check that your totals add up to the number of people or things you collected data from.",
+      "hi": "व्यवस्थित डेटा = ढूँढना आसान, गिनना आसान, गलतियाँ कम। हमेशा जाँचें कि आपके कुल का जोड़ उतने ही लोगों या चीज़ों के बराबर है जिनसे आपने डेटा इकट्ठा किया।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.5 Showing data: pictographs and bar graphs",
+    "hi": "4.5 डेटा दिखाना: चित्रालेख और बार ग्राफ़"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A table is neat, but a picture lets our eyes spot patterns in a second. Two simple ways to show data as a picture are the pictograph and the bar graph. You may also meet these in your maths book.",
+      "hi": "तालिका साफ़-सुथरी होती है, पर चित्र से हमारी आँखें एक पल में पैटर्न पकड़ लेती हैं। डेटा को चित्र के रूप में दिखाने के दो सरल तरीके हैं: चित्रालेख और बार ग्राफ़। ये आपको गणित की किताब में भी मिल सकते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Pictograph",
+       "hi": "चित्रालेख (Pictograph)"
+      },
+      "text": {
+       "en": "A pictograph shows data using small pictures or symbols. A key tells how much one symbol stands for.",
+       "hi": "चित्रालेख छोटे चित्रों या प्रतीकों से डेटा दिखाता है। एक कुंजी (key) बताती है कि एक प्रतीक कितने के बराबर है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Draw (describe) a pictograph of the fruit data (Mango 12, Banana 8, Apple 6, Guava 4) using the key: one fruit symbol = 2 students.",
+       "hi": "कुंजी 'एक फल का प्रतीक = 2 छात्र' लेकर फल डेटा (आम 12, केला 8, सेब 6, अमरूद 4) का चित्रालेख बनाइए (वर्णन कीजिए)।"
+      },
+      "a": {
+       "en": "Step 1: Divide each number by 2 to find how many symbols to draw.\nStep 2: Mango: 12 ÷ 2 = 6 symbols. Banana: 8 ÷ 2 = 4 symbols. Apple: 6 ÷ 2 = 3 symbols. Guava: 4 ÷ 2 = 2 symbols.\nStep 3: Write the fruit names in a column on the left. Next to each name draw that many symbols in a row, all the same size and equally spaced.\nStep 4: Write the key at the bottom: one symbol = 2 students. Give a title: 'Favourite fruits of Class 6-A'.\nResult: The longest row (Mango, 6 symbols) shows the favourite at a glance.",
+       "hi": "चरण 1: हर संख्या को 2 से भाग देकर पता कीजिए कितने प्रतीक बनाने हैं।\nचरण 2: आम: 12 ÷ 2 = 6 प्रतीक। केला: 8 ÷ 2 = 4 प्रतीक। सेब: 6 ÷ 2 = 3 प्रतीक। अमरूद: 4 ÷ 2 = 2 प्रतीक।\nचरण 3: बाईं ओर एक स्तंभ में फलों के नाम लिखिए। हर नाम के आगे एक पंक्ति में उतने प्रतीक बनाइए, सब एक ही आकार के और बराबर दूरी पर।\nचरण 4: नीचे कुंजी लिखिए: एक प्रतीक = 2 छात्र। शीर्षक दीजिए: 'कक्षा 6-A के पसंदीदा फल'।\nपरिणाम: सबसे लंबी पंक्ति (आम, 6 प्रतीक) एक नज़र में सबसे पसंदीदा फल दिखाती है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "If a number is odd, for example 7 students with the key 1 symbol = 2 students, draw 3 full symbols and one half symbol (3½ symbols).",
+      "hi": "अगर संख्या विषम हो, जैसे कुंजी 1 प्रतीक = 2 छात्र के साथ 7 छात्र, तो 3 पूरे प्रतीक और एक आधा प्रतीक (3½ प्रतीक) बनाइए।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Bar graph",
+       "hi": "बार ग्राफ़ (दंड आलेख)"
+      },
+      "text": {
+       "en": "A bar graph shows data using bars (rectangles) of equal width. The height (or length) of each bar shows the value. Bars are equally spaced.",
+       "hi": "बार ग्राफ़ बराबर चौड़ाई के दंडों (आयतों) से डेटा दिखाता है। हर दंड की ऊँचाई (या लंबाई) मान बताती है। दंडों के बीच बराबर दूरी होती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Describing the bar graph of the fruit data: Draw a horizontal line (the x-axis) and write Mango, Banana, Apple and Guava below it with equal gaps. Draw a vertical line (the y-axis) on the left and mark it 0, 2, 4, 6, 8, 10, 12 with equal spacing; label it 'Number of students'. Over Mango draw a bar up to 12, over Banana up to 8, over Apple up to 6 and over Guava up to 4. Give it the title 'Favourite fruits of Class 6-A'. The tallest bar is Mango and the shortest is Guava. You can also see that Mango is liked by three times as many students as Guava (12 = 3 × 4).",
+      "hi": "फल डेटा के बार ग्राफ़ का वर्णन: एक आड़ी रेखा (x-अक्ष) खींचिए और उसके नीचे बराबर दूरी पर आम, केला, सेब और अमरूद लिखिए। बाईं ओर एक खड़ी रेखा (y-अक्ष) खींचिए और उस पर बराबर दूरी पर 0, 2, 4, 6, 8, 10, 12 लिखिए; उसका नाम 'छात्रों की संख्या' रखिए। आम के ऊपर 12 तक, केले के ऊपर 8 तक, सेब के ऊपर 6 तक और अमरूद के ऊपर 4 तक दंड बनाइए। शीर्षक दीजिए 'कक्षा 6-A के पसंदीदा फल'। सबसे ऊँचा दंड आम का और सबसे छोटा अमरूद का है। आप यह भी देख सकते हैं कि आम को अमरूद से तीन गुना छात्र पसंद करते हैं (12 = 3 × 4)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A lemonade stall sold these glasses in a week: Mon 15, Tue 20, Wed 10, Thu 25, Fri 30. (a) Which day had the most sales? (b) How many glasses were sold in all? (c) What could the owner decide using this data?",
+       "hi": "एक नींबू-पानी के ठेले ने एक हफ़्ते में इतने गिलास बेचे: सोम 15, मंगल 20, बुध 10, गुरु 25, शुक्र 30। (a) किस दिन सबसे ज़्यादा बिक्री हुई? (b) कुल कितने गिलास बिके? (c) इस डेटा से मालिक क्या निर्णय ले सकता है?"
+      },
+      "a": {
+       "en": "Step 1: Compare the values: the biggest is 30, on Friday. So (a) Friday.\nStep 2: Total = 15 + 20 + 10 + 25 + 30 = 100 glasses. So (b) 100.\nStep 3: Look for a pattern: apart from Wednesday, sales rose through the week. Wednesday was lowest (10); maybe it rained or the stall opened late.\nStep 4: (c) The owner could prepare more lemons and sugar for Thursday and Friday, and find out why Wednesday was low. This is how data helps in taking decisions.",
+       "hi": "चरण 1: मानों की तुलना कीजिए: सबसे बड़ा 30 है, शुक्रवार को। इसलिए (a) शुक्रवार।\nचरण 2: कुल = 15 + 20 + 10 + 25 + 30 = 100 गिलास। इसलिए (b) 100।\nचरण 3: पैटर्न देखिए: बुधवार को छोड़कर, हफ़्ते भर बिक्री बढ़ती गई। बुधवार सबसे कम (10) रहा; शायद बारिश हुई या ठेला देर से खुला।\nचरण 4: (c) मालिक गुरुवार और शुक्रवार के लिए ज़्यादा नींबू और चीनी तैयार रख सकता है, और पता कर सकता है कि बुधवार को कम क्यों रहा। इसी तरह डेटा निर्णय लेने में मदद करता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Every graph needs: a title, labels on both axes, equal spacing, a correct scale (or key) and bars of the same width. Without these, a graph can mislead.",
+      "hi": "हर ग्राफ़ में ये ज़रूरी हैं: शीर्षक, दोनों अक्षों पर नाम, बराबर दूरी, सही पैमाना (या कुंजी) और एक जैसी चौड़ाई के दंड। इनके बिना ग्राफ़ भ्रम पैदा कर सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.6 Why data is food for AI",
+    "hi": "4.6 डेटा AI का भोजन क्यों है"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think of how you learned to recognise a mango. Nobody gave you a rulebook. You saw many mangoes, big and small, green and yellow, Alphonso and Langra, and someone said 'This is a mango' each time. After seeing enough examples, you could recognise a mango you had never seen before. AI learns in a similar way. Instead of being given fixed rules, it is shown a very large number of examples. It studies them, finds what is common, and builds a 'model' that it can use on new things. The examples used for this learning are called training data.",
+      "hi": "सोचिए कि आपने आम पहचानना कैसे सीखा। किसी ने आपको नियमों की किताब नहीं दी। आपने कई आम देखे, बड़े और छोटे, हरे और पीले, अल्फ़ांसो और लंगड़ा, और हर बार किसी ने कहा 'यह आम है'। काफ़ी उदाहरण देखने के बाद आप ऐसा आम भी पहचान सकते थे जो पहले कभी नहीं देखा था। AI भी इसी तरह सीखता है। उसे तय नियम देने के बजाय बहुत बड़ी संख्या में उदाहरण दिखाए जाते हैं। वह उनका अध्ययन करता है, जो बात सबमें एक जैसी है उसे ढूँढता है, और एक 'मॉडल' बनाता है जिसे वह नई चीज़ों पर उपयोग कर सके। इस सीखने के लिए उपयोग किए गए उदाहरणों को ट्रेनिंग डेटा कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Training data",
+       "hi": "ट्रेनिंग डेटा (प्रशिक्षण डेटा)"
+      },
+      "text": {
+       "en": "Training data is the set of examples given to an AI system so that it can learn patterns from them.",
+       "hi": "ट्रेनिंग डेटा उदाहरणों का वह समूह है जो AI सिस्टम को दिया जाता है ताकि वह उनसे पैटर्न सीख सके।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Food for you",
+        "Data for AI"
+       ],
+       "hi": [
+        "आपके लिए भोजन",
+        "AI के लिए डेटा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "You need food every day to grow.",
+         "AI needs data to learn and to keep improving."
+        ],
+        [
+         "Enough food keeps you strong.",
+         "Enough examples make AI more reliable."
+        ],
+        [
+         "A balanced diet (dal, rice, vegetables, fruits) keeps you healthy.",
+         "Varied data (many kinds of examples) makes AI work well for everyone."
+        ],
+        [
+         "Spoilt or junk food makes you ill.",
+         "Wrong or messy data makes AI give wrong answers."
+        ],
+        [
+         "Fresh food is better than stale food.",
+         "Up-to-date data is better than old data."
+        ]
+       ],
+       "hi": [
+        [
+         "बढ़ने के लिए आपको रोज़ भोजन चाहिए।",
+         "AI को सीखने और बेहतर होते रहने के लिए डेटा चाहिए।"
+        ],
+        [
+         "पर्याप्त भोजन आपको मज़बूत रखता है।",
+         "पर्याप्त उदाहरण AI को ज़्यादा भरोसेमंद बनाते हैं।"
+        ],
+        [
+         "संतुलित आहार (दाल, चावल, सब्ज़ी, फल) आपको स्वस्थ रखता है।",
+         "विविध डेटा (कई तरह के उदाहरण) AI को सबके लिए ठीक से काम करने लायक बनाता है।"
+        ],
+        [
+         "खराब या जंक फ़ूड आपको बीमार करता है।",
+         "गलत या बिखरा डेटा AI से गलत जवाब दिलवाता है।"
+        ],
+        [
+         "बासी भोजन से ताज़ा भोजन अच्छा है।",
+         "पुराने डेटा से ताज़ा डेटा अच्छा है।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How much data does AI need? Usually a lot. A person might learn to recognise a giraffe from a few pictures, but an AI image model may need hundreds or thousands of pictures to do it well. Large AI systems such as chatbots learn from enormous amounts of text. This is one reason AI only became really useful in recent years: phones, cameras and the internet now produce huge amounts of data, and computers have become fast enough to learn from it.",
+      "hi": "AI को कितना डेटा चाहिए? आमतौर पर बहुत ज़्यादा। एक इंसान कुछ ही चित्रों से जिराफ़ पहचानना सीख सकता है, पर AI इमेज मॉडल को यह अच्छे से करने के लिए सैकड़ों या हज़ारों चित्र चाहिए हो सकते हैं। चैटबॉट जैसे बड़े AI सिस्टम बहुत विशाल मात्रा में टेक्स्ट से सीखते हैं। AI के हाल के वर्षों में ही सचमुच उपयोगी बनने का एक कारण यही है: अब फ़ोन, कैमरे और इंटरनेट बहुत बड़ा डेटा पैदा करते हैं, और कंप्यूटर इतने तेज़ हो गए हैं कि उससे सीख सकें।"
+     }
+    },
+    {
+     "p": {
+      "en": "After training, AI is checked with new examples it has not seen before. This is called testing. If an AI that learned about mangoes can correctly recognise new mango photos, it has learned well. If it only remembers its training photos and fails on new ones, it has not truly learned, just like a student who memorises answers without understanding. You will study training and testing in more detail in Class 7.",
+      "hi": "ट्रेनिंग के बाद AI को ऐसे नए उदाहरणों से जाँचा जाता है जो उसने पहले नहीं देखे। इसे टेस्टिंग कहते हैं। अगर आम के बारे में सीखा AI आम की नई फ़ोटो सही पहचान ले, तो उसने अच्छे से सीखा है। अगर उसे केवल अपनी ट्रेनिंग वाली फ़ोटो याद हैं और नई पर वह चूक जाता है, तो उसने सच में नहीं सीखा, ठीक उस छात्र की तरह जो बिना समझे उत्तर रट लेता है। ट्रेनिंग और टेस्टिंग आप कक्षा 7 में विस्तार से पढ़ेंगे।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI does not 'know' things the way you do. Everything it can do comes from the data it learned from. So the quality of an AI system depends on the quality of its data.",
+      "hi": "याद रखें: AI चीज़ों को उस तरह 'नहीं जानता' जैसे आप जानते हैं। वह जो कुछ भी कर पाता है, वह उस डेटा से आता है जिससे उसने सीखा। इसलिए किसी AI सिस्टम की गुणवत्ता उसके डेटा की गुणवत्ता पर निर्भर करती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.7 Labelled and unlabelled data",
+    "hi": "4.7 लेबल वाला और बिना लेबल वाला डेटा"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Imagine your teacher collects 40 notebooks to check. If every notebook has the student's name written on the cover, she can return each one to the right student easily. If the names are missing, she has to open each notebook and guess from the handwriting. Data works the same way. Some data comes with a tag or name that tells what it is. Some data has no such tag.",
+      "hi": "कल्पना कीजिए कि आपकी शिक्षिका जाँचने के लिए 40 कॉपियाँ इकट्ठा करती हैं। अगर हर कॉपी के कवर पर छात्र का नाम लिखा हो, तो वे हर कॉपी आसानी से सही छात्र को लौटा सकती हैं। अगर नाम न हों, तो उन्हें हर कॉपी खोलकर लिखावट से अंदाज़ा लगाना पड़ेगा। डेटा भी इसी तरह काम करता है। कुछ डेटा के साथ एक टैग या नाम होता है जो बताता है कि वह क्या है। कुछ डेटा पर ऐसा कोई टैग नहीं होता।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Label",
+       "hi": "लेबल"
+      },
+      "text": {
+       "en": "A label is the correct answer or name attached to a piece of data, for example the word 'cat' attached to a photo of a cat.",
+       "hi": "लेबल वह सही उत्तर या नाम है जो किसी डेटा के साथ जुड़ा हो, जैसे बिल्ली की फ़ोटो के साथ जुड़ा शब्द 'बिल्ली'।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Labelled data",
+        "Unlabelled data"
+       ],
+       "hi": [
+        "लेबल वाला डेटा",
+        "बिना लेबल वाला डेटा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Each example has its answer tagged.",
+         "Examples have no answer tag."
+        ],
+        [
+         "Photo of a leaf + label 'healthy' or 'diseased'",
+         "A folder of 1,000 leaf photos with no names"
+        ],
+        [
+         "SMS + label 'spam' or 'not spam'",
+         "Thousands of SMS messages with no tags"
+        ],
+        [
+         "Needs people's time to add labels",
+         "Easy and cheap to collect in large amounts"
+        ],
+        [
+         "Helps AI learn to name or sort new things",
+         "AI can still find groups of similar items in it"
+        ]
+       ],
+       "hi": [
+        [
+         "हर उदाहरण के साथ उसका उत्तर टैग होता है।",
+         "उदाहरणों पर कोई उत्तर टैग नहीं होता।"
+        ],
+        [
+         "पत्ती की फ़ोटो + लेबल 'स्वस्थ' या 'रोगी'",
+         "बिना नाम की 1,000 पत्ती-फ़ोटो का फ़ोल्डर"
+        ],
+        [
+         "SMS + लेबल 'स्पैम' या 'स्पैम नहीं'",
+         "बिना टैग के हज़ारों SMS संदेश"
+        ],
+        [
+         "लेबल लगाने में लोगों का समय लगता है",
+         "बड़ी मात्रा में इकट्ठा करना आसान और सस्ता"
+        ],
+        [
+         "AI को नई चीज़ों का नाम बताना या छाँटना सीखने में मदद करता है",
+         "AI फिर भी इसमें मिलती-जुलती चीज़ों के समूह ढूँढ सकता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "When AI learns from labelled examples, it is like learning with a teacher who tells the right answer for each example. This is called supervised learning. For example, an email or SMS spam filter learns from thousands of messages that people have already marked as 'spam' or 'not spam'. Later it can guess for a brand-new message. When AI is given unlabelled data, it can still look for things that are similar and put them into groups on its own, like sorting a mixed box of buttons by size and colour without anyone naming the groups. You will learn more about grouping in Chapter 5.",
+      "hi": "जब AI लेबल वाले उदाहरणों से सीखता है, तो यह ऐसे शिक्षक के साथ सीखने जैसा है जो हर उदाहरण का सही उत्तर बताता है। इसे सुपरवाइज़्ड लर्निंग (supervised learning, निरीक्षित अधिगम) कहते हैं। जैसे, ईमेल या SMS का स्पैम फ़िल्टर उन हज़ारों संदेशों से सीखता है जिन्हें लोग पहले ही 'स्पैम' या 'स्पैम नहीं' चिह्नित कर चुके हैं। बाद में वह बिल्कुल नए संदेश के लिए भी अनुमान लगा सकता है। जब AI को बिना लेबल का डेटा दिया जाता है, तब भी वह मिलती-जुलती चीज़ें ढूँढकर उन्हें अपने आप समूहों में रख सकता है, जैसे बटनों के मिले-जुले डिब्बे को आकार और रंग से छाँटना, जबकि कोई समूहों का नाम नहीं बताता। समूह बनाने के बारे में आप अध्याय 5 में और पढ़ेंगे।"
+     }
+    },
+    {
+     "p": {
+      "en": "Who adds labels? Often people do. When you tick boxes like 'Select all pictures with traffic lights' on a website, or mark an email as spam, or rate a delivery, you may be helping to label data. Doctors label X-rays as 'normal' or 'needs attention' so that health AI can learn. Farmers and scientists label leaf photos with the disease name so that crop-disease apps can learn. Labels must be correct: if many photos of tomatoes are wrongly labelled 'apple', the AI will learn the wrong thing.",
+      "hi": "लेबल कौन लगाता है? अक्सर इंसान। जब आप किसी वेबसाइट पर 'ट्रैफ़िक लाइट वाले सभी चित्र चुनें' जैसे बॉक्स पर टिक करते हैं, या किसी ईमेल को स्पैम चिह्नित करते हैं, या किसी डिलीवरी को रेटिंग देते हैं, तो आप शायद डेटा पर लेबल लगाने में मदद कर रहे होते हैं। डॉक्टर एक्स-रे पर 'सामान्य' या 'ध्यान देने की ज़रूरत' का लेबल लगाते हैं ताकि स्वास्थ्य AI सीख सके। किसान और वैज्ञानिक पत्ती की फ़ोटो पर रोग का नाम लिखते हैं ताकि फसल-रोग ऐप सीख सकें। लेबल सही होने चाहिए: अगर टमाटर की कई फ़ोटो पर गलती से 'सेब' लिखा हो, तो AI गलत बात सीखेगा।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which of these is labelled data? (a) 500 audio clips of bird calls, each marked with the bird's name (b) 500 audio clips of birds with no names (c) Exam answer sheets with marks written on them",
+       "hi": "इनमें से कौन-सा लेबल वाला डेटा है? (a) पक्षियों की आवाज़ की 500 ऑडियो क्लिप, हर एक पर पक्षी का नाम लिखा (b) बिना नाम की पक्षियों की 500 ऑडियो क्लिप (c) अंक लिखी हुई परीक्षा की उत्तर-पुस्तिकाएँ"
+      },
+      "a": {
+       "en": "Step 1: Labelled data = data + its correct answer/name.\nStep 2: (a) Each clip has the bird's name, so it is labelled.\nStep 3: (b) No names, so it is unlabelled.\nStep 4: (c) Each answer sheet has a mark attached, which is like a label (the 'answer' for that sheet).\nAnswer: (a) and (c) are labelled; (b) is unlabelled.",
+       "hi": "चरण 1: लेबल वाला डेटा = डेटा + उसका सही उत्तर/नाम।\nचरण 2: (a) हर क्लिप पर पक्षी का नाम है, इसलिए यह लेबल वाला है।\nचरण 3: (b) नाम नहीं हैं, इसलिए यह बिना लेबल का है।\nचरण 4: (c) हर उत्तर-पुस्तिका के साथ अंक जुड़े हैं, जो एक लेबल (उस पुस्तिका का 'उत्तर') जैसा है।\nउत्तर: (a) और (c) लेबल वाले हैं; (b) बिना लेबल का है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.8 Good data and bad data: garbage in, garbage out",
+    "hi": "4.8 अच्छा डेटा और खराब डेटा: कचरा अंदर, कचरा बाहर"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Computer scientists have an old saying: 'Garbage in, garbage out' (often shortened to GIGO). It means that if you put wrong or poor data into a computer, you will get wrong or poor results out of it, however clever the computer is. A cook cannot make tasty kheer with spoilt milk, and AI cannot give good answers from bad data.",
+      "hi": "कंप्यूटर वैज्ञानिकों की एक पुरानी कहावत है: 'Garbage in, garbage out' यानी 'कचरा अंदर, कचरा बाहर' (अक्सर छोटा करके GIGO)। इसका अर्थ है कि अगर आप कंप्यूटर में गलत या घटिया डेटा डालेंगे, तो उससे गलत या घटिया परिणाम ही निकलेंगे, चाहे कंप्यूटर कितना भी होशियार हो। खराब दूध से रसोइया स्वादिष्ट खीर नहीं बना सकता, और खराब डेटा से AI अच्छे जवाब नहीं दे सकता।"
+     }
+    },
+    {
+     "p": {
+      "en": "Good data has these qualities:",
+      "hi": "अच्छे डेटा में ये गुण होते हैं:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Quality",
+        "Meaning",
+        "What goes wrong without it"
+       ],
+       "hi": [
+        "गुण",
+        "अर्थ",
+        "इसके बिना क्या गलत होता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Correct (accurate)",
+         "Values and labels are true; no typing mistakes.",
+         "A student's height typed as 1420 cm instead of 142 cm confuses the result."
+        ],
+        [
+         "Complete",
+         "Nothing important is missing.",
+         "If half the class did not answer the survey, the result may be wrong."
+        ],
+        [
+         "Enough",
+         "There are enough examples to learn from.",
+         "Asking only 5 of 30 students may give a misleading answer."
+        ],
+        [
+         "Varied and balanced (fair)",
+         "Includes all kinds of cases and people.",
+         "An AI trained only on brown dogs may not recognise a white dog."
+        ],
+        [
+         "Relevant",
+         "Fits the question being asked.",
+         "Using Delhi's rainfall to plan sowing in Kerala will mislead."
+        ],
+        [
+         "Up to date",
+         "Recent enough for today's situation.",
+         "A map using a 10-year-old road list will miss new flyovers."
+        ]
+       ],
+       "hi": [
+        [
+         "सही (शुद्ध)",
+         "मान और लेबल सच्चे हैं; टाइपिंग की गलती नहीं।",
+         "छात्र की लंबाई 142 cm की जगह 1420 cm टाइप हो जाए तो परिणाम गड़बड़ा जाता है।"
+        ],
+        [
+         "पूरा",
+         "कुछ ज़रूरी छूटा नहीं।",
+         "अगर आधी कक्षा ने सर्वे का उत्तर नहीं दिया, तो परिणाम गलत हो सकता है।"
+        ],
+        [
+         "पर्याप्त",
+         "सीखने के लिए पर्याप्त उदाहरण हैं।",
+         "30 में से केवल 5 छात्रों से पूछने पर भ्रामक उत्तर मिल सकता है।"
+        ],
+        [
+         "विविध और संतुलित (निष्पक्ष)",
+         "हर तरह के मामलों और लोगों को शामिल करता है।",
+         "केवल भूरे कुत्तों से सीखा AI सफ़ेद कुत्ते को शायद न पहचाने।"
+        ],
+        [
+         "प्रासंगिक",
+         "पूछे गए प्रश्न से मेल खाता है।",
+         "केरल में बुवाई की योजना के लिए दिल्ली की वर्षा का डेटा भ्रम देगा।"
+        ],
+        [
+         "ताज़ा (अद्यतन)",
+         "आज की स्थिति के लिए काफ़ी नया।",
+         "10 साल पुरानी सड़क-सूची वाला मैप नए फ़्लाईओवर छोड़ देगा।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "When data is one-sided, meaning it has many examples of one kind and few or none of another, AI learns a one-sided picture of the world. This unfairness in data is called bias. For example, if a voice assistant is trained mostly on voices of adult men from one city, it may misunderstand children, women, or people with different accents. If a face-recognition system has seen mostly faces with one skin tone, it may make more mistakes with others. That is why makers of AI try to collect data from many kinds of people, languages and places. India's Bhashini project, for instance, collects speech and text in many Indian languages so that AI tools can serve people who do not speak English or Hindi.",
+      "hi": "जब डेटा एकतरफ़ा होता है, यानी उसमें एक तरह के बहुत उदाहरण हों और दूसरी तरह के कम या बिल्कुल न हों, तो AI दुनिया की एकतरफ़ा तस्वीर सीखता है। डेटा की इस अनुचितता को पक्षपात (bias) कहते हैं। जैसे, अगर किसी वॉइस असिस्टेंट को ज़्यादातर एक शहर के वयस्क पुरुषों की आवाज़ों से सिखाया जाए, तो वह बच्चों, महिलाओं या अलग लहजे वाले लोगों को गलत समझ सकता है। अगर किसी चेहरा-पहचान सिस्टम ने ज़्यादातर एक ही त्वचा-रंग के चेहरे देखे हों, तो वह दूसरों के साथ ज़्यादा गलतियाँ कर सकता है। इसीलिए AI बनाने वाले कई तरह के लोगों, भाषाओं और जगहों से डेटा इकट्ठा करने की कोशिश करते हैं। जैसे, भारत का भाषिणी प्रोजेक्ट कई भारतीय भाषाओं में बोली और टेक्स्ट इकट्ठा करता है ताकि AI टूल उन लोगों के भी काम आएँ जो अंग्रेज़ी या हिंदी नहीं बोलते।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Bias (in data)",
+       "hi": "पक्षपात / बायस (डेटा में)"
+      },
+      "text": {
+       "en": "Bias means the data leans unfairly towards some kinds of examples or people and leaves others out, so the AI learned from it treats some cases unfairly or makes more mistakes for them.",
+       "hi": "बायस का अर्थ है कि डेटा कुछ तरह के उदाहरणों या लोगों की ओर अनुचित रूप से झुका हो और दूसरों को छोड़ दे, जिससे उससे सीखा AI कुछ मामलों के साथ अनुचित व्यवहार करे या उनके लिए ज़्यादा गलतियाँ करे।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A school wants an AI to suggest the best lunch menu. It collects data only from the 10 students who stay for the cricket practice. Is this good data? What should it do?",
+       "hi": "एक स्कूल चाहता है कि AI सबसे अच्छा दोपहर-भोजन मेन्यू सुझाए। वह केवल उन 10 छात्रों से डेटा लेता है जो क्रिकेट अभ्यास के लिए रुकते हैं। क्या यह अच्छा डेटा है? उसे क्या करना चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: Check 'enough': 10 students out of the whole school is too few.\nStep 2: Check 'varied': only cricket players are asked; students of other classes, girls and boys who don't play cricket, and students with food allergies or religious food habits may be missed. The data is biased.\nStep 3: Effect: the AI may suggest a menu that only this small group likes. Garbage in, garbage out.\nStep 4: Fix: survey students from every class and section, include different food habits (vegetarian, Jain, etc.), and check the answers for mistakes before using them.",
+       "hi": "चरण 1: 'पर्याप्त' जाँचिए: पूरे स्कूल में से 10 छात्र बहुत कम हैं।\nचरण 2: 'विविध' जाँचिए: केवल क्रिकेट खिलाड़ियों से पूछा गया; दूसरी कक्षाओं के छात्र, क्रिकेट न खेलने वाली लड़कियाँ और लड़के, और खाने की एलर्जी या धार्मिक खान-पान वाले छात्र छूट सकते हैं। डेटा पक्षपाती है।\nचरण 3: असर: AI ऐसा मेन्यू सुझा सकता है जो केवल इस छोटे समूह को पसंद हो। कचरा अंदर, कचरा बाहर।\nचरण 4: सुधार: हर कक्षा और सेक्शन के छात्रों का सर्वे करें, अलग-अलग खान-पान (शाकाहारी, जैन आदि) शामिल करें, और उपयोग से पहले उत्तरों में गलतियाँ जाँचें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Cleaning data: Before using data, people check it and fix problems. This is called data cleaning. It includes removing repeated entries (the same student counted twice), correcting obvious typing errors, filling or removing missing values, and making spellings the same (for example 'Mango', 'mango' and 'Aam' should all be counted as one fruit).",
+      "hi": "डेटा की सफ़ाई: डेटा का उपयोग करने से पहले लोग उसे जाँचते हैं और समस्याएँ ठीक करते हैं। इसे डेटा क्लीनिंग (data cleaning) कहते हैं। इसमें दोहराई गई प्रविष्टियाँ हटाना (एक ही छात्र दो बार गिना गया), साफ़ दिखने वाली टाइपिंग गलतियाँ ठीक करना, छूटे मान भरना या हटाना, और वर्तनी एक जैसी करना (जैसे 'Mango', 'mango' और 'आम' सबको एक ही फल गिनना) शामिल है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Garbage in, garbage out: an AI can only be as good as the data it learns from. More data helps only if it is also correct, varied and fair.",
+      "hi": "कचरा अंदर, कचरा बाहर: AI उतना ही अच्छा हो सकता है जितना वह डेटा जिससे उसने सीखा। ज़्यादा डेटा तभी मदद करता है जब वह सही, विविध और निष्पक्ष भी हो।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.9 Personal data and privacy",
+    "hi": "4.9 व्यक्तिगत डेटा और निजता"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Some data is about you as a person. Your full name, home address, phone number, date of birth, school name, photos, voice, fingerprints, location and passwords are your personal data. Some numbers, such as an Aadhaar number or bank details, are especially sensitive. Personal data can be used to find, copy or trick a person, so it must be protected.",
+      "hi": "कुछ डेटा आपके बारे में होता है। आपका पूरा नाम, घर का पता, फ़ोन नंबर, जन्मतिथि, स्कूल का नाम, फ़ोटो, आवाज़, उँगलियों के निशान, स्थान और पासवर्ड आपका व्यक्तिगत डेटा है। आधार नंबर या बैंक विवरण जैसे कुछ नंबर विशेष रूप से संवेदनशील होते हैं। व्यक्तिगत डेटा का उपयोग किसी व्यक्ति को ढूँढने, उसकी नकल करने या उसे धोखा देने के लिए किया जा सकता है, इसलिए इसकी रक्षा ज़रूरी है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Privacy",
+       "hi": "निजता (Privacy)"
+      },
+      "text": {
+       "en": "Privacy is your right to keep your personal information to yourself and to decide who can see or use it.",
+       "hi": "निजता आपका यह अधिकार है कि आप अपनी व्यक्तिगत जानकारी अपने पास रखें और तय करें कि उसे कौन देख या उपयोग कर सकता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Consent",
+       "hi": "सहमति (Consent)"
+      },
+      "text": {
+       "en": "Consent means giving clear permission. Data about a person should be collected and used only with their permission (and, for children, with a parent's or guardian's permission).",
+       "hi": "सहमति का अर्थ है साफ़ अनुमति देना। किसी व्यक्ति का डेटा केवल उसकी अनुमति से (और बच्चों के मामले में माता-पिता या अभिभावक की अनुमति से) इकट्ठा और उपयोग किया जाना चाहिए।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Share personal data only with people you trust, such as parents, guardians and teachers, and only when needed.",
+       "Do not type your address, phone number, school name, passwords or photos into chatbots, games or websites. What you type may be stored.",
+       "Never share an OTP (one-time password) or UPI PIN with anyone, even if the caller says they are from a bank. Banks never ask for these.",
+       "Ask before you take or post a photo of a friend. Their face is their personal data.",
+       "When you collect survey data, do not ask for more personal details than you need. For a fruit survey, you do not need anyone's address.",
+       "Keep data safely: lock phones and computers with a password known only to you and your parents, and do not leave forms with personal details lying around."
+      ],
+      "hi": [
+       "व्यक्तिगत डेटा केवल भरोसेमंद लोगों, जैसे माता-पिता, अभिभावक और शिक्षकों से, और केवल ज़रूरत होने पर ही साझा करें।",
+       "अपना पता, फ़ोन नंबर, स्कूल का नाम, पासवर्ड या फ़ोटो चैटबॉट, गेम या वेबसाइट में न डालें। आप जो लिखते हैं वह संग्रहीत हो सकता है।",
+       "OTP (वन-टाइम पासवर्ड) या UPI PIN किसी को कभी न बताएँ, चाहे फ़ोन करने वाला कहे कि वह बैंक से है। बैंक इन्हें कभी नहीं माँगते।",
+       "किसी दोस्त की फ़ोटो लेने या पोस्ट करने से पहले पूछें। उनका चेहरा उनका व्यक्तिगत डेटा है।",
+       "सर्वे डेटा इकट्ठा करते समय ज़रूरत से ज़्यादा व्यक्तिगत विवरण न माँगें। फल सर्वे के लिए किसी का पता नहीं चाहिए।",
+       "डेटा सुरक्षित रखें: फ़ोन और कंप्यूटर को ऐसे पासवर्ड से लॉक रखें जो केवल आपको और आपके माता-पिता को पता हो, और व्यक्तिगत विवरण वाले फ़ॉर्म इधर-उधर न छोड़ें।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Companies and governments also have duties. In India, the Digital Personal Data Protection Act, 2023 sets rules on how organisations may collect and use people's personal data, including a requirement for a parent's consent when handling children's data. You will learn more about safe and kind use of AI in Chapter 6.",
+      "hi": "कंपनियों और सरकारों के भी कर्तव्य हैं। भारत में डिजिटल व्यक्तिगत डेटा संरक्षण अधिनियम, 2023 (Digital Personal Data Protection Act, 2023) यह नियम तय करता है कि संस्थाएँ लोगों का व्यक्तिगत डेटा कैसे इकट्ठा और उपयोग कर सकती हैं, जिसमें बच्चों के डेटा के लिए माता-पिता की सहमति ज़रूरी होना भी शामिल है। AI के सुरक्षित और अच्छे उपयोग के बारे में आप अध्याय 6 में और पढ़ेंगे।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which of these questions are fine for a class survey about 'How do we come to school?' and which should be removed? (a) Your mode of travel (b) Time taken in minutes (c) Your house number and street (d) Your father's phone number",
+       "hi": "कक्षा के सर्वे 'हम स्कूल कैसे आते हैं?' के लिए इनमें से कौन-से प्रश्न ठीक हैं और कौन-से हटाने चाहिए? (a) आने का साधन (b) लगने वाला समय मिनटों में (c) आपका मकान नंबर और गली (d) आपके पिता का फ़ोन नंबर"
+      },
+      "a": {
+       "en": "Step 1: Ask: which details are needed to answer the survey question?\nStep 2: (a) Mode of travel is the main question. Keep.\nStep 3: (b) Time taken is useful and not personal. Keep.\nStep 4: (c) House number and (d) phone number are personal data and are not needed. Remove them.\nAnswer: Keep (a) and (b); remove (c) and (d). Collect only what you need.",
+       "hi": "चरण 1: पूछिए: सर्वे के प्रश्न का उत्तर देने के लिए कौन-से विवरण ज़रूरी हैं?\nचरण 2: (a) आने का साधन मुख्य प्रश्न है। रखिए।\nचरण 3: (b) लगने वाला समय उपयोगी है और व्यक्तिगत नहीं। रखिए।\nचरण 4: (c) मकान नंबर और (d) फ़ोन नंबर व्यक्तिगत डेटा हैं और ज़रूरी नहीं। हटाइए।\nउत्तर: (a) और (b) रखें; (c) और (d) हटाएँ। केवल उतना ही इकट्ठा करें जितना ज़रूरी हो।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.10 Activities: become a data scientist",
+    "hi": "4.10 गतिविधियाँ: डेटा वैज्ञानिक बनिए"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (unplugged): Class survey and graph.\nAim: To collect, organise and show data, and use it for a decision.\nYou need: notebook, pencil, ruler, coloured pencils.\nWhat to do: (1) Choose one question, such as 'How do you come to school: walk, cycle, bus, auto or car?' (2) Ask every classmate and make a tally mark for each answer. (3) Make a frequency table and check that the total equals the number of students. (4) Draw a pictograph with a key and a bar graph with labelled axes. (5) Write two sentences about what you found.\nWhat you observe: one mode is usually the most common; the graph shows it instantly.\nWhat it teaches: data → organised table → picture → information → decision (for example, the school may plan a safer cycle stand if many students cycle).",
+      "hi": "गतिविधि 1 (बिना कंप्यूटर): कक्षा सर्वे और ग्राफ़।\nउद्देश्य: डेटा इकट्ठा करना, व्यवस्थित करना, दिखाना और उससे निर्णय लेना।\nज़रूरी सामान: कॉपी, पेंसिल, स्केल, रंगीन पेंसिलें।\nक्या करें: (1) एक प्रश्न चुनिए, जैसे 'आप स्कूल कैसे आते हैं: पैदल, साइकिल, बस, ऑटो या कार?' (2) हर सहपाठी से पूछिए और हर उत्तर के लिए टैली चिह्न लगाइए। (3) बारंबारता तालिका बनाइए और जाँचिए कि कुल छात्रों की संख्या के बराबर है। (4) कुंजी वाला चित्रालेख और नाम लिखे अक्षों वाला बार ग्राफ़ बनाइए। (5) आपने क्या पाया, इस पर दो वाक्य लिखिए।\nक्या दिखेगा: आमतौर पर एक साधन सबसे ज़्यादा होता है; ग्राफ़ उसे तुरंत दिखा देता है।\nक्या सीख मिलती है: डेटा → व्यवस्थित तालिका → चित्र → सूचना → निर्णय (जैसे, अगर बहुत छात्र साइकिल से आते हैं तो स्कूल सुरक्षित साइकिल स्टैंड की योजना बना सकता है)।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (unplugged): Be the labeller.\nAim: To understand labels and why they must be correct.\nYou need: 20 small paper cards; on each, a friend draws or writes one item (for example a fruit or a vegetable).\nWhat to do: (1) One group writes a label 'fruit' or 'vegetable' on the back of each card. (2) Another group studies the labelled cards, then gets 5 new unlabelled cards and must sort them. (3) Now secretly write 3 wrong labels on the training cards and repeat with a new group.\nWhat you observe: with correct labels the second group sorts well; wrong labels confuse them and they start making mistakes (for example calling tomato a vegetable or a fruit inconsistently).\nWhat it teaches: AI learns from labels; wrong labels mean wrong learning.",
+      "hi": "गतिविधि 2 (बिना कंप्यूटर): लेबल लगाने वाले बनिए।\nउद्देश्य: लेबल को समझना और यह कि वे सही क्यों होने चाहिए।\nज़रूरी सामान: 20 छोटे काग़ज़ के कार्ड; हर एक पर एक दोस्त एक चीज़ (जैसे कोई फल या सब्ज़ी) बनाए या लिखे।\nक्या करें: (1) एक समूह हर कार्ड के पीछे 'फल' या 'सब्ज़ी' का लेबल लिखे। (2) दूसरा समूह लेबल वाले कार्ड देखकर समझे, फिर उसे 5 नए बिना लेबल वाले कार्ड मिलें जिन्हें उसे छाँटना है। (3) अब चुपके से ट्रेनिंग कार्डों पर 3 गलत लेबल लिखिए और नए समूह के साथ दोहराइए।\nक्या दिखेगा: सही लेबल से दूसरा समूह अच्छे से छाँटता है; गलत लेबल उन्हें उलझा देते हैं और वे गलतियाँ करने लगते हैं (जैसे टमाटर को कभी फल, कभी सब्ज़ी कहना)।\nक्या सीख मिलती है: AI लेबल से सीखता है; गलत लेबल यानी गलत सीख।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen, with an adult): Train a tiny model with Google Teachable Machine.\nAim: To see that more and varied data makes AI better.\nYou need: a computer or phone with a browser and camera, and a teacher or parent to help. The tool runs in the browser and can be used without creating an account.\nWhat to do: (1) Open Teachable Machine and choose 'Image Project'. (2) Make two classes, for example 'Pen' and 'Eraser'. (3) Record only 5 photos of a pen in one position and 5 of an eraser; train and test by showing the objects. (4) Now add 50 or more photos of each, from different angles, with different backgrounds and lighting, and train again.\nWhat you observe: with few, similar photos the model often gets confused; with many varied photos it becomes much more accurate.\nWhat it teaches: enough, varied, correctly labelled data is the healthy food that makes AI work well.",
+      "hi": "गतिविधि 3 (स्क्रीन, किसी बड़े के साथ): Google Teachable Machine से एक छोटा मॉडल सिखाइए।\nउद्देश्य: यह देखना कि ज़्यादा और विविध डेटा AI को बेहतर बनाता है।\nज़रूरी सामान: ब्राउज़र और कैमरा वाला कंप्यूटर या फ़ोन, और मदद के लिए शिक्षक या माता-पिता। यह टूल ब्राउज़र में चलता है और बिना अकाउंट बनाए उपयोग हो सकता है।\nक्या करें: (1) Teachable Machine खोलिए और 'Image Project' चुनिए। (2) दो क्लास बनाइए, जैसे 'पेन' और 'रबर'। (3) पेन की एक ही स्थिति में केवल 5 फ़ोटो और रबर की 5 फ़ोटो लीजिए; ट्रेन कीजिए और चीज़ें दिखाकर टेस्ट कीजिए। (4) अब हर एक की 50 या ज़्यादा फ़ोटो अलग-अलग कोणों, अलग पृष्ठभूमि और रोशनी में जोड़िए और फिर से ट्रेन कीजिए।\nक्या दिखेगा: कम और एक जैसी फ़ोटो से मॉडल अक्सर उलझ जाता है; बहुत सारी विविध फ़ोटो से वह कहीं ज़्यादा सटीक हो जाता है।\nक्या सीख मिलती है: पर्याप्त, विविध और सही लेबल वाला डेटा वह पौष्टिक भोजन है जिससे AI अच्छे से काम करता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (screen, with an adult): Quick, Draw!\nAim: To see how AI learns from a huge collection of drawings.\nWhat to do: Open Google's free game Quick, Draw! in a browser. Draw the object it asks for within 20 seconds and watch the AI guess. Afterwards, look at the examples other people drew for the same word.\nWhat you observe: the AI guesses quickly because it learned from a very large collection of drawings made by people around the world. Unusual drawings are harder for it.\nWhat it teaches: AI's skill comes from lots of examples (data); your drawings may also become part of the collection, so the game reminds us that what we do online can become data.",
+      "hi": "गतिविधि 4 (स्क्रीन, किसी बड़े के साथ): Quick, Draw!\nउद्देश्य: यह देखना कि AI ड्रॉइंग के बहुत बड़े संग्रह से कैसे सीखता है।\nक्या करें: ब्राउज़र में Google का मुफ़्त खेल Quick, Draw! खोलिए। जो चीज़ वह माँगे उसे 20 सेकंड में बनाइए और AI को अंदाज़ा लगाते देखिए। बाद में उसी शब्द के लिए दूसरे लोगों की बनाई ड्रॉइंग देखिए।\nक्या दिखेगा: AI जल्दी अंदाज़ा लगा लेता है क्योंकि उसने दुनिया भर के लोगों की बनाई बहुत बड़ी संख्या में ड्रॉइंग से सीखा है। अनोखी ड्रॉइंग उसके लिए कठिन होती हैं।\nक्या सीख मिलती है: AI का कौशल ढेर सारे उदाहरणों (डेटा) से आता है; आपकी ड्रॉइंग भी संग्रह का हिस्सा बन सकती हैं, इसलिए यह खेल याद दिलाता है कि हम ऑनलाइन जो करते हैं वह डेटा बन सकता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: Many apps and websites require users to be at least 13 years old, so use online tools only with a parent or teacher, and let an adult handle any sign-up. Never upload photos of people's faces without their permission.",
+      "hi": "सुरक्षा: कई ऐप और वेबसाइट के लिए उपयोगकर्ता की उम्र कम से कम 13 वर्ष होनी चाहिए, इसलिए ऑनलाइन टूल केवल माता-पिता या शिक्षक के साथ उपयोग करें, और कोई भी साइन-अप किसी बड़े को करने दें। लोगों की अनुमति के बिना उनके चेहरों की फ़ोटो कभी अपलोड न करें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking data means only numbers. Fix: text, pictures, sound and video are also data.",
+   "Treating data and information as the same. Fix: data is raw facts; information is organised data with meaning.",
+   "Calling roll numbers or PIN codes 'number data'. Fix: they are labels; adding them has no meaning, so they are category data.",
+   "Believing more data is always better. Fix: more data helps only when it is also correct, varied and relevant.",
+   "Forgetting the key in a pictograph or the title and axis labels in a bar graph. Fix: always add title, key/scale and labels.",
+   "Not checking that the total in a table equals the number surveyed. Fix: add up and compare; a mismatch means something was missed or counted twice.",
+   "Thinking AI is fair because it is a machine. Fix: AI copies the bias in its data; one-sided data gives unfair results.",
+   "Asking for unnecessary personal details in a survey or sharing them with chatbots. Fix: collect and share only what is needed, with permission."
+  ],
+  "hi": [
+   "यह सोचना कि डेटा केवल संख्याएँ हैं। सुधार: टेक्स्ट, चित्र, आवाज़ और वीडियो भी डेटा हैं।",
+   "डेटा और सूचना को एक ही मानना। सुधार: डेटा कच्चे तथ्य हैं; सूचना अर्थ वाला व्यवस्थित डेटा है।",
+   "रोल नंबर या पिन कोड को 'संख्या वाला डेटा' कहना। सुधार: ये लेबल हैं; इन्हें जोड़ने का अर्थ नहीं, इसलिए ये श्रेणी वाला डेटा हैं।",
+   "यह मानना कि ज़्यादा डेटा हमेशा बेहतर है। सुधार: ज़्यादा डेटा तभी मदद करता है जब वह सही, विविध और प्रासंगिक भी हो।",
+   "चित्रालेख में कुंजी या बार ग्राफ़ में शीर्षक और अक्षों के नाम भूल जाना। सुधार: हमेशा शीर्षक, कुंजी/पैमाना और नाम लिखें।",
+   "यह न जाँचना कि तालिका का कुल, सर्वे किए गए लोगों के बराबर है। सुधार: जोड़कर तुलना करें; मेल न खाए तो कुछ छूटा या दो बार गिना गया है।",
+   "यह सोचना कि AI मशीन है इसलिए निष्पक्ष है। सुधार: AI अपने डेटा का पक्षपात दोहराता है; एकतरफ़ा डेटा अनुचित परिणाम देता है।",
+   "सर्वे में बेवजह व्यक्तिगत विवरण माँगना या उन्हें चैटबॉट से साझा करना। सुधार: केवल ज़रूरी चीज़ें, अनुमति के साथ इकट्ठा और साझा करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Data",
+    "hi": "डेटा"
+   },
+   "d": {
+    "en": "Facts such as numbers, words, measurements, pictures or sounds that are recorded and can be studied.",
+    "hi": "संख्या, शब्द, माप, चित्र या आवाज़ जैसे तथ्य जो रिकॉर्ड किए जाते हैं और जिनका अध्ययन हो सकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Raw data",
+    "hi": "कच्चा डेटा"
+   },
+   "d": {
+    "en": "Data that has been collected but not yet organised or explained.",
+    "hi": "वह डेटा जो इकट्ठा तो हुआ है पर अभी व्यवस्थित या समझाया नहीं गया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Information",
+    "hi": "सूचना"
+   },
+   "d": {
+    "en": "Organised data that has meaning and is useful.",
+    "hi": "अर्थ वाला और उपयोगी व्यवस्थित डेटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Number (numerical) data",
+    "hi": "संख्या वाला (संख्यात्मक) डेटा"
+   },
+   "d": {
+    "en": "Data that is counted or measured, like marks or height.",
+    "hi": "गिना या मापा गया डेटा, जैसे अंक या लंबाई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Category (word) data",
+    "hi": "श्रेणी वाला (शब्द) डेटा"
+   },
+   "d": {
+    "en": "Data that names a type or quality, like favourite colour or language.",
+    "hi": "किसी प्रकार या गुण का नाम बताने वाला डेटा, जैसे पसंदीदा रंग या भाषा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Survey",
+    "hi": "सर्वे (सर्वेक्षण)"
+   },
+   "d": {
+    "en": "Collecting data by asking many people the same questions.",
+    "hi": "बहुत लोगों से एक जैसे प्रश्न पूछकर डेटा इकट्ठा करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sensor",
+    "hi": "सेंसर"
+   },
+   "d": {
+    "en": "A device that senses something (light, heat, movement, location) and records it as data.",
+    "hi": "ऐसा उपकरण जो कुछ (रोशनी, गर्मी, हलचल, स्थान) महसूस करके डेटा के रूप में रिकॉर्ड करे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Primary data",
+    "hi": "प्राथमिक डेटा"
+   },
+   "d": {
+    "en": "Data you collect yourself.",
+    "hi": "वह डेटा जो आप खुद इकट्ठा करते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Secondary data",
+    "hi": "द्वितीयक डेटा"
+   },
+   "d": {
+    "en": "Data collected earlier by someone else, such as in books or reports.",
+    "hi": "किसी और द्वारा पहले इकट्ठा किया गया डेटा, जैसे किताबों या रिपोर्टों में।"
+   }
+  },
+  {
+   "t": {
+    "en": "Tally marks",
+    "hi": "टैली चिह्न"
+   },
+   "d": {
+    "en": "Small lines drawn to count, bundled in fives.",
+    "hi": "गिनने के लिए खींची गई छोटी रेखाएँ, पाँच-पाँच के गट्ठर में।"
+   }
+  },
+  {
+   "t": {
+    "en": "Frequency",
+    "hi": "बारंबारता"
+   },
+   "d": {
+    "en": "How many times something occurs in the data.",
+    "hi": "डेटा में कोई चीज़ कितनी बार आती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Table",
+    "hi": "तालिका"
+   },
+   "d": {
+    "en": "Data arranged in rows and columns with headings.",
+    "hi": "शीर्षकों के साथ पंक्तियों और स्तंभों में रखा गया डेटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pictograph",
+    "hi": "चित्रालेख"
+   },
+   "d": {
+    "en": "A graph that uses symbols, with a key showing what one symbol stands for.",
+    "hi": "प्रतीकों वाला ग्राफ़, जिसकी कुंजी बताती है कि एक प्रतीक कितने के बराबर है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bar graph",
+    "hi": "बार ग्राफ़"
+   },
+   "d": {
+    "en": "A graph with bars of equal width whose heights show values.",
+    "hi": "बराबर चौड़ाई के दंडों वाला ग्राफ़ जिनकी ऊँचाई मान दिखाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training data",
+    "hi": "ट्रेनिंग डेटा"
+   },
+   "d": {
+    "en": "Examples given to AI to learn from.",
+    "hi": "AI को सीखने के लिए दिए गए उदाहरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Testing",
+    "hi": "टेस्टिंग"
+   },
+   "d": {
+    "en": "Checking a trained AI on new examples it has not seen.",
+    "hi": "सीखे हुए AI को ऐसे नए उदाहरणों पर जाँचना जो उसने नहीं देखे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Label",
+    "hi": "लेबल"
+   },
+   "d": {
+    "en": "The correct name or answer attached to a piece of data.",
+    "hi": "किसी डेटा के साथ जुड़ा सही नाम या उत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Labelled / unlabelled data",
+    "hi": "लेबल वाला / बिना लेबल का डेटा"
+   },
+   "d": {
+    "en": "Data with / without its correct answer attached.",
+    "hi": "सही उत्तर जुड़ा हुआ / बिना जुड़ा डेटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Supervised learning",
+    "hi": "सुपरवाइज़्ड लर्निंग"
+   },
+   "d": {
+    "en": "AI learning from labelled examples, like learning with a teacher.",
+    "hi": "लेबल वाले उदाहरणों से AI का सीखना, जैसे शिक्षक के साथ सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Garbage in, garbage out (GIGO)",
+    "hi": "कचरा अंदर, कचरा बाहर (GIGO)"
+   },
+   "d": {
+    "en": "Bad data put in gives bad results out.",
+    "hi": "खराब डेटा डालने पर खराब परिणाम निकलते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias",
+    "hi": "पक्षपात (बायस)"
+   },
+   "d": {
+    "en": "Unfair one-sidedness in data that makes AI favour some cases or people.",
+    "hi": "डेटा में अनुचित एकतरफ़ापन जिससे AI कुछ मामलों या लोगों का पक्ष ले।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data cleaning",
+    "hi": "डेटा क्लीनिंग"
+   },
+   "d": {
+    "en": "Checking data and fixing errors, repeats and missing values before use.",
+    "hi": "उपयोग से पहले डेटा जाँचकर गलतियाँ, दोहराव और छूटे मान ठीक करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Personal data",
+    "hi": "व्यक्तिगत डेटा"
+   },
+   "d": {
+    "en": "Information about a particular person, like name, address, photo or phone number.",
+    "hi": "किसी व्यक्ति विशेष की जानकारी, जैसे नाम, पता, फ़ोटो या फ़ोन नंबर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Privacy",
+    "hi": "निजता"
+   },
+   "d": {
+    "en": "The right to keep personal information to yourself and control who uses it.",
+    "hi": "अपनी व्यक्तिगत जानकारी अपने पास रखने और उसके उपयोग पर नियंत्रण का अधिकार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Consent",
+    "hi": "सहमति"
+   },
+   "d": {
+    "en": "Clear permission given before data is collected or used.",
+    "hi": "डेटा इकट्ठा या उपयोग करने से पहले दी गई साफ़ अनुमति।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is NOT a form of data? (a) A photo (b) A voice note (c) A temperature reading (d) None of these, all are data",
+    "hi": "बहुविकल्पी: इनमें से कौन डेटा का रूप नहीं है? (a) फ़ोटो (b) वॉइस नोट (c) तापमान का माप (d) इनमें से कोई नहीं, सभी डेटा हैं"
+   },
+   "a": {
+    "en": "(d) All of them are data: image, sound and number data.",
+    "hi": "(d) सभी डेटा हैं: चित्र, ध्वनि और संख्या डेटा।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Data that has been organised and has meaning is called ______.",
+    "hi": "रिक्त स्थान भरिए: व्यवस्थित और अर्थ वाले डेटा को ______ कहते हैं।"
+   },
+   "a": {
+    "en": "Information.",
+    "hi": "सूचना।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: A video contains both image data and sound data.",
+    "hi": "सही या गलत: वीडियो में चित्र डेटा और ध्वनि डेटा दोनों होते हैं।"
+   },
+   "a": {
+    "en": "True. A video is a fast series of pictures with sound.",
+    "hi": "सही। वीडियो आवाज़ के साथ चित्रों की तेज़ शृंखला है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The examples given to an AI to learn from are called ______ data.",
+    "hi": "रिक्त स्थान भरिए: AI को सीखने के लिए दिए गए उदाहरणों को ______ डेटा कहते हैं।"
+   },
+   "a": {
+    "en": "Training.",
+    "hi": "ट्रेनिंग।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: A tally bundle of four lines crossed by a fifth line stands for (a) 4 (b) 5 (c) 10 (d) 1",
+    "hi": "बहुविकल्पी: चार रेखाओं को काटती पाँचवीं रेखा वाला टैली गट्ठर दर्शाता है (a) 4 (b) 5 (c) 10 (d) 1"
+   },
+   "a": {
+    "en": "(b) 5.",
+    "hi": "(b) 5।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name any four ways of collecting data.",
+    "hi": "डेटा इकट्ठा करने के कोई चार तरीके बताइए।"
+   },
+   "a": {
+    "en": "Any four: survey (asking people), observation, measuring with instruments, sensors, cameras/microphones, forms and apps, books/websites/records.",
+    "hi": "कोई चार: सर्वे (लोगों से पूछना), अवलोकन, उपकरणों से मापना, सेंसर, कैमरा/माइक्रोफ़ोन, फ़ॉर्म और ऐप, किताबें/वेबसाइट/रिकॉर्ड।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or false: An Aadhaar number is fine to type into a chatbot because it is just a number.",
+    "hi": "सही या गलत: आधार नंबर चैटबॉट में डालना ठीक है क्योंकि यह बस एक संख्या है।"
+   },
+   "a": {
+    "en": "False. It is sensitive personal data and must not be shared with chatbots or strangers.",
+    "hi": "गलत। यह संवेदनशील व्यक्तिगत डेटा है और चैटबॉट या अनजान लोगों से साझा नहीं करना चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Classify as number data or category data: (a) 7 hours of sleep (b) Favourite festival: Pongal (c) Shoe size 5 (d) Blood group B+ (e) Roll number 23",
+    "hi": "संख्या वाला या श्रेणी वाला डेटा बताइए: (a) 7 घंटे की नींद (b) पसंदीदा त्योहार: पोंगल (c) जूते का नाप 5 (d) रक्त समूह B+ (e) रोल नंबर 23"
+   },
+   "a": {
+    "en": "(a) number (b) category (c) number (it is a measured size) (d) category (a type of blood) (e) category, because a roll number is a label and adding roll numbers means nothing.",
+    "hi": "(a) संख्या (b) श्रेणी (c) संख्या (यह मापा गया नाप है) (d) श्रेणी (रक्त का प्रकार) (e) श्रेणी, क्योंकि रोल नंबर एक लेबल है और रोल नंबर जोड़ने का कोई अर्थ नहीं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the difference between data and information with an example of your own.",
+    "hi": "अपने उदाहरण से डेटा और सूचना का अंतर समझाइए।"
+   },
+   "a": {
+    "en": "Data is raw facts, for example '5, 3, 8, 6' written on a paper. Information is organised data with meaning, for example 'Riya read 5, 3, 8 and 6 pages from Monday to Thursday; she read the most on Wednesday (8 pages).'",
+    "hi": "डेटा कच्चे तथ्य हैं, जैसे काग़ज़ पर लिखा '5, 3, 8, 6'। सूचना अर्थ वाला व्यवस्थित डेटा है, जैसे 'रिया ने सोमवार से गुरुवार तक 5, 3, 8 और 6 पन्ने पढ़े; सबसे ज़्यादा बुधवार को (8 पन्ने) पढ़े।'"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In a pictograph, one ball symbol = 4 students. How many symbols are needed for 20 students who like football and 10 who like hockey?",
+    "hi": "एक चित्रालेख में एक गेंद का प्रतीक = 4 छात्र। फ़ुटबॉल पसंद करने वाले 20 और हॉकी पसंद करने वाले 10 छात्रों के लिए कितने प्रतीक चाहिए?"
+   },
+   "a": {
+    "en": "Football: 20 ÷ 4 = 5 symbols. Hockey: 10 ÷ 4 = 2.5, so 2 full symbols and one half symbol.",
+    "hi": "फ़ुटबॉल: 20 ÷ 4 = 5 प्रतीक। हॉकी: 10 ÷ 4 = 2.5, यानी 2 पूरे प्रतीक और एक आधा प्रतीक।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A bar graph shows rainfall: June 10 cm, July 30 cm, August 25 cm, September 15 cm. Which month had the most rain? What is the total? How much more rain fell in July than in June?",
+    "hi": "एक बार ग्राफ़ वर्षा दिखाता है: जून 10 cm, जुलाई 30 cm, अगस्त 25 cm, सितंबर 15 cm। किस महीने सबसे ज़्यादा बारिश हुई? कुल कितनी? जून से जुलाई में कितनी ज़्यादा बारिश हुई?"
+   },
+   "a": {
+    "en": "Most: July (30 cm). Total: 10 + 30 + 25 + 15 = 80 cm. July − June = 30 − 10 = 20 cm more.",
+    "hi": "सबसे ज़्यादा: जुलाई (30 cm)। कुल: 10 + 30 + 25 + 15 = 80 cm। जुलाई − जून = 30 − 10 = 20 cm ज़्यादा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is labelled data? Give two examples of labelled data used by AI.",
+    "hi": "लेबल वाला डेटा क्या है? AI द्वारा उपयोग किए जाने वाले लेबल वाले डेटा के दो उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Labelled data is data with its correct answer or name attached. Examples: leaf photos tagged 'healthy' or 'diseased' for a crop-disease app; SMS messages tagged 'spam' or 'not spam' for a spam filter; X-rays tagged by doctors.",
+    "hi": "लेबल वाला डेटा वह है जिसके साथ उसका सही उत्तर या नाम जुड़ा हो। उदाहरण: फसल-रोग ऐप के लिए 'स्वस्थ' या 'रोगी' टैग वाली पत्ती-फ़ोटो; स्पैम फ़िल्टर के लिए 'स्पैम' या 'स्पैम नहीं' टैग वाले SMS; डॉक्टरों द्वारा टैग किए गए एक्स-रे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What does 'garbage in, garbage out' mean? Give one example.",
+    "hi": "'कचरा अंदर, कचरा बाहर' का क्या अर्थ है? एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "If wrong or poor data is put into a computer or AI, its results will also be wrong or poor. Example: if a weather app is given wrong temperature readings from a broken sensor, its forecast will be wrong.",
+    "hi": "अगर कंप्यूटर या AI में गलत या घटिया डेटा डाला जाए, तो उसके परिणाम भी गलत या घटिया होंगे। उदाहरण: अगर मौसम ऐप को खराब सेंसर से गलत तापमान मिले, तो उसका पूर्वानुमान गलत होगा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List any four qualities of good data.",
+    "hi": "अच्छे डेटा के कोई चार गुण बताइए।"
+   },
+   "a": {
+    "en": "Any four: correct (accurate), complete, enough, varied and balanced (fair), relevant, up to date.",
+    "hi": "कोई चार: सही (शुद्ध), पूरा, पर्याप्त, विविध और संतुलित (निष्पक्ष), प्रासंगिक, ताज़ा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is the food-and-AI comparison a good one? Give three matching points.",
+    "hi": "भोजन और AI की तुलना अच्छी क्यों है? मेल खाते तीन बिंदु बताइए।"
+   },
+   "a": {
+    "en": "1) We need food to grow; AI needs data to learn. 2) A balanced diet keeps us healthy; varied data makes AI work for everyone. 3) Spoilt food makes us ill; bad data makes AI give wrong answers. (Also: fresh food vs up-to-date data.)",
+    "hi": "1) हमें बढ़ने के लिए भोजन चाहिए; AI को सीखने के लिए डेटा। 2) संतुलित आहार हमें स्वस्थ रखता है; विविध डेटा AI को सबके लिए काम करने लायक बनाता है। 3) खराब भोजन हमें बीमार करता है; खराब डेटा AI से गलत जवाब दिलवाता है। (साथ ही: ताज़ा भोजन बनाम ताज़ा डेटा।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Is data from a government website primary or secondary data for you? Why?",
+    "hi": "आपके लिए सरकारी वेबसाइट का डेटा प्राथमिक है या द्वितीयक? क्यों?"
+   },
+   "a": {
+    "en": "Secondary, because someone else collected it earlier; you are only using it. Check that the source is trustworthy and recent.",
+    "hi": "द्वितीयक, क्योंकि इसे किसी और ने पहले इकट्ठा किया; आप केवल उपयोग कर रहे हैं। जाँचिए कि स्रोत भरोसेमंद और नया है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A voice-typing app works well for most adults but often fails for children and for people who speak with a strong regional accent. What is the likely reason, and how can it be fixed?",
+    "hi": "एक वॉइस-टाइपिंग ऐप ज़्यादातर वयस्कों के लिए ठीक चलता है पर बच्चों और तेज़ क्षेत्रीय लहजे वाले लोगों के लिए अक्सर विफल होता है। संभावित कारण क्या है, और इसे कैसे ठीक करें?"
+   },
+   "a": {
+    "en": "Likely reason: its training data was biased, with mostly adult voices and few children or regional accents, so it did not learn those patterns. Fix: collect more varied, correctly labelled voice recordings (with permission) from children, women and men, and speakers of many regions and languages, then retrain and test on all these groups.",
+    "hi": "संभावित कारण: उसका ट्रेनिंग डेटा पक्षपाती था, जिसमें ज़्यादातर वयस्क आवाज़ें थीं और बच्चे या क्षेत्रीय लहजे कम थे, इसलिए उसने वे पैटर्न नहीं सीखे। सुधार: बच्चों, महिलाओं और पुरुषों, और कई क्षेत्रों व भाषाओं के बोलने वालों से (अनुमति के साथ) ज़्यादा विविध, सही लेबल वाली आवाज़-रिकॉर्डिंग इकट्ठा करें, फिर से ट्रेन करें और इन सभी समूहों पर टेस्ट करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A survey sheet lists: 'Mango, mango, Aam, Banana, , Apple, Mango'. Clean this data and make a frequency table.",
+    "hi": "एक सर्वे पत्रक में लिखा है: 'Mango, mango, आम, Banana, , Apple, Mango'। इस डेटा को साफ़ कीजिए और बारंबारता तालिका बनाइए।"
+   },
+   "a": {
+    "en": "Step 1: 'Mango', 'mango' and 'Aam' all mean the same fruit, so write them all as Mango.\nStep 2: One entry is blank (missing); remove it or ask that person again.\nStep 3: Count: Mango 4, Banana 1, Apple 1. Total = 6 answers (7 entries minus 1 blank).",
+    "hi": "चरण 1: 'Mango', 'mango' और 'आम' एक ही फल हैं, इसलिए सबको आम लिखिए।\nचरण 2: एक प्रविष्टि खाली (छूटी) है; उसे हटाइए या उस व्यक्ति से दोबारा पूछिए।\nचरण 3: गिनती: आम 4, केला 1, सेब 1। कुल = 6 उत्तर (7 प्रविष्टियाँ में से 1 खाली घटाकर)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain how a crop-disease app could be trained, using the words data, label, training, testing and bias.",
+    "hi": "विस्तृत उत्तर: डेटा, लेबल, ट्रेनिंग, टेस्टिंग और बायस शब्दों का उपयोग करते हुए समझाइए कि फसल-रोग ऐप को कैसे सिखाया जा सकता है।"
+   },
+   "a": {
+    "en": "1) Data: collect thousands of photos of leaves (image data) from many farms. 2) Label: experts tag each photo with 'healthy' or the disease name. 3) Training: the AI studies these labelled photos and learns patterns such as spots, colours and shapes linked to each disease. 4) Testing: it is checked with new leaf photos it has never seen to see how often it is right. 5) Bias: if photos came only from one state, one crop variety or only bright sunlight, the app may fail elsewhere, so photos must come from many regions, varieties, seasons and lighting conditions.",
+    "hi": "1) डेटा: कई खेतों से पत्तियों की हज़ारों फ़ोटो (चित्र डेटा) इकट्ठा करें। 2) लेबल: विशेषज्ञ हर फ़ोटो पर 'स्वस्थ' या रोग का नाम टैग करें। 3) ट्रेनिंग: AI इन लेबल वाली फ़ोटो का अध्ययन करके हर रोग से जुड़े धब्बे, रंग और आकार जैसे पैटर्न सीखता है। 4) टेस्टिंग: उसे ऐसी नई पत्ती-फ़ोटो से जाँचा जाता है जो उसने कभी नहीं देखीं, ताकि पता चले वह कितनी बार सही है। 5) बायस: अगर फ़ोटो केवल एक राज्य, एक किस्म या केवल तेज़ धूप में ली गई हों, तो ऐप दूसरी जगह विफल हो सकता है, इसलिए फ़ोटो कई क्षेत्रों, किस्मों, ऋतुओं और रोशनी की स्थितियों से आनी चाहिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: An online quiz game asks for your full name, school, city and photo before you can play. What should you do, and why?",
+    "hi": "सोचिए: एक ऑनलाइन क्विज़ गेम खेलने से पहले आपका पूरा नाम, स्कूल, शहर और फ़ोटो माँगता है। आपको क्या करना चाहिए, और क्यों?"
+   },
+   "a": {
+    "en": "Do not fill it in on your own. Show it to a parent or teacher. A quiz does not need your school, city or photo; asking for more personal data than needed is a warning sign. Personal data can be stored and misused, so protect your privacy and give details only with an adult's permission.",
+    "hi": "खुद से मत भरिए। माता-पिता या शिक्षक को दिखाइए। क्विज़ के लिए आपके स्कूल, शहर या फ़ोटो की ज़रूरत नहीं; ज़रूरत से ज़्यादा व्यक्तिगत डेटा माँगना चेतावनी का संकेत है। व्यक्तिगत डेटा संग्रहीत होकर गलत उपयोग में आ सकता है, इसलिए अपनी निजता बचाइए और विवरण केवल किसी बड़े की अनुमति से दीजिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity: Measure the height of a bean or moong plant (in cm) at the same time every day for one week. Record it in a table and describe the pattern. What could an AI do with such data from thousands of plants?",
+    "hi": "गतिविधि: एक हफ़्ते तक रोज़ एक ही समय पर सेम या मूँग के पौधे की लंबाई (cm में) मापिए। तालिका में लिखिए और पैटर्न बताइए। हज़ारों पौधों के ऐसे डेटा से AI क्या कर सकता है?"
+   },
+   "a": {
+    "en": "Sample answer: Day 1: 2 cm, Day 2: 3 cm, Day 3: 4.5 cm, Day 4: 6 cm, Day 5: 7 cm, Day 6: 8.5 cm, Day 7: 10 cm. Pattern: the plant grows about 1 to 1.5 cm every day. With data from thousands of plants, along with water, sunlight and soil data, an AI could learn which conditions help plants grow best and alert farmers when a plant is growing slower than expected.",
+    "hi": "नमूना उत्तर: दिन 1: 2 cm, दिन 2: 3 cm, दिन 3: 4.5 cm, दिन 4: 6 cm, दिन 5: 7 cm, दिन 6: 8.5 cm, दिन 7: 10 cm। पैटर्न: पौधा हर दिन लगभग 1 से 1.5 cm बढ़ता है। हज़ारों पौधों के डेटा से, साथ में पानी, धूप और मिट्टी के डेटा से, AI सीख सकता है कि कौन-सी परिस्थितियाँ पौधों को सबसे अच्छा बढ़ाती हैं और जब कोई पौधा अपेक्षा से धीमा बढ़े तो किसानों को सतर्क कर सकता है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Data is a collection of facts such as numbers, words, measurements, pictures, sounds and videos.",
+   "Raw data becomes information when it is organised and given meaning.",
+   "Number data is counted or measured; category data names a type. Roll numbers and PIN codes are labels, not number data.",
+   "Data is collected by surveys, observation, measuring instruments, sensors, cameras, microphones, forms, apps and records.",
+   "Primary data is collected by you; secondary data was collected earlier by someone else.",
+   "Tally marks, tables, labels and folders help organise data; always check totals.",
+   "Pictographs (with a key) and bar graphs (with title, labels and scale) show patterns quickly.",
+   "Data is food for AI: AI learns patterns from training data and is checked on new data in testing.",
+   "Labelled data has the correct answer attached; AI learning from it is called supervised learning.",
+   "Good data is correct, complete, enough, varied, relevant and up to date.",
+   "Garbage in, garbage out: bad data gives bad AI results; one-sided data causes bias.",
+   "Data cleaning fixes errors, repeats, missing values and different spellings before use.",
+   "Personal data is private; share it only with trusted people and with permission (consent). Never share OTPs or PINs."
+  ],
+  "hi": [
+   "डेटा संख्या, शब्द, माप, चित्र, आवाज़ और वीडियो जैसे तथ्यों का संग्रह है।",
+   "कच्चा डेटा व्यवस्थित करके अर्थ देने पर सूचना बन जाता है।",
+   "संख्या वाला डेटा गिना या मापा जाता है; श्रेणी वाला डेटा किसी प्रकार का नाम बताता है। रोल नंबर और पिन कोड लेबल हैं, संख्या वाला डेटा नहीं।",
+   "डेटा सर्वे, अवलोकन, मापक उपकरण, सेंसर, कैमरा, माइक्रोफ़ोन, फ़ॉर्म, ऐप और रिकॉर्ड से इकट्ठा होता है।",
+   "प्राथमिक डेटा आप इकट्ठा करते हैं; द्वितीयक डेटा किसी और ने पहले इकट्ठा किया।",
+   "टैली चिह्न, तालिका, लेबल और फ़ोल्डर डेटा व्यवस्थित करने में मदद करते हैं; कुल हमेशा जाँचें।",
+   "चित्रालेख (कुंजी के साथ) और बार ग्राफ़ (शीर्षक, नाम और पैमाने के साथ) पैटर्न जल्दी दिखाते हैं।",
+   "डेटा AI का भोजन है: AI ट्रेनिंग डेटा से पैटर्न सीखता है और टेस्टिंग में नए डेटा पर जाँचा जाता है।",
+   "लेबल वाले डेटा के साथ सही उत्तर जुड़ा होता है; उससे AI के सीखने को सुपरवाइज़्ड लर्निंग कहते हैं।",
+   "अच्छा डेटा सही, पूरा, पर्याप्त, विविध, प्रासंगिक और ताज़ा होता है।",
+   "कचरा अंदर, कचरा बाहर: खराब डेटा से AI के परिणाम खराब; एकतरफ़ा डेटा से पक्षपात।",
+   "डेटा क्लीनिंग उपयोग से पहले गलतियाँ, दोहराव, छूटे मान और अलग वर्तनी ठीक करती है।",
+   "व्यक्तिगत डेटा निजी है; इसे केवल भरोसेमंद लोगों से और अनुमति (सहमति) से साझा करें। OTP या PIN कभी साझा न करें।"
+  ]
+ }
+}
