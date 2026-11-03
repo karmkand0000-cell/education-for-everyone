@@ -1,0 +1,2051 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "9",
+ "id": "ch2",
+ "intro": {
+  "en": "Every AI product you use, from face unlock to a crop-pest app, was built by following a clear sequence of steps. This chapter teaches that sequence, the AI Project Cycle: Problem Scoping, Data Acquisition, Data Exploration, Modelling, Evaluation and Deployment. You will learn to scope a problem with the 4Ws canvas, plan data and draw system maps, choose graphs, compare rule-based and learning-based models, evaluate a model using a confusion matrix, and deploy it responsibly, following two real Indian projects all the way through.",
+  "hi": "आप जो भी AI उत्पाद उपयोग करते हैं, फ़ेस अनलॉक से लेकर फ़सल-कीट ऐप तक, वह चरणों के एक स्पष्ट क्रम से बना है। यह अध्याय वही क्रम, AI प्रोजेक्ट चक्र, सिखाता है: समस्या निर्धारण, डेटा अधिग्रहण, डेटा अन्वेषण, मॉडलिंग, मूल्यांकन और परिनियोजन। आप 4Ws कैनवास से समस्या तय करना, डेटा की योजना और सिस्टम मैप बनाना, ग्राफ़ चुनना, नियम-आधारित और सीखने-आधारित model की तुलना, confusion matrix से model का मूल्यांकन और उसे ज़िम्मेदारी से लागू करना सीखेंगे, दो वास्तविक भारतीय परियोजनाओं को शुरू से अंत तक देखते हुए।"
+ },
+ "learn": {
+  "en": [
+   "Why AI projects need a framework, and the six stages of the AI Project Cycle",
+   "How to narrow a theme to a topic and a problem, using the SDGs and brainstorming",
+   "How to fill the 4Ws Problem Canvas and write a problem statement and goal",
+   "Stakeholders, ethical questions and data planning during scoping",
+   "Training vs testing data, data features, sources and reliable data portals",
+   "How to read and draw system maps with +/– arrows, loops and delays",
+   "Why and how to visualise data, and which graph suits which purpose",
+   "Rule-based vs learning-based models, and supervised/unsupervised/reinforcement learning",
+   "TP, TN, FP, FN, the confusion matrix, accuracy, precision, recall and F1 score",
+   "Deployment steps and case studies: CottonAce and preventable blindness"
+  ],
+  "hi": [
+   "AI प्रोजेक्ट को ढाँचे की ज़रूरत क्यों है, और AI प्रोजेक्ट चक्र के छह चरण",
+   "SDGs और विचार-मंथन से विषय को उप-विषय और समस्या तक कैसे सीमित करें",
+   "4Ws समस्या कैनवास कैसे भरें और समस्या कथन व लक्ष्य कैसे लिखें",
+   "निर्धारण के दौरान हितधारक, नैतिक प्रश्न और डेटा योजना",
+   "प्रशिक्षण बनाम परीक्षण डेटा, डेटा विशेषताएँ, स्रोत और भरोसेमंद डेटा पोर्टल",
+   "+/– तीरों, लूप और देरी वाले सिस्टम मैप पढ़ना और बनाना",
+   "डेटा का दृश्य क्यों और कैसे बनाएँ, और कौन-सा ग्राफ़ किस काम का",
+   "नियम-आधारित बनाम सीखने-आधारित model, और पर्यवेक्षित/अपर्यवेक्षित/प्रबलन अधिगम",
+   "TP, TN, FP, FN, confusion matrix, accuracy, precision, recall और F1 score",
+   "परिनियोजन के चरण और केस अध्ययन: CottonAce और रोकी जा सकने वाली अंधता"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "2.1 Why do we need a project cycle?",
+    "hi": "2.1 हमें प्रोजेक्ट चक्र की ज़रूरत क्यों है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Suppose your school wants to build an AI that warns students who may be falling behind in studies. Where do you start? Do you first collect data, write code, or ask teachers? Without a plan, teams waste time, collect the wrong data, or build something nobody uses. Big projects, from building a bridge to cooking a wedding feast, follow a sequence of steps. AI projects also follow a standard framework called the AI Project Cycle.",
+      "hi": "मान लीजिए आपका स्कूल ऐसा AI बनाना चाहता है जो पढ़ाई में पिछड़ रहे विद्यार्थियों को समय पर चेतावनी दे। शुरुआत कहाँ से करें? पहले डेटा इकट्ठा करें, कोड लिखें, या शिक्षकों से पूछें? बिना योजना के टीमें समय बर्बाद करती हैं, ग़लत डेटा जुटाती हैं, या ऐसी चीज़ बनाती हैं जिसका कोई उपयोग नहीं करता। पुल बनाने से लेकर शादी की दावत पकाने तक, हर बड़ा काम चरणों के क्रम में होता है। AI प्रोजेक्ट भी एक मानक ढाँचे का पालन करते हैं जिसे AI प्रोजेक्ट चक्र (AI Project Cycle) कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "AI Project Cycle",
+       "hi": "AI प्रोजेक्ट चक्र"
+      },
+      "text": {
+       "en": "The AI Project Cycle is a step-by-step framework for building an AI solution. It has six stages: Problem Scoping, Data Acquisition, Data Exploration, Modelling, Evaluation and Deployment. It is called a cycle because, after deployment and feedback, the team often goes back to earlier stages to improve the solution.",
+       "hi": "AI प्रोजेक्ट चक्र किसी AI समाधान को बनाने का चरण-दर-चरण ढाँचा है। इसके छह चरण हैं: समस्या निर्धारण (Problem Scoping), डेटा अधिग्रहण (Data Acquisition), डेटा अन्वेषण (Data Exploration), मॉडलिंग (Modelling), मूल्यांकन (Evaluation) और परिनियोजन (Deployment)। इसे चक्र इसलिए कहते हैं क्योंकि परिनियोजन और प्रतिक्रिया के बाद टीम अक्सर समाधान सुधारने के लिए पहले के चरणों पर लौटती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Map the everyday task 'planning a class picnic' onto a cycle of steps, to see why a framework helps.",
+       "hi": "रोज़मर्रा के काम 'कक्षा की पिकनिक की योजना' को चरणों के चक्र पर रखिए, ताकि समझ आए कि ढाँचा क्यों मदद करता है।"
+      },
+      "a": {
+       "en": "1. Scope the problem: Who is going (40 students, 2 teachers)? What do we need (place, transport, food)? Where (within 50 km)? Why (fun, bonding)?\n2. Acquire data: collect budgets, permission slips, distances, bus fares, menu choices.\n3. Explore the data: put fares and votes in a table or bar chart; notice most students prefer the zoo.\n4. Make a plan (model): choose the zoo, bus at 8 a.m., packed lunch.\n5. Evaluate: check the plan against limits (budget, time, safety); fix problems.\n6. Deploy: go on the picnic; afterwards collect feedback and improve next year's plan.\nThe same logic, applied to AI, is the AI Project Cycle.",
+       "hi": "1. समस्या तय करें: कौन जा रहा है (40 विद्यार्थी, 2 शिक्षक)? क्या चाहिए (जगह, वाहन, भोजन)? कहाँ (50 किमी के भीतर)? क्यों (मज़ा, मेल-जोल)?\n2. डेटा जुटाएँ: बजट, अनुमति पर्चियाँ, दूरी, बस किराया, भोजन की पसंद।\n3. डेटा देखें: किराए और वोट तालिका या बार चार्ट में रखें; पता चलता है कि अधिकतर विद्यार्थी चिड़ियाघर चाहते हैं।\n4. योजना बनाएँ (model): चिड़ियाघर, सुबह 8 बजे बस, पैक्ड लंच।\n5. मूल्यांकन: योजना को सीमाओं (बजट, समय, सुरक्षा) पर जाँचें; कमियाँ सुधारें।\n6. लागू करें: पिकनिक जाएँ; बाद में प्रतिक्रिया लेकर अगले साल की योजना सुधारें।\nयही तर्क AI पर लगाएँ तो वह AI प्रोजेक्ट चक्र है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.2 The six stages at a glance",
+    "hi": "2.2 छह चरण एक नज़र में"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Picture the cycle as a circle of six boxes connected by arrows going clockwise: Problem Scoping → Data Acquisition → Data Exploration → Modelling → Evaluation → Deployment, with an arrow from Deployment back to Problem Scoping.",
+      "hi": "चक्र की कल्पना छह डिब्बों के एक घेरे के रूप में करें, जो घड़ी की दिशा में तीरों से जुड़े हैं: समस्या निर्धारण → डेटा अधिग्रहण → डेटा अन्वेषण → मॉडलिंग → मूल्यांकन → परिनियोजन, और परिनियोजन से वापस समस्या निर्धारण तक एक तीर।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "Key question",
+        "Main output"
+       ],
+       "hi": [
+        "चरण",
+        "मुख्य प्रश्न",
+        "मुख्य परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Problem Scoping",
+         "What exactly is the problem, for whom, where, and why solve it?",
+         "4Ws canvas and a clear problem statement"
+        ],
+        [
+         "2. Data Acquisition",
+         "What data do we need and where can we get reliable data?",
+         "A collected dataset with chosen features (training and testing data)"
+        ],
+        [
+         "3. Data Exploration",
+         "What patterns and trends does the data show?",
+         "Cleaned data, graphs, observations"
+        ],
+        [
+         "4. Modelling",
+         "Which approach (rule-based or learning-based) will solve it?",
+         "A trained or designed model"
+        ],
+        [
+         "5. Evaluation",
+         "How well does the model work on new, unseen data?",
+         "Test results: accuracy, precision, recall, F1"
+        ],
+        [
+         "6. Deployment",
+         "How will real users use it, and how will we keep it working?",
+         "A working tool in the real world, monitored and maintained"
+        ]
+       ],
+       "hi": [
+        [
+         "1. समस्या निर्धारण",
+         "समस्या ठीक-ठीक क्या है, किसके लिए, कहाँ, और क्यों हल करें?",
+         "4Ws कैनवास और स्पष्ट समस्या कथन"
+        ],
+        [
+         "2. डेटा अधिग्रहण",
+         "कौन-सा डेटा चाहिए और भरोसेमंद डेटा कहाँ से मिलेगा?",
+         "चुनी गई विशेषताओं वाला डेटासेट (प्रशिक्षण और परीक्षण डेटा)"
+        ],
+        [
+         "3. डेटा अन्वेषण",
+         "डेटा कौन-से पैटर्न और रुझान दिखाता है?",
+         "साफ़ डेटा, ग्राफ़, अवलोकन"
+        ],
+        [
+         "4. मॉडलिंग",
+         "कौन-सा तरीका (नियम-आधारित या सीखने-आधारित) इसे हल करेगा?",
+         "प्रशिक्षित या डिज़ाइन किया गया model"
+        ],
+        [
+         "5. मूल्यांकन",
+         "नए, अनदेखे डेटा पर model कितना अच्छा चलता है?",
+         "परीक्षण परिणाम: accuracy, precision, recall, F1"
+        ],
+        [
+         "6. परिनियोजन",
+         "असली उपयोगकर्ता इसे कैसे उपयोग करेंगे, और इसे चालू कैसे रखेंगे?",
+         "वास्तविक दुनिया में काम करता उपकरण, निगरानी और रखरखाव सहित"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Memory trick: 'Please Do Dance More Every Day' → Problem scoping, Data acquisition, Data exploration, Modelling, Evaluation, Deployment.",
+      "hi": "याद रखने की तरकीब: 'Please Do Dance More Every Day' → Problem scoping, Data acquisition, Data exploration, Modelling, Evaluation, Deployment।"
+     }
+    },
+    {
+     "p": {
+      "en": "Running example: CottonAce. Cotton farmers in India lose a large part of their crop to the pink bollworm, a pest whose larvae eat cotton bolls from inside. Wadhwani AI, a non-profit, built an app (CottonAce) in which a farmer or field worker photographs the insects caught in a pheromone trap; the app counts and identifies the pests and gives advice on whether and when to spray. We will map each stage to this project as we go.",
+      "hi": "चलता उदाहरण: CottonAce। भारत के कपास किसान अपनी फ़सल का बड़ा हिस्सा गुलाबी सुंडी (pink bollworm) से खो देते हैं, एक कीट जिसके लार्वा कपास के डोडे को अंदर से खाते हैं। गैर-लाभकारी संस्था Wadhwani AI ने एक ऐप (CottonAce) बनाया जिसमें किसान या फ़ील्ड कार्यकर्ता फ़ेरोमोन ट्रैप में फँसे कीटों की फ़ोटो लेता है; ऐप कीट गिनता और पहचानता है और सलाह देता है कि दवा छिड़कनी है या नहीं और कब। आगे हर चरण को इस परियोजना से जोड़ेंगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.3 Stage 1: Problem Scoping, from theme to problem",
+    "hi": "2.3 चरण 1: समस्या निर्धारण, विषय से समस्या तक"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Problem Scoping",
+       "hi": "समस्या निर्धारण (Problem Scoping)"
+      },
+      "text": {
+       "en": "Problem Scoping is the stage in which we understand a problem fully, find the factors that affect it, identify the people involved, and define a clear goal for the AI project.",
+       "hi": "समस्या निर्धारण वह चरण है जिसमें हम किसी समस्या को पूरी तरह समझते हैं, उसे प्रभावित करने वाले कारक खोजते हैं, शामिल लोगों को पहचानते हैं, और AI प्रोजेक्ट का स्पष्ट लक्ष्य तय करते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Albert Einstein is often quoted as saying that if he had an hour to solve a problem, he would spend most of it understanding the problem. Whoever said it, the idea is sound: a well-defined problem is half solved. Problem scoping narrows down step by step: Theme → Topic → Problem.",
+      "hi": "अक्सर कहा जाता है कि आइंस्टाइन ने कहा था, अगर उनके पास समस्या हल करने को एक घंटा हो, तो वे ज़्यादातर समय समस्या समझने में लगाएँगे। किसी ने भी कहा हो, विचार सही है: अच्छी तरह परिभाषित समस्या आधी हल हो जाती है। समस्या निर्धारण धीरे-धीरे दायरा छोटा करता है: विषय (Theme) → उप-विषय (Topic) → समस्या (Problem)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Level",
+        "Meaning",
+        "Example 1",
+        "Example 2"
+       ],
+       "hi": [
+        "स्तर",
+        "अर्थ",
+        "उदाहरण 1",
+        "उदाहरण 2"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Theme",
+         "A broad area of concern",
+         "Agriculture",
+         "Health"
+        ],
+        [
+         "Topic",
+         "A narrower area within the theme",
+         "Pest control in cotton",
+         "Eye health in villages"
+        ],
+        [
+         "Problem",
+         "One specific issue to solve",
+         "Farmers cannot tell when bollworm numbers are dangerous, so they spray too late or too often",
+         "Diabetic patients in rural areas are not screened in time for eye damage"
+        ]
+       ],
+       "hi": [
+        [
+         "विषय (Theme)",
+         "चिंता का व्यापक क्षेत्र",
+         "कृषि",
+         "स्वास्थ्य"
+        ],
+        [
+         "उप-विषय (Topic)",
+         "विषय के भीतर छोटा क्षेत्र",
+         "कपास में कीट नियंत्रण",
+         "गाँवों में आँखों का स्वास्थ्य"
+        ],
+        [
+         "समस्या (Problem)",
+         "हल करने लायक एक विशिष्ट मुद्दा",
+         "किसान नहीं जान पाते कि सुंडी की संख्या कब ख़तरनाक है, इसलिए बहुत देर से या बहुत बार दवा छिड़कते हैं",
+         "गाँवों के मधुमेह रोगियों की आँखों की क्षति की जाँच समय पर नहीं होती"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Good themes often come from the United Nations' 17 Sustainable Development Goals (SDGs), adopted in 2015 for the year 2030. Examples: No Poverty, Zero Hunger, Good Health and Well-being, Quality Education, Gender Equality, Clean Water and Sanitation, Affordable and Clean Energy, Climate Action, Life Below Water, Life on Land. AI projects in schools often pick a theme from these goals, then narrow it to a local problem.",
+      "hi": "अच्छे विषय अक्सर संयुक्त राष्ट्र के 17 सतत विकास लक्ष्यों (SDGs) से आते हैं, जिन्हें 2015 में वर्ष 2030 के लिए अपनाया गया। उदाहरण: गरीबी उन्मूलन, शून्य भुखमरी, अच्छा स्वास्थ्य और कल्याण, गुणवत्तापूर्ण शिक्षा, लैंगिक समानता, स्वच्छ जल और स्वच्छता, सस्ती और स्वच्छ ऊर्जा, जलवायु कार्रवाई, जल के नीचे जीवन, भूमि पर जीवन। स्कूलों के AI प्रोजेक्ट अक्सर इन लक्ष्यों में से विषय चुनकर उसे किसी स्थानीय समस्या तक सीमित करते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Brainstorming method: in a group, write the theme in the centre of a chart paper and draw a mind map: branches for topics, smaller branches for problems in each topic. Then vote for one problem using these tests: Is it real and important? Do we understand it? Can data be found? Could AI actually help (does it involve recognising, predicting or understanding language)? Is it safe and ethical?",
+      "hi": "विचार-मंथन विधि: समूह में चार्ट पेपर के बीच विषय लिखें और माइंड मैप बनाएँ: उप-विषयों की शाखाएँ, और हर उप-विषय में समस्याओं की छोटी शाखाएँ। फिर इन कसौटियों पर एक समस्या के लिए वोट करें: क्या यह वास्तविक और महत्वपूर्ण है? क्या हम इसे समझते हैं? क्या डेटा मिल सकता है? क्या AI सच में मदद कर सकता है (क्या इसमें पहचानना, अनुमान लगाना या भाषा समझना शामिल है)? क्या यह सुरक्षित और नैतिक है?"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.4 The 4Ws Problem Canvas and the problem statement",
+    "hi": "2.4 4Ws समस्या कैनवास और समस्या कथन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Once a problem is chosen, we study it using the 4Ws Problem Canvas: four blocks titled Who, What, Where and Why. Filling the canvas makes the team look at the problem from every side.",
+      "hi": "समस्या चुनने के बाद हम उसे 4Ws समस्या कैनवास से समझते हैं: चार खंड, जिनके शीर्षक हैं Who (कौन), What (क्या), Where (कहाँ) और Why (क्यों)। कैनवास भरने से टीम समस्या को हर पहलू से देखती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Block",
+        "Questions to ask",
+        "CottonAce example"
+       ],
+       "hi": [
+        "खंड",
+        "पूछे जाने वाले प्रश्न",
+        "CottonAce उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who? (stakeholders)",
+         "Who faces the problem? Who else is affected or involved? What do we know about them?",
+         "Small cotton farmers; also agricultural field workers, pesticide sellers, farmer groups and agriculture departments"
+        ],
+        [
+         "What? (nature of the problem)",
+         "What is the problem? How do we know it exists (evidence: surveys, news, data)?",
+         "Pink bollworm attacks reduce yield; farmers cannot judge pest levels, so they spray at the wrong time. Evidence: crop-loss reports and farmer surveys"
+        ],
+        [
+         "Where? (context/situation)",
+         "In what situation and location does it occur? When?",
+         "Cotton fields in states such as Maharashtra and Telangana, during the boll-forming season"
+        ],
+        [
+         "Why? (benefits)",
+         "Why should it be solved? What will the stakeholders gain? How will it improve their situation?",
+         "Timely spraying saves crop and money, reduces overuse of pesticide, protects health and environment"
+        ]
+       ],
+       "hi": [
+        [
+         "कौन? (हितधारक)",
+         "समस्या किसके सामने है? और कौन प्रभावित या शामिल है? उनके बारे में हम क्या जानते हैं?",
+         "छोटे कपास किसान; साथ ही कृषि फ़ील्ड कार्यकर्ता, कीटनाशक विक्रेता, किसान समूह और कृषि विभाग"
+        ],
+        [
+         "क्या? (समस्या का स्वरूप)",
+         "समस्या क्या है? हमें कैसे पता कि यह है (प्रमाण: सर्वेक्षण, समाचार, डेटा)?",
+         "गुलाबी सुंडी से पैदावार घटती है; किसान कीट का स्तर नहीं आँक पाते, इसलिए ग़लत समय पर दवा छिड़कते हैं। प्रमाण: फ़सल-हानि रिपोर्ट और किसान सर्वेक्षण"
+        ],
+        [
+         "कहाँ? (संदर्भ/स्थिति)",
+         "यह किस स्थिति और जगह में होती है? कब?",
+         "महाराष्ट्र और तेलंगाना जैसे राज्यों के कपास खेत, डोडे बनने के मौसम में"
+        ],
+        [
+         "क्यों? (लाभ)",
+         "इसे क्यों हल करें? हितधारकों को क्या मिलेगा? उनकी स्थिति कैसे सुधरेगी?",
+         "समय पर छिड़काव से फ़सल और पैसा बचता है, कीटनाशक का अति-उपयोग घटता है, स्वास्थ्य और पर्यावरण बचते हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Stakeholders",
+       "hi": "हितधारक (Stakeholders)"
+      },
+      "text": {
+       "en": "Stakeholders are the people or groups who face the problem, are affected by it, or will use or be affected by its solution.",
+       "hi": "हितधारक वे लोग या समूह हैं जो समस्या का सामना करते हैं, उससे प्रभावित होते हैं, या उसके समाधान का उपयोग करेंगे या उससे प्रभावित होंगे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "After the canvas, the team summarises everything in a Problem Statement Template, a short fill-in-the-blanks paragraph that everyone can refer back to:",
+      "hi": "कैनवास के बाद टीम सब कुछ समस्या कथन टेम्पलेट (Problem Statement Template) में सारांशित करती है, यानी एक छोटा रिक्त-स्थान वाला अनुच्छेद जिसे सब बाद में देख सकें:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Our [stakeholder(s)]          (Who)\nhas / have a problem that [issue, problem, need]          (What)\nwhen / while [context, situation]          (Where)\nAn ideal solution would [benefit of solution for them]          (Why)",
+      "hi": "हमारे [हितधारक]          (कौन)\nको एक समस्या है कि [मुद्दा, समस्या, ज़रूरत]          (क्या)\nजब / जबकि [संदर्भ, स्थिति]          (कहाँ)\nएक आदर्श समाधान [उनके लिए समाधान का लाभ] करेगा          (क्यों)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write the problem statement for CottonAce using the template, and turn it into a goal.",
+       "hi": "टेम्पलेट से CottonAce का समस्या कथन लिखिए और उसे लक्ष्य में बदलिए।"
+      },
+      "a": {
+       "en": "Problem statement: Our small cotton farmers have a problem that they cannot tell when pink bollworm numbers reach a harmful level, while their crop is forming bolls in the growing season. An ideal solution would tell them early and accurately when to spray, saving their crop, money and health.\nGoal ('How might we' form): How might we help cotton farmers detect harmful pink bollworm levels early, using a phone photo of their pest traps?",
+       "hi": "समस्या कथन: हमारे छोटे कपास किसानों को एक समस्या है कि वे नहीं जान पाते कि गुलाबी सुंडी की संख्या कब नुकसानदेह स्तर तक पहुँची, जबकि उगने के मौसम में उनकी फ़सल में डोडे बन रहे होते हैं। एक आदर्श समाधान उन्हें समय पर और सही बताएगा कि कब छिड़काव करना है, जिससे फ़सल, पैसा और स्वास्थ्य बचे।\nलक्ष्य ('हम कैसे कर सकते हैं' रूप में): हम कपास किसानों को उनके कीट-ट्रैप की फ़ोन फ़ोटो से गुलाबी सुंडी के नुकसानदेह स्तर का जल्दी पता लगाने में कैसे मदद कर सकते हैं?"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Problem scoping is iterative: as you learn more (from stakeholders, data or research), you may rewrite the canvas and statement. Also research current efforts: who is already working on this problem, and what has worked or failed?",
+      "hi": "समस्या निर्धारण पुनरावृत्तीय (iterative) है: जैसे-जैसे आप अधिक सीखते हैं (हितधारकों, डेटा या शोध से), कैनवास और कथन दोबारा लिख सकते हैं। मौजूदा प्रयासों पर शोध भी करें: इस समस्या पर पहले से कौन काम कर रहा है, और क्या सफल या विफल रहा?"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.5 Stakeholders, actions, ethics and planning for data",
+    "hi": "2.5 हितधारक, कार्य, नैतिकता और डेटा की योजना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The CBSE curriculum asks teams to go a little further during scoping: set actions around the goal, list all stakeholders, research existing solutions, think about ethical issues, and plan what data and analysis will be needed.",
+      "hi": "CBSE पाठ्यक्रम टीमों से कहता है कि निर्धारण के दौरान थोड़ा और आगे जाएँ: लक्ष्य के आसपास कार्य तय करें, सभी हितधारकों की सूची बनाएँ, मौजूदा समाधानों पर शोध करें, नैतिक मुद्दों पर सोचें, और योजना बनाएँ कि कौन-सा डेटा और विश्लेषण चाहिए।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Ethical questions in scoping: Could the solution harm anyone? Is anyone left out (for example, farmers without smartphones or who cannot read)? Will personal data (location, phone number, photos of people) be collected, and is consent taken? Who is responsible if the AI gives wrong advice?",
+       "Data-planning questions: Which data features are needed and how do they affect the problem? Where can the data be obtained? How often must it be collected? What happens if there is not enough data? What analysis is needed, how will results be validated, and how will they lead to action?"
+      ],
+      "hi": [
+       "निर्धारण में नैतिक प्रश्न: क्या समाधान किसी को नुकसान पहुँचा सकता है? क्या कोई छूट रहा है (जैसे बिना स्मार्टफ़ोन वाले या पढ़ न सकने वाले किसान)? क्या निजी डेटा (लोकेशन, फ़ोन नंबर, लोगों की फ़ोटो) लिया जाएगा, और क्या सहमति ली गई है? अगर AI ग़लत सलाह दे तो ज़िम्मेदार कौन है?",
+       "डेटा-योजना प्रश्न: कौन-सी डेटा विशेषताएँ चाहिए और वे समस्या को कैसे प्रभावित करती हैं? डेटा कहाँ से मिलेगा? कितनी बार इकट्ठा करना होगा? अगर डेटा पर्याप्त न हो तो क्या होगा? कौन-सा विश्लेषण चाहिए, परिणाम कैसे सत्यापित होंगे, और उनसे कार्रवाई कैसे होगी?"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Ethics is not a separate step at the end. It must be considered from the very first stage, because a badly scoped problem can lead to an unfair or harmful system. Chapter 3 covers AI ethics in detail.",
+      "hi": "नैतिकता अंत का अलग चरण नहीं है। इसे पहले ही चरण से सोचना होगा, क्योंकि ग़लत तरीके से तय की गई समस्या अनुचित या हानिकारक सिस्टम बना सकती है। अध्याय 3 में AI नैतिकता विस्तार से है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.6 Stage 2: Data Acquisition",
+    "hi": "2.6 चरण 2: डेटा अधिग्रहण"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data Acquisition",
+       "hi": "डेटा अधिग्रहण (Data Acquisition)"
+      },
+      "text": {
+       "en": "Data Acquisition is the stage of collecting accurate, reliable and relevant data from authentic sources, so that the AI model can be trained and tested.",
+       "hi": "डेटा अधिग्रहण वह चरण है जिसमें प्रामाणिक स्रोतों से सटीक, भरोसेमंद और प्रासंगिक डेटा इकट्ठा किया जाता है, ताकि AI model को प्रशिक्षित और परखा जा सके।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Data means facts, figures, observations, images, sounds or text that can be stored and processed. For AI, data is like food: the quality of the model depends on the quality of the data. The data collected is usually split into two parts.",
+      "hi": "डेटा का अर्थ है तथ्य, आँकड़े, अवलोकन, चित्र, ध्वनियाँ या पाठ जिन्हें रखा और संसाधित किया जा सके। AI के लिए डेटा भोजन की तरह है: model की गुणवत्ता डेटा की गुणवत्ता पर निर्भर करती है। इकट्ठा किया गया डेटा आम तौर पर दो भागों में बाँटा जाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Part",
+        "Purpose",
+        "Analogy"
+       ],
+       "hi": [
+        "भाग",
+        "उद्देश्य",
+        "उपमा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Training data",
+         "Used to teach the model the patterns",
+         "The solved examples and practice questions you study from"
+        ],
+        [
+         "Testing data",
+         "Kept aside and used only to check how well the model works on data it has never seen",
+         "The final exam paper with new questions"
+        ]
+       ],
+       "hi": [
+        [
+         "प्रशिक्षण डेटा (Training data)",
+         "model को पैटर्न सिखाने के लिए",
+         "हल किए उदाहरण और अभ्यास प्रश्न जिनसे आप पढ़ते हैं"
+        ],
+        [
+         "परीक्षण डेटा (Testing data)",
+         "अलग रखा जाता है और केवल यह जाँचने के लिए कि model अनदेखे डेटा पर कितना अच्छा चलता है",
+         "नए प्रश्नों वाला अंतिम परीक्षा पत्र"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "A common split is about 80% training and 20% testing (70:30 is also used). Testing on the same data used for training is like giving students the exact practice questions in the exam: high marks, but it proves nothing.",
+      "hi": "आम बँटवारा लगभग 80% प्रशिक्षण और 20% परीक्षण है (70:30 भी उपयोग होता है)। प्रशिक्षण वाले डेटा पर ही परीक्षण करना ऐसा है जैसे परीक्षा में वही अभ्यास प्रश्न दे देना: अंक ऊँचे, पर कुछ सिद्ध नहीं होता।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data features",
+       "hi": "डेटा विशेषताएँ (Data features)"
+      },
+      "text": {
+       "en": "Data features are the specific types of information (attributes or columns) that we collect because they affect the problem. Choosing the right features is a key part of data acquisition.",
+       "hi": "डेटा विशेषताएँ वे विशिष्ट प्रकार की जानकारी (गुण या स्तंभ) हैं जिन्हें हम इसलिए इकट्ठा करते हैं क्योंकि वे समस्या को प्रभावित करती हैं। सही विशेषताएँ चुनना डेटा अधिग्रहण का मुख्य हिस्सा है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A company wants an AI to predict the salary of an employee for the next year. Which data features would you collect, and how would you use training and testing data?",
+       "hi": "एक कंपनी ऐसा AI चाहती है जो कर्मचारी का अगले वर्ष का वेतन अनुमानित करे। आप कौन-सी डेटा विशेषताएँ इकट्ठा करेंगे, और प्रशिक्षण व परीक्षण डेटा का उपयोग कैसे करेंगे?"
+      },
+      "a": {
+       "en": "Step 1 (features): current salary, years of experience, past increments (%), bonus received, performance rating, job role. These affect future salary.\nStep 2 (not useful/unethical features): favourite colour (irrelevant); religion or gender (could cause unfair bias, must not be used).\nStep 3 (data): collect past records, e.g. 1,000 employees for the last 5 years, with the actual next-year salary.\nStep 4 (split): use 800 records to train the model and keep 200 for testing.\nStep 5 (test): the model predicts salaries for the 200 test employees; compare with their actual salaries to see how close it is.",
+       "hi": "चरण 1 (विशेषताएँ): वर्तमान वेतन, अनुभव के वर्ष, पिछली वेतन-वृद्धि (%), मिला बोनस, प्रदर्शन रेटिंग, पद। ये भविष्य के वेतन को प्रभावित करते हैं।\nचरण 2 (बेकार/अनैतिक विशेषताएँ): पसंदीदा रंग (असंबद्ध); धर्म या लिंग (अनुचित पक्षपात करा सकते हैं, उपयोग नहीं होने चाहिए)।\nचरण 3 (डेटा): पुराने रिकॉर्ड जुटाएँ, जैसे पिछले 5 वर्षों के 1,000 कर्मचारी, अगले वर्ष के असली वेतन के साथ।\nचरण 4 (बँटवारा): 800 रिकॉर्ड से model प्रशिक्षित करें और 200 परीक्षण के लिए रखें।\nचरण 5 (परीक्षण): model 200 परीक्षण कर्मचारियों का वेतन अनुमानित करता है; असली वेतन से तुलना करके देखें कि वह कितना पास है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.7 Sources of data and ways to acquire it",
+    "hi": "2.7 डेटा के स्रोत और उसे पाने के तरीके"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Source",
+        "How it works",
+        "Example"
+       ],
+       "hi": [
+        "स्रोत",
+        "कैसे काम करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Surveys",
+         "Asking people a set of questions, on paper or online forms",
+         "Asking farmers how often they spray and what losses they had"
+        ],
+        [
+         "Web scraping",
+         "Using a program to collect data from websites (only where allowed and legal)",
+         "Collecting daily mandi prices from a public website"
+        ],
+        [
+         "Sensors",
+         "Devices that measure physical quantities automatically",
+         "Soil-moisture sensors, temperature sensors, smart electricity meters"
+        ],
+        [
+         "Cameras",
+         "Capturing images and videos",
+         "Photos of pest traps; traffic cameras"
+        ],
+        [
+         "Observation",
+         "Watching and recording what happens",
+         "A field worker recording the number of moths each day"
+        ],
+        [
+         "APIs (Application Programming Interfaces)",
+         "A service that lets programs request data directly from another system",
+         "A weather service's API giving hourly forecast data to an app"
+        ]
+       ],
+       "hi": [
+        [
+         "सर्वेक्षण",
+         "लोगों से काग़ज़ या ऑनलाइन फ़ॉर्म पर प्रश्नों का समूह पूछना",
+         "किसानों से पूछना कि वे कितनी बार छिड़काव करते हैं और कितना नुकसान हुआ"
+        ],
+        [
+         "वेब स्क्रैपिंग",
+         "प्रोग्राम से वेबसाइटों से डेटा जुटाना (केवल जहाँ अनुमति और क़ानूनी हो)",
+         "किसी सार्वजनिक वेबसाइट से रोज़ मंडी भाव जुटाना"
+        ],
+        [
+         "सेंसर",
+         "भौतिक मात्राएँ अपने आप मापने वाले उपकरण",
+         "मिट्टी-नमी सेंसर, तापमान सेंसर, स्मार्ट बिजली मीटर"
+        ],
+        [
+         "कैमरे",
+         "चित्र और वीडियो लेना",
+         "कीट-ट्रैप की फ़ोटो; ट्रैफ़िक कैमरे"
+        ],
+        [
+         "अवलोकन",
+         "जो होता है उसे देखना और दर्ज करना",
+         "फ़ील्ड कार्यकर्ता का रोज़ पतंगों की संख्या लिखना"
+        ],
+        [
+         "API (एप्लिकेशन प्रोग्रामिंग इंटरफ़ेस)",
+         "एक सेवा जो प्रोग्रामों को दूसरे सिस्टम से सीधे डेटा माँगने देती है",
+         "मौसम सेवा का API जो ऐप को हर घंटे का पूर्वानुमान डेटा देता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Ways to acquire data: (1) collect new data yourself (surveys, sensors, photos); (2) convert existing (legacy) data, such as old paper registers, into digital form; (3) share or exchange data with partner organisations; (4) use open datasets released by governments and institutions; (5) purchase data from data providers, where this is legal and ethical.",
+      "hi": "डेटा पाने के तरीके: (1) स्वयं नया डेटा जुटाना (सर्वेक्षण, सेंसर, फ़ोटो); (2) मौजूदा (पुराने) डेटा, जैसे काग़ज़ी रजिस्टर, को डिजिटल रूप में बदलना; (3) साझेदार संस्थाओं से डेटा साझा या आदान-प्रदान करना; (4) सरकारों और संस्थाओं के जारी खुले डेटासेट उपयोग करना; (5) जहाँ क़ानूनी और नैतिक हो, डेटा प्रदाताओं से डेटा ख़रीदना।"
+     }
+    },
+    {
+     "p": {
+      "en": "Reliable sources: data must be accurate, authentic and from a trustworthy source. In India, open government data is available on the Open Government Data Platform (data.gov.in); the National Portal of India (india.gov.in) links to government services and information; agencies such as the India Meteorological Department publish weather data. Avoid data whose origin you cannot verify.",
+      "hi": "भरोसेमंद स्रोत: डेटा सटीक, प्रामाणिक और भरोसेमंद स्रोत से होना चाहिए। भारत में खुला सरकारी डेटा ओपन गवर्नमेंट डेटा प्लेटफ़ॉर्म (data.gov.in) पर उपलब्ध है; भारत का राष्ट्रीय पोर्टल (india.gov.in) सरकारी सेवाओं और जानकारी से जोड़ता है; भारत मौसम विज्ञान विभाग जैसी एजेंसियाँ मौसम डेटा प्रकाशित करती हैं। ऐसे डेटा से बचें जिसका स्रोत आप सत्यापित न कर सकें।"
+     }
+    },
+    {
+     "note": {
+      "en": "Ethics of data: never collect someone's personal data without permission. Do not scrape private profiles. Remove names and phone numbers when they are not needed (anonymise). Collect only what you need.",
+      "hi": "डेटा की नैतिकता: किसी का निजी डेटा बिना अनुमति कभी न जुटाएँ। निजी प्रोफ़ाइल स्क्रैप न करें। जब ज़रूरत न हो तो नाम और फ़ोन नंबर हटा दें (अनाम बनाएँ)। केवल उतना जुटाएँ जितना चाहिए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity (scenario): For each problem, list three features and a source. (a) Predicting which students may drop out: attendance %, marks trend, distance from school; source: school records (with permission, anonymised). (b) Predicting crowding in a metro station: time, day, festival/holiday, past ticket counts; source: ticket-gate data. (c) Detecting potholes: road photos, GPS location, vibration readings; source: phone cameras and sensors in buses.",
+      "hi": "गतिविधि (परिदृश्य): हर समस्या के लिए तीन विशेषताएँ और एक स्रोत लिखें। (a) कौन-से विद्यार्थी पढ़ाई छोड़ सकते हैं, इसका अनुमान: उपस्थिति %, अंकों का रुझान, स्कूल से दूरी; स्रोत: स्कूल रिकॉर्ड (अनुमति सहित, अनाम)। (b) मेट्रो स्टेशन पर भीड़ का अनुमान: समय, दिन, त्योहार/छुट्टी, पुरानी टिकट गिनती; स्रोत: टिकट-गेट डेटा। (c) गड्ढे पहचानना: सड़क की फ़ोटो, GPS लोकेशन, कंपन रीडिंग; स्रोत: बसों में लगे फ़ोन कैमरे और सेंसर।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.8 System maps",
+    "hi": "2.8 सिस्टम मैप (System maps)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "System map",
+       "hi": "सिस्टम मैप"
+      },
+      "text": {
+       "en": "A system map is a diagram that shows the elements of a problem and the cause-and-effect relationships between them. It helps the team see which factors (features) affect the goal and how.",
+       "hi": "सिस्टम मैप एक आरेख है जो किसी समस्या के तत्वों और उनके बीच के कारण-प्रभाव संबंधों को दिखाता है। इससे टीम देख पाती है कि कौन-से कारक (विशेषताएँ) लक्ष्य को कैसे प्रभावित करते हैं।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Elements are written as words or circles on the map.",
+       "An arrow from A to B means 'A affects B'.",
+       "A '+' sign on the arrow means a direct relationship: if A increases, B increases (and if A decreases, B decreases).",
+       "A '–' sign means an inverse relationship: if A increases, B decreases.",
+       "A loop is formed when arrows lead back to the starting element, showing a cycle of effects.",
+       "A longer arrow (or a mark on it) shows a time delay: the effect happens after some time."
+      ],
+      "hi": [
+       "तत्वों को मैप पर शब्दों या घेरों के रूप में लिखा जाता है।",
+       "A से B तक तीर का अर्थ है 'A, B को प्रभावित करता है'।",
+       "तीर पर '+' चिह्न सीधा संबंध दिखाता है: A बढ़े तो B बढ़े (और A घटे तो B घटे)।",
+       "'–' चिह्न उलटा संबंध दिखाता है: A बढ़े तो B घटे।",
+       "जब तीर घूमकर शुरुआती तत्व पर लौटते हैं तो लूप बनता है, जो प्रभावों का चक्र दिखाता है।",
+       "लंबा तीर (या उस पर निशान) समय की देरी दिखाता है: प्रभाव कुछ समय बाद होता है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Describe a system map of the water cycle in words, with + and – signs.",
+       "hi": "जल चक्र का सिस्टम मैप शब्दों में + और – चिह्नों सहित बताइए।"
+      },
+      "a": {
+       "en": "Elements: sun's heat, evaporation, water vapour in air, clouds, rainfall, water in rivers and seas.\nSun's heat → (+) evaporation: more heat, more evaporation.\nEvaporation → (+) water vapour → (+) clouds → (+) rainfall.\nRainfall → (+) water in rivers and seas → (+) evaporation, completing a loop.\nRainfall → (–) temperature: rain cools the surroundings, which reduces evaporation.\nGroundwater recharge from rain is shown with a long arrow (time delay), because it takes weeks or months.",
+       "hi": "तत्व: सूर्य की गर्मी, वाष्पीकरण, हवा में जलवाष्प, बादल, वर्षा, नदियों और समुद्रों का पानी।\nसूर्य की गर्मी → (+) वाष्पीकरण: अधिक गर्मी, अधिक वाष्पीकरण।\nवाष्पीकरण → (+) जलवाष्प → (+) बादल → (+) वर्षा।\nवर्षा → (+) नदियों और समुद्रों का पानी → (+) वाष्पीकरण, जिससे लूप पूरा होता है।\nवर्षा → (–) तापमान: बारिश वातावरण ठंडा करती है, जिससे वाष्पीकरण घटता है।\nबारिश से भूजल भराव लंबे तीर (समय की देरी) से दिखाया जाता है, क्योंकि इसमें हफ़्ते या महीने लगते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Draw (in words) a system map for 'pink bollworm damage in a cotton field'.",
+       "hi": "'कपास खेत में गुलाबी सुंडी से नुकसान' का सिस्टम मैप (शब्दों में) बनाइए।"
+      },
+      "a": {
+       "en": "Moth count in traps → (+) bollworm larvae in bolls → (+) crop damage → (–) farmer income.\nTimely spraying → (–) larvae.\nLate or excess spraying → (+) pesticide cost → (–) farmer income; excess spraying → (+) pest resistance (long arrow: develops over seasons) → (+) larvae.\nWarm humid weather → (+) moth breeding.\nThis map shows that 'moth count' and 'weather' are key data features, and 'timely spraying' is the action AI can improve.",
+       "hi": "ट्रैप में पतंगों की गिनती → (+) डोडों में सुंडी के लार्वा → (+) फ़सल नुकसान → (–) किसान की आय।\nसमय पर छिड़काव → (–) लार्वा।\nदेर से या अधिक छिड़काव → (+) कीटनाशक लागत → (–) किसान की आय; अधिक छिड़काव → (+) कीट प्रतिरोध (लंबा तीर: मौसमों में विकसित होता है) → (+) लार्वा।\nगर्म नम मौसम → (+) पतंगों का प्रजनन।\nयह मैप दिखाता है कि 'पतंगों की गिनती' और 'मौसम' मुख्य डेटा विशेषताएँ हैं, और 'समय पर छिड़काव' वह कार्य है जिसे AI सुधार सकता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.9 Stage 3: Data Exploration",
+    "hi": "2.9 चरण 3: डेटा अन्वेषण"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data Exploration",
+       "hi": "डेटा अन्वेषण (Data Exploration)"
+      },
+      "text": {
+       "en": "Data Exploration is the stage of arranging, cleaning and visualising the collected data to understand its trends, patterns and relationships, so that we can choose the right model and communicate what the data says.",
+       "hi": "डेटा अन्वेषण वह चरण है जिसमें इकट्ठे डेटा को व्यवस्थित, साफ़ और दृश्य रूप (visualise) में रखा जाता है, ताकि उसके रुझान, पैटर्न और संबंध समझ आएँ, और हम सही model चुन सकें और डेटा की बात दूसरों तक पहुँचा सकें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Raw data is usually a large table of numbers that is hard to understand by reading. A graph shows the story at a glance. Why visualise? (1) to quickly see trends and patterns; (2) to spot errors, missing values and unusual points (outliers); (3) to decide which model or approach to use; (4) to explain findings to others. Data cleaning, filling or removing missing and wrong values, also happens here; Chapter 4 (Data Literacy) teaches it in detail.",
+      "hi": "कच्चा डेटा आम तौर पर संख्याओं की बड़ी तालिका होती है जिसे पढ़कर समझना कठिन है। ग्राफ़ एक नज़र में कहानी दिखाता है। दृश्य क्यों बनाएँ? (1) रुझान और पैटर्न जल्दी देखने के लिए; (2) त्रुटियाँ, छूटे मान और असामान्य बिंदु (outliers) पकड़ने के लिए; (3) कौन-सा model या तरीका उपयोग करें, यह तय करने के लिए; (4) निष्कर्ष दूसरों को समझाने के लिए। डेटा की सफ़ाई, यानी छूटे और ग़लत मान भरना या हटाना, भी यहीं होती है; अध्याय 4 (डेटा साक्षरता) इसे विस्तार से पढ़ाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Graph",
+        "Best for",
+        "Example"
+       ],
+       "hi": [
+        "ग्राफ़",
+        "किसके लिए सबसे अच्छा",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Bar chart",
+         "Comparing quantities across categories",
+         "Pest counts in five villages"
+        ],
+        [
+         "Line chart",
+         "Showing change over time (trends)",
+         "Moth count each day in July"
+        ],
+        [
+         "Pie chart",
+         "Parts of a whole (percentages)",
+         "Share of each crop in a district's farmland"
+        ],
+        [
+         "Histogram",
+         "How values are spread (distribution) in ranges",
+         "Number of students scoring 0–10, 10–20, ... marks"
+        ],
+        [
+         "Scatter plot",
+         "Relationship between two numerical variables",
+         "Hours studied vs marks scored"
+        ],
+        [
+         "Bubble chart",
+         "Scatter plot with a third value shown by bubble size",
+         "Countries: income vs life expectancy, bubble = population"
+        ],
+        [
+         "Tree diagram / treemap",
+         "Hierarchy, or parts of a whole as nested boxes",
+         "Budget split into departments and sub-departments"
+        ],
+        [
+         "Venn diagram",
+         "Overlap between groups",
+         "Students who play cricket, football, or both"
+        ],
+        [
+         "Flow chart",
+         "Steps of a process",
+         "Steps of the AI project cycle"
+        ]
+       ],
+       "hi": [
+        [
+         "बार चार्ट",
+         "श्रेणियों में मात्राओं की तुलना",
+         "पाँच गाँवों में कीटों की गिनती"
+        ],
+        [
+         "लाइन चार्ट",
+         "समय के साथ बदलाव (रुझान)",
+         "जुलाई के हर दिन पतंगों की गिनती"
+        ],
+        [
+         "पाई चार्ट",
+         "पूरे के हिस्से (प्रतिशत)",
+         "किसी ज़िले की कृषि भूमि में हर फ़सल का हिस्सा"
+        ],
+        [
+         "हिस्टोग्राम",
+         "मान अंतरालों में कैसे फैले हैं (वितरण)",
+         "0–10, 10–20, ... अंक पाने वाले विद्यार्थियों की संख्या"
+        ],
+        [
+         "स्कैटर प्लॉट",
+         "दो संख्यात्मक चरों के बीच संबंध",
+         "पढ़ाई के घंटे बनाम प्राप्त अंक"
+        ],
+        [
+         "बबल चार्ट",
+         "स्कैटर प्लॉट, जिसमें तीसरा मान बुलबुले के आकार से",
+         "देश: आय बनाम जीवन प्रत्याशा, बुलबुला = जनसंख्या"
+        ],
+        [
+         "ट्री आरेख / ट्रीमैप",
+         "पदानुक्रम, या पूरे के हिस्से नेस्टेड डिब्बों में",
+         "बजट का विभागों और उप-विभागों में बँटवारा"
+        ],
+        [
+         "वेन आरेख",
+         "समूहों के बीच का साझा भाग",
+         "क्रिकेट, फ़ुटबॉल या दोनों खेलने वाले विद्यार्थी"
+        ],
+        [
+         "फ़्लो चार्ट",
+         "किसी प्रक्रिया के चरण",
+         "AI प्रोजेक्ट चक्र के चरण"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The CBSE material suggests exploring the Data Visualisation Catalogue (datavizcatalogue.com), a free website that lists dozens of chart types, what each is for, and how to read it. Spreadsheets such as Google Sheets (free) or LibreOffice Calc (free) can make charts from a table in a few clicks.",
+      "hi": "CBSE सामग्री Data Visualisation Catalogue (datavizcatalogue.com) देखने का सुझाव देती है, एक मुफ़्त वेबसाइट जो दर्जनों चार्ट प्रकार, हर एक का उपयोग और उसे पढ़ने का तरीका बताती है। Google Sheets (मुफ़्त) या LibreOffice Calc (मुफ़्त) जैसी स्प्रेडशीट कुछ क्लिक में तालिका से चार्ट बना देती हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A team records the daily average moth count in traps for 10 days: 2, 3, 3, 5, 6, 9, 12, 15, 14, 18. Which graph would you use, and what does it show?",
+       "hi": "एक टीम 10 दिनों तक ट्रैप में पतंगों की दैनिक औसत गिनती लिखती है: 2, 3, 3, 5, 6, 9, 12, 15, 14, 18। आप कौन-सा ग्राफ़ उपयोग करेंगे, और वह क्या दिखाता है?"
+      },
+      "a": {
+       "en": "Step 1: The data changes over time (days), so a line chart is best.\nStep 2: Plot day 1 to 10 on the x-axis and moth count on the y-axis; join the points.\nStep 3: The line rises steeply after day 5 (from 6 to 18), with a small dip on day 9.\nStep 4: Insight: infestation is growing fast; if the advisory threshold were, say, 8 moths per trap per day, it was crossed on day 6, so spraying advice should have been given then.\nStep 5: This trend suggests that a model predicting 'risk tomorrow' from the last few days' counts could be useful.",
+       "hi": "चरण 1: डेटा समय (दिनों) के साथ बदलता है, इसलिए लाइन चार्ट सबसे अच्छा है।\nचरण 2: x-अक्ष पर दिन 1 से 10 और y-अक्ष पर पतंगों की गिनती; बिंदुओं को जोड़ें।\nचरण 3: दिन 5 के बाद रेखा तेज़ी से चढ़ती है (6 से 18), दिन 9 पर हल्की गिरावट।\nचरण 4: निष्कर्ष: प्रकोप तेज़ी से बढ़ रहा है; अगर सलाह की सीमा, मान लीजिए, प्रति ट्रैप प्रति दिन 8 पतंगे हो, तो वह दिन 6 को पार हुई, इसलिए तभी छिड़काव की सलाह देनी चाहिए थी।\nचरण 5: यह रुझान बताता है कि पिछले कुछ दिनों की गिनती से 'कल का जोखिम' बताने वाला model उपयोगी हो सकता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.10 Stage 4: Modelling",
+    "hi": "2.10 चरण 4: मॉडलिंग"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Modelling",
+       "hi": "मॉडलिंग (Modelling)"
+      },
+      "text": {
+       "en": "Modelling is the stage of choosing and building a model, a mathematical or logical method that takes input data and produces the required output (a prediction, classification or decision).",
+       "hi": "मॉडलिंग वह चरण है जिसमें model चुना और बनाया जाता है, यानी एक गणितीय या तार्किक विधि जो इनपुट डेटा लेकर आवश्यक आउटपुट (अनुमान, वर्गीकरण या निर्णय) देती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Recall from Chapter 1: AI is the umbrella term; Machine Learning (ML) is the part of AI in which machines learn from experience (data) without being explicitly programmed for every case; Deep Learning (DL) is the part of ML in which neural networks learn from very large amounts of data and can find features on their own. Picture three circles one inside another: AI ⊃ ML ⊃ DL. AI models are broadly built in two ways: rule-based and learning-based.",
+      "hi": "अध्याय 1 से याद करें: AI छत्र शब्द है; Machine Learning (ML) AI का वह भाग है जिसमें मशीनें हर स्थिति के लिए अलग से प्रोग्राम किए बिना अनुभव (डेटा) से सीखती हैं; Deep Learning (DL) ML का वह भाग है जिसमें न्यूरल नेटवर्क बहुत बड़े डेटा से सीखते हैं और विशेषताएँ स्वयं खोज सकते हैं। एक के अंदर एक तीन वृत्तों की कल्पना करें: AI ⊃ ML ⊃ DL। AI model मोटे तौर पर दो तरह से बनते हैं: नियम-आधारित और सीखने-आधारित।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Rule-based approach",
+       "hi": "नियम-आधारित तरीका (Rule-based approach)"
+      },
+      "text": {
+       "en": "In the rule-based approach, the developer writes the rules (if–then conditions) that link input to output. The machine follows these rules but does not learn by itself; the model is static and changes only when a human edits the rules.",
+       "hi": "नियम-आधारित तरीके में डेवलपर नियम (अगर–तो शर्तें) लिखता है जो इनपुट को आउटपुट से जोड़ते हैं। मशीन इन नियमों का पालन करती है पर स्वयं नहीं सीखती; model स्थिर (static) रहता है और तभी बदलता है जब इंसान नियम बदले।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "CBSE example: deciding whether a child can play golf (outdoors) based on weather. Write the rules and test them.",
+       "hi": "CBSE उदाहरण: मौसम के आधार पर तय करना कि बच्चा (बाहर) गोल्फ़ खेल सकता है या नहीं। नियम लिखिए और परखिए।"
+      },
+      "a": {
+       "en": "Features: outlook (sunny/overcast/rainy), temperature, humidity (high/normal), windy (yes/no).\nRules written by the developer (from a table of past days):\n1. If outlook is overcast → Play = Yes.\n2. If outlook is sunny and humidity is high → No; sunny and normal → Yes.\n3. If outlook is rainy and windy → No; rainy and not windy → Yes.\nTest: Sunny, high humidity, not windy → rule 2 → No. Overcast, high humidity, windy → rule 1 → Yes. Rainy, normal humidity, windy → rule 3 → No.\nLimitation: if a new situation appears (say, 'foggy'), there is no rule, and the model cannot handle it until a person adds one.",
+       "hi": "विशेषताएँ: आसमान (धूप/बादल/बारिश), तापमान, नमी (अधिक/सामान्य), हवा (हाँ/नहीं)।\nडेवलपर द्वारा लिखे नियम (पिछले दिनों की तालिका से):\n1. अगर आसमान में बादल → खेलें = हाँ।\n2. अगर धूप और नमी अधिक → नहीं; धूप और नमी सामान्य → हाँ।\n3. अगर बारिश और हवा → नहीं; बारिश और हवा नहीं → हाँ।\nपरीक्षण: धूप, अधिक नमी, हवा नहीं → नियम 2 → नहीं। बादल, अधिक नमी, हवा → नियम 1 → हाँ। बारिश, सामान्य नमी, हवा → नियम 3 → नहीं।\nसीमा: अगर नई स्थिति आए (जैसे 'कोहरा'), तो कोई नियम नहीं है, और जब तक कोई व्यक्ति नियम न जोड़े, model उसे नहीं संभाल सकता।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# Rule-based model: can the child play golf?\ndef can_play(outlook, humidity, windy):\n    if outlook == \"overcast\":\n        return \"Yes\"\n    if outlook == \"sunny\":\n        return \"Yes\" if humidity == \"normal\" else \"No\"\n    if outlook == \"rainy\":\n        return \"No\" if windy else \"Yes\"\n\nprint(can_play(\"sunny\", \"high\", False))\nprint(can_play(\"overcast\", \"high\", True))\nprint(can_play(\"rainy\", \"normal\", True))\n\nOutput:\nNo\nYes\nNo",
+      "hi": "# नियम-आधारित model: क्या बच्चा गोल्फ़ खेल सकता है?\ndef can_play(outlook, humidity, windy):\n    if outlook == \"overcast\":\n        return \"Yes\"\n    if outlook == \"sunny\":\n        return \"Yes\" if humidity == \"normal\" else \"No\"\n    if outlook == \"rainy\":\n        return \"No\" if windy else \"Yes\"\n\nprint(can_play(\"sunny\", \"high\", False))\nprint(can_play(\"overcast\", \"high\", True))\nprint(can_play(\"rainy\", \"normal\", True))\n\nआउटपुट:\nNo\nYes\nNo"
+     }
+    },
+    {
+     "note": {
+      "en": "You do not need to write Python yet; it is shown so you can see that a rule-based model is just a set of if–then rules. You will learn Python in Chapter 7.",
+      "hi": "अभी Python लिखना ज़रूरी नहीं; यह इसलिए दिखाया है ताकि दिखे कि नियम-आधारित model केवल अगर–तो नियमों का समूह है। Python आप अध्याय 7 में सीखेंगे।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Learning-based approach",
+       "hi": "सीखने-आधारित तरीका (Learning-based approach)"
+      },
+      "text": {
+       "en": "In the learning-based approach, the machine is given data (often labelled examples) and learns the rules or patterns by itself. The model can adapt when new data is added and can handle examples it has not seen before.",
+       "hi": "सीखने-आधारित तरीके में मशीन को डेटा (अक्सर लेबल वाले उदाहरण) दिया जाता है और वह नियम या पैटर्न स्वयं सीखती है। नया डेटा जोड़ने पर model ढल सकता है और पहले न देखे गए उदाहरण भी संभाल सकता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "CBSE example: an AI to tell apples from bananas in photos. How does the learning-based approach work, and why is it better than writing rules here?",
+       "hi": "CBSE उदाहरण: फ़ोटो में सेब और केले को अलग पहचानने वाला AI। सीखने-आधारित तरीका कैसे काम करता है, और यहाँ नियम लिखने से बेहतर क्यों है?"
+      },
+      "a": {
+       "en": "Step 1: Collect hundreds of photos of apples and bananas, each labelled 'apple' or 'banana'.\nStep 2: Feed them to a learning algorithm. It finds patterns on its own: bananas are long, curved, yellow; apples are round, red or green.\nStep 3: Give it a new photo it has never seen, say a green apple on a plate. The model predicts 'apple'.\nStep 4: If it confuses a yellow apple with a banana, add more such examples and retrain.\nWhy better: writing rules by hand is almost impossible: apples come in many colours, lighting changes, fruit can be cut or half hidden. Learning from many examples handles this variety.",
+       "hi": "चरण 1: सेब और केले की सैकड़ों फ़ोटो जुटाएँ, हर एक पर 'सेब' या 'केला' लेबल।\nचरण 2: इन्हें सीखने वाले algorithm को दें। वह स्वयं पैटर्न खोजता है: केले लंबे, मुड़े, पीले; सेब गोल, लाल या हरे।\nचरण 3: उसे कभी न देखी फ़ोटो दें, जैसे प्लेट पर हरा सेब। Model 'सेब' बताता है।\nचरण 4: अगर वह पीले सेब को केला समझे, तो ऐसे और उदाहरण जोड़कर फिर प्रशिक्षित करें।\nबेहतर क्यों: हाथ से नियम लिखना लगभग असंभव है: सेब कई रंगों के होते हैं, रोशनी बदलती है, फल कटा या आधा छिपा हो सकता है। कई उदाहरणों से सीखना इस विविधता को संभाल लेता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Rule-based",
+        "Learning-based"
+       ],
+       "hi": [
+        "बिंदु",
+        "नियम-आधारित",
+        "सीखने-आधारित"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who makes the rules?",
+         "The developer",
+         "The machine learns them from data"
+        ],
+        [
+         "Data needed",
+         "Little; mainly expert knowledge",
+         "Lots of good-quality data"
+        ],
+        [
+         "Adapting to new situations",
+         "Cannot; static",
+         "Can improve with new data; dynamic"
+        ],
+        [
+         "Explaining decisions",
+         "Easy: each rule is visible",
+         "Often harder"
+        ],
+        [
+         "Best for",
+         "Simple, stable problems with clear rules",
+         "Complex patterns: images, speech, behaviour"
+        ],
+        [
+         "Examples",
+         "Golf rule chart, simple railway ticket fare rules, a basic FAQ bot with fixed replies",
+         "Face unlock, spam filter, CottonAce pest detection, voice typing"
+        ]
+       ],
+       "hi": [
+        [
+         "नियम कौन बनाता है?",
+         "डेवलपर",
+         "मशीन डेटा से सीखती है"
+        ],
+        [
+         "आवश्यक डेटा",
+         "कम; मुख्यतः विशेषज्ञ ज्ञान",
+         "बहुत सारा अच्छी गुणवत्ता वाला डेटा"
+        ],
+        [
+         "नई स्थितियों में ढलना",
+         "नहीं; स्थिर",
+         "नए डेटा से सुधर सकता है; गतिशील"
+        ],
+        [
+         "निर्णय समझाना",
+         "आसान: हर नियम दिखता है",
+         "अक्सर कठिन"
+        ],
+        [
+         "किसके लिए सबसे अच्छा",
+         "स्पष्ट नियमों वाली सरल, स्थिर समस्याएँ",
+         "जटिल पैटर्न: चित्र, वाणी, व्यवहार"
+        ],
+        [
+         "उदाहरण",
+         "गोल्फ़ नियम चार्ट, रेल टिकट किराए के सरल नियम, तय उत्तरों वाला साधारण FAQ बॉट",
+         "फ़ेस अनलॉक, स्पैम फ़िल्टर, CottonAce कीट पहचान, वॉइस टाइपिंग"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Learning-based models are commonly grouped by how they learn. Supervised learning learns from labelled examples (photos tagged 'apple'/'banana'). Unsupervised learning finds groups or patterns in unlabelled data (grouping customers by shopping habits without being told the groups). Reinforcement learning learns by trial and error with rewards (a game-playing AI that gets points for winning). For CottonAce, a supervised deep-learning vision model was trained on thousands of labelled trap photos to detect and count pink bollworm moths.",
+      "hi": "सीखने-आधारित model आम तौर पर इस आधार पर बाँटे जाते हैं कि वे कैसे सीखते हैं। पर्यवेक्षित अधिगम (Supervised learning) लेबल वाले उदाहरणों से सीखता है ('सेब'/'केला' टैग वाली फ़ोटो)। अपर्यवेक्षित अधिगम (Unsupervised learning) बिना लेबल के डेटा में समूह या पैटर्न खोजता है (बिना बताए ग्राहकों को ख़रीदारी की आदतों के आधार पर समूहों में बाँटना)। प्रबलन अधिगम (Reinforcement learning) इनाम के साथ प्रयास-और-भूल से सीखता है (खेल जीतने पर अंक पाने वाला AI)। CottonAce के लिए एक पर्यवेक्षित deep-learning विज़न model को हज़ारों लेबल वाली ट्रैप फ़ोटो पर प्रशिक्षित किया गया ताकि वह गुलाबी सुंडी के पतंगे पहचान और गिन सके।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.11 Stage 5: Evaluation",
+    "hi": "2.11 चरण 5: मूल्यांकन"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Evaluation",
+       "hi": "मूल्यांकन (Evaluation)"
+      },
+      "text": {
+       "en": "Evaluation is the stage of checking how reliable a model is, by giving it testing data (which it has not seen) and comparing its predictions with the actual answers.",
+       "hi": "मूल्यांकन वह चरण है जिसमें model की विश्वसनीयता जाँची जाती है, उसे परीक्षण डेटा (जो उसने नहीं देखा) देकर और उसके अनुमानों की असली उत्तरों से तुलना करके।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why not test on training data? Because a model can simply memorise its training examples. This is called overfitting: the model does brilliantly on data it has seen but poorly on new data, like a student who memorised last year's answers without understanding. Testing on separate data reveals the true performance.",
+      "hi": "प्रशिक्षण डेटा पर परीक्षण क्यों नहीं? क्योंकि model अपने प्रशिक्षण उदाहरण केवल रट सकता है। इसे overfitting कहते हैं: model देखे हुए डेटा पर शानदार पर नए डेटा पर ख़राब करता है, जैसे वह विद्यार्थी जो बिना समझे पिछले साल के उत्तर रट ले। अलग डेटा पर परीक्षण असली प्रदर्शन दिखाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "For a yes/no prediction, each test case falls into one of four outcomes. CBSE's example: an AI predicts whether there will be a forest fire.",
+      "hi": "हाँ/नहीं वाले अनुमान में हर परीक्षण मामला चार परिणामों में से एक में आता है। CBSE का उदाहरण: AI अनुमान लगाता है कि जंगल में आग लगेगी या नहीं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Outcome",
+        "Prediction",
+        "Reality",
+        "Meaning in the forest-fire example"
+       ],
+       "hi": [
+        "परिणाम",
+        "अनुमान",
+        "वास्तविकता",
+        "जंगल-आग उदाहरण में अर्थ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "True Positive (TP)",
+         "Yes",
+         "Yes",
+         "Predicted fire, and there was a fire: correct alarm"
+        ],
+        [
+         "True Negative (TN)",
+         "No",
+         "No",
+         "Predicted no fire, and there was none: correct calm"
+        ],
+        [
+         "False Positive (FP)",
+         "Yes",
+         "No",
+         "Predicted fire, but there was none: false alarm (wastes fire-fighters' time)"
+        ],
+        [
+         "False Negative (FN)",
+         "No",
+         "Yes",
+         "Predicted no fire, but a fire happened: missed danger (most harmful here)"
+        ]
+       ],
+       "hi": [
+        [
+         "सत्य धनात्मक (TP)",
+         "हाँ",
+         "हाँ",
+         "आग का अनुमान, और आग लगी: सही चेतावनी"
+        ],
+        [
+         "सत्य ऋणात्मक (TN)",
+         "नहीं",
+         "नहीं",
+         "आग नहीं का अनुमान, और नहीं लगी: सही शांति"
+        ],
+        [
+         "मिथ्या धनात्मक (FP)",
+         "हाँ",
+         "नहीं",
+         "आग का अनुमान, पर आग नहीं लगी: झूठी चेतावनी (दमकल का समय बर्बाद)"
+        ],
+        [
+         "मिथ्या ऋणात्मक (FN)",
+         "नहीं",
+         "हाँ",
+         "आग नहीं का अनुमान, पर आग लगी: छूटा ख़तरा (यहाँ सबसे हानिकारक)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "How to remember: the second word (Positive/Negative) is what the model predicted. The first word (True/False) tells whether that prediction was correct.",
+      "hi": "याद रखने का तरीका: दूसरा शब्द (Positive/Negative) वह है जो model ने अनुमान लगाया। पहला शब्द (True/False) बताता है कि वह अनुमान सही था या नहीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "These four counts are arranged in a 2 × 2 table called the confusion matrix: rows for the prediction (Yes/No), columns for reality (Yes/No). From it we compute evaluation metrics:",
+      "hi": "ये चार गिनतियाँ 2 × 2 तालिका में रखी जाती हैं जिसे confusion matrix कहते हैं: पंक्तियाँ अनुमान (हाँ/नहीं) के लिए, स्तंभ वास्तविकता (हाँ/नहीं) के लिए। इससे हम मूल्यांकन मापदंड निकालते हैं:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Accuracy  = (TP + TN) / (TP + TN + FP + FN) × 100%\nPrecision = TP / (TP + FP)\nRecall    = TP / (TP + FN)\nF1 Score  = 2 × Precision × Recall / (Precision + Recall)",
+      "hi": "Accuracy (सटीकता)   = (TP + TN) / (TP + TN + FP + FN) × 100%\nPrecision (परिशुद्धता) = TP / (TP + FP)\nRecall (स्मरण)       = TP / (TP + FN)\nF1 Score            = 2 × Precision × Recall / (Precision + Recall)"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Accuracy: out of all predictions, what fraction were correct?",
+       "Precision: out of all the times the model said 'Yes', how many were really Yes? (High precision = few false alarms.)",
+       "Recall: out of all the real Yes cases, how many did the model catch? (High recall = few missed cases.)",
+       "F1 score: a single number that balances precision and recall; it is high only when both are high. It ranges from 0 to 1."
+      ],
+      "hi": [
+       "Accuracy: सभी अनुमानों में से कितना भाग सही था?",
+       "Precision: जितनी बार model ने 'हाँ' कहा, उनमें से कितने सच में हाँ थे? (ऊँची precision = कम झूठी चेतावनियाँ।)",
+       "Recall: सभी असली 'हाँ' मामलों में से model ने कितने पकड़े? (ऊँचा recall = कम छूटे मामले।)",
+       "F1 score: एक संख्या जो precision और recall में संतुलन रखती है; यह तभी ऊँचा होता है जब दोनों ऊँचे हों। इसका मान 0 से 1 के बीच होता है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A forest-fire model is tested on 100 days: TP = 40, FP = 10, FN = 5, TN = 45. Find accuracy, precision, recall and F1 score.",
+       "hi": "जंगल-आग model को 100 दिनों पर परखा गया: TP = 40, FP = 10, FN = 5, TN = 45। accuracy, precision, recall और F1 score ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Total = 40 + 10 + 5 + 45 = 100.\nStep 2: Accuracy = (40 + 45) / 100 = 85/100 = 85%.\nStep 3: Precision = 40 / (40 + 10) = 40/50 = 0.8.\nStep 4: Recall = 40 / (40 + 5) = 40/45 ≈ 0.889.\nStep 5: F1 = 2 × 0.8 × 0.889 / (0.8 + 0.889) = 1.422 / 1.689 ≈ 0.842.\nStep 6: Meaning: it is right 85% of the time; when it warns, it is right 80% of the time; it catches about 89% of real fires but missed 5 fires, which is serious in this case.",
+       "hi": "चरण 1: कुल = 40 + 10 + 5 + 45 = 100।\nचरण 2: Accuracy = (40 + 45) / 100 = 85/100 = 85%।\nचरण 3: Precision = 40 / (40 + 10) = 40/50 = 0.8।\nचरण 4: Recall = 40 / (40 + 5) = 40/45 ≈ 0.889।\nचरण 5: F1 = 2 × 0.8 × 0.889 / (0.8 + 0.889) = 1.422 / 1.689 ≈ 0.842।\nचरण 6: अर्थ: यह 85% बार सही है; जब चेतावनी देता है, तो 80% बार सही होता है; लगभग 89% असली आग पकड़ता है पर 5 आग चूक गया, जो इस मामले में गंभीर है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "# Checking the calculation with Python\nTP, FP, FN, TN = 40, 10, 5, 45\ntotal = TP + FP + FN + TN\naccuracy = (TP + TN) / total\nprecision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nf1 = 2 * precision * recall / (precision + recall)\nprint(\"Accuracy :\", round(accuracy * 100, 1), \"%\")\nprint(\"Precision:\", round(precision, 3))\nprint(\"Recall   :\", round(recall, 3))\nprint(\"F1 score :\", round(f1, 3))\n\nOutput:\nAccuracy : 85.0 %\nPrecision: 0.8\nRecall   : 0.889\nF1 score : 0.842",
+      "hi": "# Python से गणना की जाँच\nTP, FP, FN, TN = 40, 10, 5, 45\ntotal = TP + FP + FN + TN\naccuracy = (TP + TN) / total\nprecision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nf1 = 2 * precision * recall / (precision + recall)\nprint(\"Accuracy :\", round(accuracy * 100, 1), \"%\")\nprint(\"Precision:\", round(precision, 3))\nprint(\"Recall   :\", round(recall, 3))\nprint(\"F1 score :\", round(f1, 3))\n\nआउटपुट:\nAccuracy : 85.0 %\nPrecision: 0.8\nRecall   : 0.889\nF1 score : 0.842"
+     }
+    },
+    {
+     "note": {
+      "en": "Which mistake is worse depends on the problem. For forest fires or disease screening, a False Negative (missed case) is dangerous, so recall matters most. For a spam filter, a False Positive (an important email sent to spam) is worse, so precision matters more. This is why one accuracy number is not enough.",
+      "hi": "कौन-सी ग़लती ज़्यादा बुरी है, यह समस्या पर निर्भर है। जंगल की आग या रोग जाँच में False Negative (छूटा मामला) ख़तरनाक है, इसलिए recall सबसे ज़रूरी है। स्पैम फ़िल्टर में False Positive (ज़रूरी ईमेल स्पैम में जाना) ज़्यादा बुरा है, इसलिए precision ज़्यादा मायने रखती है। इसीलिए केवल एक accuracy संख्या काफ़ी नहीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Teams usually try several algorithms on the same testing data and compare their scores before choosing. (The CBSE handbook shows a bar graph comparing the accuracy of five algorithms; the tallest bar wins only if it also behaves well on precision and recall.) If no model is good enough, the team goes back: more or better data, different features, or a rethink of the problem.",
+      "hi": "टीमें आम तौर पर एक ही परीक्षण डेटा पर कई algorithm आज़माती हैं और चुनने से पहले उनके स्कोर की तुलना करती हैं। (CBSE हैंडबुक पाँच algorithm की accuracy की तुलना करता बार ग्राफ़ दिखाती है; सबसे ऊँचा बार तभी जीतता है जब precision और recall पर भी अच्छा हो।) अगर कोई model पर्याप्त अच्छा न हो, तो टीम पीछे जाती है: अधिक या बेहतर डेटा, अलग विशेषताएँ, या समस्या पर दोबारा विचार।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.12 Stage 6: Deployment",
+    "hi": "2.12 चरण 6: परिनियोजन"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Deployment",
+       "hi": "परिनियोजन (Deployment)"
+      },
+      "text": {
+       "en": "Deployment is the stage of putting the evaluated AI model into real-world use, by integrating it into an app, website, device or system that people use, and then monitoring and maintaining it.",
+       "hi": "परिनियोजन वह चरण है जिसमें परखे गए AI model को वास्तविक उपयोग में लाया जाता है, उसे किसी ऐप, वेबसाइट, उपकरण या सिस्टम में जोड़कर जिसे लोग उपयोग करते हैं, और फिर उसकी निगरानी और रखरखाव करके।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Testing and validation in real conditions: a pilot with a small group of real users (for example, a few villages) to check that it works outside the lab (bad lighting, cheap phones, poor internet).",
+       "Integration with existing systems: connecting the model to the app, the database, the SMS service, or the hospital's records, so it fits into how people already work.",
+       "Monitoring and maintenance: tracking accuracy and user feedback over time, fixing bugs, and retraining with new data when conditions change (new pest variety, new camera phones)."
+      ],
+      "hi": [
+       "वास्तविक परिस्थितियों में परीक्षण और सत्यापन: असली उपयोगकर्ताओं के छोटे समूह के साथ पायलट (जैसे कुछ गाँव), यह जाँचने के लिए कि यह प्रयोगशाला के बाहर भी चलता है (ख़राब रोशनी, सस्ते फ़ोन, कमज़ोर इंटरनेट)।",
+       "मौजूदा सिस्टम के साथ एकीकरण: model को ऐप, डेटाबेस, SMS सेवा या अस्पताल के रिकॉर्ड से जोड़ना, ताकि यह लोगों के मौजूदा काम करने के तरीके में फ़िट हो।",
+       "निगरानी और रखरखाव: समय के साथ accuracy और उपयोगकर्ता प्रतिक्रिया पर नज़र रखना, गड़बड़ियाँ ठीक करना, और परिस्थितियाँ बदलने पर (नई कीट किस्म, नए कैमरा फ़ोन) नए डेटा से फिर प्रशिक्षित करना।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Ways to deploy: as a mobile app (CottonAce, works offline on basic Android phones in local languages); as a website or web service; inside a device (a camera at a traffic signal, a smart speaker); as a chatbot on WhatsApp or a website; or as part of a larger system (fraud scoring inside a bank's payment system). The choice depends on the users: farmers in villages need offline, voice-friendly apps in their language; a hospital needs integration with its records.",
+      "hi": "परिनियोजन के तरीके: मोबाइल ऐप के रूप में (CottonAce, जो साधारण Android फ़ोन पर स्थानीय भाषाओं में बिना इंटरनेट भी चलता है); वेबसाइट या वेब सेवा के रूप में; किसी उपकरण के अंदर (ट्रैफ़िक सिग्नल का कैमरा, स्मार्ट स्पीकर); WhatsApp या वेबसाइट पर चैटबॉट के रूप में; या किसी बड़े सिस्टम के हिस्से के रूप में (बैंक की भुगतान प्रणाली में धोखाधड़ी स्कोर)। चुनाव उपयोगकर्ताओं पर निर्भर है: गाँवों के किसानों को उनकी भाषा में बिना इंटरनेट चलने वाले, आवाज़-अनुकूल ऐप चाहिए; अस्पताल को अपने रिकॉर्ड से जुड़ाव चाहिए।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "CottonAce mapped to the AI project cycle"
+       ],
+       "hi": [
+        "चरण",
+        "CottonAce को AI प्रोजेक्ट चक्र पर रखना"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Problem Scoping",
+         "Farmers lose cotton to pink bollworm and cannot judge when to spray (4Ws: farmers; wrong-time spraying; cotton fields in season; save crop, money, health)"
+        ],
+        [
+         "Data Acquisition",
+         "Thousands of photos of pheromone traps from fields, labelled by experts; pest counts; location and date"
+        ],
+        [
+         "Data Exploration",
+         "Studying pest-count trends over the season and across regions; checking photo quality"
+        ],
+        [
+         "Modelling",
+         "A learning-based computer vision model that detects and counts moths in a trap photo"
+        ],
+        [
+         "Evaluation",
+         "Comparing the model's counts with expert counts on test photos it had not seen"
+        ],
+        [
+         "Deployment",
+         "A free phone app used by farmers and field staff; gives spray advice; monitored and improved each season"
+        ]
+       ],
+       "hi": [
+        [
+         "समस्या निर्धारण",
+         "किसान गुलाबी सुंडी से कपास खोते हैं और छिड़काव का सही समय नहीं आँक पाते (4Ws: किसान; ग़लत समय पर छिड़काव; मौसम में कपास खेत; फ़सल, पैसा, स्वास्थ्य बचाना)"
+        ],
+        [
+         "डेटा अधिग्रहण",
+         "खेतों से फ़ेरोमोन ट्रैप की हज़ारों फ़ोटो, विशेषज्ञों द्वारा लेबल; कीट गिनती; स्थान और तारीख"
+        ],
+        [
+         "डेटा अन्वेषण",
+         "मौसम भर और विभिन्न क्षेत्रों में कीट-गिनती के रुझान देखना; फ़ोटो की गुणवत्ता जाँचना"
+        ],
+        [
+         "मॉडलिंग",
+         "सीखने-आधारित कंप्यूटर विज़न model जो ट्रैप फ़ोटो में पतंगे पहचानता और गिनता है"
+        ],
+        [
+         "मूल्यांकन",
+         "अनदेखी परीक्षण फ़ोटो पर model की गिनती की विशेषज्ञों की गिनती से तुलना"
+        ],
+        [
+         "परिनियोजन",
+         "किसानों और फ़ील्ड कर्मचारियों द्वारा उपयोग होने वाला मुफ़्त फ़ोन ऐप; छिड़काव सलाह देता है; हर मौसम निगरानी और सुधार"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.13 Case study: Preventable blindness",
+    "hi": "2.13 केस अध्ययन: रोकी जा सकने वाली अंधता"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Diabetic retinopathy is an eye disease that can develop in people with diabetes. High blood sugar damages the tiny blood vessels of the retina (the light-sensitive layer at the back of the eye). At first there may be no symptoms; later it causes blurred vision and can lead to blindness. If it is caught early through regular eye screening, treatment can prevent most vision loss. India has a very large number of people with diabetes, but there are not enough eye specialists, especially in rural areas, so many patients are never screened in time.",
+      "hi": "डायबिटिक रेटिनोपैथी आँखों का एक रोग है जो मधुमेह वाले लोगों में हो सकता है। अधिक रक्त शर्करा रेटिना (आँख के पीछे की प्रकाश-संवेदी परत) की बारीक रक्त वाहिकाओं को नुकसान पहुँचाती है। शुरू में कोई लक्षण न हों; बाद में धुँधला दिखता है और अंधता हो सकती है। अगर नियमित आँख जाँच से जल्दी पकड़ लिया जाए, तो इलाज अधिकांश दृष्टि-हानि रोक सकता है। भारत में मधुमेह वाले लोग बहुत अधिक हैं, पर नेत्र विशेषज्ञ पर्याप्त नहीं, खासकर गाँवों में, इसलिए कई मरीज़ों की समय पर जाँच कभी नहीं होती।"
+     }
+    },
+    {
+     "p": {
+      "en": "The AI solution: trained technicians take photographs of the retina using a special camera at a local vision centre. An AI model (a deep-learning computer vision model trained on many thousands of retina photos graded by eye doctors) checks each photo for signs of retinopathy. Patients whose photos show signs are referred to a specialist. Such systems have been tested and used with eye hospitals in India, including in rural vision centres in Tamil Nadu (the CBSE handbook describes this case and reports high accuracy). The doctor still makes the final decision; the AI helps screen many more people than doctors alone could.",
+      "hi": "AI समाधान: प्रशिक्षित तकनीशियन स्थानीय विज़न सेंटर में विशेष कैमरे से रेटिना की फ़ोटो लेते हैं। एक AI model (नेत्र डॉक्टरों द्वारा श्रेणीबद्ध हज़ारों रेटिना फ़ोटो पर प्रशिक्षित deep-learning कंप्यूटर विज़न model) हर फ़ोटो में रेटिनोपैथी के संकेत जाँचता है। जिनकी फ़ोटो में संकेत दिखें, उन्हें विशेषज्ञ के पास भेजा जाता है। ऐसे सिस्टम भारत में नेत्र अस्पतालों के साथ परखे और उपयोग किए गए हैं, तमिलनाडु के ग्रामीण विज़न सेंटर सहित (CBSE हैंडबुक इस मामले का वर्णन करती है और ऊँची accuracy बताती है)। अंतिम निर्णय डॉक्टर ही लेते हैं; AI डॉक्टरों की अकेले क्षमता से कहीं अधिक लोगों की जाँच में मदद करता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "Preventable blindness project"
+       ],
+       "hi": [
+        "चरण",
+        "रोकी जा सकने वाली अंधता परियोजना"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Problem Scoping",
+         "Who: diabetic patients in rural areas, eye doctors, technicians. What: late detection of diabetic retinopathy. Where: villages and small towns with few specialists. Why: early detection prevents blindness"
+        ],
+        [
+         "Data Acquisition",
+         "Large sets of retina photos, each graded by expert eye doctors (no disease, mild, moderate, severe); collected with patient consent and privacy protection"
+        ],
+        [
+         "Data Exploration",
+         "Checking photo quality, balance between disease grades, differences between camera types"
+        ],
+        [
+         "Modelling",
+         "Learning-based deep-learning CV model that classifies retina photos by severity"
+        ],
+        [
+         "Evaluation",
+         "Comparing AI grades with expert grades on unseen photos; recall is critical so that sick patients are not missed"
+        ],
+        [
+         "Deployment",
+         "Installed at vision centres; technicians take photos; AI flags patients for referral; results monitored and model updated"
+        ]
+       ],
+       "hi": [
+        [
+         "समस्या निर्धारण",
+         "कौन: गाँवों के मधुमेह रोगी, नेत्र डॉक्टर, तकनीशियन। क्या: डायबिटिक रेटिनोपैथी की देर से पहचान। कहाँ: कम विशेषज्ञों वाले गाँव और कस्बे। क्यों: जल्दी पहचान से अंधता रुकती है"
+        ],
+        [
+         "डेटा अधिग्रहण",
+         "रेटिना फ़ोटो के बड़े समूह, हर एक विशेषज्ञ नेत्र डॉक्टरों द्वारा श्रेणीबद्ध (रोग नहीं, हल्का, मध्यम, गंभीर); मरीज़ की सहमति और गोपनीयता सुरक्षा के साथ"
+        ],
+        [
+         "डेटा अन्वेषण",
+         "फ़ोटो की गुणवत्ता, रोग श्रेणियों के बीच संतुलन, कैमरा प्रकारों के अंतर की जाँच"
+        ],
+        [
+         "मॉडलिंग",
+         "सीखने-आधारित deep-learning CV model जो रेटिना फ़ोटो को गंभीरता के अनुसार वर्गीकृत करता है"
+        ],
+        [
+         "मूल्यांकन",
+         "अनदेखी फ़ोटो पर AI की श्रेणियों की विशेषज्ञों की श्रेणियों से तुलना; recall बहुत ज़रूरी ताकि बीमार मरीज़ न छूटें"
+        ],
+        [
+         "परिनियोजन",
+         "विज़न सेंटरों पर स्थापित; तकनीशियन फ़ोटो लेते हैं; AI रेफ़रल के लिए मरीज़ चिह्नित करता है; परिणामों की निगरानी और model अद्यतन"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.14 Activities",
+    "hi": "2.14 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (group project): Design an AI for personalised education.\nAim: to apply all six stages to one problem.\nWhat to do: in groups of four, (1) fill a 4Ws canvas for 'students in a class learn at different speeds, so some get bored and some fall behind'; write the problem statement. (2) List data features: quiz scores per topic, time taken per question, attempts, topics revised; sources: school quizzes (with consent, anonymised). (3) Sketch the graphs you would draw (bar chart of scores by topic; line chart of a student's progress). (4) Choose a model: rule-based ('if score < 50% → give easier practice') or learning-based (predict which topic a student will find hard). (5) Plan evaluation: what is a TP, FP, FN here? (6) Plan deployment: an app or a classroom dashboard; who monitors it? Also list ethical risks (labelling students as 'weak', privacy of marks).\nWhat it teaches: the cycle as a whole and the need to think about people at every stage.",
+      "hi": "गतिविधि 1 (समूह परियोजना): व्यक्तिगत शिक्षा के लिए AI डिज़ाइन करें।\nउद्देश्य: एक समस्या पर सभी छह चरण लगाना।\nक्या करें: चार के समूहों में, (1) 'कक्षा में विद्यार्थी अलग गति से सीखते हैं, इसलिए कुछ ऊबते हैं और कुछ पिछड़ते हैं' के लिए 4Ws कैनवास भरें; समस्या कथन लिखें। (2) डेटा विशेषताएँ लिखें: हर विषय के क्विज़ अंक, हर प्रश्न का समय, प्रयास, दोहराए गए विषय; स्रोत: स्कूल क्विज़ (सहमति सहित, अनाम)। (3) जो ग्राफ़ बनाएँगे उनका स्केच बनाएँ (विषयवार अंकों का बार चार्ट; विद्यार्थी की प्रगति का लाइन चार्ट)। (4) Model चुनें: नियम-आधारित ('अंक < 50% → आसान अभ्यास दो') या सीखने-आधारित (अनुमान कि कौन-सा विषय विद्यार्थी को कठिन लगेगा)। (5) मूल्यांकन की योजना: यहाँ TP, FP, FN क्या हैं? (6) परिनियोजन की योजना: ऐप या कक्षा डैशबोर्ड; निगरानी कौन करेगा? नैतिक जोखिम भी लिखें (विद्यार्थियों को 'कमज़ोर' का ठप्पा, अंकों की गोपनीयता)।\nसीख: पूरा चक्र एक साथ, और हर चरण पर लोगों के बारे में सोचने की ज़रूरत।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (data + graphs): Top 10 song prediction.\nAim: to practise acquisition and exploration.\nWhat to do: as a class, list 15 popular songs. Decide features that may make a song popular: language, tempo (fast/slow), length in minutes, whether it is from a film, number of views in the first week (if publicly shown). Collect the data in a free spreadsheet (Google Sheets or LibreOffice Calc). Make a bar chart of views and a scatter plot of length vs views.\nWhat you observe: some features (first-week views) relate strongly to popularity; others (length) may not.\nWhat it teaches: choosing features and using graphs to spot which features matter before modelling.",
+      "hi": "गतिविधि 2 (डेटा + ग्राफ़): टॉप 10 गाने का अनुमान।\nउद्देश्य: अधिग्रहण और अन्वेषण का अभ्यास।\nक्या करें: कक्षा मिलकर 15 लोकप्रिय गानों की सूची बनाए। तय करें कि कौन-सी विशेषताएँ गाने को लोकप्रिय बना सकती हैं: भाषा, गति (तेज़/धीमी), मिनटों में लंबाई, फ़िल्मी है या नहीं, पहले हफ़्ते के व्यूज़ (अगर सार्वजनिक रूप से दिखते हों)। डेटा मुफ़्त स्प्रेडशीट (Google Sheets या LibreOffice Calc) में भरें। व्यूज़ का बार चार्ट और लंबाई बनाम व्यूज़ का स्कैटर प्लॉट बनाएँ।\nक्या देखेंगे: कुछ विशेषताएँ (पहले हफ़्ते के व्यूज़) लोकप्रियता से गहराई से जुड़ी हैं; कुछ (लंबाई) शायद नहीं।\nसीख: विशेषताएँ चुनना और मॉडलिंग से पहले ग्राफ़ से देखना कि कौन-सी विशेषताएँ मायने रखती हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen, free): Train a learning-based model with Google Teachable Machine (teachablemachine.withgoogle.com).\nAim: to experience data acquisition, modelling, evaluation and a mini deployment.\nYou need: a computer or phone with a camera; no account is needed (an adult should supervise any sign-in).\nWhat to do: create an Image Project with two classes, 'Thumbs up' and 'Thumbs down'. Record about 50 webcam images for each (training data). Click Train. Then show new hand gestures (testing) and note how often it is right. Next, train it with all images in front of a plain wall and test against a busy background.\nWhat you observe: it works well on gestures like the training ones, but may fail with a different background or lighting.\nWhat it teaches: the learning-based approach, the need for varied training data, testing on unseen data, and why monitoring after deployment matters.",
+      "hi": "गतिविधि 3 (स्क्रीन, मुफ़्त): Google Teachable Machine (teachablemachine.withgoogle.com) से सीखने-आधारित model प्रशिक्षित करें।\nउद्देश्य: डेटा अधिग्रहण, मॉडलिंग, मूल्यांकन और छोटे परिनियोजन का अनुभव।\nआवश्यक: कैमरे वाला कंप्यूटर या फ़ोन; खाता ज़रूरी नहीं (कोई भी साइन-इन बड़े की देखरेख में)।\nक्या करें: दो वर्गों, 'अँगूठा ऊपर' और 'अँगूठा नीचे', वाला Image Project बनाएँ। हर एक के लिए लगभग 50 वेबकैम चित्र रिकॉर्ड करें (प्रशिक्षण डेटा)। Train दबाएँ। फिर नए हाथ के इशारे दिखाएँ (परीक्षण) और लिखें कि वह कितनी बार सही है। फिर सारे चित्र सादी दीवार के सामने लेकर प्रशिक्षित करें और भीड़-भाड़ वाली पृष्ठभूमि पर परखें।\nक्या देखेंगे: यह प्रशिक्षण जैसे इशारों पर अच्छा चलता है, पर अलग पृष्ठभूमि या रोशनी में चूक सकता है।\nसीख: सीखने-आधारित तरीका, विविध प्रशिक्षण डेटा की ज़रूरत, अनदेखे डेटा पर परीक्षण, और परिनियोजन के बाद निगरानी क्यों ज़रूरी है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (unplugged): Build a confusion matrix.\nAim: to understand TP, FP, FN and TN.\nWhat to do: one student is the 'model' and guesses, for each of 20 cards held face-down, whether it is a red card. Another student records each guess and the real colour in a 2 × 2 table. Compute accuracy, precision and recall.\nWhat it teaches: how to count the four outcomes and compute metrics; guessing randomly gives about 50% accuracy.",
+      "hi": "गतिविधि 4 (बिना कंप्यूटर): Confusion matrix बनाएँ।\nउद्देश्य: TP, FP, FN और TN समझना।\nक्या करें: एक विद्यार्थी 'model' बनकर उलटे रखे 20 पत्तों में से हर एक के लिए अनुमान लगाता है कि वह लाल पत्ता है या नहीं। दूसरा विद्यार्थी हर अनुमान और असली रंग को 2 × 2 तालिका में लिखता है। Accuracy, precision और recall निकालें।\nसीख: चार परिणाम गिनना और मापदंड निकालना; यादृच्छिक अनुमान से लगभग 50% accuracy आती है।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Starting with data or code before scoping the problem. Fix: always fill the 4Ws canvas and write a problem statement first.",
+   "Writing a theme or topic ('agriculture') as the problem. Fix: a problem is specific: who faces what issue, where, and why it matters.",
+   "Testing the model on its training data. Fix: keep separate testing data the model has never seen; otherwise overfitting stays hidden.",
+   "Mixing up FP and FN. Fix: the second word is the prediction; the first word says whether it was right. FP = predicted Yes, actually No.",
+   "Judging a model only by accuracy. Fix: also check precision and recall; in disease or fire detection, missed cases (FN) can be dangerous even when accuracy is high.",
+   "Thinking rule-based models learn. Fix: they follow rules written by people and are static; learning-based models learn from data.",
+   "Using a pie chart for data that changes over time. Fix: use a line chart for trends over time; pie charts show parts of a whole.",
+   "Reading '+' on a system map as 'good' and '–' as 'bad'. Fix: '+' means both change in the same direction; '–' means they change in opposite directions.",
+   "Thinking deployment is the end. Fix: deployed models must be monitored, maintained and retrained; the cycle repeats.",
+   "Collecting personal data without consent. Fix: use authentic, open or permitted data, collect only what is needed, and anonymise it."
+  ],
+  "hi": [
+   "समस्या तय किए बिना डेटा या कोड से शुरुआत करना। सुधार: हमेशा पहले 4Ws कैनवास भरें और समस्या कथन लिखें।",
+   "विषय या उप-विषय ('कृषि') को समस्या लिखना। सुधार: समस्या विशिष्ट होती है: कौन, किस मुद्दे का, कहाँ सामना करता है, और यह क्यों मायने रखता है।",
+   "Model को उसके प्रशिक्षण डेटा पर ही परखना। सुधार: अलग परीक्षण डेटा रखें जो model ने कभी न देखा हो; वरना overfitting छिपा रहता है।",
+   "FP और FN को उलझाना। सुधार: दूसरा शब्द अनुमान है; पहला बताता है कि वह सही था या नहीं। FP = अनुमान हाँ, असल में नहीं।",
+   "Model को केवल accuracy से आँकना। सुधार: precision और recall भी देखें; रोग या आग पहचान में छूटे मामले (FN) ऊँची accuracy के बावजूद ख़तरनाक हो सकते हैं।",
+   "सोचना कि नियम-आधारित model सीखते हैं। सुधार: वे लोगों के लिखे नियम मानते हैं और स्थिर हैं; सीखने-आधारित model डेटा से सीखते हैं।",
+   "समय के साथ बदलते डेटा के लिए पाई चार्ट लगाना। सुधार: समय के रुझान के लिए लाइन चार्ट; पाई चार्ट पूरे के हिस्से दिखाता है।",
+   "सिस्टम मैप में '+' को 'अच्छा' और '–' को 'बुरा' पढ़ना। सुधार: '+' का अर्थ दोनों एक दिशा में बदलते हैं; '–' का अर्थ उलटी दिशा में।",
+   "सोचना कि परिनियोजन अंत है। सुधार: लागू model की निगरानी, रखरखाव और फिर से प्रशिक्षण ज़रूरी है; चक्र दोहराता है।",
+   "बिना सहमति निजी डेटा जुटाना। सुधार: प्रामाणिक, खुला या अनुमत डेटा उपयोग करें, केवल ज़रूरी डेटा जुटाएँ, और उसे अनाम बनाएँ।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "AI Project Cycle",
+    "hi": "AI प्रोजेक्ट चक्र"
+   },
+   "d": {
+    "en": "The six-stage framework for building AI: Problem Scoping, Data Acquisition, Data Exploration, Modelling, Evaluation, Deployment.",
+    "hi": "AI बनाने का छह-चरणीय ढाँचा: समस्या निर्धारण, डेटा अधिग्रहण, डेटा अन्वेषण, मॉडलिंग, मूल्यांकन, परिनियोजन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Problem Scoping",
+    "hi": "समस्या निर्धारण"
+   },
+   "d": {
+    "en": "Understanding a problem fully and setting a clear goal for the project.",
+    "hi": "समस्या को पूरी तरह समझना और परियोजना का स्पष्ट लक्ष्य तय करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Theme, Topic, Problem",
+    "hi": "विषय, उप-विषय, समस्या"
+   },
+   "d": {
+    "en": "Levels of narrowing: a broad area, a smaller area within it, and one specific issue.",
+    "hi": "दायरा छोटा करने के स्तर: व्यापक क्षेत्र, उसके भीतर छोटा क्षेत्र, और एक विशिष्ट मुद्दा।"
+   }
+  },
+  {
+   "t": {
+    "en": "4Ws Problem Canvas",
+    "hi": "4Ws समस्या कैनवास"
+   },
+   "d": {
+    "en": "A tool with four blocks, Who, What, Where, Why, used to understand a problem.",
+    "hi": "कौन, क्या, कहाँ, क्यों के चार खंडों वाला उपकरण, समस्या समझने के लिए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Problem Statement Template",
+    "hi": "समस्या कथन टेम्पलेट"
+   },
+   "d": {
+    "en": "A fill-in summary of the 4Ws: Our [who] has a problem that [what] when [where]; an ideal solution would [why].",
+    "hi": "4Ws का भरने वाला सारांश: हमारे [कौन] को समस्या है कि [क्या] जब [कहाँ]; आदर्श समाधान [क्यों] करेगा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stakeholders",
+    "hi": "हितधारक"
+   },
+   "d": {
+    "en": "People affected by a problem or its solution.",
+    "hi": "समस्या या उसके समाधान से प्रभावित लोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sustainable Development Goals (SDGs)",
+    "hi": "सतत विकास लक्ष्य (SDGs)"
+   },
+   "d": {
+    "en": "17 global goals adopted by the United Nations in 2015 for 2030.",
+    "hi": "संयुक्त राष्ट्र द्वारा 2015 में 2030 के लिए अपनाए गए 17 वैश्विक लक्ष्य।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data Acquisition",
+    "hi": "डेटा अधिग्रहण"
+   },
+   "d": {
+    "en": "Collecting reliable, relevant data from authentic sources.",
+    "hi": "प्रामाणिक स्रोतों से भरोसेमंद, प्रासंगिक डेटा जुटाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training data",
+    "hi": "प्रशिक्षण डेटा"
+   },
+   "d": {
+    "en": "Data used to teach a model.",
+    "hi": "Model को सिखाने वाला डेटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Testing data",
+    "hi": "परीक्षण डेटा"
+   },
+   "d": {
+    "en": "Separate data used to check a model's performance on unseen cases.",
+    "hi": "अनदेखे मामलों पर model का प्रदर्शन जाँचने वाला अलग डेटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data features",
+    "hi": "डेटा विशेषताएँ"
+   },
+   "d": {
+    "en": "The attributes (columns) collected because they affect the problem.",
+    "hi": "वे गुण (स्तंभ) जो समस्या को प्रभावित करने के कारण जुटाए जाते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Web scraping",
+    "hi": "वेब स्क्रैपिंग"
+   },
+   "d": {
+    "en": "Collecting data from websites using a program, where permitted.",
+    "hi": "जहाँ अनुमति हो, प्रोग्राम से वेबसाइटों से डेटा जुटाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "API",
+    "hi": "API"
+   },
+   "d": {
+    "en": "Application Programming Interface: a way for programs to request data or services from another system.",
+    "hi": "एप्लिकेशन प्रोग्रामिंग इंटरफ़ेस: प्रोग्रामों का दूसरे सिस्टम से डेटा या सेवा माँगने का तरीका।"
+   }
+  },
+  {
+   "t": {
+    "en": "System map",
+    "hi": "सिस्टम मैप"
+   },
+   "d": {
+    "en": "A diagram of elements and their cause-and-effect links, using +/– arrows, loops and delays.",
+    "hi": "तत्वों और उनके कारण-प्रभाव संबंधों का आरेख, +/– तीर, लूप और देरी सहित।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data Exploration",
+    "hi": "डेटा अन्वेषण"
+   },
+   "d": {
+    "en": "Cleaning and visualising data to understand patterns and trends.",
+    "hi": "पैटर्न और रुझान समझने के लिए डेटा साफ़ करना और उसका दृश्य बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data visualisation",
+    "hi": "डेटा विज़ुअलाइज़ेशन"
+   },
+   "d": {
+    "en": "Showing data as graphs or charts.",
+    "hi": "डेटा को ग्राफ़ या चार्ट के रूप में दिखाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Modelling",
+    "hi": "मॉडलिंग"
+   },
+   "d": {
+    "en": "Choosing and building the model that turns input into output.",
+    "hi": "इनपुट को आउटपुट में बदलने वाला model चुनना और बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rule-based approach",
+    "hi": "नियम-आधारित तरीका"
+   },
+   "d": {
+    "en": "A model whose rules are written by the developer; it is static.",
+    "hi": "ऐसा model जिसके नियम डेवलपर लिखता है; यह स्थिर है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Learning-based approach",
+    "hi": "सीखने-आधारित तरीका"
+   },
+   "d": {
+    "en": "A model that learns patterns from data and can adapt.",
+    "hi": "ऐसा model जो डेटा से पैटर्न सीखता है और ढल सकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Supervised learning",
+    "hi": "पर्यवेक्षित अधिगम"
+   },
+   "d": {
+    "en": "Learning from labelled examples.",
+    "hi": "लेबल वाले उदाहरणों से सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unsupervised learning",
+    "hi": "अपर्यवेक्षित अधिगम"
+   },
+   "d": {
+    "en": "Finding groups or patterns in unlabelled data.",
+    "hi": "बिना लेबल के डेटा में समूह या पैटर्न खोजना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reinforcement learning",
+    "hi": "प्रबलन अधिगम"
+   },
+   "d": {
+    "en": "Learning by trial and error using rewards.",
+    "hi": "इनाम के साथ प्रयास-और-भूल से सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Evaluation",
+    "hi": "मूल्यांकन"
+   },
+   "d": {
+    "en": "Checking a model's reliability on testing data.",
+    "hi": "परीक्षण डेटा पर model की विश्वसनीयता जाँचना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Overfitting",
+    "hi": "ओवरफ़िटिंग"
+   },
+   "d": {
+    "en": "When a model memorises training data and performs poorly on new data.",
+    "hi": "जब model प्रशिक्षण डेटा रट ले और नए डेटा पर ख़राब करे।"
+   }
+  },
+  {
+   "t": {
+    "en": "True Positive / True Negative",
+    "hi": "सत्य धनात्मक / सत्य ऋणात्मक"
+   },
+   "d": {
+    "en": "Correct Yes prediction / correct No prediction.",
+    "hi": "सही 'हाँ' अनुमान / सही 'नहीं' अनुमान।"
+   }
+  },
+  {
+   "t": {
+    "en": "False Positive / False Negative",
+    "hi": "मिथ्या धनात्मक / मिथ्या ऋणात्मक"
+   },
+   "d": {
+    "en": "Predicted Yes but actually No (false alarm) / predicted No but actually Yes (missed case).",
+    "hi": "अनुमान हाँ पर असल में नहीं (झूठी चेतावनी) / अनुमान नहीं पर असल में हाँ (छूटा मामला)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Confusion matrix",
+    "hi": "Confusion matrix"
+   },
+   "d": {
+    "en": "A 2 × 2 table of TP, FP, FN and TN.",
+    "hi": "TP, FP, FN और TN की 2 × 2 तालिका।"
+   }
+  },
+  {
+   "t": {
+    "en": "Accuracy, Precision, Recall, F1",
+    "hi": "Accuracy, Precision, Recall, F1"
+   },
+   "d": {
+    "en": "Metrics: share of correct predictions; correctness of Yes predictions; share of real Yes cases caught; balance of precision and recall.",
+    "hi": "मापदंड: सही अनुमानों का हिस्सा; 'हाँ' अनुमानों की सही दर; पकड़े गए असली 'हाँ' मामलों का हिस्सा; precision और recall का संतुलन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deployment",
+    "hi": "परिनियोजन"
+   },
+   "d": {
+    "en": "Putting a model into real use, integrating, monitoring and maintaining it.",
+    "hi": "Model को वास्तविक उपयोग में लाना, जोड़ना, निगरानी और रखरखाव करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Diabetic retinopathy",
+    "hi": "डायबिटिक रेटिनोपैथी"
+   },
+   "d": {
+    "en": "Eye damage caused by diabetes that can lead to blindness if not caught early.",
+    "hi": "मधुमेह से होने वाली आँख की क्षति, जो जल्दी न पकड़ी जाए तो अंधता ला सकती है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is the correct order of the AI Project Cycle?\n(a) Data Acquisition → Problem Scoping → Modelling → Evaluation → Data Exploration → Deployment\n(b) Problem Scoping → Data Acquisition → Data Exploration → Modelling → Evaluation → Deployment\n(c) Modelling → Data Exploration → Problem Scoping → Deployment → Evaluation → Data Acquisition\n(d) Problem Scoping → Modelling → Data Acquisition → Deployment → Evaluation → Data Exploration",
+    "hi": "बहुविकल्पी: AI प्रोजेक्ट चक्र का सही क्रम कौन-सा है?\n(क) डेटा अधिग्रहण → समस्या निर्धारण → मॉडलिंग → मूल्यांकन → डेटा अन्वेषण → परिनियोजन\n(ख) समस्या निर्धारण → डेटा अधिग्रहण → डेटा अन्वेषण → मॉडलिंग → मूल्यांकन → परिनियोजन\n(ग) मॉडलिंग → डेटा अन्वेषण → समस्या निर्धारण → परिनियोजन → मूल्यांकन → डेटा अधिग्रहण\n(घ) समस्या निर्धारण → मॉडलिंग → डेटा अधिग्रहण → परिनियोजन → मूल्यांकन → डेटा अन्वेषण"
+   },
+   "a": {
+    "en": "(b).",
+    "hi": "(ख)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In the 4Ws canvas, the 'Who' block is about:\n(a) the location (b) the benefits (c) the stakeholders (d) the evidence",
+    "hi": "बहुविकल्पी: 4Ws कैनवास में 'कौन' खंड किसके बारे में है?\n(क) स्थान (ख) लाभ (ग) हितधारक (घ) प्रमाण"
+   },
+   "a": {
+    "en": "(c) the stakeholders.",
+    "hi": "(ग) हितधारक।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: A model predicted 'no disease' but the patient actually had the disease. This is a:\n(a) True Positive (b) False Positive (c) True Negative (d) False Negative",
+    "hi": "बहुविकल्पी: Model ने 'रोग नहीं' बताया पर मरीज़ को असल में रोग था। यह है:\n(क) सत्य धनात्मक (ख) मिथ्या धनात्मक (ग) सत्य ऋणात्मक (घ) मिथ्या ऋणात्मक"
+   },
+   "a": {
+    "en": "(d) False Negative: predicted No, actually Yes.",
+    "hi": "(घ) मिथ्या ऋणात्मक: अनुमान नहीं, असल में हाँ।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which graph is best to show the change in temperature over a week?\n(a) Pie chart (b) Line chart (c) Venn diagram (d) Tree diagram",
+    "hi": "बहुविकल्पी: एक हफ़्ते में तापमान का बदलाव दिखाने के लिए सबसे अच्छा ग्राफ़ कौन-सा है?\n(क) पाई चार्ट (ख) लाइन चार्ट (ग) वेन आरेख (घ) ट्री आरेख"
+   },
+   "a": {
+    "en": "(b) Line chart.",
+    "hi": "(ख) लाइन चार्ट।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (a) Data used to teach a model is called ______ data. (b) In a system map, a '–' sign shows an ______ relationship. (c) A model whose rules are written by the developer follows the ______ approach. (d) Putting a model into real use is called ______.",
+    "hi": "रिक्त स्थान भरें: (a) Model को सिखाने वाला डेटा ______ डेटा कहलाता है। (b) सिस्टम मैप में '–' चिह्न ______ संबंध दिखाता है। (c) जिस model के नियम डेवलपर लिखे, वह ______ तरीके पर चलता है। (d) Model को वास्तविक उपयोग में लाना ______ कहलाता है।"
+   },
+   "a": {
+    "en": "(a) training (b) inverse (opposite) (c) rule-based (d) deployment.",
+    "hi": "(a) प्रशिक्षण (b) उलटा (विपरीत) (c) नियम-आधारित (d) परिनियोजन।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (a) Problem scoping is done only once and never changed. (b) A learning-based model can adapt to new data. (c) Testing data should be the same as training data. (d) data.gov.in is a source of open government data in India.",
+    "hi": "सही या ग़लत: (a) समस्या निर्धारण केवल एक बार होता है और कभी नहीं बदलता। (b) सीखने-आधारित model नए डेटा के साथ ढल सकता है। (c) परीक्षण डेटा प्रशिक्षण डेटा जैसा ही होना चाहिए। (d) data.gov.in भारत में खुले सरकारी डेटा का स्रोत है।"
+   },
+   "a": {
+    "en": "(a) False: it is iterative. (b) True. (c) False: it must be separate and unseen. (d) True.",
+    "hi": "(a) ग़लत: यह पुनरावृत्तीय है। (b) सही। (c) ग़लत: यह अलग और अनदेखा होना चाहिए। (d) सही।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the 4Ws Problem Canvas with an example of your own.",
+    "hi": "4Ws समस्या कैनवास को अपने उदाहरण से समझाइए।"
+   },
+   "a": {
+    "en": "Example: water wastage in a school.\nWho: students, staff, the school management, the water supplier.\nWhat: taps are left running and tanks overflow; evidence: monthly water bills and observation.\nWhere: washrooms and the drinking-water area, especially after lunch break.\nWhy: saving water lowers bills and conserves a scarce resource; teaches good habits.\nProblem statement: Our students and staff have a problem that water is wasted when taps are left open in washrooms after breaks. An ideal solution would alert staff quickly and reduce wastage.",
+    "hi": "उदाहरण: स्कूल में पानी की बर्बादी।\nकौन: विद्यार्थी, कर्मचारी, स्कूल प्रबंधन, जल आपूर्तिकर्ता।\nक्या: नल खुले रह जाते हैं और टंकियाँ बहती हैं; प्रमाण: मासिक पानी बिल और अवलोकन।\nकहाँ: शौचालय और पेयजल क्षेत्र, खासकर लंच के बाद।\nक्यों: पानी बचाने से बिल घटता है और दुर्लभ संसाधन बचता है; अच्छी आदतें बनती हैं।\nसमस्या कथन: हमारे विद्यार्थियों और कर्मचारियों को समस्या है कि विराम के बाद शौचालयों में नल खुले रहने से पानी बर्बाद होता है। आदर्श समाधान कर्मचारियों को तुरंत सूचित करेगा और बर्बादी घटाएगा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the difference between training data and testing data? Why must they be kept separate?",
+    "hi": "प्रशिक्षण डेटा और परीक्षण डेटा में क्या अंतर है? इन्हें अलग क्यों रखना चाहिए?"
+   },
+   "a": {
+    "en": "Training data is used to teach the model patterns; testing data is held back and used only to check performance on unseen cases. They must be separate because a model can memorise training data (overfitting); testing on it would give falsely high scores and not show how it will perform in the real world.",
+    "hi": "प्रशिक्षण डेटा model को पैटर्न सिखाने में लगता है; परीक्षण डेटा अलग रखा जाता है और केवल अनदेखे मामलों पर प्रदर्शन जाँचने में। इन्हें अलग रखना ज़रूरी है क्योंकि model प्रशिक्षण डेटा रट सकता है (overfitting); उस पर परीक्षण से झूठे ऊँचे अंक आएँगे और पता नहीं चलेगा कि वास्तविक दुनिया में वह कैसा चलेगा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List any five sources of data, with an example of each.",
+    "hi": "डेटा के कोई पाँच स्रोत, हर एक का उदाहरण देकर बताइए।"
+   },
+   "a": {
+    "en": "Surveys (asking parents about screen time), sensors (soil-moisture sensors in a field), cameras (CCTV images of traffic), web scraping (collecting public mandi prices from a website, where allowed), APIs (a weather API giving hourly data). Also observation (counting birds in a park).",
+    "hi": "सर्वेक्षण (अभिभावकों से स्क्रीन समय पूछना), सेंसर (खेत में मिट्टी-नमी सेंसर), कैमरे (ट्रैफ़िक के CCTV चित्र), वेब स्क्रैपिंग (जहाँ अनुमति हो, वेबसाइट से सार्वजनिक मंडी भाव), API (हर घंटे का डेटा देने वाला मौसम API)। साथ ही अवलोकन (पार्क में पक्षी गिनना)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between rule-based and learning-based approaches, with one example each.",
+    "hi": "नियम-आधारित और सीखने-आधारित तरीकों में एक-एक उदाहरण सहित अंतर बताइए।"
+   },
+   "a": {
+    "en": "Rule-based: the developer writes the rules; the model does not learn and stays static; needs little data; easy to explain. Example: deciding if a child can play golf from fixed weather rules.\nLearning-based: the machine learns rules from data; adapts to new data; needs much data; handles complex patterns. Example: telling apples from bananas in photos.",
+    "hi": "नियम-आधारित: डेवलपर नियम लिखता है; model सीखता नहीं और स्थिर रहता है; कम डेटा चाहिए; समझाना आसान। उदाहरण: तय मौसम नियमों से तय करना कि बच्चा गोल्फ़ खेल सकता है या नहीं।\nसीखने-आधारित: मशीन डेटा से नियम सीखती है; नए डेटा से ढलती है; बहुत डेटा चाहिए; जटिल पैटर्न संभालती है। उदाहरण: फ़ोटो में सेब और केले को अलग पहचानना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is a system map? Explain the meaning of arrows, + and – signs, loops and long arrows.",
+    "hi": "सिस्टम मैप क्या है? तीर, + और – चिह्न, लूप और लंबे तीरों का अर्थ समझाइए।"
+   },
+   "a": {
+    "en": "A system map shows the elements of a problem and how they affect each other. An arrow from A to B means A affects B. '+' means they change in the same direction; '–' means in opposite directions. A loop is a chain of arrows that returns to the start, showing a cycle. A long arrow shows a time delay before the effect appears.",
+    "hi": "सिस्टम मैप समस्या के तत्व और वे एक-दूसरे को कैसे प्रभावित करते हैं, यह दिखाता है। A से B का तीर बताता है कि A, B को प्रभावित करता है। '+' का अर्थ दोनों एक दिशा में बदलते हैं; '–' का अर्थ उलटी दिशा में। लूप तीरों की वह कड़ी है जो शुरुआत पर लौटे, यानी चक्र। लंबा तीर प्रभाव दिखने से पहले की देरी दिखाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A spam filter was tested on 200 emails: TP = 70, FP = 10, FN = 20, TN = 100. Calculate accuracy, precision and recall.",
+    "hi": "स्पैम फ़िल्टर को 200 ईमेल पर परखा गया: TP = 70, FP = 10, FN = 20, TN = 100। Accuracy, precision और recall निकालिए।"
+   },
+   "a": {
+    "en": "Accuracy = (70 + 100) / 200 = 170/200 = 85%.\nPrecision = 70 / (70 + 10) = 70/80 = 0.875.\nRecall = 70 / (70 + 20) = 70/90 ≈ 0.778.\n(F1 = 2 × 0.875 × 0.778 / (0.875 + 0.778) ≈ 0.824.) The 10 false positives are genuine emails wrongly sent to spam.",
+    "hi": "Accuracy = (70 + 100) / 200 = 170/200 = 85%।\nPrecision = 70 / (70 + 10) = 70/80 = 0.875।\nRecall = 70 / (70 + 20) = 70/90 ≈ 0.778।\n(F1 = 2 × 0.875 × 0.778 / (0.875 + 0.778) ≈ 0.824।) 10 मिथ्या धनात्मक वे असली ईमेल हैं जो ग़लती से स्पैम में गए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Evaluation should be done using testing data. Reason (R): A model may memorise its training data.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): मूल्यांकन परीक्षण डेटा से होना चाहिए। कारण (R): Model अपना प्रशिक्षण डेटा रट सकता है।\n(a) दोनों सही, R व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(a) Both true; overfitting is exactly why separate test data is needed.",
+    "hi": "(a) दोनों सही; overfitting ही वह कारण है जिससे अलग परीक्षण डेटा चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A rule-based model improves automatically when given more data. Reason (R): In a rule-based model, rules are defined by the developer.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): नियम-आधारित model अधिक डेटा मिलने पर अपने आप सुधरता है। कारण (R): नियम-आधारित model में नियम डेवलपर तय करता है।\n(a) दोनों सही, R व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(d) A is false (rule-based models are static), R is true.",
+    "hi": "(d) A ग़लत (नियम-आधारित model स्थिर होते हैं), R सही।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the most suitable graph: (a) share of students' favourite sports (b) runs scored by five batters (c) relationship between height and weight of 50 students (d) students who take Hindi, Sanskrit, or both (e) daily COVID-style case counts over a month.",
+    "hi": "सबसे उपयुक्त ग्राफ़ बताइए: (a) विद्यार्थियों के पसंदीदा खेलों का हिस्सा (b) पाँच बल्लेबाज़ों के रन (c) 50 विद्यार्थियों की लंबाई और वज़न का संबंध (d) हिंदी, संस्कृत या दोनों लेने वाले विद्यार्थी (e) एक महीने में रोज़ के मामलों की गिनती।"
+   },
+   "a": {
+    "en": "(a) pie chart (b) bar chart (c) scatter plot (d) Venn diagram (e) line chart.",
+    "hi": "(a) पाई चार्ट (b) बार चार्ट (c) स्कैटर प्लॉट (d) वेन आरेख (e) लाइन चार्ट।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A city wants an AI to predict which roads will flood during heavy rain so it can send alerts. Map the project to all six stages of the AI project cycle.",
+    "hi": "केस-आधारित: एक शहर ऐसा AI चाहता है जो भारी बारिश में बताए कि कौन-सी सड़कें डूबेंगी, ताकि अलर्ट भेजे जा सकें। परियोजना को AI प्रोजेक्ट चक्र के सभी छह चरणों पर रखिए।"
+   },
+   "a": {
+    "en": "1. Problem Scoping: Who: commuters, residents, traffic police, municipal corporation. What: roads flood suddenly, trapping vehicles; evidence: past news and complaints. Where: low-lying roads during monsoon. Why: alerts save lives, time and property.\n2. Data Acquisition: features: rainfall per hour, road elevation, drain capacity and blockage reports, past flooding records, tide levels (coastal city); sources: weather department, municipal records, sensors in drains, citizen reports.\n3. Data Exploration: map and line charts of rainfall vs flooding; find which roads flood at what rainfall.\n4. Modelling: learning-based model predicting flood risk for each road from the features.\n5. Evaluation: test on past monsoon data not used in training; recall is important so flooded roads are not missed; check false alarms too.\n6. Deployment: alerts through a city app, SMS and traffic boards; monitor each monsoon and retrain.",
+    "hi": "1. समस्या निर्धारण: कौन: यात्री, निवासी, ट्रैफ़िक पुलिस, नगर निगम। क्या: सड़कें अचानक डूबती हैं, वाहन फँसते हैं; प्रमाण: पुराने समाचार और शिकायतें। कहाँ: मानसून में निचली सड़कें। क्यों: अलर्ट से जान, समय और संपत्ति बचती है।\n2. डेटा अधिग्रहण: विशेषताएँ: प्रति घंटा वर्षा, सड़क की ऊँचाई, नाली क्षमता और रुकावट की रिपोर्ट, पुराने जलभराव रिकॉर्ड, ज्वार स्तर (तटीय शहर); स्रोत: मौसम विभाग, नगर निगम रिकॉर्ड, नालियों में सेंसर, नागरिक रिपोर्ट।\n3. डेटा अन्वेषण: वर्षा बनाम जलभराव के नक्शे और लाइन चार्ट; कौन-सी सड़क कितनी वर्षा पर डूबती है।\n4. मॉडलिंग: विशेषताओं से हर सड़क का जलभराव जोखिम बताने वाला सीखने-आधारित model।\n5. मूल्यांकन: प्रशिक्षण में न लिए गए पुराने मानसून डेटा पर परीक्षण; recall ज़रूरी ताकि डूबी सड़कें न छूटें; झूठे अलर्ट भी जाँचें।\n6. परिनियोजन: शहर ऐप, SMS और ट्रैफ़िक बोर्ड से अलर्ट; हर मानसून निगरानी और फिर से प्रशिक्षण।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In a disease screening test, Model A has 95% accuracy but recall of 0.50; Model B has 90% accuracy and recall of 0.95. Which would you deploy, and why?",
+    "hi": "किसी रोग जाँच में Model A की accuracy 95% पर recall 0.50 है; Model B की accuracy 90% और recall 0.95 है। आप किसे लागू करेंगे, और क्यों?"
+   },
+   "a": {
+    "en": "Model B. In screening, missing a sick person (False Negative) is the most harmful error, because they go untreated. Model A's recall of 0.50 means it misses half the sick patients, even though its accuracy is higher (probably because most people tested are healthy, so saying 'no disease' is often right). Model B catches 95% of sick patients; its extra false positives only lead to a further check by a doctor.",
+    "hi": "Model B। जाँच में बीमार व्यक्ति को छोड़ देना (False Negative) सबसे हानिकारक ग़लती है, क्योंकि उसका इलाज नहीं होगा। Model A का recall 0.50 है, यानी वह आधे बीमार मरीज़ छोड़ देता है, भले ही उसकी accuracy ऊँची हो (शायद इसलिए कि जाँचे गए अधिकतर लोग स्वस्थ हैं, तो 'रोग नहीं' कहना अक्सर सही होता है)। Model B 95% बीमार मरीज़ पकड़ता है; उसकी अतिरिक्त झूठी चेतावनियों से केवल डॉक्टर की एक और जाँच होती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the case study of preventable blindness (diabetic retinopathy) and map it to the stages of the AI project cycle.",
+    "hi": "रोकी जा सकने वाली अंधता (डायबिटिक रेटिनोपैथी) के केस अध्ययन को समझाइए और उसे AI प्रोजेक्ट चक्र के चरणों पर रखिए।"
+   },
+   "a": {
+    "en": "Diabetes can damage the retina's blood vessels; untreated, this leads to blurred vision and blindness, but early detection allows treatment. Rural India has too few eye specialists. AI solution: technicians photograph the retina; a deep-learning CV model grades the photo and flags patients for referral.\nScoping: diabetic rural patients; late detection; villages; prevent blindness. Acquisition: retina photos graded by experts, with consent. Exploration: check quality and balance of grades. Modelling: learning-based CV classifier. Evaluation: compare with expert grades on unseen photos, high recall needed. Deployment: at vision centres, integrated with referral process, monitored and updated.",
+    "hi": "मधुमेह रेटिना की रक्त वाहिकाओं को नुकसान पहुँचा सकता है; बिना इलाज धुँधला दिखना और अंधता होती है, पर जल्दी पहचान से इलाज संभव है। ग्रामीण भारत में नेत्र विशेषज्ञ बहुत कम हैं। AI समाधान: तकनीशियन रेटिना की फ़ोटो लेते हैं; deep-learning CV model फ़ोटो की श्रेणी तय करके रेफ़रल के लिए मरीज़ चिह्नित करता है।\nनिर्धारण: ग्रामीण मधुमेह रोगी; देर से पहचान; गाँव; अंधता रोकना। अधिग्रहण: विशेषज्ञों द्वारा श्रेणीबद्ध रेटिना फ़ोटो, सहमति सहित। अन्वेषण: गुणवत्ता और श्रेणियों का संतुलन जाँचना। मॉडलिंग: सीखने-आधारित CV वर्गीकरणकर्ता। मूल्यांकन: अनदेखी फ़ोटो पर विशेषज्ञों से तुलना, ऊँचा recall ज़रूरी। परिनियोजन: विज़न सेंटरों पर, रेफ़रल प्रक्रिया से जुड़ा, निगरानी और अद्यतन।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Draw (in words) a system map for 'screen time and exam marks' with at least five elements, including one loop and one time delay.",
+    "hi": "'स्क्रीन समय और परीक्षा अंक' का कम से कम पाँच तत्वों वाला सिस्टम मैप (शब्दों में) बनाइए, जिसमें एक लूप और एक समय की देरी हो।"
+   },
+   "a": {
+    "en": "Screen time at night → (–) hours of sleep → (+) concentration in class → (+) understanding of lessons → (+) exam marks (long arrow: effect shows weeks later at exams).\nScreen time → (–) study time → (+) exam marks.\nLow marks → (+) stress → (+) screen time (to escape), which again reduces sleep: a loop.\nOutdoor play → (+) sleep quality.\nThis map suggests features to collect (screen time, sleep, study time, stress) and points where action can break the loop.",
+    "hi": "रात का स्क्रीन समय → (–) नींद के घंटे → (+) कक्षा में एकाग्रता → (+) पाठों की समझ → (+) परीक्षा अंक (लंबा तीर: असर हफ़्तों बाद परीक्षा में दिखता है)।\nस्क्रीन समय → (–) पढ़ाई का समय → (+) परीक्षा अंक।\nकम अंक → (+) तनाव → (+) स्क्रीन समय (बचने के लिए), जो फिर नींद घटाता है: एक लूप।\nबाहर खेलना → (+) नींद की गुणवत्ता।\nयह मैप जुटाने लायक विशेषताएँ (स्क्रीन समय, नींद, पढ़ाई का समय, तनाव) और वे बिंदु बताता है जहाँ कार्रवाई लूप तोड़ सकती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity/thinking: You trained a Teachable Machine model on 'mask' and 'no mask' using photos of only your own face in your room. It works well for you but fails for your classmates in the school corridor. Explain why using the project cycle, and suggest fixes.",
+    "hi": "गतिविधि/चिंतन: आपने Teachable Machine model को 'मास्क' और 'बिना मास्क' पर केवल अपने कमरे में अपने चेहरे की फ़ोटो से प्रशिक्षित किया। यह आपके लिए अच्छा चलता है पर स्कूल गलियारे में सहपाठियों के लिए विफल होता है। प्रोजेक्ट चक्र से कारण समझाइए और सुधार सुझाइए।"
+   },
+   "a": {
+    "en": "Data Acquisition problem: the training data had one face, one background and one lighting, so it is not representative. The model may have learnt your face or room instead of 'mask'. Evaluation problem: testing was done in the same conditions as training, so the weakness was hidden. Fixes: collect varied data (many people, ages, skin tones, mask colours, backgrounds, lighting), keep separate test images from new people and places, retrain and re-evaluate, and after deployment monitor errors and update. Also take consent before using others' photos.",
+    "hi": "डेटा अधिग्रहण की समस्या: प्रशिक्षण डेटा में एक चेहरा, एक पृष्ठभूमि और एक रोशनी थी, इसलिए यह प्रतिनिधि नहीं है। Model ने शायद 'मास्क' की जगह आपका चेहरा या कमरा सीख लिया। मूल्यांकन की समस्या: परीक्षण भी प्रशिक्षण जैसी स्थिति में हुआ, इसलिए कमज़ोरी छिपी रही। सुधार: विविध डेटा जुटाएँ (कई लोग, उम्र, त्वचा के रंग, मास्क के रंग, पृष्ठभूमि, रोशनी), नए लोगों और जगहों की अलग परीक्षण फ़ोटो रखें, फिर से प्रशिक्षण और मूल्यांकन करें, और परिनियोजन के बाद ग़लतियों पर नज़र रखकर अद्यतन करें। दूसरों की फ़ोटो उपयोग करने से पहले सहमति लें।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is NOT a step within deployment?\n(a) integration with existing systems (b) monitoring and maintenance (c) filling the 4Ws canvas (d) testing in real conditions",
+    "hi": "बहुविकल्पी: इनमें से कौन परिनियोजन का चरण नहीं है?\n(क) मौजूदा सिस्टम से एकीकरण (ख) निगरानी और रखरखाव (ग) 4Ws कैनवास भरना (घ) वास्तविक परिस्थितियों में परीक्षण"
+   },
+   "a": {
+    "en": "(c) filling the 4Ws canvas belongs to Problem Scoping.",
+    "hi": "(ग) 4Ws कैनवास भरना समस्या निर्धारण का हिस्सा है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is the AI Project Cycle called a 'cycle' and not a straight line? Give two situations where a team goes back to an earlier stage.",
+    "hi": "AI प्रोजेक्ट चक्र को सीधी रेखा नहीं, 'चक्र' क्यों कहते हैं? दो ऐसी स्थितियाँ बताइए जब टीम पहले के चरण पर लौटती है।"
+   },
+   "a": {
+    "en": "Because building AI is iterative: results and feedback from later stages send the team back to improve earlier ones. Examples: (1) evaluation shows low recall, so the team returns to Data Acquisition to collect more examples of the missed cases; (2) after deployment, users say the app does not work in their language, so the team returns to Problem Scoping to include those users.",
+    "hi": "क्योंकि AI बनाना पुनरावृत्तीय है: बाद के चरणों के परिणाम और प्रतिक्रिया टीम को पहले के चरण सुधारने के लिए लौटाते हैं। उदाहरण: (1) मूल्यांकन में recall कम आए, तो टीम छूटे मामलों के और उदाहरण जुटाने डेटा अधिग्रहण पर लौटती है; (2) परिनियोजन के बाद उपयोगकर्ता कहें कि ऐप उनकी भाषा में नहीं चलता, तो टीम उन्हें शामिल करने के लिए समस्या निर्धारण पर लौटती है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Match: (i) Overfitting (ii) Stakeholders (iii) API (iv) Recall → (A) people affected by the problem (B) share of real Yes cases caught (C) memorising training data (D) a way for programs to request data",
+    "hi": "मिलान करें: (i) Overfitting (ii) हितधारक (iii) API (iv) Recall → (A) समस्या से प्रभावित लोग (B) पकड़े गए असली 'हाँ' मामलों का हिस्सा (C) प्रशिक्षण डेटा रटना (D) प्रोग्रामों के डेटा माँगने का तरीका"
+   },
+   "a": {
+    "en": "(i)–C, (ii)–A, (iii)–D, (iv)–B.",
+    "hi": "(i)–C, (ii)–A, (iii)–D, (iv)–B।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "The AI Project Cycle has six stages: Problem Scoping, Data Acquisition, Data Exploration, Modelling, Evaluation and Deployment; it repeats as the solution improves.",
+   "Problem scoping narrows Theme → Topic → Problem; the SDGs are a good source of themes.",
+   "The 4Ws canvas (Who, What, Where, Why) leads to a problem statement: Our [who] has a problem that [what] when [where]; an ideal solution would [why].",
+   "Scoping also lists stakeholders, actions, existing efforts, ethical issues and data needs.",
+   "Data acquisition collects reliable data; it is split into training data (to learn) and testing data (to check).",
+   "Data features are the attributes that affect the problem; sources include surveys, sensors, cameras, observation, web scraping and APIs; open portals such as data.gov.in are reliable.",
+   "System maps show cause and effect with arrows: + same direction, – opposite direction, loops and long arrows for delays.",
+   "Data exploration cleans and visualises data; choose the graph to match the purpose (line for time, bar for comparison, pie for parts, scatter for relationships).",
+   "Modelling is rule-based (developer's rules, static) or learning-based (learns from data, adapts); learning can be supervised, unsupervised or reinforcement.",
+   "Evaluation uses unseen testing data to avoid overfitting; outcomes are TP, TN, FP and FN in a confusion matrix.",
+   "Accuracy = (TP+TN)/total; Precision = TP/(TP+FP); Recall = TP/(TP+FN); F1 = 2PR/(P+R). Which error matters most depends on the problem.",
+   "Deployment involves real-world testing, integration, and monitoring and maintenance.",
+   "CottonAce (pink bollworm detection) and diabetic-retinopathy screening show the full cycle in real Indian projects.",
+   "Ethics and the needs of all stakeholders must be considered at every stage."
+  ],
+  "hi": [
+   "AI प्रोजेक्ट चक्र के छह चरण हैं: समस्या निर्धारण, डेटा अधिग्रहण, डेटा अन्वेषण, मॉडलिंग, मूल्यांकन और परिनियोजन; समाधान सुधरते-सुधरते यह दोहराता है।",
+   "समस्या निर्धारण विषय → उप-विषय → समस्या तक दायरा छोटा करता है; SDGs विषयों का अच्छा स्रोत हैं।",
+   "4Ws कैनवास (कौन, क्या, कहाँ, क्यों) से समस्या कथन बनता है: हमारे [कौन] को समस्या है कि [क्या] जब [कहाँ]; आदर्श समाधान [क्यों] करेगा।",
+   "निर्धारण में हितधारक, कार्य, मौजूदा प्रयास, नैतिक मुद्दे और डेटा ज़रूरतें भी लिखी जाती हैं।",
+   "डेटा अधिग्रहण भरोसेमंद डेटा जुटाता है; उसे प्रशिक्षण डेटा (सीखने) और परीक्षण डेटा (जाँचने) में बाँटा जाता है।",
+   "डेटा विशेषताएँ वे गुण हैं जो समस्या को प्रभावित करते हैं; स्रोत: सर्वेक्षण, सेंसर, कैमरे, अवलोकन, वेब स्क्रैपिंग और API; data.gov.in जैसे खुले पोर्टल भरोसेमंद हैं।",
+   "सिस्टम मैप तीरों से कारण-प्रभाव दिखाते हैं: + एक दिशा, – उलटी दिशा, लूप, और देरी के लिए लंबे तीर।",
+   "डेटा अन्वेषण डेटा साफ़ करता और उसका दृश्य बनाता है; उद्देश्य के अनुसार ग्राफ़ चुनें (समय के लिए लाइन, तुलना के लिए बार, हिस्सों के लिए पाई, संबंध के लिए स्कैटर)।",
+   "मॉडलिंग नियम-आधारित (डेवलपर के नियम, स्थिर) या सीखने-आधारित (डेटा से सीखता, ढलता) होती है; सीखना पर्यवेक्षित, अपर्यवेक्षित या प्रबलन हो सकता है।",
+   "मूल्यांकन overfitting से बचने के लिए अनदेखे परीक्षण डेटा का उपयोग करता है; परिणाम confusion matrix में TP, TN, FP और FN हैं।",
+   "Accuracy = (TP+TN)/कुल; Precision = TP/(TP+FP); Recall = TP/(TP+FN); F1 = 2PR/(P+R)। कौन-सी ग़लती सबसे अहम है, यह समस्या पर निर्भर है।",
+   "परिनियोजन में वास्तविक परीक्षण, एकीकरण, और निगरानी व रखरखाव शामिल हैं।",
+   "CottonAce (गुलाबी सुंडी पहचान) और डायबिटिक-रेटिनोपैथी जाँच वास्तविक भारतीय परियोजनाओं में पूरा चक्र दिखाते हैं।",
+   "हर चरण पर नैतिकता और सभी हितधारकों की ज़रूरतों पर विचार ज़रूरी है।"
+  ]
+ }
+}

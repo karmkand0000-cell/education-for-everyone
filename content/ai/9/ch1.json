@@ -1,0 +1,1914 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "9",
+ "id": "ch1",
+ "intro": {
+  "en": "AI is no longer science fiction; it unlocks phones, predicts traffic, catches fraud and helps farmers spot pests. In this chapter you will build a clear picture of what intelligence is, how we make decisions, what makes a machine 'artificially intelligent', and how to tell AI from ordinary automation. You will then study the three domains of AI defined in the CBSE Class 9 curriculum, Data, Computer Vision and Natural Language Processing, with real Indian examples and hands-on games for each.",
+  "hi": "AI अब विज्ञान कथा नहीं है; यह फ़ोन खोलता है, ट्रैफ़िक का अनुमान लगाता है, धोखाधड़ी पकड़ता है और किसानों को कीट पहचानने में मदद करता है। इस अध्याय में आप साफ़ समझेंगे कि बुद्धिमत्ता क्या है, हम निर्णय कैसे लेते हैं, मशीन को 'कृत्रिम रूप से बुद्धिमान' क्या बनाता है, और AI को साधारण स्वचालन से कैसे अलग पहचानें। फिर आप CBSE कक्षा 9 पाठ्यक्रम में बताए AI के तीन क्षेत्रों, डेटा, कंप्यूटर विज़न और प्राकृतिक भाषा प्रसंस्करण, को भारतीय उदाहरणों और हर क्षेत्र के व्यावहारिक खेलों के साथ पढ़ेंगे।"
+ },
+ "learn": {
+  "en": [
+   "What intelligence is and its different abilities, including multiple intelligences",
+   "How humans and machines make decisions using information and experience",
+   "The definition of AI, its three views (technology, intelligence, field of study) and its origin",
+   "How a machine becomes intelligent: data, algorithm, model, prediction",
+   "The difference between AI, Machine Learning and Deep Learning",
+   "How to tell AI from automation, and AI from robots",
+   "Narrow, general and super AI, and key milestones in AI history",
+   "The three AI domains, Data, Computer Vision and NLP, with applications",
+   "How domains combine in real products, and AI's uses across sectors in India",
+   "What AI can and cannot do, through games and activities"
+  ],
+  "hi": [
+   "बुद्धिमत्ता क्या है और उसकी विभिन्न क्षमताएँ, बहु-बुद्धि सहित",
+   "मनुष्य और मशीनें जानकारी और अनुभव से निर्णय कैसे लेते हैं",
+   "AI की परिभाषा, उसके तीन रूप (तकनीक, बुद्धिमत्ता, अध्ययन क्षेत्र) और उसकी शुरुआत",
+   "मशीन बुद्धिमान कैसे बनती है: डेटा, algorithm, model, अनुमान",
+   "AI, Machine Learning और Deep Learning में अंतर",
+   "AI को स्वचालन से, और AI को रोबोट से कैसे अलग पहचानें",
+   "संकीर्ण, सामान्य और सुपर AI, और AI इतिहास के मुख्य पड़ाव",
+   "AI के तीन क्षेत्र, डेटा, कंप्यूटर विज़न और NLP, उपयोगों सहित",
+   "वास्तविक उत्पादों में क्षेत्र कैसे मिलते हैं, और भारत के विभिन्न क्षेत्रों में AI",
+   "खेलों और गतिविधियों से AI क्या कर सकता है और क्या नहीं"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "1.1 Starting point: AI is already around you",
+    "hi": "1.1 शुरुआत: AI पहले से आपके आसपास है"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think about a normal day. Your phone unlocks when it sees your face. Google Maps shows a red line on a road and suggests a faster route. A video app shows you clips that match what you watched yesterday. Your bank sends an SMS: 'Did you make this payment? Reply NO if not.' A farmer in Maharashtra photographs a cotton leaf and an app tells him which pest is attacking it. In each case a machine is doing something that, a few decades ago, only a human could do: recognising, understanding, predicting or deciding. This is Artificial Intelligence (AI) at work.",
+      "hi": "एक साधारण दिन के बारे में सोचिए। आपका फ़ोन आपका चेहरा देखते ही खुल जाता है। Google Maps किसी सड़क पर लाल रेखा दिखाकर तेज़ रास्ता सुझाता है। वीडियो ऐप वही वीडियो दिखाता है जो कल देखे गए वीडियो से मिलते हैं। बैंक SMS भेजता है: 'क्या यह भुगतान आपने किया? अगर नहीं, तो NO लिखें।' महाराष्ट्र का एक किसान कपास की पत्ती की फ़ोटो खींचता है और ऐप बता देता है कि कौन-सा कीट हमला कर रहा है। हर उदाहरण में मशीन वह काम कर रही है जो कुछ दशक पहले केवल इंसान कर सकता था: पहचानना, समझना, अनुमान लगाना या निर्णय लेना। यही आर्टिफ़िशियल इंटेलिजेंस (AI) का काम है।"
+     }
+    },
+    {
+     "p": {
+      "en": "In Class 6 to 8 you met AI as a friendly idea. In Class 9 (CBSE Artificial Intelligence, Code 417) we study it more carefully: what intelligence really is, what makes a machine 'intelligent', the three main domains of AI (Data, Computer Vision and Natural Language Processing), and how AI is used in homes, farms, hospitals, banks and cities. This chapter is the base for the rest of the book: the AI Project Cycle (Chapter 2), AI Ethics (Chapter 3), Data Literacy (Chapter 4), Statistics and Probability (Chapter 5), Generative AI (Chapter 6) and Python (Chapter 7).",
+      "hi": "कक्षा 6 से 8 में आपने AI को एक मित्रवत विचार के रूप में जाना। कक्षा 9 (CBSE Artificial Intelligence, कोड 417) में हम इसे ज़्यादा ध्यान से पढ़ते हैं: बुद्धिमत्ता असल में क्या है, मशीन को 'बुद्धिमान' क्या बनाता है, AI के तीन मुख्य क्षेत्र (Data, Computer Vision और Natural Language Processing), और घर, खेत, अस्पताल, बैंक और शहरों में AI का उपयोग कैसे होता है। यह अध्याय पूरी पुस्तक की नींव है: AI प्रोजेक्ट चक्र (अध्याय 2), AI नैतिकता (अध्याय 3), डेटा साक्षरता (अध्याय 4), सांख्यिकी और प्रायिकता (अध्याय 5), जनरेटिव AI (अध्याय 6) और Python (अध्याय 7)।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: AI is not magic and it is not a person. It is a set of computer methods that learn patterns from data and use them to recognise, predict or decide.",
+      "hi": "याद रखें: AI कोई जादू नहीं है और कोई व्यक्ति भी नहीं है। यह कंप्यूटर की विधियों का एक समूह है जो डेटा से पैटर्न सीखता है और उनका उपयोग पहचानने, अनुमान लगाने या निर्णय लेने में करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.2 What is intelligence?",
+    "hi": "1.2 बुद्धिमत्ता क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before we can talk about artificial intelligence, we need to be clear about intelligence itself. Psychologists do not agree on a single definition, but most agree that intelligence is a group of mental abilities, not one single skill.",
+      "hi": "आर्टिफ़िशियल इंटेलिजेंस पर बात करने से पहले हमें स्वयं बुद्धिमत्ता को स्पष्ट रूप से समझना होगा। मनोवैज्ञानिक किसी एक परिभाषा पर सहमत नहीं हैं, पर अधिकतर मानते हैं कि बुद्धिमत्ता कई मानसिक क्षमताओं का समूह है, कोई एक कौशल नहीं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Intelligence",
+       "hi": "बुद्धिमत्ता (Intelligence)"
+      },
+      "text": {
+       "en": "Intelligence is the ability to perceive information, learn from experience, understand and reason, solve problems, make decisions, and adapt what you know to new situations.",
+       "hi": "बुद्धिमत्ता जानकारी को ग्रहण करने, अनुभव से सीखने, समझने और तर्क करने, समस्याएँ हल करने, निर्णय लेने और अपने ज्ञान को नई परिस्थितियों में ढालने की क्षमता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Ability",
+        "Meaning",
+        "Human example"
+       ],
+       "hi": [
+        "क्षमता",
+        "अर्थ",
+        "मानवीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Perception",
+         "Taking in information through senses",
+         "Recognising a friend's face in a crowd at a mela"
+        ],
+        [
+         "Learning",
+         "Improving with experience or examples",
+         "Getting better at bowling after weeks of practice"
+        ],
+        [
+         "Memory",
+         "Storing and recalling information",
+         "Remembering the formula for the area of a circle"
+        ],
+        [
+         "Reasoning",
+         "Drawing conclusions step by step",
+         "The road is wet and the sky is cloudy, so it probably rained"
+        ],
+        [
+         "Problem solving",
+         "Finding a way to reach a goal",
+         "Finding another route when the usual road is closed for a procession"
+        ],
+        [
+         "Decision making",
+         "Choosing the best option among many",
+         "Choosing which stream to take after Class 10"
+        ],
+        [
+         "Language",
+         "Understanding and producing speech and text",
+         "Following your grandmother's recipe told in Bhojpuri"
+        ],
+        [
+         "Adaptability",
+         "Using knowledge in a new situation",
+         "Using your cycle-riding balance to learn a scooter"
+        ]
+       ],
+       "hi": [
+        [
+         "अनुभूति (Perception)",
+         "इंद्रियों से जानकारी ग्रहण करना",
+         "मेले की भीड़ में दोस्त का चेहरा पहचानना"
+        ],
+        [
+         "सीखना",
+         "अनुभव या उदाहरणों से बेहतर होना",
+         "हफ़्तों के अभ्यास के बाद गेंदबाज़ी में सुधार"
+        ],
+        [
+         "स्मृति",
+         "जानकारी को संजोना और याद करना",
+         "वृत्त के क्षेत्रफल का सूत्र याद रखना"
+        ],
+        [
+         "तर्क (Reasoning)",
+         "चरण-दर-चरण निष्कर्ष निकालना",
+         "सड़क गीली है और बादल हैं, यानी शायद बारिश हुई है"
+        ],
+        [
+         "समस्या समाधान",
+         "लक्ष्य तक पहुँचने का रास्ता खोजना",
+         "जुलूस के कारण रास्ता बंद हो तो दूसरा रास्ता ढूँढना"
+        ],
+        [
+         "निर्णय लेना",
+         "कई विकल्पों में से सबसे अच्छा चुनना",
+         "कक्षा 10 के बाद कौन-सी स्ट्रीम लें, यह चुनना"
+        ],
+        [
+         "भाषा",
+         "बोली और लिखी बात को समझना और बनाना",
+         "दादी की भोजपुरी में बताई रेसिपी को समझकर बनाना"
+        ],
+        [
+         "अनुकूलन (Adaptability)",
+         "ज्ञान को नई स्थिति में लगाना",
+         "साइकिल के संतुलन से स्कूटर चलाना सीखना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Psychologist Howard Gardner suggested that people can be intelligent in different ways, called multiple intelligences: linguistic (words), logical-mathematical (numbers and logic), spatial (pictures and space), musical, bodily-kinaesthetic (movement, as in sports or dance), interpersonal (understanding others), intrapersonal (understanding yourself) and naturalist (understanding nature). This reminds us that a cricketer, a poet and a mathematician are all intelligent, in different ways.",
+      "hi": "मनोवैज्ञानिक हॉवर्ड गार्डनर ने कहा कि लोग अलग-अलग तरह से बुद्धिमान हो सकते हैं, जिसे बहु-बुद्धि (multiple intelligences) कहते हैं: भाषाई (शब्द), तार्किक-गणितीय (संख्या और तर्क), स्थानिक (चित्र और स्थान), संगीतात्मक, शारीरिक-गतिक (खेल या नृत्य जैसी गति), अंतर्वैयक्तिक (दूसरों को समझना), अंतःवैयक्तिक (स्वयं को समझना) और प्रकृतिवादी (प्रकृति को समझना)। इससे पता चलता है कि क्रिकेटर, कवि और गणितज्ञ सभी बुद्धिमान हैं, बस अलग-अलग तरह से।"
+     }
+    },
+    {
+     "note": {
+      "en": "Today's AI systems are usually good at one narrow ability (for example, recognising faces). Human intelligence combines all these abilities together, plus feelings, common sense and values.",
+      "hi": "आज के AI सिस्टम आम तौर पर किसी एक सीमित क्षमता में अच्छे होते हैं (जैसे चेहरे पहचानना)। मानव बुद्धिमत्ता इन सभी क्षमताओं को एक साथ जोड़ती है, साथ में भावनाएँ, सामान्य समझ (common sense) और मूल्य भी।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.3 How do we make decisions?",
+    "hi": "1.3 हम निर्णय कैसे लेते हैं?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Decision making is at the heart of intelligence. Every decision, whether by a human or a machine, follows a similar path: collect information, compare it with past experience, think about the possible results of each choice, and then choose.",
+      "hi": "निर्णय लेना बुद्धिमत्ता का केंद्र है। हर निर्णय, चाहे इंसान ले या मशीन, एक जैसे रास्ते पर चलता है: जानकारी जुटाओ, पिछले अनुभव से तुलना करो, हर विकल्प के संभावित परिणाम सोचो, और फिर चुनो।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Riya must decide whether to carry an umbrella to school. Show how she decides, step by step.",
+       "hi": "रिया को तय करना है कि स्कूल छाता ले जाए या नहीं। दिखाइए कि वह चरण-दर-चरण कैसे निर्णय लेती है।"
+      },
+      "a": {
+       "en": "Step 1 (information): she looks at the sky; it is dark and windy. The weather app says 70% chance of rain.\nStep 2 (experience): last week on a similar day it rained in the afternoon.\nStep 3 (outcomes): if she carries the umbrella and it does not rain, she carries a little extra weight. If she does not carry it and it rains, her books get wet.\nStep 4 (decision): the cost of getting wet is higher, so she carries the umbrella.\nAn AI weather system works in a similar way: data (clouds, humidity, wind) + past patterns → a prediction (70% rain).",
+       "hi": "चरण 1 (जानकारी): वह आसमान देखती है; अंधेरा है और हवा चल रही है। मौसम ऐप में बारिश की 70% संभावना है।\nचरण 2 (अनुभव): पिछले हफ़्ते ऐसे ही दिन दोपहर में बारिश हुई थी।\nचरण 3 (परिणाम): छाता ले जाए और बारिश न हो, तो थोड़ा अतिरिक्त भार। न ले जाए और बारिश हो, तो किताबें भीग जाएँगी।\nचरण 4 (निर्णय): भीगने का नुकसान ज़्यादा है, इसलिए वह छाता ले जाती है।\nAI मौसम सिस्टम भी ऐसे ही काम करता है: डेटा (बादल, नमी, हवा) + पिछले पैटर्न → अनुमान (70% बारिश)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Notice two things. First, good decisions need good information; if the weather data were wrong, the decision would be poor. Second, the decision depends on experience, which is like data stored in our memory. Machines need the same two things: data and a method (algorithm) to learn from past examples. When there is no data or experience, even a human can only guess. A famous classroom activity asks students to choose a door in a game with no clues; they quickly realise that without information, a decision is just luck.",
+      "hi": "दो बातों पर ध्यान दीजिए। पहली, अच्छे निर्णय के लिए अच्छी जानकारी चाहिए; अगर मौसम का डेटा ग़लत हो, तो निर्णय भी ख़राब होगा। दूसरी, निर्णय अनुभव पर टिका है, जो हमारी स्मृति में रखे डेटा जैसा है। मशीनों को भी यही दो चीज़ें चाहिए: डेटा और पुराने उदाहरणों से सीखने की विधि (algorithm)। जब न डेटा हो न अनुभव, तो इंसान भी केवल अंदाज़ा लगा सकता है। कक्षा की एक प्रसिद्ध गतिविधि में बिना किसी सुराग के खेल में एक दरवाज़ा चुनना होता है; विद्यार्थी जल्दी समझ जाते हैं कि जानकारी के बिना निर्णय केवल किस्मत है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.4 What is Artificial Intelligence?",
+    "hi": "1.4 आर्टिफ़िशियल इंटेलिजेंस क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "'Artificial' means made by humans, not natural. So Artificial Intelligence means intelligence shown by machines that humans have built. The term was used by John McCarthy, who organised a famous summer workshop on the topic at Dartmouth College, USA, in 1956. Earlier, in 1950, Alan Turing had asked 'Can machines think?' and proposed a test, now called the Turing Test, in which a machine tries to chat so well that a person cannot tell it from a human.",
+      "hi": "'Artificial' का अर्थ है मनुष्य द्वारा बनाया गया, प्राकृतिक नहीं। इसलिए आर्टिफ़िशियल इंटेलिजेंस का अर्थ है मनुष्य द्वारा बनाई मशीनों में दिखाई देने वाली बुद्धिमत्ता। यह शब्द जॉन मैकार्थी ने प्रयोग किया, जिन्होंने 1956 में अमेरिका के डार्टमथ कॉलेज में इस विषय पर एक प्रसिद्ध ग्रीष्मकालीन कार्यशाला आयोजित की। इससे पहले, 1950 में, एलन ट्यूरिंग ने पूछा था 'क्या मशीनें सोच सकती हैं?' और एक परीक्षण सुझाया, जिसे अब ट्यूरिंग टेस्ट कहते हैं, जिसमें मशीन इतनी अच्छी बातचीत करने की कोशिश करती है कि व्यक्ति उसे इंसान से अलग न पहचान सके।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Artificial Intelligence (AI)",
+       "hi": "आर्टिफ़िशियल इंटेलिजेंस (AI)"
+      },
+      "text": {
+       "en": "AI is the ability of a machine or computer program to perform tasks that normally need human intelligence, such as recognising images and speech, understanding language, learning from data, predicting and making decisions. A machine with AI can collect data, find patterns in it, and improve its performance with more data and experience.",
+       "hi": "AI किसी मशीन या कंप्यूटर प्रोग्राम की वह क्षमता है जिससे वह ऐसे काम कर सके जिनके लिए सामान्यतः मानव बुद्धि चाहिए, जैसे चित्र और आवाज़ पहचानना, भाषा समझना, डेटा से सीखना, अनुमान लगाना और निर्णय लेना। AI वाली मशीन डेटा इकट्ठा कर सकती है, उसमें पैटर्न खोज सकती है, और अधिक डेटा व अनुभव से अपना प्रदर्शन सुधार सकती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "AI can be seen in three ways, and all three are correct: (1) as a technology, like the face unlock in your phone; (2) as a form of intelligence, the machine's ability to mimic human abilities such as learning, predicting and deciding; and (3) as a field of study, a branch of computer science that uses mathematics, statistics, logic, psychology and linguistics.",
+      "hi": "AI को तीन तरह से देखा जा सकता है, और तीनों सही हैं: (1) एक तकनीक के रूप में, जैसे आपके फ़ोन का फ़ेस अनलॉक; (2) बुद्धिमत्ता के एक रूप में, यानी मशीन की सीखने, अनुमान लगाने और निर्णय लेने जैसी मानवीय क्षमताओं की नकल करने की योग्यता; और (3) अध्ययन के एक क्षेत्र के रूप में, कंप्यूटर विज्ञान की एक शाखा जो गणित, सांख्यिकी, तर्कशास्त्र, मनोविज्ञान और भाषा-विज्ञान का उपयोग करती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "An intelligent machine typically shows these features: it mimics some human ability; it solves real-world problems; it learns from past data or experience; it makes predictions or decisions; and it can improve when given more data. A machine that only follows a fixed set of steps and never changes its behaviour is automatic, but not intelligent.",
+      "hi": "एक बुद्धिमान मशीन में आम तौर पर ये विशेषताएँ होती हैं: वह किसी मानवीय क्षमता की नकल करती है; वास्तविक समस्याएँ हल करती है; पुराने डेटा या अनुभव से सीखती है; अनुमान या निर्णय लेती है; और अधिक डेटा मिलने पर सुधर सकती है। जो मशीन केवल तय चरणों का पालन करे और अपना व्यवहार कभी न बदले, वह स्वचालित (automatic) है, बुद्धिमान नहीं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.5 How does a machine become intelligent?",
+    "hi": "1.5 मशीन बुद्धिमान कैसे बनती है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Humans become intelligent by learning from experience: a baby touches a hot cup once and learns. Machines become 'artificially intelligent' by learning from data. We give the machine many examples, and an algorithm (a step-by-step method) finds patterns in them. The result of this learning is called a model. When new data comes in, the model uses the patterns to give an answer.",
+      "hi": "मनुष्य अनुभव से सीखकर बुद्धिमान बनते हैं: बच्चा एक बार गर्म कप छूता है और सीख जाता है। मशीनें डेटा से सीखकर 'कृत्रिम रूप से बुद्धिमान' बनती हैं। हम मशीन को बहुत सारे उदाहरण देते हैं, और एक algorithm (चरण-दर-चरण विधि) उनमें पैटर्न ढूँढता है। इस सीखने का परिणाम model कहलाता है। जब नया डेटा आता है, तो model उन पैटर्न से उत्तर देता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Data (examples)  →  Algorithm (learns patterns)  →  Model  →  Prediction / Decision on new data",
+      "hi": "डेटा (उदाहरण)  →  Algorithm (पैटर्न सीखता है)  →  Model  →  नए डेटा पर अनुमान / निर्णय"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "How does a mango-sorting machine at a fruit market learn to separate ripe mangoes from unripe ones?",
+       "hi": "फल मंडी की आम छाँटने वाली मशीन पके और कच्चे आमों को अलग करना कैसे सीखती है?"
+      },
+      "a": {
+       "en": "Step 1: People collect thousands of photos of mangoes and label each one 'ripe' or 'unripe'. This is the data.\nStep 2: An algorithm studies the photos and finds patterns: ripe mangoes are more yellow-orange, slightly softer-looking, with certain spots.\nStep 3: The learned patterns become a model.\nStep 4: A camera over the conveyor belt sends each new mango's photo to the model, which predicts 'ripe' or 'unripe', and a flap pushes it into the right basket.\nStep 5: If the model makes mistakes, more labelled photos are added and it is trained again, so it improves.",
+       "hi": "चरण 1: लोग आमों की हज़ारों फ़ोटो इकट्ठा करते हैं और हर फ़ोटो पर 'पका' या 'कच्चा' लेबल लगाते हैं। यह डेटा है।\nचरण 2: Algorithm फ़ोटो का अध्ययन करके पैटर्न खोजता है: पके आम ज़्यादा पीले-नारंगी, थोड़े नरम दिखने वाले और कुछ खास धब्बों वाले होते हैं।\nचरण 3: सीखे गए पैटर्न model बन जाते हैं।\nचरण 4: कन्वेयर बेल्ट के ऊपर लगा कैमरा हर नए आम की फ़ोटो model को भेजता है, model 'पका' या 'कच्चा' बताता है, और एक पट्टी उसे सही टोकरी में धकेल देती है।\nचरण 5: अगर model ग़लती करे, तो और लेबल वाली फ़ोटो जोड़कर उसे फिर से प्रशिक्षित किया जाता है, जिससे वह सुधरता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Three terms come up again and again. Machine Learning (ML) is the part of AI in which machines learn from data instead of being given every rule. Deep Learning (DL) is a part of ML that uses large artificial neural networks (loosely inspired by brain cells) and needs a lot of data; it powers face recognition, speech recognition and chatbots. So: AI is the biggest circle, ML is inside AI, and DL is inside ML. You will study these model types in Chapter 2.",
+      "hi": "तीन शब्द बार-बार आते हैं। Machine Learning (ML) AI का वह भाग है जिसमें मशीन को हर नियम बताने के बजाय वह डेटा से सीखती है। Deep Learning (DL) ML का एक भाग है जो बड़े कृत्रिम न्यूरल नेटवर्क (मस्तिष्क की कोशिकाओं से थोड़ा प्रेरित) का उपयोग करता है और जिसे बहुत अधिक डेटा चाहिए; यह चेहरा पहचानने, आवाज़ पहचानने और चैटबॉट को चलाता है। यानी: AI सबसे बड़ा घेरा है, ML उसके अंदर है, और DL, ML के अंदर। इन model प्रकारों को आप अध्याय 2 में पढ़ेंगे।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Term",
+        "Simple meaning",
+        "Example"
+       ],
+       "hi": [
+        "शब्द",
+        "सरल अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Artificial Intelligence",
+         "Any technique that lets machines do 'intelligent' tasks",
+         "A chess program, a chatbot, a self-driving car"
+        ],
+        [
+         "Machine Learning",
+         "AI that learns patterns from data",
+         "Spam filter in email learning from emails marked spam"
+        ],
+        [
+         "Deep Learning",
+         "ML using many-layered neural networks and big data",
+         "Face unlock, Google Lens, voice typing"
+        ]
+       ],
+       "hi": [
+        [
+         "आर्टिफ़िशियल इंटेलिजेंस",
+         "कोई भी तकनीक जिससे मशीन 'बुद्धिमान' काम करे",
+         "शतरंज प्रोग्राम, चैटबॉट, स्वचालित कार"
+        ],
+        [
+         "मशीन लर्निंग",
+         "डेटा से पैटर्न सीखने वाला AI",
+         "ईमेल का स्पैम फ़िल्टर, जो स्पैम चिह्नित ईमेल से सीखता है"
+        ],
+        [
+         "डीप लर्निंग",
+         "कई परतों वाले न्यूरल नेटवर्क और बड़े डेटा वाला ML",
+         "फ़ेस अनलॉक, Google Lens, वॉइस टाइपिंग"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.6 What is AI and what is not AI?",
+    "hi": "1.6 क्या AI है और क्या AI नहीं है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Many machines are smart-looking but are not AI. A machine is AI only if it learns from data or experience and can deal with new situations. A machine that does exactly what it was programmed to do, the same way every time, is automation.",
+      "hi": "कई मशीनें स्मार्ट दिखती हैं पर AI नहीं होतीं। कोई मशीन तभी AI है जब वह डेटा या अनुभव से सीखे और नई परिस्थितियों को संभाल सके। जो मशीन हर बार ठीक वैसे ही वही काम करे जिसके लिए उसे प्रोग्राम किया गया है, वह स्वचालन (automation) है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Machine",
+        "AI or not?",
+        "Reason"
+       ],
+       "hi": [
+        "मशीन",
+        "AI है या नहीं?",
+        "कारण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Automatic washing machine with fixed timer",
+         "Not AI",
+         "Runs the same fixed programme; does not learn"
+        ],
+        [
+         "Washing machine that senses load and dirt and adjusts water (fuzzy logic/sensors)",
+         "Borderline; simple rule-based smartness",
+         "Uses sensors and rules; most models do not learn from your usage"
+        ],
+        [
+         "Calculator",
+         "Not AI",
+         "Follows fixed rules of arithmetic"
+        ],
+        [
+         "Automatic street light with light sensor",
+         "Not AI",
+         "Simple rule: dark → on"
+        ],
+        [
+         "Face unlock",
+         "AI",
+         "Learnt to recognise faces from data; handles new lighting and angles"
+        ],
+        [
+         "Email spam filter",
+         "AI",
+         "Learns from emails people mark as spam"
+        ],
+        [
+         "Google Maps traffic prediction",
+         "AI",
+         "Learns from past and live location data"
+        ],
+        [
+         "Voice typing in Hindi",
+         "AI",
+         "Learnt speech patterns from recordings"
+        ],
+        [
+         "TV remote",
+         "Not AI",
+         "Each button sends a fixed signal"
+        ],
+        [
+         "Video recommendations",
+         "AI",
+         "Learns your preferences from what you watch"
+        ]
+       ],
+       "hi": [
+        [
+         "तय टाइमर वाली स्वचालित वॉशिंग मशीन",
+         "AI नहीं",
+         "हर बार वही तय प्रोग्राम; सीखती नहीं"
+        ],
+        [
+         "कपड़ों का भार और मैल भाँपकर पानी बदलने वाली मशीन (sensors/fuzzy logic)",
+         "सीमा पर; सरल नियम-आधारित समझ",
+         "सेंसर और नियम इस्तेमाल करती है; अधिकतर मॉडल आपके उपयोग से सीखते नहीं"
+        ],
+        [
+         "कैलकुलेटर",
+         "AI नहीं",
+         "अंकगणित के तय नियम मानता है"
+        ],
+        [
+         "प्रकाश सेंसर वाली स्वचालित स्ट्रीट लाइट",
+         "AI नहीं",
+         "सरल नियम: अंधेरा → जलो"
+        ],
+        [
+         "फ़ेस अनलॉक",
+         "AI",
+         "डेटा से चेहरे पहचानना सीखा; नई रोशनी और कोणों को संभालता है"
+        ],
+        [
+         "ईमेल स्पैम फ़िल्टर",
+         "AI",
+         "लोगों द्वारा स्पैम चिह्नित ईमेल से सीखता है"
+        ],
+        [
+         "Google Maps का ट्रैफ़िक अनुमान",
+         "AI",
+         "पुराने और लाइव लोकेशन डेटा से सीखता है"
+        ],
+        [
+         "हिंदी में वॉइस टाइपिंग",
+         "AI",
+         "रिकॉर्डिंग से बोलने के पैटर्न सीखे"
+        ],
+        [
+         "TV रिमोट",
+         "AI नहीं",
+         "हर बटन एक तय सिग्नल भेजता है"
+        ],
+        [
+         "वीडियो सुझाव",
+         "AI",
+         "आप क्या देखते हैं, उससे आपकी पसंद सीखता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Quick test: ask 'Does it learn from data, and can it handle a situation it has not seen before?' If both answers are yes, it is AI. 'Automatic', 'digital' or 'smart' on a label does not make something AI.",
+      "hi": "जल्दी जाँच: पूछिए 'क्या यह डेटा से सीखता है, और क्या यह ऐसी स्थिति संभाल सकता है जो इसने पहले नहीं देखी?' अगर दोनों उत्तर हाँ हैं, तो यह AI है। लेबल पर 'ऑटोमैटिक', 'डिजिटल' या 'स्मार्ट' लिखा होने से कोई चीज़ AI नहीं बन जाती।"
+     }
+    },
+    {
+     "p": {
+      "en": "Also remember that AI is not the same as a robot. A robot is a machine with a physical body that can move and act (like a factory arm). Some robots use AI (a robot vacuum that maps your room); many do not (a factory arm repeating one weld). And much AI has no body at all: a chatbot or a recommendation system is just software.",
+      "hi": "यह भी याद रखें कि AI और रोबोट एक नहीं हैं। रोबोट भौतिक शरीर वाली मशीन है जो चल-फिर और काम कर सकती है (जैसे फ़ैक्टरी की यांत्रिक भुजा)। कुछ रोबोट AI का उपयोग करते हैं (कमरे का नक्शा बनाने वाला रोबोट वैक्यूम); कई नहीं करते (एक ही वेल्ड बार-बार करने वाली फ़ैक्टरी भुजा)। और बहुत-सा AI बिना शरीर का होता है: चैटबॉट या सुझाव देने वाला सिस्टम केवल सॉफ़्टवेयर है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.7 Types of AI by capability, and a short history",
+    "hi": "1.7 क्षमता के आधार पर AI के प्रकार और संक्षिप्त इतिहास"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Meaning",
+        "Status"
+       ],
+       "hi": [
+        "प्रकार",
+        "अर्थ",
+        "स्थिति"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Narrow AI (Weak AI)",
+         "Does one task or a small group of tasks well",
+         "All AI in use today: face unlock, translators, chatbots, chess programs"
+        ],
+        [
+         "General AI (Strong AI / AGI)",
+         "Would understand and learn any task a human can, across areas",
+         "Does not exist yet; researchers debate if and when it will"
+        ],
+        [
+         "Super AI",
+         "Would be smarter than humans in every area",
+         "An idea only; found in science fiction and debates"
+        ]
+       ],
+       "hi": [
+        [
+         "संकीर्ण AI (Narrow/Weak AI)",
+         "एक काम या कुछ कामों का छोटा समूह अच्छी तरह करता है",
+         "आज उपयोग होने वाला सारा AI: फ़ेस अनलॉक, अनुवादक, चैटबॉट, शतरंज प्रोग्राम"
+        ],
+        [
+         "सामान्य AI (General/Strong AI, AGI)",
+         "इंसान की तरह कोई भी काम, हर क्षेत्र में, समझ और सीख सकेगा",
+         "अभी अस्तित्व में नहीं; शोधकर्ता बहस करते हैं कि यह कब और क्या बनेगा"
+        ],
+        [
+         "सुपर AI",
+         "हर क्षेत्र में इंसानों से अधिक बुद्धिमान होगा",
+         "केवल एक विचार; विज्ञान कथाओं और बहसों में"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Key milestones (dates you can rely on): 1950, Alan Turing's paper 'Computing Machinery and Intelligence'; 1956, the Dartmouth workshop where the field got its name; 1966, ELIZA, one of the first chatbots, made by Joseph Weizenbaum; 1997, IBM's Deep Blue defeated world chess champion Garry Kasparov; 2011, IBM Watson won the quiz show Jeopardy!; 2016, DeepMind's AlphaGo defeated Go champion Lee Sedol; from the 2010s, deep learning made image and speech recognition practical; from 2022, generative AI chatbots became widely available to the public (Chapter 6). AI also went through 'AI winters', periods when progress slowed and funding fell because early promises were too big.",
+      "hi": "मुख्य पड़ाव (भरोसेमंद तिथियाँ): 1950, एलन ट्यूरिंग का लेख 'Computing Machinery and Intelligence'; 1956, डार्टमथ कार्यशाला जहाँ इस क्षेत्र को नाम मिला; 1966, ELIZA, शुरुआती चैटबॉट में से एक, जिसे जोसेफ़ वाइज़ेनबाउम ने बनाया; 1997, IBM के Deep Blue ने विश्व शतरंज चैंपियन गैरी कास्पारोव को हराया; 2011, IBM Watson ने क्विज़ शो Jeopardy! जीता; 2016, DeepMind के AlphaGo ने Go चैंपियन ली सेडोल को हराया; 2010 के दशक से deep learning ने चित्र और आवाज़ पहचान को व्यावहारिक बनाया; 2022 से जनरेटिव AI चैटबॉट आम लोगों के लिए व्यापक रूप से उपलब्ध हुए (अध्याय 6)। AI ने 'AI winters' भी देखे, जब शुरुआती बड़े वादे पूरे न होने से प्रगति धीमी हुई और धन घटा।"
+     }
+    },
+    {
+     "p": {
+      "en": "India has its own AI efforts: NITI Aayog's National Strategy for Artificial Intelligence (2018) used the idea '#AIforAll' and named agriculture, health, education, smart cities and smart mobility as priority areas; Bhashini, launched by the Ministry of Electronics and IT in 2022, builds AI tools for translation and speech in Indian languages; and the IndiaAI Mission (approved in 2024) supports computing power, datasets and skilling.",
+      "hi": "भारत के अपने AI प्रयास हैं: नीति आयोग की राष्ट्रीय AI रणनीति (2018) ने '#AIforAll' का विचार रखा और कृषि, स्वास्थ्य, शिक्षा, स्मार्ट सिटी और स्मार्ट परिवहन को प्राथमिक क्षेत्र बताया; इलेक्ट्रॉनिकी और सूचना प्रौद्योगिकी मंत्रालय द्वारा 2022 में शुरू किया गया भाषिणी (Bhashini) भारतीय भाषाओं में अनुवाद और वाणी के AI उपकरण बनाता है; और IndiaAI मिशन (2024 में स्वीकृत) कंप्यूटिंग शक्ति, डेटासेट और कौशल विकास में मदद करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.8 The three domains of AI",
+    "hi": "1.8 AI के तीन क्षेत्र (Domains)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI works on different kinds of input. Depending on the type of data a system takes in, CBSE divides AI into three domains. Think of it as 'what does the machine look at?'",
+      "hi": "AI अलग-अलग प्रकार के इनपुट पर काम करता है। सिस्टम किस प्रकार का डेटा लेता है, इसके आधार पर CBSE AI को तीन क्षेत्रों (domains) में बाँटता है। इसे ऐसे सोचिए: 'मशीन किस चीज़ को देखती है?'"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Domain",
+        "Type of input data",
+        "Human ability it copies",
+        "Examples"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "इनपुट डेटा का प्रकार",
+        "किस मानवीय क्षमता की नकल",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data (Statistical Data)",
+         "Numbers, tables, records (structured data)",
+         "Reasoning with facts and figures, predicting",
+         "Fraud alerts, price prediction, weather forecast, cricket score prediction"
+        ],
+        [
+         "Computer Vision (CV)",
+         "Images and videos",
+         "Seeing and recognising",
+         "Face unlock, self-driving cars, crop-disease apps, CCTV number-plate reading"
+        ],
+        [
+         "Natural Language Processing (NLP)",
+         "Text and speech in human languages",
+         "Reading, listening, speaking, writing",
+         "Voice assistants, translation, chatbots, autocorrect, voice typing"
+        ]
+       ],
+       "hi": [
+        [
+         "डेटा (सांख्यिकीय डेटा)",
+         "संख्याएँ, तालिकाएँ, रिकॉर्ड (संरचित डेटा)",
+         "तथ्यों और आँकड़ों से तर्क, अनुमान",
+         "धोखाधड़ी अलर्ट, कीमत अनुमान, मौसम पूर्वानुमान, क्रिकेट स्कोर अनुमान"
+        ],
+        [
+         "कंप्यूटर विज़न (CV)",
+         "चित्र और वीडियो",
+         "देखना और पहचानना",
+         "फ़ेस अनलॉक, स्वचालित कारें, फ़सल-रोग ऐप, CCTV से नंबर प्लेट पढ़ना"
+        ],
+        [
+         "प्राकृतिक भाषा प्रसंस्करण (NLP)",
+         "मानवीय भाषाओं में लिखा पाठ और वाणी",
+         "पढ़ना, सुनना, बोलना, लिखना",
+         "वॉइस असिस्टेंट, अनुवाद, चैटबॉट, ऑटोकरेक्ट, वॉइस टाइपिंग"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the link: Data domain ↔ numbers and tables; Computer Vision ↔ eyes (images/video); NLP ↔ ears and mouth (language). Many real systems combine two or three domains.",
+      "hi": "संबंध याद रखें: डेटा क्षेत्र ↔ संख्याएँ और तालिकाएँ; कंप्यूटर विज़न ↔ आँखें (चित्र/वीडियो); NLP ↔ कान और मुँह (भाषा)। कई वास्तविक सिस्टम दो या तीनों क्षेत्रों को जोड़ते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.9 Domain 1: Data (Statistical Data)",
+    "hi": "1.9 क्षेत्र 1: डेटा (सांख्यिकीय डेटा)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data domain of AI",
+       "hi": "AI का डेटा क्षेत्र"
+      },
+      "text": {
+       "en": "The Data (Statistical Data) domain of AI deals with systems that learn from numerical and tabular data, such as records, measurements and transactions, to find patterns, make predictions and support decisions.",
+       "hi": "AI का डेटा (सांख्यिकीय डेटा) क्षेत्र उन सिस्टम से संबंधित है जो संख्यात्मक और तालिका-रूपी डेटा, जैसे रिकॉर्ड, माप और लेन-देन, से सीखकर पैटर्न खोजते हैं, अनुमान लगाते हैं और निर्णयों में मदद करते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Data is everywhere: marks in your report card, the price of onions each day, runs scored in each over, rainfall in each district, electricity used by each house. When this data is collected and organised (usually in rows and columns), AI can learn from it. This domain uses statistics heavily, which is why Chapter 5 teaches mean, median, mode and probability.",
+      "hi": "डेटा हर जगह है: रिपोर्ट कार्ड के अंक, हर दिन प्याज़ की कीमत, हर ओवर में बने रन, हर ज़िले की वर्षा, हर घर की बिजली खपत। जब यह डेटा इकट्ठा और व्यवस्थित किया जाता है (आम तौर पर पंक्तियों और स्तंभों में), तो AI उससे सीख सकता है। यह क्षेत्र सांख्यिकी का भरपूर उपयोग करता है, इसीलिए अध्याय 5 में माध्य, माध्यिका, बहुलक और प्रायिकता पढ़ाई जाती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application",
+        "What data it uses",
+        "What it predicts or decides"
+       ],
+       "hi": [
+        "उपयोग",
+        "कौन-सा डेटा",
+        "क्या अनुमान या निर्णय"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Fraud and risk detection in banks and UPI",
+         "Past transactions: amount, time, place, device, usual spending",
+         "Whether a new payment looks unusual; sends an alert or blocks it"
+        ],
+        [
+         "Loan approval / credit scoring",
+         "Income, repayment history, existing loans",
+         "Risk that a borrower may not repay"
+        ],
+        [
+         "Price comparison and dynamic pricing",
+         "Prices on many sites, demand, time",
+         "Best deal; fares that change with demand (cabs, flights)"
+        ],
+        [
+         "Weather and monsoon forecasting",
+         "Temperature, pressure, humidity, satellite readings",
+         "Rain, heatwaves, cyclone paths"
+        ],
+        [
+         "Sports analytics",
+         "Runs, strike rates, pitch and weather data",
+         "Win probability, best batting order"
+        ],
+        [
+         "Recommendation systems",
+         "What you watched, bought or liked",
+         "Next video, product or song for you"
+        ],
+        [
+         "Health risk prediction",
+         "Age, blood sugar, blood pressure, history",
+         "Risk of diabetes or heart disease"
+        ],
+        [
+         "Stock and sales forecasting for shops",
+         "Past sales by day and season",
+         "How much stock to order before Diwali"
+        ]
+       ],
+       "hi": [
+        [
+         "बैंक और UPI में धोखाधड़ी व जोखिम पहचान",
+         "पुराने लेन-देन: राशि, समय, स्थान, डिवाइस, सामान्य ख़र्च",
+         "नया भुगतान असामान्य है या नहीं; अलर्ट भेजना या रोकना"
+        ],
+        [
+         "ऋण स्वीकृति / क्रेडिट स्कोर",
+         "आय, पुनर्भुगतान इतिहास, मौजूदा ऋण",
+         "उधारकर्ता के न चुकाने का जोखिम"
+        ],
+        [
+         "कीमत तुलना और बदलती कीमतें",
+         "कई साइटों पर कीमतें, माँग, समय",
+         "सबसे अच्छा सौदा; माँग के साथ बदलता किराया (कैब, उड़ान)"
+        ],
+        [
+         "मौसम और मानसून पूर्वानुमान",
+         "तापमान, दाब, नमी, उपग्रह के आँकड़े",
+         "बारिश, लू, चक्रवात का रास्ता"
+        ],
+        [
+         "खेल विश्लेषण",
+         "रन, स्ट्राइक रेट, पिच और मौसम डेटा",
+         "जीत की संभावना, सबसे अच्छा बल्लेबाज़ी क्रम"
+        ],
+        [
+         "सुझाव प्रणाली (Recommendation)",
+         "आपने क्या देखा, ख़रीदा या पसंद किया",
+         "आपके लिए अगला वीडियो, उत्पाद या गाना"
+        ],
+        [
+         "स्वास्थ्य जोखिम अनुमान",
+         "उम्र, रक्त शर्करा, रक्तचाप, इतिहास",
+         "मधुमेह या हृदय रोग का जोखिम"
+        ],
+        [
+         "दुकानों के लिए स्टॉक और बिक्री अनुमान",
+         "दिन और मौसम के हिसाब से पुरानी बिक्री",
+         "दिवाली से पहले कितना माल मँगाएँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A UPI payment of ₹48,000 is made at 2:30 a.m. from a new phone in another state, while the account owner usually spends below ₹2,000 in the daytime in Lucknow. How does a Data-domain AI handle it?",
+       "hi": "एक खाते से रात 2:30 बजे, दूसरे राज्य के नए फ़ोन से ₹48,000 का UPI भुगतान होता है, जबकि खाताधारक आम तौर पर लखनऊ में दिन में ₹2,000 से कम ख़र्च करता है। डेटा-क्षेत्र का AI इसे कैसे संभालेगा?"
+      },
+      "a": {
+       "en": "Step 1: The model has learnt the owner's normal pattern from past data: small amounts, daytime, Lucknow, same phone.\nStep 2: It compares the new transaction: very large amount, odd hour, new device, new location. Four features are unusual.\nStep 3: It gives a high 'risk score' and flags the payment as possibly fraudulent.\nStep 4: The bank holds the payment and sends an alert asking the owner to confirm.\nNote: the AI does not 'know' it is fraud; it predicts from patterns. A genuine payment can sometimes be flagged, which is why the bank asks the owner.",
+       "hi": "चरण 1: Model ने पुराने डेटा से खाताधारक का सामान्य पैटर्न सीखा है: छोटी राशि, दिन का समय, लखनऊ, वही फ़ोन।\nचरण 2: वह नए लेन-देन की तुलना करता है: बहुत बड़ी राशि, अजीब समय, नया डिवाइस, नई जगह। चार विशेषताएँ असामान्य हैं।\nचरण 3: वह ऊँचा 'जोखिम स्कोर' देता है और भुगतान को संभावित धोखाधड़ी बताता है।\nचरण 4: बैंक भुगतान रोककर खाताधारक से पुष्टि का अलर्ट भेजता है।\nध्यान दें: AI को पक्का 'पता' नहीं कि यह धोखा है; वह पैटर्न से अनुमान लगाता है। कभी-कभी असली भुगतान भी रोका जा सकता है, इसलिए बैंक मालिक से पूछता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Activity link (CBSE game for this domain): Rock, Paper, Scissors against an AI. In online versions of this game, the computer records your past moves and looks for patterns (for example, you often play 'rock' after losing). It then predicts your next move and plays the move that beats it. The longer you play predictably, the more it wins. This shows how an AI learns from data (your moves) to predict behaviour.",
+      "hi": "गतिविधि संबंध (इस क्षेत्र के लिए CBSE का खेल): AI के विरुद्ध पत्थर-कागज़-कैंची। इस खेल के ऑनलाइन संस्करणों में कंप्यूटर आपकी पिछली चालें दर्ज करता है और पैटर्न खोजता है (जैसे, हारने के बाद आप अक्सर 'पत्थर' चलते हैं)। फिर वह आपकी अगली चाल का अनुमान लगाकर उसे हराने वाली चाल चलता है। आप जितना अनुमानित खेलेंगे, वह उतना जीतेगा। इससे दिखता है कि AI डेटा (आपकी चालों) से सीखकर व्यवहार का अनुमान कैसे लगाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.10 Domain 2: Computer Vision (CV)",
+    "hi": "1.10 क्षेत्र 2: कंप्यूटर विज़न (CV)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Computer Vision",
+       "hi": "कंप्यूटर विज़न (Computer Vision)"
+      },
+      "text": {
+       "en": "Computer Vision is the domain of AI that enables machines to capture, process and understand images and videos, and to identify objects, faces, text and actions in them, much like human eyes and brain do together.",
+       "hi": "कंप्यूटर विज़न AI का वह क्षेत्र है जो मशीनों को चित्र और वीडियो ग्रहण करने, संसाधित करने और समझने में सक्षम बनाता है, और उनमें वस्तुएँ, चेहरे, लिखावट और गतिविधियाँ पहचानने में, ठीक वैसे ही जैसे मनुष्य की आँखें और मस्तिष्क मिलकर करते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "To a computer, an image is just a grid of tiny squares called pixels, and each pixel is stored as numbers (for colour images, three numbers for red, green and blue, each from 0 to 255). A 12-megapixel phone photo has about 12 million pixels. The camera only captures these numbers; computer vision is the job of finding meaning in them: 'this group of pixels is a face', 'this is the letter A', 'this leaf has a fungus spot'. Deep learning models learn this by studying many labelled images.",
+      "hi": "कंप्यूटर के लिए चित्र केवल छोटे-छोटे वर्गों का जाल है जिन्हें pixels कहते हैं, और हर pixel संख्याओं के रूप में रखा जाता है (रंगीन चित्रों में लाल, हरे और नीले के लिए तीन संख्याएँ, हर एक 0 से 255 तक)। 12-मेगापिक्सेल फ़ोन फ़ोटो में लगभग 1.2 करोड़ pixels होते हैं। कैमरा केवल ये संख्याएँ पकड़ता है; इन संख्याओं में अर्थ ढूँढना कंप्यूटर विज़न का काम है: 'pixels का यह समूह चेहरा है', 'यह अक्षर A है', 'इस पत्ती पर फफूँद का धब्बा है'। Deep learning model यह कई लेबल वाले चित्रों का अध्ययन करके सीखते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Image classification: what is in the whole image? (cat or dog; healthy or diseased leaf)",
+       "Object detection: what objects are there and where? (boxes around every car and person in a street photo)",
+       "Face recognition: whose face is this? (face unlock, DigiYatra boarding at some Indian airports)",
+       "Optical Character Recognition (OCR): reading printed or handwritten text from images (Google Lens copying text from a notice; scanning a PAN card in an app)",
+       "Image segmentation: marking the exact outline of each object (a tumour in a scan; road vs footpath for a self-driving car)",
+       "Activity/action recognition in video (detecting a fall, counting people at a station)"
+      ],
+      "hi": [
+       "चित्र वर्गीकरण (Image classification): पूरे चित्र में क्या है? (बिल्ली या कुत्ता; स्वस्थ या रोगी पत्ती)",
+       "वस्तु पहचान (Object detection): कौन-सी वस्तुएँ हैं और कहाँ? (सड़क की फ़ोटो में हर कार और व्यक्ति के चारों ओर बॉक्स)",
+       "चेहरा पहचान (Face recognition): यह चेहरा किसका है? (फ़ेस अनलॉक, कुछ भारतीय हवाई अड्डों पर DigiYatra से बोर्डिंग)",
+       "OCR (ऑप्टिकल कैरेक्टर रिकग्निशन): चित्रों से छपा या हाथ से लिखा पाठ पढ़ना (Google Lens से नोटिस का पाठ कॉपी करना; ऐप में PAN कार्ड स्कैन करना)",
+       "चित्र विभाजन (Segmentation): हर वस्तु की सटीक रेखा बनाना (स्कैन में ट्यूमर; स्वचालित कार के लिए सड़क बनाम फ़ुटपाथ)",
+       "वीडियो में गतिविधि पहचान (किसी के गिरने का पता लगाना, स्टेशन पर लोगों की गिनती)"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application",
+        "How CV is used"
+       ],
+       "hi": [
+        "उपयोग",
+        "CV का उपयोग कैसे"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Face lock in smartphones",
+         "The phone stores a mathematical map of your face's features; each time, it compares the camera image with this map and unlocks only on a match"
+        ],
+        [
+         "Self-driving and driver-assist cars",
+         "Cameras detect lanes, vehicles, pedestrians, signals and signs to steer and brake"
+        ],
+        [
+         "Medical imaging",
+         "Finds signs of disease in X-rays, CT/MRI scans and eye photos; can build 3D views from 2D scan slices to help doctors plan surgery"
+        ],
+        [
+         "Agriculture",
+         "Apps identify crop diseases and pests from leaf photos; drones check crop health over large fields"
+        ],
+        [
+         "Traffic and safety",
+         "Cameras read number plates for e-challans, detect helmetless riders and count vehicles"
+        ],
+        [
+         "Retail and warehouses",
+         "Checking stock on shelves, scanning products, sorting parcels"
+        ],
+        [
+         "Google Lens / visual search",
+         "Identifies plants, landmarks and products from a photo; translates sign boards"
+        ],
+        [
+         "Photo apps and filters",
+         "Group photos by faces, blur backgrounds, add face filters"
+        ]
+       ],
+       "hi": [
+        [
+         "स्मार्टफ़ोन में फ़ेस लॉक",
+         "फ़ोन आपके चेहरे की विशेषताओं का गणितीय नक्शा रखता है; हर बार कैमरा चित्र की तुलना इस नक्शे से करता है और मेल होने पर ही खुलता है"
+        ],
+        [
+         "स्वचालित और ड्राइवर-सहायक कारें",
+         "कैमरे लेन, वाहन, पैदल यात्री, सिग्नल और संकेत पहचानकर स्टीयरिंग और ब्रेक लगाते हैं"
+        ],
+        [
+         "चिकित्सा इमेजिंग",
+         "X-ray, CT/MRI स्कैन और आँखों की फ़ोटो में रोग के संकेत खोजता है; सर्जरी की योजना के लिए 2D स्कैन परतों से 3D दृश्य बना सकता है"
+        ],
+        [
+         "कृषि",
+         "ऐप पत्ती की फ़ोटो से फ़सल रोग और कीट पहचानते हैं; ड्रोन बड़े खेतों में फ़सल की सेहत जाँचते हैं"
+        ],
+        [
+         "यातायात और सुरक्षा",
+         "कैमरे ई-चालान के लिए नंबर प्लेट पढ़ते हैं, बिना हेलमेट सवार पहचानते हैं और वाहन गिनते हैं"
+        ],
+        [
+         "दुकानें और गोदाम",
+         "शेल्फ़ पर माल जाँचना, उत्पाद स्कैन करना, पार्सल छाँटना"
+        ],
+        [
+         "Google Lens / दृश्य खोज",
+         "फ़ोटो से पौधे, इमारतें और उत्पाद पहचानता है; साइनबोर्ड का अनुवाद करता है"
+        ],
+        [
+         "फ़ोटो ऐप और फ़िल्टर",
+         "चेहरों के हिसाब से फ़ोटो समूह बनाना, पृष्ठभूमि धुँधली करना, चेहरे पर फ़िल्टर लगाना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Activity link (CBSE game for this domain): Quick, Draw! (quickdraw.withgoogle.com). You get a word such as 'bicycle' and 20 seconds to draw it. While you draw, a neural network tries to guess what it is, learning from millions of doodles drawn by people around the world. It shows that CV recognises patterns of lines and shapes, and that it can be wrong when your drawing is unusual. Its sister tool AutoDraw turns rough sketches into neat icons.",
+      "hi": "गतिविधि संबंध (इस क्षेत्र के लिए CBSE का खेल): Quick, Draw! (quickdraw.withgoogle.com)। आपको 'साइकिल' जैसा कोई शब्द और उसे बनाने के लिए 20 सेकंड मिलते हैं। जब आप चित्र बनाते हैं, एक न्यूरल नेटवर्क अनुमान लगाता है कि यह क्या है; उसने दुनिया भर के लोगों के लाखों चित्रों से सीखा है। इससे पता चलता है कि CV रेखाओं और आकृतियों के पैटर्न पहचानता है, और आपका चित्र असामान्य हो तो ग़लत भी हो सकता है। इसका साथी उपकरण AutoDraw कच्चे स्केच को साफ़ आइकॉन में बदल देता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.11 Domain 3: Natural Language Processing (NLP)",
+    "hi": "1.11 क्षेत्र 3: प्राकृतिक भाषा प्रसंस्करण (NLP)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Natural Language Processing",
+       "hi": "प्राकृतिक भाषा प्रसंस्करण (NLP)"
+      },
+      "text": {
+       "en": "Natural Language Processing is the domain of AI that enables computers to understand, interpret, generate and respond to human languages, in both text and speech form.",
+       "hi": "प्राकृतिक भाषा प्रसंस्करण AI का वह क्षेत्र है जो कंप्यूटरों को मानवीय भाषाएँ, लिखित और बोली दोनों रूपों में, समझने, अर्थ निकालने, उत्पन्न करने और उनका उत्तर देने में सक्षम बनाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "'Natural' language means the languages people speak, such as Hindi, Tamil, English or Bengali, as opposed to computer languages like Python. Human language is hard for machines: the same word can mean different things ('bank' of a river and a bank for money; 'kal' can mean yesterday or tomorrow in Hindi), sentences can be sarcastic ('Wow, great, the bus is late again'), and people mix languages (Hinglish). India's many languages and scripts make NLP both important and challenging here.",
+      "hi": "'प्राकृतिक' भाषा का अर्थ है वे भाषाएँ जो लोग बोलते हैं, जैसे हिंदी, तमिल, अंग्रेज़ी या बांग्ला, कंप्यूटर भाषाओं जैसे Python के विपरीत। मानवीय भाषा मशीनों के लिए कठिन है: एक शब्द के कई अर्थ हो सकते हैं (नदी का 'किनारा' और पैसे वाला 'बैंक' अंग्रेज़ी में दोनों 'bank'; हिंदी में 'कल' का अर्थ बीता या आने वाला दिन), वाक्य व्यंग्य वाले हो सकते हैं ('वाह, बढ़िया, बस फिर लेट है'), और लोग भाषाएँ मिलाते हैं (Hinglish)। भारत की अनेक भाषाएँ और लिपियाँ यहाँ NLP को महत्वपूर्ण और चुनौतीपूर्ण दोनों बनाती हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application",
+        "What it does"
+       ],
+       "hi": [
+        "उपयोग",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Voice assistants (for example Siri, Alexa, Google Assistant)",
+         "Speech recognition turns your voice into text, NLP finds the meaning ('set an alarm for 6'), then the answer is spoken back using text-to-speech"
+        ],
+        [
+         "Machine translation (Google Translate, Bhashini)",
+         "Translates text or speech between languages, including many Indian languages"
+        ],
+        [
+         "Chatbots",
+         "Answer customer questions on bank, railway or government websites; generative chatbots write answers in full sentences"
+        ],
+        [
+         "Autocorrect and predictive text",
+         "Fixes spelling and suggests the next word as you type"
+        ],
+        [
+         "Email spam filtering",
+         "Reads the words in emails to spot spam and phishing"
+        ],
+        [
+         "Sentiment analysis",
+         "Finds whether reviews or comments are positive, negative or neutral (for example, a company studying tweets about its product)"
+        ],
+        [
+         "Text summarisation",
+         "Shortens long articles into key points"
+        ],
+        [
+         "Voice typing and captions",
+         "Converts speech to text in many languages; auto-captions on videos"
+        ]
+       ],
+       "hi": [
+        [
+         "वॉइस असिस्टेंट (उदाहरण: Siri, Alexa, Google Assistant)",
+         "Speech recognition आपकी आवाज़ को पाठ में बदलता है, NLP अर्थ समझता है ('6 बजे का अलार्म लगाओ'), फिर text-to-speech से उत्तर बोला जाता है"
+        ],
+        [
+         "मशीन अनुवाद (Google Translate, भाषिणी)",
+         "भाषाओं के बीच पाठ या वाणी का अनुवाद, कई भारतीय भाषाओं सहित"
+        ],
+        [
+         "चैटबॉट",
+         "बैंक, रेलवे या सरकारी वेबसाइटों पर ग्राहकों के प्रश्नों के उत्तर; जनरेटिव चैटबॉट पूरे वाक्यों में उत्तर लिखते हैं"
+        ],
+        [
+         "ऑटोकरेक्ट और प्रेडिक्टिव टेक्स्ट",
+         "टाइप करते समय वर्तनी ठीक करता है और अगला शब्द सुझाता है"
+        ],
+        [
+         "ईमेल स्पैम फ़िल्टर",
+         "ईमेल के शब्द पढ़कर स्पैम और फ़िशिंग पहचानता है"
+        ],
+        [
+         "भावना विश्लेषण (Sentiment analysis)",
+         "समीक्षाएँ या टिप्पणियाँ सकारात्मक, नकारात्मक या तटस्थ हैं, यह पता लगाता है (जैसे कोई कंपनी अपने उत्पाद के बारे में पोस्ट पढ़े)"
+        ],
+        [
+         "पाठ सारांश",
+         "लंबे लेखों को मुख्य बिंदुओं में छोटा करता है"
+        ],
+        [
+         "वॉइस टाइपिंग और कैप्शन",
+         "कई भाषाओं में वाणी को पाठ में बदलता है; वीडियो पर स्वचालित कैप्शन"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Activity link (CBSE game for this domain): Semantris, a word-association game made by Google. In one mode you type a word related to a target word on screen (for example, for 'ocean' you might type 'waves'), and the AI decides which words on screen are most related to your clue. It works because the AI has learnt, from huge amounts of text, which words appear in similar contexts. This shows how NLP captures meaning, not just spelling.",
+      "hi": "गतिविधि संबंध (इस क्षेत्र के लिए CBSE का खेल): Semantris, Google का बनाया शब्द-संबंध खेल। एक मोड में आप स्क्रीन पर दिए लक्ष्य शब्द से जुड़ा शब्द लिखते हैं (जैसे 'ocean' के लिए 'waves'), और AI तय करता है कि स्क्रीन के कौन-से शब्द आपके संकेत से सबसे अधिक जुड़े हैं। यह इसलिए काम करता है क्योंकि AI ने विशाल मात्रा के पाठ से सीखा है कि कौन-से शब्द मिलते-जुलते संदर्भों में आते हैं। इससे दिखता है कि NLP केवल वर्तनी नहीं, अर्थ भी पकड़ता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Speech-based tools usually chain three steps: Speech-to-Text (hear) → NLP (understand and decide) → Text-to-Speech (speak). If any one step fails (noise, accent, unknown word), the answer can be wrong.",
+      "hi": "वाणी-आधारित उपकरण आम तौर पर तीन चरण जोड़ते हैं: Speech-to-Text (सुनना) → NLP (समझना और तय करना) → Text-to-Speech (बोलना)। अगर कोई एक चरण विफल हो (शोर, लहजा, अनजान शब्द), तो उत्तर ग़लत हो सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.12 When domains work together",
+    "hi": "1.12 जब क्षेत्र मिलकर काम करते हैं"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The CBSE handbook compares the three domains to the three strands of a braid (choti): each strand alone is weak, but woven together they make something strong. Most powerful AI products combine domains.",
+      "hi": "CBSE हैंडबुक तीनों क्षेत्रों की तुलना चोटी की तीन लटों से करती है: हर लट अकेले कमज़ोर है, पर गूँथने पर मज़बूत चीज़ बनती है। अधिकतर शक्तिशाली AI उत्पाद कई क्षेत्रों को जोड़ते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "System",
+        "CV part",
+        "NLP part",
+        "Data part"
+       ],
+       "hi": [
+        "सिस्टम",
+        "CV भाग",
+        "NLP भाग",
+        "डेटा भाग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Google Lens translating a Japanese menu",
+         "Detects and reads the text in the photo (OCR)",
+         "Translates it into Hindi or English",
+         "Learns from usage which translations people accept"
+        ],
+        [
+         "Self-driving car",
+         "Sees lanes, signals, people",
+         "Understands spoken destination",
+         "Uses map, speed and sensor data to plan the route"
+        ],
+        [
+         "Crop advisory app for farmers",
+         "Identifies the pest from a leaf photo",
+         "Gives advice in the farmer's language by voice",
+         "Uses weather and pest-count data to predict an outbreak"
+        ],
+        [
+         "Smart CCTV at a railway station",
+         "Counts crowd, spots unattended bags",
+         "Makes announcements",
+         "Predicts rush hours from past data"
+        ]
+       ],
+       "hi": [
+        [
+         "जापानी मेन्यू का अनुवाद करता Google Lens",
+         "फ़ोटो में पाठ पहचानकर पढ़ता है (OCR)",
+         "उसे हिंदी या अंग्रेज़ी में अनुवाद करता है",
+         "उपयोग से सीखता है कि लोग कौन-से अनुवाद स्वीकारते हैं"
+        ],
+        [
+         "स्वचालित कार",
+         "लेन, सिग्नल, लोग देखती है",
+         "बोला गया गंतव्य समझती है",
+         "नक्शा, गति और सेंसर डेटा से रास्ता तय करती है"
+        ],
+        [
+         "किसानों के लिए फ़सल सलाह ऐप",
+         "पत्ती की फ़ोटो से कीट पहचानता है",
+         "किसान की भाषा में आवाज़ से सलाह देता है",
+         "मौसम और कीट-गिनती डेटा से प्रकोप का अनुमान लगाता है"
+        ],
+        [
+         "रेलवे स्टेशन का स्मार्ट CCTV",
+         "भीड़ गिनता है, लावारिस बैग पहचानता है",
+         "घोषणाएँ करता है",
+         "पुराने डेटा से भीड़ के समय का अनुमान लगाता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Classify each into its main AI domain: (a) improving crop productivity using soil and weather records, (b) traffic signals that count vehicles with cameras, (c) a maps app predicting arrival time, (d) autocorrect, (e) predicting disease outbreaks from hospital records, (f) a system that detects people without masks or helmets.",
+       "hi": "हर एक को उसके मुख्य AI क्षेत्र में रखें: (a) मिट्टी और मौसम रिकॉर्ड से फ़सल उत्पादकता बढ़ाना, (b) कैमरों से वाहन गिनने वाले ट्रैफ़िक सिग्नल, (c) पहुँचने का समय बताता मैप ऐप, (d) ऑटोकरेक्ट, (e) अस्पताल रिकॉर्ड से रोग प्रकोप का अनुमान, (f) बिना मास्क या हेलमेट वाले लोगों को पहचानने वाला सिस्टम।"
+      },
+      "a": {
+       "en": "(a) Data: numbers in records.\n(b) Computer Vision: camera images (the counts then feed a data model, so it combines CV + Data).\n(c) Data: location, speed and past traffic data.\n(d) NLP: works on text.\n(e) Data: tabular health records.\n(f) Computer Vision: looks at images or video of faces and heads.",
+       "hi": "(a) डेटा: रिकॉर्ड की संख्याएँ।\n(b) कंप्यूटर विज़न: कैमरा चित्र (फिर गिनती डेटा model में जाती है, यानी CV + डेटा)।\n(c) डेटा: लोकेशन, गति और पुराना ट्रैफ़िक डेटा।\n(d) NLP: पाठ पर काम करता है।\n(e) डेटा: तालिका-रूपी स्वास्थ्य रिकॉर्ड।\n(f) कंप्यूटर विज़न: चेहरों और सिर के चित्र या वीडियो देखता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.13 AI in different sectors of life in India",
+    "hi": "1.13 भारत में जीवन के विभिन्न क्षेत्रों में AI"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Sector",
+        "Examples of AI use"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "AI उपयोग के उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Agriculture",
+         "Pest and disease detection from photos (for example, the CottonAce app by Wadhwani AI for pink bollworm in cotton); weather-based sowing advice; soil-health predictions; price forecasts for mandis"
+        ],
+        [
+         "Healthcare",
+         "Screening eye photos for diabetic retinopathy; reading chest X-rays for TB; predicting hospital bed demand; health chatbots"
+        ],
+        [
+         "Education",
+         "Personalised practice that adapts to a student's level; automatic translation of lessons into Indian languages; reading-fluency apps"
+        ],
+        [
+         "Banking and finance",
+         "UPI and card fraud alerts; credit scoring; banking chatbots"
+        ],
+        [
+         "Transport",
+         "Map traffic prediction; ride-hailing price and route; railway crowd prediction; number-plate cameras"
+        ],
+        [
+         "Governance",
+         "Bhashini for multilingual services; chatbots on government portals; face authentication for some pension and identity services"
+        ],
+        [
+         "Entertainment and shopping",
+         "Recommendations on video and music apps; product suggestions; dubbing and subtitles"
+        ],
+        [
+         "Disaster management",
+         "Flood and cyclone forecasting; mapping damage from satellite images"
+        ],
+        [
+         "Environment",
+         "Air-quality forecasting; counting wildlife from camera-trap photos; detecting forest fires"
+        ]
+       ],
+       "hi": [
+        [
+         "कृषि",
+         "फ़ोटो से कीट और रोग पहचान (जैसे Wadhwani AI का CottonAce ऐप, कपास के गुलाबी सुंडी कीट के लिए); मौसम-आधारित बुवाई सलाह; मिट्टी की सेहत का अनुमान; मंडी कीमतों का पूर्वानुमान"
+        ],
+        [
+         "स्वास्थ्य",
+         "डायबिटिक रेटिनोपैथी के लिए आँखों की फ़ोटो जाँचना; TB के लिए छाती का X-ray पढ़ना; अस्पताल बिस्तरों की माँग का अनुमान; स्वास्थ्य चैटबॉट"
+        ],
+        [
+         "शिक्षा",
+         "विद्यार्थी के स्तर के अनुसार बदलने वाला व्यक्तिगत अभ्यास; पाठों का भारतीय भाषाओं में स्वचालित अनुवाद; पढ़ने की धाराप्रवाहता जाँचने वाले ऐप"
+        ],
+        [
+         "बैंकिंग और वित्त",
+         "UPI और कार्ड धोखाधड़ी अलर्ट; क्रेडिट स्कोर; बैंकिंग चैटबॉट"
+        ],
+        [
+         "परिवहन",
+         "मैप में ट्रैफ़िक अनुमान; कैब का किराया और रास्ता; रेलवे में भीड़ का अनुमान; नंबर-प्लेट कैमरे"
+        ],
+        [
+         "शासन",
+         "बहुभाषी सेवाओं के लिए भाषिणी; सरकारी पोर्टलों पर चैटबॉट; कुछ पेंशन और पहचान सेवाओं में चेहरा प्रमाणीकरण"
+        ],
+        [
+         "मनोरंजन और ख़रीदारी",
+         "वीडियो और संगीत ऐप में सुझाव; उत्पाद सुझाव; डबिंग और सबटाइटल"
+        ],
+        [
+         "आपदा प्रबंधन",
+         "बाढ़ और चक्रवात पूर्वानुमान; उपग्रह चित्रों से नुकसान का नक्शा"
+        ],
+        [
+         "पर्यावरण",
+         "वायु गुणवत्ता पूर्वानुमान; कैमरा-ट्रैप फ़ोटो से वन्यजीव गिनना; जंगल की आग का पता लगाना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How can AI improve the world? It can do repetitive work quickly and without tiring, reach people where experts are few (one doctor can screen many more patients with AI help), give early warnings (fraud, floods, disease), make services available in every Indian language, and help people with disabilities (screen readers, live captions, apps that describe surroundings to visually impaired users). At the same time, AI can be wrong, unfair or misused. Chapter 3 discusses these ethical issues in detail.",
+      "hi": "AI दुनिया को कैसे बेहतर बना सकता है? यह दोहराव वाले काम तेज़ी से और बिना थके कर सकता है, वहाँ लोगों तक पहुँच सकता है जहाँ विशेषज्ञ कम हैं (AI की मदद से एक डॉक्टर कहीं अधिक मरीज़ों की जाँच कर सकता है), समय पर चेतावनी दे सकता है (धोखाधड़ी, बाढ़, रोग), सेवाओं को हर भारतीय भाषा में उपलब्ध करा सकता है, और दिव्यांग लोगों की मदद कर सकता है (स्क्रीन रीडर, लाइव कैप्शन, दृष्टिबाधित उपयोगकर्ताओं को आसपास का वर्णन सुनाने वाले ऐप)। साथ ही, AI ग़लत, अनुचित या दुरुपयोग वाला भी हो सकता है। अध्याय 3 में इन नैतिक मुद्दों पर विस्तार से चर्चा है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "List four features of a smartphone that use Computer Vision, and say what each does.",
+       "hi": "स्मार्टफ़ोन की चार ऐसी विशेषताएँ बताइए जो कंप्यूटर विज़न का उपयोग करती हैं, और हर एक क्या करती है।"
+      },
+      "a": {
+       "en": "1. Face unlock: recognises the owner's face.\n2. Portrait / background blur mode: separates the person from the background.\n3. Google Lens or text scanner: reads text and identifies objects in photos.\n4. Gallery face grouping and search ('show photos of dogs'): recognises faces and objects.\nOthers: QR code scanning, document scanning that straightens pages, AR face filters.",
+       "hi": "1. फ़ेस अनलॉक: मालिक का चेहरा पहचानता है।\n2. पोर्ट्रेट / पृष्ठभूमि धुँधला मोड: व्यक्ति को पृष्ठभूमि से अलग करता है।\n3. Google Lens या टेक्स्ट स्कैनर: फ़ोटो में पाठ पढ़ता और वस्तुएँ पहचानता है।\n4. गैलरी में चेहरों के समूह और खोज ('कुत्तों की फ़ोटो दिखाओ'): चेहरे और वस्तुएँ पहचानता है।\nअन्य: QR कोड स्कैन, पन्नों को सीधा करने वाला दस्तावेज़ स्कैनर, AR फ़ेस फ़िल्टर।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.14 What AI can and cannot do",
+    "hi": "1.14 AI क्या कर सकता है और क्या नहीं"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "AI is good at",
+        "AI struggles with"
+       ],
+       "hi": [
+        "AI किसमें अच्छा है",
+        "AI को किसमें कठिनाई होती है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Handling huge amounts of data quickly",
+         "Common sense ('you cannot fit an elephant in a fridge')"
+        ],
+        [
+         "Finding patterns humans might miss",
+         "Understanding feelings, humour and sarcasm reliably"
+        ],
+        [
+         "Doing repetitive tasks without tiring",
+         "Situations very different from its training data"
+        ],
+        [
+         "Working 24 hours a day",
+         "Explaining its own reasons (many models are 'black boxes')"
+        ],
+        [
+         "Consistency on narrow, well-defined tasks",
+         "Values, ethics and responsibility; it cannot be held accountable"
+        ]
+       ],
+       "hi": [
+        [
+         "विशाल डेटा को तेज़ी से संभालना",
+         "सामान्य समझ ('हाथी फ़्रिज में नहीं समा सकता')"
+        ],
+        [
+         "ऐसे पैटर्न खोजना जो इंसान से छूट जाएँ",
+         "भावनाएँ, हास्य और व्यंग्य को भरोसे से समझना"
+        ],
+        [
+         "बिना थके दोहराव वाले काम",
+         "प्रशिक्षण डेटा से बहुत अलग परिस्थितियाँ"
+        ],
+        [
+         "24 घंटे काम करना",
+         "अपने कारण समझाना (कई model 'ब्लैक बॉक्स' होते हैं)"
+        ],
+        [
+         "सीमित, स्पष्ट कामों में एकरूपता",
+         "मूल्य, नैतिकता और ज़िम्मेदारी; उसे जवाबदेह नहीं ठहराया जा सकता"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "AI learns from data, so it can only be as good as its data. Wrong, old or one-sided data gives wrong or unfair answers. Always check important AI answers with a trusted source or a trusted adult.",
+      "hi": "AI डेटा से सीखता है, इसलिए वह उतना ही अच्छा हो सकता है जितना उसका डेटा। ग़लत, पुराना या एकतरफ़ा डेटा ग़लत या अनुचित उत्तर देता है। AI के महत्वपूर्ण उत्तरों को हमेशा किसी भरोसेमंद स्रोत या भरोसेमंद बड़े से जाँचें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.15 Activities",
+    "hi": "1.15 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before you start: several activities use free websites. Most do not need an account. If any site asks you to sign up, ask a parent or teacher, because many services are meant only for users aged 13 or above. Never type your full name, phone number, address or photos of yourself into AI tools.",
+      "hi": "शुरू करने से पहले: कई गतिविधियाँ मुफ़्त वेबसाइटों का उपयोग करती हैं। अधिकतर के लिए खाता नहीं चाहिए। अगर कोई साइट साइन-अप माँगे, तो माता-पिता या शिक्षक से पूछें, क्योंकि कई सेवाएँ केवल 13 वर्ष या उससे अधिक आयु वालों के लिए होती हैं। AI उपकरणों में कभी अपना पूरा नाम, फ़ोन नंबर, पता या अपनी फ़ोटो न डालें।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 1 (screen): The AI Game, three domains in three games.\nAim: to experience each AI domain.\nYou need: a phone or computer with internet; groups of 3 to 4.\nWhat to do: (i) Play Rock, Paper, Scissors against an AI for 30 rounds; note who wins in rounds 1–10 and 21–30. (ii) Play Semantris (search 'Semantris Google') for 5 minutes. (iii) Play Quick, Draw! for six drawings.\nWhat you observe: the RPS AI wins more later as it learns your pattern; Semantris links related words, not just similar spellings; Quick, Draw! guesses many drawings but fails on strange ones.\nWhat it teaches: Data (predicting from past moves), NLP (meaning of words), CV (recognising drawings). Reflection: which game was hardest to beat and why?",
+      "hi": "गतिविधि 1 (स्क्रीन): AI खेल, तीन क्षेत्र तीन खेलों में।\nउद्देश्य: हर AI क्षेत्र का अनुभव करना।\nआवश्यक: इंटरनेट वाला फ़ोन या कंप्यूटर; 3 से 4 के समूह।\nक्या करें: (i) AI के विरुद्ध 30 राउंड पत्थर-कागज़-कैंची खेलें; राउंड 1–10 और 21–30 में कौन जीता, लिखें। (ii) 5 मिनट Semantris खेलें ('Semantris Google' खोजें)। (iii) Quick, Draw! में छह चित्र बनाएँ।\nक्या देखेंगे: पत्थर-कागज़-कैंची वाला AI बाद में ज़्यादा जीतता है क्योंकि वह आपका पैटर्न सीख लेता है; Semantris केवल मिलती वर्तनी नहीं, जुड़े अर्थ वाले शब्द जोड़ता है; Quick, Draw! कई चित्र पहचानता है पर अजीब चित्रों पर चूकता है।\nसीख: डेटा (पिछली चालों से अनुमान), NLP (शब्दों का अर्थ), CV (चित्र पहचानना)। चिंतन: किस खेल को हराना सबसे कठिन था और क्यों?"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (unplugged): Human pattern predictor.\nAim: to see how the Data domain predicts.\nYou need: paper, pen, a partner.\nWhat to do: your partner writes 20 choices of 'R', 'P' or 'S' one by one, showing you each after you guess. After each, write your guess for the next. Look for patterns ('after S they usually pick R').\nWhat you observe: after 8–10 rounds your guesses improve if your partner has habits; if your partner chooses truly randomly, nobody can predict.\nWhat it teaches: AI needs patterns in data; random data cannot be predicted.",
+      "hi": "गतिविधि 2 (बिना कंप्यूटर): मानव पैटर्न अनुमानक।\nउद्देश्य: यह देखना कि डेटा क्षेत्र अनुमान कैसे लगाता है।\nआवश्यक: कागज़, पेन, एक साथी।\nक्या करें: आपका साथी एक-एक करके 20 बार 'R', 'P' या 'S' लिखता है, और आपके अनुमान के बाद दिखाता है। हर बार अगले का अनुमान लिखें। पैटर्न देखें ('S के बाद वह अक्सर R चुनता है')।\nक्या देखेंगे: अगर साथी की आदतें हैं, तो 8–10 राउंड बाद आपके अनुमान बेहतर होते हैं; अगर साथी पूरी तरह यादृच्छिक चुने, तो कोई अनुमान नहीं लगा सकता।\nसीख: AI को डेटा में पैटर्न चाहिए; यादृच्छिक डेटा का अनुमान नहीं लगाया जा सकता।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen): Talk to a language-understanding demo.\nAim: to see how NLP turns a sentence into an action.\nThe CBSE handbook uses a demo in which you type an instruction like 'turn on the kitchen light' and a virtual house responds (it used Microsoft's LUIS service, which has since been retired). You can do the same with any phone voice assistant: say 'set a timer for 3 minutes', 'टाइमर 3 मिनट', and 'remind me... no, cancel'.\nWhat you observe: the assistant picks out the intent (set timer) and the detail (3 minutes); it gets confused by unclear or mixed requests.\nWhat it teaches: NLP finds the intent and entities (key details) in a sentence.",
+      "hi": "गतिविधि 3 (स्क्रीन): भाषा समझने वाले डेमो से बात करें।\nउद्देश्य: देखना कि NLP वाक्य को काम में कैसे बदलता है।\nCBSE हैंडबुक एक डेमो का उपयोग करती है जिसमें आप 'रसोई की लाइट जलाओ' जैसा निर्देश लिखते हैं और एक आभासी घर उसका पालन करता है (उसमें Microsoft की LUIS सेवा थी, जो अब बंद कर दी गई है)। यही काम किसी भी फ़ोन वॉइस असिस्टेंट से करें: 'set a timer for 3 minutes', 'टाइमर 3 मिनट', और 'मुझे याद दिलाना... नहीं, रद्द करो' बोलें।\nक्या देखेंगे: असिस्टेंट इरादा (टाइमर लगाना) और विवरण (3 मिनट) निकाल लेता है; अस्पष्ट या मिले-जुले अनुरोध पर उलझ जाता है।\nसीख: NLP वाक्य में इरादा (intent) और मुख्य विवरण (entities) खोजता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (role play): Be the chatbot.\nAim: to understand how a chatbot must listen, understand and respond helpfully.\nWhat to do: in pairs, one student is a student worried about exams; the other is a 'chatbot' who may answer only with calm, short, helpful replies (tips like making a timetable, short breaks, sleep, talking to a teacher). Then swap. Discuss: what made a reply helpful? What should a chatbot never do (give medical advice, ask for personal details, be rude)? When must a real person take over?\nWhat it teaches: good NLP systems need understanding and kindness, and serious problems need trusted humans.",
+      "hi": "गतिविधि 4 (भूमिका निभाना): चैटबॉट बनें।\nउद्देश्य: समझना कि चैटबॉट को कैसे सुनना, समझना और मददगार उत्तर देना चाहिए।\nक्या करें: जोड़ियों में, एक विद्यार्थी परीक्षा से चिंतित छात्र बनता है; दूसरा 'चैटबॉट' बनता है जो केवल शांत, छोटे, मददगार उत्तर दे (समय-सारिणी बनाना, छोटे विराम, नींद, शिक्षक से बात करना)। फिर भूमिकाएँ बदलें। चर्चा करें: कौन-सा उत्तर मददगार था? चैटबॉट को क्या कभी नहीं करना चाहिए (दवा की सलाह देना, निजी जानकारी माँगना, रूखा होना)? कब किसी असली व्यक्ति को सँभालना चाहिए?\nसीख: अच्छे NLP सिस्टम को समझ और दयालुता चाहिए, और गंभीर समस्याओं में भरोसेमंद लोग ही मदद करें।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 5 (survey): AI in my home.\nAim: to spot AI around you.\nWhat to do: list every device or app used at home in one day. For each, write: Is it AI? Which domain? What data does it use? Make a class chart with three columns (Data, CV, NLP).\nWhat it teaches: AI is common; most families use all three domains daily, often without noticing.",
+      "hi": "गतिविधि 5 (सर्वेक्षण): मेरे घर में AI।\nउद्देश्य: अपने आसपास AI पहचानना।\nक्या करें: एक दिन में घर में उपयोग होने वाले हर उपकरण और ऐप की सूची बनाएँ। हर एक के लिए लिखें: क्या यह AI है? कौन-सा क्षेत्र? कौन-सा डेटा लेता है? कक्षा में तीन स्तंभों (डेटा, CV, NLP) का चार्ट बनाएँ।\nसीख: AI आम है; अधिकतर परिवार रोज़ तीनों क्षेत्रों का उपयोग करते हैं, अक्सर बिना ध्यान दिए।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Calling every automatic or 'smart' device AI. Fix: AI must learn from data and handle new situations; a timer, calculator or sensor light only follows fixed rules.",
+   "Thinking AI and robots are the same. Fix: AI is the intelligence (often only software); a robot is a physical machine that may or may not use AI.",
+   "Mixing up domains by the device instead of the data. Fix: ask what input the AI processes: numbers/tables → Data, images/video → CV, text/speech → NLP.",
+   "Saying a voice assistant is only NLP. Fix: it chains speech-to-text, NLP and text-to-speech; many products combine domains.",
+   "Believing AI 'understands' like a human or is always right. Fix: AI finds patterns in data and can be wrong, especially on unusual inputs or with poor data.",
+   "Thinking general AI already exists. Fix: all AI today is narrow AI; general and super AI are ideas under debate.",
+   "Writing that ML and AI are the same. Fix: ML is a subset of AI; DL is a subset of ML.",
+   "Thinking the camera alone is computer vision. Fix: the camera only captures pixels; CV is the AI that finds meaning in them."
+  ],
+  "hi": [
+   "हर स्वचालित या 'स्मार्ट' उपकरण को AI कहना। सुधार: AI को डेटा से सीखना और नई स्थितियाँ संभालनी चाहिए; टाइमर, कैलकुलेटर या सेंसर लाइट केवल तय नियम मानते हैं।",
+   "AI और रोबोट को एक समझना। सुधार: AI बुद्धिमत्ता है (अक्सर केवल सॉफ़्टवेयर); रोबोट भौतिक मशीन है जो AI का उपयोग कर भी सकती है और नहीं भी।",
+   "उपकरण देखकर क्षेत्र तय करना, डेटा देखकर नहीं। सुधार: पूछें AI कौन-सा इनपुट संसाधित करता है: संख्याएँ/तालिकाएँ → डेटा, चित्र/वीडियो → CV, पाठ/वाणी → NLP।",
+   "वॉइस असिस्टेंट को केवल NLP कहना। सुधार: इसमें speech-to-text, NLP और text-to-speech जुड़े होते हैं; कई उत्पाद क्षेत्रों को मिलाते हैं।",
+   "मानना कि AI इंसान की तरह 'समझता' है या हमेशा सही है। सुधार: AI डेटा में पैटर्न खोजता है और ग़लत हो सकता है, खासकर असामान्य इनपुट या ख़राब डेटा पर।",
+   "सोचना कि सामान्य AI पहले से मौजूद है। सुधार: आज का सारा AI संकीर्ण AI है; सामान्य और सुपर AI बहस के विचार हैं।",
+   "लिखना कि ML और AI एक हैं। सुधार: ML, AI का उपसमूह है; DL, ML का उपसमूह है।",
+   "सोचना कि केवल कैमरा ही कंप्यूटर विज़न है। सुधार: कैमरा केवल pixels पकड़ता है; उनमें अर्थ खोजने वाला AI ही CV है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Intelligence",
+    "hi": "बुद्धिमत्ता"
+   },
+   "d": {
+    "en": "The ability to perceive, learn, reason, solve problems, decide and adapt to new situations.",
+    "hi": "ग्रहण करने, सीखने, तर्क करने, समस्याएँ हल करने, निर्णय लेने और नई स्थितियों में ढलने की क्षमता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Multiple intelligences",
+    "hi": "बहु-बुद्धि"
+   },
+   "d": {
+    "en": "Howard Gardner's idea that people can be intelligent in different ways, such as linguistic, logical, musical or interpersonal.",
+    "hi": "हॉवर्ड गार्डनर का विचार कि लोग भाषाई, तार्किक, संगीतात्मक या अंतर्वैयक्तिक जैसे अलग-अलग तरीकों से बुद्धिमान हो सकते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Artificial Intelligence (AI)",
+    "hi": "आर्टिफ़िशियल इंटेलिजेंस (AI)"
+   },
+   "d": {
+    "en": "The ability of machines to perform tasks that need human intelligence, by learning from data.",
+    "hi": "डेटा से सीखकर ऐसे काम करने की मशीनों की क्षमता जिनके लिए मानव बुद्धि चाहिए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Algorithm",
+    "hi": "Algorithm (एल्गोरिदम)"
+   },
+   "d": {
+    "en": "A step-by-step method for solving a problem; in AI, the method that learns patterns from data.",
+    "hi": "किसी समस्या को हल करने की चरण-दर-चरण विधि; AI में वह विधि जो डेटा से पैटर्न सीखती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Model",
+    "hi": "Model (मॉडल)"
+   },
+   "d": {
+    "en": "What an AI system learns from data; it takes new input and gives a prediction or decision.",
+    "hi": "AI सिस्टम डेटा से जो सीखता है; यह नया इनपुट लेकर अनुमान या निर्णय देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine Learning (ML)",
+    "hi": "मशीन लर्निंग (ML)"
+   },
+   "d": {
+    "en": "A subset of AI in which machines learn from data instead of being given every rule.",
+    "hi": "AI का उपसमूह जिसमें मशीन को हर नियम बताने के बजाय वह डेटा से सीखती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deep Learning (DL)",
+    "hi": "डीप लर्निंग (DL)"
+   },
+   "d": {
+    "en": "A subset of ML that uses many-layered artificial neural networks and large amounts of data.",
+    "hi": "ML का उपसमूह जो कई परतों वाले कृत्रिम न्यूरल नेटवर्क और बहुत अधिक डेटा का उपयोग करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Automation",
+    "hi": "स्वचालन (Automation)"
+   },
+   "d": {
+    "en": "A machine doing a task by itself by following fixed instructions, without learning.",
+    "hi": "मशीन का बिना सीखे, तय निर्देशों का पालन करते हुए स्वयं काम करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Narrow AI",
+    "hi": "संकीर्ण AI"
+   },
+   "d": {
+    "en": "AI designed for one task or a few tasks; all AI in use today.",
+    "hi": "एक या कुछ कामों के लिए बना AI; आज उपयोग होने वाला सारा AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "General AI (AGI)",
+    "hi": "सामान्य AI (AGI)"
+   },
+   "d": {
+    "en": "A possible future AI that could learn any task a human can; it does not exist yet.",
+    "hi": "संभावित भविष्य का AI जो इंसान की तरह कोई भी काम सीख सके; अभी मौजूद नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Turing Test",
+    "hi": "ट्यूरिंग टेस्ट"
+   },
+   "d": {
+    "en": "A test proposed by Alan Turing (1950): can a machine chat so well that a person cannot tell it from a human?",
+    "hi": "एलन ट्यूरिंग (1950) का सुझाया परीक्षण: क्या मशीन इतनी अच्छी बात कर सकती है कि व्यक्ति उसे इंसान से अलग न पहचाने?"
+   }
+  },
+  {
+   "t": {
+    "en": "AI domain",
+    "hi": "AI क्षेत्र (domain)"
+   },
+   "d": {
+    "en": "A branch of AI grouped by the kind of data it works on: Data, Computer Vision or NLP.",
+    "hi": "AI की शाखा, जो इस आधार पर बनी है कि वह किस प्रकार के डेटा पर काम करती है: डेटा, CV या NLP।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data (Statistical Data) domain",
+    "hi": "डेटा (सांख्यिकीय डेटा) क्षेत्र"
+   },
+   "d": {
+    "en": "AI that learns from numbers and tables to predict and decide.",
+    "hi": "संख्याओं और तालिकाओं से सीखकर अनुमान और निर्णय लेने वाला AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "Computer Vision (CV)",
+    "hi": "कंप्यूटर विज़न (CV)"
+   },
+   "d": {
+    "en": "AI that understands images and videos.",
+    "hi": "चित्र और वीडियो समझने वाला AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "Natural Language Processing (NLP)",
+    "hi": "प्राकृतिक भाषा प्रसंस्करण (NLP)"
+   },
+   "d": {
+    "en": "AI that understands and produces human language as text or speech.",
+    "hi": "मानवीय भाषा को पाठ या वाणी के रूप में समझने और बनाने वाला AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pixel",
+    "hi": "Pixel (पिक्सेल)"
+   },
+   "d": {
+    "en": "The smallest square of a digital image, stored as numbers for colour.",
+    "hi": "डिजिटल चित्र का सबसे छोटा वर्ग, जो रंग के लिए संख्याओं में रखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "OCR",
+    "hi": "OCR"
+   },
+   "d": {
+    "en": "Optical Character Recognition: reading printed or handwritten text from images.",
+    "hi": "ऑप्टिकल कैरेक्टर रिकग्निशन: चित्रों से छपा या हाथ से लिखा पाठ पढ़ना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Speech recognition",
+    "hi": "वाणी पहचान (Speech recognition)"
+   },
+   "d": {
+    "en": "Converting spoken words into text.",
+    "hi": "बोले गए शब्दों को पाठ में बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sentiment analysis",
+    "hi": "भावना विश्लेषण"
+   },
+   "d": {
+    "en": "Using NLP to find whether text expresses a positive, negative or neutral opinion.",
+    "hi": "NLP से यह पता लगाना कि पाठ सकारात्मक, नकारात्मक या तटस्थ राय व्यक्त करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Recommendation system",
+    "hi": "सुझाव प्रणाली"
+   },
+   "d": {
+    "en": "AI that suggests items (videos, products, songs) based on a user's past behaviour.",
+    "hi": "उपयोगकर्ता के पिछले व्यवहार के आधार पर वस्तुएँ (वीडियो, उत्पाद, गाने) सुझाने वाला AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bhashini",
+    "hi": "भाषिणी (Bhashini)"
+   },
+   "d": {
+    "en": "A Government of India platform (launched 2022) building AI translation and speech tools for Indian languages.",
+    "hi": "भारत सरकार का मंच (2022 में शुरू) जो भारतीय भाषाओं के लिए AI अनुवाद और वाणी उपकरण बनाता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is an application of AI?\n(a) a ceiling fan (b) an electric kettle (c) a spam filter in email (d) a wall clock",
+    "hi": "बहुविकल्पी: इनमें से कौन AI का उपयोग है?\n(क) छत का पंखा (ख) बिजली की केतली (ग) ईमेल का स्पैम फ़िल्टर (घ) दीवार घड़ी"
+   },
+   "a": {
+    "en": "(c) The spam filter learns from emails marked as spam.",
+    "hi": "(ग) स्पैम फ़िल्टर स्पैम चिह्नित ईमेल से सीखता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is NOT a domain of AI in the CBSE curriculum?\n(a) Computer Vision (b) Natural Language Processing (c) Data (d) Electrical Wiring",
+    "hi": "बहुविकल्पी: CBSE पाठ्यक्रम में इनमें से कौन AI का क्षेत्र नहीं है?\n(क) कंप्यूटर विज़न (ख) प्राकृतिक भाषा प्रसंस्करण (ग) डेटा (घ) बिजली की वायरिंग"
+   },
+   "a": {
+    "en": "(d) Electrical Wiring.",
+    "hi": "(घ) बिजली की वायरिंग।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Face unlock in a smartphone belongs to which domain?\n(a) NLP (b) Computer Vision (c) Data (d) none",
+    "hi": "बहुविकल्पी: स्मार्टफ़ोन का फ़ेस अनलॉक किस क्षेत्र का है?\n(क) NLP (ख) कंप्यूटर विज़न (ग) डेटा (घ) कोई नहीं"
+   },
+   "a": {
+    "en": "(b) Computer Vision, because it works on camera images.",
+    "hi": "(ख) कंप्यूटर विज़न, क्योंकि यह कैमरा चित्रों पर काम करता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The game Semantris demonstrates which AI domain?\n(a) CV (b) NLP (c) Data (d) Robotics",
+    "hi": "बहुविकल्पी: Semantris खेल किस AI क्षेत्र को दिखाता है?\n(क) CV (ख) NLP (ग) डेटा (घ) रोबोटिक्स"
+   },
+   "a": {
+    "en": "(b) NLP: it works on the meaning of words.",
+    "hi": "(ख) NLP: यह शब्दों के अर्थ पर काम करता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: The term Artificial Intelligence is linked with ______ and the Dartmouth workshop of ______. Alan Turing asked 'Can machines think?' in ______.",
+    "hi": "रिक्त स्थान भरें: Artificial Intelligence शब्द ______ और ______ की डार्टमथ कार्यशाला से जुड़ा है। एलन ट्यूरिंग ने 'क्या मशीनें सोच सकती हैं?' ______ में पूछा।"
+   },
+   "a": {
+    "en": "John McCarthy; 1956; 1950.",
+    "hi": "जॉन मैकार्थी; 1956; 1950।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (a) Every robot uses AI. (b) Deep Learning is a subset of Machine Learning. (c) General AI is widely used today. (d) A calculator is an AI device.",
+    "hi": "सही या ग़लत: (a) हर रोबोट AI का उपयोग करता है। (b) Deep Learning, Machine Learning का उपसमूह है। (c) सामान्य AI आज व्यापक रूप से उपयोग होता है। (d) कैलकुलेटर AI उपकरण है।"
+   },
+   "a": {
+    "en": "(a) False: many robots just repeat fixed movements. (b) True. (c) False: all AI today is narrow AI. (d) False: it follows fixed arithmetic rules.",
+    "hi": "(a) ग़लत: कई रोबोट केवल तय गतियाँ दोहराते हैं। (b) सही। (c) ग़लत: आज का सारा AI संकीर्ण AI है। (d) ग़लत: यह तय अंकगणितीय नियम मानता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Match the game with the domain: (i) Rock, Paper, Scissors (ii) Quick, Draw! (iii) Semantris → (A) NLP (B) Data (C) CV",
+    "hi": "खेल को क्षेत्र से मिलाएँ: (i) पत्थर-कागज़-कैंची (ii) Quick, Draw! (iii) Semantris → (A) NLP (B) डेटा (C) CV"
+   },
+   "a": {
+    "en": "(i)–B, (ii)–C, (iii)–A.",
+    "hi": "(i)–B, (ii)–C, (iii)–A।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is intelligence? Name any five abilities that make up intelligence, with an example of each.",
+    "hi": "बुद्धिमत्ता क्या है? बुद्धिमत्ता बनाने वाली कोई पाँच क्षमताएँ उदाहरण सहित बताइए।"
+   },
+   "a": {
+    "en": "Intelligence is the ability to perceive, learn, reason, solve problems, decide and adapt. Examples: perception (recognising a friend's voice), learning (improving at bowling with practice), reasoning (wet road → it rained), problem solving (finding another route when a road is closed), decision making (choosing to carry an umbrella).",
+    "hi": "बुद्धिमत्ता ग्रहण करने, सीखने, तर्क करने, समस्या हल करने, निर्णय लेने और ढलने की क्षमता है। उदाहरण: अनुभूति (दोस्त की आवाज़ पहचानना), सीखना (अभ्यास से गेंदबाज़ी सुधरना), तर्क (गीली सड़क → बारिश हुई), समस्या समाधान (रास्ता बंद हो तो दूसरा ढूँढना), निर्णय (छाता ले जाना तय करना)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Define AI. Explain the three ways in which AI can be viewed.",
+    "hi": "AI की परिभाषा दीजिए। AI को देखने के तीन तरीके समझाइए।"
+   },
+   "a": {
+    "en": "AI is the ability of a machine to perform tasks that need human intelligence, such as recognising, understanding language, learning, predicting and deciding, by learning from data. It can be viewed as (1) a technology (face unlock, chatbots), (2) a form of intelligence (a machine mimicking human abilities), and (3) a field of study within computer science that draws on maths, statistics, psychology and linguistics.",
+    "hi": "AI किसी मशीन की वह क्षमता है जिससे वह डेटा से सीखकर पहचानने, भाषा समझने, सीखने, अनुमान लगाने और निर्णय लेने जैसे मानव-बुद्धि वाले काम करे। इसे (1) तकनीक (फ़ेस अनलॉक, चैटबॉट), (2) बुद्धिमत्ता का रूप (मानवीय क्षमताओं की नकल करती मशीन), और (3) कंप्यूटर विज्ञान के अध्ययन क्षेत्र के रूप में देखा जा सकता है, जो गणित, सांख्यिकी, मनोविज्ञान और भाषा-विज्ञान का सहारा लेता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How does a machine become artificially intelligent? Explain with the help of an example.",
+    "hi": "मशीन कृत्रिम रूप से बुद्धिमान कैसे बनती है? उदाहरण सहित समझाइए।"
+   },
+   "a": {
+    "en": "It is trained on data using an algorithm: Data → Algorithm → Model → Prediction. Example: a spam filter is shown thousands of emails labelled spam or not spam. The algorithm learns which words and senders are common in spam. The resulting model checks every new email and moves likely spam to the spam folder. When users mark more emails, it is retrained and improves.",
+    "hi": "उसे algorithm से डेटा पर प्रशिक्षित किया जाता है: डेटा → Algorithm → Model → अनुमान। उदाहरण: स्पैम फ़िल्टर को 'स्पैम' या 'स्पैम नहीं' लेबल वाले हज़ारों ईमेल दिखाए जाते हैं। Algorithm सीखता है कि स्पैम में कौन-से शब्द और भेजने वाले आम हैं। बना हुआ model हर नए ईमेल की जाँच करके संभावित स्पैम को स्पैम फ़ोल्डर में डालता है। उपयोगकर्ता और ईमेल चिह्नित करें तो उसे फिर प्रशिक्षित करके सुधारा जाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between an automatic machine and an AI machine with two examples of each.",
+    "hi": "स्वचालित मशीन और AI मशीन में दो-दो उदाहरणों सहित अंतर बताइए।"
+   },
+   "a": {
+    "en": "An automatic machine follows fixed instructions and behaves the same way each time; it does not learn (examples: a sensor street light, a timer-based washing machine). An AI machine learns from data and can handle new situations and improve (examples: face unlock, map traffic prediction).",
+    "hi": "स्वचालित मशीन तय निर्देश मानती है और हर बार एक जैसा व्यवहार करती है; वह सीखती नहीं (उदाहरण: सेंसर वाली स्ट्रीट लाइट, टाइमर वाली वॉशिंग मशीन)। AI मशीन डेटा से सीखती है, नई स्थितियाँ संभाल सकती है और सुधरती है (उदाहरण: फ़ेस अनलॉक, मैप का ट्रैफ़िक अनुमान)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the three domains of AI with two applications of each.",
+    "hi": "AI के तीन क्षेत्रों को हर एक के दो उपयोगों सहित समझाइए।"
+   },
+   "a": {
+    "en": "Data: learns from numbers and tables; e.g. UPI fraud detection, weather forecasting.\nComputer Vision: understands images and videos; e.g. face unlock, crop-disease detection from leaf photos.\nNLP: understands and produces human language; e.g. voice assistants, Google Translate/Bhashini.",
+    "hi": "डेटा: संख्याओं और तालिकाओं से सीखता है; जैसे UPI धोखाधड़ी पहचान, मौसम पूर्वानुमान।\nकंप्यूटर विज़न: चित्र और वीडियो समझता है; जैसे फ़ेस अनलॉक, पत्ती की फ़ोटो से फ़सल रोग पहचान।\nNLP: मानवीय भाषा समझता और बनाता है; जैसे वॉइस असिस्टेंट, Google Translate/भाषिणी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which AI domain would you use to build a system that detects people not wearing helmets at a traffic signal? Justify.",
+    "hi": "ट्रैफ़िक सिग्नल पर बिना हेलमेट वाले लोगों को पहचानने वाले सिस्टम के लिए आप कौन-सा AI क्षेत्र उपयोग करेंगे? कारण दीजिए।"
+   },
+   "a": {
+    "en": "Computer Vision, because the input is camera images or video of riders. The model is trained on labelled images of riders with and without helmets, then detects heads in new frames and checks for a helmet. The number plate can also be read by OCR (also CV).",
+    "hi": "कंप्यूटर विज़न, क्योंकि इनपुट सवारों के कैमरा चित्र या वीडियो हैं। Model को हेलमेट वाले और बिना हेलमेट वाले सवारों के लेबल किए चित्रों पर प्रशिक्षित किया जाता है, फिर वह नए फ़्रेम में सिर पहचानकर हेलमेट की जाँच करता है। नंबर प्लेट भी OCR (यह भी CV) से पढ़ी जा सकती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A voice assistant uses more than one technique. Reason (R): It converts speech to text, finds the meaning, and replies in speech.\n(a) Both A and R true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): वॉइस असिस्टेंट एक से अधिक तकनीकों का उपयोग करता है। कारण (R): यह वाणी को पाठ में बदलता है, अर्थ समझता है और वाणी में उत्तर देता है।\n(a) A और R दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, पर R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(a) Both are true and R correctly explains A.",
+    "hi": "(a) दोनों सही हैं और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A sensor-based automatic street light is an AI system. Reason (R): It switches on when it gets dark.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): सेंसर वाली स्वचालित स्ट्रीट लाइट AI सिस्टम है। कारण (R): अंधेरा होने पर यह जल जाती है।\n(a) दोनों सही, R व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(d) A is false (it follows one fixed rule and does not learn), R is true.",
+    "hi": "(d) A ग़लत है (यह एक तय नियम मानती है और सीखती नहीं), R सही है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the relationship between AI, ML and DL. Describe it as a diagram in words.",
+    "hi": "AI, ML और DL का संबंध समझाइए। इसे शब्दों में चित्र के रूप में बताइए।"
+   },
+   "a": {
+    "en": "Picture three circles one inside the other. The largest circle is AI: any technique that makes machines perform intelligent tasks. Inside it is ML: AI that learns from data. Inside ML is DL: ML that uses many-layered neural networks and big data. So all DL is ML and all ML is AI, but not all AI is ML (for example, a rule-based chess program).",
+    "hi": "तीन वृत्तों की कल्पना करें, एक के अंदर दूसरा। सबसे बड़ा वृत्त AI है: कोई भी तकनीक जो मशीन से बुद्धिमान काम कराए। उसके अंदर ML है: डेटा से सीखने वाला AI। ML के अंदर DL है: कई परतों वाले न्यूरल नेटवर्क और बड़े डेटा वाला ML। इसलिए हर DL, ML है और हर ML, AI है, पर हर AI, ML नहीं (जैसे नियम-आधारित शतरंज प्रोग्राम)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A farmer's cooperative wants an app that (i) identifies pests from leaf photos, (ii) gives spoken advice in Marathi, and (iii) predicts next week's pest risk using weather and trap-count data. Identify the domain for each part and explain why the app combines domains.",
+    "hi": "केस अध्ययन: एक किसान सहकारी संस्था ऐसा ऐप चाहती है जो (i) पत्ती की फ़ोटो से कीट पहचाने, (ii) मराठी में बोलकर सलाह दे, और (iii) मौसम और ट्रैप-गिनती डेटा से अगले हफ़्ते का कीट जोखिम बताए। हर भाग का क्षेत्र बताइए और समझाइए कि ऐप क्षेत्रों को क्यों जोड़ता है।"
+   },
+   "a": {
+    "en": "(i) Computer Vision: the input is an image. (ii) NLP: producing and speaking advice in Marathi (text-to-speech, possibly understanding spoken questions). (iii) Data: numerical weather and trap counts to predict risk. The app combines domains because a real farmer's problem has many parts: seeing the pest, understanding advice in his own language, and planning ahead. Like strands of a braid, together they are far more useful than any one alone.",
+    "hi": "(i) कंप्यूटर विज़न: इनपुट चित्र है। (ii) NLP: मराठी में सलाह बनाना और बोलना (text-to-speech, संभवतः बोले प्रश्न समझना भी)। (iii) डेटा: जोखिम के अनुमान के लिए मौसम और ट्रैप-गिनती की संख्याएँ। ऐप क्षेत्रों को इसलिए जोड़ता है क्योंकि किसान की असली समस्या के कई भाग हैं: कीट देखना, अपनी भाषा में सलाह समझना और आगे की योजना बनाना। चोटी की लटों की तरह, ये मिलकर किसी एक से कहीं अधिक उपयोगी हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Why is NLP especially challenging in India? Give four reasons with examples.",
+    "hi": "भारत में NLP खास तौर पर चुनौतीपूर्ण क्यों है? उदाहरणों सहित चार कारण दीजिए।"
+   },
+   "a": {
+    "en": "1. Many languages and scripts: 22 scheduled languages and hundreds of dialects, each needing data.\n2. Code-mixing: people mix languages ('kal meeting cancel ho gayi').\n3. Words with many meanings: Hindi 'kal' means yesterday or tomorrow; context is needed.\n4. Less digital text in some languages: fewer examples to train on, so tools work less well for them.\nThat is why projects like Bhashini collect data and build tools for Indian languages.",
+    "hi": "1. अनेक भाषाएँ और लिपियाँ: 22 अनुसूचित भाषाएँ और सैकड़ों बोलियाँ, हर एक को डेटा चाहिए।\n2. भाषा-मिश्रण: लोग भाषाएँ मिलाते हैं ('कल meeting cancel हो गई')।\n3. अनेकार्थी शब्द: हिंदी 'कल' का अर्थ बीता या आने वाला दिन; संदर्भ चाहिए।\n4. कुछ भाषाओं में कम डिजिटल पाठ: प्रशिक्षण के कम उदाहरण, इसलिए उपकरण उन भाषाओं में कम अच्छे चलते हैं।\nइसीलिए भाषिणी जैसी परियोजनाएँ भारतीय भाषाओं के लिए डेटा जुटाती और उपकरण बनाती हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In Quick, Draw!, the AI sometimes fails to recognise your drawing even though a human friend can. Give three possible reasons, and say what this teaches about AI.",
+    "hi": "Quick, Draw! में कभी-कभी AI आपका चित्र नहीं पहचानता, जबकि आपका दोस्त पहचान लेता है। तीन संभावित कारण दीजिए और बताइए कि इससे AI के बारे में क्या सीख मिलती है।"
+   },
+   "a": {
+    "en": "Reasons: (1) your drawing style differs from most of the doodles it learnt from (e.g. you drew a side view, most people drew a front view); (2) you did not finish the key features in time; (3) the object looks like another object it knows (a cup vs a bucket). Lesson: AI recognises patterns similar to its training data; it lacks human common sense and context, so unusual inputs can fool it. Better and more varied data improves it.",
+    "hi": "कारण: (1) आपकी चित्र शैली उन अधिकांश चित्रों से अलग है जिनसे उसने सीखा (जैसे आपने बगल से बनाया, ज़्यादातर लोगों ने सामने से); (2) आप समय में मुख्य विशेषताएँ पूरी नहीं कर पाए; (3) वस्तु किसी दूसरी जानी-पहचानी वस्तु जैसी दिखती है (कप बनाम बाल्टी)। सीख: AI अपने प्रशिक्षण डेटा से मिलते-जुलते पैटर्न पहचानता है; उसमें मानवीय सामान्य समझ और संदर्भ नहीं होता, इसलिए असामान्य इनपुट उसे भ्रमित कर सकता है। बेहतर और विविध डेटा उसे सुधारता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: 'AI can improve the world.' Give four arguments with Indian examples, and two cautions.",
+    "hi": "दीर्घ उत्तर: 'AI दुनिया को बेहतर बना सकता है।' भारतीय उदाहरणों सहित चार तर्क और दो सावधानियाँ दीजिए।"
+   },
+   "a": {
+    "en": "Arguments: (1) Health: screening eye photos for diabetic retinopathy helps where eye specialists are few. (2) Agriculture: pest-detection apps help cotton farmers act early and save crops. (3) Language access: Bhashini and translation tools let people use services in their own language. (4) Safety and finance: UPI fraud alerts protect people's savings; flood forecasts give early warning.\nCautions: (1) AI can be wrong or biased if its data is poor, so humans must check important decisions. (2) AI uses personal data, so privacy must be protected (Chapter 3).",
+    "hi": "तर्क: (1) स्वास्थ्य: डायबिटिक रेटिनोपैथी के लिए आँखों की फ़ोटो की जाँच वहाँ मदद करती है जहाँ नेत्र विशेषज्ञ कम हैं। (2) कृषि: कीट-पहचान ऐप कपास किसानों को समय पर कार्रवाई और फ़सल बचाने में मदद करते हैं। (3) भाषा पहुँच: भाषिणी और अनुवाद उपकरण लोगों को अपनी भाषा में सेवाएँ उपयोग करने देते हैं। (4) सुरक्षा और वित्त: UPI धोखाधड़ी अलर्ट बचत बचाते हैं; बाढ़ पूर्वानुमान पहले चेतावनी देते हैं।\nसावधानियाँ: (1) डेटा ख़राब हो तो AI ग़लत या पक्षपाती हो सकता है, इसलिए महत्वपूर्ण निर्णय इंसान जाँचें। (2) AI निजी डेटा उपयोग करता है, इसलिए गोपनीयता की रक्षा ज़रूरी है (अध्याय 3)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity/thinking: Play Rock, Paper, Scissors against an AI for 30 rounds. Then play 30 more rounds deciding each move by rolling a dice (1–2 rock, 3–4 paper, 5–6 scissors). Predict and explain what happens to the AI's win rate.",
+    "hi": "गतिविधि/चिंतन: AI के विरुद्ध 30 राउंड पत्थर-कागज़-कैंची खेलें। फिर 30 राउंड और खेलें, हर चाल पासा फेंककर तय करें (1–2 पत्थर, 3–4 कागज़, 5–6 कैंची)। अनुमान लगाइए और समझाइए कि AI की जीत दर का क्या होगा।"
+   },
+   "a": {
+    "en": "In the first 30 rounds, people usually have habits, so the AI finds patterns and wins more than one-third of the time. With dice, your moves are random, so there is no pattern to learn; the AI's win rate falls to about one-third (wins, losses and draws roughly equal). This shows that a Data-domain AI depends on patterns in data; it cannot predict truly random events.",
+    "hi": "पहले 30 राउंड में लोगों की आदतें होती हैं, इसलिए AI पैटर्न पकड़कर एक-तिहाई से अधिक बार जीतता है। पासे से आपकी चालें यादृच्छिक हैं, सीखने लायक कोई पैटर्न नहीं; AI की जीत दर लगभग एक-तिहाई हो जाती है (जीत, हार और बराबरी लगभग समान)। इससे दिखता है कि डेटा-क्षेत्र का AI डेटा में पैटर्न पर निर्भर है; वह सच में यादृच्छिक घटनाओं का अनुमान नहीं लगा सकता।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Case-based: Meena's phone gallery can find 'all photos of Grandma' and 'photos with a cake'. It also suggests captions in Hindi when she posts. Name the domains involved and explain.",
+    "hi": "केस-आधारित: मीना की फ़ोन गैलरी 'दादी की सारी फ़ोटो' और 'केक वाली फ़ोटो' ढूँढ सकती है। पोस्ट करते समय यह हिंदी में कैप्शन भी सुझाती है। शामिल क्षेत्र बताइए और समझाइए।"
+   },
+   "a": {
+    "en": "Finding Grandma uses face recognition and finding cakes uses object recognition: both Computer Vision. Suggesting Hindi captions uses NLP to generate text. The app may also learn her preferences from usage data (Data domain).",
+    "hi": "दादी को ढूँढना चेहरा पहचान और केक ढूँढना वस्तु पहचान है: दोनों कंप्यूटर विज़न। हिंदी कैप्शन सुझाना पाठ बनाने के लिए NLP है। ऐप उपयोग डेटा से उसकी पसंद भी सीख सकता है (डेटा क्षेत्र)।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Intelligence is a bundle of abilities: perceiving, learning, remembering, reasoning, problem solving, deciding, language and adapting.",
+   "Good decisions need information and experience; machines get these from data.",
+   "AI is the ability of machines to do tasks that need human intelligence; it can be seen as a technology, a form of intelligence and a field of study.",
+   "John McCarthy and the 1956 Dartmouth workshop named the field; Alan Turing asked 'Can machines think?' in 1950.",
+   "Machines become intelligent through Data → Algorithm → Model → Prediction, and improve with more data.",
+   "ML is a subset of AI and DL is a subset of ML.",
+   "Automation follows fixed rules; AI learns and handles new situations. AI is not the same as a robot.",
+   "All AI today is narrow AI; general and super AI do not exist.",
+   "The three CBSE AI domains: Data (numbers and tables), Computer Vision (images and video) and NLP (text and speech).",
+   "Data examples: fraud alerts, weather, recommendations. CV: face unlock, crop-disease apps, medical imaging. NLP: voice assistants, translation, chatbots.",
+   "Games: Rock, Paper, Scissors (Data), Quick, Draw! (CV), Semantris (NLP).",
+   "Real products combine domains, like strands of a braid.",
+   "AI is used across Indian agriculture, health, education, banking, transport and governance, for example Bhashini and pest-detection apps.",
+   "AI is fast and tireless but lacks common sense and can be wrong; always check important answers and protect personal data."
+  ],
+  "hi": [
+   "बुद्धिमत्ता क्षमताओं का समूह है: ग्रहण करना, सीखना, याद रखना, तर्क, समस्या समाधान, निर्णय, भाषा और ढलना।",
+   "अच्छे निर्णय के लिए जानकारी और अनुभव चाहिए; मशीनें ये डेटा से पाती हैं।",
+   "AI मशीनों की मानव-बुद्धि वाले काम करने की क्षमता है; इसे तकनीक, बुद्धिमत्ता का रूप और अध्ययन क्षेत्र तीनों माना जा सकता है।",
+   "जॉन मैकार्थी और 1956 की डार्टमथ कार्यशाला ने क्षेत्र को नाम दिया; एलन ट्यूरिंग ने 1950 में पूछा 'क्या मशीनें सोच सकती हैं?'",
+   "मशीनें डेटा → Algorithm → Model → अनुमान से बुद्धिमान बनती हैं, और अधिक डेटा से सुधरती हैं।",
+   "ML, AI का उपसमूह है और DL, ML का उपसमूह है।",
+   "स्वचालन तय नियम मानता है; AI सीखता है और नई स्थितियाँ संभालता है। AI और रोबोट एक नहीं हैं।",
+   "आज का सारा AI संकीर्ण AI है; सामान्य और सुपर AI मौजूद नहीं हैं।",
+   "CBSE के तीन AI क्षेत्र: डेटा (संख्याएँ और तालिकाएँ), कंप्यूटर विज़न (चित्र और वीडियो) और NLP (पाठ और वाणी)।",
+   "डेटा उदाहरण: धोखाधड़ी अलर्ट, मौसम, सुझाव। CV: फ़ेस अनलॉक, फ़सल-रोग ऐप, चिकित्सा इमेजिंग। NLP: वॉइस असिस्टेंट, अनुवाद, चैटबॉट।",
+   "खेल: पत्थर-कागज़-कैंची (डेटा), Quick, Draw! (CV), Semantris (NLP)।",
+   "वास्तविक उत्पाद चोटी की लटों की तरह क्षेत्रों को जोड़ते हैं।",
+   "AI भारत की कृषि, स्वास्थ्य, शिक्षा, बैंकिंग, परिवहन और शासन में उपयोग होता है, जैसे भाषिणी और कीट-पहचान ऐप।",
+   "AI तेज़ और अथक है पर उसमें सामान्य समझ नहीं और वह ग़लत हो सकता है; महत्वपूर्ण उत्तर हमेशा जाँचें और निजी डेटा सुरक्षित रखें।"
+  ]
+ }
+}
