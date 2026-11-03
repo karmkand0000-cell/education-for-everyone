@@ -1,0 +1,1468 @@
+{
+ "v": 1,
+ "sub": "science",
+ "lv": "6",
+ "id": "ch7",
+ "intro": {
+  "en": "How hot is a cup of tea? How cold is water from a matka? Is a child who feels warm really running a fever? In this chapter you will learn that our sense of touch cannot always answer such questions correctly, and that scientists use a quantity called temperature to describe hotness and coldness exactly. You will learn about the clinical thermometer (for body temperature), the laboratory thermometer (for other things), the Celsius, Fahrenheit and Kelvin scales, how to find the range and the smallest reading of a thermometer, how to read it correctly, and how air temperature is measured and reported in weather reports.",
+  "hi": "चाय का कप कितना गर्म है? मटके का पानी कितना ठंडा है? क्या जिस बच्चे का शरीर गर्म लग रहा है उसे सच में बुखार है? इस अध्याय में आप सीखेंगे कि हमारी स्पर्श की अनुभूति (छूकर पता करना) ऐसे प्रश्नों का सही उत्तर हमेशा नहीं दे पाती, और वैज्ञानिक गर्मी और ठंडक को ठीक-ठीक बताने के लिए ताप (temperature) नामक राशि का उपयोग करते हैं। आप शरीर का ताप मापने वाले डॉक्टरी (clinical) थर्मामीटर, अन्य वस्तुओं का ताप मापने वाले प्रयोगशाला (laboratory) थर्मामीटर, सेल्सियस, फ़ारेनहाइट और केल्विन पैमानों, थर्मामीटर की परास और सबसे छोटा पाठ्यांक निकालने, उसे सही ढंग से पढ़ने, तथा वायु का ताप कैसे मापा जाता है और मौसम रिपोर्ट में कैसे बताया जाता है, इन सबके बारे में सीखेंगे।"
+ },
+ "learn": {
+  "en": [
+   "Why our sense of touch is not a reliable way to judge hot and cold (Activity 7.1)",
+   "What temperature is and what a thermometer does",
+   "The digital clinical thermometer: how to use it safely to measure body temperature",
+   "Normal human body temperature (37.0 °C) and why it is only an average",
+   "Why mercury thermometers are being replaced, and what infrared (non-contact) thermometers are",
+   "The Celsius, Fahrenheit and Kelvin scales, and the SI unit of temperature",
+   "Converting Celsius to kelvin (K = °C + 273.15) and the rules for writing temperature units",
+   "The laboratory thermometer: its parts, range and precautions",
+   "How to find the range and the smallest value (least count) a thermometer can measure",
+   "The correct way to measure the temperature of water with a laboratory thermometer",
+   "Temperatures of melting ice and boiling water, and why boiling water in Shillong reads about 98 °C",
+   "Air temperature, maximum and minimum temperatures in weather reports, and the work of Anna Mani"
+  ],
+  "hi": [
+   "छूकर गर्म-ठंडा पहचानना भरोसेमंद तरीका क्यों नहीं है (क्रियाकलाप 7.1)",
+   "ताप क्या है और थर्मामीटर क्या करता है",
+   "डिजिटल डॉक्टरी थर्मामीटर: शरीर का ताप सुरक्षित ढंग से कैसे मापें",
+   "मानव शरीर का सामान्य ताप (37.0 °C) और यह केवल औसत मान क्यों है",
+   "पारे वाले थर्मामीटर क्यों हटाए जा रहे हैं, और इन्फ्रारेड (बिना छुए मापने वाले) थर्मामीटर क्या हैं",
+   "सेल्सियस, फ़ारेनहाइट और केल्विन पैमाने, तथा ताप का SI मात्रक",
+   "सेल्सियस को केल्विन में बदलना (K = °C + 273.15) और ताप के मात्रक लिखने के नियम",
+   "प्रयोगशाला थर्मामीटर: उसके भाग, परास और सावधानियाँ",
+   "थर्मामीटर की परास और सबसे छोटा मापा जा सकने वाला मान (अल्पतमांक) कैसे निकालें",
+   "प्रयोगशाला थर्मामीटर से पानी का ताप मापने का सही तरीका",
+   "पिघलती बर्फ़ और उबलते पानी का ताप, और शिलॉन्ग में उबलता पानी लगभग 98 °C क्यों दिखाता है",
+   "वायु का ताप, मौसम रिपोर्ट में अधिकतम और न्यूनतम ताप, और अन्ना मणि का योगदान"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "Introduction: Lambok feels unwell",
+    "hi": "परिचय: लाम्बोक की तबीयत"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The chapter opens with a story from Shillong in Meghalaya. Lambok comes home from school feeling tired and feverish. His elder sister Phiban touches his forehead with the back of her hand. She is not sure whether he really has fever, so she takes out a thermometer and measures his temperature. The reading is normal. Phiban then cleans and dries the thermometer, puts it away, and tells Lambok to change his clothes, eat his lunch and rest.",
+      "hi": "अध्याय मेघालय के शिलॉन्ग की एक कहानी से शुरू होता है। लाम्बोक स्कूल से थका हुआ और बुखार जैसा महसूस करता हुआ घर आता है। उसकी बड़ी बहन फिबान अपने हाथ के पिछले भाग से उसका माथा छूती है। उसे पक्का पता नहीं चलता कि उसे सच में बुखार है या नहीं, इसलिए वह थर्मामीटर निकालकर उसका ताप मापती है। पाठ्यांक (reading) सामान्य आता है। फिर फिबान थर्मामीटर को साफ़ करके सुखाती है, रख देती है, और लाम्बोक से कहती है कि कपड़े बदलकर खाना खाए और आराम करे।"
+     }
+    },
+    {
+     "p": {
+      "en": "Two ideas are hidden in this small story. First, touching the forehead gave only a rough guess, so Phiban needed an instrument to be sure. Second, she cleaned the thermometer after use, which is an important safety habit. The whole chapter grows out of these two ideas: we need a reliable measure of hotness, and we must measure it correctly and safely.",
+      "hi": "इस छोटी-सी कहानी में दो बातें छिपी हैं। पहली, माथा छूने से केवल मोटा-मोटा अंदाज़ा मिला, इसलिए पक्का करने के लिए फिबान को एक यंत्र की ज़रूरत पड़ी। दूसरी, उसने उपयोग के बाद थर्मामीटर साफ़ किया, जो सुरक्षा की एक ज़रूरी आदत है। पूरा अध्याय इन्हीं दो बातों से आगे बढ़ता है: गर्मी-ठंडक की भरोसेमंद माप चाहिए, और उसे सही व सुरक्षित ढंग से मापना चाहिए।"
+     }
+    },
+    {
+     "note": {
+      "en": "The chapter begins with a saying of the Indian scientist Anna Mani, whose idea is that a wrong measurement can do more harm than having no measurement at all. Keep this in mind: measuring carefully matters as much as measuring.",
+      "hi": "अध्याय भारतीय वैज्ञानिक अन्ना मणि के एक कथन से शुरू होता है, जिसका भाव यह है कि गलत माप, कोई माप न होने से भी ज़्यादा नुकसान कर सकती है। यह याद रखें: ध्यान से मापना उतना ही ज़रूरी है जितना मापना।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.1 Hot or Cold?",
+    "hi": "7.1 गर्म या ठंडा?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In daily life we often decide whether something is hot or cold just by touching it. We touch a cup of milk before drinking, or touch a child's forehead to check for fever. In summer, water from an open tap often feels warm, while water from a matka (earthen pot) or a refrigerator feels cool. But is touch always reliable? Activity 7.1 tests this.",
+      "hi": "रोज़मर्रा के जीवन में हम अक्सर किसी वस्तु को छूकर ही तय कर लेते हैं कि वह गर्म है या ठंडी। दूध पीने से पहले कप छूते हैं, या बुखार देखने के लिए बच्चे का माथा छूते हैं। गर्मियों में खुले नल का पानी अक्सर गुनगुना लगता है, जबकि मटके या फ्रिज का पानी ठंडा लगता है। पर क्या स्पर्श हमेशा भरोसेमंद है? क्रियाकलाप 7.1 इसी की जाँच करता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 7.1 (Let us investigate): Can we trust our hands to tell hot from cold?",
+       "hi": "क्रियाकलाप 7.1 (आइए जाँच करें): क्या गर्म-ठंडा पहचानने के लिए हम अपने हाथों पर भरोसा कर सकते हैं?"
+      },
+      "a": {
+       "en": "Aim: To check whether our sense of touch is a reliable way to judge how hot or cold something is.\nMaterials: Three large containers marked A, B and C; warm water (comfortably warm, not hot enough to burn), ordinary tap water, and ice-cold water.\nMethod: Fill A with warm water, B with tap water and C with ice-cold water. Before starting, write down your prediction: how will the water in B feel to each hand? Dip your right hand in A and your left hand in C and keep them there for 1 to 2 minutes. Then take both hands out and put them together into B at the same time.\nObservation: The right hand (which came from warm water) feels the water in B as cool. The left hand (which came from ice-cold water) feels the same water in B as warm.\nConclusion: The same water cannot be both warm and cool at the same moment. The feeling depends on what the hand touched before. So our sense of touch is not a reliable way to tell how hot or cold something is.\nSafety: Do not use very hot water. Test with a fingertip first, and take an adult's help.",
+       "hi": "उद्देश्य: यह जाँचना कि किसी वस्तु के गर्म या ठंडे होने का निर्णय करने में हमारी स्पर्श-अनुभूति भरोसेमंद है या नहीं।\nसामग्री: A, B और C चिह्नित तीन बड़े बर्तन; गुनगुना पानी (इतना कि जले नहीं), नल का साधारण पानी, और बर्फ़ जैसा ठंडा पानी।\nविधि: A में गुनगुना, B में नल का और C में बर्फ़ जैसा ठंडा पानी भरें। शुरू करने से पहले अपना अनुमान लिखें: B का पानी हर हाथ को कैसा लगेगा? दायाँ हाथ A में और बायाँ हाथ C में 1 से 2 मिनट डुबोकर रखें। फिर दोनों हाथ निकालकर एक साथ B में डालें।\nप्रेक्षण: दाएँ हाथ (जो गुनगुने पानी से आया) को B का पानी ठंडा लगता है। बाएँ हाथ (जो बर्फ़ीले पानी से आया) को वही पानी गर्म लगता है।\nनिष्कर्ष: एक ही पानी एक ही समय पर गर्म और ठंडा दोनों नहीं हो सकता। अनुभूति इस पर निर्भर करती है कि हाथ ने पहले क्या छुआ था। अतः स्पर्श की अनुभूति गर्मी-ठंडक बताने का भरोसेमंद तरीका नहीं है।\nसुरक्षा: बहुत गर्म पानी न लें। पहले उँगली से जाँच लें और किसी बड़े की मदद लें।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Touch gives only a rough idea and can even mislead us. Also, we cannot touch very hot things (like a hot iron or boiling water) or very cold things without getting hurt. So we need an instrument.",
+      "hi": "याद रखें: स्पर्श केवल मोटा अंदाज़ा देता है और हमें भ्रमित भी कर सकता है। साथ ही, बहुत गर्म (जैसे गर्म इस्त्री या उबलता पानी) या बहुत ठंडी वस्तुओं को छूने से चोट लग सकती है। इसलिए हमें एक यंत्र की ज़रूरत है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.2 Temperature",
+    "hi": "7.2 ताप"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Temperature",
+       "hi": "ताप"
+      },
+      "text": {
+       "en": "Temperature is a reliable measure of how hot or cold a body (any object or substance) is. A hotter body has a higher temperature than a colder body.",
+       "hi": "ताप इस बात की भरोसेमंद माप है कि कोई वस्तु (पिंड) कितनी गर्म या ठंडी है। अधिक गर्म वस्तु का ताप, कम गर्म (ठंडी) वस्तु से अधिक होता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Temperature lets us compare things using numbers instead of feelings. If tea is at 80 °C and milk is at 40 °C, we know at once that the tea is hotter, and by how much (40 °C more). No two people will argue about a number in the way they might argue about how warm something 'feels'.",
+      "hi": "ताप की मदद से हम भावनाओं की जगह संख्याओं से तुलना कर सकते हैं। यदि चाय 80 °C पर है और दूध 40 °C पर, तो तुरंत पता चल जाता है कि चाय अधिक गर्म है, और कितनी अधिक (40 °C अधिक)। किसी वस्तु के 'लगने' पर दो लोग बहस कर सकते हैं, पर संख्या पर नहीं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Thermometer",
+       "hi": "थर्मामीटर (तापमापी)"
+      },
+      "text": {
+       "en": "A thermometer is a device used to measure temperature.",
+       "hi": "थर्मामीटर वह युक्ति है जिससे ताप मापा जाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "There are many kinds of thermometers. In this chapter we study two main kinds: the clinical thermometer, used to measure the temperature of the human body, and the laboratory thermometer, used to measure the temperature of other things such as water, other liquids and air. We also meet room thermometers and non-contact (infrared) thermometers.",
+      "hi": "थर्मामीटर कई प्रकार के होते हैं। इस अध्याय में हम दो मुख्य प्रकार पढ़ेंगे: डॉक्टरी (clinical) थर्मामीटर, जो मानव शरीर का ताप मापता है, और प्रयोगशाला थर्मामीटर, जो पानी, अन्य द्रवों और वायु जैसी दूसरी वस्तुओं का ताप मापता है। हम कमरे के थर्मामीटर और बिना छुए मापने वाले (इन्फ्रारेड) थर्मामीटर के बारे में भी जानेंगे।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Thermometer",
+        "Used for",
+        "Typical range"
+       ],
+       "hi": [
+        "थर्मामीटर",
+        "किसके लिए",
+        "सामान्य परास"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Clinical (digital)",
+         "Human body temperature",
+         "About 35 °C to 42 °C"
+        ],
+        [
+         "Laboratory",
+         "Water, liquids, other objects in the lab",
+         "About -10 °C to 110 °C"
+        ],
+        [
+         "Room thermometer",
+         "Approximate temperature of a room",
+         "Shown on its scale"
+        ],
+        [
+         "Infrared (non-contact)",
+         "Body temperature from a distance",
+         "Body temperature range"
+        ]
+       ],
+       "hi": [
+        [
+         "डॉक्टरी (डिजिटल)",
+         "मानव शरीर का ताप",
+         "लगभग 35 °C से 42 °C"
+        ],
+        [
+         "प्रयोगशाला",
+         "पानी, द्रव, प्रयोगशाला की अन्य वस्तुएँ",
+         "लगभग -10 °C से 110 °C"
+        ],
+        [
+         "कमरे का थर्मामीटर",
+         "कमरे का लगभग ताप",
+         "उसके पैमाने पर लिखा"
+        ],
+        [
+         "इन्फ्रारेड (बिना छुए)",
+         "दूर से शरीर का ताप",
+         "शरीर के ताप की परास"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3 Measuring Temperature",
+    "hi": "7.3 ताप का मापन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Now that we know temperature is measured with thermometers, let us study each kind in detail: how it is built, how it is used, and what care must be taken.",
+      "hi": "अब जब हम जानते हैं कि ताप थर्मामीटर से मापा जाता है, आइए हर प्रकार को विस्तार से समझें: वह कैसे बना है, कैसे उपयोग होता है, और क्या सावधानियाँ रखनी चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3.1 Clinical Thermometer",
+    "hi": "7.3.1 डॉक्टरी थर्मामीटर"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Clinical thermometer",
+       "hi": "डॉक्टरी थर्मामीटर"
+      },
+      "text": {
+       "en": "A thermometer used to measure the temperature of the human body. Most clinical thermometers used today are digital: they work on a battery, are used by touching the body, and show the temperature as numbers on a small screen.",
+       "hi": "मानव शरीर का ताप मापने वाला थर्मामीटर। आजकल अधिकतर डॉक्टरी थर्मामीटर डिजिटल होते हैं: ये बैटरी से चलते हैं, शरीर से छुआकर उपयोग होते हैं, और ताप को एक छोटी स्क्रीन पर अंकों में दिखाते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Figure description: A digital clinical thermometer is a slim plastic stick. At one end is a metal tip (which contains the heat sensor). Near the other end is a small display screen and an on/off or reset button. The temperature appears on the screen, for example 37.0 °C.",
+      "hi": "चित्र का वर्णन: डिजिटल डॉक्टरी थर्मामीटर प्लास्टिक की एक पतली छड़ जैसा होता है। एक सिरे पर धातु की नोक होती है (जिसमें ताप-संवेदक या heat sensor होता है)। दूसरे सिरे के पास एक छोटी डिस्प्ले स्क्रीन और चालू/बंद या रीसेट बटन होता है। ताप स्क्रीन पर दिखता है, जैसे 37.0 °C।"
+     }
+    },
+    {
+     "p": {
+      "en": "Clinical thermometers in India usually show temperature on the Celsius scale. The unit is the degree Celsius, written °C.",
+      "hi": "भारत में डॉक्टरी थर्मामीटर आमतौर पर सेल्सियस पैमाने पर ताप दिखाते हैं। इसका मात्रक डिग्री सेल्सियस है, जिसे °C लिखते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Do you know? Earlier, clinical thermometers were glass tubes containing mercury. Mercury is a poisonous (toxic) metal. If such a thermometer breaks, the mercury is harmful and very hard to collect and dispose of safely. So mercury thermometers are being replaced by digital thermometers, which are safer, easier to read and work with heat sensors.",
+      "hi": "क्या आप जानते हैं? पहले डॉक्टरी थर्मामीटर काँच की नली होते थे जिनमें पारा (mercury) भरा होता था। पारा एक विषैली (toxic) धातु है। ऐसा थर्मामीटर टूट जाए तो पारा हानिकारक होता है और उसे इकट्ठा करके सुरक्षित ढंग से फेंकना बहुत कठिन होता है। इसलिए पारे वाले थर्मामीटरों की जगह डिजिटल थर्मामीटर आ रहे हैं, जो अधिक सुरक्षित हैं, पढ़ने में आसान हैं और ताप-संवेदक से काम करते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Do you know? Infrared or non-contact thermometers measure body temperature without touching the person, usually by pointing them at the forehead from a short distance. Because there is no contact, they reduce the chance of spreading disease. They were widely used at entry points of schools, shops and airports during the COVID-19 pandemic.",
+      "hi": "क्या आप जानते हैं? इन्फ्रारेड या बिना छुए (non-contact) मापने वाले थर्मामीटर व्यक्ति को छुए बिना शरीर का ताप मापते हैं, आमतौर पर थोड़ी दूरी से माथे की ओर करके। स्पर्श न होने से रोग फैलने की संभावना कम होती है। COVID-19 महामारी के समय स्कूलों, दुकानों और हवाई अड्डों के प्रवेश द्वार पर इनका खूब उपयोग हुआ।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 7.2 (Let us measure): Measuring body temperature with a digital clinical thermometer",
+       "hi": "क्रियाकलाप 7.2 (आइए मापें): डिजिटल डॉक्टरी थर्मामीटर से शरीर का ताप मापना"
+      },
+      "a": {
+       "en": "Aim: To measure our own body temperature and that of friends.\nMaterials: A digital clinical thermometer, soap and water, a clean cloth, a notebook.\nMethod:\n1. Wash your hands. Wash the tip of the thermometer with soap and water.\n2. Switch on or reset the thermometer so that it is ready.\n3. Place the tip under your tongue and close your mouth (lips closed around it).\n4. Wait until the thermometer beeps or a light flashes. This signal means the reading is ready.\n5. Take it out and read the temperature on the display. Write it down with its unit, for example 36.8 °C.\n6. Wash the tip with soap and water again and dry it.\n7. With their permission, measure the temperatures of about 10 friends and record them in a table with columns: S. no., Name, Temperature (°C).\nObservation: Most readings are close to 37 °C, but they are not all exactly the same (for example 36.6 °C, 36.9 °C, 37.1 °C).\nConclusion: Body temperatures of healthy people are near 37 °C but vary slightly from person to person.",
+       "hi": "उद्देश्य: अपना और मित्रों का शरीर-ताप मापना।\nसामग्री: डिजिटल डॉक्टरी थर्मामीटर, साबुन और पानी, साफ़ कपड़ा, कॉपी।\nविधि:\n1. हाथ धोएँ। थर्मामीटर की नोक को साबुन और पानी से धोएँ।\n2. थर्मामीटर को चालू या रीसेट करें ताकि वह तैयार हो जाए।\n3. नोक को जीभ के नीचे रखें और मुँह बंद कर लें (होंठ उसके चारों ओर बंद हों)।\n4. थर्मामीटर के बीप करने या बत्ती चमकने तक प्रतीक्षा करें। यह संकेत बताता है कि पाठ्यांक तैयार है।\n5. उसे निकालकर डिस्प्ले पर ताप पढ़ें। मात्रक सहित लिखें, जैसे 36.8 °C।\n6. नोक को फिर साबुन-पानी से धोकर सुखाएँ।\n7. अनुमति लेकर लगभग 10 मित्रों का ताप मापें और तालिका में लिखें जिसके स्तंभ हों: क्रम संख्या, नाम, ताप (°C)।\nप्रेक्षण: अधिकतर पाठ्यांक 37 °C के आसपास होते हैं, पर सब बिल्कुल बराबर नहीं (जैसे 36.6 °C, 36.9 °C, 37.1 °C)।\nनिष्कर्ष: स्वस्थ लोगों का शरीर-ताप 37 °C के आसपास होता है, पर हर व्यक्ति में थोड़ा अलग होता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Read the instruction manual of the thermometer before using it.",
+       "Wash the tip with soap and water before and after use, so germs do not pass from one person to another.",
+       "Do not dip the display (screen) part in water; only the tip may be washed.",
+       "Do not hold the thermometer by its tip while measuring, because the warmth of your fingers can affect the reading.",
+       "Wait for the beep or light signal before reading.",
+       "Always write the reading with its unit (°C or °F)."
+      ],
+      "hi": [
+       "उपयोग से पहले थर्मामीटर की निर्देश-पुस्तिका पढ़ें।",
+       "उपयोग से पहले और बाद में नोक को साबुन-पानी से धोएँ, ताकि कीटाणु एक व्यक्ति से दूसरे तक न जाएँ।",
+       "डिस्प्ले (स्क्रीन) वाले भाग को पानी में न डुबोएँ; केवल नोक धोई जा सकती है।",
+       "मापते समय थर्मामीटर को उसकी नोक से न पकड़ें, क्योंकि उँगलियों की गर्मी पाठ्यांक बदल सकती है।",
+       "पढ़ने से पहले बीप या बत्ती के संकेत की प्रतीक्षा करें।",
+       "पाठ्यांक हमेशा मात्रक (°C या °F) के साथ लिखें।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Normal body temperature: The normal temperature of the human body is taken as 37.0 °C. This number is an average worked out from the temperatures of a very large number of healthy people. So your own normal temperature may be a little higher or lower than 37.0 °C, and you are still perfectly healthy.",
+      "hi": "शरीर का सामान्य ताप: मानव शरीर का सामान्य ताप 37.0 °C माना जाता है। यह संख्या बहुत अधिक स्वस्थ लोगों के ताप का औसत है। इसलिए आपका अपना सामान्य ताप 37.0 °C से थोड़ा अधिक या कम हो सकता है, और फिर भी आप पूरी तरह स्वस्थ हो सकते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Age: small children often have a slightly higher body temperature than adults, and healthy elderly people often have a slightly lower one.",
+       "Time of day: temperature is usually a little lower in the early morning and a little higher in the late afternoon or evening.",
+       "Activity: after running or playing, body temperature rises slightly for some time.",
+       "Place of measurement: a reading taken in the armpit is usually about 0.5 °C to 1 °C lower than the actual body temperature (measured in the mouth). Armpit readings are commonly used for small children and elderly people."
+      ],
+      "hi": [
+       "आयु: छोटे बच्चों का शरीर-ताप प्रायः वयस्कों से थोड़ा अधिक होता है, और स्वस्थ बुज़ुर्गों का प्रायः थोड़ा कम।",
+       "दिन का समय: सुबह-सुबह ताप प्रायः थोड़ा कम और दोपहर बाद या शाम को थोड़ा अधिक होता है।",
+       "गतिविधि: दौड़ने या खेलने के बाद कुछ समय के लिए शरीर-ताप थोड़ा बढ़ जाता है।",
+       "मापने का स्थान: बगल (काँख) में लिया गया पाठ्यांक प्रायः वास्तविक शरीर-ताप (मुँह में मापा गया) से लगभग 0.5 °C से 1 °C कम होता है। छोटे बच्चों और बुज़ुर्गों के लिए प्रायः बगल वाला तरीका अपनाया जाता है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: The temperature of a human body normally does not go below about 35 °C or above about 42 °C. That is why a clinical thermometer only needs a range of about 35 °C to 42 °C. It cannot be used to measure ice (0 °C) or boiling water (100 °C), which are outside its range.",
+      "hi": "याद रखें: मानव शरीर का ताप सामान्यतः लगभग 35 °C से नीचे या लगभग 42 °C से ऊपर नहीं जाता। इसीलिए डॉक्टरी थर्मामीटर की परास लगभग 35 °C से 42 °C ही होती है। इससे बर्फ़ (0 °C) या उबलते पानी (100 °C) का ताप नहीं मापा जा सकता, क्योंकि ये उसकी परास से बाहर हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Lambok's temperature is 39.5 °C. How much above normal is it? Does he have fever?",
+       "hi": "लाम्बोक का ताप 39.5 °C है। यह सामान्य से कितना अधिक है? क्या उसे बुखार है?"
+      },
+      "a": {
+       "en": "Normal body temperature = 37.0 °C\nDifference = 39.5 °C - 37.0 °C = 2.5 °C\nHis temperature is 2.5 °C above normal, so yes, he has fever and should see a doctor.",
+       "hi": "सामान्य शरीर-ताप = 37.0 °C\nअंतर = 39.5 °C - 37.0 °C = 2.5 °C\nउसका ताप सामान्य से 2.5 °C अधिक है, अतः हाँ, उसे बुखार है और उसे डॉक्टर को दिखाना चाहिए।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Learning task from the book: measure your own temperature at different times of the day over a month (for example morning, afternoon, night, and after playing). Record the readings and look for patterns. Do you find small variations? What could be the reasons?",
+      "hi": "पुस्तक का एक कार्य: एक महीने तक दिन के अलग-अलग समय (जैसे सुबह, दोपहर, रात और खेलने के बाद) अपना ताप मापें। पाठ्यांक लिखें और पैटर्न देखें। क्या छोटे-छोटे अंतर मिलते हैं? उनके क्या कारण हो सकते हैं?"
+     }
+    },
+    {
+     "note": {
+      "en": "Do you know? Fever also changes the pulse rate (the number of heartbeats felt at the wrist in a minute). This link between fever and pulse was known in ancient India, and physicians felt the pulse to judge illness. But pulse rate also changes with exercise, fear, excitement and many other conditions, so pulse alone is not a reliable sign of fever. A thermometer is needed.",
+      "hi": "क्या आप जानते हैं? बुखार में नाड़ी-दर (एक मिनट में कलाई पर महसूस होने वाली धड़कनों की संख्या) भी बदलती है। बुखार और नाड़ी का यह संबंध प्राचीन भारत में ज्ञात था, और वैद्य नाड़ी देखकर रोग का अनुमान लगाते थे। परंतु नाड़ी-दर व्यायाम, डर, उत्तेजना और कई अन्य कारणों से भी बदलती है, इसलिए केवल नाड़ी बुखार का भरोसेमंद संकेत नहीं है। इसके लिए थर्मामीटर चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "Scales of temperature: Celsius, Fahrenheit and Kelvin",
+    "hi": "ताप के पैमाने: सेल्सियस, फ़ारेनहाइट और केल्विन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Just as length can be measured in centimetres or inches, temperature can be measured on different scales. Each scale is named after the scientist who developed it.",
+      "hi": "जैसे लंबाई सेंटीमीटर या इंच में मापी जा सकती है, वैसे ही ताप अलग-अलग पैमानों पर मापा जा सकता है। हर पैमाने का नाम उसे विकसित करने वाले वैज्ञानिक के नाम पर रखा गया है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Celsius scale",
+       "hi": "सेल्सियस पैमाना"
+      },
+      "text": {
+       "en": "The temperature scale most used in daily life and in school science in India. Its unit is the degree Celsius (°C). On this scale pure ice melts at 0 °C and pure water boils at 100 °C (at sea level). Normal body temperature is 37.0 °C.",
+       "hi": "भारत में दैनिक जीवन और स्कूल विज्ञान में सबसे अधिक उपयोग होने वाला ताप पैमाना। इसका मात्रक डिग्री सेल्सियस (°C) है। इस पैमाने पर शुद्ध बर्फ़ 0 °C पर पिघलती है और शुद्ध पानी (समुद्र तल पर) 100 °C पर उबलता है। सामान्य शरीर-ताप 37.0 °C है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Fahrenheit scale",
+       "hi": "फ़ारेनहाइट पैमाना"
+      },
+      "text": {
+       "en": "Another temperature scale, with unit degree Fahrenheit (°F). Normal body temperature on this scale is 98.6 °F. Some clinical thermometers still show °F, but this scale is now rarely used in science.",
+       "hi": "एक अन्य ताप पैमाना, जिसका मात्रक डिग्री फ़ारेनहाइट (°F) है। इस पैमाने पर सामान्य शरीर-ताप 98.6 °F है। कुछ डॉक्टरी थर्मामीटर अब भी °F दिखाते हैं, पर विज्ञान में यह पैमाना अब बहुत कम उपयोग होता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Kelvin scale",
+       "hi": "केल्विन पैमाना"
+      },
+      "text": {
+       "en": "The scale used in scientific work. Its unit, the kelvin (K), is the SI unit of temperature. It is written without the degree sign.",
+       "hi": "वैज्ञानिक कार्यों में उपयोग होने वाला पैमाना। इसका मात्रक केल्विन (K) ताप का SI मात्रक है। इसे डिग्री चिह्न के बिना लिखा जाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "This explains a common puzzle from the book: a friend's thermometer shows normal temperature as 98.6 and yours shows 37.0. Neither is wrong. Your thermometer uses the Celsius scale and your friend's uses the Fahrenheit scale. 37.0 °C and 98.6 °F are the same temperature written on two different scales.",
+      "hi": "इससे पुस्तक की एक आम पहेली सुलझती है: मित्र का थर्मामीटर सामान्य ताप 98.6 दिखाता है और आपका 37.0। दोनों में कोई गलत नहीं। आपका थर्मामीटर सेल्सियस पैमाना और मित्र का फ़ारेनहाइट पैमाना उपयोग करता है। 37.0 °C और 98.6 °F एक ही ताप है जो दो अलग पैमानों पर लिखा गया है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Temperature in kelvin = Temperature in °C + 273.15",
+      "hi": "केल्विन में ताप = °C में ताप + 273.15"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Convert 25 °C into kelvin.",
+       "hi": "25 °C को केल्विन में बदलिए।"
+      },
+      "a": {
+       "en": "K = °C + 273.15\nK = 25 + 273.15 = 298.15\nSo 25 °C = 298.15 K.",
+       "hi": "K = °C + 273.15\nK = 25 + 273.15 = 298.15\nअतः 25 °C = 298.15 K।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write normal body temperature (37.0 °C) in kelvin.",
+       "hi": "सामान्य शरीर-ताप (37.0 °C) को केल्विन में लिखिए।"
+      },
+      "a": {
+       "en": "K = 37.0 + 273.15 = 310.15\nSo normal body temperature = 310.15 K.",
+       "hi": "K = 37.0 + 273.15 = 310.15\nअतः सामान्य शरीर-ताप = 310.15 K।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A temperature is 300 K. What is it in °C?",
+       "hi": "कोई ताप 300 K है। °C में यह कितना है?"
+      },
+      "a": {
+       "en": "°C = K - 273.15\n°C = 300 - 273.15 = 26.85\nSo 300 K is about 26.85 °C (roughly room temperature).",
+       "hi": "°C = K - 273.15\n°C = 300 - 273.15 = 26.85\nअतः 300 K लगभग 26.85 °C है (लगभग कमरे का ताप)।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Extra (for understanding, beyond the book): Celsius and Fahrenheit are linked by °F = (9/5 × °C) + 32. Check: (9/5 × 37) + 32 = 66.6 + 32 = 98.6 °F. Also 0 °C = 32 °F and 100 °C = 212 °F.",
+      "hi": "अतिरिक्त (समझने के लिए, पुस्तक से आगे): सेल्सियस और फ़ारेनहाइट का संबंध °F = (9/5 × °C) + 32 है। जाँच: (9/5 × 37) + 32 = 66.6 + 32 = 98.6 °F। साथ ही 0 °C = 32 °F और 100 °C = 212 °F।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "What",
+        "Celsius",
+        "Fahrenheit",
+        "Kelvin"
+       ],
+       "hi": [
+        "क्या",
+        "सेल्सियस",
+        "फ़ारेनहाइट",
+        "केल्विन"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Ice melts",
+         "0 °C",
+         "32 °F",
+         "273.15 K"
+        ],
+        [
+         "Normal body temperature",
+         "37.0 °C",
+         "98.6 °F",
+         "310.15 K"
+        ],
+        [
+         "Water boils (sea level)",
+         "100 °C",
+         "212 °F",
+         "373.15 K"
+        ]
+       ],
+       "hi": [
+        [
+         "बर्फ़ पिघलती है",
+         "0 °C",
+         "32 °F",
+         "273.15 K"
+        ],
+        [
+         "सामान्य शरीर-ताप",
+         "37.0 °C",
+         "98.6 °F",
+         "310.15 K"
+        ],
+        [
+         "पानी उबलता है (समुद्र तल)",
+         "100 °C",
+         "212 °F",
+         "373.15 K"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Rules for writing temperature (the book gives these conventions):",
+      "hi": "ताप लिखने के नियम (पुस्तक ये परंपराएँ बताती है):"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "The names of the scales begin with a capital letter: Celsius, Fahrenheit, Kelvin.",
+       "In the full name of the unit, 'degree' is written in small letters but Celsius/Fahrenheit keep their capital: degree Celsius, degree Fahrenheit.",
+       "The unit of the Kelvin scale, kelvin, is written in small letters when written in full.",
+       "The symbols are written with capital letters: °C, °F and K. There is no degree sign with K (write 300 K, not 300 °K).",
+       "Do not put a full stop after the symbol unless it is the end of a sentence.",
+       "Leave a space between the number and the unit: write 30 °C, not 30°C.",
+       "When written in full for more than one degree, use the plural: 20 degrees Celsius (symbol form: 20 °C)."
+      ],
+      "hi": [
+       "पैमानों के नाम बड़े अक्षर (capital letter) से शुरू होते हैं: Celsius, Fahrenheit, Kelvin।",
+       "मात्रक के पूरे नाम में 'degree' छोटे अक्षरों में लिखा जाता है पर Celsius/Fahrenheit बड़े अक्षर से: degree Celsius, degree Fahrenheit।",
+       "केल्विन पैमाने का मात्रक kelvin पूरा लिखते समय छोटे अक्षरों में लिखा जाता है।",
+       "चिह्न बड़े अक्षरों में लिखे जाते हैं: °C, °F और K। K के साथ डिग्री चिह्न नहीं लगता (300 K लिखें, 300 °K नहीं)।",
+       "चिह्न के बाद पूर्ण विराम (full stop) न लगाएँ, जब तक वाक्य वहीं समाप्त न हो।",
+       "संख्या और मात्रक के बीच जगह छोड़ें: 30 °C लिखें, 30°C नहीं।",
+       "एक से अधिक डिग्री को पूरे शब्दों में लिखते समय बहुवचन लें: 20 degrees Celsius (चिह्न रूप: 20 °C)।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "More to know: There is no upper limit to temperature; the core of the Sun is about 15 million °C. But there is a lowest possible temperature, about -273.15 °C, which is 0 K. It is called absolute zero.",
+      "hi": "और जानें: ताप की कोई ऊपरी सीमा नहीं है; सूर्य के केंद्र का ताप लगभग 1.5 करोड़ (15 million) °C है। परंतु एक न्यूनतम संभव ताप है, लगभग -273.15 °C, जो 0 K है। इसे परम शून्य (absolute zero) कहते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3.2 Laboratory Thermometer",
+    "hi": "7.3.2 प्रयोगशाला थर्मामीटर"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A clinical thermometer cannot measure the temperature of boiling water or ice. For such purposes we use a laboratory thermometer.",
+      "hi": "डॉक्टरी थर्मामीटर उबलते पानी या बर्फ़ का ताप नहीं माप सकता। ऐसे कामों के लिए हम प्रयोगशाला थर्मामीटर का उपयोग करते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Laboratory thermometer",
+       "hi": "प्रयोगशाला थर्मामीटर"
+      },
+      "text": {
+       "en": "A thermometer used in laboratories to measure temperatures of things other than the human body, such as water and other liquids. A typical one measures from -10 °C to 110 °C.",
+       "hi": "प्रयोगशाला में मानव शरीर के अलावा अन्य वस्तुओं, जैसे पानी और अन्य द्रवों, का ताप मापने वाला थर्मामीटर। एक सामान्य प्रयोगशाला थर्मामीटर -10 °C से 110 °C तक मापता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Structure (figure described in words): It is a long, narrow glass tube of uniform thickness, sealed at both ends. At the lower end is a bulb filled with a liquid. The liquid is either mercury (silvery, uncoloured) or alcohol coloured red so that it can be seen easily. A thin column of the liquid rises from the bulb into the tube. A Celsius scale is marked along the tube. When the bulb becomes warmer, the liquid expands and the column rises; when it cools, the liquid contracts and the column falls. The temperature is read where the top of the liquid column meets the scale.",
+      "hi": "बनावट (चित्र का शब्दों में वर्णन): यह एक लंबी, पतली, एक-समान मोटाई वाली काँच की नली है जो दोनों सिरों से बंद (सील) होती है। निचले सिरे पर एक बल्ब होता है जिसमें द्रव भरा होता है। यह द्रव पारा (चाँदी जैसा, बिना रंग) या लाल रंग मिला ऐल्कोहॉल होता है ताकि आसानी से दिखे। बल्ब से द्रव का एक पतला स्तंभ नली में ऊपर जाता है। नली पर सेल्सियस पैमाना अंकित होता है। बल्ब गर्म होने पर द्रव फैलता है और स्तंभ ऊपर चढ़ता है; ठंडा होने पर द्रव सिकुड़ता है और स्तंभ नीचे आता है। जहाँ द्रव-स्तंभ का ऊपरी सिरा पैमाने से मिलता है, वहाँ का पाठ्यांक ताप होता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Handle it with care; it is made of glass and can break easily.",
+       "Do not hold it by the bulb, or the heat of your hand will change the reading. Hold it by the top part of the stem.",
+       "A laboratory thermometer is not used to measure body temperature."
+      ],
+      "hi": [
+       "इसे सावधानी से पकड़ें; यह काँच का है और आसानी से टूट सकता है।",
+       "इसे बल्ब से न पकड़ें, वरना हाथ की गर्मी से पाठ्यांक बदल जाएगा। इसे नली के ऊपरी भाग से पकड़ें।",
+       "प्रयोगशाला थर्मामीटर से शरीर का ताप नहीं मापा जाता।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Range of a thermometer",
+       "hi": "थर्मामीटर की परास"
+      },
+      "text": {
+       "en": "The span between the lowest and the highest temperature a thermometer can measure. For a typical laboratory thermometer the range is -10 °C to 110 °C.",
+       "hi": "थर्मामीटर द्वारा मापे जा सकने वाले न्यूनतम और अधिकतम ताप के बीच का विस्तार। सामान्य प्रयोगशाला थर्मामीटर की परास -10 °C से 110 °C है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 7.3 (Let us observe): Find the range of your laboratory thermometer",
+       "hi": "क्रियाकलाप 7.3 (आइए अवलोकन करें): अपने प्रयोगशाला थर्मामीटर की परास ज्ञात कीजिए"
+      },
+      "a": {
+       "en": "Method: Look carefully at the scale. Note the lowest temperature marked (near the bulb) and the highest temperature marked (near the top).\nObservation: For a typical thermometer the lowest mark is -10 °C and the highest is 110 °C.\nConclusion: Its range is -10 °C to 110 °C. It cannot measure temperatures outside this range.",
+       "hi": "विधि: पैमाने को ध्यान से देखें। सबसे कम अंकित ताप (बल्ब के पास) और सबसे अधिक अंकित ताप (ऊपर के पास) नोट करें।\nप्रेक्षण: सामान्य थर्मामीटर पर सबसे कम चिह्न -10 °C और सबसे अधिक 110 °C होता है।\nनिष्कर्ष: इसकी परास -10 °C से 110 °C है। यह इस परास से बाहर के ताप नहीं माप सकता।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Smallest value (least count)",
+       "hi": "सबसे छोटा मान (अल्पतमांक)"
+      },
+      "text": {
+       "en": "The smallest temperature difference a thermometer can show, i.e., the value of one small division on its scale.",
+       "hi": "वह सबसे छोटा ताप-अंतर जो थर्मामीटर दिखा सकता है, अर्थात उसके पैमाने के एक छोटे खाने (भाग) का मान।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Value of one small division = (difference between two numbered marks) ÷ (number of small divisions between them)",
+      "hi": "एक छोटे भाग का मान = (दो अंकित चिह्नों के बीच का अंतर) ÷ (उनके बीच छोटे भागों की संख्या)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 7.4 (Let us observe and calculate): On a thermometer, the big marks 10 °C and 20 °C have 10 small divisions between them. What is the smallest value it can measure?",
+       "hi": "क्रियाकलाप 7.4 (आइए देखें और गणना करें): किसी थर्मामीटर पर बड़े चिह्न 10 °C और 20 °C के बीच 10 छोटे भाग हैं। यह सबसे छोटा कितना मान माप सकता है?"
+      },
+      "a": {
+       "en": "Difference between the two marks = 20 °C - 10 °C = 10 °C\nNumber of small divisions = 10\nValue of one division = 10 °C ÷ 10 = 1 °C\nSo this thermometer can measure up to 1 °C. Check your own thermometer too, because ranges and divisions differ between thermometers.",
+       "hi": "दोनों चिह्नों का अंतर = 20 °C - 10 °C = 10 °C\nछोटे भागों की संख्या = 10\nएक भाग का मान = 10 °C ÷ 10 = 1 °C\nअतः यह थर्मामीटर 1 °C तक माप सकता है। अपना थर्मामीटर भी जाँचें, क्योंकि अलग थर्मामीटरों की परास और भाग अलग होते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Between 10 °C and 20 °C a thermometer has 20 small divisions. What is the value of one division? Can it show 22.5 °C?",
+       "hi": "किसी थर्मामीटर पर 10 °C और 20 °C के बीच 20 छोटे भाग हैं। एक भाग का मान क्या है? क्या यह 22.5 °C दिखा सकता है?"
+      },
+      "a": {
+       "en": "Value of one division = (20 - 10) °C ÷ 20 = 10 ÷ 20 = 0.5 °C\nSince 22.5 is a multiple of 0.5 (22.5 = 45 × 0.5), yes, it can show 22.5 °C (if 22.5 °C is within its range).",
+       "hi": "एक भाग का मान = (20 - 10) °C ÷ 20 = 10 ÷ 20 = 0.5 °C\nचूँकि 22.5, 0.5 का गुणज है (22.5 = 45 × 0.5), हाँ, यह 22.5 °C दिखा सकता है (यदि 22.5 °C इसकी परास में हो)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Reading a thermometer: The liquid top is 7 small divisions above the 20 °C mark, and each division is 1 °C. What is the reading?",
+       "hi": "थर्मामीटर पढ़ना: द्रव का ऊपरी सिरा 20 °C के चिह्न से 7 छोटे भाग ऊपर है, और हर भाग 1 °C का है। पाठ्यांक क्या है?"
+      },
+      "a": {
+       "en": "Reading = 20 °C + 7 × 1 °C = 27 °C",
+       "hi": "पाठ्यांक = 20 °C + 7 × 1 °C = 27 °C"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Correct way to measure with a laboratory thermometer (figure described): The book shows a thermometer dipped in a beaker of water. In the correct picture, the thermometer is held upright, the bulb is fully under water and is not touching the bottom or sides of the beaker, and the student's eye is level with the top of the liquid column. Wrong pictures show the thermometer tilted, the bulb resting on the bottom, or the eye looking from above or below.",
+      "hi": "प्रयोगशाला थर्मामीटर से मापने का सही तरीका (चित्र का वर्णन): पुस्तक में पानी भरे बीकर में डूबा थर्मामीटर दिखाया गया है। सही चित्र में थर्मामीटर सीधा खड़ा है, बल्ब पूरा पानी में डूबा है और बीकर की तली या दीवारों को नहीं छू रहा, और विद्यार्थी की आँख द्रव-स्तंभ के ऊपरी सिरे की सीध में है। गलत चित्रों में थर्मामीटर तिरछा है, बल्ब तली पर टिका है, या आँख ऊपर या नीचे से देख रही है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Keep the thermometer upright (vertical), not tilted.",
+       "The bulb must be fully surrounded by the liquid, but must not touch the bottom or the sides of the container.",
+       "Wait until the liquid column stops moving before reading.",
+       "Read the temperature while the bulb is still in the liquid.",
+       "Keep your eye level with the top of the liquid column (looking from above or below gives a wrong reading)."
+      ],
+      "hi": [
+       "थर्मामीटर को सीधा (ऊर्ध्वाधर) रखें, तिरछा नहीं।",
+       "बल्ब पूरी तरह द्रव से घिरा हो, पर बर्तन की तली या दीवारों को न छुए।",
+       "पढ़ने से पहले द्रव-स्तंभ के रुकने तक प्रतीक्षा करें।",
+       "बल्ब के द्रव में रहते हुए ही ताप पढ़ें।",
+       "आँख द्रव-स्तंभ के ऊपरी सिरे की सीध में रखें (ऊपर या नीचे से देखने पर पाठ्यांक गलत आता है)।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 7.5 (Let us measure): Measuring the temperature of warm water",
+       "hi": "क्रियाकलाप 7.5 (आइए मापें): गुनगुने पानी का ताप मापना"
+      },
+      "a": {
+       "en": "Materials: A beaker, warm water, a laboratory thermometer, a stand or holder (optional).\nMethod: Pour warm water into the beaker. Dip the thermometer so that its bulb is completely under water and not touching the bottom or sides. Hold it upright. Watch the liquid column rise. When it stops rising, read the temperature with your eye level with the top of the column. Do not wait too long, because the water itself slowly cools. Then take the thermometer out and watch the column.\nObservation: As soon as the thermometer is taken out, the column begins to fall.\nConclusion: A laboratory thermometer must be read while its bulb is still in the liquid. (Unlike some old clinical thermometers, it has no kink to hold the reading.)",
+       "hi": "सामग्री: बीकर, गुनगुना पानी, प्रयोगशाला थर्मामीटर, स्टैंड या होल्डर (वैकल्पिक)।\nविधि: बीकर में गुनगुना पानी डालें। थर्मामीटर ऐसे डुबोएँ कि बल्ब पूरा पानी में हो और तली या दीवारों को न छुए। उसे सीधा पकड़ें। द्रव-स्तंभ को चढ़ते देखें। जब वह चढ़ना बंद कर दे, तो आँख स्तंभ के ऊपरी सिरे की सीध में रखकर ताप पढ़ें। बहुत देर न करें, क्योंकि पानी स्वयं धीरे-धीरे ठंडा होता है। फिर थर्मामीटर निकालें और स्तंभ देखें।\nप्रेक्षण: थर्मामीटर निकालते ही स्तंभ नीचे गिरने लगता है।\nनिष्कर्ष: प्रयोगशाला थर्मामीटर को तब पढ़ना चाहिए जब उसका बल्ब द्रव में ही हो। (कुछ पुराने डॉक्टरी थर्मामीटरों के विपरीत, इसमें पाठ्यांक रोकने वाला मोड़ (kink) नहीं होता।)"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Why can't a laboratory thermometer be used for body temperature? (1) Its column falls as soon as it is removed, so you cannot take it out of the mouth and then read it. (2) Its smallest division is usually 1 °C, which is too rough; body temperature must be known to about 0.1 °C. (3) It is long, fragile glass, unsafe to keep in the mouth or armpit.",
+      "hi": "प्रयोगशाला थर्मामीटर से शरीर का ताप क्यों नहीं मापते? (1) निकालते ही इसका स्तंभ गिर जाता है, इसलिए इसे मुँह से निकालकर पढ़ा नहीं जा सकता। (2) इसका सबसे छोटा भाग प्रायः 1 °C होता है, जो बहुत मोटा है; शरीर का ताप लगभग 0.1 °C तक जानना होता है। (3) यह लंबा, नाज़ुक काँच का होता है, मुँह या बगल में रखना असुरक्षित है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "Temperatures of melting ice and boiling water (Activity 7.6)",
+    "hi": "पिघलती बर्फ़ और उबलते पानी का ताप (क्रियाकलाप 7.6)"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 7.6 (Let us compare): What are the temperatures of melting ice and boiling water? (To be done only by the teacher as a demonstration.)",
+       "hi": "क्रियाकलाप 7.6 (आइए तुलना करें): पिघलती बर्फ़ और उबलते पानी का ताप कितना है? (केवल शिक्षक द्वारा प्रदर्शन के रूप में।)"
+      },
+      "a": {
+       "en": "Materials: Two beakers, crushed ice, water, two laboratory thermometers, a burner with stand and wire gauze, clamps.\nMethod: Put crushed ice in one beaker and dip a thermometer in it. Heat water in the other beaker until it boils, and dip the second thermometer in it (held by a clamp, bulb not touching the beaker). Students note the readings every few minutes from a safe distance.\nObservation: The thermometer in melting ice shows about 0 °C and stays there as long as ice is melting. The thermometer in boiling water rises and then stays steady while the water keeps boiling, even though the burner keeps giving heat.\nConclusion: While ice is melting, its temperature stays constant; while water is boiling, its temperature also stays constant.\nSafety: Students must not touch the setup. Boiling water and flames can cause burns.",
+       "hi": "सामग्री: दो बीकर, कुटी हुई बर्फ़, पानी, दो प्रयोगशाला थर्मामीटर, स्टैंड और तार की जाली सहित बर्नर, क्लैंप।\nविधि: एक बीकर में कुटी बर्फ़ रखकर उसमें थर्मामीटर डुबोएँ। दूसरे बीकर में पानी उबलने तक गर्म करें और उसमें दूसरा थर्मामीटर (क्लैंप से पकड़ा हुआ, बल्ब बीकर को न छुए) डुबोएँ। विद्यार्थी सुरक्षित दूरी से हर कुछ मिनट पर पाठ्यांक लिखते हैं।\nप्रेक्षण: पिघलती बर्फ़ वाला थर्मामीटर लगभग 0 °C दिखाता है और जब तक बर्फ़ पिघल रही है वहीं रहता है। उबलते पानी वाला थर्मामीटर चढ़ता है और फिर पानी उबलते रहने तक स्थिर रहता है, जबकि बर्नर लगातार ऊष्मा दे रहा है।\nनिष्कर्ष: बर्फ़ पिघलते समय उसका ताप स्थिर रहता है; पानी उबलते समय भी उसका ताप स्थिर रहता है।\nसुरक्षा: विद्यार्थी उपकरण को न छुएँ। उबलता पानी और लौ जला सकते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "In the book, five students in Shillong (Phiban, Shemphang, Onestar, Kloi and Bandarisha) each read the thermometer in the boiling water. Their readings were slightly different.",
+      "hi": "पुस्तक में शिलॉन्ग के पाँच विद्यार्थियों (फिबान, शेमफांग, वनस्टार, क्लोई और बंदारिशा) ने उबलते पानी वाले थर्मामीटर को पढ़ा। उनके पाठ्यांक थोड़े अलग थे।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Student",
+        "Temperature of boiling water (°C)"
+       ],
+       "hi": [
+        "विद्यार्थी",
+        "उबलते पानी का ताप (°C)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Phiban",
+         "97.8"
+        ],
+        [
+         "Shemphang",
+         "98.0"
+        ],
+        [
+         "Onestar",
+         "97.9"
+        ],
+        [
+         "Kloi",
+         "98.0"
+        ],
+        [
+         "Bandarisha",
+         "98.1"
+        ]
+       ],
+       "hi": [
+        [
+         "फिबान",
+         "97.8"
+        ],
+        [
+         "शेमफांग",
+         "98.0"
+        ],
+        [
+         "वनस्टार",
+         "97.9"
+        ],
+        [
+         "क्लोई",
+         "98.0"
+        ],
+        [
+         "बंदारिशा",
+         "98.1"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the average of the five readings. Why might the readings differ?",
+       "hi": "पाँचों पाठ्यांकों का औसत निकालिए। पाठ्यांक अलग क्यों हो सकते हैं?"
+      },
+      "a": {
+       "en": "Sum = 97.8 + 98.0 + 97.9 + 98.0 + 98.1 = 489.8\nAverage = 489.8 ÷ 5 = 97.96, which is about 98.0 °C\nWhy different: some students may not have kept their eye level with the column, may have read at slightly different moments, or may have misjudged a small division. Small reading errors are normal; that is why scientists repeat measurements and take an average.",
+       "hi": "योग = 97.8 + 98.0 + 97.9 + 98.0 + 98.1 = 489.8\nऔसत = 489.8 ÷ 5 = 97.96, यानी लगभग 98.0 °C\nअंतर क्यों: किसी ने आँख स्तंभ की सीध में न रखी हो, किसी ने थोड़ा अलग समय पर पढ़ा हो, या छोटे भाग का अनुमान गलत लगाया हो। छोटी-मोटी पाठ्यांक त्रुटियाँ सामान्य हैं; इसीलिए वैज्ञानिक माप दोहराते हैं और औसत लेते हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Why about 98 °C and not 100 °C? Water boils at 100 °C at sea level (as in Mumbai or Chennai). Shillong is high up in the hills, where the air pressure is lower, so water there boils at a slightly lower temperature, about 98 °C. (This explanation goes slightly beyond the book.)",
+      "hi": "100 °C की जगह लगभग 98 °C क्यों? समुद्र तल पर (जैसे मुंबई या चेन्नई में) पानी 100 °C पर उबलता है। शिलॉन्ग पहाड़ों पर ऊँचाई पर है, जहाँ वायु-दाब कम होता है, इसलिए वहाँ पानी थोड़े कम ताप, लगभग 98 °C, पर उबलता है। (यह व्याख्या पुस्तक से थोड़ी आगे की है।)"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3.3 Air Temperature",
+    "hi": "7.3.3 वायु का ताप"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Thermometers are also used to find how hot or cold the air around us is. Room thermometers hung on walls in laboratories, clinics and hospitals give the approximate temperature of the room.",
+      "hi": "थर्मामीटर से यह भी पता किया जाता है कि हमारे आसपास की वायु कितनी गर्म या ठंडी है। प्रयोगशालाओं, क्लिनिकों और अस्पतालों में दीवार पर टँगे कमरे के थर्मामीटर कमरे का लगभग ताप बताते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Weather reports in newspapers, on television and on mobile apps give the maximum (highest) and minimum (lowest) air temperature of a place for the day. The maximum usually occurs in the afternoon and the minimum usually in the early morning. Air temperature is measured at weather stations all over the world and is used to forecast the weather.",
+      "hi": "समाचार-पत्रों, टेलीविज़न और मोबाइल ऐप की मौसम रिपोर्ट किसी स्थान के उस दिन के अधिकतम (सबसे अधिक) और न्यूनतम (सबसे कम) वायु-ताप बताती हैं। अधिकतम ताप प्रायः दोपहर में और न्यूनतम प्रायः सुबह-सुबह होता है। वायु का ताप पूरी दुनिया के मौसम केंद्रों (weather stations) पर मापा जाता है और मौसम का पूर्वानुमान लगाने में इसका उपयोग होता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 7.7 (Let us analyse): Record and study daily maximum and minimum temperatures",
+       "hi": "क्रियाकलाप 7.7 (आइए विश्लेषण करें): प्रतिदिन के अधिकतम और न्यूनतम ताप लिखें और अध्ययन करें"
+      },
+      "a": {
+       "en": "Method: From a newspaper, TV or the internet, note the maximum and minimum temperatures of your town for 10 days in a row. Make a table with columns: S. no., Date, Maximum temperature (°C), Minimum temperature (°C).\nObservation: The temperatures are different from day to day. If you do this in different months, you notice that temperatures generally rise as summer comes and fall as winter comes.\nConclusion: Air temperature changes daily and with the seasons.",
+       "hi": "विधि: समाचार-पत्र, टीवी या इंटरनेट से अपने शहर का लगातार 10 दिनों का अधिकतम और न्यूनतम ताप नोट करें। तालिका बनाएँ जिसके स्तंभ हों: क्रम संख्या, दिनांक, अधिकतम ताप (°C), न्यूनतम ताप (°C)।\nप्रेक्षण: ताप हर दिन अलग होता है। अलग-अलग महीनों में यह करें तो दिखता है कि गर्मी आने पर ताप प्रायः बढ़ता है और सर्दी आने पर घटता है।\nनिष्कर्ष: वायु का ताप प्रतिदिन और ऋतुओं के साथ बदलता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Day",
+        "Maximum (°C)",
+        "Minimum (°C)"
+       ],
+       "hi": [
+        "दिन",
+        "अधिकतम (°C)",
+        "न्यूनतम (°C)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1",
+         "41",
+         "27"
+        ],
+        [
+         "2",
+         "43",
+         "29"
+        ],
+        [
+         "3",
+         "42",
+         "28"
+        ],
+        [
+         "4",
+         "40",
+         "26"
+        ],
+        [
+         "5",
+         "42",
+         "28"
+        ]
+       ],
+       "hi": [
+        [
+         "1",
+         "41",
+         "27"
+        ],
+        [
+         "2",
+         "43",
+         "29"
+        ],
+        [
+         "3",
+         "42",
+         "28"
+        ],
+        [
+         "4",
+         "40",
+         "26"
+        ],
+        [
+         "5",
+         "42",
+         "28"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "The table above shows a sample five-day summer record of a city like Nagpur. Find (a) the hottest day, (b) the average maximum and average minimum temperatures, (c) the difference between maximum and minimum on Day 2.",
+       "hi": "ऊपर की तालिका नागपुर जैसे किसी शहर का गर्मियों का पाँच दिन का नमूना रिकॉर्ड है। ज्ञात कीजिए (क) सबसे गर्म दिन, (ख) औसत अधिकतम और औसत न्यूनतम ताप, (ग) दिन 2 पर अधिकतम और न्यूनतम का अंतर।"
+      },
+      "a": {
+       "en": "(a) Day 2, with a maximum of 43 °C.\n(b) Average maximum = (41 + 43 + 42 + 40 + 42) ÷ 5 = 208 ÷ 5 = 41.6 °C\nAverage minimum = (27 + 29 + 28 + 26 + 28) ÷ 5 = 138 ÷ 5 = 27.6 °C\n(c) 43 °C - 29 °C = 14 °C",
+       "hi": "(क) दिन 2, अधिकतम 43 °C।\n(ख) औसत अधिकतम = (41 + 43 + 42 + 40 + 42) ÷ 5 = 208 ÷ 5 = 41.6 °C\nऔसत न्यूनतम = (27 + 29 + 28 + 26 + 28) ÷ 5 = 138 ÷ 5 = 27.6 °C\n(ग) 43 °C - 29 °C = 14 °C"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "More to know: Anna Mani (1918-2001) is called the 'Weather Woman of India'. She worked at the India Meteorological Department and designed and built many instruments for measuring weather (such as temperature, wind and sunlight). Her work helped India make its own instruments instead of importing them. She also studied solar energy and wind energy.",
+      "hi": "और जानें: अन्ना मणि (1918-2001) को 'भारत की मौसम महिला' (Weather Woman of India) कहा जाता है। उन्होंने भारत मौसम विज्ञान विभाग में काम किया और मौसम (जैसे ताप, हवा और धूप) मापने के कई उपकरण डिज़ाइन किए और बनाए। उनके काम से भारत विदेश से मँगाने की जगह अपने उपकरण बनाने लगा। उन्होंने सौर ऊर्जा और पवन ऊर्जा पर भी शोध किया।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "Learning further: projects from the chapter",
+    "hi": "आगे सीखें: अध्याय की परियोजनाएँ"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Find out how the body temperatures of animals such as cats, dogs, cows, buffaloes, horses and camels are measured, and what their normal temperatures are. You may visit a veterinary doctor with an adult.",
+       "Find the hottest and the coldest places in India and the highest and lowest temperatures recorded there.",
+       "Make a table of the planets in order of distance from the Sun with their average temperatures. Check whether temperature always decreases with distance; Venus is an exception because its thick atmosphere traps heat, making it hotter than Mercury.",
+       "Room thermometer project: Place a laboratory thermometer in a beaker of water next to a room thermometer. Read both three times a day (first period, lunch break, last period) for two weeks. Compare the readings of the water and the air and draw conclusions."
+      ],
+      "hi": [
+       "पता करें कि बिल्ली, कुत्ता, गाय, भैंस, घोड़ा और ऊँट जैसे जानवरों का शरीर-ताप कैसे मापा जाता है और उनका सामान्य ताप क्या है। किसी बड़े के साथ पशु-चिकित्सक के पास जा सकते हैं।",
+       "भारत के सबसे गर्म और सबसे ठंडे स्थान तथा वहाँ दर्ज हुए अधिकतम और न्यूनतम ताप पता करें।",
+       "सूर्य से दूरी के क्रम में ग्रहों की तालिका उनके औसत ताप सहित बनाएँ। जाँचें कि क्या दूरी बढ़ने पर ताप हमेशा घटता है; शुक्र (Venus) अपवाद है क्योंकि उसका घना वायुमंडल ऊष्मा रोक लेता है, जिससे वह बुध से भी अधिक गर्म है।",
+       "कमरे के थर्मामीटर की परियोजना: पानी भरे बीकर में एक प्रयोगशाला थर्मामीटर रखें और उसके पास कमरे का थर्मामीटर। दो सप्ताह तक दिन में तीन बार (पहला पीरियड, लंच, अंतिम पीरियड) दोनों पढ़ें। पानी और वायु के पाठ्यांकों की तुलना करें और निष्कर्ष निकालें।"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Judging fever only by touching the forehead. Touch is unreliable; always confirm with a thermometer.",
+   "Writing a temperature without its unit, like '37'. Always write 37 °C or 98.6 °F.",
+   "Writing 300 °K. The kelvin has no degree sign; write 300 K.",
+   "Writing 30°C with no space. The correct form is 30 °C.",
+   "Thinking 37.0 °C is everyone's exact temperature. It is an average; healthy people vary slightly.",
+   "Holding a laboratory thermometer by the bulb, or letting the bulb touch the bottom of the beaker. Hold it by the top and keep the bulb free in the liquid.",
+   "Taking the laboratory thermometer out of the liquid before reading. Its column falls at once, so read it while it is in the liquid.",
+   "Reading the scale with the eye above or below the top of the column. Keep the eye level with it.",
+   "Assuming each small division is always 1 °C. Calculate it: difference between numbered marks ÷ number of divisions.",
+   "Saying a fever of 101 is in °C. 101 °C is impossible for a living human; it must be 101 °F (about 38.3 °C)."
+  ],
+  "hi": [
+   "केवल माथा छूकर बुखार तय करना। स्पर्श भरोसेमंद नहीं; हमेशा थर्मामीटर से पक्का करें।",
+   "ताप बिना मात्रक के लिखना, जैसे '37'। हमेशा 37 °C या 98.6 °F लिखें।",
+   "300 °K लिखना। केल्विन के साथ डिग्री चिह्न नहीं लगता; 300 K लिखें।",
+   "बिना जगह छोड़े 30°C लिखना। सही रूप 30 °C है।",
+   "यह सोचना कि 37.0 °C हर किसी का ठीक-ठीक ताप है। यह औसत है; स्वस्थ लोगों में थोड़ा अंतर होता है।",
+   "प्रयोगशाला थर्मामीटर को बल्ब से पकड़ना, या बल्ब को बीकर की तली से छूने देना। ऊपर से पकड़ें और बल्ब को द्रव में खुला रखें।",
+   "पढ़ने से पहले प्रयोगशाला थर्मामीटर को द्रव से निकाल लेना। इसका स्तंभ तुरंत गिरता है, इसलिए द्रव में रहते हुए पढ़ें।",
+   "आँख को स्तंभ के ऊपरी सिरे से ऊपर या नीचे रखकर पढ़ना। आँख उसकी सीध में रखें।",
+   "यह मान लेना कि हर छोटा भाग हमेशा 1 °C का होता है। गणना करें: अंकित चिह्नों का अंतर ÷ भागों की संख्या।",
+   "101 के बुखार को °C में मानना। जीवित मनुष्य के लिए 101 °C असंभव है; यह 101 °F (लगभग 38.3 °C) होगा।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Temperature",
+    "hi": "ताप"
+   },
+   "d": {
+    "en": "A reliable measure of how hot or cold a body is.",
+    "hi": "किसी वस्तु के गर्म या ठंडे होने की भरोसेमंद माप।"
+   }
+  },
+  {
+   "t": {
+    "en": "Thermometer",
+    "hi": "थर्मामीटर (तापमापी)"
+   },
+   "d": {
+    "en": "A device used to measure temperature.",
+    "hi": "ताप मापने की युक्ति।"
+   }
+  },
+  {
+   "t": {
+    "en": "Clinical thermometer",
+    "hi": "डॉक्टरी थर्मामीटर"
+   },
+   "d": {
+    "en": "A thermometer for measuring human body temperature; range about 35 °C to 42 °C; usually digital.",
+    "hi": "मानव शरीर का ताप मापने वाला थर्मामीटर; परास लगभग 35 °C से 42 °C; प्रायः डिजिटल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Digital thermometer",
+    "hi": "डिजिटल थर्मामीटर"
+   },
+   "d": {
+    "en": "A battery-operated thermometer with a heat sensor that shows temperature as numbers on a screen.",
+    "hi": "बैटरी से चलने वाला, ताप-संवेदक वाला थर्मामीटर जो स्क्रीन पर अंकों में ताप दिखाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Infrared (non-contact) thermometer",
+    "hi": "इन्फ्रारेड (बिना छुए) थर्मामीटर"
+   },
+   "d": {
+    "en": "A thermometer that measures body temperature from a short distance without touching.",
+    "hi": "थोड़ी दूरी से बिना छुए शरीर का ताप मापने वाला थर्मामीटर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Laboratory thermometer",
+    "hi": "प्रयोगशाला थर्मामीटर"
+   },
+   "d": {
+    "en": "A glass thermometer with a liquid-filled bulb, used to measure temperatures of liquids and other things; range about -10 °C to 110 °C.",
+    "hi": "द्रव भरे बल्ब वाला काँच का थर्मामीटर, जो द्रवों और अन्य वस्तुओं का ताप मापता है; परास लगभग -10 °C से 110 °C।"
+   }
+  },
+  {
+   "t": {
+    "en": "Room thermometer",
+    "hi": "कमरे का थर्मामीटर"
+   },
+   "d": {
+    "en": "A thermometer kept in a room to show its approximate air temperature.",
+    "hi": "कमरे में रखा थर्मामीटर जो वहाँ की वायु का लगभग ताप दिखाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Range",
+    "hi": "परास"
+   },
+   "d": {
+    "en": "The span from the lowest to the highest temperature a thermometer can measure.",
+    "hi": "थर्मामीटर द्वारा मापे जा सकने वाले न्यूनतम से अधिकतम ताप तक का विस्तार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Smallest division (least count)",
+    "hi": "सबसे छोटा भाग (अल्पतमांक)"
+   },
+   "d": {
+    "en": "The value of one small division on the scale; the smallest temperature change the thermometer can show.",
+    "hi": "पैमाने के एक छोटे भाग का मान; सबसे छोटा ताप-परिवर्तन जो थर्मामीटर दिखा सकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Celsius scale / degree Celsius (°C)",
+    "hi": "सेल्सियस पैमाना / डिग्री सेल्सियस (°C)"
+   },
+   "d": {
+    "en": "Temperature scale in which ice melts at 0 °C and water boils at 100 °C; commonly used in daily life.",
+    "hi": "वह ताप पैमाना जिसमें बर्फ़ 0 °C पर पिघलती और पानी 100 °C पर उबलता है; दैनिक जीवन में आम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Fahrenheit scale / degree Fahrenheit (°F)",
+    "hi": "फ़ारेनहाइट पैमाना / डिग्री फ़ारेनहाइट (°F)"
+   },
+   "d": {
+    "en": "A temperature scale on which normal body temperature is 98.6 °F.",
+    "hi": "वह ताप पैमाना जिस पर सामान्य शरीर-ताप 98.6 °F है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Kelvin scale / kelvin (K)",
+    "hi": "केल्विन पैमाना / केल्विन (K)"
+   },
+   "d": {
+    "en": "The scale used in science; kelvin is the SI unit of temperature. K = °C + 273.15.",
+    "hi": "विज्ञान में उपयोग होने वाला पैमाना; केल्विन ताप का SI मात्रक है। K = °C + 273.15।"
+   }
+  },
+  {
+   "t": {
+    "en": "SI unit",
+    "hi": "SI मात्रक"
+   },
+   "d": {
+    "en": "The internationally agreed standard unit of a quantity; for temperature it is the kelvin.",
+    "hi": "किसी राशि का अंतरराष्ट्रीय स्तर पर मान्य मानक मात्रक; ताप के लिए केल्विन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Normal body temperature",
+    "hi": "सामान्य शरीर-ताप"
+   },
+   "d": {
+    "en": "The average temperature of a healthy human body: 37.0 °C or 98.6 °F.",
+    "hi": "स्वस्थ मानव शरीर का औसत ताप: 37.0 °C या 98.6 °F।"
+   }
+  },
+  {
+   "t": {
+    "en": "Fever",
+    "hi": "बुखार (ज्वर)"
+   },
+   "d": {
+    "en": "A body temperature higher than normal.",
+    "hi": "सामान्य से अधिक शरीर-ताप।"
+   }
+  },
+  {
+   "t": {
+    "en": "Air temperature",
+    "hi": "वायु का ताप"
+   },
+   "d": {
+    "en": "How hot or cold the surrounding air is.",
+    "hi": "आसपास की वायु कितनी गर्म या ठंडी है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Maximum and minimum temperature",
+    "hi": "अधिकतम और न्यूनतम ताप"
+   },
+   "d": {
+    "en": "The highest and lowest air temperatures of a place on a given day, reported in weather reports.",
+    "hi": "किसी स्थान का किसी दिन का सबसे अधिक और सबसे कम वायु-ताप, जो मौसम रिपोर्ट में बताया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Absolute zero",
+    "hi": "परम शून्य"
+   },
+   "d": {
+    "en": "The lowest possible temperature, about -273.15 °C or 0 K.",
+    "hi": "न्यूनतम संभव ताप, लगभग -273.15 °C या 0 K।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mercury",
+    "hi": "पारा"
+   },
+   "d": {
+    "en": "A toxic liquid metal once used in thermometers.",
+    "hi": "एक विषैली द्रव धातु जो पहले थर्मामीटरों में उपयोग होती थी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Precaution",
+    "hi": "सावधानी"
+   },
+   "d": {
+    "en": "A careful step taken to avoid danger or error.",
+    "hi": "खतरे या त्रुटि से बचने के लिए उठाया गया सावधान कदम।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Which is the normal temperature of a healthy human body: 98.6 °C, 37.0 °C, 32.0 °C or 27.0 °C?",
+    "hi": "स्वस्थ मानव शरीर का सामान्य ताप कौन-सा है: 98.6 °C, 37.0 °C, 32.0 °C या 27.0 °C?"
+   },
+   "a": {
+    "en": "37.0 °C. (98.6 is the normal value in °F, not °C.)",
+    "hi": "37.0 °C। (98.6 सामान्य मान °F में है, °C में नहीं।)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "37 °C is the same as which of these: 97.4 °F, 97.6 °F, 98.4 °F or 98.6 °F?",
+    "hi": "37 °C इनमें से किसके बराबर है: 97.4 °F, 97.6 °F, 98.4 °F या 98.6 °F?"
+   },
+   "a": {
+    "en": "98.6 °F",
+    "hi": "98.6 °F"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (a) The hotness or coldness of a body is measured by its ______. (b) The temperature of ice-cold water cannot be measured with a ______ thermometer. (c) The unit of temperature on the Celsius scale is ______.",
+    "hi": "रिक्त स्थान भरिए: (क) किसी वस्तु की गर्मी या ठंडक उसके ______ से मापी जाती है। (ख) बर्फ़ीले पानी का ताप ______ थर्मामीटर से नहीं मापा जा सकता। (ग) सेल्सियस पैमाने पर ताप का मात्रक ______ है।"
+   },
+   "a": {
+    "en": "(a) temperature (b) clinical (its range starts at about 35 °C) (c) degree Celsius (°C)",
+    "hi": "(क) ताप (ख) डॉक्टरी (इसकी परास लगभग 35 °C से शुरू होती है) (ग) डिग्री सेल्सियस (°C)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What is the usual range of a laboratory thermometer: 10 °C to 100 °C, -10 °C to 110 °C, 32 °C to 45 °C, or 35 °C to 42 °C?",
+    "hi": "प्रयोगशाला थर्मामीटर की सामान्य परास क्या है: 10 °C से 100 °C, -10 °C से 110 °C, 32 °C से 45 °C, या 35 °C से 42 °C?"
+   },
+   "a": {
+    "en": "-10 °C to 110 °C. (35 °C to 42 °C is the range of a clinical thermometer.)",
+    "hi": "-10 °C से 110 °C। (35 °C से 42 °C डॉक्टरी थर्मामीटर की परास है।)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Why is touch not a reliable way of finding how hot something is? Give an example.",
+    "hi": "किसी वस्तु की गर्मी जानने के लिए स्पर्श भरोसेमंद तरीका क्यों नहीं है? उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "The feeling depends on what the skin touched before. In Activity 7.1, the same tap water felt cool to a hand coming from warm water and warm to a hand coming from ice-cold water. Also we cannot touch very hot or very cold objects safely.",
+    "hi": "अनुभूति इस पर निर्भर करती है कि त्वचा ने पहले क्या छुआ था। क्रियाकलाप 7.1 में नल का वही पानी गुनगुने पानी से आए हाथ को ठंडा और बर्फ़ीले पानी से आए हाथ को गर्म लगा। साथ ही बहुत गर्म या बहुत ठंडी वस्तुओं को सुरक्षित रूप से छू नहीं सकते।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the SI unit of temperature and write its symbol.",
+    "hi": "ताप का SI मात्रक बताइए और उसका चिह्न लिखिए।"
+   },
+   "a": {
+    "en": "The kelvin; symbol K (written without a degree sign).",
+    "hi": "केल्विन; चिह्न K (डिग्री चिह्न के बिना)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Four students are measuring the temperature of water in a beaker. Student 1 tilts the thermometer, Student 2 lets the bulb rest on the bottom, Student 3 holds it upright with the bulb in the middle of the water and eye level with the column, Student 4 takes it out to read. Who is correct and what are the others doing wrong?",
+    "hi": "चार विद्यार्थी बीकर में पानी का ताप माप रहे हैं। विद्यार्थी 1 थर्मामीटर तिरछा रखता है, विद्यार्थी 2 बल्ब को तली पर टिका देता है, विद्यार्थी 3 उसे सीधा, बल्ब पानी के बीच में और आँख स्तंभ की सीध में रखता है, विद्यार्थी 4 उसे निकालकर पढ़ता है। कौन सही है और बाकी क्या गलत कर रहे हैं?"
+   },
+   "a": {
+    "en": "Student 3 is correct. Student 1: the thermometer must be vertical. Student 2: the bulb must not touch the bottom (the bottom may be hotter or colder than the water). Student 4: the column falls as soon as it is taken out, so the reading will be wrong.",
+    "hi": "विद्यार्थी 3 सही है। विद्यार्थी 1: थर्मामीटर सीधा (ऊर्ध्वाधर) होना चाहिए। विद्यार्थी 2: बल्ब तली को न छुए (तली पानी से अधिक गर्म या ठंडी हो सकती है)। विद्यार्थी 4: निकालते ही स्तंभ गिरता है, इसलिए पाठ्यांक गलत आएगा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "On a thermometer scale between 10 °C and 20 °C there are (a) 5, (b) 10, (c) 20 small divisions. Find the value of one division in each case.",
+    "hi": "किसी थर्मामीटर पर 10 °C और 20 °C के बीच (क) 5, (ख) 10, (ग) 20 छोटे भाग हैं। हर स्थिति में एक भाग का मान ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Difference = 20 - 10 = 10 °C\n(a) 10 ÷ 5 = 2 °C\n(b) 10 ÷ 10 = 1 °C\n(c) 10 ÷ 20 = 0.5 °C",
+    "hi": "अंतर = 20 - 10 = 10 °C\n(क) 10 ÷ 5 = 2 °C\n(ख) 10 ÷ 10 = 1 °C\n(ग) 10 ÷ 20 = 0.5 °C"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A thermometer has 1 °C divisions. To show 14 °C, how many divisions above the 10 °C mark should the red column reach? Which thermometer from the previous question can show 17.5 °C exactly?",
+    "hi": "किसी थर्मामीटर के भाग 1 °C के हैं। 14 °C दिखाने के लिए लाल स्तंभ 10 °C चिह्न से कितने भाग ऊपर होना चाहिए? पिछले प्रश्न का कौन-सा थर्मामीटर 17.5 °C ठीक-ठीक दिखा सकता है?"
+   },
+   "a": {
+    "en": "14 - 10 = 4 °C, so 4 divisions above the 10 °C mark.\n17.5 °C needs 0.5 °C divisions, so only thermometer (c), with 20 divisions, can show it exactly (15 divisions above 10 °C, because 7.5 ÷ 0.5 = 15).",
+    "hi": "14 - 10 = 4 °C, अतः 10 °C चिह्न से 4 भाग ऊपर।\n17.5 °C के लिए 0.5 °C के भाग चाहिए, इसलिए केवल थर्मामीटर (ग), जिसमें 20 भाग हैं, इसे ठीक दिखा सकता है (10 °C से 15 भाग ऊपर, क्योंकि 7.5 ÷ 0.5 = 15)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A thermometer has 50 equal divisions between 0 °C and 100 °C. What is the value of each division?",
+    "hi": "किसी थर्मामीटर पर 0 °C और 100 °C के बीच 50 बराबर भाग हैं। हर भाग का मान क्या है?"
+   },
+   "a": {
+    "en": "Value of one division = (100 - 0) ÷ 50 = 2 °C",
+    "hi": "एक भाग का मान = (100 - 0) ÷ 50 = 2 °C"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is a laboratory thermometer not used to measure body temperature?",
+    "hi": "शरीर का ताप मापने के लिए प्रयोगशाला थर्मामीटर का उपयोग क्यों नहीं किया जाता?"
+   },
+   "a": {
+    "en": "Its liquid column starts falling as soon as it is removed from the mouth, so the reading cannot be taken after removal. Its divisions (usually 1 °C) are too coarse for body temperature, which must be known to about 0.1 °C. It is also long and fragile, so it is unsafe in the mouth.",
+    "hi": "मुँह से निकालते ही इसका द्रव-स्तंभ गिरने लगता है, इसलिए निकालने के बाद पाठ्यांक नहीं लिया जा सकता। इसके भाग (प्रायः 1 °C) शरीर-ताप के लिए बहुत मोटे हैं, जिसे लगभग 0.1 °C तक जानना होता है। यह लंबा और नाज़ुक भी है, इसलिए मुँह में असुरक्षित है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Vaishnavi had fever. Her temperature (°C) was taken six times a day (7 am, 10 am, 1 pm, 4 pm, 7 pm, 10 pm). Day 1: 38.0, 37.8, 38.0, 38.0, 40.0, 39.0. Day 2: 38.6, 38.8, 39.0, 39.0, 39.0, 38.0. Day 3: 37.6, 37.4, 37.2, 37.0, 36.8, 36.6. (a) What was her highest temperature? (b) On which day and at what time? (c) When did her temperature first come back to normal (37.0 °C)?",
+    "hi": "वैष्णवी को बुखार था। उसका ताप (°C) दिन में छह बार (सुबह 7, 10, दोपहर 1, 4, शाम 7, रात 10 बजे) मापा गया। दिन 1: 38.0, 37.8, 38.0, 38.0, 40.0, 39.0। दिन 2: 38.6, 38.8, 39.0, 39.0, 39.0, 38.0। दिन 3: 37.6, 37.4, 37.2, 37.0, 36.8, 36.6। (क) उसका सबसे अधिक ताप कितना था? (ख) किस दिन और किस समय? (ग) उसका ताप पहली बार सामान्य (37.0 °C) कब हुआ?"
+   },
+   "a": {
+    "en": "(a) 40.0 °C\n(b) Day 1 at 7 pm\n(c) On Day 3 at 4 pm, when it read 37.0 °C; after that it stayed at or below normal.",
+    "hi": "(क) 40.0 °C\n(ख) दिन 1, शाम 7 बजे\n(ग) दिन 3, शाम 4 बजे, जब पाठ्यांक 37.0 °C था; उसके बाद वह सामान्य या उससे कम रहा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Convert into kelvin: (a) 0 °C (b) 100 °C (c) -10 °C.",
+    "hi": "केल्विन में बदलिए: (क) 0 °C (ख) 100 °C (ग) -10 °C।"
+   },
+   "a": {
+    "en": "(a) 0 + 273.15 = 273.15 K\n(b) 100 + 273.15 = 373.15 K\n(c) -10 + 273.15 = 263.15 K",
+    "hi": "(क) 0 + 273.15 = 273.15 K\n(ख) 100 + 273.15 = 373.15 K\n(ग) -10 + 273.15 = 263.15 K"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Correct the way these are written: (a) 35°C (b) 300 °K (c) 25 Degree celsius (d) 40 °c.",
+    "hi": "इनके लिखने का तरीका सुधारिए: (क) 35°C (ख) 300 °K (ग) 25 Degree celsius (घ) 40 °c।"
+   },
+   "a": {
+    "en": "(a) 35 °C (space needed) (b) 300 K (no degree sign with K) (c) 25 degrees Celsius (plural, small 'degrees', capital C) (d) 40 °C (symbol uses capital C)",
+    "hi": "(क) 35 °C (जगह चाहिए) (ख) 300 K (K के साथ डिग्री चिह्न नहीं) (ग) 25 degrees Celsius (बहुवचन, छोटे अक्षर में degrees, बड़ा C) (घ) 40 °C (चिह्न में बड़ा C)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why are digital thermometers preferred over mercury thermometers?",
+    "hi": "पारे वाले थर्मामीटरों की तुलना में डिजिटल थर्मामीटर क्यों पसंद किए जाते हैं?"
+   },
+   "a": {
+    "en": "Mercury is toxic; if a mercury thermometer breaks, the mercury is harmful and hard to dispose of. Digital thermometers contain no mercury, are safer and are easier to read.",
+    "hi": "पारा विषैला है; पारे वाला थर्मामीटर टूटे तो पारा हानिकारक होता है और उसका निपटान कठिन है। डिजिटल थर्मामीटर में पारा नहीं होता, वे अधिक सुरक्षित और पढ़ने में आसान हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List four precautions to be taken while using a digital clinical thermometer.",
+    "hi": "डिजिटल डॉक्टरी थर्मामीटर का उपयोग करते समय चार सावधानियाँ लिखिए।"
+   },
+   "a": {
+    "en": "1. Read the instruction manual first.\n2. Wash the tip with soap and water before and after use.\n3. Do not put the display part in water.\n4. Do not hold it by its tip; wait for the beep before reading.",
+    "hi": "1. पहले निर्देश-पुस्तिका पढ़ें।\n2. उपयोग से पहले और बाद नोक को साबुन-पानी से धोएँ।\n3. डिस्प्ले वाला भाग पानी में न डालें।\n4. इसे नोक से न पकड़ें; पढ़ने से पहले बीप की प्रतीक्षा करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Komal says her brother has a fever of 101 degrees but forgot to tell the scale. Which scale must it be? Explain.",
+    "hi": "कोमल कहती है कि उसके भाई को 101 डिग्री बुखार है, पर पैमाना बताना भूल गई। यह कौन-सा पैमाना होगा? समझाइए।"
+   },
+   "a": {
+    "en": "It must be the Fahrenheit scale. Human body temperature stays between about 35 °C and 42 °C, so 101 °C is impossible (water boils at 100 °C). 101 °F is about 38.3 °C, a moderate fever.",
+    "hi": "यह फ़ारेनहाइट पैमाना होगा। मानव शरीर का ताप लगभग 35 °C से 42 °C के बीच रहता है, इसलिए 101 °C असंभव है (पानी 100 °C पर उबलता है)। 101 °F लगभग 38.3 °C है, जो मध्यम बुखार है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Describe how you would draw a thermometer scale between 10 °C and 20 °C that can measure 0.5 °C.",
+    "hi": "ऐसा थर्मामीटर पैमाना कैसे बनाएँगे जो 10 °C और 20 °C के बीच 0.5 °C माप सके? वर्णन कीजिए।"
+   },
+   "a": {
+    "en": "Number of divisions needed = (20 - 10) ÷ 0.5 = 20.\nDraw a vertical line, mark 10 °C at the bottom and 20 °C at the top. Divide the space into 20 equal small parts. Make every second mark (each 1 °C) a little longer, and the 15 °C mark longer still, and label it. Each small gap now stands for 0.5 °C.",
+    "hi": "आवश्यक भाग = (20 - 10) ÷ 0.5 = 20।\nएक खड़ी रेखा खींचें, नीचे 10 °C और ऊपर 20 °C अंकित करें। बीच की जगह को 20 बराबर छोटे भागों में बाँटें। हर दूसरा चिह्न (हर 1 °C) थोड़ा लंबा बनाएँ, 15 °C का चिह्न और लंबा बनाकर अंकित करें। अब हर छोटा खाना 0.5 °C दर्शाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Three thermometers have ranges and divisions: P: 0 °C to 50 °C, 1 °C divisions; Q: 20 °C to 30 °C, 0.5 °C divisions; R: 25 °C to 45 °C, 0.5 °C divisions. Which one can measure 22.5 °C? Why not the others?",
+    "hi": "तीन थर्मामीटरों की परास और भाग: P: 0 °C से 50 °C, 1 °C के भाग; Q: 20 °C से 30 °C, 0.5 °C के भाग; R: 25 °C से 45 °C, 0.5 °C के भाग। कौन 22.5 °C माप सकता है? बाकी क्यों नहीं?"
+   },
+   "a": {
+    "en": "Q. 22.5 °C is within its range and its 0.5 °C divisions can show the half degree. P covers 22.5 °C but its 1 °C divisions cannot show 0.5. R has 0.5 °C divisions but its range starts at 25 °C, so 22.5 °C is outside it.",
+    "hi": "Q। 22.5 °C इसकी परास में है और इसके 0.5 °C के भाग आधी डिग्री दिखा सकते हैं। P की परास में 22.5 °C है पर इसके 1 °C के भाग 0.5 नहीं दिखा सकते। R के भाग 0.5 °C हैं पर इसकी परास 25 °C से शुरू होती है, इसलिए 22.5 °C बाहर है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Five students in Shillong measured boiling water as 97.8, 98.0, 97.9, 98.0 and 98.1 °C. (a) Find the average. (b) Why is it not 100 °C? (c) Why do the five readings differ?",
+    "hi": "शिलॉन्ग में पाँच विद्यार्थियों ने उबलते पानी का ताप 97.8, 98.0, 97.9, 98.0 और 98.1 °C मापा। (क) औसत निकालिए। (ख) यह 100 °C क्यों नहीं है? (ग) पाँचों पाठ्यांक अलग क्यों हैं?"
+   },
+   "a": {
+    "en": "(a) (97.8 + 98.0 + 97.9 + 98.0 + 98.1) ÷ 5 = 489.8 ÷ 5 = 97.96, about 98.0 °C.\n(b) Shillong is at a height; water boils at a lower temperature at high places than at sea level.\n(c) Small errors in reading: eye not level with the column, reading at different moments, or misjudging a division.",
+    "hi": "(क) (97.8 + 98.0 + 97.9 + 98.0 + 98.1) ÷ 5 = 489.8 ÷ 5 = 97.96, लगभग 98.0 °C।\n(ख) शिलॉन्ग ऊँचाई पर है; ऊँचे स्थानों पर पानी समुद्र तल से कम ताप पर उबलता है।\n(ग) पढ़ने की छोटी त्रुटियाँ: आँख स्तंभ की सीध में न होना, अलग-अलग समय पर पढ़ना, या भाग का गलत अनुमान।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A child's temperature measured in the armpit is 36.5 °C. Is the child's actual body temperature likely to be lower or higher? By about how much?",
+    "hi": "बगल में मापा गया एक बच्चे का ताप 36.5 °C है। बच्चे का वास्तविक शरीर-ताप कम होगा या अधिक? लगभग कितना?"
+   },
+   "a": {
+    "en": "Higher. Armpit readings are about 0.5 °C to 1 °C lower than the actual body temperature, so the actual temperature is roughly 37.0 °C to 37.5 °C.",
+    "hi": "अधिक। बगल के पाठ्यांक वास्तविक शरीर-ताप से लगभग 0.5 °C से 1 °C कम होते हैं, इसलिए वास्तविक ताप लगभग 37.0 °C से 37.5 °C होगा।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Why was pulse rate alone not a reliable way to detect fever, even though people in ancient India knew fever changes the pulse?",
+    "hi": "प्राचीन भारत में लोग जानते थे कि बुखार में नाड़ी बदलती है, फिर भी केवल नाड़ी-दर से बुखार पहचानना भरोसेमंद क्यों नहीं था?"
+   },
+   "a": {
+    "en": "Pulse rate also rises with exercise, fear, excitement, stress and other conditions, so a fast pulse does not always mean fever. A thermometer measures the body's temperature directly.",
+    "hi": "नाड़ी-दर व्यायाम, डर, उत्तेजना, तनाव और अन्य कारणों से भी बढ़ती है, इसलिए तेज़ नाड़ी का मतलब हमेशा बुखार नहीं होता। थर्मामीटर शरीर का ताप सीधे मापता है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Our sense of touch can mislead us, so it is not a reliable way to judge hotness or coldness.",
+   "Temperature is a reliable measure of how hot or cold a body is; a hotter body has a higher temperature.",
+   "A thermometer measures temperature. Clinical thermometers measure body temperature; laboratory thermometers measure the temperature of other things.",
+   "Digital clinical thermometers are battery-operated, safe and easy to read; mercury thermometers are being phased out because mercury is toxic. Infrared thermometers work without contact.",
+   "Normal body temperature is 37.0 °C (98.6 °F). It is an average; it varies slightly with age, time of day and activity. Body temperature stays between about 35 °C and 42 °C.",
+   "Wash the clinical thermometer tip before and after use, keep the display dry and do not hold it by the tip.",
+   "Temperature scales are Celsius (°C), Fahrenheit (°F) and Kelvin (K). The kelvin is the SI unit; K = °C + 273.15.",
+   "Write scale names with capitals, kelvin without a degree sign, and leave a space between number and unit (30 °C).",
+   "A laboratory thermometer is a sealed glass tube with a bulb of mercury or red alcohol; its usual range is -10 °C to 110 °C.",
+   "Value of one division = difference between two numbered marks ÷ number of divisions between them.",
+   "While measuring, keep the thermometer vertical, the bulb in the liquid but not touching the container, read while it is in the liquid, and keep the eye level with the column.",
+   "Temperature stays constant while ice melts (about 0 °C) and while water boils; water boils at about 98 °C in a hilly place like Shillong.",
+   "Weather reports give daily maximum and minimum air temperatures; temperatures rise towards summer and fall in winter.",
+   "Anna Mani, the 'Weather Woman of India', designed weather instruments and made India self-reliant in them."
+  ],
+  "hi": [
+   "हमारी स्पर्श-अनुभूति हमें भ्रमित कर सकती है, इसलिए गर्मी-ठंडक जाँचने का यह भरोसेमंद तरीका नहीं है।",
+   "ताप किसी वस्तु के गर्म या ठंडे होने की भरोसेमंद माप है; अधिक गर्म वस्तु का ताप अधिक होता है।",
+   "थर्मामीटर ताप मापता है। डॉक्टरी थर्मामीटर शरीर का ताप मापते हैं; प्रयोगशाला थर्मामीटर अन्य वस्तुओं का।",
+   "डिजिटल डॉक्टरी थर्मामीटर बैटरी से चलते हैं, सुरक्षित और पढ़ने में आसान हैं; पारा विषैला होने से पारे वाले थर्मामीटर हटाए जा रहे हैं। इन्फ्रारेड थर्मामीटर बिना छुए काम करते हैं।",
+   "सामान्य शरीर-ताप 37.0 °C (98.6 °F) है। यह औसत है; आयु, दिन के समय और गतिविधि से थोड़ा बदलता है। शरीर-ताप लगभग 35 °C से 42 °C के बीच रहता है।",
+   "डॉक्टरी थर्मामीटर की नोक उपयोग से पहले और बाद धोएँ, डिस्प्ले सूखा रखें और उसे नोक से न पकड़ें।",
+   "ताप के पैमाने सेल्सियस (°C), फ़ारेनहाइट (°F) और केल्विन (K) हैं। केल्विन SI मात्रक है; K = °C + 273.15।",
+   "पैमानों के नाम बड़े अक्षर से, केल्विन बिना डिग्री चिह्न के, और संख्या व मात्रक के बीच जगह छोड़कर लिखें (30 °C)।",
+   "प्रयोगशाला थर्मामीटर पारे या लाल ऐल्कोहॉल के बल्ब वाली सील की हुई काँच की नली है; इसकी सामान्य परास -10 °C से 110 °C है।",
+   "एक भाग का मान = दो अंकित चिह्नों का अंतर ÷ उनके बीच भागों की संख्या।",
+   "मापते समय थर्मामीटर सीधा रखें, बल्ब द्रव में हो पर बर्तन को न छुए, द्रव में रहते हुए पढ़ें, और आँख स्तंभ की सीध में रखें।",
+   "बर्फ़ पिघलते समय (लगभग 0 °C) और पानी उबलते समय ताप स्थिर रहता है; शिलॉन्ग जैसे पहाड़ी स्थान पर पानी लगभग 98 °C पर उबलता है।",
+   "मौसम रिपोर्ट प्रतिदिन का अधिकतम और न्यूनतम वायु-ताप बताती है; गर्मी की ओर ताप बढ़ता और सर्दी में घटता है।",
+   "'भारत की मौसम महिला' अन्ना मणि ने मौसम उपकरण बनाए और भारत को उनमें आत्मनिर्भर बनाया।"
+  ]
+ }
+}
