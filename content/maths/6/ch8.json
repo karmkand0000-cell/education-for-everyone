@@ -1,0 +1,1471 @@
+{
+ "v": 1,
+ "sub": "maths",
+ "lv": "6",
+ "id": "ch8",
+ "intro": {
+  "en": "With only a ruler and a compass we can draw beautiful and exact figures. In this chapter we use the compass to draw circles, arcs and curved artwork, and then use the properties of rectangles and squares to construct them accurately. We explore how lengths change inside a rectangle, discover properties of diagonals, and learn to find points that are at equal distances from two given points, which helps us build figures like a house.",
+  "hi": "केवल पटरी और परकार से हम सुंदर और सटीक आकृतियाँ बना सकते हैं। इस अध्याय में हम परकार से वृत्त, चाप और वक्रों वाली कलाकृतियाँ बनाते हैं, और फिर आयत तथा वर्ग के गुणों का प्रयोग करके उनकी सटीक रचना करते हैं। हम खोजते हैं कि आयत के अंदर लंबाइयाँ कैसे बदलती हैं, विकर्णों के गुण पता करते हैं, और दो दिए गए बिंदुओं से बराबर दूरी वाले बिंदु खोजना सीखते हैं, जिससे हम घर जैसी आकृतियाँ बना पाते हैं।"
+ },
+ "learn": {
+  "en": [
+   "How to use a compass and ruler, and what a circle, centre, radius, diameter and arc are",
+   "How to draw artwork such as a person, waves and eyes using arcs, by planning and estimation",
+   "How to mark a point at a given distance from another point",
+   "The defining properties of a rectangle (R1, R2) and a square (S1, S2)",
+   "How to name rectangles correctly and why rotated squares are still squares",
+   "How to draw tilted squares and rectangles on a dot grid",
+   "How to construct squares and rectangles of given sides, step by step, and check them",
+   "How to construct rectangles that break into identical squares without measuring",
+   "How the length XY changes when points move along opposite sides of a rectangle",
+   "Properties of the diagonals of rectangles and squares",
+   "How to construct a rectangle from a side and a diagonal, or from a diagonal angle",
+   "How to find points equidistant from two given points and construct a house figure"
+  ],
+  "hi": [
+   "परकार और पटरी का प्रयोग, और वृत्त, केंद्र, त्रिज्या, व्यास तथा चाप क्या हैं",
+   "योजना और अनुमान से चापों द्वारा व्यक्ति, लहरें और आँखें जैसी कलाकृतियाँ बनाना",
+   "किसी बिंदु से दी गई दूरी पर बिंदु अंकित करना",
+   "आयत (R1, R2) और वर्ग (S1, S2) के परिभाषित गुण",
+   "आयतों का सही नामकरण और घुमाए गए वर्ग वर्ग ही क्यों रहते हैं",
+   "बिंदु-ग्रिड पर झुके वर्ग और आयत बनाना",
+   "दी गई भुजाओं वाले वर्ग और आयत की चरण-दर-चरण रचना और जाँच",
+   "बिना नापे ऐसे आयत बनाना जो एक जैसे वर्गों में टूटें",
+   "आयत की सम्मुख भुजाओं पर बिंदुओं के खिसकने से लंबाई XY कैसे बदलती है",
+   "आयतों और वर्गों के विकर्णों के गुण",
+   "एक भुजा और विकर्ण से, या विकर्ण के कोण से आयत की रचना",
+   "दो दिए गए बिंदुओं से समदूरस्थ बिंदु खोजना और घर की आकृति की रचना"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "8.1 Artwork",
+    "hi": "8.1 कलाकृति"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In this chapter we draw shapes very accurately using just two tools: a ruler (पटरी), for drawing straight lines and measuring lengths, and a compass (परकार), for drawing circles and parts of circles. Making exact figures with these tools is called construction. Before constructing, we often make a quick freehand rough sketch to plan our steps. A protractor (चाँदा) helps when we need a particular angle such as 90°.",
+      "hi": "इस अध्याय में हम केवल दो औज़ारों से बहुत सटीक आकृतियाँ बनाते हैं: पटरी (रूलर), सीधी रेखाएँ खींचने और लंबाई नापने के लिए, और परकार (कम्पास), वृत्त और वृत्त के भाग बनाने के लिए। इन औज़ारों से सटीक आकृतियाँ बनाना रचना कहलाता है। रचना से पहले हम अक्सर अपने चरणों की योजना बनाने के लिए जल्दी से हाथ से एक कच्चा चित्र (रफ स्केच) बनाते हैं। जब 90° जैसा कोई विशेष कोण चाहिए, तो चाँदा (प्रोट्रैक्टर) मदद करता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "How a compass works: a compass has two arms joined at the top. One arm ends in a sharp metal point (the tip or needle), the other holds a pencil. Open the arms so the distance between tip and pencil is, say, 4 cm (check it on your ruler). Press the tip on a point P and turn the compass all the way round. The pencil traces a closed curve. Every point on this curve is exactly 4 cm from P, because the opening of the compass never changes while turning.",
+      "hi": "परकार कैसे काम करता है: परकार में ऊपर से जुड़ी दो भुजाएँ होती हैं। एक भुजा के सिरे पर नुकीली धातु की नोक (सुई) होती है, दूसरी में पेंसिल लगी होती है। भुजाओं को इतना खोलिए कि नोक और पेंसिल के बीच की दूरी, मान लीजिए, 4 cm हो (पटरी पर जाँचिए)। नोक को बिंदु P पर दबाकर परकार को पूरा घुमाइए। पेंसिल एक बंद वक्र बनाती है। इस वक्र का हर बिंदु P से ठीक 4 cm दूर है, क्योंकि घुमाते समय परकार का खुलाव नहीं बदलता।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Circle, centre and radius",
+       "hi": "वृत्त, केंद्र और त्रिज्या"
+      },
+      "text": {
+       "en": "A circle is the set of all points that are at the same distance from a fixed point. The fixed point is the centre and the fixed distance is the radius. In the drawing above, P is the centre and 4 cm is the radius.",
+       "hi": "वृत्त उन सभी बिंदुओं का समूह है जो एक स्थिर बिंदु से एक ही दूरी पर हों। स्थिर बिंदु केंद्र है और वह स्थिर दूरी त्रिज्या है। ऊपर के चित्र में P केंद्र है और 4 cm त्रिज्या है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Diameter: a straight line through the centre joining two points of the circle. Diameter = 2 × radius.",
+       "Arc: a part of a circle. Turning the compass only part of the way draws an arc.",
+       "Semicircle (half circle): the arc on one side of a diameter."
+      ],
+      "hi": [
+       "व्यास: केंद्र से होकर वृत्त के दो बिंदुओं को मिलाने वाली सीधी रेखा। व्यास = 2 × त्रिज्या।",
+       "चाप: वृत्त का एक भाग। परकार को कुछ ही दूर घुमाने से चाप बनता है।",
+       "अर्धवृत्त (आधा वृत्त): किसी व्यास के एक ओर का चाप।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "To mark a point at a given distance from a point, you do not have to draw the full circle. Set the compass to that distance, put the tip on the point and draw just a small arc where you need the new point.",
+      "hi": "किसी बिंदु से दी गई दूरी पर बिंदु अंकित करने के लिए पूरा वृत्त बनाना ज़रूरी नहीं है। परकार को उस दूरी पर खोलिए, नोक को बिंदु पर रखिए और जहाँ नया बिंदु चाहिए वहाँ बस एक छोटा चाप लगाइए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Artwork 1, A Person: imagine a simple figure made only with curves. The head is a full circle, say of radius 2 cm. Below it, the neck and shoulders can be made from small identical arcs, and the body from a larger arc. For some parts you know where to place the compass tip (the centre of the head). For other parts, you choose a radius and then try different positions of the tip, by estimation, until the arc passes where you want it. This trial and improvement is a normal part of construction art.",
+      "hi": "कलाकृति 1, एक व्यक्ति: केवल वक्रों से बनी एक सरल आकृति सोचिए। सिर एक पूरा वृत्त है, मान लीजिए 2 cm त्रिज्या का। उसके नीचे गर्दन और कंधे छोटे एक जैसे चापों से, और शरीर एक बड़े चाप से बनाया जा सकता है। कुछ भागों के लिए आपको पता होता है कि परकार की नोक कहाँ रखें (सिर का केंद्र)। दूसरे भागों के लिए आप एक त्रिज्या चुनते हैं और फिर अनुमान से नोक की अलग-अलग स्थितियाँ आज़माते हैं, जब तक चाप वहाँ से न गुज़रे जहाँ आप चाहते हैं। आज़माना और सुधारना रचना-कला का सामान्य भाग है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Artwork 2, Wavy Wave: draw a straight central line AB of length 8 cm. Mark points on it at every 2 cm: A, P, Q, R, B, so that AP = PQ = QR = RB = 2 cm. Now draw half circles on each 2 cm piece, the first one above the line, the next one below, then above, then below. Each half circle has its diameter on the line, so its centre is the midpoint of its 2 cm piece and its radius is 1 cm. The result looks like a smooth wave.",
+      "hi": "कलाकृति 2, लहर: 8 cm लंबी एक सीधी केंद्रीय रेखा AB खींचिए। उस पर हर 2 cm पर बिंदु लगाइए: A, P, Q, R, B, ताकि AP = PQ = QR = RB = 2 cm हो। अब हर 2 cm के टुकड़े पर अर्धवृत्त बनाइए, पहला रेखा के ऊपर, अगला नीचे, फिर ऊपर, फिर नीचे। हर अर्धवृत्त का व्यास रेखा पर है, इसलिए उसका केंद्र उसके 2 cm टुकड़े का मध्य-बिंदु है और उसकी त्रिज्या 1 cm है। परिणाम एक चिकनी लहर जैसा दिखता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Draw AB = 8 cm with the ruler and mark the division points every 2 cm.",
+       "Step 2: Mark the midpoint of each 2 cm piece (at 1 cm, 3 cm, 5 cm and 7 cm from A).",
+       "Step 3: Set the compass to 1 cm. Put the tip at the first midpoint and draw a half circle above AB from A to P.",
+       "Step 4: Put the tip at the second midpoint and draw a half circle below AB from P to Q.",
+       "Step 5: Continue, alternating above and below, until you reach B.",
+       "Check: each hump should touch AB exactly at the division points and all humps should be the same size."
+      ],
+      "hi": [
+       "चरण 1: पटरी से AB = 8 cm खींचिए और हर 2 cm पर विभाजन-बिंदु लगाइए।",
+       "चरण 2: हर 2 cm टुकड़े का मध्य-बिंदु अंकित कीजिए (A से 1 cm, 3 cm, 5 cm और 7 cm पर)।",
+       "चरण 3: परकार को 1 cm पर खोलिए। नोक पहले मध्य-बिंदु पर रखकर A से P तक AB के ऊपर अर्धवृत्त बनाइए।",
+       "चरण 4: नोक दूसरे मध्य-बिंदु पर रखकर P से Q तक AB के नीचे अर्धवृत्त बनाइए।",
+       "चरण 5: इसी तरह ऊपर-नीचे बदलते हुए B तक पहुँचिए।",
+       "जाँच: हर उभार AB को ठीक विभाजन-बिंदुओं पर छूना चाहिए और सभी उभार एक ही माप के होने चाहिए।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "A wave can also be made with arcs that are smaller than half circles, which gives flatter waves. Use a radius bigger than half the piece, and place the tip on the other side of the line (below the line for an arc above it), at a point where the arc passes through both ends of the piece. You find this point by trial, or exactly by drawing arcs of your chosen radius from both ends of the piece and taking where they cross. To make all the waves identical, keep the same radius and place the tip at the same distance from the line each time.",
+      "hi": "लहर अर्धवृत्त से छोटे चापों से भी बनाई जा सकती है, जिससे लहरें चपटी बनती हैं। टुकड़े के आधे से बड़ी त्रिज्या लीजिए, और नोक को रेखा के दूसरी ओर (ऊपर के चाप के लिए रेखा के नीचे) ऐसे बिंदु पर रखिए जहाँ से चाप टुकड़े के दोनों सिरों से गुज़रे। यह बिंदु आज़माकर, या सटीक रूप से टुकड़े के दोनों सिरों से चुनी हुई त्रिज्या के चाप लगाकर उनके कटान-बिंदु से मिलता है। सभी लहरें एक जैसी बनाने के लिए हर बार वही त्रिज्या रखिए और नोक को रेखा से उतनी ही दूरी पर रखिए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Artwork 3, Eyes: an eye shape is made of an upper curve and a lower curve that meet at the two corners. To make the two curves match like mirror images, draw two light horizontal helper lines, one above and one below where the eye will be. Place the compass tip at a point A on the lower helper line to draw the upper curve, and at a point B on the upper helper line, directly in line with A, to draw the lower curve, using the same radius. A and B are found by estimation and usually take a few trials. Erase the helper lines at the end.",
+      "hi": "कलाकृति 3, आँखें: आँख की आकृति एक ऊपरी वक्र और एक निचले वक्र से बनती है जो दोनों कोनों पर मिलते हैं। दोनों वक्रों को दर्पण-प्रतिबिंब की तरह मिलाने के लिए दो हल्की क्षैतिज सहायक रेखाएँ खींचिए, एक आँख के ऊपर और एक नीचे। ऊपरी वक्र के लिए परकार की नोक निचली सहायक रेखा पर बिंदु A पर रखिए, और निचले वक्र के लिए ऊपरी सहायक रेखा पर A की सीध में बिंदु B पर, एक ही त्रिज्या से। A और B अनुमान से मिलते हैं और प्रायः कुछ प्रयास लगते हैं। अंत में सहायक रेखाएँ मिटा दीजिए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A wave is drawn on a central line AB = 12 cm using 4 identical half circles, alternating above and below. What compass radius is needed, and where is the tip placed for the first half circle?",
+       "hi": "12 cm की केंद्रीय रेखा AB पर 4 एक जैसे अर्धवृत्तों से ऊपर-नीचे बदलती लहर बनाई गई है। परकार की कितनी त्रिज्या चाहिए, और पहले अर्धवृत्त के लिए नोक कहाँ रखेंगे?"
+      },
+      "a": {
+       "en": "Step 1: 4 equal pieces of AB: 12 ÷ 4 = 3 cm each. Each piece is a diameter.\nStep 2: Radius = half of 3 cm = 1.5 cm.\nStep 3: The first piece goes from A to the 3 cm mark, so its midpoint X is at 1.5 cm from A.\nAnswer: radius 1.5 cm; tip at X with AX = 1.5 cm.",
+       "hi": "चरण 1: AB के 4 बराबर टुकड़े: 12 ÷ 4 = 3 cm प्रत्येक। हर टुकड़ा एक व्यास है।\nचरण 2: त्रिज्या = 3 cm का आधा = 1.5 cm।\nचरण 3: पहला टुकड़ा A से 3 cm के निशान तक है, इसलिए उसका मध्य-बिंदु X, A से 1.5 cm पर है।\nउत्तर: त्रिज्या 1.5 cm; नोक X पर, जहाँ AX = 1.5 cm।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Mark all the points that are exactly 3 cm from a point O. What figure do you get? Is the point 5 cm from O inside or outside it?",
+       "hi": "बिंदु O से ठीक 3 cm दूर के सभी बिंदु अंकित कीजिए। कौन-सी आकृति मिलती है? O से 5 cm दूर का बिंदु इसके अंदर है या बाहर?"
+      },
+      "a": {
+       "en": "Step 1: Open the compass to 3 cm, put the tip at O and turn fully.\nStep 2: The curve drawn is a circle of centre O and radius 3 cm; it contains all points 3 cm from O.\nStep 3: A point 5 cm from O is farther than the radius, so it is outside the circle. Points closer than 3 cm are inside.\nAnswer: a circle of radius 3 cm; the 5 cm point is outside.",
+       "hi": "चरण 1: परकार को 3 cm खोलिए, नोक O पर रखकर पूरा घुमाइए।\nचरण 2: बना वक्र केंद्र O और त्रिज्या 3 cm का वृत्त है; इसमें O से 3 cm दूर के सभी बिंदु हैं।\nचरण 3: O से 5 cm दूर का बिंदु त्रिज्या से अधिक दूर है, इसलिए वह वृत्त के बाहर है। 3 cm से पास के बिंदु अंदर होते हैं।\nउत्तर: 3 cm त्रिज्या का वृत्त; 5 cm वाला बिंदु बाहर है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.2 Squares and Rectangles",
+    "hi": "8.2 वर्ग और आयत"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Rectangles are everywhere: a door, a page of this book, a blackboard, a mobile phone screen. A square is a special rectangle: a carrom board or a chessboard. Let us state exactly what makes a figure a rectangle or a square.",
+      "hi": "आयत हर जगह हैं: दरवाज़ा, इस पुस्तक का पृष्ठ, श्यामपट्ट, मोबाइल फ़ोन की स्क्रीन। वर्ग एक विशेष आयत है: कैरम बोर्ड या शतरंज की बिसात। आइए ठीक-ठीक बताएँ कि किसी आकृति को आयत या वर्ग क्या बनाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Rectangle",
+       "hi": "आयत"
+      },
+      "text": {
+       "en": "A four-sided closed figure (quadrilateral) with two properties. R1: opposite sides are equal. R2: all four angles are 90° (right angles).",
+       "hi": "चार भुजाओं वाली बंद आकृति (चतुर्भुज) जिसमें दो गुण हों। R1: सम्मुख भुजाएँ बराबर हैं। R2: चारों कोण 90° (समकोण) हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Square",
+       "hi": "वर्ग"
+      },
+      "text": {
+       "en": "A quadrilateral with two properties. S1: all four sides are equal. S2: all four angles are 90°. Every square is a rectangle, but not every rectangle is a square.",
+       "hi": "ऐसा चतुर्भुज जिसमें दो गुण हों। S1: चारों भुजाएँ बराबर हैं। S2: चारों कोण 90° हैं। हर वर्ग एक आयत है, पर हर आयत वर्ग नहीं है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Naming: the corners of a figure are called vertices (शीर्ष). A rectangle with corners A, B, C, D is named by going around it in order, so ABCD, BCDA, DCBA, and CDAB are all correct names for the same rectangle. But ACBD is wrong, because A and C are opposite corners and you cannot go from A to C along a side. In rectangle ABCD the sides are AB, BC, CD and DA; the pairs of opposite sides are AB and CD, and BC and DA.",
+      "hi": "नामकरण: आकृति के कोनों को शीर्ष कहते हैं। A, B, C, D कोनों वाले आयत का नाम क्रम से चारों ओर चलकर रखा जाता है, इसलिए ABCD, BCDA, DCBA और CDAB सभी एक ही आयत के सही नाम हैं। पर ACBD गलत है, क्योंकि A और C सम्मुख कोने हैं और A से C तक किसी भुजा के साथ नहीं जा सकते। आयत ABCD की भुजाएँ AB, BC, CD और DA हैं; सम्मुख भुजाओं के जोड़े AB और CD, तथा BC और DA हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Property",
+        "Rectangle",
+        "Square"
+       ],
+       "hi": [
+        "गुण",
+        "आयत",
+        "वर्ग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Number of sides",
+         "4",
+         "4"
+        ],
+        [
+         "Opposite sides equal",
+         "Yes",
+         "Yes"
+        ],
+        [
+         "All sides equal",
+         "Not always",
+         "Yes"
+        ],
+        [
+         "All angles 90°",
+         "Yes",
+         "Yes"
+        ],
+        [
+         "Diagonals equal",
+         "Yes",
+         "Yes"
+        ],
+        [
+         "Diagonals cross at 90°",
+         "Not always",
+         "Yes"
+        ]
+       ],
+       "hi": [
+        [
+         "भुजाओं की संख्या",
+         "4",
+         "4"
+        ],
+        [
+         "सम्मुख भुजाएँ बराबर",
+         "हाँ",
+         "हाँ"
+        ],
+        [
+         "सभी भुजाएँ बराबर",
+         "हमेशा नहीं",
+         "हाँ"
+        ],
+        [
+         "सभी कोण 90°",
+         "हाँ",
+         "हाँ"
+        ],
+        [
+         "विकर्ण बराबर",
+         "हाँ",
+         "हाँ"
+        ],
+        [
+         "विकर्ण 90° पर काटते हैं",
+         "हमेशा नहीं",
+         "हाँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Rotated squares and rectangles: if you turn (rotate) a square so that it stands on one corner, it looks like a diamond, and people sometimes say it is no longer a square. That is wrong. Turning a shape does not change the lengths of its sides or the sizes of its angles, so it still has S1 and S2 and is still a square. In the same way, a tilted rectangle is still a rectangle.",
+      "hi": "घुमाए गए वर्ग और आयत: अगर आप किसी वर्ग को इतना घुमा दें कि वह एक कोने पर खड़ा हो, तो वह हीरे (डायमंड) जैसा दिखता है, और लोग कभी-कभी कहते हैं कि अब वह वर्ग नहीं रहा। यह गलत है। आकृति को घुमाने से उसकी भुजाओं की लंबाइयाँ या कोणों के माप नहीं बदलते, इसलिए उसमें S1 और S2 बने रहते हैं और वह अब भी वर्ग है। इसी तरह झुका हुआ आयत भी आयत ही है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Drawing tilted squares on a dot grid: on dot paper the dots are 1 unit apart, left-right and up-down. Start at a dot, go 2 dots right and 1 dot up to reach the second corner. From there turn a quarter turn: go 1 dot left and 2 dots up for the third corner. Then go 2 dots left and 1 dot down for the fourth corner, and 1 dot right and 2 dots down to come back. Each side uses the same steps (2 and 1) just turned, so all four sides are equal and all angles are 90°: it is a square. For a tilted rectangle, use steps like (2 right, 1 up) and (2 left, 4 up), which are the steps (2, 1) doubled and turned; opposite sides use the same steps, so they are equal.",
+      "hi": "बिंदु-ग्रिड पर झुके वर्ग बनाना: बिंदु-कागज़ पर बिंदु दाएँ-बाएँ और ऊपर-नीचे 1 इकाई की दूरी पर होते हैं। किसी बिंदु से शुरू करके 2 बिंदु दाएँ और 1 बिंदु ऊपर जाकर दूसरा कोना पाइए। वहाँ से चौथाई घुमाव लीजिए: 1 बिंदु बाएँ और 2 बिंदु ऊपर जाकर तीसरा कोना। फिर 2 बिंदु बाएँ और 1 बिंदु नीचे जाकर चौथा कोना, और 1 बिंदु दाएँ और 2 बिंदु नीचे जाकर वापस। हर भुजा में वही कदम (2 और 1) हैं, केवल घूमे हुए, इसलिए चारों भुजाएँ बराबर हैं और सभी कोण 90° हैं: यह वर्ग है। झुके आयत के लिए (2 दाएँ, 1 ऊपर) और (2 बाएँ, 4 ऊपर) जैसे कदम लीजिए, जो (2, 1) कदमों को दुगुना करके घुमाए गए हैं; सम्मुख भुजाओं में वही कदम हैं, इसलिए वे बराबर हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "To decide if a figure is a square, do not trust how it looks. Check both properties: measure all four sides with a ruler (or count dot steps) and check all four angles with a protractor or the corner of a set square.",
+      "hi": "कोई आकृति वर्ग है या नहीं, यह देखने भर से तय मत कीजिए। दोनों गुण जाँचिए: पटरी से चारों भुजाएँ नापिए (या बिंदु-कदम गिनिए) और चाँदे या सेट स्क्वायर के कोने से चारों कोण जाँचिए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A quadrilateral PQRS has PQ = QR = RS = SP = 5 cm, but its angles are 70°, 110°, 70°, 110°. Is it a square? Is it a rectangle?",
+       "hi": "चतुर्भुज PQRS में PQ = QR = RS = SP = 5 cm है, पर उसके कोण 70°, 110°, 70°, 110° हैं। क्या यह वर्ग है? क्या यह आयत है?"
+      },
+      "a": {
+       "en": "Step 1: S1 (all sides equal) is true.\nStep 2: S2 (all angles 90°) is false, so it is not a square.\nStep 3: R2 (all angles 90°) is also false, so it is not a rectangle.\nAnswer: Neither. (Such a shape with all sides equal is called a rhombus.)",
+       "hi": "चरण 1: S1 (सभी भुजाएँ बराबर) सही है।\nचरण 2: S2 (सभी कोण 90°) गलत है, इसलिए यह वर्ग नहीं है।\nचरण 3: R2 (सभी कोण 90°) भी गलत है, इसलिए यह आयत भी नहीं है।\nउत्तर: दोनों में से कोई नहीं। (सभी भुजाएँ बराबर वाली ऐसी आकृति को समचतुर्भुज कहते हैं।)"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which of these are correct names for a rectangle whose corners in order are K, L, M, N: KLMN, LMNK, KMLN, NMLK?",
+       "hi": "जिस आयत के कोने क्रम से K, L, M, N हैं, उसके इनमें से कौन-से नाम सही हैं: KLMN, LMNK, KMLN, NMLK?"
+      },
+      "a": {
+       "en": "Step 1: A correct name lists neighbouring corners one after another, going around.\nStep 2: KLMN: yes. LMNK: yes (starts at L). NMLK: yes (goes the other way). KMLN: K to M jumps across the rectangle, so no.\nAnswer: KLMN, LMNK and NMLK are correct; KMLN is wrong.",
+       "hi": "चरण 1: सही नाम में पड़ोसी कोने एक के बाद एक, चारों ओर चलते हुए लिखे जाते हैं।\nचरण 2: KLMN: हाँ। LMNK: हाँ (L से शुरू)। NMLK: हाँ (उल्टी दिशा में)। KMLN: K से M आयत के आर-पार कूदता है, इसलिए नहीं।\nउत्तर: KLMN, LMNK और NMLK सही हैं; KMLN गलत है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.3 Constructing Squares and Rectangles",
+    "hi": "8.3 वर्ग और आयत की रचना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To construct means to draw exactly, using the properties of the shape. For a square or rectangle we need two skills: drawing a line of a given length with the ruler, and drawing a line at 90° (a perpendicular) at a point. A perpendicular can be drawn with a protractor (mark 90°) or with the right-angled corner of a set square. A compass is used to copy lengths quickly and accurately.",
+      "hi": "रचना का अर्थ है आकृति के गुणों का प्रयोग करके सटीक चित्र बनाना। वर्ग या आयत के लिए दो कौशल चाहिए: पटरी से दी गई लंबाई की रेखा खींचना, और किसी बिंदु पर 90° पर रेखा (लंब) खींचना। लंब चाँदे से (90° अंकित करके) या सेट स्क्वायर के समकोण वाले कोने से खींचा जा सकता है। परकार से लंबाइयाँ जल्दी और सटीक रूप से उतारी जाती हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Perpendicular",
+       "hi": "लंब"
+      },
+      "text": {
+       "en": "Two lines are perpendicular if they meet at a right angle (90°).",
+       "hi": "दो रेखाएँ एक-दूसरे पर लंब होती हैं अगर वे समकोण (90°) पर मिलें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Construction 1, a square PQRS of side 6 cm. First draw a rough sketch: a square with corners P (bottom left), Q (bottom right), R (top right), S (top left), each side marked 6 cm, each corner marked 90°.",
+      "hi": "रचना 1, 6 cm भुजा वाला वर्ग PQRS। पहले कच्चा चित्र बनाइए: एक वर्ग जिसके कोने P (नीचे बाएँ), Q (नीचे दाएँ), R (ऊपर दाएँ), S (ऊपर बाएँ) हों, हर भुजा पर 6 cm और हर कोने पर 90° लिखा हो।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Draw a line segment PQ = 6 cm with the ruler.",
+       "Step 2: At P, use the protractor to draw a line perpendicular to PQ (at 90°).",
+       "Step 3: Open the compass to 6 cm. With the tip at P, draw an arc cutting this perpendicular line. Name the point S. Now PS = 6 cm.",
+       "Step 4: At Q, draw another line perpendicular to PQ.",
+       "Step 5: With the tip at Q and the same 6 cm opening, cut this line at R. Now QR = 6 cm.",
+       "Step 6: Join S and R.",
+       "Check: measure SR; it should be 6 cm. Measure the angles at R and S; they should be 90°. If they are, PQRS satisfies S1 and S2."
+      ],
+      "hi": [
+       "चरण 1: पटरी से रेखाखंड PQ = 6 cm खींचिए।",
+       "चरण 2: P पर चाँदे की सहायता से PQ पर लंब (90° पर) रेखा खींचिए।",
+       "चरण 3: परकार को 6 cm खोलिए। नोक P पर रखकर इस लंब रेखा को काटता हुआ चाप लगाइए। बिंदु का नाम S रखिए। अब PS = 6 cm।",
+       "चरण 4: Q पर PQ पर एक और लंब रेखा खींचिए।",
+       "चरण 5: नोक Q पर रखकर उसी 6 cm खुलाव से इस रेखा को R पर काटिए। अब QR = 6 cm।",
+       "चरण 6: S और R को मिलाइए।",
+       "जाँच: SR नापिए; यह 6 cm होना चाहिए। R और S पर कोण नापिए; वे 90° होने चाहिए। अगर ऐसा है, तो PQRS में S1 और S2 दोनों हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Instead of a perpendicular at Q (Step 4 and 5), you could find R as the point that is 6 cm from both Q and S: draw a 6 cm arc from Q and another from S; they cross at R. This uses the idea of points at given distances from two points.",
+      "hi": "Q पर लंब खींचने (चरण 4 और 5) के बजाय, आप R को ऐसे बिंदु के रूप में पा सकते हैं जो Q और S दोनों से 6 cm दूर हो: Q से 6 cm का चाप और S से एक और चाप लगाइए; वे R पर कटेंगे। इसमें दो बिंदुओं से दी गई दूरियों पर बिंदु खोजने का विचार प्रयोग होता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Construction 2, a rectangle ABCD with AB = 6 cm and BC = 4 cm. Rough sketch: a rectangle with AB at the bottom (6 cm), BC on the right (4 cm), CD on top (6 cm), DA on the left (4 cm), all corners 90°.",
+      "hi": "रचना 2, आयत ABCD जिसमें AB = 6 cm और BC = 4 cm। कच्चा चित्र: एक आयत जिसमें AB नीचे (6 cm), BC दाईं ओर (4 cm), CD ऊपर (6 cm), DA बाईं ओर (4 cm), सभी कोने 90°।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Draw AB = 6 cm.",
+       "Step 2: Draw perpendiculars to AB at A and at B.",
+       "Step 3: With the compass at 4 cm, cut the perpendicular at A to get D, and the perpendicular at B to get C.",
+       "Step 4: Join D and C.",
+       "Check: DC should measure 6 cm (opposite sides equal, R1) and the angles at C and D should be 90° (R2)."
+      ],
+      "hi": [
+       "चरण 1: AB = 6 cm खींचिए।",
+       "चरण 2: A और B पर AB पर लंब खींचिए।",
+       "चरण 3: परकार 4 cm पर रखकर A वाले लंब को काटकर D, और B वाले लंब को काटकर C पाइए।",
+       "चरण 4: D और C को मिलाइए।",
+       "जाँच: DC, 6 cm होना चाहिए (सम्मुख भुजाएँ बराबर, R1) और C व D पर कोण 90° होने चाहिए (R2)।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Breaking rectangles: can you construct a rectangle that can be broken into 2 identical squares, without being given any length and without measuring with the ruler? Plan with a rough sketch: two squares side by side. If each square has side s, the rectangle has width s and length 2s. Steps: draw a line and mark A on it. Open the compass to any length s. From A mark E on the line with AE = s, and from E mark B with EB = s, so AB = 2s. Draw perpendiculars at A, E and B and, with the same compass opening, mark D, F and C on them. Join D, F and C. ABCD is the rectangle and EF splits it into two identical squares AEFD and EBCF.",
+      "hi": "आयत को तोड़ना: क्या आप बिना कोई लंबाई दिए और पटरी से नापे बिना ऐसे आयत की रचना कर सकते हैं जिसे 2 एक जैसे वर्गों में तोड़ा जा सके? कच्चे चित्र से योजना बनाइए: दो वर्ग साथ-साथ। अगर हर वर्ग की भुजा s हो, तो आयत की चौड़ाई s और लंबाई 2s है। चरण: एक रेखा खींचकर उस पर A अंकित कीजिए। परकार को किसी भी लंबाई s पर खोलिए। A से रेखा पर E अंकित कीजिए ताकि AE = s, और E से B ताकि EB = s, इसलिए AB = 2s। A, E और B पर लंब खींचिए और उसी खुलाव से उन पर D, F और C अंकित कीजिए। D, F और C को मिलाइए। ABCD आयत है और EF उसे दो एक जैसे वर्गों AEFD और EBCF में बाँटती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "For 3 identical squares in a row, the rectangle has length 3s and width s: copy the length s three times along the long side. So a rectangle breaks into 2 identical squares only when its length is exactly 2 times its width, and into 3 identical squares in a row only when its length is exactly 3 times its width. A 4 cm by 6 cm rectangle does neither: 6 is 1 1/2 times 4.",
+      "hi": "एक पंक्ति में 3 एक जैसे वर्गों के लिए आयत की लंबाई 3s और चौड़ाई s है: लंबी भुजा पर लंबाई s को तीन बार उतारिए। इसलिए आयत 2 एक जैसे वर्गों में तभी टूटता है जब उसकी लंबाई चौड़ाई की ठीक 2 गुनी हो, और एक पंक्ति में 3 एक जैसे वर्गों में तभी जब लंबाई चौड़ाई की ठीक 3 गुनी हो। 4 cm × 6 cm का आयत इनमें से कुछ नहीं करता: 6, 4 का 1 1/2 गुना है।"
+     }
+    },
+    {
+     "p": {
+      "en": "More constructions to try (describe them before drawing): Square within a rectangle: in a rectangle 8 cm by 4 cm, draw a square with the same centre. The biggest such square has side 4 cm and touches the top and bottom, leaving a 2 cm gap on the left and on the right (8 - 4 = 4, split equally). Falling squares: squares of sides 5 cm, 7 cm and 3 cm standing on one base line, side by side, so their tops form steps. Square with a hole: a square with a circle whose centre is the square's centre (where its diagonals cross). Square with more holes: a square split into 4 smaller squares, each with a circular hole at its own centre. Square with curves: on a square of side 8 cm, draw on every side an identical arc bulging outward; the compass tip for the arc on one side is placed at a point on the line through the middle of the square, at the same distance inside each side, and the radius is kept the same for all four.",
+      "hi": "आज़माने के लिए और रचनाएँ (बनाने से पहले वर्णन कीजिए): आयत के अंदर वर्ग: 8 cm × 4 cm के आयत में उसी केंद्र वाला वर्ग बनाइए। ऐसा सबसे बड़ा वर्ग 4 cm भुजा का है और ऊपर-नीचे छूता है, बाएँ और दाएँ 2 cm का अंतर छोड़ता है (8 - 4 = 4, बराबर बाँटा)। गिरते वर्ग: 5 cm, 7 cm और 3 cm भुजाओं वाले वर्ग एक ही आधार-रेखा पर साथ-साथ खड़े, ताकि उनके ऊपरी भाग सीढ़ियाँ बनाएँ। छेद वाला वर्ग: एक वर्ग जिसमें ऐसा वृत्त हो जिसका केंद्र वर्ग का केंद्र (जहाँ विकर्ण कटते हैं) हो। अधिक छेदों वाला वर्ग: एक वर्ग जो 4 छोटे वर्गों में बँटा हो, हर एक के अपने केंद्र पर वृत्ताकार छेद। वक्रों वाला वर्ग: 8 cm भुजा के वर्ग की हर भुजा पर बाहर की ओर उभरा एक जैसा चाप बनाइए; एक भुजा के चाप के लिए परकार की नोक वर्ग के बीच से जाने वाली रेखा पर, हर भुजा से अंदर एक ही दूरी पर रखी जाती है, और चारों के लिए त्रिज्या एक ही रखी जाती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Construct a rectangle with sides 2 cm and 10 cm. Then say how many identical squares it can be broken into in a row.",
+       "hi": "2 cm और 10 cm भुजाओं वाले आयत की रचना कीजिए। फिर बताइए कि इसे एक पंक्ति में कितने एक जैसे वर्गों में तोड़ा जा सकता है।"
+      },
+      "a": {
+       "en": "Step 1: Draw AB = 10 cm.\nStep 2: Draw perpendiculars at A and B.\nStep 3: With the compass at 2 cm, mark D on the perpendicular at A and C on the one at B.\nStep 4: Join DC and check DC = 10 cm and the angles are 90°.\nStep 5: 10 ÷ 2 = 5, so marking every 2 cm along AB and DC and joining gives 5 identical squares of side 2 cm.\nAnswer: 5 squares.",
+       "hi": "चरण 1: AB = 10 cm खींचिए।\nचरण 2: A और B पर लंब खींचिए।\nचरण 3: परकार 2 cm पर रखकर A वाले लंब पर D और B वाले पर C अंकित कीजिए।\nचरण 4: DC मिलाइए और जाँचिए कि DC = 10 cm है और कोण 90° हैं।\nचरण 5: 10 ÷ 2 = 5, इसलिए AB और DC पर हर 2 cm पर निशान लगाकर मिलाने से 2 cm भुजा के 5 एक जैसे वर्ग बनते हैं।\nउत्तर: 5 वर्ग।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In a rectangle 8 cm by 4 cm, a square of side 4 cm is drawn with the same centre. How far is each vertical side of the square from the nearer short side of the rectangle?",
+       "hi": "8 cm × 4 cm के एक आयत में उसी केंद्र वाला 4 cm भुजा का वर्ग बनाया गया है। वर्ग की हर खड़ी भुजा आयत की पास वाली छोटी भुजा से कितनी दूर है?"
+      },
+      "a": {
+       "en": "Step 1: The square takes 4 cm of the 8 cm length.\nStep 2: Remaining length = 8 - 4 = 4 cm.\nStep 3: Same centre means the gap is shared equally: 4 ÷ 2 = 2 cm on each side.\nAnswer: 2 cm on each side.",
+       "hi": "चरण 1: वर्ग 8 cm लंबाई में से 4 cm लेता है।\nचरण 2: बची लंबाई = 8 - 4 = 4 cm।\nचरण 3: समान केंद्र का अर्थ है अंतर बराबर बँटा है: 4 ÷ 2 = 2 cm हर ओर।\nउत्तर: हर ओर 2 cm।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.4 An Exploration in Rectangles",
+    "hi": "8.4 आयतों में एक खोज"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Construct a rectangle ABCD with AB = 7 cm and BC = 4 cm, with AB at the bottom, BC on the right, so that AD and BC are the two upright 4 cm sides. Imagine a point X that can slide anywhere along side AD (including A and D), and a point Y that can slide anywhere along side BC (including B and C). Join X and Y. How does the length of XY change as X and Y move?",
+      "hi": "AB = 7 cm और BC = 4 cm वाले आयत ABCD की रचना कीजिए, जिसमें AB नीचे और BC दाईं ओर हो, ताकि AD और BC दो खड़ी 4 cm की भुजाएँ हों। कल्पना कीजिए कि एक बिंदु X भुजा AD पर कहीं भी (A और D सहित) खिसक सकता है, और एक बिंदु Y भुजा BC पर कहीं भी (B और C सहित)। X और Y को मिलाइए। X और Y के खिसकने पर XY की लंबाई कैसे बदलती है?"
+     }
+    },
+    {
+     "p": {
+      "en": "First predict, then test. Draw several copies of the rectangle and in each choose positions for X and Y, measure XY and record: distance of X from A, distance of Y from B, length of XY.",
+      "hi": "पहले अनुमान लगाइए, फिर जाँचिए। आयत की कई प्रतियाँ बनाइए और हर एक में X और Y की स्थितियाँ चुनकर XY नापिए और लिखिए: X की A से दूरी, Y की B से दूरी, XY की लंबाई।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "AX (cm)",
+        "BY (cm)",
+        "XY measured (about)"
+       ],
+       "hi": [
+        "AX (cm)",
+        "BY (cm)",
+        "मापी गई XY (लगभग)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "0",
+         "0",
+         "7 cm"
+        ],
+        [
+         "2",
+         "2",
+         "7 cm"
+        ],
+        [
+         "4",
+         "4",
+         "7 cm"
+        ],
+        [
+         "1",
+         "3",
+         "7.3 cm"
+        ],
+        [
+         "0",
+         "2",
+         "7.3 cm"
+        ],
+        [
+         "0",
+         "4",
+         "8.1 cm"
+        ],
+        [
+         "4",
+         "0",
+         "8.1 cm"
+        ]
+       ],
+       "hi": [
+        [
+         "0",
+         "0",
+         "7 cm"
+        ],
+        [
+         "2",
+         "2",
+         "7 cm"
+        ],
+        [
+         "4",
+         "4",
+         "7 cm"
+        ],
+        [
+         "1",
+         "3",
+         "7.3 cm"
+        ],
+        [
+         "0",
+         "2",
+         "7.3 cm"
+        ],
+        [
+         "0",
+         "4",
+         "8.1 cm"
+        ],
+        [
+         "4",
+         "0",
+         "8.1 cm"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Shortest XY: when X and Y are at the same height (AX = BY), XY is level and equals AB = 7 cm. This is the smallest XY can be.",
+       "Longest XY: when X and Y are at opposite corners, X at A and Y at C, or X at D and Y at B. Then XY is a diagonal, AC or BD, about 8.1 cm.",
+       "When AX = BY, the four-sided figure ABYX is itself a rectangle (with sides 7 cm and AX), because XY is parallel to AB and all its angles are 90°.",
+       "The more X and Y differ in height, the longer XY becomes."
+      ],
+      "hi": [
+       "सबसे छोटी XY: जब X और Y एक ही ऊँचाई पर हों (AX = BY), तब XY समतल (क्षैतिज) होती है और AB = 7 cm के बराबर होती है। XY इससे छोटी नहीं हो सकती।",
+       "सबसे लंबी XY: जब X और Y सम्मुख कोनों पर हों, X, A पर और Y, C पर, या X, D पर और Y, B पर। तब XY एक विकर्ण, AC या BD, होती है, लगभग 8.1 cm।",
+       "जब AX = BY, तो चार भुजाओं वाली आकृति ABYX स्वयं एक आयत है (भुजाएँ 7 cm और AX), क्योंकि XY, AB के समांतर है और इसके सभी कोण 90° हैं।",
+       "X और Y की ऊँचाई में जितना अधिक अंतर, XY उतनी ही लंबी।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "A shorthand for the records: write (AX, BY, XY), for example (1, 3, 7.3).",
+      "hi": "रिकॉर्ड का संक्षिप्त रूप: (AX, BY, XY) लिखिए, जैसे (1, 3, 7.3)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the rectangle ABCD above (AB = 7 cm, BC = 4 cm), X is 3 cm from A on AD. Where must Y be on BC so that XY is as short as possible, and what is that length?",
+       "hi": "ऊपर के आयत ABCD (AB = 7 cm, BC = 4 cm) में X, AD पर A से 3 cm पर है। BC पर Y कहाँ हो ताकि XY सबसे छोटी हो, और वह लंबाई कितनी है?"
+      },
+      "a": {
+       "en": "Step 1: XY is shortest when it is level, that is, when Y is at the same height as X.\nStep 2: So BY = AX = 3 cm.\nStep 3: Then ABYX is a rectangle, so XY = AB.\nAnswer: Y is 3 cm from B; XY = 7 cm.",
+       "hi": "चरण 1: XY तब सबसे छोटी है जब वह समतल हो, यानी Y, X की ही ऊँचाई पर हो।\nचरण 2: इसलिए BY = AX = 3 cm।\nचरण 3: तब ABYX आयत है, इसलिए XY = AB।\nउत्तर: Y, B से 3 cm पर; XY = 7 cm।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.5 Exploring Diagonals of Rectangles and Squares",
+    "hi": "8.5 आयतों और वर्गों के विकर्णों की खोज"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Diagonal",
+       "hi": "विकर्ण"
+      },
+      "text": {
+       "en": "A line segment joining two opposite corners of a four-sided figure. A rectangle PQRS has two diagonals, PR and QS.",
+       "hi": "चार भुजाओं वाली आकृति के दो सम्मुख कोनों को मिलाने वाला रेखाखंड। आयत PQRS के दो विकर्ण होते हैं, PR और QS।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Draw a rectangle PQRS, for example PQ = 6 cm and QR = 4 cm, and join PR and QS. Before measuring, predict: are the two diagonals equal? Then measure. You will find PR = QS (both about 7.2 cm here). This is true for every rectangle: the diagonals of a rectangle are equal.",
+      "hi": "एक आयत PQRS बनाइए, जैसे PQ = 6 cm और QR = 4 cm, और PR तथा QS मिलाइए। नापने से पहले अनुमान लगाइए: क्या दोनों विकर्ण बराबर हैं? फिर नापिए। आप पाएँगे PR = QS (यहाँ दोनों लगभग 7.2 cm)। यह हर आयत के लिए सही है: आयत के विकर्ण बराबर होते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "A diagonal divides the right angle at each of its two ends into two smaller angles. The two diagonals together make 8 such angles at the 4 corners. In our 6 cm by 4 cm rectangle, the diagonal PR makes about 34° with the long side PQ and about 56° with the short side PS (34 + 56 = 90). So the parts are not equal. Pairs of equal angles: angle RPQ = angle PRS, angle RPS = angle PRQ, and similarly for the other diagonal, and the angle a diagonal makes with a long side is the same at all four corners.",
+      "hi": "विकर्ण अपने दोनों सिरों पर समकोण को दो छोटे कोणों में बाँटता है। दोनों विकर्ण मिलकर 4 कोनों पर ऐसे 8 कोण बनाते हैं। हमारे 6 cm × 4 cm के आयत में विकर्ण PR लंबी भुजा PQ से लगभग 34° और छोटी भुजा PS से लगभग 56° बनाता है (34 + 56 = 90)। इसलिए भाग बराबर नहीं हैं। बराबर कोणों के जोड़े: कोण RPQ = कोण PRS, कोण RPS = कोण PRQ, और इसी तरह दूसरे विकर्ण के लिए, और विकर्ण लंबी भुजा से जो कोण बनाता है वह चारों कोनों पर एक जैसा है।"
+     }
+    },
+    {
+     "p": {
+      "en": "When does a diagonal split the corner angles into two equal parts of 45° each? Only when the rectangle is a square. In a square, each diagonal cuts each corner into 45° and 45°. Also, the diagonals of a square cross each other at 90°.",
+      "hi": "विकर्ण कोने के कोण को 45° के दो बराबर भागों में कब बाँटता है? केवल जब आयत एक वर्ग हो। वर्ग में हर विकर्ण हर कोने को 45° और 45° में काटता है। साथ ही, वर्ग के विकर्ण एक-दूसरे को 90° पर काटते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Rectangle",
+        "Diagonals",
+        "Angle with longer side",
+        "Angle with shorter side"
+       ],
+       "hi": [
+        "आयत",
+        "विकर्ण",
+        "लंबी भुजा से कोण",
+        "छोटी भुजा से कोण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "6 cm × 4 cm",
+         "both about 7.2 cm",
+         "about 34°",
+         "about 56°"
+        ],
+        [
+         "7 cm × 4 cm",
+         "both about 8.1 cm",
+         "about 30°",
+         "about 60°"
+        ],
+        [
+         "6 cm × 6 cm (square)",
+         "both about 8.5 cm",
+         "45°",
+         "45°"
+        ]
+       ],
+       "hi": [
+        [
+         "6 cm × 4 cm",
+         "दोनों लगभग 7.2 cm",
+         "लगभग 34°",
+         "लगभग 56°"
+        ],
+        [
+         "7 cm × 4 cm",
+         "दोनों लगभग 8.1 cm",
+         "लगभग 30°",
+         "लगभग 60°"
+        ],
+        [
+         "6 cm × 6 cm (वर्ग)",
+         "दोनों लगभग 8.5 cm",
+         "45°",
+         "45°"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "In a rectangle the two diagonals are equal.",
+       "The diagonals cross each other at their middle points (they bisect each other); the crossing point is the centre of the rectangle.",
+       "In a square, each diagonal divides each corner angle into two angles of 45°.",
+       "In a square, the diagonals cross at right angles."
+      ],
+      "hi": [
+       "आयत में दोनों विकर्ण बराबर होते हैं।",
+       "विकर्ण एक-दूसरे को अपने मध्य-बिंदुओं पर काटते हैं (एक-दूसरे को समद्विभाजित करते हैं); कटान-बिंदु आयत का केंद्र है।",
+       "वर्ग में हर विकर्ण हर कोने के कोण को 45° के दो कोणों में बाँटता है।",
+       "वर्ग में विकर्ण एक-दूसरे को समकोण पर काटते हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "How can we be sure a rule always holds? Measuring a few rectangles makes us confident, but mathematicians look for a reason that works for every rectangle. For example, if you cut a rectangle along one diagonal and flip one half, it fits exactly on the other half, which shows the matching angles are equal.",
+      "hi": "हम कैसे पक्का करें कि कोई नियम हमेशा सही है? कुछ आयत नापने से विश्वास बढ़ता है, पर गणितज्ञ ऐसा कारण खोजते हैं जो हर आयत पर लागू हो। उदाहरण के लिए, आयत को एक विकर्ण पर काटकर एक आधे को पलटें, तो वह दूसरे आधे पर ठीक बैठ जाता है, जिससे पता चलता है कि मेल खाने वाले कोण बराबर हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Constructing a rectangle when a diagonal angle is given: construct a rectangle in which a diagonal divides a corner angle into 60° and 30°. Plan: the diagonal from A makes 30° with side AB and 60° with side AD.",
+      "hi": "जब विकर्ण का कोण दिया हो तब आयत की रचना: ऐसे आयत की रचना कीजिए जिसमें एक विकर्ण कोने के कोण को 60° और 30° में बाँटे। योजना: A से विकर्ण, भुजा AB से 30° और भुजा AD से 60° बनाता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Draw AB of any length, say 6 cm.",
+       "Step 2: At B, draw a perpendicular to AB.",
+       "Step 3: At A, use the protractor to draw a ray making 30° with AB. Let it meet the perpendicular at B in the point C. AC is the diagonal.",
+       "Step 4: At A, draw a perpendicular to AB, and with the compass set to length BC, cut it at D (or draw a perpendicular at C to BC).",
+       "Step 5: Join D and C.",
+       "Check: angle CAB should be 30° and angle CAD 60°; BC should measure about 3.5 cm and DC = 6 cm."
+      ],
+      "hi": [
+       "चरण 1: किसी भी लंबाई की AB खींचिए, मान लीजिए 6 cm।",
+       "चरण 2: B पर AB पर लंब खींचिए।",
+       "चरण 3: A पर चाँदे से AB के साथ 30° बनाती किरण खींचिए। यह B वाले लंब से बिंदु C पर मिले। AC विकर्ण है।",
+       "चरण 4: A पर AB पर लंब खींचिए, और परकार को BC की लंबाई पर खोलकर उसे D पर काटिए (या C पर BC पर लंब खींचिए)।",
+       "चरण 5: D और C को मिलाइए।",
+       "जाँच: कोण CAB, 30° और कोण CAD, 60° होना चाहिए; BC लगभग 3.5 cm और DC = 6 cm होना चाहिए।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Constructing a rectangle from one side and a diagonal: construct a rectangle WXYZ with side WX = 5 cm and diagonal WY = 7 cm.",
+      "hi": "एक भुजा और विकर्ण से आयत की रचना: आयत WXYZ की रचना कीजिए जिसमें भुजा WX = 5 cm और विकर्ण WY = 7 cm हो।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Draw WX = 5 cm.",
+       "Step 2: At X, draw a perpendicular to WX.",
+       "Step 3: Open the compass to 7 cm. With the tip at W, draw an arc cutting the perpendicular at Y. Now WY = 7 cm is the diagonal.",
+       "Step 4: At W, draw a perpendicular to WX, and with the compass set to XY, mark Z on it.",
+       "Step 5: Join Z and Y.",
+       "Check: XY and WZ both measure about 4.9 cm, ZY = 5 cm, and the other diagonal XZ also measures 7 cm, as it must in a rectangle."
+      ],
+      "hi": [
+       "चरण 1: WX = 5 cm खींचिए।",
+       "चरण 2: X पर WX पर लंब खींचिए।",
+       "चरण 3: परकार को 7 cm खोलिए। नोक W पर रखकर लंब को Y पर काटता चाप लगाइए। अब WY = 7 cm विकर्ण है।",
+       "चरण 4: W पर WX पर लंब खींचिए, और परकार को XY पर खोलकर उस पर Z अंकित कीजिए।",
+       "चरण 5: Z और Y को मिलाइए।",
+       "जाँच: XY और WZ दोनों लगभग 4.9 cm हैं, ZY = 5 cm है, और दूसरा विकर्ण XZ भी 7 cm है, जैसा आयत में होना चाहिए।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "The diagonal is always longer than each side of a rectangle. So a rectangle with side 5 cm and diagonal 4 cm is impossible: the 4 cm arc from W would never reach the perpendicular at X.",
+      "hi": "विकर्ण आयत की हर भुजा से हमेशा लंबा होता है। इसलिए 5 cm भुजा और 4 cm विकर्ण वाला आयत असंभव है: W से 4 cm का चाप X वाले लंब तक कभी नहीं पहुँचेगा।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A square has diagonals that cross at point O. If one diagonal is 8 cm, how long is the other, and how far is O from each corner?",
+       "hi": "एक वर्ग के विकर्ण बिंदु O पर कटते हैं। अगर एक विकर्ण 8 cm है, तो दूसरा कितना लंबा है, और O हर कोने से कितनी दूर है?"
+      },
+      "a": {
+       "en": "Step 1: The diagonals of a square (a special rectangle) are equal, so the other is also 8 cm.\nStep 2: The diagonals cut each other in half, so O is 8 ÷ 2 = 4 cm from each corner.\nAnswer: 8 cm; 4 cm.",
+       "hi": "चरण 1: वर्ग (एक विशेष आयत) के विकर्ण बराबर होते हैं, इसलिए दूसरा भी 8 cm है।\nचरण 2: विकर्ण एक-दूसरे को आधे में काटते हैं, इसलिए O हर कोने से 8 ÷ 2 = 4 cm दूर है।\nउत्तर: 8 cm; 4 cm।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In rectangle ABCD, the diagonal AC makes an angle of 40° with side AB. What angle does it make with side AD?",
+       "hi": "आयत ABCD में विकर्ण AC भुजा AB के साथ 40° का कोण बनाता है। यह भुजा AD के साथ कितना कोण बनाता है?"
+      },
+      "a": {
+       "en": "Step 1: The corner angle at A is 90°.\nStep 2: The diagonal splits it into two parts that add to 90°.\nStep 3: 90° - 40° = 50°.\nAnswer: 50°.",
+       "hi": "चरण 1: A पर कोने का कोण 90° है।\nचरण 2: विकर्ण इसे दो भागों में बाँटता है जिनका योग 90° है।\nचरण 3: 90° - 40° = 50°।\nउत्तर: 50°।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.6 Points Equidistant from Two Given Points",
+    "hi": "8.6 दो दिए गए बिंदुओं से समदूरस्थ बिंदु"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Equidistant means at equal distance. Given two points B and C, we want a point A that is the same distance from both, for example 5 cm from B and 5 cm from C. All points 5 cm from B lie on a circle of radius 5 cm around B. All points 5 cm from C lie on a circle of radius 5 cm around C. The point we want must be on both circles, so it is where the two circles (or arcs) cross.",
+      "hi": "समदूरस्थ का अर्थ है बराबर दूरी पर। दो बिंदु B और C दिए हों, हमें ऐसा बिंदु A चाहिए जो दोनों से एक ही दूरी पर हो, जैसे B से 5 cm और C से 5 cm। B से 5 cm दूर के सभी बिंदु B के चारों ओर 5 cm त्रिज्या के वृत्त पर हैं। C से 5 cm दूर के सभी बिंदु C के चारों ओर 5 cm त्रिज्या के वृत्त पर हैं। हमारा बिंदु दोनों वृत्तों पर होना चाहिए, इसलिए वह वहाँ है जहाँ दोनों वृत्त (या चाप) कटते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Open the compass to the required distance (5 cm).",
+       "Step 2: With the tip at B, draw an arc above BC.",
+       "Step 3: Without changing the opening, put the tip at C and draw an arc crossing the first one.",
+       "Step 4: The crossing point is 5 cm from B and 5 cm from C. Name it A.",
+       "Check: measure AB and AC with the ruler; both should be 5 cm."
+      ],
+      "hi": [
+       "चरण 1: परकार को आवश्यक दूरी (5 cm) पर खोलिए।",
+       "चरण 2: नोक B पर रखकर BC के ऊपर एक चाप लगाइए।",
+       "चरण 3: खुलाव बदले बिना नोक C पर रखकर पहले चाप को काटता हुआ चाप लगाइए।",
+       "चरण 4: कटान-बिंदु B से 5 cm और C से 5 cm दूर है। इसका नाम A रखिए।",
+       "जाँच: पटरी से AB और AC नापिए; दोनों 5 cm होने चाहिए।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "The arcs cross on both sides of BC, giving two such points, one above and one below. If the distance chosen is less than half of BC, the arcs do not meet at all. If it is exactly half of BC, they just touch at the midpoint of BC.",
+      "hi": "चाप BC के दोनों ओर कटते हैं, जिससे ऐसे दो बिंदु मिलते हैं, एक ऊपर और एक नीचे। अगर चुनी गई दूरी BC के आधे से कम है, तो चाप मिलते ही नहीं। अगर वह ठीक BC का आधा है, तो वे BC के मध्य-बिंदु पर बस छूते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "If we repeat this with different distances (5 cm, 6 cm, 7 cm ...), we get many points, each equidistant from B and C. All of them lie on one straight line that passes through the midpoint of BC and is perpendicular to BC. This line is called the perpendicular bisector of BC.",
+      "hi": "अगर हम अलग-अलग दूरियों (5 cm, 6 cm, 7 cm ...) से यह दोहराएँ, तो हमें कई बिंदु मिलते हैं, हर एक B और C से समदूरस्थ। ये सभी एक सीधी रेखा पर हैं जो BC के मध्य-बिंदु से होकर जाती है और BC पर लंब है। इस रेखा को BC का लंब समद्विभाजक कहते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "The House: let us construct a house in which every border line is 5 cm. The front wall is a square BCDE of side 5 cm, with the floor ED at the bottom and the top edge BC. The roof is a triangle ABC on top of BC, with AB = AC = 5 cm, so the roof point A is 5 cm from both B and C. Finally a curved line, an arc of radius 5 cm drawn with the tip at A, goes from B to C inside the roof.",
+      "hi": "घर: आइए ऐसे घर की रचना करें जिसकी हर किनारे की रेखा 5 cm हो। सामने की दीवार 5 cm भुजा का वर्ग BCDE है, जिसमें फ़र्श ED नीचे और ऊपरी किनारा BC है। छत BC के ऊपर त्रिभुज ABC है, जिसमें AB = AC = 5 cm, इसलिए छत का शिखर A, B और C दोनों से 5 cm दूर है। अंत में एक वक्र रेखा, A पर नोक रखकर खींचा 5 cm त्रिज्या का चाप, छत के अंदर B से C तक जाता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Construct the square BCDE of side 5 cm (draw ED = 5 cm, perpendiculars at E and D, mark B and C at 5 cm, join BC).",
+       "Step 2: Set the compass to 5 cm. Draw an arc above BC with the tip at B, and another with the tip at C. They cross at A.",
+       "Step 3: Join AB and AC.",
+       "Step 4: With the tip at A and radius 5 cm, draw the arc from B to C.",
+       "Check: AB, AC, BC, CD, DE and EB are all 5 cm."
+      ],
+      "hi": [
+       "चरण 1: 5 cm भुजा का वर्ग BCDE बनाइए (ED = 5 cm खींचिए, E और D पर लंब खींचिए, 5 cm पर B और C अंकित कीजिए, BC मिलाइए)।",
+       "चरण 2: परकार को 5 cm पर रखिए। नोक B पर रखकर BC के ऊपर एक चाप, और नोक C पर रखकर दूसरा चाप लगाइए। वे A पर कटते हैं।",
+       "चरण 3: AB और AC मिलाइए।",
+       "चरण 4: नोक A पर रखकर 5 cm त्रिज्या से B से C तक चाप बनाइए।",
+       "जाँच: AB, AC, BC, CD, DE और EB सभी 5 cm हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "A four-sided figure with all sides equal that is not a square: draw PQ = 5 cm. With the tip at P draw a 5 cm arc and choose any point S on it that is not straight above P (so angle P is not 90°). Now find R as the point 5 cm from both Q and S, using two arcs. Join QR and SR. All four sides are 5 cm, but the angles are not 90°, so PQRS is not a square. It is a rhombus.",
+      "hi": "सभी भुजाएँ बराबर वाली ऐसी चतुर्भुज आकृति जो वर्ग न हो: PQ = 5 cm खींचिए। नोक P पर रखकर 5 cm का चाप लगाइए और उस पर कोई ऐसा बिंदु S चुनिए जो P के ठीक ऊपर न हो (ताकि P पर कोण 90° न हो)। अब दो चापों से R ऐसा बिंदु खोजिए जो Q और S दोनों से 5 cm दूर हो। QR और SR मिलाइए। चारों भुजाएँ 5 cm हैं, पर कोण 90° नहीं हैं, इसलिए PQRS वर्ग नहीं है। यह समचतुर्भुज है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Points B and C are 6 cm apart. Find a point that is 4 cm from B and 4 cm from C. Could you find one that is 2 cm from both?",
+       "hi": "बिंदु B और C के बीच 6 cm की दूरी है। ऐसा बिंदु खोजिए जो B से 4 cm और C से 4 cm दूर हो। क्या ऐसा बिंदु मिल सकता है जो दोनों से 2 cm दूर हो?"
+      },
+      "a": {
+       "en": "Step 1: Set the compass to 4 cm, draw arcs from B and from C; since 4 + 4 = 8 is more than 6, the arcs cross. The crossing point is the answer (there is one above and one below BC).\nStep 2: For 2 cm: 2 + 2 = 4, which is less than 6, so the arcs never meet.\nAnswer: Yes for 4 cm; no point exists for 2 cm.",
+       "hi": "चरण 1: परकार 4 cm पर रखकर B और C से चाप लगाइए; क्योंकि 4 + 4 = 8, 6 से अधिक है, चाप कटते हैं। कटान-बिंदु उत्तर है (BC के ऊपर एक और नीचे एक)।\nचरण 2: 2 cm के लिए: 2 + 2 = 4, जो 6 से कम है, इसलिए चाप कभी नहीं मिलते।\nउत्तर: 4 cm के लिए हाँ; 2 cm के लिए कोई बिंदु नहीं है।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Letting the compass opening slip while drawing, so the curve is not a true circle. Fix: hold the compass at the top knob only, set the radius on the ruler, and check it again before drawing.",
+   "Setting the radius equal to the diameter. Fix: for a half circle on a 4 cm piece, the radius is 2 cm, half the piece.",
+   "Thinking a tilted (rotated) square is not a square because it looks like a diamond. Fix: rotation does not change side lengths or angles; check S1 and S2.",
+   "Calling any figure with four equal sides a square. Fix: all angles must also be 90°; otherwise it is a rhombus.",
+   "Naming a rectangle by jumping across corners, like ACBD. Fix: list corners in order around the figure, like ABCD.",
+   "Drawing the 'perpendicular' by eye. Fix: always use a protractor (90°) or a set square, otherwise the rectangle will be crooked and the last side will not match.",
+   "Forgetting to check the construction. Fix: after drawing, measure the last side and the remaining angles; they should agree with the properties.",
+   "Thinking the diagonal of a rectangle always cuts the corner into two 45° angles. Fix: that happens only in a square.",
+   "Using a diagonal shorter than a side. Fix: a diagonal is always longer than each side, so such a rectangle cannot be made.",
+   "Changing the compass opening between the two arcs when finding an equidistant point. Fix: keep the same opening for both arcs from B and from C."
+  ],
+  "hi": [
+   "रचना करते समय परकार का खुलाव खिसक जाना, जिससे वक्र सही वृत्त नहीं बनता। सुधार: परकार को केवल ऊपर की घुंडी से पकड़िए, पटरी पर त्रिज्या मिलाइए, और बनाने से पहले फिर जाँचिए।",
+   "त्रिज्या को व्यास के बराबर रख देना। सुधार: 4 cm के टुकड़े पर अर्धवृत्त के लिए त्रिज्या 2 cm है, टुकड़े का आधा।",
+   "यह सोचना कि झुका (घुमाया) वर्ग हीरे जैसा दिखने के कारण वर्ग नहीं है। सुधार: घुमाने से भुजाएँ या कोण नहीं बदलते; S1 और S2 जाँचिए।",
+   "चार बराबर भुजाओं वाली हर आकृति को वर्ग कहना। सुधार: सभी कोण भी 90° होने चाहिए; नहीं तो वह समचतुर्भुज है।",
+   "कोनों के आर-पार कूदकर आयत का नाम रखना, जैसे ACBD। सुधार: आकृति के चारों ओर क्रम से कोने लिखिए, जैसे ABCD।",
+   "'लंब' को आँख से अंदाज़े से खींचना। सुधार: हमेशा चाँदा (90°) या सेट स्क्वायर प्रयोग कीजिए, नहीं तो आयत टेढ़ा बनेगा और अंतिम भुजा मेल नहीं खाएगी।",
+   "रचना की जाँच करना भूल जाना। सुधार: बनाने के बाद अंतिम भुजा और बचे कोण नापिए; वे गुणों से मेल खाने चाहिए।",
+   "यह सोचना कि आयत का विकर्ण कोने को हमेशा दो 45° कोणों में काटता है। सुधार: ऐसा केवल वर्ग में होता है।",
+   "भुजा से छोटा विकर्ण लेना। सुधार: विकर्ण हमेशा हर भुजा से लंबा होता है, इसलिए ऐसा आयत नहीं बन सकता।",
+   "समदूरस्थ बिंदु खोजते समय दोनों चापों के बीच परकार का खुलाव बदल देना। सुधार: B और C दोनों से चापों के लिए एक ही खुलाव रखिए।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Construction",
+    "hi": "रचना"
+   },
+   "d": {
+    "en": "Drawing a figure exactly using a ruler and a compass (and a protractor when needed).",
+    "hi": "पटरी और परकार (और ज़रूरत हो तो चाँदे) से सटीक आकृति बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Compass",
+    "hi": "परकार"
+   },
+   "d": {
+    "en": "A tool with a sharp tip and a pencil, used to draw circles and arcs and to copy lengths.",
+    "hi": "नुकीली नोक और पेंसिल वाला औज़ार, जिससे वृत्त और चाप बनते हैं और लंबाइयाँ उतारी जाती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ruler",
+    "hi": "पटरी"
+   },
+   "d": {
+    "en": "A straight edge with markings, used to draw straight lines and measure lengths.",
+    "hi": "निशानों वाली सीधी पट्टी, जिससे सीधी रेखाएँ खींची और लंबाइयाँ नापी जाती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Protractor",
+    "hi": "चाँदा"
+   },
+   "d": {
+    "en": "A tool to measure and draw angles in degrees.",
+    "hi": "कोणों को अंशों (डिग्री) में नापने और बनाने का औज़ार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rough sketch",
+    "hi": "कच्चा चित्र"
+   },
+   "d": {
+    "en": "A quick freehand drawing with labels, made to plan a construction.",
+    "hi": "रचना की योजना के लिए नामों सहित जल्दी हाथ से बनाया चित्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "Circle",
+    "hi": "वृत्त"
+   },
+   "d": {
+    "en": "All points at the same distance from a fixed point.",
+    "hi": "एक स्थिर बिंदु से बराबर दूरी वाले सभी बिंदु।"
+   }
+  },
+  {
+   "t": {
+    "en": "Centre",
+    "hi": "केंद्र"
+   },
+   "d": {
+    "en": "The fixed point of a circle.",
+    "hi": "वृत्त का स्थिर बिंदु।"
+   }
+  },
+  {
+   "t": {
+    "en": "Radius",
+    "hi": "त्रिज्या"
+   },
+   "d": {
+    "en": "The fixed distance from the centre to any point of the circle.",
+    "hi": "केंद्र से वृत्त के किसी भी बिंदु तक की स्थिर दूरी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Diameter",
+    "hi": "व्यास"
+   },
+   "d": {
+    "en": "A line through the centre joining two points of the circle; twice the radius.",
+    "hi": "केंद्र से होकर वृत्त के दो बिंदुओं को मिलाने वाली रेखा; त्रिज्या का दुगुना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Arc",
+    "hi": "चाप"
+   },
+   "d": {
+    "en": "A part of a circle.",
+    "hi": "वृत्त का एक भाग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Semicircle",
+    "hi": "अर्धवृत्त"
+   },
+   "d": {
+    "en": "Half of a circle, cut off by a diameter.",
+    "hi": "व्यास से कटा वृत्त का आधा भाग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Vertex (corner)",
+    "hi": "शीर्ष (कोना)"
+   },
+   "d": {
+    "en": "A point where two sides of a figure meet.",
+    "hi": "वह बिंदु जहाँ आकृति की दो भुजाएँ मिलती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Right angle",
+    "hi": "समकोण"
+   },
+   "d": {
+    "en": "An angle of 90°, like the corner of a page.",
+    "hi": "90° का कोण, जैसे पृष्ठ का कोना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Perpendicular",
+    "hi": "लंब"
+   },
+   "d": {
+    "en": "A line meeting another line at 90°.",
+    "hi": "किसी दूसरी रेखा से 90° पर मिलने वाली रेखा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rectangle",
+    "hi": "आयत"
+   },
+   "d": {
+    "en": "A quadrilateral with opposite sides equal and all angles 90°.",
+    "hi": "सम्मुख भुजाएँ बराबर और सभी कोण 90° वाला चतुर्भुज।"
+   }
+  },
+  {
+   "t": {
+    "en": "Square",
+    "hi": "वर्ग"
+   },
+   "d": {
+    "en": "A quadrilateral with all sides equal and all angles 90°.",
+    "hi": "सभी भुजाएँ बराबर और सभी कोण 90° वाला चतुर्भुज।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rhombus",
+    "hi": "समचतुर्भुज"
+   },
+   "d": {
+    "en": "A quadrilateral with all four sides equal; a square is a rhombus with right angles.",
+    "hi": "चारों भुजाएँ बराबर वाला चतुर्भुज; समकोणों वाला समचतुर्भुज वर्ग है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Diagonal",
+    "hi": "विकर्ण"
+   },
+   "d": {
+    "en": "A line joining two opposite corners of a quadrilateral.",
+    "hi": "चतुर्भुज के दो सम्मुख कोनों को मिलाने वाली रेखा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Equidistant",
+    "hi": "समदूरस्थ"
+   },
+   "d": {
+    "en": "At equal distances from two or more points.",
+    "hi": "दो या अधिक बिंदुओं से बराबर दूरी पर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Midpoint",
+    "hi": "मध्य-बिंदु"
+   },
+   "d": {
+    "en": "The point that divides a line segment into two equal halves.",
+    "hi": "वह बिंदु जो रेखाखंड को दो बराबर भागों में बाँटता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Perpendicular bisector",
+    "hi": "लंब समद्विभाजक"
+   },
+   "d": {
+    "en": "The line through the midpoint of a segment at 90° to it; every point on it is equidistant from the ends.",
+    "hi": "रेखाखंड के मध्य-बिंदु से उस पर 90° पर जाने वाली रेखा; उसका हर बिंदु सिरों से समदूरस्थ है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dot grid",
+    "hi": "बिंदु-ग्रिड"
+   },
+   "d": {
+    "en": "Paper with dots in rows and columns at equal gaps, used to draw shapes by counting steps.",
+    "hi": "बराबर दूरी पर पंक्तियों और स्तंभों में बिंदुओं वाला कागज़, जिस पर कदम गिनकर आकृतियाँ बनती हैं।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "A wave is drawn on a central line of 10 cm using 5 identical half circles. What compass radius do you need?",
+    "hi": "10 cm की केंद्रीय रेखा पर 5 एक जैसे अर्धवृत्तों से लहर बनाई गई है। परकार की कितनी त्रिज्या चाहिए?"
+   },
+   "a": {
+    "en": "Each piece = 10 ÷ 5 = 2 cm, which is a diameter. Radius = 2 ÷ 2 = 1 cm. The tip is placed at the midpoint of each piece (1 cm, 3 cm, 5 cm, 7 cm, 9 cm from the start).",
+    "hi": "हर टुकड़ा = 10 ÷ 5 = 2 cm, जो एक व्यास है। त्रिज्या = 2 ÷ 2 = 1 cm। नोक हर टुकड़े के मध्य-बिंदु पर रखी जाती है (शुरुआत से 1 cm, 3 cm, 5 cm, 7 cm, 9 cm पर)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "AB = 6 cm. A half circle is drawn on AB. If X is the midpoint of AB, what is AX and what is the radius?",
+    "hi": "AB = 6 cm है। AB पर एक अर्धवृत्त बनाया गया है। अगर X, AB का मध्य-बिंदु है, तो AX कितना है और त्रिज्या कितनी है?"
+   },
+   "a": {
+    "en": "X is the midpoint, so AX = 6 ÷ 2 = 3 cm. The centre of the half circle is X, so the radius = AX = 3 cm.",
+    "hi": "X मध्य-बिंदु है, इसलिए AX = 6 ÷ 2 = 3 cm। अर्धवृत्त का केंद्र X है, इसलिए त्रिज्या = AX = 3 cm।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Draw a circle of radius 3.5 cm. What is its diameter? Describe how you set the compass.",
+    "hi": "3.5 cm त्रिज्या का वृत्त बनाइए। इसका व्यास क्या है? बताइए परकार कैसे खोलेंगे।"
+   },
+   "a": {
+    "en": "Diameter = 2 × 3.5 = 7 cm.\nPlace the compass tip at 0 on the ruler and open the arm until the pencil is at 3.5 cm. Put the tip on the centre and turn fully.",
+    "hi": "व्यास = 2 × 3.5 = 7 cm।\nपरकार की नोक को पटरी के 0 पर रखिए और भुजा तब तक खोलिए जब तक पेंसिल 3.5 cm पर न हो। नोक को केंद्र पर रखकर पूरा घुमाइए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How can you draw flatter waves (each hump smaller than a half circle) on a central line, so that all humps are identical?",
+    "hi": "केंद्रीय रेखा पर चपटी लहरें (हर उभार अर्धवृत्त से छोटा) कैसे बनाएँगे, ताकि सभी उभार एक जैसे हों?"
+   },
+   "a": {
+    "en": "Use a radius bigger than half the piece. For a hump above the line, put the tip below the line at the point where arcs of that radius from both ends of the piece cross. Use the same radius and the same distance of the tip from the line for every hump, alternating sides. Because the radius and tip distance are the same, every hump is identical.",
+    "hi": "टुकड़े के आधे से बड़ी त्रिज्या लीजिए। रेखा के ऊपर के उभार के लिए नोक को रेखा के नीचे उस बिंदु पर रखिए जहाँ टुकड़े के दोनों सिरों से उस त्रिज्या के चाप कटते हैं। हर उभार के लिए वही त्रिज्या और रेखा से नोक की वही दूरी रखिए, बारी-बारी से दोनों ओर। त्रिज्या और नोक की दूरी समान होने से हर उभार एक जैसा है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write the two properties of a rectangle and the two properties of a square.",
+    "hi": "आयत के दो गुण और वर्ग के दो गुण लिखिए।"
+   },
+   "a": {
+    "en": "Rectangle: R1 opposite sides equal; R2 all angles 90°.\nSquare: S1 all sides equal; S2 all angles 90°.",
+    "hi": "आयत: R1 सम्मुख भुजाएँ बराबर; R2 सभी कोण 90°।\nवर्ग: S1 सभी भुजाएँ बराबर; S2 सभी कोण 90°।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Is every square a rectangle? Is every rectangle a square? Explain.",
+    "hi": "क्या हर वर्ग एक आयत है? क्या हर आयत एक वर्ग है? समझाइए।"
+   },
+   "a": {
+    "en": "Every square is a rectangle: all its sides are equal, so opposite sides are certainly equal (R1), and all angles are 90° (R2).\nNot every rectangle is a square: a 6 cm × 4 cm rectangle has unequal neighbouring sides, so S1 fails.",
+    "hi": "हर वर्ग आयत है: इसकी सभी भुजाएँ बराबर हैं, इसलिए सम्मुख भुजाएँ निश्चित ही बराबर हैं (R1), और सभी कोण 90° हैं (R2)।\nहर आयत वर्ग नहीं है: 6 cm × 4 cm के आयत की पड़ोसी भुजाएँ असमान हैं, इसलिए S1 लागू नहीं होता।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "A square card is turned so that it rests on one corner. Sonu says it is now a 'diamond' and not a square. Is he right?",
+    "hi": "एक वर्गाकार कार्ड को इतना घुमाया गया कि वह एक कोने पर टिका है। सोनू कहता है कि अब यह 'हीरा' है, वर्ग नहीं। क्या वह सही है?"
+   },
+   "a": {
+    "en": "No. Turning the card does not change its side lengths or angles. All sides are still equal and all angles still 90°, so it is still a square.",
+    "hi": "नहीं। कार्ड घुमाने से उसकी भुजाओं की लंबाई या कोण नहीं बदलते। सभी भुजाएँ अब भी बराबर और सभी कोण अब भी 90° हैं, इसलिए यह अब भी वर्ग है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "On a dot grid, describe a tilted square whose sides go 3 dots right and 1 dot up. List the steps for all four sides.",
+    "hi": "बिंदु-ग्रिड पर ऐसे झुके वर्ग का वर्णन कीजिए जिसकी भुजाएँ 3 बिंदु दाएँ और 1 बिंदु ऊपर जाती हैं। चारों भुजाओं के कदम लिखिए।"
+   },
+   "a": {
+    "en": "Side 1: 3 right, 1 up.\nSide 2 (quarter turn): 1 left, 3 up.\nSide 3: 3 left, 1 down.\nSide 4: 1 right, 3 down, back to the start.\nEvery side uses the steps 3 and 1, so all sides are equal, and each turn is a quarter turn, so all angles are 90°.",
+    "hi": "भुजा 1: 3 दाएँ, 1 ऊपर।\nभुजा 2 (चौथाई घुमाव): 1 बाएँ, 3 ऊपर।\nभुजा 3: 3 बाएँ, 1 नीचे।\nभुजा 4: 1 दाएँ, 3 नीचे, शुरुआत पर वापस।\nहर भुजा में 3 और 1 कदम हैं, इसलिए सभी भुजाएँ बराबर हैं, और हर मोड़ चौथाई घुमाव है, इसलिए सभी कोण 90° हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Construct a square ABCD of side 4.5 cm. Write the steps and how you will check it.",
+    "hi": "4.5 cm भुजा वाले वर्ग ABCD की रचना कीजिए। चरण लिखिए और बताइए कैसे जाँचेंगे।"
+   },
+   "a": {
+    "en": "1. Draw AB = 4.5 cm.\n2. Draw perpendiculars to AB at A and at B.\n3. With the compass at 4.5 cm, mark D on the perpendicular at A and C on the perpendicular at B.\n4. Join DC.\nCheck: DC = 4.5 cm and angles at C and D are 90°.",
+    "hi": "1. AB = 4.5 cm खींचिए।\n2. A और B पर AB पर लंब खींचिए।\n3. परकार 4.5 cm पर रखकर A वाले लंब पर D और B वाले लंब पर C अंकित कीजिए।\n4. DC मिलाइए।\nजाँच: DC = 4.5 cm और C व D पर कोण 90° हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Construct a rectangle PQRS with PQ = 7 cm and QR = 3 cm. What should PS and SR measure?",
+    "hi": "PQ = 7 cm और QR = 3 cm वाले आयत PQRS की रचना कीजिए। PS और SR कितने होने चाहिए?"
+   },
+   "a": {
+    "en": "Draw PQ = 7 cm, draw perpendiculars at P and Q, mark S and R at 3 cm on them, join SR.\nBy R1, opposite sides are equal: PS = QR = 3 cm and SR = PQ = 7 cm.",
+    "hi": "PQ = 7 cm खींचिए, P और Q पर लंब खींचिए, उन पर 3 cm पर S और R अंकित कीजिए, SR मिलाइए।\nR1 से सम्मुख भुजाएँ बराबर: PS = QR = 3 cm और SR = PQ = 7 cm।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Without measuring with the ruler, how would you construct a rectangle that breaks into 3 identical squares in a row?",
+    "hi": "पटरी से नापे बिना आप ऐसे आयत की रचना कैसे करेंगे जो एक पंक्ति में 3 एक जैसे वर्गों में टूटे?"
+   },
+   "a": {
+    "en": "Open the compass to any length s. On a line, mark A, then copy s three times: A to E, E to F, F to B, so AB = 3s. Draw perpendiculars at A, E, F and B and mark points at distance s on each with the same compass opening. Join the top points. The rectangle is 3s by s and the lines at E and F split it into 3 identical squares of side s.",
+    "hi": "परकार को किसी भी लंबाई s पर खोलिए। एक रेखा पर A अंकित करके s को तीन बार उतारिए: A से E, E से F, F से B, ताकि AB = 3s हो। A, E, F और B पर लंब खींचिए और उसी खुलाव से हर एक पर s दूरी पर बिंदु अंकित कीजिए। ऊपर के बिंदु मिलाइए। आयत 3s × s है और E तथा F वाली रेखाएँ उसे s भुजा के 3 एक जैसे वर्गों में बाँटती हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which of these rectangles can be broken into 2 identical squares: 3 cm × 6 cm, 4 cm × 6 cm, 5 cm × 10 cm, 4 cm × 12 cm?",
+    "hi": "इनमें से कौन-से आयत 2 एक जैसे वर्गों में टूट सकते हैं: 3 cm × 6 cm, 4 cm × 6 cm, 5 cm × 10 cm, 4 cm × 12 cm?"
+   },
+   "a": {
+    "en": "The length must be exactly 2 times the width.\n3 × 6: 6 = 2 × 3, yes. 4 × 6: no. 5 × 10: 10 = 2 × 5, yes. 4 × 12: 12 = 3 × 4, no (it breaks into 3 squares instead).\nAnswer: 3 cm × 6 cm and 5 cm × 10 cm.",
+    "hi": "लंबाई ठीक चौड़ाई की 2 गुनी होनी चाहिए।\n3 × 6: 6 = 2 × 3, हाँ। 4 × 6: नहीं। 5 × 10: 10 = 2 × 5, हाँ। 4 × 12: 12 = 3 × 4, नहीं (यह 3 वर्गों में टूटता है)।\nउत्तर: 3 cm × 6 cm और 5 cm × 10 cm।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Falling squares: squares of sides 5 cm, 7 cm and 3 cm stand side by side on one base line. How long is the base line they cover, and what is the height of the tallest step?",
+    "hi": "गिरते वर्ग: 5 cm, 7 cm और 3 cm भुजाओं वाले वर्ग एक आधार-रेखा पर साथ-साथ खड़े हैं। वे आधार-रेखा का कितना भाग घेरते हैं, और सबसे ऊँची सीढ़ी की ऊँचाई कितनी है?"
+   },
+   "a": {
+    "en": "Base length = 5 + 7 + 3 = 15 cm.\nEach square's height equals its side, so the tallest is 7 cm.\nTo construct: draw a 15 cm base, mark 5 cm and 12 cm, and build each square with perpendiculars and compass arcs of its own side.",
+    "hi": "आधार की लंबाई = 5 + 7 + 3 = 15 cm।\nहर वर्ग की ऊँचाई उसकी भुजा के बराबर है, इसलिए सबसे ऊँची 7 cm है।\nरचना: 15 cm का आधार खींचिए, 5 cm और 12 cm पर निशान लगाइए, और हर वर्ग को लंबों और अपनी भुजा के परकार-चापों से बनाइए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In a square of side 6 cm you want to draw a circular hole whose centre is the centre of the square. How do you find the centre?",
+    "hi": "6 cm भुजा के वर्ग में ऐसा वृत्ताकार छेद बनाना है जिसका केंद्र वर्ग का केंद्र हो। केंद्र कैसे खोजेंगे?"
+   },
+   "a": {
+    "en": "Draw both diagonals of the square. They cross at the centre (each diagonal is cut in half there). Put the compass tip at this point and draw the hole with any radius less than 3 cm so it stays inside the square.",
+    "hi": "वर्ग के दोनों विकर्ण खींचिए। वे केंद्र पर कटते हैं (वहाँ हर विकर्ण आधा-आधा होता है)। परकार की नोक इस बिंदु पर रखिए और 3 cm से कम किसी भी त्रिज्या से छेद बनाइए ताकि वह वर्ग के अंदर रहे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Rectangle ABCD has AB = 7 cm, BC = 4 cm. X moves on AD and Y on BC. Find XY when AX = 1 cm and BY = 1 cm, and say what shape ABYX is.",
+    "hi": "आयत ABCD में AB = 7 cm, BC = 4 cm है। X, AD पर और Y, BC पर खिसकते हैं। जब AX = 1 cm और BY = 1 cm हो, तो XY ज्ञात कीजिए और बताइए ABYX कौन-सी आकृति है।"
+   },
+   "a": {
+    "en": "AX = BY, so X and Y are at the same height and XY is level. ABYX has all angles 90° and opposite sides equal, so it is a rectangle (7 cm by 1 cm). XY = AB = 7 cm.",
+    "hi": "AX = BY, इसलिए X और Y एक ही ऊँचाई पर हैं और XY समतल है। ABYX के सभी कोण 90° और सम्मुख भुजाएँ बराबर हैं, इसलिए यह आयत है (7 cm × 1 cm)। XY = AB = 7 cm।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In the same rectangle (AB = 7 cm, BC = 4 cm), what are the shortest and the longest possible lengths of XY? Which is longer: XY with AX = 0, BY = 2, or XY with AX = 0, BY = 4?",
+    "hi": "उसी आयत (AB = 7 cm, BC = 4 cm) में XY की सबसे छोटी और सबसे लंबी संभव लंबाई क्या है? कौन लंबी है: AX = 0, BY = 2 वाली XY, या AX = 0, BY = 4 वाली XY?"
+   },
+   "a": {
+    "en": "Shortest: 7 cm (when AX = BY).\nLongest: a diagonal, AC or BD, about 8.1 cm.\nWith AX = 0, BY = 4, Y is at C and XY = AC, the longest. With BY = 2, XY is about 7.3 cm. So the second one (BY = 4) is longer.",
+    "hi": "सबसे छोटी: 7 cm (जब AX = BY)।\nसबसे लंबी: एक विकर्ण, AC या BD, लगभग 8.1 cm।\nAX = 0, BY = 4 पर Y, C पर है और XY = AC, सबसे लंबी। BY = 2 पर XY लगभग 7.3 cm है। इसलिए दूसरी (BY = 4) लंबी है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the diagonals of rectangle KLMN. If KM = 9 cm, what is LN?",
+    "hi": "आयत KLMN के विकर्णों के नाम लिखिए। अगर KM = 9 cm है, तो LN कितना है?"
+   },
+   "a": {
+    "en": "The diagonals join opposite corners: KM and LN.\nThe diagonals of a rectangle are equal, so LN = 9 cm.",
+    "hi": "विकर्ण सम्मुख कोनों को मिलाते हैं: KM और LN।\nआयत के विकर्ण बराबर होते हैं, इसलिए LN = 9 cm।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In a rectangle, a diagonal makes 35° with one side. What angle does it make with the other side at the same corner? Could this rectangle be a square?",
+    "hi": "एक आयत में एक विकर्ण एक भुजा से 35° बनाता है। उसी कोने पर वह दूसरी भुजा से कितना कोण बनाता है? क्या यह आयत वर्ग हो सकता है?"
+   },
+   "a": {
+    "en": "The corner is 90°, so the other part is 90° - 35° = 55°.\nIn a square both parts would be 45°, so this rectangle is not a square.",
+    "hi": "कोना 90° है, इसलिए दूसरा भाग 90° - 35° = 55° है।\nवर्ग में दोनों भाग 45° होते, इसलिए यह आयत वर्ग नहीं है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Construct a rectangle in which a diagonal divides the corner angle into 50° and 40°. Write the steps.",
+    "hi": "ऐसे आयत की रचना कीजिए जिसमें विकर्ण कोने के कोण को 50° और 40° में बाँटे। चरण लिखिए।"
+   },
+   "a": {
+    "en": "1. Draw AB = 5 cm (any length).\n2. Draw a perpendicular to AB at B.\n3. At A draw a ray at 40° to AB; it meets the perpendicular at C. Now angle CAB = 40°, so angle CAD will be 50°.\n4. Draw a perpendicular at A and mark D with AD = BC (copy with the compass).\n5. Join DC.\nCheck: BC is about 4.2 cm, DC = 5 cm, angles 90°.",
+    "hi": "1. AB = 5 cm (कोई भी लंबाई) खींचिए।\n2. B पर AB पर लंब खींचिए।\n3. A पर AB से 40° पर किरण खींचिए; यह लंब से C पर मिलती है। अब कोण CAB = 40°, इसलिए कोण CAD = 50° होगा।\n4. A पर लंब खींचिए और परकार से उतारकर AD = BC पर D अंकित कीजिए।\n5. DC मिलाइए।\nजाँच: BC लगभग 4.2 cm, DC = 5 cm, कोण 90°।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Construct a rectangle where a diagonal splits the corner into 45° and 45°. What kind of rectangle do you get?",
+    "hi": "ऐसे आयत की रचना कीजिए जहाँ विकर्ण कोने को 45° और 45° में बाँटे। आपको किस तरह का आयत मिलता है?"
+   },
+   "a": {
+    "en": "Draw AB, a perpendicular at B, and a 45° ray from A meeting it at C. Then BC turns out equal to AB. Completing the rectangle gives all sides equal.\nAnswer: a square. A diagonal splits the corner equally only in a square.",
+    "hi": "AB खींचिए, B पर लंब, और A से 45° की किरण जो उससे C पर मिले। तब BC, AB के बराबर निकलती है। आयत पूरा करने पर सभी भुजाएँ बराबर होती हैं।\nउत्तर: वर्ग। विकर्ण कोने को केवल वर्ग में ही बराबर बाँटता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Construct a rectangle with one side 4 cm and a diagonal 8 cm. About how long is the other side?",
+    "hi": "4 cm की एक भुजा और 8 cm के विकर्ण वाले आयत की रचना कीजिए। दूसरी भुजा लगभग कितनी लंबी है?"
+   },
+   "a": {
+    "en": "1. Draw AB = 4 cm.\n2. Draw a perpendicular at B.\n3. With the compass at 8 cm and the tip at A, cut the perpendicular at C (AC = 8 cm).\n4. Draw a perpendicular at A, mark D with AD = BC, join DC.\nMeasuring gives BC ≈ 6.9 cm.",
+    "hi": "1. AB = 4 cm खींचिए।\n2. B पर लंब खींचिए।\n3. परकार 8 cm पर और नोक A पर रखकर लंब को C पर काटिए (AC = 8 cm)।\n4. A पर लंब खींचिए, AD = BC पर D अंकित करके DC मिलाइए।\nनापने पर BC ≈ 6.9 cm आता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Construct a rectangle with side 3 cm and diagonal 7 cm, and also try one with side 6 cm and diagonal 5 cm. What happens?",
+    "hi": "3 cm भुजा और 7 cm विकर्ण वाले आयत की रचना कीजिए, और 6 cm भुजा तथा 5 cm विकर्ण वाला भी बनाने का प्रयास कीजिए। क्या होता है?"
+   },
+   "a": {
+    "en": "First: draw AB = 3 cm, perpendicular at B, 7 cm arc from A cuts it at C; complete. The other side is about 6.3 cm.\nSecond: a 5 cm arc from A cannot reach the perpendicular at B because AB = 6 cm is already longer than 5 cm. Such a rectangle is impossible: the diagonal must be longer than each side.",
+    "hi": "पहला: AB = 3 cm खींचिए, B पर लंब, A से 7 cm का चाप उसे C पर काटता है; पूरा कीजिए। दूसरी भुजा लगभग 6.3 cm है।\nदूसरा: A से 5 cm का चाप B वाले लंब तक नहीं पहुँच सकता क्योंकि AB = 6 cm पहले ही 5 cm से लंबा है। ऐसा आयत असंभव है: विकर्ण हर भुजा से लंबा होना चाहिए।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Points P and Q are 8 cm apart. Find a point R that is 6 cm from P and 6 cm from Q. How many such points are there?",
+    "hi": "बिंदु P और Q के बीच 8 cm की दूरी है। ऐसा बिंदु R खोजिए जो P से 6 cm और Q से 6 cm दूर हो। ऐसे कितने बिंदु हैं?"
+   },
+   "a": {
+    "en": "Set the compass to 6 cm, draw arcs from P and from Q. They cross above PQ and below PQ. Each crossing point is 6 cm from both.\nAnswer: 2 such points.",
+    "hi": "परकार 6 cm पर रखकर P और Q से चाप लगाइए। वे PQ के ऊपर और नीचे कटते हैं। हर कटान-बिंदु दोनों से 6 cm दूर है।\nउत्तर: ऐसे 2 बिंदु।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Construct a triangle with all sides 5 cm, using the idea of equidistant points.",
+    "hi": "समदूरस्थ बिंदुओं के विचार से सभी भुजाएँ 5 cm वाले त्रिभुज की रचना कीजिए।"
+   },
+   "a": {
+    "en": "1. Draw BC = 5 cm.\n2. With the compass at 5 cm, draw arcs from B and from C; they cross at A.\n3. Join AB and AC.\nCheck: AB = AC = BC = 5 cm. This is the roof of the house construction.",
+    "hi": "1. BC = 5 cm खींचिए।\n2. परकार 5 cm पर रखकर B और C से चाप लगाइए; वे A पर कटते हैं।\n3. AB और AC मिलाइए।\nजाँच: AB = AC = BC = 5 cm। यही घर की रचना की छत है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Construct a bigger house in which all border lines are 7 cm. List the steps.",
+    "hi": "ऐसे बड़े घर की रचना कीजिए जिसकी सभी किनारे की रेखाएँ 7 cm हों। चरण लिखिए।"
+   },
+   "a": {
+    "en": "1. Draw the floor ED = 7 cm.\n2. Draw perpendiculars at E and D and mark B and C at 7 cm; join BC. BCDE is a square of side 7 cm.\n3. With the compass at 7 cm draw arcs from B and C above BC; they cross at A. Join AB and AC.\n4. With the tip at A and radius 7 cm, draw the arc from B to C.\nCheck every border line is 7 cm.",
+    "hi": "1. फ़र्श ED = 7 cm खींचिए।\n2. E और D पर लंब खींचिए और 7 cm पर B और C अंकित करके BC मिलाइए। BCDE, 7 cm भुजा का वर्ग है।\n3. परकार 7 cm पर रखकर BC के ऊपर B और C से चाप लगाइए; वे A पर कटते हैं। AB और AC मिलाइए।\n4. नोक A पर और त्रिज्या 7 cm रखकर B से C तक चाप बनाइए।\nजाँचिए कि हर किनारे की रेखा 7 cm है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Construct a four-sided figure with all sides 4 cm that is NOT a square. Explain why it is not a square.",
+    "hi": "सभी भुजाएँ 4 cm वाली ऐसी चतुर्भुज आकृति बनाइए जो वर्ग न हो। समझाइए कि यह वर्ग क्यों नहीं है।"
+   },
+   "a": {
+    "en": "1. Draw PQ = 4 cm.\n2. With the tip at P, draw a 4 cm arc and pick S on it so that angle QPS is, say, 60° (not 90°).\n3. With the compass at 4 cm, draw arcs from Q and from S; they cross at R.\n4. Join QR and SR.\nAll sides are 4 cm, but angle P is 60°, not 90°, so S2 fails: it is a rhombus, not a square.",
+    "hi": "1. PQ = 4 cm खींचिए।\n2. नोक P पर रखकर 4 cm का चाप लगाइए और उस पर S ऐसे चुनिए कि कोण QPS, मान लीजिए, 60° हो (90° नहीं)।\n3. परकार 4 cm पर रखकर Q और S से चाप लगाइए; वे R पर कटते हैं।\n4. QR और SR मिलाइए।\nसभी भुजाएँ 4 cm हैं, पर कोण P, 60° है, 90° नहीं, इसलिए S2 लागू नहीं होता: यह समचतुर्भुज है, वर्ग नहीं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Square with curves: on a square of side 8 cm, an identical arc of radius 5 cm bulging outward is drawn on each side, passing through both ends of that side. Where must the compass tip be placed for the arc on the bottom side?",
+    "hi": "वक्रों वाला वर्ग: 8 cm भुजा के वर्ग की हर भुजा पर 5 cm त्रिज्या का बाहर उभरा एक जैसा चाप बनाया गया है, जो उस भुजा के दोनों सिरों से गुज़रता है। नीचे की भुजा के चाप के लिए परकार की नोक कहाँ रखनी होगी?"
+   },
+   "a": {
+    "en": "The tip must be 5 cm from both ends of the bottom side, so it is where 5 cm arcs from the two bottom corners cross inside the square. This point is on the vertical line through the middle of the square, 3 cm above the bottom side (half the side is 4 cm, and a point 5 cm from both ends is 3 cm above the midpoint). For the other three sides use the matching points 3 cm inside each side, keeping the radius 5 cm.",
+    "hi": "नोक नीचे की भुजा के दोनों सिरों से 5 cm दूर होनी चाहिए, इसलिए यह वहाँ है जहाँ नीचे के दोनों कोनों से 5 cm के चाप वर्ग के अंदर कटते हैं। यह बिंदु वर्ग के बीच से जाने वाली खड़ी रेखा पर, नीचे की भुजा से 3 cm ऊपर है (भुजा का आधा 4 cm है, और दोनों सिरों से 5 cm दूर बिंदु मध्य-बिंदु से 3 cm ऊपर है)। बाकी तीन भुजाओं के लिए हर भुजा से 3 cm अंदर मिलते-जुलते बिंदु लीजिए, त्रिज्या 5 cm रखते हुए।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A ruler draws straight lines and measures lengths; a compass draws circles and arcs and copies lengths; a protractor makes 90° and other angles.",
+   "Every point on a circle is the same distance, the radius, from the centre; the diameter is twice the radius.",
+   "To mark a point at a given distance from a point, draw an arc with that radius.",
+   "Artwork such as waves and eyes is made from arcs; finding the right compass position often needs planning and estimation.",
+   "A rough sketch with labels helps plan every construction.",
+   "Rectangle: opposite sides equal (R1) and all angles 90° (R2). Square: all sides equal (S1) and all angles 90° (S2).",
+   "Name a quadrilateral by going around its corners in order; rotation does not change a square or rectangle.",
+   "Construct a square or rectangle with a base, perpendiculars at its ends, compass arcs for the sides, and then check the last side and angles.",
+   "A rectangle breaks into 2 (or 3) identical squares in a row only when its length is 2 (or 3) times its width.",
+   "If X and Y move on opposite sides of a rectangle, XY is shortest when level (equal to the other side) and longest along a diagonal.",
+   "The diagonals of a rectangle are equal and bisect each other; in a square they also cut each corner into 45° and 45° and cross at 90°.",
+   "A rectangle can be constructed from one side and a diagonal, or from a side and the angle a diagonal makes; a diagonal is always longer than a side.",
+   "Points at equal distances from two points B and C are found where equal arcs from B and C cross; all such points lie on the perpendicular bisector of BC.",
+   "The house figure uses a square for the walls and an equidistant point for the roof top."
+  ],
+  "hi": [
+   "पटरी सीधी रेखाएँ खींचती और लंबाइयाँ नापती है; परकार वृत्त और चाप बनाता और लंबाइयाँ उतारता है; चाँदा 90° और दूसरे कोण बनाता है।",
+   "वृत्त का हर बिंदु केंद्र से एक ही दूरी, त्रिज्या, पर होता है; व्यास त्रिज्या का दुगुना है।",
+   "किसी बिंदु से दी गई दूरी पर बिंदु अंकित करने के लिए उस त्रिज्या का चाप लगाइए।",
+   "लहरें और आँखें जैसी कलाकृतियाँ चापों से बनती हैं; परकार की सही स्थिति खोजने में अक्सर योजना और अनुमान लगता है।",
+   "नामों सहित कच्चा चित्र हर रचना की योजना में मदद करता है।",
+   "आयत: सम्मुख भुजाएँ बराबर (R1) और सभी कोण 90° (R2)। वर्ग: सभी भुजाएँ बराबर (S1) और सभी कोण 90° (S2)।",
+   "चतुर्भुज का नाम उसके कोनों के चारों ओर क्रम से चलकर रखिए; घुमाने से वर्ग या आयत नहीं बदलता।",
+   "वर्ग या आयत की रचना आधार, उसके सिरों पर लंब, भुजाओं के लिए परकार-चाप से कीजिए, फिर अंतिम भुजा और कोण जाँचिए।",
+   "आयत एक पंक्ति में 2 (या 3) एक जैसे वर्गों में तभी टूटता है जब उसकी लंबाई चौड़ाई की 2 (या 3) गुनी हो।",
+   "अगर X और Y आयत की सम्मुख भुजाओं पर खिसकें, तो XY समतल होने पर सबसे छोटी (दूसरी भुजा के बराबर) और विकर्ण पर सबसे लंबी होती है।",
+   "आयत के विकर्ण बराबर होते हैं और एक-दूसरे को समद्विभाजित करते हैं; वर्ग में वे हर कोने को 45° और 45° में भी काटते हैं और 90° पर कटते हैं।",
+   "आयत की रचना एक भुजा और विकर्ण से, या एक भुजा और विकर्ण के कोण से हो सकती है; विकर्ण हमेशा भुजा से लंबा होता है।",
+   "दो बिंदुओं B और C से बराबर दूरी के बिंदु वहाँ मिलते हैं जहाँ B और C से बराबर चाप कटते हैं; ऐसे सभी बिंदु BC के लंब समद्विभाजक पर हैं।",
+   "घर की आकृति में दीवारों के लिए वर्ग और छत के शिखर के लिए समदूरस्थ बिंदु का प्रयोग होता है।"
+  ]
+ }
+}
