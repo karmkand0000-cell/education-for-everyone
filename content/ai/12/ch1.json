@@ -1,0 +1,1824 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "12",
+ "id": "ch1",
+ "intro": {
+  "en": "This chapter takes your Class XI Python further into real data work. You will revise the NumPy and Pandas libraries, create and change Series and DataFrames, move data between CSV files and DataFrames, find and fix missing values, and finally build your first machine learning model with Linear Regression. Every program here has been run, and its real output is shown, so you can type it in Google Colab or Jupyter and check your result.",
+  "hi": "यह अध्याय कक्षा XI की Python को असली data के काम तक ले जाता है। आप NumPy और Pandas लाइब्रेरी दोहराएँगे, Series और DataFrames बनाएँगे और बदलेंगे, CSV फ़ाइलों और DataFrames के बीच data ले जाएँगे, छूटे मानों को खोजकर ठीक करेंगे, और अंत में Linear Regression से अपना पहला machine learning model बनाएँगे। यहाँ का हर प्रोग्राम चलाकर देखा गया है और उसका असली आउटपुट दिखाया गया है, ताकि आप उसे Google Colab या Jupyter में टाइप करके अपना परिणाम मिला सकें।"
+ },
+ "learn": {
+  "en": [
+   "Why libraries such as NumPy, Pandas, Matplotlib and scikit-learn are used in AI",
+   "NumPy arrays: creation, attributes, vectorised operations, indexing, slicing, filtering and axis",
+   "Pandas Series and DataFrame, and the different ways to create them",
+   "Adding, updating, selecting and deleting rows and columns",
+   "DataFrame attributes: index, columns, shape, size, dtypes, head(), tail()",
+   "Exporting a DataFrame with to_csv() and importing a CSV with read_csv(), including in Google Colab",
+   "Detecting missing values with isnull() and handling them with dropna() and fillna()",
+   "The idea of Linear Regression, y = mx + c and the best-fit line",
+   "Building, testing and using a Linear Regression model in Python"
+  ],
+  "hi": [
+   "AI में NumPy, Pandas, Matplotlib और scikit-learn जैसी लाइब्रेरी क्यों इस्तेमाल होती हैं",
+   "NumPy arrays: बनाना, attributes, vectorised क्रियाएँ, indexing, slicing, filtering और axis",
+   "Pandas की Series और DataFrame, और उन्हें बनाने के अलग-अलग तरीके",
+   "Rows और columns को जोड़ना, बदलना, चुनना और हटाना",
+   "DataFrame के attributes: index, columns, shape, size, dtypes, head(), tail()",
+   "to_csv() से DataFrame export करना और read_csv() से CSV import करना, Google Colab में भी",
+   "isnull() से छूटे मान पहचानना और dropna() तथा fillna() से उन्हें संभालना",
+   "Linear Regression का विचार, y = mx + c और best-fit line",
+   "Python में Linear Regression model बनाना, जाँचना और उपयोग करना"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "1.1 Why Python libraries matter in AI",
+    "hi": "1.1 AI में Python लाइब्रेरी क्यों ज़रूरी हैं"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Class XI you learnt the basics of Python: variables, data types, lists, dictionaries, loops, functions and simple programs. Real AI projects, however, work with thousands or even millions of rows of data, such as UPI transactions, crop yields of every district, or ball-by-ball cricket scores. Writing every calculation yourself with loops would be slow and full of mistakes. So data scientists use ready-made Python libraries that already contain well-tested code for these jobs.",
+      "hi": "कक्षा XI में आपने Python की बुनियादी बातें सीखीं: variables, data types, lists, dictionaries, loops, functions और छोटे प्रोग्राम। लेकिन असली AI प्रोजेक्ट हज़ारों या लाखों पंक्तियों वाले data पर काम करते हैं, जैसे UPI लेन-देन, हर ज़िले की फ़सल पैदावार या क्रिकेट मैच का गेंद-दर-गेंद स्कोर। हर गणना loops से ख़ुद लिखना धीमा भी होगा और ग़लतियों से भरा भी। इसलिए data scientists तैयार Python लाइब्रेरी का उपयोग करते हैं, जिनमें इन कामों के लिए पहले से जाँचा-परखा code मौजूद होता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Library",
+       "hi": "लाइब्रेरी (Library)"
+      },
+      "text": {
+       "en": "A library is a collection of pre-written modules, functions and classes that you can import into your program and reuse, instead of writing the same code again.",
+       "hi": "लाइब्रेरी पहले से लिखे गए modules, functions और classes का संग्रह है, जिसे आप अपने प्रोग्राम में import करके दोबारा उपयोग कर सकते हैं, ताकि वही code बार-बार न लिखना पड़े।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Library",
+        "Main use in AI / data science"
+       ],
+       "hi": [
+        "लाइब्रेरी",
+        "AI / data science में मुख्य उपयोग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "NumPy",
+         "Fast maths on arrays (lists of numbers), the base of most other libraries"
+        ],
+        [
+         "Pandas",
+         "Storing, cleaning and analysing tables of data (rows and columns)"
+        ],
+        [
+         "Matplotlib / Seaborn",
+         "Drawing graphs and charts of data"
+        ],
+        [
+         "Scikit-learn (sklearn)",
+         "Ready-made machine learning algorithms such as Linear Regression and Decision Tree, plus evaluation tools"
+        ]
+       ],
+       "hi": [
+        [
+         "NumPy",
+         "arrays (संख्याओं की सूचियों) पर तेज़ गणित; ज़्यादातर दूसरी लाइब्रेरी का आधार"
+        ],
+        [
+         "Pandas",
+         "data की तालिकाओं (rows और columns) को रखना, साफ़ करना और विश्लेषण करना"
+        ],
+        [
+         "Matplotlib / Seaborn",
+         "data के graph और chart बनाना"
+        ],
+        [
+         "Scikit-learn (sklearn)",
+         "Linear Regression और Decision Tree जैसे तैयार machine learning algorithms तथा मूल्यांकन के उपकरण"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "To use a library you first import it. By convention NumPy is imported with the short name (alias) np and Pandas with the alias pd. An alias only saves typing; it does not change how the library works.",
+      "hi": "किसी लाइब्रेरी का उपयोग करने से पहले उसे import करना होता है। परंपरा के अनुसार NumPy को छोटे नाम (alias) np और Pandas को alias pd के साथ import किया जाता है। alias केवल टाइपिंग बचाता है; इससे लाइब्रेरी के काम करने का तरीका नहीं बदलता।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\nimport pandas as pd",
+      "hi": "import numpy as np\nimport pandas as pd"
+     }
+    },
+    {
+     "p": {
+      "en": "Where do you run this code? The CBSE material uses Google Colab, a free online notebook from Google that runs Python in the browser, even on a phone or a low-cost laptop, and already has NumPy, Pandas, Matplotlib and scikit-learn installed. You can also use Jupyter Notebook (via Anaconda) or any Python IDE on your computer, where a missing library is installed with the command pip install pandas. Colab needs a Google account; students under 13 should use it only with a parent's or teacher's help.",
+      "hi": "यह code कहाँ चलाएँ? CBSE सामग्री Google Colab का उपयोग करती है, जो Google की एक मुफ़्त online notebook है। यह browser में ही Python चलाती है, फ़ोन या सस्ते laptop पर भी, और इसमें NumPy, Pandas, Matplotlib और scikit-learn पहले से installed होते हैं। आप Jupyter Notebook (Anaconda के ज़रिए) या अपने कंप्यूटर के किसी भी Python IDE का उपयोग भी कर सकते हैं; वहाँ कोई लाइब्रेरी न हो तो pip install pandas जैसे command से install करते हैं। Colab के लिए Google account चाहिए; 13 वर्ष से कम आयु के विद्यार्थी इसे माता-पिता या शिक्षक की मदद से ही इस्तेमाल करें।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: this unit is assessed through practical work. Type and run every program yourself in Colab or Jupyter; reading code is not enough.",
+      "hi": "याद रखें: इस इकाई का मूल्यांकन practical काम से होता है। हर प्रोग्राम ख़ुद Colab या Jupyter में टाइप करके चलाइए; केवल code पढ़ना काफ़ी नहीं है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.2 Recap of NumPy: arrays",
+    "hi": "1.2 NumPy का पुनरावलोकन: arrays"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "NumPy stands for Numerical Python. Its central object is the ndarray (n-dimensional array): a grid of values that are all of the same data type. A 1-D array looks like a list, a 2-D array looks like a table with rows and columns, and arrays can have even more dimensions (for example, a colour image is stored as a 3-D array of height × width × colour channels).",
+      "hi": "NumPy का पूरा नाम Numerical Python है। इसकी मुख्य वस्तु ndarray (n-dimensional array) है: मानों का एक ग्रिड, जिसके सभी मान एक ही data type के होते हैं। 1-D array एक list जैसा दिखता है, 2-D array rows और columns वाली तालिका जैसा, और arrays की इससे भी अधिक dimensions हो सकती हैं (जैसे एक रंगीन चित्र ऊँचाई × चौड़ाई × रंग-चैनल वाले 3-D array के रूप में रखा जाता है)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Python list",
+        "NumPy array"
+       ],
+       "hi": [
+        "Python list",
+        "NumPy array"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Can mix types, e.g. [5, 'Ravi', 3.2]",
+         "All items have one type (homogeneous)"
+        ],
+        [
+         "Slower for big numeric work",
+         "Much faster; stored in a compact block of memory"
+        ],
+        [
+         "[1,2] + [3,4] joins the lists: [1, 2, 3, 4]",
+         "np.array([1,2]) + np.array([3,4]) adds item by item: [4 6]"
+        ],
+        [
+         "Needs a loop to add 5 to every item",
+         "marks + 5 adds 5 to every item at once (vectorised)"
+        ]
+       ],
+       "hi": [
+        [
+         "अलग-अलग types मिला सकते हैं, जैसे [5, 'Ravi', 3.2]",
+         "सभी items एक ही type के (समरूप)"
+        ],
+        [
+         "बड़े संख्यात्मक काम में धीमी",
+         "बहुत तेज़; memory के एक सघन खंड में रखा जाता है"
+        ],
+        [
+         "[1,2] + [3,4] lists को जोड़ देता है: [1, 2, 3, 4]",
+         "np.array([1,2]) + np.array([3,4]) item-दर-item जोड़ता है: [4 6]"
+        ],
+        [
+         "हर item में 5 जोड़ने के लिए loop चाहिए",
+         "marks + 5 एक साथ हर item में 5 जोड़ देता है (vectorised)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The program below creates a 1-D array of five students' marks and shows its attributes, an arithmetic operation, built-in statistics, slicing and boolean filtering.",
+      "hi": "नीचे का प्रोग्राम पाँच विद्यार्थियों के अंकों का 1-D array बनाता है और उसके attributes, एक गणितीय क्रिया, अंतर्निहित आँकड़े, slicing और boolean filtering दिखाता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport numpy as np\nmarks = np.array([78, 85, 62, 90, 71])\nprint(marks)\nprint(type(marks))\nprint(marks.ndim, marks.shape, marks.size, marks.dtype)\nprint(marks + 5)\nprint(marks.mean(), marks.max(), marks.min())\nprint(marks[1:4])\nprint(marks[marks > 75])",
+      "hi": "प्रोग्राम:\nimport numpy as np\nmarks = np.array([78, 85, 62, 90, 71])\nprint(marks)\nprint(type(marks))\nprint(marks.ndim, marks.shape, marks.size, marks.dtype)\nprint(marks + 5)\nprint(marks.mean(), marks.max(), marks.min())\nprint(marks[1:4])\nprint(marks[marks > 75])"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n[78 85 62 90 71]\n<class 'numpy.ndarray'>\n1 (5,) 5 int64\n[83 90 67 95 76]\n77.2 90 62\n[85 62 90]\n[78 85 90]",
+      "hi": "आउटपुट:\n[78 85 62 90 71]\n<class 'numpy.ndarray'>\n1 (5,) 5 int64\n[83 90 67 95 76]\n77.2 90 62\n[85 62 90]\n[78 85 90]"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "ndim = number of dimensions (1 here); shape = size along each dimension, a tuple (5,); size = total number of items (5); dtype = data type of the items (int64 means 64-bit integers).",
+       "marks + 5 is a vectorised operation: it is applied to every item without a loop.",
+       "mean(), max(), min() (and sum(), std()) give quick statistics.",
+       "marks[1:4] is slicing: items at positions 1, 2 and 3 (the stop position 4 is excluded). Indexing starts from 0.",
+       "marks[marks > 75] is boolean filtering: the condition makes an array of True/False and only the True items are kept."
+      ],
+      "hi": [
+       "ndim = dimensions की संख्या (यहाँ 1); shape = हर dimension में आकार, एक tuple (5,); size = कुल items की संख्या (5); dtype = items का data type (int64 यानी 64-bit पूर्णांक)।",
+       "marks + 5 एक vectorised क्रिया है: यह बिना loop के हर item पर लागू होती है।",
+       "mean(), max(), min() (और sum(), std()) झटपट आँकड़े देते हैं।",
+       "marks[1:4] slicing है: स्थान 1, 2 और 3 वाले items (रुकने वाला स्थान 4 शामिल नहीं होता)। Indexing 0 से शुरू होती है।",
+       "marks[marks > 75] boolean filtering है: शर्त True/False का array बनाती है और केवल True वाले items रखे जाते हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "A 2-D array is like a small table. You reach an item with [row, column]. The axis argument decides the direction of a calculation: axis=0 works down the columns (one answer per column), axis=1 works across the rows (one answer per row). NumPy also has helper functions to create arrays quickly.",
+      "hi": "2-D array एक छोटी तालिका जैसा है। किसी item तक [row, column] से पहुँचते हैं। axis argument गणना की दिशा तय करता है: axis=0 columns में नीचे की ओर काम करता है (हर column का एक उत्तर), axis=1 rows में आड़े काम करता है (हर row का एक उत्तर)। NumPy में arrays जल्दी बनाने के सहायक functions भी हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport numpy as np\ntable = np.array([[10, 20, 30], [40, 50, 60]])\nprint(table)\nprint(table.shape, table.ndim)\nprint(table[1, 2])\nprint(table.sum(axis=0))\nprint(table.sum(axis=1))\nprint(np.zeros(3), np.ones((2, 2)))\nprint(np.arange(0, 10, 3))\nprint(table.reshape(3, 2))",
+      "hi": "प्रोग्राम:\nimport numpy as np\ntable = np.array([[10, 20, 30], [40, 50, 60]])\nprint(table)\nprint(table.shape, table.ndim)\nprint(table[1, 2])\nprint(table.sum(axis=0))\nprint(table.sum(axis=1))\nprint(np.zeros(3), np.ones((2, 2)))\nprint(np.arange(0, 10, 3))\nprint(table.reshape(3, 2))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n[[10 20 30]\n [40 50 60]]\n(2, 3) 2\n60\n[50 70 90]\n[ 60 150]\n[0. 0. 0.] [[1. 1.]\n [1. 1.]]\n[0 3 6 9]\n[[10 20]\n [30 40]\n [50 60]]",
+      "hi": "आउटपुट:\n[[10 20 30]\n [40 50 60]]\n(2, 3) 2\n60\n[50 70 90]\n[ 60 150]\n[0. 0. 0.] [[1. 1.]\n [1. 1.]]\n[0 3 6 9]\n[[10 20]\n [30 40]\n [50 60]]"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Function",
+        "What it makes"
+       ],
+       "hi": [
+        "Function",
+        "क्या बनाता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "np.array(list)",
+         "An array from a list (or list of lists for 2-D)"
+        ],
+        [
+         "np.zeros(n) / np.ones((r, c))",
+         "An array filled with 0s / 1s (as floats)"
+        ],
+        [
+         "np.arange(start, stop, step)",
+         "Evenly spaced numbers, like range(); stop is excluded"
+        ],
+        [
+         "arr.reshape(r, c)",
+         "Same items arranged in a new shape; r × c must equal size"
+        ],
+        [
+         "np.nan",
+         "A special 'Not a Number' value used to mark missing data"
+        ]
+       ],
+       "hi": [
+        [
+         "np.array(list)",
+         "list से array (2-D के लिए lists की list से)"
+        ],
+        [
+         "np.zeros(n) / np.ones((r, c))",
+         "0 / 1 से भरा array (float के रूप में)"
+        ],
+        [
+         "np.arange(start, stop, step)",
+         "समान अंतराल वाली संख्याएँ, range() जैसी; stop शामिल नहीं"
+        ],
+        [
+         "arr.reshape(r, c)",
+         "वही items नए आकार में; r × c का गुणनफल size के बराबर होना चाहिए"
+        ],
+        [
+         "np.nan",
+         "'Not a Number' नाम का विशेष मान, जो छूटे हुए data को दिखाने में काम आता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: the old spelling np.NaN still appears in many books, but newer NumPy versions (2.0 onwards) removed it. Always write np.nan in lowercase.",
+      "hi": "याद रखें: पुरानी वर्तनी np.NaN कई किताबों में अब भी दिखती है, पर NumPy के नए संस्करणों (2.0 से आगे) में यह हटा दी गई है। हमेशा छोटे अक्षरों में np.nan लिखें।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A shop records daily sales (in ₹) for a week: 1200, 950, 1430, 800, 1600, 2100, 1750. Using NumPy, how would you find the total sales and the days with sales above ₹1500?",
+       "hi": "एक दुकान सप्ताह भर की दैनिक बिक्री (₹ में) दर्ज करती है: 1200, 950, 1430, 800, 1600, 2100, 1750। NumPy से कुल बिक्री और ₹1500 से अधिक बिक्री वाले दिन कैसे पता करेंगे?"
+      },
+      "a": {
+       "en": "Step 1: sales = np.array([1200, 950, 1430, 800, 1600, 2100, 1750])\nStep 2: Total = sales.sum() gives 9830.\nStep 3: sales[sales > 1500] gives [1600 2100 1750].\nStep 4: To get day numbers instead of values, use np.where(sales > 1500), which gives positions 4, 5, 6 (counting from 0).",
+       "hi": "चरण 1: sales = np.array([1200, 950, 1430, 800, 1600, 2100, 1750])\nचरण 2: कुल = sales.sum() से 9830 मिलता है।\nचरण 3: sales[sales > 1500] से [1600 2100 1750] मिलता है।\nचरण 4: मानों के बजाय दिनों के क्रमांक चाहिए तो np.where(sales > 1500) लिखें, जो स्थान 4, 5, 6 देता है (0 से गिनती)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.3 Recap of Pandas: the Series",
+    "hi": "1.3 Pandas का पुनरावलोकन: Series"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Pandas (the name comes from 'panel data') is the most widely used Python library for working with tabular data, the kind of data you see in an Excel sheet or a marks register. It is built on top of NumPy. Pandas has two main data structures: the Series (one column) and the DataFrame (a whole table).",
+      "hi": "Pandas (नाम 'panel data' से आया है) तालिका-रूपी data के साथ काम करने के लिए सबसे अधिक इस्तेमाल होने वाली Python लाइब्रेरी है, वैसा data जैसा Excel sheet या अंक-रजिस्टर में दिखता है। यह NumPy के ऊपर बनी है। Pandas की दो मुख्य data structures हैं: Series (एक column) और DataFrame (पूरी तालिका)।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Series",
+       "hi": "Series"
+      },
+      "text": {
+       "en": "A Series is a one-dimensional labelled array that can hold data of any type. Each value has a label called its index. If you do not give labels, Pandas uses 0, 1, 2, ... automatically.",
+       "hi": "Series एक-आयामी (one-dimensional) लेबल वाला array है, जिसमें किसी भी type का data रखा जा सकता है। हर मान का एक लेबल होता है, जिसे index कहते हैं। लेबल न दें तो Pandas अपने-आप 0, 1, 2, ... लगा देता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\ns1 = pd.Series([45, 67, 89])\nprint(s1)\ns2 = pd.Series([45, 67, 89], index=['Asha', 'Ravi', 'Zoya'])\nprint(s2)\nprint(s2['Ravi'])\ns3 = pd.Series({'Delhi': 32, 'Mumbai': 30, 'Chennai': 34})\nprint(s3)",
+      "hi": "प्रोग्राम:\nimport pandas as pd\ns1 = pd.Series([45, 67, 89])\nprint(s1)\ns2 = pd.Series([45, 67, 89], index=['Asha', 'Ravi', 'Zoya'])\nprint(s2)\nprint(s2['Ravi'])\ns3 = pd.Series({'Delhi': 32, 'Mumbai': 30, 'Chennai': 34})\nprint(s3)"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n0    45\n1    67\n2    89\ndtype: int64\nAsha    45\nRavi    67\nZoya    89\ndtype: int64\n67\nDelhi      32\nMumbai     30\nChennai    34\ndtype: int64",
+      "hi": "आउटपुट:\n0    45\n1    67\n2    89\ndtype: int64\nAsha    45\nRavi    67\nZoya    89\ndtype: int64\n67\nDelhi      32\nMumbai     30\nChennai    34\ndtype: int64"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "s1 uses the default index 0, 1, 2.",
+       "s2 uses names as a custom index, so s2['Ravi'] picks Ravi's marks (67).",
+       "s3 is made from a dictionary: the keys become the index and the values become the data.",
+       "dtype: int64 at the bottom tells the type of the values."
+      ],
+      "hi": [
+       "s1 में डिफ़ॉल्ट index 0, 1, 2 है।",
+       "s2 में नामों को custom index बनाया गया है, इसलिए s2['Ravi'] रवि के अंक (67) चुनता है।",
+       "s3 dictionary से बना है: keys index बन जाती हैं और values data बन जाते हैं।",
+       "नीचे लिखा dtype: int64 मानों का type बताता है।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.4 The DataFrame and how to create one",
+    "hi": "1.4 DataFrame और उसे बनाने के तरीके"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "DataFrame",
+       "hi": "DataFrame"
+      },
+      "text": {
+       "en": "A DataFrame is a two-dimensional labelled data structure with rows and columns, like a spreadsheet. Each column is a Series; different columns may have different data types. Rows have an index (row labels) and columns have column names.",
+       "hi": "DataFrame rows और columns वाली द्वि-आयामी (two-dimensional) लेबल वाली data structure है, बिल्कुल spreadsheet की तरह। हर column एक Series होता है; अलग-अलग columns के data types अलग हो सकते हैं। Rows का index (row labels) होता है और columns के नाम होते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A DataFrame can be created in several ways: from a dictionary of lists (each key becomes a column), from a list of dictionaries (each dictionary becomes a row), from a NumPy 2-D array (with column names supplied), or by reading a CSV file (section 1.7).",
+      "hi": "DataFrame कई तरीकों से बनाया जा सकता है: lists की dictionary से (हर key एक column बनती है), dictionaries की list से (हर dictionary एक row बनती है), NumPy के 2-D array से (columns के नाम देकर), या CSV फ़ाइल पढ़कर (भाग 1.7)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\nimport numpy as np\ndata = {'Name': ['Asha', 'Ravi', 'Zoya'], 'Age': [16, 17, 16]}\ndf1 = pd.DataFrame(data)\nprint(df1)\nrows = [{'Student': 'Asha', 'Marks': 88, 'Sport': 'Kho-kho'},\n        {'Student': 'Ravi', 'Marks': 76, 'Sport': 'Cricket'}]\ndf2 = pd.DataFrame(rows)\nprint(df2)\narr = np.array([[1, 2], [3, 4]])\ndf3 = pd.DataFrame(arr, columns=['A', 'B'])\nprint(df3)",
+      "hi": "प्रोग्राम:\nimport pandas as pd\nimport numpy as np\ndata = {'Name': ['Asha', 'Ravi', 'Zoya'], 'Age': [16, 17, 16]}\ndf1 = pd.DataFrame(data)\nprint(df1)\nrows = [{'Student': 'Asha', 'Marks': 88, 'Sport': 'Kho-kho'},\n        {'Student': 'Ravi', 'Marks': 76, 'Sport': 'Cricket'}]\ndf2 = pd.DataFrame(rows)\nprint(df2)\narr = np.array([[1, 2], [3, 4]])\ndf3 = pd.DataFrame(arr, columns=['A', 'B'])\nprint(df3)"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n   Name  Age\n0  Asha   16\n1  Ravi   17\n2  Zoya   16\n  Student  Marks    Sport\n0    Asha     88  Kho-kho\n1    Ravi     76  Cricket\n   A  B\n0  1  2\n1  3  4",
+      "hi": "आउटपुट:\n   Name  Age\n0  Asha   16\n1  Ravi   17\n2  Zoya   16\n  Student  Marks    Sport\n0    Asha     88  Kho-kho\n1    Ravi     76  Cricket\n   A  B\n0  1  2\n1  3  4"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Series",
+        "DataFrame"
+       ],
+       "hi": [
+        "Series",
+        "DataFrame"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "One-dimensional",
+         "Two-dimensional"
+        ],
+        [
+         "Only a row index",
+         "Row index and column names"
+        ],
+        [
+         "All values usually of one type",
+         "Each column can have its own type"
+        ],
+        [
+         "Like a single column of a sheet",
+         "Like the whole sheet"
+        ]
+       ],
+       "hi": [
+        [
+         "एक-आयामी",
+         "द्वि-आयामी"
+        ],
+        [
+         "केवल row index",
+         "row index और column नाम दोनों"
+        ],
+        [
+         "आमतौर पर सभी मान एक type के",
+         "हर column का अपना type हो सकता है"
+        ],
+        [
+         "sheet के एक column जैसी",
+         "पूरी sheet जैसा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "NumPy 2-D array",
+        "Pandas DataFrame"
+       ],
+       "hi": [
+        "NumPy 2-D array",
+        "Pandas DataFrame"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Accessed by position numbers only",
+         "Accessed by labels (names) as well as positions"
+        ],
+        [
+         "One data type for the whole array",
+         "Different types in different columns"
+        ],
+        [
+         "Best for fast maths on numbers",
+         "Best for real-world tables with text, numbers and missing values"
+        ],
+        [
+         "No built-in CSV/Excel reading tools for mixed tables",
+         "read_csv(), to_csv(), groupby(), fillna() and many more built in"
+        ]
+       ],
+       "hi": [
+        [
+         "केवल स्थान-संख्या से पहुँच",
+         "लेबल (नाम) और स्थान दोनों से पहुँच"
+        ],
+        [
+         "पूरे array का एक data type",
+         "अलग columns में अलग types"
+        ],
+        [
+         "संख्याओं पर तेज़ गणित के लिए सबसे अच्छा",
+         "पाठ, संख्याएँ और छूटे मान वाली असली तालिकाओं के लिए सबसे अच्छा"
+        ],
+        [
+         "मिश्रित तालिकाओं के लिए CSV/Excel पढ़ने के अंतर्निहित उपकरण नहीं",
+         "read_csv(), to_csv(), groupby(), fillna() जैसे अनेक उपकरण अंतर्निहित"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.5 Dealing with rows and columns",
+    "hi": "1.5 Rows और columns के साथ काम करना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Once a DataFrame exists, you often need to add a new column (for example, AI marks), add a new student as a row, correct a wrong value, or delete something. The program below does all of these.",
+      "hi": "DataFrame बनने के बाद अक्सर नया column जोड़ना (जैसे AI के अंक), किसी नए विद्यार्थी को row के रूप में जोड़ना, ग़लत मान सुधारना या कुछ हटाना पड़ता है। नीचे का प्रोग्राम ये सब करता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\ndf = pd.DataFrame({'Name': ['Asha', 'Ravi', 'Zoya'],\n                   'Maths': [88, 76, 92]})\ndf['AI'] = [95, 81, 89]          # add a new column\nprint(df)\ndf.loc[3] = ['Kabir', 70, 78]   # add a new row with label 3\nprint(df)\ndf.loc[1, 'Maths'] = 80         # update one value\ndf['Maths'] = df['Maths'] + 2   # update a whole column\nprint(df)\nprint(df.drop(3, axis=0))       # remove row with label 3\nprint(df.drop('AI', axis=1))    # remove column AI",
+      "hi": "प्रोग्राम:\nimport pandas as pd\ndf = pd.DataFrame({'Name': ['Asha', 'Ravi', 'Zoya'],\n                   'Maths': [88, 76, 92]})\ndf['AI'] = [95, 81, 89]          # add a new column\nprint(df)\ndf.loc[3] = ['Kabir', 70, 78]   # add a new row with label 3\nprint(df)\ndf.loc[1, 'Maths'] = 80         # update one value\ndf['Maths'] = df['Maths'] + 2   # update a whole column\nprint(df)\nprint(df.drop(3, axis=0))       # remove row with label 3\nprint(df.drop('AI', axis=1))    # remove column AI"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n   Name  Maths  AI\n0  Asha     88  95\n1  Ravi     76  81\n2  Zoya     92  89\n    Name  Maths  AI\n0   Asha     88  95\n1   Ravi     76  81\n2   Zoya     92  89\n3  Kabir     70  78\n    Name  Maths  AI\n0   Asha     90  95\n1   Ravi     82  81\n2   Zoya     94  89\n3  Kabir     72  78\n   Name  Maths  AI\n0  Asha     90  95\n1  Ravi     82  81\n2  Zoya     94  89\n    Name  Maths\n0   Asha     90\n1   Ravi     82\n2   Zoya     94\n3  Kabir     72",
+      "hi": "आउटपुट:\n   Name  Maths  AI\n0  Asha     88  95\n1  Ravi     76  81\n2  Zoya     92  89\n    Name  Maths  AI\n0   Asha     88  95\n1   Ravi     76  81\n2   Zoya     92  89\n3  Kabir     70  78\n    Name  Maths  AI\n0   Asha     90  95\n1   Ravi     82  81\n2   Zoya     94  89\n3  Kabir     72  78\n   Name  Maths  AI\n0  Asha     90  95\n1  Ravi     82  81\n2  Zoya     94  89\n    Name  Maths\n0   Asha     90\n1   Ravi     82\n2   Zoya     94\n3  Kabir     72"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Add a column: df['AI'] = [95, 81, 89]. The list must have one value per row. If the column already exists, its values are replaced.",
+       "Add a row: df.loc[3] = ['Kabir', 70, 78]. loc works with labels; if label 3 does not exist, a new row is created, otherwise that row is overwritten.",
+       "Update one cell: df.loc[1, 'Maths'] = 80 (row label, column name).",
+       "Update a whole column using arithmetic: df['Maths'] = df['Maths'] + 2 (grace marks for everyone).",
+       "Delete with drop(): axis=0 means rows (give the row label), axis=1 means columns (give the column name).",
+       "drop() returns a new DataFrame and leaves the original unchanged. To change the original, write df = df.drop(...) or use inplace=True."
+      ],
+      "hi": [
+       "Column जोड़ना: df['AI'] = [95, 81, 89]। list में हर row के लिए एक मान होना चाहिए। column पहले से हो तो उसके मान बदल जाते हैं।",
+       "Row जोड़ना: df.loc[3] = ['Kabir', 70, 78]। loc लेबल से काम करता है; लेबल 3 न हो तो नई row बनती है, हो तो वह row बदल जाती है।",
+       "एक cell बदलना: df.loc[1, 'Maths'] = 80 (row लेबल, column नाम)।",
+       "गणित से पूरा column बदलना: df['Maths'] = df['Maths'] + 2 (सबको grace marks)।",
+       "drop() से हटाना: axis=0 का अर्थ rows (row लेबल दें), axis=1 का अर्थ columns (column नाम दें)।",
+       "drop() एक नया DataFrame लौटाता है और मूल को नहीं बदलता। मूल बदलना हो तो df = df.drop(...) लिखें या inplace=True का उपयोग करें।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Code",
+        "What it selects"
+       ],
+       "hi": [
+        "Code",
+        "क्या चुनता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "df['Maths']",
+         "One column, as a Series"
+        ],
+        [
+         "df[['Name', 'AI']]",
+         "Several columns (note the double brackets), as a DataFrame"
+        ],
+        [
+         "df.loc[2]",
+         "The row whose label is 2"
+        ],
+        [
+         "df.iloc[0]",
+         "The first row by position, whatever its label"
+        ],
+        [
+         "df.loc[0:1, 'Name':'Maths']",
+         "A block of rows and columns by labels (both ends included with loc)"
+        ],
+        [
+         "df[df['AI'] > 85]",
+         "Only rows where the condition is True (filtering)"
+        ]
+       ],
+       "hi": [
+        [
+         "df['Maths']",
+         "एक column, Series के रूप में"
+        ],
+        [
+         "df[['Name', 'AI']]",
+         "कई columns (दोहरे कोष्ठक पर ध्यान दें), DataFrame के रूप में"
+        ],
+        [
+         "df.loc[2]",
+         "वह row जिसका लेबल 2 है"
+        ],
+        [
+         "df.iloc[0]",
+         "स्थान के हिसाब से पहली row, उसका लेबल कुछ भी हो"
+        ],
+        [
+         "df.loc[0:1, 'Name':'Maths']",
+         "लेबल से rows और columns का एक खंड (loc में दोनों सिरे शामिल)"
+        ],
+        [
+         "df[df['AI'] > 85]",
+         "केवल वे rows जहाँ शर्त True है (filtering)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A DataFrame named team has columns Player and Runs for 4 players. Write code to (a) add a column Balls, (b) add a fifth player, (c) remove the Balls column without losing it from the original by mistake.",
+       "hi": "team नाम के DataFrame में 4 खिलाड़ियों के Player और Runs columns हैं। (a) Balls column जोड़ने, (b) पाँचवाँ खिलाड़ी जोड़ने, (c) Balls column हटाने का code लिखिए, ताकि मूल से ग़लती से कुछ न खोए।"
+      },
+      "a": {
+       "en": "(a) team['Balls'] = [30, 42, 25, 18]   (one value for each of the 4 rows)\n(b) team.loc[4] = ['Rinku', 38, 20]   (values in the column order Player, Runs, Balls)\n(c) short = team.drop('Balls', axis=1)   (team still has Balls; short does not)\nIf you really want to delete it from team itself: team = team.drop('Balls', axis=1).",
+       "hi": "(a) team['Balls'] = [30, 42, 25, 18]   (4 rows के लिए एक-एक मान)\n(b) team.loc[4] = ['Rinku', 38, 20]   (मान column क्रम Player, Runs, Balls में)\n(c) short = team.drop('Balls', axis=1)   (team में Balls बना रहता है; short में नहीं)\nयदि सचमुच team से ही हटाना हो: team = team.drop('Balls', axis=1)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.6 Attributes of a DataFrame",
+    "hi": "1.6 DataFrame के attributes"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Attributes describe a DataFrame without changing it. They are written without brackets (df.shape), while methods such as head() need brackets. When you open a new dataset, checking these first tells you what you are dealing with.",
+      "hi": "Attributes DataFrame को बदले बिना उसका वर्णन करते हैं। इन्हें कोष्ठक के बिना लिखा जाता है (df.shape), जबकि head() जैसे methods में कोष्ठक लगते हैं। कोई नया dataset खोलते ही इन्हें देखने से पता चल जाता है कि सामने क्या है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\ndf = pd.DataFrame({'Name': ['Asha', 'Ravi', 'Zoya', 'Kabir', 'Meena', 'Arjun'],\n                   'Maths': [88, 76, 92, 70, 85, 64],\n                   'AI': [95, 81, 89, 78, 90, 72]})\nprint(df.index)\nprint(list(df.columns))\nprint(df.shape)\nprint(df.size)\nprint(df.head(2))\nprint(df.tail(2))",
+      "hi": "प्रोग्राम:\nimport pandas as pd\ndf = pd.DataFrame({'Name': ['Asha', 'Ravi', 'Zoya', 'Kabir', 'Meena', 'Arjun'],\n                   'Maths': [88, 76, 92, 70, 85, 64],\n                   'AI': [95, 81, 89, 78, 90, 72]})\nprint(df.index)\nprint(list(df.columns))\nprint(df.shape)\nprint(df.size)\nprint(df.head(2))\nprint(df.tail(2))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nRangeIndex(start=0, stop=6, step=1)\n['Name', 'Maths', 'AI']\n(6, 3)\n18\n   Name  Maths  AI\n0  Asha     88  95\n1  Ravi     76  81\n    Name  Maths  AI\n4  Meena     85  90\n5  Arjun     64  72",
+      "hi": "आउटपुट:\nRangeIndex(start=0, stop=6, step=1)\n['Name', 'Maths', 'AI']\n(6, 3)\n18\n   Name  Maths  AI\n0  Asha     88  95\n1  Ravi     76  81\n    Name  Maths  AI\n4  Meena     85  90\n5  Arjun     64  72"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Attribute / method",
+        "Meaning",
+        "Output above"
+       ],
+       "hi": [
+        "Attribute / method",
+        "अर्थ",
+        "ऊपर का आउटपुट"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "df.index",
+         "Row labels",
+         "RangeIndex 0 to 5 (stop=6 is excluded)"
+        ],
+        [
+         "df.columns",
+         "Column names",
+         "Name, Maths, AI"
+        ],
+        [
+         "df.shape",
+         "(number of rows, number of columns)",
+         "(6, 3)"
+        ],
+        [
+         "df.size",
+         "Total cells = rows × columns",
+         "18"
+        ],
+        [
+         "df.dtypes",
+         "Data type of each column",
+         "not printed above; try it: text (object or str) for Name, int64 for marks"
+        ],
+        [
+         "df.head(n)",
+         "First n rows (5 if n is not given)",
+         "Asha, Ravi"
+        ],
+        [
+         "df.tail(n)",
+         "Last n rows (5 if n is not given)",
+         "Meena, Arjun"
+        ],
+        [
+         "df.T",
+         "Transpose: rows become columns",
+         "not printed above"
+        ]
+       ],
+       "hi": [
+        [
+         "df.index",
+         "Row लेबल",
+         "RangeIndex 0 से 5 (stop=6 शामिल नहीं)"
+        ],
+        [
+         "df.columns",
+         "Column के नाम",
+         "Name, Maths, AI"
+        ],
+        [
+         "df.shape",
+         "(rows की संख्या, columns की संख्या)",
+         "(6, 3)"
+        ],
+        [
+         "df.size",
+         "कुल cells = rows × columns",
+         "18"
+        ],
+        [
+         "df.dtypes",
+         "हर column का data type",
+         "ऊपर print नहीं किया; चलाकर देखें: Name के लिए text (object या str), अंकों के लिए int64"
+        ],
+        [
+         "df.head(n)",
+         "पहली n rows (n न दें तो 5)",
+         "Asha, Ravi"
+        ],
+        [
+         "df.tail(n)",
+         "अंतिम n rows (n न दें तो 5)",
+         "Meena, Arjun"
+        ],
+        [
+         "df.T",
+         "Transpose: rows, columns बन जाती हैं",
+         "ऊपर print नहीं किया"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: df.shape is an attribute, so df.shape() gives an error. head() and tail() are methods, so they need brackets. Other useful methods: df.info() (types and non-missing counts) and df.describe() (count, mean, min, max and quartiles of numeric columns).",
+      "hi": "याद रखें: df.shape एक attribute है, इसलिए df.shape() लिखने पर error आता है। head() और tail() methods हैं, इसलिए इनमें कोष्ठक चाहिए। अन्य उपयोगी methods: df.info() (types और भरे हुए मानों की गिनती) और df.describe() (संख्यात्मक columns के count, mean, min, max और quartiles)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.7 Importing and exporting data between CSV files and DataFrames",
+    "hi": "1.7 CSV फ़ाइलों और DataFrames के बीच data import और export करना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "CSV file",
+       "hi": "CSV फ़ाइल"
+      },
+      "text": {
+       "en": "CSV (Comma-Separated Values) is a plain-text file format for tables. Each line is one row and the values in a row are separated by a delimiter, usually a comma. The first line normally holds the column names (the header). CSV files open in Excel, Google Sheets, LibreOffice and every data tool, which is why most public datasets (for example on data.gov.in or Kaggle) are shared as CSV.",
+       "hi": "CSV (Comma-Separated Values) तालिकाओं के लिए एक साधारण text फ़ाइल प्रारूप है। हर पंक्ति एक row होती है और row के मान एक विभाजक (delimiter), आमतौर पर comma, से अलग होते हैं। पहली पंक्ति में प्रायः columns के नाम (header) होते हैं। CSV फ़ाइलें Excel, Google Sheets, LibreOffice और हर data उपकरण में खुलती हैं, इसीलिए अधिकतर सार्वजनिक datasets (जैसे data.gov.in या Kaggle पर) CSV में साझा होते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Exporting means saving a DataFrame into a CSV file using to_csv(). Its main parameters are path_or_buf (the file name or full path, given first), sep (the delimiter, ',' by default) and index (True by default; index=False stops Pandas from writing the row labels as an extra unnamed first column).",
+      "hi": "Export का अर्थ है to_csv() से DataFrame को CSV फ़ाइल में सहेजना। इसके मुख्य parameters हैं path_or_buf (फ़ाइल का नाम या पूरा path, सबसे पहले), sep (विभाजक, डिफ़ॉल्ट ',') और index (डिफ़ॉल्ट True; index=False देने पर Pandas row labels को एक अतिरिक्त बिना नाम वाले पहले column के रूप में नहीं लिखता)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\ndf = pd.DataFrame({'Name': ['Asha', 'Ravi', 'Zoya'],\n                   'Maths': [88, 76, 92],\n                   'AI': [95, 81, 89]})\ndf.to_csv('studentmarks.csv', index=False)\nprint(open('studentmarks.csv').read())\ndf.to_csv('marks_semicolon.csv', sep=';', index=False)\nprint(open('marks_semicolon.csv').read())\ndf.to_csv('with_index.csv')\nprint(open('with_index.csv').read())",
+      "hi": "प्रोग्राम:\nimport pandas as pd\ndf = pd.DataFrame({'Name': ['Asha', 'Ravi', 'Zoya'],\n                   'Maths': [88, 76, 92],\n                   'AI': [95, 81, 89]})\ndf.to_csv('studentmarks.csv', index=False)\nprint(open('studentmarks.csv').read())\ndf.to_csv('marks_semicolon.csv', sep=';', index=False)\nprint(open('marks_semicolon.csv').read())\ndf.to_csv('with_index.csv')\nprint(open('with_index.csv').read())"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nName,Maths,AI\nAsha,88,95\nRavi,76,81\nZoya,92,89\n\nName;Maths;AI\nAsha;88;95\nRavi;76;81\nZoya;92;89\n\n,Name,Maths,AI\n0,Asha,88,95\n1,Ravi,76,81\n2,Zoya,92,89",
+      "hi": "आउटपुट:\nName,Maths,AI\nAsha,88,95\nRavi,76,81\nZoya,92,89\n\nName;Maths;AI\nAsha;88;95\nRavi;76;81\nZoya;92;89\n\n,Name,Maths,AI\n0,Asha,88,95\n1,Ravi,76,81\n2,Zoya,92,89"
+     }
+    },
+    {
+     "p": {
+      "en": "Compare the three files: the first is a normal CSV; the second uses ';' as the separator; the third was saved without index=False, so it starts with an empty header cell and an extra column 0, 1, 2. That extra column is a very common beginner's problem when the file is read again.",
+      "hi": "तीनों फ़ाइलों की तुलना कीजिए: पहली सामान्य CSV है; दूसरी में विभाजक ';' है; तीसरी index=False के बिना सहेजी गई, इसलिए उसकी शुरुआत एक ख़ाली header cell और 0, 1, 2 वाले अतिरिक्त column से होती है। फ़ाइल दोबारा पढ़ने पर यह अतिरिक्त column शुरुआती विद्यार्थियों की बहुत आम समस्या है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Importing means reading a CSV file into a DataFrame with pd.read_csv(). Its main parameters are the file path, sep (must match the separator used in the file) and header (the row number holding column names; 0 by default, None if the file has no header row).",
+      "hi": "Import का अर्थ है pd.read_csv() से CSV फ़ाइल को DataFrame में पढ़ना। इसके मुख्य parameters हैं फ़ाइल का path, sep (फ़ाइल में प्रयुक्त विभाजक से मेल खाना चाहिए) और header (columns के नाम वाली row की संख्या; डिफ़ॉल्ट 0, और फ़ाइल में header row न हो तो None)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\ndf = pd.read_csv('studentmarks.csv')\nprint(df)\ndf2 = pd.read_csv('marks_semicolon.csv', sep=';')\nprint(df2.shape)\ndf3 = pd.read_csv('studentmarks.csv', header=None)\nprint(df3)",
+      "hi": "प्रोग्राम:\nimport pandas as pd\ndf = pd.read_csv('studentmarks.csv')\nprint(df)\ndf2 = pd.read_csv('marks_semicolon.csv', sep=';')\nprint(df2.shape)\ndf3 = pd.read_csv('studentmarks.csv', header=None)\nprint(df3)"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n   Name  Maths  AI\n0  Asha     88  95\n1  Ravi     76  81\n2  Zoya     92  89\n(3, 3)\n      0      1   2\n0  Name  Maths  AI\n1  Asha     88  95\n2  Ravi     76  81\n3  Zoya     92  89",
+      "hi": "आउटपुट:\n   Name  Maths  AI\n0  Asha     88  95\n1  Ravi     76  81\n2  Zoya     92  89\n(3, 3)\n      0      1   2\n0  Name  Maths  AI\n1  Asha     88  95\n2  Ravi     76  81\n3  Zoya     92  89"
+     }
+    },
+    {
+     "p": {
+      "en": "Notice that header=None treated the real header line 'Name, Maths, AI' as an ordinary data row and gave the columns the numbers 0, 1, 2. Use header=None only for files that truly have no header.",
+      "hi": "ध्यान दें कि header=None ने असली header पंक्ति 'Name, Maths, AI' को साधारण data row मान लिया और columns को 0, 1, 2 संख्याएँ दे दीं। header=None का उपयोग केवल उन्हीं फ़ाइलों के लिए करें जिनमें सचमुच header नहीं है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Reading a file in Google Colab: Colab runs on a computer in the cloud, so it cannot see files on your own laptop or phone directly. The usual steps are given below.",
+      "hi": "Google Colab में फ़ाइल पढ़ना: Colab cloud के किसी कंप्यूटर पर चलता है, इसलिए वह आपके laptop या फ़ोन की फ़ाइलें सीधे नहीं देख सकता। सामान्य चरण नीचे दिए हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Click the folder (Files) icon in the left panel of the notebook.",
+       "Step 2: Click the upload icon and choose your CSV file (for example studentmarks.csv), or drag the file into the panel.",
+       "Step 3: Read it with df = pd.read_csv('studentmarks.csv'). Uploaded files are deleted when the session ends, so upload again next time (or mount Google Drive).",
+       "Alternative: run from google.colab import files and then files.upload() to open an upload button inside the cell."
+      ],
+      "hi": [
+       "चरण 1: notebook के बाएँ पैनल में folder (Files) आइकन पर क्लिक करें।",
+       "चरण 2: upload आइकन पर क्लिक करके अपनी CSV फ़ाइल (जैसे studentmarks.csv) चुनें, या फ़ाइल को पैनल में खींचकर छोड़ें।",
+       "चरण 3: df = pd.read_csv('studentmarks.csv') से पढ़ें। session ख़त्म होने पर upload की गई फ़ाइलें मिट जाती हैं, इसलिए अगली बार फिर upload करें (या Google Drive mount करें)।",
+       "विकल्प: from google.colab import files चलाकर files.upload() लिखें, जिससे cell में ही upload बटन खुल जाता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Reading a file on your own computer (Jupyter or IDE): give the full path. On Windows, backslashes in a path can be misread as special characters, so either put r before the string or use forward slashes, for example pd.read_csv(r'C:\\Users\\Asha\\Documents\\marks.csv') or pd.read_csv('C:/Users/Asha/Documents/marks.csv'). The same idea applies to to_csv() when you want the file saved in a particular folder.",
+      "hi": "अपने कंप्यूटर पर फ़ाइल पढ़ना (Jupyter या IDE): पूरा path दें। Windows में path के backslash विशेष अक्षर समझे जा सकते हैं, इसलिए string से पहले r लगाएँ या forward slash लिखें, जैसे pd.read_csv(r'C:\\Users\\Asha\\Documents\\marks.csv') या pd.read_csv('C:/Users/Asha/Documents/marks.csv')। किसी ख़ास folder में फ़ाइल सहेजनी हो तो to_csv() में भी यही तरीका लगता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "A typical use: you collect raw data, clean and summarise it in Pandas, then export the result so a teacher or manager can open it in Excel. The program below totals sales region-wise with groupby() and exports the totals.",
+      "hi": "एक सामान्य उपयोग: आप कच्चा data इकट्ठा करते हैं, Pandas में उसे साफ़ और सारांशित करते हैं, फिर परिणाम export करते हैं ताकि शिक्षक या मैनेजर उसे Excel में खोल सकें। नीचे का प्रोग्राम groupby() से क्षेत्रवार बिक्री जोड़ता है और कुल को export करता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\nsales = pd.DataFrame({'Region': ['North', 'South', 'North', 'East', 'South'],\n                      'Amount': [1200, 800, 1500, 600, 900]})\ntotal = sales.groupby('Region')['Amount'].sum()\nprint(total)\ntotal.to_csv('region_totals.csv')\nprint(open('region_totals.csv').read())",
+      "hi": "प्रोग्राम:\nimport pandas as pd\nsales = pd.DataFrame({'Region': ['North', 'South', 'North', 'East', 'South'],\n                      'Amount': [1200, 800, 1500, 600, 900]})\ntotal = sales.groupby('Region')['Amount'].sum()\nprint(total)\ntotal.to_csv('region_totals.csv')\nprint(open('region_totals.csv').read())"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nRegion\nEast      600\nNorth    2700\nSouth    1700\nName: Amount, dtype: int64\nRegion,Amount\nEast,600\nNorth,2700\nSouth,1700",
+      "hi": "आउटपुट:\nRegion\nEast      600\nNorth    2700\nSouth    1700\nName: Amount, dtype: int64\nRegion,Amount\nEast,600\nNorth,2700\nSouth,1700"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: to_csv() is a DataFrame method (df.to_csv(...)), but read_csv() is a Pandas function (pd.read_csv(...)). Writing df.read_csv() or pd.to_csv() is a common error.",
+      "hi": "याद रखें: to_csv() DataFrame का method है (df.to_csv(...)), पर read_csv() Pandas का function है (pd.read_csv(...))। df.read_csv() या pd.to_csv() लिखना एक आम ग़लती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.8 Handling missing values",
+    "hi": "1.8 छूटे हुए मानों (missing values) को संभालना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Real data is rarely complete. A student may be absent for an exam, a weather sensor may stop for an hour, a survey respondent may skip a question, or data may be lost while being copied. In Pandas such empty cells appear as NaN (Not a Number). Most machine learning algorithms cannot work with NaN, and even a simple average becomes misleading, so missing values must be found and handled before building a model.",
+      "hi": "असली data शायद ही कभी पूरा होता है। कोई विद्यार्थी परीक्षा में अनुपस्थित हो सकता है, मौसम का कोई sensor घंटे भर बंद रह सकता है, सर्वे में कोई व्यक्ति कोई प्रश्न छोड़ सकता है, या copy करते समय data खो सकता है। Pandas में ऐसे ख़ाली cells NaN (Not a Number) के रूप में दिखते हैं। अधिकतर machine learning algorithms NaN के साथ काम नहीं कर पाते, और साधारण औसत भी भ्रामक हो जाता है, इसलिए model बनाने से पहले छूटे मानों को खोजना और संभालना ज़रूरी है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Case study: a class teacher has the result sheet of five students in Maths, Science, Hindi, English and AI. Some marks were not entered. Step 1 is to check where values are missing.",
+      "hi": "केस स्टडी: एक कक्षा-अध्यापक के पास पाँच विद्यार्थियों की Maths, Science, Hindi, English और AI की परिणाम-सूची है। कुछ अंक दर्ज नहीं हुए। पहला चरण है यह जाँचना कि मान कहाँ छूटे हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\nimport numpy as np\nresult = pd.DataFrame({\n    'Name': ['Meera', 'Suhana', 'Joseph', 'Imran', 'Tara'],\n    'Maths': [90, 72, np.nan, 65, 88],\n    'Science': [85, np.nan, 78, 70, np.nan],\n    'Hindi': [92, 80, 75, np.nan, 84],\n    'English': [88, 76, 82, 69, 91],\n    'AI': [95, 83, 79, 74, 90]})\nprint(result)\nprint(result.isnull())\nprint(result.isnull().any())\nprint(result.isnull().sum())\nprint(result.isnull().sum().sum())",
+      "hi": "प्रोग्राम:\nimport pandas as pd\nimport numpy as np\nresult = pd.DataFrame({\n    'Name': ['Meera', 'Suhana', 'Joseph', 'Imran', 'Tara'],\n    'Maths': [90, 72, np.nan, 65, 88],\n    'Science': [85, np.nan, 78, 70, np.nan],\n    'Hindi': [92, 80, 75, np.nan, 84],\n    'English': [88, 76, 82, 69, 91],\n    'AI': [95, 83, 79, 74, 90]})\nprint(result)\nprint(result.isnull())\nprint(result.isnull().any())\nprint(result.isnull().sum())\nprint(result.isnull().sum().sum())"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n     Name  Maths  Science  Hindi  English  AI\n0   Meera   90.0     85.0   92.0       88  95\n1  Suhana   72.0      NaN   80.0       76  83\n2  Joseph    NaN     78.0   75.0       82  79\n3   Imran   65.0     70.0    NaN       69  74\n4    Tara   88.0      NaN   84.0       91  90\n    Name  Maths  Science  Hindi  English     AI\n0  False  False    False  False    False  False\n1  False  False     True  False    False  False\n2  False   True    False  False    False  False\n3  False  False    False   True    False  False\n4  False  False     True  False    False  False\nName       False\nMaths       True\nScience     True\nHindi       True\nEnglish    False\nAI         False\ndtype: bool\nName       0\nMaths      1\nScience    2\nHindi      1\nEnglish    0\nAI         0\ndtype: int64\n4",
+      "hi": "आउटपुट:\n     Name  Maths  Science  Hindi  English  AI\n0   Meera   90.0     85.0   92.0       88  95\n1  Suhana   72.0      NaN   80.0       76  83\n2  Joseph    NaN     78.0   75.0       82  79\n3   Imran   65.0     70.0    NaN       69  74\n4    Tara   88.0      NaN   84.0       91  90\n    Name  Maths  Science  Hindi  English     AI\n0  False  False    False  False    False  False\n1  False  False     True  False    False  False\n2  False   True    False  False    False  False\n3  False  False    False   True    False  False\n4  False  False     True  False    False  False\nName       False\nMaths       True\nScience     True\nHindi       True\nEnglish    False\nAI         False\ndtype: bool\nName       0\nMaths      1\nScience    2\nHindi      1\nEnglish    0\nAI         0\ndtype: int64\n4"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Code",
+        "What it tells you"
+       ],
+       "hi": [
+        "Code",
+        "यह क्या बताता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "df.isnull()",
+         "A True/False table of the same shape; True where a value is missing (df.isna() is the same)"
+        ],
+        [
+         "df.isnull().any()",
+         "For each column, True if it has at least one missing value"
+        ],
+        [
+         "df.isnull().sum()",
+         "Number of missing values in each column"
+        ],
+        [
+         "df.isnull().sum().sum()",
+         "Total number of missing values in the whole DataFrame (4 here)"
+        ]
+       ],
+       "hi": [
+        [
+         "df.isnull()",
+         "उसी आकार की True/False तालिका; जहाँ मान छूटा है वहाँ True (df.isna() भी यही है)"
+        ],
+        [
+         "df.isnull().any()",
+         "हर column के लिए True, यदि उसमें कम-से-कम एक मान छूटा हो"
+        ],
+        [
+         "df.isnull().sum()",
+         "हर column में छूटे मानों की संख्या"
+        ],
+        [
+         "df.isnull().sum().sum()",
+         "पूरे DataFrame में छूटे मानों की कुल संख्या (यहाँ 4)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Notice that Maths, Science and Hindi became decimal numbers (90.0) because NaN is a float value; columns without NaN (English, AI) stayed integers. Step 2 is to decide what to do. There are two broad strategies: drop the incomplete data, or estimate (impute) the missing values.",
+      "hi": "ध्यान दें कि Maths, Science और Hindi दशमलव संख्याएँ (90.0) बन गए, क्योंकि NaN एक float मान है; बिना NaN वाले columns (English, AI) पूर्णांक ही रहे। दूसरा चरण है तय करना कि क्या करें। दो बड़ी रणनीतियाँ हैं: अधूरे data को हटाना, या छूटे मानों का अनुमान लगाना (imputation)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\nimport numpy as np\nresult = pd.DataFrame({\n    'Name': ['Meera', 'Suhana', 'Joseph', 'Imran', 'Tara'],\n    'Maths': [90, 72, np.nan, 65, 88],\n    'Science': [85, np.nan, 78, 70, np.nan],\n    'Hindi': [92, 80, 75, np.nan, 84]})\nprint(result.dropna())\nprint(result.dropna(axis=1))\nprint(result.fillna(0))\nfilled = result.fillna(result.mean(numeric_only=True))\nprint(filled)\nprint(result['Science'].mean())",
+      "hi": "प्रोग्राम:\nimport pandas as pd\nimport numpy as np\nresult = pd.DataFrame({\n    'Name': ['Meera', 'Suhana', 'Joseph', 'Imran', 'Tara'],\n    'Maths': [90, 72, np.nan, 65, 88],\n    'Science': [85, np.nan, 78, 70, np.nan],\n    'Hindi': [92, 80, 75, np.nan, 84]})\nprint(result.dropna())\nprint(result.dropna(axis=1))\nprint(result.fillna(0))\nfilled = result.fillna(result.mean(numeric_only=True))\nprint(filled)\nprint(result['Science'].mean())"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n    Name  Maths  Science  Hindi\n0  Meera   90.0     85.0   92.0\n     Name\n0   Meera\n1  Suhana\n2  Joseph\n3   Imran\n4    Tara\n     Name  Maths  Science  Hindi\n0   Meera   90.0     85.0   92.0\n1  Suhana   72.0      0.0   80.0\n2  Joseph    0.0     78.0   75.0\n3   Imran   65.0     70.0    0.0\n4    Tara   88.0      0.0   84.0\n     Name  Maths    Science  Hindi\n0   Meera  90.00  85.000000  92.00\n1  Suhana  72.00  77.666667  80.00\n2  Joseph  78.75  78.000000  75.00\n3   Imran  65.00  70.000000  82.75\n4    Tara  88.00  77.666667  84.00\n77.66666666666667",
+      "hi": "आउटपुट:\n    Name  Maths  Science  Hindi\n0  Meera   90.0     85.0   92.0\n     Name\n0   Meera\n1  Suhana\n2  Joseph\n3   Imran\n4    Tara\n     Name  Maths  Science  Hindi\n0   Meera   90.0     85.0   92.0\n1  Suhana   72.0      0.0   80.0\n2  Joseph    0.0     78.0   75.0\n3   Imran   65.0     70.0    0.0\n4    Tara   88.0      0.0   84.0\n     Name  Maths    Science  Hindi\n0   Meera  90.00  85.000000  92.00\n1  Suhana  72.00  77.666667  80.00\n2  Joseph  78.75  78.000000  75.00\n3   Imran  65.00  70.000000  82.75\n4    Tara  88.00  77.666667  84.00\n77.66666666666667"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Method",
+        "Code",
+        "When to use",
+        "Drawback"
+       ],
+       "hi": [
+        "तरीका",
+        "Code",
+        "कब उपयोग करें",
+        "कमी"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Drop rows",
+         "df.dropna()",
+         "Very few rows have gaps and the dataset is large",
+         "Here only Meera survived; 80% of the data was lost"
+        ],
+        [
+         "Drop columns",
+         "df.dropna(axis=1)",
+         "A column is mostly empty or not needed",
+         "Useful subjects disappear"
+        ],
+        [
+         "Fill with a constant",
+         "df.fillna(0)",
+         "0 truly means 'none', e.g. no purchases that day",
+         "An absent student's 0 drags the average down unfairly"
+        ],
+        [
+         "Fill with mean / median / mode",
+         "df.fillna(df.mean(numeric_only=True))",
+         "Values are numeric and roughly typical; median if there are outliers; mode for categories",
+         "Every gap gets the same value, which reduces natural variation"
+        ],
+        [
+         "Fill from neighbours",
+         "df.ffill() / df.bfill()",
+         "Ordered data like daily temperature or prices",
+         "Wrong if neighbouring values are unrelated"
+        ]
+       ],
+       "hi": [
+        [
+         "Rows हटाना",
+         "df.dropna()",
+         "बहुत कम rows में कमी हो और dataset बड़ा हो",
+         "यहाँ केवल मीरा बची; 80% data खो गया"
+        ],
+        [
+         "Columns हटाना",
+         "df.dropna(axis=1)",
+         "कोई column ज़्यादातर ख़ाली हो या ज़रूरी न हो",
+         "उपयोगी विषय ग़ायब हो जाते हैं"
+        ],
+        [
+         "स्थिर मान से भरना",
+         "df.fillna(0)",
+         "जब 0 का सचमुच अर्थ 'कुछ नहीं' हो, जैसे उस दिन कोई ख़रीद नहीं",
+         "अनुपस्थित विद्यार्थी का 0 औसत को अनुचित रूप से गिरा देता है"
+        ],
+        [
+         "Mean / median / mode से भरना",
+         "df.fillna(df.mean(numeric_only=True))",
+         "मान संख्यात्मक और लगभग सामान्य हों; outliers हों तो median; श्रेणियों के लिए mode",
+         "हर रिक्त स्थान को एक ही मान मिलता है, जिससे स्वाभाविक विविधता घटती है"
+        ],
+        [
+         "पड़ोसी मान से भरना",
+         "df.ffill() / df.bfill()",
+         "दैनिक तापमान या दाम जैसा क्रमबद्ध data",
+         "पड़ोसी मान असंबंधित हों तो ग़लत"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the case study, Science marks are 85, NaN, 78, 70, NaN. Show how the mean used to fill the gaps is calculated, and check it against the program output.",
+       "hi": "केस स्टडी में Science के अंक 85, NaN, 78, 70, NaN हैं। रिक्त स्थान भरने वाला mean कैसे निकलता है, दिखाइए और प्रोग्राम के आउटपुट से मिलाइए।"
+      },
+      "a": {
+       "en": "Step 1: Pandas ignores NaN when calculating mean, so only 85, 78 and 70 are used.\nStep 2: Sum = 85 + 78 + 70 = 233.\nStep 3: Count of available values = 3.\nStep 4: Mean = 233 ÷ 3 = 77.666...\nStep 5: The output shows 77.666667 for Suhana and Tara, which matches.",
+       "hi": "चरण 1: mean निकालते समय Pandas NaN को छोड़ देता है, इसलिए केवल 85, 78 और 70 लिए जाते हैं।\nचरण 2: योग = 85 + 78 + 70 = 233।\nचरण 3: उपलब्ध मानों की गिनती = 3।\nचरण 4: Mean = 233 ÷ 3 = 77.666...\nचरण 5: आउटपुट में सुहाना और तारा के लिए 77.666667 है, जो मेल खाता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: dropna() and fillna() also return new DataFrames. Save the result (df = df.fillna(...)) or the original still has NaN. Always record which method you used, because the choice changes your results.",
+      "hi": "याद रखें: dropna() और fillna() भी नए DataFrame लौटाते हैं। परिणाम सहेजें (df = df.fillna(...)), नहीं तो मूल में NaN बने रहेंगे। हमेशा लिखकर रखें कि कौन-सा तरीका अपनाया, क्योंकि चुनाव से परिणाम बदल जाते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.9 Linear Regression (for advanced learners)",
+    "hi": "1.9 Linear Regression (उन्नत विद्यार्थियों के लिए)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Linear Regression is one of the simplest supervised machine learning algorithms. It predicts a number (a continuous value), such as a house price, a salary, tomorrow's temperature or a crop's yield, by finding the straight line that best fits the relationship between an input and the output.",
+      "hi": "Linear Regression सबसे सरल supervised machine learning algorithms में से एक है। यह किसी संख्या (सतत मान) का पूर्वानुमान लगाता है, जैसे मकान का दाम, वेतन, कल का तापमान या फ़सल की पैदावार। इसके लिए यह input और output के संबंध पर सबसे अच्छी तरह बैठने वाली सीधी रेखा खोजता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "y = m x + c\n\ny = dependent variable (target we predict, e.g. salary)\nx = independent variable (feature, e.g. years of experience)\nm = slope (how much y changes when x increases by 1)\nc = intercept (value of y when x = 0)",
+      "hi": "y = m x + c\n\ny = आश्रित चर (target जिसका पूर्वानुमान करते हैं, जैसे वेतन)\nx = स्वतंत्र चर (feature, जैसे अनुभव के वर्ष)\nm = ढलान/slope (x में 1 बढ़ने पर y कितना बदलता है)\nc = अंतःखंड/intercept (x = 0 होने पर y का मान)"
+     }
+    },
+    {
+     "p": {
+      "en": "Picture a scatter graph with experience on the x-axis and salary on the y-axis. The points rise from bottom-left to top-right but are not perfectly in a line. Many lines could be drawn through them. The best-fit line is the one for which the errors (vertical gaps between each point and the line, called residuals) are as small as possible overall. Linear Regression measures this using the sum of squared errors and chooses the m and c that make it smallest; this is called the method of least squares. With more than one input (area, number of rooms, age of house) the same idea becomes multiple linear regression: y = m1x1 + m2x2 + ... + c.",
+      "hi": "एक scatter graph की कल्पना कीजिए, जिसमें x-अक्ष पर अनुभव और y-अक्ष पर वेतन है। बिंदु नीचे-बाएँ से ऊपर-दाएँ की ओर बढ़ते हैं, पर पूरी तरह एक रेखा में नहीं हैं। इनसे होकर कई रेखाएँ खींची जा सकती हैं। सबसे अच्छी रेखा (best-fit line) वह है जिसके लिए त्रुटियाँ (हर बिंदु और रेखा के बीच की ऊर्ध्वाधर दूरी, जिसे residual कहते हैं) कुल मिलाकर सबसे छोटी हों। Linear Regression इसे वर्ग-त्रुटियों के योग से मापता है और वे m तथा c चुनता है जिनसे यह योग सबसे छोटा हो; इसे least squares विधि कहते हैं। एक से अधिक input (क्षेत्रफल, कमरों की संख्या, मकान की आयु) होने पर यही विचार multiple linear regression बन जाता है: y = m1x1 + m2x2 + ... + c।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Import the libraries (pandas, sklearn).",
+       "Load the dataset from CSV with read_csv() and check it (head(), shape, isnull().sum()).",
+       "Choose X (input features, a 2-D table) and y (target, one column).",
+       "Split the data into training and testing sets, e.g. 80% and 20%, using train_test_split().",
+       "Create the model with LinearRegression() and train it with fit(X_train, y_train).",
+       "Predict on the test set with predict(X_test).",
+       "Compare actual and predicted values and measure error (MSE, RMSE; see Chapter 2).",
+       "Use the model to predict for new inputs."
+      ],
+      "hi": [
+       "लाइब्रेरी import करें (pandas, sklearn)।",
+       "read_csv() से CSV dataset लोड करें और उसे जाँचें (head(), shape, isnull().sum())।",
+       "X (input features, एक 2-D तालिका) और y (target, एक column) चुनें।",
+       "train_test_split() से data को training और testing भागों में बाँटें, जैसे 80% और 20%।",
+       "LinearRegression() से model बनाएँ और fit(X_train, y_train) से उसे प्रशिक्षित करें।",
+       "predict(X_test) से test भाग पर पूर्वानुमान लगाएँ।",
+       "वास्तविक और अनुमानित मानों की तुलना करें और त्रुटि मापें (MSE, RMSE; अध्याय 2 देखें)।",
+       "नए inputs के लिए model से पूर्वानुमान लगाएँ।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "The program below uses a small made-up dataset of years of experience and monthly salary (in thousand rupees) for 10 employees. It saves the data as salary.csv and reads it back, just as you would with a real file such as the Salary or USA Housing datasets used in the CBSE practicals.",
+      "hi": "नीचे का प्रोग्राम 10 कर्मचारियों के अनुभव के वर्षों और मासिक वेतन (हज़ार रुपये में) का एक छोटा काल्पनिक dataset इस्तेमाल करता है। यह data को salary.csv में सहेजकर फिर से पढ़ता है, ठीक वैसे ही जैसे आप CBSE practicals में प्रयुक्त Salary या USA Housing जैसी असली फ़ाइल के साथ करेंगे।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\n\n# Years of experience and monthly salary (in thousand rupees)\ndata = pd.DataFrame({\n    'Experience': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],\n    'Salary':     [22, 25, 31, 34, 38, 43, 46, 51, 54, 60]})\ndata.to_csv('salary.csv', index=False)\n\ndf = pd.read_csv('salary.csv')\nX = df[['Experience']]      # input feature (2-D)\ny = df['Salary']            # target\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=10)\n\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\nprint('Slope (m):', round(float(model.coef_[0]), 2))\nprint('Intercept (c):', round(float(model.intercept_), 2))\n\ny_pred = model.predict(X_test)\nprint('Test rows:', list(X_test['Experience']))\nprint('Actual:', list(y_test))\nprint('Predicted:', [round(float(v), 2) for v in y_pred])\n\nmse = mean_squared_error(y_test, y_pred)\nprint('MSE:', round(float(mse), 2))\nprint('RMSE:', round(float(mse) ** 0.5, 2))\nprint('R2 on train:', round(model.score(X_train, y_train), 3))\n\nnew = pd.DataFrame({'Experience': [12]})\nprint('Predicted salary for 12 years:', round(float(model.predict(new)[0]), 2))",
+      "hi": "प्रोग्राम:\nimport pandas as pd\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\n\n# Years of experience and monthly salary (in thousand rupees)\ndata = pd.DataFrame({\n    'Experience': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],\n    'Salary':     [22, 25, 31, 34, 38, 43, 46, 51, 54, 60]})\ndata.to_csv('salary.csv', index=False)\n\ndf = pd.read_csv('salary.csv')\nX = df[['Experience']]      # input feature (2-D)\ny = df['Salary']            # target\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=10)\n\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\nprint('Slope (m):', round(float(model.coef_[0]), 2))\nprint('Intercept (c):', round(float(model.intercept_), 2))\n\ny_pred = model.predict(X_test)\nprint('Test rows:', list(X_test['Experience']))\nprint('Actual:', list(y_test))\nprint('Predicted:', [round(float(v), 2) for v in y_pred])\n\nmse = mean_squared_error(y_test, y_pred)\nprint('MSE:', round(float(mse), 2))\nprint('RMSE:', round(float(mse) ** 0.5, 2))\nprint('R2 on train:', round(model.score(X_train, y_train), 3))\n\nnew = pd.DataFrame({'Experience': [12]})\nprint('Predicted salary for 12 years:', round(float(model.predict(new)[0]), 2))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nSlope (m): 4.25\nIntercept (c): 17.04\nTest rows: [9, 3]\nActual: [54, 31]\nPredicted: [55.28, 29.78]\nMSE: 1.55\nRMSE: 1.25\nR2 on train: 0.998\nPredicted salary for 12 years: 68.02",
+      "hi": "आउटपुट:\nSlope (m): 4.25\nIntercept (c): 17.04\nTest rows: [9, 3]\nActual: [54, 31]\nPredicted: [55.28, 29.78]\nMSE: 1.55\nRMSE: 1.25\nR2 on train: 0.998\nPredicted salary for 12 years: 68.02"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "X = df[['Experience']] uses double brackets because scikit-learn expects the features as a 2-D table, even when there is only one feature. y can be a single column.",
+       "test_size=0.2 keeps 20% (2 of the 10 rows) for testing. random_state=10 makes the random split the same every time you run it, so results can be repeated.",
+       "The learnt line is Salary ≈ 4.25 × Experience + 17.04. Each extra year adds about ₹4,250 to the monthly salary in this data.",
+       "For the test rows (9 and 3 years), predictions 55.28 and 29.78 are close to the actual 54 and 31, giving a small RMSE of about 1.25 thousand rupees.",
+       "model.score() returns R² (coefficient of determination): 1 means a perfect fit, 0 means the line is no better than always guessing the average. 0.998 shows the line fits this neat data very well; real data is usually messier.",
+       "Predicting for 12 years (68.02) is extrapolation, beyond the data range. Such predictions are less reliable."
+      ],
+      "hi": [
+       "X = df[['Experience']] में दोहरे कोष्ठक हैं, क्योंकि scikit-learn features को 2-D तालिका के रूप में चाहता है, भले एक ही feature हो। y एक column हो सकता है।",
+       "test_size=0.2 से 20% (10 में से 2 rows) testing के लिए रखी जाती हैं। random_state=10 से हर बार चलाने पर वही यादृच्छिक बँटवारा होता है, ताकि परिणाम दोहराए जा सकें।",
+       "सीखी गई रेखा है Salary ≈ 4.25 × Experience + 17.04। इस data में हर अतिरिक्त वर्ष मासिक वेतन में लगभग ₹4,250 जोड़ता है।",
+       "Test rows (9 और 3 वर्ष) के लिए अनुमान 55.28 और 29.78 वास्तविक 54 और 31 के निकट हैं, जिससे RMSE लगभग 1.25 हज़ार रुपये जितना छोटा है।",
+       "model.score() R² (coefficient of determination) लौटाता है: 1 का अर्थ पूर्ण फ़िट, 0 का अर्थ कि रेखा हमेशा औसत बताने से बेहतर नहीं। 0.998 दिखाता है कि यह रेखा इस साफ़-सुथरे data पर बहुत अच्छी बैठती है; असली data आमतौर पर ज़्यादा बिखरा होता है।",
+       "12 वर्ष (68.02) का पूर्वानुमान extrapolation है, यानी data की सीमा से बाहर। ऐसे पूर्वानुमान कम भरोसेमंद होते हैं।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using the learnt line Salary = 4.25 × Experience + 17.04, predict the salary for 5 years of experience and find the error if the actual salary is 38.",
+       "hi": "सीखी गई रेखा Salary = 4.25 × Experience + 17.04 से 5 वर्ष के अनुभव का वेतन बताइए, और वास्तविक वेतन 38 हो तो त्रुटि निकालिए।"
+      },
+      "a": {
+       "en": "Step 1: Put x = 5: Salary = 4.25 × 5 + 17.04.\nStep 2: 4.25 × 5 = 21.25.\nStep 3: 21.25 + 17.04 = 38.29 (thousand rupees).\nStep 4: Error (residual) = actual − predicted = 38 − 38.29 = −0.29. The model over-predicts slightly.",
+       "hi": "चरण 1: x = 5 रखें: Salary = 4.25 × 5 + 17.04।\nचरण 2: 4.25 × 5 = 21.25।\nचरण 3: 21.25 + 17.04 = 38.29 (हज़ार रुपये)।\nचरण 4: त्रुटि (residual) = वास्तविक − अनुमानित = 38 − 38.29 = −0.29। model थोड़ा अधिक अनुमान लगाता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Linear Regression assumes a roughly straight-line relationship. If the scatter plot curves, or if there are extreme outliers, the predictions can be poor. Always plot the data first (for example with matplotlib's plt.scatter) and check the errors on test data.",
+      "hi": "याद रखें: Linear Regression मानता है कि संबंध लगभग सीधी रेखा जैसा है। scatter plot मुड़ता हो या बहुत चरम outliers हों तो पूर्वानुमान ख़राब हो सकते हैं। हमेशा पहले data का plot बनाएँ (जैसे matplotlib के plt.scatter से) और test data पर त्रुटियाँ जाँचें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.10 Activities",
+    "hi": "1.10 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Screen activity: Your own marks file in Colab.\nAim: practise the full CSV cycle. What you need: Google Colab (with a teacher's help if needed) or Jupyter.",
+       "hi": "स्क्रीन गतिविधि: Colab में अपनी अंक-फ़ाइल।\nउद्देश्य: पूरा CSV चक्र अभ्यास करना। क्या चाहिए: Google Colab (ज़रूरत हो तो शिक्षक की मदद से) या Jupyter।"
+      },
+      "a": {
+       "en": "What to do:\n1. Create a DataFrame of 8 classmates (use first names or roll numbers only) with marks in 4 subjects; leave 3 cells as np.nan.\n2. Export it with to_csv('class.csv', index=False). Download it and open it in Google Sheets or Excel.\n3. Read it back with read_csv(), and print shape, columns, head(3).\n4. Count missing values, then fill them with each column's mean and add a Total column.\n5. Export the cleaned file as class_clean.csv.\nWhat you observe: the CSV opens in any spreadsheet; NaN cells appear empty there.\nWhat it teaches: the import-clean-export cycle every data project starts with.",
+       "hi": "क्या करें:\n1. 8 सहपाठियों (केवल पहले नाम या रोल नंबर) के 4 विषयों के अंकों का DataFrame बनाएँ; 3 cells को np.nan छोड़ें।\n2. to_csv('class.csv', index=False) से export करें। उसे download करके Google Sheets या Excel में खोलें।\n3. read_csv() से फिर पढ़ें और shape, columns, head(3) print करें।\n4. छूटे मान गिनें, फिर उन्हें हर column के mean से भरें और Total column जोड़ें।\n5. साफ़ फ़ाइल को class_clean.csv के रूप में export करें।\nक्या दिखता है: CSV किसी भी spreadsheet में खुल जाती है; वहाँ NaN cells ख़ाली दिखते हैं।\nक्या सीखते हैं: import-साफ़-export का वह चक्र जिससे हर data प्रोजेक्ट शुरू होता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Unplugged activity: Best-fit line on graph paper.\nAim: understand what Linear Regression does without a computer. What you need: graph paper, pencil, a ruler, a thread.",
+       "hi": "बिना कंप्यूटर की गतिविधि: graph paper पर best-fit line।\nउद्देश्य: बिना कंप्यूटर समझना कि Linear Regression क्या करता है। क्या चाहिए: graph paper, पेंसिल, स्केल, एक धागा।"
+      },
+      "a": {
+       "en": "What to do:\n1. Note overs played (x) and runs scored (y) for 8 innings of your school team or a favourite player.\n2. Plot the 8 points.\n3. Stretch a thread over the points and move it until it seems to pass through the middle of them, with points above and below balanced. Draw that line.\n4. Measure the vertical gap from each point to the line; square and add them. Try a slightly different line and compare the totals.\nWhat you observe: the line with the smaller total of squared gaps fits better.\nWhat it teaches: least squares, which LinearRegression().fit() does exactly and instantly.",
+       "hi": "क्या करें:\n1. अपनी स्कूल टीम या पसंदीदा खिलाड़ी की 8 पारियों के ओवर (x) और रन (y) लिखें।\n2. 8 बिंदु graph पर अंकित करें।\n3. बिंदुओं पर धागा तानें और तब तक खिसकाएँ जब तक वह उनके बीच से गुज़रता न लगे, ऊपर और नीचे के बिंदु संतुलित हों। वह रेखा खींचें।\n4. हर बिंदु से रेखा तक की ऊर्ध्वाधर दूरी नापें; उनका वर्ग करके जोड़ें। थोड़ी अलग रेखा लेकर योगों की तुलना करें।\nक्या दिखता है: जिस रेखा का वर्ग-दूरियों का योग छोटा है, वह बेहतर बैठती है।\nक्या सीखते हैं: least squares, जिसे LinearRegression().fit() सटीक रूप से और तुरंत करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Data sources for practice: data.gov.in (Open Government Data platform of India), Kaggle (free sign-up) and the sample_data folder already present in every Colab notebook (it contains a California housing CSV you can use for linear regression). Never upload personal details of real people, such as phone numbers or Aadhaar numbers, into online notebooks.",
+      "hi": "अभ्यास के लिए data स्रोत: data.gov.in (भारत का Open Government Data platform), Kaggle (मुफ़्त sign-up) और हर Colab notebook में पहले से मौजूद sample_data folder (इसमें California housing की CSV है, जिसे linear regression में इस्तेमाल कर सकते हैं)। असली लोगों की निजी जानकारी, जैसे फ़ोन नंबर या आधार नंबर, कभी online notebooks में upload न करें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Writing np.NaN: newer NumPy removed it. Fix: write np.nan.",
+   "Calling an attribute like a method, e.g. df.shape(). Fix: df.shape has no brackets; head() and tail() do.",
+   "Forgetting index=False in to_csv(), which adds an unnamed extra column when the file is read again. Fix: df.to_csv('file.csv', index=False).",
+   "Mismatched separator: reading a ';' file without sep=';' puts everything in one column. Fix: match sep to the file.",
+   "Expecting drop(), dropna() or fillna() to change the original DataFrame. Fix: assign the result back (df = df.dropna()) or use inplace=True.",
+   "Confusing axis: axis=0 is rows and axis=1 is columns in drop() and dropna().",
+   "Filling every missing value with 0 even when 0 is not meaningful (e.g. absent student). Fix: use mean or median, or drop, and justify the choice.",
+   "Passing a single column as X with single brackets, df['Experience'], to scikit-learn. Fix: use df[['Experience']] so X is 2-D.",
+   "Testing a model on the same data it was trained on and calling it accurate. Fix: always keep a separate test set.",
+   "Trusting predictions far outside the training range (extrapolation) as if they were certain."
+  ],
+  "hi": [
+   "np.NaN लिखना: नए NumPy में यह हटा दिया गया है। सुधार: np.nan लिखें।",
+   "attribute को method की तरह बुलाना, जैसे df.shape()। सुधार: df.shape बिना कोष्ठक; head() और tail() में कोष्ठक।",
+   "to_csv() में index=False भूलना, जिससे फ़ाइल फिर पढ़ने पर बिना नाम का अतिरिक्त column आ जाता है। सुधार: df.to_csv('file.csv', index=False)।",
+   "विभाजक का मेल न होना: ';' वाली फ़ाइल को sep=';' के बिना पढ़ने पर सब कुछ एक column में आ जाता है। सुधार: sep को फ़ाइल से मिलाएँ।",
+   "यह मान लेना कि drop(), dropna() या fillna() मूल DataFrame बदल देंगे। सुधार: परिणाम वापस सौंपें (df = df.dropna()) या inplace=True लगाएँ।",
+   "axis में भ्रम: drop() और dropna() में axis=0 का अर्थ rows और axis=1 का अर्थ columns है।",
+   "हर छूटे मान को 0 से भरना, जबकि 0 का कोई अर्थ न हो (जैसे अनुपस्थित विद्यार्थी)। सुधार: mean या median लें, या हटाएँ, और कारण बताएँ।",
+   "scikit-learn को X के रूप में एक कोष्ठक वाला column df['Experience'] देना। सुधार: df[['Experience']] लिखें ताकि X 2-D हो।",
+   "जिस data पर model प्रशिक्षित किया, उसी पर जाँचकर उसे सटीक कहना। सुधार: हमेशा अलग test set रखें।",
+   "प्रशिक्षण-सीमा से बहुत बाहर के पूर्वानुमानों (extrapolation) को निश्चित मान लेना।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Library",
+    "hi": "लाइब्रेरी"
+   },
+   "d": {
+    "en": "A reusable collection of modules and functions imported into a program.",
+    "hi": "modules और functions का पुनः उपयोग योग्य संग्रह, जिसे प्रोग्राम में import किया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Alias",
+    "hi": "Alias (उपनाम)"
+   },
+   "d": {
+    "en": "A short name given while importing, e.g. np for numpy.",
+    "hi": "import करते समय दिया गया छोटा नाम, जैसे numpy के लिए np।"
+   }
+  },
+  {
+   "t": {
+    "en": "NumPy",
+    "hi": "NumPy"
+   },
+   "d": {
+    "en": "Numerical Python: a library for fast operations on arrays of numbers.",
+    "hi": "Numerical Python: संख्याओं के arrays पर तेज़ क्रियाओं की लाइब्रेरी।"
+   }
+  },
+  {
+   "t": {
+    "en": "ndarray",
+    "hi": "ndarray"
+   },
+   "d": {
+    "en": "NumPy's n-dimensional array whose items all share one data type.",
+    "hi": "NumPy का n-आयामी array, जिसके सभी items एक ही data type के होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Vectorised operation",
+    "hi": "Vectorised क्रिया"
+   },
+   "d": {
+    "en": "An operation applied to all items of an array at once, without a loop.",
+    "hi": "बिना loop के array के सभी items पर एक साथ लागू होने वाली क्रिया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Axis",
+    "hi": "Axis (अक्ष)"
+   },
+   "d": {
+    "en": "Direction of an operation: axis 0 = down rows (per column), axis 1 = across columns (per row).",
+    "hi": "क्रिया की दिशा: axis 0 = rows में नीचे (हर column के लिए), axis 1 = columns में आड़े (हर row के लिए)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pandas",
+    "hi": "Pandas"
+   },
+   "d": {
+    "en": "A library for storing, cleaning and analysing tabular data.",
+    "hi": "तालिका-रूपी data को रखने, साफ़ करने और विश्लेषण करने की लाइब्रेरी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Series",
+    "hi": "Series"
+   },
+   "d": {
+    "en": "A one-dimensional labelled array in Pandas.",
+    "hi": "Pandas का एक-आयामी लेबल वाला array।"
+   }
+  },
+  {
+   "t": {
+    "en": "DataFrame",
+    "hi": "DataFrame"
+   },
+   "d": {
+    "en": "A two-dimensional labelled table of rows and columns in Pandas.",
+    "hi": "Pandas की rows और columns वाली द्वि-आयामी लेबल वाली तालिका।"
+   }
+  },
+  {
+   "t": {
+    "en": "Index",
+    "hi": "Index"
+   },
+   "d": {
+    "en": "The labels of the rows of a Series or DataFrame.",
+    "hi": "Series या DataFrame की rows के लेबल।"
+   }
+  },
+  {
+   "t": {
+    "en": "loc / iloc",
+    "hi": "loc / iloc"
+   },
+   "d": {
+    "en": "loc selects by labels; iloc selects by integer positions.",
+    "hi": "loc लेबल से चुनता है; iloc पूर्णांक स्थानों से।"
+   }
+  },
+  {
+   "t": {
+    "en": "Attribute",
+    "hi": "Attribute"
+   },
+   "d": {
+    "en": "A property of an object read without brackets, e.g. df.shape.",
+    "hi": "किसी वस्तु का गुण जो बिना कोष्ठक पढ़ा जाता है, जैसे df.shape।"
+   }
+  },
+  {
+   "t": {
+    "en": "CSV",
+    "hi": "CSV"
+   },
+   "d": {
+    "en": "Comma-Separated Values: plain-text table, one row per line, values split by a delimiter.",
+    "hi": "Comma-Separated Values: साधारण text तालिका, हर पंक्ति एक row, मान विभाजक से अलग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Delimiter (sep)",
+    "hi": "विभाजक (sep)"
+   },
+   "d": {
+    "en": "The character that separates values in a CSV line, usually a comma.",
+    "hi": "CSV पंक्ति में मानों को अलग करने वाला अक्षर, आमतौर पर comma।"
+   }
+  },
+  {
+   "t": {
+    "en": "Header",
+    "hi": "Header"
+   },
+   "d": {
+    "en": "The first line of a CSV holding column names.",
+    "hi": "CSV की पहली पंक्ति जिसमें columns के नाम होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "read_csv() / to_csv()",
+    "hi": "read_csv() / to_csv()"
+   },
+   "d": {
+    "en": "Functions to import a CSV into a DataFrame and export a DataFrame to a CSV.",
+    "hi": "CSV को DataFrame में import और DataFrame को CSV में export करने वाले functions।"
+   }
+  },
+  {
+   "t": {
+    "en": "Google Colab",
+    "hi": "Google Colab"
+   },
+   "d": {
+    "en": "A free cloud notebook that runs Python in a web browser.",
+    "hi": "एक मुफ़्त cloud notebook जो web browser में Python चलाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Missing value (NaN)",
+    "hi": "छूटा मान (NaN)"
+   },
+   "d": {
+    "en": "An empty cell in data; Pandas shows it as NaN, Not a Number.",
+    "hi": "data में ख़ाली cell; Pandas इसे NaN (Not a Number) दिखाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Imputation",
+    "hi": "Imputation (अनुमान से भरना)"
+   },
+   "d": {
+    "en": "Filling missing values with estimates such as the mean, median or mode.",
+    "hi": "छूटे मानों को mean, median या mode जैसे अनुमानों से भरना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Linear Regression",
+    "hi": "Linear Regression"
+   },
+   "d": {
+    "en": "A supervised algorithm that predicts a number by fitting a straight line y = mx + c.",
+    "hi": "एक supervised algorithm जो सीधी रेखा y = mx + c बैठाकर संख्या का पूर्वानुमान लगाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dependent / independent variable",
+    "hi": "आश्रित / स्वतंत्र चर"
+   },
+   "d": {
+    "en": "The target being predicted (y) / the input feature used to predict (x).",
+    "hi": "जिसका पूर्वानुमान होता है (y) / पूर्वानुमान के लिए प्रयुक्त input feature (x)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Slope and intercept",
+    "hi": "Slope और intercept"
+   },
+   "d": {
+    "en": "m, change in y per unit x; c, value of y when x is 0.",
+    "hi": "m, x की प्रति इकाई y में बदलाव; c, x के 0 होने पर y का मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Residual",
+    "hi": "Residual (अवशेष)"
+   },
+   "d": {
+    "en": "Actual value minus predicted value for one data point.",
+    "hi": "किसी data बिंदु का वास्तविक मान घटा अनुमानित मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Least squares",
+    "hi": "Least squares"
+   },
+   "d": {
+    "en": "Choosing the line that makes the sum of squared residuals smallest.",
+    "hi": "वह रेखा चुनना जिससे वर्ग-अवशेषों का योग सबसे छोटा हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training / testing set",
+    "hi": "Training / testing set"
+   },
+   "d": {
+    "en": "Part of data used to teach the model / kept aside to check it on unseen data.",
+    "hi": "data का वह भाग जिससे model सीखता है / जिसे अनदेखे data पर जाँच के लिए अलग रखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "R² score",
+    "hi": "R² score"
+   },
+   "d": {
+    "en": "Measure of fit from 0 to 1 (can be negative for very bad models); 1 is a perfect fit.",
+    "hi": "फ़िट का माप, 0 से 1 तक (बहुत ख़राब model में ऋणात्मक भी); 1 पूर्ण फ़िट है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which Pandas data structure is one-dimensional? (a) DataFrame (b) Series (c) Panel (d) ndarray",
+    "hi": "MCQ: Pandas की कौन-सी data structure एक-आयामी है? (a) DataFrame (b) Series (c) Panel (d) ndarray"
+   },
+   "a": {
+    "en": "(b) Series.",
+    "hi": "(b) Series।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which method fills missing values with a given number? (a) dropna() (b) isnull() (c) fillna() (d) head()",
+    "hi": "MCQ: कौन-सा method छूटे मानों को दी गई संख्या से भरता है? (a) dropna() (b) isnull() (c) fillna() (d) head()"
+   },
+   "a": {
+    "en": "(c) fillna().",
+    "hi": "(c) fillna()।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The correct way to read a file marks.csv is: (a) pd.read_csv('marks.csv') (b) pd.to_csv('marks.csv') (c) df.read_csv('marks.csv') (d) pd.readcsv('marks.csv')",
+    "hi": "MCQ: marks.csv फ़ाइल पढ़ने का सही तरीका है: (a) pd.read_csv('marks.csv') (b) pd.to_csv('marks.csv') (c) df.read_csv('marks.csv') (d) pd.readcsv('marks.csv')"
+   },
+   "a": {
+    "en": "(a) pd.read_csv('marks.csv').",
+    "hi": "(a) pd.read_csv('marks.csv')।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: For a DataFrame with 120 rows and 6 columns, df.shape returns: (a) 720 (b) (6, 120) (c) (120, 6) (d) 126",
+    "hi": "MCQ: 120 rows और 6 columns वाले DataFrame के लिए df.shape लौटाता है: (a) 720 (b) (6, 120) (c) (120, 6) (d) 126"
+   },
+   "a": {
+    "en": "(c) (120, 6). (df.size would be 720.)",
+    "hi": "(c) (120, 6)। (df.size 720 होगा।)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: In to_csv(), the parameter ______ = False stops the row labels from being written to the file.",
+    "hi": "रिक्त स्थान भरें: to_csv() में parameter ______ = False फ़ाइल में row labels लिखने से रोकता है।"
+   },
+   "a": {
+    "en": "index",
+    "hi": "index"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: df.head() without a number shows the first 5 rows.",
+    "hi": "सही या ग़लत: बिना संख्या के df.head() पहली 5 rows दिखाता है।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: All items of a NumPy array must have the same data type.",
+    "hi": "सही या ग़लत: NumPy array के सभी items का data type एक ही होना चाहिए।"
+   },
+   "a": {
+    "en": "True. If you mix numbers and text, NumPy converts them all to one type (text).",
+    "hi": "सही। संख्याएँ और text मिलाने पर NumPy सबको एक type (text) में बदल देता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write code to create a Series of the populations (in crore) of three states, using the state names as the index, from a dictionary.",
+    "hi": "तीन राज्यों की जनसंख्या (करोड़ में) की Series, राज्यों के नाम को index बनाकर, dictionary से बनाने का code लिखिए।"
+   },
+   "a": {
+    "en": "import pandas as pd\npop = pd.Series({'Uttar Pradesh': 24, 'Maharashtra': 12, 'Bihar': 13})\nprint(pop)\nThe keys become the index and the values become the data. (Figures are rounded examples.)",
+    "hi": "import pandas as pd\npop = pd.Series({'Uttar Pradesh': 24, 'Maharashtra': 12, 'Bihar': 13})\nprint(pop)\nKeys index बन जाती हैं और values data। (आँकड़े गोल किए गए उदाहरण हैं।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the role of NumPy in data analysis? Give two reasons it is preferred over Python lists.",
+    "hi": "data analysis में NumPy की क्या भूमिका है? Python lists की तुलना में इसे पसंद करने के दो कारण बताइए।"
+   },
+   "a": {
+    "en": "NumPy provides the ndarray and fast mathematical functions on whole arrays; Pandas and scikit-learn are built on it. Reasons: (1) vectorised operations work on all items without loops and are much faster; (2) arrays use less memory and support multi-dimensional data, slicing, filtering and statistics directly.",
+    "hi": "NumPy ndarray और पूरे arrays पर तेज़ गणितीय functions देता है; Pandas और scikit-learn इसी पर बने हैं। कारण: (1) vectorised क्रियाएँ बिना loop सभी items पर काम करती हैं और बहुत तेज़ हैं; (2) arrays कम memory लेते हैं और बहु-आयामी data, slicing, filtering और आँकड़े सीधे देते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the purpose of isnull(), isnull().sum() and isnull().sum().sum().",
+    "hi": "isnull(), isnull().sum() और isnull().sum().sum() का उद्देश्य समझाइए।"
+   },
+   "a": {
+    "en": "isnull() returns a True/False table marking each missing cell. isnull().sum() counts the True values in each column, i.e., missing values per column. isnull().sum().sum() adds those counts to give the total number of missing values in the whole DataFrame.",
+    "hi": "isnull() हर छूटे cell को True दिखाने वाली True/False तालिका देता है। isnull().sum() हर column में True गिनता है, यानी प्रति column छूटे मान। isnull().sum().sum() उन गिनतियों को जोड़कर पूरे DataFrame के छूटे मानों की कुल संख्या देता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give two strategies for handling missing values and one situation where each is suitable.",
+    "hi": "छूटे मानों को संभालने की दो रणनीतियाँ और हर एक के लिए उपयुक्त एक स्थिति बताइए।"
+   },
+   "a": {
+    "en": "(1) Dropping rows with dropna(): suitable when only a handful of rows in a very large dataset are incomplete, so little information is lost. (2) Imputing with fillna(mean or median): suitable when a numeric column has a few gaps and every row is valuable, such as a small class result sheet. (Median is better when there are outliers.)",
+    "hi": "(1) dropna() से rows हटाना: जब बहुत बड़े dataset में केवल कुछ rows अधूरी हों, तो कम जानकारी खोती है। (2) fillna(mean या median) से भरना: जब किसी संख्यात्मक column में कुछ ही रिक्त हों और हर row क़ीमती हो, जैसे छोटी कक्षा की परिणाम-सूची। (outliers हों तो median बेहतर।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): df.drop('AI', axis=1) removes the AI column from df permanently.\nReason (R): drop() returns a new DataFrame by default.\nChoose: (a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): df.drop('AI', axis=1) df से AI column स्थायी रूप से हटा देता है।\nकारण (R): drop() डिफ़ॉल्ट रूप से नया DataFrame लौटाता है।\nचुनें: (a) दोनों सही, R, A की व्याख्या है (b) दोनों सही, R व्याख्या नहीं (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(d) A is false because df is unchanged unless the result is assigned back or inplace=True is used; R is true.",
+    "hi": "(d) A ग़लत है, क्योंकि परिणाम वापस न सौंपें या inplace=True न लगाएँ तो df नहीं बदलता; R सही है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Predict the output: import numpy as np; a = np.array([[2, 4], [6, 8]]); print(a.sum(axis=0), a.sum(axis=1), a.shape)",
+    "hi": "आउटपुट बताइए: import numpy as np; a = np.array([[2, 4], [6, 8]]); print(a.sum(axis=0), a.sum(axis=1), a.shape)"
+   },
+   "a": {
+    "en": "[ 8 12] [ 6 14] (2, 2)\naxis=0 adds each column (2+6, 4+8); axis=1 adds each row (2+4, 6+8).",
+    "hi": "[ 8 12] [ 6 14] (2, 2)\naxis=0 हर column जोड़ता है (2+6, 4+8); axis=1 हर row (2+4, 6+8)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A file prices.csv uses ';' between values and has no header row. Write the line to read it correctly and give column names Item and Price.",
+    "hi": "prices.csv फ़ाइल में मानों के बीच ';' है और header row नहीं है। उसे सही ढंग से पढ़ने और columns को Item तथा Price नाम देने की पंक्ति लिखिए।"
+   },
+   "a": {
+    "en": "df = pd.read_csv('prices.csv', sep=';', header=None, names=['Item', 'Price'])\nsep matches the delimiter, header=None says there is no header, and names supplies column names.",
+    "hi": "df = pd.read_csv('prices.csv', sep=';', header=None, names=['Item', 'Price'])\nsep विभाजक से मेल खाता है, header=None बताता है कि header नहीं है, और names columns के नाम देता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the steps to import a CSV file into a DataFrame in Google Colab and export the cleaned DataFrame back to a CSV file.",
+    "hi": "Google Colab में CSV फ़ाइल को DataFrame में import करने और साफ़ DataFrame को वापस CSV में export करने के चरण समझाइए।"
+   },
+   "a": {
+    "en": "1. Open a notebook and run import pandas as pd.\n2. Click the Files (folder) icon on the left, then the upload icon, and choose the CSV (or use files.upload() from google.colab).\n3. df = pd.read_csv('data.csv'); check with df.head(), df.shape, df.isnull().sum().\n4. Clean: e.g. df = df.fillna(df.mean(numeric_only=True)).\n5. Export: df.to_csv('data_clean.csv', index=False).\n6. Right-click the new file in the Files panel and download it (uploaded and created files vanish when the session ends).",
+    "hi": "1. notebook खोलें और import pandas as pd चलाएँ।\n2. बाईं ओर Files (folder) आइकन, फिर upload आइकन पर क्लिक करके CSV चुनें (या google.colab का files.upload() लें)।\n3. df = pd.read_csv('data.csv'); df.head(), df.shape, df.isnull().sum() से जाँचें।\n4. साफ़ करें: जैसे df = df.fillna(df.mean(numeric_only=True))।\n5. Export: df.to_csv('data_clean.csv', index=False)।\n6. Files पैनल में नई फ़ाइल पर right-click करके download करें (session ख़त्म होने पर upload की गई और बनी फ़ाइलें मिट जाती हैं)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the Linear Regression algorithm and list the steps to implement it in Python with scikit-learn.",
+    "hi": "Linear Regression algorithm समझाइए और scikit-learn से Python में इसे लागू करने के चरण बताइए।"
+   },
+   "a": {
+    "en": "Linear Regression is a supervised learning algorithm that predicts a continuous value by fitting a line y = mx + c (or y = m1x1 + ... + c for many features) so that the sum of squared residuals is minimum (least squares). Steps: import pandas and sklearn; load data with read_csv(); handle missing values; select X (2-D features) and y (target); split with train_test_split(test_size=0.2); model = LinearRegression(); model.fit(X_train, y_train); y_pred = model.predict(X_test); evaluate with MSE/RMSE and R²; predict for new data.",
+    "hi": "Linear Regression एक supervised learning algorithm है जो रेखा y = mx + c (कई features के लिए y = m1x1 + ... + c) इस तरह बैठाकर सतत मान का पूर्वानुमान लगाता है कि वर्ग-अवशेषों का योग न्यूनतम हो (least squares)। चरण: pandas और sklearn import करें; read_csv() से data लोड करें; छूटे मान संभालें; X (2-D features) और y (target) चुनें; train_test_split(test_size=0.2) से बाँटें; model = LinearRegression(); model.fit(X_train, y_train); y_pred = model.predict(X_test); MSE/RMSE और R² से मूल्यांकन करें; नए data के लिए पूर्वानुमान लगाएँ।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Differentiate between a NumPy array and a Pandas DataFrame (any four points).",
+    "hi": "NumPy array और Pandas DataFrame में अंतर बताइए (कोई चार बिंदु)।"
+   },
+   "a": {
+    "en": "1. Array items share one type; DataFrame columns can differ.\n2. Array is accessed by position; DataFrame by labels (loc) and positions (iloc).\n3. DataFrame has row index and column names; array has none.\n4. DataFrame has built-in tools for CSV, missing values, grouping; array is focused on fast numeric maths.",
+    "hi": "1. Array के items एक type के; DataFrame के columns अलग types के हो सकते हैं।\n2. Array में स्थान से पहुँच; DataFrame में लेबल (loc) और स्थान (iloc) दोनों से।\n3. DataFrame में row index और column नाम होते हैं; array में नहीं।\n4. DataFrame में CSV, छूटे मान, grouping के अंतर्निहित उपकरण हैं; array तेज़ संख्यात्मक गणित पर केंद्रित है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A shop's file sales.csv has columns Region and Amount. Write a program to find the total sales of each region and save the totals in totals.csv.",
+    "hi": "केस आधारित: एक दुकान की फ़ाइल sales.csv में Region और Amount columns हैं। हर क्षेत्र की कुल बिक्री निकालने और totals.csv में सहेजने का प्रोग्राम लिखिए।"
+   },
+   "a": {
+    "en": "import pandas as pd\nsales = pd.read_csv('sales.csv')\ntotal = sales.groupby('Region')['Amount'].sum()\nprint(total)\ntotal.to_csv('totals.csv')\n(Here the region names are the index, so we keep the index so that they are written to the file.)",
+    "hi": "import pandas as pd\nsales = pd.read_csv('sales.csv')\ntotal = sales.groupby('Region')['Amount'].sum()\nprint(total)\ntotal.to_csv('totals.csv')\n(यहाँ क्षेत्रों के नाम index हैं, इसलिए index रखते हैं ताकि वे फ़ाइल में लिखे जाएँ।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: An HR team's employee DataFrame emp has missing Age values and a column 'Unused' that is entirely empty. Write code to remove 'Unused', fill missing ages with the median age and confirm no missing values remain.",
+    "hi": "केस आधारित: HR टीम के emp DataFrame में कुछ Age मान छूटे हैं और 'Unused' column पूरी तरह ख़ाली है। 'Unused' हटाने, छूटी आयु को median आयु से भरने और कोई छूटा मान न बचने की पुष्टि का code लिखिए।"
+   },
+   "a": {
+    "en": "emp = emp.drop('Unused', axis=1)\nemp['Age'] = emp['Age'].fillna(emp['Age'].median())\nprint(emp.isnull().sum().sum())   # should print 0\nMedian is used because a few very old or young employees (outliers) would pull the mean.",
+    "hi": "emp = emp.drop('Unused', axis=1)\nemp['Age'] = emp['Age'].fillna(emp['Age'].median())\nprint(emp.isnull().sum().sum())   # 0 print होना चाहिए\nMedian इसलिए क्योंकि कुछ बहुत अधिक या कम आयु वाले कर्मचारी (outliers) mean को खींच लेंगे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A model learns Price = 0.05 × Area + 10 (price in lakh rupees, area in square feet). Predict the price of an 800 sq ft flat. If the actual price is 52 lakh, what is the residual?",
+    "hi": "एक model सीखता है Price = 0.05 × Area + 10 (दाम लाख रुपये में, क्षेत्रफल वर्ग फ़ुट में)। 800 वर्ग फ़ुट के फ़्लैट का दाम बताइए। वास्तविक दाम 52 लाख हो तो residual क्या है?"
+   },
+   "a": {
+    "en": "Predicted = 0.05 × 800 + 10 = 40 + 10 = 50 lakh. Residual = 52 − 50 = 2 lakh (the model under-predicts).",
+    "hi": "अनुमानित = 0.05 × 800 + 10 = 40 + 10 = 50 लाख। Residual = 52 − 50 = 2 लाख (model कम अनुमान लगाता है)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: A school wants to predict Class 12 AI marks from Class 11 marks using Linear Regression. Name two problems that could make the predictions unfair or wrong, and how to reduce them.",
+    "hi": "विचार प्रश्न: एक स्कूल Linear Regression से कक्षा 11 के अंकों के आधार पर कक्षा 12 के AI अंकों का पूर्वानुमान करना चाहता है। ऐसी दो समस्याएँ बताइए जो पूर्वानुमान को अनुचित या ग़लत बना सकती हैं, और उन्हें कम करने के उपाय।"
+   },
+   "a": {
+    "en": "1. Missing or wrong data (absent students given 0) can bend the line; clean data and use suitable imputation.\n2. One feature cannot capture effort, health or new coaching, so predictions should guide extra support, never label a student; test on unseen data, report RMSE, and let teachers make the final decisions. Also keep students' data private.",
+    "hi": "1. छूटा या ग़लत data (अनुपस्थित विद्यार्थियों को 0) रेखा को टेढ़ा कर सकता है; data साफ़ करें और उचित imputation अपनाएँ।\n2. एक feature मेहनत, स्वास्थ्य या नई कोचिंग को नहीं पकड़ सकता, इसलिए पूर्वानुमान केवल अतिरिक्त सहायता के लिए मार्गदर्शन दें, किसी विद्यार्थी पर ठप्पा न लगाएँ; अनदेखे data पर जाँचें, RMSE बताएँ, और अंतिम निर्णय शिक्षकों को लेने दें। विद्यार्थियों का data निजी रखें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Activity: In Colab, open sample_data/california_housing_train.csv. Print its shape and the number of missing values, then fit a Linear Regression of median_house_value on median_income and note the slope.",
+    "hi": "गतिविधि: Colab में sample_data/california_housing_train.csv खोलिए। उसका shape और छूटे मानों की संख्या print करें, फिर median_income पर median_house_value का Linear Regression बैठाकर slope लिखिए।"
+   },
+   "a": {
+    "en": "Code outline: df = pd.read_csv('sample_data/california_housing_train.csv'); print(df.shape, df.isnull().sum().sum()); X = df[['median_income']]; y = df['median_house_value']; m = LinearRegression().fit(X, y); print(m.coef_). You should find no missing values and a positive slope, meaning areas with higher income have higher house values. Write down your own numbers.",
+    "hi": "Code की रूपरेखा: df = pd.read_csv('sample_data/california_housing_train.csv'); print(df.shape, df.isnull().sum().sum()); X = df[['median_income']]; y = df['median_house_value']; m = LinearRegression().fit(X, y); print(m.coef_)। कोई छूटा मान नहीं मिलेगा और slope धनात्मक होगा, यानी अधिक आय वाले क्षेत्रों में मकानों का मूल्य अधिक है। अपने आँकड़े लिखें।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Libraries give ready, tested code; import numpy as np and pandas as pd.",
+   "A NumPy ndarray holds items of one type and supports fast vectorised maths, slicing, filtering and axis-wise calculations.",
+   "Use np.nan to mark missing values.",
+   "A Series is a 1-D labelled array; a DataFrame is a 2-D labelled table whose columns are Series.",
+   "DataFrames can be made from dictionaries, lists of dictionaries, NumPy arrays or CSV files.",
+   "Add columns with df['col'] = ..., add or update rows with df.loc[...], and delete with drop(axis=0 for rows, axis=1 for columns).",
+   "Attributes index, columns, shape, size and dtypes, and methods head() and tail(), describe a DataFrame.",
+   "df.to_csv(path, sep, index=False) exports; pd.read_csv(path, sep, header) imports.",
+   "In Colab, upload the file through the Files panel before reading it.",
+   "Detect missing values with isnull(), any(), sum() and sum().sum().",
+   "Handle them by dropping (dropna) or imputing (fillna with constant, mean, median or mode), choosing with care.",
+   "Linear Regression fits y = mx + c by least squares to predict a continuous value.",
+   "Train on one part of the data, test on the rest, and judge with MSE, RMSE and R²."
+  ],
+  "hi": [
+   "लाइब्रेरी तैयार, जाँचा हुआ code देती हैं; import numpy as np और pandas as pd।",
+   "NumPy ndarray में एक type के items होते हैं और यह तेज़ vectorised गणित, slicing, filtering और axis-वार गणना देता है।",
+   "छूटे मान दर्शाने के लिए np.nan का उपयोग करें।",
+   "Series 1-D लेबल वाला array है; DataFrame 2-D लेबल वाली तालिका है जिसके columns Series होते हैं।",
+   "DataFrames dictionaries, dictionaries की lists, NumPy arrays या CSV फ़ाइलों से बन सकते हैं।",
+   "df['col'] = ... से column जोड़ें, df.loc[...] से rows जोड़ें या बदलें, और drop() से हटाएँ (rows के लिए axis=0, columns के लिए axis=1)।",
+   "Attributes index, columns, shape, size और dtypes, तथा methods head() और tail() DataFrame का वर्णन करते हैं।",
+   "df.to_csv(path, sep, index=False) से export; pd.read_csv(path, sep, header) से import।",
+   "Colab में पढ़ने से पहले फ़ाइल को Files पैनल से upload करें।",
+   "isnull(), any(), sum() और sum().sum() से छूटे मान पहचानें।",
+   "उन्हें हटाकर (dropna) या भरकर (स्थिर मान, mean, median या mode के साथ fillna) संभालें, सोच-समझकर चुनें।",
+   "Linear Regression least squares से y = mx + c बैठाकर सतत मान का पूर्वानुमान लगाता है।",
+   "data के एक भाग पर प्रशिक्षण दें, शेष पर जाँचें, और MSE, RMSE तथा R² से आँकें।"
+  ]
+ }
+}

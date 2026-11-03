@@ -1,0 +1,2145 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "12",
+ "id": "ch7",
+ "intro": {
+  "en": "You type a few words into a chatbot and it writes a full essay; you describe 'a peacock dancing in the rain in Madhubani style' and an app paints it in seconds. This is Generative AI: AI that creates new text, images, audio, video and code instead of only sorting or predicting. In this unit of CBSE Artificial Intelligence (Code 843), Class XII, you will learn how generative models learn from data, how GANs and VAEs work, how generative models differ from discriminative ones, what Large Language Models (LLMs) and transformers are, where Generative AI is used, and the ethical, social and legal questions it raises, such as deepfakes, bias, plagiarism and copyright. You will also do hands-on activities with free tools and see how a chatbot is built with the Gemini API in Python.",
+  "hi": "आप किसी chatbot में कुछ शब्द लिखते हैं और वह पूरा निबंध लिख देता है; आप लिखते हैं 'बारिश में नाचता मोर, मधुबनी शैली में' और कोई app कुछ ही सेकंड में वह चित्र बना देता है। यही Generative AI है: ऐसा AI जो केवल छाँटने या अनुमान लगाने के बजाय नया text, चित्र, audio, video और code बनाता है। CBSE Artificial Intelligence (Code 843), कक्षा 12 की इस इकाई में आप सीखेंगे कि generative model डेटा से कैसे सीखते हैं, GAN और VAE कैसे काम करते हैं, generative और discriminative model में क्या अंतर है, Large Language Model (LLM) और transformer क्या हैं, Generative AI कहाँ-कहाँ उपयोग होता है, और इससे जुड़े नैतिक, सामाजिक और कानूनी प्रश्न, जैसे deepfake, bias, plagiarism और copyright। आप मुफ़्त टूल से hands-on गतिविधियाँ भी करेंगे और देखेंगे कि Python में Gemini API से chatbot कैसे बनता है।"
+ },
+ "learn": {
+  "en": [
+   "What Generative AI is, how it differs from traditional AI, and examples of generative tools",
+   "How generative models learn patterns (the data distribution) and produce new samples",
+   "Generative Adversarial Networks (GANs): generator, discriminator and adversarial training",
+   "Variational Autoencoders (VAEs): encoder, latent space and decoder; a short note on diffusion models",
+   "Generative vs discriminative models: purpose, training focus, algorithms and use cases",
+   "Applications: image, text, audio, video and code generation, with free tools such as Canva, Animaker, Gemini and ChatGPT",
+   "Large Language Models: tokens, next-word prediction, transformers and attention, pre-training and fine-tuning",
+   "Applications, limitations (hallucination, cost) and risks (bias, privacy leaks) of LLMs",
+   "Prompting skills: writing clear prompts with role, task, context and format",
+   "The future of Generative AI and human–AI collaboration",
+   "Ethical and social issues: deepfakes, bias and discrimination, plagiarism, copyright, transparency, and how to cite AI tools",
+   "Building a simple chatbot with the Gemini API in Python (for advanced learners)"
+  ],
+  "hi": [
+   "Generative AI क्या है, यह पारंपरिक AI से कैसे अलग है, और generative टूल के उदाहरण",
+   "Generative model पैटर्न (data distribution) कैसे सीखते हैं और नए नमूने कैसे बनाते हैं",
+   "Generative Adversarial Network (GAN): generator, discriminator और adversarial training",
+   "Variational Autoencoder (VAE): encoder, latent space और decoder; diffusion model पर छोटी टिप्पणी",
+   "Generative बनाम discriminative model: उद्देश्य, training का केंद्र, algorithm और उपयोग",
+   "उपयोग: चित्र, text, audio, video और code बनाना, Canva, Animaker, Gemini और ChatGPT जैसे मुफ़्त टूल के साथ",
+   "Large Language Model: token, अगले शब्द का अनुमान, transformer और attention, pre-training और fine-tuning",
+   "LLM के उपयोग, सीमाएँ (hallucination, लागत) और जोखिम (bias, निजी जानकारी का लीक होना)",
+   "Prompt लिखने का कौशल: भूमिका, काम, संदर्भ और format के साथ स्पष्ट prompt",
+   "Generative AI का भविष्य और मनुष्य–AI सहयोग",
+   "नैतिक और सामाजिक मुद्दे: deepfake, bias और भेदभाव, plagiarism, copyright, पारदर्शिता, और AI टूल का हवाला (citation) कैसे दें",
+   "Python में Gemini API से एक सरल chatbot बनाना (advanced learners के लिए)"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "7.1 Introduction to Generative AI",
+    "hi": "7.1 Generative AI का परिचय"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think about the AI you studied in earlier units. A model that looks at a photo of a leaf and says 'diseased' or 'healthy', a model that predicts a house price, or a spam filter that marks an e-mail as spam: all of these take an input and give a label or a number. They analyse what already exists. Generative AI goes one step further: after learning from a huge number of examples, it can produce something new that did not exist before but looks like the examples it learnt from.",
+      "hi": "पिछली इकाइयों में पढ़े AI के बारे में सोचिए। पत्ती की फोटो देखकर 'रोगी' या 'स्वस्थ' बताने वाला model, घर की कीमत का अनुमान लगाने वाला model, या किसी e-mail को spam बताने वाला filter: ये सभी एक input लेकर एक label या संख्या देते हैं। ये पहले से मौजूद चीज़ का विश्लेषण करते हैं। Generative AI एक कदम आगे जाता है: बहुत सारे उदाहरणों से सीखने के बाद यह कुछ ऐसा नया बना सकता है जो पहले मौजूद नहीं था, पर उन उदाहरणों जैसा दिखता है जिनसे उसने सीखा।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Generative AI",
+       "hi": "Generative AI"
+      },
+      "text": {
+       "en": "Generative AI is a branch of artificial intelligence that learns the patterns and structure of existing data (text, images, audio, video or code) and uses them to create new, original content that is similar to, but not a copy of, the training data.",
+       "hi": "Generative AI, artificial intelligence की वह शाखा है जो मौजूदा डेटा (text, चित्र, audio, video या code) के पैटर्न और संरचना को सीखती है और उनका उपयोग करके नई, मौलिक सामग्री बनाती है, जो training डेटा जैसी होती है पर उसकी नकल नहीं होती।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A simple way to remember the idea: a child who has heard hundreds of folk tales from her grandmother can make up a brand-new folk tale with a clever crow and a greedy king. She is not repeating any one story; she has learnt the pattern of folk tales. Generative AI does something similar with data, using very large neural networks (deep learning).",
+      "hi": "इसे याद रखने का आसान तरीका: जिस बच्ची ने दादी से सैकड़ों लोककथाएँ सुनी हैं, वह एक चतुर कौए और लालची राजा वाली बिल्कुल नई लोककथा गढ़ सकती है। वह कोई एक कहानी दोहरा नहीं रही; उसने लोककथाओं का पैटर्न सीख लिया है। Generative AI डेटा के साथ कुछ ऐसा ही करता है, बहुत बड़े neural network (deep learning) का उपयोग करके।"
+     }
+    },
+    {
+     "p": {
+      "en": "Generative AI is a part of deep learning, which is a part of machine learning, which is a part of AI. You can picture this as four circles, one inside the other: the biggest circle is AI, inside it machine learning, inside that deep learning (neural networks with many layers, which you met in Unit 6), and the smallest inner circle is Generative AI.",
+      "hi": "Generative AI, deep learning का हिस्सा है, deep learning, machine learning का हिस्सा है, और machine learning, AI का हिस्सा है। इसे चार वृत्तों की तरह सोचिए जो एक के अंदर एक हैं: सबसे बड़ा वृत्त AI है, उसके अंदर machine learning, उसके अंदर deep learning (कई परतों वाले neural network, जो आपने इकाई 6 में पढ़े), और सबसे छोटा अंदरूनी वृत्त Generative AI है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Kind of content",
+        "What Generative AI can do",
+        "Examples of tools"
+       ],
+       "hi": [
+        "सामग्री का प्रकार",
+        "Generative AI क्या कर सकता है",
+        "टूल के उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Text",
+         "Write essays, summaries, e-mails, poems, answers, translations",
+         "ChatGPT, Gemini, Claude, Microsoft Copilot"
+        ],
+        [
+         "Images",
+         "Create pictures, posters, logos, art in a chosen style",
+         "DALL-E, Stable Diffusion, Canva's AI image tools, Adobe Firefly"
+        ],
+        [
+         "Audio",
+         "Text-to-speech voices, music, sound effects",
+         "Text-to-speech tools, AI music generators"
+        ],
+        [
+         "Video",
+         "Short clips, animations, explainer videos from a script",
+         "Animaker, Google's video research models"
+        ],
+        [
+         "Code",
+         "Write, explain and fix program code",
+         "GitHub Copilot, Gemini, ChatGPT"
+        ]
+       ],
+       "hi": [
+        [
+         "Text",
+         "निबंध, सारांश, e-mail, कविता, उत्तर, अनुवाद लिखना",
+         "ChatGPT, Gemini, Claude, Microsoft Copilot"
+        ],
+        [
+         "चित्र",
+         "चित्र, पोस्टर, logo, चुनी हुई शैली में कला बनाना",
+         "DALL-E, Stable Diffusion, Canva के AI image टूल, Adobe Firefly"
+        ],
+        [
+         "Audio",
+         "Text-to-speech आवाज़ें, संगीत, ध्वनि प्रभाव",
+         "Text-to-speech टूल, AI संगीत generator"
+        ],
+        [
+         "Video",
+         "Script से छोटी clip, animation, explainer video",
+         "Animaker, Google के video research model"
+        ],
+        [
+         "Code",
+         "Program का code लिखना, समझाना और ठीक करना",
+         "GitHub Copilot, Gemini, ChatGPT"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Generative AI is used in education (personalised explanations and practice questions), art and design, film and animation, music, gaming (new levels and characters), healthcare (designing candidate medicines, creating synthetic medical images for training), marketing and customer service. In India, tools built on the Government's Bhashini platform translate and speak across Indian languages, which helps a farmer in Odisha read a government notice in Odia or hear it aloud.",
+      "hi": "Generative AI का उपयोग शिक्षा (व्यक्तिगत व्याख्या और अभ्यास प्रश्न), कला और डिज़ाइन, फ़िल्म और animation, संगीत, gaming (नए level और पात्र), स्वास्थ्य (संभावित दवाओं का डिज़ाइन, training के लिए कृत्रिम medical चित्र), marketing और ग्राहक सेवा में होता है। भारत में सरकार के Bhashini platform पर बने टूल भारतीय भाषाओं में अनुवाद करते हैं और बोलकर सुनाते हैं, जिससे ओडिशा का एक किसान सरकारी सूचना ओड़िया में पढ़ या सुन सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "The same power can be misused. Fake images of celebrities have been made to damage their reputation, fake voices have been used in phone frauds ('your relative is in trouble, send money on UPI now'), and some people pass off AI-written essays as their own work. So this unit studies both how Generative AI works and how to use it responsibly.",
+      "hi": "इसी शक्ति का दुरुपयोग भी हो सकता है। प्रसिद्ध लोगों की नकली तस्वीरें उनकी छवि ख़राब करने के लिए बनाई गई हैं, नकली आवाज़ों का उपयोग फ़ोन धोखाधड़ी में हुआ है ('तुम्हारा रिश्तेदार मुसीबत में है, अभी UPI पर पैसे भेजो'), और कुछ लोग AI से लिखे निबंध को अपना काम बताते हैं। इसलिए यह इकाई दोनों बातें पढ़ती है: Generative AI कैसे काम करता है और इसका ज़िम्मेदारी से उपयोग कैसे करें।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Traditional (analytical) AI answers 'What is this?' or 'What will happen?'. Generative AI answers 'Make me something new like this.'",
+      "hi": "याद रखें: पारंपरिक (विश्लेषणात्मक) AI पूछता है 'यह क्या है?' या 'क्या होगा?'। Generative AI कहता है 'मेरे लिए ऐसा ही कुछ नया बनाओ।'"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.2 How does Generative AI work? Learning the pattern of data",
+    "hi": "7.2 Generative AI कैसे काम करता है? डेटा का पैटर्न सीखना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every generative model works in two broad phases. In the training phase it studies a very large dataset, for example millions of photos of faces or billions of sentences, and adjusts the weights of its neural network so that it captures what is typical in that data. In the generation (inference) phase it uses what it learnt, plus some randomness, to produce a new sample.",
+      "hi": "हर generative model मोटे तौर पर दो चरणों में काम करता है। Training चरण में वह बहुत बड़े dataset का अध्ययन करता है, जैसे चेहरों की लाखों फोटो या अरबों वाक्य, और अपने neural network के weights को इस तरह बदलता है कि उस डेटा में जो सामान्य है वह पकड़ में आ जाए। Generation (inference) चरण में वह जो सीखा उसका, और थोड़ी randomness का, उपयोग करके एक नया नमूना बनाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data distribution",
+       "hi": "Data distribution (डेटा वितरण)"
+      },
+      "text": {
+       "en": "The data distribution describes which values or combinations are common and which are rare in a dataset. A generative model tries to learn this distribution so that it can draw new samples from it.",
+       "hi": "Data distribution बताता है कि किसी dataset में कौन-से मान या संयोजन आम हैं और कौन-से दुर्लभ। Generative model इसी distribution को सीखने की कोशिश करता है ताकि वह इससे नए नमूने निकाल सके।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "For example, in photos of human faces, two eyes above a nose above a mouth is extremely common; three eyes almost never appears. A model that has learnt the distribution of faces will therefore generate faces with two eyes, but each new face can have a different skin tone, hairstyle, age and expression. The randomness is why asking the same question twice can give two different answers.",
+      "hi": "उदाहरण के लिए, मानव चेहरों की फोटो में नाक के ऊपर दो आँखें और नाक के नीचे मुँह बहुत आम है; तीन आँखें लगभग कभी नहीं दिखतीं। इसलिए जिस model ने चेहरों का distribution सीख लिया है, वह दो आँखों वाले चेहरे बनाएगा, पर हर नए चेहरे का रंग, बाल, उम्र और भाव अलग हो सकता है। इसी randomness के कारण एक ही प्रश्न दो बार पूछने पर दो अलग उत्तर मिल सकते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Run a tiny 'text generator' that learns which word comes after which word, and then makes new sentences.",
+       "hi": "एक छोटा 'text generator' चलाइए जो सीखता है कि कौन-सा शब्द किस शब्द के बाद आता है, और फिर नए वाक्य बनाता है।"
+      },
+      "a": {
+       "en": "Step 1: The program reads a small training text and, for every word, stores the list of words that followed it.\nStep 2: To generate, it starts with 'the' and repeatedly picks one of the words that followed the current word, at random.\nStep 3: It stops at a full stop or after 10 words.\nCode:\nimport random\n\ntext = (\"the sun rises in the east . the sun sets in the west . \"\n        \"the moon shines at night . the stars shine at night .\")\nwords = text.split()\n\n# Learn: for every word, remember which words came after it\nnext_words = {}\nfor i in range(len(words) - 1):\n    w = words[i]\n    next_words.setdefault(w, []).append(words[i + 1])\n\nprint(\"After 'the' we saw:\", next_words[\"the\"])\n\n# Generate: start with a word and keep choosing a likely next word\nrandom.seed(7)\nfor trial in range(3):\n    word = \"the\"\n    sentence = [word]\n    while word != \".\" and len(sentence) < 10:\n        word = random.choice(next_words[word])\n        sentence.append(word)\n    print(\"New sentence\", trial + 1, \":\", \" \".join(sentence))\nReal output:\nAfter 'the' we saw: ['sun', 'east', 'sun', 'west', 'moon', 'stars']\nNew sentence 1 : the sun rises in the sun rises in the moon\nNew sentence 2 : the east .\nNew sentence 3 : the sun sets in the east .\nStep 4: Observe: 'the sun sets in the east' never appeared in the training text. The program created it from the learnt pattern. 'sun' is chosen more often after 'the' because it appeared twice. Some outputs are silly, showing that a tiny model with no understanding can produce wrong or meaningless text. Real LLMs work on the same basic idea of predicting the next word, but with billions of weights and attention over the whole context.",
+       "hi": "चरण 1: Program एक छोटा training text पढ़ता है और हर शब्द के लिए उसके बाद आए शब्दों की सूची रखता है।\nचरण 2: Generate करने के लिए वह 'the' से शुरू करता है और बार-बार वर्तमान शब्द के बाद आए शब्दों में से एक को randomly चुनता है।\nचरण 3: पूर्ण विराम आने पर या 10 शब्दों के बाद वह रुक जाता है।\nCode:\nimport random\n\ntext = (\"the sun rises in the east . the sun sets in the west . \"\n        \"the moon shines at night . the stars shine at night .\")\nwords = text.split()\n\n# Learn: for every word, remember which words came after it\nnext_words = {}\nfor i in range(len(words) - 1):\n    w = words[i]\n    next_words.setdefault(w, []).append(words[i + 1])\n\nprint(\"After 'the' we saw:\", next_words[\"the\"])\n\n# Generate: start with a word and keep choosing a likely next word\nrandom.seed(7)\nfor trial in range(3):\n    word = \"the\"\n    sentence = [word]\n    while word != \".\" and len(sentence) < 10:\n        word = random.choice(next_words[word])\n        sentence.append(word)\n    print(\"New sentence\", trial + 1, \":\", \" \".join(sentence))\nवास्तविक output:\nAfter 'the' we saw: ['sun', 'east', 'sun', 'west', 'moon', 'stars']\nNew sentence 1 : the sun rises in the sun rises in the moon\nNew sentence 2 : the east .\nNew sentence 3 : the sun sets in the east .\nचरण 4: ध्यान दें: 'the sun sets in the east' training text में कभी नहीं आया था। Program ने इसे सीखे गए पैटर्न से बनाया। 'the' के बाद 'sun' ज़्यादा बार चुना जाता है क्योंकि वह दो बार आया था। कुछ output बेतुके हैं, जिससे पता चलता है कि बिना समझ वाला छोटा model ग़लत या अर्थहीन text बना सकता है। असली LLM भी अगले शब्द के अनुमान के इसी मूल विचार पर काम करते हैं, पर अरबों weights और पूरे संदर्भ पर attention के साथ।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Modern Generative AI uses several families of deep learning models. The CBSE syllabus focuses on two classic ones, GANs and VAEs, and on transformers, which power LLMs. Most popular image generators today also use a third family called diffusion models.",
+      "hi": "आधुनिक Generative AI कई प्रकार के deep learning model उपयोग करता है। CBSE पाठ्यक्रम दो पुराने और प्रसिद्ध प्रकारों, GAN और VAE, पर तथा transformer पर ध्यान देता है, जो LLM को चलाते हैं। आज के ज़्यादातर लोकप्रिय image generator एक तीसरे प्रकार, diffusion model, का भी उपयोग करते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3 Generative Adversarial Networks (GANs)",
+    "hi": "7.3 Generative Adversarial Network (GAN)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A GAN was proposed by Ian Goodfellow and his colleagues in 2014. 'Adversarial' means 'opponents'. A GAN is made of two neural networks that compete with each other like a forger and a detective.",
+      "hi": "GAN का प्रस्ताव Ian Goodfellow और उनके साथियों ने 2014 में रखा था। 'Adversarial' का अर्थ है 'विरोधी'। GAN दो neural network से बनता है जो एक-दूसरे से जालसाज़ और जासूस की तरह मुक़ाबला करते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Generator",
+       "hi": "Generator"
+      },
+      "text": {
+       "en": "The generator is the network that creates fake data. It starts from random noise (a list of random numbers) and turns it into a sample, such as an image, trying to make it look real.",
+       "hi": "Generator वह network है जो नकली डेटा बनाता है। यह random noise (random संख्याओं की सूची) से शुरू करता है और उसे एक नमूने, जैसे चित्र, में बदलता है, ताकि वह असली जैसा दिखे।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Discriminator",
+       "hi": "Discriminator"
+      },
+      "text": {
+       "en": "The discriminator is the network that judges. It receives both real samples from the training data and fake samples from the generator, and outputs how likely each sample is to be real.",
+       "hi": "Discriminator वह network है जो परखता है। इसे training डेटा के असली नमूने और generator के नकली नमूने, दोनों मिलते हैं, और यह बताता है कि हर नमूना असली होने की कितनी संभावना है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Imagine a person printing fake ₹500 notes (generator) and a bank cashier checking notes (discriminator). At first the fakes are poor and the cashier catches them easily. The forger learns from each rejection and improves; the cashier also learns to spot finer details. After many rounds, the fakes become so good that the cashier can only guess, about 50% right. In a GAN, that is the point at which the generator is producing very realistic data.",
+      "hi": "मान लीजिए एक व्यक्ति ₹500 के नकली नोट छाप रहा है (generator) और बैंक का कैशियर नोट जाँच रहा है (discriminator)। शुरुआत में नकली नोट ख़राब होते हैं और कैशियर उन्हें आसानी से पकड़ लेता है। जालसाज़ हर अस्वीकृति से सीखकर सुधार करता है; कैशियर भी बारीक बातें पहचानना सीखता है। कई दौर के बाद नकली नोट इतने अच्छे हो जाते हैं कि कैशियर केवल अंदाज़ा लगा पाता है, लगभग 50% सही। GAN में यही वह स्थिति है जब generator बहुत वास्तविक डेटा बना रहा होता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: The generator takes random noise and produces a batch of fake images.",
+       "Step 2: The discriminator is shown a mix of real images (from the dataset) and the fake ones, and predicts 'real' or 'fake' for each.",
+       "Step 3: The discriminator is updated to become better at telling real from fake.",
+       "Step 4: The generator is updated using the discriminator's feedback, so that next time its fakes are more likely to be called 'real'.",
+       "Step 5: Steps 1–4 repeat thousands of times. Both networks improve together until the fakes are hard to distinguish from real data.",
+       "Step 6: After training, the discriminator is usually set aside and only the generator is used to create new samples."
+      ],
+      "hi": [
+       "चरण 1: Generator random noise लेकर नकली चित्रों का एक batch बनाता है।",
+       "चरण 2: Discriminator को असली चित्र (dataset से) और नकली चित्र मिलाकर दिखाए जाते हैं, और वह हर एक के लिए 'असली' या 'नकली' बताता है।",
+       "चरण 3: Discriminator को update किया जाता है ताकि वह असली और नकली में बेहतर अंतर कर सके।",
+       "चरण 4: Discriminator की प्रतिक्रिया से generator को update किया जाता है, ताकि अगली बार उसके नकली चित्र 'असली' कहे जाने की संभावना ज़्यादा हो।",
+       "चरण 5: चरण 1–4 हज़ारों बार दोहराए जाते हैं। दोनों network साथ-साथ सुधरते हैं, जब तक नकली डेटा असली से अलग पहचानना कठिन न हो जाए।",
+       "चरण 6: Training के बाद आमतौर पर discriminator को अलग रख दिया जाता है और नए नमूने बनाने के लिए केवल generator का उपयोग होता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Diagram in words: on the left, a box 'Random noise' has an arrow to a box 'Generator', which outputs 'Fake image'. Below it, a box 'Training dataset' outputs 'Real image'. Both arrows go into a box 'Discriminator', which outputs 'Real or Fake?'. A feedback arrow goes from the discriminator's result back to both the generator and the discriminator.",
+      "hi": "शब्दों में चित्र: बाईं ओर 'Random noise' बॉक्स से एक तीर 'Generator' बॉक्स तक जाता है, जो 'नकली चित्र' देता है। उसके नीचे 'Training dataset' बॉक्स 'असली चित्र' देता है। दोनों तीर 'Discriminator' बॉक्स में जाते हैं, जो 'असली या नकली?' बताता है। Discriminator के परिणाम से एक feedback तीर वापस generator और discriminator दोनों तक जाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application of GANs",
+        "What it means",
+        "Example"
+       ],
+       "hi": [
+        "GAN के उपयोग",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Image generation",
+         "Creating realistic new images",
+         "Faces of people who do not exist; new designs for sarees or shoes"
+        ],
+        [
+         "Style transfer",
+         "Changing the style of an image while keeping its content",
+         "Turning a photo of the India Gate into a Warli-style painting; day photo to night"
+        ],
+        [
+         "Data augmentation",
+         "Making extra, realistic training data when real data is limited",
+         "Extra images of a rare crop disease to train a disease-detection model"
+        ],
+        [
+         "Image enhancement",
+         "Increasing resolution or restoring old photos",
+         "Sharpening a blurry old family photograph"
+        ]
+       ],
+       "hi": [
+        [
+         "चित्र बनाना",
+         "वास्तविक लगने वाले नए चित्र बनाना",
+         "ऐसे लोगों के चेहरे जो मौजूद ही नहीं; साड़ी या जूतों के नए डिज़ाइन"
+        ],
+        [
+         "Style transfer",
+         "चित्र की सामग्री वही रखते हुए उसकी शैली बदलना",
+         "इंडिया गेट की फोटो को वार्ली शैली के चित्र में बदलना; दिन की फोटो को रात में"
+        ],
+        [
+         "Data augmentation",
+         "जब असली डेटा कम हो तब अतिरिक्त, वास्तविक training डेटा बनाना",
+         "रोग पहचानने वाले model के लिए किसी दुर्लभ फ़सल रोग के अतिरिक्त चित्र"
+        ],
+        [
+         "चित्र सुधारना",
+         "Resolution बढ़ाना या पुरानी फोटो ठीक करना",
+         "परिवार की धुंधली पुरानी फोटो को साफ़ करना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: GAN = Generator (creates) + Discriminator (judges). They are trained together in competition. GANs are known for producing sharp, realistic images, but training can be unstable.",
+      "hi": "याद रखें: GAN = Generator (बनाता है) + Discriminator (परखता है)। दोनों को प्रतिस्पर्धा में साथ-साथ train किया जाता है। GAN तीखे, वास्तविक चित्र बनाने के लिए जाने जाते हैं, पर इनकी training अस्थिर हो सकती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.4 Variational Autoencoders (VAEs) and diffusion models",
+    "hi": "7.4 Variational Autoencoder (VAE) और diffusion model"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A VAE was introduced by Diederik Kingma and Max Welling in 2013. To understand it, first understand an autoencoder: a network that squeezes data into a small summary and then rebuilds the data from that summary.",
+      "hi": "VAE को Diederik Kingma और Max Welling ने 2013 में प्रस्तुत किया था। इसे समझने के लिए पहले autoencoder समझिए: ऐसा network जो डेटा को एक छोटे सारांश में दबाता है और फिर उस सारांश से डेटा दोबारा बनाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Encoder",
+       "hi": "Encoder"
+      },
+      "text": {
+       "en": "The encoder is the part of a VAE that takes an input (for example, an image) and compresses it into a few numbers that describe its most important features.",
+       "hi": "Encoder, VAE का वह भाग है जो input (जैसे चित्र) लेकर उसे कुछ संख्याओं में संक्षिप्त करता है जो उसकी सबसे महत्वपूर्ण विशेषताओं का वर्णन करती हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Latent space",
+       "hi": "Latent space (गुप्त/छिपा स्थान)"
+      },
+      "text": {
+       "en": "The latent space is the lower-dimensional hidden space where these compressed descriptions live. Similar inputs end up close to each other in the latent space.",
+       "hi": "Latent space वह कम आयाम वाला छिपा हुआ स्थान है जहाँ ये संक्षिप्त विवरण रहते हैं। मिलते-जुलते input, latent space में एक-दूसरे के पास आते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Decoder",
+       "hi": "Decoder"
+      },
+      "text": {
+       "en": "The decoder takes a point from the latent space and rebuilds (reconstructs) full data, such as an image, from it.",
+       "hi": "Decoder, latent space से एक बिंदु लेकर उससे पूरा डेटा, जैसे चित्र, दोबारा बनाता (reconstruct करता) है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "What makes a VAE 'variational' is that the encoder does not output one exact point; it outputs a range (a mean and a spread) and a point is sampled from that range. This forces the latent space to be smooth and organised. Because of this, we can pick a new point anywhere in the latent space, give it to the decoder, and get a brand-new but sensible output. Moving slowly from one point to another can, for example, change a smiling face gradually into a serious one.",
+      "hi": "VAE को 'variational' इसलिए कहते हैं क्योंकि encoder एक सटीक बिंदु नहीं देता; वह एक दायरा (mean और फैलाव) देता है और उस दायरे से एक बिंदु चुना (sample किया) जाता है। इससे latent space चिकना और व्यवस्थित बनता है। इसी कारण हम latent space में कहीं भी नया बिंदु चुनकर decoder को दे सकते हैं और बिल्कुल नया पर समझदार output पा सकते हैं। एक बिंदु से दूसरे बिंदु की ओर धीरे-धीरे चलने पर, उदाहरण के लिए, मुस्कुराता चेहरा धीरे-धीरे गंभीर चेहरे में बदल सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Analogy: a tailor in Jaipur does not store every customer's kurta. She stores a few measurements (chest, length, sleeve). From those few numbers she can stitch the full kurta again (decoder). If she changes the numbers slightly, she gets a new kurta that still fits a human body. The measurement card is like the latent space.",
+      "hi": "उपमा: जयपुर की एक दर्ज़ी हर ग्राहक का कुर्ता संभाल कर नहीं रखती। वह कुछ नाप (छाती, लंबाई, आस्तीन) लिखकर रखती है। उन थोड़ी संख्याओं से वह पूरा कुर्ता फिर से सिल सकती है (decoder)। संख्याएँ थोड़ी बदल दे तो नया कुर्ता बनता है जो फिर भी इंसान के शरीर पर फ़िट होता है। नाप का कार्ड latent space जैसा है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Data generation: creating new images, faces, handwriting or molecules",
+       "Anomaly detection: data that the VAE cannot rebuild well is unusual, e.g. a defective part on a factory line or an odd heartbeat in an ECG",
+       "Filling in missing information: completing a damaged image or missing values in data",
+       "Data compression and noise removal"
+      ],
+      "hi": [
+       "Data generation: नए चित्र, चेहरे, लिखावट या अणु (molecule) बनाना",
+       "Anomaly detection: जिस डेटा को VAE ठीक से दोबारा नहीं बना पाता वह असामान्य है, जैसे factory में ख़राब पुर्ज़ा या ECG में अजीब धड़कन",
+       "छूटी जानकारी भरना: टूटे चित्र को पूरा करना या डेटा के छूटे मान भरना",
+       "डेटा को संक्षिप्त करना और noise हटाना"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "GAN",
+        "VAE"
+       ],
+       "hi": [
+        "बिंदु",
+        "GAN",
+        "VAE"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Parts",
+         "Generator and discriminator",
+         "Encoder, latent space and decoder"
+        ],
+        [
+         "How it learns",
+         "Competition between two networks",
+         "Learning to compress and rebuild data"
+        ],
+        [
+         "Output quality",
+         "Very sharp, realistic images",
+         "Often slightly blurry, but varied"
+        ],
+        [
+         "Latent space",
+         "Not directly interpretable",
+         "Smooth and organised, easier to explore"
+        ],
+        [
+         "Training",
+         "Can be unstable",
+         "Usually more stable"
+        ],
+        [
+         "Best for",
+         "Realistic images, style transfer",
+         "Structured data, anomaly detection, filling gaps"
+        ]
+       ],
+       "hi": [
+        [
+         "भाग",
+         "Generator और discriminator",
+         "Encoder, latent space और decoder"
+        ],
+        [
+         "सीखने का तरीका",
+         "दो network के बीच प्रतिस्पर्धा",
+         "डेटा को संक्षिप्त करना और दोबारा बनाना सीखना"
+        ],
+        [
+         "Output की गुणवत्ता",
+         "बहुत तीखे, वास्तविक चित्र",
+         "अक्सर थोड़े धुंधले, पर विविध"
+        ],
+        [
+         "Latent space",
+         "सीधे समझने योग्य नहीं",
+         "चिकना और व्यवस्थित, explore करना आसान"
+        ],
+        [
+         "Training",
+         "अस्थिर हो सकती है",
+         "आमतौर पर ज़्यादा स्थिर"
+        ],
+        [
+         "सबसे उपयुक्त",
+         "वास्तविक चित्र, style transfer",
+         "संरचित डेटा, anomaly detection, कमी भरना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Diffusion model",
+       "hi": "Diffusion model"
+      },
+      "text": {
+       "en": "A diffusion model learns by taking real images, adding random noise to them step by step until they become pure static, and learning to reverse each step. To generate, it starts from pure noise and removes noise step by step, guided by a text prompt, until a clear image appears.",
+       "hi": "Diffusion model सीखने के लिए असली चित्रों में कदम-दर-कदम random noise मिलाता है जब तक वे पूरी तरह झिलमिलाहट (static) न बन जाएँ, और हर कदम को उलटना सीखता है। Generate करने के लिए यह शुद्ध noise से शुरू करता है और text prompt के मार्गदर्शन में कदम-दर-कदम noise हटाता है, जब तक साफ़ चित्र न बन जाए।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Extra knowledge: tools such as Stable Diffusion are based on diffusion models. You do not need the mathematics; just remember that GANs, VAEs and diffusion models are three different ways to generate images.",
+      "hi": "अतिरिक्त जानकारी: Stable Diffusion जैसे टूल diffusion model पर आधारित हैं। गणित की ज़रूरत नहीं; बस याद रखें कि GAN, VAE और diffusion model चित्र बनाने के तीन अलग तरीक़े हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.5 Generative models vs discriminative models",
+    "hi": "7.5 Generative model बनाम discriminative model"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Machine learning models can be grouped by what they learn. A discriminative model learns the boundary that separates classes: given an input, which class does it belong to? A generative model learns how the data itself is spread out (its distribution), so it can describe each class fully and even create new examples.",
+      "hi": "Machine learning model को इस आधार पर बाँटा जा सकता है कि वे क्या सीखते हैं। Discriminative model वर्गों को अलग करने वाली सीमा सीखता है: दिए गए input का वर्ग कौन-सा है? Generative model यह सीखता है कि डेटा स्वयं कैसे फैला है (उसका distribution), इसलिए वह हर वर्ग का पूरा वर्णन कर सकता है और नए उदाहरण भी बना सकता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Discriminative model",
+       "hi": "Discriminative model"
+      },
+      "text": {
+       "en": "A discriminative model learns the decision boundary between classes and directly predicts the label of an input. It answers 'Is this A or B?' but cannot create new data.",
+       "hi": "Discriminative model वर्गों के बीच निर्णय सीमा (decision boundary) सीखता है और input का label सीधे बताता है। यह 'यह A है या B?' का उत्तर देता है पर नया डेटा नहीं बना सकता।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Generative model",
+       "hi": "Generative model"
+      },
+      "text": {
+       "en": "A generative model learns the underlying distribution of the data (what each class looks like). It can be used to classify, but its special ability is to generate new samples that resemble the training data.",
+       "hi": "Generative model डेटा का अंतर्निहित distribution (हर वर्ग कैसा दिखता है) सीखता है। इसका उपयोग वर्गीकरण के लिए भी हो सकता है, पर इसकी विशेष क्षमता training डेटा जैसे नए नमूने बनाना है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example: suppose you have photos of cats and dogs. A discriminative model only learns features that separate them (for example, ear shape and snout length) and draws a line between the two groups. A generative model learns what a cat looks like and what a dog looks like in full, so it could also draw a new cat. A spam filter is a classic discriminative example: it learns what separates 'spam' from 'not spam'.",
+      "hi": "उदाहरण: मान लीजिए आपके पास बिल्लियों और कुत्तों की फोटो हैं। Discriminative model केवल उन्हें अलग करने वाली विशेषताएँ (जैसे कान का आकार, थूथन की लंबाई) सीखता है और दोनों समूहों के बीच एक रेखा खींचता है। Generative model पूरी तरह सीखता है कि बिल्ली कैसी दिखती है और कुत्ता कैसा, इसलिए वह नई बिल्ली भी बना सकता है। Spam filter एक प्रमुख discriminative उदाहरण है: यह सीखता है कि 'spam' और 'spam नहीं' में क्या अंतर है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Aspect",
+        "Generative AI / models",
+        "Discriminative AI / models"
+       ],
+       "hi": [
+        "पहलू",
+        "Generative AI / model",
+        "Discriminative AI / model"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Purpose",
+         "Creates new content; can also find unusual patterns",
+         "Classifies or labels; makes decisions about existing data"
+        ],
+        [
+         "What it learns",
+         "The full distribution of the data, what makes each class unique",
+         "The boundary between classes"
+        ],
+        [
+         "Training focus",
+         "Learning to produce data similar to, but new compared with, the training data",
+         "Learning rules that separate classes as accurately as possible"
+        ],
+        [
+         "Question it answers",
+         "'What does data of this kind look like? Make one.'",
+         "'Which class is this?'"
+        ],
+        [
+         "Applications",
+         "Artwork, story ideas, synthetic data, anomaly discovery, chatbots",
+         "Face recognition, speech recognition, spam detection, disease classification"
+        ],
+        [
+         "Example algorithms",
+         "Naïve Bayes, Gaussian Discriminant Analysis, GANs, VAEs, LLMs, Deep Boltzmann Machines (DBMs), autoregressive models",
+         "Logistic regression, decision trees, Support Vector Machines (SVM), random forest"
+        ]
+       ],
+       "hi": [
+        [
+         "उद्देश्य",
+         "नई सामग्री बनाना; असामान्य पैटर्न भी खोज सकता है",
+         "वर्गीकरण या label देना; मौजूदा डेटा पर निर्णय लेना"
+        ],
+        [
+         "क्या सीखता है",
+         "डेटा का पूरा distribution, हर वर्ग को क्या अनोखा बनाता है",
+         "वर्गों के बीच की सीमा"
+        ],
+        [
+         "Training का केंद्र",
+         "Training डेटा जैसा पर नया डेटा बनाना सीखना",
+         "वर्गों को यथासंभव सटीकता से अलग करने वाले नियम सीखना"
+        ],
+        [
+         "किस प्रश्न का उत्तर",
+         "'इस तरह का डेटा कैसा दिखता है? एक बनाओ।'",
+         "'यह किस वर्ग का है?'"
+        ],
+        [
+         "उपयोग",
+         "कलाकृति, कहानी के विचार, कृत्रिम डेटा, असामान्यता की खोज, chatbot",
+         "चेहरा पहचान, आवाज़ पहचान, spam पहचान, रोग वर्गीकरण"
+        ],
+        [
+         "Algorithm के उदाहरण",
+         "Naïve Bayes, Gaussian Discriminant Analysis, GAN, VAE, LLM, Deep Boltzmann Machine (DBM), autoregressive model",
+         "Logistic regression, decision tree, Support Vector Machine (SVM), random forest"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Naïve Bayes is a classifier, but it is called generative because it learns how the features are distributed inside each class and then uses that to classify. Logistic regression is discriminative because it learns the boundary directly.",
+      "hi": "याद रखें: Naïve Bayes एक classifier है, पर इसे generative कहते हैं क्योंकि यह सीखता है कि हर वर्ग के अंदर features कैसे फैले हैं और फिर उसी से वर्गीकरण करता है। Logistic regression discriminative है क्योंकि यह सीमा सीधे सीखता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Run a program that shows the two ideas on the heights of basketball players and gymnasts.",
+       "hi": "एक program चलाइए जो basketball खिलाड़ियों और gymnasts की ऊँचाई पर दोनों विचार दिखाए।"
+      },
+      "a": {
+       "en": "Step 1: The discriminative idea learns only a boundary (midway between the shortest basketball player and the tallest gymnast) and uses it to classify a new height.\nStep 2: The generative idea learns what basketball heights look like (mean and standard deviation) and samples new heights from that.\nCode:\nimport numpy as np\n\n# Heights (cm) of players in two sports teams (made-up practice data)\nbasketball = np.array([188, 192, 185, 195, 190, 187])\ngymnastics = np.array([150, 155, 148, 152, 158, 151])\n\n# Discriminative idea: learn only a boundary between the two groups\nboundary = (basketball.min() + gymnastics.max()) / 2\nprint(\"Boundary learnt:\", boundary, \"cm\")\nfor h in [160, 180]:\n    print(h, \"cm ->\", \"basketball\" if h > boundary else \"gymnastics\")\n\n# Generative idea: learn what each group looks like (mean and spread)\nmu, sd = basketball.mean(), basketball.std()\nprint(\"Basketball heights: mean\", round(mu, 1), \"sd\", round(sd, 1))\nrng = np.random.default_rng(42)\nnew_players = rng.normal(mu, sd, 4).round(1)\nprint(\"New, never-seen basketball heights:\", new_players)\nReal output:\nBoundary learnt: 171.5 cm\n160 cm -> gymnastics\n180 cm -> basketball\nBasketball heights: mean 189.5 sd 3.3\nNew, never-seen basketball heights: [190.5 186.1 192.  192.6]\nStep 3: Conclusion: the boundary can only label; the learnt distribution can create new, realistic values. That is the core difference.",
+       "hi": "चरण 1: Discriminative विचार केवल एक सीमा सीखता है (सबसे छोटे basketball खिलाड़ी और सबसे लंबे gymnast के बीच का मध्य) और उससे नई ऊँचाई का वर्गीकरण करता है।\nचरण 2: Generative विचार सीखता है कि basketball ऊँचाइयाँ कैसी होती हैं (mean और standard deviation) और उससे नई ऊँचाइयाँ sample करता है।\nCode:\nimport numpy as np\n\n# Heights (cm) of players in two sports teams (made-up practice data)\nbasketball = np.array([188, 192, 185, 195, 190, 187])\ngymnastics = np.array([150, 155, 148, 152, 158, 151])\n\n# Discriminative idea: learn only a boundary between the two groups\nboundary = (basketball.min() + gymnastics.max()) / 2\nprint(\"Boundary learnt:\", boundary, \"cm\")\nfor h in [160, 180]:\n    print(h, \"cm ->\", \"basketball\" if h > boundary else \"gymnastics\")\n\n# Generative idea: learn what each group looks like (mean and spread)\nmu, sd = basketball.mean(), basketball.std()\nprint(\"Basketball heights: mean\", round(mu, 1), \"sd\", round(sd, 1))\nrng = np.random.default_rng(42)\nnew_players = rng.normal(mu, sd, 4).round(1)\nprint(\"New, never-seen basketball heights:\", new_players)\nवास्तविक output:\nBoundary learnt: 171.5 cm\n160 cm -> gymnastics\n180 cm -> basketball\nBasketball heights: mean 189.5 sd 3.3\nNew, never-seen basketball heights: [190.5 186.1 192.  192.6]\nचरण 3: निष्कर्ष: सीमा केवल label दे सकती है; सीखा गया distribution नए, वास्तविक मान बना सकता है। यही मूल अंतर है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.6 Applications of Generative AI",
+    "hi": "7.6 Generative AI के उपयोग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Generative AI is usually grouped by the type of content it produces. In every case, the model has learnt from a large collection of that kind of content.",
+      "hi": "Generative AI को आमतौर पर इस आधार पर बाँटा जाता है कि वह किस प्रकार की सामग्री बनाता है। हर स्थिति में model ने उसी तरह की सामग्री के बड़े संग्रह से सीखा होता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Image generation",
+       "hi": "Image generation (चित्र बनाना)"
+      },
+      "text": {
+       "en": "Creating new images that share features with the training images, often from a text description called a prompt (text-to-image).",
+       "hi": "ऐसे नए चित्र बनाना जिनकी विशेषताएँ training चित्रों जैसी हों, अक्सर prompt कहे जाने वाले text विवरण से (text-to-image)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example: a model trained on millions of cat photos can create a new cat that never existed. A small shop in Varanasi can type 'poster for Diwali sale of brass diyas, warm colours, Hindi heading' into an AI design tool and get draft posters. Tools: Canva (Magic Media / text-to-image), DALL-E, Stable Diffusion (from Stability AI), Adobe Firefly.",
+      "hi": "उदाहरण: बिल्लियों की लाखों फोटो पर trained model ऐसी नई बिल्ली बना सकता है जो कभी थी ही नहीं। वाराणसी की एक छोटी दुकान किसी AI design टूल में 'पीतल के दीयों की दिवाली sale का पोस्टर, गर्म रंग, हिंदी शीर्षक' लिखकर पोस्टर के कच्चे नमूने पा सकती है। टूल: Canva (Magic Media / text-to-image), DALL-E, Stable Diffusion (Stability AI का), Adobe Firefly।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Text generation",
+       "hi": "Text generation (text बनाना)"
+      },
+      "text": {
+       "en": "Producing coherent, human-like written text such as answers, stories, summaries, letters, translations and code.",
+       "hi": "सुसंगत, मनुष्य जैसा लिखित text बनाना, जैसे उत्तर, कहानियाँ, सारांश, पत्र, अनुवाद और code।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example: a teacher asks a chatbot to draft ten practice questions on the Indian Constitution; a student asks it to explain backpropagation in simple Hindi. Tools: ChatGPT, Gemini (earlier called Bard), Claude, Microsoft Copilot, Perplexity.",
+      "hi": "उदाहरण: एक शिक्षक chatbot से भारतीय संविधान पर दस अभ्यास प्रश्न बनवाते हैं; एक विद्यार्थी उससे backpropagation सरल हिंदी में समझवाता है। टूल: ChatGPT, Gemini (पहले Bard कहलाता था), Claude, Microsoft Copilot, Perplexity।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Audio generation",
+       "hi": "Audio generation (ध्वनि बनाना)"
+      },
+      "text": {
+       "en": "Creating speech, music or sound effects, for example turning written text into natural-sounding speech (text-to-speech, TTS) or composing a new tune.",
+       "hi": "बोली, संगीत या ध्वनि प्रभाव बनाना, जैसे लिखे text को स्वाभाविक बोली में बदलना (text-to-speech, TTS) या नई धुन बनाना।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example: an app reads a textbook chapter aloud in Tamil for a visually impaired student; a YouTuber creates background music. The same technology can clone a person's voice from a short sample, which is why voice-based frauds have become a risk.",
+      "hi": "उदाहरण: कोई app दृष्टिबाधित विद्यार्थी के लिए पाठ्यपुस्तक का अध्याय तमिल में पढ़कर सुनाता है; कोई YouTuber पृष्ठभूमि संगीत बनाता है। यही तकनीक छोटे नमूने से किसी व्यक्ति की आवाज़ की नकल (voice cloning) भी कर सकती है, इसलिए आवाज़ वाली धोखाधड़ी एक जोखिम बन गई है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Video generation",
+       "hi": "Video generation (video बनाना)"
+      },
+      "text": {
+       "en": "Creating new video clips, animations or visual effects from text, images or a script, or editing existing video.",
+       "hi": "Text, चित्र या script से नई video clip, animation या visual effect बनाना, या मौजूदा video को बदलना।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example: an NGO turns a script about handwashing into a short animated video for village schools using a tool like Animaker. Google has shown research video models (for example, Lumiere). Deepfake algorithms are also a kind of video generation, used to change faces or lip movements in existing video.",
+      "hi": "उदाहरण: कोई NGO हाथ धोने पर लिखी script को Animaker जैसे टूल से गाँव के स्कूलों के लिए छोटे animated video में बदलता है। Google ने research video model (जैसे Lumiere) दिखाए हैं। Deepfake algorithm भी एक तरह का video generation हैं, जो मौजूदा video में चेहरा या होंठों की हरकत बदलते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Code generation",
+       "hi": "Code generation (code बनाना)"
+      },
+      "text": {
+       "en": "Writing, completing, explaining or debugging computer programs from a description in plain language.",
+       "hi": "सामान्य भाषा के विवरण से कंप्यूटर program लिखना, पूरा करना, समझाना या उसकी ग़लती ढूँढना।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Field",
+        "How Generative AI helps (example)"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "Generative AI कैसे मदद करता है (उदाहरण)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Education",
+         "Personalised explanations, quiz questions, translating notes into Indian languages"
+        ],
+        [
+         "Healthcare",
+         "Synthetic medical images for training, drafting patient summaries for doctors to check, suggesting candidate drug molecules"
+        ],
+        [
+         "Agriculture",
+         "Chatbots that answer farmers' questions in local languages using expert-approved information"
+        ],
+        [
+         "Business and marketing",
+         "Product descriptions, ad posters, customer-support chatbots"
+        ],
+        [
+         "Entertainment",
+         "Game characters and levels, animation, dubbing films into other languages"
+        ],
+        [
+         "Accessibility",
+         "Text-to-speech for the visually impaired, captions for the hearing impaired"
+        ]
+       ],
+       "hi": [
+        [
+         "शिक्षा",
+         "व्यक्तिगत व्याख्या, quiz प्रश्न, नोट्स का भारतीय भाषाओं में अनुवाद"
+        ],
+        [
+         "स्वास्थ्य",
+         "Training के लिए कृत्रिम medical चित्र, डॉक्टर की जाँच हेतु रोगी सारांश का मसौदा, संभावित दवा अणु सुझाना"
+        ],
+        [
+         "कृषि",
+         "विशेषज्ञ-स्वीकृत जानकारी से किसानों के प्रश्नों का स्थानीय भाषा में उत्तर देने वाले chatbot"
+        ],
+        [
+         "व्यापार और marketing",
+         "उत्पाद विवरण, विज्ञापन पोस्टर, ग्राहक सहायता chatbot"
+        ],
+        [
+         "मनोरंजन",
+         "Game के पात्र और level, animation, फ़िल्मों की दूसरी भाषाओं में dubbing"
+        ],
+        [
+         "सुलभता (Accessibility)",
+         "दृष्टिबाधितों के लिए text-to-speech, श्रवणबाधितों के लिए caption"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.7 Hands-on activities with free Generative AI tools",
+    "hi": "7.7 मुफ़्त Generative AI टूल के साथ hands-on गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "note": {
+      "en": "Safety first: use only school-approved tools, sign up with a school or parent-approved account (an adult should supervise sign-ups for anyone under the tool's minimum age), never type your full name, address, phone number, Aadhaar number, passwords or photos of friends into an AI tool, and always check the output before using it.",
+      "hi": "सुरक्षा पहले: केवल स्कूल द्वारा स्वीकृत टूल उपयोग करें, स्कूल या माता-पिता द्वारा स्वीकृत account से sign up करें (टूल की न्यूनतम आयु से छोटे किसी भी व्यक्ति के sign-up की निगरानी कोई बड़ा करे), किसी AI टूल में अपना पूरा नाम, पता, फ़ोन नंबर, Aadhaar नंबर, password या दोस्तों की फोटो कभी न डालें, और output उपयोग करने से पहले हमेशा जाँचें।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 1 – Image generation with Canva. Aim: create an image from a text prompt and see how prompt wording changes the result. You need: a phone or computer and a Canva account (free plan). What to do: (1) Sign up/log in at canva.com. (2) Open a new design (for example, Instagram post). (3) Open the AI image tool (Magic Media / Text to Image) from the Apps or Elements panel. (4) Type a prompt such as 'A cheerful school library in India with students reading, watercolour style'. (5) Generate, then change one word at a time ('oil painting', 'night', 'from above') and compare. (6) Add a heading and download. What you observe: each change in the prompt changes style, lighting or viewpoint; results are different every time; hands or text inside images are sometimes wrong. What it teaches: the prompt guides the model, outputs are new each time, and they must be checked.",
+      "hi": "गतिविधि 1 – Canva से चित्र बनाना। उद्देश्य: text prompt से चित्र बनाना और देखना कि prompt के शब्द परिणाम कैसे बदलते हैं। आवश्यक: फ़ोन या कंप्यूटर और Canva account (मुफ़्त plan)। क्या करें: (1) canva.com पर sign up/log in करें। (2) नया design खोलें (जैसे Instagram post)। (3) Apps या Elements panel से AI image टूल (Magic Media / Text to Image) खोलें। (4) ऐसा prompt लिखें: 'A cheerful school library in India with students reading, watercolour style'। (5) Generate करें, फिर एक बार में एक शब्द बदलें ('oil painting', 'night', 'from above') और तुलना करें। (6) शीर्षक जोड़कर download करें। क्या दिखेगा: prompt में हर बदलाव से शैली, रोशनी या दृष्टिकोण बदलता है; हर बार परिणाम अलग होता है; चित्र में हाथ या लिखा text कभी-कभी ग़लत बनता है। सीख: prompt model को दिशा देता है, हर बार output नया होता है, और उसकी जाँच ज़रूरी है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 – Video generation with Animaker. Aim: turn a short script into an animated video. What to do: (1) Sign up at animaker.com (free plan). (2) Choose the AI video / text-to-video option. (3) Enter a prompt or a 4–5 line script, such as 'A 30-second video explaining why we should save water, for Class 5 students, friendly cartoon style'. (4) Let the tool generate scenes, characters and voice-over. (5) Edit text, change a scene or the voice, and preview. What you observe: the tool picks characters, backgrounds and music automatically; you still need to fix facts and timing. What it teaches: Generative AI can speed up creative work, but the human decides the message.",
+      "hi": "गतिविधि 2 – Animaker से video बनाना। उद्देश्य: छोटी script को animated video में बदलना। क्या करें: (1) animaker.com पर sign up करें (मुफ़्त plan)। (2) AI video / text-to-video विकल्प चुनें। (3) Prompt या 4–5 पंक्तियों की script डालें, जैसे 'A 30-second video explaining why we should save water, for Class 5 students, friendly cartoon style'। (4) टूल को दृश्य, पात्र और voice-over बनाने दें। (5) Text बदलें, कोई दृश्य या आवाज़ बदलें और preview देखें। क्या दिखेगा: टूल अपने-आप पात्र, पृष्ठभूमि और संगीत चुनता है; तथ्य और समय आपको ही ठीक करने होते हैं। सीख: Generative AI रचनात्मक काम तेज़ करता है, पर संदेश मनुष्य तय करता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 – Text generation with Gemini. Aim: practise writing prompts. What to do: (1) Open gemini.google.com with a permitted account. (2) Try a weak prompt: 'Write about pollution.' (3) Try a strong prompt: 'You are a science teacher. Explain three causes of air pollution in Delhi in winter to Class 8 students in under 120 words, with one tip each, as a numbered list.' (4) Compare the two answers. (5) Ask a follow-up: 'Now translate it into Hindi.' What you observe: the detailed prompt gives a focused, correctly formatted answer; the chatbot remembers the conversation for the follow-up. What it teaches: role, task, context, audience and format make prompts work.",
+      "hi": "गतिविधि 3 – Gemini से text बनाना। उद्देश्य: prompt लिखने का अभ्यास। क्या करें: (1) अनुमत account से gemini.google.com खोलें। (2) कमज़ोर prompt आज़माएँ: 'Write about pollution.' (3) मज़बूत prompt आज़माएँ: 'You are a science teacher. Explain three causes of air pollution in Delhi in winter to Class 8 students in under 120 words, with one tip each, as a numbered list.' (4) दोनों उत्तरों की तुलना करें। (5) आगे पूछें: 'Now translate it into Hindi.' क्या दिखेगा: विस्तृत prompt से केंद्रित और सही format वाला उत्तर मिलता है; chatbot अगले प्रश्न के लिए बातचीत याद रखता है। सीख: भूमिका, काम, संदर्भ, पाठक और format से prompt असरदार बनते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 – Conversation and creativity with ChatGPT. Aim: explore conversational and creative tasks and check accuracy. What to do: (1) Open chatgpt.com with a permitted account. (2) Ask it to write a 6-line poem on the monsoon. (3) Ask it to role-play an interviewer for a school captain election. (4) Ask a factual question whose answer you can check in your textbook, such as 'Who proposed GANs and in which year?' (5) Ask it for a source and verify it. What you observe: creative output is fast; factual answers are usually right but can sometimes be confidently wrong. What it teaches: use chatbots as assistants, not as final authorities.",
+      "hi": "गतिविधि 4 – ChatGPT से बातचीत और रचनात्मकता। उद्देश्य: बातचीत और रचनात्मक कामों को आज़माना और सटीकता जाँचना। क्या करें: (1) अनुमत account से chatgpt.com खोलें। (2) मानसून पर 6 पंक्तियों की कविता लिखवाएँ। (3) स्कूल कप्तान चुनाव के साक्षात्कारकर्ता की भूमिका निभाने को कहें। (4) ऐसा तथ्यात्मक प्रश्न पूछें जिसका उत्तर आप पाठ्यपुस्तक में जाँच सकें, जैसे 'GAN किसने और किस वर्ष प्रस्तावित किए?' (5) स्रोत पूछें और उसे जाँचें। क्या दिखेगा: रचनात्मक output जल्दी मिलता है; तथ्यात्मक उत्तर आमतौर पर सही होते हैं पर कभी-कभी आत्मविश्वास से ग़लत भी। सीख: chatbot को सहायक मानें, अंतिम प्रमाण नहीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Unplugged activity – Forger and Detective (a GAN game). Aim: feel how a GAN trains. You need: paper, pencils, 6 printed photos of real leaves. What to do: one group (generators) draws 'fake' leaves; another group (discriminators) is shown real photos and drawings mixed together and must spot the fakes, saying why ('veins are missing'). The generators use this feedback to draw better leaves in round 2 and round 3. What you observe: drawings get more realistic each round, and detectives need finer clues. What it teaches: the adversarial feedback loop of a GAN.",
+      "hi": "बिना कंप्यूटर गतिविधि – जालसाज़ और जासूस (GAN खेल)। उद्देश्य: महसूस करना कि GAN कैसे train होता है। आवश्यक: काग़ज़, पेंसिल, असली पत्तियों की 6 छपी फोटो। क्या करें: एक समूह (generator) 'नकली' पत्तियाँ बनाता है; दूसरे समूह (discriminator) को असली फोटो और चित्र मिलाकर दिखाए जाते हैं और उसे नकली पहचानकर कारण बताना है ('नसें नहीं हैं')। Generator समूह इस प्रतिक्रिया से दूसरे और तीसरे दौर में बेहतर पत्तियाँ बनाता है। क्या दिखेगा: हर दौर में चित्र ज़्यादा वास्तविक होते हैं और जासूसों को बारीक संकेत चाहिए। सीख: GAN का adversarial feedback loop।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.8 Large Language Models (LLMs)",
+    "hi": "7.8 Large Language Model (LLM)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Large Language Model (LLM)",
+       "hi": "Large Language Model (LLM)"
+      },
+      "text": {
+       "en": "An LLM is a deep learning model trained on a very large amount of text (and often code) that can understand and generate human language. It can answer questions, summarise, translate, classify text, write and explain code, and hold a conversation.",
+       "hi": "LLM एक deep learning model है जिसे बहुत बड़ी मात्रा में text (और अक्सर code) पर train किया जाता है और जो मानव भाषा समझ और बना सकता है। यह प्रश्नों के उत्तर दे सकता है, सारांश बना सकता है, अनुवाद कर सकता है, text का वर्गीकरण कर सकता है, code लिख और समझा सकता है, और बातचीत कर सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why 'large'? Because (a) it is trained on massive datasets of text and code, collected from books, websites, articles and other sources, and (b) the model itself has a huge number of parameters (weights), often billions. The word does not mean that its answers are long.",
+      "hi": "'Large' क्यों? क्योंकि (a) इसे text और code के विशाल dataset पर train किया जाता है, जो किताबों, websites, लेखों और अन्य स्रोतों से इकट्ठा होते हैं, और (b) model में स्वयं बहुत अधिक parameters (weights) होते हैं, अक्सर अरबों। इस शब्द का अर्थ यह नहीं कि इसके उत्तर लंबे होते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Token",
+       "hi": "Token"
+      },
+      "text": {
+       "en": "A token is a small piece of text that an LLM reads and writes, such as a word, part of a word or a punctuation mark. For example, 'unhappiness' may be split into 'un', 'happi' and 'ness'.",
+       "hi": "Token, text का एक छोटा टुकड़ा है जिसे LLM पढ़ता और लिखता है, जैसे एक शब्द, शब्द का हिस्सा या विराम चिह्न। उदाहरण के लिए 'unhappiness' को 'un', 'happi' और 'ness' में बाँटा जा सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "At its core, an LLM is trained to predict the next token. Given 'The capital of India is', it learns that 'New' followed by 'Delhi' is very likely. By doing this on billions of sentences, it learns grammar, facts, styles and even some reasoning patterns. When you chat with it, it produces the reply one token at a time, each time choosing a likely next token based on everything before it. This is called an autoregressive model.",
+      "hi": "मूल रूप से LLM को अगले token का अनुमान लगाने के लिए train किया जाता है। 'The capital of India is' दिए जाने पर वह सीखता है कि 'New' और फिर 'Delhi' आने की संभावना बहुत अधिक है। अरबों वाक्यों पर ऐसा करके वह व्याकरण, तथ्य, शैलियाँ और कुछ तर्क के पैटर्न भी सीख लेता है। जब आप उससे बात करते हैं, तो वह उत्तर एक-एक token करके बनाता है, हर बार पहले के सब कुछ के आधार पर संभावित अगला token चुनकर। इसे autoregressive model कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Transformer",
+       "hi": "Transformer"
+      },
+      "text": {
+       "en": "A transformer is a neural network architecture designed to handle sequential data such as text. It uses a mechanism called self-attention to look at all the words in a passage at once and decide which words are most related to each other. Transformers are the foundation of modern LLMs.",
+       "hi": "Transformer एक neural network संरचना (architecture) है जो text जैसे क्रमिक (sequential) डेटा को संभालने के लिए बनी है। यह self-attention नामक तरीक़े से किसी अंश के सभी शब्दों को एक साथ देखता है और तय करता है कि कौन-से शब्द एक-दूसरे से सबसे ज़्यादा जुड़े हैं। Transformer आधुनिक LLM की नींव हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The transformer was introduced by researchers at Google in the 2017 paper 'Attention Is All You Need'. Before it, language models read text word by word in order, and often forgot the beginning of long sentences. Self-attention solves this. In the sentence 'Riya gave the book to Meera because she had finished it', attention helps the model link 'she' to Riya and 'it' to the book. Transformers can also process all words in parallel, which makes training on huge datasets faster. The 'T' in GPT stands for Transformer: GPT means Generative Pre-trained Transformer.",
+      "hi": "Transformer को Google के शोधकर्ताओं ने 2017 के शोधपत्र 'Attention Is All You Need' में प्रस्तुत किया। उससे पहले language model text को क्रम से शब्द-दर-शब्द पढ़ते थे और लंबे वाक्यों की शुरुआत अक्सर भूल जाते थे। Self-attention इस समस्या को हल करता है। वाक्य 'Riya gave the book to Meera because she had finished it' में attention model को 'she' को Riya से और 'it' को book से जोड़ने में मदद करता है। Transformer सभी शब्दों को समानांतर (parallel) संसाधित कर सकते हैं, जिससे विशाल dataset पर training तेज़ होती है। GPT में 'T' का अर्थ Transformer है: GPT यानी Generative Pre-trained Transformer।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Pre-training: the model learns general language by predicting next tokens on a huge, general dataset. This takes enormous computing power.",
+       "Fine-tuning: the pre-trained model is trained further on smaller, specific data, for example question–answer pairs, a company's support chats or medical text.",
+       "Alignment with human feedback: people rate the model's answers, and the model is adjusted to give more helpful, honest and safe replies (often called RLHF, reinforcement learning from human feedback).",
+       "Prompting (inference): the user gives a prompt and the model generates a response token by token."
+      ],
+      "hi": [
+       "Pre-training: model विशाल, सामान्य dataset पर अगले token का अनुमान लगाकर सामान्य भाषा सीखता है। इसमें बहुत अधिक computing शक्ति लगती है।",
+       "Fine-tuning: pre-trained model को छोटे, विशिष्ट डेटा पर और train किया जाता है, जैसे प्रश्न–उत्तर जोड़े, किसी कंपनी की सहायता बातचीत या medical text।",
+       "मानव प्रतिक्रिया से alignment: लोग model के उत्तरों को अंक देते हैं, और model को अधिक सहायक, ईमानदार और सुरक्षित उत्तर देने के लिए समायोजित किया जाता है (अक्सर RLHF, reinforcement learning from human feedback कहलाता है)।",
+       "Prompting (inference): उपयोगकर्ता prompt देता है और model token-दर-token उत्तर बनाता है।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Example LLM family",
+        "Made by",
+        "Notable points"
+       ],
+       "hi": [
+        "LLM परिवार का उदाहरण",
+        "निर्माता",
+        "मुख्य बातें"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "GPT series (used in ChatGPT)",
+         "OpenAI",
+         "Generative pre-trained transformers; newer versions handle text and images"
+        ],
+        [
+         "Gemini",
+         "Google",
+         "Multimodal: can work with text, images, audio and code"
+        ],
+        [
+         "Llama",
+         "Meta",
+         "Openly released weights, so researchers and companies can run and adapt it"
+        ],
+        [
+         "Claude",
+         "Anthropic",
+         "Used for dialogue, writing, analysis and coding"
+        ],
+        [
+         "Mixtral / Mistral models",
+         "Mistral AI",
+         "Some models openly released; used for chatbots, translation and content creation"
+        ]
+       ],
+       "hi": [
+        [
+         "GPT श्रृंखला (ChatGPT में उपयोग)",
+         "OpenAI",
+         "Generative pre-trained transformer; नए संस्करण text और चित्र संभालते हैं"
+        ],
+        [
+         "Gemini",
+         "Google",
+         "Multimodal: text, चित्र, audio और code के साथ काम कर सकता है"
+        ],
+        [
+         "Llama",
+         "Meta",
+         "Weights खुले रूप से जारी, ताकि शोधकर्ता और कंपनियाँ इसे चला और बदल सकें"
+        ],
+        [
+         "Claude",
+         "Anthropic",
+         "बातचीत, लेखन, विश्लेषण और coding में उपयोग"
+        ],
+        [
+         "Mixtral / Mistral model",
+         "Mistral AI",
+         "कुछ model खुले रूप से जारी; chatbot, अनुवाद और सामग्री निर्माण में उपयोग"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Model names and versions change very quickly. In exams, it is enough to name a few example LLMs and their makers; do not try to remember which one is 'the best' or 'the latest'.",
+      "hi": "Model के नाम और संस्करण बहुत तेज़ी से बदलते हैं। परीक्षा में कुछ उदाहरण LLM और उनके निर्माताओं के नाम बताना काफ़ी है; यह याद करने की कोशिश न करें कि कौन 'सबसे अच्छा' या 'सबसे नया' है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Multimodal model",
+       "hi": "Multimodal model"
+      },
+      "text": {
+       "en": "A model that can take in or produce more than one type of data (modality), such as text, images, audio and video, in the same system.",
+       "hi": "ऐसा model जो एक ही प्रणाली में एक से अधिक प्रकार (modality) का डेटा, जैसे text, चित्र, audio और video, ले या बना सके।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.9 Applications, limitations and risks of LLMs",
+    "hi": "7.9 LLM के उपयोग, सीमाएँ और जोखिम"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Area",
+        "How LLMs are used"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "LLM का उपयोग कैसे होता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Text generation",
+         "Dialogue (chatbots), story and poem writing, content creation, translation, summarising, e-mail and sentence auto-completion, code writing"
+        ],
+        [
+         "Audio",
+         "LLMs produce text, which is then fed into text-to-speech systems; voice assistants combine speech recognition, an LLM and TTS"
+        ],
+        [
+         "Images",
+         "LLMs help turn a user's request into a detailed prompt for an image model, and multimodal LLMs can describe images"
+        ],
+        [
+         "Video",
+         "Writing scripts and storyboards, generating subtitles and captions, summarising scenes"
+        ],
+        [
+         "Customer service and governance",
+         "Answering common questions on websites and helplines, in several Indian languages"
+        ]
+       ],
+       "hi": [
+        [
+         "Text generation",
+         "बातचीत (chatbot), कहानी और कविता लेखन, सामग्री निर्माण, अनुवाद, सारांश, e-mail और वाक्य का auto-completion, code लेखन"
+        ],
+        [
+         "Audio",
+         "LLM text बनाता है, जिसे फिर text-to-speech प्रणाली में दिया जाता है; voice assistant में speech recognition, LLM और TTS मिलकर काम करते हैं"
+        ],
+        [
+         "चित्र",
+         "LLM उपयोगकर्ता की माँग को image model के लिए विस्तृत prompt में बदलने में मदद करते हैं, और multimodal LLM चित्रों का वर्णन कर सकते हैं"
+        ],
+        [
+         "Video",
+         "Script और storyboard लिखना, subtitle और caption बनाना, दृश्यों का सारांश"
+        ],
+        [
+         "ग्राहक सेवा और शासन",
+         "Website और helpline पर आम प्रश्नों के उत्तर, कई भारतीय भाषाओं में"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Limitations of LLMs:",
+      "hi": "LLM की सीमाएँ:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Hallucination: an LLM can produce fluent but false information, such as a fake book title, a wrong date or a made-up legal case, because it predicts likely words rather than looking up facts.",
+       "High cost and resource needs: training and running large models needs costly hardware (GPUs), a lot of electricity and water for cooling.",
+       "Speed: large models can be slow to respond, especially for long answers.",
+       "Knowledge cut-off: a model knows only what was in its training data up to a certain date unless it is connected to search.",
+       "Limited real-world understanding: it has no direct experience of the physical world and can fail at common-sense tasks, counting, or new situations unlike its training data.",
+       "Sensitivity to prompts: slightly different wording can give very different answers."
+      ],
+      "hi": [
+       "Hallucination: LLM धाराप्रवाह पर ग़लत जानकारी बना सकता है, जैसे नकली किताब का नाम, ग़लत तारीख़ या गढ़ा हुआ कानूनी मामला, क्योंकि वह तथ्य खोजने के बजाय संभावित शब्दों का अनुमान लगाता है।",
+       "अधिक लागत और संसाधन: बड़े model की training और उन्हें चलाने के लिए महँगे hardware (GPU), बहुत बिजली और ठंडा करने के लिए पानी चाहिए।",
+       "गति: बड़े model उत्तर देने में धीमे हो सकते हैं, ख़ासकर लंबे उत्तरों में।",
+       "ज्ञान की अंतिम तिथि (knowledge cut-off): model केवल वही जानता है जो एक तय तिथि तक के training डेटा में था, जब तक उसे search से न जोड़ा जाए।",
+       "वास्तविक दुनिया की सीमित समझ: उसे भौतिक दुनिया का सीधा अनुभव नहीं होता और वह सामान्य समझ, गिनती या training डेटा से अलग नई स्थितियों में चूक सकता है।",
+       "Prompt के प्रति संवेदनशीलता: थोड़े अलग शब्दों से बहुत अलग उत्तर मिल सकते हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Risks of LLMs:",
+      "hi": "LLM के जोखिम:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Bias: internet text contains stereotypes about gender, caste, religion, region and language. A model trained on it can repeat them, for example always describing a doctor as 'he' and a nurse as 'she'.",
+       "Privacy leaks: if personal data was in the training data or is typed in by users, the model might reveal it. Information you type into a chatbot may be stored and used to improve the service.",
+       "Confidential data: a company that trains or prompts a model with secret documents risks those details appearing in outputs.",
+       "Misinformation at scale: fake news articles, fake reviews and scam messages can be produced quickly in many languages.",
+       "Over-reliance: students and professionals may stop thinking for themselves or stop checking facts."
+      ],
+      "hi": [
+       "Bias: internet के text में लिंग, जाति, धर्म, क्षेत्र और भाषा के बारे में रूढ़ियाँ होती हैं। उस पर trained model उन्हें दोहरा सकता है, जैसे डॉक्टर को हमेशा 'वह (पुरुष)' और नर्स को 'वह (स्त्री)' बताना।",
+       "निजता का रिसाव: अगर निजी डेटा training डेटा में था या उपयोगकर्ता उसे लिखते हैं, तो model उसे प्रकट कर सकता है। Chatbot में लिखी जानकारी सेवा सुधारने के लिए सहेजी और उपयोग की जा सकती है।",
+       "गोपनीय डेटा: जो कंपनी गुप्त दस्तावेज़ों से model को train करती है या prompt देती है, उसके विवरण output में आने का जोखिम रहता है।",
+       "बड़े पैमाने पर ग़लत जानकारी: नकली समाचार लेख, नकली review और धोखाधड़ी वाले संदेश कई भाषाओं में जल्दी बन सकते हैं।",
+       "अत्यधिक निर्भरता: विद्यार्थी और पेशेवर स्वयं सोचना या तथ्य जाँचना छोड़ सकते हैं।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A student asks a chatbot for 'five research papers on GANs in Indian agriculture with authors and links'. Three of the links do not open and one author does not exist. What happened, and what should the student do?",
+       "hi": "एक विद्यार्थी chatbot से 'भारतीय कृषि में GAN पर पाँच शोधपत्र, लेखकों और links सहित' माँगता है। तीन links नहीं खुलते और एक लेखक का अस्तित्व ही नहीं है। क्या हुआ, और विद्यार्थी को क्या करना चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: This is hallucination: the LLM generated text that looks like real references because it predicts plausible words, not because it checked a database.\nStep 2: The student should not copy these references.\nStep 3: Search for each title in a real search engine or Google Scholar and keep only papers that actually exist.\nStep 4: Prefer tools that show sources, and always verify facts, dates and citations before using them.",
+       "hi": "चरण 1: यह hallucination है: LLM ने ऐसा text बनाया जो असली संदर्भ जैसा दिखता है क्योंकि वह संभावित शब्दों का अनुमान लगाता है, किसी database की जाँच नहीं करता।\nचरण 2: विद्यार्थी को ये संदर्भ नकल नहीं करने चाहिए।\nचरण 3: हर शीर्षक को असली search engine या Google Scholar में खोजें और केवल वही शोधपत्र रखें जो वास्तव में मौजूद हैं।\nचरण 4: स्रोत दिखाने वाले टूल को प्राथमिकता दें, और उपयोग से पहले तथ्य, तारीख़ और citation हमेशा जाँचें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.10 Writing good prompts",
+    "hi": "7.10 अच्छे prompt लिखना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Prompt",
+       "hi": "Prompt"
+      },
+      "text": {
+       "en": "A prompt is the instruction, question or input that a user gives to a generative AI model to get a desired output.",
+       "hi": "Prompt वह निर्देश, प्रश्न या input है जो उपयोगकर्ता मनचाहा output पाने के लिए generative AI model को देता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Prompt engineering",
+       "hi": "Prompt engineering"
+      },
+      "text": {
+       "en": "The skill of designing and refining prompts so that a generative AI model gives accurate, relevant and well-formatted output.",
+       "hi": "Prompt को इस तरह बनाने और सुधारने का कौशल कि generative AI model सटीक, प्रासंगिक और सही format वाला output दे।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Role: tell the AI who it should act as ('You are a career counsellor').",
+       "Task: say exactly what to do ('List five careers in AI').",
+       "Context: give background ('for a Class 12 student in Patna who likes biology').",
+       "Format and length: table, bullet points, 100 words, in Hindi, and so on.",
+       "Constraints and tone: 'simple language', 'no jargon', 'friendly tone'.",
+       "Examples: show one example of the answer style you want.",
+       "Iterate: read the answer, then refine ('make it shorter', 'add salary ranges in India')."
+      ],
+      "hi": [
+       "भूमिका: AI को बताइए उसे क्या बनकर काम करना है ('You are a career counsellor')।",
+       "काम: ठीक-ठीक बताइए क्या करना है ('AI में पाँच करियर बताओ')।",
+       "संदर्भ: पृष्ठभूमि दीजिए ('पटना के कक्षा 12 के विद्यार्थी के लिए जिसे जीव विज्ञान पसंद है')।",
+       "Format और लंबाई: तालिका, bullet points, 100 शब्द, हिंदी में, आदि।",
+       "सीमाएँ और लहजा: 'सरल भाषा', 'कठिन शब्द नहीं', 'मित्रवत लहजा'।",
+       "उदाहरण: जैसा उत्तर चाहिए उसका एक नमूना दिखाइए।",
+       "दोहराइए और सुधारिए: उत्तर पढ़कर उसे सुधारिए ('छोटा करो', 'भारत में वेतन सीमा जोड़ो')।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Improve this prompt: 'Tell me about Holi.'",
+       "hi": "इस prompt को सुधारिए: 'Holi के बारे में बताओ।'"
+      },
+      "a": {
+       "en": "Step 1: Add a role: 'You are a social science teacher.'\nStep 2: Add task and audience: 'Explain the festival of Holi to Class 4 students.'\nStep 3: Add format and limits: 'in 5 bullet points, under 80 words, in simple Hindi'.\nStep 4: Add a constraint: 'include one safety tip about colours'.\nImproved prompt: 'You are a social science teacher. Explain the festival of Holi to Class 4 students in 5 bullet points, under 80 words, in simple Hindi, and include one safety tip about colours.'",
+       "hi": "चरण 1: भूमिका जोड़ें: 'आप सामाजिक विज्ञान के शिक्षक हैं।'\nचरण 2: काम और पाठक जोड़ें: 'कक्षा 4 के विद्यार्थियों को होली का त्योहार समझाइए।'\nचरण 3: Format और सीमा जोड़ें: '5 bullet points में, 80 शब्दों से कम, सरल हिंदी में'।\nचरण 4: एक शर्त जोड़ें: 'रंगों से जुड़ी एक सुरक्षा सलाह शामिल करें'।\nसुधरा prompt: 'आप सामाजिक विज्ञान के शिक्षक हैं। कक्षा 4 के विद्यार्थियों को होली का त्योहार 5 bullet points में, 80 शब्दों से कम, सरल हिंदी में समझाइए, और रंगों से जुड़ी एक सुरक्षा सलाह शामिल कीजिए।'"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.11 The future of Generative AI",
+    "hi": "7.11 Generative AI का भविष्य"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Generative AI is improving rapidly, and researchers expect it to help with complex challenges. Some likely directions are listed below; they are possibilities, not certainties.",
+      "hi": "Generative AI तेज़ी से बेहतर हो रहा है, और शोधकर्ताओं को उम्मीद है कि यह जटिल चुनौतियों में मदद करेगा। कुछ संभावित दिशाएँ नीचे दी गई हैं; ये संभावनाएँ हैं, निश्चितताएँ नहीं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Healthcare: helping design new medicines and proteins, drafting reports for doctors to review, and making medical information available in local languages.",
+       "Education: personal tutors that explain at each student's pace, in their own language, while teachers guide learning.",
+       "Multilingual communication: real-time translation and speech across India's many languages, building on efforts such as Bhashini.",
+       "Multimedia creation: films, games, music and advertisements made faster by small teams.",
+       "Science and engineering: generating designs, simulations and code to speed up research.",
+       "Human–AI collaboration: AI acting as a co-pilot that drafts, suggests and checks, while humans set goals, judge quality and take responsibility."
+      ],
+      "hi": [
+       "स्वास्थ्य: नई दवाओं और प्रोटीन के डिज़ाइन में मदद, डॉक्टरों की समीक्षा के लिए रिपोर्ट का मसौदा, और medical जानकारी स्थानीय भाषाओं में उपलब्ध कराना।",
+       "शिक्षा: ऐसे व्यक्तिगत tutor जो हर विद्यार्थी की गति और उसकी भाषा में समझाएँ, जबकि शिक्षक सीखने का मार्गदर्शन करें।",
+       "बहुभाषी संचार: भारत की अनेक भाषाओं में तत्काल अनुवाद और बोली, Bhashini जैसे प्रयासों पर आधारित।",
+       "Multimedia निर्माण: फ़िल्में, game, संगीत और विज्ञापन छोटी टीमें भी तेज़ी से बना सकेंगी।",
+       "विज्ञान और इंजीनियरिंग: शोध तेज़ करने के लिए डिज़ाइन, simulation और code बनाना।",
+       "मनुष्य–AI सहयोग: AI एक co-pilot की तरह मसौदा बनाए, सुझाव दे और जाँचे, जबकि मनुष्य लक्ष्य तय करें, गुणवत्ता परखें और ज़िम्मेदारी लें।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "New jobs are also appearing, such as prompt designers, AI trainers who rate model answers, AI ethics officers and people who check AI output in fields like law and medicine. At the same time, some routine tasks will be automated, so learning to work with AI, and to think critically about it, is an important skill.",
+      "hi": "नई नौकरियाँ भी सामने आ रही हैं, जैसे prompt designer, model के उत्तरों को अंक देने वाले AI trainer, AI ethics अधिकारी, और क़ानून व चिकित्सा जैसे क्षेत्रों में AI output जाँचने वाले लोग। साथ ही कुछ नियमित काम स्वचालित होंगे, इसलिए AI के साथ काम करना और उसके बारे में आलोचनात्मक सोचना एक महत्वपूर्ण कौशल है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.12 Ethical and social implications of Generative AI",
+    "hi": "7.12 Generative AI के नैतिक और सामाजिक प्रभाव"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Deepfake",
+       "hi": "Deepfake"
+      },
+      "text": {
+       "en": "A deepfake is a fake image, video or audio made with deep learning that shows a real person saying or doing something they never said or did.",
+       "hi": "Deepfake, deep learning से बनाई गई नकली चित्र, video या audio है जिसमें किसी असली व्यक्ति को कुछ ऐसा कहते या करते दिखाया जाता है जो उसने कभी नहीं कहा या किया।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Deepfakes are made with face-swapping and voice-cloning techniques, often using GANs or autoencoders. Software such as DeepFaceLab and FaceSwap can swap faces in videos, and style-transfer apps (such as DeepArt) can repaint photos in an artist's style. Deepfakes have positive uses (dubbing films, recreating historical figures in museums with permission, special effects) but serious harms: fake videos of public figures before elections, fake celebrity advertisements for investment scams, cyberbullying, and fake voice calls asking for money.",
+      "hi": "Deepfake, face-swapping और voice-cloning तकनीकों से बनते हैं, अक्सर GAN या autoencoder से। DeepFaceLab और FaceSwap जैसे software video में चेहरे बदल सकते हैं, और style-transfer app (जैसे DeepArt) फोटो को किसी कलाकार की शैली में बदल सकते हैं। Deepfake के अच्छे उपयोग भी हैं (फ़िल्मों की dubbing, अनुमति के साथ संग्रहालयों में ऐतिहासिक व्यक्तियों को दिखाना, special effects) पर गंभीर नुकसान भी हैं: चुनाव से पहले सार्वजनिक हस्तियों के नकली video, निवेश धोखाधड़ी के लिए प्रसिद्ध लोगों के नकली विज्ञापन, cyberbullying, और पैसे माँगने वाली नकली आवाज़ की कॉल।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Look for odd blinking, blurry edges around the face, mismatched lip movement, strange lighting or hands.",
+       "Check the source: is it from an official channel or a reliable news organisation?",
+       "Search whether fact-checkers have already examined the clip.",
+       "If someone calls with a familiar voice asking for urgent money, hang up and call them back on their known number.",
+       "Do not forward suspicious content; report it on the platform or at cybercrime.gov.in (helpline 1930 for financial fraud) with a trusted adult."
+      ],
+      "hi": [
+       "अजीब पलक झपकना, चेहरे के किनारों का धुंधलापन, होंठों की हरकत का मेल न खाना, अजीब रोशनी या हाथ देखें।",
+       "स्रोत जाँचें: क्या यह आधिकारिक channel या भरोसेमंद समाचार संगठन से है?",
+       "खोजें कि क्या fact-checkers पहले ही इस clip की जाँच कर चुके हैं।",
+       "अगर कोई जानी-पहचानी आवाज़ में फ़ोन करके तुरंत पैसे माँगे, तो फ़ोन काटें और उसके जाने-पहचाने नंबर पर वापस कॉल करें।",
+       "संदिग्ध सामग्री आगे न भेजें; किसी भरोसेमंद बड़े के साथ platform पर या cybercrime.gov.in पर (आर्थिक धोखाधड़ी के लिए helpline 1930) शिकायत करें।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Bias and discrimination",
+       "hi": "Bias और भेदभाव"
+      },
+      "text": {
+       "en": "Bias in AI is an unfair tilt in a model's output against or in favour of some group, usually because the training data was unbalanced or reflected social prejudice.",
+       "hi": "AI में bias, model के output का किसी समूह के विरुद्ध या पक्ष में अनुचित झुकाव है, आमतौर पर इसलिए कि training डेटा असंतुलित था या उसमें सामाजिक पूर्वाग्रह था।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Real cases show the danger. Clearview AI built a facial-recognition database by collecting billions of photos from the internet without people's consent, and regulators in several countries took action against it over privacy. Face-recognition systems in general have been found to make more errors on some skin tones and genders when training data was unbalanced. HireVue, a company offering AI-based video job interviews, faced criticism that analysing candidates' faces and voices could be unfair to some groups; it later stopped using facial analysis. An image generator asked for 'a CEO' that shows only men, or for 'a village' that shows only poverty, spreads stereotypes.",
+      "hi": "वास्तविक घटनाएँ ख़तरा दिखाती हैं। Clearview AI ने लोगों की सहमति के बिना internet से अरबों फोटो इकट्ठा करके चेहरा-पहचान database बनाया, और कई देशों के नियामकों ने निजता के कारण उस पर कार्रवाई की। सामान्य रूप से चेहरा-पहचान प्रणालियाँ असंतुलित training डेटा होने पर कुछ त्वचा रंगों और लिंगों पर अधिक ग़लतियाँ करती पाई गई हैं। AI आधारित video job interview देने वाली कंपनी HireVue की आलोचना हुई कि उम्मीदवारों के चेहरे और आवाज़ का विश्लेषण कुछ समूहों के साथ अनुचित हो सकता है; बाद में उसने चेहरा-विश्लेषण बंद कर दिया। 'एक CEO' माँगने पर केवल पुरुष दिखाने वाला, या 'एक गाँव' माँगने पर केवल ग़रीबी दिखाने वाला image generator रूढ़ियाँ फैलाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Plagiarism",
+       "hi": "Plagiarism (साहित्यिक चोरी)"
+      },
+      "text": {
+       "en": "Plagiarism is presenting someone else's work, including AI-generated content, as your own without acknowledgement.",
+       "hi": "Plagiarism का अर्थ है किसी और का काम, AI से बनी सामग्री सहित, बिना श्रेय दिए अपना बताकर प्रस्तुत करना।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Submitting an AI-written project report as your own work breaks academic integrity, even if no human author is copied. It also robs you of learning. Generative AI raises intellectual property questions too: models are trained on books, art and music made by people, sometimes without permission, and artists and news organisations have gone to court over this. Who owns an AI-generated image, and can it be copyrighted? Laws are still developing in India and around the world.",
+      "hi": "AI से लिखी project report को अपना काम बताकर जमा करना academic integrity (शैक्षिक ईमानदारी) तोड़ता है, भले ही किसी मानव लेखक की नकल न हुई हो। इससे आपकी सीख भी छिन जाती है। Generative AI, intellectual property (बौद्धिक संपदा) के प्रश्न भी उठाता है: model लोगों द्वारा बनाई किताबों, कला और संगीत पर train होते हैं, कभी-कभी बिना अनुमति, और इस पर कलाकारों और समाचार संगठनों ने मुक़दमे किए हैं। AI से बने चित्र का मालिक कौन है, और क्या उस पर copyright हो सकता है? भारत और दुनिया भर में क़ानून अभी विकसित हो रहे हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Transparency",
+       "hi": "Transparency (पारदर्शिता)"
+      },
+      "text": {
+       "en": "Transparency means openly disclosing when and how AI was used to create content or make a decision, so that others can judge it fairly and trust is maintained.",
+       "hi": "Transparency का अर्थ है खुलकर बताना कि सामग्री बनाने या निर्णय लेने में AI का उपयोग कब और कैसे हुआ, ताकि दूसरे उसे निष्पक्ष रूप से परख सकें और भरोसा बना रहे।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Privacy: do not share personal, family or friends' data with chatbots; read what the tool does with your data.",
+       "Environmental cost: training and running large models uses a lot of electricity and water.",
+       "Jobs: some tasks will be automated, so reskilling matters.",
+       "Misinformation and trust: when fakes are easy, people may stop trusting even real evidence.",
+       "Accountability: a human or organisation must remain responsible for decisions made with AI."
+      ],
+      "hi": [
+       "निजता: chatbot के साथ निजी, परिवार या दोस्तों का डेटा साझा न करें; पढ़ें कि टूल आपके डेटा का क्या करता है।",
+       "पर्यावरणीय लागत: बड़े model की training और उन्हें चलाने में बहुत बिजली और पानी लगता है।",
+       "रोज़गार: कुछ काम स्वचालित होंगे, इसलिए नए कौशल सीखना ज़रूरी है।",
+       "ग़लत जानकारी और भरोसा: जब नकली चीज़ें बनाना आसान हो, तो लोग असली सबूत पर भी भरोसा छोड़ सकते हैं।",
+       "जवाबदेही: AI से लिए गए निर्णयों की ज़िम्मेदारी किसी व्यक्ति या संगठन की ही रहनी चाहिए।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.13 Using Generative AI responsibly and citing it",
+    "hi": "7.13 Generative AI का ज़िम्मेदार उपयोग और उसका हवाला देना"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Be cautious: verify facts, numbers and quotations from another reliable source.",
+       "Be transparent: say clearly which parts of your work were made or helped by AI.",
+       "Respect copyright: do not use AI to copy an artist's work or a textbook; use images and text you are allowed to use.",
+       "Follow your teacher's and school's rules on when AI may be used for homework, projects and exams.",
+       "Use AI to learn, not to skip learning: ask it to explain, quiz you or give feedback on your own draft.",
+       "Be kind: never create fake or embarrassing images of real people, even as a joke."
+      ],
+      "hi": [
+       "सावधान रहें: तथ्य, संख्याएँ और उद्धरण किसी दूसरे भरोसेमंद स्रोत से जाँचें।",
+       "पारदर्शी रहें: साफ़ बताएँ कि आपके काम के कौन-से हिस्से AI से बने या उसकी मदद से बने।",
+       "Copyright का सम्मान करें: किसी कलाकार के काम या पाठ्यपुस्तक की नकल के लिए AI का उपयोग न करें; केवल वही चित्र और text उपयोग करें जिनकी अनुमति हो।",
+       "Homework, project और परीक्षा में AI के उपयोग पर शिक्षक और स्कूल के नियम मानें।",
+       "AI से सीखें, सीखना छोड़ें नहीं: उससे समझाने, quiz लेने या अपने मसौदे पर सुझाव देने को कहें।",
+       "दयालु रहें: असली लोगों की नकली या शर्मनाक तस्वीरें कभी न बनाएँ, मज़ाक में भी नहीं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Why cite AI? Citing gives credit (intellectual property attribution), lets readers check accuracy, and shows ethical, honest use of the tool. A citation for AI-generated content usually includes: the company or tool as the author, the date you received the content (not the date the tool was released), the name of the tool and a description such as 'Large language model' or 'Generative AI tool', the web address, and optionally the prompt you used.",
+      "hi": "AI का हवाला क्यों दें? Citation से श्रेय मिलता है (बौद्धिक संपदा का श्रेय), पाठक सटीकता जाँच सकते हैं, और टूल का नैतिक, ईमानदार उपयोग दिखता है। AI से बनी सामग्री के citation में आमतौर पर होता है: लेखक के रूप में कंपनी या टूल, सामग्री मिलने की तारीख़ (टूल के जारी होने की तारीख़ नहीं), टूल का नाम और 'Large language model' या 'Generative AI tool' जैसा विवरण, web पता, और वैकल्पिक रूप से उपयोग किया गया prompt।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Example citation (in a project report):\nGoogle. (2025, August 14). Gemini [Generative AI tool]. https://gemini.google.com\nPrompt used: \"Explain the difference between GANs and VAEs for a Class 12 student.\"\n\nIn-text note: The comparison table in Section 2 was first drafted with Gemini and then checked and edited by me.",
+      "hi": "उदाहरण citation (project report में):\nGoogle. (2025, August 14). Gemini [Generative AI tool]. https://gemini.google.com\nउपयोग किया गया prompt: \"Explain the difference between GANs and VAEs for a Class 12 student.\"\n\nपाठ के भीतर टिप्पणी: खंड 2 की तुलना तालिका का पहला मसौदा Gemini से बना, फिर मैंने उसे जाँचा और संपादित किया।"
+     }
+    },
+    {
+     "note": {
+      "en": "The date in an AI citation is the date you generated the response, because the same prompt can give a different answer on another day.",
+      "hi": "AI citation में तारीख़ वह होती है जब आपने उत्तर बनवाया, क्योंकि एक ही prompt दूसरे दिन अलग उत्तर दे सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.14 Building a chatbot with the Gemini API (Advanced Learners)",
+    "hi": "7.14 Gemini API से chatbot बनाना (Advanced Learners)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "This activity is for advanced learners and is not evaluated in the board exam, but it shows how real apps use an LLM. An API (Application Programming Interface) lets your Python program send a message to Google's Gemini model over the internet and receive its reply.",
+      "hi": "यह गतिविधि advanced learners के लिए है और बोर्ड परीक्षा में इसका मूल्यांकन नहीं होता, पर यह दिखाती है कि असली app LLM का उपयोग कैसे करते हैं। API (Application Programming Interface) आपके Python program को internet के माध्यम से Google के Gemini model को संदेश भेजने और उसका उत्तर पाने देता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "API key",
+       "hi": "API key"
+      },
+      "text": {
+       "en": "An API key is a secret code that identifies your program to a service. Like a password, it must never be shared, posted online or put inside code that others can see.",
+       "hi": "API key एक गुप्त code है जो किसी सेवा के सामने आपके program की पहचान कराता है। Password की तरह इसे कभी साझा नहीं करना चाहिए, online नहीं डालना चाहिए, और ऐसे code में नहीं लिखना चाहिए जिसे दूसरे देख सकें।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: With a teacher or parent, sign in to Google AI Studio and create a free API key (check the current age and usage rules first).",
+       "Step 2: Install the library: pip install google-genai",
+       "Step 3: Store the key in an environment variable named GEMINI_API_KEY instead of typing it into the program.",
+       "Step 4: Create a client, start a chat session with a Gemini model, and send each user message with send_message().",
+       "Step 5: Print response.text, and loop until the user types 'bye'."
+      ],
+      "hi": [
+       "चरण 1: शिक्षक या माता-पिता के साथ Google AI Studio में sign in करें और मुफ़्त API key बनाएँ (पहले वर्तमान आयु और उपयोग नियम जाँचें)।",
+       "चरण 2: Library install करें: pip install google-genai",
+       "चरण 3: Key को program में लिखने के बजाय GEMINI_API_KEY नाम के environment variable में रखें।",
+       "चरण 4: एक client बनाएँ, Gemini model के साथ chat session शुरू करें, और हर संदेश send_message() से भेजें।",
+       "चरण 5: response.text print करें, और तब तक loop चलाएँ जब तक उपयोगकर्ता 'bye' न लिखे।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "# Gemini chatbot (Advanced Learners). Needs internet and your own free API key.\n# Install once:  pip install google-genai\nimport os\nfrom google import genai\n\n# Keep the key outside the code, e.g. in an environment variable\nclient = genai.Client(api_key=os.environ.get(\"GEMINI_API_KEY\"))\nchat = client.chats.create(model=\"gemini-2.5-flash\")\n\nprint(\"Gemini chatbot. Type 'bye' to stop.\")\nwhile True:\n    user = input(\"You: \")\n    if user.lower() == \"bye\":\n        print(\"Bot: Goodbye!\")\n        break\n    response = chat.send_message(user)\n    print(\"Bot:\", response.text)",
+      "hi": "# Gemini chatbot (Advanced Learners). Needs internet and your own free API key.\n# Install once:  pip install google-genai\nimport os\nfrom google import genai\n\n# Keep the key outside the code, e.g. in an environment variable\nclient = genai.Client(api_key=os.environ.get(\"GEMINI_API_KEY\"))\nchat = client.chats.create(model=\"gemini-2.5-flash\")\n\nprint(\"Gemini chatbot. Type 'bye' to stop.\")\nwhile True:\n    user = input(\"You: \")\n    if user.lower() == \"bye\":\n        print(\"Bot: Goodbye!\")\n        break\n    response = chat.send_message(user)\n    print(\"Bot:\", response.text)"
+     }
+    },
+    {
+     "note": {
+      "en": "This program needs internet access and a valid key, so its replies depend on the model and cannot be shown here. Model names (such as gemini-2.5-flash) change over time; check Google AI Studio for a current model name. The structure of the program stays the same.",
+      "hi": "इस program को internet और सही key चाहिए, इसलिए इसके उत्तर model पर निर्भर करते हैं और यहाँ दिखाए नहीं जा सकते। Model के नाम (जैसे gemini-2.5-flash) समय के साथ बदलते हैं; वर्तमान नाम के लिए Google AI Studio देखें। Program की संरचना वही रहती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Run an offline practice version of the same chatbot loop, where a small function stands in for the Gemini API, so you can test the loop without internet.",
+       "hi": "उसी chatbot loop का offline अभ्यास संस्करण चलाइए, जिसमें एक छोटा function Gemini API की जगह काम करे, ताकि बिना internet के loop जाँचा जा सके।"
+      },
+      "a": {
+       "en": "Step 1: get_reply() returns a fixed answer based on keywords. In the real project you would replace its body with chat.send_message(message).text.\nStep 2: The while True loop reads input, stops on 'bye', and stores each exchange in a list called history.\nCode:\ndef get_reply(message):\n    # In the real project, this function sends the message to the\n    # Gemini API and returns the model's text. Here we use a tiny\n    # rule-based stand-in so the program runs without internet.\n    m = message.lower()\n    if \"hello\" in m or \"hi\" in m.split():\n        return \"Namaste! Ask me about AI.\"\n    if \"gan\" in m:\n        return \"A GAN has a generator and a discriminator that compete.\"\n    return \"Sorry, I do not know that yet.\"\n\nhistory = []\nprint(\"Chatbot ready. Type 'bye' to stop.\")\nwhile True:\n    user = input(\"You: \")\n    if user.lower() == \"bye\":\n        print(\"Bot: Goodbye!\")\n        break\n    reply = get_reply(user)\n    history.append((user, reply))\n    print(\"Bot:\", reply)\nprint(\"Messages exchanged:\", len(history))\nReal output when the user types: hello / what is a GAN? / who won IPL? / bye\nChatbot ready. Type 'bye' to stop.\nYou: Bot: Namaste! Ask me about AI.\nYou: Bot: A GAN has a generator and a discriminator that compete.\nYou: Bot: Sorry, I do not know that yet.\nYou: Bot: Goodbye!\nMessages exchanged: 3\n(The typed words do not appear after 'You:' here because the input was given from a file; when you type it yourself you will see your words.)\nStep 3: Observe: a rule-based bot only knows what we wrote into it; an LLM-based bot can answer far more, but must still be checked for accuracy.",
+       "hi": "चरण 1: get_reply() keywords के आधार पर तय उत्तर देता है। असली project में इसके अंदर chat.send_message(message).text लिखा जाएगा।\nचरण 2: while True loop input पढ़ता है, 'bye' पर रुकता है, और हर बातचीत history नाम की list में रखता है।\nCode:\ndef get_reply(message):\n    # In the real project, this function sends the message to the\n    # Gemini API and returns the model's text. Here we use a tiny\n    # rule-based stand-in so the program runs without internet.\n    m = message.lower()\n    if \"hello\" in m or \"hi\" in m.split():\n        return \"Namaste! Ask me about AI.\"\n    if \"gan\" in m:\n        return \"A GAN has a generator and a discriminator that compete.\"\n    return \"Sorry, I do not know that yet.\"\n\nhistory = []\nprint(\"Chatbot ready. Type 'bye' to stop.\")\nwhile True:\n    user = input(\"You: \")\n    if user.lower() == \"bye\":\n        print(\"Bot: Goodbye!\")\n        break\n    reply = get_reply(user)\n    history.append((user, reply))\n    print(\"Bot:\", reply)\nprint(\"Messages exchanged:\", len(history))\nवास्तविक output जब उपयोगकर्ता लिखता है: hello / what is a GAN? / who won IPL? / bye\nChatbot ready. Type 'bye' to stop.\nYou: Bot: Namaste! Ask me about AI.\nYou: Bot: A GAN has a generator and a discriminator that compete.\nYou: Bot: Sorry, I do not know that yet.\nYou: Bot: Goodbye!\nMessages exchanged: 3\n(यहाँ 'You:' के बाद लिखे शब्द नहीं दिखते क्योंकि input एक file से दिया गया था; स्वयं type करने पर आपके शब्द दिखेंगे।)\nचरण 3: ध्यान दें: rule-based bot केवल वही जानता है जो हमने उसमें लिखा; LLM आधारित bot बहुत अधिक उत्तर दे सकता है, पर उसकी सटीकता फिर भी जाँचनी होती है।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking Generative AI 'looks up' answers in a database. Fix: it generates new content from learnt patterns, which is why it can hallucinate.",
+   "Mixing up the two parts of a GAN. Fix: the generator creates fakes; the discriminator judges real vs fake.",
+   "Writing that a VAE has a generator and discriminator. Fix: a VAE has an encoder, a latent space and a decoder.",
+   "Saying LLMs are 'large' because their answers are long. Fix: they are large because of massive training data and billions of parameters.",
+   "Calling every classifier discriminative. Fix: Naïve Bayes and Gaussian Discriminant Analysis classify but are generative models, since they learn how data is distributed in each class.",
+   "Trusting AI references and statistics without checking. Fix: verify every fact, number and citation in a reliable source.",
+   "Using the tool's release date in an AI citation. Fix: use the date you received the generated content, and include the prompt if possible.",
+   "Typing personal details or an API key into a chatbot or into shared code. Fix: keep personal data private and store keys in environment variables.",
+   "Believing a deepfake must look obviously fake. Fix: good deepfakes look real; check the source and verify through trusted channels."
+  ],
+  "hi": [
+   "यह सोचना कि Generative AI उत्तर किसी database में 'खोजता' है। सुधार: यह सीखे गए पैटर्न से नई सामग्री बनाता है, इसीलिए यह hallucinate कर सकता है।",
+   "GAN के दोनों भागों को उलझा देना। सुधार: generator नकली बनाता है; discriminator असली और नकली परखता है।",
+   "यह लिखना कि VAE में generator और discriminator होते हैं। सुधार: VAE में encoder, latent space और decoder होते हैं।",
+   "यह कहना कि LLM इसलिए 'large' हैं क्योंकि उनके उत्तर लंबे होते हैं। सुधार: वे विशाल training डेटा और अरबों parameters के कारण large हैं।",
+   "हर classifier को discriminative कहना। सुधार: Naïve Bayes और Gaussian Discriminant Analysis वर्गीकरण करते हैं पर generative model हैं, क्योंकि वे सीखते हैं कि हर वर्ग में डेटा कैसे फैला है।",
+   "AI के बताए संदर्भ और आँकड़े बिना जाँचे मान लेना। सुधार: हर तथ्य, संख्या और citation को भरोसेमंद स्रोत में जाँचें।",
+   "AI citation में टूल के जारी होने की तारीख़ लिखना। सुधार: सामग्री मिलने की तारीख़ लिखें, और संभव हो तो prompt भी दें।",
+   "Chatbot में या साझा code में निजी जानकारी या API key लिखना। सुधार: निजी डेटा गोपनीय रखें और key को environment variable में रखें।",
+   "यह मानना कि deepfake साफ़ नकली दिखेगा। सुधार: अच्छे deepfake असली लगते हैं; स्रोत जाँचें और भरोसेमंद माध्यम से पुष्टि करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Generative AI",
+    "hi": "Generative AI"
+   },
+   "d": {
+    "en": "AI that learns patterns from data and creates new text, images, audio, video or code.",
+    "hi": "ऐसा AI जो डेटा से पैटर्न सीखकर नया text, चित्र, audio, video या code बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data distribution",
+    "hi": "Data distribution"
+   },
+   "d": {
+    "en": "How values are spread in a dataset: which are common and which are rare.",
+    "hi": "Dataset में मान कैसे फैले हैं: कौन-से आम हैं और कौन-से दुर्लभ।"
+   }
+  },
+  {
+   "t": {
+    "en": "GAN",
+    "hi": "GAN"
+   },
+   "d": {
+    "en": "Generative Adversarial Network: a generator and a discriminator trained in competition.",
+    "hi": "Generative Adversarial Network: प्रतिस्पर्धा में train होने वाले generator और discriminator।"
+   }
+  },
+  {
+   "t": {
+    "en": "Generator",
+    "hi": "Generator"
+   },
+   "d": {
+    "en": "The GAN network that turns random noise into fake samples.",
+    "hi": "GAN का वह network जो random noise को नकली नमूनों में बदलता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Discriminator",
+    "hi": "Discriminator"
+   },
+   "d": {
+    "en": "The GAN network that classifies samples as real or fake.",
+    "hi": "GAN का वह network जो नमूनों को असली या नकली में बाँटता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Adversarial training",
+    "hi": "Adversarial training"
+   },
+   "d": {
+    "en": "Training two networks against each other so both improve.",
+    "hi": "दो network को एक-दूसरे के विरुद्ध train करना ताकि दोनों सुधरें।"
+   }
+  },
+  {
+   "t": {
+    "en": "VAE",
+    "hi": "VAE"
+   },
+   "d": {
+    "en": "Variational Autoencoder: an encoder compresses data into a latent space and a decoder rebuilds or creates data from it.",
+    "hi": "Variational Autoencoder: encoder डेटा को latent space में संक्षिप्त करता है और decoder उससे डेटा दोबारा बनाता या नया बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Encoder",
+    "hi": "Encoder"
+   },
+   "d": {
+    "en": "Part of a VAE that compresses input into latent features.",
+    "hi": "VAE का भाग जो input को latent विशेषताओं में संक्षिप्त करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Latent space",
+    "hi": "Latent space"
+   },
+   "d": {
+    "en": "Compressed, lower-dimensional hidden representation of data.",
+    "hi": "डेटा का संक्षिप्त, कम आयाम वाला छिपा निरूपण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Decoder",
+    "hi": "Decoder"
+   },
+   "d": {
+    "en": "Part of a VAE that rebuilds data from a latent point.",
+    "hi": "VAE का भाग जो latent बिंदु से डेटा दोबारा बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Diffusion model",
+    "hi": "Diffusion model"
+   },
+   "d": {
+    "en": "A generative model that creates images by removing noise step by step.",
+    "hi": "ऐसा generative model जो कदम-दर-कदम noise हटाकर चित्र बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Discriminative model",
+    "hi": "Discriminative model"
+   },
+   "d": {
+    "en": "A model that learns the boundary between classes to predict labels.",
+    "hi": "ऐसा model जो label बताने के लिए वर्गों के बीच सीमा सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Style transfer",
+    "hi": "Style transfer"
+   },
+   "d": {
+    "en": "Applying the style of one image to the content of another.",
+    "hi": "एक चित्र की शैली को दूसरे चित्र की सामग्री पर लागू करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data augmentation",
+    "hi": "Data augmentation"
+   },
+   "d": {
+    "en": "Creating extra training data from existing or generated samples.",
+    "hi": "मौजूदा या बनाए गए नमूनों से अतिरिक्त training डेटा बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Anomaly detection",
+    "hi": "Anomaly detection"
+   },
+   "d": {
+    "en": "Finding data points that are unusual compared with the rest.",
+    "hi": "बाक़ी डेटा की तुलना में असामान्य बिंदुओं को खोजना।"
+   }
+  },
+  {
+   "t": {
+    "en": "LLM",
+    "hi": "LLM"
+   },
+   "d": {
+    "en": "Large Language Model: a deep learning model trained on massive text and code to understand and generate language.",
+    "hi": "Large Language Model: विशाल text और code पर trained deep learning model जो भाषा समझता और बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Token",
+    "hi": "Token"
+   },
+   "d": {
+    "en": "A word or piece of a word that an LLM processes.",
+    "hi": "शब्द या शब्द का टुकड़ा जिसे LLM संसाधित करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Transformer",
+    "hi": "Transformer"
+   },
+   "d": {
+    "en": "Neural network architecture using self-attention; the foundation of LLMs.",
+    "hi": "Self-attention उपयोग करने वाली neural network संरचना; LLM की नींव।"
+   }
+  },
+  {
+   "t": {
+    "en": "Self-attention",
+    "hi": "Self-attention"
+   },
+   "d": {
+    "en": "Mechanism that lets a model weigh how strongly each word relates to every other word.",
+    "hi": "वह तरीक़ा जिससे model तय करता है कि हर शब्द बाक़ी शब्दों से कितना जुड़ा है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Autoregressive model",
+    "hi": "Autoregressive model"
+   },
+   "d": {
+    "en": "A model that generates output one piece at a time, each based on the earlier pieces.",
+    "hi": "ऐसा model जो output एक-एक टुकड़ा करके बनाता है, हर टुकड़ा पिछले टुकड़ों पर आधारित।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pre-training / Fine-tuning",
+    "hi": "Pre-training / Fine-tuning"
+   },
+   "d": {
+    "en": "General training on huge data / further training on smaller, specific data.",
+    "hi": "विशाल डेटा पर सामान्य training / छोटे, विशिष्ट डेटा पर आगे की training।"
+   }
+  },
+  {
+   "t": {
+    "en": "Multimodal",
+    "hi": "Multimodal"
+   },
+   "d": {
+    "en": "Able to handle more than one type of data, such as text and images.",
+    "hi": "एक से अधिक प्रकार के डेटा, जैसे text और चित्र, संभालने में सक्षम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hallucination",
+    "hi": "Hallucination"
+   },
+   "d": {
+    "en": "Confident but false or made-up output from an AI model.",
+    "hi": "AI model का आत्मविश्वास भरा पर ग़लत या गढ़ा हुआ output।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prompt",
+    "hi": "Prompt"
+   },
+   "d": {
+    "en": "The instruction or input given to a generative AI model.",
+    "hi": "Generative AI model को दिया गया निर्देश या input।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deepfake",
+    "hi": "Deepfake"
+   },
+   "d": {
+    "en": "AI-made fake media showing a real person saying or doing something they did not.",
+    "hi": "AI से बनी नकली सामग्री जिसमें असली व्यक्ति को कुछ ऐसा कहते या करते दिखाया जाए जो उसने नहीं किया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias",
+    "hi": "Bias"
+   },
+   "d": {
+    "en": "Unfair tilt in AI output, often from unbalanced data.",
+    "hi": "AI output में अनुचित झुकाव, अक्सर असंतुलित डेटा से।"
+   }
+  },
+  {
+   "t": {
+    "en": "Plagiarism",
+    "hi": "Plagiarism"
+   },
+   "d": {
+    "en": "Presenting others' work or AI output as your own.",
+    "hi": "दूसरों का काम या AI output अपना बताकर प्रस्तुत करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Transparency",
+    "hi": "Transparency"
+   },
+   "d": {
+    "en": "Openly disclosing the use of AI.",
+    "hi": "AI के उपयोग को खुलकर बताना।"
+   }
+  },
+  {
+   "t": {
+    "en": "API / API key",
+    "hi": "API / API key"
+   },
+   "d": {
+    "en": "A way for programs to use a service / the secret code identifying your program to it.",
+    "hi": "Programs द्वारा किसी सेवा का उपयोग करने का तरीक़ा / सेवा के सामने आपके program की पहचान कराने वाला गुप्त code।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: What is the main goal of Generative AI?\n(A) Classifying data into categories (B) Drawing boundaries between classes (C) Creating new data similar to its training data (D) Deleting duplicate data",
+    "hi": "MCQ: Generative AI का मुख्य लक्ष्य क्या है?\n(A) डेटा को श्रेणियों में बाँटना (B) वर्गों के बीच सीमा खींचना (C) training डेटा जैसा नया डेटा बनाना (D) दोहराया डेटा हटाना"
+   },
+   "a": {
+    "en": "(C) Creating new data similar to its training data.",
+    "hi": "(C) training डेटा जैसा नया डेटा बनाना।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The two main parts of a GAN are:\n(A) Encoder and decoder (B) Generator and discriminator (C) LLM and transformer (D) CNN and RNN",
+    "hi": "MCQ: GAN के दो मुख्य भाग हैं:\n(A) Encoder और decoder (B) Generator और discriminator (C) LLM और transformer (D) CNN और RNN"
+   },
+   "a": {
+    "en": "(B) Generator and discriminator.",
+    "hi": "(B) Generator और discriminator।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: LLMs are called 'large' because:\n(A) They use many GPUs (B) They are trained on massive datasets of text and code (C) They only give long answers (D) They have more screens",
+    "hi": "MCQ: LLM को 'large' कहा जाता है क्योंकि:\n(A) वे कई GPU उपयोग करते हैं (B) वे text और code के विशाल dataset पर train होते हैं (C) वे केवल लंबे उत्तर देते हैं (D) उनकी स्क्रीन ज़्यादा होती हैं"
+   },
+   "a": {
+    "en": "(B) They are trained on massive datasets of text and code (and have billions of parameters).",
+    "hi": "(B) वे text और code के विशाल dataset पर train होते हैं (और उनमें अरबों parameters होते हैं)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is a discriminative algorithm?\n(A) GAN (B) VAE (C) Logistic regression (D) Naïve Bayes",
+    "hi": "MCQ: इनमें से कौन discriminative algorithm है?\n(A) GAN (B) VAE (C) Logistic regression (D) Naïve Bayes"
+   },
+   "a": {
+    "en": "(C) Logistic regression.",
+    "hi": "(C) Logistic regression।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: In a VAE, the compressed hidden representation of data is called the ______.",
+    "hi": "रिक्त स्थान भरें: VAE में डेटा के संक्षिप्त छिपे निरूपण को ______ कहते हैं।"
+   },
+   "a": {
+    "en": "latent space",
+    "hi": "latent space"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The neural network architecture that forms the foundation of LLMs is the ______.",
+    "hi": "रिक्त स्थान भरें: LLM की नींव बनने वाली neural network संरचना ______ है।"
+   },
+   "a": {
+    "en": "transformer",
+    "hi": "transformer"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: After a GAN is trained, the discriminator is usually used to generate new images.",
+    "hi": "सही या ग़लत: GAN train होने के बाद नए चित्र बनाने के लिए आमतौर पर discriminator का उपयोग होता है।"
+   },
+   "a": {
+    "en": "False. The generator creates new images; the discriminator is used mainly during training.",
+    "hi": "ग़लत। नए चित्र generator बनाता है; discriminator मुख्यतः training में उपयोग होता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: An AI citation should include the date you received the generated content.",
+    "hi": "सही या ग़लत: AI citation में वह तारीख़ होनी चाहिए जब आपको बनाई गई सामग्री मिली।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A spam filter is an example of a discriminative model.\nReason (R): Discriminative models learn the boundary that separates classes.\n(a) Both A and R true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): Spam filter, discriminative model का उदाहरण है।\nकारण (R): Discriminative model वर्गों को अलग करने वाली सीमा सीखते हैं।\n(a) A और R दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(a) Both are true and R correctly explains A: the filter learns what separates spam from not-spam.",
+    "hi": "(a) दोनों सही हैं और R, A की सही व्याख्या करता है: filter सीखता है कि spam और spam-नहीं में क्या अंतर है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): LLMs can sometimes produce false information confidently.\nReason (R): LLMs generate text by predicting likely next tokens rather than checking facts.\nChoose (a)–(d) as above.",
+    "hi": "अभिकथन (A): LLM कभी-कभी आत्मविश्वास से ग़लत जानकारी दे सकते हैं।\nकारण (R): LLM तथ्य जाँचने के बजाय संभावित अगले token का अनुमान लगाकर text बनाते हैं।\nऊपर की तरह (a)–(d) चुनें।"
+   },
+   "a": {
+    "en": "(a) Both are true and R explains A. This behaviour is called hallucination.",
+    "hi": "(a) दोनों सही हैं और R, A की व्याख्या करता है। इसे hallucination कहते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name two risks of LLMs that arise from their training data.",
+    "hi": "LLM के दो जोखिम बताइए जो उनके training डेटा से पैदा होते हैं।"
+   },
+   "a": {
+    "en": "1. Bias: harmful stereotypes in internet text can be learnt and repeated.\n2. Privacy / confidentiality leaks: personal or confidential information in the training data may be revealed in outputs.",
+    "hi": "1. Bias: internet text की हानिकारक रूढ़ियाँ सीखी और दोहराई जा सकती हैं।\n2. निजता / गोपनीयता का रिसाव: training डेटा में मौजूद निजी या गोपनीय जानकारी output में प्रकट हो सकती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain how a GAN is trained, step by step.",
+    "hi": "GAN की training चरण-दर-चरण समझाइए।"
+   },
+   "a": {
+    "en": "1. The generator turns random noise into fake samples.\n2. The discriminator sees real and fake samples and predicts real or fake.\n3. The discriminator is updated to classify better.\n4. The generator is updated using the discriminator's feedback to make more convincing fakes.\n5. This repeats many times until the discriminator can no longer reliably tell them apart (about 50% accuracy).\n6. The trained generator is then used to create new data.",
+    "hi": "1. Generator random noise को नकली नमूनों में बदलता है।\n2. Discriminator असली और नकली नमूने देखकर असली या नकली बताता है।\n3. Discriminator को बेहतर वर्गीकरण के लिए update किया जाता है।\n4. Discriminator की प्रतिक्रिया से generator को update किया जाता है ताकि नकली ज़्यादा विश्वसनीय बनें।\n5. यह कई बार दोहराया जाता है जब तक discriminator भरोसे से अंतर न कर सके (लगभग 50% सटीकता)।\n6. फिर trained generator से नया डेटा बनाया जाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Describe the three parts of a VAE and give two applications.",
+    "hi": "VAE के तीन भाग बताइए और दो उपयोग लिखिए।"
+   },
+   "a": {
+    "en": "Encoder: compresses input into a small set of latent features (a mean and spread).\nLatent space: the smooth, lower-dimensional space of these features.\nDecoder: rebuilds data from a point in latent space; a new point gives new data.\nApplications: generating new images or data; anomaly detection (e.g. faulty products, unusual ECGs); filling in missing information.",
+    "hi": "Encoder: input को latent विशेषताओं (mean और फैलाव) के छोटे समूह में संक्षिप्त करता है।\nLatent space: इन विशेषताओं का चिकना, कम आयाम वाला स्थान।\nDecoder: latent space के बिंदु से डेटा दोबारा बनाता है; नया बिंदु नया डेटा देता है।\nउपयोग: नए चित्र या डेटा बनाना; anomaly detection (जैसे ख़राब उत्पाद, असामान्य ECG); छूटी जानकारी भरना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Compare Generative AI and Discriminative AI on purpose, training focus, applications and example models.",
+    "hi": "Generative AI और Discriminative AI की तुलना उद्देश्य, training के केंद्र, उपयोग और उदाहरण model के आधार पर कीजिए।"
+   },
+   "a": {
+    "en": "Purpose: generative creates new content; discriminative classifies existing data.\nTraining focus: generative learns the whole data distribution; discriminative learns class boundaries.\nApplications: generative – art, stories, synthetic data, chatbots; discriminative – face/speech recognition, spam detection.\nModels: generative – GAN, VAE, LLM, Naïve Bayes, autoregressive models; discriminative – logistic regression, decision tree, SVM, random forest.",
+    "hi": "उद्देश्य: generative नई सामग्री बनाता है; discriminative मौजूदा डेटा का वर्गीकरण करता है।\nTraining का केंद्र: generative पूरा data distribution सीखता है; discriminative वर्गों की सीमाएँ सीखता है।\nउपयोग: generative – कला, कहानियाँ, कृत्रिम डेटा, chatbot; discriminative – चेहरा/आवाज़ पहचान, spam पहचान।\nModel: generative – GAN, VAE, LLM, Naïve Bayes, autoregressive model; discriminative – logistic regression, decision tree, SVM, random forest।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is a transformer and why was it important for LLMs?",
+    "hi": "Transformer क्या है और यह LLM के लिए महत्वपूर्ण क्यों था?"
+   },
+   "a": {
+    "en": "A transformer is a neural network architecture for sequential data that uses self-attention to relate every word to every other word in the input. It handles long-range context (e.g. linking a pronoun to the right noun) and processes words in parallel, which makes training on huge text datasets practical. It is the foundation of LLMs such as GPT (Generative Pre-trained Transformer).",
+    "hi": "Transformer, क्रमिक डेटा के लिए एक neural network संरचना है जो self-attention से input के हर शब्द को बाक़ी हर शब्द से जोड़ता है। यह लंबी दूरी का संदर्भ संभालता है (जैसे सर्वनाम को सही संज्ञा से जोड़ना) और शब्दों को समानांतर संसाधित करता है, जिससे विशाल text dataset पर training व्यावहारिक बनती है। यह GPT (Generative Pre-trained Transformer) जैसे LLM की नींव है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List four limitations of LLMs.",
+    "hi": "LLM की चार सीमाएँ लिखिए।"
+   },
+   "a": {
+    "en": "1. Hallucination (false but fluent answers).\n2. High cost, energy and computing needs.\n3. Slow responses for large models.\n4. Knowledge cut-off and limited real-world understanding; difficulty with new situations.",
+    "hi": "1. Hallucination (धाराप्रवाह पर ग़लत उत्तर)।\n2. अधिक लागत, ऊर्जा और computing की ज़रूरत।\n3. बड़े model के धीमे उत्तर।\n4. ज्ञान की अंतिम तिथि और वास्तविक दुनिया की सीमित समझ; नई स्थितियों में कठिनाई।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Rewrite this weak prompt into a strong one: 'Make a poster.'",
+    "hi": "इस कमज़ोर prompt को मज़बूत बनाइए: 'एक पोस्टर बनाओ।'"
+   },
+   "a": {
+    "en": "Sample answer: 'Create a colourful A4 poster for our school's Tree Plantation Day on 5 June, for Class 6–8 students. Show children planting saplings near a school building, flat illustration style, with the heading \"Plant a Tree, Grow a Future\" in large letters and space at the bottom for the time and venue.' It adds task, purpose, audience, content, style and layout.",
+    "hi": "नमूना उत्तर: '5 जून को हमारे स्कूल के वृक्षारोपण दिवस के लिए कक्षा 6–8 के विद्यार्थियों हेतु एक रंगीन A4 पोस्टर बनाओ। स्कूल भवन के पास पौधे लगाते बच्चे दिखाओ, flat illustration शैली में, बड़े अक्षरों में शीर्षक \"पेड़ लगाओ, भविष्य बचाओ\" और नीचे समय व स्थान के लिए जगह।' इसमें काम, उद्देश्य, पाठक, सामग्री, शैली और layout जोड़े गए हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Case-based: Aman receives a WhatsApp video in which a famous cricketer appears to promise that a trading app will double your money in a week. (i) What kind of content could this be? (ii) Give two signs he should check. (iii) What should he do?",
+    "hi": "Case-based: अमन को WhatsApp पर एक video मिलता है जिसमें एक प्रसिद्ध क्रिकेटर कहता दिखता है कि एक trading app एक हफ़्ते में पैसा दोगुना कर देगा। (i) यह किस प्रकार की सामग्री हो सकती है? (ii) दो संकेत बताइए जो उसे जाँचने चाहिए। (iii) उसे क्या करना चाहिए?"
+   },
+   "a": {
+    "en": "(i) A deepfake (AI-generated fake video/voice) used for an investment scam.\n(ii) Mismatched lip movement or odd blinking/edges; the video is not on the cricketer's official accounts or any reliable news site; the promise of guaranteed quick profit.\n(iii) Not install the app or send money, not forward the video, tell a trusted adult and report it on the platform or at cybercrime.gov.in / 1930.",
+    "hi": "(i) Deepfake (AI से बना नकली video/आवाज़) जो निवेश धोखाधड़ी के लिए उपयोग हुआ।\n(ii) होंठों की हरकत का मेल न खाना या अजीब पलक/किनारे; video क्रिकेटर के आधिकारिक account या किसी भरोसेमंद समाचार site पर नहीं है; पक्का और जल्दी मुनाफ़े का वादा।\n(iii) App install न करे और पैसे न भेजे, video आगे न भेजे, किसी भरोसेमंद बड़े को बताए और platform पर या cybercrime.gov.in / 1930 पर शिकायत करे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Case-based: A company uses an AI tool to screen job applicants. It is found to reject more women than men with similar qualifications. (i) Name the ethical issue. (ii) What is a likely cause? (iii) Suggest two remedies.",
+    "hi": "Case-based: एक कंपनी नौकरी के आवेदकों की छँटाई के लिए AI टूल का उपयोग करती है। पता चलता है कि यह समान योग्यता वाले पुरुषों की तुलना में अधिक महिलाओं को अस्वीकार करता है। (i) नैतिक मुद्दे का नाम बताइए। (ii) संभावित कारण क्या है? (iii) दो उपाय सुझाइए।"
+   },
+   "a": {
+    "en": "(i) Bias and discrimination.\n(ii) Training data from past hiring was unbalanced or reflected past prejudice, so the model learnt it.\n(iii) Audit the model's results by group and retrain on balanced data; keep a human reviewer in the final decision and be transparent with applicants that AI is used.",
+    "hi": "(i) Bias और भेदभाव।\n(ii) पिछली भर्तियों का training डेटा असंतुलित था या उसमें पुराना पूर्वाग्रह था, जो model ने सीख लिया।\n(iii) समूह-वार परिणामों की जाँच करके संतुलित डेटा पर दोबारा train करें; अंतिम निर्णय में मानव समीक्षक रखें और आवेदकों को पारदर्शी रूप से बताएँ कि AI उपयोग हो रहा है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain, with an example, why Naïve Bayes is called a generative model even though it is used for classification.",
+    "hi": "उदाहरण सहित समझाइए कि Naïve Bayes को वर्गीकरण में उपयोग होने के बावजूद generative model क्यों कहा जाता है।"
+   },
+   "a": {
+    "en": "Naïve Bayes learns, for each class, how likely each feature is (for example, how often the word 'lottery' appears in spam e-mails and in normal e-mails), plus how common each class is. That is a model of how data is generated inside each class. To classify, it uses Bayes' rule to compare which class most probably produced the e-mail. Because it models the data of each class (and could in principle sample typical word patterns), it is generative. Logistic regression instead learns weights for the boundary directly, so it is discriminative.",
+    "hi": "Naïve Bayes हर वर्ग के लिए सीखता है कि हर feature की संभावना कितनी है (जैसे spam e-mail और सामान्य e-mail में 'lottery' शब्द कितनी बार आता है), और हर वर्ग कितना आम है। यह हर वर्ग के अंदर डेटा बनने का model है। वर्गीकरण के लिए यह Bayes नियम से तुलना करता है कि किस वर्ग ने e-mail को सबसे अधिक संभावना से बनाया। चूँकि यह हर वर्ग के डेटा का model बनाता है (और सिद्धांत रूप में सामान्य शब्द-पैटर्न sample कर सकता है), यह generative है। Logistic regression सीधे सीमा के weights सीखता है, इसलिए वह discriminative है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A hospital wants to train a model to detect a rare eye disease but has only 200 images of diseased eyes and 20,000 healthy ones. How can Generative AI help, and what precautions are needed?",
+    "hi": "एक अस्पताल किसी दुर्लभ आँख रोग को पहचानने वाला model train करना चाहता है, पर उसके पास रोगी आँखों की केवल 200 और स्वस्थ आँखों की 20,000 तस्वीरें हैं। Generative AI कैसे मदद कर सकता है, और क्या सावधानियाँ ज़रूरी हैं?"
+   },
+   "a": {
+    "en": "Help: a GAN (or VAE/diffusion model) trained on the 200 diseased images can produce extra realistic synthetic images (data augmentation), balancing the dataset so the classifier does not ignore the rare class.\nPrecautions: doctors must check that synthetic images are medically realistic; final testing must be on real patient images only; patient data must be anonymised and used with consent; the generator may copy or exaggerate features, so results must be validated; the AI should assist, not replace, the doctor's decision.",
+    "hi": "मदद: 200 रोगी चित्रों पर trained GAN (या VAE/diffusion model) अतिरिक्त वास्तविक कृत्रिम चित्र बना सकता है (data augmentation), जिससे dataset संतुलित होगा और classifier दुर्लभ वर्ग को अनदेखा नहीं करेगा।\nसावधानियाँ: डॉक्टर जाँचें कि कृत्रिम चित्र चिकित्सकीय रूप से वास्तविक हैं; अंतिम परीक्षण केवल असली रोगी चित्रों पर हो; रोगी डेटा गुमनाम और सहमति से उपयोग हो; generator विशेषताओं की नकल या अतिशयोक्ति कर सकता है, इसलिए परिणाम सत्यापित हों; AI डॉक्टर के निर्णय में सहायता करे, उसकी जगह न ले।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Discuss the ethical and social implications of Generative AI under the headings deepfakes, bias, plagiarism/copyright and transparency, with one example each.",
+    "hi": "दीर्घ उत्तर: Generative AI के नैतिक और सामाजिक प्रभावों पर deepfake, bias, plagiarism/copyright और transparency शीर्षकों के अंतर्गत, हर एक का एक उदाहरण देते हुए चर्चा कीजिए।"
+   },
+   "a": {
+    "en": "Deepfakes: realistic fake video/audio of real people can spread misinformation, defame people or enable fraud, e.g. a cloned voice of a relative asking for money on UPI. Response: verification, labelling, laws and awareness.\nBias: models trained on skewed data can discriminate, e.g. facial recognition making more errors for some groups or a hiring tool favouring one gender (concerns raised about tools like HireVue; Clearview AI faced action over collecting photos without consent). Response: balanced data, audits, human oversight.\nPlagiarism and copyright: submitting AI output as your own breaks academic integrity; models trained on artists' work raise questions of permission and ownership. Response: follow school rules, cite AI, respect licences.\nTransparency: users and readers deserve to know when content or decisions involve AI, e.g. a news site labelling AI-written summaries. It builds trust and accountability.\nConclusion: Generative AI is powerful and useful, but humans must use it honestly, fairly and safely.",
+    "hi": "Deepfake: असली लोगों के वास्तविक लगने वाले नकली video/audio ग़लत जानकारी फैला सकते हैं, बदनामी कर सकते हैं या धोखाधड़ी करा सकते हैं, जैसे किसी रिश्तेदार की नकली आवाज़ जो UPI पर पैसे माँगे। उपाय: सत्यापन, label, क़ानून और जागरूकता।\nBias: झुके हुए डेटा पर trained model भेदभाव कर सकते हैं, जैसे चेहरा-पहचान का कुछ समूहों पर अधिक ग़लती करना या भर्ती टूल का एक लिंग को तरजीह देना (HireVue जैसे टूल पर चिंता उठी; Clearview AI पर बिना सहमति फोटो इकट्ठा करने के लिए कार्रवाई हुई)। उपाय: संतुलित डेटा, जाँच, मानव निगरानी।\nPlagiarism और copyright: AI output को अपना बताकर जमा करना शैक्षिक ईमानदारी तोड़ता है; कलाकारों के काम पर trained model अनुमति और स्वामित्व के प्रश्न उठाते हैं। उपाय: स्कूल के नियम मानें, AI का हवाला दें, licence का सम्मान करें।\nTransparency: उपयोगकर्ताओं और पाठकों को जानने का हक़ है कि सामग्री या निर्णय में AI शामिल है, जैसे समाचार site का AI से लिखे सारांश पर label लगाना। इससे भरोसा और जवाबदेही बनती है।\nनिष्कर्ष: Generative AI शक्तिशाली और उपयोगी है, पर मनुष्यों को इसका ईमानदारी, निष्पक्षता और सुरक्षा से उपयोग करना चाहिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write a correct citation for an image you generated with Canva's AI image tool on 3 November 2026 using the prompt 'Warli-style village harvest festival'.",
+    "hi": "3 नवंबर 2026 को prompt 'Warli-style village harvest festival' से Canva के AI image टूल से बनाए चित्र का सही citation लिखिए।"
+   },
+   "a": {
+    "en": "Canva. (2026, November 3). Magic Media [Generative AI tool]. https://www.canva.com\nPrompt used: \"Warli-style village harvest festival\".\nKey points: the tool/company as author, the date of generation, a description of the tool, the web address and the prompt.",
+    "hi": "Canva. (2026, November 3). Magic Media [Generative AI tool]. https://www.canva.com\nउपयोग किया गया prompt: \"Warli-style village harvest festival\"।\nमुख्य बातें: लेखक के रूप में टूल/कंपनी, बनाने की तारीख़, टूल का विवरण, web पता और prompt।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In the Gemini chatbot program, why is the API key read with os.environ.get() instead of being typed into the code? What does chat.send_message() do?",
+    "hi": "Gemini chatbot program में API key को code में लिखने के बजाय os.environ.get() से क्यों पढ़ा जाता है? chat.send_message() क्या करता है?"
+   },
+   "a": {
+    "en": "The API key is a secret like a password. If it is typed in the code and the code is shared or uploaded, anyone could misuse the key. Reading it from an environment variable keeps it out of the code. chat.send_message() sends the user's message (with the conversation so far, kept by the chat session) to the Gemini model over the internet and returns a response object whose .text holds the reply.",
+    "hi": "API key, password जैसा गुप्त code है। अगर इसे code में लिखा जाए और code साझा या upload हो, तो कोई भी key का दुरुपयोग कर सकता है। Environment variable से पढ़ने पर यह code से बाहर रहती है। chat.send_message() उपयोगकर्ता का संदेश (chat session द्वारा रखी अब तक की बातचीत सहित) internet से Gemini model को भेजता है और एक response object लौटाता है जिसके .text में उत्तर होता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity/thinking: Use an image generator to make 'a doctor', 'a pilot' and 'a farmer' three times each. Record the gender, age and setting of each image. What do you notice and what does it tell you about training data?",
+    "hi": "गतिविधि/चिंतन: किसी image generator से 'a doctor', 'a pilot' और 'a farmer' तीन-तीन बार बनवाइए। हर चित्र का लिंग, उम्र और परिवेश लिखिए। आपने क्या देखा और यह training डेटा के बारे में क्या बताता है?"
+   },
+   "a": {
+    "en": "Answers will vary. Many students find that the tool tends to show some groups more often (for example, more male pilots or farmers in one type of setting). This shows that models reflect patterns, including stereotypes, in their training data. Writing more specific prompts can give more diverse images, and developers should balance data and test for bias.",
+    "hi": "उत्तर अलग-अलग होंगे। कई विद्यार्थी पाते हैं कि टूल कुछ समूहों को ज़्यादा बार दिखाता है (जैसे ज़्यादा पुरुष pilot या एक ही तरह के परिवेश में किसान)। इससे पता चलता है कि model अपने training डेटा के पैटर्न, रूढ़ियों सहित, दर्शाते हैं। ज़्यादा विशिष्ट prompt लिखने से विविध चित्र मिल सकते हैं, और developers को डेटा संतुलित करना और bias की जाँच करनी चाहिए।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Generative AI learns the patterns (distribution) of existing data and creates new text, images, audio, video and code.",
+   "It is part of deep learning, which is part of machine learning and AI.",
+   "A GAN has a generator that makes fakes and a discriminator that judges real vs fake; they train in competition.",
+   "GANs are used for realistic image generation, style transfer and data augmentation.",
+   "A VAE has an encoder, a latent space and a decoder; it is used for data generation, anomaly detection and filling in missing data.",
+   "Diffusion models create images by removing noise step by step.",
+   "Discriminative models learn class boundaries (logistic regression, decision tree, SVM, random forest); generative models learn the data itself (GAN, VAE, LLM, Naïve Bayes).",
+   "LLMs are trained on massive text and code, predict the next token, and are built on transformers that use self-attention.",
+   "Examples of LLM families: GPT (OpenAI), Gemini (Google), Llama (Meta), Claude (Anthropic), Mistral/Mixtral (Mistral AI).",
+   "LLM limitations: hallucination, high cost, slowness, knowledge cut-off; risks: bias, privacy and confidential data leaks.",
+   "Good prompts state role, task, context, format and constraints, and are refined step by step.",
+   "Ethical issues: deepfakes, bias and discrimination, plagiarism and copyright, need for transparency and accountability.",
+   "Cite AI tools with the tool/company, date of generation, description, link and prompt.",
+   "A chatbot can be built in Python with the Gemini API; keep the API key secret."
+  ],
+  "hi": [
+   "Generative AI मौजूदा डेटा के पैटर्न (distribution) सीखकर नया text, चित्र, audio, video और code बनाता है।",
+   "यह deep learning का हिस्सा है, जो machine learning और AI का हिस्सा है।",
+   "GAN में generator नकली बनाता है और discriminator असली-नकली परखता है; दोनों प्रतिस्पर्धा में train होते हैं।",
+   "GAN का उपयोग वास्तविक चित्र बनाने, style transfer और data augmentation में होता है।",
+   "VAE में encoder, latent space और decoder होते हैं; इसका उपयोग डेटा बनाने, anomaly detection और छूटा डेटा भरने में होता है।",
+   "Diffusion model कदम-दर-कदम noise हटाकर चित्र बनाते हैं।",
+   "Discriminative model वर्ग-सीमाएँ सीखते हैं (logistic regression, decision tree, SVM, random forest); generative model स्वयं डेटा सीखते हैं (GAN, VAE, LLM, Naïve Bayes)।",
+   "LLM विशाल text और code पर train होते हैं, अगले token का अनुमान लगाते हैं, और self-attention वाले transformer पर बने हैं।",
+   "LLM परिवारों के उदाहरण: GPT (OpenAI), Gemini (Google), Llama (Meta), Claude (Anthropic), Mistral/Mixtral (Mistral AI)।",
+   "LLM की सीमाएँ: hallucination, अधिक लागत, धीमापन, ज्ञान की अंतिम तिथि; जोखिम: bias, निजी और गोपनीय डेटा का रिसाव।",
+   "अच्छे prompt में भूमिका, काम, संदर्भ, format और सीमाएँ होती हैं, और उन्हें धीरे-धीरे सुधारा जाता है।",
+   "नैतिक मुद्दे: deepfake, bias और भेदभाव, plagiarism और copyright, पारदर्शिता और जवाबदेही की ज़रूरत।",
+   "AI टूल का हवाला टूल/कंपनी, बनाने की तारीख़, विवरण, link और prompt के साथ दें।",
+   "Python में Gemini API से chatbot बनाया जा सकता है; API key गुप्त रखें।"
+  ]
+ }
+}

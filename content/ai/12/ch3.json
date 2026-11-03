@@ -1,0 +1,2038 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "12",
+ "id": "ch3",
+ "intro": {
+  "en": "How does a phone unlock when it sees your face, or a toll plaza read a number plate in a second? The answer is Computer Vision, the field of AI that makes machines 'see'. In this chapter you will learn how images are stored as numbers, the five stages every computer vision system follows, where CV is used, its challenges and future, and you will build a working image-classifier website and try basic OpenCV programs.",
+  "hi": "फ़ोन आपका चेहरा देखकर कैसे खुल जाता है, या toll plaza एक सेकंड में number plate कैसे पढ़ लेता है? इसका उत्तर है Computer Vision, AI का वह क्षेत्र जो मशीनों को 'देखना' सिखाता है। इस अध्याय में आप सीखेंगे कि तस्वीरें संख्याओं के रूप में कैसे रखी जाती हैं, हर computer vision system के पाँच चरण, CV कहाँ उपयोग होता है, इसकी चुनौतियाँ और भविष्य, और आप एक काम करने वाली image-classifier website बनाएँगे तथा बुनियादी OpenCV programs चलाएँगे।"
+ },
+ "learn": {
+  "en": [
+   "What computer vision is and how it compares with human vision",
+   "How digital images are made: pixels, resolution, binary, grayscale and RGB",
+   "Binary Art: recreating an image using only 0s and 1s",
+   "The five stages of the CV process: acquisition, preprocessing, feature extraction, detection/segmentation, high-level processing",
+   "Preprocessing techniques: noise reduction, normalisation, resizing/cropping, histogram equalisation",
+   "Features: edges, corners, texture and colour; hand-crafted vs learned (CNN) features",
+   "Classification, localisation, object detection, semantic and instance segmentation",
+   "Applications, challenges (including privacy and deepfakes) and the future of CV",
+   "Building and deploying an image model on a website with Teachable Machine",
+   "Basic OpenCV functions: imread, resize, cvtColor, GaussianBlur, Canny (advanced)"
+  ],
+  "hi": [
+   "Computer vision क्या है और यह मानव दृष्टि से कैसे अलग है",
+   "डिजिटल तस्वीरें कैसे बनती हैं: pixel, resolution, binary, grayscale और RGB",
+   "बाइनरी आर्ट: केवल 0 और 1 से तस्वीर दोबारा बनाना",
+   "CV प्रक्रिया के पाँच चरण: acquisition, preprocessing, feature extraction, detection/segmentation, high-level processing",
+   "Preprocessing तकनीकें: noise reduction, normalisation, resizing/cropping, histogram equalisation",
+   "Features: किनारे, कोने, बनावट और रंग; हाथ से बनाए बनाम सीखे गए (CNN) features",
+   "Classification, localisation, object detection, semantic और instance segmentation",
+   "CV के उपयोग, चुनौतियाँ (निजता और deepfakes सहित) और भविष्य",
+   "Teachable Machine से image model बनाकर website पर लगाना",
+   "बुनियादी OpenCV functions: imread, resize, cvtColor, GaussianBlur, Canny (उन्नत)"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "3.1 How do machines see?",
+    "hi": "3.1 मशीनें कैसे देखती हैं?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "When you look at a cricket match, your eyes catch light and your brain instantly tells you: that is the batter, that is the ball, the ball is going towards the boundary. A computer has no eyes and no brain like ours. It has a camera (a sensor) that turns light into numbers, and a program that tries to find meaning in those numbers. The branch of AI that does this is called Computer Vision.",
+      "hi": "जब आप क्रिकेट मैच देखते हैं, तो आपकी आँखें रोशनी पकड़ती हैं और दिमाग तुरंत बता देता है: यह बल्लेबाज़ है, यह गेंद है, गेंद सीमा रेखा की ओर जा रही है। कंप्यूटर के पास हमारी जैसी आँखें और दिमाग नहीं होते। उसके पास एक camera (sensor) होता है जो रोशनी को संख्याओं में बदलता है, और एक program होता है जो उन संख्याओं में अर्थ खोजने की कोशिश करता है। AI की जो शाखा यह काम करती है उसे Computer Vision कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Computer Vision (CV)",
+       "hi": "कंप्यूटर विज़न (Computer Vision, CV)"
+      },
+      "text": {
+       "en": "Computer Vision is the field of AI that enables computers to capture, process and understand images and videos, and then take a decision or action based on what they 'see'. It uses sensing devices (cameras, scanners, medical scanners) together with machine learning and deep learning models.",
+       "hi": "Computer Vision AI का वह क्षेत्र है जो कंप्यूटर को तस्वीरें और वीडियो लेने, उन्हें process करने और समझने, और फिर जो वे 'देखते' हैं उसके आधार पर निर्णय या कार्य करने में सक्षम बनाता है। इसमें sensing devices (camera, scanner, medical scanner) के साथ machine learning और deep learning models का उपयोग होता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Computer Vision is also called machine vision, especially in factories where cameras inspect products on a conveyor belt. It is closely linked to machine learning: modern CV systems learn to recognise things by studying thousands of labelled example images, in the same way you learnt to recognise a mango after seeing many mangoes.",
+      "hi": "Computer Vision को machine vision भी कहा जाता है, खासकर कारखानों में जहाँ camera conveyor belt पर चल रहे उत्पादों की जाँच करते हैं। यह machine learning से गहराई से जुड़ा है: आधुनिक CV systems हज़ारों labelled उदाहरण तस्वीरें देखकर चीज़ें पहचानना सीखते हैं, ठीक वैसे ही जैसे आपने कई आम देखकर आम पहचानना सीखा।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Aspect",
+        "Human vision",
+        "Computer vision"
+       ],
+       "hi": [
+        "पहलू",
+        "मानव दृष्टि",
+        "कंप्यूटर विज़न"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Sensor",
+         "Eyes (retina)",
+         "Camera, scanner, CT/MRI machine, satellite sensor"
+        ],
+        [
+         "What is received",
+         "Light falling on the retina",
+         "A grid of numbers (pixel values)"
+        ],
+        [
+         "Processing",
+         "Brain and visual cortex",
+         "Algorithms and trained ML/deep learning models"
+        ],
+        [
+         "Learning",
+         "From experience since childhood",
+         "From large sets of labelled images (training data)"
+        ],
+        [
+         "Strengths",
+         "Understands context, common sense, works in odd lighting",
+         "Very fast, never tired, can check millions of images, can see X-ray/infrared"
+        ],
+        [
+         "Weaknesses",
+         "Gets tired, slow for huge amounts of data",
+         "Can be fooled by poor light, unusual angles or unfamiliar objects; no real common sense"
+        ]
+       ],
+       "hi": [
+        [
+         "संवेदक",
+         "आँखें (रेटिना)",
+         "Camera, scanner, CT/MRI मशीन, satellite sensor"
+        ],
+        [
+         "क्या मिलता है",
+         "रेटिना पर पड़ने वाली रोशनी",
+         "संख्याओं का एक grid (pixel मान)"
+        ],
+        [
+         "प्रसंस्करण",
+         "दिमाग और visual cortex",
+         "Algorithms और प्रशिक्षित ML/deep learning models"
+        ],
+        [
+         "सीखना",
+         "बचपन से अनुभव द्वारा",
+         "labelled तस्वीरों के बड़े संग्रह (training data) से"
+        ],
+        [
+         "ताकत",
+         "संदर्भ समझती है, सामान्य बुद्धि, अजीब रोशनी में भी काम करती है",
+         "बहुत तेज़, कभी नहीं थकता, लाखों तस्वीरें जाँच सकता है, X-ray/infrared भी 'देख' सकता है"
+        ],
+        [
+         "कमज़ोरी",
+         "थक जाती है, बहुत बड़े डेटा के लिए धीमी",
+         "खराब रोशनी, अनोखे कोण या अनजान वस्तुओं से धोखा खा सकता है; असली सामान्य बुद्धि नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Where does CV help? It inspects products for defects in factories, checks railway tracks and bridges for cracks, reads X-rays and MRI scans to support doctors, helps self-driving cars notice pedestrians, and reads number plates at FASTag toll plazas. In each case the machine looks at an image, finds patterns and makes a decision much faster than a person could for millions of images.",
+      "hi": "CV कहाँ मदद करता है? यह कारखानों में उत्पादों की खराबी जाँचता है, रेल पटरियों और पुलों में दरारें देखता है, डॉक्टरों की सहायता के लिए X-ray और MRI scan पढ़ता है, self-driving कारों को पैदल चलने वालों को पहचानने में मदद करता है, और FASTag toll plaza पर number plate पढ़ता है। हर मामले में मशीन तस्वीर देखती है, पैटर्न खोजती है और लाखों तस्वीरों के लिए इंसान से कहीं तेज़ निर्णय लेती है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: In Class 10 you learnt the difference between image processing (improving or changing an image, e.g. a beauty filter) and computer vision (understanding what is in the image, e.g. 'this is a cat'). In Class 12 we go deeper into the full step-by-step process a CV system follows.",
+      "hi": "याद रखें: कक्षा 10 में आपने image processing (तस्वीर को सुधारना या बदलना, जैसे beauty filter) और computer vision (तस्वीर में क्या है यह समझना, जैसे 'यह बिल्ली है') का अंतर सीखा था। कक्षा 12 में हम उस पूरी चरण-दर-चरण प्रक्रिया को गहराई से समझेंगे जो एक CV system अपनाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.2 Basics of digital images",
+    "hi": "3.2 डिजिटल तस्वीरों की मूल बातें"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Digital image",
+       "hi": "डिजिटल तस्वीर (Digital image)"
+      },
+      "text": {
+       "en": "A digital image is a picture stored in a computer as a set of numbers. The numbers describe the brightness and colour of tiny squares called pixels arranged in rows and columns.",
+       "hi": "डिजिटल तस्वीर वह चित्र है जो कंप्यूटर में संख्याओं के एक समूह के रूप में रखा जाता है। ये संख्याएँ pixels कहलाने वाले छोटे-छोटे वर्गों की चमक और रंग बताती हैं, जो पंक्तियों (rows) और स्तंभों (columns) में सजे होते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Digital images can be created in three common ways:",
+      "hi": "डिजिटल तस्वीरें आम तौर पर तीन तरीकों से बनती हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Design software: drawing and editing programs (for example a paint app or a graphics editor) let you create images from scratch.",
+       "Digital camera: the camera's sensor has millions of light-sensitive cells; each cell measures the light falling on it and gives one pixel value. Your phone camera is a digital camera.",
+       "Scanner: a scanner moves a light and sensor over a paper document or photo and converts it into pixels. Scanning your marksheet for DigiLocker or a college form is an example."
+      ],
+      "hi": [
+       "Design software: ड्रॉइंग और एडिटिंग programs (जैसे paint app या graphics editor) से आप शुरुआत से तस्वीर बना सकते हैं।",
+       "डिजिटल camera: camera के sensor में लाखों प्रकाश-संवेदी कोशिकाएँ होती हैं; हर कोशिका अपने ऊपर पड़ने वाली रोशनी मापती है और एक pixel मान देती है। आपके फ़ोन का camera एक डिजिटल camera है।",
+       "Scanner: scanner कागज़ या फ़ोटो के ऊपर रोशनी और sensor चलाकर उसे pixels में बदल देता है। DigiLocker या कॉलेज फ़ॉर्म के लिए अपनी marksheet scan करना इसका उदाहरण है।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Pixel",
+       "hi": "पिक्सल (Pixel)"
+      },
+      "text": {
+       "en": "A pixel (picture element) is the smallest unit of a digital image. Each pixel shows one single colour or shade. When millions of pixels are placed side by side, our eyes see a smooth picture.",
+       "hi": "Pixel (picture element) डिजिटल तस्वीर की सबसे छोटी इकाई है। हर pixel एक ही रंग या छाया दिखाता है। जब लाखों pixels पास-पास रखे जाते हैं, तो हमारी आँखों को एक चिकनी तस्वीर दिखती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Turning a real scene into pixels is called digitisation. Imagine placing a fine grid on a photo and writing one number in each small box for how bright it is. That grid of numbers is exactly what the computer stores.",
+      "hi": "किसी असली दृश्य को pixels में बदलने को digitisation (अंकीकरण) कहते हैं। कल्पना करें कि किसी फ़ोटो पर एक बारीक grid रख दिया और हर छोटे खाने में उसकी चमक के लिए एक संख्या लिख दी। संख्याओं का यही grid कंप्यूटर में रखा जाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Resolution",
+       "hi": "रिज़ॉल्यूशन (Resolution)"
+      },
+      "text": {
+       "en": "Resolution is the number of pixels in an image, usually written as width × height (for example 1920 × 1080). More pixels means finer detail and a sharper image, but also a bigger file.",
+       "hi": "Resolution किसी तस्वीर में pixels की संख्या है, जिसे आम तौर पर चौड़ाई × ऊँचाई (जैसे 1920 × 1080) लिखा जाता है। ज़्यादा pixels का अर्थ है बारीक विवरण और साफ़ तस्वीर, पर फ़ाइल भी बड़ी होती है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Total pixels = width × height\n1920 × 1080 = 2,073,600 pixels (about 2 megapixels)\n1 megapixel (MP) = 1,000,000 pixels",
+      "hi": "कुल pixels = चौड़ाई × ऊँचाई\n1920 × 1080 = 2,073,600 pixels (लगभग 2 megapixel)\n1 megapixel (MP) = 10,00,000 pixels"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A phone camera takes photos of 4000 × 3000 pixels. How many megapixels is that?",
+       "hi": "एक फ़ोन camera 4000 × 3000 pixels की फ़ोटो लेता है। यह कितने megapixel हुए?"
+      },
+      "a": {
+       "en": "Step 1: Total pixels = 4000 × 3000 = 12,000,000.\nStep 2: Megapixels = 12,000,000 ÷ 1,000,000 = 12.\nAnswer: 12 MP.",
+       "hi": "चरण 1: कुल pixels = 4000 × 3000 = 1,20,00,000।\nचरण 2: Megapixel = 1,20,00,000 ÷ 10,00,000 = 12।\nउत्तर: 12 MP।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: if you zoom a low-resolution image too much, you start seeing the square pixels. This blocky look is called pixelation.",
+      "hi": "याद रखें: कम resolution वाली तस्वीर को बहुत ज़्यादा zoom करने पर चौकोर pixels दिखने लगते हैं। इस खानेदार रूप को pixelation कहते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.3 How a computer stores an image: binary, grayscale and colour",
+    "hi": "3.3 कंप्यूटर तस्वीर कैसे रखता है: बाइनरी, ग्रेस्केल और रंगीन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Computers store everything in binary, using only 0 and 1 (bits). The simplest image is a binary (black-and-white) image where each pixel is one bit: 0 for black and 1 for white. Think of a chessboard: each square is either dark or light, so each square could be written as 0 or 1.",
+      "hi": "कंप्यूटर सब कुछ बाइनरी में रखते हैं, यानी केवल 0 और 1 (bits) से। सबसे सरल तस्वीर binary (काली-सफ़ेद) तस्वीर है जिसमें हर pixel एक bit होता है: काले के लिए 0 और सफ़ेद के लिए 1। शतरंज की बिसात सोचिए: हर खाना या तो गहरा है या हल्का, इसलिए हर खाने को 0 या 1 लिखा जा सकता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Grayscale image",
+       "hi": "ग्रेस्केल तस्वीर (Grayscale image)"
+      },
+      "text": {
+       "en": "A grayscale (monochrome) image stores one brightness value per pixel, usually using 8 bits (1 byte). 8 bits give 2^8 = 256 possible values, from 0 (pure black) to 255 (pure white); values in between are shades of grey.",
+       "hi": "ग्रेस्केल (monochrome) तस्वीर हर pixel के लिए चमक का एक मान रखती है, आम तौर पर 8 bits (1 byte) में। 8 bits से 2^8 = 256 संभव मान मिलते हैं, 0 (बिल्कुल काला) से 255 (बिल्कुल सफ़ेद) तक; बीच के मान ग्रे की छायाएँ हैं।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Binary of 0   = 00000000  (black)\nBinary of 128 = 10000000  (middle grey)\nBinary of 255 = 11111111  (white)",
+      "hi": "Binary of 0   = 00000000  (black)\nBinary of 128 = 10000000  (middle grey)\nBinary of 255 = 11111111  (white)"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "RGB colour image",
+       "hi": "RGB रंगीन तस्वीर"
+      },
+      "text": {
+       "en": "A colour image usually has three channels: Red, Green and Blue. Each pixel has three values, each from 0 to 255. Mixing them makes every colour: (255, 0, 0) is red, (0, 0, 0) is black, (255, 255, 255) is white and (255, 255, 0) is yellow.",
+       "hi": "रंगीन तस्वीर में आम तौर पर तीन channels होते हैं: Red (लाल), Green (हरा) और Blue (नीला)। हर pixel के तीन मान होते हैं, हर एक 0 से 255 तक। इन्हें मिलाकर हर रंग बनता है: (255, 0, 0) लाल, (0, 0, 0) काला, (255, 255, 255) सफ़ेद और (255, 255, 0) पीला है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Colours possible = 256 × 256 × 256 = 2^24 = 16,777,216 (over 16 million)\nValues stored for a 1920 × 1080 RGB image = 1920 × 1080 × 3 = 6,220,800",
+      "hi": "संभव रंग = 256 × 256 × 256 = 2^24 = 1,67,77,216 (1.6 करोड़ से अधिक)\n1920 × 1080 RGB तस्वीर में रखे मान = 1920 × 1080 × 3 = 62,20,800"
+     }
+    },
+    {
+     "p": {
+      "en": "So, to a computer, a photo of the Taj Mahal is just a large table (matrix) of numbers: one table for a grayscale image, three stacked tables for a colour image. Everything a CV system does—finding edges, detecting faces—is maths done on these numbers.",
+      "hi": "तो कंप्यूटर के लिए ताजमहल की फ़ोटो बस संख्याओं की एक बड़ी तालिका (matrix) है: grayscale तस्वीर के लिए एक तालिका, रंगीन तस्वीर के लिए तीन परतों वाली तालिकाएँ। CV system जो भी करता है—किनारे खोजना, चेहरे पहचानना—वह इन्हीं संख्याओं पर किया गया गणित है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A grayscale pixel has value 200 and another has value 30. Which one looks brighter, and roughly what shades are they?",
+       "hi": "एक grayscale pixel का मान 200 है और दूसरे का 30। कौन-सा अधिक चमकीला दिखेगा, और वे लगभग किस छाया के हैं?"
+      },
+      "a": {
+       "en": "Step 1: In grayscale, a higher value means more brightness (0 = black, 255 = white).\nStep 2: 200 is close to 255, so it is a light grey.\nStep 3: 30 is close to 0, so it is a very dark grey, almost black.\nAnswer: The pixel with value 200 looks brighter.",
+       "hi": "चरण 1: grayscale में बड़ा मान अधिक चमक दर्शाता है (0 = काला, 255 = सफ़ेद)।\nचरण 2: 200, 255 के पास है, इसलिए यह हल्का ग्रे है।\nचरण 3: 30, 0 के पास है, इसलिए यह बहुत गहरा ग्रे, लगभग काला है।\nउत्तर: 200 मान वाला pixel अधिक चमकीला दिखेगा।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: many programs, including OpenCV, store colour channels in the order B, G, R (blue first) rather than R, G, B. The colours are the same; only the order of the three numbers changes.",
+      "hi": "याद रखें: OpenCV सहित कई programs रंगों के channels को R, G, B की बजाय B, G, R (पहले नीला) क्रम में रखते हैं। रंग वही रहते हैं; केवल तीन संख्याओं का क्रम बदलता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.4 Activity: Binary Art — recreating an image with 0s and 1s",
+    "hi": "3.4 गतिविधि: बाइनरी आर्ट — 0 और 1 से तस्वीर दोबारा बनाना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Aim: to see with your own eyes that a picture is only numbers, by turning a photo into a 'drawing' made of digits.",
+      "hi": "उद्देश्य: एक फ़ोटो को अंकों से बनी 'ड्रॉइंग' में बदलकर अपनी आँखों से देखना कि तस्वीर केवल संख्याएँ है।"
+     }
+    },
+    {
+     "p": {
+      "en": "What you need: a computer or phone with a browser; a free image from a free-to-use photo site (for example Pixabay, Unsplash or Pexels) or your own simple drawing; a free online image resizer; a free online grayscale converter; a free online pixel-value extractor tool; and a word processor such as Google Docs or MS Word.",
+      "hi": "क्या चाहिए: browser वाला कंप्यूटर या फ़ोन; किसी मुफ़्त फ़ोटो साइट (जैसे Pixabay, Unsplash या Pexels) से मुफ़्त तस्वीर या आपकी अपनी सरल ड्रॉइंग; एक मुफ़्त online image resizer; एक मुफ़्त online grayscale converter; एक मुफ़्त online pixel-value extractor tool; और Google Docs या MS Word जैसा word processor।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Choose a simple image with a clear shape and strong contrast (a logo, a leaf, a cartoon face). Simple images give the clearest result.",
+       "Resize it to a small size, about 200–300 pixels wide, so the number of values stays manageable.",
+       "Convert it to grayscale so that each pixel has only one brightness value instead of three.",
+       "Upload it to a pixel-value extractor and choose an output of 0s and 1s (dark pixels become 0, light pixels become 1, or the other way round). Copy the grid of digits.",
+       "Paste the digits into a blank document. Select all and set a monospace font with a very small font size (for example size 1) and tight line spacing.",
+       "Zoom out. The digits merge and your image appears, drawn entirely with 0s and 1s."
+      ],
+      "hi": [
+       "साफ़ आकार और तेज़ contrast वाली सरल तस्वीर चुनें (कोई logo, पत्ती, कार्टून चेहरा)। सरल तस्वीरों से सबसे साफ़ परिणाम मिलता है।",
+       "इसे छोटे आकार में, लगभग 200–300 pixel चौड़ा, resize करें ताकि मानों की संख्या संभालने लायक रहे।",
+       "इसे grayscale में बदलें ताकि हर pixel का तीन की बजाय केवल एक चमक मान हो।",
+       "इसे pixel-value extractor पर upload करें और 0 और 1 वाला output चुनें (गहरे pixels 0, हल्के pixels 1, या इसका उलटा)। अंकों का grid copy करें।",
+       "अंकों को खाली document में paste करें। सब select करके monospace font, बहुत छोटा font size (जैसे 1) और कम line spacing रखें।",
+       "Zoom out करें। अंक आपस में मिल जाते हैं और आपकी तस्वीर पूरी तरह 0 और 1 से बनी दिखाई देती है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "What you observe and learn: up close you see only digits; from far away you see a picture. This is exactly how a computer holds an image—as numbers—and why the choice of a 'threshold' (which grey values count as 0 and which as 1) changes how the art looks. Unplugged version: draw a 10 × 10 grid on squared paper, write 0 or 1 in each box from a simple shape your friend dictates, then shade the 1s to reveal the picture.",
+      "hi": "क्या देखते और सीखते हैं: पास से केवल अंक दिखते हैं; दूर से तस्वीर। कंप्यूटर तस्वीर को ठीक इसी तरह—संख्याओं के रूप में—रखता है, और इसीलिए 'threshold' का चुनाव (कौन-से ग्रे मान 0 गिने जाएँ और कौन-से 1) कला का रूप बदल देता है। बिना कंप्यूटर वाला रूप: खानेदार कागज़ पर 10 × 10 grid बनाएँ, आपका दोस्त जो सरल आकार बोले उसके अनुसार हर खाने में 0 या 1 लिखें, फिर 1 वाले खाने रंग दें और तस्वीर उभर आएगी।"
+     }
+    },
+    {
+     "p": {
+      "en": "The same idea in Python: the program below stores a tiny 8 × 8 grayscale image (a plus sign) and applies a threshold of 128. Every pixel 128 or brighter becomes 1, darker pixels become 0. The program was run and the output shown is its real output.",
+      "hi": "यही विचार Python में: नीचे का program एक छोटी 8 × 8 grayscale तस्वीर (धन का चिह्न) रखता है और 128 का threshold लगाता है। 128 या उससे अधिक चमक वाला हर pixel 1 बनता है, गहरे pixels 0। Program चलाया गया है और दिखाया गया output उसका असली output है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\n\n# An 8 x 8 grayscale image of a simple \"plus\" sign (0 = black, 255 = white)\nimg = np.array([\n    [ 20,  25,  30, 200, 210,  30,  25,  20],\n    [ 22,  28,  35, 220, 230,  35,  28,  22],\n    [ 30,  35,  40, 240, 245,  40,  35,  30],\n    [210, 225, 240, 250, 252, 240, 225, 210],\n    [205, 220, 238, 251, 250, 238, 220, 205],\n    [ 30,  35,  40, 242, 240,  40,  35,  30],\n    [ 22,  28,  35, 225, 228,  35,  28,  22],\n    [ 20,  25,  30, 205, 200,  30,  25,  20]])\n\nbinary = (img >= 128).astype(int)     # threshold: bright -> 1, dark -> 0\nfor row in binary:\n    print(\"\".join(str(v) for v in row))\nprint(\"Shape:\", img.shape, \" Pixels:\", img.size)\n\nOutput:\n00011000\n00011000\n00011000\n11111111\n11111111\n00011000\n00011000\n00011000\nShape: (8, 8)  Pixels: 64",
+      "hi": "import numpy as np\n\n# An 8 x 8 grayscale image of a simple \"plus\" sign (0 = black, 255 = white)\nimg = np.array([\n    [ 20,  25,  30, 200, 210,  30,  25,  20],\n    [ 22,  28,  35, 220, 230,  35,  28,  22],\n    [ 30,  35,  40, 240, 245,  40,  35,  30],\n    [210, 225, 240, 250, 252, 240, 225, 210],\n    [205, 220, 238, 251, 250, 238, 220, 205],\n    [ 30,  35,  40, 242, 240,  40,  35,  30],\n    [ 22,  28,  35, 225, 228,  35,  28,  22],\n    [ 20,  25,  30, 205, 200,  30,  25,  20]])\n\nbinary = (img >= 128).astype(int)     # threshold: bright -> 1, dark -> 0\nfor row in binary:\n    print(\"\".join(str(v) for v in row))\nprint(\"Shape:\", img.shape, \" Pixels:\", img.size)\n\nOutput:\n00011000\n00011000\n00011000\n11111111\n11111111\n00011000\n00011000\n00011000\nShape: (8, 8)  Pixels: 64"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: thresholding (turning grey values into just 0 or 1 using a cut-off) is itself a basic image-processing step, and it is used in real systems such as scanning documents for OCR. Use only images you are allowed to use, and never upload photos of other people without permission.",
+      "hi": "याद रखें: thresholding (एक सीमा मान से ग्रे मानों को केवल 0 या 1 में बदलना) अपने आप में image processing का एक बुनियादी चरण है, और यह असली systems में, जैसे OCR के लिए documents scan करने में, इस्तेमाल होता है। केवल वही तस्वीरें लें जिनकी अनुमति हो, और दूसरों की फ़ोटो बिना अनुमति कभी upload न करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.5 The computer vision process: five stages",
+    "hi": "3.5 कंप्यूटर विज़न की प्रक्रिया: पाँच चरण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every CV system, from a face-unlock feature to a crop-disease app, follows roughly the same pipeline. The output of each stage becomes the input of the next.",
+      "hi": "हर CV system, face-unlock से लेकर फ़सल-रोग पहचानने वाले app तक, लगभग एक जैसी pipeline अपनाता है। हर चरण का output अगले चरण का input बनता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "Question it answers",
+        "Example: a crop-disease app"
+       ],
+       "hi": [
+        "चरण",
+        "किस प्रश्न का उत्तर देता है",
+        "उदाहरण: फ़सल-रोग app"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Image acquisition",
+         "How do we get the picture?",
+         "Farmer clicks a photo of a tomato leaf with a phone."
+        ],
+        [
+         "2. Preprocessing",
+         "How do we clean and standardise it?",
+         "App resizes the photo, fixes brightness and removes noise."
+        ],
+        [
+         "3. Feature extraction",
+         "What patterns are important?",
+         "Finds spots, colour changes (yellow/brown patches) and leaf edges."
+        ],
+        [
+         "4. Detection / segmentation",
+         "Where are the objects or regions?",
+         "Marks the diseased patches on the leaf."
+        ],
+        [
+         "5. High-level processing",
+         "What does it mean and what should we do?",
+         "Concludes 'early blight, likely' and suggests seeing an agriculture expert."
+        ]
+       ],
+       "hi": [
+        [
+         "1. Image acquisition (तस्वीर प्राप्त करना)",
+         "तस्वीर कैसे मिले?",
+         "किसान फ़ोन से टमाटर की पत्ती की फ़ोटो लेता है।"
+        ],
+        [
+         "2. Preprocessing (पूर्व-प्रसंस्करण)",
+         "इसे साफ़ और एक-समान कैसे करें?",
+         "App फ़ोटो का आकार बदलता है, चमक ठीक करता है और noise हटाता है।"
+        ],
+        [
+         "3. Feature extraction (विशेषता निकालना)",
+         "कौन-से पैटर्न महत्वपूर्ण हैं?",
+         "धब्बे, रंग में बदलाव (पीले/भूरे हिस्से) और पत्ती के किनारे खोजता है।"
+        ],
+        [
+         "4. Detection / segmentation (पहचान / विभाजन)",
+         "वस्तुएँ या हिस्से कहाँ हैं?",
+         "पत्ती पर रोगग्रस्त हिस्सों को चिह्नित करता है।"
+        ],
+        [
+         "5. High-level processing (उच्च-स्तरीय प्रसंस्करण)",
+         "इसका अर्थ क्या है और क्या करें?",
+         "निष्कर्ष 'संभवतः early blight' और कृषि विशेषज्ञ से मिलने की सलाह।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the order with the phrase 'All People Find Delicious Halwa': Acquisition, Preprocessing, Feature extraction, Detection/segmentation, High-level processing.",
+      "hi": "क्रम याद रखने के लिए: 'A-P-F-D-H' — Acquisition, Preprocessing, Feature extraction, Detection/segmentation, High-level processing। वाक्य: 'All People Find Delicious Halwa'।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.6 Stage 1: Image acquisition",
+    "hi": "3.6 चरण 1: तस्वीर प्राप्त करना (Image acquisition)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Image acquisition",
+       "hi": "Image acquisition (तस्वीर प्राप्ति)"
+      },
+      "text": {
+       "en": "Image acquisition is the first stage of CV, in which digital images or videos are captured from the real world using a sensor and given to the system as raw data.",
+       "hi": "Image acquisition CV का पहला चरण है, जिसमें sensor की मदद से वास्तविक दुनिया से डिजिटल तस्वीरें या वीडियो लिए जाते हैं और system को कच्चे डेटा (raw data) के रूप में दिए जाते हैं।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Sources: phone and digital cameras, CCTV cameras, webcams, scanners, drones, satellites (for weather and crop monitoring), and medical machines such as X-ray, CT (computed tomography) and MRI (magnetic resonance imaging) scanners.",
+       "Quality factors: resolution of the camera, lighting (too dark, too bright, shadows), camera angle and distance, motion blur, and lens quality.",
+       "Some systems capture more than normal colour: infrared cameras can see heat, and depth cameras measure distance, which helps robots and AR apps.",
+       "Rule of thumb: a better input gives a better output. No later stage can fully recover detail that was never captured."
+      ],
+      "hi": [
+       "स्रोत: फ़ोन और डिजिटल camera, CCTV camera, webcam, scanner, drone, satellite (मौसम और फ़सल निगरानी के लिए), और X-ray, CT (computed tomography) तथा MRI (magnetic resonance imaging) जैसी चिकित्सा मशीनें।",
+       "गुणवत्ता के कारक: camera का resolution, रोशनी (बहुत अंधेरा, बहुत तेज़, परछाइयाँ), camera का कोण और दूरी, हिलने से धुंधलापन (motion blur), और lens की गुणवत्ता।",
+       "कुछ systems सामान्य रंगों से अधिक पकड़ते हैं: infrared camera गर्मी 'देख' सकते हैं, और depth camera दूरी मापते हैं, जो robots और AR apps के काम आता है।",
+       "सामान्य नियम: बेहतर input से बेहतर output। जो विवरण कभी कैद ही नहीं हुआ, उसे बाद का कोई चरण पूरी तरह वापस नहीं ला सकता।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A school wants an attendance system that recognises students' faces at the gate. List two things to take care of at the acquisition stage.",
+       "hi": "एक स्कूल गेट पर छात्रों के चेहरे पहचानने वाला उपस्थिति system चाहता है। Acquisition चरण पर ध्यान रखने वाली दो बातें बताइए।"
+      },
+      "a": {
+       "en": "Step 1: Think about what can make a face photo poor: light and angle.\nStep 2: Place the camera at face height and facing the entrance so faces are seen from the front.\nStep 3: Make sure the gate area has steady lighting (no strong sunlight directly behind students, which makes faces dark).\nAlso: use a camera with enough resolution, and get consent and protect the stored images because faces are personal data.",
+       "hi": "चरण 1: सोचें कि चेहरे की फ़ोटो किन कारणों से खराब हो सकती है: रोशनी और कोण।\nचरण 2: Camera को चेहरे की ऊँचाई पर और प्रवेश की ओर रखें ताकि चेहरे सामने से दिखें।\nचरण 3: गेट पर स्थिर रोशनी हो (छात्रों के ठीक पीछे तेज़ धूप न हो, उससे चेहरे काले दिखते हैं)।\nसाथ ही: पर्याप्त resolution वाला camera लें, और सहमति लें तथा सहेजी तस्वीरें सुरक्षित रखें क्योंकि चेहरा निजी डेटा है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.7 Stage 2: Preprocessing",
+    "hi": "3.7 चरण 2: Preprocessing (पूर्व-प्रसंस्करण)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Preprocessing",
+       "hi": "Preprocessing (पूर्व-प्रसंस्करण)"
+      },
+      "text": {
+       "en": "Preprocessing means cleaning and standardising raw images so that they are easier and more reliable for the later stages to analyse.",
+       "hi": "Preprocessing का अर्थ है कच्ची तस्वीरों को साफ़ और एक-समान (standard) बनाना ताकि बाद के चरण उनका विश्लेषण आसानी से और भरोसे के साथ कर सकें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Its three goals are: remove noise and unwanted parts, highlight the useful features, and make all images consistent (same size, same range of values). The main techniques are:",
+      "hi": "इसके तीन लक्ष्य हैं: noise और अनचाहे हिस्से हटाना, उपयोगी विशेषताओं को उभारना, और सभी तस्वीरों को एक-समान बनाना (एक ही आकार, मानों की एक ही सीमा)। मुख्य तकनीकें हैं:"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Noise reduction",
+       "hi": "Noise reduction (शोर कम करना)"
+      },
+      "text": {
+       "en": "Removing random specks, grain, blur and distortions from an image, usually by smoothing (blurring slightly) with filters such as a Gaussian blur or median filter. Noise often comes from low light or a cheap sensor.",
+       "hi": "तस्वीर से बेतरतीब धब्बे, दाने (grain), धुंधलापन और विकृतियाँ हटाना, आम तौर पर Gaussian blur या median filter जैसे filters से हल्का smooth (धुंधला) करके। Noise अक्सर कम रोशनी या सस्ते sensor से आता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Image normalisation",
+       "hi": "Image normalisation (सामान्यीकरण)"
+      },
+      "text": {
+       "en": "Rescaling pixel values to a standard range, usually 0 to 1 (divide by 255) or -1 to 1. Models learn faster and more stably when all inputs are on the same small scale.",
+       "hi": "Pixel मानों को एक मानक सीमा में बदलना, आम तौर पर 0 से 1 (255 से भाग देकर) या -1 से 1। जब सभी inputs एक ही छोटे पैमाने पर हों तो models तेज़ी से और स्थिरता से सीखते हैं।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Normalised value (0 to 1)  = pixel ÷ 255\nNormalised value (-1 to 1) = (pixel ÷ 127.5) − 1",
+      "hi": "सामान्यीकृत मान (0 से 1)  = pixel ÷ 255\nसामान्यीकृत मान (-1 से 1) = (pixel ÷ 127.5) − 1"
+     }
+    },
+    {
+     "p": {
+      "en": "The program below normalises five pixel values both ways. It was run and the output is real.",
+      "hi": "नीचे का program पाँच pixel मानों को दोनों तरीकों से normalise करता है। इसे चलाया गया है और output असली है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\n\npixels = np.array([0, 64, 128, 191, 255])\nprint(\"Original  :\", pixels)\nprint(\"0 to 1    :\", np.round(pixels / 255, 2))\nprint(\"-1 to 1   :\", np.round(pixels / 127.5 - 1, 2))\n\nOutput:\nOriginal  : [  0  64 128 191 255]\n0 to 1    : [0.   0.25 0.5  0.75 1.  ]\n-1 to 1   : [-1.  -0.5  0.   0.5  1. ]",
+      "hi": "import numpy as np\n\npixels = np.array([0, 64, 128, 191, 255])\nprint(\"Original  :\", pixels)\nprint(\"0 to 1    :\", np.round(pixels / 255, 2))\nprint(\"-1 to 1   :\", np.round(pixels / 127.5 - 1, 2))\n\nOutput:\nOriginal  : [  0  64 128 191 255]\n0 to 1    : [0.   0.25 0.5  0.75 1.  ]\n-1 to 1   : [-1.  -0.5  0.   0.5  1. ]"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Resizing and cropping",
+       "hi": "Resizing और cropping (आकार बदलना और काटना)"
+      },
+      "text": {
+       "en": "Resizing changes every image to the same width and height (for example 224 × 224) because most models expect a fixed input size. Cropping cuts away unneeded borders so the object of interest fills the frame and the aspect ratio is consistent.",
+       "hi": "Resizing हर तस्वीर को एक ही चौड़ाई और ऊँचाई (जैसे 224 × 224) में बदलता है क्योंकि ज़्यादातर models एक निश्चित input आकार चाहते हैं। Cropping अनावश्यक किनारे काट देता है ताकि मुख्य वस्तु पूरे frame में आए और aspect ratio एक-समान रहे।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Histogram equalisation",
+       "hi": "Histogram equalisation (हिस्टोग्राम समतलीकरण)"
+      },
+      "text": {
+       "en": "A histogram of an image shows how many pixels have each brightness value. Histogram equalisation spreads out these values over the full 0–255 range, which improves contrast in images that are too dull, too dark or too bright.",
+       "hi": "किसी तस्वीर का histogram बताता है कि हर चमक मान वाले कितने pixels हैं। Histogram equalisation इन मानों को पूरी 0–255 सीमा में फैला देता है, जिससे बहुत फीकी, बहुत अंधेरी या बहुत चमकीली तस्वीरों का contrast सुधरता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example with OpenCV: a dull 4 × 4 image whose values lie only between 100 and 130 is equalised. After equalisation the values cover 0 to 255, so the image has much stronger contrast. (Real output of the program.)",
+      "hi": "OpenCV से उदाहरण: एक फीकी 4 × 4 तस्वीर जिसके मान केवल 100 से 130 के बीच हैं, equalise की जाती है। उसके बाद मान 0 से 255 तक फैल जाते हैं, यानी तस्वीर का contrast बहुत बढ़ जाता है। (program का असली output)"
+     }
+    },
+    {
+     "formula": {
+      "en": "import cv2\nimport numpy as np\n\n# A dull, low-contrast 4 x 4 image: all values squeezed between 100 and 130\ndull = np.array([[100, 105, 110, 115],\n                 [105, 110, 115, 120],\n                 [110, 115, 120, 125],\n                 [115, 120, 125, 130]], dtype=np.uint8)\nbright = cv2.equalizeHist(dull)\nprint(bright)\nprint(\"Range before:\", dull.min(), \"to\", dull.max())\nprint(\"Range after :\", bright.min(), \"to\", bright.max())\n\nOutput:\n[[  0  34  85 153]\n [ 34  85 153 204]\n [ 85 153 204 238]\n [153 204 238 255]]\nRange before: 100 to 130\nRange after : 0 to 255",
+      "hi": "import cv2\nimport numpy as np\n\n# A dull, low-contrast 4 x 4 image: all values squeezed between 100 and 130\ndull = np.array([[100, 105, 110, 115],\n                 [105, 110, 115, 120],\n                 [110, 115, 120, 125],\n                 [115, 120, 125, 130]], dtype=np.uint8)\nbright = cv2.equalizeHist(dull)\nprint(bright)\nprint(\"Range before:\", dull.min(), \"to\", dull.max())\nprint(\"Range after :\", bright.min(), \"to\", bright.max())\n\nOutput:\n[[  0  34  85 153]\n [ 34  85 153 204]\n [ 85 153 204 238]\n [153 204 238 255]]\nRange before: 100 to 130\nRange after : 0 to 255"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Other common preprocessing steps: converting colour images to grayscale (when colour is not needed), rotating or straightening images, and data augmentation—making extra training images by flipping, rotating or changing brightness so the model learns to handle variety."
+      ],
+      "hi": [
+       "अन्य आम preprocessing चरण: रंगीन तस्वीर को grayscale में बदलना (जब रंग की ज़रूरत न हो), तस्वीर घुमाना या सीधा करना, और data augmentation—तस्वीरें पलटकर, घुमाकर या चमक बदलकर अतिरिक्त training तस्वीरें बनाना ताकि model विविधता संभालना सीखे।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: preprocessing does not add new information; it makes existing information easier to use. Whatever preprocessing you apply to training images, you must also apply to new images at prediction time.",
+      "hi": "याद रखें: preprocessing नई जानकारी नहीं जोड़ता; यह मौजूदा जानकारी को उपयोग में आसान बनाता है। Training तस्वीरों पर जो preprocessing किया, वही prediction के समय नई तस्वीरों पर भी करना ज़रूरी है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.8 Stage 3: Feature extraction",
+    "hi": "3.8 चरण 3: Feature extraction (विशेषताएँ निकालना)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Feature",
+       "hi": "Feature (विशेषता)"
+      },
+      "text": {
+       "en": "A feature is a measurable piece of information in an image that helps tell one thing from another, such as an edge, a corner, a texture or a colour pattern.",
+       "hi": "Feature तस्वीर में मापी जा सकने वाली जानकारी का वह टुकड़ा है जो एक चीज़ को दूसरी से अलग पहचानने में मदद करता है, जैसे किनारा (edge), कोना (corner), बनावट (texture) या रंग का पैटर्न।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Feature extraction picks out these useful patterns and turns them into numbers the model can work with, ignoring the rest. Instead of looking at all 2 million pixels, the system focuses on what matters.",
+      "hi": "Feature extraction इन उपयोगी पैटर्नों को चुनकर उन्हें ऐसी संख्याओं में बदलता है जिन पर model काम कर सके, बाकी को छोड़ देता है। सभी 20 लाख pixels देखने की बजाय system ज़रूरी चीज़ों पर ध्यान देता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature type",
+        "What it finds",
+        "Everyday use"
+       ],
+       "hi": [
+        "Feature का प्रकार",
+        "क्या खोजता है",
+        "रोज़मर्रा का उपयोग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Edge detection",
+         "Boundaries where brightness changes sharply (outline of an object)",
+         "Finding lane lines on a road; outline of a document for a scanner app"
+        ],
+        [
+         "Corner detection",
+         "Points where two edges meet; areas of high curvature",
+         "Tracking points while making a panorama; matching two photos"
+        ],
+        [
+         "Texture analysis",
+         "Repeated patterns: smooth, rough, striped, grainy",
+         "Telling cloth types apart; spotting rough patches on a diseased leaf"
+        ],
+        [
+         "Colour-based features",
+         "Distribution of colours (how much red, green, etc.)",
+         "Sorting ripe (red) and unripe (green) tomatoes; detecting traffic-signal colour"
+        ]
+       ],
+       "hi": [
+        [
+         "Edge detection (किनारा पहचान)",
+         "वे सीमाएँ जहाँ चमक अचानक बदलती है (वस्तु की रूपरेखा)",
+         "सड़क पर lane की रेखाएँ खोजना; scanner app में document की रूपरेखा"
+        ],
+        [
+         "Corner detection (कोना पहचान)",
+         "वे बिंदु जहाँ दो किनारे मिलते हैं; अधिक मोड़ वाले हिस्से",
+         "panorama बनाते समय बिंदुओं का पीछा; दो फ़ोटो का मिलान"
+        ],
+        [
+         "Texture analysis (बनावट विश्लेषण)",
+         "दोहराए पैटर्न: चिकना, खुरदरा, धारीदार, दानेदार",
+         "कपड़ों के प्रकार अलग करना; रोगग्रस्त पत्ती पर खुरदरे हिस्से"
+        ],
+        [
+         "Colour-based features (रंग-आधारित)",
+         "रंगों का वितरण (कितना लाल, हरा आदि)",
+         "पके (लाल) और कच्चे (हरे) टमाटर अलग करना; traffic signal का रंग पहचानना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How does edge detection work? An edge is simply a big jump in pixel value between neighbours. The program below takes one row of pixels (dark on the left, bright on the right) and finds the biggest difference. Real output shown.",
+      "hi": "Edge detection कैसे काम करता है? किनारा बस पड़ोसी pixels के मान में बड़ी छलाँग है। नीचे का program pixels की एक पंक्ति (बाएँ गहरी, दाएँ चमकीली) लेकर सबसे बड़ा अंतर खोजता है। असली output दिखाया गया है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\n\n# One row of a grayscale image: dark on the left, bright on the right\nrow = np.array([10, 12, 11, 10, 200, 205, 203, 204])\ndiff = np.abs(np.diff(row))          # change between neighbouring pixels\nprint(\"Differences:\", diff)\nprint(\"Edge between positions:\", int(np.argmax(diff)), \"and\", int(np.argmax(diff)) + 1)\n\nOutput:\nDifferences: [  2   1   1 190   5   2   1]\nEdge between positions: 3 and 4",
+      "hi": "import numpy as np\n\n# One row of a grayscale image: dark on the left, bright on the right\nrow = np.array([10, 12, 11, 10, 200, 205, 203, 204])\ndiff = np.abs(np.diff(row))          # change between neighbouring pixels\nprint(\"Differences:\", diff)\nprint(\"Edge between positions:\", int(np.argmax(diff)), \"and\", int(np.argmax(diff)) + 1)\n\nOutput:\nDifferences: [  2   1   1 190   5   2   1]\nEdge between positions: 3 and 4"
+     }
+    },
+    {
+     "p": {
+      "en": "Hand-crafted vs learned features: older CV systems used features designed by people (edge and corner detectors). Modern deep learning models, especially Convolutional Neural Networks (CNNs), learn the features automatically from training data. Their first layers learn simple edges and colours, middle layers learn shapes like eyes or wheels, and deeper layers learn whole objects. (Chapter 6 explains neural networks in detail.)",
+      "hi": "हाथ से बनाए बनाम सीखे गए features: पुराने CV systems लोगों द्वारा बनाए features (edge और corner detectors) इस्तेमाल करते थे। आधुनिक deep learning models, खासकर Convolutional Neural Networks (CNNs), training data से features अपने आप सीखते हैं। उनकी शुरुआती layers सरल किनारे और रंग सीखती हैं, बीच की layers आँख या पहिए जैसे आकार, और गहरी layers पूरी वस्तुएँ। (अध्याय 6 में neural networks विस्तार से हैं।)"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: a good feature is one that stays similar for the same object even when light, size or angle changes, but differs between different objects.",
+      "hi": "याद रखें: अच्छा feature वह है जो रोशनी, आकार या कोण बदलने पर भी एक ही वस्तु के लिए लगभग समान रहे, पर अलग-अलग वस्तुओं के लिए अलग हो।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.9 Stage 4: Detection and segmentation",
+    "hi": "3.9 चरण 4: Detection और segmentation (पहचान और विभाजन)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Once features are found, the system decides what is in the image and where it is. These tasks are divided into single-object tasks and multiple-object tasks.",
+      "hi": "Features मिलने के बाद system तय करता है कि तस्वीर में क्या है और कहाँ है। इन कार्यों को single-object (एक वस्तु) और multiple-object (कई वस्तुएँ) कार्यों में बाँटा जाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Classification",
+       "hi": "Classification (वर्गीकरण)"
+      },
+      "text": {
+       "en": "Assigning the whole image to one category from a fixed list, e.g. 'cat' or 'dog', 'healthy leaf' or 'diseased leaf'. With labelled data this is supervised learning (for example the K-Nearest Neighbours or KNN algorithm). Grouping images without labels into similar groups is unsupervised learning, for example K-means clustering.",
+       "hi": "पूरी तस्वीर को एक तय सूची में से किसी एक श्रेणी में डालना, जैसे 'बिल्ली' या 'कुत्ता', 'स्वस्थ पत्ती' या 'रोगग्रस्त पत्ती'। Labelled data के साथ यह supervised learning है (जैसे K-Nearest Neighbours या KNN algorithm)। बिना labels की तस्वीरों को समान समूहों में बाँटना unsupervised learning है, जैसे K-means clustering।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Classification + localisation",
+       "hi": "Classification + localisation (वर्गीकरण + स्थान निर्धारण)"
+      },
+      "text": {
+       "en": "Saying what the single main object is and also where it is, by drawing a bounding box (a rectangle given by its corner coordinates) around it.",
+       "hi": "यह बताना कि मुख्य एक वस्तु क्या है और वह कहाँ है, उसके चारों ओर bounding box (कोनों के निर्देशांकों से बना आयत) बनाकर।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Object detection",
+       "hi": "Object detection (वस्तु पहचान)"
+      },
+      "text": {
+       "en": "Finding all objects of interest in an image, each with a class label and a bounding box. Example: a traffic camera boxing every car, bus, auto-rickshaw and person. Well-known detection model families include R-CNN, R-FCN, YOLO ('You Only Look Once') and SSD (Single Shot Detector).",
+       "hi": "तस्वीर में सभी ज़रूरी वस्तुओं को खोजना, हर एक के साथ class label और bounding box। उदाहरण: traffic camera हर कार, बस, ऑटो-रिक्शा और व्यक्ति के चारों ओर box बनाता है। प्रसिद्ध detection model परिवार: R-CNN, R-FCN, YOLO ('You Only Look Once') और SSD (Single Shot Detector)।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Image segmentation",
+       "hi": "Image segmentation (तस्वीर विभाजन)"
+      },
+      "text": {
+       "en": "Dividing an image into regions by labelling every pixel, creating a mask that shows the exact shape of each object instead of a rough box. It often starts from techniques like edge detection.",
+       "hi": "हर pixel को label देकर तस्वीर को हिस्सों में बाँटना, जिससे एक mask बनता है जो मोटे box की बजाय हर वस्तु का सटीक आकार दिखाता है। यह अक्सर edge detection जैसी तकनीकों से शुरू होता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Aspect",
+        "Semantic segmentation",
+        "Instance segmentation"
+       ],
+       "hi": [
+        "पहलू",
+        "Semantic segmentation",
+        "Instance segmentation"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "What it labels",
+         "Each pixel by class only",
+         "Each pixel by class and by individual object"
+        ],
+        [
+         "Three people in a photo",
+         "All three coloured the same: 'person'",
+         "Person 1, person 2, person 3 in different colours"
+        ],
+        [
+         "Typical use",
+         "Road vs footpath vs sky for a self-driving car",
+         "Counting individual cows in a field or cells in a microscope image"
+        ]
+       ],
+       "hi": [
+        [
+         "क्या label करता है",
+         "हर pixel को केवल class से",
+         "हर pixel को class और अलग-अलग वस्तु से"
+        ],
+        [
+         "फ़ोटो में तीन लोग",
+         "तीनों एक ही रंग: 'व्यक्ति'",
+         "व्यक्ति 1, व्यक्ति 2, व्यक्ति 3 अलग-अलग रंग में"
+        ],
+        [
+         "सामान्य उपयोग",
+         "self-driving कार के लिए सड़क बनाम फुटपाथ बनाम आसमान",
+         "खेत में अलग-अलग गायें या microscope में कोशिकाएँ गिनना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A photo shows two dogs and a cat. What will each of these give: (a) classification, (b) object detection, (c) instance segmentation?",
+       "hi": "एक फ़ोटो में दो कुत्ते और एक बिल्ली हैं। इनसे क्या मिलेगा: (a) classification, (b) object detection, (c) instance segmentation?"
+      },
+      "a": {
+       "en": "(a) Classification gives one label for the whole image, probably 'dog' (the most prominent class).\n(b) Object detection gives three bounding boxes: 'dog', 'dog', 'cat'.\n(c) Instance segmentation gives three exact pixel masks: dog 1, dog 2 and cat, each separately outlined.",
+       "hi": "(a) Classification पूरी तस्वीर के लिए एक label देगा, संभवतः 'कुत्ता' (सबसे प्रमुख class)।\n(b) Object detection तीन bounding boxes देगा: 'कुत्ता', 'कुत्ता', 'बिल्ली'।\n(c) Instance segmentation तीन सटीक pixel masks देगा: कुत्ता 1, कुत्ता 2 और बिल्ली, हर एक अलग रूपरेखा में।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the ladder of detail: classification (what?) → localisation (what + where, one box) → detection (many objects, many boxes) → segmentation (exact shape, pixel by pixel).",
+      "hi": "विवरण की सीढ़ी याद रखें: classification (क्या?) → localisation (क्या + कहाँ, एक box) → detection (कई वस्तुएँ, कई boxes) → segmentation (सटीक आकार, pixel दर pixel)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.10 Stage 5: High-level processing",
+    "hi": "3.10 चरण 5: High-level processing (उच्च-स्तरीय प्रसंस्करण)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The last stage turns detections into understanding and action. The system recognises objects, understands the whole scene (who is doing what, where), uses context, and supports a decision.",
+      "hi": "अंतिम चरण पहचानों को समझ और कार्य में बदलता है। System वस्तुओं को पहचानता है, पूरे दृश्य को समझता है (कौन क्या कर रहा है, कहाँ), संदर्भ का उपयोग करता है, और निर्णय में सहायता करता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Self-driving car: 'a child is on the zebra crossing and the light is red' → slow down and stop.",
+       "Medical scan: 'a dark region with an irregular border in the lung' → flag the scan for a doctor's urgent review (the doctor makes the diagnosis).",
+       "Retail store: 'shelf 4 has empty space where biscuits should be' → send a restock alert.",
+       "Security: 'a bag left alone on a railway platform for 10 minutes' → alert station staff."
+      ],
+      "hi": [
+       "Self-driving कार: 'zebra crossing पर एक बच्चा है और बत्ती लाल है' → धीमे होकर रुकना।",
+       "Medical scan: 'फेफड़े में अनियमित किनारे वाला गहरा हिस्सा' → scan को डॉक्टर की तुरंत जाँच के लिए चिह्नित करना (निदान डॉक्टर करते हैं)।",
+       "Retail store: 'shelf 4 पर बिस्किट की जगह खाली है' → restock alert भेजना।",
+       "सुरक्षा: 'रेलवे platform पर एक बैग 10 मिनट से अकेला पड़ा है' → स्टेशन कर्मचारियों को alert।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: high-level processing is where CV meets decision-making. Because these decisions affect people, important ones (health, safety, law) should keep a human in the loop.",
+      "hi": "याद रखें: high-level processing वह जगह है जहाँ CV निर्णय लेने से मिलता है। चूँकि ये निर्णय लोगों को प्रभावित करते हैं, महत्वपूर्ण निर्णयों (स्वास्थ्य, सुरक्षा, कानून) में इंसान की भागीदारी (human in the loop) बनी रहनी चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.11 Applications of computer vision",
+    "hi": "3.11 कंप्यूटर विज़न के उपयोग"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application",
+        "What CV does",
+        "Indian example"
+       ],
+       "hi": [
+        "उपयोग",
+        "CV क्या करता है",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Facial recognition",
+         "Matches a face to stored faces to verify or identify a person; suggests tags in photos",
+         "Face-unlock on phones; DigiYatra face-based boarding at many Indian airports"
+        ],
+        [
+         "Healthcare",
+         "Finds abnormalities in X-rays, CT/MRI scans and eye images; tracks changes over time",
+         "AI screening of retina photos for diabetic eye disease and of chest X-rays for tuberculosis, assisting doctors"
+        ],
+        [
+         "Self-driving and driver assistance",
+         "Detects lanes, signals, vehicles and pedestrians",
+         "Lane-departure and collision warnings in some new cars"
+        ],
+        [
+         "Optical Character Recognition (OCR)",
+         "Reads printed or handwritten text from images and turns it into editable text",
+         "Google Lens reading a signboard or a bill; scanning PAN or Aadhaar details in forms"
+        ],
+        [
+         "Machine inspection",
+         "Spots scratches, cracks and missing parts on products",
+         "Checking bottles, tablets or car parts on factory lines"
+        ],
+        [
+         "3D model building",
+         "Builds 3D shapes of objects or places from many 2D images; used in robotics, AR/VR",
+         "3D scanning of heritage monuments for digital preservation"
+        ],
+        [
+         "Surveillance",
+         "Watches CCTV feeds for unusual events, crowds or abandoned objects",
+         "Crowd monitoring at large gatherings such as melas and railway stations"
+        ],
+        [
+         "Fingerprint and biometrics",
+         "Reads the ridge patterns of fingerprints, irises or faces to confirm identity",
+         "Aadhaar-based biometric authentication for ration and banking services"
+        ],
+        [
+         "Agriculture",
+         "Detects crop disease, weeds and ripeness from phone, drone or satellite images",
+         "Crop-disease apps that let farmers photograph a leaf"
+        ],
+        [
+         "Traffic and transport",
+         "Reads number plates, counts vehicles, detects signal jumping",
+         "Automatic number plate recognition at toll plazas and for e-challans"
+        ]
+       ],
+       "hi": [
+        [
+         "चेहरा पहचान",
+         "किसी चेहरे को सहेजे चेहरों से मिलाकर व्यक्ति की पुष्टि या पहचान करता है; फ़ोटो में tag सुझाता है",
+         "फ़ोन में face-unlock; कई भारतीय हवाई अड्डों पर DigiYatra से चेहरे द्वारा boarding"
+        ],
+        [
+         "स्वास्थ्य",
+         "X-ray, CT/MRI scan और आँख की तस्वीरों में असामान्यता खोजता है; समय के साथ बदलाव देखता है",
+         "डायबिटीज़ से आँख के रोग के लिए retina फ़ोटो और TB के लिए छाती के X-ray की AI जाँच, डॉक्टरों की सहायता में"
+        ],
+        [
+         "Self-driving और चालक सहायता",
+         "Lanes, signals, वाहन और पैदल यात्री पहचानता है",
+         "कुछ नई कारों में lane-departure और टक्कर चेतावनी"
+        ],
+        [
+         "OCR (Optical Character Recognition)",
+         "तस्वीर से छपा या हाथ से लिखा पाठ पढ़कर उसे editable text में बदलता है",
+         "Google Lens से signboard या बिल पढ़ना; फ़ॉर्म में PAN या Aadhaar विवरण scan करना"
+        ],
+        [
+         "मशीन निरीक्षण",
+         "उत्पादों पर खरोंच, दरार और गायब हिस्से पहचानता है",
+         "कारखाने की line पर बोतलें, गोलियाँ या कार के पुर्ज़े जाँचना"
+        ],
+        [
+         "3D model बनाना",
+         "कई 2D तस्वीरों से वस्तुओं या जगहों का 3D आकार बनाता है; robotics, AR/VR में",
+         "डिजिटल संरक्षण के लिए धरोहर स्मारकों की 3D scanning"
+        ],
+        [
+         "निगरानी (Surveillance)",
+         "CCTV feed में असामान्य घटनाएँ, भीड़ या छोड़ी गई वस्तुएँ देखता है",
+         "मेलों और रेलवे स्टेशनों जैसे बड़े आयोजनों पर भीड़ निगरानी"
+        ],
+        [
+         "फ़िंगरप्रिंट और biometrics",
+         "पहचान की पुष्टि के लिए अँगुलियों, आँख की पुतली (iris) या चेहरे के पैटर्न पढ़ता है",
+         "राशन और बैंकिंग सेवाओं के लिए Aadhaar आधारित biometric प्रमाणीकरण"
+        ],
+        [
+         "कृषि",
+         "फ़ोन, drone या satellite तस्वीरों से फ़सल रोग, खरपतवार और पकना पहचानता है",
+         "फ़सल-रोग apps जिनमें किसान पत्ती की फ़ोटो लेते हैं"
+        ],
+        [
+         "यातायात और परिवहन",
+         "Number plate पढ़ता है, वाहन गिनता है, signal तोड़ना पकड़ता है",
+         "Toll plaza और e-challan के लिए automatic number plate recognition"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: in healthcare and law enforcement, CV is a support tool. A trained person must check its output before any serious decision is made.",
+      "hi": "याद रखें: स्वास्थ्य और कानून व्यवस्था में CV एक सहायक उपकरण है। कोई भी गंभीर निर्णय लेने से पहले प्रशिक्षित व्यक्ति को उसके output की जाँच करनी चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.12 Challenges of computer vision",
+    "hi": "3.12 कंप्यूटर विज़न की चुनौतियाँ"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Reasoning and analytical issues: a CV model can detect objects but may not truly understand a scene. A person holding a toy gun and a real gun may look alike; a cow sitting on a road may be missed if the model never saw such images. Deep models are also a 'black box'—it is hard to explain why they decided something.",
+       "Difficulty in image acquisition: changes in lighting, shadows, viewing angle, distance (scale), motion blur, weather (fog, rain) and occlusion (one object hiding part of another) make the same object look very different.",
+       "Privacy and security concerns: cameras with face recognition can track people without their knowledge. Face and fingerprint data are sensitive personal data and must be collected with consent, stored securely and used only for the stated purpose (India's Digital Personal Data Protection Act, 2023 sets rules for handling personal data).",
+       "Duplicate and false content: AI can create deepfakes—realistic fake photos and videos of real people—used for fraud, rumours or bullying. Edited images can spread misinformation quickly on social media.",
+       "Bias and fairness: if the training images mostly show one skin tone, age group or region, the model may work worse for others, which is unfair.",
+       "Data and computing cost: training good models needs large labelled datasets (labelling is slow and costly) and powerful hardware (GPUs), and real-time systems must be very fast."
+      ],
+      "hi": [
+       "तर्क और विश्लेषण की समस्याएँ: CV model वस्तुएँ पहचान सकता है पर दृश्य को सचमुच नहीं समझता। खिलौना बंदूक और असली बंदूक पकड़े व्यक्ति एक जैसे दिख सकते हैं; सड़क पर बैठी गाय छूट सकती है अगर model ने ऐसी तस्वीरें कभी नहीं देखीं। गहरे models 'black box' भी हैं—यह समझाना कठिन है कि उन्होंने कोई निर्णय क्यों लिया।",
+       "तस्वीर प्राप्ति में कठिनाई: रोशनी, परछाई, देखने का कोण, दूरी (scale), हिलने से धुंधलापन, मौसम (कोहरा, बारिश) और occlusion (एक वस्तु का दूसरी के हिस्से को ढक लेना) से एक ही वस्तु बहुत अलग दिखती है।",
+       "निजता और सुरक्षा की चिंताएँ: चेहरा पहचान वाले camera लोगों को उनकी जानकारी के बिना ट्रैक कर सकते हैं। चेहरा और फ़िंगरप्रिंट संवेदनशील निजी डेटा हैं, इन्हें सहमति से लेना, सुरक्षित रखना और केवल बताए उद्देश्य के लिए उपयोग करना चाहिए (भारत का Digital Personal Data Protection Act, 2023 निजी डेटा के नियम तय करता है)।",
+       "नकली और भ्रामक सामग्री: AI deepfakes बना सकता है—असली लोगों की असली-जैसी नकली फ़ोटो और वीडियो—जो धोखाधड़ी, अफ़वाह या bullying में इस्तेमाल होते हैं। बदली गई तस्वीरें social media पर गलत सूचना तेज़ी से फैला सकती हैं।",
+       "पक्षपात (bias) और निष्पक्षता: अगर training तस्वीरों में ज़्यादातर एक ही त्वचा का रंग, आयु वर्ग या क्षेत्र हो, तो model दूसरों के लिए खराब काम कर सकता है, जो अनुचित है।",
+       "डेटा और computing की लागत: अच्छे models के लिए बड़े labelled datasets (labelling धीमा और महँगा है) और शक्तिशाली hardware (GPUs) चाहिए, और real-time systems को बहुत तेज़ होना पड़ता है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Stay safe: before forwarding a shocking photo or video, check it with a trusted news source or a fact-check site; look for odd blinking, blurry edges around the face, or lips not matching the voice. Do not share your or your friends' photos with unknown apps, and talk to a trusted adult if someone misuses your image. You can report cyber fraud at cybercrime.gov.in or the helpline 1930.",
+      "hi": "सुरक्षित रहें: कोई चौंकाने वाली फ़ोटो या वीडियो आगे भेजने से पहले किसी भरोसेमंद समाचार स्रोत या fact-check साइट से जाँचें; अजीब पलक झपकना, चेहरे के आसपास धुंधले किनारे, या आवाज़ से न मिलते होंठ देखें। अपनी या दोस्तों की फ़ोटो अनजान apps को न दें, और कोई आपकी तस्वीर का गलत उपयोग करे तो किसी भरोसेमंद बड़े से बात करें। साइबर धोखाधड़ी की शिकायत cybercrime.gov.in या helpline 1930 पर की जा सकती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.13 The future of computer vision",
+    "hi": "3.13 कंप्यूटर विज़न का भविष्य"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Computer vision has grown from reading simple printed digits to understanding complex scenes in real time. Two things drive this growth: deep learning models, and very large labelled image datasets together with faster chips. Some directions that are already developing:",
+      "hi": "Computer vision सरल छपे अंकों को पढ़ने से बढ़कर real time में जटिल दृश्यों को समझने तक पहुँच गया है। इस विकास के दो कारण हैं: deep learning models, और बहुत बड़े labelled image datasets के साथ तेज़ chips। कुछ दिशाएँ जो पहले से विकसित हो रही हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Healthcare: earlier screening and more personalised diagnosis support, including in rural areas through phone-based tools.",
+       "Augmented reality (AR): richer AR experiences in education, shopping (try a pair of glasses virtually) and navigation.",
+       "Edge AI: models running directly on phones, cameras and drones without sending images to the cloud, which is faster and better for privacy.",
+       "Multimodal AI: models that understand images and language together, so you can ask questions about a photo in your own language.",
+       "Robotics, smart cities and agriculture: robots that sort waste, traffic signals that adapt to real traffic, drones that monitor crops.",
+       "Accessibility: apps that describe surroundings aloud or read text for people with visual impairment."
+      ],
+      "hi": [
+       "स्वास्थ्य: जल्दी जाँच और अधिक व्यक्तिगत निदान सहायता, फ़ोन-आधारित tools से ग्रामीण क्षेत्रों में भी।",
+       "Augmented reality (AR): शिक्षा, खरीदारी (चश्मा virtually पहनकर देखना) और रास्ता खोजने में बेहतर AR अनुभव।",
+       "Edge AI: models सीधे फ़ोन, camera और drone पर चलते हैं, तस्वीरें cloud पर भेजे बिना, जो तेज़ और निजता के लिए बेहतर है।",
+       "Multimodal AI: ऐसे models जो तस्वीर और भाषा को साथ समझें, ताकि आप अपनी भाषा में किसी फ़ोटो के बारे में प्रश्न पूछ सकें।",
+       "Robotics, smart cities और कृषि: कचरा छाँटने वाले robot, असली ट्रैफ़िक के अनुसार बदलने वाले signal, फ़सल पर नज़र रखने वाले drone।",
+       "सुलभता (Accessibility): ऐसे apps जो दृष्टिबाधित लोगों के लिए आसपास का वर्णन बोलकर करें या पाठ पढ़कर सुनाएँ।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: the future of CV depends as much on responsible use—privacy, fairness, consent and human oversight—as on better technology.",
+      "hi": "याद रखें: CV का भविष्य जितना बेहतर तकनीक पर निर्भर है, उतना ही ज़िम्मेदार उपयोग—निजता, निष्पक्षता, सहमति और मानवीय निगरानी—पर भी।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.14 Practical: Creating a website with an ML model (Teachable Machine)",
+    "hi": "3.14 प्रायोगिक: ML model के साथ website बनाना (Teachable Machine)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Aim: train a simple image-classification model without coding, and put it on a web page so anyone with the link can use it through a webcam or phone camera. This shows the full journey from data to a deployed AI product.",
+      "hi": "उद्देश्य: बिना coding के एक सरल image-classification model train करना, और उसे web page पर लगाना ताकि link वाला कोई भी व्यक्ति webcam या फ़ोन camera से उसका उपयोग कर सके। इससे डेटा से लेकर deployed AI उत्पाद तक की पूरी यात्रा दिखती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "What you need: a laptop/desktop with a webcam (or a phone), internet, the free Google Teachable Machine website (teachablemachine.withgoogle.com), and a free website builder or hosting service that allows you to add custom HTML/JavaScript (for example Weebly's embed-code element, or a free GitHub Pages site). Under-18 students should create accounts only with a parent or teacher's help.",
+      "hi": "क्या चाहिए: webcam वाला laptop/desktop (या फ़ोन), internet, मुफ़्त Google Teachable Machine website (teachablemachine.withgoogle.com), और कोई मुफ़्त website builder या hosting सेवा जिसमें custom HTML/JavaScript जोड़ सकें (जैसे Weebly का embed-code element, या मुफ़्त GitHub Pages site)। 18 वर्ष से कम आयु के छात्र खाते केवल माता-पिता या शिक्षक की मदद से बनाएँ।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Decide the problem: for example, 'Is this fruit ripe or unripe?', 'Mask or no mask', or 'Recyclable or non-recyclable waste'.",
+       "Open Teachable Machine, click Get Started and choose Image Project → Standard image model.",
+       "Rename 'Class 1' and 'Class 2' to your labels (e.g. Ripe, Unripe). Add more classes if needed. Adding a 'Nothing/Background' class helps the model when no object is shown.",
+       "Collect data: for each class, use Webcam (hold to record) or Upload to add images—at least 50–100 per class, from different angles, distances and lighting, with a plain background.",
+       "Click Train Model and wait. Keep the browser tab open while training.",
+       "Test in the Preview panel: show new objects to the camera and watch the confidence bars for each class. If it makes mistakes, add more varied images and train again.",
+       "Click Export Model → choose the TensorFlow.js option → Upload my model. You get a shareable link to your model and a ready-made JavaScript code snippet.",
+       "Copy the code snippet. In your website builder, add an Embed Code / custom HTML block and paste the snippet (or paste it into an index.html file for GitHub Pages).",
+       "Publish the site, open it, click the Start button and allow camera access. The page now shows the model's predictions live."
+      ],
+      "hi": [
+       "समस्या तय करें: जैसे 'यह फल पका है या कच्चा?', 'Mask है या नहीं', या 'कचरा recyclable है या non-recyclable'।",
+       "Teachable Machine खोलें, Get Started दबाएँ और Image Project → Standard image model चुनें।",
+       "'Class 1' और 'Class 2' का नाम अपने labels (जैसे पका, कच्चा) रखें। ज़रूरत हो तो और classes जोड़ें। 'कुछ नहीं/Background' class जोड़ने से model को तब मदद मिलती है जब कोई वस्तु न दिखाई जाए।",
+       "डेटा इकट्ठा करें: हर class के लिए Webcam (दबाए रखकर record) या Upload से तस्वीरें जोड़ें—हर class में कम से कम 50–100, अलग-अलग कोणों, दूरियों और रोशनी में, सादे background के साथ।",
+       "Train Model दबाएँ और प्रतीक्षा करें। Training के दौरान browser tab खुला रखें।",
+       "Preview panel में जाँचें: camera को नई वस्तुएँ दिखाएँ और हर class की confidence bars देखें। गलती करे तो और विविध तस्वीरें जोड़कर फिर train करें।",
+       "Export Model → TensorFlow.js विकल्प → Upload my model दबाएँ। आपको model का shareable link और तैयार JavaScript code snippet मिलेगा।",
+       "Code snippet copy करें। अपने website builder में Embed Code / custom HTML block जोड़कर snippet paste करें (या GitHub Pages के लिए index.html फ़ाइल में paste करें)।",
+       "Site publish करें, खोलें, Start बटन दबाएँ और camera की अनुमति दें। अब page पर model के predictions live दिखते हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "What you observe: the model is very good with objects and backgrounds like those in its training images, but it may get confused by a new background, poor light or an object it never saw. This is the 'difficulty in image acquisition' and 'bias in data' challenge from Section 3.12, seen first-hand. The confidence percentage is not a guarantee of being right.",
+      "hi": "क्या देखते हैं: model उन वस्तुओं और backgrounds के साथ बहुत अच्छा है जो उसकी training तस्वीरों जैसे हैं, पर नया background, खराब रोशनी या कभी न देखी वस्तु उसे भ्रमित कर सकती है। यह खंड 3.12 की 'तस्वीर प्राप्ति में कठिनाई' और 'डेटा में bias' वाली चुनौती है, जो आप खुद देखते हैं। Confidence प्रतिशत सही होने की गारंटी नहीं है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "CV stage",
+        "Where it happens in this activity"
+       ],
+       "hi": [
+        "CV चरण",
+        "इस गतिविधि में कहाँ होता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Acquisition",
+         "Recording images with the webcam or uploading them"
+        ],
+        [
+         "Preprocessing",
+         "Teachable Machine crops and resizes every image to a fixed square size automatically"
+        ],
+        [
+         "Feature extraction",
+         "A pre-trained neural network inside the tool extracts features (transfer learning)"
+        ],
+        [
+         "Classification",
+         "The final layer learns your classes from your examples"
+        ],
+        [
+         "High-level processing / deployment",
+         "Your website shows the label and confidence, and a user acts on it"
+        ]
+       ],
+       "hi": [
+        [
+         "Acquisition",
+         "Webcam से तस्वीरें record करना या upload करना"
+        ],
+        [
+         "Preprocessing",
+         "Teachable Machine हर तस्वीर को अपने आप एक तय वर्गाकार आकार में crop और resize करता है"
+        ],
+        [
+         "Feature extraction",
+         "Tool के अंदर पहले से प्रशिक्षित neural network features निकालता है (transfer learning)"
+        ],
+        [
+         "Classification",
+         "अंतिम layer आपके उदाहरणों से आपकी classes सीखती है"
+        ],
+        [
+         "High-level processing / deployment",
+         "आपकी website label और confidence दिखाती है, और उपयोगकर्ता उसके अनुसार काम करता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Privacy tip: in Teachable Machine, training happens in your browser. When you choose 'Upload my model', the trained model (not your training images) is hosted so the link can work. Still, avoid using other people's faces as data without their permission.",
+      "hi": "निजता सुझाव: Teachable Machine में training आपके browser में होती है। 'Upload my model' चुनने पर प्रशिक्षित model (आपकी training तस्वीरें नहीं) host होता है ताकि link काम करे। फिर भी, दूसरों के चेहरों को उनकी अनुमति के बिना डेटा के रूप में न लें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.15 Working with OpenCV (for advanced learners)",
+    "hi": "3.15 OpenCV के साथ काम (उन्नत विद्यार्थियों के लिए)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "OpenCV",
+       "hi": "OpenCV"
+      },
+      "text": {
+       "en": "OpenCV (Open Source Computer Vision Library) is a free, open-source library of hundreds of computer-vision functions, usable from Python, C++ and other languages. In Python it is imported as cv2 and installed with: pip install opencv-python.",
+       "hi": "OpenCV (Open Source Computer Vision Library) सैकड़ों computer-vision functions की एक मुफ़्त, open-source library है, जिसे Python, C++ और अन्य भाषाओं से उपयोग किया जा सकता है। Python में इसे cv2 नाम से import किया जाता है और इस command से install करते हैं: pip install opencv-python।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Function",
+        "What it does"
+       ],
+       "hi": [
+        "Function",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "cv2.imread(path)",
+         "Loads an image file as a NumPy array (BGR order); returns None if the file is not found"
+        ],
+        [
+         "cv2.imshow(title, img)",
+         "Shows the image in a window (on a desktop); use with cv2.waitKey(0) and cv2.destroyAllWindows()"
+        ],
+        [
+         "cv2.imwrite(path, img)",
+         "Saves an image to a file"
+        ],
+        [
+         "cv2.resize(img, (width, height))",
+         "Changes the image size; note the order is width first, then height"
+        ],
+        [
+         "cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)",
+         "Converts colour to grayscale (other codes convert BGR to RGB, HSV, etc.)"
+        ],
+        [
+         "cv2.GaussianBlur(img, (5, 5), 0)",
+         "Smooths the image to reduce noise"
+        ],
+        [
+         "cv2.Canny(img, low, high)",
+         "Detects edges using two thresholds"
+        ],
+        [
+         "cv2.equalizeHist(gray)",
+         "Histogram equalisation of a grayscale image to improve contrast"
+        ]
+       ],
+       "hi": [
+        [
+         "cv2.imread(path)",
+         "तस्वीर की फ़ाइल को NumPy array (BGR क्रम) के रूप में load करता है; फ़ाइल न मिले तो None देता है"
+        ],
+        [
+         "cv2.imshow(title, img)",
+         "तस्वीर को एक window में दिखाता है (desktop पर); cv2.waitKey(0) और cv2.destroyAllWindows() के साथ"
+        ],
+        [
+         "cv2.imwrite(path, img)",
+         "तस्वीर को फ़ाइल में सहेजता है"
+        ],
+        [
+         "cv2.resize(img, (width, height))",
+         "तस्वीर का आकार बदलता है; ध्यान दें क्रम पहले चौड़ाई, फिर ऊँचाई है"
+        ],
+        [
+         "cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)",
+         "रंगीन को grayscale में बदलता है (अन्य codes BGR को RGB, HSV आदि में बदलते हैं)"
+        ],
+        [
+         "cv2.GaussianBlur(img, (5, 5), 0)",
+         "Noise कम करने के लिए तस्वीर को smooth करता है"
+        ],
+        [
+         "cv2.Canny(img, low, high)",
+         "दो thresholds से किनारे (edges) पहचानता है"
+        ],
+        [
+         "cv2.equalizeHist(gray)",
+         "Contrast सुधारने के लिए grayscale तस्वीर का histogram equalisation"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The program below creates its own test image (a red rectangle on a light-blue background) so that it runs without any download, then loads, resizes, converts to grayscale, blurs and finds edges. It was run, and the output shown is real. Notice that img.shape gives (height, width, channels), while cv2.resize takes (width, height).",
+      "hi": "नीचे का program अपनी परीक्षण तस्वीर (हल्के नीले background पर लाल आयत) खुद बनाता है ताकि बिना download के चले, फिर उसे load, resize, grayscale, blur करके किनारे खोजता है। इसे चलाया गया है और output असली है। ध्यान दें कि img.shape (ऊँचाई, चौड़ाई, channels) देता है, जबकि cv2.resize (चौड़ाई, ऊँचाई) लेता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import cv2\nimport numpy as np\n\n# Make a test colour image (100 x 150) and save it, so the program needs no download\nimg = np.zeros((100, 150, 3), dtype=np.uint8)\nimg[:] = (255, 200, 100)                                   # light blue background (B, G, R)\ncv2.rectangle(img, (40, 25), (110, 75), (0, 0, 255), -1)   # filled red rectangle\ncv2.imwrite(\"test.png\", img)\n\nphoto = cv2.imread(\"test.png\")              # 1. load\nprint(\"Loaded shape (h, w, channels):\", photo.shape)\nprint(\"Pixel at row 50, col 75 (B,G,R):\", photo[50, 75])\n\nsmall = cv2.resize(photo, (75, 50))          # 2. resize to width 75, height 50\nprint(\"Resized shape:\", small.shape)\n\ngray = cv2.cvtColor(photo, cv2.COLOR_BGR2GRAY)   # 3. grayscale\nprint(\"Gray shape:\", gray.shape, \" value at centre:\", gray[50, 75])\n\nblur = cv2.GaussianBlur(gray, (5, 5), 0)          # 4. reduce noise\nedges = cv2.Canny(blur, 50, 150)                  # 5. find edges\nprint(\"Edge pixels found:\", int(np.count_nonzero(edges)))\ncv2.imwrite(\"edges.png\", edges)\n\nOutput:\nLoaded shape (h, w, channels): (100, 150, 3)\nPixel at row 50, col 75 (B,G,R): [  0   0 255]\nResized shape: (50, 75, 3)\nGray shape: (100, 150)  value at centre: 76\nEdge pixels found: 240",
+      "hi": "import cv2\nimport numpy as np\n\n# Make a test colour image (100 x 150) and save it, so the program needs no download\nimg = np.zeros((100, 150, 3), dtype=np.uint8)\nimg[:] = (255, 200, 100)                                   # light blue background (B, G, R)\ncv2.rectangle(img, (40, 25), (110, 75), (0, 0, 255), -1)   # filled red rectangle\ncv2.imwrite(\"test.png\", img)\n\nphoto = cv2.imread(\"test.png\")              # 1. load\nprint(\"Loaded shape (h, w, channels):\", photo.shape)\nprint(\"Pixel at row 50, col 75 (B,G,R):\", photo[50, 75])\n\nsmall = cv2.resize(photo, (75, 50))          # 2. resize to width 75, height 50\nprint(\"Resized shape:\", small.shape)\n\ngray = cv2.cvtColor(photo, cv2.COLOR_BGR2GRAY)   # 3. grayscale\nprint(\"Gray shape:\", gray.shape, \" value at centre:\", gray[50, 75])\n\nblur = cv2.GaussianBlur(gray, (5, 5), 0)          # 4. reduce noise\nedges = cv2.Canny(blur, 50, 150)                  # 5. find edges\nprint(\"Edge pixels found:\", int(np.count_nonzero(edges)))\ncv2.imwrite(\"edges.png\", edges)\n\nOutput:\nLoaded shape (h, w, channels): (100, 150, 3)\nPixel at row 50, col 75 (B,G,R): [  0   0 255]\nResized shape: (50, 75, 3)\nGray shape: (100, 150)  value at centre: 76\nEdge pixels found: 240"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Why is the centre pixel printed as [0 0 255] when the rectangle is red, and why does it become 76 in grayscale?",
+       "hi": "आयत लाल है तो बीच का pixel [0 0 255] क्यों छपा, और grayscale में यह 76 क्यों हो गया?"
+      },
+      "a": {
+       "en": "Step 1: OpenCV stores colours in B, G, R order. Red = blue 0, green 0, red 255, so it prints [0 0 255].\nStep 2: Grayscale conversion uses a weighted sum: Gray ≈ 0.299 × R + 0.587 × G + 0.114 × B.\nStep 3: Gray ≈ 0.299 × 255 + 0 + 0 ≈ 76.2, stored as the whole number 76.\nSo pure red looks fairly dark in grayscale, because our eyes are most sensitive to green.",
+       "hi": "चरण 1: OpenCV रंगों को B, G, R क्रम में रखता है। लाल = नीला 0, हरा 0, लाल 255, इसलिए [0 0 255] छपा।\nचरण 2: Grayscale रूपांतरण भारित योग (weighted sum) से होता है: Gray ≈ 0.299 × R + 0.587 × G + 0.114 × B।\nचरण 3: Gray ≈ 0.299 × 255 + 0 + 0 ≈ 76.2, जो पूर्ण संख्या 76 के रूप में रखा जाता है।\nइसलिए शुद्ध लाल grayscale में काफ़ी गहरा दिखता है, क्योंकि हमारी आँखें हरे रंग के प्रति सबसे अधिक संवेदनशील हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: this OpenCV section is for advanced learners and is not evaluated in the board exam, but it helps you understand every preprocessing and feature-extraction step by actually doing it. cv2.imshow opens a window only on a desktop; on online notebooks use matplotlib's plt.imshow instead (convert BGR to RGB first).",
+      "hi": "याद रखें: यह OpenCV खंड उन्नत विद्यार्थियों के लिए है और बोर्ड परीक्षा में इसका मूल्यांकन नहीं होता, पर इसे खुद करके आप हर preprocessing और feature-extraction चरण समझ जाते हैं। cv2.imshow केवल desktop पर window खोलता है; online notebooks में matplotlib का plt.imshow इस्तेमाल करें (पहले BGR को RGB में बदलें)।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking a computer 'sees' a picture like we do. Fix: it only receives a grid of numbers; meaning comes from algorithms and trained models.",
+   "Saying grayscale values go from 1 to 256. Fix: 8 bits give 256 values numbered 0 (black) to 255 (white).",
+   "Mixing up resolution and file size. Fix: resolution is the number of pixels (width × height); file size also depends on colour channels and compression.",
+   "Getting the stage order wrong. Fix: Acquisition → Preprocessing → Feature extraction → Detection/Segmentation → High-level processing.",
+   "Confusing object detection with segmentation. Fix: detection draws boxes around objects; segmentation labels every pixel to get the exact shape.",
+   "Mixing semantic and instance segmentation. Fix: semantic gives all objects of a class the same label; instance separates each individual object.",
+   "Writing cv2.resize(img, (height, width)). Fix: cv2.resize takes (width, height), while img.shape returns (height, width, channels).",
+   "Assuming OpenCV images are RGB. Fix: cv2.imread loads colours in BGR order; convert with cv2.cvtColor(img, cv2.COLOR_BGR2RGB) before showing with matplotlib.",
+   "Training a Teachable Machine model with only a few, similar photos. Fix: use many images per class with different angles, lighting and backgrounds, and test with new images.",
+   "Treating a high confidence score as proof. Fix: a model can be confidently wrong, especially on images unlike its training data; important decisions need human checking."
+  ],
+  "hi": [
+   "यह सोचना कि कंप्यूटर तस्वीर को हमारी तरह 'देखता' है। सुधार: उसे केवल संख्याओं का grid मिलता है; अर्थ algorithms और प्रशिक्षित models से आता है।",
+   "यह कहना कि grayscale मान 1 से 256 तक होते हैं। सुधार: 8 bits से 256 मान मिलते हैं, जिनकी गिनती 0 (काला) से 255 (सफ़ेद) तक है।",
+   "Resolution और फ़ाइल आकार को एक समझना। सुधार: resolution pixels की संख्या (चौड़ाई × ऊँचाई) है; फ़ाइल आकार रंग channels और compression पर भी निर्भर है।",
+   "चरणों का क्रम गलत लिखना। सुधार: Acquisition → Preprocessing → Feature extraction → Detection/Segmentation → High-level processing।",
+   "Object detection और segmentation को मिलाना। सुधार: detection वस्तुओं के चारों ओर box बनाता है; segmentation हर pixel को label देकर सटीक आकार देता है।",
+   "Semantic और instance segmentation को मिलाना। सुधार: semantic एक class की सभी वस्तुओं को एक ही label देता है; instance हर अलग वस्तु को अलग करता है।",
+   "cv2.resize(img, (height, width)) लिखना। सुधार: cv2.resize (width, height) लेता है, जबकि img.shape (height, width, channels) देता है।",
+   "यह मानना कि OpenCV की तस्वीरें RGB हैं। सुधार: cv2.imread रंग BGR क्रम में load करता है; matplotlib में दिखाने से पहले cv2.cvtColor(img, cv2.COLOR_BGR2RGB) से बदलें।",
+   "Teachable Machine model को केवल कुछ, एक जैसी फ़ोटो से train करना। सुधार: हर class में अलग कोण, रोशनी और background वाली कई तस्वीरें लें, और नई तस्वीरों से जाँचें।",
+   "ऊँचे confidence score को प्रमाण मान लेना। सुधार: model पूरे विश्वास से भी गलत हो सकता है, खासकर training data से अलग तस्वीरों पर; महत्वपूर्ण निर्णयों में इंसानी जाँच ज़रूरी है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Computer Vision (CV)",
+    "hi": "कंप्यूटर विज़न"
+   },
+   "d": {
+    "en": "Field of AI that enables machines to capture, process and understand images and videos and act on them; also called machine vision.",
+    "hi": "AI का क्षेत्र जो मशीनों को तस्वीरें और वीडियो लेने, process करने, समझने और उन पर कार्य करने में सक्षम बनाता है; इसे machine vision भी कहते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Digital image",
+    "hi": "डिजिटल तस्वीर"
+   },
+   "d": {
+    "en": "A picture stored as a grid of numbers (pixel values).",
+    "hi": "संख्याओं (pixel मानों) के grid के रूप में रखी गई तस्वीर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pixel",
+    "hi": "पिक्सल"
+   },
+   "d": {
+    "en": "Picture element; the smallest unit of a digital image, showing one colour or shade.",
+    "hi": "Picture element; डिजिटल तस्वीर की सबसे छोटी इकाई, जो एक रंग या छाया दिखाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Digitisation",
+    "hi": "अंकीकरण"
+   },
+   "d": {
+    "en": "Converting a real scene or paper picture into a grid of pixel values.",
+    "hi": "वास्तविक दृश्य या कागज़ी चित्र को pixel मानों के grid में बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Resolution",
+    "hi": "रिज़ॉल्यूशन"
+   },
+   "d": {
+    "en": "Number of pixels in an image, written width × height.",
+    "hi": "तस्वीर में pixels की संख्या, चौड़ाई × ऊँचाई के रूप में लिखी जाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Grayscale image",
+    "hi": "ग्रेस्केल तस्वीर"
+   },
+   "d": {
+    "en": "Single-channel image; each pixel 0 (black) to 255 (white).",
+    "hi": "एक channel वाली तस्वीर; हर pixel 0 (काला) से 255 (सफ़ेद)।"
+   }
+  },
+  {
+   "t": {
+    "en": "RGB image",
+    "hi": "RGB तस्वीर"
+   },
+   "d": {
+    "en": "Colour image with Red, Green and Blue channels, each 0–255; about 16.7 million colours possible.",
+    "hi": "Red, Green, Blue channels वाली रंगीन तस्वीर, हर एक 0–255; लगभग 1.67 करोड़ रंग संभव।"
+   }
+  },
+  {
+   "t": {
+    "en": "Thresholding",
+    "hi": "Thresholding"
+   },
+   "d": {
+    "en": "Turning each grey value into 0 or 1 by comparing it with a cut-off value.",
+    "hi": "हर ग्रे मान को एक सीमा मान से तुलना करके 0 या 1 में बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image acquisition",
+    "hi": "Image acquisition"
+   },
+   "d": {
+    "en": "First CV stage: capturing images or video with a sensor as raw data.",
+    "hi": "CV का पहला चरण: sensor से तस्वीरें या वीडियो कच्चे डेटा के रूप में लेना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Preprocessing",
+    "hi": "Preprocessing"
+   },
+   "d": {
+    "en": "Cleaning and standardising images (noise reduction, normalisation, resizing, equalisation).",
+    "hi": "तस्वीरों को साफ़ और एक-समान बनाना (noise reduction, normalisation, resizing, equalisation)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Noise",
+    "hi": "Noise (शोर)"
+   },
+   "d": {
+    "en": "Unwanted random variation in pixel values, seen as grain or specks.",
+    "hi": "Pixel मानों में अनचाहा बेतरतीब बदलाव, जो दानों या धब्बों जैसा दिखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Normalisation",
+    "hi": "Normalisation"
+   },
+   "d": {
+    "en": "Rescaling pixel values to a standard range such as 0–1 or −1 to 1.",
+    "hi": "Pixel मानों को 0–1 या −1 से 1 जैसी मानक सीमा में बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Histogram equalisation",
+    "hi": "Histogram equalisation"
+   },
+   "d": {
+    "en": "Spreading pixel brightness values over the full range to improve contrast.",
+    "hi": "Contrast सुधारने के लिए pixel चमक मानों को पूरी सीमा में फैलाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature extraction",
+    "hi": "Feature extraction"
+   },
+   "d": {
+    "en": "Finding useful patterns (edges, corners, texture, colour) and turning them into numbers.",
+    "hi": "उपयोगी पैटर्न (किनारे, कोने, बनावट, रंग) खोजकर उन्हें संख्याओं में बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Edge",
+    "hi": "Edge (किनारा)"
+   },
+   "d": {
+    "en": "A boundary where brightness changes sharply between neighbouring pixels.",
+    "hi": "वह सीमा जहाँ पड़ोसी pixels के बीच चमक अचानक बदलती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Corner",
+    "hi": "Corner (कोना)"
+   },
+   "d": {
+    "en": "A point where two edges meet; a region of high curvature.",
+    "hi": "वह बिंदु जहाँ दो किनारे मिलते हैं; अधिक मोड़ वाला हिस्सा।"
+   }
+  },
+  {
+   "t": {
+    "en": "CNN",
+    "hi": "CNN"
+   },
+   "d": {
+    "en": "Convolutional Neural Network; a deep learning model that learns image features automatically.",
+    "hi": "Convolutional Neural Network; deep learning model जो तस्वीर के features अपने आप सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification",
+    "hi": "Classification"
+   },
+   "d": {
+    "en": "Giving an image one label from a fixed set of classes.",
+    "hi": "तस्वीर को classes के तय समूह में से एक label देना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Localisation",
+    "hi": "Localisation"
+   },
+   "d": {
+    "en": "Finding where the main object is, using a bounding box.",
+    "hi": "Bounding box से यह पता करना कि मुख्य वस्तु कहाँ है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bounding box",
+    "hi": "Bounding box"
+   },
+   "d": {
+    "en": "A rectangle drawn around an object to show its position.",
+    "hi": "किसी वस्तु की स्थिति दिखाने के लिए उसके चारों ओर बना आयत।"
+   }
+  },
+  {
+   "t": {
+    "en": "Object detection",
+    "hi": "Object detection"
+   },
+   "d": {
+    "en": "Locating and labelling all objects of interest in an image with boxes (e.g. YOLO, SSD, R-CNN).",
+    "hi": "तस्वीर में सभी ज़रूरी वस्तुओं को boxes के साथ खोजना और label करना (जैसे YOLO, SSD, R-CNN)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image segmentation",
+    "hi": "Image segmentation"
+   },
+   "d": {
+    "en": "Labelling every pixel to divide an image into meaningful regions (masks).",
+    "hi": "हर pixel को label देकर तस्वीर को सार्थक हिस्सों (masks) में बाँटना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Semantic segmentation",
+    "hi": "Semantic segmentation"
+   },
+   "d": {
+    "en": "Pixel labelling by class only; all objects of one class share a label.",
+    "hi": "केवल class के अनुसार pixel labelling; एक class की सभी वस्तुओं का एक label।"
+   }
+  },
+  {
+   "t": {
+    "en": "Instance segmentation",
+    "hi": "Instance segmentation"
+   },
+   "d": {
+    "en": "Pixel labelling that separates each individual object, even within the same class.",
+    "hi": "Pixel labelling जो एक ही class में भी हर अलग वस्तु को अलग करती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "High-level processing",
+    "hi": "High-level processing"
+   },
+   "d": {
+    "en": "Final CV stage: understanding the scene and context and supporting a decision.",
+    "hi": "CV का अंतिम चरण: दृश्य और संदर्भ समझना और निर्णय में सहायता करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "OCR",
+    "hi": "OCR"
+   },
+   "d": {
+    "en": "Optical Character Recognition; reading text from images.",
+    "hi": "Optical Character Recognition; तस्वीरों से पाठ पढ़ना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Occlusion",
+    "hi": "Occlusion"
+   },
+   "d": {
+    "en": "When part of an object is hidden behind another object.",
+    "hi": "जब किसी वस्तु का हिस्सा दूसरी वस्तु के पीछे छिप जाए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deepfake",
+    "hi": "Deepfake"
+   },
+   "d": {
+    "en": "A realistic fake image or video of a real person made with AI.",
+    "hi": "AI से बनी किसी असली व्यक्ति की असली-जैसी नकली तस्वीर या वीडियो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Teachable Machine",
+    "hi": "Teachable Machine"
+   },
+   "d": {
+    "en": "Free Google web tool to train image, sound and pose models without coding and export them.",
+    "hi": "बिना coding के image, sound और pose models train करके export करने का मुफ़्त Google web tool।"
+   }
+  },
+  {
+   "t": {
+    "en": "TensorFlow.js",
+    "hi": "TensorFlow.js"
+   },
+   "d": {
+    "en": "A JavaScript library that runs ML models inside a web browser; used to put a Teachable Machine model on a website.",
+    "hi": "JavaScript library जो ML models को web browser में चलाती है; Teachable Machine model को website पर लगाने में उपयोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "OpenCV",
+    "hi": "OpenCV"
+   },
+   "d": {
+    "en": "Open Source Computer Vision Library; imported in Python as cv2.",
+    "hi": "Open Source Computer Vision Library; Python में cv2 के रूप में import।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is the smallest unit of a digital image?\n(a) Byte (b) Pixel (c) Channel (d) Resolution",
+    "hi": "MCQ: डिजिटल तस्वीर की सबसे छोटी इकाई कौन-सी है?\n(a) Byte (b) Pixel (c) Channel (d) Resolution"
+   },
+   "a": {
+    "en": "(b) Pixel.",
+    "hi": "(b) Pixel।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In an 8-bit grayscale image, the value 255 represents:\n(a) black (b) mid-grey (c) white (d) red",
+    "hi": "MCQ: 8-bit grayscale तस्वीर में मान 255 दर्शाता है:\n(a) काला (b) मध्यम ग्रे (c) सफ़ेद (d) लाल"
+   },
+   "a": {
+    "en": "(c) white.",
+    "hi": "(c) सफ़ेद।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is the correct order of CV stages?\n(a) Preprocessing → Acquisition → Detection → Feature extraction → High-level\n(b) Acquisition → Preprocessing → Feature extraction → Detection/Segmentation → High-level processing\n(c) Acquisition → Feature extraction → Preprocessing → High-level → Detection\n(d) Detection → Acquisition → Preprocessing → Feature extraction → High-level",
+    "hi": "MCQ: CV चरणों का सही क्रम कौन-सा है?\n(a) Preprocessing → Acquisition → Detection → Feature extraction → High-level\n(b) Acquisition → Preprocessing → Feature extraction → Detection/Segmentation → High-level processing\n(c) Acquisition → Feature extraction → Preprocessing → High-level → Detection\n(d) Detection → Acquisition → Preprocessing → Feature extraction → High-level"
+   },
+   "a": {
+    "en": "(b).",
+    "hi": "(b)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Scaling pixel values from 0–255 to 0–1 is called:\n(a) cropping (b) normalisation (c) segmentation (d) thresholding",
+    "hi": "MCQ: Pixel मानों को 0–255 से 0–1 में बदलना कहलाता है:\n(a) cropping (b) normalisation (c) segmentation (d) thresholding"
+   },
+   "a": {
+    "en": "(b) normalisation.",
+    "hi": "(b) normalisation।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A colour image usually has ______ channels, named ______.",
+    "hi": "रिक्त स्थान भरें: रंगीन तस्वीर में आम तौर पर ______ channels होते हैं, जिनके नाम ______ हैं।"
+   },
+   "a": {
+    "en": "Three; Red, Green and Blue (RGB).",
+    "hi": "तीन; Red, Green और Blue (RGB)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Computer vision is also known as ______ vision.",
+    "hi": "रिक्त स्थान भरें: Computer vision को ______ vision भी कहते हैं।"
+   },
+   "a": {
+    "en": "Machine.",
+    "hi": "Machine।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: Semantic segmentation gives different labels to two different people in the same photo.",
+    "hi": "सही या गलत: Semantic segmentation एक ही फ़ोटो में दो अलग लोगों को अलग-अलग label देता है।"
+   },
+   "a": {
+    "en": "False. Semantic segmentation labels both as 'person'; instance segmentation would separate them.",
+    "hi": "गलत। Semantic segmentation दोनों को 'व्यक्ति' label देता है; instance segmentation उन्हें अलग करेगा।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: In OpenCV, cv2.imread loads colour images in BGR order.",
+    "hi": "सही या गलत: OpenCV में cv2.imread रंगीन तस्वीरें BGR क्रम में load करता है।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How many pixels and how many stored values does a 640 × 480 RGB image have?",
+    "hi": "640 × 480 RGB तस्वीर में कितने pixels और कितने संग्रहीत मान होते हैं?"
+   },
+   "a": {
+    "en": "Pixels = 640 × 480 = 307,200.\nValues = 307,200 × 3 channels = 921,600.",
+    "hi": "Pixels = 640 × 480 = 3,07,200।\nमान = 3,07,200 × 3 channels = 9,21,600।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Normalise the pixel values 51 and 204 to the range 0–1.",
+    "hi": "Pixel मान 51 और 204 को 0–1 सीमा में normalise कीजिए।"
+   },
+   "a": {
+    "en": "51 ÷ 255 = 0.2 and 204 ÷ 255 = 0.8.",
+    "hi": "51 ÷ 255 = 0.2 और 204 ÷ 255 = 0.8।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain any four preprocessing techniques with one use each.",
+    "hi": "किन्हीं चार preprocessing तकनीकों को एक-एक उपयोग के साथ समझाइए।"
+   },
+   "a": {
+    "en": "1. Noise reduction: removes grain and specks, e.g. cleaning a night CCTV image.\n2. Normalisation: rescales pixels to 0–1 so a model trains stably.\n3. Resizing/cropping: makes every image the same size (e.g. 224 × 224) as the model expects.\n4. Histogram equalisation: improves contrast of a dull or dark X-ray image.",
+    "hi": "1. Noise reduction: दाने और धब्बे हटाता है, जैसे रात की CCTV तस्वीर साफ़ करना।\n2. Normalisation: pixels को 0–1 में लाता है ताकि model स्थिरता से train हो।\n3. Resizing/cropping: हर तस्वीर को model की अपेक्षा वाले एक ही आकार (जैसे 224 × 224) में लाता है।\n4. Histogram equalisation: फीकी या अंधेरी X-ray तस्वीर का contrast सुधारता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between classification + localisation and object detection.",
+    "hi": "Classification + localisation और object detection में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Classification + localisation works on a single main object: it gives one label and one bounding box. Object detection handles multiple objects: it finds every object of interest and gives a label and a box for each.",
+    "hi": "Classification + localisation एक मुख्य वस्तु पर काम करता है: एक label और एक bounding box देता है। Object detection कई वस्तुएँ संभालता है: हर ज़रूरी वस्तु को खोजकर हर एक के लिए label और box देता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name four types of features used in feature extraction and give an example of each.",
+    "hi": "Feature extraction में प्रयुक्त चार प्रकार के features के नाम एक-एक उदाहरण सहित लिखिए।"
+   },
+   "a": {
+    "en": "Edges (outline of a document page), corners (corners of a building window used to match two photos), texture (rough patch on a diseased leaf), colour (red vs green to judge tomato ripeness).",
+    "hi": "Edges (document page की रूपरेखा), corners (दो फ़ोटो मिलाने के लिए इमारत की खिड़की के कोने), texture (रोगग्रस्त पत्ती पर खुरदरा हिस्सा), colour (टमाटर पकने का अनुमान लगाने के लिए लाल बनाम हरा)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Preprocessing is an important stage of computer vision.\nReason (R): Preprocessing removes noise and makes images consistent, which helps later stages give accurate results.\n(a) Both A and R true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): Preprocessing computer vision का एक महत्वपूर्ण चरण है।\nकारण (R): Preprocessing noise हटाता है और तस्वीरों को एक-समान बनाता है, जिससे बाद के चरण सटीक परिणाम देते हैं।\n(a) A और R दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R गलत (d) A गलत, R सही"
+   },
+   "a": {
+    "en": "(a) Both are true and R correctly explains A.",
+    "hi": "(a) दोनों सही हैं और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A grayscale pixel can have 256 different values.\nReason (R): Each grayscale pixel is stored in 8 bits, and 2^8 = 256.\nChoose (a)–(d) as above.",
+    "hi": "अभिकथन (A): एक grayscale pixel के 256 अलग मान हो सकते हैं।\nकारण (R): हर grayscale pixel 8 bits में रखा जाता है, और 2^8 = 256।\nऊपर की तरह (a)–(d) चुनें।"
+   },
+   "a": {
+    "en": "(a) Both true; R explains A.",
+    "hi": "(a) दोनों सही; R, A की व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain any three challenges of computer vision.",
+    "hi": "Computer vision की किन्हीं तीन चुनौतियों को समझाइए।"
+   },
+   "a": {
+    "en": "1. Image acquisition difficulty: lighting, angle, scale and occlusion make the same object look different, reducing accuracy.\n2. Privacy and security: face recognition can track people without consent; biometric data must be protected.\n3. Duplicate and false content: deepfakes and edited images spread misinformation and can be used for fraud.\n(Other valid points: reasoning issues/black box, bias in training data, high data and computing cost.)",
+    "hi": "1. तस्वीर प्राप्ति की कठिनाई: रोशनी, कोण, scale और occlusion से एक ही वस्तु अलग दिखती है, जिससे सटीकता घटती है।\n2. निजता और सुरक्षा: चेहरा पहचान बिना सहमति लोगों को ट्रैक कर सकती है; biometric डेटा सुरक्षित रखना चाहिए।\n3. नकली और भ्रामक सामग्री: deepfakes और बदली तस्वीरें गलत सूचना फैलाती हैं और धोखाधड़ी में उपयोग हो सकती हैं।\n(अन्य सही बिंदु: तर्क की समस्या/black box, training data में bias, डेटा और computing की ऊँची लागत।)"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What does this code print, and why?\nimport numpy as np\nimg = np.zeros((60, 80, 3))\nprint(img.shape[1], img.shape[0])",
+    "hi": "यह code क्या छापेगा, और क्यों?\nimport numpy as np\nimg = np.zeros((60, 80, 3))\nprint(img.shape[1], img.shape[0])"
+   },
+   "a": {
+    "en": "It prints: 80 60\nshape is (height, width, channels) = (60, 80, 3), so shape[1] is the width 80 and shape[0] is the height 60.",
+    "hi": "यह छापेगा: 80 60\nshape (ऊँचाई, चौड़ाई, channels) = (60, 80, 3) है, इसलिए shape[1] चौड़ाई 80 और shape[0] ऊँचाई 60 है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Describe the five stages of the computer vision process using the example of a number-plate reading system at a toll plaza.",
+    "hi": "Toll plaza पर number-plate पढ़ने वाले system के उदाहरण से computer vision प्रक्रिया के पाँच चरण समझाइए।"
+   },
+   "a": {
+    "en": "1. Acquisition: a camera photographs the front of each vehicle as it reaches the barrier.\n2. Preprocessing: the image is converted to grayscale, noise is reduced, contrast improved (useful at night) and the image resized.\n3. Feature extraction: edges and rectangular shapes are found; character shapes are measured.\n4. Detection/segmentation: the number-plate region is detected with a bounding box and each character is segmented.\n5. High-level processing: OCR reads the characters (e.g. a state code and number), the system matches it to records, and the toll is charged or the gate opens.",
+    "hi": "1. Acquisition: वाहन के barrier पर पहुँचते ही camera उसके आगे की फ़ोटो लेता है।\n2. Preprocessing: तस्वीर grayscale में बदली जाती है, noise घटाया जाता है, contrast सुधारा जाता है (रात में उपयोगी) और आकार बदला जाता है।\n3. Feature extraction: किनारे और आयताकार आकार खोजे जाते हैं; अक्षरों के आकार मापे जाते हैं।\n4. Detection/segmentation: number-plate का हिस्सा bounding box से पहचाना जाता है और हर अक्षर अलग किया जाता है।\n5. High-level processing: OCR अक्षर पढ़ता है (जैसे राज्य code और नंबर), system रिकॉर्ड से मिलाता है, और toll कटता है या gate खुलता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A hospital uses a CV model to screen chest X-rays for TB. It works well on X-rays from its own machine but performs poorly on X-rays sent from a rural clinic with an older machine.\n(a) Which challenge of CV is this? (b) Suggest two ways to improve it. (c) Who should make the final diagnosis?",
+    "hi": "केस अध्ययन: एक अस्पताल TB के लिए छाती के X-ray जाँचने हेतु CV model उपयोग करता है। यह अपनी मशीन के X-ray पर अच्छा काम करता है पर पुरानी मशीन वाले ग्रामीण clinic से आए X-ray पर खराब।\n(a) यह CV की कौन-सी चुनौती है? (b) सुधार के दो उपाय बताइए। (c) अंतिम निदान किसे करना चाहिए?"
+   },
+   "a": {
+    "en": "(a) Difficulty in image acquisition (different machines give different quality) and bias in training data (trained on only one source).\n(b) Add X-rays from many machines and clinics to the training data; apply preprocessing such as normalisation and histogram equalisation so images are consistent; test on data from new sources before use.\n(c) A qualified doctor; the model only supports screening.",
+    "hi": "(a) तस्वीर प्राप्ति की कठिनाई (अलग मशीनें अलग गुणवत्ता देती हैं) और training data में bias (केवल एक स्रोत से train)।\n(b) Training data में कई मशीनों और clinics के X-ray जोड़ें; normalisation और histogram equalisation जैसे preprocessing लगाएँ ताकि तस्वीरें एक-समान हों; उपयोग से पहले नए स्रोतों के डेटा पर जाँचें।\n(c) योग्य डॉक्टर; model केवल जाँच में सहायता करता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A city installs CCTV cameras with face recognition in markets to catch pickpockets. Discuss two benefits and two ethical concerns, and suggest safeguards.",
+    "hi": "केस अध्ययन: एक शहर जेबकतरों को पकड़ने के लिए बाज़ारों में चेहरा पहचान वाले CCTV camera लगाता है। दो लाभ और दो नैतिक चिंताएँ बताइए, और सुरक्षा उपाय सुझाइए।"
+   },
+   "a": {
+    "en": "Benefits: faster identification of repeat offenders; evidence that helps police and deters crime.\nConcerns: privacy—everyone is recorded and possibly tracked without consent; bias—wrong matches may unfairly target some groups; data misuse or leaks.\nSafeguards: clear notices, legal approval and purpose limits; store data securely for a limited time; human verification before any action; regular audits for accuracy and bias.",
+    "hi": "लाभ: बार-बार अपराध करने वालों की तेज़ पहचान; पुलिस की मदद करने वाले सबूत और अपराध में कमी।\nचिंताएँ: निजता—हर व्यक्ति रिकॉर्ड और संभवतः बिना सहमति ट्रैक होता है; bias—गलत मिलान कुछ समूहों को अनुचित रूप से निशाना बना सकता है; डेटा का दुरुपयोग या leak।\nसुरक्षा उपाय: स्पष्ट सूचना, कानूनी अनुमति और उद्देश्य की सीमा; डेटा सीमित समय के लिए सुरक्षित रखना; कोई कार्रवाई से पहले इंसानी पुष्टि; सटीकता और bias की नियमित जाँच।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain image segmentation and its two types with examples. Why is segmentation more useful than object detection for medical images?",
+    "hi": "दीर्घ उत्तर: Image segmentation और इसके दो प्रकार उदाहरण सहित समझाइए। चिकित्सा तस्वीरों के लिए segmentation, object detection से अधिक उपयोगी क्यों है?"
+   },
+   "a": {
+    "en": "Segmentation labels every pixel to divide an image into regions, producing masks with exact object shapes.\nSemantic segmentation labels pixels by class only (all cars = 'car'), e.g. road vs sky for a self-driving car.\nInstance segmentation also separates individual objects (car 1, car 2), e.g. counting cells in a microscope image.\nFor medical images, doctors need the exact size and boundary of a tumour or lesion to measure growth or plan surgery; a bounding box only gives a rough rectangle with lots of healthy tissue inside it.",
+    "hi": "Segmentation हर pixel को label देकर तस्वीर को हिस्सों में बाँटता है, जिससे वस्तुओं के सटीक आकार वाले masks बनते हैं।\nSemantic segmentation केवल class से label देता है (सब कारें = 'कार'), जैसे self-driving कार के लिए सड़क बनाम आसमान।\nInstance segmentation अलग-अलग वस्तुएँ भी अलग करता है (कार 1, कार 2), जैसे microscope में कोशिकाएँ गिनना।\nचिकित्सा तस्वीरों में डॉक्टरों को tumour या घाव का सटीक आकार और सीमा चाहिए ताकि वृद्धि मापी जा सके या surgery की योजना बने; bounding box केवल मोटा आयत देता है जिसमें बहुत-सा स्वस्थ ऊतक भी होता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write a Python program using OpenCV to load 'leaf.jpg', resize it to 300 × 200 (width × height), convert it to grayscale and save the edges found by Canny as 'leaf_edges.jpg'.",
+    "hi": "OpenCV से Python program लिखिए जो 'leaf.jpg' load करे, उसे 300 × 200 (चौड़ाई × ऊँचाई) में resize करे, grayscale में बदले और Canny से मिले किनारे 'leaf_edges.jpg' में सहेजे।"
+   },
+   "a": {
+    "en": "import cv2\nimg = cv2.imread('leaf.jpg')\nif img is None:\n    print('File not found')\nelse:\n    small = cv2.resize(img, (300, 200))\n    gray = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)\n    blur = cv2.GaussianBlur(gray, (5, 5), 0)\n    edges = cv2.Canny(blur, 50, 150)\n    cv2.imwrite('leaf_edges.jpg', edges)\n    print('Saved', edges.shape)\n(For a 300 × 200 resize the saved edge image has shape (200, 300).)",
+    "hi": "import cv2\nimg = cv2.imread('leaf.jpg')\nif img is None:\n    print('File not found')\nelse:\n    small = cv2.resize(img, (300, 200))\n    gray = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)\n    blur = cv2.GaussianBlur(gray, (5, 5), 0)\n    edges = cv2.Canny(blur, 50, 150)\n    cv2.imwrite('leaf_edges.jpg', edges)\n    print('Saved', edges.shape)\n(300 × 200 resize के बाद सहेजी गई edge तस्वीर का shape (200, 300) होगा।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity: Build a Teachable Machine model with three classes (for example, three stationery items). Test it under bright light and dim light. Record the confidence for 5 tests each and explain what you notice.",
+    "hi": "गतिविधि: तीन classes (जैसे तीन स्टेशनरी वस्तुएँ) वाला Teachable Machine model बनाइए। इसे तेज़ और धीमी रोशनी में जाँचिए। हर स्थिति में 5 परीक्षणों का confidence लिखिए और जो दिखे उसे समझाइए।"
+   },
+   "a": {
+    "en": "Expected observation: confidence is usually high and correct in lighting similar to the training images, and lower or sometimes wrong in very different lighting. Explanation: the model learned features from its training data; when acquisition conditions change, the input looks different. Fix: add training images in varied lighting and backgrounds, then retrain and test again.",
+    "hi": "अपेक्षित अवलोकन: training तस्वीरों जैसी रोशनी में confidence आम तौर पर ऊँचा और सही होता है, और बहुत अलग रोशनी में कम या कभी-कभी गलत। व्याख्या: model ने अपने training data से features सीखे; जब acquisition की स्थिति बदलती है, तो input अलग दिखता है। सुधार: अलग-अलग रोशनी और backgrounds में training तस्वीरें जोड़ें, फिर दोबारा train और test करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Why is a 'Background' or 'Nothing' class useful in a Teachable Machine model, and what might happen without it?",
+    "hi": "विचार प्रश्न: Teachable Machine model में 'Background' या 'कुछ नहीं' class क्यों उपयोगी है, और इसके बिना क्या हो सकता है?"
+   },
+   "a": {
+    "en": "A classifier must always pick one of its classes. Without a background class, when no object is shown it will still say one of the objects (often with high confidence), which is misleading. A background class gives the model a correct answer for 'nothing here'.",
+    "hi": "Classifier को हमेशा अपनी classes में से एक चुनना पड़ता है। Background class के बिना, कोई वस्तु न दिखाने पर भी वह किसी एक वस्तु का नाम बताएगा (अक्सर ऊँचे confidence से), जो भ्रामक है। Background class model को 'यहाँ कुछ नहीं है' का सही उत्तर देती है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Computer vision (machine vision) lets machines capture, process and understand images and videos and act on them.",
+   "A digital image is a grid of pixels; resolution = width × height pixels.",
+   "Grayscale pixels use 8 bits: 256 values from 0 (black) to 255 (white); RGB images have three channels and about 16.7 million colours.",
+   "Binary Art shows that an image is just numbers by recreating it with 0s and 1s using a threshold.",
+   "The CV process has five stages: acquisition → preprocessing → feature extraction → detection/segmentation → high-level processing.",
+   "Acquisition quality depends on resolution, lighting and angle; sources include cameras, scanners, satellites, CT and MRI.",
+   "Preprocessing includes noise reduction, normalisation (0–1 or −1 to 1), resizing/cropping and histogram equalisation.",
+   "Features include edges, corners, texture and colour; CNNs learn features automatically.",
+   "Single-object tasks: classification (KNN, K-means) and classification + localisation; multi-object tasks: object detection (YOLO, SSD, R-CNN) and segmentation (semantic, instance).",
+   "High-level processing understands the scene and supports decisions, with humans checking important ones.",
+   "Applications: face recognition, healthcare, self-driving, OCR, inspection, 3D models, surveillance, biometrics, agriculture, traffic.",
+   "Challenges: reasoning issues, acquisition difficulties, privacy and security, deepfakes, bias and cost.",
+   "The future includes edge AI, multimodal AI, AR, better healthcare and accessibility—used responsibly.",
+   "Teachable Machine lets you train an image model and deploy it on a website with TensorFlow.js code.",
+   "OpenCV (cv2) provides imread, resize (width, height), cvtColor, GaussianBlur, Canny and equalizeHist; images load in BGR order."
+  ],
+  "hi": [
+   "Computer vision (machine vision) मशीनों को तस्वीरें और वीडियो लेने, process करने, समझने और उन पर कार्य करने देता है।",
+   "डिजिटल तस्वीर pixels का grid है; resolution = चौड़ाई × ऊँचाई pixels।",
+   "Grayscale pixels 8 bits के होते हैं: 0 (काला) से 255 (सफ़ेद) तक 256 मान; RGB तस्वीरों में तीन channels और लगभग 1.67 करोड़ रंग।",
+   "बाइनरी आर्ट threshold से तस्वीर को 0 और 1 में दोबारा बनाकर दिखाता है कि तस्वीर केवल संख्याएँ है।",
+   "CV प्रक्रिया के पाँच चरण: acquisition → preprocessing → feature extraction → detection/segmentation → high-level processing।",
+   "Acquisition की गुणवत्ता resolution, रोशनी और कोण पर निर्भर है; स्रोत: camera, scanner, satellite, CT और MRI।",
+   "Preprocessing में noise reduction, normalisation (0–1 या −1 से 1), resizing/cropping और histogram equalisation आते हैं।",
+   "Features में किनारे, कोने, बनावट और रंग आते हैं; CNNs features अपने आप सीखते हैं।",
+   "एक-वस्तु कार्य: classification (KNN, K-means) और classification + localisation; बहु-वस्तु कार्य: object detection (YOLO, SSD, R-CNN) और segmentation (semantic, instance)।",
+   "High-level processing दृश्य समझकर निर्णय में सहायता करता है, और महत्वपूर्ण निर्णयों की जाँच इंसान करते हैं।",
+   "उपयोग: चेहरा पहचान, स्वास्थ्य, self-driving, OCR, निरीक्षण, 3D models, निगरानी, biometrics, कृषि, यातायात।",
+   "चुनौतियाँ: तर्क की समस्या, acquisition की कठिनाई, निजता और सुरक्षा, deepfakes, bias और लागत।",
+   "भविष्य में edge AI, multimodal AI, AR, बेहतर स्वास्थ्य सेवा और सुलभता—ज़िम्मेदारी से उपयोग के साथ।",
+   "Teachable Machine से image model train करके TensorFlow.js code द्वारा website पर लगाया जा सकता है।",
+   "OpenCV (cv2) में imread, resize (width, height), cvtColor, GaussianBlur, Canny और equalizeHist हैं; तस्वीरें BGR क्रम में load होती हैं।"
+  ]
+ }
+}

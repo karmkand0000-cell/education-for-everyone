@@ -1,0 +1,1780 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "12",
+ "id": "ch8",
+ "intro": {
+  "en": "Numbers alone rarely change minds; a good story does. A table that says road accidents rose by a certain percentage is easy to forget, but a clear chart with a short narrative about who was affected, why it happened and what can be done is remembered and acted upon. This last unit of CBSE Artificial Intelligence (Code 843), Class XII, connects the ancient art of storytelling with data analysis. You will learn the elements of a story, what data storytelling is and why it is powerful, its three essential elements (data, visuals and narrative), how Freytag's Pyramid gives shape to a data story, which chart suits which type of data, the step-by-step method of building a data story, and the ethics of telling stories with data honestly. The practical file must include at least one data story built using all the steps, so a complete worked example with real Python output is included.",
+  "hi": "केवल संख्याएँ शायद ही किसी का मन बदलती हैं; एक अच्छी कहानी बदल देती है। यह बताने वाली तालिका कि सड़क दुर्घटनाएँ किसी प्रतिशत से बढ़ीं, आसानी से भूल जाती है, पर एक साफ़ chart और साथ में छोटा narrative कि किस पर असर पड़ा, ऐसा क्यों हुआ और क्या किया जा सकता है, याद रहता है और उस पर काम होता है। CBSE Artificial Intelligence (Code 843), कक्षा 12 की यह अंतिम इकाई कहानी कहने की प्राचीन कला को data analysis से जोड़ती है। आप सीखेंगे कि कहानी के तत्व क्या हैं, data storytelling क्या है और यह शक्तिशाली क्यों है, इसके तीन आवश्यक तत्व (data, visuals और narrative), Freytag's Pyramid से data story को आकार कैसे मिलता है, किस प्रकार के डेटा के लिए कौन-सा chart उपयुक्त है, data story बनाने की चरण-दर-चरण विधि, और डेटा से ईमानदारी से कहानी कहने की नैतिकता। Practical file में सभी चरणों से बनी कम से कम एक data story होनी चाहिए, इसलिए वास्तविक Python output के साथ एक पूरा उदाहरण भी दिया गया है।"
+ },
+ "learn": {
+  "en": [
+   "What a story and storytelling are, and how storytelling has evolved from cave paintings to digital media",
+   "Why storytelling is powerful and the elements of a story: characters, plot and setting, conflict, resolution and insight",
+   "The meaning of data, data visualisation and data storytelling",
+   "Why data storytelling is needed and why it is so powerful today",
+   "The three essential elements (data, narrative, visuals) and how they combine to explain, enlighten and engage",
+   "Freytag's Pyramid: exposition, rising action, climax, falling action and resolution, applied to data stories",
+   "Types of data (categorical, numerical, time-series, text, geographic, mixed) and the right chart for each, including heat maps and candlestick charts",
+   "Steps to create a story through data, and steps to find a story in a dataset",
+   "Ethics in data storytelling: accuracy, transparency, context, privacy, avoiding bias and misleading charts",
+   "A complete worked data story with Python (pandas and matplotlib) for the practical file"
+  ],
+  "hi": [
+   "कहानी और storytelling क्या हैं, और storytelling गुफा चित्रों से digital media तक कैसे विकसित हुई",
+   "Storytelling शक्तिशाली क्यों है और कहानी के तत्व: पात्र, कथानक और परिवेश, संघर्ष, समाधान और सीख (insight)",
+   "Data, data visualisation और data storytelling का अर्थ",
+   "Data storytelling की ज़रूरत क्यों है और आज यह इतनी शक्तिशाली क्यों है",
+   "तीन आवश्यक तत्व (data, narrative, visuals) और ये मिलकर कैसे समझाते (explain), नई दृष्टि देते (enlighten) और जोड़ते (engage) हैं",
+   "Freytag's Pyramid: exposition, rising action, climax, falling action और resolution, data story पर लागू",
+   "डेटा के प्रकार (categorical, numerical, time-series, text, geographic, mixed) और हर एक के लिए सही chart, heat map और candlestick chart सहित",
+   "डेटा से कहानी बनाने के चरण, और dataset में कहानी खोजने के चरण",
+   "Data storytelling में नैतिकता: सटीकता, पारदर्शिता, संदर्भ, निजता, bias और भ्रामक chart से बचना",
+   "Practical file के लिए Python (pandas और matplotlib) से बनी एक पूरी data story"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "8.1 Introduction to storytelling",
+    "hi": "8.1 Storytelling का परिचय"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "'Once upon a time…', 'Ek samay ki baat hai…'. As soon as we hear these words, we start paying attention. Humans have told stories since long before writing existed. Early humans painted hunting scenes on cave walls, such as the rock shelters of Bhimbetka in Madhya Pradesh. Later came oral traditions of grandparents, folk singers and kathakars; then written texts like the Panchatantra and the Jataka tales; then printed books, radio, cinema and television; and today podcasts, YouTube videos, reels and interactive websites. The medium keeps changing, but the purpose is the same: to share knowledge, experience and imagination.",
+      "hi": "'Ek samay ki baat hai…', 'बहुत पुरानी बात है…'। ये शब्द सुनते ही हम ध्यान देने लगते हैं। मनुष्य लेखन के आने से बहुत पहले से कहानियाँ कहते आए हैं। आदिमानवों ने गुफाओं की दीवारों पर शिकार के दृश्य बनाए, जैसे मध्य प्रदेश के भीमबेटका के शैलाश्रय। फिर दादा-दादी, लोकगायकों और कथाकारों की मौखिक परंपरा आई; फिर पंचतंत्र और जातक कथाओं जैसे लिखित ग्रंथ; फिर छपी किताबें, रेडियो, सिनेमा और टेलीविज़न; और आज podcast, YouTube video, reels और interactive websites। माध्यम बदलता रहता है, पर उद्देश्य वही है: ज्ञान, अनुभव और कल्पना को साझा करना।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Story",
+       "hi": "Story (कहानी)"
+      },
+      "text": {
+       "en": "A story is a narrative, true or fictional, that describes a sequence of connected events involving characters, told to inform, entertain, teach or persuade.",
+       "hi": "कहानी एक narrative (वृत्तांत) है, सच्चा या काल्पनिक, जो पात्रों से जुड़ी घटनाओं के क्रम का वर्णन करता है, और जानकारी देने, मनोरंजन करने, सिखाने या मनाने के लिए कही जाती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Storytelling",
+       "hi": "Storytelling (कहानी कहना)"
+      },
+      "text": {
+       "en": "Storytelling is the act of narrating a story to listeners, using words, images, sounds, imagination and creativity. It needs a theme or topic, a storyteller and one or more listeners.",
+       "hi": "Storytelling, शब्दों, चित्रों, ध्वनियों, कल्पना और रचनात्मकता से सुनने वालों को कहानी सुनाने की क्रिया है। इसके लिए एक विषय, एक कथावाचक और एक या अधिक श्रोता चाहिए।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Form of storytelling",
+        "Examples"
+       ],
+       "hi": [
+        "Storytelling का रूप",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Oral",
+         "Grandparents' bedtime stories, Pandavani of Chhattisgarh, folk ballads, a teacher's anecdote"
+        ],
+        [
+         "Written",
+         "Panchatantra, novels, newspaper features, comics"
+        ],
+        [
+         "Visual",
+         "Cave paintings, Madhubani and Pattachitra scrolls, photographs, infographics"
+        ],
+        [
+         "Digital",
+         "Films, podcasts, YouTube videos, Instagram reels, interactive news stories"
+        ]
+       ],
+       "hi": [
+        [
+         "मौखिक",
+         "दादा-दादी की सोते समय की कहानियाँ, छत्तीसगढ़ की पंडवानी, लोकगाथाएँ, शिक्षक का कोई प्रसंग"
+        ],
+        [
+         "लिखित",
+         "पंचतंत्र, उपन्यास, अख़बार के फ़ीचर, कॉमिक्स"
+        ],
+        [
+         "दृश्य",
+         "गुफा चित्र, मधुबनी और पट्टचित्र, फ़ोटोग्राफ़, infographics"
+        ],
+        [
+         "Digital",
+         "फ़िल्में, podcast, YouTube video, Instagram reels, interactive समाचार कहानियाँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Stories come in many kinds: real-life accounts, mythological stories, fables (with animals and a moral), folk tales, fairy tales and fiction. Stories can motivate us, spark new ideas and change how we look at a situation.",
+      "hi": "कहानियाँ कई प्रकार की होती हैं: वास्तविक जीवन के वृत्तांत, पौराणिक कथाएँ, नीतिकथाएँ (जानवरों और सीख वाली), लोककथाएँ, परीकथाएँ और कथा-साहित्य (fiction)। कहानियाँ हमें प्रेरित कर सकती हैं, नए विचार जगा सकती हैं और किसी स्थिति को देखने का नज़रिया बदल सकती हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Why is storytelling so powerful?",
+      "hi": "Storytelling इतनी शक्तिशाली क्यों है?"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "It generates interest and curiosity: we want to know 'what happened next?'",
+       "It holds attention and keeps the audience engaged for longer than a list of facts.",
+       "It makes complex ideas easy to understand by linking them to people and events.",
+       "It is memorable: people remember stories far better than isolated numbers.",
+       "It evokes emotion and builds a connection between the speaker and listener.",
+       "It inspires and motivates action, which is why leaders, teachers and advertisers use stories."
+      ],
+      "hi": [
+       "यह रुचि और जिज्ञासा जगाती है: हम जानना चाहते हैं 'फिर क्या हुआ?'",
+       "यह ध्यान बाँधे रखती है और श्रोताओं को तथ्यों की सूची की तुलना में देर तक जोड़े रखती है।",
+       "यह जटिल विचारों को लोगों और घटनाओं से जोड़कर समझना आसान बनाती है।",
+       "यह याद रहती है: लोग अलग-थलग संख्याओं से कहीं बेहतर कहानियाँ याद रखते हैं।",
+       "यह भावनाएँ जगाती है और वक्ता और श्रोता के बीच जुड़ाव बनाती है।",
+       "यह प्रेरित करती है और कार्य करने को उकसाती है, इसीलिए नेता, शिक्षक और विज्ञापनदाता कहानियों का उपयोग करते हैं।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.2 Elements of a story",
+    "hi": "8.2 कहानी के तत्व"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Element",
+        "Meaning",
+        "Example: 'The Thirsty Crow'"
+       ],
+       "hi": [
+        "तत्व",
+        "अर्थ",
+        "उदाहरण: 'प्यासा कौआ'"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Characters",
+         "The people, animals or things the story is about; usually a main character (protagonist)",
+         "The crow"
+        ],
+        [
+         "Setting",
+         "Where and when the story happens",
+         "A hot summer day, a garden with a pot"
+        ],
+        [
+         "Plot",
+         "The sequence of events from beginning to end",
+         "Crow searches, finds pot, water is low, drops pebbles, water rises, drinks"
+        ],
+        [
+         "Conflict",
+         "The problem, challenge or struggle the character faces",
+         "The water is too low for the crow's beak to reach"
+        ],
+        [
+         "Resolution",
+         "How the conflict is solved; the climax is the peak moment just before it",
+         "Pebbles raise the water and the crow drinks"
+        ],
+        [
+         "Insight / theme",
+         "The lesson, moral or key message",
+         "Where there is a will, there is a way; think creatively"
+        ]
+       ],
+       "hi": [
+        [
+         "पात्र",
+         "जिन लोगों, जानवरों या चीज़ों के बारे में कहानी है; आमतौर पर एक मुख्य पात्र",
+         "कौआ"
+        ],
+        [
+         "परिवेश (Setting)",
+         "कहानी कहाँ और कब होती है",
+         "गर्मी का दिन, घड़े वाला बगीचा"
+        ],
+        [
+         "कथानक (Plot)",
+         "शुरू से अंत तक घटनाओं का क्रम",
+         "कौआ ढूँढता है, घड़ा मिलता है, पानी कम है, कंकड़ डालता है, पानी ऊपर आता है, पीता है"
+        ],
+        [
+         "संघर्ष (Conflict)",
+         "पात्र के सामने आने वाली समस्या या चुनौती",
+         "पानी इतना नीचे है कि चोंच नहीं पहुँचती"
+        ],
+        [
+         "समाधान (Resolution)",
+         "संघर्ष कैसे सुलझता है; climax उससे ठीक पहले का चरम क्षण है",
+         "कंकड़ों से पानी ऊपर आता है और कौआ पानी पीता है"
+        ],
+        [
+         "सीख / विषय (Insight)",
+         "पाठ, नैतिक संदेश या मुख्य संदेश",
+         "जहाँ चाह, वहाँ राह; रचनात्मक सोचो"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: a story without conflict is just a list of events. In a data story, the 'conflict' is the problem or surprising finding in the data.",
+      "hi": "याद रखें: संघर्ष के बिना कहानी केवल घटनाओं की सूची है। Data story में 'संघर्ष' डेटा में दिखने वाली समस्या या चौंकाने वाली खोज है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 1 – Story table. Aim: identify story elements. What to do: in groups, each student recalls one story of a different type (a real-life incident, a mythological story, a fable, a folk tale). Fill a table with columns: Story name, Type, Characters, Setting, Conflict, Resolution, Moral/Insight. Share with the class. What it teaches: every good story, of any type, has the same building blocks.",
+      "hi": "गतिविधि 1 – कहानी तालिका। उद्देश्य: कहानी के तत्व पहचानना। क्या करें: समूहों में हर विद्यार्थी अलग प्रकार की एक कहानी याद करे (वास्तविक घटना, पौराणिक कथा, नीतिकथा, लोककथा)। इन स्तंभों वाली तालिका भरें: कहानी का नाम, प्रकार, पात्र, परिवेश, संघर्ष, समाधान, सीख। कक्षा में साझा करें। सीख: किसी भी प्रकार की हर अच्छी कहानी के मूल तत्व एक जैसे होते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 – Listen and infer. Aim: practise drawing insights from a narrative. What to do: one student reads aloud a short passage, for example: 'Rahul had been looking for a job for months. His sister Priya mentioned this to her friend Anil, who worked at a software company. Anil arranged an interview for Rahul, and he was selected.' Others answer: Who is Priya to Rahul? Who is Anil to Priya? Who arranged the interview? (Answers: sister; friend; Anil.) What it teaches: listeners connect facts into relationships, exactly what we want an audience to do with data.",
+      "hi": "गतिविधि 2 – सुनें और निष्कर्ष निकालें। उद्देश्य: narrative से insight निकालने का अभ्यास। क्या करें: एक विद्यार्थी छोटा अंश ज़ोर से पढ़े, जैसे: 'राहुल महीनों से नौकरी ढूँढ रहा था। उसकी बहन प्रिया ने यह बात अपने दोस्त अनिल को बताई, जो एक software कंपनी में काम करता था। अनिल ने राहुल का interview करवाया, और उसका चयन हो गया।' बाक़ी उत्तर दें: प्रिया, राहुल की क्या लगती है? अनिल, प्रिया का क्या है? Interview किसने करवाया? (उत्तर: बहन; दोस्त; अनिल।) सीख: श्रोता तथ्यों को संबंधों में जोड़ते हैं, ठीक वही जो हम चाहते हैं कि दर्शक डेटा के साथ करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.3 Introduction to data storytelling",
+    "hi": "8.3 Data storytelling का परिचय"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data",
+       "hi": "Data (डेटा)"
+      },
+      "text": {
+       "en": "Data is a collection of raw facts, figures, measurements or observations (numbers, text, images, dates, locations) that can be analysed to gain information.",
+       "hi": "Data कच्चे तथ्यों, आँकड़ों, मापों या प्रेक्षणों (संख्याएँ, text, चित्र, तारीख़ें, स्थान) का संग्रह है जिसका विश्लेषण करके जानकारी पाई जा सकती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data visualisation",
+       "hi": "Data visualisation (डेटा का दृश्य रूप)"
+      },
+      "text": {
+       "en": "Data visualisation is the graphical representation of data using charts, graphs, maps and dashboards so that patterns, trends and outliers can be seen quickly.",
+       "hi": "Data visualisation, chart, graph, नक्शे और dashboard से डेटा का चित्रात्मक निरूपण है ताकि पैटर्न, रुझान और असामान्य मान (outliers) जल्दी दिख सकें।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data storytelling",
+       "hi": "Data storytelling"
+      },
+      "text": {
+       "en": "Data storytelling is the practice of building a clear, engaging narrative around data and its visualisations, so that an audience understands the insights, their context and why they matter, and can make decisions.",
+       "hi": "Data storytelling, डेटा और उसके visualisations के चारों ओर एक स्पष्ट, रोचक narrative बनाने की प्रक्रिया है, ताकि दर्शक insights, उनका संदर्भ और उनका महत्व समझें, और निर्णय ले सकें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A data story is not just a dashboard full of charts. A dashboard shows what is happening; a data story explains why it is happening, why it matters and what should be done. The audience of a data story can be technical (data scientists, engineers) or non-technical (principals, managers, citizens), so the same insight may be told differently to each.",
+      "hi": "Data story केवल chart से भरा dashboard नहीं है। Dashboard बताता है कि क्या हो रहा है; data story समझाती है कि ऐसा क्यों हो रहा है, इसका महत्व क्या है और क्या करना चाहिए। Data story के दर्शक तकनीकी (data scientist, engineer) या ग़ैर-तकनीकी (प्रधानाचार्य, manager, नागरिक) हो सकते हैं, इसलिए एक ही insight हर एक को अलग तरह से बताई जा सकती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Turn this plain fact into a short data story: 'Attendance in Class 9B was 92% in August and 71% in September.'",
+       "hi": "इस सादे तथ्य को छोटी data story में बदलिए: 'कक्षा 9B की उपस्थिति अगस्त में 92% और सितंबर में 71% थी।'"
+      },
+      "a": {
+       "en": "Step 1 – Context: Class 9B usually has over 90% attendance.\nStep 2 – Conflict: In September it suddenly fell by 21 percentage points.\nStep 3 – Explanation (from further data): daily records show most absences were in the second and third weeks, when a viral fever spread in the area; health records confirm many fever cases.\nStep 4 – Visual: a line chart of daily attendance with the fever weeks shaded.\nStep 5 – Resolution / call to action: 'Attendance recovered to 89% in the last week. To prevent a repeat, the school can run a hygiene and mosquito-control drive before the monsoon ends.'\nThe numbers are the same, but now the audience knows what happened, why, and what to do.",
+       "hi": "चरण 1 – संदर्भ: कक्षा 9B की उपस्थिति आमतौर पर 90% से अधिक रहती है।\nचरण 2 – संघर्ष: सितंबर में यह अचानक 21 प्रतिशत अंक गिर गई।\nचरण 3 – व्याख्या (आगे के डेटा से): दैनिक रिकॉर्ड दिखाते हैं कि ज़्यादातर अनुपस्थिति दूसरे और तीसरे सप्ताह में थी, जब क्षेत्र में वायरल बुख़ार फैला; स्वास्थ्य रिकॉर्ड कई बुख़ार के मामलों की पुष्टि करते हैं।\nचरण 4 – Visual: दैनिक उपस्थिति का line chart, बुख़ार वाले सप्ताह छायांकित।\nचरण 5 – समाधान / कार्य का आह्वान: 'अंतिम सप्ताह में उपस्थिति 89% पर लौट आई। दोबारा ऐसा न हो, इसके लिए स्कूल मानसून ख़त्म होने से पहले स्वच्छता और मच्छर-नियंत्रण अभियान चला सकता है।'\nसंख्याएँ वही हैं, पर अब दर्शक जानते हैं कि क्या हुआ, क्यों हुआ और क्या करना है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Need for data storytelling:",
+      "hi": "Data storytelling की ज़रूरत:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Makes complex data accessible: people who cannot read a spreadsheet can understand a well-told story.",
+       "Increases engagement and retention: audiences stay interested and remember the message.",
+       "Supports evidence-based decisions: governments, schools and companies act on facts, not guesses.",
+       "Builds trust and loyalty: brands use data stories to connect with customers, for example a music app's yearly personalised summary of each listener's top songs and artists, or a search engine's 'year in search' review of what a country searched for.",
+       "Reduces ambiguity: a clear narrative tells the audience which number matters and why."
+      ],
+      "hi": [
+       "जटिल डेटा को सुलभ बनाती है: जो लोग spreadsheet नहीं पढ़ सकते, वे अच्छी तरह कही गई कहानी समझ सकते हैं।",
+       "जुड़ाव और याद रखना बढ़ाती है: दर्शक रुचि लेते हैं और संदेश याद रखते हैं।",
+       "प्रमाण-आधारित निर्णयों में मदद करती है: सरकारें, स्कूल और कंपनियाँ अनुमान नहीं, तथ्यों पर काम करती हैं।",
+       "भरोसा और वफ़ादारी बनाती है: brand ग्राहकों से जुड़ने के लिए data story का उपयोग करते हैं, जैसे किसी music app का हर श्रोता के साल भर के पसंदीदा गानों और कलाकारों का व्यक्तिगत सारांश, या किसी search engine का 'year in search' जिसमें बताया जाता है कि देश ने साल भर क्या खोजा।",
+       "अस्पष्टता घटाती है: स्पष्ट narrative दर्शकों को बताता है कि कौन-सी संख्या महत्वपूर्ण है और क्यों।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.4 Why is data storytelling powerful today?",
+    "hi": "8.4 आज data storytelling इतनी शक्तिशाली क्यों है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every day, organisations collect huge amounts of data from UPI payments, mobile apps, sensors, satellites and websites. Most decision makers do not have time to study raw data. The person who can turn data into a clear story becomes very valuable. Data storytelling is powerful because:",
+      "hi": "हर दिन संगठन UPI भुगतान, mobile apps, sensors, उपग्रहों और websites से बहुत बड़ी मात्रा में डेटा इकट्ठा करते हैं। ज़्यादातर निर्णय लेने वालों के पास कच्चा डेटा पढ़ने का समय नहीं होता। जो व्यक्ति डेटा को स्पष्ट कहानी में बदल सके, वह बहुत मूल्यवान बन जाता है। Data storytelling शक्तिशाली है क्योंकि:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "It makes insights memorable: a story with a chart sticks in the mind long after a meeting.",
+       "It persuades both business and technical stakeholders, because it combines evidence (for the analyst) with meaning (for the manager).",
+       "It keeps the audience engaged, so they actually read or listen to the end.",
+       "It creates an emotional connection, for example showing how many children in a district gained access to clean water.",
+       "It helps AI and data science results get used: a brilliant model is useless if no one understands or trusts its output."
+      ],
+      "hi": [
+       "यह insights को यादगार बनाती है: chart के साथ कहानी meeting के बहुत बाद तक याद रहती है।",
+       "यह व्यावसायिक और तकनीकी दोनों हितधारकों को मनाती है, क्योंकि इसमें प्रमाण (विश्लेषक के लिए) और अर्थ (manager के लिए) दोनों होते हैं।",
+       "यह दर्शकों को जोड़े रखती है, ताकि वे सच में अंत तक पढ़ें या सुनें।",
+       "यह भावनात्मक जुड़ाव बनाती है, जैसे यह दिखाना कि किसी ज़िले में कितने बच्चों को साफ़ पानी मिलने लगा।",
+       "यह AI और data science के परिणामों को उपयोग में लाने में मदद करती है: बेहतरीन model भी बेकार है अगर कोई उसके output को न समझे या उस पर भरोसा न करे।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "A popular saying in this field (often quoted from the film-maker Jean-Luc Godard) expresses the idea that reality can be too complex, and stories give it form.",
+      "hi": "इस क्षेत्र में एक लोकप्रिय कथन (जो अक्सर फ़िल्मकार Jean-Luc Godard का बताया जाता है) यह विचार व्यक्त करता है कि वास्तविकता बहुत जटिल हो सकती है, और कहानियाँ उसे आकार देती हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.5 Essential elements of data storytelling",
+    "hi": "8.5 Data storytelling के आवश्यक तत्व"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every data story has three essential elements. Missing any one of them weakens the story.",
+      "hi": "हर data story के तीन आवश्यक तत्व होते हैं। इनमें से कोई एक भी न हो तो कहानी कमज़ोर हो जाती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Element",
+        "What it is",
+        "Its role"
+       ],
+       "hi": [
+        "तत्व",
+        "यह क्या है",
+        "इसकी भूमिका"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Accurate, relevant facts and figures from reliable sources, cleaned and analysed",
+         "The foundation: the evidence that makes the story true"
+        ],
+        [
+         "Narrative",
+         "The words (spoken or written) that explain the data: context, what changed, why, and what it means",
+         "Gives meaning, context and a storyline; tells the audience what to notice"
+        ],
+        [
+         "Visuals",
+         "Charts, graphs, maps, diagrams and images that represent the data",
+         "Shows patterns and comparisons at a glance; makes the data easy to see"
+        ]
+       ],
+       "hi": [
+        [
+         "Data",
+         "भरोसेमंद स्रोतों से सटीक, प्रासंगिक तथ्य और आँकड़े, साफ़ और विश्लेषित",
+         "नींव: वह प्रमाण जो कहानी को सच बनाता है"
+        ],
+        [
+         "Narrative",
+         "डेटा को समझाने वाले शब्द (बोले या लिखे): संदर्भ, क्या बदला, क्यों, और इसका अर्थ",
+         "अर्थ, संदर्भ और कथा-सूत्र देता है; दर्शकों को बताता है कि क्या देखना है"
+        ],
+        [
+         "Visuals",
+         "डेटा को दिखाने वाले chart, graph, नक्शे, आरेख और चित्र",
+         "पैटर्न और तुलनाएँ एक नज़र में दिखाता है; डेटा को देखना आसान बनाता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Diagram in words: picture three overlapping circles labelled Data, Narrative and Visuals. Where Data and Narrative overlap, the story EXPLAINS: the narrative explains what the data shows and why. Where Data and Visuals overlap, the story ENLIGHTENS: charts reveal patterns and give a new perspective that numbers alone hide. Where Narrative and Visuals overlap, the story ENGAGES: words plus pictures hold attention and can even entertain. In the centre, where all three overlap, is a data story that can drive change.",
+      "hi": "शब्दों में चित्र: तीन एक-दूसरे पर चढ़े वृत्त सोचिए जिन पर Data, Narrative और Visuals लिखा है। जहाँ Data और Narrative मिलते हैं, वहाँ कहानी समझाती (EXPLAIN) है: narrative बताता है कि डेटा क्या दिखाता है और क्यों। जहाँ Data और Visuals मिलते हैं, वहाँ कहानी नई दृष्टि देती (ENLIGHTEN) है: chart ऐसे पैटर्न दिखाते हैं जो केवल संख्याओं में छिपे रहते हैं। जहाँ Narrative और Visuals मिलते हैं, वहाँ कहानी जोड़ती (ENGAGE) है: शब्द और चित्र मिलकर ध्यान बाँधते हैं और मनोरंजन भी कर सकते हैं। बीच में, जहाँ तीनों मिलते हैं, वह data story है जो बदलाव ला सकती है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Data + Narrative = Explain (helps the audience understand why something is happening)",
+       "Data + Visuals = Enlighten (reveals insights that are not obvious from tables)",
+       "Narrative + Visuals = Engage (captures and holds attention)",
+       "Data + Narrative + Visuals = a data story that drives decisions and change"
+      ],
+      "hi": [
+       "Data + Narrative = Explain (दर्शकों को समझने में मदद करता है कि कुछ क्यों हो रहा है)",
+       "Data + Visuals = Enlighten (ऐसी insights दिखाता है जो तालिकाओं से स्पष्ट नहीं होतीं)",
+       "Narrative + Visuals = Engage (ध्यान खींचता और बाँधे रखता है)",
+       "Data + Narrative + Visuals = ऐसी data story जो निर्णय और बदलाव लाए"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Teachers' handbooks sometimes add a fourth ingredient: audience focus. The same data story should be shaped to the audience's interests, knowledge level and needs, for example simple language and one clear chart for parents, and more detail with methods for a data team.",
+      "hi": "शिक्षक पुस्तिकाएँ कभी-कभी चौथा तत्व जोड़ती हैं: दर्शक पर ध्यान (audience focus)। एक ही data story को दर्शकों की रुचि, ज्ञान-स्तर और ज़रूरत के अनुसार ढालना चाहिए, जैसे अभिभावकों के लिए सरल भाषा और एक साफ़ chart, और data team के लिए विधियों सहित अधिक विवरण।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.6 Narrative structure of a data story: Freytag's Pyramid",
+    "hi": "8.6 Data story की कथा-संरचना: Freytag's Pyramid"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Gustav Freytag, a German writer of the 19th century, studied classical plays and described their structure as a pyramid (a triangle). This structure is now widely used to plan data stories as well.",
+      "hi": "19वीं सदी के जर्मन लेखक Gustav Freytag ने शास्त्रीय नाटकों का अध्ययन करके उनकी संरचना को एक पिरामिड (त्रिभुज) के रूप में बताया। अब यह संरचना data stories की योजना बनाने में भी व्यापक रूप से उपयोग होती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Diagram in words: draw a triangle. The bottom-left corner is the Exposition (introduction). The left side slopes upward: Rising Action. The top point is the Climax. The right side slopes downward: Falling Action. The bottom-right corner is the Resolution (conclusion, sometimes called denouement).",
+      "hi": "शब्दों में चित्र: एक त्रिभुज बनाइए। नीचे बायाँ कोना Exposition (परिचय) है। बायाँ भाग ऊपर चढ़ता है: Rising Action। सबसे ऊपर का बिंदु Climax है। दायाँ भाग नीचे उतरता है: Falling Action। नीचे दायाँ कोना Resolution (निष्कर्ष, जिसे कभी-कभी denouement कहते हैं) है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "In a story",
+        "In a data story"
+       ],
+       "hi": [
+        "चरण",
+        "कहानी में",
+        "Data story में"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Exposition (Introduction)",
+         "Introduces the setting, main characters and background",
+         "Introduce the topic, why it matters, the time period, place, who is affected and the data source"
+        ],
+        [
+         "2. Rising action",
+         "Events build tension towards the climax",
+         "Present trends, comparisons and evidence step by step, with charts, building towards the key finding"
+        ],
+        [
+         "3. Climax",
+         "The most intense or important moment",
+         "Reveal the main insight: the most important, surprising or critical finding"
+        ],
+        [
+         "4. Falling action",
+         "Events after the climax; tension eases",
+         "Explain the insight: causes, supporting data, what it means for different groups"
+        ],
+        [
+         "5. Resolution (Conclusion)",
+         "Conflicts are resolved and loose ends tied up",
+         "Summarise the findings and give a clear recommendation or call to action"
+        ]
+       ],
+       "hi": [
+        [
+         "1. Exposition (परिचय)",
+         "परिवेश, मुख्य पात्रों और पृष्ठभूमि का परिचय",
+         "विषय, उसका महत्व, समय-अवधि, स्थान, प्रभावित लोग और डेटा का स्रोत बताइए"
+        ],
+        [
+         "2. Rising action (चढ़ती घटनाएँ)",
+         "घटनाएँ climax की ओर तनाव बढ़ाती हैं",
+         "Chart के साथ रुझान, तुलनाएँ और प्रमाण कदम-दर-कदम दिखाइए, मुख्य खोज की ओर बढ़ते हुए"
+        ],
+        [
+         "3. Climax (चरम)",
+         "सबसे तीव्र या महत्वपूर्ण क्षण",
+         "मुख्य insight बताइए: सबसे महत्वपूर्ण, चौंकाने वाली या निर्णायक खोज"
+        ],
+        [
+         "4. Falling action (उतरती घटनाएँ)",
+         "Climax के बाद की घटनाएँ; तनाव घटता है",
+         "Insight को समझाइए: कारण, सहायक डेटा, अलग-अलग समूहों के लिए इसका अर्थ"
+        ],
+        [
+         "5. Resolution (निष्कर्ष)",
+         "संघर्ष सुलझते हैं और अधूरी बातें पूरी होती हैं",
+         "निष्कर्षों का सारांश दीजिए और स्पष्ट सुझाव या कार्य का आह्वान (call to action) दीजिए"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Plan a data story on 'Plastic waste in our school canteen' using Freytag's Pyramid.",
+       "hi": "Freytag's Pyramid का उपयोग करके 'हमारी स्कूल कैंटीन में प्लास्टिक कचरा' पर data story की योजना बनाइए।"
+      },
+      "a": {
+       "en": "Exposition: Our canteen serves about 600 students a day. The eco-club weighed plastic waste daily for 8 weeks.\nRising action: A bar chart shows plastic waste per week; a pie chart shows that most of it is chips packets, straws and single-use cups.\nClimax: Single-use cups alone make up the largest share, and waste doubles on days when cold drinks are sold.\nFalling action: A survey shows students would use steel tumblers if water coolers were nearer the canteen; a nearby school that switched to steel cups cut its plastic waste sharply.\nResolution: Recommend steel tumblers and a refill station; set a target to cut plastic by half in one term and track it with the same weekly chart.",
+       "hi": "Exposition: हमारी कैंटीन रोज़ लगभग 600 विद्यार्थियों को सेवा देती है। Eco-club ने 8 सप्ताह तक रोज़ प्लास्टिक कचरा तौला।\nRising action: Bar chart हर सप्ताह का प्लास्टिक कचरा दिखाता है; pie chart दिखाता है कि ज़्यादातर कचरा chips के पैकेट, straw और एक बार उपयोग वाले कप हैं।\nClimax: अकेले एक बार उपयोग वाले कप सबसे बड़ा हिस्सा हैं, और जिस दिन ठंडे पेय बिकते हैं उस दिन कचरा दोगुना होता है।\nFalling action: सर्वे बताता है कि अगर water cooler कैंटीन के पास हों तो विद्यार्थी steel के गिलास उपयोग करेंगे; पास के एक स्कूल ने steel कप अपनाकर प्लास्टिक कचरा काफ़ी घटाया।\nResolution: Steel गिलास और refill station का सुझाव; एक सत्र में प्लास्टिक आधा करने का लक्ष्य, और उसी साप्ताहिक chart से निगरानी।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the order with 'E-R-C-F-R': Exposition, Rising action, Climax, Falling action, Resolution.",
+      "hi": "क्रम याद रखें 'E-R-C-F-R': Exposition, Rising action, Climax, Falling action, Resolution।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.7 Types of data and visualisations for different data",
+    "hi": "8.7 डेटा के प्रकार और अलग-अलग डेटा के लिए visualisation"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Choosing the right chart is half the story. A chart should match both the type of data and the message you want to give (compare, show change over time, show parts of a whole, show relationship, show distribution, or show location).",
+      "hi": "सही chart चुनना आधी कहानी है। Chart डेटा के प्रकार और आप जो संदेश देना चाहते हैं (तुलना, समय के साथ बदलाव, पूरे का हिस्सा, संबंध, वितरण, या स्थान) दोनों से मेल खाना चाहिए।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type of data",
+        "Description and example",
+        "Suitable visualisations"
+       ],
+       "hi": [
+        "डेटा का प्रकार",
+        "विवरण और उदाहरण",
+        "उपयुक्त visualisation"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Categorical (qualitative)",
+         "Groups or labels: favourite sport, state, blood group, customer type",
+         "Bar chart, column chart, pie or donut chart (few categories), stacked bar chart"
+        ],
+        [
+         "Numerical (quantitative)",
+         "Measured or counted numbers: marks, height, sales, rainfall",
+         "Histogram (distribution), box plot (spread and outliers), scatter plot (two numbers), line chart"
+        ],
+        [
+         "Time-series (temporal)",
+         "Values recorded over time: daily temperature, monthly UPI transactions, yearly literacy rate",
+         "Line chart, area chart, timeline; candlestick chart for prices"
+        ],
+        [
+         "Text data",
+         "Words and sentences: feedback comments, tweets, survey answers",
+         "Word cloud, bar chart of word frequencies"
+        ],
+        [
+         "Geographic (spatial)",
+         "Data tied to places: rainfall by district, cases by state",
+         "Map: choropleth (colour-filled regions), bubble map, heat map on a map"
+        ],
+        [
+         "Mixed / multivariate",
+         "Several variables together: marks in many subjects for many students",
+         "Heat map (grid of colours), scatter plot with colour/size, dashboard combining charts"
+        ]
+       ],
+       "hi": [
+        [
+         "Categorical (गुणात्मक)",
+         "समूह या label: पसंदीदा खेल, राज्य, रक्त समूह, ग्राहक प्रकार",
+         "Bar chart, column chart, pie या donut chart (कम श्रेणियाँ), stacked bar chart"
+        ],
+        [
+         "Numerical (मात्रात्मक)",
+         "मापी या गिनी गई संख्याएँ: अंक, ऊँचाई, बिक्री, वर्षा",
+         "Histogram (वितरण), box plot (फैलाव और outliers), scatter plot (दो संख्याएँ), line chart"
+        ],
+        [
+         "Time-series (समय-आधारित)",
+         "समय के साथ दर्ज मान: दैनिक तापमान, मासिक UPI लेनदेन, वार्षिक साक्षरता दर",
+         "Line chart, area chart, timeline; क़ीमतों के लिए candlestick chart"
+        ],
+        [
+         "Text डेटा",
+         "शब्द और वाक्य: feedback टिप्पणियाँ, tweets, सर्वे उत्तर",
+         "Word cloud, शब्द-आवृत्ति का bar chart"
+        ],
+        [
+         "Geographic (स्थानिक)",
+         "स्थानों से जुड़ा डेटा: ज़िलेवार वर्षा, राज्यवार मामले",
+         "नक्शा: choropleth (रंग भरे क्षेत्र), bubble map, नक्शे पर heat map"
+        ],
+        [
+         "Mixed / बहुचर",
+         "कई चर एक साथ: कई विद्यार्थियों के कई विषयों के अंक",
+         "Heat map (रंगों का grid), रंग/आकार वाला scatter plot, कई chart वाला dashboard"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Common charts and when to use them:",
+      "hi": "आम chart और उनका उपयोग कब करें:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Chart",
+        "Best used to",
+        "Example"
+       ],
+       "hi": [
+        "Chart",
+        "किसके लिए सबसे अच्छा",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Bar / column chart",
+         "Compare values across categories",
+         "Number of students in each house; medals by country"
+        ],
+        [
+         "Line chart",
+         "Show change or trend over time",
+         "Monthly rainfall in Mumbai; your test scores across the year"
+        ],
+        [
+         "Pie / donut chart",
+         "Show parts of a whole (percentages adding to 100%), with few categories",
+         "Share of energy sources in electricity generation"
+        ],
+        [
+         "Histogram",
+         "Show how numerical values are distributed in ranges (bins)",
+         "How many students scored 0–10, 10–20, … in a test"
+        ],
+        [
+         "Scatter plot",
+         "Show the relationship (correlation) between two numerical variables",
+         "Hours of study vs marks; height vs weight"
+        ],
+        [
+         "Box plot",
+         "Show median, spread and outliers of numerical data",
+         "Comparing marks of three sections"
+        ],
+        [
+         "Area chart",
+         "Show a trend over time with the size of the total",
+         "Growth of internet users over years"
+        ],
+        [
+         "Heat map",
+         "Show magnitude using colour intensity across a grid or map",
+         "Which hours and days a website is busiest; temperature across states; attendance by student and month"
+        ],
+        [
+         "Candlestick chart",
+         "Show the open, high, low and close price of a share or currency in each period",
+         "Daily movement of a company's share price on the stock market"
+        ],
+        [
+         "Word cloud",
+         "Show the most frequent words in text, larger font for more frequent words",
+         "Most common words in students' feedback about the annual day"
+        ],
+        [
+         "Map (choropleth)",
+         "Show values for geographic regions using colours",
+         "Literacy rate by state of India"
+        ],
+        [
+         "Bubble chart",
+         "Show three variables: x, y and bubble size",
+         "Countries by income (x), life expectancy (y) and population (bubble size)"
+        ]
+       ],
+       "hi": [
+        [
+         "Bar / column chart",
+         "श्रेणियों के बीच मानों की तुलना",
+         "हर house में विद्यार्थियों की संख्या; देशवार पदक"
+        ],
+        [
+         "Line chart",
+         "समय के साथ बदलाव या रुझान दिखाना",
+         "मुंबई की मासिक वर्षा; साल भर में आपके test अंक"
+        ],
+        [
+         "Pie / donut chart",
+         "पूरे के हिस्से (100% तक जुड़ने वाले प्रतिशत) दिखाना, कम श्रेणियों के साथ",
+         "बिजली उत्पादन में ऊर्जा स्रोतों का हिस्सा"
+        ],
+        [
+         "Histogram",
+         "संख्यात्मक मान अंतरालों (bins) में कैसे बँटे हैं, यह दिखाना",
+         "Test में कितने विद्यार्थियों ने 0–10, 10–20, … अंक पाए"
+        ],
+        [
+         "Scatter plot",
+         "दो संख्यात्मक चरों के बीच संबंध (correlation) दिखाना",
+         "पढ़ाई के घंटे बनाम अंक; ऊँचाई बनाम वज़न"
+        ],
+        [
+         "Box plot",
+         "संख्यात्मक डेटा का median, फैलाव और outliers दिखाना",
+         "तीन sections के अंकों की तुलना"
+        ],
+        [
+         "Area chart",
+         "कुल मात्रा के साथ समय का रुझान दिखाना",
+         "वर्षों में internet उपयोगकर्ताओं की वृद्धि"
+        ],
+        [
+         "Heat map",
+         "Grid या नक्शे पर रंग की गहराई से मात्रा दिखाना",
+         "Website किस दिन और घंटे सबसे व्यस्त है; राज्यों में तापमान; विद्यार्थी और महीने के अनुसार उपस्थिति"
+        ],
+        [
+         "Candlestick chart",
+         "हर अवधि में किसी share या मुद्रा की opening, high, low और closing क़ीमत दिखाना",
+         "Stock market में किसी कंपनी के share की दैनिक चाल"
+        ],
+        [
+         "Word cloud",
+         "Text में सबसे ज़्यादा आने वाले शब्द दिखाना, अधिक आवृत्ति वाले शब्द बड़े अक्षरों में",
+         "वार्षिक दिवस पर विद्यार्थियों के feedback के सबसे आम शब्द"
+        ],
+        [
+         "Map (choropleth)",
+         "रंगों से भौगोलिक क्षेत्रों के मान दिखाना",
+         "भारत के राज्यवार साक्षरता दर"
+        ],
+        [
+         "Bubble chart",
+         "तीन चर दिखाना: x, y और bubble का आकार",
+         "देश: आय (x), जीवन प्रत्याशा (y) और जनसंख्या (bubble आकार)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A candlestick chart in words: each period (say, one day) is drawn as a 'candle'. The thick body runs from the opening price to the closing price; it is usually green (or hollow) if the price closed higher than it opened and red (or filled) if it closed lower. Thin lines above and below the body, called wicks or shadows, show the highest and lowest prices of that day.",
+      "hi": "Candlestick chart शब्दों में: हर अवधि (जैसे एक दिन) एक 'मोमबत्ती' की तरह बनती है। मोटा भाग (body) opening क़ीमत से closing क़ीमत तक जाता है; अगर क़ीमत खुलने से ऊपर बंद हुई तो यह आमतौर पर हरा (या खोखला) होता है और नीचे बंद हुई तो लाल (या भरा)। Body के ऊपर-नीचे की पतली रेखाएँ, जिन्हें wick या shadow कहते हैं, उस दिन की सबसे ऊँची और सबसे नीची क़ीमत दिखाती हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Exam shortcut: change over time → line chart; comparing categories → bar chart; parts of a whole → pie chart; relationship between two variables → scatter plot; distribution of one variable → histogram; frequent words → word cloud; intensity across a grid → heat map; stock prices → candlestick.",
+      "hi": "परीक्षा का शॉर्टकट: समय के साथ बदलाव → line chart; श्रेणियों की तुलना → bar chart; पूरे के हिस्से → pie chart; दो चरों का संबंध → scatter plot; एक चर का वितरण → histogram; बार-बार आने वाले शब्द → word cloud; grid में तीव्रता → heat map; share की क़ीमतें → candlestick।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Give every chart a clear title that states the message, e.g. 'Library use doubled after the reading club began'.",
+       "Label both axes with units, and add a legend when there is more than one series.",
+       "Start bar-chart axes at zero so bar lengths are honest.",
+       "Use colour with purpose: highlight the one bar or line that matters and keep the rest grey.",
+       "Avoid clutter: no 3-D effects, too many colours or unnecessary gridlines; avoid pie charts with many slices.",
+       "Write the data source under the chart."
+      ],
+      "hi": [
+       "हर chart को ऐसा स्पष्ट शीर्षक दें जो संदेश बताए, जैसे 'Reading club शुरू होने के बाद पुस्तकालय उपयोग दोगुना हुआ'।",
+       "दोनों अक्षों पर इकाई सहित label लगाएँ, और एक से अधिक series हों तो legend जोड़ें।",
+       "Bar chart का अक्ष शून्य से शुरू करें ताकि bars की लंबाई ईमानदार रहे।",
+       "रंग का उद्देश्यपूर्ण उपयोग करें: जो bar या line महत्वपूर्ण है उसे उभारें और बाक़ी को धूसर रखें।",
+       "भीड़ से बचें: 3-D प्रभाव, बहुत सारे रंग या अनावश्यक gridlines नहीं; बहुत सारे हिस्सों वाले pie chart से बचें।",
+       "Chart के नीचे डेटा का स्रोत लिखें।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Choose the best visual for each: (a) monthly electricity bill of your home for two years; (b) favourite subject of 40 students; (c) 500 comments from a school feedback form; (d) height and weight of 50 students; (e) Nifty share-index movement for a week.",
+       "hi": "हर एक के लिए सबसे अच्छा visual चुनिए: (a) दो वर्षों का आपके घर का मासिक बिजली बिल; (b) 40 विद्यार्थियों का पसंदीदा विषय; (c) स्कूल feedback form की 500 टिप्पणियाँ; (d) 50 विद्यार्थियों की ऊँचाई और वज़न; (e) एक सप्ताह में Nifty share-index की चाल।"
+      },
+      "a": {
+       "en": "(a) Time-series → line chart (seasonal peaks in summer will show clearly).\n(b) Categorical → bar chart (or a pie chart if there are only 4–5 subjects).\n(c) Text → word cloud, plus a bar chart of the top 10 words.\n(d) Two numerical variables → scatter plot.\n(e) Price data with open/high/low/close → candlestick chart.",
+       "hi": "(a) Time-series → line chart (गर्मियों के मौसमी उछाल साफ़ दिखेंगे)।\n(b) Categorical → bar chart (या केवल 4–5 विषय हों तो pie chart)।\n(c) Text → word cloud, साथ में शीर्ष 10 शब्दों का bar chart।\n(d) दो संख्यात्मक चर → scatter plot।\n(e) Open/high/low/close वाला क़ीमत डेटा → candlestick chart।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.8 Steps to create a story through data",
+    "hi": "8.8 डेटा से कहानी बनाने के चरण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A series of graphs alone does not help an organisation. Data needs a narrative that gives it context, meaning, relevance and clarity, and directs the audience's focus to the key points without leaving out important facts. The following steps help you build such a story.",
+      "hi": "केवल graphs की श्रृंखला किसी संगठन की मदद नहीं करती। डेटा को ऐसे narrative की ज़रूरत है जो उसे संदर्भ, अर्थ, प्रासंगिकता और स्पष्टता दे, और महत्वपूर्ण तथ्य छोड़े बिना दर्शकों का ध्यान मुख्य बिंदुओं पर ले जाए। निम्न चरण ऐसी कहानी बनाने में मदद करते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Step",
+        "What to do",
+        "Questions to ask"
+       ],
+       "hi": [
+        "चरण",
+        "क्या करें",
+        "पूछने योग्य प्रश्न"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Understand the audience",
+         "Decide who will hear the story and what they need",
+         "Who are they? Technical or not? What decision will they make? How much time do they have?"
+        ],
+        [
+         "2. Choose the right data and visualisations",
+         "Collect reliable, relevant data; clean it; pick charts that suit the data and message",
+         "Is the data recent, accurate, complete and from a trustworthy source? Which chart shows this best?"
+        ],
+        [
+         "3. Draw attention to the key information",
+         "Highlight what matters: colour, labels, annotations, a clear chart title",
+         "What is the one number or trend they must not miss?"
+        ],
+        [
+         "4. Develop a narrative",
+         "Arrange the insights into a story with a beginning, middle and end (Freytag's Pyramid)",
+         "What is the context, the conflict, the climax and the resolution?"
+        ],
+        [
+         "5. Engage the audience",
+         "Present the story with clear language, relatable examples and a call to action; invite questions",
+         "What do I want them to feel, remember and do?"
+        ]
+       ],
+       "hi": [
+        [
+         "1. दर्शकों को समझें",
+         "तय करें कि कहानी कौन सुनेगा और उसे क्या चाहिए",
+         "वे कौन हैं? तकनीकी हैं या नहीं? वे क्या निर्णय लेंगे? उनके पास कितना समय है?"
+        ],
+        [
+         "2. सही डेटा और visualisation चुनें",
+         "भरोसेमंद, प्रासंगिक डेटा इकट्ठा करें; उसे साफ़ करें; डेटा और संदेश के अनुकूल chart चुनें",
+         "क्या डेटा नया, सटीक, पूर्ण और भरोसेमंद स्रोत से है? कौन-सा chart इसे सबसे अच्छा दिखाता है?"
+        ],
+        [
+         "3. मुख्य जानकारी पर ध्यान खींचें",
+         "जो महत्वपूर्ण है उसे उभारें: रंग, label, टिप्पणी (annotation), स्पष्ट chart शीर्षक",
+         "वह एक संख्या या रुझान कौन-सा है जो उनसे छूटना नहीं चाहिए?"
+        ],
+        [
+         "4. Narrative विकसित करें",
+         "Insights को शुरुआत, मध्य और अंत वाली कहानी में सजाएँ (Freytag's Pyramid)",
+         "संदर्भ, संघर्ष, climax और समाधान क्या है?"
+        ],
+        [
+         "5. दर्शकों को जोड़ें",
+         "स्पष्ट भाषा, जुड़ाव वाले उदाहरण और कार्य के आह्वान के साथ कहानी प्रस्तुत करें; प्रश्न आमंत्रित करें",
+         "मैं चाहता/चाहती हूँ कि वे क्या महसूस करें, याद रखें और करें?"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Before you can tell a story, you must find it. These four steps help you find a story hidden in a dataset:",
+      "hi": "कहानी कहने से पहले उसे खोजना पड़ता है। ये चार चरण किसी dataset में छिपी कहानी खोजने में मदद करते हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Get the data and organise it: collect it from reliable sources (school records, surveys, data.gov.in, census reports) and clean it (remove duplicates, fix errors, handle missing values).",
+       "Visualise the data: make quick charts to see its shape, trends and outliers.",
+       "Examine data relationships: compare groups, look for patterns, correlations, sudden changes and unusual values; ask 'why?'.",
+       "Create a simple narrative with conflict: express the finding as a story with a problem (conflict) and a possible resolution."
+      ],
+      "hi": [
+       "डेटा प्राप्त करें और व्यवस्थित करें: इसे भरोसेमंद स्रोतों से इकट्ठा करें (स्कूल रिकॉर्ड, सर्वे, data.gov.in, जनगणना रिपोर्ट) और साफ़ करें (दोहराव हटाएँ, ग़लतियाँ ठीक करें, छूटे मान संभालें)।",
+       "डेटा का visualisation करें: उसका आकार, रुझान और outliers देखने के लिए जल्दी से chart बनाएँ।",
+       "डेटा के संबंध जाँचें: समूहों की तुलना करें, पैटर्न, correlation, अचानक बदलाव और असामान्य मान खोजें; 'क्यों?' पूछें।",
+       "संघर्ष वाला सरल narrative बनाएँ: खोज को ऐसी कहानी के रूप में व्यक्त करें जिसमें समस्या (संघर्ष) और संभावित समाधान हो।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: one data story should have one main insight. If you cannot state the key insight in one sentence, go back and explore the data again.",
+      "hi": "याद रखें: एक data story में एक मुख्य insight होनी चाहिए। अगर आप मुख्य insight एक वाक्य में नहीं कह सकते, तो वापस जाकर डेटा फिर से explore करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.9 Worked example: a complete data story with Python (practical file)",
+    "hi": "8.9 हल किया उदाहरण: Python से पूरी data story (practical file)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The practical file must contain at least one data story that uses all the steps. Here is a complete example using practice data (made-up numbers, used only for learning) about books issued by a school library. The analysis and chart are done with pandas and matplotlib, which you learnt in Python Programming.",
+      "hi": "Practical file में सभी चरणों वाली कम से कम एक data story होनी चाहिए। यहाँ स्कूल पुस्तकालय से जारी किताबों पर अभ्यास डेटा (केवल सीखने के लिए बनाई गई संख्याएँ) से एक पूरा उदाहरण है। विश्लेषण और chart pandas और matplotlib से बने हैं, जो आपने Python Programming में सीखे।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\nimport matplotlib\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n# Practice data (made up): books issued per month in a school library\ndata = {\"Month\": [\"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\"],\n        \"Books\": [120, 135, 140, 90, 210, 230]}\ndf = pd.DataFrame(data)\nprint(df)\n\n# Explore: average, lowest and highest month, change\nprint(\"Average per month:\", round(df[\"Books\"].mean(), 1))\nlow = df.loc[df[\"Books\"].idxmin()]\nhigh = df.loc[df[\"Books\"].idxmax()]\nprint(\"Lowest:\", low[\"Month\"], low[\"Books\"])\nprint(\"Highest:\", high[\"Month\"], high[\"Books\"])\nchange = (df[\"Books\"].iloc[-1] - df[\"Books\"].iloc[0]) / df[\"Books\"].iloc[0] * 100\nprint(\"Change from Jun to Nov:\", round(change, 1), \"%\")\n\n# Visualise: a line chart with title, labels and a note on the key event\nplt.plot(df[\"Month\"], df[\"Books\"], marker=\"o\")\nplt.title(\"Books issued per month (practice data)\")\nplt.xlabel(\"Month\")\nplt.ylabel(\"Books issued\")\nplt.annotate(\"Reading club starts\", xy=(4, 210), xytext=(1.5, 215),\n             arrowprops={\"arrowstyle\": \"->\"})\nplt.savefig(\"library_story.png\")\nprint(\"Chart saved as library_story.png\")",
+      "hi": "import pandas as pd\nimport matplotlib\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\n# Practice data (made up): books issued per month in a school library\ndata = {\"Month\": [\"Jun\", \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\"],\n        \"Books\": [120, 135, 140, 90, 210, 230]}\ndf = pd.DataFrame(data)\nprint(df)\n\n# Explore: average, lowest and highest month, change\nprint(\"Average per month:\", round(df[\"Books\"].mean(), 1))\nlow = df.loc[df[\"Books\"].idxmin()]\nhigh = df.loc[df[\"Books\"].idxmax()]\nprint(\"Lowest:\", low[\"Month\"], low[\"Books\"])\nprint(\"Highest:\", high[\"Month\"], high[\"Books\"])\nchange = (df[\"Books\"].iloc[-1] - df[\"Books\"].iloc[0]) / df[\"Books\"].iloc[0] * 100\nprint(\"Change from Jun to Nov:\", round(change, 1), \"%\")\n\n# Visualise: a line chart with title, labels and a note on the key event\nplt.plot(df[\"Month\"], df[\"Books\"], marker=\"o\")\nplt.title(\"Books issued per month (practice data)\")\nplt.xlabel(\"Month\")\nplt.ylabel(\"Books issued\")\nplt.annotate(\"Reading club starts\", xy=(4, 210), xytext=(1.5, 215),\n             arrowprops={\"arrowstyle\": \"->\"})\nplt.savefig(\"library_story.png\")\nprint(\"Chart saved as library_story.png\")"
+     }
+    },
+    {
+     "formula": {
+      "en": "Real output:\n  Month  Books\n0   Jun    120\n1   Jul    135\n2   Aug    140\n3   Sep     90\n4   Oct    210\n5   Nov    230\nAverage per month: 154.2\nLowest: Sep 90\nHighest: Nov 230\nChange from Jun to Nov: 91.7 %\nChart saved as library_story.png",
+      "hi": "वास्तविक output:\n  Month  Books\n0   Jun    120\n1   Jul    135\n2   Aug    140\n3   Sep     90\n4   Oct    210\n5   Nov    230\nAverage per month: 154.2\nLowest: Sep 90\nHighest: Nov 230\nChange from Jun to Nov: 91.7 %\nChart saved as library_story.png"
+     }
+    },
+    {
+     "p": {
+      "en": "The chart in words: a line chart titled 'Books issued per month (practice data)'. The x-axis shows the months June to November and the y-axis shows books issued. The line rises gently from 120 to 140, dips sharply to 90 in September, then jumps to 210 in October and 230 in November. An arrow labelled 'Reading club starts' points to October.",
+      "hi": "Chart शब्दों में: 'Books issued per month (practice data)' शीर्षक वाला line chart। x-अक्ष पर जून से नवंबर तक के महीने और y-अक्ष पर जारी किताबें हैं। Line 120 से 140 तक धीरे चढ़ती है, सितंबर में तेज़ी से 90 पर गिरती है, फिर अक्टूबर में 210 और नवंबर में 230 पर उछलती है। 'Reading club starts' लिखा तीर अक्टूबर की ओर इशारा करता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write the full data story from this output, showing every step.",
+       "hi": "इस output से हर चरण दिखाते हुए पूरी data story लिखिए।"
+      },
+      "a": {
+       "en": "Step 1 – Audience: the principal and teachers, who will decide whether to continue the reading club. Non-technical, have 5 minutes.\nStep 2 – Data and visual: monthly library issue register (June–November); time-series data, so a line chart.\nStep 3 – Key information: highlight October with an annotation; state the key numbers (average 154.2, lowest 90 in September, highest 230 in November, +91.7% from June).\nStep 4 – Narrative (Freytag):\nExposition: 'Our library tracks how many books students borrow each month.'\nRising action: 'From June to August, borrowing grew slowly, from 120 to 140. In September it fell to 90, the lowest of the term, when half-yearly exams were held.'\nClimax: 'In October, after the weekly reading club started, borrowing jumped to 210, and in November reached 230, almost double June.'\nFalling action: 'The rise came after the club began; the exam dip in September also shows that borrowing depends on students' free time. We cannot be sure the club alone caused the rise, but the timing strongly suggests it helped.'\nResolution: 'We recommend continuing the reading club, extending it to all classes, and keeping the library open during exam weeks for light reading. We will track the same chart next term.'\nStep 5 – Engage: show the chart, share one student's quote about a book they discovered, and ask teachers to suggest books for the club.",
+       "hi": "चरण 1 – दर्शक: प्रधानाचार्य और शिक्षक, जो तय करेंगे कि reading club जारी रहे या नहीं। ग़ैर-तकनीकी, 5 मिनट का समय।\nचरण 2 – डेटा और visual: मासिक पुस्तकालय निर्गम रजिस्टर (जून–नवंबर); time-series डेटा, इसलिए line chart।\nचरण 3 – मुख्य जानकारी: अक्टूबर को टिप्पणी से उभारें; मुख्य संख्याएँ बताएँ (औसत 154.2, सितंबर में सबसे कम 90, नवंबर में सबसे ज़्यादा 230, जून से +91.7%)।\nचरण 4 – Narrative (Freytag):\nExposition: 'हमारा पुस्तकालय हर महीने दर्ज करता है कि विद्यार्थी कितनी किताबें लेते हैं।'\nRising action: 'जून से अगस्त तक किताबें लेना धीरे-धीरे 120 से 140 तक बढ़ा। सितंबर में यह 90 पर गिर गया, सत्र का सबसे कम, जब अर्धवार्षिक परीक्षाएँ थीं।'\nClimax: 'अक्टूबर में साप्ताहिक reading club शुरू होने के बाद यह 210 पर उछला, और नवंबर में 230 पहुँचा, जून का लगभग दोगुना।'\nFalling action: 'बढ़ोतरी club शुरू होने के बाद आई; सितंबर की परीक्षा वाली गिरावट भी बताती है कि किताबें लेना विद्यार्थियों के खाली समय पर निर्भर है। हम पक्का नहीं कह सकते कि केवल club ने ही बढ़ोतरी की, पर समय से पता चलता है कि उसने मदद की।'\nResolution: 'हमारा सुझाव है कि reading club जारी रहे, सभी कक्षाओं तक बढ़े, और परीक्षा के सप्ताहों में हल्की पढ़ाई के लिए पुस्तकालय खुला रहे। अगले सत्र में हम यही chart फिर देखेंगे।'\nचरण 5 – जोड़ें: chart दिखाएँ, किसी विद्यार्थी का किसी नई किताब के बारे में कथन बताएँ, और शिक्षकों से club के लिए किताबें सुझाने को कहें।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 – Your own data story (practical file). Aim: create a data story using all steps. What you need: a small dataset (your class's attendance, your family's monthly expenses with permission, rainfall in your district from IMD or data.gov.in, India's medals in the Olympics), and a spreadsheet, Python, or Orange Data Mining. What to do: follow steps 1–5, make 2–4 labelled charts, and write the narrative in the five Freytag stages, ending with a recommendation and the data source. What it teaches: the full workflow from raw data to decision.",
+      "hi": "गतिविधि 3 – आपकी अपनी data story (practical file)। उद्देश्य: सभी चरणों से data story बनाना। आवश्यक: एक छोटा dataset (आपकी कक्षा की उपस्थिति, अनुमति से परिवार का मासिक ख़र्च, IMD या data.gov.in से आपके ज़िले की वर्षा, ओलंपिक में भारत के पदक), और spreadsheet, Python या Orange Data Mining। क्या करें: चरण 1–5 अपनाएँ, 2–4 label वाले chart बनाएँ, और narrative को Freytag के पाँच चरणों में लिखें, अंत में सुझाव और डेटा का स्रोत दें। सीख: कच्चे डेटा से निर्णय तक की पूरी प्रक्रिया।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.10 Ethics in data storytelling",
+    "hi": "8.10 Data storytelling में नैतिकता"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A data story is powerful, so it can also mislead. Ethical data storytelling means telling the truth with data, even when the truth is less exciting.",
+      "hi": "Data story शक्तिशाली होती है, इसलिए यह गुमराह भी कर सकती है। नैतिक data storytelling का अर्थ है डेटा से सच बताना, भले ही सच उतना रोमांचक न हो।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Principle",
+        "Meaning"
+       ],
+       "hi": [
+        "सिद्धांत",
+        "अर्थ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Accuracy",
+         "Use correct, verified data; check calculations; do not round or edit numbers to suit your point"
+        ],
+        [
+         "Transparency",
+         "Clearly state the data sources, the methods used for analysis, and any limitations or biases in the data"
+        ],
+        [
+         "Context",
+         "Give the background needed to interpret the numbers (time period, sample size, what is normal)"
+        ],
+        [
+         "Respect for privacy",
+         "Do not reveal personal information; anonymise or aggregate data about individuals; get consent"
+        ],
+        [
+         "Fair representation (avoid bias)",
+         "Do not cherry-pick only the data that supports your view; show the whole picture, including inconvenient results"
+        ],
+        [
+         "Honest visuals",
+         "Avoid misleading scales, truncated axes, distorted 3-D charts or selective time ranges"
+        ],
+        [
+         "Story relevance",
+         "Keep the story focused on what is useful and relevant to the audience's decision"
+        ],
+        [
+         "Correlation is not causation",
+         "Two things moving together does not prove one causes the other; mention other possible factors"
+        ]
+       ],
+       "hi": [
+        [
+         "सटीकता (Accuracy)",
+         "सही, सत्यापित डेटा उपयोग करें; गणना जाँचें; अपनी बात के अनुसार संख्याएँ गोल या बदलें नहीं"
+        ],
+        [
+         "पारदर्शिता (Transparency)",
+         "डेटा के स्रोत, विश्लेषण की विधियाँ, और डेटा की सीमाएँ या bias साफ़ बताएँ"
+        ],
+        [
+         "संदर्भ (Context)",
+         "संख्याओं को समझने के लिए ज़रूरी पृष्ठभूमि दें (समय-अवधि, नमूने का आकार, सामान्य क्या है)"
+        ],
+        [
+         "निजता का सम्मान",
+         "निजी जानकारी प्रकट न करें; व्यक्तियों के डेटा को गुमनाम या समेकित करें; सहमति लें"
+        ],
+        [
+         "निष्पक्ष प्रस्तुति (bias से बचें)",
+         "केवल अपने पक्ष वाला डेटा न चुनें (cherry-picking); असुविधाजनक परिणामों सहित पूरी तस्वीर दिखाएँ"
+        ],
+        [
+         "ईमानदार visuals",
+         "भ्रामक पैमाने, कटे हुए अक्ष, विकृत 3-D chart या चुनिंदा समय-सीमा से बचें"
+        ],
+        [
+         "कहानी की प्रासंगिकता",
+         "कहानी को उसी पर केंद्रित रखें जो दर्शकों के निर्णय के लिए उपयोगी और प्रासंगिक है"
+        ],
+        [
+         "Correlation, causation नहीं है",
+         "दो चीज़ों का साथ बदलना यह सिद्ध नहीं करता कि एक दूसरे का कारण है; अन्य संभावित कारक बताएँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "See how a truncated y-axis can exaggerate a small difference. Two sections scored average marks of 96 and 100.",
+       "hi": "देखिए कि कटा हुआ y-अक्ष छोटे अंतर को कैसे बढ़ा-चढ़ाकर दिखा सकता है। दो sections के औसत अंक 96 और 100 हैं।"
+      },
+      "a": {
+       "en": "Code:\n# Same data, two y-axis starting points: how big does the gap LOOK?\na, b = 96, 100          # marks of two sections (practice data)\nfor start in [0, 95]:\n    bar_a = a - start   # visible bar height on the chart\n    bar_b = b - start\n    print(\"Axis starts at\", start, \"-> bar B looks\",\n          round(bar_b / bar_a, 2), \"times taller than bar A\")\nprint(\"Real difference:\", round((b - a) / a * 100, 1), \"%\")\nReal output:\nAxis starts at 0 -> bar B looks 1.04 times taller than bar A\nAxis starts at 95 -> bar B looks 5.0 times taller than bar A\nReal difference: 4.2 %\nConclusion: if the bar chart's axis starts at 95, Section B's bar looks five times taller, although it scored only about 4% more. Bar charts should start at zero, or the narrative must clearly say the axis is zoomed.",
+       "hi": "Code:\n# Same data, two y-axis starting points: how big does the gap LOOK?\na, b = 96, 100          # marks of two sections (practice data)\nfor start in [0, 95]:\n    bar_a = a - start   # visible bar height on the chart\n    bar_b = b - start\n    print(\"Axis starts at\", start, \"-> bar B looks\",\n          round(bar_b / bar_a, 2), \"times taller than bar A\")\nprint(\"Real difference:\", round((b - a) / a * 100, 1), \"%\")\nवास्तविक output:\nAxis starts at 0 -> bar B looks 1.04 times taller than bar A\nAxis starts at 95 -> bar B looks 5.0 times taller than bar A\nReal difference: 4.2 %\nनिष्कर्ष: अगर bar chart का अक्ष 95 से शुरू हो, तो Section B का bar पाँच गुना लंबा दिखता है, जबकि उसके अंक केवल लगभग 4% ज़्यादा हैं। Bar chart शून्य से शुरू होना चाहिए, या narrative में साफ़ बताना चाहिए कि अक्ष zoom किया गया है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A news post says: 'Districts with more mobile towers have more students passing Class 10. So mobile towers improve results.' What is wrong?",
+       "hi": "एक समाचार post कहती है: 'जिन ज़िलों में ज़्यादा mobile towers हैं, वहाँ ज़्यादा विद्यार्थी कक्षा 10 पास करते हैं। इसलिए mobile towers परिणाम सुधारते हैं।' इसमें क्या ग़लत है?"
+      },
+      "a": {
+       "en": "Step 1: The data shows a correlation, not a cause.\nStep 2: A third factor can explain both: more developed, urban districts have both more towers and more schools, teachers, electricity and income.\nStep 3: An ethical story would say: 'Districts with more towers also tend to have better results, probably because both are linked to development. More study is needed to know whether internet access itself helps.'",
+       "hi": "चरण 1: डेटा correlation दिखाता है, कारण नहीं।\nचरण 2: कोई तीसरा कारक दोनों को समझा सकता है: अधिक विकसित, शहरी ज़िलों में ज़्यादा tower भी हैं और ज़्यादा स्कूल, शिक्षक, बिजली और आय भी।\nचरण 3: नैतिक कहानी कहेगी: 'ज़्यादा tower वाले ज़िलों में परिणाम भी बेहतर होते हैं, संभवतः इसलिए कि दोनों विकास से जुड़े हैं। यह जानने के लिए और अध्ययन चाहिए कि क्या internet की पहुँच स्वयं मदद करती है।'"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Ethics checklist before presenting: Is my data accurate and cited? Have I explained limitations? Are my charts honest? Have I protected people's privacy? Have I shown the full picture, not just the part I like?",
+      "hi": "प्रस्तुति से पहले नैतिकता जाँच-सूची: क्या मेरा डेटा सटीक है और उसका स्रोत दिया है? क्या मैंने सीमाएँ बताई हैं? क्या मेरे chart ईमानदार हैं? क्या मैंने लोगों की निजता बचाई है? क्या मैंने पूरी तस्वीर दिखाई है, केवल वह हिस्सा नहीं जो मुझे पसंद है?"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking a set of charts is already a data story. Fix: a data story needs data, visuals and a narrative with context and a clear message.",
+   "Mixing up the order of Freytag's Pyramid. Fix: Exposition, Rising action, Climax, Falling action, Resolution (E-R-C-F-R).",
+   "Using a pie chart for change over time or for many categories. Fix: use a line chart for time and a bar chart for many categories.",
+   "Starting bar-chart axes above zero. Fix: start at zero, or clearly say the axis is zoomed, so differences are not exaggerated.",
+   "Claiming that one thing caused another just because they rise together. Fix: say 'is linked with' and mention other possible factors.",
+   "Showing only the data that supports your view. Fix: avoid cherry-picking; include inconvenient results and limitations.",
+   "Forgetting the audience. Fix: choose language, detail and charts that suit who will hear the story and what they will decide.",
+   "Leaving out titles, axis labels, units or sources. Fix: every chart needs a message-title, labelled axes, a legend if needed and the data source.",
+   "Revealing names or personal details in a data story. Fix: anonymise or aggregate data and respect privacy."
+  ],
+  "hi": [
+   "यह सोचना कि कुछ chart अपने-आप data story हैं। सुधार: data story में data, visuals और संदर्भ व स्पष्ट संदेश वाला narrative चाहिए।",
+   "Freytag's Pyramid का क्रम उलझा देना। सुधार: Exposition, Rising action, Climax, Falling action, Resolution (E-R-C-F-R)।",
+   "समय के साथ बदलाव या बहुत सारी श्रेणियों के लिए pie chart उपयोग करना। सुधार: समय के लिए line chart और बहुत श्रेणियों के लिए bar chart।",
+   "Bar chart का अक्ष शून्य से ऊपर शुरू करना। सुधार: शून्य से शुरू करें, या साफ़ बताएँ कि अक्ष zoom है, ताकि अंतर बढ़ा-चढ़ाकर न दिखे।",
+   "केवल साथ बढ़ने के कारण यह दावा करना कि एक चीज़ ने दूसरी को पैदा किया। सुधार: 'से जुड़ा है' कहें और अन्य संभावित कारक बताएँ।",
+   "केवल अपने विचार के पक्ष वाला डेटा दिखाना। सुधार: cherry-picking से बचें; असुविधाजनक परिणाम और सीमाएँ भी दिखाएँ।",
+   "दर्शकों को भूल जाना। सुधार: ऐसी भाषा, विवरण और chart चुनें जो सुनने वालों और उनके निर्णय के अनुकूल हों।",
+   "शीर्षक, अक्ष label, इकाई या स्रोत छोड़ देना। सुधार: हर chart में संदेश बताने वाला शीर्षक, label वाले अक्ष, ज़रूरत हो तो legend और डेटा का स्रोत हो।",
+   "Data story में नाम या निजी विवरण प्रकट करना। सुधार: डेटा को गुमनाम या समेकित करें और निजता का सम्मान करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Story",
+    "hi": "Story (कहानी)"
+   },
+   "d": {
+    "en": "A true or fictional narrative of connected events involving characters.",
+    "hi": "पात्रों से जुड़ी घटनाओं का सच्चा या काल्पनिक वृत्तांत।"
+   }
+  },
+  {
+   "t": {
+    "en": "Storytelling",
+    "hi": "Storytelling"
+   },
+   "d": {
+    "en": "Narrating a story to listeners using imagination and creativity.",
+    "hi": "कल्पना और रचनात्मकता से श्रोताओं को कहानी सुनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Characters",
+    "hi": "पात्र"
+   },
+   "d": {
+    "en": "The people, animals or things a story is about.",
+    "hi": "वे लोग, जानवर या चीज़ें जिनके बारे में कहानी है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Plot / Setting",
+    "hi": "कथानक / परिवेश"
+   },
+   "d": {
+    "en": "The sequence of events / the time and place of the story.",
+    "hi": "घटनाओं का क्रम / कहानी का समय और स्थान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Conflict",
+    "hi": "संघर्ष"
+   },
+   "d": {
+    "en": "The problem or challenge in a story; in data, a problem or surprising finding.",
+    "hi": "कहानी की समस्या या चुनौती; डेटा में, कोई समस्या या चौंकाने वाली खोज।"
+   }
+  },
+  {
+   "t": {
+    "en": "Resolution",
+    "hi": "समाधान"
+   },
+   "d": {
+    "en": "How the conflict is resolved; in data, the conclusion and recommendation.",
+    "hi": "संघर्ष कैसे सुलझता है; डेटा में, निष्कर्ष और सुझाव।"
+   }
+  },
+  {
+   "t": {
+    "en": "Insight",
+    "hi": "Insight (अंतर्दृष्टि)"
+   },
+   "d": {
+    "en": "A meaningful understanding or lesson drawn from a story or from data.",
+    "hi": "कहानी या डेटा से निकली सार्थक समझ या सीख।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data",
+    "hi": "Data"
+   },
+   "d": {
+    "en": "Raw facts, figures and observations that can be analysed.",
+    "hi": "कच्चे तथ्य, आँकड़े और प्रेक्षण जिनका विश्लेषण हो सकता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data visualisation",
+    "hi": "Data visualisation"
+   },
+   "d": {
+    "en": "Graphical representation of data through charts, graphs and maps.",
+    "hi": "Chart, graph और नक्शों से डेटा का चित्रात्मक निरूपण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data storytelling",
+    "hi": "Data storytelling"
+   },
+   "d": {
+    "en": "Building a narrative around data and visuals to communicate insights and drive decisions.",
+    "hi": "Insights बताने और निर्णय करवाने के लिए डेटा और visuals के चारों ओर narrative बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Narrative",
+    "hi": "Narrative"
+   },
+   "d": {
+    "en": "The explanatory storyline that gives data context and meaning.",
+    "hi": "वह व्याख्यात्मक कथा-सूत्र जो डेटा को संदर्भ और अर्थ देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Visuals",
+    "hi": "Visuals"
+   },
+   "d": {
+    "en": "Charts, graphs, maps and images used to present data clearly.",
+    "hi": "डेटा को स्पष्ट दिखाने वाले chart, graph, नक्शे और चित्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "Freytag's Pyramid",
+    "hi": "Freytag's Pyramid"
+   },
+   "d": {
+    "en": "Five-stage story structure: exposition, rising action, climax, falling action, resolution.",
+    "hi": "पाँच चरणों वाली कथा-संरचना: exposition, rising action, climax, falling action, resolution।"
+   }
+  },
+  {
+   "t": {
+    "en": "Exposition",
+    "hi": "Exposition"
+   },
+   "d": {
+    "en": "The opening that sets the scene and background.",
+    "hi": "शुरुआत जो परिवेश और पृष्ठभूमि बताती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Climax",
+    "hi": "Climax"
+   },
+   "d": {
+    "en": "The peak moment; in a data story, the key insight.",
+    "hi": "चरम क्षण; data story में मुख्य insight।"
+   }
+  },
+  {
+   "t": {
+    "en": "Categorical data",
+    "hi": "Categorical data"
+   },
+   "d": {
+    "en": "Data in groups or labels, such as states or colours.",
+    "hi": "समूहों या label में डेटा, जैसे राज्य या रंग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Numerical data",
+    "hi": "Numerical data"
+   },
+   "d": {
+    "en": "Measured or counted numbers, such as marks or height.",
+    "hi": "मापी या गिनी संख्याएँ, जैसे अंक या ऊँचाई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Time-series data",
+    "hi": "Time-series data"
+   },
+   "d": {
+    "en": "Values recorded over time in order.",
+    "hi": "समय के क्रम में दर्ज मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Histogram",
+    "hi": "Histogram"
+   },
+   "d": {
+    "en": "Bar-like chart showing how many values fall in each range.",
+    "hi": "Bar जैसा chart जो दिखाता है कि हर अंतराल में कितने मान आते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Scatter plot",
+    "hi": "Scatter plot"
+   },
+   "d": {
+    "en": "Chart of points showing the relationship between two numerical variables.",
+    "hi": "बिंदुओं वाला chart जो दो संख्यात्मक चरों का संबंध दिखाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Heat map",
+    "hi": "Heat map"
+   },
+   "d": {
+    "en": "Grid or map where colour intensity shows the size of values.",
+    "hi": "Grid या नक्शा जिसमें रंग की गहराई मानों का आकार दिखाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Candlestick chart",
+    "hi": "Candlestick chart"
+   },
+   "d": {
+    "en": "Financial chart showing open, high, low and close prices for each period.",
+    "hi": "हर अवधि की open, high, low और close क़ीमत दिखाने वाला वित्तीय chart।"
+   }
+  },
+  {
+   "t": {
+    "en": "Word cloud",
+    "hi": "Word cloud"
+   },
+   "d": {
+    "en": "Picture of words where more frequent words appear larger.",
+    "hi": "शब्दों का चित्र जिसमें अधिक बार आने वाले शब्द बड़े दिखते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Choropleth map",
+    "hi": "Choropleth map"
+   },
+   "d": {
+    "en": "Map with regions coloured according to a value.",
+    "hi": "ऐसा नक्शा जिसमें क्षेत्र किसी मान के अनुसार रंगे होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Cherry-picking",
+    "hi": "Cherry-picking"
+   },
+   "d": {
+    "en": "Choosing only data that supports a desired conclusion.",
+    "hi": "केवल मनचाहे निष्कर्ष के पक्ष वाला डेटा चुनना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Transparency",
+    "hi": "Transparency"
+   },
+   "d": {
+    "en": "Disclosing data sources, methods, limitations and biases.",
+    "hi": "डेटा स्रोत, विधियाँ, सीमाएँ और bias बताना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Correlation vs causation",
+    "hi": "Correlation बनाम causation"
+   },
+   "d": {
+    "en": "Variables moving together (correlation) does not mean one causes the other (causation).",
+    "hi": "चरों का साथ बदलना (correlation) यह नहीं दर्शाता कि एक दूसरे का कारण है (causation)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Call to action",
+    "hi": "Call to action"
+   },
+   "d": {
+    "en": "The clear request or recommendation at the end of a data story.",
+    "hi": "Data story के अंत में स्पष्ट अनुरोध या सुझाव।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The three essential elements of data storytelling are:\n(A) Data, code, model (B) Data, narrative, visuals (C) Charts, tables, slides (D) Plot, characters, moral",
+    "hi": "MCQ: Data storytelling के तीन आवश्यक तत्व हैं:\n(A) Data, code, model (B) Data, narrative, visuals (C) Chart, तालिकाएँ, slides (D) कथानक, पात्र, सीख"
+   },
+   "a": {
+    "en": "(B) Data, narrative, visuals.",
+    "hi": "(B) Data, narrative, visuals।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In data storytelling, 'Visuals' refers to:\n(A) Using charts, graphs and images to present data clearly (B) Writing long text descriptions (C) Ignoring graphics (D) Using only number tables",
+    "hi": "MCQ: Data storytelling में 'Visuals' का अर्थ है:\n(A) डेटा को साफ़ दिखाने के लिए chart, graph और चित्रों का उपयोग (B) लंबे text विवरण लिखना (C) चित्रों को अनदेखा करना (D) केवल संख्या तालिकाएँ"
+   },
+   "a": {
+    "en": "(A).",
+    "hi": "(A)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which ethical component asks you to state data sources, methods of analysis and any limitations or biases?\n(A) Data context (B) Transparency (C) Respect for privacy (D) Story relevance",
+    "hi": "MCQ: कौन-सा नैतिक घटक कहता है कि डेटा स्रोत, विश्लेषण की विधियाँ और सीमाएँ या bias बताएँ?\n(A) Data context (B) Transparency (C) Respect for privacy (D) Story relevance"
+   },
+   "a": {
+    "en": "(B) Transparency.",
+    "hi": "(B) Transparency।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which chart is best to show monthly rainfall over two years?\n(A) Pie chart (B) Word cloud (C) Line chart (D) Candlestick chart",
+    "hi": "MCQ: दो वर्षों की मासिक वर्षा दिखाने के लिए कौन-सा chart सबसे अच्छा है?\n(A) Pie chart (B) Word cloud (C) Line chart (D) Candlestick chart"
+   },
+   "a": {
+    "en": "(C) Line chart, because the data is a time series.",
+    "hi": "(C) Line chart, क्योंकि डेटा time series है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which visualisation shows the relationship between two numerical variables?\n(A) Scatter plot (B) Word cloud (C) Pie chart (D) Timeline",
+    "hi": "MCQ: कौन-सा visualisation दो संख्यात्मक चरों का संबंध दिखाता है?\n(A) Scatter plot (B) Word cloud (C) Pie chart (D) Timeline"
+   },
+   "a": {
+    "en": "(A) Scatter plot.",
+    "hi": "(A) Scatter plot।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The peak point of Freytag's Pyramid, where the key insight is revealed, is the ______.",
+    "hi": "रिक्त स्थान भरें: Freytag's Pyramid का चरम बिंदु, जहाँ मुख्य insight बताई जाती है, ______ है।"
+   },
+   "a": {
+    "en": "climax",
+    "hi": "climax"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A chart in which more frequent words appear in larger letters is a ______.",
+    "hi": "रिक्त स्थान भरें: जिस चित्र में अधिक बार आने वाले शब्द बड़े अक्षरों में दिखते हैं, वह ______ है।"
+   },
+   "a": {
+    "en": "word cloud",
+    "hi": "word cloud"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: If two variables rise together, the data proves that one causes the other.",
+    "hi": "सही या ग़लत: अगर दो चर साथ-साथ बढ़ते हैं, तो डेटा सिद्ध करता है कि एक दूसरे का कारण है।"
+   },
+   "a": {
+    "en": "False. Correlation does not prove causation; another factor may cause both.",
+    "hi": "ग़लत। Correlation, causation सिद्ध नहीं करता; दोनों का कारण कोई और कारक हो सकता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: The resolution of a data story usually contains a recommendation or call to action.",
+    "hi": "सही या ग़लत: Data story के resolution में आमतौर पर सुझाव या कार्य का आह्वान होता है।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Define data storytelling and give one reason why it has become so powerful today.",
+    "hi": "Data storytelling की परिभाषा दीजिए और एक कारण बताइए कि आज यह इतनी शक्तिशाली क्यों है।"
+   },
+   "a": {
+    "en": "Data storytelling is building a clear narrative around data and visuals so that an audience understands the insights, their context and importance, and can act on them. It is powerful today because organisations collect huge amounts of data but decision makers lack time to study it; a story makes insights memorable and persuades both technical and non-technical stakeholders.",
+    "hi": "Data storytelling, डेटा और visuals के चारों ओर स्पष्ट narrative बनाना है ताकि दर्शक insights, उनका संदर्भ और महत्व समझें और उन पर काम कर सकें। आज यह शक्तिशाली है क्योंकि संगठन बहुत डेटा इकट्ठा करते हैं पर निर्णय लेने वालों के पास उसे पढ़ने का समय नहीं होता; कहानी insights को यादगार बनाती है और तकनीकी व ग़ैर-तकनीकी दोनों हितधारकों को मनाती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Define 'data' and 'data visualisation'. Explain the uses of a heat map and a candlestick chart.",
+    "hi": "'Data' और 'data visualisation' की परिभाषा दीजिए। Heat map और candlestick chart के उपयोग समझाइए।"
+   },
+   "a": {
+    "en": "Data: raw facts, figures and observations collected for analysis.\nData visualisation: graphical representation of data using charts, graphs and maps to reveal patterns quickly.\nHeat map: uses colour intensity on a grid or map to show the size of values, e.g. the busiest hours on a website, temperature across regions, or student-wise monthly attendance.\nCandlestick chart: a financial chart that shows the open, high, low and close price of a share or currency for each period, used by traders to study price movements and trends.",
+    "hi": "Data: विश्लेषण के लिए इकट्ठा किए गए कच्चे तथ्य, आँकड़े और प्रेक्षण।\nData visualisation: पैटर्न जल्दी दिखाने के लिए chart, graph और नक्शों से डेटा का चित्रात्मक निरूपण।\nHeat map: grid या नक्शे पर रंग की गहराई से मानों का आकार दिखाता है, जैसे website के सबसे व्यस्त घंटे, क्षेत्रों का तापमान, या विद्यार्थीवार मासिक उपस्थिति।\nCandlestick chart: वित्तीय chart जो हर अवधि में share या मुद्रा की open, high, low और close क़ीमत दिखाता है, जिसका उपयोग traders क़ीमत की चाल और रुझान समझने में करते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List and explain the elements of a story with an example.",
+    "hi": "उदाहरण सहित कहानी के तत्व लिखिए और समझाइए।"
+   },
+   "a": {
+    "en": "Characters (who: the hare and the tortoise), setting and plot (where/when and the sequence: a race through the forest; hare runs ahead, sleeps, tortoise keeps walking), conflict (the slow tortoise must beat the fast hare), resolution (the tortoise wins while the hare sleeps; the climax is the moment the hare wakes and sees the tortoise near the finish) and insight (slow and steady wins the race).",
+    "hi": "पात्र (कौन: ख़रगोश और कछुआ), परिवेश और कथानक (कहाँ/कब और क्रम: जंगल में दौड़; ख़रगोश आगे भागता है, सो जाता है, कछुआ चलता रहता है), संघर्ष (धीमे कछुए को तेज़ ख़रगोश को हराना है), समाधान (ख़रगोश के सोते समय कछुआ जीत जाता है; climax वह क्षण है जब ख़रगोश जागकर कछुए को अंतिम रेखा के पास देखता है) और सीख (धीमा और स्थिर ही दौड़ जीतता है)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain how data, narrative and visuals combine to explain, enlighten and engage.",
+    "hi": "समझाइए कि data, narrative और visuals मिलकर कैसे explain, enlighten और engage करते हैं।"
+   },
+   "a": {
+    "en": "Data + Narrative explain: words describe what the data shows and why.\nData + Visuals enlighten: charts reveal patterns and outliers that tables hide, giving new perspectives for decisions.\nNarrative + Visuals engage: a story told with pictures captures attention and can entertain.\nAll three together make a data story that drives change.",
+    "hi": "Data + Narrative समझाते (explain) हैं: शब्द बताते हैं कि डेटा क्या दिखाता है और क्यों।\nData + Visuals नई दृष्टि देते (enlighten) हैं: chart ऐसे पैटर्न और outliers दिखाते हैं जो तालिकाओं में छिपे रहते हैं, जिससे निर्णयों के लिए नया नज़रिया मिलता है।\nNarrative + Visuals जोड़ते (engage) हैं: चित्रों के साथ कही कहानी ध्यान खींचती है और मनोरंजन कर सकती है।\nतीनों मिलकर ऐसी data story बनाते हैं जो बदलाव लाती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Describe the five stages of Freytag's Pyramid as applied to a data story.",
+    "hi": "Data story पर लागू Freytag's Pyramid के पाँच चरण बताइए।"
+   },
+   "a": {
+    "en": "1. Exposition: introduce the topic, context, time, place, people affected and data source.\n2. Rising action: present trends and evidence step by step with charts.\n3. Climax: reveal the key insight.\n4. Falling action: explain causes and implications with supporting data.\n5. Resolution: summarise and give a recommendation or call to action.",
+    "hi": "1. Exposition: विषय, संदर्भ, समय, स्थान, प्रभावित लोग और डेटा स्रोत बताएँ।\n2. Rising action: chart के साथ रुझान और प्रमाण कदम-दर-कदम दिखाएँ।\n3. Climax: मुख्य insight बताएँ।\n4. Falling action: सहायक डेटा से कारण और प्रभाव समझाएँ।\n5. Resolution: सारांश दें और सुझाव या कार्य का आह्वान करें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write the five steps to create a story through data.",
+    "hi": "डेटा से कहानी बनाने के पाँच चरण लिखिए।"
+   },
+   "a": {
+    "en": "1. Understand the audience.\n2. Choose the right data and visualisations.\n3. Draw attention to the key information.\n4. Develop a narrative.\n5. Engage the audience.",
+    "hi": "1. दर्शकों को समझें।\n2. सही डेटा और visualisation चुनें।\n3. मुख्य जानकारी पर ध्यान खींचें।\n4. Narrative विकसित करें।\n5. दर्शकों को जोड़ें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What are the four steps to find a story in a dataset?",
+    "hi": "किसी dataset में कहानी खोजने के चार चरण क्या हैं?"
+   },
+   "a": {
+    "en": "1. Get the data and organise (clean) it.\n2. Visualise the data.\n3. Examine data relationships (patterns, comparisons, correlations, outliers).\n4. Create a simple narrative with conflict.",
+    "hi": "1. डेटा प्राप्त करें और व्यवस्थित (साफ़) करें।\n2. डेटा का visualisation करें।\n3. डेटा के संबंध जाँचें (पैटर्न, तुलनाएँ, correlation, outliers)।\n4. संघर्ष वाला सरल narrative बनाएँ।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Match each data set with the best chart: (i) share of each mode of transport used by students; (ii) marks of 200 students in a test; (iii) literacy rate of each Indian state; (iv) a company's daily share prices.",
+    "hi": "हर डेटा को सबसे अच्छे chart से मिलाइए: (i) विद्यार्थियों द्वारा उपयोग किए जाने वाले परिवहन साधनों का हिस्सा; (ii) एक test में 200 विद्यार्थियों के अंक; (iii) भारत के हर राज्य की साक्षरता दर; (iv) किसी कंपनी के share की दैनिक क़ीमतें।"
+   },
+   "a": {
+    "en": "(i) Pie chart (parts of a whole, few categories) or bar chart.\n(ii) Histogram (distribution of numerical values).\n(iii) Choropleth map (geographic data), or a sorted bar chart.\n(iv) Candlestick chart.",
+    "hi": "(i) Pie chart (पूरे के हिस्से, कम श्रेणियाँ) या bar chart।\n(ii) Histogram (संख्यात्मक मानों का वितरण)।\n(iii) Choropleth map (भौगोलिक डेटा), या क्रमबद्ध bar chart।\n(iv) Candlestick chart।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A bar chart whose y-axis starts at 95 can mislead the audience.\nReason (R): Truncating the axis makes small differences look much larger.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): जिस bar chart का y-अक्ष 95 से शुरू हो, वह दर्शकों को गुमराह कर सकता है।\nकारण (R): अक्ष काटने से छोटे अंतर बहुत बड़े दिखते हैं।\n(a) दोनों सही, R व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(a). In the program in 8.10, marks of 96 and 100 (a 4.2% difference) look like a 5-times difference when the axis starts at 95.",
+    "hi": "(a)। 8.10 के program में 96 और 100 अंक (4.2% अंतर) अक्ष 95 से शुरू होने पर 5 गुना अंतर जैसे दिखते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Data storytelling helps decision making.\nReason (R): A narrative reduces ambiguity by telling the audience which insight matters and why.\nChoose (a)–(d) as above.",
+    "hi": "अभिकथन (A): Data storytelling निर्णय लेने में मदद करती है।\nकारण (R): Narrative दर्शकों को बताकर कि कौन-सी insight महत्वपूर्ण है और क्यों, अस्पष्टता घटाता है।\nऊपर की तरह (a)–(d) चुनें।"
+   },
+   "a": {
+    "en": "(a) Both are true and R explains A.",
+    "hi": "(a) दोनों सही हैं और R, A की व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A city's traffic police have data showing that accidents near schools rise sharply between 7:30 and 8:30 a.m. and that most involve two-wheelers without helmets. Plan a data story for the city council using Freytag's Pyramid and suggest the charts you would use.",
+    "hi": "Case-based: किसी शहर की यातायात पुलिस के डेटा से पता चलता है कि स्कूलों के पास दुर्घटनाएँ सुबह 7:30 से 8:30 के बीच तेज़ी से बढ़ती हैं और ज़्यादातर में बिना helmet वाले दोपहिया वाहन शामिल होते हैं। Freytag's Pyramid से नगर परिषद के लिए data story की योजना बनाइए और उपयोग किए जाने वाले chart बताइए।"
+   },
+   "a": {
+    "en": "Exposition: road safety near schools; one year of police accident records; children and parents affected.\nRising action: line chart of accidents by hour (peak 7:30–8:30); map showing accident hotspots near schools; bar chart of vehicle types.\nClimax: most morning accidents near schools involve two-wheelers without helmets during school drop-off.\nFalling action: explain causes (rush, no speed breakers, no traffic marshals); compare with areas where zebra crossings and marshals exist and accidents are lower (mention it is a comparison, not proof).\nResolution: recommend speed breakers, school-zone signs, morning traffic marshals and a helmet-awareness drive, and track the same charts every month.\nEthics: anonymise victims; state data source and limitations.",
+    "hi": "Exposition: स्कूलों के पास सड़क सुरक्षा; पुलिस के एक साल के दुर्घटना रिकॉर्ड; बच्चे और अभिभावक प्रभावित।\nRising action: घंटेवार दुर्घटनाओं का line chart (7:30–8:30 पर शिखर); स्कूलों के पास दुर्घटना hotspot दिखाने वाला नक्शा; वाहन प्रकारों का bar chart।\nClimax: स्कूलों के पास सुबह की ज़्यादातर दुर्घटनाएँ स्कूल छोड़ने के समय बिना helmet वाले दोपहिया वाहनों से होती हैं।\nFalling action: कारण समझाएँ (जल्दबाज़ी, speed breaker नहीं, traffic marshal नहीं); उन क्षेत्रों से तुलना करें जहाँ zebra crossing और marshal हैं और दुर्घटनाएँ कम हैं (बताएँ कि यह तुलना है, प्रमाण नहीं)।\nResolution: speed breaker, school-zone संकेत, सुबह traffic marshal और helmet जागरूकता अभियान का सुझाव, और हर महीने वही chart देखना।\nनैतिकता: पीड़ितों को गुमनाम रखें; डेटा स्रोत और सीमाएँ बताएँ।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A company's advertisement shows a bar chart in which its product's 'customer satisfaction' bar is three times taller than a rival's. The actual figures are 91% and 88%, and the survey had only 30 customers chosen by the company. Identify all the ethical problems.",
+    "hi": "Case-based: एक कंपनी के विज्ञापन में bar chart है जिसमें उसके उत्पाद का 'ग्राहक संतुष्टि' bar प्रतिद्वंद्वी से तीन गुना लंबा है। वास्तविक आँकड़े 91% और 88% हैं, और सर्वे में कंपनी द्वारा चुने गए केवल 30 ग्राहक थे। सभी नैतिक समस्याएँ पहचानिए।"
+   },
+   "a": {
+    "en": "1. Misleading visual: the y-axis must have been truncated, exaggerating a 3-point gap.\n2. Lack of transparency: sample size and selection method are hidden.\n3. Biased data / cherry-picking: customers were chosen by the company, so they are not representative.\n4. Missing context: 30 people is too small a sample to generalise.\nAn ethical version would start the axis at zero, show the sample size, explain how customers were selected, and avoid claiming a big difference.",
+    "hi": "1. भ्रामक visual: y-अक्ष काटा गया होगा, जिससे 3 अंक का अंतर बढ़ा-चढ़ाकर दिखा।\n2. पारदर्शिता की कमी: नमूने का आकार और चयन विधि छिपाई गई।\n3. पक्षपाती डेटा / cherry-picking: ग्राहक कंपनी ने चुने, इसलिए वे प्रतिनिधि नहीं हैं।\n4. संदर्भ की कमी: 30 लोग सामान्यीकरण के लिए बहुत छोटा नमूना है।\nनैतिक संस्करण में अक्ष शून्य से शुरू होगा, नमूने का आकार दिखेगा, ग्राहक चयन का तरीक़ा बताया जाएगा, और बड़े अंतर का दावा नहीं होगा।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain the need for data storytelling and why storytelling is powerful, with an example from India.",
+    "hi": "दीर्घ उत्तर: Data storytelling की ज़रूरत और storytelling शक्तिशाली क्यों है, भारत के एक उदाहरण के साथ समझाइए।"
+   },
+   "a": {
+    "en": "Storytelling is powerful because it generates interest, holds attention, makes complex ideas easy, is memorable, evokes emotion and motivates action. Data storytelling uses this power for data: it makes complex data accessible to non-experts, increases engagement and retention, supports evidence-based decisions, builds trust and loyalty, and reduces ambiguity.\nExample: a state health department could tell the story of a vaccination drive: exposition (low coverage in some districts), rising action (district map and monthly line chart), climax (coverage rose sharply after mobile vans and local-language messages began), falling action (which districts still lag and why), resolution (extend vans to lagging districts). Officials, doctors and citizens can all understand and act on it.",
+    "hi": "Storytelling शक्तिशाली है क्योंकि यह रुचि जगाती है, ध्यान बाँधती है, जटिल विचार आसान बनाती है, याद रहती है, भावनाएँ जगाती है और कार्य के लिए प्रेरित करती है। Data storytelling इसी शक्ति का उपयोग डेटा के लिए करती है: यह जटिल डेटा को ग़ैर-विशेषज्ञों के लिए सुलभ बनाती है, जुड़ाव और याद रखना बढ़ाती है, प्रमाण-आधारित निर्णयों में मदद करती है, भरोसा और वफ़ादारी बनाती है, और अस्पष्टता घटाती है।\nउदाहरण: कोई राज्य स्वास्थ्य विभाग टीकाकरण अभियान की कहानी कह सकता है: exposition (कुछ ज़िलों में कम कवरेज), rising action (ज़िलेवार नक्शा और मासिक line chart), climax (mobile vans और स्थानीय भाषा के संदेश शुरू होने के बाद कवरेज तेज़ी से बढ़ा), falling action (कौन-से ज़िले अब भी पीछे हैं और क्यों), resolution (पीछे वाले ज़िलों में vans बढ़ाना)। अधिकारी, डॉक्टर और नागरिक सभी इसे समझकर उस पर काम कर सकते हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "In the Python data story in 8.9, which line of code finds the month with the fewest books, and what would happen to the story if the September value were wrongly entered as 900?",
+    "hi": "8.9 की Python data story में कौन-सी पंक्ति सबसे कम किताबों वाला महीना खोजती है, और अगर सितंबर का मान ग़लती से 900 दर्ज हो जाए तो कहानी पर क्या असर होगा?"
+   },
+   "a": {
+    "en": "low = df.loc[df[\"Books\"].idxmin()] finds the row with the minimum value; idxmin() returns the index of the smallest value. If September were entered as 900, it would become the highest month, the average would jump, the exam-time dip would disappear and the climax (the reading club effect) would be hidden or misread. This shows why the first step, organising and cleaning data, and checking for outliers, matters for accuracy.",
+    "hi": "low = df.loc[df[\"Books\"].idxmin()] न्यूनतम मान वाली पंक्ति खोजती है; idxmin() सबसे छोटे मान का index लौटाता है। अगर सितंबर 900 दर्ज हो, तो वह सबसे ज़्यादा वाला महीना बन जाएगा, औसत बहुत बढ़ जाएगा, परीक्षा के समय की गिरावट ग़ायब हो जाएगी और climax (reading club का असर) छिप जाएगा या ग़लत समझा जाएगा। इससे पता चलता है कि पहला चरण, डेटा को व्यवस्थित और साफ़ करना और outliers जाँचना, सटीकता के लिए क्यों ज़रूरी है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity: Collect the favourite snack of every student in your class and the time they go to bed. Decide which type each variable is, choose a chart for each, and write a three-sentence narrative with one insight and one recommendation. Mention one privacy precaution.",
+    "hi": "गतिविधि: अपनी कक्षा के हर विद्यार्थी का पसंदीदा नाश्ता और सोने का समय इकट्ठा कीजिए। तय कीजिए कि हर चर किस प्रकार का है, हर एक के लिए chart चुनिए, और एक insight व एक सुझाव के साथ तीन वाक्यों का narrative लिखिए। निजता की एक सावधानी बताइए।"
+   },
+   "a": {
+    "en": "Favourite snack is categorical → bar chart (or pie if few snacks). Bed time is numerical/time → histogram of bed-time ranges. Sample narrative: 'Most of our class prefers fried snacks, and over half of us sleep after 11 p.m. Late sleepers also reported feeling tired in first period more often. We suggest a class challenge to sleep by 10:30 p.m. for two weeks and track how we feel.' Privacy: do not show names; report only class totals.",
+    "hi": "पसंदीदा नाश्ता categorical है → bar chart (या कम विकल्प हों तो pie)। सोने का समय संख्यात्मक/समय है → सोने के समय के अंतरालों का histogram। नमूना narrative: 'हमारी कक्षा में ज़्यादातर लोग तले हुए नाश्ते पसंद करते हैं, और आधे से ज़्यादा रात 11 बजे के बाद सोते हैं। देर से सोने वालों ने पहले पीरियड में थकान ज़्यादा बार बताई। हमारा सुझाव है कि दो सप्ताह तक रात 10:30 तक सोने की कक्षा-चुनौती हो और हम देखें कि कैसा महसूस होता है।' निजता: नाम न दिखाएँ; केवल कक्षा के कुल आँकड़े बताएँ।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A story is a true or fictional narrative; storytelling has evolved from cave paintings and oral tales to digital media.",
+   "Storytelling is powerful: it creates interest, holds attention, simplifies complex ideas, is memorable, evokes emotion and motivates action.",
+   "Elements of a story: characters, setting and plot, conflict, resolution (with climax) and insight.",
+   "Data storytelling builds a narrative around data and visuals so audiences understand insights and make decisions.",
+   "It is needed to make data accessible, increase engagement, support evidence-based decisions, build trust and reduce ambiguity.",
+   "Three essential elements: data (foundation), narrative (meaning and context) and visuals (patterns at a glance).",
+   "Data + narrative explain; data + visuals enlighten; narrative + visuals engage; all three drive change.",
+   "Freytag's Pyramid: Exposition, Rising action, Climax, Falling action, Resolution.",
+   "Match chart to data: line for time, bar for categories, pie for parts of a whole, histogram for distribution, scatter for relationships, word cloud for text, map for places, heat map for intensity, candlestick for prices.",
+   "Steps to create a data story: understand the audience, choose data and visuals, highlight key information, develop a narrative, engage the audience.",
+   "Steps to find a story: get and organise data, visualise it, examine relationships, create a narrative with conflict.",
+   "Ethics: accuracy, transparency, context, privacy, no cherry-picking, honest axes and charts, and correlation is not causation.",
+   "The practical file needs at least one data story built using all the steps."
+  ],
+  "hi": [
+   "कहानी सच्चा या काल्पनिक वृत्तांत है; storytelling गुफा चित्रों और मौखिक कथाओं से digital media तक विकसित हुई है।",
+   "Storytelling शक्तिशाली है: यह रुचि जगाती है, ध्यान बाँधती है, जटिल विचार सरल करती है, याद रहती है, भावनाएँ जगाती है और कार्य के लिए प्रेरित करती है।",
+   "कहानी के तत्व: पात्र, परिवेश और कथानक, संघर्ष, समाधान (climax सहित) और insight।",
+   "Data storytelling डेटा और visuals के चारों ओर narrative बनाती है ताकि दर्शक insights समझकर निर्णय ले सकें।",
+   "इसकी ज़रूरत डेटा को सुलभ बनाने, जुड़ाव बढ़ाने, प्रमाण-आधारित निर्णयों, भरोसा बनाने और अस्पष्टता घटाने के लिए है।",
+   "तीन आवश्यक तत्व: data (नींव), narrative (अर्थ और संदर्भ) और visuals (एक नज़र में पैटर्न)।",
+   "Data + narrative समझाते हैं; data + visuals नई दृष्टि देते हैं; narrative + visuals जोड़ते हैं; तीनों मिलकर बदलाव लाते हैं।",
+   "Freytag's Pyramid: Exposition, Rising action, Climax, Falling action, Resolution।",
+   "डेटा के अनुसार chart: समय के लिए line, श्रेणियों के लिए bar, पूरे के हिस्सों के लिए pie, वितरण के लिए histogram, संबंध के लिए scatter, text के लिए word cloud, स्थानों के लिए map, तीव्रता के लिए heat map, क़ीमतों के लिए candlestick।",
+   "Data story बनाने के चरण: दर्शकों को समझें, डेटा और visuals चुनें, मुख्य जानकारी उभारें, narrative बनाएँ, दर्शकों को जोड़ें।",
+   "कहानी खोजने के चरण: डेटा प्राप्त और व्यवस्थित करें, visualise करें, संबंध जाँचें, संघर्ष वाला narrative बनाएँ।",
+   "नैतिकता: सटीकता, पारदर्शिता, संदर्भ, निजता, cherry-picking नहीं, ईमानदार अक्ष और chart, और correlation, causation नहीं है।",
+   "Practical file में सभी चरणों से बनी कम से कम एक data story होनी चाहिए।"
+  ]
+ }
+}

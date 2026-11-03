@@ -1,0 +1,1738 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "12",
+ "id": "ch6",
+ "intro": {
+  "en": "Voice typing in Hindi, face unlock, spam filters and crop-disease apps all run on neural networks. Building on what you learnt in Class 10, this chapter explains the layers and seven components of a network, how activation functions work, how numbers flow forward through it, and how it learns with loss, backpropagation and gradient descent. You will meet the main network types (perceptron, FFNN, CNN, RNN, LSTM, GAN, transformer), try Machine Learning for Kids and TensorFlow Playground, run a TensorFlow model that discovers F = 1.8C + 32 by itself, and think about the impact of neural networks on society.",
+  "hi": "हिंदी में voice typing, फ़ेस अनलॉक, spam filter और फ़सल-रोग ऐप, सब न्यूरल नेटवर्क पर चलते हैं। कक्षा 10 में सीखी बातों पर आगे बढ़ते हुए यह अध्याय नेटवर्क की परतें और सात घटक, activation functions का काम, संख्याओं का नेटवर्क में आगे बहना, और loss, backpropagation व gradient descent से इसका सीखना समझाता है। आप मुख्य नेटवर्क प्रकारों (perceptron, FFNN, CNN, RNN, LSTM, GAN, transformer) से मिलेंगे, Machine Learning for Kids और TensorFlow Playground आज़माएँगे, एक TensorFlow model चलाएँगे जो F = 1.8C + 32 ख़ुद खोजता है, और समाज पर न्यूरल नेटवर्क के प्रभाव पर सोचेंगे।"
+ },
+ "learn": {
+  "en": [
+   "What a neural network is and how an artificial neuron mirrors a biological neuron",
+   "Input, hidden and output layers, deep neural networks and counting parameters",
+   "The seven components: neurons, weights, bias, activation, connections, learning rule, propagation",
+   "Step, sigmoid, tanh, ReLU, softmax and linear activation functions with calculations",
+   "Forward propagation with worked numerical examples, including the CBSE threshold example",
+   "The perceptron, logic gates and why XOR needs a hidden layer",
+   "Training: loss (MSE), backpropagation, gradient descent, learning rate, epochs, overfitting",
+   "Types of networks: perceptron, FFNN, CNN, RNN, LSTM, GAN, transformer",
+   "Practicals: Machine Learning for Kids, TensorFlow Playground, TensorFlow Celsius-to-Fahrenheit, Keras Iris",
+   "The future of neural networks and their impact on society"
+  ],
+  "hi": [
+   "न्यूरल नेटवर्क क्या है और artificial neuron जैविक न्यूरॉन की नक़ल कैसे करता है",
+   "Input, hidden और output layers, deep neural network और parameters गिनना",
+   "सात घटक: न्यूरॉन, weights, bias, activation, connections, learning rule, propagation",
+   "गणनाओं सहित step, sigmoid, tanh, ReLU, softmax और linear activation functions",
+   "हल किए संख्यात्मक उदाहरणों के साथ forward propagation, CBSE threshold उदाहरण सहित",
+   "परसेप्ट्रॉन, logic gates और XOR के लिए hidden layer क्यों चाहिए",
+   "Training: loss (MSE), backpropagation, gradient descent, learning rate, epochs, overfitting",
+   "नेटवर्क के प्रकार: perceptron, FFNN, CNN, RNN, LSTM, GAN, transformer",
+   "प्रैक्टिकल: Machine Learning for Kids, TensorFlow Playground, TensorFlow सेल्सियस-से-फ़ारेनहाइट, Keras Iris",
+   "न्यूरल नेटवर्क का भविष्य और समाज पर उनका प्रभाव"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "6.1 What is a neural network?",
+    "hi": "6.1 न्यूरल नेटवर्क क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "When you see a friend's face in a crowd, you recognise them in a fraction of a second. You do not follow written rules like 'check the nose, then the eyes'. Your brain has learnt from thousands of past experiences. In Class 10 you met the idea of a neural network and the perceptron. In this chapter we go deeper: how each part works, how the numbers flow through the network, how it learns from its mistakes, the main kinds of networks, and their effect on society.",
+      "hi": "जब आप भीड़ में किसी दोस्त का चेहरा देखते हैं, तो पल भर में पहचान लेते हैं। आप 'पहले नाक देखो, फिर आँखें' जैसे लिखे नियम नहीं मानते। आपके दिमाग़ ने हज़ारों पुराने अनुभवों से सीखा है। कक्षा 10 में आपने न्यूरल नेटवर्क और परसेप्ट्रॉन का विचार देखा था। इस अध्याय में हम और गहराई में जाएँगे: हर भाग कैसे काम करता है, संख्याएँ नेटवर्क में कैसे बहती हैं, यह अपनी ग़लतियों से कैसे सीखता है, नेटवर्क के मुख्य प्रकार, और समाज पर उनका प्रभाव।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Neural network",
+       "hi": "न्यूरल नेटवर्क (Neural network)"
+      },
+      "text": {
+       "en": "A machine learning model made of many simple connected units called artificial neurons, arranged in layers. It is loosely inspired by the way neurons in the human brain pass signals. It learns patterns from examples by adjusting the strengths (weights) of its connections.",
+       "hi": "machine learning का एक model जो artificial neuron नामक कई सरल, आपस में जुड़ी इकाइयों से बना होता है, जो परतों (layers) में सजी होती हैं। यह मोटे तौर पर इस बात से प्रेरित है कि मानव मस्तिष्क के न्यूरॉन संकेत कैसे भेजते हैं। यह उदाहरणों से पैटर्न सीखता है, अपने कनेक्शनों की ताक़त (weights) बदलकर।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A biological neuron has dendrites that receive signals, a cell body that combines them, and an axon that sends a signal onward if the combined signal is strong enough. The joints between neurons are called synapses, and some synapses are stronger than others. An artificial neuron copies this idea in a very simplified, mathematical way.",
+      "hi": "एक जैविक न्यूरॉन में डेंड्राइट (dendrites) होते हैं जो संकेत लेते हैं, एक कोशिका-काय (cell body) जो उन्हें मिलाती है, और एक एक्सॉन (axon) जो मिला हुआ संकेत पर्याप्त तेज़ हो तो उसे आगे भेजता है। न्यूरॉनों के बीच के जोड़ सिनैप्स (synapses) कहलाते हैं, और कुछ सिनैप्स दूसरों से अधिक मज़बूत होते हैं। एक artificial neuron इसी विचार की बहुत सरल, गणितीय नक़ल करता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Biological neuron",
+        "Artificial neuron"
+       ],
+       "hi": [
+        "जैविक न्यूरॉन",
+        "Artificial neuron"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Dendrites receive signals",
+         "Inputs (x1, x2, ...) receive feature values"
+        ],
+        [
+         "Synapse strength",
+         "Weights (w1, w2, ...)"
+        ],
+        [
+         "Cell body adds up signals",
+         "Weighted sum plus bias (z = Σ wi xi + b)"
+        ],
+        [
+         "Neuron fires if signal crosses a threshold",
+         "Activation function decides the output"
+        ],
+        [
+         "Axon passes the signal on",
+         "Output goes to neurons in the next layer"
+        ]
+       ],
+       "hi": [
+        [
+         "डेंड्राइट संकेत लेते हैं",
+         "Input (x1, x2, ...) गुणों (features) के मान लेते हैं"
+        ],
+        [
+         "सिनैप्स की ताक़त",
+         "Weights (w1, w2, ...)"
+        ],
+        [
+         "कोशिका-काय संकेत जोड़ती है",
+         "भारित योग और bias (z = Σ wi xi + b)"
+        ],
+        [
+         "संकेत सीमा पार करे तो न्यूरॉन सक्रिय होता है",
+         "Activation function आउटपुट तय करता है"
+        ],
+        [
+         "एक्सॉन संकेत आगे भेजता है",
+         "आउटपुट अगली परत के न्यूरॉनों को जाता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Where do you meet neural networks every day? Email apps that suggest short replies and filter spam, photo apps that group pictures by face, voice typing in Hindi or Tamil, translation apps, product recommendations on shopping sites, and the ranking of results in search engines all use neural networks.",
+      "hi": "आप हर दिन न्यूरल नेटवर्क से कहाँ मिलते हैं? छोटे जवाब सुझाने और spam छाँटने वाले ईमेल ऐप, चेहरे के अनुसार फ़ोटो समूहित करने वाले फ़ोटो ऐप, हिंदी या तमिल में voice typing, अनुवाद ऐप, शॉपिंग साइटों पर उत्पाद सुझाव, और सर्च इंजन में परिणामों का क्रम, सभी न्यूरल नेटवर्क का उपयोग करते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the family tree: AI is the big field; machine learning (ML) is a part of AI where machines learn from data; deep learning (DL) is a part of ML that uses neural networks with many layers.",
+      "hi": "परिवार-वृक्ष याद रखें: AI बड़ा क्षेत्र है; machine learning (ML) AI का भाग है जहाँ मशीनें डेटा से सीखती हैं; deep learning (DL) ML का भाग है जो कई परतों वाले न्यूरल नेटवर्क का उपयोग करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.2 Parts of a neural network: the layers",
+    "hi": "6.2 न्यूरल नेटवर्क के भाग: परतें"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Picture the diagram of a neural network: columns of circles from left to right, with arrows from every circle in one column to every circle in the next. Each column is a layer.",
+      "hi": "न्यूरल नेटवर्क के आरेख की कल्पना करें: बाएँ से दाएँ गोलों के कई स्तंभ, और एक स्तंभ के हर गोले से अगले स्तंभ के हर गोले तक तीर। हर स्तंभ एक परत (layer) है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Layer",
+        "Role",
+        "Example: predicting a house price"
+       ],
+       "hi": [
+        "परत",
+        "भूमिका",
+        "उदाहरण: मकान का दाम अनुमान"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Input layer",
+         "Receives data from the outside world. One neuron per input feature. It does no calculation; it only passes values on.",
+         "Area in sq ft, number of rooms, distance to metro, age of building"
+        ],
+        [
+         "Hidden layer(s)",
+         "Lie between input and output. Their neurons combine inputs using weights, bias and activation functions to discover patterns. There can be one or many.",
+         "Neurons may learn ideas like 'spacious', 'well connected', 'new'"
+        ],
+        [
+         "Output layer",
+         "Produces the final prediction or result. One neuron for a single number or yes/no; several neurons for several classes.",
+         "Predicted price, e.g. Rs 62 lakh"
+        ]
+       ],
+       "hi": [
+        [
+         "Input layer (इनपुट परत)",
+         "बाहरी दुनिया से डेटा लेती है। हर input feature के लिए एक न्यूरॉन। यह गणना नहीं करती; केवल मान आगे भेजती है।",
+         "वर्ग फ़ुट में क्षेत्रफल, कमरों की संख्या, मेट्रो से दूरी, इमारत की आयु"
+        ],
+        [
+         "Hidden layer(s) (छिपी परतें)",
+         "इनपुट और आउटपुट के बीच होती हैं। इनके न्यूरॉन weights, bias और activation function से इनपुट मिलाकर पैटर्न खोजते हैं। एक या कई हो सकती हैं।",
+         "न्यूरॉन 'खुला-खुला', 'अच्छी कनेक्टिविटी', 'नया' जैसे विचार सीख सकते हैं"
+        ],
+        [
+         "Output layer (आउटपुट परत)",
+         "अंतिम अनुमान या परिणाम देती है। एक संख्या या हाँ/नहीं के लिए एक न्यूरॉन; कई वर्गों के लिए कई न्यूरॉन।",
+         "अनुमानित दाम, जैसे Rs 62 लाख"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Deep neural network and deep learning",
+       "hi": "Deep neural network और deep learning"
+      },
+      "text": {
+       "en": "A neural network with two or more hidden layers is called a deep neural network. Training such networks is called deep learning. 'Depth' means the number of hidden layers. A network with just three layers (input, one hidden, output) is a basic neural network.",
+       "hi": "दो या अधिक hidden layer वाला न्यूरल नेटवर्क deep neural network कहलाता है। ऐसे नेटवर्क को प्रशिक्षित करना deep learning कहलाता है। 'गहराई' का अर्थ है hidden layers की संख्या। केवल तीन परतों (इनपुट, एक hidden, आउटपुट) वाला नेटवर्क एक बुनियादी न्यूरल नेटवर्क है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "When people count layers they usually do not count the input layer, because it does no calculation. So a network written as 4-8-8-3 has 4 inputs, two hidden layers of 8 neurons and an output layer of 3 neurons.",
+      "hi": "परतें गिनते समय लोग प्रायः input layer नहीं गिनते, क्योंकि वह गणना नहीं करती। इसलिए 4-8-8-3 लिखे नेटवर्क में 4 इनपुट, 8-8 न्यूरॉन की दो hidden layer और 3 न्यूरॉन की output layer है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A network has 4 inputs, one hidden layer of 8 neurons and 3 outputs, and every neuron is connected to every neuron in the next layer (fully connected). How many weights and biases does it have?",
+       "hi": "एक नेटवर्क में 4 इनपुट, 8 न्यूरॉन की एक hidden layer और 3 आउटपुट हैं, और हर न्यूरॉन अगली परत के हर न्यूरॉन से जुड़ा है (fully connected)। इसमें कितने weights और biases हैं?"
+      },
+      "a": {
+       "en": "Input to hidden: 4 × 8 = 32 weights, plus 8 biases (one per hidden neuron) = 40.\nHidden to output: 8 × 3 = 24 weights, plus 3 biases = 27.\nTotal = 40 + 27 = 67 learnable parameters.\n(The input layer has no bias because it does not calculate.)",
+       "hi": "इनपुट से hidden: 4 × 8 = 32 weights, साथ में 8 biases (हर hidden न्यूरॉन का एक) = 40।\nHidden से आउटपुट: 8 × 3 = 24 weights, साथ में 3 biases = 27।\nकुल = 40 + 27 = 67 सीखने योग्य parameters।\n(Input layer में bias नहीं होता क्योंकि वह गणना नहीं करती।)"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.3 Components of a neural network",
+    "hi": "6.3 न्यूरल नेटवर्क के घटक"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A neural network is built from seven components. Learn the job of each.",
+      "hi": "न्यूरल नेटवर्क सात घटकों से बनता है। हर एक का काम सीखिए।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "1. Neurons (nodes)",
+       "hi": "1. न्यूरॉन (nodes)"
+      },
+      "text": {
+       "en": "The basic building blocks. Each neuron receives inputs, computes a weighted sum, adds a bias, applies an activation function and passes the result on.",
+       "hi": "बुनियादी इकाइयाँ। हर न्यूरॉन इनपुट लेता है, भारित योग निकालता है, bias जोड़ता है, activation function लगाता है और परिणाम आगे भेजता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "2. Weights",
+       "hi": "2. Weights (भार)"
+      },
+      "text": {
+       "en": "Numbers on the connections that show how strong or important each input is, like the strength of a synapse. A large positive weight means 'this input pushes the output up strongly'; a negative weight pushes it down; a weight near 0 means the input hardly matters. Weights start random and are learned during training to reduce error.",
+       "hi": "कनेक्शनों पर लगी संख्याएँ जो बताती हैं कि हर इनपुट कितना मज़बूत या महत्वपूर्ण है, जैसे सिनैप्स की ताक़त। बड़ा धनात्मक weight मतलब 'यह इनपुट आउटपुट को ज़ोर से ऊपर धकेलता है'; ऋणात्मक weight नीचे धकेलता है; 0 के पास का weight मतलब इनपुट का लगभग कोई असर नहीं। Weights शुरू में यादृच्छिक होते हैं और त्रुटि घटाने के लिए training में सीखे जाते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "3. Bias",
+       "hi": "3. Bias (बायस)"
+      },
+      "text": {
+       "en": "An extra constant added to the weighted sum of a neuron. It shifts the point at which the neuron activates, so the neuron can give a useful output even when all inputs are zero. It works like the intercept c in y = mx + c.",
+       "hi": "न्यूरॉन के भारित योग में जोड़ा गया एक अतिरिक्त स्थिरांक। यह उस बिंदु को खिसकाता है जहाँ न्यूरॉन सक्रिय होता है, ताकि सभी इनपुट शून्य होने पर भी न्यूरॉन उपयोगी आउटपुट दे सके। यह y = mx + c में अंतःखंड c की तरह काम करता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "4. Activation function",
+       "hi": "4. Activation function (सक्रियण फलन)"
+      },
+      "text": {
+       "en": "A function applied to the weighted sum that decides the neuron's output (whether and how strongly it 'fires'). It adds non-linearity, which lets the network learn curved, complex patterns instead of only straight lines. Common ones: step, sigmoid, tanh, ReLU, softmax.",
+       "hi": "भारित योग पर लगाया गया फलन जो न्यूरॉन का आउटपुट तय करता है (वह 'सक्रिय' होगा या नहीं, और कितना)। यह non-linearity (अरैखिकता) जोड़ता है, जिससे नेटवर्क केवल सीधी रेखाएँ नहीं बल्कि मुड़े, जटिल पैटर्न सीख पाता है। आम उदाहरण: step, sigmoid, tanh, ReLU, softmax।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "5. Connections",
+       "hi": "5. Connections (कनेक्शन)"
+      },
+      "text": {
+       "en": "The links between neurons of one layer and the next. Each connection carries one weight. In a fully connected (dense) layer, every neuron connects to every neuron in the next layer.",
+       "hi": "एक परत और अगली परत के न्यूरॉनों के बीच की कड़ियाँ। हर कनेक्शन पर एक weight होता है। fully connected (dense) परत में हर न्यूरॉन अगली परत के हर न्यूरॉन से जुड़ा होता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "6. Learning rule",
+       "hi": "6. Learning rule (सीखने का नियम)"
+      },
+      "text": {
+       "en": "The method that says how weights and biases should be changed to reduce error. The most common learning rule for neural networks is backpropagation combined with gradient descent.",
+       "hi": "वह तरीका जो बताता है कि त्रुटि घटाने के लिए weights और biases कैसे बदलें। न्यूरल नेटवर्क का सबसे आम learning rule है gradient descent के साथ backpropagation।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "7. Propagation functions",
+       "hi": "7. Propagation functions (प्रसार फलन)"
+      },
+      "text": {
+       "en": "Forward propagation sends the input through the layers to produce a prediction. Backpropagation sends the error backwards from the output to the earlier layers to work out how much each weight contributed to the error, so the weights can be updated.",
+       "hi": "Forward propagation इनपुट को परतों से गुज़ारकर अनुमान बनाता है। Backpropagation त्रुटि को आउटपुट से पीछे की परतों तक भेजता है ताकि पता चले कि हर weight ने त्रुटि में कितना योगदान दिया, और weights अपडेट किए जा सकें।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "For one neuron with n inputs:\nz = (w1 × x1) + (w2 × x2) + ... + (wn × xn) + b  =  Σ wi xi + b\noutput = f(z)     where f is the activation function",
+      "hi": "n इनपुट वाले एक न्यूरॉन के लिए:\nz = (w1 × x1) + (w2 × x2) + ... + (wn × xn) + b  =  Σ wi xi + b\nआउटपुट = f(z)     जहाँ f activation function है"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.4 Activation functions in detail",
+    "hi": "6.4 Activation functions विस्तार से"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Why do we need activation functions at all? If every neuron only calculated a weighted sum, then a layer of such neurons fed into another layer would still give just a weighted sum of the inputs. Ten layers would behave like one straight-line model. Non-linear activation functions break this, so stacking layers really adds power.",
+      "hi": "हमें activation function की ज़रूरत ही क्यों है? अगर हर न्यूरॉन केवल भारित योग निकालता, तो ऐसे न्यूरॉनों की एक परत दूसरी परत में जाने पर भी केवल इनपुट का भारित योग देती। दस परतें भी एक सीधी-रेखा वाले model की तरह व्यवहार करतीं। अरैखिक (non-linear) activation function इसे तोड़ते हैं, इसलिए परतें जोड़ने से सचमुच ताक़त बढ़ती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Function",
+        "Formula",
+        "Output range",
+        "Shape and use"
+       ],
+       "hi": [
+        "फलन",
+        "सूत्र",
+        "आउटपुट सीमा",
+        "आकार और उपयोग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Step (threshold)",
+         "f(z) = 1 if z ≥ 0 (or z ≥ threshold), else 0",
+         "0 or 1",
+         "A sudden jump, like a switch. Used in the classic perceptron."
+        ],
+        [
+         "Sigmoid",
+         "f(z) = 1 ÷ (1 + e^(−z))",
+         "0 to 1",
+         "Smooth S-shaped curve; f(0) = 0.5. Used in the output of yes/no (binary) problems, read as a probability."
+        ],
+        [
+         "Tanh",
+         "f(z) = (e^z − e^(−z)) ÷ (e^z + e^(−z))",
+         "−1 to 1",
+         "S-shaped, centred at 0; tanh(0) = 0. Used in hidden layers and in RNNs."
+        ],
+        [
+         "ReLU",
+         "f(z) = max(0, z)",
+         "0 to ∞",
+         "0 for negative inputs, a straight line for positive ones. Simple and fast; the most common choice in hidden layers."
+        ],
+        [
+         "Softmax",
+         "f(zi) = e^(zi) ÷ Σ e^(zj)",
+         "Each 0 to 1, all add to 1",
+         "Turns several output scores into probabilities. Used in the output layer for multi-class problems."
+        ],
+        [
+         "Linear (identity)",
+         "f(z) = z",
+         "−∞ to ∞",
+         "No change. Used in the output of regression (predicting a number)."
+        ]
+       ],
+       "hi": [
+        [
+         "Step (threshold)",
+         "f(z) = 1 अगर z ≥ 0 (या z ≥ threshold), वरना 0",
+         "0 या 1",
+         "अचानक छलाँग, स्विच जैसी। पुराने परसेप्ट्रॉन में प्रयोग।"
+        ],
+        [
+         "Sigmoid",
+         "f(z) = 1 ÷ (1 + e^(−z))",
+         "0 से 1",
+         "चिकना S-आकार वक्र; f(0) = 0.5। हाँ/नहीं (binary) समस्याओं के आउटपुट में, संभावना के रूप में पढ़ा जाता है।"
+        ],
+        [
+         "Tanh",
+         "f(z) = (e^z − e^(−z)) ÷ (e^z + e^(−z))",
+         "−1 से 1",
+         "S-आकार, 0 पर केंद्रित; tanh(0) = 0। hidden layers और RNN में प्रयोग।"
+        ],
+        [
+         "ReLU",
+         "f(z) = max(0, z)",
+         "0 से ∞",
+         "ऋणात्मक इनपुट पर 0, धनात्मक पर सीधी रेखा। सरल और तेज़; hidden layers में सबसे आम।"
+        ],
+        [
+         "Softmax",
+         "f(zi) = e^(zi) ÷ Σ e^(zj)",
+         "हर एक 0 से 1, सबका योग 1",
+         "कई आउटपुट स्कोर को संभावनाओं में बदलता है। बहु-वर्गीय (multi-class) समस्याओं की output layer में।"
+        ],
+        [
+         "Linear (identity)",
+         "f(z) = z",
+         "−∞ से ∞",
+         "कोई बदलाव नहीं। regression (संख्या का अनुमान) के आउटपुट में।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find step(−0.4), sigmoid(0), tanh(1), ReLU(−3) and ReLU(2.5).",
+       "hi": "step(−0.4), sigmoid(0), tanh(1), ReLU(−3) और ReLU(2.5) निकालिए।"
+      },
+      "a": {
+       "en": "step(−0.4) = 0, because −0.4 < 0.\nsigmoid(0) = 1 ÷ (1 + e^0) = 1 ÷ 2 = 0.5.\ntanh(1) ≈ 0.762.\nReLU(−3) = max(0, −3) = 0.\nReLU(2.5) = max(0, 2.5) = 2.5.",
+       "hi": "step(−0.4) = 0, क्योंकि −0.4 < 0।\nsigmoid(0) = 1 ÷ (1 + e^0) = 1 ÷ 2 = 0.5।\ntanh(1) ≈ 0.762।\nReLU(−3) = max(0, −3) = 0।\nReLU(2.5) = max(0, 2.5) = 2.5।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "An animal classifier's output layer gives scores 2, 1 and 0.1 for cat, dog and bird. Apply softmax.",
+       "hi": "एक पशु-वर्गीकरण नेटवर्क की output layer बिल्ली, कुत्ता और पक्षी के लिए स्कोर 2, 1 और 0.1 देती है। Softmax लगाइए।"
+      },
+      "a": {
+       "en": "e^2 ≈ 7.389, e^1 ≈ 2.718, e^0.1 ≈ 1.105. Sum ≈ 11.212.\nCat = 7.389 ÷ 11.212 ≈ 0.659\nDog = 2.718 ÷ 11.212 ≈ 0.242\nBird = 1.105 ÷ 11.212 ≈ 0.099\nThe probabilities add to 1 (0.659 + 0.242 + 0.099 = 1.000). The prediction is 'cat' with about 66% confidence.",
+       "hi": "e^2 ≈ 7.389, e^1 ≈ 2.718, e^0.1 ≈ 1.105। योग ≈ 11.212।\nबिल्ली = 7.389 ÷ 11.212 ≈ 0.659\nकुत्ता = 2.718 ÷ 11.212 ≈ 0.242\nपक्षी = 1.105 ÷ 11.212 ≈ 0.099\nसंभावनाओं का योग 1 है (0.659 + 0.242 + 0.099 = 1.000)। अनुमान 'बिल्ली' है, लगभग 66% विश्वास के साथ।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Which activation where? Hidden layers: usually ReLU (sometimes tanh). Output layer: sigmoid for yes/no, softmax for many classes, linear for a number.",
+      "hi": "कौन-सा activation कहाँ? Hidden layers: प्रायः ReLU (कभी-कभी tanh)। Output layer: हाँ/नहीं के लिए sigmoid, कई वर्गों के लिए softmax, संख्या के लिए linear।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.5 How a neural network works: forward propagation",
+    "hi": "6.5 न्यूरल नेटवर्क कैसे काम करता है: forward propagation"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A kitchen analogy helps. The ingredients are the input values. The chefs are the neurons. The recipe (how much of each ingredient) is the weights and bias. Tasting the dish to decide whether it is ready is the activation function. Serving the dish to the next table is the output passed to the next layer.",
+      "hi": "रसोई का उदाहरण मदद करता है। सामग्री इनपुट मान हैं। रसोइए न्यूरॉन हैं। नुस्ख़ा (हर सामग्री कितनी) weights और bias है। व्यंजन चखकर तय करना कि तैयार है या नहीं, activation function है। व्यंजन अगली मेज़ तक परोसना, अगली परत को भेजा गया आउटपुट है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1 - Input: the input layer receives the feature values x1, x2, ... .",
+       "Step 2 - Weights and bias: each neuron in the next layer multiplies each input by its weight, adds them and adds its bias to get z.",
+       "Step 3 - Activation: the neuron applies its activation function to z to get its output.",
+       "Step 4 - Output: the outputs become the inputs of the next layer. Steps 2 to 4 repeat layer by layer until the output layer gives the final answer."
+      ],
+      "hi": [
+       "चरण 1 - इनपुट: input layer feature मान x1, x2, ... लेती है।",
+       "चरण 2 - Weights और bias: अगली परत का हर न्यूरॉन हर इनपुट को उसके weight से गुणा करता है, सबको जोड़ता है और अपना bias जोड़कर z पाता है।",
+       "चरण 3 - Activation: न्यूरॉन z पर अपना activation function लगाकर अपना आउटपुट पाता है।",
+       "चरण 4 - आउटपुट: ये आउटपुट अगली परत के इनपुट बनते हैं। चरण 2 से 4 परत-दर-परत दोहराए जाते हैं जब तक output layer अंतिम उत्तर न दे।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "CBSE-style example with a threshold step function. Case I (hidden neuron): inputs x1 = 2, x2 = 3, x3 = 1; weights w1 = 0.4, w2 = 0.2, w3 = 0.6; bias = 0.1; threshold = 3.0. Case II (output neuron): it receives the hidden neuron's output as input, with weight 0.7 for that input (a second input of value 0 has weight 0.3); bias = 0.2; threshold = 0.1. Find both outputs.",
+       "hi": "थ्रेशोल्ड step function वाला CBSE-शैली उदाहरण। केस I (hidden न्यूरॉन): इनपुट x1 = 2, x2 = 3, x3 = 1; weights w1 = 0.4, w2 = 0.2, w3 = 0.6; bias = 0.1; threshold = 3.0। केस II (output न्यूरॉन): यह hidden न्यूरॉन का आउटपुट इनपुट के रूप में लेता है, उस इनपुट का weight 0.7 है (मान 0 वाले दूसरे इनपुट का weight 0.3); bias = 0.2; threshold = 0.1। दोनों आउटपुट निकालिए।"
+      },
+      "a": {
+       "en": "Case I: weighted sum = (2 × 0.4) + (3 × 0.2) + (1 × 0.6) + 0.1 = 0.8 + 0.6 + 0.6 + 0.1 = 2.1.\n2.1 < threshold 3.0, so the hidden neuron's output = 0 (not active).\nCase II: weighted sum = (0 × 0.7) + (0 × 0.3) + 0.2 = 0.2.\n0.2 > threshold 0.1, so the final output = 1 (active).\nNotice that the bias alone made the output neuron fire even though its inputs were 0. This shows why bias matters.",
+       "hi": "केस I: भारित योग = (2 × 0.4) + (3 × 0.2) + (1 × 0.6) + 0.1 = 0.8 + 0.6 + 0.6 + 0.1 = 2.1।\n2.1 < threshold 3.0, इसलिए hidden न्यूरॉन का आउटपुट = 0 (सक्रिय नहीं)।\nकेस II: भारित योग = (0 × 0.7) + (0 × 0.3) + 0.2 = 0.2।\n0.2 > threshold 0.1, इसलिए अंतिम आउटपुट = 1 (सक्रिय)।\nध्यान दें कि इनपुट 0 होने पर भी केवल bias ने output न्यूरॉन को सक्रिय कर दिया। यही दिखाता है कि bias क्यों महत्वपूर्ण है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Will it rain? A neuron has inputs humidity x1 = 0.9 and cloud cover x2 = 0.7 (both on a 0 to 1 scale), weights w1 = 0.6, w2 = 0.5 and bias b = −0.8. Find z and the output with step, sigmoid, ReLU and tanh.",
+       "hi": "क्या बारिश होगी? एक न्यूरॉन के इनपुट नमी x1 = 0.9 और बादल x2 = 0.7 हैं (दोनों 0 से 1 पैमाने पर), weights w1 = 0.6, w2 = 0.5 और bias b = −0.8। z और step, sigmoid, ReLU तथा tanh से आउटपुट निकालिए।"
+      },
+      "a": {
+       "en": "z = (0.9 × 0.6) + (0.7 × 0.5) − 0.8 = 0.54 + 0.35 − 0.8 = 0.09.\nStep: 0.09 ≥ 0, so output 1 (rain likely).\nSigmoid: 1 ÷ (1 + e^(−0.09)) ≈ 0.522 (a little above 0.5, so slightly more likely rain than not).\nReLU: max(0, 0.09) = 0.09.\nTanh: tanh(0.09) ≈ 0.09.\nIf humidity were only 0.5: z = 0.30 + 0.35 − 0.8 = −0.15, so step gives 0 (no rain).",
+       "hi": "z = (0.9 × 0.6) + (0.7 × 0.5) − 0.8 = 0.54 + 0.35 − 0.8 = 0.09।\nStep: 0.09 ≥ 0, इसलिए आउटपुट 1 (बारिश संभव)।\nSigmoid: 1 ÷ (1 + e^(−0.09)) ≈ 0.522 (0.5 से थोड़ा ऊपर, यानी बारिश की संभावना थोड़ी अधिक)।\nReLU: max(0, 0.09) = 0.09।\nTanh: tanh(0.09) ≈ 0.09।\nअगर नमी केवल 0.5 हो: z = 0.30 + 0.35 − 0.8 = −0.15, तो step से 0 (बारिश नहीं)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The same calculation in Python (run, real output):",
+      "hi": "यही गणना Python में (चलाया गया, असली आउटपुट):"
+     }
+    },
+    {
+     "formula": {
+      "en": "import math\n\ndef step(z):\n    return 1 if z >= 0 else 0\n\ndef sigmoid(z):\n    return 1 / (1 + math.exp(-z))\n\ndef relu(z):\n    return max(0, z)\n\nx = [0.9, 0.7]          # humidity, cloud cover\nw = [0.6, 0.5]\nb = -0.8\nz = x[0]*w[0] + x[1]*w[1] + b\nprint(\"z =\", round(z, 2))\nprint(\"step:\", step(z))\nprint(\"sigmoid:\", round(sigmoid(z), 3))\nprint(\"ReLU:\", round(relu(z), 2))\nprint(\"tanh:\", round(math.tanh(z), 3))\n\nOutput:\nz = 0.09\nstep: 1\nsigmoid: 0.522\nReLU: 0.09\ntanh: 0.09",
+      "hi": "import math\n\ndef step(z):\n    return 1 if z >= 0 else 0\n\ndef sigmoid(z):\n    return 1 / (1 + math.exp(-z))\n\ndef relu(z):\n    return max(0, z)\n\nx = [0.9, 0.7]          # humidity, cloud cover\nw = [0.6, 0.5]\nb = -0.8\nz = x[0]*w[0] + x[1]*w[1] + b\nprint(\"z =\", round(z, 2))\nprint(\"step:\", step(z))\nprint(\"sigmoid:\", round(sigmoid(z), 3))\nprint(\"ReLU:\", round(relu(z), 2))\nprint(\"tanh:\", round(math.tanh(z), 3))\n\nOutput:\nz = 0.09\nstep: 1\nsigmoid: 0.522\nReLU: 0.09\ntanh: 0.09"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A tiny two-layer network. Inputs x1 = 1.0, x2 = 0.5. Hidden neuron h1: weights 0.4, 0.6, bias −0.2, ReLU. Hidden neuron h2: weights −0.5, 0.3, bias 0.1, ReLU. Output neuron: weights 0.8 (from h1) and 0.9 (from h2), bias −0.1, sigmoid. Find the output.",
+       "hi": "एक छोटा दो-परत नेटवर्क। इनपुट x1 = 1.0, x2 = 0.5। Hidden न्यूरॉन h1: weights 0.4, 0.6, bias −0.2, ReLU। Hidden न्यूरॉन h2: weights −0.5, 0.3, bias 0.1, ReLU। Output न्यूरॉन: weights 0.8 (h1 से) और 0.9 (h2 से), bias −0.1, sigmoid। आउटपुट निकालिए।"
+      },
+      "a": {
+       "en": "h1: z = (1.0 × 0.4) + (0.5 × 0.6) − 0.2 = 0.4 + 0.3 − 0.2 = 0.5; ReLU(0.5) = 0.5.\nh2: z = (1.0 × −0.5) + (0.5 × 0.3) + 0.1 = −0.5 + 0.15 + 0.1 = −0.25; ReLU(−0.25) = 0.\nOutput: z = (0.5 × 0.8) + (0 × 0.9) − 0.1 = 0.4 − 0.1 = 0.3.\nsigmoid(0.3) = 1 ÷ (1 + e^(−0.3)) ≈ 0.574.\nThe network says 'yes' with about 57% probability. Notice h2 was switched off by ReLU, so it did not affect this answer.",
+       "hi": "h1: z = (1.0 × 0.4) + (0.5 × 0.6) − 0.2 = 0.4 + 0.3 − 0.2 = 0.5; ReLU(0.5) = 0.5।\nh2: z = (1.0 × −0.5) + (0.5 × 0.3) + 0.1 = −0.5 + 0.15 + 0.1 = −0.25; ReLU(−0.25) = 0।\nआउटपुट: z = (0.5 × 0.8) + (0 × 0.9) − 0.1 = 0.4 − 0.1 = 0.3।\nsigmoid(0.3) = 1 ÷ (1 + e^(−0.3)) ≈ 0.574।\nनेटवर्क लगभग 57% संभावना से 'हाँ' कहता है। ध्यान दें कि ReLU ने h2 को बंद कर दिया, इसलिए इस उत्तर पर उसका असर नहीं पड़ा।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.6 The perceptron and logic gates",
+    "hi": "6.6 परसेप्ट्रॉन और logic gates"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The perceptron, proposed by Frank Rosenblatt in 1958, is a single artificial neuron with a step activation. It can learn simple yes/no decisions where the two groups can be separated by a straight line (linearly separable problems). A good way to see this is with logic gates.",
+      "hi": "परसेप्ट्रॉन, जिसे फ़्रैंक रोज़ेनब्लैट (Frank Rosenblatt) ने 1958 में प्रस्तुत किया, step activation वाला एक अकेला artificial neuron है। यह ऐसे सरल हाँ/नहीं निर्णय सीख सकता है जहाँ दो समूह एक सीधी रेखा से अलग किए जा सकें (linearly separable समस्याएँ)। इसे देखने का अच्छा तरीका logic gates हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Show that a perceptron with weights w1 = 1, w2 = 1 and step activation (output 1 if z ≥ 0) acts as an AND gate when bias = −1.5 and as an OR gate when bias = −0.5.",
+       "hi": "दिखाइए कि weights w1 = 1, w2 = 1 और step activation (z ≥ 0 पर आउटपुट 1) वाला परसेप्ट्रॉन bias = −1.5 होने पर AND gate और bias = −0.5 होने पर OR gate की तरह काम करता है।"
+      },
+      "a": {
+       "en": "AND (b = −1.5): z = x1 + x2 − 1.5\n(0,0): −1.5 → 0; (0,1): −0.5 → 0; (1,0): −0.5 → 0; (1,1): 0.5 → 1. This is AND.\nOR (b = −0.5): z = x1 + x2 − 0.5\n(0,0): −0.5 → 0; (0,1): 0.5 → 1; (1,0): 0.5 → 1; (1,1): 1.5 → 1. This is OR.\nOnly the bias changed, and the behaviour changed. Bias moves the decision line.",
+       "hi": "AND (b = −1.5): z = x1 + x2 − 1.5\n(0,0): −1.5 → 0; (0,1): −0.5 → 0; (1,0): −0.5 → 0; (1,1): 0.5 → 1। यह AND है।\nOR (b = −0.5): z = x1 + x2 − 0.5\n(0,0): −0.5 → 0; (0,1): 0.5 → 1; (1,0): 0.5 → 1; (1,1): 1.5 → 1। यह OR है।\nकेवल bias बदला, और व्यवहार बदल गया। Bias निर्णय-रेखा को खिसकाता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "A single perceptron cannot learn XOR (output 1 only when exactly one input is 1), because no single straight line separates its points. Adding a hidden layer solves it. This is the key reason we need multi-layer networks.",
+      "hi": "एक अकेला परसेप्ट्रॉन XOR (आउटपुट 1 केवल तब जब ठीक एक इनपुट 1 हो) नहीं सीख सकता, क्योंकि कोई एक सीधी रेखा उसके बिंदुओं को अलग नहीं करती। एक hidden layer जोड़ने से यह हल हो जाता है। यही मुख्य कारण है कि हमें बहु-परत नेटवर्क चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.7 How a neural network learns: loss, backpropagation and gradient descent",
+    "hi": "6.7 न्यूरल नेटवर्क कैसे सीखता है: loss, backpropagation और gradient descent"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A new network starts with random weights, so its first predictions are poor. It learns the way a cricket player improves a throw: throw, see how far off the stumps it went, adjust, and throw again. Training repeats four steps many times.",
+      "hi": "नया नेटवर्क यादृच्छिक weights से शुरू होता है, इसलिए उसके पहले अनुमान ख़राब होते हैं। वह वैसे ही सीखता है जैसे क्रिकेट खिलाड़ी अपना थ्रो सुधारता है: फेंको, देखो कि स्टंप से कितना दूर गया, सुधारो, और फिर फेंको। Training चार चरणों को कई बार दोहराती है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "1. Forward pass: send a training example through the network to get a prediction.",
+       "2. Loss: compare the prediction with the correct answer (label) using a loss function, which gives one number for 'how wrong'.",
+       "3. Backpropagation: send the error backwards through the network to find how much each weight and bias contributed to the loss (its gradient).",
+       "4. Update (gradient descent): change every weight a little in the direction that reduces the loss. Then repeat with the next examples."
+      ],
+      "hi": [
+       "1. Forward pass: एक training उदाहरण नेटवर्क से गुज़ारकर अनुमान पाना।",
+       "2. Loss: loss function से अनुमान की सही उत्तर (label) से तुलना करना, जो 'कितना ग़लत' के लिए एक संख्या देता है।",
+       "3. Backpropagation: त्रुटि को नेटवर्क में पीछे भेजकर पता करना कि हर weight और bias ने loss में कितना योगदान दिया (उसका gradient)।",
+       "4. Update (gradient descent): हर weight को थोड़ा उस दिशा में बदलना जिससे loss घटे। फिर अगले उदाहरणों के साथ दोहराना।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Loss function",
+       "hi": "Loss function (हानि फलन)"
+      },
+      "text": {
+       "en": "A formula that measures how far the network's predictions are from the true values. Training tries to make it as small as possible. For predicting numbers, a common loss is the Mean Squared Error (MSE); for classification, cross-entropy loss is common.",
+       "hi": "एक सूत्र जो मापता है कि नेटवर्क के अनुमान सही मानों से कितनी दूर हैं। Training इसे जितना हो सके छोटा करने की कोशिश करती है। संख्याओं के अनुमान के लिए आम loss Mean Squared Error (MSE) है; वर्गीकरण के लिए cross-entropy loss आम है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "MSE = (1/n) × Σ (actual − predicted)²",
+      "hi": "MSE = (1/n) × Σ (वास्तविक − अनुमानित)²"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Actual values are 3 and 5; the network predicts 2.5 and 6. Find the MSE.",
+       "hi": "वास्तविक मान 3 और 5 हैं; नेटवर्क 2.5 और 6 अनुमान लगाता है। MSE निकालिए।"
+      },
+      "a": {
+       "en": "Errors: 3 − 2.5 = 0.5 and 5 − 6 = −1.\nSquares: 0.25 and 1.\nMSE = (0.25 + 1) ÷ 2 = 0.625.\nSquaring makes every error positive and punishes big errors more.",
+       "hi": "त्रुटियाँ: 3 − 2.5 = 0.5 और 5 − 6 = −1।\nवर्ग: 0.25 और 1।\nMSE = (0.25 + 1) ÷ 2 = 0.625।\nवर्ग करने से हर त्रुटि धनात्मक होती है और बड़ी त्रुटियों को अधिक दंड मिलता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Gradient descent",
+       "hi": "Gradient descent (ग्रेडिएंट डिसेंट)"
+      },
+      "text": {
+       "en": "A method to reduce the loss step by step. Imagine standing on a hill in fog and wanting to reach the valley: you feel which way the ground slopes down and take a small step that way, again and again. The gradient tells the slope of the loss for each weight; we move each weight against the slope.",
+       "hi": "loss को कदम-दर-कदम घटाने का तरीका। कल्पना करें कि आप कोहरे में एक पहाड़ी पर हैं और घाटी तक पहुँचना चाहते हैं: आप महसूस करते हैं कि ज़मीन किस ओर नीचे ढलती है और उस ओर एक छोटा कदम रखते हैं, बार-बार। gradient हर weight के लिए loss का ढलान बताता है; हम हर weight को ढलान के उलटी ओर ले जाते हैं।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "new weight = old weight − learning rate × gradient",
+      "hi": "नया weight = पुराना weight − learning rate × gradient"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Learning rate, epoch and batch",
+       "hi": "Learning rate, epoch और batch"
+      },
+      "text": {
+       "en": "The learning rate is the size of each step (for example 0.01 or 0.1). Too large and the network jumps past the best value; too small and training is very slow. One epoch is one full pass of all training examples through the network. A batch is a small group of examples processed before one weight update.",
+       "hi": "Learning rate हर कदम का आकार है (जैसे 0.01 या 0.1)। बहुत बड़ा हो तो नेटवर्क सबसे अच्छे मान से आगे कूद जाता है; बहुत छोटा हो तो training बहुत धीमी होती है। एक epoch का अर्थ है सभी training उदाहरणों का नेटवर्क से एक पूरा चक्कर। Batch उदाहरणों का एक छोटा समूह है जिसे एक weight अपडेट से पहले प्रोसेस किया जाता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "One step of gradient descent. A one-weight model predicts y = w × x. For x = 2 the true y = 8. Start with w = 1 and learning rate 0.1. The loss is (w × x − y)², whose gradient with respect to w is 2 × (w × x − y) × x. Do one update.",
+       "hi": "gradient descent का एक कदम। एक-weight वाला model y = w × x अनुमान लगाता है। x = 2 के लिए सही y = 8। w = 1 और learning rate 0.1 से शुरू करें। loss (w × x − y)² है, जिसका w के सापेक्ष gradient 2 × (w × x − y) × x है। एक अपडेट कीजिए।"
+      },
+      "a": {
+       "en": "Prediction = 1 × 2 = 2; error = 2 − 8 = −6; loss = 36.\nGradient = 2 × (−6) × 2 = −24.\nNew w = 1 − 0.1 × (−24) = 1 + 2.4 = 3.4.\nNew prediction = 3.4 × 2 = 6.8; new loss = (6.8 − 8)² = 1.44.\nThe loss fell from 36 to 1.44 in one step. More steps bring w close to 4 (since 4 × 2 = 8).",
+       "hi": "अनुमान = 1 × 2 = 2; त्रुटि = 2 − 8 = −6; loss = 36।\nGradient = 2 × (−6) × 2 = −24।\nनया w = 1 − 0.1 × (−24) = 1 + 2.4 = 3.4।\nनया अनुमान = 3.4 × 2 = 6.8; नया loss = (6.8 − 8)² = 1.44।\nएक कदम में loss 36 से 1.44 हो गया। और कदम w को 4 के पास ले आएँगे (क्योंकि 4 × 2 = 8)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The program below uses plain Python (no library) to learn the Celsius-to-Fahrenheit rule F = 1.8C + 32 from five examples with gradient descent. It prints the epoch, w, b and the loss. This was run and the output is real:",
+      "hi": "नीचे का प्रोग्राम सादे Python (बिना library) से पाँच उदाहरणों द्वारा gradient descent से सेल्सियस-से-फ़ारेनहाइट नियम F = 1.8C + 32 सीखता है। यह epoch, w, b और loss छापता है। इसे चलाया गया है और आउटपुट असली है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Learn F = w*C + b with gradient descent (no library)\nC = [0, 10, 20, 30, 40]\nF = [32, 50, 68, 86, 104]\nw, b = 0.0, 0.0\nlr = 0.001\nfor epoch in range(1, 20001):\n    dw = db = 0.0\n    for c, f in zip(C, F):\n        pred = w*c + b\n        err = pred - f\n        dw += 2*err*c / len(C)\n        db += 2*err / len(C)\n    w -= lr*dw\n    b -= lr*db\n    if epoch in (1, 100, 1000, 20000):\n        loss = sum((w*c + b - f)**2 for c, f in zip(C, F)) / len(C)\n        print(epoch, round(w, 3), round(b, 3), round(loss, 4))\n\nOutput:\n1 3.44 0.136 538.7961\n100 2.795 2.152 296.976\n1000 2.347 15.611 89.531\n20000 1.8 32.0 0.0",
+      "hi": "# Learn F = w*C + b with gradient descent (no library)\nC = [0, 10, 20, 30, 40]\nF = [32, 50, 68, 86, 104]\nw, b = 0.0, 0.0\nlr = 0.001\nfor epoch in range(1, 20001):\n    dw = db = 0.0\n    for c, f in zip(C, F):\n        pred = w*c + b\n        err = pred - f\n        dw += 2*err*c / len(C)\n        db += 2*err / len(C)\n    w -= lr*dw\n    b -= lr*db\n    if epoch in (1, 100, 1000, 20000):\n        loss = sum((w*c + b - f)**2 for c, f in zip(C, F)) / len(C)\n        print(epoch, round(w, 3), round(b, 3), round(loss, 4))\n\nOutput:\n1 3.44 0.136 538.7961\n100 2.795 2.152 296.976\n1000 2.347 15.611 89.531\n20000 1.8 32.0 0.0"
+     }
+    },
+    {
+     "note": {
+      "en": "Read the output: at first w is far from 1.8 and b far from 32, and the loss is large. After 20,000 epochs the network has found w = 1.8 and b = 32.0 by itself, without being told the formula. That is learning from data. Backpropagation does the same thing for networks with many layers and lakhs of weights, using the chain rule of calculus to pass the error back layer by layer.",
+      "hi": "आउटपुट पढ़िए: शुरू में w, 1.8 से और b, 32 से दूर है, और loss बड़ा है। 20,000 epoch के बाद नेटवर्क ने बिना सूत्र बताए ख़ुद w = 1.8 और b = 32.0 खोज लिया। यही डेटा से सीखना है। Backpropagation कई परतों और लाखों weights वाले नेटवर्क के लिए यही करता है, calculus के chain rule से त्रुटि को परत-दर-परत पीछे भेजकर।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Overfitting and underfitting",
+       "hi": "Overfitting और underfitting"
+      },
+      "text": {
+       "en": "Overfitting: the network memorises the training data, including its noise, so it does very well on training data but badly on new data. Underfitting: the network is too simple or not trained enough, so it does badly even on training data. We check by testing on separate test data.",
+       "hi": "Overfitting: नेटवर्क training डेटा को, उसके शोर सहित, रट लेता है, इसलिए training डेटा पर बहुत अच्छा पर नए डेटा पर ख़राब करता है। Underfitting: नेटवर्क बहुत सरल है या पर्याप्त प्रशिक्षित नहीं, इसलिए training डेटा पर भी ख़राब करता है। हम अलग test डेटा पर जाँचकर पता करते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.8 Types of neural networks",
+    "hi": "6.8 न्यूरल नेटवर्क के प्रकार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Different problems need different network designs (architectures). The main types are:",
+      "hi": "अलग-अलग समस्याओं के लिए अलग नेटवर्क डिज़ाइन (architecture) चाहिए। मुख्य प्रकार ये हैं:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "How it works",
+        "Applications"
+       ],
+       "hi": [
+        "प्रकार",
+        "कैसे काम करता है",
+        "उपयोग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Standard neural network (perceptron)",
+         "No hidden layer; inputs connect directly to output nodes using threshold logic units. Proposed by Frank Rosenblatt (1958). Learns only linearly separable problems.",
+         "Simple yes/no decisions, basic spam detection, logic gates"
+        ],
+        [
+         "Feed Forward Neural Network (FFNN), also called Multilayer Perceptron (MLP)",
+         "Input, one or more hidden layers and output; data flows in one direction only, with no loops. Can handle noisy data and non-linear patterns.",
+         "Tabular data prediction, simple image recognition, NLP tasks, regression such as price prediction"
+        ],
+        [
+         "Convolutional Neural Network (CNN)",
+         "Uses convolution layers with small filters (kernels) that slide over an image to detect features like edges, then shapes, then objects; pooling layers reduce size. (You saw convolution in Class 10 and Chapter 3.)",
+         "Image recognition, object detection, face unlock, medical image analysis (X-rays), crop-disease detection from leaf photos, style transfer"
+        ],
+        [
+         "Recurrent Neural Network (RNN)",
+         "Has a feedback loop: the output at one step is fed back with the next input, giving the network a 'memory' of earlier items in a sequence.",
+         "Language modelling, machine translation, chatbots, speech recognition, time-series prediction (weather, stock prices), sentiment analysis"
+        ],
+        [
+         "LSTM (Long Short-Term Memory)",
+         "A special RNN with 'gates' that decide what to remember and what to forget, so it can remember information over long sequences.",
+         "Speech recognition, text prediction, handwriting recognition"
+        ],
+        [
+         "Generative Adversarial Network (GAN)",
+         "Two networks compete: a generator makes fake data (for example images) and a discriminator tries to tell real from fake. Both improve until the fakes look real.",
+         "Image generation, style transfer, data augmentation, improving image resolution (also misused for deepfakes)"
+        ],
+        [
+         "Transformer",
+         "Uses an 'attention' mechanism to look at all words of a sentence at once and decide which words matter most to each other. Trains well on huge text data. (More in Chapter 7.)",
+         "Large language models and chatbots, translation, summarisation"
+        ]
+       ],
+       "hi": [
+        [
+         "Standard neural network (परसेप्ट्रॉन)",
+         "कोई hidden layer नहीं; इनपुट threshold logic units से सीधे आउटपुट नोड से जुड़ते हैं। फ़्रैंक रोज़ेनब्लैट (1958) ने प्रस्तुत किया। केवल linearly separable समस्याएँ सीखता है।",
+         "सरल हाँ/नहीं निर्णय, बुनियादी spam पहचान, logic gates"
+        ],
+        [
+         "Feed Forward Neural Network (FFNN), जिसे Multilayer Perceptron (MLP) भी कहते हैं",
+         "इनपुट, एक या अधिक hidden layer और आउटपुट; डेटा केवल एक दिशा में बहता है, कोई लूप नहीं। शोर वाले डेटा और अरैखिक पैटर्न सँभाल सकता है।",
+         "तालिका-डेटा से अनुमान, सरल चित्र पहचान, NLP कार्य, दाम अनुमान जैसा regression"
+        ],
+        [
+         "Convolutional Neural Network (CNN)",
+         "convolution परतों का उपयोग करता है जिनमें छोटे filter (kernel) चित्र पर खिसककर पहले किनारे, फिर आकार, फिर वस्तुएँ पहचानते हैं; pooling परतें आकार घटाती हैं। (convolution आपने कक्षा 10 और अध्याय 3 में देखा।)",
+         "चित्र पहचान, वस्तु पहचान, फ़ेस अनलॉक, चिकित्सा चित्र विश्लेषण (एक्स-रे), पत्ती की फ़ोटो से फ़सल-रोग पहचान, style transfer"
+        ],
+        [
+         "Recurrent Neural Network (RNN)",
+         "इसमें feedback loop होता है: एक चरण का आउटपुट अगले इनपुट के साथ वापस भेजा जाता है, जिससे नेटवर्क को क्रम के पिछले आइटम की 'याद' रहती है।",
+         "भाषा मॉडलिंग, मशीनी अनुवाद, chatbot, speech recognition, समय-श्रृंखला अनुमान (मौसम, शेयर भाव), sentiment analysis"
+        ],
+        [
+         "LSTM (Long Short-Term Memory)",
+         "'gates' वाला विशेष RNN जो तय करता है कि क्या याद रखना है और क्या भूलना है, ताकि लंबे क्रमों में जानकारी याद रख सके।",
+         "speech recognition, टेक्स्ट अनुमान, हस्तलिपि पहचान"
+        ],
+        [
+         "Generative Adversarial Network (GAN)",
+         "दो नेटवर्क मुक़ाबला करते हैं: generator नक़ली डेटा (जैसे चित्र) बनाता है और discriminator असली और नक़ली में अंतर करने की कोशिश करता है। दोनों तब तक सुधरते हैं जब तक नक़ली असली जैसे न दिखें।",
+         "चित्र निर्माण, style transfer, data augmentation, चित्र का resolution बढ़ाना (deepfake के लिए दुरुपयोग भी)"
+        ],
+        [
+         "Transformer",
+         "'attention' तंत्र से वाक्य के सभी शब्दों को एक साथ देखता है और तय करता है कि कौन-से शब्द एक-दूसरे के लिए सबसे महत्वपूर्ण हैं। विशाल टेक्स्ट डेटा पर अच्छी तरह प्रशिक्षित होता है। (अध्याय 7 में अधिक।)",
+         "बड़े भाषा मॉडल और chatbot, अनुवाद, सारांश"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which network type suits each task? (a) Detecting potholes from road photos; (b) predicting tomorrow's electricity demand from the last 30 days; (c) creating realistic images of faces that do not exist; (d) deciding loan approval from 10 numeric features in a table.",
+       "hi": "हर कार्य के लिए कौन-सा नेटवर्क प्रकार उपयुक्त है? (a) सड़क की फ़ोटो से गड्ढे पहचानना; (b) पिछले 30 दिनों से कल की बिजली माँग का अनुमान; (c) ऐसे चेहरों के वास्तविक जैसे चित्र बनाना जो मौजूद नहीं; (d) तालिका की 10 संख्यात्मक features से ऋण स्वीकृति तय करना।"
+      },
+      "a": {
+       "en": "(a) CNN: images.\n(b) RNN or LSTM: a time sequence.\n(c) GAN: generating new realistic data.\n(d) FFNN (multilayer perceptron): tabular data, one-way flow.",
+       "hi": "(a) CNN: चित्र।\n(b) RNN या LSTM: समय का क्रम।\n(c) GAN: नया वास्तविक जैसा डेटा बनाना।\n(d) FFNN (multilayer perceptron): तालिका-डेटा, एक-दिशा प्रवाह।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.9 Practical 1: no-code neural network with Machine Learning for Kids",
+    "hi": "6.9 प्रैक्टिकल 1: Machine Learning for Kids से no-code न्यूरल नेटवर्क"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Aim: train a model that recognises animals and birds from pictures, without code.",
+       "What you need: a browser on a computer or phone; the free website machinelearningforkids.co.uk (it uses IBM Watson in the background). It has a 'Try it now' option that needs no account; students under 13 should use a class account set up by a teacher or parent.",
+       "Step 1: Click 'Get started', then 'Try it now'. Click '+ Add a new project'. Name it 'Animals and Birds', choose 'recognising images' and create it.",
+       "Step 2: Open the project and click 'Train'. Click '+ Add new label' and make labels such as 'parrot', 'peacock', 'dog' and 'cow'.",
+       "Step 3: Add at least 10 example images for each label (from the webcam, drawings or image links from free picture sites). More varied images give a better model.",
+       "Step 4: Go back and click 'Learn & Test', then 'Train new machine learning model'. Training takes a few minutes; the tool builds and trains a neural network for you.",
+       "Step 5: Test it by giving a new image (a URL or webcam photo). The tool shows the label it predicts and its confidence percentage.",
+       "Observe: images unlike the training images get low confidence or wrong labels. What it teaches: the model is only as good as its data; more and more varied examples improve it. You can also connect the model to Scratch to make a small game."
+      ],
+      "hi": [
+       "उद्देश्य: बिना कोड के एक model प्रशिक्षित करना जो चित्रों से पशु और पक्षी पहचाने।",
+       "क्या चाहिए: कंप्यूटर या फ़ोन पर ब्राउज़र; मुफ़्त वेबसाइट machinelearningforkids.co.uk (पीछे IBM Watson का उपयोग करती है)। इसमें 'Try it now' विकल्प है जिसमें खाते की ज़रूरत नहीं; 13 वर्ष से कम आयु के विद्यार्थी शिक्षक या अभिभावक द्वारा बनाए कक्षा खाते का उपयोग करें।",
+       "चरण 1: 'Get started' फिर 'Try it now' पर क्लिक करें। '+ Add a new project' पर क्लिक करें। नाम 'Animals and Birds' रखें, 'recognising images' चुनें और बनाएँ।",
+       "चरण 2: प्रोजेक्ट खोलें और 'Train' पर क्लिक करें। '+ Add new label' से 'parrot', 'peacock', 'dog' और 'cow' जैसे label बनाएँ।",
+       "चरण 3: हर label के लिए कम से कम 10 उदाहरण चित्र जोड़ें (webcam, चित्रांकन या मुफ़्त चित्र साइटों के लिंक से)। जितने विविध चित्र, उतना अच्छा model।",
+       "चरण 4: वापस जाकर 'Learn & Test' फिर 'Train new machine learning model' पर क्लिक करें। Training में कुछ मिनट लगते हैं; टूल आपके लिए न्यूरल नेटवर्क बनाता और प्रशिक्षित करता है।",
+       "चरण 5: नया चित्र (URL या webcam फ़ोटो) देकर जाँचें। टूल अनुमानित label और उसका विश्वास प्रतिशत दिखाता है।",
+       "देखें: training चित्रों से अलग चित्रों पर कम विश्वास या ग़लत label आता है। सीख: model उतना ही अच्छा है जितना उसका डेटा; अधिक और विविध उदाहरण उसे सुधारते हैं। आप model को Scratch से जोड़कर छोटा खेल भी बना सकते हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Google Teachable Machine (teachablemachine.withgoogle.com) is another free tool that trains an image, sound or pose model in the browser and works well on phones too.",
+      "hi": "Google Teachable Machine (teachablemachine.withgoogle.com) एक और मुफ़्त टूल है जो ब्राउज़र में चित्र, आवाज़ या मुद्रा (pose) model प्रशिक्षित करता है और फ़ोन पर भी अच्छी तरह चलता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.10 Practical 2: TensorFlow Playground",
+    "hi": "6.10 प्रैक्टिकल 2: TensorFlow Playground"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "TensorFlow Playground (playground.tensorflow.org) is a free website that lets you watch a small neural network learn, live, in your browser. No sign-up is needed.",
+      "hi": "TensorFlow Playground (playground.tensorflow.org) एक मुफ़्त वेबसाइट है जिस पर आप ब्राउज़र में एक छोटे न्यूरल नेटवर्क को सीखते हुए लाइव देख सकते हैं। साइन-अप की ज़रूरत नहीं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Aim: see how layers, neurons, activation function and learning rate affect learning.",
+       "The screen: on the left, choose a DATA set (four patterns of orange and blue dots: circle, exclusive-or, two clusters (Gaussian), spiral) and the ratio of training to test data and noise. In the middle, FEATURES (inputs such as X1, X2) and HIDDEN LAYERS where you add or remove layers and neurons with + and − buttons. On the right, OUTPUT shows the coloured background (the network's decision) and the test loss and training loss. At the top: the Play button, Epoch counter, Learning rate, Activation (ReLU, Tanh, Sigmoid, Linear), Regularization and Problem type (Classification or Regression).",
+       "Experiment 1: choose the two-clusters dataset, no hidden layer, and press Play. It learns quickly; a straight line is enough.",
+       "Experiment 2: choose the circle dataset with no hidden layer. The loss stays high, because a straight line cannot separate a circle. Add one hidden layer with 4 neurons and ReLU; press Play. The network now draws a curved boundary and the test loss falls close to 0.",
+       "Experiment 3: choose the spiral dataset. Add more layers (for example 3 layers of 6 to 8 neurons) and try Tanh. Notice it takes many more epochs.",
+       "Experiment 4: change the learning rate to a very large value (like 3) and to a very small one (like 0.0001). Large: the loss jumps around. Small: learning is very slow.",
+       "Experiment 5: set Activation to Linear with several hidden layers on the circle data. It fails, which proves that non-linear activation is needed.",
+       "Record: take screenshots of each setting with its test loss, and write what you observed about layers, neurons, activation and learning rate."
+      ],
+      "hi": [
+       "उद्देश्य: देखना कि परतें, न्यूरॉन, activation function और learning rate सीखने पर कैसे असर डालते हैं।",
+       "स्क्रीन: बाईं ओर DATA चुनें (नारंगी और नीले बिंदुओं के चार पैटर्न: circle, exclusive-or, two clusters (Gaussian), spiral) और training-test अनुपात तथा noise। बीच में FEATURES (X1, X2 जैसे इनपुट) और HIDDEN LAYERS जहाँ + और − बटन से परतें और न्यूरॉन जोड़ते-घटाते हैं। दाईं ओर OUTPUT रंगीन पृष्ठभूमि (नेटवर्क का निर्णय) और test loss व training loss दिखाता है। ऊपर: Play बटन, Epoch गिनती, Learning rate, Activation (ReLU, Tanh, Sigmoid, Linear), Regularization और Problem type (Classification या Regression)।",
+       "प्रयोग 1: two-clusters डेटासेट, बिना hidden layer चुनें और Play दबाएँ। यह जल्दी सीखता है; एक सीधी रेखा काफ़ी है।",
+       "प्रयोग 2: बिना hidden layer के circle डेटासेट चुनें। Loss ऊँचा रहता है, क्योंकि सीधी रेखा वृत्त को अलग नहीं कर सकती। 4 न्यूरॉन और ReLU वाली एक hidden layer जोड़ें; Play दबाएँ। अब नेटवर्क मुड़ी सीमा बनाता है और test loss 0 के पास आ जाता है।",
+       "प्रयोग 3: spiral डेटासेट चुनें। अधिक परतें जोड़ें (जैसे 6 से 8 न्यूरॉन की 3 परतें) और Tanh आज़माएँ। ध्यान दें कि बहुत अधिक epoch लगते हैं।",
+       "प्रयोग 4: learning rate बहुत बड़ा (जैसे 3) और बहुत छोटा (जैसे 0.0001) करें। बड़ा: loss उछलता रहता है। छोटा: सीखना बहुत धीमा।",
+       "प्रयोग 5: circle डेटा पर कई hidden layers के साथ Activation को Linear करें। यह असफल होता है, जो साबित करता है कि अरैखिक activation ज़रूरी है।",
+       "लिखें: हर सेटिंग का test loss के साथ screenshot लें, और परतों, न्यूरॉन, activation और learning rate के बारे में अपने अवलोकन लिखें।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "In the Playground, the thickness of the lines between neurons shows the size of the weights, and blue and orange show positive and negative weights. Hover over a neuron to see what pattern it has learnt.",
+      "hi": "Playground में न्यूरॉनों के बीच की रेखाओं की मोटाई weights का आकार दिखाती है, और नीला व नारंगी रंग धनात्मक व ऋणात्मक weights दिखाते हैं। किसी न्यूरॉन पर माउस ले जाकर देखें कि उसने कौन-सा पैटर्न सीखा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.11 Practical 3: a TensorFlow model that learns Celsius to Fahrenheit",
+    "hi": "6.11 प्रैक्टिकल 3: सेल्सियस से फ़ारेनहाइट सीखने वाला TensorFlow model"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Here we give a neural network only pairs of Celsius and Fahrenheit values and let it discover the rule F = 1.8C + 32. TensorFlow with its Keras interface is free; in Google Colab it is already installed. The network has one Dense layer with one neuron, so it has exactly one weight and one bias to learn. This program was run and the output shown is real (numbers can differ slightly on each run because the starting weight is random):",
+      "hi": "यहाँ हम न्यूरल नेटवर्क को केवल सेल्सियस और फ़ारेनहाइट के जोड़े देते हैं और उसे नियम F = 1.8C + 32 ख़ुद खोजने देते हैं। Keras interface वाला TensorFlow मुफ़्त है; Google Colab में यह पहले से इंस्टॉल है। नेटवर्क में एक न्यूरॉन वाली एक Dense परत है, इसलिए सीखने के लिए ठीक एक weight और एक bias है। यह प्रोग्राम चलाया गया है और दिखाया गया आउटपुट असली है (हर बार शुरुआती weight यादृच्छिक होने से संख्याएँ थोड़ी बदल सकती हैं):"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\nimport tensorflow as tf\n\ntf.random.set_seed(1)\ncelsius = np.array([-40, -10, 0, 8, 15, 22, 38], dtype=float)\nfahrenheit = np.array([-40, 14, 32, 46.4, 59, 71.6, 100.4], dtype=float)\n\nmodel = tf.keras.Sequential([\n    tf.keras.Input(shape=(1,)),\n    tf.keras.layers.Dense(units=1)\n])\nmodel.compile(loss=\"mean_squared_error\",\n              optimizer=tf.keras.optimizers.Adam(0.1))\nhistory = model.fit(celsius, fahrenheit, epochs=1000, verbose=0)\nprint(\"Training finished\")\nprint(\"Final loss:\", round(history.history[\"loss\"][-1], 4))\nprint(\"100 C ->\", round(float(model.predict(np.array([[100.0]]), verbose=0)[0][0]), 2), \"F\")\nw, b = model.layers[0].get_weights()\nprint(\"Learned weight:\", round(float(w[0][0]), 3), \" bias:\", round(float(b[0]), 3))\n\nOutput:\nTraining finished\nFinal loss: 0.0029\n100 C -> 211.99 F\nLearned weight: 1.8  bias: 31.946",
+      "hi": "import numpy as np\nimport tensorflow as tf\n\ntf.random.set_seed(1)\ncelsius = np.array([-40, -10, 0, 8, 15, 22, 38], dtype=float)\nfahrenheit = np.array([-40, 14, 32, 46.4, 59, 71.6, 100.4], dtype=float)\n\nmodel = tf.keras.Sequential([\n    tf.keras.Input(shape=(1,)),\n    tf.keras.layers.Dense(units=1)\n])\nmodel.compile(loss=\"mean_squared_error\",\n              optimizer=tf.keras.optimizers.Adam(0.1))\nhistory = model.fit(celsius, fahrenheit, epochs=1000, verbose=0)\nprint(\"Training finished\")\nprint(\"Final loss:\", round(history.history[\"loss\"][-1], 4))\nprint(\"100 C ->\", round(float(model.predict(np.array([[100.0]]), verbose=0)[0][0]), 2), \"F\")\nw, b = model.layers[0].get_weights()\nprint(\"Learned weight:\", round(float(w[0][0]), 3), \" bias:\", round(float(b[0]), 3))\n\nOutput:\nTraining finished\nFinal loss: 0.0029\n100 C -> 211.99 F\nLearned weight: 1.8  bias: 31.946"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Line",
+        "Meaning"
+       ],
+       "hi": [
+        "पंक्ति",
+        "अर्थ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "celsius, fahrenheit arrays",
+         "The training data: 7 input values (features) and their correct outputs (labels)"
+        ],
+        [
+         "tf.keras.Sequential([...])",
+         "Builds a model whose layers are stacked one after another"
+        ],
+        [
+         "tf.keras.Input(shape=(1,))",
+         "The input layer: each example has one number"
+        ],
+        [
+         "Dense(units=1)",
+         "A fully connected layer with 1 neuron (linear activation by default)"
+        ],
+        [
+         "compile(loss='mean_squared_error', optimizer=Adam(0.1))",
+         "Chooses MSE as the loss and the Adam optimiser (an improved gradient descent) with learning rate 0.1"
+        ],
+        [
+         "fit(..., epochs=1000)",
+         "Trains: 1,000 full passes over the data"
+        ],
+        [
+         "predict([[100.0]])",
+         "Uses the trained model on a new input; the true answer is 212 °F"
+        ],
+        [
+         "get_weights()",
+         "Shows the learned weight (≈ 1.8) and bias (≈ 32), the same as the real formula"
+        ]
+       ],
+       "hi": [
+        [
+         "celsius, fahrenheit arrays",
+         "training डेटा: 7 इनपुट मान (features) और उनके सही आउटपुट (labels)"
+        ],
+        [
+         "tf.keras.Sequential([...])",
+         "ऐसा model बनाता है जिसकी परतें एक के बाद एक रखी हैं"
+        ],
+        [
+         "tf.keras.Input(shape=(1,))",
+         "input layer: हर उदाहरण में एक संख्या"
+        ],
+        [
+         "Dense(units=1)",
+         "1 न्यूरॉन वाली fully connected परत (डिफ़ॉल्ट रूप से linear activation)"
+        ],
+        [
+         "compile(loss='mean_squared_error', optimizer=Adam(0.1))",
+         "loss के रूप में MSE और learning rate 0.1 वाला Adam optimiser (सुधरा हुआ gradient descent) चुनता है"
+        ],
+        [
+         "fit(..., epochs=1000)",
+         "प्रशिक्षण: डेटा पर 1,000 पूरे चक्कर"
+        ],
+        [
+         "predict([[100.0]])",
+         "प्रशिक्षित model को नए इनपुट पर चलाना; सही उत्तर 212 °F है"
+        ],
+        [
+         "get_weights()",
+         "सीखा गया weight (≈ 1.8) और bias (≈ 32) दिखाता है, असली सूत्र जैसा ही"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "When the same program was first run with only 500 epochs, the final loss was about 9.6 and it predicted 211.56 °F for 100 °C, with weight 1.827 and bias 28.859. More epochs gave a better fit. Try changing epochs and the learning rate yourself.",
+      "hi": "जब यही प्रोग्राम पहले केवल 500 epoch से चलाया गया, तो अंतिम loss लगभग 9.6 था और 100 °C के लिए 211.56 °F अनुमान आया, weight 1.827 और bias 28.859 के साथ। अधिक epoch से बेहतर fit मिला। epochs और learning rate ख़ुद बदलकर देखें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.12 Practical 4 (advanced): a multi-layer network for the Iris flowers",
+    "hi": "6.12 प्रैक्टिकल 4 (उन्नत): Iris फूलों के लिए बहु-परत नेटवर्क"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Chapter 4 you classified Iris flowers in Orange. Here a Keras network with two hidden layers does it in Python. It has 4 inputs (sepal and petal length and width), two hidden layers of 8 ReLU neurons, and 3 softmax outputs (setosa, versicolor, virginica). 80% of the data trains it and 20% tests it. This was run and the output is real:",
+      "hi": "अध्याय 4 में आपने Orange में Iris फूलों का वर्गीकरण किया था। यहाँ दो hidden layers वाला Keras नेटवर्क Python में यह करता है। इसमें 4 इनपुट (sepal और petal की लंबाई व चौड़ाई), 8 ReLU न्यूरॉन की दो hidden layers और 3 softmax आउटपुट (setosa, versicolor, virginica) हैं। 80% डेटा से प्रशिक्षण और 20% से परीक्षण होता है। इसे चलाया गया है और आउटपुट असली है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "import tensorflow as tf\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\n\ntf.random.set_seed(7)\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=7, stratify=y)\n\nmodel = tf.keras.Sequential([\n    tf.keras.Input(shape=(4,)),\n    tf.keras.layers.Dense(8, activation=\"relu\"),\n    tf.keras.layers.Dense(8, activation=\"relu\"),\n    tf.keras.layers.Dense(3, activation=\"softmax\")\n])\nmodel.compile(optimizer=\"adam\",\n              loss=\"sparse_categorical_crossentropy\",\n              metrics=[\"accuracy\"])\nmodel.fit(X_train, y_train, epochs=200, verbose=0)\nloss, acc = model.evaluate(X_test, y_test, verbose=0)\nprint(\"Test accuracy:\", round(acc, 2))\nprint(\"Total parameters:\", model.count_params())\n\nOutput:\nTest accuracy: 0.97\nTotal parameters: 139",
+      "hi": "import tensorflow as tf\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\n\ntf.random.set_seed(7)\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=7, stratify=y)\n\nmodel = tf.keras.Sequential([\n    tf.keras.Input(shape=(4,)),\n    tf.keras.layers.Dense(8, activation=\"relu\"),\n    tf.keras.layers.Dense(8, activation=\"relu\"),\n    tf.keras.layers.Dense(3, activation=\"softmax\")\n])\nmodel.compile(optimizer=\"adam\",\n              loss=\"sparse_categorical_crossentropy\",\n              metrics=[\"accuracy\"])\nmodel.fit(X_train, y_train, epochs=200, verbose=0)\nloss, acc = model.evaluate(X_test, y_test, verbose=0)\nprint(\"Test accuracy:\", round(acc, 2))\nprint(\"Total parameters:\", model.count_params())\n\nOutput:\nTest accuracy: 0.97\nTotal parameters: 139"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Check the 'Total parameters: 139' by hand.",
+       "hi": "'Total parameters: 139' को हाथ से जाँचिए।"
+      },
+      "a": {
+       "en": "Input → hidden 1: 4 × 8 weights + 8 biases = 40.\nHidden 1 → hidden 2: 8 × 8 + 8 = 72.\nHidden 2 → output: 8 × 3 + 3 = 27.\nTotal = 40 + 72 + 27 = 139.",
+       "hi": "इनपुट → hidden 1: 4 × 8 weights + 8 biases = 40।\nHidden 1 → hidden 2: 8 × 8 + 8 = 72।\nHidden 2 → आउटपुट: 8 × 3 + 3 = 27।\nकुल = 40 + 72 + 27 = 139।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "A test accuracy of 0.97 means about 29 of the 30 test flowers were classified correctly. 'sparse_categorical_crossentropy' is the loss used when labels are class numbers (0, 1, 2) and the output uses softmax.",
+      "hi": "0.97 की test accuracy का अर्थ है कि 30 परीक्षण फूलों में से लगभग 29 सही वर्गीकृत हुए। 'sparse_categorical_crossentropy' वह loss है जो label वर्ग-संख्याएँ (0, 1, 2) हों और आउटपुट softmax हो तब प्रयोग होता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.13 Unplugged activity: be a neural network",
+    "hi": "6.13 बिना कंप्यूटर की गतिविधि: स्वयं न्यूरल नेटवर्क बनिए"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Aim: to feel how weighted inputs, a bias and a threshold create a decision, and how adjusting weights is learning. What you need: 7 students, paper slips, a pen. What to do: three students are the input layer; each holds a card with 1 or 0 answering one question: 'Is it a holiday?', 'Is the weather pleasant?', 'Is homework finished?'. Two students are hidden neurons; each has a slip with three weights (for example 2, 1, 3 and 1, 2, 1) and a threshold of 3. Each hidden student multiplies the inputs by the weights, adds them, and says 1 if the total is at least 3. One output student adds the two hidden answers and says 'Go to the park' if the total is at least 1. The seventh student is the 'teacher' who knows the right answer for each case. What you observe: when the network's answer is wrong, the teacher tells the hidden students to raise or lower one weight by 1; after a few rounds the answers match more often. What it teaches: this is forward propagation (passing numbers forward) and a simple form of learning (changing weights after an error).",
+      "hi": "उद्देश्य: महसूस करना कि भारित इनपुट, bias और threshold कैसे निर्णय बनाते हैं, और weights बदलना ही सीखना है। क्या चाहिए: 7 विद्यार्थी, पर्चियाँ, पेन। क्या करें: तीन विद्यार्थी input layer हैं; हर एक के पास 1 या 0 वाला कार्ड है जो एक प्रश्न का उत्तर है: 'क्या छुट्टी है?', 'क्या मौसम सुहावना है?', 'क्या गृहकार्य पूरा है?'। दो विद्यार्थी hidden न्यूरॉन हैं; हर एक की पर्ची पर तीन weights (जैसे 2, 1, 3 और 1, 2, 1) और threshold 3 है। हर hidden विद्यार्थी इनपुट को weights से गुणा करके जोड़ता है, और योग कम से कम 3 हो तो 1 बोलता है। एक output विद्यार्थी दोनों hidden उत्तर जोड़ता है और योग कम से कम 1 हो तो 'पार्क चलो' बोलता है। सातवाँ विद्यार्थी 'शिक्षक' है जिसे हर स्थिति का सही उत्तर पता है। क्या देखेंगे: जब नेटवर्क का उत्तर ग़लत हो, शिक्षक hidden विद्यार्थियों से कोई एक weight 1 बढ़ाने या घटाने को कहता है; कुछ दौर के बाद उत्तर अधिक बार मेल खाते हैं। सीख: यह forward propagation (संख्याएँ आगे भेजना) और सीखने का एक सरल रूप (त्रुटि के बाद weights बदलना) है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.14 Future of neural networks and their impact on society",
+    "hi": "6.14 न्यूरल नेटवर्क का भविष्य और समाज पर प्रभाव"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Neural networks are already changing many fields, and their use will grow.",
+      "hi": "न्यूरल नेटवर्क पहले से ही कई क्षेत्रों को बदल रहे हैं, और इनका उपयोग बढ़ेगा।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Healthcare: reading X-rays, eye scans and skin images to help doctors detect disease early, especially where specialists are few.",
+       "Agriculture: apps that identify crop diseases and pests from a leaf photo and give advice in Indian languages.",
+       "Language: voice assistants, speech-to-text and translation across Indian languages (for example tools built on the government's Bhashini platform).",
+       "Finance: detecting fraudulent transactions and assessing risk.",
+       "Manufacturing and transport: spotting defects on production lines, predicting machine breakdowns, and driver-assistance features in vehicles.",
+       "Productivity and jobs: automating routine work and creating new jobs such as data scientist, AI engineer and data annotator."
+      ],
+      "hi": [
+       "स्वास्थ्य: एक्स-रे, आँखों के स्कैन और त्वचा के चित्र पढ़कर डॉक्टरों को बीमारी जल्दी पहचानने में मदद, ख़ासकर जहाँ विशेषज्ञ कम हैं।",
+       "कृषि: ऐप जो पत्ती की फ़ोटो से फ़सल रोग और कीट पहचानकर भारतीय भाषाओं में सलाह देते हैं।",
+       "भाषा: voice assistant, speech-to-text और भारतीय भाषाओं में अनुवाद (जैसे सरकार के Bhashini प्लेटफ़ॉर्म पर बने टूल)।",
+       "वित्त: धोखाधड़ी वाले लेन-देन पहचानना और जोखिम आँकना।",
+       "उद्योग और परिवहन: उत्पादन लाइन पर दोष पहचानना, मशीन ख़राबी का अनुमान, और वाहनों में चालक-सहायता सुविधाएँ।",
+       "उत्पादकता और रोज़गार: रोज़मर्रा का काम स्वचालित होना और data scientist, AI engineer तथा data annotator जैसी नई नौकरियाँ बनना।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Concerns we must handle responsibly:",
+      "hi": "चिंताएँ जिन्हें हमें ज़िम्मेदारी से सँभालना होगा:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Black box: with lakhs of weights, it is hard to explain why a network made a decision. This matters in loans, hiring and medicine. Explainable AI tries to solve this.",
+       "Bias: a network trained on unbalanced data can be unfair, for example a face recogniser that works worse for some skin tones.",
+       "Privacy: networks need lots of data, often personal; it must be collected with consent and protected.",
+       "Misuse: GANs and other generators can make deepfakes. Check sources before believing or sharing a shocking video, and report fake content.",
+       "Energy and cost: training large networks uses a lot of electricity and computing power.",
+       "Job displacement: some jobs will change or disappear, so learning new skills is important."
+      ],
+      "hi": [
+       "Black box: लाखों weights के साथ यह समझाना कठिन है कि नेटवर्क ने कोई निर्णय क्यों लिया। ऋण, भर्ती और चिकित्सा में यह मायने रखता है। Explainable AI इसे हल करने का प्रयास करता है।",
+       "पक्षपात (Bias): असंतुलित डेटा पर प्रशिक्षित नेटवर्क अन्यायपूर्ण हो सकता है, जैसे चेहरा पहचानने वाला सिस्टम जो कुछ त्वचा रंगों पर ख़राब काम करे।",
+       "निजता: नेटवर्क को बहुत डेटा चाहिए, अक्सर निजी; इसे सहमति से लेना और सुरक्षित रखना ज़रूरी है।",
+       "दुरुपयोग: GAN और अन्य generator deepfake बना सकते हैं। किसी चौंकाने वाले वीडियो पर विश्वास करने या साझा करने से पहले स्रोत जाँचें, और नक़ली सामग्री की रिपोर्ट करें।",
+       "ऊर्जा और लागत: बड़े नेटवर्क प्रशिक्षित करने में बहुत बिजली और computing power लगती है।",
+       "रोज़गार पर असर: कुछ नौकरियाँ बदलेंगी या ख़त्म होंगी, इसलिए नए कौशल सीखना महत्वपूर्ण है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Note on the word 'bias': in a neuron, bias is just a number added to the weighted sum. In ethics, bias means unfairness. Read the context to know which is meant.",
+      "hi": "'bias' शब्द पर ध्यान दें: न्यूरॉन में bias केवल भारित योग में जोड़ी गई एक संख्या है। नैतिकता में bias का अर्थ पक्षपात है। संदर्भ पढ़कर समझें कि कौन-सा अर्थ है।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Forgetting to add the bias in the weighted sum. Fix: z = Σ wi xi + b; always add b at the end.",
+   "Counting the input layer as a calculating layer. Fix: the input layer only passes values; weights and biases belong to the hidden and output layers.",
+   "Calling a network with one hidden layer 'deep'. Fix: a deep neural network has two or more hidden layers.",
+   "Thinking backpropagation makes predictions. Fix: forward propagation makes predictions; backpropagation sends the error backwards to update weights.",
+   "Using sigmoid output to predict a number such as a price. Fix: use linear output for regression, sigmoid for yes/no, softmax for many classes.",
+   "Writing ReLU(−3) = −3 or 3. Fix: ReLU(z) = max(0, z), so ReLU(−3) = 0.",
+   "Choosing a very high learning rate to 'learn faster'. Fix: too large a step makes the loss jump and may never settle; choose a moderate value.",
+   "Mixing up RNN and CNN. Fix: CNN for images (grids of pixels); RNN/LSTM for sequences (text, speech, time series).",
+   "Judging a model only on training accuracy. Fix: always test on separate data to catch overfitting.",
+   "Confusing the neuron's bias (a number) with bias meaning unfairness. Fix: read the context."
+  ],
+  "hi": [
+   "भारित योग में bias जोड़ना भूल जाना। सुधार: z = Σ wi xi + b; अंत में हमेशा b जोड़ें।",
+   "input layer को गणना करने वाली परत गिनना। सुधार: input layer केवल मान आगे भेजती है; weights और biases hidden और output layers के होते हैं।",
+   "एक hidden layer वाले नेटवर्क को 'deep' कहना। सुधार: deep neural network में दो या अधिक hidden layers होती हैं।",
+   "यह सोचना कि backpropagation अनुमान बनाता है। सुधार: forward propagation अनुमान बनाता है; backpropagation weights अपडेट करने के लिए त्रुटि पीछे भेजता है।",
+   "दाम जैसी संख्या के अनुमान के लिए sigmoid आउटपुट लगाना। सुधार: regression के लिए linear, हाँ/नहीं के लिए sigmoid, कई वर्गों के लिए softmax।",
+   "ReLU(−3) = −3 या 3 लिखना। सुधार: ReLU(z) = max(0, z), इसलिए ReLU(−3) = 0।",
+   "'जल्दी सीखने' के लिए बहुत ऊँचा learning rate चुनना। सुधार: बहुत बड़ा कदम loss को उछालता है और शायद कभी स्थिर न हो; मध्यम मान चुनें।",
+   "RNN और CNN को मिलाना। सुधार: चित्रों (pixels के ग्रिड) के लिए CNN; क्रमों (टेक्स्ट, आवाज़, समय-श्रृंखला) के लिए RNN/LSTM।",
+   "model को केवल training accuracy से आँकना। सुधार: overfitting पकड़ने के लिए हमेशा अलग डेटा पर जाँचें।",
+   "न्यूरॉन के bias (एक संख्या) को पक्षपात वाले bias से मिलाना। सुधार: संदर्भ पढ़ें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Neural network",
+    "hi": "न्यूरल नेटवर्क"
+   },
+   "d": {
+    "en": "A layered network of artificial neurons that learns patterns from data.",
+    "hi": "artificial neurons का परतदार नेटवर्क जो डेटा से पैटर्न सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Artificial neuron (node)",
+    "hi": "Artificial neuron (node)"
+   },
+   "d": {
+    "en": "A unit that computes a weighted sum plus bias and applies an activation function.",
+    "hi": "एक इकाई जो भारित योग और bias निकालकर activation function लगाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Input layer",
+    "hi": "Input layer"
+   },
+   "d": {
+    "en": "The first layer; receives feature values and passes them on.",
+    "hi": "पहली परत; feature मान लेकर आगे भेजती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hidden layer",
+    "hi": "Hidden layer"
+   },
+   "d": {
+    "en": "A layer between input and output that learns intermediate patterns.",
+    "hi": "इनपुट और आउटपुट के बीच की परत जो बीच के पैटर्न सीखती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Output layer",
+    "hi": "Output layer"
+   },
+   "d": {
+    "en": "The last layer; gives the final prediction.",
+    "hi": "अंतिम परत; अंतिम अनुमान देती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Weight",
+    "hi": "Weight (भार)"
+   },
+   "d": {
+    "en": "A number on a connection showing how strongly an input affects a neuron.",
+    "hi": "कनेक्शन पर संख्या जो बताती है कि इनपुट न्यूरॉन पर कितना असर डालता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias",
+    "hi": "Bias (बायस)"
+   },
+   "d": {
+    "en": "A constant added to the weighted sum that shifts the activation point.",
+    "hi": "भारित योग में जोड़ा गया स्थिरांक जो सक्रियण बिंदु खिसकाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Activation function",
+    "hi": "Activation function"
+   },
+   "d": {
+    "en": "A function that decides a neuron's output and adds non-linearity.",
+    "hi": "फलन जो न्यूरॉन का आउटपुट तय करता है और अरैखिकता जोड़ता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Step / Sigmoid / Tanh / ReLU / Softmax",
+    "hi": "Step / Sigmoid / Tanh / ReLU / Softmax"
+   },
+   "d": {
+    "en": "Common activations: 0 or 1; 0 to 1; −1 to 1; max(0, z); probabilities that add to 1.",
+    "hi": "आम activation: 0 या 1; 0 से 1; −1 से 1; max(0, z); संभावनाएँ जिनका योग 1।"
+   }
+  },
+  {
+   "t": {
+    "en": "Forward propagation",
+    "hi": "Forward propagation"
+   },
+   "d": {
+    "en": "Passing inputs through the layers to get a prediction.",
+    "hi": "अनुमान पाने के लिए इनपुट को परतों से गुज़ारना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Loss function",
+    "hi": "Loss function"
+   },
+   "d": {
+    "en": "A measure of how wrong the predictions are, e.g. MSE.",
+    "hi": "अनुमान कितने ग़लत हैं इसका माप, जैसे MSE।"
+   }
+  },
+  {
+   "t": {
+    "en": "Backpropagation",
+    "hi": "Backpropagation"
+   },
+   "d": {
+    "en": "Sending the error backwards to find each weight's contribution (gradient).",
+    "hi": "त्रुटि को पीछे भेजकर हर weight का योगदान (gradient) पता करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Gradient descent",
+    "hi": "Gradient descent"
+   },
+   "d": {
+    "en": "Updating weights in small steps opposite to the slope of the loss.",
+    "hi": "loss के ढलान के उलटी ओर छोटे कदमों में weights बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Learning rate",
+    "hi": "Learning rate"
+   },
+   "d": {
+    "en": "The size of each weight-update step.",
+    "hi": "हर weight-अपडेट कदम का आकार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Epoch",
+    "hi": "Epoch"
+   },
+   "d": {
+    "en": "One complete pass of all training data through the network.",
+    "hi": "सारे training डेटा का नेटवर्क से एक पूरा चक्कर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Learning rule",
+    "hi": "Learning rule"
+   },
+   "d": {
+    "en": "The method that says how weights and biases change, e.g. backpropagation.",
+    "hi": "वह तरीका जो बताता है weights और biases कैसे बदलें, जैसे backpropagation।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deep neural network",
+    "hi": "Deep neural network"
+   },
+   "d": {
+    "en": "A network with two or more hidden layers; training it is deep learning.",
+    "hi": "दो या अधिक hidden layers वाला नेटवर्क; इसे प्रशिक्षित करना deep learning है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Perceptron",
+    "hi": "Perceptron"
+   },
+   "d": {
+    "en": "A single neuron with a step activation (Rosenblatt, 1958).",
+    "hi": "step activation वाला एक अकेला न्यूरॉन (रोज़ेनब्लैट, 1958)।"
+   }
+  },
+  {
+   "t": {
+    "en": "FFNN / MLP",
+    "hi": "FFNN / MLP"
+   },
+   "d": {
+    "en": "Feed-forward network with hidden layers; data flows one way.",
+    "hi": "hidden layers वाला feed-forward नेटवर्क; डेटा एक दिशा में बहता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "CNN",
+    "hi": "CNN"
+   },
+   "d": {
+    "en": "Convolutional network that uses filters to find features in images.",
+    "hi": "convolutional नेटवर्क जो filters से चित्रों में features खोजता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "RNN / LSTM",
+    "hi": "RNN / LSTM"
+   },
+   "d": {
+    "en": "Networks with feedback loops that remember earlier items in a sequence; LSTM remembers longer.",
+    "hi": "feedback loop वाले नेटवर्क जो क्रम के पिछले आइटम याद रखते हैं; LSTM अधिक लंबा याद रखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "GAN",
+    "hi": "GAN"
+   },
+   "d": {
+    "en": "Generator and discriminator networks trained against each other to create realistic data.",
+    "hi": "generator और discriminator नेटवर्क जो एक-दूसरे के विरुद्ध प्रशिक्षित होकर वास्तविक जैसा डेटा बनाते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Transformer",
+    "hi": "Transformer"
+   },
+   "d": {
+    "en": "A network using attention to process whole sequences at once; basis of large language models.",
+    "hi": "attention से पूरे क्रम को एक साथ प्रोसेस करने वाला नेटवर्क; बड़े भाषा मॉडल का आधार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Overfitting",
+    "hi": "Overfitting"
+   },
+   "d": {
+    "en": "Memorising training data so the model fails on new data.",
+    "hi": "training डेटा रट लेना जिससे model नए डेटा पर असफल हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dense layer",
+    "hi": "Dense layer"
+   },
+   "d": {
+    "en": "A fully connected layer: every neuron links to every neuron of the previous layer.",
+    "hi": "fully connected परत: हर न्यूरॉन पिछली परत के हर न्यूरॉन से जुड़ा।"
+   }
+  },
+  {
+   "t": {
+    "en": "TensorFlow / Keras",
+    "hi": "TensorFlow / Keras"
+   },
+   "d": {
+    "en": "A free open-source library for building and training neural networks; Keras is its easy interface.",
+    "hi": "न्यूरल नेटवर्क बनाने और प्रशिक्षित करने की मुफ़्त open-source library; Keras इसका आसान interface है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which layer of a neural network gives the final prediction? (a) Input (b) Hidden (c) Output (d) Bias",
+    "hi": "MCQ: न्यूरल नेटवर्क की कौन-सी परत अंतिम अनुमान देती है? (a) Input (b) Hidden (c) Output (d) Bias"
+   },
+   "a": {
+    "en": "(c) Output layer.",
+    "hi": "(c) Output layer।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: ReLU(−4) equals (a) −4 (b) 4 (c) 0 (d) 1",
+    "hi": "MCQ: ReLU(−4) बराबर है (a) −4 (b) 4 (c) 0 (d) 1"
+   },
+   "a": {
+    "en": "(c) 0, because ReLU(z) = max(0, z).",
+    "hi": "(c) 0, क्योंकि ReLU(z) = max(0, z)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which network is best for images? (a) RNN (b) CNN (c) Perceptron (d) Linear regression",
+    "hi": "MCQ: चित्रों के लिए सबसे अच्छा नेटवर्क कौन-सा है? (a) RNN (b) CNN (c) Perceptron (d) Linear regression"
+   },
+   "a": {
+    "en": "(b) CNN.",
+    "hi": "(b) CNN।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The output range of the sigmoid function is (a) −1 to 1 (b) 0 to 1 (c) 0 to ∞ (d) only 0 or 1",
+    "hi": "MCQ: sigmoid function की आउटपुट सीमा है (a) −1 से 1 (b) 0 से 1 (c) 0 से ∞ (d) केवल 0 या 1"
+   },
+   "a": {
+    "en": "(b) 0 to 1.",
+    "hi": "(b) 0 से 1।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A neural network with two or more hidden layers is called a ________ neural network.",
+    "hi": "रिक्त स्थान भरें: दो या अधिक hidden layers वाला न्यूरल नेटवर्क ________ न्यूरल नेटवर्क कहलाता है।"
+   },
+   "a": {
+    "en": "deep",
+    "hi": "deep (डीप)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: One complete pass of the whole training dataset through a network is called an ________.",
+    "hi": "रिक्त स्थान भरें: पूरे training डेटासेट का नेटवर्क से एक पूरा चक्कर ________ कहलाता है।"
+   },
+   "a": {
+    "en": "epoch",
+    "hi": "epoch"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: In a GAN, the discriminator creates fake images.",
+    "hi": "सही या ग़लत: GAN में discriminator नक़ली चित्र बनाता है।"
+   },
+   "a": {
+    "en": "False. The generator creates fake data; the discriminator tries to tell real from fake.",
+    "hi": "ग़लत। generator नक़ली डेटा बनाता है; discriminator असली और नक़ली में अंतर करने की कोशिश करता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: A single perceptron can learn the AND gate but not the XOR gate.",
+    "hi": "सही या ग़लत: एक अकेला परसेप्ट्रॉन AND gate सीख सकता है पर XOR gate नहीं।"
+   },
+   "a": {
+    "en": "True. AND is linearly separable; XOR is not and needs a hidden layer.",
+    "hi": "सही। AND linearly separable है; XOR नहीं है और उसके लिए hidden layer चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Activation functions are needed in neural networks. Reason (R): Without non-linear activation, many layers behave like a single linear model. Choose: (a) both true, R explains A (b) both true, R does not explain A (c) A true, R false (d) A false, R true.",
+    "hi": "अभिकथन (A): न्यूरल नेटवर्क में activation functions ज़रूरी हैं। कारण (R): अरैखिक activation के बिना कई परतें एक अकेले रैखिक model जैसी व्यवहार करती हैं। चुनें: (a) दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही।"
+   },
+   "a": {
+    "en": "(a) Both true and R explains A.",
+    "hi": "(a) दोनों सही और R, A की व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): RNNs are suitable for speech recognition. Reason (R): RNNs have no memory of previous inputs. Choose (a)–(d).",
+    "hi": "अभिकथन (A): RNN, speech recognition के लिए उपयुक्त हैं। कारण (R): RNN को पिछले इनपुट की कोई याद नहीं होती। (a)–(d) में से चुनें।"
+   },
+   "a": {
+    "en": "(c) A is true, R is false. RNNs have a feedback loop that gives them memory of earlier inputs, which is why they suit sequences such as speech.",
+    "hi": "(c) A सही, R ग़लत। RNN में feedback loop होता है जो उन्हें पिछले इनपुट की याद देता है, इसीलिए वे आवाज़ जैसे क्रमों के लिए उपयुक्त हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Numerical: A neuron has inputs 1, 0, 1, weights 0.5, 0.3, 0.4 and bias −0.6. Find z and the step output (1 if z ≥ 0).",
+    "hi": "संख्यात्मक: एक न्यूरॉन के इनपुट 1, 0, 1, weights 0.5, 0.3, 0.4 और bias −0.6 हैं। z और step आउटपुट (z ≥ 0 पर 1) निकालिए।"
+   },
+   "a": {
+    "en": "z = (1 × 0.5) + (0 × 0.3) + (1 × 0.4) − 0.6 = 0.5 + 0 + 0.4 − 0.6 = 0.3.\n0.3 ≥ 0, so output = 1.",
+    "hi": "z = (1 × 0.5) + (0 × 0.3) + (1 × 0.4) − 0.6 = 0.5 + 0 + 0.4 − 0.6 = 0.3।\n0.3 ≥ 0, इसलिए आउटपुट = 1।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Numerical: A network is 3-5-2 (3 inputs, 5 hidden neurons, 2 outputs), fully connected. How many weights and biases does it have?",
+    "hi": "संख्यात्मक: एक नेटवर्क 3-5-2 है (3 इनपुट, 5 hidden न्यूरॉन, 2 आउटपुट), fully connected। इसमें कितने weights और biases हैं?"
+   },
+   "a": {
+    "en": "Weights: 3 × 5 + 5 × 2 = 15 + 10 = 25.\nBiases: 5 + 2 = 7.\nTotal parameters = 32.",
+    "hi": "Weights: 3 × 5 + 5 × 2 = 15 + 10 = 25।\nBiases: 5 + 2 = 7।\nकुल parameters = 32।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Numerical: Actual values 10, 12, 8; predictions 11, 12, 6. Find the MSE.",
+    "hi": "संख्यात्मक: वास्तविक मान 10, 12, 8; अनुमान 11, 12, 6। MSE निकालिए।"
+   },
+   "a": {
+    "en": "Errors: −1, 0, 2. Squares: 1, 0, 4. MSE = (1 + 0 + 4) ÷ 3 = 5 ÷ 3 ≈ 1.67.",
+    "hi": "त्रुटियाँ: −1, 0, 2। वर्ग: 1, 0, 4। MSE = (1 + 0 + 4) ÷ 3 = 5 ÷ 3 ≈ 1.67।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: List the seven components of a neural network and give one line on each.",
+    "hi": "लघु उत्तर: न्यूरल नेटवर्क के सात घटक लिखिए और हर एक पर एक पंक्ति दीजिए।"
+   },
+   "a": {
+    "en": "1. Neurons: units that compute and pass outputs.\n2. Weights: strength of each connection, learned in training.\n3. Bias: constant added to shift activation.\n4. Activation function: decides output, adds non-linearity.\n5. Connections: links between neurons carrying weights.\n6. Learning rule: how weights change, e.g. backpropagation.\n7. Propagation functions: forward propagation (predict) and backpropagation (update).",
+    "hi": "1. न्यूरॉन: गणना करके आउटपुट भेजने वाली इकाइयाँ।\n2. Weights: हर कनेक्शन की ताक़त, training में सीखी जाती है।\n3. Bias: सक्रियण खिसकाने के लिए जोड़ा गया स्थिरांक।\n4. Activation function: आउटपुट तय करता है, अरैखिकता जोड़ता है।\n5. Connections: weights ले जाने वाली न्यूरॉनों की कड़ियाँ।\n6. Learning rule: weights कैसे बदलें, जैसे backpropagation।\n7. Propagation functions: forward propagation (अनुमान) और backpropagation (अपडेट)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Explain the roles of the input, hidden and output layers using the example of recognising handwritten digits 0 to 9 from 28 × 28 pixel images.",
+    "hi": "लघु उत्तर: 28 × 28 pixel चित्रों से हाथ से लिखे अंक 0 से 9 पहचानने के उदाहरण से input, hidden और output layers की भूमिकाएँ समझाइए।"
+   },
+   "a": {
+    "en": "Input layer: 784 neurons (28 × 28), one per pixel brightness value.\nHidden layers: learn strokes, curves, loops and then digit shapes.\nOutput layer: 10 neurons with softmax, one per digit; the highest probability is the prediction.",
+    "hi": "Input layer: 784 न्यूरॉन (28 × 28), हर pixel की चमक का एक।\nHidden layers: रेखाएँ, वक्र, लूप और फिर अंकों के आकार सीखती हैं।\nOutput layer: softmax वाले 10 न्यूरॉन, हर अंक का एक; सबसे अधिक संभावना वाला अनुमान है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: What do the learning rate and the number of epochs control? What happens if the learning rate is too large or too small?",
+    "hi": "लघु उत्तर: learning rate और epochs की संख्या क्या नियंत्रित करते हैं? learning rate बहुत बड़ा या बहुत छोटा हो तो क्या होता है?"
+   },
+   "a": {
+    "en": "Learning rate controls how big each weight update is; epochs control how many times the whole dataset is used for training.\nToo large: updates overshoot, the loss jumps around and may not settle.\nToo small: training is very slow and may stop before reaching a good solution.",
+    "hi": "Learning rate नियंत्रित करता है कि हर weight अपडेट कितना बड़ा हो; epochs नियंत्रित करते हैं कि पूरा डेटासेट कितनी बार training में प्रयोग हो।\nबहुत बड़ा: अपडेट आगे निकल जाते हैं, loss उछलता है और शायद स्थिर न हो।\nबहुत छोटा: training बहुत धीमी होती है और अच्छे हल तक पहुँचने से पहले रुक सकती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe how a neural network is trained, explaining forward propagation, loss function, backpropagation and gradient descent. Use the Celsius–Fahrenheit example.",
+    "hi": "दीर्घ उत्तर: forward propagation, loss function, backpropagation और gradient descent समझाते हुए बताइए कि न्यूरल नेटवर्क कैसे प्रशिक्षित होता है। सेल्सियस–फ़ारेनहाइट उदाहरण का उपयोग करें।"
+   },
+   "a": {
+    "en": "Start: a one-neuron model F = w × C + b with random w and b.\nForward propagation: for C = 0 it predicts some F, say 0.4, but the truth is 32.\nLoss: MSE averages the squared errors over all examples, giving a large number at first.\nBackpropagation: computes how the loss changes with w and with b (the gradients).\nGradient descent: w = w − learning rate × gradient(w), and the same for b.\nRepeat for many epochs: the loss falls and w → 1.8, b → 32. Our runs gave w = 1.8, b ≈ 31.95 with TensorFlow, and w = 1.8, b = 32.0 with plain Python after 20,000 epochs.",
+    "hi": "शुरुआत: यादृच्छिक w और b वाला एक-न्यूरॉन model F = w × C + b।\nForward propagation: C = 0 के लिए यह कोई F, मान लें 0.4, बताता है, पर सही 32 है।\nLoss: MSE सभी उदाहरणों की वर्गित त्रुटियों का औसत लेता है, जो शुरू में बड़ी संख्या है।\nBackpropagation: गणना करता है कि w और b के साथ loss कैसे बदलता है (gradients)।\nGradient descent: w = w − learning rate × gradient(w), और b के लिए भी यही।\nकई epochs तक दोहराएँ: loss घटता है और w → 1.8, b → 32। हमारे प्रयोगों में TensorFlow से w = 1.8, b ≈ 31.95 और सादे Python से 20,000 epochs के बाद w = 1.8, b = 32.0 आया।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Compare FFNN, CNN, RNN and GAN in terms of structure and applications.",
+    "hi": "दीर्घ उत्तर: संरचना और उपयोग के आधार पर FFNN, CNN, RNN और GAN की तुलना कीजिए।"
+   },
+   "a": {
+    "en": "FFNN: layers in a line, data flows one way, no loops; used for tabular prediction, regression, simple classification.\nCNN: convolution filters and pooling find local features in grids; used for images, object detection, medical scans, crop-disease detection.\nRNN: feedback loop passes information to the next step, giving memory; used for text, speech, translation, time series (LSTM for long memory).\nGAN: a generator and a discriminator compete; used to create realistic images, style transfer, data augmentation; can be misused for deepfakes.",
+    "hi": "FFNN: क्रम में परतें, डेटा एक दिशा में, कोई लूप नहीं; तालिका-अनुमान, regression, सरल वर्गीकरण में।\nCNN: convolution filters और pooling ग्रिड में स्थानीय features खोजते हैं; चित्र, वस्तु पहचान, चिकित्सा स्कैन, फ़सल-रोग पहचान में।\nRNN: feedback loop जानकारी अगले चरण तक ले जाता है, जिससे याद मिलती है; टेक्स्ट, आवाज़, अनुवाद, समय-श्रृंखला में (लंबी याद के लिए LSTM)।\nGAN: generator और discriminator मुक़ाबला करते हैं; वास्तविक जैसे चित्र, style transfer, data augmentation में; deepfake के लिए दुरुपयोग संभव।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Numerical (two layers): Inputs x1 = 2, x2 = 1. Hidden h1: weights 0.5, −1, bias 0.5, ReLU. Hidden h2: weights 1, 1, bias −2, ReLU. Output: weights 1 (h1) and 2 (h2), bias 0, step (1 if z ≥ 1). Find the output.",
+    "hi": "संख्यात्मक (दो परतें): इनपुट x1 = 2, x2 = 1। Hidden h1: weights 0.5, −1, bias 0.5, ReLU। Hidden h2: weights 1, 1, bias −2, ReLU। आउटपुट: weights 1 (h1) और 2 (h2), bias 0, step (z ≥ 1 पर 1)। आउटपुट निकालिए।"
+   },
+   "a": {
+    "en": "h1: z = (2 × 0.5) + (1 × −1) + 0.5 = 1 − 1 + 0.5 = 0.5; ReLU = 0.5.\nh2: z = 2 + 1 − 2 = 1; ReLU = 1.\nOutput: z = (0.5 × 1) + (1 × 2) + 0 = 2.5; 2.5 ≥ 1, so output = 1.",
+    "hi": "h1: z = (2 × 0.5) + (1 × −1) + 0.5 = 1 − 1 + 0.5 = 0.5; ReLU = 0.5।\nh2: z = 2 + 1 − 2 = 1; ReLU = 1।\nआउटपुट: z = (0.5 × 1) + (1 × 2) + 0 = 2.5; 2.5 ≥ 1, इसलिए आउटपुट = 1।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A startup builds an app that detects crop disease from a photo of a leaf and replies to the farmer in Hindi by voice. (i) Which neural network type identifies the disease? (ii) Which types help convert the reply to speech and understand the farmer's spoken question? (iii) Give two risks and how to reduce them.",
+    "hi": "केस-आधारित: एक startup ऐसा ऐप बनाता है जो पत्ती की फ़ोटो से फ़सल रोग पहचानता है और किसान को हिंदी में आवाज़ से उत्तर देता है। (i) कौन-सा न्यूरल नेटवर्क प्रकार रोग पहचानता है? (ii) उत्तर को आवाज़ में बदलने और किसान का बोला प्रश्न समझने में कौन-से प्रकार मदद करते हैं? (iii) दो जोखिम और उन्हें कम करने के उपाय बताइए।"
+   },
+   "a": {
+    "en": "(i) CNN, because the input is an image.\n(ii) Sequence models such as RNN/LSTM or transformers for speech recognition and speech generation.\n(iii) Wrong diagnosis on photos unlike the training data (train on many crops, lighting conditions and regions; show confidence and advise confirming with an agriculture officer). Bias toward crops or regions with more data (collect balanced data). Privacy of farmers' location and phone data (take consent, store securely).",
+    "hi": "(i) CNN, क्योंकि इनपुट चित्र है।\n(ii) speech recognition और speech generation के लिए RNN/LSTM या transformer जैसे sequence model।\n(iii) training डेटा से अलग फ़ोटो पर ग़लत निदान (कई फ़सलों, रोशनी और क्षेत्रों पर प्रशिक्षण; विश्वास दिखाएँ और कृषि अधिकारी से पुष्टि की सलाह दें)। अधिक डेटा वाली फ़सलों या क्षेत्रों की ओर पक्षपात (संतुलित डेटा इकट्ठा करें)। किसानों के location और फ़ोन डेटा की निजता (सहमति लें, सुरक्षित रखें)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based (TensorFlow Playground): A student uses the circle dataset. With no hidden layer the test loss stays near 0.5. With one hidden layer of 4 ReLU neurons it drops near 0.01. With 4 hidden layers but Linear activation it stays near 0.5. Explain each result.",
+    "hi": "केस-आधारित (TensorFlow Playground): एक विद्यार्थी circle डेटासेट लेता है। बिना hidden layer के test loss लगभग 0.5 रहता है। 4 ReLU न्यूरॉन की एक hidden layer से यह 0.01 के पास आता है। 4 hidden layers पर Linear activation के साथ यह लगभग 0.5 रहता है। हर परिणाम समझाइए।"
+   },
+   "a": {
+    "en": "No hidden layer: the network can draw only a straight line, which cannot separate an inner circle from an outer ring.\nOne hidden layer with ReLU: the non-linear neurons combine to make a curved, closed boundary, so it separates the classes.\nMany layers with Linear activation: linear layers stacked are still linear overall, so it is again just a straight line and fails. Non-linearity, not just depth, gives power.",
+    "hi": "बिना hidden layer: नेटवर्क केवल सीधी रेखा बना सकता है, जो भीतरी वृत्त को बाहरी छल्ले से अलग नहीं कर सकती।\nReLU वाली एक hidden layer: अरैखिक न्यूरॉन मिलकर मुड़ी, बंद सीमा बनाते हैं, इसलिए वर्ग अलग होते हैं।\nLinear activation वाली कई परतें: रैखिक परतें जोड़ने पर भी कुल मिलाकर रैखिक रहती हैं, इसलिए फिर से केवल सीधी रेखा बनती है और असफल होती हैं। केवल गहराई नहीं, अरैखिकता ताक़त देती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Python: In the Celsius-to-Fahrenheit TensorFlow program, what would you change to (a) train longer, (b) take smaller learning steps, (c) predict 37 °C? What answer should you expect for 37 °C?",
+    "hi": "Python: सेल्सियस-से-फ़ारेनहाइट TensorFlow प्रोग्राम में (a) अधिक देर प्रशिक्षित करने, (b) छोटे learning कदम लेने, (c) 37 °C का अनुमान लगाने के लिए क्या बदलेंगे? 37 °C के लिए क्या उत्तर अपेक्षित है?"
+   },
+   "a": {
+    "en": "(a) Increase epochs, e.g. epochs=2000.\n(b) Lower the learning rate in Adam, e.g. tf.keras.optimizers.Adam(0.01).\n(c) model.predict(np.array([[37.0]])).\nExpected: 1.8 × 37 + 32 = 66.6 + 32 = 98.6 °F (the model will give a value very close to this).",
+    "hi": "(a) epochs बढ़ाएँ, जैसे epochs=2000।\n(b) Adam में learning rate घटाएँ, जैसे tf.keras.optimizers.Adam(0.01)।\n(c) model.predict(np.array([[37.0]]))।\nअपेक्षित: 1.8 × 37 + 32 = 66.6 + 32 = 98.6 °F (model इसके बहुत पास मान देगा)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: Neural networks are often called 'black boxes'. Why is this a problem for a bank using one to approve loans, and what can be done?",
+    "hi": "चिंतन: न्यूरल नेटवर्क को प्रायः 'black box' कहा जाता है। ऋण स्वीकृति के लिए इसका उपयोग करने वाले बैंक के लिए यह समस्या क्यों है, और क्या किया जा सकता है?"
+   },
+   "a": {
+    "en": "Problem: with thousands of weights, the bank cannot easily explain why a person was refused; hidden bias against some groups may go unnoticed; customers cannot challenge an unclear decision.\nSolutions: use explainable-AI methods that show which features mattered most; test the model for fairness across groups; keep a human officer to review rejections; use simpler models where explanation is legally required; give customers a clear reason and a way to appeal.",
+    "hi": "समस्या: हज़ारों weights होने से बैंक आसानी से नहीं समझा सकता कि किसी व्यक्ति को क्यों मना किया गया; कुछ समूहों के विरुद्ध छिपा पक्षपात अनदेखा रह सकता है; ग्राहक अस्पष्ट निर्णय को चुनौती नहीं दे सकते।\nउपाय: explainable-AI तरीके अपनाएँ जो दिखाएँ कि कौन-से features सबसे महत्वपूर्ण थे; समूहों में निष्पक्षता के लिए model जाँचें; अस्वीकृतियों की समीक्षा के लिए मानव अधिकारी रखें; जहाँ क़ानूनन व्याख्या ज़रूरी हो वहाँ सरल model लें; ग्राहकों को स्पष्ट कारण और अपील का रास्ता दें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity: Using Teachable Machine or Machine Learning for Kids, train an image model with two classes (for example 'mask' and 'no mask', or 'ripe tomato' and 'unripe tomato') using 10 images per class, then 50 per class. Record the confidence on 5 new test images each time. What do you conclude?",
+    "hi": "गतिविधि: Teachable Machine या Machine Learning for Kids से दो वर्गों (जैसे 'मास्क' और 'बिना मास्क', या 'पका टमाटर' और 'कच्चा टमाटर') वाला image model पहले हर वर्ग के 10 चित्रों से, फिर 50 चित्रों से प्रशिक्षित करें। हर बार 5 नए परीक्षण चित्रों पर विश्वास दर्ज करें। आप क्या निष्कर्ष निकालते हैं?"
+   },
+   "a": {
+    "en": "Typical result: with 10 images the model is unsure or wrong on new images taken in different light or backgrounds; with 50 varied images the confidence is higher and more predictions are right.\nConclusion: neural networks need enough and varied training data; quality and variety of data matter as much as the network itself. Also, do not upload photos of other people without their permission.",
+    "hi": "सामान्य परिणाम: 10 चित्रों से model अलग रोशनी या पृष्ठभूमि वाले नए चित्रों पर अनिश्चित या ग़लत रहता है; 50 विविध चित्रों से विश्वास अधिक होता है और अधिक अनुमान सही होते हैं।\nनिष्कर्ष: न्यूरल नेटवर्क को पर्याप्त और विविध training डेटा चाहिए; डेटा की गुणवत्ता और विविधता उतनी ही ज़रूरी है जितना नेटवर्क। साथ ही, दूसरों की फ़ोटो उनकी अनुमति के बिना अपलोड न करें।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A neural network is a layered set of artificial neurons, loosely inspired by the brain, that learns patterns from data.",
+   "Layers: input (receives features), hidden (learn patterns) and output (gives prediction). Two or more hidden layers make a deep neural network.",
+   "Seven components: neurons, weights, bias, activation function, connections, learning rule and propagation functions.",
+   "Each neuron computes z = Σ wi xi + b and output = f(z).",
+   "Activation functions add non-linearity: step (0/1), sigmoid (0 to 1), tanh (−1 to 1), ReLU max(0, z), softmax (probabilities), linear (regression).",
+   "Forward propagation passes values layer by layer to produce a prediction.",
+   "Training: loss function (e.g. MSE) measures error; backpropagation finds gradients; gradient descent updates weights; repeat for many epochs.",
+   "Learning rate sets the step size; too large overshoots, too small is slow.",
+   "A perceptron (Rosenblatt, 1958) can learn AND and OR but not XOR; hidden layers solve XOR.",
+   "Types: perceptron, FFNN/MLP, CNN (images), RNN and LSTM (sequences), GAN (generating data), transformer (language models).",
+   "Practicals: Machine Learning for Kids, TensorFlow Playground, a TensorFlow model that learns F = 1.8C + 32, and a Keras Iris classifier.",
+   "Neural networks power healthcare, agriculture, language tools, finance and industry.",
+   "Concerns: black-box decisions, bias, privacy, deepfakes, energy use and job changes; use them responsibly."
+  ],
+  "hi": [
+   "न्यूरल नेटवर्क artificial neurons का परतदार समूह है, जो मोटे तौर पर मस्तिष्क से प्रेरित है और डेटा से पैटर्न सीखता है।",
+   "परतें: input (features लेती है), hidden (पैटर्न सीखती हैं) और output (अनुमान देती है)। दो या अधिक hidden layers से deep neural network बनता है।",
+   "सात घटक: न्यूरॉन, weights, bias, activation function, connections, learning rule और propagation functions।",
+   "हर न्यूरॉन z = Σ wi xi + b और आउटपुट = f(z) निकालता है।",
+   "Activation functions अरैखिकता जोड़ते हैं: step (0/1), sigmoid (0 से 1), tanh (−1 से 1), ReLU max(0, z), softmax (संभावनाएँ), linear (regression)।",
+   "Forward propagation मानों को परत-दर-परत भेजकर अनुमान बनाता है।",
+   "Training: loss function (जैसे MSE) त्रुटि मापता है; backpropagation gradients निकालता है; gradient descent weights अपडेट करता है; कई epochs तक दोहराएँ।",
+   "Learning rate कदम का आकार तय करता है; बहुत बड़ा आगे निकल जाता है, बहुत छोटा धीमा है।",
+   "परसेप्ट्रॉन (रोज़ेनब्लैट, 1958) AND और OR सीख सकता है पर XOR नहीं; hidden layers XOR हल करती हैं।",
+   "प्रकार: perceptron, FFNN/MLP, CNN (चित्र), RNN और LSTM (क्रम), GAN (डेटा बनाना), transformer (भाषा मॉडल)।",
+   "प्रैक्टिकल: Machine Learning for Kids, TensorFlow Playground, F = 1.8C + 32 सीखने वाला TensorFlow model, और Keras Iris classifier।",
+   "न्यूरल नेटवर्क स्वास्थ्य, कृषि, भाषा टूल, वित्त और उद्योग को शक्ति देते हैं।",
+   "चिंताएँ: black-box निर्णय, पक्षपात, निजता, deepfake, ऊर्जा उपयोग और रोज़गार में बदलाव; इनका ज़िम्मेदारी से उपयोग करें।"
+  ]
+ }
+}

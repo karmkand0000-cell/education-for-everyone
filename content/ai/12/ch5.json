@@ -1,0 +1,2084 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "12",
+ "id": "ch5",
+ "intro": {
+  "en": "Every UPI payment, train booking, map search and video you watch adds to a giant pile of data. This chapter explains what makes data 'big', its types and its 6 Vs, the advantages and dangers of big data, how big data analytics works step by step, the four types of analytics, the tools used (Hadoop, Spark, NoSQL), how continuous data streams are mined in real time, and where the field is heading. You will also practise with Orange and with Python pandas on a dataset of 600 rows.",
+  "hi": "हर UPI भुगतान, ट्रेन बुकिंग, मैप सर्च और आपका देखा हर वीडियो डेटा के एक विशाल ढेर में जुड़ता है। यह अध्याय समझाता है कि डेटा 'बिग' कब बनता है, उसके प्रकार और 6 V, बिग डेटा के लाभ और ख़तरे, बिग डेटा एनालिटिक्स चरण-दर-चरण कैसे काम करता है, एनालिटिक्स के चार प्रकार, प्रयुक्त टूल (Hadoop, Spark, NoSQL), लगातार डेटा स्ट्रीम का वास्तविक समय में खनन कैसे होता है, और यह क्षेत्र किस ओर जा रहा है। आप Orange और Python pandas से 600 पंक्तियों वाले डेटासेट पर अभ्यास भी करेंगे।"
+ },
+ "learn": {
+  "en": [
+   "The difference between small data and big data, and the three sources of big data",
+   "Why big data grew: Moore's Law, mobile computing, social networking, cloud computing",
+   "Structured, semi-structured and unstructured data with examples",
+   "The 6 Vs: Volume, Velocity, Variety, Veracity, Value, Variability, and storage units KB to ZB",
+   "Advantages and disadvantages of big data, including privacy laws",
+   "What data analytics and big data analytics are, and the four working steps",
+   "Batch versus stream processing, and how Hadoop, MapReduce and Spark spread work across machines",
+   "Descriptive, diagnostic, predictive and prescriptive analytics",
+   "Mining data streams: windows, sampling, summaries, concept drift, real-time alerts",
+   "Future trends and practicals in Orange and Python pandas"
+  ],
+  "hi": [
+   "स्मॉल डेटा और बिग डेटा का अंतर, और बिग डेटा के तीन स्रोत",
+   "बिग डेटा क्यों बढ़ा: मूर का नियम, मोबाइल कंप्यूटिंग, सोशल नेटवर्किंग, क्लाउड कंप्यूटिंग",
+   "उदाहरणों सहित स्ट्रक्चर्ड, सेमी-स्ट्रक्चर्ड और अनस्ट्रक्चर्ड डेटा",
+   "6 V: Volume, Velocity, Variety, Veracity, Value, Variability, और KB से ZB तक storage इकाइयाँ",
+   "बिग डेटा के लाभ और हानियाँ, निजता क़ानूनों सहित",
+   "डेटा एनालिटिक्स और बिग डेटा एनालिटिक्स क्या हैं, और काम के चार चरण",
+   "Batch बनाम stream processing, और Hadoop, MapReduce व Spark काम को मशीनों में कैसे बाँटते हैं",
+   "वर्णनात्मक, निदानात्मक, भविष्यसूचक और निर्देशात्मक एनालिटिक्स",
+   "डेटा स्ट्रीम माइनिंग: window, sampling, सारांश, concept drift, वास्तविक समय चेतावनी",
+   "भविष्य के रुझान और Orange व Python pandas में प्रैक्टिकल"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "5.1 From small data to big data",
+    "hi": "5.1 स्मॉल डेटा से बिग डेटा तक"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think of a small tea stall near your school. The owner writes in a notebook how many cups of tea and how many samosas he sells each day. At the end of the week he looks at the notebook and decides how much milk and potatoes to buy. This is small data: a small amount of information that one person can read, understand and act on with a pen, a notebook or a simple spreadsheet.",
+      "hi": "अपने स्कूल के पास की एक छोटी चाय की दुकान के बारे में सोचिए। दुकानदार एक कॉपी में लिखता है कि हर दिन कितने कप चाय और कितने समोसे बिके। हफ़्ते के अंत में वह कॉपी देखकर तय करता है कि कितना दूध और कितने आलू ख़रीदने हैं। यह स्मॉल डेटा (small data) है: थोड़ी-सी जानकारी जिसे एक व्यक्ति पेन, कॉपी या साधारण spreadsheet से पढ़, समझ और उपयोग कर सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Now think of a food-delivery app that works in hundreds of Indian cities. Every second, lakhs of people open the app, search for dishes, look at photos, place orders, pay by UPI, track the delivery partner on a map and write reviews. The app also receives GPS signals from delivery bikes and weather information. No notebook, and not even one ordinary computer, can store and study all this. This is big data.",
+      "hi": "अब एक फ़ूड-डिलीवरी ऐप के बारे में सोचिए जो भारत के सैकड़ों शहरों में चलता है। हर सेकंड लाखों लोग ऐप खोलते हैं, व्यंजन खोजते हैं, फ़ोटो देखते हैं, ऑर्डर देते हैं, UPI से भुगतान करते हैं, नक्शे पर डिलीवरी पार्टनर को ट्रैक करते हैं और रिव्यू लिखते हैं। ऐप को डिलीवरी बाइक से GPS सिग्नल और मौसम की जानकारी भी मिलती है। कोई कॉपी, और एक साधारण कंप्यूटर भी, यह सब स्टोर करके उसका अध्ययन नहीं कर सकता। यही बिग डेटा है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Small data",
+       "hi": "स्मॉल डेटा (Small data)"
+      },
+      "text": {
+       "en": "Data that is small enough in size and simple enough in form for people to access, understand and use directly, often with everyday tools such as a notebook or a spreadsheet.",
+       "hi": "ऐसा डेटा जो आकार में इतना छोटा और रूप में इतना सरल हो कि लोग उसे सीधे देख, समझ और उपयोग कर सकें, अक्सर कॉपी या spreadsheet जैसे रोज़मर्रा के टूल से।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Big data",
+       "hi": "बिग डेटा (Big data)"
+      },
+      "text": {
+       "en": "Extremely large and complex collections of data, often arriving very fast and in many forms, that ordinary software and databases cannot store, manage or analyse efficiently. Special tools and methods are needed to handle it and to find useful patterns in it.",
+       "hi": "डेटा का अत्यंत विशाल और जटिल संग्रह, जो अक्सर बहुत तेज़ी से और कई रूपों में आता है, और जिसे साधारण software और database कुशलता से स्टोर, प्रबंधित या विश्लेषित नहीं कर पाते। इसे सँभालने और इसमें उपयोगी पैटर्न खोजने के लिए विशेष टूल और तरीकों की ज़रूरत होती है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: big data is not only about size. Data becomes 'big' when its size, its speed of arrival or its variety of forms is too much for traditional tools.",
+      "hi": "याद रखें: बिग डेटा केवल आकार की बात नहीं है। डेटा तब 'बिग' बनता है जब उसका आकार, उसके आने की गति या उसके रूपों की विविधता पारंपरिक टूल के लिए बहुत ज़्यादा हो जाए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Where does big data come from? It mainly comes from three kinds of sources.",
+      "hi": "बिग डेटा कहाँ से आता है? यह मुख्य रूप से तीन प्रकार के स्रोतों से आता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Source",
+        "What it means",
+        "Indian examples"
+       ],
+       "hi": [
+        "स्रोत",
+        "अर्थ",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Transactional data",
+         "Records created whenever people buy, sell, pay, book or register something",
+         "UPI payments, IRCTC ticket bookings, online shopping orders, bank ATM withdrawals"
+        ],
+        [
+         "Machine data",
+         "Data produced automatically by sensors, devices, machines and computer logs",
+         "Smart electricity meters, FASTag toll readers, weather stations of IMD, traffic cameras, fitness bands, satellite images"
+        ],
+        [
+         "Social data",
+         "Content and activity that people share on social media and the web",
+         "Posts, likes, comments, shared videos and photos, search queries, product reviews"
+        ]
+       ],
+       "hi": [
+        [
+         "लेन-देन डेटा (Transactional data)",
+         "जब भी लोग कुछ ख़रीदते, बेचते, भुगतान करते, बुक करते या पंजीकरण करते हैं, तब बनने वाले रिकॉर्ड",
+         "UPI भुगतान, IRCTC टिकट बुकिंग, ऑनलाइन शॉपिंग ऑर्डर, बैंक ATM से निकासी"
+        ],
+        [
+         "मशीन डेटा (Machine data)",
+         "sensor, उपकरण, मशीनें और कंप्यूटर log अपने-आप जो डेटा बनाते हैं",
+         "स्मार्ट बिजली मीटर, FASTag टोल रीडर, IMD के मौसम केंद्र, ट्रैफ़िक कैमरे, फ़िटनेस बैंड, उपग्रह चित्र"
+        ],
+        [
+         "सोशल डेटा (Social data)",
+         "लोग सोशल मीडिया और वेब पर जो सामग्री और गतिविधि साझा करते हैं",
+         "पोस्ट, लाइक, कमेंट, शेयर किए वीडियो और फ़ोटो, सर्च क्वेरी, प्रोडक्ट रिव्यू"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Classify each as small data or big data: (a) a class register of attendance of 40 students; (b) all the readings sent every 15 minutes by smart electricity meters of a whole state; (c) marks of your class in a unit test; (d) every search typed into a national search engine in a day.",
+       "hi": "हर एक को स्मॉल डेटा या बिग डेटा में बाँटिए: (a) 40 विद्यार्थियों की उपस्थिति का कक्षा रजिस्टर; (b) पूरे राज्य के स्मार्ट बिजली मीटरों द्वारा हर 15 मिनट में भेजी गई सभी रीडिंग; (c) यूनिट टेस्ट में आपकी कक्षा के अंक; (d) एक दिन में किसी राष्ट्रीय सर्च इंजन पर टाइप की गई हर खोज।"
+      },
+      "a": {
+       "en": "(a) Small data: 40 rows, one teacher can read it.\n(b) Big data: crores of readings arriving all the time (huge volume and high velocity).\n(c) Small data: a simple table for one class.\n(d) Big data: enormous volume, arriving every second, in free text form.",
+       "hi": "(a) स्मॉल डेटा: 40 पंक्तियाँ, एक शिक्षक पढ़ सकता है।\n(b) बिग डेटा: लगातार आती करोड़ों रीडिंग (भारी मात्रा और तेज़ गति)।\n(c) स्मॉल डेटा: एक कक्षा की सरल तालिका।\n(d) बिग डेटा: विशाल मात्रा, हर सेकंड आती, मुक्त टेक्स्ट रूप में।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.2 Why is big data important, and why did it grow so fast?",
+    "hi": "5.2 बिग डेटा क्यों महत्वपूर्ण है, और यह इतनी तेज़ी से क्यों बढ़ा?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data on its own is like raw cotton: it becomes useful only after it is processed. Big data is important because, when studied properly, it shows patterns that no person could notice. Video and shopping apps use what millions of people watched or bought to recommend what you may like next. Weather scientists combine satellite images, radar and thousands of weather stations to warn coastal districts days before a cyclone. Hospitals study many patient records to spot a disease outbreak early. Banks study crores of payments to catch fraud in seconds.",
+      "hi": "डेटा अपने-आप में कच्ची कपास जैसा है: प्रोसेस होने के बाद ही उपयोगी बनता है। बिग डेटा इसलिए महत्वपूर्ण है क्योंकि सही ढंग से अध्ययन करने पर यह ऐसे पैटर्न दिखाता है जिन्हें कोई इंसान नहीं देख सकता। वीडियो और शॉपिंग ऐप करोड़ों लोगों ने क्या देखा या ख़रीदा, इसके आधार पर सुझाते हैं कि आपको आगे क्या पसंद आ सकता है। मौसम वैज्ञानिक उपग्रह चित्र, रडार और हज़ारों मौसम केंद्रों के डेटा को मिलाकर चक्रवात से कई दिन पहले तटीय ज़िलों को चेतावनी देते हैं। अस्पताल कई मरीज़ों के रिकॉर्ड पढ़कर किसी बीमारी के फैलाव को जल्दी पहचानते हैं। बैंक करोड़ों भुगतानों का अध्ययन करके सेकंडों में धोखाधड़ी पकड़ते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "The amount of data in the world has grown enormously in the last two decades. Four big global trends made this possible:",
+      "hi": "पिछले दो दशकों में दुनिया में डेटा की मात्रा बहुत तेज़ी से बढ़ी है। चार बड़े वैश्विक रुझानों ने इसे संभव बनाया:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Moore's Law: Gordon Moore observed that the number of transistors on a chip roughly doubles about every two years. Computers kept getting faster and cheaper, and storage became cheap, so it became practical to keep and process huge datasets.",
+       "Mobile computing: smartphones put a computer, camera, GPS and internet connection in crores of pockets. Data is now collected from anywhere, at any time, in real time.",
+       "Social networking: social media platforms let billions of people create and share posts, photos and videos every day, producing a giant amount of user-generated data.",
+       "Cloud computing: companies can rent storage and computing power over the internet instead of buying their own servers. This lowers the cost of handling big data and lets even small startups analyse large datasets."
+      ],
+      "hi": [
+       "मूर का नियम (Moore's Law): गॉर्डन मूर ने देखा कि एक chip पर transistors की संख्या लगभग हर दो साल में दोगुनी हो जाती है। कंप्यूटर लगातार तेज़ और सस्ते होते गए, storage भी सस्ता हुआ, इसलिए विशाल डेटासेट रखना और प्रोसेस करना व्यावहारिक हो गया।",
+       "मोबाइल कंप्यूटिंग (Mobile computing): स्मार्टफ़ोन ने करोड़ों जेबों में कंप्यूटर, कैमरा, GPS और इंटरनेट रख दिया। अब डेटा कहीं से भी, कभी भी, वास्तविक समय में इकट्ठा होता है।",
+       "सोशल नेटवर्किंग (Social networking): सोशल मीडिया प्लेटफ़ॉर्म पर अरबों लोग हर दिन पोस्ट, फ़ोटो और वीडियो बनाते और साझा करते हैं, जिससे उपयोगकर्ताओं द्वारा बनाया गया विशाल डेटा बनता है।",
+       "क्लाउड कंप्यूटिंग (Cloud computing): कंपनियाँ अपने सर्वर ख़रीदने की जगह इंटरनेट पर storage और computing power किराये पर ले सकती हैं। इससे बिग डेटा सँभालने की लागत घटती है और छोटे startup भी बड़े डेटासेट का विश्लेषण कर पाते हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "In India, cheap mobile data, UPI, Aadhaar-based services, DigiLocker and FASTag have added crores of digital records every day. That is why big data skills are in demand in Indian banks, railways, hospitals, agriculture and government departments.",
+      "hi": "भारत में सस्ते मोबाइल डेटा, UPI, आधार-आधारित सेवाओं, DigiLocker और FASTag ने हर दिन करोड़ों डिजिटल रिकॉर्ड जोड़े हैं। इसीलिए भारतीय बैंकों, रेलवे, अस्पतालों, कृषि और सरकारी विभागों में बिग डेटा कौशल की माँग है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.3 Types of big data: structured, semi-structured and unstructured",
+    "hi": "5.3 बिग डेटा के प्रकार: स्ट्रक्चर्ड, सेमी-स्ट्रक्चर्ड और अनस्ट्रक्चर्ड"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Big data is grouped into three types according to how organised it is.",
+      "hi": "बिग डेटा को इस आधार पर तीन प्रकारों में बाँटा जाता है कि वह कितना व्यवस्थित है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Structured data",
+       "hi": "स्ट्रक्चर्ड डेटा (Structured data)"
+      },
+      "text": {
+       "en": "Data organised in a fixed format of rows and columns with a defined data type for each column, so it fits neatly into tables, spreadsheets and relational databases and can be searched with SQL. It is mostly quantitative.",
+       "hi": "पंक्तियों और स्तंभों के एक निश्चित ढाँचे में व्यवस्थित डेटा, जिसमें हर स्तंभ का data type तय होता है, इसलिए यह तालिकाओं, spreadsheet और relational database में ठीक से बैठता है और SQL से खोजा जा सकता है। यह अधिकतर मात्रात्मक (quantitative) होता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Semi-structured data",
+       "hi": "सेमी-स्ट्रक्चर्ड डेटा (Semi-structured data)"
+      },
+      "text": {
+       "en": "Data that does not sit in a fixed table but still carries tags, keys or markers that give it some organisation. It mixes quantitative and qualitative parts. Examples: JSON, XML, HTML, CSV files and email (fixed fields like To, From, Date plus a free-text body).",
+       "hi": "ऐसा डेटा जो किसी निश्चित तालिका में नहीं होता, पर उसमें tag, key या चिह्न होते हैं जो उसे कुछ व्यवस्था देते हैं। इसमें मात्रात्मक और गुणात्मक दोनों भाग होते हैं। उदाहरण: JSON, XML, HTML, CSV फ़ाइलें और ईमेल (To, From, Date जैसे तय क्षेत्र और साथ में मुक्त टेक्स्ट)।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Unstructured data",
+       "hi": "अनस्ट्रक्चर्ड डेटा (Unstructured data)"
+      },
+      "text": {
+       "en": "Data with no predefined structure or consistent data model. It cannot be placed directly in rows and columns. Examples: photos, audio, videos, PDFs, scanned documents, social media posts and the text of emails. Most of the world's data today is unstructured.",
+       "hi": "ऐसा डेटा जिसका कोई पहले से तय ढाँचा या एक-सा data model नहीं होता। इसे सीधे पंक्तियों और स्तंभों में नहीं रखा जा सकता। उदाहरण: फ़ोटो, ऑडियो, वीडियो, PDF, स्कैन किए दस्तावेज़, सोशल मीडिया पोस्ट और ईमेल का टेक्स्ट। आज दुनिया का अधिकांश डेटा अनस्ट्रक्चर्ड है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "Structured",
+        "Semi-structured",
+        "Unstructured"
+       ],
+       "hi": [
+        "विशेषता",
+        "स्ट्रक्चर्ड",
+        "सेमी-स्ट्रक्चर्ड",
+        "अनस्ट्रक्चर्ड"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data model",
+         "Fixed schema (columns decided in advance)",
+         "Flexible; tags or keys describe the data",
+         "No fixed model"
+        ],
+        [
+         "Organisation",
+         "Rows and columns",
+         "Hierarchy of keys, tags, nested items",
+         "Free form"
+        ],
+        [
+         "How easy to search",
+         "Very easy (SQL queries)",
+         "Moderate (needs parsing)",
+         "Hard (needs AI such as computer vision or NLP)"
+        ],
+        [
+         "Storage",
+         "Relational databases (MySQL), spreadsheets",
+         "NoSQL document stores (MongoDB), files",
+         "Data lakes, file systems, object storage"
+        ],
+        [
+         "Examples",
+         "Bank transactions, student marks table, product catalogue, customer records",
+         "JSON from a weather API, XML, HTML pages, CSV, emails",
+         "Selfies, CCTV video, voice notes, PDFs, tweets, X-ray images"
+        ]
+       ],
+       "hi": [
+        [
+         "Data model",
+         "निश्चित schema (स्तंभ पहले से तय)",
+         "लचीला; tag या key डेटा का वर्णन करते हैं",
+         "कोई निश्चित model नहीं"
+        ],
+        [
+         "व्यवस्था",
+         "पंक्तियाँ और स्तंभ",
+         "key, tag और भीतर बसे (nested) आइटम का क्रम",
+         "मुक्त रूप"
+        ],
+        [
+         "खोजना कितना आसान",
+         "बहुत आसान (SQL query)",
+         "मध्यम (parsing चाहिए)",
+         "कठिन (computer vision या NLP जैसा AI चाहिए)"
+        ],
+        [
+         "Storage",
+         "Relational database (MySQL), spreadsheet",
+         "NoSQL document store (MongoDB), फ़ाइलें",
+         "Data lake, file system, object storage"
+        ],
+        [
+         "उदाहरण",
+         "बैंक लेन-देन, विद्यार्थियों के अंकों की तालिका, उत्पाद सूची, ग्राहक रिकॉर्ड",
+         "मौसम API से JSON, XML, HTML पेज, CSV, ईमेल",
+         "सेल्फ़ी, CCTV वीडियो, वॉइस नोट, PDF, ट्वीट, एक्स-रे चित्र"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a small piece of semi-structured data in JSON form, such as a weather app might receive. Notice the keys (\"city\", \"temp_c\") that label each value, and that one record can hold a list inside it:",
+      "hi": "यह JSON रूप में सेमी-स्ट्रक्चर्ड डेटा का एक छोटा टुकड़ा है, जैसा किसी मौसम ऐप को मिल सकता है। ध्यान दीजिए कि key (\"city\", \"temp_c\") हर मान को नाम देती हैं, और एक रिकॉर्ड के अंदर एक सूची भी हो सकती है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "{\n  \"city\": \"Jaipur\",\n  \"temp_c\": 31.5,\n  \"humidity\": 42,\n  \"alerts\": [\"heatwave\"],\n  \"updated\": \"14:00\"\n}",
+      "hi": "{\n  \"city\": \"Jaipur\",\n  \"temp_c\": 31.5,\n  \"humidity\": 42,\n  \"alerts\": [\"heatwave\"],\n  \"updated\": \"14:00\"\n}"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A hospital has: (i) a table of patient ID, age and blood group; (ii) doctors' handwritten notes scanned as images; (iii) lab reports exported as XML. Name the type of each.",
+       "hi": "एक अस्पताल के पास है: (i) मरीज़ ID, आयु और रक्त समूह की तालिका; (ii) डॉक्टरों के हाथ से लिखे नोट जो चित्र के रूप में स्कैन हैं; (iii) XML में निकाली गई लैब रिपोर्ट। हर एक का प्रकार बताइए।"
+      },
+      "a": {
+       "en": "(i) Structured: fixed columns and rows.\n(ii) Unstructured: images with no fixed model; needs OCR/computer vision to read.\n(iii) Semi-structured: XML tags label each value but it is not a fixed table.",
+       "hi": "(i) स्ट्रक्चर्ड: निश्चित स्तंभ और पंक्तियाँ।\n(ii) अनस्ट्रक्चर्ड: बिना निश्चित model वाले चित्र; पढ़ने के लिए OCR/computer vision चाहिए।\n(iii) सेमी-स्ट्रक्चर्ड: XML tag हर मान को नाम देते हैं पर यह निश्चित तालिका नहीं है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.4 Characteristics of big data: the 3 Vs and the 6 Vs",
+    "hi": "5.4 बिग डेटा की विशेषताएँ: 3 V और 6 V"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Big data is usually described by words that begin with V. The first three (Volume, Velocity, Variety) are the classic 3 Vs. Three more (Veracity, Value, Variability) make the 6 Vs used in the CBSE handbook. (Some books stop at 5 Vs without Variability; learn all six.)",
+      "hi": "बिग डेटा का वर्णन प्रायः V से शुरू होने वाले शब्दों से किया जाता है। पहले तीन (Volume, Velocity, Variety) पुराने 3 V हैं। तीन और (Veracity, Value, Variability) मिलकर CBSE हैंडबुक के 6 V बनाते हैं। (कुछ किताबें Variability के बिना 5 V तक रुकती हैं; आप छहों सीखें।)"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "V",
+        "Meaning",
+        "Example"
+       ],
+       "hi": [
+        "V",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Volume",
+         "The sheer amount of data, measured in terabytes, petabytes or more",
+         "Crores of UPI transactions every day; hours of video uploaded to video sites every minute"
+        ],
+        [
+         "Velocity",
+         "The speed at which data is created, delivered and must be analysed",
+         "Search engines handle tens of thousands of queries every second; stock prices change many times a second; Tatkal booking rush at 10 a.m."
+        ],
+        [
+         "Variety",
+         "The many forms of data: numbers, text, images, audio, video, sensor readings; structured, semi-structured and unstructured",
+         "A shopping app holds order tables, product photos, review text and chat voice notes together"
+        ],
+        [
+         "Veracity",
+         "Trustworthiness: accuracy, consistency and quality of the data",
+         "Fake reviews, duplicate entries, a faulty sensor sending 999 °C; data must be cleaned before use"
+        ],
+        [
+         "Value",
+         "The useful insight or benefit that can be extracted; the most important V, because without value the other Vs are useless",
+         "Using crop and weather data to advise farmers on the best sowing date"
+        ],
+        [
+         "Variability",
+         "How the meaning, context or flow of data keeps changing",
+         "The word 'cool' can praise or describe weather; social media traffic jumps during a cricket final and falls after it"
+        ]
+       ],
+       "hi": [
+        [
+         "Volume (मात्रा)",
+         "डेटा की विशाल मात्रा, जो टेराबाइट, पेटाबाइट या उससे अधिक में मापी जाती है",
+         "हर दिन करोड़ों UPI लेन-देन; वीडियो साइटों पर हर मिनट घंटों का वीडियो अपलोड"
+        ],
+        [
+         "Velocity (गति)",
+         "डेटा बनने, पहुँचने और उसका विश्लेषण होने की गति",
+         "सर्च इंजन हर सेकंड हज़ारों क्वेरी सँभालते हैं; शेयर के भाव एक सेकंड में कई बार बदलते हैं; सुबह 10 बजे तत्काल बुकिंग की भीड़"
+        ],
+        [
+         "Variety (विविधता)",
+         "डेटा के कई रूप: संख्याएँ, टेक्स्ट, चित्र, ऑडियो, वीडियो, sensor रीडिंग; स्ट्रक्चर्ड, सेमी-स्ट्रक्चर्ड और अनस्ट्रक्चर्ड",
+         "एक शॉपिंग ऐप में ऑर्डर की तालिकाएँ, उत्पाद के फ़ोटो, रिव्यू का टेक्स्ट और चैट के वॉइस नोट एक साथ"
+        ],
+        [
+         "Veracity (सत्यता)",
+         "विश्वसनीयता: डेटा की शुद्धता, एकरूपता और गुणवत्ता",
+         "नकली रिव्यू, दोहराई गई प्रविष्टियाँ, ख़राब sensor का 999 °C भेजना; उपयोग से पहले डेटा साफ़ करना ज़रूरी"
+        ],
+        [
+         "Value (मूल्य)",
+         "जो उपयोगी जानकारी या लाभ निकाला जा सके; सबसे महत्वपूर्ण V, क्योंकि मूल्य के बिना बाकी V बेकार हैं",
+         "फ़सल और मौसम के डेटा से किसानों को बुवाई की सबसे अच्छी तारीख़ सुझाना"
+        ],
+        [
+         "Variability (परिवर्तनशीलता)",
+         "डेटा का अर्थ, संदर्भ या प्रवाह कैसे बदलता रहता है",
+         "'cool' शब्द तारीफ़ भी हो सकता है और मौसम का वर्णन भी; क्रिकेट फ़ाइनल के दौरान सोशल मीडिया ट्रैफ़िक उछलता है और बाद में गिर जाता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Memory trick: 'Very Vast Varied Vouchable Valuable Volatile' = Velocity, Volume, Variety, Veracity, Value, Variability. Do not confuse Variety (many forms) with Variability (changing meaning or flow).",
+      "hi": "याद रखने की तरकीब: पहले तीन V डेटा के 'आकार, रफ़्तार, रूप' बताते हैं; अगले तीन 'भरोसा, फ़ायदा, बदलाव'। Variety (कई रूप) को Variability (बदलता अर्थ या प्रवाह) से न मिलाएँ।"
+     }
+    },
+    {
+     "p": {
+      "en": "To feel the size of big data, learn the units of storage. Each unit is about 1,000 times (exactly 1,024 times in binary) the previous one.",
+      "hi": "बिग डेटा के आकार को महसूस करने के लिए storage की इकाइयाँ सीखिए। हर इकाई पिछली से लगभग 1,000 गुना (binary में ठीक 1,024 गुना) होती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Unit",
+        "Approx. size",
+        "Feel of it"
+       ],
+       "hi": [
+        "इकाई",
+        "लगभग आकार",
+        "अंदाज़ा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Kilobyte (KB)",
+         "1,000 bytes",
+         "A short text message or a small UPI record"
+        ],
+        [
+         "Megabyte (MB)",
+         "1,000 KB",
+         "A phone photo is a few MB"
+        ],
+        [
+         "Gigabyte (GB)",
+         "1,000 MB",
+         "A full-length HD film is a few GB"
+        ],
+        [
+         "Terabyte (TB)",
+         "1,000 GB",
+         "A large laptop hard disk"
+        ],
+        [
+         "Petabyte (PB)",
+         "1,000 TB",
+         "Data of a big company's data centre"
+        ],
+        [
+         "Exabyte (EB)",
+         "1,000 PB",
+         "Global internet traffic over a short period"
+        ],
+        [
+         "Zettabyte (ZB)",
+         "1,000 EB",
+         "Used to measure all the data created in the world in a year"
+        ]
+       ],
+       "hi": [
+        [
+         "किलोबाइट (KB)",
+         "1,000 byte",
+         "एक छोटा टेक्स्ट संदेश या छोटा UPI रिकॉर्ड"
+        ],
+        [
+         "मेगाबाइट (MB)",
+         "1,000 KB",
+         "फ़ोन की एक फ़ोटो कुछ MB की"
+        ],
+        [
+         "गीगाबाइट (GB)",
+         "1,000 MB",
+         "एक पूरी HD फ़िल्म कुछ GB की"
+        ],
+        [
+         "टेराबाइट (TB)",
+         "1,000 GB",
+         "एक बड़े लैपटॉप की हार्ड डिस्क"
+        ],
+        [
+         "पेटाबाइट (PB)",
+         "1,000 TB",
+         "किसी बड़ी कंपनी के data centre का डेटा"
+        ],
+        [
+         "एक्साबाइट (EB)",
+         "1,000 PB",
+         "थोड़े समय का वैश्विक इंटरनेट ट्रैफ़िक"
+        ],
+        [
+         "ज़ेटाबाइट (ZB)",
+         "1,000 EB",
+         "पूरी दुनिया में एक साल में बनने वाले डेटा को मापने में प्रयोग"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Suppose a payments company stores 1 crore (10 million) transactions a day and each record takes about 1 KB. Roughly how much storage does it need per day and per year?",
+       "hi": "मान लीजिए एक भुगतान कंपनी हर दिन 1 करोड़ (1 करोड़ = 10 million) लेन-देन स्टोर करती है और हर रिकॉर्ड लगभग 1 KB लेता है। उसे प्रति दिन और प्रति वर्ष लगभग कितना storage चाहिए?"
+      },
+      "a": {
+       "en": "Per day: 10,000,000 × 1 KB = 10,000,000 KB.\n10,000,000 KB ÷ 1,000 = 10,000 MB ÷ 1,000 = about 10 GB per day.\nPer year: 10 GB × 365 = 3,650 GB ≈ 3.65 TB.\nAnd this is only the plain records; with backups (copies), logs and fraud-check data the real figure is many times larger. This is the Volume V.",
+       "hi": "प्रति दिन: 10,000,000 × 1 KB = 10,000,000 KB।\n10,000,000 KB ÷ 1,000 = 10,000 MB ÷ 1,000 = लगभग 10 GB प्रति दिन।\nप्रति वर्ष: 10 GB × 365 = 3,650 GB ≈ 3.65 TB।\nऔर यह केवल सादे रिकॉर्ड हैं; backup (प्रतियाँ), log और धोखाधड़ी-जाँच डेटा के साथ असली आँकड़ा कई गुना बड़ा होगा। यही Volume V है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Name the V in each case: (a) 40% of rows in a survey have missing ages; (b) a news site receives one lakh comments in the first ten minutes after a result; (c) analysing call records lets a telecom company reduce dropped calls; (d) sales data contains invoices, scanned bills and voice orders.",
+       "hi": "हर स्थिति में V बताइए: (a) एक सर्वे की 40% पंक्तियों में आयु नहीं है; (b) परिणाम के बाद पहले दस मिनट में एक न्यूज़ साइट को एक लाख कमेंट मिलते हैं; (c) कॉल रिकॉर्ड के विश्लेषण से टेलीकॉम कंपनी कॉल ड्रॉप घटाती है; (d) बिक्री डेटा में इनवॉइस, स्कैन किए बिल और वॉइस ऑर्डर हैं।"
+      },
+      "a": {
+       "en": "(a) Veracity (quality problem).\n(b) Velocity (speed of arrival), also Variability (sudden spike).\n(c) Value (useful benefit).\n(d) Variety (many forms).",
+       "hi": "(a) Veracity (गुणवत्ता की समस्या)।\n(b) Velocity (आने की गति), साथ में Variability (अचानक उछाल)।\n(c) Value (उपयोगी लाभ)।\n(d) Variety (कई रूप)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.5 Advantages and disadvantages of big data",
+    "hi": "5.5 बिग डेटा के लाभ और हानियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Big data brings many benefits, but it also brings real risks. A responsible data professional must understand both.",
+      "hi": "बिग डेटा कई लाभ लाता है, पर साथ में वास्तविक जोखिम भी। एक ज़िम्मेदार डेटा पेशेवर को दोनों समझने चाहिए।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Advantages",
+        "Explanation and example"
+       ],
+       "hi": [
+        "लाभ",
+        "व्याख्या और उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Enhanced decision making",
+         "Decisions are based on evidence, not guesses. A railway zone sees booking trends and adds coaches where waiting lists are long."
+        ],
+        [
+         "Improved efficiency and productivity",
+         "Finding waste and delays saves time and cost. A logistics company plans delivery routes that avoid traffic, saving fuel."
+        ],
+        [
+         "Better customer insights",
+         "Companies understand what people need and personalise offers, such as a music app making a playlist for your taste."
+        ],
+        [
+         "Competitive advantage",
+         "A company that reads trends early (for example, rising demand for millets) can act before rivals."
+        ],
+        [
+         "Innovation and growth",
+         "New products and services are born from data: crop-disease apps, health monitoring, smart traffic signals."
+        ]
+       ],
+       "hi": [
+        [
+         "बेहतर निर्णय (Enhanced decision making)",
+         "निर्णय अनुमान से नहीं, सबूत से होते हैं। एक रेलवे ज़ोन बुकिंग के रुझान देखकर वहाँ डिब्बे जोड़ता है जहाँ प्रतीक्षा सूची लंबी है।"
+        ],
+        [
+         "बेहतर दक्षता और उत्पादकता",
+         "बर्बादी और देरी पहचानने से समय और लागत बचती है। एक लॉजिस्टिक्स कंपनी ट्रैफ़िक से बचने वाले रास्ते तय करके ईंधन बचाती है।"
+        ],
+        [
+         "ग्राहकों की बेहतर समझ",
+         "कंपनियाँ समझती हैं कि लोगों को क्या चाहिए और ऑफ़र को व्यक्तिगत बनाती हैं, जैसे म्यूज़िक ऐप आपकी पसंद की प्लेलिस्ट बनाता है।"
+        ],
+        [
+         "प्रतिस्पर्धी बढ़त",
+         "जो कंपनी रुझान जल्दी पढ़ लेती है (जैसे मिलेट्स की बढ़ती माँग), वह प्रतिद्वंद्वियों से पहले कदम उठा सकती है।"
+        ],
+        [
+         "नवाचार और विकास",
+         "डेटा से नए उत्पाद और सेवाएँ जन्म लेते हैं: फ़सल-रोग ऐप, स्वास्थ्य निगरानी, स्मार्ट ट्रैफ़िक सिग्नल।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Disadvantages",
+        "Explanation and example"
+       ],
+       "hi": [
+        "हानियाँ",
+        "व्याख्या और उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Privacy and security concerns",
+         "Huge stores of personal data attract hackers. Breaches and misuse can harm people, for example leaked phone numbers used for scam calls."
+        ],
+        [
+         "Data quality issues",
+         "Data from many sources can contain errors, duplicates and bias, leading to wrong conclusions (the Veracity problem)."
+        ],
+        [
+         "Technical complexity",
+         "Handling big data needs specialised tools (Hadoop, Spark, NoSQL) and skilled people, who are in short supply."
+        ],
+        [
+         "Regulatory compliance",
+         "Organisations must follow data-protection laws such as India's Digital Personal Data Protection (DPDP) Act, 2023 and the European Union's GDPR, which require consent and careful handling."
+        ],
+        [
+         "Cost and resources",
+         "Storage, servers, cloud bills, electricity and expert salaries make big data expensive."
+        ]
+       ],
+       "hi": [
+        [
+         "निजता और सुरक्षा की चिंताएँ",
+         "निजी डेटा के विशाल भंडार हैकरों को आकर्षित करते हैं। डेटा लीक और दुरुपयोग लोगों को नुकसान पहुँचा सकता है, जैसे लीक हुए फ़ोन नंबरों से ठगी के कॉल।"
+        ],
+        [
+         "डेटा गुणवत्ता की समस्याएँ",
+         "कई स्रोतों के डेटा में ग़लतियाँ, दोहराव और पक्षपात हो सकता है, जिससे ग़लत निष्कर्ष निकलते हैं (Veracity की समस्या)।"
+        ],
+        [
+         "तकनीकी जटिलता",
+         "बिग डेटा सँभालने के लिए विशेष टूल (Hadoop, Spark, NoSQL) और कुशल लोग चाहिए, जो कम हैं।"
+        ],
+        [
+         "नियमों का पालन",
+         "संस्थाओं को डेटा-सुरक्षा क़ानूनों का पालन करना होता है, जैसे भारत का डिजिटल व्यक्तिगत डेटा संरक्षण (DPDP) अधिनियम, 2023 और यूरोपीय संघ का GDPR, जो सहमति और सावधानी से संभालना माँगते हैं।"
+        ],
+        [
+         "लागत और संसाधन",
+         "storage, सर्वर, क्लाउड के बिल, बिजली और विशेषज्ञों का वेतन बिग डेटा को महँगा बनाते हैं।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Safety for you: every app you use adds to big data. Give apps only the permissions they truly need, never share OTPs or passwords, and think before posting photos with your school name or location.",
+      "hi": "आपकी सुरक्षा के लिए: आप जो भी ऐप चलाते हैं, वह बिग डेटा में जुड़ता है। ऐप को केवल वही अनुमतियाँ दें जो सचमुच ज़रूरी हों, OTP या पासवर्ड कभी साझा न करें, और अपने स्कूल के नाम या लोकेशन वाली फ़ोटो पोस्ट करने से पहले सोचें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.6 What is data analytics and big data analytics?",
+    "hi": "5.6 डेटा एनालिटिक्स और बिग डेटा एनालिटिक्स क्या हैं?"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data analytics",
+       "hi": "डेटा एनालिटिक्स (Data analytics)"
+      },
+      "text": {
+       "en": "The process of examining data to find patterns, trends and answers to questions, and then using them to make decisions. It uses statistical analysis software, data visualisation tools and relational database management systems (RDBMS).",
+       "hi": "डेटा की जाँच करके पैटर्न, रुझान और प्रश्नों के उत्तर खोजने, और फिर उनसे निर्णय लेने की प्रक्रिया। इसमें statistical analysis software, data visualisation टूल और relational database management system (RDBMS) का उपयोग होता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Big data analytics",
+       "hi": "बिग डेटा एनालिटिक्स (Big data analytics)"
+      },
+      "text": {
+       "en": "The use of advanced analytic techniques (statistics, data mining, machine learning, distributed computing) on very large and diverse datasets, from terabytes to zettabytes, that contain structured, semi-structured and unstructured data, in order to uncover hidden patterns, correlations, trends and customer preferences.",
+       "hi": "बहुत बड़े और विविध डेटासेट (टेराबाइट से ज़ेटाबाइट तक), जिनमें स्ट्रक्चर्ड, सेमी-स्ट्रक्चर्ड और अनस्ट्रक्चर्ड डेटा हो, पर उन्नत विश्लेषण तकनीकों (statistics, data mining, machine learning, distributed computing) का उपयोग, ताकि छिपे पैटर्न, सहसंबंध, रुझान और ग्राहकों की पसंद सामने आएँ।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The difference is mainly of scale and method. Ordinary data analytics might be a school studying the marks of 1,200 students in a spreadsheet. Big data analytics is a state board studying the results of 30 lakh students together with attendance, district data and teacher records, on many computers working together.",
+      "hi": "अंतर मुख्य रूप से पैमाने और तरीके का है। साधारण डेटा एनालिटिक्स जैसे कोई स्कूल spreadsheet में 1,200 विद्यार्थियों के अंकों का अध्ययन करे। बिग डेटा एनालिटिक्स जैसे कोई राज्य बोर्ड 30 लाख विद्यार्थियों के परिणाम, उपस्थिति, ज़िला डेटा और शिक्षक रिकॉर्ड का एक साथ, कई कंप्यूटरों पर मिलकर अध्ययन करे।"
+     }
+    },
+    {
+     "p": {
+      "en": "Why is big data analytics important? It helps organisations make faster and better decisions, find new revenue opportunities, run more effective marketing, give better customer service, improve operations and gain a competitive advantage. For a government it can mean better planning of schools, hospitals and transport.",
+      "hi": "बिग डेटा एनालिटिक्स क्यों महत्वपूर्ण है? यह संस्थाओं को तेज़ और बेहतर निर्णय लेने, आय के नए अवसर खोजने, अधिक प्रभावी मार्केटिंग, बेहतर ग्राहक सेवा, बेहतर संचालन और प्रतिस्पर्धी बढ़त पाने में मदद करता है। सरकार के लिए इसका अर्थ स्कूलों, अस्पतालों और परिवहन की बेहतर योजना हो सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.7 How big data analytics works: the four steps",
+    "hi": "5.7 बिग डेटा एनालिटिक्स कैसे काम करता है: चार चरण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Big data analytics follows four main steps. Imagine a city traffic police department that wants to reduce jams.",
+      "hi": "बिग डेटा एनालिटिक्स चार मुख्य चरणों में चलता है। कल्पना कीजिए एक शहर की ट्रैफ़िक पुलिस जाम कम करना चाहती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Step",
+        "What happens",
+        "Traffic example"
+       ],
+       "hi": [
+        "चरण",
+        "क्या होता है",
+        "ट्रैफ़िक उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Gather data",
+         "Data is collected from many sources: cloud storage, mobile apps, IoT sensors, websites, databases. Organisations decide what to collect and where to keep it (data warehouse or data lake).",
+         "Signal cameras, GPS from buses and cabs, map-app speed data, complaint calls"
+        ],
+        [
+         "2. Process data",
+         "Raw data is organised so it can be analysed. Two ways: batch processing (large blocks of stored data processed together after some time; slower but fine when time is not urgent) and stream processing (small pieces processed as they arrive; low delay, for quick decisions, but more complex and costly).",
+         "Batch: monthly report of the worst junctions. Stream: live jam detected at a junction right now"
+        ],
+        [
+         "3. Clean data",
+         "Data is 'scrubbed': duplicates, irrelevant entries, errors and wrong formats are removed or corrected, and missing values handled. Dirty data gives misleading results.",
+         "Remove readings from a broken camera, duplicate GPS pings and wrong timestamps"
+        ],
+        [
+         "4. Analyse data",
+         "Advanced methods such as data mining, statistics, machine learning, predictive analytics and deep learning turn the clean data into insights, shown through dashboards and charts.",
+         "Find that jams at one junction peak at 6 p.m. on weekdays; predict tomorrow's jam; suggest a longer green signal"
+        ]
+       ],
+       "hi": [
+        [
+         "1. डेटा इकट्ठा करना (Gather)",
+         "कई स्रोतों से डेटा इकट्ठा होता है: cloud storage, मोबाइल ऐप, IoT sensor, वेबसाइट, database। संस्था तय करती है कि क्या इकट्ठा करना है और कहाँ रखना है (data warehouse या data lake)।",
+         "सिग्नल कैमरे, बसों और कैब का GPS, मैप-ऐप की गति का डेटा, शिकायत कॉल"
+        ],
+        [
+         "2. डेटा प्रोसेस करना (Process)",
+         "कच्चे डेटा को विश्लेषण लायक बनाया जाता है। दो तरीके: batch processing (कुछ समय बाद जमा डेटा के बड़े खंड एक साथ प्रोसेस; धीमा पर तब ठीक जब जल्दी न हो) और stream processing (डेटा आते ही छोटे-छोटे टुकड़ों में प्रोसेस; कम देरी, तुरंत निर्णय के लिए, पर अधिक जटिल और महँगा)।",
+         "Batch: सबसे ख़राब चौराहों की मासिक रिपोर्ट। Stream: अभी किसी चौराहे पर लाइव जाम की पहचान"
+        ],
+        [
+         "3. डेटा साफ़ करना (Clean)",
+         "डेटा को 'साफ़' किया जाता है: दोहराव, अप्रासंगिक प्रविष्टियाँ, ग़लतियाँ और ग़लत format हटाए या सुधारे जाते हैं और छूटे मान सँभाले जाते हैं। गंदा डेटा भ्रामक परिणाम देता है।",
+         "टूटे कैमरे की रीडिंग, दोहराए GPS संकेत और ग़लत समय हटाना"
+        ],
+        [
+         "4. डेटा का विश्लेषण (Analyse)",
+         "data mining, statistics, machine learning, predictive analytics और deep learning जैसे उन्नत तरीके साफ़ डेटा को जानकारी में बदलते हैं, जो dashboard और चार्ट से दिखाई जाती है।",
+         "पता चलना कि एक चौराहे पर जाम हफ़्ते के दिनों में शाम 6 बजे चरम पर होता है; कल के जाम का अनुमान; हरी बत्ती लंबी करने का सुझाव"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Batch processing",
+        "Stream processing"
+       ],
+       "hi": [
+        "Batch processing",
+        "Stream processing"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Processes large blocks of stored data at once",
+         "Processes data continuously as it arrives"
+        ],
+        [
+         "Higher delay (minutes, hours or days)",
+         "Very low delay (seconds or less)"
+        ],
+        [
+         "Simpler and cheaper",
+         "More complex and costly"
+        ],
+        [
+         "Example: monthly electricity bills, end-of-day bank reports",
+         "Example: UPI fraud alerts, live cricket score updates, live traffic on maps"
+        ]
+       ],
+       "hi": [
+        [
+         "जमा डेटा के बड़े खंड एक साथ प्रोसेस करता है",
+         "डेटा आते ही लगातार प्रोसेस करता है"
+        ],
+        [
+         "अधिक देरी (मिनट, घंटे या दिन)",
+         "बहुत कम देरी (सेकंड या उससे कम)"
+        ],
+        [
+         "सरल और सस्ता",
+         "अधिक जटिल और महँगा"
+        ],
+        [
+         "उदाहरण: मासिक बिजली बिल, बैंक की दिन के अंत की रिपोर्ट",
+         "उदाहरण: UPI धोखाधड़ी चेतावनी, लाइव क्रिकेट स्कोर, मैप पर लाइव ट्रैफ़िक"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How can a computer handle data larger than its own disk? The answer is distributed computing: the data is split into blocks and spread over many ordinary computers (a cluster), and each computer works on its own part at the same time. Apache Hadoop does this with two main parts. HDFS (Hadoop Distributed File System) splits files into large blocks and keeps copies (by default three) on different machines, so a failed machine does not lose data. MapReduce processes the blocks in parallel: in the Map step each machine turns its block into small (key, value) pairs; the pairs are then grouped by key (shuffle); in the Reduce step the values for each key are combined. Apache Spark does similar work but keeps data in memory (RAM) between steps, so repeated calculations are much faster.",
+      "hi": "कोई कंप्यूटर अपनी डिस्क से बड़ा डेटा कैसे सँभाले? उत्तर है distributed computing: डेटा को खंडों में बाँटकर कई साधारण कंप्यूटरों (एक cluster) पर फैला दिया जाता है, और हर कंप्यूटर एक साथ अपने भाग पर काम करता है। Apache Hadoop यह दो मुख्य भागों से करता है। HDFS (Hadoop Distributed File System) फ़ाइलों को बड़े खंडों में बाँटता है और उनकी प्रतियाँ (डिफ़ॉल्ट रूप से तीन) अलग-अलग मशीनों पर रखता है, ताकि एक मशीन ख़राब होने पर डेटा न खोए। MapReduce खंडों को समानांतर प्रोसेस करता है: Map चरण में हर मशीन अपने खंड को छोटे (key, value) जोड़ों में बदलती है; फिर जोड़ों को key के अनुसार समूहित किया जाता है (shuffle); Reduce चरण में हर key के मान मिलाए जाते हैं। Apache Spark ऐसा ही काम करता है पर चरणों के बीच डेटा memory (RAM) में रखता है, इसलिए बार-बार की गणना बहुत तेज़ होती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "The idea of MapReduce can be seen in a tiny Python program that counts words spread over three 'machines' (blocks). This was run and the output shown is real:",
+      "hi": "MapReduce का विचार एक छोटे Python प्रोग्राम में देखा जा सकता है जो तीन 'मशीनों' (खंडों) में फैले शब्द गिनता है। इसे चलाया गया है और दिखाया गया आउटपुट असली है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "from collections import defaultdict\n\n# Each \"machine\" holds one block of the data\nblocks = [\"chai samosa chai\", \"samosa juice\", \"chai juice chai\"]\n\n# MAP: every block makes (word, 1) pairs\nmapped = []\nfor block in blocks:\n    for word in block.split():\n        mapped.append((word, 1))\n\n# SHUFFLE: group pairs by word\ngroups = defaultdict(list)\nfor word, one in mapped:\n    groups[word].append(one)\n\n# REDUCE: add the ones for each word\nresult = {word: sum(ones) for word, ones in groups.items()}\nprint(result)\n\nOutput:\n{'chai': 4, 'samosa': 2, 'juice': 2}",
+      "hi": "from collections import defaultdict\n\n# Each \"machine\" holds one block of the data\nblocks = [\"chai samosa chai\", \"samosa juice\", \"chai juice chai\"]\n\n# MAP: every block makes (word, 1) pairs\nmapped = []\nfor block in blocks:\n    for word in block.split():\n        mapped.append((word, 1))\n\n# SHUFFLE: group pairs by word\ngroups = defaultdict(list)\nfor word, one in mapped:\n    groups[word].append(one)\n\n# REDUCE: add the ones for each word\nresult = {word: sum(ones) for word, ones in groups.items()}\nprint(result)\n\nOutput:\n{'chai': 4, 'samosa': 2, 'juice': 2}"
+     }
+    },
+    {
+     "note": {
+      "en": "In a real cluster, each block would be on a different computer and the Map steps would run at the same time. That parallel work is what makes big data processing possible.",
+      "hi": "असली cluster में हर खंड अलग कंप्यूटर पर होता और Map चरण एक साथ चलते। यही समानांतर काम बिग डेटा प्रोसेसिंग को संभव बनाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.8 Types of big data analytics",
+    "hi": "5.8 बिग डेटा एनालिटिक्स के प्रकार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "There are four types of analytics. Each answers a different question, and they go from looking back to looking ahead. Their difficulty and value both increase from descriptive to prescriptive.",
+      "hi": "एनालिटिक्स के चार प्रकार हैं। हर एक अलग प्रश्न का उत्तर देता है, और ये पीछे देखने से आगे देखने की ओर जाते हैं। वर्णनात्मक से निर्देशात्मक की ओर इनकी कठिनाई और मूल्य दोनों बढ़ते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Question it answers",
+        "Methods",
+        "Example"
+       ],
+       "hi": [
+        "प्रकार",
+        "किस प्रश्न का उत्तर",
+        "तरीके",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Descriptive analytics",
+         "What happened?",
+         "Summaries, totals, averages, percentages, charts, dashboards",
+         "A shop's report: sales rose 20% in October compared with September"
+        ],
+        [
+         "Diagnostic analytics",
+         "Why did it happen?",
+         "Drill-down, comparing groups, correlation, finding root causes",
+         "The rise was due to Diwali offers and a new branch opening"
+        ],
+        [
+         "Predictive analytics",
+         "What is likely to happen?",
+         "Statistical models, machine learning, forecasting from patterns in past data",
+         "Weather and past sales suggest umbrella sales will double next month"
+        ],
+        [
+         "Prescriptive analytics",
+         "What should we do?",
+         "Optimisation, simulation, recommendation engines, AI that suggests the best action",
+         "Order 2,000 extra umbrellas and place them near the entrance"
+        ]
+       ],
+       "hi": [
+        [
+         "वर्णनात्मक (Descriptive)",
+         "क्या हुआ?",
+         "सारांश, योग, औसत, प्रतिशत, चार्ट, dashboard",
+         "दुकान की रिपोर्ट: अक्टूबर में सितंबर की तुलना में बिक्री 20% बढ़ी"
+        ],
+        [
+         "निदानात्मक (Diagnostic)",
+         "ऐसा क्यों हुआ?",
+         "गहराई में जाना (drill-down), समूहों की तुलना, सहसंबंध, मूल कारण खोजना",
+         "बढ़त दिवाली ऑफ़र और नई शाखा खुलने के कारण हुई"
+        ],
+        [
+         "भविष्यसूचक (Predictive)",
+         "क्या होने की संभावना है?",
+         "सांख्यिकीय model, machine learning, पुराने डेटा के पैटर्न से पूर्वानुमान",
+         "मौसम और पिछली बिक्री बताती है कि अगले महीने छातों की बिक्री दोगुनी होगी"
+        ],
+        [
+         "निर्देशात्मक (Prescriptive)",
+         "हमें क्या करना चाहिए?",
+         "Optimisation, simulation, recommendation engine, सबसे अच्छा कदम सुझाने वाला AI",
+         "2,000 अतिरिक्त छाते मँगाएँ और उन्हें प्रवेश द्वार के पास रखें"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Case study (Indian Railways). For festival travel, classify each statement: (1) Last Diwali, bookings on the Delhi–Patna route were 30% higher than normal. (2) The rise came from people travelling home for Chhath and Diwali. (3) A similar or bigger rise is expected this year. (4) Run extra 'festival special' trains and add coaches on that route.",
+       "hi": "केस स्टडी (भारतीय रेलवे)। त्योहार की यात्रा के लिए हर कथन का प्रकार बताइए: (1) पिछली दिवाली दिल्ली–पटना मार्ग पर बुकिंग सामान्य से 30% अधिक थी। (2) बढ़त छठ और दिवाली पर घर जाने वाले लोगों से आई। (3) इस साल भी ऐसी या इससे बड़ी बढ़त की संभावना है। (4) उस मार्ग पर अतिरिक्त 'त्योहार स्पेशल' ट्रेनें चलाएँ और डिब्बे जोड़ें।"
+      },
+      "a": {
+       "en": "(1) Descriptive: it reports what happened.\n(2) Diagnostic: it explains why.\n(3) Predictive: it forecasts the future.\n(4) Prescriptive: it recommends an action.",
+       "hi": "(1) वर्णनात्मक: बताता है कि क्या हुआ।\n(2) निदानात्मक: बताता है कि क्यों हुआ।\n(3) भविष्यसूचक: भविष्य का अनुमान लगाता है।\n(4) निर्देशात्मक: एक कदम सुझाता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Quick way to remember: Descriptive = what, Diagnostic = why, Predictive = what next, Prescriptive = what to do.",
+      "hi": "याद रखने का आसान तरीका: वर्णनात्मक = क्या, निदानात्मक = क्यों, भविष्यसूचक = आगे क्या, निर्देशात्मक = क्या करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.9 Tools for big data and data analytics",
+    "hi": "5.9 बिग डेटा और डेटा एनालिटिक्स के टूल"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Tool",
+        "What it is used for"
+       ],
+       "hi": [
+        "टूल",
+        "किस काम आता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Apache Hadoop",
+         "Open-source framework for storing (HDFS) and processing (MapReduce) huge data across clusters of ordinary computers"
+        ],
+        [
+         "Apache Spark",
+         "Fast, in-memory engine for batch and stream processing and machine learning on big data"
+        ],
+        [
+         "Apache Cassandra",
+         "Open-source NoSQL (wide-column) database that spreads data over many servers with no single point of failure; good for heavy write loads"
+        ],
+        [
+         "MongoDB",
+         "NoSQL document database that stores JSON-like documents; good for semi-structured data"
+        ],
+        [
+         "Tableau",
+         "Data visualisation tool for making interactive charts and dashboards"
+        ],
+        [
+         "SAS",
+         "Software suite for advanced statistics, analytics and predictive modelling"
+        ],
+        [
+         "Python (pandas, NumPy, Matplotlib) and Orange",
+         "Free tools students can use to clean, group, summarise and visualise data"
+        ]
+       ],
+       "hi": [
+        [
+         "Apache Hadoop",
+         "साधारण कंप्यूटरों के cluster पर विशाल डेटा को स्टोर (HDFS) और प्रोसेस (MapReduce) करने का open-source framework"
+        ],
+        [
+         "Apache Spark",
+         "बिग डेटा पर batch और stream processing तथा machine learning के लिए तेज़, in-memory इंजन"
+        ],
+        [
+         "Apache Cassandra",
+         "open-source NoSQL (wide-column) database जो डेटा को कई सर्वरों पर फैलाता है और जिसमें कोई एक कमज़ोर बिंदु नहीं; भारी मात्रा में लिखने के लिए अच्छा"
+        ],
+        [
+         "MongoDB",
+         "NoSQL document database जो JSON जैसे document स्टोर करता है; सेमी-स्ट्रक्चर्ड डेटा के लिए अच्छा"
+        ],
+        [
+         "Tableau",
+         "इंटरैक्टिव चार्ट और dashboard बनाने का data visualisation टूल"
+        ],
+        [
+         "SAS",
+         "उन्नत statistics, analytics और predictive modelling का software"
+        ],
+        [
+         "Python (pandas, NumPy, Matplotlib) और Orange",
+         "मुफ़्त टूल जिनसे विद्यार्थी डेटा साफ़, समूहित, सारांशित और चित्रित कर सकते हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "NoSQL database",
+       "hi": "NoSQL database"
+      },
+      "text": {
+       "en": "A database that does not store data only in fixed tables. It may store key-value pairs, documents (JSON), wide columns or graphs. NoSQL databases scale across many machines and handle semi-structured and unstructured data well.",
+       "hi": "ऐसा database जो डेटा केवल निश्चित तालिकाओं में नहीं रखता। यह key-value जोड़े, document (JSON), wide column या graph रख सकता है। NoSQL database कई मशीनों पर फैल सकते हैं और सेमी-स्ट्रक्चर्ड व अनस्ट्रक्चर्ड डेटा अच्छी तरह सँभालते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data warehouse and data lake",
+       "hi": "Data warehouse और data lake"
+      },
+      "text": {
+       "en": "A data warehouse stores cleaned, structured data organised for reports and analysis. A data lake stores huge amounts of raw data in its original form (structured, semi-structured and unstructured) until it is needed.",
+       "hi": "Data warehouse साफ़ किया गया, स्ट्रक्चर्ड डेटा रखता है जो रिपोर्ट और विश्लेषण के लिए व्यवस्थित होता है। Data lake विशाल मात्रा में कच्चा डेटा उसके मूल रूप (स्ट्रक्चर्ड, सेमी-स्ट्रक्चर्ड और अनस्ट्रक्चर्ड) में तब तक रखता है जब तक उसकी ज़रूरत न हो।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.10 Mining data streams",
+    "hi": "5.10 डेटा स्ट्रीम माइनिंग (Mining data streams)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data stream",
+       "hi": "डेटा स्ट्रीम (Data stream)"
+      },
+      "text": {
+       "en": "A continuous, fast and potentially never-ending flow of data generated in real time, for example from sensors, satellites, web traffic, network logs, financial markets, UPI payments and social media feeds.",
+       "hi": "वास्तविक समय में बनने वाला डेटा का लगातार, तेज़ और कभी न रुकने वाला प्रवाह, जैसे sensor, उपग्रह, वेब ट्रैफ़िक, network log, शेयर बाज़ार, UPI भुगतान और सोशल मीडिया फ़ीड से।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Mining data streams",
+       "hi": "डेटा स्ट्रीम माइनिंग"
+      },
+      "text": {
+       "en": "Extracting useful patterns, trends, unusual events and knowledge from a data stream while the data is still flowing, instead of first storing it all and studying it later.",
+       "hi": "डेटा के बहते रहते ही उससे उपयोगी पैटर्न, रुझान, असामान्य घटनाएँ और ज्ञान निकालना, न कि पहले सब स्टोर करके बाद में अध्ययन करना।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A data stream is different from a stored dataset in important ways. The data arrives too fast and in too large an amount to store everything. Each item can usually be looked at only once (one pass). Answers are needed almost immediately. And the pattern itself can change over time (for example, shopping habits change in a festival week); this change is called concept drift.",
+      "hi": "डेटा स्ट्रीम स्टोर किए डेटासेट से महत्वपूर्ण रूप से अलग है। डेटा इतनी तेज़ी और इतनी मात्रा में आता है कि सब कुछ स्टोर नहीं हो सकता। हर आइटम को प्रायः केवल एक बार देखा जा सकता है (one pass)। उत्तर लगभग तुरंत चाहिए। और पैटर्न ख़ुद समय के साथ बदल सकता है (जैसे त्योहार वाले हफ़्ते में ख़रीदारी की आदतें बदल जाती हैं); इस बदलाव को concept drift कहते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "To deal with this, stream mining uses some special ideas:",
+      "hi": "इससे निपटने के लिए स्ट्रीम माइनिंग कुछ विशेष विचार अपनाती है:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Windows: study only the most recent part of the stream, such as the last 5 minutes or the last 1,000 items (a sliding window). Old data slides out as new data comes in.",
+       "Sampling: keep a small random sample of the stream that represents the whole, instead of every item.",
+       "Summaries (synopses): keep running counts, averages, minimum and maximum, updated with each new item, instead of the raw data.",
+       "Incremental models: machine learning models that update themselves a little with every new item, so they adapt to concept drift.",
+       "Real-time alerts: trigger an action the moment an unusual pattern (anomaly) appears."
+      ],
+      "hi": [
+       "Window (खिड़की): केवल स्ट्रीम के सबसे हाल के भाग का अध्ययन, जैसे पिछले 5 मिनट या पिछले 1,000 आइटम (sliding window)। नया डेटा आते ही पुराना बाहर खिसक जाता है।",
+       "Sampling (नमूना): हर आइटम की जगह स्ट्रीम का छोटा यादृच्छिक नमूना रखना जो पूरे का प्रतिनिधित्व करे।",
+       "सारांश (Synopses): कच्चे डेटा की जगह चलती गिनती, औसत, न्यूनतम और अधिकतम रखना, जो हर नए आइटम के साथ अपडेट हों।",
+       "Incremental model: ऐसे machine learning model जो हर नए आइटम के साथ थोड़ा-थोड़ा ख़ुद को अपडेट करें, ताकि concept drift के अनुसार ढल सकें।",
+       "वास्तविक समय की चेतावनी: जैसे ही कोई असामान्य पैटर्न (anomaly) दिखे, तुरंत कोई कदम शुरू करना।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Examples of mining data streams: a sudden spike in searches for 'election results' tells a search company that results are being announced and many people are interested; a bank flags an unusual UPI payment within seconds; a smart grid notices power demand rising in a heatwave; a stock exchange watches for suspicious trades; a shop's app gives a personalised discount while the customer is still shopping.",
+      "hi": "डेटा स्ट्रीम माइनिंग के उदाहरण: 'election results' की खोज में अचानक उछाल सर्च कंपनी को बताता है कि परिणाम घोषित हो रहे हैं और बहुत लोग उत्सुक हैं; बैंक कुछ सेकंड में किसी असामान्य UPI भुगतान को चिह्नित करता है; स्मार्ट ग्रिड लू के दौरान बढ़ती बिजली माँग देखता है; स्टॉक एक्सचेंज संदिग्ध सौदों पर नज़र रखता है; दुकान का ऐप ग्राहक के ख़रीदारी करते रहते ही व्यक्तिगत छूट देता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "The following small Python program shows a sliding window watching a stream of UPI payment amounts. It keeps only the last 5 amounts and raises an alert if a new payment is more than 10 times the recent average. This was run and the output is real:",
+      "hi": "नीचे का छोटा Python प्रोग्राम UPI भुगतान राशियों की स्ट्रीम पर नज़र रखती sliding window दिखाता है। यह केवल पिछली 5 राशियाँ रखता है और नया भुगतान हाल के औसत से 10 गुना से अधिक हो तो चेतावनी देता है। इसे चलाया गया है और आउटपुट असली है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "from collections import deque\n\n# UPI payments (in rupees) arriving one by one\nstream = [120, 80, 150, 95, 110, 130, 90, 9500, 100, 140]\nwindow = deque(maxlen=5)   # sliding window of last 5 payments\nfor amount in stream:\n    if len(window) == 5:\n        avg = sum(window) / 5\n        if amount > 10 * avg:\n            print(\"ALERT:\", amount, \"is far above recent average\", avg)\n    window.append(amount)\nprint(\"Last window:\", list(window))\n\nOutput:\nALERT: 9500 is far above recent average 115.0\nLast window: [130, 90, 9500, 100, 140]",
+      "hi": "from collections import deque\n\n# UPI payments (in rupees) arriving one by one\nstream = [120, 80, 150, 95, 110, 130, 90, 9500, 100, 140]\nwindow = deque(maxlen=5)   # sliding window of last 5 payments\nfor amount in stream:\n    if len(window) == 5:\n        avg = sum(window) / 5\n        if amount > 10 * avg:\n            print(\"ALERT:\", amount, \"is far above recent average\", avg)\n    window.append(amount)\nprint(\"Last window:\", list(window))\n\nOutput:\nALERT: 9500 is far above recent average 115.0\nLast window: [130, 90, 9500, 100, 140]"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In the program above, why is the alert raised for 9500 but not for 150?",
+       "hi": "ऊपर के प्रोग्राम में 9500 के लिए चेतावनी क्यों आती है पर 150 के लिए नहीं?"
+      },
+      "a": {
+       "en": "When 150 arrives, the window holds only 2 items [120, 80], so no check is made; the program waits until the window is full (5 items).\nJust before 9500 arrives, the window holds the last five amounts [150, 95, 110, 130, 90].\nSum = 150 + 95 + 110 + 130 + 90 = 575; average = 575 ÷ 5 = 115.0.\n10 × 115 = 1,150, and 9500 > 1,150, so the alert is raised.\nAfter that, 9500 enters the window and the oldest amount (150) slides out.",
+       "hi": "जब 150 आता है, window में केवल 2 आइटम [120, 80] हैं, इसलिए जाँच नहीं होती; प्रोग्राम window भरने (5 आइटम) तक रुकता है।\n9500 आने से ठीक पहले window में पिछली पाँच राशियाँ [150, 95, 110, 130, 90] हैं।\nयोग = 150 + 95 + 110 + 130 + 90 = 575; औसत = 575 ÷ 5 = 115.0।\n10 × 115 = 1,150, और 9500 > 1,150, इसलिए चेतावनी आती है।\nउसके बाद 9500 window में आ जाता है और सबसे पुरानी राशि (150) बाहर खिसक जाती है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Real fraud systems are far more advanced: they look at the device, location, time, the receiver and many past patterns, and use machine learning. But the core idea, checking each new item against a recent window, is the same.",
+      "hi": "असली धोखाधड़ी-पहचान प्रणालियाँ कहीं अधिक उन्नत होती हैं: वे डिवाइस, स्थान, समय, प्राप्तकर्ता और पिछले कई पैटर्न देखती हैं और machine learning का उपयोग करती हैं। पर मूल विचार, हर नए आइटम को हाल की window से मिलाना, वही है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.11 Future of big data analytics",
+    "hi": "5.11 बिग डेटा एनालिटिक्स का भविष्य"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Big data analytics keeps changing as technology improves. The main trends to know are:",
+      "hi": "तकनीक सुधरने के साथ बिग डेटा एनालिटिक्स लगातार बदल रहा है। जानने योग्य मुख्य रुझान ये हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Real-time analytics: more decisions will be made on live data, such as monitoring customer behaviour, supply chains, hospital beds or traffic minute by minute.",
+       "Advanced predictive analytics: smarter machine learning models will give more accurate forecasts, for example of crop yield, disease outbreaks or electricity demand.",
+       "Quantum computing: quantum computers may one day solve certain complex problems (such as simulating molecules for new medicines, or hard optimisation tasks) much faster than classical computers. This is still an emerging field.",
+       "AI-driven and augmented analytics: AI tools that clean data, find patterns and explain results in plain language, so non-experts can ask questions of data.",
+       "Edge computing: analysing data close to where it is created (on the phone, camera or sensor) instead of sending it all to the cloud, for faster response and better privacy.",
+       "Stronger privacy and data governance: laws such as the DPDP Act, 2023 push organisations to collect only needed data, take consent and protect it; methods like anonymisation become standard.",
+       "Data as a service and open data: governments and companies share datasets (for example India's Open Government Data platform, data.gov.in) so that others can build useful services."
+      ],
+      "hi": [
+       "वास्तविक समय एनालिटिक्स: अधिक निर्णय लाइव डेटा पर होंगे, जैसे ग्राहक व्यवहार, आपूर्ति श्रृंखला, अस्पताल के बिस्तर या ट्रैफ़िक की मिनट-दर-मिनट निगरानी।",
+       "उन्नत भविष्यसूचक एनालिटिक्स: अधिक समझदार machine learning model अधिक सटीक पूर्वानुमान देंगे, जैसे फ़सल उपज, बीमारी फैलाव या बिजली माँग का।",
+       "क्वांटम कंप्यूटिंग (Quantum computing): क्वांटम कंप्यूटर एक दिन कुछ जटिल समस्याएँ (जैसे नई दवाओं के लिए अणुओं का simulation, या कठिन optimisation) सामान्य कंप्यूटरों से बहुत तेज़ हल कर सकते हैं। यह अभी उभरता क्षेत्र है।",
+       "AI-संचालित एनालिटिक्स: ऐसे AI टूल जो डेटा साफ़ करें, पैटर्न खोजें और परिणाम सरल भाषा में समझाएँ, ताकि ग़ैर-विशेषज्ञ भी डेटा से प्रश्न पूछ सकें।",
+       "एज कंप्यूटिंग (Edge computing): सारा डेटा cloud भेजने की जगह जहाँ बनता है वहीं (फ़ोन, कैमरा या sensor पर) उसका विश्लेषण, ताकि जवाब तेज़ हो और निजता बेहतर रहे।",
+       "मज़बूत निजता और डेटा शासन: DPDP अधिनियम, 2023 जैसे क़ानून संस्थाओं को केवल ज़रूरी डेटा लेने, सहमति लेने और उसे सुरक्षित रखने को कहते हैं; anonymisation (पहचान हटाना) जैसे तरीके सामान्य बनेंगे।",
+       "Data as a service और open data: सरकारें और कंपनियाँ डेटासेट साझा करती हैं (जैसे भारत का Open Government Data प्लेटफ़ॉर्म, data.gov.in) ताकि दूसरे उपयोगी सेवाएँ बना सकें।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Big data in India, some uses you can relate to: map apps combine location signals from many phones to show live traffic colours; banks and NPCI systems check payments for fraud; agriculture advisories combine weather, soil and satellite data for farmers; health programmes study vaccination and disease data by district; e-commerce sites plan stock for festival sales; cricket analysts study ball-by-ball data to plan field placements and bowling changes.",
+      "hi": "भारत में बिग डेटा के कुछ उपयोग जिनसे आप जुड़ सकते हैं: मैप ऐप कई फ़ोनों के location संकेत मिलाकर लाइव ट्रैफ़िक के रंग दिखाते हैं; बैंक और NPCI प्रणालियाँ भुगतानों में धोखाधड़ी जाँचती हैं; कृषि सलाह सेवाएँ किसानों के लिए मौसम, मिट्टी और उपग्रह डेटा मिलाती हैं; स्वास्थ्य कार्यक्रम ज़िलेवार टीकाकरण और रोग डेटा का अध्ययन करते हैं; ई-कॉमर्स साइटें त्योहार की सेल के लिए स्टॉक की योजना बनाती हैं; क्रिकेट विश्लेषक हर गेंद के डेटा से फ़ील्ड और गेंदबाज़ी बदलाव की योजना बनाते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.12 Practical 1: big data analytics in Orange (no-code)",
+    "hi": "5.12 प्रैक्टिकल 1: Orange में बिग डेटा एनालिटिक्स (no-code)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "You learnt the Orange Data Mining tool in Chapter 4. Here you use it to explore a large dataset by grouping, filtering and visualising. Orange is free and runs on a laptop or desktop.",
+      "hi": "अध्याय 4 में आपने Orange Data Mining टूल सीखा। यहाँ आप इसका उपयोग एक बड़े डेटासेट को समूहित (group), छाँटने (filter) और चित्रित (visualise) करके खोजने में करेंगे। Orange मुफ़्त है और लैपटॉप या डेस्कटॉप पर चलता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Aim: to find patterns in a dataset of a few thousand rows without writing code.",
+       "What you need: Orange installed; a large CSV, for example a sales dataset you generate (see Practical 2), a public dataset from data.gov.in, or one of Orange's built-in datasets from the Datasets widget (such as 'heart_disease' or 'housing').",
+       "Step 1: Drag a File widget (or Datasets widget) onto the canvas and load the data. Connect a Data Table widget and check the number of rows and columns and the types of each column.",
+       "Step 2: Add a Select Rows widget to filter, for example only rows where city = Mumbai, or age > 50. Connect its output to a new Data Table to see the filtered rows.",
+       "Step 3: Add a Group By widget (in the Transform section) to group rows by a category, such as city, and choose aggregations like Sum or Mean of amount.",
+       "Step 4: Add Feature Statistics or Distributions to see the spread of each column, and spot missing values or outliers (the Veracity check).",
+       "Step 5: Add a Bar Plot, Box Plot or Scatter Plot to visualise the grouped results.",
+       "Observe and record: which group is highest or lowest, any unusual values, and one recommendation. Classify each of your findings as descriptive, diagnostic, predictive or prescriptive."
+      ],
+      "hi": [
+       "उद्देश्य: कोड लिखे बिना कुछ हज़ार पंक्तियों वाले डेटासेट में पैटर्न खोजना।",
+       "क्या चाहिए: Orange इंस्टॉल हो; एक बड़ी CSV, जैसे आपकी बनाई बिक्री फ़ाइल (प्रैक्टिकल 2 देखें), data.gov.in का कोई सार्वजनिक डेटासेट, या Datasets widget से Orange का कोई डेटासेट (जैसे 'heart_disease' या 'housing')।",
+       "चरण 1: File widget (या Datasets widget) canvas पर खींचें और डेटा लोड करें। Data Table widget जोड़ें और पंक्तियों व स्तंभों की संख्या तथा हर स्तंभ का प्रकार देखें।",
+       "चरण 2: छाँटने के लिए Select Rows widget जोड़ें, जैसे केवल वे पंक्तियाँ जहाँ city = Mumbai, या age > 50। उसका आउटपुट नई Data Table से जोड़कर छँटी पंक्तियाँ देखें।",
+       "चरण 3: Group By widget (Transform भाग में) जोड़ें और पंक्तियों को किसी श्रेणी, जैसे city, से समूहित करें; amount का Sum या Mean जैसे aggregation चुनें।",
+       "चरण 4: हर स्तंभ का फैलाव देखने और छूटे मान या outlier पहचानने के लिए Feature Statistics या Distributions जोड़ें (Veracity की जाँच)।",
+       "चरण 5: समूहित परिणाम दिखाने के लिए Bar Plot, Box Plot या Scatter Plot जोड़ें।",
+       "देखें और लिखें: कौन-सा समूह सबसे ऊपर या नीचे है, कोई असामान्य मान, और एक सुझाव। अपने हर निष्कर्ष को वर्णनात्मक, निदानात्मक, भविष्यसूचक या निर्देशात्मक में बाँटें।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Widget names can differ slightly between Orange versions. If you cannot find Group By, use Pivot Table, which also groups and aggregates.",
+      "hi": "Orange के संस्करणों में widget के नाम थोड़े अलग हो सकते हैं। Group By न मिले तो Pivot Table का उपयोग करें, जो भी समूहित और aggregate करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.13 Practical 2: analysing a large CSV with Python pandas",
+    "hi": "5.13 प्रैक्टिकल 2: Python pandas से बड़ी CSV का विश्लेषण"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Real big data needs clusters, but the same thinking can be practised on a CSV of 500 or more rows using pandas (revised in Chapter 1). First we create a sample dataset of 600 canteen sales across four cities. Using a fixed random seed makes the data the same every time.",
+      "hi": "असली बिग डेटा के लिए cluster चाहिए, पर वही सोच 500 या अधिक पंक्तियों वाली CSV पर pandas (अध्याय 1 में दोहराया) से अभ्यास की जा सकती है। पहले हम चार शहरों की 600 कैंटीन बिक्री का नमूना डेटासेट बनाते हैं। स्थिर random seed से डेटा हर बार एक-सा बनता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nn = 600\ncities = [\"Delhi\", \"Mumbai\", \"Kolkata\", \"Chennai\"]\nitems = [\"Tea\", \"Samosa\", \"Juice\", \"Sandwich\"]\ndf = pd.DataFrame({\n    \"city\": rng.choice(cities, n),\n    \"item\": rng.choice(items, n),\n    \"month\": rng.choice([\"Jan\", \"Feb\", \"Mar\"], n),\n    \"qty\": rng.integers(1, 11, n),\n})\nprice = {\"Tea\": 15, \"Samosa\": 20, \"Juice\": 40, \"Sandwich\": 50}\ndf[\"amount\"] = df[\"qty\"] * df[\"item\"].map(price)\ndf.to_csv(\"canteen_sales.csv\", index=False)\nprint(\"Rows saved:\", len(df))\n\nOutput:\nRows saved: 600",
+      "hi": "import numpy as np\nimport pandas as pd\n\nrng = np.random.default_rng(42)\nn = 600\ncities = [\"Delhi\", \"Mumbai\", \"Kolkata\", \"Chennai\"]\nitems = [\"Tea\", \"Samosa\", \"Juice\", \"Sandwich\"]\ndf = pd.DataFrame({\n    \"city\": rng.choice(cities, n),\n    \"item\": rng.choice(items, n),\n    \"month\": rng.choice([\"Jan\", \"Feb\", \"Mar\"], n),\n    \"qty\": rng.integers(1, 11, n),\n})\nprice = {\"Tea\": 15, \"Samosa\": 20, \"Juice\": 40, \"Sandwich\": 50}\ndf[\"amount\"] = df[\"qty\"] * df[\"item\"].map(price)\ndf.to_csv(\"canteen_sales.csv\", index=False)\nprint(\"Rows saved:\", len(df))\n\nOutput:\nRows saved: 600"
+     }
+    },
+    {
+     "p": {
+      "en": "Now analyse it using value_counts(), groupby() and pivot_table(). These are exactly the operations used in big data tools, only on a smaller scale. This was run and the output shown is real:",
+      "hi": "अब value_counts(), groupby() और pivot_table() से इसका विश्लेषण करें। ये वही क्रियाएँ हैं जो बिग डेटा टूल में होती हैं, बस छोटे पैमाने पर। इसे चलाया गया है और आउटपुट असली है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\n\ndf = pd.read_csv(\"canteen_sales.csv\")\nprint(df.shape)\nprint(df.head(3))\nprint(df[\"item\"].value_counts())\nprint(df.groupby(\"city\")[\"amount\"].sum())\ntable = pd.pivot_table(df, values=\"amount\", index=\"city\",\n                       columns=\"month\", aggfunc=\"sum\")\nprint(table)\n\nOutput:\n(600, 5)\n      city      item month  qty  amount\n0    Delhi     Juice   Mar    1      40\n1  Chennai  Sandwich   Feb    5     250\n2  Kolkata     Juice   Mar    5     200\nitem\nJuice       169\nSandwich    148\nTea         146\nSamosa      137\nName: count, dtype: int64\ncity\nChennai    24515\nDelhi      25645\nKolkata    26105\nMumbai     27555\nName: amount, dtype: int64\nmonth     Feb    Jan   Mar\ncity                      \nChennai  7870   8660  7985\nDelhi    9620   7730  8295\nKolkata  9115   8785  8205\nMumbai   8310  10280  8965",
+      "hi": "import pandas as pd\n\ndf = pd.read_csv(\"canteen_sales.csv\")\nprint(df.shape)\nprint(df.head(3))\nprint(df[\"item\"].value_counts())\nprint(df.groupby(\"city\")[\"amount\"].sum())\ntable = pd.pivot_table(df, values=\"amount\", index=\"city\",\n                       columns=\"month\", aggfunc=\"sum\")\nprint(table)\n\nOutput:\n(600, 5)\n      city      item month  qty  amount\n0    Delhi     Juice   Mar    1      40\n1  Chennai  Sandwich   Feb    5     250\n2  Kolkata     Juice   Mar    5     200\nitem\nJuice       169\nSandwich    148\nTea         146\nSamosa      137\nName: count, dtype: int64\ncity\nChennai    24515\nDelhi      25645\nKolkata    26105\nMumbai     27555\nName: amount, dtype: int64\nmonth     Feb    Jan   Mar\ncity                      \nChennai  7870   8660  7985\nDelhi    9620   7730  8295\nKolkata  9115   8785  8205\nMumbai   8310  10280  8965"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Function",
+        "What it does"
+       ],
+       "hi": [
+        "फ़ंक्शन",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "df.shape",
+         "Gives (rows, columns): here 600 rows, 5 columns"
+        ],
+        [
+         "df.head(3)",
+         "Shows the first 3 rows"
+        ],
+        [
+         "value_counts()",
+         "Counts how many times each value appears in a column (Juice appears in 169 rows)"
+        ],
+        [
+         "groupby('city')['amount'].sum()",
+         "Splits rows by city and adds up the amount for each city"
+        ],
+        [
+         "pivot_table(values, index, columns, aggfunc)",
+         "Makes a summary table: one row per city, one column per month, sum of amount in each cell"
+        ]
+       ],
+       "hi": [
+        [
+         "df.shape",
+         "(पंक्तियाँ, स्तंभ) देता है: यहाँ 600 पंक्तियाँ, 5 स्तंभ"
+        ],
+        [
+         "df.head(3)",
+         "पहली 3 पंक्तियाँ दिखाता है"
+        ],
+        [
+         "value_counts()",
+         "गिनता है कि स्तंभ में हर मान कितनी बार आया (Juice 169 पंक्तियों में)"
+        ],
+        [
+         "groupby('city')['amount'].sum()",
+         "पंक्तियों को शहर के अनुसार बाँटकर हर शहर की राशि जोड़ता है"
+        ],
+        [
+         "pivot_table(values, index, columns, aggfunc)",
+         "सारांश तालिका बनाता है: हर शहर की एक पंक्ति, हर महीने का एक स्तंभ, हर खाने में राशि का योग"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Finally, draw a chart. The program saves a bar chart of total sales by city (in a notebook such as Google Colab you can use plt.show() to see it). The bar for Mumbai is the tallest, followed by Kolkata, Delhi and Chennai.",
+      "hi": "अंत में चार्ट बनाइए। प्रोग्राम शहरवार कुल बिक्री का bar chart सेव करता है (Google Colab जैसे notebook में देखने के लिए plt.show() लिखें)। Mumbai का bar सबसे ऊँचा है, उसके बाद Kolkata, Delhi और Chennai।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\nimport matplotlib\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv(\"canteen_sales.csv\")\ncity_total = df.groupby(\"city\")[\"amount\"].sum()\ncity_total.plot(kind=\"bar\", title=\"Canteen sales by city\")\nplt.ylabel(\"Amount (Rs)\")\nplt.tight_layout()\nplt.savefig(\"city_sales.png\")\nprint(\"Chart saved as city_sales.png\")\nprint(\"Top city:\", city_total.idxmax())\n\nOutput:\nChart saved as city_sales.png\nTop city: Mumbai",
+      "hi": "import pandas as pd\nimport matplotlib\nmatplotlib.use(\"Agg\")\nimport matplotlib.pyplot as plt\n\ndf = pd.read_csv(\"canteen_sales.csv\")\ncity_total = df.groupby(\"city\")[\"amount\"].sum()\ncity_total.plot(kind=\"bar\", title=\"Canteen sales by city\")\nplt.ylabel(\"Amount (Rs)\")\nplt.tight_layout()\nplt.savefig(\"city_sales.png\")\nprint(\"Chart saved as city_sales.png\")\nprint(\"Top city:\", city_total.idxmax())\n\nOutput:\nChart saved as city_sales.png\nTop city: Mumbai"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using the outputs above, write one descriptive, one diagnostic-style question, one predictive and one prescriptive statement.",
+       "hi": "ऊपर के आउटपुट से एक वर्णनात्मक, एक निदानात्मक प्रश्न, एक भविष्यसूचक और एक निर्देशात्मक कथन लिखिए।"
+      },
+      "a": {
+       "en": "Descriptive: Mumbai had the highest total sales (Rs 27,555) and Chennai the lowest (Rs 24,515); Juice was the most frequently sold item (169 rows).\nDiagnostic question: Why did Mumbai's sales jump in January (Rs 10,280) compared with February (Rs 8,310)? We would need more data, such as events or weather, to answer.\nPredictive: If the pattern continues, Mumbai is likely to remain the top city next quarter.\nPrescriptive: Keep more juice and sandwich stock in Mumbai; study Chennai to find why sales are lower.\n(Note: this data was randomly generated for practice, so the 'reasons' are only for learning the method.)",
+       "hi": "वर्णनात्मक: Mumbai की कुल बिक्री सबसे अधिक (Rs 27,555) और Chennai की सबसे कम (Rs 24,515) रही; Juice सबसे अधिक बार बिकने वाला आइटम था (169 पंक्तियाँ)।\nनिदानात्मक प्रश्न: Mumbai की बिक्री जनवरी (Rs 10,280) में फ़रवरी (Rs 8,310) की तुलना में क्यों उछली? उत्तर के लिए हमें और डेटा, जैसे आयोजन या मौसम, चाहिए।\nभविष्यसूचक: यदि यही पैटर्न रहा तो अगली तिमाही में भी Mumbai शीर्ष शहर रह सकता है।\nनिर्देशात्मक: Mumbai में juice और sandwich का अधिक स्टॉक रखें; Chennai में बिक्री कम क्यों है, इसका अध्ययन करें।\n(ध्यान दें: यह डेटा अभ्यास के लिए यादृच्छिक रूप से बनाया गया है, इसलिए 'कारण' केवल तरीका सीखने के लिए हैं।)"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Data cleaning check: on this file, df.isnull().sum().sum() gives 0 (no missing values), but df.duplicated().sum() gives 250, because with only 4 cities, 4 items, 3 months and 10 quantities, many rows repeat by chance. In real data, always ask whether a duplicate is a genuine repeat sale or an error before deleting it.",
+      "hi": "डेटा सफ़ाई की जाँच: इस फ़ाइल पर df.isnull().sum().sum() से 0 आता है (कोई छूटा मान नहीं), पर df.duplicated().sum() से 250 आता है, क्योंकि केवल 4 शहर, 4 आइटम, 3 महीने और 10 मात्राएँ होने से कई पंक्तियाँ संयोग से दोहराती हैं। असली डेटा में हटाने से पहले हमेशा पूछें कि दोहराव सचमुच दोबारा हुई बिक्री है या ग़लती।"
+     }
+    },
+    {
+     "note": {
+      "en": "Free options: Google Colab runs Python in the browser, even on a phone; pandas, NumPy and Matplotlib are already installed there. Students under 13 should create accounts only with an adult's help.",
+      "hi": "मुफ़्त विकल्प: Google Colab ब्राउज़र में, फ़ोन पर भी, Python चलाता है; उसमें pandas, NumPy और Matplotlib पहले से इंस्टॉल हैं। 13 वर्ष से कम आयु के विद्यार्थी किसी बड़े की मदद से ही खाता बनाएँ।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.14 Unplugged activity and responsible use of big data",
+    "hi": "5.14 बिना कंप्यूटर की गतिविधि और बिग डेटा का ज़िम्मेदार उपयोग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Unplugged activity: 'Data stream in the classroom'. Aim: to feel the difference between batch and stream processing. What you need: paper slips and a timer. What to do: one student reads out numbers (pretend they are bus passengers counted at a stop) every 3 seconds for 2 minutes. Group A writes all numbers and calculates the average only at the end (batch). Group B keeps only a running total and count in their head or on one slip, and every 30 seconds announces the current average and shouts 'Alert!' if a number is more than double the current average (stream). What you observe: Group B gives answers during the activity using very little paper, while Group A gives one answer at the end but can recheck everything. What it teaches: stream processing is fast and memory-light but sees each item once; batch processing is slower but complete.",
+      "hi": "बिना कंप्यूटर की गतिविधि: 'कक्षा में डेटा स्ट्रीम'। उद्देश्य: batch और stream processing का अंतर महसूस करना। क्या चाहिए: कागज़ की पर्चियाँ और एक टाइमर। क्या करें: एक विद्यार्थी 2 मिनट तक हर 3 सेकंड पर संख्याएँ बोलता है (मान लें ये किसी स्टॉप पर गिने बस यात्री हैं)। समूह A सारी संख्याएँ लिखता है और केवल अंत में औसत निकालता है (batch)। समूह B केवल चलता योग और गिनती दिमाग़ में या एक पर्ची पर रखता है, हर 30 सेकंड पर मौजूदा औसत बताता है और अगर कोई संख्या मौजूदा औसत से दोगुनी से अधिक हो तो 'Alert!' बोलता है (stream)। क्या देखेंगे: समूह B बहुत कम कागज़ से गतिविधि के दौरान ही उत्तर देता है, जबकि समूह A अंत में एक उत्तर देता है पर सब कुछ दोबारा जाँच सकता है। सीख: stream processing तेज़ और कम memory वाली है पर हर आइटम एक बार देखती है; batch processing धीमी पर पूर्ण है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Responsible use. Big data is about people, so it must be handled with care:",
+      "hi": "ज़िम्मेदार उपयोग। बिग डेटा लोगों के बारे में होता है, इसलिए इसे सावधानी से संभालना चाहिए:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Consent and purpose: collect only data needed for a clear purpose and tell people why.",
+       "Anonymisation: remove names, phone numbers and IDs before analysis wherever possible.",
+       "Security: encrypt data, control who can access it and report breaches.",
+       "Fairness: check that data does not leave out or misrepresent any group (for example, rural users with fewer smartphones).",
+       "Accuracy: clean data and question surprising results before acting on them."
+      ],
+      "hi": [
+       "सहमति और उद्देश्य: केवल स्पष्ट उद्देश्य के लिए ज़रूरी डेटा इकट्ठा करें और लोगों को कारण बताएँ।",
+       "Anonymisation (पहचान हटाना): जहाँ संभव हो, विश्लेषण से पहले नाम, फ़ोन नंबर और ID हटाएँ।",
+       "सुरक्षा: डेटा encrypt करें, नियंत्रित करें कि कौन देख सकता है, और लीक की सूचना दें।",
+       "निष्पक्षता: जाँचें कि डेटा किसी समूह को छोड़ता या ग़लत दिखाता तो नहीं (जैसे कम स्मार्टफ़ोन वाले ग्रामीण उपयोगकर्ता)।",
+       "शुद्धता: कदम उठाने से पहले डेटा साफ़ करें और चौंकाने वाले परिणामों पर प्रश्न करें।"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking big data means only 'a lot of data'. Fix: it is about volume, velocity and variety together; even moderate data arriving very fast can need big data tools.",
+   "Mixing up Variety and Variability. Fix: Variety = many forms of data; Variability = changing meaning, context or flow of data.",
+   "Calling CSV or JSON 'unstructured'. Fix: CSV, JSON, XML, HTML and email are semi-structured; images, audio, video and free text are unstructured.",
+   "Confusing diagnostic with predictive analytics. Fix: diagnostic explains why something already happened; predictive says what is likely to happen.",
+   "Saying prescriptive analytics only predicts. Fix: prescriptive recommends an action (what should we do).",
+   "Thinking stream processing stores everything first. Fix: stream processing works on data as it arrives, using windows, samples and running summaries.",
+   "Skipping data cleaning. Fix: always remove duplicates, errors and irrelevant data before analysing; dirty data gives wrong insights (Veracity).",
+   "Believing Value is automatic. Fix: data has value only when it is analysed and used to make a better decision.",
+   "Writing that Hadoop is a database. Fix: Hadoop is a framework (HDFS for storage + MapReduce for processing); MongoDB and Cassandra are NoSQL databases."
+  ],
+  "hi": [
+   "यह सोचना कि बिग डेटा का अर्थ केवल 'बहुत सारा डेटा' है। सुधार: यह volume, velocity और variety तीनों की बात है; बहुत तेज़ आने वाला मध्यम डेटा भी बिग डेटा टूल माँग सकता है।",
+   "Variety और Variability को मिलाना। सुधार: Variety = डेटा के कई रूप; Variability = डेटा का बदलता अर्थ, संदर्भ या प्रवाह।",
+   "CSV या JSON को 'अनस्ट्रक्चर्ड' कहना। सुधार: CSV, JSON, XML, HTML और ईमेल सेमी-स्ट्रक्चर्ड हैं; चित्र, ऑडियो, वीडियो और मुक्त टेक्स्ट अनस्ट्रक्चर्ड हैं।",
+   "निदानात्मक और भविष्यसूचक एनालिटिक्स को मिलाना। सुधार: निदानात्मक बताता है कि पहले हो चुकी बात क्यों हुई; भविष्यसूचक बताता है कि क्या होने की संभावना है।",
+   "यह कहना कि निर्देशात्मक एनालिटिक्स केवल भविष्यवाणी करता है। सुधार: निर्देशात्मक एक कदम सुझाता है (हमें क्या करना चाहिए)।",
+   "यह सोचना कि stream processing पहले सब स्टोर करती है। सुधार: stream processing डेटा आते ही window, नमूने और चलते सारांश से काम करती है।",
+   "डेटा सफ़ाई छोड़ देना। सुधार: विश्लेषण से पहले हमेशा दोहराव, ग़लतियाँ और अप्रासंगिक डेटा हटाएँ; गंदा डेटा ग़लत निष्कर्ष देता है (Veracity)।",
+   "यह मानना कि Value अपने-आप आती है। सुधार: डेटा का मूल्य तभी है जब उसका विश्लेषण करके बेहतर निर्णय लिया जाए।",
+   "लिखना कि Hadoop एक database है। सुधार: Hadoop एक framework है (storage के लिए HDFS + processing के लिए MapReduce); MongoDB और Cassandra NoSQL database हैं।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Small data",
+    "hi": "स्मॉल डेटा"
+   },
+   "d": {
+    "en": "Data small and simple enough for people to understand and use directly.",
+    "hi": "इतना छोटा और सरल डेटा कि लोग उसे सीधे समझ और उपयोग कर सकें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Big data",
+    "hi": "बिग डेटा"
+   },
+   "d": {
+    "en": "Very large, fast and varied data that traditional tools cannot handle efficiently.",
+    "hi": "बहुत बड़ा, तेज़ और विविध डेटा जिसे पारंपरिक टूल कुशलता से नहीं सँभाल पाते।"
+   }
+  },
+  {
+   "t": {
+    "en": "Structured data",
+    "hi": "स्ट्रक्चर्ड डेटा"
+   },
+   "d": {
+    "en": "Data in fixed rows and columns with a defined schema, e.g. a marks table.",
+    "hi": "निश्चित schema वाली पंक्तियों और स्तंभों में डेटा, जैसे अंकों की तालिका।"
+   }
+  },
+  {
+   "t": {
+    "en": "Semi-structured data",
+    "hi": "सेमी-स्ट्रक्चर्ड डेटा"
+   },
+   "d": {
+    "en": "Data with tags or keys but no fixed table, e.g. JSON, XML, CSV, email.",
+    "hi": "tag या key वाला पर बिना निश्चित तालिका का डेटा, जैसे JSON, XML, CSV, ईमेल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unstructured data",
+    "hi": "अनस्ट्रक्चर्ड डेटा"
+   },
+   "d": {
+    "en": "Data with no predefined model, e.g. images, audio, video, PDFs, posts.",
+    "hi": "बिना पहले से तय model का डेटा, जैसे चित्र, ऑडियो, वीडियो, PDF, पोस्ट।"
+   }
+  },
+  {
+   "t": {
+    "en": "Volume",
+    "hi": "Volume (मात्रा)"
+   },
+   "d": {
+    "en": "The amount of data.",
+    "hi": "डेटा की मात्रा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Velocity",
+    "hi": "Velocity (गति)"
+   },
+   "d": {
+    "en": "The speed at which data is generated and must be processed.",
+    "hi": "वह गति जिससे डेटा बनता है और प्रोसेस होना चाहिए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Variety",
+    "hi": "Variety (विविधता)"
+   },
+   "d": {
+    "en": "The different forms and types of data.",
+    "hi": "डेटा के अलग-अलग रूप और प्रकार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Veracity",
+    "hi": "Veracity (सत्यता)"
+   },
+   "d": {
+    "en": "The accuracy, quality and trustworthiness of data.",
+    "hi": "डेटा की शुद्धता, गुणवत्ता और विश्वसनीयता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Value",
+    "hi": "Value (मूल्य)"
+   },
+   "d": {
+    "en": "The useful insight or benefit gained from data.",
+    "hi": "डेटा से मिलने वाली उपयोगी जानकारी या लाभ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Variability",
+    "hi": "Variability (परिवर्तनशीलता)"
+   },
+   "d": {
+    "en": "Changes in the meaning, context or flow rate of data over time.",
+    "hi": "समय के साथ डेटा के अर्थ, संदर्भ या प्रवाह दर में बदलाव।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data analytics",
+    "hi": "डेटा एनालिटिक्स"
+   },
+   "d": {
+    "en": "Examining data to find patterns and answers that support decisions.",
+    "hi": "निर्णय में सहायक पैटर्न और उत्तर खोजने के लिए डेटा की जाँच।"
+   }
+  },
+  {
+   "t": {
+    "en": "Big data analytics",
+    "hi": "बिग डेटा एनालिटिक्स"
+   },
+   "d": {
+    "en": "Advanced analytics applied to very large, diverse datasets.",
+    "hi": "बहुत बड़े, विविध डेटासेट पर लागू उन्नत एनालिटिक्स।"
+   }
+  },
+  {
+   "t": {
+    "en": "Descriptive analytics",
+    "hi": "वर्णनात्मक एनालिटिक्स"
+   },
+   "d": {
+    "en": "Analytics that summarises what happened.",
+    "hi": "एनालिटिक्स जो सारांश देता है कि क्या हुआ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Diagnostic analytics",
+    "hi": "निदानात्मक एनालिटिक्स"
+   },
+   "d": {
+    "en": "Analytics that finds why something happened.",
+    "hi": "एनालिटिक्स जो पता लगाता है कि कुछ क्यों हुआ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Predictive analytics",
+    "hi": "भविष्यसूचक एनालिटिक्स"
+   },
+   "d": {
+    "en": "Analytics that forecasts what is likely to happen.",
+    "hi": "एनालिटिक्स जो अनुमान लगाता है कि क्या होने की संभावना है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prescriptive analytics",
+    "hi": "निर्देशात्मक एनालिटिक्स"
+   },
+   "d": {
+    "en": "Analytics that recommends what action to take.",
+    "hi": "एनालिटिक्स जो सुझाता है कि क्या कदम उठाएँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Batch processing",
+    "hi": "Batch processing"
+   },
+   "d": {
+    "en": "Processing large blocks of stored data together after a time gap.",
+    "hi": "कुछ समय बाद जमा डेटा के बड़े खंडों को एक साथ प्रोसेस करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stream processing",
+    "hi": "Stream processing"
+   },
+   "d": {
+    "en": "Processing data continuously, piece by piece, as it arrives.",
+    "hi": "डेटा आते ही टुकड़ों में लगातार प्रोसेस करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data cleaning",
+    "hi": "डेटा सफ़ाई"
+   },
+   "d": {
+    "en": "Removing or fixing duplicates, errors, irrelevant and missing data.",
+    "hi": "दोहराव, ग़लतियाँ, अप्रासंगिक और छूटे डेटा को हटाना या सुधारना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data stream",
+    "hi": "डेटा स्ट्रीम"
+   },
+   "d": {
+    "en": "A continuous, real-time flow of data.",
+    "hi": "डेटा का लगातार, वास्तविक समय प्रवाह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sliding window",
+    "hi": "Sliding window"
+   },
+   "d": {
+    "en": "The most recent part of a stream that is kept and analysed; old items slide out.",
+    "hi": "स्ट्रीम का सबसे हाल का भाग जिसे रखा और विश्लेषित किया जाता है; पुराने आइटम बाहर खिसकते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Concept drift",
+    "hi": "Concept drift"
+   },
+   "d": {
+    "en": "A change over time in the pattern a stream follows.",
+    "hi": "समय के साथ स्ट्रीम के पैटर्न में बदलाव।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hadoop, HDFS, MapReduce",
+    "hi": "Hadoop, HDFS, MapReduce"
+   },
+   "d": {
+    "en": "Open-source framework; HDFS stores data in replicated blocks across machines; MapReduce processes it in parallel with map and reduce steps.",
+    "hi": "open-source framework; HDFS डेटा को प्रतियों वाले खंडों में कई मशीनों पर रखता है; MapReduce उसे map और reduce चरणों से समानांतर प्रोसेस करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Apache Spark",
+    "hi": "Apache Spark"
+   },
+   "d": {
+    "en": "A fast big data engine that keeps data in memory between steps.",
+    "hi": "तेज़ बिग डेटा इंजन जो चरणों के बीच डेटा memory में रखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "NoSQL",
+    "hi": "NoSQL"
+   },
+   "d": {
+    "en": "Databases that store data as documents, key-values, wide columns or graphs, e.g. MongoDB, Cassandra.",
+    "hi": "डेटा को document, key-value, wide column या graph के रूप में रखने वाले database, जैसे MongoDB, Cassandra।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data lake / data warehouse",
+    "hi": "Data lake / data warehouse"
+   },
+   "d": {
+    "en": "Lake: raw data in all forms; warehouse: cleaned, structured data for reports.",
+    "hi": "Lake: सभी रूपों में कच्चा डेटा; warehouse: रिपोर्ट के लिए साफ़, स्ट्रक्चर्ड डेटा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Moore's Law",
+    "hi": "मूर का नियम"
+   },
+   "d": {
+    "en": "The observation that transistor count on chips roughly doubles about every two years.",
+    "hi": "यह अवलोकन कि chip पर transistor की संख्या लगभग हर दो साल में दोगुनी होती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Edge computing",
+    "hi": "एज कंप्यूटिंग"
+   },
+   "d": {
+    "en": "Processing data near where it is produced instead of in a distant cloud.",
+    "hi": "दूर के cloud की जगह डेटा जहाँ बनता है उसके पास ही प्रोसेस करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "DPDP Act, 2023",
+    "hi": "DPDP अधिनियम, 2023"
+   },
+   "d": {
+    "en": "India's Digital Personal Data Protection Act, which sets rules for handling personal data.",
+    "hi": "भारत का डिजिटल व्यक्तिगत डेटा संरक्षण अधिनियम, जो निजी डेटा संभालने के नियम तय करता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is an example of unstructured data? (a) A railway reservation table (b) A JSON file (c) A CCTV video (d) An Excel marks sheet",
+    "hi": "MCQ: इनमें से कौन अनस्ट्रक्चर्ड डेटा का उदाहरण है? (a) रेलवे आरक्षण तालिका (b) JSON फ़ाइल (c) CCTV वीडियो (d) Excel अंक-पत्र"
+   },
+   "a": {
+    "en": "(c) A CCTV video.",
+    "hi": "(c) CCTV वीडियो।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which V refers to the trustworthiness and quality of data? (a) Volume (b) Veracity (c) Velocity (d) Variety",
+    "hi": "MCQ: कौन-सा V डेटा की विश्वसनीयता और गुणवत्ता को दर्शाता है? (a) Volume (b) Veracity (c) Velocity (d) Variety"
+   },
+   "a": {
+    "en": "(b) Veracity.",
+    "hi": "(b) Veracity।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: 'What should we do?' is answered by (a) descriptive (b) diagnostic (c) predictive (d) prescriptive analytics.",
+    "hi": "MCQ: 'हमें क्या करना चाहिए?' का उत्तर देता है (a) वर्णनात्मक (b) निदानात्मक (c) भविष्यसूचक (d) निर्देशात्मक एनालिटिक्स।"
+   },
+   "a": {
+    "en": "(d) Prescriptive analytics.",
+    "hi": "(d) निर्देशात्मक एनालिटिक्स।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Email is an example of ________ data because it has fixed fields like To and Date along with free text.",
+    "hi": "रिक्त स्थान भरें: ईमेल ________ डेटा का उदाहरण है क्योंकि इसमें To और Date जैसे तय क्षेत्र और मुक्त टेक्स्ट दोनों होते हैं।"
+   },
+   "a": {
+    "en": "semi-structured",
+    "hi": "सेमी-स्ट्रक्चर्ड"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The three main sources of big data are transactional data, machine data and ________ data.",
+    "hi": "रिक्त स्थान भरें: बिग डेटा के तीन मुख्य स्रोत लेन-देन डेटा, मशीन डेटा और ________ डेटा हैं।"
+   },
+   "a": {
+    "en": "social",
+    "hi": "सोशल"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: Stream processing usually has lower delay than batch processing.",
+    "hi": "सही या ग़लत: Stream processing में प्रायः batch processing से कम देरी होती है।"
+   },
+   "a": {
+    "en": "True. Stream processing handles data as it arrives, so results come in seconds.",
+    "hi": "सही। Stream processing डेटा आते ही सँभालती है, इसलिए परिणाम सेकंडों में आते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: Value is considered the least important of the Vs.",
+    "hi": "सही या ग़लत: Value को सबसे कम महत्वपूर्ण V माना जाता है।"
+   },
+   "a": {
+    "en": "False. Value is the most important V; without useful insight, the other Vs do not matter.",
+    "hi": "ग़लत। Value सबसे महत्वपूर्ण V है; उपयोगी जानकारी के बिना बाकी V का कोई अर्थ नहीं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Big data cannot always be handled by a single ordinary computer. Reason (R): Big data is often too large and arrives too fast for traditional storage and processing. Choose: (a) both true, R explains A (b) both true, R does not explain A (c) A true, R false (d) A false, R true.",
+    "hi": "अभिकथन (A): बिग डेटा हमेशा एक साधारण कंप्यूटर से नहीं सँभल सकता। कारण (R): बिग डेटा प्रायः पारंपरिक storage और processing के लिए बहुत बड़ा होता है और बहुत तेज़ी से आता है। चुनें: (a) दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R ग़लत (d) A ग़लत, R सही।"
+   },
+   "a": {
+    "en": "(a) Both are true and R correctly explains A.",
+    "hi": "(a) दोनों सही हैं और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Data cleaning is an important step in big data analytics. Reason (R): Cleaning increases the volume of data. Choose (a)–(d) as above.",
+    "hi": "अभिकथन (A): डेटा सफ़ाई बिग डेटा एनालिटिक्स का महत्वपूर्ण चरण है। कारण (R): सफ़ाई डेटा की मात्रा बढ़ाती है। ऊपर जैसे (a)–(d) में से चुनें।"
+   },
+   "a": {
+    "en": "(c) A is true but R is false. Cleaning removes duplicates and errors, which usually reduces volume; it is important because it improves veracity.",
+    "hi": "(c) A सही है पर R ग़लत। सफ़ाई दोहराव और ग़लतियाँ हटाती है, जिससे प्रायः मात्रा घटती है; यह इसलिए महत्वपूर्ण है क्योंकि इससे veracity सुधरती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Differentiate between structured, semi-structured and unstructured data with one example each.",
+    "hi": "लघु उत्तर: स्ट्रक्चर्ड, सेमी-स्ट्रक्चर्ड और अनस्ट्रक्चर्ड डेटा में एक-एक उदाहरण के साथ अंतर बताइए।"
+   },
+   "a": {
+    "en": "Structured: fixed rows and columns with a schema; easy to query with SQL; e.g. bank transaction table.\nSemi-structured: no fixed table but has tags/keys; e.g. JSON from a weather API, XML, email.\nUnstructured: no predefined model; needs AI to interpret; e.g. photos, videos, voice notes, social media posts.",
+    "hi": "स्ट्रक्चर्ड: schema वाली निश्चित पंक्तियाँ और स्तंभ; SQL से आसानी से खोज; जैसे बैंक लेन-देन तालिका।\nसेमी-स्ट्रक्चर्ड: निश्चित तालिका नहीं पर tag/key होते हैं; जैसे मौसम API का JSON, XML, ईमेल।\nअनस्ट्रक्चर्ड: कोई पहले से तय model नहीं; समझने के लिए AI चाहिए; जैसे फ़ोटो, वीडियो, वॉइस नोट, सोशल मीडिया पोस्ट।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Name the four global trends that led to the growth of big data analytics.",
+    "hi": "लघु उत्तर: बिग डेटा एनालिटिक्स के विकास के चार वैश्विक रुझान बताइए।"
+   },
+   "a": {
+    "en": "1. Moore's Law (faster, cheaper computing and storage). 2. Mobile computing (data from smartphones anywhere, anytime). 3. Social networking (huge user-generated data). 4. Cloud computing (rent storage and computing over the internet, lower cost).",
+    "hi": "1. मूर का नियम (तेज़, सस्ता computing और storage)। 2. मोबाइल कंप्यूटिंग (कहीं भी, कभी भी स्मार्टफ़ोन से डेटा)। 3. सोशल नेटवर्किंग (उपयोगकर्ताओं का विशाल डेटा)। 4. क्लाउड कंप्यूटिंग (इंटरनेट पर storage और computing किराये पर, कम लागत)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Explain batch processing and stream processing with one example each.",
+    "hi": "लघु उत्तर: batch processing और stream processing को एक-एक उदाहरण के साथ समझाइए।"
+   },
+   "a": {
+    "en": "Batch processing collects data over time and processes large blocks together; it has higher delay but is simpler and cheaper; e.g. monthly electricity bills.\nStream processing processes data continuously as it arrives in small pieces; it has very low delay for quick decisions but is more complex; e.g. real-time UPI fraud alerts.",
+    "hi": "Batch processing समय के साथ डेटा जमा करके बड़े खंड एक साथ प्रोसेस करती है; इसमें अधिक देरी पर यह सरल और सस्ती है; जैसे मासिक बिजली बिल।\nStream processing डेटा आते ही छोटे टुकड़ों में लगातार प्रोसेस करती है; तुरंत निर्णय के लिए बहुत कम देरी, पर अधिक जटिल; जैसे वास्तविक समय UPI धोखाधड़ी चेतावनी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: What is meant by mining data streams? Why can't we simply store all stream data and analyse it later?",
+    "hi": "लघु उत्तर: डेटा स्ट्रीम माइनिंग का क्या अर्थ है? हम सारा स्ट्रीम डेटा स्टोर करके बाद में विश्लेषण क्यों नहीं कर सकते?"
+   },
+   "a": {
+    "en": "Mining data streams means finding patterns, trends and unusual events in a continuous real-time flow of data while it is still arriving.\nWe cannot simply store everything because the data arrives too fast and in too large a volume, the stream may never end, answers are often needed immediately (e.g. stopping fraud), and patterns change over time. So we use windows, sampling and running summaries.",
+    "hi": "डेटा स्ट्रीम माइनिंग का अर्थ है डेटा के लगातार, वास्तविक समय प्रवाह के आते रहते ही उसमें पैटर्न, रुझान और असामान्य घटनाएँ खोजना।\nसब स्टोर करना संभव नहीं क्योंकि डेटा बहुत तेज़ी और बहुत मात्रा में आता है, स्ट्रीम कभी ख़त्म नहीं हो सकती, उत्तर अक्सर तुरंत चाहिए (जैसे धोखाधड़ी रोकना), और पैटर्न समय के साथ बदलते हैं। इसलिए हम window, sampling और चलते सारांश का उपयोग करते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Calculate: A city has 2 lakh smart meters, each sending one 0.5 KB reading every 15 minutes. About how much data is produced per day?",
+    "hi": "गणना करें: एक शहर में 2 लाख स्मार्ट मीटर हैं, हर एक हर 15 मिनट में 0.5 KB की एक रीडिंग भेजता है। प्रति दिन लगभग कितना डेटा बनता है?"
+   },
+   "a": {
+    "en": "Readings per meter per day = 24 × 60 ÷ 15 = 96.\nTotal readings = 2,00,000 × 96 = 1,92,00,000 (1.92 crore).\nData = 1.92 crore × 0.5 KB = 96,00,000 KB = 9,600 MB ≈ 9.6 GB per day (taking 1,000 KB = 1 MB).",
+    "hi": "हर मीटर की प्रति दिन रीडिंग = 24 × 60 ÷ 15 = 96।\nकुल रीडिंग = 2,00,000 × 96 = 1,92,00,000 (1.92 करोड़)।\nडेटा = 1.92 करोड़ × 0.5 KB = 96,00,000 KB = 9,600 MB ≈ 9.6 GB प्रति दिन (1,000 KB = 1 MB मानकर)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Python: What will df.groupby('city')['amount'].sum() return for the canteen dataset? What does pivot_table add beyond groupby here?",
+    "hi": "Python: कैंटीन डेटासेट के लिए df.groupby('city')['amount'].sum() क्या लौटाएगा? यहाँ pivot_table, groupby से अधिक क्या देता है?"
+   },
+   "a": {
+    "en": "It returns the total amount for each city: Chennai 24515, Delhi 25645, Kolkata 26105, Mumbai 27555.\npivot_table with columns='month' breaks each city's total further by month, giving a two-way table (city × month), e.g. Mumbai Jan = 10280.",
+    "hi": "यह हर शहर की कुल राशि लौटाता है: Chennai 24515, Delhi 25645, Kolkata 26105, Mumbai 27555।\ncolumns='month' वाली pivot_table हर शहर के योग को महीने के अनुसार और बाँटती है, जिससे दो-तरफ़ा तालिका (शहर × महीना) बनती है, जैसे Mumbai Jan = 10280।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain the 6 Vs of big data with an example of each from a single Indian application such as a food-delivery app.",
+    "hi": "दीर्घ उत्तर: किसी एक भारतीय एप्लिकेशन, जैसे फ़ूड-डिलीवरी ऐप, के उदाहरण से बिग डेटा के 6 V समझाइए।"
+   },
+   "a": {
+    "en": "Volume: crores of orders, menus, photos and GPS points stored.\nVelocity: thousands of orders per minute at dinner time; live location updates every few seconds.\nVariety: structured order tables, semi-structured JSON from the app, unstructured food photos, review text and voice support calls.\nVeracity: fake reviews, wrong addresses and GPS errors must be cleaned.\nValue: insights such as which dishes sell in which area help restaurants and reduce delivery time.\nVariability: demand jumps during a cricket final or rain and falls later; words in reviews may change meaning ('killer biryani' is praise).",
+    "hi": "Volume: करोड़ों ऑर्डर, मेन्यू, फ़ोटो और GPS बिंदु स्टोर।\nVelocity: रात के खाने के समय प्रति मिनट हज़ारों ऑर्डर; हर कुछ सेकंड में लाइव location अपडेट।\nVariety: स्ट्रक्चर्ड ऑर्डर तालिकाएँ, ऐप से सेमी-स्ट्रक्चर्ड JSON, अनस्ट्रक्चर्ड खाने की फ़ोटो, रिव्यू टेक्स्ट और वॉइस सपोर्ट कॉल।\nVeracity: नकली रिव्यू, ग़लत पते और GPS त्रुटियाँ साफ़ करनी होती हैं।\nValue: किस इलाक़े में कौन-सा व्यंजन बिकता है जैसी जानकारी रेस्तराँ की मदद करती है और डिलीवरी समय घटाती है।\nVariability: क्रिकेट फ़ाइनल या बारिश में माँग उछलती है और बाद में गिरती है; रिव्यू में शब्दों का अर्थ बदल सकता है ('killer biryani' तारीफ़ है)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe the four steps of how big data analytics works, using the example of a hospital chain.",
+    "hi": "दीर्घ उत्तर: एक अस्पताल श्रृंखला के उदाहरण से बिग डेटा एनालिटिक्स के काम करने के चार चरण बताइए।"
+   },
+   "a": {
+    "en": "1. Gather: collect patient records, lab results, scans, bed occupancy, pharmacy sales and wearable data into a data lake or warehouse.\n2. Process: batch-process monthly records for reports; stream-process ICU monitor readings for instant alerts.\n3. Clean: remove duplicate patient entries, fix wrong units (mg vs g), handle missing values, remove irrelevant fields; anonymise personal details.\n4. Analyse: use statistics and machine learning to find which wards are overloaded (descriptive), why readmissions happen (diagnostic), predict next week's flu cases (predictive) and recommend staff and bed allocation (prescriptive). Show results on dashboards.",
+    "hi": "1. इकट्ठा करना: मरीज़ रिकॉर्ड, लैब परिणाम, स्कैन, बिस्तर की स्थिति, फ़ार्मेसी बिक्री और wearable डेटा को data lake या warehouse में जमा करना।\n2. प्रोसेस: रिपोर्ट के लिए मासिक रिकॉर्ड की batch processing; तुरंत चेतावनी के लिए ICU मॉनिटर रीडिंग की stream processing।\n3. सफ़ाई: दोहराए मरीज़ हटाना, ग़लत इकाइयाँ (mg बनाम g) सुधारना, छूटे मान सँभालना, अप्रासंगिक क्षेत्र हटाना; निजी विवरण की पहचान हटाना।\n4. विश्लेषण: statistics और machine learning से पता लगाना कि कौन-से वार्ड भरे हैं (वर्णनात्मक), दोबारा भर्ती क्यों होती है (निदानात्मक), अगले हफ़्ते के फ़्लू मामलों का अनुमान (भविष्यसूचक) और स्टाफ़ व बिस्तर बँटवारे का सुझाव (निर्देशात्मक)। परिणाम dashboard पर दिखाना।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Discuss the advantages and disadvantages of big data. Mention one Indian law related to data protection.",
+    "hi": "दीर्घ उत्तर: बिग डेटा के लाभ और हानियों की चर्चा कीजिए। डेटा संरक्षण से जुड़ा एक भारतीय क़ानून बताइए।"
+   },
+   "a": {
+    "en": "Advantages: better decision making based on evidence; improved efficiency and productivity; better customer insights and personalisation; competitive advantage; innovation and growth (new services like crop advisories).\nDisadvantages: privacy and security risks (breaches, misuse); data quality issues (errors, bias); technical complexity and shortage of skilled people; regulatory compliance; high cost of storage, computing and experts.\nLaw: the Digital Personal Data Protection (DPDP) Act, 2023 requires lawful, consent-based handling of personal data.",
+    "hi": "लाभ: सबूत पर आधारित बेहतर निर्णय; बेहतर दक्षता और उत्पादकता; ग्राहकों की बेहतर समझ और व्यक्तिगत सेवा; प्रतिस्पर्धी बढ़त; नवाचार और विकास (जैसे फ़सल सलाह जैसी नई सेवाएँ)।\nहानियाँ: निजता और सुरक्षा के जोखिम (लीक, दुरुपयोग); डेटा गुणवत्ता की समस्याएँ (ग़लतियाँ, पक्षपात); तकनीकी जटिलता और कुशल लोगों की कमी; नियमों का पालन; storage, computing और विशेषज्ञों की ऊँची लागत।\nक़ानून: डिजिटल व्यक्तिगत डेटा संरक्षण (DPDP) अधिनियम, 2023 निजी डेटा को वैध और सहमति-आधारित तरीके से संभालना ज़रूरी बनाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A cricket analytics team receives ball-by-ball data (speed, line, length, shot, runs) from every match, plus videos and fan tweets. (i) Identify the types of data. (ii) Give one example each of descriptive and prescriptive analytics. (iii) Which processing is needed to update a live 'win probability' during a match?",
+    "hi": "केस-आधारित: एक क्रिकेट एनालिटिक्स टीम को हर मैच का गेंद-दर-गेंद डेटा (गति, लाइन, लेंथ, शॉट, रन), वीडियो और प्रशंसकों के ट्वीट मिलते हैं। (i) डेटा के प्रकार पहचानिए। (ii) वर्णनात्मक और निर्देशात्मक एनालिटिक्स का एक-एक उदाहरण दीजिए। (iii) मैच के दौरान लाइव 'जीत की संभावना' अपडेट करने के लिए कौन-सी processing चाहिए?"
+   },
+   "a": {
+    "en": "(i) Ball-by-ball table: structured; videos and tweets: unstructured (tweets fetched as JSON are semi-structured in form).\n(ii) Descriptive: 'This batter scored 60% of runs on the leg side last season.' Prescriptive: 'Place an extra fielder at deep mid-wicket and bowl outside off stump.'\n(iii) Stream processing, because the probability must change after every ball with very low delay.",
+    "hi": "(i) गेंद-दर-गेंद तालिका: स्ट्रक्चर्ड; वीडियो और ट्वीट: अनस्ट्रक्चर्ड (JSON में लाए गए ट्वीट रूप में सेमी-स्ट्रक्चर्ड)।\n(ii) वर्णनात्मक: 'इस बल्लेबाज़ ने पिछले सीज़न 60% रन लेग साइड पर बनाए।' निर्देशात्मक: 'डीप मिड-विकेट पर एक अतिरिक्त फ़ील्डर रखें और ऑफ़ स्टंप के बाहर गेंद डालें।'\n(iii) Stream processing, क्योंकि हर गेंद के बाद बहुत कम देरी में संभावना बदलनी चाहिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: An agriculture department combines satellite images, weather station data, soil test reports (PDFs) and farmers' questions sent as voice notes in Indian languages. (i) Which Vs are most visible? (ii) Suggest one future trend that would help. (iii) Name one ethical precaution.",
+    "hi": "केस-आधारित: एक कृषि विभाग उपग्रह चित्र, मौसम केंद्र डेटा, मिट्टी परीक्षण रिपोर्ट (PDF) और भारतीय भाषाओं में वॉइस नोट से आए किसानों के प्रश्न मिलाता है। (i) कौन-से V सबसे स्पष्ट हैं? (ii) सहायक एक भविष्य का रुझान सुझाइए। (iii) एक नैतिक सावधानी बताइए।"
+   },
+   "a": {
+    "en": "(i) Variety (images, numbers, PDFs, audio), Volume (satellite images are huge), Veracity (sensor errors, unclear voice notes) and Value (better advice to farmers).\n(ii) AI-driven analytics with speech recognition in Indian languages (such as tools built on Bhashini) to understand voice notes, or edge computing on field sensors for quick local alerts; also advanced predictive models for yield and pest outbreaks.\n(iii) Take consent and anonymise farmers' personal details and land records before analysis.",
+    "hi": "(i) Variety (चित्र, संख्याएँ, PDF, ऑडियो), Volume (उपग्रह चित्र विशाल होते हैं), Veracity (sensor त्रुटियाँ, अस्पष्ट वॉइस नोट) और Value (किसानों को बेहतर सलाह)।\n(ii) भारतीय भाषाओं में speech recognition वाला AI-संचालित एनालिटिक्स (जैसे Bhashini पर बने टूल) ताकि वॉइस नोट समझे जाएँ, या खेत के sensor पर edge computing से तुरंत स्थानीय चेतावनी; साथ ही उपज और कीट प्रकोप के लिए उन्नत भविष्यसूचक model।\n(iii) विश्लेषण से पहले सहमति लें और किसानों के निजी विवरण व भूमि रिकॉर्ड की पहचान हटाएँ।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity/thinking: List five apps or services you or your family use. For each, name the type of data it collects and one way its big data analytics helps you. Then name one privacy setting you can change to share less data.",
+    "hi": "गतिविधि/चिंतन: आप या आपका परिवार जो पाँच ऐप या सेवाएँ उपयोग करते हैं, उनकी सूची बनाइए। हर एक के लिए बताइए कि वह किस प्रकार का डेटा लेता है और उसका बिग डेटा एनालिटिक्स आपकी कैसे मदद करता है। फिर एक निजता सेटिंग बताइए जिसे बदलकर आप कम डेटा साझा कर सकें।"
+   },
+   "a": {
+    "en": "Sample answer: Map app - location (stream) - live traffic and faster routes. UPI app - transactions (structured) - fraud alerts. Video app - watch history - recommendations. Weather app - location and sensor data - rain alerts. Shopping app - orders and reviews - offers and delivery estimates.\nPrivacy step: turn off 'precise location' or location history for apps that do not need it, or switch off ad personalisation.",
+    "hi": "नमूना उत्तर: मैप ऐप - location (stream) - लाइव ट्रैफ़िक और तेज़ रास्ते। UPI ऐप - लेन-देन (स्ट्रक्चर्ड) - धोखाधड़ी चेतावनी। वीडियो ऐप - देखने का इतिहास - सुझाव। मौसम ऐप - location और sensor डेटा - बारिश की चेतावनी। शॉपिंग ऐप - ऑर्डर और रिव्यू - ऑफ़र और डिलीवरी अनुमान।\nनिजता कदम: जिन ऐप को ज़रूरत नहीं उनके लिए 'precise location' या location history बंद करें, या विज्ञापन personalisation बंद करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: The sliding-window UPI program uses the rule 'alert if amount > 10 × recent average'. Give one situation where it would raise a false alarm and one where it would miss real fraud. How could it be improved?",
+    "hi": "चिंतन: sliding-window UPI प्रोग्राम 'राशि > 10 × हाल का औसत हो तो चेतावनी' नियम लगाता है। एक स्थिति बताइए जहाँ यह झूठी चेतावनी देगा और एक जहाँ असली धोखाधड़ी छूट जाएगी। इसे कैसे सुधारा जा सकता है?"
+   },
+   "a": {
+    "en": "False alarm: a family pays school fees of Rs 15,000 once a year after many small payments; the rule flags a genuine payment.\nMissed fraud: a fraudster makes many small payments of Rs 200 each to a new receiver; none is 10 times the average.\nImprovements: also check the receiver (new or known), device, location, time of day and the number of payments per minute; learn each user's normal pattern with machine learning; ask the user to confirm instead of blocking.",
+    "hi": "झूठी चेतावनी: कई छोटे भुगतानों के बाद परिवार साल में एक बार Rs 15,000 की स्कूल फ़ीस भरता है; नियम असली भुगतान को चिह्नित करता है।\nछूटी धोखाधड़ी: ठग नए प्राप्तकर्ता को Rs 200 के कई छोटे भुगतान करता है; कोई भी औसत का 10 गुना नहीं।\nसुधार: प्राप्तकर्ता (नया या परिचित), डिवाइस, स्थान, समय और प्रति मिनट भुगतानों की संख्या भी जाँचें; machine learning से हर उपयोगकर्ता का सामान्य पैटर्न सीखें; रोकने की जगह उपयोगकर्ता से पुष्टि माँगें।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Small data is simple enough for people to use directly; big data is too large, fast or varied for traditional tools.",
+   "Big data comes from transactional, machine (sensor) and social sources.",
+   "Its growth was driven by Moore's Law, mobile computing, social networking and cloud computing.",
+   "Types: structured (tables), semi-structured (JSON, XML, CSV, email) and unstructured (images, audio, video, posts).",
+   "The 6 Vs: Volume, Velocity, Variety, Veracity, Value (most important) and Variability.",
+   "Advantages: better decisions, efficiency, customer insight, competitive edge, innovation. Disadvantages: privacy and security, data quality, complexity, regulation (DPDP Act 2023, GDPR), cost.",
+   "Big data analytics applies advanced techniques to huge, diverse datasets to find hidden patterns.",
+   "It works in four steps: gather, process (batch or stream), clean and analyse.",
+   "Four types of analytics: descriptive (what happened), diagnostic (why), predictive (what next), prescriptive (what to do).",
+   "Hadoop (HDFS + MapReduce), Spark, NoSQL databases (MongoDB, Cassandra), Tableau and SAS are common tools.",
+   "Mining data streams finds patterns in continuous real-time data using windows, sampling and running summaries.",
+   "Future trends: real-time analytics, advanced predictive models, quantum computing, AI-driven analytics, edge computing and stronger privacy.",
+   "Orange (no-code) and pandas groupby(), value_counts() and pivot_table() let students practise big data thinking.",
+   "Handle data responsibly: consent, anonymisation, security, fairness and accuracy."
+  ],
+  "hi": [
+   "स्मॉल डेटा इतना सरल है कि लोग सीधे उपयोग कर सकें; बिग डेटा पारंपरिक टूल के लिए बहुत बड़ा, तेज़ या विविध है।",
+   "बिग डेटा लेन-देन, मशीन (sensor) और सोशल स्रोतों से आता है।",
+   "इसकी वृद्धि मूर के नियम, मोबाइल कंप्यूटिंग, सोशल नेटवर्किंग और क्लाउड कंप्यूटिंग से हुई।",
+   "प्रकार: स्ट्रक्चर्ड (तालिकाएँ), सेमी-स्ट्रक्चर्ड (JSON, XML, CSV, ईमेल) और अनस्ट्रक्चर्ड (चित्र, ऑडियो, वीडियो, पोस्ट)।",
+   "6 V: Volume, Velocity, Variety, Veracity, Value (सबसे महत्वपूर्ण) और Variability।",
+   "लाभ: बेहतर निर्णय, दक्षता, ग्राहक समझ, प्रतिस्पर्धी बढ़त, नवाचार। हानियाँ: निजता और सुरक्षा, डेटा गुणवत्ता, जटिलता, नियम (DPDP अधिनियम 2023, GDPR), लागत।",
+   "बिग डेटा एनालिटिक्स छिपे पैटर्न खोजने के लिए विशाल, विविध डेटासेट पर उन्नत तकनीकें लागू करता है।",
+   "यह चार चरणों में काम करता है: इकट्ठा करना, प्रोसेस (batch या stream), सफ़ाई और विश्लेषण।",
+   "एनालिटिक्स के चार प्रकार: वर्णनात्मक (क्या हुआ), निदानात्मक (क्यों), भविष्यसूचक (आगे क्या), निर्देशात्मक (क्या करें)।",
+   "Hadoop (HDFS + MapReduce), Spark, NoSQL database (MongoDB, Cassandra), Tableau और SAS आम टूल हैं।",
+   "डेटा स्ट्रीम माइनिंग window, sampling और चलते सारांश से लगातार वास्तविक समय डेटा में पैटर्न खोजती है।",
+   "भविष्य के रुझान: वास्तविक समय एनालिटिक्स, उन्नत भविष्यसूचक model, क्वांटम कंप्यूटिंग, AI-संचालित एनालिटिक्स, एज कंप्यूटिंग और मज़बूत निजता।",
+   "Orange (no-code) और pandas के groupby(), value_counts() व pivot_table() से विद्यार्थी बिग डेटा सोच का अभ्यास कर सकते हैं।",
+   "डेटा ज़िम्मेदारी से संभालें: सहमति, पहचान हटाना, सुरक्षा, निष्पक्षता और शुद्धता।"
+  ]
+ }
+}

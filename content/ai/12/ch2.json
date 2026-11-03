@@ -1,0 +1,2209 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "12",
+ "id": "ch2",
+ "intro": {
+  "en": "Every successful AI project follows a plan. This chapter teaches the 10-stage Data Science Methodology, grouped into 5 modules, that takes a team from understanding a real problem to deploying a model and improving it with feedback. You will then learn how to validate a model with train-test split and k-fold cross-validation, and how to judge it with metrics such as accuracy, precision, recall, F1, MAE, MSE and RMSE. Together these give you the complete structure for your Capstone Project.",
+  "hi": "हर सफल AI प्रोजेक्ट एक योजना का पालन करता है। यह अध्याय 5 modules में बँटी 10-चरणीय डेटा साइंस पद्धति सिखाता है, जो किसी टीम को एक वास्तविक समस्या समझने से लेकर model लागू करने और feedback से उसे सुधारने तक ले जाती है। फिर आप सीखेंगे कि train-test split और k-fold cross-validation से model को कैसे validate करें, और accuracy, precision, recall, F1, MAE, MSE तथा RMSE जैसे metrics से उसे कैसे आँकें। ये सब मिलकर आपके Capstone Project का पूरा ढाँचा देते हैं।"
+ },
+ "learn": {
+  "en": [
+   "What Data Science Methodology is and why it is needed",
+   "The 10 stages in 5 modules, with a complete worked example",
+   "Business Understanding with 5W1H and writing a problem statement",
+   "Choosing an analytic approach: regression, classification, clustering, anomaly detection, recommendation; descriptive, diagnostic, predictive and prescriptive analytics",
+   "Data requirements, data types (structured, unstructured, semi-structured) and primary/secondary sources",
+   "Data understanding, data preparation and feature engineering",
+   "Modelling, evaluation, deployment and feedback, including data drift",
+   "Model validation: overfitting, underfitting, train-test split, k-fold cross-validation, LOOCV and time-series CV",
+   "Classification metrics from a confusion matrix: accuracy, precision, recall, F1",
+   "Regression metrics MAE, MSE and RMSE, by hand, in Excel and in Python"
+  ],
+  "hi": [
+   "डेटा साइंस पद्धति क्या है और इसकी ज़रूरत क्यों है",
+   "5 modules में 10 चरण, एक पूरे हल किए गए उदाहरण के साथ",
+   "5W1H से Business Understanding और समस्या-कथन लिखना",
+   "विश्लेषणात्मक दृष्टिकोण चुनना: regression, classification, clustering, anomaly detection, recommendation; descriptive, diagnostic, predictive और prescriptive analytics",
+   "Data आवश्यकताएँ, data प्रकार (structured, unstructured, semi-structured) और प्राथमिक/द्वितीयक स्रोत",
+   "Data understanding, data preparation और feature engineering",
+   "Modelling, evaluation, deployment और feedback, data drift सहित",
+   "Model validation: overfitting, underfitting, train-test split, k-fold cross-validation, LOOCV और time-series CV",
+   "Confusion matrix से classification metrics: accuracy, precision, recall, F1",
+   "Regression metrics MAE, MSE और RMSE, हाथ से, Excel में और Python में"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "2.1 What is Data Science Methodology?",
+    "hi": "2.1 डेटा साइंस पद्धति क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Imagine you join a team that wants to cut food waste in your school canteen. Someone says, 'Let us build an AI model!' But which model? Using what data? How will you know it works? Without a plan, the team may spend weeks collecting the wrong data or answering the wrong question. Data Science Methodology is that plan.",
+      "hi": "मान लीजिए आप एक ऐसी टीम में हैं जो स्कूल कैंटीन में खाने की बर्बादी कम करना चाहती है। कोई कहता है, 'चलो एक AI model बनाते हैं!' पर कौन-सा model? किस data से? कैसे पता चलेगा कि वह काम करता है? योजना के बिना टीम हफ़्तों तक ग़लत data इकट्ठा कर सकती है या ग़लत प्रश्न का उत्तर ढूँढ़ सकती है। डेटा साइंस पद्धति (Data Science Methodology) वही योजना है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data Science Methodology",
+       "hi": "डेटा साइंस पद्धति"
+      },
+      "text": {
+       "en": "Data Science Methodology is a structured, step-by-step and repeatable framework that guides data scientists from understanding a real-world problem, through collecting and preparing data and building models, to deploying the solution and improving it with feedback.",
+       "hi": "डेटा साइंस पद्धति एक संरचित, चरणबद्ध और दोहराने योग्य ढाँचा है, जो data scientists को किसी वास्तविक समस्या को समझने से लेकर, data इकट्ठा करने और तैयार करने, models बनाने, और समाधान को लागू (deploy) करके feedback से सुधारने तक मार्गदर्शन देता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The methodology studied in CBSE Class XII is based on the Foundational Methodology for Data Science described by John Rollins, a data scientist at IBM. It builds on earlier frameworks such as CRISP-DM (Cross-Industry Standard Process for Data Mining). It has 10 stages, grouped into 5 modules of two stages each. The stages are not a straight one-way road: the process is iterative, so a team often goes back to an earlier stage (for example, from data understanding back to data collection) when it learns something new.",
+      "hi": "CBSE कक्षा XII में पढ़ाई जाने वाली पद्धति IBM के data scientist जॉन रॉलिन्स (John Rollins) द्वारा बताई गई Foundational Methodology for Data Science पर आधारित है। यह CRISP-DM (Cross-Industry Standard Process for Data Mining) जैसे पहले के ढाँचों पर बनी है। इसमें 10 चरण हैं, जो दो-दो चरणों के 5 modules में बँटे हैं। ये चरण एक-तरफ़ा सीधी सड़क नहीं हैं: प्रक्रिया पुनरावृत्त (iterative) है, इसलिए कुछ नया पता चलने पर टीम प्रायः किसी पिछले चरण पर लौटती है (जैसे data understanding से वापस data collection पर)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Module",
+        "Stage",
+        "Key question"
+       ],
+       "hi": [
+        "Module",
+        "चरण",
+        "मुख्य प्रश्न"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. From Problem to Approach",
+         "1. Business Understanding",
+         "What is the problem we are trying to solve?"
+        ],
+        [
+         "1. From Problem to Approach",
+         "2. Analytic Approach",
+         "How can we use data to answer the question?"
+        ],
+        [
+         "2. From Requirements to Collection",
+         "3. Data Requirements",
+         "What data do we need, in what form?"
+        ],
+        [
+         "2. From Requirements to Collection",
+         "4. Data Collection",
+         "Where will the data come from, and how do we gather it?"
+        ],
+        [
+         "3. From Understanding to Preparation",
+         "5. Data Understanding",
+         "Is the data we collected right for the problem?"
+        ],
+        [
+         "3. From Understanding to Preparation",
+         "6. Data Preparation",
+         "How do we clean and shape the data for modelling?"
+        ],
+        [
+         "4. From Modelling to Evaluation",
+         "7. AI Modelling",
+         "Which model answers the question, and how do we build it?"
+        ],
+        [
+         "4. From Modelling to Evaluation",
+         "8. Evaluation",
+         "Does the model really answer the question well?"
+        ],
+        [
+         "5. From Deployment to Feedback",
+         "9. Deployment",
+         "Can people actually use the model?"
+        ],
+        [
+         "5. From Deployment to Feedback",
+         "10. Feedback",
+         "What do users and new data tell us, and how do we improve?"
+        ]
+       ],
+       "hi": [
+        [
+         "1. समस्या से दृष्टिकोण तक",
+         "1. Business Understanding (व्यावसायिक समझ)",
+         "हम कौन-सी समस्या हल करना चाहते हैं?"
+        ],
+        [
+         "1. समस्या से दृष्टिकोण तक",
+         "2. Analytic Approach (विश्लेषणात्मक दृष्टिकोण)",
+         "प्रश्न का उत्तर देने के लिए data का उपयोग कैसे करें?"
+        ],
+        [
+         "2. आवश्यकताओं से संग्रह तक",
+         "3. Data Requirements (data आवश्यकताएँ)",
+         "हमें कौन-सा data, किस रूप में चाहिए?"
+        ],
+        [
+         "2. आवश्यकताओं से संग्रह तक",
+         "4. Data Collection (data संग्रह)",
+         "data कहाँ से आएगा और हम उसे कैसे इकट्ठा करेंगे?"
+        ],
+        [
+         "3. समझ से तैयारी तक",
+         "5. Data Understanding (data की समझ)",
+         "क्या इकट्ठा किया गया data समस्या के लिए सही है?"
+        ],
+        [
+         "3. समझ से तैयारी तक",
+         "6. Data Preparation (data की तैयारी)",
+         "modelling के लिए data को कैसे साफ़ करें और ढालें?"
+        ],
+        [
+         "4. Modelling से मूल्यांकन तक",
+         "7. AI Modelling",
+         "कौन-सा model प्रश्न का उत्तर देगा, और उसे कैसे बनाएँ?"
+        ],
+        [
+         "4. Modelling से मूल्यांकन तक",
+         "8. Evaluation (मूल्यांकन)",
+         "क्या model सचमुच प्रश्न का अच्छा उत्तर देता है?"
+        ],
+        [
+         "5. Deployment से Feedback तक",
+         "9. Deployment (लागू करना)",
+         "क्या लोग सचमुच model का उपयोग कर सकते हैं?"
+        ],
+        [
+         "5. Deployment से Feedback तक",
+         "10. Feedback (प्रतिक्रिया)",
+         "उपयोगकर्ता और नया data क्या बताते हैं, और हम कैसे सुधारें?"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture the stages arranged in a circle with arrows. Business Understanding leads to Analytic Approach, and so on round to Feedback; small backward arrows join Analytic Approach back to Business Understanding, Data Understanding back to Data Collection, and Evaluation back to Modelling. A big arrow from Feedback returns to the start, because every deployed model creates new data and new questions.",
+      "hi": "इन चरणों को तीरों के साथ एक वृत्त में सजा हुआ सोचिए। Business Understanding से Analytic Approach, और इसी तरह घूमकर Feedback तक; छोटे उलटे तीर Analytic Approach को Business Understanding से, Data Understanding को Data Collection से, और Evaluation को Modelling से जोड़ते हैं। Feedback से एक बड़ा तीर शुरुआत पर लौटता है, क्योंकि हर लागू model नया data और नए प्रश्न पैदा करता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "It gives a systematic path, so nothing important is skipped.",
+       "It keeps the work tied to the real goal of the user or organisation.",
+       "It reduces costly mistakes, such as building a model on the wrong data.",
+       "It makes the work repeatable and easy to explain to others.",
+       "It helps team members (domain experts, data engineers, analysts) know who does what.",
+       "It is exactly the structure you can follow for your Class XII Capstone Project."
+      ],
+      "hi": [
+       "यह एक व्यवस्थित रास्ता देती है, जिससे कुछ भी ज़रूरी नहीं छूटता।",
+       "यह काम को उपयोगकर्ता या संगठन के असली लक्ष्य से जोड़े रखती है।",
+       "यह महँगी ग़लतियाँ घटाती है, जैसे ग़लत data पर model बनाना।",
+       "यह काम को दोहराने योग्य और दूसरों को समझाने में आसान बनाती है।",
+       "यह टीम के सदस्यों (domain experts, data engineers, analysts) को बताती है कि कौन क्या करेगा।",
+       "यही ढाँचा आप अपने कक्षा XII के Capstone Project में अपना सकते हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: in Class X you met the AI Project Cycle (problem scoping, data acquisition, data exploration, modelling, evaluation, deployment). Data Science Methodology is a more detailed, professional version of the same idea, with separate stages for requirements, preparation and feedback.",
+      "hi": "याद रखें: कक्षा X में आपने AI Project Cycle (problem scoping, data acquisition, data exploration, modelling, evaluation, deployment) पढ़ा था। डेटा साइंस पद्धति उसी विचार का अधिक विस्तृत, पेशेवर रूप है, जिसमें requirements, preparation और feedback के अलग चरण हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.2 Running example: a healthy-recipe recommender",
+    "hi": "2.2 चलता उदाहरण: स्वस्थ व्यंजन सुझाने वाला सिस्टम"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To see all ten stages working together, we follow one story through the chapter. Kavya runs a small tiffin service in Pune. Her customers often ask, 'What can I make tonight with the ingredients I already have, that is also healthy?' She wants an app that, given a list of ingredients, suggests suitable dishes and the cuisine they belong to (North Indian, South Indian, Chinese, Continental and so on). We will see what Kavya's data science team does at each stage. (The CBSE handbook uses a similar food-and-ingredients story; this one is our own.)",
+      "hi": "दसों चरणों को एक साथ काम करते देखने के लिए हम पूरे अध्याय में एक कहानी चलाएँगे। काव्या पुणे में एक छोटी टिफ़िन सेवा चलाती है। उसके ग्राहक अक्सर पूछते हैं, 'मेरे पास जो सामग्री है, उससे आज रात कौन-सा स्वस्थ व्यंजन बना सकता हूँ?' वह ऐसा app चाहती है जो सामग्रियों की सूची देने पर उपयुक्त व्यंजन और उनका व्यंजन-प्रकार (cuisine) बताए (उत्तर भारतीय, दक्षिण भारतीय, चाइनीज़, कॉन्टिनेंटल आदि)। हम देखेंगे कि काव्या की data science टीम हर चरण में क्या करती है। (CBSE handbook भी भोजन-और-सामग्री की मिलती-जुलती कहानी लेती है; यह कहानी हमारी अपनी है।)"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.3 Module 1, Stage 1: Business Understanding",
+    "hi": "2.3 Module 1, चरण 1: Business Understanding (व्यावसायिक समझ)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every project starts by understanding the problem from the point of view of the people who have it, called the stakeholders. 'Business' here simply means the purpose of the user or organisation; it could be a hospital, a farmers' cooperative, a school or a government department. The team asks: What exactly is the problem? Who faces it? What would success look like? What limits of time, money and data exist?",
+      "hi": "हर प्रोजेक्ट समस्या को उन लोगों की दृष्टि से समझने से शुरू होता है जो उसका सामना करते हैं, जिन्हें हितधारक (stakeholders) कहते हैं। यहाँ 'business' का अर्थ केवल उपयोगकर्ता या संगठन का उद्देश्य है; यह अस्पताल, किसानों की सहकारी समिति, स्कूल या कोई सरकारी विभाग भी हो सकता है। टीम पूछती है: समस्या ठीक-ठीक क्या है? इसका सामना कौन करता है? सफलता कैसी दिखेगी? समय, पैसे और data की कौन-सी सीमाएँ हैं?"
+     }
+    },
+    {
+     "p": {
+      "en": "A useful tool is the 5W1H questioning method: Who, What, Where, When, Why and How. Answering them turns a vague wish into a clear problem statement and measurable objectives. Asking the client clarifying questions is normal at this stage; a data scientist who does not ask enough questions may solve the wrong problem.",
+      "hi": "एक उपयोगी उपकरण 5W1H प्रश्न विधि है: Who (कौन), What (क्या), Where (कहाँ), When (कब), Why (क्यों) और How (कैसे)। इनके उत्तर एक धुँधली इच्छा को स्पष्ट समस्या-कथन और मापने योग्य उद्देश्यों में बदल देते हैं। इस चरण में ग्राहक से स्पष्टीकरण के प्रश्न पूछना सामान्य है; जो data scientist पर्याप्त प्रश्न नहीं पूछता, वह ग़लत समस्या हल कर सकता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Question",
+        "Kavya's recipe app"
+       ],
+       "hi": [
+        "प्रश्न",
+        "काव्या का व्यंजन app"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who",
+         "Home cooks and tiffin customers in Pune; Kavya's business"
+        ],
+        [
+         "What",
+         "People cannot decide which healthy dish to cook from the ingredients they have"
+        ],
+        [
+         "Where",
+         "In homes, through a mobile app or website"
+        ],
+        [
+         "When",
+         "Usually just before cooking, so answers must come in seconds"
+        ],
+        [
+         "Why",
+         "Saves time, reduces wasted vegetables, encourages healthy eating, attracts customers"
+        ],
+        [
+         "How",
+         "Use data about dishes and their ingredients to recommend matching dishes and their cuisine"
+        ]
+       ],
+       "hi": [
+        [
+         "कौन",
+         "पुणे के घरेलू रसोइए और टिफ़िन ग्राहक; काव्या का व्यवसाय"
+        ],
+        [
+         "क्या",
+         "लोग तय नहीं कर पाते कि उपलब्ध सामग्री से कौन-सा स्वस्थ व्यंजन बनाएँ"
+        ],
+        [
+         "कहाँ",
+         "घरों में, मोबाइल app या website के ज़रिए"
+        ],
+        [
+         "कब",
+         "आमतौर पर खाना बनाने से ठीक पहले, इसलिए उत्तर कुछ सेकंड में चाहिए"
+        ],
+        [
+         "क्यों",
+         "समय बचता है, सब्ज़ियों की बर्बादी घटती है, स्वस्थ भोजन को बढ़ावा मिलता है, ग्राहक आकर्षित होते हैं"
+        ],
+        [
+         "कैसे",
+         "व्यंजनों और उनकी सामग्रियों के data से मेल खाने वाले व्यंजन और उनका cuisine सुझाकर"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Problem statement: 'Given a list of ingredients a user has, recommend up to five healthy dishes and identify their cuisine, with at least 80% of suggestions rated useful by users.' Notice the measurable target; it will be checked in the Evaluation and Feedback stages.",
+      "hi": "समस्या-कथन: 'उपयोगकर्ता के पास मौजूद सामग्रियों की सूची के आधार पर अधिकतम पाँच स्वस्थ व्यंजन सुझाना और उनका cuisine बताना, जिसमें कम-से-कम 80% सुझावों को उपयोगकर्ता उपयोगी मानें।' मापने योग्य लक्ष्य पर ध्यान दें; इसकी जाँच Evaluation और Feedback चरणों में होगी।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A district hospital says, 'Too many patients come back within a month.' Write a better problem statement using Business Understanding.",
+       "hi": "एक ज़िला अस्पताल कहता है, 'बहुत-से मरीज़ एक महीने के भीतर लौट आते हैं।' Business Understanding से बेहतर समस्या-कथन लिखिए।"
+      },
+      "a": {
+       "en": "Step 1 (Who): discharged patients and hospital doctors.\nStep 2 (What): unplanned readmission within 30 days.\nStep 3 (Why): it harms patients and fills scarce beds.\nStep 4 (How): predict, at discharge time, which patients have high readmission risk so that doctors can plan follow-up calls.\nProblem statement: 'At discharge, predict whether a patient is likely to be readmitted within 30 days, so the hospital can reduce readmissions by 15% in a year.'",
+       "hi": "चरण 1 (कौन): छुट्टी पाने वाले मरीज़ और अस्पताल के डॉक्टर।\nचरण 2 (क्या): 30 दिनों के भीतर अनियोजित पुनः भर्ती।\nचरण 3 (क्यों): इससे मरीज़ों को नुकसान होता है और सीमित बिस्तर भर जाते हैं।\nचरण 4 (कैसे): छुट्टी के समय अनुमान लगाना कि किन मरीज़ों के लौटने का जोखिम अधिक है, ताकि डॉक्टर follow-up कॉल की योजना बना सकें।\nसमस्या-कथन: 'छुट्टी के समय अनुमान लगाना कि मरीज़ के 30 दिनों में पुनः भर्ती होने की संभावना है या नहीं, ताकि अस्पताल एक वर्ष में पुनः भर्ती 15% घटा सके।'"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.4 Module 1, Stage 2: Analytic Approach",
+    "hi": "2.4 Module 1, चरण 2: Analytic Approach (विश्लेषणात्मक दृष्टिकोण)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Once the problem is clear, the team decides how data will answer it. The key idea is that the type of question decides the type of method. Choosing the wrong approach, for example using regression when the answer is a yes/no category, wastes all later work.",
+      "hi": "समस्या स्पष्ट होने पर टीम तय करती है कि data उसका उत्तर कैसे देगा। मुख्य विचार यह है कि प्रश्न का प्रकार ही विधि का प्रकार तय करता है। ग़लत दृष्टिकोण चुनना, जैसे उत्तर हाँ/ना श्रेणी हो तब regression लेना, आगे का सारा काम बेकार कर देता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "If the question is...",
+        "Approach",
+        "Indian example"
+       ],
+       "hi": [
+        "यदि प्रश्न है...",
+        "दृष्टिकोण",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "How much? How many?",
+         "Regression",
+         "How many tonnes of wheat will this district produce?"
+        ],
+        [
+         "Which category? Yes or no?",
+         "Classification",
+         "Is this UPI transaction fraud or genuine?"
+        ],
+        [
+         "Which items naturally group together?",
+         "Clustering",
+         "Group mobile customers by usage pattern"
+        ],
+        [
+         "Is this unusual?",
+         "Anomaly detection",
+         "Spot sudden abnormal electricity use in a meter"
+        ],
+        [
+         "Which option should we offer?",
+         "Recommendation",
+         "Suggest the next song or dish a user may like"
+        ]
+       ],
+       "hi": [
+        [
+         "कितना? कितने?",
+         "Regression",
+         "इस ज़िले में कितने टन गेहूँ पैदा होगा?"
+        ],
+        [
+         "कौन-सी श्रेणी? हाँ या ना?",
+         "Classification",
+         "क्या यह UPI लेन-देन धोखाधड़ी है या असली?"
+        ],
+        [
+         "कौन-सी चीज़ें स्वाभाविक रूप से समूह बनाती हैं?",
+         "Clustering",
+         "मोबाइल ग्राहकों को उपयोग के पैटर्न के अनुसार समूहों में बाँटना"
+        ],
+        [
+         "क्या यह असामान्य है?",
+         "Anomaly detection",
+         "किसी मीटर में अचानक असामान्य बिजली खपत पकड़ना"
+        ],
+        [
+         "कौन-सा विकल्प दें?",
+         "Recommendation",
+         "उपयोगकर्ता को पसंद आने वाला अगला गाना या व्यंजन सुझाना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The team also decides what kind of analytics is needed. These four types build on each other, from looking back to deciding what to do.",
+      "hi": "टीम यह भी तय करती है कि किस प्रकार का analytics चाहिए। ये चार प्रकार एक-दूसरे पर बनते हैं, पीछे देखने से लेकर यह तय करने तक कि क्या करें।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Question",
+        "Example"
+       ],
+       "hi": [
+        "प्रकार",
+        "प्रश्न",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Descriptive analytics",
+         "What happened?",
+         "Average canteen waste per day last month"
+        ],
+        [
+         "Diagnostic analytics",
+         "Why did it happen?",
+         "Waste was high on days when rajma was served with cold rice"
+        ],
+        [
+         "Predictive analytics",
+         "What is likely to happen?",
+         "Forecast tomorrow's demand for each dish"
+        ],
+        [
+         "Prescriptive analytics",
+         "What should we do?",
+         "Cook 20% less rice on Mondays and offer a combo"
+        ]
+       ],
+       "hi": [
+        [
+         "Descriptive analytics (वर्णनात्मक)",
+         "क्या हुआ?",
+         "पिछले महीने कैंटीन में प्रतिदिन औसत बर्बादी"
+        ],
+        [
+         "Diagnostic analytics (निदानात्मक)",
+         "ऐसा क्यों हुआ?",
+         "जिन दिनों ठंडे चावल के साथ राजमा परोसा गया, बर्बादी अधिक रही"
+        ],
+        [
+         "Predictive analytics (पूर्वानुमानात्मक)",
+         "आगे क्या होने की संभावना है?",
+         "कल हर व्यंजन की माँग का पूर्वानुमान"
+        ],
+        [
+         "Prescriptive analytics (निर्देशात्मक)",
+         "हमें क्या करना चाहिए?",
+         "सोमवार को 20% कम चावल बनाएँ और combo दें"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Finally, models can be descriptive or predictive. A descriptive model explains relationships in existing data (for example, 'customers who buy paneer often also buy capsicum') without forecasting. A predictive model learns from past labelled data to estimate an unknown outcome for new cases (for example, 'this new recipe belongs to the South Indian cuisine'). Statistical analysis is often used when the question involves proportions or testing whether a difference is real.",
+      "hi": "अंत में, models वर्णनात्मक (descriptive) या पूर्वानुमानात्मक (predictive) हो सकते हैं। Descriptive model मौजूदा data के संबंध समझाता है (जैसे 'जो ग्राहक पनीर ख़रीदते हैं, वे प्रायः शिमला मिर्च भी ख़रीदते हैं'), भविष्यवाणी नहीं करता। Predictive model पिछले लेबल वाले data से सीखकर नए मामलों का अज्ञात परिणाम आँकता है (जैसे 'यह नया व्यंजन दक्षिण भारतीय cuisine का है')। जब प्रश्न अनुपातों या यह जाँचने से जुड़ा हो कि कोई अंतर असली है या नहीं, तब प्रायः सांख्यिकीय विश्लेषण उपयोग होता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Kavya's team: identifying the cuisine of a dish from its ingredients is classification (a predictive model). Suggesting dishes is recommendation. They choose a Decision Tree classifier first, because its yes/no splits on ingredients ('contains coconut? contains soy sauce?') are easy to explain to Kavya.",
+      "hi": "काव्या की टीम: सामग्रियों से व्यंजन का cuisine पहचानना classification है (एक predictive model)। व्यंजन सुझाना recommendation है। वे पहले Decision Tree classifier चुनते हैं, क्योंकि सामग्रियों पर उसके हाँ/ना वाले विभाजन ('नारियल है? सोया सॉस है?') काव्या को समझाना आसान है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Name the analytic approach: (a) Will a customer cancel their mobile plan next month? (b) What will be the price of tomatoes next week? (c) Divide students into groups by learning style. (d) Detect a sudden spike in login attempts on a bank app.",
+       "hi": "विश्लेषणात्मक दृष्टिकोण बताइए: (a) क्या ग्राहक अगले महीने अपना मोबाइल प्लान बंद करेगा? (b) अगले सप्ताह टमाटर का दाम क्या होगा? (c) विद्यार्थियों को सीखने की शैली के अनुसार समूहों में बाँटना। (d) बैंक app पर login प्रयासों में अचानक उछाल पकड़ना।"
+      },
+      "a": {
+       "en": "(a) Classification (yes/no).\n(b) Regression (a number).\n(c) Clustering (natural groups, no labels).\n(d) Anomaly detection (unusual pattern).",
+       "hi": "(a) Classification (हाँ/ना)।\n(b) Regression (एक संख्या)।\n(c) Clustering (स्वाभाविक समूह, लेबल नहीं)।\n(d) Anomaly detection (असामान्य पैटर्न)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.5 Module 2, Stage 3: Data Requirements",
+    "hi": "2.5 Module 2, चरण 3: Data Requirements (data आवश्यकताएँ)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The analytic approach tells us what data we need. Think of a cook planning a dish: before going to the market you list the ingredients, the quantity and the quality you need. Similarly, the team decides the content (which variables), the format (table, text, images), the amount, the time period and the sources of data.",
+      "hi": "विश्लेषणात्मक दृष्टिकोण बताता है कि हमें कौन-सा data चाहिए। किसी व्यंजन की योजना बनाते रसोइए के बारे में सोचिए: बाज़ार जाने से पहले आप सामग्री, मात्रा और गुणवत्ता की सूची बनाते हैं। इसी तरह टीम data की सामग्री (कौन-से variables), प्रारूप (तालिका, text, चित्र), मात्रा, समय-अवधि और स्रोत तय करती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Data type",
+        "Meaning",
+        "Examples"
+       ],
+       "hi": [
+        "Data प्रकार",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Structured",
+         "Organised in fixed rows and columns",
+         "Excel marks sheet, bank transaction table, recipe-ingredient table"
+        ],
+        [
+         "Unstructured",
+         "No fixed format",
+         "Recipe videos, food photos, customer voice notes, free-text reviews"
+        ],
+        [
+         "Semi-structured",
+         "Not a table, but has tags or keys that give some organisation",
+         "JSON or XML files from an app, emails with sender/subject fields"
+        ]
+       ],
+       "hi": [
+        [
+         "Structured (संरचित)",
+         "निश्चित rows और columns में व्यवस्थित",
+         "Excel अंक-सूची, बैंक लेन-देन तालिका, व्यंजन-सामग्री तालिका"
+        ],
+        [
+         "Unstructured (असंरचित)",
+         "कोई निश्चित प्रारूप नहीं",
+         "व्यंजन वीडियो, भोजन की तस्वीरें, ग्राहकों के voice notes, मुक्त text समीक्षाएँ"
+        ],
+        [
+         "Semi-structured (अर्ध-संरचित)",
+         "तालिका नहीं, पर tags या keys से कुछ व्यवस्था",
+         "app की JSON या XML फ़ाइलें, sender/subject वाले emails"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Kavya's team needs: a list of dishes; for each dish its cuisine (the label to predict); its ingredients; and some health information such as calories or whether it is fried. They decide a structured table is best: one row per dish, one column per ingredient with 1 if the dish uses it and 0 if not, plus a Cuisine column.",
+      "hi": "काव्या की टीम को चाहिए: व्यंजनों की सूची; हर व्यंजन का cuisine (जिसका पूर्वानुमान करना है, यानी label); उसकी सामग्रियाँ; और कुछ स्वास्थ्य जानकारी, जैसे कैलोरी या वह तला हुआ है या नहीं। वे तय करते हैं कि संरचित तालिका सबसे अच्छी रहेगी: हर व्यंजन के लिए एक row, हर सामग्री के लिए एक column जिसमें व्यंजन उसे उपयोग करे तो 1 और न करे तो 0, साथ में एक Cuisine column।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Dish",
+        "Rice",
+        "Milk",
+        "Soy sauce",
+        "Coconut",
+        "Cuisine"
+       ],
+       "hi": [
+        "व्यंजन",
+        "चावल",
+        "दूध",
+        "सोया सॉस",
+        "नारियल",
+        "Cuisine"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Veg Pulao",
+         "1",
+         "0",
+         "0",
+         "0",
+         "North Indian"
+        ],
+        [
+         "Kheer",
+         "1",
+         "1",
+         "0",
+         "0",
+         "North Indian"
+        ],
+        [
+         "Veg Fried Rice",
+         "1",
+         "0",
+         "1",
+         "0",
+         "Chinese"
+        ],
+        [
+         "Coconut Rice",
+         "1",
+         "0",
+         "0",
+         "1",
+         "South Indian"
+        ],
+        [
+         "Hakka Noodles",
+         "0",
+         "0",
+         "1",
+         "0",
+         "Chinese"
+        ]
+       ],
+       "hi": [
+        [
+         "वेज पुलाव",
+         "1",
+         "0",
+         "0",
+         "0",
+         "उत्तर भारतीय"
+        ],
+        [
+         "खीर",
+         "1",
+         "1",
+         "0",
+         "0",
+         "उत्तर भारतीय"
+        ],
+        [
+         "वेज फ़्राइड राइस",
+         "1",
+         "0",
+         "1",
+         "0",
+         "चाइनीज़"
+        ],
+        [
+         "नारियल चावल",
+         "1",
+         "0",
+         "0",
+         "1",
+         "दक्षिण भारतीय"
+        ],
+        [
+         "हक्का नूडल्स",
+         "0",
+         "0",
+         "1",
+         "0",
+         "चाइनीज़"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: in this table each ingredient is a feature (input) and Cuisine is the target (label). Deciding this clearly at the requirements stage prevents collecting data that cannot answer the question.",
+      "hi": "याद रखें: इस तालिका में हर सामग्री एक feature (input) है और Cuisine target (label) है। requirements चरण में यह स्पष्ट तय करने से ऐसा data इकट्ठा करने से बचते हैं जो प्रश्न का उत्तर न दे सके।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.6 Module 2, Stage 4: Data Collection",
+    "hi": "2.6 Module 2, चरण 4: Data Collection (data संग्रह)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Now the team gathers the data listed in the requirements. Data can come from primary or secondary sources.",
+      "hi": "अब टीम requirements में सूचीबद्ध data इकट्ठा करती है। data प्राथमिक (primary) या द्वितीयक (secondary) स्रोतों से आ सकता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Primary data",
+        "Secondary data"
+       ],
+       "hi": [
+        "प्राथमिक data",
+        "द्वितीयक data"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Collected first-hand for this project",
+         "Already collected by someone else for another purpose"
+        ],
+        [
+         "Surveys, interviews, experiments, observation, IoT sensors, app logs",
+         "Books, websites, government portals (data.gov.in), Kaggle, WHO, UNICEF, company databases, APIs"
+        ],
+        [
+         "Exactly fits the need, but takes time and money",
+         "Quick and cheap, but may be old, incomplete or in the wrong format"
+        ]
+       ],
+       "hi": [
+        [
+         "इसी प्रोजेक्ट के लिए सीधे इकट्ठा किया गया",
+         "किसी और ने किसी दूसरे उद्देश्य से पहले ही इकट्ठा किया"
+        ],
+        [
+         "सर्वे, साक्षात्कार, प्रयोग, अवलोकन, IoT sensors, app logs",
+         "किताबें, websites, सरकारी portals (data.gov.in), Kaggle, WHO, UNICEF, कंपनी databases, APIs"
+        ],
+        [
+         "ज़रूरत पर बिल्कुल फ़िट, पर समय और पैसा लगता है",
+         "जल्दी और सस्ता, पर पुराना, अधूरा या ग़लत प्रारूप में हो सकता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Kavya's team uses both: secondary data from public recipe datasets and cookery websites (checking their terms of use), and primary data by asking Kavya's cooks to list the exact ingredients of 200 dishes they make. Gaps found here are normal. If the data has no Continental dishes, the team must collect more or reduce the scope. For very large data, they may store it in a database or cloud storage rather than a single spreadsheet.",
+      "hi": "काव्या की टीम दोनों का उपयोग करती है: सार्वजनिक recipe datasets और पाक-कला websites से द्वितीयक data (उनकी उपयोग-शर्तें जाँचकर), और काव्या के रसोइयों से उनके 200 व्यंजनों की सटीक सामग्री लिखवाकर प्राथमिक data। यहाँ कमियाँ मिलना सामान्य है। यदि data में कोई Continental व्यंजन नहीं है, तो टीम को और इकट्ठा करना होगा या दायरा घटाना होगा। बहुत बड़े data के लिए वे एक spreadsheet के बजाय database या cloud storage का उपयोग कर सकते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: collect only the data you need, take consent when collecting from people, and protect personal information. India's Digital Personal Data Protection Act, 2023 sets rules for how personal data is handled.",
+      "hi": "याद रखें: केवल उतना data इकट्ठा करें जितना ज़रूरी है, लोगों से data लेते समय सहमति लें, और निजी जानकारी सुरक्षित रखें। भारत का डिजिटल व्यक्तिगत डेटा संरक्षण अधिनियम, 2023 निजी data के उपयोग के नियम तय करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.7 Module 3, Stage 5: Data Understanding",
+    "hi": "2.7 Module 3, चरण 5: Data Understanding (data की समझ)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before cleaning anything, the team explores the collected data to check whether it truly represents the problem. The question is: 'Is the data we collected good enough and relevant?' Typical checks are listed below.",
+      "hi": "कुछ भी साफ़ करने से पहले टीम इकट्ठा किए गए data को खोजती है, ताकि जाँच सके कि वह सचमुच समस्या का प्रतिनिधित्व करता है या नहीं। प्रश्न है: 'क्या इकट्ठा किया गया data पर्याप्त अच्छा और प्रासंगिक है?' सामान्य जाँचें नीचे हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Descriptive statistics: count, mean, median, minimum, maximum and standard deviation of each numeric column (df.describe() in Pandas).",
+       "Data types and ranges: is calories a number? Is any value impossible, such as a negative quantity?",
+       "Missing values and duplicates: how many, and in which columns (df.isnull().sum(), df.duplicated().sum())?",
+       "Distribution: histograms show whether values are spread evenly or bunched; bar charts show how many dishes each cuisine has (class balance).",
+       "Outliers: box plots reveal extreme values, such as a dish listed with 9,000 calories.",
+       "Relationships: correlation or cross-tables show which ingredients go with which cuisines (soy sauce strongly with Chinese)."
+      ],
+      "hi": [
+       "वर्णनात्मक आँकड़े: हर संख्यात्मक column के count, mean, median, न्यूनतम, अधिकतम और मानक विचलन (Pandas में df.describe())।",
+       "Data types और सीमाएँ: क्या कैलोरी संख्या है? क्या कोई मान असंभव है, जैसे ऋणात्मक मात्रा?",
+       "छूटे मान और duplicates: कितने, और किन columns में (df.isnull().sum(), df.duplicated().sum())?",
+       "वितरण: histogram दिखाते हैं कि मान समान रूप से फैले हैं या गुच्छों में; bar chart दिखाते हैं कि हर cuisine में कितने व्यंजन हैं (class balance)।",
+       "Outliers: box plot चरम मान दिखाते हैं, जैसे 9,000 कैलोरी वाला लिखा कोई व्यंजन।",
+       "संबंध: correlation या cross-tables बताते हैं कि कौन-सी सामग्री किस cuisine के साथ जाती है (सोया सॉस का चाइनीज़ से गहरा संबंध)।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Kavya's team finds that 70% of the dishes are North Indian, only 5% are Continental, some dishes appear twice under different spellings ('Paneer Tikka' and 'paneer tika'), and the semolina (rava/sooji) column is empty for many South Indian dishes even though upma and rava dosa use it. Because the data does not yet represent the problem fairly, they go back to Data Collection to add more dishes. This loop is a normal part of the methodology.",
+      "hi": "काव्या की टीम पाती है कि 70% व्यंजन उत्तर भारतीय हैं, केवल 5% Continental हैं, कुछ व्यंजन अलग वर्तनी में दो बार हैं ('Paneer Tikka' और 'paneer tika'), और कई दक्षिण भारतीय व्यंजनों में सूजी (रवा) column ख़ाली है, जबकि उपमा और रवा डोसा में सूजी लगती है। चूँकि data अभी समस्या का उचित प्रतिनिधित्व नहीं करता, वे और व्यंजन जोड़ने के लिए Data Collection पर लौटते हैं। यह loop पद्धति का सामान्य हिस्सा है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.8 Module 3, Stage 6: Data Preparation",
+    "hi": "2.8 Module 3, चरण 6: Data Preparation (data की तैयारी)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data preparation turns raw data into a clean, consistent table a model can learn from. It is usually the most time-consuming stage; practitioners often say it takes the majority of a project's time (estimates of 70–80% are commonly quoted). The well-known rule is 'Garbage in, garbage out': a model trained on messy data gives messy answers, however clever the algorithm.",
+      "hi": "Data preparation कच्चे data को ऐसी साफ़, सुसंगत तालिका में बदलता है जिससे model सीख सके। यह आमतौर पर सबसे अधिक समय लेने वाला चरण है; जानकार प्रायः कहते हैं कि इसमें प्रोजेक्ट का अधिकांश समय लगता है (70–80% का अनुमान अक्सर बताया जाता है)। प्रसिद्ध नियम है 'Garbage in, garbage out' (कचरा डालो, कचरा पाओ): गंदे data पर प्रशिक्षित model गंदे उत्तर देता है, algorithm चाहे कितना भी चतुर हो।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Task",
+        "What it means",
+        "Recipe example"
+       ],
+       "hi": [
+        "कार्य",
+        "अर्थ",
+        "व्यंजन उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Remove duplicates",
+         "Keep one copy of repeated records",
+         "Merge 'Paneer Tikka' and 'paneer tika'"
+        ],
+        [
+         "Fix textual errors",
+         "Correct spellings, letter case, extra spaces",
+         "'Tomatoe', ' tomato', 'TOMATO' → 'tomato'"
+        ],
+        [
+         "Fix incorrect values",
+         "Correct impossible or wrong entries",
+         "Calories 9000 → check the source, correct to 900"
+        ],
+        [
+         "Handle missing values",
+         "Drop, or fill with mean/median/mode, or collect again",
+         "Fill the missing semolina flag after checking the recipe"
+        ],
+        [
+         "Make names consistent",
+         "Clear, uniform column names",
+         "'ing_1', 'Ing-2' → 'rice', 'milk'"
+        ],
+        [
+         "Encode categories",
+         "Turn text into numbers a model can use",
+         "Ingredients as 1/0 (one-hot encoding); cuisine labels as codes"
+        ],
+        [
+         "Scale / normalise",
+         "Bring numbers to similar ranges where needed",
+         "Calories (100–900) and spice level (1–5) to 0–1"
+        ],
+        [
+         "Feature engineering",
+         "Create new, more useful features from existing ones",
+         "Number of ingredients; 'is_fried'; calories per serving"
+        ]
+       ],
+       "hi": [
+        [
+         "Duplicates हटाना",
+         "दोहराए गए records की एक प्रति रखना",
+         "'Paneer Tikka' और 'paneer tika' को मिलाना"
+        ],
+        [
+         "Text की ग़लतियाँ सुधारना",
+         "वर्तनी, अक्षर-आकार, अतिरिक्त space ठीक करना",
+         "'Tomatoe', ' tomato', 'TOMATO' → 'tomato'"
+        ],
+        [
+         "ग़लत मान सुधारना",
+         "असंभव या ग़लत प्रविष्टियाँ ठीक करना",
+         "कैलोरी 9000 → स्रोत जाँचकर 900 करना"
+        ],
+        [
+         "छूटे मान संभालना",
+         "हटाना, mean/median/mode से भरना, या फिर से इकट्ठा करना",
+         "recipe जाँचकर सूजी का छूटा flag भरना"
+        ],
+        [
+         "नाम सुसंगत करना",
+         "स्पष्ट, एकरूप column नाम",
+         "'ing_1', 'Ing-2' → 'rice', 'milk'"
+        ],
+        [
+         "श्रेणियों को encode करना",
+         "text को model के उपयोग लायक संख्याओं में बदलना",
+         "सामग्रियाँ 1/0 के रूप में (one-hot encoding); cuisine labels कोड के रूप में"
+        ],
+        [
+         "Scale / normalise करना",
+         "ज़रूरत हो तो संख्याओं को मिलती-जुलती सीमा में लाना",
+         "कैलोरी (100–900) और मसाला स्तर (1–5) को 0–1 में"
+        ],
+        [
+         "Feature engineering",
+         "मौजूदा features से नए, अधिक उपयोगी features बनाना",
+         "सामग्रियों की संख्या; 'is_fried'; प्रति सर्विंग कैलोरी"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Feature engineering",
+       "hi": "Feature engineering"
+      },
+      "text": {
+       "en": "Feature engineering is the process of using domain knowledge to create new input variables (features) from raw data, or to transform existing ones, so that a model can learn patterns more easily.",
+       "hi": "Feature engineering वह प्रक्रिया है जिसमें domain ज्ञान से कच्चे data से नए input variables (features) बनाए जाते हैं या मौजूदा features बदले जाते हैं, ताकि model पैटर्न अधिक आसानी से सीख सके।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A house-price dataset has columns YearBuilt, Price and AreaSqFt. Suggest two engineered features.",
+       "hi": "मकान-दाम dataset में YearBuilt, Price और AreaSqFt columns हैं। दो engineered features सुझाइए।"
+      },
+      "a": {
+       "en": "Feature 1: Age of house = current year − YearBuilt (buyers think in age, not build year).\nFeature 2: Price per square foot = Price ÷ AreaSqFt (lets you compare houses of different sizes).\nNote: price per sq ft uses the target (Price), so it is useful for analysis but must not be used as an input when the model's job is to predict Price; that would leak the answer.",
+       "hi": "Feature 1: मकान की आयु = वर्तमान वर्ष − YearBuilt (ख़रीदार निर्माण-वर्ष नहीं, आयु में सोचते हैं)।\nFeature 2: प्रति वर्ग फ़ुट दाम = Price ÷ AreaSqFt (अलग आकार के मकानों की तुलना संभव)।\nध्यान दें: प्रति वर्ग फ़ुट दाम target (Price) से बनता है, इसलिए यह विश्लेषण में उपयोगी है पर जब model का काम Price बताना हो तब इसे input न बनाएँ; इससे उत्तर लीक हो जाएगा।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: instead of 0/1 you could store ingredient quantities (grams) or True/False; the choice should suit the model and the question. Record every cleaning step so that new data can be prepared the same way after deployment.",
+      "hi": "याद रखें: 0/1 के बजाय आप सामग्री की मात्रा (ग्राम) या True/False भी रख सकते हैं; चुनाव model और प्रश्न के अनुकूल होना चाहिए। हर सफ़ाई चरण लिखकर रखें, ताकि deployment के बाद नया data भी उसी तरह तैयार हो सके।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.9 Module 4, Stage 7: AI Modelling",
+    "hi": "2.9 Module 4, चरण 7: AI Modelling"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In this stage the team builds models that answer the question chosen in the analytic approach. Modelling is driven by the approach: classification needs a classifier, regression needs a regressor, and so on. The steps are: choose one or more suitable algorithms, split the prepared data into training and test sets, train each model on the training data, tune its settings (hyperparameters, such as the maximum depth of a decision tree), and compare. The first model is rarely the final one; teams try several and may go back to data preparation to add better features.",
+      "hi": "इस चरण में टीम ऐसे models बनाती है जो विश्लेषणात्मक दृष्टिकोण में चुने प्रश्न का उत्तर दें। Modelling दृष्टिकोण से संचालित होती है: classification के लिए classifier, regression के लिए regressor, इत्यादि। चरण हैं: एक या अधिक उपयुक्त algorithms चुनना, तैयार data को training और test भागों में बाँटना, हर model को training data पर प्रशिक्षित करना, उसकी सेटिंग्स (hyperparameters, जैसे decision tree की अधिकतम गहराई) को ठीक करना, और तुलना करना। पहला model शायद ही अंतिम होता है; टीमें कई आज़माती हैं और बेहतर features के लिए data preparation पर लौट सकती हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Descriptive modelling",
+        "Predictive modelling"
+       ],
+       "hi": [
+        "Descriptive modelling",
+        "Predictive modelling"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Summarises and explains patterns in existing data",
+         "Uses past data to predict outcomes for new data"
+        ],
+        [
+         "Often unsupervised (no labels), e.g. clustering, association rules",
+         "Usually supervised (needs labels), e.g. classification, regression"
+        ],
+        [
+         "'Which ingredients appear together?'",
+         "'Which cuisine is this new dish?'"
+        ]
+       ],
+       "hi": [
+        [
+         "मौजूदा data के पैटर्न का सार और व्याख्या",
+         "पिछले data से नए data के परिणाम का पूर्वानुमान"
+        ],
+        [
+         "प्रायः unsupervised (labels नहीं), जैसे clustering, association rules",
+         "आमतौर पर supervised (labels चाहिए), जैसे classification, regression"
+        ],
+        [
+         "'कौन-सी सामग्रियाँ साथ-साथ आती हैं?'",
+         "'यह नया व्यंजन किस cuisine का है?'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Kavya's team uses Python with Pandas for the data and scikit-learn's DecisionTreeClassifier for the model (other tools such as R, or no-code tools like Orange, which you will meet in Chapter 4, could also be used). The tree learns rules like: if soy sauce = 1 then Chinese; else if coconut = 1 or curry leaves = 1 then South Indian; else North Indian. For recommendations, they compare the user's ingredient list with each dish's ingredient list and rank dishes by how many ingredients match.",
+      "hi": "काव्या की टीम data के लिए Pandas के साथ Python और model के लिए scikit-learn का DecisionTreeClassifier उपयोग करती है (R जैसे अन्य उपकरण, या Orange जैसे no-code उपकरण, जिनसे आप अध्याय 4 में मिलेंगे, भी उपयोग हो सकते हैं)। Tree ऐसे नियम सीखता है: यदि सोया सॉस = 1 तो चाइनीज़; नहीं तो यदि नारियल = 1 या करी पत्ता = 1 तो दक्षिण भारतीय; नहीं तो उत्तर भारतीय। सुझावों के लिए वे उपयोगकर्ता की सामग्री-सूची की तुलना हर व्यंजन की सूची से करते हैं और जितनी अधिक सामग्रियाँ मेल खाती हैं, उसी क्रम में व्यंजन रखते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.10 Module 4, Stage 8: Evaluation",
+    "hi": "2.10 Module 4, चरण 8: Evaluation (मूल्यांकन)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Evaluation checks the model's quality and whether it really meets the business goal. It has two parts. First, a diagnostic measures phase: the model is tested on data it has never seen (the test set) using metrics suited to the task, for example accuracy, precision, recall and F1 for classification, or MAE, MSE and RMSE for regression (sections 2.14 and 2.15). Second, a check of statistical significance and business value: is the result better than a simple guess, is it fair across groups, and does it meet the target set in Business Understanding?",
+      "hi": "मूल्यांकन model की गुणवत्ता और यह जाँचता है कि वह सचमुच व्यावसायिक लक्ष्य पूरा करता है या नहीं। इसके दो भाग हैं। पहला, diagnostic measures (निदान माप) चरण: model को ऐसे data (test set) पर जाँचा जाता है जो उसने कभी नहीं देखा, काम के अनुकूल metrics से, जैसे classification के लिए accuracy, precision, recall और F1, या regression के लिए MAE, MSE और RMSE (भाग 2.14 और 2.15)। दूसरा, सांख्यिकीय सार्थकता (statistical significance) और व्यावसायिक मूल्य की जाँच: क्या परिणाम साधारण अनुमान से बेहतर है, क्या यह विभिन्न समूहों के लिए निष्पक्ष है, और क्या यह Business Understanding में तय लक्ष्य पूरा करता है?"
+     }
+    },
+    {
+     "p": {
+      "en": "Why not test on the training data? A model can memorise its training examples. Scoring it on those same examples is like a student scoring 100% on a test made of the exact homework questions; it says nothing about the board exam. That is why the data is split, as explained in Model Validation below.",
+      "hi": "Training data पर ही जाँच क्यों नहीं? model अपने training उदाहरण रट सकता है। उन्हीं उदाहरणों पर अंक देना वैसा है जैसे कोई विद्यार्थी हूबहू गृहकार्य वाले प्रश्नों की परीक्षा में 100% ले आए; इससे बोर्ड परीक्षा के बारे में कुछ पता नहीं चलता। इसीलिए data को बाँटा जाता है, जैसा नीचे Model Validation में बताया गया है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Kavya's model gets 91% accuracy on the test set overall, but only 50% on Continental dishes because it saw so few of them. The team decides this is acceptable for a first release in Pune, where Continental requests are rare, but plans to collect more such recipes.",
+      "hi": "काव्या का model test set पर कुल 91% accuracy देता है, पर Continental व्यंजनों पर केवल 50%, क्योंकि उसने ऐसे बहुत कम व्यंजन देखे। टीम तय करती है कि पुणे में पहले संस्करण के लिए यह स्वीकार्य है, जहाँ Continental की माँग कम है, पर ऐसे और व्यंजन इकट्ठा करने की योजना बनाती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.11 Module 5, Stage 9: Deployment",
+    "hi": "2.11 Module 5, चरण 9: Deployment (लागू करना)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A model sitting on a laptop helps no one. Deployment puts the evaluated model into real use: inside a mobile app, a website, a chatbot, a dashboard or an existing company system, often through an API (a way for one program to send data to the model and get its answer). Deployment may begin with a limited release, for example to one city or a small group of users, before full rollout. The team must also plan for speed, cost, security, privacy and how new data will be prepared in exactly the same way as the training data.",
+      "hi": "laptop पर पड़ा model किसी की मदद नहीं करता। Deployment मूल्यांकित model को वास्तविक उपयोग में लाता है: मोबाइल app, website, chatbot, dashboard या कंपनी की मौजूदा प्रणाली के भीतर, प्रायः API के ज़रिए (वह तरीका जिससे एक प्रोग्राम model को data भेजकर उसका उत्तर पाता है)। पूरे विस्तार से पहले deployment सीमित रूप में शुरू हो सकता है, जैसे एक शहर या उपयोगकर्ताओं के छोटे समूह के लिए। टीम को गति, लागत, सुरक्षा, निजता और इस बात की भी योजना बनानी होती है कि नया data ठीक उसी तरह तैयार हो जैसे training data हुआ था।"
+     }
+    },
+    {
+     "p": {
+      "en": "Kavya's app is released to 500 tiffin customers. A user types or speaks 'rice, curd, curry leaves', and within a second gets curd rice (South Indian) and two other suggestions. Familiar deployed models include fraud alerts in UPI apps, traffic estimates in Google Maps and crop-disease identification in farming apps.",
+      "hi": "काव्या का app 500 टिफ़िन ग्राहकों के लिए जारी होता है। उपयोगकर्ता 'चावल, दही, करी पत्ता' टाइप करता या बोलता है, और एक सेकंड में दही चावल (दक्षिण भारतीय) और दो अन्य सुझाव पाता है। जाने-पहचाने लागू models में UPI apps के धोखाधड़ी अलर्ट, Google Maps में ट्रैफ़िक अनुमान और खेती के apps में फ़सल-रोग पहचान शामिल हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.12 Module 5, Stage 10: Feedback",
+    "hi": "2.12 Module 5, चरण 10: Feedback (प्रतिक्रिया)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "After deployment, the team collects feedback: user ratings and complaints, and data on how the model performs in the real world. The world changes, so a model that was accurate last year may slowly become less accurate; this is called data drift (or model drift). Feedback is used to refine the model, add new data, retrain it periodically and sometimes even redefine the business problem. This is what makes the methodology a cycle rather than a line.",
+      "hi": "Deployment के बाद टीम feedback इकट्ठा करती है: उपयोगकर्ताओं की रेटिंग और शिकायतें, और यह data कि model असली दुनिया में कैसा प्रदर्शन कर रहा है। दुनिया बदलती रहती है, इसलिए पिछले साल सटीक रहा model धीरे-धीरे कम सटीक हो सकता है; इसे data drift (या model drift) कहते हैं। Feedback से model को निखारा जाता है, नया data जोड़ा जाता है, समय-समय पर दोबारा प्रशिक्षित किया जाता है और कभी-कभी व्यावसायिक समस्या ही फिर से परिभाषित की जाती है। यही पद्धति को रेखा के बजाय चक्र बनाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Kavya's users rate 84% of suggestions as useful, beating the 80% target. But many ask for Jain options (no onion, no garlic) and millet dishes. The team adds a 'Jain-friendly' feature and more millet recipes, and the cycle begins again from Business Understanding.",
+      "hi": "काव्या के उपयोगकर्ता 84% सुझावों को उपयोगी बताते हैं, जो 80% लक्ष्य से अधिक है। पर कई लोग जैन विकल्प (बिना प्याज़, बिना लहसुन) और मोटे अनाज (millets) के व्यंजन माँगते हैं। टीम 'Jain-friendly' feature और अधिक millet व्यंजन जोड़ती है, और चक्र फिर Business Understanding से शुरू होता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the order of the 10 stages: Business, Approach, Requirements, Collection, Understanding, Preparation, Modelling, Evaluation, Deployment, Feedback. Each module joins two neighbours: Problem→Approach, Requirements→Collection, Understanding→Preparation, Modelling→Evaluation, Deployment→Feedback.",
+      "hi": "10 चरणों का क्रम याद रखें: Business, Approach, Requirements, Collection, Understanding, Preparation, Modelling, Evaluation, Deployment, Feedback। हर module दो पड़ोसियों को जोड़ता है: Problem→Approach, Requirements→Collection, Understanding→Preparation, Modelling→Evaluation, Deployment→Feedback।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.13 Model validation: train-test split and cross-validation",
+    "hi": "2.13 Model validation: train-test split और cross-validation"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Model validation",
+       "hi": "Model validation"
+      },
+      "text": {
+       "en": "Model validation is the process of checking how well a trained model generalises, that is, how accurately it performs on new, unseen data rather than on the data it learnt from.",
+       "hi": "Model validation वह प्रक्रिया है जिसमें जाँचा जाता है कि प्रशिक्षित model कितना अच्छा सामान्यीकरण (generalise) करता है, यानी जिस data से उसने सीखा उसके बजाय नए, अनदेखे data पर वह कितना सटीक है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Validation protects against two problems. Overfitting happens when a model learns the training data too closely, including its noise and accidental details; it scores very high on training data but poorly on new data (like memorising answers). Underfitting happens when a model is too simple to capture the real pattern; it scores poorly on both training and test data (like not studying at all). A good model sits in between. Validation also helps compare different models fairly and choose hyperparameters.",
+      "hi": "Validation दो समस्याओं से बचाता है। Overfitting तब होता है जब model training data को बहुत बारीकी से सीख लेता है, उसके शोर (noise) और संयोगवश बातों सहित; वह training data पर बहुत ऊँचे अंक पर नए data पर कम अंक लाता है (उत्तर रटने जैसा)। Underfitting तब होता है जब model असली पैटर्न पकड़ने के लिए बहुत सरल होता है; वह training और test दोनों पर कम अंक लाता है (बिल्कुल न पढ़ने जैसा)। अच्छा model दोनों के बीच होता है। Validation अलग-अलग models की निष्पक्ष तुलना और hyperparameters चुनने में भी मदद करता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Train-test split: the dataset is divided once into a training set and a test set. The model learns from the training set and is scored on the test set. Common splits are 80:20, 70:30 and 67:33 (training:testing). The split is usually random (shuffled) so both parts are similar; a fixed random_state makes the same split repeat every time. In scikit-learn the function is train_test_split, imported from sklearn.model_selection.",
+      "hi": "Train-test split: dataset को एक बार training set और test set में बाँटा जाता है। model training set से सीखता है और test set पर उसके अंक दिए जाते हैं। सामान्य बँटवारे 80:20, 70:30 और 67:33 (training:testing) हैं। बँटवारा आमतौर पर यादृच्छिक (shuffled) होता है ताकि दोनों भाग मिलते-जुलते हों; निश्चित random_state से हर बार वही बँटवारा दोहराया जाता है। scikit-learn में यह function train_test_split है, जो sklearn.model_selection से import होता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, shuffle=True, random_state=10)",
+      "hi": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, shuffle=True, random_state=10)"
+     }
+    },
+    {
+     "p": {
+      "en": "K-fold cross-validation: the data is divided into k equal parts called folds (k = 5 or 10 is common). The model is trained k times; each time a different fold is held out as the test set and the other k − 1 folds are used for training. The k scores are averaged to give the final estimate. Every data point is used for testing exactly once and for training k − 1 times. Picture a row of five boxes; in round 1 the first box is shaded as 'test', in round 2 the second box, and so on until each box has been shaded once.",
+      "hi": "K-fold cross-validation: data को k बराबर भागों में बाँटा जाता है, जिन्हें folds कहते हैं (k = 5 या 10 आम है)। model k बार प्रशिक्षित होता है; हर बार एक अलग fold test set के रूप में अलग रखा जाता है और बाकी k − 1 folds से training होती है। अंतिम अनुमान के लिए k अंकों का औसत लिया जाता है। हर data बिंदु ठीक एक बार testing में और k − 1 बार training में उपयोग होता है। पाँच डिब्बों की एक पंक्ति सोचिए; पहले दौर में पहला डिब्बा 'test' के रूप में रंगा है, दूसरे दौर में दूसरा, और इसी तरह जब तक हर डिब्बा एक बार रंगा न जाए।"
+     }
+    },
+    {
+     "p": {
+      "en": "The program below applies 5-fold cross-validation to the salary data from Chapter 1. Look at how each fold holds out different rows, and how the fold errors vary.",
+      "hi": "नीचे का प्रोग्राम अध्याय 1 के वेतन data पर 5-fold cross-validation लागू करता है। देखिए कि हर fold अलग rows को अलग रखता है, और fold की त्रुटियाँ कैसे बदलती हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\nfrom sklearn.model_selection import KFold, cross_val_score\nfrom sklearn.linear_model import LinearRegression\n\ndf = pd.DataFrame({\n    'Experience': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],\n    'Salary':     [22, 25, 31, 34, 38, 43, 46, 51, 54, 60]})\nX = df[['Experience']]\ny = df['Salary']\n\nkf = KFold(n_splits=5, shuffle=True, random_state=1)\nfor i, (tr, te) in enumerate(kf.split(X), start=1):\n    print('Fold', i, 'test rows:', [int(t) for t in te])\n\nscores = cross_val_score(LinearRegression(), X, y, cv=kf,\n                         scoring='neg_mean_squared_error')\nmse_each = [round(float(-s), 2) for s in scores]\nprint('MSE in each fold:', mse_each)\nprint('Average MSE:', round(float(-scores.mean()), 2))",
+      "hi": "प्रोग्राम:\nimport pandas as pd\nfrom sklearn.model_selection import KFold, cross_val_score\nfrom sklearn.linear_model import LinearRegression\n\ndf = pd.DataFrame({\n    'Experience': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],\n    'Salary':     [22, 25, 31, 34, 38, 43, 46, 51, 54, 60]})\nX = df[['Experience']]\ny = df['Salary']\n\nkf = KFold(n_splits=5, shuffle=True, random_state=1)\nfor i, (tr, te) in enumerate(kf.split(X), start=1):\n    print('Fold', i, 'test rows:', [int(t) for t in te])\n\nscores = cross_val_score(LinearRegression(), X, y, cv=kf,\n                         scoring='neg_mean_squared_error')\nmse_each = [round(float(-s), 2) for s in scores]\nprint('MSE in each fold:', mse_each)\nprint('Average MSE:', round(float(-scores.mean()), 2))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nFold 1 test rows: [2, 9]\nFold 2 test rows: [4, 6]\nFold 3 test rows: [0, 3]\nFold 4 test rows: [1, 7]\nFold 5 test rows: [5, 8]\nMSE in each fold: [1.5, 0.4, 0.1, 0.67, 0.81]\nAverage MSE: 0.7",
+      "hi": "आउटपुट:\nFold 1 test rows: [2, 9]\nFold 2 test rows: [4, 6]\nFold 3 test rows: [0, 3]\nFold 4 test rows: [1, 7]\nFold 5 test rows: [5, 8]\nMSE in each fold: [1.5, 0.4, 0.1, 0.67, 0.81]\nAverage MSE: 0.7"
+     }
+    },
+    {
+     "p": {
+      "en": "The MSE ranges from 0.1 to 1.5 depending on which rows were held out. A single train-test split would have given just one of these numbers, by luck. The average (0.7) is a steadier estimate. (scikit-learn returns negative MSE as a 'score' where higher is better, so we multiply by −1.)",
+      "hi": "कौन-सी rows अलग रखी गईं, इस पर निर्भर करते हुए MSE 0.1 से 1.5 तक है। एक ही train-test split संयोगवश इनमें से केवल एक संख्या देता। औसत (0.7) अधिक स्थिर अनुमान है। (scikit-learn MSE को ऋणात्मक 'score' के रूप में लौटाता है जहाँ बड़ा बेहतर है, इसलिए हम −1 से गुणा करते हैं।)"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Train-test split",
+        "K-fold cross-validation"
+       ],
+       "hi": [
+        "बिंदु",
+        "Train-test split",
+        "K-fold cross-validation"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Number of training runs",
+         "One",
+         "k"
+        ],
+        [
+         "Speed",
+         "Fast",
+         "Slower (k times the work)"
+        ],
+        [
+         "Data use",
+         "Part of data is never used for training",
+         "Every point is used for both training and testing"
+        ],
+        [
+         "Reliability",
+         "Result depends on one random split",
+         "More reliable; average of k results"
+        ],
+        [
+         "Best for",
+         "Large datasets, quick checks",
+         "Small or medium datasets, comparing models"
+        ]
+       ],
+       "hi": [
+        [
+         "Training कितनी बार",
+         "एक",
+         "k"
+        ],
+        [
+         "गति",
+         "तेज़",
+         "धीमा (k गुना काम)"
+        ],
+        [
+         "Data उपयोग",
+         "data का कुछ भाग training में कभी उपयोग नहीं होता",
+         "हर बिंदु training और testing दोनों में उपयोग होता है"
+        ],
+        [
+         "विश्वसनीयता",
+         "परिणाम एक यादृच्छिक बँटवारे पर निर्भर",
+         "अधिक विश्वसनीय; k परिणामों का औसत"
+        ],
+        [
+         "किसके लिए सबसे अच्छा",
+         "बड़े datasets, त्वरित जाँच",
+         "छोटे या मध्यम datasets, models की तुलना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Other validation methods you should recognise by name: Leave-One-Out Cross-Validation (LOOCV), which is k-fold with k equal to the number of rows, so each single row is the test set once (very thorough but slow); and Time-Series Cross-Validation, used for data in time order such as daily sales or rainfall, where the model is always trained on earlier periods and tested on later ones, never the reverse.",
+      "hi": "अन्य validation विधियाँ जिन्हें नाम से पहचानना चाहिए: Leave-One-Out Cross-Validation (LOOCV), जो वह k-fold है जिसमें k, rows की संख्या के बराबर होता है, इसलिए हर अकेली row एक बार test set बनती है (बहुत गहन पर धीमी); और Time-Series Cross-Validation, जो दैनिक बिक्री या वर्षा जैसे समय-क्रम वाले data के लिए है, जहाँ model हमेशा पहले की अवधियों पर प्रशिक्षित होकर बाद की अवधियों पर जाँचा जाता है, उलटा कभी नहीं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A dataset has 1,000 rows. (a) With an 80:20 split, how many rows are used for training and testing? (b) With 5-fold cross-validation, how many rows are in each fold and how many are used for training in each round?",
+       "hi": "एक dataset में 1,000 rows हैं। (a) 80:20 बँटवारे में training और testing के लिए कितनी rows? (b) 5-fold cross-validation में हर fold में कितनी rows होंगी और हर दौर में training के लिए कितनी?"
+      },
+      "a": {
+       "en": "(a) Training = 80% of 1000 = 800 rows; testing = 20% = 200 rows.\n(b) Each fold = 1000 ÷ 5 = 200 rows. In each round, 1 fold (200 rows) tests and 4 folds (800 rows) train. Over 5 rounds, every row is tested once.",
+       "hi": "(a) Training = 1000 का 80% = 800 rows; testing = 20% = 200 rows।\n(b) हर fold = 1000 ÷ 5 = 200 rows। हर दौर में 1 fold (200 rows) test करता है और 4 folds (800 rows) train करते हैं। 5 दौरों में हर row एक बार test होती है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.14 Evaluation metrics for classification",
+    "hi": "2.14 Classification के लिए evaluation metrics"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "For a classification model we compare its predictions with the true labels using a confusion matrix. For a two-class problem (say, 'fraud' = positive and 'genuine' = negative) it is a 2 × 2 table.",
+      "hi": "Classification model के लिए हम confusion matrix से उसके पूर्वानुमानों की तुलना असली labels से करते हैं। दो-वर्ग वाली समस्या (मान लें 'धोखाधड़ी' = positive और 'असली' = negative) के लिए यह 2 × 2 तालिका होती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Actual \\ Predicted",
+        "Predicted: Positive",
+        "Predicted: Negative"
+       ],
+       "hi": [
+        "वास्तविक \\ अनुमान",
+        "अनुमान: Positive",
+        "अनुमान: Negative"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Actual: Positive",
+         "TP (True Positive): fraud correctly caught",
+         "FN (False Negative): fraud missed"
+        ],
+        [
+         "Actual: Negative",
+         "FP (False Positive): genuine payment wrongly flagged (false alarm)",
+         "TN (True Negative): genuine payment correctly passed"
+        ]
+       ],
+       "hi": [
+        [
+         "वास्तविक: Positive",
+         "TP (True Positive): धोखाधड़ी सही पकड़ी गई",
+         "FN (False Negative): धोखाधड़ी छूट गई"
+        ],
+        [
+         "वास्तविक: Negative",
+         "FP (False Positive): असली भुगतान ग़लती से संदिग्ध बताया (झूठा अलार्म)",
+         "TN (True Negative): असली भुगतान सही ढंग से पास हुआ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember how to read the names: the second word (Positive/Negative) is what the model predicted; the first word (True/False) says whether that prediction was correct. So a False Negative is a 'No' prediction that was wrong.",
+      "hi": "नाम पढ़ने का तरीका याद रखें: दूसरा शब्द (Positive/Negative) बताता है कि model ने क्या अनुमान लगाया; पहला शब्द (True/False) बताता है कि वह अनुमान सही था या नहीं। इसलिए False Negative वह 'ना' वाला अनुमान है जो ग़लत था।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Accuracy  = (TP + TN) / (TP + TN + FP + FN)\nPrecision = TP / (TP + FP)\nRecall    = TP / (TP + FN)        (also called Sensitivity or True Positive Rate)\nF1 score  = 2 × Precision × Recall / (Precision + Recall)",
+      "hi": "Accuracy  = (TP + TN) / (TP + TN + FP + FN)\nPrecision = TP / (TP + FP)\nRecall    = TP / (TP + FN)        (इसे Sensitivity या True Positive Rate भी कहते हैं)\nF1 score  = 2 × Precision × Recall / (Precision + Recall)"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Metric",
+        "Question it answers",
+        "Use it when"
+       ],
+       "hi": [
+        "Metric",
+        "यह किस प्रश्न का उत्तर देता है",
+        "कब उपयोग करें"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Accuracy",
+         "Out of all predictions, how many were right?",
+         "Classes are roughly balanced and all errors cost about the same"
+        ],
+        [
+         "Precision",
+         "Of the items predicted positive, how many really were positive?",
+         "False positives are costly, e.g. a spam filter must not send an important exam-result email to spam"
+        ],
+        [
+         "Recall",
+         "Of the truly positive items, how many did we catch?",
+         "False negatives are costly, e.g. missing a disease in screening or missing fraud"
+        ],
+        [
+         "F1 score",
+         "A single balance of precision and recall (their harmonic mean)",
+         "Classes are imbalanced or both kinds of error matter"
+        ]
+       ],
+       "hi": [
+        [
+         "Accuracy",
+         "सभी अनुमानों में से कितने सही थे?",
+         "वर्ग लगभग संतुलित हों और सभी त्रुटियों की क़ीमत लगभग बराबर हो"
+        ],
+        [
+         "Precision",
+         "जिन्हें positive बताया, उनमें से कितने सचमुच positive थे?",
+         "False positives महँगे हों, जैसे spam filter परीक्षा-परिणाम वाले ज़रूरी email को spam में न डाले"
+        ],
+        [
+         "Recall",
+         "सचमुच positive items में से कितने पकड़े?",
+         "False negatives महँगे हों, जैसे जाँच में बीमारी छूट जाना या धोखाधड़ी छूट जाना"
+        ],
+        [
+         "F1 score",
+         "precision और recall का एक संतुलित मान (उनका हरात्मक माध्य)",
+         "वर्ग असंतुलित हों या दोनों प्रकार की त्रुटियाँ मायने रखती हों"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why is accuracy not enough? Suppose only 1 in 100 transactions is fraud. A lazy model that always says 'genuine' is 99% accurate yet catches zero fraud, so its recall is 0. Precision, recall and F1 reveal such problems. All four metrics range from 0 to 1 (or 0% to 100%); higher is better. The F1 score is high only when both precision and recall are high, because a harmonic mean is pulled down by the smaller value.",
+      "hi": "Accuracy काफ़ी क्यों नहीं? मान लें 100 में से केवल 1 लेन-देन धोखाधड़ी है। एक आलसी model जो हमेशा 'असली' कहता है, 99% सटीक है फिर भी एक भी धोखाधड़ी नहीं पकड़ता, इसलिए उसका recall 0 है। Precision, recall और F1 ऐसी समस्याएँ उजागर करते हैं। चारों metrics 0 से 1 (या 0% से 100%) के बीच होते हैं; अधिक बेहतर है। F1 score तभी ऊँचा होता है जब precision और recall दोनों ऊँचे हों, क्योंकि हरात्मक माध्य छोटे मान की ओर खिंच जाता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A model screening 100 people for a disease gives TP = 35, TN = 50, FP = 10, FN = 5. Find accuracy, precision, recall and F1 score.",
+       "hi": "100 लोगों की किसी रोग के लिए जाँच करने वाला model देता है TP = 35, TN = 50, FP = 10, FN = 5। accuracy, precision, recall और F1 score निकालिए।"
+      },
+      "a": {
+       "en": "Step 1: Total = 35 + 50 + 10 + 5 = 100.\nStep 2: Accuracy = (35 + 50) / 100 = 0.85 = 85%.\nStep 3: Precision = 35 / (35 + 10) = 35 / 45 ≈ 0.778 = 77.8%.\nStep 4: Recall = 35 / (35 + 5) = 35 / 40 = 0.875 = 87.5%.\nStep 5: F1 = 2 × 0.778 × 0.875 / (0.778 + 0.875) = 1.361 / 1.653 ≈ 0.824, about 82.4%.\nInterpretation: the model catches most sick people (high recall), which matters most in screening, but 10 healthy people get a false alarm and need a confirmatory test.",
+       "hi": "चरण 1: कुल = 35 + 50 + 10 + 5 = 100।\nचरण 2: Accuracy = (35 + 50) / 100 = 0.85 = 85%।\nचरण 3: Precision = 35 / (35 + 10) = 35 / 45 ≈ 0.778 = 77.8%।\nचरण 4: Recall = 35 / (35 + 5) = 35 / 40 = 0.875 = 87.5%।\nचरण 5: F1 = 2 × 0.778 × 0.875 / (0.778 + 0.875) = 1.361 / 1.653 ≈ 0.824, लगभग 82.4%।\nव्याख्या: model अधिकतर बीमार लोगों को पकड़ता है (ऊँचा recall), जो जाँच में सबसे ज़रूरी है, पर 10 स्वस्थ लोगों को झूठा अलार्म मिलता है और उन्हें पुष्टि वाली जाँच करानी होगी।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A spam filter tested on 200 emails gives TP = 40 (spam caught), FP = 20, FN = 10, TN = 130. Calculate the four metrics and say which one the email company should worry about.",
+       "hi": "200 emails पर जाँचा गया spam filter देता है TP = 40 (spam पकड़ा), FP = 20, FN = 10, TN = 130। चारों metrics निकालिए और बताइए कि email कंपनी को किसकी चिंता करनी चाहिए।"
+      },
+      "a": {
+       "en": "Accuracy = (40 + 130) / 200 = 170 / 200 = 0.85.\nPrecision = 40 / (40 + 20) ≈ 0.667.\nRecall = 40 / (40 + 10) = 0.8.\nF1 = 2 × 0.667 × 0.8 / (0.667 + 0.8) ≈ 0.727.\nPrecision is the worry: 20 genuine emails were sent to spam. For a spam filter, losing a real email is worse than seeing an occasional spam, so the team should raise precision.",
+       "hi": "Accuracy = (40 + 130) / 200 = 170 / 200 = 0.85।\nPrecision = 40 / (40 + 20) ≈ 0.667।\nRecall = 40 / (40 + 10) = 0.8।\nF1 = 2 × 0.667 × 0.8 / (0.667 + 0.8) ≈ 0.727।\nचिंता precision की है: 20 असली emails spam में चले गए। spam filter के लिए असली email खोना कभी-कभार spam दिखने से बुरा है, इसलिए टीम को precision बढ़ाना चाहिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "In Python, scikit-learn calculates these metrics directly. The program below uses 10 test transactions (1 = fraud).",
+      "hi": "Python में scikit-learn ये metrics सीधे निकालता है। नीचे का प्रोग्राम 10 test लेन-देन लेता है (1 = धोखाधड़ी)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nfrom sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score\n\n# 1 = fraud transaction, 0 = genuine (10 test transactions)\nactual    = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0]\npredicted = [1, 0, 1, 1, 0, 0, 0, 0, 1, 0]\n\nprint(confusion_matrix(actual, predicted))\nprint('Accuracy :', accuracy_score(actual, predicted))\nprint('Precision:', precision_score(actual, predicted))\nprint('Recall   :', recall_score(actual, predicted))\nprint('F1 score :', round(f1_score(actual, predicted), 3))",
+      "hi": "प्रोग्राम:\nfrom sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score\n\n# 1 = fraud transaction, 0 = genuine (10 test transactions)\nactual    = [1, 0, 0, 1, 0, 1, 0, 0, 1, 0]\npredicted = [1, 0, 1, 1, 0, 0, 0, 0, 1, 0]\n\nprint(confusion_matrix(actual, predicted))\nprint('Accuracy :', accuracy_score(actual, predicted))\nprint('Precision:', precision_score(actual, predicted))\nprint('Recall   :', recall_score(actual, predicted))\nprint('F1 score :', round(f1_score(actual, predicted), 3))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n[[5 1]\n [1 3]]\nAccuracy : 0.8\nPrecision: 0.75\nRecall   : 0.75\nF1 score : 0.75",
+      "hi": "आउटपुट:\n[[5 1]\n [1 3]]\nAccuracy : 0.8\nPrecision: 0.75\nRecall   : 0.75\nF1 score : 0.75"
+     }
+    },
+    {
+     "p": {
+      "en": "scikit-learn prints the confusion matrix with actual classes as rows and predicted classes as columns, in the order 0 then 1. So the top row [5 1] means TN = 5, FP = 1, and the bottom row [1 3] means FN = 1, TP = 3. Check: precision = 3 / (3 + 1) = 0.75, recall = 3 / (3 + 1) = 0.75, accuracy = (3 + 5) / 10 = 0.8. The function classification_report() prints precision, recall and F1 for every class in one table.",
+      "hi": "scikit-learn confusion matrix को वास्तविक वर्गों को rows और अनुमानित वर्गों को columns के रूप में, 0 फिर 1 के क्रम में, छापता है। इसलिए ऊपरी row [5 1] का अर्थ TN = 5, FP = 1, और निचली row [1 3] का अर्थ FN = 1, TP = 3 है। जाँच: precision = 3 / (3 + 1) = 0.75, recall = 3 / (3 + 1) = 0.75, accuracy = (3 + 5) / 10 = 0.8। classification_report() function हर वर्ग के precision, recall और F1 एक ही तालिका में छापता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.15 Evaluation metrics for regression",
+    "hi": "2.15 Regression के लिए evaluation metrics"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "For a regression model the output is a number, so we measure how far the predictions are from the actual values. The difference actual − predicted is the error (residual) for each point.",
+      "hi": "Regression model का output एक संख्या होती है, इसलिए हम मापते हैं कि अनुमान वास्तविक मानों से कितनी दूर हैं। हर बिंदु के लिए अंतर वास्तविक − अनुमानित उसकी त्रुटि (residual) है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "MAE  = (1/n) × Σ |actual − predicted|\nMSE  = (1/n) × Σ (actual − predicted)²\nRMSE = √MSE\n\nn = number of data points, Σ = add up over all points",
+      "hi": "MAE  = (1/n) × Σ |वास्तविक − अनुमानित|\nMSE  = (1/n) × Σ (वास्तविक − अनुमानित)²\nRMSE = √MSE\n\nn = data बिंदुओं की संख्या, Σ = सभी बिंदुओं पर योग"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Metric",
+        "Meaning",
+        "Key property"
+       ],
+       "hi": [
+        "Metric",
+        "अर्थ",
+        "मुख्य गुण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "MAE (Mean Absolute Error)",
+         "Average size of the errors, ignoring sign",
+         "Easy to understand; same unit as the target; less affected by outliers"
+        ],
+        [
+         "MSE (Mean Squared Error)",
+         "Average of squared errors",
+         "Squaring removes negative signs and punishes large errors heavily; unit is squared (e.g. ₹²), so harder to interpret"
+        ],
+        [
+         "RMSE (Root Mean Squared Error)",
+         "Square root of MSE",
+         "Back in the same unit as the target; still punishes large errors; RMSE ≥ MAE always"
+        ]
+       ],
+       "hi": [
+        [
+         "MAE (Mean Absolute Error)",
+         "चिह्न छोड़कर त्रुटियों का औसत आकार",
+         "समझने में आसान; target वाली ही इकाई; outliers का कम असर"
+        ],
+        [
+         "MSE (Mean Squared Error)",
+         "वर्ग-त्रुटियों का औसत",
+         "वर्ग करने से ऋण चिह्न हटते हैं और बड़ी त्रुटियों को भारी दंड मिलता है; इकाई वर्ग में (जैसे ₹²), इसलिए समझना कठिन"
+        ],
+        [
+         "RMSE (Root Mean Squared Error)",
+         "MSE का वर्गमूल",
+         "target वाली इकाई में वापस; बड़ी त्रुटियों को फिर भी दंड; RMSE हमेशा ≥ MAE"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "For all three, 0 means perfect predictions and smaller is better. Why square the errors? If we simply averaged actual − predicted, positive and negative errors would cancel and a bad model could appear perfect. Squaring (or taking absolute values) prevents this.",
+      "hi": "तीनों में 0 का अर्थ पूर्ण अनुमान है और छोटा बेहतर है। त्रुटियों का वर्ग क्यों? यदि हम सीधे वास्तविक − अनुमानित का औसत लें, तो धनात्मक और ऋणात्मक त्रुटियाँ एक-दूसरे को काट देंगी और ख़राब model भी पूर्ण लग सकता है। वर्ग करना (या निरपेक्ष मान लेना) इसे रोकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A weather model predicts maximum temperatures (°C) for 10 days in Jaipur. Actual: 32, 35, 30, 28, 40, 38, 33, 36, 29, 31. Predicted: 30, 36, 33, 27, 37, 39, 35, 33, 30, 34. Find MAE, MSE and RMSE.",
+       "hi": "एक मौसम model जयपुर के 10 दिनों का अधिकतम तापमान (°C) बताता है। वास्तविक: 32, 35, 30, 28, 40, 38, 33, 36, 29, 31। अनुमानित: 30, 36, 33, 27, 37, 39, 35, 33, 30, 34। MAE, MSE और RMSE निकालिए।"
+      },
+      "a": {
+       "en": "Step 1: Errors (actual − predicted): 2, −1, −3, 1, 3, −1, −2, 3, −1, −3.\nStep 2: Absolute errors: 2, 1, 3, 1, 3, 1, 2, 3, 1, 3; sum = 20; MAE = 20 / 10 = 2.0 °C.\nStep 3: Squared errors: 4, 1, 9, 1, 9, 1, 4, 9, 1, 9; sum = 48.\nStep 4: MSE = 48 / 10 = 4.8 (°C²).\nStep 5: RMSE = √4.8 ≈ 2.19 °C.\nSo the model is typically about 2 °C off.",
+       "hi": "चरण 1: त्रुटियाँ (वास्तविक − अनुमानित): 2, −1, −3, 1, 3, −1, −2, 3, −1, −3।\nचरण 2: निरपेक्ष त्रुटियाँ: 2, 1, 3, 1, 3, 1, 2, 3, 1, 3; योग = 20; MAE = 20 / 10 = 2.0 °C।\nचरण 3: वर्ग-त्रुटियाँ: 4, 1, 9, 1, 9, 1, 4, 9, 1, 9; योग = 48।\nचरण 4: MSE = 48 / 10 = 4.8 (°C²)।\nचरण 5: RMSE = √4.8 ≈ 2.19 °C।\nअर्थात model आमतौर पर लगभग 2 °C का अंतर रखता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The same calculation in NumPy for five values:",
+      "hi": "पाँच मानों के लिए यही गणना NumPy में:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport numpy as np\nactual    = np.array([50, 62, 45, 70, 58])\npredicted = np.array([48, 65, 44, 74, 57])\nerr = actual - predicted\nprint('Errors:', err)\nprint('MAE :', np.mean(np.abs(err)))\nprint('MSE :', np.mean(err ** 2))\nprint('RMSE:', round(float(np.sqrt(np.mean(err ** 2))), 2))",
+      "hi": "प्रोग्राम:\nimport numpy as np\nactual    = np.array([50, 62, 45, 70, 58])\npredicted = np.array([48, 65, 44, 74, 57])\nerr = actual - predicted\nprint('Errors:', err)\nprint('MAE :', np.mean(np.abs(err)))\nprint('MSE :', np.mean(err ** 2))\nprint('RMSE:', round(float(np.sqrt(np.mean(err ** 2))), 2))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nErrors: [ 2 -3  1 -4  1]\nMAE : 2.2\nMSE : 6.2\nRMSE: 2.49",
+      "hi": "आउटपुट:\nErrors: [ 2 -3  1 -4  1]\nMAE : 2.2\nMSE : 6.2\nRMSE: 2.49"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.16 Practical activities",
+    "hi": "2.16 Practical गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Practical 1: Calculate MSE and RMSE in MS Excel (or Google Sheets / LibreOffice Calc).\nAim: compute regression errors with spreadsheet formulas.",
+       "hi": "Practical 1: MS Excel (या Google Sheets / LibreOffice Calc) में MSE और RMSE निकालना।\nउद्देश्य: spreadsheet formulas से regression त्रुटियाँ निकालना।"
+      },
+      "a": {
+       "en": "1. In A1 type Actual and in B1 Predicted. Enter 10 pairs in A2:B11 (for example, the Jaipur temperatures above).\n2. In C1 type Error; in C2 enter =A2-B2 and drag down to C11.\n3. In D1 type Squared Error; in D2 enter =C2^2 (or =POWER(C2,2)) and drag down.\n4. MSE: in D13 enter =AVERAGE(D2:D11), or =SUM(D2:D11)/COUNT(D2:D11).\n5. RMSE: in D14 enter =SQRT(D13).\n6. Optional MAE: in E2 enter =ABS(C2), drag down, then =AVERAGE(E2:E11).\n7. Shortcut check: =SUMXMY2(A2:A11,B2:B11)/COUNT(A2:A11) gives MSE in one formula.\nObserve: for the Jaipur data you get MSE 4.8 and RMSE about 2.19. Change one prediction to be 10 °C wrong and see MSE jump, showing how squaring punishes large errors.",
+       "hi": "1. A1 में Actual और B1 में Predicted लिखें। A2:B11 में 10 जोड़े भरें (जैसे ऊपर के जयपुर तापमान)।\n2. C1 में Error लिखें; C2 में =A2-B2 डालकर C11 तक खींचें।\n3. D1 में Squared Error लिखें; D2 में =C2^2 (या =POWER(C2,2)) डालकर नीचे खींचें।\n4. MSE: D13 में =AVERAGE(D2:D11), या =SUM(D2:D11)/COUNT(D2:D11)।\n5. RMSE: D14 में =SQRT(D13)।\n6. वैकल्पिक MAE: E2 में =ABS(C2), नीचे खींचें, फिर =AVERAGE(E2:E11)।\n7. शॉर्टकट जाँच: =SUMXMY2(A2:A11,B2:B11)/COUNT(A2:A11) एक ही formula में MSE देता है।\nक्या दिखता है: जयपुर data के लिए MSE 4.8 और RMSE लगभग 2.19 आता है। किसी एक अनुमान को 10 °C ग़लत करके देखें, MSE उछल जाता है, जिससे पता चलता है कि वर्ग करना बड़ी त्रुटियों को कैसे दंडित करता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Practical 2: Precision, recall, F1 and accuracy from a confusion matrix.\nAim: practise the formulas by hand and with a spreadsheet.",
+       "hi": "Practical 2: confusion matrix से precision, recall, F1 और accuracy।\nउद्देश्य: formulas का हाथ से और spreadsheet से अभ्यास।"
+      },
+      "a": {
+       "en": "1. Draw a 2 × 2 grid and label rows Actual Yes / Actual No and columns Predicted Yes / Predicted No.\n2. Fill TP, FN, FP, TN from the question (e.g. TP 45, FN 10, FP 5, TN 40).\n3. Compute: Accuracy = 85/100 = 0.85; Precision = 45/50 = 0.9; Recall = 45/55 ≈ 0.818; F1 = 2 × 0.9 × 0.818 / (0.9 + 0.818) ≈ 0.857.\n4. In a spreadsheet put TP, FP, FN, TN in B1:B4 and write =B1/(B1+B2) for precision in B6, =B1/(B1+B3) for recall in B7, and =2*B6*B7/(B6+B7) for F1.\nWhat it teaches: the same accuracy (85%) can hide very different precision and recall values.",
+       "hi": "1. 2 × 2 ग्रिड बनाएँ; rows पर Actual Yes / Actual No और columns पर Predicted Yes / Predicted No लिखें।\n2. प्रश्न से TP, FN, FP, TN भरें (जैसे TP 45, FN 10, FP 5, TN 40)।\n3. निकालें: Accuracy = 85/100 = 0.85; Precision = 45/50 = 0.9; Recall = 45/55 ≈ 0.818; F1 = 2 × 0.9 × 0.818 / (0.9 + 0.818) ≈ 0.857।\n4. spreadsheet में TP, FP, FN, TN को B1:B4 में रखें और B6 में precision के लिए =B1/(B1+B2), B7 में recall के लिए =B1/(B1+B3), तथा F1 के लिए =2*B6*B7/(B6+B7) लिखें।\nक्या सीखते हैं: एक ही accuracy (85%) बहुत अलग precision और recall छिपा सकती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Practical 3: Python code to evaluate a regression model.\nAim: load data, check it, split it, train Linear Regression and report train/test scores and errors.",
+       "hi": "Practical 3: regression model का मूल्यांकन करने वाला Python code।\nउद्देश्य: data लोड करना, जाँचना, बाँटना, Linear Regression प्रशिक्षित करना और train/test score तथा त्रुटियाँ बताना।"
+      },
+      "a": {
+       "en": "Use the program and output shown just below. With a real file (for example Salary_Data.csv from Kaggle, with columns YearsExperience and Salary), replace the DataFrame with df = pd.read_csv('Salary_Data.csv'), print df.head(), df.shape and df.isnull().sum(), then follow the same steps.",
+       "hi": "नीचे दिए प्रोग्राम और आउटपुट का उपयोग करें। असली फ़ाइल (जैसे Kaggle की Salary_Data.csv, जिसमें YearsExperience और Salary columns हैं) के साथ DataFrame की जगह df = pd.read_csv('Salary_Data.csv') लिखें, df.head(), df.shape और df.isnull().sum() print करें, फिर वही चरण अपनाएँ।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Program:\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, mean_absolute_error\n\n# Area of a flat (sq ft) and its monthly rent (thousand rupees)\ndf = pd.DataFrame({\n    'Area': [450, 500, 600, 650, 700, 800, 850, 900, 1000, 1100,\n             1200, 1250, 1300, 1400, 1500],\n    'Rent': [9, 10, 12, 12, 14, 15, 17, 17, 19, 21, 23, 23, 25, 27, 28]})\nprint(df.shape)\nprint(df.isnull().sum().sum())\n\nX = df[['Area']]\ny = df['Rent']\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, shuffle=True, random_state=10)\nprint('Train rows:', len(X_train), 'Test rows:', len(X_test))\n\nmodel = LinearRegression().fit(X_train, y_train)\nprint('Train R2:', round(model.score(X_train, y_train), 3))\nprint('Test R2 :', round(model.score(X_test, y_test), 3))\n\npred = model.predict(X_test)\nprint('MAE :', round(float(mean_absolute_error(y_test, pred)), 3))\nmse = mean_squared_error(y_test, pred)\nprint('MSE :', round(float(mse), 3))\nprint('RMSE:', round(float(np.sqrt(mse)), 3))",
+      "hi": "प्रोग्राम:\nimport pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, mean_absolute_error\n\n# Area of a flat (sq ft) and its monthly rent (thousand rupees)\ndf = pd.DataFrame({\n    'Area': [450, 500, 600, 650, 700, 800, 850, 900, 1000, 1100,\n             1200, 1250, 1300, 1400, 1500],\n    'Rent': [9, 10, 12, 12, 14, 15, 17, 17, 19, 21, 23, 23, 25, 27, 28]})\nprint(df.shape)\nprint(df.isnull().sum().sum())\n\nX = df[['Area']]\ny = df['Rent']\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, shuffle=True, random_state=10)\nprint('Train rows:', len(X_train), 'Test rows:', len(X_test))\n\nmodel = LinearRegression().fit(X_train, y_train)\nprint('Train R2:', round(model.score(X_train, y_train), 3))\nprint('Test R2 :', round(model.score(X_test, y_test), 3))\n\npred = model.predict(X_test)\nprint('MAE :', round(float(mean_absolute_error(y_test, pred)), 3))\nmse = mean_squared_error(y_test, pred)\nprint('MSE :', round(float(mse), 3))\nprint('RMSE:', round(float(np.sqrt(mse)), 3))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n(15, 2)\n0\nTrain rows: 12 Test rows: 3\nTrain R2: 0.996\nTest R2 : 0.989\nMAE : 0.51\nMSE : 0.301\nRMSE: 0.549",
+      "hi": "आउटपुट:\n(15, 2)\n0\nTrain rows: 12 Test rows: 3\nTrain R2: 0.996\nTest R2 : 0.989\nMAE : 0.51\nMSE : 0.301\nRMSE: 0.549"
+     }
+    },
+    {
+     "p": {
+      "en": "Reading the output: 12 rows trained the model and 3 tested it (80:20). Train R² (0.996) and test R² (0.989) are both high and close to each other, so the model is not overfitting. The RMSE of about 0.55 means rent predictions are typically about ₹550 off. If the train score were very high but the test score much lower, that gap would signal overfitting.",
+      "hi": "आउटपुट पढ़ना: 12 rows से model प्रशिक्षित हुआ और 3 से जाँचा गया (80:20)। Train R² (0.996) और test R² (0.989) दोनों ऊँचे और एक-दूसरे के निकट हैं, इसलिए model overfitting नहीं कर रहा। लगभग 0.55 का RMSE बताता है कि किराए के अनुमान आमतौर पर लगभग ₹550 का अंतर रखते हैं। यदि train score बहुत ऊँचा पर test score काफ़ी कम होता, तो यह अंतर overfitting का संकेत होता।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Unplugged activity: Plan your capstone with the 10 stages.\nAim: apply the methodology to a local problem. What you need: chart paper, sticky notes, a group of 4.",
+       "hi": "बिना कंप्यूटर की गतिविधि: 10 चरणों से अपने capstone की योजना।\nउद्देश्य: पद्धति को किसी स्थानीय समस्या पर लागू करना। क्या चाहिए: चार्ट पेपर, sticky notes, 4 का समूह।"
+      },
+      "a": {
+       "en": "1. Pick a problem from your area: late school buses, water wastage, stray-animal accidents, crop prices for local farmers.\n2. Draw 10 boxes in a circle. On a sticky note for each stage, write your answer: the 5W1H problem statement, the analytic approach, the data needed and its type, primary and secondary sources, what you will check, cleaning steps, a model, metrics and a target, how people will use it, and how you will collect feedback.\n3. Draw backward arrows where you expect to loop.\nWhat it teaches: the methodology is a planning tool you can use for your Capstone Project before writing any code.",
+       "hi": "1. अपने क्षेत्र की कोई समस्या चुनें: स्कूल बसों की देरी, पानी की बर्बादी, आवारा पशुओं से दुर्घटनाएँ, स्थानीय किसानों के लिए फ़सल के दाम।\n2. एक वृत्त में 10 डिब्बे बनाएँ। हर चरण के sticky note पर अपना उत्तर लिखें: 5W1H समस्या-कथन, विश्लेषणात्मक दृष्टिकोण, ज़रूरी data और उसका प्रकार, प्राथमिक और द्वितीयक स्रोत, आप क्या जाँचेंगे, सफ़ाई के चरण, model, metrics और लक्ष्य, लोग इसका उपयोग कैसे करेंगे, और feedback कैसे लेंगे।\n3. जहाँ loop की उम्मीद हो, वहाँ उलटे तीर बनाएँ।\nक्या सीखते हैं: यह पद्धति एक योजना-उपकरण है, जिसे कोई code लिखने से पहले Capstone Project में उपयोग कर सकते हैं।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Jumping straight to modelling without a clear problem statement. Fix: always start with Business Understanding and a measurable goal.",
+   "Mixing up the order of stages, e.g. putting Data Collection before Data Requirements. Fix: requirements first, then collection.",
+   "Choosing regression for a yes/no question or classification for a 'how much' question. Fix: let the question type decide the approach.",
+   "Thinking the process is strictly one-way. Fix: it is iterative; going back to an earlier stage is normal.",
+   "Evaluating the model on the training data. Fix: use a separate test set or cross-validation.",
+   "Swapping FP and FN. Fix: the second word is the prediction; the first says if it was correct.",
+   "Using accuracy alone on imbalanced data. Fix: also report precision, recall and F1.",
+   "Swapping the precision and recall denominators. Fix: precision divides by all predicted positives (TP + FP); recall by all actual positives (TP + FN).",
+   "Forgetting the square root for RMSE, or adding errors without squaring so they cancel. Fix: square, average, then take the square root.",
+   "Treating deployment as the end. Fix: monitor, collect feedback, watch for data drift and retrain."
+  ],
+  "hi": [
+   "स्पष्ट समस्या-कथन के बिना सीधे modelling पर कूदना। सुधार: हमेशा Business Understanding और मापने योग्य लक्ष्य से शुरू करें।",
+   "चरणों का क्रम उलझाना, जैसे Data Collection को Data Requirements से पहले रखना। सुधार: पहले requirements, फिर collection।",
+   "हाँ/ना प्रश्न के लिए regression या 'कितना' प्रश्न के लिए classification चुनना। सुधार: प्रश्न का प्रकार दृष्टिकोण तय करे।",
+   "यह सोचना कि प्रक्रिया सख़्ती से एक-तरफ़ा है। सुधार: यह पुनरावृत्त है; पिछले चरण पर लौटना सामान्य है।",
+   "Training data पर model का मूल्यांकन करना। सुधार: अलग test set या cross-validation का उपयोग करें।",
+   "FP और FN को आपस में बदल देना। सुधार: दूसरा शब्द अनुमान है; पहला बताता है कि वह सही था या नहीं।",
+   "असंतुलित data पर केवल accuracy देखना। सुधार: precision, recall और F1 भी बताएँ।",
+   "Precision और recall के हर (denominator) बदल देना। सुधार: precision में सभी अनुमानित positives (TP + FP) से भाग; recall में सभी वास्तविक positives (TP + FN) से।",
+   "RMSE में वर्गमूल भूलना, या बिना वर्ग किए त्रुटियाँ जोड़ना जिससे वे कट जाएँ। सुधार: वर्ग करें, औसत लें, फिर वर्गमूल लें।",
+   "Deployment को अंत मानना। सुधार: निगरानी करें, feedback लें, data drift पर नज़र रखें और दोबारा प्रशिक्षित करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Data Science Methodology",
+    "hi": "डेटा साइंस पद्धति"
+   },
+   "d": {
+    "en": "A structured, iterative 10-stage framework for solving problems with data.",
+    "hi": "data से समस्याएँ हल करने का संरचित, पुनरावृत्त 10-चरणीय ढाँचा।"
+   }
+  },
+  {
+   "t": {
+    "en": "CRISP-DM",
+    "hi": "CRISP-DM"
+   },
+   "d": {
+    "en": "Cross-Industry Standard Process for Data Mining, an earlier widely used framework for data projects.",
+    "hi": "Cross-Industry Standard Process for Data Mining, data प्रोजेक्ट्स का पहले से प्रचलित ढाँचा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stakeholder",
+    "hi": "हितधारक"
+   },
+   "d": {
+    "en": "A person or group affected by the problem or its solution.",
+    "hi": "समस्या या उसके समाधान से प्रभावित व्यक्ति या समूह।"
+   }
+  },
+  {
+   "t": {
+    "en": "5W1H",
+    "hi": "5W1H"
+   },
+   "d": {
+    "en": "Who, What, Where, When, Why, How: questions to understand a problem.",
+    "hi": "Who, What, Where, When, Why, How: समस्या समझने के प्रश्न।"
+   }
+  },
+  {
+   "t": {
+    "en": "Analytic approach",
+    "hi": "विश्लेषणात्मक दृष्टिकोण"
+   },
+   "d": {
+    "en": "The type of method chosen to answer the question with data.",
+    "hi": "data से प्रश्न का उत्तर देने के लिए चुनी गई विधि का प्रकार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Descriptive / diagnostic / predictive / prescriptive analytics",
+    "hi": "Descriptive / diagnostic / predictive / prescriptive analytics"
+   },
+   "d": {
+    "en": "Analytics answering what happened / why / what will happen / what to do.",
+    "hi": "वे analytics जो बताते हैं क्या हुआ / क्यों / क्या होगा / क्या करें।"
+   }
+  },
+  {
+   "t": {
+    "en": "Structured, unstructured, semi-structured data",
+    "hi": "Structured, unstructured, semi-structured data"
+   },
+   "d": {
+    "en": "Data in fixed tables / with no fixed format / with tags or keys but not in tables.",
+    "hi": "निश्चित तालिकाओं वाला / बिना निश्चित प्रारूप वाला / tags या keys वाला पर तालिका में नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Primary / secondary data",
+    "hi": "प्राथमिक / द्वितीयक data"
+   },
+   "d": {
+    "en": "Collected first-hand for the project / already collected by others.",
+    "hi": "प्रोजेक्ट के लिए सीधे इकट्ठा / दूसरों द्वारा पहले से इकट्ठा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature engineering",
+    "hi": "Feature engineering"
+   },
+   "d": {
+    "en": "Creating or transforming input variables to help a model learn.",
+    "hi": "model को सीखने में मदद के लिए input variables बनाना या बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "One-hot encoding",
+    "hi": "One-hot encoding"
+   },
+   "d": {
+    "en": "Representing each category by its own 0/1 column.",
+    "hi": "हर श्रेणी को उसके अपने 0/1 column से दर्शाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hyperparameter",
+    "hi": "Hyperparameter"
+   },
+   "d": {
+    "en": "A setting chosen before training, such as tree depth or k.",
+    "hi": "training से पहले चुनी गई सेटिंग, जैसे tree की गहराई या k।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deployment",
+    "hi": "Deployment"
+   },
+   "d": {
+    "en": "Putting a model into real use through an app, website or system.",
+    "hi": "model को app, website या प्रणाली के ज़रिए वास्तविक उपयोग में लाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "API",
+    "hi": "API"
+   },
+   "d": {
+    "en": "An interface that lets one program send data to another and receive results.",
+    "hi": "वह interface जिससे एक प्रोग्राम दूसरे को data भेजकर परिणाम पाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data drift",
+    "hi": "Data drift"
+   },
+   "d": {
+    "en": "Change in real-world data over time that makes a model less accurate.",
+    "hi": "समय के साथ असली data में बदलाव जिससे model कम सटीक हो जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Model validation",
+    "hi": "Model validation"
+   },
+   "d": {
+    "en": "Checking how well a model performs on unseen data.",
+    "hi": "यह जाँचना कि model अनदेखे data पर कितना अच्छा है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Overfitting / underfitting",
+    "hi": "Overfitting / underfitting"
+   },
+   "d": {
+    "en": "Learning training data too closely and failing on new data / being too simple to learn the pattern.",
+    "hi": "training data को बहुत बारीकी से सीखकर नए data पर विफल होना / पैटर्न सीखने के लिए बहुत सरल होना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Train-test split",
+    "hi": "Train-test split"
+   },
+   "d": {
+    "en": "Dividing data once into training and testing parts, e.g. 80:20.",
+    "hi": "data को एक बार training और testing भागों में बाँटना, जैसे 80:20।"
+   }
+  },
+  {
+   "t": {
+    "en": "K-fold cross-validation",
+    "hi": "K-fold cross-validation"
+   },
+   "d": {
+    "en": "Splitting data into k folds, testing on each fold once and averaging the k scores.",
+    "hi": "data को k folds में बाँटकर हर fold पर एक बार जाँचना और k अंकों का औसत लेना।"
+   }
+  },
+  {
+   "t": {
+    "en": "LOOCV",
+    "hi": "LOOCV"
+   },
+   "d": {
+    "en": "Leave-One-Out Cross-Validation: k equals the number of rows.",
+    "hi": "Leave-One-Out Cross-Validation: k, rows की संख्या के बराबर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Confusion matrix",
+    "hi": "Confusion matrix"
+   },
+   "d": {
+    "en": "A table of TP, FP, FN and TN comparing predictions with actual labels.",
+    "hi": "TP, FP, FN और TN की तालिका जो अनुमानों की असली labels से तुलना करती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Accuracy",
+    "hi": "Accuracy"
+   },
+   "d": {
+    "en": "(TP + TN) / total: share of all predictions that are correct.",
+    "hi": "(TP + TN) / कुल: सही अनुमानों का अनुपात।"
+   }
+  },
+  {
+   "t": {
+    "en": "Precision",
+    "hi": "Precision"
+   },
+   "d": {
+    "en": "TP / (TP + FP): share of predicted positives that are truly positive.",
+    "hi": "TP / (TP + FP): अनुमानित positives में सचमुच positive का अनुपात।"
+   }
+  },
+  {
+   "t": {
+    "en": "Recall (Sensitivity)",
+    "hi": "Recall (Sensitivity)"
+   },
+   "d": {
+    "en": "TP / (TP + FN): share of actual positives that are caught.",
+    "hi": "TP / (TP + FN): वास्तविक positives में से पकड़े गए का अनुपात।"
+   }
+  },
+  {
+   "t": {
+    "en": "F1 score",
+    "hi": "F1 score"
+   },
+   "d": {
+    "en": "Harmonic mean of precision and recall.",
+    "hi": "precision और recall का हरात्मक माध्य।"
+   }
+  },
+  {
+   "t": {
+    "en": "MAE",
+    "hi": "MAE"
+   },
+   "d": {
+    "en": "Mean Absolute Error: average of absolute errors.",
+    "hi": "Mean Absolute Error: निरपेक्ष त्रुटियों का औसत।"
+   }
+  },
+  {
+   "t": {
+    "en": "MSE",
+    "hi": "MSE"
+   },
+   "d": {
+    "en": "Mean Squared Error: average of squared errors.",
+    "hi": "Mean Squared Error: वर्ग-त्रुटियों का औसत।"
+   }
+  },
+  {
+   "t": {
+    "en": "RMSE",
+    "hi": "RMSE"
+   },
+   "d": {
+    "en": "Root Mean Squared Error: square root of MSE, in the target's unit.",
+    "hi": "Root Mean Squared Error: MSE का वर्गमूल, target की इकाई में।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is the first stage of Data Science Methodology? (a) Data Collection (b) Analytic Approach (c) Business Understanding (d) Modelling",
+    "hi": "MCQ: डेटा साइंस पद्धति का पहला चरण कौन-सा है? (a) Data Collection (b) Analytic Approach (c) Business Understanding (d) Modelling"
+   },
+   "a": {
+    "en": "(c) Business Understanding.",
+    "hi": "(c) Business Understanding।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which stage usually takes the most time? (a) Deployment (b) Data Preparation (c) Feedback (d) Analytic Approach",
+    "hi": "MCQ: आमतौर पर कौन-सा चरण सबसे अधिक समय लेता है? (a) Deployment (b) Data Preparation (c) Feedback (d) Analytic Approach"
+   },
+   "a": {
+    "en": "(b) Data Preparation.",
+    "hi": "(b) Data Preparation।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Precision is calculated as: (a) TP/(TP+FN) (b) TP/(TP+FP) (c) (TP+TN)/Total (d) TN/(TN+FP)",
+    "hi": "MCQ: Precision की गणना है: (a) TP/(TP+FN) (b) TP/(TP+FP) (c) (TP+TN)/कुल (d) TN/(TN+FP)"
+   },
+   "a": {
+    "en": "(b) TP/(TP+FP).",
+    "hi": "(b) TP/(TP+FP)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: train_test_split is imported from: (a) sklearn.metrics (b) sklearn.linear_model (c) sklearn.model_selection (d) pandas",
+    "hi": "MCQ: train_test_split कहाँ से import होता है? (a) sklearn.metrics (b) sklearn.linear_model (c) sklearn.model_selection (d) pandas"
+   },
+   "a": {
+    "en": "(c) sklearn.model_selection.",
+    "hi": "(c) sklearn.model_selection।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: RMSE is the ______ of MSE.",
+    "hi": "रिक्त स्थान भरें: RMSE, MSE का ______ है।"
+   },
+   "a": {
+    "en": "square root",
+    "hi": "वर्गमूल"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: In k-fold cross-validation, each fold is used as the test set exactly once.",
+    "hi": "सही या ग़लत: k-fold cross-validation में हर fold ठीक एक बार test set बनता है।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Match the analytics type: (i) What happened? (ii) Why did it happen? (iii) What will happen? (iv) What should we do? with Predictive, Prescriptive, Descriptive, Diagnostic.",
+    "hi": "analytics प्रकार मिलाइए: (i) क्या हुआ? (ii) क्यों हुआ? (iii) क्या होगा? (iv) क्या करें? को Predictive, Prescriptive, Descriptive, Diagnostic से।"
+   },
+   "a": {
+    "en": "(i) Descriptive (ii) Diagnostic (iii) Predictive (iv) Prescriptive.",
+    "hi": "(i) Descriptive (ii) Diagnostic (iii) Predictive (iv) Prescriptive।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Arrange in the correct order: Data Preparation, Data Requirements, Evaluation, Business Understanding, Data Collection, Deployment.",
+    "hi": "सही क्रम में लगाइए: Data Preparation, Data Requirements, Evaluation, Business Understanding, Data Collection, Deployment।"
+   },
+   "a": {
+    "en": "Business Understanding → Data Requirements → Data Collection → Data Preparation → Evaluation → Deployment.",
+    "hi": "Business Understanding → Data Requirements → Data Collection → Data Preparation → Evaluation → Deployment।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the five modules of Data Science Methodology and the two stages in each.",
+    "hi": "डेटा साइंस पद्धति के पाँच modules और हर एक के दो चरण बताइए।"
+   },
+   "a": {
+    "en": "1. From Problem to Approach: Business Understanding, Analytic Approach.\n2. From Requirements to Collection: Data Requirements, Data Collection.\n3. From Understanding to Preparation: Data Understanding, Data Preparation.\n4. From Modelling to Evaluation: AI Modelling, Evaluation.\n5. From Deployment to Feedback: Deployment, Feedback.",
+    "hi": "1. समस्या से दृष्टिकोण तक: Business Understanding, Analytic Approach।\n2. आवश्यकताओं से संग्रह तक: Data Requirements, Data Collection।\n3. समझ से तैयारी तक: Data Understanding, Data Preparation।\n4. Modelling से मूल्यांकन तक: AI Modelling, Evaluation।\n5. Deployment से Feedback तक: Deployment, Feedback।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between primary and secondary data sources with two examples each.",
+    "hi": "प्राथमिक और द्वितीयक data स्रोतों में अंतर बताइए, हर एक के दो उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Primary data is collected first-hand for the current project (surveys, IoT sensor readings). Secondary data was collected earlier by others for other purposes (data.gov.in datasets, Kaggle, WHO reports). Primary fits exactly but costs time; secondary is quick but may not fit perfectly.",
+    "hi": "प्राथमिक data वर्तमान प्रोजेक्ट के लिए सीधे इकट्ठा होता है (सर्वे, IoT sensor रीडिंग)। द्वितीयक data दूसरों ने पहले किसी और उद्देश्य से इकट्ठा किया (data.gov.in datasets, Kaggle, WHO रिपोर्ट)। प्राथमिक बिल्कुल फ़िट पर समय लेता है; द्वितीयक जल्दी मिलता है पर पूरी तरह फ़िट न हो।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is feature engineering? Give an example.",
+    "hi": "Feature engineering क्या है? उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Creating new features or transforming existing ones using domain knowledge so the model learns better. Example: from a 'Date of order' column in a food-delivery dataset, create 'Is weekend' and 'Hour of day', which predict demand better than the raw date.",
+    "hi": "domain ज्ञान से नए features बनाना या मौजूदा बदलना ताकि model बेहतर सीखे। उदाहरण: food-delivery dataset के 'Date of order' column से 'Is weekend' और 'Hour of day' बनाना, जो कच्ची तारीख से बेहतर माँग बताते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is model validation important? Explain overfitting with an example.",
+    "hi": "Model validation क्यों ज़रूरी है? उदाहरण सहित overfitting समझाइए।"
+   },
+   "a": {
+    "en": "Validation tells us how the model will perform on new, unseen data and helps compare models fairly. Overfitting: a model predicting cricket scores learns every quirk of last season's matches, getting 99% on training data but only 60% on this season's matches, because it memorised noise instead of the real pattern. Validation on held-out data exposes this gap.",
+    "hi": "Validation बताता है कि model नए, अनदेखे data पर कैसा करेगा और models की निष्पक्ष तुलना में मदद करता है। Overfitting: क्रिकेट स्कोर बताने वाला model पिछले सीज़न के मैचों की हर बारीकी सीख लेता है, training data पर 99% लाता है पर इस सीज़न के मैचों पर केवल 60%, क्योंकि उसने असली पैटर्न के बजाय शोर रट लिया। अलग रखे data पर validation यह अंतर उजागर करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between train-test split and cross-validation.",
+    "hi": "Train-test split और cross-validation में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Train-test split divides data once (e.g. 80:20) and trains once; it is fast, but its result depends on that single random split and part of the data is never used for training; suited to large datasets. Cross-validation (k-fold) trains k times, tests on each fold once and averages; it is slower but more reliable and uses all data; suited to small datasets.",
+    "hi": "Train-test split data को एक बार बाँटता है (जैसे 80:20) और एक बार प्रशिक्षित करता है; यह तेज़ है, पर परिणाम उस एक यादृच्छिक बँटवारे पर निर्भर है और data का कुछ भाग training में कभी नहीं आता; बड़े datasets के लिए उपयुक्त। Cross-validation (k-fold) k बार प्रशिक्षित करता है, हर fold पर एक बार जाँचकर औसत लेता है; यह धीमा पर अधिक विश्वसनीय है और सारा data उपयोग करता है; छोटे datasets के लिए उपयुक्त।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A model with 98% accuracy is always a good model.\nReason (R): Accuracy can be misleading when one class is much larger than the other.\nChoose: (a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): 98% accuracy वाला model हमेशा अच्छा होता है।\nकारण (R): जब एक वर्ग दूसरे से बहुत बड़ा हो तब accuracy भ्रामक हो सकती है।\nचुनें: (a) दोनों सही, R, A की व्याख्या है (b) दोनों सही, R व्याख्या नहीं (c) A सही, R ग़लत (d) A ग़लत, R सही"
+   },
+   "a": {
+    "en": "(d) A is false; R is true. If 98% of cases are negative, always predicting 'negative' gives 98% accuracy but catches no positives.",
+    "hi": "(d) A ग़लत; R सही। यदि 98% मामले negative हों तो हमेशा 'negative' कहना 98% accuracy देता है पर एक भी positive नहीं पकड़ता।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which metric would you prioritise and why: (a) detecting cancer from scans; (b) a filter that blocks 'adult' content but must not block school study videos?",
+    "hi": "आप किस metric को प्राथमिकता देंगे और क्यों: (a) scans से कैंसर पहचानना; (b) एक filter जो 'वयस्क' सामग्री रोके पर स्कूल के पढ़ाई वाले वीडियो न रोके?"
+   },
+   "a": {
+    "en": "(a) Recall: missing a cancer case (FN) is far more harmful than a false alarm that a doctor rechecks.\n(b) Precision for the 'block' class: wrongly blocking study videos (FP) must be minimised. (In practice both are watched, often through F1.)",
+    "hi": "(a) Recall: कैंसर का मामला छूट जाना (FN) उस झूठे अलार्म से कहीं अधिक हानिकारक है जिसे डॉक्टर दोबारा जाँच लेता है।\n(b) 'रोकें' वर्ग के लिए Precision: पढ़ाई के वीडियो ग़लती से रोकना (FP) कम-से-कम होना चाहिए। (व्यवहार में दोनों पर नज़र रखी जाती है, प्रायः F1 से।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: For 10 houses, actual prices (lakh ₹) are 50, 60, 55, 70, 65, 80, 75, 90, 85, 100 and predicted prices are 52, 58, 57, 68, 66, 78, 79, 87, 86, 96. Calculate MSE and RMSE.",
+    "hi": "केस आधारित: 10 मकानों के वास्तविक दाम (लाख ₹) 50, 60, 55, 70, 65, 80, 75, 90, 85, 100 और अनुमानित दाम 52, 58, 57, 68, 66, 78, 79, 87, 86, 96 हैं। MSE और RMSE निकालिए।"
+   },
+   "a": {
+    "en": "Errors: −2, 2, −2, 2, −1, 2, −4, 3, −1, 4.\nSquares: 4, 4, 4, 4, 1, 4, 16, 9, 1, 16; sum = 63.\nMSE = 63 / 10 = 6.3 (lakh ₹)².\nRMSE = √6.3 ≈ 2.51 lakh ₹.",
+    "hi": "त्रुटियाँ: −2, 2, −2, 2, −1, 2, −4, 3, −1, 4।\nवर्ग: 4, 4, 4, 4, 1, 4, 16, 9, 1, 16; योग = 63।\nMSE = 63 / 10 = 6.3 (लाख ₹)²।\nRMSE = √6.3 ≈ 2.51 लाख ₹।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A model predicting loan default on 110 applicants has TP = 60, TN = 30, FP = 10, FN = 10. Find accuracy, precision, recall and F1 score.",
+    "hi": "केस आधारित: 110 आवेदकों पर loan default बताने वाले model के TP = 60, TN = 30, FP = 10, FN = 10 हैं। accuracy, precision, recall और F1 score निकालिए।"
+   },
+   "a": {
+    "en": "Total = 110.\nAccuracy = (60 + 30) / 110 = 90 / 110 ≈ 0.818 (81.8%).\nPrecision = 60 / 70 ≈ 0.857.\nRecall = 60 / 70 ≈ 0.857.\nF1 = 2 × 0.857 × 0.857 / (0.857 + 0.857) = 0.857 (when precision equals recall, F1 equals both).",
+    "hi": "कुल = 110।\nAccuracy = (60 + 30) / 110 = 90 / 110 ≈ 0.818 (81.8%)।\nPrecision = 60 / 70 ≈ 0.857।\nRecall = 60 / 70 ≈ 0.857।\nF1 = 2 × 0.857 × 0.857 / (0.857 + 0.857) = 0.857 (जब precision और recall बराबर हों, F1 भी उन्हीं के बराबर होता है)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the procedure of k-fold cross-validation with k = 5, describing the diagram in words.",
+    "hi": "k = 5 के साथ k-fold cross-validation की प्रक्रिया समझाइए, आरेख का शब्दों में वर्णन करते हुए।"
+   },
+   "a": {
+    "en": "1. Shuffle the data and split it into 5 equal folds F1–F5.\n2. Round 1: test on F1, train on F2–F5; record the score.\n3. Round 2: test on F2, train on F1 and F3–F5; and so on to Round 5 (test on F5).\n4. Average the 5 scores (and note their spread).\nDiagram: five rows (rounds), each a bar of five boxes; in row i the i-th box is shaded 'Test' and the rest are 'Train', so the shaded box moves diagonally. Every point is tested once and used for training 4 times, giving a more reliable estimate than a single split.",
+    "hi": "1. data को मिलाएँ (shuffle) और 5 बराबर folds F1–F5 में बाँटें।\n2. दौर 1: F1 पर test, F2–F5 पर train; अंक लिखें।\n3. दौर 2: F2 पर test, F1 और F3–F5 पर train; इसी तरह दौर 5 तक (F5 पर test)।\n4. 5 अंकों का औसत लें (और उनका फैलाव देखें)।\nआरेख: पाँच पंक्तियाँ (दौर), हर एक पाँच डिब्बों की पट्टी; पंक्ति i में i-वाँ डिब्बा 'Test' रंगा और बाकी 'Train', इसलिए रंगा डिब्बा तिरछा खिसकता है। हर बिंदु एक बार test और 4 बार training में उपयोग होता है, जिससे एक बँटवारे से अधिक विश्वसनीय अनुमान मिलता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe the full journey of data through the methodology for a project predicting the daily demand for milk packets at a dairy booth.",
+    "hi": "दीर्घ उत्तर: किसी dairy booth पर दूध के पैकेटों की दैनिक माँग बताने वाले प्रोजेक्ट के लिए पद्धति में data की पूरी यात्रा का वर्णन कीजिए।"
+   },
+   "a": {
+    "en": "Business understanding: reduce unsold and short packets; target error under 5%. Approach: regression (how many), predictive. Requirements: past daily sales, day of week, festivals, weather, price; structured. Collection: booth sales register (primary), weather and holiday data (secondary). Understanding: check missing days, outliers such as a festival spike, and patterns by weekday. Preparation: fill gaps, encode weekday and festival flags, engineer 'day before holiday'. Modelling: linear regression or a decision tree regressor on training data. Evaluation: time-series validation, RMSE and MAE in packets. Deployment: a phone dashboard telling the owner tomorrow's order. Feedback: compare forecasts with actual sales daily, retrain monthly, and handle drift such as a new housing society opening nearby.",
+    "hi": "Business understanding: बिना बिके और कम पड़े पैकेट घटाना; त्रुटि 5% से कम का लक्ष्य। Approach: regression (कितने), predictive। Requirements: पिछली दैनिक बिक्री, सप्ताह का दिन, त्योहार, मौसम, दाम; structured। Collection: booth का बिक्री रजिस्टर (प्राथमिक), मौसम और छुट्टियों का data (द्वितीयक)। Understanding: छूटे दिन, त्योहार वाले उछाल जैसे outliers और सप्ताह के दिनों के पैटर्न जाँचें। Preparation: रिक्त भरें, weekday और त्योहार flags encode करें, 'छुट्टी से पहले का दिन' बनाएँ। Modelling: training data पर linear regression या decision tree regressor। Evaluation: time-series validation, पैकेटों में RMSE और MAE। Deployment: फ़ोन dashboard जो मालिक को कल का ऑर्डर बताए। Feedback: रोज़ अनुमान की असली बिक्री से तुलना, हर महीने दोबारा प्रशिक्षण, और पास में नई हाउसिंग सोसाइटी खुलने जैसे drift को संभालना।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Competency-based: An online learning platform recommends courses to students. Which stage handles each of these: (a) measuring how many recommended courses students actually enrol in; (b) noticing that recommendations become poor after a new syllabus; (c) deciding to use a recommendation approach rather than clustering?",
+    "hi": "दक्षता आधारित: एक online learning platform विद्यार्थियों को courses सुझाता है। इनमें से हर एक कौन-सा चरण संभालता है: (a) यह मापना कि सुझाए गए कितने courses में विद्यार्थी सचमुच दाख़िला लेते हैं; (b) यह देखना कि नए syllabus के बाद सुझाव ख़राब हो गए; (c) clustering के बजाय recommendation दृष्टिकोण चुनने का निर्णय?"
+   },
+   "a": {
+    "en": "(a) Evaluation (and, after release, Feedback), using a metric such as the precision of recommendations.\n(b) Feedback: this is data drift; retrain with new data.\n(c) Analytic Approach.",
+    "hi": "(a) Evaluation (और जारी होने के बाद Feedback), सुझावों के precision जैसे metric से।\n(b) Feedback: यह data drift है; नए data से दोबारा प्रशिक्षित करें।\n(c) Analytic Approach।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Competency-based: A financial advisory firm wants to group its clients by their investment preferences to design products. Identify the analytic approach, two data requirements and one privacy precaution.",
+    "hi": "दक्षता आधारित: एक वित्तीय सलाह फ़र्म उत्पाद बनाने के लिए अपने ग्राहकों को निवेश पसंद के अनुसार समूहों में बाँटना चाहती है। विश्लेषणात्मक दृष्टिकोण, दो data आवश्यकताएँ और एक निजता सावधानी बताइए।"
+   },
+   "a": {
+    "en": "Approach: clustering (descriptive modelling; no labels, find natural groups).\nData: for example age band, risk-appetite score, investment horizon, and share of savings in fixed deposits, mutual funds and gold.\nPrivacy: use anonymised client IDs instead of names or PAN, take consent, and store data securely as the law requires.",
+    "hi": "दृष्टिकोण: clustering (descriptive modelling; labels नहीं, स्वाभाविक समूह खोजना)।\nData: जैसे आयु-वर्ग, जोखिम लेने की क्षमता का स्कोर, निवेश की अवधि, और बचत में FD, mutual funds तथा सोने का हिस्सा।\nनिजता: नाम या PAN के बजाय गुमनाम client ID लें, सहमति लें, और क़ानून के अनुसार data सुरक्षित रखें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Activity: In Excel or Google Sheets, compute MSE and RMSE for your own 'predicted vs actual' data, such as your predicted and actual marks in five tests. Report your RMSE in marks.",
+    "hi": "गतिविधि: Excel या Google Sheets में अपने 'अनुमानित बनाम वास्तविक' data, जैसे पाँच परीक्षाओं में अपने अनुमानित और वास्तविक अंक, के लिए MSE और RMSE निकालिए। अपना RMSE अंकों में बताइए।"
+   },
+   "a": {
+    "en": "Follow Practical 1: Error =A2-B2, Squared =C2^2, MSE =AVERAGE(D2:D6), RMSE =SQRT(MSE). Your answer depends on your data; an RMSE of, say, 4 means your guesses are typically about 4 marks off. Reflect on whether you usually over- or under-estimate.",
+    "hi": "Practical 1 अपनाएँ: Error =A2-B2, Squared =C2^2, MSE =AVERAGE(D2:D6), RMSE =SQRT(MSE)। उत्तर आपके data पर निर्भर है; मान लें RMSE 4 है तो आपके अनुमान आमतौर पर लगभग 4 अंक का अंतर रखते हैं। सोचें कि आप प्रायः अधिक अनुमान लगाते हैं या कम।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Kavya's recipe model works well in Pune. Why might it perform worse if launched in Guwahati, and which stages would you revisit?",
+    "hi": "विचार प्रश्न: काव्या का व्यंजन model पुणे में अच्छा काम करता है। गुवाहाटी में शुरू करने पर यह ख़राब प्रदर्शन क्यों कर सकता है, और आप किन चरणों पर लौटेंगे?"
+   },
+   "a": {
+    "en": "Dishes and ingredients differ (for example, Assamese dishes using bamboo shoot or mustard oil were rare in the training data), so the data no longer represents the users; this is a kind of drift. Revisit Business Understanding (new users' needs), Data Requirements and Collection (regional recipes), and Data Understanding/Preparation; then retrain, evaluate on local test data and collect fresh feedback.",
+    "hi": "व्यंजन और सामग्रियाँ अलग हैं (जैसे बाँस की कोंपल या सरसों के तेल वाले असमिया व्यंजन training data में कम थे), इसलिए data अब उपयोगकर्ताओं का प्रतिनिधित्व नहीं करता; यह एक तरह का drift है। Business Understanding (नए उपयोगकर्ताओं की ज़रूरतें), Data Requirements और Collection (क्षेत्रीय व्यंजन), तथा Data Understanding/Preparation पर लौटें; फिर दोबारा प्रशिक्षित करें, स्थानीय test data पर मूल्यांकन करें और नया feedback लें।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Data Science Methodology is a structured, iterative framework of 10 stages in 5 modules.",
+   "Modules: Problem→Approach, Requirements→Collection, Understanding→Preparation, Modelling→Evaluation, Deployment→Feedback.",
+   "Business Understanding defines the problem, stakeholders and a measurable goal, often with 5W1H.",
+   "The analytic approach follows the question type: regression, classification, clustering, anomaly detection or recommendation.",
+   "Analytics can be descriptive, diagnostic, predictive or prescriptive; models can be descriptive or predictive.",
+   "Data can be structured, unstructured or semi-structured, from primary or secondary sources.",
+   "Data understanding explores quality and relevance; data preparation cleans, encodes and engineers features, and takes the most time.",
+   "Models are trained on training data, evaluated on unseen data, deployed for real use and improved through feedback and retraining.",
+   "Validation checks generalisation and guards against overfitting and underfitting.",
+   "Train-test split (e.g. 80:20) is quick; k-fold cross-validation averages k rounds and is more reliable.",
+   "Confusion matrix: TP, FP, FN, TN. Accuracy = (TP+TN)/Total; Precision = TP/(TP+FP); Recall = TP/(TP+FN); F1 = harmonic mean of precision and recall.",
+   "Regression metrics: MAE, MSE and RMSE = √MSE; smaller is better, 0 is perfect.",
+   "This methodology is the backbone of your Capstone Project."
+  ],
+  "hi": [
+   "डेटा साइंस पद्धति 5 modules में 10 चरणों वाला संरचित, पुनरावृत्त ढाँचा है।",
+   "Modules: Problem→Approach, Requirements→Collection, Understanding→Preparation, Modelling→Evaluation, Deployment→Feedback।",
+   "Business Understanding समस्या, हितधारक और मापने योग्य लक्ष्य तय करता है, प्रायः 5W1H से।",
+   "विश्लेषणात्मक दृष्टिकोण प्रश्न के प्रकार से तय होता है: regression, classification, clustering, anomaly detection या recommendation।",
+   "Analytics descriptive, diagnostic, predictive या prescriptive हो सकता है; models descriptive या predictive हो सकते हैं।",
+   "Data structured, unstructured या semi-structured हो सकता है, प्राथमिक या द्वितीयक स्रोतों से।",
+   "Data understanding गुणवत्ता और प्रासंगिकता जाँचता है; data preparation साफ़ करता है, encode करता है और features बनाता है, और सबसे अधिक समय लेता है।",
+   "Models training data पर प्रशिक्षित होते हैं, अनदेखे data पर आँके जाते हैं, वास्तविक उपयोग के लिए लागू होते हैं और feedback तथा दोबारा प्रशिक्षण से सुधरते हैं।",
+   "Validation सामान्यीकरण जाँचता है और overfitting तथा underfitting से बचाता है।",
+   "Train-test split (जैसे 80:20) तेज़ है; k-fold cross-validation k दौरों का औसत लेता है और अधिक विश्वसनीय है।",
+   "Confusion matrix: TP, FP, FN, TN। Accuracy = (TP+TN)/कुल; Precision = TP/(TP+FP); Recall = TP/(TP+FN); F1 = precision और recall का हरात्मक माध्य।",
+   "Regression metrics: MAE, MSE और RMSE = √MSE; छोटा बेहतर, 0 पूर्ण।",
+   "यही पद्धति आपके Capstone Project की रीढ़ है।"
+  ]
+ }
+}

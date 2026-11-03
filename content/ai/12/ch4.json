@@ -1,0 +1,2183 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "12",
+ "id": "ch4",
+ "intro": {
+  "en": "Orange is a free tool that lets you do real data mining and machine learning by connecting blocks on a screen instead of writing code. In this chapter you will learn what data mining is, who benefits from Orange, how to install it and use its canvas, widgets and links, and the default widget catalogue. Then you will apply Orange to all three AI domains: visualising, classifying and evaluating the Iris dataset, grouping and classifying images, and making word clouds from text.",
+  "hi": "Orange एक मुफ़्त tool है जिससे आप code लिखने की बजाय screen पर blocks जोड़कर असली data mining और machine learning कर सकते हैं। इस अध्याय में आप सीखेंगे कि data mining क्या है, Orange से किसे लाभ होता है, इसे कैसे install करें और इसके canvas, widgets और links का उपयोग कैसे करें, तथा default widget सूची। फिर आप Orange को AI के तीनों domains पर लगाएँगे: Iris dataset का visualisation, वर्गीकरण और मूल्यांकन, तस्वीरों का समूहन और वर्गीकरण, और पाठ से word cloud बनाना।"
+ },
+ "learn": {
+  "en": [
+   "Meaning, tasks and steps of data mining",
+   "What Orange is, who developed it and its key features",
+   "Beneficiaries of Orange",
+   "Installing Orange and its Image Analytics and Text add-ons",
+   "Components: canvas, widgets, links (channels) and workflows",
+   "The default widget catalogue: Data, Transform, Visualize, Model, Evaluate, Unsupervised",
+   "Loading and visualising the Iris dataset",
+   "Classification with kNN, Tree and Naive Bayes, and making predictions",
+   "Evaluating models: cross-validation, Test and Score metrics and the confusion matrix",
+   "Computer vision in Orange: image embedding, distances and clustering",
+   "NLP in Orange: corpus, text preprocessing, bag of words and word cloud",
+   "Preparing the practical file and lab test"
+  ],
+  "hi": [
+   "Data mining का अर्थ, कार्य और चरण",
+   "Orange क्या है, इसे किसने विकसित किया और इसकी मुख्य विशेषताएँ",
+   "Orange के लाभार्थी",
+   "Orange और इसके Image Analytics तथा Text add-ons install करना",
+   "घटक: canvas, widgets, links (channels) और workflows",
+   "Default widget सूची: Data, Transform, Visualize, Model, Evaluate, Unsupervised",
+   "Iris dataset load और visualise करना",
+   "kNN, Tree और Naive Bayes से वर्गीकरण, और predictions बनाना",
+   "Models का मूल्यांकन: cross-validation, Test and Score के metrics और confusion matrix",
+   "Orange में computer vision: image embedding, distances और clustering",
+   "Orange में NLP: corpus, text preprocessing, bag of words और word cloud",
+   "Practical file और lab test की तैयारी"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "4.1 What is data mining?",
+    "hi": "4.1 Data mining क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Every day India produces huge amounts of data: UPI payments, railway bookings, exam results, weather readings, crop prices in mandis. Raw data by itself is like a heap of unsorted grain; the useful part has to be separated out. Data mining is the process of doing exactly that.",
+      "hi": "भारत में हर दिन बहुत बड़ी मात्रा में डेटा बनता है: UPI भुगतान, रेल बुकिंग, परीक्षा परिणाम, मौसम के आँकड़े, मंडियों में फ़सल के भाव। कच्चा डेटा अपने आप में बिना छँटे अनाज के ढेर जैसा है; उपयोगी हिस्सा अलग करना पड़ता है। Data mining ठीक यही प्रक्रिया है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data mining",
+       "hi": "Data mining (डेटा खनन)"
+      },
+      "text": {
+       "en": "Data mining is the process of exploring large sets of data to discover useful patterns, trends, relationships and unusual values (anomalies), and turning them into knowledge that helps in making decisions or predictions.",
+       "hi": "Data mining बड़े डेटा समूहों की खोजबीन करके उपयोगी पैटर्न, रुझान, संबंध और असामान्य मान (anomalies) पता करने, और उन्हें निर्णय या भविष्यवाणी में मदद करने वाले ज्ञान में बदलने की प्रक्रिया है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The name compares it to mining: just as miners dig through tonnes of rock to find a little gold, data mining digs through lots of data to find a few valuable insights. It combines statistics, machine learning and data visualisation.",
+      "hi": "इसका नाम खनन (mining) से तुलना करता है: जैसे खनिक थोड़ा-सा सोना पाने के लिए टनों पत्थर खोदते हैं, वैसे ही data mining कुछ कीमती अंतर्दृष्टियों के लिए बहुत-सा डेटा खँगालता है। इसमें statistics, machine learning और data visualisation तीनों मिलते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Data mining task",
+        "What it does",
+        "Example"
+       ],
+       "hi": [
+        "Data mining कार्य",
+        "क्या करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Classification",
+         "Puts items into known categories",
+         "Is this transaction fraud or genuine? (UPI fraud alerts)"
+        ],
+        [
+         "Prediction / regression",
+         "Estimates a number",
+         "Tomorrow's electricity demand in a city"
+        ],
+        [
+         "Clustering",
+         "Groups similar items without labels",
+         "Grouping customers by shopping habits"
+        ],
+        [
+         "Association (link analysis)",
+         "Finds items that occur together",
+         "People who buy bread often buy butter"
+        ],
+        [
+         "Anomaly (outlier) detection",
+         "Finds unusual records",
+         "A sudden large withdrawal from a usually quiet account"
+        ],
+        [
+         "Visualisation and summarisation",
+         "Shows patterns through charts and summaries",
+         "District-wise rainfall map"
+        ]
+       ],
+       "hi": [
+        [
+         "Classification (वर्गीकरण)",
+         "वस्तुओं को ज्ञात श्रेणियों में रखता है",
+         "क्या यह लेन-देन धोखाधड़ी है या असली? (UPI fraud alerts)"
+        ],
+        [
+         "Prediction / regression",
+         "एक संख्या का अनुमान लगाता है",
+         "किसी शहर में कल की बिजली माँग"
+        ],
+        [
+         "Clustering (समूहन)",
+         "बिना labels के समान वस्तुओं के समूह बनाता है",
+         "खरीदारी की आदतों के अनुसार ग्राहकों के समूह"
+        ],
+        [
+         "Association (link analysis)",
+         "साथ-साथ होने वाली चीज़ें खोजता है",
+         "जो ब्रेड खरीदते हैं वे अक्सर मक्खन भी खरीदते हैं"
+        ],
+        [
+         "Anomaly (outlier) detection",
+         "असामान्य रिकॉर्ड खोजता है",
+         "आम तौर पर शांत खाते से अचानक बड़ी निकासी"
+        ],
+        [
+         "Visualisation और सारांश",
+         "charts और सारांश से पैटर्न दिखाता है",
+         "ज़िलेवार वर्षा का नक्शा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Steps of a typical data-mining process: (1) understand the problem, (2) collect data, (3) clean and prepare it (handle missing values, remove duplicates), (4) explore and visualise, (5) apply mining/ML methods, (6) evaluate the results, (7) use the knowledge to decide or deploy. This matches the Data Science Methodology you studied in Chapter 2.",
+       "Where it is used: retail, banking and finance, healthcare, education, agriculture, manufacturing, transport and telecom."
+      ],
+      "hi": [
+       "एक सामान्य data-mining प्रक्रिया के चरण: (1) समस्या समझना, (2) डेटा इकट्ठा करना, (3) उसे साफ़ और तैयार करना (missing values संभालना, duplicates हटाना), (4) खोजबीन और visualise करना, (5) mining/ML विधियाँ लगाना, (6) परिणाम का मूल्यांकन, (7) ज्ञान का उपयोग करके निर्णय या deployment। यह अध्याय 2 की Data Science Methodology से मेल खाता है।",
+       "कहाँ उपयोग होता है: खुदरा व्यापार, बैंकिंग और वित्त, स्वास्थ्य, शिक्षा, कृषि, निर्माण, परिवहन और दूरसंचार।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: data mining finds patterns, but a pattern is not always a cause. If ice-cream sales and sunburn cases rise together, both are caused by hot weather—ice cream does not cause sunburn.",
+      "hi": "याद रखें: data mining पैटर्न खोजता है, पर हर पैटर्न कारण नहीं होता। अगर आइसक्रीम की बिक्री और धूप से जलने के मामले साथ बढ़ें, तो दोनों का कारण गर्म मौसम है—आइसक्रीम से धूप में जलना नहीं होता।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.2 Introduction to Orange Data Mining tool",
+    "hi": "4.2 Orange Data Mining tool का परिचय"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Orange",
+       "hi": "Orange"
+      },
+      "text": {
+       "en": "Orange is a free, open-source data mining, machine learning and data visualisation software. It uses visual programming: instead of typing code, you build an analysis by placing small blocks called widgets on a canvas and joining them with lines. It was developed by the Bioinformatics Laboratory of the Faculty of Computer and Information Science, University of Ljubljana, Slovenia, and is written in Python.",
+       "hi": "Orange एक मुफ़्त, open-source data mining, machine learning और data visualisation software है। यह visual programming का उपयोग करता है: code लिखने की बजाय आप canvas पर widgets कहलाने वाले छोटे blocks रखकर और उन्हें रेखाओं से जोड़कर विश्लेषण बनाते हैं। इसे University of Ljubljana, Slovenia की Faculty of Computer and Information Science की Bioinformatics Laboratory ने विकसित किया है, और यह Python में लिखा गया है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "In Class 10 you used Orange for statistics and a first classification project. In Class 12 you will use it more deeply: comparing several models, evaluating them properly, and applying Orange to all three domains of AI—Data Science, Computer Vision and Natural Language Processing (NLP).",
+      "hi": "कक्षा 10 में आपने Orange को statistics और पहले classification project के लिए उपयोग किया था। कक्षा 12 में आप इसे और गहराई से उपयोग करेंगे: कई models की तुलना, उनका सही मूल्यांकन, और Orange को AI के तीनों domains—Data Science, Computer Vision और Natural Language Processing (NLP)—पर लगाना।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "No-code / low-code: you can train and test real ML models without writing a single line of code; advanced users can still add Python Script widgets.",
+       "Interactive visualisation: charts update instantly; selecting points in one chart can send just those rows to the next widget.",
+       "Large widget library with add-ons for text mining, image analytics, time series, bioinformatics and more.",
+       "Works on Windows, macOS and Linux; free for everyone, including schools.",
+       "Workflows can be saved (.ows file) and shared, so a teacher can give the whole class the same analysis."
+      ],
+      "hi": [
+       "No-code / low-code: बिना एक भी line code लिखे असली ML models train और test कर सकते हैं; उन्नत उपयोगकर्ता फिर भी Python Script widget जोड़ सकते हैं।",
+       "Interactive visualisation: charts तुरंत बदलते हैं; एक chart में बिंदु चुनकर केवल वही rows अगले widget को भेजी जा सकती हैं।",
+       "बड़ी widget library, साथ में text mining, image analytics, time series, bioinformatics आदि के add-ons।",
+       "Windows, macOS और Linux पर चलता है; स्कूलों सहित सबके लिए मुफ़्त।",
+       "Workflows सहेजे (.ows फ़ाइल) और साझा किए जा सकते हैं, ताकि शिक्षक पूरी कक्षा को एक ही विश्लेषण दे सकें।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.3 Beneficiaries of Orange",
+    "hi": "4.3 Orange के लाभार्थी"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Who benefits from Orange? Anyone who needs to understand data but may not be an expert programmer.",
+      "hi": "Orange से किसे लाभ होता है? हर उस व्यक्ति को जिसे डेटा समझना है पर जो शायद विशेषज्ञ programmer नहीं है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Beneficiary",
+        "How Orange helps"
+       ],
+       "hi": [
+        "लाभार्थी",
+        "Orange कैसे मदद करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Students and beginners",
+         "Learn ML concepts visually by doing, without first mastering coding"
+        ],
+        [
+         "Teachers and trainers",
+         "Demonstrate classification, clustering or text mining live in class; share workflows"
+        ],
+        [
+         "Researchers",
+         "Quickly try many models on experimental data, e.g. in biology, medicine or social science"
+        ],
+        [
+         "Data scientists and analysts",
+         "Prototype ideas fast before writing full code; explore data interactively"
+        ],
+        [
+         "Domain experts (doctors, farmers' advisers, business managers)",
+         "Analyse their own data and talk to data scientists using a shared visual workflow"
+        ],
+        [
+         "Businesses and NGOs",
+         "Free tool for customer analysis, survey analysis or reports without buying expensive software"
+        ]
+       ],
+       "hi": [
+        [
+         "छात्र और शुरुआती",
+         "पहले coding में माहिर हुए बिना, करके और देखकर ML अवधारणाएँ सीखते हैं"
+        ],
+        [
+         "शिक्षक और प्रशिक्षक",
+         "कक्षा में classification, clustering या text mining live दिखाते हैं; workflows साझा करते हैं"
+        ],
+        [
+         "शोधकर्ता",
+         "प्रयोगों के डेटा पर, जैसे जीवविज्ञान, चिकित्सा या सामाजिक विज्ञान में, जल्दी कई models आज़माते हैं"
+        ],
+        [
+         "Data scientists और analysts",
+         "पूरा code लिखने से पहले विचारों का तेज़ prototype बनाते हैं; डेटा की interactive खोजबीन"
+        ],
+        [
+         "क्षेत्र विशेषज्ञ (डॉक्टर, कृषि सलाहकार, business managers)",
+         "अपना डेटा खुद विश्लेषित करते हैं और साझा visual workflow से data scientists से बात करते हैं"
+        ],
+        [
+         "व्यवसाय और NGOs",
+         "महँगा software खरीदे बिना ग्राहक विश्लेषण, सर्वे विश्लेषण या reports के लिए मुफ़्त tool"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.4 Getting started with Orange",
+    "hi": "4.4 Orange के साथ शुरुआत"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Installing Orange (ask a teacher or parent before installing software):",
+      "hi": "Orange install करना (software install करने से पहले शिक्षक या माता-पिता से पूछें):"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Open the official website orangedatamining.com and go to the Download page.",
+       "Choose your operating system (Windows, macOS or Linux) and download the installer. Orange needs a laptop or desktop; it does not run as a phone app.",
+       "Run the installer and accept the default options. On Windows it also installs the Python it needs, so you do not have to install Python separately.",
+       "Open Orange from the Start menu or Applications. A welcome screen appears with options such as New (blank workflow), Open, Recent, Examples and Tutorials.",
+       "Click New to start a blank canvas, or Examples to open ready-made workflows."
+      ],
+      "hi": [
+       "आधिकारिक website orangedatamining.com खोलें और Download page पर जाएँ।",
+       "अपना operating system (Windows, macOS या Linux) चुनें और installer download करें। Orange के लिए laptop या desktop चाहिए; यह फ़ोन app के रूप में नहीं चलता।",
+       "Installer चलाएँ और default विकल्प स्वीकार करें। Windows पर यह ज़रूरी Python भी install कर देता है, इसलिए अलग से Python install नहीं करना पड़ता।",
+       "Start menu या Applications से Orange खोलें। एक welcome screen आती है जिसमें New (खाली workflow), Open, Recent, Examples और Tutorials जैसे विकल्प होते हैं।",
+       "खाली canvas के लिए New दबाएँ, या तैयार workflows के लिए Examples।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Installing add-ons: some widgets (for images and text) come as add-ons. Go to Options → Add-ons, tick 'Image Analytics' and 'Text', click OK, and restart Orange. New widget groups named Image Analytics and Text Mining then appear in the widget panel. Installing add-ons needs internet.",
+      "hi": "Add-ons install करना: कुछ widgets (तस्वीरों और पाठ के लिए) add-ons के रूप में आते हैं। Options → Add-ons में जाकर 'Image Analytics' और 'Text' पर tick करें, OK दबाएँ और Orange दोबारा शुरू करें। फिर widget panel में Image Analytics और Text Mining नाम के नए widget समूह दिखते हैं। Add-ons install करने के लिए internet चाहिए।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: save your work often with File → Save (it creates a .ows workflow file). The .ows file stores the widgets and links; keep your data files in the same folder so the workflow can find them.",
+      "hi": "याद रखें: File → Save से अपना काम बार-बार सहेजें (इससे .ows workflow फ़ाइल बनती है)। .ows फ़ाइल widgets और links रखती है; अपनी data फ़ाइलें उसी folder में रखें ताकि workflow उन्हें ढूँढ सके।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.5 Components of Orange",
+    "hi": "4.5 Orange के घटक"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Canvas",
+       "hi": "Canvas"
+      },
+      "text": {
+       "en": "The large blank working area in the middle of the Orange window where you place widgets and connect them to build a workflow.",
+       "hi": "Orange window के बीच का बड़ा खाली कार्य-क्षेत्र जहाँ आप widgets रखते हैं और उन्हें जोड़कर workflow बनाते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Widget",
+       "hi": "Widget"
+      },
+      "text": {
+       "en": "A building block that performs one task—loading data, showing a table, drawing a chart, training a model or evaluating it. Each widget has input channels on its left side and output channels on its right side. Double-clicking a widget opens its settings or results window.",
+       "hi": "एक building block जो एक काम करता है—डेटा load करना, तालिका दिखाना, chart बनाना, model train करना या उसका मूल्यांकन। हर widget के बाईं ओर input channels और दाईं ओर output channels होते हैं। Widget पर double-click करने से उसकी settings या परिणाम window खुलती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Link (connection / channel)",
+       "hi": "Link (connection / channel)"
+      },
+      "text": {
+       "en": "A line joining the output of one widget to the input of another. Data flows along the link from left to right. A link carries a particular kind of signal such as Data, Selected Data, Learner, Model, Predictions, Distances or Evaluation Results.",
+       "hi": "एक widget के output को दूसरे के input से जोड़ने वाली रेखा। डेटा link के साथ बाएँ से दाएँ बहता है। Link एक खास तरह का signal ले जाता है, जैसे Data, Selected Data, Learner, Model, Predictions, Distances या Evaluation Results।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Workflow",
+       "hi": "Workflow"
+      },
+      "text": {
+       "en": "The complete chain of connected widgets on the canvas that performs an analysis from loading data to final results.",
+       "hi": "Canvas पर जुड़े widgets की पूरी श्रृंखला जो डेटा load करने से अंतिम परिणाम तक विश्लेषण करती है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Widget panel (toolbox): on the left; widgets are grouped into categories. You can search a widget by name at the top.",
+       "Placing a widget: drag it from the panel onto the canvas, or right-click/double-click on the canvas and type its name.",
+       "Connecting: drag from the curved right edge (output) of one widget to the left edge (input) of another. If the types do not match, Orange will not connect them. If there are several possible channels, a small dialog lets you choose (e.g. 'Data' or 'Selected Data').",
+       "Removing: select a widget or link and press Delete. Renaming: press F2 on a widget.",
+       "Status: small icons on a widget show warnings or errors (for example 'no data' or 'target variable missing'); hover to read them.",
+       "Help: select a widget and press F1 to open its documentation."
+      ],
+      "hi": [
+       "Widget panel (toolbox): बाईं ओर; widgets श्रेणियों में बँटे होते हैं। ऊपर नाम से widget खोज सकते हैं।",
+       "Widget रखना: panel से canvas पर drag करें, या canvas पर right-click/double-click करके उसका नाम लिखें।",
+       "जोड़ना: एक widget के दाएँ घुमावदार किनारे (output) से दूसरे के बाएँ किनारे (input) तक drag करें। प्रकार मेल न खाएँ तो Orange नहीं जोड़ेगा। कई संभव channels हों तो एक छोटा dialog चुनने देता है (जैसे 'Data' या 'Selected Data')।",
+       "हटाना: widget या link चुनकर Delete दबाएँ। नाम बदलना: widget पर F2 दबाएँ।",
+       "स्थिति: widget पर छोटे icons चेतावनी या त्रुटि दिखाते हैं (जैसे 'no data' या 'target variable missing'); पढ़ने के लिए mouse ऊपर ले जाएँ।",
+       "मदद: widget चुनकर F1 दबाने से उसका documentation खुलता है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: a dashed link usually means no data is flowing yet (for example, the File widget has no file loaded). A solid link means data is passing.",
+      "hi": "याद रखें: टूटी-टूटी (dashed) link का अर्थ आम तौर पर है कि अभी डेटा नहीं बह रहा (जैसे File widget में कोई फ़ाइल load नहीं)। ठोस link का अर्थ है डेटा जा रहा है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.6 Default widget catalogue",
+    "hi": "4.6 Default widget सूची (catalogue)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Orange groups its built-in widgets into six main categories. Each category has a colour in the panel. The table lists the most important widgets you need for this course.",
+      "hi": "Orange अपने built-in widgets को छह मुख्य श्रेणियों में बाँटता है। Panel में हर श्रेणी का एक रंग होता है। तालिका में इस पाठ्यक्रम के लिए सबसे महत्वपूर्ण widgets हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Category",
+        "Purpose",
+        "Important widgets"
+       ],
+       "hi": [
+        "श्रेणी",
+        "उद्देश्य",
+        "महत्वपूर्ण widgets"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Load, view, save and select data",
+         "File, Datasets, Data Table, Data Info, Select Columns, Select Rows, Save Data, Paint Data"
+        ],
+        [
+         "Transform",
+         "Change or clean data",
+         "Preprocess (impute missing values, normalise), Discretize, Continuize, Feature Constructor, Merge Data"
+        ],
+        [
+         "Visualize",
+         "Show data as charts",
+         "Scatter Plot, Box Plot, Distributions, Bar Plot, Line Plot, Heat Map, Sieve Diagram, Mosaic Display"
+        ],
+        [
+         "Model",
+         "Learning algorithms (learners)",
+         "kNN, Tree, Random Forest, Naive Bayes, Logistic Regression, SVM, Neural Network, Linear Regression"
+        ],
+        [
+         "Evaluate",
+         "Test and compare models",
+         "Test and Score, Predictions, Confusion Matrix, ROC Analysis"
+        ],
+        [
+         "Unsupervised",
+         "Find structure without labels",
+         "Distances, Hierarchical Clustering, k-Means, PCA, MDS, t-SNE"
+        ]
+       ],
+       "hi": [
+        [
+         "Data",
+         "डेटा load करना, देखना, सहेजना और चुनना",
+         "File, Datasets, Data Table, Data Info, Select Columns, Select Rows, Save Data, Paint Data"
+        ],
+        [
+         "Transform",
+         "डेटा बदलना या साफ़ करना",
+         "Preprocess (missing values भरना, normalise), Discretize, Continuize, Feature Constructor, Merge Data"
+        ],
+        [
+         "Visualize",
+         "डेटा को charts के रूप में दिखाना",
+         "Scatter Plot, Box Plot, Distributions, Bar Plot, Line Plot, Heat Map, Sieve Diagram, Mosaic Display"
+        ],
+        [
+         "Model",
+         "सीखने वाले algorithms (learners)",
+         "kNN, Tree, Random Forest, Naive Bayes, Logistic Regression, SVM, Neural Network, Linear Regression"
+        ],
+        [
+         "Evaluate",
+         "Models की जाँच और तुलना",
+         "Test and Score, Predictions, Confusion Matrix, ROC Analysis"
+        ],
+        [
+         "Unsupervised",
+         "बिना labels के संरचना खोजना",
+         "Distances, Hierarchical Clustering, k-Means, PCA, MDS, t-SNE"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Widget",
+        "What it does"
+       ],
+       "hi": [
+        "Widget",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "File",
+         "Reads a data file (.csv, .tab, .xlsx and others) or a built-in sample like iris; lets you set each column's type and role (feature, target, meta, skip)"
+        ],
+        [
+         "Datasets",
+         "Downloads ready-made datasets from Orange's online collection"
+        ],
+        [
+         "Data Table",
+         "Shows the data as rows and columns; you can sort and select rows"
+        ],
+        [
+         "Scatter Plot",
+         "Plots two numeric features as x and y, colouring points by class"
+        ],
+        [
+         "Box Plot / Distributions",
+         "Show spread, median and outliers of a feature, or a histogram of its values"
+        ],
+        [
+         "kNN",
+         "Classifies a new item by the majority class of its k nearest neighbours"
+        ],
+        [
+         "Tree",
+         "Builds a decision tree of if–then questions; view it with Tree Viewer"
+        ],
+        [
+         "Naive Bayes",
+         "Uses probabilities (Bayes' theorem) assuming features are independent"
+        ],
+        [
+         "Logistic Regression",
+         "Learns a weighted formula that gives the probability of each class"
+        ],
+        [
+         "Test and Score",
+         "Trains and tests learners using a sampling method and shows scores (AUC, CA, F1, Precision, Recall, MCC)"
+        ],
+        [
+         "Confusion Matrix",
+         "Shows how many items of each actual class were predicted as each class"
+        ],
+        [
+         "Predictions",
+         "Applies a trained model to new data and shows the predicted class and probabilities"
+        ]
+       ],
+       "hi": [
+        [
+         "File",
+         "डेटा फ़ाइल (.csv, .tab, .xlsx आदि) या iris जैसा built-in sample पढ़ता है; हर column का प्रकार और भूमिका (feature, target, meta, skip) तय करने देता है"
+        ],
+        [
+         "Datasets",
+         "Orange के online संग्रह से तैयार datasets download करता है"
+        ],
+        [
+         "Data Table",
+         "डेटा को rows और columns में दिखाता है; sort और rows select कर सकते हैं"
+        ],
+        [
+         "Scatter Plot",
+         "दो संख्यात्मक features को x और y पर plot करता है, बिंदुओं को class से रंगता है"
+        ],
+        [
+         "Box Plot / Distributions",
+         "किसी feature का फैलाव, median और outliers, या उसके मानों का histogram दिखाते हैं"
+        ],
+        [
+         "kNN",
+         "नई वस्तु को उसके k निकटतम पड़ोसियों की बहुमत class से वर्गीकृत करता है"
+        ],
+        [
+         "Tree",
+         "if–then प्रश्नों का decision tree बनाता है; Tree Viewer से देखें"
+        ],
+        [
+         "Naive Bayes",
+         "Features को स्वतंत्र मानकर probabilities (Bayes' theorem) का उपयोग करता है"
+        ],
+        [
+         "Logistic Regression",
+         "एक भारित सूत्र सीखता है जो हर class की probability देता है"
+        ],
+        [
+         "Test and Score",
+         "Sampling विधि से learners को train और test करके scores (AUC, CA, F1, Precision, Recall, MCC) दिखाता है"
+        ],
+        [
+         "Confusion Matrix",
+         "दिखाता है कि हर वास्तविक class की कितनी वस्तुएँ किस class में predict हुईं"
+        ],
+        [
+         "Predictions",
+         "प्रशिक्षित model को नए डेटा पर लगाकर predicted class और probabilities दिखाता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: in the File widget, set the column you want to predict as 'target'. Name or ID columns should be 'meta' (kept for display but not learnt from) or 'skip'. If no target is set, model and evaluation widgets will show a warning.",
+      "hi": "याद रखें: File widget में जिस column का अनुमान लगाना है उसे 'target' रखें। नाम या ID वाले columns 'meta' (दिखाने के लिए रखे, पर सीखने में नहीं) या 'skip' रखें। Target न रखा हो तो model और evaluation widgets चेतावनी दिखाएँगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.7 Key domains of AI with Orange",
+    "hi": "4.7 Orange के साथ AI के प्रमुख domains"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Orange can be used in all three domains of AI you have studied. The basic idea is always the same: get the data into a table of numbers, then use the same Model and Evaluate widgets.",
+      "hi": "Orange को आपके पढ़े AI के तीनों domains में उपयोग किया जा सकता है। मूल विचार हमेशा एक ही है: डेटा को संख्याओं की तालिका में लाना, फिर वही Model और Evaluate widgets लगाना।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Domain",
+        "Type of data",
+        "Key Orange widgets",
+        "Example project"
+       ],
+       "hi": [
+        "Domain",
+        "डेटा का प्रकार",
+        "मुख्य Orange widgets",
+        "उदाहरण project"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data Science",
+         "Tables of numbers and categories",
+         "File, Data Table, Scatter Plot, kNN, Tree, Test and Score, Confusion Matrix",
+         "Classify iris flowers; predict whether a student needs extra help from attendance and marks"
+        ],
+        [
+         "Computer Vision",
+         "Images (folders of photos)",
+         "Import Images, Image Viewer, Image Embedding, Distances, Hierarchical Clustering",
+         "Group photos of fruits or animals; classify leaf images as healthy or diseased"
+        ],
+        [
+         "Natural Language Processing",
+         "Text (reviews, tweets, stories)",
+         "Corpus, Preprocess Text, Bag of Words, Word Cloud, Sentiment Analysis",
+         "Find the most common words in customer reviews; detect positive or negative feedback"
+        ]
+       ],
+       "hi": [
+        [
+         "Data Science",
+         "संख्याओं और श्रेणियों की तालिकाएँ",
+         "File, Data Table, Scatter Plot, kNN, Tree, Test and Score, Confusion Matrix",
+         "Iris फूलों का वर्गीकरण; उपस्थिति और अंकों से यह अनुमान कि किस छात्र को अतिरिक्त मदद चाहिए"
+        ],
+        [
+         "Computer Vision",
+         "तस्वीरें (फ़ोटो के folders)",
+         "Import Images, Image Viewer, Image Embedding, Distances, Hierarchical Clustering",
+         "फलों या जानवरों की फ़ोटो के समूह बनाना; पत्ती की तस्वीरों को स्वस्थ या रोगग्रस्त में बाँटना"
+        ],
+        [
+         "Natural Language Processing",
+         "पाठ (reviews, tweets, कहानियाँ)",
+         "Corpus, Preprocess Text, Bag of Words, Word Cloud, Sentiment Analysis",
+         "ग्राहक reviews में सबसे आम शब्द खोजना; सकारात्मक या नकारात्मक feedback पहचानना"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.8 Data Science practical 1: Load and visualise the Iris dataset",
+    "hi": "4.8 Data Science प्रायोगिक 1: Iris dataset load और visualise करना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The Iris dataset has 150 flowers of three species—Iris setosa, Iris versicolor and Iris virginica—50 of each. For every flower four measurements in centimetres are given: sepal length, sepal width, petal length and petal width. The species (iris) column is the target.",
+      "hi": "Iris dataset में तीन प्रजातियों—Iris setosa, Iris versicolor और Iris virginica—के 150 फूल हैं, हर एक के 50। हर फूल के लिए सेंटीमीटर में चार माप दिए हैं: sepal length, sepal width, petal length और petal width। प्रजाति (iris) column target है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Drag a File widget onto the canvas. Double-click it and choose iris.tab from the built-in files. Check that the 'iris' column has role 'target'.",
+       "Connect File → Data Table. Open Data Table: you see 150 rows and 5 columns; the target column is shown in a different colour.",
+       "Connect File → Scatter Plot. Set x-axis = petal length and y-axis = petal width, colour by iris.",
+       "Optionally connect File → Box Plot (choose petal length, subgroups by iris) and File → Distributions to see histograms.",
+       "In the Scatter Plot, drag to select a group of points; connect Scatter Plot → Data Table (Selected Data) to view only those rows."
+      ],
+      "hi": [
+       "Canvas पर File widget drag करें। Double-click करके built-in फ़ाइलों में से iris.tab चुनें। देखें कि 'iris' column की भूमिका 'target' है।",
+       "File → Data Table जोड़ें। Data Table खोलें: 150 rows और 5 columns दिखते हैं; target column अलग रंग में होता है।",
+       "File → Scatter Plot जोड़ें। x-axis = petal length और y-axis = petal width रखें, रंग iris के अनुसार।",
+       "चाहें तो File → Box Plot (petal length चुनें, subgroups iris से) और File → Distributions जोड़कर histograms देखें।",
+       "Scatter Plot में drag करके बिंदुओं का समूह चुनें; Scatter Plot → Data Table (Selected Data) जोड़कर केवल वही rows देखें।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "Workflow:\nFile (iris) ──► Data Table\n     ├──────► Scatter Plot ──(Selected Data)──► Data Table\n     ├──────► Box Plot\n     └──────► Distributions",
+      "hi": "Workflow:\nFile (iris) ──► Data Table\n     ├──────► Scatter Plot ──(Selected Data)──► Data Table\n     ├──────► Box Plot\n     └──────► Distributions"
+     }
+    },
+    {
+     "p": {
+      "en": "What you observe: in the petal length vs petal width plot, setosa forms a tight, separate cluster at the bottom-left (small petals). Versicolor is in the middle and virginica at the top-right, with a small overlap between them. So petal measurements separate the species much better than sepal measurements. The Scatter Plot's 'Find Informative Projections' button can even suggest the best pair of axes automatically.",
+      "hi": "क्या दिखता है: petal length बनाम petal width plot में setosa नीचे-बाएँ एक कसा हुआ, अलग समूह बनाता है (छोटी पंखुड़ियाँ)। Versicolor बीच में और virginica ऊपर-दाएँ है, और इन दोनों में थोड़ा overlap है। यानी petal के माप sepal के माप से कहीं बेहतर प्रजातियाँ अलग करते हैं। Scatter Plot का 'Find Informative Projections' बटन सबसे अच्छी axes जोड़ी अपने आप सुझा भी सकता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: visualising first is a key data-mining habit. It shows which features matter, whether there are outliers or missing values, and how hard the classification problem will be.",
+      "hi": "याद रखें: पहले visualise करना data mining की एक ज़रूरी आदत है। इससे पता चलता है कि कौन-से features मायने रखते हैं, outliers या missing values हैं या नहीं, और classification कितना कठिन होगा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.9 Data Science practical 2: Classification widgets",
+    "hi": "4.9 Data Science प्रायोगिक 2: Classification widgets"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Classification means teaching a model, from labelled examples, to predict the class of new items. In Orange a model widget (such as kNN) is called a learner. On its own it does nothing; it learns when it receives data.",
+      "hi": "Classification का अर्थ है labelled उदाहरणों से model को नई वस्तुओं की class का अनुमान लगाना सिखाना। Orange में model widget (जैसे kNN) को learner कहते हैं। अपने आप वह कुछ नहीं करता; डेटा मिलने पर सीखता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Learner",
+        "Idea in simple words",
+        "Main setting"
+       ],
+       "hi": [
+        "Learner",
+        "सरल शब्दों में विचार",
+        "मुख्य setting"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "kNN (k-Nearest Neighbours)",
+         "Look at the k most similar flowers in the training data; take the majority species",
+         "Number of neighbours k (default 5), distance metric"
+        ],
+        [
+         "Tree (decision tree)",
+         "Ask a series of yes/no questions, e.g. 'petal length ≤ 1.9 cm?' → setosa",
+         "Minimum instances in leaves, maximum depth"
+        ],
+        [
+         "Naive Bayes",
+         "Use the probability of each measurement for each species, multiplied together",
+         "Few settings"
+        ],
+        [
+         "Logistic Regression",
+         "Learn weights for each feature to produce class probabilities",
+         "Regularisation strength"
+        ],
+        [
+         "Random Forest",
+         "Many decision trees vote; the majority wins",
+         "Number of trees"
+        ]
+       ],
+       "hi": [
+        [
+         "kNN (k-Nearest Neighbours)",
+         "Training data में k सबसे मिलते-जुलते फूल देखें; बहुमत प्रजाति लें",
+         "पड़ोसियों की संख्या k (default 5), दूरी का पैमाना"
+        ],
+        [
+         "Tree (decision tree)",
+         "हाँ/ना प्रश्नों की श्रृंखला पूछें, जैसे 'petal length ≤ 1.9 cm?' → setosa",
+         "Leaves में न्यूनतम instances, अधिकतम गहराई"
+        ],
+        [
+         "Naive Bayes",
+         "हर प्रजाति के लिए हर माप की probability को आपस में गुणा करके उपयोग",
+         "कम settings"
+        ],
+        [
+         "Logistic Regression",
+         "Class probabilities देने के लिए हर feature के weights सीखना",
+         "Regularisation की शक्ति"
+        ],
+        [
+         "Random Forest",
+         "कई decision trees vote करते हैं; बहुमत जीतता है",
+         "Trees की संख्या"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Add kNN, Tree and Naive Bayes widgets to the canvas.",
+       "Connect File → Tree → Tree Viewer to see the actual decision tree. The first split is usually on petal length or petal width, which separates setosa immediately.",
+       "To predict new flowers, make a small table of new measurements (for example in a spreadsheet saved as CSV, without the species column, or with it left empty) and load it with a second File widget.",
+       "Connect the model output of a learner and the new data to a Predictions widget: Tree → Predictions and File (new flowers) → Predictions. The Predictions widget shows each new flower's predicted species and the probability for each class."
+      ],
+      "hi": [
+       "Canvas पर kNN, Tree और Naive Bayes widgets जोड़ें।",
+       "असली decision tree देखने के लिए File → Tree → Tree Viewer जोड़ें। पहला विभाजन आम तौर पर petal length या petal width पर होता है, जो setosa को तुरंत अलग कर देता है।",
+       "नए फूलों का अनुमान लगाने के लिए नए मापों की छोटी तालिका बनाएँ (जैसे spreadsheet में, CSV के रूप में सहेजी, बिना species column के या उसे खाली छोड़कर) और दूसरे File widget से load करें।",
+       "Learner के model output और नए डेटा को Predictions widget से जोड़ें: Tree → Predictions और File (नए फूल) → Predictions। Predictions widget हर नए फूल की अनुमानित प्रजाति और हर class की probability दिखाता है।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "Workflow:\nFile (iris) ──► Tree ──► Tree Viewer\n                 │\n                 └──(Model)──► Predictions ◄── File (new flowers)",
+      "hi": "Workflow:\nFile (iris) ──► Tree ──► Tree Viewer\n                 │\n                 └──(Model)──► Predictions ◄── File (नए फूल)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A new flower has petal length 1.4 cm and petal width 0.2 cm. Without running Orange, which species would a kNN or tree model most likely predict, and why?",
+       "hi": "एक नए फूल की petal length 1.4 cm और petal width 0.2 cm है। Orange चलाए बिना, kNN या tree model सबसे संभवतः कौन-सी प्रजाति बताएगा, और क्यों?"
+      },
+      "a": {
+       "en": "Step 1: Recall the scatter plot: setosa flowers have very small petals (length about 1–2 cm, width below about 0.6 cm).\nStep 2: Versicolor and virginica petals are much longer (about 3 cm and more).\nStep 3: The nearest neighbours of (1.4, 0.2) are all setosa, and a tree's first question 'petal length ≤ 1.9?' would answer yes.\nAnswer: Iris setosa.",
+       "hi": "चरण 1: Scatter plot याद करें: setosa फूलों की पंखुड़ियाँ बहुत छोटी होती हैं (लंबाई लगभग 1–2 cm, चौड़ाई लगभग 0.6 cm से कम)।\nचरण 2: Versicolor और virginica की पंखुड़ियाँ बहुत लंबी (लगभग 3 cm और अधिक) होती हैं।\nचरण 3: (1.4, 0.2) के निकटतम पड़ोसी सभी setosa हैं, और tree का पहला प्रश्न 'petal length ≤ 1.9?' का उत्तर हाँ होगा।\nउत्तर: Iris setosa।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.10 Data Science practical 3: Evaluating a classification model",
+    "hi": "4.10 Data Science प्रायोगिक 3: Classification model का मूल्यांकन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A model must be tested on data it did not learn from; otherwise we cannot know whether it will work on new flowers. The Test and Score widget does this automatically. Connect File → Test and Score (Data) and connect each learner (kNN, Tree, Naive Bayes) → Test and Score (Learner). Then connect Test and Score → Confusion Matrix.",
+      "hi": "Model की जाँच ऐसे डेटा पर होनी चाहिए जिससे उसने नहीं सीखा; वरना हम नहीं जान सकते कि वह नए फूलों पर काम करेगा या नहीं। Test and Score widget यह अपने आप करता है। File → Test and Score (Data) जोड़ें और हर learner (kNN, Tree, Naive Bayes) → Test and Score (Learner) जोड़ें। फिर Test and Score → Confusion Matrix जोड़ें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Workflow:\n              ┌──► kNN ────────┐\nFile (iris) ──┼──► Tree ───────┼──► Test and Score ──► Confusion Matrix\n              ├──► Naive Bayes ┘\n              └──────(Data)───────►",
+      "hi": "Workflow:\n              ┌──► kNN ────────┐\nFile (iris) ──┼──► Tree ───────┼──► Test and Score ──► Confusion Matrix\n              ├──► Naive Bayes ┘\n              └──────(Data)───────►"
+     }
+    },
+    {
+     "p": {
+      "en": "Sampling methods in Test and Score:",
+      "hi": "Test and Score में sampling विधियाँ:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Cross validation (k-fold): data is split into k equal parts (folds). The model is trained on k−1 folds and tested on the remaining fold; this repeats k times so every row is tested once, and the scores are averaged. 10 folds is common. Cross-validation is also called rotation estimation.",
+       "Leave-one-out: a special case of cross-validation where k equals the number of rows N; each row is tested once using a model trained on all the others. Very thorough but slow for big data.",
+       "Random sampling: the data is randomly split into a training part (for example 66% or 80%) and a test part, repeated several times. This is the train–test split idea.",
+       "Test on train data: tests the model on the same data it learnt from. Scores look too good, so use it only for comparison, never as the real result.",
+       "Test on test data: uses a separate test file you supply through a second data input."
+      ],
+      "hi": [
+       "Cross validation (k-fold): डेटा को k बराबर हिस्सों (folds) में बाँटा जाता है। Model को k−1 folds पर train करके बचे fold पर test किया जाता है; यह k बार दोहराया जाता है ताकि हर row एक बार test हो, और scores का औसत लिया जाता है। 10 folds आम है। Cross-validation को rotation estimation भी कहते हैं।",
+       "Leave-one-out: cross-validation की खास स्थिति जिसमें k = rows की संख्या N; हर row को बाकी सभी पर train हुए model से एक बार test किया जाता है। बहुत गहन पर बड़े डेटा के लिए धीमा।",
+       "Random sampling: डेटा को बेतरतीब ढंग से training हिस्से (जैसे 66% या 80%) और test हिस्से में बाँटकर कई बार दोहराया जाता है। यही train–test split का विचार है।",
+       "Test on train data: model को उसी डेटा पर test करता है जिससे उसने सीखा। Scores बहुत अच्छे दिखते हैं, इसलिए इसे केवल तुलना के लिए उपयोग करें, असली परिणाम के रूप में कभी नहीं।",
+       "Test on test data: दूसरे data input से दी गई अलग test फ़ाइल उपयोग करता है।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Confusion matrix",
+       "hi": "Confusion matrix"
+      },
+      "text": {
+       "en": "A table that compares actual classes (rows) with predicted classes (columns). The diagonal cells are correct predictions; all other cells are mistakes. For a two-class problem the four cells are True Positive (TP), False Positive (FP), False Negative (FN) and True Negative (TN).",
+       "hi": "एक तालिका जो वास्तविक classes (rows) की तुलना predicted classes (columns) से करती है। विकर्ण (diagonal) के खाने सही predictions हैं; बाकी सभी गलतियाँ। दो-class समस्या में चार खाने True Positive (TP), False Positive (FP), False Negative (FN) और True Negative (TN) होते हैं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Score in Test and Score",
+        "Meaning",
+        "Formula (two classes)"
+       ],
+       "hi": [
+        "Test and Score में score",
+        "अर्थ",
+        "सूत्र (दो classes)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "CA (Classification Accuracy)",
+         "Fraction of all predictions that are correct",
+         "(TP + TN) ÷ (TP + TN + FP + FN)"
+        ],
+        [
+         "Precision",
+         "Of the items predicted positive, how many really are positive",
+         "TP ÷ (TP + FP)"
+        ],
+        [
+         "Recall",
+         "Of the actual positives, how many the model found",
+         "TP ÷ (TP + FN)"
+        ],
+        [
+         "F1",
+         "Balance of precision and recall (their harmonic mean)",
+         "2 × Precision × Recall ÷ (Precision + Recall)"
+        ],
+        [
+         "AUC",
+         "Area under the ROC curve; how well the model ranks positives above negatives (1 = perfect, 0.5 = random guessing)",
+         "Read from ROC Analysis"
+        ],
+        [
+         "MCC",
+         "Matthews correlation coefficient; a balanced single score from −1 to 1, useful when classes are unequal",
+         "Calculated by Orange"
+        ]
+       ],
+       "hi": [
+        [
+         "CA (Classification Accuracy)",
+         "सभी predictions में से सही का अनुपात",
+         "(TP + TN) ÷ (TP + TN + FP + FN)"
+        ],
+        [
+         "Precision",
+         "जिन्हें positive बताया, उनमें से कितने सच में positive हैं",
+         "TP ÷ (TP + FP)"
+        ],
+        [
+         "Recall",
+         "वास्तविक positives में से model ने कितने पकड़े",
+         "TP ÷ (TP + FN)"
+        ],
+        [
+         "F1",
+         "Precision और recall का संतुलन (उनका harmonic mean)",
+         "2 × Precision × Recall ÷ (Precision + Recall)"
+        ],
+        [
+         "AUC",
+         "ROC curve के नीचे का क्षेत्रफल; model positives को negatives से ऊपर कितना अच्छा रखता है (1 = पूर्ण, 0.5 = अंदाज़ा)",
+         "ROC Analysis से पढ़ें"
+        ],
+        [
+         "MCC",
+         "Matthews correlation coefficient; −1 से 1 तक का एक संतुलित score, असमान classes में उपयोगी",
+         "Orange गणना करता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A spam filter is tested on 100 emails. TP = 40 (spam caught), FP = 10 (good mail marked spam), FN = 5 (spam missed), TN = 45. Find accuracy, precision, recall and F1.",
+       "hi": "एक spam filter को 100 emails पर test किया गया। TP = 40 (spam पकड़ा), FP = 10 (अच्छा mail spam बताया), FN = 5 (spam छूटा), TN = 45। Accuracy, precision, recall और F1 ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Accuracy = (40 + 45) ÷ 100 = 0.85 (85%).\nStep 2: Precision = 40 ÷ (40 + 10) = 0.80.\nStep 3: Recall = 40 ÷ (40 + 5) = 0.889.\nStep 4: F1 = 2 × 0.80 × 0.889 ÷ (0.80 + 0.889) ≈ 0.842.",
+       "hi": "चरण 1: Accuracy = (40 + 45) ÷ 100 = 0.85 (85%)।\nचरण 2: Precision = 40 ÷ (40 + 10) = 0.80।\nचरण 3: Recall = 40 ÷ (40 + 5) = 0.889।\nचरण 4: F1 = 2 × 0.80 × 0.889 ÷ (0.80 + 0.889) ≈ 0.842।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Reading the iris confusion matrix: a typical result (10-fold cross-validation) looks like the table below. Setosa is always correct; the few mistakes are between versicolor and virginica, exactly as the scatter plot suggested. Accuracy = (50 + 47 + 46) ÷ 150 = 143 ÷ 150 ≈ 0.953. Your numbers may differ slightly depending on the learner and sampling settings.",
+      "hi": "Iris confusion matrix पढ़ना: एक सामान्य परिणाम (10-fold cross-validation) नीचे की तालिका जैसा दिखता है। Setosa हमेशा सही है; कुछ गलतियाँ versicolor और virginica के बीच हैं, ठीक जैसा scatter plot ने संकेत दिया था। Accuracy = (50 + 47 + 46) ÷ 150 = 143 ÷ 150 ≈ 0.953। Learner और sampling settings के अनुसार आपकी संख्याएँ थोड़ी अलग हो सकती हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Actual \\ Predicted",
+        "setosa",
+        "versicolor",
+        "virginica",
+        "Total"
+       ],
+       "hi": [
+        "वास्तविक \\ अनुमानित",
+        "setosa",
+        "versicolor",
+        "virginica",
+        "कुल"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "setosa",
+         "50",
+         "0",
+         "0",
+         "50"
+        ],
+        [
+         "versicolor",
+         "0",
+         "47",
+         "3",
+         "50"
+        ],
+        [
+         "virginica",
+         "0",
+         "4",
+         "46",
+         "50"
+        ]
+       ],
+       "hi": [
+        [
+         "setosa",
+         "50",
+         "0",
+         "0",
+         "50"
+        ],
+        [
+         "versicolor",
+         "0",
+         "47",
+         "3",
+         "50"
+        ],
+        [
+         "virginica",
+         "0",
+         "4",
+         "46",
+         "50"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: clicking a cell in the Confusion Matrix selects those rows; connect Confusion Matrix → Data Table to inspect exactly which flowers were misclassified. Always report the sampling method (e.g. '10-fold cross-validation') with your scores.",
+      "hi": "याद रखें: Confusion Matrix में किसी खाने पर click करने से वे rows चुनी जाती हैं; Confusion Matrix → Data Table जोड़कर ठीक-ठीक देखें कि कौन-से फूल गलत वर्गीकृत हुए। अपने scores के साथ sampling विधि (जैसे '10-fold cross-validation') हमेशा बताएँ।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.11 Computer Vision with Orange: image analytics",
+    "hi": "4.11 Orange के साथ Computer Vision: image analytics"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Orange cannot learn directly from raw pixels with its normal widgets. The Image Analytics add-on solves this: it turns each image into a list of numbers (an embedding) using a deep neural network that was already trained on millions of images. After that, the images behave like rows in an ordinary data table.",
+      "hi": "Orange अपने सामान्य widgets से सीधे कच्चे pixels से नहीं सीख सकता। Image Analytics add-on इसका हल है: यह हर तस्वीर को लाखों तस्वीरों पर पहले से प्रशिक्षित deep neural network की मदद से संख्याओं की सूची (embedding) में बदल देता है। उसके बाद तस्वीरें सामान्य data table की rows की तरह काम करती हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Image embedding",
+       "hi": "Image embedding"
+      },
+      "text": {
+       "en": "A representation of an image as a vector of numbers (features) produced by a pre-trained deep network. Similar-looking images get similar vectors. Orange's Image Embedding widget offers several embedders, such as Inception v3 and VGG (which run on Orange's online server) and SqueezeNet (which runs on your own computer, so it works offline).",
+       "hi": "पहले से प्रशिक्षित deep network द्वारा बनाया गया, तस्वीर का संख्याओं (features) के vector के रूप में प्रतिनिधित्व। एक जैसी दिखने वाली तस्वीरों को एक जैसे vectors मिलते हैं। Orange का Image Embedding widget कई embedders देता है, जैसे Inception v3 और VGG (जो Orange के online server पर चलते हैं) और SqueezeNet (जो आपके अपने कंप्यूटर पर चलता है, इसलिए offline भी काम करता है)।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Widget",
+        "What it does"
+       ],
+       "hi": [
+        "Widget",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Import Images",
+         "Loads all images from a folder; if the folder has sub-folders (e.g. 'cats', 'dogs'), their names become the class labels"
+        ],
+        [
+         "Image Viewer",
+         "Shows thumbnails of the images so you can see what is in the data or in a selected group"
+        ],
+        [
+         "Image Embedding",
+         "Converts each image into numeric features using a chosen embedder"
+        ],
+        [
+         "Distances",
+         "Computes how different every pair of images is, from their embeddings (e.g. cosine distance)"
+        ],
+        [
+         "Hierarchical Clustering",
+         "Builds a tree (dendrogram) that groups the most similar images first"
+        ],
+        [
+         "Image Grid",
+         "Places similar images close together on a grid"
+        ],
+        [
+         "Save Images",
+         "Saves images (for example a selected cluster) into folders"
+        ]
+       ],
+       "hi": [
+        [
+         "Import Images",
+         "किसी folder की सभी तस्वीरें load करता है; अगर folder में sub-folders (जैसे 'cats', 'dogs') हों, तो उनके नाम class labels बन जाते हैं"
+        ],
+        [
+         "Image Viewer",
+         "तस्वीरों के thumbnails दिखाता है ताकि आप देख सकें कि डेटा या चुने समूह में क्या है"
+        ],
+        [
+         "Image Embedding",
+         "चुने गए embedder से हर तस्वीर को संख्यात्मक features में बदलता है"
+        ],
+        [
+         "Distances",
+         "Embeddings से हर दो तस्वीरों के बीच कितना अंतर है, यह गणना करता है (जैसे cosine distance)"
+        ],
+        [
+         "Hierarchical Clustering",
+         "एक पेड़ (dendrogram) बनाता है जो सबसे मिलती-जुलती तस्वीरों को पहले समूह में रखता है"
+        ],
+        [
+         "Image Grid",
+         "मिलती-जुलती तस्वीरों को grid पर पास-पास रखता है"
+        ],
+        [
+         "Save Images",
+         "तस्वीरें (जैसे चुना गया cluster) folders में सहेजता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Practical A — Grouping similar images (unsupervised):",
+      "hi": "प्रायोगिक A — मिलती-जुलती तस्वीरों के समूह बनाना (unsupervised):"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Make a folder with 20–40 images of, say, three kinds of fruit (use free images or your own photos).",
+       "Import Images → choose the folder. Connect to Image Viewer to check the images loaded.",
+       "Import Images → Image Embedding (choose an embedder; SqueezeNet if you are offline).",
+       "Image Embedding → Distances (cosine) → Hierarchical Clustering.",
+       "In Hierarchical Clustering, click a branch of the dendrogram to select a cluster, and connect Hierarchical Clustering → Image Viewer to see the images in that cluster."
+      ],
+      "hi": [
+       "तीन तरह के फलों की 20–40 तस्वीरों वाला folder बनाएँ (मुफ़्त तस्वीरें या अपनी फ़ोटो)।",
+       "Import Images → folder चुनें। तस्वीरें load हुईं यह देखने के लिए Image Viewer से जोड़ें।",
+       "Import Images → Image Embedding (embedder चुनें; offline हों तो SqueezeNet)।",
+       "Image Embedding → Distances (cosine) → Hierarchical Clustering।",
+       "Hierarchical Clustering में dendrogram की किसी शाखा पर click करके cluster चुनें, और Hierarchical Clustering → Image Viewer जोड़कर उस cluster की तस्वीरें देखें।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "Workflow:\nImport Images ──► Image Embedding ──► Distances ──► Hierarchical Clustering ──► Image Viewer\n      └──────────► Image Viewer",
+      "hi": "Workflow:\nImport Images ──► Image Embedding ──► Distances ──► Hierarchical Clustering ──► Image Viewer\n      └──────────► Image Viewer"
+     }
+    },
+    {
+     "p": {
+      "en": "What you observe: images of the same fruit usually end up in the same branch, even though you never told Orange which is which. Odd images (a fruit on a busy background, a cut fruit) may join the wrong group—a reminder of the acquisition challenges from Chapter 3.",
+      "hi": "क्या दिखता है: एक ही फल की तस्वीरें आम तौर पर एक ही शाखा में आ जाती हैं, जबकि आपने Orange को कभी नहीं बताया कि कौन-सी क्या है। अजीब तस्वीरें (भरे-भरे background पर फल, कटा फल) गलत समूह में जा सकती हैं—यह अध्याय 3 की acquisition वाली चुनौतियों की याद दिलाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Practical B — Classifying images (supervised): put images into sub-folders named by class (e.g. healthy_leaf, diseased_leaf). Then: Import Images → Image Embedding → Test and Score, with a Logistic Regression (or kNN) learner connected to Test and Score, and Test and Score → Confusion Matrix. Click a cell of the confusion matrix and send it to Image Viewer to see which images were misclassified. To classify new images, connect the learner's model and a second Import Images → Image Embedding chain to a Predictions widget.",
+      "hi": "प्रायोगिक B — तस्वीरों का वर्गीकरण (supervised): तस्वीरों को class के नाम वाले sub-folders में रखें (जैसे healthy_leaf, diseased_leaf)। फिर: Import Images → Image Embedding → Test and Score, Logistic Regression (या kNN) learner को Test and Score से जोड़ें, और Test and Score → Confusion Matrix। Confusion matrix के किसी खाने पर click करके उसे Image Viewer में भेजें ताकि गलत वर्गीकृत तस्वीरें दिखें। नई तस्वीरों के वर्गीकरण के लिए learner के model और दूसरी Import Images → Image Embedding श्रृंखला को Predictions widget से जोड़ें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Workflow:\nImport Images ──► Image Embedding ──► Test and Score ──► Confusion Matrix ──► Image Viewer\n                                         ▲\n                         Logistic Regression",
+      "hi": "Workflow:\nImport Images ──► Image Embedding ──► Test and Score ──► Confusion Matrix ──► Image Viewer\n                                         ▲\n                         Logistic Regression"
+     }
+    },
+    {
+     "note": {
+      "en": "Privacy note: embedders like Inception v3 send images to Orange's server to compute the embedding. Use only images you are allowed to share, avoid photos of people's faces, and choose SqueezeNet (local) for private images.",
+      "hi": "निजता नोट: Inception v3 जैसे embedders embedding निकालने के लिए तस्वीरें Orange के server पर भेजते हैं। केवल वही तस्वीरें लें जिन्हें साझा करने की अनुमति हो, लोगों के चेहरों की फ़ोटो से बचें, और निजी तस्वीरों के लिए SqueezeNet (local) चुनें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.12 Natural Language Processing with Orange: text mining",
+    "hi": "4.12 Orange के साथ Natural Language Processing: text mining"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The Text add-on lets Orange work with written language. As with images, the trick is to turn text into numbers. The usual steps are: load documents → clean them → count words → visualise or model.",
+      "hi": "Text add-on से Orange लिखित भाषा के साथ काम कर पाता है। तस्वीरों की तरह यहाँ भी तरकीब पाठ को संख्याओं में बदलना है। सामान्य चरण: documents load करना → उन्हें साफ़ करना → शब्द गिनना → visualise या model करना।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Corpus",
+       "hi": "Corpus (पाठ-संग्रह)"
+      },
+      "text": {
+       "en": "A collection of text documents used for analysis, such as a set of product reviews, news headlines or stories. In Orange, the Corpus widget loads a corpus from a file (built-in examples include book excerpts and tweets) and lets you choose which column contains the text.",
+       "hi": "विश्लेषण के लिए उपयोग किए जाने वाले पाठ documents का संग्रह, जैसे product reviews, समाचार शीर्षक या कहानियों का समूह। Orange में Corpus widget फ़ाइल से corpus load करता है (built-in उदाहरणों में पुस्तक अंश और tweets हैं) और यह चुनने देता है कि किस column में पाठ है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Widget",
+        "What it does"
+       ],
+       "hi": [
+        "Widget",
+        "क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Corpus",
+         "Loads a collection of documents"
+        ],
+        [
+         "Corpus Viewer",
+         "Shows the documents and lets you search them"
+        ],
+        [
+         "Preprocess Text",
+         "Cleans text: transformation (lowercase, remove accents/URLs), tokenisation (split into words), normalisation (stemming or lemmatisation), filtering (remove stop words like 'the', 'is', numbers, very rare or very common words)"
+        ],
+        [
+         "Bag of Words",
+         "Counts how often each word appears in each document, turning text into a numeric table"
+        ],
+        [
+         "Word Cloud",
+         "Shows words sized by frequency; the bigger the word, the more often it appears"
+        ],
+        [
+         "Sentiment Analysis",
+         "Gives each document a score for positive, negative or neutral feeling"
+        ],
+        [
+         "Topic Modelling",
+         "Finds groups of words that often appear together (topics)"
+        ]
+       ],
+       "hi": [
+        [
+         "Corpus",
+         "Documents का संग्रह load करता है"
+        ],
+        [
+         "Corpus Viewer",
+         "Documents दिखाता है और उनमें खोज करने देता है"
+        ],
+        [
+         "Preprocess Text",
+         "पाठ साफ़ करता है: transformation (lowercase, accents/URLs हटाना), tokenisation (शब्दों में तोड़ना), normalisation (stemming या lemmatisation), filtering ('the', 'is' जैसे stop words, संख्याएँ, बहुत दुर्लभ या बहुत आम शब्द हटाना)"
+        ],
+        [
+         "Bag of Words",
+         "हर document में हर शब्द कितनी बार आया, गिनकर पाठ को संख्यात्मक तालिका में बदलता है"
+        ],
+        [
+         "Word Cloud",
+         "शब्दों को आवृत्ति के अनुसार आकार में दिखाता है; जितना बड़ा शब्द, उतनी बार आया"
+        ],
+        [
+         "Sentiment Analysis",
+         "हर document को सकारात्मक, नकारात्मक या तटस्थ भावना का score देता है"
+        ],
+        [
+         "Topic Modelling",
+         "साथ-साथ आने वाले शब्दों के समूह (topics) खोजता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Tokenisation",
+       "hi": "Tokenisation"
+      },
+      "text": {
+       "en": "Breaking text into smaller units called tokens, usually words. 'The food was great!' → ['the', 'food', 'was', 'great'] (after lowercasing and removing punctuation).",
+       "hi": "पाठ को tokens कहलाने वाली छोटी इकाइयों, आम तौर पर शब्दों, में तोड़ना। 'The food was great!' → ['the', 'food', 'was', 'great'] (lowercase और विराम चिह्न हटाने के बाद)।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Stop words",
+       "hi": "Stop words"
+      },
+      "text": {
+       "en": "Very common words such as 'a', 'the', 'is', 'and' that carry little meaning for analysis and are usually removed.",
+       "hi": "'a', 'the', 'is', 'and' जैसे बहुत आम शब्द जिनका विश्लेषण में कम अर्थ होता है और जिन्हें आम तौर पर हटा दिया जाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Practical — Word cloud of word frequencies:",
+      "hi": "प्रायोगिक — शब्द आवृत्ति का word cloud:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Create a spreadsheet with one column named 'review' and 15–30 short reviews of your school canteen (or use a built-in corpus). Save it as CSV.",
+       "Corpus widget → load the file and select 'review' as the text feature.",
+       "Corpus → Preprocess Text: keep Lowercase, tokenise by words, and in Filtering tick Stopwords (English) and remove numbers/punctuation.",
+       "Preprocess Text → Word Cloud. Observe the largest words.",
+       "Optional: Preprocess Text → Bag of Words → Data Table to see the counts, and Preprocess Text → Sentiment Analysis → Data Table to see positive/negative scores."
+      ],
+      "hi": [
+       "'review' नाम के एक column और अपनी स्कूल कैंटीन के 15–30 छोटे reviews वाली spreadsheet बनाएँ (या built-in corpus लें)। इसे CSV के रूप में सहेजें।",
+       "Corpus widget → फ़ाइल load करें और 'review' को text feature चुनें।",
+       "Corpus → Preprocess Text: Lowercase रखें, शब्दों में tokenise करें, और Filtering में Stopwords (English) पर tick करें तथा संख्याएँ/विराम चिह्न हटाएँ।",
+       "Preprocess Text → Word Cloud। सबसे बड़े शब्द देखें।",
+       "वैकल्पिक: गिनती देखने के लिए Preprocess Text → Bag of Words → Data Table, और सकारात्मक/नकारात्मक scores के लिए Preprocess Text → Sentiment Analysis → Data Table।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "Workflow:\nCorpus ──► Preprocess Text ──► Word Cloud\n                 ├──────────► Bag of Words ──► Data Table\n                 └──────────► Sentiment Analysis ──► Data Table",
+      "hi": "Workflow:\nCorpus ──► Preprocess Text ──► Word Cloud\n                 ├──────────► Bag of Words ──► Data Table\n                 └──────────► Sentiment Analysis ──► Data Table"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Before stop-word removal, the most frequent words in canteen reviews were 'the', 'is', 'food', 'and', 'samosa', 'cold'. Which words will remain prominent after removing stop words, and what does that tell the canteen?",
+       "hi": "Stop-word हटाने से पहले कैंटीन reviews में सबसे आम शब्द 'the', 'is', 'food', 'and', 'samosa', 'cold' थे। Stop words हटाने के बाद कौन-से शब्द प्रमुख रहेंगे, और इससे कैंटीन को क्या पता चलता है?"
+      },
+      "a": {
+       "en": "Step 1: 'the', 'is' and 'and' are stop words, so they are removed.\nStep 2: 'food', 'samosa' and 'cold' remain and will be the biggest in the word cloud.\nStep 3: Interpretation: many students write about samosas and about food being cold, so the canteen should check whether samosas are served hot. (A word cloud shows frequency, not meaning, so read some reviews to confirm.)",
+       "hi": "चरण 1: 'the', 'is' और 'and' stop words हैं, इसलिए हट जाएँगे।\nचरण 2: 'food', 'samosa' और 'cold' बचेंगे और word cloud में सबसे बड़े होंगे।\nचरण 3: अर्थ: कई छात्र समोसे और ठंडे खाने के बारे में लिखते हैं, इसलिए कैंटीन को देखना चाहिए कि समोसे गरम परोसे जा रहे हैं या नहीं। (Word cloud आवृत्ति दिखाता है, अर्थ नहीं, इसलिए पुष्टि के लिए कुछ reviews पढ़ें।)"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: most built-in stop-word lists and sentiment methods in Orange are for English and a few other languages. For Hindi or other Indian-language text, results may be weaker, so check the output carefully.",
+      "hi": "याद रखें: Orange की ज़्यादातर built-in stop-word सूचियाँ और sentiment विधियाँ English और कुछ अन्य भाषाओं के लिए हैं। हिंदी या अन्य भारतीय भाषाओं के पाठ पर परिणाम कमज़ोर हो सकते हैं, इसलिए output ध्यान से जाँचें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.13 Practical file and lab-test guidance",
+    "hi": "4.13 Practical file और lab-test मार्गदर्शन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "This unit is assessed through practical work, not a theory paper. Your practical file should contain at least three Orange activities, each with screenshots of every step. A good entry for each activity has:",
+      "hi": "इस इकाई का मूल्यांकन theory paper से नहीं, प्रायोगिक कार्य से होता है। आपकी practical file में कम से कम तीन Orange गतिविधियाँ होनी चाहिए, हर एक के हर चरण के screenshots के साथ। हर गतिविधि की अच्छी प्रविष्टि में होता है:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Aim: what question you are answering (e.g. 'Classify iris flowers and compare three learners').",
+       "Dataset: name, number of rows and columns, target variable.",
+       "Workflow screenshot: the full canvas with all widgets and links visible.",
+       "Step-wise screenshots: settings of each widget (e.g. File roles, Test and Score sampling method).",
+       "Output screenshots: scatter plot, Test and Score table, confusion matrix, word cloud or image clusters.",
+       "Observation and conclusion: which model scored best and why, what mistakes it made, what you learnt."
+      ],
+      "hi": [
+       "उद्देश्य: आप किस प्रश्न का उत्तर दे रहे हैं (जैसे 'Iris फूलों का वर्गीकरण और तीन learners की तुलना')।",
+       "Dataset: नाम, rows और columns की संख्या, target variable।",
+       "Workflow screenshot: पूरा canvas जिसमें सभी widgets और links दिखें।",
+       "चरणवार screenshots: हर widget की settings (जैसे File की भूमिकाएँ, Test and Score की sampling विधि)।",
+       "Output screenshots: scatter plot, Test and Score तालिका, confusion matrix, word cloud या image clusters।",
+       "अवलोकन और निष्कर्ष: किस model का score सबसे अच्छा रहा और क्यों, उसने क्या गलतियाँ कीं, आपने क्या सीखा।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Suggested practical",
+        "Widgets used"
+       ],
+       "hi": [
+        "सुझाया गया प्रायोगिक",
+        "उपयोग किए widgets"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Step-wise data visualisation of Iris",
+         "File, Data Table, Scatter Plot, Box Plot, Distributions"
+        ],
+        [
+         "2. Classification of Iris",
+         "File, kNN, Tree, Naive Bayes, Tree Viewer, Predictions"
+        ],
+        [
+         "3. Evaluation of classification models",
+         "Test and Score, Confusion Matrix, ROC Analysis"
+        ],
+        [
+         "4. Image analytics",
+         "Import Images, Image Embedding, Distances, Hierarchical Clustering, Image Viewer"
+        ],
+        [
+         "5. Word cloud of word frequencies",
+         "Corpus, Preprocess Text, Bag of Words, Word Cloud"
+        ]
+       ],
+       "hi": [
+        [
+         "1. Iris का चरणवार data visualisation",
+         "File, Data Table, Scatter Plot, Box Plot, Distributions"
+        ],
+        [
+         "2. Iris का वर्गीकरण",
+         "File, kNN, Tree, Naive Bayes, Tree Viewer, Predictions"
+        ],
+        [
+         "3. Classification models का मूल्यांकन",
+         "Test and Score, Confusion Matrix, ROC Analysis"
+        ],
+        [
+         "4. Image analytics",
+         "Import Images, Image Embedding, Distances, Hierarchical Clustering, Image Viewer"
+        ],
+        [
+         "5. शब्द आवृत्ति का word cloud",
+         "Corpus, Preprocess Text, Bag of Words, Word Cloud"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Exam tip: in the lab test you may be asked to build a workflow from scratch. Practise building each workflow above until you can do it without notes, and know where each setting is (target role in File, sampling method in Test and Score, stop words in Preprocess Text, embedder in Image Embedding).",
+      "hi": "परीक्षा सुझाव: lab test में आपसे शुरुआत से workflow बनाने को कहा जा सकता है। ऊपर के हर workflow को तब तक बनाने का अभ्यास करें जब तक बिना notes के न कर सकें, और जानें कि हर setting कहाँ है (File में target भूमिका, Test and Score में sampling विधि, Preprocess Text में stop words, Image Embedding में embedder)।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Forgetting to set the target column in the File widget. Fix: double-click File and set the role of the class column to 'target'; set ID/name columns to 'meta' or 'skip'.",
+   "Connecting a learner directly to Confusion Matrix. Fix: Confusion Matrix needs Evaluation Results from Test and Score (or Predictions), not a learner.",
+   "Giving Test and Score only a learner or only data. Fix: it needs both—data into the Data input and at least one learner into the Learner input.",
+   "Reporting 'Test on train data' scores as the model's accuracy. Fix: use cross-validation or a separate test set; testing on training data gives over-optimistic scores.",
+   "Thinking higher accuracy always means a better model. Fix: also look at precision, recall, F1 and the confusion matrix, especially when classes are unequal.",
+   "Looking for image or text widgets in a fresh installation. Fix: install the Image Analytics and Text add-ons from Options → Add-ons and restart Orange.",
+   "Putting all images in one folder for supervised classification. Fix: use one sub-folder per class so Import Images can create class labels.",
+   "Making a word cloud without preprocessing. Fix: use Preprocess Text to lowercase and remove stop words and punctuation, or 'the' and 'is' will dominate.",
+   "Reading a word cloud as if it shows feelings. Fix: it only shows how often words appear; use Sentiment Analysis or read the texts for meaning.",
+   "Moving the data file after saving the workflow. Fix: keep data files with the .ows file, or re-select the file in the File widget."
+  ],
+  "hi": [
+   "File widget में target column तय करना भूल जाना। सुधार: File पर double-click करके class column की भूमिका 'target' करें; ID/नाम columns को 'meta' या 'skip' रखें।",
+   "Learner को सीधे Confusion Matrix से जोड़ना। सुधार: Confusion Matrix को Test and Score (या Predictions) से Evaluation Results चाहिए, learner नहीं।",
+   "Test and Score को केवल learner या केवल डेटा देना। सुधार: इसे दोनों चाहिए—Data input में डेटा और Learner input में कम से कम एक learner।",
+   "'Test on train data' के scores को model की accuracy बताना। सुधार: cross-validation या अलग test set उपयोग करें; training data पर test करने से बहुत अच्छे (भ्रामक) scores आते हैं।",
+   "यह सोचना कि ज़्यादा accuracy का अर्थ हमेशा बेहतर model है। सुधार: precision, recall, F1 और confusion matrix भी देखें, खासकर जब classes असमान हों।",
+   "नए installation में image या text widgets खोजना। सुधार: Options → Add-ons से Image Analytics और Text add-ons install करके Orange दोबारा शुरू करें।",
+   "Supervised classification के लिए सभी तस्वीरें एक ही folder में रखना। सुधार: हर class का एक sub-folder बनाएँ ताकि Import Images class labels बना सके।",
+   "बिना preprocessing के word cloud बनाना। सुधार: Preprocess Text से lowercase करें और stop words तथा विराम चिह्न हटाएँ, वरना 'the' और 'is' छा जाएँगे।",
+   "Word cloud को भावनाएँ दिखाने वाला समझना। सुधार: यह केवल शब्दों की आवृत्ति दिखाता है; अर्थ के लिए Sentiment Analysis लगाएँ या पाठ पढ़ें।",
+   "Workflow सहेजने के बाद data फ़ाइल कहीं और ले जाना। सुधार: data फ़ाइलें .ows फ़ाइल के साथ रखें, या File widget में फ़ाइल दोबारा चुनें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Data mining",
+    "hi": "Data mining"
+   },
+   "d": {
+    "en": "Discovering useful patterns, trends, relationships and anomalies in large data to support decisions.",
+    "hi": "निर्णयों में सहायता के लिए बड़े डेटा में उपयोगी पैटर्न, रुझान, संबंध और असामान्यताएँ खोजना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Orange",
+    "hi": "Orange"
+   },
+   "d": {
+    "en": "Free, open-source visual-programming tool for data mining, ML and visualisation from the University of Ljubljana.",
+    "hi": "University of Ljubljana का data mining, ML और visualisation के लिए मुफ़्त, open-source visual-programming tool।"
+   }
+  },
+  {
+   "t": {
+    "en": "Visual programming",
+    "hi": "Visual programming"
+   },
+   "d": {
+    "en": "Building a program by connecting graphical blocks instead of typing code.",
+    "hi": "Code लिखने की बजाय graphical blocks जोड़कर program बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Canvas",
+    "hi": "Canvas"
+   },
+   "d": {
+    "en": "The work area where widgets are placed and connected.",
+    "hi": "वह कार्य-क्षेत्र जहाँ widgets रखे और जोड़े जाते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Widget",
+    "hi": "Widget"
+   },
+   "d": {
+    "en": "A block in Orange that performs one task and has inputs and outputs.",
+    "hi": "Orange का एक block जो एक काम करता है और जिसके inputs तथा outputs होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Link / channel",
+    "hi": "Link / channel"
+   },
+   "d": {
+    "en": "A connection that carries a signal (data, model, results) from one widget to another.",
+    "hi": "एक connection जो एक widget से दूसरे तक signal (डेटा, model, परिणाम) ले जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Workflow (.ows)",
+    "hi": "Workflow (.ows)"
+   },
+   "d": {
+    "en": "A complete chain of connected widgets; saved as an .ows file.",
+    "hi": "जुड़े widgets की पूरी श्रृंखला; .ows फ़ाइल के रूप में सहेजी जाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Add-on",
+    "hi": "Add-on"
+   },
+   "d": {
+    "en": "An optional package that adds widget groups, e.g. Image Analytics, Text.",
+    "hi": "एक वैकल्पिक package जो widget समूह जोड़ता है, जैसे Image Analytics, Text।"
+   }
+  },
+  {
+   "t": {
+    "en": "Target",
+    "hi": "Target"
+   },
+   "d": {
+    "en": "The column (class) the model learns to predict.",
+    "hi": "वह column (class) जिसका अनुमान लगाना model सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Meta attribute",
+    "hi": "Meta attribute"
+   },
+   "d": {
+    "en": "A column kept for information (e.g. a name) but not used for learning.",
+    "hi": "जानकारी के लिए रखा column (जैसे नाम) जो सीखने में उपयोग नहीं होता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Learner",
+    "hi": "Learner"
+   },
+   "d": {
+    "en": "A model widget (algorithm) such as kNN, Tree or Naive Bayes.",
+    "hi": "kNN, Tree या Naive Bayes जैसा model widget (algorithm)।"
+   }
+  },
+  {
+   "t": {
+    "en": "kNN",
+    "hi": "kNN"
+   },
+   "d": {
+    "en": "k-Nearest Neighbours; classifies by the majority class of the k most similar examples.",
+    "hi": "k-Nearest Neighbours; k सबसे मिलते-जुलते उदाहरणों की बहुमत class से वर्गीकरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Decision tree",
+    "hi": "Decision tree"
+   },
+   "d": {
+    "en": "A model that classifies through a series of if–then questions on features.",
+    "hi": "Features पर if–then प्रश्नों की श्रृंखला से वर्गीकरण करने वाला model।"
+   }
+  },
+  {
+   "t": {
+    "en": "Naive Bayes",
+    "hi": "Naive Bayes"
+   },
+   "d": {
+    "en": "A probability-based classifier that assumes features are independent.",
+    "hi": "Probability-आधारित classifier जो features को स्वतंत्र मानता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Cross-validation",
+    "hi": "Cross-validation"
+   },
+   "d": {
+    "en": "Testing by splitting data into k folds and rotating which fold is the test set; also called rotation estimation.",
+    "hi": "डेटा को k folds में बाँटकर बारी-बारी से हर fold को test set बनाकर जाँच; इसे rotation estimation भी कहते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Leave-one-out",
+    "hi": "Leave-one-out"
+   },
+   "d": {
+    "en": "Cross-validation with k = N, testing one row at a time.",
+    "hi": "k = N वाला cross-validation, एक बार में एक row की जाँच।"
+   }
+  },
+  {
+   "t": {
+    "en": "Train–test split",
+    "hi": "Train–test split"
+   },
+   "d": {
+    "en": "Dividing data into a training part and a separate test part.",
+    "hi": "डेटा को training हिस्से और अलग test हिस्से में बाँटना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Confusion matrix",
+    "hi": "Confusion matrix"
+   },
+   "d": {
+    "en": "Table of actual vs predicted classes; shows TP, FP, FN, TN.",
+    "hi": "वास्तविक बनाम अनुमानित classes की तालिका; TP, FP, FN, TN दिखाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification accuracy (CA)",
+    "hi": "Classification accuracy (CA)"
+   },
+   "d": {
+    "en": "(TP + TN) ÷ total predictions.",
+    "hi": "(TP + TN) ÷ कुल predictions।"
+   }
+  },
+  {
+   "t": {
+    "en": "Precision",
+    "hi": "Precision"
+   },
+   "d": {
+    "en": "TP ÷ (TP + FP): how many predicted positives are correct.",
+    "hi": "TP ÷ (TP + FP): अनुमानित positives में से कितने सही।"
+   }
+  },
+  {
+   "t": {
+    "en": "Recall",
+    "hi": "Recall"
+   },
+   "d": {
+    "en": "TP ÷ (TP + FN): how many actual positives are found.",
+    "hi": "TP ÷ (TP + FN): वास्तविक positives में से कितने पकड़े गए।"
+   }
+  },
+  {
+   "t": {
+    "en": "F1 score",
+    "hi": "F1 score"
+   },
+   "d": {
+    "en": "Harmonic mean of precision and recall.",
+    "hi": "Precision और recall का harmonic mean।"
+   }
+  },
+  {
+   "t": {
+    "en": "AUC",
+    "hi": "AUC"
+   },
+   "d": {
+    "en": "Area under the ROC curve; 1 is perfect, 0.5 is random.",
+    "hi": "ROC curve के नीचे का क्षेत्रफल; 1 पूर्ण, 0.5 अंदाज़ा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Image embedding",
+    "hi": "Image embedding"
+   },
+   "d": {
+    "en": "Numeric feature vector for an image produced by a pre-trained deep network.",
+    "hi": "पहले से प्रशिक्षित deep network द्वारा तस्वीर के लिए बनाया संख्यात्मक feature vector।"
+   }
+  },
+  {
+   "t": {
+    "en": "Embedder",
+    "hi": "Embedder"
+   },
+   "d": {
+    "en": "The network used for embedding, e.g. SqueezeNet (local), Inception v3, VGG (server).",
+    "hi": "Embedding के लिए प्रयुक्त network, जैसे SqueezeNet (local), Inception v3, VGG (server)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Distances",
+    "hi": "Distances"
+   },
+   "d": {
+    "en": "Widget that measures how different each pair of items is.",
+    "hi": "Widget जो मापता है कि हर दो वस्तुओं में कितना अंतर है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hierarchical clustering",
+    "hi": "Hierarchical clustering"
+   },
+   "d": {
+    "en": "Groups the most similar items step by step, shown as a dendrogram (tree).",
+    "hi": "सबसे मिलती-जुलती वस्तुओं को कदम-दर-कदम समूहित करना, dendrogram (पेड़) के रूप में।"
+   }
+  },
+  {
+   "t": {
+    "en": "Corpus",
+    "hi": "Corpus"
+   },
+   "d": {
+    "en": "A collection of text documents.",
+    "hi": "पाठ documents का संग्रह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Tokenisation",
+    "hi": "Tokenisation"
+   },
+   "d": {
+    "en": "Splitting text into tokens (usually words).",
+    "hi": "पाठ को tokens (आम तौर पर शब्दों) में तोड़ना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stop words",
+    "hi": "Stop words"
+   },
+   "d": {
+    "en": "Very common, low-meaning words removed before analysis.",
+    "hi": "बहुत आम, कम अर्थ वाले शब्द जो विश्लेषण से पहले हटाए जाते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bag of Words",
+    "hi": "Bag of Words"
+   },
+   "d": {
+    "en": "Representing text by counts of each word, ignoring word order.",
+    "hi": "शब्दों के क्रम को छोड़कर, हर शब्द की गिनती से पाठ का प्रतिनिधित्व।"
+   }
+  },
+  {
+   "t": {
+    "en": "Word cloud",
+    "hi": "Word cloud"
+   },
+   "d": {
+    "en": "Picture of words sized by how often they occur.",
+    "hi": "शब्दों का चित्र जिसमें आकार उनकी आवृत्ति के अनुसार होता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Orange was developed at:\n(a) IIT Delhi (b) University of Ljubljana, Slovenia (c) MIT, USA (d) University of Oxford",
+    "hi": "MCQ: Orange कहाँ विकसित किया गया?\n(a) IIT Delhi (b) University of Ljubljana, Slovenia (c) MIT, USA (d) University of Oxford"
+   },
+   "a": {
+    "en": "(b) University of Ljubljana, Slovenia.",
+    "hi": "(b) University of Ljubljana, Slovenia।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The lines that connect widgets on the canvas are called:\n(a) nodes (b) links/channels (c) folds (d) tokens",
+    "hi": "MCQ: Canvas पर widgets को जोड़ने वाली रेखाएँ कहलाती हैं:\n(a) nodes (b) links/channels (c) folds (d) tokens"
+   },
+   "a": {
+    "en": "(b) links/channels.",
+    "hi": "(b) links/channels।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which widget shows accuracy, precision, recall and F1 for several models?\n(a) Data Table (b) Scatter Plot (c) Test and Score (d) Word Cloud",
+    "hi": "MCQ: कौन-सा widget कई models के लिए accuracy, precision, recall और F1 दिखाता है?\n(a) Data Table (b) Scatter Plot (c) Test and Score (d) Word Cloud"
+   },
+   "a": {
+    "en": "(c) Test and Score.",
+    "hi": "(c) Test and Score।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which widget converts images into numeric features?\n(a) Image Viewer (b) Image Embedding (c) Distances (d) Corpus",
+    "hi": "MCQ: कौन-सा widget तस्वीरों को संख्यात्मक features में बदलता है?\n(a) Image Viewer (b) Image Embedding (c) Distances (d) Corpus"
+   },
+   "a": {
+    "en": "(b) Image Embedding.",
+    "hi": "(b) Image Embedding।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In which widget category is k-Means found?\n(a) Model (b) Evaluate (c) Unsupervised (d) Data",
+    "hi": "MCQ: k-Means किस widget श्रेणी में है?\n(a) Model (b) Evaluate (c) Unsupervised (d) Data"
+   },
+   "a": {
+    "en": "(c) Unsupervised.",
+    "hi": "(c) Unsupervised।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A collection of text documents is called a ______.",
+    "hi": "रिक्त स्थान भरें: पाठ documents के संग्रह को ______ कहते हैं।"
+   },
+   "a": {
+    "en": "Corpus.",
+    "hi": "Corpus।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: Orange workflows are saved with the file extension ______.",
+    "hi": "रिक्त स्थान भरें: Orange workflows ______ extension से सहेजे जाते हैं।"
+   },
+   "a": {
+    "en": ".ows",
+    "hi": ".ows"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: In a word cloud, more frequent words appear larger.",
+    "hi": "सही या गलत: Word cloud में अधिक बार आने वाले शब्द बड़े दिखते हैं।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: When k equals the number of rows N, k-fold cross-validation becomes leave-one-out.",
+    "hi": "सही या गलत: जब k, rows की संख्या N के बराबर हो, तो k-fold cross-validation leave-one-out बन जाता है।"
+   },
+   "a": {
+    "en": "True.",
+    "hi": "सही।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Define data mining and list any four data-mining tasks with an example of each.",
+    "hi": "Data mining की परिभाषा दीजिए और किन्हीं चार data-mining कार्यों को एक-एक उदाहरण सहित लिखिए।"
+   },
+   "a": {
+    "en": "Data mining is discovering useful patterns, trends and anomalies in large data to support decisions.\nClassification: flag a UPI transaction as fraud or genuine.\nClustering: group customers by buying habits.\nAssociation: bread buyers often buy butter.\nAnomaly detection: spot an unusually large withdrawal.",
+    "hi": "Data mining निर्णयों में सहायता के लिए बड़े डेटा में उपयोगी पैटर्न, रुझान और असामान्यताएँ खोजना है।\nClassification: UPI लेन-देन को धोखाधड़ी या असली बताना।\nClustering: खरीदारी की आदतों से ग्राहकों के समूह।\nAssociation: ब्रेड खरीदने वाले अक्सर मक्खन भी खरीदते हैं।\nAnomaly detection: असामान्य रूप से बड़ी निकासी पकड़ना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the six default widget categories of Orange and give two widgets of each.",
+    "hi": "Orange की छह default widget श्रेणियों के नाम और हर एक के दो widgets लिखिए।"
+   },
+   "a": {
+    "en": "Data: File, Data Table. Transform: Preprocess, Discretize. Visualize: Scatter Plot, Box Plot. Model: kNN, Tree. Evaluate: Test and Score, Confusion Matrix. Unsupervised: Hierarchical Clustering, k-Means.",
+    "hi": "Data: File, Data Table। Transform: Preprocess, Discretize। Visualize: Scatter Plot, Box Plot। Model: kNN, Tree। Evaluate: Test and Score, Confusion Matrix। Unsupervised: Hierarchical Clustering, k-Means।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List four beneficiaries of Orange and say how each benefits.",
+    "hi": "Orange के चार लाभार्थी बताइए और हर एक को कैसे लाभ होता है।"
+   },
+   "a": {
+    "en": "Students: learn ML visually without coding. Teachers: demonstrate and share workflows. Researchers: try many models quickly on their data. Domain experts (doctors, business managers): analyse their own data and communicate with data scientists.",
+    "hi": "छात्र: बिना coding के visually ML सीखते हैं। शिक्षक: workflows दिखाते और साझा करते हैं। शोधकर्ता: अपने डेटा पर जल्दी कई models आज़माते हैं। क्षेत्र विशेषज्ञ (डॉक्टर, business managers): अपना डेटा खुद विश्लेषित करते हैं और data scientists से संवाद करते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A model's confusion matrix for 'pass/fail' prediction is: TP = 30, FP = 6, FN = 4, TN = 60. Calculate accuracy, precision and recall.",
+    "hi": "'पास/फ़ेल' अनुमान के एक model का confusion matrix है: TP = 30, FP = 6, FN = 4, TN = 60। Accuracy, precision और recall गणना कीजिए।"
+   },
+   "a": {
+    "en": "Total = 100.\nAccuracy = (30 + 60) ÷ 100 = 0.90.\nPrecision = 30 ÷ (30 + 6) = 0.833.\nRecall = 30 ÷ (30 + 4) = 0.882.",
+    "hi": "कुल = 100।\nAccuracy = (30 + 60) ÷ 100 = 0.90।\nPrecision = 30 ÷ (30 + 6) = 0.833।\nRecall = 30 ÷ (30 + 4) = 0.882।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the difference between 'cross validation' and 'test on train data' in Test and Score. Which should you report and why?",
+    "hi": "Test and Score में 'cross validation' और 'test on train data' का अंतर समझाइए। आपको कौन-सा बताना चाहिए और क्यों?"
+   },
+   "a": {
+    "en": "Cross-validation tests each row with a model that did not see that row during training, so it estimates performance on new data. Test on train data checks the model on the same data it learnt, which gives over-optimistic scores. Report cross-validation (or a separate test set) because it reflects real-world performance.",
+    "hi": "Cross-validation हर row को ऐसे model से test करता है जिसने training में वह row नहीं देखी, इसलिए यह नए डेटा पर प्रदर्शन का अनुमान देता है। Test on train data model को उसी डेटा पर जाँचता है जिससे उसने सीखा, जिससे बहुत अच्छे (भ्रामक) scores आते हैं। Cross-validation (या अलग test set) बताएँ क्योंकि वह वास्तविक प्रदर्शन दिखाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Image Embedding is needed before classifying images in Orange.\nReason (R): Model widgets work on numeric feature tables, and Image Embedding turns each image into a feature vector.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): Orange में तस्वीरों के वर्गीकरण से पहले Image Embedding ज़रूरी है।\nकारण (R): Model widgets संख्यात्मक feature तालिकाओं पर काम करते हैं, और Image Embedding हर तस्वीर को feature vector में बदलता है।\n(a) दोनों सही, R व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R गलत (d) A गलत, R सही"
+   },
+   "a": {
+    "en": "(a) Both true; R explains A.",
+    "hi": "(a) दोनों सही; R, A की व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Stop words are usually removed before making a word cloud.\nReason (R): Stop words are the most meaningful words in a text.\nChoose (a)–(d).",
+    "hi": "अभिकथन (A): Word cloud बनाने से पहले आम तौर पर stop words हटाए जाते हैं।\nकारण (R): Stop words पाठ के सबसे अर्थपूर्ण शब्द होते हैं।\n(a)–(d) चुनें।"
+   },
+   "a": {
+    "en": "(c) A is true but R is false: stop words are very common words that carry little meaning, which is why they are removed.",
+    "hi": "(c) A सही पर R गलत: stop words बहुत आम शब्द हैं जिनका अर्थ कम होता है, इसीलिए हटाए जाते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In the Iris scatter plot of petal length vs petal width, which species is easiest to separate and which two overlap? What does this predict about the confusion matrix?",
+    "hi": "Iris के petal length बनाम petal width scatter plot में कौन-सी प्रजाति अलग करना सबसे आसान है और कौन-सी दो overlap करती हैं? इससे confusion matrix के बारे में क्या अनुमान लगता है?"
+   },
+   "a": {
+    "en": "Setosa is easiest (a separate cluster of small petals). Versicolor and virginica overlap slightly. So the confusion matrix will show setosa fully correct and the few errors between versicolor and virginica.",
+    "hi": "Setosa सबसे आसान है (छोटी पंखुड़ियों का अलग समूह)। Versicolor और virginica में थोड़ा overlap है। इसलिए confusion matrix में setosa पूरी तरह सही और कुछ गलतियाँ versicolor और virginica के बीच दिखेंगी।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Describe, step by step, the Orange workflow to compare kNN, Tree and Naive Bayes on the Iris dataset and inspect the misclassified flowers.",
+    "hi": "Iris dataset पर kNN, Tree और Naive Bayes की तुलना करने और गलत वर्गीकृत फूल देखने का Orange workflow चरणवार बताइए।"
+   },
+   "a": {
+    "en": "1. File widget: load iris.tab; check 'iris' is the target.\n2. Add kNN, Tree and Naive Bayes widgets.\n3. Connect File → Test and Score (Data) and each learner → Test and Score.\n4. In Test and Score choose Cross validation, 10 folds; compare CA, AUC, F1, Precision, Recall.\n5. Connect Test and Score → Confusion Matrix; choose a learner on the left.\n6. Click the off-diagonal cells (errors) and connect Confusion Matrix → Data Table to see those flowers.\n7. Write the conclusion: which learner scored best, and that errors are mainly between versicolor and virginica.",
+    "hi": "1. File widget: iris.tab load करें; देखें कि 'iris' target है।\n2. kNN, Tree और Naive Bayes widgets जोड़ें।\n3. File → Test and Score (Data) और हर learner → Test and Score जोड़ें।\n4. Test and Score में Cross validation, 10 folds चुनें; CA, AUC, F1, Precision, Recall की तुलना करें।\n5. Test and Score → Confusion Matrix जोड़ें; बाईं ओर एक learner चुनें।\n6. विकर्ण से बाहर के खानों (गलतियों) पर click करके Confusion Matrix → Data Table जोड़ें ताकि वे फूल दिखें।\n7. निष्कर्ष लिखें: किस learner का score सबसे अच्छा रहा, और गलतियाँ मुख्यतः versicolor और virginica के बीच हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A farmers' cooperative has 300 photos of tomato leaves in three folders: healthy, early_blight, leaf_curl. Design an Orange workflow to build and evaluate a classifier, and name two ways to improve accuracy.",
+    "hi": "केस अध्ययन: एक किसान सहकारी समिति के पास टमाटर की पत्तियों की 300 फ़ोटो तीन folders में हैं: healthy, early_blight, leaf_curl। Classifier बनाने और उसका मूल्यांकन करने का Orange workflow बनाइए, और accuracy सुधारने के दो उपाय बताइए।"
+   },
+   "a": {
+    "en": "Workflow: Import Images (parent folder; sub-folder names become classes) → Image Embedding (e.g. Inception v3, or SqueezeNet offline) → Test and Score with Logistic Regression and kNN learners (10-fold cross-validation) → Confusion Matrix → Image Viewer (to see wrong images). Use the best model with Predictions on new photos.\nImprovements: add more photos per class taken in different light and angles; remove blurred or wrong-folder images; balance the number of images per class; try another embedder or learner.",
+    "hi": "Workflow: Import Images (मुख्य folder; sub-folders के नाम classes बनते हैं) → Image Embedding (जैसे Inception v3, या offline SqueezeNet) → Logistic Regression और kNN learners के साथ Test and Score (10-fold cross-validation) → Confusion Matrix → Image Viewer (गलत तस्वीरें देखने के लिए)। सबसे अच्छे model को Predictions के साथ नई फ़ोटो पर लगाएँ।\nसुधार: हर class में अलग रोशनी और कोणों से ली गई अधिक फ़ोटो जोड़ें; धुंधली या गलत folder वाली तस्वीरें हटाएँ; हर class में तस्वीरों की संख्या संतुलित करें; दूसरा embedder या learner आज़माएँ।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: Your school collected 200 feedback comments about the annual fest. Explain how you would use Orange to find the most common topics and the overall mood.",
+    "hi": "केस अध्ययन: आपके स्कूल ने वार्षिक उत्सव के बारे में 200 feedback टिप्पणियाँ इकट्ठी कीं। बताइए कि सबसे आम विषय और कुल मनोदशा जानने के लिए आप Orange का उपयोग कैसे करेंगे।"
+   },
+   "a": {
+    "en": "1. Put comments in a CSV column and load with Corpus.\n2. Preprocess Text: lowercase, tokenise, remove punctuation, numbers and stop words.\n3. Word Cloud: see the most frequent words (e.g. 'food', 'music', 'queue').\n4. Bag of Words → Data Table for exact counts.\n5. Sentiment Analysis → Data Table or Box Plot to see how many comments are positive or negative.\n6. Read a few comments behind the biggest words to confirm the meaning, then report findings to the organisers.",
+    "hi": "1. टिप्पणियाँ CSV column में रखें और Corpus से load करें।\n2. Preprocess Text: lowercase, tokenise, विराम चिह्न, संख्याएँ और stop words हटाएँ।\n3. Word Cloud: सबसे आम शब्द देखें (जैसे 'food', 'music', 'queue')।\n4. सटीक गिनती के लिए Bag of Words → Data Table।\n5. कितनी टिप्पणियाँ सकारात्मक या नकारात्मक हैं, यह देखने के लिए Sentiment Analysis → Data Table या Box Plot।\n6. अर्थ की पुष्टि के लिए सबसे बड़े शब्दों वाली कुछ टिप्पणियाँ पढ़ें, फिर आयोजकों को निष्कर्ष बताएँ।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain the components of Orange (canvas, widgets, links, workflow) and describe how data flows in the workflow File → Scatter Plot → Data Table.",
+    "hi": "दीर्घ उत्तर: Orange के घटक (canvas, widgets, links, workflow) समझाइए और workflow File → Scatter Plot → Data Table में डेटा कैसे बहता है, बताइए।"
+   },
+   "a": {
+    "en": "Canvas: the work area. Widgets: blocks that each do one task, with inputs on the left and outputs on the right. Links: lines that carry signals such as Data or Selected Data from an output to an input. Workflow: the full chain.\nFlow: File reads the dataset and sends Data to Scatter Plot. Scatter Plot draws the points; when you select some points, it sends only those rows on its Selected Data output to Data Table, which displays them. Changing the file or the selection updates everything downstream automatically.",
+    "hi": "Canvas: कार्य-क्षेत्र। Widgets: blocks जो हर एक एक काम करते हैं, बाईं ओर inputs और दाईं ओर outputs के साथ। Links: रेखाएँ जो Data या Selected Data जैसे signals output से input तक ले जाती हैं। Workflow: पूरी श्रृंखला।\nप्रवाह: File dataset पढ़कर Data को Scatter Plot तक भेजता है। Scatter Plot बिंदु बनाता है; जब आप कुछ बिंदु चुनते हैं, तो वह केवल वे rows अपने Selected Data output से Data Table को भेजता है, जो उन्हें दिखाता है। फ़ाइल या चयन बदलने पर आगे का सब कुछ अपने आप अपडेट हो जाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Two models on a dataset with 95 'genuine' and 5 'fraud' transactions: Model A predicts 'genuine' for everything; Model B catches 4 of the 5 frauds but marks 6 genuine ones as fraud. Which has higher accuracy, and which would a bank prefer? Use recall to explain.",
+    "hi": "विचार प्रश्न: 95 'असली' और 5 'धोखाधड़ी' लेन-देन वाले dataset पर दो models: Model A सबके लिए 'असली' बताता है; Model B 5 में से 4 धोखाधड़ी पकड़ता है पर 6 असली को धोखाधड़ी बताता है। किसकी accuracy अधिक है, और बैंक किसे पसंद करेगा? Recall से समझाइए।"
+   },
+   "a": {
+    "en": "Model A: accuracy = 95 ÷ 100 = 0.95, but recall for fraud = 0 ÷ 5 = 0 (it catches no fraud).\nModel B: correct = 4 frauds + 89 genuine = 93, accuracy = 0.93; recall for fraud = 4 ÷ 5 = 0.8.\nA has higher accuracy but is useless for finding fraud; the bank prefers B. This is why accuracy alone can mislead when classes are unequal.",
+    "hi": "Model A: accuracy = 95 ÷ 100 = 0.95, पर धोखाधड़ी का recall = 0 ÷ 5 = 0 (कोई धोखाधड़ी नहीं पकड़ता)।\nModel B: सही = 4 धोखाधड़ी + 89 असली = 93, accuracy = 0.93; धोखाधड़ी का recall = 4 ÷ 5 = 0.8।\nA की accuracy अधिक है पर धोखाधड़ी पकड़ने में बेकार है; बैंक B को पसंद करेगा। इसीलिए असमान classes में केवल accuracy भ्रामक हो सकती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity: Use the Paint Data widget to draw two groups of points, then connect Paint Data → kNN and Paint Data → Test and Score. Change k from 1 to 15 and record the accuracy. What do you notice?",
+    "hi": "गतिविधि: Paint Data widget से बिंदुओं के दो समूह बनाइए, फिर Paint Data → kNN और Paint Data → Test and Score जोड़िए। k को 1 से 15 तक बदलकर accuracy लिखिए। आप क्या देखते हैं?"
+   },
+   "a": {
+    "en": "Expected: when the groups are well separated, accuracy stays high for most k. If you paint overlapping or noisy points, a very small k (1) follows noise and can lose accuracy, while a very large k smooths too much and can also drop. A middle value often works best—this is choosing a hyperparameter by evaluation.",
+    "hi": "अपेक्षित: जब समूह अच्छी तरह अलग हों, तो ज़्यादातर k पर accuracy ऊँची रहती है। अगर आप overlap वाले या बिखरे बिंदु बनाएँ, तो बहुत छोटा k (1) noise का पीछा करता है और accuracy घट सकती है, जबकि बहुत बड़ा k बहुत अधिक smooth कर देता है और accuracy फिर घट सकती है। बीच का मान अक्सर सबसे अच्छा रहता है—यही मूल्यांकन द्वारा hyperparameter चुनना है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Data mining discovers useful patterns, trends, relationships and anomalies in large data; tasks include classification, prediction, clustering, association and anomaly detection.",
+   "Orange is a free, open-source visual-programming tool for data mining, ML and visualisation, developed at the University of Ljubljana and written in Python.",
+   "Beneficiaries include students, teachers, researchers, data scientists, domain experts and organisations.",
+   "Install from orangedatamining.com; add Image Analytics and Text add-ons from Options → Add-ons.",
+   "Components: canvas (work area), widgets (task blocks with inputs and outputs), links/channels (carry signals) and workflows (.ows files).",
+   "Default widget categories: Data, Transform, Visualize, Model, Evaluate, Unsupervised.",
+   "In File, set the class column as target and name/ID columns as meta or skip.",
+   "Iris (150 flowers, 3 species, 4 measurements): petal measurements separate species best; setosa is easiest.",
+   "Learners such as kNN, Tree and Naive Bayes are compared with Test and Score using cross-validation, random sampling or leave-one-out.",
+   "Scores: CA = (TP+TN)/total, Precision = TP/(TP+FP), Recall = TP/(TP+FN), F1, AUC and MCC; the confusion matrix shows where errors occur.",
+   "Computer vision in Orange: Import Images → Image Embedding → Distances → Hierarchical Clustering → Image Viewer, or embedding → Test and Score for classification.",
+   "NLP in Orange: Corpus → Preprocess Text → Bag of Words / Word Cloud / Sentiment Analysis.",
+   "The unit is assessed practically: keep at least three Orange activities with step-wise screenshots in the practical file."
+  ],
+  "hi": [
+   "Data mining बड़े डेटा में उपयोगी पैटर्न, रुझान, संबंध और असामान्यताएँ खोजता है; इसके कार्यों में classification, prediction, clustering, association और anomaly detection हैं।",
+   "Orange data mining, ML और visualisation के लिए मुफ़्त, open-source visual-programming tool है, जो University of Ljubljana में विकसित हुआ और Python में लिखा गया है।",
+   "लाभार्थियों में छात्र, शिक्षक, शोधकर्ता, data scientists, क्षेत्र विशेषज्ञ और संगठन हैं।",
+   "orangedatamining.com से install करें; Options → Add-ons से Image Analytics और Text add-ons जोड़ें।",
+   "घटक: canvas (कार्य-क्षेत्र), widgets (inputs और outputs वाले कार्य blocks), links/channels (signals ले जाते हैं) और workflows (.ows फ़ाइलें)।",
+   "Default widget श्रेणियाँ: Data, Transform, Visualize, Model, Evaluate, Unsupervised।",
+   "File में class column को target और नाम/ID columns को meta या skip रखें।",
+   "Iris (150 फूल, 3 प्रजातियाँ, 4 माप): petal के माप प्रजातियाँ सबसे अच्छी तरह अलग करते हैं; setosa सबसे आसान है।",
+   "kNN, Tree और Naive Bayes जैसे learners की तुलना Test and Score में cross-validation, random sampling या leave-one-out से होती है।",
+   "Scores: CA = (TP+TN)/कुल, Precision = TP/(TP+FP), Recall = TP/(TP+FN), F1, AUC और MCC; confusion matrix दिखाता है कि गलतियाँ कहाँ हैं।",
+   "Orange में computer vision: Import Images → Image Embedding → Distances → Hierarchical Clustering → Image Viewer, या वर्गीकरण के लिए embedding → Test and Score।",
+   "Orange में NLP: Corpus → Preprocess Text → Bag of Words / Word Cloud / Sentiment Analysis।",
+   "इकाई का मूल्यांकन प्रायोगिक है: practical file में चरणवार screenshots के साथ कम से कम तीन Orange गतिविधियाँ रखें।"
+  ]
+ }
+}
