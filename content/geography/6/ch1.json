@@ -1,0 +1,1864 @@
+{
+ "v": 1,
+ "sub": "geography",
+ "lv": "6",
+ "id": "ch1",
+ "intro": {
+  "en": "This chapter teaches how to read maps and how to find the exact location of any place on the Earth. You will learn the three components of a map (distance, direction, symbols), how the globe is covered by a grid of latitudes and longitudes, and how longitude decides local time, standard time, time zones and the International Date Line. You will also learn about India's own ancient prime meridian at Ujjain.",
+  "hi": "यह अध्याय सिखाता है कि मानचित्र कैसे पढ़ें और पृथ्वी पर किसी भी स्थान की ठीक-ठीक स्थिति कैसे ज्ञात करें। आप मानचित्र के तीन घटक (दूरी, दिशा, प्रतीक) सीखेंगे, यह समझेंगे कि ग्लोब पर अक्षांश और देशांतर का ग्रिड कैसे बना है, और देशांतर कैसे स्थानीय समय, मानक समय, समय क्षेत्र और अंतरराष्ट्रीय तिथि रेखा तय करता है। आप उज्जैन से गुज़रने वाले भारत के अपने प्राचीन प्रधान याम्योत्तर के बारे में भी जानेंगे।"
+ },
+ "learn": {
+  "en": [
+   "What a map and an atlas are, and the three kinds of maps: physical, political and thematic",
+   "How to use a map's scale to find real distances",
+   "The four cardinal and four intermediate directions",
+   "Why maps use symbols and colours, and the Survey of India symbols",
+   "Why a globe represents the Earth better than a flat map",
+   "The idea of coordinates (market rows, chessboard)",
+   "Latitude, the Equator, parallels, hemispheres and climate belts",
+   "Longitude, meridians, the Prime Meridian at Greenwich and the grid",
+   "India's ancient prime meridian (madhya rekha) through Ujjain",
+   "How to calculate local time from longitude (15° = 1 hour, 1° = 4 minutes)",
+   "Standard time, IST, GMT and time zones",
+   "The International Date Line and how the date changes across it"
+  ],
+  "hi": [
+   "मानचित्र और एटलस क्या हैं, और मानचित्र के तीन प्रकार: भौतिक, राजनीतिक और विषयगत",
+   "मानचित्र की मापनी से वास्तविक दूरी कैसे निकालें",
+   "चार प्रधान और चार मध्यवर्ती दिशाएँ",
+   "मानचित्र प्रतीक और रंग क्यों उपयोग करते हैं, और भारतीय सर्वेक्षण विभाग के प्रतीक",
+   "ग्लोब पृथ्वी को समतल मानचित्र से बेहतर क्यों दर्शाता है",
+   "निर्देशांक का विचार (बाज़ार की पंक्तियाँ, शतरंज की बिसात)",
+   "अक्षांश, विषुवत वृत्त, अक्षांश रेखाएँ, गोलार्ध और जलवायु पेटियाँ",
+   "देशांतर, देशांतर रेखाएँ, ग्रीनविच का प्रधान याम्योत्तर और ग्रिड",
+   "उज्जैन से गुज़रने वाला भारत का प्राचीन प्रधान याम्योत्तर (मध्य रेखा)",
+   "देशांतर से स्थानीय समय की गणना (15° = 1 घंटा, 1° = 4 मिनट)",
+   "मानक समय, IST, GMT और समय क्षेत्र",
+   "अंतरराष्ट्रीय तिथि रेखा और उसे पार करने पर तारीख़ कैसे बदलती है"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "1.1 Introduction: Why do we need maps?",
+    "hi": "1.1 परिचय: हमें मानचित्र की आवश्यकता क्यों है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The chapter opens with a line from the great Indian astronomer Aryabhata (about 500 CE). In his words, the globe of the Earth stands in space, it is made of water, earth, fire and air, it is spherical (round like a ball), and it is surrounded by creatures living on land and in water. So, about 1,500 years ago, Indian scholars already knew that the Earth is round and hangs in space.",
+      "hi": "अध्याय की शुरुआत महान भारतीय खगोलशास्त्री आर्यभट (लगभग 500 ईसवी) के एक कथन से होती है। उनके अनुसार पृथ्वी का गोला अंतरिक्ष में स्थित है, यह जल, पृथ्वी, अग्नि और वायु से बना है, यह गोलाकार (गेंद की तरह) है और इसके चारों ओर थल और जल में रहने वाले जीव हैं। अर्थात लगभग 1,500 वर्ष पहले ही भारतीय विद्वान जानते थे कि पृथ्वी गोल है और अंतरिक्ष में टिकी हुई है।"
+     }
+    },
+    {
+     "p": {
+      "en": "The Big Questions of this chapter are: (1) What is a map, how do we use it and what are its main components? (2) What are coordinates, and how can latitude and longitude be used to mark any location on the Earth? (3) How are local time and standard time related to longitude?",
+      "hi": "इस अध्याय के बड़े प्रश्न हैं: (1) मानचित्र क्या है, हम इसका उपयोग कैसे करते हैं और इसके मुख्य घटक कौन-से हैं? (2) निर्देशांक क्या होते हैं, और अक्षांश व देशांतर की सहायता से पृथ्वी पर किसी भी स्थान को कैसे चिह्नित किया जा सकता है? (3) स्थानीय समय और मानक समय का देशांतर से क्या संबंध है?"
+     }
+    },
+    {
+     "p": {
+      "en": "Imagine you reach a city for the very first time. How will you find the temple, the bank or your relative's house? You could ask a local person, or you could look at a map of the city. A map is like a treasure guide: it shows where things are and how to reach them.",
+      "hi": "कल्पना कीजिए कि आप पहली बार किसी शहर में पहुँचे हैं। आप मंदिर, बैंक या अपने रिश्तेदार का घर कैसे ढूँढेंगे? आप किसी स्थानीय व्यक्ति से पूछ सकते हैं, या शहर का मानचित्र देख सकते हैं। मानचित्र एक खजाने के नक्शे जैसा है: यह बताता है कि चीज़ें कहाँ हैं और उन तक कैसे पहुँचा जाए।"
+     }
+    },
+    {
+     "p": {
+      "en": "The book shows a map of an imaginary small city (Fig. 1.1). On it you can see a railway station, a bank, a market, a hospital, a school, a museum, a public garden, a Nagar Panchayat office, apartment blocks, roads, and blue patches that stand for water (a lake). In the top right corner there are four arrows showing directions. The book invites you to play a game: you have just got off the train and want to go to the bank. Which road will you take? Is there more than one way? From the bank, how will you go to the market? Answering such questions is exactly what a map helps us do.",
+      "hi": "पुस्तक में एक काल्पनिक छोटे शहर का मानचित्र (चित्र 1.1) दिया गया है। इसमें रेलवे स्टेशन, बैंक, बाज़ार, अस्पताल, विद्यालय, संग्रहालय, सार्वजनिक उद्यान, नगर पंचायत कार्यालय, अपार्टमेंट भवन, सड़कें और नीले रंग के भाग (जो जल यानी झील को दर्शाते हैं) दिखते हैं। ऊपर दाएँ कोने में दिशाएँ बताने वाले चार तीर हैं। पुस्तक एक खेल खेलने को कहती है: आप अभी ट्रेन से उतरे हैं और बैंक जाना चाहते हैं। आप कौन-सी सड़क लेंगे? क्या एक से अधिक रास्ते हैं? बैंक से बाज़ार कैसे जाएँगे? ऐसे प्रश्नों के उत्तर देने में ही मानचित्र हमारी सहायता करता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Let's explore (activity): On the city map, (1) find and mark the hospital, (2) say what the blue areas mean (water bodies such as a lake), and (3) decide which is farthest from the railway station: the school, the Nagar Panchayat or the public garden (measure the straight distance with a ruler and compare). Then, in groups of 3 or 4, draw a map of your school, the roads leading to it and a few nearby buildings. Compare all the groups' maps: you will notice that each group chose different details and sizes, which shows why fixed rules (scale, direction, symbols) are needed.",
+      "hi": "आइए खोजें (गतिविधि): शहर के मानचित्र पर (1) अस्पताल ढूँढकर चिह्नित कीजिए, (2) बताइए कि नीले भाग का क्या अर्थ है (झील जैसे जलाशय), और (3) तय कीजिए कि रेलवे स्टेशन से सबसे दूर कौन है: विद्यालय, नगर पंचायत या सार्वजनिक उद्यान (रूलर से सीधी दूरी नापकर तुलना कीजिए)। फिर 3 या 4 विद्यार्थियों के समूह बनाकर अपने विद्यालय, उस तक आने वाली सड़कों और आसपास के कुछ भवनों का मानचित्र बनाइए। सभी समूहों के मानचित्रों की तुलना कीजिए: आप देखेंगे कि हर समूह ने अलग-अलग विवरण और आकार चुने, इससे पता चलता है कि निश्चित नियमों (मापनी, दिशा, प्रतीक) की ज़रूरत क्यों है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.2 A Map and Its Components",
+    "hi": "1.2 मानचित्र और उसके घटक"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Map",
+       "hi": "मानचित्र"
+      },
+      "text": {
+       "en": "A map is a representation, or drawing, of an area of the Earth's surface on a flat surface such as paper. The area may be small (a village, a town), bigger (a district or a state) or very large (India or the whole world). On a map we see the land as if we were looking down at it from above.",
+       "hi": "मानचित्र पृथ्वी की सतह के किसी क्षेत्र का किसी समतल सतह (जैसे कागज़) पर बना निरूपण या चित्र है। यह क्षेत्र छोटा (गाँव, कस्बा), थोड़ा बड़ा (ज़िला या राज्य) या बहुत बड़ा (भारत या पूरा विश्व) हो सकता है। मानचित्र में हम ज़मीन को ऐसे देखते हैं मानो ऊपर से नीचे की ओर देख रहे हों।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Atlas",
+       "hi": "एटलस"
+      },
+      "text": {
+       "en": "An atlas is a book or collection of maps.",
+       "hi": "एटलस मानचित्रों की पुस्तक या मानचित्रों का संग्रह है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "There are several kinds of maps. The three main kinds named in the book are given below.",
+      "hi": "मानचित्र कई प्रकार के होते हैं। पुस्तक में बताए गए तीन मुख्य प्रकार नीचे दिए गए हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Kind of map",
+        "What it mainly shows",
+        "Example"
+       ],
+       "hi": [
+        "मानचित्र का प्रकार",
+        "मुख्य रूप से क्या दिखाता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Physical map",
+         "Natural features such as mountains, plateaus, plains, oceans and rivers",
+         "A physical map of India showing the Himalayas, the Ganga and the Deccan Plateau"
+        ],
+        [
+         "Political map",
+         "Countries, states, boundaries, capitals, cities, towns",
+         "A map of India with all its States, Union Territories and their capitals"
+        ],
+        [
+         "Thematic map",
+         "One specific kind of information (a theme)",
+         "Maps of rainfall, forests, crops, population or ancient sites"
+        ]
+       ],
+       "hi": [
+        [
+         "भौतिक मानचित्र",
+         "प्राकृतिक स्वरूप जैसे पर्वत, पठार, मैदान, महासागर और नदियाँ",
+         "हिमालय, गंगा और दक्कन का पठार दिखाने वाला भारत का भौतिक मानचित्र"
+        ],
+        [
+         "राजनीतिक मानचित्र",
+         "देश, राज्य, सीमाएँ, राजधानियाँ, नगर, कस्बे",
+         "सभी राज्यों, केंद्र शासित प्रदेशों और उनकी राजधानियों वाला भारत का मानचित्र"
+        ],
+        [
+         "विषयगत मानचित्र",
+         "किसी एक विशेष प्रकार की जानकारी (विषय)",
+         "वर्षा, वन, फसल, जनसंख्या या प्राचीन स्थलों के मानचित्र"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Every good map has three important components: distance, direction and symbols. You already used the first two when finding your way on the small city map. Let us study each one carefully.",
+      "hi": "हर अच्छे मानचित्र के तीन महत्वपूर्ण घटक होते हैं: दूरी, दिशा और प्रतीक। छोटे शहर के मानचित्र पर रास्ता ढूँढते समय आपने पहले दो का उपयोग कर लिया है। आइए हर एक को ध्यान से समझें।"
+     }
+    },
+    {
+     "p": {
+      "en": "Component 1: Distance and scale. How can a huge city, or the whole of India, fit on one sheet of paper? Everything is drawn smaller in a fixed ratio. This fixed ratio is called the scale. For example, on the small city map we may say that 1 cm on paper stands for 500 m on the ground. We write this as 1 cm = 500 m.",
+      "hi": "घटक 1: दूरी और मापनी। एक विशाल शहर, या पूरा भारत, कागज़ की एक शीट पर कैसे समा सकता है? हर चीज़ को एक निश्चित अनुपात में छोटा करके बनाया जाता है। इस निश्चित अनुपात को मापनी (स्केल) कहते हैं। उदाहरण के लिए, छोटे शहर के मानचित्र पर हम कह सकते हैं कि कागज़ पर 1 सेमी ज़मीन पर 500 मीटर को दर्शाता है। इसे 1 सेमी = 500 मी लिखते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Scale",
+       "hi": "मापनी (स्केल)"
+      },
+      "text": {
+       "en": "The scale of a map is the relation between a distance on the map and the real distance on the ground. Example: 1 cm = 500 m, or 2.5 cm = 500 km.",
+       "hi": "मानचित्र की मापनी, मानचित्र पर की दूरी और ज़मीन पर की वास्तविक दूरी के बीच का संबंध है। उदाहरण: 1 सेमी = 500 मी, या 2.5 सेमी = 500 किमी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "On the map of India in Chapter 5 of the textbook (Fig. 5.2), the scale is shown in the bottom left corner as a small ruler (a scale bar) with '500' written above it and 'km' beside it. The bar is 2.5 cm long in print, so 2.5 cm on that map means 500 km on the ground. This also means 1 cm = 200 km. So the real distance between two places depends on the scale of the map you are using.",
+      "hi": "पाठ्यपुस्तक के अध्याय 5 के भारत के मानचित्र (चित्र 5.2) में मापनी नीचे बाएँ कोने में एक छोटे रूलर (मापनी पट्टी) के रूप में दिखाई गई है, जिसके ऊपर '500' और बगल में 'किमी' लिखा है। छपे हुए मानचित्र में यह पट्टी 2.5 सेमी लंबी है, यानी उस मानचित्र पर 2.5 सेमी का अर्थ ज़मीन पर 500 किमी है। इसका मतलब 1 सेमी = 200 किमी भी है। इसलिए दो स्थानों के बीच की वास्तविक दूरी इस पर निर्भर करती है कि आप किस मापनी वाला मानचित्र उपयोग कर रहे हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Real distance = distance measured on the map × (ground distance shown by 1 unit on the map)",
+      "hi": "वास्तविक दूरी = मानचित्र पर नापी गई दूरी × (मानचित्र की 1 इकाई द्वारा दर्शाई गई ज़मीनी दूरी)"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "On the small city map the scale is 1 cm = 500 m. The railway station and the bank are 4 cm apart on the map. What is the real distance?",
+       "hi": "छोटे शहर के मानचित्र की मापनी 1 सेमी = 500 मी है। मानचित्र पर रेलवे स्टेशन और बैंक 4 सेमी दूर हैं। वास्तविक दूरी कितनी है?"
+      },
+      "a": {
+       "en": "Step 1: 1 cm on the map = 500 m on the ground.\nStep 2: 4 cm on the map = 4 × 500 m = 2,000 m.\nStep 3: 2,000 m = 2 km.\nAnswer: The bank is about 2 km from the station (in a straight line).",
+       "hi": "चरण 1: मानचित्र पर 1 सेमी = ज़मीन पर 500 मी।\nचरण 2: मानचित्र पर 4 सेमी = 4 × 500 मी = 2,000 मी।\nचरण 3: 2,000 मी = 2 किमी।\nउत्तर: बैंक स्टेशन से (सीधी रेखा में) लगभग 2 किमी दूर है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity from the book: A school playground is a rectangle 40 m long and 30 m wide. Draw it on a scale of 1 cm = 10 m. Then measure the diagonal and find its real length.",
+       "hi": "पुस्तक की गतिविधि: विद्यालय का खेल का मैदान 40 मी लंबा और 30 मी चौड़ा आयत है। इसे 1 सेमी = 10 मी की मापनी पर बनाइए। फिर विकर्ण नापकर उसकी वास्तविक लंबाई ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: Length on paper = 40 ÷ 10 = 4 cm; width on paper = 30 ÷ 10 = 3 cm. Draw a 4 cm × 3 cm rectangle with a ruler.\nStep 2: Join two opposite corners. When you measure this diagonal with a ruler you get 5 cm.\nStep 3: Real length = 5 × 10 m = 50 m.\nAnswer: The diagonal of the playground is 50 m long.",
+       "hi": "चरण 1: कागज़ पर लंबाई = 40 ÷ 10 = 4 सेमी; कागज़ पर चौड़ाई = 30 ÷ 10 = 3 सेमी। रूलर से 4 सेमी × 3 सेमी का आयत बनाइए।\nचरण 2: दो आमने-सामने के कोनों को मिलाइए। इस विकर्ण को रूलर से नापने पर 5 सेमी आता है।\nचरण 3: वास्तविक लंबाई = 5 × 10 मी = 50 मी।\nउत्तर: खेल के मैदान का विकर्ण 50 मी लंबा है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "On a map of India with the scale 2.5 cm = 500 km, two cities are 6 cm apart. How far apart are they really?",
+       "hi": "भारत के एक मानचित्र की मापनी 2.5 सेमी = 500 किमी है। उस पर दो शहर 6 सेमी दूर हैं। वास्तव में वे कितनी दूर हैं?"
+      },
+      "a": {
+       "en": "Step 1: 2.5 cm = 500 km, so 1 cm = 500 ÷ 2.5 = 200 km.\nStep 2: 6 cm = 6 × 200 km = 1,200 km.\nAnswer: About 1,200 km.",
+       "hi": "चरण 1: 2.5 सेमी = 500 किमी, इसलिए 1 सेमी = 500 ÷ 2.5 = 200 किमी।\nचरण 2: 6 सेमी = 6 × 200 किमी = 1,200 किमी।\nउत्तर: लगभग 1,200 किमी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Component 2: Direction. The four arrows on the city map point to the four main directions: north at the top, and then, moving clockwise, east, south and west. These four are called the cardinal directions or cardinal points. Between them are four intermediate directions: northeast (NE) between north and east, southeast (SE) between south and east, southwest (SW) between south and west, and northwest (NW) between north and west. Together they make eight directions. Most maps simply show one arrow marked 'N' that points to the north; once you know north, you can work out all the others.",
+      "hi": "घटक 2: दिशा। शहर के मानचित्र के चार तीर चार मुख्य दिशाएँ दिखाते हैं: ऊपर उत्तर, और फिर घड़ी की सुई की दिशा में चलते हुए पूर्व, दक्षिण और पश्चिम। इन चारों को प्रधान दिशाएँ (कार्डिनल दिशाएँ) कहते हैं। इनके बीच में चार मध्यवर्ती दिशाएँ हैं: उत्तर और पूर्व के बीच उत्तर-पूर्व (ईशान), दक्षिण और पूर्व के बीच दक्षिण-पूर्व (आग्नेय), दक्षिण और पश्चिम के बीच दक्षिण-पश्चिम (नैऋत्य), तथा उत्तर और पश्चिम के बीच उत्तर-पश्चिम (वायव्य)। सब मिलकर आठ दिशाएँ बनती हैं। अधिकांश मानचित्रों में केवल 'N' (उत्तर) लिखा एक तीर होता है जो उत्तर की ओर इशारा करता है; उत्तर जान लेने पर बाकी सभी दिशाएँ निकाली जा सकती हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Direction",
+        "Short form",
+        "Type"
+       ],
+       "hi": [
+        "दिशा",
+        "संक्षिप्त रूप",
+        "प्रकार"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "North",
+         "N",
+         "Cardinal"
+        ],
+        [
+         "East",
+         "E",
+         "Cardinal"
+        ],
+        [
+         "South",
+         "S",
+         "Cardinal"
+        ],
+        [
+         "West",
+         "W",
+         "Cardinal"
+        ],
+        [
+         "Northeast",
+         "NE",
+         "Intermediate"
+        ],
+        [
+         "Southeast",
+         "SE",
+         "Intermediate"
+        ],
+        [
+         "Southwest",
+         "SW",
+         "Intermediate"
+        ],
+        [
+         "Northwest",
+         "NW",
+         "Intermediate"
+        ]
+       ],
+       "hi": [
+        [
+         "उत्तर",
+         "उ (N)",
+         "प्रधान"
+        ],
+        [
+         "पूर्व",
+         "पू (E)",
+         "प्रधान"
+        ],
+        [
+         "दक्षिण",
+         "द (S)",
+         "प्रधान"
+        ],
+        [
+         "पश्चिम",
+         "प (W)",
+         "प्रधान"
+        ],
+        [
+         "उत्तर-पूर्व",
+         "उ-पू (NE)",
+         "मध्यवर्ती"
+        ],
+        [
+         "दक्षिण-पूर्व",
+         "द-पू (SE)",
+         "मध्यवर्ती"
+        ],
+        [
+         "दक्षिण-पश्चिम",
+         "द-प (SW)",
+         "मध्यवर्ती"
+        ],
+        [
+         "उत्तर-पश्चिम",
+         "उ-प (NW)",
+         "मध्यवर्ती"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: On a map, top = north, bottom = south, right = east, left = west (unless the north arrow points elsewhere). A handy trick: stand facing the rising Sun in the morning; you are facing east, west is behind you, north is on your left and south on your right.",
+      "hi": "याद रखिए: मानचित्र पर ऊपर = उत्तर, नीचे = दक्षिण, दाएँ = पूर्व, बाएँ = पश्चिम (जब तक उत्तर का तीर किसी और ओर न हो)। एक आसान तरीका: सुबह उगते सूर्य की ओर मुँह करके खड़े हो जाइए; आपका मुँह पूर्व की ओर है, पश्चिम आपके पीछे, उत्तर आपके बाएँ और दक्षिण आपके दाएँ है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity from the book (in our own words): On the city map, you are asked to check statements such as 'the market is north of the hospital' or 'the lake is northwest of the apartment blocks'. How do you check any such statement?",
+       "hi": "पुस्तक की गतिविधि (अपने शब्दों में): शहर के मानचित्र पर आपसे 'बाज़ार अस्पताल के उत्तर में है' या 'झील अपार्टमेंट भवनों के उत्तर-पश्चिम में है' जैसे कथन जाँचने को कहा गया है। ऐसा कोई भी कथन कैसे जाँचेंगे?"
+      },
+      "a": {
+       "en": "Step 1: Put your finger on the second place named (the reference place, for example the hospital).\nStep 2: Look at the north arrow and imagine the eight directions around your finger.\nStep 3: See where the first place (the market) lies. If it is towards the top of the map, it is north; towards top-left, northwest; towards bottom-right, southeast, and so on.\nStep 4: Mark the statement true if the direction matches, and false if it does not.",
+       "hi": "चरण 1: दूसरे बताए गए स्थान (संदर्भ स्थान, जैसे अस्पताल) पर उँगली रखिए।\nचरण 2: उत्तर का तीर देखिए और अपनी उँगली के चारों ओर आठों दिशाओं की कल्पना कीजिए।\nचरण 3: देखिए कि पहला स्थान (बाज़ार) कहाँ है। यदि वह मानचित्र के ऊपर की ओर है तो उत्तर; ऊपर-बाएँ हो तो उत्तर-पश्चिम; नीचे-दाएँ हो तो दक्षिण-पूर्व, इत्यादि।\nचरण 4: दिशा मेल खाए तो कथन सही, न खाए तो गलत लिखिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Component 3: Symbols. The small city map shows tiny drawings of buildings. But a map of a large city or a whole country has no room to draw every building, road and tree. So map makers use symbols: small signs, lines, letters and colours that stand for real features. With symbols, a lot of information fits into a small space and the map stays easy to read.",
+      "hi": "घटक 3: प्रतीक (रूढ़ चिह्न)। छोटे शहर के मानचित्र में भवनों के छोटे चित्र बने हैं। लेकिन किसी बड़े शहर या पूरे देश के मानचित्र में हर भवन, सड़क और पेड़ बनाने की जगह नहीं होती। इसलिए मानचित्र बनाने वाले प्रतीकों का उपयोग करते हैं: छोटे चिह्न, रेखाएँ, अक्षर और रंग जो वास्तविक वस्तुओं को दर्शाते हैं। प्रतीकों से कम जगह में बहुत सारी जानकारी आ जाती है और मानचित्र पढ़ना आसान रहता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "To make maps understandable to everyone, map makers agree on fixed symbols. Different countries use different sets. In India, the Survey of India (a government body) has fixed the symbols for maps of India. Fig. 1.2 of the book shows a selection, described below.",
+      "hi": "मानचित्रों को सबके लिए समझने योग्य बनाने के लिए मानचित्रकार निश्चित प्रतीकों पर सहमत होते हैं। अलग-अलग देश अलग-अलग प्रतीक-समूह उपयोग करते हैं। भारत में भारतीय सर्वेक्षण विभाग (सर्वे ऑफ इंडिया, एक सरकारी संस्था) ने भारत के मानचित्रों के लिए प्रतीक तय किए हैं। पुस्तक के चित्र 1.2 में इनमें से कुछ दिखाए गए हैं, जिनका वर्णन नीचे है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Railway lines: broad gauge, metre gauge, and a railway station (marked RS).",
+       "Roads: metalled (pucca) roads and unmetalled (kachcha) roads, drawn as different kinds of lines.",
+       "Boundaries: international, state and district boundaries, each with its own dashed or dotted line.",
+       "Water features: river, well, tank, canal and bridge (water is usually shown in blue).",
+       "Places of worship and monuments: temple, church, mosque and chhatri.",
+       "Settlement (houses) and graveyard.",
+       "Post Office (PO), Post and Telegraph Office (PTO), Police Station (PS), written as letters.",
+       "Trees and grass (vegetation is usually shown in green)."
+      ],
+      "hi": [
+       "रेल लाइन: बड़ी लाइन (ब्रॉड गेज), छोटी लाइन (मीटर गेज) और रेलवे स्टेशन (RS लिखा)।",
+       "सड़कें: पक्की (धातुई) और कच्ची सड़कें, अलग-अलग प्रकार की रेखाओं से।",
+       "सीमाएँ: अंतरराष्ट्रीय, राज्य और ज़िला सीमाएँ, हर एक के लिए अलग टूटी या बिंदुदार रेखा।",
+       "जल से जुड़े स्वरूप: नदी, कुआँ, तालाब (टैंक), नहर और पुल (जल प्रायः नीले रंग में)।",
+       "पूजा स्थल और स्मारक: मंदिर, गिरजाघर, मस्जिद और छतरी।",
+       "बस्ती (घर) और कब्रिस्तान।",
+       "डाकघर (PO), डाक-तार घर (PTO), पुलिस थाना (PS), अक्षरों द्वारा।",
+       "पेड़ और घास (वनस्पति प्रायः हरे रंग में)।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Colours are also a kind of symbol. Usually blue shows water, green shows forests or low plains, yellow and brown show higher land such as plateaus and mountains, and white often shows snow or ice. Because symbols and colours are standard, a person who does not know your language can still read your map.",
+      "hi": "रंग भी एक प्रकार के प्रतीक हैं। सामान्यतः नीला रंग जल, हरा रंग वन या निचले मैदान, पीला और भूरा रंग ऊँची भूमि जैसे पठार और पर्वत, तथा सफ़ेद रंग प्रायः बर्फ़ दिखाता है। प्रतीक और रंग मानक होने के कारण आपकी भाषा न जानने वाला व्यक्ति भी आपका मानचित्र पढ़ सकता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Let's explore: Draw a rough map of your locality or village with your home, school and a few landmarks. Show the cardinal directions with a north arrow and use some Survey of India symbols (for a road, well, temple, post office, trees). Add a small key (legend) box that explains each symbol you used.",
+      "hi": "आइए खोजें: अपने मोहल्ले या गाँव का एक कच्चा मानचित्र बनाइए जिसमें आपका घर, विद्यालय और कुछ प्रमुख स्थान हों। उत्तर के तीर से प्रधान दिशाएँ दिखाइए और भारतीय सर्वेक्षण विभाग के कुछ प्रतीक (सड़क, कुआँ, मंदिर, डाकघर, पेड़) उपयोग कीजिए। एक छोटा संकेत-बॉक्स (लेजेंड) भी बनाइए जो आपके उपयोग किए हर प्रतीक का अर्थ बताए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.3 Mapping the Earth: the globe",
+    "hi": "1.3 पृथ्वी का मानचित्रण: ग्लोब"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Mapping a city is easy, but mapping the whole Earth is harder because the Earth is not flat. It is nearly a sphere. We say 'nearly' because it is slightly flattened at the North and South Poles and bulges a little at the middle. For our study we treat it as a sphere.",
+      "hi": "किसी शहर का मानचित्र बनाना आसान है, पर पूरी पृथ्वी का मानचित्र बनाना कठिन है क्योंकि पृथ्वी चपटी नहीं है। यह लगभग गोले (गोलाकार) जैसी है। हम 'लगभग' इसलिए कहते हैं क्योंकि यह उत्तरी और दक्षिणी ध्रुवों पर थोड़ी चपटी है और बीच में थोड़ी उभरी हुई है। अध्ययन के लिए हम इसे गोला ही मानते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "A sphere cannot be shown perfectly on a flat sheet of paper. The book suggests a simple experiment to prove this.",
+      "hi": "किसी गोले को समतल कागज़ पर पूरी तरह सही नहीं दिखाया जा सकता। इसे सिद्ध करने के लिए पुस्तक एक सरल प्रयोग सुझाती है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Activity (orange peel): Peel an orange so that the skin comes off in three or four large pieces. Now try to press these pieces flat on a table. Observation: the pieces tear or wrinkle at the edges; they never lie perfectly flat. Conclusion: a curved surface cannot be flattened without stretching or tearing. In the same way, every flat world map stretches or squeezes some parts of the Earth, so sizes and shapes, especially near the poles, are not fully correct.",
+      "hi": "गतिविधि (संतरे का छिलका): संतरे को इस तरह छीलिए कि छिलका तीन या चार बड़े टुकड़ों में निकले। अब इन टुकड़ों को मेज़ पर दबाकर समतल करने की कोशिश कीजिए। अवलोकन: टुकड़े किनारों पर फट जाते हैं या सिकुड़ जाते हैं; वे कभी पूरी तरह समतल नहीं होते। निष्कर्ष: घुमावदार सतह को बिना खींचे या फाड़े समतल नहीं किया जा सकता। इसी तरह, हर समतल विश्व मानचित्र पृथ्वी के कुछ भागों को खींचता या दबाता है, इसलिए आकार और आकृतियाँ, खासकर ध्रुवों के पास, पूरी तरह सही नहीं होतीं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Globe",
+       "hi": "ग्लोब"
+      },
+      "text": {
+       "en": "A globe is a sphere on which a map is drawn. It can be a map of the Earth, the Moon, Mars or even the stars in the sky. A physical globe is usually made of metal, plastic or cardboard, and is fixed on a stand at a tilt so that it can be rotated.",
+       "hi": "ग्लोब एक गोला है जिस पर मानचित्र बना होता है। यह पृथ्वी, चंद्रमा, मंगल ग्रह या आकाश के तारों तक का मानचित्र हो सकता है। वास्तविक ग्लोब प्रायः धातु, प्लास्टिक या गत्ते का बना होता है और एक स्टैंड पर झुकाकर लगाया जाता है ताकि उसे घुमाया जा सके।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Since the globe and the Earth have the same round shape, a globe shows the Earth's continents, oceans and their shapes and sizes more correctly than a flat map. Its drawback is that it is not convenient to carry and cannot show small areas in detail. That is why we use both: a globe for the whole Earth and maps for detail.",
+      "hi": "क्योंकि ग्लोब और पृथ्वी का आकार एक जैसा गोल है, इसलिए ग्लोब पृथ्वी के महाद्वीपों, महासागरों और उनकी आकृतियों व आकारों को समतल मानचित्र से अधिक सही दिखाता है। इसकी कमी यह है कि इसे साथ ले जाना सुविधाजनक नहीं और यह छोटे क्षेत्रों को विस्तार से नहीं दिखा सकता। इसलिए हम दोनों का उपयोग करते हैं: पूरी पृथ्वी के लिए ग्लोब और विस्तार के लिए मानचित्र।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Globe",
+        "Map"
+       ],
+       "hi": [
+        "बिंदु",
+        "ग्लोब",
+        "मानचित्र"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Shape",
+         "Round, like the Earth",
+         "Flat"
+        ],
+        [
+         "Accuracy of shapes and sizes",
+         "Very good",
+         "Some distortion, especially for large areas"
+        ],
+        [
+         "Detail of small areas",
+         "Little",
+         "A lot (a village, a city)"
+        ],
+        [
+         "Easy to carry",
+         "No",
+         "Yes, can be folded or put in a book"
+        ],
+        [
+         "View of whole Earth at once",
+         "Only one half visible at a time",
+         "Whole world on one sheet"
+        ]
+       ],
+       "hi": [
+        [
+         "आकार",
+         "पृथ्वी की तरह गोल",
+         "समतल"
+        ],
+        [
+         "आकृतियों व आकारों की शुद्धता",
+         "बहुत अच्छी",
+         "कुछ विकृति, विशेषकर बड़े क्षेत्रों में"
+        ],
+        [
+         "छोटे क्षेत्रों का विस्तार",
+         "कम",
+         "बहुत (गाँव, शहर)"
+        ],
+        [
+         "ले जाने में सुविधा",
+         "नहीं",
+         "हाँ, मोड़कर या पुस्तक में रखा जा सकता है"
+        ],
+        [
+         "पूरी पृथ्वी एक साथ",
+         "एक समय में केवल आधा भाग दिखता है",
+         "पूरा विश्व एक शीट पर"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.4 (a) Understanding coordinates",
+    "hi": "1.4 (क) निर्देशांकों को समझना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To find any place on the globe we need an address system. The book explains the idea with two everyday examples.",
+      "hi": "ग्लोब पर किसी भी स्थान को ढूँढने के लिए हमें एक पता-प्रणाली चाहिए। पुस्तक इस विचार को रोज़मर्रा के दो उदाहरणों से समझाती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Example 1, the market: Imagine a big market where shops of the same size stand in neat rows. You want to meet a friend at a stationery shop, but your friend does not know where it is. You say, 'Meet me at 6 pm at the 7th shop in the 5th row from the entrance.' With just two numbers (row 5, shop 7) your friend can find the exact shop.",
+      "hi": "उदाहरण 1, बाज़ार: कल्पना कीजिए एक बड़ा बाज़ार है जिसमें एक जैसे आकार की दुकानें साफ़-सुथरी पंक्तियों में हैं। आप अपने मित्र से एक स्टेशनरी की दुकान पर मिलना चाहते हैं, पर मित्र को उसका पता नहीं। आप कहते हैं, 'शाम 6 बजे प्रवेश द्वार से 5वीं पंक्ति की 7वीं दुकान पर मिलना।' केवल दो संख्याओं (पंक्ति 5, दुकान 7) से आपका मित्र ठीक वही दुकान ढूँढ लेगा।"
+     }
+    },
+    {
+     "p": {
+      "en": "Example 2, the chessboard: A chessboard has 8 columns marked with letters a to h and 8 rows marked with numbers 1 to 8. Each square therefore has a two-part name, such as d4 or e5. Chess players use this to write down every move. In the book's picture, White opens by moving the queen's pawn two squares forward, from d2 to d4, a very common opening.",
+      "hi": "उदाहरण 2, शतरंज की बिसात: शतरंज की बिसात में 8 स्तंभ (कॉलम) होते हैं जिन पर a से h तक अक्षर लिखे होते हैं, और 8 पंक्तियाँ जिन पर 1 से 8 तक संख्याएँ। इसलिए हर खाने का दो भागों वाला नाम होता है, जैसे d4 या e5। शतरंज खिलाड़ी इससे हर चाल लिखते हैं। पुस्तक के चित्र में सफ़ेद खिलाड़ी वज़ीर के प्यादे को दो खाने आगे, d2 से d4 पर, चलाकर खेल शुरू करता है, जो एक बहुत प्रचलित शुरुआत है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Let's explore: If you play Black and reply with the same move (your queen's pawn two squares forward), how will you write your move?",
+       "hi": "आइए खोजें: यदि आप काले मोहरों से खेल रहे हैं और वही चाल (अपने वज़ीर के प्यादे को दो खाने आगे) चलते हैं, तो अपनी चाल कैसे लिखेंगे?"
+      },
+      "a": {
+       "en": "Step 1: Black's pieces start on rows 7 and 8; Black's pawns stand on row 7.\nStep 2: The queen's pawn is in column d, so it starts on d7.\nStep 3: Moving two squares forward (towards row 1) takes it to row 5.\nAnswer: d7 to d5 (written d5).",
+       "hi": "चरण 1: काले मोहरे पंक्ति 7 और 8 पर शुरू होते हैं; काले प्यादे पंक्ति 7 पर होते हैं।\nचरण 2: वज़ीर का प्यादा स्तंभ d में है, इसलिए वह d7 पर है।\nचरण 3: दो खाने आगे (पंक्ति 1 की ओर) बढ़ने पर वह पंक्ति 5 पर पहुँचता है।\nउत्तर: d7 से d5 (लिखेंगे d5)।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Coordinates",
+       "hi": "निर्देशांक"
+      },
+      "text": {
+       "en": "Coordinates are a pair of values that together fix the exact position of a point. In the market they are the row and the shop number; on a chessboard they are the letter and the number; on the Earth they are latitude and longitude.",
+       "hi": "निर्देशांक मानों की वह जोड़ी है जो मिलकर किसी बिंदु की ठीक-ठीक स्थिति तय करती है। बाज़ार में ये पंक्ति और दुकान संख्या हैं; शतरंज में अक्षर और संख्या; और पृथ्वी पर अक्षांश और देशांतर।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The globe uses the same idea. Imaginary lines are drawn on it in two sets: one set running east-west (parallels of latitude) and one set running north-south (meridians of longitude). Just as one number tells the row and the other the shop, latitude tells how far north or south a place is and longitude tells how far east or west it is.",
+      "hi": "ग्लोब भी यही विचार अपनाता है। इस पर दो समूहों में काल्पनिक रेखाएँ खींची जाती हैं: एक समूह पूर्व-पश्चिम दिशा में (अक्षांश रेखाएँ) और दूसरा उत्तर-दक्षिण दिशा में (देशांतर रेखाएँ)। जैसे एक संख्या पंक्ति बताती है और दूसरी दुकान, वैसे ही अक्षांश बताता है कि कोई स्थान कितना उत्तर या दक्षिण में है और देशांतर बताता है कि वह कितना पूर्व या पश्चिम में है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.5 (b) Latitudes",
+    "hi": "1.5 (ख) अक्षांश"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "When you spin a globe, two points at the top and bottom do not move. These are the North Pole and the South Pole. Exactly halfway between them, a circle runs around the middle of the globe. This circle is the Equator. It divides the Earth into two equal halves.",
+      "hi": "जब आप ग्लोब घुमाते हैं, तो ऊपर और नीचे के दो बिंदु अपनी जगह से नहीं हिलते। ये उत्तरी ध्रुव और दक्षिणी ध्रुव हैं। इनके ठीक बीच में ग्लोब के मध्य भाग के चारों ओर एक वृत्त है। यह वृत्त विषुवत वृत्त (भूमध्य रेखा) है। यह पृथ्वी को दो बराबर भागों में बाँटता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Equator",
+       "hi": "विषुवत वृत्त (भूमध्य रेखा)"
+      },
+      "text": {
+       "en": "The Equator is an imaginary circle around the Earth exactly midway between the North Pole and the South Pole. It is the 0° latitude and the longest (largest) parallel of latitude.",
+       "hi": "विषुवत वृत्त पृथ्वी के चारों ओर उत्तरी और दक्षिणी ध्रुव के ठीक बीच में खींचा गया काल्पनिक वृत्त है। यह 0° अक्षांश है और सबसे लंबी (सबसे बड़ी) अक्षांश रेखा है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Now imagine you stand on the Equator and walk towards one of the poles. Your distance from the Equator keeps increasing. Latitude is the measure of this distance from the Equator. At any point on your walk you can imagine a line running east-west around the Earth, parallel to the Equator. This line is called a parallel of latitude, and it forms a full circle around the Earth.",
+      "hi": "अब कल्पना कीजिए कि आप विषुवत वृत्त पर खड़े हैं और किसी एक ध्रुव की ओर चलते हैं। विषुवत वृत्त से आपकी दूरी बढ़ती जाती है। अक्षांश विषुवत वृत्त से इसी दूरी का माप है। चलते समय किसी भी बिंदु पर आप पृथ्वी के चारों ओर पूर्व-पश्चिम दिशा में, विषुवत वृत्त के समानांतर एक रेखा की कल्पना कर सकते हैं। इस रेखा को अक्षांश रेखा (अक्षांश का समांतर) कहते हैं, और यह पृथ्वी के चारों ओर एक पूरा वृत्त बनाती है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Latitude",
+       "hi": "अक्षांश"
+      },
+      "text": {
+       "en": "Latitude is the distance of a place north or south of the Equator, measured in degrees. It goes from 0° at the Equator to 90°N at the North Pole and 90°S at the South Pole.",
+       "hi": "अक्षांश किसी स्थान की विषुवत वृत्त से उत्तर या दक्षिण की दूरी है, जो अंशों (डिग्री) में मापी जाती है। यह विषुवत वृत्त पर 0° से उत्तरी ध्रुव पर 90° उ (90°N) और दक्षिणी ध्रुव पर 90° द (90°S) तक जाता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Parallel of latitude",
+       "hi": "अक्षांश रेखा"
+      },
+      "text": {
+       "en": "An imaginary east-west circle on the globe joining all places that have the same latitude. It is parallel to the Equator.",
+       "hi": "ग्लोब पर पूर्व-पश्चिम दिशा का वह काल्पनिक वृत्त जो समान अक्षांश वाले सभी स्थानों को जोड़ता है। यह विषुवत वृत्त के समानांतर होता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Look at the globe: the Equator is the largest circle. As we move north or south, the parallels become smaller and smaller circles, until at the poles they shrink to just a point. So parallels of latitude do not all have the same length.",
+      "hi": "ग्लोब देखिए: विषुवत वृत्त सबसे बड़ा वृत्त है। जैसे-जैसे हम उत्तर या दक्षिण की ओर बढ़ते हैं, अक्षांश रेखाएँ छोटे-छोटे वृत्त बनती जाती हैं, और ध्रुवों पर ये सिकुड़कर केवल एक बिंदु रह जाती हैं। इसलिए सभी अक्षांश रेखाओं की लंबाई समान नहीं होती।"
+     }
+    },
+    {
+     "p": {
+      "en": "Latitudes are written in degrees (°). By convention the Equator is 0° (zero degree). The poles are 90° North and 90° South, written 90°N and 90°S. A place halfway between the Equator and the North Pole is at 45°N. Every latitude other than 0° must carry the letter N or S, because 20° alone could mean 20°N or 20°S.",
+      "hi": "अक्षांश अंशों (°) में लिखे जाते हैं। परंपरा के अनुसार विषुवत वृत्त 0° (शून्य अंश) है। ध्रुव 90° उत्तर और 90° दक्षिण हैं, जिन्हें 90°N और 90°S लिखते हैं। विषुवत वृत्त और उत्तरी ध्रुव के ठीक बीच का स्थान 45°N पर है। 0° के अलावा हर अक्षांश के साथ N (उत्तर) या S (दक्षिण) लिखना ज़रूरी है, क्योंकि केवल 20° का अर्थ 20°N भी हो सकता है और 20°S भी।"
+     }
+    },
+    {
+     "p": {
+      "en": "The Equator divides the Earth into two halves called hemispheres ('hemi' means half). The half north of the Equator is the Northern Hemisphere and the half south of it is the Southern Hemisphere. India lies entirely in the Northern Hemisphere.",
+      "hi": "विषुवत वृत्त पृथ्वी को दो आधे भागों में बाँटता है जिन्हें गोलार्ध कहते हैं। विषुवत वृत्त के उत्तर वाला आधा भाग उत्तरी गोलार्ध और दक्षिण वाला दक्षिणी गोलार्ध है। भारत पूरी तरह उत्तरी गोलार्ध में स्थित है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Latitude and climate: There is a link between latitude and climate. Near the Equator the climate is generally hot; this belt is called torrid ('torrid' means very hot). As latitude increases, moving towards the poles, the climate becomes moderate; this is called temperate. Close to the North and South Poles it becomes very cold; this is called frigid. You will learn in Science why this happens (the Sun's rays fall more directly near the Equator and more slantingly near the poles) and why we have seasons.",
+      "hi": "अक्षांश और जलवायु: अक्षांश और जलवायु के बीच संबंध है। विषुवत वृत्त के पास जलवायु प्रायः गर्म होती है; इस पेटी को उष्ण (टॉरिड, यानी बहुत गर्म) कहते हैं। जैसे-जैसे अक्षांश बढ़ता है, यानी ध्रुवों की ओर जाने पर, जलवायु मध्यम हो जाती है; इसे शीतोष्ण (टेम्परेट) कहते हैं। उत्तरी और दक्षिणी ध्रुवों के पास बहुत ठंड होती है; इसे शीत (फ्रिजिड) कहते हैं। विज्ञान में आप पढ़ेंगे कि ऐसा क्यों होता है (विषुवत वृत्त के पास सूर्य की किरणें सीधी और ध्रुवों के पास तिरछी पड़ती हैं) और ऋतुएँ क्यों बदलती हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Climate belt",
+        "Where",
+        "Nature"
+       ],
+       "hi": [
+        "जलवायु पेटी",
+        "कहाँ",
+        "स्वरूप"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Torrid",
+         "Around the Equator (low latitudes)",
+         "Generally hot"
+        ],
+        [
+         "Temperate",
+         "Between the hot belt and the polar areas (middle latitudes)",
+         "Moderate, neither very hot nor very cold"
+        ],
+        [
+         "Frigid",
+         "Near the North and South Poles (high latitudes)",
+         "Very cold"
+        ]
+       ],
+       "hi": [
+        [
+         "उष्ण (टॉरिड)",
+         "विषुवत वृत्त के आसपास (निम्न अक्षांश)",
+         "प्रायः गर्म"
+        ],
+        [
+         "शीतोष्ण (टेम्परेट)",
+         "गर्म पेटी और ध्रुवीय क्षेत्रों के बीच (मध्य अक्षांश)",
+         "मध्यम, न बहुत गर्म न बहुत ठंडा"
+        ],
+        [
+         "शीत (फ्रिजिड)",
+         "उत्तरी और दक्षिणी ध्रुवों के पास (उच्च अक्षांश)",
+         "बहुत ठंडा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Extra for understanding (you will study these later): some special parallels are the Tropic of Cancer (about 23.5°N, which passes through the middle of India), the Tropic of Capricorn (about 23.5°S), the Arctic Circle (about 66.5°N) and the Antarctic Circle (about 66.5°S).",
+      "hi": "समझ के लिए अतिरिक्त (इन्हें आप आगे पढ़ेंगे): कुछ विशेष अक्षांश रेखाएँ हैं: कर्क रेखा (लगभग 23.5°N, जो भारत के बीच से गुज़रती है), मकर रेखा (लगभग 23.5°S), आर्कटिक वृत्त (लगभग 66.5°N) और अंटार्कटिक वृत्त (लगभग 66.5°S)।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Place A is at 10°N and place B is at 60°N. Which place is closer to the Equator, and which is likely to have a colder climate?",
+       "hi": "स्थान A 10°N पर है और स्थान B 60°N पर। कौन-सा स्थान विषुवत वृत्त के अधिक पास है, और किसकी जलवायु अधिक ठंडी होने की संभावना है?"
+      },
+      "a": {
+       "en": "Step 1: Latitude measures distance from the Equator; smaller latitude means nearer the Equator.\nStep 2: 10° is smaller than 60°, so A is closer to the Equator.\nStep 3: Climate gets colder as latitude increases, so B (60°N) is likely to be colder.\nAnswer: A is nearer the Equator; B is likely colder.",
+       "hi": "चरण 1: अक्षांश विषुवत वृत्त से दूरी मापता है; कम अक्षांश यानी विषुवत वृत्त के अधिक पास।\nचरण 2: 10° 60° से कम है, इसलिए A विषुवत वृत्त के अधिक पास है।\nचरण 3: अक्षांश बढ़ने पर जलवायु ठंडी होती है, इसलिए B (60°N) अधिक ठंडा होगा।\nउत्तर: A विषुवत वृत्त के पास है; B अधिक ठंडा होगा।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.6 (c) Longitudes",
+    "hi": "1.6 (ग) देशांतर"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Now imagine travelling from the North Pole to the South Pole by the shortest route. On the globe you will see that you could pass through Europe and Africa, or through Asia, or across the Pacific; the distance would be the same each time. Each such shortest north-south line is called a meridian of longitude. Every meridian is a half-circle that runs from one pole to the other.",
+      "hi": "अब कल्पना कीजिए कि आप उत्तरी ध्रुव से दक्षिणी ध्रुव तक सबसे छोटे रास्ते से यात्रा करते हैं। ग्लोब पर आप देखेंगे कि आप यूरोप और अफ्रीका से होकर जा सकते हैं, या एशिया से, या प्रशांत महासागर के पार; हर बार दूरी एक जैसी होगी। ऐसी हर सबसे छोटी उत्तर-दक्षिण रेखा को देशांतर रेखा (याम्योत्तर) कहते हैं। हर देशांतर रेखा एक अर्धवृत्त है जो एक ध्रुव से दूसरे ध्रुव तक जाती है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Meridian of longitude",
+       "hi": "देशांतर रेखा (याम्योत्तर)"
+      },
+      "text": {
+       "en": "An imaginary half-circle on the globe joining the North Pole to the South Pole. All meridians have the same length and they all meet at the poles.",
+       "hi": "ग्लोब पर उत्तरी ध्रुव को दक्षिणी ध्रुव से जोड़ने वाला काल्पनिक अर्धवृत्त। सभी देशांतर रेखाओं की लंबाई बराबर होती है और वे सभी ध्रुवों पर मिलती हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the difference: parallels of latitude are full circles of different sizes that never meet; meridians of longitude are half-circles of equal length that all meet at the two poles. Since a meridian goes only halfway round the Earth, its length is half the length of the Equator.",
+      "hi": "अंतर याद रखिए: अक्षांश रेखाएँ अलग-अलग आकार के पूरे वृत्त हैं जो कभी नहीं मिलते; देशांतर रेखाएँ समान लंबाई के अर्धवृत्त हैं जो सभी दोनों ध्रुवों पर मिलते हैं। क्योंकि देशांतर रेखा पृथ्वी का केवल आधा चक्कर लगाती है, इसकी लंबाई विषुवत वृत्त की लंबाई की आधी होती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Why longitude is linked to time: The Earth spins on its axis. To see what this means, place a desk lamp a little away from a globe and switch it on; the lamp is the Sun. Slowly turn the globe eastward. You will see that some places are in light (morning or midday), some are coming out of darkness (morning), some are going into darkness (evening), and some are in full darkness (night). When it is breakfast time in one country, it is lunchtime in another and people are fast asleep in a third. Because of this, measuring the longitude of a place also tells us the time there.",
+      "hi": "देशांतर का समय से संबंध क्यों: पृथ्वी अपनी धुरी पर घूमती है। इसका अर्थ समझने के लिए ग्लोब से थोड़ी दूरी पर एक टेबल लैंप रखकर जलाइए; लैंप सूर्य है। ग्लोब को धीरे-धीरे पूर्व की ओर घुमाइए। आप देखेंगे कि कुछ स्थान रोशनी में हैं (सुबह या दोपहर), कुछ अंधेरे से निकल रहे हैं (सुबह), कुछ अंधेरे में जा रहे हैं (शाम) और कुछ पूरे अंधेरे में हैं (रात)। जब एक देश में नाश्ते का समय होता है, दूसरे में दोपहर के भोजन का होता है और तीसरे में लोग गहरी नींद में होते हैं। इसी कारण किसी स्थान का देशांतर मापने से वहाँ का समय भी पता चलता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "The Prime Meridian: To measure longitude we need a starting line, called the Prime Meridian. In 1884, a number of nations agreed that the meridian passing through Greenwich, an area of London in England, would be the international Prime Meridian. So it is also called the Greenwich Meridian, and it is marked 0° longitude.",
+      "hi": "प्रधान याम्योत्तर: देशांतर मापने के लिए एक आरंभिक रेखा चाहिए, जिसे प्रधान याम्योत्तर (प्राइम मेरिडियन) कहते हैं। सन 1884 में कई देशों ने सहमति बनाई कि इंग्लैंड के लंदन के एक क्षेत्र ग्रीनविच से गुज़रने वाली देशांतर रेखा अंतरराष्ट्रीय प्रधान याम्योत्तर होगी। इसलिए इसे ग्रीनविच याम्योत्तर भी कहते हैं, और इसे 0° देशांतर माना जाता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Longitude",
+       "hi": "देशांतर"
+      },
+      "text": {
+       "en": "Longitude is the distance of a place east or west of the Prime Meridian, measured in degrees along the Equator. It increases from 0° to 180° towards the east (E) and towards the west (W).",
+       "hi": "देशांतर किसी स्थान की प्रधान याम्योत्तर से पूर्व या पश्चिम की दूरी है, जो विषुवत वृत्त के साथ अंशों में मापी जाती है। यह पूर्व (E) की ओर और पश्चिम (W) की ओर 0° से 180° तक बढ़ता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Just as latitude is distance from the Equator when travelling towards a pole, longitude is distance from the Prime Meridian when travelling along the Equator. Rounded examples from the book: New York is at about 74°W, Delhi at about 77°E and Tokyo at about 140°E.",
+      "hi": "जैसे अक्षांश ध्रुव की ओर यात्रा करने पर विषुवत वृत्त से दूरी है, वैसे ही देशांतर विषुवत वृत्त के साथ यात्रा करने पर प्रधान याम्योत्तर से दूरी है। पुस्तक के पूर्णांकित उदाहरण: न्यूयॉर्क लगभग 74°W, दिल्ली लगभग 77°E और टोक्यो लगभग 140°E पर है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Don't miss out: 180°W and 180°E are the same line on the globe (going 180° either way you reach the same meridian on the opposite side of the Earth). So this meridian is simply written 180°, without E or W.",
+      "hi": "छूटे नहीं: ग्लोब पर 180°W और 180°E एक ही रेखा है (किसी भी ओर 180° जाने पर आप पृथ्वी के दूसरी ओर उसी देशांतर रेखा पर पहुँचते हैं)। इसलिए इस रेखा को E या W लगाए बिना केवल 180° लिखते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "The Prime Meridian (0°) together with the 180° meridian makes a full circle that divides the Earth into the Eastern Hemisphere (east of Greenwich) and the Western Hemisphere (west of Greenwich). Fig. 1.4 of the book shows this: the Equator makes the Northern and Southern Hemispheres, and the Greenwich Meridian makes the Eastern and Western Hemispheres. India lies in the Northern and Eastern Hemispheres.",
+      "hi": "प्रधान याम्योत्तर (0°) और 180° की रेखा मिलकर एक पूरा वृत्त बनाती हैं जो पृथ्वी को पूर्वी गोलार्ध (ग्रीनविच के पूर्व) और पश्चिमी गोलार्ध (ग्रीनविच के पश्चिम) में बाँटता है। पुस्तक का चित्र 1.4 यही दिखाता है: विषुवत वृत्त से उत्तरी और दक्षिणी गोलार्ध बनते हैं, और ग्रीनविच याम्योत्तर से पूर्वी और पश्चिमी गोलार्ध। भारत उत्तरी और पूर्वी गोलार्ध में स्थित है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Coordinates of a place: Latitude and longitude together are the two coordinates of a place. With them we can locate any place on Earth. For example, 'Delhi lies at 29°N latitude and 77°E longitude' (rounded values). Latitude is usually written first. All the parallels and meridians together form a network called the grid of the globe; these lines are also called grid lines. Fig. 1.3 shows them as blue lines on a globe.",
+      "hi": "किसी स्थान के निर्देशांक: अक्षांश और देशांतर मिलकर किसी स्थान के दो निर्देशांक हैं। इनसे हम पृथ्वी पर कोई भी स्थान ढूँढ सकते हैं। उदाहरण: 'दिल्ली 29°N अक्षांश और 77°E देशांतर पर है' (पूर्णांकित मान)। प्रायः अक्षांश पहले लिखा जाता है। सभी अक्षांश और देशांतर रेखाएँ मिलकर ग्लोब का एक जाल बनाती हैं जिसे ग्रिड कहते हैं; इन रेखाओं को ग्रिड रेखाएँ भी कहते हैं। चित्र 1.3 में ये ग्लोब पर नीली रेखाओं के रूप में दिखाई गई हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Grid",
+       "hi": "ग्रिड (जाल)"
+      },
+      "text": {
+       "en": "The network formed on a globe or map by the parallels of latitude and meridians of longitude crossing each other. The point where a given parallel and a given meridian cross is the location of a place.",
+       "hi": "ग्लोब या मानचित्र पर अक्षांश और देशांतर रेखाओं के एक-दूसरे को काटने से बना जाल। किसी निश्चित अक्षांश रेखा और देशांतर रेखा का कटान बिंदु ही किसी स्थान की स्थिति है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "Parallels of latitude",
+        "Meridians of longitude"
+       ],
+       "hi": [
+        "विशेषता",
+        "अक्षांश रेखाएँ",
+        "देशांतर रेखाएँ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Direction they run",
+         "East to west",
+         "North to south (pole to pole)"
+        ],
+        [
+         "Shape",
+         "Full circles",
+         "Half-circles"
+        ],
+        [
+         "Length",
+         "Different; Equator longest, point at poles",
+         "All equal (half the Equator)"
+        ],
+        [
+         "Do they meet?",
+         "Never (they are parallel)",
+         "Yes, all meet at both poles"
+        ],
+        [
+         "Zero line",
+         "Equator (0°)",
+         "Prime Meridian at Greenwich (0°)"
+        ],
+        [
+         "Range of values",
+         "0° to 90°N and 0° to 90°S",
+         "0° to 180°E and 0° to 180°W"
+        ],
+        [
+         "Helps us know",
+         "How far north or south; also climate",
+         "How far east or west; also time"
+        ]
+       ],
+       "hi": [
+        [
+         "किस दिशा में",
+         "पूर्व से पश्चिम",
+         "उत्तर से दक्षिण (ध्रुव से ध्रुव)"
+        ],
+        [
+         "आकार",
+         "पूरे वृत्त",
+         "अर्धवृत्त"
+        ],
+        [
+         "लंबाई",
+         "अलग-अलग; विषुवत वृत्त सबसे लंबा, ध्रुव पर बिंदु",
+         "सभी बराबर (विषुवत वृत्त का आधा)"
+        ],
+        [
+         "क्या मिलती हैं?",
+         "कभी नहीं (समानांतर हैं)",
+         "हाँ, सभी दोनों ध्रुवों पर"
+        ],
+        [
+         "शून्य रेखा",
+         "विषुवत वृत्त (0°)",
+         "ग्रीनविच का प्रधान याम्योत्तर (0°)"
+        ],
+        [
+         "मानों का विस्तार",
+         "0° से 90°N और 0° से 90°S",
+         "0° से 180°E और 0° से 180°W"
+        ],
+        [
+         "क्या बताती हैं",
+         "कितना उत्तर या दक्षिण; जलवायु भी",
+         "कितना पूर्व या पश्चिम; समय भी"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Let's explore: Using a globe or atlas, find approximate coordinates of Mumbai (about 19°N, 73°E), Kolkata (about 22.5°N, 88°E), Singapore (about 1°N, 104°E) and Paris (about 49°N, 2°E). Notice that Singapore is almost on the Equator and Paris is just east of the Prime Meridian.",
+      "hi": "आइए खोजें: ग्लोब या एटलस से मुंबई (लगभग 19°N, 73°E), कोलकाता (लगभग 22.5°N, 88°E), सिंगापुर (लगभग 1°N, 104°E) और पेरिस (लगभग 49°N, 2°E) के अनुमानित निर्देशांक ढूँढिए। ध्यान दीजिए कि सिंगापुर लगभग विषुवत वृत्त पर है और पेरिस प्रधान याम्योत्तर के ज़रा पूर्व में है।"
+     }
+    },
+    {
+     "p": {
+      "en": "India's own prime meridian (Don't miss out): The Greenwich Meridian was not the world's first prime meridian. Many centuries before Europe, India had one of its own. It was called madhya rekha, meaning 'middle line', and it passed through Ujjayini (today's Ujjain in Madhya Pradesh). Ujjain was a famous centre of astronomy for many centuries; the great astronomer Varahamihira lived and worked there about 1,500 years ago. Indian astronomers understood latitude and longitude and the need for a zero meridian, and the Ujjayini meridian became the reference for calculations in all Indian astronomical texts.",
+      "hi": "भारत का अपना प्रधान याम्योत्तर (छूटे नहीं): ग्रीनविच याम्योत्तर विश्व का पहला प्रधान याम्योत्तर नहीं था। यूरोप से कई शताब्दियों पहले भारत का अपना प्रधान याम्योत्तर था। इसे मध्य रेखा कहते थे और यह उज्जयिनी (आज का मध्य प्रदेश का उज्जैन) से गुज़रती थी। उज्जैन कई शताब्दियों तक खगोल विज्ञान का प्रसिद्ध केंद्र रहा; महान खगोलशास्त्री वराहमिहिर लगभग 1,500 वर्ष पहले वहीं रहते और कार्य करते थे। भारतीय खगोलशास्त्री अक्षांश, देशांतर और शून्य याम्योत्तर की आवश्यकता को समझते थे, और उज्जयिनी याम्योत्तर सभी भारतीय खगोलीय ग्रंथों में गणनाओं का आधार बना।"
+     }
+    },
+    {
+     "p": {
+      "en": "Fig. 1.5 of the book shows this ancient meridian at about 75.8°E and some ancient cities that astronomical texts describe as lying on it, with their modern names: Kumari (Kanyakumari) in the far south, Mahishmati (Maheshwar), Ujjayini (Ujjain), Malavangara (Nagar), Kurukshetra and Rohitaka (Rohtak) in the north. Some of these are very close to the line and some a little away, because measuring longitude needs accurate clocks, and timekeeping was less precise then than it is today. Modern cities such as Delhi, Mumbai, Kolkata, Chennai and Bengaluru are also marked for comparison.",
+      "hi": "पुस्तक का चित्र 1.5 इस प्राचीन याम्योत्तर को लगभग 75.8°E पर दिखाता है, साथ ही कुछ प्राचीन नगर जिन्हें खगोलीय ग्रंथ इस रेखा पर बताते हैं, उनके आधुनिक नामों सहित: सुदूर दक्षिण में कुमारी (कन्याकुमारी), माहिष्मती (महेश्वर), उज्जयिनी (उज्जैन), मालवनगर (नगर), कुरुक्षेत्र और उत्तर में रोहितक (रोहतक)। इनमें से कुछ रेखा के बहुत पास हैं और कुछ थोड़ा दूर, क्योंकि देशांतर मापने के लिए सटीक घड़ियाँ चाहिए और तब समय मापना आज जितना सटीक नहीं था। तुलना के लिए दिल्ली, मुंबई, कोलकाता, चेन्नई और बेंगलुरु जैसे आधुनिक नगर भी दिखाए गए हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "India on the grid: Fig. 1.6, a map published by the Survey of India, shows India's outline with some parallels and meridians. Mainland India stretches approximately from 8°N to 37°N in latitude and from 68°E to 97°E in longitude. So India spans about 29° of latitude and about 29° of longitude.",
+      "hi": "ग्रिड पर भारत: भारतीय सर्वेक्षण विभाग द्वारा प्रकाशित चित्र 1.6 भारत की रूपरेखा को कुछ अक्षांश और देशांतर रेखाओं के साथ दिखाता है। भारत का विस्तार अक्षांश में लगभग 8°N से 37°N तक और देशांतर में लगभग 68°E से 97°E तक है। अर्थात भारत लगभग 29° अक्षांश और लगभग 29° देशांतर में फैला है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A place has coordinates 30°S, 60°W. In which two hemispheres does it lie?",
+       "hi": "किसी स्थान के निर्देशांक 30°S, 60°W हैं। वह किन दो गोलार्धों में स्थित है?"
+      },
+      "a": {
+       "en": "Step 1: Latitude 30°S means south of the Equator, so Southern Hemisphere.\nStep 2: Longitude 60°W means west of the Prime Meridian, so Western Hemisphere.\nAnswer: Southern and Western Hemispheres (this point is in South America).",
+       "hi": "चरण 1: अक्षांश 30°S यानी विषुवत वृत्त के दक्षिण में, इसलिए दक्षिणी गोलार्ध।\nचरण 2: देशांतर 60°W यानी प्रधान याम्योत्तर के पश्चिम में, इसलिए पश्चिमी गोलार्ध।\nउत्तर: दक्षिणी और पश्चिमी गोलार्ध (यह बिंदु दक्षिण अमेरिका में है)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.7 Understanding Time Zones",
+    "hi": "1.7 समय क्षेत्रों को समझना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The Earth spins from west to east and completes one full turn in 24 hours. A full turn is 360°. So in one hour the Earth turns 360 ÷ 24 = 15°. In other words, every 15° of longitude makes a difference of 1 hour in time.",
+      "hi": "पृथ्वी पश्चिम से पूर्व की ओर घूमती है और 24 घंटे में एक पूरा चक्कर लगाती है। एक पूरा चक्कर 360° है। इसलिए एक घंटे में पृथ्वी 360 ÷ 24 = 15° घूमती है। दूसरे शब्दों में, देशांतर के हर 15° से समय में 1 घंटे का अंतर आता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "360° ÷ 24 hours = 15° per hour;  60 minutes ÷ 15° = 4 minutes per 1° of longitude",
+      "hi": "360° ÷ 24 घंटे = 15° प्रति घंटा;  60 मिनट ÷ 15° = देशांतर के 1° पर 4 मिनट"
+     }
+    },
+    {
+     "p": {
+      "en": "Local time: Because the Earth turns eastward, places to the east see the Sun rise first. Local time is the time of a place worked out from the position of the Sun there; at local noon the Sun is highest in that place's sky. Moving east from Greenwich, local time increases by 1 hour for every 15°: if it is 12 noon at Greenwich (0°), it is 1 pm at 15°E, 2 pm at 30°E, 3 pm at 45°E, and so on up to 180°E. Moving west, local time decreases: 11 am at 15°W, 10 am at 30°W, 9 am at 45°W. Fig. 1.7 of the book shows this as coloured bands of 15°, each centred on a meridian, with longitudes at the bottom and local times at the top.",
+      "hi": "स्थानीय समय: क्योंकि पृथ्वी पूर्व की ओर घूमती है, पूर्व के स्थानों पर सूर्य पहले उगता है। स्थानीय समय किसी स्थान पर सूर्य की स्थिति से निकाला गया समय है; स्थानीय दोपहर (12 बजे) को सूर्य उस स्थान के आकाश में सबसे ऊँचा होता है। ग्रीनविच से पूर्व की ओर जाने पर हर 15° पर स्थानीय समय 1 घंटा बढ़ता है: यदि ग्रीनविच (0°) पर दोपहर 12 बजे हैं, तो 15°E पर 1 बजे, 30°E पर 2 बजे, 45°E पर 3 बजे, और इसी तरह 180°E तक। पश्चिम की ओर जाने पर स्थानीय समय घटता है: 15°W पर सुबह 11 बजे, 30°W पर 10 बजे, 45°W पर 9 बजे। पुस्तक का चित्र 1.7 इसे 15° की रंगीन पट्टियों के रूप में दिखाता है, हर पट्टी एक देशांतर रेखा पर केंद्रित है, नीचे देशांतर और ऊपर स्थानीय समय लिखे हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Longitude",
+        "Local time when it is 12 noon at Greenwich"
+       ],
+       "hi": [
+        "देशांतर",
+        "जब ग्रीनविच में दोपहर 12 बजे हों तब स्थानीय समय"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "45°W",
+         "9 am"
+        ],
+        [
+         "30°W",
+         "10 am"
+        ],
+        [
+         "15°W",
+         "11 am"
+        ],
+        [
+         "0° (Greenwich)",
+         "12 noon"
+        ],
+        [
+         "15°E",
+         "1 pm"
+        ],
+        [
+         "30°E",
+         "2 pm"
+        ],
+        [
+         "45°E",
+         "3 pm"
+        ]
+       ],
+       "hi": [
+        [
+         "45°W",
+         "सुबह 9 बजे"
+        ],
+        [
+         "30°W",
+         "सुबह 10 बजे"
+        ],
+        [
+         "15°W",
+         "सुबह 11 बजे"
+        ],
+        [
+         "0° (ग्रीनविच)",
+         "दोपहर 12 बजे"
+        ],
+        [
+         "15°E",
+         "दोपहर 1 बजे"
+        ],
+        [
+         "30°E",
+         "दोपहर 2 बजे"
+        ],
+        [
+         "45°E",
+         "दोपहर 3 बजे"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Rule to remember: East is ahead (add time), West is behind (subtract time). 15° = 1 hour, 1° = 4 minutes.",
+      "hi": "याद रखने का नियम: पूर्व आगे (समय जोड़िए), पश्चिम पीछे (समय घटाइए)। 15° = 1 घंटा, 1° = 4 मिनट।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Let's explore (book activity): Two friends talk on the phone in the late afternoon, one in Porbandar (Gujarat, far west of India) and one in Tinsukia (Assam, far east). The friend in Assam says the Sun has set and it is dark; the friend in Gujarat says it is still full daylight. Explain why, and find the difference in local time taking the difference in longitude as 30°.",
+       "hi": "आइए खोजें (पुस्तक की गतिविधि): देर दोपहर में दो मित्र फ़ोन पर बात कर रहे हैं, एक पोरबंदर (गुजरात, भारत का सुदूर पश्चिम) में और दूसरा तिनसुकिया (असम, सुदूर पूर्व) में। असम वाला मित्र कहता है कि सूर्य डूब गया और अंधेरा हो गया; गुजरात वाला कहता है कि यहाँ तो अभी पूरी धूप है। इसका कारण बताइए, और देशांतर का अंतर 30° मानकर स्थानीय समय का अंतर ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: The Earth turns from west to east, so Tinsukia, being far to the east, turns away from the Sun earlier. Sunrise and sunset happen earlier there than in Porbandar.\nStep 2: Difference in longitude = 30°.\nStep 3: 1° = 4 minutes, so 30° = 30 × 4 = 120 minutes = 2 hours.\nAnswer: Local time in Tinsukia is about 2 hours ahead of Porbandar (with the precise longitudes, about 69.6°E and 95.4°E, the difference is about 26°, i.e. about 1 hour 43 minutes).",
+       "hi": "चरण 1: पृथ्वी पश्चिम से पूर्व की ओर घूमती है, इसलिए सुदूर पूर्व में स्थित तिनसुकिया सूर्य से पहले दूर हो जाता है। वहाँ सूर्योदय और सूर्यास्त पोरबंदर से पहले होते हैं।\nचरण 2: देशांतर का अंतर = 30°।\nचरण 3: 1° = 4 मिनट, इसलिए 30° = 30 × 4 = 120 मिनट = 2 घंटे।\nउत्तर: तिनसुकिया का स्थानीय समय पोरबंदर से लगभग 2 घंटे आगे है (सटीक देशांतर, लगभग 69.6°E और 95.4°E, लेने पर अंतर लगभग 26° यानी लगभग 1 घंटा 43 मिनट है)।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Standard time: If every town used its own local time, a country would have many different times; trains, flights, offices, TV and radio programmes would be in confusion. So most countries choose one meridian passing through them as their standard meridian and the whole country follows the local time of that meridian. This is called standard time.",
+      "hi": "मानक समय: यदि हर कस्बा अपना-अपना स्थानीय समय अपनाए, तो एक देश में कई अलग-अलग समय होंगे; रेलगाड़ियों, उड़ानों, दफ़्तरों, टीवी और रेडियो कार्यक्रमों में भारी भ्रम होगा। इसलिए अधिकांश देश अपने बीच से गुज़रने वाली एक देशांतर रेखा को मानक याम्योत्तर चुनते हैं और पूरा देश उसी रेखा का स्थानीय समय अपनाता है। इसे मानक समय कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Standard time",
+       "hi": "मानक समय"
+      },
+      "text": {
+       "en": "The single time followed throughout a country (or a time zone), based on the local time of a chosen standard meridian.",
+       "hi": "पूरे देश (या एक समय क्षेत्र) में अपनाया जाने वाला एक ही समय, जो चुनी गई मानक देशांतर रेखा के स्थानीय समय पर आधारित होता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Greenwich Mean Time (GMT)",
+       "hi": "ग्रीनविच माध्य समय (GMT)"
+      },
+      "text": {
+       "en": "The local time at the Prime Meridian (0°) at Greenwich. The standard times of all countries are expressed as so many hours ahead of (+) or behind (–) GMT.",
+       "hi": "ग्रीनविच के प्रधान याम्योत्तर (0°) का स्थानीय समय। सभी देशों के मानक समय GMT से इतने घंटे आगे (+) या पीछे (–) के रूप में बताए जाते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Indian Standard Time (IST): India's standard meridian is 82.5°E (82°30'E), which passes near Mirzapur close to Prayagraj in Uttar Pradesh. IST is 5 hours 30 minutes (5.5 hours) ahead of GMT. This is because 82.5 × 4 minutes = 330 minutes = 5 hours 30 minutes.",
+      "hi": "भारतीय मानक समय (IST): भारत का मानक याम्योत्तर 82.5°E (82°30' पूर्व) है, जो उत्तर प्रदेश में प्रयागराज के पास मिर्ज़ापुर के निकट से गुज़रता है। IST, GMT से 5 घंटे 30 मिनट (5.5 घंटे) आगे है। इसका कारण है: 82.5 × 4 मिनट = 330 मिनट = 5 घंटे 30 मिनट।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Why is it 5:30 pm in India when it is 12 noon in London?",
+       "hi": "जब लंदन में दोपहर 12 बजे होते हैं तब भारत में शाम 5:30 क्यों बजते हैं?"
+      },
+      "a": {
+       "en": "Step 1: London (Greenwich) is at 0°; IST is based on 82.5°E.\nStep 2: Difference in longitude = 82.5°.\nStep 3: Time difference = 82.5 × 4 = 330 minutes = 5 hours 30 minutes.\nStep 4: India is east of Greenwich, so its time is ahead: 12:00 + 5:30 = 5:30 pm.\nAnswer: Because India's standard meridian is 82.5° east of Greenwich, IST is 5 hours 30 minutes ahead of GMT.",
+       "hi": "चरण 1: लंदन (ग्रीनविच) 0° पर है; IST 82.5°E पर आधारित है।\nचरण 2: देशांतर का अंतर = 82.5°।\nचरण 3: समय का अंतर = 82.5 × 4 = 330 मिनट = 5 घंटे 30 मिनट।\nचरण 4: भारत ग्रीनविच के पूर्व में है, इसलिए उसका समय आगे है: 12:00 + 5:30 = शाम 5:30।\nउत्तर: क्योंकि भारत का मानक याम्योत्तर ग्रीनविच से 82.5° पूर्व है, IST, GMT से 5 घंटे 30 मिनट आगे है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Delhi (29°N, 77°E) and Bengaluru (13°N, 77°E) have nearly the same longitude. What is the difference in their local times?",
+       "hi": "दिल्ली (29°N, 77°E) और बेंगलुरु (13°N, 77°E) का देशांतर लगभग समान है। उनके स्थानीय समय में कितना अंतर है?"
+      },
+      "a": {
+       "en": "Step 1: Local time depends only on longitude, not on latitude.\nStep 2: Difference in longitude = 77° – 77° = 0°.\nStep 3: 0 × 4 minutes = 0 minutes.\nAnswer: Practically no difference; both cities have almost the same local time, even though they are about 16° of latitude (roughly 1,800 km) apart.",
+       "hi": "चरण 1: स्थानीय समय केवल देशांतर पर निर्भर करता है, अक्षांश पर नहीं।\nचरण 2: देशांतर का अंतर = 77° – 77° = 0°।\nचरण 3: 0 × 4 मिनट = 0 मिनट।\nउत्तर: लगभग कोई अंतर नहीं; दोनों नगरों का स्थानीय समय लगभग एक ही है, भले ही वे लगभग 16° अक्षांश (लगभग 1,800 किमी) दूर हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Local time versus IST in India: India stretches from about 68°E to 97°E, about 29° of longitude, so the local time between its western and eastern ends differs by about 29 × 4 = 116 minutes, nearly 2 hours. Yet the whole country follows IST. In Gujarat (west of 82.5°E) local time is behind IST, so clocks show 'later' than the Sun does. In Assam and Arunachal Pradesh (east of 82.5°E) local time is ahead of IST; the Sun rises and sets very early by the clock there.",
+      "hi": "भारत में स्थानीय समय और IST: भारत लगभग 68°E से 97°E तक, यानी लगभग 29° देशांतर में फैला है, इसलिए इसके पश्चिमी और पूर्वी छोर के स्थानीय समय में लगभग 29 × 4 = 116 मिनट, यानी लगभग 2 घंटे का अंतर है। फिर भी पूरा देश IST अपनाता है। गुजरात (82.5°E के पश्चिम) में स्थानीय समय IST से पीछे है, इसलिए घड़ी सूर्य की तुलना में 'अधिक' समय दिखाती है। असम और अरुणाचल प्रदेश (82.5°E के पूर्व) में स्थानीय समय IST से आगे है; वहाँ घड़ी के हिसाब से सूर्य बहुत जल्दी उगता और डूबता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Let's explore: In the Gujarat-Assam phone call, the difference in daylight comes from local time (the Sun's position), but both friends' clocks show exactly the same time, IST. This is the difference between local time (different in each place) and standard time (same across the country).",
+      "hi": "आइए खोजें: गुजरात-असम फ़ोन वार्ता में दिन के उजाले का अंतर स्थानीय समय (सूर्य की स्थिति) के कारण है, पर दोनों मित्रों की घड़ियाँ बिल्कुल एक ही समय, IST, दिखाती हैं। यही स्थानीय समय (हर स्थान पर अलग) और मानक समय (पूरे देश में एक) का अंतर है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Time zones: The standard times of the world are organised into time zones, which broadly follow the 15° bands of Fig. 1.7. But on the world time-zone map (Fig. 1.8) the boundaries between zones are not straight lines. They bend and zigzag because they follow international borders, so that each country (or each part of a large country) keeps one time. The numbers written inside countries show how many hours to add to GMT (positive sign) or subtract from GMT (negative sign) to get their standard time. Fig. 1.9 is a globe centred on India showing such times for some countries of Africa and Eurasia. Some countries, like India (+5:30), use a half-hour difference.",
+      "hi": "समय क्षेत्र: विश्व के मानक समय समय क्षेत्रों (टाइम ज़ोन) में व्यवस्थित हैं, जो मोटे तौर पर चित्र 1.7 की 15° की पट्टियों का अनुसरण करते हैं। पर विश्व के समय-क्षेत्र मानचित्र (चित्र 1.8) पर क्षेत्रों के बीच की सीमाएँ सीधी रेखाएँ नहीं हैं। वे मुड़ती और टेढ़ी-मेढ़ी होती हैं क्योंकि वे अंतरराष्ट्रीय सीमाओं के साथ चलती हैं, ताकि हर देश (या बड़े देश का हर भाग) एक ही समय रखे। देशों के अंदर लिखी संख्याएँ बताती हैं कि उनका मानक समय पाने के लिए GMT में कितने घंटे जोड़ने (धन चिह्न) या घटाने (ऋण चिह्न) हैं। चित्र 1.9 भारत पर केंद्रित एक ग्लोब है जो अफ्रीका और यूरेशिया के कुछ देशों के ऐसे समय दिखाता है। कुछ देश, जैसे भारत (+5:30), आधे घंटे का अंतर अपनाते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Time zone",
+       "hi": "समय क्षेत्र"
+      },
+      "text": {
+       "en": "A region of the Earth in which the same standard time is used.",
+       "hi": "पृथ्वी का वह क्षेत्र जिसमें एक ही मानक समय अपनाया जाता है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Don't miss out: Not every country has only one standard time. Very large countries spread over many degrees of longitude, such as Russia, Canada and the USA, have several time zones. The USA has six time zones and Russia has 11, so a traveller crossing Russia from east to west has to reset the watch 10 times.",
+      "hi": "छूटे नहीं: हर देश में केवल एक मानक समय नहीं होता। देशांतर के कई अंशों में फैले बहुत बड़े देशों, जैसे रूस, कनाडा और अमेरिका (USA), में कई समय क्षेत्र हैं। अमेरिका में छह समय क्षेत्र हैं और रूस में 11, इसलिए रूस को पूर्व से पश्चिम पार करने वाले यात्री को अपनी घड़ी 10 बार बदलनी पड़ती है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "When it is 10 am GMT, what is the standard time in a country whose time zone is +3 and in one whose zone is –5?",
+       "hi": "जब GMT सुबह 10 बजे हो, तब +3 समय क्षेत्र वाले देश और –5 समय क्षेत्र वाले देश में मानक समय क्या होगा?"
+      },
+      "a": {
+       "en": "Step 1: +3 means add 3 hours: 10 am + 3 h = 1 pm.\nStep 2: –5 means subtract 5 hours: 10 am – 5 h = 5 am.\nAnswer: 1 pm in the +3 country and 5 am in the –5 country.",
+       "hi": "चरण 1: +3 का अर्थ है 3 घंटे जोड़िए: सुबह 10 + 3 घंटे = दोपहर 1 बजे।\nचरण 2: –5 का अर्थ है 5 घंटे घटाइए: सुबह 10 – 5 घंटे = सुबह 5 बजे।\nउत्तर: +3 वाले देश में दोपहर 1 बजे और –5 वाले देश में सुबह 5 बजे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The International Date Line (IDL): Opposite the Prime Meridian, at about 180° longitude, lies the International Date Line. Here the +12 time zone and the –12 time zone touch each other, so places on either side of it are a whole day apart. If you cross it by ship or plane you must change the date. Crossing it travelling eastward, you subtract a day (for example, Monday becomes Sunday); crossing it travelling westward, you add a day (Sunday becomes Monday). The line is only 'approximately' at 180° because it bends in places to avoid splitting a country or a group of islands into two different dates.",
+      "hi": "अंतरराष्ट्रीय तिथि रेखा (IDL): प्रधान याम्योत्तर के ठीक विपरीत, लगभग 180° देशांतर पर, अंतरराष्ट्रीय तिथि रेखा है। यहाँ +12 और –12 समय क्षेत्र एक-दूसरे को छूते हैं, इसलिए इसके दोनों ओर के स्थानों में पूरे एक दिन का अंतर होता है। जहाज़ या विमान से इसे पार करने पर तारीख़ बदलनी पड़ती है। पूर्व की ओर यात्रा करते हुए पार करने पर एक दिन घटाते हैं (जैसे सोमवार से रविवार); पश्चिम की ओर यात्रा करते हुए पार करने पर एक दिन जोड़ते हैं (रविवार से सोमवार)। यह रेखा केवल 'लगभग' 180° पर है क्योंकि यह कुछ जगहों पर मुड़ जाती है ताकि कोई देश या द्वीप-समूह दो अलग-अलग तारीख़ों में न बँट जाए।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "International Date Line",
+       "hi": "अंतरराष्ट्रीय तिथि रेखा"
+      },
+      "text": {
+       "en": "An imaginary line roughly along the 180° meridian, across which the calendar date changes by one day.",
+       "hi": "लगभग 180° देशांतर के साथ चलने वाली काल्पनिक रेखा, जिसे पार करने पर कैलेंडर की तारीख़ एक दिन बदल जाती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A ship sails westward across the International Date Line on Tuesday, 10 March. What date should the captain set after crossing?",
+       "hi": "एक जहाज़ मंगलवार, 10 मार्च को पश्चिम की ओर यात्रा करते हुए अंतरराष्ट्रीय तिथि रेखा पार करता है। पार करने के बाद कप्तान को कौन-सी तारीख़ रखनी चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: Crossing westward means adding one day.\nStep 2: Tuesday, 10 March + 1 day = Wednesday, 11 March.\nAnswer: Wednesday, 11 March.",
+       "hi": "चरण 1: पश्चिम की ओर पार करने पर एक दिन जोड़ते हैं।\nचरण 2: मंगलवार, 10 मार्च + 1 दिन = बुधवार, 11 मार्च।\nउत्तर: बुधवार, 11 मार्च।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.8 Before we move on",
+    "hi": "1.8 आगे बढ़ने से पहले"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Maps represent an area of the Earth, small or large; their main components are distance (scale), direction and symbols.",
+       "Any place on Earth can be located exactly with the grid of latitudes (east-west lines parallel to the Equator) and longitudes (north-south lines from pole to pole).",
+       "Longitude also marks time and defines time zones.",
+       "The International Date Line lies approximately at 180°, opposite the Prime Meridian; crossing it changes the date by one day."
+      ],
+      "hi": [
+       "मानचित्र पृथ्वी के छोटे या बड़े क्षेत्र को दर्शाते हैं; इनके मुख्य घटक दूरी (मापनी), दिशा और प्रतीक हैं।",
+       "पृथ्वी पर कोई भी स्थान अक्षांशों (विषुवत वृत्त के समानांतर पूर्व-पश्चिम रेखाएँ) और देशांतरों (ध्रुव से ध्रुव तक उत्तर-दक्षिण रेखाएँ) के ग्रिड से ठीक-ठीक ढूँढा जा सकता है।",
+       "देशांतर समय भी बताता है और समय क्षेत्र तय करता है।",
+       "अंतरराष्ट्रीय तिथि रेखा प्रधान याम्योत्तर के विपरीत लगभग 180° पर है; इसे पार करने पर तारीख़ एक दिन बदल जाती है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Crossword from the book (answers in our own list): scale (squeezes a huge area into a map), globe (a convenient sphere), Equator (longest parallel), Greenwich (place the Prime Meridian is attached to), map (convenient to find your way), latitude (distance from the Equator), longitude (distance from the Prime Meridian), coordinates (latitude and longitude together), grid (what parallels and meridians create), IST (the time we follow in India), North Pole (on top of the world), IDL (line where the date changes).",
+      "hi": "पुस्तक की वर्ग पहेली (उत्तर हमारी अपनी सूची में): मापनी (बड़े क्षेत्र को मानचित्र में समेटती है), ग्लोब (सुविधाजनक गोला), विषुवत वृत्त (सबसे लंबी अक्षांश रेखा), ग्रीनविच (जिससे प्रधान याम्योत्तर जुड़ा है), मानचित्र (रास्ता खोजने में सुविधाजनक), अक्षांश (विषुवत वृत्त से दूरी), देशांतर (प्रधान याम्योत्तर से दूरी), निर्देशांक (अक्षांश और देशांतर साथ में), ग्रिड (अक्षांश-देशांतर रेखाओं से बनता जाल), IST (भारत में अपनाया जाने वाला समय), उत्तरी ध्रुव (दुनिया के शिखर पर), IDL (वह रेखा जहाँ तारीख़ बदलती है)।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking all parallels of latitude are the same length. Fix: only the Equator is the longest; parallels get smaller towards the poles and become a point at 90°.",
+   "Mixing up latitude and longitude. Fix: Latitude = 'ladder' rungs going up and down (north-south position, lines run east-west); longitude = 'long' lines from pole to pole (east-west position).",
+   "Writing a latitude or longitude without N/S or E/W. Fix: always add the letter, except for 0° (Equator or Prime Meridian), 90° at a pole needs N or S, and 180° needs no letter.",
+   "Subtracting time when going east. Fix: east is ahead, so add 4 minutes per degree; going west, subtract.",
+   "Thinking local time depends on latitude. Fix: places on the same meridian (like Delhi and Bengaluru) have the same local time, however far north or south they are.",
+   "Believing time-zone boundaries are exactly the meridians. Fix: they zigzag to follow country borders.",
+   "Thinking the local time everywhere in India equals IST. Fix: IST is the local time only along 82.5°E; Assam's local time is ahead and Gujarat's is behind.",
+   "Getting the date-line rule backwards. Fix: crossing the IDL eastward subtract a day; westward add a day.",
+   "Forgetting to convert the scale to '1 cm = ...' before multiplying. Fix: for 2.5 cm = 500 km, first find 1 cm = 200 km."
+  ],
+  "hi": [
+   "यह सोचना कि सभी अक्षांश रेखाएँ बराबर लंबी हैं। सुधार: केवल विषुवत वृत्त सबसे लंबा है; ध्रुवों की ओर अक्षांश रेखाएँ छोटी होती जाती हैं और 90° पर बिंदु बन जाती हैं।",
+   "अक्षांश और देशांतर को आपस में मिलाना। सुधार: अक्षांश बताता है कितना उत्तर-दक्षिण (रेखाएँ पूर्व-पश्चिम चलती हैं); देशांतर ध्रुव से ध्रुव तक की लंबी रेखाएँ हैं (कितना पूर्व-पश्चिम)।",
+   "अक्षांश या देशांतर के साथ N/S या E/W न लिखना। सुधार: हमेशा अक्षर लिखिए, सिवाय 0° (विषुवत वृत्त या प्रधान याम्योत्तर) और 180° के; ध्रुव के 90° के साथ N या S ज़रूर लिखिए।",
+   "पूर्व जाने पर समय घटाना। सुधार: पूर्व आगे है, इसलिए हर अंश पर 4 मिनट जोड़िए; पश्चिम जाने पर घटाइए।",
+   "यह सोचना कि स्थानीय समय अक्षांश पर निर्भर है। सुधार: एक ही देशांतर पर स्थित स्थानों (जैसे दिल्ली और बेंगलुरु) का स्थानीय समय एक ही होता है, चाहे वे कितने भी उत्तर-दक्षिण दूर हों।",
+   "यह मानना कि समय क्षेत्रों की सीमाएँ ठीक देशांतर रेखाएँ हैं। सुधार: वे देशों की सीमाओं के साथ टेढ़ी-मेढ़ी चलती हैं।",
+   "यह सोचना कि भारत में हर जगह स्थानीय समय IST के बराबर है। सुधार: IST केवल 82.5°E पर स्थानीय समय है; असम का स्थानीय समय आगे और गुजरात का पीछे है।",
+   "तिथि रेखा का नियम उल्टा कर देना। सुधार: IDL को पूर्व की ओर पार करें तो एक दिन घटाइए; पश्चिम की ओर पार करें तो एक दिन जोड़िए।",
+   "गुणा करने से पहले मापनी को '1 सेमी = ...' में न बदलना। सुधार: 2.5 सेमी = 500 किमी हो तो पहले 1 सेमी = 200 किमी निकालिए।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Map",
+    "hi": "मानचित्र"
+   },
+   "d": {
+    "en": "A drawing of an area of the Earth's surface on a flat surface, seen from above.",
+    "hi": "पृथ्वी की सतह के किसी क्षेत्र का समतल सतह पर, ऊपर से देखा गया चित्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "Atlas",
+    "hi": "एटलस"
+   },
+   "d": {
+    "en": "A book or collection of maps.",
+    "hi": "मानचित्रों की पुस्तक या संग्रह।"
+   }
+  },
+  {
+   "t": {
+    "en": "Physical map",
+    "hi": "भौतिक मानचित्र"
+   },
+   "d": {
+    "en": "A map showing natural features like mountains, rivers and oceans.",
+    "hi": "पर्वत, नदियाँ, महासागर जैसे प्राकृतिक स्वरूप दिखाने वाला मानचित्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "Political map",
+    "hi": "राजनीतिक मानचित्र"
+   },
+   "d": {
+    "en": "A map showing countries, states, boundaries and cities.",
+    "hi": "देश, राज्य, सीमाएँ और नगर दिखाने वाला मानचित्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "Thematic map",
+    "hi": "विषयगत मानचित्र"
+   },
+   "d": {
+    "en": "A map showing one particular kind of information, such as rainfall or forests.",
+    "hi": "वर्षा या वन जैसी किसी एक विशेष जानकारी को दिखाने वाला मानचित्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "Scale",
+    "hi": "मापनी"
+   },
+   "d": {
+    "en": "The ratio between distance on a map and real distance on the ground.",
+    "hi": "मानचित्र पर की दूरी और ज़मीन पर की वास्तविक दूरी का अनुपात।"
+   }
+  },
+  {
+   "t": {
+    "en": "Cardinal directions",
+    "hi": "प्रधान दिशाएँ"
+   },
+   "d": {
+    "en": "The four main directions: north, east, south and west.",
+    "hi": "चार मुख्य दिशाएँ: उत्तर, पूर्व, दक्षिण और पश्चिम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Intermediate directions",
+    "hi": "मध्यवर्ती दिशाएँ"
+   },
+   "d": {
+    "en": "NE, SE, SW and NW, lying between the cardinal directions.",
+    "hi": "प्रधान दिशाओं के बीच की दिशाएँ: उत्तर-पूर्व, दक्षिण-पूर्व, दक्षिण-पश्चिम, उत्तर-पश्चिम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Symbols",
+    "hi": "प्रतीक (रूढ़ चिह्न)"
+   },
+   "d": {
+    "en": "Signs, lines, letters and colours used on maps to represent real features.",
+    "hi": "वास्तविक वस्तुओं को दर्शाने के लिए मानचित्र पर उपयोग होने वाले चिह्न, रेखाएँ, अक्षर और रंग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Survey of India",
+    "hi": "भारतीय सर्वेक्षण विभाग"
+   },
+   "d": {
+    "en": "The government body that makes official maps of India and fixes map symbols.",
+    "hi": "भारत के आधिकारिक मानचित्र बनाने और प्रतीक तय करने वाली सरकारी संस्था।"
+   }
+  },
+  {
+   "t": {
+    "en": "Globe",
+    "hi": "ग्लोब"
+   },
+   "d": {
+    "en": "A sphere with a map drawn on it; a model of the Earth.",
+    "hi": "जिस पर मानचित्र बना हो ऐसा गोला; पृथ्वी का मॉडल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Coordinates",
+    "hi": "निर्देशांक"
+   },
+   "d": {
+    "en": "A pair of values (latitude and longitude) that fix a place's position.",
+    "hi": "मानों की जोड़ी (अक्षांश और देशांतर) जो किसी स्थान की स्थिति तय करती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Equator",
+    "hi": "विषुवत वृत्त"
+   },
+   "d": {
+    "en": "The 0° latitude circle midway between the poles; the longest parallel.",
+    "hi": "ध्रुवों के ठीक बीच 0° अक्षांश का वृत्त; सबसे लंबी अक्षांश रेखा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Latitude",
+    "hi": "अक्षांश"
+   },
+   "d": {
+    "en": "Distance north or south of the Equator in degrees (0° to 90°).",
+    "hi": "विषुवत वृत्त से उत्तर या दक्षिण की दूरी, अंशों में (0° से 90°)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Parallel of latitude",
+    "hi": "अक्षांश रेखा"
+   },
+   "d": {
+    "en": "An imaginary east-west circle parallel to the Equator.",
+    "hi": "विषुवत वृत्त के समानांतर पूर्व-पश्चिम का काल्पनिक वृत्त।"
+   }
+  },
+  {
+   "t": {
+    "en": "Meridian of longitude",
+    "hi": "देशांतर रेखा"
+   },
+   "d": {
+    "en": "An imaginary half-circle from the North Pole to the South Pole.",
+    "hi": "उत्तरी ध्रुव से दक्षिणी ध्रुव तक का काल्पनिक अर्धवृत्त।"
+   }
+  },
+  {
+   "t": {
+    "en": "Longitude",
+    "hi": "देशांतर"
+   },
+   "d": {
+    "en": "Distance east or west of the Prime Meridian in degrees (0° to 180°).",
+    "hi": "प्रधान याम्योत्तर से पूर्व या पश्चिम की दूरी, अंशों में (0° से 180°)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prime Meridian",
+    "hi": "प्रधान याम्योत्तर"
+   },
+   "d": {
+    "en": "The 0° meridian, passing through Greenwich, London (fixed in 1884).",
+    "hi": "ग्रीनविच, लंदन से गुज़रने वाली 0° देशांतर रेखा (1884 में तय)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hemisphere",
+    "hi": "गोलार्ध"
+   },
+   "d": {
+    "en": "Half of the Earth: Northern/Southern (by the Equator) or Eastern/Western (by the Prime Meridian).",
+    "hi": "पृथ्वी का आधा भाग: उत्तरी/दक्षिणी (विषुवत वृत्त से) या पूर्वी/पश्चिमी (प्रधान याम्योत्तर से)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Grid",
+    "hi": "ग्रिड"
+   },
+   "d": {
+    "en": "The network of parallels and meridians on a globe or map.",
+    "hi": "ग्लोब या मानचित्र पर अक्षांश और देशांतर रेखाओं का जाल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Madhya rekha",
+    "hi": "मध्य रेखा"
+   },
+   "d": {
+    "en": "India's ancient prime meridian passing through Ujjayini (Ujjain).",
+    "hi": "उज्जयिनी (उज्जैन) से गुज़रने वाला भारत का प्राचीन प्रधान याम्योत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Torrid, temperate, frigid",
+    "hi": "उष्ण, शीतोष्ण, शीत"
+   },
+   "d": {
+    "en": "Hot climate near the Equator, moderate in middle latitudes, very cold near the poles.",
+    "hi": "विषुवत वृत्त के पास गर्म, मध्य अक्षांशों में मध्यम, ध्रुवों के पास बहुत ठंडी जलवायु।"
+   }
+  },
+  {
+   "t": {
+    "en": "Local time",
+    "hi": "स्थानीय समय"
+   },
+   "d": {
+    "en": "Time of a place based on the position of the Sun there.",
+    "hi": "किसी स्थान पर सूर्य की स्थिति के आधार पर तय समय।"
+   }
+  },
+  {
+   "t": {
+    "en": "Standard time",
+    "hi": "मानक समय"
+   },
+   "d": {
+    "en": "One uniform time for a country or zone, based on a standard meridian.",
+    "hi": "किसी देश या क्षेत्र का एक समान समय, जो मानक याम्योत्तर पर आधारित है।"
+   }
+  },
+  {
+   "t": {
+    "en": "GMT",
+    "hi": "ग्रीनविच माध्य समय"
+   },
+   "d": {
+    "en": "Greenwich Mean Time: local time at 0° longitude.",
+    "hi": "0° देशांतर पर स्थानीय समय।"
+   }
+  },
+  {
+   "t": {
+    "en": "IST",
+    "hi": "भारतीय मानक समय"
+   },
+   "d": {
+    "en": "Indian Standard Time, based on 82.5°E; 5 hours 30 minutes ahead of GMT.",
+    "hi": "82.5°E पर आधारित भारतीय मानक समय; GMT से 5 घंटे 30 मिनट आगे।"
+   }
+  },
+  {
+   "t": {
+    "en": "Time zone",
+    "hi": "समय क्षेत्र"
+   },
+   "d": {
+    "en": "A region where the same standard time is followed.",
+    "hi": "वह क्षेत्र जहाँ एक ही मानक समय अपनाया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "International Date Line",
+    "hi": "अंतरराष्ट्रीय तिथि रेखा"
+   },
+   "d": {
+    "en": "Line near 180° longitude where the date changes by one day.",
+    "hi": "180° देशांतर के पास की रेखा जहाँ तारीख़ एक दिन बदलती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Estuary",
+    "hi": "ज्वारनदमुख (एस्चुअरी)"
+   },
+   "d": {
+    "en": "The place where a river meets the sea.",
+    "hi": "वह स्थान जहाँ नदी समुद्र से मिलती है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What is a map? Name its three main components.",
+    "hi": "मानचित्र क्या है? इसके तीन मुख्य घटक बताइए।"
+   },
+   "a": {
+    "en": "A map is a drawing of an area of the Earth's surface on a flat surface, as seen from above. Its three main components are distance (shown by the scale), direction and symbols.",
+    "hi": "मानचित्र पृथ्वी की सतह के किसी क्षेत्र का, ऊपर से देखा गया, समतल सतह पर बना चित्र है। इसके तीन मुख्य घटक हैं: दूरी (मापनी से दिखाई जाती है), दिशा और प्रतीक।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the three kinds of maps and give one example of each.",
+    "hi": "मानचित्र के तीन प्रकार बताइए और हर एक का एक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Physical map, e.g. a map showing India's mountains and rivers; political map, e.g. a map of Indian states and capitals; thematic map, e.g. a rainfall map of India.",
+    "hi": "भौतिक मानचित्र, जैसे भारत के पर्वत और नदियाँ दिखाने वाला मानचित्र; राजनीतिक मानचित्र, जैसे भारत के राज्य और राजधानियाँ; विषयगत मानचित्र, जैसे भारत का वर्षा मानचित्र।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What is an atlas?",
+    "hi": "एटलस क्या है?"
+   },
+   "a": {
+    "en": "An atlas is a book or collection of maps.",
+    "hi": "एटलस मानचित्रों की पुस्तक या संग्रह है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the four cardinal directions and the four intermediate directions.",
+    "hi": "चार प्रधान और चार मध्यवर्ती दिशाओं के नाम लिखिए।"
+   },
+   "a": {
+    "en": "Cardinal: north, east, south, west. Intermediate: northeast, southeast, southwest, northwest.",
+    "hi": "प्रधान: उत्तर, पूर्व, दक्षिण, पश्चिम। मध्यवर्ती: उत्तर-पूर्व, दक्षिण-पूर्व, दक्षिण-पश्चिम, उत्तर-पश्चिम।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Why do we need symbols and colours on a map?",
+    "hi": "मानचित्र में हमें प्रतीकों और रंगों की आवश्यकता क्यों होती है?"
+   },
+   "a": {
+    "en": "There is not enough space on a map to draw every building, road, river or tree. Symbols and colours show many features in a small space, keep the map neat, and, because they are standard (for example, blue for water, green for vegetation, fixed Survey of India signs), anyone can read the map even without knowing the local language.",
+    "hi": "मानचित्र पर हर भवन, सड़क, नदी या पेड़ बनाने की जगह नहीं होती। प्रतीक और रंग कम जगह में बहुत-सी चीज़ें दिखाते हैं, मानचित्र को साफ़ रखते हैं, और मानक होने के कारण (जैसे जल के लिए नीला, वनस्पति के लिए हरा, भारतीय सर्वेक्षण विभाग के निश्चित चिह्न) कोई भी व्यक्ति स्थानीय भाषा जाने बिना भी मानचित्र पढ़ सकता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What is the latitude of the Equator, the North Pole and the South Pole?",
+    "hi": "विषुवत वृत्त, उत्तरी ध्रुव और दक्षिणी ध्रुव के अक्षांश क्या हैं?"
+   },
+   "a": {
+    "en": "Equator 0°, North Pole 90°N, South Pole 90°S.",
+    "hi": "विषुवत वृत्त 0°, उत्तरी ध्रुव 90°N, दक्षिणी ध्रुव 90°S।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Why is the Prime Meridian also called the Greenwich Meridian?",
+    "hi": "प्रधान याम्योत्तर को ग्रीनविच याम्योत्तर भी क्यों कहते हैं?"
+   },
+   "a": {
+    "en": "Because in 1884 several nations agreed that the 0° meridian would be the one passing through Greenwich, an area of London in England.",
+    "hi": "क्योंकि 1884 में कई देशों ने तय किया कि 0° देशांतर रेखा वह होगी जो इंग्लैंड में लंदन के ग्रीनविच क्षेत्र से गुज़रती है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What was madhya rekha? Through which city did it pass?",
+    "hi": "मध्य रेखा क्या थी? यह किस नगर से गुज़रती थी?"
+   },
+   "a": {
+    "en": "Madhya rekha ('middle line') was ancient India's prime meridian, used as the reference in Indian astronomical texts. It passed through Ujjayini, today's Ujjain, a great centre of astronomy where Varahamihira worked about 1,500 years ago.",
+    "hi": "मध्य रेखा प्राचीन भारत का प्रधान याम्योत्तर था, जो भारतीय खगोलीय ग्रंथों में गणना का आधार था। यह उज्जयिनी (आज का उज्जैन) से गुज़रती थी, जो खगोल विज्ञान का महान केंद्र था और जहाँ लगभग 1,500 वर्ष पहले वराहमिहिर ने कार्य किया।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "On a map with scale 2.5 cm = 500 km, the estuary of the Narmada and the estuary of the Ganga measure about 8 cm apart. What is the real distance?",
+    "hi": "2.5 सेमी = 500 किमी मापनी वाले मानचित्र पर नर्मदा के ज्वारनदमुख और गंगा के ज्वारनदमुख के बीच लगभग 8 सेमी की दूरी है। वास्तविक दूरी क्या है?"
+   },
+   "a": {
+    "en": "Step 1: 1 cm = 500 ÷ 2.5 = 200 km.\nStep 2: 8 cm = 8 × 200 = 1,600 km.\nAnswer: About 1,600 km (your own measurement on the book's map may give a slightly different round number; the method is the same).",
+    "hi": "चरण 1: 1 सेमी = 500 ÷ 2.5 = 200 किमी।\nचरण 2: 8 सेमी = 8 × 200 = 1,600 किमी।\nउत्तर: लगभग 1,600 किमी (पुस्तक के मानचित्र पर आपका अपना माप थोड़ी अलग पूर्ण संख्या दे सकता है; विधि यही रहेगी)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A park is 60 m long and 80 m wide. Using a scale of 1 cm = 20 m, what will its length and width be on paper? If the diagonal on paper is 5 cm, what is the real diagonal?",
+    "hi": "एक पार्क 60 मी लंबा और 80 मी चौड़ा है। 1 सेमी = 20 मी की मापनी पर कागज़ पर इसकी लंबाई और चौड़ाई क्या होगी? यदि कागज़ पर विकर्ण 5 सेमी है तो वास्तविक विकर्ण कितना है?"
+   },
+   "a": {
+    "en": "Length on paper = 60 ÷ 20 = 3 cm; width = 80 ÷ 20 = 4 cm. Real diagonal = 5 × 20 = 100 m.",
+    "hi": "कागज़ पर लंबाई = 60 ÷ 20 = 3 सेमी; चौड़ाई = 80 ÷ 20 = 4 सेमी। वास्तविक विकर्ण = 5 × 20 = 100 मी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Give two differences between parallels of latitude and meridians of longitude.",
+    "hi": "अक्षांश रेखाओं और देशांतर रेखाओं के बीच दो अंतर बताइए।"
+   },
+   "a": {
+    "en": "1. Parallels run east-west and are full circles; meridians run north-south and are half-circles from pole to pole.\n2. Parallels have different lengths (Equator longest) and never meet; meridians are all equal in length and meet at the poles.",
+    "hi": "1. अक्षांश रेखाएँ पूर्व-पश्चिम चलती हैं और पूरे वृत्त हैं; देशांतर रेखाएँ उत्तर-दक्षिण चलती हैं और ध्रुव से ध्रुव तक अर्धवृत्त हैं।\n2. अक्षांश रेखाओं की लंबाई अलग-अलग है (विषुवत वृत्त सबसे लंबा) और वे कभी नहीं मिलतीं; देशांतर रेखाएँ सभी बराबर लंबी हैं और ध्रुवों पर मिलती हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What are coordinates? How do latitude and longitude help locate a place? Explain with an example.",
+    "hi": "निर्देशांक क्या हैं? अक्षांश और देशांतर किसी स्थान को ढूँढने में कैसे मदद करते हैं? उदाहरण सहित समझाइए।"
+   },
+   "a": {
+    "en": "Coordinates are two values that together fix an exact position, like 'row 5, shop 7' in a market or 'd4' on a chessboard. On the Earth, latitude tells how far north or south of the Equator a place is, and longitude tells how far east or west of the Prime Meridian it is. Where that parallel and that meridian cross is the place. Example: Delhi is at about 29°N, 77°E.",
+    "hi": "निर्देशांक दो मान हैं जो मिलकर ठीक-ठीक स्थिति तय करते हैं, जैसे बाज़ार में 'पंक्ति 5, दुकान 7' या शतरंज में 'd4'। पृथ्वी पर अक्षांश बताता है कि स्थान विषुवत वृत्त से कितना उत्तर या दक्षिण है, और देशांतर बताता है कि प्रधान याम्योत्तर से कितना पूर्व या पश्चिम है। जहाँ वह अक्षांश रेखा और देशांतर रेखा कटती हैं, वही स्थान है। उदाहरण: दिल्ली लगभग 29°N, 77°E पर है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How is latitude related to climate?",
+    "hi": "अक्षांश का जलवायु से क्या संबंध है?"
+   },
+   "a": {
+    "en": "Near the Equator (low latitude) the climate is generally hot (torrid). As latitude increases towards the poles, it becomes moderate (temperate). Near the poles (high latitude) it is very cold (frigid).",
+    "hi": "विषुवत वृत्त के पास (निम्न अक्षांश) जलवायु प्रायः गर्म (उष्ण) होती है। ध्रुवों की ओर अक्षांश बढ़ने पर यह मध्यम (शीतोष्ण) हो जाती है। ध्रुवों के पास (उच्च अक्षांश) बहुत ठंडी (शीत) होती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Delhi and Bengaluru are at 29°N and 13°N, and both at about 77°E. What is the difference in their local time? Why?",
+    "hi": "दिल्ली और बेंगलुरु 29°N और 13°N पर हैं, और दोनों लगभग 77°E पर। उनके स्थानीय समय में कितना अंतर है? क्यों?"
+   },
+   "a": {
+    "en": "No difference (0 minutes). Local time depends on longitude only. Both cities are on the same meridian, so the Sun reaches its highest point at the same moment in both.",
+    "hi": "कोई अंतर नहीं (0 मिनट)। स्थानीय समय केवल देशांतर पर निर्भर करता है। दोनों नगर एक ही देशांतर रेखा पर हैं, इसलिए दोनों में सूर्य एक ही क्षण अपने सबसे ऊँचे स्थान पर पहुँचता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is it 5:30 pm in India when it is noon in London?",
+    "hi": "जब लंदन में दोपहर 12 बजे होते हैं तब भारत में शाम 5:30 क्यों होते हैं?"
+   },
+   "a": {
+    "en": "London is on 0°. IST is based on 82.5°E. Time difference = 82.5 × 4 = 330 minutes = 5 h 30 min. India is east, so it is ahead: 12 noon + 5:30 = 5:30 pm.",
+    "hi": "लंदन 0° पर है। IST 82.5°E पर आधारित है। समय का अंतर = 82.5 × 4 = 330 मिनट = 5 घंटे 30 मिनट। भारत पूर्व में है, इसलिए आगे है: दोपहर 12 + 5:30 = शाम 5:30।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "When it is 12 noon at Greenwich, what is the local time at 60°E and at 75°W?",
+    "hi": "जब ग्रीनविच में दोपहर 12 बजे हों, तब 60°E और 75°W पर स्थानीय समय क्या होगा?"
+   },
+   "a": {
+    "en": "60°E: 60 ÷ 15 = 4 hours ahead, so 4 pm. 75°W: 75 ÷ 15 = 5 hours behind, so 7 am.",
+    "hi": "60°E: 60 ÷ 15 = 4 घंटे आगे, इसलिए शाम 4 बजे। 75°W: 75 ÷ 15 = 5 घंटे पीछे, इसलिए सुबह 7 बजे।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Mark true or false and give a reason: (a) All parallels of latitude have the same length. (b) A meridian is half as long as the Equator. (c) The South Pole is at 90°S. (d) In Assam, local time and IST are the same. (e) Time-zone boundaries are exactly the meridians. (f) The Equator is also a parallel of latitude.",
+    "hi": "सही या गलत बताइए और कारण दीजिए: (क) सभी अक्षांश रेखाएँ बराबर लंबी हैं। (ख) देशांतर रेखा विषुवत वृत्त की आधी लंबी है। (ग) दक्षिणी ध्रुव 90°S पर है। (घ) असम में स्थानीय समय और IST एक ही हैं। (ङ) समय क्षेत्रों की सीमाएँ ठीक देशांतर रेखाएँ हैं। (च) विषुवत वृत्त भी एक अक्षांश रेखा है।"
+   },
+   "a": {
+    "en": "(a) False: they shrink from the Equator towards the poles.\n(b) True: a meridian goes only from pole to pole, i.e. half-way round the Earth.\n(c) True: the poles are 90° from the Equator.\n(d) False: Assam lies roughly between 90°E and 96°E, about 7° to 13° east of 82.5°E, so its local time is roughly 30 to 55 minutes ahead of IST.\n(e) False: they zigzag to follow country borders.\n(f) True: it is the 0° parallel and the longest one.",
+    "hi": "(क) गलत: विषुवत वृत्त से ध्रुवों की ओर वे छोटी होती जाती हैं।\n(ख) सही: देशांतर रेखा केवल ध्रुव से ध्रुव तक, यानी पृथ्वी के आधे चक्कर तक जाती है।\n(ग) सही: ध्रुव विषुवत वृत्त से 90° पर हैं।\n(घ) गलत: असम लगभग 90°E से 96°E के बीच, यानी 82.5°E से लगभग 7° से 13° पूर्व में है, इसलिए उसका स्थानीय समय IST से लगभग 30 से 55 मिनट आगे है।\n(ङ) गलत: वे देशों की सीमाओं के साथ टेढ़ी-मेढ़ी चलती हैं।\n(च) सही: यह 0° की और सबसे लंबी अक्षांश रेखा है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find out what lies in each of the eight directions from your school. How would you record it?",
+    "hi": "अपने विद्यालय से आठों दिशाओं में क्या है, पता कीजिए। आप इसे कैसे लिखेंगे?"
+   },
+   "a": {
+    "en": "Stand at the school gate, find north (using the morning Sun on your right side when facing north, or a compass). Make a table with eight rows: N, NE, E, SE, S, SW, W, NW, and write the nearest landmark in each (for example, N: post office; E: river; SW: market). You can also draw these on a rough map with a north arrow and symbols.",
+    "hi": "विद्यालय के गेट पर खड़े होकर उत्तर दिशा पहचानिए (उत्तर की ओर मुँह करने पर सुबह का सूर्य आपके दाईं ओर होगा, या कंपास से)। आठ पंक्तियों की एक तालिका बनाइए: उत्तर, उत्तर-पूर्व, पूर्व, दक्षिण-पूर्व, दक्षिण, दक्षिण-पश्चिम, पश्चिम, उत्तर-पश्चिम, और हर एक में सबसे पास का प्रमुख स्थान लिखिए (जैसे उत्तर: डाकघर; पूर्व: नदी; दक्षिण-पश्चिम: बाज़ार)। आप इन्हें उत्तर तीर और प्रतीकों के साथ एक कच्चे मानचित्र पर भी बना सकते हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "What is the difference between local time and standard time? Answer in about 100 words.",
+    "hi": "स्थानीय समय और मानक समय में क्या अंतर है? लगभग 100 शब्दों में उत्तर दीजिए।"
+   },
+   "a": {
+    "en": "Local time is the time of a particular place decided by the position of the Sun there; it is noon when the Sun is highest in that place's sky. Because the Earth turns 15° every hour, local time changes by 4 minutes for every degree of longitude, so every meridian has a different local time. Standard time is one common time chosen for a whole country or time zone, based on the local time of one standard meridian. It avoids confusion in railways, offices and broadcasts. In India, local times differ by nearly 2 hours from Gujarat to Arunachal Pradesh, but everyone follows IST, based on 82.5°E, which is GMT + 5:30.",
+    "hi": "स्थानीय समय किसी विशेष स्थान का वह समय है जो वहाँ सूर्य की स्थिति से तय होता है; जब उस स्थान के आकाश में सूर्य सबसे ऊँचा हो, तब दोपहर 12 बजे होते हैं। क्योंकि पृथ्वी हर घंटे 15° घूमती है, देशांतर के हर अंश पर स्थानीय समय 4 मिनट बदलता है, इसलिए हर देशांतर रेखा का स्थानीय समय अलग होता है। मानक समय पूरे देश या समय क्षेत्र के लिए चुना गया एक साझा समय है, जो एक मानक याम्योत्तर के स्थानीय समय पर आधारित होता है। इससे रेल, दफ़्तर और प्रसारण में भ्रम नहीं होता। भारत में गुजरात से अरुणाचल प्रदेश तक स्थानीय समय में लगभग 2 घंटे का अंतर है, पर सभी 82.5°E पर आधारित IST (GMT + 5:30) अपनाते हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Place P is at 30°E and place Q is at 45°W. If it is 3 pm at P, what is the local time at Q?",
+    "hi": "स्थान P 30°E पर और स्थान Q 45°W पर है। यदि P पर दोपहर 3 बजे हों, तो Q पर स्थानीय समय क्या होगा?"
+   },
+   "a": {
+    "en": "Step 1: The places are on opposite sides of Greenwich, so add the longitudes: 30 + 45 = 75°.\nStep 2: Time difference = 75 × 4 = 300 minutes = 5 hours.\nStep 3: Q is west of P, so Q is behind: 3 pm – 5 h = 10 am.\nAnswer: 10 am.",
+    "hi": "चरण 1: दोनों स्थान ग्रीनविच के विपरीत ओर हैं, इसलिए देशांतर जोड़िए: 30 + 45 = 75°।\nचरण 2: समय का अंतर = 75 × 4 = 300 मिनट = 5 घंटे।\nचरण 3: Q, P के पश्चिम में है, इसलिए पीछे है: दोपहर 3 – 5 घंटे = सुबह 10 बजे।\nउत्तर: सुबह 10 बजे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "India stretches from about 68°E to 97°E. Calculate the difference in local time between its westernmost and easternmost points. Why does India still use one standard time?",
+    "hi": "भारत लगभग 68°E से 97°E तक फैला है। इसके सबसे पश्चिमी और सबसे पूर्वी बिंदुओं के स्थानीय समय में अंतर निकालिए। फिर भी भारत एक ही मानक समय क्यों अपनाता है?"
+   },
+   "a": {
+    "en": "Difference in longitude = 97 – 68 = 29°. Time difference = 29 × 4 = 116 minutes = 1 hour 56 minutes (nearly 2 hours). India still uses one standard time (IST, based on 82.5°E, roughly in the middle of the country) so that trains, flights, offices, schools, TV and radio all work on the same clock across the nation, avoiding confusion.",
+    "hi": "देशांतर का अंतर = 97 – 68 = 29°। समय का अंतर = 29 × 4 = 116 मिनट = 1 घंटा 56 मिनट (लगभग 2 घंटे)। फिर भी भारत एक ही मानक समय (IST, जो देश के लगभग बीच से गुज़रने वाली 82.5°E पर आधारित है) अपनाता है ताकि रेल, उड़ान, दफ़्तर, विद्यालय, टीवी और रेडियो पूरे देश में एक ही घड़ी से चलें और भ्रम न हो।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "What is the International Date Line? What happens to the date when you cross it eastward and westward? Why is it not a straight line?",
+    "hi": "अंतरराष्ट्रीय तिथि रेखा क्या है? पूर्व और पश्चिम की ओर पार करने पर तारीख़ का क्या होता है? यह सीधी रेखा क्यों नहीं है?"
+   },
+   "a": {
+    "en": "It is an imaginary line roughly along 180° longitude, opposite the Prime Meridian, where the +12 and –12 time zones meet. Crossing it eastward, you subtract one day (Monday becomes Sunday); crossing it westward, you add one day (Sunday becomes Monday). It bends in places so that no country or island group is split into two different dates.",
+    "hi": "यह लगभग 180° देशांतर के साथ, प्रधान याम्योत्तर के विपरीत एक काल्पनिक रेखा है, जहाँ +12 और –12 समय क्षेत्र मिलते हैं। पूर्व की ओर पार करने पर एक दिन घटाते हैं (सोमवार से रविवार); पश्चिम की ओर पार करने पर एक दिन जोड़ते हैं (रविवार से सोमवार)। यह कुछ जगहों पर मुड़ती है ताकि कोई देश या द्वीप-समूह दो अलग-अलग तारीख़ों में न बँटे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Why can a globe represent the Earth more accurately than a flat map? Describe an activity that shows this.",
+    "hi": "ग्लोब पृथ्वी को समतल मानचित्र से अधिक सही क्यों दर्शा सकता है? इसे दिखाने वाली एक गतिविधि बताइए।"
+   },
+   "a": {
+    "en": "The Earth is nearly a sphere and a globe has the same shape, so shapes, sizes and distances stay correct. A flat map must stretch or squeeze the curved surface. Activity: peel an orange in three or four large pieces and try to flatten them on a table; they tear or crease at the edges, showing that a curved surface cannot be made flat without distortion.",
+    "hi": "पृथ्वी लगभग गोला है और ग्लोब का आकार भी वही है, इसलिए आकृतियाँ, आकार और दूरियाँ सही रहती हैं। समतल मानचित्र को घुमावदार सतह को खींचना या दबाना पड़ता है। गतिविधि: संतरे को तीन-चार बड़े टुकड़ों में छीलकर मेज़ पर समतल करने का प्रयास कीजिए; वे किनारों पर फट जाते या सिकुड़ जाते हैं, इससे पता चलता है कि घुमावदार सतह को बिना विकृति के समतल नहीं किया जा सकता।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Why do large countries such as Russia and the USA have more than one time zone?",
+    "hi": "रूस और अमेरिका जैसे बड़े देशों में एक से अधिक समय क्षेत्र क्यों हैं?"
+   },
+   "a": {
+    "en": "They stretch across very many degrees of longitude, so the local time between their east and west ends differs by many hours. A single standard time would make clocks very far from the Sun's position in some regions (for example, darkness at 'noon'). So they divide themselves into zones: the USA uses six and Russia 11.",
+    "hi": "ये देशांतर के बहुत अधिक अंशों में फैले हैं, इसलिए उनके पूर्वी और पश्चिमी छोर के स्थानीय समय में कई घंटों का अंतर है। एक ही मानक समय रखने पर कुछ क्षेत्रों में घड़ी सूर्य की स्थिति से बहुत दूर होगी (जैसे 'दोपहर' में अंधेरा)। इसलिए वे खुद को समय क्षेत्रों में बाँटते हैं: अमेरिका छह और रूस 11।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A map is a drawing of an area of the Earth on a flat surface; an atlas is a collection of maps.",
+   "Maps are physical, political or thematic.",
+   "Distance (scale), direction and symbols are the three components of a map.",
+   "There are four cardinal (N, E, S, W) and four intermediate (NE, SE, SW, NW) directions.",
+   "The Survey of India fixes standard symbols for Indian maps.",
+   "The Earth is nearly a sphere; a globe shows it more accurately than a flat map.",
+   "Latitude (0° to 90°N/S) measures distance from the Equator; parallels shrink towards the poles.",
+   "Climate is hot (torrid) near the Equator, temperate in between and frigid near the poles.",
+   "Longitude (0° to 180°E/W) measures distance from the Prime Meridian at Greenwich (fixed in 1884).",
+   "Latitude and longitude are the coordinates of a place; together they make the grid.",
+   "India's ancient prime meridian, madhya rekha, passed through Ujjayini (Ujjain).",
+   "India extends from about 8°N to 37°N and 68°E to 97°E.",
+   "15° of longitude = 1 hour; 1° = 4 minutes; east is ahead, west is behind.",
+   "IST is based on 82.5°E and is 5 hours 30 minutes ahead of GMT; time zones follow borders; Russia has 11 and the USA six.",
+   "The International Date Line near 180° changes the date by one day: eastward subtract, westward add."
+  ],
+  "hi": [
+   "मानचित्र पृथ्वी के किसी क्षेत्र का समतल सतह पर बना चित्र है; एटलस मानचित्रों का संग्रह है।",
+   "मानचित्र भौतिक, राजनीतिक या विषयगत होते हैं।",
+   "दूरी (मापनी), दिशा और प्रतीक मानचित्र के तीन घटक हैं।",
+   "चार प्रधान (उ, पू, द, प) और चार मध्यवर्ती (उ-पू, द-पू, द-प, उ-प) दिशाएँ हैं।",
+   "भारतीय सर्वेक्षण विभाग भारतीय मानचित्रों के लिए मानक प्रतीक तय करता है।",
+   "पृथ्वी लगभग गोला है; ग्लोब इसे समतल मानचित्र से अधिक सही दिखाता है।",
+   "अक्षांश (0° से 90°N/S) विषुवत वृत्त से दूरी मापता है; अक्षांश रेखाएँ ध्रुवों की ओर छोटी होती हैं।",
+   "जलवायु विषुवत वृत्त के पास उष्ण, बीच में शीतोष्ण और ध्रुवों के पास शीत होती है।",
+   "देशांतर (0° से 180°E/W) ग्रीनविच के प्रधान याम्योत्तर (1884 में तय) से दूरी मापता है।",
+   "अक्षांश और देशांतर किसी स्थान के निर्देशांक हैं; मिलकर ये ग्रिड बनाते हैं।",
+   "भारत का प्राचीन प्रधान याम्योत्तर, मध्य रेखा, उज्जयिनी (उज्जैन) से गुज़रता था।",
+   "भारत लगभग 8°N से 37°N और 68°E से 97°E तक फैला है।",
+   "देशांतर के 15° = 1 घंटा; 1° = 4 मिनट; पूर्व आगे, पश्चिम पीछे।",
+   "IST 82.5°E पर आधारित है और GMT से 5 घंटे 30 मिनट आगे है; समय क्षेत्र सीमाओं के साथ चलते हैं; रूस में 11 और अमेरिका में छह हैं।",
+   "180° के पास की अंतरराष्ट्रीय तिथि रेखा पर तारीख़ एक दिन बदलती है: पूर्व की ओर घटाइए, पश्चिम की ओर जोड़िए।"
+  ]
+ }
+}
