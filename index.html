@@ -550,6 +550,57 @@ footer.credit .by #foot-by { background: none; padding: 0; }
 .stage .stg { display: block; font: 700 12px var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--pen); margin-bottom: 2px; }
 .stage::before { content: none !important; }
 
+/* Complete chapter notes */
+.chfull { display: flex; flex-direction: column; gap: 22px; }
+.chfull:empty { display: none; }
+.floading { margin: 0; color: var(--ink-2); font-size: 16px; }
+.fintro .flead { margin: 0; font-size: 18px; line-height: 1.7; }
+.fsec { scroll-margin-top: 16px; }
+.fintro { scroll-margin-top: 16px; }
+.fsec h2 { font-size: 22px; }
+.fsec p, .fintro p { margin: 0; font-size: 17px; line-height: 1.75; overflow-wrap: anywhere; }
+.flist { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 6px; font-size: 17px; line-height: 1.65; }
+.flist.ticks { list-style: none; padding-left: 0; }
+.flist.ticks li { display: grid; grid-template-columns: 22px 1fr; gap: 6px; }
+.flist.ticks li::before { content: "✓"; color: var(--ok); font-weight: 800; }
+.flist.warn li::marker { color: var(--margin); }
+.ftoc { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+.ftoc-b { width: 100%; text-align: left; font: 600 15px/1.35 var(--f-body); color: var(--pen); background: var(--chip); border: 1px solid var(--rule); border-radius: 10px; padding: 9px 12px; cursor: pointer; }
+.ftoc-b:hover { border-color: var(--pen); }
+.ftop { align-self: flex-end; font: 600 13px var(--f-body); color: var(--ink-2); background: none; border: 0; cursor: pointer; padding: 4px 0; }
+.ftop:hover { color: var(--pen); }
+.fdef { display: flex; flex-direction: column; gap: 4px; border-left: 5px solid var(--pen); background: color-mix(in srgb, var(--pen) 6%, var(--page)); border-radius: 0 12px 12px 0; padding: 12px 14px; font-size: 17px; line-height: 1.65; }
+.fdef b { font-family: var(--f-display); color: var(--pen); }
+.fformula { font: 600 17px/1.7 var(--f-mono); background: var(--paper); border: 1px dashed var(--rule); border-radius: 12px; padding: 12px 14px; overflow-x: auto; white-space: pre-wrap; }
+.fnote { display: flex; flex-direction: column; gap: 4px; background: color-mix(in srgb, var(--hl) 22%, var(--page)); border-radius: 12px; padding: 12px 14px; font-size: 16.5px; line-height: 1.65; }
+.fnote b { font: 800 12px var(--f-body); letter-spacing: .08em; text-transform: uppercase; }
+.ftable { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; }
+.ftable table { border-collapse: collapse; width: 100%; font-size: 16px; }
+.ftable th, .ftable td { padding: 8px 12px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+.ftable th { background: var(--chip); font-weight: 700; }
+.ftable tr:last-child td { border-bottom: 0; }
+.fex { border: 1px solid var(--rule); border-left: 5px solid var(--gold); border-radius: 0 12px 12px 0; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+.fex-h { font: 800 12px var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); background: var(--gold); align-self: flex-start; border-radius: 6px; padding: 2px 8px; }
+.fsol { background: var(--paper); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; }
+.fsol b { font-size: 14px; color: var(--ok); }
+.fterms { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.fterms div { border: 1px solid var(--rule); border-radius: 12px; padding: 10px 12px; }
+.fterms dt { font: 700 16px var(--f-display); color: var(--pen); }
+.fterms dd { margin: 2px 0 0; font-size: 15.5px; line-height: 1.6; }
+.fhint { color: var(--ink-2); font-size: 15px !important; }
+.fprac { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 14px; }
+.fprac li { display: flex; flex-direction: column; gap: 6px; }
+.fprac li::marker { font-weight: 800; color: var(--pen); }
+.fprac summary { cursor: pointer; font: 600 15px var(--f-body); color: var(--pen); }
+.fprac details .ans { margin-top: 6px; }
+.flvl { align-self: flex-start; font: 700 11px var(--f-body); letter-spacing: .06em; text-transform: uppercase; border-radius: 6px; padding: 1px 7px; background: var(--ok-soft); color: var(--ok); }
+.flvl.medium { background: var(--chip); color: var(--pen); }
+.flvl.hard { background: color-mix(in srgb, var(--margin) 16%, var(--page)); color: var(--margin); }
+@media (max-width: 560px) {
+  .fsec p, .fintro p, .flist, .fdef { font-size: 16px; }
+  .ftoc { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 860px) {
   .ladder { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .chlist { grid-template-columns: 1fr; }
@@ -1636,7 +1687,7 @@ var EFEViz = (function () {
     subjectsFor: ["Subjects in {c}", "{c} के विषय"], pickSubject: ["Pick a subject", "विषय चुनें"],
     chapters: ["chapters", "अध्याय"], lessons: ["lessons", "पाठ"], chapter: ["Chapter", "अध्याय"], skill: ["Skill track", "कौशल पाठ"],
     book: ["Book", "पुस्तक"], animated: ["Animated", "एनिमेशन"], finished: ["Finished", "पूरा हुआ"], markFinished: ["Mark as finished", "पूरा हुआ चिह्नित करें"],
-    keyPoints: ["Key points", "मुख्य बिंदु"], example: ["Solved example", "हल किया उदाहरण"], tryIt: ["Try it yourself", "खुद करके देखें"], showAns: ["Show answer", "उत्तर देखें"], hideAns: ["Hide answer", "उत्तर छिपाएँ"],
+    keyPoints: ["Key points", "मुख्य बिंदु"], quickRev: ["Quick revision", "झटपट दोहराव"], fullNotes: ["Complete chapter notes", "अध्याय के पूरे नोट्स"], learnH: ["What you will learn", "आप क्या सीखेंगे"], inChapter: ["In this chapter", "इस अध्याय में"], loadingFull: ["Loading the complete notes...", "पूरे नोट्स खुल रहे हैं..."], remember: ["Remember", "याद रखें"], exampleN: ["Example {n}", "उदाहरण {n}"], solution: ["Solution", "हल"], mistakesH: ["Common mistakes", "आम गलतियाँ"], termsH: ["Key terms", "मुख्य शब्द"], practiceH: ["Practice questions", "अभ्यास प्रश्न"], practiceP: ["Try each one in your notebook first, then open the answer.", "पहले हर प्रश्न अपनी कॉपी में हल करें, फिर उत्तर खोलें।"], summaryH: ["Chapter summary", "अध्याय का सारांश"], lvl_easy: ["Easy", "आसान"], lvl_medium: ["Medium", "मध्यम"], lvl_hard: ["Challenge", "चुनौती"], backTop: ["Back to contents", "विषय-सूची पर लौटें"], example: ["Solved example", "हल किया उदाहरण"], tryIt: ["Try it yourself", "खुद करके देखें"], showAns: ["Show answer", "उत्तर देखें"], hideAns: ["Hide answer", "उत्तर छिपाएँ"],
     watchHi: ["Watch free videos in Hindi", "हिंदी में मुफ्त वीडियो देखें"], watchEn: ["Watch free videos in English", "अंग्रेज़ी में मुफ्त वीडियो देखें"], watchLesson: ["Watch the lesson video", "पाठ का वीडियो देखें"],
     prev: ["Previous", "पिछला"], next: ["Next", "अगला"], backTo: ["All chapters", "सभी अध्याय"],
     allSubjects: ["All subjects", "सभी विषय"], allSubjectsP: ["Choose a class to see the subjects taught at that level.", "कक्षा चुनें और उस स्तर के विषय देखें।"],
@@ -1877,7 +1928,8 @@ var EFEViz = (function () {
       '<header class="chhead"><span class="eyebrow">' + esc(subName(s)) + " · " + esc(lvName(lv)) + (L(t.part) ? " · " + esc(L(t.part)) : "") + "</span>" +
       "<h1>" + (t.no != null ? '<span class="chbig">' + t.no + "</span>" : "") + esc(L(t.t)) + "</h1><p>" + esc(L(t.s)) + "</p></header>" +
       (t.viz ? '<div class="viz"' + vizAttr(t.viz) + "></div>" : "") +
-      (pts.length ? '<section class="chsec"><h2>' + T("keyPoints") + '</h2><ol class="pts">' + pts.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></section>" : "") +
+      '<div id="chfull" class="chfull" data-src="content/' + encodeURIComponent(s.id) + "/" + encodeURIComponent(lv) + "/" + encodeURIComponent(t.id) + '.json"></div>' +
+      (pts.length ? '<section class="chsec"><h2 class="kp-h">' + T("keyPoints") + '</h2><ol class="pts">' + pts.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ol></section>" : "") +
       (L(t.ex) ? '<section class="chsec exbox"><h2>' + T("example") + '</h2><p>' + esc(L(t.ex)) + "</p></section>" : "") +
       (L(t.try) ? '<section class="chsec trybox"><h2>' + T("tryIt") + "</h2><p>" + esc(L(t.try)) + '</p><button type="button" class="btn" id="ans-btn" aria-expanded="false">' + T("showAns") + '</button><div class="ans" id="ans" hidden>' + esc(L(t.ans)) + "</div></section>" : "") +
       '<div class="acts chacts">' + (v ? '<a class="btn yt" href="' + esc(v) + '" target="_blank" rel="noopener">' + YT_ICON + T("watchLesson") + "</a>" : "") +
@@ -1888,6 +1940,59 @@ var EFEViz = (function () {
       '<button type="button" class="pn mid" data-sub="' + esc(s.id) + '" data-lv="' + lv + '"><small>' + T("backTo") + "</small><b>" + esc(subName(s)) + "</b></button>" +
       (next ? '<button type="button" class="pn r" data-ch="' + esc(next.id) + '"><small>' + T("next") + " →</small><b>" + esc(L(next.t)) + "</b></button>" : "<span></span>") + "</nav></article>";
   }
+  // ---------- detailed chapter notes (content/<subject>/<level>/<chapter>.json) ----------
+  var FULL = {};
+  function txt(x) { return esc(L(x)).replace(/\n/g, "<br>"); }
+  function fullBlock(b, n) {
+    if (b.p) return "<p>" + txt(b.p) + "</p>";
+    if (b.def) return '<div class="fdef"><b>' + txt(b.def.term) + "</b><span>" + txt(b.def.text) + "</span></div>";
+    if (b.list) return '<ul class="flist">' + LA(b.list).map(function (x) { return "<li>" + esc(x).replace(/\n/g, "<br>") + "</li>"; }).join("") + "</ul>";
+    if (b.formula) return '<div class="fformula">' + txt(b.formula) + "</div>";
+    if (b.note) return '<div class="fnote"><b>' + T("remember") + "</b><span>" + txt(b.note) + "</span></div>";
+    if (b.table) {
+      var hd = LA(b.table.head), rows = LA(b.table.rows);
+      return '<div class="ftable"><table><thead><tr>' + hd.map(function (h) { return "<th>" + esc(h) + "</th>"; }).join("") + "</tr></thead><tbody>" +
+        rows.map(function (r) { return "<tr>" + r.map(function (c) { return "<td>" + esc(c).replace(/\n/g, "<br>") + "</td>"; }).join("") + "</tr>"; }).join("") + "</tbody></table></div>";
+    }
+    if (b.ex) { n.ex++; return '<div class="fex"><span class="fex-h">' + T("exampleN", { n: n.ex }) + "</span><p>" + txt(b.ex.q) + '</p><div class="fsol"><b>' + T("solution") + "</b><p>" + txt(b.ex.a) + "</p></div></div>"; }
+    return "";
+  }
+  function viewFull(d) {
+    var n = { ex: 0 }, secs = d.sections || [], learn = LA(d.learn), mis = LA(d.mistakes), sum = LA(d.summary), terms = d.terms || [], exs = d.exercises || [];
+    var toc = secs.map(function (sec, i) { return '<li><button type="button" class="ftoc-b" data-jump="fs-' + i + '">' + txt(sec.h) + "</button></li>"; });
+    if (mis.length) toc.push('<li><button type="button" class="ftoc-b" data-jump="fs-mis">' + T("mistakesH") + "</button></li>");
+    if (terms.length) toc.push('<li><button type="button" class="ftoc-b" data-jump="fs-terms">' + T("termsH") + "</button></li>");
+    if (exs.length) toc.push('<li><button type="button" class="ftoc-b" data-jump="fs-prac">' + T("practiceH") + " (" + exs.length + ")</button></li>");
+    if (sum.length) toc.push('<li><button type="button" class="ftoc-b" data-jump="fs-sum">' + T("summaryH") + "</button></li>");
+    var back = '<button type="button" class="ftop" data-jump="fs-toc">↑ ' + T("backTop") + "</button>";
+    return '<section class="chsec fintro" id="fs-toc"><span class="eyebrow">' + T("fullNotes") + "</span>" + (L(d.intro) ? '<p class="flead">' + txt(d.intro) + "</p>" : "") +
+      (learn.length ? "<h2>" + T("learnH") + '</h2><ul class="flist ticks">' + learn.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "") +
+      "<h2>" + T("inChapter") + '</h2><ol class="ftoc">' + toc.join("") + "</ol></section>" +
+      secs.map(function (sec, i) { return '<section class="chsec fsec" id="fs-' + i + '"><h2>' + txt(sec.h) + "</h2>" + (sec.blocks || []).map(function (b) { return fullBlock(b, n); }).join("") + back + "</section>"; }).join("") +
+      (mis.length ? '<section class="chsec fsec" id="fs-mis"><h2>' + T("mistakesH") + '</h2><ul class="flist warn">' + mis.map(function (x) { return "<li>" + esc(x).replace(/\n/g, "<br>") + "</li>"; }).join("") + "</ul>" + back + "</section>" : "") +
+      (terms.length ? '<section class="chsec fsec" id="fs-terms"><h2>' + T("termsH") + '</h2><dl class="fterms">' + terms.map(function (x) { return "<div><dt>" + txt(x.t) + "</dt><dd>" + txt(x.d) + "</dd></div>"; }).join("") + "</dl>" + back + "</section>" : "") +
+      (exs.length ? '<section class="chsec fsec trybox" id="fs-prac"><h2>' + T("practiceH") + '</h2><p class="fhint">' + T("practiceP") + '</p><ol class="fprac">' + exs.map(function (x) {
+        var lv2 = x.lvl === "hard" || x.lvl === "medium" ? x.lvl : "easy";
+        return '<li><span class="flvl ' + lv2 + '">' + T("lvl_" + lv2) + "</span><p>" + txt(x.q) + "</p><details><summary>" + T("showAns") + '</summary><div class="ans">' + txt(x.a) + "</div></details></li>";
+      }).join("") + "</ol>" + back + "</section>" : "") +
+      (sum.length ? '<section class="chsec fsec" id="fs-sum"><h2>' + T("summaryH") + '</h2><ul class="flist ticks">' + sum.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" + back + "</section>" : "");
+  }
+  function fillFull(el, d) {
+    if (!d) { el.remove(); return; }
+    el.innerHTML = viewFull(d);
+    var kh = document.querySelector(".kp-h"); if (kh) kh.textContent = T("quickRev");
+  }
+  function loadFull() {
+    var el = $("chfull"); if (!el) return;
+    var src = el.getAttribute("data-src");
+    if (src in FULL) return fillFull(el, FULL[src]);
+    el.innerHTML = '<p class="floading">' + T("loadingFull") + "</p>";
+    fetch(src, { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }).then(function (d) {
+      FULL[src] = d;
+      var cur2 = $("chfull"); if (cur2 && cur2.getAttribute("data-src") === src) fillFull(cur2, d);
+    });
+  }
+
   function viewExam(id) {
     var e = EX[id]; if (!e) return viewExams();
     var site = safeUrl(e.site), qs = lang === "hi" ? " in hindi" : "";
@@ -2156,6 +2261,7 @@ var EFEViz = (function () {
     else { state.view = "home"; v.innerHTML = viewHome(); }
     navCurrent();
     if (window.EFEViz) EFEViz.mountAll(v, lang);
+    if (state.view === "chapter") loadFull();
     if (state.view === "admin") {
       var s1 = $("al-sub"); if (s1) s1.onchange = function () { A.sub = s1.value; A.editing = null; A.confirm = null; render(); };
       var s2 = $("al-lv"); if (s2) s2.onchange = function () { A.lv = s2.value; A.editing = null; A.confirm = null; render(); };
@@ -2168,6 +2274,7 @@ var EFEViz = (function () {
     document.addEventListener("submit", onSubmit);
     document.addEventListener("click", function (e) {
       var t = e.target.closest("button, a"); if (!t) return;
+      if (t.dataset.jump) { var jt = $(t.dataset.jump); if (jt) jt.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
       if (t.id === "pub-go") return publish();
       if (t.id === "pub-discard") return discard();
       if (t.dataset.lang) { lang = t.dataset.lang; save("efe-lang", lang); applySettings(); var y = window.scrollY; render(); window.scrollTo(0, y); return; }
