@@ -1,0 +1,1593 @@
+{
+ "v": 1,
+ "sub": "maths",
+ "lv": "6",
+ "id": "ch4",
+ "intro": {
+  "en": "Every day we come across information in the form of numbers: marks, scores, prices, counts of people and vehicles. In this chapter you will learn how to collect such data, organise it with tally marks and frequency tables, and present it as pictographs and bar graphs so that it can be understood at a glance. You will also learn to read graphs carefully, choose good scales, and make graphs that are both beautiful and honest.",
+  "hi": "हर दिन हमें संख्याओं के रूप में जानकारी मिलती है: अंक, स्कोर, दाम, लोगों और वाहनों की गिनती। इस अध्याय में आप सीखेंगे कि ऐसे आँकड़े कैसे इकट्ठा करें, मिलान चिह्नों और बारंबारता सारणी से कैसे व्यवस्थित करें, और चित्रालेख तथा दंड आलेख के रूप में कैसे प्रस्तुत करें ताकि वे एक नज़र में समझ आ जाएँ। आप आलेखों को ध्यान से पढ़ना, अच्छा पैमाना चुनना और ऐसे आलेख बनाना भी सीखेंगे जो सुंदर भी हों और सच्चे भी।"
+ },
+ "learn": {
+  "en": [
+   "What data is and why we collect it",
+   "How to plan a survey and decide which questions need new data",
+   "How to use tally marks and make a frequency table",
+   "How sorting data helps find the largest, smallest and most common values",
+   "How to read and draw pictographs with a key, including half symbols",
+   "How to read bar graphs and answer questions from them",
+   "How to choose a suitable scale and draw a bar graph step by step",
+   "How to spot mistakes in a graph",
+   "When to use vertical or horizontal bars",
+   "How infographics and decorations can help or mislead"
+  ],
+  "hi": [
+   "आँकड़े क्या हैं और हम इन्हें क्यों इकट्ठा करते हैं",
+   "सर्वेक्षण की योजना कैसे बनाएँ और तय करें कि किन प्रश्नों के लिए नए आँकड़े चाहिए",
+   "मिलान चिह्नों का प्रयोग और बारंबारता सारणी बनाना",
+   "आँकड़ों को क्रम में लगाने से सबसे बड़ा, सबसे छोटा और सबसे आम मान कैसे मिलता है",
+   "कुंजी सहित चित्रालेख पढ़ना और बनाना, आधे प्रतीकों सहित",
+   "दंड आलेख पढ़ना और उनसे प्रश्नों के उत्तर देना",
+   "उचित पैमाना चुनना और चरण-दर-चरण दंड आलेख बनाना",
+   "आलेख में गलतियाँ पहचानना",
+   "खड़े या लेटे दंडों का प्रयोग कब करें",
+   "इन्फ़ोग्राफ़िक और सजावट कैसे मदद कर सकती है या भ्रम पैदा कर सकती है"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "4.0 What is Data?",
+    "hi": "4.0 आँकड़े क्या हैं?"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data",
+       "hi": "आँकड़े (डेटा)"
+      },
+      "text": {
+       "en": "A collection of facts, numbers, measurements or observations that gives us information about something.",
+       "hi": "तथ्यों, संख्याओं, मापों या प्रेक्षणों का ऐसा संग्रह जो हमें किसी चीज़ के बारे में जानकारी देता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Every day we meet data: the marks of students in a test, the runs scored by a batter in each match, the temperature of a city each day, the number of vehicles passing a crossing, the price of onions this month. Data on its own is often a jumble. To use it we must collect it carefully, organise it, present it in a clear way (tables, pictographs, bar graphs), and then read it to answer questions. This is what data handling means.",
+      "hi": "हर दिन हमें आँकड़े मिलते हैं: परीक्षा में विद्यार्थियों के अंक, हर मैच में बल्लेबाज़ के रन, किसी शहर का रोज़ का तापमान, चौराहे से गुज़रने वाले वाहनों की संख्या, इस महीने प्याज़ का भाव। अकेले आँकड़े अक्सर उलझे होते हैं। इनका उपयोग करने के लिए हमें इन्हें सावधानी से इकट्ठा करना, व्यवस्थित करना, स्पष्ट तरीके से प्रस्तुत करना (तालिका, चित्रालेख, दंड आलेख) और फिर पढ़कर प्रश्नों के उत्तर देना होता है। इसे ही आँकड़ों का प्रबंधन कहते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Collect: decide what question you want answered and gather the facts (by asking, counting, measuring or observing).",
+       "Organise: arrange the data in a list, in order, or in a table with tally marks.",
+       "Present: show it as a pictograph or bar graph so that it can be understood at a glance.",
+       "Interpret: read the table or graph to answer questions and draw conclusions."
+      ],
+      "hi": [
+       "इकट्ठा करना: तय कीजिए कि किस प्रश्न का उत्तर चाहिए और तथ्य जुटाइए (पूछकर, गिनकर, मापकर या देखकर)।",
+       "व्यवस्थित करना: आँकड़ों को सूची में, क्रम में या मिलान चिह्नों वाली तालिका में लगाइए।",
+       "प्रस्तुत करना: उन्हें चित्रालेख या दंड आलेख के रूप में दिखाइए ताकि एक नज़र में समझ आ जाएँ।",
+       "व्याख्या करना: तालिका या आलेख पढ़कर प्रश्नों के उत्तर दीजिए और निष्कर्ष निकालिए।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Which of these are data? (a) The marks of 40 students in a maths test. (b) The sentence 'I like mangoes.' (c) The rainfall in Mumbai on each day of July.",
+       "hi": "इनमें से कौन-से आँकड़े हैं? (a) गणित की परीक्षा में 40 विद्यार्थियों के अंक। (b) वाक्य 'मुझे आम पसंद हैं।' (c) जुलाई के हर दिन मुंबई में हुई वर्षा।"
+      },
+      "a": {
+       "en": "(a) Yes: a collection of 40 numbers that tells us how the class did.\n(b) A single opinion of one person is a fact about that person, but on its own it is not a collection; if we asked 40 students about their favourite fruit, the 40 answers together would be data.\n(c) Yes: 31 measurements that tell us about July's weather.",
+       "hi": "(a) हाँ: 40 संख्याओं का संग्रह जो बताता है कि कक्षा ने कैसा किया।\n(b) एक व्यक्ति की अकेली राय उस व्यक्ति के बारे में एक तथ्य है, पर अपने-आप में संग्रह नहीं; यदि हम 40 विद्यार्थियों से उनका पसंदीदा फल पूछें, तो 40 उत्तर मिलकर आँकड़े बनेंगे।\n(c) हाँ: 31 माप जो जुलाई के मौसम के बारे में बताते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.1 Collecting and Organising Data",
+    "hi": "4.1 आँकड़ों का संग्रह और व्यवस्थित करना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Suppose your class teacher wants to know which outdoor game the class likes most, to plan the sports period. The first step is to decide exactly what to ask: 'Which one game do you like most: kho-kho, kabaddi, cricket or football?' Then ask every student and write down each answer. Collecting information by asking people is called a survey.",
+      "hi": "मान लीजिए आपकी कक्षा-अध्यापिका खेल के कालांश की योजना के लिए जानना चाहती हैं कि कक्षा को कौन-सा बाहरी खेल सबसे अधिक पसंद है। पहला कदम यह तय करना है कि ठीक-ठीक क्या पूछना है: 'आपको इनमें से कौन-सा एक खेल सबसे अधिक पसंद है: खो-खो, कबड्डी, क्रिकेट या फ़ुटबॉल?' फिर हर विद्यार्थी से पूछिए और हर उत्तर लिख लीजिए। लोगों से पूछकर जानकारी इकट्ठा करना सर्वेक्षण कहलाता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Not every question needs new data. 'How many days are there in March?' is already known (31). But 'Which is the favourite fruit of students in my class?' needs us to collect data by asking.",
+      "hi": "हर प्रश्न के लिए नए आँकड़े नहीं चाहिए। 'मार्च में कितने दिन होते हैं?' का उत्तर पहले से पता है (31)। पर 'मेरी कक्षा के विद्यार्थियों का पसंदीदा फल कौन-सा है?' के लिए हमें पूछकर आँकड़े इकट्ठा करने होंगे।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Tally marks",
+       "hi": "मिलान चिह्न"
+      },
+      "text": {
+       "en": "Short vertical lines drawn to count things one by one. Every fifth mark is drawn as a line across the previous four, making a bundle of 5. In this text a bundle of five is written as IIII/ and single marks as I. For example 7 is IIII/ II.",
+       "hi": "चीज़ों को एक-एक करके गिनने के लिए खींची गई छोटी खड़ी रेखाएँ। हर पाँचवाँ चिह्न पिछले चार को काटती हुई तिरछी रेखा के रूप में खींचा जाता है, जिससे 5 का एक गट्ठा बनता है। इस पाठ में पाँच का गट्ठा IIII/ और अकेले चिह्न I लिखे गए हैं। जैसे 7 को IIII/ II लिखते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Frequency",
+       "hi": "बारंबारता"
+      },
+      "text": {
+       "en": "The number of times a particular value or item occurs in the data. A table showing items with their tally marks and frequencies is called a frequency table (or frequency distribution table).",
+       "hi": "आँकड़ों में किसी विशेष मान या वस्तु के आने की संख्या। वस्तुओं को उनके मिलान चिह्नों और बारंबारताओं के साथ दिखाने वाली तालिका बारंबारता सारणी कहलाती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why tally marks? When answers come one at a time, we put one mark for each answer in the right row. Bundles of 5 make it easy to count at the end: 3 bundles and 2 marks = 15 + 2 = 17.",
+      "hi": "मिलान चिह्न क्यों? जब उत्तर एक-एक करके आते हैं, तो हम हर उत्तर के लिए सही पंक्ति में एक चिह्न लगाते हैं। 5 के गट्ठे अंत में गिनना आसान बनाते हैं: 3 गट्ठे और 2 चिह्न = 15 + 2 = 17।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "For a school function, 20 students were asked which sweet they want. Their answers, in order, were: Laddu, Barfi, Jalebi, Laddu, Rasgulla, Jalebi, Laddu, Barfi, Laddu, Jalebi, Rasgulla, Laddu, Jalebi, Barfi, Laddu, Jalebi, Laddu, Rasgulla, Jalebi, Laddu. Make a frequency table using tally marks. Which sweet should be ordered the most?",
+       "hi": "एक स्कूल समारोह के लिए 20 विद्यार्थियों से पूछा गया कि उन्हें कौन-सी मिठाई चाहिए। उनके उत्तर क्रम से थे: लड्डू, बर्फ़ी, जलेबी, लड्डू, रसगुल्ला, जलेबी, लड्डू, बर्फ़ी, लड्डू, जलेबी, रसगुल्ला, लड्डू, जलेबी, बर्फ़ी, लड्डू, जलेबी, लड्डू, रसगुल्ला, जलेबी, लड्डू। मिलान चिह्नों से बारंबारता सारणी बनाइए। कौन-सी मिठाई सबसे अधिक मँगानी चाहिए?"
+      },
+      "a": {
+       "en": "Go through the list once and put a tally mark in the right row for each answer.\nLaddu: IIII/ III = 8\nJalebi: IIII/ I = 6\nBarfi: III = 3\nRasgulla: III = 3\nCheck: 8 + 6 + 3 + 3 = 20, same as the number of students.\nLaddu is the most popular, so the most laddus should be ordered.",
+       "hi": "सूची को एक बार पढ़िए और हर उत्तर के लिए सही पंक्ति में एक मिलान चिह्न लगाइए।\nलड्डू: IIII/ III = 8\nजलेबी: IIII/ I = 6\nबर्फ़ी: III = 3\nरसगुल्ला: III = 3\nजाँच: 8 + 6 + 3 + 3 = 20, जितने विद्यार्थी थे।\nलड्डू सबसे लोकप्रिय है, इसलिए सबसे अधिक लड्डू मँगाने चाहिए।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "The frequency table tells the total number of each sweet, but not which student wants which sweet. To hand out the right sweet to each child, we need the original list with names (or a list of names under each sweet).",
+      "hi": "बारंबारता सारणी हर मिठाई की कुल संख्या बताती है, पर यह नहीं कि किस विद्यार्थी को कौन-सी मिठाई चाहिए। हर बच्चे को सही मिठाई देने के लिए हमें नामों वाली मूल सूची (या हर मिठाई के नीचे नामों की सूची) चाहिए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Arranging data in order also helps. Below are the shoe sizes of 24 students: 4, 5, 3, 6, 5, 4, 7, 5, 6, 4, 5, 3, 5, 6, 4, 8, 5, 4, 6, 5, 7, 4, 5, 6. Written in increasing (ascending) order they become: 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 8. Now the smallest (3) and largest (8) are at the two ends, and equal values sit together so they are easy to count.",
+      "hi": "आँकड़ों को क्रम में लगाने से भी मदद मिलती है। नीचे 24 विद्यार्थियों के जूतों के नाप हैं: 4, 5, 3, 6, 5, 4, 7, 5, 6, 4, 5, 3, 5, 6, 4, 8, 5, 4, 6, 5, 7, 4, 5, 6। बढ़ते (आरोही) क्रम में लिखने पर ये बनते हैं: 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 8। अब सबसे छोटा (3) और सबसे बड़ा (8) दोनों सिरों पर हैं, और बराबर मान साथ-साथ हैं, इसलिए गिनना आसान है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Shoe size",
+        "Tally marks",
+        "Number of students (frequency)"
+       ],
+       "hi": [
+        "जूते का नाप",
+        "मिलान चिह्न",
+        "विद्यार्थियों की संख्या (बारंबारता)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "3",
+         "II",
+         "2"
+        ],
+        [
+         "4",
+         "IIII/ I",
+         "6"
+        ],
+        [
+         "5",
+         "IIII/ III",
+         "8"
+        ],
+        [
+         "6",
+         "IIII/",
+         "5"
+        ],
+        [
+         "7",
+         "II",
+         "2"
+        ],
+        [
+         "8",
+         "I",
+         "1"
+        ],
+        [
+         "Total",
+         "",
+         "24"
+        ]
+       ],
+       "hi": [
+        [
+         "3",
+         "II",
+         "2"
+        ],
+        [
+         "4",
+         "IIII/ I",
+         "6"
+        ],
+        [
+         "5",
+         "IIII/ III",
+         "8"
+        ],
+        [
+         "6",
+         "IIII/",
+         "5"
+        ],
+        [
+         "7",
+         "II",
+         "2"
+        ],
+        [
+         "8",
+         "I",
+         "1"
+        ],
+        [
+         "कुल",
+         "",
+         "24"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using the shoe size table, answer: (a) the largest and smallest size, (b) the most common size, (c) how many students wear a size larger than 5.",
+       "hi": "जूतों के नाप वाली सारणी से उत्तर दीजिए: (a) सबसे बड़ा और सबसे छोटा नाप, (b) सबसे आम नाप, (c) कितने विद्यार्थी 5 से बड़ा नाप पहनते हैं।"
+      },
+      "a": {
+       "en": "(a) Largest = 8, smallest = 3.\n(b) Size 5 has the highest frequency (8), so it is the most common.\n(c) Sizes larger than 5 are 6, 7 and 8: 5 + 2 + 1 = 8 students.",
+       "hi": "(a) सबसे बड़ा = 8, सबसे छोटा = 3।\n(b) नाप 5 की बारंबारता सबसे अधिक (8) है, इसलिए वह सबसे आम है।\n(c) 5 से बड़े नाप 6, 7 और 8 हैं: 5 + 2 + 1 = 8 विद्यार्थी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Activities to try: (1) On your way to school, count the trees of each kind you see (neem, peepal, mango, banyan, others) with tally marks and compare with a friend who takes another route. (2) Take a paragraph from a newspaper and count how many times the letters a, e, i, o, t, n and s appear. Rank them from most to least frequent. In English, e and t usually come at the top. Compare your ranking with classmates who chose other paragraphs and discuss why the rankings are similar.",
+      "hi": "करके देखिए: (1) स्कूल जाते समय रास्ते में दिखने वाले हर प्रकार के पेड़ (नीम, पीपल, आम, बरगद, अन्य) मिलान चिह्नों से गिनिए और दूसरे रास्ते से आने वाले मित्र से तुलना कीजिए। (2) अख़बार का एक अनुच्छेद लीजिए और गिनिए कि अक्षर a, e, i, o, t, n और s कितनी बार आते हैं। उन्हें सबसे अधिक से सबसे कम बारंबारता के क्रम में लगाइए। अंग्रेज़ी में आमतौर पर e और t सबसे ऊपर आते हैं। हिंदी अनुच्छेद में आप 'क', 'र', 'ा' की मात्रा आदि गिन सकते हैं। अपना क्रम उन सहपाठियों से मिलाइए जिन्होंने दूसरे अनुच्छेद चुने, और चर्चा कीजिए कि क्रम मिलते-जुलते क्यों हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.2 Pictographs",
+    "hi": "4.2 चित्रालेख"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Pictograph",
+       "hi": "चित्रालेख"
+      },
+      "text": {
+       "en": "A way of showing data using pictures or symbols. Each picture stands for a fixed number of items, and this is told in a key (also called the scale).",
+       "hi": "चित्रों या प्रतीकों की सहायता से आँकड़े दिखाने का तरीका। हर चित्र वस्तुओं की एक निश्चित संख्या दर्शाता है, जो कुंजी (जिसे पैमाना भी कहते हैं) में बताई जाती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Key or scale of a pictograph",
+       "hi": "चित्रालेख की कुंजी या पैमाना"
+      },
+      "text": {
+       "en": "The statement that tells how many items one symbol stands for, for example 'one symbol = 10 children'. A pictograph without a key cannot be read correctly.",
+       "hi": "वह कथन जो बताता है कि एक प्रतीक कितनी वस्तुओं के बराबर है, जैसे 'एक प्रतीक = 10 बच्चे'। बिना कुंजी वाले चित्रालेख को सही ढंग से पढ़ा नहीं जा सकता।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "When the numbers are small, each symbol can stand for 1 item. For example, a pictograph of how 25 students of Class 6 come to school: Bus 8 symbols, Cycle 6 symbols, Walk 5 symbols, Car 3 symbols, Auto-rickshaw 3 symbols, with key 'one symbol = 1 student'.",
+      "hi": "जब संख्याएँ छोटी हों, तो हर प्रतीक 1 वस्तु के बराबर हो सकता है। जैसे कक्षा 6 के 25 विद्यार्थी स्कूल कैसे आते हैं, इसका चित्रालेख: बस 8 प्रतीक, साइकिल 6 प्रतीक, पैदल 5 प्रतीक, कार 3 प्रतीक, ऑटो-रिक्शा 3 प्रतीक, कुंजी 'एक प्रतीक = 1 विद्यार्थी'।"
+     }
+    },
+    {
+     "p": {
+      "en": "When numbers are large, drawing one symbol per item takes too long. Then one symbol stands for many items, and a part of a symbol stands for a part of that number. With the key 'one symbol = 10 children', half a symbol means 5 children.",
+      "hi": "जब संख्याएँ बड़ी हों, तो हर वस्तु के लिए एक प्रतीक बनाना बहुत समय लेता है। तब एक प्रतीक कई वस्तुओं के बराबर होता है, और प्रतीक का एक भाग उस संख्या का भाग दर्शाता है। कुंजी 'एक प्रतीक = 10 बच्चे' हो तो आधा प्रतीक 5 बच्चे दर्शाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Hours of sleep at night",
+        "Pictograph (each ☾ = 10 children)",
+        "Number of children"
+       ],
+       "hi": [
+        "रात में नींद के घंटे",
+        "चित्रालेख (हर ☾ = 10 बच्चे)",
+        "बच्चों की संख्या"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "7 hours",
+         "☾ ☾",
+         "20"
+        ],
+        [
+         "8 hours",
+         "☾ ☾ ☾ ☾ and half ☾",
+         "45"
+        ],
+        [
+         "9 hours",
+         "☾ ☾ ☾ and half ☾",
+         "35"
+        ],
+        [
+         "10 hours",
+         "☾ and half ☾",
+         "15"
+        ]
+       ],
+       "hi": [
+        [
+         "7 घंटे",
+         "☾ ☾",
+         "20"
+        ],
+        [
+         "8 घंटे",
+         "☾ ☾ ☾ ☾ और आधा ☾",
+         "45"
+        ],
+        [
+         "9 घंटे",
+         "☾ ☾ ☾ और आधा ☾",
+         "35"
+        ],
+        [
+         "10 घंटे",
+         "☾ और आधा ☾",
+         "15"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Read the sleep pictograph above. (a) How many children sleep 8 hours? (b) How many children were surveyed in all? (c) How many more children sleep 9 hours than 10 hours?",
+       "hi": "ऊपर का नींद वाला चित्रालेख पढ़िए। (a) कितने बच्चे 8 घंटे सोते हैं? (b) कुल कितने बच्चों का सर्वेक्षण हुआ? (c) 9 घंटे सोने वाले बच्चे 10 घंटे सोने वालों से कितने अधिक हैं?"
+      },
+      "a": {
+       "en": "(a) 8 hours: 4 full symbols and a half. 4 × 10 + 5 = 45 children.\n(b) Total symbols = 2 + 4.5 + 3.5 + 1.5 = 11.5. Children = 11.5 × 10 = 115.\n(c) 9 hours: 35, 10 hours: 15. Difference = 35 − 15 = 20 (2 symbols).",
+       "hi": "(a) 8 घंटे: 4 पूरे प्रतीक और आधा। 4 × 10 + 5 = 45 बच्चे।\n(b) कुल प्रतीक = 2 + 4.5 + 3.5 + 1.5 = 11.5। बच्चे = 11.5 × 10 = 115।\n(c) 9 घंटे: 35, 10 घंटे: 15। अंतर = 35 − 15 = 20 (2 प्रतीक)।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Value shown = number of symbols × value of one symbol",
+      "hi": "दर्शाया गया मान = प्रतीकों की संख्या × एक प्रतीक का मान"
+     }
+    },
+    {
+     "formula": {
+      "en": "Number of symbols to draw = value ÷ value of one symbol",
+      "hi": "बनाए जाने वाले प्रतीकों की संख्या = मान ÷ एक प्रतीक का मान"
+     }
+    },
+    {
+     "note": {
+      "en": "Choose a key that makes most numbers whole or half symbols. If the data is 24, 40, 16, 32, a key of 8 gives 3, 5, 2, 4 symbols, which is neat. A key of 10 would give awkward parts like 2.4 symbols. If a number does not fit, such as 23 with a key of 10, we draw 2 symbols and a small part, and the reader can only estimate it, so a table of exact numbers is better in such cases.",
+      "hi": "ऐसी कुंजी चुनिए जिससे अधिकतर संख्याएँ पूरे या आधे प्रतीक बनें। यदि आँकड़े 24, 40, 16, 32 हैं, तो 8 की कुंजी से 3, 5, 2, 4 प्रतीक बनते हैं, जो साफ़-सुथरे हैं। 10 की कुंजी से 2.4 प्रतीक जैसे अटपटे भाग बनेंगे। यदि कोई संख्या ठीक न बैठे, जैसे 10 की कुंजी में 23, तो हम 2 प्रतीक और एक छोटा टुकड़ा बनाते हैं, और पढ़ने वाला केवल अनुमान लगा सकता है, इसलिए ऐसे में सटीक संख्याओं की तालिका बेहतर है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A school library lent these numbers of books in a week: Monday 30, Tuesday 45, Wednesday 25, Thursday 40, Friday 55, Saturday 70. Draw a pictograph with one book symbol = 10 books, and answer: on which day were the fewest and the most books lent, and what is the total for the week?",
+       "hi": "एक स्कूल पुस्तकालय ने एक सप्ताह में इतनी पुस्तकें दीं: सोमवार 30, मंगलवार 45, बुधवार 25, गुरुवार 40, शुक्रवार 55, शनिवार 70। एक पुस्तक प्रतीक = 10 पुस्तकें लेकर चित्रालेख बनाइए और बताइए: किस दिन सबसे कम और किस दिन सबसे अधिक पुस्तकें दी गईं, और सप्ताह का कुल कितना है?"
+      },
+      "a": {
+       "en": "Symbols = books ÷ 10.\nMonday 3, Tuesday 4 and a half, Wednesday 2 and a half, Thursday 4, Friday 5 and a half, Saturday 7.\nFewest: Wednesday (25). Most: Saturday (70).\nTotal = 30 + 45 + 25 + 40 + 55 + 70 = 265 books.\nA possible reason for Saturday: students borrow books to read over the Sunday holiday.",
+       "hi": "प्रतीक = पुस्तकें ÷ 10।\nसोमवार 3, मंगलवार साढ़े 4, बुधवार ढाई, गुरुवार 4, शुक्रवार साढ़े 5, शनिवार 7।\nसबसे कम: बुधवार (25)। सबसे अधिक: शनिवार (70)।\nकुल = 30 + 45 + 25 + 40 + 55 + 70 = 265 पुस्तकें।\nशनिवार का संभावित कारण: विद्यार्थी रविवार की छुट्टी में पढ़ने के लिए पुस्तकें ले जाते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Before Makar Sankranti a kite seller sold kites to five shopkeepers: Ravi 600, Salma 250, Gurpreet 400, Joseph 150, Meena 350. Using one kite symbol = 100 kites, how many symbols are needed for each? Is it true that Ravi bought more than double what Gurpreet bought?",
+       "hi": "मकर संक्रांति से पहले एक पतंग विक्रेता ने पाँच दुकानदारों को पतंगें बेचीं: रवि 600, सलमा 250, गुरप्रीत 400, जोसेफ़ 150, मीना 350। एक पतंग प्रतीक = 100 पतंगें लेकर हर एक के लिए कितने प्रतीक चाहिए? क्या यह सच है कि रवि ने गुरप्रीत से दोगुने से अधिक पतंगें खरीदीं?"
+      },
+      "a": {
+       "en": "Symbols = kites ÷ 100.\nRavi 6, Salma 2 and a half, Gurpreet 4, Joseph 1 and a half, Meena 3 and a half.\nDouble of Gurpreet = 2 × 400 = 800. Ravi bought 600, which is less than 800. So the claim is false.\n(Ravi did buy 4 times as many as Joseph: 600 = 4 × 150.)",
+       "hi": "प्रतीक = पतंगें ÷ 100।\nरवि 6, सलमा ढाई, गुरप्रीत 4, जोसेफ़ डेढ़, मीना साढ़े 3।\nगुरप्रीत का दोगुना = 2 × 400 = 800। रवि ने 600 खरीदीं, जो 800 से कम है। इसलिए कथन गलत है।\n(रवि ने जोसेफ़ से 4 गुनी पतंगें ज़रूर खरीदीं: 600 = 4 × 150।)"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.3 Bar Graphs",
+    "hi": "4.3 दंड आलेख"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Bar graph",
+       "hi": "दंड आलेख (बार ग्राफ़)"
+      },
+      "text": {
+       "en": "A way of showing data using bars (rectangles) of the same width with equal gaps between them. The length or height of each bar shows the value (frequency) for that item.",
+       "hi": "आँकड़ों को एक-सी चौड़ाई वाले दंडों (आयतों) से दिखाने का तरीका, जिनके बीच बराबर खाली जगह होती है। हर दंड की लंबाई या ऊँचाई उस वस्तु का मान (बारंबारता) दिखाती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A bar graph has two axes (lines): one along the bottom (horizontal axis) where the items are written, and one going up (vertical axis) with a number scale. Equally spaced grid lines help us read the height of each bar. Because all bars have the same width, only their heights matter for comparison.",
+      "hi": "दंड आलेख में दो अक्ष (रेखाएँ) होते हैं: एक नीचे की ओर (क्षैतिज अक्ष) जिस पर वस्तुएँ लिखी होती हैं, और एक ऊपर जाती हुई (ऊर्ध्वाधर अक्ष) जिस पर संख्याओं का पैमाना होता है। बराबर दूरी वाली ग्रिड रेखाएँ हर दंड की ऊँचाई पढ़ने में मदद करती हैं। सभी दंडों की चौड़ाई एक-सी होने के कारण तुलना में केवल उनकी ऊँचाई मायने रखती है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Scale of a bar graph",
+       "hi": "दंड आलेख का पैमाना"
+      },
+      "text": {
+       "en": "The value represented by one unit (one grid space) on the number axis, for example '1 unit = 100 vehicles'.",
+       "hi": "संख्या वाले अक्ष पर एक इकाई (ग्रिड का एक खाना) जितना मान दर्शाती है, जैसे '1 इकाई = 100 वाहन'।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Class",
+        "Students absent on Monday",
+        "Bar height (1 unit = 1 student)"
+       ],
+       "hi": [
+        "कक्षा",
+        "सोमवार को अनुपस्थित विद्यार्थी",
+        "दंड की ऊँचाई (1 इकाई = 1 विद्यार्थी)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "VI",
+         "6",
+         "6 units"
+        ],
+        [
+         "VII",
+         "4",
+         "4 units"
+        ],
+        [
+         "VIII",
+         "9",
+         "9 units"
+        ],
+        [
+         "IX",
+         "3",
+         "3 units"
+        ],
+        [
+         "X",
+         "5",
+         "5 units"
+        ]
+       ],
+       "hi": [
+        [
+         "VI",
+         "6",
+         "6 इकाई"
+        ],
+        [
+         "VII",
+         "4",
+         "4 इकाई"
+        ],
+        [
+         "VIII",
+         "9",
+         "9 इकाई"
+        ],
+        [
+         "IX",
+         "3",
+         "3 इकाई"
+        ],
+        [
+         "X",
+         "5",
+         "5 इकाई"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "In this bar graph the tallest bar is for Class VIII (9 absent) and the shortest for Class IX (3 absent). The total number absent is 6 + 4 + 9 + 3 + 5 = 27. Compare this with a pictograph of the same data: the bar graph is quicker to draw and easier to read exactly.",
+      "hi": "इस दंड आलेख में सबसे ऊँचा दंड कक्षा VIII (9 अनुपस्थित) का और सबसे छोटा कक्षा IX (3 अनुपस्थित) का है। कुल अनुपस्थित 6 + 4 + 9 + 3 + 5 = 27 हैं। इन्हीं आँकड़ों के चित्रालेख से तुलना कीजिए: दंड आलेख बनाना तेज़ और सटीक पढ़ना आसान है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Time",
+        "Vehicles at a city crossing",
+        "Bar height (1 unit = 100 vehicles)"
+       ],
+       "hi": [
+        "समय",
+        "शहर के चौराहे पर वाहन",
+        "दंड की ऊँचाई (1 इकाई = 100 वाहन)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "7 to 8 am",
+         "400",
+         "4 units"
+        ],
+        [
+         "8 to 9 am",
+         "1100",
+         "11 units"
+        ],
+        [
+         "9 to 10 am",
+         "1500",
+         "15 units"
+        ],
+        [
+         "10 to 11 am",
+         "900",
+         "9 units"
+        ],
+        [
+         "11 am to 12 noon",
+         "600",
+         "6 units"
+        ],
+        [
+         "12 noon to 1 pm",
+         "700",
+         "7 units"
+        ]
+       ],
+       "hi": [
+        [
+         "सुबह 7 से 8",
+         "400",
+         "4 इकाई"
+        ],
+        [
+         "सुबह 8 से 9",
+         "1100",
+         "11 इकाई"
+        ],
+        [
+         "सुबह 9 से 10",
+         "1500",
+         "15 इकाई"
+        ],
+        [
+         "सुबह 10 से 11",
+         "900",
+         "9 इकाई"
+        ],
+        [
+         "सुबह 11 से दोपहर 12",
+         "600",
+         "6 इकाई"
+        ],
+        [
+         "दोपहर 12 से 1",
+         "700",
+         "7 इकाई"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Read the traffic bar graph. (a) In which hour was traffic the heaviest? (b) How many vehicles passed between 8 am and 11 am? (c) Suggest a reason for the pattern.",
+       "hi": "यातायात वाला दंड आलेख पढ़िए। (a) किस घंटे में यातायात सबसे अधिक था? (b) सुबह 8 से 11 बजे के बीच कितने वाहन गुज़रे? (c) इस पैटर्न का एक कारण बताइए।"
+      },
+      "a": {
+       "en": "(a) The tallest bar is 9 to 10 am: 15 units × 100 = 1500 vehicles.\n(b) 8 to 9: 1100, 9 to 10: 1500, 10 to 11: 900. Total = 1100 + 1500 + 900 = 3500 vehicles.\n(c) Between 8 and 10 am people go to offices, schools and colleges, so traffic rises. After 10 am most people have reached, so it falls. It rises a little at noon when some schools close.",
+       "hi": "(a) सबसे ऊँचा दंड सुबह 9 से 10 का है: 15 इकाई × 100 = 1500 वाहन।\n(b) 8 से 9: 1100, 9 से 10: 1500, 10 से 11: 900। कुल = 1100 + 1500 + 900 = 3500 वाहन।\n(c) सुबह 8 से 10 बजे के बीच लोग दफ़्तर, स्कूल और कॉलेज जाते हैं, इसलिए यातायात बढ़ता है। 10 बजे के बाद अधिकतर लोग पहुँच चुके होते हैं, इसलिए घटता है। दोपहर में कुछ स्कूलों की छुट्टी होने पर थोड़ा बढ़ता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Census year",
+        "Population of India (approx., in crores)",
+        "Increase since last census (crores)"
+       ],
+       "hi": [
+        "जनगणना वर्ष",
+        "भारत की जनसंख्या (लगभग, करोड़ में)",
+        "पिछली जनगणना से वृद्धि (करोड़)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1951",
+         "36",
+         "-"
+        ],
+        [
+         "1961",
+         "44",
+         "8"
+        ],
+        [
+         "1971",
+         "55",
+         "11"
+        ],
+        [
+         "1981",
+         "68",
+         "13"
+        ],
+        [
+         "1991",
+         "85",
+         "17"
+        ],
+        [
+         "2001",
+         "103",
+         "18"
+        ],
+        [
+         "2011",
+         "121",
+         "18"
+        ]
+       ],
+       "hi": [
+        [
+         "1951",
+         "36",
+         "-"
+        ],
+        [
+         "1961",
+         "44",
+         "8"
+        ],
+        [
+         "1971",
+         "55",
+         "11"
+        ],
+        [
+         "1981",
+         "68",
+         "13"
+        ],
+        [
+         "1991",
+         "85",
+         "17"
+        ],
+        [
+         "2001",
+         "103",
+         "18"
+        ],
+        [
+         "2011",
+         "121",
+         "18"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A bar graph shows India's population using 1 unit = 10 crore. (a) How tall is the bar for 2011? (b) In which decade did the population grow the least? (c) By about how much did it grow from 1951 to 2011?",
+       "hi": "एक दंड आलेख 1 इकाई = 10 करोड़ लेकर भारत की जनसंख्या दिखाता है। (a) 2011 का दंड कितना ऊँचा है? (b) किस दशक में जनसंख्या सबसे कम बढ़ी? (c) 1951 से 2011 तक लगभग कितनी बढ़ी?"
+      },
+      "a": {
+       "en": "(a) 121 ÷ 10 = 12.1 units, a little more than 12 units.\n(b) From the increase column: 8, 11, 13, 17, 18, 18. The least is 8 crore, in 1951 to 1961.\n(c) 121 − 36 = 85 crore. The population became more than 3 times as large.",
+       "hi": "(a) 121 ÷ 10 = 12.1 इकाई, 12 इकाई से थोड़ा अधिक।\n(b) वृद्धि वाले स्तंभ से: 8, 11, 13, 17, 18, 18। सबसे कम 8 करोड़, 1951 से 1961 में।\n(c) 121 − 36 = 85 करोड़। जनसंख्या 3 गुने से भी अधिक हो गई।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.4 Drawing a Bar Graph",
+    "hi": "4.4 दंड आलेख बनाना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Drawing a bar graph is a step-by-step job. Follow these steps every time:",
+      "hi": "दंड आलेख बनाना एक चरण-दर-चरण काम है। हर बार ये चरण अपनाइए:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Draw two lines at right angles: a horizontal line (for the items) and a vertical line (for the numbers). Label both.",
+       "Write the items (names, days, classes) along the horizontal line with equal spaces.",
+       "Look at the biggest value and the size of your paper, and choose a scale such as 1 unit = 1, 5, 10, 100 or ₹200 so that the tallest bar fits.",
+       "Mark the scale on the vertical line at equal distances: 0, 10, 20, 30, ... Never skip or squeeze numbers.",
+       "Work out the height of each bar: height = value ÷ scale.",
+       "Draw bars of equal width with equal gaps between them.",
+       "Give the graph a title and write the scale clearly (for example 'Scale: 1 unit = 10 runs')."
+      ],
+      "hi": [
+       "समकोण पर दो रेखाएँ खींचिए: एक क्षैतिज (वस्तुओं के लिए) और एक ऊर्ध्वाधर (संख्याओं के लिए)। दोनों पर नाम लिखिए।",
+       "क्षैतिज रेखा पर बराबर दूरी पर वस्तुएँ (नाम, दिन, कक्षाएँ) लिखिए।",
+       "सबसे बड़े मान और कागज़ के आकार को देखकर पैमाना चुनिए, जैसे 1 इकाई = 1, 5, 10, 100 या ₹200, ताकि सबसे ऊँचा दंड समा जाए।",
+       "ऊर्ध्वाधर रेखा पर बराबर दूरी पर पैमाना अंकित कीजिए: 0, 10, 20, 30, ... संख्याएँ छोड़िए या दबाइए नहीं।",
+       "हर दंड की ऊँचाई निकालिए: ऊँचाई = मान ÷ पैमाना।",
+       "बराबर चौड़ाई के दंड, बीच में बराबर खाली जगह छोड़कर, बनाइए।",
+       "आलेख को शीर्षक दीजिए और पैमाना साफ़ लिखिए (जैसे 'पैमाना: 1 इकाई = 10 रन')।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "Height of bar (in units) = value ÷ value of 1 unit",
+      "hi": "दंड की ऊँचाई (इकाइयों में) = मान ÷ 1 इकाई का मान"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A batter scored these runs in 8 matches: 45, 72, 18, 90, 60, 35, 84, 52. Choose a scale and find the bar heights.",
+       "hi": "एक बल्लेबाज़ ने 8 मैचों में ये रन बनाए: 45, 72, 18, 90, 60, 35, 84, 52। पैमाना चुनिए और दंडों की ऊँचाई ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Biggest value = 90. With 1 unit = 1 run we would need 90 units, too tall. With 1 unit = 10 runs we need only 9 units. Choose 1 unit = 10 runs.\nHeights: 4.5, 7.2, 1.8, 9, 6, 3.5, 8.4, 5.2 units.\nMark 0, 10, 20, ..., 90 on the vertical axis and draw the bars.\nHighest score: match 4 (90). Lowest: match 3 (18). Total runs = 456.",
+       "hi": "सबसे बड़ा मान = 90। 1 इकाई = 1 रन से 90 इकाई चाहिए, बहुत ऊँचा। 1 इकाई = 10 रन से केवल 9 इकाई चाहिए। 1 इकाई = 10 रन चुनिए।\nऊँचाइयाँ: 4.5, 7.2, 1.8, 9, 6, 3.5, 8.4, 5.2 इकाई।\nऊर्ध्वाधर अक्ष पर 0, 10, 20, ..., 90 अंकित करके दंड बनाइए।\nसबसे अधिक: मैच 4 (90)। सबसे कम: मैच 3 (18)। कुल रन = 456।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Item",
+        "Monthly spending (₹)",
+        "Bar height (1 unit = ₹200)"
+       ],
+       "hi": [
+        "मद",
+        "मासिक खर्च (₹)",
+        "दंड की ऊँचाई (1 इकाई = ₹200)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Rice and wheat",
+         "1800",
+         "9 units"
+        ],
+        [
+         "Vegetables",
+         "1200",
+         "6 units"
+        ],
+        [
+         "Milk",
+         "1000",
+         "5 units"
+        ],
+        [
+         "Cooking gas",
+         "1000",
+         "5 units"
+        ],
+        [
+         "Electricity",
+         "800",
+         "4 units"
+        ],
+        [
+         "Cooking oil",
+         "600",
+         "3 units"
+        ]
+       ],
+       "hi": [
+        [
+         "चावल और गेहूँ",
+         "1800",
+         "9 इकाई"
+        ],
+        [
+         "सब्ज़ियाँ",
+         "1200",
+         "6 इकाई"
+        ],
+        [
+         "दूध",
+         "1000",
+         "5 इकाई"
+        ],
+        [
+         "रसोई गैस",
+         "1000",
+         "5 इकाई"
+        ],
+        [
+         "बिजली",
+         "800",
+         "4 इकाई"
+        ],
+        [
+         "खाने का तेल",
+         "600",
+         "3 इकाई"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using the family spending table: (a) On which item is the most spent, and the second most? (b) How many times the spending on oil is the spending on rice and wheat? (c) What is the total monthly spending on these items?",
+       "hi": "परिवार के खर्च वाली तालिका से: (a) किस मद पर सबसे अधिक और किस पर दूसरा सबसे अधिक खर्च होता है? (b) चावल-गेहूँ का खर्च तेल के खर्च का कितना गुना है? (c) इन मदों पर कुल मासिक खर्च कितना है?"
+      },
+      "a": {
+       "en": "(a) Most: rice and wheat (₹1800). Second: vegetables (₹1200).\n(b) 1800 ÷ 600 = 3. So it is 3 times. On the graph too, 9 units is 3 times 3 units.\n(c) 1800 + 1200 + 1000 + 1000 + 800 + 600 = ₹6400.",
+       "hi": "(a) सबसे अधिक: चावल और गेहूँ (₹1800)। दूसरा: सब्ज़ियाँ (₹1200)।\n(b) 1800 ÷ 600 = 3। यानी 3 गुना। आलेख में भी 9 इकाई, 3 इकाई का 3 गुना है।\n(c) 1800 + 1200 + 1000 + 1000 + 800 + 600 = ₹6400।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "In a bar graph of railway tickets sold, the bar for Monday is 10 units tall and stands for 500 tickets. What is the scale? How tall should the bar for Friday (600 tickets) be?",
+       "hi": "बिके रेल टिकटों के एक दंड आलेख में सोमवार का दंड 10 इकाई ऊँचा है और 500 टिकट दर्शाता है। पैमाना क्या है? शुक्रवार (600 टिकट) का दंड कितना ऊँचा होना चाहिए?"
+      },
+      "a": {
+       "en": "Scale: 10 units = 500 tickets, so 1 unit = 500 ÷ 10 = 50 tickets.\nFriday: 600 ÷ 50 = 12 units.",
+       "hi": "पैमाना: 10 इकाई = 500 टिकट, इसलिए 1 इकाई = 500 ÷ 10 = 50 टिकट।\nशुक्रवार: 600 ÷ 50 = 12 इकाई।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the mistakes: A table says tigers in a reserve were 60 (2014), 72 (2016), 85 (2018), 94 (2020), 110 (2022). Its bar graph, with scale 1 unit = 10 tigers, has the bar for 2018 drawn 5.8 units tall, the bar for 2022 drawn wider than the others, and the vertical axis marked 0, 20, 30, 50, 60.",
+       "hi": "गलतियाँ ढूँढिए: एक तालिका के अनुसार एक अभयारण्य में बाघ 60 (2014), 72 (2016), 85 (2018), 94 (2020), 110 (2022) थे। इसके दंड आलेख में, पैमाना 1 इकाई = 10 बाघ, 2018 का दंड 5.8 इकाई ऊँचा, 2022 का दंड बाकी से चौड़ा बनाया गया है, और ऊर्ध्वाधर अक्ष पर 0, 20, 30, 50, 60 लिखा है।"
+      },
+      "a": {
+       "en": "Mistake 1: 85 tigers need 85 ÷ 10 = 8.5 units, not 5.8 (digits swapped).\nMistake 2: all bars must have the same width; a wider bar for 2022 makes it look even bigger.\nMistake 3: the scale must go up in equal steps: 0, 10, 20, 30, 40, 50, 60, ... up to at least 110. The marks 0, 20, 30, 50, 60 are uneven.",
+       "hi": "गलती 1: 85 बाघों के लिए 85 ÷ 10 = 8.5 इकाई चाहिए, 5.8 नहीं (अंक उलट गए)।\nगलती 2: सभी दंडों की चौड़ाई बराबर होनी चाहिए; 2022 का चौड़ा दंड उसे और बड़ा दिखाता है।\nगलती 3: पैमाना बराबर कदमों में बढ़ना चाहिए: 0, 10, 20, 30, 40, 50, 60, ... कम से कम 110 तक। 0, 20, 30, 50, 60 असमान हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Roll a die 30 times and record the results. Suppose the results are: 1 came 4 times, 2 came 4 times, 3 came 6 times, 4 came 4 times, 5 came 5 times, 6 came 7 times. Which number came most and least often? Which numbers came equally often?",
+       "hi": "एक पासा 30 बार फेंकिए और परिणाम लिखिए। मान लीजिए परिणाम हैं: 1 चार बार, 2 चार बार, 3 छह बार, 4 चार बार, 5 पाँच बार, 6 सात बार आया। कौन-सी संख्या सबसे अधिक और कौन-सी सबसे कम बार आई? कौन-सी संख्याएँ बराबर बार आईं?"
+      },
+      "a": {
+       "en": "Check total: 4 + 4 + 6 + 4 + 5 + 7 = 30.\nMost often: 6 (7 times).\nLeast often: 1, 2 and 4 (4 times each), so these three came equally often.\nIf you roll again, the numbers will change, because a die gives results by chance.",
+       "hi": "कुल की जाँच: 4 + 4 + 6 + 4 + 5 + 7 = 30।\nसबसे अधिक: 6 (7 बार)।\nसबसे कम: 1, 2 और 4 (चार-चार बार), इसलिए ये तीनों बराबर बार आए।\nदोबारा फेंकने पर संख्याएँ बदल जाएँगी, क्योंकि पासा संयोग से परिणाम देता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.5 Artistic and Aesthetic Considerations",
+    "hi": "4.5 कलात्मक और सौंदर्य संबंधी पहलू"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A graph should be both correct and pleasant to look at. Colours, pictures, neat labels and the direction of bars make a graph attractive and easier to understand. But beauty must never spoil accuracy.",
+      "hi": "आलेख सही भी होना चाहिए और देखने में सुंदर भी। रंग, चित्र, साफ़ नाम-पट्टियाँ और दंडों की दिशा आलेख को आकर्षक और समझने में आसान बनाते हैं। पर सुंदरता के चक्कर में शुद्धता कभी नहीं बिगड़नी चाहिए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Vertical or horizontal bars? Bars can stand up (vertical, also called columns) or lie down (horizontal). Choose the direction that matches the meaning of the data. Heights of mountains, buildings or students feel natural as vertical columns. Lengths of rivers, roads or train journeys feel natural as horizontal bars. Horizontal bars are also handy when the item names are long.",
+      "hi": "खड़े दंड या लेटे दंड? दंड खड़े (ऊर्ध्वाधर, जिन्हें स्तंभ भी कहते हैं) या लेटे (क्षैतिज) हो सकते हैं। आँकड़ों के अर्थ के अनुसार दिशा चुनिए। पहाड़ों, इमारतों या विद्यार्थियों की ऊँचाई खड़े स्तंभों में स्वाभाविक लगती है। नदियों, सड़कों या रेल यात्राओं की लंबाई लेटे दंडों में स्वाभाविक लगती है। नाम लंबे हों तब भी लेटे दंड सुविधाजनक होते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Column graph",
+       "hi": "स्तंभ आलेख"
+      },
+      "text": {
+       "en": "A bar graph with vertical bars (columns).",
+       "hi": "खड़े दंडों (स्तंभों) वाला दंड आलेख।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Continent",
+        "Tallest mountain",
+        "Height (m)",
+        "Column height (1 unit = 1000 m)"
+       ],
+       "hi": [
+        "महाद्वीप",
+        "सबसे ऊँचा पर्वत",
+        "ऊँचाई (मी)",
+        "स्तंभ की ऊँचाई (1 इकाई = 1000 मी)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Asia",
+         "Everest",
+         "8849",
+         "about 8.8 units"
+        ],
+        [
+         "South America",
+         "Aconcagua",
+         "6961",
+         "about 7 units"
+        ],
+        [
+         "North America",
+         "Denali",
+         "6190",
+         "about 6.2 units"
+        ],
+        [
+         "Africa",
+         "Kilimanjaro",
+         "5895",
+         "about 5.9 units"
+        ],
+        [
+         "Europe",
+         "Elbrus",
+         "5642",
+         "about 5.6 units"
+        ],
+        [
+         "Antarctica",
+         "Vinson",
+         "4892",
+         "about 4.9 units"
+        ],
+        [
+         "Australia",
+         "Kosciuszko",
+         "2228",
+         "about 2.2 units"
+        ]
+       ],
+       "hi": [
+        [
+         "एशिया",
+         "एवरेस्ट",
+         "8849",
+         "लगभग 8.8 इकाई"
+        ],
+        [
+         "दक्षिण अमेरिका",
+         "एकॉनकागुआ",
+         "6961",
+         "लगभग 7 इकाई"
+        ],
+        [
+         "उत्तर अमेरिका",
+         "डेनाली",
+         "6190",
+         "लगभग 6.2 इकाई"
+        ],
+        [
+         "अफ़्रीका",
+         "किलिमंजारो",
+         "5895",
+         "लगभग 5.9 इकाई"
+        ],
+        [
+         "यूरोप",
+         "एल्ब्रुस",
+         "5642",
+         "लगभग 5.6 इकाई"
+        ],
+        [
+         "अंटार्कटिका",
+         "विन्सन",
+         "4892",
+         "लगभग 4.9 इकाई"
+        ],
+        [
+         "ऑस्ट्रेलिया",
+         "कोसियुस्को",
+         "2228",
+         "लगभग 2.2 इकाई"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Infographic",
+       "hi": "इन्फ़ोग्राफ़िक (सूचना-चित्र)"
+      },
+      "text": {
+       "en": "A colourful picture that presents data together with drawings, icons and short text, so that information is quick and interesting to read.",
+       "hi": "रंगीन चित्र जो आँकड़ों को रेखाचित्रों, प्रतीकों और छोटे पाठ के साथ प्रस्तुत करता है, ताकि जानकारी जल्दी और रोचक ढंग से पढ़ी जा सके।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A mountain-height graph could be drawn with triangle-shaped 'mountains' instead of rectangles. It looks lovely, but be careful: if a taller triangle is also drawn wider, its area grows much more than its height, and our eyes compare areas. Everest may then look about four times as big as Elbrus, even though it is less than twice as tall (8849 m against 5642 m). The heights must stay correct, and widths should stay the same.",
+      "hi": "पर्वतों की ऊँचाई का आलेख आयतों के बजाय त्रिभुज-आकार के 'पहाड़ों' से बनाया जा सकता है। यह सुंदर दिखता है, पर सावधान: यदि ऊँचे त्रिभुज को चौड़ा भी बनाया जाए, तो उसका क्षेत्रफल ऊँचाई से बहुत अधिक बढ़ता है, और हमारी आँखें क्षेत्रफल की तुलना करती हैं। तब एवरेस्ट, एल्ब्रुस से लगभग चार गुना बड़ा दिख सकता है, जबकि वह दोगुने से भी कम ऊँचा है (8849 मी बनाम 5642 मी)। ऊँचाइयाँ सही रहनी चाहिए और चौड़ाइयाँ एक-सी।"
+     }
+    },
+    {
+     "note": {
+      "en": "Rules for a fair and beautiful graph: same width for all bars, equal gaps, a scale that starts at 0 and goes up in equal steps, a clear title and labels, and decorations that do not change the sizes of bars.",
+      "hi": "निष्पक्ष और सुंदर आलेख के नियम: सभी दंडों की चौड़ाई एक-सी, बराबर खाली जगह, 0 से शुरू होकर बराबर कदमों में बढ़ता पैमाना, स्पष्ट शीर्षक और नाम, और ऐसी सजावट जो दंडों के आकार न बदले।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "You want to show the lengths of some long rivers: Nile 6650 km, Amazon 6400 km, Yangtze 6300 km, Ganga 2525 km. Should you use vertical or horizontal bars? Choose a scale.",
+       "hi": "आप कुछ लंबी नदियों की लंबाई दिखाना चाहते हैं: नील 6650 किमी, अमेज़न 6400 किमी, यांग्त्सी 6300 किमी, गंगा 2525 किमी। खड़े दंड लें या लेटे? पैमाना चुनिए।"
+      },
+      "a": {
+       "en": "Rivers flow along the land, so lengths look natural as horizontal bars.\nBiggest value 6650 km. Take 1 unit = 500 km: bars of about 13.3, 12.8, 12.6 and 5 units.\nOr 1 unit = 1000 km: about 6.7, 6.4, 6.3 and 2.5 units.\nThe Nile (Africa) is the longest; the Amazon (South America) is second.",
+       "hi": "नदियाँ धरती पर लंबाई में बहती हैं, इसलिए लंबाई लेटे दंडों में स्वाभाविक लगती है।\nसबसे बड़ा मान 6650 किमी। 1 इकाई = 500 किमी लें: लगभग 13.3, 12.8, 12.6 और 5 इकाई के दंड।\nया 1 इकाई = 1000 किमी: लगभग 6.7, 6.4, 6.3 और 2.5 इकाई।\nनील (अफ़्रीका) सबसे लंबी है; अमेज़न (दक्षिण अमेरिका) दूसरी।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Drawing the fifth tally mark as a separate line. Correct: the fifth mark crosses the first four, making a bundle of 5 (IIII/).",
+   "Forgetting to check that the frequencies add up to the total number of observations. Correct: always add the frequency column and compare with the total.",
+   "Reading a pictograph by counting symbols only, ignoring the key. Correct: multiply the number of symbols by the value of one symbol.",
+   "Treating half a symbol as 1 item. Correct: half a symbol is half the key value, for example half of 10 = 5.",
+   "Drawing bars of different widths or with unequal gaps. Correct: all bars must have the same width and equal spacing; only the height carries information.",
+   "Marking the scale unevenly (0, 10, 30, 40 ...) or not starting at 0. Correct: the scale starts at 0 and goes up in equal steps.",
+   "Not writing the scale or the title on the graph. Correct: without the scale nobody can read the values; always write both.",
+   "Choosing a scale so small that the bars do not fit on the page, or so big that all bars look tiny. Correct: divide the largest value by the number of squares available.",
+   "Making decorative pictures wider as well as taller for bigger values. Correct: only the height should change, otherwise the picture exaggerates the difference.",
+   "Thinking a frequency table tells which person chose what. Correct: it gives only totals; individual details need the original list."
+  ],
+  "hi": [
+   "पाँचवाँ मिलान चिह्न अलग रेखा के रूप में बनाना। सही: पाँचवाँ चिह्न पहले चार को काटता है, जिससे 5 का गट्ठा (IIII/) बनता है।",
+   "यह जाँचना भूल जाना कि बारंबारताओं का योग प्रेक्षणों की कुल संख्या के बराबर है। सही: हमेशा बारंबारता स्तंभ जोड़कर कुल से मिलाइए।",
+   "कुंजी को अनदेखा करके केवल प्रतीक गिनकर चित्रालेख पढ़ना। सही: प्रतीकों की संख्या को एक प्रतीक के मान से गुणा कीजिए।",
+   "आधे प्रतीक को 1 वस्तु मानना। सही: आधा प्रतीक कुंजी के मान का आधा होता है, जैसे 10 का आधा = 5।",
+   "अलग-अलग चौड़ाई या असमान दूरी वाले दंड बनाना। सही: सभी दंडों की चौड़ाई और बीच की दूरी बराबर होनी चाहिए; जानकारी केवल ऊँचाई देती है।",
+   "पैमाना असमान अंकित करना (0, 10, 30, 40 ...) या 0 से शुरू न करना। सही: पैमाना 0 से शुरू होकर बराबर कदमों में बढ़ता है।",
+   "आलेख पर पैमाना या शीर्षक न लिखना। सही: पैमाने के बिना कोई मान नहीं पढ़ सकता; दोनों हमेशा लिखिए।",
+   "इतना छोटा पैमाना चुनना कि दंड पन्ने पर न समाएँ, या इतना बड़ा कि सब दंड बहुत छोटे दिखें। सही: सबसे बड़े मान को उपलब्ध खानों की संख्या से भाग दीजिए।",
+   "बड़े मानों के लिए सजावटी चित्रों को ऊँचा और चौड़ा दोनों बनाना। सही: केवल ऊँचाई बदलनी चाहिए, नहीं तो चित्र अंतर को बढ़ा-चढ़ाकर दिखाता है।",
+   "यह सोचना कि बारंबारता सारणी बताती है कि किसने क्या चुना। सही: यह केवल कुल बताती है; हर व्यक्ति का विवरण मूल सूची से मिलता है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Data",
+    "hi": "आँकड़े"
+   },
+   "d": {
+    "en": "Facts, numbers, measurements or observations that give information.",
+    "hi": "जानकारी देने वाले तथ्य, संख्याएँ, माप या प्रेक्षण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Survey",
+    "hi": "सर्वेक्षण"
+   },
+   "d": {
+    "en": "Collecting data by asking people questions.",
+    "hi": "लोगों से प्रश्न पूछकर आँकड़े इकट्ठा करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Observation",
+    "hi": "प्रेक्षण"
+   },
+   "d": {
+    "en": "One value or answer recorded in the data.",
+    "hi": "आँकड़ों में दर्ज एक मान या उत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Tally marks",
+    "hi": "मिलान चिह्न"
+   },
+   "d": {
+    "en": "Lines used for counting, grouped in bundles of five.",
+    "hi": "गिनती के लिए प्रयुक्त रेखाएँ, जो पाँच-पाँच के गट्ठों में होती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Frequency",
+    "hi": "बारंबारता"
+   },
+   "d": {
+    "en": "How many times an item or value occurs.",
+    "hi": "कोई वस्तु या मान कितनी बार आता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Frequency table",
+    "hi": "बारंबारता सारणी"
+   },
+   "d": {
+    "en": "A table listing items with their tally marks and frequencies.",
+    "hi": "वस्तुओं को उनके मिलान चिह्नों और बारंबारताओं के साथ दिखाने वाली तालिका।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ascending order",
+    "hi": "आरोही क्रम"
+   },
+   "d": {
+    "en": "Arrangement from smallest to largest.",
+    "hi": "सबसे छोटे से सबसे बड़े की ओर व्यवस्था।"
+   }
+  },
+  {
+   "t": {
+    "en": "Descending order",
+    "hi": "अवरोही क्रम"
+   },
+   "d": {
+    "en": "Arrangement from largest to smallest.",
+    "hi": "सबसे बड़े से सबसे छोटे की ओर व्यवस्था।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pictograph",
+    "hi": "चित्रालेख"
+   },
+   "d": {
+    "en": "Data shown using pictures or symbols.",
+    "hi": "चित्रों या प्रतीकों द्वारा दिखाए गए आँकड़े।"
+   }
+  },
+  {
+   "t": {
+    "en": "Key",
+    "hi": "कुंजी"
+   },
+   "d": {
+    "en": "In a pictograph, the value of one symbol.",
+    "hi": "चित्रालेख में एक प्रतीक का मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Scale",
+    "hi": "पैमाना"
+   },
+   "d": {
+    "en": "The value represented by one symbol or one unit of length on a graph.",
+    "hi": "आलेख पर एक प्रतीक या लंबाई की एक इकाई द्वारा दर्शाया गया मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bar graph",
+    "hi": "दंड आलेख"
+   },
+   "d": {
+    "en": "Data shown using bars of equal width whose lengths show the values.",
+    "hi": "बराबर चौड़ाई के दंडों से दिखाए गए आँकड़े, जिनकी लंबाई मान दिखाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Column graph",
+    "hi": "स्तंभ आलेख"
+   },
+   "d": {
+    "en": "A bar graph with vertical bars.",
+    "hi": "खड़े दंडों वाला दंड आलेख।"
+   }
+  },
+  {
+   "t": {
+    "en": "Horizontal axis",
+    "hi": "क्षैतिज अक्ष"
+   },
+   "d": {
+    "en": "The line along the bottom of a graph.",
+    "hi": "आलेख के नीचे की ओर की रेखा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Vertical axis",
+    "hi": "ऊर्ध्वाधर अक्ष"
+   },
+   "d": {
+    "en": "The upright line of a graph, usually carrying the number scale.",
+    "hi": "आलेख की खड़ी रेखा, जिस पर प्रायः संख्याओं का पैमाना होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Infographic",
+    "hi": "इन्फ़ोग्राफ़िक"
+   },
+   "d": {
+    "en": "A colourful presentation of data with pictures, icons and short text.",
+    "hi": "चित्रों, प्रतीकों और छोटे पाठ के साथ आँकड़ों की रंगीन प्रस्तुति।"
+   }
+  },
+  {
+   "t": {
+    "en": "Interpretation",
+    "hi": "व्याख्या"
+   },
+   "d": {
+    "en": "Reading a table or graph to answer questions and draw conclusions.",
+    "hi": "प्रश्नों के उत्तर देने और निष्कर्ष निकालने के लिए तालिका या आलेख पढ़ना।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Which of these questions need us to collect new data? (a) How many days are there in a week? (b) Which subject do most students of my class like? (c) How many students in my school come by bus?",
+    "hi": "इनमें से किन प्रश्नों के लिए नए आँकड़े इकट्ठा करने होंगे? (a) एक सप्ताह में कितने दिन होते हैं? (b) मेरी कक्षा के अधिकतर विद्यार्थियों को कौन-सा विषय पसंद है? (c) मेरे स्कूल के कितने विद्यार्थी बस से आते हैं?"
+   },
+   "a": {
+    "en": "(a) No new data: everyone knows a week has 7 days.\n(b) Yes: we must ask the students.\n(c) Yes: we must ask or count students who come by bus.",
+    "hi": "(a) नए आँकड़े नहीं: सब जानते हैं कि सप्ताह में 7 दिन होते हैं।\n(b) हाँ: विद्यार्थियों से पूछना होगा।\n(c) हाँ: बस से आने वाले विद्यार्थियों से पूछना या उन्हें गिनना होगा।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Write the tally marks for 13 and for 20.",
+    "hi": "13 और 20 के मिलान चिह्न लिखिए।"
+   },
+   "a": {
+    "en": "13 = 2 bundles of 5 and 3 marks: IIII/ IIII/ III\n20 = 4 bundles of 5: IIII/ IIII/ IIII/ IIII/",
+    "hi": "13 = 5 के 2 गट्ठे और 3 चिह्न: IIII/ IIII/ III\n20 = 5 के 4 गट्ठे: IIII/ IIII/ IIII/ IIII/"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "How many items do these tally marks show: IIII/ IIII/ IIII/ IIII?",
+    "hi": "ये मिलान चिह्न कितनी वस्तुएँ दर्शाते हैं: IIII/ IIII/ IIII/ IIII?"
+   },
+   "a": {
+    "en": "3 bundles of 5 = 15, plus 4 single marks.\n15 + 4 = 19.",
+    "hi": "5 के 3 गट्ठे = 15, और 4 अकेले चिह्न।\n15 + 4 = 19।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "30 students named their favourite fruit: Mango, Banana, Apple, Mango, Guava, Banana, Mango, Apple, Mango, Banana, Guava, Mango, Orange, Banana, Mango, Apple, Guava, Mango, Banana, Orange, Mango, Apple, Banana, Mango, Guava, Banana, Mango, Apple, Orange, Mango. Make a frequency table and name the most and least liked fruit.",
+    "hi": "30 विद्यार्थियों ने अपना पसंदीदा फल बताया: आम, केला, सेब, आम, अमरूद, केला, आम, सेब, आम, केला, अमरूद, आम, संतरा, केला, आम, सेब, अमरूद, आम, केला, संतरा, आम, सेब, केला, आम, अमरूद, केला, आम, सेब, संतरा, आम। बारंबारता सारणी बनाइए और सबसे अधिक व सबसे कम पसंद किया गया फल बताइए।"
+   },
+   "a": {
+    "en": "Mango: IIII/ IIII/ I = 11\nBanana: IIII/ II = 7\nApple: IIII/ = 5\nGuava: IIII = 4\nOrange: III = 3\nCheck: 11 + 7 + 5 + 4 + 3 = 30.\nMost liked: mango. Least liked: orange.",
+    "hi": "आम: IIII/ IIII/ I = 11\nकेला: IIII/ II = 7\nसेब: IIII/ = 5\nअमरूद: IIII = 4\nसंतरा: III = 3\nजाँच: 11 + 7 + 5 + 4 + 3 = 30।\nसबसे अधिक पसंद: आम। सबसे कम: संतरा।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "25 students told how they come to school: Bus, Car, Cycle, Walk, Bus, Auto, Cycle, Bus, Walk, Car, Bus, Cycle, Auto, Walk, Bus, Cycle, Bus, Car, Walk, Bus, Cycle, Auto, Bus, Walk, Cycle. Make a frequency table. Which is the most common way? Suggest how such data could be collected for the whole school.",
+    "hi": "25 विद्यार्थियों ने बताया कि वे स्कूल कैसे आते हैं: बस, कार, साइकिल, पैदल, बस, ऑटो, साइकिल, बस, पैदल, कार, बस, साइकिल, ऑटो, पैदल, बस, साइकिल, बस, कार, पैदल, बस, साइकिल, ऑटो, बस, पैदल, साइकिल। बारंबारता सारणी बनाइए। सबसे आम तरीका कौन-सा है? पूरे स्कूल के लिए ऐसे आँकड़े कैसे इकट्ठे किए जा सकते हैं?"
+   },
+   "a": {
+    "en": "Bus: IIII/ III = 8\nCycle: IIII/ I = 6\nWalk: IIII/ = 5\nCar: III = 3\nAuto: III = 3\nTotal = 25. Most common: bus.\nFor the whole school, the class monitor of each class can ask during attendance and record with tally marks; then all class tables are added.",
+    "hi": "बस: IIII/ III = 8\nसाइकिल: IIII/ I = 6\nपैदल: IIII/ = 5\nकार: III = 3\nऑटो: III = 3\nकुल = 25। सबसे आम: बस।\nपूरे स्कूल के लिए हर कक्षा का मॉनिटर हाज़िरी के समय पूछकर मिलान चिह्नों से लिख सकता है; फिर सभी कक्षाओं की तालिकाएँ जोड़ दी जाएँ।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Arrange these heights (cm) of 8 children in ascending order and find the tallest and shortest: 132, 128, 141, 135, 126, 139, 130, 137.",
+    "hi": "8 बच्चों की इन लंबाइयों (सेमी) को आरोही क्रम में लगाइए और सबसे लंबा व सबसे छोटा बताइए: 132, 128, 141, 135, 126, 139, 130, 137।"
+   },
+   "a": {
+    "en": "Ascending order: 126, 128, 130, 132, 135, 137, 139, 141.\nShortest = 126 cm, tallest = 141 cm.",
+    "hi": "आरोही क्रम: 126, 128, 130, 132, 135, 137, 139, 141।\nसबसे छोटा = 126 सेमी, सबसे लंबा = 141 सेमी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "In a pictograph, one symbol = 10 students. How many symbols show 70 students? How many students do 4 and a half symbols show?",
+    "hi": "एक चित्रालेख में एक प्रतीक = 10 विद्यार्थी। 70 विद्यार्थियों के लिए कितने प्रतीक? साढ़े 4 प्रतीक कितने विद्यार्थी दर्शाते हैं?"
+   },
+   "a": {
+    "en": "70 ÷ 10 = 7 symbols.\n4 full symbols = 4 × 10 = 40, half a symbol = 5.\n4 and a half symbols = 40 + 5 = 45 students.",
+    "hi": "70 ÷ 10 = 7 प्रतीक।\n4 पूरे प्रतीक = 4 × 10 = 40, आधा प्रतीक = 5।\nसाढ़े 4 प्रतीक = 40 + 5 = 45 विद्यार्थी।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A pictograph shows tractors in four villages with one symbol = 8 tractors: Village A 3 symbols, Village B 5 symbols, Village C 2 symbols, Village D 4 symbols. (a) Which village has the most and the fewest tractors? (b) How many more tractors does B have than C? (c) Is it true that D has twice as many as C?",
+    "hi": "एक चित्रालेख चार गाँवों के ट्रैक्टर दिखाता है, एक प्रतीक = 8 ट्रैक्टर: गाँव A 3 प्रतीक, गाँव B 5 प्रतीक, गाँव C 2 प्रतीक, गाँव D 4 प्रतीक। (a) किस गाँव में सबसे अधिक और सबसे कम ट्रैक्टर हैं? (b) B में C से कितने अधिक ट्रैक्टर हैं? (c) क्या यह सच है कि D में C के दोगुने हैं?"
+   },
+   "a": {
+    "en": "Tractors: A = 24, B = 40, C = 16, D = 32.\n(a) Most: B (40). Fewest: C (16).\n(b) 40 − 16 = 24 more (3 symbols).\n(c) 2 × 16 = 32 = D. Yes, true.",
+    "hi": "ट्रैक्टर: A = 24, B = 40, C = 16, D = 32।\n(a) सबसे अधिक: B (40)। सबसे कम: C (16)।\n(b) 40 − 16 = 24 अधिक (3 प्रतीक)।\n(c) 2 × 16 = 32 = D। हाँ, सच है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Girl students in classes VI to X are: 30, 25, 20, 35, 15. Draw a pictograph with one symbol = 5 girls (say how many symbols each). Which class has the fewest girls? How many more girls are in the class with the most than in the class with the fewest? If 5 more girls join Class VIII, what changes in the pictograph?",
+    "hi": "कक्षा VI से X में छात्राएँ हैं: 30, 25, 20, 35, 15। एक प्रतीक = 5 छात्राएँ लेकर चित्रालेख बनाइए (हर कक्षा के प्रतीक बताइए)। किस कक्षा में सबसे कम छात्राएँ हैं? सबसे अधिक वाली कक्षा में सबसे कम वाली से कितनी अधिक हैं? यदि कक्षा VIII में 5 और छात्राएँ आ जाएँ तो चित्रालेख में क्या बदलेगा?"
+   },
+   "a": {
+    "en": "Symbols: VI 6, VII 5, VIII 4, IX 7, X 3.\nFewest: Class X (15).\nMost is IX (35). 35 − 15 = 20 more girls.\nIf 5 girls join VIII: 25 girls, so one more symbol is added, making 5 symbols.",
+    "hi": "प्रतीक: VI 6, VII 5, VIII 4, IX 7, X 3।\nसबसे कम: कक्षा X (15)।\nसबसे अधिक IX (35)। 35 − 15 = 20 अधिक छात्राएँ।\nयदि VIII में 5 छात्राएँ आएँ: 25 छात्राएँ, इसलिए एक प्रतीक बढ़ेगा और 5 प्रतीक होंगे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A kennel in Karnataka breeds Mudhol hounds (an Indian dog breed). Four kennels have 45, 30, 60 and 15 dogs. Choose a suitable key for a pictograph and give the number of symbols. Someone says kennels 1 and 2 together have more dogs than kennel 3. Check.",
+    "hi": "कर्नाटक में मुधोल हाउंड (एक भारतीय कुत्ता नस्ल) पाले जाते हैं। चार केनेल में 45, 30, 60 और 15 कुत्ते हैं। चित्रालेख के लिए उचित कुंजी चुनिए और प्रतीकों की संख्या बताइए। कोई कहता है कि केनेल 1 और 2 मिलाकर केनेल 3 से अधिक कुत्ते हैं। जाँचिए।"
+   },
+   "a": {
+    "en": "All numbers are multiples of 15, so take one symbol = 15 dogs.\nSymbols: 3, 2, 4, 1.\nKennels 1 and 2: 45 + 30 = 75. Kennel 3: 60.\n75 > 60, so the claim is true (5 symbols against 4).",
+    "hi": "सभी संख्याएँ 15 के गुणज हैं, इसलिए एक प्रतीक = 15 कुत्ते लीजिए।\nप्रतीक: 3, 2, 4, 1।\nकेनेल 1 और 2: 45 + 30 = 75। केनेल 3: 60।\n75 > 60, इसलिए कथन सही है (5 प्रतीक बनाम 4)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "In a bar graph the scale is 1 unit = 50 students. What does a bar 7 units tall show? How tall is a bar for 250 students?",
+    "hi": "एक दंड आलेख में पैमाना 1 इकाई = 50 विद्यार्थी है। 7 इकाई ऊँचा दंड क्या दर्शाता है? 250 विद्यार्थियों का दंड कितना ऊँचा होगा?"
+   },
+   "a": {
+    "en": "7 × 50 = 350 students.\n250 ÷ 50 = 5 units.",
+    "hi": "7 × 50 = 350 विद्यार्थी।\n250 ÷ 50 = 5 इकाई।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Insects counted in a tea garden: ants 40, beetles 25, spiders 15, grasshoppers 30, butterflies 10. Choose a scale and give bar heights for a bar graph.",
+    "hi": "एक चाय बागान में गिने गए कीट: चींटियाँ 40, भृंग 25, मकड़ियाँ 15, टिड्डे 30, तितलियाँ 10। पैमाना चुनिए और दंड आलेख के लिए दंडों की ऊँचाई बताइए।"
+   },
+   "a": {
+    "en": "All numbers are multiples of 5, biggest 40. Take 1 unit = 5 insects.\nAnts 8, beetles 5, spiders 3, grasshoppers 6, butterflies 2 units.\n(1 unit = 10 also works: 4, 2.5, 1.5, 3, 1 units.)\nTotal insects = 120.",
+    "hi": "सभी संख्याएँ 5 के गुणज हैं, सबसे बड़ी 40। 1 इकाई = 5 कीट लीजिए।\nचींटियाँ 8, भृंग 5, मकड़ियाँ 3, टिड्डे 6, तितलियाँ 2 इकाई।\n(1 इकाई = 10 भी चलेगा: 4, 2.5, 1.5, 3, 1 इकाई।)\nकुल कीट = 120।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "In a survey of after-school activities, 35 students chose cricket, 20 kabaddi, 25 dance, 15 painting and 10 chess. Draw (describe) a bar graph with 1 unit = 5 students. Which is the second most popular activity?",
+    "hi": "स्कूल के बाद की गतिविधियों के एक सर्वेक्षण में 35 विद्यार्थियों ने क्रिकेट, 20 ने कबड्डी, 25 ने नृत्य, 15 ने चित्रकारी और 10 ने शतरंज चुना। 1 इकाई = 5 विद्यार्थी लेकर दंड आलेख बनाइए (वर्णन कीजिए)। दूसरी सबसे लोकप्रिय गतिविधि कौन-सी है?"
+   },
+   "a": {
+    "en": "Bar heights: cricket 7, kabaddi 4, dance 5, painting 3, chess 2 units.\nMark 0, 5, 10, ..., 35 on the vertical axis and draw equal-width bars.\nOrder: cricket 35, dance 25, kabaddi 20, painting 15, chess 10.\nSecond most popular: dance.",
+    "hi": "दंडों की ऊँचाई: क्रिकेट 7, कबड्डी 4, नृत्य 5, चित्रकारी 3, शतरंज 2 इकाई।\nऊर्ध्वाधर अक्ष पर 0, 5, 10, ..., 35 अंकित करके बराबर चौड़ाई के दंड बनाइए।\nक्रम: क्रिकेट 35, नृत्य 25, कबड्डी 20, चित्रकारी 15, शतरंज 10।\nदूसरी सबसे लोकप्रिय: नृत्य।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A bar graph shows trees planted by an eco-club: Mon 12, Tue 18, Wed 9, Thu 24, Fri 15, Sat 30. (a) How many trees were planted from Monday to Wednesday? (b) On which days were the most and the fewest planted? (c) What is the total for the week?",
+    "hi": "एक दंड आलेख एक इको-क्लब द्वारा लगाए पेड़ दिखाता है: सोम 12, मंगल 18, बुध 9, गुरु 24, शुक्र 15, शनि 30। (a) सोमवार से बुधवार तक कितने पेड़ लगे? (b) किन दिनों सबसे अधिक और सबसे कम लगे? (c) सप्ताह का कुल कितना है?"
+   },
+   "a": {
+    "en": "(a) 12 + 18 + 9 = 39 trees.\n(b) Most: Saturday (30). Fewest: Wednesday (9).\n(c) 12 + 18 + 9 + 24 + 15 + 30 = 108 trees.\nA possible reason for Saturday: more members are free on a half day.",
+    "hi": "(a) 12 + 18 + 9 = 39 पेड़।\n(b) सबसे अधिक: शनिवार (30)। सबसे कम: बुधवार (9)।\n(c) 12 + 18 + 9 + 24 + 15 + 30 = 108 पेड़।\nशनिवार का संभावित कारण: आधे दिन की छुट्टी में अधिक सदस्य खाली होते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "The table shows wickets taken by five bowlers in a season: A 12, B 8, C 15, D 5, E 10. Give it a title. Who took the most wickets? Ravi says the total can be found by adding the biggest and smallest and doubling. Is he right? Find the correct total.",
+    "hi": "तालिका एक सत्र में पाँच गेंदबाज़ों के विकेट दिखाती है: A 12, B 8, C 15, D 5, E 10। इसे शीर्षक दीजिए। सबसे अधिक विकेट किसने लिए? रवि कहता है कि सबसे बड़े और सबसे छोटे को जोड़कर दोगुना करने से कुल मिल जाएगा। क्या वह सही है? सही कुल ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Title: 'Wickets taken by five bowlers in one season'.\nMost: Bowler C (15).\nRavi's way: (15 + 5) × 2 = 40.\nCorrect total: 12 + 8 + 15 + 5 + 10 = 50.\nRavi is wrong: we must add every value.",
+    "hi": "शीर्षक: 'एक सत्र में पाँच गेंदबाज़ों द्वारा लिए गए विकेट'।\nसबसे अधिक: गेंदबाज़ C (15)।\nरवि का तरीका: (15 + 5) × 2 = 40।\nसही कुल: 12 + 8 + 15 + 5 + 10 = 50।\nरवि गलत है: हर मान को जोड़ना ज़रूरी है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A bar graph of railway tickets sold has no scale written. The bar for Tuesday (300 tickets) is 6 units tall. Find the scale and the heights for Monday 500, Wednesday 450, Thursday 350 and Friday 600. Then check: if Wednesday's bar is drawn 8 units tall, is it correct?",
+    "hi": "बिके रेल टिकटों के एक दंड आलेख पर पैमाना नहीं लिखा है। मंगलवार (300 टिकट) का दंड 6 इकाई ऊँचा है। पैमाना और सोमवार 500, बुधवार 450, गुरुवार 350 तथा शुक्रवार 600 के दंडों की ऊँचाई ज्ञात कीजिए। फिर जाँचिए: यदि बुधवार का दंड 8 इकाई ऊँचा बना है, तो क्या वह सही है?"
+   },
+   "a": {
+    "en": "Scale: 6 units = 300, so 1 unit = 50 tickets.\nMonday 500 ÷ 50 = 10, Wednesday 450 ÷ 50 = 9, Thursday 350 ÷ 50 = 7, Friday 600 ÷ 50 = 12 units.\nWednesday drawn at 8 units would mean 400 tickets, so it is wrong; it should be 9 units.",
+    "hi": "पैमाना: 6 इकाई = 300, इसलिए 1 इकाई = 50 टिकट।\nसोमवार 500 ÷ 50 = 10, बुधवार 450 ÷ 50 = 9, गुरुवार 350 ÷ 50 = 7, शुक्रवार 600 ÷ 50 = 12 इकाई।\n8 इकाई का बुधवार दंड 400 टिकट दर्शाएगा, इसलिए गलत है; यह 9 इकाई होना चाहिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "A family's spending is: rent ₹4000, food ₹3200, school fees ₹1600, travel ₹800, others ₹400. Which scale would you choose for a bar graph that must fit 10 squares of graph paper? Give the bar heights. Food spending is what fraction of rent?",
+    "hi": "एक परिवार का खर्च है: किराया ₹4000, भोजन ₹3200, स्कूल फ़ीस ₹1600, यात्रा ₹800, अन्य ₹400। 10 खानों वाले ग्राफ़ पेपर में समाने वाले दंड आलेख के लिए आप कौन-सा पैमाना चुनेंगे? दंडों की ऊँचाई बताइए। भोजन का खर्च किराए का कौन-सा भाग है?"
+   },
+   "a": {
+    "en": "Biggest value ₹4000 must fit in 10 squares: 4000 ÷ 10 = 400. Take 1 unit = ₹400.\nHeights: rent 10, food 8, fees 4, travel 2, others 1 unit.\nFood ÷ rent = 3200 ÷ 4000 = 8 ÷ 10 = 4/5. Food is four-fifths of rent.",
+    "hi": "सबसे बड़ा मान ₹4000, 10 खानों में समाना चाहिए: 4000 ÷ 10 = 400। 1 इकाई = ₹400 लीजिए।\nऊँचाइयाँ: किराया 10, भोजन 8, फ़ीस 4, यात्रा 2, अन्य 1 इकाई।\nभोजन ÷ किराया = 3200 ÷ 4000 = 8 ÷ 10 = 4/5। भोजन किराए का चार-पाँचवाँ भाग है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Should a graph of the heights of your classmates use vertical or horizontal bars? And a graph of the distances students travel to school?",
+    "hi": "सहपाठियों की लंबाई के आलेख में खड़े दंड हों या लेटे? और विद्यार्थियों द्वारा स्कूल तक तय की गई दूरी के आलेख में?"
+   },
+   "a": {
+    "en": "Heights are measured standing up, so vertical bars (columns) suit them best.\nDistances are travelled along the ground, so horizontal bars suit them.\nBoth would still be correct either way, but matching the meaning makes the graph easier to understand.",
+    "hi": "लंबाई खड़े होकर मापी जाती है, इसलिए खड़े दंड (स्तंभ) सबसे उपयुक्त हैं।\nदूरी ज़मीन के साथ-साथ तय होती है, इसलिए लेटे दंड उपयुक्त हैं।\nदोनों तरह से आलेख सही रहेगा, पर अर्थ से मेल खाने पर आलेख समझना आसान होता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "An advertisement shows two milk-bottle pictures for the sales of two dairies. Dairy P sold 2000 litres and Dairy Q sold 4000 litres. The artist made Q's bottle twice as tall AND twice as wide as P's. Why is this misleading?",
+    "hi": "एक विज्ञापन दो डेयरियों की बिक्री के लिए दूध की बोतलों के दो चित्र दिखाता है। डेयरी P ने 2000 लीटर और डेयरी Q ने 4000 लीटर बेचा। कलाकार ने Q की बोतल P से दोगुनी ऊँची और दोगुनी चौड़ी भी बनाई। यह भ्रामक क्यों है?"
+   },
+   "a": {
+    "en": "Q sold 4000 ÷ 2000 = 2 times as much, so only the height should be doubled.\nDoubling both height and width makes the picture's area 2 × 2 = 4 times as big.\nOur eyes see the area, so Q looks 4 times bigger instead of 2 times. Keep widths equal to be fair.",
+    "hi": "Q ने 4000 ÷ 2000 = 2 गुना बेचा, इसलिए केवल ऊँचाई दोगुनी होनी चाहिए।\nऊँचाई और चौड़ाई दोनों दोगुनी करने से चित्र का क्षेत्रफल 2 × 2 = 4 गुना हो जाता है।\nहमारी आँखें क्षेत्रफल देखती हैं, इसलिए Q दो के बजाय 4 गुना बड़ा दिखता है। निष्पक्ष रहने के लिए चौड़ाई बराबर रखिए।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "In the mountain table, which continent's tallest mountain is the lowest? About how many times as tall as Kosciuszko is Everest?",
+    "hi": "पर्वतों की तालिका में किस महाद्वीप का सबसे ऊँचा पर्वत सबसे कम ऊँचा है? एवरेस्ट, कोसियुस्को से लगभग कितने गुना ऊँचा है?"
+   },
+   "a": {
+    "en": "Australia: Kosciuszko, 2228 m.\n8849 ÷ 2228 is about 4 (since 4 × 2228 = 8912, very close to 8849).\nEverest is about 4 times as tall.",
+    "hi": "ऑस्ट्रेलिया: कोसियुस्को, 2228 मी।\n8849 ÷ 2228 लगभग 4 है (क्योंकि 4 × 2228 = 8912, जो 8849 के बहुत पास है)।\nएवरेस्ट लगभग 4 गुना ऊँचा है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Roll a die 20 times (or use these results: 2, 5, 6, 1, 3, 6, 4, 2, 6, 5, 1, 3, 6, 2, 4, 5, 6, 3, 1, 2). Make a tally table and find which number came most often and which came least often.",
+    "hi": "एक पासा 20 बार फेंकिए (या ये परिणाम लीजिए: 2, 5, 6, 1, 3, 6, 4, 2, 6, 5, 1, 3, 6, 2, 4, 5, 6, 3, 1, 2)। मिलान तालिका बनाइए और बताइए कि कौन-सी संख्या सबसे अधिक और कौन-सी सबसे कम बार आई।"
+   },
+   "a": {
+    "en": "1: III = 3\n2: IIII = 4\n3: III = 3\n4: II = 2\n5: III = 3\n6: IIII/ = 5\nTotal = 20.\nMost often: 6 (5 times). Least often: 4 (2 times).",
+    "hi": "1: III = 3\n2: IIII = 4\n3: III = 3\n4: II = 2\n5: III = 3\n6: IIII/ = 5\nकुल = 20।\nसबसे अधिक: 6 (5 बार)। सबसे कम: 4 (2 बार)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "The number of visitors to a museum was: January 1250, February 900, March 1600, April 2100. Draw a pictograph with one symbol = 500 visitors. What problem do you face? Suggest a better presentation.",
+    "hi": "एक संग्रहालय में आगंतुक थे: जनवरी 1250, फ़रवरी 900, मार्च 1600, अप्रैल 2100। एक प्रतीक = 500 आगंतुक लेकर चित्रालेख बनाइए। आपको क्या समस्या आती है? बेहतर प्रस्तुति सुझाइए।"
+   },
+   "a": {
+    "en": "Symbols: Jan 1250 ÷ 500 = 2.5, Feb 900 ÷ 500 = 1.8, Mar 1600 ÷ 500 = 3.2, Apr 2100 ÷ 500 = 4.2.\nParts like 0.8 or 0.2 of a symbol are hard to draw and to read exactly.\nBetter: a bar graph with 1 unit = 100 visitors (bars 12.5, 9, 16, 21 units), or a pictograph with exact numbers written beside each row.",
+    "hi": "प्रतीक: जनवरी 1250 ÷ 500 = 2.5, फ़रवरी 900 ÷ 500 = 1.8, मार्च 1600 ÷ 500 = 3.2, अप्रैल 2100 ÷ 500 = 4.2।\nप्रतीक के 0.8 या 0.2 जैसे भाग बनाना और ठीक-ठीक पढ़ना कठिन है।\nबेहतर: 1 इकाई = 100 आगंतुक वाला दंड आलेख (दंड 12.5, 9, 16, 21 इकाई), या हर पंक्ति के साथ सटीक संख्याएँ लिखा चित्रालेख।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Using the population table (1951 to 2011), between which two censuses did India's population first cross 100 crore? By how much did it grow from 1991 to 2011?",
+    "hi": "जनसंख्या तालिका (1951 से 2011) से बताइए कि भारत की जनसंख्या किन दो जनगणनाओं के बीच पहली बार 100 करोड़ से अधिक हुई? 1991 से 2011 तक कितनी बढ़ी?"
+   },
+   "a": {
+    "en": "1991: 85 crore (below 100). 2001: 103 crore (above 100). So it crossed 100 crore between 1991 and 2001.\nGrowth from 1991 to 2011 = 121 − 85 = 36 crore.",
+    "hi": "1991: 85 करोड़ (100 से कम)। 2001: 103 करोड़ (100 से अधिक)। इसलिए 1991 और 2001 के बीच 100 करोड़ पार हुई।\n1991 से 2011 तक वृद्धि = 121 − 85 = 36 करोड़।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Data is a collection of facts, numbers, measurements or observations that give information.",
+   "Data handling has four steps: collect, organise, present and interpret.",
+   "Data can be collected by surveys, counting, measuring or observing; some questions need new data, some do not.",
+   "Tally marks, in bundles of five, make counting easy; the count of each item is its frequency.",
+   "Arranging data in ascending or descending order helps find the largest, smallest and most common values.",
+   "A pictograph uses symbols; its key tells how many items one symbol stands for, and part of a symbol stands for part of that number.",
+   "A bar graph uses bars of equal width and equal gaps; the bar's length or height shows the value.",
+   "Choose a scale that fits the paper: bar height = value ÷ scale. Always write the scale and a title.",
+   "The scale on the axis starts at 0 and goes up in equal steps.",
+   "Bars may be vertical (columns) or horizontal; choose what matches the data, such as heights upright and lengths sideways.",
+   "Colours, pictures and infographics make data attractive, but they must not distort sizes; fancy pictures can mislead.",
+   "Reading pictographs and bar graphs carefully lets us compare values, find totals and differences, and suggest reasons for patterns."
+  ],
+  "hi": [
+   "आँकड़े तथ्यों, संख्याओं, मापों या प्रेक्षणों का संग्रह हैं जो जानकारी देते हैं।",
+   "आँकड़ों के प्रबंधन के चार चरण हैं: इकट्ठा करना, व्यवस्थित करना, प्रस्तुत करना और व्याख्या करना।",
+   "आँकड़े सर्वेक्षण, गिनती, माप या प्रेक्षण से इकट्ठे होते हैं; कुछ प्रश्नों के लिए नए आँकड़े चाहिए, कुछ के लिए नहीं।",
+   "पाँच के गट्ठों वाले मिलान चिह्न गिनती आसान बनाते हैं; हर वस्तु की गिनती उसकी बारंबारता है।",
+   "आँकड़ों को आरोही या अवरोही क्रम में लगाने से सबसे बड़ा, सबसे छोटा और सबसे आम मान ढूँढना आसान होता है।",
+   "चित्रालेख प्रतीकों का प्रयोग करता है; उसकी कुंजी बताती है कि एक प्रतीक कितनी वस्तुओं के बराबर है, और प्रतीक का भाग उस संख्या का भाग दर्शाता है।",
+   "दंड आलेख बराबर चौड़ाई और बराबर दूरी वाले दंडों का प्रयोग करता है; दंड की लंबाई या ऊँचाई मान दिखाती है।",
+   "कागज़ में समाने वाला पैमाना चुनिए: दंड की ऊँचाई = मान ÷ पैमाना। पैमाना और शीर्षक हमेशा लिखिए।",
+   "अक्ष पर पैमाना 0 से शुरू होकर बराबर कदमों में बढ़ता है।",
+   "दंड खड़े (स्तंभ) या लेटे हो सकते हैं; आँकड़ों से मेल खाने वाली दिशा चुनिए, जैसे ऊँचाई खड़ी और लंबाई लेटी।",
+   "रंग, चित्र और इन्फ़ोग्राफ़िक आँकड़ों को आकर्षक बनाते हैं, पर आकार नहीं बिगाड़ने चाहिए; दिखावटी चित्र भ्रम पैदा कर सकते हैं।",
+   "चित्रालेख और दंड आलेख ध्यान से पढ़कर हम मानों की तुलना, कुल और अंतर निकाल सकते हैं, और पैटर्न के कारण सुझा सकते हैं।"
+  ]
+ }
+}
