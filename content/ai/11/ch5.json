@@ -1,0 +1,2387 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "11",
+ "id": "ch5",
+ "intro": {
+  "en": "AI runs on data. Before a machine can learn anything, someone has to collect the right data, check it, understand it and prepare it. This chapter makes you data literate: you will learn where data comes from, how to classify it by its level of measurement, how to summarise it with mean, median, mode, variance and standard deviation, how to draw it with Python's matplotlib, how matrices store data such as images, how raw data is cleaned in pre-processing, and how data is split for training and testing a model.",
+  "hi": "AI डेटा पर चलता है। मशीन कुछ भी सीखे, उससे पहले किसी को सही डेटा इकट्ठा करना, उसे जाँचना, समझना और तैयार करना पड़ता है। यह अध्याय आपको डेटा साक्षर (data literate) बनाता है: आप सीखेंगे कि डेटा कहाँ से आता है, माप के स्तर (level of measurement) के आधार पर उसे कैसे वर्गीकृत करें, माध्य, माध्यिका, बहुलक, प्रसरण और मानक विचलन से उसका सार कैसे निकालें, Python की matplotlib से उसका ग्राफ़ कैसे बनाएँ, मैट्रिक्स (matrix) चित्र जैसे डेटा को कैसे संग्रहीत करते हैं, pre-processing में कच्चे डेटा को कैसे साफ़ किया जाता है, और model के training व testing के लिए डेटा को कैसे बाँटा जाता है।"
+ },
+ "learn": {
+  "en": [
+   "What data and data literacy are, and why data literacy matters in AI",
+   "Structured, semi-structured and unstructured data; qualitative and quantitative data",
+   "How data is collected: primary sources (survey, interview, observation, experiment, questionnaire, marketing campaign) and secondary sources (social media tracking, web scraping, satellite data, online data platforms)",
+   "How much data is enough, why diversity matters, and collecting data ethically",
+   "The four levels of measurement: nominal, ordinal, interval and ratio",
+   "Measures of central tendency (mean, median, mode) and of spread (range, variance, standard deviation) with worked examples",
+   "Python programs for statistics and for line, bar, histogram, scatter and pie charts using matplotlib, including reading rainfall.csv",
+   "Matrices: order, elements, types, addition, subtraction, scalar multiplication, multiplication, transpose, and how images are stored as matrices",
+   "Data pre-processing: cleaning, transformation, normalisation, reduction and integration",
+   "How data is used in modelling and evaluation: training set, testing set, validation and cross-validation"
+  ],
+  "hi": [
+   "डेटा और डेटा साक्षरता क्या हैं, और AI में डेटा साक्षरता क्यों ज़रूरी है",
+   "संरचित (structured), अर्ध-संरचित (semi-structured) और असंरचित (unstructured) डेटा; गुणात्मक और मात्रात्मक डेटा",
+   "डेटा कैसे इकट्ठा होता है: प्राथमिक स्रोत (सर्वेक्षण, साक्षात्कार, अवलोकन, प्रयोग, प्रश्नावली, मार्केटिंग अभियान) और द्वितीयक स्रोत (सोशल मीडिया ट्रैकिंग, वेब स्क्रैपिंग, उपग्रह डेटा, ऑनलाइन डेटा प्लेटफ़ॉर्म)",
+   "कितना डेटा पर्याप्त है, विविधता क्यों ज़रूरी है, और नैतिक तरीके से डेटा इकट्ठा करना",
+   "माप के चार स्तर: नामित (nominal), क्रमसूचक (ordinal), अंतराल (interval) और अनुपात (ratio)",
+   "केंद्रीय प्रवृत्ति के माप (माध्य, माध्यिका, बहुलक) और फैलाव के माप (परिसर, प्रसरण, मानक विचलन) हल किए गए उदाहरणों के साथ",
+   "सांख्यिकी के लिए Python प्रोग्राम और matplotlib से रेखा, बार, हिस्टोग्राम, स्कैटर व पाई चार्ट, rainfall.csv पढ़ना भी",
+   "मैट्रिक्स: कोटि (order), अवयव, प्रकार, जोड़, घटाव, अदिश गुणन, गुणन, परिवर्त (transpose), और चित्र मैट्रिक्स के रूप में कैसे संग्रहीत होते हैं",
+   "डेटा pre-processing: सफ़ाई, रूपांतरण, सामान्यीकरण (normalisation), न्यूनीकरण और एकीकरण",
+   "modelling और evaluation में डेटा का उपयोग: training set, testing set, validation और cross-validation"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "5.1 What is data literacy?",
+    "hi": "5.1 डेटा साक्षरता क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data is a representation of facts, figures or instructions about something, in a form that people or machines can store, process and communicate. Your marks in a unit test, the number of runs a batter scores, the photo you click, the voice message you send on WhatsApp and the location your phone shares with Google Maps are all data.",
+      "hi": "डेटा किसी चीज़ के बारे में तथ्यों, आँकड़ों या निर्देशों का ऐसा रूप है जिसे लोग या मशीनें संग्रहीत, संसाधित (process) और साझा कर सकें। यूनिट टेस्ट में आपके अंक, किसी बल्लेबाज़ के रन, आपकी खींची फ़ोटो, WhatsApp पर भेजा वॉइस मैसेज और आपका फ़ोन Google Maps को जो लोकेशन भेजता है, ये सब डेटा हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Raw data on its own says little. When we organise it and give it context, it becomes information. When we understand patterns in the information and can act on them, it becomes knowledge. For example, '38, 41, 43' is data; 'the maximum temperature in Nagpur on the last three days was 38, 41 and 43 °C' is information; 'a heatwave is building, so schools should change timings' is knowledge.",
+      "hi": "केवल कच्चा डेटा बहुत कुछ नहीं बताता। जब हम उसे व्यवस्थित करते हैं और संदर्भ देते हैं, तो वह सूचना (information) बन जाता है। जब हम सूचना में पैटर्न समझकर उसके आधार पर कदम उठा सकें, तो वह ज्ञान (knowledge) बन जाता है। जैसे '38, 41, 43' डेटा है; 'नागपुर में पिछले तीन दिनों का अधिकतम तापमान 38, 41 और 43 °C रहा' सूचना है; 'लू बढ़ रही है, इसलिए स्कूलों का समय बदलना चाहिए' ज्ञान है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data literacy",
+       "hi": "डेटा साक्षरता (Data literacy)"
+      },
+      "text": {
+       "en": "Data literacy is the ability to find, read, understand, create, question and communicate data as useful information. A data-literate person can collect data, organise it, check its quality, analyse it, interpret the results and use data ethically.",
+       "hi": "डेटा साक्षरता डेटा को खोजने, पढ़ने, समझने, बनाने, उस पर सवाल उठाने और उसे उपयोगी सूचना के रूप में दूसरों तक पहुँचाने की क्षमता है। डेटा-साक्षर व्यक्ति डेटा इकट्ठा कर सकता है, उसे व्यवस्थित कर सकता है, उसकी गुणवत्ता जाँच सकता है, उसका विश्लेषण कर सकता है, नतीजों की व्याख्या कर सकता है और डेटा का नैतिक उपयोग कर सकता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why does this matter in AI? An AI model learns only from the data it is given. If the data is wrong, incomplete or one-sided, the model will be wrong too. People often say 'garbage in, garbage out'. Data literacy helps you build better AI, and it also helps you as a citizen: you can judge whether a claim such as '9 out of 10 doctors recommend this toothpaste' is backed by good data, or whether a chart in a news video is misleading.",
+      "hi": "AI में यह क्यों ज़रूरी है? AI model केवल उसी डेटा से सीखता है जो उसे दिया जाता है। अगर डेटा गलत, अधूरा या एकतरफ़ा है, तो model भी गलत होगा। इसे अक्सर 'garbage in, garbage out' (कचरा डालोगे तो कचरा ही निकलेगा) कहा जाता है। डेटा साक्षरता बेहतर AI बनाने में मदद करती है, और एक नागरिक के रूप में भी काम आती है: आप परख सकते हैं कि '10 में से 9 डॉक्टर यह टूथपेस्ट सुझाते हैं' जैसा दावा अच्छे डेटा पर टिका है या नहीं, या किसी न्यूज़ वीडियो का चार्ट भ्रामक तो नहीं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Collect: decide what data is needed and gather it from suitable sources.",
+       "Organise: store it in a clear form such as a table or spreadsheet.",
+       "Check quality: look for missing values, mistakes, duplicates and bias.",
+       "Analyse: calculate summaries such as averages and spread, and look for patterns.",
+       "Interpret and communicate: explain what the numbers mean, often with charts.",
+       "Use ethically: respect privacy and consent, and do not twist data to mislead."
+      ],
+      "hi": [
+       "इकट्ठा करना: तय करना कि कौन-सा डेटा चाहिए और उसे सही स्रोतों से जुटाना।",
+       "व्यवस्थित करना: उसे तालिका या स्प्रेडशीट जैसे साफ़ रूप में रखना।",
+       "गुणवत्ता जाँचना: छूटे मान, गलतियाँ, दोहराव और पक्षपात (bias) देखना।",
+       "विश्लेषण करना: औसत और फैलाव जैसे सार निकालना और पैटर्न खोजना।",
+       "व्याख्या और संप्रेषण: बताना कि संख्याओं का क्या अर्थ है, अक्सर चार्ट की मदद से।",
+       "नैतिक उपयोग: निजता और सहमति का सम्मान करना, और गुमराह करने के लिए डेटा को तोड़ना-मरोड़ना नहीं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: Data → Information → Knowledge. AI systems are data-driven; their quality can never be better than the quality of their data.",
+      "hi": "याद रखें: डेटा → सूचना → ज्ञान। AI सिस्टम डेटा-आधारित (data-driven) होते हैं; उनकी गुणवत्ता उनके डेटा की गुणवत्ता से बेहतर कभी नहीं हो सकती।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.2 Types of data",
+    "hi": "5.2 डेटा के प्रकार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data can be grouped by how it is organised. This decides which tools we use to store and analyse it.",
+      "hi": "डेटा को इस आधार पर बाँटा जा सकता है कि वह कैसे व्यवस्थित है। इसी से तय होता है कि उसे रखने और विश्लेषण करने के लिए कौन-से उपकरण इस्तेमाल होंगे।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Meaning",
+        "Indian examples"
+       ],
+       "hi": [
+        "प्रकार",
+        "अर्थ",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Structured",
+         "Neatly arranged in rows and columns with fixed fields; easy to search and count",
+         "School marks register in Excel, railway reservation records, bank transaction table"
+        ],
+        [
+         "Semi-structured",
+         "Has some labels or tags but no fixed table shape",
+         "JSON data from a weather app, emails (To, Subject fields plus free text), XML files"
+        ],
+        [
+         "Unstructured",
+         "No predefined format; needs special AI methods to understand",
+         "Photos, videos, voice notes, social media posts, scanned handwritten forms"
+        ]
+       ],
+       "hi": [
+        [
+         "संरचित (Structured)",
+         "निश्चित कॉलम वाली पंक्तियों-स्तंभों में व्यवस्थित; खोजना और गिनना आसान",
+         "Excel में स्कूल का अंक रजिस्टर, रेलवे आरक्षण रिकॉर्ड, बैंक लेन-देन तालिका"
+        ],
+        [
+         "अर्ध-संरचित (Semi-structured)",
+         "कुछ लेबल या टैग होते हैं, पर तालिका का तय आकार नहीं",
+         "मौसम ऐप का JSON डेटा, ईमेल (To, Subject फ़ील्ड के साथ खुला पाठ), XML फ़ाइलें"
+        ],
+        [
+         "असंरचित (Unstructured)",
+         "कोई पहले से तय प्रारूप नहीं; समझने के लिए खास AI तरीके चाहिए",
+         "फ़ोटो, वीडियो, वॉइस नोट, सोशल मीडिया पोस्ट, हाथ से भरे स्कैन किए फ़ॉर्म"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Data can also be grouped by what it describes. Qualitative (categorical) data describes a quality or category, such as favourite subject or blood group. Quantitative (numerical) data is a count or measurement, such as height or number of siblings. Quantitative data is further divided into discrete data, which can take only separate values that you count (number of students: 38, 39, never 38.5), and continuous data, which can take any value in a range that you measure (height 152.4 cm, temperature 36.8 °C).",
+      "hi": "डेटा को इस आधार पर भी बाँटा जाता है कि वह क्या बताता है। गुणात्मक (qualitative या categorical) डेटा किसी गुण या श्रेणी को बताता है, जैसे पसंदीदा विषय या रक्त समूह। मात्रात्मक (quantitative या numerical) डेटा गिनती या माप होता है, जैसे लंबाई या भाई-बहनों की संख्या। मात्रात्मक डेटा आगे दो प्रकार का है: असतत (discrete) डेटा, जो केवल अलग-अलग गिने जाने वाले मान लेता है (विद्यार्थियों की संख्या 38, 39, कभी 38.5 नहीं), और सतत (continuous) डेटा, जो किसी सीमा में कोई भी मान ले सकता है और मापा जाता है (लंबाई 152.4 cm, तापमान 36.8 °C)।"
+     }
+    },
+    {
+     "note": {
+      "en": "Most data in the world is unstructured (photos, videos, text). Deep learning became popular partly because it can learn from such data directly.",
+      "hi": "दुनिया का ज़्यादातर डेटा असंरचित है (फ़ोटो, वीडियो, पाठ)। Deep learning के लोकप्रिय होने का एक कारण यह भी है कि यह ऐसे डेटा से सीधे सीख सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.3 Data collection",
+    "hi": "5.3 डेटा संग्रह (Data collection)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data collection is the process of gathering data about past events or present conditions from offline and online sources, so that we can analyse it and find recurring patterns. A machine learning model uses these patterns to predict what may happen in future. Data may be gathered by scraping websites, capturing it through sensors and cameras, or loading it from existing files and databases.",
+      "hi": "डेटा संग्रह पिछली घटनाओं या वर्तमान स्थितियों के बारे में ऑफ़लाइन और ऑनलाइन स्रोतों से डेटा जुटाने की प्रक्रिया है, ताकि हम उसका विश्लेषण करके बार-बार आने वाले पैटर्न खोज सकें। Machine learning model इन्हीं पैटर्न से आगे क्या हो सकता है, इसका अनुमान लगाता है। डेटा वेबसाइटों से scraping करके, sensor और कैमरों से capture करके, या पहले से मौजूद फ़ाइलों और डेटाबेस से load करके जुटाया जा सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "How much data is enough? There is no single number. It depends on how hard the problem is and how many features (columns) the model must learn from. A simple task such as reading number plates in a parking lot can work with a modest dataset, while a medical AI that detects disease from X-rays needs a very large and carefully labelled dataset. A good practice is to start with a small batch, build a model, check results and then collect more. Requirements, choosing sources, collecting and analysing form a loop that is repeated.",
+      "hi": "कितना डेटा पर्याप्त है? इसकी कोई एक संख्या नहीं है। यह समस्या की कठिनाई और model को कितने features (कॉलम) से सीखना है, इस पर निर्भर करता है। पार्किंग में नंबर प्लेट पढ़ने जैसा सरल काम सीमित डेटा से हो सकता है, जबकि X-ray से बीमारी पहचानने वाले medical AI को बहुत बड़ा और सावधानी से लेबल किया डेटा चाहिए। अच्छा तरीका है छोटे बैच से शुरू करना, model बनाना, नतीजे जाँचना और फिर और डेटा जुटाना। ज़रूरतें तय करना, स्रोत चुनना, इकट्ठा करना और विश्लेषण करना एक चक्र (loop) है जो दोहराया जाता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Diversity matters more than size. The data must cover every situation in which the model will be used. A face-unlock system trained only on photos taken in bright light will fail at night; a speech app trained only on Delhi accents may not understand speakers from Kerala or Assam.",
+      "hi": "आकार से ज़्यादा विविधता (diversity) मायने रखती है। डेटा में वे सभी स्थितियाँ होनी चाहिए जिनमें model इस्तेमाल होगा। केवल तेज़ रोशनी की फ़ोटो पर सीखा face-unlock सिस्टम रात में असफल होगा; केवल दिल्ली के लहजे पर सीखा speech ऐप केरल या असम के वक्ताओं को शायद न समझ पाए।"
+     }
+    },
+    {
+     "p": {
+      "en": "Data sources are of two kinds. Primary data is collected first-hand by you for your own purpose. Secondary data already exists because someone else collected it earlier.",
+      "hi": "डेटा स्रोत दो प्रकार के होते हैं। प्राथमिक (primary) डेटा आप अपने उद्देश्य के लिए स्वयं सीधे इकट्ठा करते हैं। द्वितीयक (secondary) डेटा पहले से मौजूद होता है क्योंकि किसी और ने उसे पहले इकट्ठा किया था।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Primary method",
+        "How it works",
+        "Example"
+       ],
+       "hi": [
+        "प्राथमिक तरीका",
+        "कैसे काम करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Survey",
+         "Asking many people the same set of questions, on paper or through an online form",
+         "A Google Form asking 200 students how they travel to school"
+        ],
+        [
+         "Interview",
+         "One-to-one conversation; can be structured (fixed questions), semi-structured or unstructured (open talk)",
+         "Talking to five farmers about which crop disease troubles them most"
+        ],
+        [
+         "Observation",
+         "Watching and recording behaviour as it happens, without asking",
+         "Counting how many vehicles jump the red light at a crossing in one hour"
+        ],
+        [
+         "Experiment",
+         "Changing one thing on purpose and measuring the effect to find cause and effect",
+         "Growing two sets of plants, one with compost and one without, and measuring height"
+        ],
+        [
+         "Questionnaire",
+         "A written set of questions, closed (choose 1 to 5) or open-ended, used in surveys",
+         "Canteen feedback: rate food 1 to 5 and write one suggestion"
+        ],
+        [
+         "Marketing campaign",
+         "A business collects and uses customer data (clicks, purchases) to understand and predict behaviour",
+         "An online store tracks which festival offers customers click on"
+        ]
+       ],
+       "hi": [
+        [
+         "सर्वेक्षण (Survey)",
+         "बहुत से लोगों से कागज़ पर या ऑनलाइन फ़ॉर्म से एक जैसे प्रश्न पूछना",
+         "200 विद्यार्थियों से पूछने वाला Google Form कि वे स्कूल कैसे आते हैं"
+        ],
+        [
+         "साक्षात्कार (Interview)",
+         "आमने-सामने बातचीत; संरचित (तय प्रश्न), अर्ध-संरचित या असंरचित (खुली बातचीत)",
+         "पाँच किसानों से पूछना कि कौन-सा फ़सल रोग सबसे ज़्यादा परेशान करता है"
+        ],
+        [
+         "अवलोकन (Observation)",
+         "बिना पूछे, व्यवहार को होते हुए देखकर दर्ज करना",
+         "एक घंटे में चौराहे पर लाल बत्ती तोड़ने वाले वाहनों की गिनती"
+        ],
+        [
+         "प्रयोग (Experiment)",
+         "जानबूझकर एक चीज़ बदलकर उसका असर मापना, ताकि कारण और प्रभाव पता चले",
+         "पौधों के दो समूह उगाना, एक में खाद और एक में नहीं, फिर लंबाई मापना"
+        ],
+        [
+         "प्रश्नावली (Questionnaire)",
+         "लिखित प्रश्नों का समूह, बंद (1 से 5 चुनें) या खुले प्रश्न, सर्वेक्षण में प्रयुक्त",
+         "कैंटीन फ़ीडबैक: खाने को 1 से 5 अंक दें और एक सुझाव लिखें"
+        ],
+        [
+         "मार्केटिंग अभियान",
+         "कंपनी ग्राहक डेटा (क्लिक, खरीद) इकट्ठा करके व्यवहार समझती और अनुमान लगाती है",
+         "ऑनलाइन स्टोर देखता है कि ग्राहक कौन-से त्योहार ऑफ़र पर क्लिक करते हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Secondary method",
+        "How it works",
+        "Example"
+       ],
+       "hi": [
+        "द्वितीयक तरीका",
+        "कैसे काम करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Existing records",
+         "Books, journals, newspapers, government reports and a company's own databases",
+         "Census of India tables, a shop's past billing records"
+        ],
+        [
+         "Social media data tracking",
+         "Collecting public posts, comments, likes and shares to study opinions and trends",
+         "Checking whether posts about a new phone launch are positive or negative (sentiment analysis)"
+        ],
+        [
+         "Web scraping",
+         "A program automatically reads web pages and extracts the needed content",
+         "Collecting prices of the same mobile from several shopping sites to compare"
+        ],
+        [
+         "Satellite data tracking",
+         "Images and readings of Earth and the atmosphere taken from satellites",
+         "Monsoon cloud images used by the India Meteorological Department; crop health maps"
+        ],
+        [
+         "Online data platforms",
+         "Websites that share ready-made datasets",
+         "Kaggle, GitHub, the Indian government's Open Government Data platform (data.gov.in)"
+        ]
+       ],
+       "hi": [
+        [
+         "मौजूदा रिकॉर्ड",
+         "किताबें, पत्रिकाएँ, अख़बार, सरकारी रिपोर्ट और कंपनी के अपने डेटाबेस",
+         "भारत की जनगणना की तालिकाएँ, दुकान के पुराने बिल रिकॉर्ड"
+        ],
+        [
+         "सोशल मीडिया डेटा ट्रैकिंग",
+         "राय और रुझान समझने के लिए सार्वजनिक पोस्ट, टिप्पणियाँ, लाइक और शेयर इकट्ठा करना",
+         "देखना कि नए फ़ोन लॉन्च पर पोस्ट सकारात्मक हैं या नकारात्मक (sentiment analysis)"
+        ],
+        [
+         "वेब स्क्रैपिंग (Web scraping)",
+         "एक प्रोग्राम अपने-आप वेब पेज पढ़कर ज़रूरी सामग्री निकालता है",
+         "तुलना के लिए कई शॉपिंग साइटों से एक ही मोबाइल के दाम इकट्ठा करना"
+        ],
+        [
+         "उपग्रह डेटा ट्रैकिंग",
+         "उपग्रहों से ली गई पृथ्वी और वायुमंडल की तस्वीरें व माप",
+         "भारत मौसम विज्ञान विभाग द्वारा प्रयुक्त मानसून बादलों की तस्वीरें; फ़सल स्वास्थ्य मानचित्र"
+        ],
+        [
+         "ऑनलाइन डेटा प्लेटफ़ॉर्म",
+         "तैयार datasets साझा करने वाली वेबसाइटें",
+         "Kaggle, GitHub, भारत सरकार का Open Government Data प्लेटफ़ॉर्म (data.gov.in)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Primary data",
+        "Secondary data"
+       ],
+       "hi": [
+        "बिंदु",
+        "प्राथमिक डेटा",
+        "द्वितीयक डेटा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who collects",
+         "You, for your purpose",
+         "Someone else, earlier"
+        ],
+        [
+         "Cost and time",
+         "More",
+         "Less"
+        ],
+        [
+         "Fit to your question",
+         "Exact",
+         "May not match fully"
+        ],
+        [
+         "Control over quality",
+         "High",
+         "Must be checked"
+        ]
+       ],
+       "hi": [
+        [
+         "कौन इकट्ठा करता है",
+         "आप, अपने उद्देश्य के लिए",
+         "कोई और, पहले"
+        ],
+        [
+         "लागत और समय",
+         "ज़्यादा",
+         "कम"
+        ],
+        [
+         "आपके प्रश्न से मेल",
+         "बिल्कुल सटीक",
+         "पूरी तरह मेल न खाए"
+        ],
+        [
+         "गुणवत्ता पर नियंत्रण",
+         "अधिक",
+         "जाँचना पड़ता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Collecting data ethically: ask for consent, tell people why you collect data, collect only what you need, keep it safe and remove names where possible (anonymise). Scrape only sites whose terms allow it. In India, the Digital Personal Data Protection Act, 2023 sets rules for how organisations handle people's personal data. As a student, never collect phone numbers, Aadhaar numbers or photos of classmates for a project without permission from them and your teacher.",
+      "hi": "नैतिक तरीके से डेटा संग्रह: सहमति लें, लोगों को बताएँ कि डेटा क्यों ले रहे हैं, केवल ज़रूरी डेटा लें, उसे सुरक्षित रखें और जहाँ संभव हो नाम हटा दें (anonymise)। केवल उन्हीं साइटों से scraping करें जिनकी शर्तें इसकी अनुमति देती हैं। भारत में डिजिटल व्यक्तिगत डेटा संरक्षण अधिनियम, 2023 (Digital Personal Data Protection Act, 2023) तय करता है कि संस्थाएँ लोगों के व्यक्तिगत डेटा को कैसे संभालें। विद्यार्थी के रूप में किसी प्रोजेक्ट के लिए सहपाठियों के फ़ोन नंबर, आधार नंबर या फ़ोटो उनकी और शिक्षक की अनुमति के बिना कभी इकट्ठा न करें।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A team wants to build an app that warns farmers in Maharashtra about pest attacks. Suggest one primary and two secondary data sources.",
+       "hi": "एक टीम महाराष्ट्र के किसानों को कीट हमले की चेतावनी देने वाला ऐप बनाना चाहती है। एक प्राथमिक और दो द्वितीयक डेटा स्रोत सुझाइए।"
+      },
+      "a": {
+       "en": "Primary: interview or survey farmers and take phone photos of affected leaves in the field (with permission).\nSecondary 1: past pest-attack reports of the state agriculture department or agricultural universities.\nSecondary 2: satellite and weather data (rainfall, humidity, temperature), because pests often spread in certain weather.\nCheck: the data should cover different districts, crops and seasons so the app works everywhere.",
+       "hi": "प्राथमिक: किसानों से साक्षात्कार या सर्वेक्षण, और (अनुमति लेकर) खेत में प्रभावित पत्तियों की फ़ोन से फ़ोटो।\nद्वितीयक 1: राज्य कृषि विभाग या कृषि विश्वविद्यालयों की पुरानी कीट-हमला रिपोर्ट।\nद्वितीयक 2: उपग्रह और मौसम डेटा (वर्षा, नमी, तापमान), क्योंकि कीट अक्सर खास मौसम में फैलते हैं।\nजाँच: डेटा में अलग-अलग ज़िले, फ़सलें और मौसम होने चाहिए ताकि ऐप हर जगह काम करे।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.4 Exploring data and levels of measurement",
+    "hi": "5.4 डेटा की खोजबीन और माप के स्तर"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Exploring data means getting to know it before using it: What are the typical values? Which values are unusual? How spread out is the data? What are the smallest and largest values? Exploring also shows problems, such as missing entries or impossible values (a student aged 150), that could lead to wrong conclusions.",
+      "hi": "डेटा की खोजबीन (exploring) का अर्थ है उसे उपयोग से पहले जानना: सामान्य मान कौन-से हैं? कौन-से मान असामान्य हैं? डेटा कितना फैला हुआ है? सबसे छोटा और सबसे बड़ा मान क्या है? खोजबीन से समस्याएँ भी दिखती हैं, जैसे छूटी प्रविष्टियाँ या असंभव मान (150 वर्ष का विद्यार्थी), जो गलत निष्कर्ष तक ले जा सकती हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "A key part of exploring is knowing the level of measurement (also called the scale of measurement) of each variable. The level tells us what we are allowed to do with the values: only name them, also order them, also add and subtract them, or also multiply and divide them. There are four levels, from the simplest to the richest: nominal, ordinal, interval and ratio. Nominal and ordinal data are qualitative; interval and ratio data are quantitative.",
+      "hi": "खोजबीन का एक ज़रूरी हिस्सा है हर चर (variable) के माप का स्तर (level of measurement या scale of measurement) जानना। स्तर बताता है कि हम मानों के साथ क्या कर सकते हैं: केवल नाम देना, क्रम भी लगाना, जोड़-घटाव भी करना, या गुणा-भाग भी करना। चार स्तर हैं, सबसे सरल से सबसे समृद्ध तक: नामित (nominal), क्रमसूचक (ordinal), अंतराल (interval) और अनुपात (ratio)। Nominal और ordinal डेटा गुणात्मक हैं; interval और ratio डेटा मात्रात्मक हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Nominal level",
+       "hi": "नामित स्तर (Nominal level)"
+      },
+      "text": {
+       "en": "Values are only names or labels of categories with no natural order. You can count how many fall in each category and find the mode, but you cannot order them or do arithmetic. Examples: blood group (A, B, AB, O), state of residence, mobile brand, yes/no answers, eye colour. Even numbers used as labels, such as a cricketer's jersey number 18 or a PIN code, are nominal: jersey 18 is not 'more' than jersey 7.",
+       "hi": "मान केवल श्रेणियों के नाम या लेबल होते हैं, जिनका कोई प्राकृतिक क्रम नहीं होता। आप गिन सकते हैं कि हर श्रेणी में कितने हैं और बहुलक (mode) निकाल सकते हैं, पर क्रम नहीं लगा सकते न गणित कर सकते हैं। उदाहरण: रक्त समूह (A, B, AB, O), निवास का राज्य, मोबाइल ब्रांड, हाँ/नहीं उत्तर, आँखों का रंग। लेबल के रूप में प्रयुक्त संख्याएँ भी nominal हैं, जैसे क्रिकेटर की जर्सी संख्या 18 या पिन कोड: जर्सी 18, जर्सी 7 से 'ज़्यादा' नहीं है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Ordinal level",
+       "hi": "क्रमसूचक स्तर (Ordinal level)"
+      },
+      "text": {
+       "en": "Categories have a meaningful order, but the gaps between them are not equal or not known. You can rank them and find the median and mode, but you cannot say by how much one is bigger. Examples: grades A, B, C; ratings like poor, average, good, excellent; class rank 1st, 2nd, 3rd; T-shirt sizes S, M, L, XL; spice level mild, medium, hot.",
+       "hi": "श्रेणियों का अर्थपूर्ण क्रम होता है, पर उनके बीच के अंतर बराबर नहीं होते या ज्ञात नहीं होते। आप उन्हें क्रम दे सकते हैं और माध्यिका व बहुलक निकाल सकते हैं, पर यह नहीं कह सकते कि एक दूसरे से कितना बड़ा है। उदाहरण: ग्रेड A, B, C; खराब, ठीक, अच्छा, उत्कृष्ट जैसी रेटिंग; कक्षा में पहला, दूसरा, तीसरा स्थान; टी-शर्ट साइज़ S, M, L, XL; मसाले का स्तर कम, मध्यम, तेज़।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Interval level",
+       "hi": "अंतराल स्तर (Interval level)"
+      },
+      "text": {
+       "en": "Values are numbers with equal, meaningful gaps, so addition and subtraction make sense, but there is no true zero. Zero is just a point on the scale, not 'nothing'. So ratios are not meaningful. Examples: temperature in °C or °F (0 °C does not mean no heat; 40 °C is not twice as hot as 20 °C), calendar years (year 0 is arbitrary), IQ scores.",
+       "hi": "मान संख्याएँ होते हैं जिनके बीच बराबर और अर्थपूर्ण अंतर होते हैं, इसलिए जोड़-घटाव का अर्थ बनता है, पर कोई वास्तविक शून्य (true zero) नहीं होता। शून्य केवल पैमाने का एक बिंदु है, 'कुछ नहीं' नहीं। इसलिए अनुपात अर्थपूर्ण नहीं होते। उदाहरण: °C या °F में तापमान (0 °C का अर्थ ऊष्मा का न होना नहीं है; 40 °C, 20 °C से दोगुना गर्म नहीं है), कैलेंडर वर्ष (वर्ष 0 मनमाना है), IQ अंक।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Ratio level",
+       "hi": "अनुपात स्तर (Ratio level)"
+      },
+      "text": {
+       "en": "Like interval data, but with a true zero that means 'none of it'. All arithmetic, including ratios, is meaningful. Examples: height, weight in kg, age, income in rupees, distance, marks out of 100, number of runs, time taken to run 100 m. A batter with 80 runs has scored twice as many as one with 40.",
+       "hi": "Interval डेटा जैसा, पर एक वास्तविक शून्य के साथ जिसका अर्थ है 'बिल्कुल नहीं'। अनुपात सहित सभी गणित अर्थपूर्ण है। उदाहरण: लंबाई, kg में वज़न, आयु, रुपयों में आय, दूरी, 100 में से अंक, रनों की संख्या, 100 m दौड़ने में लगा समय। 80 रन बनाने वाले बल्लेबाज़ ने 40 रन वाले से दोगुने रन बनाए हैं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Can you...",
+        "Nominal",
+        "Ordinal",
+        "Interval",
+        "Ratio"
+       ],
+       "hi": [
+        "क्या आप...",
+        "Nominal",
+        "Ordinal",
+        "Interval",
+        "Ratio"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Count categories / find mode",
+         "Yes",
+         "Yes",
+         "Yes",
+         "Yes"
+        ],
+        [
+         "Put in order / find median",
+         "No",
+         "Yes",
+         "Yes",
+         "Yes"
+        ],
+        [
+         "Add and subtract / find mean",
+         "No",
+         "No",
+         "Yes",
+         "Yes"
+        ],
+        [
+         "Has a true zero",
+         "No",
+         "No",
+         "No",
+         "Yes"
+        ],
+        [
+         "Say 'twice as much'",
+         "No",
+         "No",
+         "No",
+         "Yes"
+        ]
+       ],
+       "hi": [
+        [
+         "श्रेणियाँ गिनना / बहुलक निकालना",
+         "हाँ",
+         "हाँ",
+         "हाँ",
+         "हाँ"
+        ],
+        [
+         "क्रम लगाना / माध्यिका निकालना",
+         "नहीं",
+         "हाँ",
+         "हाँ",
+         "हाँ"
+        ],
+        [
+         "जोड़-घटाव / माध्य निकालना",
+         "नहीं",
+         "नहीं",
+         "हाँ",
+         "हाँ"
+        ],
+        [
+         "वास्तविक शून्य है",
+         "नहीं",
+         "नहीं",
+         "नहीं",
+         "हाँ"
+        ],
+        [
+         "'दोगुना' कह सकते हैं",
+         "नहीं",
+         "नहीं",
+         "नहीं",
+         "हाँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Memory trick NOIR: Nominal = Name, Ordinal = Order, Interval = Interval (equal gaps), Ratio = Ratio (true zero). Each level has all the properties of the levels before it.",
+      "hi": "याद रखने की तरकीब NOIR: Nominal = नाम, Ordinal = क्रम, Interval = बराबर अंतराल, Ratio = अनुपात (वास्तविक शून्य)। हर स्तर में अपने से पहले वाले सभी स्तरों के गुण होते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Identify the level of measurement: (a) Aadhaar-linked mobile operator (b) Star rating of a hotel (1 to 5 stars) (c) Temperature in Delhi in °C (d) Monthly electricity bill in rupees (e) Position in a race (f) Year of birth.",
+       "hi": "माप का स्तर पहचानिए: (a) मोबाइल ऑपरेटर का नाम (b) होटल की स्टार रेटिंग (1 से 5 स्टार) (c) दिल्ली का तापमान °C में (d) रुपयों में मासिक बिजली बिल (e) दौड़ में स्थान (f) जन्म वर्ष।"
+      },
+      "a": {
+       "en": "(a) Nominal: only names, no order.\n(b) Ordinal: 5 stars is better than 3, but the gap between stars is not a fixed amount.\n(c) Interval: equal gaps, but 0 °C is not 'no temperature'.\n(d) Ratio: Rs 0 means no bill, and Rs 2000 is twice Rs 1000.\n(e) Ordinal: 1st, 2nd, 3rd show order, not by how much.\n(f) Interval: differences between years make sense, but year 0 is not a true zero.",
+       "hi": "(a) Nominal: केवल नाम, कोई क्रम नहीं।\n(b) Ordinal: 5 स्टार, 3 से बेहतर है, पर स्टारों के बीच का अंतर तय मात्रा नहीं।\n(c) Interval: बराबर अंतर, पर 0 °C का अर्थ 'कोई तापमान नहीं' नहीं।\n(d) Ratio: Rs 0 का अर्थ कोई बिल नहीं, और Rs 2000, Rs 1000 का दोगुना है।\n(e) Ordinal: पहला, दूसरा, तीसरा क्रम बताते हैं, कितना अंतर यह नहीं।\n(f) Interval: वर्षों का अंतर अर्थपूर्ण है, पर वर्ष 0 वास्तविक शून्य नहीं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.5 Statistical analysis: measures of central tendency",
+    "hi": "5.5 सांख्यिकीय विश्लेषण: केंद्रीय प्रवृत्ति के माप"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Statistical analysis means using mathematics to summarise data and find patterns in it. A measure of central tendency is a single value that represents the centre or typical value of a dataset. The three common measures are mean, median and mode. (You met these in Class 10 AI; here we use them for analysis and in Python.)",
+      "hi": "सांख्यिकीय विश्लेषण का अर्थ है गणित की मदद से डेटा का सार निकालना और उसमें पैटर्न खोजना। केंद्रीय प्रवृत्ति (central tendency) का माप एक ऐसा मान है जो डेटा के केंद्र या सामान्य मान को दर्शाता है। तीन आम माप हैं माध्य, माध्यिका और बहुलक। (कक्षा 10 AI में आप इनसे मिल चुके हैं; यहाँ हम इन्हें विश्लेषण और Python में प्रयोग करेंगे।)"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Mean",
+       "hi": "माध्य (Mean)"
+      },
+      "text": {
+       "en": "The mean (arithmetic average) is the sum of all values divided by the number of values. It uses every value, so it is pulled strongly by extreme values (outliers). Best for evenly spread numeric data without outliers.",
+       "hi": "माध्य (अंकगणितीय औसत) सभी मानों का योग बटा मानों की संख्या है। यह हर मान का उपयोग करता है, इसलिए अत्यधिक मान (outliers) इसे ज़ोर से खींचते हैं। बिना outliers वाले समान रूप से फैले संख्यात्मक डेटा के लिए सबसे अच्छा।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Mean = (x1 + x2 + ... + xn) / n = Σx / n",
+      "hi": "माध्य = (x1 + x2 + ... + xn) / n = Σx / n"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Median",
+       "hi": "माध्यिका (Median)"
+      },
+      "text": {
+       "en": "The median is the middle value when data is arranged in ascending order. If n is odd, it is the value at position (n + 1)/2. If n is even, it is the average of the two middle values (positions n/2 and n/2 + 1). It is not affected much by outliers, so it is preferred for data like incomes or house prices.",
+       "hi": "माध्यिका आरोही क्रम में लगाए गए डेटा का बीच वाला मान है। यदि n विषम है, तो यह (n + 1)/2 वें स्थान का मान है। यदि n सम है, तो यह दो बीच वाले मानों (n/2 और n/2 + 1 स्थान) का औसत है। Outliers का इस पर ज़्यादा असर नहीं होता, इसलिए आय या मकान के दाम जैसे डेटा के लिए इसे पसंद किया जाता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Mode",
+       "hi": "बहुलक (Mode)"
+      },
+      "text": {
+       "en": "The mode is the value that occurs most often. A dataset can have one mode, more than one mode (bimodal, multimodal) or no mode. It is the only average that works for nominal data, for example the most popular blood group in a class.",
+       "hi": "बहुलक वह मान है जो सबसे अधिक बार आता है। डेटा में एक बहुलक, एक से अधिक बहुलक (द्विबहुलक, बहुबहुलक) या कोई बहुलक नहीं भी हो सकता है। यह एकमात्र औसत है जो nominal डेटा पर काम करता है, जैसे कक्षा का सबसे आम रक्त समूह।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Runs scored by a batter in 7 matches: 45, 12, 78, 12, 0, 102, 33. Find mean, median and mode.",
+       "hi": "एक बल्लेबाज़ के 7 मैचों में रन: 45, 12, 78, 12, 0, 102, 33। माध्य, माध्यिका और बहुलक ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Sum = 45 + 12 + 78 + 12 + 0 + 102 + 33 = 282; n = 7.\nMean = 282 / 7 = 40.29 (approx).\nSorted: 0, 12, 12, 33, 45, 78, 102. n is odd, middle position = (7 + 1)/2 = 4th.\nMedian = 33.\nMode = 12 (appears twice).\nNote: the one big score of 102 lifts the mean above the median.",
+       "hi": "योग = 45 + 12 + 78 + 12 + 0 + 102 + 33 = 282; n = 7।\nमाध्य = 282 / 7 = 40.29 (लगभग)।\nक्रम में: 0, 12, 12, 33, 45, 78, 102। n विषम है, बीच का स्थान = (7 + 1)/2 = चौथा।\nमाध्यिका = 33।\nबहुलक = 12 (दो बार आया)।\nध्यान दें: 102 का एक बड़ा स्कोर माध्य को माध्यिका से ऊपर उठा देता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the median of 8 students' heights (cm): 150, 162, 148, 155, 170, 158, 152, 160.",
+       "hi": "8 विद्यार्थियों की लंबाई (cm) की माध्यिका ज्ञात कीजिए: 150, 162, 148, 155, 170, 158, 152, 160।"
+      },
+      "a": {
+       "en": "Sorted: 148, 150, 152, 155, 158, 160, 162, 170.\nn = 8 is even, so take the 4th and 5th values: 155 and 158.\nMedian = (155 + 158) / 2 = 156.5 cm.",
+       "hi": "क्रम में: 148, 150, 152, 155, 158, 160, 162, 170।\nn = 8 सम है, इसलिए चौथा और पाँचवाँ मान लें: 155 और 158।\nमाध्यिका = (155 + 158) / 2 = 156.5 cm।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Measure",
+        "Best used when",
+        "Affected by outliers?"
+       ],
+       "hi": [
+        "माप",
+        "कब सबसे उपयोगी",
+        "Outliers का असर?"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Mean",
+         "Numeric data, roughly symmetric, no extreme values",
+         "Yes, strongly"
+        ],
+        [
+         "Median",
+         "Skewed data or data with outliers (salaries, property prices)",
+         "Very little"
+        ],
+        [
+         "Mode",
+         "Categorical data or finding the most common value (most sold shoe size)",
+         "No"
+        ]
+       ],
+       "hi": [
+        [
+         "माध्य",
+         "संख्यात्मक, लगभग सममित डेटा, कोई अत्यधिक मान नहीं",
+         "हाँ, बहुत"
+        ],
+        [
+         "माध्यिका",
+         "तिरछा (skewed) डेटा या outliers वाला डेटा (वेतन, संपत्ति के दाम)",
+         "बहुत कम"
+        ],
+        [
+         "बहुलक",
+         "श्रेणीगत डेटा या सबसे आम मान खोजना (सबसे ज़्यादा बिकने वाला जूता साइज़)",
+         "नहीं"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.6 Measures of spread: range, variance and standard deviation",
+    "hi": "5.6 फैलाव के माप: परिसर, प्रसरण और मानक विचलन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Two classes can have the same average marks but be very different: in one, everyone scores near 60; in the other, half score 20 and half score 100. Measures of dispersion (spread) tell us how far values are spread out from the centre.",
+      "hi": "दो कक्षाओं के औसत अंक बराबर होकर भी बहुत अलग हो सकते हैं: एक में सबके अंक 60 के आसपास हैं; दूसरी में आधे के 20 और आधे के 100। प्रकीर्णन (dispersion या फैलाव) के माप बताते हैं कि मान केंद्र से कितने दूर तक फैले हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Range",
+       "hi": "परिसर (Range)"
+      },
+      "text": {
+       "en": "Range = largest value − smallest value. It is quick but uses only two values, so one outlier can change it a lot.",
+       "hi": "परिसर = सबसे बड़ा मान − सबसे छोटा मान। यह जल्दी निकलता है पर केवल दो मानों का उपयोग करता है, इसलिए एक outlier इसे बहुत बदल सकता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Variance",
+       "hi": "प्रसरण (Variance)"
+      },
+      "text": {
+       "en": "Variance is the average of the squared differences of each value from the mean. Squaring makes all differences positive and gives more weight to values far from the mean. Its unit is the square of the data's unit (for example cm²).",
+       "hi": "प्रसरण हर मान के माध्य से अंतर के वर्गों का औसत है। वर्ग करने से सभी अंतर धनात्मक हो जाते हैं और माध्य से दूर मानों को ज़्यादा महत्व मिलता है। इसकी इकाई डेटा की इकाई का वर्ग होती है (जैसे cm²)।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Standard deviation",
+       "hi": "मानक विचलन (Standard deviation)"
+      },
+      "text": {
+       "en": "Standard deviation (SD) is the square root of the variance. It is in the same unit as the data, so it is easier to interpret. A small SD means values are close to the mean; a large SD means they are widely spread.",
+       "hi": "मानक विचलन (SD) प्रसरण का वर्गमूल है। यह डेटा की ही इकाई में होता है, इसलिए समझना आसान है। छोटा SD मतलब मान माध्य के पास हैं; बड़ा SD मतलब मान दूर-दूर तक फैले हैं।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Population variance  σ² = Σ(x − mean)² / n\nPopulation SD        σ = √σ²\nSample variance      s² = Σ(x − mean)² / (n − 1)\nSample SD            s = √s²",
+      "hi": "जनसंख्या प्रसरण  σ² = Σ(x − माध्य)² / n\nजनसंख्या SD      σ = √σ²\nप्रतिदर्श (sample) प्रसरण  s² = Σ(x − माध्य)² / (n − 1)\nप्रतिदर्श SD     s = √s²"
+     }
+    },
+    {
+     "note": {
+      "en": "When the data is the whole group (population), divide by n. When it is a sample taken from a bigger group, divide by n − 1. NumPy's np.var() and np.std() divide by n by default; Python's statistics.variance() and pandas' .var() divide by n − 1.",
+      "hi": "जब डेटा पूरा समूह (population) हो, n से भाग दें। जब यह बड़े समूह से लिया गया नमूना (sample) हो, n − 1 से भाग दें। NumPy के np.var() और np.std() सामान्य रूप से n से भाग देते हैं; Python के statistics.variance() और pandas के .var(), n − 1 से भाग देते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Daily temperatures (°C) in Shimla for 5 days: 20, 22, 25, 18, 23. Find range, variance and standard deviation (population).",
+       "hi": "शिमला में 5 दिनों का दैनिक तापमान (°C): 20, 22, 25, 18, 23। परिसर, प्रसरण और मानक विचलन (population) ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Range = 25 − 18 = 7 °C.\nMean = (20 + 22 + 25 + 18 + 23) / 5 = 108 / 5 = 21.6.\nDifferences from mean: −1.6, 0.4, 3.4, −3.6, 1.4.\nSquares: 2.56, 0.16, 11.56, 12.96, 1.96. Sum = 29.2.\nVariance = 29.2 / 5 = 5.84 (°C)².\nSD = √5.84 ≈ 2.42 °C.\nSo temperatures usually stay within about 2.4 °C of 21.6 °C.",
+       "hi": "परिसर = 25 − 18 = 7 °C।\nमाध्य = (20 + 22 + 25 + 18 + 23) / 5 = 108 / 5 = 21.6।\nमाध्य से अंतर: −1.6, 0.4, 3.4, −3.6, 1.4।\nवर्ग: 2.56, 0.16, 11.56, 12.96, 1.96। योग = 29.2।\nप्रसरण = 29.2 / 5 = 5.84 (°C)²।\nSD = √5.84 ≈ 2.42 °C।\nयानी तापमान आमतौर पर 21.6 °C से लगभग 2.4 °C के भीतर रहता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "For data 4, 8, 6, 2 find population and sample variance.",
+       "hi": "डेटा 4, 8, 6, 2 के लिए population और sample प्रसरण ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Mean = 20 / 4 = 5.\nSquared differences: (−1)² = 1, 3² = 9, 1² = 1, (−3)² = 9. Sum = 20.\nPopulation variance = 20 / 4 = 5; population SD = √5 ≈ 2.24.\nSample variance = 20 / 3 ≈ 6.67.",
+       "hi": "माध्य = 20 / 4 = 5।\nअंतरों के वर्ग: (−1)² = 1, 3² = 9, 1² = 1, (−3)² = 9। योग = 20।\nPopulation प्रसरण = 20 / 4 = 5; population SD = √5 ≈ 2.24।\nSample प्रसरण = 20 / 3 ≈ 6.67।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.7 Python programs for statistical analysis",
+    "hi": "5.7 सांख्यिकीय विश्लेषण के लिए Python प्रोग्राम"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Python makes these calculations quick even for lakhs of values. We use the built-in statistics module, NumPy (fast arrays and maths) and pandas (tables called DataFrames). If they are not installed, run pip install numpy pandas matplotlib, or use a free online notebook such as Google Colab, where they are ready. Each program below was run and the output shown is the real output.",
+      "hi": "Python से ये गणनाएँ लाखों मानों के लिए भी जल्दी हो जाती हैं। हम built-in statistics module, NumPy (तेज़ arrays और गणित) और pandas (DataFrame नाम की तालिकाएँ) का उपयोग करते हैं। यदि ये install नहीं हैं, तो pip install numpy pandas matplotlib चलाएँ, या Google Colab जैसा मुफ़्त online notebook उपयोग करें, जहाँ ये पहले से होते हैं। नीचे का हर प्रोग्राम चलाया गया है और दिखाया गया आउटपुट असली है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Program 1: mean, median and mode of ages of 11 people.",
+      "hi": "प्रोग्राम 1: 11 लोगों की आयु का माध्य, माध्यिका और बहुलक।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import statistics as st\nimport numpy as np\nages = [25, 28, 30, 35, 40, 45, 50, 55, 60, 65, 30]\nprint(\"Mean  :\", round(np.mean(ages), 2))\nprint(\"Median:\", np.median(ages))\nprint(\"Mode  :\", st.mode(ages))\n\nOutput:\nMean  : 42.09\nMedian: 40.0\nMode  : 30",
+      "hi": "import statistics as st\nimport numpy as np\nages = [25, 28, 30, 35, 40, 45, 50, 55, 60, 65, 30]\nprint(\"Mean  :\", round(np.mean(ages), 2))\nprint(\"Median:\", np.median(ages))\nprint(\"Mode  :\", st.mode(ages))\n\nआउटपुट (Output):\nMean  : 42.09\nMedian: 40.0\nMode  : 30"
+     }
+    },
+    {
+     "p": {
+      "en": "Program 2: variance and standard deviation of five temperatures (matches the worked example in 5.6).",
+      "hi": "प्रोग्राम 2: पाँच तापमानों का प्रसरण और मानक विचलन (5.6 के हल किए उदाहरण से मेल खाता है)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\ntemps = [20, 22, 25, 18, 23]\nprint(\"Mean              :\", np.mean(temps))\nprint(\"Variance          :\", round(np.var(temps), 2))\nprint(\"Standard deviation:\", round(np.std(temps), 2))\n\nOutput:\nMean              : 21.6\nVariance          : 5.84\nStandard deviation: 2.42",
+      "hi": "import numpy as np\ntemps = [20, 22, 25, 18, 23]\nprint(\"Mean              :\", np.mean(temps))\nprint(\"Variance          :\", round(np.var(temps), 2))\nprint(\"Standard deviation:\", round(np.std(temps), 2))\n\nआउटपुट (Output):\nMean              : 21.6\nVariance          : 5.84\nStandard deviation: 2.42"
+     }
+    },
+    {
+     "p": {
+      "en": "Program 3: range, population and sample variance using only the statistics module.",
+      "hi": "प्रोग्राम 3: केवल statistics module से परिसर, population और sample प्रसरण।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import statistics as st\ndata = [4, 8, 6, 2]\nprint(\"Range              :\", max(data) - min(data))\nprint(\"Population variance:\", st.pvariance(data))\nprint(\"Sample variance    :\", round(st.variance(data), 2))\nprint(\"Population SD      :\", round(st.pstdev(data), 2))\n\nOutput:\nRange              : 6\nPopulation variance: 5\nSample variance    : 6.67\nPopulation SD      : 2.24",
+      "hi": "import statistics as st\ndata = [4, 8, 6, 2]\nprint(\"Range              :\", max(data) - min(data))\nprint(\"Population variance:\", st.pvariance(data))\nprint(\"Sample variance    :\", round(st.variance(data), 2))\nprint(\"Population SD      :\", round(st.pstdev(data), 2))\n\nआउटपुट (Output):\nRange              : 6\nPopulation variance: 5\nSample variance    : 6.67\nPopulation SD      : 2.24"
+     }
+    },
+    {
+     "p": {
+      "en": "Program 4: reading a CSV file. The CBSE practical uses a file such as rainfall.csv. Here our rainfall.csv has two columns, Month and Rainfall_mm, with 12 rows (Jan 12, Feb 8, Mar 15, Apr 20, May 45, Jun 165, Jul 320, Aug 290, Sep 180, Oct 60, Nov 18, Dec 7). These are made-up practice values, not real IMD figures. Keep the CSV in the same folder as the program.",
+      "hi": "प्रोग्राम 4: CSV फ़ाइल पढ़ना। CBSE प्रैक्टिकल में rainfall.csv जैसी फ़ाइल का उपयोग होता है। यहाँ हमारी rainfall.csv में दो कॉलम Month और Rainfall_mm हैं, 12 पंक्तियाँ (Jan 12, Feb 8, Mar 15, Apr 20, May 45, Jun 165, Jul 320, Aug 290, Sep 180, Oct 60, Nov 18, Dec 7)। ये अभ्यास के लिए बनाए गए मान हैं, IMD के असली आँकड़े नहीं। CSV को प्रोग्राम वाले फ़ोल्डर में ही रखें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\ndf = pd.read_csv(\"rainfall.csv\")\nprint(df.head())\nprint(\"Average rainfall:\", df[\"Rainfall_mm\"].mean())\nprint(\"Wettest month:\", df.loc[df[\"Rainfall_mm\"].idxmax(), \"Month\"])\n\nOutput:\n  Month  Rainfall_mm\n0   Jan           12\n1   Feb            8\n2   Mar           15\n3   Apr           20\n4   May           45\nAverage rainfall: 95.0\nWettest month: Jul",
+      "hi": "import pandas as pd\ndf = pd.read_csv(\"rainfall.csv\")\nprint(df.head())\nprint(\"Average rainfall:\", df[\"Rainfall_mm\"].mean())\nprint(\"Wettest month:\", df.loc[df[\"Rainfall_mm\"].idxmax(), \"Month\"])\n\nआउटपुट (Output):\n  Month  Rainfall_mm\n0   Jan           12\n1   Feb            8\n2   Mar           15\n3   Apr           20\n4   May           45\nAverage rainfall: 95.0\nWettest month: Jul"
+     }
+    },
+    {
+     "note": {
+      "en": "For this rainfall data, mean = 95 mm but median = 32.5 mm, because a few monsoon months with very high rainfall pull the mean up. This is why you should look at both.",
+      "hi": "इस वर्षा डेटा में माध्य = 95 mm पर माध्यिका = 32.5 mm है, क्योंकि बहुत अधिक वर्षा वाले कुछ मानसून महीने माध्य को ऊपर खींचते हैं। इसलिए दोनों को देखना चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.8 Representation of data: visualisation with matplotlib",
+    "hi": "5.8 डेटा का निरूपण: matplotlib से विज़ुअलाइज़ेशन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Data visualisation is presenting data as graphs, charts or pictures so that patterns, trends and outliers can be seen at a glance and decisions can be made faster. matplotlib is Python's most widely used plotting library; we import its pyplot part as plt. Every chart follows the same steps: prepare the data lists, call a plotting function, add a title and axis labels, then show it with plt.show() (or save it with plt.savefig('name.png')).",
+      "hi": "डेटा विज़ुअलाइज़ेशन का अर्थ है डेटा को ग्राफ़, चार्ट या चित्रों के रूप में दिखाना ताकि पैटर्न, रुझान और outliers एक नज़र में दिखें और निर्णय जल्दी हों। matplotlib, Python की सबसे ज़्यादा इस्तेमाल होने वाली plotting library है; हम इसके pyplot भाग को plt नाम से import करते हैं। हर चार्ट के चरण एक जैसे हैं: डेटा की सूचियाँ बनाएँ, plotting function बुलाएँ, शीर्षक और अक्षों के लेबल जोड़ें, फिर plt.show() से दिखाएँ (या plt.savefig('name.png') से सेव करें)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Chart",
+        "Function",
+        "Use it to show",
+        "Example"
+       ],
+       "hi": [
+        "चार्ट",
+        "Function",
+        "किसके लिए",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Line graph",
+         "plt.plot(x, y)",
+         "Change over time, trends",
+         "Monthly rainfall, daily COVID cases, stock price"
+        ],
+        [
+         "Bar graph",
+         "plt.bar(x, heights)",
+         "Compare separate categories",
+         "Favourite sport, sales by product"
+        ],
+        [
+         "Histogram",
+         "plt.hist(data, bins)",
+         "How numeric data is distributed in ranges (bins)",
+         "Number of students in each marks range"
+        ],
+        [
+         "Scatter plot",
+         "plt.scatter(x, y)",
+         "Relationship between two numeric variables",
+         "Study hours vs marks, height vs weight"
+        ],
+        [
+         "Pie chart",
+         "plt.pie(values, labels)",
+         "Parts of a whole (percentages)",
+         "Share of each transport mode"
+        ]
+       ],
+       "hi": [
+        [
+         "रेखा ग्राफ़",
+         "plt.plot(x, y)",
+         "समय के साथ बदलाव, रुझान",
+         "मासिक वर्षा, दैनिक COVID मामले, शेयर का दाम"
+        ],
+        [
+         "बार ग्राफ़",
+         "plt.bar(x, heights)",
+         "अलग-अलग श्रेणियों की तुलना",
+         "पसंदीदा खेल, उत्पाद अनुसार बिक्री"
+        ],
+        [
+         "हिस्टोग्राम",
+         "plt.hist(data, bins)",
+         "संख्यात्मक डेटा श्रेणियों (bins) में कैसे बँटा है",
+         "हर अंक-श्रेणी में विद्यार्थियों की संख्या"
+        ],
+        [
+         "स्कैटर प्लॉट",
+         "plt.scatter(x, y)",
+         "दो संख्यात्मक चरों का संबंध",
+         "पढ़ाई के घंटे बनाम अंक, लंबाई बनाम वज़न"
+        ],
+        [
+         "पाई चार्ट",
+         "plt.pie(values, labels)",
+         "पूरे के हिस्से (प्रतिशत)",
+         "हर परिवहन साधन का हिस्सा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Line graph: points are joined by straight lines, so you can see whether values rise or fall. The program below draws Jun to Sep monsoon rainfall. The graph rises from 165 to a peak of 320 in July, then falls.",
+      "hi": "रेखा ग्राफ़: बिंदु सीधी रेखाओं से जुड़ते हैं, जिससे दिखता है कि मान बढ़ रहे हैं या घट रहे हैं। नीचे का प्रोग्राम जून से सितंबर की मानसून वर्षा दिखाता है। ग्राफ़ 165 से बढ़कर जुलाई में 320 के शिखर पर पहुँचता है, फिर गिरता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import matplotlib.pyplot as plt\nmonths = [\"Jun\", \"Jul\", \"Aug\", \"Sep\"]\nrain = [165, 320, 290, 180]\nplt.plot(months, rain, marker=\"o\", color=\"blue\")\nplt.title(\"Monsoon rainfall\")\nplt.xlabel(\"Month\")\nplt.ylabel(\"Rainfall (mm)\")\nplt.grid(True)\nplt.show()",
+      "hi": "import matplotlib.pyplot as plt\nmonths = [\"Jun\", \"Jul\", \"Aug\", \"Sep\"]\nrain = [165, 320, 290, 180]\nplt.plot(months, rain, marker=\"o\", color=\"blue\")\nplt.title(\"Monsoon rainfall\")\nplt.xlabel(\"Month\")\nplt.ylabel(\"Rainfall (mm)\")\nplt.grid(True)\nplt.show()"
+     }
+    },
+    {
+     "p": {
+      "en": "Bar graph: rectangular bars whose heights show values for separate categories. The bars have gaps between them because categories are separate. Here the Cricket bar (45) is tallest and Chess (10) is shortest.",
+      "hi": "बार ग्राफ़: आयताकार पट्टियाँ जिनकी ऊँचाई अलग-अलग श्रेणियों के मान दिखाती है। पट्टियों के बीच जगह होती है क्योंकि श्रेणियाँ अलग हैं। यहाँ Cricket की पट्टी (45) सबसे ऊँची और Chess (10) सबसे छोटी है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import matplotlib.pyplot as plt\nsports = [\"Cricket\", \"Football\", \"Kabaddi\", \"Badminton\", \"Chess\"]\nstudents = [45, 30, 20, 25, 10]\nplt.bar(sports, students, color=\"orange\")\nplt.title(\"Favourite sport of Class 11\")\nplt.xlabel(\"Sport\")\nplt.ylabel(\"Number of students\")\nplt.show()",
+      "hi": "import matplotlib.pyplot as plt\nsports = [\"Cricket\", \"Football\", \"Kabaddi\", \"Badminton\", \"Chess\"]\nstudents = [45, 30, 20, 25, 10]\nplt.bar(sports, students, color=\"orange\")\nplt.title(\"Favourite sport of Class 11\")\nplt.xlabel(\"Sport\")\nplt.ylabel(\"Number of students\")\nplt.show()"
+     }
+    },
+    {
+     "p": {
+      "en": "Histogram: looks like a bar graph but the bars touch, because the x-axis is a continuous number line divided into bins. With bins 30–45, 45–60, 60–75, 75–90, 90–105, the 15 marks fall as 2, 4, 4, 4 and 1 students.",
+      "hi": "हिस्टोग्राम: बार ग्राफ़ जैसा दिखता है पर पट्टियाँ आपस में सटी होती हैं, क्योंकि x-अक्ष bins में बँटी सतत संख्या रेखा है। bins 30–45, 45–60, 60–75, 75–90, 90–105 के साथ 15 अंक क्रमशः 2, 4, 4, 4 और 1 विद्यार्थियों में बँटते हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import matplotlib.pyplot as plt\nmarks = [35, 42, 48, 51, 55, 58, 61, 63, 67, 72, 75, 78, 84, 88, 95]\nplt.hist(marks, bins=[30, 45, 60, 75, 90, 105], edgecolor=\"black\")\nplt.title(\"Marks of 15 students\")\nplt.xlabel(\"Marks\")\nplt.ylabel(\"Number of students\")\nplt.show()",
+      "hi": "import matplotlib.pyplot as plt\nmarks = [35, 42, 48, 51, 55, 58, 61, 63, 67, 72, 75, 78, 84, 88, 95]\nplt.hist(marks, bins=[30, 45, 60, 75, 90, 105], edgecolor=\"black\")\nplt.title(\"Marks of 15 students\")\nplt.xlabel(\"Marks\")\nplt.ylabel(\"Number of students\")\nplt.show()"
+     }
+    },
+    {
+     "p": {
+      "en": "Scatter plot: each pair (x, y) is a dot. If dots rise from left to right, the variables are positively related. This idea leads to correlation and regression in Chapter 6.",
+      "hi": "स्कैटर प्लॉट: हर जोड़ा (x, y) एक बिंदु है। यदि बिंदु बाएँ से दाएँ ऊपर उठते हैं, तो चर धनात्मक रूप से संबंधित हैं। यही विचार अध्याय 6 में सहसंबंध (correlation) और प्रतिगमन (regression) तक ले जाता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import matplotlib.pyplot as plt\nhours = [1, 2, 3, 4, 5, 6]\nscore = [40, 48, 55, 62, 70, 76]\nplt.scatter(hours, score, color=\"green\")\nplt.title(\"Study hours vs test score\")\nplt.xlabel(\"Hours studied per day\")\nplt.ylabel(\"Score\")\nplt.show()",
+      "hi": "import matplotlib.pyplot as plt\nhours = [1, 2, 3, 4, 5, 6]\nscore = [40, 48, 55, 62, 70, 76]\nplt.scatter(hours, score, color=\"green\")\nplt.title(\"Study hours vs test score\")\nplt.xlabel(\"Hours studied per day\")\nplt.ylabel(\"Score\")\nplt.show()"
+     }
+    },
+    {
+     "p": {
+      "en": "Pie chart: a circle divided into slices; each slice's angle is its share of 360°. autopct='%1.0f%%' prints the percentage on each slice. A 40% slice has angle 0.40 × 360° = 144°. Pie charts are easy to understand and attractive, but they become confusing with many categories, make exact comparison hard and cannot show change over time.",
+      "hi": "पाई चार्ट: टुकड़ों में बँटा वृत्त; हर टुकड़े का कोण 360° में उसका हिस्सा है। autopct='%1.0f%%' हर टुकड़े पर प्रतिशत छापता है। 40% वाले टुकड़े का कोण 0.40 × 360° = 144° है। पाई चार्ट समझने में आसान और आकर्षक होते हैं, पर कई श्रेणियों में उलझन भरे हो जाते हैं, सटीक तुलना कठिन बनाते हैं और समय के साथ बदलाव नहीं दिखा सकते।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import matplotlib.pyplot as plt\nmodes = [\"Bus\", \"Metro\", \"Walk\", \"Cycle\"]\nshare = [40, 30, 20, 10]\nplt.pie(share, labels=modes, autopct=\"%1.0f%%\")\nplt.title(\"How students reach school\")\nplt.show()",
+      "hi": "import matplotlib.pyplot as plt\nmodes = [\"Bus\", \"Metro\", \"Walk\", \"Cycle\"]\nshare = [40, 30, 20, 10]\nplt.pie(share, labels=modes, autopct=\"%1.0f%%\")\nplt.title(\"How students reach school\")\nplt.show()"
+     }
+    },
+    {
+     "p": {
+      "en": "Program with a CSV file: read rainfall.csv with pandas, print a statistical summary with describe() and draw a bar chart of all 12 months.",
+      "hi": "CSV फ़ाइल वाला प्रोग्राम: pandas से rainfall.csv पढ़ें, describe() से सांख्यिकीय सार छापें और सभी 12 महीनों का बार चार्ट बनाएँ।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\nimport matplotlib.pyplot as plt\ndf = pd.read_csv(\"rainfall.csv\")\nprint(df.describe())\nplt.bar(df[\"Month\"], df[\"Rainfall_mm\"])\nplt.title(\"Monthly rainfall\")\nplt.ylabel(\"Rainfall (mm)\")\nplt.show()\n\nOutput:\n       Rainfall_mm\ncount    12.000000\nmean     95.000000\nstd     114.675828\nmin       7.000000\n25%      14.250000\n50%      32.500000\n75%     168.750000\nmax     320.000000\n(a bar chart window opens)",
+      "hi": "import pandas as pd\nimport matplotlib.pyplot as plt\ndf = pd.read_csv(\"rainfall.csv\")\nprint(df.describe())\nplt.bar(df[\"Month\"], df[\"Rainfall_mm\"])\nplt.title(\"Monthly rainfall\")\nplt.ylabel(\"Rainfall (mm)\")\nplt.show()\n\nआउटपुट (Output):\n       Rainfall_mm\ncount    12.000000\nmean     95.000000\nstd     114.675828\nmin       7.000000\n25%      14.250000\n50%      32.500000\n75%     168.750000\nmax     320.000000\n(a bar chart window opens)"
+     }
+    },
+    {
+     "note": {
+      "en": "A good chart has a clear title, labelled axes with units, a scale starting at zero for bar charts, and no 3-D tricks that distort sizes. Misleading charts often cut the y-axis to make a small change look huge.",
+      "hi": "अच्छे चार्ट में साफ़ शीर्षक, इकाइयों सहित लेबल वाले अक्ष, बार चार्ट में शून्य से शुरू होने वाला पैमाना, और आकार बिगाड़ने वाली 3-D तरकीबें नहीं होतीं। भ्रामक चार्ट अक्सर y-अक्ष काटकर छोटे बदलाव को बहुत बड़ा दिखाते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.9 Introduction to matrices",
+    "hi": "5.9 मैट्रिक्स (आव्यूह) का परिचय"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI stores almost all data as tables of numbers. In mathematics such a rectangular arrangement of numbers in rows and columns is called a matrix (plural: matrices). A spreadsheet of marks, a grayscale photo and the input to a neural network are all matrices.",
+      "hi": "AI लगभग सारा डेटा संख्याओं की तालिकाओं के रूप में रखता है। गणित में पंक्तियों और स्तंभों में संख्याओं की ऐसी आयताकार व्यवस्था को मैट्रिक्स (आव्यूह; बहुवचन matrices) कहते हैं। अंकों की स्प्रेडशीट, एक grayscale फ़ोटो और neural network का input, सभी मैट्रिक्स हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Matrix",
+       "hi": "मैट्रिक्स (Matrix)"
+      },
+      "text": {
+       "en": "A matrix is a rectangular array of numbers arranged in rows (horizontal) and columns (vertical), written inside square brackets. Each number is an element. The element in row i and column j is written aij.",
+       "hi": "मैट्रिक्स संख्याओं की आयताकार व्यवस्था है जो पंक्तियों (क्षैतिज) और स्तंभों (ऊर्ध्वाधर) में लगी होती है और वर्ग कोष्ठक में लिखी जाती है। हर संख्या एक अवयव (element) है। पंक्ति i और स्तंभ j का अवयव aij लिखा जाता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Order of a matrix",
+       "hi": "मैट्रिक्स की कोटि (Order)"
+      },
+      "text": {
+       "en": "If a matrix has m rows and n columns, its order is m × n (read 'm by n') and it has m × n elements.",
+       "hi": "यदि मैट्रिक्स में m पंक्तियाँ और n स्तंभ हैं, तो उसकी कोटि m × n ('m बाय n') है और उसमें m × n अवयव होते हैं।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "A = [ 2  4 ]\n    [ 1  3 ]     order 2 × 2,  a11 = 2, a12 = 4, a21 = 1, a22 = 3\n\nM = [ 7  0  5 ]\n    [ 1  9  2 ]  order 2 × 3 (2 rows, 3 columns), a23 = 2",
+      "hi": "A = [ 2  4 ]\n    [ 1  3 ]     order 2 × 2,  a11 = 2, a12 = 4, a21 = 1, a22 = 3\n\nM = [ 7  0  5 ]\n    [ 1  9  2 ]  order 2 × 3 (2 rows, 3 columns), a23 = 2"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A matrix has 6 elements. What are its possible orders?",
+       "hi": "एक मैट्रिक्स में 6 अवयव हैं। उसकी संभावित कोटियाँ क्या हैं?"
+      },
+      "a": {
+       "en": "We need m × n = 6.\nPairs: 1 × 6, 6 × 1, 2 × 3, 3 × 2.\nSo four orders are possible.",
+       "hi": "हमें m × n = 6 चाहिए।\nजोड़े: 1 × 6, 6 × 1, 2 × 3, 3 × 2।\nअतः चार कोटियाँ संभव हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Construct a 3 × 2 matrix whose elements are aij = i + 2j.",
+       "hi": "ऐसा 3 × 2 मैट्रिक्स बनाइए जिसके अवयव aij = i + 2j हों।"
+      },
+      "a": {
+       "en": "a11 = 1 + 2 = 3, a12 = 1 + 4 = 5\na21 = 2 + 2 = 4, a22 = 2 + 4 = 6\na31 = 3 + 2 = 5, a32 = 3 + 4 = 7\nMatrix = [3 5; 4 6; 5 7] (3 rows, 2 columns).",
+       "hi": "a11 = 1 + 2 = 3, a12 = 1 + 4 = 5\na21 = 2 + 2 = 4, a22 = 2 + 4 = 6\na31 = 3 + 2 = 5, a32 = 3 + 4 = 7\nमैट्रिक्स = [3 5; 4 6; 5 7] (3 पंक्तियाँ, 2 स्तंभ)।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Description",
+        "Example"
+       ],
+       "hi": [
+        "प्रकार",
+        "विवरण",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Row matrix",
+         "Only one row (order 1 × n)",
+         "[4 7 1]"
+        ],
+        [
+         "Column matrix",
+         "Only one column (order m × 1)",
+         "[2; 5; 9]"
+        ],
+        [
+         "Square matrix",
+         "Rows = columns (n × n)",
+         "[1 2; 3 4]"
+        ],
+        [
+         "Zero (null) matrix",
+         "All elements are 0",
+         "[0 0; 0 0]"
+        ],
+        [
+         "Diagonal matrix",
+         "Square; all elements off the main diagonal are 0",
+         "[3 0; 0 5]"
+        ],
+        [
+         "Identity (unit) matrix I",
+         "Diagonal matrix with all diagonal elements 1",
+         "[1 0; 0 1]"
+        ]
+       ],
+       "hi": [
+        [
+         "पंक्ति मैट्रिक्स",
+         "केवल एक पंक्ति (कोटि 1 × n)",
+         "[4 7 1]"
+        ],
+        [
+         "स्तंभ मैट्रिक्स",
+         "केवल एक स्तंभ (कोटि m × 1)",
+         "[2; 5; 9]"
+        ],
+        [
+         "वर्ग मैट्रिक्स",
+         "पंक्तियाँ = स्तंभ (n × n)",
+         "[1 2; 3 4]"
+        ],
+        [
+         "शून्य मैट्रिक्स",
+         "सभी अवयव 0",
+         "[0 0; 0 0]"
+        ],
+        [
+         "विकर्ण मैट्रिक्स",
+         "वर्ग; मुख्य विकर्ण के बाहर सभी अवयव 0",
+         "[3 0; 0 5]"
+        ],
+        [
+         "तत्समक (इकाई) मैट्रिक्स I",
+         "विकर्ण मैट्रिक्स जिसके सभी विकर्ण अवयव 1 हों",
+         "[1 0; 0 1]"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Notation used here: [a b; c d] means first row a b, second row c d. A semicolon starts a new row.",
+      "hi": "यहाँ प्रयुक्त संकेत: [a b; c d] का अर्थ पहली पंक्ति a b, दूसरी पंक्ति c d। अर्धविराम (;) नई पंक्ति शुरू करता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.10 Matrix operations",
+    "hi": "5.10 मैट्रिक्स संक्रियाएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Take A = [2 4; 1 3] and B = [5 0; 2 6]. Both have order 2 × 2.",
+      "hi": "मान लें A = [2 4; 1 3] और B = [5 0; 2 6]। दोनों की कोटि 2 × 2 है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Addition and subtraction",
+       "hi": "जोड़ और घटाव"
+      },
+      "text": {
+       "en": "Two matrices can be added or subtracted only if they have the same order. Add or subtract the elements in the same positions.",
+       "hi": "दो मैट्रिक्स को तभी जोड़ा या घटाया जा सकता है जब उनकी कोटि समान हो। एक ही स्थान के अवयवों को जोड़ें या घटाएँ।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "A + B = [2+5  4+0; 1+2  3+6] = [7 4; 3 9]\nB − A = [5−2  0−4; 2−1  6−3] = [3 −4; 1 3]",
+      "hi": "A + B = [2+5  4+0; 1+2  3+6] = [7 4; 3 9]\nB − A = [5−2  0−4; 2−1  6−3] = [3 −4; 1 3]"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Scalar multiplication",
+       "hi": "अदिश गुणन (Scalar multiplication)"
+      },
+      "text": {
+       "en": "Multiplying a matrix by a number k (a scalar) multiplies every element by k.",
+       "hi": "किसी मैट्रिक्स को संख्या k (अदिश) से गुणा करने पर हर अवयव k से गुणा होता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "3A = [3×2  3×4; 3×1  3×3] = [6 12; 3 9]",
+      "hi": "3A = [3×2  3×4; 3×1  3×3] = [6 12; 3 9]"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Matrix multiplication",
+       "hi": "मैट्रिक्स गुणन"
+      },
+      "text": {
+       "en": "A × B is possible only when the number of columns of A equals the number of rows of B. If A is m × n and B is n × p, the product is m × p. Each element of the product = (row of A) · (column of B): multiply matching elements and add. In general A × B ≠ B × A.",
+       "hi": "A × B तभी संभव है जब A के स्तंभों की संख्या B की पंक्तियों की संख्या के बराबर हो। यदि A, m × n और B, n × p है, तो गुणनफल m × p होगा। गुणनफल का हर अवयव = (A की पंक्ति) · (B का स्तंभ): संगत अवयवों को गुणा करके जोड़ें। सामान्यतः A × B ≠ B × A।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "A × B:\nrow1·col1 = 2×5 + 4×2 = 18     row1·col2 = 2×0 + 4×6 = 24\nrow2·col1 = 1×5 + 3×2 = 11     row2·col2 = 1×0 + 3×6 = 18\nA × B = [18 24; 11 18]",
+      "hi": "A × B:\nrow1·col1 = 2×5 + 4×2 = 18     row1·col2 = 2×0 + 4×6 = 24\nrow2·col1 = 1×5 + 3×2 = 11     row2·col2 = 1×0 + 3×6 = 18\nA × B = [18 24; 11 18]"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Transpose",
+       "hi": "परिवर्त (Transpose)"
+      },
+      "text": {
+       "en": "The transpose of A, written Aᵀ or A', is formed by turning rows into columns. If A is m × n, Aᵀ is n × m, and the element aij moves to position ji.",
+       "hi": "A का परिवर्त, Aᵀ या A' लिखा जाता है, पंक्तियों को स्तंभ बनाकर मिलता है। यदि A, m × n है, तो Aᵀ, n × m होगा, और अवयव aij स्थान ji पर चला जाता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "A = [2 4; 1 3]  →  Aᵀ = [2 1; 4 3]\nM = [7 0 5; 1 9 2] (2 × 3)  →  Mᵀ = [7 1; 0 9; 5 2] (3 × 2)",
+      "hi": "A = [2 4; 1 3]  →  Aᵀ = [2 1; 4 3]\nM = [7 0 5; 1 9 2] (2 × 3)  →  Mᵀ = [7 1; 0 9; 5 2] (3 × 2)"
+     }
+    },
+    {
+     "p": {
+      "en": "Program 5: the same operations in NumPy. The @ operator does matrix multiplication; * would multiply element by element, which is different.",
+      "hi": "प्रोग्राम 5: यही संक्रियाएँ NumPy में। @ संकारक मैट्रिक्स गुणन करता है; * अवयव-दर-अवयव गुणा करता, जो अलग है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\nA = np.array([[2, 4], [1, 3]])\nB = np.array([[5, 0], [2, 6]])\nprint(\"A + B =\\n\", A + B)\nprint(\"B - A =\\n\", B - A)\nprint(\"3A =\\n\", 3 * A)\nprint(\"A x B =\\n\", A @ B)\nprint(\"Transpose of A =\\n\", A.T)\nprint(\"Order of A:\", A.shape)\n\nOutput:\nA + B =\n [[7 4]\n [3 9]]\nB - A =\n [[ 3 -4]\n [ 1  3]]\n3A =\n [[ 6 12]\n [ 3  9]]\nA x B =\n [[18 24]\n [11 18]]\nTranspose of A =\n [[2 1]\n [4 3]]\nOrder of A: (2, 2)",
+      "hi": "import numpy as np\nA = np.array([[2, 4], [1, 3]])\nB = np.array([[5, 0], [2, 6]])\nprint(\"A + B =\\n\", A + B)\nprint(\"B - A =\\n\", B - A)\nprint(\"3A =\\n\", 3 * A)\nprint(\"A x B =\\n\", A @ B)\nprint(\"Transpose of A =\\n\", A.T)\nprint(\"Order of A:\", A.shape)\n\nआउटपुट (Output):\nA + B =\n [[7 4]\n [3 9]]\nB - A =\n [[ 3 -4]\n [ 1  3]]\n3A =\n [[ 6 12]\n [ 3  9]]\nA x B =\n [[18 24]\n [11 18]]\nTranspose of A =\n [[2 1]\n [4 3]]\nOrder of A: (2, 2)"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.11 Matrices in AI: images, data tables and more",
+    "hi": "5.11 AI में मैट्रिक्स: चित्र, डेटा तालिकाएँ और बहुत कुछ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A digital grayscale image is a matrix of pixel values. Each element is a number from 0 (black) to 255 (white). A 3 × 3 image could be [0 128 255; 64 200 64; 255 128 0]. A colour (RGB) image is three such matrices stacked together, one each for red, green and blue. A 1920 × 1080 colour photo is therefore 3 matrices of 1080 rows and 1920 columns each.",
+      "hi": "एक डिजिटल grayscale चित्र pixel मानों का मैट्रिक्स है। हर अवयव 0 (काला) से 255 (सफ़ेद) तक की संख्या है। 3 × 3 चित्र [0 128 255; 64 200 64; 255 128 0] हो सकता है। रंगीन (RGB) चित्र ऐसे तीन मैट्रिक्स एक साथ होते हैं, लाल, हरे और नीले के लिए एक-एक। इसलिए 1920 × 1080 की रंगीन फ़ोटो 1080 पंक्तियों और 1920 स्तंभों वाले 3 मैट्रिक्स है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Image processing: brightening a photo adds a number to every element; a mirror image reverses column order; rotating uses transposes; filters in apps and in CNNs multiply small matrices (kernels) over the image.",
+       "Datasets: a table with 500 students (rows) and 6 features (columns) is a 500 × 6 matrix. Models do their maths on this matrix.",
+       "Recommendation systems: a matrix of users × movies holds ratings; the system fills the blanks to suggest what you may like.",
+       "Neural networks: the weights between two layers form a matrix, and a layer's output is a matrix multiplication followed by an activation.",
+       "Language AI: words are turned into vectors (rows of numbers), so a sentence becomes a matrix.",
+       "Graphics and games: moving, scaling and rotating shapes on screen are matrix multiplications."
+      ],
+      "hi": [
+       "Image processing: फ़ोटो को चमकीला करने में हर अवयव में एक संख्या जोड़ी जाती है; दर्पण प्रतिबिंब में स्तंभों का क्रम उलटा होता है; घुमाने में transpose का उपयोग होता है; ऐप्स और CNN के filters चित्र पर छोटे मैट्रिक्स (kernels) गुणा करते हैं।",
+       "Datasets: 500 विद्यार्थियों (पंक्तियाँ) और 6 features (स्तंभ) वाली तालिका 500 × 6 मैट्रिक्स है। Models इसी मैट्रिक्स पर गणित करते हैं।",
+       "Recommendation systems: users × movies का मैट्रिक्स रेटिंग रखता है; सिस्टम खाली जगहें भरकर बताता है कि आपको क्या पसंद आ सकता है।",
+       "Neural networks: दो layers के बीच के weights एक मैट्रिक्स बनाते हैं, और किसी layer का output मैट्रिक्स गुणन और फिर activation होता है।",
+       "Language AI: शब्दों को vectors (संख्याओं की पंक्तियों) में बदला जाता है, इसलिए एक वाक्य मैट्रिक्स बन जाता है।",
+       "Graphics और games: स्क्रीन पर आकृतियों को खिसकाना, बड़ा-छोटा करना और घुमाना मैट्रिक्स गुणन हैं।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A grayscale image patch is P = [10 20; 30 40]. (a) Brighten it by adding 50 to each pixel. (b) Find its transpose.",
+       "hi": "एक grayscale चित्र का टुकड़ा P = [10 20; 30 40] है। (a) हर pixel में 50 जोड़कर इसे चमकीला कीजिए। (b) इसका transpose ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "(a) Add the matrix [50 50; 50 50]: P + 50 = [60 70; 80 90]. All values are still within 0 to 255, so the patch is lighter.\n(b) Pᵀ = [10 30; 20 40]. The image is flipped across its main diagonal.",
+       "hi": "(a) मैट्रिक्स [50 50; 50 50] जोड़ें: P + 50 = [60 70; 80 90]। सभी मान अभी भी 0 से 255 में हैं, इसलिए टुकड़ा हल्का हो गया।\n(b) Pᵀ = [10 30; 20 40]। चित्र अपने मुख्य विकर्ण के पार पलट गया।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.12 Data pre-processing",
+    "hi": "5.12 डेटा pre-processing"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Real-world data is messy: some values are missing, some are typed wrongly, some rows are repeated, and columns use different units. Data pre-processing is the set of steps that cleans and prepares raw data so that a machine learning model can learn from it correctly. Data scientists often spend a large share of their time on this step.",
+      "hi": "वास्तविक दुनिया का डेटा अव्यवस्थित होता है: कुछ मान छूटे होते हैं, कुछ गलत टाइप होते हैं, कुछ पंक्तियाँ दोहराई होती हैं, और कॉलम अलग-अलग इकाइयों में होते हैं। डेटा pre-processing उन चरणों का समूह है जो कच्चे डेटा को साफ़ और तैयार करते हैं ताकि machine learning model उससे सही ढंग से सीख सके। Data scientists अक्सर अपने समय का बड़ा हिस्सा इसी चरण में लगाते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Step",
+        "What it does",
+        "Example"
+       ],
+       "hi": [
+        "चरण",
+        "क्या करता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data cleaning",
+         "Handle missing values, remove duplicates, fix errors and typing mistakes, treat outliers",
+         "Fill a blank rainfall value with the column mean; change 'Dilli' and 'delhi' to 'Delhi'"
+        ],
+        [
+         "Data transformation",
+         "Change data into a suitable form, such as converting categories to numbers or changing units",
+         "Encode Male/Female/Other as 0/1/2 or separate yes/no columns; convert all prices to rupees"
+        ],
+        [
+         "Data normalisation / scaling",
+         "Bring numeric features to a common range so that a large-valued feature does not dominate",
+         "Min-max scaling to 0–1; income (lakhs) and age (years) on the same scale"
+        ],
+        [
+         "Data reduction",
+         "Reduce the size of data while keeping the important information: fewer columns (feature selection) or fewer rows (sampling)",
+         "Drop a 'Roll number' column that does not help prediction"
+        ],
+        [
+         "Data integration",
+         "Combine data from several sources into one consistent dataset",
+         "Join school marks data with attendance data using student ID"
+        ]
+       ],
+       "hi": [
+        [
+         "डेटा सफ़ाई (cleaning)",
+         "छूटे मान संभालना, दोहराव हटाना, त्रुटियाँ और टाइपिंग गलतियाँ ठीक करना, outliers देखना",
+         "खाली वर्षा मान को कॉलम के माध्य से भरना; 'Dilli' और 'delhi' को 'Delhi' करना"
+        ],
+        [
+         "डेटा रूपांतरण (transformation)",
+         "डेटा को उपयुक्त रूप में बदलना, जैसे श्रेणियों को संख्याओं में या इकाइयाँ बदलना",
+         "Male/Female/Other को 0/1/2 या अलग हाँ/नहीं कॉलम में बदलना; सभी दाम रुपयों में करना"
+        ],
+        [
+         "सामान्यीकरण / scaling",
+         "संख्यात्मक features को एक समान सीमा में लाना ताकि बड़े मान वाला feature हावी न हो",
+         "Min-max scaling से 0–1; आय (लाख) और आयु (वर्ष) एक ही पैमाने पर"
+        ],
+        [
+         "डेटा न्यूनीकरण (reduction)",
+         "ज़रूरी जानकारी रखते हुए डेटा का आकार घटाना: कम कॉलम (feature selection) या कम पंक्तियाँ (sampling)",
+         "'Roll number' कॉलम हटाना जो अनुमान में मदद नहीं करता"
+        ],
+        [
+         "डेटा एकीकरण (integration)",
+         "कई स्रोतों का डेटा मिलाकर एक सुसंगत dataset बनाना",
+         "student ID से स्कूल अंक डेटा और उपस्थिति डेटा जोड़ना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Ways to handle missing values: (1) delete the row if only a few rows are affected and plenty of data remains; (2) fill it with the mean or median (numbers) or the mode (categories), called imputation; (3) fill using a sensible rule, such as the previous day's reading for a sensor; (4) predict it using a model. Never fill blanks with random numbers.",
+      "hi": "छूटे मान संभालने के तरीके: (1) यदि कुछ ही पंक्तियाँ प्रभावित हैं और भरपूर डेटा बचता है तो पंक्ति हटा दें; (2) उसे माध्य या माध्यिका (संख्याएँ) या बहुलक (श्रेणियाँ) से भरें, इसे imputation कहते हैं; (3) किसी समझदार नियम से भरें, जैसे sensor के लिए पिछले दिन का माप; (4) model से उसका अनुमान लगाएँ। खाली जगहों को कभी यादृच्छिक संख्याओं से न भरें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Min-max normalisation:  x_new = (x − min) / (max − min)\nResult always lies between 0 and 1.\n\nStandardisation (z-score):  z = (x − mean) / SD",
+      "hi": "Min-max सामान्यीकरण:  x_new = (x − min) / (max − min)\nपरिणाम हमेशा 0 और 1 के बीच होता है।\n\nमानकीकरण (z-score):  z = (x − माध्य) / SD"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Rainfall values are 720, 1100 and 1400 mm. Scale 1100 using min-max normalisation.",
+       "hi": "वर्षा के मान 720, 1100 और 1400 mm हैं। Min-max सामान्यीकरण से 1100 को scale कीजिए।"
+      },
+      "a": {
+       "en": "min = 720, max = 1400, max − min = 680.\nx_new = (1100 − 720) / 680 = 380 / 680 ≈ 0.56.\nSo 720 → 0, 1100 → 0.56, 1400 → 1.",
+       "hi": "min = 720, max = 1400, max − min = 680।\nx_new = (1100 − 720) / 680 = 380 / 680 ≈ 0.56।\nयानी 720 → 0, 1100 → 0.56, 1400 → 1।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Program 6: cleaning a small table with pandas. It counts missing values, removes the duplicate Pune row, fills Jaipur's missing rainfall with the mean of the others and adds a scaled column.",
+      "hi": "प्रोग्राम 6: pandas से एक छोटी तालिका साफ़ करना। यह छूटे मान गिनता है, दोहराई गई Pune पंक्ति हटाता है, Jaipur की छूटी वर्षा को बाकियों के माध्य से भरता है और एक scaled कॉलम जोड़ता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\ndata = {\"City\": [\"Pune\", \"Jaipur\", \"Pune\", \"Chennai\", \"Patna\"],\n        \"Rainfall\": [720, None, 720, 1400, 1100],\n        \"Temp\": [25, 31, 25, 29, 27]}\ndf = pd.DataFrame(data)\nprint(df.isnull().sum())\ndf = df.drop_duplicates()\ndf[\"Rainfall\"] = df[\"Rainfall\"].fillna(round(df[\"Rainfall\"].mean(), 1))\nr = df[\"Rainfall\"]\ndf[\"Rain_scaled\"] = ((r - r.min()) / (r.max() - r.min())).round(2)\nprint(df)\n\nOutput:\nCity        0\nRainfall    1\nTemp        0\ndtype: int64\n      City  Rainfall  Temp  Rain_scaled\n0     Pune     720.0    25         0.00\n1   Jaipur    1073.3    31         0.52\n3  Chennai    1400.0    29         1.00\n4    Patna    1100.0    27         0.56",
+      "hi": "import pandas as pd\ndata = {\"City\": [\"Pune\", \"Jaipur\", \"Pune\", \"Chennai\", \"Patna\"],\n        \"Rainfall\": [720, None, 720, 1400, 1100],\n        \"Temp\": [25, 31, 25, 29, 27]}\ndf = pd.DataFrame(data)\nprint(df.isnull().sum())\ndf = df.drop_duplicates()\ndf[\"Rainfall\"] = df[\"Rainfall\"].fillna(round(df[\"Rainfall\"].mean(), 1))\nr = df[\"Rainfall\"]\ndf[\"Rain_scaled\"] = ((r - r.min()) / (r.max() - r.min())).round(2)\nprint(df)\n\nआउटपुट (Output):\nCity        0\nRainfall    1\nTemp        0\ndtype: int64\n      City  Rainfall  Temp  Rain_scaled\n0     Pune     720.0    25         0.00\n1   Jaipur    1073.3    31         0.52\n3  Chennai    1400.0    29         1.00\n4    Patna    1100.0    27         0.56"
+     }
+    },
+    {
+     "note": {
+      "en": "Row index 2 is missing in the output because drop_duplicates() removed the repeated Pune row. Always clean before you calculate statistics or train a model.",
+      "hi": "आउटपुट में index 2 की पंक्ति नहीं है क्योंकि drop_duplicates() ने दोहराई गई Pune पंक्ति हटा दी। आँकड़े निकालने या model train करने से पहले हमेशा सफ़ाई करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.13 Data in modelling and evaluation",
+    "hi": "5.13 Modelling और evaluation में डेटा"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "After pre-processing, the data is used to build (model) and test (evaluate) the AI model. We must never judge a model on the same data it learned from, just as a teacher does not set the exact homework questions in the exam. So the dataset is split.",
+      "hi": "Pre-processing के बाद डेटा से AI model बनाया (modelling) और परखा (evaluation) जाता है। हमें model को कभी उसी डेटा पर नहीं आँकना चाहिए जिससे उसने सीखा, जैसे शिक्षक परीक्षा में बिल्कुल वही गृहकार्य के प्रश्न नहीं देते। इसलिए dataset को बाँटा जाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Part",
+        "Purpose",
+        "Typical share"
+       ],
+       "hi": [
+        "भाग",
+        "उद्देश्य",
+        "आम हिस्सा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Training set",
+         "The model learns patterns from it",
+         "About 70–80%"
+        ],
+        [
+         "Validation set",
+         "Used while building to tune settings (such as k in k-NN) and compare models",
+         "About 10–15% (optional)"
+        ],
+        [
+         "Testing set",
+         "Kept hidden until the end; gives an honest check on unseen data",
+         "About 20–30% (or 10–15% if a validation set is used)"
+        ]
+       ],
+       "hi": [
+        [
+         "Training set",
+         "Model इससे पैटर्न सीखता है",
+         "लगभग 70–80%"
+        ],
+        [
+         "Validation set",
+         "बनाते समय settings (जैसे k-NN में k) ठीक करने और models की तुलना के लिए",
+         "लगभग 10–15% (वैकल्पिक)"
+        ],
+        [
+         "Testing set",
+         "अंत तक छिपा रहता है; अनदेखे डेटा पर ईमानदार जाँच देता है",
+         "लगभग 20–30% (या validation set हो तो 10–15%)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Train-test split",
+       "hi": "Train-test split"
+      },
+      "text": {
+       "en": "Dividing a dataset into a training part and a testing part, usually at random, for example 80:20.",
+       "hi": "Dataset को training भाग और testing भाग में बाँटना, आमतौर पर यादृच्छिक रूप से, जैसे 80:20।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Cross-validation",
+       "hi": "Cross-validation"
+      },
+      "text": {
+       "en": "In k-fold cross-validation the data is divided into k equal parts (folds). The model is trained k times, each time using a different fold for testing and the rest for training. The average score is more reliable than a single split, especially for small datasets.",
+       "hi": "k-fold cross-validation में डेटा को k बराबर भागों (folds) में बाँटा जाता है। Model को k बार train किया जाता है, हर बार अलग fold testing के लिए और बाकी training के लिए। औसत score एक बार के split से ज़्यादा भरोसेमंद होता है, खासकर छोटे datasets में।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Program 7: an 80:20 split with scikit-learn. random_state=42 fixes the random shuffle so that you get the same split every time you run it.",
+      "hi": "प्रोग्राम 7: scikit-learn से 80:20 split। random_state=42 यादृच्छिक फेरबदल को स्थिर करता है ताकि हर बार चलाने पर एक जैसा split मिले।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.model_selection import train_test_split\nX = [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]\ny = [0, 0, 0, 0, 1, 1, 1, 1, 1, 1]\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(\"Training rows:\", len(X_train))\nprint(\"Testing rows :\", len(X_test))\nprint(\"Test X:\", X_test)\n\nOutput:\nTraining rows: 8\nTesting rows : 2\nTest X: [[9], [2]]",
+      "hi": "from sklearn.model_selection import train_test_split\nX = [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]\ny = [0, 0, 0, 0, 1, 1, 1, 1, 1, 1]\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(\"Training rows:\", len(X_train))\nprint(\"Testing rows :\", len(X_test))\nprint(\"Test X:\", X_test)\n\nआउटपुट (Output):\nTraining rows: 8\nTesting rows : 2\nTest X: [[9], [2]]"
+     }
+    },
+    {
+     "p": {
+      "en": "Evaluation means measuring how good the predictions are on the test set. For predicting numbers (regression) we look at the error, such as the average difference between predicted and actual values. For predicting classes (classification) we use accuracy and the confusion matrix, which you studied in Class 10. Two warning signs: overfitting (excellent on training data, poor on test data, like a student who memorised answers) and underfitting (poor on both, like a student who did not study).",
+      "hi": "Evaluation का अर्थ है test set पर अनुमान कितने अच्छे हैं यह मापना। संख्याओं के अनुमान (regression) के लिए हम error देखते हैं, जैसे अनुमानित और वास्तविक मानों का औसत अंतर। श्रेणियों के अनुमान (classification) के लिए accuracy और confusion matrix का उपयोग होता है, जो आपने कक्षा 10 में पढ़े। दो चेतावनी संकेत: overfitting (training डेटा पर बहुत अच्छा, test डेटा पर खराब, जैसे उत्तर रटने वाला विद्यार्थी) और underfitting (दोनों पर खराब, जैसे न पढ़ने वाला विद्यार्थी)।"
+     }
+    },
+    {
+     "note": {
+      "en": "Never let test data leak into training. If you normalise data, compute min and max from the training set only and apply the same values to the test set.",
+      "hi": "Test डेटा को कभी training में न मिलने दें। यदि आप डेटा normalise करते हैं, तो min और max केवल training set से निकालें और वही मान test set पर लागू करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "5.14 Activities",
+    "hi": "5.14 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (unplugged): Class data survey",
+       "hi": "गतिविधि 1 (बिना कंप्यूटर): कक्षा डेटा सर्वेक्षण"
+      },
+      "a": {
+       "en": "Aim: collect primary data and identify levels of measurement.\nYou need: paper, pen, or a Google Form made by the teacher.\nDo: ask each classmate 5 questions: favourite subject, T-shirt size, height in cm, minutes spent travelling to school, and satisfaction with the canteen (1 to 5). Collect no names.\nObserve: label each question N, O, I or R. Find the mode of favourite subject, the median of satisfaction, and the mean and SD of travel time.\nLearn: different kinds of data need different summaries; you collected data ethically without names.",
+       "hi": "उद्देश्य: प्राथमिक डेटा इकट्ठा करना और माप के स्तर पहचानना।\nसामग्री: कागज़, पेन, या शिक्षक द्वारा बनाया Google Form।\nक्या करें: हर सहपाठी से 5 प्रश्न पूछें: पसंदीदा विषय, टी-शर्ट साइज़, लंबाई cm में, स्कूल आने में लगे मिनट, और कैंटीन से संतुष्टि (1 से 5)। नाम न लें।\nअवलोकन: हर प्रश्न को N, O, I या R से चिह्नित करें। पसंदीदा विषय का बहुलक, संतुष्टि की माध्यिका, और यात्रा समय का माध्य व SD निकालें।\nसीख: अलग प्रकार के डेटा के लिए अलग सार चाहिए; आपने बिना नाम के नैतिक रूप से डेटा इकट्ठा किया।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (screen): Rainfall analysis in Python",
+       "hi": "गतिविधि 2 (स्क्रीन): Python में वर्षा विश्लेषण"
+      },
+      "a": {
+       "en": "Aim: practise the CBSE practicals.\nYou need: a computer with Python, or Google Colab on a phone or laptop (an adult should help with any account sign-up for students under 13).\nDo: create rainfall.csv with 12 months of your city's rainfall from IMD or data.gov.in; find mean, median, mode, variance and SD; draw a line graph, bar graph, histogram, scatter plot (month number vs rainfall) and pie chart (share of each season).\nObserve: which months bring most rain; why mean and median differ.\nLearn: Python and matplotlib turn a list of numbers into a story.",
+       "hi": "उद्देश्य: CBSE प्रैक्टिकल का अभ्यास।\nसामग्री: Python वाला कंप्यूटर, या फ़ोन/लैपटॉप पर Google Colab (13 वर्ष से कम विद्यार्थियों के खाते के sign-up में कोई बड़ा मदद करे)।\nक्या करें: IMD या data.gov.in से अपने शहर की 12 महीनों की वर्षा लेकर rainfall.csv बनाएँ; माध्य, माध्यिका, बहुलक, प्रसरण और SD निकालें; रेखा ग्राफ़, बार ग्राफ़, हिस्टोग्राम, स्कैटर प्लॉट (महीने की संख्या बनाम वर्षा) और पाई चार्ट (हर ऋतु का हिस्सा) बनाएँ।\nअवलोकन: किन महीनों में सबसे ज़्यादा बारिश होती है; माध्य और माध्यिका अलग क्यों हैं।\nसीख: Python और matplotlib संख्याओं की सूची को एक कहानी में बदल देते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (unplugged): Pixel art matrix",
+       "hi": "गतिविधि 3 (बिना कंप्यूटर): Pixel art मैट्रिक्स"
+      },
+      "a": {
+       "en": "Aim: see that an image is a matrix.\nYou need: squared paper and a pencil.\nDo: draw a 6 × 6 grid and shade a simple shape (a smiley or the letter T). Write 0 for black and 255 for white in each cell to make a matrix. Swap matrices with a friend and redraw each other's image from numbers only. Then write the transpose and redraw it.\nObserve: the friend's drawing matches yours exactly; the transpose looks flipped across the diagonal.\nLearn: computers 'see' images only as matrices of numbers.",
+       "hi": "उद्देश्य: देखना कि चित्र एक मैट्रिक्स है।\nसामग्री: वर्गाकार खानों वाला कागज़ और पेंसिल।\nक्या करें: 6 × 6 ग्रिड बनाकर एक सरल आकृति (smiley या अक्षर T) रंगें। हर खाने में काले के लिए 0 और सफ़ेद के लिए 255 लिखकर मैट्रिक्स बनाएँ। मित्र से मैट्रिक्स बदलें और केवल संख्याओं से एक-दूसरे का चित्र दोबारा बनाएँ। फिर transpose लिखकर उसे बनाएँ।\nअवलोकन: मित्र का चित्र आपके चित्र जैसा ही बनता है; transpose विकर्ण के पार पलटा दिखता है।\nसीख: कंप्यूटर चित्रों को केवल संख्याओं के मैट्रिक्स के रूप में 'देखते' हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4 (thinking): Spot the misleading chart",
+       "hi": "गतिविधि 4 (चिंतन): भ्रामक चार्ट पहचानिए"
+      },
+      "a": {
+       "en": "Aim: read charts critically.\nDo: find two charts in newspapers or ads. For each, check the title, the axis labels, whether the y-axis starts at zero, the data source and the sample size.\nObserve: some charts exaggerate small differences or hide the source.\nLearn: a data-literate citizen questions data before believing or forwarding it.",
+       "hi": "उद्देश्य: चार्टों को आलोचनात्मक नज़र से पढ़ना।\nक्या करें: अख़बार या विज्ञापनों से दो चार्ट खोजें। हर एक का शीर्षक, अक्षों के लेबल, y-अक्ष शून्य से शुरू होता है या नहीं, डेटा स्रोत और नमूने का आकार जाँचें।\nअवलोकन: कुछ चार्ट छोटे अंतर को बढ़ा-चढ़ाकर दिखाते हैं या स्रोत छिपाते हैं।\nसीख: डेटा-साक्षर नागरिक डेटा पर भरोसा करने या आगे भेजने से पहले सवाल पूछता है।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Calling jersey numbers or PIN codes ratio data because they are numbers. Fix: numbers used only as labels are nominal.",
+   "Saying 40 °C is twice as hot as 20 °C. Fix: Celsius is interval data with no true zero, so ratios are meaningless.",
+   "Finding the median without sorting the data first. Fix: always arrange in ascending order, then pick the middle.",
+   "For an even number of values, picking just one middle value. Fix: take the average of the two middle values.",
+   "Using the mean for data with big outliers, such as salaries. Fix: report the median as well.",
+   "Forgetting that variance is in squared units. Fix: take the square root to get SD in the original unit.",
+   "Mixing np.var() (divides by n) with pandas .var() (divides by n − 1) and wondering why answers differ. Fix: know which formula each uses.",
+   "Adding matrices of different orders, or multiplying when columns of the first do not equal rows of the second. Fix: check orders first.",
+   "Using a bar graph for continuous ranges or a pie chart for change over time. Fix: use a histogram for ranges and a line graph for time.",
+   "Testing a model on its own training data and reporting high accuracy. Fix: keep a separate test set or use cross-validation."
+  ],
+  "hi": [
+   "जर्सी नंबर या पिन कोड को संख्या होने के कारण ratio डेटा मानना। सुधार: केवल लेबल के रूप में प्रयुक्त संख्याएँ nominal हैं।",
+   "कहना कि 40 °C, 20 °C से दोगुना गर्म है। सुधार: सेल्सियस interval डेटा है, जिसमें वास्तविक शून्य नहीं, इसलिए अनुपात अर्थहीन है।",
+   "डेटा को क्रम में लगाए बिना माध्यिका निकालना। सुधार: पहले आरोही क्रम में लगाएँ, फिर बीच वाला मान लें।",
+   "सम संख्या में मान होने पर केवल एक बीच का मान लेना। सुधार: दोनों बीच वाले मानों का औसत लें।",
+   "वेतन जैसे बड़े outliers वाले डेटा के लिए केवल माध्य लेना। सुधार: माध्यिका भी बताएँ।",
+   "भूल जाना कि प्रसरण वर्ग इकाई में होता है। सुधार: मूल इकाई में SD पाने के लिए वर्गमूल लें।",
+   "np.var() (n से भाग) और pandas .var() (n − 1 से भाग) को मिलाकर हैरान होना कि उत्तर अलग क्यों हैं। सुधार: जानें कौन-सा सूत्र किसमें है।",
+   "अलग कोटि के मैट्रिक्स जोड़ना, या तब गुणा करना जब पहले के स्तंभ दूसरे की पंक्तियों के बराबर न हों। सुधार: पहले कोटि जाँचें।",
+   "सतत श्रेणियों के लिए बार ग्राफ़ या समय के साथ बदलाव के लिए पाई चार्ट लेना। सुधार: श्रेणियों के लिए हिस्टोग्राम और समय के लिए रेखा ग्राफ़ लें।",
+   "Model को उसी के training डेटा पर परखकर ऊँची accuracy बताना। सुधार: अलग test set रखें या cross-validation करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Data",
+    "hi": "डेटा"
+   },
+   "d": {
+    "en": "Facts, figures or instructions in a form that can be stored, processed and communicated.",
+    "hi": "तथ्य, आँकड़े या निर्देश ऐसे रूप में जिन्हें संग्रहीत, संसाधित और साझा किया जा सके।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data literacy",
+    "hi": "डेटा साक्षरता"
+   },
+   "d": {
+    "en": "The ability to read, understand, create, question and communicate data as information.",
+    "hi": "डेटा को सूचना के रूप में पढ़ने, समझने, बनाने, परखने और संप्रेषित करने की क्षमता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Structured data",
+    "hi": "संरचित डेटा"
+   },
+   "d": {
+    "en": "Data in fixed rows and columns, such as a spreadsheet.",
+    "hi": "निश्चित पंक्तियों और स्तंभों में डेटा, जैसे स्प्रेडशीट।"
+   }
+  },
+  {
+   "t": {
+    "en": "Semi-structured data",
+    "hi": "अर्ध-संरचित डेटा"
+   },
+   "d": {
+    "en": "Data with tags or labels but no fixed table, such as JSON or email.",
+    "hi": "टैग या लेबल वाला पर बिना तय तालिका का डेटा, जैसे JSON या ईमेल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unstructured data",
+    "hi": "असंरचित डेटा"
+   },
+   "d": {
+    "en": "Data with no predefined format, such as images, audio and free text.",
+    "hi": "बिना पूर्व-निर्धारित प्रारूप का डेटा, जैसे चित्र, ऑडियो और खुला पाठ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Primary data",
+    "hi": "प्राथमिक डेटा"
+   },
+   "d": {
+    "en": "Data collected first-hand for your own purpose (survey, interview, observation, experiment).",
+    "hi": "अपने उद्देश्य के लिए स्वयं सीधे इकट्ठा किया डेटा (सर्वेक्षण, साक्षात्कार, अवलोकन, प्रयोग)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Secondary data",
+    "hi": "द्वितीयक डेटा"
+   },
+   "d": {
+    "en": "Data already collected by someone else (records, websites, datasets).",
+    "hi": "किसी और द्वारा पहले से इकट्ठा किया डेटा (रिकॉर्ड, वेबसाइटें, datasets)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Web scraping",
+    "hi": "वेब स्क्रैपिंग"
+   },
+   "d": {
+    "en": "Automatically extracting data from web pages using a program.",
+    "hi": "प्रोग्राम से वेब पेजों से अपने-आप डेटा निकालना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Level of measurement",
+    "hi": "माप का स्तर"
+   },
+   "d": {
+    "en": "The scale (nominal, ordinal, interval, ratio) that decides what operations are meaningful on a variable.",
+    "hi": "वह पैमाना (nominal, ordinal, interval, ratio) जो तय करता है कि किसी चर पर कौन-सी संक्रियाएँ अर्थपूर्ण हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Nominal",
+    "hi": "नामित (Nominal)"
+   },
+   "d": {
+    "en": "Categories with names only and no order.",
+    "hi": "केवल नाम वाली, बिना क्रम की श्रेणियाँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ordinal",
+    "hi": "क्रमसूचक (Ordinal)"
+   },
+   "d": {
+    "en": "Ordered categories with unequal or unknown gaps.",
+    "hi": "क्रम वाली श्रेणियाँ जिनके अंतर असमान या अज्ञात हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Interval",
+    "hi": "अंतराल (Interval)"
+   },
+   "d": {
+    "en": "Numeric scale with equal gaps but no true zero.",
+    "hi": "बराबर अंतर वाला पर बिना वास्तविक शून्य का संख्यात्मक पैमाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ratio",
+    "hi": "अनुपात (Ratio)"
+   },
+   "d": {
+    "en": "Numeric scale with equal gaps and a true zero.",
+    "hi": "बराबर अंतर और वास्तविक शून्य वाला संख्यात्मक पैमाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Discrete data",
+    "hi": "असतत डेटा"
+   },
+   "d": {
+    "en": "Counted values that are separate, like number of students.",
+    "hi": "गिने जाने वाले अलग-अलग मान, जैसे विद्यार्थियों की संख्या।"
+   }
+  },
+  {
+   "t": {
+    "en": "Continuous data",
+    "hi": "सतत डेटा"
+   },
+   "d": {
+    "en": "Measured values that can be any number in a range, like height.",
+    "hi": "मापे जाने वाले मान जो किसी सीमा में कोई भी संख्या हो सकते हैं, जैसे लंबाई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mean",
+    "hi": "माध्य"
+   },
+   "d": {
+    "en": "Sum of values divided by their number.",
+    "hi": "मानों का योग बटा उनकी संख्या।"
+   }
+  },
+  {
+   "t": {
+    "en": "Median",
+    "hi": "माध्यिका"
+   },
+   "d": {
+    "en": "Middle value of sorted data.",
+    "hi": "क्रमबद्ध डेटा का बीच वाला मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mode",
+    "hi": "बहुलक"
+   },
+   "d": {
+    "en": "Most frequent value.",
+    "hi": "सबसे अधिक बार आने वाला मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Range",
+    "hi": "परिसर"
+   },
+   "d": {
+    "en": "Maximum minus minimum.",
+    "hi": "अधिकतम घटा न्यूनतम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Variance",
+    "hi": "प्रसरण"
+   },
+   "d": {
+    "en": "Average of squared deviations from the mean.",
+    "hi": "माध्य से विचलनों के वर्गों का औसत।"
+   }
+  },
+  {
+   "t": {
+    "en": "Standard deviation",
+    "hi": "मानक विचलन"
+   },
+   "d": {
+    "en": "Square root of variance; spread in original units.",
+    "hi": "प्रसरण का वर्गमूल; मूल इकाई में फैलाव।"
+   }
+  },
+  {
+   "t": {
+    "en": "Outlier",
+    "hi": "Outlier (बाहरी मान)"
+   },
+   "d": {
+    "en": "A value far away from most other values.",
+    "hi": "ऐसा मान जो अधिकांश मानों से बहुत दूर हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data visualisation",
+    "hi": "डेटा विज़ुअलाइज़ेशन"
+   },
+   "d": {
+    "en": "Showing data as charts and graphs.",
+    "hi": "डेटा को चार्ट और ग्राफ़ के रूप में दिखाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Histogram",
+    "hi": "हिस्टोग्राम"
+   },
+   "d": {
+    "en": "Bar-like chart of how numeric data falls into ranges (bins); bars touch.",
+    "hi": "संख्यात्मक डेटा श्रेणियों (bins) में कैसे बँटा है, इसका बार जैसा चार्ट; पट्टियाँ सटी होती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "matplotlib",
+    "hi": "matplotlib"
+   },
+   "d": {
+    "en": "A Python library for drawing charts; pyplot is imported as plt.",
+    "hi": "चार्ट बनाने की Python library; pyplot को plt के रूप में import किया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Matrix",
+    "hi": "मैट्रिक्स (आव्यूह)"
+   },
+   "d": {
+    "en": "Rectangular arrangement of numbers in rows and columns.",
+    "hi": "पंक्तियों और स्तंभों में संख्याओं की आयताकार व्यवस्था।"
+   }
+  },
+  {
+   "t": {
+    "en": "Order of a matrix",
+    "hi": "मैट्रिक्स की कोटि"
+   },
+   "d": {
+    "en": "Rows × columns, written m × n.",
+    "hi": "पंक्तियाँ × स्तंभ, m × n लिखा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Transpose",
+    "hi": "परिवर्त (Transpose)"
+   },
+   "d": {
+    "en": "Matrix obtained by turning rows into columns.",
+    "hi": "पंक्तियों को स्तंभ बनाकर मिलने वाला मैट्रिक्स।"
+   }
+  },
+  {
+   "t": {
+    "en": "Identity matrix",
+    "hi": "तत्समक मैट्रिक्स"
+   },
+   "d": {
+    "en": "Square matrix with 1s on the diagonal and 0s elsewhere.",
+    "hi": "वर्ग मैट्रिक्स जिसके विकर्ण पर 1 और बाकी जगह 0 हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data pre-processing",
+    "hi": "डेटा pre-processing"
+   },
+   "d": {
+    "en": "Cleaning, transforming, scaling, reducing and integrating raw data before modelling.",
+    "hi": "Modelling से पहले कच्चे डेटा की सफ़ाई, रूपांतरण, scaling, न्यूनीकरण और एकीकरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Imputation",
+    "hi": "Imputation"
+   },
+   "d": {
+    "en": "Filling missing values with estimates such as mean, median or mode.",
+    "hi": "छूटे मानों को माध्य, माध्यिका या बहुलक जैसे अनुमानों से भरना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Normalisation",
+    "hi": "सामान्यीकरण"
+   },
+   "d": {
+    "en": "Rescaling values to a common range, often 0 to 1.",
+    "hi": "मानों को एक समान सीमा में, अक्सर 0 से 1 में, लाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training set",
+    "hi": "Training set"
+   },
+   "d": {
+    "en": "Part of data the model learns from.",
+    "hi": "डेटा का वह भाग जिससे model सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Testing set",
+    "hi": "Testing set"
+   },
+   "d": {
+    "en": "Unseen part of data used to evaluate the model.",
+    "hi": "डेटा का अनदेखा भाग जिससे model का मूल्यांकन होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Cross-validation",
+    "hi": "Cross-validation"
+   },
+   "d": {
+    "en": "Repeated train-test splits over k folds, averaging the results.",
+    "hi": "k folds पर बार-बार train-test split करके परिणामों का औसत लेना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Overfitting",
+    "hi": "Overfitting"
+   },
+   "d": {
+    "en": "Model fits training data too closely and fails on new data.",
+    "hi": "Model training डेटा से इतना चिपक जाता है कि नए डेटा पर असफल होता है।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is ordinal data? (a) Blood group (b) Height (c) Customer rating: poor, good, excellent (d) Temperature in °C",
+    "hi": "MCQ: इनमें से ordinal डेटा कौन-सा है? (a) रक्त समूह (b) लंबाई (c) ग्राहक रेटिंग: खराब, अच्छा, उत्कृष्ट (d) °C में तापमान"
+   },
+   "a": {
+    "en": "(c) Customer rating. It has an order but the gaps are not measurable.",
+    "hi": "(c) ग्राहक रेटिंग। इसमें क्रम है पर अंतर मापने योग्य नहीं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which source is secondary? (a) Interview (b) Experiment (c) Kaggle dataset (d) Observation",
+    "hi": "MCQ: कौन-सा स्रोत द्वितीयक है? (a) साक्षात्कार (b) प्रयोग (c) Kaggle dataset (d) अवलोकन"
+   },
+   "a": {
+    "en": "(c) A Kaggle dataset was collected by someone else earlier.",
+    "hi": "(c) Kaggle dataset किसी और ने पहले इकट्ठा किया था।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The order of a matrix with 4 rows and 2 columns is: (a) 2 × 4 (b) 4 × 2 (c) 8 (d) 6",
+    "hi": "MCQ: 4 पंक्तियों और 2 स्तंभों वाले मैट्रिक्स की कोटि है: (a) 2 × 4 (b) 4 × 2 (c) 8 (d) 6"
+   },
+   "a": {
+    "en": "(b) 4 × 2 (rows × columns).",
+    "hi": "(b) 4 × 2 (पंक्तियाँ × स्तंभ)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The square root of variance is called ________.",
+    "hi": "रिक्त स्थान भरें: प्रसरण का वर्गमूल ________ कहलाता है।"
+   },
+   "a": {
+    "en": "standard deviation",
+    "hi": "मानक विचलन"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: In matplotlib, the function ________ draws a scatter plot.",
+    "hi": "रिक्त स्थान भरें: matplotlib में ________ function स्कैटर प्लॉट बनाता है।"
+   },
+   "a": {
+    "en": "plt.scatter()",
+    "hi": "plt.scatter()"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: Ratio data has a true zero.",
+    "hi": "सही या गलत: Ratio डेटा में वास्तविक शून्य होता है।"
+   },
+   "a": {
+    "en": "True. For example, 0 kg means no weight.",
+    "hi": "सही। जैसे 0 kg का अर्थ है कोई वज़न नहीं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: Any two matrices can be added.",
+    "hi": "सही या गलत: कोई भी दो मैट्रिक्स जोड़े जा सकते हैं।"
+   },
+   "a": {
+    "en": "False. Only matrices of the same order can be added.",
+    "hi": "गलत। केवल समान कोटि वाले मैट्रिक्स जोड़े जा सकते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "What is data literacy? Give two reasons it matters in AI.",
+    "hi": "डेटा साक्षरता क्या है? AI में इसके महत्व के दो कारण बताइए।"
+   },
+   "a": {
+    "en": "Data literacy is the ability to read, understand, create, question and communicate data as information. It matters because (1) AI models learn only from data, so poor data gives poor AI, and (2) people must be able to check whether AI outputs and data-based claims are trustworthy.",
+    "hi": "डेटा साक्षरता डेटा को सूचना के रूप में पढ़ने, समझने, बनाने, परखने और संप्रेषित करने की क्षमता है। यह ज़रूरी है क्योंकि (1) AI models केवल डेटा से सीखते हैं, इसलिए खराब डेटा से खराब AI बनता है, और (2) लोगों को जाँचना आना चाहिए कि AI के output और डेटा-आधारित दावे भरोसेमंद हैं या नहीं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find mean, median and mode of: 6, 3, 9, 6, 2, 8, 6, 4.",
+    "hi": "माध्य, माध्यिका और बहुलक ज्ञात कीजिए: 6, 3, 9, 6, 2, 8, 6, 4।"
+   },
+   "a": {
+    "en": "Sum = 44, n = 8, mean = 5.5.\nSorted: 2, 3, 4, 6, 6, 6, 8, 9. Middle values (4th, 5th) = 6, 6, so median = 6.\nMode = 6 (three times).",
+    "hi": "योग = 44, n = 8, माध्य = 5.5।\nक्रम में: 2, 3, 4, 6, 6, 6, 8, 9। बीच के मान (चौथा, पाँचवाँ) = 6, 6, इसलिए माध्यिका = 6।\nबहुलक = 6 (तीन बार)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the population variance and SD of 2, 4, 4, 4, 5, 5, 7, 9.",
+    "hi": "2, 4, 4, 4, 5, 5, 7, 9 का population प्रसरण और SD ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Mean = 40 / 8 = 5.\nSquared deviations: 9, 1, 1, 1, 0, 0, 4, 16. Sum = 32.\nVariance = 32 / 8 = 4.\nSD = √4 = 2.",
+    "hi": "माध्य = 40 / 8 = 5।\nविचलनों के वर्ग: 9, 1, 1, 1, 0, 0, 4, 16। योग = 32।\nप्रसरण = 32 / 8 = 4।\nSD = √4 = 2।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "If A = [1 2; 3 4] and B = [0 5; 2 1], find A + B, A − B, 2B and Aᵀ.",
+    "hi": "यदि A = [1 2; 3 4] और B = [0 5; 2 1], तो A + B, A − B, 2B और Aᵀ ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "A + B = [1 7; 5 5]\nA − B = [1 −3; 1 3]\n2B = [0 10; 4 2]\nAᵀ = [1 3; 2 4]",
+    "hi": "A + B = [1 7; 5 5]\nA − B = [1 −3; 1 3]\n2B = [0 10; 4 2]\nAᵀ = [1 3; 2 4]"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find A × B for A = [1 2; 3 4] and B = [0 5; 2 1].",
+    "hi": "A = [1 2; 3 4] और B = [0 5; 2 1] के लिए A × B ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "Row1·Col1 = 1×0 + 2×2 = 4; Row1·Col2 = 1×5 + 2×1 = 7.\nRow2·Col1 = 3×0 + 4×2 = 8; Row2·Col2 = 3×5 + 4×1 = 19.\nA × B = [4 7; 8 19].",
+    "hi": "पंक्ति1·स्तंभ1 = 1×0 + 2×2 = 4; पंक्ति1·स्तंभ2 = 1×5 + 2×1 = 7।\nपंक्ति2·स्तंभ1 = 3×0 + 4×2 = 8; पंक्ति2·स्तंभ2 = 3×5 + 4×1 = 19।\nA × B = [4 7; 8 19]।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the chart you would use for: (a) daily AQI of Delhi over a month (b) share of each language spoken in a class (c) marks of 60 students grouped in ranges (d) height vs weight of players.",
+    "hi": "इनके लिए कौन-सा चार्ट लेंगे: (a) एक महीने में दिल्ली का दैनिक AQI (b) कक्षा में बोली जाने वाली हर भाषा का हिस्सा (c) श्रेणियों में बँटे 60 विद्यार्थियों के अंक (d) खिलाड़ियों की लंबाई बनाम वज़न।"
+   },
+   "a": {
+    "en": "(a) Line graph (b) Pie chart (or bar chart) (c) Histogram (d) Scatter plot",
+    "hi": "(a) रेखा ग्राफ़ (b) पाई चार्ट (या बार चार्ट) (c) हिस्टोग्राम (d) स्कैटर प्लॉट"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between primary and secondary data with two examples each.",
+    "hi": "प्राथमिक और द्वितीयक डेटा में दो-दो उदाहरणों सहित अंतर बताइए।"
+   },
+   "a": {
+    "en": "Primary data is collected first-hand for the current purpose; it is exact but costly. Examples: a survey of classmates, an experiment on plant growth. Secondary data already exists, collected by others; it is cheap and quick but may not fit perfectly. Examples: Census of India tables, a dataset from data.gov.in.",
+    "hi": "प्राथमिक डेटा वर्तमान उद्देश्य के लिए स्वयं सीधे इकट्ठा किया जाता है; यह सटीक पर महँगा होता है। उदाहरण: सहपाठियों का सर्वेक्षण, पौधों की वृद्धि पर प्रयोग। द्वितीयक डेटा पहले से मौजूद होता है, दूसरों ने इकट्ठा किया होता है; यह सस्ता और जल्दी मिलता है पर पूरी तरह मेल न खाए। उदाहरण: भारत की जनगणना तालिकाएँ, data.gov.in का dataset।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the steps of data pre-processing.",
+    "hi": "डेटा pre-processing के चरण समझाइए।"
+   },
+   "a": {
+    "en": "1. Cleaning: fill or remove missing values, remove duplicates, correct errors, treat outliers.\n2. Transformation: convert data to suitable forms, such as encoding categories as numbers and unifying units.\n3. Normalisation/scaling: bring features to a common range, such as 0 to 1.\n4. Reduction: remove unhelpful columns or sample rows to reduce size.\n5. Integration: combine data from different sources into one consistent dataset.",
+    "hi": "1. सफ़ाई: छूटे मान भरना या हटाना, दोहराव हटाना, त्रुटियाँ ठीक करना, outliers देखना।\n2. रूपांतरण: डेटा को उपयुक्त रूप में बदलना, जैसे श्रेणियों को संख्याओं में और इकाइयों को एक जैसा करना।\n3. सामान्यीकरण/scaling: features को एक समान सीमा, जैसे 0 से 1, में लाना।\n4. न्यूनीकरण: बेकार कॉलम हटाना या पंक्तियों का नमूना लेकर आकार घटाना।\n5. एकीकरण: अलग स्रोतों का डेटा मिलाकर एक सुसंगत dataset बनाना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write a Python program to find the mean, median and standard deviation of the marks 56, 72, 81, 64, 90 using NumPy.",
+    "hi": "NumPy से अंकों 56, 72, 81, 64, 90 का माध्य, माध्यिका और मानक विचलन निकालने का Python प्रोग्राम लिखिए।"
+   },
+   "a": {
+    "en": "import numpy as np\nmarks = [56, 72, 81, 64, 90]\nprint('Mean:', np.mean(marks))\nprint('Median:', np.median(marks))\nprint('SD:', round(np.std(marks), 2))\nOutput:\nMean: 72.6\nMedian: 72.0\nSD: 12.03",
+    "hi": "import numpy as np\nmarks = [56, 72, 81, 64, 90]\nprint('Mean:', np.mean(marks))\nprint('Median:', np.median(marks))\nprint('SD:', round(np.std(marks), 2))\nआउटपुट:\nMean: 72.6\nMedian: 72.0\nSD: 12.03"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): The median is a better average than the mean for house prices in a city. Reason (R): The median is not much affected by a few very expensive houses. Choose: (a) both true, R explains A (b) both true, R does not explain A (c) A true, R false (d) A false, R true.",
+    "hi": "अभिकथन (A): किसी शहर के मकान दामों के लिए माध्यिका, माध्य से बेहतर औसत है। कारण (R): कुछ बहुत महँगे मकानों का माध्यिका पर ज़्यादा असर नहीं होता। चुनें: (a) दोनों सही, R, A की व्याख्या है (b) दोनों सही, R व्याख्या नहीं (c) A सही, R गलत (d) A गलत, R सही।"
+   },
+   "a": {
+    "en": "(a) Both are true and R correctly explains A.",
+    "hi": "(a) दोनों सही हैं और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): 'Temperature in °C' is ratio data. Reason (R): Temperature can be added and subtracted meaningfully.",
+    "hi": "अभिकथन (A): '°C में तापमान' ratio डेटा है। कारण (R): तापमान को अर्थपूर्ण रूप से जोड़ा-घटाया जा सकता है।"
+   },
+   "a": {
+    "en": "(d) A is false (it is interval data, since 0 °C is not a true zero), but R is true.",
+    "hi": "(d) A गलत है (यह interval डेटा है, क्योंकि 0 °C वास्तविक शून्य नहीं), पर R सही है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A school canteen collects feedback: Name, Class, Favourite dish, Rating (1–5), Amount spent per week (Rs). Some ratings are blank and some names are repeated. (a) Give the level of measurement of each field. (b) Suggest two pre-processing steps. (c) Which field should be removed for privacy?",
+    "hi": "केस स्टडी: स्कूल कैंटीन फ़ीडबैक लेती है: नाम, कक्षा, पसंदीदा व्यंजन, रेटिंग (1–5), प्रति सप्ताह खर्च (Rs)। कुछ रेटिंग खाली हैं और कुछ नाम दोहराए गए हैं। (a) हर फ़ील्ड का माप स्तर बताइए। (b) दो pre-processing चरण सुझाइए। (c) निजता के लिए कौन-सा फ़ील्ड हटाना चाहिए?"
+   },
+   "a": {
+    "en": "(a) Name: nominal; Class (11, 12): ordinal; Favourite dish: nominal; Rating 1–5: ordinal; Amount spent: ratio.\n(b) Remove duplicate entries; fill blank ratings with the median or mode rating (or drop those rows if few).\n(c) Name. Replace it with an anonymous ID; names are not needed for analysis.",
+    "hi": "(a) नाम: nominal; कक्षा (11, 12): ordinal; पसंदीदा व्यंजन: nominal; रेटिंग 1–5: ordinal; खर्च: ratio।\n(b) दोहराई प्रविष्टियाँ हटाएँ; खाली रेटिंग को माध्यिका या बहुलक रेटिंग से भरें (या कम हों तो वे पंक्तियाँ हटा दें)।\n(c) नाम। इसकी जगह गुमनाम ID रखें; विश्लेषण के लिए नाम ज़रूरी नहीं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain why a 1000 × 800 colour image needs three matrices. How many numbers does it store?",
+    "hi": "समझाइए कि 1000 × 800 रंगीन चित्र को तीन मैट्रिक्स क्यों चाहिए। इसमें कितनी संख्याएँ संग्रहीत होती हैं?"
+   },
+   "a": {
+    "en": "Each pixel's colour is a mix of red, green and blue intensities, each from 0 to 255. So there is one matrix per channel. If the image is 1000 pixels wide and 800 tall, each matrix has 800 × 1000 = 8,00,000 elements, and the image stores 3 × 8,00,000 = 24,00,000 numbers.",
+    "hi": "हर pixel का रंग लाल, हरे और नीले की तीव्रताओं का मिश्रण है, हर एक 0 से 255 तक। इसलिए हर channel के लिए एक मैट्रिक्स है। यदि चित्र 1000 pixel चौड़ा और 800 ऊँचा है, तो हर मैट्रिक्स में 800 × 1000 = 8,00,000 अवयव हैं, और चित्र 3 × 8,00,000 = 24,00,000 संख्याएँ रखता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Normalise the values 20, 35, 50, 80 using min-max scaling.",
+    "hi": "Min-max scaling से मान 20, 35, 50, 80 को normalise कीजिए।"
+   },
+   "a": {
+    "en": "min = 20, max = 80, max − min = 60.\n20 → 0/60 = 0\n35 → 15/60 = 0.25\n50 → 30/60 = 0.5\n80 → 60/60 = 1",
+    "hi": "min = 20, max = 80, max − min = 60।\n20 → 0/60 = 0\n35 → 15/60 = 0.25\n50 → 30/60 = 0.5\n80 → 60/60 = 1"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Why do we split data into training and testing sets? Explain k-fold cross-validation with k = 5.",
+    "hi": "डेटा को training और testing sets में क्यों बाँटते हैं? k = 5 के साथ k-fold cross-validation समझाइए।"
+   },
+   "a": {
+    "en": "A model may simply memorise its training data, so testing on the same data gives a falsely high score. A separate test set checks performance on unseen data, like an exam with new questions.\nIn 5-fold cross-validation, data is divided into 5 equal folds. The model is trained 5 times: each time 4 folds train it and the remaining fold tests it, with a different test fold each round. The 5 scores are averaged to give a more reliable estimate.",
+    "hi": "Model अपने training डेटा को रट सकता है, इसलिए उसी डेटा पर परखने से झूठा ऊँचा score मिलता है। अलग test set अनदेखे डेटा पर प्रदर्शन जाँचता है, जैसे नए प्रश्नों वाली परीक्षा।\n5-fold cross-validation में डेटा 5 बराबर folds में बँटता है। Model 5 बार train होता है: हर बार 4 folds से train और बचे fold से test, हर दौर में अलग test fold। 5 scores का औसत ज़्यादा भरोसेमंद अनुमान देता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe four primary and four secondary methods of data collection with an Indian example of each.",
+    "hi": "दीर्घ उत्तर: डेटा संग्रह के चार प्राथमिक और चार द्वितीयक तरीकों का एक-एक भारतीय उदाहरण सहित वर्णन कीजिए।"
+   },
+   "a": {
+    "en": "Primary: (1) Survey: a Google Form on students' screen time. (2) Interview: talking to auto-rickshaw drivers about UPI use. (3) Observation: counting helmet use at a traffic signal. (4) Experiment: testing two fertilisers on wheat plots.\nSecondary: (1) Existing records: Census of India or school result records. (2) Social media tracking: studying public posts about a new metro line. (3) Web scraping: collecting vegetable prices from online grocery sites (where allowed). (4) Satellite data: ISRO or IMD images to track cyclones and crop health. Online platforms such as data.gov.in and Kaggle also give ready datasets.",
+    "hi": "प्राथमिक: (1) सर्वेक्षण: विद्यार्थियों के screen time पर Google Form। (2) साक्षात्कार: ऑटो-रिक्शा चालकों से UPI उपयोग पर बात। (3) अवलोकन: ट्रैफ़िक सिग्नल पर हेलमेट पहनने की गिनती। (4) प्रयोग: गेहूँ के खेतों पर दो खादों की जाँच।\nद्वितीयक: (1) मौजूदा रिकॉर्ड: भारत की जनगणना या स्कूल परिणाम रिकॉर्ड। (2) सोशल मीडिया ट्रैकिंग: नई मेट्रो लाइन पर सार्वजनिक पोस्ट का अध्ययन। (3) वेब स्क्रैपिंग: (जहाँ अनुमति हो) ऑनलाइन किराना साइटों से सब्ज़ियों के दाम। (4) उपग्रह डेटा: चक्रवात और फ़सल स्वास्थ्य देखने के लिए ISRO या IMD की तस्वीरें। data.gov.in और Kaggle जैसे ऑनलाइन प्लेटफ़ॉर्म भी तैयार datasets देते हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: A face-recognition attendance system works well for most students but often fails for students with darker skin and for those wearing glasses. What went wrong in data collection, and how would you fix it?",
+    "hi": "चिंतन: चेहरा-पहचान उपस्थिति सिस्टम ज़्यादातर विद्यार्थियों के लिए ठीक चलता है पर गहरे रंग वाले और चश्मा पहनने वाले विद्यार्थियों के लिए अक्सर असफल होता है। डेटा संग्रह में क्या गलती हुई, और आप इसे कैसे ठीक करेंगे?"
+   },
+   "a": {
+    "en": "The training data lacked diversity: too few images of darker-skinned faces and faces with glasses, so the model did not learn them well (bias). Fix: collect a balanced dataset with consent covering skin tones, glasses, lighting and angles; test separately on each group; keep a manual option so no student is marked absent unfairly.",
+    "hi": "Training डेटा में विविधता की कमी थी: गहरे रंग वाले और चश्मे वाले चेहरों की बहुत कम तस्वीरें थीं, इसलिए model उन्हें ठीक से नहीं सीख पाया (bias)। सुधार: सहमति से संतुलित dataset इकट्ठा करें जिसमें त्वचा के रंग, चश्मा, रोशनी और कोण शामिल हों; हर समूह पर अलग से जाँचें; हाथ से उपस्थिति का विकल्प रखें ताकि किसी विद्यार्थी को अनुचित रूप से अनुपस्थित न माना जाए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: Write a Python program to draw a bar graph of books sold by genre: Fiction 120, Mystery 90, Science 80, Comics 110, Biography 70, with title and axis labels.",
+    "hi": "गतिविधि प्रश्न: शैली अनुसार बिकी किताबों का बार ग्राफ़ बनाने का Python प्रोग्राम लिखिए: Fiction 120, Mystery 90, Science 80, Comics 110, Biography 70, शीर्षक और अक्ष लेबल सहित।"
+   },
+   "a": {
+    "en": "import matplotlib.pyplot as plt\ngenres = ['Fiction', 'Mystery', 'Science', 'Comics', 'Biography']\nsold = [120, 90, 80, 110, 70]\nplt.bar(genres, sold, color='teal')\nplt.title('Books sold by genre')\nplt.xlabel('Genre')\nplt.ylabel('Copies sold')\nplt.show()\nThe chart shows Fiction tallest (120) and Biography shortest (70).",
+    "hi": "import matplotlib.pyplot as plt\ngenres = ['Fiction', 'Mystery', 'Science', 'Comics', 'Biography']\nsold = [120, 90, 80, 110, 70]\nplt.bar(genres, sold, color='teal')\nplt.title('Books sold by genre')\nplt.xlabel('Genre')\nplt.ylabel('Copies sold')\nplt.show()\nचार्ट में Fiction सबसे ऊँचा (120) और Biography सबसे छोटा (70) दिखता है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Data is facts in a storable, processable form; organised data becomes information and understood patterns become knowledge.",
+   "Data literacy is the ability to collect, organise, check, analyse, interpret, communicate and ethically use data.",
+   "Data can be structured, semi-structured or unstructured; and qualitative or quantitative (discrete or continuous).",
+   "Primary data (survey, interview, observation, experiment, questionnaire) is collected first-hand; secondary data (records, social media, web scraping, satellites, Kaggle, data.gov.in) already exists.",
+   "Diversity of data matters more than size; data must cover every situation the model will face, and must be collected with consent and privacy.",
+   "Levels of measurement: nominal (names), ordinal (order), interval (equal gaps, no true zero), ratio (true zero).",
+   "Mean = Σx/n is affected by outliers; median is the middle of sorted data; mode is the most frequent value.",
+   "Range = max − min; variance = average squared deviation; SD = √variance, in original units.",
+   "matplotlib: plot (line), bar, hist, scatter and pie; always add title and axis labels.",
+   "A matrix is an m × n array; it can be added/subtracted (same order), scaled, multiplied (columns of A = rows of B) and transposed.",
+   "Images are matrices of pixel values (0–255); colour images use three matrices (R, G, B).",
+   "Pre-processing: cleaning, transformation, normalisation, reduction and integration.",
+   "Data is split into training, (validation) and testing sets; cross-validation averages results over k folds.",
+   "Overfitting means good on training data but poor on new data; always evaluate on unseen data."
+  ],
+  "hi": [
+   "डेटा संग्रहीत और संसाधित किए जा सकने वाले रूप में तथ्य है; व्यवस्थित डेटा सूचना बनता है और समझे गए पैटर्न ज्ञान बनते हैं।",
+   "डेटा साक्षरता डेटा को इकट्ठा करने, व्यवस्थित करने, जाँचने, विश्लेषण करने, व्याख्या करने, संप्रेषित करने और नैतिक रूप से उपयोग करने की क्षमता है।",
+   "डेटा संरचित, अर्ध-संरचित या असंरचित हो सकता है; और गुणात्मक या मात्रात्मक (असतत या सतत)।",
+   "प्राथमिक डेटा (सर्वेक्षण, साक्षात्कार, अवलोकन, प्रयोग, प्रश्नावली) स्वयं इकट्ठा होता है; द्वितीयक डेटा (रिकॉर्ड, सोशल मीडिया, वेब स्क्रैपिंग, उपग्रह, Kaggle, data.gov.in) पहले से मौजूद है।",
+   "डेटा का आकार नहीं, विविधता ज़्यादा मायने रखती है; डेटा में वे सभी स्थितियाँ हों जिनका model सामना करेगा, और वह सहमति व निजता के साथ इकट्ठा हो।",
+   "माप के स्तर: nominal (नाम), ordinal (क्रम), interval (बराबर अंतर, वास्तविक शून्य नहीं), ratio (वास्तविक शून्य)।",
+   "माध्य = Σx/n पर outliers का असर होता है; माध्यिका क्रमबद्ध डेटा का बीच का मान है; बहुलक सबसे बार-बार आने वाला मान है।",
+   "परिसर = अधिकतम − न्यूनतम; प्रसरण = विचलनों के वर्गों का औसत; SD = √प्रसरण, मूल इकाई में।",
+   "matplotlib: plot (रेखा), bar, hist, scatter और pie; हमेशा शीर्षक और अक्ष लेबल जोड़ें।",
+   "मैट्रिक्स m × n व्यवस्था है; इसे जोड़ा/घटाया (समान कोटि), अदिश से गुणा, गुणा (A के स्तंभ = B की पंक्तियाँ) और transpose किया जा सकता है।",
+   "चित्र pixel मानों (0–255) के मैट्रिक्स हैं; रंगीन चित्र तीन मैट्रिक्स (R, G, B) उपयोग करते हैं।",
+   "Pre-processing: सफ़ाई, रूपांतरण, सामान्यीकरण, न्यूनीकरण और एकीकरण।",
+   "डेटा training, (validation) और testing sets में बँटता है; cross-validation k folds पर परिणामों का औसत लेता है।",
+   "Overfitting का अर्थ है training डेटा पर अच्छा पर नए डेटा पर खराब; हमेशा अनदेखे डेटा पर मूल्यांकन करें।"
+  ]
+ }
+}

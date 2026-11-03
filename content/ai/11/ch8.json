@@ -1,0 +1,1665 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "11",
+ "id": "ch8",
+ "intro": {
+  "en": "AI now helps decide loans, jobs, medical care and what news we see, so it must be fair and trustworthy. This chapter builds on the ethical frameworks you met in Class X and explains the five pillars of AI ethics, where bias in AI comes from, how to detect and reduce it, how AI policies are made, and how to reason through hard ethical dilemmas such as those in MIT's Moral Machine.",
+  "hi": "आज AI loan, नौकरी, इलाज और हम कौन-सी खबरें देखें, यह तय करने में मदद करता है, इसलिए उसका निष्पक्ष और भरोसेमंद होना ज़रूरी है। यह अध्याय कक्षा X के ethical frameworks पर आगे बढ़ते हुए AI नैतिकता के पाँच स्तंभ, AI में bias कहाँ से आता है, उसे कैसे पहचानें और कम करें, AI नीतियाँ कैसे बनती हैं, और MIT के Moral Machine जैसी कठिन नैतिक दुविधाओं पर कैसे सोचें, यह समझाता है।"
+ },
+ "learn": {
+  "en": [
+   "What ethics and AI ethics mean, and who is responsible",
+   "The five pillars: explainability, fairness, robustness, transparency, privacy (plus accountability)",
+   "Bias, bias awareness and AI bias",
+   "Sources and types of bias: training data, algorithmic, cognitive, historical, measurement and more",
+   "Real-life cases of AI bias, including CAD in healthcare",
+   "Strategies to mitigate bias, with a selection-rate check in Python",
+   "Privacy and data protection, including your own safety checklist",
+   "How AI policies are developed and the challenges policymakers face",
+   "Ethical dilemmas, self-driving cars and the Moral Machine",
+   "AI for social good and a responsible-AI checklist"
+  ],
+  "hi": [
+   "नैतिकता और AI नैतिकता का अर्थ, और ज़िम्मेदार कौन है",
+   "पाँच स्तंभ: explainability, fairness, robustness, transparency, privacy (साथ में accountability)",
+   "Bias, bias जागरूकता और AI bias",
+   "Bias के स्रोत और प्रकार: training data, algorithmic, cognitive, historical, measurement आदि",
+   "AI bias के वास्तविक मामले, स्वास्थ्य में CAD सहित",
+   "Bias कम करने की रणनीतियाँ, Python में selection-rate जाँच के साथ",
+   "निजता और data सुरक्षा, आपकी अपनी सुरक्षा सूची सहित",
+   "AI नीतियाँ कैसे बनती हैं और नीति-निर्माताओं की चुनौतियाँ",
+   "नैतिक दुविधाएँ, self-driving कारें और Moral Machine",
+   "सामाजिक भलाई के लिए AI और responsible-AI checklist"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "8.1 What are AI ethics, and why do they matter?",
+    "hi": "8.1 AI नैतिकता क्या है, और यह क्यों ज़रूरी है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI now helps decide who gets a loan, which job applicant is shortlisted, which video you see next and even which patient gets extra care. When a machine influences such decisions for millions of people, a small mistake or unfair pattern can spread very widely. In Class X you learnt about ethical frameworks and bioethics. In this chapter we go further: the main principles of AI ethics, how bias enters AI, how to reduce it, how policies are made and how to think through hard moral dilemmas.",
+      "hi": "आज AI यह तय करने में मदद करता है कि किसे loan मिले, कौन-सा नौकरी आवेदक shortlist हो, आप आगे कौन-सा video देखें और यहाँ तक कि किस मरीज़ को अतिरिक्त देखभाल मिले। जब कोई मशीन लाखों लोगों के ऐसे निर्णयों को प्रभावित करती है, तो एक छोटी गलती या अनुचित pattern बहुत दूर तक फैल सकता है। कक्षा X में आपने ethical frameworks और bioethics के बारे में पढ़ा। इस अध्याय में हम आगे बढ़ेंगे: AI नैतिकता के मुख्य सिद्धांत, bias AI में कैसे आता है, उसे कैसे कम करें, नीतियाँ कैसे बनती हैं और कठिन नैतिक दुविधाओं पर कैसे सोचें।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Ethics",
+       "hi": "नैतिकता (Ethics)"
+      },
+      "text": {
+       "en": "Ethics is the set of moral principles that help people decide what is right and wrong, fair and unfair.",
+       "hi": "नैतिकता उन नैतिक सिद्धांतों का समूह है जो लोगों को सही-गलत, उचित-अनुचित तय करने में मदद करते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "AI ethics",
+       "hi": "AI नैतिकता (AI ethics)"
+      },
+      "text": {
+       "en": "AI ethics is the set of ethical principles and guidelines that govern the design, development and deployment of AI systems, so that they are fair, transparent, accountable, respect privacy and align with human values. It applies the principles of ethics to the field of AI and studies the impact of AI decisions on individuals and society.",
+       "hi": "AI नैतिकता उन नैतिक सिद्धांतों और दिशानिर्देशों का समूह है जो AI systems के design, विकास और उपयोग (deployment) को नियंत्रित करते हैं, ताकि वे निष्पक्ष, पारदर्शी, जवाबदेह हों, निजता का सम्मान करें और मानवीय मूल्यों के अनुरूप हों। यह नैतिकता के सिद्धांतों को AI के क्षेत्र में लागू करती है और व्यक्तियों व समाज पर AI निर्णयों के प्रभाव का अध्ययन करती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Two real-world style examples show why this matters:",
+      "hi": "दो वास्तविक जैसे उदाहरण दिखाते हैं कि यह क्यों ज़रूरी है:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "CCTV misidentification: a face-recognition camera outside a stadium scans the crowd. A cloud's shadow falls on one person's face, the neural network gets confused, and it wrongly flags an innocent person as a wanted criminal. Without human checking, that person could be stopped or embarrassed for no reason.",
+       "Unfair healthcare scores: a widely used algorithm in US hospitals predicted which patients needed extra care by looking at how much money had been spent on their treatment in the past. Because less money had historically been spent on Black patients with the same illness, the system gave them lower risk scores and less extra care than white patients who were equally sick (this was reported by researchers in 2019). You studied a similar case in Class X."
+      ],
+      "hi": [
+       "CCTV से गलत पहचान: स्टेडियम के बाहर एक face-recognition camera भीड़ को स्कैन करता है। एक व्यक्ति के चेहरे पर बादल की छाया पड़ती है, neural network भ्रमित होता है, और वह एक निर्दोष व्यक्ति को गलती से वांछित अपराधी बता देता है। मानव जाँच के बिना उस व्यक्ति को बेवजह रोका या अपमानित किया जा सकता है।",
+       "अनुचित स्वास्थ्य scores: अमेरिकी अस्पतालों में व्यापक रूप से इस्तेमाल एक algorithm यह अनुमान लगाता था कि किसे अतिरिक्त देखभाल चाहिए, यह देखकर कि पहले उनके इलाज पर कितना पैसा खर्च हुआ। क्योंकि ऐतिहासिक रूप से समान बीमारी वाले अश्वेत (Black) मरीज़ों पर कम पैसा खर्च हुआ था, system ने उन्हें समान रूप से बीमार श्वेत मरीज़ों की तुलना में कम risk score और कम अतिरिक्त देखभाल दी (यह शोधकर्ताओं ने 2019 में बताया)। ऐसा ही एक case आपने कक्षा X में पढ़ा था।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "AI ethics tries to prevent such harm by addressing five big concerns: bias, transparency, accountability, privacy and the overall impact on society. Ethics is not only the job of developers. Companies that deploy AI, governments that regulate it, researchers, and ordinary users like you all share responsibility for ethical use.",
+      "hi": "AI नैतिकता पाँच बड़ी चिंताओं – bias, पारदर्शिता, जवाबदेही, निजता और समाज पर समग्र प्रभाव – पर ध्यान देकर ऐसे नुकसान को रोकने की कोशिश करती है। नैतिकता केवल developers का काम नहीं है। AI लगाने वाली कंपनियाँ, उसे नियंत्रित करने वाली सरकारें, शोधकर्ता और आप जैसे साधारण users – सभी नैतिक उपयोग की ज़िम्मेदारी साझा करते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stakeholder",
+        "Ethical responsibility"
+       ],
+       "hi": [
+        "हितधारक (Stakeholder)",
+        "नैतिक ज़िम्मेदारी"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Developers and data scientists",
+         "Choose fair, representative data; test for bias; document how the model works"
+        ],
+        [
+         "Companies / organisations",
+         "Deploy responsibly, allow complaints, keep humans in charge of serious decisions"
+        ],
+        [
+         "Governments and regulators",
+         "Make laws and policies on privacy, safety and fairness; check compliance"
+        ],
+        [
+         "Researchers and civil society",
+         "Study harms, audit systems, speak up for affected groups"
+        ],
+        [
+         "Users (including students)",
+         "Protect personal data, check AI answers, report misuse, do not create harmful content"
+        ]
+       ],
+       "hi": [
+        [
+         "Developers और data scientists",
+         "निष्पक्ष, प्रतिनिधि data चुनना; bias की जाँच; model कैसे काम करता है इसका दस्तावेज़ बनाना"
+        ],
+        [
+         "कंपनियाँ / संगठन",
+         "ज़िम्मेदारी से लागू करना, शिकायत की सुविधा देना, गंभीर निर्णयों पर मनुष्य का नियंत्रण रखना"
+        ],
+        [
+         "सरकारें और नियामक",
+         "निजता, सुरक्षा और निष्पक्षता पर कानून व नीतियाँ बनाना; पालन की जाँच"
+        ],
+        [
+         "शोधकर्ता और नागरिक समाज",
+         "नुकसानों का अध्ययन, systems का audit, प्रभावित समूहों के लिए आवाज़ उठाना"
+        ],
+        [
+         "Users (विद्यार्थियों सहित)",
+         "निजी data की रक्षा, AI उत्तरों की जाँच, दुरुपयोग की रिपोर्ट, हानिकारक सामग्री न बनाना"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.2 The five pillars of AI ethics",
+    "hi": "8.2 AI नैतिकता के पाँच स्तंभ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Many organisations describe trustworthy AI using a few core principles. The CBSE unit uses five pillars: explainability, fairness, robustness, transparency and privacy. Think of them as five tests every AI system should pass before we trust it.",
+      "hi": "कई संगठन भरोसेमंद AI को कुछ मूल सिद्धांतों से परिभाषित करते हैं। CBSE इकाई पाँच स्तंभों का उपयोग करती है: explainability, fairness, robustness, transparency और privacy। इन्हें पाँच परीक्षाएँ समझिए जिन्हें हर AI system को हमारे भरोसे से पहले पास करना चाहिए।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "1. Explainability",
+       "hi": "1. Explainability (व्याख्येयता)"
+      },
+      "text": {
+       "en": "An AI system should be able to explain, in a way users understand, how it reached a decision or prediction. If a bank's AI rejects a loan, the applicant should be told the main reasons (for example, low income compared with the loan amount), not just 'rejected by the system'.",
+       "hi": "AI system को users की समझ में आने वाले तरीके से बताना चाहिए कि वह किसी निर्णय या अनुमान तक कैसे पहुँचा। यदि बैंक का AI loan अस्वीकार करे, तो आवेदक को मुख्य कारण बताए जाएँ (जैसे loan राशि की तुलना में कम आय), केवल 'system ने अस्वीकार किया' नहीं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "2. Fairness",
+       "hi": "2. Fairness (निष्पक्षता)"
+      },
+      "text": {
+       "en": "AI should treat individuals and groups equally and remove bias and discrimination, including bias based on sensitive attributes such as race, ethnicity, caste, religion, gender, sexual orientation, disability, region, language or socioeconomic class.",
+       "hi": "AI को व्यक्तियों और समूहों से समान व्यवहार करना चाहिए और bias व भेदभाव को हटाना चाहिए, जिसमें नस्ल, जातीयता, जाति, धर्म, लिंग, यौन अभिविन्यास, विकलांगता, क्षेत्र, भाषा या सामाजिक-आर्थिक वर्ग जैसे संवेदनशील गुणों (sensitive attributes) पर आधारित bias शामिल है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "3. Robustness",
+       "hi": "3. Robustness (मज़बूती)"
+      },
+      "text": {
+       "en": "A robust AI gives consistently accurate and reliable results under different conditions and over time, without unexpected errors. It should keep working with noisy input, new situations or attempts to trick it. The CCTV system confused by a cloud's shadow was not robust.",
+       "hi": "मज़बूत AI अलग-अलग परिस्थितियों में और समय के साथ लगातार सटीक और भरोसेमंद परिणाम देता है, बिना अप्रत्याशित गलतियों के। उसे शोर वाले input, नई परिस्थितियों या उसे धोखा देने के प्रयासों में भी काम करते रहना चाहिए। बादल की छाया से भ्रमित CCTV system मज़बूत नहीं था।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "4. Transparency",
+       "hi": "4. Transparency (पारदर्शिता)"
+      },
+      "text": {
+       "en": "Transparency means openness about how an AI system is designed, how it operates and what its implications are. It includes documenting the data used, the algorithm, its limits and how decisions are made, and telling people when they are dealing with an AI. Transparency does not always mean publishing all source code; it means giving enough information for scrutiny and trust.",
+       "hi": "पारदर्शिता का अर्थ है इस बारे में खुलापन कि AI system कैसे बना है, कैसे चलता है और उसके प्रभाव क्या हैं। इसमें प्रयुक्त data, algorithm, उसकी सीमाओं और निर्णय की प्रक्रिया का दस्तावेज़ बनाना, और लोगों को बताना कि वे AI से बात कर रहे हैं, शामिल है। पारदर्शिता का अर्थ हमेशा पूरा source code प्रकाशित करना नहीं है; इसका अर्थ है जाँच और भरोसे के लिए पर्याप्त जानकारी देना।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "5. Privacy",
+       "hi": "5. Privacy (निजता)"
+      },
+      "text": {
+       "en": "Privacy is the right of individuals to control their personal information and to be free from unwanted intrusion into their communications, activities and personal data. AI systems must collect only the data they need, with consent, keep it secure and use it only for the stated purpose.",
+       "hi": "निजता व्यक्तियों का अपनी निजी जानकारी पर नियंत्रण रखने और अपने संचार, गतिविधियों और निजी data में अवांछित दखल से मुक्त रहने का अधिकार है। AI systems को केवल ज़रूरी data, सहमति से, लेना चाहिए, उसे सुरक्षित रखना चाहिए और केवल बताए गए उद्देश्य के लिए उपयोग करना चाहिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Two more principles appear in almost every guideline and connect the pillars together:",
+      "hi": "दो और सिद्धांत लगभग हर दिशानिर्देश में आते हैं और स्तंभों को जोड़ते हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Accountability: a human person or organisation must be answerable for what an AI system does. 'The computer did it' is never an acceptable excuse; there must be a way to complain, correct and compensate.",
+       "Safety and human values: AI must not cause physical, mental or social harm, and it should support human dignity, autonomy and well-being. Humans should stay 'in the loop' for serious decisions."
+      ],
+      "hi": [
+       "जवाबदेही (Accountability): AI system जो करता है उसके लिए किसी व्यक्ति या संगठन को उत्तरदायी होना चाहिए। 'कंप्यूटर ने किया' कभी स्वीकार्य बहाना नहीं; शिकायत, सुधार और मुआवज़े का रास्ता होना चाहिए।",
+       "सुरक्षा और मानवीय मूल्य: AI को शारीरिक, मानसिक या सामाजिक नुकसान नहीं पहुँचाना चाहिए, और उसे मानवीय गरिमा, स्वायत्तता और कल्याण का समर्थन करना चाहिए। गंभीर निर्णयों में मनुष्य 'in the loop' (शामिल) रहें।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Pillar",
+        "Key question",
+        "Example of failure"
+       ],
+       "hi": [
+        "स्तंभ",
+        "मुख्य प्रश्न",
+        "विफलता का उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Explainability",
+         "Can the system tell us why?",
+         "An exam-result AI lowers marks but nobody can say why"
+        ],
+        [
+         "Fairness",
+         "Does it treat all groups equally?",
+         "A loan app rejects more applicants from one district for no valid reason"
+        ],
+        [
+         "Robustness",
+         "Does it work reliably in all conditions?",
+         "A voice assistant fails for speakers with a regional accent"
+        ],
+        [
+         "Transparency",
+         "Do we know how it was built and that it is AI?",
+         "A 'customer-care executive' turns out to be a bot that never said so"
+        ],
+        [
+         "Privacy",
+         "Is personal data protected and used with consent?",
+         "A free photo-editing app secretly uploads your contacts"
+        ]
+       ],
+       "hi": [
+        [
+         "Explainability",
+         "क्या system बता सकता है कि क्यों?",
+         "परीक्षा-परिणाम AI अंक घटाता है पर कोई नहीं बता पाता क्यों"
+        ],
+        [
+         "Fairness",
+         "क्या यह सभी समूहों से समान व्यवहार करता है?",
+         "Loan app बिना वैध कारण एक ज़िले के अधिक आवेदकों को अस्वीकार करता है"
+        ],
+        [
+         "Robustness",
+         "क्या यह हर परिस्थिति में भरोसेमंद है?",
+         "Voice assistant क्षेत्रीय लहजे वाले वक्ताओं के लिए विफल होता है"
+        ],
+        [
+         "Transparency",
+         "क्या हमें पता है कि यह कैसे बना और यह AI है?",
+         "'Customer-care executive' असल में bot निकलता है जिसने कभी बताया नहीं"
+        ],
+        [
+         "Privacy",
+         "क्या निजी data सुरक्षित और सहमति से उपयोग होता है?",
+         "एक मुफ़्त photo-editing app चुपके से आपके contacts upload करता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember the five pillars with 'FERTP' – Fairness, Explainability, Robustness, Transparency, Privacy – and add Accountability as the glue that holds them together.",
+      "hi": "पाँच स्तंभ 'FERTP' से याद रखें – Fairness, Explainability, Robustness, Transparency, Privacy – और Accountability को वह गोंद मानें जो इन्हें जोड़े रखता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.3 Bias, bias awareness and AI bias",
+    "hi": "8.3 Bias, bias जागरूकता और AI bias"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Bias",
+       "hi": "Bias (पूर्वाग्रह)"
+      },
+      "text": {
+       "en": "Bias is a preference or tendency for or against something or someone, often formed without fairly considering all the relevant information.",
+       "hi": "Bias किसी चीज़ या व्यक्ति के पक्ष या विपक्ष में झुकाव या प्रवृत्ति है, जो अक्सर सभी प्रासंगिक जानकारी पर निष्पक्ष विचार किए बिना बनती है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "AI bias",
+       "hi": "AI bias"
+      },
+      "text": {
+       "en": "AI bias (also called machine-learning bias or algorithmic bias) happens when an AI system produces results that reflect and repeat human or social biases, including historical and present-day inequality, leading to unfair or discriminatory outcomes.",
+       "hi": "AI bias (जिसे machine-learning bias या algorithmic bias भी कहते हैं) तब होता है जब AI system ऐसे परिणाम दे जो मानवीय या सामाजिक bias – ऐतिहासिक और वर्तमान असमानता सहित – को दर्शाएँ और दोहराएँ, जिससे अनुचित या भेदभावपूर्ण परिणाम निकलें।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Bias awareness",
+       "hi": "Bias जागरूकता (Bias awareness)"
+      },
+      "text": {
+       "en": "Bias awareness means recognising that an AI system may carry unfair preferences because of its training data, its rules or its underlying design – and checking for them actively instead of assuming the machine is neutral.",
+       "hi": "Bias जागरूकता का अर्थ है यह पहचानना कि AI system अपने training data, नियमों या मूल design के कारण अनुचित झुकाव रख सकता है – और यह मानने के बजाय कि मशीन तटस्थ है, सक्रिय रूप से उनकी जाँच करना।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A machine has no opinions of its own, so where does bias come from? It learns from data created by people, and it is designed by people. If the past was unfair, a model that copies the past will also be unfair – and it will be unfair quickly, at huge scale, and in a way that looks 'objective'. That is why AI bias can reinforce social inequalities.",
+      "hi": "मशीन की अपनी कोई राय नहीं होती, तो bias कहाँ से आता है? यह लोगों के बनाए data से सीखती है और इसे लोग design करते हैं। यदि अतीत अनुचित था, तो अतीत की नकल करने वाला model भी अनुचित होगा – और वह तेज़ी से, बहुत बड़े पैमाने पर और 'वस्तुनिष्ठ' दिखने वाले ढंग से अनुचित होगा। इसीलिए AI bias सामाजिक असमानताओं को और मज़बूत कर सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Unplugged activity: 'Draw a scientist'. Aim: discover our own hidden biases.",
+       "hi": "बिना-कंप्यूटर गतिविधि: 'एक वैज्ञानिक का चित्र बनाइए'। उद्देश्य: अपने छिपे bias पहचानना।"
+      },
+      "a": {
+       "en": "What you need: paper and pencil for each student; 5 minutes.\nWhat to do: everyone quickly draws 'a scientist' and 'a nurse' without discussing. Then pin all drawings on the board and count: how many scientists are men/women? How many wear a lab coat and glasses? How many nurses are women?\nWhat you observe: most classes draw mostly male scientists and female nurses, even though India has many women scientists (for example at ISRO) and male nurses.\nWhat it teaches: these patterns come from what we have seen in books, films and ads. If an AI is trained on millions of such pictures, it learns the same stereotype. Bias awareness starts with noticing our own.",
+       "hi": "क्या चाहिए: हर विद्यार्थी के लिए काग़ज़ और पेंसिल; 5 मिनट।\nक्या करें: बिना चर्चा के सभी जल्दी से 'एक वैज्ञानिक' और 'एक nurse' का चित्र बनाएँ। फिर सभी चित्र बोर्ड पर लगाकर गिनें: कितने वैज्ञानिक पुरुष/महिला हैं? कितनों ने lab coat और चश्मा पहना है? कितनी nurses महिलाएँ हैं?\nक्या दिखता है: अधिकतर कक्षाएँ ज़्यादातर पुरुष वैज्ञानिक और महिला nurses बनाती हैं, जबकि भारत में कई महिला वैज्ञानिक (जैसे ISRO में) और पुरुष nurses हैं।\nइससे क्या सीखते हैं: ये patterns किताबों, फ़िल्मों और विज्ञापनों में देखी चीज़ों से आते हैं। ऐसी लाखों तस्वीरों पर प्रशिक्षित AI भी वही रूढ़ि (stereotype) सीखता है। Bias जागरूकता अपने bias को पहचानने से शुरू होती है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.4 Sources and types of bias in AI",
+    "hi": "8.4 AI में bias के स्रोत और प्रकार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Bias can enter at every stage of the AI project cycle – when the problem is framed, when data is collected and labelled, when the model is designed and when it is used. The CBSE unit names three main sources.",
+      "hi": "Bias AI project cycle के हर चरण में आ सकता है – समस्या तय करते समय, data इकट्ठा और label करते समय, model design करते समय और उपयोग के समय। CBSE इकाई तीन मुख्य स्रोत बताती है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "1. Training data bias",
+       "hi": "1. Training data bias"
+      },
+      "text": {
+       "en": "When some groups are over-represented or under-represented in the training data, the model works well for the majority and poorly for others. Example: a face-recognition model trained mostly on lighter-skinned faces makes many more errors on darker-skinned people. Indian example: a speech model trained mostly on urban English speakers may misunderstand rural Hindi or Assamese speakers.",
+       "hi": "जब training data में कुछ समूह ज़रूरत से अधिक या कम हों, तो model बहुसंख्यक के लिए अच्छा और बाकी के लिए खराब काम करता है। उदाहरण: अधिकतर हल्के रंग के चेहरों पर प्रशिक्षित face-recognition model गहरे रंग वाले लोगों पर कहीं अधिक गलतियाँ करता है। भारतीय उदाहरण: अधिकतर शहरी अंग्रेज़ी बोलने वालों पर प्रशिक्षित speech model ग्रामीण हिंदी या असमिया वक्ताओं को गलत समझ सकता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "2. Algorithmic bias",
+       "hi": "2. Algorithmic bias"
+      },
+      "text": {
+       "en": "When flaws in the data or in the programming – such as a developer giving unfair weight to certain factors – produce unfair results. A common cause is a proxy: a harmless-looking feature that secretly stands for a sensitive one. For example, PIN code, surname, income or vocabulary can act as a proxy for caste, religion, race or gender even if those columns were removed.",
+       "hi": "जब data या programming की खामियाँ – जैसे developer का कुछ कारकों को अनुचित महत्व देना – अनुचित परिणाम दें। इसका आम कारण proxy है: हानिरहित दिखने वाला feature जो चुपके से किसी संवेदनशील गुण का प्रतिनिधित्व करता है। जैसे, PIN code, उपनाम, आय या शब्दावली जाति, धर्म, नस्ल या लिंग का proxy बन सकते हैं, भले ही वे columns हटा दिए गए हों।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "3. Cognitive (human) bias",
+       "hi": "3. Cognitive (मानवीय) bias"
+      },
+      "text": {
+       "en": "The developers' own experiences and preferences shape which data they choose and how they weight it, often without realising it. Example: a team that only considers data from one country, one city or one language and assumes it represents everyone.",
+       "hi": "Developers के अपने अनुभव और पसंद यह तय करते हैं कि वे कौन-सा data चुनें और उसे कितना महत्व दें, अक्सर अनजाने में। उदाहरण: एक टीम जो केवल एक देश, एक शहर या एक भाषा का data लेती है और मान लेती है कि वह सबका प्रतिनिधित्व करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Researchers also use more specific names for types of bias. Knowing them helps you spot where the problem started:",
+      "hi": "शोधकर्ता bias के प्रकारों के लिए अधिक विशिष्ट नाम भी इस्तेमाल करते हैं। इन्हें जानने से पता चलता है कि समस्या कहाँ से शुरू हुई:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Meaning",
+        "Example"
+       ],
+       "hi": [
+        "प्रकार",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Historical bias",
+         "Data correctly records a past that was itself unfair",
+         "Past hiring data where few women were promoted teaches a model to prefer men"
+        ],
+        [
+         "Representation (sampling) bias",
+         "Some groups are missing or too few in the sample",
+         "A skin-disease app trained mostly on light skin photos"
+        ],
+        [
+         "Measurement bias",
+         "The thing measured is a poor stand-in for what we really want",
+         "Using past healthcare spending as a measure of how sick someone is"
+        ],
+        [
+         "Label bias",
+         "Human labellers attach unfair or inconsistent labels",
+         "Labellers marking Hinglish comments as 'toxic' more often than English ones"
+        ],
+        [
+         "Confirmation bias",
+         "People look only for results that match what they already believe",
+         "A team stops testing once the model 'looks right' to them"
+        ],
+        [
+         "Automation bias",
+         "People trust the machine's answer too much",
+         "A clerk accepts an AI's wrong document check without looking"
+        ]
+       ],
+       "hi": [
+        [
+         "Historical bias",
+         "Data एक ऐसे अतीत को सही दर्ज करता है जो स्वयं अनुचित था",
+         "पुराना hiring data जिसमें कम महिलाओं को पदोन्नति मिली, model को पुरुषों को प्राथमिकता देना सिखाता है"
+        ],
+        [
+         "Representation (sampling) bias",
+         "Sample में कुछ समूह गायब या बहुत कम हैं",
+         "अधिकतर हल्की त्वचा की तस्वीरों पर प्रशिक्षित त्वचा-रोग app"
+        ],
+        [
+         "Measurement bias",
+         "जो मापा गया वह असली चीज़ का कमज़ोर विकल्प है",
+         "किसी की बीमारी मापने के लिए पिछला स्वास्थ्य खर्च इस्तेमाल करना"
+        ],
+        [
+         "Label bias",
+         "मानव labellers अनुचित या असंगत labels लगाते हैं",
+         "Labellers द्वारा हिंग्लिश टिप्पणियों को अंग्रेज़ी की तुलना में अधिक बार 'toxic' चिह्नित करना"
+        ],
+        [
+         "Confirmation bias",
+         "लोग केवल वही परिणाम खोजते हैं जो उनकी पहले की मान्यता से मेल खाएँ",
+         "Model उन्हें 'सही दिखते' ही टीम परीक्षण बंद कर देती है"
+        ],
+        [
+         "Automation bias",
+         "लोग मशीन के उत्तर पर बहुत अधिक भरोसा करते हैं",
+         "क्लर्क बिना देखे AI की गलत दस्तावेज़-जाँच मान लेता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Bias is not only in the data. It can come from the question we ask, the data we collect, the labels we attach, the algorithm we design and the way people use the result.",
+      "hi": "Bias केवल data में नहीं होता। यह हमारे पूछे प्रश्न, इकट्ठा किए data, लगाए labels, design किए algorithm और परिणाम के उपयोग के तरीके से भी आ सकता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.5 Real-life examples of AI bias",
+    "hi": "8.5 AI bias के वास्तविक उदाहरण"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Healthcare: when women and minority groups are under-represented in medical data, predictive models can be less accurate for them. Studies of computer-aided diagnosis (CAD) systems have reported lower accuracy for Black patients than for white patients. The US care-allocation algorithm described in section 8.1 is another example.",
+       "Online advertising: a study by researchers at Carnegie Mellon University (2015) found that Google's ad system showed ads for high-paying jobs to profiles set as men more often than to profiles set as women.",
+       "Image generation: researchers testing the image generator Midjourney found that when asked for pictures of people in specialised professions, it showed older people almost always as men, reinforcing gender stereotypes about who holds senior roles.",
+       "Hiring: a large technology company reportedly stopped using an experimental CV-screening tool after finding that it marked down CVs that included the word 'women's' (as in 'women's chess club'), because it had learnt from ten years of mostly male hiring.",
+       "Face recognition: independent tests (for example the 'Gender Shades' study, 2018) found commercial face-analysis systems were far less accurate for darker-skinned women than for lighter-skinned men.",
+       "Language tools: translation systems have been seen turning gender-neutral sentences into stereotypes, e.g. translating a neutral 'they are a doctor' as 'he is a doctor' and 'they are a nurse' as 'she is a nurse'."
+      ],
+      "hi": [
+       "स्वास्थ्य: जब चिकित्सा data में महिलाएँ और अल्पसंख्यक समूह कम हों, तो predictive models उनके लिए कम सटीक हो सकते हैं। computer-aided diagnosis (CAD) systems के अध्ययनों में अश्वेत मरीज़ों के लिए श्वेत मरीज़ों की तुलना में कम सटीकता पाई गई। खंड 8.1 में वर्णित अमेरिकी देखभाल-आवंटन algorithm एक और उदाहरण है।",
+       "Online विज्ञापन: Carnegie Mellon University के शोधकर्ताओं के एक अध्ययन (2015) में पाया गया कि Google का ad system ऊँचे वेतन वाली नौकरियों के विज्ञापन पुरुष के रूप में सेट profiles को महिला profiles की तुलना में अधिक बार दिखाता था।",
+       "चित्र निर्माण: image generator Midjourney को परखने वाले शोधकर्ताओं ने पाया कि विशेष व्यवसायों के लोगों के चित्र माँगने पर यह बुज़ुर्ग लोगों को लगभग हमेशा पुरुष दिखाता था, जिससे वरिष्ठ पदों के बारे में लैंगिक रूढ़ियाँ मज़बूत होती थीं।",
+       "Hiring: एक बड़ी technology कंपनी ने कथित रूप से एक प्रायोगिक CV-screening tool का उपयोग बंद कर दिया जब पता चला कि वह 'women's' शब्द (जैसे 'women's chess club') वाले CVs के अंक घटाता था, क्योंकि उसने दस वर्षों की अधिकतर पुरुष भर्ती से सीखा था।",
+       "Face recognition: स्वतंत्र परीक्षणों (जैसे 'Gender Shades' अध्ययन, 2018) में पाया गया कि व्यावसायिक face-analysis systems गहरे रंग की महिलाओं के लिए हल्के रंग के पुरुषों की तुलना में बहुत कम सटीक थे।",
+       "भाषा tools: अनुवाद systems को लिंग-तटस्थ वाक्यों को रूढ़ियों में बदलते देखा गया है, जैसे तटस्थ 'they are a doctor' को 'he is a doctor' और 'they are a nurse' को 'she is a nurse' में बदलना।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Case study: Computer-aided diagnosis (CAD). A hospital installs an AI that reads chest X-rays. Doctors notice it misses more early disease in patients from one community. (a) What is the likely source of bias? (b) What harm can it cause? (c) What should the hospital do?",
+       "hi": "Case study: Computer-aided diagnosis (CAD)। एक अस्पताल छाती के X-ray पढ़ने वाला AI लगाता है। डॉक्टर देखते हैं कि यह एक समुदाय के मरीज़ों में शुरुआती बीमारी अधिक बार चूक जाता है। (a) bias का संभावित स्रोत क्या है? (b) इससे क्या नुकसान हो सकता है? (c) अस्पताल को क्या करना चाहिए?"
+      },
+      "a": {
+       "en": "(a) Most likely training data bias / representation bias – the model saw too few X-rays from that community (or images taken on different machines), so it learnt patterns that do not fit them well.\n(b) Late diagnosis, worse treatment outcomes, loss of trust in the hospital, and deeper health inequality for an already disadvantaged group.\n(c) Measure accuracy separately for each group; collect more diverse, consented data; retrain and re-test; keep a doctor reviewing every AI result (human in the loop); be transparent with patients; report the issue to the vendor and regulator; audit regularly.",
+       "hi": "(a) सबसे संभावित training data bias / representation bias – model ने उस समुदाय के बहुत कम X-ray देखे (या अलग machines से ली गई तस्वीरें), इसलिए उसने ऐसे patterns सीखे जो उन पर ठीक नहीं बैठते।\n(b) देर से निदान, इलाज के खराब परिणाम, अस्पताल पर भरोसा घटना, और पहले से वंचित समूह के लिए स्वास्थ्य असमानता गहराना।\n(c) हर समूह के लिए अलग से सटीकता मापें; अधिक विविध, सहमति वाला data इकट्ठा करें; पुनः प्रशिक्षण और पुनः परीक्षण; हर AI परिणाम की डॉक्टर समीक्षा करें (human in the loop); मरीज़ों के साथ पारदर्शी रहें; vendor और नियामक को समस्या बताएँ; नियमित audit करें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.6 Mitigating bias in AI systems",
+    "hi": "8.6 AI systems में bias कम करना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Why must we mitigate bias? Biased AI can deepen unfairness and discrimination (for example, a biased hiring algorithm can shut out whole groups year after year), it reduces public trust in technology, and it goes against the basic ethical principles of fairness and human dignity. Bias can rarely be removed completely, but it can be reduced a great deal with the following strategies.",
+      "hi": "Bias क्यों कम करना चाहिए? पक्षपाती AI अन्याय और भेदभाव को गहरा कर सकता है (जैसे पक्षपाती hiring algorithm साल-दर-साल पूरे समूहों को बाहर रख सकता है), यह technology पर जनता का भरोसा घटाता है, और निष्पक्षता व मानवीय गरिमा के मूल नैतिक सिद्धांतों के विरुद्ध है। Bias को पूरी तरह हटाना कठिन है, पर नीचे की रणनीतियों से इसे काफ़ी कम किया जा सकता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Strategy",
+        "What it means",
+        "Example"
+       ],
+       "hi": [
+        "रणनीति",
+        "इसका अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Use diverse, representative data",
+         "Train on examples from all relevant groups, regions, languages and situations",
+         "A voice assistant collects recordings from speakers of many Indian languages and accents"
+        ],
+        [
+         "Detect bias",
+         "Measure results separately for each group before and after deployment; use fairness tools and metrics",
+         "Compare a loan model's approval rate for men and women with similar incomes"
+        ],
+        [
+         "Use fair algorithms",
+         "Design or adjust the model so that fairness is part of its goal, and remove proxy features",
+         "Drop PIN code from a hiring model if it acts as a proxy for community"
+        ],
+        [
+         "Be transparent",
+         "Document data, design, limits and test results so others can spot and fix bias",
+         "Publish a 'model card' saying where the model works well and where it does not"
+        ],
+        [
+         "Build inclusive teams",
+         "Include people of different genders, regions, abilities and backgrounds who notice blind spots",
+         "A team with a visually impaired member catches that the app is unusable with a screen reader"
+        ],
+        [
+         "Conduct regular audits",
+         "Check the system again and again over time, including by independent auditors",
+         "A yearly external audit of an exam-proctoring AI"
+        ],
+        [
+         "Keep humans in the loop",
+         "Let people review, override and appeal important AI decisions",
+         "A rejected applicant can ask for a human review"
+        ]
+       ],
+       "hi": [
+        [
+         "विविध, प्रतिनिधि data",
+         "सभी प्रासंगिक समूहों, क्षेत्रों, भाषाओं और परिस्थितियों के उदाहरणों पर प्रशिक्षण",
+         "Voice assistant कई भारतीय भाषाओं और लहजों के वक्ताओं की recordings इकट्ठा करता है"
+        ],
+        [
+         "Bias पहचानना",
+         "Deployment से पहले और बाद हर समूह के परिणाम अलग से मापना; fairness tools और metrics",
+         "समान आय वाले पुरुषों और महिलाओं के लिए loan model की स्वीकृति दर की तुलना"
+        ],
+        [
+         "निष्पक्ष algorithms",
+         "Model को ऐसे design या समायोजित करना कि निष्पक्षता उसके लक्ष्य का हिस्सा हो, और proxy features हटाना",
+         "यदि PIN code समुदाय का proxy बने तो hiring model से उसे हटाना"
+        ],
+        [
+         "पारदर्शी रहना",
+         "Data, design, सीमाएँ और परीक्षण परिणामों का दस्तावेज़ ताकि दूसरे bias देखकर सुधार सकें",
+         "एक 'model card' प्रकाशित करना जो बताए कि model कहाँ अच्छा काम करता है और कहाँ नहीं"
+        ],
+        [
+         "समावेशी टीमें",
+         "अलग-अलग लिंग, क्षेत्र, क्षमता और पृष्ठभूमि के लोग शामिल करना जो अनदेखी कमियाँ पकड़ें",
+         "दृष्टिबाधित सदस्य वाली टीम पकड़ती है कि app screen reader के साथ उपयोग योग्य नहीं"
+        ],
+        [
+         "नियमित audit",
+         "समय के साथ बार-बार system की जाँच, स्वतंत्र auditors से भी",
+         "Exam-proctoring AI का वार्षिक बाहरी audit"
+        ],
+        [
+         "मनुष्य को शामिल रखना",
+         "महत्वपूर्ण AI निर्णयों की समीक्षा, उन्हें पलटने और अपील की सुविधा",
+         "अस्वीकृत आवेदक मानव समीक्षा माँग सकता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How do we 'detect' bias in practice? One simple check is to compare the selection rate (the fraction of each group that gets a positive result). A common rule of thumb, used in some hiring guidelines, is the 'four-fifths rule': if one group's selection rate is less than 80% of another group's, the system should be investigated. This is a warning sign, not proof of unfairness.",
+      "hi": "व्यवहार में bias कैसे 'पहचानें'? एक सरल जाँच है selection rate (हर समूह का वह अंश जिसे सकारात्मक परिणाम मिला) की तुलना। कुछ hiring दिशानिर्देशों में प्रयुक्त एक आम नियम 'four-fifths rule' है: यदि किसी समूह की selection rate दूसरे समूह की 80% से कम हो, तो system की जाँच होनी चाहिए। यह चेतावनी का संकेत है, अनुचितता का प्रमाण नहीं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Selection rate of a group = (number selected from the group) ÷ (total in the group)\nRatio = selection rate of group A ÷ selection rate of group B\nIf ratio < 0.8 → possible bias, investigate",
+      "hi": "किसी समूह की selection rate = (समूह से चुने गए) ÷ (समूह में कुल)\nअनुपात = समूह A की selection rate ÷ समूह B की selection rate\nयदि अनुपात < 0.8 → संभावित bias, जाँच करें"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Checking an AI shortlisting tool for bias: compare selection rates by group\nresults = [\n    (\"Girls\", \"selected\"), (\"Girls\", \"rejected\"), (\"Girls\", \"rejected\"),\n    (\"Girls\", \"rejected\"), (\"Girls\", \"selected\"), (\"Girls\", \"rejected\"),\n    (\"Boys\", \"selected\"), (\"Boys\", \"selected\"), (\"Boys\", \"rejected\"),\n    (\"Boys\", \"selected\"), (\"Boys\", \"selected\"), (\"Boys\", \"rejected\"),\n]\nrates = {}\nfor group in [\"Girls\", \"Boys\"]:\n    total = sum(1 for g, r in results if g == group)\n    chosen = sum(1 for g, r in results if g == group and r == \"selected\")\n    rates[group] = chosen / total\n    print(group, \": selected\", chosen, \"of\", total, \"=\", round(rates[group] * 100, 1), \"%\")\n\nratio = rates[\"Girls\"] / rates[\"Boys\"]\nprint(\"Ratio (Girls/Boys):\", round(ratio, 2))\nif ratio < 0.8:\n    print(\"Warning: possible bias - check the data and the model\")\nelse:\n    print(\"Selection rates look similar\")",
+      "hi": "# Checking an AI shortlisting tool for bias: compare selection rates by group\nresults = [\n    (\"Girls\", \"selected\"), (\"Girls\", \"rejected\"), (\"Girls\", \"rejected\"),\n    (\"Girls\", \"rejected\"), (\"Girls\", \"selected\"), (\"Girls\", \"rejected\"),\n    (\"Boys\", \"selected\"), (\"Boys\", \"selected\"), (\"Boys\", \"rejected\"),\n    (\"Boys\", \"selected\"), (\"Boys\", \"selected\"), (\"Boys\", \"rejected\"),\n]\nrates = {}\nfor group in [\"Girls\", \"Boys\"]:\n    total = sum(1 for g, r in results if g == group)\n    chosen = sum(1 for g, r in results if g == group and r == \"selected\")\n    rates[group] = chosen / total\n    print(group, \": selected\", chosen, \"of\", total, \"=\", round(rates[group] * 100, 1), \"%\")\n\nratio = rates[\"Girls\"] / rates[\"Boys\"]\nprint(\"Ratio (Girls/Boys):\", round(ratio, 2))\nif ratio < 0.8:\n    print(\"Warning: possible bias - check the data and the model\")\nelse:\n    print(\"Selection rates look similar\")"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nGirls : selected 2 of 6 = 33.3 %\nBoys : selected 4 of 6 = 66.7 %\nRatio (Girls/Boys): 0.5\nWarning: possible bias - check the data and the model",
+      "hi": "Output:\nGirls : selected 2 of 6 = 33.3 %\nBoys : selected 4 of 6 = 66.7 %\nRatio (Girls/Boys): 0.5\nWarning: possible bias - check the data and the model"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A scholarship-shortlisting AI selected 45 of 150 rural applicants and 90 of 200 urban applicants. Use the four-fifths rule to check for possible bias.",
+       "hi": "एक छात्रवृत्ति-shortlisting AI ने 150 ग्रामीण आवेदकों में से 45 और 200 शहरी आवेदकों में से 90 चुने। four-fifths rule से संभावित bias की जाँच कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: rural selection rate = 45 ÷ 150 = 0.30 (30%).\nStep 2: urban selection rate = 90 ÷ 200 = 0.45 (45%).\nStep 3: ratio = 0.30 ÷ 0.45 ≈ 0.67.\nStep 4: 0.67 < 0.8, so the rule flags possible bias.\nStep 5: next, investigate – are rural applicants' marks being compared fairly? Is the model using features like school type or internet access that act as proxies? A human committee should review before final decisions.",
+       "hi": "चरण 1: ग्रामीण selection rate = 45 ÷ 150 = 0.30 (30%)।\nचरण 2: शहरी selection rate = 90 ÷ 200 = 0.45 (45%)।\nचरण 3: अनुपात = 0.30 ÷ 0.45 ≈ 0.67।\nचरण 4: 0.67 < 0.8, इसलिए नियम संभावित bias दर्शाता है।\nचरण 5: आगे जाँच करें – क्या ग्रामीण आवेदकों के अंकों की तुलना निष्पक्ष है? क्या model स्कूल का प्रकार या internet सुविधा जैसे features इस्तेमाल कर रहा है जो proxy बनते हैं? अंतिम निर्णय से पहले एक मानव समिति समीक्षा करे।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Removing a sensitive column (like gender) is not enough. Other columns can still carry the same information (proxies). Always test the results group by group.",
+      "hi": "किसी संवेदनशील column (जैसे लिंग) को हटाना पर्याप्त नहीं। दूसरे columns वही जानकारी रख सकते हैं (proxies)। परिणामों की हमेशा समूह-दर-समूह जाँच करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.7 Privacy and data protection in the age of AI",
+    "hi": "8.7 AI के युग में निजता और data सुरक्षा"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI systems are hungry for data – photos, voice, location, search history, health records. This creates major privacy concerns: data collected without clear consent, data used for a purpose the person never agreed to, data leaks and hacking, profiling that reveals sensitive facts (for example, guessing health conditions from shopping), constant surveillance through cameras, and deepfakes made from someone's photos or voice.",
+      "hi": "AI systems को बहुत data चाहिए – फ़ोटो, आवाज़, location, search history, स्वास्थ्य records। इससे निजता की बड़ी चिंताएँ पैदा होती हैं: स्पष्ट सहमति के बिना data लेना, ऐसे उद्देश्य के लिए data का उपयोग जिस पर व्यक्ति ने कभी सहमति नहीं दी, data leak और hacking, ऐसी profiling जो संवेदनशील तथ्य उजागर करे (जैसे खरीदारी से स्वास्थ्य स्थिति का अनुमान), cameras से लगातार निगरानी, और किसी की फ़ोटो या आवाज़ से बने deepfakes।"
+     }
+    },
+    {
+     "p": {
+      "en": "Good data-protection practice, which India's Digital Personal Data Protection Act, 2023 also follows in spirit, includes:",
+      "hi": "अच्छे data-सुरक्षा व्यवहार में, जिसकी भावना भारत का Digital Personal Data Protection Act, 2023 भी अपनाता है, ये शामिल हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Consent: ask clearly, in simple language, before collecting personal data.",
+       "Purpose limitation: use data only for the purpose stated.",
+       "Data minimisation: collect only what is truly needed.",
+       "Security: store data safely (encryption, access control).",
+       "Rights of the person: to see, correct and erase their data, and to complain.",
+       "Anonymisation: remove names and identifiers before using data for training where possible."
+      ],
+      "hi": [
+       "सहमति: निजी data लेने से पहले सरल भाषा में स्पष्ट रूप से पूछना।",
+       "उद्देश्य सीमा: data का उपयोग केवल बताए गए उद्देश्य के लिए।",
+       "Data न्यूनीकरण: केवल वास्तव में ज़रूरी data लेना।",
+       "सुरक्षा: data को सुरक्षित रखना (encryption, access control)।",
+       "व्यक्ति के अधिकार: अपना data देखना, सुधारना और मिटवाना, और शिकायत करना।",
+       "Anonymisation: जहाँ संभव हो, प्रशिक्षण से पहले नाम और पहचान-चिह्न हटाना।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Your own privacy checklist: do not type your full name, address, school, phone number, Aadhaar, passwords or OTPs into chatbots or unknown apps; check app permissions (does a torch app need your contacts?); think before uploading photos of yourself or friends; if you see a deepfake or are harassed online, tell a trusted adult and report it (in India, cybercrime.gov.in or helpline 1930).",
+      "hi": "आपकी अपनी निजता सूची: chatbots या अनजान apps में अपना पूरा नाम, पता, स्कूल, फ़ोन नंबर, Aadhaar, password या OTP न डालें; app permissions जाँचें (क्या torch app को आपके contacts चाहिए?); अपनी या दोस्तों की फ़ोटो upload करने से पहले सोचें; deepfake दिखे या online परेशान किया जाए तो किसी भरोसेमंद वयस्क को बताएँ और रिपोर्ट करें (भारत में cybercrime.gov.in या helpline 1930)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.8 Developing AI policies",
+    "hi": "8.8 AI नीतियाँ बनाना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "AI policy",
+       "hi": "AI नीति (AI policy)"
+      },
+      "text": {
+       "en": "An AI policy is a set of rules, guidelines and laws made by a government or organisation to ensure AI is developed and used responsibly, safely and ethically, while still encouraging innovation and public trust.",
+       "hi": "AI नीति किसी सरकार या संगठन द्वारा बनाए नियमों, दिशानिर्देशों और कानूनों का समूह है, जो यह सुनिश्चित करे कि AI ज़िम्मेदारी, सुरक्षा और नैतिकता से विकसित और उपयोग हो, और साथ ही नवाचार व जनता का भरोसा भी बढ़े।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Core principles of a good AI policy: treat people fairly, respect human rights, be honest about how AI works, keep it safe and secure, and hold someone accountable. Key areas a policy covers: protecting personal information, preventing unfair bias, ensuring safety (especially in health, transport and policing), and giving people the right to question and appeal AI decisions.",
+      "hi": "अच्छी AI नीति के मूल सिद्धांत: लोगों से निष्पक्ष व्यवहार, मानवाधिकारों का सम्मान, AI कैसे काम करता है इस बारे में ईमानदारी, उसे सुरक्षित रखना, और किसी को जवाबदेह बनाना। नीति जिन मुख्य क्षेत्रों को शामिल करती है: निजी जानकारी की रक्षा, अनुचित bias रोकना, सुरक्षा सुनिश्चित करना (विशेषकर स्वास्थ्य, परिवहन और पुलिस में), और लोगों को AI निर्णयों पर प्रश्न उठाने व अपील का अधिकार देना।"
+     }
+    },
+    {
+     "p": {
+      "en": "Steps in developing an AI policy:",
+      "hi": "AI नीति बनाने के चरण:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Identify the purpose and scope – which AI uses does it cover (e.g. AI in schools, AI in a bank)?",
+       "Consult stakeholders – government, industry leaders, scientists, teachers, community groups and the public, including those most likely to be affected.",
+       "Do a risk assessment – list what could go wrong before deployment (bias, privacy leaks, safety failures, misuse) and how serious each risk is. Higher-risk uses get stricter rules.",
+       "Write clear rules – what is allowed, what needs human oversight, what is banned, and who is responsible.",
+       "Set up monitoring and complaints – audits, reporting channels and penalties.",
+       "Review and update regularly – AI changes fast, so policy must keep up."
+      ],
+      "hi": [
+       "उद्देश्य और दायरा तय करें – यह किन AI उपयोगों पर लागू है (जैसे स्कूलों में AI, बैंक में AI)?",
+       "हितधारकों से परामर्श – सरकार, उद्योग प्रमुख, वैज्ञानिक, शिक्षक, सामुदायिक समूह और जनता, विशेषकर वे जो सबसे अधिक प्रभावित हो सकते हैं।",
+       "जोखिम आकलन – deployment से पहले क्या गलत हो सकता है (bias, निजता leak, सुरक्षा विफलता, दुरुपयोग) और हर जोखिम कितना गंभीर है, यह सूचीबद्ध करें। अधिक जोखिम वाले उपयोगों पर कड़े नियम।",
+       "स्पष्ट नियम लिखें – क्या अनुमत है, किसमें मानव निगरानी चाहिए, क्या प्रतिबंधित है, और ज़िम्मेदार कौन है।",
+       "निगरानी और शिकायत व्यवस्था – audits, रिपोर्टिंग channels और दंड।",
+       "नियमित समीक्षा और अद्यतन – AI तेज़ी से बदलता है, इसलिए नीति को भी साथ चलना होगा।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Some important real-world frameworks (for awareness; details change over time):",
+      "hi": "कुछ महत्वपूर्ण वास्तविक frameworks (जानकारी के लिए; विवरण समय के साथ बदलते हैं):"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "India: NITI Aayog's 'Responsible AI for All' papers (2021) set principles such as safety, equality, inclusivity, privacy, transparency, accountability and protection of human values; the Digital Personal Data Protection Act, 2023 protects personal data; the IndiaAI Mission (approved 2024) supports AI development including safe and trusted AI.",
+       "UNESCO's Recommendation on the Ethics of AI (2021), adopted by its member countries including India.",
+       "The OECD AI Principles (2019) on trustworthy AI.",
+       "The European Union's AI Act (adopted 2024), which sorts AI uses by risk level and bans some unacceptable uses."
+      ],
+      "hi": [
+       "भारत: NITI Aayog के 'Responsible AI for All' पत्र (2021) सुरक्षा, समानता, समावेशिता, निजता, पारदर्शिता, जवाबदेही और मानवीय मूल्यों की रक्षा जैसे सिद्धांत तय करते हैं; Digital Personal Data Protection Act, 2023 निजी data की रक्षा करता है; IndiaAI Mission (2024 में स्वीकृत) सुरक्षित और भरोसेमंद AI सहित AI विकास का समर्थन करता है।",
+       "UNESCO की AI नैतिकता पर अनुशंसा (2021), जिसे भारत सहित उसके सदस्य देशों ने अपनाया।",
+       "विश्वसनीय AI पर OECD AI Principles (2019)।",
+       "यूरोपीय संघ का AI Act (2024 में पारित), जो AI उपयोगों को जोखिम स्तर के अनुसार बाँटता है और कुछ अस्वीकार्य उपयोगों पर प्रतिबंध लगाता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Challenges for policymakers: AI technology changes faster than laws; it is hard to regulate without stopping useful innovation; AI systems cross national borders; many models are 'black boxes' that are hard to inspect; there is no single global agreement on values; fixing accountability is difficult when many companies build parts of one system; and regulators need technical experts.",
+      "hi": "नीति-निर्माताओं की चुनौतियाँ: AI technology कानूनों से तेज़ बदलती है; उपयोगी नवाचार रोके बिना नियंत्रण कठिन है; AI systems राष्ट्रीय सीमाएँ पार करते हैं; कई models 'black box' हैं जिनकी जाँच कठिन है; मूल्यों पर कोई एक वैश्विक सहमति नहीं; जब कई कंपनियाँ एक system के हिस्से बनाएँ तो जवाबदेही तय करना कठिन है; और नियामकों को तकनीकी विशेषज्ञ चाहिए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity: Draft an 'AI use policy' for your school (groups of 4, one period).",
+       "hi": "गतिविधि: अपने स्कूल के लिए 'AI उपयोग नीति' का मसौदा बनाइए (4 के समूह, एक period)।"
+      },
+      "a": {
+       "en": "Aim: practise the policy steps on a real situation.\nWhat to do:\n1. Scope: students and teachers using AI chatbots for homework and AI tools for attendance.\n2. Stakeholders: interview (or role-play) a student, a teacher, a parent and the principal.\n3. Risks: copying answers, wrong facts, sharing personal data, unfair face-recognition attendance.\n4. Rules, e.g. 'AI may be used to explain topics but submitted work must be your own and say if AI helped'; 'No personal data in chatbots'; 'Attendance AI must have a manual correction option'.\n5. Monitoring: a teacher-student committee reviews complaints each term.\nWhat it teaches: good policy balances benefits and risks and listens to everyone affected.",
+       "hi": "उद्देश्य: वास्तविक स्थिति पर नीति के चरणों का अभ्यास।\nक्या करें:\n1. दायरा: विद्यार्थी और शिक्षक गृहकार्य के लिए AI chatbots और उपस्थिति के लिए AI tools का उपयोग।\n2. हितधारक: एक विद्यार्थी, शिक्षक, अभिभावक और प्रधानाचार्य का साक्षात्कार (या role-play)।\n3. जोखिम: उत्तरों की नकल, गलत तथ्य, निजी data साझा करना, अनुचित face-recognition उपस्थिति।\n4. नियम, जैसे 'AI से विषय समझ सकते हैं पर जमा कार्य आपका अपना हो और बताएँ कि AI ने मदद की'; 'chatbots में निजी data नहीं'; 'उपस्थिति AI में manual सुधार का विकल्प हो'।\n5. निगरानी: शिक्षक-विद्यार्थी समिति हर term शिकायतों की समीक्षा करे।\nइससे क्या सीखते हैं: अच्छी नीति लाभ और जोखिम में संतुलन बनाती है और सभी प्रभावितों की सुनती है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.9 Ethical dilemmas and the Moral Machine",
+    "hi": "8.9 नैतिक दुविधाएँ और Moral Machine"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Ethical dilemma",
+       "hi": "नैतिक दुविधा (Ethical dilemma)"
+      },
+      "text": {
+       "en": "An ethical dilemma is a situation in which there is no clearly right or wrong choice: every available option has both good and bad consequences, or two moral principles conflict.",
+       "hi": "नैतिक दुविधा ऐसी स्थिति है जिसमें कोई स्पष्ट सही या गलत विकल्प नहीं होता: हर उपलब्ध विकल्प के अच्छे और बुरे दोनों परिणाम होते हैं, या दो नैतिक सिद्धांत आपस में टकराते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "AI ethical dilemma",
+       "hi": "AI नैतिक दुविधा"
+      },
+      "text": {
+       "en": "An AI ethical dilemma is a conflict between moral principles or values that arises while designing, developing, deploying or using AI – for example privacy versus safety, accuracy versus fairness, or helpfulness versus honesty.",
+       "hi": "AI नैतिक दुविधा, AI के design, विकास, deployment या उपयोग के दौरान नैतिक सिद्धांतों या मूल्यों के बीच टकराव है – जैसे निजता बनाम सुरक्षा, सटीकता बनाम निष्पक्षता, या मददगार होना बनाम ईमानदारी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The best-known example involves self-driving (autonomous) cars. Imagine the brakes fail. The car can stay on course and hit pedestrians crossing the road, or swerve into a wall and endanger its own passengers. A human driver reacts in a split second; a self-driving car's choice is effectively decided in advance by its programmers. Whose safety should the code prioritise? Should it matter how many people are on each side, their age, or whether someone was crossing against the signal? This is a modern version of the philosopher's 'trolley problem'.",
+      "hi": "सबसे प्रसिद्ध उदाहरण self-driving (स्वचालित) कारों का है। कल्पना कीजिए brakes फ़ेल हो गए। कार सीधी चलकर सड़क पार कर रहे पैदल यात्रियों को टक्कर मार सकती है, या मुड़कर दीवार से टकराकर अपने ही यात्रियों को खतरे में डाल सकती है। मानव चालक पल भर में प्रतिक्रिया करता है; self-driving कार का निर्णय वास्तव में उसके programmers पहले से तय करते हैं। code को किसकी सुरक्षा को प्राथमिकता देनी चाहिए? क्या यह मायने रखे कि हर तरफ़ कितने लोग हैं, उनकी उम्र क्या है, या कोई signal तोड़कर पार कर रहा था? यह दार्शनिकों की 'trolley problem' का आधुनिक रूप है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Moral Machine",
+       "hi": "Moral Machine"
+      },
+      "text": {
+       "en": "The Moral Machine is an online platform created by researchers at the MIT Media Lab that presents such self-driving-car dilemmas and asks visitors to choose what the car should do. It collected millions of decisions from people in many countries, and the results (published in 2018) showed that moral preferences differ between cultures.",
+       "hi": "Moral Machine, MIT Media Lab के शोधकर्ताओं का बनाया online platform है जो self-driving कार की ऐसी दुविधाएँ प्रस्तुत करता है और आगंतुकों से पूछता है कि कार को क्या करना चाहिए। इसने कई देशों के लोगों से लाखों निर्णय इकट्ठा किए, और परिणामों (2018 में प्रकाशित) ने दिखाया कि नैतिक पसंद संस्कृतियों के बीच अलग होती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Screen activity: Play the Moral Machine (with teacher guidance).",
+       "hi": "Screen गतिविधि: Moral Machine खेलिए (शिक्षक के मार्गदर्शन में)।"
+      },
+      "a": {
+       "en": "Aim: experience how hard it is to program moral choices.\nWhat you need: a computer or phone with internet; the website moralmachine.net (no sign-up needed to judge scenarios); 15–20 minutes. The scenarios are drawings, but if any student finds them upsetting, they may do the paper version instead.\nWhat to do:\n1. Click 'Start Judging' and go through the scenarios, choosing one of the two outcomes each time.\n2. At the end, look at the summary of your preferences (e.g. saving more lives, protecting passengers, upholding the law).\n3. In groups, compare summaries and discuss: Did you all agree? Which factor mattered most to you? Should a car ever consider age or gender? Who should decide – engineers, governments or the public?\nWhat you observe: classmates often disagree, and people change their minds when details change.\nWhat it teaches: there is no single 'correct' answer that everyone accepts, so such rules must be decided openly with public input and law, not secretly inside code.",
+       "hi": "उद्देश्य: अनुभव करना कि नैतिक विकल्पों को program करना कितना कठिन है।\nक्या चाहिए: internet वाला कंप्यूटर या फ़ोन; website moralmachine.net (परिदृश्यों पर निर्णय के लिए sign-up ज़रूरी नहीं); 15–20 मिनट। परिदृश्य रेखाचित्र हैं, पर किसी विद्यार्थी को असहज लगे तो वह काग़ज़ वाला रूप कर सकता है।\nक्या करें:\n1. 'Start Judging' पर click करें और हर बार दो परिणामों में से एक चुनते हुए परिदृश्य पूरे करें।\n2. अंत में अपनी पसंदों का सारांश देखें (जैसे अधिक जीवन बचाना, यात्रियों की रक्षा, कानून का पालन)।\n3. समूहों में सारांश मिलाकर चर्चा करें: क्या सब सहमत थे? आपके लिए कौन-सा कारक सबसे महत्वपूर्ण था? क्या कार को कभी उम्र या लिंग पर विचार करना चाहिए? निर्णय कौन ले – इंजीनियर, सरकार या जनता?\nक्या दिखता है: सहपाठी अक्सर असहमत होते हैं, और विवरण बदलने पर लोग राय बदल लेते हैं।\nइससे क्या सीखते हैं: कोई एक 'सही' उत्तर नहीं जिसे सब मानें, इसलिए ऐसे नियम code के अंदर चुपचाप नहीं, बल्कि जनता की राय और कानून के साथ खुले में तय होने चाहिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Other AI dilemmas you may discuss:",
+      "hi": "अन्य AI दुविधाएँ जिन पर आप चर्चा कर सकते हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Privacy vs safety: should face recognition be used at railway stations to find missing children if it also tracks everyone else?",
+       "Accuracy vs fairness: a model is most accurate overall when it ignores errors on a small group – is that acceptable?",
+       "Helpfulness vs honesty: should an AI tutor give the answer to a student who is stuck, or only hints so that the student learns?",
+       "Convenience vs jobs: should a bank replace call-centre staff with chatbots?",
+       "Free expression vs harm: should an AI image tool refuse to create realistic pictures of real people?"
+      ],
+      "hi": [
+       "निजता बनाम सुरक्षा: क्या खोए बच्चों को ढूँढने के लिए रेलवे स्टेशनों पर face recognition लगाया जाए, जबकि यह बाकी सबको भी track करेगा?",
+       "सटीकता बनाम निष्पक्षता: एक model छोटे समूह की गलतियों को अनदेखा करके कुल मिलाकर सबसे सटीक बनता है – क्या यह स्वीकार्य है?",
+       "मदद बनाम ईमानदारी: क्या AI tutor अटके विद्यार्थी को उत्तर दे दे, या केवल संकेत दे ताकि वह सीखे?",
+       "सुविधा बनाम नौकरियाँ: क्या बैंक call-centre कर्मचारियों की जगह chatbots लगाए?",
+       "अभिव्यक्ति की स्वतंत्रता बनाम नुकसान: क्या AI image tool को असली लोगों की वास्तविक जैसी तस्वीरें बनाने से मना करना चाहिए?"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Use a simple 4-step method to think through the dilemma: 'Should a school use face-recognition cameras for attendance?'",
+       "hi": "इस दुविधा पर सोचने के लिए सरल 4-चरण विधि अपनाइए: 'क्या स्कूल को उपस्थिति के लिए face-recognition cameras लगाने चाहिए?'"
+      },
+      "a": {
+       "en": "Step 1 – Stakeholders: students, parents, teachers, school management, the vendor.\nStep 2 – Benefits: saves teaching time, fewer proxy attendances.\nStep 3 – Harms and principles at risk: privacy (biometric data of minors), fairness (errors for some faces or in poor light – robustness), consent (can students say no?), data security.\nStep 4 – Decide and reduce harm: e.g. use it only with parents' written consent, store data securely in school and delete it at year end, keep a manual option, test accuracy for all students, and review after one term. Another reasonable answer: don't use it, because a simple roll-call achieves the goal with less risk. What matters is a reasoned, transparent decision.",
+       "hi": "चरण 1 – हितधारक: विद्यार्थी, अभिभावक, शिक्षक, स्कूल प्रबंधन, vendor।\nचरण 2 – लाभ: पढ़ाने का समय बचता है, फ़र्ज़ी उपस्थिति कम।\nचरण 3 – नुकसान और खतरे में सिद्धांत: निजता (नाबालिगों का biometric data), निष्पक्षता (कुछ चेहरों या कम रोशनी में गलतियाँ – robustness), सहमति (क्या विद्यार्थी मना कर सकते हैं?), data सुरक्षा।\nचरण 4 – निर्णय और नुकसान कम करना: जैसे केवल अभिभावकों की लिखित सहमति से उपयोग, data स्कूल में सुरक्षित रखना और वर्ष के अंत में मिटाना, manual विकल्प रखना, सभी विद्यार्थियों के लिए सटीकता परखना, और एक term बाद समीक्षा। एक और उचित उत्तर: इसका उपयोग न करें, क्योंकि साधारण हाज़िरी कम जोखिम से लक्ष्य पूरा करती है। महत्वपूर्ण है तर्कसंगत, पारदर्शी निर्णय।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "8.10 AI for good: ethics in practice",
+    "hi": "8.10 भलाई के लिए AI: व्यवहार में नैतिकता"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Ethics is not only about stopping harm; it is also about using AI to help people. When designed responsibly, AI can serve humanity:",
+      "hi": "नैतिकता केवल नुकसान रोकना नहीं; यह लोगों की मदद के लिए AI का उपयोग भी है। ज़िम्मेदारी से बनाया AI मानवता की सेवा कर सकता है:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Mental-health support: AI chatbots can offer 24/7 first-level support, coping exercises and guidance to reach professionals – with clear limits, privacy protection and quick hand-over to human counsellors in a crisis (India's Tele-MANAS helpline, 14416, connects people to trained counsellors).",
+       "Healthcare access: AI screening tools for diabetic eye disease or tuberculosis from X-rays can help in areas with few specialists, when checked by doctors.",
+       "Agriculture: apps that identify crop diseases from a phone photo and give advice in local languages.",
+       "Accessibility: speech-to-text, text-to-speech and image description help people with hearing or visual impairments.",
+       "Language inclusion: platforms such as Bhashini aim to make digital services available in Indian languages, so people who do not know English are not left out.",
+       "Disaster response: AI-based flood forecasting and weather alerts give people more time to move to safety."
+      ],
+      "hi": [
+       "मानसिक-स्वास्थ्य सहायता: AI chatbots 24/7 प्रारंभिक सहायता, सामना करने के अभ्यास और विशेषज्ञों तक पहुँचने का मार्गदर्शन दे सकते हैं – स्पष्ट सीमाओं, निजता सुरक्षा और संकट में तुरंत मानव परामर्शदाता को सौंपने के साथ (भारत की Tele-MANAS helpline, 14416, लोगों को प्रशिक्षित परामर्शदाताओं से जोड़ती है)।",
+       "स्वास्थ्य तक पहुँच: X-ray से मधुमेह नेत्र रोग या टीबी की जाँच करने वाले AI tools, डॉक्टरों की जाँच के साथ, कम विशेषज्ञ वाले क्षेत्रों में मदद कर सकते हैं।",
+       "कृषि: फ़ोन की फ़ोटो से फ़सल रोग पहचानकर स्थानीय भाषाओं में सलाह देने वाले apps।",
+       "सुलभता: speech-to-text, text-to-speech और चित्र-विवरण श्रवण या दृष्टि बाधित लोगों की मदद करते हैं।",
+       "भाषा समावेशन: Bhashini जैसे platforms डिजिटल सेवाओं को भारतीय भाषाओं में उपलब्ध कराने का लक्ष्य रखते हैं, ताकि अंग्रेज़ी न जानने वाले पीछे न छूटें।",
+       "आपदा प्रतिक्रिया: AI-आधारित बाढ़ पूर्वानुमान और मौसम चेतावनियाँ लोगों को सुरक्षित जगह जाने का अधिक समय देती हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "A responsible-AI checklist you can apply to any project (including your capstone project from Chapter 4):",
+      "hi": "एक responsible-AI checklist जिसे आप किसी भी project (अध्याय 4 के capstone project सहित) पर लागू कर सकते हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Who could be harmed, and how?",
+       "Is the data representative and collected with consent?",
+       "Have we tested results for each group?",
+       "Can we explain the decision to the person affected?",
+       "Is there a human who can review and override it?",
+       "How is personal data protected, and when is it deleted?",
+       "Who is accountable if something goes wrong?"
+      ],
+      "hi": [
+       "किसे नुकसान हो सकता है, और कैसे?",
+       "क्या data प्रतिनिधि है और सहमति से लिया गया है?",
+       "क्या हमने हर समूह के परिणाम परखे हैं?",
+       "क्या हम प्रभावित व्यक्ति को निर्णय समझा सकते हैं?",
+       "क्या कोई मनुष्य है जो समीक्षा कर उसे पलट सके?",
+       "निजी data कैसे सुरक्षित है, और कब मिटाया जाएगा?",
+       "कुछ गलत हो तो जवाबदेह कौन है?"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Being an ethical AI user: check AI answers with trusted sources, say when you used AI in your work, never create or forward deepfakes or hurtful content, respect others' photos and data, and report misuse to a trusted adult.",
+      "hi": "नैतिक AI user बनें: AI उत्तरों की भरोसेमंद स्रोतों से जाँच करें, अपने कार्य में AI उपयोग किया हो तो बताएँ, deepfakes या दुख पहुँचाने वाली सामग्री कभी न बनाएँ या आगे न भेजें, दूसरों की फ़ोटो और data का सम्मान करें, और दुरुपयोग की सूचना किसी भरोसेमंद वयस्क को दें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking AI is neutral because it is a machine. Fix: AI learns from human-made data and design, so it can copy human bias.",
+   "Believing ethics is only the developers' job. Fix: companies, governments, researchers and users all share responsibility.",
+   "Thinking transparency means publishing all source code. Fix: it means enough openness about data, design, limits and decisions for people to scrutinise and trust the system.",
+   "Assuming that removing the 'gender' or 'caste' column removes bias. Fix: proxies like PIN code or surname can carry the same information; test results group by group.",
+   "Saying transparency does not matter if the results are good. Fix: without transparency, hidden harms cannot be found or corrected, and trust is lost.",
+   "Confusing explainability with transparency. Fix: explainability = why this particular decision was made; transparency = openness about how the whole system is built and used.",
+   "Treating the four-fifths rule as proof of discrimination. Fix: it is only a warning sign that calls for investigation.",
+   "Thinking an ethical dilemma has one correct answer the AI should 'know'. Fix: dilemmas involve conflicting values; rules must be decided openly with public input.",
+   "Believing bias is a one-time fix. Fix: data and society change, so systems need regular audits.",
+   "Sharing personal data with chatbots because 'it is only a machine'. Fix: data may be stored or misused; never share passwords, OTPs, Aadhaar or addresses."
+  ],
+  "hi": [
+   "यह सोचना कि AI मशीन है इसलिए तटस्थ है। सुधार: AI मनुष्यों के बनाए data और design से सीखता है, इसलिए मानवीय bias की नकल कर सकता है।",
+   "मानना कि नैतिकता केवल developers का काम है। सुधार: कंपनियाँ, सरकारें, शोधकर्ता और users सभी ज़िम्मेदारी साझा करते हैं।",
+   "सोचना कि पारदर्शिता का अर्थ पूरा source code प्रकाशित करना है। सुधार: इसका अर्थ है data, design, सीमाओं और निर्णयों के बारे में इतना खुलापन कि लोग system की जाँच कर भरोसा कर सकें।",
+   "मान लेना कि 'लिंग' या 'जाति' column हटाने से bias हट जाता है। सुधार: PIN code या उपनाम जैसे proxies वही जानकारी रख सकते हैं; समूह-दर-समूह परिणाम परखें।",
+   "कहना कि परिणाम अच्छे हों तो पारदर्शिता मायने नहीं रखती। सुधार: पारदर्शिता के बिना छिपे नुकसान न पकड़े जा सकते हैं न सुधारे, और भरोसा टूटता है।",
+   "Explainability और transparency को एक समझना। सुधार: explainability = यह विशेष निर्णय क्यों हुआ; transparency = पूरा system कैसे बना और उपयोग होता है इसका खुलापन।",
+   "Four-fifths rule को भेदभाव का प्रमाण मानना। सुधार: यह केवल चेतावनी का संकेत है जो जाँच की माँग करता है।",
+   "सोचना कि नैतिक दुविधा का एक सही उत्तर है जिसे AI को 'पता' होना चाहिए। सुधार: दुविधाओं में मूल्य टकराते हैं; नियम जनता की राय से खुले में तय होने चाहिए।",
+   "मानना कि bias एक बार में ठीक हो जाता है। सुधार: data और समाज बदलते हैं, इसलिए systems का नियमित audit ज़रूरी है।",
+   "'यह तो बस मशीन है' सोचकर chatbots से निजी data साझा करना। सुधार: data सहेजा या दुरुपयोग हो सकता है; password, OTP, Aadhaar या पता कभी साझा न करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Ethics",
+    "hi": "नैतिकता"
+   },
+   "d": {
+    "en": "Moral principles that help decide right and wrong.",
+    "hi": "सही-गलत तय करने में मदद करने वाले नैतिक सिद्धांत।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI ethics",
+    "hi": "AI नैतिकता"
+   },
+   "d": {
+    "en": "Principles and guidelines for designing, developing and deploying AI fairly, transparently, accountably and in line with human values.",
+    "hi": "AI को निष्पक्ष, पारदर्शी, जवाबदेह और मानवीय मूल्यों के अनुरूप design, विकसित और लागू करने के सिद्धांत और दिशानिर्देश।"
+   }
+  },
+  {
+   "t": {
+    "en": "Explainability",
+    "hi": "Explainability"
+   },
+   "d": {
+    "en": "The ability of an AI to show users how it reached a decision.",
+    "hi": "AI की यह क्षमता कि वह users को दिखा सके कि निर्णय तक कैसे पहुँचा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Fairness",
+    "hi": "Fairness (निष्पक्षता)"
+   },
+   "d": {
+    "en": "Treating all individuals and groups equally, without discrimination on sensitive attributes.",
+    "hi": "संवेदनशील गुणों पर भेदभाव के बिना सभी व्यक्तियों और समूहों से समान व्यवहार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Robustness",
+    "hi": "Robustness (मज़बूती)"
+   },
+   "d": {
+    "en": "Giving consistently accurate, reliable results in all conditions and over time.",
+    "hi": "हर परिस्थिति में और समय के साथ लगातार सटीक, भरोसेमंद परिणाम देना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Transparency",
+    "hi": "Transparency (पारदर्शिता)"
+   },
+   "d": {
+    "en": "Openness about an AI's design, data, operation, limits and implications.",
+    "hi": "AI के design, data, संचालन, सीमाओं और प्रभावों के बारे में खुलापन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Privacy",
+    "hi": "Privacy (निजता)"
+   },
+   "d": {
+    "en": "The right to control one's personal information and be free from unwanted intrusion.",
+    "hi": "अपनी निजी जानकारी पर नियंत्रण और अवांछित दखल से मुक्त रहने का अधिकार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Accountability",
+    "hi": "Accountability (जवाबदेही)"
+   },
+   "d": {
+    "en": "Someone being answerable for an AI system's actions and their effects.",
+    "hi": "AI system के कार्यों और प्रभावों के लिए किसी का उत्तरदायी होना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sensitive attributes",
+    "hi": "संवेदनशील गुण"
+   },
+   "d": {
+    "en": "Personal characteristics like gender, caste, religion, race, disability or income on which discrimination must not happen.",
+    "hi": "लिंग, जाति, धर्म, नस्ल, विकलांगता या आय जैसी निजी विशेषताएँ जिन पर भेदभाव नहीं होना चाहिए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias",
+    "hi": "Bias (पूर्वाग्रह)"
+   },
+   "d": {
+    "en": "A preference for or against something or someone without fair consideration of all information.",
+    "hi": "सारी जानकारी पर निष्पक्ष विचार किए बिना किसी के पक्ष या विपक्ष में झुकाव।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI bias / algorithmic bias",
+    "hi": "AI bias / algorithmic bias"
+   },
+   "d": {
+    "en": "AI outputs that reflect and repeat human or social biases, giving unfair results.",
+    "hi": "ऐसे AI outputs जो मानवीय या सामाजिक bias को दर्शाते-दोहराते हैं और अनुचित परिणाम देते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias awareness",
+    "hi": "Bias जागरूकता"
+   },
+   "d": {
+    "en": "Recognising that AI may carry unfair preferences from data, rules or design, and checking for them.",
+    "hi": "यह पहचानना कि AI में data, नियमों या design से अनुचित झुकाव हो सकता है, और उसकी जाँच करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Training data bias",
+    "hi": "Training data bias"
+   },
+   "d": {
+    "en": "Bias caused by over- or under-representation of groups in training data.",
+    "hi": "Training data में समूहों के अधिक या कम प्रतिनिधित्व से होने वाला bias।"
+   }
+  },
+  {
+   "t": {
+    "en": "Cognitive bias",
+    "hi": "Cognitive bias"
+   },
+   "d": {
+    "en": "Bias from developers' own experiences and preferences in choosing or weighting data.",
+    "hi": "Data चुनने या महत्व देने में developers के अपने अनुभवों और पसंद से आने वाला bias।"
+   }
+  },
+  {
+   "t": {
+    "en": "Historical bias",
+    "hi": "Historical bias"
+   },
+   "d": {
+    "en": "Bias present because data records an unfair past.",
+    "hi": "Data में अनुचित अतीत दर्ज होने से मौजूद bias।"
+   }
+  },
+  {
+   "t": {
+    "en": "Measurement bias",
+    "hi": "Measurement bias"
+   },
+   "d": {
+    "en": "Bias from using a poor stand-in measure for what really matters.",
+    "hi": "असली चीज़ के लिए कमज़ोर विकल्प-माप इस्तेमाल करने से bias।"
+   }
+  },
+  {
+   "t": {
+    "en": "Proxy",
+    "hi": "Proxy"
+   },
+   "d": {
+    "en": "A feature that indirectly stands for a sensitive attribute (e.g. PIN code for community).",
+    "hi": "ऐसा feature जो परोक्ष रूप से किसी संवेदनशील गुण का प्रतिनिधित्व करे (जैसे समुदाय के लिए PIN code)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Automation bias",
+    "hi": "Automation bias"
+   },
+   "d": {
+    "en": "Trusting a machine's output too much without checking.",
+    "hi": "बिना जाँचे मशीन के output पर बहुत अधिक भरोसा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Selection rate",
+    "hi": "Selection rate"
+   },
+   "d": {
+    "en": "The fraction of a group that receives a positive outcome.",
+    "hi": "किसी समूह का वह अंश जिसे सकारात्मक परिणाम मिले।"
+   }
+  },
+  {
+   "t": {
+    "en": "Four-fifths rule",
+    "hi": "Four-fifths rule"
+   },
+   "d": {
+    "en": "A rule of thumb: a selection-rate ratio below 0.8 between groups signals possible bias.",
+    "hi": "एक व्यावहारिक नियम: समूहों के बीच selection-rate अनुपात 0.8 से कम हो तो संभावित bias का संकेत।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias mitigation",
+    "hi": "Bias mitigation"
+   },
+   "d": {
+    "en": "Strategies to reduce bias: diverse data, detection, fair algorithms, transparency, inclusive teams, audits.",
+    "hi": "Bias कम करने की रणनीतियाँ: विविध data, पहचान, निष्पक्ष algorithms, पारदर्शिता, समावेशी टीमें, audits।"
+   }
+  },
+  {
+   "t": {
+    "en": "Audit",
+    "hi": "Audit"
+   },
+   "d": {
+    "en": "A systematic check of an AI system's data, results and impact, often by an independent party.",
+    "hi": "AI system के data, परिणामों और प्रभाव की व्यवस्थित जाँच, अक्सर स्वतंत्र पक्ष द्वारा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Human in the loop",
+    "hi": "Human in the loop"
+   },
+   "d": {
+    "en": "A design where a person reviews or can override important AI decisions.",
+    "hi": "ऐसा design जिसमें मनुष्य महत्वपूर्ण AI निर्णयों की समीक्षा करे या उन्हें पलट सके।"
+   }
+  },
+  {
+   "t": {
+    "en": "Consent",
+    "hi": "सहमति (Consent)"
+   },
+   "d": {
+    "en": "Clear permission from a person before their data is collected or used.",
+    "hi": "किसी व्यक्ति का data लेने या उपयोग करने से पहले उसकी स्पष्ट अनुमति।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI policy",
+    "hi": "AI नीति"
+   },
+   "d": {
+    "en": "Rules and laws to ensure responsible, safe and ethical AI use.",
+    "hi": "ज़िम्मेदार, सुरक्षित और नैतिक AI उपयोग सुनिश्चित करने के नियम और कानून।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stakeholder",
+    "hi": "हितधारक (Stakeholder)"
+   },
+   "d": {
+    "en": "Anyone who affects or is affected by an AI system.",
+    "hi": "कोई भी जो AI system को प्रभावित करे या उससे प्रभावित हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Risk assessment",
+    "hi": "जोखिम आकलन"
+   },
+   "d": {
+    "en": "Listing what could go wrong with an AI system and how serious it is, before deployment.",
+    "hi": "Deployment से पहले AI system में क्या गलत हो सकता है और वह कितना गंभीर है, यह सूचीबद्ध करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ethical dilemma",
+    "hi": "नैतिक दुविधा"
+   },
+   "d": {
+    "en": "A situation where every option has good and bad consequences or values conflict.",
+    "hi": "ऐसी स्थिति जहाँ हर विकल्प के अच्छे-बुरे परिणाम हों या मूल्य टकराएँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Moral Machine",
+    "hi": "Moral Machine"
+   },
+   "d": {
+    "en": "MIT Media Lab's online platform that collects people's choices in self-driving-car dilemmas.",
+    "hi": "MIT Media Lab का online platform जो self-driving कार की दुविधाओं में लोगों के विकल्प इकट्ठा करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Autonomous vehicle",
+    "hi": "स्वचालित वाहन"
+   },
+   "d": {
+    "en": "A vehicle that drives itself using sensors and AI.",
+    "hi": "Sensors और AI से स्वयं चलने वाला वाहन।"
+   }
+  },
+  {
+   "t": {
+    "en": "Computer-aided diagnosis (CAD)",
+    "hi": "Computer-aided diagnosis (CAD)"
+   },
+   "d": {
+    "en": "AI systems that help doctors detect disease from medical images or data.",
+    "hi": "AI systems जो चिकित्सा तस्वीरों या data से रोग पहचानने में डॉक्टरों की मदद करते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deepfake",
+    "hi": "Deepfake"
+   },
+   "d": {
+    "en": "Fake but realistic AI-made video, image or audio of a real person.",
+    "hi": "किसी असली व्यक्ति का नकली पर वास्तविक जैसा AI-निर्मित video, चित्र या audio।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: The primary focus of AI ethics is: (a) making AI faster (b) ensuring AI is fair, transparent, accountable and aligned with human values (c) reducing the cost of computers (d) increasing advertising revenue",
+    "hi": "MCQ: AI नैतिकता का मुख्य ध्यान है: (a) AI को तेज़ बनाना (b) AI को निष्पक्ष, पारदर्शी, जवाबदेह और मानवीय मूल्यों के अनुरूप बनाना (c) कंप्यूटर की लागत घटाना (d) विज्ञापन आय बढ़ाना"
+   },
+   "a": {
+    "en": "(b)",
+    "hi": "(b)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which principle is mainly concerned with justice and equal treatment? (a) Robustness (b) Fairness (c) Speed (d) Storage",
+    "hi": "MCQ: कौन-सा सिद्धांत मुख्यतः न्याय और समान व्यवहार से संबंधित है? (a) Robustness (b) Fairness (c) Speed (d) Storage"
+   },
+   "a": {
+    "en": "(b) Fairness",
+    "hi": "(b) Fairness"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: What is a major privacy concern with AI? (a) AI uses electricity (b) Personal data may be collected and used without consent (c) AI needs a screen (d) AI cannot do maths",
+    "hi": "MCQ: AI से जुड़ी निजता की बड़ी चिंता क्या है? (a) AI बिजली लेता है (b) निजी data बिना सहमति लिया और उपयोग हो सकता है (c) AI को screen चाहिए (d) AI गणित नहीं कर सकता"
+   },
+   "a": {
+    "en": "(b)",
+    "hi": "(b)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is a strategy for mitigating bias? (a) Using data from only one city (b) Using diverse and representative data (c) Hiding how the model works (d) Never testing the model",
+    "hi": "MCQ: Bias कम करने की रणनीति कौन-सी है? (a) केवल एक शहर का data (b) विविध और प्रतिनिधि data (c) model कैसे काम करता है यह छिपाना (d) model को कभी न परखना"
+   },
+   "a": {
+    "en": "(b)",
+    "hi": "(b)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is an example of AI assisting humanity? (a) Deepfake videos to cheat people (b) AI chatbots offering first-level mental-health support with hand-over to counsellors (c) Fake reviews (d) Spam calls",
+    "hi": "MCQ: मानवता की मदद करने वाले AI का उदाहरण कौन-सा है? (a) लोगों को ठगने वाले deepfake videos (b) परामर्शदाताओं को सौंपने की सुविधा के साथ प्रारंभिक मानसिक-स्वास्थ्य सहायता देने वाले AI chatbots (c) नकली reviews (d) spam calls"
+   },
+   "a": {
+    "en": "(b)",
+    "hi": "(b)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (i) AI ethics matters only to developers. (ii) Bias in AI can lead to unfair outcomes. (iii) Transparency means AI companies must publish all their source code. (iv) Bias in AI can reinforce existing social inequalities. (v) Transparency is unimportant if the AI's results are beneficial.",
+    "hi": "सत्य या असत्य: (i) AI नैतिकता केवल developers के लिए मायने रखती है। (ii) AI में bias अनुचित परिणाम दे सकता है। (iii) पारदर्शिता का अर्थ है AI कंपनियाँ अपना पूरा source code प्रकाशित करें। (iv) AI में bias मौजूदा सामाजिक असमानताओं को मज़बूत कर सकता है। (v) AI के परिणाम लाभदायक हों तो पारदर्शिता महत्वहीन है।"
+   },
+   "a": {
+    "en": "(i) False (ii) True (iii) False (iv) True (v) False",
+    "hi": "(i) असत्य (ii) सत्य (iii) असत्य (iv) सत्य (v) असत्य"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (i) AI ethics applies the principles of ____ to the field of AI. (ii) ____ is the ability of an AI to give consistent results in all conditions. (iii) A feature like PIN code that stands for community is called a ____. (iv) The online platform about self-driving car dilemmas from MIT is the ____.",
+    "hi": "रिक्त स्थान भरिए: (i) AI नैतिकता ____ के सिद्धांतों को AI के क्षेत्र में लागू करती है। (ii) सभी परिस्थितियों में एक-से परिणाम देने की AI की क्षमता ____ है। (iii) समुदाय का प्रतिनिधित्व करने वाला PIN code जैसा feature ____ कहलाता है। (iv) MIT का self-driving कार दुविधाओं वाला online platform ____ है।"
+   },
+   "a": {
+    "en": "(i) ethics (ii) Robustness (iii) proxy (iv) Moral Machine",
+    "hi": "(i) नैतिकता (ii) Robustness (iii) proxy (iv) Moral Machine"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the five pillars of AI ethics given in the CBSE unit.",
+    "hi": "CBSE इकाई में दिए AI नैतिकता के पाँच स्तंभों के नाम लिखिए।"
+   },
+   "a": {
+    "en": "Explainability, Fairness, Robustness, Transparency, Privacy (with accountability as the linking principle).",
+    "hi": "Explainability, Fairness, Robustness, Transparency, Privacy (जोड़ने वाले सिद्धांत के रूप में accountability के साथ)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is algorithmic bias? Give an example.",
+    "hi": "Algorithmic bias क्या है? उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "Algorithmic bias is unfairness in an AI's results caused by flawed data or design, such as giving unfair weight to some factors or using proxies for sensitive attributes. Example: a hiring tool trained on years of mostly male hires learns to mark down CVs mentioning 'women's', so equally qualified women are shortlisted less.",
+    "hi": "Algorithmic bias, दोषपूर्ण data या design – जैसे कुछ कारकों को अनुचित महत्व देना या संवेदनशील गुणों के proxies इस्तेमाल करना – से AI के परिणामों में आई अनुचितता है। उदाहरण: वर्षों की अधिकतर पुरुष भर्ती पर प्रशिक्षित hiring tool 'women's' वाले CVs के अंक घटाना सीख लेता है, जिससे समान योग्य महिलाएँ कम shortlist होती हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the three sources of bias named in the chapter with one example each.",
+    "hi": "अध्याय में बताए bias के तीन स्रोत एक-एक उदाहरण सहित समझाइए।"
+   },
+   "a": {
+    "en": "1. Training data bias – groups over/under-represented, e.g. face recognition trained mostly on light-skinned faces fails on dark-skinned faces. 2. Algorithmic bias – flawed programming or weighting, or proxies, e.g. using PIN code which reflects community. 3. Cognitive bias – developers' own preferences shape data choice, e.g. using only data from one country and assuming it fits everyone.",
+    "hi": "1. Training data bias – समूहों का अधिक/कम प्रतिनिधित्व, जैसे अधिकतर हल्के रंग के चेहरों पर प्रशिक्षित face recognition गहरे रंग वाले चेहरों पर विफल। 2. Algorithmic bias – दोषपूर्ण programming या महत्व, या proxies, जैसे समुदाय दर्शाने वाला PIN code इस्तेमाल करना। 3. Cognitive bias – developers की अपनी पसंद data चयन तय करती है, जैसे केवल एक देश का data लेकर मान लेना कि वह सब पर लागू है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why is transparency important in AI decision-making?",
+    "hi": "AI निर्णय-प्रक्रिया में पारदर्शिता क्यों महत्वपूर्ण है?"
+   },
+   "a": {
+    "en": "Transparency lets people understand how a system works, what data it uses and its limits. This allows experts and the public to scrutinise it, find and fix bias or errors, hold the right people accountable, and decide whether to trust it. It also means telling people when they are interacting with AI.",
+    "hi": "पारदर्शिता से लोग समझ पाते हैं कि system कैसे काम करता है, कौन-सा data इस्तेमाल करता है और उसकी सीमाएँ क्या हैं। इससे विशेषज्ञ और जनता उसकी जाँच कर सकते हैं, bias या गलतियाँ ढूँढकर सुधार सकते हैं, सही लोगों को जवाबदेह बना सकते हैं और तय कर सकते हैं कि भरोसा करें या नहीं। इसका अर्थ यह भी है कि लोगों को बताया जाए कि वे AI से बात कर रहे हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How does AI affect privacy and data protection? Suggest three safeguards.",
+    "hi": "AI निजता और data सुरक्षा को कैसे प्रभावित करता है? तीन सुरक्षा उपाय सुझाइए।"
+   },
+   "a": {
+    "en": "AI needs large amounts of personal data (photos, voice, location, health), which may be collected without consent, used for other purposes, leaked, or used for profiling and surveillance. Safeguards: (1) clear consent and purpose limitation; (2) data minimisation and anonymisation; (3) strong security plus the right to see, correct and delete data – as required by laws such as India's DPDP Act, 2023.",
+    "hi": "AI को बहुत निजी data (फ़ोटो, आवाज़, location, स्वास्थ्य) चाहिए, जो बिना सहमति लिया जा सकता है, दूसरे उद्देश्यों में उपयोग हो सकता है, leak हो सकता है, या profiling और निगरानी में उपयोग हो सकता है। उपाय: (1) स्पष्ट सहमति और उद्देश्य सीमा; (2) data न्यूनीकरण और anonymisation; (3) मज़बूत सुरक्षा और data देखने, सुधारने व मिटवाने का अधिकार – जैसा भारत के DPDP Act, 2023 जैसे कानून माँगते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between explainability and transparency.",
+    "hi": "Explainability और transparency में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Explainability is about a specific decision: can the AI tell the affected person why it decided this (e.g. why a loan was refused)? Transparency is about the whole system: openness about its design, data, operation, limits and the fact that AI is being used. A system can be transparent about its design but still unable to explain an individual decision well.",
+    "hi": "Explainability किसी विशेष निर्णय के बारे में है: क्या AI प्रभावित व्यक्ति को बता सकता है कि उसने यह निर्णय क्यों लिया (जैसे loan क्यों अस्वीकार हुआ)? Transparency पूरे system के बारे में है: उसके design, data, संचालन, सीमाओं और AI उपयोग होने के तथ्य के बारे में खुलापन। कोई system अपने design के बारे में पारदर्शी होकर भी किसी व्यक्तिगत निर्णय को अच्छी तरह न समझा पाए, ऐसा हो सकता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Removing the 'gender' column from a hiring dataset guarantees a gender-fair model. Reason (R): Other features can act as proxies for gender.",
+    "hi": "अभिकथन (A): Hiring dataset से 'gender' column हटाने से लिंग-निष्पक्ष model की गारंटी मिलती है। कारण (R): दूसरे features लिंग के proxy बन सकते हैं।"
+   },
+   "a": {
+    "en": "(d) A is false, R is true. Because proxies (hobbies, college names, career gaps) can still reveal gender, removing the column does not guarantee fairness; results must be tested by group.",
+    "hi": "(d) A असत्य, R सत्य। क्योंकि proxies (शौक, कॉलेज के नाम, करियर में अंतराल) अब भी लिंग उजागर कर सकते हैं, column हटाना निष्पक्षता की गारंटी नहीं; परिणामों को समूह-वार परखना ज़रूरी है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Self-driving cars raise ethical dilemmas. Reason (R): In some emergencies every possible action causes some harm, and the choice is fixed in advance by programmers.",
+    "hi": "अभिकथन (A): Self-driving कारें नैतिक दुविधाएँ पैदा करती हैं। कारण (R): कुछ आपात स्थितियों में हर संभव कार्य से कुछ नुकसान होता है, और विकल्प programmers पहले से तय करते हैं।"
+   },
+   "a": {
+    "en": "(a) Both A and R are true, and R correctly explains A.",
+    "hi": "(a) A और R दोनों सत्य हैं, और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "An exam-proctoring AI flagged 30 of 100 students using old webcams as 'suspicious', but only 6 of 100 students with new webcams. Calculate the 'not flagged' rate for each group and apply the four-fifths rule. What might be the cause?",
+    "hi": "एक exam-proctoring AI ने पुराने webcam वाले 100 में से 30 विद्यार्थियों को 'संदिग्ध' चिह्नित किया, पर नए webcam वाले 100 में से केवल 6 को। हर समूह की 'चिह्नित नहीं' दर निकालकर four-fifths rule लगाइए। संभावित कारण क्या हो सकता है?"
+   },
+   "a": {
+    "en": "Old webcams: not flagged = 70/100 = 0.70. New webcams: 94/100 = 0.94. Ratio = 0.70 ÷ 0.94 ≈ 0.74 < 0.8 → possible bias. Likely cause: the model was trained mostly on clear, high-quality video (training data bias / poor robustness), so blurry images from cheaper cameras look 'suspicious'. This also hits poorer students harder (a proxy for income). Fix: test and retrain on varied camera quality and have humans review flags.",
+    "hi": "पुराने webcam: चिह्नित नहीं = 70/100 = 0.70। नए webcam: 94/100 = 0.94। अनुपात = 0.70 ÷ 0.94 ≈ 0.74 < 0.8 → संभावित bias। संभावित कारण: model अधिकतर साफ़, उच्च गुणवत्ता video पर प्रशिक्षित था (training data bias / कमज़ोर robustness), इसलिए सस्ते cameras की धुँधली तस्वीरें 'संदिग्ध' लगती हैं। यह गरीब विद्यार्थियों को अधिक प्रभावित करता है (आय का proxy)। सुधार: अलग-अलग camera गुणवत्ता पर परखें व पुनः प्रशिक्षित करें और flags की मानव समीक्षा हो।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is an ethical dilemma in AI? Explain with the Moral Machine example.",
+    "hi": "AI में नैतिक दुविधा क्या है? Moral Machine उदाहरण से समझाइए।"
+   },
+   "a": {
+    "en": "An AI ethical dilemma is a conflict between moral principles in designing, developing, deploying or using AI, where every option has good and bad consequences. The Moral Machine (MIT Media Lab) shows scenarios where a self-driving car with failed brakes must choose between harming pedestrians or its passengers. People in different countries chose differently, showing there is no single accepted answer; such rules need open, public decision-making.",
+    "hi": "AI नैतिक दुविधा AI के design, विकास, deployment या उपयोग में नैतिक सिद्धांतों का टकराव है, जहाँ हर विकल्प के अच्छे और बुरे परिणाम हों। Moral Machine (MIT Media Lab) ऐसे परिदृश्य दिखाता है जहाँ brakes फ़ेल self-driving कार को पैदल यात्रियों या अपने यात्रियों में से किसी को नुकसान चुनना पड़ता है। अलग-अलग देशों के लोगों ने अलग चुना, जिससे पता चलता है कि कोई एक स्वीकृत उत्तर नहीं; ऐसे नियमों के लिए खुली, सार्वजनिक निर्णय-प्रक्रिया चाहिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe six strategies to mitigate bias in AI systems with an example for each.",
+    "hi": "दीर्घ उत्तर: AI systems में bias कम करने की छह रणनीतियाँ एक-एक उदाहरण सहित लिखिए।"
+   },
+   "a": {
+    "en": "1. Diverse data – collect voice samples from many Indian languages and accents. 2. Bias detection – compare a loan model's approval rates for men and women with similar incomes using fairness metrics such as the four-fifths rule. 3. Fair algorithms – add fairness as a training goal and remove proxies like PIN code. 4. Transparency – publish documentation (a model card) on data, limits and test results. 5. Inclusive teams – include people of different genders, regions and abilities who spot blind spots. 6. Regular audits – yearly independent checks of an exam-proctoring AI. Also: keep a human in the loop so people can appeal decisions.",
+    "hi": "1. विविध data – कई भारतीय भाषाओं और लहजों के voice samples इकट्ठा करना। 2. Bias पहचान – four-fifths rule जैसे fairness metrics से समान आय वाले पुरुषों और महिलाओं के लिए loan model की स्वीकृति दरें मिलाना। 3. निष्पक्ष algorithms – प्रशिक्षण लक्ष्य में निष्पक्षता जोड़ना और PIN code जैसे proxies हटाना। 4. पारदर्शिता – data, सीमाओं और परीक्षण परिणामों का दस्तावेज़ (model card) प्रकाशित करना। 5. समावेशी टीमें – अलग लिंग, क्षेत्र और क्षमता वाले लोग जो अनदेखी कमियाँ पकड़ें। 6. नियमित audits – exam-proctoring AI की वार्षिक स्वतंत्र जाँच। साथ ही: मनुष्य को शामिल रखें ताकि लोग निर्णयों पर अपील कर सकें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: What steps should be followed in developing an AI policy, and what challenges do policymakers face?",
+    "hi": "दीर्घ उत्तर: AI नीति बनाने में कौन-से चरण अपनाने चाहिए, और नीति-निर्माताओं के सामने कौन-सी चुनौतियाँ हैं?"
+   },
+   "a": {
+    "en": "Steps: define purpose and scope; consult stakeholders (government, industry, scientists, community groups, public); assess risks before deployment; write clear rules on privacy, bias, safety and the right to question AI; set up monitoring, audits and complaints; review regularly.\nChallenges: technology changes faster than law; balancing innovation with safety; AI crosses borders; black-box models are hard to inspect; different cultures hold different values; fixing accountability across many companies; shortage of technical expertise among regulators.",
+    "hi": "चरण: उद्देश्य और दायरा तय करना; हितधारकों (सरकार, उद्योग, वैज्ञानिक, सामुदायिक समूह, जनता) से परामर्श; deployment से पहले जोखिम आकलन; निजता, bias, सुरक्षा और AI पर प्रश्न उठाने के अधिकार पर स्पष्ट नियम; निगरानी, audits और शिकायत व्यवस्था; नियमित समीक्षा।\nचुनौतियाँ: technology कानून से तेज़ बदलती है; नवाचार और सुरक्षा में संतुलन; AI सीमाएँ पार करता है; black-box models की जाँच कठिन; अलग संस्कृतियों के अलग मूल्य; कई कंपनियों में जवाबदेही तय करना; नियामकों में तकनीकी विशेषज्ञता की कमी।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A city police department plans to use face recognition on CCTV to find suspects in crowds at a cricket stadium. During a trial, a person was wrongly flagged because a cloud's shadow fell on their face. (a) Which pillars of AI ethics are at risk? (b) What could happen to the wrongly flagged person? (c) Suggest four safeguards.",
+    "hi": "Case-based: एक शहर की पुलिस क्रिकेट स्टेडियम की भीड़ में संदिग्धों को ढूँढने के लिए CCTV पर face recognition लगाना चाहती है। परीक्षण में एक व्यक्ति के चेहरे पर बादल की छाया पड़ने से उसे गलत चिह्नित किया गया। (a) AI नैतिकता के कौन-से स्तंभ खतरे में हैं? (b) गलत चिह्नित व्यक्ति के साथ क्या हो सकता है? (c) चार सुरक्षा उपाय सुझाइए।"
+   },
+   "a": {
+    "en": "(a) Robustness (fails in changing light), fairness (error rates may differ across skin tones and groups), privacy (everyone in the crowd is scanned), transparency and accountability (who answers for a wrong arrest?).\n(b) Being stopped, questioned or embarrassed in public; loss of reputation; stress; possible wrongful detention.\n(c) A human officer must verify every match before any action; test accuracy across groups and lighting before use; publish clear rules on where it is used and how long data is kept, delete data of non-matches; provide a complaint and appeal process with independent audits.",
+    "hi": "(a) Robustness (बदलती रोशनी में विफल), fairness (त्वचा के रंगों और समूहों में गलती दर अलग हो सकती है), privacy (भीड़ में हर व्यक्ति स्कैन होता है), transparency और accountability (गलत गिरफ़्तारी का जवाब कौन देगा?)।\n(b) सार्वजनिक रूप से रोका, पूछताछ या अपमानित किया जाना; प्रतिष्ठा की हानि; तनाव; संभावित गलत हिरासत।\n(c) किसी भी कार्रवाई से पहले मानव अधिकारी हर match की पुष्टि करे; उपयोग से पहले समूहों और रोशनी में सटीकता परखें; यह कहाँ उपयोग होगा और data कितने दिन रहेगा इसके स्पष्ट नियम प्रकाशित करें, non-match का data मिटाएँ; स्वतंत्र audits के साथ शिकायत और अपील प्रक्रिया दें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A health-tech startup builds an app that predicts heart-disease risk. Its training data comes mostly from men in big-city hospitals. (a) Identify the bias. (b) Who may be harmed and how? (c) How should the startup fix it before launch?",
+    "hi": "Case-based: एक health-tech startup हृदय-रोग जोखिम बताने वाला app बनाता है। उसका training data अधिकतर बड़े शहरों के अस्पतालों के पुरुषों से है। (a) Bias पहचानिए। (b) किसे और कैसे नुकसान हो सकता है? (c) Launch से पहले startup इसे कैसे सुधारे?"
+   },
+   "a": {
+    "en": "(a) Training data / representation bias (and possibly cognitive bias of the team that chose convenient data).\n(b) Women and rural patients – heart-disease symptoms in women are often different, so the app may under-estimate their risk, delaying treatment; rural lifestyle and access differ too.\n(c) Collect consented data from women, rural and diverse regions; measure accuracy separately for each group; involve doctors including women cardiologists in the team; be transparent about limits ('not a diagnosis – consult a doctor'); protect health data; audit after launch.",
+    "hi": "(a) Training data / representation bias (और संभवतः सुविधाजनक data चुनने वाली टीम का cognitive bias)।\n(b) महिलाएँ और ग्रामीण मरीज़ – महिलाओं में हृदय-रोग के लक्षण अक्सर अलग होते हैं, इसलिए app उनका जोखिम कम आँक सकता है, जिससे इलाज में देरी हो; ग्रामीण जीवनशैली और सुविधाएँ भी अलग हैं।\n(c) महिलाओं, ग्रामीण और विविध क्षेत्रों से सहमति वाला data इकट्ठा करें; हर समूह की सटीकता अलग मापें; टीम में महिला हृदय-रोग विशेषज्ञों सहित डॉक्टर शामिल करें; सीमाओं के बारे में पारदर्शी रहें ('यह निदान नहीं – डॉक्टर से मिलें'); स्वास्थ्य data सुरक्षित रखें; launch के बाद audit करें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Should an AI tutor app used by Class 11 students be allowed to write complete assignment answers? Discuss using at least three ethical principles and give your reasoned view.",
+    "hi": "सोचने वाला प्रश्न: क्या कक्षा 11 के विद्यार्थियों के AI tutor app को पूरे assignment उत्तर लिखने की अनुमति होनी चाहिए? कम से कम तीन नैतिक सिद्धांतों से चर्चा करके अपना तर्कसंगत मत दीजिए।"
+   },
+   "a": {
+    "en": "Sample answer: Human values/well-being – the purpose of homework is learning; full answers may stop students from thinking. Honesty and transparency – if AI writes the work, the student must disclose it; hiding it is unfair to classmates (fairness). Accountability – the student, not the app, is responsible for what is submitted, and AI answers can be wrong. Privacy – students should not upload personal details. Reasoned view: the app should explain concepts, give hints and check work, while complete answers should be shown only after the student attempts the problem, with AI use disclosed. (Any well-argued view using principles is acceptable.)",
+    "hi": "नमूना उत्तर: मानवीय मूल्य/कल्याण – गृहकार्य का उद्देश्य सीखना है; पूरे उत्तर विद्यार्थियों को सोचने से रोक सकते हैं। ईमानदारी और पारदर्शिता – यदि AI कार्य लिखे, तो विद्यार्थी को बताना चाहिए; छिपाना सहपाठियों के साथ अनुचित है (fairness)। जवाबदेही – जमा कार्य के लिए app नहीं, विद्यार्थी ज़िम्मेदार है, और AI उत्तर गलत हो सकते हैं। निजता – विद्यार्थी निजी विवरण upload न करें। तर्कसंगत मत: app अवधारणाएँ समझाए, संकेत दे और कार्य जाँचे, जबकि पूरे उत्तर विद्यार्थी के प्रयास के बाद ही दिखें, और AI उपयोग बताया जाए। (सिद्धांतों पर आधारित कोई भी अच्छा तर्कसंगत मत स्वीकार्य है।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: Use the responsible-AI checklist from section 8.10 to evaluate a crop-disease detection app for farmers. Write one line for each checklist question.",
+    "hi": "गतिविधि प्रश्न: खंड 8.10 की responsible-AI checklist से किसानों के लिए फ़सल-रोग पहचान app का मूल्यांकन कीजिए। checklist के हर प्रश्न के लिए एक पंक्ति लिखिए।"
+   },
+   "a": {
+    "en": "1. Harm: wrong diagnosis → wrong pesticide, crop loss, health risk. 2. Data: photos should include many crops, regions, lighting and phone qualities, taken with farmers' consent. 3. Group testing: check accuracy for each crop, region and low-cost phones. 4. Explain: show which spots on the leaf led to the result and a confidence level. 5. Human review: link to the local Krishi Vigyan Kendra or an agriculture officer for low-confidence cases. 6. Privacy: do not collect location or phone contacts beyond need; delete photos after use if promised. 7. Accountability: the app company and its expert partners are responsible for advice, with a helpline for complaints.",
+    "hi": "1. नुकसान: गलत निदान → गलत कीटनाशक, फ़सल हानि, स्वास्थ्य जोखिम। 2. Data: फ़ोटो में कई फ़सलें, क्षेत्र, रोशनी और फ़ोन गुणवत्ता हों, किसानों की सहमति से। 3. समूह परीक्षण: हर फ़सल, क्षेत्र और सस्ते फ़ोन के लिए सटीकता जाँचें। 4. समझाना: पत्ती के किन धब्बों से परिणाम आया और confidence स्तर दिखाएँ। 5. मानव समीक्षा: कम confidence मामलों के लिए स्थानीय कृषि विज्ञान केंद्र या कृषि अधिकारी से जोड़ें। 6. निजता: ज़रूरत से अधिक location या contacts न लें; वादा हो तो उपयोग के बाद फ़ोटो मिटाएँ। 7. जवाबदेही: सलाह के लिए app कंपनी और उसके विशेषज्ञ साझेदार ज़िम्मेदार, शिकायत के लिए helpline।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "AI ethics is the set of principles that govern how AI is designed, developed and deployed so it is fair, transparent, accountable, respects privacy and aligns with human values.",
+   "Examples like a CCTV system confused by a shadow and an unfair hospital care algorithm show why ethics is needed.",
+   "Responsibility is shared by developers, companies, governments, researchers and users.",
+   "The five pillars are explainability, fairness, robustness, transparency and privacy; accountability and safety tie them together.",
+   "Bias is an unfair preference; AI bias happens when AI outputs reflect and repeat human or social biases.",
+   "Main sources of bias: training data bias, algorithmic bias (including proxies) and cognitive bias; other types include historical, measurement, label and automation bias.",
+   "Real cases include CAD systems less accurate for Black patients, job ads shown more to men, image generators showing senior professionals as men, and biased face recognition.",
+   "Bias mitigation: diverse data, bias detection, fair algorithms, transparency, inclusive teams, regular audits and keeping humans in the loop.",
+   "Selection-rate comparison and the four-fifths rule are simple warning checks for bias, not proof.",
+   "Privacy needs consent, purpose limitation, data minimisation, security and people's rights over their data (India: DPDP Act, 2023).",
+   "AI policy-making involves stakeholder consultation, risk assessment, clear rules, monitoring and regular review; policymakers face fast change, cross-border AI and black-box models.",
+   "An ethical dilemma has no clearly right option; the MIT Moral Machine shows how people differ on self-driving car choices.",
+   "Used responsibly, AI helps in mental health, healthcare, agriculture, accessibility, language inclusion and disaster response.",
+   "As users, we should check AI answers, protect personal data, disclose AI help and never create or share harmful content."
+  ],
+  "hi": [
+   "AI नैतिकता उन सिद्धांतों का समूह है जो तय करते हैं कि AI कैसे design, विकसित और लागू हो ताकि वह निष्पक्ष, पारदर्शी, जवाबदेह हो, निजता का सम्मान करे और मानवीय मूल्यों के अनुरूप हो।",
+   "छाया से भ्रमित CCTV system और अनुचित अस्पताल देखभाल algorithm जैसे उदाहरण दिखाते हैं कि नैतिकता क्यों ज़रूरी है।",
+   "ज़िम्मेदारी developers, कंपनियों, सरकारों, शोधकर्ताओं और users की साझा है।",
+   "पाँच स्तंभ हैं explainability, fairness, robustness, transparency और privacy; accountability और safety इन्हें जोड़ते हैं।",
+   "Bias अनुचित झुकाव है; AI bias तब होता है जब AI outputs मानवीय या सामाजिक bias को दर्शाते-दोहराते हैं।",
+   "Bias के मुख्य स्रोत: training data bias, algorithmic bias (proxies सहित) और cognitive bias; अन्य प्रकार historical, measurement, label और automation bias हैं।",
+   "वास्तविक मामलों में अश्वेत मरीज़ों के लिए कम सटीक CAD systems, पुरुषों को अधिक दिखाए गए नौकरी विज्ञापन, वरिष्ठ पेशेवरों को पुरुष दिखाने वाले image generators और पक्षपाती face recognition शामिल हैं।",
+   "Bias कम करना: विविध data, bias पहचान, निष्पक्ष algorithms, पारदर्शिता, समावेशी टीमें, नियमित audits और मनुष्य को शामिल रखना।",
+   "Selection-rate तुलना और four-fifths rule bias की सरल चेतावनी जाँच हैं, प्रमाण नहीं।",
+   "निजता के लिए सहमति, उद्देश्य सीमा, data न्यूनीकरण, सुरक्षा और अपने data पर लोगों के अधिकार चाहिए (भारत: DPDP Act, 2023)।",
+   "AI नीति बनाने में हितधारक परामर्श, जोखिम आकलन, स्पष्ट नियम, निगरानी और नियमित समीक्षा शामिल हैं; नीति-निर्माता तेज़ बदलाव, सीमा-पार AI और black-box models की चुनौती झेलते हैं।",
+   "नैतिक दुविधा में कोई स्पष्ट सही विकल्प नहीं होता; MIT का Moral Machine दिखाता है कि self-driving कार के विकल्पों पर लोग कैसे अलग सोचते हैं।",
+   "ज़िम्मेदारी से उपयोग होने पर AI मानसिक स्वास्थ्य, स्वास्थ्य सेवा, कृषि, सुलभता, भाषा समावेशन और आपदा प्रतिक्रिया में मदद करता है।",
+   "Users के रूप में हमें AI उत्तर जाँचने, निजी data की रक्षा करने, AI की मदद बताने और कभी हानिकारक सामग्री न बनाने या साझा करने का ध्यान रखना चाहिए।"
+  ]
+ }
+}

@@ -1,0 +1,2040 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "11",
+ "id": "ch6",
+ "intro": {
+  "en": "How does a shopping app guess the price you will pay, how does a bank app flag a suspicious UPI transaction, and how does a music app group listeners with similar taste? Behind each is a machine learning algorithm. This chapter explains, step by step and with numbers you can work by hand, the three algorithms in the CBSE Class 11 syllabus: linear regression (with correlation), k-Nearest Neighbour classification and k-Means clustering. You will also practise them in MS Excel and, for advanced learners, in Python.",
+  "hi": "शॉपिंग ऐप कैसे अंदाज़ा लगाता है कि आप कितनी कीमत देंगे, बैंक ऐप संदिग्ध UPI लेन-देन को कैसे पकड़ता है, और म्यूज़िक ऐप मिलती-जुलती पसंद वाले श्रोताओं को कैसे समूहों में बाँटता है? हर एक के पीछे कोई machine learning algorithm है। यह अध्याय CBSE कक्षा 11 के पाठ्यक्रम के तीन algorithms को चरण-दर-चरण और हाथ से हल की जा सकने वाली संख्याओं के साथ समझाता है: linear regression (correlation सहित), k-Nearest Neighbour classification और k-Means clustering। आप इन्हें MS Excel में और उन्नत शिक्षार्थियों के लिए Python में भी अभ्यास करेंगे।"
+ },
+ "learn": {
+  "en": [
+   "What machine learning is, how it differs from traditional programming, and the general ML workflow",
+   "Types of machine learning: supervised, unsupervised and reinforcement learning, and regression vs classification",
+   "Correlation: positive, negative and zero; correlation vs causation; Pearson's correlation coefficient r with its formula and assumptions",
+   "Regression, the regression line, finding the best-fit line with the least squares method, and the equation y = a + bx",
+   "Simple and multiple linear regression, applications, advantages, limitations and when regression is not suitable",
+   "Classification: classes, features, training data, model and prediction; binary, multi-class, multi-label and imbalanced classification",
+   "The k-Nearest Neighbour (k-NN) algorithm step by step with Euclidean distance, choosing k, pros and cons",
+   "Clustering: how it works and its types (partitioning, density-based, distribution-based, hierarchical)",
+   "The k-Means clustering algorithm step by step, the elbow method, pros and cons",
+   "Practicals: Pearson correlation and linear regression in MS Excel; regression, k-NN and k-Means in Python"
+  ],
+  "hi": [
+   "Machine learning क्या है, यह पारंपरिक programming से कैसे अलग है, और सामान्य ML workflow",
+   "Machine learning के प्रकार: supervised, unsupervised और reinforcement learning, तथा regression बनाम classification",
+   "Correlation (सहसंबंध): धनात्मक, ऋणात्मक और शून्य; correlation बनाम causation; Pearson का correlation coefficient r, सूत्र और मान्यताओं सहित",
+   "Regression, regression line, least squares विधि से best-fit line खोजना, और समीकरण y = a + bx",
+   "Simple और multiple linear regression, उपयोग, लाभ, सीमाएँ और कब regression उपयुक्त नहीं",
+   "Classification: classes, features, training data, model और prediction; binary, multi-class, multi-label और imbalanced classification",
+   "k-Nearest Neighbour (k-NN) algorithm चरण-दर-चरण, Euclidean distance, k का चुनाव, लाभ और हानि",
+   "Clustering: यह कैसे काम करता है और इसके प्रकार (partitioning, density-based, distribution-based, hierarchical)",
+   "k-Means clustering algorithm चरण-दर-चरण, elbow method, लाभ और हानि",
+   "प्रैक्टिकल: MS Excel में Pearson correlation और linear regression; Python में regression, k-NN और k-Means"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "6.1 Machine learning in a nutshell",
+    "hi": "6.1 संक्षेप में Machine learning"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Machine learning (ML) is a branch of artificial intelligence in which a computer learns patterns from data and uses them to make predictions or decisions, without being given step-by-step rules for every case. In traditional programming, a person writes the rules: input + rules → output. In machine learning, we give examples of inputs together with their outputs, and the algorithm discovers the rules itself: input + output (examples) → rules (the model). The model can then be used on new inputs.",
+      "hi": "Machine learning (ML) artificial intelligence की वह शाखा है जिसमें कंप्यूटर डेटा से पैटर्न सीखता है और उनसे अनुमान (predictions) या निर्णय लेता है, बिना हर स्थिति के लिए चरण-दर-चरण नियम दिए। पारंपरिक programming में व्यक्ति नियम लिखता है: input + नियम → output। Machine learning में हम inputs और उनके outputs के उदाहरण देते हैं, और algorithm स्वयं नियम खोज लेता है: input + output (उदाहरण) → नियम (model)। फिर model को नए inputs पर इस्तेमाल किया जा सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Traditional program vs ML for spam: how would each work?",
+       "hi": "Spam के लिए पारंपरिक प्रोग्राम बनाम ML: दोनों कैसे काम करेंगे?"
+      },
+      "a": {
+       "en": "Traditional: a programmer writes rules such as 'if the message contains WIN PRIZE or a strange link, mark spam'. Spammers change words and the rules fail.\nML: we give thousands of messages already labelled spam or not spam. The algorithm learns which patterns of words, links and senders go with spam, and keeps improving when given new labelled examples.",
+       "hi": "पारंपरिक: programmer नियम लिखता है, जैसे 'यदि संदेश में WIN PRIZE या अजीब link है, तो spam मानो'। Spammers शब्द बदल देते हैं और नियम असफल हो जाते हैं।\nML: हम spam या not spam लेबल वाले हज़ारों संदेश देते हैं। Algorithm सीखता है कि शब्दों, links और भेजने वालों के कौन-से पैटर्न spam से जुड़े हैं, और नए लेबल वाले उदाहरण मिलने पर बेहतर होता रहता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Collect and prepare data (Chapter 5): clean it, choose features, split into training and testing sets.",
+       "Choose an algorithm suited to the problem, such as linear regression, k-NN or k-Means.",
+       "Train the model on the training data.",
+       "Evaluate it on test data using a suitable measure (error for regression, accuracy for classification).",
+       "Tune and improve, then deploy the model and keep monitoring it."
+      ],
+      "hi": [
+       "डेटा इकट्ठा और तैयार करें (अध्याय 5): साफ़ करें, features चुनें, training और testing sets में बाँटें।",
+       "समस्या के अनुसार algorithm चुनें, जैसे linear regression, k-NN या k-Means।",
+       "Training डेटा पर model को train करें।",
+       "उपयुक्त माप से test डेटा पर उसका मूल्यांकन करें (regression के लिए error, classification के लिए accuracy)।",
+       "Tune करके सुधारें, फिर model को deploy करें और निगरानी करते रहें।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Everyday Indian examples of ML: product and video recommendations on shopping and streaming apps, Google Maps predicting travel time from traffic data, banks flagging unusual card or UPI transactions as possible fraud, crop-disease detection apps that identify a disease from a leaf photo, voice typing and translation in Indian languages (for example through Bhashini), spam filters in email, and medical tools that help doctors read X-rays.",
+      "hi": "ML के रोज़मर्रा के भारतीय उदाहरण: शॉपिंग और स्ट्रीमिंग ऐप्स पर उत्पाद और वीडियो सुझाव, ट्रैफ़िक डेटा से यात्रा समय बताने वाला Google Maps, असामान्य कार्ड या UPI लेन-देन को संभावित धोखाधड़ी के रूप में चिह्नित करने वाले बैंक, पत्ते की फ़ोटो से रोग पहचानने वाले फ़सल-रोग ऐप, भारतीय भाषाओं में वॉइस टाइपिंग और अनुवाद (जैसे Bhashini के ज़रिए), ईमेल के spam filter, और X-ray पढ़ने में डॉक्टरों की मदद करने वाले चिकित्सा उपकरण।"
+     }
+    },
+    {
+     "note": {
+      "en": "Key words: a feature (independent variable, input) is a measurable property used for prediction, such as house size; a label or target (dependent variable, output) is what we want to predict, such as house price. A model is the learned relationship between them.",
+      "hi": "मुख्य शब्द: feature (स्वतंत्र चर, input) अनुमान के लिए प्रयुक्त मापने योग्य गुण है, जैसे मकान का आकार; label या target (आश्रित चर, output) वह है जिसका हम अनुमान चाहते हैं, जैसे मकान का दाम। Model उनके बीच सीखा गया संबंध है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.2 Types of machine learning",
+    "hi": "6.2 Machine learning के प्रकार"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Data used",
+        "Goal",
+        "Examples"
+       ],
+       "hi": [
+        "प्रकार",
+        "प्रयुक्त डेटा",
+        "लक्ष्य",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Supervised learning",
+         "Labelled data: each input comes with the correct answer",
+         "Learn to map inputs to known outputs and predict outputs for new inputs",
+         "Predicting house price; spam or not spam; pass or fail"
+        ],
+        [
+         "Unsupervised learning",
+         "Unlabelled data: no answers given",
+         "Find hidden structure or groups in the data",
+         "Grouping customers by buying habits; grouping news articles by topic"
+        ],
+        [
+         "Reinforcement learning",
+         "No fixed dataset; an agent acts in an environment and gets rewards or penalties",
+         "Learn the sequence of actions that gives the most reward",
+         "Game-playing AI, robots learning to walk, adjusting traffic signals"
+        ]
+       ],
+       "hi": [
+        [
+         "Supervised learning",
+         "लेबल वाला डेटा: हर input के साथ सही उत्तर",
+         "inputs को ज्ञात outputs से जोड़ना सीखना और नए inputs के output का अनुमान",
+         "मकान का दाम बताना; spam या not spam; pass या fail"
+        ],
+        [
+         "Unsupervised learning",
+         "बिना लेबल का डेटा: कोई उत्तर नहीं दिया",
+         "डेटा में छिपी संरचना या समूह खोजना",
+         "खरीदारी की आदतों से ग्राहकों के समूह; विषय अनुसार समाचार लेखों के समूह"
+        ],
+        [
+         "Reinforcement learning",
+         "कोई तय dataset नहीं; agent परिवेश में काम करता है और इनाम या दंड पाता है",
+         "सबसे अधिक इनाम देने वाले कार्यों का क्रम सीखना",
+         "खेल खेलने वाला AI, चलना सीखते robot, ट्रैफ़िक सिग्नल समायोजन"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Supervised learning has two kinds of problems. In regression the output is a continuous number (price, temperature, marks). In classification the output is a discrete category or class (spam/not spam, disease A/B/C). A quick test: if the answer is 'how much?' or 'how many?', it is regression; if the answer is 'which one?' or 'yes or no?', it is classification.",
+      "hi": "Supervised learning में दो प्रकार की समस्याएँ होती हैं। Regression में output एक सतत संख्या होती है (दाम, तापमान, अंक)। Classification में output एक असतत श्रेणी या class होती है (spam/not spam, रोग A/B/C)। आसान जाँच: यदि उत्तर 'कितना?' या 'कितने?' है तो regression; यदि उत्तर 'कौन-सा?' या 'हाँ या नहीं?' है तो classification।"
+     }
+    },
+    {
+     "p": {
+      "en": "The main unsupervised task in this chapter is clustering: putting similar data points together into groups (clusters) without being told the groups. Reinforcement learning is only introduced here; it is not part of the algorithms you will compute.",
+      "hi": "इस अध्याय का मुख्य unsupervised कार्य clustering है: बिना समूह बताए समान डेटा बिंदुओं को समूहों (clusters) में रखना। Reinforcement learning का यहाँ केवल परिचय है; यह उन algorithms में नहीं है जिनकी आप गणना करेंगे।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Classify each task as regression, classification or clustering: (a) predicting tomorrow's Mumbai temperature (b) deciding if a loan applicant will repay or default (c) dividing 10,000 shoppers into groups with similar habits (d) predicting the number of runs in the next over (e) recognising a handwritten digit 0 to 9.",
+       "hi": "हर कार्य को regression, classification या clustering में रखिए: (a) कल के मुंबई तापमान का अनुमान (b) तय करना कि loan आवेदक चुकाएगा या नहीं (c) 10,000 खरीदारों को समान आदतों वाले समूहों में बाँटना (d) अगले ओवर में रनों की संख्या का अनुमान (e) हाथ से लिखे अंक 0 से 9 को पहचानना।"
+      },
+      "a": {
+       "en": "(a) Regression: a continuous number.\n(b) Classification (binary): repay or default.\n(c) Clustering: no labels, find groups.\n(d) Regression: a numeric amount.\n(e) Classification (multi-class): one of 10 classes.",
+       "hi": "(a) Regression: एक सतत संख्या।\n(b) Classification (binary): चुकाएगा या नहीं।\n(c) Clustering: कोई लेबल नहीं, समूह खोजें।\n(d) Regression: एक संख्यात्मक मात्रा।\n(e) Classification (multi-class): 10 classes में से एक।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.3 Correlation",
+    "hi": "6.3 Correlation (सहसंबंध)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before we predict one variable from another, we check whether they are related at all. Correlation measures how strongly two numeric variables move together and in which direction. We usually see it first on a scatter plot.",
+      "hi": "किसी एक चर से दूसरे का अनुमान लगाने से पहले हम देखते हैं कि वे आपस में जुड़े भी हैं या नहीं। Correlation मापता है कि दो संख्यात्मक चर कितनी मज़बूती से और किस दिशा में साथ-साथ बदलते हैं। आमतौर पर इसे पहले scatter plot पर देखा जाता है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Meaning",
+        "Scatter plot looks like",
+        "Example"
+       ],
+       "hi": [
+        "प्रकार",
+        "अर्थ",
+        "Scatter plot कैसा दिखता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Positive correlation",
+         "Both increase together",
+         "Dots rise from bottom-left to top-right",
+         "Hours of study and marks; temperature and ice-cream sales"
+        ],
+        [
+         "Negative correlation",
+         "One increases as the other decreases",
+         "Dots fall from top-left to bottom-right",
+         "Speed of a train and travel time; price of a product and number sold"
+        ],
+        [
+         "Zero (no) correlation",
+         "No linear relation",
+         "Dots scattered with no direction",
+         "Shoe size and marks in maths; height and phone number"
+        ]
+       ],
+       "hi": [
+        [
+         "धनात्मक correlation",
+         "दोनों साथ बढ़ते हैं",
+         "बिंदु नीचे-बाएँ से ऊपर-दाएँ उठते हैं",
+         "पढ़ाई के घंटे और अंक; तापमान और आइसक्रीम की बिक्री"
+        ],
+        [
+         "ऋणात्मक correlation",
+         "एक बढ़ने पर दूसरा घटता है",
+         "बिंदु ऊपर-बाएँ से नीचे-दाएँ गिरते हैं",
+         "ट्रेन की गति और यात्रा समय; उत्पाद का दाम और बिक्री संख्या"
+        ],
+        [
+         "शून्य correlation",
+         "कोई रेखीय संबंध नहीं",
+         "बिंदु बिना दिशा के बिखरे",
+         "जूते का साइज़ और गणित के अंक; लंबाई और फ़ोन नंबर"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Correlation coefficient",
+       "hi": "Correlation coefficient (सहसंबंध गुणांक)"
+      },
+      "text": {
+       "en": "A number between −1 and +1 that measures the strength and direction of a linear relationship. +1 = perfect positive (all points exactly on a rising line), −1 = perfect negative, 0 = no linear relationship. Values near ±1 are strong; values near 0 are weak. A common rough guide: |r| ≥ 0.7 strong, 0.3 to 0.7 moderate, below 0.3 weak.",
+       "hi": "−1 और +1 के बीच की संख्या जो रेखीय संबंध की मज़बूती और दिशा मापती है। +1 = पूर्ण धनात्मक (सभी बिंदु ठीक उठती रेखा पर), −1 = पूर्ण ऋणात्मक, 0 = कोई रेखीय संबंध नहीं। ±1 के पास के मान मज़बूत; 0 के पास के मान कमज़ोर। एक आम मोटा नियम: |r| ≥ 0.7 मज़बूत, 0.3 से 0.7 मध्यम, 0.3 से कम कमज़ोर।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Correlation vs causation",
+       "hi": "Correlation बनाम causation"
+      },
+      "text": {
+       "en": "Causation means one event actually causes another. Correlation only shows that two things move together. 'Correlation does not imply causation.' Ice-cream sales and drowning cases both rise in summer, but ice cream does not cause drowning; hot weather (a third, hidden variable) drives both. Smoking and lung cancer are correlated, and medical research has also shown that smoking causes lung cancer; proving causation needs careful experiments or studies, not just correlation.",
+       "hi": "Causation (कार्य-कारण) का अर्थ है एक घटना वास्तव में दूसरी का कारण है। Correlation केवल दिखाता है कि दो चीज़ें साथ बदलती हैं। 'Correlation का अर्थ causation नहीं।' गर्मियों में आइसक्रीम की बिक्री और डूबने के मामले दोनों बढ़ते हैं, पर आइसक्रीम डूबने का कारण नहीं; गर्म मौसम (एक तीसरा, छिपा चर) दोनों को बढ़ाता है। धूम्रपान और फेफड़ों का कैंसर सहसंबंधित हैं, और चिकित्सा शोध ने यह भी दिखाया है कि धूम्रपान फेफड़ों का कैंसर पैदा करता है; causation सिद्ध करने के लिए सावधान प्रयोग या अध्ययन चाहिए, केवल correlation नहीं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.4 Pearson's correlation coefficient r",
+    "hi": "6.4 Pearson का correlation coefficient r"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "The most widely used correlation coefficient is Pearson's r (Pearson product-moment correlation coefficient), named after the statistician Karl Pearson. It measures the strength and direction of the linear relationship between two variables x and y.",
+      "hi": "सबसे अधिक प्रयुक्त correlation coefficient, Pearson का r (Pearson product-moment correlation coefficient) है, जिसका नाम सांख्यिकीविद् Karl Pearson के नाम पर है। यह दो चरों x और y के बीच रेखीय संबंध की मज़बूती और दिशा मापता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "r = Σ(x − x̄)(y − ȳ) / √[ Σ(x − x̄)² × Σ(y − ȳ)² ]\n\nEquivalent form:\nr = [nΣxy − (Σx)(Σy)] / √{ [nΣx² − (Σx)²] × [nΣy² − (Σy)²] }\n\nx̄ = mean of x,  ȳ = mean of y,  n = number of pairs",
+      "hi": "r = Σ(x − x̄)(y − ȳ) / √[ Σ(x − x̄)² × Σ(y − ȳ)² ]\n\nसमतुल्य रूप:\nr = [nΣxy − (Σx)(Σy)] / √{ [nΣx² − (Σx)²] × [nΣy² − (Σy)²] }\n\nx̄ = x का माध्य,  ȳ = y का माध्य,  n = जोड़ों की संख्या"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Both variables are measured on an interval or ratio scale (numeric).",
+       "The relationship is roughly linear (check with a scatter plot).",
+       "Each variable is roughly normally distributed.",
+       "There are no major outliers, because one extreme point can change r a lot."
+      ],
+      "hi": [
+       "दोनों चर interval या ratio पैमाने (संख्यात्मक) पर मापे गए हों।",
+       "संबंध लगभग रेखीय हो (scatter plot से जाँचें)।",
+       "हर चर लगभग normal रूप से वितरित हो।",
+       "कोई बड़ा outlier न हो, क्योंकि एक अत्यधिक बिंदु r को बहुत बदल सकता है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Hours studied per day (x) and test marks (y) of 5 students: (1, 52), (2, 58), (3, 65), (4, 70), (5, 80). Find Pearson's r.",
+       "hi": "5 विद्यार्थियों के प्रतिदिन पढ़ाई के घंटे (x) और टेस्ट अंक (y): (1, 52), (2, 58), (3, 65), (4, 70), (5, 80)। Pearson का r ज्ञात कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: x̄ = 15/5 = 3, ȳ = 325/5 = 65.\nStep 2: x − x̄ = −2, −1, 0, 1, 2; y − ȳ = −13, −7, 0, 5, 15.\nStep 3: products (x − x̄)(y − ȳ) = 26, 7, 0, 5, 30. Sum = 68.\nStep 4: Σ(x − x̄)² = 4 + 1 + 0 + 1 + 4 = 10. Σ(y − ȳ)² = 169 + 49 + 0 + 25 + 225 = 468.\nStep 5: r = 68 / √(10 × 468) = 68 / √4680 = 68 / 68.41 ≈ 0.994.\nConclusion: a very strong positive linear relationship.",
+       "hi": "चरण 1: x̄ = 15/5 = 3, ȳ = 325/5 = 65।\nचरण 2: x − x̄ = −2, −1, 0, 1, 2; y − ȳ = −13, −7, 0, 5, 15।\nचरण 3: गुणनफल (x − x̄)(y − ȳ) = 26, 7, 0, 5, 30। योग = 68।\nचरण 4: Σ(x − x̄)² = 4 + 1 + 0 + 1 + 4 = 10। Σ(y − ȳ)² = 169 + 49 + 0 + 25 + 225 = 468।\nचरण 5: r = 68 / √(10 × 468) = 68 / √4680 = 68 / 68.41 ≈ 0.994।\nनिष्कर्ष: बहुत मज़बूत धनात्मक रेखीय संबंध।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "r tells you strength and direction, not the slope. r = 0.9 does not mean y increases by 0.9 for each unit of x. Also r = 0 means no linear relation; there could still be a curved relation.",
+      "hi": "r मज़बूती और दिशा बताता है, ढलान (slope) नहीं। r = 0.9 का अर्थ यह नहीं कि x की हर इकाई पर y, 0.9 बढ़ता है। और r = 0 का अर्थ है कोई रेखीय संबंध नहीं; फिर भी वक्र संबंध हो सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Practical: Pearson's r in MS Excel (or Google Sheets, free in a browser). Type x values in A2:A6 and y values in B2:B6. In any empty cell type =CORREL(A2:A6, B2:B6) or =PEARSON(A2:A6, B2:B6) and press Enter. For the data above both give about 0.994. To see it visually, select both columns, Insert → Scatter chart.",
+      "hi": "प्रैक्टिकल: MS Excel (या ब्राउज़र में मुफ़्त Google Sheets) में Pearson का r। A2:A6 में x मान और B2:B6 में y मान लिखें। किसी खाली सेल में =CORREL(A2:A6, B2:B6) या =PEARSON(A2:A6, B2:B6) लिखकर Enter दबाएँ। ऊपर के डेटा के लिए दोनों लगभग 0.994 देते हैं। दृश्य रूप में देखने के लिए दोनों कॉलम चुनें, Insert → Scatter chart।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.5 Regression and the regression line",
+    "hi": "6.5 Regression और regression line"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Regression is a supervised learning method that models the relationship between a dependent variable (the output y we want to predict) and one or more independent variables (the inputs x), so that y can be predicted for new values of x. When the relationship is a straight line, it is called linear regression.",
+      "hi": "Regression एक supervised learning विधि है जो आश्रित चर (वह output y जिसका अनुमान चाहिए) और एक या अधिक स्वतंत्र चरों (inputs x) के बीच संबंध का model बनाती है, ताकि x के नए मानों के लिए y का अनुमान लगाया जा सके। जब संबंध सीधी रेखा हो, तो इसे linear regression कहते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Regression line (line of best fit)",
+       "hi": "Regression line (best fit की रेखा)"
+      },
+      "text": {
+       "en": "The straight line drawn through a scatter plot that comes closest to all the points overall. It shows the trend and is used for prediction.",
+       "hi": "Scatter plot पर खींची गई वह सीधी रेखा जो कुल मिलाकर सभी बिंदुओं के सबसे पास हो। यह रुझान दिखाती है और अनुमान के लिए प्रयोग होती है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "Simple linear regression:   y = a + bx + e\n\ny = dependent variable (output)\nx = independent variable (input)\na = intercept: value of y when x = 0\nb = slope: change in y for 1 unit increase in x\ne = error term: the part of y the line cannot explain",
+      "hi": "Simple linear regression:   y = a + bx + e\n\ny = आश्रित चर (output)\nx = स्वतंत्र चर (input)\na = intercept (अंतःखंड): x = 0 पर y का मान\nb = slope (ढलान): x में 1 इकाई बढ़ने पर y में बदलाव\ne = error term: y का वह भाग जिसे रेखा नहीं समझा पाती"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A company's salary rule is y = 30000 + 5000x, where x is years of experience. (a) What is the starting salary? (b) What is the yearly increase? (c) Predict the salary for 5 years.",
+       "hi": "एक कंपनी का वेतन नियम y = 30000 + 5000x है, जहाँ x अनुभव के वर्ष हैं। (a) आरंभिक वेतन क्या है? (b) वार्षिक वृद्धि कितनी है? (c) 5 वर्ष के लिए वेतन का अनुमान लगाइए।"
+      },
+      "a": {
+       "en": "(a) Intercept a = 30000, so starting salary (x = 0) is Rs 30,000.\n(b) Slope b = 5000, so salary rises Rs 5,000 per year.\n(c) y = 30000 + 5000 × 5 = 30000 + 25000 = Rs 55,000.",
+       "hi": "(a) Intercept a = 30000, इसलिए आरंभिक वेतन (x = 0) Rs 30,000 है।\n(b) Slope b = 5000, इसलिए वेतन हर वर्ष Rs 5,000 बढ़ता है।\n(c) y = 30000 + 5000 × 5 = 30000 + 25000 = Rs 55,000।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Inputs",
+        "Equation",
+        "Example"
+       ],
+       "hi": [
+        "प्रकार",
+        "Inputs",
+        "समीकरण",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Simple linear regression",
+         "One independent variable",
+         "y = a + bx",
+         "Marks from hours of study"
+        ],
+        [
+         "Multiple linear regression",
+         "Two or more independent variables",
+         "y = a + b1x1 + b2x2 + ... + bnxn",
+         "House price from area, number of rooms and distance from metro"
+        ]
+       ],
+       "hi": [
+        [
+         "Simple linear regression",
+         "एक स्वतंत्र चर",
+         "y = a + bx",
+         "पढ़ाई के घंटों से अंक"
+        ],
+        [
+         "Multiple linear regression",
+         "दो या अधिक स्वतंत्र चर",
+         "y = a + b1x1 + b2x2 + ... + bnxn",
+         "क्षेत्रफल, कमरों की संख्या और मेट्रो से दूरी से मकान का दाम"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.6 Finding the line: the least squares method",
+    "hi": "6.6 रेखा खोजना: least squares विधि"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Many lines can be drawn through a scatter plot. Which is best? For each point, the residual (error) is the vertical gap between the actual y and the y predicted by the line: residual = actual − predicted. Some residuals are positive and some negative, so we square them. The least squares method chooses the a and b that make the sum of squared residuals as small as possible. This line always passes through the point (x̄, ȳ).",
+      "hi": "Scatter plot पर कई रेखाएँ खींची जा सकती हैं। सबसे अच्छी कौन-सी है? हर बिंदु के लिए residual (त्रुटि) वास्तविक y और रेखा द्वारा अनुमानित y के बीच का ऊर्ध्वाधर अंतर है: residual = वास्तविक − अनुमानित। कुछ residuals धनात्मक और कुछ ऋणात्मक होते हैं, इसलिए हम उनका वर्ग करते हैं। Least squares विधि वे a और b चुनती है जिनसे residuals के वर्गों का योग सबसे कम हो। यह रेखा हमेशा बिंदु (x̄, ȳ) से होकर गुज़रती है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "b (slope) = Σ(x − x̄)(y − ȳ) / Σ(x − x̄)²\n         = [nΣxy − (Σx)(Σy)] / [nΣx² − (Σx)²]\n\na (intercept) = ȳ − b·x̄",
+      "hi": "b (slope) = Σ(x − x̄)(y − ȳ) / Σ(x − x̄)²\n         = [nΣxy − (Σx)(Σy)] / [nΣx² − (Σx)²]\n\na (intercept) = ȳ − b·x̄"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Using the study-hours data (1, 52), (2, 58), (3, 65), (4, 70), (5, 80), find the regression line and predict marks for 6 hours.",
+       "hi": "पढ़ाई-घंटे डेटा (1, 52), (2, 58), (3, 65), (4, 70), (5, 80) से regression line ज्ञात कीजिए और 6 घंटे के लिए अंकों का अनुमान लगाइए।"
+      },
+      "a": {
+       "en": "From 6.4: Σ(x − x̄)(y − ȳ) = 68, Σ(x − x̄)² = 10, x̄ = 3, ȳ = 65.\nb = 68 / 10 = 6.8.\na = 65 − 6.8 × 3 = 65 − 20.4 = 44.6.\nLine: y = 44.6 + 6.8x.\nCheck with the second formula: n = 5, Σx = 15, Σy = 325, Σxy = 1043, Σx² = 55. b = (5 × 1043 − 15 × 325) / (5 × 55 − 225) = (5215 − 4875) / 50 = 340 / 50 = 6.8. Same.\nPrediction for x = 6: y = 44.6 + 6.8 × 6 = 44.6 + 40.8 = 85.4 marks.\nMeaning: each extra hour of study is linked with about 6.8 more marks in this group.",
+       "hi": "6.4 से: Σ(x − x̄)(y − ȳ) = 68, Σ(x − x̄)² = 10, x̄ = 3, ȳ = 65।\nb = 68 / 10 = 6.8।\na = 65 − 6.8 × 3 = 65 − 20.4 = 44.6।\nरेखा: y = 44.6 + 6.8x।\nदूसरे सूत्र से जाँच: n = 5, Σx = 15, Σy = 325, Σxy = 1043, Σx² = 55। b = (5 × 1043 − 15 × 325) / (5 × 55 − 225) = (5215 − 4875) / 50 = 340 / 50 = 6.8। वही।\nx = 6 के लिए अनुमान: y = 44.6 + 6.8 × 6 = 44.6 + 40.8 = 85.4 अंक।\nअर्थ: इस समूह में पढ़ाई का हर अतिरिक्त घंटा लगभग 6.8 अधिक अंकों से जुड़ा है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "x",
+        "Actual y",
+        "Predicted y = 44.6 + 6.8x",
+        "Residual",
+        "Residual²"
+       ],
+       "hi": [
+        "x",
+        "वास्तविक y",
+        "अनुमानित y = 44.6 + 6.8x",
+        "Residual",
+        "Residual²"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1",
+         "52",
+         "51.4",
+         "0.6",
+         "0.36"
+        ],
+        [
+         "2",
+         "58",
+         "58.2",
+         "−0.2",
+         "0.04"
+        ],
+        [
+         "3",
+         "65",
+         "65.0",
+         "0",
+         "0"
+        ],
+        [
+         "4",
+         "70",
+         "71.8",
+         "−1.8",
+         "3.24"
+        ],
+        [
+         "5",
+         "80",
+         "78.6",
+         "1.4",
+         "1.96"
+        ]
+       ],
+       "hi": [
+        [
+         "1",
+         "52",
+         "51.4",
+         "0.6",
+         "0.36"
+        ],
+        [
+         "2",
+         "58",
+         "58.2",
+         "−0.2",
+         "0.04"
+        ],
+        [
+         "3",
+         "65",
+         "65.0",
+         "0",
+         "0"
+        ],
+        [
+         "4",
+         "70",
+         "71.8",
+         "−1.8",
+         "3.24"
+        ],
+        [
+         "5",
+         "80",
+         "78.6",
+         "1.4",
+         "1.96"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The sum of squared residuals is 5.6. Dividing by n gives the Mean Squared Error (MSE) = 5.6 / 5 = 1.12, a common measure of how well a regression line fits. Its square root, RMSE ≈ 1.06 marks, is in the same unit as y. Smaller is better.",
+      "hi": "Residuals के वर्गों का योग 5.6 है। इसे n से भाग देने पर Mean Squared Error (MSE) = 5.6 / 5 = 1.12 मिलता है, जो बताने का आम माप है कि regression line कितनी अच्छी बैठती है। इसका वर्गमूल RMSE ≈ 1.06 अंक, y की ही इकाई में है। जितना छोटा, उतना अच्छा।"
+     }
+    },
+    {
+     "formula": {
+      "en": "MSE = Σ(actual − predicted)² / n        RMSE = √MSE\nMAE = Σ|actual − predicted| / n",
+      "hi": "MSE = Σ(वास्तविक − अनुमानित)² / n        RMSE = √MSE\nMAE = Σ|वास्तविक − अनुमानित| / n"
+     }
+    },
+    {
+     "p": {
+      "en": "Practical: linear regression in MS Excel or Google Sheets. With x in A2:A6 and y in B2:B6: =SLOPE(B2:B6, A2:A6) gives 6.8 and =INTERCEPT(B2:B6, A2:A6) gives 44.6. =FORECAST(6, B2:B6, A2:A6) (FORECAST.LINEAR in newer Excel) predicts 85.4. Visually: insert a Scatter chart, right-click a point, Add Trendline → Linear, and tick 'Display Equation on chart' and 'Display R-squared value'. The chart shows y = 6.8x + 44.6 and R² ≈ 0.988 (R² is r squared for simple linear regression; it tells what fraction of the variation in y the line explains). Advanced users can also use Data → Data Analysis → Regression after enabling the Analysis ToolPak.",
+      "hi": "प्रैक्टिकल: MS Excel या Google Sheets में linear regression। A2:A6 में x और B2:B6 में y रखकर: =SLOPE(B2:B6, A2:A6) से 6.8 और =INTERCEPT(B2:B6, A2:A6) से 44.6 मिलता है। =FORECAST(6, B2:B6, A2:A6) (नए Excel में FORECAST.LINEAR) 85.4 का अनुमान देता है। दृश्य रूप में: Scatter chart डालें, किसी बिंदु पर right-click करें, Add Trendline → Linear, और 'Display Equation on chart' व 'Display R-squared value' पर टिक करें। चार्ट y = 6.8x + 44.6 और R² ≈ 0.988 दिखाता है (simple linear regression में R², r का वर्ग है; यह बताता है कि y के बदलाव का कितना भाग रेखा समझाती है)। उन्नत उपयोगकर्ता Analysis ToolPak चालू करके Data → Data Analysis → Regression भी उपयोग कर सकते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Python (advanced learners, not evaluated): NumPy can compute r and the line; scikit-learn's LinearRegression does the same as a model with fit() and predict().",
+      "hi": "Python (उन्नत शिक्षार्थियों के लिए, मूल्यांकन नहीं): NumPy, r और रेखा निकाल सकता है; scikit-learn का LinearRegression यही काम fit() और predict() वाले model के रूप में करता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\nhours = np.array([1, 2, 3, 4, 5])\nmarks = np.array([52, 58, 65, 70, 80])\nr = np.corrcoef(hours, marks)[0, 1]\nprint(\"Pearson r =\", round(r, 3))\nb, a = np.polyfit(hours, marks, 1)\nprint(\"slope b =\", round(b, 2), \" intercept a =\", round(a, 2))\nprint(\"Predicted marks for 6 hours =\", round(a + b * 6, 2))\n\nOutput:\nPearson r = 0.994\nslope b = 6.8  intercept a = 44.6\nPredicted marks for 6 hours = 85.4",
+      "hi": "import numpy as np\nhours = np.array([1, 2, 3, 4, 5])\nmarks = np.array([52, 58, 65, 70, 80])\nr = np.corrcoef(hours, marks)[0, 1]\nprint(\"Pearson r =\", round(r, 3))\nb, a = np.polyfit(hours, marks, 1)\nprint(\"slope b =\", round(b, 2), \" intercept a =\", round(a, 2))\nprint(\"Predicted marks for 6 hours =\", round(a + b * 6, 2))\n\nआउटपुट (Output):\nPearson r = 0.994\nslope b = 6.8  intercept a = 44.6\nPredicted marks for 6 hours = 85.4"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.linear_model import LinearRegression\nX = [[1], [2], [3], [4], [5]]\ny = [52, 58, 65, 70, 80]\nmodel = LinearRegression()\nmodel.fit(X, y)\nprint(\"Slope    :\", round(model.coef_[0], 2))\nprint(\"Intercept:\", round(model.intercept_, 2))\nprint(\"Prediction for 6 hours:\", round(model.predict([[6]])[0], 2))\n\nOutput:\nSlope    : 6.8\nIntercept: 44.6\nPrediction for 6 hours: 85.4",
+      "hi": "from sklearn.linear_model import LinearRegression\nX = [[1], [2], [3], [4], [5]]\ny = [52, 58, 65, 70, 80]\nmodel = LinearRegression()\nmodel.fit(X, y)\nprint(\"Slope    :\", round(model.coef_[0], 2))\nprint(\"Intercept:\", round(model.intercept_, 2))\nprint(\"Prediction for 6 hours:\", round(model.predict([[6]])[0], 2))\n\nआउटपुट (Output):\nSlope    : 6.8\nIntercept: 44.6\nPrediction for 6 hours: 85.4"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\nX = [[1], [2], [3], [4], [5]]\ny = [52, 58, 65, 70, 80]\nmodel = LinearRegression().fit(X, y)\npred = model.predict(X)\nprint(\"Predictions:\", [round(float(p), 1) for p in pred])\nprint(\"MSE:\", round(mean_squared_error(y, pred), 2))\n\nOutput:\nPredictions: [51.4, 58.2, 65.0, 71.8, 78.6]\nMSE: 1.12",
+      "hi": "from sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error\nX = [[1], [2], [3], [4], [5]]\ny = [52, 58, 65, 70, 80]\nmodel = LinearRegression().fit(X, y)\npred = model.predict(X)\nprint(\"Predictions:\", [round(float(p), 1) for p in pred])\nprint(\"MSE:\", round(mean_squared_error(y, pred), 2))\n\nआउटपुट (Output):\nPredictions: [51.4, 58.2, 65.0, 71.8, 78.6]\nMSE: 1.12"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.7 Linear regression: uses, strengths, limits",
+    "hi": "6.7 Linear regression: उपयोग, शक्तियाँ, सीमाएँ"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Sales forecasting: a kirana or online store predicting next month's sales from past months.",
+       "Salary and price prediction: salary from experience; flat price from area and location.",
+       "Agriculture: estimating crop yield from rainfall and fertiliser used.",
+       "Sports analysis: predicting a team's total from runs scored in the first 10 overs.",
+       "Medical research: relating dose of a medicine to change in blood pressure.",
+       "Market analysis: how advertising spend relates to revenue."
+      ],
+      "hi": [
+       "बिक्री का पूर्वानुमान: किराना या ऑनलाइन स्टोर पिछले महीनों से अगले महीने की बिक्री का अनुमान लगाए।",
+       "वेतन और दाम का अनुमान: अनुभव से वेतन; क्षेत्रफल और स्थान से फ़्लैट का दाम।",
+       "कृषि: वर्षा और प्रयुक्त खाद से फ़सल उपज का अनुमान।",
+       "खेल विश्लेषण: पहले 10 ओवरों के रनों से टीम के कुल स्कोर का अनुमान।",
+       "चिकित्सा शोध: दवा की मात्रा और रक्तचाप में बदलाव का संबंध।",
+       "बाज़ार विश्लेषण: विज्ञापन खर्च और आय का संबंध।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Advantages",
+        "Limitations"
+       ],
+       "hi": [
+        "लाभ",
+        "सीमाएँ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Simple to understand and explain (slope and intercept have clear meanings)",
+         "Works only for linear (straight-line) relationships"
+        ],
+        [
+         "Easy to implement, even in Excel",
+         "Very sensitive to outliers, which can tilt the line"
+        ],
+        [
+         "Fast and efficient to train, even on large data",
+         "Assumes the inputs are not strongly related to each other (no multicollinearity) in multiple regression"
+        ],
+        [
+         "Gives a useful starting point (baseline) for other models",
+         "Predicting far outside the range of the data (extrapolation) can be badly wrong"
+        ]
+       ],
+       "hi": [
+        [
+         "समझने और समझाने में सरल (slope और intercept के अर्थ साफ़)",
+         "केवल रेखीय (सीधी रेखा) संबंधों के लिए काम करता है"
+        ],
+        [
+         "Excel में भी लागू करना आसान",
+         "Outliers के प्रति बहुत संवेदनशील, जो रेखा को झुका सकते हैं"
+        ],
+        [
+         "बड़े डेटा पर भी train करना तेज़ और कुशल",
+         "Multiple regression में मानता है कि inputs आपस में ज़्यादा जुड़े नहीं हैं (no multicollinearity)"
+        ],
+        [
+         "दूसरे models के लिए उपयोगी आरंभ बिंदु (baseline)",
+         "डेटा की सीमा से बहुत बाहर अनुमान (extrapolation) बुरी तरह गलत हो सकता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "When is linear regression not suitable? (1) When there is no correlation between x and y: the line predicts nothing useful. (2) When the relationship is curved (non-linear), for example the growth of bacteria; then polynomial or other non-linear regression is better. (3) When there are strong outliers that distort the line. (4) When its assumptions are badly violated, such as inputs that are strongly related to each other, or errors that are not random.",
+      "hi": "Linear regression कब उपयुक्त नहीं? (1) जब x और y में कोई correlation न हो: रेखा कुछ उपयोगी नहीं बताती। (2) जब संबंध वक्र (non-linear) हो, जैसे बैक्टीरिया की वृद्धि; तब polynomial या अन्य non-linear regression बेहतर है। (3) जब बड़े outliers रेखा को बिगाड़ दें। (4) जब इसकी मान्यताएँ बुरी तरह टूटें, जैसे आपस में बहुत जुड़े inputs, या ऐसी त्रुटियाँ जो यादृच्छिक न हों।"
+     }
+    },
+    {
+     "note": {
+      "en": "Extrapolation warning: with y = 44.6 + 6.8x, 12 hours of study would 'predict' 126 marks out of 100, which is impossible. A model is trustworthy only near the range of data it learned from.",
+      "hi": "Extrapolation चेतावनी: y = 44.6 + 6.8x से 12 घंटे की पढ़ाई 100 में से 126 अंक का 'अनुमान' देगी, जो असंभव है। Model केवल उसी सीमा के पास भरोसेमंद है जिस डेटा से उसने सीखा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.8 Classification",
+    "hi": "6.8 Classification (वर्गीकरण)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Classification is a supervised learning task that assigns each data item to one of a set of predefined classes (labels). Think of a housing society where waste is sorted into labelled bins: wet, dry, and hazardous. A classifier does the same with data: it looks at the features of an item and puts it in the right bin.",
+      "hi": "Classification एक supervised learning कार्य है जो हर डेटा वस्तु को पहले से तय classes (labels) में से किसी एक में रखता है। एक हाउसिंग सोसाइटी सोचिए जहाँ कचरा लेबल वाले डिब्बों में छाँटा जाता है: गीला, सूखा और खतरनाक। Classifier डेटा के साथ यही करता है: वह किसी वस्तु के features देखकर उसे सही डिब्बे में रखता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Classes (categories): the possible labels, such as spam / not spam.",
+       "Features (attributes): measurable properties used to decide, such as number of links, sender, certain words.",
+       "Training data: many examples whose class is already known (labelled).",
+       "Classification model: the algorithm learns the link between features and classes from the training data.",
+       "Prediction (inference): the trained model assigns a class to a new, unseen item. Its quality is checked with accuracy, precision, recall and the confusion matrix (Class 10)."
+      ],
+      "hi": [
+       "Classes (श्रेणियाँ): संभावित लेबल, जैसे spam / not spam।",
+       "Features (गुण): निर्णय के लिए प्रयुक्त मापने योग्य गुण, जैसे links की संख्या, भेजने वाला, कुछ खास शब्द।",
+       "Training data: बहुत से उदाहरण जिनकी class पहले से ज्ञात है (labelled)।",
+       "Classification model: algorithm, training data से features और classes का संबंध सीखता है।",
+       "Prediction (inference): train हुआ model नई, अनदेखी वस्तु को class देता है। इसकी गुणवत्ता accuracy, precision, recall और confusion matrix (कक्षा 10) से जाँची जाती है।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Meaning",
+        "Examples"
+       ],
+       "hi": [
+        "प्रकार",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Binary classification",
+         "Exactly two classes",
+         "Spam or not; pass or fail; transaction fraud or genuine; disease present or absent"
+        ],
+        [
+         "Multi-class classification",
+         "More than two classes, each item gets exactly one",
+         "Identifying a plant species; reading handwritten digits 0–9 (optical character recognition); classifying a crop leaf as healthy, rust or blight"
+        ],
+        [
+         "Multi-label classification",
+         "Each item can get several labels at once",
+         "A photo tagged 'person', 'bicycle' and 'tree'; a film tagged comedy and family"
+        ],
+        [
+         "Imbalanced classification",
+         "One class is much rarer than the others",
+         "Fraud detection (very few frauds among lakhs of payments), rare-disease tests, spotting faulty products"
+        ]
+       ],
+       "hi": [
+        [
+         "Binary classification",
+         "ठीक दो classes",
+         "Spam या नहीं; pass या fail; लेन-देन धोखा या असली; रोग है या नहीं"
+        ],
+        [
+         "Multi-class classification",
+         "दो से अधिक classes, हर वस्तु को ठीक एक",
+         "पौधे की प्रजाति पहचानना; हाथ से लिखे अंक 0–9 पढ़ना (optical character recognition); फ़सल के पत्ते को स्वस्थ, rust या blight में बाँटना"
+        ],
+        [
+         "Multi-label classification",
+         "हर वस्तु को एक साथ कई लेबल मिल सकते हैं",
+         "'person', 'bicycle' और 'tree' टैग वाली फ़ोटो; comedy और family टैग वाली फ़िल्म"
+        ],
+        [
+         "Imbalanced classification",
+         "एक class बाकी से बहुत दुर्लभ",
+         "धोखाधड़ी पहचान (लाखों भुगतानों में बहुत कम धोखे), दुर्लभ रोग जाँच, खराब उत्पाद पहचानना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "In imbalanced data, accuracy can fool you. If 1 in 1000 UPI payments is fraud, a model that always says 'genuine' is 99.9% accurate but catches no fraud. Recall for the rare class matters more.",
+      "hi": "Imbalanced डेटा में accuracy धोखा दे सकती है। यदि 1000 में से 1 UPI भुगतान धोखा है, तो हमेशा 'असली' कहने वाला model 99.9% सटीक है पर एक भी धोखा नहीं पकड़ता। दुर्लभ class का recall ज़्यादा मायने रखता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.9 The k-Nearest Neighbour (k-NN) algorithm",
+    "hi": "6.9 k-Nearest Neighbour (k-NN) algorithm"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "k-NN is one of the simplest supervised learning algorithms. Its idea is 'tell me who your neighbours are and I will tell you who you are'. To classify a new point, it finds the k training points closest to it and gives it the class that most of them have (majority vote). k-NN is non-parametric (it does not assume any fixed shape for the data) and is called a lazy learner, because it does no real training: it just stores the data and does all the work when a prediction is asked. It can be used for classification and also for regression (by averaging the neighbours' values).",
+      "hi": "k-NN सबसे सरल supervised learning algorithms में से एक है। इसका विचार है 'मुझे अपने पड़ोसी बताओ, मैं बता दूँगा कि तुम कौन हो'। नए बिंदु को वर्गीकृत करने के लिए यह उसके सबसे पास के k training बिंदु खोजता है और उसे वह class देता है जो उनमें से अधिकतर की है (बहुमत मत)। k-NN non-parametric है (डेटा के किसी तय आकार की मान्यता नहीं करता) और इसे lazy learner कहते हैं, क्योंकि यह असल में training नहीं करता: बस डेटा संग्रहीत करता है और अनुमान माँगे जाने पर सारा काम करता है। इसे classification के साथ regression (पड़ोसियों के मानों का औसत लेकर) में भी प्रयोग किया जा सकता है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Choose the number of neighbours k (for example 3 or 5).",
+       "Step 2: Calculate the distance from the new point to every training point, usually the Euclidean distance.",
+       "Step 3: Sort the distances and take the k nearest neighbours.",
+       "Step 4: Count how many of these k neighbours belong to each class.",
+       "Step 5: Assign the new point to the class with the most neighbours (majority)."
+      ],
+      "hi": [
+       "चरण 1: पड़ोसियों की संख्या k चुनें (जैसे 3 या 5)।",
+       "चरण 2: नए बिंदु से हर training बिंदु की दूरी निकालें, आमतौर पर Euclidean distance।",
+       "चरण 3: दूरियों को क्रम में लगाकर k सबसे पास के पड़ोसी लें।",
+       "चरण 4: गिनें कि इन k पड़ोसियों में से कितने किस class के हैं।",
+       "चरण 5: नए बिंदु को सबसे ज़्यादा पड़ोसियों वाली class दें (बहुमत)।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "Euclidean distance between (x1, y1) and (x2, y2):\nd = √[(x2 − x1)² + (y2 − y1)²]\n\nFor n features: d = √[Σ (pi − qi)²]\nManhattan distance (another option): d = |x2 − x1| + |y2 − y1|",
+      "hi": "(x1, y1) और (x2, y2) के बीच Euclidean distance:\nd = √[(x2 − x1)² + (y2 − y1)²]\n\nn features के लिए: d = √[Σ (pi − qi)²]\nManhattan distance (दूसरा विकल्प): d = |x2 − x1| + |y2 − y1|"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Seven students are labelled Pass or Fail using two features (study hours per day, assignments done): A(1, 2) Fail, B(2, 1) Fail, C(3, 2) Fail, G(2, 4) Fail, D(6, 5) Pass, E(7, 7) Pass, F(5, 7) Pass. A new student N has (4, 4). Classify N using k = 3.",
+       "hi": "सात विद्यार्थियों को दो features (प्रतिदिन पढ़ाई के घंटे, पूरे किए assignments) से Pass या Fail लेबल किया गया है: A(1, 2) Fail, B(2, 1) Fail, C(3, 2) Fail, G(2, 4) Fail, D(6, 5) Pass, E(7, 7) Pass, F(5, 7) Pass। नए विद्यार्थी N के मान (4, 4) हैं। k = 3 से N को वर्गीकृत कीजिए।"
+      },
+      "a": {
+       "en": "Step 1: k = 3.\nStep 2: distances from N(4, 4):\nA: √(9 + 4) = √13 ≈ 3.61\nB: √(4 + 9) = √13 ≈ 3.61\nC: √(1 + 4) = √5 ≈ 2.24\nG: √(4 + 0) = 2.00\nD: √(4 + 1) = √5 ≈ 2.24\nE: √(9 + 9) = √18 ≈ 4.24\nF: √(1 + 9) = √10 ≈ 3.16\nStep 3: three nearest: G (2.00, Fail), C (2.24, Fail), D (2.24, Pass).\nStep 4: Fail = 2, Pass = 1.\nStep 5: N is classified as Fail.\nAdvice from the model: N is close to the boundary; a little more study could move N towards the Pass group.",
+       "hi": "चरण 1: k = 3।\nचरण 2: N(4, 4) से दूरियाँ:\nA: √(9 + 4) = √13 ≈ 3.61\nB: √(4 + 9) = √13 ≈ 3.61\nC: √(1 + 4) = √5 ≈ 2.24\nG: √(4 + 0) = 2.00\nD: √(4 + 1) = √5 ≈ 2.24\nE: √(9 + 9) = √18 ≈ 4.24\nF: √(1 + 9) = √10 ≈ 3.16\nचरण 3: तीन सबसे पास: G (2.00, Fail), C (2.24, Fail), D (2.24, Pass)।\nचरण 4: Fail = 2, Pass = 1।\nचरण 5: N को Fail वर्गीकृत किया गया।\nModel से सीख: N सीमा के पास है; थोड़ी और पढ़ाई N को Pass समूह की ओर ले जा सकती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Choosing k: a very small k (like 1) follows every noisy point and can overfit; a very large k smooths too much and can ignore local patterns (underfit). For two classes, pick an odd k to avoid ties. A common starting point is k ≈ √n (n = number of training points), and the best k is chosen by testing several values on validation data or with cross-validation.",
+      "hi": "k का चुनाव: बहुत छोटा k (जैसे 1) हर शोर वाले बिंदु के पीछे जाता है और overfit कर सकता है; बहुत बड़ा k बहुत अधिक चिकना कर देता है और स्थानीय पैटर्न अनदेखा कर सकता है (underfit)। दो classes के लिए बराबरी से बचने को विषम k चुनें। आम आरंभ k ≈ √n (n = training बिंदुओं की संख्या) है, और सबसे अच्छा k, validation डेटा पर या cross-validation से कई मान परखकर चुना जाता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Feature scaling matters for k-NN. If one feature is income in rupees (like 50,000) and another is age (like 30), the income difference will dominate the distance. Normalise features first (Chapter 5).",
+      "hi": "k-NN के लिए feature scaling ज़रूरी है। यदि एक feature रुपयों में आय (जैसे 50,000) और दूसरा आयु (जैसे 30) है, तो दूरी पर आय का अंतर हावी रहेगा। पहले features normalise करें (अध्याय 5)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Advantages",
+        "Limitations"
+       ],
+       "hi": [
+        "लाभ",
+        "सीमाएँ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Very easy to understand and implement",
+         "Slow and memory-heavy for large datasets, because it computes distance to every point for each prediction"
+        ],
+        [
+         "No separate training phase; new data can be added any time",
+         "Results depend on the choice of k and of the distance measure"
+        ],
+        [
+         "Works for both classification and regression, and for many classes",
+         "Needs feature scaling; unscaled features distort distances"
+        ],
+        [
+         "Makes no assumption about the shape of the data",
+         "Performs poorly with very many features (the curse of dimensionality) and can be affected by noisy or irrelevant features"
+        ]
+       ],
+       "hi": [
+        [
+         "समझने और लागू करने में बहुत आसान",
+         "बड़े datasets के लिए धीमा और अधिक memory वाला, क्योंकि हर अनुमान पर हर बिंदु से दूरी निकालता है"
+        ],
+        [
+         "अलग training चरण नहीं; नया डेटा कभी भी जोड़ सकते हैं",
+         "परिणाम k और दूरी माप के चुनाव पर निर्भर"
+        ],
+        [
+         "Classification और regression दोनों में, और कई classes के लिए काम करता है",
+         "Feature scaling चाहिए; बिना scale किए features दूरियाँ बिगाड़ते हैं"
+        ],
+        [
+         "डेटा के आकार की कोई मान्यता नहीं करता",
+         "बहुत अधिक features में खराब प्रदर्शन (curse of dimensionality) और शोर वाले या अप्रासंगिक features से प्रभावित"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Applications of k-NN: image and handwriting recognition, recommendation systems ('people similar to you also liked'), healthcare diagnosis by comparing a patient with similar past patients, text classification and sentiment analysis, and anomaly detection (a point with no close neighbours may be unusual, such as an odd bank transaction).",
+      "hi": "k-NN के उपयोग: चित्र और हस्तलेख पहचान, recommendation systems ('आप जैसे लोगों ने यह भी पसंद किया'), मरीज़ की तुलना पहले के समान मरीज़ों से करके निदान, text classification और sentiment analysis, और anomaly detection (जिस बिंदु के पास कोई पड़ोसी न हो वह असामान्य हो सकता है, जैसे बैंक का अजीब लेन-देन)।"
+     }
+    },
+    {
+     "p": {
+      "en": "Python (advanced learners, not evaluated): the same student example with scikit-learn, and k-NN on the famous Iris flower dataset with an 80:20 split.",
+      "hi": "Python (उन्नत शिक्षार्थियों के लिए, मूल्यांकन नहीं): scikit-learn से यही विद्यार्थी उदाहरण, और प्रसिद्ध Iris फूल dataset पर 80:20 split के साथ k-NN।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.neighbors import KNeighborsClassifier\n# [study hours per day, assignments done]\nX = [[1, 2], [2, 1], [3, 2], [2, 4], [6, 5], [7, 7], [5, 7]]\ny = [\"Fail\", \"Fail\", \"Fail\", \"Fail\", \"Pass\", \"Pass\", \"Pass\"]\nknn = KNeighborsClassifier(n_neighbors=3)\nknn.fit(X, y)\nprint(\"Prediction for [4, 4]:\", knn.predict([[4, 4]])[0])\n\nOutput:\nPrediction for [4, 4]: Fail",
+      "hi": "from sklearn.neighbors import KNeighborsClassifier\n# [study hours per day, assignments done]\nX = [[1, 2], [2, 1], [3, 2], [2, 4], [6, 5], [7, 7], [5, 7]]\ny = [\"Fail\", \"Fail\", \"Fail\", \"Fail\", \"Pass\", \"Pass\", \"Pass\"]\nknn = KNeighborsClassifier(n_neighbors=3)\nknn.fit(X, y)\nprint(\"Prediction for [4, 4]:\", knn.predict([[4, 4]])[0])\n\nआउटपुट (Output):\nPrediction for [4, 4]: Fail"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.metrics import accuracy_score\niris = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(\n    iris.data, iris.target, test_size=0.2, random_state=42)\nknn = KNeighborsClassifier(n_neighbors=3)\nknn.fit(X_train, y_train)\npred = knn.predict(X_test)\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nOutput:\nAccuracy: 1.0",
+      "hi": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.metrics import accuracy_score\niris = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(\n    iris.data, iris.target, test_size=0.2, random_state=42)\nknn = KNeighborsClassifier(n_neighbors=3)\nknn.fit(X_train, y_train)\npred = knn.predict(X_test)\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nआउटपुट (Output):\nAccuracy: 1.0"
+     }
+    },
+    {
+     "note": {
+      "en": "Accuracy 1.0 here means all 30 test flowers were classified correctly for this particular split. Iris is a small, clean dataset; real-world data rarely gives a perfect score.",
+      "hi": "यहाँ Accuracy 1.0 का अर्थ है इस खास split में सभी 30 test फूल सही वर्गीकृत हुए। Iris एक छोटा, साफ़ dataset है; वास्तविक दुनिया का डेटा शायद ही कभी पूरे अंक देता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.10 Unsupervised learning: clustering",
+    "hi": "6.10 Unsupervised learning: clustering"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In unsupervised learning the data has no labels. Clustering groups data points so that points in the same group (cluster) are similar to each other and different from points in other clusters. Imagine a fruit seller who empties a sack of mixed fruit and, without any list, sorts them by colour and size into heaps. Nobody told him the names; he grouped them by similarity. That is clustering.",
+      "hi": "Unsupervised learning में डेटा पर लेबल नहीं होते। Clustering डेटा बिंदुओं को ऐसे समूहों में रखता है कि एक समूह (cluster) के बिंदु आपस में मिलते-जुलते हों और दूसरे clusters के बिंदुओं से अलग हों। सोचिए एक फल विक्रेता मिले-जुले फलों का बोरा खाली करता है और बिना किसी सूची के रंग और आकार से उन्हें ढेरों में छाँटता है। किसी ने उसे नाम नहीं बताए; उसने समानता से समूह बनाए। यही clustering है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Classification",
+        "Clustering"
+       ],
+       "hi": [
+        "बिंदु",
+        "Classification",
+        "Clustering"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Learning type",
+         "Supervised",
+         "Unsupervised"
+        ],
+        [
+         "Labels in data",
+         "Yes, classes are known in advance",
+         "No, groups are discovered"
+        ],
+        [
+         "Output",
+         "A known class for each new item",
+         "Groups of similar items"
+        ],
+        [
+         "Example algorithm",
+         "k-NN",
+         "k-Means"
+        ],
+        [
+         "Example",
+         "Is this email spam?",
+         "What types of customers do we have?"
+        ]
+       ],
+       "hi": [
+        [
+         "सीखने का प्रकार",
+         "Supervised",
+         "Unsupervised"
+        ],
+        [
+         "डेटा में लेबल",
+         "हाँ, classes पहले से ज्ञात",
+         "नहीं, समूह खोजे जाते हैं"
+        ],
+        [
+         "Output",
+         "हर नई वस्तु के लिए ज्ञात class",
+         "समान वस्तुओं के समूह"
+        ],
+        [
+         "उदाहरण algorithm",
+         "k-NN",
+         "k-Means"
+        ],
+        [
+         "उदाहरण",
+         "क्या यह ईमेल spam है?",
+         "हमारे ग्राहक किस-किस प्रकार के हैं?"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Prepare the data: choose useful features and scale or transform them so that no feature dominates.",
+       "Create a similarity measure: decide how 'closeness' is measured, usually Euclidean distance.",
+       "Run a clustering algorithm such as k-Means.",
+       "Interpret the results: study each cluster, give it a meaningful name, and check whether the grouping is useful. If not, change features or the number of clusters and repeat."
+      ],
+      "hi": [
+       "डेटा तैयार करें: उपयोगी features चुनें और उन्हें scale या रूपांतरित करें ताकि कोई feature हावी न हो।",
+       "समानता माप बनाएँ: तय करें कि 'निकटता' कैसे मापी जाएगी, आमतौर पर Euclidean distance।",
+       "k-Means जैसा clustering algorithm चलाएँ।",
+       "परिणामों की व्याख्या करें: हर cluster का अध्ययन करें, उसे अर्थपूर्ण नाम दें और जाँचें कि समूह उपयोगी हैं या नहीं। यदि नहीं, features या clusters की संख्या बदलकर दोहराएँ।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type of clustering",
+        "Idea",
+        "Example algorithm"
+       ],
+       "hi": [
+        "Clustering का प्रकार",
+        "विचार",
+        "उदाहरण algorithm"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Partitioning (centroid-based)",
+         "Divide data into k non-overlapping groups, each with a centre (centroid); k must be chosen first",
+         "k-Means"
+        ],
+        [
+         "Density-based",
+         "Clusters are dense regions of points separated by sparse regions; can find clusters of any shape and mark isolated points as noise",
+         "DBSCAN"
+        ],
+        [
+         "Distribution (model)-based",
+         "Assumes data comes from a mix of probability distributions (often Gaussian/normal) and assigns each point by its probability of belonging",
+         "Gaussian Mixture Model"
+        ],
+        [
+         "Hierarchical",
+         "Builds a tree of clusters (a dendrogram) by repeatedly merging the closest groups (agglomerative) or splitting (divisive); k need not be chosen in advance",
+         "Agglomerative hierarchical clustering"
+        ]
+       ],
+       "hi": [
+        [
+         "Partitioning (centroid-based)",
+         "डेटा को k अलग समूहों में बाँटना, हर एक का केंद्र (centroid); k पहले चुनना पड़ता है",
+         "k-Means"
+        ],
+        [
+         "Density-based",
+         "Clusters बिंदुओं के घने क्षेत्र हैं जो विरल क्षेत्रों से अलग हैं; किसी भी आकार के clusters खोज सकता है और अकेले बिंदुओं को noise मानता है",
+         "DBSCAN"
+        ],
+        [
+         "Distribution (model)-based",
+         "मानता है कि डेटा probability distributions (अक्सर Gaussian/normal) के मिश्रण से आया है और हर बिंदु को उसकी संभावना से समूह देता है",
+         "Gaussian Mixture Model"
+        ],
+        [
+         "Hierarchical",
+         "सबसे पास के समूहों को बार-बार जोड़कर (agglomerative) या तोड़कर (divisive) clusters का पेड़ (dendrogram) बनाता है; k पहले से चुनना ज़रूरी नहीं",
+         "Agglomerative hierarchical clustering"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture a dendrogram as an upside-down tree: each data point is a leaf at the bottom; branches join where groups merge, and the height of a join shows how far apart the groups were. Cutting the tree at a chosen height gives the clusters.",
+      "hi": "Dendrogram को उलटे पेड़ की तरह सोचें: हर डेटा बिंदु नीचे एक पत्ती है; जहाँ समूह मिलते हैं वहाँ शाखाएँ जुड़ती हैं, और जुड़ाव की ऊँचाई बताती है कि समूह कितने दूर थे। चुनी हुई ऊँचाई पर पेड़ काटने से clusters मिलते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Applications of clustering: customer and market segmentation (budget shoppers, festive-season buyers, premium buyers), grouping news stories on the same event, image segmentation (separating road, sky and cars in a self-driving car's camera image), grouping similar songs for playlists, and anomaly detection (points that fit no cluster).",
+      "hi": "Clustering के उपयोग: ग्राहक और बाज़ार segmentation (बजट खरीदार, त्योहारी मौसम के खरीदार, प्रीमियम खरीदार), एक ही घटना की समाचार कहानियों का समूह, image segmentation (self-driving कार के कैमरा चित्र में सड़क, आकाश और कारों को अलग करना), playlists के लिए मिलते-जुलते गानों के समूह, और anomaly detection (जो बिंदु किसी cluster में फ़िट न हों)।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.11 The k-Means clustering algorithm",
+    "hi": "6.11 k-Means clustering algorithm"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "k-Means is the most popular partitioning clustering algorithm. It divides n data points into k clusters, where each point belongs to the cluster with the nearest centroid (mean point). It keeps improving the centroids until they stop changing.",
+      "hi": "k-Means सबसे लोकप्रिय partitioning clustering algorithm है। यह n डेटा बिंदुओं को k clusters में बाँटता है, जहाँ हर बिंदु उस cluster में होता है जिसका centroid (माध्य बिंदु) सबसे पास है। यह centroids को तब तक सुधारता रहता है जब तक वे बदलना बंद न कर दें।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Choose the number of clusters k.",
+       "Step 2: Pick k points as the initial centroids (randomly, or by a rule).",
+       "Step 3: Assign every data point to its nearest centroid (using distance).",
+       "Step 4: Recalculate each centroid as the mean of the points now in its cluster.",
+       "Step 5: Reassign every point to the nearest new centroid.",
+       "Step 6: Repeat steps 4 and 5 until no point changes cluster (the centroids stop moving). The final clusters are ready."
+      ],
+      "hi": [
+       "चरण 1: clusters की संख्या k चुनें।",
+       "चरण 2: k बिंदुओं को आरंभिक centroids चुनें (यादृच्छिक रूप से, या किसी नियम से)।",
+       "चरण 3: हर डेटा बिंदु को सबसे पास के centroid को सौंपें (दूरी से)।",
+       "चरण 4: हर centroid को उसके cluster में अब मौजूद बिंदुओं के माध्य के रूप में फिर से निकालें।",
+       "चरण 5: हर बिंदु को सबसे पास के नए centroid को फिर से सौंपें।",
+       "चरण 6: चरण 4 और 5 तब तक दोहराएँ जब तक कोई बिंदु cluster न बदले (centroids रुक जाएँ)। अंतिम clusters तैयार हैं।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Daily screen time (hours × 10, so 25 means 2.5 h) of 9 students: 2, 3, 4, 10, 11, 12, 20, 25, 30. Use k-Means with k = 2 and initial centroids 3 and 11.",
+       "hi": "9 विद्यार्थियों का दैनिक screen time (घंटे × 10, यानी 25 = 2.5 घंटे): 2, 3, 4, 10, 11, 12, 20, 25, 30। k = 2 और आरंभिक centroids 3 और 11 लेकर k-Means लगाइए।"
+      },
+      "a": {
+       "en": "Iteration 1 (centroids 3, 11): points nearer 3 are 2, 3, 4 (4 is 1 from 3 and 7 from 11); the rest are nearer 11.\nC1 = {2, 3, 4}, C2 = {10, 11, 12, 20, 25, 30}.\nNew centroids: C1 = 9/3 = 3; C2 = 108/6 = 18.\nIteration 2 (3, 18): 10 is 7 from 3 and 8 from 18, so joins C1. 11 is 8 from 3 and 7 from 18, so stays in C2.\nC1 = {2, 3, 4, 10}, C2 = {11, 12, 20, 25, 30}. New centroids: 19/4 = 4.75; 98/5 = 19.6.\nIteration 3 (4.75, 19.6): 11 is 6.25 from 4.75 and 8.6 from 19.6, so joins C1; 12 is 7.25 vs 7.6, so joins C1.\nC1 = {2, 3, 4, 10, 11, 12}, C2 = {20, 25, 30}. New centroids: 42/6 = 7; 75/3 = 25.\nIteration 4 (7, 25): every point stays in the same cluster, so the algorithm stops.\nFinal: Cluster 1 (lower screen time) = 2, 3, 4, 10, 11, 12 with centroid 7; Cluster 2 (high screen time) = 20, 25, 30 with centroid 25.",
+       "hi": "Iteration 1 (centroids 3, 11): 3 के पास वाले बिंदु 2, 3, 4 हैं (4, 3 से 1 और 11 से 7 दूर); बाकी 11 के पास हैं।\nC1 = {2, 3, 4}, C2 = {10, 11, 12, 20, 25, 30}।\nनए centroids: C1 = 9/3 = 3; C2 = 108/6 = 18।\nIteration 2 (3, 18): 10, 3 से 7 और 18 से 8 दूर है, इसलिए C1 में जाता है। 11, 3 से 8 और 18 से 7 दूर है, इसलिए C2 में रहता है।\nC1 = {2, 3, 4, 10}, C2 = {11, 12, 20, 25, 30}। नए centroids: 19/4 = 4.75; 98/5 = 19.6।\nIteration 3 (4.75, 19.6): 11, 4.75 से 6.25 और 19.6 से 8.6 दूर है, इसलिए C1 में; 12 के लिए 7.25 बनाम 7.6, इसलिए C1 में।\nC1 = {2, 3, 4, 10, 11, 12}, C2 = {20, 25, 30}। नए centroids: 42/6 = 7; 75/3 = 25।\nIteration 4 (7, 25): हर बिंदु उसी cluster में रहता है, इसलिए algorithm रुक जाता है।\nअंतिम: Cluster 1 (कम screen time) = 2, 3, 4, 10, 11, 12, centroid 7; Cluster 2 (अधिक screen time) = 20, 25, 30, centroid 25।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Choosing k with the elbow method: run k-Means for k = 1, 2, 3, ... and record the inertia (also called WCSS, within-cluster sum of squares: the total squared distance of points from their centroids). Inertia always falls as k grows, but after a point the fall becomes small. Plot inertia against k; the bend that looks like an elbow is a good k. For the Iris flower data, inertia drops from 681.4 (k = 1) to 152.3 (k = 2) and 78.9 (k = 3), then only to 57.2 (k = 4) and 46.4 (k = 5), so k = 3 is a sensible choice (Iris really has 3 species). The business purpose also guides k, for example a shop may want exactly 3 customer groups.",
+      "hi": "Elbow method से k चुनना: k = 1, 2, 3, ... के लिए k-Means चलाएँ और inertia लिखें (इसे WCSS, within-cluster sum of squares भी कहते हैं: बिंदुओं की उनके centroids से कुल वर्गित दूरी)। k बढ़ने पर inertia हमेशा घटता है, पर एक बिंदु के बाद गिरावट छोटी हो जाती है। k के सापेक्ष inertia का ग्राफ़ बनाएँ; कोहनी (elbow) जैसा मोड़ अच्छा k है। Iris फूल डेटा में inertia 681.4 (k = 1) से 152.3 (k = 2) और 78.9 (k = 3) तक गिरता है, फिर केवल 57.2 (k = 4) और 46.4 (k = 5) तक, इसलिए k = 3 समझदारी भरा चुनाव है (Iris में सच में 3 प्रजातियाँ हैं)। व्यावसायिक उद्देश्य भी k तय करने में मदद करता है, जैसे कोई दुकान ठीक 3 ग्राहक समूह चाहती हो।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Advantages",
+        "Limitations"
+       ],
+       "hi": [
+        "लाभ",
+        "सीमाएँ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Simple and easy to implement",
+         "k must be chosen in advance"
+        ],
+        [
+         "Fast; works on large datasets with modest computing power",
+         "Results depend on the initial centroids; different starts can give different clusters (so it is run several times)"
+        ],
+        [
+         "Works with many features",
+         "Assumes clusters are roughly round (spherical) and of similar size; fails on long or odd-shaped clusters"
+        ],
+        [
+         "Useful across many fields: marketing, images, documents",
+         "Sensitive to outliers, which pull centroids away; may settle on a sub-optimal solution (local minimum)"
+        ]
+       ],
+       "hi": [
+        [
+         "सरल और लागू करने में आसान",
+         "k पहले से चुनना पड़ता है"
+        ],
+        [
+         "तेज़; सामान्य कंप्यूटिंग शक्ति में बड़े datasets पर काम करता है",
+         "परिणाम आरंभिक centroids पर निर्भर; अलग शुरुआत से अलग clusters मिल सकते हैं (इसलिए इसे कई बार चलाते हैं)"
+        ],
+        [
+         "कई features के साथ काम करता है",
+         "मानता है कि clusters लगभग गोल (spherical) और समान आकार के हैं; लंबे या अजीब आकार के clusters पर असफल"
+        ],
+        [
+         "कई क्षेत्रों में उपयोगी: मार्केटिंग, चित्र, दस्तावेज़",
+         "Outliers के प्रति संवेदनशील, जो centroids को खींच लेते हैं; उप-इष्टतम हल (local minimum) पर रुक सकता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Applications of k-Means: customer segmentation for offers, image segmentation and colour compression (reducing a photo to k main colours), grouping documents by topic, deciding locations of delivery hubs or ATMs near clusters of customers, and spotting unusual points far from all centroids.",
+      "hi": "k-Means के उपयोग: ऑफ़र के लिए ग्राहक segmentation, image segmentation और रंग संपीड़न (फ़ोटो को k मुख्य रंगों में घटाना), विषय अनुसार दस्तावेज़ समूह, ग्राहकों के समूहों के पास delivery hubs या ATMs की जगह तय करना, और सभी centroids से दूर असामान्य बिंदु पहचानना।"
+     }
+    },
+    {
+     "p": {
+      "en": "Python (advanced learners, not evaluated): six customers described by (visits per month, average bill in hundreds of rupees). k-Means with k = 2 separates occasional low spenders from frequent high spenders. Cluster numbers 0 and 1 are just names; they can swap between runs.",
+      "hi": "Python (उन्नत शिक्षार्थियों के लिए, मूल्यांकन नहीं): छह ग्राहक (प्रति माह आना, सैकड़ों रुपयों में औसत बिल) से वर्णित। k = 2 वाला k-Means कभी-कभार आने वाले कम खर्च वालों को बार-बार आने वाले ज़्यादा खर्च वालों से अलग करता है। Cluster संख्या 0 और 1 केवल नाम हैं; अलग बार चलाने पर बदल सकती हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.cluster import KMeans\n# [monthly visits, average bill in Rs hundreds]\nX = [[2, 3], [3, 2], [2, 2], [9, 8], [10, 9], [8, 9]]\nkm = KMeans(n_clusters=2, n_init=10, random_state=0)\nkm.fit(X)\nprint(\"Labels   :\", km.labels_)\nprint(\"Centroids:\", km.cluster_centers_)\n\nOutput:\nLabels   : [1 1 1 0 0 0]\nCentroids: [[9.         8.66666667]\n [2.33333333 2.33333333]]",
+      "hi": "from sklearn.cluster import KMeans\n# [monthly visits, average bill in Rs hundreds]\nX = [[2, 3], [3, 2], [2, 2], [9, 8], [10, 9], [8, 9]]\nkm = KMeans(n_clusters=2, n_init=10, random_state=0)\nkm.fit(X)\nprint(\"Labels   :\", km.labels_)\nprint(\"Centroids:\", km.cluster_centers_)\n\nआउटपुट (Output):\nLabels   : [1 1 1 0 0 0]\nCentroids: [[9.         8.66666667]\n [2.33333333 2.33333333]]"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.cluster import KMeans\nfrom sklearn.datasets import load_iris\nX = load_iris().data\nfor k in range(1, 6):\n    km = KMeans(n_clusters=k, n_init=10, random_state=0).fit(X)\n    print(k, round(km.inertia_, 1))\n\nOutput:\n1 681.4\n2 152.3\n3 78.9\n4 57.2\n5 46.4",
+      "hi": "from sklearn.cluster import KMeans\nfrom sklearn.datasets import load_iris\nX = load_iris().data\nfor k in range(1, 6):\n    km = KMeans(n_clusters=k, n_init=10, random_state=0).fit(X)\n    print(k, round(km.inertia_, 1))\n\nआउटपुट (Output):\n1 681.4\n2 152.3\n3 78.9\n4 57.2\n5 46.4"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Algorithm",
+        "Learning type",
+        "Task",
+        "Output",
+        "Key setting"
+       ],
+       "hi": [
+        "Algorithm",
+        "सीखने का प्रकार",
+        "कार्य",
+        "Output",
+        "मुख्य setting"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Linear regression",
+         "Supervised",
+         "Regression",
+         "A number",
+         "Slope b and intercept a (learned)"
+        ],
+        [
+         "k-NN",
+         "Supervised",
+         "Classification (also regression)",
+         "A class label",
+         "k, distance measure (chosen)"
+        ],
+        [
+         "k-Means",
+         "Unsupervised",
+         "Clustering",
+         "Cluster for each point, and centroids",
+         "k (chosen), initial centroids"
+        ]
+       ],
+       "hi": [
+        [
+         "Linear regression",
+         "Supervised",
+         "Regression",
+         "एक संख्या",
+         "Slope b और intercept a (सीखे जाते हैं)"
+        ],
+        [
+         "k-NN",
+         "Supervised",
+         "Classification (regression भी)",
+         "एक class लेबल",
+         "k, दूरी माप (चुने जाते हैं)"
+        ],
+        [
+         "k-Means",
+         "Unsupervised",
+         "Clustering",
+         "हर बिंदु का cluster, और centroids",
+         "k (चुना जाता है), आरंभिक centroids"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Do not confuse the two k's. In k-NN, k is the number of neighbours that vote. In k-Means, k is the number of clusters to form.",
+      "hi": "दोनों k को न मिलाएँ। k-NN में k, वोट देने वाले पड़ोसियों की संख्या है। k-Means में k, बनाए जाने वाले clusters की संख्या है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "6.12 Activities and responsible use",
+    "hi": "6.12 गतिविधियाँ और ज़िम्मेदार उपयोग"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (unplugged): Human k-NN",
+       "hi": "गतिविधि 1 (बिना कंप्यूटर): मानव k-NN"
+      },
+      "a": {
+       "en": "Aim: feel how k-NN votes.\nYou need: chalk or tape to draw two axes on the floor, and cards marked 'Cricket fan' and 'Football fan'.\nDo: label the axes 'hours of cricket watched per week' and 'hours of football watched per week'. Ten students stand at their own coordinates holding their card. A new student stands at their coordinates without a card. Classmates find the 3 nearest people (measure with a tape) and vote.\nObserve: the new student's predicted label; then try k = 1 and k = 5 and see if it changes.\nLearn: k-NN uses only distance and majority; the choice of k matters.",
+       "hi": "उद्देश्य: महसूस करना कि k-NN कैसे वोट करता है।\nसामग्री: फ़र्श पर दो अक्ष बनाने के लिए चॉक या टेप, और 'Cricket fan' व 'Football fan' लिखे कार्ड।\nक्या करें: अक्षों पर 'प्रति सप्ताह क्रिकेट देखने के घंटे' और 'प्रति सप्ताह फ़ुटबॉल देखने के घंटे' लिखें। दस विद्यार्थी अपने निर्देशांकों पर कार्ड लेकर खड़े हों। एक नया विद्यार्थी बिना कार्ड के अपने निर्देशांक पर खड़ा हो। सहपाठी 3 सबसे पास के लोग (फ़ीते से नापकर) खोजें और वोट करें।\nअवलोकन: नए विद्यार्थी का अनुमानित लेबल; फिर k = 1 और k = 5 आज़माएँ और देखें कि बदलता है या नहीं।\nसीख: k-NN केवल दूरी और बहुमत का उपयोग करता है; k का चुनाव मायने रखता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2 (unplugged): Clustering a class",
+       "hi": "गतिविधि 2 (बिना कंप्यूटर): कक्षा का clustering"
+      },
+      "a": {
+       "en": "Aim: run k-Means by hand.\nYou need: graph paper, each student's (height in cm, shoe size).\nDo: plot all points. Choose k = 2 and pick two students as starting centroids. Assign each point to the nearer centroid, compute the new centroids (mean height, mean shoe size), reassign, and repeat until nothing changes.\nObserve: how many rounds it takes; try different starting centroids.\nLearn: k-Means repeats assign-and-update; the start can change the result.",
+       "hi": "उद्देश्य: हाथ से k-Means चलाना।\nसामग्री: ग्राफ़ पेपर, हर विद्यार्थी के (cm में लंबाई, जूते का साइज़)।\nक्या करें: सभी बिंदु plot करें। k = 2 चुनें और दो विद्यार्थियों को आरंभिक centroids मानें। हर बिंदु को पास के centroid को दें, नए centroids (औसत लंबाई, औसत जूता साइज़) निकालें, फिर से सौंपें, और कुछ न बदलने तक दोहराएँ।\nअवलोकन: कितने दौर लगते हैं; अलग आरंभिक centroids आज़माएँ।\nसीख: k-Means सौंपना-और-अद्यतन करना दोहराता है; शुरुआत परिणाम बदल सकती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3 (screen): Regression in a spreadsheet",
+       "hi": "गतिविधि 3 (स्क्रीन): स्प्रेडशीट में regression"
+      },
+      "a": {
+       "en": "Aim: complete the CBSE Excel practicals.\nYou need: MS Excel or free Google Sheets (an adult should help with sign-up for students under 13).\nDo: enter 10 pairs, for example monthly temperature and electricity units used at home. Use =CORREL() for r, =SLOPE() and =INTERCEPT() for the line, draw a scatter chart and add a linear trendline with its equation and R².\nObserve: is r positive or negative? Does the trendline match SLOPE and INTERCEPT?\nLearn: regression is a line chosen to make squared errors smallest.",
+       "hi": "उद्देश्य: CBSE के Excel प्रैक्टिकल पूरे करना।\nसामग्री: MS Excel या मुफ़्त Google Sheets (13 वर्ष से कम विद्यार्थियों के sign-up में कोई बड़ा मदद करे)।\nक्या करें: 10 जोड़े लिखें, जैसे मासिक तापमान और घर में खर्च हुई बिजली की यूनिट। r के लिए =CORREL(), रेखा के लिए =SLOPE() और =INTERCEPT() उपयोग करें, scatter chart बनाएँ और समीकरण व R² सहित linear trendline जोड़ें।\nअवलोकन: r धनात्मक है या ऋणात्मक? क्या trendline, SLOPE और INTERCEPT से मेल खाती है?\nसीख: Regression वह रेखा है जो वर्गित त्रुटियों को सबसे छोटा करने के लिए चुनी जाती है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4 (screen): Teachable Machine classifier",
+       "hi": "गतिविधि 4 (स्क्रीन): Teachable Machine classifier"
+      },
+      "a": {
+       "en": "Aim: see classification without code.\nYou need: Google Teachable Machine in a phone or laptop browser (free; works without an account for trying out).\nDo: create classes such as 'Wet waste' and 'Dry waste', show 30 to 50 camera images of each, train, and test with new objects. Then add images from different lighting and backgrounds and retrain.\nObserve: confidence for each class; mistakes on unusual objects; improvement after adding diverse images.\nLearn: classifiers learn from labelled examples, and diverse data improves them.",
+       "hi": "उद्देश्य: बिना code के classification देखना।\nसामग्री: फ़ोन या लैपटॉप ब्राउज़र में Google Teachable Machine (मुफ़्त; आज़माने के लिए खाते के बिना चलता है)।\nक्या करें: 'गीला कचरा' और 'सूखा कचरा' जैसी classes बनाएँ, हर एक की 30 से 50 कैमरा तस्वीरें दिखाएँ, train करें, और नई वस्तुओं से परखें। फिर अलग रोशनी और पृष्ठभूमि की तस्वीरें जोड़कर दोबारा train करें।\nअवलोकन: हर class का confidence; असामान्य वस्तुओं पर गलतियाँ; विविध तस्वीरें जोड़ने के बाद सुधार।\nसीख: Classifiers लेबल वाले उदाहरणों से सीखते हैं, और विविध डेटा उन्हें बेहतर बनाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Responsible use: ML predictions are probabilities, not certainties. A loan or admission model trained on biased past decisions can repeat that bias against some groups, so such models must be tested for fairness and a human should review important decisions. Customer clustering should respect privacy and consent. Do not upload classmates' photos or personal data to online tools without permission, and always check an AI's answer before relying on it.",
+      "hi": "ज़िम्मेदार उपयोग: ML के अनुमान संभावनाएँ हैं, निश्चितताएँ नहीं। पक्षपाती पुराने निर्णयों पर train हुआ loan या admission model कुछ समूहों के विरुद्ध वही पक्षपात दोहरा सकता है, इसलिए ऐसे models की निष्पक्षता जाँचनी चाहिए और महत्वपूर्ण निर्णयों की समीक्षा किसी व्यक्ति को करनी चाहिए। ग्राहक clustering में निजता और सहमति का सम्मान हो। सहपाठियों की फ़ोटो या निजी डेटा बिना अनुमति ऑनलाइन tools पर न डालें, और AI के उत्तर पर भरोसा करने से पहले उसे हमेशा जाँचें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking a strong correlation proves that x causes y. Fix: correlation shows association only; causation needs experiments or deeper study.",
+   "Reading r as the slope. Fix: r gives strength and direction (−1 to +1); the slope b gives the change in y per unit of x.",
+   "Concluding there is no relation when r ≈ 0. Fix: r measures only linear relation; draw a scatter plot to check for curves.",
+   "Swapping the ranges in Excel's SLOPE/INTERCEPT. Fix: the y-range comes first: =SLOPE(known_y's, known_x's).",
+   "Using the regression line to predict far outside the data range. Fix: predict only near the data; extrapolation can give impossible answers.",
+   "Calling k-NN or k-Means unsupervised/supervised wrongly. Fix: k-NN is supervised (labels), k-Means is unsupervised (no labels).",
+   "Confusing the k in k-NN with the k in k-Means. Fix: k-NN's k = neighbours that vote; k-Means' k = number of clusters.",
+   "Forgetting to square and add all differences in Euclidean distance, or forgetting the square root. Fix: d = √[(x2 − x1)² + (y2 − y1)²].",
+   "Running k-NN or k-Means on unscaled features. Fix: normalise features so one large-valued feature does not dominate distance.",
+   "Stopping k-Means after one assignment. Fix: keep recomputing centroids and reassigning until no point changes cluster."
+  ],
+  "hi": [
+   "सोचना कि मज़बूत correlation सिद्ध करता है कि x, y का कारण है। सुधार: correlation केवल संबंध दिखाता है; causation के लिए प्रयोग या गहरा अध्ययन चाहिए।",
+   "r को slope समझना। सुधार: r मज़बूती और दिशा (−1 से +1) बताता है; slope b, x की प्रति इकाई y में बदलाव बताता है।",
+   "r ≈ 0 होने पर मान लेना कि कोई संबंध नहीं। सुधार: r केवल रेखीय संबंध मापता है; वक्र देखने के लिए scatter plot बनाएँ।",
+   "Excel के SLOPE/INTERCEPT में ranges उलट देना। सुधार: पहले y-range आती है: =SLOPE(known_y's, known_x's)।",
+   "Regression line से डेटा सीमा से बहुत बाहर अनुमान लगाना। सुधार: केवल डेटा के पास अनुमान लगाएँ; extrapolation असंभव उत्तर दे सकता है।",
+   "k-NN या k-Means को गलत रूप से unsupervised/supervised कहना। सुधार: k-NN supervised है (लेबल), k-Means unsupervised है (लेबल नहीं)।",
+   "k-NN के k को k-Means के k से मिलाना। सुधार: k-NN का k = वोट देने वाले पड़ोसी; k-Means का k = clusters की संख्या।",
+   "Euclidean distance में सभी अंतरों का वर्ग करके जोड़ना या वर्गमूल लेना भूलना। सुधार: d = √[(x2 − x1)² + (y2 − y1)²]।",
+   "बिना scale किए features पर k-NN या k-Means चलाना। सुधार: features normalise करें ताकि बड़े मान वाला एक feature दूरी पर हावी न हो।",
+   "एक बार सौंपने के बाद k-Means रोक देना। सुधार: तब तक centroids निकालते और फिर से सौंपते रहें जब तक कोई बिंदु cluster न बदले।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Machine learning",
+    "hi": "Machine learning"
+   },
+   "d": {
+    "en": "Branch of AI where computers learn patterns from data to make predictions without explicit rules for every case.",
+    "hi": "AI की शाखा जिसमें कंप्यूटर हर स्थिति के लिए स्पष्ट नियम के बिना डेटा से पैटर्न सीखकर अनुमान लगाते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Supervised learning",
+    "hi": "Supervised learning"
+   },
+   "d": {
+    "en": "Learning from labelled data (inputs with correct outputs).",
+    "hi": "लेबल वाले डेटा (सही outputs सहित inputs) से सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unsupervised learning",
+    "hi": "Unsupervised learning"
+   },
+   "d": {
+    "en": "Learning patterns or groups from unlabelled data.",
+    "hi": "बिना लेबल वाले डेटा से पैटर्न या समूह सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reinforcement learning",
+    "hi": "Reinforcement learning"
+   },
+   "d": {
+    "en": "Learning by trial and error using rewards and penalties.",
+    "hi": "इनाम और दंड से प्रयास-त्रुटि द्वारा सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Feature",
+    "hi": "Feature"
+   },
+   "d": {
+    "en": "An input property (independent variable) used for prediction.",
+    "hi": "अनुमान के लिए प्रयुक्त input गुण (स्वतंत्र चर)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Label / target",
+    "hi": "Label / target"
+   },
+   "d": {
+    "en": "The output (dependent variable) the model predicts.",
+    "hi": "वह output (आश्रित चर) जिसका model अनुमान लगाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Correlation",
+    "hi": "Correlation (सहसंबंध)"
+   },
+   "d": {
+    "en": "A measure of how two variables move together.",
+    "hi": "दो चर साथ-साथ कैसे बदलते हैं, इसका माप।"
+   }
+  },
+  {
+   "t": {
+    "en": "Causation",
+    "hi": "Causation (कार्य-कारण)"
+   },
+   "d": {
+    "en": "One event actually causing another.",
+    "hi": "एक घटना का वास्तव में दूसरी का कारण होना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pearson's r",
+    "hi": "Pearson का r"
+   },
+   "d": {
+    "en": "Correlation coefficient from −1 to +1 for linear relationships.",
+    "hi": "रेखीय संबंधों के लिए −1 से +1 तक का correlation coefficient।"
+   }
+  },
+  {
+   "t": {
+    "en": "Regression",
+    "hi": "Regression (प्रतिगमन)"
+   },
+   "d": {
+    "en": "Supervised method that predicts a continuous value from inputs.",
+    "hi": "Inputs से सतत मान का अनुमान लगाने वाली supervised विधि।"
+   }
+  },
+  {
+   "t": {
+    "en": "Regression line",
+    "hi": "Regression line"
+   },
+   "d": {
+    "en": "Best-fit straight line through a scatter plot.",
+    "hi": "Scatter plot पर best-fit सीधी रेखा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Slope",
+    "hi": "Slope (ढलान)"
+   },
+   "d": {
+    "en": "Change in y per unit increase in x (b).",
+    "hi": "x की प्रति इकाई वृद्धि पर y में बदलाव (b)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Intercept",
+    "hi": "Intercept (अंतःखंड)"
+   },
+   "d": {
+    "en": "Value of y when x = 0 (a).",
+    "hi": "x = 0 पर y का मान (a)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Residual",
+    "hi": "Residual"
+   },
+   "d": {
+    "en": "Actual value minus predicted value.",
+    "hi": "वास्तविक मान घटा अनुमानित मान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Least squares method",
+    "hi": "Least squares विधि"
+   },
+   "d": {
+    "en": "Choosing the line that makes the sum of squared residuals smallest.",
+    "hi": "वह रेखा चुनना जिससे residuals के वर्गों का योग सबसे कम हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "MSE",
+    "hi": "MSE"
+   },
+   "d": {
+    "en": "Mean squared error: average of squared residuals.",
+    "hi": "Mean squared error: residuals के वर्गों का औसत।"
+   }
+  },
+  {
+   "t": {
+    "en": "Multiple linear regression",
+    "hi": "Multiple linear regression"
+   },
+   "d": {
+    "en": "Linear regression with two or more input variables.",
+    "hi": "दो या अधिक input चरों वाला linear regression।"
+   }
+  },
+  {
+   "t": {
+    "en": "Extrapolation",
+    "hi": "Extrapolation"
+   },
+   "d": {
+    "en": "Predicting outside the range of the training data.",
+    "hi": "Training डेटा की सीमा से बाहर अनुमान लगाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification",
+    "hi": "Classification (वर्गीकरण)"
+   },
+   "d": {
+    "en": "Assigning items to predefined classes.",
+    "hi": "वस्तुओं को पहले से तय classes में रखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Binary classification",
+    "hi": "Binary classification"
+   },
+   "d": {
+    "en": "Classification with exactly two classes.",
+    "hi": "ठीक दो classes वाला classification।"
+   }
+  },
+  {
+   "t": {
+    "en": "Multi-class classification",
+    "hi": "Multi-class classification"
+   },
+   "d": {
+    "en": "More than two classes; one per item.",
+    "hi": "दो से अधिक classes; हर वस्तु को एक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Multi-label classification",
+    "hi": "Multi-label classification"
+   },
+   "d": {
+    "en": "An item can have several labels at once.",
+    "hi": "एक वस्तु को एक साथ कई लेबल मिल सकते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Imbalanced classification",
+    "hi": "Imbalanced classification"
+   },
+   "d": {
+    "en": "One class is much rarer than others.",
+    "hi": "एक class बाकी से बहुत दुर्लभ।"
+   }
+  },
+  {
+   "t": {
+    "en": "k-NN",
+    "hi": "k-NN"
+   },
+   "d": {
+    "en": "Classifies a point by majority vote of its k nearest labelled neighbours.",
+    "hi": "किसी बिंदु को उसके k सबसे पास के लेबल वाले पड़ोसियों के बहुमत से वर्गीकृत करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Euclidean distance",
+    "hi": "Euclidean distance"
+   },
+   "d": {
+    "en": "Straight-line distance: √[Σ(difference)²].",
+    "hi": "सीधी रेखा की दूरी: √[Σ(अंतर)²]।"
+   }
+  },
+  {
+   "t": {
+    "en": "Lazy learner",
+    "hi": "Lazy learner"
+   },
+   "d": {
+    "en": "Algorithm that stores data and computes only at prediction time, like k-NN.",
+    "hi": "Algorithm जो डेटा संग्रहीत करता है और केवल अनुमान के समय गणना करता है, जैसे k-NN।"
+   }
+  },
+  {
+   "t": {
+    "en": "Curse of dimensionality",
+    "hi": "Curse of dimensionality"
+   },
+   "d": {
+    "en": "Distance-based methods work poorly when there are very many features.",
+    "hi": "बहुत अधिक features होने पर दूरी-आधारित विधियाँ खराब काम करती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Clustering",
+    "hi": "Clustering"
+   },
+   "d": {
+    "en": "Grouping unlabelled data by similarity.",
+    "hi": "बिना लेबल के डेटा को समानता से समूहों में बाँटना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Centroid",
+    "hi": "Centroid"
+   },
+   "d": {
+    "en": "The mean (centre) point of a cluster.",
+    "hi": "Cluster का माध्य (केंद्र) बिंदु।"
+   }
+  },
+  {
+   "t": {
+    "en": "k-Means",
+    "hi": "k-Means"
+   },
+   "d": {
+    "en": "Partitioning algorithm that forms k clusters around centroids by repeated assign-and-update.",
+    "hi": "Partitioning algorithm जो बार-बार सौंपने-और-अद्यतन से centroids के चारों ओर k clusters बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dendrogram",
+    "hi": "Dendrogram"
+   },
+   "d": {
+    "en": "Tree diagram produced by hierarchical clustering.",
+    "hi": "Hierarchical clustering से बना पेड़ आरेख।"
+   }
+  },
+  {
+   "t": {
+    "en": "Elbow method",
+    "hi": "Elbow method"
+   },
+   "d": {
+    "en": "Choosing k where the inertia (WCSS) curve bends.",
+    "hi": "जहाँ inertia (WCSS) वक्र मुड़ता है वहाँ k चुनना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Inertia (WCSS)",
+    "hi": "Inertia (WCSS)"
+   },
+   "d": {
+    "en": "Sum of squared distances of points from their cluster centroids.",
+    "hi": "बिंदुओं की उनके cluster centroids से वर्गित दूरियों का योग।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Predicting the price of a used car is an example of: (a) classification (b) regression (c) clustering (d) reinforcement learning",
+    "hi": "MCQ: पुरानी कार के दाम का अनुमान किसका उदाहरण है: (a) classification (b) regression (c) clustering (d) reinforcement learning"
+   },
+   "a": {
+    "en": "(b) Regression, because the output is a continuous number.",
+    "hi": "(b) Regression, क्योंकि output एक सतत संख्या है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: k-Means is a/an ______ algorithm. (a) supervised classification (b) supervised regression (c) unsupervised clustering (d) reinforcement",
+    "hi": "MCQ: k-Means एक ______ algorithm है। (a) supervised classification (b) supervised regression (c) unsupervised clustering (d) reinforcement"
+   },
+   "a": {
+    "en": "(c) Unsupervised clustering.",
+    "hi": "(c) Unsupervised clustering।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: A Pearson r of −0.95 shows: (a) weak positive (b) strong negative (c) no correlation (d) strong positive",
+    "hi": "MCQ: −0.95 का Pearson r दर्शाता है: (a) कमज़ोर धनात्मक (b) मज़बूत ऋणात्मक (c) कोई correlation नहीं (d) मज़बूत धनात्मक"
+   },
+   "a": {
+    "en": "(b) Strong negative correlation.",
+    "hi": "(b) मज़बूत ऋणात्मक correlation।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Tagging one photo as 'beach', 'sunset' and 'people' is: (a) binary (b) multi-class (c) multi-label (d) imbalanced classification",
+    "hi": "MCQ: एक फ़ोटो को 'beach', 'sunset' और 'people' टैग करना है: (a) binary (b) multi-class (c) multi-label (d) imbalanced classification"
+   },
+   "a": {
+    "en": "(c) Multi-label classification.",
+    "hi": "(c) Multi-label classification।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: In y = a + bx, b is called the ______ and a is called the ______.",
+    "hi": "रिक्त स्थान भरें: y = a + bx में b को ______ और a को ______ कहते हैं।"
+   },
+   "a": {
+    "en": "slope; intercept",
+    "hi": "slope (ढलान); intercept (अंतःखंड)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: k-NN is called a ______ learner because it does no work until a prediction is needed.",
+    "hi": "रिक्त स्थान भरें: k-NN को ______ learner कहते हैं क्योंकि यह अनुमान की ज़रूरत तक कोई काम नहीं करता।"
+   },
+   "a": {
+    "en": "lazy",
+    "hi": "lazy (आलसी)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: Correlation always implies causation.",
+    "hi": "सही या गलत: Correlation का अर्थ हमेशा causation होता है।"
+   },
+   "a": {
+    "en": "False. Two variables can move together because of a third factor or by chance.",
+    "hi": "गलत। दो चर किसी तीसरे कारण से या संयोग से साथ बदल सकते हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: Hierarchical clustering needs the number of clusters to be fixed before starting.",
+    "hi": "सही या गलत: Hierarchical clustering में शुरू करने से पहले clusters की संख्या तय करनी पड़ती है।"
+   },
+   "a": {
+    "en": "False. It builds a dendrogram; the number of clusters can be chosen afterwards by cutting the tree.",
+    "hi": "गलत। यह dendrogram बनाता है; clusters की संख्या बाद में पेड़ काटकर चुनी जा सकती है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between supervised and unsupervised learning with one example each.",
+    "hi": "Supervised और unsupervised learning में एक-एक उदाहरण सहित अंतर बताइए।"
+   },
+   "a": {
+    "en": "Supervised learning uses labelled data, where each example has the correct answer, and learns to predict the answer for new data. Example: predicting whether an email is spam using emails already marked spam/not spam.\nUnsupervised learning uses unlabelled data and finds hidden patterns or groups. Example: grouping customers of an online store by buying behaviour without predefined groups.",
+    "hi": "Supervised learning लेबल वाले डेटा का उपयोग करता है, जहाँ हर उदाहरण के साथ सही उत्तर होता है, और नए डेटा के लिए उत्तर का अनुमान सीखता है। उदाहरण: पहले से spam/not spam चिह्नित ईमेल से यह बताना कि नया ईमेल spam है या नहीं।\nUnsupervised learning बिना लेबल वाले डेटा का उपयोग करता है और छिपे पैटर्न या समूह खोजता है। उदाहरण: बिना पहले से तय समूहों के ऑनलाइन स्टोर के ग्राहकों को खरीदारी व्यवहार से समूहों में बाँटना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find Pearson's r for x: 1, 2, 3, 4 and y: 2, 4, 5, 9.",
+    "hi": "x: 1, 2, 3, 4 और y: 2, 4, 5, 9 के लिए Pearson का r ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "x̄ = 2.5, ȳ = 5.\nx − x̄: −1.5, −0.5, 0.5, 1.5; y − ȳ: −3, −1, 0, 4.\nProducts: 4.5, 0.5, 0, 6. Sum = 11.\nΣ(x − x̄)² = 2.25 + 0.25 + 0.25 + 2.25 = 5. Σ(y − ȳ)² = 9 + 1 + 0 + 16 = 26.\nr = 11 / √(5 × 26) = 11 / √130 = 11 / 11.40 ≈ 0.965: strong positive.",
+    "hi": "x̄ = 2.5, ȳ = 5।\nx − x̄: −1.5, −0.5, 0.5, 1.5; y − ȳ: −3, −1, 0, 4।\nगुणनफल: 4.5, 0.5, 0, 6। योग = 11।\nΣ(x − x̄)² = 2.25 + 0.25 + 0.25 + 2.25 = 5। Σ(y − ȳ)² = 9 + 1 + 0 + 16 = 26।\nr = 11 / √(5 × 26) = 11 / √130 = 11 / 11.40 ≈ 0.965: मज़बूत धनात्मक।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "For the same data (x: 1, 2, 3, 4; y: 2, 4, 5, 9), find the regression line and predict y when x = 5.",
+    "hi": "उसी डेटा (x: 1, 2, 3, 4; y: 2, 4, 5, 9) के लिए regression line ज्ञात कीजिए और x = 5 पर y का अनुमान लगाइए।"
+   },
+   "a": {
+    "en": "b = Σ(x − x̄)(y − ȳ) / Σ(x − x̄)² = 11 / 5 = 2.2.\na = ȳ − b x̄ = 5 − 2.2 × 2.5 = 5 − 5.5 = −0.5.\nLine: y = −0.5 + 2.2x.\nFor x = 5: y = −0.5 + 11 = 10.5.",
+    "hi": "b = Σ(x − x̄)(y − ȳ) / Σ(x − x̄)² = 11 / 5 = 2.2।\na = ȳ − b x̄ = 5 − 2.2 × 2.5 = 5 − 5.5 = −0.5।\nरेखा: y = −0.5 + 2.2x।\nx = 5 पर: y = −0.5 + 11 = 10.5।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "A shop's model is Sales = 2000 + 150 × (advertising spend in thousand rupees). Interpret the numbers and predict sales for spend of Rs 8 thousand.",
+    "hi": "एक दुकान का model है बिक्री = 2000 + 150 × (हज़ार रुपयों में विज्ञापन खर्च)। संख्याओं की व्याख्या कीजिए और Rs 8 हज़ार खर्च पर बिक्री का अनुमान लगाइए।"
+   },
+   "a": {
+    "en": "Intercept 2000: expected sales with no advertising. Slope 150: each extra thousand rupees of advertising is linked with 150 more units of sales.\nSales = 2000 + 150 × 8 = 2000 + 1200 = 3200 units.",
+    "hi": "Intercept 2000: बिना विज्ञापन के अपेक्षित बिक्री। Slope 150: विज्ञापन पर हर अतिरिक्त हज़ार रुपये 150 अधिक इकाई बिक्री से जुड़े हैं।\nबिक्री = 2000 + 150 × 8 = 2000 + 1200 = 3200 इकाइयाँ।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Find the Euclidean distance between P(2, 3) and Q(5, 7).",
+    "hi": "P(2, 3) और Q(5, 7) के बीच Euclidean distance ज्ञात कीजिए।"
+   },
+   "a": {
+    "en": "d = √[(5 − 2)² + (7 − 3)²] = √(9 + 16) = √25 = 5.",
+    "hi": "d = √[(5 − 2)² + (7 − 3)²] = √(9 + 16) = √25 = 5।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "List the steps of the k-NN algorithm.",
+    "hi": "k-NN algorithm के चरण लिखिए।"
+   },
+   "a": {
+    "en": "1. Choose k.\n2. Compute the distance (usually Euclidean) from the new point to all training points.\n3. Select the k nearest points.\n4. Count the neighbours in each class.\n5. Assign the class with the majority.",
+    "hi": "1. k चुनें।\n2. नए बिंदु से सभी training बिंदुओं की दूरी (आमतौर पर Euclidean) निकालें।\n3. k सबसे पास के बिंदु चुनें।\n4. हर class में पड़ोसी गिनें।\n5. बहुमत वाली class दें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): k-NN needs feature scaling. Reason (R): k-NN is based on distances, which are dominated by features with large values.",
+    "hi": "अभिकथन (A): k-NN को feature scaling चाहिए। कारण (R): k-NN दूरियों पर आधारित है, जिन पर बड़े मान वाले features हावी होते हैं।"
+   },
+   "a": {
+    "en": "Both A and R are true, and R correctly explains A.",
+    "hi": "A और R दोनों सही हैं, और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): k-Means always gives the same clusters whatever the starting centroids. Reason (R): k-Means updates centroids as means of assigned points.",
+    "hi": "अभिकथन (A): k-Means आरंभिक centroids कुछ भी हों, हमेशा एक जैसे clusters देता है। कारण (R): k-Means centroids को सौंपे गए बिंदुओं के माध्य के रूप में अद्यतन करता है।"
+   },
+   "a": {
+    "en": "A is false (different starts can give different results), but R is true.",
+    "hi": "A गलत है (अलग शुरुआत अलग परिणाम दे सकती है), पर R सही है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Name the four types of clustering and give one feature of each.",
+    "hi": "Clustering के चार प्रकार बताइए और हर एक की एक विशेषता लिखिए।"
+   },
+   "a": {
+    "en": "Partitioning (centroid-based): k groups around centroids, e.g. k-Means.\nDensity-based: clusters are dense regions; any shape; marks noise, e.g. DBSCAN.\nDistribution-based: points grouped by probability of belonging to a distribution such as Gaussian.\nHierarchical: builds a dendrogram; k need not be fixed in advance.",
+    "hi": "Partitioning (centroid-based): centroids के चारों ओर k समूह, जैसे k-Means।\nDensity-based: clusters घने क्षेत्र हैं; कोई भी आकार; noise चिह्नित करता है, जैसे DBSCAN।\nDistribution-based: Gaussian जैसे distribution से संबंध की संभावना से बिंदुओं का समूह।\nHierarchical: dendrogram बनाता है; k पहले से तय करना ज़रूरी नहीं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Using k-NN with k = 3, classify the fruit X (weight 145 g, sweetness 6) given: (150, 7) Mango, (170, 8) Mango, (140, 6) Mango, (130, 3) Lemon, (120, 2) Lemon, (125, 4) Lemon.",
+    "hi": "k = 3 वाले k-NN से फल X (वज़न 145 g, मिठास 6) को वर्गीकृत कीजिए, दिया है: (150, 7) Mango, (170, 8) Mango, (140, 6) Mango, (130, 3) Lemon, (120, 2) Lemon, (125, 4) Lemon।"
+   },
+   "a": {
+    "en": "Distances from (145, 6):\n(150, 7): √(25 + 1) = √26 ≈ 5.10 Mango\n(170, 8): √(625 + 4) = √629 ≈ 25.08 Mango\n(140, 6): √(25 + 0) = 5.00 Mango\n(130, 3): √(225 + 9) = √234 ≈ 15.30 Lemon\n(120, 2): √(625 + 16) = √641 ≈ 25.32 Lemon\n(125, 4): √(400 + 4) = √404 ≈ 20.10 Lemon\n3 nearest: 5.00 Mango, 5.10 Mango, 15.30 Lemon. Majority = Mango.\n(scikit-learn's KNeighborsClassifier also predicts Mango.) Note that weight dominates the distance here, which is why scaling is usually done.",
+    "hi": "(145, 6) से दूरियाँ:\n(150, 7): √(25 + 1) = √26 ≈ 5.10 Mango\n(170, 8): √(625 + 4) = √629 ≈ 25.08 Mango\n(140, 6): √(25 + 0) = 5.00 Mango\n(130, 3): √(225 + 9) = √234 ≈ 15.30 Lemon\n(120, 2): √(625 + 16) = √641 ≈ 25.32 Lemon\n(125, 4): √(400 + 4) = √404 ≈ 20.10 Lemon\n3 सबसे पास: 5.00 Mango, 5.10 Mango, 15.30 Lemon। बहुमत = Mango।\n(scikit-learn का KNeighborsClassifier भी Mango बताता है।) ध्यान दें कि यहाँ दूरी पर वज़न हावी है, इसीलिए आमतौर पर scaling की जाती है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Apply k-Means (k = 2) to 1, 2, 6, 7, 8, 15 with initial centroids 1 and 8. Show each iteration.",
+    "hi": "1, 2, 6, 7, 8, 15 पर आरंभिक centroids 1 और 8 लेकर k-Means (k = 2) लगाइए। हर iteration दिखाइए।"
+   },
+   "a": {
+    "en": "Iteration 1 (1, 8): 1, 2 nearer 1 (2 is 1 from 1 and 6 from 8). 6, 7, 8, 15 nearer 8 (6 is 5 from 1 and 2 from 8).\nC1 = {1, 2}, C2 = {6, 7, 8, 15}. New centroids: 1.5 and 36/4 = 9.\nIteration 2 (1.5, 9): 6 is 4.5 from 1.5 and 3 from 9, so C2. No point changes cluster.\nFinal: C1 = {1, 2} (centroid 1.5), C2 = {6, 7, 8, 15} (centroid 9). Notice how the outlier 15 pulls the second centroid up from 7 to 9.",
+    "hi": "Iteration 1 (1, 8): 1, 2, 1 के पास (2, 1 से 1 और 8 से 6 दूर)। 6, 7, 8, 15, 8 के पास (6, 1 से 5 और 8 से 2 दूर)।\nC1 = {1, 2}, C2 = {6, 7, 8, 15}। नए centroids: 1.5 और 36/4 = 9।\nIteration 2 (1.5, 9): 6, 1.5 से 4.5 और 9 से 3 दूर, इसलिए C2। कोई बिंदु cluster नहीं बदलता।\nअंतिम: C1 = {1, 2} (centroid 1.5), C2 = {6, 7, 8, 15} (centroid 9)। ध्यान दें कि outlier 15 दूसरे centroid को 7 से 9 तक खींच लेता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A bank has data on lakhs of UPI transactions, of which a tiny fraction are confirmed frauds. (a) Is this regression or classification? Which type? (b) Why can accuracy be misleading? (c) Suggest how k-NN could be used and one limitation.",
+    "hi": "केस स्टडी: एक बैंक के पास लाखों UPI लेन-देन का डेटा है, जिनमें से बहुत छोटा भाग पुष्ट धोखाधड़ी है। (a) यह regression है या classification? कौन-सा प्रकार? (b) Accuracy भ्रामक क्यों हो सकती है? (c) k-NN का उपयोग कैसे हो सकता है और एक सीमा बताइए।"
+   },
+   "a": {
+    "en": "(a) Classification: binary (fraud / genuine) and imbalanced, since frauds are rare.\n(b) A model that labels every transaction 'genuine' would still be over 99% accurate but would catch no fraud; recall for the fraud class is more important.\n(c) Use features such as amount, time of day, new device, distance from usual location (scaled). For a new transaction, find its k nearest past transactions; if most are frauds, flag it for checking. Limitation: with lakhs of records, computing distances to all of them for every payment is slow.",
+    "hi": "(a) Classification: binary (धोखा / असली) और imbalanced, क्योंकि धोखे दुर्लभ हैं।\n(b) हर लेन-देन को 'असली' कहने वाला model भी 99% से अधिक सटीक होगा पर एक भी धोखा नहीं पकड़ेगा; धोखा class का recall ज़्यादा महत्वपूर्ण है।\n(c) राशि, दिन का समय, नया device, सामान्य स्थान से दूरी जैसे (scaled) features लें। नए लेन-देन के k सबसे पास के पुराने लेन-देन खोजें; यदि अधिकतर धोखे हैं, तो जाँच के लिए चिह्नित करें। सीमा: लाखों रिकॉर्ड के साथ हर भुगतान पर सभी से दूरी निकालना धीमा है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain simple linear regression. How is the best-fit line found? Give its advantages, limitations and two situations where it is not suitable.",
+    "hi": "दीर्घ उत्तर: Simple linear regression समझाइए। Best-fit line कैसे खोजी जाती है? इसके लाभ, सीमाएँ और दो स्थितियाँ बताइए जहाँ यह उपयुक्त नहीं।"
+   },
+   "a": {
+    "en": "Simple linear regression predicts a continuous y from one input x using y = a + bx (+ error e), where a is the intercept and b the slope.\nBest-fit line: the least squares method chooses a and b that minimise the sum of squared residuals. b = Σ(x − x̄)(y − ȳ)/Σ(x − x̄)², a = ȳ − b x̄. The line passes through (x̄, ȳ).\nAdvantages: simple, easy to explain, fast, available in Excel (SLOPE, INTERCEPT, trendline).\nLimitations: only linear relations, sensitive to outliers, extrapolation is risky.\nNot suitable: when x and y are not correlated; when the relation is curved, such as population growth; when big outliers exist.",
+    "hi": "Simple linear regression एक input x से सतत y का अनुमान y = a + bx (+ त्रुटि e) से लगाता है, जहाँ a intercept और b slope है।\nBest-fit line: least squares विधि वे a और b चुनती है जो residuals के वर्गों का योग न्यूनतम करें। b = Σ(x − x̄)(y − ȳ)/Σ(x − x̄)², a = ȳ − b x̄। रेखा (x̄, ȳ) से होकर जाती है।\nलाभ: सरल, समझाने में आसान, तेज़, Excel में उपलब्ध (SLOPE, INTERCEPT, trendline)।\nसीमाएँ: केवल रेखीय संबंध, outliers के प्रति संवेदनशील, extrapolation जोखिम भरा।\nउपयुक्त नहीं: जब x और y सहसंबंधित न हों; जब संबंध वक्र हो, जैसे जनसंख्या वृद्धि; जब बड़े outliers हों।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Explain the k-Means algorithm with its steps, the elbow method, two applications and three limitations.",
+    "hi": "दीर्घ उत्तर: k-Means algorithm को उसके चरणों, elbow method, दो उपयोगों और तीन सीमाओं सहित समझाइए।"
+   },
+   "a": {
+    "en": "k-Means is an unsupervised, centroid-based clustering algorithm.\nSteps: choose k; pick k initial centroids; assign each point to the nearest centroid; recompute each centroid as the mean of its points; reassign; repeat until no point changes cluster.\nElbow method: compute inertia (sum of squared distances to centroids) for k = 1, 2, 3, ...; choose the k where the curve bends and further gains are small.\nApplications: customer segmentation for targeted offers; image segmentation or colour compression; grouping documents.\nLimitations: k must be chosen in advance; results depend on initial centroids; assumes round clusters of similar size; sensitive to outliers.",
+    "hi": "k-Means एक unsupervised, centroid-आधारित clustering algorithm है।\nचरण: k चुनें; k आरंभिक centroids लें; हर बिंदु को सबसे पास के centroid को दें; हर centroid को उसके बिंदुओं का माध्य बनाकर फिर निकालें; फिर से सौंपें; तब तक दोहराएँ जब तक कोई बिंदु cluster न बदले।\nElbow method: k = 1, 2, 3, ... के लिए inertia (centroids से वर्गित दूरियों का योग) निकालें; वह k चुनें जहाँ वक्र मुड़ता है और आगे लाभ कम है।\nउपयोग: लक्षित ऑफ़र के लिए ग्राहक segmentation; image segmentation या रंग संपीड़न; दस्तावेज़ों का समूह।\nसीमाएँ: k पहले चुनना पड़ता है; परिणाम आरंभिक centroids पर निर्भर; गोल और समान आकार के clusters मानता है; outliers के प्रति संवेदनशील।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking: A city finds that areas with more mobile towers have more hospital visits (r = 0.8). A news post claims 'mobile towers make people sick'. Is the claim justified? Explain.",
+    "hi": "चिंतन: एक शहर पाता है कि जिन इलाकों में अधिक मोबाइल टावर हैं वहाँ अस्पताल जाने के मामले भी अधिक हैं (r = 0.8)। एक न्यूज़ पोस्ट दावा करती है 'मोबाइल टावर लोगों को बीमार करते हैं'। क्या दावा उचित है? समझाइए।"
+   },
+   "a": {
+    "en": "No. A high r shows correlation, not causation. A hidden third variable explains both: densely populated areas have more people, so they have more towers and also more hospital visits. To test causation one would need a careful study that compares areas with similar population. A data-literate reader should not forward such claims without evidence.",
+    "hi": "नहीं। ऊँचा r, correlation दिखाता है, causation नहीं। एक छिपा तीसरा चर दोनों को समझाता है: घनी आबादी वाले इलाकों में ज़्यादा लोग होते हैं, इसलिए वहाँ ज़्यादा टावर और ज़्यादा अस्पताल यात्राएँ भी होती हैं। Causation जाँचने के लिए समान जनसंख्या वाले इलाकों की तुलना करने वाला सावधान अध्ययन चाहिए। डेटा-साक्षर पाठक को ऐसे दावे बिना प्रमाण के आगे नहीं भेजने चाहिए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: Write Excel formulas to find r, slope, intercept and the prediction for x = 6 when x is in A2:A6 and y in B2:B6.",
+    "hi": "गतिविधि प्रश्न: जब x, A2:A6 में और y, B2:B6 में हो, तो r, slope, intercept और x = 6 के अनुमान के लिए Excel सूत्र लिखिए।"
+   },
+   "a": {
+    "en": "r: =CORREL(A2:A6, B2:B6) or =PEARSON(A2:A6, B2:B6)\nSlope: =SLOPE(B2:B6, A2:A6)\nIntercept: =INTERCEPT(B2:B6, A2:A6)\nPrediction: =FORECAST(6, B2:B6, A2:A6) or =FORECAST.LINEAR(6, B2:B6, A2:A6)\nWith the study-hours data these give 0.994, 6.8, 44.6 and 85.4.",
+    "hi": "r: =CORREL(A2:A6, B2:B6) या =PEARSON(A2:A6, B2:B6)\nSlope: =SLOPE(B2:B6, A2:A6)\nIntercept: =INTERCEPT(B2:B6, A2:A6)\nअनुमान: =FORECAST(6, B2:B6, A2:A6) या =FORECAST.LINEAR(6, B2:B6, A2:A6)\nपढ़ाई-घंटे डेटा पर ये 0.994, 6.8, 44.6 और 85.4 देते हैं।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Machine learning lets computers learn rules from examples (data) instead of being given every rule.",
+   "Supervised learning uses labelled data (regression for numbers, classification for classes); unsupervised learning finds groups in unlabelled data; reinforcement learning learns from rewards.",
+   "Correlation can be positive, negative or zero; correlation does not imply causation.",
+   "Pearson's r = Σ(x − x̄)(y − ȳ)/√[Σ(x − x̄)²Σ(y − ȳ)²] lies between −1 and +1 and assumes numeric, linear data without outliers.",
+   "Simple linear regression: y = a + bx + e; a is intercept, b is slope.",
+   "Least squares: b = Σ(x − x̄)(y − ȳ)/Σ(x − x̄)², a = ȳ − b x̄; the line passes through (x̄, ȳ); MSE measures fit.",
+   "Excel: CORREL/PEARSON for r, SLOPE, INTERCEPT, FORECAST and a linear trendline with equation and R².",
+   "Regression is unsuitable with no correlation, non-linear relations, strong outliers, or violated assumptions; avoid extrapolation.",
+   "Classification has classes, features, training data, a model and prediction; types are binary, multi-class, multi-label and imbalanced.",
+   "k-NN: choose k, compute Euclidean distances, take k nearest, majority vote; it is a lazy, non-parametric learner that needs feature scaling.",
+   "Clustering groups unlabelled data; types are partitioning, density-based, distribution-based and hierarchical (dendrogram).",
+   "k-Means: choose k, pick centroids, assign, recompute means, repeat until stable; choose k with the elbow method.",
+   "k-Means depends on initial centroids, needs k in advance, assumes round clusters and is sensitive to outliers.",
+   "ML predictions should be checked for fairness and privacy, and important decisions should involve humans."
+  ],
+  "hi": [
+   "Machine learning कंप्यूटर को हर नियम दिए जाने के बजाय उदाहरणों (डेटा) से नियम सीखने देता है।",
+   "Supervised learning लेबल वाला डेटा लेता है (संख्याओं के लिए regression, classes के लिए classification); unsupervised learning बिना लेबल के डेटा में समूह खोजता है; reinforcement learning इनाम से सीखता है।",
+   "Correlation धनात्मक, ऋणात्मक या शून्य हो सकता है; correlation का अर्थ causation नहीं।",
+   "Pearson का r = Σ(x − x̄)(y − ȳ)/√[Σ(x − x̄)²Σ(y − ȳ)²] −1 और +1 के बीच होता है और संख्यात्मक, रेखीय, बिना outliers के डेटा मानता है।",
+   "Simple linear regression: y = a + bx + e; a intercept है, b slope है।",
+   "Least squares: b = Σ(x − x̄)(y − ȳ)/Σ(x − x̄)², a = ȳ − b x̄; रेखा (x̄, ȳ) से होकर जाती है; MSE बताता है रेखा कितनी अच्छी बैठी।",
+   "Excel: r के लिए CORREL/PEARSON, SLOPE, INTERCEPT, FORECAST और समीकरण व R² सहित linear trendline।",
+   "Correlation न होने, non-linear संबंध, बड़े outliers, या टूटी मान्यताओं में regression उपयुक्त नहीं; extrapolation से बचें।",
+   "Classification में classes, features, training data, model और prediction होते हैं; प्रकार हैं binary, multi-class, multi-label और imbalanced।",
+   "k-NN: k चुनें, Euclidean दूरियाँ निकालें, k सबसे पास लें, बहुमत वोट; यह lazy, non-parametric learner है जिसे feature scaling चाहिए।",
+   "Clustering बिना लेबल के डेटा को समूहों में बाँटता है; प्रकार हैं partitioning, density-based, distribution-based और hierarchical (dendrogram)।",
+   "k-Means: k चुनें, centroids लें, सौंपें, माध्य फिर निकालें, स्थिर होने तक दोहराएँ; elbow method से k चुनें।",
+   "k-Means आरंभिक centroids पर निर्भर है, पहले k चाहिए, गोल clusters मानता है और outliers के प्रति संवेदनशील है।",
+   "ML के अनुमानों की निष्पक्षता और निजता जाँचनी चाहिए, और महत्वपूर्ण निर्णयों में मनुष्य शामिल हों।"
+  ]
+ }
+}

@@ -1,0 +1,2063 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "11",
+ "id": "ch7",
+ "intro": {
+  "en": "How does your phone understand 'Kal subah 6 baje ka alarm laga do'? This chapter shows how linguistics (the science of language) and computer science come together in Natural Language Processing (NLP). You will see why human language is so hard for machines, how text is broken into tokens and analysed in five phases, how chatbots are built, and where NLP is used in daily life.",
+  "hi": "आपका फ़ोन 'कल सुबह 6 बजे का alarm लगा दो' कैसे समझ लेता है? यह अध्याय दिखाता है कि भाषाविज्ञान (भाषा का विज्ञान) और कंप्यूटर विज्ञान Natural Language Processing (NLP) में कैसे मिलते हैं। आप देखेंगे कि मानव भाषा मशीनों के लिए इतनी कठिन क्यों है, text को tokens में तोड़कर पाँच चरणों में कैसे विश्लेषित किया जाता है, chatbots कैसे बनते हैं, और रोज़मर्रा के जीवन में NLP कहाँ उपयोग होता है।"
+ },
+ "learn": {
+  "en": [
+   "Why human language is complex for computers",
+   "What linguistics and NLP are, with NLU and NLG",
+   "Structured vs unstructured data; segmentation, tokens, entities, relationships and concepts",
+   "Emotion detection vs sentiment analysis (with a working Python example)",
+   "The classification problem and confidence values",
+   "Chatbots: rule-based vs AI-powered, frontend/backend, intent, entity, dialog",
+   "The five phases of NLP: lexical, syntactic, semantic, discourse integration, pragmatic",
+   "Stemming, lemmatization, POS tags and syntax trees",
+   "Applications of NLP and two business case studies",
+   "Safe and smart use of chatbots"
+  ],
+  "hi": [
+   "मानव भाषा कंप्यूटर के लिए जटिल क्यों है",
+   "भाषाविज्ञान और NLP क्या हैं, NLU और NLG सहित",
+   "Structured बनाम unstructured data; segmentation, tokens, entities, relationships और concepts",
+   "Emotion detection बनाम sentiment analysis (चलते Python उदाहरण सहित)",
+   "Classification problem और confidence values",
+   "Chatbots: rule-based बनाम AI-powered, frontend/backend, intent, entity, dialog",
+   "NLP के पाँच चरण: lexical, syntactic, semantic, discourse integration, pragmatic",
+   "Stemming, lemmatization, POS tags और syntax trees",
+   "NLP के अनुप्रयोग और दो व्यावसायिक case studies",
+   "Chatbots का सुरक्षित और समझदारी भरा उपयोग"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "7.1 Why is human language so hard for computers?",
+    "hi": "7.1 मानव भाषा कंप्यूटर के लिए इतनी कठिन क्यों है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think about how easily you talk with your friends. You use short forms, jokes, Hinglish, tone of voice and even silence, and your friend still understands you. A computer does not have this everyday experience. It only sees a string of characters or a sound wave. Teaching a machine to understand language therefore needs ideas from two subjects: linguistics (the study of language) and computer science (the study of computation and programs). This chapter is about how the two work together.",
+      "hi": "सोचिए कि आप अपने दोस्तों से कितनी आसानी से बात करते हैं। आप छोटे शब्द, मज़ाक, हिंग्लिश, आवाज़ का उतार-चढ़ाव और कभी-कभी चुप्पी तक का इस्तेमाल करते हैं, फिर भी दोस्त समझ जाता है। कंप्यूटर के पास यह रोज़मर्रा का अनुभव नहीं होता। उसे केवल अक्षरों की एक लड़ी या ध्वनि की एक तरंग दिखती है। इसलिए मशीन को भाषा समझाने के लिए दो विषयों के विचार चाहिए: भाषाविज्ञान (linguistics, भाषा का अध्ययन) और कंप्यूटर विज्ञान (computation और programs का अध्ययन)। यह अध्याय इसी बारे में है कि ये दोनों मिलकर कैसे काम करते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Linguistics",
+       "hi": "भाषाविज्ञान (Linguistics)"
+      },
+      "text": {
+       "en": "Linguistics is the scientific study of language: how words are formed, how sentences are built, what they mean and how people use them in real situations. Applied linguistics uses these principles for practical goals in fields such as education, advertising, communication and Natural Language Processing (NLP).",
+       "hi": "भाषाविज्ञान भाषा का वैज्ञानिक अध्ययन है: शब्द कैसे बनते हैं, वाक्य कैसे रचे जाते हैं, उनका अर्थ क्या है और लोग वास्तविक परिस्थितियों में उनका प्रयोग कैसे करते हैं। व्यावहारिक भाषाविज्ञान (applied linguistics) इन सिद्धांतों का उपयोग शिक्षा, विज्ञापन, संचार और Natural Language Processing (NLP) जैसे क्षेत्रों में व्यावहारिक लक्ष्यों के लिए करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Linguists study language at several levels. Knowing these levels helps us write clearer messages and, for AI, build programs that handle language step by step.",
+      "hi": "भाषावैज्ञानिक भाषा को कई स्तरों पर पढ़ते हैं। इन स्तरों को जानने से हम साफ़ संदेश लिख पाते हैं, और AI के लिए ऐसे programs बना पाते हैं जो भाषा को चरण-दर-चरण संभालें।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Area of language study",
+        "What it looks at",
+        "Small example"
+       ],
+       "hi": [
+        "भाषा अध्ययन का क्षेत्र",
+        "यह क्या देखता है",
+        "छोटा उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Structure (morphology and syntax)",
+         "How words are built from parts and how words are arranged into sentences",
+         "'un + happy + ness'; 'Riya eats mangoes' is correct order, 'Mangoes Riya eats' sounds odd in English"
+        ],
+        [
+         "Semantics",
+         "The literal meaning of words and sentences",
+         "'bank' can mean a river bank or a money bank"
+        ],
+        [
+         "Pragmatics",
+         "The intended meaning in a situation",
+         "'Can you pass the salt?' is a request, not a question about your ability"
+        ],
+        [
+         "Sociolinguistics",
+         "How language changes with society, region, age and group",
+         "'Bro, chill' among friends vs 'Please relax, sir' with a teacher"
+        ]
+       ],
+       "hi": [
+        [
+         "संरचना (रूप-विज्ञान और वाक्य-रचना)",
+         "शब्द हिस्सों से कैसे बनते हैं और वाक्य में शब्द कैसे सजते हैं",
+         "'un + happy + ness'; 'Riya eats mangoes' सही क्रम है, 'Mangoes Riya eats' अंग्रेज़ी में अटपटा लगता है"
+        ],
+        [
+         "अर्थ-विज्ञान (Semantics)",
+         "शब्दों और वाक्यों का शाब्दिक अर्थ",
+         "'bank' का अर्थ नदी का किनारा भी हो सकता है और पैसों का बैंक भी"
+        ],
+        [
+         "व्यावहारिक अर्थ (Pragmatics)",
+         "किसी स्थिति में बोलने वाले का असली इरादा",
+         "'क्या आप नमक पास कर सकते हैं?' एक अनुरोध है, आपकी क्षमता पर प्रश्न नहीं"
+        ],
+        [
+         "समाज-भाषाविज्ञान (Sociolinguistics)",
+         "समाज, क्षेत्र, उम्र और समूह के साथ भाषा कैसे बदलती है",
+         "दोस्तों में 'भाई, chill कर' और शिक्षक से 'कृपया शांत रहिए, सर'"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why is language complex? Here are the main reasons a machine gets confused:",
+      "hi": "भाषा जटिल क्यों है? मशीन के भ्रमित होने के मुख्य कारण ये हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Ambiguity: one word or sentence can have more than one meaning. 'I saw the man with the telescope' – who has the telescope?",
+       "Idioms and metaphors: 'It is raining cats and dogs' or 'नौ दो ग्यारह हो गया' cannot be understood word by word; they need cultural knowledge.",
+       "Sarcasm and humour: 'Wow, great job breaking the window!' uses a positive word with a negative meaning.",
+       "Informal language: slang, short forms and emojis ('gr8', 'brb', 'scene kya hai?').",
+       "Code-mixing: Indians often mix languages in one sentence, such as 'Kal meeting cancel ho gayi'. A model trained only on pure English or pure Hindi may fail.",
+       "Same sound, different words: 'their/there', 'मान/मन' in speech recognition; accents and background noise make it harder.",
+       "Grammar that hides simple ideas: very long sentences, double negatives ('not unhappy') and changed word order."
+      ],
+      "hi": [
+       "अस्पष्टता (Ambiguity): एक शब्द या वाक्य के एक से अधिक अर्थ हो सकते हैं। 'I saw the man with the telescope' – दूरबीन किसके पास है?",
+       "मुहावरे और रूपक: 'It is raining cats and dogs' या 'नौ दो ग्यारह हो गया' को शब्द-दर-शब्द नहीं समझा जा सकता; इनके लिए सांस्कृतिक ज्ञान चाहिए।",
+       "व्यंग्य और हास्य: 'वाह, खिड़की तोड़कर क्या कमाल किया!' में अच्छा शब्द है पर अर्थ नकारात्मक है।",
+       "अनौपचारिक भाषा: slang, छोटे रूप और emoji ('gr8', 'brb', 'scene kya hai?')।",
+       "भाषाओं का मिश्रण (code-mixing): भारतीय अक्सर एक ही वाक्य में भाषाएँ मिलाते हैं, जैसे 'Kal meeting cancel ho gayi'। केवल शुद्ध अंग्रेज़ी या शुद्ध हिंदी पर प्रशिक्षित model गलती कर सकता है।",
+       "एक जैसी ध्वनि, अलग शब्द: speech recognition में 'their/there', 'मान/मन'; अलग-अलग लहजे और शोर से कठिनाई और बढ़ती है।",
+       "व्याकरण जो सरल बात को उलझा दे: बहुत लंबे वाक्य, दोहरा नकार ('not unhappy') और बदला हुआ शब्द-क्रम।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity (unplugged): The telephone game. Aim: to see how easily a message gets changed.",
+       "hi": "गतिविधि (बिना कंप्यूटर): टेलीफ़ोन खेल। उद्देश्य: देखना कि संदेश कितनी आसानी से बदल जाता है।"
+      },
+      "a": {
+       "en": "What you need: 8–10 students in a line, one written sentence such as 'The new library opens on Monday at nine near the old banyan tree'.\nWhat to do: the first student reads it and whispers it once to the next; each passes it on; the last student says it aloud.\nWhat you observe: words are dropped, replaced by similar-sounding words, or the order changes.\nWhat it teaches: even humans who share a language mis-hear and mis-interpret. A machine faces the same problems (noise, similar sounds, missing context) and has no common sense to fill the gaps, so NLP must be designed carefully.",
+       "hi": "क्या चाहिए: एक पंक्ति में 8–10 विद्यार्थी, एक लिखा हुआ वाक्य जैसे 'नई लाइब्रेरी सोमवार को नौ बजे पुराने बरगद के पेड़ के पास खुलेगी'।\nक्या करें: पहला विद्यार्थी पढ़कर अगले के कान में एक बार फुसफुसाए; हर कोई आगे बढ़ाए; आख़िरी विद्यार्थी ज़ोर से बोले।\nक्या दिखता है: शब्द छूट जाते हैं, मिलते-जुलते शब्दों से बदल जाते हैं या क्रम बदल जाता है।\nइससे क्या सीखते हैं: एक ही भाषा बोलने वाले मनुष्य भी गलत सुनते और गलत समझते हैं। मशीन के सामने भी यही समस्याएँ (शोर, मिलती ध्वनियाँ, संदर्भ की कमी) होती हैं और उसके पास कमियाँ भरने के लिए सामान्य समझ नहीं होती, इसलिए NLP को सावधानी से बनाना पड़ता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.2 What is Natural Language Processing (NLP)?",
+    "hi": "7.2 Natural Language Processing (NLP) क्या है?"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Natural Language Processing (NLP)",
+       "hi": "Natural Language Processing (NLP)"
+      },
+      "text": {
+       "en": "NLP is the branch of AI that enables computers to understand, interpret, generate and manipulate human language, both written text and speech. It sits where linguistics, computer science and machine learning meet.",
+       "hi": "NLP, AI की वह शाखा है जो कंप्यूटर को मानव भाषा – लिखित text और बोली (speech) दोनों – को समझने, व्याख्या करने, बनाने और बदलने योग्य बनाती है। यह भाषाविज्ञान, कंप्यूटर विज्ञान और machine learning के मिलन-बिंदु पर है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A 'natural' language is one that people speak naturally, such as Hindi, Tamil, Bengali or English. It is different from a formal language like Python, where every rule is fixed and there is no ambiguity. NLP is sometimes described as 'language in': it lets people ask questions of data using ordinary text or voice instead of special commands. For example, you can type 'trains from Patna to Delhi tomorrow' instead of filling a form.",
+      "hi": "'प्राकृतिक' भाषा वह है जिसे लोग स्वाभाविक रूप से बोलते हैं, जैसे हिंदी, तमिल, बांग्ला या अंग्रेज़ी। यह Python जैसी औपचारिक भाषा से अलग है, जहाँ हर नियम तय है और कोई अस्पष्टता नहीं होती। NLP को कभी-कभी 'language in' कहा जाता है: यह लोगों को विशेष commands के बजाय साधारण text या आवाज़ से data से प्रश्न पूछने देता है। जैसे, form भरने के बजाय आप 'कल पटना से दिल्ली की ट्रेनें' टाइप कर सकते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "NLP has two big halves:",
+      "hi": "NLP के दो बड़े हिस्से हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Natural Language Understanding (NLU): turning human language into a meaning the computer can act on (for example, working out that 'Mujhe kal subah 6 baje uthana' means 'set an alarm for 6 am tomorrow').",
+       "Natural Language Generation (NLG): turning computer data into fluent human language (for example, a weather app writing 'Light rain is expected in Pune this evening').",
+       "Speech recognition (speech to text) and speech synthesis (text to speech) connect NLP with voice."
+      ],
+      "hi": [
+       "Natural Language Understanding (NLU): मानव भाषा को ऐसे अर्थ में बदलना जिस पर कंप्यूटर काम कर सके (जैसे यह समझना कि 'मुझे कल सुबह 6 बजे उठाना' का अर्थ है 'कल सुबह 6 बजे का alarm लगाओ')।",
+       "Natural Language Generation (NLG): कंप्यूटर के data को सहज मानव भाषा में बदलना (जैसे weather app का लिखना 'आज शाम पुणे में हल्की बारिश की संभावना है')।",
+       "Speech recognition (बोली से text) और speech synthesis (text से बोली) NLP को आवाज़ से जोड़ते हैं।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Everyday tools that use NLP:",
+      "hi": "रोज़मर्रा के वे tools जो NLP का उपयोग करते हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Web search engines that understand what you mean, not just the exact words you typed.",
+       "Email spam filters and SMS fraud alerts.",
+       "Automatic translation of text or speech, such as Google Translate or the Government of India's Bhashini platform for Indian languages.",
+       "Grammar and spelling checkers, autocorrect and predictive text on phone keyboards.",
+       "Document summarisation tools and sentiment analysis of reviews.",
+       "Virtual assistants such as Siri, Alexa, Google Assistant and Cortana, and enterprise assistants such as Oracle Digital Assistant (ODA).",
+       "Customer-care chatbots on banking, railway and shopping apps."
+      ],
+      "hi": [
+       "Web search engines जो आपके टाइप किए सटीक शब्दों के साथ आपका आशय भी समझते हैं।",
+       "Email spam filters और SMS धोखाधड़ी चेतावनियाँ।",
+       "Text या बोली का स्वचालित अनुवाद, जैसे Google Translate या भारतीय भाषाओं के लिए भारत सरकार का Bhashini platform।",
+       "व्याकरण और वर्तनी जाँचने वाले tools, autocorrect और फ़ोन keyboard का predictive text।",
+       "दस्तावेज़ सारांश बनाने वाले tools और समीक्षाओं का sentiment analysis।",
+       "Siri, Alexa, Google Assistant और Cortana जैसे virtual assistants, और Oracle Digital Assistant (ODA) जैसे व्यावसायिक assistants।",
+       "बैंक, रेलवे और shopping apps के customer-care chatbots।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 1 (research): Find five interesting facts about IBM Project Debater.",
+       "hi": "गतिविधि 1 (खोज): IBM Project Debater के बारे में पाँच रोचक तथ्य खोजिए।"
+      },
+      "a": {
+       "en": "What to do: search on the internet (use reliable sites such as IBM Research pages or news reports) and note five facts in your own words.\nSample facts you may find:\n1. Project Debater is an AI system built by IBM Research that can debate complex topics with humans.\n2. It was shown publicly debating expert human debaters (a well-known live debate took place in 2019).\n3. It searches a very large collection of articles to find evidence for and against a topic.\n4. It builds its argument, listens to the opponent's speech and prepares a rebuttal, all using NLP.\n5. It delivers its speech using speech synthesis (text to speech).\nWhat it teaches: NLP can do much more than answer simple questions – it can understand arguments, but it still depends on the quality of the data it reads.",
+       "hi": "क्या करें: internet पर खोजिए (IBM Research के पेज या समाचार जैसे भरोसेमंद स्रोत) और अपने शब्दों में पाँच तथ्य लिखिए।\nआपको मिलने वाले नमूना तथ्य:\n1. Project Debater, IBM Research का बनाया AI system है जो कठिन विषयों पर मनुष्यों से बहस कर सकता है।\n2. इसे विशेषज्ञ मानव वक्ताओं से सार्वजनिक बहस करते दिखाया गया (एक प्रसिद्ध live बहस 2019 में हुई)।\n3. यह किसी विषय के पक्ष और विपक्ष में प्रमाण ढूँढने के लिए लेखों के बहुत बड़े संग्रह में खोज करता है।\n4. यह अपना तर्क बनाता है, विरोधी का भाषण सुनता है और जवाब तैयार करता है – सब NLP से।\n5. यह अपना भाषण speech synthesis (text से बोली) द्वारा देता है।\nइससे क्या सीखते हैं: NLP सरल प्रश्नों के उत्तर से कहीं अधिक कर सकता है – यह तर्कों को समझ सकता है, पर फिर भी यह पढ़े गए data की गुणवत्ता पर निर्भर रहता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.3 From messy text to tokens: segmentation, tokens, entities, relationships and concepts",
+    "hi": "7.3 बिखरे text से tokens तक: segmentation, tokens, entities, relationships और concepts"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Computers work best with structured data – information neatly arranged and labelled, like a table of student names and marks in rows and columns. Human language is mostly unstructured data: it is held together only loosely by grammar, it has no fixed columns, and the same idea can be said in a hundred ways. So the first job of NLP is to break text into small pieces and label them.",
+      "hi": "कंप्यूटर structured data के साथ सबसे अच्छा काम करते हैं – ऐसी जानकारी जो साफ़-सुथरे ढंग से सजी और labelled हो, जैसे पंक्तियों और स्तंभों में विद्यार्थियों के नाम और अंक। मानव भाषा अधिकतर unstructured data है: यह व्याकरण से केवल ढीले रूप में बँधी है, इसमें कोई तय स्तंभ नहीं होते, और एक ही बात सौ तरीकों से कही जा सकती है। इसलिए NLP का पहला काम text को छोटे टुकड़ों में तोड़कर उन पर label लगाना है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Structured data",
+        "Unstructured data"
+       ],
+       "hi": [
+        "Structured data",
+        "Unstructured data"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Fixed format: rows, columns, fields",
+         "No fixed format: free text, audio, chat"
+        ],
+        [
+         "Example: railway reservation chart, marks sheet",
+         "Example: WhatsApp messages, product reviews, a speech"
+        ],
+        [
+         "Easy to search and sort",
+         "Needs NLP to find meaning"
+        ]
+       ],
+       "hi": [
+        [
+         "तय ढाँचा: पंक्तियाँ, स्तंभ, fields",
+         "कोई तय ढाँचा नहीं: मुक्त text, audio, chat"
+        ],
+        [
+         "उदाहरण: रेलवे आरक्षण चार्ट, अंक-पत्र",
+         "उदाहरण: WhatsApp संदेश, product reviews, भाषण"
+        ],
+        [
+         "खोजना और छाँटना आसान",
+         "अर्थ निकालने के लिए NLP चाहिए"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Sentence segmentation",
+       "hi": "Sentence segmentation (वाक्य विभाजन)"
+      },
+      "text": {
+       "en": "Breaking a paragraph into separate sentences so the computer can process one sentence at a time. Punctuation such as '.', '?', '!' and '।' (purna viram) are clues, but they are not perfect: 'Dr. Mehta arrived.' has a full stop that does not end the sentence.",
+       "hi": "किसी अनुच्छेद को अलग-अलग वाक्यों में तोड़ना ताकि कंप्यूटर एक बार में एक वाक्य पर काम कर सके। '.', '?', '!' और '।' (पूर्ण विराम) जैसे चिह्न संकेत देते हैं, पर पूरी तरह भरोसेमंद नहीं: 'Dr. Mehta arrived.' में पहला full stop वाक्य का अंत नहीं है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Token and tokenization",
+       "hi": "Token और tokenization"
+      },
+      "text": {
+       "en": "A token is a single unit of text, usually a word or punctuation mark, used for analysis. Tokenization is the process of splitting a sentence into tokens. Example: 'This is a sentence' becomes ['This', 'is', 'a', 'sentence']. Once tokens are sorted by meaning, NLP can work with them.",
+       "hi": "Token, text की एक इकाई है – आमतौर पर एक शब्द या विराम-चिह्न – जिसका विश्लेषण किया जाता है। वाक्य को tokens में तोड़ने की प्रक्रिया tokenization कहलाती है। उदाहरण: 'This is a sentence' बनता है ['This', 'is', 'a', 'sentence']। tokens को अर्थ के अनुसार छाँटने के बाद NLP उनके साथ काम कर पाता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Here is a small Python program (standard Python only) that first segments a short text into sentences and then tokenizes each sentence. Real NLP libraries are smarter, but the idea is the same.",
+      "hi": "यह एक छोटा Python program (केवल standard Python) है जो पहले छोटे text को वाक्यों में बाँटता है और फिर हर वाक्य को tokens में तोड़ता है। असली NLP libraries अधिक समझदार होती हैं, पर विचार वही है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "text = \"Manu broke the toy. He always breaks toys! Is the toy fixed now?\"\n# Sentence segmentation (simple rule: split after . ! ?)\nsentences = []\ncurrent = \"\"\nfor ch in text:\n    current += ch\n    if ch in \".!?\":\n        sentences.append(current.strip())\n        current = \"\"\nprint(\"Sentences:\", sentences)\n# Tokenization of each sentence\nfor s in sentences:\n    tokens = s.replace(\".\", \" .\").replace(\"!\", \" !\").replace(\"?\", \" ?\").split()\n    print(tokens)",
+      "hi": "text = \"Manu broke the toy. He always breaks toys! Is the toy fixed now?\"\n# Sentence segmentation (simple rule: split after . ! ?)\nsentences = []\ncurrent = \"\"\nfor ch in text:\n    current += ch\n    if ch in \".!?\":\n        sentences.append(current.strip())\n        current = \"\"\nprint(\"Sentences:\", sentences)\n# Tokenization of each sentence\nfor s in sentences:\n    tokens = s.replace(\".\", \" .\").replace(\"!\", \" !\").replace(\"?\", \" ?\").split()\n    print(tokens)"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nSentences: ['Manu broke the toy.', 'He always breaks toys!', 'Is the toy fixed now?']\n['Manu', 'broke', 'the', 'toy', '.']\n['He', 'always', 'breaks', 'toys', '!']\n['Is', 'the', 'toy', 'fixed', 'now', '?']",
+      "hi": "Output:\nSentences: ['Manu broke the toy.', 'He always breaks toys!', 'Is the toy fixed now?']\n['Manu', 'broke', 'the', 'toy', '.']\n['He', 'always', 'breaks', 'toys', '!']\n['Is', 'the', 'toy', 'fixed', 'now', '?']"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Entity",
+       "hi": "Entity (इकाई)"
+      },
+      "text": {
+       "en": "An entity is a noun that names a person, place, organisation or thing (Manu, Mumbai, ISRO, bicycle). Adjectives, verbs and other parts of speech are not entities. Finding them is called Named Entity Recognition (NER).",
+       "hi": "Entity वह संज्ञा (noun) है जो किसी व्यक्ति, स्थान, संस्था या वस्तु का नाम बताती है (मनु, मुंबई, ISRO, साइकिल)। विशेषण, क्रिया और अन्य शब्द-भेद entity नहीं होते। इन्हें पहचानने को Named Entity Recognition (NER) कहते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Relationship",
+       "hi": "Relationship (संबंध)"
+      },
+      "text": {
+       "en": "A relationship is a link between two or more entities that are strongly connected in the sentence, for example 'Manu – broke – toy' (who did what to what).",
+       "hi": "Relationship दो या अधिक entities के बीच की वह कड़ी है जो वाक्य में मज़बूती से जुड़ी हों, जैसे 'मनु – तोड़ा – खिलौना' (किसने किसके साथ क्या किया)।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Concept",
+       "hi": "Concept (अवधारणा)"
+      },
+      "text": {
+       "en": "A concept is an idea that is implied by a sentence but not stated in words. To find concepts, the computer must match ideas, not just words.",
+       "hi": "Concept वह विचार है जो वाक्य से संकेतित होता है पर शब्दों में लिखा नहीं होता। concepts ढूँढने के लिए कंप्यूटर को केवल शब्द नहीं, विचारों का मिलान करना पड़ता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A classic example of messy language is a joke by the comedian Groucho Marx: 'One morning I shot an elephant in my pajamas. How he got into my pajamas, I don't know.' The first sentence seems to mean that I was wearing pajamas when I shot the elephant. The second sentence suddenly tells us the elephant was inside the pajamas! The phrase 'in my pajamas' can attach to 'I' or to 'elephant'. Humans laugh because they see both meanings; a computer must be taught that both are possible.",
+      "hi": "बिखरी भाषा का एक प्रसिद्ध उदाहरण हास्य कलाकार Groucho Marx का मज़ाक है: 'One morning I shot an elephant in my pajamas. How he got into my pajamas, I don't know.' पहला वाक्य लगता है कि मैंने पायजामा पहने हुए हाथी को गोली मारी। दूसरा वाक्य अचानक बताता है कि हाथी पायजामे के अंदर था! 'in my pajamas' वाक्यांश 'I' से भी जुड़ सकता है और 'elephant' से भी। मनुष्य दोनों अर्थ देखकर हँसते हैं; कंप्यूटर को सिखाना पड़ता है कि दोनों संभव हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 2: Identify the entities in 'I shot an elephant in my pajamas.'",
+       "hi": "गतिविधि 2: 'I shot an elephant in my pajamas.' में entities पहचानिए।"
+      },
+      "a": {
+       "en": "Step 1: list the nouns and pronouns that name a person or thing: I, elephant, pajamas.\nStep 2: reject other words: 'shot' is a verb, 'an' is an article, 'in' is a preposition, 'my' is a possessive word.\nAnswer: the entities are I, elephant and pajamas.",
+       "hi": "चरण 1: वे संज्ञा/सर्वनाम लिखिए जो किसी व्यक्ति या वस्तु का नाम बताते हैं: I, elephant, pajamas।\nचरण 2: बाकी शब्द हटाइए: 'shot' क्रिया है, 'an' article है, 'in' संबंधबोधक (preposition) है, 'my' स्वामित्व बताने वाला शब्द है।\nउत्तर: entities हैं I, elephant और pajamas।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 3: Sort these pairs into 'relationship' or 'not a relationship': I + elephant, I + pajamas, in + pajamas, elephant + pajamas, I + shot.",
+       "hi": "गतिविधि 3: इन जोड़ों को 'relationship' या 'relationship नहीं' में छाँटिए: I + elephant, I + pajamas, in + pajamas, elephant + pajamas, I + shot।"
+      },
+      "a": {
+       "en": "Rule: a relationship joins two entities that are strongly connected.\nI + elephant: relationship (I shot the elephant).\nI + pajamas: relationship (I was wearing my pajamas – one reading).\nelephant + pajamas: relationship (the elephant was in my pajamas – the joke's reading).\nin + pajamas: not a relationship ('in' is not an entity).\nI + shot: not a relationship between entities ('shot' is a verb; it is the action that links entities, not an entity itself).",
+       "hi": "नियम: relationship दो entities को जोड़ता है जो आपस में मज़बूती से जुड़ी हों।\nI + elephant: relationship (मैंने हाथी को गोली मारी)।\nI + pajamas: relationship (मैंने अपना पायजामा पहना था – एक अर्थ)।\nelephant + pajamas: relationship (हाथी मेरे पायजामे में था – मज़ाक वाला अर्थ)।\nin + pajamas: relationship नहीं ('in' entity नहीं है)।\nI + shot: entities के बीच relationship नहीं ('shot' क्रिया है; यह entities को जोड़ने वाली क्रिया है, स्वयं entity नहीं)।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Activity 4: Which of these concepts are implied (not written) in the Groucho Marx statement: Safari, Rifle, Photographed, Pajamas?",
+       "hi": "गतिविधि 4: Groucho Marx के कथन में इनमें से कौन-से concepts संकेतित हैं (लिखे नहीं): Safari, Rifle, Photographed, Pajamas?"
+      },
+      "a": {
+       "en": "Step 1: 'Pajamas' is written in the sentence, so it is stated, not implied.\nStep 2: shooting an elephant suggests a hunting trip in the wild – 'Safari' is implied.\nStep 3: 'shot' most naturally suggests a gun – 'Rifle' is implied. (A camera 'shot' is possible, so 'Photographed' is a less likely reading that a smart system might also keep with low confidence.)\nAnswer: Safari and Rifle are the main implied concepts; Pajamas is explicit.",
+       "hi": "चरण 1: 'Pajamas' वाक्य में लिखा है, इसलिए यह कथित है, संकेतित नहीं।\nचरण 2: हाथी को गोली मारना जंगल में शिकार यात्रा का संकेत देता है – 'Safari' संकेतित है।\nचरण 3: 'shot' से सबसे स्वाभाविक अर्थ बंदूक है – 'Rifle' संकेतित है। (कैमरे से 'shot' भी संभव है, इसलिए 'Photographed' कम संभावित अर्थ है जिसे समझदार system कम confidence के साथ रख सकता है।)\nउत्तर: Safari और Rifle मुख्य संकेतित concepts हैं; Pajamas स्पष्ट लिखा है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Relationships can also cross sentences. In 'Manu broke the toy. He always breaks toys.', the word 'He' in the second sentence refers to Manu. NLP links the two so that the system knows who 'he' is. (You will meet this again as discourse integration in section 7.8.)",
+      "hi": "Relationships वाक्यों के पार भी हो सकते हैं। 'मनु ने खिलौना तोड़ा। वह हमेशा खिलौने तोड़ता है।' में दूसरे वाक्य का 'वह' मनु के लिए है। NLP दोनों को जोड़ता है ताकि system जाने कि 'वह' कौन है। (यह आप खंड 7.8 में discourse integration के रूप में फिर पढ़ेंगे।)"
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: segmentation → tokenization → find entities → find relationships → find concepts. Each step gives the computer a little more structure from unstructured text.",
+      "hi": "याद रखें: segmentation → tokenization → entities ढूँढना → relationships ढूँढना → concepts ढूँढना। हर चरण unstructured text से कंप्यूटर को थोड़ा और ढाँचा देता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.4 Emotion detection and sentiment analysis",
+    "hi": "7.4 Emotion detection और sentiment analysis"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "When people write reviews, tweets or complaints, they put feelings into words. NLP can read these feelings at scale – lakhs of messages in minutes – which no human team could do. There are two related tasks.",
+      "hi": "जब लोग reviews, posts या शिकायतें लिखते हैं, तो वे शब्दों में भावनाएँ डालते हैं। NLP इन भावनाओं को बड़े पैमाने पर – मिनटों में लाखों संदेश – पढ़ सकता है, जो कोई मानव टीम नहीं कर सकती। इसके दो संबंधित कार्य हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Sentiment analysis",
+       "hi": "Sentiment analysis (भाव विश्लेषण)"
+      },
+      "text": {
+       "en": "Sentiment analysis (also called opinion mining) finds the polarity of a piece of text – whether it is positive, negative or neutral – and often how strong that feeling is, on a sliding scale from very negative to very positive.",
+       "hi": "Sentiment analysis (जिसे opinion mining भी कहते हैं) किसी text की ध्रुवता (polarity) पता करता है – वह सकारात्मक, नकारात्मक या तटस्थ है – और अक्सर यह भी कि भाव कितना तीव्र है, बहुत नकारात्मक से बहुत सकारात्मक तक के एक खिसकने वाले पैमाने (sliding scale) पर।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Emotion detection",
+       "hi": "Emotion detection (भावना पहचान)"
+      },
+      "text": {
+       "en": "Emotion detection identifies the specific type of emotion in text or speech, such as happiness, anger, sadness, fear, surprise or disgust. It looks for emotional tokens (words, emojis, punctuation like '!!!') to understand the context.",
+       "hi": "Emotion detection, text या बोली में भावना का विशिष्ट प्रकार पहचानता है, जैसे खुशी, गुस्सा, दुख, डर, आश्चर्य या घृणा। यह संदर्भ समझने के लिए भावनात्मक tokens (शब्द, emoji, '!!!' जैसे चिह्न) खोजता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Aspect",
+        "Emotion detection",
+        "Sentiment analysis"
+       ],
+       "hi": [
+        "पहलू",
+        "Emotion detection",
+        "Sentiment analysis"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "What it finds",
+         "The distinct type of emotion",
+         "The polarity and strength of feeling"
+        ],
+        [
+         "Typical output",
+         "Anger, joy, sadness, fear…",
+         "Positive / negative / neutral, or a score such as −1 to +1"
+        ],
+        [
+         "Example use",
+         "User ratings, survey comments, mental-wellness apps",
+         "Social media posts, customer-service chats, product reviews"
+        ],
+        [
+         "How AI is trained",
+         "To classify text into emotion categories",
+         "To place text on a sliding scale from negative to positive"
+        ],
+        [
+         "Purpose",
+         "Understand the emotional context of each message",
+         "Judge the overall tone of a large amount of text"
+        ]
+       ],
+       "hi": [
+        [
+         "क्या पता करता है",
+         "भावना का विशिष्ट प्रकार",
+         "भाव की ध्रुवता और तीव्रता"
+        ],
+        [
+         "सामान्य output",
+         "गुस्सा, खुशी, दुख, डर…",
+         "सकारात्मक / नकारात्मक / तटस्थ, या −1 से +1 जैसा score"
+        ],
+        [
+         "उपयोग का उदाहरण",
+         "User ratings, सर्वे टिप्पणियाँ, मानसिक-स्वास्थ्य apps",
+         "Social media posts, customer-service chats, product reviews"
+        ],
+        [
+         "AI को कैसे प्रशिक्षित करते हैं",
+         "Text को भावना-श्रेणियों में वर्गीकृत करने के लिए",
+         "Text को नकारात्मक से सकारात्मक के पैमाने पर रखने के लिए"
+        ],
+        [
+         "उद्देश्य",
+         "हर संदेश का भावनात्मक संदर्भ समझना",
+         "बड़े text का समग्र स्वर आँकना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Uses: social-media monitoring (how people feel about a new train service or a film), customer-service chatbots that pass angry customers to a human quickly, and market research (what customers like or dislike about a product). Challenges: context ('the phone is so thin it might break' – is thin good or bad?), sarcasm, negation ('not bad' is mildly positive), code-mixed text and cultural differences in how feelings are expressed.",
+      "hi": "उपयोग: social-media निगरानी (नई ट्रेन सेवा या फ़िल्म के बारे में लोग क्या महसूस करते हैं), customer-service chatbots जो गुस्साए ग्राहक को जल्दी किसी मनुष्य तक पहुँचाएँ, और बाज़ार अनुसंधान (ग्राहकों को product में क्या पसंद या नापसंद है)। चुनौतियाँ: संदर्भ ('फ़ोन इतना पतला है कि टूट सकता है' – पतला अच्छा है या बुरा?), व्यंग्य, नकार ('not bad' हल्का सकारात्मक है), मिश्रित भाषा वाला text और भावनाएँ व्यक्त करने के सांस्कृतिक अंतर।"
+     }
+    },
+    {
+     "p": {
+      "en": "The simplest sentiment analyser uses a lexicon (word list): count positive words, subtract negative words. The program below was run, and its real output is shown.",
+      "hi": "सबसे सरल sentiment analyser एक lexicon (शब्द-सूची) का उपयोग करता है: सकारात्मक शब्द गिनें, नकारात्मक शब्द घटाएँ। नीचे दिया program चलाया गया है और उसका वास्तविक output दिखाया गया है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "positive = {\"good\", \"great\", \"tasty\", \"fast\", \"love\", \"excellent\", \"happy\"}\nnegative = {\"bad\", \"slow\", \"cold\", \"late\", \"hate\", \"poor\", \"rude\"}\n\ndef sentiment(review):\n    words = review.lower().replace(\",\", \" \").replace(\".\", \" \").replace(\"!\", \" \").split()\n    score = 0\n    for w in words:\n        if w in positive:\n            score += 1\n        elif w in negative:\n            score -= 1\n    if score > 0:\n        label = \"Positive\"\n    elif score < 0:\n        label = \"Negative\"\n    else:\n        label = \"Neutral\"\n    return score, label\n\nreviews = [\"The biryani was tasty and delivery was fast!\",\n           \"Food was cold and the rider was rude.\",\n           \"Order arrived at 8 pm.\",\n           \"Great, the food was late again.\"]\nfor r in reviews:\n    print(sentiment(r), \"<-\", r)",
+      "hi": "positive = {\"good\", \"great\", \"tasty\", \"fast\", \"love\", \"excellent\", \"happy\"}\nnegative = {\"bad\", \"slow\", \"cold\", \"late\", \"hate\", \"poor\", \"rude\"}\n\ndef sentiment(review):\n    words = review.lower().replace(\",\", \" \").replace(\".\", \" \").replace(\"!\", \" \").split()\n    score = 0\n    for w in words:\n        if w in positive:\n            score += 1\n        elif w in negative:\n            score -= 1\n    if score > 0:\n        label = \"Positive\"\n    elif score < 0:\n        label = \"Negative\"\n    else:\n        label = \"Neutral\"\n    return score, label\n\nreviews = [\"The biryani was tasty and delivery was fast!\",\n           \"Food was cold and the rider was rude.\",\n           \"Order arrived at 8 pm.\",\n           \"Great, the food was late again.\"]\nfor r in reviews:\n    print(sentiment(r), \"<-\", r)"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\n(2, 'Positive') <- The biryani was tasty and delivery was fast!\n(-2, 'Negative') <- Food was cold and the rider was rude.\n(0, 'Neutral') <- Order arrived at 8 pm.\n(0, 'Neutral') <- Great, the food was late again.",
+      "hi": "Output:\n(2, 'Positive') <- The biryani was tasty and delivery was fast!\n(-2, 'Negative') <- Food was cold and the rider was rude.\n(0, 'Neutral') <- Order arrived at 8 pm.\n(0, 'Neutral') <- Great, the food was late again."
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Why did the program call 'Great, the food was late again.' Neutral? What does this show?",
+       "hi": "program ने 'Great, the food was late again.' को Neutral क्यों कहा? इससे क्या पता चलता है?"
+      },
+      "a": {
+       "en": "Step 1: 'great' is in the positive list (+1).\nStep 2: 'late' is in the negative list (−1).\nStep 3: total score = +1 − 1 = 0, so the label is Neutral.\nStep 4: a human sees that 'Great' here is sarcastic and the customer is actually annoyed – the true sentiment is Negative.\nConclusion: word counting ignores context and sarcasm. Real systems use machine learning trained on many labelled examples, and even they make mistakes with sarcasm.",
+       "hi": "चरण 1: 'great' सकारात्मक सूची में है (+1)।\nचरण 2: 'late' नकारात्मक सूची में है (−1)।\nचरण 3: कुल score = +1 − 1 = 0, इसलिए label Neutral है।\nचरण 4: मनुष्य देखता है कि यहाँ 'Great' व्यंग्य में है और ग्राहक वास्तव में नाराज़ है – असली sentiment नकारात्मक है।\nनिष्कर्ष: शब्द गिनना संदर्भ और व्यंग्य को अनदेखा करता है। असली systems कई labelled उदाहरणों पर प्रशिक्षित machine learning का उपयोग करते हैं, और वे भी व्यंग्य में गलती करते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.5 The classification problem in language",
+    "hi": "7.5 भाषा में classification problem"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Many NLP tasks are classification tasks: deciding which category a piece of text belongs to (spam or not spam, positive or negative, which intent, which meaning of a word). The difficulty is that human language is full of vague terms and double meanings, so the same words can belong to different categories in different contexts. This is called the classification problem of language.",
+      "hi": "कई NLP कार्य classification कार्य हैं: तय करना कि text का टुकड़ा किस श्रेणी का है (spam या नहीं, सकारात्मक या नकारात्मक, कौन-सा intent, शब्द का कौन-सा अर्थ)। कठिनाई यह है कि मानव भाषा अस्पष्ट शब्दों और दोहरे अर्थों से भरी है, इसलिए वही शब्द अलग संदर्भ में अलग श्रेणी के हो सकते हैं। इसे भाषा की classification problem कहते हैं।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "The riddle 'Why does your nose run and your feet smell?' plays on two meanings: 'run' (flow, as in a runny nose during a cold) and 'smell' (give off an odour vs. sense an odour). Feet do not 'smell' things, and noses do not 'run' like athletes.",
+       "'Shipping a box by train' – the word 'ship' suggests a boat, yet the box goes by train.",
+       "'Filling in a form' and 'filling out a form' mean the same thing even though 'in' and 'out' are opposites.",
+       "Hindi examples: 'आम' means mango and also 'common'; 'कल' means both yesterday and tomorrow – only context tells which.",
+       "'Apple is cheaper today' – is it the fruit at the mandi or the company's phone?"
+      ],
+      "hi": [
+       "पहेली 'Why does your nose run and your feet smell?' दो अर्थों से खेलती है: 'run' (बहना, जैसे सर्दी में नाक बहना) और 'smell' (गंध देना बनाम गंध सूँघना)। पैर कुछ 'सूँघते' नहीं, और नाक धावक की तरह 'दौड़ती' नहीं।",
+       "'Shipping a box by train' – 'ship' शब्द से जहाज़ का संकेत मिलता है, फिर भी डिब्बा ट्रेन से जाता है।",
+       "'Filling in a form' और 'filling out a form' का अर्थ एक ही है, जबकि 'in' और 'out' उलटे शब्द हैं।",
+       "हिंदी उदाहरण: 'आम' का अर्थ फल भी है और 'साधारण' भी; 'कल' का अर्थ बीता हुआ दिन भी है और आने वाला दिन भी – केवल संदर्भ बताता है कौन-सा।",
+       "'Apple is cheaper today' – मंडी का फल या कंपनी का फ़ोन?"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "How is the classification problem tackled? Mainly with supervised machine learning (you studied supervised learning in Chapter 6):",
+      "hi": "Classification problem को कैसे हल किया जाता है? मुख्यतः supervised machine learning से (supervised learning आपने अध्याय 6 में पढ़ा है):"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Collect a large dataset of sentences, each labelled with the correct category (for example, thousands of messages labelled 'spam' or 'not spam').",
+       "Train a model; it learns patterns and relationships between words, phrases, neighbouring words and meanings.",
+       "As it sees more data, it adjusts its internal parameters and becomes more accurate.",
+       "Test on new sentences it has never seen.",
+       "Accept that perfect accuracy is impossible. A well-designed system therefore returns its answer together with a confidence value (for example, 'spam – 92% confident'). Low-confidence cases can be sent to a human."
+      ],
+      "hi": [
+       "वाक्यों का बड़ा dataset इकट्ठा करें, हर एक पर सही श्रेणी का label लगा हो (जैसे हज़ारों संदेश जिन पर 'spam' या 'spam नहीं' लिखा हो)।",
+       "Model को प्रशिक्षित करें; यह शब्दों, वाक्यांशों, पास के शब्दों और अर्थों के बीच patterns और संबंध सीखता है।",
+       "अधिक data देखने पर यह अपने आंतरिक parameters बदलता है और अधिक सटीक होता जाता है।",
+       "ऐसे नए वाक्यों पर परखें जो उसने कभी न देखे हों।",
+       "मान लें कि पूर्ण सटीकता असंभव है। इसलिए अच्छा system अपने उत्तर के साथ confidence value भी देता है (जैसे 'spam – 92% निश्चित')। कम confidence वाले मामले किसी मनुष्य को भेजे जा सकते हैं।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: humans solve double meanings using context and common sense; machines solve them using patterns learned from labelled data, and they report how sure they are.",
+      "hi": "याद रखें: मनुष्य दोहरे अर्थ संदर्भ और सामान्य समझ से सुलझाते हैं; मशीनें labelled data से सीखे patterns से सुलझाती हैं और बताती हैं कि वे कितनी निश्चित हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.6 Chatbots: types, uses and limits",
+    "hi": "7.6 Chatbots: प्रकार, उपयोग और सीमाएँ"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Chatbot",
+       "hi": "Chatbot"
+      },
+      "text": {
+       "en": "A chatbot is a software application that simulates conversation with users through text or voice. Modern chatbots use AI, NLP and machine learning to understand what the user asks and to respond. They run on websites, messaging apps (such as WhatsApp) and voice assistants.",
+       "hi": "Chatbot एक software application है जो text या आवाज़ के माध्यम से users के साथ बातचीत का अनुकरण करता है। आधुनिक chatbots user का प्रश्न समझने और उत्तर देने के लिए AI, NLP और machine learning का उपयोग करते हैं। ये websites, messaging apps (जैसे WhatsApp) और voice assistants पर चलते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Chatbots are used for customer support, information retrieval, task automation (booking, tracking, paying bills) and entertainment, in fields from retail to healthcare and banking. Indian examples include railway and bank chatbots that answer PNR, balance or card-blocking queries, government services on WhatsApp such as DigiLocker document access, and farmer helplines that answer in local languages. Benefits: they are available all the time, they handle repetitive questions so human staff can focus on harder cases, and they can work with a small set of data (a cinema chain's show timings) or a very large one (a system scanning social media). Limits: they cannot always find an answer, and they may misunderstand.",
+      "hi": "Chatbots का उपयोग customer support, जानकारी खोजने, काम स्वचालित करने (booking, tracking, बिल भुगतान) और मनोरंजन के लिए होता है – खुदरा से लेकर स्वास्थ्य और बैंकिंग तक। भारतीय उदाहरणों में PNR, balance या card-block के प्रश्नों का उत्तर देने वाले रेलवे और बैंक chatbots, WhatsApp पर DigiLocker दस्तावेज़ जैसी सरकारी सेवाएँ, और स्थानीय भाषाओं में उत्तर देने वाली किसान helplines शामिल हैं। लाभ: ये हर समय उपलब्ध रहते हैं, दोहराए जाने वाले प्रश्न संभालते हैं ताकि मानव कर्मचारी कठिन मामलों पर ध्यान दें, और ये छोटे data (सिनेमा के शो का समय) या बहुत बड़े data (social media स्कैन करने वाला system) दोनों के साथ काम कर सकते हैं। सीमाएँ: ये हमेशा उत्तर नहीं ढूँढ पाते और गलत समझ सकते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "Rule-based chatbot",
+        "AI-powered chatbot"
+       ],
+       "hi": [
+        "विशेषता",
+        "Rule-based chatbot",
+        "AI-powered chatbot"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "How it works",
+         "Follows predefined rules, keywords, menus and decision trees written by developers",
+         "Uses NLP and machine learning to understand free-form language; also called chat agents or virtual assistants"
+        ],
+        [
+         "Advantages",
+         "Easy to develop and maintain; consistent and accurate for the specific questions it was built for; predictable",
+         "Available 24/7; understands varied wording; personalises replies using preferences and history; saves time and cost at scale"
+        ],
+        [
+         "Limitations",
+         "Struggles with complex or unexpected language; fails outside its rules; feels robotic",
+         "High development cost and computing resources; can inherit bias from training data; hard to explain its answers; can 'make up' wrong answers confidently; privacy and manipulation concerns"
+        ],
+        [
+         "Typical uses",
+         "FAQs, order-status updates, guiding users step by step through a process (e.g. 'Press 1 for…')",
+         "Virtual assistants, banking and finance queries, entertainment and gaming (interactive stories), complex customer service"
+        ]
+       ],
+       "hi": [
+        [
+         "कैसे काम करता है",
+         "Developers के लिखे पहले से तय नियमों, keywords, menus और decision trees का पालन करता है",
+         "मुक्त भाषा समझने के लिए NLP और machine learning का उपयोग करता है; इन्हें chat agents या virtual assistants भी कहते हैं"
+        ],
+        [
+         "लाभ",
+         "बनाना और संभालना आसान; जिन प्रश्नों के लिए बना है उन पर एक-सा और सटीक; अनुमान योग्य",
+         "24/7 उपलब्ध; अलग-अलग शब्दों को समझता है; पसंद और इतिहास के आधार पर व्यक्तिगत उत्तर; बड़े पैमाने पर समय और लागत बचाता है"
+        ],
+        [
+         "सीमाएँ",
+         "जटिल या अप्रत्याशित भाषा में कठिनाई; नियमों के बाहर विफल; मशीनी लगता है",
+         "विकास और computing संसाधनों की ऊँची लागत; training data का bias आ सकता है; उत्तर समझाना कठिन; आत्मविश्वास से गलत उत्तर 'गढ़' सकता है; निजता और बहकाने की चिंताएँ"
+        ],
+        [
+         "सामान्य उपयोग",
+         "FAQs, order-status, किसी प्रक्रिया में कदम-दर-कदम मार्गदर्शन (जैसे 'Press 1 for…')",
+         "Virtual assistants, बैंकिंग और वित्त प्रश्न, मनोरंजन और gaming (interactive कहानियाँ), जटिल customer service"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Structure of a chatbot. Every chatbot has two parts:",
+      "hi": "Chatbot की संरचना। हर chatbot के दो भाग होते हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Frontend: the part the user sees – the messaging channel (website chat window, WhatsApp, app, voice speaker) and a friendly interface with buttons, text box or microphone. The frontend alone has no understanding of context.",
+       "Backend: the 'brain' – it runs the application logic (NLP to find intent and entities, rules or a model to choose a reply, connections to databases such as order records) and keeps memory of earlier parts of the conversation so the bot can follow context."
+      ],
+      "hi": [
+       "Frontend: वह भाग जो user देखता है – messaging channel (website chat window, WhatsApp, app, voice speaker) और buttons, text box या microphone वाला सरल interface। अकेले frontend को संदर्भ की कोई समझ नहीं होती।",
+       "Backend: 'दिमाग' – यह application logic चलाता है (intent और entities ढूँढने के लिए NLP, उत्तर चुनने के लिए नियम या model, order records जैसे databases से जुड़ाव) और बातचीत के पिछले हिस्सों की memory रखता है ताकि bot संदर्भ के साथ चल सके।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Three key terms in chatbot design:",
+      "hi": "Chatbot design के तीन मुख्य शब्द:"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Intent",
+       "hi": "Intent (आशय)"
+      },
+      "text": {
+       "en": "The purpose behind the user's message – what the user wants to do. It works like a verb: file a complaint, ask for directions, check balance, talk to a salesperson.",
+       "hi": "User के संदेश के पीछे का उद्देश्य – user क्या करना चाहता है। यह क्रिया (verb) की तरह है: शिकायत दर्ज करना, रास्ता पूछना, balance देखना, salesperson से बात करना।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Entity (in chatbots)",
+       "hi": "Entity (chatbot में)"
+      },
+      "text": {
+       "en": "The specific details in the message, usually nouns: a person, place, date, product or number. In 'What are the hours for the Bangalore office?', the intent is 'get business hours' and the entity is 'Bangalore'.",
+       "hi": "संदेश के विशिष्ट विवरण, आमतौर पर संज्ञाएँ: व्यक्ति, स्थान, तारीख, product या संख्या। 'What are the hours for the Bangalore office?' में intent है 'कामकाज का समय जानना' और entity है 'Bangalore'।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Dialog (dialogue flow)",
+       "hi": "Dialog (संवाद प्रवाह)"
+      },
+      "text": {
+       "en": "The IF/THEN flowchart or decision tree that decides how the bot responds to each intent, what follow-up questions it asks (for example, 'Which date?') and when it hands over to a human. NLP lets the bot recognise intents even from informal or badly written input.",
+       "hi": "वह IF/THEN flowchart या decision tree जो तय करता है कि bot हर intent का कैसे उत्तर देगा, कौन-से आगे के प्रश्न पूछेगा (जैसे 'कौन-सी तारीख?') और कब किसी मनुष्य को सौंपेगा। NLP से bot अनौपचारिक या खराब लिखे input से भी intent पहचान पाता है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Find the intent and entities: 'Book two tickets from Lucknow to Varanasi for Friday.'",
+       "hi": "Intent और entities ढूँढिए: 'Book two tickets from Lucknow to Varanasi for Friday.'"
+      },
+      "a": {
+       "en": "Step 1: what does the user want to do? Book tickets → intent = book_ticket.\nStep 2: which details are given? number = two, from = Lucknow, to = Varanasi, date = Friday.\nStep 3: dialog – all required entities are present, so the bot can show trains; if the date were missing, the dialog would ask 'For which date?'",
+       "hi": "चरण 1: user क्या करना चाहता है? Ticket book करना → intent = book_ticket।\nचरण 2: कौन-से विवरण दिए हैं? संख्या = दो, से = लखनऊ, तक = वाराणसी, तारीख = शुक्रवार।\nचरण 3: dialog – सभी ज़रूरी entities मौजूद हैं, इसलिए bot ट्रेनें दिखा सकता है; तारीख न होती तो dialog पूछता 'किस तारीख के लिए?'"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A tiny rule-based chatbot in Python (keyword matching for intents). This was run, and the output shown is real:",
+      "hi": "Python में एक छोटा rule-based chatbot (intents के लिए keyword matching)। इसे चलाया गया है और दिखाया गया output वास्तविक है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "# A tiny rule-based chatbot for a school library\nrules = {\n    \"timing\": \"The library is open from 9 am to 4 pm, Monday to Saturday.\",\n    \"fine\": \"The late fine is Rs 2 per day per book.\",\n    \"issue\": \"You can issue up to 2 books for 14 days with your ID card.\",\n}\nkeywords = {\n    \"timing\": [\"time\", \"open\", \"hours\", \"timing\"],\n    \"fine\": [\"fine\", \"late\", \"penalty\"],\n    \"issue\": [\"issue\", \"borrow\", \"take\"],\n}\n\ndef reply(message):\n    msg = message.lower()\n    for intent, words in keywords.items():\n        for w in words:\n            if w in msg:\n                return rules[intent]\n    return \"Sorry, I did not understand. Please ask the librarian.\"\n\nquestions = [\"What time does the library open?\",\n             \"How many books can I borrow?\",\n             \"Is there a fine if I am late?\",\n             \"Do you have a cricket bat?\"]\nfor q in questions:\n    print(\"You:\", q)\n    print(\"Bot:\", reply(q))",
+      "hi": "# A tiny rule-based chatbot for a school library\nrules = {\n    \"timing\": \"The library is open from 9 am to 4 pm, Monday to Saturday.\",\n    \"fine\": \"The late fine is Rs 2 per day per book.\",\n    \"issue\": \"You can issue up to 2 books for 14 days with your ID card.\",\n}\nkeywords = {\n    \"timing\": [\"time\", \"open\", \"hours\", \"timing\"],\n    \"fine\": [\"fine\", \"late\", \"penalty\"],\n    \"issue\": [\"issue\", \"borrow\", \"take\"],\n}\n\ndef reply(message):\n    msg = message.lower()\n    for intent, words in keywords.items():\n        for w in words:\n            if w in msg:\n                return rules[intent]\n    return \"Sorry, I did not understand. Please ask the librarian.\"\n\nquestions = [\"What time does the library open?\",\n             \"How many books can I borrow?\",\n             \"Is there a fine if I am late?\",\n             \"Do you have a cricket bat?\"]\nfor q in questions:\n    print(\"You:\", q)\n    print(\"Bot:\", reply(q))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nYou: What time does the library open?\nBot: The library is open from 9 am to 4 pm, Monday to Saturday.\nYou: How many books can I borrow?\nBot: You can issue up to 2 books for 14 days with your ID card.\nYou: Is there a fine if I am late?\nBot: The late fine is Rs 2 per day per book.\nYou: Do you have a cricket bat?\nBot: Sorry, I did not understand. Please ask the librarian.",
+      "hi": "Output:\nYou: What time does the library open?\nBot: The library is open from 9 am to 4 pm, Monday to Saturday.\nYou: How many books can I borrow?\nBot: You can issue up to 2 books for 14 days with your ID card.\nYou: Is there a fine if I am late?\nBot: The late fine is Rs 2 per day per book.\nYou: Do you have a cricket bat?\nBot: Sorry, I did not understand. Please ask the librarian."
+     }
+    },
+    {
+     "note": {
+      "en": "Notice the limit of rule-based bots: 'Is there a fine if I am late?' matched 'fine' correctly, but a sentence like 'I'm fine, thanks' would also trigger the fine rule. An AI-powered bot learns from examples that 'fine' has two meanings – the classification problem again.",
+      "hi": "Rule-based bots की सीमा देखिए: 'Is there a fine if I am late?' ने 'fine' को सही पकड़ा, पर 'I'm fine, thanks' जैसा वाक्य भी fine वाला नियम चला देगा। AI-powered bot उदाहरणों से सीखता है कि 'fine' के दो अर्थ हैं – फिर वही classification problem।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Project activity: Design your own chatbot (no-code).",
+       "hi": "Project गतिविधि: अपना chatbot design कीजिए (no-code)।"
+      },
+      "a": {
+       "en": "Aim: plan and build a simple chatbot for a real need, e.g. a school admission help-desk.\nWhat you need: paper for planning; optionally a free no-code chatbot builder or a block-based tool used under teacher supervision (an adult should help with any sign-up for students under 13; do not enter real personal data).\nSteps:\n1. User persona – who will use it? (e.g. parents new to the city who may prefer Hindi).\n2. Goals – what must it do? (answer fees, timings, documents needed; hand over to office staff).\n3. Conversation flow – draw a flowchart: greeting → menu or free question → intent → follow-up questions for missing entities → answer → 'anything else?' → goodbye.\n4. Implement NLP – list 5–10 different ways people may ask each intent ('fees kitni hai', 'what is the fee', 'admission charges') so the bot recognises variety.\n5. Test, collect feedback from classmates, and improve.\nWhat it teaches: good chatbots start from the user's needs, not from technology, and they keep improving through iteration.",
+       "hi": "उद्देश्य: किसी वास्तविक ज़रूरत के लिए सरल chatbot की योजना बनाना और बनाना, जैसे स्कूल प्रवेश help-desk।\nक्या चाहिए: योजना के लिए काग़ज़; चाहें तो शिक्षक की देखरेख में कोई मुफ़्त no-code chatbot builder या block-based tool (13 वर्ष से कम विद्यार्थियों के sign-up में कोई वयस्क मदद करे; असली निजी data न डालें)।\nचरण:\n1. User persona – इसे कौन इस्तेमाल करेगा? (जैसे शहर में नए अभिभावक जो हिंदी पसंद कर सकते हैं)।\n2. लक्ष्य – इसे क्या करना है? (fees, समय, ज़रूरी दस्तावेज़ बताना; office कर्मचारी को सौंपना)।\n3. बातचीत का प्रवाह – flowchart बनाइए: अभिवादन → menu या मुक्त प्रश्न → intent → छूटी entities के लिए आगे के प्रश्न → उत्तर → 'और कुछ?' → विदा।\n4. NLP लागू करें – हर intent को पूछने के 5–10 अलग तरीके लिखिए ('fees kitni hai', 'what is the fee', 'admission charges') ताकि bot विविधता पहचाने।\n5. परखिए, सहपाठियों से feedback लीजिए और सुधारिए।\nइससे क्या सीखते हैं: अच्छे chatbot तकनीक से नहीं, user की ज़रूरत से शुरू होते हैं और बार-बार सुधार (iteration) से बेहतर होते हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: never share passwords, OTPs, Aadhaar or bank details with any chatbot. Real banks never ask for your OTP or PIN in chat. Check important chatbot answers with an official source or a trusted adult.",
+      "hi": "सुरक्षा: किसी भी chatbot के साथ password, OTP, Aadhaar या बैंक विवरण कभी साझा न करें। असली बैंक chat में कभी आपका OTP या PIN नहीं माँगते। chatbot के महत्वपूर्ण उत्तरों की जाँच किसी आधिकारिक स्रोत या भरोसेमंद वयस्क से करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.7 Phases of NLP (1): lexical and syntactic analysis",
+    "hi": "7.7 NLP के चरण (1): lexical और syntactic analysis"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "To go from raw speech or text to the user's intent, an NLP system works in five phases. Each phase uses the output of the one before it, a bit like the stages of a factory line. Modern systems often use deep neural networks that learn several phases together, but the five phases are still the best way to understand what must happen.",
+      "hi": "कच्ची बोली या text से user के intent तक पहुँचने के लिए NLP system पाँच चरणों में काम करता है। हर चरण पिछले चरण के output का उपयोग करता है, कुछ-कुछ कारख़ाने की उत्पादन-पंक्ति की तरह। आधुनिक systems अक्सर deep neural networks का उपयोग करते हैं जो कई चरण एक साथ सीख लेते हैं, पर क्या-क्या होना चाहिए यह समझने का सबसे अच्छा तरीका ये पाँच चरण ही हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Raw text / speech\n   ↓ 1. Lexical analysis       (words and their forms)\n   ↓ 2. Syntactic analysis     (grammar and structure)\n   ↓ 3. Semantic analysis      (literal meaning)\n   ↓ 4. Discourse integration  (meaning across sentences)\n   ↓ 5. Pragmatic analysis     (intended meaning in context)\nIntent / understanding",
+      "hi": "कच्चा text / बोली\n   ↓ 1. Lexical analysis       (शब्द और उनके रूप)\n   ↓ 2. Syntactic analysis     (व्याकरण और संरचना)\n   ↓ 3. Semantic analysis      (शाब्दिक अर्थ)\n   ↓ 4. Discourse integration  (वाक्यों के पार अर्थ)\n   ↓ 5. Pragmatic analysis     (संदर्भ में आशय)\nIntent / समझ"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "1. Lexical analysis",
+       "hi": "1. Lexical analysis (शब्द-स्तरीय विश्लेषण)"
+      },
+      "text": {
+       "en": "Lexical analysis studies the structure of words and breaks the text into paragraphs, sentences, phrases and words (tokens). The word 'lexical' comes from 'lexicon', meaning vocabulary. It also cleans and normalises words: converting to lowercase, removing punctuation and very common 'stop words' (a, an, the, is) when they are not needed, and reducing words to a base form.",
+       "hi": "Lexical analysis शब्दों की संरचना का अध्ययन करता है और text को अनुच्छेदों, वाक्यों, वाक्यांशों और शब्दों (tokens) में तोड़ता है। 'Lexical' शब्द 'lexicon' यानी शब्द-भंडार से आया है। यह शब्दों को साफ़ और सामान्य भी करता है: lowercase में बदलना, विराम-चिह्न और ज़रूरत न हो तो बहुत आम 'stop words' (a, an, the, is) हटाना, और शब्दों को मूल रूप में लाना।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Reducing words to a base form is called lexical normalisation. There are two methods:",
+      "hi": "शब्दों को मूल रूप में लाना lexical normalisation कहलाता है। इसके दो तरीके हैं:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Point",
+        "Stemming",
+        "Lemmatization"
+       ],
+       "hi": [
+        "बिंदु",
+        "Stemming",
+        "Lemmatization"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Idea",
+         "Chops off common suffixes such as -ing, -ly, -es, -s using simple rules",
+         "Finds the proper dictionary form (lemma) using vocabulary and the word's part of speech"
+        ],
+        [
+         "Result is always a real word?",
+         "No – 'studies' may become 'studi'",
+         "Yes – 'studies' becomes 'study'"
+        ],
+        [
+         "Handles irregular words?",
+         "No – 'went' stays 'went'",
+         "Yes – 'went' becomes 'go', 'better' (adjective) becomes 'good'"
+        ],
+        [
+         "Speed",
+         "Faster, simpler",
+         "Slower, more accurate"
+        ]
+       ],
+       "hi": [
+        [
+         "विचार",
+         "सरल नियमों से -ing, -ly, -es, -s जैसे आम प्रत्यय काट देता है",
+         "शब्द-भंडार और शब्द-भेद (part of speech) से सही शब्दकोश-रूप (lemma) ढूँढता है"
+        ],
+        [
+         "परिणाम हमेशा असली शब्द?",
+         "नहीं – 'studies' 'studi' बन सकता है",
+         "हाँ – 'studies' 'study' बनता है"
+        ],
+        [
+         "अनियमित शब्द संभालता है?",
+         "नहीं – 'went' 'went' ही रहता है",
+         "हाँ – 'went' 'go' बनता है, 'better' (विशेषण) 'good' बनता है"
+        ],
+        [
+         "गति",
+         "तेज़, सरल",
+         "धीमा, अधिक सटीक"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "This program shows the difference. The stemmer uses suffix rules; the 'lemmatizer' here is a small hand-made dictionary just for demonstration (real lemmatizers use large dictionaries).",
+      "hi": "यह program अंतर दिखाता है। Stemmer प्रत्यय-नियमों का उपयोग करता है; यहाँ 'lemmatizer' केवल प्रदर्शन के लिए एक छोटा हाथ से बना शब्दकोश है (असली lemmatizers बड़े शब्दकोश इस्तेमाल करते हैं)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "def simple_stem(word):\n    for suffix in [\"ing\", \"ly\", \"es\", \"s\"]:\n        if word.endswith(suffix) and len(word) > len(suffix) + 2:\n            return word[:-len(suffix)]\n    return word\n\nlemma_dict = {\"studies\": \"study\", \"studying\": \"study\", \"better\": \"good\",\n              \"went\": \"go\", \"mice\": \"mouse\", \"was\": \"be\"}\n\nwords = [\"playing\", \"quickly\", \"boxes\", \"toys\", \"studies\", \"went\", \"better\"]\nfor w in words:\n    print(w, \"-> stem:\", simple_stem(w), \"| lemma:\", lemma_dict.get(w, simple_stem(w)))",
+      "hi": "def simple_stem(word):\n    for suffix in [\"ing\", \"ly\", \"es\", \"s\"]:\n        if word.endswith(suffix) and len(word) > len(suffix) + 2:\n            return word[:-len(suffix)]\n    return word\n\nlemma_dict = {\"studies\": \"study\", \"studying\": \"study\", \"better\": \"good\",\n              \"went\": \"go\", \"mice\": \"mouse\", \"was\": \"be\"}\n\nwords = [\"playing\", \"quickly\", \"boxes\", \"toys\", \"studies\", \"went\", \"better\"]\nfor w in words:\n    print(w, \"-> stem:\", simple_stem(w), \"| lemma:\", lemma_dict.get(w, simple_stem(w)))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nplaying -> stem: play | lemma: play\nquickly -> stem: quick | lemma: quick\nboxes -> stem: box | lemma: box\ntoys -> stem: toy | lemma: toy\nstudies -> stem: studi | lemma: study\nwent -> stem: went | lemma: go\nbetter -> stem: better | lemma: good",
+      "hi": "Output:\nplaying -> stem: play | lemma: play\nquickly -> stem: quick | lemma: quick\nboxes -> stem: box | lemma: box\ntoys -> stem: toy | lemma: toy\nstudies -> stem: studi | lemma: study\nwent -> stem: went | lemma: go\nbetter -> stem: better | lemma: good"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "2. Syntactic analysis (parsing)",
+       "hi": "2. Syntactic analysis (parsing / वाक्य-रचना विश्लेषण)"
+      },
+      "text": {
+       "en": "Syntactic analysis checks the grammar of a sentence: the order of words, how they are arranged and how they relate to each other. A sentence that breaks grammar or does not make structural sense is rejected or flagged. The process of analysing words for grammar is called syntactic parsing.",
+       "hi": "Syntactic analysis वाक्य का व्याकरण जाँचता है: शब्दों का क्रम, उनकी व्यवस्था और वे एक-दूसरे से कैसे जुड़े हैं। व्याकरण तोड़ने वाला या संरचना में बेतुका वाक्य अस्वीकार या चिह्नित किया जाता है। व्याकरण के लिए शब्दों का विश्लेषण करने की प्रक्रिया syntactic parsing कहलाती है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Two key tools of syntactic analysis are Part-of-Speech (POS) tags and dependency grammar.",
+      "hi": "Syntactic analysis के दो मुख्य औज़ार हैं Part-of-Speech (POS) tags और dependency grammar।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "POS tagging labels each token with its part of speech: noun (NN), verb (VB), adjective (JJ), determiner (DT), preposition (IN), pronoun (PRP) and so on. Example: 'The/DT girl/NN reads/VB books/NN'. POS tags also help lemmatization: 'saw' as a verb → 'see', 'saw' as a noun → the cutting tool.",
+       "Dependency grammar shows which word depends on which. In 'Riya reads a book', 'reads' is the root (main verb); 'Riya' is its subject; 'book' is its object; 'a' depends on 'book'.",
+       "A syntax tree (parse tree) draws this structure. Describe it like this: at the top is the node S (sentence). S splits into two branches – NP (noun phrase: 'Riya') and VP (verb phrase). VP splits into V ('reads') and another NP, which splits into Det ('a') and N ('book'). Each word hangs at the bottom as a leaf. A syntax tree shows the grammatical relationships between words, and also hints at the meaning links."
+      ],
+      "hi": [
+       "POS tagging हर token पर उसके शब्द-भेद का label लगाता है: संज्ञा (NN), क्रिया (VB), विशेषण (JJ), निर्धारक (DT), संबंधबोधक (IN), सर्वनाम (PRP) आदि। उदाहरण: 'The/DT girl/NN reads/VB books/NN'। POS tags lemmatization में भी मदद करते हैं: क्रिया 'saw' → 'see', संज्ञा 'saw' → आरी।",
+       "Dependency grammar बताता है कि कौन-सा शब्द किस पर निर्भर है। 'Riya reads a book' में 'reads' मूल (root, मुख्य क्रिया) है; 'Riya' उसका कर्ता है; 'book' उसका कर्म है; 'a' 'book' पर निर्भर है।",
+       "Syntax tree (parse tree) इस संरचना को चित्र रूप में दिखाता है। इसे ऐसे समझिए: सबसे ऊपर node S (वाक्य) है। S दो शाखाओं में बँटता है – NP (संज्ञा वाक्यांश: 'Riya') और VP (क्रिया वाक्यांश)। VP, V ('reads') और एक और NP में बँटता है, जो Det ('a') और N ('book') में बँटता है। हर शब्द सबसे नीचे पत्ती (leaf) की तरह लटकता है। Syntax tree शब्दों के व्याकरणिक संबंध दिखाता है और अर्थ की कड़ियों का संकेत भी देता है।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "            S\n          /   \\\n        NP     VP\n        |     /   \\\n      Riya   V     NP\n             |    /  \\\n           reads Det  N\n                  |   |\n                  a  book",
+      "hi": "            S\n          /   \\\n        NP     VP\n        |     /   \\\n      Riya   V     NP\n             |    /  \\\n           reads Det  N\n                  |   |\n                  a  book"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Is 'Mumbai travels to the Anuj.' accepted by syntactic analysis? Explain.",
+       "hi": "क्या 'Mumbai travels to the Anuj.' syntactic analysis में स्वीकार होगा? समझाइए।"
+      },
+      "a": {
+       "en": "Step 1: POS tags: Mumbai/proper noun, travels/verb, to/preposition, the/determiner, Anuj/proper noun.\nStep 2: 'the' before a person's name 'Anuj' breaks normal English grammar, so the parser flags the sentence.\nStep 3: it is also meaningless (a city cannot travel to a person) – that deeper problem is caught in semantic analysis.\nAnswer: it is rejected or flagged; the correct sentence would be 'Anuj travels to Mumbai.'",
+       "hi": "चरण 1: POS tags: Mumbai/व्यक्तिवाचक संज्ञा, travels/क्रिया, to/संबंधबोधक, the/निर्धारक, Anuj/व्यक्तिवाचक संज्ञा।\nचरण 2: व्यक्ति के नाम 'Anuj' से पहले 'the' सामान्य अंग्रेज़ी व्याकरण तोड़ता है, इसलिए parser वाक्य को चिह्नित करता है।\nचरण 3: यह अर्थहीन भी है (शहर किसी व्यक्ति तक यात्रा नहीं कर सकता) – यह गहरी समस्या semantic analysis में पकड़ी जाती है।\nउत्तर: यह अस्वीकार या चिह्नित होगा; सही वाक्य होगा 'Anuj travels to Mumbai.'"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.8 Phases of NLP (2): semantic, discourse and pragmatic analysis",
+    "hi": "7.8 NLP के चरण (2): semantic, discourse और pragmatic analysis"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "3. Semantic analysis",
+       "hi": "3. Semantic analysis (अर्थ विश्लेषण)"
+      },
+      "text": {
+       "en": "Semantic analysis finds the literal meaning of words and sentences and checks whether the sentence makes sense. It chooses the right meaning of ambiguous words from context (word sense disambiguation) and extracts the key insight of the message.",
+       "hi": "Semantic analysis शब्दों और वाक्यों का शाब्दिक अर्थ ढूँढता है और जाँचता है कि वाक्य सार्थक है या नहीं। यह संदर्भ से अस्पष्ट शब्दों का सही अर्थ चुनता है (word sense disambiguation) और संदेश की मुख्य बात निकालता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "'Hot ice cream' is grammatically fine but semantically odd – ice cream is cold.",
+       "'Colourless green ideas sleep furiously' is a famous sentence (by linguist Noam Chomsky) that is grammatically correct but has no sensible meaning – it passes syntax but fails semantics.",
+       "'I deposited money in the bank' → bank = financial institution (because of 'money' and 'deposited'); 'We sat on the bank of the Ganga' → bank = riverside."
+      ],
+      "hi": [
+       "'गरम आइसक्रीम' व्याकरण में ठीक है पर अर्थ में अटपटा – आइसक्रीम ठंडी होती है।",
+       "'Colourless green ideas sleep furiously' एक प्रसिद्ध वाक्य है (भाषावैज्ञानिक Noam Chomsky का) जो व्याकरण में सही है पर कोई सार्थक अर्थ नहीं रखता – यह syntax पार करता है पर semantics में विफल होता है।",
+       "'मैंने bank में पैसे जमा किए' → bank = वित्तीय संस्था ('पैसे' और 'जमा' के कारण); 'हम गंगा के bank पर बैठे' → bank = किनारा।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "4. Discourse integration",
+       "hi": "4. Discourse integration (प्रसंग एकीकरण)"
+      },
+      "text": {
+       "en": "Discourse integration interprets a word or sentence using the sentences that came before (and sometimes after) it. Its main job is resolving references such as pronouns (he, she, it, they, वह, यह) and connecting them to the right noun. This is also called coreference resolution.",
+       "hi": "Discourse integration किसी शब्द या वाक्य की व्याख्या उससे पहले (और कभी बाद) के वाक्यों की मदद से करता है। इसका मुख्य काम सर्वनाम (he, she, it, they, वह, यह) जैसे संदर्भों को सुलझाना और उन्हें सही संज्ञा से जोड़ना है। इसे coreference resolution भी कहते हैं।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "What does 'it' mean in 'Arti wants it.'? How does discourse integration help?",
+       "hi": "'Arti wants it.' में 'it' का क्या अर्थ है? Discourse integration कैसे मदद करता है?"
+      },
+      "a": {
+       "en": "Step 1: alone, 'Arti wants it' does not tell us what 'it' is.\nStep 2: look at the previous sentence, e.g. 'Mother bought a new cycle.'\nStep 3: the nearest suitable noun that 'it' can refer to is 'cycle'.\nAnswer: 'it' = the new cycle. Discourse integration links 'it' to 'cycle' using the earlier sentence; without it, the meaning is incomplete.",
+       "hi": "चरण 1: अकेले 'Arti wants it' से पता नहीं चलता कि 'it' क्या है।\nचरण 2: पिछला वाक्य देखिए, जैसे 'Mother bought a new cycle.'\nचरण 3: 'it' जिस निकटतम उपयुक्त संज्ञा को दर्शा सकता है वह 'cycle' है।\nउत्तर: 'it' = नई साइकिल। Discourse integration पिछले वाक्य से 'it' को 'cycle' से जोड़ता है; इसके बिना अर्थ अधूरा रहता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "5. Pragmatic analysis",
+       "hi": "5. Pragmatic analysis (व्यावहारिक विश्लेषण)"
+      },
+      "text": {
+       "en": "Pragmatic analysis finds the intended meaning of a message in its real-world context – who said it, to whom, when, where and why. It reinterprets the literal meaning using knowledge of the situation and how people communicate.",
+       "hi": "Pragmatic analysis किसी संदेश का वास्तविक संदर्भ में आशय ढूँढता है – किसने कहा, किससे, कब, कहाँ और क्यों। यह परिस्थिति के ज्ञान और लोगों के संवाद के तरीके के आधार पर शाब्दिक अर्थ की पुनः व्याख्या करता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "'Can you open the window?' – literally a question about ability; pragmatically a polite request. A smart speaker should open the smart window, not answer 'Yes, I can.'",
+       "'It's cold in here' said by a guest may mean 'please switch off the fan'.",
+       "'Bahut badhiya!' after a team drops an easy catch is sarcasm.",
+       "'Do you know what time it is?' from a parent at midnight means 'go to sleep', not a request for the time."
+      ],
+      "hi": [
+       "'क्या आप खिड़की खोल सकते हैं?' – शाब्दिक रूप से क्षमता का प्रश्न; व्यावहारिक रूप से विनम्र अनुरोध। Smart speaker को smart खिड़की खोलनी चाहिए, यह नहीं कहना चाहिए 'हाँ, मैं खोल सकता हूँ।'",
+       "मेहमान का 'यहाँ ठंड है' कहने का अर्थ हो सकता है 'कृपया पंखा बंद कर दीजिए'।",
+       "टीम के आसान कैच छोड़ने पर 'बहुत बढ़िया!' व्यंग्य है।",
+       "आधी रात को माता-पिता का 'पता है कितने बजे हैं?' का अर्थ है 'सो जाओ', समय पूछना नहीं।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Phase",
+        "Question it answers",
+        "Example"
+       ],
+       "hi": [
+        "चरण",
+        "किस प्रश्न का उत्तर देता है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Lexical",
+         "What are the words and their base forms?",
+         "'Playing' → token 'playing' → 'play'"
+        ],
+        [
+         "Syntactic",
+         "Is the grammar correct? How are words connected?",
+         "Reject 'Mumbai travels to the Anuj'; build a syntax tree"
+        ],
+        [
+         "Semantic",
+         "What does it literally mean? Does it make sense?",
+         "'Hot ice cream' is odd; choose bank = money bank"
+        ],
+        [
+         "Discourse",
+         "What do pronouns and references point to?",
+         "'Arti wants it' → it = the cycle"
+        ],
+        [
+         "Pragmatic",
+         "What does the speaker really intend here?",
+         "'Can you open the window?' = please open it"
+        ]
+       ],
+       "hi": [
+        [
+         "Lexical",
+         "शब्द कौन-से हैं और उनके मूल रूप क्या हैं?",
+         "'Playing' → token 'playing' → 'play'"
+        ],
+        [
+         "Syntactic",
+         "व्याकरण सही है? शब्द कैसे जुड़े हैं?",
+         "'Mumbai travels to the Anuj' अस्वीकार; syntax tree बनाना"
+        ],
+        [
+         "Semantic",
+         "शाब्दिक अर्थ क्या है? क्या यह सार्थक है?",
+         "'गरम आइसक्रीम' अटपटा; bank = पैसों वाला बैंक चुनना"
+        ],
+        [
+         "Discourse",
+         "सर्वनाम और संदर्भ किसकी ओर इशारा करते हैं?",
+         "'Arti wants it' → it = साइकिल"
+        ],
+        [
+         "Pragmatic",
+         "यहाँ वक्ता का असली आशय क्या है?",
+         "'क्या आप खिड़की खोल सकते हैं?' = कृपया खोलिए"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Memory trick for the order: 'Little Students Seldom Disturb Parents' – Lexical, Syntactic, Semantic, Discourse, Pragmatic.",
+      "hi": "क्रम याद रखने की तरकीब: 'Little Students Seldom Disturb Parents' – Lexical, Syntactic, Semantic, Discourse, Pragmatic।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Name the phase: (a) Converting 'running' to 'run'. (b) Finding that 'she' refers to 'Dr. Kavya'. (c) Building a syntax tree. (d) Understanding that 'I'm starving' means the person wants food soon, not that they are literally dying. (e) Deciding that 'The stone ate lunch' makes no sense.",
+       "hi": "चरण का नाम बताइए: (a) 'running' को 'run' में बदलना। (b) पता लगाना कि 'she' 'Dr. Kavya' के लिए है। (c) Syntax tree बनाना। (d) समझना कि 'I'm starving' का अर्थ है व्यक्ति को जल्दी खाना चाहिए, वह सच में मर नहीं रहा। (e) तय करना कि 'The stone ate lunch' का कोई अर्थ नहीं।"
+      },
+      "a": {
+       "en": "(a) Lexical analysis (normalisation – stemming/lemmatization).\n(b) Discourse integration (resolving a pronoun).\n(c) Syntactic analysis (parsing).\n(d) Pragmatic analysis (intended meaning).\n(e) Semantic analysis (a stone cannot eat – the grammar is fine but the meaning fails).",
+       "hi": "(a) Lexical analysis (normalisation – stemming/lemmatization)।\n(b) Discourse integration (सर्वनाम सुलझाना)।\n(c) Syntactic analysis (parsing)।\n(d) Pragmatic analysis (आशय)।\n(e) Semantic analysis (पत्थर खा नहीं सकता – व्याकरण ठीक है पर अर्थ विफल)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.9 Applications of NLP",
+    "hi": "7.9 NLP के अनुप्रयोग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Linguistics combined with computer science powers many tools you use daily. The CBSE unit highlights six applications; a few more are added for completeness.",
+      "hi": "कंप्यूटर विज्ञान के साथ मिला भाषाविज्ञान ऐसे कई tools चलाता है जिनका आप रोज़ उपयोग करते हैं। CBSE इकाई छह अनुप्रयोगों पर ज़ोर देती है; पूर्णता के लिए कुछ और जोड़े गए हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application",
+        "What it does",
+        "Indian example"
+       ],
+       "hi": [
+        "अनुप्रयोग",
+        "यह क्या करता है",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Sentiment analysis",
+         "Judges whether text is positive, negative or neutral to measure customer satisfaction and public opinion",
+         "A food-delivery company reads reviews to find which city has the most complaints about late delivery"
+        ],
+        [
+         "Smart / voice assistants",
+         "Turn spoken commands into intents and act on them",
+         "'Hey Google, set an alarm at 3:30 pm'; 'Alexa, play some music'; 'Siri, what's the weather today?'"
+        ],
+        [
+         "Email filtering",
+         "Classifies mail as primary, promotions or spam using words, senders and patterns",
+         "Gmail moves a 'You have won a lottery' email to Spam"
+        ],
+        [
+         "Predictive text and autocorrect",
+         "Suggests the next word or fixes spelling as you type, learning from language patterns",
+         "Phone keyboard suggests 'ji' after 'Namaste'; Hindi keyboards suggest Devanagari words from Roman typing"
+        ],
+        [
+         "Document analysis",
+         "Organises, stores and searches large volumes of documents by keywords and categories",
+         "An HR team finds every file that mentions one employee's name instantly instead of opening thousands of files by hand"
+        ],
+        [
+         "Automatic summarisation",
+         "Condenses long text into the key points, and can capture its emotional meaning",
+         "A news app shows a 60-word summary of a long article"
+        ],
+        [
+         "Machine translation",
+         "Translates text or speech between languages",
+         "Bhashini and Google Translate translating Hindi to Tamil"
+        ],
+        [
+         "Speech recognition",
+         "Converts speech to text",
+         "Voice typing a WhatsApp message in Marathi"
+        ],
+        [
+         "Information retrieval and search",
+         "Finds the most relevant documents for a query",
+         "Searching 'nearest blood bank open now'"
+        ]
+       ],
+       "hi": [
+        [
+         "Sentiment analysis",
+         "ग्राहक संतुष्टि और जनमत मापने के लिए आँकता है कि text सकारात्मक, नकारात्मक या तटस्थ है",
+         "एक food-delivery कंपनी reviews पढ़कर पता लगाती है कि किस शहर में देर से delivery की सबसे अधिक शिकायतें हैं"
+        ],
+        [
+         "Smart / voice assistants",
+         "बोले गए commands को intents में बदलकर उन पर काम करते हैं",
+         "'Hey Google, set an alarm at 3:30 pm'; 'Alexa, play some music'; 'Siri, what's the weather today?'"
+        ],
+        [
+         "Email filtering",
+         "शब्दों, भेजने वालों और patterns से mail को primary, promotions या spam में बाँटता है",
+         "Gmail 'You have won a lottery' email को Spam में डाल देता है"
+        ],
+        [
+         "Predictive text और autocorrect",
+         "भाषा के patterns से सीखकर टाइप करते समय अगला शब्द सुझाता या वर्तनी ठीक करता है",
+         "फ़ोन keyboard 'Namaste' के बाद 'ji' सुझाता है; हिंदी keyboards रोमन टाइपिंग से देवनागरी शब्द सुझाते हैं"
+        ],
+        [
+         "Document analysis",
+         "बड़ी मात्रा में दस्तावेज़ों को keywords और श्रेणियों से व्यवस्थित, संग्रहीत और खोजता है",
+         "HR टीम हज़ारों files हाथ से खोलने के बजाय एक कर्मचारी के नाम वाली हर file तुरंत ढूँढ लेती है"
+        ],
+        [
+         "Automatic summarisation",
+         "लंबे text को मुख्य बिंदुओं में संक्षिप्त करता है और उसका भावनात्मक अर्थ भी पकड़ सकता है",
+         "News app लंबे लेख का 60 शब्दों का सारांश दिखाता है"
+        ],
+        [
+         "Machine translation",
+         "भाषाओं के बीच text या बोली का अनुवाद",
+         "Bhashini और Google Translate द्वारा हिंदी से तमिल अनुवाद"
+        ],
+        [
+         "Speech recognition",
+         "बोली को text में बदलता है",
+         "मराठी में बोलकर WhatsApp संदेश टाइप करना"
+        ],
+        [
+         "Information retrieval और search",
+         "किसी प्रश्न के लिए सबसे प्रासंगिक दस्तावेज़ ढूँढता है",
+         "'nearest blood bank open now' खोजना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How does email or SMS filtering work at the simplest level? It looks for patterns and keywords that often appear in spam. The program below flags a message as spam if it contains two or more suspicious words (run in Python; real output shown).",
+      "hi": "सबसे सरल स्तर पर email या SMS filtering कैसे काम करता है? यह उन patterns और keywords को ढूँढता है जो अक्सर spam में आते हैं। नीचे का program किसी संदेश में दो या अधिक संदिग्ध शब्द हों तो उसे spam मानता है (Python में चलाया गया; वास्तविक output दिखाया गया)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "spam_words = [\"lottery\", \"winner\", \"free\", \"urgent\", \"kyc\", \"click\"]\n\ndef is_spam(message):\n    msg = message.lower()\n    count = sum(1 for w in spam_words if w in msg)\n    return \"SPAM\" if count >= 2 else \"INBOX\"\n\nmsgs = [\"Congratulations winner! Click here to claim your free lottery prize\",\n        \"URGENT: your KYC is pending, click this link now\",\n        \"Parent-teacher meeting is on Saturday at 10 am\",\n        \"Free tickets for the school annual day are at the office\"]\nfor m in msgs:\n    print(is_spam(m), \"<-\", m)",
+      "hi": "spam_words = [\"lottery\", \"winner\", \"free\", \"urgent\", \"kyc\", \"click\"]\n\ndef is_spam(message):\n    msg = message.lower()\n    count = sum(1 for w in spam_words if w in msg)\n    return \"SPAM\" if count >= 2 else \"INBOX\"\n\nmsgs = [\"Congratulations winner! Click here to claim your free lottery prize\",\n        \"URGENT: your KYC is pending, click this link now\",\n        \"Parent-teacher meeting is on Saturday at 10 am\",\n        \"Free tickets for the school annual day are at the office\"]\nfor m in msgs:\n    print(is_spam(m), \"<-\", m)"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\nSPAM <- Congratulations winner! Click here to claim your free lottery prize\nSPAM <- URGENT: your KYC is pending, click this link now\nINBOX <- Parent-teacher meeting is on Saturday at 10 am\nINBOX <- Free tickets for the school annual day are at the office",
+      "hi": "Output:\nSPAM <- Congratulations winner! Click here to claim your free lottery prize\nSPAM <- URGENT: your KYC is pending, click this link now\nINBOX <- Parent-teacher meeting is on Saturday at 10 am\nINBOX <- Free tickets for the school annual day are at the office"
+     }
+    },
+    {
+     "note": {
+      "en": "The fourth message has the word 'free' but only one suspicious word, so it stays in the inbox. Real filters learn weights for thousands of features from labelled emails (supervised learning) and also check the sender and links. Fake 'KYC pending' messages are a common UPI/bank fraud in India – never click such links.",
+      "hi": "चौथे संदेश में 'free' शब्द है पर केवल एक संदिग्ध शब्द, इसलिए वह inbox में रहता है। असली filters labelled emails से हज़ारों features के weights सीखते हैं (supervised learning) और भेजने वाले व links की भी जाँच करते हैं। नकली 'KYC pending' संदेश भारत में आम UPI/बैंक धोखाधड़ी हैं – ऐसे links पर कभी click न करें।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Screen activity: Explore sentiment and translation with free tools.",
+       "hi": "Screen गतिविधि: मुफ़्त tools से sentiment और अनुवाद आज़माइए।"
+      },
+      "a": {
+       "en": "Aim: see NLP strengths and weaknesses yourself.\nWhat you need: a phone or computer with Google Translate or Bhashini (free); optional – a free chatbot used with teacher permission.\nWhat to do:\n1. Translate 'The match was a nail-biter' into Hindi and back to English. Does the idiom survive?\n2. Translate 'Kal milte hain' (Roman Hindi) – does it guess 'tomorrow' or 'yesterday'?\n3. Ask a chatbot to label five reviews as positive/negative, including one sarcastic review.\nWhat you observe: literal phrases translate well; idioms, Roman-script Hindi and sarcasm often go wrong.\nWhat it teaches: the pragmatic and semantic phases are the hardest; always check AI output.",
+       "hi": "उद्देश्य: NLP की ताकत और कमज़ोरी स्वयं देखना।\nक्या चाहिए: Google Translate या Bhashini (मुफ़्त) वाला फ़ोन या कंप्यूटर; चाहें तो शिक्षक की अनुमति से कोई मुफ़्त chatbot।\nक्या करें:\n1. 'The match was a nail-biter' का हिंदी में और फिर वापस अंग्रेज़ी में अनुवाद कीजिए। क्या मुहावरा बचा?\n2. 'Kal milte hain' (रोमन हिंदी) का अनुवाद कीजिए – वह 'tomorrow' मानता है या 'yesterday'?\n3. किसी chatbot से पाँच reviews को सकारात्मक/नकारात्मक label करने को कहिए, जिनमें एक व्यंग्य वाला हो।\nक्या दिखता है: शाब्दिक वाक्यांश अच्छे अनूदित होते हैं; मुहावरे, रोमन-लिपि हिंदी और व्यंग्य अक्सर गड़बड़ होते हैं।\nइससे क्या सीखते हैं: pragmatic और semantic चरण सबसे कठिन हैं; AI output की हमेशा जाँच करें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "7.10 Case studies: chatbots in business",
+    "hi": "7.10 Case studies: व्यवसाय में chatbots"
+   },
+   "blocks": [
+    {
+     "ex": {
+      "q": {
+       "en": "Case study 1: An e-commerce company receives thousands of customer queries daily by email, SMS and voice calls. Customers wait hours for answers about order status, returns and refunds. The customer-service manager decides to deploy a chatbot. (a) What challenges does the company face? (b) What should it look for when choosing a chatbot platform? (c) How should it implement the bot? (d) What results can it expect?",
+       "hi": "Case study 1: एक e-commerce कंपनी को रोज़ email, SMS और voice calls से हज़ारों ग्राहक प्रश्न मिलते हैं। ग्राहक order status, returns और refunds के उत्तर के लिए घंटों इंतज़ार करते हैं। customer-service manager एक chatbot लगाने का निर्णय लेता है। (a) कंपनी के सामने क्या चुनौतियाँ हैं? (b) chatbot platform चुनते समय क्या देखना चाहिए? (c) bot को कैसे लागू करना चाहिए? (d) किन परिणामों की उम्मीद की जा सकती है?"
+      },
+      "a": {
+       "en": "(a) Challenges: very high volume of repetitive queries; several channels (email, SMS, voice); long waiting times; customers writing in many languages and in informal Hinglish; keeping answers consistent.\n(b) Selection criteria: support for all channels (website, app, WhatsApp, voice); good NLP for Indian languages and code-mixing; easy connection to the order database; ability to hand over to a human agent; data security and privacy compliance; analytics to see what customers ask; cost and ease of updating.\n(c) Implementation: list the most common intents (track order, return, refund status, change address); collect real past queries to train the NLP; design dialog flows and fallback messages; test with a small group; launch gradually; monitor conversations and retrain.\n(d) Results: instant 24/7 replies to common questions, shorter waiting times, human agents freed for complex complaints, more consistent answers, and data about frequent problems. The bot must be reviewed regularly so that wrong or unfair replies are fixed.",
+       "hi": "(a) चुनौतियाँ: दोहराए जाने वाले प्रश्नों की बहुत अधिक संख्या; कई channels (email, SMS, voice); लंबा इंतज़ार; ग्राहक कई भाषाओं और अनौपचारिक हिंग्लिश में लिखते हैं; उत्तरों को एक-सा रखना।\n(b) चयन मानदंड: सभी channels (website, app, WhatsApp, voice) का समर्थन; भारतीय भाषाओं और मिश्रित भाषा के लिए अच्छा NLP; order database से आसान जुड़ाव; मानव agent को सौंपने की क्षमता; data सुरक्षा और निजता नियमों का पालन; ग्राहक क्या पूछते हैं यह देखने के लिए analytics; लागत और अद्यतन की आसानी।\n(c) लागू करना: सबसे आम intents सूचीबद्ध करें (order track, return, refund status, पता बदलना); NLP प्रशिक्षण के लिए असली पुराने प्रश्न इकट्ठा करें; dialog flows और fallback संदेश बनाएँ; छोटे समूह के साथ परखें; धीरे-धीरे शुरू करें; बातचीत की निगरानी कर पुनः प्रशिक्षित करें।\n(d) परिणाम: आम प्रश्नों के तुरंत 24/7 उत्तर, कम इंतज़ार, जटिल शिकायतों के लिए मानव agents मुक्त, अधिक एकरूप उत्तर, और बार-बार की समस्याओं का data। गलत या अनुचित उत्तर सुधारने के लिए bot की नियमित समीक्षा ज़रूरी है।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Case study 2: A telecom company uses a rule-based chatbot. Customers complain that it only understands exact menu options and fails when they type naturally, e.g. 'mera net kal se slow hai, kya karun?' The customer-experience lead plans to move to an AI-based chatbot. Explain the problem, the solution and the impact.",
+       "hi": "Case study 2: एक telecom कंपनी rule-based chatbot इस्तेमाल करती है। ग्राहक शिकायत करते हैं कि यह केवल सटीक menu विकल्प समझता है और स्वाभाविक रूप से लिखने पर विफल हो जाता है, जैसे 'mera net kal se slow hai, kya karun?' customer-experience lead AI-based chatbot अपनाने की योजना बनाता है। समस्या, समाधान और प्रभाव समझाइए।"
+      },
+      "a": {
+       "en": "Problem: rule-based bots match fixed keywords and decision trees, so they fail with varied wording, spelling mistakes, Hinglish and multi-part questions; customers get stuck in loops and call the helpline anyway.\nSolution: an AI-powered chatbot using NLP and machine learning trained on past chat logs (with personal data removed) to recognise intents such as 'slow internet', 'recharge failed' or 'port number'; extract entities like plan name and date; remember context across turns; and hand over to a human when confidence is low.\nImpact: more queries solved without a human, faster resolution, higher customer satisfaction, and personalised help (for example, suggesting a better plan). Costs and risks: higher development and computing cost, need for good training data, privacy protection, and regular checks for bias and wrong answers.",
+       "hi": "समस्या: rule-based bots तय keywords और decision trees से मिलान करते हैं, इसलिए वे अलग शब्दों, वर्तनी की गलतियों, हिंग्लिश और कई हिस्सों वाले प्रश्नों पर विफल होते हैं; ग्राहक चक्कर में फँसते हैं और फिर भी helpline पर फ़ोन करते हैं।\nसमाधान: पुराने chat logs (निजी data हटाकर) पर प्रशिक्षित NLP और machine learning वाला AI-powered chatbot, जो 'slow internet', 'recharge failed' या 'port number' जैसे intents पहचाने; plan का नाम और तारीख जैसी entities निकाले; बातचीत में संदर्भ याद रखे; और confidence कम होने पर मनुष्य को सौंपे।\nप्रभाव: बिना मनुष्य के अधिक प्रश्न हल, तेज़ समाधान, अधिक ग्राहक संतुष्टि, और व्यक्तिगत मदद (जैसे बेहतर plan सुझाना)। लागत और जोखिम: अधिक विकास और computing लागत, अच्छे training data की ज़रूरत, निजता की रक्षा, और bias व गलत उत्तरों की नियमित जाँच।"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking NLP means only chatbots. Fix: NLP also powers translation, search, spam filtering, summarisation, voice typing and more.",
+   "Confusing emotion detection with sentiment analysis. Fix: emotion detection names the emotion (anger, joy); sentiment analysis gives polarity/strength (positive, negative, neutral).",
+   "Mixing up stemming and lemmatization. Fix: stemming cuts suffixes and may give non-words ('studi'); lemmatization gives the dictionary form using POS ('study', 'go').",
+   "Writing the five phases in the wrong order. Fix: Lexical → Syntactic → Semantic → Discourse integration → Pragmatic ('Little Students Seldom Disturb Parents').",
+   "Believing a grammatically correct sentence must be meaningful. Fix: 'Colourless green ideas sleep furiously' passes syntax but fails semantics.",
+   "Confusing discourse integration with pragmatic analysis. Fix: discourse links sentences (who is 'he'?); pragmatics finds the speaker's real intention in the situation.",
+   "Calling a verb or adjective an entity. Fix: entities are nouns that name people, places, organisations or things.",
+   "Saying intent is a noun. Fix: intent is the action/goal (like a verb); entities are the nouns/details.",
+   "Assuming AI chatbots are always right. Fix: they can be confidently wrong or biased – check important answers and never share OTPs or passwords.",
+   "Thinking a rule-based bot 'learns'. Fix: it only follows rules written by people; it changes only when developers update the rules."
+  ],
+  "hi": [
+   "यह सोचना कि NLP का अर्थ केवल chatbots है। सुधार: NLP अनुवाद, search, spam filtering, सारांश, voice typing आदि भी चलाता है।",
+   "Emotion detection और sentiment analysis को एक समझना। सुधार: emotion detection भावना का नाम बताता है (गुस्सा, खुशी); sentiment analysis ध्रुवता/तीव्रता बताता है (सकारात्मक, नकारात्मक, तटस्थ)।",
+   "Stemming और lemmatization को मिलाना। सुधार: stemming प्रत्यय काटता है और अशब्द दे सकता है ('studi'); lemmatization POS से शब्दकोश-रूप देता है ('study', 'go')।",
+   "पाँच चरण गलत क्रम में लिखना। सुधार: Lexical → Syntactic → Semantic → Discourse integration → Pragmatic ('Little Students Seldom Disturb Parents')।",
+   "मानना कि व्याकरण में सही वाक्य सार्थक भी होगा। सुधार: 'Colourless green ideas sleep furiously' syntax पार करता है पर semantics में विफल है।",
+   "Discourse integration और pragmatic analysis को मिलाना। सुधार: discourse वाक्यों को जोड़ता है ('वह' कौन है?); pragmatics परिस्थिति में वक्ता का असली इरादा ढूँढता है।",
+   "क्रिया या विशेषण को entity कहना। सुधार: entities वे संज्ञाएँ हैं जो व्यक्ति, स्थान, संस्था या वस्तु का नाम बताती हैं।",
+   "Intent को संज्ञा कहना। सुधार: intent क्रिया/लक्ष्य है (verb की तरह); entities संज्ञाएँ/विवरण हैं।",
+   "मानना कि AI chatbots हमेशा सही हैं। सुधार: वे आत्मविश्वास से गलत या पक्षपाती हो सकते हैं – ज़रूरी उत्तर जाँचें और OTP या password कभी साझा न करें।",
+   "सोचना कि rule-based bot 'सीखता' है। सुधार: यह केवल लोगों के लिखे नियम मानता है; developers नियम बदलें तभी बदलता है।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Linguistics",
+    "hi": "भाषाविज्ञान"
+   },
+   "d": {
+    "en": "The scientific study of language – its structure, meaning and use.",
+    "hi": "भाषा का वैज्ञानिक अध्ययन – उसकी संरचना, अर्थ और प्रयोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Natural language",
+    "hi": "प्राकृतिक भाषा"
+   },
+   "d": {
+    "en": "A language people speak naturally (Hindi, English), as opposed to a formal language like Python.",
+    "hi": "वह भाषा जो लोग स्वाभाविक रूप से बोलते हैं (हिंदी, अंग्रेज़ी), Python जैसी औपचारिक भाषा के विपरीत।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLP",
+    "hi": "NLP"
+   },
+   "d": {
+    "en": "Natural Language Processing: the branch of AI that lets computers understand, interpret, generate and manipulate human language.",
+    "hi": "Natural Language Processing: AI की वह शाखा जो कंप्यूटर को मानव भाषा समझने, व्याख्या करने, बनाने और बदलने देती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLU / NLG",
+    "hi": "NLU / NLG"
+   },
+   "d": {
+    "en": "Natural Language Understanding (language → meaning) and Natural Language Generation (data → language).",
+    "hi": "Natural Language Understanding (भाषा → अर्थ) और Natural Language Generation (data → भाषा)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Structured data",
+    "hi": "Structured data"
+   },
+   "d": {
+    "en": "Data organised in a fixed format such as rows and columns.",
+    "hi": "तय ढाँचे (जैसे पंक्ति-स्तंभ) में व्यवस्थित data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unstructured data",
+    "hi": "Unstructured data"
+   },
+   "d": {
+    "en": "Data without a fixed format, such as free text, speech or chats.",
+    "hi": "बिना तय ढाँचे का data, जैसे मुक्त text, बोली या chats।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sentence segmentation",
+    "hi": "Sentence segmentation"
+   },
+   "d": {
+    "en": "Splitting text into individual sentences.",
+    "hi": "Text को अलग-अलग वाक्यों में बाँटना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Token / tokenization",
+    "hi": "Token / tokenization"
+   },
+   "d": {
+    "en": "A token is a single unit of text (word or symbol); tokenization splits text into tokens.",
+    "hi": "Token, text की एक इकाई (शब्द या चिह्न) है; tokenization text को tokens में तोड़ता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Entity",
+    "hi": "Entity"
+   },
+   "d": {
+    "en": "A noun naming a person, place, organisation or thing; in chatbots, a specific detail in the user's message.",
+    "hi": "व्यक्ति, स्थान, संस्था या वस्तु का नाम बताने वाली संज्ञा; chatbot में user के संदेश का विशिष्ट विवरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Relationship",
+    "hi": "Relationship"
+   },
+   "d": {
+    "en": "A strong link between two or more entities.",
+    "hi": "दो या अधिक entities के बीच मज़बूत कड़ी।"
+   }
+  },
+  {
+   "t": {
+    "en": "Concept",
+    "hi": "Concept"
+   },
+   "d": {
+    "en": "An idea implied by a sentence but not written in it.",
+    "hi": "वाक्य से संकेतित पर उसमें न लिखा विचार।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ambiguity",
+    "hi": "अस्पष्टता (Ambiguity)"
+   },
+   "d": {
+    "en": "When a word or sentence has more than one possible meaning.",
+    "hi": "जब किसी शब्द या वाक्य के एक से अधिक संभावित अर्थ हों।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sentiment analysis",
+    "hi": "Sentiment analysis"
+   },
+   "d": {
+    "en": "Finding whether text is positive, negative or neutral, and how strongly.",
+    "hi": "पता करना कि text सकारात्मक, नकारात्मक या तटस्थ है, और कितना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Emotion detection",
+    "hi": "Emotion detection"
+   },
+   "d": {
+    "en": "Identifying the specific emotion (anger, joy, sadness…) in text or speech.",
+    "hi": "Text या बोली में विशिष्ट भावना (गुस्सा, खुशी, दुख…) पहचानना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification problem",
+    "hi": "Classification problem"
+   },
+   "d": {
+    "en": "The difficulty of putting language into the right category because of vague words and double meanings.",
+    "hi": "अस्पष्ट शब्दों और दोहरे अर्थों के कारण भाषा को सही श्रेणी में रखने की कठिनाई।"
+   }
+  },
+  {
+   "t": {
+    "en": "Confidence value",
+    "hi": "Confidence value"
+   },
+   "d": {
+    "en": "A number showing how sure an AI model is about its answer.",
+    "hi": "यह बताने वाली संख्या कि AI model अपने उत्तर के बारे में कितना निश्चित है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Chatbot",
+    "hi": "Chatbot"
+   },
+   "d": {
+    "en": "Software that simulates conversation with users by text or voice.",
+    "hi": "Text या आवाज़ से users के साथ बातचीत का अनुकरण करने वाला software।"
+   }
+  },
+  {
+   "t": {
+    "en": "Rule-based chatbot",
+    "hi": "Rule-based chatbot"
+   },
+   "d": {
+    "en": "A chatbot that follows predefined rules, keywords and decision trees.",
+    "hi": "पहले से तय नियमों, keywords और decision trees पर चलने वाला chatbot।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI-powered chatbot",
+    "hi": "AI-powered chatbot"
+   },
+   "d": {
+    "en": "A chatbot using NLP and ML to understand free language; also called a chat agent or virtual assistant.",
+    "hi": "मुक्त भाषा समझने के लिए NLP और ML वाला chatbot; इसे chat agent या virtual assistant भी कहते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Frontend / backend",
+    "hi": "Frontend / backend"
+   },
+   "d": {
+    "en": "Frontend: the channel and interface the user sees. Backend: the logic, NLP and memory behind it.",
+    "hi": "Frontend: user को दिखने वाला channel और interface। Backend: उसके पीछे का logic, NLP और memory।"
+   }
+  },
+  {
+   "t": {
+    "en": "Intent",
+    "hi": "Intent"
+   },
+   "d": {
+    "en": "The user's goal or purpose in a message (like a verb).",
+    "hi": "संदेश में user का लक्ष्य या उद्देश्य (verb की तरह)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dialog",
+    "hi": "Dialog"
+   },
+   "d": {
+    "en": "The IF/THEN flowchart or decision tree that decides a chatbot's responses.",
+    "hi": "Chatbot के उत्तर तय करने वाला IF/THEN flowchart या decision tree।"
+   }
+  },
+  {
+   "t": {
+    "en": "Lexical analysis",
+    "hi": "Lexical analysis"
+   },
+   "d": {
+    "en": "Phase 1: breaking text into words and analysing word structure and forms.",
+    "hi": "चरण 1: text को शब्दों में तोड़ना और शब्द-संरचना व रूपों का विश्लेषण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stemming",
+    "hi": "Stemming"
+   },
+   "d": {
+    "en": "Reducing a word to a root by cutting suffixes (may not be a real word).",
+    "hi": "प्रत्यय काटकर शब्द को मूल तक घटाना (परिणाम असली शब्द न भी हो)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Lemmatization",
+    "hi": "Lemmatization"
+   },
+   "d": {
+    "en": "Reducing a word to its dictionary form (lemma) using vocabulary and POS.",
+    "hi": "शब्द-भंडार और POS से शब्द को शब्दकोश-रूप (lemma) में लाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stop words",
+    "hi": "Stop words"
+   },
+   "d": {
+    "en": "Very common words (a, the, is) often removed before analysis.",
+    "hi": "बहुत आम शब्द (a, the, is) जिन्हें अक्सर विश्लेषण से पहले हटाया जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Syntactic analysis / parsing",
+    "hi": "Syntactic analysis / parsing"
+   },
+   "d": {
+    "en": "Phase 2: checking grammar, word order and how words relate.",
+    "hi": "चरण 2: व्याकरण, शब्द-क्रम और शब्दों के संबंध की जाँच।"
+   }
+  },
+  {
+   "t": {
+    "en": "POS tag",
+    "hi": "POS tag"
+   },
+   "d": {
+    "en": "Label showing a token's part of speech (noun, verb, adjective…).",
+    "hi": "Token का शब्द-भेद (संज्ञा, क्रिया, विशेषण…) बताने वाला label।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dependency grammar",
+    "hi": "Dependency grammar"
+   },
+   "d": {
+    "en": "A way of showing which word in a sentence depends on which.",
+    "hi": "वाक्य में कौन-सा शब्द किस पर निर्भर है यह दिखाने का तरीका।"
+   }
+  },
+  {
+   "t": {
+    "en": "Syntax tree",
+    "hi": "Syntax tree"
+   },
+   "d": {
+    "en": "A tree diagram of a sentence's grammatical structure, with words as leaves.",
+    "hi": "वाक्य की व्याकरणिक संरचना का वृक्ष-चित्र, जिसमें शब्द पत्तियाँ होते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Semantic analysis",
+    "hi": "Semantic analysis"
+   },
+   "d": {
+    "en": "Phase 3: finding literal meaning and checking whether a sentence makes sense.",
+    "hi": "चरण 3: शाब्दिक अर्थ ढूँढना और जाँचना कि वाक्य सार्थक है या नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Discourse integration",
+    "hi": "Discourse integration"
+   },
+   "d": {
+    "en": "Phase 4: using earlier sentences to interpret words such as pronouns.",
+    "hi": "चरण 4: सर्वनाम जैसे शब्दों की व्याख्या के लिए पिछले वाक्यों का उपयोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pragmatic analysis",
+    "hi": "Pragmatic analysis"
+   },
+   "d": {
+    "en": "Phase 5: finding the speaker's intended meaning in the real context.",
+    "hi": "चरण 5: वास्तविक संदर्भ में वक्ता का आशय ढूँढना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine translation",
+    "hi": "Machine translation"
+   },
+   "d": {
+    "en": "Automatic translation of text or speech between languages.",
+    "hi": "भाषाओं के बीच text या बोली का स्वचालित अनुवाद।"
+   }
+  },
+  {
+   "t": {
+    "en": "Automatic summarisation",
+    "hi": "Automatic summarisation"
+   },
+   "d": {
+    "en": "Producing a short version of a long text that keeps its key points.",
+    "hi": "लंबे text का छोटा रूप बनाना जिसमें मुख्य बिंदु बने रहें।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is NOT a common NLP task? (a) Machine translation (b) Text summarisation (c) Speech recognition (d) Image compression",
+    "hi": "MCQ: इनमें से कौन-सा सामान्य NLP कार्य नहीं है? (a) Machine translation (b) Text summarisation (c) Speech recognition (d) Image compression"
+   },
+   "a": {
+    "en": "(d) Image compression – it deals with pictures, not language.",
+    "hi": "(d) Image compression – यह चित्रों से संबंधित है, भाषा से नहीं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: A chatbot is best described as: (a) a robot that cleans floors (b) software that simulates conversation by text or voice (c) a type of computer virus (d) a search engine",
+    "hi": "MCQ: Chatbot का सबसे अच्छा वर्णन है: (a) फ़र्श साफ़ करने वाला robot (b) text या आवाज़ से बातचीत का अनुकरण करने वाला software (c) एक प्रकार का computer virus (d) एक search engine"
+   },
+   "a": {
+    "en": "(b)",
+    "hi": "(b)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is an application of NLP? (a) Predicting crop yield from soil sensors (b) Email spam filtering (c) Measuring room temperature (d) Sorting numbers",
+    "hi": "MCQ: NLP का अनुप्रयोग कौन-सा है? (a) मिट्टी sensors से फ़सल उपज अनुमान (b) Email spam filtering (c) कमरे का तापमान मापना (d) संख्याएँ छाँटना"
+   },
+   "a": {
+    "en": "(b) Email spam filtering.",
+    "hi": "(b) Email spam filtering।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which pair lists main challenges for NLP? (a) Ambiguity and sarcasm (b) Screen size and battery (c) Wi-Fi speed and RAM (d) Colour and font",
+    "hi": "MCQ: कौन-सा जोड़ा NLP की मुख्य चुनौतियाँ बताता है? (a) अस्पष्टता और व्यंग्य (b) Screen size और battery (c) Wi-Fi speed और RAM (d) रंग और font"
+   },
+   "a": {
+    "en": "(a) Ambiguity and sarcasm (along with idioms, informal language and code-mixing).",
+    "hi": "(a) अस्पष्टता और व्यंग्य (साथ ही मुहावरे, अनौपचारिक भाषा और मिश्रित भाषा)।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (i) Breaking text into words is called ____. (ii) The phase that resolves pronouns is ____. (iii) In 'What are the hours for the Bangalore office?', 'Bangalore' is the ____.",
+    "hi": "रिक्त स्थान भरिए: (i) Text को शब्दों में तोड़ना ____ कहलाता है। (ii) सर्वनाम सुलझाने वाला चरण ____ है। (iii) 'What are the hours for the Bangalore office?' में 'Bangalore' ____ है।"
+   },
+   "a": {
+    "en": "(i) tokenization (ii) discourse integration (iii) entity",
+    "hi": "(i) tokenization (ii) discourse integration (iii) entity"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (i) Human language is mostly structured data. (ii) Lemmatization always returns a real dictionary word. (iii) Rule-based chatbots learn on their own from conversations. (iv) Sentiment analysis can use a sliding scale from negative to positive.",
+    "hi": "सत्य या असत्य: (i) मानव भाषा अधिकतर structured data है। (ii) Lemmatization हमेशा असली शब्दकोश शब्द देता है। (iii) Rule-based chatbots बातचीत से स्वयं सीखते हैं। (iv) Sentiment analysis नकारात्मक से सकारात्मक तक sliding scale इस्तेमाल कर सकता है।"
+   },
+   "a": {
+    "en": "(i) False – it is mostly unstructured. (ii) True. (iii) False – they follow fixed rules. (iv) True.",
+    "hi": "(i) असत्य – यह अधिकतर unstructured है। (ii) सत्य। (iii) असत्य – वे तय नियम मानते हैं। (iv) सत्य।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "List the five phases of NLP in order.",
+    "hi": "NLP के पाँच चरण क्रम से लिखिए।"
+   },
+   "a": {
+    "en": "1. Lexical analysis 2. Syntactic analysis 3. Semantic analysis 4. Discourse integration 5. Pragmatic analysis.",
+    "hi": "1. Lexical analysis 2. Syntactic analysis 3. Semantic analysis 4. Discourse integration 5. Pragmatic analysis।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "How does NLP help in email filtering? Give a real-life example.",
+    "hi": "Email filtering में NLP कैसे मदद करता है? वास्तविक उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "NLP reads the words, phrases, sender and links in each email and classifies it (primary, promotions, spam) using patterns learned from many labelled emails. Example: an email saying 'Congratulations! You have won Rs 10 lakh, click to claim' contains typical spam words, so Gmail moves it to the Spam folder, protecting the user from fraud.",
+    "hi": "NLP हर email के शब्द, वाक्यांश, भेजने वाला और links पढ़ता है और कई labelled emails से सीखे patterns से उसे वर्गीकृत (primary, promotions, spam) करता है। उदाहरण: 'Congratulations! You have won Rs 10 lakh, click to claim' वाले email में spam के आम शब्द हैं, इसलिए Gmail उसे Spam folder में डाल देता है और user को धोखाधड़ी से बचाता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Briefly explain the two types of chatbots with one use of each.",
+    "hi": "दो प्रकार के chatbots संक्षेप में समझाइए, हर एक का एक उपयोग बताइए।"
+   },
+   "a": {
+    "en": "Rule-based chatbot: follows predefined rules, keywords and decision trees; easy to build and consistent, but fails with unexpected language. Use: an order-status bot with fixed options. AI-powered chatbot (chat agent/virtual assistant): uses NLP and ML to understand free-form language, is available 24/7 and personalises replies, but is costly and can be biased or wrong. Use: a banking assistant answering varied account queries.",
+    "hi": "Rule-based chatbot: पहले से तय नियमों, keywords और decision trees पर चलता है; बनाना आसान और एकरूप, पर अप्रत्याशित भाषा पर विफल। उपयोग: तय विकल्पों वाला order-status bot। AI-powered chatbot (chat agent/virtual assistant): मुक्त भाषा समझने के लिए NLP और ML का उपयोग करता है, 24/7 उपलब्ध और व्यक्तिगत उत्तर देता है, पर महँगा है और पक्षपाती या गलत हो सकता है। उपयोग: अलग-अलग खाते के प्रश्नों का उत्तर देने वाला बैंकिंग assistant।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Explain the classification problem in NLP with at least two examples. How is it handled?",
+    "hi": "NLP में classification problem को कम से कम दो उदाहरणों से समझाइए। इसे कैसे संभाला जाता है?"
+   },
+   "a": {
+    "en": "Human language has vague words and double meanings, so the same words can belong to different categories depending on context; this makes classification hard for machines. Examples: 'Why does your nose run and your feet smell?' ('run' and 'smell' have double meanings); 'shipping a box by train'; 'filling in' vs 'filling out' a form; Hindi 'कल' = yesterday or tomorrow. Handling: supervised learning on large labelled datasets so the model learns patterns from context; it improves with more data, and it gives a confidence value because perfect accuracy is impossible.",
+    "hi": "मानव भाषा में अस्पष्ट शब्द और दोहरे अर्थ होते हैं, इसलिए वही शब्द संदर्भ के अनुसार अलग श्रेणियों में जा सकते हैं; इससे मशीन के लिए वर्गीकरण कठिन होता है। उदाहरण: 'Why does your nose run and your feet smell?' ('run' और 'smell' के दोहरे अर्थ); 'shipping a box by train'; form 'filling in' बनाम 'filling out'; हिंदी 'कल' = बीता या आने वाला दिन। संभालना: बड़े labelled datasets पर supervised learning ताकि model संदर्भ से patterns सीखे; अधिक data से सुधार होता है, और पूर्ण सटीकता असंभव होने से यह confidence value देता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Define intent, entity and dialog with one example.",
+    "hi": "Intent, entity और dialog को एक उदाहरण से परिभाषित कीजिए।"
+   },
+   "a": {
+    "en": "Intent: the user's purpose (like a verb). Entity: specific details in the message (nouns such as place, date). Dialog: the IF/THEN flow or decision tree that decides the bot's reply. Example: 'Show pizza outlets in Indore open now' → intent = find_outlets; entities = pizza, Indore, now; dialog = IF intent is find_outlets AND city is known THEN list open outlets ELSE ask 'Which city?'.",
+    "hi": "Intent: user का उद्देश्य (verb की तरह)। Entity: संदेश के विशिष्ट विवरण (स्थान, तारीख जैसी संज्ञाएँ)। Dialog: bot का उत्तर तय करने वाला IF/THEN प्रवाह या decision tree। उदाहरण: 'Show pizza outlets in Indore open now' → intent = find_outlets; entities = pizza, Indore, now; dialog = IF intent find_outlets है AND शहर पता है THEN खुले outlets दिखाओ ELSE पूछो 'कौन-सा शहर?'।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between stemming and lemmatization using the words 'studies', 'went' and 'playing'.",
+    "hi": "'studies', 'went' और 'playing' शब्दों से stemming और lemmatization में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Stemming cuts suffixes by rule: studies → studi (not a real word), went → went (unchanged), playing → play. Lemmatization uses a dictionary and POS: studies → study, went → go, playing → play. So lemmatization is more accurate but slower; stemming is faster but rougher.",
+    "hi": "Stemming नियम से प्रत्यय काटता है: studies → studi (असली शब्द नहीं), went → went (अपरिवर्तित), playing → play। Lemmatization शब्दकोश और POS का उपयोग करता है: studies → study, went → go, playing → play। अतः lemmatization अधिक सटीक पर धीमा है; stemming तेज़ पर कम सटीक।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Compare emotion detection and sentiment analysis (any four points).",
+    "hi": "Emotion detection और sentiment analysis की तुलना कीजिए (कोई चार बिंदु)।"
+   },
+   "a": {
+    "en": "1. Emotion detection finds the type of emotion; sentiment analysis finds polarity/strength. 2. Output: anger/joy/sadness vs positive/negative/neutral or a score. 3. Uses: user ratings and survey comments vs social media posts and customer-service chats. 4. Training: classify into emotion categories vs place on a sliding scale. 5. Purpose: understand emotional context vs judge overall tone.",
+    "hi": "1. Emotion detection भावना का प्रकार ढूँढता है; sentiment analysis ध्रुवता/तीव्रता। 2. Output: गुस्सा/खुशी/दुख बनाम सकारात्मक/नकारात्मक/तटस्थ या score। 3. उपयोग: user ratings और सर्वे टिप्पणियाँ बनाम social media posts और customer-service chats। 4. प्रशिक्षण: भावना-श्रेणियों में वर्गीकरण बनाम sliding scale पर रखना। 5. उद्देश्य: भावनात्मक संदर्भ समझना बनाम समग्र स्वर आँकना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): The sentence 'Colourless green ideas sleep furiously' would pass syntactic analysis. Reason (R): Syntactic analysis checks whether a sentence makes sense in the real world. Choose: (a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): 'Colourless green ideas sleep furiously' वाक्य syntactic analysis पार कर लेगा। कारण (R): Syntactic analysis जाँचता है कि वाक्य वास्तविक दुनिया में सार्थक है या नहीं। चुनिए: (a) दोनों सत्य, R, A को समझाता है (b) दोनों सत्य, R, A को नहीं समझाता (c) A सत्य, R असत्य (d) A असत्य, R सत्य"
+   },
+   "a": {
+    "en": "(c) A is true – the grammar is correct. R is false – checking meaning is the job of semantic analysis, not syntactic analysis.",
+    "hi": "(c) A सत्य है – व्याकरण सही है। R असत्य है – अर्थ जाँचना semantic analysis का काम है, syntactic का नहीं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): AI-powered chatbots should hand over to a human when confidence is low. Reason (R): Language has double meanings, so no NLP model is perfectly accurate.",
+    "hi": "अभिकथन (A): Confidence कम होने पर AI-powered chatbots को मनुष्य को सौंप देना चाहिए। कारण (R): भाषा में दोहरे अर्थ होते हैं, इसलिए कोई NLP model पूर्णतः सटीक नहीं होता।"
+   },
+   "a": {
+    "en": "(a) Both A and R are true, and R correctly explains A.",
+    "hi": "(a) A और R दोनों सत्य हैं, और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Which NLP phase is described: 'It builds a syntax tree that shows grammatical relationships between words and the semantic links between them'?",
+    "hi": "कौन-सा NLP चरण वर्णित है: 'यह syntax tree बनाता है जो शब्दों के व्याकरणिक संबंध और उनके बीच अर्थ की कड़ियाँ दिखाता है'?"
+   },
+   "a": {
+    "en": "Syntactic analysis (parsing). The syntax tree has the sentence (S) at the top, phrases (NP, VP) as branches and words as leaves.",
+    "hi": "Syntactic analysis (parsing)। Syntax tree में सबसे ऊपर वाक्य (S), शाखाओं के रूप में वाक्यांश (NP, VP) और पत्तियों के रूप में शब्द होते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Identify the entities, relationships and one implied concept in: 'Neha bowled Virat in the final over at Eden Gardens.'",
+    "hi": "इसमें entities, relationships और एक संकेतित concept पहचानिए: 'Neha bowled Virat in the final over at Eden Gardens.'"
+   },
+   "a": {
+    "en": "Entities: Neha, Virat, final over, Eden Gardens. Relationships: Neha – bowled – Virat; the event – at – Eden Gardens. Implied concept: cricket match (the word 'cricket' is not written but 'bowled', 'over' and 'Eden Gardens' imply it). Another implied concept: Virat got out.",
+    "hi": "Entities: Neha, Virat, final over, Eden Gardens। Relationships: Neha – bowled – Virat; घटना – at – Eden Gardens। संकेतित concept: cricket match ('cricket' लिखा नहीं, पर 'bowled', 'over' और 'Eden Gardens' इसका संकेत देते हैं)। एक और संकेतित concept: विराट out हो गए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the structure of a chatbot (frontend and backend) and describe how a message 'Mera order kahan hai? ID 4521' travels through it.",
+    "hi": "Chatbot की संरचना (frontend और backend) समझाइए और बताइए कि संदेश 'Mera order kahan hai? ID 4521' उसमें कैसे यात्रा करता है।"
+   },
+   "a": {
+    "en": "Frontend: the channel (app chat window or WhatsApp) and interface where the user types; it only collects and shows messages. Backend: application logic, NLP, connections to databases and conversation memory.\nJourney: 1. The user types the message in the frontend. 2. It is sent to the backend. 3. NLP tokenizes the Hinglish text, finds intent = track_order and entity = order ID 4521. 4. The dialog logic checks the order database. 5. The backend builds the reply 'Your order 4521 will arrive tomorrow' and stores context (so 'Can I cancel it?' later refers to this order). 6. The frontend shows the reply.",
+    "hi": "Frontend: channel (app का chat window या WhatsApp) और interface जहाँ user टाइप करता है; यह केवल संदेश लेता और दिखाता है। Backend: application logic, NLP, databases से जुड़ाव और बातचीत की memory।\nयात्रा: 1. User frontend में संदेश टाइप करता है। 2. यह backend को जाता है। 3. NLP हिंग्लिश text को tokenize करता है, intent = track_order और entity = order ID 4521 ढूँढता है। 4. Dialog logic order database जाँचता है। 5. Backend उत्तर बनाता है 'आपका order 4521 कल पहुँचेगा' और संदर्भ सहेजता है (ताकि बाद में 'Can I cancel it?' इसी order के लिए माना जाए)। 6. Frontend उत्तर दिखाता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Take the two sentences 'Rohan gave Aman his bat. He was very happy.' and explain what happens in each of the five NLP phases.",
+    "hi": "दो वाक्य 'Rohan gave Aman his bat. He was very happy.' लेकर समझाइए कि पाँचों NLP चरणों में क्या होता है।"
+   },
+   "a": {
+    "en": "Lexical: split into sentences and tokens; normalise 'gave' → 'give', 'was' → 'be'.\nSyntactic: POS tags (Rohan/noun, gave/verb, Aman/noun, his/pronoun, bat/noun); parse: subject Rohan, verb gave, indirect object Aman, direct object bat; grammar is valid.\nSemantic: meaning – ownership of a bat (a cricket bat, not the animal, because 'gave' and 'his' fit an object) moves from Rohan to Aman.\nDiscourse: 'his' and 'He' must be linked to Rohan or Aman. 'His' most likely means Rohan's bat; 'He was very happy' most likely refers to Aman, the receiver, though it is genuinely ambiguous.\nPragmatic: in context (e.g. a birthday) the giver's intention is kindness; a system answering 'Who is happy?' should say 'probably Aman' and show uncertainty.",
+    "hi": "Lexical: वाक्यों और tokens में बाँटना; 'gave' → 'give', 'was' → 'be' सामान्य करना।\nSyntactic: POS tags (Rohan/संज्ञा, gave/क्रिया, Aman/संज्ञा, his/सर्वनाम, bat/संज्ञा); parse: कर्ता Rohan, क्रिया gave, गौण कर्म Aman, मुख्य कर्म bat; व्याकरण सही।\nSemantic: अर्थ – bat (क्रिकेट bat, चमगादड़ नहीं, क्योंकि 'gave' और 'his' किसी वस्तु पर ठीक बैठते हैं) का स्वामित्व Rohan से Aman को जाता है।\nDiscourse: 'his' और 'He' को Rohan या Aman से जोड़ना है। 'His' संभवतः Rohan का bat है; 'He was very happy' संभवतः पाने वाले Aman के लिए है, पर यह सचमुच अस्पष्ट है।\nPragmatic: संदर्भ में (जैसे जन्मदिन) देने वाले का आशय दयालुता है; 'कौन खुश है?' का उत्तर देने वाला system 'संभवतः Aman' कहे और अनिश्चितता दिखाए।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case-based: A state government wants a WhatsApp chatbot to answer farmers' questions about crop diseases and government schemes in Hindi, Bhojpuri and Marathi, including voice notes. (a) Which NLP capabilities are needed? (b) Should it be rule-based or AI-powered? Why? (c) Name two risks and how to reduce them.",
+    "hi": "Case-based: एक राज्य सरकार किसानों के फ़सल रोग और सरकारी योजनाओं के प्रश्नों का हिंदी, भोजपुरी और मराठी में, voice notes सहित, उत्तर देने वाला WhatsApp chatbot चाहती है। (a) कौन-सी NLP क्षमताएँ चाहिए? (b) यह rule-based हो या AI-powered? क्यों? (c) दो जोखिम और उन्हें कम करने के उपाय बताइए।"
+   },
+   "a": {
+    "en": "(a) Speech recognition for voice notes in local languages; translation/multilingual NLU (e.g. using a platform like Bhashini); intent and entity recognition (crop name, symptom, district, scheme); text-to-speech replies for farmers who prefer listening.\n(b) AI-powered (possibly with rule-based parts for fixed scheme facts), because farmers ask in many dialects and free forms that fixed keywords cannot cover.\n(c) Risk 1: wrong advice on pesticides could harm crops or health – reduce by using verified answers from agriculture experts, showing confidence and giving a helpline number. Risk 2: poor accuracy for less-resourced dialects (bias) – reduce by collecting diverse training data from those regions and testing with real farmers. Also protect privacy (no Aadhaar or bank details in chat).",
+    "hi": "(a) स्थानीय भाषाओं के voice notes के लिए speech recognition; अनुवाद/बहुभाषी NLU (जैसे Bhashini जैसे platform से); intent और entity पहचान (फ़सल का नाम, लक्षण, ज़िला, योजना); सुनना पसंद करने वाले किसानों के लिए text-to-speech उत्तर।\n(b) AI-powered (तय योजना-तथ्यों के लिए कुछ rule-based हिस्सों के साथ), क्योंकि किसान कई बोलियों और मुक्त रूपों में पूछते हैं जिन्हें तय keywords नहीं संभाल सकते।\n(c) जोखिम 1: कीटनाशक पर गलत सलाह फ़सल या स्वास्थ्य को नुकसान पहुँचा सकती है – कृषि विशेषज्ञों के सत्यापित उत्तर, confidence दिखाना और helpline नंबर देना। जोखिम 2: कम संसाधन वाली बोलियों में कम सटीकता (bias) – उन क्षेत्रों से विविध training data इकट्ठा करना और असली किसानों के साथ परखना। साथ ही निजता की रक्षा (chat में Aadhaar या बैंक विवरण नहीं)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe any five applications of NLP with an Indian example of each.",
+    "hi": "दीर्घ उत्तर: NLP के कोई पाँच अनुप्रयोग भारतीय उदाहरण सहित लिखिए।"
+   },
+   "a": {
+    "en": "1. Sentiment analysis – a film producer studies social media reactions to a trailer. 2. Voice assistants – 'Hey Google, Patna ka mausam batao'. 3. Email/SMS filtering – fake 'KYC update' SMS flagged as spam. 4. Predictive text – keyboard suggests the next word while typing in Hindi. 5. Document analysis – a court searches thousands of case files for a keyword. 6. Automatic summarisation – short news summaries. 7. Machine translation – Bhashini translating a government notice into Odia. (Any five with explanation.)",
+    "hi": "1. Sentiment analysis – फ़िल्म निर्माता trailer पर social media प्रतिक्रियाएँ पढ़ता है। 2. Voice assistants – 'Hey Google, Patna ka mausam batao'। 3. Email/SMS filtering – नकली 'KYC update' SMS spam चिह्नित। 4. Predictive text – हिंदी टाइप करते समय keyboard अगला शब्द सुझाता है। 5. Document analysis – अदालत हज़ारों case files में keyword खोजती है। 6. Automatic summarisation – छोटे समाचार सारांश। 7. Machine translation – Bhashini सरकारी सूचना का ओड़िया में अनुवाद करता है। (व्याख्या सहित कोई पाँच।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: A lexicon-based sentiment program marks 'The phone is not good' as Positive. Why? Suggest one improvement to the program.",
+    "hi": "सोचने वाला प्रश्न: एक lexicon-based sentiment program 'The phone is not good' को Positive बताता है। क्यों? program में एक सुधार सुझाइए।"
+   },
+   "a": {
+    "en": "Why: it counts 'good' (+1) and does not understand that 'not' reverses the meaning (negation), so the score is +1 → Positive.\nImprovement: when a negative word such as 'not', 'never' or 'no' appears just before a sentiment word, flip that word's sign (so 'not good' gives −1). Better still, train a machine-learning model on labelled reviews so it learns such patterns, including sarcasm.",
+    "hi": "क्यों: यह 'good' (+1) गिनता है और नहीं समझता कि 'not' अर्थ उलट देता है (नकार), इसलिए score +1 → Positive।\nसुधार: जब 'not', 'never' या 'no' जैसा नकार शब्द किसी भाव-शब्द से ठीक पहले आए, तो उस शब्द का चिह्न उलट दें (ताकि 'not good' −1 दे)। इससे भी बेहतर, labelled reviews पर machine-learning model प्रशिक्षित करें ताकि वह व्यंग्य सहित ऐसे patterns सीखे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity question: Write five different ways a student might ask a school chatbot for the exam timetable (include Hinglish). Which NLP phase helps the bot treat them as the same intent, and why does a rule-based bot struggle?",
+    "hi": "गतिविधि प्रश्न: पाँच अलग तरीके लिखिए जिनसे विद्यार्थी स्कूल chatbot से परीक्षा समय-सारिणी पूछ सकता है (हिंग्लिश सहित)। कौन-सा NLP चरण bot को इन्हें एक ही intent मानने में मदद करता है, और rule-based bot को कठिनाई क्यों होती है?"
+   },
+   "a": {
+    "en": "Examples: 'When are the exams?'; 'Exam date sheet please'; 'Paper kab se hain?'; 'Send the half-yearly timetable'; 'Maths ka exam kis din hai?'.\nSemantic analysis (with intent classification learned from examples) recognises that all share the meaning 'get exam schedule'; discourse/pragmatics help with follow-ups such as 'and science?'.\nA rule-based bot only matches the keywords it was given (e.g. 'exam', 'timetable'), so 'Paper kab se hain?' may fail unless a developer adds that exact rule.",
+    "hi": "उदाहरण: 'When are the exams?'; 'Exam date sheet please'; 'Paper kab se hain?'; 'Send the half-yearly timetable'; 'Maths ka exam kis din hai?'।\nSemantic analysis (उदाहरणों से सीखे intent classification के साथ) पहचानता है कि सबका अर्थ 'परीक्षा कार्यक्रम पाना' है; 'और science?' जैसे आगे के प्रश्नों में discourse/pragmatics मदद करते हैं।\nRule-based bot केवल दिए गए keywords (जैसे 'exam', 'timetable') मिलाता है, इसलिए 'Paper kab se hain?' विफल हो सकता है जब तक developer वह सटीक नियम न जोड़े।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Teaching computers language needs both linguistics (study of language: structure, semantics, pragmatics, sociolinguistics) and computer science.",
+   "Language is hard for machines because of ambiguity, idioms, sarcasm, informal language, code-mixing and accents.",
+   "NLP is the branch of AI that lets computers understand, interpret, generate and manipulate human text and speech (NLU + NLG).",
+   "Human language is unstructured data; NLP first does sentence segmentation and tokenization, then finds entities, relationships and implied concepts.",
+   "Emotion detection identifies the type of emotion; sentiment analysis measures polarity and strength on a sliding scale.",
+   "The classification problem arises from vague words and double meanings; supervised learning on labelled data handles it, and good systems report a confidence value.",
+   "Chatbots simulate conversation; rule-based bots follow fixed rules and decision trees, while AI-powered bots use NLP and ML.",
+   "A chatbot has a frontend (channel and interface) and a backend (logic, NLP, memory); its design uses intents, entities and dialog flows.",
+   "The five phases of NLP are lexical, syntactic, semantic, discourse integration and pragmatic analysis.",
+   "Lexical analysis includes tokenization and normalisation by stemming (cut suffixes) or lemmatization (dictionary form using POS).",
+   "Syntactic analysis uses POS tags, dependency grammar and syntax trees; semantic analysis checks literal meaning.",
+   "Discourse integration resolves references like pronouns across sentences; pragmatic analysis finds the intended meaning in context.",
+   "Applications include sentiment analysis, voice assistants, email filtering, predictive text, document analysis, summarisation, translation and speech recognition.",
+   "NLP tools can be wrong or biased; check important answers and never share OTPs, passwords or ID numbers with chatbots."
+  ],
+  "hi": [
+   "कंप्यूटर को भाषा सिखाने के लिए भाषाविज्ञान (भाषा का अध्ययन: संरचना, अर्थ, pragmatics, समाज-भाषाविज्ञान) और कंप्यूटर विज्ञान दोनों चाहिए।",
+   "अस्पष्टता, मुहावरे, व्यंग्य, अनौपचारिक भाषा, मिश्रित भाषा और लहजों के कारण भाषा मशीनों के लिए कठिन है।",
+   "NLP, AI की वह शाखा है जो कंप्यूटर को मानव text और बोली समझने, व्याख्या करने, बनाने और बदलने देती है (NLU + NLG)।",
+   "मानव भाषा unstructured data है; NLP पहले sentence segmentation और tokenization करता है, फिर entities, relationships और संकेतित concepts ढूँढता है।",
+   "Emotion detection भावना का प्रकार पहचानता है; sentiment analysis sliding scale पर ध्रुवता और तीव्रता मापता है।",
+   "Classification problem अस्पष्ट शब्दों और दोहरे अर्थों से पैदा होती है; labelled data पर supervised learning इसे संभालता है, और अच्छे systems confidence value बताते हैं।",
+   "Chatbots बातचीत का अनुकरण करते हैं; rule-based bots तय नियमों और decision trees पर चलते हैं, जबकि AI-powered bots NLP और ML का उपयोग करते हैं।",
+   "Chatbot में frontend (channel और interface) और backend (logic, NLP, memory) होते हैं; इसके design में intents, entities और dialog flows होते हैं।",
+   "NLP के पाँच चरण हैं: lexical, syntactic, semantic, discourse integration और pragmatic analysis।",
+   "Lexical analysis में tokenization और stemming (प्रत्यय काटना) या lemmatization (POS से शब्दकोश-रूप) द्वारा normalisation शामिल है।",
+   "Syntactic analysis POS tags, dependency grammar और syntax trees का उपयोग करता है; semantic analysis शाब्दिक अर्थ जाँचता है।",
+   "Discourse integration वाक्यों के पार सर्वनाम जैसे संदर्भ सुलझाता है; pragmatic analysis संदर्भ में आशय ढूँढता है।",
+   "अनुप्रयोगों में sentiment analysis, voice assistants, email filtering, predictive text, document analysis, सारांश, अनुवाद और speech recognition शामिल हैं।",
+   "NLP tools गलत या पक्षपाती हो सकते हैं; ज़रूरी उत्तर जाँचें और chatbots से OTP, password या ID नंबर कभी साझा न करें।"
+  ]
+ }
+}

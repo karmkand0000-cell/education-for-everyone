@@ -1,0 +1,1906 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "11",
+ "id": "ch4",
+ "intro": {
+  "en": "Knowing Python and AI tools is only half the job; the other half is choosing a real problem worth solving and understanding the people who face it. This chapter introduces the capstone project you will build across Classes 11 and 12. You will learn to check whether a problem has a pattern, break it down, use the five stages of design thinking with empathy maps and the 5W1H method, link your idea to the UN Sustainable Development Goals, and write a project abstract.",
+  "hi": "Python और AI tools जानना केवल आधा काम है; बाकी आधा है हल करने योग्य असली समस्या चुनना और उसे झेलने वाले लोगों को समझना। यह अध्याय उस capstone project का परिचय देता है जिसे आप कक्षा 11 और 12 में बनाएँगे। आप सीखेंगे कि समस्या में pattern है या नहीं कैसे जाँचें, उसे कैसे तोड़ें, empathy maps और 5W1H विधि के साथ design thinking के पाँच चरण कैसे उपयोग करें, अपने विचार को UN Sustainable Development Goals से कैसे जोड़ें, और project abstract कैसे लिखें।"
+ },
+ "learn": {
+  "en": [
+   "What a capstone project is, the skills it builds and sample AI capstone projects",
+   "Why we ask 'Is there a pattern?' and the five types of AI questions",
+   "The four steps of problem decomposition",
+   "The difference between critical and creative thinking",
+   "Design thinking and its five stages: Empathize, Define, Ideate, Prototype, Test",
+   "How to make an empathy map with Says, Thinks, Does and Feels",
+   "The 5W1H method and how to write a human-centred problem statement",
+   "Ideation techniques: brainstorm, brain dump and brain writing",
+   "Types of prototypes and how to test them with users",
+   "Sustainable development and all 17 SDGs, with AI examples",
+   "The format of a project abstract and the IBM log book"
+  ],
+  "hi": [
+   "Capstone project क्या है, इससे बनने वाले कौशल और नमूना AI capstone projects",
+   "हम 'क्या pattern है?' क्यों पूछते हैं और AI प्रश्नों के पाँच प्रकार",
+   "Problem decomposition के चार चरण",
+   "Critical और creative thinking में अंतर",
+   "Design thinking और इसके पाँच चरण: Empathize, Define, Ideate, Prototype, Test",
+   "Says, Thinks, Does और Feels के साथ empathy map कैसे बनाएँ",
+   "5W1H विधि और मानव-केंद्रित problem statement कैसे लिखें",
+   "Ideation तकनीकें: brainstorm, brain dump और brain writing",
+   "Prototypes के प्रकार और users के साथ उन्हें कैसे परखें",
+   "सतत विकास और सभी 17 SDGs, AI उदाहरणों सहित",
+   "Project abstract का प्रारूप और IBM log book"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "4.1 What is a capstone project?",
+    "hi": "4.1 कैपस्टोन प्रोजेक्ट क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A capstone is the top stone that completes an arch or a wall. In the same way, a capstone project is the final project that pulls together everything you have learnt in a course. In AI (Code 843) you start thinking about it in Class 11 and complete and submit it in Class 12. Starting early means you can choose a problem you care about, collect data slowly and avoid last-minute pressure.",
+      "hi": "Capstone वह सबसे ऊपरी पत्थर है जो किसी मेहराब या दीवार को पूरा करता है। इसी तरह capstone project वह अंतिम प्रोजेक्ट है जो किसी course में सीखी हर बात को एक साथ जोड़ता है। AI (Code 843) में आप कक्षा 11 में इस पर सोचना शुरू करते हैं और कक्षा 12 में इसे पूरा करके जमा करते हैं। जल्दी शुरू करने से आप अपनी पसंद की समस्या चुन सकते हैं, data धीरे-धीरे एकत्र कर सकते हैं और आख़िरी समय के दबाव से बच सकते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Capstone project",
+       "hi": "Capstone project"
+      },
+      "text": {
+       "en": "A capstone project is a student-driven project in which you research a real problem, understand it deeply, and combine your knowledge and skills to design and present a solution. In this course the solution usually uses AI.",
+       "hi": "Capstone project एक विद्यार्थी-संचालित प्रोजेक्ट है जिसमें आप किसी असली समस्या पर शोध करते हैं, उसे गहराई से समझते हैं, और अपने ज्ञान तथा कौशल को जोड़कर समाधान बनाते और प्रस्तुत करते हैं। इस course में समाधान प्रायः AI का उपयोग करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Skills you build through a capstone project:",
+      "hi": "Capstone project से आप ये कौशल बनाते हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Working in a team and sharing tasks fairly",
+       "Identifying a problem clearly and understanding how it affects real people (users)",
+       "Brainstorming many possible solutions and selecting the best one",
+       "Deciding which type of AI (classification, regression, clustering and so on) suits the problem",
+       "Collecting and using data ethically, with consent and privacy",
+       "Building a prototype, testing it with users and improving it from feedback",
+       "Pitching (presenting) your solution confidently in simple, non-technical language"
+      ],
+      "hi": [
+       "टीम में काम करना और कार्य न्यायपूर्ण ढंग से बाँटना",
+       "समस्या को स्पष्ट रूप से पहचानना और समझना कि यह असली लोगों (users) को कैसे प्रभावित करती है",
+       "अनेक संभावित समाधान सोचना (brainstorm) और सबसे अच्छा चुनना",
+       "तय करना कि कौन-सा AI प्रकार (classification, regression, clustering आदि) समस्या के लिए उपयुक्त है",
+       "Data को सहमति और निजता के साथ नैतिक रूप से एकत्र और उपयोग करना",
+       "Prototype बनाना, users के साथ परखना और feedback से सुधारना",
+       "अपना समाधान सरल, गैर-तकनीकी भाषा में आत्मविश्वास से प्रस्तुत (pitch) करना"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Three viewpoints to keep in mind. A good capstone balances three points of view: the user (does it really help the people who face the problem?), the business or organisation (is it useful, affordable and worth doing?), and the developer (is it technically possible with the data, tools and time we have?).",
+      "hi": "ध्यान रखने योग्य तीन दृष्टिकोण। अच्छा capstone तीन दृष्टिकोणों में संतुलन रखता है: user (क्या यह सच में उन लोगों की मदद करता है जो समस्या झेलते हैं?), व्यवसाय या संस्था (क्या यह उपयोगी, किफ़ायती और करने योग्य है?), और developer (क्या यह हमारे पास उपलब्ध data, tools और समय से तकनीकी रूप से संभव है?)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Sample capstone project",
+        "What it does",
+        "Type of AI task"
+       ],
+       "hi": [
+        "नमूना capstone project",
+        "यह क्या करता है",
+        "AI कार्य का प्रकार"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Stock price predictor",
+         "Predicts a future price from past prices and news",
+         "Regression (number)"
+        ],
+        [
+         "Sentiment analyser",
+         "Reads reviews or tweets and says positive, negative or neutral",
+         "Classification (NLP)"
+        ],
+        [
+         "Movie ticket price predictor",
+         "Predicts ticket price from day, time, film and city",
+         "Regression"
+        ],
+        [
+         "Student results predictor",
+         "Predicts marks or pass/fail from study hours, attendance and past tests",
+         "Regression or classification"
+        ],
+        [
+         "Human activity recognition",
+         "Uses smartphone sensor data to tell walking, sitting, climbing stairs",
+         "Classification"
+        ],
+        [
+         "Humans vs animals in photos",
+         "Labels each photo as containing a human or an animal",
+         "Classification (computer vision)"
+        ]
+       ],
+       "hi": [
+        [
+         "Stock price predictor",
+         "पिछली कीमतों और समाचारों से भविष्य की कीमत का अनुमान",
+         "Regression (संख्या)"
+        ],
+        [
+         "Sentiment analyser",
+         "Reviews या tweets पढ़कर बताता है positive, negative या neutral",
+         "Classification (NLP)"
+        ],
+        [
+         "Movie ticket price predictor",
+         "दिन, समय, फ़िल्म और शहर से टिकट की कीमत का अनुमान",
+         "Regression"
+        ],
+        [
+         "Student results predictor",
+         "पढ़ाई के घंटों, उपस्थिति और पिछली परीक्षाओं से अंक या पास/फ़ेल का अनुमान",
+         "Regression या classification"
+        ],
+        [
+         "Human activity recognition",
+         "Smartphone sensor data से चलना, बैठना, सीढ़ी चढ़ना पहचानना",
+         "Classification"
+        ],
+        [
+         "तस्वीरों में मनुष्य बनाम पशु",
+         "हर तस्वीर को मनुष्य या पशु वाली के रूप में label करना",
+         "Classification (computer vision)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Indian ideas for a capstone: a crop-disease detector from leaf photos for farmers, a flood-alert predictor from rainfall data, a Hindi or Tamil voice helper for elderly people using government schemes, a classroom attendance analyser, a UPI fraud-message detector, an air-quality forecaster for your city, or a waste-sorting image classifier for your school.",
+      "hi": "Capstone के लिए भारतीय विचार: किसानों के लिए पत्तियों की तस्वीर से फ़सल-रोग पहचानने वाला, वर्षा data से बाढ़-चेतावनी देने वाला, सरकारी योजनाओं के लिए बुज़ुर्गों का हिंदी या तमिल voice सहायक, कक्षा उपस्थिति विश्लेषक, UPI धोखाधड़ी संदेश पहचानने वाला, अपने शहर का वायु-गुणवत्ता पूर्वानुमान, या स्कूल के लिए कचरा-छँटाई image classifier।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.2 Asking the right question: is there a pattern?",
+    "hi": "4.2 सही प्रश्न पूछना: क्या कोई pattern है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Before choosing AI, ask the most important question: Is there a pattern? AI and machine learning learn patterns from data. If the problem has no pattern (for example, guessing the result of a fair coin toss or a lottery number), no AI can solve it. If a simple rule solves it (for example, 'switch the street light on at 6:30 pm'), you may not need AI at all.",
+      "hi": "AI चुनने से पहले सबसे महत्त्वपूर्ण प्रश्न पूछें: क्या कोई pattern है? AI और machine learning data से patterns सीखते हैं। यदि समस्या में कोई pattern नहीं है (जैसे निष्पक्ष सिक्के के उछाल या लॉटरी नंबर का अनुमान), तो कोई AI उसे हल नहीं कर सकता। यदि एक सरल नियम से हल हो जाए (जैसे 'शाम 6:30 बजे स्ट्रीट लाइट जलाओ'), तो शायद AI की ज़रूरत ही नहीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Most AI problems can be expressed as one of five types of question. Matching your problem to one of them tells you what kind of model and data you need.",
+      "hi": "अधिकतर AI समस्याओं को पाँच प्रकार के प्रश्नों में से एक के रूप में लिखा जा सकता है। अपनी समस्या को इनमें से किसी से मिलाने पर पता चलता है कि कैसा model और data चाहिए।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Question",
+        "Type of analysis",
+        "Indian example"
+       ],
+       "hi": [
+        "प्रश्न",
+        "विश्लेषण का प्रकार",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Which category does it belong to?",
+         "Classification",
+         "Is this leaf healthy or diseased? Is this SMS spam or genuine?"
+        ],
+        [
+         "How much or how many?",
+         "Regression",
+         "How many kg of wheat will this field yield? What will tomorrow's AQI be?"
+        ],
+        [
+         "Which group does it belong to?",
+         "Clustering",
+         "Group shoppers of an online store by buying habits, with no labels given"
+        ],
+        [
+         "Is this unusual?",
+         "Anomaly detection",
+         "Is this UPI payment at 3 am from a new city likely to be fraud?"
+        ],
+        [
+         "Which option should be taken?",
+         "Recommendation",
+         "Which video, song or course should be shown next to this user?"
+        ]
+       ],
+       "hi": [
+        [
+         "यह किस श्रेणी का है?",
+         "Classification",
+         "क्या यह पत्ती स्वस्थ है या रोगी? क्या यह SMS spam है या असली?"
+        ],
+        [
+         "कितना या कितने?",
+         "Regression",
+         "इस खेत में कितने किलो गेहूँ होगा? कल का AQI क्या होगा?"
+        ],
+        [
+         "यह किस समूह का है?",
+         "Clustering",
+         "Online store के ख़रीदारों को उनकी ख़रीद की आदतों से समूहों में बाँटना, बिना labels के"
+        ],
+        [
+         "क्या यह असामान्य है?",
+         "Anomaly detection",
+         "क्या रात 3 बजे नए शहर से हुआ यह UPI भुगतान धोखाधड़ी हो सकता है?"
+        ],
+        [
+         "कौन-सा विकल्प चुना जाए?",
+         "Recommendation",
+         "इस user को आगे कौन-सा video, गाना या course दिखाया जाए?"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A city bus department wants to know how many passengers will board at each stop next Monday morning. Which question type is this?",
+       "hi": "शहर का बस विभाग जानना चाहता है कि अगले सोमवार सुबह हर stop पर कितने यात्री चढ़ेंगे। यह किस प्रकार का प्रश्न है?"
+      },
+      "a": {
+       "en": "The answer is a number ('how many'), so it is a regression problem.\nIs there a pattern? Yes: passenger counts depend on day, time, weather, festivals and school timings, which repeat.\nData needed: past passenger counts per stop with date, time and weather.",
+       "hi": "उत्तर एक संख्या है ('कितने'), इसलिए यह regression समस्या है।\nक्या pattern है? हाँ: यात्रियों की संख्या दिन, समय, मौसम, त्योहारों और स्कूल के समय पर निर्भर करती है, जो दोहराए जाते हैं।\nआवश्यक data: हर stop की तारीख़, समय और मौसम के साथ पिछली यात्री संख्या।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.3 Problem decomposition",
+    "hi": "4.3 Problem decomposition (समस्या का विभाजन)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Problem decomposition",
+       "hi": "Problem decomposition"
+      },
+      "text": {
+       "en": "Breaking a big, complex problem into smaller, simpler parts that can be understood, solved and tested one at a time. It is one of the pillars of computational thinking.",
+       "hi": "एक बड़ी, जटिल समस्या को छोटे, सरल भागों में तोड़ना जिन्हें एक-एक करके समझा, हल किया और परखा जा सके। यह computational thinking के स्तंभों में से एक है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Understand and restate the problem in your own words. Decide the inputs (what you will have) and the outputs (what you want), and ask clarifying questions.",
+       "Step 2: Break the problem into a few large pieces.",
+       "Step 3: Break any piece that is still complicated into smaller pieces, until each is easy.",
+       "Step 4: Solve (or code) and test one small piece at a time, fixing problems as you go, then join the pieces."
+      ],
+      "hi": [
+       "चरण 1: समस्या को समझें और अपने शब्दों में दोबारा लिखें। Inputs (आपके पास क्या होगा) और outputs (आप क्या चाहते हैं) तय करें, और स्पष्टता के लिए प्रश्न पूछें।",
+       "चरण 2: समस्या को कुछ बड़े भागों में तोड़ें।",
+       "चरण 3: जो भाग अब भी जटिल है उसे और छोटे भागों में तोड़ें, जब तक हर भाग आसान न हो जाए।",
+       "चरण 4: एक-एक छोटे भाग को हल (या code) करें और परखें, समस्याएँ साथ-साथ ठीक करें, फिर भागों को जोड़ें।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Decompose the problem: traffic jams during office hours in a city.",
+       "hi": "समस्या का विभाजन कीजिए: शहर में ऑफ़िस के समय में ट्रैफ़िक जाम।"
+      },
+      "a": {
+       "en": "Step 1 (restate): People face long delays because roads jam during busy office hours. Input: traffic data (vehicle counts, signal timings, accidents, weather). Output: fewer and shorter jams.\nStep 2 (large pieces): (a) find where and when jams happen, (b) find why they happen, (c) suggest actions.\nStep 3 (smaller pieces): (a1) collect vehicle counts at junctions every 15 minutes, (a2) map the worst 10 junctions; (b1) check signal timings, (b2) check parked vehicles and road works, (b3) check school and office timings; (c1) predict jams 30 minutes ahead, (c2) suggest new signal timings, (c3) send alerts and alternate routes like Google Maps does.\nStep 4: build and test the jam-prediction piece for one junction first, then expand.",
+       "hi": "चरण 1 (पुनः कथन): व्यस्त ऑफ़िस समय में सड़कें जाम होने से लोगों को लंबी देरी होती है। Input: traffic data (वाहन संख्या, signal समय, दुर्घटनाएँ, मौसम)। Output: कम और छोटे जाम।\nचरण 2 (बड़े भाग): (a) पता करना कि जाम कहाँ और कब लगते हैं, (b) क्यों लगते हैं, (c) उपाय सुझाना।\nचरण 3 (छोटे भाग): (a1) हर 15 मिनट पर चौराहों पर वाहन गिनना, (a2) सबसे बुरे 10 चौराहों का नक़्शा बनाना; (b1) signal समय जाँचना, (b2) खड़े वाहन और सड़क-कार्य जाँचना, (b3) स्कूल और ऑफ़िस का समय जाँचना; (c1) 30 मिनट पहले जाम का अनुमान, (c2) नए signal समय सुझाना, (c3) Google Maps की तरह चेतावनी और वैकल्पिक रास्ते भेजना।\nचरण 4: पहले एक चौराहे के लिए जाम-अनुमान वाला भाग बनाकर परखें, फिर विस्तार करें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.4 Critical thinking and creative thinking",
+    "hi": "4.4 Critical thinking और creative thinking"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Critical thinking",
+       "hi": "Critical thinking (आलोचनात्मक चिंतन)"
+      },
+      "text": {
+       "en": "Judging a situation, claim or idea carefully on the basis of facts, evidence and logic, instead of feelings or rumours. Questions it asks: Is this true? What is the evidence? What could go wrong?",
+       "hi": "किसी स्थिति, दावे या विचार को भावनाओं या अफ़वाहों के बजाय तथ्यों, प्रमाणों और तर्क के आधार पर सावधानी से परखना। यह पूछता है: क्या यह सच है? प्रमाण क्या है? क्या गलत हो सकता है?"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Creative thinking",
+       "hi": "Creative thinking (रचनात्मक चिंतन)"
+      },
+      "text": {
+       "en": "Generating new, original and unusual ideas and seeing a problem from fresh angles. Questions it asks: What if? Is there another way? What would a child, a farmer or a doctor suggest?",
+       "hi": "नए, मौलिक और असामान्य विचार उत्पन्न करना और समस्या को नए कोणों से देखना। यह पूछता है: अगर ऐसा हो तो? क्या कोई और तरीका है? एक बच्चा, किसान या डॉक्टर क्या सुझाएगा?"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Both are needed in a capstone. Creative thinking produces many ideas (for example during Ideate); critical thinking chooses the best ones and checks them against data, cost, ethics and what users actually need. Design thinking, described next, uses both again and again.",
+      "hi": "Capstone में दोनों की ज़रूरत है। Creative thinking बहुत-से विचार देता है (जैसे Ideate के दौरान); critical thinking उनमें से सबसे अच्छे चुनता है और उन्हें data, लागत, नैतिकता और users की असली ज़रूरत पर परखता है। आगे बताई गई design thinking दोनों का बार-बार उपयोग करती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Critical thinking",
+        "Creative thinking"
+       ],
+       "hi": [
+        "Critical thinking",
+        "Creative thinking"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Analyses and evaluates",
+         "Imagines and generates"
+        ],
+        [
+         "Narrows down choices (convergent)",
+         "Opens up many choices (divergent)"
+        ],
+        [
+         "Based on facts and logic",
+         "Based on curiosity and imagination"
+        ],
+        [
+         "Example: checking whether a viral AI news clip is a deepfake",
+         "Example: thinking of a voice-based app for people who cannot read"
+        ]
+       ],
+       "hi": [
+        [
+         "विश्लेषण और मूल्यांकन करता है",
+         "कल्पना करता है और नया बनाता है"
+        ],
+        [
+         "विकल्पों को सीमित करता है (convergent)",
+         "अनेक विकल्प खोलता है (divergent)"
+        ],
+        [
+         "तथ्यों और तर्क पर आधारित",
+         "जिज्ञासा और कल्पना पर आधारित"
+        ],
+        [
+         "उदाहरण: जाँचना कि वायरल AI समाचार clip deepfake तो नहीं",
+         "उदाहरण: पढ़ न सकने वाले लोगों के लिए voice-आधारित app सोचना"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.5 Introduction to design thinking",
+    "hi": "4.5 Design thinking का परिचय"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Design thinking",
+       "hi": "Design thinking"
+      },
+      "text": {
+       "en": "Design thinking is a human-centred, non-linear and iterative process for solving problems. It starts by deeply understanding the people who face the problem, challenges assumptions, redefines the problem, and then creates and tests solutions, repeating steps as needed.",
+       "hi": "Design thinking समस्या हल करने की एक मानव-केंद्रित, non-linear (रेखीय नहीं) और iterative (दोहराई जाने वाली) प्रक्रिया है। यह समस्या झेलने वाले लोगों को गहराई से समझने से शुरू होती है, मान्यताओं को चुनौती देती है, समस्या को फिर से परिभाषित करती है, और फिर समाधान बनाकर परखती है, ज़रूरत के अनुसार चरण दोहराते हुए।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Human-centred: the user's needs and feelings come first, not the technology.",
+       "Non-linear: you can jump back, for example from Test back to Define if you discover the real problem is different.",
+       "Iterative: you go round the cycle many times, improving the solution each time.",
+       "Collaborative: people with different backgrounds work together.",
+       "Bias towards action: build quick, cheap prototypes instead of only discussing."
+      ],
+      "hi": [
+       "मानव-केंद्रित: user की ज़रूरतें और भावनाएँ पहले, तकनीक बाद में।",
+       "Non-linear: आप पीछे भी जा सकते हैं, जैसे Test से Define पर यदि पता चले कि असली समस्या कुछ और है।",
+       "Iterative: आप चक्र को कई बार घूमते हैं और हर बार समाधान सुधारते हैं।",
+       "सहयोगात्मक: अलग-अलग पृष्ठभूमि के लोग साथ काम करते हैं।",
+       "कार्य की ओर झुकाव: केवल चर्चा के बजाय जल्दी, सस्ते prototypes बनाना।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "The five stages of the design thinking framework are: 1. Empathize, 2. Define, 3. Ideate, 4. Prototype, 5. Test. Picture them in words as five hexagons in a row, with arrows going forward and curved arrows going back from Test and Prototype to earlier stages, showing that the process loops.",
+      "hi": "Design thinking framework के पाँच चरण हैं: 1. Empathize, 2. Define, 3. Ideate, 4. Prototype, 5. Test। इन्हें शब्दों में ऐसे सोचें: एक पंक्ति में पाँच षट्भुज, आगे जाते तीर और Test तथा Prototype से पिछले चरणों की ओर लौटते घुमावदार तीर, जो दिखाते हैं कि प्रक्रिया चक्र में चलती है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Stage",
+        "Key question",
+        "Main output"
+       ],
+       "hi": [
+        "चरण",
+        "मुख्य प्रश्न",
+        "मुख्य परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Empathize",
+         "Who are the users and what do they really experience?",
+         "Interview notes, observations, empathy map"
+        ],
+        [
+         "2. Define",
+         "What exactly is the problem we will solve?",
+         "5W1H answers and a clear problem statement"
+        ],
+        [
+         "3. Ideate",
+         "What are all the possible solutions?",
+         "A long list of ideas and a few chosen ones"
+        ],
+        [
+         "4. Prototype",
+         "How can we quickly make the idea real?",
+         "Sketch, poster, paper model, mock app, role-play"
+        ],
+        [
+         "5. Test",
+         "Does it work for users? What should change?",
+         "User feedback and an improved design"
+        ]
+       ],
+       "hi": [
+        [
+         "1. Empathize",
+         "Users कौन हैं और वे वास्तव में क्या अनुभव करते हैं?",
+         "Interview नोट्स, अवलोकन, empathy map"
+        ],
+        [
+         "2. Define",
+         "हम ठीक-ठीक कौन-सी समस्या हल करेंगे?",
+         "5W1H उत्तर और स्पष्ट problem statement"
+        ],
+        [
+         "3. Ideate",
+         "सभी संभावित समाधान क्या हैं?",
+         "विचारों की लंबी सूची और कुछ चुने हुए"
+        ],
+        [
+         "4. Prototype",
+         "विचार को जल्दी से वास्तविक कैसे बनाएँ?",
+         "Sketch, poster, काग़ज़ का model, नकली app, role-play"
+        ],
+        [
+         "5. Test",
+         "क्या यह users के लिए काम करता है? क्या बदलना चाहिए?",
+         "User feedback और सुधरा डिज़ाइन"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "The CBSE reference for this unit is IBM SkillsBuild's 'What is Design Thinking?'. IBM's own version, called Enterprise Design Thinking, describes the same idea as a continuous loop of Observe, Reflect and Make. The five-stage model above is the one you should write in exams.",
+      "hi": "इस इकाई के लिए CBSE का संदर्भ IBM SkillsBuild का 'What is Design Thinking?' है। IBM का अपना संस्करण, Enterprise Design Thinking, इसी विचार को Observe, Reflect और Make के लगातार चक्र के रूप में बताता है। परीक्षा में ऊपर दिया पाँच-चरण वाला model लिखें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.6 Stage 1: Empathize",
+    "hi": "4.6 चरण 1: Empathize (सहानुभूति)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Empathy",
+       "hi": "Empathy (सहानुभूति)"
+      },
+      "text": {
+       "en": "Empathy is the ability to understand and share another person's feelings and experiences by seeing the situation from their point of view. In design thinking it means understanding users' needs, problems and emotions before thinking of any solution.",
+       "hi": "Empathy किसी दूसरे व्यक्ति के दृष्टिकोण से स्थिति देखकर उसकी भावनाओं और अनुभवों को समझने और महसूस करने की क्षमता है। Design thinking में इसका अर्थ है कोई भी समाधान सोचने से पहले users की ज़रूरतें, समस्याएँ और भावनाएँ समझना।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "How to empathize: talk to users often and in detail, observe them in their real setting, and listen more than you speak. Useful methods:",
+      "hi": "Empathize कैसे करें: users से बार-बार और विस्तार से बात करें, उन्हें उनकी असली परिस्थिति में देखें, और बोलने से ज़्यादा सुनें। उपयोगी तरीके:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Interviews: ask open questions such as 'Tell me about the last time...' rather than yes/no questions.",
+       "Observation: watch what people actually do (for example, how a vegetable seller keeps accounts).",
+       "Surveys: short questionnaires (for example Google Forms) to reach many people.",
+       "Immersion: try the experience yourself (for example, try to use a website with your eyes closed using a screen reader).",
+       "Secondary research: news reports, government data (data.gov.in), research articles."
+      ],
+      "hi": [
+       "Interviews: हाँ/ना वाले प्रश्नों की जगह 'पिछली बार जब... के बारे में बताइए' जैसे खुले प्रश्न पूछें।",
+       "अवलोकन: देखें कि लोग वास्तव में क्या करते हैं (जैसे सब्ज़ीवाला हिसाब कैसे रखता है)।",
+       "Surveys: बहुत लोगों तक पहुँचने के लिए छोटी प्रश्नावलियाँ (जैसे Google Forms)।",
+       "Immersion: अनुभव स्वयं करके देखें (जैसे आँखें बंद करके screen reader से website चलाने की कोशिश)।",
+       "Secondary research: समाचार रिपोर्टें, सरकारी data (data.gov.in), शोध लेख।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Ethics while empathizing: explain why you are asking, take permission, let people refuse, do not record or photograph anyone without consent, take a parent's or teacher's consent for children, and do not collect names, phone numbers, Aadhaar or other personal details unless truly needed. Interview in pairs and with an adult's knowledge.",
+      "hi": "Empathize करते समय नैतिकता: बताएँ कि क्यों पूछ रहे हैं, अनुमति लें, लोगों को मना करने दें, बिना सहमति किसी की recording या फ़ोटो न लें, बच्चों के लिए माता-पिता या शिक्षक की सहमति लें, और नाम, फ़ोन नंबर, Aadhaar या अन्य निजी जानकारी तब तक न लें जब तक सच में ज़रूरी न हो। जोड़ों में और किसी वयस्क की जानकारी में interview करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.7 The empathy map",
+    "hi": "4.7 Empathy map"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Empathy map",
+       "hi": "Empathy map"
+      },
+      "text": {
+       "en": "An empathy map is a simple visual tool that organises what we learnt about one user (or a type of user) into four quadrants: Says, Thinks, Does and Feels. It helps the team see the world from the user's side and spot needs the user may not say directly.",
+       "hi": "Empathy map एक सरल दृश्य tool है जो किसी एक user (या user के प्रकार) के बारे में सीखी बातों को चार भागों (quadrants) में व्यवस्थित करता है: Says, Thinks, Does और Feels। यह टीम को दुनिया user की ओर से देखने और वे ज़रूरतें पहचानने में मदद करता है जो user सीधे नहीं कहता।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Draw it in words: take a chart paper, draw a big plus sign to make four boxes and write the user's name and photo-sketch in a circle at the centre. Top-left box: SAYS. Top-right: THINKS. Bottom-left: DOES. Bottom-right: FEELS. Fill the boxes with sticky notes from your interviews.",
+      "hi": "शब्दों में चित्र: एक chart paper लें, चार खाने बनाने के लिए बड़ा धन (+) चिह्न बनाएँ और बीच के वृत्त में user का नाम और चित्र-रेखा लिखें। ऊपर-बाएँ खाना: SAYS। ऊपर-दाएँ: THINKS। नीचे-बाएँ: DOES। नीचे-दाएँ: FEELS। Interviews से मिली बातों को sticky notes पर लिखकर खानों में लगाएँ।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Quadrant",
+        "What goes in it",
+        "Source"
+       ],
+       "hi": [
+        "Quadrant",
+        "इसमें क्या लिखते हैं",
+        "स्रोत"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Says",
+         "Exact words and quotes the user said aloud",
+         "Interview, recordings with consent"
+        ],
+        [
+         "Thinks",
+         "What the user is thinking but may not say: worries, beliefs, hopes",
+         "Reading between the lines, hesitations"
+        ],
+        [
+         "Does",
+         "Actions and behaviour you observed: what they do, how, how often",
+         "Observation"
+        ],
+        [
+         "Feels",
+         "Emotions: frustrated, anxious, excited, confused, proud",
+         "Tone of voice, body language, words they use"
+        ]
+       ],
+       "hi": [
+        [
+         "Says",
+         "User द्वारा ज़ोर से कहे गए सटीक शब्द और उद्धरण",
+         "Interview, सहमति से recordings"
+        ],
+        [
+         "Thinks",
+         "User क्या सोच रहा है पर शायद कहे नहीं: चिंताएँ, मान्यताएँ, आशाएँ",
+         "बात के पीछे का अर्थ, झिझक"
+        ],
+        [
+         "Does",
+         "देखे गए कार्य और व्यवहार: वे क्या करते हैं, कैसे, कितनी बार",
+         "अवलोकन"
+        ],
+        [
+         "Feels",
+         "भावनाएँ: निराश, चिंतित, उत्साहित, उलझन में, गर्वित",
+         "आवाज़ का लहजा, हाव-भाव, उपयोग किए शब्द"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Says and Does are what you can hear and see directly. Thinks and Feels must be inferred, so check them with the user if possible. Contradictions between quadrants (she says 'it is fine' but feels anxious) often reveal the real need.",
+      "hi": "Says और Does वे हैं जो आप सीधे सुन और देख सकते हैं। Thinks और Feels का अनुमान लगाना पड़ता है, इसलिए हो सके तो user से पुष्टि करें। Quadrants के बीच विरोधाभास (वह कहती है 'ठीक है' पर चिंतित महसूस करती है) अक्सर असली ज़रूरत प्रकट करते हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Make an empathy map for Anakha, a Class 11 student who has an old family desktop and wants to buy a laptop for her studies.",
+       "hi": "Anakha के लिए empathy map बनाइए, जो कक्षा 11 की विद्यार्थी है, जिसके पास परिवार का पुराना desktop है और जो पढ़ाई के लिए laptop ख़रीदना चाहती है।"
+      },
+      "a": {
+       "en": "SAYS: 'I need something light that I can carry to coaching.' 'My budget is around Rs 45,000.' 'Will it run Python and Google Colab?'\nTHINKS: 'Is it worth it, or will the desktop do?' 'What if I choose the wrong model?' 'Reviews online all say different things.'\nDOES: Compares laptops on shopping sites for hours; asks seniors and her cousin; shares the family desktop with her brother; uses her phone for online classes.\nFEELS: Excited about having her own device; anxious about spending the family's money; confused by technical terms like RAM and SSD.\nInsight (need): Anakha needs a simple, trustworthy way to compare laptops within her budget for her actual study tasks, explained in plain words.",
+       "hi": "SAYS: 'मुझे कुछ हल्का चाहिए जो coaching ले जा सकूँ।' 'मेरा budget लगभग Rs 45,000 है।' 'क्या इसमें Python और Google Colab चलेंगे?'\nTHINKS: 'क्या यह ज़रूरी है, या desktop से काम चल जाएगा?' 'अगर मैंने गलत model चुन लिया तो?' 'Online reviews सब अलग-अलग बातें कहते हैं।'\nDOES: घंटों shopping sites पर laptops की तुलना करती है; seniors और चचेरे भाई से पूछती है; परिवार का desktop भाई के साथ साझा करती है; online classes के लिए फ़ोन उपयोग करती है।\nFEELS: अपना device होने को लेकर उत्साहित; परिवार का पैसा ख़र्च करने को लेकर चिंतित; RAM और SSD जैसे तकनीकी शब्दों से उलझन में।\nअंतर्दृष्टि (ज़रूरत): Anakha को अपने budget में, अपनी पढ़ाई के असली कामों के लिए laptops की तुलना करने का सरल, भरोसेमंद तरीका चाहिए, सरल शब्दों में समझाया हुआ।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.8 Stage 2: Define, the 5W1H method and the problem statement",
+    "hi": "4.8 चरण 2: Define, 5W1H विधि और problem statement"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In the Define stage the team studies everything collected while empathizing and turns it into one clear, human-centred problem statement: a short description of the user's unmet need. A good problem statement is about the user, not about the technology ('farmers need early warning of pest attack', not 'we need a CNN').",
+      "hi": "Define चरण में टीम empathize करते समय एकत्र सब कुछ पढ़ती है और उसे एक स्पष्ट, मानव-केंद्रित problem statement में बदलती है: user की अधूरी ज़रूरत का छोटा विवरण। अच्छा problem statement user के बारे में होता है, तकनीक के बारे में नहीं ('किसानों को कीट-हमले की जल्दी चेतावनी चाहिए', न कि 'हमें CNN चाहिए')।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "5W1H method",
+       "hi": "5W1H विधि"
+      },
+      "text": {
+       "en": "A questioning method that breaks a problem into six questions: Who, What, When, Where, Why and How. Answering all six gives a complete picture of the problem and helps decompose it.",
+       "hi": "प्रश्न पूछने की एक विधि जो समस्या को छह प्रश्नों में बाँटती है: Who (कौन), What (क्या), When (कब), Where (कहाँ), Why (क्यों) और How (कैसे)। छहों के उत्तर समस्या का पूरा चित्र देते हैं और उसे विभाजित करने में मदद करते हैं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Question",
+        "Asks about",
+        "Sample prompts"
+       ],
+       "hi": [
+        "प्रश्न",
+        "किस बारे में",
+        "नमूना प्रश्न"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Who?",
+         "The people affected and involved (users, stakeholders)",
+         "Who faces the problem? Who else is affected? Who can help?"
+        ],
+        [
+         "What?",
+         "The problem itself and its effects",
+         "What exactly is happening? What is the impact? What do users need?"
+        ],
+        [
+         "When?",
+         "Time and frequency",
+         "When does it happen? How often? Since when?"
+        ],
+        [
+         "Where?",
+         "Place and context",
+         "Where does it happen? In which situations?"
+        ],
+        [
+         "Why?",
+         "Causes and importance",
+         "Why does it happen? Why does it matter? Why has it not been solved?"
+        ],
+        [
+         "How?",
+         "Way it happens and possible ways to solve it",
+         "How do people cope now? How could AI help? How will we know it worked?"
+        ]
+       ],
+       "hi": [
+        [
+         "Who? (कौन)",
+         "प्रभावित और शामिल लोग (users, stakeholders)",
+         "समस्या कौन झेलता है? और कौन प्रभावित है? कौन मदद कर सकता है?"
+        ],
+        [
+         "What? (क्या)",
+         "स्वयं समस्या और उसके प्रभाव",
+         "ठीक-ठीक क्या हो रहा है? प्रभाव क्या है? users को क्या चाहिए?"
+        ],
+        [
+         "When? (कब)",
+         "समय और आवृत्ति",
+         "यह कब होता है? कितनी बार? कब से?"
+        ],
+        [
+         "Where? (कहाँ)",
+         "स्थान और संदर्भ",
+         "यह कहाँ होता है? किन परिस्थितियों में?"
+        ],
+        [
+         "Why? (क्यों)",
+         "कारण और महत्त्व",
+         "यह क्यों होता है? यह क्यों मायने रखता है? अब तक हल क्यों नहीं हुआ?"
+        ],
+        [
+         "How? (कैसे)",
+         "यह कैसे होता है और हल के संभावित तरीके",
+         "लोग अभी कैसे निपटते हैं? AI कैसे मदद कर सकता है? कैसे पता चलेगा कि यह काम कर गया?"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Apply 5W1H to the traffic-jam problem in a city and write a problem statement.",
+       "hi": "शहर की ट्रैफ़िक-जाम समस्या पर 5W1H लागू कीजिए और problem statement लिखिए।"
+      },
+      "a": {
+       "en": "Who: daily commuters, office workers, school buses, ambulances, traffic police.\nWhat: long jams cause delays, stress, fuel waste and air pollution; ambulances get stuck.\nWhen: weekdays 8:30–10:30 am and 5:30–8 pm; worse on rainy days and festival days.\nWhere: main junctions near the market, railway station and IT park.\nWhy: fixed signal timings that do not match traffic, roadside parking, road works, many vehicles leaving at the same time.\nHow: people now leave very early or guess routes; AI could predict jams from past and live vehicle counts and suggest signal timings and alternate routes.\nProblem statement: Daily commuters in our city lose 30–60 minutes at a few busy junctions during office hours because signal timings do not adjust to traffic, so they need a way to predict jams early and get better routes and signal timings.",
+       "hi": "Who: रोज़ के यात्री, ऑफ़िस कर्मचारी, स्कूल बसें, ambulances, traffic police।\nWhat: लंबे जाम से देरी, तनाव, ईंधन की बर्बादी और वायु प्रदूषण होता है; ambulances फँस जाती हैं।\nWhen: सप्ताह के दिनों में सुबह 8:30–10:30 और शाम 5:30–8; बारिश और त्योहार के दिनों में अधिक।\nWhere: बाज़ार, रेलवे स्टेशन और IT park के पास के मुख्य चौराहे।\nWhy: निश्चित signal समय जो traffic से मेल नहीं खाते, सड़क किनारे parking, सड़क-कार्य, बहुत-से वाहनों का एक ही समय निकलना।\nHow: लोग अभी बहुत जल्दी निकलते हैं या रास्तों का अनुमान लगाते हैं; AI पिछली और live वाहन संख्या से जाम का अनुमान लगाकर signal समय और वैकल्पिक रास्ते सुझा सकता है।\nProblem statement: हमारे शहर के रोज़ के यात्री ऑफ़िस समय में कुछ व्यस्त चौराहों पर 30–60 मिनट खोते हैं क्योंकि signal समय traffic के अनुसार नहीं बदलते, इसलिए उन्हें जाम का जल्दी अनुमान और बेहतर रास्ते तथा signal समय पाने का तरीका चाहिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A handy template for a problem statement (similar to the 4Ws Problem Canvas you met in Class 9):",
+      "hi": "Problem statement का एक उपयोगी साँचा (कक्षा 9 के 4Ws Problem Canvas जैसा):"
+     }
+    },
+    {
+     "formula": {
+      "en": "Our [WHO: users / stakeholders]\nhave a problem that [WHAT: the issue]\nwhen / while [WHEN and WHERE: the context].\nAn ideal solution would [HOW: the benefit to users, and how we will know],\nbecause [WHY: why it matters].",
+      "hi": "हमारे [WHO: users / stakeholders]\nको यह समस्या है कि [WHAT: मुद्दा]\nजब / जहाँ [WHEN और WHERE: संदर्भ]।\nएक आदर्श समाधान [HOW: users को लाभ, और हमें कैसे पता चलेगा] होगा,\nक्योंकि [WHY: यह क्यों मायने रखता है]।"
+     }
+    },
+    {
+     "p": {
+      "en": "Another popular way to end the Define stage is a 'How might we...?' question, which turns the problem into an invitation for ideas: 'How might we help commuters avoid jams without adding new roads?'",
+      "hi": "Define चरण समाप्त करने का एक और लोकप्रिय तरीका 'How might we...? (हम कैसे...?)' प्रश्न है, जो समस्या को विचारों के लिए निमंत्रण बना देता है: 'हम नई सड़कें बनाए बिना यात्रियों को जाम से बचने में कैसे मदद कर सकते हैं?'"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.9 Stage 3: Ideate",
+    "hi": "4.9 चरण 3: Ideate (विचार-सृजन)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Ideate the team generates as many ideas as possible for the problem statement, without judging them at first. Quantity comes first; quality is chosen later. Wild ideas are welcome because they often lead to practical ones. Build on each other's ideas ('yes, and...') instead of rejecting them ('no, but...').",
+      "hi": "Ideate में टीम problem statement के लिए जितने हो सकें उतने विचार उत्पन्न करती है, पहले उनकी आलोचना किए बिना। पहले संख्या, गुणवत्ता बाद में चुनी जाती है। अनोखे विचारों का स्वागत है क्योंकि वे अक्सर व्यावहारिक विचारों तक ले जाते हैं। एक-दूसरे के विचारों को अस्वीकार करने ('नहीं, पर...') की जगह उन पर आगे बढ़ें ('हाँ, और...')।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Brainstorm: the group sits together and freely suggests ideas aloud for a fixed time (say 10 minutes); one person writes every idea on the board. No criticism during the session.",
+       "Brain dump: each person individually writes down every idea that comes to mind on paper or sticky notes, and later shares them with the group. Good for quiet team members.",
+       "Brain writing: each person silently writes a few ideas on a sheet and passes it to the next person, who adds to or builds on them; after several rounds every sheet holds developed ideas from everyone.",
+       "Other helpful methods: mind maps (ideas branching from the problem in the centre) and 'worst possible idea' (list terrible ideas, then reverse them)."
+      ],
+      "hi": [
+       "Brainstorm: समूह साथ बैठकर एक निश्चित समय (जैसे 10 मिनट) तक ज़ोर से खुलकर विचार सुझाता है; एक व्यक्ति हर विचार बोर्ड पर लिखता है। सत्र के दौरान कोई आलोचना नहीं।",
+       "Brain dump: हर व्यक्ति अकेले मन में आने वाला हर विचार काग़ज़ या sticky notes पर लिखता है, और बाद में समूह से साझा करता है। शांत स्वभाव के सदस्यों के लिए अच्छा।",
+       "Brain writing: हर व्यक्ति चुपचाप एक शीट पर कुछ विचार लिखकर अगले व्यक्ति को देता है, जो उनमें जोड़ता या उन पर आगे बढ़ता है; कई दौर के बाद हर शीट में सभी के विकसित विचार होते हैं।",
+       "अन्य सहायक तरीके: mind maps (बीच में समस्या से निकलती शाखाओं जैसे विचार) और 'सबसे बुरा विचार' (बहुत बुरे विचार लिखें, फिर उन्हें उलट दें)।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "After generating ideas, use critical thinking to choose. Group similar ideas, then vote (for example, each member gets three sticker dots) and check the top ideas against: Does it meet the user's need? Is there data and a pattern for AI? Is it ethical and safe? Can we build a prototype in the time we have?",
+      "hi": "विचार उत्पन्न करने के बाद चुनने के लिए critical thinking का उपयोग करें। मिलते-जुलते विचारों को समूह में रखें, फिर मत दें (जैसे हर सदस्य को तीन sticker बिंदु मिलें) और शीर्ष विचारों को परखें: क्या यह user की ज़रूरत पूरी करता है? क्या AI के लिए data और pattern है? क्या यह नैतिक और सुरक्षित है? क्या हम उपलब्ध समय में prototype बना सकते हैं?"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Ideate for: 'How might we help commuters avoid jams?' List ideas and choose one.",
+       "hi": "इसके लिए Ideate कीजिए: 'हम यात्रियों को जाम से बचने में कैसे मदद कर सकते हैं?' विचार लिखिए और एक चुनिए।"
+      },
+      "a": {
+       "en": "Ideas: AI that predicts jams 30 minutes ahead; smart signals that change timing with live vehicle counts; app that suggests the best time to leave; staggered office timings; WhatsApp alerts in Hindi; more bicycle lanes; carpool matching; drone traffic watch.\nChoice (after voting and checking): an AI jam-predictor for 5 key junctions that sends alerts and suggests leaving times, because past traffic data shows a strong pattern, it helps users directly and a simple prototype can be built.",
+       "hi": "विचार: 30 मिनट पहले जाम का अनुमान लगाने वाला AI; live वाहन संख्या से समय बदलने वाले smart signals; निकलने का सबसे अच्छा समय बताने वाला app; ऑफ़िसों के अलग-अलग समय; हिंदी में WhatsApp चेतावनी; अधिक साइकिल लेन; carpool मिलान; drone से traffic निगरानी।\nचुनाव (मतदान और जाँच के बाद): 5 मुख्य चौराहों के लिए AI जाम-अनुमानक जो चेतावनी भेजे और निकलने का समय सुझाए, क्योंकि पिछले traffic data में मज़बूत pattern है, यह users की सीधे मदद करता है और इसका सरल prototype बनाया जा सकता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.10 Stage 4: Prototype and Stage 5: Test",
+    "hi": "4.10 चरण 4: Prototype और चरण 5: Test"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Prototype",
+       "hi": "Prototype"
+      },
+      "text": {
+       "en": "A prototype is an early, simple, inexpensive model of a solution that lets the team and users see, try and react to an idea before spending a lot of time and money on the final product.",
+       "hi": "Prototype किसी समाधान का प्रारंभिक, सरल, सस्ता model है जिससे टीम और users अंतिम उत्पाद पर बहुत समय और पैसा लगाने से पहले विचार को देख, आज़मा और उस पर प्रतिक्रिया दे सकें।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Low-fidelity prototypes (quick and rough): a drawing or storyboard, a poster, paper screens of an app, a cardboard model, a group role-play of how the service works.",
+       "Higher-fidelity prototypes (closer to real): a clickable mock app, a home-made gadget with sensors, a 3D-printed product, or a simple working model trained in Teachable Machine or Scikit-learn.",
+       "For AI projects a 'Wizard of Oz' prototype is useful: a team member secretly gives the answers that the AI will later give, to test whether users find the idea helpful."
+      ],
+      "hi": [
+       "Low-fidelity prototypes (जल्दी और मोटे): चित्र या storyboard, poster, app की काग़ज़ी screens, गत्ते का model, सेवा कैसे काम करेगी इसका समूह role-play।",
+       "Higher-fidelity prototypes (असली के अधिक पास): click किया जा सकने वाला नकली app, sensors वाला घर का बना gadget, 3D-printed उत्पाद, या Teachable Machine या Scikit-learn में train किया सरल चलता model।",
+       "AI प्रोजेक्टों के लिए 'Wizard of Oz' prototype उपयोगी है: टीम का एक सदस्य छिपकर वे उत्तर देता है जो बाद में AI देगा, यह परखने के लिए कि users को विचार उपयोगी लगता है या नहीं।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Test",
+       "hi": "Test"
+      },
+      "text": {
+       "en": "In the Test stage the prototype is tried by real end users. The team watches, asks for feedback and learns more about the users, the problem and the solution. Testing often happens alongside prototyping, and the results may send the team back to Define or Ideate.",
+       "hi": "Test चरण में असली end users prototype आज़माते हैं। टीम देखती है, feedback माँगती है और users, समस्या तथा समाधान के बारे में और सीखती है। Testing अक्सर prototyping के साथ-साथ होती है, और परिणाम टीम को Define या Ideate पर वापस भेज सकते हैं।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Let users try it themselves; do not explain too much.",
+       "Ask open questions: 'What did you expect to happen?' 'What was confusing?'",
+       "Record what works, what does not, new ideas and questions (a simple feedback grid with four boxes: Liked, Wished, Questions, Ideas).",
+       "Change the prototype and test again: this loop is the iterative heart of design thinking."
+      ],
+      "hi": [
+       "Users को स्वयं आज़माने दें; बहुत अधिक न समझाएँ।",
+       "खुले प्रश्न पूछें: 'आपको क्या होने की उम्मीद थी?' 'क्या उलझन भरा लगा?'",
+       "क्या काम करता है, क्या नहीं, नए विचार और प्रश्न दर्ज करें (चार खानों वाला सरल feedback grid: पसंद आया, काश ऐसा होता, प्रश्न, विचार)।",
+       "Prototype बदलें और फिर परखें: यही चक्र design thinking का iterative हृदय है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "For the Class 11 project abstract, the Test stage is optional. You must complete Empathize, Define, Ideate and a Prototype idea.",
+      "hi": "कक्षा 11 के project abstract में Test चरण वैकल्पिक है। आपको Empathize, Define, Ideate और Prototype का विचार पूरा करना होगा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.11 Sustainable development and the 17 SDGs",
+    "hi": "4.11 सतत विकास और 17 SDGs"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Sustainable development",
+       "hi": "Sustainable development (सतत विकास)"
+      },
+      "text": {
+       "en": "Development that meets the needs of the present without harming the ability of future generations to meet their own needs. It balances three things: economic growth, protection of the environment and social equity (fairness for all people).",
+       "hi": "ऐसा विकास जो वर्तमान की ज़रूरतें पूरी करे पर भावी पीढ़ियों की अपनी ज़रूरतें पूरी करने की क्षमता को हानि न पहुँचाए। यह तीन चीज़ों में संतुलन रखता है: आर्थिक विकास, पर्यावरण की रक्षा और सामाजिक समता (सभी लोगों के लिए न्याय)।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Sustainable Development Goals (SDGs)",
+       "hi": "Sustainable Development Goals (SDGs)"
+      },
+      "text": {
+       "en": "A set of 17 global goals adopted by all member countries of the United Nations, including India, in 2015 as part of the 2030 Agenda for Sustainable Development. They aim to end poverty, protect the planet and ensure peace and prosperity for all by 2030.",
+       "hi": "17 वैश्विक लक्ष्यों का समूह जिसे भारत सहित संयुक्त राष्ट्र के सभी सदस्य देशों ने 2015 में सतत विकास के 2030 Agenda के भाग के रूप में अपनाया। इनका उद्देश्य 2030 तक गरीबी समाप्त करना, पृथ्वी की रक्षा करना और सभी के लिए शांति और समृद्धि सुनिश्चित करना है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "SDG",
+        "Goal",
+        "How AI can help (examples)"
+       ],
+       "hi": [
+        "SDG",
+        "लक्ष्य",
+        "AI कैसे मदद कर सकता है (उदाहरण)"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1",
+         "No Poverty",
+         "AI-based credit scoring for small shopkeepers; identifying families who need welfare schemes"
+        ],
+        [
+         "2",
+         "Zero Hunger",
+         "Crop-disease detection from leaf photos; yield and rainfall prediction for farmers"
+        ],
+        [
+         "3",
+         "Good Health and Well-being",
+         "Screening eye scans for diabetic retinopathy; predicting disease outbreaks"
+        ],
+        [
+         "4",
+         "Quality Education",
+         "Personalised learning apps; reading help in Indian languages"
+        ],
+        [
+         "5",
+         "Gender Equality",
+         "Detecting gender bias in job ads; safety apps for women"
+        ],
+        [
+         "6",
+         "Clean Water and Sanitation",
+         "Predicting water quality; finding leaks in pipelines"
+        ],
+        [
+         "7",
+         "Affordable and Clean Energy",
+         "Forecasting solar and wind power; smart electricity meters"
+        ],
+        [
+         "8",
+         "Decent Work and Economic Growth",
+         "Matching job seekers with skills and jobs"
+        ],
+        [
+         "9",
+         "Industry, Innovation and Infrastructure",
+         "Predicting when machines or bridges need repair"
+        ],
+        [
+         "10",
+         "Reduced Inequalities",
+         "Voice and translation tools (such as Bhashini) so people can use services in their own language"
+        ],
+        [
+         "11",
+         "Sustainable Cities and Communities",
+         "Traffic prediction, smart waste collection, air-quality forecasts"
+        ],
+        [
+         "12",
+         "Responsible Consumption and Production",
+         "Reducing food waste in canteens by predicting demand"
+        ],
+        [
+         "13",
+         "Climate Action",
+         "Weather and flood forecasting; tracking emissions"
+        ],
+        [
+         "14",
+         "Life Below Water",
+         "Detecting plastic in oceans; monitoring illegal fishing from satellite data"
+        ],
+        [
+         "15",
+         "Life on Land",
+         "Spotting forest fires and tracking wildlife with camera traps"
+        ],
+        [
+         "16",
+         "Peace, Justice and Strong Institutions",
+         "Detecting fake news and fraud; faster access to court and government records"
+        ],
+        [
+         "17",
+         "Partnerships for the Goals",
+         "Open data platforms that let governments, companies and citizens work together"
+        ]
+       ],
+       "hi": [
+        [
+         "1",
+         "No Poverty (गरीबी समाप्त)",
+         "छोटे दुकानदारों के लिए AI-आधारित credit scoring; कल्याण योजनाओं के ज़रूरतमंद परिवार पहचानना"
+        ],
+        [
+         "2",
+         "Zero Hunger (भुखमरी समाप्त)",
+         "पत्तियों की तस्वीर से फ़सल-रोग पहचान; किसानों के लिए उपज और वर्षा का अनुमान"
+        ],
+        [
+         "3",
+         "Good Health and Well-being (अच्छा स्वास्थ्य)",
+         "Diabetic retinopathy के लिए आँखों के scan की जाँच; रोग-प्रकोप का अनुमान"
+        ],
+        [
+         "4",
+         "Quality Education (गुणवत्तापूर्ण शिक्षा)",
+         "व्यक्तिगत learning apps; भारतीय भाषाओं में पढ़ने में मदद"
+        ],
+        [
+         "5",
+         "Gender Equality (लैंगिक समानता)",
+         "नौकरी के विज्ञापनों में लैंगिक पक्षपात पहचानना; महिलाओं के लिए सुरक्षा apps"
+        ],
+        [
+         "6",
+         "Clean Water and Sanitation (स्वच्छ जल और स्वच्छता)",
+         "पानी की गुणवत्ता का अनुमान; pipelines में रिसाव ढूँढना"
+        ],
+        [
+         "7",
+         "Affordable and Clean Energy (सस्ती और स्वच्छ ऊर्जा)",
+         "सौर और पवन ऊर्जा का पूर्वानुमान; smart बिजली मीटर"
+        ],
+        [
+         "8",
+         "Decent Work and Economic Growth (अच्छा काम और आर्थिक विकास)",
+         "नौकरी चाहने वालों को कौशल और नौकरियों से मिलाना"
+        ],
+        [
+         "9",
+         "Industry, Innovation and Infrastructure (उद्योग, नवाचार और बुनियादी ढाँचा)",
+         "मशीनों या पुलों को कब मरम्मत चाहिए, इसका अनुमान"
+        ],
+        [
+         "10",
+         "Reduced Inequalities (असमानता में कमी)",
+         "Voice और अनुवाद tools (जैसे Bhashini) ताकि लोग अपनी भाषा में सेवाएँ उपयोग कर सकें"
+        ],
+        [
+         "11",
+         "Sustainable Cities and Communities (टिकाऊ शहर और समुदाय)",
+         "Traffic अनुमान, smart कचरा संग्रह, वायु-गुणवत्ता पूर्वानुमान"
+        ],
+        [
+         "12",
+         "Responsible Consumption and Production (ज़िम्मेदार उपभोग और उत्पादन)",
+         "माँग का अनुमान लगाकर canteen में भोजन की बर्बादी घटाना"
+        ],
+        [
+         "13",
+         "Climate Action (जलवायु कार्रवाई)",
+         "मौसम और बाढ़ का पूर्वानुमान; उत्सर्जन पर नज़र"
+        ],
+        [
+         "14",
+         "Life Below Water (जल के नीचे जीवन)",
+         "महासागरों में plastic पहचानना; satellite data से अवैध मछली पकड़ने की निगरानी"
+        ],
+        [
+         "15",
+         "Life on Land (भूमि पर जीवन)",
+         "जंगल की आग पहचानना और camera traps से वन्यजीवों पर नज़र"
+        ],
+        [
+         "16",
+         "Peace, Justice and Strong Institutions (शांति, न्याय और सशक्त संस्थाएँ)",
+         "Fake news और धोखाधड़ी पहचानना; अदालत और सरकारी records तक तेज़ पहुँच"
+        ],
+        [
+         "17",
+         "Partnerships for the Goals (लक्ष्यों के लिए साझेदारी)",
+         "Open data platforms जो सरकारों, कंपनियों और नागरिकों को साथ काम करने देते हैं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why link your capstone to an SDG? It makes sure you are solving a problem that matters to many people, gives you a clear purpose to explain to judges and users, and connects your local problem (a jammed junction in your town) to a global goal (SDG 11). Many problems touch more than one SDG: a crop-disease app supports SDG 2 (Zero Hunger) and also SDG 1 (No Poverty) by saving farmers' income.",
+      "hi": "अपने capstone को SDG से क्यों जोड़ें? इससे सुनिश्चित होता है कि आप बहुत-से लोगों के लिए महत्त्वपूर्ण समस्या हल कर रहे हैं, आपको निर्णायकों और users को समझाने के लिए स्पष्ट उद्देश्य मिलता है, और आपकी स्थानीय समस्या (आपके शहर का जाम वाला चौराहा) वैश्विक लक्ष्य (SDG 11) से जुड़ जाती है। कई समस्याएँ एक से अधिक SDG को छूती हैं: फ़सल-रोग app SDG 2 (Zero Hunger) के साथ किसानों की आय बचाकर SDG 1 (No Poverty) का भी समर्थन करता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "A memory trick: think of the SDGs as five Ps. People (goals 1–5), Planet (6, 12, 13, 14, 15), Prosperity (7–11), Peace (16) and Partnership (17). This grouping is used by the UN to explain the agenda.",
+      "hi": "याद रखने का तरीका: SDGs को पाँच P के रूप में सोचें। People (लक्ष्य 1–5), Planet (6, 12, 13, 14, 15), Prosperity (7–11), Peace (16) और Partnership (17)। UN agenda समझाने के लिए इसी समूहन का उपयोग करता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Match each project to its main SDG: (a) a model that predicts which students may drop out so teachers can help early, (b) an app that identifies plastic waste types for recycling, (c) a flood-forecasting model for Assam.",
+       "hi": "हर प्रोजेक्ट को उसके मुख्य SDG से मिलाइए: (a) एक model जो बताए कि कौन-से विद्यार्थी पढ़ाई छोड़ सकते हैं ताकि शिक्षक जल्दी मदद करें, (b) recycling के लिए plastic कचरे के प्रकार पहचानने वाला app, (c) असम के लिए बाढ़-पूर्वानुमान model।"
+      },
+      "a": {
+       "en": "(a) SDG 4 Quality Education.\n(b) SDG 12 Responsible Consumption and Production (also SDG 11 and 14).\n(c) SDG 13 Climate Action (also SDG 11 Sustainable Cities and Communities).",
+       "hi": "(a) SDG 4 Quality Education।\n(b) SDG 12 Responsible Consumption and Production (साथ ही SDG 11 और 14)।\n(c) SDG 13 Climate Action (साथ ही SDG 11 Sustainable Cities and Communities)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.12 Creating a project abstract with the design thinking framework",
+    "hi": "4.12 Design thinking framework से project abstract बनाना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Project abstract",
+       "hi": "Project abstract"
+      },
+      "text": {
+       "en": "A short, structured summary (usually one to two pages) of your capstone idea that explains the problem, the users, how you understood them, the problem statement, your ideas and your prototype. For Class 11 it follows the design thinking stages.",
+       "hi": "आपके capstone विचार का छोटा, व्यवस्थित सारांश (प्रायः एक से दो पृष्ठ) जो समस्या, users, आपने उन्हें कैसे समझा, problem statement, आपके विचार और prototype समझाता है। कक्षा 11 में यह design thinking के चरणों का पालन करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Format of the project abstract (CBSE practical):",
+      "hi": "Project abstract का प्रारूप (CBSE practical):"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "1. Project name",
+       "2. Names of team members",
+       "3. Problem selection: an important problem that AI can help solve, found through a survey or interviews, and aligned with one or more SDGs",
+       "4. Users: who is affected by the problem",
+       "5. Empathize: an empathy map (Says, Thinks, Does, Feels) of a typical user",
+       "6. Define: answers to the 5W1H questions and a clear problem statement",
+       "7. Ideate: the ideas you brainstormed and the one you chose, with reasons",
+       "8. Prototype: how you will show the idea (simple drawing, poster, group role-play, home-made gadget or 3D-printed product)",
+       "9. Test (optional at this stage): how you tested it and what feedback you got"
+      ],
+      "hi": [
+       "1. प्रोजेक्ट का नाम",
+       "2. टीम के सदस्यों के नाम",
+       "3. समस्या का चयन: एक महत्त्वपूर्ण समस्या जिसे हल करने में AI मदद कर सके, survey या interviews से पहचानी गई, और एक या अधिक SDGs से जुड़ी",
+       "4. Users: समस्या से कौन प्रभावित है",
+       "5. Empathize: एक सामान्य user का empathy map (Says, Thinks, Does, Feels)",
+       "6. Define: 5W1H प्रश्नों के उत्तर और स्पष्ट problem statement",
+       "7. Ideate: आपके सोचे विचार और चुना हुआ विचार, कारणों सहित",
+       "8. Prototype: आप विचार कैसे दिखाएँगे (सरल चित्र, poster, समूह role-play, घर का बना gadget या 3D-printed उत्पाद)",
+       "9. Test (इस चरण में वैकल्पिक): आपने कैसे परखा और क्या feedback मिला"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "CBSE asks that the early stages of the capstone (problem definition, the users, brainstorming and design) be recorded in the IBM project log book (a logbook template from IBM SkillsBuild). Keep the log book updated as you go: date, what you did, who did it, what you learnt and next steps. A simple notebook or a shared Google Doc can be used for daily notes before you fill in the log book.",
+      "hi": "CBSE चाहता है कि capstone के प्रारंभिक चरण (समस्या की परिभाषा, users, brainstorming और design) IBM project log book (IBM SkillsBuild का logbook साँचा) में दर्ज हों। Log book साथ-साथ अद्यतन रखें: तारीख़, आपने क्या किया, किसने किया, क्या सीखा और अगले कदम। Log book भरने से पहले रोज़ के नोट्स के लिए सरल notebook या साझा Google Doc उपयोग किया जा सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write a sample project abstract: 'Smart Bin Buddy – AI-powered waste sorting for our school'.",
+       "hi": "एक नमूना project abstract लिखिए: 'Smart Bin Buddy – हमारे स्कूल के लिए AI-संचालित कचरा छँटाई'।"
+      },
+      "a": {
+       "en": "1. Project name: Smart Bin Buddy.\n2. Team: four students of Class 11 (names written here).\n3. Problem selection: A survey of 60 students and 5 housekeeping staff showed that wet, dry and plastic waste are mixed in school bins, so most of it goes to the landfill. Linked SDGs: 11 (Sustainable Cities), 12 (Responsible Consumption), 13 (Climate Action).\n4. Users: students, teachers, housekeeping staff, the municipal waste collector.\n5. Empathize (housekeeping staff member): Says 'Children throw everything in one bin.' Thinks 'Sorting by hand is dirty and nobody notices.' Does 'Sorts waste by hand at 3 pm every day, without gloves sometimes.' Feels 'Tired, unappreciated, worried about cuts and infections.'\n6. Define: Who: students and housekeeping staff. What: waste is not separated. When: after lunch break daily. Where: corridor and canteen bins. Why: students are unsure which bin to use; labels are faded. How: an AI camera could tell the student which bin to use.\nProblem statement: Students in our school mix wet, dry and plastic waste after lunch because they are unsure which bin to use, so staff must sort it by hand; students need instant, simple guidance at the bin.\n7. Ideate: brightly coloured bins; posters; a 'bin monitor' rota; an AI camera that recognises the item and lights up the right bin; a quiz game. Chosen: AI camera with lights, plus posters, because it gives instant feedback and can be prototyped with Teachable Machine.\n8. Prototype: an image model trained in Google Teachable Machine on photos of wrappers, fruit peels, paper and bottles (taken by the team, with no people in them), shown on a laptop next to three cardboard bins with coloured paper 'lights'.\n9. Test: tried with 20 students for one week; 17 found it helpful; feedback: add a Hindi voice message and better photos of wet waste.",
+       "hi": "1. प्रोजेक्ट का नाम: Smart Bin Buddy।\n2. टीम: कक्षा 11 के चार विद्यार्थी (नाम यहाँ लिखें)।\n3. समस्या का चयन: 60 विद्यार्थियों और 5 सफ़ाई कर्मचारियों के survey से पता चला कि स्कूल के डिब्बों में गीला, सूखा और plastic कचरा मिला दिया जाता है, इसलिए अधिकांश landfill में जाता है। जुड़े SDGs: 11 (Sustainable Cities), 12 (Responsible Consumption), 13 (Climate Action)।\n4. Users: विद्यार्थी, शिक्षक, सफ़ाई कर्मचारी, नगरपालिका का कचरा संग्राहक।\n5. Empathize (सफ़ाई कर्मचारी): Says 'बच्चे सब कुछ एक ही डिब्बे में डाल देते हैं।' Thinks 'हाथ से छाँटना गंदा काम है और किसी का ध्यान नहीं जाता।' Does 'रोज़ दोपहर 3 बजे हाथ से कचरा छाँटते हैं, कभी-कभी बिना दस्तानों के।' Feels 'थके हुए, उपेक्षित, कटने और संक्रमण को लेकर चिंतित।'\n6. Define: Who: विद्यार्थी और सफ़ाई कर्मचारी। What: कचरा अलग नहीं होता। When: रोज़ lunch break के बाद। Where: गलियारे और canteen के डिब्बे। Why: विद्यार्थी निश्चित नहीं होते कि कौन-सा डिब्बा उपयोग करें; labels धुँधले हैं। How: AI camera विद्यार्थी को बता सकता है कि कौन-सा डिब्बा उपयोग करें।\nProblem statement: हमारे स्कूल के विद्यार्थी lunch के बाद गीला, सूखा और plastic कचरा मिला देते हैं क्योंकि उन्हें पता नहीं होता कि कौन-सा डिब्बा उपयोग करें, इसलिए कर्मचारियों को हाथ से छाँटना पड़ता है; विद्यार्थियों को डिब्बे पर तुरंत, सरल मार्गदर्शन चाहिए।\n7. Ideate: चमकीले रंग के डिब्बे; posters; 'bin monitor' की बारी; AI camera जो वस्तु पहचानकर सही डिब्बे की बत्ती जलाए; quiz खेल। चुना: बत्तियों वाला AI camera और posters, क्योंकि यह तुरंत feedback देता है और Teachable Machine से इसका prototype बन सकता है।\n8. Prototype: Google Teachable Machine में wrappers, फलों के छिलकों, काग़ज़ और बोतलों की तस्वीरों (टीम द्वारा ली गईं, उनमें कोई व्यक्ति नहीं) पर train किया image model, laptop पर तीन गत्ते के डिब्बों के पास रंगीन काग़ज़ की 'बत्तियों' के साथ दिखाया गया।\n9. Test: एक सप्ताह 20 विद्यार्थियों के साथ आज़माया; 17 को उपयोगी लगा; feedback: हिंदी voice संदेश जोड़ें और गीले कचरे की बेहतर तस्वीरें लें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.13 From Class 11 to Class 12: the road ahead",
+    "hi": "4.13 कक्षा 11 से कक्षा 12 तक: आगे का रास्ता"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Class 11 you complete the human side of the project: choosing the problem, understanding users, defining the problem, ideating and making a first prototype. In Class 12 you continue with the technical side: the Data Science Methodology (collecting, understanding and preparing data, building and evaluating a model, and deploying it), and you submit and present the finished capstone. Chapter 5 (Data Literacy) and Chapter 6 (Machine Learning Algorithms) of this class give you the data and modelling tools you will need, and Chapter 8 (AI Ethics and Values) helps you check your solution is fair and safe.",
+      "hi": "कक्षा 11 में आप प्रोजेक्ट का मानवीय पक्ष पूरा करते हैं: समस्या चुनना, users को समझना, समस्या परिभाषित करना, ideate करना और पहला prototype बनाना। कक्षा 12 में आप तकनीकी पक्ष पर आगे बढ़ते हैं: Data Science Methodology (data एकत्र करना, समझना और तैयार करना, model बनाना और उसका मूल्यांकन करना, और उसे deploy करना), और पूरा capstone जमा करके प्रस्तुत करते हैं। इस कक्षा का अध्याय 5 (Data Literacy) और अध्याय 6 (Machine Learning Algorithms) आपको ज़रूरी data और modelling tools देते हैं, और अध्याय 8 (AI Ethics and Values) यह जाँचने में मदद करता है कि आपका समाधान निष्पक्ष और सुरक्षित है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Choose a problem you care about and can reach users for (your school, family, locality).",
+       "Check early that data exists or can be collected ethically, and that there is a pattern.",
+       "Keep the scope small: one junction, one school, one crop. A small working idea is better than a huge unfinished one.",
+       "Share roles: researcher, data person, designer, presenter; rotate so everyone learns.",
+       "Update the log book after every session.",
+       "Practise explaining the project to a grandparent or a younger student in non-technical words: what problem, for whom, how it helps."
+      ],
+      "hi": [
+       "ऐसी समस्या चुनें जिसकी आपको परवाह हो और जिसके users तक आप पहुँच सकें (आपका स्कूल, परिवार, मोहल्ला)।",
+       "जल्दी जाँच लें कि data मौजूद है या नैतिक रूप से एकत्र किया जा सकता है, और कि उसमें pattern है।",
+       "दायरा छोटा रखें: एक चौराहा, एक स्कूल, एक फ़सल। छोटा चलता विचार बड़े अधूरे विचार से बेहतर है।",
+       "भूमिकाएँ बाँटें: शोधकर्ता, data व्यक्ति, designer, प्रस्तुतकर्ता; बदलते रहें ताकि सब सीखें।",
+       "हर सत्र के बाद log book अद्यतन करें।",
+       "प्रोजेक्ट को दादा-दादी या छोटे विद्यार्थी को गैर-तकनीकी शब्दों में समझाने का अभ्यास करें: कौन-सी समस्या, किसके लिए, कैसे मदद करता है।"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "4.14 Activities",
+    "hi": "4.14 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1: Empathy map for a given scenario (CBSE practical). Aim: practise the Empathize stage. Need: chart paper, sticky notes, pens. Scenario: 'Ramesh, 62, a retired postman in a small town, has to book a train ticket online for the first time.' What to do: in pairs, one plays Ramesh and the other interviews him for 5 minutes (open questions only); then fill Says, Thinks, Does and Feels and write one insight. Observe: the needs (large text, Hindi option, fear of losing money) that Ramesh never said directly. Learning: empathy reveals hidden needs.",
+      "hi": "गतिविधि 1: दिए गए परिदृश्य के लिए empathy map (CBSE practical)। उद्देश्य: Empathize चरण का अभ्यास। आवश्यकता: chart paper, sticky notes, पेन। परिदृश्य: 'रमेश, 62 वर्ष, छोटे शहर के सेवानिवृत्त डाकिया, को पहली बार online train टिकट book करना है।' क्या करें: जोड़ों में, एक रमेश बनता है और दूसरा 5 मिनट उसका interview लेता है (केवल खुले प्रश्न); फिर Says, Thinks, Does और Feels भरें और एक अंतर्दृष्टि लिखें। अवलोकन: वे ज़रूरतें (बड़ा text, हिंदी विकल्प, पैसा खोने का डर) जो रमेश ने सीधे कभी नहीं कहीं। सीख: सहानुभूति छिपी ज़रूरतें प्रकट करती है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2: 5W1H detective. Each group gets a local problem card (water-logging after rain, stray-animal injuries on roads, long canteen queues, low library use). Answer all six questions on a grid and write a problem statement using the template. Groups swap and check each other's statements: is it about users, not technology?",
+      "hi": "गतिविधि 2: 5W1H जासूस। हर समूह को एक स्थानीय समस्या का card मिलता है (बारिश के बाद जलभराव, सड़कों पर आवारा पशुओं को चोट, canteen की लंबी कतारें, पुस्तकालय का कम उपयोग)। Grid पर छहों प्रश्नों के उत्तर दें और साँचे से problem statement लिखें। समूह अदला-बदली करके एक-दूसरे के statements जाँचें: क्या यह users के बारे में है, तकनीक के बारे में नहीं?"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3: Brainstorm vs brain writing. Use the same problem twice: 10 minutes of open brainstorming aloud, then 10 minutes of silent brain writing with sheets passed round. Count the ideas from each method and discuss which helped quiet members contribute more.",
+      "hi": "गतिविधि 3: Brainstorm बनाम brain writing। एक ही समस्या पर दो बार काम करें: 10 मिनट ज़ोर से खुली brainstorming, फिर 10 मिनट शीट घुमाकर मौन brain writing। हर विधि से निकले विचार गिनें और चर्चा करें कि किस विधि से शांत सदस्यों ने अधिक योगदान दिया।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4: SDG mapping. Search news from your state for one week and cut out or note five problems. For each, name the SDG(s) it relates to and one way AI might help, and one risk of using AI there. Present as a wall chart with 17 coloured columns.",
+      "hi": "गतिविधि 4: SDG mapping। एक सप्ताह अपने राज्य के समाचार खोजें और पाँच समस्याएँ काटें या लिखें। हर एक के लिए संबंधित SDG(s), AI कैसे मदद कर सकता है इसका एक तरीका, और वहाँ AI उपयोग करने का एक जोखिम लिखें। 17 रंगीन columns वाले wall chart के रूप में प्रस्तुत करें।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 5: Paper prototype and test (screen optional). Draw 3–4 phone screens of your app idea on paper. Ask two classmates to 'tap' through it while one team member changes the paper screens. Note where they got stuck using the Liked / Wished / Questions / Ideas grid. If you have a laptop, build a quick image model in Google Teachable Machine (free, in the browser; an adult should supervise any sign-up for under-13s) as a working prototype.",
+      "hi": "गतिविधि 5: Paper prototype और test (screen वैकल्पिक)। अपने app विचार की 3–4 phone screens काग़ज़ पर बनाएँ। दो सहपाठियों से उन पर 'tap' करवाएँ जबकि टीम का एक सदस्य काग़ज़ी screens बदलता है। Liked / Wished / Questions / Ideas grid में लिखें कि वे कहाँ अटके। Laptop हो तो working prototype के रूप में Google Teachable Machine (मुफ़्त, browser में; 13 वर्ष से कम के लिए किसी भी sign-up की वयस्क देखरेख हो) में जल्दी image model बनाएँ।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 6: Project abstract (CBSE practical). Using the nine-point format in 4.12, write the abstract for your own team's capstone idea and record the problem definition, users, brainstorming and design in the IBM log book.",
+      "hi": "गतिविधि 6: Project abstract (CBSE practical)। 4.12 के नौ-बिंदु प्रारूप से अपनी टीम के capstone विचार का abstract लिखें और समस्या की परिभाषा, users, brainstorming और design IBM log book में दर्ज करें।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety and ethics throughout: collect only the data you need, take consent, keep people's faces and names out of datasets unless they agree, store files safely, and remember that an AI prototype can be wrong, so a human should check important decisions.",
+      "hi": "पूरे समय सुरक्षा और नैतिकता: केवल ज़रूरी data लें, सहमति लें, लोगों के चेहरे और नाम datasets से बाहर रखें जब तक वे सहमत न हों, फ़ाइलें सुरक्षित रखें, और याद रखें कि AI prototype गलत हो सकता है, इसलिए महत्त्वपूर्ण निर्णय कोई मनुष्य जाँचे।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Starting with a technology ('let us use a chatbot') instead of a user problem. Fix: begin with Empathize and write a problem statement about users' needs.",
+   "Choosing a problem with no pattern or no data (lottery numbers, coin tosses). Fix: ask 'Is there a pattern?' and check that data exists or can be collected ethically.",
+   "Mixing up the empathy-map quadrants, for example writing actions under Feels. Fix: Says = words, Thinks = thoughts, Does = actions, Feels = emotions.",
+   "Writing only what you assume users feel without talking to them. Fix: interview and observe real users, then confirm Thinks and Feels with them.",
+   "Criticising ideas during brainstorming. Fix: collect all ideas first, judge later.",
+   "Treating design thinking as strictly one-way. Fix: it is iterative; go back to earlier stages when tests show something new.",
+   "Making a costly, perfect prototype first. Fix: start with low-fidelity sketches, posters or role-plays and improve after feedback.",
+   "Linking a project to an SDG just by name. Fix: explain clearly how the solution helps that goal.",
+   "Collecting personal data (faces, phone numbers) without consent. Fix: take permission, collect only what is needed and keep it safe.",
+   "Choosing a huge scope ('solve pollution in India'). Fix: narrow to one place, one user group and one measurable need."
+  ],
+  "hi": [
+   "उपयोगकर्ता की समस्या की जगह तकनीक से शुरुआत ('चलो chatbot बनाते हैं')। सुधार: Empathize से शुरू करें और users की ज़रूरतों पर problem statement लिखें।",
+   "ऐसी समस्या चुनना जिसमें कोई pattern या data न हो (लॉटरी नंबर, सिक्का उछाल)। सुधार: 'क्या pattern है?' पूछें और जाँचें कि data मौजूद है या नैतिक रूप से एकत्र हो सकता है।",
+   "Empathy-map quadrants मिला देना, जैसे कार्यों को Feels में लिखना। सुधार: Says = शब्द, Thinks = विचार, Does = कार्य, Feels = भावनाएँ।",
+   "Users से बात किए बिना केवल अनुमान से लिखना कि वे क्या महसूस करते हैं। सुधार: असली users का interview और अवलोकन करें, फिर Thinks और Feels की उनसे पुष्टि करें।",
+   "Brainstorming के दौरान विचारों की आलोचना करना। सुधार: पहले सभी विचार एकत्र करें, बाद में परखें।",
+   "Design thinking को सख़्ती से एक-तरफ़ा मानना। सुधार: यह iterative है; जब परीक्षण कुछ नया दिखाए तो पिछले चरणों पर लौटें।",
+   "पहले ही महँगा, परिपूर्ण prototype बनाना। सुधार: low-fidelity sketches, posters या role-plays से शुरू करें और feedback के बाद सुधारें।",
+   "प्रोजेक्ट को केवल नाम से SDG से जोड़ना। सुधार: स्पष्ट समझाएँ कि समाधान उस लक्ष्य में कैसे मदद करता है।",
+   "बिना सहमति निजी data (चेहरे, फ़ोन नंबर) एकत्र करना। सुधार: अनुमति लें, केवल ज़रूरी data लें और सुरक्षित रखें।",
+   "बहुत बड़ा दायरा चुनना ('भारत का प्रदूषण हल करो')। सुधार: एक स्थान, एक user समूह और एक मापने योग्य ज़रूरत तक सीमित करें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Capstone project",
+    "hi": "Capstone project"
+   },
+   "d": {
+    "en": "A final, student-driven project that integrates learning to solve a real problem.",
+    "hi": "सीखे गए ज्ञान को जोड़कर असली समस्या हल करने वाला अंतिम, विद्यार्थी-संचालित प्रोजेक्ट।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pattern",
+    "hi": "Pattern"
+   },
+   "d": {
+    "en": "A regular relationship in data that a model can learn; without it AI cannot help.",
+    "hi": "Data में नियमित संबंध जिसे model सीख सकता है; इसके बिना AI मदद नहीं कर सकता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Classification",
+    "hi": "Classification"
+   },
+   "d": {
+    "en": "Predicting which category something belongs to.",
+    "hi": "किसी चीज़ की श्रेणी का अनुमान लगाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Regression",
+    "hi": "Regression"
+   },
+   "d": {
+    "en": "Predicting a number: how much or how many.",
+    "hi": "एक संख्या का अनुमान: कितना या कितने।"
+   }
+  },
+  {
+   "t": {
+    "en": "Clustering",
+    "hi": "Clustering"
+   },
+   "d": {
+    "en": "Grouping similar items without given labels.",
+    "hi": "बिना दिए labels के मिलती-जुलती वस्तुओं को समूहों में बाँटना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Anomaly detection",
+    "hi": "Anomaly detection"
+   },
+   "d": {
+    "en": "Finding unusual items or events, such as a fraudulent payment.",
+    "hi": "असामान्य वस्तुएँ या घटनाएँ ढूँढना, जैसे धोखाधड़ी वाला भुगतान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Recommendation",
+    "hi": "Recommendation"
+   },
+   "d": {
+    "en": "Suggesting the best option for a user, such as the next video or product.",
+    "hi": "User के लिए सबसे अच्छा विकल्प सुझाना, जैसे अगला video या उत्पाद।"
+   }
+  },
+  {
+   "t": {
+    "en": "Problem decomposition",
+    "hi": "Problem decomposition"
+   },
+   "d": {
+    "en": "Breaking a complex problem into smaller parts solved one at a time.",
+    "hi": "जटिल समस्या को छोटे भागों में तोड़कर एक-एक करके हल करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Critical thinking",
+    "hi": "Critical thinking"
+   },
+   "d": {
+    "en": "Judging ideas and situations using facts, evidence and logic.",
+    "hi": "तथ्यों, प्रमाण और तर्क से विचारों और स्थितियों को परखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Creative thinking",
+    "hi": "Creative thinking"
+   },
+   "d": {
+    "en": "Generating new and original ideas and viewpoints.",
+    "hi": "नए और मौलिक विचार तथा दृष्टिकोण उत्पन्न करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Design thinking",
+    "hi": "Design thinking"
+   },
+   "d": {
+    "en": "A human-centred, non-linear, iterative problem-solving process with five stages.",
+    "hi": "पाँच चरणों वाली मानव-केंद्रित, non-linear, iterative समस्या-समाधान प्रक्रिया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Iterative",
+    "hi": "Iterative"
+   },
+   "d": {
+    "en": "Repeated in cycles, improving each time.",
+    "hi": "चक्रों में दोहराया जाने वाला, हर बार सुधार के साथ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Empathize",
+    "hi": "Empathize"
+   },
+   "d": {
+    "en": "Stage 1: understanding users' needs, problems and feelings.",
+    "hi": "चरण 1: users की ज़रूरतें, समस्याएँ और भावनाएँ समझना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Empathy map",
+    "hi": "Empathy map"
+   },
+   "d": {
+    "en": "A four-quadrant chart of what a user Says, Thinks, Does and Feels.",
+    "hi": "User क्या Says, Thinks, Does और Feels करता है, इसका चार-खानों वाला chart।"
+   }
+  },
+  {
+   "t": {
+    "en": "Define",
+    "hi": "Define"
+   },
+   "d": {
+    "en": "Stage 2: turning insights into a clear, human-centred problem statement.",
+    "hi": "चरण 2: अंतर्दृष्टियों को स्पष्ट, मानव-केंद्रित problem statement में बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "5W1H",
+    "hi": "5W1H"
+   },
+   "d": {
+    "en": "Who, What, When, Where, Why and How questions used to understand a problem fully.",
+    "hi": "समस्या को पूरी तरह समझने के लिए Who, What, When, Where, Why और How प्रश्न।"
+   }
+  },
+  {
+   "t": {
+    "en": "Problem statement",
+    "hi": "Problem statement"
+   },
+   "d": {
+    "en": "A short description of the user's unmet need, the context and why it matters.",
+    "hi": "User की अधूरी ज़रूरत, संदर्भ और महत्त्व का छोटा विवरण।"
+   }
+  },
+  {
+   "t": {
+    "en": "Ideate",
+    "hi": "Ideate"
+   },
+   "d": {
+    "en": "Stage 3: generating many possible solutions without judging them first.",
+    "hi": "चरण 3: पहले आलोचना किए बिना अनेक संभावित समाधान उत्पन्न करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Brainstorm / brain dump / brain writing",
+    "hi": "Brainstorm / brain dump / brain writing"
+   },
+   "d": {
+    "en": "Group idea-sharing aloud; individual writing of ideas to share later; silent writing passed round and built on.",
+    "hi": "समूह में ज़ोर से विचार साझा करना; बाद में साझा करने के लिए अकेले विचार लिखना; मौन लेखन जो घुमाया जाता है और उस पर आगे बढ़ा जाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Prototype",
+    "hi": "Prototype"
+   },
+   "d": {
+    "en": "Stage 4: an early, simple model of a solution for testing.",
+    "hi": "चरण 4: परीक्षण के लिए समाधान का प्रारंभिक, सरल model।"
+   }
+  },
+  {
+   "t": {
+    "en": "Test",
+    "hi": "Test"
+   },
+   "d": {
+    "en": "Stage 5: trying the prototype with users and learning from feedback.",
+    "hi": "चरण 5: users के साथ prototype आज़माना और feedback से सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Sustainable development",
+    "hi": "Sustainable development"
+   },
+   "d": {
+    "en": "Meeting present needs without harming future generations; balancing economy, environment and equity.",
+    "hi": "भावी पीढ़ियों को हानि पहुँचाए बिना वर्तमान ज़रूरतें पूरी करना; अर्थव्यवस्था, पर्यावरण और समता में संतुलन।"
+   }
+  },
+  {
+   "t": {
+    "en": "SDGs",
+    "hi": "SDGs"
+   },
+   "d": {
+    "en": "The 17 Sustainable Development Goals adopted by UN member countries in 2015 for 2030.",
+    "hi": "UN सदस्य देशों द्वारा 2015 में 2030 के लिए अपनाए गए 17 Sustainable Development Goals।"
+   }
+  },
+  {
+   "t": {
+    "en": "Project abstract",
+    "hi": "Project abstract"
+   },
+   "d": {
+    "en": "A short structured summary of the capstone following the design thinking stages.",
+    "hi": "Design thinking चरणों का पालन करता capstone का छोटा व्यवस्थित सारांश।"
+   }
+  },
+  {
+   "t": {
+    "en": "Log book",
+    "hi": "Log book"
+   },
+   "d": {
+    "en": "A record of project progress (date, work done, learning, next steps); CBSE uses the IBM log book.",
+    "hi": "प्रोजेक्ट की प्रगति का record (तारीख़, किया गया काम, सीख, अगले कदम); CBSE IBM log book उपयोग करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Stakeholder",
+    "hi": "Stakeholder"
+   },
+   "d": {
+    "en": "Anyone affected by or able to affect the problem or solution.",
+    "hi": "कोई भी जो समस्या या समाधान से प्रभावित हो या उसे प्रभावित कर सके।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is the correct order of design thinking stages? (a) Define, Empathize, Ideate, Test, Prototype (b) Empathize, Define, Ideate, Prototype, Test (c) Ideate, Define, Empathize, Prototype, Test (d) Empathize, Ideate, Define, Test, Prototype",
+    "hi": "MCQ: Design thinking चरणों का सही क्रम कौन-सा है? (a) Define, Empathize, Ideate, Test, Prototype (b) Empathize, Define, Ideate, Prototype, Test (c) Ideate, Define, Empathize, Prototype, Test (d) Empathize, Ideate, Define, Test, Prototype"
+   },
+   "a": {
+    "en": "(b) Empathize, Define, Ideate, Prototype, Test.",
+    "hi": "(b) Empathize, Define, Ideate, Prototype, Test।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is NOT a quadrant of an empathy map? (a) Says (b) Thinks (c) Buys (d) Feels",
+    "hi": "MCQ: इनमें से कौन empathy map का quadrant नहीं है? (a) Says (b) Thinks (c) Buys (d) Feels"
+   },
+   "a": {
+    "en": "(c) Buys. The four are Says, Thinks, Does, Feels.",
+    "hi": "(c) Buys। चार हैं Says, Thinks, Does, Feels।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: 5W1H stands for Who, What, When, Where, Why and ____.",
+    "hi": "रिक्त स्थान भरिए: 5W1H का अर्थ है Who, What, When, Where, Why और ____।"
+   },
+   "a": {
+    "en": "How",
+    "hi": "How"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: There are ____ Sustainable Development Goals, adopted by the UN in ____.",
+    "hi": "रिक्त स्थान भरिए: ____ Sustainable Development Goals हैं, जिन्हें UN ने ____ में अपनाया।"
+   },
+   "a": {
+    "en": "17; 2015 (to be achieved by 2030)",
+    "hi": "17; 2015 (2030 तक प्राप्त करने के लिए)"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: Design thinking is a linear process where you can never go back to an earlier stage.",
+    "hi": "सही या गलत: Design thinking एक रेखीय प्रक्रिया है जिसमें आप कभी पिछले चरण पर नहीं लौट सकते।"
+   },
+   "a": {
+    "en": "False. It is non-linear and iterative; teams often return to earlier stages.",
+    "hi": "गलत। यह non-linear और iterative है; टीमें अक्सर पिछले चरणों पर लौटती हैं।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: 'Is this UPI transaction unusual?' is which type of AI question? (a) Classification (b) Regression (c) Anomaly detection (d) Recommendation",
+    "hi": "MCQ: 'क्या यह UPI लेन-देन असामान्य है?' किस प्रकार का AI प्रश्न है? (a) Classification (b) Regression (c) Anomaly detection (d) Recommendation"
+   },
+   "a": {
+    "en": "(c) Anomaly detection.",
+    "hi": "(c) Anomaly detection।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the SDG numbers for: Quality Education, Climate Action, Zero Hunger.",
+    "hi": "इनके SDG क्रमांक बताइए: Quality Education, Climate Action, Zero Hunger।"
+   },
+   "a": {
+    "en": "Quality Education – SDG 4; Climate Action – SDG 13; Zero Hunger – SDG 2.",
+    "hi": "Quality Education – SDG 4; Climate Action – SDG 13; Zero Hunger – SDG 2।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is a capstone project? List any four skills it develops.",
+    "hi": "Capstone project क्या है? इससे विकसित होने वाले कोई चार कौशल लिखिए।"
+   },
+   "a": {
+    "en": "A capstone project is a final, student-driven project in which students research a real problem, understand it deeply and integrate their knowledge to build and present a solution.\nSkills: teamwork; identifying a problem and its impact on users; brainstorming and choosing solutions; choosing the right type of AI; ethical data collection; prototyping and testing with feedback; pitching the solution.",
+    "hi": "Capstone project एक अंतिम, विद्यार्थी-संचालित प्रोजेक्ट है जिसमें विद्यार्थी किसी असली समस्या पर शोध करते हैं, उसे गहराई से समझते हैं और अपने ज्ञान को जोड़कर समाधान बनाते और प्रस्तुत करते हैं।\nकौशल: टीमवर्क; समस्या और users पर उसके प्रभाव की पहचान; समाधान सोचना और चुनना; सही प्रकार का AI चुनना; नैतिक data संग्रह; feedback के साथ prototyping और testing; समाधान प्रस्तुत करना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Why must we ask 'Is there a pattern?' before starting an AI project? Give one example of a problem with a pattern and one without.",
+    "hi": "AI प्रोजेक्ट शुरू करने से पहले 'क्या pattern है?' क्यों पूछना चाहिए? एक pattern वाली और एक बिना pattern वाली समस्या का उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "AI learns from patterns in data; if there is no pattern, no model can make useful predictions.\nWith a pattern: predicting electricity demand in a city (depends on time, season, temperature).\nWithout a pattern: predicting the next result of a fair dice roll.",
+    "hi": "AI data के patterns से सीखता है; यदि pattern नहीं है, तो कोई model उपयोगी अनुमान नहीं लगा सकता।\nPattern वाली: शहर में बिजली की माँग का अनुमान (समय, मौसम, तापमान पर निर्भर)।\nबिना pattern वाली: निष्पक्ष पासे के अगले परिणाम का अनुमान।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write the four steps of problem decomposition.",
+    "hi": "Problem decomposition के चार चरण लिखिए।"
+   },
+   "a": {
+    "en": "1. Restate the problem in your own words; define inputs and outputs; ask clarifying questions.\n2. Break it into a few large pieces.\n3. Break complicated pieces into smaller ones.\n4. Solve/code and test one small piece at a time, fixing as you go, then combine.",
+    "hi": "1. समस्या को अपने शब्दों में दोबारा लिखें; inputs और outputs तय करें; स्पष्टता के प्रश्न पूछें।\n2. उसे कुछ बड़े भागों में तोड़ें।\n3. जटिल भागों को छोटे भागों में तोड़ें।\n4. एक-एक छोटे भाग को हल/code करें और परखें, साथ-साथ सुधारें, फिर जोड़ें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between brainstorm, brain dump and brain writing.",
+    "hi": "Brainstorm, brain dump और brain writing में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Brainstorm: the group shares ideas aloud together, freely and without criticism.\nBrain dump: each person writes their own ideas on paper or sticky notes, then shares later.\nBrain writing: each person silently writes ideas and passes the sheet on; others build on them over several rounds.",
+    "hi": "Brainstorm: समूह साथ में ज़ोर से, खुलकर और बिना आलोचना के विचार साझा करता है।\nBrain dump: हर व्यक्ति अपने विचार काग़ज़ या sticky notes पर लिखता है, फिर बाद में साझा करता है।\nBrain writing: हर व्यक्ति चुपचाप विचार लिखकर शीट आगे बढ़ाता है; अन्य कई दौरों में उन पर आगे बढ़ते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): In an empathy map, the 'Thinks' and 'Feels' quadrants often need to be inferred.\nReason (R): Users do not always say aloud what they think or feel.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): Empathy map में 'Thinks' और 'Feels' quadrants का अक्सर अनुमान लगाना पड़ता है।\nकारण (R): Users हमेशा ज़ोर से नहीं कहते कि वे क्या सोचते या महसूस करते हैं।\n(a) दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R गलत (d) A गलत, R सही"
+   },
+   "a": {
+    "en": "(a) Both are true and R explains A.",
+    "hi": "(a) दोनों सही हैं और R, A की व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A prototype must be a fully working, polished product.\nReason (R): Prototypes are used to test ideas with users early and cheaply.",
+    "hi": "अभिकथन (A): Prototype पूरी तरह चलता, चमकाया हुआ उत्पाद होना चाहिए।\nकारण (R): Prototypes का उपयोग विचारों को users के साथ जल्दी और सस्ते में परखने के लिए होता है।"
+   },
+   "a": {
+    "en": "(d) A is false, R is true. A prototype can be a drawing, poster, role-play or simple model, exactly because its purpose is early, cheap testing.",
+    "hi": "(d) A गलत, R सही। Prototype एक चित्र, poster, role-play या सरल model हो सकता है, ठीक इसलिए कि इसका उद्देश्य जल्दी, सस्ता परीक्षण है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Match the problem to the AI question type: (i) Which customers have similar shopping habits? (ii) What will be the price of onions next week? (iii) Which course should be suggested to this learner? (iv) Is this X-ray normal or showing pneumonia?",
+    "hi": "समस्या को AI प्रश्न प्रकार से मिलाइए: (i) किन ग्राहकों की ख़रीद की आदतें मिलती-जुलती हैं? (ii) अगले सप्ताह प्याज़ की कीमत क्या होगी? (iii) इस learner को कौन-सा course सुझाया जाए? (iv) यह X-ray सामान्य है या pneumonia दिखाता है?"
+   },
+   "a": {
+    "en": "(i) Clustering (ii) Regression (iii) Recommendation (iv) Classification",
+    "hi": "(i) Clustering (ii) Regression (iii) Recommendation (iv) Classification"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the five stages of design thinking with the example of reducing food waste in a school canteen.",
+    "hi": "School canteen में भोजन की बर्बादी घटाने के उदाहरण से design thinking के पाँच चरण समझाइए।"
+   },
+   "a": {
+    "en": "Empathize: interview cooks, students and teachers; observe plates and bins after lunch; make an empathy map of a cook who says 'we never know how many will eat'.\nDefine: 5W1H: Who – canteen staff and students; What – 15–20 kg food thrown daily; When – after lunch, more on test days and Fridays; Where – school canteen; Why – cooking is guessed, portions are fixed; How – an estimate of daily demand could guide cooking. Problem statement: Canteen staff need a reliable way to know how many meals to cook each day so that food is not wasted.\nIdeate: pre-order through a class register, AI demand predictor using attendance and menu, smaller portions with free refills, sharing leftovers with a food bank.\nPrototype: a spreadsheet of past attendance and meals, a simple regression model predicting meals, and a poster for portion choices.\nTest: use the prediction for two weeks, measure waste, take feedback from cooks, improve (for example add 'rainy day' and 'exam day' features).",
+    "hi": "Empathize: रसोइयों, विद्यार्थियों और शिक्षकों का interview; lunch के बाद थालियों और डिब्बों का अवलोकन; उस रसोइए का empathy map जो कहता है 'हमें कभी पता नहीं होता कितने खाएँगे'।\nDefine: 5W1H: Who – canteen कर्मचारी और विद्यार्थी; What – रोज़ 15–20 kg भोजन फेंका जाता है; When – lunch के बाद, परीक्षा के दिनों और शुक्रवार को अधिक; Where – स्कूल canteen; Why – पकाने की मात्रा का अनुमान लगाया जाता है, परोसने की मात्रा तय है; How – रोज़ की माँग का अनुमान पकाने में मार्गदर्शन कर सकता है। Problem statement: Canteen कर्मचारियों को रोज़ कितने भोजन पकाने हैं यह जानने का भरोसेमंद तरीका चाहिए ताकि भोजन बर्बाद न हो।\nIdeate: कक्षा register से पहले से order, उपस्थिति और menu से AI माँग-अनुमानक, मुफ़्त दोबारा लेने के साथ छोटी मात्रा, बचा भोजन food bank से साझा करना।\nPrototype: पिछली उपस्थिति और भोजनों की spreadsheet, भोजनों का अनुमान लगाने वाला सरल regression model, और मात्रा-विकल्प का poster।\nTest: दो सप्ताह अनुमान का उपयोग करें, बर्बादी मापें, रसोइयों से feedback लें, सुधारें (जैसे 'बारिश का दिन' और 'परीक्षा का दिन' features जोड़ें)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: In a village near Nashik, grape farmers lose a large part of their crop to downy mildew because they notice it too late. (i) Write 5W1H for this problem. (ii) Write a problem statement. (iii) Name the AI question type and two SDGs it supports. (iv) Suggest a low-cost prototype.",
+    "hi": "Case study: नासिक के पास एक गाँव में अंगूर किसान downy mildew रोग से फ़सल का बड़ा भाग खो देते हैं क्योंकि वे उसे बहुत देर से पहचानते हैं। (i) इस समस्या के लिए 5W1H लिखिए। (ii) Problem statement लिखिए। (iii) AI प्रश्न का प्रकार और इससे समर्थित दो SDGs बताइए। (iv) एक कम-लागत prototype सुझाइए।"
+   },
+   "a": {
+    "en": "(i) Who: grape farmers, farm workers, local agriculture officer. What: crop loss from late detection of downy mildew. When: mostly in humid, rainy weeks. Where: vineyards near Nashik. Why: early spots are small and farmers cannot inspect every vine; expert help is far away. How: farmers check by eye now; an app could recognise early spots from leaf photos and alert them.\n(ii) Grape farmers near Nashik lose much of their crop because downy mildew is spotted too late during humid weeks; they need a quick, simple way to detect it early on their phones, in Marathi.\n(iii) Classification (healthy vs diseased leaf); SDG 2 Zero Hunger and SDG 1 No Poverty (also SDG 8).\n(iv) A Teachable Machine image model trained on photos of healthy and infected leaves, shown on a phone, with a paper poster of what to do next; test it with five farmers.",
+    "hi": "(i) Who: अंगूर किसान, खेत मज़दूर, स्थानीय कृषि अधिकारी। What: downy mildew की देर से पहचान से फ़सल हानि। When: प्रायः नम, बरसाती सप्ताहों में। Where: नासिक के पास अंगूर के बाग़। Why: शुरुआती धब्बे छोटे होते हैं और किसान हर बेल नहीं जाँच पाते; विशेषज्ञ दूर हैं। How: किसान अभी आँख से जाँचते हैं; एक app पत्ती की तस्वीरों से शुरुआती धब्बे पहचानकर चेतावनी दे सकता है।\n(ii) नासिक के पास के अंगूर किसान नम सप्ताहों में downy mildew देर से पहचाने जाने के कारण फ़सल का बड़ा भाग खो देते हैं; उन्हें अपने फ़ोन पर, मराठी में, इसे जल्दी पहचानने का तेज़, सरल तरीका चाहिए।\n(iii) Classification (स्वस्थ बनाम रोगी पत्ती); SDG 2 Zero Hunger और SDG 1 No Poverty (साथ ही SDG 8)।\n(iv) स्वस्थ और संक्रमित पत्तियों की तस्वीरों पर train किया Teachable Machine image model, फ़ोन पर दिखाया गया, साथ में आगे क्या करें इसका काग़ज़ी poster; पाँच किसानों के साथ परखें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write the nine-point format of a project abstract using the design thinking framework.",
+    "hi": "Design thinking framework से project abstract का नौ-बिंदु प्रारूप लिखिए।"
+   },
+   "a": {
+    "en": "1. Project name 2. Team members 3. Problem selection (via survey/interview, aligned with SDG) 4. Users affected 5. Empathize – empathy map 6. Define – 5W1H and problem statement 7. Ideate – ideas and chosen idea 8. Prototype – drawing, poster, role-play, gadget or 3D print 9. Test (optional).",
+    "hi": "1. प्रोजेक्ट का नाम 2. टीम सदस्य 3. समस्या चयन (survey/interview से, SDG से जुड़ा) 4. प्रभावित users 5. Empathize – empathy map 6. Define – 5W1H और problem statement 7. Ideate – विचार और चुना विचार 8. Prototype – चित्र, poster, role-play, gadget या 3D print 9. Test (वैकल्पिक)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "What is sustainable development? Explain with an example how one AI project can support more than one SDG.",
+    "hi": "Sustainable development क्या है? उदाहरण से समझाइए कि एक AI प्रोजेक्ट एक से अधिक SDG का समर्थन कैसे कर सकता है।"
+   },
+   "a": {
+    "en": "Sustainable development meets present needs without harming future generations' ability to meet theirs, balancing economic growth, environmental protection and social equity.\nExample: a solar-power forecasting model for a village micro-grid supports SDG 7 (clean energy) by using solar power better, SDG 13 (climate action) by reducing diesel use, and SDG 8 (decent work) by giving shops reliable electricity.",
+    "hi": "Sustainable development वर्तमान ज़रूरतें भावी पीढ़ियों की अपनी ज़रूरतें पूरी करने की क्षमता को हानि पहुँचाए बिना पूरी करता है, आर्थिक विकास, पर्यावरण संरक्षण और सामाजिक समता में संतुलन रखते हुए।\nउदाहरण: गाँव के micro-grid के लिए सौर ऊर्जा पूर्वानुमान model सौर ऊर्जा के बेहतर उपयोग से SDG 7 (स्वच्छ ऊर्जा), diesel उपयोग घटाकर SDG 13 (जलवायु कार्रवाई) और दुकानों को भरोसेमंद बिजली देकर SDG 8 (अच्छा काम) का समर्थन करता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity: Create an empathy map for this scenario: 'Priya, a Class 9 student who uses a wheelchair, finds it hard to reach the school library on the first floor.' Then write one 'How might we...?' question.",
+    "hi": "गतिविधि: इस परिदृश्य के लिए empathy map बनाइए: 'प्रिया, कक्षा 9 की विद्यार्थी जो wheelchair उपयोग करती है, को पहली मंज़िल पर स्थित स्कूल पुस्तकालय तक पहुँचने में कठिनाई होती है।' फिर एक 'How might we...?' प्रश्न लिखिए।"
+   },
+   "a": {
+    "en": "Says: 'I have to wait for someone to bring me books.' 'I love reading mystery novels.'\nThinks: 'I don't want to trouble my friends every time.' 'Why was the library not built on the ground floor?'\nDoes: Asks friends to issue books; reads e-books on her phone; skips library period.\nFeels: Left out, dependent, frustrated, but hopeful when friends help.\nHow might we: How might we let Priya browse and borrow library books on her own without having to climb stairs?\n(Possible ideas: an online catalogue with request-and-deliver service, a ground-floor reading corner, a ramp or lift. Note that the best solution may not need AI at all.)",
+    "hi": "Says: 'मुझे किसी के किताबें लाने का इंतज़ार करना पड़ता है।' 'मुझे जासूसी उपन्यास पढ़ना बहुत पसंद है।'\nThinks: 'मैं हर बार दोस्तों को परेशान नहीं करना चाहती।' 'पुस्तकालय भूतल पर क्यों नहीं बना?'\nDoes: दोस्तों से किताबें issue करवाती है; फ़ोन पर e-books पढ़ती है; library period छोड़ देती है।\nFeels: अलग-थलग, निर्भर, निराश, पर दोस्त मदद करें तो आशावान।\nHow might we: हम प्रिया को सीढ़ियाँ चढ़े बिना स्वयं पुस्तकालय की किताबें देखने और लेने में कैसे सक्षम बना सकते हैं?\n(संभावित विचार: माँगने और पहुँचाने की सेवा वाला online catalogue, भूतल पर पढ़ने का कोना, ramp या lift। ध्यान दें कि सबसे अच्छे समाधान को शायद AI की ज़रूरत ही न हो।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Your team wants to build a face-recognition attendance system for your school. Using design thinking and ethics, list two questions you must ask in Empathize and two risks you must check before building it.",
+    "hi": "चिंतन प्रश्न: आपकी टीम स्कूल के लिए face-recognition उपस्थिति प्रणाली बनाना चाहती है। Design thinking और नैतिकता का उपयोग करते हुए Empathize में पूछे जाने वाले दो प्रश्न और बनाने से पहले जाँचे जाने वाले दो जोखिम लिखिए।"
+   },
+   "a": {
+    "en": "Empathize questions: (1) Ask teachers how long attendance takes now and what troubles them. (2) Ask students and parents how they feel about cameras recording their faces every day.\nRisks: (1) Privacy – face data is sensitive personal data; it needs consent, safe storage and a clear rule on who can see it. (2) Accuracy and bias – the system may fail more often for some students (for example in poor light or with a cap or veil), marking them absent unfairly. Also consider a simpler non-AI solution, such as a QR or roll-call app.",
+    "hi": "Empathize प्रश्न: (1) शिक्षकों से पूछें कि अभी उपस्थिति में कितना समय लगता है और उन्हें क्या परेशानी है। (2) विद्यार्थियों और माता-पिता से पूछें कि रोज़ cameras द्वारा उनके चेहरे record होने के बारे में वे कैसा महसूस करते हैं।\nजोखिम: (1) निजता – चेहरे का data संवेदनशील निजी data है; इसके लिए सहमति, सुरक्षित भंडारण और यह स्पष्ट नियम चाहिए कि इसे कौन देख सकता है। (2) सटीकता और पक्षपात – प्रणाली कुछ विद्यार्थियों के लिए अधिक बार विफल हो सकती है (जैसे कम रोशनी में या टोपी या घूँघट के साथ), जिससे वे अन्यायपूर्ण ढंग से अनुपस्थित दर्ज हों। एक सरल गैर-AI समाधान, जैसे QR या roll-call app, पर भी विचार करें।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "A capstone project is a final, student-driven project that combines all your learning to solve a real problem; in AI it starts in Class 11 and is completed in Class 12.",
+   "It builds teamwork, problem identification, brainstorming, choosing AI types, ethical data use, prototyping, testing and pitching.",
+   "Always ask 'Is there a pattern?'; AI questions are of five types: classification, regression, clustering, anomaly detection and recommendation.",
+   "Problem decomposition: restate the problem, break it into large pieces, break those into smaller ones, solve and test one piece at a time.",
+   "Critical thinking evaluates ideas with facts; creative thinking generates new ideas; both are needed.",
+   "Design thinking is human-centred, non-linear and iterative, with five stages: Empathize, Define, Ideate, Prototype, Test.",
+   "An empathy map has four quadrants: Says, Thinks, Does and Feels; it reveals users' hidden needs.",
+   "The 5W1H method (Who, What, When, Where, Why, How) helps write a clear, human-centred problem statement.",
+   "Ideation uses brainstorm, brain dump and brain writing; judge ideas only after collecting them.",
+   "Prototypes are quick, cheap models (drawings, posters, role-plays, gadgets, 3D prints); testing with users leads to improvement.",
+   "The UN adopted 17 SDGs in 2015 to achieve by 2030; linking a capstone to SDGs gives it purpose and impact.",
+   "A project abstract follows nine points from project name to (optional) testing, and early stages are recorded in the IBM log book.",
+   "Ethics matter at every stage: consent, privacy, fairness, small realistic scope and human checking of AI output."
+  ],
+  "hi": [
+   "Capstone project एक अंतिम, विद्यार्थी-संचालित प्रोजेक्ट है जो असली समस्या हल करने के लिए आपकी सारी सीख को जोड़ता है; AI में यह कक्षा 11 में शुरू होकर कक्षा 12 में पूरा होता है।",
+   "यह टीमवर्क, समस्या पहचान, brainstorming, AI प्रकार चुनना, नैतिक data उपयोग, prototyping, testing और pitching का कौशल बनाता है।",
+   "हमेशा पूछें 'क्या pattern है?'; AI प्रश्न पाँच प्रकार के होते हैं: classification, regression, clustering, anomaly detection और recommendation।",
+   "Problem decomposition: समस्या दोबारा लिखें, बड़े भागों में तोड़ें, उन्हें छोटे भागों में तोड़ें, एक-एक भाग हल करके परखें।",
+   "Critical thinking तथ्यों से विचारों को परखता है; creative thinking नए विचार देता है; दोनों ज़रूरी हैं।",
+   "Design thinking मानव-केंद्रित, non-linear और iterative है, जिसके पाँच चरण हैं: Empathize, Define, Ideate, Prototype, Test।",
+   "Empathy map के चार quadrants हैं: Says, Thinks, Does और Feels; यह users की छिपी ज़रूरतें प्रकट करता है।",
+   "5W1H विधि (Who, What, When, Where, Why, How) स्पष्ट, मानव-केंद्रित problem statement लिखने में मदद करती है।",
+   "Ideation में brainstorm, brain dump और brain writing का उपयोग होता है; विचारों को एकत्र करने के बाद ही परखें।",
+   "Prototypes जल्दी, सस्ते models हैं (चित्र, posters, role-plays, gadgets, 3D prints); users के साथ परीक्षण से सुधार होता है।",
+   "UN ने 2030 तक प्राप्त करने के लिए 2015 में 17 SDGs अपनाए; capstone को SDGs से जोड़ने पर उसे उद्देश्य और प्रभाव मिलता है।",
+   "Project abstract प्रोजेक्ट के नाम से (वैकल्पिक) testing तक नौ बिंदुओं का पालन करता है, और प्रारंभिक चरण IBM log book में दर्ज होते हैं।",
+   "हर चरण पर नैतिकता महत्त्वपूर्ण है: सहमति, निजता, निष्पक्षता, छोटा यथार्थवादी दायरा और AI output की मानवीय जाँच।"
+  ]
+ }
+}

@@ -1,0 +1,2250 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "11",
+ "id": "ch1",
+ "intro": {
+  "en": "This chapter is the foundation of the Class 11 AI course. You will learn what Artificial Intelligence really is and what it is not, how the field grew from Alan Turing's 1950 question to today's chatbots, the types and the three domains of AI, and the key terms every AI learner must know: machine learning, deep learning, neural networks and the three types of machine learning. The chapter ends with a balanced look at the benefits and limitations of AI, plus hands-on activities you can do on a phone.",
+  "hi": "यह अध्याय कक्षा 11 के AI पाठ्यक्रम की नींव है। आप सीखेंगे कि आर्टिफ़िशियल इंटेलिजेंस वास्तव में क्या है और क्या नहीं, यह क्षेत्र एलन ट्यूरिंग के 1950 के प्रश्न से आज के chatbot तक कैसे बढ़ा, AI के प्रकार और तीन क्षेत्र (domains), और वे मुख्य शब्द जो हर AI विद्यार्थी को आने चाहिए: machine learning, deep learning, neural network और machine learning के तीन प्रकार। अध्याय AI के लाभों और सीमाओं पर संतुलित दृष्टि और फ़ोन पर की जा सकने वाली व्यावहारिक गतिविधियों के साथ समाप्त होता है।"
+ },
+ "learn": {
+  "en": [
+   "The definition of AI and the difference between AI and simple automation",
+   "Key milestones in the evolution of AI, including the Turing Test, the Dartmouth Conference and the AI winters",
+   "Types of AI: Narrow, Broad, General and Super AI",
+   "What data is and its three types: structured, semi-structured and unstructured",
+   "The three domains of AI: Statistical Data, NLP (with NLU and NLG) and Computer Vision",
+   "How to sort real applications into domains",
+   "The relationship between AI, Machine Learning and Deep Learning",
+   "The structure of an artificial neural network and the differences between ML and DL",
+   "Supervised, unsupervised and reinforcement learning with examples and algorithms",
+   "Benefits and limitations of AI, and how to use AI tools safely"
+  ],
+  "hi": [
+   "AI की परिभाषा और AI तथा साधारण स्वचालन में अंतर",
+   "AI के विकास के मुख्य पड़ाव, जिनमें ट्यूरिंग टेस्ट, डार्टमाउथ सम्मेलन और AI winters शामिल हैं",
+   "AI के प्रकार: Narrow, Broad, General और Super AI",
+   "data क्या है और इसके तीन प्रकार: संरचित, अर्ध-संरचित और असंरचित",
+   "AI के तीन क्षेत्र: सांख्यिकीय data, NLP (NLU और NLG सहित) और कंप्यूटर विज़न",
+   "वास्तविक अनुप्रयोगों को क्षेत्रों में कैसे बाँटें",
+   "AI, Machine Learning और Deep Learning का आपसी संबंध",
+   "कृत्रिम neural network की संरचना और ML तथा DL के अंतर",
+   "उदाहरणों और algorithm सहित supervised, unsupervised और reinforcement learning",
+   "AI के लाभ और सीमाएँ, तथा AI उपकरणों का सुरक्षित उपयोग"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "1.1 Starting point: what is Artificial Intelligence?",
+    "hi": "1.1 शुरुआत: आर्टिफ़िशियल इंटेलिजेंस क्या है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Think about the last time your phone's keyboard guessed the next word you wanted to type, YouTube suggested a video you actually liked, or Google Maps turned a road red because of a traffic jam. In each case a machine looked at a lot of past data, found a pattern and made a guess about what comes next. That ability is the heart of Artificial Intelligence (AI).",
+      "hi": "याद कीजिए, पिछली बार कब आपके फ़ोन के कीबोर्ड ने अगला शब्द पहले ही सुझा दिया, YouTube ने ऐसा वीडियो दिखाया जो सचमुच आपको पसंद आया, या Google Maps ने जाम के कारण किसी सड़क को लाल कर दिया। हर बार मशीन ने बहुत सारा पुराना data देखा, उसमें एक पैटर्न ढूँढा और आगे क्या होगा इसका अनुमान लगाया। यही क्षमता आर्टिफ़िशियल इंटेलिजेंस (AI) का मूल है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Artificial Intelligence (AI)",
+       "hi": "आर्टिफ़िशियल इंटेलिजेंस (AI)"
+      },
+      "text": {
+       "en": "AI is the ability of a machine to learn patterns from data and use them to make predictions or decisions. In wider words, it is a computer system that can do tasks that normally need human intelligence, such as understanding language, recognising images, solving problems and learning from experience.",
+       "hi": "AI किसी मशीन की वह क्षमता है जिससे वह data से पैटर्न सीखती है और उनका उपयोग करके अनुमान (prediction) या निर्णय लेती है। व्यापक शब्दों में, यह ऐसा कंप्यूटर सिस्टम है जो वे काम कर सकता है जिनके लिए सामान्यतः मानवीय बुद्धि चाहिए, जैसे भाषा समझना, चित्र पहचानना, समस्या हल करना और अनुभव से सीखना।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "The word 'artificial' means made by humans, and 'intelligence' means the ability to learn, understand, reason and adapt. So AI is human-made intelligence. It does not think or feel like a person; it works with numbers, rules and probabilities. But because it can learn from huge amounts of data very quickly, it can do certain jobs faster and sometimes more accurately than people.",
+      "hi": "'आर्टिफ़िशियल' का अर्थ है मनुष्य द्वारा बनाया गया, और 'इंटेलिजेंस' का अर्थ है सीखने, समझने, तर्क करने और परिस्थिति के अनुसार ढलने की क्षमता। इसलिए AI मनुष्य द्वारा बनाई गई बुद्धि है। यह किसी व्यक्ति की तरह सोचता या महसूस नहीं करता; यह संख्याओं, नियमों और संभावनाओं (probabilities) के साथ काम करता है। लेकिन क्योंकि यह बहुत बड़े data से बहुत तेज़ी से सीख सकता है, इसलिए कुछ काम यह लोगों से तेज़ और कभी-कभी अधिक सटीक कर लेता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "AI is no longer a laboratory topic. Market-research estimates quoted in the CBSE handbook put the global AI market at more than 100 billion British pounds in 2023, and it keeps growing every year. Governments, banks, hospitals, farms, shops and schools are all adopting it, which is why CBSE wants every student to understand it, whatever career they choose.",
+      "hi": "AI अब केवल प्रयोगशाला का विषय नहीं है। CBSE हैंडबुक में उद्धृत बाज़ार-शोध अनुमानों के अनुसार 2023 में वैश्विक AI बाज़ार 100 अरब ब्रिटिश पाउंड से अधिक का था, और यह हर साल बढ़ रहा है। सरकारें, बैंक, अस्पताल, खेत, दुकानें और स्कूल सभी इसे अपना रहे हैं, इसलिए CBSE चाहता है कि हर विद्यार्थी इसे समझे, चाहे वह कोई भी करियर चुने।"
+     }
+    },
+    {
+     "p": {
+      "en": "Here are the main things AI systems can do today:",
+      "hi": "आज AI सिस्टम मुख्य रूप से ये काम कर सकते हैं:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Understand language: voice assistants and chatbots understand questions typed or spoken in English, Hindi and many Indian languages.",
+       "Recognise images: face unlock on a phone, crop-disease apps that identify a leaf infection from a photo, number-plate cameras at toll plazas.",
+       "Make predictions: weather forecasts, movie or song suggestions, estimated delivery time of an order.",
+       "Play games: computer opponents in chess and other games that learn strategies.",
+       "Drive or help drive vehicles: lane-keeping, automatic braking and self-driving test cars."
+      ],
+      "hi": [
+       "भाषा समझना: वॉइस असिस्टेंट और chatbot अंग्रेज़ी, हिंदी और कई भारतीय भाषाओं में टाइप या बोले गए प्रश्न समझते हैं।",
+       "चित्र पहचानना: फ़ोन का फ़ेस अनलॉक, पत्ती की फ़ोटो से रोग पहचानने वाले फ़सल-रोग ऐप, टोल प्लाज़ा पर नंबर-प्लेट पढ़ने वाले कैमरे।",
+       "अनुमान लगाना: मौसम पूर्वानुमान, फ़िल्म या गाने के सुझाव, किसी ऑर्डर के पहुँचने का अनुमानित समय।",
+       "खेल खेलना: शतरंज और अन्य खेलों में कंप्यूटर प्रतिद्वंद्वी जो रणनीतियाँ सीखते हैं।",
+       "वाहन चलाना या चलाने में मदद करना: लेन में बने रहना, स्वचालित ब्रेक और स्वचालित (self-driving) परीक्षण कारें।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: the key test for AI is 'Does it learn from data and adapt?' A machine that only follows fixed instructions, however clever it looks, is not AI.",
+      "hi": "याद रखें: AI की मुख्य कसौटी है, 'क्या यह data से सीखकर बदलता है?' जो मशीन केवल तय निर्देशों का पालन करती है, वह कितनी भी चतुर दिखे, AI नहीं है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.2 What is NOT AI?",
+    "hi": "1.2 क्या AI नहीं है?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Many machines are automatic, electronic or 'smart-looking', but that does not make them AI. A machine is not AI when it simply does the same thing every time, in the same way, for the same input, without learning anything from experience.",
+      "hi": "बहुत-सी मशीनें स्वचालित, इलेक्ट्रॉनिक या 'स्मार्ट दिखने वाली' होती हैं, पर इससे वे AI नहीं बन जातीं। कोई मशीन तब AI नहीं है जब वह हर बार एक ही इनपुट पर एक ही तरीके से एक ही काम करती है और अनुभव से कुछ नहीं सीखती।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Kind of system",
+        "Example",
+        "Why it is not AI"
+       ],
+       "hi": [
+        "सिस्टम का प्रकार",
+        "उदाहरण",
+        "यह AI क्यों नहीं है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Traditional rule-based system",
+         "A railway ticket-fare chart in software, an ATM menu",
+         "Follows rules written by programmers; never changes on its own"
+        ],
+        [
+         "Simple automation tool",
+         "Kitchen timer, calculator",
+         "Gives a fixed, calculated result; no learning"
+        ],
+        [
+         "Mechanical device",
+         "Pulley, gears, hand pump",
+         "Works only by physical force"
+        ],
+        [
+         "Fixed-function hardware",
+         "Ordinary microwave oven",
+         "Heats for the time you set; cannot judge the food"
+        ],
+        [
+         "Non-interactive system",
+         "Basic electric fan",
+         "Runs at the speed you choose; does not respond to you"
+        ],
+        [
+         "Basic sensor",
+         "Automatic street light with a light sensor, a simple thermostat",
+         "Reacts to one reading with one fixed action (dark → light ON)"
+        ]
+       ],
+       "hi": [
+        [
+         "पारंपरिक नियम-आधारित सिस्टम",
+         "सॉफ़्टवेयर में रेल किराया तालिका, ATM मेनू",
+         "प्रोग्रामर के लिखे नियमों का पालन करता है; अपने आप कभी नहीं बदलता"
+        ],
+        [
+         "सरल स्वचालन उपकरण",
+         "रसोई टाइमर, कैलकुलेटर",
+         "तय, गणना किया हुआ परिणाम देता है; कोई सीखना नहीं"
+        ],
+        [
+         "यांत्रिक उपकरण",
+         "घिरनी, गियर, हैंडपंप",
+         "केवल भौतिक बल से काम करता है"
+        ],
+        [
+         "निश्चित-कार्य हार्डवेयर",
+         "साधारण माइक्रोवेव ओवन",
+         "आपके रखे समय तक गर्म करता है; भोजन को परख नहीं सकता"
+        ],
+        [
+         "गैर-संवादात्मक सिस्टम",
+         "साधारण बिजली का पंखा",
+         "आपकी चुनी गति पर चलता है; आपके अनुसार प्रतिक्रिया नहीं देता"
+        ],
+        [
+         "साधारण सेंसर",
+         "प्रकाश सेंसर वाली स्वचालित स्ट्रीट लाइट, साधारण थर्मोस्टैट",
+         "एक रीडिंग पर एक तय क्रिया करता है (अँधेरा → बत्ती चालू)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A normal washing machine and a 'smart' washing machine are both automatic. Which one can be called AI, and why?",
+       "hi": "साधारण वॉशिंग मशीन और 'स्मार्ट' वॉशिंग मशीन दोनों स्वचालित हैं। इनमें से किसे AI कहा जा सकता है, और क्यों?"
+      },
+      "a": {
+       "en": "Step 1: A normal machine runs the wash programme you select, for a fixed time and water level. It never changes this by itself, so it is automation, not AI.\nStep 2: A smart machine senses the load weight, how dirty the water becomes and the fabric type, and uses data from many past washes to adjust water, detergent and time.\nStep 3: Because it learns from data and adapts its settings, the smart washing machine is an example of AI.",
+       "hi": "चरण 1: साधारण मशीन आपके चुने वॉश प्रोग्राम को तय समय और पानी के स्तर पर चलाती है। यह इसे अपने आप कभी नहीं बदलती, इसलिए यह स्वचालन है, AI नहीं।\nचरण 2: स्मार्ट मशीन कपड़ों का भार, पानी कितना गंदा हो रहा है और कपड़े का प्रकार भाँपती है, और पिछली कई धुलाइयों के data से पानी, डिटर्जेंट और समय को बदलती है।\nचरण 3: क्योंकि यह data से सीखकर अपनी सेटिंग बदलती है, इसलिए स्मार्ट वॉशिंग मशीन AI का उदाहरण है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Automation means 'doing by itself'; AI means 'learning by itself'. All AI is a kind of automation, but not all automation is AI.",
+      "hi": "स्वचालन (automation) का अर्थ है 'अपने आप करना'; AI का अर्थ है 'अपने आप सीखना'। हर AI एक प्रकार का स्वचालन है, पर हर स्वचालन AI नहीं है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.3 Evolution of AI: a timeline",
+    "hi": "1.3 AI का विकास: एक समयरेखा"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI did not appear suddenly with chatbots. It grew over about seventy years, with periods of excitement and periods of disappointment. Knowing this story helps you understand why AI is booming now.",
+      "hi": "AI chatbots के साथ अचानक नहीं आया। यह लगभग सत्तर वर्षों में धीरे-धीरे बढ़ा, जिसमें उत्साह के दौर भी आए और निराशा के भी। यह कहानी जानने से समझ आता है कि AI आज इतना तेज़ी से क्यों बढ़ रहा है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Period",
+        "What happened"
+       ],
+       "hi": [
+        "समय",
+        "क्या हुआ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Ancient times",
+         "Philosophers and storytellers in many cultures imagined thinking machines and artificial beings, and debated what intelligence is. Indian and Greek legends describe mechanical figures that move by themselves."
+        ],
+        [
+         "1950",
+         "Alan Turing, a British mathematician, published the paper 'Computing Machinery and Intelligence' and asked 'Can machines think?'. He proposed the 'imitation game', now called the Turing Test."
+        ],
+        [
+         "1956",
+         "The Dartmouth Conference (USA) is called the birthplace of AI as a field. John McCarthy coined the term 'Artificial Intelligence'. Pioneers such as McCarthy, Marvin Minsky, Herbert Simon and Allen Newell built on the ideas of Turing."
+        ],
+        [
+         "1960s–1970s",
+         "Work on symbolic reasoning (logic with symbols and rules), problem-solving programs, early neural networks (such as the perceptron) and expert systems that stored the knowledge of human experts as IF-THEN rules."
+        ],
+        [
+         "1980s–1990s",
+         "Expert systems were used in business, but they were costly and could not handle new situations. Promises were bigger than results, funding fell and interest dropped. These slow periods are called 'AI winters'."
+        ],
+        [
+         "1997",
+         "IBM's Deep Blue computer defeated world chess champion Garry Kasparov in a match."
+        ],
+        [
+         "21st century",
+         "AI revived strongly because of three things: much more computing power (including GPUs), huge amounts of data from the internet and smartphones, and better algorithms. Machine learning, deep learning and reinforcement learning achieved breakthroughs. For example, DeepMind's AlphaGo beat top Go player Lee Sedol in 2016, and generative AI chatbots became widely used from the early 2020s. AI is now used in healthcare, finance, transport and entertainment."
+        ]
+       ],
+       "hi": [
+        [
+         "प्राचीन काल",
+         "कई संस्कृतियों के दार्शनिकों और कथाकारों ने सोचने वाली मशीनों और कृत्रिम प्राणियों की कल्पना की, और बहस की कि बुद्धि क्या है। भारतीय और यूनानी कथाओं में अपने आप चलने वाली यांत्रिक आकृतियों का वर्णन मिलता है।"
+        ],
+        [
+         "1950",
+         "ब्रिटिश गणितज्ञ एलन ट्यूरिंग ने 'Computing Machinery and Intelligence' शोधपत्र प्रकाशित किया और पूछा 'क्या मशीनें सोच सकती हैं?'। उन्होंने 'imitation game' सुझाया, जिसे आज ट्यूरिंग टेस्ट कहते हैं।"
+        ],
+        [
+         "1956",
+         "डार्टमाउथ सम्मेलन (अमेरिका) को AI के क्षेत्र का जन्मस्थान कहा जाता है। जॉन मैकार्थी ने 'Artificial Intelligence' शब्द गढ़ा। मैकार्थी, मार्विन मिंस्की, हर्बर्ट साइमन और एलन नेवेल जैसे अग्रदूतों ने ट्यूरिंग के विचारों को आगे बढ़ाया।"
+        ],
+        [
+         "1960–1970 का दशक",
+         "प्रतीकात्मक तर्क (प्रतीकों और नियमों से तर्क), समस्या-समाधान प्रोग्राम, शुरुआती neural network (जैसे perceptron) और expert system पर काम हुआ, जो मानव विशेषज्ञों के ज्ञान को IF-THEN नियमों के रूप में रखते थे।"
+        ],
+        [
+         "1980–1990 का दशक",
+         "व्यवसाय में expert system उपयोग हुए, पर वे महँगे थे और नई परिस्थितियों को नहीं सँभाल पाते थे। वादे परिणामों से बड़े थे, धन घटा और रुचि कम हुई। इन मंद दौरों को 'AI winter' (AI की सर्दी) कहते हैं।"
+        ],
+        [
+         "1997",
+         "IBM के Deep Blue कंप्यूटर ने विश्व शतरंज चैंपियन गैरी कास्पारोव को एक मुकाबले में हराया।"
+        ],
+        [
+         "21वीं सदी",
+         "तीन कारणों से AI फिर से तेज़ी से उभरा: बहुत अधिक कंप्यूटिंग शक्ति (GPU सहित), इंटरनेट और स्मार्टफ़ोन से भारी मात्रा में data, और बेहतर algorithm। machine learning, deep learning और reinforcement learning में बड़ी सफलताएँ मिलीं। उदाहरण के लिए, 2016 में DeepMind के AlphaGo ने शीर्ष Go खिलाड़ी ली सेडोल को हराया, और 2020 के दशक की शुरुआत से generative AI chatbot व्यापक रूप से उपयोग होने लगे। आज AI स्वास्थ्य, वित्त, परिवहन और मनोरंजन में उपयोग हो रहा है।"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Turing Test (imitation game)",
+       "hi": "ट्यूरिंग टेस्ट (imitation game)"
+      },
+      "text": {
+       "en": "A test proposed by Alan Turing: a human judge chats by text with a hidden human and a hidden machine. If the judge cannot reliably tell which is the machine, the machine is said to show intelligent behaviour.",
+       "hi": "एलन ट्यूरिंग द्वारा सुझाई गई परीक्षा: एक मानव निर्णायक छिपे हुए एक मनुष्य और एक मशीन से लिखित बातचीत करता है। यदि निर्णायक भरोसे से नहीं बता पाता कि मशीन कौन है, तो कहा जाता है कि मशीन बुद्धिमान व्यवहार दिखाती है।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Exam facts: John McCarthy is called the 'Father of AI'; he coined the term in connection with the 1956 Dartmouth Conference. Alan Turing's paper came in 1950.",
+      "hi": "परीक्षा तथ्य: जॉन मैकार्थी को 'AI का जनक' कहा जाता है; उन्होंने 1956 के डार्टमाउथ सम्मेलन के संदर्भ में यह शब्द गढ़ा। एलन ट्यूरिंग का शोधपत्र 1950 में आया।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Why did AI grow so fast after about 2010 when the idea is from the 1950s?",
+       "hi": "जब यह विचार 1950 के दशक का है, तो लगभग 2010 के बाद AI इतनी तेज़ी से क्यों बढ़ा?"
+      },
+      "a": {
+       "en": "Step 1: Learning algorithms need lots of examples. Smartphones, social media and digital payments now create enormous data every day.\nStep 2: Training big models needs heavy calculation. Fast processors and GPUs made this possible at low cost, including on the cloud.\nStep 3: Researchers improved algorithms, especially deep neural networks.\nStep 4: Data + computing power + better algorithms together caused the boom.",
+       "hi": "चरण 1: सीखने वाले algorithm को बहुत सारे उदाहरण चाहिए। स्मार्टफ़ोन, सोशल मीडिया और डिजिटल भुगतान अब हर दिन भारी data बनाते हैं।\nचरण 2: बड़े मॉडल को प्रशिक्षित करने के लिए भारी गणना चाहिए। तेज़ प्रोसेसर और GPU ने इसे कम लागत पर, क्लाउड पर भी, संभव बनाया।\nचरण 3: शोधकर्ताओं ने algorithm, विशेषकर deep neural network, बेहतर किए।\nचरण 4: data + कंप्यूटिंग शक्ति + बेहतर algorithm ने मिलकर यह उछाल लाया।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.4 Types of AI",
+    "hi": "1.4 AI के प्रकार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI systems are grouped by how wide their abilities are. The CBSE book uses three main stages: Narrow AI, Broad AI and General AI. A fourth, Super AI, is only an idea for the far future.",
+      "hi": "AI सिस्टम को इस आधार पर समूहों में बाँटा जाता है कि उनकी क्षमताएँ कितनी व्यापक हैं। CBSE पुस्तक तीन मुख्य चरण बताती है: Narrow AI, Broad AI और General AI। चौथा, Super AI, केवल दूर भविष्य का एक विचार है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Narrow AI (Weak AI)",
+       "hi": "Narrow AI (संकीर्ण / कमज़ोर AI)"
+      },
+      "text": {
+       "en": "AI that is designed and trained for one specific task, or a small set of closely related tasks. It can be excellent at that task but has no understanding outside it.",
+       "hi": "ऐसा AI जो एक विशेष काम, या आपस में जुड़े कुछ कामों के लिए बनाया और प्रशिक्षित किया गया हो। वह उस काम में बहुत अच्छा हो सकता है पर उसके बाहर उसे कोई समझ नहीं होती।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Examples: predicting what a customer may buy next, scheduling meetings, voice shopping, spam filters, face unlock, virtual assistants such as Siri or Google Assistant. A chess program cannot recognise a cat, and a face-unlock system cannot translate Hindi. All AI that exists today is Narrow AI.",
+      "hi": "उदाहरण: ग्राहक आगे क्या खरीद सकता है इसका अनुमान, मीटिंग का समय तय करना, बोलकर खरीदारी, स्पैम फ़िल्टर, फ़ेस अनलॉक, Siri या Google Assistant जैसे वर्चुअल असिस्टेंट। शतरंज प्रोग्राम बिल्ली नहीं पहचान सकता और फ़ेस-अनलॉक सिस्टम हिंदी का अनुवाद नहीं कर सकता। आज मौजूद सारा AI, Narrow AI ही है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Broad AI",
+       "hi": "Broad AI (व्यापक AI)"
+      },
+      "text": {
+       "en": "A midpoint between Narrow and General AI. It handles a wider range of related tasks inside one field (domain) and combines several narrow abilities, often for business processes that need domain knowledge.",
+       "hi": "Narrow और General AI के बीच का चरण। यह एक क्षेत्र (domain) के भीतर जुड़े हुए कई कामों को सँभालता है और कई संकीर्ण क्षमताओं को जोड़ता है, अक्सर ऐसी व्यावसायिक प्रक्रियाओं में जिनके लिए क्षेत्र-विशेष ज्ञान चाहिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Example: a bank system that reads loan documents, checks credit history, spots unusual transactions and answers customer queries about loans. It is trained deeply in banking, so it is broader than one single task, but it still cannot do medicine or music.",
+      "hi": "उदाहरण: एक बैंक सिस्टम जो ऋण के दस्तावेज़ पढ़ता है, क्रेडिट इतिहास जाँचता है, असामान्य लेन-देन पकड़ता है और ऋण से जुड़े ग्राहक प्रश्नों के उत्तर देता है। इसे बैंकिंग में गहराई से प्रशिक्षित किया गया है, इसलिए यह एक अकेले काम से व्यापक है, पर फिर भी यह चिकित्सा या संगीत का काम नहीं कर सकता।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "General AI (Artificial General Intelligence, AGI)",
+       "hi": "General AI (कृत्रिम सामान्य बुद्धि, AGI)"
+      },
+      "text": {
+       "en": "A hypothetical AI that could understand, learn and perform any intellectual task a human can, and transfer knowledge from one area to a completely different one.",
+       "hi": "एक काल्पनिक AI जो कोई भी बौद्धिक काम कर सके जो मनुष्य कर सकता है, और एक क्षेत्र का ज्ञान बिल्कुल अलग क्षेत्र में उपयोग कर सके।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Today's machines still lack the abstract thinking, common sense, long-term strategy and true creativity that General AI would need. Scientists disagree about when, or whether, it will be achieved.",
+      "hi": "आज की मशीनों में अब भी वह अमूर्त सोच, सामान्य समझ (common sense), दीर्घकालिक रणनीति और सच्ची रचनात्मकता नहीं है जो General AI के लिए चाहिए। वैज्ञानिक इस पर एकमत नहीं हैं कि यह कब, या कभी, हासिल होगा।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Super AI (Artificial Superintelligence, ASI)",
+       "hi": "Super AI (कृत्रिम अधिबुद्धि, ASI)"
+      },
+      "text": {
+       "en": "An imagined future AI that would be more intelligent than the best humans in almost every field. It is a far-off possibility discussed in research and science fiction, not something that exists.",
+       "hi": "भविष्य का एक कल्पित AI जो लगभग हर क्षेत्र में सर्वश्रेष्ठ मनुष्यों से अधिक बुद्धिमान होगा। यह शोध और विज्ञान-कथा में चर्चित एक दूर की संभावना है, कोई वास्तविक चीज़ नहीं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Scope",
+        "Exists today?",
+        "Example"
+       ],
+       "hi": [
+        "प्रकार",
+        "दायरा",
+        "क्या आज मौजूद है?",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Narrow AI",
+         "One task",
+         "Yes",
+         "Spam filter, face unlock, voice assistant"
+        ],
+        [
+         "Broad AI",
+         "Many related tasks in one domain",
+         "Yes, in business",
+         "Banking or hospital workflow AI"
+        ],
+        [
+         "General AI",
+         "Any intellectual task like a human",
+         "No",
+         "Robots of films"
+        ],
+        [
+         "Super AI",
+         "Beyond human in every field",
+         "No (idea only)",
+         "Science fiction"
+        ]
+       ],
+       "hi": [
+        [
+         "Narrow AI",
+         "एक काम",
+         "हाँ",
+         "स्पैम फ़िल्टर, फ़ेस अनलॉक, वॉइस असिस्टेंट"
+        ],
+        [
+         "Broad AI",
+         "एक क्षेत्र के कई जुड़े काम",
+         "हाँ, व्यवसाय में",
+         "बैंकिंग या अस्पताल की कार्य-प्रक्रिया AI"
+        ],
+        [
+         "General AI",
+         "मनुष्य जैसा कोई भी बौद्धिक काम",
+         "नहीं",
+         "फ़िल्मों के रोबोट"
+        ],
+        [
+         "Super AI",
+         "हर क्षेत्र में मनुष्य से आगे",
+         "नहीं (केवल विचार)",
+         "विज्ञान-कथा"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Remember: chatbots that can write essays, code and poems are very impressive, but they are still classed as Narrow/Broad AI because they can make basic mistakes, have no real understanding of the world and depend fully on their training data.",
+      "hi": "याद रखें: निबंध, कोड और कविता लिखने वाले chatbot बहुत प्रभावशाली हैं, पर उन्हें अब भी Narrow/Broad AI में ही रखा जाता है, क्योंकि वे बुनियादी गलतियाँ कर सकते हैं, उन्हें दुनिया की वास्तविक समझ नहीं है और वे पूरी तरह अपने प्रशिक्षण data पर निर्भर हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.5 Data: the fuel of AI, and its types",
+    "hi": "1.5 डेटा: AI का ईंधन, और इसके प्रकार"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Data",
+       "hi": "डेटा (Data)"
+      },
+      "text": {
+       "en": "Data is any recorded information: facts, numbers, statistics, opinions, text, voices, photos, names, videos and even dance moves captured on a camera.",
+       "hi": "data कोई भी दर्ज की गई जानकारी है: तथ्य, संख्याएँ, आँकड़े, राय, पाठ, आवाज़ें, फ़ोटो, नाम, वीडियो, यहाँ तक कि कैमरे में कैद नृत्य की मुद्राएँ भी।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Data is often called 'the new oil' of the 21st century. Crude oil becomes valuable only after it is refined into petrol; in the same way raw data becomes valuable only after it is cleaned, organised and used to train AI. An often-quoted estimate says that around 90% of the world's data was created in just the previous two years, showing how fast data is growing. Every UPI payment, every map search and every photo uploaded adds to it.",
+      "hi": "data को अक्सर 21वीं सदी का 'नया तेल' कहा जाता है। कच्चा तेल पेट्रोल में शुद्ध होने के बाद ही मूल्यवान बनता है; उसी तरह कच्चा data साफ़, व्यवस्थित होकर AI को प्रशिक्षित करने में लगने के बाद ही मूल्यवान बनता है। एक प्रायः उद्धृत अनुमान कहता है कि दुनिया का लगभग 90% data केवल पिछले दो वर्षों में बना था, जिससे पता चलता है कि data कितनी तेज़ी से बढ़ रहा है। हर UPI भुगतान, हर मैप खोज और हर अपलोड की गई फ़ोटो इसमें जुड़ती है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Structured data",
+       "hi": "संरचित (Structured) data"
+      },
+      "text": {
+       "en": "Data organised in a fixed format of rows and columns, like a table or spreadsheet, so it is easy to search and calculate. Examples: names, dates, addresses, marks, stock prices, railway reservation records.",
+       "hi": "पंक्तियों और स्तंभों के एक तय प्रारूप में व्यवस्थित data, जैसे तालिका या spreadsheet, जिससे इसे खोजना और गणना करना आसान होता है। उदाहरण: नाम, तारीख, पते, अंक, शेयरों के भाव, रेलवे आरक्षण रिकॉर्ड।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Unstructured data",
+       "hi": "असंरचित (Unstructured) data"
+      },
+      "text": {
+       "en": "Data with no predefined format or organisation. Examples: photos, videos, audio recordings, text documents, customer comments, WhatsApp messages, song lyrics.",
+       "hi": "ऐसा data जिसका कोई पहले से तय प्रारूप या व्यवस्था नहीं होती। उदाहरण: फ़ोटो, वीडियो, ऑडियो रिकॉर्डिंग, पाठ दस्तावेज़, ग्राहकों की टिप्पणियाँ, WhatsApp संदेश, गीतों के बोल।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Semi-structured data",
+       "hi": "अर्ध-संरचित (Semi-structured) data"
+      },
+      "text": {
+       "en": "Data that is not in a strict table but carries tags or metadata (data about data) that give it some organisation. Example: a social-media video is unstructured, but its hashtags, upload date, location and likes are tags that organise it. Emails (with sender, date, subject fields) and JSON files are other examples.",
+       "hi": "ऐसा data जो कठोर तालिका में नहीं होता, पर उसमें टैग या metadata (data के बारे में data) होते हैं जो उसे कुछ व्यवस्था देते हैं। उदाहरण: सोशल-मीडिया वीडियो असंरचित है, पर उसके हैशटैग, अपलोड तिथि, स्थान और लाइक ऐसे टैग हैं जो उसे व्यवस्थित करते हैं। ईमेल (प्रेषक, तिथि, विषय वाले फ़ील्ड सहित) और JSON फ़ाइलें अन्य उदाहरण हैं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "Structured",
+        "Semi-structured",
+        "Unstructured"
+       ],
+       "hi": [
+        "विशेषता",
+        "संरचित",
+        "अर्ध-संरचित",
+        "असंरचित"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Format",
+         "Fixed rows and columns",
+         "Tags/metadata, flexible",
+         "No fixed format"
+        ],
+        [
+         "Ease of analysis",
+         "Easiest",
+         "Medium",
+         "Hardest; needs AI such as CV or NLP"
+        ],
+        [
+         "Example",
+         "Class marks register in Excel",
+         "Email, tagged Instagram post",
+         "Voice note, CCTV video"
+        ]
+       ],
+       "hi": [
+        [
+         "प्रारूप",
+         "तय पंक्तियाँ और स्तंभ",
+         "टैग/metadata, लचीला",
+         "कोई तय प्रारूप नहीं"
+        ],
+        [
+         "विश्लेषण की सरलता",
+         "सबसे आसान",
+         "मध्यम",
+         "सबसे कठिन; CV या NLP जैसे AI की ज़रूरत"
+        ],
+        [
+         "उदाहरण",
+         "Excel में कक्षा का अंक रजिस्टर",
+         "ईमेल, टैग वाली Instagram पोस्ट",
+         "वॉइस नोट, CCTV वीडियो"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Most of the world's data is unstructured. That is why Computer Vision and NLP, which turn pictures and language into numbers, are so important.",
+      "hi": "दुनिया का अधिकांश data असंरचित है। इसीलिए कंप्यूटर विज़न और NLP, जो चित्रों और भाषा को संख्याओं में बदलते हैं, इतने महत्वपूर्ण हैं।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Classify each as structured, semi-structured or unstructured: (a) a DigiLocker marksheet table of subjects and marks, (b) a recorded phone call to a customer-care centre, (c) an email from your school with sender, date and subject.",
+       "hi": "प्रत्येक को संरचित, अर्ध-संरचित या असंरचित में बाँटिए: (क) DigiLocker की विषय और अंक वाली अंकतालिका, (ख) ग्राहक-सेवा केंद्र की रिकॉर्ड की गई फ़ोन कॉल, (ग) स्कूल से आया ईमेल जिसमें प्रेषक, तिथि और विषय हैं।"
+      },
+      "a": {
+       "en": "(a) Structured: it is a table with fixed columns (subject, marks).\n(b) Unstructured: it is free audio with no fixed format.\n(c) Semi-structured: the body is free text, but fields like sender, date and subject act as tags.",
+       "hi": "(क) संरचित: यह तय स्तंभों (विषय, अंक) वाली तालिका है।\n(ख) असंरचित: यह बिना तय प्रारूप का मुक्त ऑडियो है।\n(ग) अर्ध-संरचित: मुख्य भाग मुक्त पाठ है, पर प्रेषक, तिथि और विषय जैसे फ़ील्ड टैग का काम करते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.6 Domains of AI",
+    "hi": "1.6 AI के क्षेत्र (Domains)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI is divided into domains according to the type of data it takes as input. If the input is numbers and tables, the system belongs to the Statistical Data domain; if it is text or speech, it belongs to Natural Language Processing; if it is images or video, it belongs to Computer Vision.",
+      "hi": "AI को इस आधार पर क्षेत्रों (domains) में बाँटा जाता है कि वह इनपुट के रूप में किस प्रकार का data लेता है। यदि इनपुट संख्याएँ और तालिकाएँ हैं, तो सिस्टम सांख्यिकीय data (Statistical Data) क्षेत्र का है; यदि पाठ या वाणी है, तो प्राकृतिक भाषा प्रसंस्करण (NLP) का; और यदि चित्र या वीडियो है, तो कंप्यूटर विज़न (CV) का।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "(a) Statistical Data domain",
+       "hi": "(क) सांख्यिकीय data (Statistical Data) क्षेत्र"
+      },
+      "text": {
+       "en": "AI systems that work on numerical, categorical (groups such as 'male/female', 'Delhi/Mumbai') and alphanumeric data, usually in tables, to find trends and make predictions.",
+       "hi": "ऐसे AI सिस्टम जो संख्यात्मक, श्रेणीगत (जैसे 'पुरुष/महिला', 'दिल्ली/मुंबई' जैसे समूह) और अक्षरांकीय (alphanumeric) data पर, सामान्यतः तालिकाओं में, काम करते हैं ताकि रुझान ढूँढें और अनुमान लगाएँ।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Search and shopping recommendations (for example on Amazon or Flipkart) based on what you and similar people bought.",
+       "Google Maps using location history of many phones to predict traffic and travel time.",
+       "Bank and UPI fraud alerts that flag a payment which does not match your normal pattern.",
+       "Social-media analytics, sports analytics in cricket, stock-price and weather prediction."
+      ],
+      "hi": [
+       "आपकी और आप जैसे लोगों की खरीदारी के आधार पर खोज और खरीदारी के सुझाव (जैसे Amazon या Flipkart पर)।",
+       "Google Maps का कई फ़ोन के स्थान-इतिहास से ट्रैफ़िक और यात्रा समय का अनुमान लगाना।",
+       "बैंक और UPI धोखाधड़ी अलर्ट, जो आपके सामान्य पैटर्न से मेल न खाने वाले भुगतान को चिह्नित करते हैं।",
+       "सोशल-मीडिया विश्लेषण, क्रिकेट में खेल विश्लेषण, शेयर-भाव और मौसम का अनुमान।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "(b) Natural Language Processing (NLP)",
+       "hi": "(ख) प्राकृतिक भाषा प्रसंस्करण (NLP)"
+      },
+      "text": {
+       "en": "The domain of AI that lets computers read, understand, interpret and produce human language, in text or speech.",
+       "hi": "AI का वह क्षेत्र जो कंप्यूटर को मानवीय भाषा, पाठ या वाणी के रूप में, पढ़ने, समझने, व्याख्या करने और बनाने में सक्षम करता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Machine translation, e.g. Google Translate or Bhashini translating Hindi to Tamil.",
+       "Sentiment analysis: deciding whether a product review is positive, negative or neutral.",
+       "Text summarisation: making a short summary of a long news article.",
+       "Speech recognition: voice typing, voice search, automatic subtitles.",
+       "Chatbots and spam-email detection."
+      ],
+      "hi": [
+       "मशीन अनुवाद, जैसे Google Translate या Bhashini का हिंदी से तमिल में अनुवाद।",
+       "भावना विश्लेषण (sentiment analysis): यह तय करना कि कोई उत्पाद समीक्षा सकारात्मक, नकारात्मक या तटस्थ है।",
+       "पाठ सारांश: लंबे समाचार लेख का छोटा सार बनाना।",
+       "वाणी पहचान: बोलकर टाइप करना, वॉइस सर्च, स्वचालित उपशीर्षक।",
+       "chatbot और स्पैम ईमेल की पहचान।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "NLP has two important sub-fields. Natural Language Understanding (NLU) is about understanding the meaning, intent and feeling behind words; for example, knowing that 'Book a cab to the station' is a request for a taxi. Natural Language Generation (NLG) is about producing meaningful text or speech, for example a weather app turning the numbers 32°C and 70% humidity into the sentence 'It will be hot and humid today'.",
+      "hi": "NLP के दो महत्वपूर्ण उप-क्षेत्र हैं। प्राकृतिक भाषा समझ (NLU) शब्दों के पीछे के अर्थ, इरादे और भावना को समझने के बारे में है; जैसे यह जानना कि 'स्टेशन के लिए कैब बुक करो' टैक्सी का अनुरोध है। प्राकृतिक भाषा निर्माण (NLG) सार्थक पाठ या वाणी बनाने के बारे में है, जैसे मौसम ऐप का 32°C और 70% नमी की संख्याओं को 'आज गर्मी और उमस रहेगी' वाक्य में बदलना।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Term",
+        "What it does",
+        "Library analogy"
+       ],
+       "hi": [
+        "शब्द",
+        "क्या करता है",
+        "पुस्तकालय की उपमा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "NLP",
+         "Umbrella term for all computer work with human language",
+         "The whole library"
+        ],
+        [
+         "NLU",
+         "Understands meaning, intent and sentiment",
+         "Understanding what you are asking for and finding the right book"
+        ],
+        [
+         "NLG",
+         "Produces text or speech from data",
+         "Writing a new book"
+        ]
+       ],
+       "hi": [
+        [
+         "NLP",
+         "मानवीय भाषा से जुड़े सारे कंप्यूटर कार्यों का समग्र शब्द",
+         "पूरा पुस्तकालय"
+        ],
+        [
+         "NLU",
+         "अर्थ, इरादा और भावना समझता है",
+         "आप क्या माँग रहे हैं यह समझकर सही किताब ढूँढना"
+        ],
+        [
+         "NLG",
+         "data से पाठ या वाणी बनाता है",
+         "एक नई किताब लिखना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "(c) Computer Vision (CV)",
+       "hi": "(ग) कंप्यूटर विज़न (CV)"
+      },
+      "text": {
+       "en": "The domain of AI that enables machines to see, analyse and understand images and videos.",
+       "hi": "AI का वह क्षेत्र जो मशीनों को चित्रों और वीडियो को देखने, विश्लेषण करने और समझने में सक्षम करता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "A computer sees a picture as a grid of tiny coloured dots called pixels. Each pixel is stored as numbers (for a colour image, three numbers for red, green and blue). Resolution tells how many pixels there are; a 1920 × 1080 image has 1920 pixels across and 1080 down, about 2 million pixels. CV algorithms look for patterns in these numbers, such as edges, shapes and textures, to recognise what is in the image.",
+      "hi": "कंप्यूटर किसी चित्र को छोटे-छोटे रंगीन बिंदुओं के ग्रिड के रूप में देखता है जिन्हें pixel कहते हैं। हर pixel संख्याओं के रूप में संग्रहीत होता है (रंगीन चित्र में लाल, हरे और नीले के लिए तीन संख्याएँ)। resolution बताता है कि कितने pixel हैं; 1920 × 1080 के चित्र में आड़े 1920 और खड़े 1080 pixel होते हैं, यानी लगभग 20 लाख pixel। CV algorithm इन संख्याओं में किनारों, आकृतियों और बनावट जैसे पैटर्न ढूँढकर पहचानते हैं कि चित्र में क्या है।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Image classification: deciding whether a photo shows a cat or a dog, or a healthy or diseased leaf.",
+       "Object detection: finding and boxing every car, person and signal in a road scene.",
+       "Facial recognition: face unlock, DigiYatra boarding at some Indian airports.",
+       "Scene understanding, medical imaging (reading X-rays and scans), augmented-reality filters, self-driving vehicles."
+      ],
+      "hi": [
+       "चित्र वर्गीकरण: फ़ोटो में बिल्ली है या कुत्ता, या पत्ती स्वस्थ है या रोगग्रस्त, यह तय करना।",
+       "वस्तु पहचान (object detection): सड़क के दृश्य में हर कार, व्यक्ति और सिग्नल को ढूँढकर चिह्नित करना।",
+       "चेहरा पहचान: फ़ेस अनलॉक, कुछ भारतीय हवाई अड्डों पर DigiYatra से बोर्डिंग।",
+       "दृश्य समझना, चिकित्सा इमेजिंग (X-ray और स्कैन पढ़ना), augmented-reality फ़िल्टर, स्वचालित वाहन।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Domain",
+        "Input",
+        "Key tasks",
+        "Indian examples"
+       ],
+       "hi": [
+        "क्षेत्र",
+        "इनपुट",
+        "मुख्य कार्य",
+        "भारतीय उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Statistical Data",
+         "Numbers, categories, tables",
+         "Prediction, recommendation, anomaly detection",
+         "UPI fraud alert, IPL win-probability, crop-price forecast"
+        ],
+        [
+         "NLP",
+         "Text, speech",
+         "Translation, sentiment, summary, speech recognition",
+         "Bhashini, voice search in Hindi, railway enquiry chatbot"
+        ],
+        [
+         "Computer Vision",
+         "Images, video",
+         "Classification, detection, face recognition",
+         "DigiYatra, crop-disease apps, FASTag/number-plate cameras"
+        ]
+       ],
+       "hi": [
+        [
+         "सांख्यिकीय data",
+         "संख्याएँ, श्रेणियाँ, तालिकाएँ",
+         "अनुमान, सुझाव, असामान्यता पहचान",
+         "UPI धोखाधड़ी अलर्ट, IPL जीत-संभावना, फ़सल-भाव पूर्वानुमान"
+        ],
+        [
+         "NLP",
+         "पाठ, वाणी",
+         "अनुवाद, भावना, सारांश, वाणी पहचान",
+         "Bhashini, हिंदी में वॉइस सर्च, रेलवे पूछताछ chatbot"
+        ],
+        [
+         "कंप्यूटर विज़न",
+         "चित्र, वीडियो",
+         "वर्गीकरण, पहचान, चेहरा पहचान",
+         "DigiYatra, फ़सल-रोग ऐप, नंबर-प्लेट कैमरे"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Many real products mix domains. A voice assistant that shows a recipe video uses NLP (understanding your words) and Data (choosing the best result). Automatic subtitles for a video use NLP (speech to text) even though the source is a video, because the input processed is the speech.",
+      "hi": "कई वास्तविक उत्पाद क्षेत्रों को मिलाते हैं। रेसिपी वीडियो दिखाने वाला वॉइस असिस्टेंट NLP (आपके शब्द समझना) और Data (सबसे अच्छा परिणाम चुनना) का उपयोग करता है। वीडियो के स्वचालित उपशीर्षक NLP (वाणी से पाठ) का उपयोग करते हैं, भले स्रोत वीडियो हो, क्योंकि जिस इनपुट को संसाधित किया जा रहा है वह वाणी है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.7 Practical activity: sort applications into the three domains",
+    "hi": "1.7 प्रायोगिक गतिविधि: अनुप्रयोगों को तीन क्षेत्रों में बाँटिए"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Aim: to identify the domain of an AI application from the type of input it uses. What you need: a chart paper divided into three columns (Statistical Data, NLP, Computer Vision) and a group of 4–5 students. What to do: read each application, ask 'What does the machine take in: numbers, language or pictures?', write it in the correct column and give a one-line reason. Discuss any application that seems to fit two columns.",
+      "hi": "उद्देश्य: इनपुट के प्रकार से किसी AI अनुप्रयोग का क्षेत्र पहचानना। क्या चाहिए: तीन स्तंभों (सांख्यिकीय data, NLP, कंप्यूटर विज़न) में बँटा चार्ट पेपर और 4–5 विद्यार्थियों का समूह। क्या करें: हर अनुप्रयोग पढ़िए, पूछिए 'मशीन क्या लेती है: संख्याएँ, भाषा या चित्र?', उसे सही स्तंभ में लिखिए और एक पंक्ति का कारण दीजिए। जो अनुप्रयोग दो स्तंभों में फ़िट लगे, उस पर चर्चा कीजिए।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Application",
+        "Domain",
+        "Reason"
+       ],
+       "hi": [
+        "अनुप्रयोग",
+        "क्षेत्र",
+        "कारण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1. Gesture recognition for controlling a computer",
+         "Computer Vision",
+         "Camera video of hand movements"
+        ],
+        [
+         "2. Customer-service chatbot",
+         "NLP",
+         "Understands and replies in language"
+        ],
+        [
+         "3. Spam email detection",
+         "NLP",
+         "Reads the words of emails"
+        ],
+        [
+         "4. Autonomous surveillance drones",
+         "Computer Vision",
+         "Analyses live camera footage"
+        ],
+        [
+         "5. Google Translate",
+         "NLP",
+         "Converts text/speech between languages"
+        ],
+        [
+         "6. Fraud detection in transactions",
+         "Statistical Data",
+         "Amounts, times, places in records"
+        ],
+        [
+         "7. AR filters (e.g. Snapchat)",
+         "Computer Vision",
+         "Detects the face in the camera"
+        ],
+        [
+         "8. Sports analytics for performance",
+         "Statistical Data",
+         "Scores, speeds and match statistics"
+        ],
+        [
+         "9. Object detection in self-driving cars",
+         "Computer Vision",
+         "Camera images of the road"
+        ],
+        [
+         "10. E-commerce recommendations",
+         "Statistical Data",
+         "Purchase and click history"
+        ],
+        [
+         "11. Customer segmentation for marketing",
+         "Statistical Data",
+         "Groups customers by age, spending etc."
+        ],
+        [
+         "12. Text summarisation of news",
+         "NLP",
+         "Reads and shortens text"
+        ],
+        [
+         "13. Automated subtitles for videos",
+         "NLP",
+         "Speech converted to text"
+        ],
+        [
+         "14. Medical image diagnosis",
+         "Computer Vision",
+         "X-ray/MRI images"
+        ],
+        [
+         "15. Stock prediction",
+         "Statistical Data",
+         "Past prices as numbers"
+        ]
+       ],
+       "hi": [
+        [
+         "1. कंप्यूटर नियंत्रित करने हेतु हाव-भाव पहचान",
+         "कंप्यूटर विज़न",
+         "हाथ की गतिविधियों का कैमरा वीडियो"
+        ],
+        [
+         "2. ग्राहक-सेवा chatbot",
+         "NLP",
+         "भाषा समझता और उत्तर देता है"
+        ],
+        [
+         "3. स्पैम ईमेल पहचान",
+         "NLP",
+         "ईमेल के शब्द पढ़ता है"
+        ],
+        [
+         "4. स्वायत्त निगरानी ड्रोन",
+         "कंप्यूटर विज़न",
+         "लाइव कैमरा फ़ुटेज का विश्लेषण"
+        ],
+        [
+         "5. Google Translate",
+         "NLP",
+         "भाषाओं के बीच पाठ/वाणी बदलता है"
+        ],
+        [
+         "6. लेन-देन में धोखाधड़ी पहचान",
+         "सांख्यिकीय data",
+         "रिकॉर्ड में राशि, समय, स्थान"
+        ],
+        [
+         "7. AR फ़िल्टर (जैसे Snapchat)",
+         "कंप्यूटर विज़न",
+         "कैमरे में चेहरा पहचानता है"
+        ],
+        [
+         "8. प्रदर्शन हेतु खेल विश्लेषण",
+         "सांख्यिकीय data",
+         "स्कोर, गति और मैच आँकड़े"
+        ],
+        [
+         "9. स्वचालित कारों में वस्तु पहचान",
+         "कंप्यूटर विज़न",
+         "सड़क के कैमरा चित्र"
+        ],
+        [
+         "10. ई-कॉमर्स सुझाव",
+         "सांख्यिकीय data",
+         "खरीद और क्लिक इतिहास"
+        ],
+        [
+         "11. विपणन हेतु ग्राहक विभाजन",
+         "सांख्यिकीय data",
+         "आयु, खर्च आदि से ग्राहकों के समूह"
+        ],
+        [
+         "12. समाचार का पाठ सारांश",
+         "NLP",
+         "पाठ पढ़कर छोटा करता है"
+        ],
+        [
+         "13. वीडियो के स्वचालित उपशीर्षक",
+         "NLP",
+         "वाणी का पाठ में रूपांतरण"
+        ],
+        [
+         "14. चिकित्सा चित्र से निदान",
+         "कंप्यूटर विज़न",
+         "X-ray/MRI चित्र"
+        ],
+        [
+         "15. शेयर अनुमान",
+         "सांख्यिकीय data",
+         "संख्याओं के रूप में पुराने भाव"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "What you observe: some items, such as gesture control or subtitles, need careful thought; the rule 'look at the main input' settles them. What it teaches: the domain depends on the data, not on the device or the company.",
+      "hi": "आप क्या देखते हैं: कुछ प्रविष्टियाँ, जैसे हाव-भाव नियंत्रण या उपशीर्षक, पर ध्यान से सोचना पड़ता है; 'मुख्य इनपुट देखो' का नियम इन्हें तय कर देता है। यह क्या सिखाता है: क्षेत्र data पर निर्भर करता है, उपकरण या कंपनी पर नहीं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.8 AI terminologies: AI, Machine Learning and Deep Learning",
+    "hi": "1.8 AI शब्दावली: AI, Machine Learning और Deep Learning"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Three terms are often mixed up. Picture three circles, one inside another: the biggest circle is AI, inside it is Machine Learning, and inside that is Deep Learning. Every deep-learning system is machine learning, and every machine-learning system is AI, but not the other way round.",
+      "hi": "तीन शब्द अक्सर आपस में मिला दिए जाते हैं। तीन वृत्तों की कल्पना कीजिए, एक के अंदर दूसरा: सबसे बड़ा वृत्त AI है, उसके अंदर Machine Learning है, और उसके अंदर Deep Learning है। हर deep-learning सिस्टम machine learning है, और हर machine-learning सिस्टम AI है, पर इसका उलटा सही नहीं है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Artificial Intelligence",
+       "hi": "आर्टिफ़िशियल इंटेलिजेंस"
+      },
+      "text": {
+       "en": "The broad field of making computer systems that can perform tasks normally requiring human intelligence. It includes learning systems and also older rule-based approaches such as expert systems.",
+       "hi": "ऐसे कंप्यूटर सिस्टम बनाने का व्यापक क्षेत्र जो सामान्यतः मानवीय बुद्धि माँगने वाले काम कर सकें। इसमें सीखने वाले सिस्टम और expert system जैसे पुराने नियम-आधारित तरीके भी शामिल हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Machine Learning (ML)",
+       "hi": "मशीन लर्निंग (ML)"
+      },
+      "text": {
+       "en": "A subset of AI in which algorithms learn from data to make predictions or decisions without being explicitly programmed with the rules for each case.",
+       "hi": "AI का एक उपसमुच्चय जिसमें algorithm data से सीखकर अनुमान या निर्णय लेते हैं, बिना इसके कि हर स्थिति के नियम उनमें स्पष्ट रूप से प्रोग्राम किए जाएँ।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "In normal programming a person writes the rules: IF the message contains 'lottery winner' THEN mark spam. In machine learning, we give the computer thousands of emails already labelled 'spam' or 'not spam', and the algorithm works out the rules by itself. When spammers change their words, the model can be retrained on new examples instead of a programmer rewriting every rule.",
+      "hi": "सामान्य प्रोग्रामिंग में व्यक्ति नियम लिखता है: यदि संदेश में 'लॉटरी विजेता' है तो स्पैम चिह्नित करो। machine learning में हम कंप्यूटर को हज़ारों ईमेल देते हैं जिन पर पहले से 'स्पैम' या 'स्पैम नहीं' का लेबल लगा है, और algorithm स्वयं नियम निकाल लेता है। जब स्पैम भेजने वाले अपने शब्द बदलते हैं, तो प्रोग्रामर को हर नियम दोबारा लिखने के बजाय मॉडल को नए उदाहरणों पर फिर से प्रशिक्षित किया जा सकता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "Traditional programming:  Rules + Data  →  Answers\nMachine learning:         Data + Answers  →  Rules (a model)",
+      "hi": "पारंपरिक प्रोग्रामिंग:  नियम + Data  →  उत्तर\nMachine learning:       Data + उत्तर  →  नियम (एक मॉडल)"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Deep Learning (DL)",
+       "hi": "डीप लर्निंग (DL)"
+      },
+      "text": {
+       "en": "A part of machine learning that imitates the way the human brain processes data, using artificial neural networks with many layers of calculation. It can learn directly from raw data such as pixels or sound waves.",
+       "hi": "machine learning का वह भाग जो मानव मस्तिष्क के data संसाधित करने के तरीके की नकल करता है, और गणना की कई परतों (layers) वाले कृत्रिम neural network का उपयोग करता है। यह pixel या ध्वनि तरंगों जैसे कच्चे data से सीधे सीख सकता है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Artificial Neural Network (ANN)",
+       "hi": "कृत्रिम तंत्रिका नेटवर्क (ANN)"
+      },
+      "text": {
+       "en": "A computing model inspired by the neurons of the brain and their connections. It is made of nodes (artificial neurons) arranged in an input layer, one or more hidden layers and an output layer.",
+       "hi": "मस्तिष्क के न्यूरॉनों और उनके जुड़ावों से प्रेरित एक गणना मॉडल। यह nodes (कृत्रिम न्यूरॉन) से बना होता है जो एक input layer, एक या अधिक hidden layer और एक output layer में व्यवस्थित होते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Imagine a diagram: on the left a column of circles (the input layer) receives the data, for example pixel values of a photo. In the middle are one or more columns of circles (hidden layers). On the right is the output layer, for example two circles for 'cat' and 'dog'. Lines connect every circle to circles in the next column, and each line has a weight (a number showing how important that connection is). Each node adds up its weighted inputs; if the total crosses a threshold, the node 'activates' and passes its signal forward to the next layer. During training the weights are adjusted again and again until the outputs become correct.",
+      "hi": "एक चित्र की कल्पना कीजिए: बाईं ओर वृत्तों का एक स्तंभ (input layer) data लेता है, जैसे किसी फ़ोटो के pixel मान। बीच में वृत्तों के एक या अधिक स्तंभ (hidden layers) हैं। दाईं ओर output layer है, जैसे 'बिल्ली' और 'कुत्ता' के लिए दो वृत्त। रेखाएँ हर वृत्त को अगले स्तंभ के वृत्तों से जोड़ती हैं, और हर रेखा का एक weight (भार) होता है, यानी एक संख्या जो बताती है कि वह जुड़ाव कितना महत्वपूर्ण है। हर node अपने भारित इनपुट जोड़ता है; यदि कुल योग एक सीमा (threshold) पार करे, तो node 'सक्रिय' होकर अपना संकेत अगली layer को भेज देता है। प्रशिक्षण के दौरान weights को बार-बार बदला जाता है जब तक outputs सही न होने लगें।"
+     }
+    },
+    {
+     "note": {
+      "en": "A neural network with more than three layers (counting the input and output layers) is called a deep neural network. 'Deep' simply means 'many layers'.",
+      "hi": "तीन से अधिक layers (input और output layer गिनकर) वाले neural network को deep neural network कहते हैं। 'Deep' का अर्थ बस 'कई परतें' है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Basis",
+        "Machine Learning",
+        "Deep Learning"
+       ],
+       "hi": [
+        "आधार",
+        "Machine Learning",
+        "Deep Learning"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data size",
+         "Works well with small or medium datasets",
+         "Needs very large datasets"
+        ],
+        [
+         "Hardware",
+         "Can run on ordinary, low-end machines",
+         "Needs high-end machines, often GPUs"
+        ],
+        [
+         "Problem solving",
+         "Divides the problem into parts, solves each and combines results; humans usually choose the features",
+         "Solves the problem end to end; learns features by itself"
+        ],
+        [
+         "Training time",
+         "Shorter",
+         "Longer (hours to weeks)"
+        ],
+        [
+         "Testing time",
+         "Can be slower for some algorithms",
+         "Usually fast once trained"
+        ]
+       ],
+       "hi": [
+        [
+         "data का आकार",
+         "छोटे या मध्यम dataset पर अच्छा काम करता है",
+         "बहुत बड़े dataset चाहिए"
+        ],
+        [
+         "हार्डवेयर",
+         "साधारण, कम क्षमता वाली मशीनों पर चल सकता है",
+         "उच्च क्षमता वाली मशीनें, अक्सर GPU चाहिए"
+        ],
+        [
+         "समस्या समाधान",
+         "समस्या को भागों में बाँटकर हर भाग हल करता है और परिणाम जोड़ता है; features प्रायः मनुष्य चुनते हैं",
+         "समस्या को शुरू से अंत तक हल करता है; features स्वयं सीखता है"
+        ],
+        [
+         "प्रशिक्षण समय",
+         "कम",
+         "अधिक (घंटों से सप्ताहों तक)"
+        ],
+        [
+         "परीक्षण समय",
+         "कुछ algorithm में धीमा हो सकता है",
+         "प्रशिक्षण के बाद प्रायः तेज़"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "An electronics store wants a computer to sort product photos into 'mobile phone', 'laptop' and 'headphones'. Explain how ML and DL would approach this.",
+       "hi": "एक इलेक्ट्रॉनिक्स स्टोर चाहता है कि कंप्यूटर उत्पादों की फ़ोटो को 'मोबाइल फ़ोन', 'लैपटॉप' और 'हेडफ़ोन' में बाँटे। समझाइए कि ML और DL इसे कैसे करेंगे।"
+      },
+      "a": {
+       "en": "Step 1 (data): Collect many photos and label each one with the correct product type. This labelled data makes it a supervised task.\nStep 2 (ML way): A person first decides the features, such as size, shape ratio and presence of a screen or keyboard, measures them for each photo, and the ML algorithm learns which feature values mean which product.\nStep 3 (DL way): The raw pixels go straight into a deep neural network. Early layers learn edges, middle layers learn shapes like screens and keys, and later layers learn whole objects. No manual feature extraction is needed.\nStep 4: In both cases more good-quality labelled photos usually give better accuracy, but DL needs far more photos and computing power.",
+       "hi": "चरण 1 (data): बहुत सारी फ़ोटो इकट्ठा करें और हर एक पर सही उत्पाद-प्रकार का लेबल लगाएँ। यह लेबल वाला data इसे एक supervised कार्य बनाता है।\nचरण 2 (ML तरीका): पहले एक व्यक्ति features तय करता है, जैसे आकार, लंबाई-चौड़ाई अनुपात, स्क्रीन या कीबोर्ड का होना, हर फ़ोटो के लिए इन्हें मापता है, और ML algorithm सीखता है कि कौन-से feature मान किस उत्पाद को दर्शाते हैं।\nचरण 3 (DL तरीका): कच्चे pixel सीधे deep neural network में जाते हैं। शुरुआती layers किनारे सीखती हैं, बीच की layers स्क्रीन और बटन जैसी आकृतियाँ, और बाद की layers पूरी वस्तुएँ। हाथ से feature निकालने की ज़रूरत नहीं होती।\nचरण 4: दोनों में अच्छी गुणवत्ता की अधिक लेबल वाली फ़ोटो से प्रायः सटीकता बढ़ती है, पर DL को कहीं अधिक फ़ोटो और कंप्यूटिंग शक्ति चाहिए।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Two more words you will meet: a model is what an algorithm produces after learning from data (the learned rules, stored as numbers), and training means the process of feeding data to the algorithm so the model can learn. Testing means checking the model on new data it has not seen.",
+      "hi": "दो और शब्द जो आप पढ़ेंगे: model वह है जो algorithm data से सीखने के बाद बनाता है (सीखे हुए नियम, संख्याओं के रूप में संग्रहीत), और training (प्रशिक्षण) वह प्रक्रिया है जिसमें algorithm को data दिया जाता है ताकि model सीख सके। testing (परीक्षण) का अर्थ है model को ऐसे नए data पर जाँचना जो उसने पहले नहीं देखा।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.9 Types of Machine Learning",
+    "hi": "1.9 Machine Learning के प्रकार"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Machine learning is grouped by the kind of data and feedback the algorithm gets while learning. There are three main categories.",
+      "hi": "machine learning को इस आधार पर बाँटा जाता है कि सीखते समय algorithm को किस प्रकार का data और प्रतिक्रिया (feedback) मिलती है। इसकी तीन मुख्य श्रेणियाँ हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Supervised learning",
+       "hi": "Supervised learning (पर्यवेक्षित अधिगम)"
+      },
+      "text": {
+       "en": "The model learns from labelled data, where every input comes with the correct output (the label). It learns to map inputs to outputs so that it can predict the output for new, unseen inputs.",
+       "hi": "model लेबल वाले data से सीखता है, जिसमें हर इनपुट के साथ सही आउटपुट (लेबल) दिया होता है। यह इनपुट से आउटपुट जोड़ना सीखता है ताकि नए, अनदेखे इनपुट का आउटपुट बता सके।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "It is like a student practising with an answer key: the teacher (supervisor) has already given the right answers. Examples: spam/not-spam emails, predicting house prices from area and location, recognising handwritten digits, diagnosing a disease from labelled X-rays. Common algorithms: linear regression, logistic regression, decision trees, support vector machines (SVM) and neural networks.",
+      "hi": "यह उत्तर-कुंजी के साथ अभ्यास करने वाले विद्यार्थी जैसा है: शिक्षक (पर्यवेक्षक) ने पहले से सही उत्तर दे दिए हैं। उदाहरण: स्पैम/स्पैम-नहीं ईमेल, क्षेत्रफल और स्थान से मकान की कीमत का अनुमान, हाथ से लिखे अंक पहचानना, लेबल वाले X-ray से रोग पहचानना। प्रमुख algorithm: linear regression, logistic regression, decision tree, support vector machine (SVM) और neural network।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Unsupervised learning",
+       "hi": "Unsupervised learning (अपर्यवेक्षित अधिगम)"
+      },
+      "text": {
+       "en": "The model learns from unlabelled data. Nobody tells it the right answer; it finds hidden patterns, groups (clusters), associations or unusual items (anomalies) on its own.",
+       "hi": "model बिना लेबल वाले data से सीखता है। कोई उसे सही उत्तर नहीं बताता; वह स्वयं छिपे पैटर्न, समूह (clusters), संबंध (associations) या असामान्य प्रविष्टियाँ (anomalies) ढूँढता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "It is like sorting a heap of mixed buttons without being told the categories: you might group them by colour or size. Examples: a shop grouping customers by buying habits, finding products often bought together ('people who bought tea also bought biscuits'), spotting an unusual network login. Common algorithms: k-means clustering, hierarchical clustering, principal component analysis (PCA) and autoencoders.",
+      "hi": "यह बिना श्रेणियाँ बताए मिले-जुले बटनों के ढेर को छाँटने जैसा है: आप उन्हें रंग या आकार से समूहों में रख सकते हैं। उदाहरण: दुकान का ग्राहकों को खरीद-आदतों से समूहों में बाँटना, साथ खरीदे जाने वाले उत्पाद ढूँढना ('चाय खरीदने वालों ने बिस्कुट भी खरीदे'), असामान्य नेटवर्क लॉगिन पकड़ना। प्रमुख algorithm: k-means clustering, hierarchical clustering, principal component analysis (PCA) और autoencoders।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Reinforcement learning",
+       "hi": "Reinforcement learning (सुदृढ़ीकरण अधिगम)"
+      },
+      "text": {
+       "en": "An agent learns by trial and error while interacting with an environment. For each action it gets a reward (for good results) or a penalty (for bad results), and it learns a policy, a strategy for choosing actions, that gives the maximum total reward over time.",
+       "hi": "एक agent परिवेश (environment) से संपर्क करते हुए प्रयास और त्रुटि (trial and error) से सीखता है। हर क्रिया पर उसे अच्छे परिणाम के लिए इनाम (reward) या बुरे परिणाम के लिए दंड (penalty) मिलता है, और वह एक policy, यानी क्रिया चुनने की रणनीति, सीखता है जो समय के साथ अधिकतम कुल इनाम दे।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "It is like training a pet with treats, or learning to ride a bicycle by falling and trying again. Examples: game-playing AI such as AlphaGo, robots learning to walk or pick objects, managing a financial portfolio, controlling traffic signals. Common algorithms: Q-learning, Deep Q-Networks (DQN), policy gradients and actor-critic methods.",
+      "hi": "यह पालतू जानवर को इनाम देकर सिखाने, या गिरकर फिर से कोशिश करते हुए साइकिल चलाना सीखने जैसा है। उदाहरण: AlphaGo जैसे खेल खेलने वाले AI, चलना या वस्तुएँ उठाना सीखते रोबोट, वित्तीय पोर्टफ़ोलियो का प्रबंधन, ट्रैफ़िक सिग्नल नियंत्रित करना। प्रमुख algorithm: Q-learning, Deep Q-Network (DQN), policy gradients और actor-critic विधियाँ।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Feature",
+        "Supervised",
+        "Unsupervised",
+        "Reinforcement"
+       ],
+       "hi": [
+        "विशेषता",
+        "Supervised",
+        "Unsupervised",
+        "Reinforcement"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Data",
+         "Labelled",
+         "Unlabelled",
+         "No fixed dataset; experience from environment"
+        ],
+        [
+         "Feedback",
+         "Correct answer for each example",
+         "None",
+         "Reward or penalty after actions"
+        ],
+        [
+         "Goal",
+         "Predict labels for new data",
+         "Discover structure/groups",
+         "Learn best policy to maximise reward"
+        ],
+        [
+         "Example",
+         "Spam filter",
+         "Customer grouping",
+         "Game-playing bot"
+        ]
+       ],
+       "hi": [
+        [
+         "data",
+         "लेबल वाला",
+         "बिना लेबल",
+         "कोई तय dataset नहीं; परिवेश से अनुभव"
+        ],
+        [
+         "प्रतिक्रिया",
+         "हर उदाहरण का सही उत्तर",
+         "कोई नहीं",
+         "क्रिया के बाद इनाम या दंड"
+        ],
+        [
+         "लक्ष्य",
+         "नए data का लेबल बताना",
+         "संरचना/समूह खोजना",
+         "इनाम अधिकतम करने वाली श्रेष्ठ policy सीखना"
+        ],
+        [
+         "उदाहरण",
+         "स्पैम फ़िल्टर",
+         "ग्राहक समूहन",
+         "खेल खेलने वाला bot"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Identify the type of learning: (a) A school app learns to group students with similar test-mark patterns without being told any groups. (b) An app is trained on 10,000 photos of leaves marked 'healthy' or 'diseased'. (c) A robot vacuum gets +1 point for each clean tile and −5 for bumping into furniture.",
+       "hi": "अधिगम का प्रकार पहचानिए: (क) एक स्कूल ऐप बिना कोई समूह बताए समान परीक्षा-अंक पैटर्न वाले विद्यार्थियों को समूहों में बाँटना सीखता है। (ख) एक ऐप को 'स्वस्थ' या 'रोगग्रस्त' चिह्नित पत्तियों की 10,000 फ़ोटो पर प्रशिक्षित किया जाता है। (ग) एक रोबोट वैक्यूम को हर साफ़ टाइल पर +1 अंक और फ़र्नीचर से टकराने पर −5 मिलता है।"
+      },
+      "a": {
+       "en": "(a) Unsupervised: no labels; it finds groups (clustering).\n(b) Supervised: every photo has a correct label.\n(c) Reinforcement: it learns from rewards and penalties.",
+       "hi": "(क) Unsupervised: कोई लेबल नहीं; यह समूह ढूँढता है (clustering)।\n(ख) Supervised: हर फ़ोटो का सही लेबल है।\n(ग) Reinforcement: यह इनाम और दंड से सीखता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.10 See it in code: a tiny supervised learner (optional)",
+    "hi": "1.10 कोड में देखिए: एक छोटा supervised learner (वैकल्पिक)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "You will learn Python properly in Chapter 3. For now, read this short program to see the idea of learning from labelled examples. It stores four labelled fruits (weight in grams and smoothness from 1 to 10) and, for a new fruit, finds the most similar stored example and copies its label. This is a simple version of the 'nearest neighbour' method.",
+      "hi": "Python आप अध्याय 3 में ठीक से सीखेंगे। अभी लेबल वाले उदाहरणों से सीखने का विचार समझने के लिए यह छोटा प्रोग्राम पढ़िए। इसमें चार लेबल वाले फल (ग्राम में भार और 1 से 10 तक चिकनापन) रखे हैं, और किसी नए फल के लिए यह सबसे मिलता-जुलता रखा हुआ उदाहरण ढूँढकर उसका लेबल अपना लेता है। यह 'nearest neighbour' (निकटतम पड़ोसी) विधि का सरल रूप है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "# Labelled examples: (weight in grams, smoothness 1-10) -> fruit\ndata = [((150, 8), \"apple\"), ((170, 9), \"apple\"),\n        ((140, 3), \"orange\"), ((130, 2), \"orange\")]\n\ndef predict(new):\n    best_label, best_dist = None, None\n    for (w, s), label in data:\n        dist = (w - new[0]) ** 2 + (s - new[1]) ** 2\n        if best_dist is None or dist < best_dist:\n            best_label, best_dist = label, dist\n    return best_label\n\nprint(predict((160, 7)))\nprint(predict((135, 3)))",
+      "hi": "# Labelled examples: (weight in grams, smoothness 1-10) -> fruit\ndata = [((150, 8), \"apple\"), ((170, 9), \"apple\"),\n        ((140, 3), \"orange\"), ((130, 2), \"orange\")]\n\ndef predict(new):\n    best_label, best_dist = None, None\n    for (w, s), label in data:\n        dist = (w - new[0]) ** 2 + (s - new[1]) ** 2\n        if best_dist is None or dist < best_dist:\n            best_label, best_dist = label, dist\n    return best_label\n\nprint(predict((160, 7)))\nprint(predict((135, 3)))"
+     }
+    },
+    {
+     "formula": {
+      "en": "Output:\napple\norange",
+      "hi": "आउटपुट:\napple\norange"
+     }
+    },
+    {
+     "p": {
+      "en": "How it works: for the new fruit (160 g, smoothness 7) the closest labelled example is an apple, so it predicts 'apple'. For (135 g, smoothness 3) the closest is an orange. Nobody wrote a rule like 'heavy and smooth means apple'; the program used the labelled data. Adding more labelled fruits would usually make its guesses better.",
+      "hi": "यह कैसे काम करता है: नए फल (160 g, चिकनापन 7) के लिए सबसे निकट लेबल वाला उदाहरण सेब है, इसलिए यह 'apple' बताता है। (135 g, चिकनापन 3) के लिए सबसे निकट संतरा है। किसी ने 'भारी और चिकना हो तो सेब' जैसा नियम नहीं लिखा; प्रोग्राम ने लेबल वाले data का उपयोग किया। और अधिक लेबल वाले फल जोड़ने से इसके अनुमान प्रायः बेहतर होंगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.11 Benefits of AI",
+    "hi": "1.11 AI के लाभ"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Increased efficiency and productivity: AI can do repetitive work such as sorting documents, checking forms or answering common queries 24×7 without getting tired, so people and organisations get more done in less time.",
+       "Improved decision-making: by finding patterns in huge data that humans would miss, AI helps in better decisions, for example banks detecting fraud, farmers deciding when to irrigate using weather and soil data, or shops deciding how much stock to keep.",
+       "Enhanced innovation and creativity: when AI handles routine tasks, humans have more time for creative and strategic work; AI tools also help in designing, writing drafts, composing and exploring new ideas.",
+       "Progress in science and healthcare: AI speeds up drug discovery, helps doctors read X-rays and scans, supports early detection of diseases such as diabetic eye disease, and makes personalised treatment possible.",
+       "Accessibility and inclusion: voice typing, text-to-speech and translation in Indian languages help people with disabilities and people who are not comfortable with English to use digital services.",
+       "Safety: AI can do dangerous jobs (inspecting pipelines, bomb disposal robots, monitoring disasters through satellite images) and warn about risks such as floods or cyber-attacks."
+      ],
+      "hi": [
+       "दक्षता और उत्पादकता में वृद्धि: AI दस्तावेज़ छाँटना, फ़ॉर्म जाँचना या सामान्य प्रश्नों का उत्तर देना जैसे दोहराव वाले काम 24×7 बिना थके कर सकता है, जिससे लोग और संस्थाएँ कम समय में अधिक काम कर पाते हैं।",
+       "बेहतर निर्णय: विशाल data में ऐसे पैटर्न ढूँढकर जो मनुष्य से छूट जाते, AI बेहतर निर्णयों में मदद करता है, जैसे बैंकों का धोखाधड़ी पकड़ना, किसानों का मौसम और मिट्टी के data से सिंचाई का समय तय करना, या दुकानों का तय करना कि कितना स्टॉक रखें।",
+       "नवाचार और रचनात्मकता में वृद्धि: जब AI नियमित काम सँभालता है, तो मनुष्यों के पास रचनात्मक और रणनीतिक काम के लिए अधिक समय होता है; AI उपकरण डिज़ाइन, मसौदे लिखने, संगीत रचने और नए विचार खोजने में भी मदद करते हैं।",
+       "विज्ञान और स्वास्थ्य में प्रगति: AI दवा खोज को तेज़ करता है, डॉक्टरों को X-ray और स्कैन पढ़ने में मदद करता है, मधुमेह से होने वाले नेत्र रोग जैसी बीमारियों की जल्दी पहचान में सहायक है, और व्यक्तिगत उपचार को संभव बनाता है।",
+       "सुलभता और समावेशन: भारतीय भाषाओं में वॉइस टाइपिंग, text-to-speech और अनुवाद दिव्यांग लोगों और अंग्रेज़ी में सहज न होने वाले लोगों को डिजिटल सेवाओं का उपयोग करने में मदद करते हैं।",
+       "सुरक्षा: AI खतरनाक काम (पाइपलाइन निरीक्षण, बम निरोधक रोबोट, उपग्रह चित्रों से आपदा निगरानी) कर सकता है और बाढ़ या साइबर हमलों जैसे खतरों की चेतावनी दे सकता है।"
+      ]
+     }
+    },
+    {
+     "note": {
+      "en": "The first four benefits are the ones listed in the CBSE handbook; the last two are extra examples that support them.",
+      "hi": "पहले चार लाभ CBSE हैंडबुक में दिए गए हैं; अंतिम दो अतिरिक्त उदाहरण हैं जो उनका समर्थन करते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.12 Limitations and risks of AI",
+    "hi": "1.12 AI की सीमाएँ और जोखिम"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "Job displacement: some routine jobs (data entry, basic customer support, simple checking) may be automated. Workers need retraining and upskilling, and new jobs are also created (see Chapter 2).",
+       "Ethical considerations: AI can be biased if its training data is biased (for example a hiring tool that prefers one gender because past data did). It can be misused for surveillance or to manipulate opinions with fake content. Clear guidelines and rules are needed.",
+       "Lack of explainability: complex models such as deep neural networks are often a 'black box'; even their makers cannot always explain why a particular decision was made. This is a problem when AI decides loans, medical treatment or exam results.",
+       "Data privacy and security: AI needs lots of personal data. If it is collected without consent, stored carelessly or hacked, people's privacy is harmed. India's Digital Personal Data Protection Act, 2023 sets rules for handling personal data.",
+       "Errors and over-confidence: AI can give wrong answers that sound confident; chatbots may 'hallucinate', i.e. invent facts. AI also lacks common sense and emotions.",
+       "Cost and energy: building and running large AI models needs expensive hardware and a lot of electricity and water for cooling data centres."
+      ],
+      "hi": [
+       "नौकरियों का विस्थापन: कुछ नियमित नौकरियाँ (data entry, साधारण ग्राहक सहायता, सरल जाँच) स्वचालित हो सकती हैं। कर्मचारियों को पुनः प्रशिक्षण और कौशल-उन्नयन (upskilling) चाहिए, और नई नौकरियाँ भी बनती हैं (अध्याय 2 देखें)।",
+       "नैतिक विचार: यदि प्रशिक्षण data पक्षपाती है तो AI भी पक्षपाती हो सकता है (जैसे भर्ती उपकरण जो एक लिंग को प्राथमिकता दे क्योंकि पुराने data में ऐसा था)। इसका दुरुपयोग निगरानी या नकली सामग्री से राय बदलने के लिए हो सकता है। स्पष्ट दिशानिर्देश और नियम चाहिए।",
+       "व्याख्या का अभाव: deep neural network जैसे जटिल model प्रायः 'black box' होते हैं; उनके निर्माता भी हमेशा नहीं बता पाते कि कोई विशेष निर्णय क्यों लिया गया। जब AI ऋण, चिकित्सा उपचार या परीक्षा परिणाम तय करे, तो यह एक समस्या है।",
+       "data गोपनीयता और सुरक्षा: AI को बहुत सारा व्यक्तिगत data चाहिए। यदि यह बिना सहमति लिया जाए, लापरवाही से रखा जाए या हैक हो जाए, तो लोगों की निजता को हानि होती है। भारत का डिजिटल व्यक्तिगत डेटा संरक्षण अधिनियम, 2023 व्यक्तिगत data के उपयोग के नियम तय करता है।",
+       "त्रुटियाँ और अति-आत्मविश्वास: AI ऐसे गलत उत्तर दे सकता है जो आत्मविश्वास भरे लगें; chatbot 'hallucinate' कर सकते हैं, यानी तथ्य गढ़ सकते हैं। AI में सामान्य समझ और भावनाएँ भी नहीं होतीं।",
+       "लागत और ऊर्जा: बड़े AI model बनाने और चलाने में महँगा हार्डवेयर और डेटा सेंटर ठंडा रखने के लिए बहुत बिजली और पानी लगता है।"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Case: A hospital starts using an AI system to suggest diagnoses from scans. Some patients worry, 'What if the machine is wrong?' What steps should the hospital take?",
+       "hi": "प्रसंग: एक अस्पताल स्कैन से निदान सुझाने वाला AI सिस्टम उपयोग करने लगता है। कुछ मरीज़ चिंतित हैं, 'यदि मशीन गलत हुई तो?' अस्पताल को क्या कदम उठाने चाहिए?"
+      },
+      "a": {
+       "en": "Step 1: Keep a qualified doctor as the final decision-maker; AI only assists (human in the loop).\nStep 2: Test the system carefully on local patient data and publish its accuracy, including where it makes mistakes.\nStep 3: Explain to patients in simple words how the AI is used, and take their consent.\nStep 4: Protect patient data with strong security and use it only for treatment.\nStep 5: Keep monitoring results and retrain or stop the system if errors or bias appear.",
+       "hi": "चरण 1: अंतिम निर्णय एक योग्य डॉक्टर के हाथ में रखें; AI केवल सहायता करे (human in the loop)।\nचरण 2: सिस्टम को स्थानीय मरीज़ों के data पर सावधानी से जाँचें और उसकी सटीकता, गलतियों सहित, सार्वजनिक करें।\nचरण 3: मरीज़ों को सरल शब्दों में बताएँ कि AI कैसे उपयोग हो रहा है, और उनकी सहमति लें।\nचरण 4: मरीज़ों के data को मज़बूत सुरक्षा से बचाएँ और केवल उपचार के लिए उपयोग करें।\nचरण 5: परिणामों की निगरानी जारी रखें और त्रुटि या पक्षपात दिखे तो सिस्टम को फिर से प्रशिक्षित करें या रोक दें।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Balanced view for long answers: AI is a powerful tool, not magic and not a monster. Its effect depends on how carefully people design, test and use it. Chapter 8 discusses AI ethics in detail.",
+      "hi": "लंबे उत्तरों के लिए संतुलित दृष्टि: AI एक शक्तिशाली उपकरण है, न जादू है न राक्षस। इसका प्रभाव इस पर निर्भर करता है कि लोग इसे कितनी सावधानी से बनाते, जाँचते और उपयोग करते हैं। अध्याय 8 में AI नैतिकता पर विस्तार से चर्चा है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "1.13 Hands-on activities and safe use",
+    "hi": "1.13 व्यावहारिक गतिविधियाँ और सुरक्षित उपयोग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 – Quick, Draw! (Computer Vision / neural networks). Aim: see how a neural network recognises drawings. Need: a phone or computer with a browser (quickdraw.withgoogle.com; no sign-up). Do: draw the six objects the game asks for, each within 20 seconds. Observe: the AI often guesses before you finish, and sometimes guesses wrong for unusual drawings. Learn: it was trained on millions of doodles drawn by people; it recognises patterns of strokes, and its knowledge is limited to what it was trained on.",
+      "hi": "गतिविधि 1 – Quick, Draw! (कंप्यूटर विज़न / neural network)। उद्देश्य: देखना कि neural network चित्र कैसे पहचानता है। चाहिए: ब्राउज़र वाला फ़ोन या कंप्यूटर (quickdraw.withgoogle.com; साइन-अप नहीं)। करें: खेल जो छह वस्तुएँ माँगे, हर एक 20 सेकंड में बनाएँ। देखें: AI अक्सर आपके पूरा करने से पहले अनुमान लगा लेता है, और असामान्य चित्रों पर कभी-कभी गलत भी। सीखें: इसे लोगों द्वारा बनाए करोड़ों रेखाचित्रों पर प्रशिक्षित किया गया है; यह रेखाओं के पैटर्न पहचानता है, और इसका ज्ञान उतना ही है जितने पर इसे प्रशिक्षित किया गया।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 – AutoDraw. Aim: see AI suggesting finished images from rough sketches. Need: autodraw.com in a browser. Do: sketch a rough house, bicycle or tree and look at the suggestions bar. Learn: CV + ML match your strokes to known pictures, which helps people who cannot draw well (a creativity benefit).",
+      "hi": "गतिविधि 2 – AutoDraw। उद्देश्य: देखना कि AI कच्चे रेखाचित्र से पूरे चित्र कैसे सुझाता है। चाहिए: ब्राउज़र में autodraw.com। करें: एक कच्चा घर, साइकिल या पेड़ बनाइए और ऊपर सुझावों की पट्टी देखिए। सीखें: CV + ML आपकी रेखाओं को जाने-पहचाने चित्रों से मिलाते हैं, जो अच्छा न बना पाने वालों की मदद करता है (रचनात्मकता का लाभ)।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 – Semantris (NLP). Aim: experience word association by AI. Need: Google's Semantris game in a browser, if available. Do: type clue words related to a target word and watch which words the AI links. Learn: NLP models learn which words appear in similar contexts. If the game is not available, try typing half-sentences in your phone keyboard and watch its next-word suggestions.",
+      "hi": "गतिविधि 3 – Semantris (NLP)। उद्देश्य: AI द्वारा शब्द-संबंध का अनुभव। चाहिए: ब्राउज़र में Google का Semantris खेल, यदि उपलब्ध हो। करें: लक्ष्य शब्द से जुड़े संकेत-शब्द टाइप करें और देखें AI किन शब्दों को जोड़ता है। सीखें: NLP model सीखते हैं कि कौन-से शब्द मिलते-जुलते संदर्भों में आते हैं। यदि खेल उपलब्ध न हो, तो अपने फ़ोन कीबोर्ड में आधे वाक्य टाइप करके उसके अगले-शब्द सुझाव देखें।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 – Teachable Machine (supervised learning). Aim: train your own image model. Need: teachablemachine.withgoogle.com and a webcam or phone camera. Do: make two classes, e.g. 'pen' and 'eraser', record about 50 images of each, click Train, then test with new positions. Observe: good, varied examples give good results; few or similar examples cause mistakes. Learn: labelled data → training → model → testing.",
+      "hi": "गतिविधि 4 – Teachable Machine (supervised learning)। उद्देश्य: अपना स्वयं का image model प्रशिक्षित करना। चाहिए: teachablemachine.withgoogle.com और वेबकैम या फ़ोन कैमरा। करें: दो classes बनाएँ, जैसे 'पेन' और 'रबर', हर एक की लगभग 50 तस्वीरें लें, Train दबाएँ, फिर नई स्थितियों में जाँचें। देखें: अच्छे, विविध उदाहरणों से अच्छे परिणाम आते हैं; कम या एक जैसे उदाहरणों से गलतियाँ होती हैं। सीखें: लेबल वाला data → training → model → testing।"
+     }
+    },
+    {
+     "p": {
+      "en": "Extension activities: (1) AI in the News – collect three news items about AI from Indian newspapers in a week and classify each by domain and benefit/risk. (2) AI Applications Showcase – each group presents one Indian AI application (e.g. Bhashini, Kisan e-Mitra chatbot, DigiYatra) with its input, domain and type of learning. (3) AI Coding Projects – after Chapter 3, try small Python ML projects with scikit-learn. (4) AI Film Analysis – watch age-appropriate films or documentaries about AI with your family and discuss which parts are realistic and which are science fiction.",
+      "hi": "विस्तार गतिविधियाँ: (1) समाचारों में AI – एक सप्ताह में भारतीय समाचार पत्रों से AI के तीन समाचार इकट्ठा करें और हर एक को क्षेत्र तथा लाभ/जोखिम के अनुसार वर्गीकृत करें। (2) AI अनुप्रयोग प्रदर्शनी – हर समूह एक भारतीय AI अनुप्रयोग (जैसे Bhashini, किसान ई-मित्र chatbot, DigiYatra) उसके इनपुट, क्षेत्र और अधिगम के प्रकार सहित प्रस्तुत करे। (3) AI कोडिंग प्रोजेक्ट – अध्याय 3 के बाद scikit-learn से छोटे Python ML प्रोजेक्ट आज़माएँ। (4) AI फ़िल्म विश्लेषण – परिवार के साथ AI पर आयु-उपयुक्त फ़िल्में या वृत्तचित्र देखें और चर्चा करें कि कौन-से भाग यथार्थ हैं और कौन-से विज्ञान-कथा।"
+     }
+    },
+    {
+     "p": {
+      "en": "Free certification: CBSE suggests the IBM SkillsBuild course 'Artificial Intelligence Fundamentals' (and its 'Introduction to AI' module), which gives a free digital credential after completion. Register with your own or school email, and ask a parent or teacher before signing up.",
+      "hi": "मुफ़्त प्रमाणपत्र: CBSE IBM SkillsBuild का 'Artificial Intelligence Fundamentals' पाठ्यक्रम (और इसका 'Introduction to AI' मॉड्यूल) सुझाता है, जो पूरा करने पर मुफ़्त डिजिटल प्रमाणपत्र (credential) देता है। अपने या स्कूल के ईमेल से पंजीकरण करें, और साइन-अप से पहले माता-पिता या शिक्षक से पूछें।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safe use: never type your Aadhaar number, passwords, OTPs, home address or photos of documents into a chatbot or online AI tool. Always check important AI answers with a textbook or a trusted website. If you see a fake (deepfake) video or a scary message, do not forward it; tell a trusted adult and report it on cybercrime.gov.in or helpline 1930.",
+      "hi": "सुरक्षित उपयोग: कभी भी अपना आधार नंबर, पासवर्ड, OTP, घर का पता या दस्तावेज़ों की फ़ोटो किसी chatbot या ऑनलाइन AI उपकरण में न डालें। महत्वपूर्ण AI उत्तरों को हमेशा पाठ्यपुस्तक या भरोसेमंद वेबसाइट से जाँचें। यदि कोई नकली (deepfake) वीडियो या डराने वाला संदेश दिखे, तो उसे आगे न भेजें; किसी भरोसेमंद बड़े को बताएँ और cybercrime.gov.in या हेल्पलाइन 1930 पर रिपोर्ट करें।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Calling every automatic machine AI. Fix: ask whether it learns from data and adapts; a timer or ordinary microwave does not.",
+   "Writing that Alan Turing coined the term AI. Fix: John McCarthy coined it (1956, Dartmouth); Turing wrote the 1950 paper and proposed the Turing Test.",
+   "Thinking chatbots are General AI. Fix: all present-day AI, including chatbots, is Narrow/Broad AI; General AI does not exist yet.",
+   "Treating AI, ML and DL as the same thing. Fix: DL ⊂ ML ⊂ AI (nested circles).",
+   "Choosing the domain by the device rather than the input. Fix: subtitles of a video are NLP because speech is processed; a phone camera app can be CV.",
+   "Confusing unsupervised with reinforcement learning. Fix: unsupervised = unlabelled data, find groups; reinforcement = agent, actions, rewards and penalties.",
+   "Saying deep learning works best with small data. Fix: DL needs large datasets and powerful hardware; classic ML can work with smaller data.",
+   "Calling an email 'unstructured'. Fix: emails are usually semi-structured because they have fields such as sender, date and subject.",
+   "Writing only benefits or only dangers in long answers. Fix: give a balanced answer with both, plus how risks can be reduced."
+  ],
+  "hi": [
+   "हर स्वचालित मशीन को AI कहना। सुधार: पूछिए कि क्या यह data से सीखकर बदलती है; टाइमर या साधारण माइक्रोवेव ऐसा नहीं करते।",
+   "लिखना कि एलन ट्यूरिंग ने AI शब्द गढ़ा। सुधार: इसे जॉन मैकार्थी ने गढ़ा (1956, डार्टमाउथ); ट्यूरिंग ने 1950 का शोधपत्र लिखा और ट्यूरिंग टेस्ट सुझाया।",
+   "मानना कि chatbot General AI हैं। सुधार: chatbot सहित आज का सारा AI Narrow/Broad AI है; General AI अभी मौजूद नहीं है।",
+   "AI, ML और DL को एक ही मानना। सुधार: DL ⊂ ML ⊂ AI (एक-दूसरे के अंदर वृत्त)।",
+   "उपकरण देखकर क्षेत्र चुनना, इनपुट देखकर नहीं। सुधार: वीडियो के उपशीर्षक NLP हैं क्योंकि वाणी संसाधित होती है; फ़ोन का कैमरा ऐप CV हो सकता है।",
+   "unsupervised और reinforcement learning को मिला देना। सुधार: unsupervised = बिना लेबल data, समूह ढूँढना; reinforcement = agent, क्रियाएँ, इनाम और दंड।",
+   "कहना कि deep learning छोटे data पर सबसे अच्छा है। सुधार: DL को बड़े dataset और शक्तिशाली हार्डवेयर चाहिए; पारंपरिक ML छोटे data पर काम कर सकता है।",
+   "ईमेल को 'असंरचित' कहना। सुधार: ईमेल प्रायः अर्ध-संरचित होते हैं क्योंकि उनमें प्रेषक, तिथि और विषय जैसे फ़ील्ड होते हैं।",
+   "लंबे उत्तरों में केवल लाभ या केवल खतरे लिखना। सुधार: दोनों के साथ संतुलित उत्तर दें, और बताएँ कि जोखिम कैसे घटाए जा सकते हैं।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Artificial Intelligence (AI)",
+    "hi": "आर्टिफ़िशियल इंटेलिजेंस (AI)"
+   },
+   "d": {
+    "en": "Ability of a machine to learn patterns from data and make predictions or decisions; computer systems doing tasks that need human intelligence.",
+    "hi": "data से पैटर्न सीखकर अनुमान या निर्णय लेने की मशीन की क्षमता; मानवीय बुद्धि माँगने वाले काम करने वाले कंप्यूटर सिस्टम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Automation",
+    "hi": "स्वचालन (Automation)"
+   },
+   "d": {
+    "en": "A machine doing a task by itself by following fixed instructions, without learning.",
+    "hi": "बिना सीखे, तय निर्देशों का पालन करके मशीन का अपने आप कोई काम करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Turing Test",
+    "hi": "ट्यूरिंग टेस्ट"
+   },
+   "d": {
+    "en": "Alan Turing's 1950 'imitation game' to judge whether a machine's conversation can be told apart from a human's.",
+    "hi": "एलन ट्यूरिंग का 1950 का 'imitation game', जिससे परखा जाता है कि मशीन की बातचीत को मनुष्य से अलग पहचाना जा सकता है या नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dartmouth Conference",
+    "hi": "डार्टमाउथ सम्मेलन"
+   },
+   "d": {
+    "en": "1956 meeting in the USA regarded as the birth of AI as a field; the term AI was coined by John McCarthy for it.",
+    "hi": "अमेरिका में 1956 की बैठक जिसे AI क्षेत्र का जन्म माना जाता है; इसके लिए AI शब्द जॉन मैकार्थी ने गढ़ा।"
+   }
+  },
+  {
+   "t": {
+    "en": "Expert system",
+    "hi": "Expert system (विशेषज्ञ प्रणाली)"
+   },
+   "d": {
+    "en": "An early AI program that stores the knowledge of human experts as IF-THEN rules.",
+    "hi": "शुरुआती AI प्रोग्राम जो मानव विशेषज्ञों के ज्ञान को IF-THEN नियमों के रूप में रखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI winter",
+    "hi": "AI winter"
+   },
+   "d": {
+    "en": "A period when interest and funding in AI fell because results did not match promises.",
+    "hi": "वह दौर जब परिणाम वादों से मेल न खाने के कारण AI में रुचि और धन घट गए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Narrow AI",
+    "hi": "Narrow AI"
+   },
+   "d": {
+    "en": "AI built for one specific task; all AI today is narrow.",
+    "hi": "एक विशेष काम के लिए बना AI; आज का सारा AI संकीर्ण है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Broad AI",
+    "hi": "Broad AI"
+   },
+   "d": {
+    "en": "AI that handles many related tasks within one domain, between Narrow and General AI.",
+    "hi": "एक क्षेत्र के भीतर कई जुड़े काम सँभालने वाला AI, Narrow और General AI के बीच।"
+   }
+  },
+  {
+   "t": {
+    "en": "General AI (AGI)",
+    "hi": "General AI (AGI)"
+   },
+   "d": {
+    "en": "Hypothetical AI able to do any intellectual task a human can.",
+    "hi": "काल्पनिक AI जो मनुष्य जैसा कोई भी बौद्धिक काम कर सके।"
+   }
+  },
+  {
+   "t": {
+    "en": "Super AI (ASI)",
+    "hi": "Super AI (ASI)"
+   },
+   "d": {
+    "en": "Imagined AI smarter than humans in nearly every field.",
+    "hi": "लगभग हर क्षेत्र में मनुष्यों से अधिक बुद्धिमान कल्पित AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data",
+    "hi": "डेटा"
+   },
+   "d": {
+    "en": "Any recorded facts, numbers, text, images, audio or video.",
+    "hi": "कोई भी दर्ज तथ्य, संख्याएँ, पाठ, चित्र, ऑडियो या वीडियो।"
+   }
+  },
+  {
+   "t": {
+    "en": "Structured data",
+    "hi": "संरचित data"
+   },
+   "d": {
+    "en": "Data in fixed rows and columns.",
+    "hi": "तय पंक्तियों और स्तंभों में data।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unstructured data",
+    "hi": "असंरचित data"
+   },
+   "d": {
+    "en": "Data with no fixed format, such as photos, audio and free text.",
+    "hi": "बिना तय प्रारूप का data, जैसे फ़ोटो, ऑडियो और मुक्त पाठ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Semi-structured data",
+    "hi": "अर्ध-संरचित data"
+   },
+   "d": {
+    "en": "Data organised partly through tags or metadata, e.g. emails, tagged posts.",
+    "hi": "टैग या metadata से आंशिक रूप से व्यवस्थित data, जैसे ईमेल, टैग वाली पोस्ट।"
+   }
+  },
+  {
+   "t": {
+    "en": "Metadata",
+    "hi": "Metadata"
+   },
+   "d": {
+    "en": "Data about data, such as the date, size, location or hashtags of a file.",
+    "hi": "data के बारे में data, जैसे किसी फ़ाइल की तिथि, आकार, स्थान या हैशटैग।"
+   }
+  },
+  {
+   "t": {
+    "en": "Statistical Data domain",
+    "hi": "सांख्यिकीय data क्षेत्र"
+   },
+   "d": {
+    "en": "AI domain working with numbers and tables to predict and recommend.",
+    "hi": "संख्याओं और तालिकाओं से अनुमान और सुझाव देने वाला AI क्षेत्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLP",
+    "hi": "NLP"
+   },
+   "d": {
+    "en": "Natural Language Processing: AI that works with human language in text or speech.",
+    "hi": "प्राकृतिक भाषा प्रसंस्करण: पाठ या वाणी में मानवीय भाषा से काम करने वाला AI।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLU",
+    "hi": "NLU"
+   },
+   "d": {
+    "en": "Natural Language Understanding: understanding meaning, intent and sentiment.",
+    "hi": "प्राकृतिक भाषा समझ: अर्थ, इरादा और भावना समझना।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLG",
+    "hi": "NLG"
+   },
+   "d": {
+    "en": "Natural Language Generation: producing text or speech from data.",
+    "hi": "प्राकृतिक भाषा निर्माण: data से पाठ या वाणी बनाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Computer Vision (CV)",
+    "hi": "कंप्यूटर विज़न (CV)"
+   },
+   "d": {
+    "en": "AI domain that lets machines understand images and video.",
+    "hi": "मशीनों को चित्र और वीडियो समझने देने वाला AI क्षेत्र।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pixel",
+    "hi": "Pixel"
+   },
+   "d": {
+    "en": "The smallest dot of an image, stored as number(s).",
+    "hi": "चित्र का सबसे छोटा बिंदु, संख्या(ओं) के रूप में संग्रहीत।"
+   }
+  },
+  {
+   "t": {
+    "en": "Resolution",
+    "hi": "Resolution"
+   },
+   "d": {
+    "en": "Number of pixels across × down, e.g. 1920 × 1080.",
+    "hi": "आड़े × खड़े pixel की संख्या, जैसे 1920 × 1080।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine Learning (ML)",
+    "hi": "मशीन लर्निंग (ML)"
+   },
+   "d": {
+    "en": "Subset of AI where algorithms learn from data without explicit rules.",
+    "hi": "AI का उपसमुच्चय जिसमें algorithm बिना स्पष्ट नियमों के data से सीखते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deep Learning (DL)",
+    "hi": "डीप लर्निंग (DL)"
+   },
+   "d": {
+    "en": "ML using many-layered neural networks, inspired by the brain.",
+    "hi": "मस्तिष्क से प्रेरित, कई परतों वाले neural network का उपयोग करने वाला ML।"
+   }
+  },
+  {
+   "t": {
+    "en": "Artificial Neural Network (ANN)",
+    "hi": "कृत्रिम neural network (ANN)"
+   },
+   "d": {
+    "en": "Network of nodes in input, hidden and output layers joined by weighted connections.",
+    "hi": "input, hidden और output layers में nodes का नेटवर्क, जो भारित जुड़ावों से जुड़े हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Hidden layer",
+    "hi": "Hidden layer"
+   },
+   "d": {
+    "en": "Layer between input and output where most of the calculation happens.",
+    "hi": "input और output के बीच की layer जहाँ अधिकांश गणना होती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Deep neural network",
+    "hi": "Deep neural network"
+   },
+   "d": {
+    "en": "Neural network with more than three layers including input and output.",
+    "hi": "input और output सहित तीन से अधिक layers वाला neural network।"
+   }
+  },
+  {
+   "t": {
+    "en": "Model",
+    "hi": "Model"
+   },
+   "d": {
+    "en": "What an algorithm learns from data; used to make predictions.",
+    "hi": "algorithm data से जो सीखता है; अनुमान लगाने में उपयोग होता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Label",
+    "hi": "Label (लेबल)"
+   },
+   "d": {
+    "en": "The correct answer attached to a training example.",
+    "hi": "प्रशिक्षण उदाहरण के साथ जुड़ा सही उत्तर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Supervised learning",
+    "hi": "Supervised learning"
+   },
+   "d": {
+    "en": "Learning from labelled data to predict outputs.",
+    "hi": "आउटपुट बताने के लिए लेबल वाले data से सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Unsupervised learning",
+    "hi": "Unsupervised learning"
+   },
+   "d": {
+    "en": "Finding patterns and clusters in unlabelled data.",
+    "hi": "बिना लेबल data में पैटर्न और समूह ढूँढना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reinforcement learning",
+    "hi": "Reinforcement learning"
+   },
+   "d": {
+    "en": "An agent learning by trial and error with rewards and penalties.",
+    "hi": "इनाम और दंड के साथ प्रयास-त्रुटि से सीखता agent।"
+   }
+  },
+  {
+   "t": {
+    "en": "Agent / Policy / Reward",
+    "hi": "Agent / Policy / Reward"
+   },
+   "d": {
+    "en": "In RL: the learner, its strategy for choosing actions, and the score it receives.",
+    "hi": "RL में: सीखने वाला, क्रिया चुनने की उसकी रणनीति, और उसे मिलने वाला अंक।"
+   }
+  },
+  {
+   "t": {
+    "en": "Explainability",
+    "hi": "व्याख्येयता (Explainability)"
+   },
+   "d": {
+    "en": "How well we can understand why an AI made a decision.",
+    "hi": "हम कितनी अच्छी तरह समझ सकते हैं कि AI ने कोई निर्णय क्यों लिया।"
+   }
+  },
+  {
+   "t": {
+    "en": "Bias",
+    "hi": "पक्षपात (Bias)"
+   },
+   "d": {
+    "en": "Unfair tilt in AI results, usually caused by unbalanced training data.",
+    "hi": "AI परिणामों में अनुचित झुकाव, प्रायः असंतुलित प्रशिक्षण data से।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Who is known as the 'Father of AI'?\n(a) Alan Turing (b) John McCarthy (c) Charles Babbage (d) Marvin Minsky",
+    "hi": "बहुविकल्पी: 'AI का जनक' किसे कहा जाता है?\n(क) एलन ट्यूरिंग (ख) जॉन मैकार्थी (ग) चार्ल्स बैबेज (घ) मार्विन मिंस्की"
+   },
+   "a": {
+    "en": "(b) John McCarthy.",
+    "hi": "(ख) जॉन मैकार्थी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In which year was the term 'Artificial Intelligence' coined?\n(a) 1950 (b) 1956 (c) 1969 (d) 1997",
+    "hi": "बहुविकल्पी: 'Artificial Intelligence' शब्द किस वर्ष गढ़ा गया?\n(क) 1950 (ख) 1956 (ग) 1969 (घ) 1997"
+   },
+   "a": {
+    "en": "(b) 1956, for the Dartmouth Conference.",
+    "hi": "(ख) 1956, डार्टमाउथ सम्मेलन के लिए।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which statement is often used to describe the importance of data?\n(a) Data is the new gold (b) Data is the new oil (c) Data is the new water (d) Data is the new code",
+    "hi": "बहुविकल्पी: data के महत्व के लिए प्रायः कौन-सा कथन प्रयोग होता है?\n(क) data नया सोना है (ख) data नया तेल है (ग) data नया पानी है (घ) data नया कोड है"
+   },
+   "a": {
+    "en": "(b) Data is the new oil.",
+    "hi": "(ख) data नया तेल है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: In a neural network, the layers between the input and output layers are called:\n(a) visible layers (b) hidden layers (c) data layers (d) final layers",
+    "hi": "बहुविकल्पी: neural network में input और output layer के बीच की layers कहलाती हैं:\n(क) visible layers (ख) hidden layers (ग) data layers (घ) final layers"
+   },
+   "a": {
+    "en": "(b) hidden layers.",
+    "hi": "(ख) hidden layers।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Learning from data in which every example has the correct answer is:\n(a) unsupervised (b) reinforcement (c) supervised (d) none",
+    "hi": "बहुविकल्पी: ऐसे data से सीखना जिसमें हर उदाहरण का सही उत्तर हो:\n(क) unsupervised (ख) reinforcement (ग) supervised (घ) कोई नहीं"
+   },
+   "a": {
+    "en": "(c) supervised learning.",
+    "hi": "(ग) supervised learning।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Deep learning is based on:\n(a) decision tables (b) artificial neural networks (c) spreadsheets (d) flowcharts",
+    "hi": "बहुविकल्पी: deep learning किस पर आधारित है?\n(क) निर्णय तालिकाएँ (ख) कृत्रिम neural network (ग) spreadsheet (घ) फ़्लोचार्ट"
+   },
+   "a": {
+    "en": "(b) artificial neural networks with many layers.",
+    "hi": "(ख) कई परतों वाले कृत्रिम neural network।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "MCQ: In reinforcement learning, the role of the reward is to:\n(a) label the data (b) tell the agent how good its action was (c) store the data (d) draw graphs",
+    "hi": "बहुविकल्पी: reinforcement learning में reward की भूमिका है:\n(क) data पर लेबल लगाना (ख) agent को बताना कि उसकी क्रिया कितनी अच्छी थी (ग) data संग्रहीत करना (घ) ग्राफ़ बनाना"
+   },
+   "a": {
+    "en": "(b) It tells the agent how good the action was so it can improve its policy.",
+    "hi": "(ख) यह agent को बताता है कि क्रिया कितनी अच्छी थी ताकि वह अपनी policy सुधार सके।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "MCQ: Spam email detection is an application of which domain?\n(a) Computer Vision (b) NLP (c) Robotics (d) none",
+    "hi": "बहुविकल्पी: स्पैम ईमेल पहचान किस क्षेत्र का अनुप्रयोग है?\n(क) कंप्यूटर विज़न (ख) NLP (ग) रोबोटिक्स (घ) कोई नहीं"
+   },
+   "a": {
+    "en": "(b) NLP, since it analyses the text of emails.",
+    "hi": "(ख) NLP, क्योंकि यह ईमेल के पाठ का विश्लेषण करता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: AI enables machines to perform tasks that normally require ______ intelligence.",
+    "hi": "रिक्त स्थान भरिए: AI मशीनों को वे काम करने देता है जिनके लिए सामान्यतः ______ बुद्धि चाहिए।"
+   },
+   "a": {
+    "en": "human",
+    "hi": "मानवीय"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The three categories of machine learning are supervised, unsupervised and ______ learning.",
+    "hi": "रिक्त स्थान भरिए: machine learning की तीन श्रेणियाँ supervised, unsupervised और ______ learning हैं।"
+   },
+   "a": {
+    "en": "reinforcement",
+    "hi": "reinforcement"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: A neural network with more than three layers is called a ______ neural network.",
+    "hi": "रिक्त स्थान भरिए: तीन से अधिक layers वाले neural network को ______ neural network कहते हैं।"
+   },
+   "a": {
+    "en": "deep",
+    "hi": "deep"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (a) Virtual assistants like Siri are examples of Narrow AI. (b) Supervised learning uses unlabelled data. (c) Deep learning usually takes less training time than ML. (d) Analysing unstructured data is harder than analysing structured data.",
+    "hi": "सही या गलत: (क) Siri जैसे वर्चुअल असिस्टेंट Narrow AI के उदाहरण हैं। (ख) supervised learning बिना लेबल data का उपयोग करती है। (ग) deep learning प्रायः ML से कम प्रशिक्षण समय लेती है। (घ) असंरचित data का विश्लेषण संरचित data से कठिन है।"
+   },
+   "a": {
+    "en": "(a) True. (b) False – it uses labelled data. (c) False – DL takes longer. (d) True.",
+    "hi": "(क) सही। (ख) गलत – यह लेबल वाला data उपयोग करती है। (ग) गलत – DL अधिक समय लेती है। (घ) सही।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A basic calculator is not an AI system.\nReason (R): A calculator follows fixed rules and does not learn from data.\n(a) Both A and R true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): साधारण कैलकुलेटर AI सिस्टम नहीं है।\nकारण (R): कैलकुलेटर तय नियमों का पालन करता है और data से नहीं सीखता।\n(क) A और R दोनों सही, R, A की व्याख्या करता है (ख) दोनों सही, R व्याख्या नहीं करता (ग) A सही, R गलत (घ) A गलत, R सही"
+   },
+   "a": {
+    "en": "(a) Both are true and R correctly explains A.",
+    "hi": "(क) दोनों सही हैं और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Deep learning needs high-end hardware such as GPUs.\nReason (R): Deep learning models perform a huge number of calculations across many layers on large datasets.",
+    "hi": "अभिकथन (A): deep learning को GPU जैसे उच्च क्षमता वाले हार्डवेयर की ज़रूरत होती है।\nकारण (R): deep learning model बड़े dataset पर कई layers में भारी संख्या में गणनाएँ करते हैं।"
+   },
+   "a": {
+    "en": "Both A and R are true, and R is the correct explanation of A.",
+    "hi": "A और R दोनों सही हैं, और R, A की सही व्याख्या है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Short answer: How are AI and machine learning related?",
+    "hi": "लघु उत्तर: AI और machine learning कैसे संबंधित हैं?"
+   },
+   "a": {
+    "en": "AI is the broad field of making machines do tasks that need human intelligence. Machine learning is a subset of AI in which machines learn from data instead of following hand-written rules. All ML is AI, but AI also includes non-learning methods like rule-based expert systems.",
+    "hi": "AI मशीनों से मानवीय बुद्धि वाले काम कराने का व्यापक क्षेत्र है। machine learning AI का उपसमुच्चय है जिसमें मशीनें हाथ से लिखे नियमों के बजाय data से सीखती हैं। सारा ML, AI है, पर AI में नियम-आधारित expert system जैसे न सीखने वाले तरीके भी शामिल हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Explain reinforcement learning with an example from school life.",
+    "hi": "लघु उत्तर: स्कूल जीवन के एक उदाहरण से reinforcement learning समझाइए।"
+   },
+   "a": {
+    "en": "In reinforcement learning an agent tries actions, gets rewards or penalties, and learns the policy that gives the most reward. Example: a quiz app that gives a student harder or easier questions; when the student answers correctly and stays engaged, the app gets a 'reward' and learns which level of question to choose next. Another example: a school robot learning to move through corridors, rewarded for reaching the room and penalised for bumping into walls.",
+    "hi": "reinforcement learning में agent क्रियाएँ आज़माता है, इनाम या दंड पाता है, और वह policy सीखता है जो सबसे अधिक इनाम दे। उदाहरण: एक क्विज़ ऐप जो विद्यार्थी को कठिन या आसान प्रश्न देता है; जब विद्यार्थी सही उत्तर देता है और रुचि बनी रहती है, तो ऐप को 'इनाम' मिलता है और वह सीखता है कि अगला प्रश्न किस स्तर का चुने। दूसरा उदाहरण: गलियारों में चलना सीखता स्कूल का रोबोट, जिसे कमरे तक पहुँचने पर इनाम और दीवार से टकराने पर दंड मिलता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Which of these are AI-based: (i) Google Maps traffic prediction (ii) a ceiling fan with a regulator (iii) a voice assistant (iv) a mechanical wall clock (v) a photo app that groups faces? Give reasons.",
+    "hi": "लघु उत्तर: इनमें से कौन AI-आधारित हैं: (i) Google Maps का ट्रैफ़िक अनुमान (ii) रेगुलेटर वाला छत का पंखा (iii) वॉइस असिस्टेंट (iv) यांत्रिक दीवार घड़ी (v) चेहरों को समूहित करने वाला फ़ोटो ऐप? कारण दीजिए।"
+   },
+   "a": {
+    "en": "AI-based: (i), (iii) and (v), because they learn from data (location data, speech, face images) and make predictions. Not AI: (ii) and (iv), because they only follow fixed mechanical or electrical operations.",
+    "hi": "AI-आधारित: (i), (iii) और (v), क्योंकि ये data (स्थान data, वाणी, चेहरे के चित्र) से सीखकर अनुमान लगाते हैं। AI नहीं: (ii) और (iv), क्योंकि ये केवल तय यांत्रिक या विद्युत क्रियाएँ करते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Differentiate between NLU and NLG with one example each.",
+    "hi": "लघु उत्तर: NLU और NLG में एक-एक उदाहरण सहित अंतर बताइए।"
+   },
+   "a": {
+    "en": "NLU understands meaning and intent of language, e.g. a banking chatbot understanding that 'I lost my card' means 'block my card'. NLG produces language from data, e.g. a cricket app writing 'India need 24 runs from 12 balls' from the live score.",
+    "hi": "NLU भाषा का अर्थ और इरादा समझता है, जैसे बैंकिंग chatbot का समझना कि 'मेरा कार्ड खो गया' का अर्थ है 'मेरा कार्ड ब्लॉक करो'। NLG data से भाषा बनाता है, जैसे क्रिकेट ऐप का लाइव स्कोर से 'भारत को 12 गेंदों में 24 रन चाहिए' लिखना।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Give two benefits and two limitations of AI.",
+    "hi": "लघु उत्तर: AI के दो लाभ और दो सीमाएँ बताइए।"
+   },
+   "a": {
+    "en": "Benefits: increased efficiency (24×7 work on repetitive tasks); better healthcare (faster diagnosis, drug discovery). Limitations: job displacement needing reskilling; lack of explainability and possible bias in decisions.",
+    "hi": "लाभ: दक्षता में वृद्धि (दोहराव वाले कामों पर 24×7 काम); बेहतर स्वास्थ्य सेवा (तेज़ निदान, दवा खोज)। सीमाएँ: नौकरियों का विस्थापन जिसके लिए पुनः कौशल चाहिए; निर्णयों में व्याख्या का अभाव और संभावित पक्षपात।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: What is data? Explain its three types with two examples each.",
+    "hi": "दीर्घ उत्तर: data क्या है? इसके तीन प्रकार दो-दो उदाहरणों सहित समझाइए।"
+   },
+   "a": {
+    "en": "Data is any recorded information such as facts, numbers, opinions, text, images, audio and video; it is the fuel AI learns from.\n1. Structured data is arranged in fixed rows and columns and is easy to search: e.g. a marks register, railway reservation records.\n2. Unstructured data has no predefined format and needs CV/NLP to analyse: e.g. CCTV video, voice notes, customer comments.\n3. Semi-structured data has tags or metadata giving partial organisation: e.g. emails with sender/subject fields, a social-media post with hashtags.\nMost data in the world is unstructured, which is why CV and NLP matter.",
+    "hi": "data कोई भी दर्ज जानकारी है, जैसे तथ्य, संख्याएँ, राय, पाठ, चित्र, ऑडियो और वीडियो; यही वह ईंधन है जिससे AI सीखता है।\n1. संरचित data तय पंक्तियों-स्तंभों में होता है और खोजने में आसान है: जैसे अंक रजिस्टर, रेलवे आरक्षण रिकॉर्ड।\n2. असंरचित data का कोई तय प्रारूप नहीं होता और इसके विश्लेषण के लिए CV/NLP चाहिए: जैसे CCTV वीडियो, वॉइस नोट, ग्राहक टिप्पणियाँ।\n3. अर्ध-संरचित data में टैग या metadata होते हैं जो आंशिक व्यवस्था देते हैं: जैसे प्रेषक/विषय फ़ील्ड वाले ईमेल, हैशटैग वाली सोशल-मीडिया पोस्ट।\nदुनिया का अधिकांश data असंरचित है, इसलिए CV और NLP महत्वपूर्ण हैं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: How is deep learning different from traditional machine learning? Explain with five points and an example.",
+    "hi": "दीर्घ उत्तर: deep learning पारंपरिक machine learning से कैसे भिन्न है? पाँच बिंदुओं और एक उदाहरण से समझाइए।"
+   },
+   "a": {
+    "en": "1. Data: ML works with smaller datasets; DL needs very large ones.\n2. Hardware: ML runs on ordinary machines; DL needs high-end machines/GPUs.\n3. Approach: ML breaks a problem into parts and humans pick features; DL learns features itself and solves end to end.\n4. Training time: ML trains faster; DL takes longer.\n5. Testing time: ML may test slower for some algorithms; DL usually predicts quickly once trained.\nExample: to sort product photos, ML needs humans to measure features like shape and size; a deep neural network takes raw pixels and learns edges → shapes → objects through its layers.",
+    "hi": "1. data: ML छोटे dataset पर काम करता है; DL को बहुत बड़े चाहिए।\n2. हार्डवेयर: ML साधारण मशीनों पर चलता है; DL को उच्च क्षमता मशीनें/GPU चाहिए।\n3. तरीका: ML समस्या को भागों में बाँटता है और features मनुष्य चुनते हैं; DL features स्वयं सीखकर शुरू से अंत तक हल करता है।\n4. प्रशिक्षण समय: ML जल्दी प्रशिक्षित होता है; DL अधिक समय लेता है।\n5. परीक्षण समय: कुछ ML algorithm परीक्षण में धीमे हो सकते हैं; DL प्रशिक्षण के बाद प्रायः जल्दी अनुमान देता है।\nउदाहरण: उत्पाद फ़ोटो छाँटने के लिए ML में मनुष्यों को आकृति और आकार जैसे features मापने पड़ते हैं; deep neural network कच्चे pixel लेकर अपनी layers से किनारे → आकृतियाँ → वस्तुएँ सीखता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe the evolution of AI from 1950 to the present.",
+    "hi": "दीर्घ उत्तर: 1950 से आज तक AI के विकास का वर्णन कीजिए।"
+   },
+   "a": {
+    "en": "1950: Alan Turing's paper 'Computing Machinery and Intelligence' and the Turing Test.\n1956: Dartmouth Conference; John McCarthy coins 'Artificial Intelligence'; the field is born.\n1960s–70s: symbolic reasoning, problem-solving programs, early neural networks, expert systems.\n1980s–90s: expert systems in business but limited; funding and interest fall in AI winters; 1997 Deep Blue beats Kasparov.\n21st century: big data + powerful computing (GPUs) + better algorithms bring breakthroughs in ML, DL and RL (e.g. AlphaGo, 2016), leading to voice assistants, self-driving research and generative AI; AI is used in healthcare, finance, transport and entertainment.",
+    "hi": "1950: एलन ट्यूरिंग का शोधपत्र 'Computing Machinery and Intelligence' और ट्यूरिंग टेस्ट।\n1956: डार्टमाउथ सम्मेलन; जॉन मैकार्थी ने 'Artificial Intelligence' शब्द गढ़ा; क्षेत्र का जन्म।\n1960–70 का दशक: प्रतीकात्मक तर्क, समस्या-समाधान प्रोग्राम, शुरुआती neural network, expert system।\n1980–90 का दशक: व्यवसाय में expert system पर सीमित; AI winters में धन और रुचि घटी; 1997 में Deep Blue ने कास्पारोव को हराया।\n21वीं सदी: बड़ा data + शक्तिशाली कंप्यूटिंग (GPU) + बेहतर algorithm से ML, DL और RL में बड़ी सफलताएँ (जैसे 2016 में AlphaGo), जिनसे वॉइस असिस्टेंट, स्वचालित वाहन शोध और generative AI आए; AI स्वास्थ्य, वित्त, परिवहन और मनोरंजन में उपयोग हो रहा है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A city hospital installs an AI system that reads chest X-rays and flags possible pneumonia. A patient's family says, 'We do not trust a machine with our child's health.' (a) Which domain of AI and which type of learning does the system use? (b) Give two benefits for the hospital. (c) Suggest three ways to build the family's trust.",
+    "hi": "प्रसंग अध्ययन: एक शहर के अस्पताल में छाती के X-ray पढ़कर संभावित निमोनिया चिह्नित करने वाला AI सिस्टम लगाया गया है। एक मरीज़ का परिवार कहता है, 'हम अपने बच्चे के स्वास्थ्य के लिए मशीन पर भरोसा नहीं करते।' (क) सिस्टम AI का कौन-सा क्षेत्र और अधिगम का कौन-सा प्रकार उपयोग करता है? (ख) अस्पताल के लिए दो लाभ बताइए। (ग) परिवार का भरोसा बनाने के तीन तरीके सुझाइए।"
+   },
+   "a": {
+    "en": "(a) Computer Vision (images); supervised learning, because it was trained on X-rays labelled by doctors.\n(b) Faster screening of many patients; earlier detection helps doctors focus on serious cases.\n(c) A doctor always checks and takes the final decision; explain in simple words how the AI works and its accuracy; protect the child's data and take consent; allow a second opinion.",
+    "hi": "(क) कंप्यूटर विज़न (चित्र); supervised learning, क्योंकि इसे डॉक्टरों द्वारा लेबल किए X-ray पर प्रशिक्षित किया गया।\n(ख) कई मरीज़ों की तेज़ जाँच; जल्दी पहचान से डॉक्टर गंभीर मामलों पर ध्यान दे पाते हैं।\n(ग) डॉक्टर हमेशा जाँचें और अंतिम निर्णय लें; सरल शब्दों में बताएँ कि AI कैसे काम करता है और उसकी सटीकता क्या है; बच्चे का data सुरक्षित रखें और सहमति लें; दूसरी राय की सुविधा दें।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A shopping app notices that some customers buy cricket gear every March, others buy school supplies in June, and others buy sarees before festivals. Nobody told the app these groups. (a) Which type of ML is this? (b) Name one algorithm. (c) How can the app use these groups? (d) Mention one privacy concern.",
+    "hi": "प्रसंग अध्ययन: एक शॉपिंग ऐप देखता है कि कुछ ग्राहक हर मार्च में क्रिकेट का सामान, कुछ जून में स्कूल का सामान, और कुछ त्योहारों से पहले साड़ियाँ खरीदते हैं। किसी ने ऐप को ये समूह नहीं बताए। (क) यह किस प्रकार का ML है? (ख) एक algorithm बताइए। (ग) ऐप इन समूहों का उपयोग कैसे कर सकता है? (घ) एक गोपनीयता चिंता बताइए।"
+   },
+   "a": {
+    "en": "(a) Unsupervised learning (clustering/customer segmentation).\n(b) k-means clustering.\n(c) Show relevant offers to each group at the right time, plan stock.\n(d) Purchase history is personal data; it must be collected with consent, kept secure and not sold or misused.",
+    "hi": "(क) unsupervised learning (clustering/ग्राहक विभाजन)।\n(ख) k-means clustering।\n(ग) हर समूह को सही समय पर उपयुक्त ऑफ़र दिखाना, स्टॉक की योजना बनाना।\n(घ) खरीद इतिहास व्यक्तिगत data है; इसे सहमति से लेना, सुरक्षित रखना और बेचना या दुरुपयोग न करना चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Activity: Sort these into domains – (i) Bhashini voice translation (ii) IPL win-probability graph (iii) DigiYatra face boarding (iv) automatic YouTube captions (v) predicting tomato prices in a mandi.",
+    "hi": "गतिविधि: इन्हें क्षेत्रों में बाँटिए – (i) Bhashini वॉइस अनुवाद (ii) IPL जीत-संभावना ग्राफ़ (iii) DigiYatra चेहरा बोर्डिंग (iv) YouTube के स्वचालित कैप्शन (v) मंडी में टमाटर के भाव का अनुमान।"
+   },
+   "a": {
+    "en": "(i) NLP (ii) Statistical Data (iii) Computer Vision (iv) NLP (v) Statistical Data.",
+    "hi": "(i) NLP (ii) सांख्यिकीय data (iii) कंप्यूटर विज़न (iv) NLP (v) सांख्यिकीय data।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Your friend says, 'AI will soon think exactly like humans and take every job.' Write a balanced reply of 5–6 lines.",
+    "hi": "चिंतन प्रश्न: आपका मित्र कहता है, 'AI जल्द ही बिल्कुल मनुष्यों की तरह सोचेगा और हर नौकरी ले लेगा।' 5–6 पंक्तियों का संतुलित उत्तर लिखिए।"
+   },
+   "a": {
+    "en": "Sample: All AI today is Narrow AI; it is very good at specific tasks but has no common sense or real understanding, and General AI does not exist. AI will automate some routine jobs, but it also creates new roles such as ML engineers, data analysts and AI ethicists, and helps doctors, farmers and teachers work better. People who learn to use AI wisely and keep improving their skills will be in demand. So we should neither fear AI blindly nor trust it blindly.",
+    "hi": "नमूना: आज का सारा AI, Narrow AI है; यह विशेष कामों में बहुत अच्छा है पर इसमें सामान्य समझ या वास्तविक समझ नहीं है, और General AI मौजूद नहीं है। AI कुछ नियमित नौकरियाँ स्वचालित करेगा, पर यह ML इंजीनियर, data analyst और AI ethicist जैसी नई भूमिकाएँ भी बनाता है, और डॉक्टरों, किसानों व शिक्षकों को बेहतर काम करने में मदद करता है। जो लोग AI का समझदारी से उपयोग करना सीखेंगे और अपने कौशल बढ़ाते रहेंगे, उनकी माँग रहेगी। इसलिए हमें न AI से आँख मूँदकर डरना चाहिए, न उस पर आँख मूँदकर भरोसा करना चाहिए।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "AI is the ability of a machine to learn patterns from data and make predictions or decisions; the test is whether it learns and adapts.",
+   "Timers, calculators, fans, ordinary microwaves and fixed rule-based systems are automation, not AI.",
+   "1950 Turing's paper and test; 1956 Dartmouth Conference, John McCarthy coins 'AI'; expert systems; AI winters; 21st-century boom from data, computing and algorithms.",
+   "Types of AI: Narrow (one task, all AI today), Broad (many tasks in a domain), General (human-level, not yet) and Super AI (idea only).",
+   "Data is 'the new oil'; it can be structured, semi-structured or unstructured.",
+   "The three AI domains depend on input: Statistical Data (numbers), NLP (language) and Computer Vision (images/video).",
+   "NLP includes NLU (understanding meaning) and NLG (generating language).",
+   "Computers see images as pixels stored as numbers; resolution is pixels across × down.",
+   "DL ⊂ ML ⊂ AI. ML learns rules from data; DL uses many-layered neural networks.",
+   "A neural network has input, hidden and output layers; more than three layers makes it deep.",
+   "ML vs DL: data size, hardware, problem-solving approach, training time and testing time differ.",
+   "Supervised = labelled data; unsupervised = unlabelled data, find clusters; reinforcement = rewards and penalties for an agent.",
+   "Benefits: efficiency, better decisions, innovation, healthcare and science progress.",
+   "Limitations: job displacement, ethical issues and bias, lack of explainability, privacy and security risks.",
+   "Use AI tools safely: protect personal data, verify answers and report deepfakes or scams."
+  ],
+  "hi": [
+   "AI data से पैटर्न सीखकर अनुमान या निर्णय लेने की मशीन की क्षमता है; कसौटी यह है कि वह सीखती और बदलती है या नहीं।",
+   "टाइमर, कैलकुलेटर, पंखे, साधारण माइक्रोवेव और तय नियम-आधारित सिस्टम स्वचालन हैं, AI नहीं।",
+   "1950 ट्यूरिंग का शोधपत्र और टेस्ट; 1956 डार्टमाउथ सम्मेलन, जॉन मैकार्थी ने 'AI' गढ़ा; expert system; AI winters; data, कंप्यूटिंग और algorithm से 21वीं सदी का उछाल।",
+   "AI के प्रकार: Narrow (एक काम, आज का सारा AI), Broad (एक क्षेत्र के कई काम), General (मानव-स्तर, अभी नहीं) और Super AI (केवल विचार)।",
+   "data 'नया तेल' है; यह संरचित, अर्ध-संरचित या असंरचित हो सकता है।",
+   "तीन AI क्षेत्र इनपुट पर निर्भर हैं: सांख्यिकीय data (संख्याएँ), NLP (भाषा) और कंप्यूटर विज़न (चित्र/वीडियो)।",
+   "NLP में NLU (अर्थ समझना) और NLG (भाषा बनाना) शामिल हैं।",
+   "कंप्यूटर चित्रों को संख्याओं के रूप में संग्रहीत pixel की तरह देखते हैं; resolution आड़े × खड़े pixel है।",
+   "DL ⊂ ML ⊂ AI। ML data से नियम सीखता है; DL कई परतों वाले neural network का उपयोग करता है।",
+   "neural network में input, hidden और output layers होती हैं; तीन से अधिक layers होने पर यह deep कहलाता है।",
+   "ML बनाम DL: data आकार, हार्डवेयर, समस्या-समाधान तरीका, प्रशिक्षण समय और परीक्षण समय अलग हैं।",
+   "supervised = लेबल वाला data; unsupervised = बिना लेबल data, समूह ढूँढना; reinforcement = agent के लिए इनाम और दंड।",
+   "लाभ: दक्षता, बेहतर निर्णय, नवाचार, स्वास्थ्य और विज्ञान में प्रगति।",
+   "सीमाएँ: नौकरियों का विस्थापन, नैतिक मुद्दे और पक्षपात, व्याख्या का अभाव, गोपनीयता और सुरक्षा जोखिम।",
+   "AI उपकरणों का सुरक्षित उपयोग करें: व्यक्तिगत data बचाएँ, उत्तर जाँचें और deepfake या धोखाधड़ी की रिपोर्ट करें।"
+  ]
+ }
+}

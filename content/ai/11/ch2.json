@@ -1,0 +1,1931 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "11",
+ "id": "ch2",
+ "intro": {
+  "en": "AI is creating new kinds of work in almost every industry, from hospitals and farms to banks, films and fashion. This chapter explains why demand for AI professionals is growing, the nine common AI job roles and what each person does, the technical and soft skills and the tools that AI professionals use, and the opportunities across sixteen industries. Through two web-search activities and a self-assessment, you will start planning your own path in AI.",
+  "hi": "AI अस्पतालों और खेतों से लेकर बैंकों, फ़िल्मों और फ़ैशन तक लगभग हर उद्योग में नए प्रकार के काम पैदा कर रहा है। यह अध्याय बताता है कि AI पेशेवरों की माँग क्यों बढ़ रही है, AI की नौ सामान्य नौकरी भूमिकाएँ क्या हैं और हर व्यक्ति क्या करता है, AI पेशेवर कौन-से तकनीकी और सॉफ़्ट कौशल तथा उपकरण उपयोग करते हैं, और सोलह उद्योगों में कौन-से अवसर हैं। दो वेब-खोज गतिविधियों और एक आत्म-आकलन से आप AI में अपना रास्ता बनाना शुरू करेंगे।"
+ },
+ "learn": {
+  "en": [
+   "Why the global demand for AI professionals is rising",
+   "How AI automates, augments and creates jobs, and the meaning of upskilling and reskilling",
+   "Nine common AI job roles and their responsibilities",
+   "Five technical skills and five soft skills needed for AI careers",
+   "The AI toolkit: Python, R, Java, C++, TensorFlow, NumPy and SciPy",
+   "AI opportunities and roles in sixteen industries, linked to school subjects",
+   "How to find companies hiring for AI roles and compare required skills",
+   "Free and Indian resources for further learning, and courses after Class 12",
+   "How to assess your interests and make a simple AI career plan safely"
+  ],
+  "hi": [
+   "AI पेशेवरों की वैश्विक माँग क्यों बढ़ रही है",
+   "AI नौकरियों को कैसे स्वचालित, संवर्धित और सृजित करता है, और upskilling तथा reskilling का अर्थ",
+   "AI की नौ सामान्य नौकरी भूमिकाएँ और उनकी ज़िम्मेदारियाँ",
+   "AI करियर के लिए आवश्यक पाँच तकनीकी और पाँच सॉफ़्ट कौशल",
+   "AI टूलकिट: Python, R, Java, C++, TensorFlow, NumPy और SciPy",
+   "सोलह उद्योगों में AI के अवसर और भूमिकाएँ, स्कूली विषयों से जुड़े हुए",
+   "AI भूमिकाओं के लिए भर्ती करने वाली कंपनियाँ कैसे खोजें और आवश्यक कौशलों की तुलना कैसे करें",
+   "आगे सीखने के मुफ़्त और भारतीय संसाधन, और कक्षा 12 के बाद के पाठ्यक्रम",
+   "अपनी रुचियों का आकलन और सुरक्षित ढंग से एक सरल AI करियर योजना कैसे बनाएँ"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "2.1 Why talk about AI careers in Class 11?",
+    "hi": "2.1 कक्षा 11 में AI करियर की बात क्यों?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Chapter 1 you saw that AI is used in phones, banks, farms and hospitals. Every one of those systems was planned, built, tested, sold and looked after by people. This chapter is about those people: what jobs exist in AI, what skills and tools they need, which industries hire them and how you can start preparing from Class 11 itself.",
+      "hi": "अध्याय 1 में आपने देखा कि AI फ़ोन, बैंक, खेतों और अस्पतालों में उपयोग होता है। उनमें से हर सिस्टम की योजना, निर्माण, परीक्षण, बिक्री और देखभाल लोगों ने की। यह अध्याय उन्हीं लोगों के बारे में है: AI में कौन-सी नौकरियाँ हैं, उन्हें कौन-से कौशल और उपकरण चाहिए, कौन-से उद्योग उन्हें रखते हैं, और आप कक्षा 11 से ही तैयारी कैसे शुरू कर सकते हैं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Choosing subjects in Class 11 is often the first big career decision. Knowing the AI job landscape helps you see that AI is not only for computer-science students: biology students can work on medical AI, commerce students on financial AI, geography students on mapping AI, and arts students on design and ethics.",
+      "hi": "कक्षा 11 में विषय चुनना अक्सर करियर का पहला बड़ा निर्णय होता है। AI की नौकरियों का परिदृश्य जानने से आप समझते हैं कि AI केवल कंप्यूटर-विज्ञान के विद्यार्थियों के लिए नहीं है: जीवविज्ञान के विद्यार्थी चिकित्सा AI पर, वाणिज्य के विद्यार्थी वित्तीय AI पर, भूगोल के विद्यार्थी मानचित्रण AI पर, और कला के विद्यार्थी डिज़ाइन और नैतिकता पर काम कर सकते हैं।"
+     }
+    },
+    {
+     "note": {
+      "en": "Approach of this chapter: team discussion and web search. Keep a notebook or a document in which you record roles, skills and companies you find; you will use it in the two practical activities.",
+      "hi": "इस अध्याय का तरीका: समूह चर्चा और वेब खोज। एक कॉपी या दस्तावेज़ रखें जिसमें आप मिली हुई भूमिकाएँ, कौशल और कंपनियाँ दर्ज करें; दोनों प्रायोगिक गतिविधियों में आप इसका उपयोग करेंगे।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.2 The global demand for AI",
+    "hi": "2.2 AI की वैश्विक माँग"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI has moved from science fiction into daily life: streaming apps recommend shows, maps predict traffic, cars brake automatically and chatbots answer customer questions. As more organisations adopt AI, they need people who can build it, run it, explain it and use it responsibly. That is why demand for AI skills has been growing across the world and in India.",
+      "hi": "AI विज्ञान-कथा से निकलकर रोज़मर्रा के जीवन में आ गया है: स्ट्रीमिंग ऐप कार्यक्रम सुझाते हैं, मैप ट्रैफ़िक का अनुमान लगाते हैं, कारें अपने आप ब्रेक लगाती हैं और chatbot ग्राहकों के प्रश्नों के उत्तर देते हैं। जैसे-जैसे अधिक संस्थाएँ AI अपनाती हैं, उन्हें ऐसे लोग चाहिए जो इसे बना सकें, चला सकें, समझा सकें और ज़िम्मेदारी से उपयोग कर सकें। इसीलिए दुनिया भर में और भारत में AI कौशलों की माँग बढ़ रही है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Main reasons for the growing demand:",
+      "hi": "बढ़ती माँग के मुख्य कारण:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Technological advances: cheaper computing, cloud services and better algorithms make AI affordable even for small companies and start-ups.",
+       "Integration across sectors: healthcare (scan reading), finance (fraud detection, credit scoring), transportation (route planning, driver assistance) and retail (recommendations, stock planning) all use AI.",
+       "Explosion of data: digital payments, e-commerce and smartphones create huge data that companies want to understand.",
+       "Government and public services: Digital India projects, Indian-language AI such as Bhashini, and the IndiaAI Mission create work in public-sector AI.",
+       "Competition: businesses that use AI well can serve customers faster and cheaper, so others must catch up."
+      ],
+      "hi": [
+       "तकनीकी प्रगति: सस्ती कंप्यूटिंग, क्लाउड सेवाएँ और बेहतर algorithm AI को छोटी कंपनियों और start-ups के लिए भी किफ़ायती बनाते हैं।",
+       "क्षेत्रों में समावेश: स्वास्थ्य (स्कैन पढ़ना), वित्त (धोखाधड़ी पहचान, क्रेडिट स्कोरिंग), परिवहन (मार्ग योजना, चालक सहायता) और खुदरा (सुझाव, स्टॉक योजना) सभी AI का उपयोग करते हैं।",
+       "data का विस्फोट: डिजिटल भुगतान, ई-कॉमर्स और स्मार्टफ़ोन भारी data बनाते हैं जिसे कंपनियाँ समझना चाहती हैं।",
+       "सरकार और सार्वजनिक सेवाएँ: डिजिटल इंडिया परियोजनाएँ, Bhashini जैसे भारतीय-भाषा AI, और IndiaAI मिशन सार्वजनिक-क्षेत्र AI में काम पैदा करते हैं।",
+       "प्रतिस्पर्धा: AI का अच्छा उपयोग करने वाले व्यवसाय ग्राहकों की सेवा तेज़ और सस्ते में कर पाते हैं, इसलिए दूसरों को भी बराबरी करनी पड़ती है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Career fields inside AI are broad: machine learning, natural language processing, computer vision, robotics, data analytics, AI product management, AI safety and ethics, and AI-assisted design and media.",
+      "hi": "AI के भीतर करियर क्षेत्र व्यापक हैं: machine learning, natural language processing, computer vision, robotics, data analytics, AI उत्पाद प्रबंधन, AI सुरक्षा और नैतिकता, तथा AI-सहायित डिज़ाइन और मीडिया।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Upskilling and reskilling",
+       "hi": "Upskilling और reskilling"
+      },
+      "text": {
+       "en": "Upskilling means learning new, higher skills for your current kind of work (an accountant learning data analysis). Reskilling means learning skills for a different kind of work (a data-entry operator training to become a data annotator or analyst).",
+       "hi": "Upskilling का अर्थ है अपने वर्तमान प्रकार के काम के लिए नए, उच्चतर कौशल सीखना (एक अकाउंटेंट का data analysis सीखना)। Reskilling का अर्थ है किसी अलग प्रकार के काम के लिए कौशल सीखना (एक data-entry ऑपरेटर का data annotator या analyst बनने का प्रशिक्षण लेना)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.3 Will AI take jobs or create them?",
+    "hi": "2.3 AI नौकरियाँ छीनेगा या बनाएगा?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Both. AI automation may replace some tasks, especially repetitive ones such as copying data from forms, simple quality checks or answering the same customer questions again and again. At the same time it creates new career paths and changes existing jobs. History shows a similar pattern: computers reduced typist jobs but created millions of jobs in software, IT services and digital business.",
+      "hi": "दोनों। AI स्वचालन कुछ कामों की जगह ले सकता है, विशेषकर दोहराव वाले, जैसे फ़ॉर्म से data कॉपी करना, सरल गुणवत्ता जाँच या एक ही ग्राहक प्रश्नों के बार-बार उत्तर देना। साथ ही यह नए करियर रास्ते बनाता है और मौजूदा नौकरियों को बदलता है। इतिहास भी ऐसा ही पैटर्न दिखाता है: कंप्यूटरों ने टाइपिस्ट की नौकरियाँ घटाईं पर सॉफ़्टवेयर, IT सेवाओं और डिजिटल व्यवसाय में लाखों नौकरियाँ बनाईं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Effect of AI on work",
+        "Meaning",
+        "Example"
+       ],
+       "hi": [
+        "काम पर AI का प्रभाव",
+        "अर्थ",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Automation (replace tasks)",
+         "A task is done fully by AI",
+         "Automatic reading of cheque details; chatbot answering 'What is my account balance?'"
+        ],
+        [
+         "Augmentation (help humans)",
+         "AI assists; a human decides",
+         "AI highlights a suspicious spot on an X-ray, the radiologist decides"
+        ],
+        [
+         "Creation (new jobs)",
+         "Jobs that did not exist before",
+         "Prompt designer, data annotator, AI ethicist, MLOps engineer"
+        ]
+       ],
+       "hi": [
+        [
+         "स्वचालन (कामों की जगह लेना)",
+         "कोई काम पूरी तरह AI करता है",
+         "चेक का विवरण अपने आप पढ़ना; 'मेरा खाता शेष क्या है?' का उत्तर देता chatbot"
+        ],
+        [
+         "संवर्धन (मनुष्यों की मदद)",
+         "AI सहायता करता है; निर्णय मनुष्य लेता है",
+         "AI X-ray पर संदिग्ध स्थान दिखाता है, निर्णय रेडियोलॉजिस्ट लेता है"
+        ],
+        [
+         "सृजन (नई नौकरियाँ)",
+         "ऐसी नौकरियाँ जो पहले नहीं थीं",
+         "प्रॉम्प्ट डिज़ाइनर, data annotator, AI ethicist, MLOps इंजीनियर"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "The safest career strategy is not to compete with AI at routine work but to learn to work with AI: combine subject knowledge, AI tools and human strengths such as judgement, creativity, empathy and communication.",
+      "hi": "सबसे सुरक्षित करियर रणनीति नियमित काम में AI से प्रतिस्पर्धा करना नहीं, बल्कि AI के साथ काम करना सीखना है: विषय-ज्ञान, AI उपकरण और निर्णय-क्षमता, रचनात्मकता, सहानुभूति तथा संवाद जैसी मानवीय शक्तियों को जोड़िए।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A bank's call centre starts using a chatbot for common questions. What can happen to the jobs of the call-centre staff, and how can they prepare?",
+       "hi": "एक बैंक का कॉल सेंटर सामान्य प्रश्नों के लिए chatbot उपयोग करने लगता है। कॉल-सेंटर कर्मचारियों की नौकरियों पर क्या असर हो सकता है, और वे कैसे तैयारी कर सकते हैं?"
+      },
+      "a": {
+       "en": "Step 1: Simple repeated queries (balance, branch timings) move to the chatbot, so fewer people are needed for them.\nStep 2: Difficult or emotional cases (fraud complaints, loan problems) still need humans, so remaining staff handle higher-value work.\nStep 3: New tasks appear: checking chatbot answers, writing and improving its replies, analysing complaint data.\nStep 4: Staff can upskill in communication, problem-solving and basic data/AI tools, or reskill for roles such as chatbot trainer or customer-experience analyst.",
+       "hi": "चरण 1: सरल दोहराए जाने वाले प्रश्न (शेष राशि, शाखा का समय) chatbot पर चले जाते हैं, इसलिए उनके लिए कम लोग चाहिए।\nचरण 2: कठिन या भावनात्मक मामले (धोखाधड़ी शिकायतें, ऋण समस्याएँ) में अब भी मनुष्य चाहिए, इसलिए बचे कर्मचारी अधिक मूल्य वाला काम सँभालते हैं।\nचरण 3: नए काम आते हैं: chatbot के उत्तर जाँचना, उसके जवाब लिखना और सुधारना, शिकायतों के data का विश्लेषण।\nचरण 4: कर्मचारी संवाद, समस्या-समाधान और बुनियादी data/AI उपकरणों में upskill कर सकते हैं, या chatbot trainer या customer-experience analyst जैसी भूमिकाओं के लिए reskill कर सकते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.4 Common job roles in AI",
+    "hi": "2.4 AI में सामान्य नौकरी भूमिकाएँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Below are nine common AI job roles from the CBSE handbook. For each, read what the person does and what they need to know. Many real job titles mix these roles.",
+      "hi": "नीचे CBSE हैंडबुक से AI की नौ सामान्य नौकरी भूमिकाएँ दी गई हैं। हर एक के लिए पढ़िए कि वह व्यक्ति क्या करता है और उसे क्या जानना चाहिए। कई वास्तविक पदनाम इन भूमिकाओं का मिश्रण होते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "1. Machine Learning Engineer",
+       "hi": "1. मशीन लर्निंग इंजीनियर"
+      },
+      "text": {
+       "en": "Bridges software engineering and data science. Designs, trains and deploys ML models so that they work reliably inside real apps (for example a recommendation engine used by millions). Key skills: Programming in Python, Java or Scala; ML algorithms; big-data tools; software engineering practices.",
+       "hi": "सॉफ़्टवेयर इंजीनियरिंग और data science के बीच सेतु। ML model डिज़ाइन, प्रशिक्षित और लागू (deploy) करता है ताकि वे वास्तविक ऐप में भरोसे से चलें (जैसे लाखों लोगों द्वारा उपयोग किया जाने वाला सुझाव इंजन)। मुख्य कौशल: Python, Java या Scala में प्रोग्रामिंग; ML algorithm; big-data उपकरण; सॉफ़्टवेयर इंजीनियरिंग अभ्यास।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "2. Data Scientist",
+       "hi": "2. डेटा साइंटिस्ट"
+      },
+      "text": {
+       "en": "Collects, cleans and analyses large data, uses ML and predictive analytics to answer business questions (Which customers may leave? How much stock to order?) and presents insights. Key skills: Statistics and mathematics; SQL, Python, Scala; big-data tools like Hadoop, Pig and Spark; data visualisation; communication.",
+       "hi": "बड़ा data इकट्ठा, साफ़ और विश्लेषित करता है, व्यावसायिक प्रश्नों (कौन-से ग्राहक छोड़ सकते हैं? कितना स्टॉक मँगाएँ?) के उत्तर के लिए ML और predictive analytics उपयोग करता है और निष्कर्ष प्रस्तुत करता है। मुख्य कौशल: सांख्यिकी और गणित; SQL, Python, Scala; Hadoop, Pig और Spark जैसे big-data उपकरण; data visualisation; संवाद।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "3. Business Intelligence (BI) Developer",
+       "hi": "3. बिज़नेस इंटेलिजेंस (BI) डेवलपर"
+      },
+      "text": {
+       "en": "Designs and maintains data sets, data warehouses and dashboards that show business trends, so managers can make decisions (e.g. a sales dashboard for every state). Key skills: Data-warehouse design, SQL, BI tools, understanding of business processes.",
+       "hi": "ऐसे data set, data warehouse और dashboard डिज़ाइन और रखरखाव करता है जो व्यावसायिक रुझान दिखाते हैं, ताकि प्रबंधक निर्णय ले सकें (जैसे हर राज्य का बिक्री dashboard)। मुख्य कौशल: Data-warehouse डिज़ाइन, SQL, BI उपकरण, व्यावसायिक प्रक्रियाओं की समझ।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "4. Robotics Engineer",
+       "hi": "4. रोबोटिक्स इंजीनियर"
+      },
+      "text": {
+       "en": "Designs, builds and maintains AI-powered robots and machines, such as warehouse robots, agricultural drones or robotic arms in factories. Key skills: Mechanical, electrical and electronics engineering; programming; sensors; control systems; AI for perception and movement.",
+       "hi": "AI-चालित रोबोट और मशीनें डिज़ाइन, निर्मित और रखरखाव करता है, जैसे गोदाम रोबोट, कृषि ड्रोन या कारखानों की रोबोटिक भुजाएँ। मुख्य कौशल: यांत्रिक, विद्युत और इलेक्ट्रॉनिक्स इंजीनियरिंग; प्रोग्रामिंग; सेंसर; नियंत्रण प्रणालियाँ; देखने और चलने के लिए AI।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "5. Software Engineer (AI)",
+       "hi": "5. सॉफ़्टवेयर इंजीनियर (AI)"
+      },
+      "text": {
+       "en": "Builds and maintains software products that include AI features, such as an app with voice search or a photo-editing tool with automatic background removal. Key skills: Usually a degree in computer science, engineering or a related field; programming; software design; using AI APIs and libraries.",
+       "hi": "ऐसे सॉफ़्टवेयर उत्पाद बनाता और रखरखाव करता है जिनमें AI सुविधाएँ हों, जैसे वॉइस सर्च वाला ऐप या अपने आप पृष्ठभूमि हटाने वाला फ़ोटो-संपादन उपकरण। मुख्य कौशल: प्रायः कंप्यूटर विज्ञान, इंजीनियरिंग या संबंधित क्षेत्र में डिग्री; प्रोग्रामिंग; सॉफ़्टवेयर डिज़ाइन; AI API और libraries का उपयोग।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "6. NLP Engineer",
+       "hi": "6. NLP इंजीनियर"
+      },
+      "text": {
+       "en": "Builds systems that understand and generate human language: voice assistants, speech recognition, translation, chatbots and document processing (e.g. reading insurance claim forms). Key skills: Computational linguistics or a background in CS, mathematics or statistics; Python; NLP libraries; knowledge of languages, including Indian languages.",
+       "hi": "मानवीय भाषा समझने और बनाने वाले सिस्टम बनाता है: वॉइस असिस्टेंट, वाणी पहचान, अनुवाद, chatbot और दस्तावेज़ प्रसंस्करण (जैसे बीमा दावा फ़ॉर्म पढ़ना)। मुख्य कौशल: कम्प्यूटेशनल भाषाविज्ञान या CS, गणित या सांख्यिकी की पृष्ठभूमि; Python; NLP libraries; भारतीय भाषाओं सहित भाषाओं का ज्ञान।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "7. Computer Vision Engineer",
+       "hi": "7. कंप्यूटर विज़न इंजीनियर"
+      },
+      "text": {
+       "en": "Develops algorithms that analyse images and video: face recognition, defect detection on production lines, medical image analysis, number-plate reading. Key skills: Image processing; deep learning; Python and C++; libraries such as OpenCV.",
+       "hi": "चित्र और वीडियो का विश्लेषण करने वाले algorithm विकसित करता है: चेहरा पहचान, उत्पादन लाइन पर दोष पहचान, चिकित्सा चित्र विश्लेषण, नंबर-प्लेट पढ़ना। मुख्य कौशल: इमेज प्रोसेसिंग; deep learning; Python और C++; OpenCV जैसी libraries।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "8. AI Ethicist",
+       "hi": "8. AI एथिसिस्ट (नैतिकता विशेषज्ञ)"
+      },
+      "text": {
+       "en": "Creates and checks ethical frameworks for AI so that systems are fair, transparent and accountable; studies bias, privacy and social impact, and advises teams and policy makers. Key skills: Background in ethics, philosophy, law or social science plus a good understanding of how AI works; writing and reasoning.",
+       "hi": "AI के लिए नैतिक ढाँचे बनाता और जाँचता है ताकि सिस्टम निष्पक्ष, पारदर्शी और जवाबदेह हों; पक्षपात, निजता और सामाजिक प्रभाव का अध्ययन करता है, और टीमों तथा नीति-निर्माताओं को सलाह देता है। मुख्य कौशल: नैतिकता, दर्शनशास्त्र, विधि या सामाजिक विज्ञान की पृष्ठभूमि और AI के काम करने की अच्छी समझ; लेखन और तर्क।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "9. AI Consultant",
+       "hi": "9. AI कंसल्टेंट (सलाहकार)"
+      },
+      "text": {
+       "en": "Advises organisations on where and how to use AI, which solution to choose, and how to plan the change, e.g. helping a hospital chain choose an appointment-scheduling AI. Key skills: Understanding of business processes and AI; analytical skills; communication and presentation.",
+       "hi": "संस्थाओं को सलाह देता है कि AI कहाँ और कैसे उपयोग करें, कौन-सा समाधान चुनें और बदलाव की योजना कैसे बनाएँ, जैसे किसी अस्पताल शृंखला को अपॉइंटमेंट-शेड्यूलिंग AI चुनने में मदद करना। मुख्य कौशल: व्यावसायिक प्रक्रियाओं और AI की समझ; विश्लेषण कौशल; संवाद और प्रस्तुति।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Role",
+        "Works mostly with",
+        "Typical output"
+       ],
+       "hi": [
+        "भूमिका",
+        "मुख्य रूप से किसके साथ काम",
+        "सामान्य परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "ML Engineer",
+         "Models and code",
+         "A deployed model inside an app"
+        ],
+        [
+         "Data Scientist",
+         "Data and statistics",
+         "Insights, predictions, reports"
+        ],
+        [
+         "BI Developer",
+         "Data warehouses",
+         "Dashboards and trend reports"
+        ],
+        [
+         "Robotics Engineer",
+         "Machines, sensors, AI",
+         "Working robot"
+        ],
+        [
+         "Software Engineer (AI)",
+         "Software products",
+         "App or software with AI features"
+        ],
+        [
+         "NLP Engineer",
+         "Text and speech",
+         "Chatbot, translator, speech system"
+        ],
+        [
+         "CV Engineer",
+         "Images and video",
+         "Detection or recognition system"
+        ],
+        [
+         "AI Ethicist",
+         "Policies, people, models",
+         "Guidelines, audits, fairness reports"
+        ],
+        [
+         "AI Consultant",
+         "Business leaders",
+         "AI strategy and plan"
+        ]
+       ],
+       "hi": [
+        [
+         "ML इंजीनियर",
+         "Model और कोड",
+         "ऐप में लगा हुआ model"
+        ],
+        [
+         "डेटा साइंटिस्ट",
+         "data और सांख्यिकी",
+         "निष्कर्ष, अनुमान, रिपोर्ट"
+        ],
+        [
+         "BI डेवलपर",
+         "Data warehouse",
+         "Dashboard और रुझान रिपोर्ट"
+        ],
+        [
+         "रोबोटिक्स इंजीनियर",
+         "मशीनें, सेंसर, AI",
+         "काम करता रोबोट"
+        ],
+        [
+         "सॉफ़्टवेयर इंजीनियर (AI)",
+         "सॉफ़्टवेयर उत्पाद",
+         "AI सुविधाओं वाला ऐप या सॉफ़्टवेयर"
+        ],
+        [
+         "NLP इंजीनियर",
+         "पाठ और वाणी",
+         "Chatbot, अनुवादक, वाणी सिस्टम"
+        ],
+        [
+         "CV इंजीनियर",
+         "चित्र और वीडियो",
+         "पहचान प्रणाली"
+        ],
+        [
+         "AI एथिसिस्ट",
+         "नीतियाँ, लोग, model",
+         "दिशानिर्देश, ऑडिट, निष्पक्षता रिपोर्ट"
+        ],
+        [
+         "AI कंसल्टेंट",
+         "व्यवसाय प्रमुख",
+         "AI रणनीति और योजना"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Other roles you may see in job portals: data analyst, data engineer, data annotator/labeller, MLOps engineer, AI product manager, AI researcher, prompt engineer, AI trainer, AI test engineer. Titles change quickly; focus on the underlying skills.",
+      "hi": "जॉब पोर्टल पर दिखने वाली अन्य भूमिकाएँ: data analyst, data engineer, data annotator/labeller, MLOps इंजीनियर, AI product manager, AI शोधकर्ता, prompt engineer, AI trainer, AI test engineer। पदनाम जल्दी बदलते हैं; मूल कौशलों पर ध्यान दें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.5 Practical activity 1: find ten companies hiring for AI roles",
+    "hi": "2.5 प्रायोगिक गतिविधि 1: AI भूमिकाओं के लिए भर्ती करने वाली दस कंपनियाँ खोजिए"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Aim: to see real demand for AI jobs. What you need: a phone or computer with internet, a notebook, a group of 3–4 students. Public job portals and company career pages can be browsed without signing in; for example the National Career Service portal (ncs.gov.in), company 'Careers' pages and well-known job sites.",
+      "hi": "उद्देश्य: AI नौकरियों की वास्तविक माँग देखना। क्या चाहिए: इंटरनेट वाला फ़ोन या कंप्यूटर, कॉपी, 3–4 विद्यार्थियों का समूह। सार्वजनिक जॉब पोर्टल और कंपनियों के करियर पेज बिना लॉग-इन के देखे जा सकते हैं; उदाहरण के लिए नेशनल करियर सर्विस पोर्टल (ncs.gov.in), कंपनियों के 'Careers' पेज और प्रसिद्ध जॉब साइटें।"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Step 1: Each group picks two or three roles from Section 2.4 (e.g. Data Scientist, NLP Engineer).",
+       "Step 2: Search with the exact role name plus 'India', e.g. 'Computer Vision Engineer jobs India'.",
+       "Step 3: List ten different companies currently advertising those roles, with role, city and date of posting.",
+       "Step 4: Note the type of each company: IT services, product/tech company, bank, hospital, start-up, government, manufacturing, e-commerce.",
+       "Step 5: Present your table to the class and compare."
+      ],
+      "hi": [
+       "चरण 1: हर समूह खंड 2.4 से दो या तीन भूमिकाएँ चुने (जैसे डेटा साइंटिस्ट, NLP इंजीनियर)।",
+       "चरण 2: भूमिका का सटीक नाम और 'India' जोड़कर खोजें, जैसे 'Computer Vision Engineer jobs India'।",
+       "चरण 3: इस समय वे भूमिकाएँ विज्ञापित करने वाली दस अलग कंपनियों की सूची बनाएँ, भूमिका, शहर और पोस्टिंग की तिथि सहित।",
+       "चरण 4: हर कंपनी का प्रकार लिखें: IT सेवाएँ, उत्पाद/टेक कंपनी, बैंक, अस्पताल, start-up, सरकार, विनिर्माण, ई-कॉमर्स।",
+       "चरण 5: अपनी तालिका कक्षा के सामने रखें और तुलना करें।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "No.",
+        "Company (example type)",
+        "AI role advertised",
+        "City / remote",
+        "Date seen"
+       ],
+       "hi": [
+        "क्र.",
+        "कंपनी (उदाहरण प्रकार)",
+        "विज्ञापित AI भूमिका",
+        "शहर / रिमोट",
+        "देखने की तिथि"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "1",
+         "An IT services company",
+         "Machine Learning Engineer",
+         "Bengaluru",
+         "…"
+        ],
+        [
+         "2",
+         "A private bank",
+         "Fraud Detection Analyst",
+         "Mumbai",
+         "…"
+        ],
+        [
+         "3",
+         "A health-tech start-up",
+         "Computer Vision Engineer",
+         "Hyderabad",
+         "…"
+        ],
+        [
+         "…",
+         "(continue up to 10)",
+         "…",
+         "…",
+         "…"
+        ]
+       ],
+       "hi": [
+        [
+         "1",
+         "एक IT सेवा कंपनी",
+         "मशीन लर्निंग इंजीनियर",
+         "बेंगलुरु",
+         "…"
+        ],
+        [
+         "2",
+         "एक निजी बैंक",
+         "धोखाधड़ी पहचान विश्लेषक",
+         "मुंबई",
+         "…"
+        ],
+        [
+         "3",
+         "एक हेल्थ-टेक start-up",
+         "कंप्यूटर विज़न इंजीनियर",
+         "हैदराबाद",
+         "…"
+        ],
+        [
+         "…",
+         "(10 तक जारी रखें)",
+         "…",
+         "…",
+         "…"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "What you observe: AI roles are offered not only by tech companies but also by banks, hospitals, car makers, retailers and government bodies, and in many cities. What it teaches: AI careers exist in almost every industry, and the same role name can mean slightly different work in different companies.",
+      "hi": "आप क्या देखते हैं: AI भूमिकाएँ केवल टेक कंपनियाँ नहीं, बल्कि बैंक, अस्पताल, कार निर्माता, खुदरा विक्रेता और सरकारी संस्थाएँ भी देती हैं, और कई शहरों में। यह क्या सिखाता है: AI करियर लगभग हर उद्योग में हैं, और एक ही भूमिका-नाम का अर्थ अलग कंपनियों में थोड़ा अलग काम हो सकता है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Safety: never pay money to anyone promising a job, never share Aadhaar, PAN, bank details or OTP for a 'job offer', and do not create accounts on job portals without a parent's or teacher's guidance. Genuine companies do not ask for fees to interview you. Report job scams on cybercrime.gov.in or call 1930.",
+      "hi": "सुरक्षा: नौकरी का वादा करने वाले किसी व्यक्ति को कभी पैसे न दें, 'नौकरी के प्रस्ताव' के लिए आधार, PAN, बैंक विवरण या OTP कभी साझा न करें, और माता-पिता या शिक्षक के मार्गदर्शन के बिना जॉब पोर्टल पर खाते न बनाएँ। असली कंपनियाँ इंटरव्यू के लिए शुल्क नहीं माँगतीं। नौकरी धोखाधड़ी की रिपोर्ट cybercrime.gov.in पर करें या 1930 पर कॉल करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.6 Essential skills: technical and soft",
+    "hi": "2.6 आवश्यक कौशल: तकनीकी और सॉफ़्ट"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "An AI professional needs two kinds of skills. Technical (hard) skills are the specific knowledge and tools needed to build AI. Soft skills are personal and social abilities that help you work with people and use your technical skills well. Employers look for both.",
+      "hi": "AI पेशेवर को दो प्रकार के कौशल चाहिए। तकनीकी (hard) कौशल AI बनाने के लिए आवश्यक विशेष ज्ञान और उपकरण हैं। सॉफ़्ट कौशल व्यक्तिगत और सामाजिक क्षमताएँ हैं जो लोगों के साथ काम करने और अपने तकनीकी कौशल का अच्छा उपयोग करने में मदद करती हैं। नियोक्ता दोनों देखते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Technical skills",
+       "hi": "तकनीकी कौशल"
+      },
+      "text": {
+       "en": "Job-specific, measurable abilities such as programming, mathematics and using AI frameworks.",
+       "hi": "काम-विशेष, मापने योग्य क्षमताएँ, जैसे प्रोग्रामिंग, गणित और AI frameworks का उपयोग।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "1. Neural networks, machine learning and deep learning: understanding how models learn, how to train and test them and how to improve accuracy.",
+       "2. Big-data technologies: handling data too large for one computer, using tools such as Hadoop and Spark and cloud storage.",
+       "3. Frameworks and libraries: ready-made code collections such as TensorFlow, PyTorch, scikit-learn, NumPy, SciPy and Pandas that save time.",
+       "4. Programming languages: Python (most popular for AI), R, Java and C++; plus SQL for databases.",
+       "5. Mathematics: linear algebra (vectors and matrices), probability, statistics and, for sound/image work, signal processing; calculus helps understand how models are optimised."
+      ],
+      "hi": [
+       "1. Neural network, machine learning और deep learning: model कैसे सीखते हैं, उन्हें कैसे प्रशिक्षित और जाँचें, और सटीकता कैसे सुधारें, इसकी समझ।",
+       "2. Big-data तकनीकें: एक कंप्यूटर के लिए बहुत बड़े data को सँभालना, Hadoop और Spark जैसे उपकरण तथा क्लाउड स्टोरेज का उपयोग।",
+       "3. Frameworks और libraries: TensorFlow, PyTorch, scikit-learn, NumPy, SciPy और Pandas जैसे तैयार कोड संग्रह जो समय बचाते हैं।",
+       "4. प्रोग्रामिंग भाषाएँ: Python (AI के लिए सबसे लोकप्रिय), R, Java और C++; साथ में डेटाबेस के लिए SQL।",
+       "5. गणित: रैखिक बीजगणित (vectors और matrices), प्रायिकता, सांख्यिकी, और ध्वनि/चित्र कार्य के लिए signal processing; कलन (calculus) यह समझने में मदद करता है कि model कैसे अनुकूलित होते हैं।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Soft skills",
+       "hi": "सॉफ़्ट कौशल"
+      },
+      "text": {
+       "en": "Personal, social and thinking abilities that decide how well you work with others and solve problems.",
+       "hi": "व्यक्तिगत, सामाजिक और चिंतन क्षमताएँ जो तय करती हैं कि आप दूसरों के साथ कितना अच्छा काम करते हैं और समस्याएँ हल करते हैं।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "1. Effective communication: explaining technical results in simple words to non-technical people such as managers, doctors or farmers.",
+       "2. Teamwork and collaboration: AI projects involve data engineers, domain experts, designers and testers working together.",
+       "3. Problem-solving, decision-making and analytical thinking: breaking a big problem into parts and choosing the best approach.",
+       "4. Time management and organisation: handling deadlines, long training runs and many experiments in an orderly way.",
+       "5. Business intelligence and critical thinking: understanding what the business or user really needs and questioning results instead of accepting them blindly."
+      ],
+      "hi": [
+       "1. प्रभावी संवाद: तकनीकी परिणामों को प्रबंधकों, डॉक्टरों या किसानों जैसे गैर-तकनीकी लोगों को सरल शब्दों में समझाना।",
+       "2. टीमवर्क और सहयोग: AI परियोजनाओं में data इंजीनियर, क्षेत्र विशेषज्ञ, डिज़ाइनर और परीक्षक मिलकर काम करते हैं।",
+       "3. समस्या-समाधान, निर्णय-क्षमता और विश्लेषणात्मक सोच: बड़ी समस्या को भागों में बाँटना और सबसे अच्छा तरीका चुनना।",
+       "4. समय प्रबंधन और व्यवस्था: समय-सीमाओं, लंबे प्रशिक्षण और कई प्रयोगों को व्यवस्थित ढंग से सँभालना।",
+       "5. व्यावसायिक समझ और आलोचनात्मक सोच: व्यवसाय या उपयोगकर्ता की वास्तविक ज़रूरत समझना और परिणामों को आँख मूँदकर मानने के बजाय उन पर प्रश्न करना।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "Other valuable qualities: curiosity and continuous learning (AI changes every year), creativity, ethics and empathy for users, and comfort with English plus at least one Indian language, which is a big advantage for Indian-language AI.",
+      "hi": "अन्य मूल्यवान गुण: जिज्ञासा और निरंतर सीखना (AI हर साल बदलता है), रचनात्मकता, उपयोगकर्ताओं के प्रति नैतिकता और सहानुभूति, और अंग्रेज़ी के साथ कम से कम एक भारतीय भाषा में सहजता, जो भारतीय-भाषा AI के लिए बड़ा लाभ है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Technical skills",
+        "Soft skills"
+       ],
+       "hi": [
+        "तकनीकी कौशल",
+        "सॉफ़्ट कौशल"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Python programming",
+         "Communication"
+        ],
+        [
+         "Statistics and probability",
+         "Teamwork"
+        ],
+        [
+         "Using TensorFlow/scikit-learn",
+         "Problem-solving"
+        ],
+        [
+         "Big-data tools",
+         "Time management"
+        ],
+        [
+         "Linear algebra",
+         "Critical thinking"
+        ]
+       ],
+       "hi": [
+        [
+         "Python प्रोग्रामिंग",
+         "संवाद"
+        ],
+        [
+         "सांख्यिकी और प्रायिकता",
+         "टीमवर्क"
+        ],
+        [
+         "TensorFlow/scikit-learn का उपयोग",
+         "समस्या-समाधान"
+        ],
+        [
+         "Big-data उपकरण",
+         "समय प्रबंधन"
+        ],
+        [
+         "रैखिक बीजगणित",
+         "आलोचनात्मक सोच"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "A data scientist builds a model that predicts which students may need extra help in maths. Which technical and soft skills will she use?",
+       "hi": "एक डेटा साइंटिस्ट ऐसा model बनाती है जो बताता है कि किन विद्यार्थियों को गणित में अतिरिक्त मदद चाहिए। वह कौन-से तकनीकी और सॉफ़्ट कौशल उपयोग करेगी?"
+      },
+      "a": {
+       "en": "Technical: Python and Pandas to clean marks data; statistics to find patterns; an ML algorithm (e.g. a decision tree) to predict; charts to show results.\nSoft: talking to teachers to understand the real problem (business intelligence); explaining results simply to the principal (communication); being careful not to label students unfairly and keeping data private (critical thinking and ethics); finishing on time for the next term (time management).",
+       "hi": "तकनीकी: अंकों के data को साफ़ करने के लिए Python और Pandas; पैटर्न ढूँढने के लिए सांख्यिकी; अनुमान के लिए ML algorithm (जैसे decision tree); परिणाम दिखाने के लिए चार्ट।\nसॉफ़्ट: वास्तविक समस्या समझने के लिए शिक्षकों से बात करना (व्यावसायिक समझ); प्रधानाचार्य को सरल शब्दों में परिणाम समझाना (संवाद); विद्यार्थियों पर अनुचित ठप्पा न लगाने और data निजी रखने की सावधानी (आलोचनात्मक सोच और नैतिकता); अगले सत्र से पहले समय पर पूरा करना (समय प्रबंधन)।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.7 The AI professional's toolkit",
+    "hi": "2.7 AI पेशेवर का टूलकिट"
+   },
+   "blocks": [
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Tool",
+        "What it is",
+        "Used for"
+       ],
+       "hi": [
+        "उपकरण",
+        "यह क्या है",
+        "किसके लिए उपयोग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Python",
+         "Easy-to-read, free programming language with a huge set of libraries",
+         "Data analysis, ML, DL, automation; the main language of this course (Chapter 3)"
+        ],
+        [
+         "R",
+         "Language designed for statistics",
+         "Collecting, organising and analysing data, statistical models and graphs"
+        ],
+        [
+         "Java",
+         "Widely used, object-oriented language",
+         "Large enterprise AI systems, ML libraries, neural network applications, Android apps"
+        ],
+        [
+         "C++",
+         "Fast language supporting object-oriented and procedural programming, close to hardware",
+         "Speed-critical AI, robotics, games, computer vision, running models on devices"
+        ],
+        [
+         "TensorFlow",
+         "Free, open-source ML platform originally developed by Google",
+         "Building and training neural networks and deploying them on servers, phones and the web"
+        ],
+        [
+         "NumPy and SciPy",
+         "Python libraries for scientific computing",
+         "Fast maths on arrays and matrices (NumPy); statistics, optimisation, signal processing (SciPy)"
+        ]
+       ],
+       "hi": [
+        [
+         "Python",
+         "पढ़ने में आसान, मुफ़्त प्रोग्रामिंग भाषा जिसकी libraries का विशाल संग्रह है",
+         "data विश्लेषण, ML, DL, स्वचालन; इस पाठ्यक्रम की मुख्य भाषा (अध्याय 3)"
+        ],
+        [
+         "R",
+         "सांख्यिकी के लिए बनी भाषा",
+         "data इकट्ठा करना, व्यवस्थित और विश्लेषित करना, सांख्यिकीय model और ग्राफ़"
+        ],
+        [
+         "Java",
+         "व्यापक रूप से प्रयुक्त, object-oriented भाषा",
+         "बड़े उद्यम AI सिस्टम, ML libraries, neural network अनुप्रयोग, Android ऐप"
+        ],
+        [
+         "C++",
+         "तेज़ भाषा जो object-oriented और procedural प्रोग्रामिंग दोनों देती है, हार्डवेयर के निकट",
+         "गति-महत्वपूर्ण AI, रोबोटिक्स, गेम, कंप्यूटर विज़न, उपकरणों पर model चलाना"
+        ],
+        [
+         "TensorFlow",
+         "मुफ़्त, open-source ML प्लेटफ़ॉर्म जिसे मूल रूप से Google ने विकसित किया",
+         "neural network बनाना, प्रशिक्षित करना और सर्वर, फ़ोन तथा वेब पर लागू करना"
+        ],
+        [
+         "NumPy और SciPy",
+         "वैज्ञानिक गणना के लिए Python libraries",
+         "arrays और matrices पर तेज़ गणित (NumPy); सांख्यिकी, अनुकूलन, signal processing (SciPy)"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Other common tools: Pandas (tables of data), Matplotlib (charts), scikit-learn (classic ML), PyTorch (deep learning), Jupyter Notebook and Google Colab (writing and running Python in a browser), SQL (databases), Git and GitHub (saving and sharing code), and spreadsheet software for quick analysis. No-code tools like Teachable Machine let beginners train models without programming.",
+      "hi": "अन्य सामान्य उपकरण: Pandas (data की तालिकाएँ), Matplotlib (चार्ट), scikit-learn (पारंपरिक ML), PyTorch (deep learning), Jupyter Notebook और Google Colab (ब्राउज़र में Python लिखना और चलाना), SQL (डेटाबेस), Git और GitHub (कोड सहेजना और साझा करना), और त्वरित विश्लेषण के लिए spreadsheet सॉफ़्टवेयर। Teachable Machine जैसे no-code उपकरण शुरुआती लोगों को बिना प्रोग्रामिंग के model प्रशिक्षित करने देते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Framework vs library",
+       "hi": "Framework बनाम library"
+      },
+      "text": {
+       "en": "A library is a collection of ready-made functions you call when you need them (e.g. NumPy). A framework is a larger structure that gives the overall way to build an application and calls your code within it (e.g. TensorFlow for building neural networks). In everyday talk the two words are often used loosely.",
+       "hi": "library तैयार functions का संग्रह है जिन्हें आप ज़रूरत पर बुलाते हैं (जैसे NumPy)। framework एक बड़ा ढाँचा है जो पूरा application बनाने का तरीका देता है और उसके भीतर आपका कोड चलाता है (जैसे neural network बनाने के लिए TensorFlow)। रोज़ की बातचीत में दोनों शब्द प्रायः ढीले ढंग से उपयोग होते हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "You do not need to learn all tools at once. A good path is: Python basics → NumPy/Pandas/Matplotlib → scikit-learn → a deep-learning framework, with mathematics and statistics alongside.",
+      "hi": "सारे उपकरण एक साथ सीखने की ज़रूरत नहीं। एक अच्छा रास्ता है: Python की मूल बातें → NumPy/Pandas/Matplotlib → scikit-learn → एक deep-learning framework, और साथ-साथ गणित तथा सांख्यिकी।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.8 Practical activity 2: compare the skills two companies ask for",
+    "hi": "2.8 प्रायोगिक गतिविधि 2: दो कंपनियों द्वारा माँगे गए कौशलों की तुलना"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Aim: to understand what employers really expect for one AI role. What you need: two job advertisements for the same role (from Activity 1). What to do: read each advertisement carefully and fill in the table below. Then circle the skills that appear in both, and underline the skills you already have or can start learning this year.",
+      "hi": "उद्देश्य: यह समझना कि किसी एक AI भूमिका के लिए नियोक्ता वास्तव में क्या अपेक्षा करते हैं। क्या चाहिए: एक ही भूमिका के दो नौकरी विज्ञापन (गतिविधि 1 से)। क्या करें: हर विज्ञापन ध्यान से पढ़ें और नीचे दी तालिका भरें। फिर दोनों में आने वाले कौशलों पर गोला बनाएँ, और उन कौशलों को रेखांकित करें जो आपके पास पहले से हैं या जिन्हें आप इस वर्ष सीखना शुरू कर सकते हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Item",
+        "Company A",
+        "Company B"
+       ],
+       "hi": [
+        "मद",
+        "कंपनी A",
+        "कंपनी B"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Role",
+         "e.g. Data Scientist",
+         "e.g. Data Scientist"
+        ],
+        [
+         "Technical skills listed",
+         "e.g. Python, SQL, statistics, ML",
+         "e.g. Python, Spark, deep learning"
+        ],
+        [
+         "Soft skills listed",
+         "e.g. communication, teamwork",
+         "e.g. problem-solving, stakeholder management"
+        ],
+        [
+         "Education asked",
+         "e.g. B.Tech/B.Sc",
+         "e.g. any degree with relevant skills"
+        ],
+        [
+         "Link to careers page",
+         "…",
+         "…"
+        ]
+       ],
+       "hi": [
+        [
+         "भूमिका",
+         "जैसे डेटा साइंटिस्ट",
+         "जैसे डेटा साइंटिस्ट"
+        ],
+        [
+         "सूचीबद्ध तकनीकी कौशल",
+         "जैसे Python, SQL, सांख्यिकी, ML",
+         "जैसे Python, Spark, deep learning"
+        ],
+        [
+         "सूचीबद्ध सॉफ़्ट कौशल",
+         "जैसे संवाद, टीमवर्क",
+         "जैसे समस्या-समाधान, हितधारक प्रबंधन"
+        ],
+        [
+         "माँगी गई शिक्षा",
+         "जैसे B.Tech/B.Sc",
+         "जैसे संबंधित कौशल के साथ कोई भी डिग्री"
+        ],
+        [
+         "करियर पेज का लिंक",
+         "…",
+         "…"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "What you observe: Python, statistics and communication appear in almost every advertisement; specialised tools differ. What it teaches: build a strong common base first and then specialise.",
+      "hi": "आप क्या देखते हैं: Python, सांख्यिकी और संवाद लगभग हर विज्ञापन में होते हैं; विशेष उपकरण अलग होते हैं। यह क्या सिखाता है: पहले मज़बूत साझा आधार बनाएँ और फिर विशेषज्ञता लें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.9 Opportunities in AI across industries",
+    "hi": "2.9 विभिन्न उद्योगों में AI के अवसर"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI is not one industry; it is a tool used inside almost every industry. The table below lists sixteen industries from the CBSE handbook, three example AI job roles in each, the school subjects that help, and what AI does there. Notice that 'CS/AI' appears everywhere, but it is always combined with another subject.",
+      "hi": "AI कोई एक उद्योग नहीं; यह लगभग हर उद्योग के भीतर उपयोग होने वाला उपकरण है। नीचे दी तालिका में CBSE हैंडबुक के सोलह उद्योग, हर एक में तीन उदाहरण AI भूमिकाएँ, सहायक स्कूली विषय, और वहाँ AI क्या करता है, यह दिया गया है। ध्यान दें कि 'CS/AI' हर जगह है, पर वह हमेशा किसी दूसरे विषय के साथ जुड़ा है।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Industry",
+        "Example AI job roles",
+        "Helpful subjects",
+        "What AI does there"
+       ],
+       "hi": [
+        "उद्योग",
+        "उदाहरण AI भूमिकाएँ",
+        "सहायक विषय",
+        "वहाँ AI क्या करता है"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Automobile",
+         "Autonomous Vehicle Engineer, Simulation Engineer, Robotics Engineer",
+         "Mathematics, Physics, CS/AI",
+         "Driver-assistance features like lane-keeping and automatic braking; testing cars in simulation"
+        ],
+        [
+         "Agriculture",
+         "Precision Agriculture Specialist, Crop Yield Prediction Analyst, Livestock Monitoring Specialist",
+         "Biology, Mathematics, CS/AI",
+         "Crop-disease detection from leaf photos, soil and weather-based advice, drone spraying"
+        ],
+        [
+         "Retail",
+         "Inventory Management Specialist, Sales Forecasting Analyst, Customer Experience Designer",
+         "Business Studies, Mathematics, CS/AI",
+         "Predicting demand before festivals, product recommendations, quick-commerce delivery planning"
+        ],
+        [
+         "Media",
+         "Visual Effects Artist, Content Creator, Audience Analyst",
+         "Fine Arts, Media Studies, CS/AI",
+         "VFX in films, automatic subtitles and dubbing, understanding what viewers like"
+        ],
+        [
+         "Information Technology",
+         "Machine Learning Engineer, AI Software Developer, AI Infrastructure Specialist",
+         "CS/AI, Mathematics, Physics",
+         "Building AI products and services, managing cloud servers and GPUs that run AI"
+        ],
+        [
+         "Healthcare",
+         "Medical Imaging Analyst, Virtual Nurse Assistant, Drug Discovery Researcher",
+         "Biology, Chemistry, CS/AI",
+         "Reading X-rays and scans, screening for TB or eye disease, finding new medicines faster"
+        ],
+        [
+         "Finance",
+         "Quantitative Analyst, Fraud Detection Analyst, Financial Advisor",
+         "Economics, Mathematics, CS/AI",
+         "Market analysis, risk models, spotting unusual transactions"
+        ],
+        [
+         "Government & Military",
+         "National Security Analyst, Defence Contractor, Government AI Specialist",
+         "Political Science, CS/AI, Mathematics",
+         "Citizen-service chatbots, disaster monitoring, cyber security, defence systems"
+        ],
+        [
+         "Tourism",
+         "Travel Recommendation Engine Developer, Customer-Service Chatbot Developer, Smart Travel Itinerary Planner",
+         "Geography, Business Studies, CS/AI",
+         "Suggesting places and hotels, travel chatbots, multilingual guides"
+        ],
+        [
+         "Beauty & Wellness",
+         "AI-powered Skincare Assistant, Virtual Hair Stylist, Wellness Chatbot",
+         "Chemistry, Biology, CS/AI",
+         "Skin analysis from selfies, virtual try-on of hairstyles, fitness and diet apps"
+        ],
+        [
+         "Banking",
+         "Loan Approval Specialist, Fraud Detection Analyst, Financial Advisor",
+         "Economics, Mathematics, CS/AI",
+         "Credit scoring, UPI fraud alerts, banking chatbots, KYC document checking"
+        ],
+        [
+         "Geospatial",
+         "GIS Specialist, Remote Sensing Analyst, Mapping Technician",
+         "Geography, Geology, CS/AI",
+         "Analysing satellite images for floods, crops and city planning; digital maps"
+        ],
+        [
+         "Textile",
+         "AI-powered Fabric Design Specialist, Textile Quality Control Inspector, Smart Inventory Management Specialist",
+         "Chemistry, Art & Design, CS/AI",
+         "Generating new fabric patterns, camera-based defect detection in looms"
+        ],
+        [
+         "Design",
+         "Generative Design Assistant, AI-powered UX Designer, AI-powered Content Creator",
+         "Art & Design, CS/AI, Mathematics",
+         "Using generative AI for drafts of logos and layouts, testing app designs with users"
+        ],
+        [
+         "Sales & Marketing",
+         "Marketing Campaign Automation Specialist, Customer Segmentation Analyst, Sales Forecasting Analyst",
+         "Business Studies, Mathematics, CS/AI",
+         "Targeted ads, grouping customers, predicting sales"
+        ],
+        [
+         "Fashion",
+         "AI-powered Fashion Stylist, Trend Analyst, Virtual Clothing Try-on Specialist",
+         "Fashion Design, Mathematics, CS/AI",
+         "Predicting trends from social media, virtual trial rooms, size recommendation"
+        ]
+       ],
+       "hi": [
+        [
+         "ऑटोमोबाइल",
+         "स्वायत्त वाहन इंजीनियर, सिमुलेशन इंजीनियर, रोबोटिक्स इंजीनियर",
+         "गणित, भौतिकी, CS/AI",
+         "लेन में बने रहना और स्वचालित ब्रेक जैसी चालक-सहायता सुविधाएँ; सिमुलेशन में कारों का परीक्षण"
+        ],
+        [
+         "कृषि",
+         "परिशुद्ध कृषि विशेषज्ञ, फ़सल उपज अनुमान विश्लेषक, पशुधन निगरानी विशेषज्ञ",
+         "जीवविज्ञान, गणित, CS/AI",
+         "पत्ती की फ़ोटो से फ़सल-रोग पहचान, मिट्टी और मौसम आधारित सलाह, ड्रोन से छिड़काव"
+        ],
+        [
+         "खुदरा (Retail)",
+         "इन्वेंटरी प्रबंधन विशेषज्ञ, बिक्री पूर्वानुमान विश्लेषक, ग्राहक अनुभव डिज़ाइनर",
+         "व्यवसाय अध्ययन, गणित, CS/AI",
+         "त्योहारों से पहले माँग का अनुमान, उत्पाद सुझाव, क्विक-कॉमर्स डिलीवरी योजना"
+        ],
+        [
+         "मीडिया",
+         "विज़ुअल इफ़ेक्ट्स कलाकार, कंटेंट क्रिएटर, दर्शक विश्लेषक",
+         "ललित कला, मीडिया अध्ययन, CS/AI",
+         "फ़िल्मों में VFX, स्वचालित उपशीर्षक और डबिंग, दर्शकों की पसंद समझना"
+        ],
+        [
+         "सूचना प्रौद्योगिकी (IT)",
+         "मशीन लर्निंग इंजीनियर, AI सॉफ़्टवेयर डेवलपर, AI इन्फ्रास्ट्रक्चर विशेषज्ञ",
+         "CS/AI, गणित, भौतिकी",
+         "AI उत्पाद और सेवाएँ बनाना, AI चलाने वाले क्लाउड सर्वर और GPU का प्रबंधन"
+        ],
+        [
+         "स्वास्थ्य सेवा",
+         "मेडिकल इमेजिंग विश्लेषक, वर्चुअल नर्स सहायक, दवा खोज शोधकर्ता",
+         "जीवविज्ञान, रसायन, CS/AI",
+         "X-ray और स्कैन पढ़ना, TB या नेत्र रोग की जाँच, नई दवाएँ जल्दी खोजना"
+        ],
+        [
+         "वित्त",
+         "क्वांटिटेटिव विश्लेषक, धोखाधड़ी पहचान विश्लेषक, वित्तीय सलाहकार",
+         "अर्थशास्त्र, गणित, CS/AI",
+         "बाज़ार विश्लेषण, जोखिम model, असामान्य लेन-देन पकड़ना"
+        ],
+        [
+         "सरकार और सेना",
+         "राष्ट्रीय सुरक्षा विश्लेषक, रक्षा ठेकेदार, सरकारी AI विशेषज्ञ",
+         "राजनीति विज्ञान, CS/AI, गणित",
+         "नागरिक-सेवा chatbot, आपदा निगरानी, साइबर सुरक्षा, रक्षा प्रणालियाँ"
+        ],
+        [
+         "पर्यटन",
+         "यात्रा सुझाव इंजन डेवलपर, ग्राहक-सेवा chatbot डेवलपर, स्मार्ट यात्रा कार्यक्रम योजनाकार",
+         "भूगोल, व्यवसाय अध्ययन, CS/AI",
+         "स्थान और होटल सुझाना, यात्रा chatbot, बहुभाषी गाइड"
+        ],
+        [
+         "सौंदर्य और कल्याण",
+         "AI-आधारित त्वचा देखभाल सहायक, वर्चुअल हेयर स्टाइलिस्ट, वेलनेस chatbot",
+         "रसायन, जीवविज्ञान, CS/AI",
+         "सेल्फ़ी से त्वचा विश्लेषण, हेयरस्टाइल का वर्चुअल ट्राई-ऑन, फ़िटनेस और आहार ऐप"
+        ],
+        [
+         "बैंकिंग",
+         "ऋण स्वीकृति विशेषज्ञ, धोखाधड़ी पहचान विश्लेषक, वित्तीय सलाहकार",
+         "अर्थशास्त्र, गणित, CS/AI",
+         "क्रेडिट स्कोरिंग, UPI धोखाधड़ी अलर्ट, बैंकिंग chatbot, KYC दस्तावेज़ जाँच"
+        ],
+        [
+         "भू-स्थानिक (Geospatial)",
+         "GIS विशेषज्ञ, रिमोट सेंसिंग विश्लेषक, मानचित्रण तकनीशियन",
+         "भूगोल, भूविज्ञान, CS/AI",
+         "बाढ़, फ़सल और नगर योजना के लिए उपग्रह चित्रों का विश्लेषण; डिजिटल मानचित्र"
+        ],
+        [
+         "वस्त्र (Textile)",
+         "AI-आधारित कपड़ा डिज़ाइन विशेषज्ञ, वस्त्र गुणवत्ता नियंत्रण निरीक्षक, स्मार्ट इन्वेंटरी प्रबंधन विशेषज्ञ",
+         "रसायन, कला और डिज़ाइन, CS/AI",
+         "नए कपड़ा पैटर्न बनाना, करघों में कैमरा-आधारित दोष पहचान"
+        ],
+        [
+         "डिज़ाइन",
+         "जनरेटिव डिज़ाइन सहायक, AI-आधारित UX डिज़ाइनर, AI-आधारित कंटेंट क्रिएटर",
+         "कला और डिज़ाइन, CS/AI, गणित",
+         "लोगो और लेआउट के मसौदों के लिए generative AI, उपयोगकर्ताओं के साथ ऐप डिज़ाइन का परीक्षण"
+        ],
+        [
+         "बिक्री और विपणन",
+         "विपणन अभियान स्वचालन विशेषज्ञ, ग्राहक विभाजन विश्लेषक, बिक्री पूर्वानुमान विश्लेषक",
+         "व्यवसाय अध्ययन, गणित, CS/AI",
+         "लक्षित विज्ञापन, ग्राहकों का समूहन, बिक्री का अनुमान"
+        ],
+        [
+         "फ़ैशन",
+         "AI-आधारित फ़ैशन स्टाइलिस्ट, ट्रेंड विश्लेषक, वर्चुअल कपड़े ट्राई-ऑन विशेषज्ञ",
+         "फ़ैशन डिज़ाइन, गणित, CS/AI",
+         "सोशल मीडिया से रुझानों का अनुमान, वर्चुअल ट्रायल रूम, साइज़ सुझाव"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Key message: your favourite subject plus AI skills can become a career. A biology lover can become a medical imaging analyst, a geography student a remote-sensing analyst, an economics student a fraud-detection analyst, and an art student a generative design specialist.",
+      "hi": "मुख्य संदेश: आपका पसंदीदा विषय और AI कौशल मिलकर करियर बन सकते हैं। जीवविज्ञान प्रेमी मेडिकल इमेजिंग विश्लेषक, भूगोल का विद्यार्थी रिमोट-सेंसिंग विश्लेषक, अर्थशास्त्र का विद्यार्थी धोखाधड़ी-पहचान विश्लेषक, और कला का विद्यार्थी जनरेटिव डिज़ाइन विशेषज्ञ बन सकता है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Riya likes Geography and Mathematics and enjoys maps. Suggest an AI industry and two roles for her, and what she should study.",
+       "hi": "रिया को भूगोल और गणित पसंद हैं और उसे मानचित्रों में रुचि है। उसके लिए एक AI उद्योग, दो भूमिकाएँ और उसे क्या पढ़ना चाहिए, सुझाइए।"
+      },
+      "a": {
+       "en": "Step 1: Her interests match the Geospatial industry.\nStep 2: Roles: GIS Specialist and Remote Sensing Analyst (analysing satellite images for floods, crops or city planning).\nStep 3: Study plan: keep Geography and Mathematics; learn Python and basic statistics; explore free GIS software such as QGIS; later study geography/geoinformatics or B.Tech/B.Sc with remote sensing; take short courses on satellite data.",
+       "hi": "चरण 1: उसकी रुचियाँ भू-स्थानिक (Geospatial) उद्योग से मेल खाती हैं।\nचरण 2: भूमिकाएँ: GIS विशेषज्ञ और रिमोट सेंसिंग विश्लेषक (बाढ़, फ़सल या नगर योजना के लिए उपग्रह चित्रों का विश्लेषण)।\nचरण 3: अध्ययन योजना: भूगोल और गणित रखें; Python और बुनियादी सांख्यिकी सीखें; QGIS जैसे मुफ़्त GIS सॉफ़्टवेयर आज़माएँ; आगे भूगोल/भू-सूचना विज्ञान या रिमोट सेंसिंग के साथ B.Tech/B.Sc पढ़ें; उपग्रह data पर छोटे पाठ्यक्रम करें।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.10 Resources for further learning",
+    "hi": "2.10 आगे सीखने के संसाधन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI changes fast, so learning never stops. Here are the kinds of resources listed by CBSE. Many are free; some require sign-up, so take a parent's or teacher's help and use only official websites.",
+      "hi": "AI तेज़ी से बदलता है, इसलिए सीखना कभी नहीं रुकता। यहाँ CBSE द्वारा सुझाए गए संसाधनों के प्रकार दिए गए हैं। कई मुफ़्त हैं; कुछ के लिए साइन-अप ज़रूरी है, इसलिए माता-पिता या शिक्षक की मदद लें और केवल आधिकारिक वेबसाइटें उपयोग करें।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "Examples",
+        "Use"
+       ],
+       "hi": [
+        "प्रकार",
+        "उदाहरण",
+        "उपयोग"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "News and blogs",
+         "Analytics Insight, Towards Data Science, KDnuggets, Data Science Central, Datanami",
+         "Keep up with AI news, tutorials and industry trends"
+        ],
+        [
+         "Free online courses",
+         "IBM SkillsBuild ('Your Future in AI: The Job Landscape', AI Fundamentals), Kaggle micro-courses and competitions, freeCodeCamp (maths and coding), DataCamp (Machine Learning for Everyone), W3Schools (Python, R, SQL), Codecademy, and some free introductory courses on Udemy",
+         "Structured learning, practice and certificates"
+        ],
+        [
+         "Indian government platforms",
+         "AICTE's digital skilling and internship portals, SWAYAM and NPTEL courses, the IndiaAI portal",
+         "Courses by Indian institutions, internships, information on national AI programmes"
+        ],
+        [
+         "Colleges and degrees",
+         "IIT Madras four-year BS in Data Science and Applications (online); B.Tech in CSE with AI/ML, Data Science or Robotics; B.Sc in AI and ML, Data Science or Statistics at many universities",
+         "Formal qualifications after Class 12"
+        ]
+       ],
+       "hi": [
+        [
+         "समाचार और ब्लॉग",
+         "Analytics Insight, Towards Data Science, KDnuggets, Data Science Central, Datanami",
+         "AI समाचार, ट्यूटोरियल और उद्योग रुझानों से अपडेट रहना"
+        ],
+        [
+         "मुफ़्त ऑनलाइन पाठ्यक्रम",
+         "IBM SkillsBuild ('Your Future in AI: The Job Landscape', AI Fundamentals), Kaggle के micro-courses और प्रतियोगिताएँ, freeCodeCamp (गणित और कोडिंग), DataCamp (Machine Learning for Everyone), W3Schools (Python, R, SQL), Codecademy, और Udemy के कुछ मुफ़्त परिचयात्मक पाठ्यक्रम",
+         "व्यवस्थित सीखना, अभ्यास और प्रमाणपत्र"
+        ],
+        [
+         "भारतीय सरकारी मंच",
+         "AICTE के डिजिटल कौशल और इंटर्नशिप पोर्टल, SWAYAM और NPTEL पाठ्यक्रम, IndiaAI पोर्टल",
+         "भारतीय संस्थानों के पाठ्यक्रम, इंटर्नशिप, राष्ट्रीय AI कार्यक्रमों की जानकारी"
+        ],
+        [
+         "कॉलेज और डिग्रियाँ",
+         "IIT मद्रास का चार वर्षीय BS in Data Science and Applications (ऑनलाइन); AI/ML, Data Science या Robotics के साथ CSE में B.Tech; कई विश्वविद्यालयों में AI और ML, Data Science या Statistics में B.Sc",
+         "कक्षा 12 के बाद औपचारिक योग्यताएँ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "A course title or website may change over time. Always search for the current official page, and never pay an unknown website that promises a 'guaranteed AI job'.",
+      "hi": "किसी पाठ्यक्रम का नाम या वेबसाइट समय के साथ बदल सकती है। हमेशा वर्तमान आधिकारिक पेज खोजें, और 'पक्की AI नौकरी' का वादा करने वाली किसी अनजान वेबसाइट को कभी पैसे न दें।"
+     }
+    },
+    {
+     "p": {
+      "en": "Ways to build experience while still in school: take part in school AI exhibitions and hackathons; make small projects (a Teachable Machine model, a simple Python chatbot) and keep them in a portfolio; join Kaggle's beginner competitions with guidance; read one AI news item a week; and teach a younger student what you learned, which strengthens your communication skills.",
+      "hi": "स्कूल में रहते हुए अनुभव बनाने के तरीके: स्कूल की AI प्रदर्शनियों और हैकाथॉन में भाग लें; छोटे प्रोजेक्ट बनाएँ (Teachable Machine model, सरल Python chatbot) और उन्हें एक portfolio में रखें; मार्गदर्शन के साथ Kaggle की शुरुआती प्रतियोगिताओं में शामिल हों; हर सप्ताह AI का एक समाचार पढ़ें; और किसी छोटे विद्यार्थी को अपनी सीखी बात सिखाएँ, जिससे आपका संवाद कौशल मज़बूत होता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "2.11 Assess yourself: finding your AI career path",
+    "hi": "2.11 स्वयं का आकलन: अपना AI करियर रास्ता खोजिए"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A good career choice matches your interests, your strengths and real opportunities. Use this simple self-assessment. Give yourself a score from 1 (not at all) to 5 (very much) for each statement, then see which group scores highest.",
+      "hi": "अच्छा करियर चुनाव आपकी रुचियों, शक्तियों और वास्तविक अवसरों का मेल होता है। यह सरल आत्म-आकलन उपयोग कीजिए। हर कथन के लिए स्वयं को 1 (बिल्कुल नहीं) से 5 (बहुत अधिक) तक अंक दीजिए, फिर देखिए किस समूह के अंक सबसे अधिक हैं।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Group",
+        "Statements to score",
+        "Roles that may suit you"
+       ],
+       "hi": [
+        "समूह",
+        "अंक देने के लिए कथन",
+        "आपके लिए उपयुक्त भूमिकाएँ"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "A: Builder",
+         "I enjoy coding; I like fixing bugs; I like making apps",
+         "ML Engineer, Software Engineer (AI), NLP/CV Engineer"
+        ],
+        [
+         "B: Analyst",
+         "I like numbers and graphs; I enjoy finding patterns; I like asking 'why'",
+         "Data Scientist, BI Developer, Quantitative/Fraud Analyst"
+        ],
+        [
+         "C: Maker",
+         "I like machines and electronics; I enjoy building models",
+         "Robotics Engineer, Autonomous Vehicle Engineer"
+        ],
+        [
+         "D: Thinker / Guide",
+         "I care about fairness; I like debates, law or philosophy; I like explaining ideas",
+         "AI Ethicist, AI Policy roles, AI Consultant"
+        ],
+        [
+         "E: Creator",
+         "I like art, design, music or video",
+         "Generative Design Assistant, VFX Artist, AI-powered UX Designer"
+        ],
+        [
+         "F: Domain expert",
+         "I love a field such as biology, farming, economics or geography",
+         "Medical Imaging Analyst, Precision Agriculture Specialist, GIS Specialist"
+        ]
+       ],
+       "hi": [
+        [
+         "A: निर्माता",
+         "मुझे कोडिंग पसंद है; मुझे गलतियाँ सुधारना अच्छा लगता है; मुझे ऐप बनाना पसंद है",
+         "ML इंजीनियर, सॉफ़्टवेयर इंजीनियर (AI), NLP/CV इंजीनियर"
+        ],
+        [
+         "B: विश्लेषक",
+         "मुझे संख्याएँ और ग्राफ़ पसंद हैं; मुझे पैटर्न ढूँढना अच्छा लगता है; मुझे 'क्यों' पूछना पसंद है",
+         "डेटा साइंटिस्ट, BI डेवलपर, क्वांट/धोखाधड़ी विश्लेषक"
+        ],
+        [
+         "C: यंत्र-निर्माता",
+         "मुझे मशीनें और इलेक्ट्रॉनिक्स पसंद हैं; मुझे मॉडल बनाना अच्छा लगता है",
+         "रोबोटिक्स इंजीनियर, स्वायत्त वाहन इंजीनियर"
+        ],
+        [
+         "D: चिंतक / मार्गदर्शक",
+         "मुझे निष्पक्षता की परवाह है; मुझे वाद-विवाद, विधि या दर्शन पसंद है; मुझे विचार समझाना अच्छा लगता है",
+         "AI एथिसिस्ट, AI नीति भूमिकाएँ, AI कंसल्टेंट"
+        ],
+        [
+         "E: सर्जक",
+         "मुझे कला, डिज़ाइन, संगीत या वीडियो पसंद है",
+         "जनरेटिव डिज़ाइन सहायक, VFX कलाकार, AI-आधारित UX डिज़ाइनर"
+        ],
+        [
+         "F: क्षेत्र विशेषज्ञ",
+         "मुझे जीवविज्ञान, खेती, अर्थशास्त्र या भूगोल जैसा कोई क्षेत्र प्रिय है",
+         "मेडिकल इमेजिंग विश्लेषक, परिशुद्ध कृषि विशेषज्ञ, GIS विशेषज्ञ"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Then make a simple career plan with four parts: (1) Goal: one role you want to explore. (2) Gap: skills listed in job advertisements that you do not yet have. (3) Steps: one course, one project and one subject focus for this year. (4) Check: review the plan every six months. Interests change, and that is fine.",
+      "hi": "फिर चार भागों वाली एक सरल करियर योजना बनाइए: (1) लक्ष्य: एक भूमिका जिसे आप जानना चाहते हैं। (2) अंतर: नौकरी विज्ञापनों में दिए वे कौशल जो अभी आपके पास नहीं हैं। (3) कदम: इस वर्ष के लिए एक पाठ्यक्रम, एक प्रोजेक्ट और एक विषय पर ध्यान। (4) जाँच: हर छह महीने में योजना की समीक्षा। रुचियाँ बदलती हैं, और यह ठीक है।"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Aman is in Class 11 (Commerce with AI). He likes economics and wants to know about AI careers. Make a one-year plan for him.",
+       "hi": "अमन कक्षा 11 (वाणिज्य और AI) में है। उसे अर्थशास्त्र पसंद है और वह AI करियर के बारे में जानना चाहता है। उसके लिए एक वर्ष की योजना बनाइए।"
+      },
+      "a": {
+       "en": "Goal: explore Fraud Detection Analyst / Quantitative Analyst in banking and finance.\nGap: Python, statistics, data handling, understanding of how fraud patterns look.\nSteps: (1) finish Chapter 3 Python and practise with Pandas on a small dataset, e.g. monthly household spending; (2) complete a free IBM SkillsBuild or Kaggle beginner course; (3) do a school project analysing a public dataset on digital payments; (4) keep strong in Economics and Mathematics/Applied Mathematics.\nCheck: after six months, read two job ads again and see which gaps remain.",
+       "hi": "लक्ष्य: बैंकिंग और वित्त में धोखाधड़ी पहचान विश्लेषक / क्वांटिटेटिव विश्लेषक की भूमिका जानना।\nअंतर: Python, सांख्यिकी, data सँभालना, धोखाधड़ी के पैटर्न कैसे दिखते हैं इसकी समझ।\nकदम: (1) अध्याय 3 का Python पूरा करे और किसी छोटे dataset, जैसे घर के मासिक खर्च, पर Pandas से अभ्यास करे; (2) IBM SkillsBuild या Kaggle का कोई मुफ़्त शुरुआती पाठ्यक्रम पूरा करे; (3) डिजिटल भुगतान पर किसी सार्वजनिक dataset का विश्लेषण करने वाला स्कूल प्रोजेक्ट करे; (4) अर्थशास्त्र और गणित/व्यावहारिक गणित में मज़बूत रहे।\nजाँच: छह महीने बाद दो नौकरी विज्ञापन फिर पढ़े और देखे कि कौन-से अंतर बचे हैं।"
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "Continuous learning matters because tools and job titles change every few years, but strong basics in mathematics, logic, communication and ethics stay useful for life.",
+      "hi": "निरंतर सीखना इसलिए ज़रूरी है क्योंकि उपकरण और पदनाम हर कुछ वर्षों में बदलते हैं, पर गणित, तर्क, संवाद और नैतिकता की मज़बूत नींव जीवन भर उपयोगी रहती है।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Thinking AI careers are only for computer-science students. Fix: every industry needs domain experts with AI skills, from biology to fashion.",
+   "Believing AI will only destroy jobs. Fix: AI automates some tasks, augments many and creates new roles; upskilling is the answer.",
+   "Confusing Data Scientist with BI Developer. Fix: a data scientist builds predictive models; a BI developer builds data warehouses and dashboards that show trends.",
+   "Listing 'Python' as a soft skill or 'teamwork' as a technical skill. Fix: technical = programming, maths, frameworks; soft = communication, teamwork, problem-solving, time management, critical thinking.",
+   "Calling TensorFlow a programming language. Fix: it is an open-source ML platform/framework used with languages such as Python.",
+   "Thinking an AI Ethicist does not need to understand AI. Fix: they need both ethics/law knowledge and a clear understanding of how AI systems work.",
+   "Paying fees or sharing OTP/Aadhaar for a job or internship offer. Fix: genuine employers never ask for money; report such offers at cybercrime.gov.in or 1930.",
+   "Trying to learn every tool at once. Fix: build basics (Python, maths, statistics) first, then add libraries step by step."
+  ],
+  "hi": [
+   "मानना कि AI करियर केवल कंप्यूटर-विज्ञान के विद्यार्थियों के लिए हैं। सुधार: हर उद्योग को AI कौशल वाले क्षेत्र विशेषज्ञ चाहिए, जीवविज्ञान से फ़ैशन तक।",
+   "मानना कि AI केवल नौकरियाँ ख़त्म करेगा। सुधार: AI कुछ काम स्वचालित करता है, कई को संवर्धित करता है और नई भूमिकाएँ बनाता है; upskilling इसका उत्तर है।",
+   "डेटा साइंटिस्ट और BI डेवलपर को एक मानना। सुधार: डेटा साइंटिस्ट predictive model बनाता है; BI डेवलपर रुझान दिखाने वाले data warehouse और dashboard बनाता है।",
+   "'Python' को सॉफ़्ट कौशल या 'टीमवर्क' को तकनीकी कौशल लिखना। सुधार: तकनीकी = प्रोग्रामिंग, गणित, frameworks; सॉफ़्ट = संवाद, टीमवर्क, समस्या-समाधान, समय प्रबंधन, आलोचनात्मक सोच।",
+   "TensorFlow को प्रोग्रामिंग भाषा कहना। सुधार: यह open-source ML प्लेटफ़ॉर्म/framework है जिसे Python जैसी भाषाओं के साथ उपयोग किया जाता है।",
+   "मानना कि AI एथिसिस्ट को AI समझने की ज़रूरत नहीं। सुधार: उन्हें नैतिकता/विधि का ज्ञान और AI सिस्टम कैसे काम करते हैं, दोनों की स्पष्ट समझ चाहिए।",
+   "नौकरी या इंटर्नशिप प्रस्ताव के लिए शुल्क देना या OTP/आधार साझा करना। सुधार: असली नियोक्ता कभी पैसे नहीं माँगते; ऐसे प्रस्तावों की रिपोर्ट cybercrime.gov.in या 1930 पर करें।",
+   "हर उपकरण एक साथ सीखने की कोशिश। सुधार: पहले आधार (Python, गणित, सांख्यिकी) बनाएँ, फिर धीरे-धीरे libraries जोड़ें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "AI professional",
+    "hi": "AI पेशेवर"
+   },
+   "d": {
+    "en": "A person whose job involves building, managing, applying or guiding AI systems.",
+    "hi": "वह व्यक्ति जिसके काम में AI सिस्टम बनाना, सँभालना, लागू करना या उनका मार्गदर्शन शामिल है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Automation",
+    "hi": "स्वचालन"
+   },
+   "d": {
+    "en": "A task done fully by machines or AI without human effort.",
+    "hi": "मानवीय प्रयास के बिना मशीनों या AI द्वारा पूरी तरह किया गया काम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Augmentation",
+    "hi": "संवर्धन (Augmentation)"
+   },
+   "d": {
+    "en": "AI assisting a human who still makes the final decision.",
+    "hi": "AI द्वारा उस मनुष्य की सहायता जो अंतिम निर्णय स्वयं लेता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Upskilling",
+    "hi": "Upskilling"
+   },
+   "d": {
+    "en": "Learning higher or newer skills for your current type of work.",
+    "hi": "अपने वर्तमान प्रकार के काम के लिए उच्चतर या नए कौशल सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Reskilling",
+    "hi": "Reskilling"
+   },
+   "d": {
+    "en": "Learning skills for a different type of work.",
+    "hi": "किसी अलग प्रकार के काम के लिए कौशल सीखना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Machine Learning Engineer",
+    "hi": "मशीन लर्निंग इंजीनियर"
+   },
+   "d": {
+    "en": "Builds, trains and deploys ML models in real software.",
+    "hi": "वास्तविक सॉफ़्टवेयर में ML model बनाता, प्रशिक्षित और लागू करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data Scientist",
+    "hi": "डेटा साइंटिस्ट"
+   },
+   "d": {
+    "en": "Analyses data with statistics and ML to support decisions.",
+    "hi": "निर्णयों में सहायता के लिए सांख्यिकी और ML से data का विश्लेषण करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Business Intelligence Developer",
+    "hi": "BI डेवलपर"
+   },
+   "d": {
+    "en": "Designs data warehouses and dashboards showing business trends.",
+    "hi": "व्यावसायिक रुझान दिखाने वाले data warehouse और dashboard डिज़ाइन करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Robotics Engineer",
+    "hi": "रोबोटिक्स इंजीनियर"
+   },
+   "d": {
+    "en": "Designs and maintains AI-powered robots.",
+    "hi": "AI-चालित रोबोट डिज़ाइन और रखरखाव करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "NLP Engineer",
+    "hi": "NLP इंजीनियर"
+   },
+   "d": {
+    "en": "Builds language systems such as chatbots, translation and speech recognition.",
+    "hi": "chatbot, अनुवाद और वाणी पहचान जैसे भाषा सिस्टम बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Computer Vision Engineer",
+    "hi": "कंप्यूटर विज़न इंजीनियर"
+   },
+   "d": {
+    "en": "Builds algorithms to analyse images and video.",
+    "hi": "चित्र और वीडियो विश्लेषण के algorithm बनाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI Ethicist",
+    "hi": "AI एथिसिस्ट"
+   },
+   "d": {
+    "en": "Ensures AI is fair, transparent and accountable.",
+    "hi": "सुनिश्चित करता है कि AI निष्पक्ष, पारदर्शी और जवाबदेह हो।"
+   }
+  },
+  {
+   "t": {
+    "en": "AI Consultant",
+    "hi": "AI कंसल्टेंट"
+   },
+   "d": {
+    "en": "Advises organisations on adopting AI solutions.",
+    "hi": "संस्थाओं को AI समाधान अपनाने पर सलाह देता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Technical skills",
+    "hi": "तकनीकी कौशल"
+   },
+   "d": {
+    "en": "Job-specific abilities like programming, maths and using frameworks.",
+    "hi": "प्रोग्रामिंग, गणित और frameworks के उपयोग जैसी काम-विशेष क्षमताएँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Soft skills",
+    "hi": "सॉफ़्ट कौशल"
+   },
+   "d": {
+    "en": "Personal and social abilities like communication and teamwork.",
+    "hi": "संवाद और टीमवर्क जैसी व्यक्तिगत और सामाजिक क्षमताएँ।"
+   }
+  },
+  {
+   "t": {
+    "en": "Big data",
+    "hi": "Big data"
+   },
+   "d": {
+    "en": "Data so large or fast that special tools such as Hadoop or Spark are needed.",
+    "hi": "इतना बड़ा या तेज़ data कि Hadoop या Spark जैसे विशेष उपकरण चाहिए।"
+   }
+  },
+  {
+   "t": {
+    "en": "Framework / Library",
+    "hi": "Framework / Library"
+   },
+   "d": {
+    "en": "Ready-made code that speeds up building software; e.g. TensorFlow, NumPy.",
+    "hi": "तैयार कोड जो सॉफ़्टवेयर बनाना तेज़ करता है; जैसे TensorFlow, NumPy।"
+   }
+  },
+  {
+   "t": {
+    "en": "TensorFlow",
+    "hi": "TensorFlow"
+   },
+   "d": {
+    "en": "Open-source platform for building and training ML/DL models.",
+    "hi": "ML/DL model बनाने और प्रशिक्षित करने का open-source प्लेटफ़ॉर्म।"
+   }
+  },
+  {
+   "t": {
+    "en": "NumPy / SciPy",
+    "hi": "NumPy / SciPy"
+   },
+   "d": {
+    "en": "Python libraries for fast numerical and scientific computing.",
+    "hi": "तेज़ संख्यात्मक और वैज्ञानिक गणना के लिए Python libraries।"
+   }
+  },
+  {
+   "t": {
+    "en": "R",
+    "hi": "R"
+   },
+   "d": {
+    "en": "Programming language specialised for statistics and data analysis.",
+    "hi": "सांख्यिकी और data विश्लेषण के लिए विशेष प्रोग्रामिंग भाषा।"
+   }
+  },
+  {
+   "t": {
+    "en": "GIS",
+    "hi": "GIS"
+   },
+   "d": {
+    "en": "Geographic Information System: software for storing and analysing map data.",
+    "hi": "भौगोलिक सूचना प्रणाली: मानचित्र data रखने और विश्लेषण करने का सॉफ़्टवेयर।"
+   }
+  },
+  {
+   "t": {
+    "en": "Remote sensing",
+    "hi": "रिमोट सेंसिंग"
+   },
+   "d": {
+    "en": "Collecting information about the Earth from satellites or aircraft.",
+    "hi": "उपग्रहों या विमानों से पृथ्वी के बारे में जानकारी इकट्ठा करना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Portfolio",
+    "hi": "Portfolio"
+   },
+   "d": {
+    "en": "A collection of your projects that shows your skills to colleges or employers.",
+    "hi": "आपके प्रोजेक्टों का संग्रह जो कॉलेजों या नियोक्ताओं को आपके कौशल दिखाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Continuous learning",
+    "hi": "निरंतर सीखना"
+   },
+   "d": {
+    "en": "Keeping your skills up to date throughout your career.",
+    "hi": "पूरे करियर में अपने कौशल अद्यतन रखना।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which job role is most directly linked with the automobile industry?\n(a) Wellness Chatbot developer (b) Autonomous Vehicle Engineer (c) GIS Specialist (d) Trend Analyst",
+    "hi": "बहुविकल्पी: कौन-सी भूमिका ऑटोमोबाइल उद्योग से सबसे सीधे जुड़ी है?\n(क) वेलनेस chatbot डेवलपर (ख) स्वायत्त वाहन इंजीनियर (ग) GIS विशेषज्ञ (घ) ट्रेंड विश्लेषक"
+   },
+   "a": {
+    "en": "(b) Autonomous Vehicle Engineer.",
+    "hi": "(ख) स्वायत्त वाहन इंजीनियर।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is a soft skill?\n(a) Python programming (b) Linear algebra (c) Effective communication (d) Using TensorFlow",
+    "hi": "बहुविकल्पी: इनमें से कौन सॉफ़्ट कौशल है?\n(क) Python प्रोग्रामिंग (ख) रैखिक बीजगणित (ग) प्रभावी संवाद (घ) TensorFlow का उपयोग"
+   },
+   "a": {
+    "en": "(c) Effective communication.",
+    "hi": "(ग) प्रभावी संवाद।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: A 'Smart Travel Itinerary Planner' role belongs to which industry?\n(a) Textile (b) Tourism (c) Banking (d) Geospatial",
+    "hi": "बहुविकल्पी: 'स्मार्ट यात्रा कार्यक्रम योजनाकार' भूमिका किस उद्योग की है?\n(क) वस्त्र (ख) पर्यटन (ग) बैंकिंग (घ) भू-स्थानिक"
+   },
+   "a": {
+    "en": "(b) Tourism.",
+    "hi": "(ख) पर्यटन।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "MCQ: Data Science Central is mainly useful for:\n(a) booking train tickets (b) reading articles and discussions on data science and AI (c) editing photos (d) online payments",
+    "hi": "बहुविकल्पी: Data Science Central मुख्य रूप से किसके लिए उपयोगी है?\n(क) ट्रेन टिकट बुक करना (ख) data science और AI पर लेख और चर्चाएँ पढ़ना (ग) फ़ोटो संपादित करना (घ) ऑनलाइन भुगतान"
+   },
+   "a": {
+    "en": "(b) It is a community/blog site for data science and AI learning.",
+    "hi": "(ख) यह data science और AI सीखने के लिए समुदाय/ब्लॉग साइट है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "MCQ: Market analysis and fraud detection are AI applications mainly in:\n(a) Fashion (b) Finance (c) Media (d) Tourism",
+    "hi": "बहुविकल्पी: बाज़ार विश्लेषण और धोखाधड़ी पहचान मुख्य रूप से किस क्षेत्र के AI अनुप्रयोग हैं?\n(क) फ़ैशन (ख) वित्त (ग) मीडिया (घ) पर्यटन"
+   },
+   "a": {
+    "en": "(b) Finance.",
+    "hi": "(ख) वित्त।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which is an open-source machine learning platform?\n(a) TensorFlow (b) Excel (c) Notepad (d) Paint",
+    "hi": "बहुविकल्पी: इनमें से कौन open-source machine learning प्लेटफ़ॉर्म है?\n(क) TensorFlow (ख) Excel (ग) Notepad (घ) Paint"
+   },
+   "a": {
+    "en": "(a) TensorFlow.",
+    "hi": "(क) TensorFlow।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blanks: (a) A ______ designs data warehouses and dashboards. (b) Learning skills for a completely different type of job is called ______. (c) ______ and SciPy are Python libraries for scientific computing.",
+    "hi": "रिक्त स्थान भरिए: (क) ______ data warehouse और dashboard डिज़ाइन करता है। (ख) बिल्कुल अलग प्रकार की नौकरी के लिए कौशल सीखना ______ कहलाता है। (ग) ______ और SciPy वैज्ञानिक गणना की Python libraries हैं।"
+   },
+   "a": {
+    "en": "(a) Business Intelligence Developer (b) reskilling (c) NumPy",
+    "hi": "(क) बिज़नेस इंटेलिजेंस डेवलपर (ख) reskilling (ग) NumPy"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: (a) Only IT companies hire AI professionals. (b) An AI Ethicist works on fairness, transparency and accountability. (c) R is mainly used for statistics. (d) Soft skills are not important for AI engineers.",
+    "hi": "सही या गलत: (क) केवल IT कंपनियाँ AI पेशेवरों को रखती हैं। (ख) AI एथिसिस्ट निष्पक्षता, पारदर्शिता और जवाबदेही पर काम करता है। (ग) R मुख्य रूप से सांख्यिकी के लिए उपयोग होती है। (घ) AI इंजीनियरों के लिए सॉफ़्ट कौशल महत्वपूर्ण नहीं हैं।"
+   },
+   "a": {
+    "en": "(a) False – banks, hospitals, farms, government and many others hire them. (b) True. (c) True. (d) False – communication and teamwork are essential.",
+    "hi": "(क) गलत – बैंक, अस्पताल, खेत, सरकार और कई अन्य भी रखते हैं। (ख) सही। (ग) सही। (घ) गलत – संवाद और टीमवर्क आवश्यक हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): Demand for AI professionals is increasing in healthcare, finance, transport and retail.\nReason (R): These sectors are integrating AI to work faster and make better decisions.\n(a) Both true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): स्वास्थ्य, वित्त, परिवहन और खुदरा में AI पेशेवरों की माँग बढ़ रही है।\nकारण (R): ये क्षेत्र तेज़ काम और बेहतर निर्णयों के लिए AI को शामिल कर रहे हैं।\n(क) दोनों सही, R, A की व्याख्या करता है (ख) दोनों सही, R व्याख्या नहीं करता (ग) A सही, R गलत (घ) A गलत, R सही"
+   },
+   "a": {
+    "en": "(a) Both true and R explains A.",
+    "hi": "(क) दोनों सही और R, A की व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): C++ is often used in robotics and computer vision.\nReason (R): C++ is a fast language that can work close to the hardware.",
+    "hi": "अभिकथन (A): C++ प्रायः रोबोटिक्स और कंप्यूटर विज़न में उपयोग होती है।\nकारण (R): C++ एक तेज़ भाषा है जो हार्डवेयर के निकट काम कर सकती है।"
+   },
+   "a": {
+    "en": "Both A and R are true, and R correctly explains A.",
+    "hi": "A और R दोनों सही हैं, और R, A की सही व्याख्या करता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Short answer: Name any five common job roles in AI.",
+    "hi": "लघु उत्तर: AI की कोई पाँच सामान्य नौकरी भूमिकाएँ बताइए।"
+   },
+   "a": {
+    "en": "Machine Learning Engineer, Data Scientist, Business Intelligence Developer, Robotics Engineer, NLP Engineer (also: Software Engineer (AI), Computer Vision Engineer, AI Ethicist, AI Consultant).",
+    "hi": "मशीन लर्निंग इंजीनियर, डेटा साइंटिस्ट, बिज़नेस इंटेलिजेंस डेवलपर, रोबोटिक्स इंजीनियर, NLP इंजीनियर (और: सॉफ़्टवेयर इंजीनियर (AI), कंप्यूटर विज़न इंजीनियर, AI एथिसिस्ट, AI कंसल्टेंट)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: List the essential technical skills for an AI career.",
+    "hi": "लघु उत्तर: AI करियर के आवश्यक तकनीकी कौशल बताइए।"
+   },
+   "a": {
+    "en": "1. Knowledge of neural networks, machine learning and deep learning. 2. Big-data technologies. 3. Frameworks and libraries such as TensorFlow, NumPy, SciPy. 4. Programming languages: Python, R, Java, C++. 5. Mathematics: linear algebra, probability, statistics, signal processing.",
+    "hi": "1. neural network, machine learning और deep learning का ज्ञान। 2. Big-data तकनीकें। 3. TensorFlow, NumPy, SciPy जैसे frameworks और libraries। 4. प्रोग्रामिंग भाषाएँ: Python, R, Java, C++। 5. गणित: रैखिक बीजगणित, प्रायिकता, सांख्यिकी, signal processing।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Name two AI roles each in healthcare, finance and retail.",
+    "hi": "लघु उत्तर: स्वास्थ्य, वित्त और खुदरा में दो-दो AI भूमिकाएँ बताइए।"
+   },
+   "a": {
+    "en": "Healthcare: Medical Imaging Analyst, Drug Discovery Researcher (also Virtual Nurse Assistant). Finance: Quantitative Analyst, Fraud Detection Analyst. Retail: Inventory Management Specialist, Sales Forecasting Analyst (also Customer Experience Designer).",
+    "hi": "स्वास्थ्य: मेडिकल इमेजिंग विश्लेषक, दवा खोज शोधकर्ता (और वर्चुअल नर्स सहायक)। वित्त: क्वांटिटेटिव विश्लेषक, धोखाधड़ी पहचान विश्लेषक। खुदरा: इन्वेंटरी प्रबंधन विशेषज्ञ, बिक्री पूर्वानुमान विश्लेषक (और ग्राहक अनुभव डिज़ाइनर)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Name four popular tools/languages in AI and one use of each.",
+    "hi": "लघु उत्तर: AI के चार लोकप्रिय उपकरण/भाषाएँ और हर एक का एक उपयोग बताइए।"
+   },
+   "a": {
+    "en": "Python – data analysis and ML; R – statistical analysis; TensorFlow – building and training neural networks; NumPy – fast calculations on arrays (also Java for enterprise AI, C++ for robotics, SciPy for scientific computing).",
+    "hi": "Python – data विश्लेषण और ML; R – सांख्यिकीय विश्लेषण; TensorFlow – neural network बनाना और प्रशिक्षित करना; NumPy – arrays पर तेज़ गणना (और उद्यम AI के लिए Java, रोबोटिक्स के लिए C++, वैज्ञानिक गणना के लिए SciPy)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Why are soft skills important for AI professionals? Give three examples.",
+    "hi": "लघु उत्तर: AI पेशेवरों के लिए सॉफ़्ट कौशल क्यों महत्वपूर्ण हैं? तीन उदाहरण दीजिए।"
+   },
+   "a": {
+    "en": "AI is built by teams for real users, so technical work is useful only when it solves the right problem and people understand it. Examples: communication – explaining a model's result to a doctor or manager; teamwork – working with data engineers and designers; problem-solving and critical thinking – choosing the right approach and questioning wrong results. Time management helps meet deadlines.",
+    "hi": "AI टीमें वास्तविक उपयोगकर्ताओं के लिए बनाती हैं, इसलिए तकनीकी काम तभी उपयोगी है जब वह सही समस्या हल करे और लोग उसे समझें। उदाहरण: संवाद – डॉक्टर या प्रबंधक को model का परिणाम समझाना; टीमवर्क – data इंजीनियरों और डिज़ाइनरों के साथ काम करना; समस्या-समाधान और आलोचनात्मक सोच – सही तरीका चुनना और गलत परिणामों पर प्रश्न करना। समय प्रबंधन समय-सीमा पूरी करने में मदद करता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Why is continuous learning important in an AI career?",
+    "hi": "लघु उत्तर: AI करियर में निरंतर सीखना क्यों महत्वपूर्ण है?"
+   },
+   "a": {
+    "en": "AI tools, models and job titles change every few years. Professionals must keep learning new libraries, methods and ethical rules through courses, blogs, projects and communities so that their skills stay relevant and they can move into new roles.",
+    "hi": "AI के उपकरण, model और पदनाम हर कुछ वर्षों में बदलते हैं। पेशेवरों को पाठ्यक्रमों, ब्लॉग, प्रोजेक्टों और समुदायों से नई libraries, तरीके और नैतिक नियम सीखते रहना चाहिए ताकि उनके कौशल प्रासंगिक रहें और वे नई भूमिकाओं में जा सकें।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Short answer: Differentiate between automation and augmentation with one example each.",
+    "hi": "लघु उत्तर: automation और augmentation में एक-एक उदाहरण सहित अंतर बताइए।"
+   },
+   "a": {
+    "en": "Automation: AI does the whole task, e.g. a chatbot answering balance enquiries. Augmentation: AI helps a human who decides, e.g. AI marks a suspicious area on an X-ray and the doctor confirms.",
+    "hi": "Automation: AI पूरा काम करता है, जैसे शेष राशि के प्रश्नों का उत्तर देता chatbot। Augmentation: AI उस मनुष्य की मदद करता है जो निर्णय लेता है, जैसे AI X-ray पर संदिग्ध हिस्सा चिह्नित करता है और डॉक्टर पुष्टि करता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: How is the global demand for AI affecting careers? Explain with examples.",
+    "hi": "दीर्घ उत्तर: AI की वैश्विक माँग करियर को कैसे प्रभावित कर रही है? उदाहरणों सहित समझाइए।"
+   },
+   "a": {
+    "en": "1. Rising demand: as healthcare, finance, transport, retail and government adopt AI, they need ML engineers, data scientists, CV/NLP engineers and AI consultants.\n2. Changing jobs: routine tasks such as data entry or basic queries are automated, so workers must upskill or reskill.\n3. New roles: data annotators, prompt designers, AI ethicists and MLOps engineers did not exist earlier.\n4. Every subject counts: biology students become medical imaging analysts, geography students GIS specialists, art students generative designers.\n5. Skills matter more than titles: employers seek Python, statistics and ML plus communication and problem-solving, and expect continuous learning.\nConclusion: AI is reshaping work; those who learn to work with AI responsibly will have strong opportunities.",
+    "hi": "1. बढ़ती माँग: जैसे स्वास्थ्य, वित्त, परिवहन, खुदरा और सरकार AI अपनाते हैं, उन्हें ML इंजीनियर, डेटा साइंटिस्ट, CV/NLP इंजीनियर और AI कंसल्टेंट चाहिए।\n2. बदलती नौकरियाँ: data entry या साधारण प्रश्नों जैसे नियमित काम स्वचालित होते हैं, इसलिए कर्मचारियों को upskill या reskill करना पड़ता है।\n3. नई भूमिकाएँ: data annotator, prompt designer, AI एथिसिस्ट और MLOps इंजीनियर पहले नहीं थे।\n4. हर विषय महत्वपूर्ण: जीवविज्ञान के विद्यार्थी मेडिकल इमेजिंग विश्लेषक, भूगोल के GIS विशेषज्ञ, कला के जनरेटिव डिज़ाइनर बनते हैं।\n5. पदनाम से अधिक कौशल महत्वपूर्ण: नियोक्ता Python, सांख्यिकी और ML के साथ संवाद और समस्या-समाधान चाहते हैं, और निरंतर सीखने की अपेक्षा करते हैं।\nनिष्कर्ष: AI काम को नया रूप दे रहा है; जो AI के साथ ज़िम्मेदारी से काम करना सीखेंगे, उनके लिए अच्छे अवसर होंगे।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Long answer: Describe any five common AI job roles and how each contributes to different industries.",
+    "hi": "दीर्घ उत्तर: कोई पाँच सामान्य AI भूमिकाएँ और हर एक का विभिन्न उद्योगों में योगदान बताइए।"
+   },
+   "a": {
+    "en": "1. ML Engineer – builds and deploys models, e.g. recommendation engines in e-commerce, credit-risk models in banking.\n2. Data Scientist – analyses data for decisions, e.g. predicting crop yields in agriculture or patient readmission in hospitals.\n3. Computer Vision Engineer – image/video analysis, e.g. defect detection in textile and automobile factories, scan reading in healthcare.\n4. NLP Engineer – language systems, e.g. customer-service chatbots in banking and tourism, Indian-language translation for government services.\n5. AI Ethicist – checks fairness and privacy, e.g. making sure loan or hiring algorithms do not discriminate.\n(Robotics Engineer, BI Developer, Software Engineer (AI) and AI Consultant can also be described.)",
+    "hi": "1. ML इंजीनियर – model बनाकर लागू करता है, जैसे ई-कॉमर्स में सुझाव इंजन, बैंकिंग में क्रेडिट-जोखिम model।\n2. डेटा साइंटिस्ट – निर्णयों के लिए data विश्लेषण, जैसे कृषि में फ़सल उपज या अस्पतालों में मरीज़ों के दोबारा भर्ती होने का अनुमान।\n3. कंप्यूटर विज़न इंजीनियर – चित्र/वीडियो विश्लेषण, जैसे वस्त्र और ऑटोमोबाइल कारखानों में दोष पहचान, स्वास्थ्य में स्कैन पढ़ना।\n4. NLP इंजीनियर – भाषा सिस्टम, जैसे बैंकिंग और पर्यटन में ग्राहक-सेवा chatbot, सरकारी सेवाओं के लिए भारतीय-भाषा अनुवाद।\n5. AI एथिसिस्ट – निष्पक्षता और निजता जाँचता है, जैसे यह सुनिश्चित करना कि ऋण या भर्ती algorithm भेदभाव न करें।\n(रोबोटिक्स इंजीनियर, BI डेवलपर, सॉफ़्टवेयर इंजीनियर (AI) और AI कंसल्टेंट का भी वर्णन किया जा सकता है।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A textile company in Surat wants to reduce defective cloth and plan stock better. (a) Which two AI roles from the textile industry should it hire? (b) Which AI domain helps detect defects? (c) Name two technical and two soft skills these employees need.",
+    "hi": "प्रसंग अध्ययन: सूरत की एक वस्त्र कंपनी दोषपूर्ण कपड़ा घटाना और स्टॉक की बेहतर योजना बनाना चाहती है। (क) वस्त्र उद्योग की कौन-सी दो AI भूमिकाएँ उसे रखनी चाहिए? (ख) दोष पहचानने में कौन-सा AI क्षेत्र मदद करता है? (ग) इन कर्मचारियों को आवश्यक दो तकनीकी और दो सॉफ़्ट कौशल बताइए।"
+   },
+   "a": {
+    "en": "(a) Textile Quality Control Inspector (AI-based) and Smart Inventory Management Specialist.\n(b) Computer Vision – cameras over the loom capture images that a model checks for defects.\n(c) Technical: Python with image-processing/deep-learning libraries; statistics for demand forecasting. Soft: communication with factory workers; problem-solving when the model misses defects.",
+    "hi": "(क) वस्त्र गुणवत्ता नियंत्रण निरीक्षक (AI-आधारित) और स्मार्ट इन्वेंटरी प्रबंधन विशेषज्ञ।\n(ख) कंप्यूटर विज़न – करघे के ऊपर लगे कैमरे चित्र लेते हैं जिन्हें model दोषों के लिए जाँचता है।\n(ग) तकनीकी: इमेज-प्रोसेसिंग/deep-learning libraries के साथ Python; माँग पूर्वानुमान के लिए सांख्यिकी। सॉफ़्ट: कारखाने के कर्मचारियों से संवाद; model के दोष छोड़ने पर समस्या-समाधान।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: Priya gets a WhatsApp message: 'Selected for AI Data Analyst internship at a big company! Pay ₹2,000 registration fee and send your Aadhaar and bank OTP to confirm.' What should she do and why?",
+    "hi": "प्रसंग अध्ययन: प्रिया को WhatsApp संदेश मिलता है: 'एक बड़ी कंपनी में AI Data Analyst इंटर्नशिप के लिए चयनित! पुष्टि के लिए ₹2,000 पंजीकरण शुल्क दें और अपना आधार तथा बैंक OTP भेजें।' उसे क्या करना चाहिए और क्यों?"
+   },
+   "a": {
+    "en": "It is very likely a scam: genuine companies do not ask for fees or OTPs, and she never applied. She should not pay, not share Aadhaar or OTP, not click links; check the company's official careers page; tell a parent or teacher; block and report the number, and report at cybercrime.gov.in or call 1930.",
+    "hi": "यह लगभग निश्चित रूप से धोखाधड़ी है: असली कंपनियाँ शुल्क या OTP नहीं माँगतीं, और उसने आवेदन भी नहीं किया था। उसे पैसे नहीं देने चाहिए, आधार या OTP साझा नहीं करना चाहिए, लिंक पर क्लिक नहीं करना चाहिए; कंपनी का आधिकारिक करियर पेज जाँचना चाहिए; माता-पिता या शिक्षक को बताना चाहिए; नंबर ब्लॉक और रिपोर्ट करना चाहिए, और cybercrime.gov.in पर रिपोर्ट या 1930 पर कॉल करना चाहिए।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Activity: Choose your favourite school subject. Using the industry table, write one industry, two AI roles and two skills you would need for them.",
+    "hi": "गतिविधि: अपना पसंदीदा स्कूली विषय चुनिए। उद्योग तालिका से एक उद्योग, दो AI भूमिकाएँ और उनके लिए आवश्यक दो कौशल लिखिए।"
+   },
+   "a": {
+    "en": "Sample (Biology): Healthcare – Medical Imaging Analyst and Drug Discovery Researcher; skills: Python with image-analysis libraries, and statistics/biology knowledge, plus communication with doctors.",
+    "hi": "नमूना (जीवविज्ञान): स्वास्थ्य सेवा – मेडिकल इमेजिंग विश्लेषक और दवा खोज शोधकर्ता; कौशल: इमेज-विश्लेषण libraries के साथ Python, और सांख्यिकी/जीवविज्ञान ज्ञान, साथ में डॉक्टरों से संवाद।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Thinking question: Some people say, 'If AI can write code, nobody needs to learn programming.' Do you agree? Give reasons.",
+    "hi": "चिंतन प्रश्न: कुछ लोग कहते हैं, 'यदि AI कोड लिख सकता है तो किसी को प्रोग्रामिंग सीखने की ज़रूरत नहीं।' क्या आप सहमत हैं? कारण दीजिए।"
+   },
+   "a": {
+    "en": "Sample: Not fully. AI coding assistants can write drafts, but they make mistakes and cannot judge what the user really needs. A person who understands programming can check, test, fix and safely combine AI-written code, and can design the overall system. Learning programming also builds logical thinking. So programming knowledge becomes more valuable when combined with AI tools, not less.",
+    "hi": "नमूना: पूरी तरह नहीं। AI कोडिंग सहायक मसौदे लिख सकते हैं, पर वे गलतियाँ करते हैं और यह नहीं परख सकते कि उपयोगकर्ता को वास्तव में क्या चाहिए। प्रोग्रामिंग समझने वाला व्यक्ति AI के लिखे कोड को जाँच, परख, सुधार और सुरक्षित रूप से जोड़ सकता है, और पूरे सिस्टम की रूपरेखा बना सकता है। प्रोग्रामिंग सीखने से तार्किक सोच भी बनती है। इसलिए AI उपकरणों के साथ प्रोग्रामिंग ज्ञान कम नहीं, अधिक मूल्यवान होता है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "AI has moved into daily life, so organisations worldwide need people to build, run and guide it.",
+   "Demand grows because of technological advances, data growth and AI use in healthcare, finance, transport, retail and government.",
+   "AI automates some tasks, augments many jobs and creates new roles; upskilling and reskilling are the response.",
+   "Nine common roles: ML Engineer, Data Scientist, BI Developer, Robotics Engineer, Software Engineer (AI), NLP Engineer, CV Engineer, AI Ethicist, AI Consultant.",
+   "Technical skills: neural networks/ML/DL, big data, frameworks and libraries, programming languages, mathematics.",
+   "Soft skills: communication, teamwork, problem-solving and analytical thinking, time management, business sense and critical thinking.",
+   "Toolkit: Python, R, Java, C++, TensorFlow, NumPy and SciPy, plus Pandas, scikit-learn and Jupyter/Colab.",
+   "AI opportunities exist in at least sixteen industries, from automobile and agriculture to textile, design and fashion.",
+   "Every school subject, combined with CS/AI, can lead to an AI career.",
+   "Activities: list ten companies hiring for AI roles and compare the skills two companies ask for.",
+   "Learning resources include AI blogs, free courses such as IBM SkillsBuild and Kaggle, Indian platforms like AICTE, SWAYAM/NPTEL, and degree options such as IIT Madras's BS in Data Science.",
+   "Assess your interests, find skill gaps, make a yearly plan and keep learning; never pay or share OTP/Aadhaar for job offers."
+  ],
+  "hi": [
+   "AI रोज़मर्रा के जीवन में आ गया है, इसलिए दुनिया भर की संस्थाओं को इसे बनाने, चलाने और मार्गदर्शन करने वाले लोग चाहिए।",
+   "माँग तकनीकी प्रगति, data वृद्धि और स्वास्थ्य, वित्त, परिवहन, खुदरा तथा सरकार में AI के उपयोग से बढ़ती है।",
+   "AI कुछ काम स्वचालित करता है, कई नौकरियों को संवर्धित करता है और नई भूमिकाएँ बनाता है; upskilling और reskilling इसका उत्तर हैं।",
+   "नौ सामान्य भूमिकाएँ: ML इंजीनियर, डेटा साइंटिस्ट, BI डेवलपर, रोबोटिक्स इंजीनियर, सॉफ़्टवेयर इंजीनियर (AI), NLP इंजीनियर, CV इंजीनियर, AI एथिसिस्ट, AI कंसल्टेंट।",
+   "तकनीकी कौशल: neural network/ML/DL, big data, frameworks और libraries, प्रोग्रामिंग भाषाएँ, गणित।",
+   "सॉफ़्ट कौशल: संवाद, टीमवर्क, समस्या-समाधान और विश्लेषणात्मक सोच, समय प्रबंधन, व्यावसायिक समझ और आलोचनात्मक सोच।",
+   "टूलकिट: Python, R, Java, C++, TensorFlow, NumPy और SciPy, साथ में Pandas, scikit-learn और Jupyter/Colab।",
+   "AI के अवसर कम से कम सोलह उद्योगों में हैं, ऑटोमोबाइल और कृषि से वस्त्र, डिज़ाइन और फ़ैशन तक।",
+   "हर स्कूली विषय, CS/AI के साथ मिलकर, AI करियर की ओर ले जा सकता है।",
+   "गतिविधियाँ: AI भूमिकाओं के लिए भर्ती करने वाली दस कंपनियों की सूची बनाना और दो कंपनियों द्वारा माँगे कौशलों की तुलना करना।",
+   "सीखने के संसाधनों में AI ब्लॉग, IBM SkillsBuild और Kaggle जैसे मुफ़्त पाठ्यक्रम, AICTE, SWAYAM/NPTEL जैसे भारतीय मंच, और IIT मद्रास के BS in Data Science जैसे डिग्री विकल्प शामिल हैं।",
+   "अपनी रुचियों का आकलन करें, कौशल-अंतर खोजें, वार्षिक योजना बनाएँ और सीखते रहें; नौकरी प्रस्तावों के लिए कभी पैसे न दें या OTP/आधार साझा न करें।"
+  ]
+ }
+}

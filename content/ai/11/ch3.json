@@ -1,0 +1,3041 @@
+{
+ "v": 1,
+ "sub": "ai",
+ "lv": "11",
+ "id": "ch3",
+ "intro": {
+  "en": "Python is the language in which most of today's AI is written, from crop-disease apps to recommendation engines. In this chapter you build Python skills step by step: how Python reads code (character set and tokens), the two modes of working, data types, operators and control statements. Then you move to the tools of a data scientist: reading and writing CSV files, fast arrays with NumPy, tables with Pandas and machine learning with Scikit-learn, ending with a working K-Nearest Neighbours model on the Iris dataset.",
+  "hi": "आज का अधिकांश AI, फ़सल-रोग पहचानने वाले apps से लेकर recommendation engines तक, Python में लिखा जाता है। इस अध्याय में आप कदम-दर-कदम Python कौशल बनाएँगे: Python code कैसे पढ़ता है (character set और tokens), काम करने के दो modes, data types, operators और control statements। फिर आप data scientist के tools तक पहुँचेंगे: CSV फ़ाइलें पढ़ना और लिखना, NumPy से तेज़ arrays, Pandas से तालिकाएँ और Scikit-learn से machine learning, और अंत में Iris dataset पर चलता हुआ K-Nearest Neighbours model।"
+ },
+ "learn": {
+  "en": [
+   "Why Python is used for AI, its history and features",
+   "Editors (IDLE, Jupyter Notebook, Google Colab) and the interactive and script modes",
+   "The Python character set and the five kinds of tokens: keywords, identifiers, literals, operators, punctuators",
+   "Variables, all built-in data types, dynamic typing and mutable vs immutable objects",
+   "print(), input() and type conversion",
+   "All seven groups of operators and operator precedence",
+   "Strings, lists, tuples and dictionaries with their common methods",
+   "Selection (if, if-else, if-elif-else, nested if), iteration (for, while) and jump statements (break, continue, pass)",
+   "Reading and writing CSV files with the csv module",
+   "The math module, NumPy arrays and Pandas Series and DataFrames",
+   "Scikit-learn workflow: load_iris, train_test_split, KNeighborsClassifier, fit, predict, accuracy",
+   "Types of errors, debugging and the practical-file programs"
+  ],
+  "hi": [
+   "AI के लिए Python क्यों उपयोग होता है, इसका इतिहास और विशेषताएँ",
+   "Editors (IDLE, Jupyter Notebook, Google Colab) तथा interactive और script modes",
+   "Python character set और पाँच प्रकार के tokens: keywords, identifiers, literals, operators, punctuators",
+   "Variables, सभी built-in data types, dynamic typing और mutable बनाम immutable objects",
+   "print(), input() और type conversion",
+   "Operators के सभी सात समूह और operator precedence",
+   "Strings, lists, tuples और dictionaries तथा उनके आम methods",
+   "Selection (if, if-else, if-elif-else, nested if), iteration (for, while) और jump statements (break, continue, pass)",
+   "csv module से CSV फ़ाइलें पढ़ना और लिखना",
+   "math module, NumPy arrays तथा Pandas Series और DataFrames",
+   "Scikit-learn workflow: load_iris, train_test_split, KNeighborsClassifier, fit, predict, accuracy",
+   "Errors के प्रकार, debugging और practical-file प्रोग्राम"
+  ]
+ },
+ "sections": [
+  {
+   "h": {
+    "en": "3.1 Why Python for AI?",
+    "hi": "3.1 AI के लिए Python ही क्यों?"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "In Classes 9 and 10 you wrote your first Python programs: printing messages, taking input, using if and loops, and working with lists and NumPy. In Class 11 the goal changes. You now learn Python the way an AI or data-science student uses it: you will understand exactly how Python reads your code (character set and tokens), how it stores values (data types), how it decides and repeats (control statements), and then you will use real tools that AI engineers use every day: CSV files, NumPy, Pandas and Scikit-learn. By the end you will train a small machine learning model yourself in a few lines of code.",
+      "hi": "कक्षा 9 और 10 में आपने अपने पहले Python प्रोग्राम लिखे थे: संदेश प्रिंट करना, input लेना, if और loop का उपयोग करना, और list तथा NumPy के साथ काम करना। कक्षा 11 में लक्ष्य बदल जाता है। अब आप Python उस तरह सीखेंगे जैसे AI या data science का विद्यार्थी उसे उपयोग करता है: आप ठीक-ठीक समझेंगे कि Python आपका code कैसे पढ़ता है (character set और tokens), मानों (values) को कैसे सँभालता है (data types), कैसे निर्णय लेता है और काम दोहराता है (control statements), और फिर आप वे असली tools उपयोग करेंगे जो AI इंजीनियर रोज़ उपयोग करते हैं: CSV फ़ाइलें, NumPy, Pandas और Scikit-learn। अध्याय के अंत तक आप कुछ ही पंक्तियों के code से ख़ुद एक छोटा machine learning model train कर लेंगे।"
+     }
+    },
+    {
+     "p": {
+      "en": "Why is Python the most popular language for AI? Because its code reads almost like English, so you spend your energy on the problem and not on punctuation. It also has a huge collection of free, ready-made libraries: NumPy for fast number work, Pandas for tables of data, Matplotlib for graphs, Scikit-learn for machine learning, and TensorFlow and PyTorch for deep learning. A very large community around the world (and in India) writes tutorials and answers questions, so help is always easy to find.",
+      "hi": "Python AI के लिए सबसे लोकप्रिय भाषा क्यों है? क्योंकि इसका code लगभग अंग्रेज़ी की तरह पढ़ा जाता है, इसलिए आपकी ऊर्जा समस्या पर लगती है, विराम-चिह्नों पर नहीं। इसके पास मुफ़्त, तैयार libraries का बहुत बड़ा संग्रह भी है: तेज़ गणना के लिए NumPy, data की तालिकाओं के लिए Pandas, graph के लिए Matplotlib, machine learning के लिए Scikit-learn, और deep learning के लिए TensorFlow तथा PyTorch। दुनिया भर में (और भारत में भी) इसका बहुत बड़ा समुदाय है जो tutorial लिखता है और सवालों के जवाब देता है, इसलिए मदद आसानी से मिल जाती है।"
+     }
+    },
+    {
+     "note": {
+      "en": "The CBSE syllabus divides this unit into two levels. Level 1: basics of Python, character set, tokens, modes, operators, data types and control statements. Level 2: CSV files and the libraries NumPy, Pandas and Scikit-learn. For your practical file you need at least five Level 1 programs and at least five Level 2 programs. Section 3.21 lists ready programs for both.",
+      "hi": "CBSE पाठ्यक्रम इस इकाई को दो स्तरों में बाँटता है। स्तर 1: Python की मूल बातें, character set, tokens, modes, operators, data types और control statements। स्तर 2: CSV फ़ाइलें और NumPy, Pandas तथा Scikit-learn libraries। Practical file के लिए आपको कम से कम पाँच स्तर-1 प्रोग्राम और कम से कम पाँच स्तर-2 प्रोग्राम चाहिए। अनुभाग 3.21 में दोनों के लिए तैयार प्रोग्राम दिए गए हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.2 Introduction to Python and its features",
+    "hi": "3.2 Python का परिचय और इसकी विशेषताएँ"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Python",
+       "hi": "Python"
+      },
+      "text": {
+       "en": "Python is a general-purpose, high-level, interpreted programming language. It was created by Guido van Rossum in the Netherlands and first released in 1991. The name comes from the British comedy show 'Monty Python's Flying Circus', not from the snake.",
+       "hi": "Python एक सामान्य-उद्देश्य (general-purpose), उच्च-स्तरीय (high-level), interpreted programming language है। इसे नीदरलैंड में Guido van Rossum ने बनाया और पहली बार 1991 में जारी किया गया। इसका नाम ब्रिटिश कॉमेडी शो 'Monty Python's Flying Circus' से आया है, साँप से नहीं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Key features of Python:",
+      "hi": "Python की मुख्य विशेषताएँ:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "High-level language: you write instructions in an English-like way; you do not have to manage memory or hardware details.",
+       "Interpreted: Python runs your program line by line through a program called the interpreter. If line 5 has an error, lines 1 to 4 still run and then Python stops and reports the error. This makes finding mistakes easy.",
+       "Free and open source: anyone can download, use and share Python without paying, and its source code is public.",
+       "Cross-platform (portable): the same program runs on Windows, Linux, macOS and even Android phones (through apps such as Pydroid 3) with little or no change.",
+       "Easy to learn and read: simple syntax, and indentation (spaces at the start of a line) shows which lines belong together, so code looks clean.",
+       "Case-sensitive: Marks, marks and MARKS are three different names.",
+       "Dynamically typed: you do not declare the type of a variable; Python works it out from the value.",
+       "Supports ASCII and Unicode, so it can handle text in Hindi, Tamil, Bengali and other Indian languages.",
+       "Huge standard library and third-party libraries (NumPy, Pandas, Scikit-learn and many more).",
+       "Widely used: web development, data science, AI and machine learning, automation, games, science and finance."
+      ],
+      "hi": [
+       "उच्च-स्तरीय भाषा: आप निर्देश अंग्रेज़ी जैसे ढंग से लिखते हैं; memory या hardware का प्रबंधन आपको नहीं करना पड़ता।",
+       "Interpreted: Python आपका प्रोग्राम interpreter नाम के प्रोग्राम द्वारा पंक्ति-दर-पंक्ति चलाता है। अगर पंक्ति 5 में त्रुटि है, तो पंक्ति 1 से 4 चल जाती हैं और फिर Python रुककर त्रुटि बताता है। इससे गलती ढूँढना आसान होता है।",
+       "मुफ़्त और open source: कोई भी Python को बिना पैसे दिए download, उपयोग और साझा कर सकता है, और इसका source code सार्वजनिक है।",
+       "Cross-platform (portable): वही प्रोग्राम Windows, Linux, macOS और यहाँ तक कि Android फ़ोन पर भी (Pydroid 3 जैसे apps से) बहुत कम या बिना बदलाव के चलता है।",
+       "सीखने और पढ़ने में आसान: सरल syntax, और indentation (पंक्ति की शुरुआत में spaces) बताता है कि कौन-सी पंक्तियाँ एक साथ हैं, इसलिए code साफ़ दिखता है।",
+       "Case-sensitive: Marks, marks और MARKS तीन अलग-अलग नाम हैं।",
+       "Dynamically typed: आपको variable का type घोषित नहीं करना पड़ता; Python मान (value) देखकर ख़ुद समझ लेता है।",
+       "ASCII और Unicode का समर्थन, इसलिए यह हिंदी, तमिल, बांग्ला और अन्य भारतीय भाषाओं का text सँभाल सकता है।",
+       "विशाल standard library और third-party libraries (NumPy, Pandas, Scikit-learn और बहुत-सी अन्य)।",
+       "व्यापक उपयोग: web development, data science, AI और machine learning, automation, games, विज्ञान और वित्त।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Interpreter vs compiler",
+       "hi": "Interpreter बनाम compiler"
+      },
+      "text": {
+       "en": "Both translate a program into a form the computer can run. A compiler translates the whole program at once and then runs it (for example C, C++). An interpreter translates and runs one line at a time (Python). Python is called an interpreted language.",
+       "hi": "दोनों प्रोग्राम को ऐसे रूप में बदलते हैं जिसे कंप्यूटर चला सके। Compiler पूरे प्रोग्राम को एक साथ अनुवाद करके फिर चलाता है (जैसे C, C++)। Interpreter एक बार में एक पंक्ति अनुवाद करके चलाता है (Python)। इसलिए Python को interpreted language कहते हैं।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.3 Where to write Python: editors, Jupyter Notebook and Google Colab",
+    "hi": "3.3 Python कहाँ लिखें: editors, Jupyter Notebook और Google Colab"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "A program that helps you write and run code is called an editor or IDE (Integrated Development Environment). Common choices for Python are:",
+      "hi": "जो प्रोग्राम code लिखने और चलाने में मदद करता है, उसे editor या IDE (Integrated Development Environment) कहते हैं। Python के लिए आम विकल्प हैं:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Tool",
+        "What it is",
+        "Good for"
+       ],
+       "hi": [
+        "Tool",
+        "यह क्या है",
+        "किसके लिए अच्छा"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "IDLE",
+         "Comes free with Python from python.org; has a Shell window and an Editor window",
+         "Beginners, short programs"
+        ],
+        [
+         "Jupyter Notebook",
+         "Runs in a web browser; code is written in cells and output appears just below each cell; installed with Anaconda or 'pip install notebook'",
+         "Data science and AI, step-by-step experiments"
+        ],
+        [
+         "Google Colab",
+         "A free online Jupyter-style notebook from Google; needs only a browser and a Google account; NumPy, Pandas and Scikit-learn are already installed",
+         "School labs, phones/low-end laptops, no installation"
+        ],
+        [
+         "Spyder",
+         "A scientific IDE included in Anaconda",
+         "Data analysis with a variable explorer"
+        ],
+        [
+         "PyCharm / VS Code",
+         "Full professional editors",
+         "Larger projects"
+        ]
+       ],
+       "hi": [
+        [
+         "IDLE",
+         "python.org से Python के साथ मुफ़्त आता है; इसमें Shell विंडो और Editor विंडो होती है",
+         "शुरुआती, छोटे प्रोग्राम"
+        ],
+        [
+         "Jupyter Notebook",
+         "web browser में चलता है; code cells में लिखा जाता है और output हर cell के ठीक नीचे आता है; Anaconda से या 'pip install notebook' से install होता है",
+         "Data science और AI, कदम-दर-कदम प्रयोग"
+        ],
+        [
+         "Google Colab",
+         "Google की मुफ़्त online Jupyter जैसी notebook; केवल browser और Google account चाहिए; NumPy, Pandas और Scikit-learn पहले से installed हैं",
+         "स्कूल lab, फ़ोन/कम क्षमता वाले laptop, बिना installation"
+        ],
+        [
+         "Spyder",
+         "Anaconda में शामिल एक वैज्ञानिक IDE",
+         "variable explorer के साथ data analysis"
+        ],
+        [
+         "PyCharm / VS Code",
+         "पूरे पेशेवर editors",
+         "बड़े प्रोजेक्ट"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Jupyter Notebook in short: after installing Anaconda (or running pip install notebook), type jupyter notebook in the command prompt. A browser tab opens. Click New > Python 3 to make a notebook. Type code in a cell and press Shift + Enter to run it. A notebook file is saved with the extension .ipynb. Cells can also be 'Markdown' cells, which hold headings and explanations instead of code.",
+      "hi": "Jupyter Notebook संक्षेप में: Anaconda install करने के बाद (या pip install notebook चलाकर), command prompt में jupyter notebook टाइप करें। Browser का एक tab खुलेगा। Notebook बनाने के लिए New > Python 3 पर क्लिक करें। किसी cell में code लिखें और चलाने के लिए Shift + Enter दबाएँ। Notebook फ़ाइल .ipynb extension के साथ save होती है। Cells 'Markdown' cells भी हो सकते हैं, जिनमें code की जगह शीर्षक और व्याख्या लिखी जाती है।"
+     }
+    },
+    {
+     "note": {
+      "en": "Signing up for Google Colab needs a Google account. Students under 13 should use a school account or have a parent or teacher help with sign-up. Never share your password, and do not upload files containing personal details of classmates.",
+      "hi": "Google Colab के लिए Google account चाहिए। 13 वर्ष से कम आयु के विद्यार्थी स्कूल account का उपयोग करें या sign-up में माता-पिता/शिक्षक की मदद लें। अपना password कभी साझा न करें, और सहपाठियों की निजी जानकारी वाली फ़ाइलें upload न करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.4 Modes of working in Python: interactive and script mode",
+    "hi": "3.4 Python में काम करने के modes: interactive और script mode"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Python can be used in two modes.",
+      "hi": "Python का उपयोग दो modes में किया जा सकता है।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Interactive mode",
+       "hi": "Interactive mode"
+      },
+      "text": {
+       "en": "You type one statement at the prompt >>> and Python runs it immediately and shows the result. It is like a calculator. It is useful for testing small ideas, but the statements are not saved.",
+       "hi": "आप prompt >>> पर एक statement टाइप करते हैं और Python उसे तुरंत चलाकर परिणाम दिखाता है। यह एक calculator जैसा है। छोटे विचार परखने के लिए उपयोगी है, पर statements save नहीं होते।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": ">>> 5 + 3\n8\n>>> print(\"Namaste\")\nNamaste\n>>> 2 ** 10\n1024",
+      "hi": ">>> 5 + 3\n8\n>>> print(\"Namaste\")\nNamaste\n>>> 2 ** 10\n1024"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Script mode",
+       "hi": "Script mode"
+      },
+      "text": {
+       "en": "You write the whole program in a file (saved with the extension .py), save it, and then run it (in IDLE: Run > Run Module, or press F5). The program can be run again and again, edited and shared. All practical-file programs are written in script mode.",
+       "hi": "आप पूरा प्रोग्राम एक फ़ाइल में लिखते हैं (.py extension के साथ save), उसे save करते हैं, और फिर चलाते हैं (IDLE में: Run > Run Module, या F5 दबाएँ)। प्रोग्राम बार-बार चलाया, बदला और साझा किया जा सकता है। Practical file के सभी प्रोग्राम script mode में लिखे जाते हैं।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Interactive mode",
+        "Script mode"
+       ],
+       "hi": [
+        "Interactive mode",
+        "Script mode"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Works at the >>> prompt",
+         "Works with a saved .py file"
+        ],
+        [
+         "Runs one statement at a time",
+         "Runs the whole program"
+        ],
+        [
+         "Code is not saved",
+         "Code is saved and reusable"
+        ],
+        [
+         "Good for quick tests",
+         "Good for real programs"
+        ],
+        [
+         "Value of an expression is shown automatically",
+         "You must use print() to see output"
+        ]
+       ],
+       "hi": [
+        [
+         "prompt >>> पर काम करता है",
+         "save की गई .py फ़ाइल के साथ काम करता है"
+        ],
+        [
+         "एक बार में एक statement चलाता है",
+         "पूरा प्रोग्राम चलाता है"
+        ],
+        [
+         "Code save नहीं होता",
+         "Code save होता है और दोबारा उपयोग हो सकता है"
+        ],
+        [
+         "जल्दी परीक्षण के लिए अच्छा",
+         "असली प्रोग्रामों के लिए अच्छा"
+        ],
+        [
+         "Expression का मान अपने-आप दिखता है",
+         "Output देखने के लिए print() लगाना पड़ता है"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "note": {
+      "en": "A Jupyter or Colab notebook mixes both: each cell runs separately like interactive mode, but the whole notebook is saved like a script.",
+      "hi": "Jupyter या Colab notebook दोनों का मिश्रण है: हर cell interactive mode की तरह अलग चलता है, पर पूरी notebook script की तरह save होती है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.5 Python character set",
+    "hi": "3.5 Python character set"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Character set",
+       "hi": "Character set"
+      },
+      "text": {
+       "en": "The character set is the set of valid characters that Python recognises and that can be used to write a program.",
+       "hi": "Character set उन मान्य अक्षरों/चिह्नों का समूह है जिन्हें Python पहचानता है और जिनसे प्रोग्राम लिखा जा सकता है।"
+      }
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Letters: A to Z and a to z",
+       "Digits: 0 to 9",
+       "Special symbols: + - * / % = < > ( ) [ ] { } , . : ; ' \" # @ _ \\ and others",
+       "White spaces: blank space, tab, newline (Enter)",
+       "Other characters: Python supports all ASCII and Unicode characters, so a string can hold 'नमस्ते' or an emoji"
+      ],
+      "hi": [
+       "अक्षर: A से Z और a से z",
+       "अंक: 0 से 9",
+       "विशेष चिह्न: + - * / % = < > ( ) [ ] { } , . : ; ' \" # @ _ \\ आदि",
+       "White spaces: खाली space, tab, newline (Enter)",
+       "अन्य अक्षर: Python सभी ASCII और Unicode अक्षरों का समर्थन करता है, इसलिए एक string में 'नमस्ते' या emoji भी रह सकता है"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.6 Tokens: the smallest units of a program",
+    "hi": "3.6 Tokens: प्रोग्राम की सबसे छोटी इकाइयाँ"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Token",
+       "hi": "Token"
+      },
+      "text": {
+       "en": "A token (also called a lexical unit) is the smallest individual unit of a program that has meaning to Python. Python has five kinds of tokens: keywords, identifiers, literals, operators and punctuators.",
+       "hi": "Token (जिसे lexical unit भी कहते हैं) प्रोग्राम की सबसे छोटी अलग इकाई है जिसका Python के लिए अर्थ होता है। Python में पाँच प्रकार के tokens हैं: keywords, identifiers, literals, operators और punctuators।"
+      }
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Identify the tokens in the statement: total = marks + 10",
+       "hi": "Statement total = marks + 10 में tokens पहचानिए।"
+      },
+      "a": {
+       "en": "total : identifier\n= : operator (assignment)\nmarks : identifier\n+ : operator (arithmetic)\n10 : literal (integer)\nSo there are 5 tokens.",
+       "hi": "total : identifier\n= : operator (assignment)\nmarks : identifier\n+ : operator (arithmetic)\n10 : literal (integer)\nइसलिए कुल 5 tokens हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "1. Keywords. Keywords are reserved words that have a fixed, special meaning for Python. They cannot be used as names of variables or functions. All keywords are in lowercase except True, False and None. You can see the full list by running the program below.",
+      "hi": "1. Keywords। Keywords आरक्षित शब्द हैं जिनका Python के लिए निश्चित, विशेष अर्थ होता है। इन्हें variable या function के नाम के रूप में उपयोग नहीं किया जा सकता। True, False और None को छोड़कर सभी keywords छोटे अक्षरों (lowercase) में होते हैं। नीचे का प्रोग्राम चलाकर पूरी सूची देखी जा सकती है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import keyword\nprint(len(keyword.kwlist))\nprint(keyword.kwlist)\n\nOutput:\n35\n['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']",
+      "hi": "import keyword\nprint(len(keyword.kwlist))\nprint(keyword.kwlist)\n\nआउटपुट:\n35\n['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']"
+     }
+    },
+    {
+     "note": {
+      "en": "The exact count depends on the Python version (the output above is from Python 3.x running here). Examples you must know: if, else, elif, for, while, break, continue, in, is, and, or, not, def, return, import, from, as, True, False, None, class, try, except, pass, lambda.",
+      "hi": "सटीक संख्या Python के version पर निर्भर करती है (ऊपर का output यहाँ चल रहे Python 3.x से है)। ये उदाहरण अवश्य याद रखें: if, else, elif, for, while, break, continue, in, is, and, or, not, def, return, import, from, as, True, False, None, class, try, except, pass, lambda।"
+     }
+    },
+    {
+     "p": {
+      "en": "2. Identifiers. An identifier is a name given to a variable, function, list, class or any other object. Rules for naming identifiers:",
+      "hi": "2. Identifiers। Identifier वह नाम है जो किसी variable, function, list, class या अन्य वस्तु को दिया जाता है। Identifier रखने के नियम:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "It can contain letters (A–Z, a–z), digits (0–9) and the underscore _.",
+       "It must start with a letter or an underscore, never with a digit.",
+       "It cannot be a keyword.",
+       "No spaces or special symbols such as @, $, %, - are allowed.",
+       "It is case-sensitive: Age and age are different.",
+       "It can be of any length, but a short meaningful name such as total_marks is best."
+      ],
+      "hi": [
+       "इसमें अक्षर (A–Z, a–z), अंक (0–9) और underscore _ हो सकते हैं।",
+       "यह अक्षर या underscore से शुरू होना चाहिए, कभी अंक से नहीं।",
+       "यह keyword नहीं हो सकता।",
+       "Space या @, $, %, - जैसे विशेष चिह्न अनुमत नहीं हैं।",
+       "यह case-sensitive है: Age और age अलग हैं।",
+       "यह किसी भी लंबाई का हो सकता है, पर total_marks जैसा छोटा अर्थपूर्ण नाम सबसे अच्छा है।"
+      ]
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Name",
+        "Valid?",
+        "Reason"
+       ],
+       "hi": [
+        "नाम",
+        "मान्य?",
+        "कारण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "marks1",
+         "Valid",
+         "Starts with a letter"
+        ],
+        [
+         "_score",
+         "Valid",
+         "Underscore is allowed at the start"
+        ],
+        [
+         "1marks",
+         "Invalid",
+         "Starts with a digit"
+        ],
+        [
+         "total marks",
+         "Invalid",
+         "Contains a space"
+        ],
+        [
+         "for",
+         "Invalid",
+         "Keyword"
+        ],
+        [
+         "roll-no",
+         "Invalid",
+         "Hyphen is not allowed"
+        ],
+        [
+         "Roll_No",
+         "Valid",
+         "Letters and underscore"
+        ],
+        [
+         "price$",
+         "Invalid",
+         "$ is not allowed"
+        ]
+       ],
+       "hi": [
+        [
+         "marks1",
+         "मान्य",
+         "अक्षर से शुरू"
+        ],
+        [
+         "_score",
+         "मान्य",
+         "शुरुआत में underscore अनुमत है"
+        ],
+        [
+         "1marks",
+         "अमान्य",
+         "अंक से शुरू"
+        ],
+        [
+         "total marks",
+         "अमान्य",
+         "इसमें space है"
+        ],
+        [
+         "for",
+         "अमान्य",
+         "Keyword है"
+        ],
+        [
+         "roll-no",
+         "अमान्य",
+         "Hyphen अनुमत नहीं"
+        ],
+        [
+         "Roll_No",
+         "मान्य",
+         "अक्षर और underscore"
+        ],
+        [
+         "price$",
+         "अमान्य",
+         "$ अनुमत नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "3. Literals. A literal is a fixed data value written directly in the program. Types of literals:",
+      "hi": "3. Literals। Literal वह निश्चित data मान है जो प्रोग्राम में सीधे लिखा जाता है। Literals के प्रकार:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "String literals: text in single, double or triple quotes, e.g. 'India', \"AI\", '''many lines'''.",
+       "Numeric literals: integers (25, -7), floating-point numbers (3.14, -0.5, 2.5e3) and complex numbers (3+4j).",
+       "Boolean literals: True and False.",
+       "Special literal: None, which means 'no value'.",
+       "Collection literals: list [1, 2, 3], tuple (1, 2, 3), dictionary {'a': 1}, set {1, 2, 3}."
+      ],
+      "hi": [
+       "String literals: single, double या triple quotes में text, जैसे 'India', \"AI\", '''कई पंक्तियाँ'''।",
+       "Numeric literals: integer (25, -7), floating-point संख्याएँ (3.14, -0.5, 2.5e3) और complex संख्याएँ (3+4j)।",
+       "Boolean literals: True और False।",
+       "विशेष literal: None, जिसका अर्थ है 'कोई मान नहीं'।",
+       "Collection literals: list [1, 2, 3], tuple (1, 2, 3), dictionary {'a': 1}, set {1, 2, 3}।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "4. Operators. Operators are symbols that perform an operation on values (called operands), for example + - * / == and or in is. They are explained fully in section 3.9.",
+      "hi": "4. Operators। Operators वे चिह्न हैं जो मानों (जिन्हें operands कहते हैं) पर कोई क्रिया करते हैं, जैसे + - * / == and or in is। इन्हें अनुभाग 3.9 में विस्तार से समझाया गया है।"
+     }
+    },
+    {
+     "p": {
+      "en": "5. Punctuators (delimiters). Punctuators are symbols used to organise the structure of statements, for example ( ) [ ] { } , : ; . ' \" # @ =. For instance the colon : ends an if or for line, # starts a comment, and square brackets [ ] make a list.",
+      "hi": "5. Punctuators (delimiters)। Punctuators वे चिह्न हैं जो statements की संरचना व्यवस्थित करते हैं, जैसे ( ) [ ] { } , : ; . ' \" # @ =। उदाहरण के लिए colon : if या for पंक्ति को समाप्त करता है, # comment शुरू करता है, और square brackets [ ] list बनाते हैं।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Comment",
+       "hi": "Comment"
+      },
+      "text": {
+       "en": "A comment is a note for humans that Python ignores. A single-line comment starts with #. A multi-line explanation is often written inside triple quotes (a docstring). Comments make programs easier to understand.",
+       "hi": "Comment मनुष्यों के लिए एक टिप्पणी है जिसे Python अनदेखा करता है। एक-पंक्ति comment # से शुरू होता है। कई पंक्तियों की व्याख्या अक्सर triple quotes (docstring) में लिखी जाती है। Comments प्रोग्राम को समझना आसान बनाते हैं।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Indentation",
+       "hi": "Indentation"
+      },
+      "text": {
+       "en": "Indentation means the spaces at the start of a line. Python uses indentation (normally 4 spaces) to show which statements belong to an if, for, while or function block. Wrong indentation gives an IndentationError.",
+       "hi": "Indentation का अर्थ है पंक्ति की शुरुआत के spaces। Python indentation (सामान्यतः 4 spaces) से बताता है कि कौन-से statements किसी if, for, while या function block के अंदर हैं। गलत indentation से IndentationError आती है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.7 Variables and data types",
+    "hi": "3.7 Variables और data types"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Variable",
+       "hi": "Variable"
+      },
+      "text": {
+       "en": "A variable is a name that refers to a value stored in the computer's memory. It is created the moment you assign a value with =. Its value can change while the program runs.",
+       "hi": "Variable एक नाम है जो कंप्यूटर की memory में रखे किसी मान की ओर संकेत करता है। जैसे ही आप = से मान देते हैं, variable बन जाता है। प्रोग्राम चलते समय इसका मान बदल सकता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "name = \"Aarav\"        # string\nage = 16              # integer\nheight = 5.6          # float\nis_student = True     # boolean\nx, y, z = 10, 20, 30  # multiple assignment\na = b = 0             # same value to many variables\nprint(name, age, height, is_student)\nprint(x, y, z, a, b)\n\nOutput:\nAarav 16 5.6 True\n10 20 30 0 0",
+      "hi": "name = \"Aarav\"        # string\nage = 16              # integer\nheight = 5.6          # float\nis_student = True     # boolean\nx, y, z = 10, 20, 30  # multiple assignment\na = b = 0             # same value to many variables\nprint(name, age, height, is_student)\nprint(x, y, z, a, b)\n\nआउटपुट:\nAarav 16 5.6 True\n10 20 30 0 0"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Data type",
+       "hi": "Data type"
+      },
+      "text": {
+       "en": "A data type tells what kind of value a variable holds and what operations can be done on it. The built-in function type() shows the data type of any value.",
+       "hi": "Data type बताता है कि variable में किस प्रकार का मान है और उस पर कौन-सी क्रियाएँ हो सकती हैं। Built-in function type() किसी भी मान का data type दिखाता है।"
+      }
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Category",
+        "Data type",
+        "Example",
+        "Mutable?"
+       ],
+       "hi": [
+        "श्रेणी",
+        "Data type",
+        "उदाहरण",
+        "बदलने योग्य (mutable)?"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Number",
+         "int (integer)",
+         "25, -3, 0",
+         "No"
+        ],
+        [
+         "Number",
+         "float (decimal)",
+         "3.14, -0.5",
+         "No"
+        ],
+        [
+         "Number",
+         "complex",
+         "3+4j",
+         "No"
+        ],
+        [
+         "Boolean",
+         "bool",
+         "True, False",
+         "No"
+        ],
+        [
+         "Sequence",
+         "str (string)",
+         "'Delhi'",
+         "No"
+        ],
+        [
+         "Sequence",
+         "list",
+         "[10, 'AI', 2.5]",
+         "Yes"
+        ],
+        [
+         "Sequence",
+         "tuple",
+         "(10, 20, 30)",
+         "No"
+        ],
+        [
+         "Set",
+         "set",
+         "{1, 2, 3}",
+         "Yes"
+        ],
+        [
+         "Mapping",
+         "dict (dictionary)",
+         "{'name': 'Riya', 'marks': 92}",
+         "Yes"
+        ],
+        [
+         "None type",
+         "NoneType",
+         "None",
+         "No"
+        ]
+       ],
+       "hi": [
+        [
+         "संख्या",
+         "int (पूर्णांक)",
+         "25, -3, 0",
+         "नहीं"
+        ],
+        [
+         "संख्या",
+         "float (दशमलव)",
+         "3.14, -0.5",
+         "नहीं"
+        ],
+        [
+         "संख्या",
+         "complex",
+         "3+4j",
+         "नहीं"
+        ],
+        [
+         "Boolean",
+         "bool",
+         "True, False",
+         "नहीं"
+        ],
+        [
+         "Sequence",
+         "str (string)",
+         "'Delhi'",
+         "नहीं"
+        ],
+        [
+         "Sequence",
+         "list",
+         "[10, 'AI', 2.5]",
+         "हाँ"
+        ],
+        [
+         "Sequence",
+         "tuple",
+         "(10, 20, 30)",
+         "नहीं"
+        ],
+        [
+         "Set",
+         "set",
+         "{1, 2, 3}",
+         "हाँ"
+        ],
+        [
+         "Mapping",
+         "dict (dictionary)",
+         "{'name': 'Riya', 'marks': 92}",
+         "हाँ"
+        ],
+        [
+         "None type",
+         "NoneType",
+         "None",
+         "नहीं"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "values = [25, 3.14, 3+4j, True, \"Delhi\", [1, 2], (1, 2), {1, 2}, {\"a\": 1}, None]\nfor v in values:\n    print(v, \"->\", type(v))\n\nOutput:\n25 -> <class 'int'>\n3.14 -> <class 'float'>\n(3+4j) -> <class 'complex'>\nTrue -> <class 'bool'>\nDelhi -> <class 'str'>\n[1, 2] -> <class 'list'>\n(1, 2) -> <class 'tuple'>\n{1, 2} -> <class 'set'>\n{'a': 1} -> <class 'dict'>\nNone -> <class 'NoneType'>",
+      "hi": "values = [25, 3.14, 3+4j, True, \"Delhi\", [1, 2], (1, 2), {1, 2}, {\"a\": 1}, None]\nfor v in values:\n    print(v, \"->\", type(v))\n\nआउटपुट:\n25 -> <class 'int'>\n3.14 -> <class 'float'>\n(3+4j) -> <class 'complex'>\nTrue -> <class 'bool'>\nDelhi -> <class 'str'>\n[1, 2] -> <class 'list'>\n(1, 2) -> <class 'tuple'>\n{1, 2} -> <class 'set'>\n{'a': 1} -> <class 'dict'>\nNone -> <class 'NoneType'>"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Integer (int): whole numbers, positive or negative, with no decimal point. Python integers can be as large as memory allows.",
+       "Float: numbers with a decimal point or written in scientific form (2.5e3 means 2500.0).",
+       "Complex: numbers of the form a + bj, where j is the square root of -1. Used in science and engineering.",
+       "Boolean: only two values, True and False. They come from comparisons such as 5 > 3. In arithmetic True behaves like 1 and False like 0.",
+       "String: an ordered sequence of characters inside quotes. Strings are immutable (cannot be changed in place).",
+       "List: an ordered, changeable collection in square brackets; items can be of different types.",
+       "Tuple: like a list but in round brackets and cannot be changed after creation.",
+       "Set: an unordered collection of unique items in curly brackets; duplicates are removed automatically.",
+       "Dictionary: a collection of key : value pairs in curly brackets; values are found by their keys."
+      ],
+      "hi": [
+       "Integer (int): पूर्ण संख्याएँ, धनात्मक या ऋणात्मक, बिना दशमलव के। Python के integer memory जितने बड़े हो सकते हैं।",
+       "Float: दशमलव वाली संख्याएँ या वैज्ञानिक रूप में लिखी संख्याएँ (2.5e3 का अर्थ 2500.0)।",
+       "Complex: a + bj रूप की संख्याएँ, जहाँ j, -1 का वर्गमूल है। विज्ञान और इंजीनियरिंग में उपयोग।",
+       "Boolean: केवल दो मान, True और False। ये 5 > 3 जैसी तुलनाओं से आते हैं। गणित में True, 1 की तरह और False, 0 की तरह व्यवहार करता है।",
+       "String: quotes के अंदर अक्षरों का क्रमबद्ध अनुक्रम। Strings immutable हैं (उसी जगह बदली नहीं जा सकतीं)।",
+       "List: square brackets में क्रमबद्ध, बदलने योग्य संग्रह; items अलग-अलग types के हो सकते हैं।",
+       "Tuple: list जैसा पर round brackets में और बनने के बाद बदला नहीं जा सकता।",
+       "Set: curly brackets में अद्वितीय (unique) items का बिना क्रम वाला संग्रह; दोहराव अपने-आप हट जाता है।",
+       "Dictionary: curly brackets में key : value जोड़ों का संग्रह; मान उनकी keys से ढूँढे जाते हैं।"
+      ]
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Dynamic typing",
+       "hi": "Dynamic typing"
+      },
+      "text": {
+       "en": "In Python the type belongs to the value, not to the variable name. The same variable can hold an int now and a string later. Python decides the type at run time.",
+       "hi": "Python में type मान का होता है, variable के नाम का नहीं। वही variable अभी int और बाद में string रख सकता है। Python type को run time पर तय करता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "x = 10\nprint(type(x))\nx = \"ten\"\nprint(type(x))\n\nOutput:\n<class 'int'>\n<class 'str'>",
+      "hi": "x = 10\nprint(type(x))\nx = \"ten\"\nprint(type(x))\n\nआउटपुट:\n<class 'int'>\n<class 'str'>"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Mutable and immutable",
+       "hi": "Mutable और immutable"
+      },
+      "text": {
+       "en": "Mutable objects (list, dict, set) can be changed after they are created. Immutable objects (int, float, bool, str, tuple) cannot; any 'change' actually creates a new object.",
+       "hi": "Mutable objects (list, dict, set) बनने के बाद बदले जा सकते हैं। Immutable objects (int, float, bool, str, tuple) नहीं बदले जा सकते; कोई भी 'बदलाव' वास्तव में नया object बनाता है।"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.8 Output and input: print() and input()",
+    "hi": "3.8 Output और input: print() और input()"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "print() shows values on the screen. Items separated by commas are printed with a space between them. Two optional settings are useful: sep (what goes between items) and end (what goes at the end; normally a newline).",
+      "hi": "print() स्क्रीन पर मान दिखाता है। Comma से अलग किए items के बीच एक space के साथ प्रिंट होते हैं। दो वैकल्पिक settings उपयोगी हैं: sep (items के बीच क्या आए) और end (अंत में क्या आए; सामान्यतः newline)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "print(\"AI\", \"ML\", \"DL\")\nprint(\"AI\", \"ML\", \"DL\", sep=\" > \")\nprint(\"Loading\", end=\"...\")\nprint(\"done\")\nmarks = 92\nprint(f\"Riya scored {marks} marks\")   # f-string\n\nOutput:\nAI ML DL\nAI > ML > DL\nLoading...done\nRiya scored 92 marks",
+      "hi": "print(\"AI\", \"ML\", \"DL\")\nprint(\"AI\", \"ML\", \"DL\", sep=\" > \")\nprint(\"Loading\", end=\"...\")\nprint(\"done\")\nmarks = 92\nprint(f\"Riya scored {marks} marks\")   # f-string\n\nआउटपुट:\nAI ML DL\nAI > ML > DL\nLoading...done\nRiya scored 92 marks"
+     }
+    },
+    {
+     "p": {
+      "en": "input() waits for the user to type something and press Enter. Whatever is typed is always returned as a string. To do maths with it, convert it using int() or float().",
+      "hi": "input() उपयोगकर्ता के कुछ टाइप करके Enter दबाने की प्रतीक्षा करता है। जो कुछ टाइप किया जाता है, वह हमेशा string के रूप में मिलता है। उससे गणित करने के लिए int() या float() से बदलें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "name = input(\"Enter your name: \")\nm1 = float(input(\"Marks in English: \"))\nm2 = float(input(\"Marks in AI: \"))\ntotal = m1 + m2\nprint(\"Name:\", name)\nprint(\"Total marks:\", total)\n\nOutput (as seen on screen; the user typed: Kabir , 78 , 91):\nEnter your name: Kabir\nMarks in English: 78\nMarks in AI: 91\nName: Kabir\nTotal marks: 169.0",
+      "hi": "name = input(\"Enter your name: \")\nm1 = float(input(\"Marks in English: \"))\nm2 = float(input(\"Marks in AI: \"))\ntotal = m1 + m2\nprint(\"Name:\", name)\nprint(\"Total marks:\", total)\n\nआउटपुट (स्क्रीन पर जैसा दिखता है; उपयोगकर्ता ने टाइप किया: Kabir , 78 , 91):\nEnter your name: Kabir\nMarks in English: 78\nMarks in AI: 91\nName: Kabir\nTotal marks: 169.0"
+     }
+    },
+    {
+     "note": {
+      "en": "Notice that m1 and m2 were converted with float(), so the total is 169.0. Without float(), '78' + '91' would join the two strings and give '7891' instead of adding them.",
+      "hi": "ध्यान दें कि m1 और m2 को float() से बदला गया, इसलिए total 169.0 है। float() के बिना '78' + '91' दोनों strings को जोड़कर '7891' बना देता, उन्हें गणितीय रूप से नहीं जोड़ता।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.9 Operators",
+    "hi": "3.9 Operators"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Operator and operand",
+       "hi": "Operator और operand"
+      },
+      "text": {
+       "en": "An operator is a symbol that performs an operation. The values it works on are called operands. In 7 + 2, + is the operator and 7 and 2 are operands. An expression is a combination of operands and operators that gives a value.",
+       "hi": "Operator वह चिह्न है जो कोई क्रिया करता है। जिन मानों पर वह काम करता है उन्हें operands कहते हैं। 7 + 2 में + operator है और 7 तथा 2 operands हैं। Expression operands और operators का ऐसा मेल है जो एक मान देता है।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "1. Arithmetic operators",
+      "hi": "1. Arithmetic (अंकगणितीय) operators"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Operator",
+        "Meaning",
+        "Example",
+        "Result"
+       ],
+       "hi": [
+        "Operator",
+        "अर्थ",
+        "उदाहरण",
+        "परिणाम"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "+",
+         "Addition",
+         "17 + 5",
+         "22"
+        ],
+        [
+         "-",
+         "Subtraction",
+         "17 - 5",
+         "12"
+        ],
+        [
+         "*",
+         "Multiplication",
+         "17 * 5",
+         "85"
+        ],
+        [
+         "/",
+         "Division (always float)",
+         "17 / 5",
+         "3.4"
+        ],
+        [
+         "//",
+         "Floor division (quotient, rounded down)",
+         "17 // 5",
+         "3"
+        ],
+        [
+         "%",
+         "Modulus (remainder)",
+         "17 % 5",
+         "2"
+        ],
+        [
+         "**",
+         "Exponent (power)",
+         "2 ** 5",
+         "32"
+        ]
+       ],
+       "hi": [
+        [
+         "+",
+         "जोड़",
+         "17 + 5",
+         "22"
+        ],
+        [
+         "-",
+         "घटाव",
+         "17 - 5",
+         "12"
+        ],
+        [
+         "*",
+         "गुणा",
+         "17 * 5",
+         "85"
+        ],
+        [
+         "/",
+         "भाग (हमेशा float)",
+         "17 / 5",
+         "3.4"
+        ],
+        [
+         "//",
+         "Floor division (भागफल, नीचे की ओर पूर्णांकित)",
+         "17 // 5",
+         "3"
+        ],
+        [
+         "%",
+         "Modulus (शेषफल)",
+         "17 % 5",
+         "2"
+        ],
+        [
+         "**",
+         "घात (power)",
+         "2 ** 5",
+         "32"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "a, b = 17, 5\nprint(a + b, a - b, a * b, a / b, a // b, a % b, a ** 2)\nprint(-17 // 5, -17 % 5)\n\nOutput:\n22 12 85 3.4 3 2 289\n-4 3",
+      "hi": "a, b = 17, 5\nprint(a + b, a - b, a * b, a / b, a // b, a % b, a ** 2)\nprint(-17 // 5, -17 % 5)\n\nआउटपुट:\n22 12 85 3.4 3 2 289\n-4 3"
+     }
+    },
+    {
+     "note": {
+      "en": "// rounds down towards minus infinity, so -17 // 5 is -4, not -3. The % operator is very useful to test even or odd: n % 2 == 0 means n is even.",
+      "hi": "// नीचे की ओर (minus infinity की ओर) पूर्णांकित करता है, इसलिए -17 // 5 का मान -4 है, -3 नहीं। % operator सम या विषम जाँचने में बहुत उपयोगी है: n % 2 == 0 का अर्थ है n सम है।"
+     }
+    },
+    {
+     "p": {
+      "en": "2. Relational (comparison) operators compare two values and give True or False: == (equal to), != (not equal to), > , < , >= , <=.",
+      "hi": "2. Relational (तुलनात्मक) operators दो मानों की तुलना करके True या False देते हैं: == (बराबर), != (बराबर नहीं), > , < , >= , <=।"
+     }
+    },
+    {
+     "formula": {
+      "en": "x, y = 10, 20\nprint(x == y, x != y, x > y, x < y, x >= 10, y <= 15)\nprint(\"apple\" < \"banana\")\n\nOutput:\nFalse True False True True False\nTrue",
+      "hi": "x, y = 10, 20\nprint(x == y, x != y, x > y, x < y, x >= 10, y <= 15)\nprint(\"apple\" < \"banana\")\n\nआउटपुट:\nFalse True False True True False\nTrue"
+     }
+    },
+    {
+     "note": {
+      "en": "= is assignment (store a value); == is comparison (check equality). Mixing them up is one of the most common beginner mistakes.",
+      "hi": "= assignment है (मान रखना); == तुलना है (बराबरी जाँचना)। इन्हें आपस में मिला देना शुरुआती लोगों की सबसे आम गलतियों में से एक है।"
+     }
+    },
+    {
+     "p": {
+      "en": "3. Assignment operators store values. Besides =, there are shortcut (augmented) operators: += , -= , *= , /= , //= , %= , **=. For example x += 3 means x = x + 3.",
+      "hi": "3. Assignment operators मान रखते हैं। = के अलावा shortcut (augmented) operators भी हैं: += , -= , *= , /= , //= , %= , **=। उदाहरण के लिए x += 3 का अर्थ है x = x + 3।"
+     }
+    },
+    {
+     "formula": {
+      "en": "x = 10\nx += 5;  print(x)\nx -= 3;  print(x)\nx *= 2;  print(x)\nx //= 4; print(x)\nx **= 2; print(x)\n\nOutput:\n15\n12\n24\n6\n36",
+      "hi": "x = 10\nx += 5;  print(x)\nx -= 3;  print(x)\nx *= 2;  print(x)\nx //= 4; print(x)\nx **= 2; print(x)\n\nआउटपुट:\n15\n12\n24\n6\n36"
+     }
+    },
+    {
+     "p": {
+      "en": "4. Logical operators combine conditions: and (True only if both are True), or (True if at least one is True), not (reverses the value).",
+      "hi": "4. Logical operators शर्तों को जोड़ते हैं: and (केवल तब True जब दोनों True हों), or (True यदि कम से कम एक True हो), not (मान उलट देता है)।"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "A",
+        "B",
+        "A and B",
+        "A or B",
+        "not A"
+       ],
+       "hi": [
+        "A",
+        "B",
+        "A and B",
+        "A or B",
+        "not A"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "True",
+         "True",
+         "True",
+         "True",
+         "False"
+        ],
+        [
+         "True",
+         "False",
+         "False",
+         "True",
+         "False"
+        ],
+        [
+         "False",
+         "True",
+         "False",
+         "True",
+         "True"
+        ],
+        [
+         "False",
+         "False",
+         "False",
+         "False",
+         "True"
+        ]
+       ],
+       "hi": [
+        [
+         "True",
+         "True",
+         "True",
+         "True",
+         "False"
+        ],
+        [
+         "True",
+         "False",
+         "False",
+         "True",
+         "False"
+        ],
+        [
+         "False",
+         "True",
+         "False",
+         "True",
+         "True"
+        ],
+        [
+         "False",
+         "False",
+         "False",
+         "False",
+         "True"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "age = 17\nhas_id = True\nprint(age >= 18 and has_id)   # can vote?\nprint(age >= 16 or has_id)\nprint(not has_id)\n\nOutput:\nFalse\nTrue\nFalse",
+      "hi": "age = 17\nhas_id = True\nprint(age >= 18 and has_id)   # can vote?\nprint(age >= 16 or has_id)\nprint(not has_id)\n\nआउटपुट:\nFalse\nTrue\nFalse"
+     }
+    },
+    {
+     "p": {
+      "en": "5. Bitwise operators work on the binary (0 and 1) form of integers: & (AND), | (OR), ^ (XOR), ~ (NOT), << (left shift), >> (right shift).",
+      "hi": "5. Bitwise operators integers के binary (0 और 1) रूप पर काम करते हैं: & (AND), | (OR), ^ (XOR), ~ (NOT), << (left shift), >> (right shift)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "a, b = 12, 10          # 12 = 1100, 10 = 1010 in binary\nprint(a & b, a | b, a ^ b, ~a, a << 1, a >> 2)\n\nOutput:\n8 14 6 -13 24 3",
+      "hi": "a, b = 12, 10          # 12 = 1100, 10 = 1010 in binary\nprint(a & b, a | b, a ^ b, ~a, a << 1, a >> 2)\n\nआउटपुट:\n8 14 6 -13 24 3"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Explain why 12 & 10 gives 8 and 12 | 10 gives 14.",
+       "hi": "समझाइए कि 12 & 10 का मान 8 और 12 | 10 का मान 14 क्यों है।"
+      },
+      "a": {
+       "en": "12 = 1100 and 10 = 1010 in binary.\n& keeps a 1 only where both bits are 1: 1000 = 8.\n| keeps a 1 where either bit is 1: 1110 = 14.\n^ (XOR) keeps a 1 where bits differ: 0110 = 6.\n<< 1 shifts bits left by one place, which doubles the number: 24.",
+       "hi": "binary में 12 = 1100 और 10 = 1010।\n& वहीं 1 रखता है जहाँ दोनों bits 1 हों: 1000 = 8।\n| वहाँ 1 रखता है जहाँ कोई भी bit 1 हो: 1110 = 14।\n^ (XOR) वहाँ 1 रखता है जहाँ bits अलग हों: 0110 = 6।\n<< 1 bits को एक स्थान बाईं ओर खिसकाता है, जिससे संख्या दोगुनी हो जाती है: 24।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "6. Identity operators: is and is not check whether two names refer to the very same object in memory (not just equal values).",
+      "hi": "6. Identity operators: is और is not जाँचते हैं कि क्या दो नाम memory में बिल्कुल एक ही object की ओर संकेत करते हैं (केवल बराबर मान नहीं)।"
+     }
+    },
+    {
+     "p": {
+      "en": "7. Membership operators: in and not in check whether a value is present in a sequence (string, list, tuple, set or dictionary keys).",
+      "hi": "7. Membership operators: in और not in जाँचते हैं कि कोई मान किसी sequence (string, list, tuple, set या dictionary की keys) में है या नहीं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "a = [1, 2, 3]\nb = a\nc = [1, 2, 3]\nprint(a == c, a is c, a is b, a is not c)\nfruits = [\"mango\", \"banana\", \"guava\"]\nprint(\"mango\" in fruits, \"apple\" not in fruits, \"I\" in \"India\")\nx = None\nprint(x is None)\n\nOutput:\nTrue False True True\nTrue True True\nTrue",
+      "hi": "a = [1, 2, 3]\nb = a\nc = [1, 2, 3]\nprint(a == c, a is c, a is b, a is not c)\nfruits = [\"mango\", \"banana\", \"guava\"]\nprint(\"mango\" in fruits, \"apple\" not in fruits, \"I\" in \"India\")\nx = None\nprint(x is None)\n\nआउटपुट:\nTrue False True True\nTrue True True\nTrue"
+     }
+    },
+    {
+     "p": {
+      "en": "Operator precedence: when an expression has many operators, Python follows a fixed order (like BODMAS in maths). From highest to lowest:",
+      "hi": "Operator precedence: जब expression में कई operators हों, तो Python एक निश्चित क्रम मानता है (गणित के BODMAS जैसा)। सबसे ऊँचे से सबसे नीचे:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "( ) parentheses",
+       "** exponent (works right to left: 2 ** 3 ** 2 = 2 ** 9 = 512)",
+       "unary + , - , ~",
+       "* , / , // , %",
+       "+ , -",
+       "<< , >>",
+       "&",
+       "^",
+       "|",
+       "comparison ==, !=, >, <, >=, <=, is, is not, in, not in",
+       "not",
+       "and",
+       "or"
+      ],
+      "hi": [
+       "( ) कोष्ठक",
+       "** घात (दाएँ से बाएँ: 2 ** 3 ** 2 = 2 ** 9 = 512)",
+       "unary + , - , ~",
+       "* , / , // , %",
+       "+ , -",
+       "<< , >>",
+       "&",
+       "^",
+       "|",
+       "तुलना ==, !=, >, <, >=, <=, is, is not, in, not in",
+       "not",
+       "and",
+       "or"
+      ]
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Evaluate: 10 + 4 * 3 ** 2 // 5 - 1",
+       "hi": "मान ज्ञात कीजिए: 10 + 4 * 3 ** 2 // 5 - 1"
+      },
+      "a": {
+       "en": "Step 1: ** first: 3 ** 2 = 9 → 10 + 4 * 9 // 5 - 1\nStep 2: * and // from left to right: 4 * 9 = 36, then 36 // 5 = 7 → 10 + 7 - 1\nStep 3: + and - from left to right: 17 - 1 = 16\nAnswer: 16 (Python prints 16).",
+       "hi": "चरण 1: पहले **: 3 ** 2 = 9 → 10 + 4 * 9 // 5 - 1\nचरण 2: * और // बाएँ से दाएँ: 4 * 9 = 36, फिर 36 // 5 = 7 → 10 + 7 - 1\nचरण 3: + और - बाएँ से दाएँ: 17 - 1 = 16\nउत्तर: 16 (Python 16 प्रिंट करता है)।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "print(10 + 4 * 3 ** 2 // 5 - 1)\nprint(2 ** 3 ** 2)\nprint((10 + 4) * 3)\n\nOutput:\n16\n512\n42",
+      "hi": "print(10 + 4 * 3 ** 2 // 5 - 1)\nprint(2 ** 3 ** 2)\nprint((10 + 4) * 3)\n\nआउटपुट:\n16\n512\n42"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.10 Type conversion (type casting)",
+    "hi": "3.10 Type conversion (type casting)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Type conversion",
+       "hi": "Type conversion"
+      },
+      "text": {
+       "en": "Changing a value from one data type to another. Implicit conversion is done automatically by Python (for example int + float gives float). Explicit conversion (type casting) is done by the programmer using functions such as int(), float(), str(), bool(), list(), tuple() and set().",
+       "hi": "किसी मान को एक data type से दूसरे में बदलना। Implicit conversion Python अपने-आप करता है (जैसे int + float से float बनता है)। Explicit conversion (type casting) programmer int(), float(), str(), bool(), list(), tuple() और set() जैसे functions से करता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "print(5 + 2.5)            # implicit: int + float -> float\nprint(int(\"45\") + 5)      # string to int\nprint(float(\"3.5\") * 2)   # string to float\nprint(int(9.99))          # float to int (decimal part is cut off)\nprint(str(100) + \" runs\") # int to string\nprint(bool(0), bool(7), bool(\"\"), bool(\"hi\"))\nprint(list(\"AI\"), tuple([1, 2]), set([1, 1, 2]))\n\nOutput:\n7.5\n50\n7.0\n9\n100 runs\nFalse True False True\n['A', 'I'] (1, 2) {1, 2}",
+      "hi": "print(5 + 2.5)            # implicit: int + float -> float\nprint(int(\"45\") + 5)      # string to int\nprint(float(\"3.5\") * 2)   # string to float\nprint(int(9.99))          # float to int (decimal part is cut off)\nprint(str(100) + \" runs\") # int to string\nprint(bool(0), bool(7), bool(\"\"), bool(\"hi\"))\nprint(list(\"AI\"), tuple([1, 2]), set([1, 1, 2]))\n\nआउटपुट:\n7.5\n50\n7.0\n9\n100 runs\nFalse True False True\n['A', 'I'] (1, 2) {1, 2}"
+     }
+    },
+    {
+     "note": {
+      "en": "int(9.99) gives 9, not 10: int() cuts off the decimal part; use round(9.99) to round to 10. int('abc') or int('4.5') gives a ValueError because the text is not a whole number.",
+      "hi": "int(9.99) का मान 9 है, 10 नहीं: int() दशमलव भाग काट देता है; 10 तक पूर्णांकित करने के लिए round(9.99) उपयोग करें। int('abc') या int('4.5') से ValueError आती है क्योंकि वह text पूर्ण संख्या नहीं है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.11 Working with strings, lists, tuples and dictionaries",
+    "hi": "3.11 Strings, lists, tuples और dictionaries के साथ काम"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "AI programs constantly handle collections of data: a list of marks, a sentence to analyse, a record of a patient. Indexing starts at 0 from the left and at -1 from the right. Slicing [start:stop] gives the part from start up to but not including stop.",
+      "hi": "AI प्रोग्राम लगातार data के संग्रह सँभालते हैं: अंकों की list, विश्लेषण के लिए एक वाक्य, किसी मरीज़ का record। Indexing बाईं ओर से 0 से और दाईं ओर से -1 से शुरू होती है। Slicing [start:stop] start से लेकर stop से ठीक पहले तक का भाग देता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "s = \"Artificial Intelligence\"\nprint(s[0], s[-1], s[0:10], len(s))\nprint(s.upper())\nprint(s.lower().count(\"i\"))\nprint(s.split())                 # split into words\nprint(\"-\".join([\"AI\", \"for\", \"All\"]))\nprint(\"  hello  \".strip(), s.replace(\"Artificial\", \"Human\"))\nprint(s.startswith(\"Art\"), s.find(\"Intel\"))\n\nOutput:\nA e Artificial 23\nARTIFICIAL INTELLIGENCE\n5\n['Artificial', 'Intelligence']\nAI-for-All\nhello Human Intelligence\nTrue 11",
+      "hi": "s = \"Artificial Intelligence\"\nprint(s[0], s[-1], s[0:10], len(s))\nprint(s.upper())\nprint(s.lower().count(\"i\"))\nprint(s.split())                 # split into words\nprint(\"-\".join([\"AI\", \"for\", \"All\"]))\nprint(\"  hello  \".strip(), s.replace(\"Artificial\", \"Human\"))\nprint(s.startswith(\"Art\"), s.find(\"Intel\"))\n\nआउटपुट:\nA e Artificial 23\nARTIFICIAL INTELLIGENCE\n5\n['Artificial', 'Intelligence']\nAI-for-All\nhello Human Intelligence\nTrue 11"
+     }
+    },
+    {
+     "formula": {
+      "en": "marks = [78, 91, 65, 88]\nmarks.append(95)          # add at end\nmarks.insert(1, 70)       # add at index 1\nprint(marks)\nmarks.remove(65)          # remove a value\nlast = marks.pop()        # remove and return last item\nprint(marks, last)\nmarks.sort()\nprint(marks, len(marks), max(marks), min(marks), sum(marks))\nprint(marks[1:3], marks[::-1])\n\nOutput:\n[78, 70, 91, 65, 88, 95]\n[78, 70, 91, 88] 95\n[70, 78, 88, 91] 4 91 70 327\n[78, 88] [91, 88, 78, 70]",
+      "hi": "marks = [78, 91, 65, 88]\nmarks.append(95)          # add at end\nmarks.insert(1, 70)       # add at index 1\nprint(marks)\nmarks.remove(65)          # remove a value\nlast = marks.pop()        # remove and return last item\nprint(marks, last)\nmarks.sort()\nprint(marks, len(marks), max(marks), min(marks), sum(marks))\nprint(marks[1:3], marks[::-1])\n\nआउटपुट:\n[78, 70, 91, 65, 88, 95]\n[78, 70, 91, 88] 95\n[70, 78, 88, 91] 4 91 70 327\n[78, 88] [91, 88, 78, 70]"
+     }
+    },
+    {
+     "formula": {
+      "en": "point = (28.61, 77.20)            # tuple: latitude, longitude of New Delhi\nprint(point[0], len(point))\nstudent = {\"name\": \"Riya\", \"class\": 11, \"marks\": 92}\nprint(student[\"name\"])\nstudent[\"city\"] = \"Jaipur\"        # add a new key\nstudent[\"marks\"] = 95             # change a value\nprint(student.keys())\nprint(student.values())\nfor key, value in student.items():\n    print(key, \":\", value)\n\nOutput:\n28.61 2\nRiya\ndict_keys(['name', 'class', 'marks', 'city'])\ndict_values(['Riya', 11, 95, 'Jaipur'])\nname : Riya\nclass : 11\nmarks : 95\ncity : Jaipur",
+      "hi": "point = (28.61, 77.20)            # tuple: latitude, longitude of New Delhi\nprint(point[0], len(point))\nstudent = {\"name\": \"Riya\", \"class\": 11, \"marks\": 92}\nprint(student[\"name\"])\nstudent[\"city\"] = \"Jaipur\"        # add a new key\nstudent[\"marks\"] = 95             # change a value\nprint(student.keys())\nprint(student.values())\nfor key, value in student.items():\n    print(key, \":\", value)\n\nआउटपुट:\n28.61 2\nRiya\ndict_keys(['name', 'class', 'marks', 'city'])\ndict_values(['Riya', 11, 95, 'Jaipur'])\nname : Riya\nclass : 11\nmarks : 95\ncity : Jaipur"
+     }
+    },
+    {
+     "note": {
+      "en": "Lists use [ ], tuples use ( ), dictionaries and sets use { }. A dictionary key must be unique and immutable (for example a string or number). Asking for a key that does not exist, such as student['age'], gives a KeyError; student.get('age') returns None instead.",
+      "hi": "List में [ ], tuple में ( ), dictionary और set में { } लगते हैं। Dictionary की key अद्वितीय और immutable होनी चाहिए (जैसे string या संख्या)। ऐसी key माँगने पर जो मौजूद नहीं, जैसे student['age'], KeyError आती है; जबकि student.get('age') None लौटाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.12 Control statements (1): selection with if, if-else, if-elif-else",
+    "hi": "3.12 Control statements (1): if, if-else, if-elif-else से चयन"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Normally Python runs statements one after another from top to bottom; this is sequential flow. Control statements change this flow. There are two kinds: selection (decision-making) statements, which choose which block to run, and iteration (looping) statements, which repeat a block. A third group, jump statements (break, continue, pass), changes the flow inside loops.",
+      "hi": "सामान्यतः Python statements को ऊपर से नीचे एक के बाद एक चलाता है; इसे sequential flow कहते हैं। Control statements इस प्रवाह को बदलते हैं। ये दो प्रकार के हैं: selection (निर्णय लेने वाले) statements, जो चुनते हैं कि कौन-सा block चले, और iteration (looping) statements, जो किसी block को दोहराते हैं। तीसरा समूह, jump statements (break, continue, pass), loops के अंदर प्रवाह बदलता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "if condition:\n    statements          # run only when condition is True\n\nif condition:\n    statements_A\nelse:\n    statements_B        # run when condition is False\n\nif condition1:\n    block1\nelif condition2:\n    block2\nelse:\n    block3",
+      "hi": "if condition:\n    statements          # केवल तब चलें जब condition True हो\n\nif condition:\n    statements_A\nelse:\n    statements_B        # तब चलें जब condition False हो\n\nif condition1:\n    block1\nelif condition2:\n    block2\nelse:\n    block3"
+     }
+    },
+    {
+     "p": {
+      "en": "In words, as a flowchart: a diamond-shaped decision box holds the condition; the 'True' arrow leads to one block and the 'False' arrow to another; both arrows then join and the program continues. Remember the colon : at the end of the if, elif and else lines and the indentation of the block.",
+      "hi": "शब्दों में flowchart: हीरे के आकार के decision box में condition होती है; 'True' तीर एक block की ओर और 'False' तीर दूसरे block की ओर जाता है; फिर दोनों तीर मिल जाते हैं और प्रोग्राम आगे बढ़ता है। if, elif और else पंक्तियों के अंत में colon : और block का indentation याद रखें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "num = int(input(\"Enter a number: \"))\nif num % 2 == 0:\n    print(num, \"is even\")\nelse:\n    print(num, \"is odd\")\n\nOutput (as seen on screen; the user typed: 27):\nEnter a number: 27\n27 is odd",
+      "hi": "num = int(input(\"Enter a number: \"))\nif num % 2 == 0:\n    print(num, \"is even\")\nelse:\n    print(num, \"is odd\")\n\nआउटपुट (स्क्रीन पर जैसा दिखता है; उपयोगकर्ता ने टाइप किया: 27):\nEnter a number: 27\n27 is odd"
+     }
+    },
+    {
+     "formula": {
+      "en": "marks = float(input(\"Enter percentage: \"))\nif marks >= 90:\n    grade = \"A1\"\nelif marks >= 75:\n    grade = \"A2\"\nelif marks >= 60:\n    grade = \"B\"\nelif marks >= 33:\n    grade = \"C\"\nelse:\n    grade = \"Fail\"\nprint(\"Grade:\", grade)\n\nOutput (as seen on screen; the user typed: 81.5):\nEnter percentage: 81.5\nGrade: A2",
+      "hi": "marks = float(input(\"Enter percentage: \"))\nif marks >= 90:\n    grade = \"A1\"\nelif marks >= 75:\n    grade = \"A2\"\nelif marks >= 60:\n    grade = \"B\"\nelif marks >= 33:\n    grade = \"C\"\nelse:\n    grade = \"Fail\"\nprint(\"Grade:\", grade)\n\nआउटपुट (स्क्रीन पर जैसा दिखता है; उपयोगकर्ता ने टाइप किया: 81.5):\nEnter percentage: 81.5\nGrade: A2"
+     }
+    },
+    {
+     "p": {
+      "en": "Sample program: a restaurant menu. The user chooses an item number and the program shows the price. This is how a simple ordering chatbot makes its first decision.",
+      "hi": "नमूना प्रोग्राम: रेस्तराँ का menu। उपयोगकर्ता item संख्या चुनता है और प्रोग्राम कीमत दिखाता है। एक सरल ordering chatbot अपना पहला निर्णय इसी तरह लेता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "print(\"1. Masala Dosa  2. Idli  3. Chole Bhature\")\nchoice = int(input(\"Enter your choice: \"))\nif choice == 1:\n    print(\"Masala Dosa: Rs 80\")\nelif choice == 2:\n    print(\"Idli: Rs 50\")\nelif choice == 3:\n    print(\"Chole Bhature: Rs 110\")\nelse:\n    print(\"Invalid choice\")\n\nOutput (as seen on screen; the user typed: 3):\n1. Masala Dosa  2. Idli  3. Chole Bhature\nEnter your choice: 3\nChole Bhature: Rs 110",
+      "hi": "print(\"1. Masala Dosa  2. Idli  3. Chole Bhature\")\nchoice = int(input(\"Enter your choice: \"))\nif choice == 1:\n    print(\"Masala Dosa: Rs 80\")\nelif choice == 2:\n    print(\"Idli: Rs 50\")\nelif choice == 3:\n    print(\"Chole Bhature: Rs 110\")\nelse:\n    print(\"Invalid choice\")\n\nआउटपुट (स्क्रीन पर जैसा दिखता है; उपयोगकर्ता ने टाइप किया: 3):\n1. Masala Dosa  2. Idli  3. Chole Bhature\nEnter your choice: 3\nChole Bhature: Rs 110"
+     }
+    },
+    {
+     "p": {
+      "en": "Nested if: an if inside another if. Example: checking eligibility for a learner's driving licence (age 16 for gearless two-wheelers up to 50 cc in India, 18 for others).",
+      "hi": "Nested if: एक if के अंदर दूसरा if। उदाहरण: learner's driving licence की पात्रता जाँचना (भारत में 50 cc तक के बिना गियर दोपहिया के लिए 16 वर्ष, बाकी के लिए 18 वर्ष)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "age = int(input(\"Age: \"))\nvehicle = input(\"Gearless up to 50cc? (yes/no): \")\nif age >= 16:\n    if age >= 18 or vehicle == \"yes\":\n        print(\"Eligible for learner's licence\")\n    else:\n        print(\"Wait till 18 for this vehicle\")\nelse:\n    print(\"Not eligible yet\")\n\nOutput (as seen on screen; the user typed: 17 , no):\nAge: 17\nGearless up to 50cc? (yes/no): no\nWait till 18 for this vehicle",
+      "hi": "age = int(input(\"Age: \"))\nvehicle = input(\"Gearless up to 50cc? (yes/no): \")\nif age >= 16:\n    if age >= 18 or vehicle == \"yes\":\n        print(\"Eligible for learner's licence\")\n    else:\n        print(\"Wait till 18 for this vehicle\")\nelse:\n    print(\"Not eligible yet\")\n\nआउटपुट (स्क्रीन पर जैसा दिखता है; उपयोगकर्ता ने टाइप किया: 17 , no):\nAge: 17\nGearless up to 50cc? (yes/no): no\nWait till 18 for this vehicle"
+     }
+    },
+    {
+     "ex": {
+      "q": {
+       "en": "Write a program to find the largest of three numbers.",
+       "hi": "तीन संख्याओं में सबसे बड़ी ज्ञात करने का प्रोग्राम लिखिए।"
+      },
+      "a": {
+       "en": "Idea: compare a with b and c; if a is not largest, compare b with c.\nProgram:\na = 12; b = 45; c = 30\nif a >= b and a >= c:\n    print('Largest:', a)\nelif b >= c:\n    print('Largest:', b)\nelse:\n    print('Largest:', c)\nOutput: Largest: 45\n(Shortcut: print(max(a, b, c)) also gives 45.)",
+       "hi": "विचार: a की तुलना b और c से करें; यदि a सबसे बड़ा नहीं है, तो b की तुलना c से करें।\nप्रोग्राम:\na = 12; b = 45; c = 30\nif a >= b and a >= c:\n    print('Largest:', a)\nelif b >= c:\n    print('Largest:', b)\nelse:\n    print('Largest:', c)\nOutput: Largest: 45\n(छोटा तरीका: print(max(a, b, c)) भी 45 देता है।)"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.13 Control statements (2): iteration with for and while",
+    "hi": "3.13 Control statements (2): for और while से पुनरावृत्ति (iteration)"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "for loop",
+       "hi": "for loop"
+      },
+      "text": {
+       "en": "A for loop repeats a block once for each item of a sequence (list, string, tuple, dictionary or range). It is used when you know how many times, or over which items, to repeat.",
+       "hi": "for loop किसी sequence (list, string, tuple, dictionary या range) के हर item के लिए block को एक बार दोहराता है। इसका उपयोग तब होता है जब पता हो कि कितनी बार, या किन items पर, दोहराना है।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "range()",
+       "hi": "range()"
+      },
+      "text": {
+       "en": "range(stop) gives 0, 1, ..., stop-1. range(start, stop) gives start to stop-1. range(start, stop, step) jumps by step. The stop value is never included.",
+       "hi": "range(stop) देता है 0, 1, ..., stop-1। range(start, stop) start से stop-1 तक देता है। range(start, stop, step) step के अंतर से कूदता है। stop मान कभी शामिल नहीं होता।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "print(list(range(5)))\nprint(list(range(2, 8)))\nprint(list(range(1, 20, 4)))\nprint(list(range(10, 0, -3)))\n\nOutput:\n[0, 1, 2, 3, 4]\n[2, 3, 4, 5, 6, 7]\n[1, 5, 9, 13, 17]\n[10, 7, 4, 1]",
+      "hi": "print(list(range(5)))\nprint(list(range(2, 8)))\nprint(list(range(1, 20, 4)))\nprint(list(range(10, 0, -3)))\n\nआउटपुट:\n[0, 1, 2, 3, 4]\n[2, 3, 4, 5, 6, 7]\n[1, 5, 9, 13, 17]\n[10, 7, 4, 1]"
+     }
+    },
+    {
+     "p": {
+      "en": "Sample program (from the CBSE handbook style): print the even numbers between 100 and 110 and their squares.",
+      "hi": "नमूना प्रोग्राम (CBSE handbook की शैली में): 100 और 110 के बीच की सम संख्याएँ और उनके वर्ग प्रिंट करें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "for n in range(100, 111):\n    if n % 2 == 0:\n        print(n, \"square =\", n ** 2)\n\nOutput:\n100 square = 10000\n102 square = 10404\n104 square = 10816\n106 square = 11236\n108 square = 11664\n110 square = 12100",
+      "hi": "for n in range(100, 111):\n    if n % 2 == 0:\n        print(n, \"square =\", n ** 2)\n\nआउटपुट:\n100 square = 10000\n102 square = 10404\n104 square = 10816\n106 square = 11236\n108 square = 11664\n110 square = 12100"
+     }
+    },
+    {
+     "formula": {
+      "en": "items = [12, \"AI\", 3.5, True, [1, 2]]\nfor item in items:\n    print(item, type(item))\nsentence = \"Data is the new oil\"\nfor word in sentence.split():\n    print(word)\n\nOutput:\n12 <class 'int'>\nAI <class 'str'>\n3.5 <class 'float'>\nTrue <class 'bool'>\n[1, 2] <class 'list'>\nData\nis\nthe\nnew\noil",
+      "hi": "items = [12, \"AI\", 3.5, True, [1, 2]]\nfor item in items:\n    print(item, type(item))\nsentence = \"Data is the new oil\"\nfor word in sentence.split():\n    print(word)\n\nआउटपुट:\n12 <class 'int'>\nAI <class 'str'>\n3.5 <class 'float'>\nTrue <class 'bool'>\n[1, 2] <class 'list'>\nData\nis\nthe\nnew\noil"
+     }
+    },
+    {
+     "formula": {
+      "en": "n = 7\nfor i in range(1, 11):\n    print(n, \"x\", i, \"=\", n * i)\n\nOutput:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70",
+      "hi": "n = 7\nfor i in range(1, 11):\n    print(n, \"x\", i, \"=\", n * i)\n\nआउटपुट:\n7 x 1 = 7\n7 x 2 = 14\n7 x 3 = 21\n7 x 4 = 28\n7 x 5 = 35\n7 x 6 = 42\n7 x 7 = 49\n7 x 8 = 56\n7 x 9 = 63\n7 x 10 = 70"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "while loop",
+       "hi": "while loop"
+      },
+      "text": {
+       "en": "A while loop repeats a block as long as its condition stays True. It is used when you do not know in advance how many repetitions are needed. Something inside the loop must eventually make the condition False, otherwise the loop runs for ever (an infinite loop).",
+       "hi": "while loop किसी block को तब तक दोहराता है जब तक उसकी condition True रहे। इसका उपयोग तब होता है जब पहले से पता न हो कि कितनी बार दोहराना है। Loop के अंदर कुछ ऐसा होना चाहिए जो अंततः condition को False कर दे, वरना loop हमेशा चलता रहेगा (infinite loop)।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "num = 4521\ntotal = 0\nwhile num > 0:\n    digit = num % 10      # last digit\n    total += digit\n    num //= 10            # remove last digit\nprint(\"Sum of digits:\", total)\n\nOutput:\nSum of digits: 12",
+      "hi": "num = 4521\ntotal = 0\nwhile num > 0:\n    digit = num % 10      # last digit\n    total += digit\n    num //= 10            # remove last digit\nprint(\"Sum of digits:\", total)\n\nआउटपुट:\nSum of digits: 12"
+     }
+    },
+    {
+     "formula": {
+      "en": "n = 5\nfact = 1\ni = 1\nwhile i <= n:\n    fact *= i\n    i += 1\nprint(\"Factorial of\", n, \"is\", fact)\n\nOutput:\nFactorial of 5 is 120",
+      "hi": "n = 5\nfact = 1\ni = 1\nwhile i <= n:\n    fact *= i\n    i += 1\nprint(\"Factorial of\", n, \"is\", fact)\n\nआउटपुट:\nFactorial of 5 is 120"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "for loop",
+        "while loop"
+       ],
+       "hi": [
+        "for loop",
+        "while loop"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Repeats over the items of a sequence or a range",
+         "Repeats while a condition is True"
+        ],
+        [
+         "Number of repetitions is usually known",
+         "Number of repetitions may not be known"
+        ],
+        [
+         "Loop variable changes automatically",
+         "You must change the variable yourself"
+        ],
+        [
+         "Example: for i in range(5):",
+         "Example: while i < 5:"
+        ]
+       ],
+       "hi": [
+        [
+         "किसी sequence या range के items पर दोहराता है",
+         "जब तक condition True हो तब तक दोहराता है"
+        ],
+        [
+         "दोहराव की संख्या प्रायः पता होती है",
+         "दोहराव की संख्या पता न भी हो"
+        ],
+        [
+         "Loop variable अपने-आप बदलता है",
+         "Variable आपको ख़ुद बदलना पड़ता है"
+        ],
+        [
+         "उदाहरण: for i in range(5):",
+         "उदाहरण: while i < 5:"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.14 Jump statements: break, continue and pass; nested loops",
+    "hi": "3.14 Jump statements: break, continue और pass; nested loops"
+   },
+   "blocks": [
+    {
+     "list": {
+      "en": [
+       "break: stops the loop immediately and jumps to the first statement after the loop.",
+       "continue: skips the rest of the current repetition and goes to the next one.",
+       "pass: does nothing. It is a placeholder where Python needs a statement but you have nothing to write yet.",
+       "else with a loop: a for or while loop may have an else block that runs only if the loop ended normally (not by break)."
+      ],
+      "hi": [
+       "break: loop को तुरंत रोककर loop के बाद वाले पहले statement पर पहुँचा देता है।",
+       "continue: वर्तमान दोहराव का बाकी भाग छोड़कर अगले दोहराव पर चला जाता है।",
+       "pass: कुछ नहीं करता। यह placeholder है जहाँ Python को statement चाहिए पर आपके पास अभी लिखने को कुछ नहीं है।",
+       "loop के साथ else: for या while loop में else block हो सकता है जो केवल तब चलता है जब loop सामान्य रूप से समाप्त हो (break से नहीं)।"
+      ]
+     }
+    },
+    {
+     "formula": {
+      "en": "for n in range(1, 10):\n    if n == 5:\n        break\n    print(n, end=\" \")\nprint()\nfor n in range(1, 10):\n    if n % 3 == 0:\n        continue\n    print(n, end=\" \")\nprint()\nfor n in range(3):\n    pass            # to be written later\nprint(\"pass did nothing\")\n\nOutput:\n1 2 3 4 \n1 2 4 5 7 8 \npass did nothing",
+      "hi": "for n in range(1, 10):\n    if n == 5:\n        break\n    print(n, end=\" \")\nprint()\nfor n in range(1, 10):\n    if n % 3 == 0:\n        continue\n    print(n, end=\" \")\nprint()\nfor n in range(3):\n    pass            # to be written later\nprint(\"pass did nothing\")\n\nआउटपुट:\n1 2 3 4 \n1 2 4 5 7 8 \npass did nothing"
+     }
+    },
+    {
+     "formula": {
+      "en": "num = 29\nfor d in range(2, num):\n    if num % d == 0:\n        print(num, \"is not prime\")\n        break\nelse:\n    print(num, \"is prime\")\n\nOutput:\n29 is prime",
+      "hi": "num = 29\nfor d in range(2, num):\n    if num % d == 0:\n        print(num, \"is not prime\")\n        break\nelse:\n    print(num, \"is prime\")\n\nआउटपुट:\n29 is prime"
+     }
+    },
+    {
+     "p": {
+      "en": "A loop inside another loop is a nested loop. The inner loop finishes all its rounds for every single round of the outer loop. Nested loops are used for patterns, tables and grids (an image is a grid of pixels).",
+      "hi": "एक loop के अंदर दूसरा loop nested loop कहलाता है। बाहरी loop के हर एक दौर के लिए भीतरी loop अपने सभी दौर पूरे करता है। Nested loops का उपयोग patterns, तालिकाओं और grids के लिए होता है (एक image pixels का grid ही है)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "for i in range(1, 5):\n    for j in range(i):\n        print(\"*\", end=\"\")\n    print()\n\nOutput:\n*\n**\n***\n****",
+      "hi": "for i in range(1, 5):\n    for j in range(i):\n        print(\"*\", end=\"\")\n    print()\n\nआउटपुट:\n*\n**\n***\n****"
+     }
+    },
+    {
+     "formula": {
+      "en": "password = \"ai2026\"\ntries = 0\nwhile True:\n    guess = input(\"Enter password: \")\n    tries += 1\n    if guess == password:\n        print(\"Access granted after\", tries, \"tries\")\n        break\n    if tries == 3:\n        print(\"Locked: too many wrong tries\")\n        break\n\nOutput (as seen on screen; the user typed: hello , ai2026):\nEnter password: hello\nEnter password: ai2026\nAccess granted after 2 tries",
+      "hi": "password = \"ai2026\"\ntries = 0\nwhile True:\n    guess = input(\"Enter password: \")\n    tries += 1\n    if guess == password:\n        print(\"Access granted after\", tries, \"tries\")\n        break\n    if tries == 3:\n        print(\"Locked: too many wrong tries\")\n        break\n\nआउटपुट (स्क्रीन पर जैसा दिखता है; उपयोगकर्ता ने टाइप किया: hello , ai2026):\nEnter password: hello\nEnter password: ai2026\nAccess granted after 2 tries"
+     }
+    },
+    {
+     "note": {
+      "en": "This is how a UPI app or phone lock limits wrong PIN attempts. Never type a real password into a practice program, and never share your real UPI PIN with anyone, including callers claiming to be from a bank.",
+      "hi": "UPI app या फ़ोन lock गलत PIN प्रयासों को इसी तरह सीमित करते हैं। अभ्यास प्रोग्राम में कभी असली password न डालें, और अपना असली UPI PIN किसी से भी साझा न करें, बैंक का नाम लेकर फ़ोन करने वालों से भी नहीं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.15 CSV files: storing data in tables",
+    "hi": "3.15 CSV फ़ाइलें: data को तालिकाओं में रखना"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "CSV file",
+       "hi": "CSV file"
+      },
+      "text": {
+       "en": "CSV stands for Comma-Separated Values. It is a plain-text file that stores a table: each line is one row (record) and the values in a row are separated by commas. The first line usually holds the column names (header). CSV files open in Excel, Google Sheets and Python, which is why most AI datasets (for example on Kaggle or data.gov.in) are shared as CSV.",
+       "hi": "CSV का पूरा नाम Comma-Separated Values है। यह एक साधारण text फ़ाइल है जो तालिका रखती है: हर पंक्ति एक row (record) है और पंक्ति के मान commas से अलग होते हैं। पहली पंक्ति में प्रायः column के नाम (header) होते हैं। CSV फ़ाइलें Excel, Google Sheets और Python में खुलती हैं, इसीलिए अधिकतर AI datasets (जैसे Kaggle या data.gov.in पर) CSV रूप में साझा होते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "This is what the file students.csv looks like when opened in a text editor:",
+      "hi": "Text editor में खोलने पर फ़ाइल students.csv ऐसी दिखती है:"
+     }
+    },
+    {
+     "formula": {
+      "en": "Roll,Name,Maths,Science,AI\n1,Ananya,88,92,95\n2,Rohan,76,81,89\n3,Fatima,91,85,93\n4,Gurpreet,67,72,80\n5,Meera,95,90,98",
+      "hi": "Roll,Name,Maths,Science,AI\n1,Ananya,88,92,95\n2,Rohan,76,81,89\n3,Fatima,91,85,93\n4,Gurpreet,67,72,80\n5,Meera,95,90,98"
+     }
+    },
+    {
+     "p": {
+      "en": "Python has a built-in module named csv. The steps are always: (1) import csv, (2) open the file with open(), choosing a mode: 'r' to read, 'w' to write (replaces old content), 'a' to append, (3) create a reader or writer object, (4) read or write rows, (5) close the file. Using with open(...) as f: closes the file automatically.",
+      "hi": "Python में csv नाम का built-in module है। चरण हमेशा ये हैं: (1) import csv, (2) open() से फ़ाइल खोलें और mode चुनें: पढ़ने के लिए 'r', लिखने के लिए 'w' (पुरानी सामग्री हटा देता है), जोड़ने के लिए 'a', (3) reader या writer object बनाएँ, (4) rows पढ़ें या लिखें, (5) फ़ाइल बंद करें। with open(...) as f: का उपयोग करने पर फ़ाइल अपने-आप बंद हो जाती है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import csv\nf = open(\"students.csv\", \"r\")\nreader = csv.reader(f)\nfor row in reader:\n    print(row)\nf.close()\n\nOutput:\n['Roll', 'Name', 'Maths', 'Science', 'AI']\n['1', 'Ananya', '88', '92', '95']\n['2', 'Rohan', '76', '81', '89']\n['3', 'Fatima', '91', '85', '93']\n['4', 'Gurpreet', '67', '72', '80']\n['5', 'Meera', '95', '90', '98']",
+      "hi": "import csv\nf = open(\"students.csv\", \"r\")\nreader = csv.reader(f)\nfor row in reader:\n    print(row)\nf.close()\n\nआउटपुट:\n['Roll', 'Name', 'Maths', 'Science', 'AI']\n['1', 'Ananya', '88', '92', '95']\n['2', 'Rohan', '76', '81', '89']\n['3', 'Fatima', '91', '85', '93']\n['4', 'Gurpreet', '67', '72', '80']\n['5', 'Meera', '95', '90', '98']"
+     }
+    },
+    {
+     "note": {
+      "en": "Each row comes as a list of strings. To do maths on marks, convert them with int() or float().",
+      "hi": "हर row strings की list के रूप में आती है। अंकों पर गणित करने के लिए उन्हें int() या float() से बदलें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import csv\nwith open(\"students.csv\", \"r\") as f:\n    reader = csv.reader(f)\n    header = next(reader)           # skip the header row\n    for row in reader:\n        total = int(row[2]) + int(row[3]) + int(row[4])\n        print(row[1], \"Total:\", total)\n\nOutput:\nAnanya Total: 275\nRohan Total: 246\nFatima Total: 269\nGurpreet Total: 219\nMeera Total: 283",
+      "hi": "import csv\nwith open(\"students.csv\", \"r\") as f:\n    reader = csv.reader(f)\n    header = next(reader)           # skip the header row\n    for row in reader:\n        total = int(row[2]) + int(row[3]) + int(row[4])\n        print(row[1], \"Total:\", total)\n\nआउटपुट:\nAnanya Total: 275\nRohan Total: 246\nFatima Total: 269\nGurpreet Total: 219\nMeera Total: 283"
+     }
+    },
+    {
+     "formula": {
+      "en": "import csv\nrows = [[\"City\", \"AQI\"], [\"Delhi\", 310], [\"Mumbai\", 120], [\"Bengaluru\", 85]]\nwith open(\"aqi.csv\", \"w\", newline=\"\") as f:\n    writer = csv.writer(f)\n    writer.writerows(rows)              # many rows at once\nwith open(\"aqi.csv\", \"a\", newline=\"\") as f:\n    csv.writer(f).writerow([\"Chennai\", 95])   # one more row\nwith open(\"aqi.csv\") as f:\n    print(f.read())\n\nOutput:\nCity,AQI\nDelhi,310\nMumbai,120\nBengaluru,85\nChennai,95",
+      "hi": "import csv\nrows = [[\"City\", \"AQI\"], [\"Delhi\", 310], [\"Mumbai\", 120], [\"Bengaluru\", 85]]\nwith open(\"aqi.csv\", \"w\", newline=\"\") as f:\n    writer = csv.writer(f)\n    writer.writerows(rows)              # many rows at once\nwith open(\"aqi.csv\", \"a\", newline=\"\") as f:\n    csv.writer(f).writerow([\"Chennai\", 95])   # one more row\nwith open(\"aqi.csv\") as f:\n    print(f.read())\n\nआउटपुट:\nCity,AQI\nDelhi,310\nMumbai,120\nBengaluru,85\nChennai,95"
+     }
+    },
+    {
+     "note": {
+      "en": "Use newline='' when writing CSV files on Windows; otherwise blank lines may appear between rows.",
+      "hi": "Windows पर CSV लिखते समय newline='' का उपयोग करें; वरना rows के बीच खाली पंक्तियाँ आ सकती हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.16 Modules and libraries; the math module",
+    "hi": "3.16 Modules और libraries; math module"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Module, package and library",
+       "hi": "Module, package और library"
+      },
+      "text": {
+       "en": "A module is a single Python file containing ready-made functions and variables. A package is a folder of related modules. A library is a collection of packages and modules for a field of work (NumPy, Pandas, Scikit-learn). You bring them into a program with import.",
+       "hi": "Module एक Python फ़ाइल है जिसमें तैयार functions और variables होते हैं। Package संबंधित modules का folder है। Library किसी कार्य-क्षेत्र के लिए packages और modules का संग्रह है (NumPy, Pandas, Scikit-learn)। इन्हें import से प्रोग्राम में लाते हैं।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "import math                 # whole module\nimport numpy as np          # with a short alias\nfrom math import sqrt, pi   # only some names\n\n# installing a library (in the command prompt, not inside Python):\npip install numpy pandas scikit-learn",
+      "hi": "import math                 # पूरा module\nimport numpy as np          # छोटे उपनाम (alias) के साथ\nfrom math import sqrt, pi   # केवल कुछ नाम\n\n# library install करना (command prompt में, Python के अंदर नहीं):\npip install numpy pandas scikit-learn"
+     }
+    },
+    {
+     "formula": {
+      "en": "import math\nprint(math.sqrt(144))\nprint(math.pow(2, 5))\nprint(abs(-7.5), math.fabs(-7))\nprint(math.ceil(4.2), math.floor(4.8))\nprint(round(math.pi, 4))\nprint(math.sin(math.radians(30)))\nprint(math.factorial(5))\n\nOutput:\n12.0\n32.0\n7.5 7.0\n5 4\n3.1416\n0.49999999999999994\n120",
+      "hi": "import math\nprint(math.sqrt(144))\nprint(math.pow(2, 5))\nprint(abs(-7.5), math.fabs(-7))\nprint(math.ceil(4.2), math.floor(4.8))\nprint(round(math.pi, 4))\nprint(math.sin(math.radians(30)))\nprint(math.factorial(5))\n\nआउटपुट:\n12.0\n32.0\n7.5 7.0\n5 4\n3.1416\n0.49999999999999994\n120"
+     }
+    },
+    {
+     "note": {
+      "en": "math.sin() works in radians, not degrees, so convert with math.radians() first. The tiny error in 0.49999999999999994 is normal in floating-point arithmetic. abs() is a built-in function; math.fabs() always returns a float.",
+      "hi": "math.sin() degrees में नहीं, radians में काम करता है, इसलिए पहले math.radians() से बदलें। 0.49999999999999994 में छोटी त्रुटि floating-point गणना में सामान्य है। abs() built-in function है; math.fabs() हमेशा float लौटाता है।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.17 NumPy: fast arrays of numbers",
+    "hi": "3.17 NumPy: संख्याओं के तेज़ arrays"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "NumPy",
+       "hi": "NumPy"
+      },
+      "text": {
+       "en": "NumPy (Numerical Python) is a library for fast work with large collections of numbers. Its main object is the ndarray (n-dimensional array): a grid of values that all have the same data type. Images, sound and the weights of neural networks are all stored as arrays.",
+       "hi": "NumPy (Numerical Python) संख्याओं के बड़े संग्रहों पर तेज़ काम के लिए library है। इसका मुख्य object ndarray (n-dimensional array) है: मानों का grid जिसके सभी मान एक ही data type के होते हैं। Images, ध्वनि और neural networks के weights, सभी arrays के रूप में रखे जाते हैं।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Why NumPy for AI? (1) It is much faster than Python lists for maths because it is written in C and works on the whole array at once (vectorisation). (2) It supports multi-dimensional arrays (matrices). (3) It has built-in functions for statistics, linear algebra and random numbers. (4) Pandas, Scikit-learn and TensorFlow are built on top of it.",
+      "hi": "AI के लिए NumPy क्यों? (1) यह गणना में Python lists से बहुत तेज़ है क्योंकि यह C में लिखा है और पूरे array पर एक साथ काम करता है (vectorisation)। (2) यह बहु-आयामी arrays (matrices) का समर्थन करता है। (3) इसमें statistics, linear algebra और random संख्याओं के लिए built-in functions हैं। (4) Pandas, Scikit-learn और TensorFlow इसी पर बने हैं।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\na = np.array([10, 20, 30, 40])            # 1-D array from a list\nb = np.array([[1, 2, 3], [4, 5, 6]])      # 2-D array (2 rows, 3 columns)\nprint(a, a.ndim, a.shape, a.size, a.dtype)\nprint(b)\nprint(b.ndim, b.shape, b.size)\nprint(np.zeros(3), np.ones((2, 2)))\nprint(np.arange(0, 10, 2), np.linspace(0, 1, 5))\n\nOutput:\n[10 20 30 40] 1 (4,) 4 int64\n[[1 2 3]\n [4 5 6]]\n2 (2, 3) 6\n[0. 0. 0.] [[1. 1.]\n [1. 1.]]\n[0 2 4 6 8] [0.   0.25 0.5  0.75 1.  ]",
+      "hi": "import numpy as np\na = np.array([10, 20, 30, 40])            # 1-D array from a list\nb = np.array([[1, 2, 3], [4, 5, 6]])      # 2-D array (2 rows, 3 columns)\nprint(a, a.ndim, a.shape, a.size, a.dtype)\nprint(b)\nprint(b.ndim, b.shape, b.size)\nprint(np.zeros(3), np.ones((2, 2)))\nprint(np.arange(0, 10, 2), np.linspace(0, 1, 5))\n\nआउटपुट:\n[10 20 30 40] 1 (4,) 4 int64\n[[1 2 3]\n [4 5 6]]\n2 (2, 3) 6\n[0. 0. 0.] [[1. 1.]\n [1. 1.]]\n[0 2 4 6 8] [0.   0.25 0.5  0.75 1.  ]"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\nmarks = np.array([78, 91, 65, 88, 95])\nprint(marks + 5)          # add 5 to every element\nprint(marks * 2)\nprint(marks > 80)         # comparison gives a boolean array\nprint(marks[marks > 80])  # boolean indexing: only marks above 80\nprint(marks.sum(), marks.mean(), marks.max(), marks.min())\nprint(np.median(marks), round(marks.std(), 2))\nprint(marks[1:4], marks[-1])\n\nOutput:\n[ 83  96  70  93 100]\n[156 182 130 176 190]\n[False  True False  True  True]\n[91 88 95]\n417 83.4 95 65\n88.0 10.78\n[91 65 88] 95",
+      "hi": "import numpy as np\nmarks = np.array([78, 91, 65, 88, 95])\nprint(marks + 5)          # add 5 to every element\nprint(marks * 2)\nprint(marks > 80)         # comparison gives a boolean array\nprint(marks[marks > 80])  # boolean indexing: only marks above 80\nprint(marks.sum(), marks.mean(), marks.max(), marks.min())\nprint(np.median(marks), round(marks.std(), 2))\nprint(marks[1:4], marks[-1])\n\nआउटपुट:\n[ 83  96  70  93 100]\n[156 182 130 176 190]\n[False  True False  True  True]\n[91 88 95]\n417 83.4 95 65\n88.0 10.78\n[91 65 88] 95"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\nm = np.array([[1, 2], [3, 4]])\nn = np.array([[5, 6], [7, 8]])\nprint(m + n)\nprint(m * n)          # element by element\nprint(m @ n)          # matrix multiplication\nprint(m.T)            # transpose\nprint(np.arange(1, 7).reshape(2, 3))\n\nOutput:\n[[ 6  8]\n [10 12]]\n[[ 5 12]\n [21 32]]\n[[19 22]\n [43 50]]\n[[1 3]\n [2 4]]\n[[1 2 3]\n [4 5 6]]",
+      "hi": "import numpy as np\nm = np.array([[1, 2], [3, 4]])\nn = np.array([[5, 6], [7, 8]])\nprint(m + n)\nprint(m * n)          # element by element\nprint(m @ n)          # matrix multiplication\nprint(m.T)            # transpose\nprint(np.arange(1, 7).reshape(2, 3))\n\nआउटपुट:\n[[ 6  8]\n [10 12]]\n[[ 5 12]\n [21 32]]\n[[19 22]\n [43 50]]\n[[1 3]\n [2 4]]\n[[1 2 3]\n [4 5 6]]"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Python list",
+        "NumPy array"
+       ],
+       "hi": [
+        "Python list",
+        "NumPy array"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Can hold mixed types",
+         "All elements have one type"
+        ],
+        [
+         "[1,2] * 2 gives [1, 2, 1, 2] (repeats)",
+         "np.array([1,2]) * 2 gives [2 4] (multiplies)"
+        ],
+        [
+         "Slower for maths on many numbers",
+         "Much faster (vectorised)"
+        ],
+        [
+         "No built-in mean, std",
+         "Has mean(), std(), sum() and more"
+        ]
+       ],
+       "hi": [
+        [
+         "मिश्रित types रख सकती है",
+         "सभी elements एक ही type के"
+        ],
+        [
+         "[1,2] * 2 से [1, 2, 1, 2] (दोहराव)",
+         "np.array([1,2]) * 2 से [2 4] (गुणा)"
+        ],
+        [
+         "बहुत-सी संख्याओं की गणना में धीमी",
+         "बहुत तेज़ (vectorised)"
+        ],
+        [
+         "Built-in mean, std नहीं",
+         "mean(), std(), sum() आदि उपलब्ध"
+        ]
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.18 Pandas: Series and DataFrame",
+    "hi": "3.18 Pandas: Series और DataFrame"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Pandas",
+       "hi": "Pandas"
+      },
+      "text": {
+       "en": "Pandas is a library for handling and analysing tabular data (rows and columns), like a spreadsheet inside Python. The name comes from 'panel data'. It can read CSV and Excel files, clean missing values, filter, sort, group and summarise data. Its two main data structures are the Series and the DataFrame.",
+       "hi": "Pandas तालिका-रूप data (rows और columns) को सँभालने और विश्लेषण करने की library है, जैसे Python के अंदर spreadsheet। इसका नाम 'panel data' से आया है। यह CSV और Excel फ़ाइलें पढ़ सकता है, missing values साफ़ कर सकता है, data को filter, sort, group और सारांशित कर सकता है। इसकी दो मुख्य data structures हैं: Series और DataFrame।"
+      }
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "Series",
+       "hi": "Series"
+      },
+      "text": {
+       "en": "A Series is a one-dimensional labelled array: a single column of values, each with a label called the index. By default the index is 0, 1, 2, ...",
+       "hi": "Series एक-आयामी labelled array है: मानों का एक column, जिसके हर मान का एक label (index) होता है। Default index 0, 1, 2, ... होता है।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\ns1 = pd.Series([45, 62, 38])\nprint(s1)\nruns = pd.Series([82, 45, 110], index=[\"Kohli\", \"Gill\", \"Rohit\"])\nprint(runs)\nprint(runs[\"Rohit\"], runs.max(), runs.idxmax())\n\nOutput:\n0    45\n1    62\n2    38\ndtype: int64\nKohli     82\nGill      45\nRohit    110\ndtype: int64\n110 110 Rohit",
+      "hi": "import pandas as pd\ns1 = pd.Series([45, 62, 38])\nprint(s1)\nruns = pd.Series([82, 45, 110], index=[\"Kohli\", \"Gill\", \"Rohit\"])\nprint(runs)\nprint(runs[\"Rohit\"], runs.max(), runs.idxmax())\n\nआउटपुट:\n0    45\n1    62\n2    38\ndtype: int64\nKohli     82\nGill      45\nRohit    110\ndtype: int64\n110 110 Rohit"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "DataFrame",
+       "hi": "DataFrame"
+      },
+      "text": {
+       "en": "A DataFrame is a two-dimensional labelled table with rows and columns, where each column is a Series and different columns can have different data types. Rows have an index and columns have names.",
+       "hi": "DataFrame एक द्वि-आयामी labelled तालिका है जिसमें rows और columns होते हैं; हर column एक Series है और अलग-अलग columns के data types अलग हो सकते हैं। Rows का index होता है और columns के नाम।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Ways to create a DataFrame: from a dictionary of lists, from a list of dictionaries, from a NumPy ndarray, or by reading a CSV file.",
+      "hi": "DataFrame बनाने के तरीके: lists की dictionary से, dictionaries की list से, NumPy ndarray से, या CSV फ़ाइल पढ़कर।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\nimport numpy as np\n# 1. from a dictionary of lists\ndf1 = pd.DataFrame({\"Name\": [\"Asha\", \"Vikram\"], \"Age\": [16, 17]})\nprint(df1)\n# 2. from a list of dictionaries\ndf2 = pd.DataFrame([{\"a\": 10, \"b\": 20}, {\"a\": 5, \"b\": 32, \"c\": 20}])\nprint(df2)\n# 3. from a NumPy ndarray\narr = np.array([[10, 30], [20, 40]])\ndf3 = pd.DataFrame(arr, columns=[\"X\", \"Y\"], index=[\"r1\", \"r2\"])\nprint(df3)\n\nOutput:\n     Name  Age\n0    Asha   16\n1  Vikram   17\n    a   b     c\n0  10  20   NaN\n1   5  32  20.0\n     X   Y\nr1  10  30\nr2  20  40",
+      "hi": "import pandas as pd\nimport numpy as np\n# 1. from a dictionary of lists\ndf1 = pd.DataFrame({\"Name\": [\"Asha\", \"Vikram\"], \"Age\": [16, 17]})\nprint(df1)\n# 2. from a list of dictionaries\ndf2 = pd.DataFrame([{\"a\": 10, \"b\": 20}, {\"a\": 5, \"b\": 32, \"c\": 20}])\nprint(df2)\n# 3. from a NumPy ndarray\narr = np.array([[10, 30], [20, 40]])\ndf3 = pd.DataFrame(arr, columns=[\"X\", \"Y\"], index=[\"r1\", \"r2\"])\nprint(df3)\n\nआउटपुट:\n     Name  Age\n0    Asha   16\n1  Vikram   17\n    a   b     c\n0  10  20   NaN\n1   5  32  20.0\n     X   Y\nr1  10  30\nr2  20  40"
+     }
+    },
+    {
+     "note": {
+      "en": "In df2 the first dictionary has no key 'c', so Pandas fills that cell with NaN (Not a Number), which means a missing value. Because of the NaN the column c becomes float (20.0).",
+      "hi": "df2 में पहली dictionary में key 'c' नहीं है, इसलिए Pandas उस cell में NaN (Not a Number) भरता है, जिसका अर्थ है missing value। NaN के कारण column c float बन जाता है (20.0)।"
+     }
+    },
+    {
+     "p": {
+      "en": "Adding and deleting rows and columns:",
+      "hi": "Rows और columns जोड़ना तथा हटाना:"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\ndf = pd.DataFrame({\"Name\": [\"Asha\", \"Vikram\", \"Zoya\"], \"Maths\": [85, 72, 90]})\ndf[\"AI\"] = [91, 68, 95]                  # add a new column\ndf.loc[3] = [\"Dev\", 60, 77]              # add a new row with label 3\nprint(df)\ndf = df.drop(\"Maths\", axis=1)            # delete a column (axis=1)\ndf = df.drop(1, axis=0)                  # delete the row with label 1 (axis=0)\nprint(df)\n\nOutput:\n     Name  Maths  AI\n0    Asha     85  91\n1  Vikram     72  68\n2    Zoya     90  95\n3     Dev     60  77\n   Name  AI\n0  Asha  91\n2  Zoya  95\n3   Dev  77",
+      "hi": "import pandas as pd\ndf = pd.DataFrame({\"Name\": [\"Asha\", \"Vikram\", \"Zoya\"], \"Maths\": [85, 72, 90]})\ndf[\"AI\"] = [91, 68, 95]                  # add a new column\ndf.loc[3] = [\"Dev\", 60, 77]              # add a new row with label 3\nprint(df)\ndf = df.drop(\"Maths\", axis=1)            # delete a column (axis=1)\ndf = df.drop(1, axis=0)                  # delete the row with label 1 (axis=0)\nprint(df)\n\nआउटपुट:\n     Name  Maths  AI\n0    Asha     85  91\n1  Vikram     72  68\n2    Zoya     90  95\n3     Dev     60  77\n   Name  AI\n0  Asha  91\n2  Zoya  95\n3   Dev  77"
+     }
+    },
+    {
+     "p": {
+      "en": "Accessing data: df['col'] gives one column; df[['c1','c2']] several columns. loc[] selects by labels (row index labels and column names; the end label is included). iloc[] selects by integer positions (like list slicing; the end is excluded).",
+      "hi": "Data तक पहुँच: df['col'] एक column देता है; df[['c1','c2']] कई columns। loc[] labels से चुनता है (row index labels और column नाम; अंतिम label शामिल होता है)। iloc[] पूर्णांक स्थानों से चुनता है (list slicing की तरह; अंत शामिल नहीं)।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\ndf = pd.DataFrame({\"Name\": [\"Asha\", \"Vikram\", \"Zoya\", \"Dev\"],\n                   \"Maths\": [85, 72, 90, 60], \"AI\": [91, 68, 95, 77]})\nprint(df[\"AI\"].tolist())\nprint(df.loc[1, \"Name\"])\nprint(df.loc[0:2, [\"Name\", \"AI\"]])\nprint(df.iloc[0:2, 1:3])\nprint(df[df[\"AI\"] > 80])          # filter rows by a condition\n\nOutput:\n[91, 68, 95, 77]\nVikram\n     Name  AI\n0    Asha  91\n1  Vikram  68\n2    Zoya  95\n   Maths  AI\n0     85  91\n1     72  68\n   Name  Maths  AI\n0  Asha     85  91\n2  Zoya     90  95",
+      "hi": "import pandas as pd\ndf = pd.DataFrame({\"Name\": [\"Asha\", \"Vikram\", \"Zoya\", \"Dev\"],\n                   \"Maths\": [85, 72, 90, 60], \"AI\": [91, 68, 95, 77]})\nprint(df[\"AI\"].tolist())\nprint(df.loc[1, \"Name\"])\nprint(df.loc[0:2, [\"Name\", \"AI\"]])\nprint(df.iloc[0:2, 1:3])\nprint(df[df[\"AI\"] > 80])          # filter rows by a condition\n\nआउटपुट:\n[91, 68, 95, 77]\nVikram\n     Name  AI\n0    Asha  91\n1  Vikram  68\n2    Zoya  95\n   Maths  AI\n0     85  91\n1     72  68\n   Name  Maths  AI\n0  Asha     85  91\n2  Zoya     90  95"
+     }
+    },
+    {
+     "p": {
+      "en": "Attributes and quick-look methods of a DataFrame:",
+      "hi": "DataFrame के attributes और जल्दी देखने के methods:"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\ndf = pd.read_csv(\"students.csv\")          # read a CSV file\nprint(df.head(3))                          # first 3 rows (default 5)\nprint(df.tail(2))                          # last 2 rows\nprint(df.shape)                            # (rows, columns)\nprint(list(df.columns))\nprint(df.index)\nprint(df.dtypes)\nprint(df.values[0])\n\nOutput:\n   Roll    Name  Maths  Science  AI\n0     1  Ananya     88       92  95\n1     2   Rohan     76       81  89\n2     3  Fatima     91       85  93\n   Roll      Name  Maths  Science  AI\n3     4  Gurpreet     67       72  80\n4     5     Meera     95       90  98\n(5, 5)\n['Roll', 'Name', 'Maths', 'Science', 'AI']\nRangeIndex(start=0, stop=5, step=1)\nRoll       int64\nName         str\nMaths      int64\nScience    int64\nAI         int64\ndtype: object\n[1 'Ananya' 88 92 95]",
+      "hi": "import pandas as pd\ndf = pd.read_csv(\"students.csv\")          # read a CSV file\nprint(df.head(3))                          # first 3 rows (default 5)\nprint(df.tail(2))                          # last 2 rows\nprint(df.shape)                            # (rows, columns)\nprint(list(df.columns))\nprint(df.index)\nprint(df.dtypes)\nprint(df.values[0])\n\nआउटपुट:\n   Roll    Name  Maths  Science  AI\n0     1  Ananya     88       92  95\n1     2   Rohan     76       81  89\n2     3  Fatima     91       85  93\n   Roll      Name  Maths  Science  AI\n3     4  Gurpreet     67       72  80\n4     5     Meera     95       90  98\n(5, 5)\n['Roll', 'Name', 'Maths', 'Science', 'AI']\nRangeIndex(start=0, stop=5, step=1)\nRoll       int64\nName         str\nMaths      int64\nScience    int64\nAI         int64\ndtype: object\n[1 'Ananya' 88 92 95]"
+     }
+    },
+    {
+     "note": {
+      "en": "This output was produced with Pandas 3.0, which shows text columns as str. Older Pandas versions (for example 1.x and 2.x used in many school labs) show the Name column as object. Both mean 'text'.",
+      "hi": "यह output Pandas 3.0 से बना है, जो text columns को str दिखाता है। पुराने Pandas versions (जैसे कई स्कूल labs में उपयोग होने वाले 1.x और 2.x) Name column को object दिखाते हैं। दोनों का अर्थ 'text' है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\ndf = pd.read_csv(\"students.csv\")\ndf[\"Total\"] = df[\"Maths\"] + df[\"Science\"] + df[\"AI\"]\ndf[\"Percent\"] = (df[\"Total\"] / 300 * 100).round(2)\nprint(df[[\"Name\", \"Total\", \"Percent\"]])\nprint(\"Class average in AI:\", df[\"AI\"].mean())\nprint(df.sort_values(\"Total\", ascending=False).iloc[0][\"Name\"], \"topped\")\nprint(df.describe().loc[[\"mean\", \"max\"], [\"Maths\", \"AI\"]])\ndf.to_csv(\"result.csv\", index=False)       # save to a new CSV file\nprint(open(\"result.csv\").readline())\n\nOutput:\n       Name  Total  Percent\n0    Ananya    275    91.67\n1     Rohan    246    82.00\n2    Fatima    269    89.67\n3  Gurpreet    219    73.00\n4     Meera    283    94.33\nClass average in AI: 91.0\nMeera topped\n      Maths    AI\nmean   83.4  91.0\nmax    95.0  98.0\nRoll,Name,Maths,Science,AI,Total,Percent",
+      "hi": "import pandas as pd\ndf = pd.read_csv(\"students.csv\")\ndf[\"Total\"] = df[\"Maths\"] + df[\"Science\"] + df[\"AI\"]\ndf[\"Percent\"] = (df[\"Total\"] / 300 * 100).round(2)\nprint(df[[\"Name\", \"Total\", \"Percent\"]])\nprint(\"Class average in AI:\", df[\"AI\"].mean())\nprint(df.sort_values(\"Total\", ascending=False).iloc[0][\"Name\"], \"topped\")\nprint(df.describe().loc[[\"mean\", \"max\"], [\"Maths\", \"AI\"]])\ndf.to_csv(\"result.csv\", index=False)       # save to a new CSV file\nprint(open(\"result.csv\").readline())\n\nआउटपुट:\n       Name  Total  Percent\n0    Ananya    275    91.67\n1     Rohan    246    82.00\n2    Fatima    269    89.67\n3  Gurpreet    219    73.00\n4     Meera    283    94.33\nClass average in AI: 91.0\nMeera topped\n      Maths    AI\nmean   83.4  91.0\nmax    95.0  98.0\nRoll,Name,Maths,Science,AI,Total,Percent"
+     }
+    },
+    {
+     "p": {
+      "en": "Handling missing values: real data often has empty cells. isnull() marks each missing cell True; isnull().sum() counts missing cells per column; dropna() removes rows that have missing values; fillna(value) fills them.",
+      "hi": "Missing values सँभालना: असली data में अक्सर खाली cells होते हैं। isnull() हर खाली cell को True दिखाता है; isnull().sum() हर column में खाली cells गिनता है; dropna() खाली मान वाली rows हटाता है; fillna(value) उन्हें भरता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\nimport numpy as np\ndf = pd.DataFrame({\"City\": [\"Pune\", \"Patna\", \"Kochi\", \"Agra\"],\n                   \"Rain_mm\": [120, np.nan, 300, 45],\n                   \"Temp\": [31, 35, np.nan, 38]})\nprint(df.isnull())\nprint(df.isnull().sum())\nprint(df.dropna())\nprint(df.fillna(df.mean(numeric_only=True)))\n\nOutput:\n    City  Rain_mm   Temp\n0  False    False  False\n1  False     True  False\n2  False    False   True\n3  False    False  False\nCity       0\nRain_mm    1\nTemp       1\ndtype: int64\n   City  Rain_mm  Temp\n0  Pune    120.0  31.0\n3  Agra     45.0  38.0\n    City  Rain_mm       Temp\n0   Pune    120.0  31.000000\n1  Patna    155.0  35.000000\n2  Kochi    300.0  34.666667\n3   Agra     45.0  38.000000",
+      "hi": "import pandas as pd\nimport numpy as np\ndf = pd.DataFrame({\"City\": [\"Pune\", \"Patna\", \"Kochi\", \"Agra\"],\n                   \"Rain_mm\": [120, np.nan, 300, 45],\n                   \"Temp\": [31, 35, np.nan, 38]})\nprint(df.isnull())\nprint(df.isnull().sum())\nprint(df.dropna())\nprint(df.fillna(df.mean(numeric_only=True)))\n\nआउटपुट:\n    City  Rain_mm   Temp\n0  False    False  False\n1  False     True  False\n2  False    False   True\n3  False    False  False\nCity       0\nRain_mm    1\nTemp       1\ndtype: int64\n   City  Rain_mm  Temp\n0  Pune    120.0  31.0\n3  Agra     45.0  38.0\n    City  Rain_mm       Temp\n0   Pune    120.0  31.000000\n1  Patna    155.0  35.000000\n2  Kochi    300.0  34.666667\n3   Agra     45.0  38.000000"
+     }
+    },
+    {
+     "note": {
+      "en": "Filling a missing value with the column mean is a common, simple fix, but it is a guess. Always note in your project how you handled missing data, because it can change the results of a model.",
+      "hi": "Missing value को column के mean से भरना एक आम, सरल उपाय है, पर यह अनुमान ही है। अपने project में हमेशा लिखें कि missing data कैसे सँभाला, क्योंकि इससे model के परिणाम बदल सकते हैं।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.19 Scikit-learn: machine learning in a few lines",
+    "hi": "3.19 Scikit-learn: कुछ पंक्तियों में machine learning"
+   },
+   "blocks": [
+    {
+     "def": {
+      "term": {
+       "en": "Scikit-learn",
+       "hi": "Scikit-learn"
+      },
+      "text": {
+       "en": "Scikit-learn (imported as sklearn) is a free, open-source machine learning library built on NumPy, SciPy and Matplotlib. It provides ready-made tools for classification, regression, clustering, splitting data, preprocessing and evaluating models, all with the same simple pattern of commands.",
+       "hi": "Scikit-learn (sklearn नाम से import होता है) NumPy, SciPy और Matplotlib पर बनी एक मुफ़्त, open-source machine learning library है। यह classification, regression, clustering, data बाँटने, preprocessing और models के मूल्यांकन के तैयार tools देती है, सभी एक जैसे सरल commands के pattern के साथ।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Key features of Scikit-learn:",
+      "hi": "Scikit-learn की मुख्य विशेषताएँ:"
+     }
+    },
+    {
+     "list": {
+      "en": [
+       "Many algorithms: K-Nearest Neighbours, Decision Trees, Linear Regression, Logistic Regression, Support Vector Machines, K-Means clustering and more.",
+       "Built-in sample datasets such as Iris, Wine, Digits and Breast Cancer, useful for practice.",
+       "Tools to split data into training and testing sets (train_test_split).",
+       "Preprocessing tools: scaling, encoding text categories into numbers, filling missing values.",
+       "Evaluation tools: accuracy_score, confusion_matrix, classification_report.",
+       "A consistent interface: almost every model uses fit() to learn and predict() to answer."
+      ],
+      "hi": [
+       "अनेक algorithms: K-Nearest Neighbours, Decision Trees, Linear Regression, Logistic Regression, Support Vector Machines, K-Means clustering आदि।",
+       "Iris, Wine, Digits और Breast Cancer जैसे built-in नमूना datasets, अभ्यास के लिए उपयोगी।",
+       "Data को training और testing sets में बाँटने के tools (train_test_split)।",
+       "Preprocessing tools: scaling, text श्रेणियों को संख्याओं में बदलना, missing values भरना।",
+       "मूल्यांकन tools: accuracy_score, confusion_matrix, classification_report।",
+       "एक जैसा interface: लगभग हर model सीखने के लिए fit() और उत्तर देने के लिए predict() का उपयोग करता है।"
+      ]
+     }
+    },
+    {
+     "p": {
+      "en": "The standard machine-learning workflow in Scikit-learn has six steps: (1) load the data, (2) separate features X (inputs) and target y (the answer to learn), (3) split into training and testing sets, (4) choose a model and train it with fit(X_train, y_train), (5) predict on the test set with predict(X_test), (6) evaluate, for example with accuracy_score(y_test, y_pred).",
+      "hi": "Scikit-learn में मानक machine-learning workflow के छह चरण हैं: (1) data load करें, (2) features X (inputs) और target y (सीखा जाने वाला उत्तर) अलग करें, (3) training और testing sets में बाँटें, (4) model चुनें और fit(X_train, y_train) से train करें, (5) predict(X_test) से test set पर अनुमान लगाएँ, (6) मूल्यांकन करें, जैसे accuracy_score(y_test, y_pred) से।"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "The Iris dataset",
+       "hi": "Iris dataset"
+      },
+      "text": {
+       "en": "A famous small dataset of 150 iris flowers, 50 of each of three species: setosa, versicolor and virginica. For each flower four features are measured in centimetres: sepal length, sepal width, petal length and petal width. The task is to predict the species from the four measurements: a classification problem.",
+       "hi": "Iris फूलों का 150 नमूनों वाला प्रसिद्ध छोटा dataset, तीन प्रजातियों में से हर एक के 50: setosa, versicolor और virginica। हर फूल के चार features सेंटीमीटर में मापे गए हैं: sepal length, sepal width, petal length और petal width। काम है चार मापों से प्रजाति का अनुमान लगाना: एक classification समस्या।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.datasets import load_iris\niris = load_iris()\nX = iris.data          # features\ny = iris.target        # labels: 0, 1, 2\nprint(X.shape, y.shape)\nprint(iris.feature_names)\nprint(iris.target_names.tolist())\nprint(X[0], y[0])\n\nOutput:\n(150, 4) (150,)\n['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']\n['setosa', 'versicolor', 'virginica']\n[5.1 3.5 1.4 0.2] 0",
+      "hi": "from sklearn.datasets import load_iris\niris = load_iris()\nX = iris.data          # features\ny = iris.target        # labels: 0, 1, 2\nprint(X.shape, y.shape)\nprint(iris.feature_names)\nprint(iris.target_names.tolist())\nprint(X[0], y[0])\n\nआउटपुट:\n(150, 4) (150,)\n['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)']\n['setosa', 'versicolor', 'virginica']\n[5.1 3.5 1.4 0.2] 0"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "train_test_split",
+       "hi": "train_test_split"
+      },
+      "text": {
+       "en": "A function in sklearn.model_selection that randomly divides the data into a training set (used to teach the model) and a testing set (kept hidden, used to check the model on unseen data). test_size=0.2 keeps 20% for testing, giving an 80:20 split. random_state fixes the random shuffle so that the result is the same every time.",
+       "hi": "sklearn.model_selection का function जो data को यादृच्छिक रूप से training set (model को सिखाने के लिए) और testing set (छिपाकर रखा जाता है, अनदेखे data पर model जाँचने के लिए) में बाँटता है। test_size=0.2 से 20% testing के लिए रहता है, यानी 80:20 विभाजन। random_state यादृच्छिक मिश्रण को स्थिर करता है ताकि परिणाम हर बार एक-सा आए।"
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)\nprint(\"Training rows:\", len(X_train))\nprint(\"Testing rows:\", len(X_test))\n\nOutput:\nTraining rows: 120\nTesting rows: 30",
+      "hi": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)\nprint(\"Training rows:\", len(X_train))\nprint(\"Testing rows:\", len(X_test))\n\nआउटपुट:\nTraining rows: 120\nTesting rows: 30"
+     }
+    },
+    {
+     "def": {
+      "term": {
+       "en": "K-Nearest Neighbours (KNN)",
+       "hi": "K-Nearest Neighbours (KNN)"
+      },
+      "text": {
+       "en": "A simple classification algorithm. To classify a new point, it finds the K training points closest to it (usually using straight-line, Euclidean, distance) and gives the new point the label that most of those K neighbours have (a majority vote). In Scikit-learn it is KNeighborsClassifier in sklearn.neighbors. K is chosen by us; n_neighbors=3 means K = 3.",
+       "hi": "एक सरल classification algorithm। नए बिंदु को वर्गीकृत करने के लिए यह उसके सबसे पास के K training बिंदु ढूँढता है (प्रायः सीधी रेखा वाली, Euclidean, दूरी से) और नए बिंदु को वह label देता है जो उन K पड़ोसियों में से अधिकतर का है (बहुमत मत)। Scikit-learn में यह sklearn.neighbors का KNeighborsClassifier है। K हम चुनते हैं; n_neighbors=3 का अर्थ K = 3।"
+      }
+     }
+    },
+    {
+     "p": {
+      "en": "Picture it in words: on a graph of petal length (x-axis) against petal width (y-axis), the setosa flowers form a tight cluster near the bottom-left, versicolor in the middle and virginica at the top-right. A new flower is dropped onto the graph; you draw a small circle around it until it contains 3 old flowers; if 2 of the 3 are versicolor, the new flower is called versicolor.",
+      "hi": "शब्दों में चित्र: petal length (x-अक्ष) और petal width (y-अक्ष) के graph पर setosa फूल नीचे-बाईं ओर पास-पास समूह बनाते हैं, versicolor बीच में और virginica ऊपर-दाईं ओर। एक नया फूल graph पर रखा जाता है; आप उसके चारों ओर एक छोटा वृत्त तब तक बड़ा करते हैं जब तक उसमें 3 पुराने फूल न आ जाएँ; यदि 3 में से 2 versicolor हैं, तो नया फूल versicolor कहलाएगा।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.metrics import accuracy_score\niris = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(\n    iris.data, iris.target, test_size=0.2, random_state=1)\nmodel = KNeighborsClassifier(n_neighbors=3)\nmodel.fit(X_train, y_train)                 # learn from training data\ny_pred = model.predict(X_test)              # predict on unseen data\nprint(\"Accuracy:\", accuracy_score(y_test, y_pred))\nnew_flower = [[5.0, 3.4, 1.5, 0.2]]         # sepal len, sepal wid, petal len, petal wid\nprint(\"Predicted species:\", iris.target_names[model.predict(new_flower)[0]])\n\nOutput:\nAccuracy: 1.0\nPredicted species: setosa",
+      "hi": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.metrics import accuracy_score\niris = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(\n    iris.data, iris.target, test_size=0.2, random_state=1)\nmodel = KNeighborsClassifier(n_neighbors=3)\nmodel.fit(X_train, y_train)                 # learn from training data\ny_pred = model.predict(X_test)              # predict on unseen data\nprint(\"Accuracy:\", accuracy_score(y_test, y_pred))\nnew_flower = [[5.0, 3.4, 1.5, 0.2]]         # sepal len, sepal wid, petal len, petal wid\nprint(\"Predicted species:\", iris.target_names[model.predict(new_flower)[0]])\n\nआउटपुट:\nAccuracy: 1.0\nPredicted species: setosa"
+     }
+    },
+    {
+     "note": {
+      "en": "Accuracy 1.0 means all 30 test flowers were classified correctly with this particular split. With a different random_state the accuracy may be a little lower (for example 0.93 or 0.97). Iris is an easy dataset; real-world data is rarely this clean, so never expect 100% accuracy in real projects.",
+      "hi": "Accuracy 1.0 का अर्थ है इस विशेष विभाजन में सभी 30 test फूल सही वर्गीकृत हुए। अलग random_state के साथ accuracy थोड़ी कम हो सकती है (जैसे 0.93 या 0.97)। Iris एक आसान dataset है; असली दुनिया का data शायद ही इतना साफ़ होता है, इसलिए असली प्रोजेक्टों में 100% accuracy की उम्मीद न करें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=7)\nfor k in [1, 3, 5, 7, 9]:\n    model = KNeighborsClassifier(n_neighbors=k).fit(X_train, y_train)\n    print(\"K =\", k, \"accuracy =\", round(model.score(X_test, y_test), 3))\n\nOutput:\nK = 1 accuracy = 0.933\nK = 3 accuracy = 0.933\nK = 5 accuracy = 0.911\nK = 7 accuracy = 0.933\nK = 9 accuracy = 0.911",
+      "hi": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=7)\nfor k in [1, 3, 5, 7, 9]:\n    model = KNeighborsClassifier(n_neighbors=k).fit(X_train, y_train)\n    print(\"K =\", k, \"accuracy =\", round(model.score(X_test, y_test), 3))\n\nआउटपुट:\nK = 1 accuracy = 0.933\nK = 3 accuracy = 0.933\nK = 5 accuracy = 0.911\nK = 7 accuracy = 0.933\nK = 9 accuracy = 0.911"
+     }
+    },
+    {
+     "p": {
+      "en": "model.score(X_test, y_test) is a shortcut that predicts and calculates accuracy in one step. Trying several values of K and keeping the best is called tuning a hyperparameter. A very small K (1) can be fooled by one odd neighbour; a very large K blurs the boundaries between classes. An odd K avoids ties between two classes.",
+      "hi": "model.score(X_test, y_test) एक shortcut है जो एक ही चरण में अनुमान लगाकर accuracy निकालता है। K के कई मान आज़माकर सबसे अच्छा रखना hyperparameter tuning कहलाता है। बहुत छोटा K (1) एक अजीब पड़ोसी से धोखा खा सकता है; बहुत बड़ा K वर्गों के बीच की सीमाएँ धुँधली कर देता है। विषम K दो वर्गों के बीच बराबरी (tie) से बचाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "A regression example: predicting a number instead of a category. Below, a Linear Regression model learns the relation between hours studied and marks from a tiny made-up dataset.",
+      "hi": "एक regression उदाहरण: श्रेणी की जगह संख्या का अनुमान। नीचे, Linear Regression model एक छोटे काल्पनिक dataset से पढ़ाई के घंटों और अंकों का संबंध सीखता है।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\nfrom sklearn.linear_model import LinearRegression\nhours = np.array([[1], [2], [3], [4], [5], [6]])\nmarks = np.array([35, 45, 52, 61, 72, 80])\nreg = LinearRegression().fit(hours, marks)\nprint(\"Slope:\", round(reg.coef_[0], 2), \"Intercept:\", round(reg.intercept_, 2))\nprint(\"Predicted marks for 7 hours:\", round(reg.predict([[7]])[0], 1))\n\nOutput:\nSlope: 9.0 Intercept: 26.0\nPredicted marks for 7 hours: 89.0",
+      "hi": "import numpy as np\nfrom sklearn.linear_model import LinearRegression\nhours = np.array([[1], [2], [3], [4], [5], [6]])\nmarks = np.array([35, 45, 52, 61, 72, 80])\nreg = LinearRegression().fit(hours, marks)\nprint(\"Slope:\", round(reg.coef_[0], 2), \"Intercept:\", round(reg.intercept_, 2))\nprint(\"Predicted marks for 7 hours:\", round(reg.predict([[7]])[0], 1))\n\nआउटपुट:\nSlope: 9.0 Intercept: 26.0\nPredicted marks for 7 hours: 89.0"
+     }
+    },
+    {
+     "note": {
+      "en": "Chapter 6 (Machine Learning Algorithms) explains how KNN, regression and other algorithms work in depth, and the Class 10 chapter on evaluation explains accuracy, precision and recall. Here you only need to know how to call them from Python.",
+      "hi": "अध्याय 6 (Machine Learning Algorithms) KNN, regression और अन्य algorithms की कार्यप्रणाली गहराई से समझाता है, और कक्षा 10 का evaluation वाला अध्याय accuracy, precision और recall समझाता है। यहाँ आपको केवल यह जानना है कि इन्हें Python से कैसे बुलाएँ।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.20 Errors and debugging",
+    "hi": "3.20 Errors और debugging"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Mistakes in programs are called bugs, and finding and fixing them is debugging. Python errors fall into three groups:",
+      "hi": "प्रोग्राम की गलतियों को bugs कहते हैं, और उन्हें ढूँढकर ठीक करना debugging है। Python की errors तीन समूहों में आती हैं:"
+     }
+    },
+    {
+     "table": {
+      "head": {
+       "en": [
+        "Type",
+        "When it appears",
+        "Example"
+       ],
+       "hi": [
+        "प्रकार",
+        "कब दिखती है",
+        "उदाहरण"
+       ]
+      },
+      "rows": {
+       "en": [
+        [
+         "Syntax error",
+         "Before running, when a grammar rule is broken",
+         "Missing colon: if x > 5  (SyntaxError); wrong spaces (IndentationError)"
+        ],
+        [
+         "Runtime error (exception)",
+         "While running, when something impossible is asked",
+         "10 / 0 (ZeroDivisionError); int('abc') (ValueError); '5' + 5 (TypeError); using an undefined name (NameError); list index too large (IndexError); missing file (FileNotFoundError); importing a library that is not installed (ModuleNotFoundError)"
+        ],
+        [
+         "Logical error",
+         "Program runs but gives the wrong answer",
+         "average = a + b / 2 instead of (a + b) / 2"
+        ]
+       ],
+       "hi": [
+        [
+         "Syntax error",
+         "चलाने से पहले, जब व्याकरण का नियम टूटे",
+         "colon छूटना: if x > 5  (SyntaxError); गलत spaces (IndentationError)"
+        ],
+        [
+         "Runtime error (exception)",
+         "चलते समय, जब असंभव काम माँगा जाए",
+         "10 / 0 (ZeroDivisionError); int('abc') (ValueError); '5' + 5 (TypeError); अपरिभाषित नाम (NameError); list index बहुत बड़ा (IndexError); फ़ाइल न मिलना (FileNotFoundError); बिना install की library import करना (ModuleNotFoundError)"
+        ],
+        [
+         "Logical error",
+         "प्रोग्राम चलता है पर गलत उत्तर देता है",
+         "(a + b) / 2 की जगह average = a + b / 2"
+        ]
+       ]
+      }
+     }
+    },
+    {
+     "formula": {
+      "en": "try:\n    n = int(\"abc\")\nexcept ValueError:\n    print(\"Please enter digits only\")\ntry:\n    print(10 / 0)\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")\n\nOutput:\nPlease enter digits only\nCannot divide by zero",
+      "hi": "try:\n    n = int(\"abc\")\nexcept ValueError:\n    print(\"Please enter digits only\")\ntry:\n    print(10 / 0)\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")\n\nआउटपुट:\nPlease enter digits only\nCannot divide by zero"
+     }
+    },
+    {
+     "note": {
+      "en": "try and except let a program handle a runtime error politely instead of crashing. Read the last line of any error message first: it names the error type and usually tells you what went wrong and on which line.",
+      "hi": "try और except से प्रोग्राम crash होने की जगह runtime error को शालीनता से सँभाल सकता है। किसी भी error संदेश की आख़िरी पंक्ति पहले पढ़ें: उसमें error का प्रकार होता है और प्रायः यह भी कि क्या और किस पंक्ति में गलत हुआ।"
+     }
+    },
+    {
+     "note": {
+      "en": "Using AI chatbots to explain an error is fine, but read and test the code they suggest; chatbots can be confidently wrong. Never paste passwords, API keys or classmates' personal data into a chatbot.",
+      "hi": "Error समझने के लिए AI chatbots का उपयोग ठीक है, पर उनके सुझाए code को पढ़ें और परखें; chatbots आत्मविश्वास के साथ गलत भी हो सकते हैं। Chatbot में कभी passwords, API keys या सहपाठियों का निजी data paste न करें।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.21 Practical file programs (Level 1 and Level 2)",
+    "hi": "3.21 Practical file प्रोग्राम (स्तर 1 और स्तर 2)"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "CBSE asks for at least five Level 1 programs (operators, data types, control statements) and at least five Level 2 programs (NumPy, Pandas, Scikit-learn). For each program write: aim, program, output and a one-line conclusion. The programs in sections 3.8 to 3.19 can be used; here are more, each run and checked.",
+      "hi": "CBSE कम से कम पाँच स्तर-1 प्रोग्राम (operators, data types, control statements) और कम से कम पाँच स्तर-2 प्रोग्राम (NumPy, Pandas, Scikit-learn) माँगता है। हर प्रोग्राम के लिए लिखें: उद्देश्य, प्रोग्राम, output और एक पंक्ति का निष्कर्ष। अनुभाग 3.8 से 3.19 के प्रोग्राम उपयोग किए जा सकते हैं; यहाँ और प्रोग्राम हैं, हर एक चलाकर जाँचा गया है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 1 – Program A: simple interest and compound interest.",
+      "hi": "स्तर 1 – प्रोग्राम A: साधारण ब्याज और चक्रवृद्धि ब्याज।"
+     }
+    },
+    {
+     "formula": {
+      "en": "p = float(input(\"Principal (Rs): \"))\nr = float(input(\"Rate (% per year): \"))\nt = float(input(\"Time (years): \"))\nsi = p * r * t / 100\nci = p * (1 + r / 100) ** t - p\nprint(\"Simple interest:\", round(si, 2))\nprint(\"Compound interest:\", round(ci, 2))\n\nOutput (as seen on screen; the user typed: 10000 , 7 , 3):\nPrincipal (Rs): 10000\nRate (% per year): 7\nTime (years): 3\nSimple interest: 2100.0\nCompound interest: 2250.43",
+      "hi": "p = float(input(\"Principal (Rs): \"))\nr = float(input(\"Rate (% per year): \"))\nt = float(input(\"Time (years): \"))\nsi = p * r * t / 100\nci = p * (1 + r / 100) ** t - p\nprint(\"Simple interest:\", round(si, 2))\nprint(\"Compound interest:\", round(ci, 2))\n\nआउटपुट (स्क्रीन पर जैसा दिखता है; उपयोगकर्ता ने टाइप किया: 10000 , 7 , 3):\nPrincipal (Rs): 10000\nRate (% per year): 7\nTime (years): 3\nSimple interest: 2100.0\nCompound interest: 2250.43"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 1 – Program B: BMI calculator with category.",
+      "hi": "स्तर 1 – प्रोग्राम B: श्रेणी के साथ BMI calculator।"
+     }
+    },
+    {
+     "formula": {
+      "en": "w = float(input(\"Weight in kg: \"))\nh = float(input(\"Height in metres: \"))\nbmi = w / (h ** 2)\nprint(\"BMI =\", round(bmi, 1))\nif bmi < 18.5:\n    print(\"Underweight\")\nelif bmi < 25:\n    print(\"Normal\")\nelif bmi < 30:\n    print(\"Overweight\")\nelse:\n    print(\"Obese\")\n\nOutput (as seen on screen; the user typed: 52 , 1.65):\nWeight in kg: 52\nHeight in metres: 1.65\nBMI = 19.1\nNormal",
+      "hi": "w = float(input(\"Weight in kg: \"))\nh = float(input(\"Height in metres: \"))\nbmi = w / (h ** 2)\nprint(\"BMI =\", round(bmi, 1))\nif bmi < 18.5:\n    print(\"Underweight\")\nelif bmi < 25:\n    print(\"Normal\")\nelif bmi < 30:\n    print(\"Overweight\")\nelse:\n    print(\"Obese\")\n\nआउटपुट (स्क्रीन पर जैसा दिखता है; उपयोगकर्ता ने टाइप किया: 52 , 1.65):\nWeight in kg: 52\nHeight in metres: 1.65\nBMI = 19.1\nNormal"
+     }
+    },
+    {
+     "note": {
+      "en": "BMI is only a rough screening number and does not suit growing teenagers well; doctors use age-based charts for under-18s. Treat this as a coding exercise, not health advice.",
+      "hi": "BMI केवल एक मोटा जाँच-अंक है और बढ़ते किशोरों पर ठीक से लागू नहीं होता; डॉक्टर 18 से कम आयु के लिए आयु-आधारित charts उपयोग करते हैं। इसे coding अभ्यास मानें, स्वास्थ्य सलाह नहीं।"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 1 – Program C: Fibonacci series and count of vowels in a sentence.",
+      "hi": "स्तर 1 – प्रोग्राम C: Fibonacci श्रृंखला और वाक्य में स्वरों की गिनती।"
+     }
+    },
+    {
+     "formula": {
+      "en": "n = 10\na, b = 0, 1\nfor i in range(n):\n    print(a, end=\" \")\n    a, b = b, a + b\nprint()\ntext = \"Bhashini translates Indian languages\"\ncount = 0\nfor ch in text.lower():\n    if ch in \"aeiou\":\n        count += 1\nprint(\"Vowels:\", count)\n\nOutput:\n0 1 1 2 3 5 8 13 21 34 \nVowels: 13",
+      "hi": "n = 10\na, b = 0, 1\nfor i in range(n):\n    print(a, end=\" \")\n    a, b = b, a + b\nprint()\ntext = \"Bhashini translates Indian languages\"\ncount = 0\nfor ch in text.lower():\n    if ch in \"aeiou\":\n        count += 1\nprint(\"Vowels:\", count)\n\nआउटपुट:\n0 1 1 2 3 5 8 13 21 34 \nVowels: 13"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 1 – Program D: leap year check and a palindrome check.",
+      "hi": "स्तर 1 – प्रोग्राम D: leap year जाँच और palindrome जाँच।"
+     }
+    },
+    {
+     "formula": {
+      "en": "year = 2024\nif (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:\n    print(year, \"is a leap year\")\nelse:\n    print(year, \"is not a leap year\")\nword = \"Malayalam\"\nif word.lower() == word.lower()[::-1]:\n    print(word, \"is a palindrome\")\nelse:\n    print(word, \"is not a palindrome\")\n\nOutput:\n2024 is a leap year\nMalayalam is a palindrome",
+      "hi": "year = 2024\nif (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:\n    print(year, \"is a leap year\")\nelse:\n    print(year, \"is not a leap year\")\nword = \"Malayalam\"\nif word.lower() == word.lower()[::-1]:\n    print(word, \"is a palindrome\")\nelse:\n    print(word, \"is not a palindrome\")\n\nआउटपुट:\n2024 is a leap year\nMalayalam is a palindrome"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 1 – Program E: a simple rule-based chatbot using a while loop and a dictionary.",
+      "hi": "स्तर 1 – प्रोग्राम E: while loop और dictionary से एक सरल rule-based chatbot।"
+     }
+    },
+    {
+     "formula": {
+      "en": "replies = {\"hi\": \"Namaste! How can I help?\",\n           \"timing\": \"School is open 8 am to 2 pm.\",\n           \"fees\": \"Please check the school office notice board.\"}\nwhile True:\n    msg = input(\"You: \").lower()\n    if msg == \"bye\":\n        print(\"Bot: Goodbye!\")\n        break\n    print(\"Bot:\", replies.get(msg, \"Sorry, I did not understand.\"))\n\nOutput (as seen on screen; the user typed: hi , timing , holiday , bye):\nYou: hi\nBot: Namaste! How can I help?\nYou: timing\nBot: School is open 8 am to 2 pm.\nYou: holiday\nBot: Sorry, I did not understand.\nYou: bye\nBot: Goodbye!",
+      "hi": "replies = {\"hi\": \"Namaste! How can I help?\",\n           \"timing\": \"School is open 8 am to 2 pm.\",\n           \"fees\": \"Please check the school office notice board.\"}\nwhile True:\n    msg = input(\"You: \").lower()\n    if msg == \"bye\":\n        print(\"Bot: Goodbye!\")\n        break\n    print(\"Bot:\", replies.get(msg, \"Sorry, I did not understand.\"))\n\nआउटपुट (स्क्रीन पर जैसा दिखता है; उपयोगकर्ता ने टाइप किया: hi , timing , holiday , bye):\nYou: hi\nBot: Namaste! How can I help?\nYou: timing\nBot: School is open 8 am to 2 pm.\nYou: holiday\nBot: Sorry, I did not understand.\nYou: bye\nBot: Goodbye!"
+     }
+    },
+    {
+     "note": {
+      "en": "This bot follows fixed rules; it does not learn. Modern AI chatbots learn patterns from huge amounts of text (Chapter 7 covers language processing).",
+      "hi": "यह bot निश्चित नियमों पर चलता है; यह सीखता नहीं। आधुनिक AI chatbots बहुत बड़ी मात्रा के text से patterns सीखते हैं (अध्याय 7 language processing समझाता है)।"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 2 – Program F (NumPy): temperature analysis of a week.",
+      "hi": "स्तर 2 – प्रोग्राम F (NumPy): एक सप्ताह के तापमान का विश्लेषण।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import numpy as np\ntemps = np.array([31.5, 33.0, 35.2, 34.8, 30.1, 29.7, 32.4])\ndays = np.array([\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"])\nprint(\"Average:\", round(temps.mean(), 2))\nprint(\"Hottest day:\", days[temps.argmax()], temps.max())\nprint(\"Days above 32:\", days[temps > 32])\nprint(\"In Fahrenheit:\", np.round(temps * 9 / 5 + 32, 1))\n\nOutput:\nAverage: 32.39\nHottest day: Wed 35.2\nDays above 32: ['Tue' 'Wed' 'Thu' 'Sun']\nIn Fahrenheit: [88.7 91.4 95.4 94.6 86.2 85.5 90.3]",
+      "hi": "import numpy as np\ntemps = np.array([31.5, 33.0, 35.2, 34.8, 30.1, 29.7, 32.4])\ndays = np.array([\"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\", \"Sun\"])\nprint(\"Average:\", round(temps.mean(), 2))\nprint(\"Hottest day:\", days[temps.argmax()], temps.max())\nprint(\"Days above 32:\", days[temps > 32])\nprint(\"In Fahrenheit:\", np.round(temps * 9 / 5 + 32, 1))\n\nआउटपुट:\nAverage: 32.39\nHottest day: Wed 35.2\nDays above 32: ['Tue' 'Wed' 'Thu' 'Sun']\nIn Fahrenheit: [88.7 91.4 95.4 94.6 86.2 85.5 90.3]"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 2 – Program G (Pandas): IPL-style batting analysis from a DataFrame.",
+      "hi": "स्तर 2 – प्रोग्राम G (Pandas): DataFrame से IPL-शैली बल्लेबाज़ी विश्लेषण।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\ndata = {\"Player\": [\"A\", \"B\", \"C\", \"D\", \"E\"],\n        \"Runs\": [512, 389, 641, 220, 455],\n        \"Balls\": [380, 301, 452, 190, 310]}\ndf = pd.DataFrame(data)\ndf[\"StrikeRate\"] = (df[\"Runs\"] / df[\"Balls\"] * 100).round(1)\nprint(df.sort_values(\"StrikeRate\", ascending=False))\nprint(\"Players with 400+ runs:\", df[df[\"Runs\"] >= 400][\"Player\"].tolist())\n\nOutput:\n  Player  Runs  Balls  StrikeRate\n4      E   455    310       146.8\n2      C   641    452       141.8\n0      A   512    380       134.7\n1      B   389    301       129.2\n3      D   220    190       115.8\nPlayers with 400+ runs: ['A', 'C', 'E']",
+      "hi": "import pandas as pd\ndata = {\"Player\": [\"A\", \"B\", \"C\", \"D\", \"E\"],\n        \"Runs\": [512, 389, 641, 220, 455],\n        \"Balls\": [380, 301, 452, 190, 310]}\ndf = pd.DataFrame(data)\ndf[\"StrikeRate\"] = (df[\"Runs\"] / df[\"Balls\"] * 100).round(1)\nprint(df.sort_values(\"StrikeRate\", ascending=False))\nprint(\"Players with 400+ runs:\", df[df[\"Runs\"] >= 400][\"Player\"].tolist())\n\nआउटपुट:\n  Player  Runs  Balls  StrikeRate\n4      E   455    310       146.8\n2      C   641    452       141.8\n0      A   512    380       134.7\n1      B   389    301       129.2\n3      D   220    190       115.8\nPlayers with 400+ runs: ['A', 'C', 'E']"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 2 – Program H (Pandas + CSV): read students.csv, add a Result column and save it.",
+      "hi": "स्तर 2 – प्रोग्राम H (Pandas + CSV): students.csv पढ़ें, Result column जोड़ें और save करें।"
+     }
+    },
+    {
+     "formula": {
+      "en": "import pandas as pd\ndf = pd.read_csv(\"students.csv\")\ndf[\"Average\"] = df[[\"Maths\", \"Science\", \"AI\"]].mean(axis=1).round(1)\ndf[\"Result\"] = [\"Distinction\" if a >= 85 else \"Pass\" for a in df[\"Average\"]]\nprint(df[[\"Name\", \"Average\", \"Result\"]])\nprint(df[\"Result\"].value_counts())\ndf.to_csv(\"final_result.csv\", index=False)\n\nOutput:\n       Name  Average       Result\n0    Ananya     91.7  Distinction\n1     Rohan     82.0         Pass\n2    Fatima     89.7  Distinction\n3  Gurpreet     73.0         Pass\n4     Meera     94.3  Distinction\nResult\nDistinction    3\nPass           2\nName: count, dtype: int64",
+      "hi": "import pandas as pd\ndf = pd.read_csv(\"students.csv\")\ndf[\"Average\"] = df[[\"Maths\", \"Science\", \"AI\"]].mean(axis=1).round(1)\ndf[\"Result\"] = [\"Distinction\" if a >= 85 else \"Pass\" for a in df[\"Average\"]]\nprint(df[[\"Name\", \"Average\", \"Result\"]])\nprint(df[\"Result\"].value_counts())\ndf.to_csv(\"final_result.csv\", index=False)\n\nआउटपुट:\n       Name  Average       Result\n0    Ananya     91.7  Distinction\n1     Rohan     82.0         Pass\n2    Fatima     89.7  Distinction\n3  Gurpreet     73.0         Pass\n4     Meera     94.3  Distinction\nResult\nDistinction    3\nPass           2\nName: count, dtype: int64"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 2 – Program I (Scikit-learn): Decision Tree on the Iris dataset with a confusion matrix.",
+      "hi": "स्तर 2 – प्रोग्राम I (Scikit-learn): Iris dataset पर confusion matrix के साथ Decision Tree।"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.metrics import accuracy_score, confusion_matrix\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\ntree = DecisionTreeClassifier(random_state=0).fit(X_train, y_train)\npred = tree.predict(X_test)\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\nprint(confusion_matrix(y_test, pred))\n\nOutput:\nAccuracy: 1.0\n[[10  0  0]\n [ 0  9  0]\n [ 0  0 11]]",
+      "hi": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.metrics import accuracy_score, confusion_matrix\nX, y = load_iris(return_X_y=True)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\ntree = DecisionTreeClassifier(random_state=0).fit(X_train, y_train)\npred = tree.predict(X_test)\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\nprint(confusion_matrix(y_test, pred))\n\nआउटपुट:\nAccuracy: 1.0\n[[10  0  0]\n [ 0  9  0]\n [ 0  0 11]]"
+     }
+    },
+    {
+     "p": {
+      "en": "Level 2 – Program J (Scikit-learn): KNN on our own small dataset – will a student pass, from hours of study and attendance?",
+      "hi": "स्तर 2 – प्रोग्राम J (Scikit-learn): अपने छोटे dataset पर KNN – पढ़ाई के घंटों और उपस्थिति से क्या विद्यार्थी पास होगा?"
+     }
+    },
+    {
+     "formula": {
+      "en": "from sklearn.neighbors import KNeighborsClassifier\nX = [[1, 60], [2, 65], [2, 80], [4, 85], [5, 90], [6, 95], [1, 50], [3, 75]]  # [hours, attendance %]\ny = [\"Fail\", \"Fail\", \"Pass\", \"Pass\", \"Pass\", \"Pass\", \"Fail\", \"Pass\"]\nknn = KNeighborsClassifier(n_neighbors=3).fit(X, y)\nprint(knn.predict([[3, 82], [1, 55]]))\n\nOutput:\n['Pass' 'Fail']",
+      "hi": "from sklearn.neighbors import KNeighborsClassifier\nX = [[1, 60], [2, 65], [2, 80], [4, 85], [5, 90], [6, 95], [1, 50], [3, 75]]  # [hours, attendance %]\ny = [\"Fail\", \"Fail\", \"Pass\", \"Pass\", \"Pass\", \"Pass\", \"Fail\", \"Pass\"]\nknn = KNeighborsClassifier(n_neighbors=3).fit(X, y)\nprint(knn.predict([[3, 82], [1, 55]]))\n\nआउटपुट:\n['Pass' 'Fail']"
+     }
+    },
+    {
+     "note": {
+      "en": "The dataset in Program J is invented for practice and far too small for a real decision. Never use a model like this to judge real students; real models need much more data, careful testing and fairness checks.",
+      "hi": "प्रोग्राम J का dataset अभ्यास के लिए गढ़ा गया है और असली निर्णय के लिए बहुत छोटा है। ऐसे model से असली विद्यार्थियों का मूल्यांकन कभी न करें; असली models को बहुत अधिक data, सावधानीपूर्ण परीक्षण और निष्पक्षता की जाँच चाहिए।"
+     }
+    }
+   ]
+  },
+  {
+   "h": {
+    "en": "3.22 Activities",
+    "hi": "3.22 गतिविधियाँ"
+   },
+   "blocks": [
+    {
+     "p": {
+      "en": "Activity 1 (unplugged): Human interpreter. Aim: feel how an interpreter works line by line. Need: a printed 8-line program with one error on line 6. What to do: one student 'is Python' and reads each line aloud, doing what it says on a whiteboard (making variables as labelled boxes); the rest watch. Observe: lines 1–5 run, then the 'interpreter' stops at line 6 and announces the error. Learning: Python runs in order and stops at the first runtime error.",
+      "hi": "गतिविधि 1 (unplugged): मानव interpreter। उद्देश्य: महसूस करना कि interpreter पंक्ति-दर-पंक्ति कैसे काम करता है। आवश्यकता: 8 पंक्तियों का छपा प्रोग्राम जिसकी पंक्ति 6 में एक error हो। क्या करें: एक विद्यार्थी 'Python बनता' है और हर पंक्ति ज़ोर से पढ़कर whiteboard पर वही करता है (variables को नाम लिखे डिब्बों की तरह बनाकर); बाकी देखते हैं। अवलोकन: पंक्ति 1–5 चलती हैं, फिर 'interpreter' पंक्ति 6 पर रुककर error बताता है। सीख: Python क्रम से चलता है और पहली runtime error पर रुक जाता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 2 (unplugged): Token hunt. Write five Python statements on the board. Teams race to label every token as keyword, identifier, literal, operator or punctuator. The team with the most correct labels wins. Learning: reading code the way Python reads it.",
+      "hi": "गतिविधि 2 (unplugged): Token खोज। बोर्ड पर पाँच Python statements लिखें। टीमें होड़ करती हैं कि हर token को keyword, identifier, literal, operator या punctuator के रूप में चिह्नित करें। सबसे अधिक सही चिह्न वाली टीम जीतती है। सीख: code को उसी तरह पढ़ना जैसे Python पढ़ता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 3 (screen): Your class as a dataset. Aim: build a real CSV and analyse it with Pandas. Need: Google Sheets or Excel, and Google Colab or Jupyter. What to do: with your teacher's permission, collect non-personal data only (for example: favourite sport, minutes of screen time yesterday, hours of sleep; no names or phone numbers). Download as CSV, load it with pd.read_csv(), find the mean, maximum and value_counts(). Observe: patterns such as 'more screen time, less sleep'. Learning: data collection, cleaning and analysis, and respecting privacy.",
+      "hi": "गतिविधि 3 (screen): आपकी कक्षा एक dataset के रूप में। उद्देश्य: एक असली CSV बनाकर Pandas से विश्लेषण करना। आवश्यकता: Google Sheets या Excel, और Google Colab या Jupyter। क्या करें: शिक्षक की अनुमति से केवल गैर-निजी data एकत्र करें (जैसे: पसंदीदा खेल, कल का screen time मिनटों में, नींद के घंटे; कोई नाम या फ़ोन नंबर नहीं)। CSV के रूप में download करें, pd.read_csv() से load करें, mean, maximum और value_counts() निकालें। अवलोकन: 'अधिक screen time, कम नींद' जैसे patterns। सीख: data संग्रह, सफ़ाई और विश्लेषण, तथा निजता का सम्मान।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 4 (screen): Be the KNN. Plot five red and five blue points on graph paper (or in a spreadsheet chart). Place a new green point. Find its 1, 3 and 5 nearest neighbours with a ruler and vote. Then run KNeighborsClassifier on the same points in Colab and compare. Learning: what K means and why the answer can change with K.",
+      "hi": "गतिविधि 4 (screen): KNN बनिए। Graph paper (या spreadsheet chart) पर पाँच लाल और पाँच नीले बिंदु लगाएँ। एक नया हरा बिंदु रखें। Ruler से उसके 1, 3 और 5 निकटतम पड़ोसी ढूँढें और मत गिनें। फिर उन्हीं बिंदुओं पर Colab में KNeighborsClassifier चलाकर तुलना करें। सीख: K का अर्थ और K के साथ उत्तर क्यों बदल सकता है।"
+     }
+    },
+    {
+     "p": {
+      "en": "Activity 5 (screen): Bug hunt. Your teacher gives a program with one syntax error, one runtime error and one logical error. Find and fix all three, writing the error name for each. Learning: reading error messages calmly.",
+      "hi": "गतिविधि 5 (screen): Bug खोज। शिक्षक एक प्रोग्राम देते हैं जिसमें एक syntax error, एक runtime error और एक logical error है। तीनों ढूँढकर ठीक करें और हर एक का error नाम लिखें। सीख: error संदेश शांति से पढ़ना।"
+     }
+    },
+    {
+     "note": {
+      "en": "Free tools that work on a phone in India: Google Colab in the browser, Pydroid 3 (Android) and online editors such as the one on python.org's website shell. An adult should supervise account sign-ups for anyone under 13.",
+      "hi": "भारत में फ़ोन पर चलने वाले मुफ़्त tools: browser में Google Colab, Pydroid 3 (Android) और python.org की website पर उपलब्ध online shell जैसे editors। 13 वर्ष से कम आयु वालों के account sign-up किसी वयस्क की देखरेख में हों।"
+     }
+    }
+   ]
+  }
+ ],
+ "mistakes": {
+  "en": [
+   "Using = when you mean ==. Fix: = stores a value; == compares two values inside if and while.",
+   "Forgetting that input() returns a string, so '5' + '3' gives '53'. Fix: convert with int() or float() before doing maths.",
+   "Missing the colon at the end of if, elif, else, for, while lines, or wrong indentation. Fix: end these lines with : and indent the block by 4 spaces consistently.",
+   "Thinking range(1, 10) includes 10. Fix: the stop value is never included; use range(1, 11) for 1 to 10.",
+   "Starting an identifier with a digit or using a keyword (for example 2nd_name, class). Fix: start with a letter or underscore and avoid keywords.",
+   "Writing a while loop that never ends because the variable is not updated. Fix: make sure something inside the loop moves the condition towards False.",
+   "Confusing loc[] and iloc[] in Pandas. Fix: loc uses labels and includes the end label; iloc uses positions and excludes the end.",
+   "Forgetting axis=1 when dropping a column in Pandas, which gives a KeyError. Fix: df.drop('col', axis=1); rows use axis=0.",
+   "Testing a model on the same data it was trained on and believing the accuracy. Fix: always use train_test_split and evaluate on the test set.",
+   "Treating 100% accuracy on Iris as proof that the model will work on real data. Fix: real data is messy; test on new data and check fairness."
+  ],
+  "hi": [
+   "== की जगह = लिखना। सुधार: = मान रखता है; == if और while के अंदर दो मानों की तुलना करता है।",
+   "भूल जाना कि input() string लौटाता है, इसलिए '5' + '3' से '53' बनता है। सुधार: गणित से पहले int() या float() से बदलें।",
+   "if, elif, else, for, while पंक्तियों के अंत में colon छोड़ देना, या गलत indentation। सुधार: इन पंक्तियों के अंत में : लगाएँ और block को लगातार 4 spaces से indent करें।",
+   "सोचना कि range(1, 10) में 10 शामिल है। सुधार: stop मान कभी शामिल नहीं होता; 1 से 10 के लिए range(1, 11) लिखें।",
+   "Identifier को अंक से शुरू करना या keyword उपयोग करना (जैसे 2nd_name, class)। सुधार: अक्षर या underscore से शुरू करें और keywords से बचें।",
+   "ऐसा while loop लिखना जो कभी समाप्त न हो क्योंकि variable बदला ही नहीं गया। सुधार: सुनिश्चित करें कि loop के अंदर कुछ condition को False की ओर ले जाए।",
+   "Pandas में loc[] और iloc[] को मिला देना। सुधार: loc labels उपयोग करता है और अंतिम label शामिल करता है; iloc स्थान उपयोग करता है और अंत शामिल नहीं करता।",
+   "Pandas में column हटाते समय axis=1 भूल जाना, जिससे KeyError आती है। सुधार: df.drop('col', axis=1); rows के लिए axis=0।",
+   "Model को उसी data पर परखना जिस पर उसे train किया गया और उस accuracy पर भरोसा करना। सुधार: हमेशा train_test_split उपयोग करें और test set पर मूल्यांकन करें।",
+   "Iris पर 100% accuracy को इस बात का प्रमाण मानना कि model असली data पर भी चलेगा। सुधार: असली data अव्यवस्थित होता है; नए data पर परखें और निष्पक्षता जाँचें।"
+  ]
+ },
+ "terms": [
+  {
+   "t": {
+    "en": "Python",
+    "hi": "Python"
+   },
+   "d": {
+    "en": "A free, open-source, high-level, interpreted, general-purpose programming language created by Guido van Rossum (1991).",
+    "hi": "Guido van Rossum द्वारा बनाई (1991) एक मुफ़्त, open-source, उच्च-स्तरीय, interpreted, सामान्य-उद्देश्य programming language।"
+   }
+  },
+  {
+   "t": {
+    "en": "Interpreter",
+    "hi": "Interpreter"
+   },
+   "d": {
+    "en": "A program that translates and runs code one line at a time.",
+    "hi": "वह प्रोग्राम जो code को एक बार में एक पंक्ति अनुवाद करके चलाता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Interactive mode",
+    "hi": "Interactive mode"
+   },
+   "d": {
+    "en": "Running single statements at the >>> prompt with immediate results; not saved.",
+    "hi": ">>> prompt पर एक-एक statement चलाना और तुरंत परिणाम पाना; save नहीं होता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Script mode",
+    "hi": "Script mode"
+   },
+   "d": {
+    "en": "Writing a whole program in a saved .py file and running it.",
+    "hi": "पूरा प्रोग्राम save की गई .py फ़ाइल में लिखकर चलाना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Jupyter Notebook",
+    "hi": "Jupyter Notebook"
+   },
+   "d": {
+    "en": "A browser-based tool where code is written and run in cells; files end in .ipynb.",
+    "hi": "browser-आधारित tool जिसमें code cells में लिखा और चलाया जाता है; फ़ाइलें .ipynb पर समाप्त होती हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Google Colab",
+    "hi": "Google Colab"
+   },
+   "d": {
+    "en": "A free online notebook from Google that runs Python in the browser with AI libraries pre-installed.",
+    "hi": "Google की मुफ़्त online notebook जो AI libraries पहले से installed के साथ browser में Python चलाती है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Character set",
+    "hi": "Character set"
+   },
+   "d": {
+    "en": "All the valid letters, digits, symbols and white spaces Python recognises.",
+    "hi": "Python द्वारा पहचाने जाने वाले सभी मान्य अक्षर, अंक, चिह्न और white spaces।"
+   }
+  },
+  {
+   "t": {
+    "en": "Token",
+    "hi": "Token"
+   },
+   "d": {
+    "en": "The smallest meaningful unit of a program: keyword, identifier, literal, operator or punctuator.",
+    "hi": "प्रोग्राम की सबसे छोटी अर्थपूर्ण इकाई: keyword, identifier, literal, operator या punctuator।"
+   }
+  },
+  {
+   "t": {
+    "en": "Keyword",
+    "hi": "Keyword"
+   },
+   "d": {
+    "en": "A reserved word with special meaning, such as if, for, True; cannot be used as a name.",
+    "hi": "विशेष अर्थ वाला आरक्षित शब्द, जैसे if, for, True; नाम के रूप में उपयोग नहीं हो सकता।"
+   }
+  },
+  {
+   "t": {
+    "en": "Identifier",
+    "hi": "Identifier"
+   },
+   "d": {
+    "en": "A name given to a variable, function or other object, following naming rules.",
+    "hi": "नियमों का पालन करते हुए variable, function या अन्य object को दिया गया नाम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Literal",
+    "hi": "Literal"
+   },
+   "d": {
+    "en": "A fixed value written directly in code, such as 25, 3.14, 'India', True, None.",
+    "hi": "Code में सीधे लिखा निश्चित मान, जैसे 25, 3.14, 'India', True, None।"
+   }
+  },
+  {
+   "t": {
+    "en": "Punctuator",
+    "hi": "Punctuator"
+   },
+   "d": {
+    "en": "A symbol that structures code, such as ( ) [ ] { } , : #.",
+    "hi": "Code की संरचना बनाने वाला चिह्न, जैसे ( ) [ ] { } , : #।"
+   }
+  },
+  {
+   "t": {
+    "en": "Variable",
+    "hi": "Variable"
+   },
+   "d": {
+    "en": "A name that refers to a value stored in memory.",
+    "hi": "memory में रखे मान की ओर संकेत करने वाला नाम।"
+   }
+  },
+  {
+   "t": {
+    "en": "Data type",
+    "hi": "Data type"
+   },
+   "d": {
+    "en": "The kind of value (int, float, complex, bool, str, list, tuple, set, dict, None).",
+    "hi": "मान का प्रकार (int, float, complex, bool, str, list, tuple, set, dict, None)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Dynamic typing",
+    "hi": "Dynamic typing"
+   },
+   "d": {
+    "en": "Python decides a variable's type from its current value at run time.",
+    "hi": "Python run time पर variable का type उसके वर्तमान मान से तय करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Mutable / immutable",
+    "hi": "Mutable / immutable"
+   },
+   "d": {
+    "en": "Mutable objects (list, dict, set) can be changed in place; immutable ones (int, str, tuple) cannot.",
+    "hi": "Mutable objects (list, dict, set) उसी जगह बदले जा सकते हैं; immutable (int, str, tuple) नहीं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Type casting",
+    "hi": "Type casting"
+   },
+   "d": {
+    "en": "Explicitly converting a value to another type with int(), float(), str() etc.",
+    "hi": "int(), float(), str() आदि से किसी मान को स्पष्ट रूप से दूसरे type में बदलना।"
+   }
+  },
+  {
+   "t": {
+    "en": "Operator / operand",
+    "hi": "Operator / operand"
+   },
+   "d": {
+    "en": "An operator is a symbol that acts on values; the values are operands.",
+    "hi": "Operator वह चिह्न है जो मानों पर काम करता है; वे मान operands हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Operator precedence",
+    "hi": "Operator precedence"
+   },
+   "d": {
+    "en": "The order in which Python evaluates operators in an expression.",
+    "hi": "वह क्रम जिसमें Python expression के operators का मान निकालता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Control statement",
+    "hi": "Control statement"
+   },
+   "d": {
+    "en": "A statement that changes the normal top-to-bottom flow: selection, iteration or jump.",
+    "hi": "सामान्य ऊपर-से-नीचे प्रवाह बदलने वाला statement: selection, iteration या jump।"
+   }
+  },
+  {
+   "t": {
+    "en": "Loop / iteration",
+    "hi": "Loop / iteration"
+   },
+   "d": {
+    "en": "Repeating a block of code using for or while.",
+    "hi": "for या while से code के block को दोहराना।"
+   }
+  },
+  {
+   "t": {
+    "en": "break / continue / pass",
+    "hi": "break / continue / pass"
+   },
+   "d": {
+    "en": "break exits a loop; continue skips to the next repetition; pass does nothing.",
+    "hi": "break loop से बाहर निकालता है; continue अगले दोहराव पर ले जाता है; pass कुछ नहीं करता।"
+   }
+  },
+  {
+   "t": {
+    "en": "CSV",
+    "hi": "CSV"
+   },
+   "d": {
+    "en": "Comma-Separated Values: a plain-text table file with one record per line.",
+    "hi": "Comma-Separated Values: हर पंक्ति में एक record वाली साधारण text तालिका फ़ाइल।"
+   }
+  },
+  {
+   "t": {
+    "en": "Module / library",
+    "hi": "Module / library"
+   },
+   "d": {
+    "en": "A module is a file of reusable code; a library is a collection of modules for a field.",
+    "hi": "Module पुनः उपयोग योग्य code की फ़ाइल है; library किसी क्षेत्र के modules का संग्रह है।"
+   }
+  },
+  {
+   "t": {
+    "en": "pip",
+    "hi": "pip"
+   },
+   "d": {
+    "en": "Python's package installer, used as pip install name.",
+    "hi": "Python का package installer, pip install name के रूप में उपयोग।"
+   }
+  },
+  {
+   "t": {
+    "en": "NumPy / ndarray",
+    "hi": "NumPy / ndarray"
+   },
+   "d": {
+    "en": "Library for fast numerical arrays; ndarray is its n-dimensional array of one data type.",
+    "hi": "तेज़ संख्यात्मक arrays की library; ndarray इसका एक data type वाला n-आयामी array है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Pandas",
+    "hi": "Pandas"
+   },
+   "d": {
+    "en": "Library for tabular data with Series (1-D) and DataFrame (2-D).",
+    "hi": "Series (1-D) और DataFrame (2-D) के साथ तालिका-रूप data की library।"
+   }
+  },
+  {
+   "t": {
+    "en": "NaN",
+    "hi": "NaN"
+   },
+   "d": {
+    "en": "'Not a Number': how Pandas and NumPy mark a missing value.",
+    "hi": "'Not a Number': Pandas और NumPy इसी से missing value दर्शाते हैं।"
+   }
+  },
+  {
+   "t": {
+    "en": "Scikit-learn",
+    "hi": "Scikit-learn"
+   },
+   "d": {
+    "en": "Open-source machine learning library for Python (import sklearn).",
+    "hi": "Python की open-source machine learning library (import sklearn)।"
+   }
+  },
+  {
+   "t": {
+    "en": "Features and target",
+    "hi": "Features और target"
+   },
+   "d": {
+    "en": "Features (X) are the input columns; the target (y) is the answer the model learns to predict.",
+    "hi": "Features (X) input columns हैं; target (y) वह उत्तर है जिसका अनुमान लगाना model सीखता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "train_test_split",
+    "hi": "train_test_split"
+   },
+   "d": {
+    "en": "Function that divides data into training and testing sets, e.g. 80:20.",
+    "hi": "Data को training और testing sets में बाँटने वाला function, जैसे 80:20।"
+   }
+  },
+  {
+   "t": {
+    "en": "KNN",
+    "hi": "KNN"
+   },
+   "d": {
+    "en": "K-Nearest Neighbours: classifies a point by majority vote of its K closest training points.",
+    "hi": "K-Nearest Neighbours: किसी बिंदु को उसके K निकटतम training बिंदुओं के बहुमत से वर्गीकृत करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "fit() / predict()",
+    "hi": "fit() / predict()"
+   },
+   "d": {
+    "en": "fit() trains a model on data; predict() uses the trained model on new inputs.",
+    "hi": "fit() data पर model train करता है; predict() trained model को नए inputs पर उपयोग करता है।"
+   }
+  },
+  {
+   "t": {
+    "en": "Accuracy",
+    "hi": "Accuracy"
+   },
+   "d": {
+    "en": "Fraction of predictions that are correct = correct predictions / total predictions.",
+    "hi": "सही अनुमानों का अनुपात = सही अनुमान / कुल अनुमान।"
+   }
+  },
+  {
+   "t": {
+    "en": "Syntax, runtime and logical errors",
+    "hi": "Syntax, runtime और logical errors"
+   },
+   "d": {
+    "en": "Grammar mistakes; errors while running (exceptions); and wrong results from wrong logic.",
+    "hi": "व्याकरण की गलतियाँ; चलते समय की errors (exceptions); और गलत तर्क से गलत परिणाम।"
+   }
+  }
+ ],
+ "exercises": [
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Who created Python? (a) Dennis Ritchie (b) Guido van Rossum (c) James Gosling (d) Bjarne Stroustrup",
+    "hi": "MCQ: Python किसने बनाई? (a) Dennis Ritchie (b) Guido van Rossum (c) James Gosling (d) Bjarne Stroustrup"
+   },
+   "a": {
+    "en": "(b) Guido van Rossum; first released in 1991.",
+    "hi": "(b) Guido van Rossum; पहली बार 1991 में जारी।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: Which of these is a valid identifier? (a) 2total (b) total marks (c) total_marks (d) while",
+    "hi": "MCQ: इनमें से मान्य identifier कौन-सा है? (a) 2total (b) total marks (c) total_marks (d) while"
+   },
+   "a": {
+    "en": "(c) total_marks. (a) starts with a digit, (b) has a space, (d) is a keyword.",
+    "hi": "(c) total_marks। (a) अंक से शुरू, (b) में space, (d) keyword है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "MCQ: What is the output of print(17 // 5, 17 % 5)? (a) 3.4 2 (b) 3 2 (c) 3 3 (d) 2 3",
+    "hi": "MCQ: print(17 // 5, 17 % 5) का output क्या है? (a) 3.4 2 (b) 3 2 (c) 3 3 (d) 2 3"
+   },
+   "a": {
+    "en": "(b) 3 2. // gives the quotient 3 and % gives the remainder 2.",
+    "hi": "(b) 3 2। // भागफल 3 और % शेषफल 2 देता है।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: The file extension of a Python script is ____ and of a Jupyter notebook is ____.",
+    "hi": "रिक्त स्थान भरिए: Python script का extension ____ और Jupyter notebook का ____ होता है।"
+   },
+   "a": {
+    "en": ".py and .ipynb",
+    "hi": ".py और .ipynb"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "True or False: input() returns an integer if the user types digits.",
+    "hi": "सही या गलत: यदि उपयोगकर्ता अंक टाइप करे तो input() integer लौटाता है।"
+   },
+   "a": {
+    "en": "False. input() always returns a string; use int() to convert it.",
+    "hi": "गलत। input() हमेशा string लौटाता है; बदलने के लिए int() उपयोग करें।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Name the five types of tokens in Python with one example each.",
+    "hi": "Python के पाँच प्रकार के tokens के नाम एक-एक उदाहरण सहित लिखिए।"
+   },
+   "a": {
+    "en": "Keyword (if), identifier (marks), literal (25 or 'AI'), operator (+), punctuator (: or ( ).",
+    "hi": "Keyword (if), identifier (marks), literal (25 या 'AI'), operator (+), punctuator (: या ( )।"
+   }
+  },
+  {
+   "lvl": "easy",
+   "q": {
+    "en": "Fill in the blank: In Scikit-learn, a model learns using the ____ method and gives answers using the ____ method.",
+    "hi": "रिक्त स्थान भरिए: Scikit-learn में model ____ method से सीखता है और ____ method से उत्तर देता है।"
+   },
+   "a": {
+    "en": "fit(); predict()",
+    "hi": "fit(); predict()"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between interactive mode and script mode (any three points).",
+    "hi": "Interactive mode और script mode में अंतर बताइए (कोई तीन बिंदु)।"
+   },
+   "a": {
+    "en": "1. Interactive works at the >>> prompt; script uses a saved .py file.\n2. Interactive runs one statement at a time; script runs the whole program.\n3. Interactive code is not saved; script code is saved and can be reused and shared.",
+    "hi": "1. Interactive >>> prompt पर काम करता है; script save की गई .py फ़ाइल उपयोग करता है।\n2. Interactive एक बार में एक statement चलाता है; script पूरा प्रोग्राम।\n3. Interactive code save नहीं होता; script code save होता है और दोबारा उपयोग व साझा हो सकता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is the output? x = [1, 2, 3]; y = x; z = [1, 2, 3]; print(x == z, x is z, x is y)",
+    "hi": "Output क्या होगा? x = [1, 2, 3]; y = x; z = [1, 2, 3]; print(x == z, x is z, x is y)"
+   },
+   "a": {
+    "en": "True False True. x and z have equal values (==) but are two different objects (is gives False). y refers to the same object as x.",
+    "hi": "True False True। x और z के मान बराबर हैं (==) पर वे दो अलग objects हैं (is से False)। y उसी object की ओर संकेत करता है जिसकी ओर x।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Evaluate 2 + 3 * 4 ** 2 // 8 - 1 and show the steps.",
+    "hi": "2 + 3 * 4 ** 2 // 8 - 1 का मान चरणों सहित निकालिए।"
+   },
+   "a": {
+    "en": "4 ** 2 = 16 → 2 + 3 * 16 // 8 - 1\n3 * 16 = 48, 48 // 8 = 6 → 2 + 6 - 1\n= 7",
+    "hi": "4 ** 2 = 16 → 2 + 3 * 16 // 8 - 1\n3 * 16 = 48, 48 // 8 = 6 → 2 + 6 - 1\n= 7"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between break and continue with an example.",
+    "hi": "उदाहरण सहित break और continue में अंतर बताइए।"
+   },
+   "a": {
+    "en": "break ends the loop completely; continue skips only the current round.\nfor i in range(1, 6):\n    if i == 3: break\n    print(i)   → prints 1 2\nWith continue instead of break it prints 1 2 4 5.",
+    "hi": "break loop को पूरी तरह समाप्त करता है; continue केवल वर्तमान दौर छोड़ता है।\nfor i in range(1, 6):\n    if i == 3: break\n    print(i)   → 1 2 प्रिंट करता है\nbreak की जगह continue हो तो 1 2 4 5 प्रिंट होता है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Write a program that prints all multiples of 7 between 1 and 50 and their sum.",
+    "hi": "1 से 50 के बीच 7 के सभी गुणज और उनका योग प्रिंट करने का प्रोग्राम लिखिए।"
+   },
+   "a": {
+    "en": "total = 0\nfor n in range(7, 51, 7):\n    print(n, end=' ')\n    total += n\nprint()\nprint('Sum =', total)\nOutput: 7 14 21 28 35 42 49 and Sum = 196",
+    "hi": "total = 0\nfor n in range(7, 51, 7):\n    print(n, end=' ')\n    total += n\nprint()\nprint('Sum =', total)\nOutput: 7 14 21 28 35 42 49 और Sum = 196"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "What is a CSV file? Write the steps to read a CSV file using the csv module.",
+    "hi": "CSV फ़ाइल क्या है? csv module से CSV फ़ाइल पढ़ने के चरण लिखिए।"
+   },
+   "a": {
+    "en": "A CSV (Comma-Separated Values) file is a plain-text table: one record per line, values separated by commas, usually with a header row.\nSteps: import csv → f = open('file.csv', 'r') → reader = csv.reader(f) → for row in reader: print(row) → f.close() (or use with open(...) to close automatically).",
+    "hi": "CSV (Comma-Separated Values) फ़ाइल एक साधारण text तालिका है: हर पंक्ति में एक record, मान commas से अलग, प्रायः header row के साथ।\nचरण: import csv → f = open('file.csv', 'r') → reader = csv.reader(f) → for row in reader: print(row) → f.close() (या अपने-आप बंद करने के लिए with open(...) का उपयोग)।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Differentiate between a Pandas Series and a DataFrame.",
+    "hi": "Pandas Series और DataFrame में अंतर बताइए।"
+   },
+   "a": {
+    "en": "Series: one-dimensional, a single labelled column, one data type.\nDataFrame: two-dimensional table of rows and columns; each column is a Series and columns can have different types; has both row index and column names.",
+    "hi": "Series: एक-आयामी, एक labelled column, एक data type।\nDataFrame: rows और columns की द्वि-आयामी तालिका; हर column एक Series है और columns के types अलग हो सकते हैं; row index और column नाम दोनों होते हैं।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Given df with columns Name, Maths, AI: write statements to (i) show the first 3 rows, (ii) add a column Total = Maths + AI, (iii) delete the column Maths, (iv) count missing values in each column.",
+    "hi": "Name, Maths, AI columns वाले df के लिए statements लिखिए: (i) पहली 3 rows दिखाएँ, (ii) Total = Maths + AI column जोड़ें, (iii) Maths column हटाएँ, (iv) हर column में missing values गिनें।"
+   },
+   "a": {
+    "en": "(i) df.head(3)\n(ii) df['Total'] = df['Maths'] + df['AI']\n(iii) df = df.drop('Maths', axis=1)\n(iv) df.isnull().sum()",
+    "hi": "(i) df.head(3)\n(ii) df['Total'] = df['Maths'] + df['AI']\n(iii) df = df.drop('Maths', axis=1)\n(iv) df.isnull().sum()"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): NumPy arrays are preferred over lists for numerical work in AI.\nReason (R): A NumPy array stores elements of a single data type and supports vectorised operations.\n(a) Both A and R true, R explains A (b) Both true, R does not explain A (c) A true, R false (d) A false, R true",
+    "hi": "अभिकथन (A): AI में संख्यात्मक काम के लिए lists की जगह NumPy arrays पसंद किए जाते हैं।\nकारण (R): NumPy array एक ही data type के elements रखता है और vectorised operations का समर्थन करता है।\n(a) A और R दोनों सही, R, A की व्याख्या करता है (b) दोनों सही, R व्याख्या नहीं करता (c) A सही, R गलत (d) A गलत, R सही"
+   },
+   "a": {
+    "en": "(a) Both are true and the single type plus vectorisation is exactly why arrays are faster.",
+    "hi": "(a) दोनों सही हैं, और एक type तथा vectorisation ही arrays के तेज़ होने का कारण है।"
+   }
+  },
+  {
+   "lvl": "medium",
+   "q": {
+    "en": "Assertion (A): A Python program with a logical error does not run.\nReason (R): Python checks the meaning of the program before running it.",
+    "hi": "अभिकथन (A): Logical error वाला Python प्रोग्राम नहीं चलता।\nकारण (R): Python चलाने से पहले प्रोग्राम का अर्थ जाँचता है।"
+   },
+   "a": {
+    "en": "Both A and R are false. A program with a logical error runs but gives wrong output; Python only checks syntax before running, not whether the logic is correct.",
+    "hi": "दोनों A और R गलत हैं। Logical error वाला प्रोग्राम चलता है पर गलत output देता है; Python चलाने से पहले केवल syntax जाँचता है, तर्क सही है या नहीं, यह नहीं।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain the steps of training a KNN model on the Iris dataset in Scikit-learn, naming the module of each function used.",
+    "hi": "Scikit-learn में Iris dataset पर KNN model train करने के चरण, हर function का module बताते हुए, समझाइए।"
+   },
+   "a": {
+    "en": "1. Load data: load_iris() from sklearn.datasets; X = iris.data (4 features), y = iris.target (3 species).\n2. Split: train_test_split(X, y, test_size=0.2, random_state=1) from sklearn.model_selection gives 120 training and 30 testing rows.\n3. Create model: KNeighborsClassifier(n_neighbors=3) from sklearn.neighbors.\n4. Train: model.fit(X_train, y_train).\n5. Predict: y_pred = model.predict(X_test).\n6. Evaluate: accuracy_score(y_test, y_pred) from sklearn.metrics (1.0 for this split).\n7. Use: model.predict([[5.0, 3.4, 1.5, 0.2]]) predicts setosa.",
+    "hi": "1. Data load: sklearn.datasets से load_iris(); X = iris.data (4 features), y = iris.target (3 प्रजातियाँ)।\n2. विभाजन: sklearn.model_selection से train_test_split(X, y, test_size=0.2, random_state=1), जिससे 120 training और 30 testing rows मिलती हैं।\n3. Model बनाना: sklearn.neighbors से KNeighborsClassifier(n_neighbors=3)।\n4. Train: model.fit(X_train, y_train)।\n5. अनुमान: y_pred = model.predict(X_test)।\n6. मूल्यांकन: sklearn.metrics से accuracy_score(y_test, y_pred) (इस विभाजन में 1.0)।\n7. उपयोग: model.predict([[5.0, 3.4, 1.5, 0.2]]) setosa का अनुमान देता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Case study: A school in Lucknow keeps attendance in attendance.csv with columns Roll, Name, Days_Present, Total_Days. Some Days_Present cells are empty. (i) Which library would you use and why? (ii) Write code to load the file, fill missing Days_Present with 0, add a column Percent, and list students below 75%. (iii) Mention one privacy precaution.",
+    "hi": "Case study: लखनऊ का एक स्कूल उपस्थिति attendance.csv में Roll, Name, Days_Present, Total_Days columns के साथ रखता है। कुछ Days_Present cells खाली हैं। (i) कौन-सी library उपयोग करेंगे और क्यों? (ii) फ़ाइल load करने, खाली Days_Present को 0 से भरने, Percent column जोड़ने और 75% से कम वाले विद्यार्थियों की सूची बनाने का code लिखिए। (iii) निजता की एक सावधानी बताइए।"
+   },
+   "a": {
+    "en": "(i) Pandas, because it reads CSV files directly into a DataFrame and has tools for missing values and filtering.\n(ii) import pandas as pd\ndf = pd.read_csv('attendance.csv')\ndf['Days_Present'] = df['Days_Present'].fillna(0)\ndf['Percent'] = df['Days_Present'] / df['Total_Days'] * 100\nprint(df[df['Percent'] < 75][['Roll', 'Name', 'Percent']])\n(iii) Share the result only with the class teacher and parents concerned; do not upload names to public sites or chatbots. (Also check why cells are empty rather than assuming absence.)",
+    "hi": "(i) Pandas, क्योंकि यह CSV फ़ाइलें सीधे DataFrame में पढ़ता है और इसमें missing values तथा filtering के tools हैं।\n(ii) import pandas as pd\ndf = pd.read_csv('attendance.csv')\ndf['Days_Present'] = df['Days_Present'].fillna(0)\ndf['Percent'] = df['Days_Present'] / df['Total_Days'] * 100\nprint(df[df['Percent'] < 75][['Roll', 'Name', 'Percent']])\n(iii) परिणाम केवल कक्षा शिक्षक और संबंधित माता-पिता से साझा करें; नाम सार्वजनिक sites या chatbots पर upload न करें। (यह भी जाँचें कि cells खाली क्यों हैं, अनुपस्थिति मान न लें।)"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Write a program that reads marks of 5 subjects using a loop, then prints total, percentage and division (First >= 60, Second >= 45, Third >= 33, else Fail).",
+    "hi": "Loop से 5 विषयों के अंक पढ़कर total, प्रतिशत और श्रेणी (First >= 60, Second >= 45, Third >= 33, अन्यथा Fail) प्रिंट करने का प्रोग्राम लिखिए।"
+   },
+   "a": {
+    "en": "total = 0\nfor i in range(1, 6):\n    m = float(input('Marks in subject ' + str(i) + ': '))\n    total += m\nper = total / 5\nprint('Total =', total, 'Percentage =', per)\nif per >= 60:\n    print('First division')\nelif per >= 45:\n    print('Second division')\nelif per >= 33:\n    print('Third division')\nelse:\n    print('Fail')\nExample: inputs 70, 65, 80, 55, 60 → Total = 330.0, Percentage = 66.0, First division.",
+    "hi": "total = 0\nfor i in range(1, 6):\n    m = float(input('Marks in subject ' + str(i) + ': '))\n    total += m\nper = total / 5\nprint('Total =', total, 'Percentage =', per)\nif per >= 60:\n    print('First division')\nelif per >= 45:\n    print('Second division')\nelif per >= 33:\n    print('Third division')\nelse:\n    print('Fail')\nउदाहरण: inputs 70, 65, 80, 55, 60 → Total = 330.0, Percentage = 66.0, First division।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Why do we split data into training and testing sets? What could go wrong if we test on training data?",
+    "hi": "हम data को training और testing sets में क्यों बाँटते हैं? Training data पर ही परखने से क्या गलत हो सकता है?"
+   },
+   "a": {
+    "en": "The test set acts like an unseen exam paper. If we test on training data, the model may simply have memorised the answers (overfitting), so accuracy looks high but the model fails on new real-world data. A separate test set gives an honest estimate of performance.",
+    "hi": "Test set एक अनदेखे परीक्षा-पत्र जैसा है। यदि हम training data पर ही परखें, तो हो सकता है model ने उत्तर बस रट लिए हों (overfitting), इसलिए accuracy ऊँची दिखती है पर model नए असली data पर विफल हो जाता है। अलग test set प्रदर्शन का ईमानदार अनुमान देता है।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Explain any five data types in Python with an example and state which are mutable.",
+    "hi": "Python के कोई पाँच data types उदाहरण सहित समझाइए और बताइए कौन-से mutable हैं।"
+   },
+   "a": {
+    "en": "int: whole numbers, 25 (immutable)\nfloat: decimals, 3.14 (immutable)\nstr: text, 'India' (immutable)\nlist: ordered changeable collection, [1, 'a'] (mutable)\ndict: key-value pairs, {'name': 'Riya'} (mutable)\nAlso tuple (immutable), set (mutable), bool (immutable), complex (immutable).",
+    "hi": "int: पूर्ण संख्याएँ, 25 (immutable)\nfloat: दशमलव, 3.14 (immutable)\nstr: text, 'India' (immutable)\nlist: क्रमबद्ध बदलने योग्य संग्रह, [1, 'a'] (mutable)\ndict: key-value जोड़े, {'name': 'Riya'} (mutable)\nसाथ ही tuple (immutable), set (mutable), bool (immutable), complex (immutable)।"
+   }
+  },
+  {
+   "lvl": "hard",
+   "q": {
+    "en": "Activity / thinking: You trained KNN on Iris with K = 1, 3, 5, 7, 9 and got slightly different accuracies. What is K called, how would you choose it, and why is an odd K often preferred?",
+    "hi": "गतिविधि / चिंतन: आपने Iris पर K = 1, 3, 5, 7, 9 के साथ KNN train किया और थोड़ी अलग accuracies मिलीं। K को क्या कहते हैं, आप इसे कैसे चुनेंगे, और विषम K प्रायः क्यों पसंद किया जाता है?"
+   },
+   "a": {
+    "en": "K is a hyperparameter (a setting we choose, not learned from data). Choose it by trying several values and keeping the one with the best accuracy on test (or validation) data. An odd K avoids a tie vote between two classes. Too small a K is sensitive to noise; too large a K blurs class boundaries.",
+    "hi": "K एक hyperparameter है (हमारे द्वारा चुनी गई setting, data से सीखी नहीं जाती)। कई मान आज़माकर और test (या validation) data पर सबसे अच्छी accuracy वाला रखकर इसे चुनें। विषम K दो वर्गों के बीच बराबरी के मत से बचाता है। बहुत छोटा K शोर (noise) से प्रभावित होता है; बहुत बड़ा K वर्ग-सीमाएँ धुँधली कर देता है।"
+   }
+  }
+ ],
+ "summary": {
+  "en": [
+   "Python is a free, open-source, high-level, interpreted, cross-platform language created by Guido van Rossum (1991) and the most popular language for AI.",
+   "Python can be used in interactive mode (>>> prompt) or script mode (.py files); Jupyter Notebook and Google Colab mix both in cells.",
+   "The character set is letters, digits, symbols and white spaces; tokens are keywords, identifiers, literals, operators and punctuators.",
+   "Identifiers start with a letter or _, contain no spaces or symbols, are case-sensitive and cannot be keywords.",
+   "Built-in data types include int, float, complex, bool, str, list, tuple, set, dict and NoneType; Python is dynamically typed.",
+   "input() always returns a string; int(), float(), str() perform type casting.",
+   "Operators: arithmetic, relational, assignment, logical, bitwise, identity and membership, evaluated by precedence (** highest among arithmetic).",
+   "Selection uses if, if-else, if-elif-else and nested if; iteration uses for (with range) and while; break, continue and pass change loop flow.",
+   "CSV files store tables as plain text; the csv module reads them with csv.reader and writes with csv.writer.",
+   "NumPy ndarrays are fast, single-type, multi-dimensional arrays with vectorised maths and statistics.",
+   "Pandas Series (1-D) and DataFrame (2-D) handle tables: read_csv, head, tail, loc, iloc, drop, isnull, fillna, to_csv.",
+   "Scikit-learn follows load → split (train_test_split) → fit → predict → evaluate; KNN classifies by majority vote of the K nearest neighbours.",
+   "Errors are syntax, runtime (exceptions) or logical; try-except handles runtime errors; always test models on unseen data and protect personal data."
+  ],
+  "hi": [
+   "Python Guido van Rossum द्वारा बनाई (1991) एक मुफ़्त, open-source, उच्च-स्तरीय, interpreted, cross-platform भाषा है और AI की सबसे लोकप्रिय भाषा है।",
+   "Python interactive mode (>>> prompt) या script mode (.py फ़ाइलें) में उपयोग हो सकती है; Jupyter Notebook और Google Colab cells में दोनों को मिलाते हैं।",
+   "Character set अक्षर, अंक, चिह्न और white spaces हैं; tokens हैं keywords, identifiers, literals, operators और punctuators।",
+   "Identifiers अक्षर या _ से शुरू होते हैं, उनमें space या चिह्न नहीं होते, वे case-sensitive हैं और keyword नहीं हो सकते।",
+   "Built-in data types में int, float, complex, bool, str, list, tuple, set, dict और NoneType हैं; Python dynamically typed है।",
+   "input() हमेशा string लौटाता है; int(), float(), str() type casting करते हैं।",
+   "Operators: arithmetic, relational, assignment, logical, bitwise, identity और membership, जिनका मान precedence के अनुसार निकलता है (arithmetic में ** सबसे ऊँचा)।",
+   "Selection में if, if-else, if-elif-else और nested if; iteration में for (range के साथ) और while; break, continue और pass loop का प्रवाह बदलते हैं।",
+   "CSV फ़ाइलें तालिकाओं को साधारण text में रखती हैं; csv module उन्हें csv.reader से पढ़ता और csv.writer से लिखता है।",
+   "NumPy ndarrays तेज़, एक-type, बहु-आयामी arrays हैं जिनमें vectorised गणित और statistics है।",
+   "Pandas Series (1-D) और DataFrame (2-D) तालिकाएँ सँभालते हैं: read_csv, head, tail, loc, iloc, drop, isnull, fillna, to_csv।",
+   "Scikit-learn का क्रम है load → split (train_test_split) → fit → predict → evaluate; KNN, K निकटतम पड़ोसियों के बहुमत से वर्गीकरण करता है।",
+   "Errors syntax, runtime (exceptions) या logical होती हैं; try-except runtime errors सँभालता है; models को हमेशा अनदेखे data पर परखें और निजी data की रक्षा करें।"
+  ]
+ }
+}
